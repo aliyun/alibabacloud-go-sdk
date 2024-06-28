@@ -1,7 +1,4 @@
 // This file is auto-generated, don't edit it. Thanks.
-/**
- *
- */
 package client
 
 import (
@@ -14,26 +11,68 @@ import (
 
 type AddAccountRelationRequest struct {
 	// The display name of the member. This helps clarify the scenario in which the account is used.
+	//
+	// example:
+	//
+	// xxx project
 	ChildNick *string `json:"ChildNick,omitempty" xml:"ChildNick,omitempty"`
 	// The ID of the Alibaba Cloud account that is used as the member.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1512996702208737
 	ChildUserId *int64 `json:"ChildUserId,omitempty" xml:"ChildUserId,omitempty"`
 	// The ID of the Alibaba Cloud account that is used as the management account.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1738376485192612
 	ParentUserId *int64 `json:"ParentUserId,omitempty" xml:"ParentUserId,omitempty"`
 	// The permissions that can be granted to the member. Valid values:
 	//
-	// *   SYNCHRONIZE_FINANCE_IDENTITY: allows the credit control identity to be shared with the member.
-	// *   SYNCHRONIZE_FINANCE_DISCOUNT_POLICY_TO_TARGET: allows the discount policy to be shared with the member.
-	// *   FORBID_WITHDRAW_CASH: does not allow the member to withdraw the balance.
-	// *   FORBID_MANAGE_INVOICE: does not allow the member to manage invoices.
-	// *   CHECK_FINANCE_INFO: requests to view information about the financial relationship.
-	// *   MANAGE_TARGET_INVOICE: allows the member to manage invoices.
-	// *   CHECK_TARGET_CONSUMPTION: allows the member to view the bills.
+	// 	- SYNCHRONIZE_FINANCE_IDENTITY: allows the credit control identity to be shared with the member.
+	//
+	// 	- SYNCHRONIZE_FINANCE_DISCOUNT_POLICY_TO_TARGET: allows the discount policy to be shared with the member.
+	//
+	// 	- FORBID_WITHDRAW_CASH: does not allow the member to withdraw the balance.
+	//
+	// 	- FORBID_MANAGE_INVOICE: does not allow the member to manage invoices.
+	//
+	// 	- CHECK_FINANCE_INFO: requests to view information about the financial relationship.
+	//
+	// 	- MANAGE_TARGET_INVOICE: allows the member to manage invoices.
+	//
+	// 	- CHECK_TARGET_CONSUMPTION: allows the member to view the bills.
+	//
+	// example:
+	//
+	// CHECK_TARGET_CONSUMPTION
 	PermissionCodes []*string `json:"PermissionCodes,omitempty" xml:"PermissionCodes,omitempty" type:"Repeated"`
 	// The type of the financial relationship. Set the value to enterprise_group.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// enterprise_group
 	RelationType *string `json:"RelationType,omitempty" xml:"RelationType,omitempty"`
 	// The unique ID of the request. The ID is used to mark a request and troubleshoot a problem.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 32324242444
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The roles that can be assigned to the member. Set the value to trusteeship.
+	//
+	// example:
+	//
+	// trusteeship
 	RoleCodes []*string `json:"RoleCodes,omitempty" xml:"RoleCodes,omitempty" type:"Repeated"`
 }
 
@@ -82,14 +121,30 @@ func (s *AddAccountRelationRequest) SetRoleCodes(v []*string) *AddAccountRelatio
 
 type AddAccountRelationResponseBody struct {
 	// The status code returned.
+	//
+	// example:
+	//
+	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The data returned.
 	Data *AddAccountRelationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The message returned.
+	//
+	// example:
+	//
+	// Message returned
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// Request ID
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request is successful.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -128,8 +183,16 @@ func (s *AddAccountRelationResponseBody) SetSuccess(v bool) *AddAccountRelationR
 
 type AddAccountRelationResponseBodyData struct {
 	// HostId
+	//
+	// example:
+	//
+	// HostId
 	HostId *string `json:"HostId,omitempty" xml:"HostId,omitempty"`
 	// The ID of the financial relationship.
+	//
+	// example:
+	//
+	// RelationId
 	RelationId *int64 `json:"RelationId,omitempty" xml:"RelationId,omitempty"`
 }
 
@@ -183,19 +246,47 @@ func (s *AddAccountRelationResponse) SetBody(v *AddAccountRelationResponseBody) 
 type AllocateCostUnitResourceRequest struct {
 	// The ID of the source cost center.
 	//
-	// *   A value of 0 indicates that the resources to be transferred have not been allocated to a cost center.
-	// *   A value greater than 0 indicates the ID of an existing cost center.
+	// 	- A value of 0 indicates that the resources to be transferred have not been allocated to a cost center.
+	//
+	// 	- A value greater than 0 indicates the ID of an existing cost center.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0
 	FromUnitId *int64 `json:"FromUnitId,omitempty" xml:"FromUnitId,omitempty"`
 	// The user ID of the owner of the source cost center.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 273394581313325532
 	FromUnitUserId *int64 `json:"FromUnitUserId,omitempty" xml:"FromUnitUserId,omitempty"`
 	// The resource instances to be transferred.
+	//
+	// This parameter is required.
 	ResourceInstanceList []*AllocateCostUnitResourceRequestResourceInstanceList `json:"ResourceInstanceList,omitempty" xml:"ResourceInstanceList,omitempty" type:"Repeated"`
 	// The ID of the destination cost center.
 	//
-	// *   A value of -1 indicates that the allocated resources are changed to unallocated.
-	// *   A value greater than 0 indicates the ID of an existing cost center.
+	// 	- A value of -1 indicates that the allocated resources are changed to unallocated.
+	//
+	// 	- A value greater than 0 indicates the ID of an existing cost center.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 186419
 	ToUnitId *int64 `json:"ToUnitId,omitempty" xml:"ToUnitId,omitempty"`
 	// The user ID of the owner of the destination cost center.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 241021678450941490
 	ToUnitUserId *int64 `json:"ToUnitUserId,omitempty" xml:"ToUnitUserId,omitempty"`
 }
 
@@ -235,14 +326,37 @@ func (s *AllocateCostUnitResourceRequest) SetToUnitUserId(v int64) *AllocateCost
 type AllocateCostUnitResourceRequestResourceInstanceList struct {
 	// The split item of the shared instance. This parameter is required only for shared instances.
 	//
-	// *   Eight cloud services support bill splitting. The commodity codes of the eight services are oss, dcdn, snapshot, vod, cdn, live, cbwp, and pcdn.
-	// *   You can obtain the split item of a shared instance by calling QueryCostUnitResource operation to obtain all resource instances within a cost center.
+	// 	- Eight cloud services support bill splitting. The commodity codes of the eight services are oss, dcdn, snapshot, vod, cdn, live, cbwp, and pcdn.
+	//
+	// 	- You can obtain the split item of a shared instance by calling QueryCostUnitResource operation to obtain all resource instances within a cost center.
+	//
+	// example:
+	//
+	// qwer1-cn-beijing
 	ApportionCode *string `json:"ApportionCode,omitempty" xml:"ApportionCode,omitempty"`
 	// The commodity code of the resource instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// oss
 	CommodityCode *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
 	// The ID of the resource instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou;standard
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 	// The user ID of the resource instance owner.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 273394581313325532
 	ResourceUserId *int64 `json:"ResourceUserId,omitempty" xml:"ResourceUserId,omitempty"`
 }
 
@@ -276,14 +390,30 @@ func (s *AllocateCostUnitResourceRequestResourceInstanceList) SetResourceUserId(
 
 type AllocateCostUnitResourceResponseBody struct {
 	// The status code.
+	//
+	// example:
+	//
+	// success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The data returned.
 	Data *AllocateCostUnitResourceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The error message returned.
+	//
+	// example:
+	//
+	// Successful！
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 845C629F-47A7-4F46-A470-ED5047C4C250
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful.
+	//
+	// example:
+	//
+	// false
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -323,12 +453,25 @@ func (s *AllocateCostUnitResourceResponseBody) SetSuccess(v bool) *AllocateCostU
 type AllocateCostUnitResourceResponseBodyData struct {
 	// Indicates whether resources are allocated to the specified cost center. Valid values:
 	//
-	// *   true: The resources are allocated to the specified cost center.
-	// *   false: The resources fail to be allocated to the specified cost center.
+	// 	- true: The resources are allocated to the specified cost center.
+	//
+	// 	- false: The resources fail to be allocated to the specified cost center.
+	//
+	// example:
+	//
+	// true
 	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
 	// The ID of the destination cost center.
+	//
+	// example:
+	//
+	// 32857346527
 	ToUnitId *int64 `json:"ToUnitId,omitempty" xml:"ToUnitId,omitempty"`
 	// The user ID of the owner of the destination cost center.
+	//
+	// example:
+	//
+	// 34857693874
 	ToUnitUserId *int64 `json:"ToUnitUserId,omitempty" xml:"ToUnitUserId,omitempty"`
 }
 
@@ -386,26 +529,73 @@ func (s *AllocateCostUnitResourceResponse) SetBody(v *AllocateCostUnitResourceRe
 
 type ApplyInvoiceRequest struct {
 	// The ID of the address to which the invoice is delivered. This parameter is required if the invoice is a paper invoice. Set the ID to the value of the AddressId parameter returned by calling the QueryCustomerAddressList operation.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 237958367
 	AddressId *int64 `json:"AddressId,omitempty" xml:"AddressId,omitempty"`
 	// The nickname of the applicant. The system does not verify the nickname.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test
 	ApplyUserNick *string `json:"ApplyUserNick,omitempty" xml:"ApplyUserNick,omitempty"`
 	// The ID of the customer. Set the ID to the value of the CustomerId parameter returned by calling the QueryInvoicingCustomerList operation.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 124132423
 	CustomerId *int64 `json:"CustomerId,omitempty" xml:"CustomerId,omitempty"`
 	// The amount of the invoice. Unit: Cent.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 124132
 	InvoiceAmount *int64 `json:"InvoiceAmount,omitempty" xml:"InvoiceAmount,omitempty"`
 	// Specifies whether to invoice by amount. A value of true indicates that the user applies for the invoice based on the InvoiceAmount parameter. A value of false indicates that the user applies for the invoice based on the total amount of the invoicing items.
+	//
+	// example:
+	//
+	// true
 	InvoiceByAmount *bool `json:"InvoiceByAmount,omitempty" xml:"InvoiceByAmount,omitempty"`
 	// The type of the invoice. Valid values:
 	//
-	// *   0: paper invoice
-	// *   1: electronic invoice
+	// 	- 0: paper invoice
+	//
+	// 	- 1: electronic invoice
+	//
+	// example:
+	//
+	// 1
 	InvoicingType *int32 `json:"InvoicingType,omitempty" xml:"InvoicingType,omitempty"`
 	OwnerId       *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The channel that is used to process the invoice. A value of 0 indicates that the invoice is processed by Alibaba Cloud. A value of 1 indicates that the invoice is processed by the tax platform. Set the value to 1.
+	//
+	// example:
+	//
+	// 1
 	ProcessWay *int32 `json:"ProcessWay,omitempty" xml:"ProcessWay,omitempty"`
 	// The IDs of the selected invoicing items. Set the IDs to the IDs returned by calling the QueryEvaluateList operation.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 384752367
 	SelectedIds []*int64 `json:"SelectedIds,omitempty" xml:"SelectedIds,omitempty" type:"Repeated"`
 	// The remarks made by the user.
+	//
+	// example:
+	//
+	// test
 	UserRemark *string `json:"UserRemark,omitempty" xml:"UserRemark,omitempty"`
 }
 
@@ -469,14 +659,30 @@ func (s *ApplyInvoiceRequest) SetUserRemark(v string) *ApplyInvoiceRequest {
 
 type ApplyInvoiceResponseBody struct {
 	// The status code.
+	//
+	// example:
+	//
+	// Success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The data returned.
 	Data *ApplyInvoiceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The error message returned.
+	//
+	// example:
+	//
+	// Successful!
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 6000EE23-274B-4E07-A697-FF2E999520A4
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -515,6 +721,10 @@ func (s *ApplyInvoiceResponseBody) SetSuccess(v bool) *ApplyInvoiceResponseBody 
 
 type ApplyInvoiceResponseBodyData struct {
 	// The ID of the application.
+	//
+	// example:
+	//
+	// 1323125534
 	InvoiceApplyId *int64 `json:"InvoiceApplyId,omitempty" xml:"InvoiceApplyId,omitempty"`
 }
 
@@ -562,6 +772,12 @@ func (s *ApplyInvoiceResponse) SetBody(v *ApplyInvoiceResponseBody) *ApplyInvoic
 
 type CancelOrderRequest struct {
 	// The ID of the order.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 73465432785
 	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 }
@@ -586,14 +802,30 @@ func (s *CancelOrderRequest) SetOwnerId(v int64) *CancelOrderRequest {
 
 type CancelOrderResponseBody struct {
 	// The status code.
+	//
+	// example:
+	//
+	// Success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The data returned.
 	Data *CancelOrderResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The error message.
+	//
+	// example:
+	//
+	// Successful!
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 30D2285E-A848-4ECB-AA74-4954C60858A1
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the call was successful.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -632,6 +864,10 @@ func (s *CancelOrderResponseBody) SetSuccess(v bool) *CancelOrderResponseBody {
 
 type CancelOrderResponseBodyData struct {
 	// The ID of the host.
+	//
+	// example:
+	//
+	// cn
 	HostId *string `json:"HostId,omitempty" xml:"HostId,omitempty"`
 }
 
@@ -679,19 +915,60 @@ func (s *CancelOrderResponse) SetBody(v *CancelOrderResponseBody) *CancelOrderRe
 
 type ChangeResellerConsumeAmountRequest struct {
 	// The type of the consumption amount adjustment. Valid values: increase: The consumption amount increases because new consumption occurs. decrease: The consumption amount decreases because funds are added to the account. This parameter is required.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// increase/decrease
 	AdjustType *string `json:"AdjustType,omitempty" xml:"AdjustType,omitempty"`
 	// The amount to be adjusted. Unit: CNY
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10.00
 	Amount *string `json:"Amount,omitempty" xml:"Amount,omitempty"`
 	// The type of the business.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// quota_amount_adjust
 	BusinessType *string `json:"BusinessType,omitempty" xml:"BusinessType,omitempty"`
 	// The type of the currency.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// CNY
 	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
 	// The extended field of a message.
+	//
+	// example:
+	//
+	// {}
 	ExtendMap *string `json:"ExtendMap,omitempty" xml:"ExtendMap,omitempty"`
 	// The ID of the primary key for external business. The ID is used for idempotence verification.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1647396865
 	OutBizId *string `json:"OutBizId,omitempty" xml:"OutBizId,omitempty"`
-	OwnerId  *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// This parameter is required.
+	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The source of the request. Specify the system name for the parameter.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// system
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
 }
 
@@ -745,14 +1022,34 @@ func (s *ChangeResellerConsumeAmountRequest) SetSource(v string) *ChangeReseller
 
 type ChangeResellerConsumeAmountResponseBody struct {
 	// The error code returned if the call failed. For more information, see the "Error codes" section of the topic.
+	//
+	// example:
+	//
+	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The consumption quota for the quota ledger after adjustment.
+	//
+	// example:
+	//
+	// 300.00
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
 	// The message returned.
+	//
+	// example:
+	//
+	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// D6E068C3-25BC-455A-85FE-45F0B22ECB1F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the call is successful. A value of true indicates that the call is successful. A value of false indicates that the call failed.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -820,30 +1117,72 @@ func (s *ChangeResellerConsumeAmountResponse) SetBody(v *ChangeResellerConsumeAm
 
 type ConfirmRelationRequest struct {
 	// The ID of the Alibaba Cloud account that is used as the member.
+	//
+	// example:
+	//
+	// 1512996702208737
 	ChildUserId *int64 `json:"ChildUserId,omitempty" xml:"ChildUserId,omitempty"`
 	// The operation to be performed to confirm the invitation. Valid values:
 	//
-	// *   child_agree: The member accepts the invitation.
-	// *   child_disagree: The member rejects the invitation.
-	// *   Canceled by the master account: The management account cancels the confirmation.
+	// 	- child_agree: The member accepts the invitation.
+	//
+	// 	- child_disagree: The member rejects the invitation.
+	//
+	// 	- Canceled by the master account: The management account cancels the confirmation.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// child_agree
 	ConfirmCode *string `json:"ConfirmCode,omitempty" xml:"ConfirmCode,omitempty"`
 	// The ID of the Alibaba Cloud account that is used as the management account.
+	//
+	// example:
+	//
+	// 1738376485192612
 	ParentUserId *int64 `json:"ParentUserId,omitempty" xml:"ParentUserId,omitempty"`
 	// The permissions that can be granted to the member. Valid values:
 	//
-	// *   SYNCHRONIZE_FINANCE_IDENTITY: allows the credit control identity to be shared with the member.
-	// *   SYNCHRONIZE_FINANCE_DISCOUNT_POLICY_TO_TARGET: allows the discount policy to be shared with the member.
-	// *   FORBID_WITHDRAW_CASH: does not allow the member to withdraw the balance.
-	// *   FORBID_MANAGE_INVOICE: does not allow the member to manage invoices.
-	// *   CHECK_FINANCE_INFO: requests to view information about the financial relationship.
-	// *   MANAGE_TARGET_INVOICE: allows the member to manage invoices.
-	// *   CHECK_TARGET_CONSUMPTION: allows the member to view the bills.
+	// 	- SYNCHRONIZE_FINANCE_IDENTITY: allows the credit control identity to be shared with the member.
+	//
+	// 	- SYNCHRONIZE_FINANCE_DISCOUNT_POLICY_TO_TARGET: allows the discount policy to be shared with the member.
+	//
+	// 	- FORBID_WITHDRAW_CASH: does not allow the member to withdraw the balance.
+	//
+	// 	- FORBID_MANAGE_INVOICE: does not allow the member to manage invoices.
+	//
+	// 	- CHECK_FINANCE_INFO: requests to view information about the financial relationship.
+	//
+	// 	- MANAGE_TARGET_INVOICE: allows the member to manage invoices.
+	//
+	// 	- CHECK_TARGET_CONSUMPTION: allows the member to view the bills.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// SYNCHRONIZE_FINANCE_IDENTITY
 	PermissionCodes []*string `json:"PermissionCodes,omitempty" xml:"PermissionCodes,omitempty" type:"Repeated"`
 	// The ID of the financial relationship. Set this parameter to the value of the RelationId response parameter returned by calling the QueryRelationList operation.
+	//
+	// example:
+	//
+	// 51463
 	RelationId *int64 `json:"RelationId,omitempty" xml:"RelationId,omitempty"`
 	// The type of the financial relationship. Set the value to enterprise_group.
+	//
+	// example:
+	//
+	// Type of the financial relationship
 	RelationType *string `json:"RelationType,omitempty" xml:"RelationType,omitempty"`
 	// The unique ID of the request.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// request_id
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -892,14 +1231,30 @@ func (s *ConfirmRelationRequest) SetRequestId(v string) *ConfirmRelationRequest 
 
 type ConfirmRelationResponseBody struct {
 	// The status code returned.
+	//
+	// example:
+	//
+	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The data returned.
 	Data *ConfirmRelationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The message returned.
+	//
+	// example:
+	//
+	// Message returned
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The unique ID of the request.
+	//
+	// example:
+	//
+	// request_id
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request is successful.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -937,6 +1292,10 @@ func (s *ConfirmRelationResponseBody) SetSuccess(v bool) *ConfirmRelationRespons
 }
 
 type ConfirmRelationResponseBodyData struct {
+	// HostId
+	//
+	// example:
+	//
 	// HostId
 	HostId *string `json:"HostId,omitempty" xml:"HostId,omitempty"`
 }
@@ -985,25 +1344,55 @@ func (s *ConfirmRelationResponse) SetBody(v *ConfirmRelationResponseBody) *Confi
 
 type ConvertChargeTypeRequest struct {
 	// The ID of the instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// rm-kasjgfjshgf
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The subscription duration. Unit: months. This parameter is required if you switch the billing method to subscription. Valid values:
 	//
-	// *   1 to 9
-	// *   12
-	// *   24
-	// *   36
+	// 	- 1 to 9
+	//
+	// 	- 12
+	//
+	// 	- 24
+	//
+	// 	- 36
+	//
+	// example:
+	//
+	// 6
 	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
 	// The code of the service to which the instance belongs.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// rds
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
 	// The type of the service to which the instance belongs.
+	//
+	// example:
+	//
+	// rds
 	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
 	// The billing method of the instance. Valid values:
 	//
-	// *   Subscription: subscription
-	// *   PayAsYouGo: pay-as-you-go
+	// 	- Subscription: subscription
+	//
+	// 	- PayAsYouGo: pay-as-you-go
 	//
 	// >  After the call is successful, the billing method of the instance is switched.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Subscription
 	SubscriptionType *string `json:"SubscriptionType,omitempty" xml:"SubscriptionType,omitempty"`
 }
 
@@ -1047,14 +1436,30 @@ func (s *ConvertChargeTypeRequest) SetSubscriptionType(v string) *ConvertChargeT
 
 type ConvertChargeTypeResponseBody struct {
 	// The status code.
+	//
+	// example:
+	//
+	// Success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The data returned.
 	Data *ConvertChargeTypeResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The error message returned.
+	//
+	// example:
+	//
+	// Successful！
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 6000EE23-274B-4E07-A697-FF2E999520A4
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -1093,6 +1498,10 @@ func (s *ConvertChargeTypeResponseBody) SetSuccess(v bool) *ConvertChargeTypeRes
 
 type ConvertChargeTypeResponseBodyData struct {
 	// The ID of the order.
+	//
+	// example:
+	//
+	// 202657601410661
 	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
 }
 
@@ -1140,24 +1549,62 @@ func (s *ConvertChargeTypeResponse) SetBody(v *ConvertChargeTypeResponseBody) *C
 
 type CreateAgAccountRequest struct {
 	// The attribute of the account. To view the attribute of the account, use the account to log on to the Alibaba Cloud Management Console, move the pointer over the profile picture in the upper-right corner, and then click **Security Settings**.
+	//
+	// example:
+	//
+	// 1
 	AccountAttr *string `json:"AccountAttr,omitempty" xml:"AccountAttr,omitempty"`
 	// The name of the city.
+	//
+	// example:
+	//
+	// Beijing
 	CityName *string `json:"CityName,omitempty" xml:"CityName,omitempty"`
 	// The name of the enterprise.
+	//
+	// example:
+	//
+	// Dongguan ChuangNeng Electric Appliance Co., Ltd
 	EnterpriseName *string `json:"EnterpriseName,omitempty" xml:"EnterpriseName,omitempty"`
 	// The first name.
+	//
+	// example:
+	//
+	// Zhicheng
 	FirstName *string `json:"FirstName,omitempty" xml:"FirstName,omitempty"`
 	// The last name.
 	//
 	// The last name can be up to 64 characters in length.
+	//
+	// example:
+	//
+	// Wu
 	LastName *string `json:"LastName,omitempty" xml:"LastName,omitempty"`
 	// The email address used to log on to the account.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// email
 	LoginEmail *string `json:"LoginEmail,omitempty" xml:"LoginEmail,omitempty"`
 	// The country code.
+	//
+	// example:
+	//
+	// CN
 	NationCode *string `json:"NationCode,omitempty" xml:"NationCode,omitempty"`
 	// The zip code.
+	//
+	// example:
+	//
+	// 350000
 	Postcode *string `json:"Postcode,omitempty" xml:"Postcode,omitempty"`
 	// The name of the province. This parameter is optional.
+	//
+	// example:
+	//
+	// Beijing
 	ProvinceName *string `json:"ProvinceName,omitempty" xml:"ProvinceName,omitempty"`
 }
 
@@ -1218,12 +1665,28 @@ type CreateAgAccountResponseBody struct {
 	// The relationship between the account that is used to call the CreateAgAccount operation and the account that is created.
 	AgRelationDto *CreateAgAccountResponseBodyAgRelationDto `json:"AgRelationDto,omitempty" xml:"AgRelationDto,omitempty" type:"Struct"`
 	// The status code returned.
+	//
+	// example:
+	//
+	// LOGIN_EMAIL_HAS_BEEN_USED
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The error message returned.
+	//
+	// example:
+	//
+	// loginEmail=685741089H@chinaunicom.cn,has used
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// EAE08A27-386C-579E-966D-8853EC3C5D0E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request is successful.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -1262,12 +1725,28 @@ func (s *CreateAgAccountResponseBody) SetSuccess(v bool) *CreateAgAccountRespons
 
 type CreateAgAccountResponseBodyAgRelationDto struct {
 	// The ID of the account that is used to call the CreateAgAccount operation.
+	//
+	// example:
+	//
+	// 1785287436011964
 	Mpk *string `json:"Mpk,omitempty" xml:"Mpk,omitempty"`
 	// The ID of the account that is created.
+	//
+	// example:
+	//
+	// 1728240534507590
 	Pk *string `json:"Pk,omitempty" xml:"Pk,omitempty"`
 	// The role of the account that is created.
+	//
+	// example:
+	//
+	// admin-role
 	RamAdminRoleName *string `json:"RamAdminRoleName,omitempty" xml:"RamAdminRoleName,omitempty"`
 	// The type of the relationship.
+	//
+	// example:
+	//
+	// FINACE_CLOUD
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
@@ -1348,10 +1827,28 @@ func (s *CreateCostUnitRequest) SetUnitEntityList(v []*CreateCostUnitRequestUnit
 
 type CreateCostUnitRequestUnitEntityList struct {
 	// The user ID of the owner of the cost center.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 982375623
 	OwnerUid *int64 `json:"OwnerUid,omitempty" xml:"OwnerUid,omitempty"`
 	// The ID of the parent cost center. A value of -1 indicates the root cost center.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// -1
 	ParentUnitId *int64 `json:"ParentUnitId,omitempty" xml:"ParentUnitId,omitempty"`
 	// The name of the cost center.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test
 	UnitName *string `json:"UnitName,omitempty" xml:"UnitName,omitempty"`
 }
 
@@ -1380,14 +1877,30 @@ func (s *CreateCostUnitRequestUnitEntityList) SetUnitName(v string) *CreateCostU
 
 type CreateCostUnitResponseBody struct {
 	// The status code.
+	//
+	// example:
+	//
+	// Success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The data returned.
 	Data *CreateCostUnitResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The error message returned.
+	//
+	// example:
+	//
+	// Successful！
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// F5B803CF-94D8-43AF-ADB3-D819AAD30E27
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the call is successful.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -1444,12 +1957,28 @@ func (s *CreateCostUnitResponseBodyData) SetCostUnitDtoList(v []*CreateCostUnitR
 
 type CreateCostUnitResponseBodyDataCostUnitDtoList struct {
 	// The user ID of the owner of the cost center.
+	//
+	// example:
+	//
+	// 26387563
 	OwnerUid *int64 `json:"OwnerUid,omitempty" xml:"OwnerUid,omitempty"`
 	// The ID of the parent cost center. A value of -1 indicates the root cost center.
+	//
+	// example:
+	//
+	// -1
 	ParentUnitId *int64 `json:"ParentUnitId,omitempty" xml:"ParentUnitId,omitempty"`
 	// The ID of the cost center.
+	//
+	// example:
+	//
+	// 84327659328
 	UnitId *int64 `json:"UnitId,omitempty" xml:"UnitId,omitempty"`
 	// The name of the cost center.
+	//
+	// example:
+	//
+	// test
 	UnitName *string `json:"UnitName,omitempty" xml:"UnitName,omitempty"`
 }
 
@@ -1512,8 +2041,16 @@ func (s *CreateCostUnitResponse) SetBody(v *CreateCostUnitResponseBody) *CreateC
 
 type CreateInstanceRequest struct {
 	// The client token that is used to ensure the idempotence of the request. The server checks whether a request that uses the same client token has been received. If a request that uses the same client token has been received, the server returns the same request result as the previous request.
+	//
+	// example:
+	//
+	// JASIOFKVNVIXXXXXX
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The logistics address of this order. This parameter is generally valid for physical orders.
+	//
+	// example:
+	//
+	// {"cityCode":"330100","cityName":"Hangzhou","contactName":"Test","countryCode":"","districtName":"Puyan Street","email":"\\*\\*@example.com","mobilePhone":"153564848844","phone":"1234567","provCode":"330000","provName":"Zhejiang","streetCode":"33010610","streetName":"Zhuantang","zipCode":"0000"}
 	Logistics *string `json:"Logistics,omitempty" xml:"Logistics,omitempty"`
 	OwnerId   *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The details of the modules.
@@ -1521,26 +2058,56 @@ type CreateInstanceRequest struct {
 	// The subscription duration. Unit: month. The value must be an integral multiple of 12.
 	//
 	// >  This parameter is required if you create a subscription instance.
+	//
+	// example:
+	//
+	// 12
 	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
-	// The code of the service to which the instance belongs. You can query the service code by calling the **QueryProductList** operation or viewing **Codes of Alibaba Cloud Services**.
+	// The code of the service to which the instance belongs. You can query the service code by calling the **QueryProductList*	- operation or viewing **Codes of Alibaba Cloud Services**.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// rds
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
 	// The type of the service.
+	//
+	// example:
+	//
+	// rds
 	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
 	// The auto-renewal period. Unit: month.
 	//
-	// >  This parameter is required if the **RenewalStatus** parameter is set to **AutoRenewal**.
+	// >  This parameter is required if the **RenewalStatus*	- parameter is set to **AutoRenewal**.
+	//
+	// example:
+	//
+	// 12
 	RenewPeriod *int32 `json:"RenewPeriod,omitempty" xml:"RenewPeriod,omitempty"`
 	// The renewal method. Valid values:
 	//
-	// *   AutoRenewal: The instance is automatically renewed.
-	// *   ManualRenewal: The instance is manually renewed.
+	// 	- AutoRenewal: The instance is automatically renewed.
+	//
+	// 	- ManualRenewal: The instance is manually renewed.
 	//
 	// Default value: ManualRenewal.
+	//
+	// example:
+	//
+	// ManualRenewal
 	RenewalStatus *string `json:"RenewalStatus,omitempty" xml:"RenewalStatus,omitempty"`
 	// The billing method. Valid values:
 	//
-	// *   Subscription: the subscription billing method.
-	// *   PayAsYouGo: the pay-as-you-go billing method.
+	// 	- Subscription: the subscription billing method.
+	//
+	// 	- PayAsYouGo: the pay-as-you-go billing method.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Subscription
 	SubscriptionType *string `json:"SubscriptionType,omitempty" xml:"SubscriptionType,omitempty"`
 }
 
@@ -1604,8 +2171,20 @@ func (s *CreateInstanceRequest) SetSubscriptionType(v string) *CreateInstanceReq
 
 type CreateInstanceRequestParameter struct {
 	// The code property of the Nth module. Value of N: 1 to 100. If multiple module property parameters are involved, concatenate multiple parameters based on the value of N in sequence.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// InstanceType
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The value property of the Nth module. Value of N: 1 to 100.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// disk
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -1629,14 +2208,30 @@ func (s *CreateInstanceRequestParameter) SetValue(v string) *CreateInstanceReque
 
 type CreateInstanceResponseBody struct {
 	// The status code.
+	//
+	// example:
+	//
+	// Success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The data returned.
 	Data *CreateInstanceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The error message returned.
+	//
+	// example:
+	//
+	// Successful！
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// C880B065-A781-4F19-B6DD-3E0E3B715C64
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -1675,8 +2270,16 @@ func (s *CreateInstanceResponseBody) SetSuccess(v bool) *CreateInstanceResponseB
 
 type CreateInstanceResponseBodyData struct {
 	// The ID of the instance for which the order was created.
+	//
+	// example:
+	//
+	// OSSBAG-cn-v1hxxxxx23
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The ID of the order that was created.
+	//
+	// example:
+	//
+	// 20240xxxx21
 	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
 }
 
@@ -1728,10 +2331,24 @@ func (s *CreateInstanceResponse) SetBody(v *CreateInstanceResponseBody) *CreateI
 }
 
 type CreateResellerUserQuotaRequest struct {
-	Amount   *string `json:"Amount,omitempty" xml:"Amount,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 100
+	Amount *string `json:"Amount,omitempty" xml:"Amount,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// CNY
 	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
+	// example:
+	//
+	// 7ed0bedc-056e-4a71-9249-4581615c028f
 	OutBizId *string `json:"OutBizId,omitempty" xml:"OutBizId,omitempty"`
-	OwnerId  *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// This parameter is required.
+	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 }
 
 func (s CreateResellerUserQuotaRequest) String() string {
@@ -1763,11 +2380,26 @@ func (s *CreateResellerUserQuotaRequest) SetOwnerId(v int64) *CreateResellerUser
 }
 
 type CreateResellerUserQuotaResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// true
+	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// Successful!
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 79EE7556-0CFD-44EB-9CD6-B3B526E3A85F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s CreateResellerUserQuotaResponseBody) String() string {
@@ -1834,24 +2466,57 @@ func (s *CreateResellerUserQuotaResponse) SetBody(v *CreateResellerUserQuotaResp
 
 type CreateResourcePackageRequest struct {
 	// The validity period of the resource plan.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 6
 	Duration *int32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
 	// The time when the resource plan takes effect. If you leave this parameter empty, the resource plan immediately takes effect by default.
 	//
 	// Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	//
+	// example:
+	//
+	// 2020-03-03T12:00:00Z
 	EffectiveDate *string `json:"EffectiveDate,omitempty" xml:"EffectiveDate,omitempty"`
 	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The type of the resource plan. Set this parameter to the code of the **resource plan** returned by calling the **DescribeResourcePackageProduct** operation.
+	// The type of the resource plan. Set this parameter to the code of the **resource plan*	- returned by calling the **DescribeResourcePackageProduct*	- operation.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// FPT_ossbag_absolute_Storage_sh
 	PackageType *string `json:"PackageType,omitempty" xml:"PackageType,omitempty"`
 	// The unit of the validity period of the resource plan. Valid values:
 	//
-	// *   Month
-	// *   Year
+	// 	- Month
+	//
+	// 	- Year
 	//
 	// Default value: Month.
+	//
+	// example:
+	//
+	// Month
 	PricingCycle *string `json:"PricingCycle,omitempty" xml:"PricingCycle,omitempty"`
-	// The code of the service. You can query the code by calling the **QueryProductList** operation or viewing **Codes of Alibaba Cloud services**.
+	// The code of the service. You can query the code by calling the **QueryProductList*	- operation or viewing **Codes of Alibaba Cloud services**.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ossbag
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	// The specifications of the resource plan. Set this parameter to the value of the **specifications** returned by calling the **DescribeResourcePackageProduct** operation.
+	// The specifications of the resource plan. Set this parameter to the value of the **specifications*	- returned by calling the **DescribeResourcePackageProduct*	- operation.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 40
 	Specification *string `json:"Specification,omitempty" xml:"Specification,omitempty"`
 }
 
@@ -1900,16 +2565,36 @@ func (s *CreateResourcePackageRequest) SetSpecification(v string) *CreateResourc
 
 type CreateResourcePackageResponseBody struct {
 	// The status code returned.
+	//
+	// example:
+	//
+	// Success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The data returned.
 	Data *CreateResourcePackageResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The message returned.
+	//
+	// example:
+	//
+	// Successful!
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The ID of the order.
+	//
+	// example:
+	//
+	// 202407022550621
 	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 6000EE23-274B-4E07-A697-FF2E999520A4
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request is successful.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -1953,8 +2638,16 @@ func (s *CreateResourcePackageResponseBody) SetSuccess(v bool) *CreateResourcePa
 
 type CreateResourcePackageResponseBodyData struct {
 	// The ID of the resource plan.
+	//
+	// example:
+	//
+	// OSSBAG-cn-****s
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The ID of the order.
+	//
+	// example:
+	//
+	// 202407022550621
 	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
 }
 
@@ -2007,39 +2700,99 @@ func (s *CreateResourcePackageResponse) SetBody(v *CreateResourcePackageResponse
 
 type CreateSavingsPlansInstanceRequest struct {
 	// The code of the service.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// savingplan_common_public_cn
 	CommodityCode *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
 	// The service duration. This parameter is used together with the PricingCycle parameter.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
 	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
 	// The time when the savings plan takes effect. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
-	EffectiveDate *string            `json:"EffectiveDate,omitempty" xml:"EffectiveDate,omitempty"`
-	ExtendMap     map[string]*string `json:"ExtendMap,omitempty" xml:"ExtendMap,omitempty"`
+	//
+	// example:
+	//
+	// 2021-12-31T00:00:00Z
+	EffectiveDate *string `json:"EffectiveDate,omitempty" xml:"EffectiveDate,omitempty"`
+	// if can be null:
+	// true
+	ExtendMap map[string]*string `json:"ExtendMap,omitempty" xml:"ExtendMap,omitempty"`
 	// The payment mode. Valid values:
 	//
-	// *   total: all upfront
-	// *   half: partial upfront
-	// *   zero: no upfront
+	// 	- total: all upfront
+	//
+	// 	- half: partial upfront
+	//
+	// 	- zero: no upfront
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// total
 	PayMode *string `json:"PayMode,omitempty" xml:"PayMode,omitempty"`
 	// The contracted amount. unit: CNY
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0.1
 	PoolValue *string `json:"PoolValue,omitempty" xml:"PoolValue,omitempty"`
 	// The unit of the service duration. This parameter is used together with the During parameter. Valid values:
 	//
-	// *   Year
-	// *   Month
+	// 	- Year
+	//
+	// 	- Month
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Year
 	PricingCycle *string `json:"PricingCycle,omitempty" xml:"PricingCycle,omitempty"`
 	// The ID of the region in which you create the savings plan. You must specify this parameter if the Type parameter is not set to universal.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
 	// The specification type. This parameter is used together with the Specification parameter. You must specify this parameter if the Type parameter is not set to universal. Valid values:
 	//
-	// *   group: specification group
-	// *   family: specification family
+	// 	- group: specification group
+	//
+	// 	- family: specification family
+	//
+	// example:
+	//
+	// family
 	SpecType *string `json:"SpecType,omitempty" xml:"SpecType,omitempty"`
 	// The specifications of the savings plan. This parameter is used together with the SpecType parameter.
+	//
+	// example:
+	//
+	// ecs.g6
 	Specification *string `json:"Specification,omitempty" xml:"Specification,omitempty"`
 	// The type of the savings plan. Valid values:
 	//
-	// *   universal: general-purpose type
-	// *   ecs: ECS compute type
-	// *   elasticy: elastic type
+	// 	- universal: general-purpose type
+	//
+	// 	- ecs: ECS compute type
+	//
+	// 	- elasticy: elastic type
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// universal
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
@@ -2108,39 +2861,99 @@ func (s *CreateSavingsPlansInstanceRequest) SetType(v string) *CreateSavingsPlan
 
 type CreateSavingsPlansInstanceShrinkRequest struct {
 	// The code of the service.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// savingplan_common_public_cn
 	CommodityCode *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
 	// The service duration. This parameter is used together with the PricingCycle parameter.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
 	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
 	// The time when the savings plan takes effect. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
-	EffectiveDate   *string `json:"EffectiveDate,omitempty" xml:"EffectiveDate,omitempty"`
+	//
+	// example:
+	//
+	// 2021-12-31T00:00:00Z
+	EffectiveDate *string `json:"EffectiveDate,omitempty" xml:"EffectiveDate,omitempty"`
+	// if can be null:
+	// true
 	ExtendMapShrink *string `json:"ExtendMap,omitempty" xml:"ExtendMap,omitempty"`
 	// The payment mode. Valid values:
 	//
-	// *   total: all upfront
-	// *   half: partial upfront
-	// *   zero: no upfront
+	// 	- total: all upfront
+	//
+	// 	- half: partial upfront
+	//
+	// 	- zero: no upfront
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// total
 	PayMode *string `json:"PayMode,omitempty" xml:"PayMode,omitempty"`
 	// The contracted amount. unit: CNY
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0.1
 	PoolValue *string `json:"PoolValue,omitempty" xml:"PoolValue,omitempty"`
 	// The unit of the service duration. This parameter is used together with the During parameter. Valid values:
 	//
-	// *   Year
-	// *   Month
+	// 	- Year
+	//
+	// 	- Month
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Year
 	PricingCycle *string `json:"PricingCycle,omitempty" xml:"PricingCycle,omitempty"`
 	// The ID of the region in which you create the savings plan. You must specify this parameter if the Type parameter is not set to universal.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
 	// The specification type. This parameter is used together with the Specification parameter. You must specify this parameter if the Type parameter is not set to universal. Valid values:
 	//
-	// *   group: specification group
-	// *   family: specification family
+	// 	- group: specification group
+	//
+	// 	- family: specification family
+	//
+	// example:
+	//
+	// family
 	SpecType *string `json:"SpecType,omitempty" xml:"SpecType,omitempty"`
 	// The specifications of the savings plan. This parameter is used together with the SpecType parameter.
+	//
+	// example:
+	//
+	// ecs.g6
 	Specification *string `json:"Specification,omitempty" xml:"Specification,omitempty"`
 	// The type of the savings plan. Valid values:
 	//
-	// *   universal: general-purpose type
-	// *   ecs: ECS compute type
-	// *   elasticy: elastic type
+	// 	- universal: general-purpose type
+	//
+	// 	- ecs: ECS compute type
+	//
+	// 	- elasticy: elastic type
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// universal
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
@@ -2209,14 +3022,30 @@ func (s *CreateSavingsPlansInstanceShrinkRequest) SetType(v string) *CreateSavin
 
 type CreateSavingsPlansInstanceResponseBody struct {
 	// The status code.
+	//
+	// example:
+	//
+	// PARAM_ERROR
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The data returned.
 	Data *CreateSavingsPlansInstanceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The error message returned.
+	//
+	// example:
+	//
+	// The parameter must be specified.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 26dabb0c-8ca0-4aa0-8143-30499f3fe304
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -2255,6 +3084,10 @@ func (s *CreateSavingsPlansInstanceResponseBody) SetSuccess(v bool) *CreateSavin
 
 type CreateSavingsPlansInstanceResponseBodyData struct {
 	// The ID of the order.
+	//
+	// example:
+	//
+	// 202110260001
 	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
 }
 
@@ -2302,8 +3135,20 @@ func (s *CreateSavingsPlansInstanceResponse) SetBody(v *CreateSavingsPlansInstan
 
 type DeleteCostUnitRequest struct {
 	// The user ID of the cost center owner.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2135342
 	OwnerUid *int64 `json:"OwnerUid,omitempty" xml:"OwnerUid,omitempty"`
 	// The ID of the cost center. A value of -1 indicates the root cost center.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 376348
 	UnitId *int64 `json:"UnitId,omitempty" xml:"UnitId,omitempty"`
 }
 
@@ -2327,14 +3172,30 @@ func (s *DeleteCostUnitRequest) SetUnitId(v int64) *DeleteCostUnitRequest {
 
 type DeleteCostUnitResponseBody struct {
 	// The status code.
+	//
+	// example:
+	//
+	// Success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The data returned.
 	Data *DeleteCostUnitResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The error message.
+	//
+	// example:
+	//
+	// Successful！
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// F5B803CF-94D8-43AF-ADB3-D819AAD30E27
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -2373,10 +3234,22 @@ func (s *DeleteCostUnitResponseBody) SetSuccess(v bool) *DeleteCostUnitResponseB
 
 type DeleteCostUnitResponseBodyData struct {
 	// Indicates whether the call is complete.
+	//
+	// example:
+	//
+	// true
 	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
 	// The user ID of the cost center owner.
+	//
+	// example:
+	//
+	// 12431
 	OwnerUid *int64 `json:"OwnerUid,omitempty" xml:"OwnerUid,omitempty"`
 	// The ID of the cost center.
+	//
+	// example:
+	//
+	// 123412343
 	UnitId *int64 `json:"UnitId,omitempty" xml:"UnitId,omitempty"`
 }
 
@@ -2434,14 +3307,34 @@ func (s *DeleteCostUnitResponse) SetBody(v *DeleteCostUnitResponseBody) *DeleteC
 
 type DescribeCostBudgetsSummaryRequest struct {
 	// The name of the budget. Fuzzy match is supported.
+	//
+	// example:
+	//
+	// Annual budget
 	BudgetName *string `json:"BudgetName,omitempty" xml:"BudgetName,omitempty"`
 	// The status of the budget. Valid values: overdue and notOverdue. A value of overdue specifies to filter expired budgets. A value of notOverdue specifies to filter budgets that do not expire. By default, if you do not specify this parameter, information about all budgets is to be returned.
+	//
+	// example:
+	//
+	// notOverdue
 	BudgetStatus *string `json:"BudgetStatus,omitempty" xml:"BudgetStatus,omitempty"`
 	// The type of the budget. Valid values: cost, byquantity, and asset. A value of cost specifies to filter expense budgets. A value of byquantity specifies to filter budgets calculated based on the resource usage. A value of asset specifies to filter usage or coverage budgets. By default, information about all budgets is returned if you do not specify this parameter.
+	//
+	// example:
+	//
+	// cost
 	BudgetType *string `json:"BudgetType,omitempty" xml:"BudgetType,omitempty"`
 	// The number of entries to return on each page. Default value: 10. Maximum value: 10. Minimum value: 1.
+	//
+	// example:
+	//
+	// 5
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The position in which the query starts. You must set this parameter to null or the token that is obtained from the previous query. Otherwise, an error is returned. If you set the NextToken parameter to null, the query starts from the beginning. The default value is null.
+	//
+	// example:
+	//
+	// eyJwYWdlTnVtIjoyLCJwYWdlU2l6ZSI6NH0=
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 }
 
@@ -2480,14 +3373,30 @@ func (s *DescribeCostBudgetsSummaryRequest) SetNextToken(v string) *DescribeCost
 
 type DescribeCostBudgetsSummaryResponseBody struct {
 	// The HTTP status code.
+	//
+	// example:
+	//
+	// Success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The data that is returned.
 	Data *DescribeCostBudgetsSummaryResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The error message.
+	//
+	// example:
+	//
+	// Successful!
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 3BFC23FE-A182-4D96-A1E4-7521B30B8E43
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request is successful.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -2526,14 +3435,30 @@ func (s *DescribeCostBudgetsSummaryResponseBody) SetSuccess(v bool) *DescribeCos
 
 type DescribeCostBudgetsSummaryResponseBodyData struct {
 	// The site of the host.
+	//
+	// example:
+	//
+	// cn
 	HostId *string `json:"HostId,omitempty" xml:"HostId,omitempty"`
 	// The data that is returned.
 	Items []*DescribeCostBudgetsSummaryResponseBodyDataItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
 	// The maximum number of entries that are returned.
+	//
+	// example:
+	//
+	// 5
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The token that is used to retrieve the next page
+	//
+	// example:
+	//
+	// eyJwYWdlTnVtIjoyLCJwYWdlU2l6ZSI6NH0=
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The total number of entries that are returned.
+	//
+	// example:
+	//
+	// 20
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -2572,16 +3497,40 @@ func (s *DescribeCostBudgetsSummaryResponseBodyData) SetTotalCount(v int32) *Des
 
 type DescribeCostBudgetsSummaryResponseBodyDataItems struct {
 	// The information about the budget. The BudgetCycleType parameter indicates the cycle of the budget. Valid values: daily, monthly, quarterly, and yearly. The TotalBudgetAmount parameter indicates the total budget. The BudgetMemo parameter indicates the remarks of the budget.
+	//
+	// example:
+	//
+	// {           "budgetCycleType": "monthly",           "budgetMemo": "",           "totalBudgetAmount": 220         }
 	Budget map[string]interface{} `json:"Budget,omitempty" xml:"Budget,omitempty"`
 	// The name of the budget.
+	//
+	// example:
+	//
+	// Annual budget
 	BudgetName *string `json:"BudgetName,omitempty" xml:"BudgetName,omitempty"`
 	// The status of the budget.
+	//
+	// example:
+	//
+	// overdue
 	BudgetStatus *string `json:"BudgetStatus,omitempty" xml:"BudgetStatus,omitempty"`
 	// The type of the budget.
+	//
+	// example:
+	//
+	// cost
 	BudgetType *string `json:"BudgetType,omitempty" xml:"BudgetType,omitempty"`
 	// The information about the estimate-to-actual analysis. The ActualConsumeSum parameter indicates the accumulated actual value. The ActualAddForecastedAmount parameter indicates the sum of accumulated actual value and predicted value. If the BudgetType parameter is set to cost, the sum of actual value and predicted value includes the actual cost incurred from the budget start date to the current date and the predicted cost from the current date to the budget end date. If the BudgetType parameter is set to asset, the sum of actual value and predicted value includes the actual usage or coverage from the budget start date to the budget end date. If the budget end date minus the current date is more than one year, the part that exceeds one year is not included. The ActualAndBudgetComparison parameter indicates the comparison between the actual value and the predicted value. The value of the ActualAndBudgetComparison parameter is calculated based on the following formula: Accumulated actual value/Total budget × 100%.
+	//
+	// example:
+	//
+	// {           "actualConsumeSum": 88.6,           "actualAddForecastedAmount": 89.6,           "actualAndBudgetComparison": "20.73%"         }
 	CalculatedValues map[string]interface{} `json:"CalculatedValues,omitempty" xml:"CalculatedValues,omitempty"`
 	// The information about the billing cycle. The ConsumePeriodBegin parameter indicates the start date of the budget. The ConsumePeriodEnd parameter indicates the end date of the budget.
+	//
+	// example:
+	//
+	// {           "consumePeriodBegin": "2022-10",           "consumePeriodEnd": "2022-11"         }
 	ConsumePeriod map[string]interface{} `json:"ConsumePeriod,omitempty" xml:"ConsumePeriod,omitempty"`
 }
 
@@ -2658,25 +3607,56 @@ type DescribeInstanceAmortizedCostByAmortizationPeriodRequest struct {
 	// The ID of the member that needs to settle the bill. The member ID is used to filter bills. If you specify a value for this parameter, you can query the bills of the specified member account. If you leave this parameter empty, the bills of the current account and all members of the current account are queried by default. You can specify a maximum of 10 IDs.
 	BillUserIdList []*string `json:"BillUserIdList,omitempty" xml:"BillUserIdList,omitempty" type:"Repeated"`
 	// The allocation month. Format: YYYY-MM.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2022-10
 	BillingCycle *string `json:"BillingCycle,omitempty" xml:"BillingCycle,omitempty"`
 	// The billing cycle that is used to filter bills. You can specify a maximum of 10 billing cycles.
 	ConsumePeriodFilter []*string `json:"ConsumePeriodFilter,omitempty" xml:"ConsumePeriodFilter,omitempty" type:"Repeated"`
 	// The code of the cost center.
+	//
+	// example:
+	//
+	// 123#
 	CostUnitCode *string `json:"CostUnitCode,omitempty" xml:"CostUnitCode,omitempty"`
 	// The instance ID that is used to filter bills. You can specify multiple instance IDs to query bills of multiple instances. If you leave this parameter empty, the bills of all instances are queried by default. You can specify a maximum of 10 instance IDs.
 	InstanceIdList []*string `json:"InstanceIdList,omitempty" xml:"InstanceIdList,omitempty" type:"Repeated"`
 	// The maximum number of entries to return. Default value: 20. Maximum value: 300.
+	//
+	// example:
+	//
+	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The position from which the query starts. The parameter must be left empty or set to the value of the NextToken parameter returned from the last call. Otherwise, an error is returned. If this parameter is left empty, data is queried from the beginning.
+	//
+	// example:
+	//
+	// CAESEgoQCg4KCmdtdF9jcmVhdGUEARgBIkgKCQBwhGmPcAEAAAo7AzYAAAAxTDgwMDcxMjg3ZDJhNmM3ZDguTDgwMDAwMDAwMDAwMzE1MTIuTDgwMDcyZDMyZTJkYzg3N2U
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The code of the service. You can obtain the value of this parameter by calling the QueryProductList operation or the DescribeResourcePackageProduct operation.
+	//
+	// example:
+	//
+	// rds
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
 	// The specific service resource.
+	//
+	// example:
+	//
+	// rds
 	ProductDetail *string `json:"ProductDetail,omitempty" xml:"ProductDetail,omitempty"`
 	// The billing method. Valid values:
 	//
-	// *   Subscription: the subscription billing method
-	// *   PayAsYouGo: the pay-as-you-go billing method
+	// 	- Subscription: the subscription billing method
+	//
+	// 	- PayAsYouGo: the pay-as-you-go billing method
+	//
+	// example:
+	//
+	// Subscription
 	SubscriptionType *string `json:"SubscriptionType,omitempty" xml:"SubscriptionType,omitempty"`
 }
 
@@ -2745,14 +3725,30 @@ func (s *DescribeInstanceAmortizedCostByAmortizationPeriodRequest) SetSubscripti
 
 type DescribeInstanceAmortizedCostByAmortizationPeriodResponseBody struct {
 	// The status code returned.
+	//
+	// example:
+	//
+	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The data returned.
 	Data *DescribeInstanceAmortizedCostByAmortizationPeriodResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The message returned.
+	//
+	// example:
+	//
+	// Successful！
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 79EE7556-0CFD-44EB-9CD6-B3B526E3A85F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request is successful.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -2791,16 +3787,36 @@ func (s *DescribeInstanceAmortizedCostByAmortizationPeriodResponseBody) SetSucce
 
 type DescribeInstanceAmortizedCostByAmortizationPeriodResponseBodyData struct {
 	// The ID of the account.
+	//
+	// example:
+	//
+	// 185766xxxx
 	AccountID *string `json:"AccountID,omitempty" xml:"AccountID,omitempty"`
 	// The name of the account.
+	//
+	// example:
+	//
+	// test@test.aliyunid.com
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
 	// The data entries returned.
 	Items []*DescribeInstanceAmortizedCostByAmortizationPeriodResponseBodyDataItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
 	// The maximum number of entries returned.
+	//
+	// example:
+	//
+	// 100
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The position from which the results started to return. The parameter must be left empty or set to the value of the NextToken parameter returned from the last call. Otherwise, an error is returned. If this parameter is left empty, data is queried from the beginning.
+	//
+	// example:
+	//
+	// CAESEgoQCg4KCmdtdF9jcmVhdGUEARgBIkgKCQBwhGmPcAEAAAo7AzYAAAAxTDgwMDcxMjg3ZDJhNmM3ZDguTDgwMDAwMDAwMDAwMzE1MTIuTDgwMDcyZDMyZTJkYzg3N2U
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The total number of returned entries.
+	//
+	// example:
+	//
+	// 100
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -2844,126 +3860,360 @@ func (s *DescribeInstanceAmortizedCostByAmortizationPeriodResponseBodyData) SetT
 
 type DescribeInstanceAmortizedCostByAmortizationPeriodResponseBodyDataItems struct {
 	// The allocation month. Format: YYYYMM.
+	//
+	// example:
+	//
+	// 202210
 	AmortizationPeriod *string `json:"AmortizationPeriod,omitempty" xml:"AmortizationPeriod,omitempty"`
 	// The allocation status. Valid values:
 	//
-	// *   amortized: allocated
-	// *   unAmortized: not allocated
+	// 	- amortized: allocated
+	//
+	// 	- unAmortized: not allocated
+	//
+	// example:
+	//
+	// amortized
 	AmortizationStatus *string `json:"AmortizationStatus,omitempty" xml:"AmortizationStatus,omitempty"`
 	// The ID of the account to which the bill belongs.
+	//
+	// example:
+	//
+	// 185xxxxx489
 	BillAccountID *int64 `json:"BillAccountID,omitempty" xml:"BillAccountID,omitempty"`
 	// The name of the account to which the bill belongs.
+	//
+	// example:
+	//
+	// test@test.aliyunid.com
 	BillAccountName *string `json:"BillAccountName,omitempty" xml:"BillAccountName,omitempty"`
 	// The ID of the account to which the resource belongs.
+	//
+	// example:
+	//
+	// 185xxxxx489
 	BillOwnerID *int64 `json:"BillOwnerID,omitempty" xml:"BillOwnerID,omitempty"`
 	// The name of the account to which the resource belongs.
+	//
+	// example:
+	//
+	// test@test.aliyunid.com
 	BillOwnerName *string `json:"BillOwnerName,omitempty" xml:"BillOwnerName,omitempty"`
 	// The business type.
+	//
+	// example:
+	//
+	// trusteeship
 	BizType *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
 	// The billing cycle. Format: YYYYMM.
+	//
+	// example:
+	//
+	// 202210
 	ConsumePeriod *string `json:"ConsumePeriod,omitempty" xml:"ConsumePeriod,omitempty"`
 	// The cost center.
+	//
+	// example:
+	//
+	// Not allocated
 	CostUnit *string `json:"CostUnit,omitempty" xml:"CostUnit,omitempty"`
 	// The code of the cost center.
+	//
+	// example:
+	//
+	// 1234
 	CostUnitCode *string `json:"CostUnitCode,omitempty" xml:"CostUnitCode,omitempty"`
 	// The amount deducted by using vouchers and allocated to the current allocation month.
+	//
+	// example:
+	//
+	// 0
 	CurrentAmortizationDeductedByCashCoupons *float64 `json:"CurrentAmortizationDeductedByCashCoupons,omitempty" xml:"CurrentAmortizationDeductedByCashCoupons,omitempty"`
 	// The amount deducted by using coupons and allocated to the current allocation month.
+	//
+	// example:
+	//
+	// 0
 	CurrentAmortizationDeductedByCoupons *float64 `json:"CurrentAmortizationDeductedByCoupons,omitempty" xml:"CurrentAmortizationDeductedByCoupons,omitempty"`
 	// The amount deducted by using prepaid cards and allocated to the current allocation month.
+	//
+	// example:
+	//
+	// 0
 	CurrentAmortizationDeductedByPrepaidCard *float64 `json:"CurrentAmortizationDeductedByPrepaidCard,omitempty" xml:"CurrentAmortizationDeductedByPrepaidCard,omitempty"`
 	// The expenditure amount allocated to the current allocation month. Invoicing is supported.
+	//
+	// example:
+	//
+	// 0
 	CurrentAmortizationExpenditureAmount *float64 `json:"CurrentAmortizationExpenditureAmount,omitempty" xml:"CurrentAmortizationExpenditureAmount,omitempty"`
 	// The discount amount allocated to the current allocation month.
+	//
+	// example:
+	//
+	// 0
 	CurrentAmortizationInvoiceDiscount *float64 `json:"CurrentAmortizationInvoiceDiscount,omitempty" xml:"CurrentAmortizationInvoiceDiscount,omitempty"`
 	// The pretax amount allocated to the current allocation month.
+	//
+	// example:
+	//
+	// 0
 	CurrentAmortizationPretaxAmount *float64 `json:"CurrentAmortizationPretaxAmount,omitempty" xml:"CurrentAmortizationPretaxAmount,omitempty"`
 	// The pretax gross amount allocated to the current allocation month.
+	//
+	// example:
+	//
+	// 0
 	CurrentAmortizationPretaxGrossAmount *float64 `json:"CurrentAmortizationPretaxGrossAmount,omitempty" xml:"CurrentAmortizationPretaxGrossAmount,omitempty"`
 	// The round-off amount allocated to the current allocation month.
+	//
+	// example:
+	//
+	// 0
 	CurrentAmortizationRoundDownDiscount *float64 `json:"CurrentAmortizationRoundDownDiscount,omitempty" xml:"CurrentAmortizationRoundDownDiscount,omitempty"`
 	// The amount deducted by using vouchers.
+	//
+	// example:
+	//
+	// 0
 	DeductedByCashCoupons *float64 `json:"DeductedByCashCoupons,omitempty" xml:"DeductedByCashCoupons,omitempty"`
 	// The amount deducted by using coupons.
+	//
+	// example:
+	//
+	// 0
 	DeductedByCoupons *float64 `json:"DeductedByCoupons,omitempty" xml:"DeductedByCoupons,omitempty"`
 	// The amount deducted by using prepaid cards.
+	//
+	// example:
+	//
+	// 0
 	DeductedByPrepaidCard *float64 `json:"DeductedByPrepaidCard,omitempty" xml:"DeductedByPrepaidCard,omitempty"`
 	// The expenditure amount. Invoicing is supported.
+	//
+	// example:
+	//
+	// 0
 	ExpenditureAmount *float64 `json:"ExpenditureAmount,omitempty" xml:"ExpenditureAmount,omitempty"`
 	// The ID of the instance.
+	//
+	// example:
+	//
+	// i-kjhdskjgshfdlkjfdh
 	InstanceID *string `json:"InstanceID,omitempty" xml:"InstanceID,omitempty"`
 	// The public IP address of the instance.
+	//
+	// example:
+	//
+	// 34.xx.x.x
 	InternetIP *string `json:"InternetIP,omitempty" xml:"InternetIP,omitempty"`
 	// The private IP address of the instance.
+	//
+	// example:
+	//
+	// 192.xx.xx.xx
 	IntranetIP *string `json:"IntranetIP,omitempty" xml:"IntranetIP,omitempty"`
 	// The discount amount.
+	//
+	// example:
+	//
+	// 0
 	InvoiceDiscount *float64 `json:"InvoiceDiscount,omitempty" xml:"InvoiceDiscount,omitempty"`
 	// The pretax amount.
+	//
+	// example:
+	//
+	// 0
 	PretaxAmount *float64 `json:"PretaxAmount,omitempty" xml:"PretaxAmount,omitempty"`
 	// The pretax gross amount.
+	//
+	// example:
+	//
+	// 0
 	PretaxGrossAmount *float64 `json:"PretaxGrossAmount,omitempty" xml:"PretaxGrossAmount,omitempty"`
 	// The amount deducted by using vouchers and allocated before the current allocation month.
+	//
+	// example:
+	//
+	// 0
 	PreviouslyAmortizedDeductedByCashCoupons *float64 `json:"PreviouslyAmortizedDeductedByCashCoupons,omitempty" xml:"PreviouslyAmortizedDeductedByCashCoupons,omitempty"`
 	// The amount deducted by using coupons and allocated before the current allocation month.
+	//
+	// example:
+	//
+	// 0
 	PreviouslyAmortizedDeductedByCoupons *float64 `json:"PreviouslyAmortizedDeductedByCoupons,omitempty" xml:"PreviouslyAmortizedDeductedByCoupons,omitempty"`
 	// The amount deducted by using prepaid cards and allocated before the current allocation month.
+	//
+	// example:
+	//
+	// 0
 	PreviouslyAmortizedDeductedByPrepaidCard *float64 `json:"PreviouslyAmortizedDeductedByPrepaidCard,omitempty" xml:"PreviouslyAmortizedDeductedByPrepaidCard,omitempty"`
 	// The expenditure amount allocated before the allocation month. Invoicing is supported.
+	//
+	// example:
+	//
+	// 0
 	PreviouslyAmortizedExpenditureAmount *float64 `json:"PreviouslyAmortizedExpenditureAmount,omitempty" xml:"PreviouslyAmortizedExpenditureAmount,omitempty"`
 	// The discount amount allocated before the current allocation month.
+	//
+	// example:
+	//
+	// 0
 	PreviouslyAmortizedInvoiceDiscount *float64 `json:"PreviouslyAmortizedInvoiceDiscount,omitempty" xml:"PreviouslyAmortizedInvoiceDiscount,omitempty"`
 	// The pretax amount allocated before the current allocation month.
+	//
+	// example:
+	//
+	// 0
 	PreviouslyAmortizedPretaxAmount *float64 `json:"PreviouslyAmortizedPretaxAmount,omitempty" xml:"PreviouslyAmortizedPretaxAmount,omitempty"`
 	// The pretax gross amount allocated before the current allocation month.
+	//
+	// example:
+	//
+	// 0
 	PreviouslyAmortizedPretaxGrossAmount *float64 `json:"PreviouslyAmortizedPretaxGrossAmount,omitempty" xml:"PreviouslyAmortizedPretaxGrossAmount,omitempty"`
 	// The round-off amount allocated before the current allocation month.
+	//
+	// example:
+	//
+	// 0
 	PreviouslyAmortizedRoundDownDiscount *float64 `json:"PreviouslyAmortizedRoundDownDiscount,omitempty" xml:"PreviouslyAmortizedRoundDownDiscount,omitempty"`
 	// The code of the service.
+	//
+	// example:
+	//
+	// rds
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
 	// The specific service resource.
+	//
+	// example:
+	//
+	// ApsaraDB RDS
 	ProductDetail *string `json:"ProductDetail,omitempty" xml:"ProductDetail,omitempty"`
 	// The code of the specific service resource.
+	//
+	// example:
+	//
+	// rds
 	ProductDetailCode *string `json:"ProductDetailCode,omitempty" xml:"ProductDetailCode,omitempty"`
 	// The name of the service.
+	//
+	// example:
+	//
+	// ApsaraDB RDS
 	ProductName *string `json:"ProductName,omitempty" xml:"ProductName,omitempty"`
 	// The region.
+	//
+	// example:
+	//
+	// China (Hangzhou)
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
 	// The amount deducted by using vouchers and to be allocated to one or more future allocation months.
+	//
+	// example:
+	//
+	// 0
 	RemainingAmortizationDeductedByCashCoupons *float64 `json:"RemainingAmortizationDeductedByCashCoupons,omitempty" xml:"RemainingAmortizationDeductedByCashCoupons,omitempty"`
 	// The amount deducted by using coupons and to be allocated to one or more future allocation months.
+	//
+	// example:
+	//
+	// 0
 	RemainingAmortizationDeductedByCoupons *float64 `json:"RemainingAmortizationDeductedByCoupons,omitempty" xml:"RemainingAmortizationDeductedByCoupons,omitempty"`
 	// The amount deducted by using prepaid cards and to be allocated to one or more future allocation months.
+	//
+	// example:
+	//
+	// 0
 	RemainingAmortizationDeductedByPrepaidCard *float64 `json:"RemainingAmortizationDeductedByPrepaidCard,omitempty" xml:"RemainingAmortizationDeductedByPrepaidCard,omitempty"`
 	// The expenditure amount to be allocated to one or more future allocation months. Invoicing is supported.
+	//
+	// example:
+	//
+	// 0
 	RemainingAmortizationExpenditureAmount *float64 `json:"RemainingAmortizationExpenditureAmount,omitempty" xml:"RemainingAmortizationExpenditureAmount,omitempty"`
 	// The discount amount to be allocated to one or more future allocation months.
+	//
+	// example:
+	//
+	// 0
 	RemainingAmortizationInvoiceDiscount *float64 `json:"RemainingAmortizationInvoiceDiscount,omitempty" xml:"RemainingAmortizationInvoiceDiscount,omitempty"`
 	// The pretax amount to be allocated to one or more future allocation months.
+	//
+	// example:
+	//
+	// 0
 	RemainingAmortizationPretaxAmount *float64 `json:"RemainingAmortizationPretaxAmount,omitempty" xml:"RemainingAmortizationPretaxAmount,omitempty"`
 	// The pretax gross amount to be allocated to one or more future allocation months.
+	//
+	// example:
+	//
+	// 0
 	RemainingAmortizationPretaxGrossAmount *float64 `json:"RemainingAmortizationPretaxGrossAmount,omitempty" xml:"RemainingAmortizationPretaxGrossAmount,omitempty"`
 	// The round-off amount to be allocated to one or more future allocation months.
+	//
+	// example:
+	//
+	// 0
 	RemainingAmortizationRoundDownDiscount *float64 `json:"RemainingAmortizationRoundDownDiscount,omitempty" xml:"RemainingAmortizationRoundDownDiscount,omitempty"`
 	// The name of the resource group.
+	//
+	// example:
+	//
+	// Default resource group
 	ResourceGroup *string `json:"ResourceGroup,omitempty" xml:"ResourceGroup,omitempty"`
 	// The round-off amount.
+	//
+	// example:
+	//
+	// 0
 	RoundDownDiscount *float64 `json:"RoundDownDiscount,omitempty" xml:"RoundDownDiscount,omitempty"`
 	// The name of the account to which the split item belongs.
+	//
+	// example:
+	//
+	// test**1122
 	SplitAccountName *string `json:"SplitAccountName,omitempty" xml:"SplitAccountName,omitempty"`
 	// The ID of the split item.
+	//
+	// example:
+	//
+	// i-28bycvyb4
 	SplitItemID *string `json:"SplitItemID,omitempty" xml:"SplitItemID,omitempty"`
 	// The name of the split item.
+	//
+	// example:
+	//
+	// iZ28bycvyb4Z
 	SplitItemName *string `json:"SplitItemName,omitempty" xml:"SplitItemName,omitempty"`
 	// The name of the specific service resource to which the split item belongs.
+	//
+	// example:
+	//
+	// rds
 	SplitProductDetail *string `json:"SplitProductDetail,omitempty" xml:"SplitProductDetail,omitempty"`
 	// The billing method. Valid values:
 	//
-	// *   Subscription: the subscription billing method
-	// *   PayAsYouGo: the pay-as-you-go billing method
+	// 	- Subscription: the subscription billing method
+	//
+	// 	- PayAsYouGo: the pay-as-you-go billing method
+	//
+	// example:
+	//
+	// PayAsYouGo
 	SubscriptionType *string `json:"SubscriptionType,omitempty" xml:"SubscriptionType,omitempty"`
 	// The tag of the instance.
+	//
+	// example:
+	//
+	// tag
 	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
 	// The ID of the zone.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	Zone *string `json:"Zone,omitempty" xml:"Zone,omitempty"`
 }
 
@@ -3295,18 +4545,49 @@ func (s *DescribeInstanceAmortizedCostByAmortizationPeriodResponse) SetBody(v *D
 }
 
 type DescribeInstanceAmortizedCostByAmortizationPeriodDateRequest struct {
-	AmortizationDateEnd   *string   `json:"AmortizationDateEnd,omitempty" xml:"AmortizationDateEnd,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2023-05-10
+	AmortizationDateEnd *string `json:"AmortizationDateEnd,omitempty" xml:"AmortizationDateEnd,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2023-05-10
 	AmortizationDateStart *string   `json:"AmortizationDateStart,omitempty" xml:"AmortizationDateStart,omitempty"`
 	BillOwnerIdList       []*string `json:"BillOwnerIdList,omitempty" xml:"BillOwnerIdList,omitempty" type:"Repeated"`
 	BillUserIdList        []*string `json:"BillUserIdList,omitempty" xml:"BillUserIdList,omitempty" type:"Repeated"`
-	BillingCycle          *string   `json:"BillingCycle,omitempty" xml:"BillingCycle,omitempty"`
-	CostUnitCode          *string   `json:"CostUnitCode,omitempty" xml:"CostUnitCode,omitempty"`
-	InstanceIdList        []*string `json:"InstanceIdList,omitempty" xml:"InstanceIdList,omitempty" type:"Repeated"`
-	MaxResults            *int32    `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken             *string   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	ProductCode           *string   `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	ProductDetail         *string   `json:"ProductDetail,omitempty" xml:"ProductDetail,omitempty"`
-	SubscriptionType      *string   `json:"SubscriptionType,omitempty" xml:"SubscriptionType,omitempty"`
+	// example:
+	//
+	// 2023-05
+	BillingCycle *string `json:"BillingCycle,omitempty" xml:"BillingCycle,omitempty"`
+	// example:
+	//
+	// 123#
+	CostUnitCode   *string   `json:"CostUnitCode,omitempty" xml:"CostUnitCode,omitempty"`
+	InstanceIdList []*string `json:"InstanceIdList,omitempty" xml:"InstanceIdList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 20
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// example:
+	//
+	// CAESEgoQCg4KCmdtdF9jcmVhdGUEARgBIkgKCQBwhGmPcAEAAAo7AzYAAAAxTDgwMDcxMjg3ZDJhNmM3ZDguTDgwMDAwMDAwMDAwMzE1MTIuTDgwMDcyZDMyZTJkYzg3N2U
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// example:
+	//
+	// rds
+	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	// example:
+	//
+	// rds
+	ProductDetail *string `json:"ProductDetail,omitempty" xml:"ProductDetail,omitempty"`
+	// example:
+	//
+	// Subscription
+	SubscriptionType *string `json:"SubscriptionType,omitempty" xml:"SubscriptionType,omitempty"`
 }
 
 func (s DescribeInstanceAmortizedCostByAmortizationPeriodDateRequest) String() string {
@@ -3378,11 +4659,23 @@ func (s *DescribeInstanceAmortizedCostByAmortizationPeriodDateRequest) SetSubscr
 }
 
 type DescribeInstanceAmortizedCostByAmortizationPeriodDateResponseBody struct {
-	Code      *string                                                                `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *DescribeInstanceAmortizedCostByAmortizationPeriodDateResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                                                                `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                                                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                                                                  `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string                                                                `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *DescribeInstanceAmortizedCostByAmortizationPeriodDateResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// Successful！
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 79EE7556-0CFD-44EB-9CD6-B3B526E3A85F
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeInstanceAmortizedCostByAmortizationPeriodDateResponseBody) String() string {
@@ -3419,13 +4712,31 @@ func (s *DescribeInstanceAmortizedCostByAmortizationPeriodDateResponseBody) SetS
 }
 
 type DescribeInstanceAmortizedCostByAmortizationPeriodDateResponseBodyData struct {
-	AccountID   *string                                                                       `json:"AccountID,omitempty" xml:"AccountID,omitempty"`
-	AccountName *string                                                                       `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	HostId      *string                                                                       `json:"HostId,omitempty" xml:"HostId,omitempty"`
-	Items       []*DescribeInstanceAmortizedCostByAmortizationPeriodDateResponseBodyDataItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
-	MaxResults  *int32                                                                        `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken   *string                                                                       `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	TotalCount  *int32                                                                        `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// example:
+	//
+	// 185766xxxx
+	AccountID *string `json:"AccountID,omitempty" xml:"AccountID,omitempty"`
+	// example:
+	//
+	// test@test.aliyunid.com
+	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	// example:
+	//
+	// cn
+	HostId *string                                                                       `json:"HostId,omitempty" xml:"HostId,omitempty"`
+	Items  []*DescribeInstanceAmortizedCostByAmortizationPeriodDateResponseBodyDataItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 100
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// example:
+	//
+	// CAESEgoQCg4KCmdtdF9jcmVhdGUEARgBIkgKCQBwhGmPcAEAAAo7AzYAAAAxTDgwMDcxMjg3ZDJhNmM3ZDguTDgwMDAwMDAwMDAwMzE1MTIuTDgwMDcyZDMyZTJkYzg3N2U
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// example:
+	//
+	// 100
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeInstanceAmortizedCostByAmortizationPeriodDateResponseBodyData) String() string {
@@ -3472,66 +4783,228 @@ func (s *DescribeInstanceAmortizedCostByAmortizationPeriodDateResponseBodyData) 
 }
 
 type DescribeInstanceAmortizedCostByAmortizationPeriodDateResponseBodyDataItems struct {
-	AmortizationPeriod                         *string  `json:"AmortizationPeriod,omitempty" xml:"AmortizationPeriod,omitempty"`
-	AmortizationPeriodDay                      *string  `json:"AmortizationPeriodDay,omitempty" xml:"AmortizationPeriodDay,omitempty"`
-	AmortizationStatus                         *string  `json:"AmortizationStatus,omitempty" xml:"AmortizationStatus,omitempty"`
-	BillAccountID                              *int64   `json:"BillAccountID,omitempty" xml:"BillAccountID,omitempty"`
-	BillAccountName                            *string  `json:"BillAccountName,omitempty" xml:"BillAccountName,omitempty"`
-	BillOwnerID                                *int64   `json:"BillOwnerID,omitempty" xml:"BillOwnerID,omitempty"`
-	BillOwnerName                              *string  `json:"BillOwnerName,omitempty" xml:"BillOwnerName,omitempty"`
-	BizType                                    *string  `json:"BizType,omitempty" xml:"BizType,omitempty"`
-	ConsumePeriod                              *string  `json:"ConsumePeriod,omitempty" xml:"ConsumePeriod,omitempty"`
-	ConsumePeriodDay                           *string  `json:"ConsumePeriodDay,omitempty" xml:"ConsumePeriodDay,omitempty"`
-	CostUnit                                   *string  `json:"CostUnit,omitempty" xml:"CostUnit,omitempty"`
-	CostUnitCode                               *string  `json:"CostUnitCode,omitempty" xml:"CostUnitCode,omitempty"`
-	CurrentAmortizationDeductedByCashCoupons   *float64 `json:"CurrentAmortizationDeductedByCashCoupons,omitempty" xml:"CurrentAmortizationDeductedByCashCoupons,omitempty"`
-	CurrentAmortizationDeductedByCoupons       *float64 `json:"CurrentAmortizationDeductedByCoupons,omitempty" xml:"CurrentAmortizationDeductedByCoupons,omitempty"`
-	CurrentAmortizationDeductedByPrepaidCard   *float64 `json:"CurrentAmortizationDeductedByPrepaidCard,omitempty" xml:"CurrentAmortizationDeductedByPrepaidCard,omitempty"`
-	CurrentAmortizationExpenditureAmount       *float64 `json:"CurrentAmortizationExpenditureAmount,omitempty" xml:"CurrentAmortizationExpenditureAmount,omitempty"`
-	CurrentAmortizationInvoiceDiscount         *float64 `json:"CurrentAmortizationInvoiceDiscount,omitempty" xml:"CurrentAmortizationInvoiceDiscount,omitempty"`
-	CurrentAmortizationPretaxAmount            *float64 `json:"CurrentAmortizationPretaxAmount,omitempty" xml:"CurrentAmortizationPretaxAmount,omitempty"`
-	CurrentAmortizationPretaxGrossAmount       *float64 `json:"CurrentAmortizationPretaxGrossAmount,omitempty" xml:"CurrentAmortizationPretaxGrossAmount,omitempty"`
-	CurrentAmortizationRoundDownDiscount       *float64 `json:"CurrentAmortizationRoundDownDiscount,omitempty" xml:"CurrentAmortizationRoundDownDiscount,omitempty"`
-	DeductedByCashCoupons                      *float64 `json:"DeductedByCashCoupons,omitempty" xml:"DeductedByCashCoupons,omitempty"`
-	DeductedByCoupons                          *float64 `json:"DeductedByCoupons,omitempty" xml:"DeductedByCoupons,omitempty"`
-	DeductedByPrepaidCard                      *float64 `json:"DeductedByPrepaidCard,omitempty" xml:"DeductedByPrepaidCard,omitempty"`
-	ExpenditureAmount                          *float64 `json:"ExpenditureAmount,omitempty" xml:"ExpenditureAmount,omitempty"`
-	InstanceID                                 *string  `json:"InstanceID,omitempty" xml:"InstanceID,omitempty"`
-	InternetIP                                 *string  `json:"InternetIP,omitempty" xml:"InternetIP,omitempty"`
-	IntranetIP                                 *string  `json:"IntranetIP,omitempty" xml:"IntranetIP,omitempty"`
-	InvoiceDiscount                            *float64 `json:"InvoiceDiscount,omitempty" xml:"InvoiceDiscount,omitempty"`
-	PretaxAmount                               *float64 `json:"PretaxAmount,omitempty" xml:"PretaxAmount,omitempty"`
-	PretaxGrossAmount                          *float64 `json:"PretaxGrossAmount,omitempty" xml:"PretaxGrossAmount,omitempty"`
-	PreviouslyAmortizedDeductedByCashCoupons   *float64 `json:"PreviouslyAmortizedDeductedByCashCoupons,omitempty" xml:"PreviouslyAmortizedDeductedByCashCoupons,omitempty"`
-	PreviouslyAmortizedDeductedByCoupons       *float64 `json:"PreviouslyAmortizedDeductedByCoupons,omitempty" xml:"PreviouslyAmortizedDeductedByCoupons,omitempty"`
-	PreviouslyAmortizedDeductedByPrepaidCard   *float64 `json:"PreviouslyAmortizedDeductedByPrepaidCard,omitempty" xml:"PreviouslyAmortizedDeductedByPrepaidCard,omitempty"`
-	PreviouslyAmortizedExpenditureAmount       *float64 `json:"PreviouslyAmortizedExpenditureAmount,omitempty" xml:"PreviouslyAmortizedExpenditureAmount,omitempty"`
-	PreviouslyAmortizedInvoiceDiscount         *float64 `json:"PreviouslyAmortizedInvoiceDiscount,omitempty" xml:"PreviouslyAmortizedInvoiceDiscount,omitempty"`
-	PreviouslyAmortizedPretaxAmount            *float64 `json:"PreviouslyAmortizedPretaxAmount,omitempty" xml:"PreviouslyAmortizedPretaxAmount,omitempty"`
-	PreviouslyAmortizedPretaxGrossAmount       *float64 `json:"PreviouslyAmortizedPretaxGrossAmount,omitempty" xml:"PreviouslyAmortizedPretaxGrossAmount,omitempty"`
-	PreviouslyAmortizedRoundDownDiscount       *float64 `json:"PreviouslyAmortizedRoundDownDiscount,omitempty" xml:"PreviouslyAmortizedRoundDownDiscount,omitempty"`
-	ProductCode                                *string  `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	ProductDetail                              *string  `json:"ProductDetail,omitempty" xml:"ProductDetail,omitempty"`
-	ProductDetailCode                          *string  `json:"ProductDetailCode,omitempty" xml:"ProductDetailCode,omitempty"`
-	ProductName                                *string  `json:"ProductName,omitempty" xml:"ProductName,omitempty"`
-	Region                                     *string  `json:"Region,omitempty" xml:"Region,omitempty"`
+	// example:
+	//
+	// 2022-10
+	AmortizationPeriod *string `json:"AmortizationPeriod,omitempty" xml:"AmortizationPeriod,omitempty"`
+	// example:
+	//
+	// 2022-10-10
+	AmortizationPeriodDay *string `json:"AmortizationPeriodDay,omitempty" xml:"AmortizationPeriodDay,omitempty"`
+	// example:
+	//
+	// amortized
+	AmortizationStatus *string `json:"AmortizationStatus,omitempty" xml:"AmortizationStatus,omitempty"`
+	// example:
+	//
+	// 185xxxxx489
+	BillAccountID *int64 `json:"BillAccountID,omitempty" xml:"BillAccountID,omitempty"`
+	// example:
+	//
+	// test@test.aliyunid.com
+	BillAccountName *string `json:"BillAccountName,omitempty" xml:"BillAccountName,omitempty"`
+	// example:
+	//
+	// 185xxxxx489
+	BillOwnerID *int64 `json:"BillOwnerID,omitempty" xml:"BillOwnerID,omitempty"`
+	// example:
+	//
+	// test@test.aliyunid.com
+	BillOwnerName *string `json:"BillOwnerName,omitempty" xml:"BillOwnerName,omitempty"`
+	// example:
+	//
+	// trusteeship
+	BizType *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
+	// example:
+	//
+	// 2022-10
+	ConsumePeriod *string `json:"ConsumePeriod,omitempty" xml:"ConsumePeriod,omitempty"`
+	// example:
+	//
+	// 2022-10-10
+	ConsumePeriodDay *string `json:"ConsumePeriodDay,omitempty" xml:"ConsumePeriodDay,omitempty"`
+	CostUnit         *string `json:"CostUnit,omitempty" xml:"CostUnit,omitempty"`
+	// example:
+	//
+	// 1234
+	CostUnitCode *string `json:"CostUnitCode,omitempty" xml:"CostUnitCode,omitempty"`
+	// example:
+	//
+	// 0
+	CurrentAmortizationDeductedByCashCoupons *float64 `json:"CurrentAmortizationDeductedByCashCoupons,omitempty" xml:"CurrentAmortizationDeductedByCashCoupons,omitempty"`
+	// example:
+	//
+	// 0
+	CurrentAmortizationDeductedByCoupons *float64 `json:"CurrentAmortizationDeductedByCoupons,omitempty" xml:"CurrentAmortizationDeductedByCoupons,omitempty"`
+	// example:
+	//
+	// 0
+	CurrentAmortizationDeductedByPrepaidCard *float64 `json:"CurrentAmortizationDeductedByPrepaidCard,omitempty" xml:"CurrentAmortizationDeductedByPrepaidCard,omitempty"`
+	// example:
+	//
+	// 0
+	CurrentAmortizationExpenditureAmount *float64 `json:"CurrentAmortizationExpenditureAmount,omitempty" xml:"CurrentAmortizationExpenditureAmount,omitempty"`
+	// example:
+	//
+	// 0
+	CurrentAmortizationInvoiceDiscount *float64 `json:"CurrentAmortizationInvoiceDiscount,omitempty" xml:"CurrentAmortizationInvoiceDiscount,omitempty"`
+	// example:
+	//
+	// 0
+	CurrentAmortizationPretaxAmount *float64 `json:"CurrentAmortizationPretaxAmount,omitempty" xml:"CurrentAmortizationPretaxAmount,omitempty"`
+	// example:
+	//
+	// 0
+	CurrentAmortizationPretaxGrossAmount *float64 `json:"CurrentAmortizationPretaxGrossAmount,omitempty" xml:"CurrentAmortizationPretaxGrossAmount,omitempty"`
+	// example:
+	//
+	// 0
+	CurrentAmortizationRoundDownDiscount *float64 `json:"CurrentAmortizationRoundDownDiscount,omitempty" xml:"CurrentAmortizationRoundDownDiscount,omitempty"`
+	// example:
+	//
+	// 0
+	DeductedByCashCoupons *float64 `json:"DeductedByCashCoupons,omitempty" xml:"DeductedByCashCoupons,omitempty"`
+	// example:
+	//
+	// 0
+	DeductedByCoupons *float64 `json:"DeductedByCoupons,omitempty" xml:"DeductedByCoupons,omitempty"`
+	// example:
+	//
+	// 0
+	DeductedByPrepaidCard *float64 `json:"DeductedByPrepaidCard,omitempty" xml:"DeductedByPrepaidCard,omitempty"`
+	// example:
+	//
+	// 0
+	ExpenditureAmount *float64 `json:"ExpenditureAmount,omitempty" xml:"ExpenditureAmount,omitempty"`
+	// example:
+	//
+	// i-kjhdskjgshfdlkjfdh
+	InstanceID *string `json:"InstanceID,omitempty" xml:"InstanceID,omitempty"`
+	// example:
+	//
+	// 34.xx.x.x
+	InternetIP *string `json:"InternetIP,omitempty" xml:"InternetIP,omitempty"`
+	// example:
+	//
+	// 192.xx.xx.xx
+	IntranetIP *string `json:"IntranetIP,omitempty" xml:"IntranetIP,omitempty"`
+	// example:
+	//
+	// 0
+	InvoiceDiscount *float64 `json:"InvoiceDiscount,omitempty" xml:"InvoiceDiscount,omitempty"`
+	// example:
+	//
+	// 0
+	PretaxAmount *float64 `json:"PretaxAmount,omitempty" xml:"PretaxAmount,omitempty"`
+	// example:
+	//
+	// 0
+	PretaxGrossAmount *float64 `json:"PretaxGrossAmount,omitempty" xml:"PretaxGrossAmount,omitempty"`
+	// example:
+	//
+	// 0
+	PreviouslyAmortizedDeductedByCashCoupons *float64 `json:"PreviouslyAmortizedDeductedByCashCoupons,omitempty" xml:"PreviouslyAmortizedDeductedByCashCoupons,omitempty"`
+	// example:
+	//
+	// 0
+	PreviouslyAmortizedDeductedByCoupons *float64 `json:"PreviouslyAmortizedDeductedByCoupons,omitempty" xml:"PreviouslyAmortizedDeductedByCoupons,omitempty"`
+	// example:
+	//
+	// 0
+	PreviouslyAmortizedDeductedByPrepaidCard *float64 `json:"PreviouslyAmortizedDeductedByPrepaidCard,omitempty" xml:"PreviouslyAmortizedDeductedByPrepaidCard,omitempty"`
+	// example:
+	//
+	// 0
+	PreviouslyAmortizedExpenditureAmount *float64 `json:"PreviouslyAmortizedExpenditureAmount,omitempty" xml:"PreviouslyAmortizedExpenditureAmount,omitempty"`
+	// example:
+	//
+	// 0
+	PreviouslyAmortizedInvoiceDiscount *float64 `json:"PreviouslyAmortizedInvoiceDiscount,omitempty" xml:"PreviouslyAmortizedInvoiceDiscount,omitempty"`
+	// example:
+	//
+	// 0
+	PreviouslyAmortizedPretaxAmount *float64 `json:"PreviouslyAmortizedPretaxAmount,omitempty" xml:"PreviouslyAmortizedPretaxAmount,omitempty"`
+	// example:
+	//
+	// 0
+	PreviouslyAmortizedPretaxGrossAmount *float64 `json:"PreviouslyAmortizedPretaxGrossAmount,omitempty" xml:"PreviouslyAmortizedPretaxGrossAmount,omitempty"`
+	// example:
+	//
+	// 0
+	PreviouslyAmortizedRoundDownDiscount *float64 `json:"PreviouslyAmortizedRoundDownDiscount,omitempty" xml:"PreviouslyAmortizedRoundDownDiscount,omitempty"`
+	// example:
+	//
+	// rds
+	ProductCode   *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	ProductDetail *string `json:"ProductDetail,omitempty" xml:"ProductDetail,omitempty"`
+	// example:
+	//
+	// rds
+	ProductDetailCode *string `json:"ProductDetailCode,omitempty" xml:"ProductDetailCode,omitempty"`
+	ProductName       *string `json:"ProductName,omitempty" xml:"ProductName,omitempty"`
+	Region            *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// example:
+	//
+	// 0
 	RemainingAmortizationDeductedByCashCoupons *float64 `json:"RemainingAmortizationDeductedByCashCoupons,omitempty" xml:"RemainingAmortizationDeductedByCashCoupons,omitempty"`
-	RemainingAmortizationDeductedByCoupons     *float64 `json:"RemainingAmortizationDeductedByCoupons,omitempty" xml:"RemainingAmortizationDeductedByCoupons,omitempty"`
+	// example:
+	//
+	// 0
+	RemainingAmortizationDeductedByCoupons *float64 `json:"RemainingAmortizationDeductedByCoupons,omitempty" xml:"RemainingAmortizationDeductedByCoupons,omitempty"`
+	// example:
+	//
+	// 0
 	RemainingAmortizationDeductedByPrepaidCard *float64 `json:"RemainingAmortizationDeductedByPrepaidCard,omitempty" xml:"RemainingAmortizationDeductedByPrepaidCard,omitempty"`
-	RemainingAmortizationExpenditureAmount     *float64 `json:"RemainingAmortizationExpenditureAmount,omitempty" xml:"RemainingAmortizationExpenditureAmount,omitempty"`
-	RemainingAmortizationInvoiceDiscount       *float64 `json:"RemainingAmortizationInvoiceDiscount,omitempty" xml:"RemainingAmortizationInvoiceDiscount,omitempty"`
-	RemainingAmortizationPretaxAmount          *float64 `json:"RemainingAmortizationPretaxAmount,omitempty" xml:"RemainingAmortizationPretaxAmount,omitempty"`
-	RemainingAmortizationPretaxGrossAmount     *float64 `json:"RemainingAmortizationPretaxGrossAmount,omitempty" xml:"RemainingAmortizationPretaxGrossAmount,omitempty"`
-	RemainingAmortizationRoundDownDiscount     *float64 `json:"RemainingAmortizationRoundDownDiscount,omitempty" xml:"RemainingAmortizationRoundDownDiscount,omitempty"`
-	ResourceGroup                              *string  `json:"ResourceGroup,omitempty" xml:"ResourceGroup,omitempty"`
-	RoundDownDiscount                          *float64 `json:"RoundDownDiscount,omitempty" xml:"RoundDownDiscount,omitempty"`
-	SplitAccountName                           *string  `json:"SplitAccountName,omitempty" xml:"SplitAccountName,omitempty"`
-	SplitItemID                                *string  `json:"SplitItemID,omitempty" xml:"SplitItemID,omitempty"`
-	SplitItemName                              *string  `json:"SplitItemName,omitempty" xml:"SplitItemName,omitempty"`
-	SplitProductDetail                         *string  `json:"SplitProductDetail,omitempty" xml:"SplitProductDetail,omitempty"`
-	SubscriptionType                           *string  `json:"SubscriptionType,omitempty" xml:"SubscriptionType,omitempty"`
-	Tag                                        *string  `json:"Tag,omitempty" xml:"Tag,omitempty"`
-	Zone                                       *string  `json:"Zone,omitempty" xml:"Zone,omitempty"`
+	// example:
+	//
+	// 0
+	RemainingAmortizationExpenditureAmount *float64 `json:"RemainingAmortizationExpenditureAmount,omitempty" xml:"RemainingAmortizationExpenditureAmount,omitempty"`
+	// example:
+	//
+	// 0
+	RemainingAmortizationInvoiceDiscount *float64 `json:"RemainingAmortizationInvoiceDiscount,omitempty" xml:"RemainingAmortizationInvoiceDiscount,omitempty"`
+	// example:
+	//
+	// 0
+	RemainingAmortizationPretaxAmount *float64 `json:"RemainingAmortizationPretaxAmount,omitempty" xml:"RemainingAmortizationPretaxAmount,omitempty"`
+	// example:
+	//
+	// 0
+	RemainingAmortizationPretaxGrossAmount *float64 `json:"RemainingAmortizationPretaxGrossAmount,omitempty" xml:"RemainingAmortizationPretaxGrossAmount,omitempty"`
+	// example:
+	//
+	// 0
+	RemainingAmortizationRoundDownDiscount *float64 `json:"RemainingAmortizationRoundDownDiscount,omitempty" xml:"RemainingAmortizationRoundDownDiscount,omitempty"`
+	ResourceGroup                          *string  `json:"ResourceGroup,omitempty" xml:"ResourceGroup,omitempty"`
+	// example:
+	//
+	// 0
+	RoundDownDiscount *float64 `json:"RoundDownDiscount,omitempty" xml:"RoundDownDiscount,omitempty"`
+	// example:
+	//
+	// test**1122
+	SplitAccountName *string `json:"SplitAccountName,omitempty" xml:"SplitAccountName,omitempty"`
+	// example:
+	//
+	// i-28bycvyb4
+	SplitItemID *string `json:"SplitItemID,omitempty" xml:"SplitItemID,omitempty"`
+	// example:
+	//
+	// iZ28bycvyb4Z
+	SplitItemName *string `json:"SplitItemName,omitempty" xml:"SplitItemName,omitempty"`
+	// example:
+	//
+	// rds
+	SplitProductDetail *string `json:"SplitProductDetail,omitempty" xml:"SplitProductDetail,omitempty"`
+	// example:
+	//
+	// PayAsYouGo
+	SubscriptionType *string `json:"SubscriptionType,omitempty" xml:"SubscriptionType,omitempty"`
+	// example:
+	//
+	// tag
+	Tag  *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	Zone *string `json:"Zone,omitempty" xml:"Zone,omitempty"`
 }
 
 func (s DescribeInstanceAmortizedCostByAmortizationPeriodDateResponseBodyDataItems) String() string {
@@ -3875,14 +5348,37 @@ type DescribeInstanceAmortizedCostByConsumePeriodRequest struct {
 	AmortizationPeriodFilter []*string `json:"AmortizationPeriodFilter,omitempty" xml:"AmortizationPeriodFilter,omitempty" type:"Repeated"`
 	BillOwnerIdList          []*string `json:"BillOwnerIdList,omitempty" xml:"BillOwnerIdList,omitempty" type:"Repeated"`
 	BillUserIdList           []*string `json:"BillUserIdList,omitempty" xml:"BillUserIdList,omitempty" type:"Repeated"`
-	BillingCycle             *string   `json:"BillingCycle,omitempty" xml:"BillingCycle,omitempty"`
-	CostUnitCode             *string   `json:"CostUnitCode,omitempty" xml:"CostUnitCode,omitempty"`
-	InstanceIdList           []*string `json:"InstanceIdList,omitempty" xml:"InstanceIdList,omitempty" type:"Repeated"`
-	MaxResults               *int32    `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken                *string   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	ProductCode              *string   `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	ProductDetail            *string   `json:"ProductDetail,omitempty" xml:"ProductDetail,omitempty"`
-	SubscriptionType         *string   `json:"SubscriptionType,omitempty" xml:"SubscriptionType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2022-10
+	BillingCycle *string `json:"BillingCycle,omitempty" xml:"BillingCycle,omitempty"`
+	// example:
+	//
+	// 123#
+	CostUnitCode   *string   `json:"CostUnitCode,omitempty" xml:"CostUnitCode,omitempty"`
+	InstanceIdList []*string `json:"InstanceIdList,omitempty" xml:"InstanceIdList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 20
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// example:
+	//
+	// CAESEgoQCg4KCmdtdF9jcmVhdGUEARgBIkgKCQBwhGmPcAEAAAo7AzYAAAAxTDgwMDcxMjg3ZDJhNmM3ZDguTDgwMDAwMDAwMDAwMzE1MTIuTDgwMDcyZDMyZTJkYzg3N2U
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// example:
+	//
+	// rds
+	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	// example:
+	//
+	// rds
+	ProductDetail *string `json:"ProductDetail,omitempty" xml:"ProductDetail,omitempty"`
+	// example:
+	//
+	// Subscription
+	SubscriptionType *string `json:"SubscriptionType,omitempty" xml:"SubscriptionType,omitempty"`
 }
 
 func (s DescribeInstanceAmortizedCostByConsumePeriodRequest) String() string {
@@ -3949,11 +5445,23 @@ func (s *DescribeInstanceAmortizedCostByConsumePeriodRequest) SetSubscriptionTyp
 }
 
 type DescribeInstanceAmortizedCostByConsumePeriodResponseBody struct {
-	Code      *string                                                       `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *DescribeInstanceAmortizedCostByConsumePeriodResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                                                       `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                                                         `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string                                                       `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *DescribeInstanceAmortizedCostByConsumePeriodResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// Successful！
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 79EE7556-0CFD-44EB-9CD6-B3B526E3A85F
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeInstanceAmortizedCostByConsumePeriodResponseBody) String() string {
@@ -3990,12 +5498,27 @@ func (s *DescribeInstanceAmortizedCostByConsumePeriodResponseBody) SetSuccess(v 
 }
 
 type DescribeInstanceAmortizedCostByConsumePeriodResponseBodyData struct {
-	AccountID   *string                                                              `json:"AccountID,omitempty" xml:"AccountID,omitempty"`
+	// example:
+	//
+	// 185766xxxx
+	AccountID *string `json:"AccountID,omitempty" xml:"AccountID,omitempty"`
+	// example:
+	//
+	// test@test.aliyunid.com
 	AccountName *string                                                              `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
 	Items       []*DescribeInstanceAmortizedCostByConsumePeriodResponseBodyDataItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
-	MaxResults  *int32                                                               `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken   *string                                                              `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	TotalCount  *int32                                                               `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// example:
+	//
+	// 100
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// example:
+	//
+	// CAESEgoQCg4KCmdtdF9jcmVhdGUEARgBIkgKCQBwhGmPcAEAAAo7AzYAAAAxTDgwMDcxMjg3ZDJhNmM3ZDguTDgwMDAwMDAwMDAwMzE1MTIuTDgwMDcyZDMyZTJkYzg3N2U
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// example:
+	//
+	// 100
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeInstanceAmortizedCostByConsumePeriodResponseBodyData) String() string {
@@ -4037,64 +5560,220 @@ func (s *DescribeInstanceAmortizedCostByConsumePeriodResponseBodyData) SetTotalC
 }
 
 type DescribeInstanceAmortizedCostByConsumePeriodResponseBodyDataItems struct {
-	AmortizationPeriod                         *string  `json:"AmortizationPeriod,omitempty" xml:"AmortizationPeriod,omitempty"`
-	AmortizationStatus                         *string  `json:"AmortizationStatus,omitempty" xml:"AmortizationStatus,omitempty"`
-	BillAccountID                              *int64   `json:"BillAccountID,omitempty" xml:"BillAccountID,omitempty"`
-	BillAccountName                            *string  `json:"BillAccountName,omitempty" xml:"BillAccountName,omitempty"`
-	BillOwnerID                                *int64   `json:"BillOwnerID,omitempty" xml:"BillOwnerID,omitempty"`
-	BillOwnerName                              *string  `json:"BillOwnerName,omitempty" xml:"BillOwnerName,omitempty"`
-	BizType                                    *string  `json:"BizType,omitempty" xml:"BizType,omitempty"`
-	ConsumePeriod                              *string  `json:"ConsumePeriod,omitempty" xml:"ConsumePeriod,omitempty"`
-	CostUnit                                   *string  `json:"CostUnit,omitempty" xml:"CostUnit,omitempty"`
-	CostUnitCode                               *string  `json:"CostUnitCode,omitempty" xml:"CostUnitCode,omitempty"`
-	CurrentAmortizationDeductedByCashCoupons   *float64 `json:"CurrentAmortizationDeductedByCashCoupons,omitempty" xml:"CurrentAmortizationDeductedByCashCoupons,omitempty"`
-	CurrentAmortizationDeductedByCoupons       *float64 `json:"CurrentAmortizationDeductedByCoupons,omitempty" xml:"CurrentAmortizationDeductedByCoupons,omitempty"`
-	CurrentAmortizationDeductedByPrepaidCard   *float64 `json:"CurrentAmortizationDeductedByPrepaidCard,omitempty" xml:"CurrentAmortizationDeductedByPrepaidCard,omitempty"`
-	CurrentAmortizationExpenditureAmount       *float64 `json:"CurrentAmortizationExpenditureAmount,omitempty" xml:"CurrentAmortizationExpenditureAmount,omitempty"`
-	CurrentAmortizationInvoiceDiscount         *float64 `json:"CurrentAmortizationInvoiceDiscount,omitempty" xml:"CurrentAmortizationInvoiceDiscount,omitempty"`
-	CurrentAmortizationPretaxAmount            *float64 `json:"CurrentAmortizationPretaxAmount,omitempty" xml:"CurrentAmortizationPretaxAmount,omitempty"`
-	CurrentAmortizationPretaxGrossAmount       *float64 `json:"CurrentAmortizationPretaxGrossAmount,omitempty" xml:"CurrentAmortizationPretaxGrossAmount,omitempty"`
-	CurrentAmortizationRoundDownDiscount       *float64 `json:"CurrentAmortizationRoundDownDiscount,omitempty" xml:"CurrentAmortizationRoundDownDiscount,omitempty"`
-	DeductedByCashCoupons                      *float64 `json:"DeductedByCashCoupons,omitempty" xml:"DeductedByCashCoupons,omitempty"`
-	DeductedByCoupons                          *float64 `json:"DeductedByCoupons,omitempty" xml:"DeductedByCoupons,omitempty"`
-	DeductedByPrepaidCard                      *float64 `json:"DeductedByPrepaidCard,omitempty" xml:"DeductedByPrepaidCard,omitempty"`
-	ExpenditureAmount                          *float64 `json:"ExpenditureAmount,omitempty" xml:"ExpenditureAmount,omitempty"`
-	InstanceID                                 *string  `json:"InstanceID,omitempty" xml:"InstanceID,omitempty"`
-	InternetIP                                 *string  `json:"InternetIP,omitempty" xml:"InternetIP,omitempty"`
-	IntranetIP                                 *string  `json:"IntranetIP,omitempty" xml:"IntranetIP,omitempty"`
-	InvoiceDiscount                            *float64 `json:"InvoiceDiscount,omitempty" xml:"InvoiceDiscount,omitempty"`
-	PretaxAmount                               *float64 `json:"PretaxAmount,omitempty" xml:"PretaxAmount,omitempty"`
-	PretaxGrossAmount                          *float64 `json:"PretaxGrossAmount,omitempty" xml:"PretaxGrossAmount,omitempty"`
-	PreviouslyAmortizedDeductedByCashCoupons   *float64 `json:"PreviouslyAmortizedDeductedByCashCoupons,omitempty" xml:"PreviouslyAmortizedDeductedByCashCoupons,omitempty"`
-	PreviouslyAmortizedDeductedByCoupons       *float64 `json:"PreviouslyAmortizedDeductedByCoupons,omitempty" xml:"PreviouslyAmortizedDeductedByCoupons,omitempty"`
-	PreviouslyAmortizedDeductedByPrepaidCard   *float64 `json:"PreviouslyAmortizedDeductedByPrepaidCard,omitempty" xml:"PreviouslyAmortizedDeductedByPrepaidCard,omitempty"`
-	PreviouslyAmortizedExpenditureAmount       *float64 `json:"PreviouslyAmortizedExpenditureAmount,omitempty" xml:"PreviouslyAmortizedExpenditureAmount,omitempty"`
-	PreviouslyAmortizedInvoiceDiscount         *float64 `json:"PreviouslyAmortizedInvoiceDiscount,omitempty" xml:"PreviouslyAmortizedInvoiceDiscount,omitempty"`
-	PreviouslyAmortizedPretaxAmount            *float64 `json:"PreviouslyAmortizedPretaxAmount,omitempty" xml:"PreviouslyAmortizedPretaxAmount,omitempty"`
-	PreviouslyAmortizedPretaxGrossAmount       *float64 `json:"PreviouslyAmortizedPretaxGrossAmount,omitempty" xml:"PreviouslyAmortizedPretaxGrossAmount,omitempty"`
-	PreviouslyAmortizedRoundDownDiscount       *float64 `json:"PreviouslyAmortizedRoundDownDiscount,omitempty" xml:"PreviouslyAmortizedRoundDownDiscount,omitempty"`
-	ProductCode                                *string  `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	ProductDetail                              *string  `json:"ProductDetail,omitempty" xml:"ProductDetail,omitempty"`
-	ProductDetailCode                          *string  `json:"ProductDetailCode,omitempty" xml:"ProductDetailCode,omitempty"`
-	ProductName                                *string  `json:"ProductName,omitempty" xml:"ProductName,omitempty"`
-	Region                                     *string  `json:"Region,omitempty" xml:"Region,omitempty"`
+	// example:
+	//
+	// 202210
+	AmortizationPeriod *string `json:"AmortizationPeriod,omitempty" xml:"AmortizationPeriod,omitempty"`
+	// example:
+	//
+	// amortized
+	AmortizationStatus *string `json:"AmortizationStatus,omitempty" xml:"AmortizationStatus,omitempty"`
+	// example:
+	//
+	// 185xxxxx489
+	BillAccountID *int64 `json:"BillAccountID,omitempty" xml:"BillAccountID,omitempty"`
+	// example:
+	//
+	// test@test.aliyunid.com
+	BillAccountName *string `json:"BillAccountName,omitempty" xml:"BillAccountName,omitempty"`
+	// example:
+	//
+	// 185xxxxx489
+	BillOwnerID *int64 `json:"BillOwnerID,omitempty" xml:"BillOwnerID,omitempty"`
+	// example:
+	//
+	// test@test.aliyunid.com
+	BillOwnerName *string `json:"BillOwnerName,omitempty" xml:"BillOwnerName,omitempty"`
+	// example:
+	//
+	// trusteeship
+	BizType *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
+	// example:
+	//
+	// 202210
+	ConsumePeriod *string `json:"ConsumePeriod,omitempty" xml:"ConsumePeriod,omitempty"`
+	CostUnit      *string `json:"CostUnit,omitempty" xml:"CostUnit,omitempty"`
+	// example:
+	//
+	// 1234
+	CostUnitCode *string `json:"CostUnitCode,omitempty" xml:"CostUnitCode,omitempty"`
+	// example:
+	//
+	// 0
+	CurrentAmortizationDeductedByCashCoupons *float64 `json:"CurrentAmortizationDeductedByCashCoupons,omitempty" xml:"CurrentAmortizationDeductedByCashCoupons,omitempty"`
+	// example:
+	//
+	// 0
+	CurrentAmortizationDeductedByCoupons *float64 `json:"CurrentAmortizationDeductedByCoupons,omitempty" xml:"CurrentAmortizationDeductedByCoupons,omitempty"`
+	// example:
+	//
+	// 0
+	CurrentAmortizationDeductedByPrepaidCard *float64 `json:"CurrentAmortizationDeductedByPrepaidCard,omitempty" xml:"CurrentAmortizationDeductedByPrepaidCard,omitempty"`
+	// example:
+	//
+	// 0
+	CurrentAmortizationExpenditureAmount *float64 `json:"CurrentAmortizationExpenditureAmount,omitempty" xml:"CurrentAmortizationExpenditureAmount,omitempty"`
+	// example:
+	//
+	// 0
+	CurrentAmortizationInvoiceDiscount *float64 `json:"CurrentAmortizationInvoiceDiscount,omitempty" xml:"CurrentAmortizationInvoiceDiscount,omitempty"`
+	// example:
+	//
+	// 0
+	CurrentAmortizationPretaxAmount *float64 `json:"CurrentAmortizationPretaxAmount,omitempty" xml:"CurrentAmortizationPretaxAmount,omitempty"`
+	// example:
+	//
+	// 0
+	CurrentAmortizationPretaxGrossAmount *float64 `json:"CurrentAmortizationPretaxGrossAmount,omitempty" xml:"CurrentAmortizationPretaxGrossAmount,omitempty"`
+	// example:
+	//
+	// 0
+	CurrentAmortizationRoundDownDiscount *float64 `json:"CurrentAmortizationRoundDownDiscount,omitempty" xml:"CurrentAmortizationRoundDownDiscount,omitempty"`
+	// example:
+	//
+	// 0
+	DeductedByCashCoupons *float64 `json:"DeductedByCashCoupons,omitempty" xml:"DeductedByCashCoupons,omitempty"`
+	// example:
+	//
+	// 0
+	DeductedByCoupons *float64 `json:"DeductedByCoupons,omitempty" xml:"DeductedByCoupons,omitempty"`
+	// example:
+	//
+	// 0
+	DeductedByPrepaidCard *float64 `json:"DeductedByPrepaidCard,omitempty" xml:"DeductedByPrepaidCard,omitempty"`
+	// example:
+	//
+	// 0
+	ExpenditureAmount *float64 `json:"ExpenditureAmount,omitempty" xml:"ExpenditureAmount,omitempty"`
+	// example:
+	//
+	// i-kjhdskjgshfdlkjfdh
+	InstanceID *string `json:"InstanceID,omitempty" xml:"InstanceID,omitempty"`
+	// example:
+	//
+	// 34.xx.x.x
+	InternetIP *string `json:"InternetIP,omitempty" xml:"InternetIP,omitempty"`
+	// example:
+	//
+	// 192.xx.xx.xx
+	IntranetIP *string `json:"IntranetIP,omitempty" xml:"IntranetIP,omitempty"`
+	// example:
+	//
+	// 0
+	InvoiceDiscount *float64 `json:"InvoiceDiscount,omitempty" xml:"InvoiceDiscount,omitempty"`
+	// example:
+	//
+	// 0
+	PretaxAmount *float64 `json:"PretaxAmount,omitempty" xml:"PretaxAmount,omitempty"`
+	// example:
+	//
+	// 0
+	PretaxGrossAmount *float64 `json:"PretaxGrossAmount,omitempty" xml:"PretaxGrossAmount,omitempty"`
+	// example:
+	//
+	// 0
+	PreviouslyAmortizedDeductedByCashCoupons *float64 `json:"PreviouslyAmortizedDeductedByCashCoupons,omitempty" xml:"PreviouslyAmortizedDeductedByCashCoupons,omitempty"`
+	// example:
+	//
+	// 0
+	PreviouslyAmortizedDeductedByCoupons *float64 `json:"PreviouslyAmortizedDeductedByCoupons,omitempty" xml:"PreviouslyAmortizedDeductedByCoupons,omitempty"`
+	// example:
+	//
+	// 0
+	PreviouslyAmortizedDeductedByPrepaidCard *float64 `json:"PreviouslyAmortizedDeductedByPrepaidCard,omitempty" xml:"PreviouslyAmortizedDeductedByPrepaidCard,omitempty"`
+	// example:
+	//
+	// 0
+	PreviouslyAmortizedExpenditureAmount *float64 `json:"PreviouslyAmortizedExpenditureAmount,omitempty" xml:"PreviouslyAmortizedExpenditureAmount,omitempty"`
+	// example:
+	//
+	// 0
+	PreviouslyAmortizedInvoiceDiscount *float64 `json:"PreviouslyAmortizedInvoiceDiscount,omitempty" xml:"PreviouslyAmortizedInvoiceDiscount,omitempty"`
+	// example:
+	//
+	// 0
+	PreviouslyAmortizedPretaxAmount *float64 `json:"PreviouslyAmortizedPretaxAmount,omitempty" xml:"PreviouslyAmortizedPretaxAmount,omitempty"`
+	// example:
+	//
+	// 0
+	PreviouslyAmortizedPretaxGrossAmount *float64 `json:"PreviouslyAmortizedPretaxGrossAmount,omitempty" xml:"PreviouslyAmortizedPretaxGrossAmount,omitempty"`
+	// example:
+	//
+	// 0
+	PreviouslyAmortizedRoundDownDiscount *float64 `json:"PreviouslyAmortizedRoundDownDiscount,omitempty" xml:"PreviouslyAmortizedRoundDownDiscount,omitempty"`
+	// example:
+	//
+	// rds
+	ProductCode   *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	ProductDetail *string `json:"ProductDetail,omitempty" xml:"ProductDetail,omitempty"`
+	// example:
+	//
+	// rds
+	ProductDetailCode *string `json:"ProductDetailCode,omitempty" xml:"ProductDetailCode,omitempty"`
+	ProductName       *string `json:"ProductName,omitempty" xml:"ProductName,omitempty"`
+	Region            *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// example:
+	//
+	// 0
 	RemainingAmortizationDeductedByCashCoupons *float64 `json:"RemainingAmortizationDeductedByCashCoupons,omitempty" xml:"RemainingAmortizationDeductedByCashCoupons,omitempty"`
-	RemainingAmortizationDeductedByCoupons     *float64 `json:"RemainingAmortizationDeductedByCoupons,omitempty" xml:"RemainingAmortizationDeductedByCoupons,omitempty"`
+	// example:
+	//
+	// 0
+	RemainingAmortizationDeductedByCoupons *float64 `json:"RemainingAmortizationDeductedByCoupons,omitempty" xml:"RemainingAmortizationDeductedByCoupons,omitempty"`
+	// example:
+	//
+	// 0
 	RemainingAmortizationDeductedByPrepaidCard *float64 `json:"RemainingAmortizationDeductedByPrepaidCard,omitempty" xml:"RemainingAmortizationDeductedByPrepaidCard,omitempty"`
-	RemainingAmortizationExpenditureAmount     *float64 `json:"RemainingAmortizationExpenditureAmount,omitempty" xml:"RemainingAmortizationExpenditureAmount,omitempty"`
-	RemainingAmortizationInvoiceDiscount       *float64 `json:"RemainingAmortizationInvoiceDiscount,omitempty" xml:"RemainingAmortizationInvoiceDiscount,omitempty"`
-	RemainingAmortizationPretaxAmount          *float64 `json:"RemainingAmortizationPretaxAmount,omitempty" xml:"RemainingAmortizationPretaxAmount,omitempty"`
-	RemainingAmortizationPretaxGrossAmount     *float64 `json:"RemainingAmortizationPretaxGrossAmount,omitempty" xml:"RemainingAmortizationPretaxGrossAmount,omitempty"`
-	RemainingAmortizationRoundDownDiscount     *float64 `json:"RemainingAmortizationRoundDownDiscount,omitempty" xml:"RemainingAmortizationRoundDownDiscount,omitempty"`
-	ResourceGroup                              *string  `json:"ResourceGroup,omitempty" xml:"ResourceGroup,omitempty"`
-	RoundDownDiscount                          *float64 `json:"RoundDownDiscount,omitempty" xml:"RoundDownDiscount,omitempty"`
-	SplitAccountName                           *string  `json:"SplitAccountName,omitempty" xml:"SplitAccountName,omitempty"`
-	SplitItemID                                *string  `json:"SplitItemID,omitempty" xml:"SplitItemID,omitempty"`
-	SplitItemName                              *string  `json:"SplitItemName,omitempty" xml:"SplitItemName,omitempty"`
-	SplitProductDetail                         *string  `json:"SplitProductDetail,omitempty" xml:"SplitProductDetail,omitempty"`
-	SubscriptionType                           *string  `json:"SubscriptionType,omitempty" xml:"SubscriptionType,omitempty"`
-	Tag                                        *string  `json:"Tag,omitempty" xml:"Tag,omitempty"`
-	Zone                                       *string  `json:"Zone,omitempty" xml:"Zone,omitempty"`
+	// example:
+	//
+	// 0
+	RemainingAmortizationExpenditureAmount *float64 `json:"RemainingAmortizationExpenditureAmount,omitempty" xml:"RemainingAmortizationExpenditureAmount,omitempty"`
+	// example:
+	//
+	// 0
+	RemainingAmortizationInvoiceDiscount *float64 `json:"RemainingAmortizationInvoiceDiscount,omitempty" xml:"RemainingAmortizationInvoiceDiscount,omitempty"`
+	// example:
+	//
+	// 0
+	RemainingAmortizationPretaxAmount *float64 `json:"RemainingAmortizationPretaxAmount,omitempty" xml:"RemainingAmortizationPretaxAmount,omitempty"`
+	// example:
+	//
+	// 0
+	RemainingAmortizationPretaxGrossAmount *float64 `json:"RemainingAmortizationPretaxGrossAmount,omitempty" xml:"RemainingAmortizationPretaxGrossAmount,omitempty"`
+	// example:
+	//
+	// 0
+	RemainingAmortizationRoundDownDiscount *float64 `json:"RemainingAmortizationRoundDownDiscount,omitempty" xml:"RemainingAmortizationRoundDownDiscount,omitempty"`
+	ResourceGroup                          *string  `json:"ResourceGroup,omitempty" xml:"ResourceGroup,omitempty"`
+	// example:
+	//
+	// 0
+	RoundDownDiscount *float64 `json:"RoundDownDiscount,omitempty" xml:"RoundDownDiscount,omitempty"`
+	// example:
+	//
+	// test**1122
+	SplitAccountName *string `json:"SplitAccountName,omitempty" xml:"SplitAccountName,omitempty"`
+	// example:
+	//
+	// i-28bycvyb4
+	SplitItemID *string `json:"SplitItemID,omitempty" xml:"SplitItemID,omitempty"`
+	// example:
+	//
+	// iZ28bycvyb4Z
+	SplitItemName *string `json:"SplitItemName,omitempty" xml:"SplitItemName,omitempty"`
+	// example:
+	//
+	// rds
+	SplitProductDetail *string `json:"SplitProductDetail,omitempty" xml:"SplitProductDetail,omitempty"`
+	// example:
+	//
+	// PayAsYouGo
+	SubscriptionType *string `json:"SubscriptionType,omitempty" xml:"SubscriptionType,omitempty"`
+	// example:
+	//
+	// tag
+	Tag  *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	Zone *string `json:"Zone,omitempty" xml:"Zone,omitempty"`
 }
 
 func (s DescribeInstanceAmortizedCostByConsumePeriodResponseBodyDataItems) String() string {
@@ -4426,47 +6105,102 @@ func (s *DescribeInstanceAmortizedCostByConsumePeriodResponse) SetBody(v *Descri
 
 type DescribeInstanceBillRequest struct {
 	// The ID of the member. If you specify this parameter, the bills of the member are queried. If you do not specify this parameter, the bills of the current account are queried by default.
+	//
+	// example:
+	//
+	// 122
 	BillOwnerId *int64 `json:"BillOwnerId,omitempty" xml:"BillOwnerId,omitempty"`
 	// The billing cycle. Specify the parameter in the YYYY-MM format.
+	//
 	// Only the latest 18 month billing cycle is supported.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2020-03
 	BillingCycle *string `json:"BillingCycle,omitempty" xml:"BillingCycle,omitempty"`
 	// The billing date. This parameter is required only when the Granularity parameter is set to DAILY. Format: YYYY-MM-DD.
+	//
+	// example:
+	//
+	// 2020-03-02
 	BillingDate *string `json:"BillingDate,omitempty" xml:"BillingDate,omitempty"`
 	// The granularity at which bills are queried. Valid values:
 	//
-	// *   MONTHLY: queries bills on a monthly basis. The data that you query is the same as the data searched by instances on the Billing Details tab of the Bill Details page in the User Center console.
-	// *   DAILY: queries bills on a daily basis. The data that you query is the same as the data searched by days on the Billing Details tab of the Bill Details page in the User Center console.
+	// 	- MONTHLY: queries bills on a monthly basis. The data that you query is the same as the data searched by instances on the Billing Details tab of the Bill Details page in the User Center console.
+	//
+	// 	- DAILY: queries bills on a daily basis. The data that you query is the same as the data searched by days on the Billing Details tab of the Bill Details page in the User Center console.
 	//
 	// The BillingDate parameter is required if you set the Granularity parameter to DAILY.
+	//
+	// example:
+	//
+	// MONTHLY
 	Granularity *string `json:"Granularity,omitempty" xml:"Granularity,omitempty"`
 	// The ID of the instance.
+	//
+	// example:
+	//
+	// abc
 	InstanceID *string `json:"InstanceID,omitempty" xml:"InstanceID,omitempty"`
 	// Specifies whether to query data by billable items. Valid values:
 	//
-	// *   false: The data that you query is the same as the data searched by instances on the Billing Details tab of the Bill Details page in the User Center console.
-	// *   true: The data that you query is the same as the data searched by billable items on the Billing Details tab of the Bill Details page in the User Center console.
+	// 	- false: The data that you query is the same as the data searched by instances on the Billing Details tab of the Bill Details page in the User Center console.
+	//
+	// 	- true: The data that you query is the same as the data searched by billable items on the Billing Details tab of the Bill Details page in the User Center console.
 	//
 	// Default value: false.
+	//
+	// example:
+	//
+	// false
 	IsBillingItem *bool `json:"IsBillingItem,omitempty" xml:"IsBillingItem,omitempty"`
 	// Specifies whether to filter bills if both the pretax gross amount and pretax amount are 0. Valid values:
 	//
-	// *   false: does not filter bills.
-	// *   true: filters bills.
+	// 	- false: does not filter bills.
+	//
+	// 	- true: filters bills.
+	//
+	// example:
+	//
+	// false
 	IsHideZeroCharge *bool `json:"IsHideZeroCharge,omitempty" xml:"IsHideZeroCharge,omitempty"`
 	// The maximum number of entries to return. Default value: 20. Maximum value: 300.
+	//
+	// example:
+	//
+	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The token that is used to indicate the position where the results for the current call start. The parameter must be left empty or set to the value of the NextToken parameter that is returned from the last call. Otherwise, an error is returned. If the parameter is left empty, data is queried from the first item.
+	//
+	// example:
+	//
+	// CAESEgoQCg4KCm
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	OwnerId   *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	PipCode   *string `json:"PipCode,omitempty" xml:"PipCode,omitempty"`
 	// The code of the service.
+	//
+	// example:
+	//
+	// rds
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
 	// The type of the service.
+	//
+	// example:
+	//
+	// rds
 	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
 	// The billing method. Valid values:
 	//
-	// *   Subscription: the subscription billing method.
-	// *   PayAsYouGo: the pay-as-you-go billing method.
+	// 	- Subscription: the subscription billing method.
+	//
+	// 	- PayAsYouGo: the pay-as-you-go billing method.
+	//
+	// example:
+	//
+	// PayAsYouGo
 	SubscriptionType *string `json:"SubscriptionType,omitempty" xml:"SubscriptionType,omitempty"`
 }
 
@@ -4550,14 +6284,30 @@ func (s *DescribeInstanceBillRequest) SetSubscriptionType(v string) *DescribeIns
 
 type DescribeInstanceBillResponseBody struct {
 	// The status code.
+	//
+	// example:
+	//
+	// Success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The data returned.
 	Data *DescribeInstanceBillResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The error message returned.
+	//
+	// example:
+	//
+	// Successful!
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 79EE7556-0CFD-44EB-9CD6-B3B526E3A85F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -4596,18 +6346,42 @@ func (s *DescribeInstanceBillResponseBody) SetSuccess(v bool) *DescribeInstanceB
 
 type DescribeInstanceBillResponseBodyData struct {
 	// The ID of the account.
+	//
+	// example:
+	//
+	// 122
 	AccountID *string `json:"AccountID,omitempty" xml:"AccountID,omitempty"`
 	// The name of the account.
+	//
+	// example:
+	//
+	// test@test.aliyunid.com
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
 	// The billing cycle in the YYYY-MM format.
+	//
+	// example:
+	//
+	// 2020-03
 	BillingCycle *string `json:"BillingCycle,omitempty" xml:"BillingCycle,omitempty"`
 	// The details of the bill.
 	Items []*DescribeInstanceBillResponseBodyDataItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
 	// The maximum number of entries returned.
+	//
+	// example:
+	//
+	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The position where the query stopped. If this parameter is left empty, all the results are returned. If you perform another call, you must set the NextToken parameter to the value of this parameter.
+	//
+	// example:
+	//
+	// CAESEgoQCg4KCm
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The total number of returned entries.
+	//
+	// example:
+	//
+	// 20
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -4656,108 +6430,298 @@ func (s *DescribeInstanceBillResponseBodyData) SetTotalCount(v int32) *DescribeI
 
 type DescribeInstanceBillResponseBodyDataItems struct {
 	// The amount deducted with credit refund.
+	//
+	// example:
+	//
+	// 0
 	AdjustAmount *float32 `json:"AdjustAmount,omitempty" xml:"AdjustAmount,omitempty"`
 	// The ID of the account to which the bill belongs.
+	//
+	// example:
+	//
+	// 122
 	BillAccountID *string `json:"BillAccountID,omitempty" xml:"BillAccountID,omitempty"`
 	// The name of the account to which the bill belongs.
+	//
+	// example:
+	//
+	// test@test.aliyunid.com
 	BillAccountName *string `json:"BillAccountName,omitempty" xml:"BillAccountName,omitempty"`
 	// The billing date. This parameter is returned only if the Granularity parameter is set to DAILY. Format: YYYY-MM-DD.
+	//
+	// example:
+	//
+	// 2020-03-20
 	BillingDate *string `json:"BillingDate,omitempty" xml:"BillingDate,omitempty"`
 	// The billable item. A value is returned only if the IsBillingItem parameter is set to true.
+	//
+	// example:
+	//
+	// Bandwidth
 	BillingItem *string `json:"BillingItem,omitempty" xml:"BillingItem,omitempty"`
 	// The code of the billable item.
+	//
+	// example:
+	//
+	// disk
 	BillingItemCode *string `json:"BillingItemCode,omitempty" xml:"BillingItemCode,omitempty"`
 	// The billing method.
+	//
+	// example:
+	//
+	// Other
 	BillingType *string `json:"BillingType,omitempty" xml:"BillingType,omitempty"`
 	// The type of business.
+	//
+	// example:
+	//
+	// trusteeship
 	BizType *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
 	// The amount paid in cash. The amount deducted with credit refund is not included.
+	//
+	// example:
+	//
+	// 0
 	CashAmount *float32 `json:"CashAmount,omitempty" xml:"CashAmount,omitempty"`
 	// The code of the commodity. The code is the same as that in Cost Center.
+	//
+	// example:
+	//
+	// rds
 	CommodityCode *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
 	// The cost center.
+	//
+	// example:
+	//
+	// Not allocated
 	CostUnit *string `json:"CostUnit,omitempty" xml:"CostUnit,omitempty"`
 	// The type of currency. Valid values:
 	//
-	// *   CNY
-	// *   USD
-	// *   JPY
+	// 	- CNY
+	//
+	// 	- USD
+	//
+	// 	- JPY
+	//
+	// example:
+	//
+	// CNY
 	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
 	// The amount deducted with vouchers.
+	//
+	// example:
+	//
+	// 0.1
 	DeductedByCashCoupons *float32 `json:"DeductedByCashCoupons,omitempty" xml:"DeductedByCashCoupons,omitempty"`
 	// The amount deducted with coupons.
+	//
+	// example:
+	//
+	// 0.1
 	DeductedByCoupons *float32 `json:"DeductedByCoupons,omitempty" xml:"DeductedByCoupons,omitempty"`
 	// The amount deducted with prepaid cards.
+	//
+	// example:
+	//
+	// 0.1
 	DeductedByPrepaidCard *float32 `json:"DeductedByPrepaidCard,omitempty" xml:"DeductedByPrepaidCard,omitempty"`
 	// The amount deducted with resource plans. This parameter is valid only when the isBillingItem parameter is set to true.
+	//
+	// example:
+	//
+	// 0.1
 	DeductedByResourcePackage *string `json:"DeductedByResourcePackage,omitempty" xml:"DeductedByResourcePackage,omitempty"`
 	// The configurations of the instance.
+	//
+	// example:
+	//
+	// CPU：12
 	InstanceConfig *string `json:"InstanceConfig,omitempty" xml:"InstanceConfig,omitempty"`
 	// The ID of the instance.
+	//
+	// example:
+	//
+	// i-dadada
 	InstanceID *string `json:"InstanceID,omitempty" xml:"InstanceID,omitempty"`
 	// The type of the instance.
+	//
+	// example:
+	//
+	// ecs.sn1ne.3xlarge
 	InstanceSpec *string `json:"InstanceSpec,omitempty" xml:"InstanceSpec,omitempty"`
 	// The public IP address.
+	//
+	// example:
+	//
+	// 34.xx.x.x
 	InternetIP *string `json:"InternetIP,omitempty" xml:"InternetIP,omitempty"`
 	// The private IP address.
+	//
+	// example:
+	//
+	// 192.xx.xx.xx
 	IntranetIP *string `json:"IntranetIP,omitempty" xml:"IntranetIP,omitempty"`
 	// The discount amount.
+	//
+	// example:
+	//
+	// 0.1
 	InvoiceDiscount *float32 `json:"InvoiceDiscount,omitempty" xml:"InvoiceDiscount,omitempty"`
 	// The type of the bill.
 	//
-	// *   SubscriptionOrder: the subscription bill.
-	// *   PayAsYouGoBill: the pay-as-you-go bill,
-	// *   Refund: the refund.
-	// *   Adjustment: the adjustment bill.
+	// 	- SubscriptionOrder: the subscription bill.
+	//
+	// 	- PayAsYouGoBill: the pay-as-you-go bill,
+	//
+	// 	- Refund: the refund.
+	//
+	// 	- Adjustment: the adjustment bill.
+	//
+	// example:
+	//
+	// PayAsYouGoBill
 	Item *string `json:"Item,omitempty" xml:"Item,omitempty"`
 	// The name of the project.
+	//
+	// example:
+	//
+	// iZ28bycvyb4Z
 	ItemName *string `json:"ItemName,omitempty" xml:"ItemName,omitempty"`
 	// The unit price of the service. This parameter is valid only when the isBillingItem parameter is set to true.
+	//
+	// example:
+	//
+	// 100
 	ListPrice *string `json:"ListPrice,omitempty" xml:"ListPrice,omitempty"`
 	// The unit of the unit price. This parameter is valid only when the isBillingItem parameter is set to true.
+	//
+	// example:
+	//
+	// CNY
 	ListPriceUnit *string `json:"ListPriceUnit,omitempty" xml:"ListPriceUnit,omitempty"`
 	// The name of the instance.
+	//
+	// example:
+	//
+	// test
 	NickName *string `json:"NickName,omitempty" xml:"NickName,omitempty"`
 	// The unsettled amount.
+	//
+	// example:
+	//
+	// 0.1
 	OutstandingAmount *float32 `json:"OutstandingAmount,omitempty" xml:"OutstandingAmount,omitempty"`
 	// The ID of the account that owns the resource. This parameter is returned in multi-account payment scenario.
+	//
+	// example:
+	//
+	// 123
 	OwnerID *string `json:"OwnerID,omitempty" xml:"OwnerID,omitempty"`
 	// The amount paid in cash. The amount deducted with credit refund is not included.
+	//
+	// example:
+	//
+	// 0.1
 	PaymentAmount *float32 `json:"PaymentAmount,omitempty" xml:"PaymentAmount,omitempty"`
 	// The code of the service. The code is the same as that in Cost Center.
+	//
+	// example:
+	//
+	// rds
 	PipCode *string `json:"PipCode,omitempty" xml:"PipCode,omitempty"`
 	// The pretax amount.
+	//
+	// example:
+	//
+	// 0.1
 	PretaxAmount *float32 `json:"PretaxAmount,omitempty" xml:"PretaxAmount,omitempty"`
 	// The pretax gross amount.
+	//
+	// example:
+	//
+	// 0.1
 	PretaxGrossAmount *float32 `json:"PretaxGrossAmount,omitempty" xml:"PretaxGrossAmount,omitempty"`
 	// The code of the service.
+	//
+	// example:
+	//
+	// rds
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
 	// The details of the service.
+	//
+	// example:
+	//
+	// ApsaraDB RDS
 	ProductDetail *string `json:"ProductDetail,omitempty" xml:"ProductDetail,omitempty"`
 	// The name of the service.
+	//
+	// example:
+	//
+	// ApsaraDB RDS
 	ProductName *string `json:"ProductName,omitempty" xml:"ProductName,omitempty"`
 	// The type of the service.
+	//
+	// example:
+	//
+	// rds
 	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
 	// The ID of the region.
+	//
+	// example:
+	//
+	// China (Hangzhou)
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
 	// The ID of the resource group.
+	//
+	// example:
+	//
+	// Default resource group
 	ResourceGroup *string `json:"ResourceGroup,omitempty" xml:"ResourceGroup,omitempty"`
 	// The service duration.
+	//
+	// example:
+	//
+	// 3600
 	ServicePeriod *string `json:"ServicePeriod,omitempty" xml:"ServicePeriod,omitempty"`
 	// The unit of the service duration.
+	//
+	// example:
+	//
+	// Second
 	ServicePeriodUnit *string `json:"ServicePeriodUnit,omitempty" xml:"ServicePeriodUnit,omitempty"`
 	// The billing method. Valid values:
 	//
-	// *   Subscription: the subscription billing method.
-	// *   PayAsYouGo: the pay-as-you-go billing method.
+	// 	- Subscription: the subscription billing method.
+	//
+	// 	- PayAsYouGo: the pay-as-you-go billing method.
+	//
+	// example:
+	//
+	// PayAsYouGo
 	SubscriptionType *string `json:"SubscriptionType,omitempty" xml:"SubscriptionType,omitempty"`
 	// The tag of the resource.
+	//
+	// example:
+	//
+	// key:testKey value:testValue; key:testKey1 value:testValues1
 	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
 	// The usage of the service. This parameter is valid only when the isBillingItem parameter is set to true. The usage is the total usage in all bills in the billing cycle, not the amount that you purchase. For example, if 1 GB of storage is used and bills are generated every hour, the usage is 1 GB per hour. In this case, the usage is 24 GB per day.
+	//
+	// example:
+	//
+	// 100
 	Usage *string `json:"Usage,omitempty" xml:"Usage,omitempty"`
 	// The unit of usage. This parameter is valid only when the isBillingItem parameter is set to true.
+	//
+	// example:
+	//
+	// GB
 	UsageUnit *string `json:"UsageUnit,omitempty" xml:"UsageUnit,omitempty"`
 	// The ID of the zone.
+	//
+	// example:
+	//
+	// Hangzhou Zone B
 	Zone *string `json:"Zone,omitempty" xml:"Zone,omitempty"`
 }
 
@@ -5029,16 +6993,37 @@ func (s *DescribeInstanceBillResponse) SetBody(v *DescribeInstanceBillResponseBo
 }
 
 type DescribeInstanceDeductAmortizedCostByAmortizationPeriodRequest struct {
-	BillOwnerIdList  []*string `json:"BillOwnerIdList,omitempty" xml:"BillOwnerIdList,omitempty" type:"Repeated"`
-	BillUserIdList   []*string `json:"BillUserIdList,omitempty" xml:"BillUserIdList,omitempty" type:"Repeated"`
-	BillingCycle     *string   `json:"BillingCycle,omitempty" xml:"BillingCycle,omitempty"`
-	CostUnitCode     *string   `json:"CostUnitCode,omitempty" xml:"CostUnitCode,omitempty"`
-	InstanceIdList   []*string `json:"InstanceIdList,omitempty" xml:"InstanceIdList,omitempty" type:"Repeated"`
-	MaxResults       *int32    `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken        *string   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	ProductCode      *string   `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	ProductDetail    *string   `json:"ProductDetail,omitempty" xml:"ProductDetail,omitempty"`
-	SubscriptionType *string   `json:"SubscriptionType,omitempty" xml:"SubscriptionType,omitempty"`
+	BillOwnerIdList []*string `json:"BillOwnerIdList,omitempty" xml:"BillOwnerIdList,omitempty" type:"Repeated"`
+	BillUserIdList  []*string `json:"BillUserIdList,omitempty" xml:"BillUserIdList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 2023-04
+	BillingCycle *string `json:"BillingCycle,omitempty" xml:"BillingCycle,omitempty"`
+	// example:
+	//
+	// 123#
+	CostUnitCode   *string   `json:"CostUnitCode,omitempty" xml:"CostUnitCode,omitempty"`
+	InstanceIdList []*string `json:"InstanceIdList,omitempty" xml:"InstanceIdList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 20
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// example:
+	//
+	// CAESEgoQCg4KCmdtdF9jcmVhdGUEARgBIkgKCQBwhGmPcAEAAAo7AzYAAAAxTDgwMDcxMjg3ZDJhNmM3ZDguTDgwMDAwMDAwMDAwMzE1MTIuTDgwMDcyZDMyZTJkYzg3N2U
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// example:
+	//
+	// rds
+	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	// example:
+	//
+	// rds
+	ProductDetail *string `json:"ProductDetail,omitempty" xml:"ProductDetail,omitempty"`
+	// example:
+	//
+	// PayAsYouGo
+	SubscriptionType *string `json:"SubscriptionType,omitempty" xml:"SubscriptionType,omitempty"`
 }
 
 func (s DescribeInstanceDeductAmortizedCostByAmortizationPeriodRequest) String() string {
@@ -5100,11 +7085,23 @@ func (s *DescribeInstanceDeductAmortizedCostByAmortizationPeriodRequest) SetSubs
 }
 
 type DescribeInstanceDeductAmortizedCostByAmortizationPeriodResponseBody struct {
-	Code      *string                                                                  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *DescribeInstanceDeductAmortizedCostByAmortizationPeriodResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                                                                  `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                                                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                                                                    `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string                                                                  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *DescribeInstanceDeductAmortizedCostByAmortizationPeriodResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// Successful！
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// EAE08A27-386C-579E-966D-8853EC3C5D0E
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeInstanceDeductAmortizedCostByAmortizationPeriodResponseBody) String() string {
@@ -5141,12 +7138,27 @@ func (s *DescribeInstanceDeductAmortizedCostByAmortizationPeriodResponseBody) Se
 }
 
 type DescribeInstanceDeductAmortizedCostByAmortizationPeriodResponseBodyData struct {
-	AccountID   *string                                                                         `json:"AccountID,omitempty" xml:"AccountID,omitempty"`
+	// example:
+	//
+	// 185766xxxx
+	AccountID *string `json:"AccountID,omitempty" xml:"AccountID,omitempty"`
+	// example:
+	//
+	// test@test.aliyunid.com
 	AccountName *string                                                                         `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
 	Items       []*DescribeInstanceDeductAmortizedCostByAmortizationPeriodResponseBodyDataItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
-	MaxResults  *int32                                                                          `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken   *string                                                                         `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	TotalCount  *int32                                                                          `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// example:
+	//
+	// 20
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// example:
+	//
+	// CAESEgoQCg4KCmdtdF9jcmVhdGUEARgBIkgKCQBwhGmPcAEAAAo7AzYAAAAxTDgwMDcxMjg3ZDJhNmM3ZDguTDgwMDAwMDAwMDAwMzE1MTIuTDgwMDcyZDMyZTJkYzg3N2U
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// example:
+	//
+	// 400
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeInstanceDeductAmortizedCostByAmortizationPeriodResponseBodyData) String() string {
@@ -5188,52 +7200,172 @@ func (s *DescribeInstanceDeductAmortizedCostByAmortizationPeriodResponseBodyData
 }
 
 type DescribeInstanceDeductAmortizedCostByAmortizationPeriodResponseBodyDataItems struct {
-	AmortizationPeriod                   *string  `json:"AmortizationPeriod,omitempty" xml:"AmortizationPeriod,omitempty"`
-	AmortizationPeriodDay                *string  `json:"AmortizationPeriodDay,omitempty" xml:"AmortizationPeriodDay,omitempty"`
-	AmortizationStatus                   *string  `json:"AmortizationStatus,omitempty" xml:"AmortizationStatus,omitempty"`
-	BillAccountID                        *int64   `json:"BillAccountID,omitempty" xml:"BillAccountID,omitempty"`
-	BillAccountName                      *string  `json:"BillAccountName,omitempty" xml:"BillAccountName,omitempty"`
-	BillOwnerID                          *int64   `json:"BillOwnerID,omitempty" xml:"BillOwnerID,omitempty"`
-	BillOwnerName                        *string  `json:"BillOwnerName,omitempty" xml:"BillOwnerName,omitempty"`
-	BizType                              *string  `json:"BizType,omitempty" xml:"BizType,omitempty"`
-	ConsumePeriod                        *string  `json:"ConsumePeriod,omitempty" xml:"ConsumePeriod,omitempty"`
-	CostUnit                             *string  `json:"CostUnit,omitempty" xml:"CostUnit,omitempty"`
-	CostUnitCode                         *string  `json:"CostUnitCode,omitempty" xml:"CostUnitCode,omitempty"`
+	// example:
+	//
+	// 2022-10
+	AmortizationPeriod *string `json:"AmortizationPeriod,omitempty" xml:"AmortizationPeriod,omitempty"`
+	// example:
+	//
+	// 2022-10-10
+	AmortizationPeriodDay *string `json:"AmortizationPeriodDay,omitempty" xml:"AmortizationPeriodDay,omitempty"`
+	// example:
+	//
+	// amortized
+	AmortizationStatus *string `json:"AmortizationStatus,omitempty" xml:"AmortizationStatus,omitempty"`
+	// example:
+	//
+	// 185xxxxx489
+	BillAccountID *int64 `json:"BillAccountID,omitempty" xml:"BillAccountID,omitempty"`
+	// example:
+	//
+	// test@test.aliyunid.com
+	BillAccountName *string `json:"BillAccountName,omitempty" xml:"BillAccountName,omitempty"`
+	// example:
+	//
+	// 185xxxxx489
+	BillOwnerID *int64 `json:"BillOwnerID,omitempty" xml:"BillOwnerID,omitempty"`
+	// example:
+	//
+	// test@test.aliyunid.com
+	BillOwnerName *string `json:"BillOwnerName,omitempty" xml:"BillOwnerName,omitempty"`
+	// example:
+	//
+	// trusteeship
+	BizType *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
+	// example:
+	//
+	// 2022-10
+	ConsumePeriod *string `json:"ConsumePeriod,omitempty" xml:"ConsumePeriod,omitempty"`
+	CostUnit      *string `json:"CostUnit,omitempty" xml:"CostUnit,omitempty"`
+	// example:
+	//
+	// 1234
+	CostUnitCode *string `json:"CostUnitCode,omitempty" xml:"CostUnitCode,omitempty"`
+	// example:
+	//
+	// 0
 	CurrentAmortizationDeductedByCoupons *float64 `json:"CurrentAmortizationDeductedByCoupons,omitempty" xml:"CurrentAmortizationDeductedByCoupons,omitempty"`
-	CurrentAmortizationInvoiceDiscount   *float64 `json:"CurrentAmortizationInvoiceDiscount,omitempty" xml:"CurrentAmortizationInvoiceDiscount,omitempty"`
-	CurrentAmortizationPretaxAmount      *float64 `json:"CurrentAmortizationPretaxAmount,omitempty" xml:"CurrentAmortizationPretaxAmount,omitempty"`
+	// example:
+	//
+	// 0
+	CurrentAmortizationInvoiceDiscount *float64 `json:"CurrentAmortizationInvoiceDiscount,omitempty" xml:"CurrentAmortizationInvoiceDiscount,omitempty"`
+	// example:
+	//
+	// 10
+	CurrentAmortizationPretaxAmount *float64 `json:"CurrentAmortizationPretaxAmount,omitempty" xml:"CurrentAmortizationPretaxAmount,omitempty"`
+	// example:
+	//
+	// 10
 	CurrentAmortizationPretaxGrossAmount *float64 `json:"CurrentAmortizationPretaxGrossAmount,omitempty" xml:"CurrentAmortizationPretaxGrossAmount,omitempty"`
+	// example:
+	//
+	// 0
 	CurrentAmortizationRoundDownDiscount *float64 `json:"CurrentAmortizationRoundDownDiscount,omitempty" xml:"CurrentAmortizationRoundDownDiscount,omitempty"`
-	DeductedByCoupons                    *float64 `json:"DeductedByCoupons,omitempty" xml:"DeductedByCoupons,omitempty"`
-	InstanceConfig                       *string  `json:"InstanceConfig,omitempty" xml:"InstanceConfig,omitempty"`
-	InstanceID                           *string  `json:"InstanceID,omitempty" xml:"InstanceID,omitempty"`
-	InternetIP                           *string  `json:"InternetIP,omitempty" xml:"InternetIP,omitempty"`
-	IntranetIP                           *string  `json:"IntranetIP,omitempty" xml:"IntranetIP,omitempty"`
-	InvoiceDiscount                      *float64 `json:"InvoiceDiscount,omitempty" xml:"InvoiceDiscount,omitempty"`
-	PretaxAmount                         *float64 `json:"PretaxAmount,omitempty" xml:"PretaxAmount,omitempty"`
-	PretaxGrossAmount                    *float64 `json:"PretaxGrossAmount,omitempty" xml:"PretaxGrossAmount,omitempty"`
-	ProductCode                          *string  `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	ProductDetail                        *string  `json:"ProductDetail,omitempty" xml:"ProductDetail,omitempty"`
-	ProductDetailCode                    *string  `json:"ProductDetailCode,omitempty" xml:"ProductDetailCode,omitempty"`
-	ProductName                          *string  `json:"ProductName,omitempty" xml:"ProductName,omitempty"`
-	ReferFrInstanceID                    *string  `json:"ReferFrInstanceID,omitempty" xml:"ReferFrInstanceID,omitempty"`
-	ReferFrOwnerID                       *string  `json:"ReferFrOwnerID,omitempty" xml:"ReferFrOwnerID,omitempty"`
-	ReferFrProductDetailCode             *string  `json:"ReferFrProductDetailCode,omitempty" xml:"ReferFrProductDetailCode,omitempty"`
-	Region                               *string  `json:"Region,omitempty" xml:"Region,omitempty"`
-	ResourceGroup                        *string  `json:"ResourceGroup,omitempty" xml:"ResourceGroup,omitempty"`
-	RoundDownDiscount                    *float64 `json:"RoundDownDiscount,omitempty" xml:"RoundDownDiscount,omitempty"`
-	SplitAccountName                     *string  `json:"SplitAccountName,omitempty" xml:"SplitAccountName,omitempty"`
-	SplitItemID                          *string  `json:"SplitItemID,omitempty" xml:"SplitItemID,omitempty"`
-	SplitItemName                        *string  `json:"SplitItemName,omitempty" xml:"SplitItemName,omitempty"`
-	SplitProductDetail                   *string  `json:"SplitProductDetail,omitempty" xml:"SplitProductDetail,omitempty"`
-	SubscriptionType                     *string  `json:"SubscriptionType,omitempty" xml:"SubscriptionType,omitempty"`
-	Tag                                  *string  `json:"Tag,omitempty" xml:"Tag,omitempty"`
-	UnusedAmortizationDeductedByCoupons  *float64 `json:"UnusedAmortizationDeductedByCoupons,omitempty" xml:"UnusedAmortizationDeductedByCoupons,omitempty"`
-	UnusedAmortizationInvoiceDiscount    *float64 `json:"UnusedAmortizationInvoiceDiscount,omitempty" xml:"UnusedAmortizationInvoiceDiscount,omitempty"`
-	UnusedAmortizationPretaxAmount       *float64 `json:"UnusedAmortizationPretaxAmount,omitempty" xml:"UnusedAmortizationPretaxAmount,omitempty"`
-	UnusedAmortizationPretaxGrossAmount  *float64 `json:"UnusedAmortizationPretaxGrossAmount,omitempty" xml:"UnusedAmortizationPretaxGrossAmount,omitempty"`
-	UnusedAmortizationRoundDownDiscount  *float64 `json:"UnusedAmortizationRoundDownDiscount,omitempty" xml:"UnusedAmortizationRoundDownDiscount,omitempty"`
-	Zone                                 *string  `json:"Zone,omitempty" xml:"Zone,omitempty"`
+	// example:
+	//
+	// 0
+	DeductedByCoupons *float64 `json:"DeductedByCoupons,omitempty" xml:"DeductedByCoupons,omitempty"`
+	// example:
+	//
+	// CPU:12
+	InstanceConfig *string `json:"InstanceConfig,omitempty" xml:"InstanceConfig,omitempty"`
+	// example:
+	//
+	// i-kjhdskjgshfdlkjfdh
+	InstanceID *string `json:"InstanceID,omitempty" xml:"InstanceID,omitempty"`
+	// example:
+	//
+	// 34.xx.x.x
+	InternetIP *string `json:"InternetIP,omitempty" xml:"InternetIP,omitempty"`
+	// example:
+	//
+	// 192.xx.xx.xx
+	IntranetIP *string `json:"IntranetIP,omitempty" xml:"IntranetIP,omitempty"`
+	// example:
+	//
+	// 0
+	InvoiceDiscount *float64 `json:"InvoiceDiscount,omitempty" xml:"InvoiceDiscount,omitempty"`
+	// example:
+	//
+	// 100
+	PretaxAmount *float64 `json:"PretaxAmount,omitempty" xml:"PretaxAmount,omitempty"`
+	// example:
+	//
+	// 100
+	PretaxGrossAmount *float64 `json:"PretaxGrossAmount,omitempty" xml:"PretaxGrossAmount,omitempty"`
+	// example:
+	//
+	// rds
+	ProductCode   *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	ProductDetail *string `json:"ProductDetail,omitempty" xml:"ProductDetail,omitempty"`
+	// example:
+	//
+	// rds
+	ProductDetailCode *string `json:"ProductDetailCode,omitempty" xml:"ProductDetailCode,omitempty"`
+	ProductName       *string `json:"ProductName,omitempty" xml:"ProductName,omitempty"`
+	// example:
+	//
+	// spn-001
+	ReferFrInstanceID *string `json:"ReferFrInstanceID,omitempty" xml:"ReferFrInstanceID,omitempty"`
+	// example:
+	//
+	// 185xxxxx489
+	ReferFrOwnerID *string `json:"ReferFrOwnerID,omitempty" xml:"ReferFrOwnerID,omitempty"`
+	// example:
+	//
+	// savingplan_common_public_cn
+	ReferFrProductDetailCode *string `json:"ReferFrProductDetailCode,omitempty" xml:"ReferFrProductDetailCode,omitempty"`
+	Region                   *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	ResourceGroup            *string `json:"ResourceGroup,omitempty" xml:"ResourceGroup,omitempty"`
+	// example:
+	//
+	// 0
+	RoundDownDiscount *float64 `json:"RoundDownDiscount,omitempty" xml:"RoundDownDiscount,omitempty"`
+	// example:
+	//
+	// 12@test.com
+	SplitAccountName *string `json:"SplitAccountName,omitempty" xml:"SplitAccountName,omitempty"`
+	// example:
+	//
+	// i-28bycvyb4
+	SplitItemID *string `json:"SplitItemID,omitempty" xml:"SplitItemID,omitempty"`
+	// example:
+	//
+	// iZ28bycvyb4Z
+	SplitItemName *string `json:"SplitItemName,omitempty" xml:"SplitItemName,omitempty"`
+	// example:
+	//
+	// rds
+	SplitProductDetail *string `json:"SplitProductDetail,omitempty" xml:"SplitProductDetail,omitempty"`
+	// example:
+	//
+	// PayAsYouGo
+	SubscriptionType *string `json:"SubscriptionType,omitempty" xml:"SubscriptionType,omitempty"`
+	// example:
+	//
+	// key:testKey value:testValue; key:testKey1 value:testValues1
+	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	// example:
+	//
+	// 0
+	UnusedAmortizationDeductedByCoupons *float64 `json:"UnusedAmortizationDeductedByCoupons,omitempty" xml:"UnusedAmortizationDeductedByCoupons,omitempty"`
+	// example:
+	//
+	// 0
+	UnusedAmortizationInvoiceDiscount *float64 `json:"UnusedAmortizationInvoiceDiscount,omitempty" xml:"UnusedAmortizationInvoiceDiscount,omitempty"`
+	// example:
+	//
+	// 0
+	UnusedAmortizationPretaxAmount *float64 `json:"UnusedAmortizationPretaxAmount,omitempty" xml:"UnusedAmortizationPretaxAmount,omitempty"`
+	// example:
+	//
+	// 0
+	UnusedAmortizationPretaxGrossAmount *float64 `json:"UnusedAmortizationPretaxGrossAmount,omitempty" xml:"UnusedAmortizationPretaxGrossAmount,omitempty"`
+	// example:
+	//
+	// 0
+	UnusedAmortizationRoundDownDiscount *float64 `json:"UnusedAmortizationRoundDownDiscount,omitempty" xml:"UnusedAmortizationRoundDownDiscount,omitempty"`
+	Zone                                *string  `json:"Zone,omitempty" xml:"Zone,omitempty"`
 }
 
 func (s DescribeInstanceDeductAmortizedCostByAmortizationPeriodResponseBodyDataItems) String() string {
@@ -5505,14 +7637,31 @@ func (s *DescribeInstanceDeductAmortizedCostByAmortizationPeriodResponse) SetBod
 
 type DescribePricingModuleRequest struct {
 	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The service code. You can query the service code by calling the **QueryProductList** operation.
+	// The service code. You can query the service code by calling the **QueryProductList*	- operation.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// rds
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	// The type of the service. You can query the service type by calling the **QueryProductList** operation.
+	// The type of the service. You can query the service type by calling the **QueryProductList*	- operation.
+	//
+	// example:
+	//
+	// rds
 	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
 	// The billing method. Valid values:
 	//
-	// *   Subscription: subscription
-	// *   PayAsYouGo: pay-as-you-go
+	// 	- Subscription: subscription
+	//
+	// 	- PayAsYouGo: pay-as-you-go
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Subscription
 	SubscriptionType *string `json:"SubscriptionType,omitempty" xml:"SubscriptionType,omitempty"`
 }
 
@@ -5546,14 +7695,30 @@ func (s *DescribePricingModuleRequest) SetSubscriptionType(v string) *DescribePr
 
 type DescribePricingModuleResponseBody struct {
 	// The status code.
+	//
+	// example:
+	//
+	// Success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The data returned.
 	Data *DescribePricingModuleResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The error message returned.
+	//
+	// example:
+	//
+	// This API is not applicable for caller.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// C40A8EE0-8084-49FE-B66E-5E1C3B6AE025
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -5634,10 +7799,22 @@ func (s *DescribePricingModuleResponseBodyDataAttributeList) SetAttribute(v []*D
 
 type DescribePricingModuleResponseBodyDataAttributeListAttribute struct {
 	// The code of the attribute.
+	//
+	// example:
+	//
+	// DBInstanceStorage
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The name of the attribute.
+	//
+	// example:
+	//
+	// Capacity
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The unit of the attribute.
+	//
+	// example:
+	//
+	// GB
 	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
 	// The attribute values.
 	Values *DescribePricingModuleResponseBodyDataAttributeListAttributeValues `json:"Values,omitempty" xml:"Values,omitempty" type:"Struct"`
@@ -5690,17 +7867,34 @@ func (s *DescribePricingModuleResponseBodyDataAttributeListAttributeValues) SetA
 
 type DescribePricingModuleResponseBodyDataAttributeListAttributeValuesAttributeValue struct {
 	// The attribute value that corresponds to the module code.
+	//
+	// example:
+	//
+	// 2 Cores and 4 GB Memory (Basic Edition)
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The description of the module values.
+	//
+	// example:
+	//
+	// Connections: 4,000 IOPS is related to storage space
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
 	// The type of the attribute value that corresponds to the module code. Valid values:
 	//
-	// *   single_float: single value
-	// *   range_float: range value
+	// 	- single_float: single value
+	//
+	// 	- range_float: range value
+	//
+	// example:
+	//
+	// single_string
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 	// The attribute value that corresponds to the module code.
 	//
 	// >  If the Type parameter is set to range_float, the valid values of this parameter range from 1024 to 1024000. A value of 1024 indicates that the step size is 1024.
+	//
+	// example:
+	//
+	// mysql.n2.medium.1
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -5752,19 +7946,40 @@ func (s *DescribePricingModuleResponseBodyDataModuleList) SetModule(v []*Describ
 type DescribePricingModuleResponseBodyDataModuleListModule struct {
 	ConfigList *DescribePricingModuleResponseBodyDataModuleListModuleConfigList `json:"ConfigList,omitempty" xml:"ConfigList,omitempty" type:"Struct"`
 	// The currency. Default value: CNY.
+	//
+	// example:
+	//
+	// CNY
 	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
 	// The code of the pricing module.
+	//
+	// example:
+	//
+	// InstanceType
 	ModuleCode *string `json:"ModuleCode,omitempty" xml:"ModuleCode,omitempty"`
 	// The name of the pricing module.
+	//
+	// example:
+	//
+	// Instance
 	ModuleName *string `json:"ModuleName,omitempty" xml:"ModuleName,omitempty"`
 	// The price type. Valid values:
 	//
-	// *   Usage: usage price
-	// *   Hour: hourly price
-	// *   Day: daily price
-	// *   Week: weekly price
-	// *   Month: monthly price
-	// *   Year: annual price
+	// 	- Usage: usage price
+	//
+	// 	- Hour: hourly price
+	//
+	// 	- Day: daily price
+	//
+	// 	- Week: weekly price
+	//
+	// 	- Month: monthly price
+	//
+	// 	- Year: annual price
+	//
+	// example:
+	//
+	// Month
 	PriceType *string `json:"PriceType,omitempty" xml:"PriceType,omitempty"`
 }
 
@@ -5853,23 +8068,54 @@ type DescribeProductAmortizedCostByAmortizationPeriodRequest struct {
 	// The ID of the member that needs to settle the bill. The member ID is used to filter bills. If you specify a value for this parameter, you can query the bills of the specified member. If you leave this parameter empty, the bills of the current account and all members of the current account are queried by default. You can specify a maximum of 10 IDs.
 	BillUserIdList []*string `json:"BillUserIdList,omitempty" xml:"BillUserIdList,omitempty" type:"Repeated"`
 	// The allocation month. Format: YYYY-MM.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2022-10
 	BillingCycle *string `json:"BillingCycle,omitempty" xml:"BillingCycle,omitempty"`
 	// The billing cycle that is used to filter bills. You can specify a maximum of 10 billing cycles.
 	ConsumePeriodFilter []*string `json:"ConsumePeriodFilter,omitempty" xml:"ConsumePeriodFilter,omitempty" type:"Repeated"`
 	// The code of the cost center.
+	//
+	// example:
+	//
+	// 123#
 	CostUnitCode *string `json:"CostUnitCode,omitempty" xml:"CostUnitCode,omitempty"`
 	// The maximum number of entries to return. Default value: 20. Maximum value: 300.
+	//
+	// example:
+	//
+	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The position from which the query starts. The parameter must be left empty or set to the value of the NextToken parameter returned from the last call. Otherwise, an error is returned. If this parameter is left empty, data is queried from the beginning.
+	//
+	// example:
+	//
+	// CAESEgoQCg4KCmdtdF9jcmVhdGUEARgBIkgKCQBwhGmPcAEAAAo7AzYAAAAxTDgwMDcxMjg3ZDJhNmM3ZDguTDgwMDAwMDAwMDAwMzE1MTIuTDgwMDcyZDMyZTJkYzg3N2U
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The code of the service. You can obtain the value of this parameter by calling the QueryProductList operation or the DescribeResourcePackageProduct operation.
+	//
+	// example:
+	//
+	// rds
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
 	// The specific service resource.
+	//
+	// example:
+	//
+	// rds
 	ProductDetail *string `json:"ProductDetail,omitempty" xml:"ProductDetail,omitempty"`
 	// The billing method. Valid values:
 	//
-	// *   Subscription: the subscription billing method
-	// *   PayAsYouGo: the pay-as-you-go billing method
+	// 	- Subscription: the subscription billing method
+	//
+	// 	- PayAsYouGo: the pay-as-you-go billing method
+	//
+	// example:
+	//
+	// Subscription
 	SubscriptionType *string `json:"SubscriptionType,omitempty" xml:"SubscriptionType,omitempty"`
 }
 
@@ -5933,14 +8179,30 @@ func (s *DescribeProductAmortizedCostByAmortizationPeriodRequest) SetSubscriptio
 
 type DescribeProductAmortizedCostByAmortizationPeriodResponseBody struct {
 	// The status code returned.
+	//
+	// example:
+	//
+	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The data returned.
 	Data *DescribeProductAmortizedCostByAmortizationPeriodResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The message returned.
+	//
+	// example:
+	//
+	// Successful！
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 79EE7556-0CFD-44EB-9CD6-B3B526E3A85F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request is successful.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -5979,16 +8241,36 @@ func (s *DescribeProductAmortizedCostByAmortizationPeriodResponseBody) SetSucces
 
 type DescribeProductAmortizedCostByAmortizationPeriodResponseBodyData struct {
 	// The ID of the account.
+	//
+	// example:
+	//
+	// 185766xxxx
 	AccountID *string `json:"AccountID,omitempty" xml:"AccountID,omitempty"`
 	// The name of the account.
+	//
+	// example:
+	//
+	// test@test.aliyunid.com
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
 	// The data entries returned.
 	Items []*DescribeProductAmortizedCostByAmortizationPeriodResponseBodyDataItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
 	// The maximum number of entries returned.
+	//
+	// example:
+	//
+	// 100
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The position from which the results started to return. The parameter must be left empty or set to the value of the NextToken parameter returned from the last call. Otherwise, an error is returned. If this parameter is left empty, data is queried from the beginning.
+	//
+	// example:
+	//
+	// CAESEgoQCg4KCmdtdF9jcmVhdGUEARgBIkgKCQBwhGmPcAEAAAo7AzYAAAAxTDgwMDcxMjg3ZDJhNmM3ZDguTDgwMDAwMDAwMDAwMzE1MTIuTDgwMDcyZDMyZTJkYzg3N2U
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The total number of returned entries.
+	//
+	// example:
+	//
+	// 100
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -6032,100 +8314,282 @@ func (s *DescribeProductAmortizedCostByAmortizationPeriodResponseBodyData) SetTo
 
 type DescribeProductAmortizedCostByAmortizationPeriodResponseBodyDataItems struct {
 	// The allocation month. Format: YYYYMM.
+	//
+	// example:
+	//
+	// 202210
 	AmortizationPeriod *string `json:"AmortizationPeriod,omitempty" xml:"AmortizationPeriod,omitempty"`
 	// The allocation status. Valid values:
 	//
-	// *   amortized: allocated
-	// *   unAmortized: not allocated
+	// 	- amortized: allocated
+	//
+	// 	- unAmortized: not allocated
+	//
+	// example:
+	//
+	// amortized
 	AmortizationStatus *string `json:"AmortizationStatus,omitempty" xml:"AmortizationStatus,omitempty"`
 	// The ID of the account to which the bill belongs.
+	//
+	// example:
+	//
+	// 185xxxxx489
 	BillAccountID *int64 `json:"BillAccountID,omitempty" xml:"BillAccountID,omitempty"`
 	// The name of the account to which the bill belongs.
+	//
+	// example:
+	//
+	// test@test.aliyunid.com
 	BillAccountName *string `json:"BillAccountName,omitempty" xml:"BillAccountName,omitempty"`
 	// The ID of the account to which the resource belongs.
+	//
+	// example:
+	//
+	// 185xxxxx489
 	BillOwnerID *int64 `json:"BillOwnerID,omitempty" xml:"BillOwnerID,omitempty"`
 	// The name of the account to which the resource belongs.
+	//
+	// example:
+	//
+	// test@test.aliyunid.com
 	BillOwnerName *string `json:"BillOwnerName,omitempty" xml:"BillOwnerName,omitempty"`
 	// The business type.
+	//
+	// example:
+	//
+	// trusteeship
 	BizType *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
 	// The billing cycle. Format: YYYYMM.
+	//
+	// example:
+	//
+	// 202210
 	ConsumePeriod *string `json:"ConsumePeriod,omitempty" xml:"ConsumePeriod,omitempty"`
 	// The amount deducted by using vouchers and allocated to the current allocation month.
+	//
+	// example:
+	//
+	// 0
 	CurrentAmortizationDeductedByCashCoupons *float64 `json:"CurrentAmortizationDeductedByCashCoupons,omitempty" xml:"CurrentAmortizationDeductedByCashCoupons,omitempty"`
 	// The amount deducted by using coupons and allocated to the current allocation month.
+	//
+	// example:
+	//
+	// 0
 	CurrentAmortizationDeductedByCoupons *float64 `json:"CurrentAmortizationDeductedByCoupons,omitempty" xml:"CurrentAmortizationDeductedByCoupons,omitempty"`
 	// The amount deducted by using prepaid cards and allocated to the current allocation month.
+	//
+	// example:
+	//
+	// 0
 	CurrentAmortizationDeductedByPrepaidCard *float64 `json:"CurrentAmortizationDeductedByPrepaidCard,omitempty" xml:"CurrentAmortizationDeductedByPrepaidCard,omitempty"`
 	// The expenditure amount allocated to the current allocation month. Invoicing is supported.
+	//
+	// example:
+	//
+	// 0
 	CurrentAmortizationExpenditureAmount *float64 `json:"CurrentAmortizationExpenditureAmount,omitempty" xml:"CurrentAmortizationExpenditureAmount,omitempty"`
 	// The discount amount allocated to the current allocation month.
+	//
+	// example:
+	//
+	// 0
 	CurrentAmortizationInvoiceDiscount *float64 `json:"CurrentAmortizationInvoiceDiscount,omitempty" xml:"CurrentAmortizationInvoiceDiscount,omitempty"`
 	// The pretax amount allocated to the current allocation month.
+	//
+	// example:
+	//
+	// 0
 	CurrentAmortizationPretaxAmount *float64 `json:"CurrentAmortizationPretaxAmount,omitempty" xml:"CurrentAmortizationPretaxAmount,omitempty"`
 	// The pretax gross amount allocated to the current allocation month.
+	//
+	// example:
+	//
+	// 0
 	CurrentAmortizationPretaxGrossAmount *float64 `json:"CurrentAmortizationPretaxGrossAmount,omitempty" xml:"CurrentAmortizationPretaxGrossAmount,omitempty"`
 	// The round-off amount allocated to the current allocation month.
+	//
+	// example:
+	//
+	// 0
 	CurrentAmortizationRoundDownDiscount *float64 `json:"CurrentAmortizationRoundDownDiscount,omitempty" xml:"CurrentAmortizationRoundDownDiscount,omitempty"`
 	// The amount deducted by using vouchers.
+	//
+	// example:
+	//
+	// 0
 	DeductedByCashCoupons *float64 `json:"DeductedByCashCoupons,omitempty" xml:"DeductedByCashCoupons,omitempty"`
 	// The amount deducted by using coupons.
+	//
+	// example:
+	//
+	// 0
 	DeductedByCoupons *float64 `json:"DeductedByCoupons,omitempty" xml:"DeductedByCoupons,omitempty"`
 	// The amount deducted by using prepaid cards.
+	//
+	// example:
+	//
+	// 0
 	DeductedByPrepaidCard *float64 `json:"DeductedByPrepaidCard,omitempty" xml:"DeductedByPrepaidCard,omitempty"`
 	// The expenditure amount. Invoicing is supported.
+	//
+	// example:
+	//
+	// 0
 	ExpenditureAmount *float64 `json:"ExpenditureAmount,omitempty" xml:"ExpenditureAmount,omitempty"`
 	// The discount amount.
+	//
+	// example:
+	//
+	// 0
 	InvoiceDiscount *float64 `json:"InvoiceDiscount,omitempty" xml:"InvoiceDiscount,omitempty"`
 	// The pretax amount.
+	//
+	// example:
+	//
+	// 0
 	PretaxAmount *float64 `json:"PretaxAmount,omitempty" xml:"PretaxAmount,omitempty"`
 	// The pretax gross amount.
+	//
+	// example:
+	//
+	// 0
 	PretaxGrossAmount *float64 `json:"PretaxGrossAmount,omitempty" xml:"PretaxGrossAmount,omitempty"`
 	// The amount deducted by using vouchers and allocated before the current allocation month.
+	//
+	// example:
+	//
+	// 0
 	PreviouslyAmortizedDeductedByCashCoupons *float64 `json:"PreviouslyAmortizedDeductedByCashCoupons,omitempty" xml:"PreviouslyAmortizedDeductedByCashCoupons,omitempty"`
 	// The amount deducted by using coupons and allocated before the current allocation month.
+	//
+	// example:
+	//
+	// 0
 	PreviouslyAmortizedDeductedByCoupons *float64 `json:"PreviouslyAmortizedDeductedByCoupons,omitempty" xml:"PreviouslyAmortizedDeductedByCoupons,omitempty"`
 	// The amount deducted by using prepaid cards and allocated before the current allocation month.
+	//
+	// example:
+	//
+	// 0
 	PreviouslyAmortizedDeductedByPrepaidCard *float64 `json:"PreviouslyAmortizedDeductedByPrepaidCard,omitempty" xml:"PreviouslyAmortizedDeductedByPrepaidCard,omitempty"`
 	// The expenditure amount allocated before the current allocation month. Invoicing is supported.
+	//
+	// example:
+	//
+	// 0
 	PreviouslyAmortizedExpenditureAmount *float64 `json:"PreviouslyAmortizedExpenditureAmount,omitempty" xml:"PreviouslyAmortizedExpenditureAmount,omitempty"`
 	// The discount amount allocated before the current allocation month.
+	//
+	// example:
+	//
+	// 0
 	PreviouslyAmortizedInvoiceDiscount *float64 `json:"PreviouslyAmortizedInvoiceDiscount,omitempty" xml:"PreviouslyAmortizedInvoiceDiscount,omitempty"`
 	// The pretax amount allocated before the current allocation month.
+	//
+	// example:
+	//
+	// 0
 	PreviouslyAmortizedPretaxAmount *float64 `json:"PreviouslyAmortizedPretaxAmount,omitempty" xml:"PreviouslyAmortizedPretaxAmount,omitempty"`
 	// The pretax gross amount allocated before the current allocation month.
+	//
+	// example:
+	//
+	// 0
 	PreviouslyAmortizedPretaxGrossAmount *float64 `json:"PreviouslyAmortizedPretaxGrossAmount,omitempty" xml:"PreviouslyAmortizedPretaxGrossAmount,omitempty"`
 	// The round-off amount allocated before the current allocation month.
+	//
+	// example:
+	//
+	// 0
 	PreviouslyAmortizedRoundDownDiscount *float64 `json:"PreviouslyAmortizedRoundDownDiscount,omitempty" xml:"PreviouslyAmortizedRoundDownDiscount,omitempty"`
 	// The code of the service.
+	//
+	// example:
+	//
+	// rds
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
 	// The specific service resource.
+	//
+	// example:
+	//
+	// ApsaraDB RDS
 	ProductDetail *string `json:"ProductDetail,omitempty" xml:"ProductDetail,omitempty"`
 	// The code of the specific service resource.
+	//
+	// example:
+	//
+	// rds
 	ProductDetailCode *string `json:"ProductDetailCode,omitempty" xml:"ProductDetailCode,omitempty"`
 	// The name of the service.
+	//
+	// example:
+	//
+	// ApsaraDB RDS
 	ProductName *string `json:"ProductName,omitempty" xml:"ProductName,omitempty"`
 	// The amount deducted by using vouchers and to be allocated to one or more future allocation months.
+	//
+	// example:
+	//
+	// 0
 	RemainingAmortizationDeductedByCashCoupons *float64 `json:"RemainingAmortizationDeductedByCashCoupons,omitempty" xml:"RemainingAmortizationDeductedByCashCoupons,omitempty"`
 	// The amount deducted by using coupons and to be allocated to one or more future allocation months.
+	//
+	// example:
+	//
+	// 0
 	RemainingAmortizationDeductedByCoupons *float64 `json:"RemainingAmortizationDeductedByCoupons,omitempty" xml:"RemainingAmortizationDeductedByCoupons,omitempty"`
 	// The amount deducted by using prepaid cards and to be allocated to one or more future allocation months.
+	//
+	// example:
+	//
+	// 0
 	RemainingAmortizationDeductedByPrepaidCard *float64 `json:"RemainingAmortizationDeductedByPrepaidCard,omitempty" xml:"RemainingAmortizationDeductedByPrepaidCard,omitempty"`
 	// The expenditure amount to be allocated to one or more future allocation months. Invoicing is supported.
+	//
+	// example:
+	//
+	// 0
 	RemainingAmortizationExpenditureAmount *float64 `json:"RemainingAmortizationExpenditureAmount,omitempty" xml:"RemainingAmortizationExpenditureAmount,omitempty"`
 	// The discount amount to be allocated to one or more future allocation months.
+	//
+	// example:
+	//
+	// 0
 	RemainingAmortizationInvoiceDiscount *float64 `json:"RemainingAmortizationInvoiceDiscount,omitempty" xml:"RemainingAmortizationInvoiceDiscount,omitempty"`
 	// The pretax amount to be allocated to one or more future allocation months.
+	//
+	// example:
+	//
+	// 0
 	RemainingAmortizationPretaxAmount *float64 `json:"RemainingAmortizationPretaxAmount,omitempty" xml:"RemainingAmortizationPretaxAmount,omitempty"`
 	// The pretax gross amount to be allocated to one or more future allocation months.
+	//
+	// example:
+	//
+	// 0
 	RemainingAmortizationPretaxGrossAmount *float64 `json:"RemainingAmortizationPretaxGrossAmount,omitempty" xml:"RemainingAmortizationPretaxGrossAmount,omitempty"`
 	// The round-off amount to be allocated to one or more future allocation months.
+	//
+	// example:
+	//
+	// 0
 	RemainingAmortizationRoundDownDiscount *float64 `json:"RemainingAmortizationRoundDownDiscount,omitempty" xml:"RemainingAmortizationRoundDownDiscount,omitempty"`
 	// The round-off amount.
+	//
+	// example:
+	//
+	// 0
 	RoundDownDiscount *float64 `json:"RoundDownDiscount,omitempty" xml:"RoundDownDiscount,omitempty"`
 	// The billing method. Valid values:
 	//
-	// *   Subscription: the subscription billing method
-	// *   PayAsYouGo: the pay-as-you-go billing method
+	// 	- Subscription: the subscription billing method
+	//
+	// 	- PayAsYouGo: the pay-as-you-go billing method
+	//
+	// example:
+	//
+	// PayAsYouGo
 	SubscriptionType *string `json:"SubscriptionType,omitempty" xml:"SubscriptionType,omitempty"`
 }
 
@@ -6395,13 +8859,36 @@ type DescribeProductAmortizedCostByConsumePeriodRequest struct {
 	AmortizationPeriodFilter []*string `json:"AmortizationPeriodFilter,omitempty" xml:"AmortizationPeriodFilter,omitempty" type:"Repeated"`
 	BillOwnerIdList          []*string `json:"BillOwnerIdList,omitempty" xml:"BillOwnerIdList,omitempty" type:"Repeated"`
 	BillUserIdList           []*string `json:"BillUserIdList,omitempty" xml:"BillUserIdList,omitempty" type:"Repeated"`
-	BillingCycle             *string   `json:"BillingCycle,omitempty" xml:"BillingCycle,omitempty"`
-	CostUnitCode             *string   `json:"CostUnitCode,omitempty" xml:"CostUnitCode,omitempty"`
-	MaxResults               *int32    `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken                *string   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	ProductCode              *string   `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	ProductDetail            *string   `json:"ProductDetail,omitempty" xml:"ProductDetail,omitempty"`
-	SubscriptionType         *string   `json:"SubscriptionType,omitempty" xml:"SubscriptionType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2022-10
+	BillingCycle *string `json:"BillingCycle,omitempty" xml:"BillingCycle,omitempty"`
+	// example:
+	//
+	// 123#
+	CostUnitCode *string `json:"CostUnitCode,omitempty" xml:"CostUnitCode,omitempty"`
+	// example:
+	//
+	// 20
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// example:
+	//
+	// CAESEgoQCg4KCmdtdF9jcmVhdGUEARgBIkgKCQBwhGmPcAEAAAo7AzYAAAAxTDgwMDcxMjg3ZDJhNmM3ZDguTDgwMDAwMDAwMDAwMzE1MTIuTDgwMDcyZDMyZTJkYzg3N2U
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// example:
+	//
+	// rds
+	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	// example:
+	//
+	// rds
+	ProductDetail *string `json:"ProductDetail,omitempty" xml:"ProductDetail,omitempty"`
+	// example:
+	//
+	// Subscription
+	SubscriptionType *string `json:"SubscriptionType,omitempty" xml:"SubscriptionType,omitempty"`
 }
 
 func (s DescribeProductAmortizedCostByConsumePeriodRequest) String() string {
@@ -6463,11 +8950,23 @@ func (s *DescribeProductAmortizedCostByConsumePeriodRequest) SetSubscriptionType
 }
 
 type DescribeProductAmortizedCostByConsumePeriodResponseBody struct {
-	Code      *string                                                      `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *DescribeProductAmortizedCostByConsumePeriodResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                                                      `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                                                        `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string                                                      `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *DescribeProductAmortizedCostByConsumePeriodResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// Successful！
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 79EE7556-0CFD-44EB-9CD6-B3B526E3A85F
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeProductAmortizedCostByConsumePeriodResponseBody) String() string {
@@ -6504,12 +9003,27 @@ func (s *DescribeProductAmortizedCostByConsumePeriodResponseBody) SetSuccess(v b
 }
 
 type DescribeProductAmortizedCostByConsumePeriodResponseBodyData struct {
-	AccountID   *string                                                             `json:"AccountID,omitempty" xml:"AccountID,omitempty"`
+	// example:
+	//
+	// 185766xxxx
+	AccountID *string `json:"AccountID,omitempty" xml:"AccountID,omitempty"`
+	// example:
+	//
+	// test@test.aliyunid.com
 	AccountName *string                                                             `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
 	Items       []*DescribeProductAmortizedCostByConsumePeriodResponseBodyDataItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
-	MaxResults  *int32                                                              `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken   *string                                                             `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	TotalCount  *int32                                                              `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// example:
+	//
+	// 100
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// example:
+	//
+	// CAESEgoQCg4KCmdtdF9jcmVhdGUEARgBIkgKCQBwhGmPcAEAAAo7AzYAAAAxTDgwMDcxMjg3ZDJhNmM3ZDguTDgwMDAwMDAwMDAwMzE1MTIuTDgwMDcyZDMyZTJkYzg3N2U
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// example:
+	//
+	// 100
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeProductAmortizedCostByConsumePeriodResponseBodyData) String() string {
@@ -6551,51 +9065,180 @@ func (s *DescribeProductAmortizedCostByConsumePeriodResponseBodyData) SetTotalCo
 }
 
 type DescribeProductAmortizedCostByConsumePeriodResponseBodyDataItems struct {
-	AmortizationPeriod                         *string  `json:"AmortizationPeriod,omitempty" xml:"AmortizationPeriod,omitempty"`
-	AmortizationStatus                         *string  `json:"AmortizationStatus,omitempty" xml:"AmortizationStatus,omitempty"`
-	BillAccountID                              *int64   `json:"BillAccountID,omitempty" xml:"BillAccountID,omitempty"`
-	BillAccountName                            *string  `json:"BillAccountName,omitempty" xml:"BillAccountName,omitempty"`
-	BillOwnerID                                *int64   `json:"BillOwnerID,omitempty" xml:"BillOwnerID,omitempty"`
-	BillOwnerName                              *string  `json:"BillOwnerName,omitempty" xml:"BillOwnerName,omitempty"`
-	BizType                                    *string  `json:"BizType,omitempty" xml:"BizType,omitempty"`
-	ConsumePeriod                              *string  `json:"ConsumePeriod,omitempty" xml:"ConsumePeriod,omitempty"`
-	CurrentAmortizationDeductedByCashCoupons   *float64 `json:"CurrentAmortizationDeductedByCashCoupons,omitempty" xml:"CurrentAmortizationDeductedByCashCoupons,omitempty"`
-	CurrentAmortizationDeductedByCoupons       *float64 `json:"CurrentAmortizationDeductedByCoupons,omitempty" xml:"CurrentAmortizationDeductedByCoupons,omitempty"`
-	CurrentAmortizationDeductedByPrepaidCard   *float64 `json:"CurrentAmortizationDeductedByPrepaidCard,omitempty" xml:"CurrentAmortizationDeductedByPrepaidCard,omitempty"`
-	CurrentAmortizationExpenditureAmount       *float64 `json:"CurrentAmortizationExpenditureAmount,omitempty" xml:"CurrentAmortizationExpenditureAmount,omitempty"`
-	CurrentAmortizationInvoiceDiscount         *float64 `json:"CurrentAmortizationInvoiceDiscount,omitempty" xml:"CurrentAmortizationInvoiceDiscount,omitempty"`
-	CurrentAmortizationPretaxAmount            *float64 `json:"CurrentAmortizationPretaxAmount,omitempty" xml:"CurrentAmortizationPretaxAmount,omitempty"`
-	CurrentAmortizationPretaxGrossAmount       *float64 `json:"CurrentAmortizationPretaxGrossAmount,omitempty" xml:"CurrentAmortizationPretaxGrossAmount,omitempty"`
-	CurrentAmortizationRoundDownDiscount       *float64 `json:"CurrentAmortizationRoundDownDiscount,omitempty" xml:"CurrentAmortizationRoundDownDiscount,omitempty"`
-	DeductedByCashCoupons                      *float64 `json:"DeductedByCashCoupons,omitempty" xml:"DeductedByCashCoupons,omitempty"`
-	DeductedByCoupons                          *float64 `json:"DeductedByCoupons,omitempty" xml:"DeductedByCoupons,omitempty"`
-	DeductedByPrepaidCard                      *float64 `json:"DeductedByPrepaidCard,omitempty" xml:"DeductedByPrepaidCard,omitempty"`
-	ExpenditureAmount                          *float64 `json:"ExpenditureAmount,omitempty" xml:"ExpenditureAmount,omitempty"`
-	InvoiceDiscount                            *float64 `json:"InvoiceDiscount,omitempty" xml:"InvoiceDiscount,omitempty"`
-	PretaxAmount                               *float64 `json:"PretaxAmount,omitempty" xml:"PretaxAmount,omitempty"`
-	PretaxGrossAmount                          *float64 `json:"PretaxGrossAmount,omitempty" xml:"PretaxGrossAmount,omitempty"`
-	PreviouslyAmortizedDeductedByCashCoupons   *float64 `json:"PreviouslyAmortizedDeductedByCashCoupons,omitempty" xml:"PreviouslyAmortizedDeductedByCashCoupons,omitempty"`
-	PreviouslyAmortizedDeductedByCoupons       *float64 `json:"PreviouslyAmortizedDeductedByCoupons,omitempty" xml:"PreviouslyAmortizedDeductedByCoupons,omitempty"`
-	PreviouslyAmortizedDeductedByPrepaidCard   *float64 `json:"PreviouslyAmortizedDeductedByPrepaidCard,omitempty" xml:"PreviouslyAmortizedDeductedByPrepaidCard,omitempty"`
-	PreviouslyAmortizedExpenditureAmount       *float64 `json:"PreviouslyAmortizedExpenditureAmount,omitempty" xml:"PreviouslyAmortizedExpenditureAmount,omitempty"`
-	PreviouslyAmortizedInvoiceDiscount         *float64 `json:"PreviouslyAmortizedInvoiceDiscount,omitempty" xml:"PreviouslyAmortizedInvoiceDiscount,omitempty"`
-	PreviouslyAmortizedPretaxAmount            *float64 `json:"PreviouslyAmortizedPretaxAmount,omitempty" xml:"PreviouslyAmortizedPretaxAmount,omitempty"`
-	PreviouslyAmortizedPretaxGrossAmount       *float64 `json:"PreviouslyAmortizedPretaxGrossAmount,omitempty" xml:"PreviouslyAmortizedPretaxGrossAmount,omitempty"`
-	PreviouslyAmortizedRoundDownDiscount       *float64 `json:"PreviouslyAmortizedRoundDownDiscount,omitempty" xml:"PreviouslyAmortizedRoundDownDiscount,omitempty"`
-	ProductCode                                *string  `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	ProductDetail                              *string  `json:"ProductDetail,omitempty" xml:"ProductDetail,omitempty"`
-	ProductDetailCode                          *string  `json:"ProductDetailCode,omitempty" xml:"ProductDetailCode,omitempty"`
-	ProductName                                *string  `json:"ProductName,omitempty" xml:"ProductName,omitempty"`
+	// example:
+	//
+	// 202210
+	AmortizationPeriod *string `json:"AmortizationPeriod,omitempty" xml:"AmortizationPeriod,omitempty"`
+	// example:
+	//
+	// amortized
+	AmortizationStatus *string `json:"AmortizationStatus,omitempty" xml:"AmortizationStatus,omitempty"`
+	// example:
+	//
+	// 185xxxxx489
+	BillAccountID *int64 `json:"BillAccountID,omitempty" xml:"BillAccountID,omitempty"`
+	// example:
+	//
+	// test@test.aliyunid.com
+	BillAccountName *string `json:"BillAccountName,omitempty" xml:"BillAccountName,omitempty"`
+	// example:
+	//
+	// 185xxxxx489
+	BillOwnerID *int64 `json:"BillOwnerID,omitempty" xml:"BillOwnerID,omitempty"`
+	// example:
+	//
+	// test@test.aliyunid.com
+	BillOwnerName *string `json:"BillOwnerName,omitempty" xml:"BillOwnerName,omitempty"`
+	// example:
+	//
+	// trusteeship
+	BizType *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
+	// example:
+	//
+	// 202210
+	ConsumePeriod *string `json:"ConsumePeriod,omitempty" xml:"ConsumePeriod,omitempty"`
+	// example:
+	//
+	// 0
+	CurrentAmortizationDeductedByCashCoupons *float64 `json:"CurrentAmortizationDeductedByCashCoupons,omitempty" xml:"CurrentAmortizationDeductedByCashCoupons,omitempty"`
+	// example:
+	//
+	// 0
+	CurrentAmortizationDeductedByCoupons *float64 `json:"CurrentAmortizationDeductedByCoupons,omitempty" xml:"CurrentAmortizationDeductedByCoupons,omitempty"`
+	// example:
+	//
+	// 0
+	CurrentAmortizationDeductedByPrepaidCard *float64 `json:"CurrentAmortizationDeductedByPrepaidCard,omitempty" xml:"CurrentAmortizationDeductedByPrepaidCard,omitempty"`
+	// example:
+	//
+	// 0
+	CurrentAmortizationExpenditureAmount *float64 `json:"CurrentAmortizationExpenditureAmount,omitempty" xml:"CurrentAmortizationExpenditureAmount,omitempty"`
+	// example:
+	//
+	// 0
+	CurrentAmortizationInvoiceDiscount *float64 `json:"CurrentAmortizationInvoiceDiscount,omitempty" xml:"CurrentAmortizationInvoiceDiscount,omitempty"`
+	// example:
+	//
+	// 0
+	CurrentAmortizationPretaxAmount *float64 `json:"CurrentAmortizationPretaxAmount,omitempty" xml:"CurrentAmortizationPretaxAmount,omitempty"`
+	// example:
+	//
+	// 0
+	CurrentAmortizationPretaxGrossAmount *float64 `json:"CurrentAmortizationPretaxGrossAmount,omitempty" xml:"CurrentAmortizationPretaxGrossAmount,omitempty"`
+	// example:
+	//
+	// 0
+	CurrentAmortizationRoundDownDiscount *float64 `json:"CurrentAmortizationRoundDownDiscount,omitempty" xml:"CurrentAmortizationRoundDownDiscount,omitempty"`
+	// example:
+	//
+	// 0
+	DeductedByCashCoupons *float64 `json:"DeductedByCashCoupons,omitempty" xml:"DeductedByCashCoupons,omitempty"`
+	// example:
+	//
+	// 0
+	DeductedByCoupons *float64 `json:"DeductedByCoupons,omitempty" xml:"DeductedByCoupons,omitempty"`
+	// example:
+	//
+	// 0
+	DeductedByPrepaidCard *float64 `json:"DeductedByPrepaidCard,omitempty" xml:"DeductedByPrepaidCard,omitempty"`
+	// example:
+	//
+	// 0
+	ExpenditureAmount *float64 `json:"ExpenditureAmount,omitempty" xml:"ExpenditureAmount,omitempty"`
+	// example:
+	//
+	// 0
+	InvoiceDiscount *float64 `json:"InvoiceDiscount,omitempty" xml:"InvoiceDiscount,omitempty"`
+	// example:
+	//
+	// 0
+	PretaxAmount *float64 `json:"PretaxAmount,omitempty" xml:"PretaxAmount,omitempty"`
+	// example:
+	//
+	// 0
+	PretaxGrossAmount *float64 `json:"PretaxGrossAmount,omitempty" xml:"PretaxGrossAmount,omitempty"`
+	// example:
+	//
+	// 0
+	PreviouslyAmortizedDeductedByCashCoupons *float64 `json:"PreviouslyAmortizedDeductedByCashCoupons,omitempty" xml:"PreviouslyAmortizedDeductedByCashCoupons,omitempty"`
+	// example:
+	//
+	// 0
+	PreviouslyAmortizedDeductedByCoupons *float64 `json:"PreviouslyAmortizedDeductedByCoupons,omitempty" xml:"PreviouslyAmortizedDeductedByCoupons,omitempty"`
+	// example:
+	//
+	// 0
+	PreviouslyAmortizedDeductedByPrepaidCard *float64 `json:"PreviouslyAmortizedDeductedByPrepaidCard,omitempty" xml:"PreviouslyAmortizedDeductedByPrepaidCard,omitempty"`
+	// example:
+	//
+	// 0
+	PreviouslyAmortizedExpenditureAmount *float64 `json:"PreviouslyAmortizedExpenditureAmount,omitempty" xml:"PreviouslyAmortizedExpenditureAmount,omitempty"`
+	// example:
+	//
+	// 0
+	PreviouslyAmortizedInvoiceDiscount *float64 `json:"PreviouslyAmortizedInvoiceDiscount,omitempty" xml:"PreviouslyAmortizedInvoiceDiscount,omitempty"`
+	// example:
+	//
+	// 0
+	PreviouslyAmortizedPretaxAmount *float64 `json:"PreviouslyAmortizedPretaxAmount,omitempty" xml:"PreviouslyAmortizedPretaxAmount,omitempty"`
+	// example:
+	//
+	// 0
+	PreviouslyAmortizedPretaxGrossAmount *float64 `json:"PreviouslyAmortizedPretaxGrossAmount,omitempty" xml:"PreviouslyAmortizedPretaxGrossAmount,omitempty"`
+	// example:
+	//
+	// 0
+	PreviouslyAmortizedRoundDownDiscount *float64 `json:"PreviouslyAmortizedRoundDownDiscount,omitempty" xml:"PreviouslyAmortizedRoundDownDiscount,omitempty"`
+	// example:
+	//
+	// rds
+	ProductCode   *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	ProductDetail *string `json:"ProductDetail,omitempty" xml:"ProductDetail,omitempty"`
+	// example:
+	//
+	// rds
+	ProductDetailCode *string `json:"ProductDetailCode,omitempty" xml:"ProductDetailCode,omitempty"`
+	ProductName       *string `json:"ProductName,omitempty" xml:"ProductName,omitempty"`
+	// example:
+	//
+	// 0
 	RemainingAmortizationDeductedByCashCoupons *float64 `json:"RemainingAmortizationDeductedByCashCoupons,omitempty" xml:"RemainingAmortizationDeductedByCashCoupons,omitempty"`
-	RemainingAmortizationDeductedByCoupons     *float64 `json:"RemainingAmortizationDeductedByCoupons,omitempty" xml:"RemainingAmortizationDeductedByCoupons,omitempty"`
+	// example:
+	//
+	// 0
+	RemainingAmortizationDeductedByCoupons *float64 `json:"RemainingAmortizationDeductedByCoupons,omitempty" xml:"RemainingAmortizationDeductedByCoupons,omitempty"`
+	// example:
+	//
+	// 0
 	RemainingAmortizationDeductedByPrepaidCard *float64 `json:"RemainingAmortizationDeductedByPrepaidCard,omitempty" xml:"RemainingAmortizationDeductedByPrepaidCard,omitempty"`
-	RemainingAmortizationExpenditureAmount     *float64 `json:"RemainingAmortizationExpenditureAmount,omitempty" xml:"RemainingAmortizationExpenditureAmount,omitempty"`
-	RemainingAmortizationInvoiceDiscount       *float64 `json:"RemainingAmortizationInvoiceDiscount,omitempty" xml:"RemainingAmortizationInvoiceDiscount,omitempty"`
-	RemainingAmortizationPretaxAmount          *float64 `json:"RemainingAmortizationPretaxAmount,omitempty" xml:"RemainingAmortizationPretaxAmount,omitempty"`
-	RemainingAmortizationPretaxGrossAmount     *float64 `json:"RemainingAmortizationPretaxGrossAmount,omitempty" xml:"RemainingAmortizationPretaxGrossAmount,omitempty"`
-	RemainingAmortizationRoundDownDiscount     *float64 `json:"RemainingAmortizationRoundDownDiscount,omitempty" xml:"RemainingAmortizationRoundDownDiscount,omitempty"`
-	RoundDownDiscount                          *float64 `json:"RoundDownDiscount,omitempty" xml:"RoundDownDiscount,omitempty"`
-	SubscriptionType                           *string  `json:"SubscriptionType,omitempty" xml:"SubscriptionType,omitempty"`
+	// example:
+	//
+	// 0
+	RemainingAmortizationExpenditureAmount *float64 `json:"RemainingAmortizationExpenditureAmount,omitempty" xml:"RemainingAmortizationExpenditureAmount,omitempty"`
+	// example:
+	//
+	// 0
+	RemainingAmortizationInvoiceDiscount *float64 `json:"RemainingAmortizationInvoiceDiscount,omitempty" xml:"RemainingAmortizationInvoiceDiscount,omitempty"`
+	// example:
+	//
+	// 0
+	RemainingAmortizationPretaxAmount *float64 `json:"RemainingAmortizationPretaxAmount,omitempty" xml:"RemainingAmortizationPretaxAmount,omitempty"`
+	// example:
+	//
+	// 0
+	RemainingAmortizationPretaxGrossAmount *float64 `json:"RemainingAmortizationPretaxGrossAmount,omitempty" xml:"RemainingAmortizationPretaxGrossAmount,omitempty"`
+	// example:
+	//
+	// 0
+	RemainingAmortizationRoundDownDiscount *float64 `json:"RemainingAmortizationRoundDownDiscount,omitempty" xml:"RemainingAmortizationRoundDownDiscount,omitempty"`
+	// example:
+	//
+	// 0
+	RoundDownDiscount *float64 `json:"RoundDownDiscount,omitempty" xml:"RoundDownDiscount,omitempty"`
+	// example:
+	//
+	// PayAsYouGo
+	SubscriptionType *string `json:"SubscriptionType,omitempty" xml:"SubscriptionType,omitempty"`
 }
 
 func (s DescribeProductAmortizedCostByConsumePeriodResponseBodyDataItems) String() string {
@@ -6862,20 +9505,54 @@ func (s *DescribeProductAmortizedCostByConsumePeriodResponse) SetBody(v *Describ
 
 type DescribeResourceCoverageDetailRequest struct {
 	// The ID of the account for which you want to query coverage details. If you do not set this parameter, the data of the current Alibaba Cloud account and its RAM users is queried. To query the data of a RAM user, specify the ID of the RAM user.
+	//
+	// example:
+	//
+	// 123745698925000
 	BillOwnerId *int64 `json:"BillOwnerId,omitempty" xml:"BillOwnerId,omitempty"`
 	// The end of the time range to query. The end is excluded from the time range. If you do not set this parameter, the end time is the current time. Specify the time in the format of yyyy-MM-dd HH:mm:ss.
+	//
+	// example:
+	//
+	// 2021-01-02 00:00:00
 	EndPeriod *string `json:"EndPeriod,omitempty" xml:"EndPeriod,omitempty"`
 	// The maximum number of entries to return. Default value: 20. Maximum value: 300.
+	//
+	// example:
+	//
+	// 200
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The token that is used to retrieve the next page of results. You do not need to set this parameter if you query coverage details within a specific time range for the first time. The response returns a token that you can use to query coverage details that are displayed on the next page. If a null value is returned for the NextToken parameter, no more coverage details can be queried.
+	//
+	// example:
+	//
+	// eyJwYWdlTnVtIjoyLCJwYWdlU2l6ZSI6MTB9
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The time granularity at which coverage details are queried. Valid values: MONTH, DAY, and HOUR.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// HOUR
 	PeriodType *string `json:"PeriodType,omitempty" xml:"PeriodType,omitempty"`
 	// The type of deduction plans whose coverage details are queried. Valid values: RI and SCU.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// RI
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	// The beginning of the time range to query.
 	//
 	// The beginning is included in the time range. Specify the time in the format of yyyy-MM-dd HH:mm:ss.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2021-01-01 00:00:00
 	StartPeriod *string `json:"StartPeriod,omitempty" xml:"StartPeriod,omitempty"`
 }
 
@@ -6924,14 +9601,30 @@ func (s *DescribeResourceCoverageDetailRequest) SetStartPeriod(v string) *Descri
 
 type DescribeResourceCoverageDetailResponseBody struct {
 	// The status code.
+	//
+	// example:
+	//
+	// Success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The returned data.
 	Data *DescribeResourceCoverageDetailResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The message returned.
+	//
+	// example:
+	//
+	// Successful!
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 79EE7556-0CFD-44EB-9CD6-B3B526E3A85F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the operation was successful.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -6972,10 +9665,22 @@ type DescribeResourceCoverageDetailResponseBodyData struct {
 	// The data entries.
 	Items []*DescribeResourceCoverageDetailResponseBodyDataItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
 	// The number of entries returned on the current page.
+	//
+	// example:
+	//
+	// 200
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The token of the next page.
+	//
+	// example:
+	//
+	// eyJwYWdlTnVtIjoyLCJwYWdlU2l6ZSI6MTB9
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 10000
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -7011,40 +9716,100 @@ type DescribeResourceCoverageDetailResponseBodyDataItems struct {
 	// The unit that is used to measure the resources deducted from deduction plans.
 	CapacityUnit *string `json:"CapacityUnit,omitempty" xml:"CapacityUnit,omitempty"`
 	// The code of the service.
+	//
+	// example:
+	//
+	// ecs
 	CommodityCode *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
 	// The name and billing method of the service.
 	CommodityName *string `json:"CommodityName,omitempty" xml:"CommodityName,omitempty"`
 	// The coverage rate of a deduction plan.
+	//
+	// example:
+	//
+	// 1
 	CoveragePercentage *float32 `json:"CoveragePercentage,omitempty" xml:"CoveragePercentage,omitempty"`
 	// The currency in which deduction plans were priced.
+	//
+	// example:
+	//
+	// CNY
 	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
 	// The amount of the resources deducted from a deduction plan.
+	//
+	// example:
+	//
+	// 1
 	DeductQuantity *float32 `json:"DeductQuantity,omitempty" xml:"DeductQuantity,omitempty"`
 	// The end of the time range in which the coverage details were queried.
+	//
+	// example:
+	//
+	// 2021-04-01 01:00:00
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The ID of a pay-as-you-go instance.
+	//
+	// example:
+	//
+	// i-bp1d9x623987rlj0dx4xx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The specifications of a deduction plan.
+	//
+	// example:
+	//
+	// ecs.t5-lc2m1.nano
 	InstanceSpec *string `json:"InstanceSpec,omitempty" xml:"InstanceSpec,omitempty"`
 	// The amount of the bill.
+	//
+	// example:
+	//
+	// 0
 	PaymentAmount *float32 `json:"PaymentAmount,omitempty" xml:"PaymentAmount,omitempty"`
 	// The code of the service.
+	//
+	// example:
+	//
+	// ecs
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
 	// The name of the service.
 	ProductName *string `json:"ProductName,omitempty" xml:"ProductName,omitempty"`
 	// The region.
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
 	// The code of the region.
+	//
+	// example:
+	//
+	// cn-hangzhou-dg-a01
 	RegionNo *string `json:"RegionNo,omitempty" xml:"RegionNo,omitempty"`
 	// The beginning of the time range in which the coverage details were queried.
+	//
+	// example:
+	//
+	// 2021-04-01 00:00:00
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// The total amount of resources consumed.
+	//
+	// example:
+	//
+	// 1
 	TotalQuantity *float32 `json:"TotalQuantity,omitempty" xml:"TotalQuantity,omitempty"`
 	// The ID of the account.
+	//
+	// example:
+	//
+	// 123745698925000
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 	// The username of the account.
+	//
+	// example:
+	//
+	// test13@test.aliyun.com
 	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 	// The code of the zone.
+	//
+	// example:
+	//
+	// cn-hangzhou-i
 	Zone *string `json:"Zone,omitempty" xml:"Zone,omitempty"`
 	// The zone.
 	ZoneName *string `json:"ZoneName,omitempty" xml:"ZoneName,omitempty"`
@@ -7189,14 +9954,40 @@ func (s *DescribeResourceCoverageDetailResponse) SetBody(v *DescribeResourceCove
 
 type DescribeResourceCoverageTotalRequest struct {
 	// The ID of the account for which you want to query total coverage data. If you do not set this parameter, the data of the current Alibaba Cloud account and its RAM users is queried. To query the data of a RAM user, specify the ID of the RAM user.
+	//
+	// example:
+	//
+	// 123745698925000
 	BillOwnerId *int64 `json:"BillOwnerId,omitempty" xml:"BillOwnerId,omitempty"`
 	// The end of the time range to query. The end is excluded from the time range. If you do not set this parameter, the end time is the current time. Specify the time in the format of yyyy-MM-dd HH:mm:ss.
+	//
+	// example:
+	//
+	// 2021-01-02 00:00:00
 	EndPeriod *string `json:"EndPeriod,omitempty" xml:"EndPeriod,omitempty"`
 	// The time granularity at which total coverage data is queried. Valid values: MONTH, DAY, and HOUR.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// HOUR
 	PeriodType *string `json:"PeriodType,omitempty" xml:"PeriodType,omitempty"`
 	// The type of deduction plans whose total coverage data is queried. Valid values: RI and SCU.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// RI
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	// The beginning of the time range to query. The beginning is included in the time range. Specify the time in the format of yyyy-MM-dd HH:mm:ss.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2021-01-01 00:00:00
 	StartPeriod *string `json:"StartPeriod,omitempty" xml:"StartPeriod,omitempty"`
 }
 
@@ -7235,14 +10026,30 @@ func (s *DescribeResourceCoverageTotalRequest) SetStartPeriod(v string) *Describ
 
 type DescribeResourceCoverageTotalResponseBody struct {
 	// The status code.
+	//
+	// example:
+	//
+	// Success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The returned data.
 	Data *DescribeResourceCoverageTotalResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The message returned.
+	//
+	// example:
+	//
+	// Successful!
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 79EE7556-0CFD-44EB-9CD6-B3B526E3A85F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the operation was successful.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -7306,10 +10113,18 @@ func (s *DescribeResourceCoverageTotalResponseBodyData) SetTotalCoverage(v *Desc
 
 type DescribeResourceCoverageTotalResponseBodyDataPeriodCoverage struct {
 	// The coverage rate of deduction plans within the specified period.
+	//
+	// example:
+	//
+	// 0.1
 	CoveragePercentage *float32 `json:"CoveragePercentage,omitempty" xml:"CoveragePercentage,omitempty"`
 	// The period.
 	//
 	// The value is in the format of yyyyMMddHH.
+	//
+	// example:
+	//
+	// 2020110100
 	Period *string `json:"Period,omitempty" xml:"Period,omitempty"`
 }
 
@@ -7335,10 +10150,22 @@ type DescribeResourceCoverageTotalResponseBodyDataTotalCoverage struct {
 	// The unit that is used to measure the resources deducted from deduction plans.
 	CapacityUnit *string `json:"CapacityUnit,omitempty" xml:"CapacityUnit,omitempty"`
 	// The total coverage rate of deduction plans.
+	//
+	// example:
+	//
+	// 1
 	CoveragePercentage *float32 `json:"CoveragePercentage,omitempty" xml:"CoveragePercentage,omitempty"`
 	// The total amount of the resources deducted from deduction plans.
+	//
+	// example:
+	//
+	// 1
 	DeductQuantity *float32 `json:"DeductQuantity,omitempty" xml:"DeductQuantity,omitempty"`
 	// The total amount of resources consumed.
+	//
+	// example:
+	//
+	// 1
 	TotalQuantity *float32 `json:"TotalQuantity,omitempty" xml:"TotalQuantity,omitempty"`
 }
 
@@ -7401,6 +10228,12 @@ func (s *DescribeResourceCoverageTotalResponse) SetBody(v *DescribeResourceCover
 
 type DescribeResourcePackageProductRequest struct {
 	// The code of the service.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ossbag
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
 }
 
@@ -7419,16 +10252,36 @@ func (s *DescribeResourcePackageProductRequest) SetProductCode(v string) *Descri
 
 type DescribeResourcePackageProductResponseBody struct {
 	// The status code returned.
+	//
+	// example:
+	//
+	// Success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The data returned.
 	Data *DescribeResourcePackageProductResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The message returned.
+	//
+	// example:
+	//
+	// Successful!
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The ID of the order.
+	//
+	// example:
+	//
+	// 72353765387
 	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// BBEF51A3-E933-4F40-A534-C673CBDB9C80
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request is successful.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -7507,12 +10360,24 @@ func (s *DescribeResourcePackageProductResponseBodyDataResourcePackages) SetReso
 
 type DescribeResourcePackageProductResponseBodyDataResourcePackagesResourcePackage struct {
 	// The name of the resource plan.
+	//
+	// example:
+	//
+	// Object Storage Service (OSS) resource plan (monthly)
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The types of the resource plans.
 	PackageTypes *DescribeResourcePackageProductResponseBodyDataResourcePackagesResourcePackagePackageTypes `json:"PackageTypes,omitempty" xml:"PackageTypes,omitempty" type:"Struct"`
 	// The code of the service.
+	//
+	// example:
+	//
+	// ossbag
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
 	// The type of the service.
+	//
+	// example:
+	//
+	// ossbag
 	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
 }
 
@@ -7563,8 +10428,16 @@ func (s *DescribeResourcePackageProductResponseBodyDataResourcePackagesResourceP
 
 type DescribeResourcePackageProductResponseBodyDataResourcePackagesResourcePackagePackageTypesPackageType struct {
 	// The code of the resource plan.
+	//
+	// example:
+	//
+	// FPT_ossbag_deadlineAcc_CdnOut_common_sz
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The name of the resource plan type.
+	//
+	// example:
+	//
+	// Back-to-origin traffic plan - China (Shenzhen)
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The properties of the resource plan.
 	Properties *DescribeResourcePackageProductResponseBodyDataResourcePackagesResourcePackagePackageTypesPackageTypeProperties `json:"Properties,omitempty" xml:"Properties,omitempty" type:"Struct"`
@@ -7619,8 +10492,16 @@ func (s *DescribeResourcePackageProductResponseBodyDataResourcePackagesResourceP
 
 type DescribeResourcePackageProductResponseBodyDataResourcePackagesResourcePackagePackageTypesPackageTypePropertiesProperty struct {
 	// The name of the property.
+	//
+	// example:
+	//
+	// region
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The value of the property.
+	//
+	// example:
+	//
+	// cn-shenzhen
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -7663,8 +10544,16 @@ type DescribeResourcePackageProductResponseBodyDataResourcePackagesResourcePacka
 	// The validity periods available for the resource plan.
 	AvailableDurations *DescribeResourcePackageProductResponseBodyDataResourcePackagesResourcePackagePackageTypesPackageTypeSpecificationsSpecificationAvailableDurations `json:"AvailableDurations,omitempty" xml:"AvailableDurations,omitempty" type:"Struct"`
 	// The name of the specification.
+	//
+	// example:
+	//
+	// 1TB
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The value of the specification.
+	//
+	// example:
+	//
+	// 1024
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -7710,15 +10599,28 @@ func (s *DescribeResourcePackageProductResponseBodyDataResourcePackagesResourceP
 
 type DescribeResourcePackageProductResponseBodyDataResourcePackagesResourcePackagePackageTypesPackageTypeSpecificationsSpecificationAvailableDurationsAvailableDuration struct {
 	// The name of the validity period.
+	//
+	// example:
+	//
+	// 6 Month
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The unit of the validity period for the resource plan. Valid values:
 	//
-	// *   Month
-	// *   Year
+	// 	- Month
+	//
+	// 	- Year
 	//
 	// Default value: Month.
+	//
+	// example:
+	//
+	// Month
 	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
 	// The value of the validity period.
+	//
+	// example:
+	//
+	// 6
 	Value *int32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -7775,18 +10677,51 @@ func (s *DescribeResourcePackageProductResponse) SetBody(v *DescribeResourcePack
 }
 
 type DescribeResourceUsageDetailRequest struct {
+	// example:
+	//
+	// 123745698925000
 	BillOwnerId *int64 `json:"BillOwnerId,omitempty" xml:"BillOwnerId,omitempty"`
 	// The end of the time range to query. The end is excluded from the time range. If you do not set this parameter, the end time is the current time. Specify the time in the format of yyyy-MM-dd HH:mm:ss.
+	//
+	// example:
+	//
+	// 2021-01-02 00:00:00
 	EndPeriod *string `json:"EndPeriod,omitempty" xml:"EndPeriod,omitempty"`
 	// The maximum number of entries to return. Default value: 20. Maximum value: 300.
+	//
+	// example:
+	//
+	// 200
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The token that is used to retrieve the next page of results. You do not need to set this parameter if you query usage details within a specific time range for the first time. The response returns a token that you can use to query usage details that are displayed on the next page. If a null value is returned for the NextToken parameter, no more usage details can be queried.
+	//
+	// example:
+	//
+	// eyJwYWdlTnVtIjoyLCJwYWdlU2l6ZSI6MTB9
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The time granularity at which usage details are queried. Valid values: MONTH, DAY, and HOUR.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// HOUR
 	PeriodType *string `json:"PeriodType,omitempty" xml:"PeriodType,omitempty"`
 	// The type of deduction plans whose usage details are queried. Valid values: RI and SCU.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// RI
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	// The beginning of the time range to query. The beginning is included in the time range. Specify the time in the format of yyyy-MM-dd HH:mm:ss.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2021-01-01 00:00:00
 	StartPeriod *string `json:"StartPeriod,omitempty" xml:"StartPeriod,omitempty"`
 }
 
@@ -7835,14 +10770,30 @@ func (s *DescribeResourceUsageDetailRequest) SetStartPeriod(v string) *DescribeR
 
 type DescribeResourceUsageDetailResponseBody struct {
 	// The status code.
+	//
+	// example:
+	//
+	// Success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The returned data.
 	Data *DescribeResourceUsageDetailResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The message returned.
+	//
+	// example:
+	//
+	// Successful!
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 79EE7556-0CFD-44EB-9CD6-B3B526E3A85F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the operation was successful.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -7883,10 +10834,22 @@ type DescribeResourceUsageDetailResponseBodyData struct {
 	// The data entries.
 	Items []*DescribeResourceUsageDetailResponseBodyDataItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
 	// The number of entries returned on the current page.
+	//
+	// example:
+	//
+	// 200
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The token of the next page.
+	//
+	// example:
+	//
+	// eyJwYWdlTnVtIjoyLCJwYWdlU2l6ZSI6MTB9
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 10000
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -7922,46 +10885,122 @@ type DescribeResourceUsageDetailResponseBodyDataItems struct {
 	// The unit that is used to measure the resources deducted from deduction plans.
 	CapacityUnit *string `json:"CapacityUnit,omitempty" xml:"CapacityUnit,omitempty"`
 	// The currency in which deduction plans were priced.
+	//
+	// example:
+	//
+	// CNY
 	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
 	// The amount of the resources deducted from deduction plans.
+	//
+	// example:
+	//
+	// 1
 	DeductQuantity *float32 `json:"DeductQuantity,omitempty" xml:"DeductQuantity,omitempty"`
 	// The end of the time range in which the usage details were queried.
+	//
+	// example:
+	//
+	// 2021-04-01 01:00:00
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The operating system.
+	//
+	// example:
+	//
+	// linux
 	ImageType *string `json:"ImageType,omitempty" xml:"ImageType,omitempty"`
 	// The specifications of a deduction plan.
+	//
+	// example:
+	//
+	// ecs.t5-lc2m1.nano
 	InstanceSpec *string `json:"InstanceSpec,omitempty" xml:"InstanceSpec,omitempty"`
 	// The equivalent of pay-as-you-go costs.
+	//
+	// example:
+	//
+	// 0.06
 	PostpaidCost *string `json:"PostpaidCost,omitempty" xml:"PostpaidCost,omitempty"`
 	// The potential net savings.
+	//
+	// example:
+	//
+	// 0.13
 	PotentialSavedCost *string `json:"PotentialSavedCost,omitempty" xml:"PotentialSavedCost,omitempty"`
 	// The number of deduction plans.
+	//
+	// example:
+	//
+	// 2
 	Quantity *int64 `json:"Quantity,omitempty" xml:"Quantity,omitempty"`
 	// The region.
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
 	// The code of the region.
+	//
+	// example:
+	//
+	// cn-hangzhou-dg-a01
 	RegionNo *string `json:"RegionNo,omitempty" xml:"RegionNo,omitempty"`
 	// The fee of purchased deduction plans.
+	//
+	// example:
+	//
+	// 0
 	ReservationCost *string `json:"ReservationCost,omitempty" xml:"ReservationCost,omitempty"`
 	// The ID of a deduction plan.
+	//
+	// example:
+	//
+	// ecsri-bp147nnfz21225k9mpix00
 	ResourceInstanceId *string `json:"ResourceInstanceId,omitempty" xml:"ResourceInstanceId,omitempty"`
 	// The net savings.
+	//
+	// example:
+	//
+	// 0.06
 	SavedCost *string `json:"SavedCost,omitempty" xml:"SavedCost,omitempty"`
 	// The beginning of the time range in which the usage details were queried.
+	//
+	// example:
+	//
+	// 2021-04-01 00:00:00
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// The status of the deduction plan.
+	//
+	// example:
+	//
+	// Valid
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The name of the state.
 	StatusName *string `json:"StatusName,omitempty" xml:"StatusName,omitempty"`
 	// The total capacity of deduction plans.
+	//
+	// example:
+	//
+	// 2
 	TotalQuantity *float32 `json:"TotalQuantity,omitempty" xml:"TotalQuantity,omitempty"`
 	// The usage of deduction plans.
+	//
+	// example:
+	//
+	// 0.5
 	UsagePercentage *float32 `json:"UsagePercentage,omitempty" xml:"UsagePercentage,omitempty"`
 	// The ID of the account.
+	//
+	// example:
+	//
+	// 123745698925000
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 	// The username of the account.
+	//
+	// example:
+	//
+	// test@aliyun.com
 	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 	// The code of the zone.
+	//
+	// example:
+	//
+	// cn-hangzhou-i
 	Zone *string `json:"Zone,omitempty" xml:"Zone,omitempty"`
 	// The zone.
 	ZoneName *string `json:"ZoneName,omitempty" xml:"ZoneName,omitempty"`
@@ -8121,14 +11160,40 @@ func (s *DescribeResourceUsageDetailResponse) SetBody(v *DescribeResourceUsageDe
 
 type DescribeResourceUsageTotalRequest struct {
 	// The ID of the account whose data you want to query. If you do not specify this parameter, the data of the current account and its linked accounts is queried. To query the data of a linked account, specify the ID of the linked account. You can specify only one account ID.
+	//
+	// example:
+	//
+	// 123745698925000
 	BillOwnerId *int64 `json:"BillOwnerId,omitempty" xml:"BillOwnerId,omitempty"`
 	// The end of the time range to query. Specify the time in the yyyy-MM-dd HH:mm:ss format. The specified time is excluded from the time range. If you do not specify this parameter, this parameter is set to the current time.
+	//
+	// example:
+	//
+	// 2021-01-02 00:00:00
 	EndPeriod *string `json:"EndPeriod,omitempty" xml:"EndPeriod,omitempty"`
 	// The time granularity at which the data is queried. Valid values: MONTH, DAY, and HOUR.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// HOUR
 	PeriodType *string `json:"PeriodType,omitempty" xml:"PeriodType,omitempty"`
 	// The type of the resource plan. Valid values: RI and SCU.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// RI
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	// The beginning of the time range to query. Specify the time in the yyyy-MM-dd HH:mm:ss format. The specified time is included in the time range.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2021-01-01 00:00:00
 	StartPeriod *string `json:"StartPeriod,omitempty" xml:"StartPeriod,omitempty"`
 }
 
@@ -8167,14 +11232,30 @@ func (s *DescribeResourceUsageTotalRequest) SetStartPeriod(v string) *DescribeRe
 
 type DescribeResourceUsageTotalResponseBody struct {
 	// The response code.
+	//
+	// example:
+	//
+	// Success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The queried data.
 	Data *DescribeResourceUsageTotalResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The returned message. If the request was successful, a success message is returned. If the request failed, an error message is returned.
+	//
+	// example:
+	//
+	// Successful!
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 364C7C81-5E5E-51A0-B738-1969D2671B05
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful.
+	//
+	// example:
+	//
+	// True
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -8238,8 +11319,16 @@ func (s *DescribeResourceUsageTotalResponseBodyData) SetTotalUsage(v *DescribeRe
 
 type DescribeResourceUsageTotalResponseBodyDataPeriodCoverage struct {
 	// The period.
+	//
+	// example:
+	//
+	// 2021071500
 	Period *string `json:"Period,omitempty" xml:"Period,omitempty"`
 	// The usage of resource plans.
+	//
+	// example:
+	//
+	// 0.1
 	UsagePercentage *float32 `json:"UsagePercentage,omitempty" xml:"UsagePercentage,omitempty"`
 }
 
@@ -8263,14 +11352,34 @@ func (s *DescribeResourceUsageTotalResponseBodyDataPeriodCoverage) SetUsagePerce
 
 type DescribeResourceUsageTotalResponseBodyDataTotalUsage struct {
 	// The total costs of pay-as-you-go instances.
+	//
+	// example:
+	//
+	// 200
 	PostpaidCost *float32 `json:"PostpaidCost,omitempty" xml:"PostpaidCost,omitempty"`
 	// The total potential savings.
+	//
+	// example:
+	//
+	// 100
 	PotentialSavedCost *float32 `json:"PotentialSavedCost,omitempty" xml:"PotentialSavedCost,omitempty"`
 	// The fee of purchased resource plans.
+	//
+	// example:
+	//
+	// 10
 	ReservationCost *float32 `json:"ReservationCost,omitempty" xml:"ReservationCost,omitempty"`
 	// The total savings.
+	//
+	// example:
+	//
+	// 100
 	SavedCost *float32 `json:"SavedCost,omitempty" xml:"SavedCost,omitempty"`
 	// The total usage of resource plans.
+	//
+	// example:
+	//
+	// 1
 	UsagePercentage *float32 `json:"UsagePercentage,omitempty" xml:"UsagePercentage,omitempty"`
 }
 
@@ -8338,16 +11447,44 @@ func (s *DescribeResourceUsageTotalResponse) SetBody(v *DescribeResourceUsageTot
 
 type DescribeSavingsPlansCoverageDetailRequest struct {
 	// The ID of the account for which you want to query coverage details. If you do not set this parameter, the data of the current Alibaba Cloud account and its RAM users is queried. To query the data of a RAM user, specify the ID of the RAM user.
+	//
+	// example:
+	//
+	// 123745698925000
 	BillOwnerId *int64 `json:"BillOwnerId,omitempty" xml:"BillOwnerId,omitempty"`
 	// The end of the time range to query. The end is excluded from the time range. If you do not set this parameter, the end time is the current time. Specify the time in the format of yyyy-MM-dd HH:mm:ss.
+	//
+	// example:
+	//
+	// 2021-08-09 00:00:00
 	EndPeriod *string `json:"EndPeriod,omitempty" xml:"EndPeriod,omitempty"`
 	// The maximum number of entries to return. Default value: 20. Maximum value: 300.
+	//
+	// example:
+	//
+	// 300
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The time granularity at which coverage details are queried. Valid values: MONTH, DAY, and HOUR.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// DAY
 	PeriodType *string `json:"PeriodType,omitempty" xml:"PeriodType,omitempty"`
 	// The beginning of the time range to query. The beginning is included in the time range. Specify the time in the format of yyyy-MM-dd HH:mm:ss.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2021-07-15 13:40:45
 	StartPeriod *string `json:"StartPeriod,omitempty" xml:"StartPeriod,omitempty"`
 	// The token that is used to retrieve the next page of results. You do not need to set this parameter if you query coverage details within a specific time range for the first time. The response returns a token that you can use to query coverage details that are displayed on the next page. If a null value is returned for the NextToken parameter, no more coverage details can be queried.
+	//
+	// example:
+	//
+	// eyJwYWdlTnVtIjoyLCJwYWdlU2l6ZSI6MTB9
 	Token *string `json:"Token,omitempty" xml:"Token,omitempty"`
 }
 
@@ -8391,14 +11528,30 @@ func (s *DescribeSavingsPlansCoverageDetailRequest) SetToken(v string) *Describe
 
 type DescribeSavingsPlansCoverageDetailResponseBody struct {
 	// The status code.
+	//
+	// example:
+	//
+	// Success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The return data.
 	Data *DescribeSavingsPlansCoverageDetailResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The message returned.
+	//
+	// example:
+	//
+	// Successful!
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 79EE7556-0CFD-44EB-9CD6-B3B526E3A85F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the operation was successful.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -8439,8 +11592,16 @@ type DescribeSavingsPlansCoverageDetailResponseBodyData struct {
 	// The data entries.
 	Items []*DescribeSavingsPlansCoverageDetailResponseBodyDataItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
 	// The token of the next page.
+	//
+	// example:
+	//
+	// eyJwYWdlTnVtIjoyLCJwYWdlU2l6ZSI6MTB9
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The total number of entries.
+	//
+	// example:
+	//
+	// 400
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -8469,29 +11630,73 @@ func (s *DescribeSavingsPlansCoverageDetailResponseBodyData) SetTotalCount(v int
 
 type DescribeSavingsPlansCoverageDetailResponseBodyDataItems struct {
 	// The coverage.
+	//
+	// example:
+	//
+	// 0.9
 	CoveragePercentage *float32 `json:"CoveragePercentage,omitempty" xml:"CoveragePercentage,omitempty"`
 	// The currency.
+	//
+	// example:
+	//
+	// CNY
 	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
 	// The deducted amount.
+	//
+	// example:
+	//
+	// 100
 	DeductAmount *float32 `json:"DeductAmount,omitempty" xml:"DeductAmount,omitempty"`
 	// The end time.
+	//
+	// example:
+	//
+	// 2021-05-05 15:00:00
 	EndPeriod *string `json:"EndPeriod,omitempty" xml:"EndPeriod,omitempty"`
 	// The ID of the instance.
+	//
+	// example:
+	//
+	// spn-a1fhs54c243hP22
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The specifications.
+	//
+	// example:
+	//
+	// 7th_generation_X86_group
 	InstanceSpec *string `json:"InstanceSpec,omitempty" xml:"InstanceSpec,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The pay-as-you-go cost.
+	//
+	// example:
+	//
+	// 200
 	PostpaidCost *float32 `json:"PostpaidCost,omitempty" xml:"PostpaidCost,omitempty"`
 	// The region.
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
 	// The start time.
+	//
+	// example:
+	//
+	// 2021-05-05 14:00:00
 	StartPeriod *string `json:"StartPeriod,omitempty" xml:"StartPeriod,omitempty"`
 	// The total expenditure.
+	//
+	// example:
+	//
+	// 100
 	TotalAmount *float32 `json:"TotalAmount,omitempty" xml:"TotalAmount,omitempty"`
 	// The ID of the account.
+	//
+	// example:
+	//
+	// 2831685687844416
 	UserId *int64 `json:"UserId,omitempty" xml:"UserId,omitempty"`
 	// The username of the account.
+	//
+	// example:
+	//
+	// tester1@test.aliyun.com
 	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 }
 
@@ -8599,12 +11804,32 @@ func (s *DescribeSavingsPlansCoverageDetailResponse) SetBody(v *DescribeSavingsP
 
 type DescribeSavingsPlansCoverageTotalRequest struct {
 	// The ID of the account for which you want to query coverage summary. If you do not set this parameter, the data of the current Alibaba Cloud account and its RAM users is queried. To query the data of a RAM user, specify the ID of the RAM user.
+	//
+	// example:
+	//
+	// 123745698925000
 	BillOwnerId *int64 `json:"BillOwnerId,omitempty" xml:"BillOwnerId,omitempty"`
 	// The end of the time range to query. The end is excluded from the time range. If you do not set this parameter, the end time is the current time. Specify the time in the format of yyyy-MM-dd HH:mm:ss.
+	//
+	// example:
+	//
+	// 2021-07-20 00:00:00
 	EndPeriod *string `json:"EndPeriod,omitempty" xml:"EndPeriod,omitempty"`
 	// The time granularity at which coverage summary are queried. Valid values: MONTH, DAY, and HOUR.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// HOUR
 	PeriodType *string `json:"PeriodType,omitempty" xml:"PeriodType,omitempty"`
 	// The beginning of the time range to query. The beginning is included in the time range. Specify the time in the format of yyyy-MM-dd HH:mm:ss.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2021-07-15 00:00:00
 	StartPeriod *string `json:"StartPeriod,omitempty" xml:"StartPeriod,omitempty"`
 }
 
@@ -8638,14 +11863,30 @@ func (s *DescribeSavingsPlansCoverageTotalRequest) SetStartPeriod(v string) *Des
 
 type DescribeSavingsPlansCoverageTotalResponseBody struct {
 	// The status code.
+	//
+	// example:
+	//
+	// Success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The return data.
 	Data *DescribeSavingsPlansCoverageTotalResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The message returned.
+	//
+	// example:
+	//
+	// Successful!
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 79EE7556-0CFD-44EB-9CD6-B3B526E3A85F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the operation was successful.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -8709,10 +11950,18 @@ func (s *DescribeSavingsPlansCoverageTotalResponseBodyData) SetTotalCoverage(v *
 
 type DescribeSavingsPlansCoverageTotalResponseBodyDataPeriodCoverage struct {
 	// The coverage.
+	//
+	// example:
+	//
+	// 1
 	Percentage *float32 `json:"Percentage,omitempty" xml:"Percentage,omitempty"`
 	// The period.
 	//
 	// The value is in the format of yyyyMMddHH.
+	//
+	// example:
+	//
+	// 2021071500
 	Period *string `json:"Period,omitempty" xml:"Period,omitempty"`
 }
 
@@ -8736,8 +11985,16 @@ func (s *DescribeSavingsPlansCoverageTotalResponseBodyDataPeriodCoverage) SetPer
 
 type DescribeSavingsPlansCoverageTotalResponseBodyDataTotalCoverage struct {
 	// The total coverage.
+	//
+	// example:
+	//
+	// 1
 	CoveragePercentage *float32 `json:"CoveragePercentage,omitempty" xml:"CoveragePercentage,omitempty"`
 	// The total deducted amount.
+	//
+	// example:
+	//
+	// 100
 	DeductAmount *float32 `json:"DeductAmount,omitempty" xml:"DeductAmount,omitempty"`
 }
 
@@ -8790,16 +12047,44 @@ func (s *DescribeSavingsPlansCoverageTotalResponse) SetBody(v *DescribeSavingsPl
 
 type DescribeSavingsPlansUsageDetailRequest struct {
 	// The ID of the account for which you want to query usage details. If you do not set this parameter, the data of the current Alibaba Cloud account and its RAM users is queried. To query the data of a RAM user, specify the ID of the RAM user.
+	//
+	// example:
+	//
+	// 123745698925000
 	BillOwnerId *int64 `json:"BillOwnerId,omitempty" xml:"BillOwnerId,omitempty"`
 	// The end of the time range to query. The end is excluded from the time range. If you do not set this parameter, the end time is the current time. Specify the time in the format of yyyy-MM-dd HH:mm:ss.
+	//
+	// example:
+	//
+	// 2021-01-02 00:00:00
 	EndPeriod *string `json:"EndPeriod,omitempty" xml:"EndPeriod,omitempty"`
 	// The maximum number of entries to return. Default value: 20. Maximum value: 300.
+	//
+	// example:
+	//
+	// 300
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The time granularity at which usage details are queried. Valid values: MONTH, DAY, and HOUR.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// HOUR
 	PeriodType *string `json:"PeriodType,omitempty" xml:"PeriodType,omitempty"`
 	// The beginning of the time range to query. The beginning is included in the time range. Specify the time in the format of yyyy-MM-dd HH:mm:ss.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2021-01-01 00:00:00
 	StartPeriod *string `json:"StartPeriod,omitempty" xml:"StartPeriod,omitempty"`
 	// The token that is used to retrieve the next page of results. You do not need to set this parameter if you query usage details within a specific time range for the first time. The response returns a token that you can use to query usage details that are displayed on the next page. If a null value is returned for the NextToken parameter, no more coverage details can be queried.
+	//
+	// example:
+	//
+	// eyJwYWdlTnVtIjoyLCJwYWdlU2l6ZSI6MTB9
 	Token *string `json:"Token,omitempty" xml:"Token,omitempty"`
 }
 
@@ -8843,14 +12128,30 @@ func (s *DescribeSavingsPlansUsageDetailRequest) SetToken(v string) *DescribeSav
 
 type DescribeSavingsPlansUsageDetailResponseBody struct {
 	// The status code.
+	//
+	// example:
+	//
+	// Success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The return data.
 	Data *DescribeSavingsPlansUsageDetailResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The message returned.
+	//
+	// example:
+	//
+	// Successful!
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 79EE7556-0CFD-44EB-9CD6-B3B526E3A85F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the operation was successful.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -8891,8 +12192,16 @@ type DescribeSavingsPlansUsageDetailResponseBodyData struct {
 	// The data entries.
 	Items []*DescribeSavingsPlansUsageDetailResponseBodyDataItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
 	// The token of the next page.
+	//
+	// example:
+	//
+	// eyJwYWdlTnVtIjoyLCJwYWdlU2ldhsSI6MTB9
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The total number of entries.
+	//
+	// example:
+	//
+	// 1000
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -8921,32 +12230,80 @@ func (s *DescribeSavingsPlansUsageDetailResponseBodyData) SetTotalCount(v int32)
 
 type DescribeSavingsPlansUsageDetailResponseBodyDataItems struct {
 	// The currency.
+	//
+	// example:
+	//
+	// CNY
 	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
 	// The used amount of the savings plan.
+	//
+	// example:
+	//
+	// 3.94
 	DeductValue *float32 `json:"DeductValue,omitempty" xml:"DeductValue,omitempty"`
 	// The end time.
+	//
+	// example:
+	//
+	// 2021-08-09 00:00:00
 	EndPeriod *string `json:"EndPeriod,omitempty" xml:"EndPeriod,omitempty"`
 	// The ID of the instance.
+	//
+	// example:
+	//
+	// spn-a1fhs54c243hP22
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The total amount of the savings plan.
+	//
+	// example:
+	//
+	// 29.84
 	PoolValue *float32 `json:"PoolValue,omitempty" xml:"PoolValue,omitempty"`
 	// The pay-as-you-go cost.
+	//
+	// example:
+	//
+	// 4.2
 	PostpaidCost *float32 `json:"PostpaidCost,omitempty" xml:"PostpaidCost,omitempty"`
 	// The amount that is saved.
+	//
+	// example:
+	//
+	// 0.08
 	SavedCost *float32 `json:"SavedCost,omitempty" xml:"SavedCost,omitempty"`
 	// The start time.
+	//
+	// example:
+	//
+	// 2021-08-01 00:00:00
 	StartPeriod *string `json:"StartPeriod,omitempty" xml:"StartPeriod,omitempty"`
 	// The status of the instance.
 	//
 	// A value of -1 indicates that the payment is overdue. A value of 1 indicates that the instance is active.
+	//
+	// example:
+	//
+	// -1
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The type of the savings plan. Valid values: universal and ECS compute.
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 	// The usage.
+	//
+	// example:
+	//
+	// 0.9
 	UsagePercentage *float32 `json:"UsagePercentage,omitempty" xml:"UsagePercentage,omitempty"`
 	// The ID of the account.
+	//
+	// example:
+	//
+	// 123745698925000
 	UserId *int64 `json:"UserId,omitempty" xml:"UserId,omitempty"`
 	// The username of the account.
+	//
+	// example:
+	//
+	// test13@test.aliyun.com
 	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 }
 
@@ -9054,12 +12411,32 @@ func (s *DescribeSavingsPlansUsageDetailResponse) SetBody(v *DescribeSavingsPlan
 
 type DescribeSavingsPlansUsageTotalRequest struct {
 	// The ID of the account for which you want to query usage summary. If you do not set this parameter, the data of the current Alibaba Cloud account and its RAM users is queried. To query the data of a RAM user, specify the ID of the RAM user.
+	//
+	// example:
+	//
+	// 123745698925000
 	BillOwnerId *int64 `json:"BillOwnerId,omitempty" xml:"BillOwnerId,omitempty"`
 	// The end of the time range to query. The end is excluded from the time range. If you do not set this parameter, the end time is the current time. Specify the time in the format of yyyy-MM-dd HH:mm:ss.
+	//
+	// example:
+	//
+	// 2021-01-02 00:00:00
 	EndPeriod *string `json:"EndPeriod,omitempty" xml:"EndPeriod,omitempty"`
 	// The time granularity at which usage summary are queried. Valid values: MONTH, DAY, and HOUR.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// HOUR
 	PeriodType *string `json:"PeriodType,omitempty" xml:"PeriodType,omitempty"`
 	// The beginning of the time range to query. The beginning is included in the time range. Specify the time in the format of yyyy-MM-dd HH:mm:ss.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2021-01-01 00:00:00
 	StartPeriod *string `json:"StartPeriod,omitempty" xml:"StartPeriod,omitempty"`
 }
 
@@ -9093,14 +12470,30 @@ func (s *DescribeSavingsPlansUsageTotalRequest) SetStartPeriod(v string) *Descri
 
 type DescribeSavingsPlansUsageTotalResponseBody struct {
 	// The status code.
+	//
+	// example:
+	//
+	// Success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The return data.
 	Data *DescribeSavingsPlansUsageTotalResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The message returned.
+	//
+	// example:
+	//
+	// Successful!
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 79EE7556-0CFD-44EB-9CD6-B3B526E3A85F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the operation was successful.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -9164,10 +12557,18 @@ func (s *DescribeSavingsPlansUsageTotalResponseBodyData) SetTotalUsage(v *Descri
 
 type DescribeSavingsPlansUsageTotalResponseBodyDataPeriodCoverage struct {
 	// The usage.
+	//
+	// example:
+	//
+	// 1
 	Percentage *float32 `json:"Percentage,omitempty" xml:"Percentage,omitempty"`
 	// The period.
 	//
 	// The value is in the format of yyyyMMddHH.
+	//
+	// example:
+	//
+	// 2021041500
 	Period *string `json:"Period,omitempty" xml:"Period,omitempty"`
 }
 
@@ -9191,12 +12592,28 @@ func (s *DescribeSavingsPlansUsageTotalResponseBodyDataPeriodCoverage) SetPeriod
 
 type DescribeSavingsPlansUsageTotalResponseBodyDataTotalUsage struct {
 	// The total amount of the savings plan.
+	//
+	// example:
+	//
+	// 100
 	PoolValue *float32 `json:"PoolValue,omitempty" xml:"PoolValue,omitempty"`
 	// The pay-as-you-go cost.
+	//
+	// example:
+	//
+	// 200
 	PostpaidCost *float32 `json:"PostpaidCost,omitempty" xml:"PostpaidCost,omitempty"`
 	// The amount that is saved.
+	//
+	// example:
+	//
+	// 100
 	SavedCost *float32 `json:"SavedCost,omitempty" xml:"SavedCost,omitempty"`
 	// The total usage.
+	//
+	// example:
+	//
+	// 1
 	UsagePercentage *float32 `json:"UsagePercentage,omitempty" xml:"UsagePercentage,omitempty"`
 }
 
@@ -9259,33 +12676,81 @@ func (s *DescribeSavingsPlansUsageTotalResponse) SetBody(v *DescribeSavingsPlans
 
 type DescribeSplitItemBillRequest struct {
 	// The ID of the member. If you specify this parameter, the bills of the member are queried. If you do not specify this parameter, the bills of the current account are queried by default.
+	//
+	// example:
+	//
+	// 123
 	BillOwnerId *int64 `json:"BillOwnerId,omitempty" xml:"BillOwnerId,omitempty"`
 	// The billing cycle. Specify the parameter in the YYYY-MM format.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2020-03
 	BillingCycle *string `json:"BillingCycle,omitempty" xml:"BillingCycle,omitempty"`
 	// The billing date. This parameter is required only when the Granularity parameter is set to DAILY. Format: YYYY-MM-DD.
+	//
+	// example:
+	//
+	// 2020-03-02
 	BillingDate *string `json:"BillingDate,omitempty" xml:"BillingDate,omitempty"`
 	// The granularity at which bills are queried. Valid values:
 	//
-	// *   MONTHLY: queries bills on a monthly basis. The data that you query is the same as the data that is queried by billing cycles in the Split Bill module of the User Center console.
-	// *   DAILY: queries bills on a daily basis. The data that you query is the same as the data that is queried by days in the Split Bill module of the User Center console.
+	// 	- MONTHLY: queries bills on a monthly basis. The data that you query is the same as the data that is queried by billing cycles in the Split Bill module of the User Center console.
+	//
+	// 	- DAILY: queries bills on a daily basis. The data that you query is the same as the data that is queried by days in the Split Bill module of the User Center console.
 	//
 	// If you specify DAILY for this parameter, the BillingDate parameter is required.
+	//
+	// example:
+	//
+	// Monthly
 	Granularity *string `json:"Granularity,omitempty" xml:"Granularity,omitempty"`
 	// The ID of the instance.
+	//
+	// example:
+	//
+	// i-kjhdskjgshfdlkjfdh
 	InstanceID       *string `json:"InstanceID,omitempty" xml:"InstanceID,omitempty"`
 	IsHideZeroCharge *bool   `json:"IsHideZeroCharge,omitempty" xml:"IsHideZeroCharge,omitempty"`
 	// The maximum number of entries to query. Default value: 20. Maximum value: 300.
+	//
+	// example:
+	//
+	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The token that is used for the next query. The parameter must be left empty or set to the value of the NextToken parameter returned in the last call. Otherwise, an error is returned. If the parameter is left empty, the data is queried from the first entry.
+	//
+	// example:
+	//
+	// CAESEgoQCg4KCmd
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	OwnerId   *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	PipCode   *string `json:"PipCode,omitempty" xml:"PipCode,omitempty"`
 	// The code of the service.
+	//
+	// example:
+	//
+	// rds
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
 	// The type of the service.
+	//
+	// example:
+	//
+	// rds
 	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
 	// The ID of the split item.
+	//
+	// example:
+	//
+	// i-kjhdskjgshfdlkjfdh
 	SplitItemID *string `json:"SplitItemID,omitempty" xml:"SplitItemID,omitempty"`
 	// The billing method. Valid values: Subscription: the subscription billing method. PayAsYouGo: the pay-as-you-go billing method. This parameter must be used with the ProductCode parameter.
+	//
+	// example:
+	//
+	// PayAsYouGo
 	SubscriptionType *string `json:"SubscriptionType,omitempty" xml:"SubscriptionType,omitempty"`
 	// The tags that are used to filter split bills. You can specify multiple tag values. If you specify multiple tag values, split bills that match one of the tag values are queried.
 	TagFilter []*DescribeSplitItemBillRequestTagFilter `json:"TagFilter,omitempty" xml:"TagFilter,omitempty" type:"Repeated"`
@@ -9344,6 +12809,11 @@ func (s *DescribeSplitItemBillRequest) SetOwnerId(v int64) *DescribeSplitItemBil
 	return s
 }
 
+func (s *DescribeSplitItemBillRequest) SetPipCode(v string) *DescribeSplitItemBillRequest {
+	s.PipCode = &v
+	return s
+}
+
 func (s *DescribeSplitItemBillRequest) SetProductCode(v string) *DescribeSplitItemBillRequest {
 	s.ProductCode = &v
 	return s
@@ -9372,14 +12842,25 @@ func (s *DescribeSplitItemBillRequest) SetTagFilter(v []*DescribeSplitItemBillRe
 type DescribeSplitItemBillRequestTagFilter struct {
 	// The TagFilter.N parameter is used to query bills that match a specified tag. The value of the TagFilter.N parameter must be a key-value pair. The tag key must be 1 to 128 characters in length. Valid values of N: 1 to 20.
 	//
-	// *   If only the TagFilter.N.TagKey parameter is specified, all bills associated with the tag key are queried.
-	// *   If you specify multiple tag key-value pairs at the same time, bills that meet any one of the tag key-value pairs are queried.
-	// *   If the tags added to resources change, you can query only the bills that are generated within the period in which the tags and resources are associated.
+	// 	- If only the TagFilter.N.TagKey parameter is specified, all bills associated with the tag key are queried.
+	//
+	// 	- If you specify multiple tag key-value pairs at the same time, bills that meet any one of the tag key-value pairs are queried.
+	//
+	// 	- If the tags added to resources change, you can query only the bills that are generated within the period in which the tags and resources are associated.
+	//
+	// example:
+	//
+	// TestKey
 	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
 	// You can specify the TagValues.N parameter to query bills that match the specified tag value. The value of the TagValues.N parameter must be a string. The tag value must be 1 to 128 characters in length. Valid values of N: 1 to 20.
 	//
-	// *   If you specify the TagValues.N parameter, the TagFilter.N.TagKey parameter is required. Otherwise, the error message InvalidParameter.TagValues is returned.
-	// *   If you specify multiple tag values, split bills that match one of the tag values are queried.
+	// 	- If you specify the TagValues.N parameter, the TagFilter.N.TagKey parameter is required. Otherwise, the error message InvalidParameter.TagValues is returned.
+	//
+	// 	- If you specify multiple tag values, split bills that match one of the tag values are queried.
+	//
+	// example:
+	//
+	// TestValue
 	TagValues []*string `json:"TagValues,omitempty" xml:"TagValues,omitempty" type:"Repeated"`
 }
 
@@ -9403,14 +12884,30 @@ func (s *DescribeSplitItemBillRequestTagFilter) SetTagValues(v []*string) *Descr
 
 type DescribeSplitItemBillResponseBody struct {
 	// The status code.
+	//
+	// example:
+	//
+	// Success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The data returned.
 	Data *DescribeSplitItemBillResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The error message returned.
+	//
+	// example:
+	//
+	// Successful!
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 79EE7556-0CFD-44EB-9CD6-B3B526E3A85F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -9449,18 +12946,42 @@ func (s *DescribeSplitItemBillResponseBody) SetSuccess(v bool) *DescribeSplitIte
 
 type DescribeSplitItemBillResponseBodyData struct {
 	// The ID of the account.
+	//
+	// example:
+	//
+	// 185xxxx3489
 	AccountID *string `json:"AccountID,omitempty" xml:"AccountID,omitempty"`
 	// The ID of the account.
+	//
+	// example:
+	//
+	// test@test.aliyunid.com
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
 	// The billing cycle. Format: YYYY-MM.
+	//
+	// example:
+	//
+	// 2020-03
 	BillingCycle *string `json:"BillingCycle,omitempty" xml:"BillingCycle,omitempty"`
 	// The details of the bill.
 	Items []*DescribeSplitItemBillResponseBodyDataItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
 	// The maximum number of entries returned.
+	//
+	// example:
+	//
+	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The token used for the next query. If this parameter is empty, all the results are returned. When you perform the next query, you must set the NextToken parameter to this value.
+	//
+	// example:
+	//
+	// CAESEgoQCg4K
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 20
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -9509,112 +13030,328 @@ func (s *DescribeSplitItemBillResponseBodyData) SetTotalCount(v int32) *Describe
 
 type DescribeSplitItemBillResponseBodyDataItems struct {
 	// The amount deducted with credit refund.
+	//
+	// example:
+	//
+	// 0
 	AdjustAmount *float32 `json:"AdjustAmount,omitempty" xml:"AdjustAmount,omitempty"`
 	// The ID of the account to which the bill belongs.
+	//
+	// example:
+	//
+	// 185xxxx3489
 	BillAccountID *string `json:"BillAccountID,omitempty" xml:"BillAccountID,omitempty"`
 	// The name of the account to which the bill belongs.
+	//
+	// example:
+	//
+	// test@test.aliyunid.com
 	BillAccountName *string `json:"BillAccountName,omitempty" xml:"BillAccountName,omitempty"`
 	// The billing date. Format: YYYY-MM-DD. This parameter is not supported.
+	//
+	// example:
+	//
+	// 2020-01-20
 	BillingDate *string `json:"BillingDate,omitempty" xml:"BillingDate,omitempty"`
 	// The billable item.
+	//
+	// example:
+	//
+	// Bandwidth
 	BillingItem *string `json:"BillingItem,omitempty" xml:"BillingItem,omitempty"`
 	// The code of the billable item.
+	//
+	// example:
+	//
+	// disk
 	BillingItemCode *string `json:"BillingItemCode,omitempty" xml:"BillingItemCode,omitempty"`
 	// The billing method.
+	//
+	// example:
+	//
+	// Other
 	BillingType *string `json:"BillingType,omitempty" xml:"BillingType,omitempty"`
 	// The type of the business.
+	//
+	// example:
+	//
+	// trusteeship
 	BizType *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
 	// The amount paid in cash. The amount deducted with credit refund is not included.
+	//
+	// example:
+	//
+	// 0
 	CashAmount *float32 `json:"CashAmount,omitempty" xml:"CashAmount,omitempty"`
 	// The code of the commodity. The code is the same as that displayed in the Split Bill module of the User Center console.
+	//
+	// example:
+	//
+	// rds
 	CommodityCode *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
 	// The cost center.
+	//
+	// example:
+	//
+	// Not allocated
 	CostUnit *string `json:"CostUnit,omitempty" xml:"CostUnit,omitempty"`
 	// The type of currency. Valid values: CNY, USD, and JPY.
+	//
+	// example:
+	//
+	// CNY
 	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
 	// The amount deducted with vouchers.
+	//
+	// example:
+	//
+	// 0
 	DeductedByCashCoupons *float32 `json:"DeductedByCashCoupons,omitempty" xml:"DeductedByCashCoupons,omitempty"`
 	// The amount deducted with coupons.
+	//
+	// example:
+	//
+	// 0
 	DeductedByCoupons *float32 `json:"DeductedByCoupons,omitempty" xml:"DeductedByCoupons,omitempty"`
 	// The amount deducted with prepaid cards.
+	//
+	// example:
+	//
+	// 0
 	DeductedByPrepaidCard *float32 `json:"DeductedByPrepaidCard,omitempty" xml:"DeductedByPrepaidCard,omitempty"`
 	// The amount deducted with resource plans.
+	//
+	// example:
+	//
+	// 0
 	DeductedByResourcePackage *string `json:"DeductedByResourcePackage,omitempty" xml:"DeductedByResourcePackage,omitempty"`
 	// The configurations of the instance.
+	//
+	// example:
+	//
+	// CPU:12
 	InstanceConfig *string `json:"InstanceConfig,omitempty" xml:"InstanceConfig,omitempty"`
 	// The ID of the instance.
+	//
+	// example:
+	//
+	// i-kjhdskjgshfdlkjfdh
 	InstanceID *string `json:"InstanceID,omitempty" xml:"InstanceID,omitempty"`
 	// The type of the instance.
+	//
+	// example:
+	//
+	// ecs.sn1ne.3xlarge
 	InstanceSpec *string `json:"InstanceSpec,omitempty" xml:"InstanceSpec,omitempty"`
 	// The public IP address.
+	//
+	// example:
+	//
+	// 34.xx.x.x
 	InternetIP *string `json:"InternetIP,omitempty" xml:"InternetIP,omitempty"`
 	// The private IP address.
+	//
+	// example:
+	//
+	// 192.xx.xx.xx
 	IntranetIP *string `json:"IntranetIP,omitempty" xml:"IntranetIP,omitempty"`
 	// The discount amount.
+	//
+	// example:
+	//
+	// 0
 	InvoiceDiscount *float32 `json:"InvoiceDiscount,omitempty" xml:"InvoiceDiscount,omitempty"`
 	// The type of the bill. Valid values: SubscriptionOrder: the subscription bill. PayAsYouGoBill: the pay-as-you-go bill. Refund: the refund. Adjustment: the adjustment bill.
+	//
+	// example:
+	//
+	// PayAsYouGoBill
 	Item *string `json:"Item,omitempty" xml:"Item,omitempty"`
 	// The name of the split item.
+	//
+	// example:
+	//
+	// iZ28bycvyb4Z
 	ItemName *string `json:"ItemName,omitempty" xml:"ItemName,omitempty"`
 	// The unit price.
+	//
+	// example:
+	//
+	// 0.12
 	ListPrice *string `json:"ListPrice,omitempty" xml:"ListPrice,omitempty"`
 	// The unit of the unit price.
+	//
+	// example:
+	//
+	// CNY/GB
 	ListPriceUnit *string `json:"ListPriceUnit,omitempty" xml:"ListPriceUnit,omitempty"`
 	// The name of the instance.
+	//
+	// example:
+	//
+	// nick
 	NickName *string `json:"NickName,omitempty" xml:"NickName,omitempty"`
 	// The amount that is unsettled.
+	//
+	// example:
+	//
+	// 0.1
 	OutstandingAmount *float32 `json:"OutstandingAmount,omitempty" xml:"OutstandingAmount,omitempty"`
 	// The ID of the account that owns the resource. This parameter is returned in multi-account scenario.
+	//
+	// example:
+	//
+	// 169***013
 	OwnerID *string `json:"OwnerID,omitempty" xml:"OwnerID,omitempty"`
 	// The amount paid in cash. The amount deducted with credit refund is included.
+	//
+	// example:
+	//
+	// 0
 	PaymentAmount *float32 `json:"PaymentAmount,omitempty" xml:"PaymentAmount,omitempty"`
 	// The code of the service. The code is the same as that displayed in the Split Bill module of the User Center console.
+	//
+	// example:
+	//
+	// rds
 	PipCode *string `json:"PipCode,omitempty" xml:"PipCode,omitempty"`
 	// The pretax amount.
+	//
+	// example:
+	//
+	// 0
 	PretaxAmount *float32 `json:"PretaxAmount,omitempty" xml:"PretaxAmount,omitempty"`
 	// The pretax gross amount.
+	//
+	// example:
+	//
+	// 0
 	PretaxGrossAmount *float32 `json:"PretaxGrossAmount,omitempty" xml:"PretaxGrossAmount,omitempty"`
 	// The code of the service.
+	//
+	// example:
+	//
+	// rds
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
 	// The details of the service.
+	//
+	// example:
+	//
+	// ApsaraDB RDS
 	ProductDetail *string `json:"ProductDetail,omitempty" xml:"ProductDetail,omitempty"`
 	// The name of the service.
+	//
+	// example:
+	//
+	// ApsaraDB RDS
 	ProductName *string `json:"ProductName,omitempty" xml:"ProductName,omitempty"`
 	// The type of the service.
+	//
+	// example:
+	//
+	// rds
 	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
 	// The ID of the region.
+	//
+	// example:
+	//
+	// China (Hangzhou)
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
 	// The ID of the resource group.
+	//
+	// example:
+	//
+	// Default resource group
 	ResourceGroup *string `json:"ResourceGroup,omitempty" xml:"ResourceGroup,omitempty"`
 	// The duration of the service.
+	//
+	// example:
+	//
+	// 20
 	ServicePeriod *string `json:"ServicePeriod,omitempty" xml:"ServicePeriod,omitempty"`
 	// The unit of the service duration.
+	//
+	// example:
+	//
+	// Hour
 	ServicePeriodUnit *string `json:"ServicePeriodUnit,omitempty" xml:"ServicePeriodUnit,omitempty"`
 	// The ID of the account to which the split bill belongs.
+	//
+	// example:
+	//
+	// 12**122
 	SplitAccountID *string `json:"SplitAccountID,omitempty" xml:"SplitAccountID,omitempty"`
 	// The name of the account to which the split item belongs.
+	//
+	// example:
+	//
+	// test**1122
 	SplitAccountName *string `json:"SplitAccountName,omitempty" xml:"SplitAccountName,omitempty"`
 	// The billing cycle in which the bill is split.
+	//
+	// example:
+	//
+	// 2021-06
 	SplitBillingCycle *string `json:"SplitBillingCycle,omitempty" xml:"SplitBillingCycle,omitempty"`
 	// The day on which the bill is split.
+	//
+	// example:
+	//
+	// 2021-06-01
 	SplitBillingDate *string `json:"SplitBillingDate,omitempty" xml:"SplitBillingDate,omitempty"`
 	// The code of the split item.
+	//
+	// example:
+	//
+	// rds
 	SplitCommodityCode *string `json:"SplitCommodityCode,omitempty" xml:"SplitCommodityCode,omitempty"`
 	// The ID of the split item.
+	//
+	// example:
+	//
+	// i-28bycvyb4
 	SplitItemID *string `json:"SplitItemID,omitempty" xml:"SplitItemID,omitempty"`
 	// The name of the split item.
+	//
+	// example:
+	//
+	// iZ28bycvyb4Z
 	SplitItemName *string `json:"SplitItemName,omitempty" xml:"SplitItemName,omitempty"`
 	// The details of the service.
+	//
+	// example:
+	//
+	// ApsaraDB RDS
 	SplitProductDetail *string `json:"SplitProductDetail,omitempty" xml:"SplitProductDetail,omitempty"`
 	// The billing method. Valid values: Subscription: the subscription billing method. PayAsYouGo: the pay-as-you-go billing method.
+	//
+	// example:
+	//
+	// PayAsYouGo
 	SubscriptionType *string `json:"SubscriptionType,omitempty" xml:"SubscriptionType,omitempty"`
 	// The tag of the resource. If tags added to resources change, the bills generated during the period in which resources and tags are associated are returned.
+	//
+	// example:
+	//
+	// key:testKey value:testValue; key:testKey1 value:testValues1
 	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
 	// The amount of resource usage.
+	//
+	// example:
+	//
+	// 100
 	Usage *string `json:"Usage,omitempty" xml:"Usage,omitempty"`
 	// The unit of usage.
+	//
+	// example:
+	//
+	// GB
 	UsageUnit *string `json:"UsageUnit,omitempty" xml:"UsageUnit,omitempty"`
 	// The zone.
+	//
+	// example:
+	//
+	// Qingdao Zone B
 	Zone *string `json:"Zone,omitempty" xml:"Zone,omitempty"`
 }
 
@@ -9925,127 +13662,18 @@ func (s *DescribeSplitItemBillResponse) SetBody(v *DescribeSplitItemBillResponse
 	return s
 }
 
-type EnableBillGenerationRequest struct {
-	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The code of the product.
-	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-}
-
-func (s EnableBillGenerationRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s EnableBillGenerationRequest) GoString() string {
-	return s.String()
-}
-
-func (s *EnableBillGenerationRequest) SetOwnerId(v int64) *EnableBillGenerationRequest {
-	s.OwnerId = &v
-	return s
-}
-
-func (s *EnableBillGenerationRequest) SetProductCode(v string) *EnableBillGenerationRequest {
-	s.ProductCode = &v
-	return s
-}
-
-type EnableBillGenerationResponseBody struct {
-	// The status code.
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The data returned.
-	Data *EnableBillGenerationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The message returned.
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the call was successful.
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s EnableBillGenerationResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s EnableBillGenerationResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *EnableBillGenerationResponseBody) SetCode(v string) *EnableBillGenerationResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *EnableBillGenerationResponseBody) SetData(v *EnableBillGenerationResponseBodyData) *EnableBillGenerationResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *EnableBillGenerationResponseBody) SetMessage(v string) *EnableBillGenerationResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *EnableBillGenerationResponseBody) SetRequestId(v string) *EnableBillGenerationResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *EnableBillGenerationResponseBody) SetSuccess(v bool) *EnableBillGenerationResponseBody {
-	s.Success = &v
-	return s
-}
-
-type EnableBillGenerationResponseBodyData struct {
-	// Indicates whether the feature is enabled.
-	Boolean *bool `json:"Boolean,omitempty" xml:"Boolean,omitempty"`
-}
-
-func (s EnableBillGenerationResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s EnableBillGenerationResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *EnableBillGenerationResponseBodyData) SetBoolean(v bool) *EnableBillGenerationResponseBodyData {
-	s.Boolean = &v
-	return s
-}
-
-type EnableBillGenerationResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-	Body       *EnableBillGenerationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
-}
-
-func (s EnableBillGenerationResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s EnableBillGenerationResponse) GoString() string {
-	return s.String()
-}
-
-func (s *EnableBillGenerationResponse) SetHeaders(v map[string]*string) *EnableBillGenerationResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *EnableBillGenerationResponse) SetStatusCode(v int32) *EnableBillGenerationResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *EnableBillGenerationResponse) SetBody(v *EnableBillGenerationResponseBody) *EnableBillGenerationResponse {
-	s.Body = v
-	return s
-}
-
 type GetAccountRelationRequest struct {
 	// The ID of the financial relationship.
+	//
+	// example:
+	//
+	// Value returned by calling the AddAccountRelation operation
 	RelationId *int64 `json:"RelationId,omitempty" xml:"RelationId,omitempty"`
 	// The unique ID of the request. The ID is used to mark a request and troubleshoot a problem.
+	//
+	// example:
+	//
+	// requestId
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -10069,14 +13697,30 @@ func (s *GetAccountRelationRequest) SetRequestId(v string) *GetAccountRelationRe
 
 type GetAccountRelationResponseBody struct {
 	// The status code returned.
+	//
+	// example:
+	//
+	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// data
 	Data *GetAccountRelationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The message returned.
+	//
+	// example:
+	//
+	// Message returned
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// RequestId
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the call is successful.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -10115,20 +13759,52 @@ func (s *GetAccountRelationResponseBody) SetSuccess(v bool) *GetAccountRelationR
 
 type GetAccountRelationResponseBodyData struct {
 	// The ID of the Alibaba Cloud account that is used as a member.
+	//
+	// example:
+	//
+	// ID of the Alibaba Cloud account that is used as a member
 	ChildUserId *int64 `json:"ChildUserId,omitempty" xml:"ChildUserId,omitempty"`
 	// The time when the financial relationship between the management account and the member was terminated.
+	//
+	// example:
+	//
+	// 2021-12-01
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The time when the financial relationship between the management account and the member was modified.
+	//
+	// example:
+	//
+	// 2021-12-01
 	GmtModified *int64 `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
 	// The ID of the financial relationship.
+	//
+	// example:
+	//
+	// ID of the financial relationship
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The ID of the Alibaba Cloud account that is used as the management account.
+	//
+	// example:
+	//
+	// ID of the Alibaba Cloud account that is used as the management account
 	ParentUserId *int64 `json:"ParentUserId,omitempty" xml:"ParentUserId,omitempty"`
 	// The time when the financial relationship between the management account and the member was established.
+	//
+	// example:
+	//
+	// 2021-11-01
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// The status of the financial relationship between the management account and the member.
+	//
+	// example:
+	//
+	// RELATED
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The type of the financial relationship.
+	//
+	// example:
+	//
+	// enterprise_group
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
@@ -10210,6 +13886,7 @@ func (s *GetAccountRelationResponse) SetBody(v *GetAccountRelationResponseBody) 
 }
 
 type GetCustomerAccountInfoRequest struct {
+	// This parameter is required.
 	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 }
 
@@ -10228,14 +13905,30 @@ func (s *GetCustomerAccountInfoRequest) SetOwnerId(v int64) *GetCustomerAccountI
 
 type GetCustomerAccountInfoResponseBody struct {
 	// The status code returned.
+	//
+	// example:
+	//
+	// Success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The data returned.
 	Data *GetCustomerAccountInfoResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The message returned.
+	//
+	// example:
+	//
+	// Successful!
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 94017C56-1725-5DD9-AB41-B3BAE791D600
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the call is successful. A value of true indicates that the call is successful. A value of false indicates that the call failed.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -10274,6 +13967,10 @@ func (s *GetCustomerAccountInfoResponseBody) SetSuccess(v bool) *GetCustomerAcco
 
 type GetCustomerAccountInfoResponseBodyData struct {
 	// The type of the account. A value of 1 indicates an enterprise account. A value of 0 indicates an individual account.
+	//
+	// example:
+	//
+	// 1
 	AccountType *string `json:"AccountType,omitempty" xml:"AccountType,omitempty"`
 	// The business status of the customer. Valid values:
 	//
@@ -10284,18 +13981,38 @@ type GetCustomerAccountInfoResponseBodyData struct {
 	// Trusteeship: The business is hosted.
 	//
 	// TrusteeshipCancel: The business is not hosted.
+	//
+	// example:
+	//
+	// Freeze
 	CreditLimitStatus *string `json:"CreditLimitStatus,omitempty" xml:"CreditLimitStatus,omitempty"`
 	// The hosting status of the credit information and instances of the customer. If the credit information and instances of the customer are managed on Alibaba Cloud, Alibaba Cloud suspends a customer service upon overdue payment. Valid values:
 	//
 	// FREEZE: The business of the customer is frozen.
 	//
 	// TRUSTEESHIP: The business of the customer is hosted.
+	//
+	// example:
+	//
+	// FREEZE
 	HostingStatus *string `json:"HostingStatus,omitempty" xml:"HostingStatus,omitempty"`
 	// Indicates whether the account passes the real-name verification.
+	//
+	// example:
+	//
+	// true
 	IsCertified *bool `json:"IsCertified,omitempty" xml:"IsCertified,omitempty"`
 	// The email address of the customer.
+	//
+	// example:
+	//
+	// xxxx@aliyun.com
 	LoginEmail *string `json:"LoginEmail,omitempty" xml:"LoginEmail,omitempty"`
 	// The ID of the management account.
+	//
+	// example:
+	//
+	// 1051360339779133
 	Mpk *int64 `json:"Mpk,omitempty" xml:"Mpk,omitempty"`
 }
 
@@ -10368,17 +14085,34 @@ func (s *GetCustomerAccountInfoResponse) SetBody(v *GetCustomerAccountInfoRespon
 
 type GetCustomerListResponseBody struct {
 	// The status code returned.
+	//
+	// example:
+	//
+	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The data returned.
 	Data *GetCustomerListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The message returned.
+	//
+	// example:
+	//
+	// Successful!
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The ID of the request. You can use the ID to query logs and troubleshoot issues.
+	//
+	// example:
+	//
+	// 79EE7556-0CFD-44EB-9CD6-B3B526E3A85F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the call is successful. Valid values:
 	//
-	// *   **true**: The call is successful.
-	// *   **false**: The call failed.
+	// 	- **true**: The call is successful.
+	//
+	// 	- **false**: The call failed.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -10464,6 +14198,12 @@ func (s *GetCustomerListResponse) SetBody(v *GetCustomerListResponseBody) *GetCu
 
 type GetOrderDetailRequest struct {
 	// The ID of the order.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 32453453
 	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 }
@@ -10488,14 +14228,30 @@ func (s *GetOrderDetailRequest) SetOwnerId(v int64) *GetOrderDetailRequest {
 
 type GetOrderDetailResponseBody struct {
 	// The status code.
+	//
+	// example:
+	//
+	// Success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The data returned.
 	Data *GetOrderDetailResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The error message returned.
+	//
+	// example:
+	//
+	// Successful!
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// D6E068C3-25BC-455A-85FE-45F0B22ECB1F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -10534,14 +14290,30 @@ func (s *GetOrderDetailResponseBody) SetSuccess(v bool) *GetOrderDetailResponseB
 
 type GetOrderDetailResponseBodyData struct {
 	// The hostname.
+	//
+	// example:
+	//
+	// test
 	HostName *string `json:"HostName,omitempty" xml:"HostName,omitempty"`
 	// The details of the order.
 	OrderList *GetOrderDetailResponseBodyDataOrderList `json:"OrderList,omitempty" xml:"OrderList,omitempty" type:"Struct"`
 	// The page number of the returned page.
+	//
+	// example:
+	//
+	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
 	// The number of entries returned on each page.
+	//
+	// example:
+	//
+	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The total number of returned entries.
+	//
+	// example:
+	//
+	// 1
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -10597,77 +14369,196 @@ func (s *GetOrderDetailResponseBodyDataOrderList) SetOrder(v []*GetOrderDetailRe
 
 type GetOrderDetailResponseBodyDataOrderListOrder struct {
 	// The after-tax amount of the order.
+	//
+	// example:
+	//
+	// 0
 	AfterTaxAmount *string `json:"AfterTaxAmount,omitempty" xml:"AfterTaxAmount,omitempty"`
 	// The service code.
+	//
+	// example:
+	//
+	// rds
 	CommodityCode *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
 	// The configurations of the main service.
+	//
+	// example:
+	//
+	// DBInstanceClass:[DBInstanceClass:rds.mysql.s1.small;EngineVersion:8.0;Region:cn-qingdao;]DBFlowType:[Region:cn-qingdao;]
 	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
 	// The time when the order was created.
+	//
+	// example:
+	//
+	// 2017-06-08T09:41:30Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The currency.
-	Currency    *string            `json:"Currency,omitempty" xml:"Currency,omitempty"`
+	//
+	// example:
+	//
+	// CNY
+	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
+	// The order extension information.
 	ExtendInfos map[string]*string `json:"ExtendInfos,omitempty" xml:"ExtendInfos,omitempty"`
 	// The instance IDs.
+	//
+	// example:
+	//
+	// ["rm-bp1a2vsr018313t6o"]
 	InstanceIDs *string `json:"InstanceIDs,omitempty" xml:"InstanceIDs,omitempty"`
 	// The ID of the Resource Access Management (RAM) user who performs operations on the order. If no RAM user is involved, leave this parameter blank.
+	//
+	// example:
+	//
+	// 23424243432
 	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
 	// The ID of the order.
+	//
+	// example:
+	//
+	// 3453425324
 	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
 	// The type of the suborder. Valid values:
 	//
-	// *   ProductSubOrder: the service suborder
-	// *   RefundSubOrder: the refund suborder
+	// 	- ProductSubOrder: the service suborder
+	//
+	// 	- RefundSubOrder: the refund suborder
+	//
+	// example:
+	//
+	// ProductSubOrder
 	OrderSubType *string `json:"OrderSubType,omitempty" xml:"OrderSubType,omitempty"`
 	// The type of the order. Valid values:
 	//
-	// *   New: purchases an instance.
-	// *   Renew: renews an instance.
-	// *   Upgrade: upgrades the configurations of an instance.
-	// *   Refund: applies for a refund.
-	// *   Convert: switches the billing method.
-	// *   Downgrade: downgrades the configurations of an instance.
-	// *   ResizeDisk: resizes the disk.
+	// 	- New: purchases an instance.
+	//
+	// 	- Renew: renews an instance.
+	//
+	// 	- Upgrade: upgrades the configurations of an instance.
+	//
+	// 	- Refund: applies for a refund.
+	//
+	// 	- Convert: switches the billing method.
+	//
+	// 	- Downgrade: downgrades the configurations of an instance.
+	//
+	// 	- ResizeDisk: resizes the disk.
+	//
+	// example:
+	//
+	// New
 	OrderType *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
 	// The module information without standardized conversion.
+	//
+	// example:
+	//
+	// DBInstanceClass:[DBInstanceClass:rds.mysql.s1.small;EngineVersion:8.0;Region:cn-qingdao;]DBFlowType:[Region:cn-qingdao;]
 	OriginalConfig *string `json:"OriginalConfig,omitempty" xml:"OriginalConfig,omitempty"`
 	// The currency of payment.
+	//
+	// example:
+	//
+	// CNY
 	PaymentCurrency *string `json:"PaymentCurrency,omitempty" xml:"PaymentCurrency,omitempty"`
 	// The status of payment. Valid values:
 	//
-	// *   Unpaid: The order is not paid.
-	// *   Paid: The order is paid.
-	// *   Cancelled: The order is canceled.
+	// 	- Unpaid: The order is not paid.
+	//
+	// 	- Paid: The order is paid.
+	//
+	// 	- Cancelled: The order is canceled.
+	//
+	// example:
+	//
+	// Paid
 	PaymentStatus *string `json:"PaymentStatus,omitempty" xml:"PaymentStatus,omitempty"`
 	// The time of payment.
+	//
+	// example:
+	//
+	// 2017-06-08T09:41:30Z
 	PaymentTime *string `json:"PaymentTime,omitempty" xml:"PaymentTime,omitempty"`
 	// The pretax amount of the order.
+	//
+	// example:
+	//
+	// 0
 	PretaxAmount *string `json:"PretaxAmount,omitempty" xml:"PretaxAmount,omitempty"`
 	// The pretax amount of the order in local currency.
+	//
+	// example:
+	//
+	// 0
 	PretaxAmountLocal *string `json:"PretaxAmountLocal,omitempty" xml:"PretaxAmountLocal,omitempty"`
 	// The pretax gross amount of the order.
+	//
+	// example:
+	//
+	// 0
 	PretaxGrossAmount *string `json:"PretaxGrossAmount,omitempty" xml:"PretaxGrossAmount,omitempty"`
 	// The code of the main service.
+	//
+	// example:
+	//
+	// rds
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
 	// The type of the main service.
+	//
+	// example:
+	//
+	// rds
 	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
 	// The number of main services.
+	//
+	// example:
+	//
+	// 1
 	Quantity *string `json:"Quantity,omitempty" xml:"Quantity,omitempty"`
 	// The ID of the region.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
 	// The ID of the associated order.
+	//
+	// example:
+	//
+	// 4353453534543
 	RelatedOrderId *string `json:"RelatedOrderId,omitempty" xml:"RelatedOrderId,omitempty"`
 	// The ID of the suborder.
+	//
+	// example:
+	//
+	// 234343
 	SubOrderId *string `json:"SubOrderId,omitempty" xml:"SubOrderId,omitempty"`
 	// The billing method. Valid values:
 	//
-	// *   Subscription: subscription
-	// *   PayAsYouGo: pay-as-you-go
+	// 	- Subscription: subscription
+	//
+	// 	- PayAsYouGo: pay-as-you-go
+	//
+	// example:
+	//
+	// PayAsYouGo
 	SubscriptionType *string `json:"SubscriptionType,omitempty" xml:"SubscriptionType,omitempty"`
 	// The tax of the order.
+	//
+	// example:
+	//
+	// 1
 	Tax *string `json:"Tax,omitempty" xml:"Tax,omitempty"`
 	// The time when the service ends.
+	//
+	// example:
+	//
+	// 2117-06-08T16:00:00Z
 	UsageEndTime *string `json:"UsageEndTime,omitempty" xml:"UsageEndTime,omitempty"`
 	// The time when the service starts.
+	//
+	// example:
+	//
+	// 2017-06-08T16:00:00Z
 	UsageStartTime *string `json:"UsageStartTime,omitempty" xml:"UsageStartTime,omitempty"`
 }
 
@@ -10850,15 +14741,37 @@ func (s *GetOrderDetailResponse) SetBody(v *GetOrderDetailResponseBody) *GetOrde
 
 type GetPayAsYouGoPriceRequest struct {
 	// The details of pricing modules.
+	//
+	// This parameter is required.
 	ModuleList []*GetPayAsYouGoPriceRequestModuleList `json:"ModuleList,omitempty" xml:"ModuleList,omitempty" type:"Repeated"`
 	OwnerId    *int64                                 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The code of the service.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ecs
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
 	// The type of the service.
+	//
+	// example:
+	//
+	// ecs
 	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
 	// The ID of the region in which the instance resides.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
 	// The billing method. Set the value to PayAsYouGo.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// PayAsYouGo
 	SubscriptionType *string `json:"SubscriptionType,omitempty" xml:"SubscriptionType,omitempty"`
 }
 
@@ -10903,20 +14816,41 @@ func (s *GetPayAsYouGoPriceRequest) SetSubscriptionType(v string) *GetPayAsYouGo
 type GetPayAsYouGoPriceRequestModuleList struct {
 	// The configuration of the Nth pricing module. Valid values of N: 1 to 50. Format: AA:aa,BB:bb. The values of AA and BB are the property IDs of the pricing module. The values of aa and bb are the property values of the pricing module.
 	//
-	// >  You can call the [DescribePricingModule](~~96469~~) operation to obtain the configuration parameters of the pricing module.
+	// >  You can call the [DescribePricingModule](https://help.aliyun.com/document_detail/96469.html) operation to obtain the configuration parameters of the pricing module.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// InstanceType:ecs.g5.xlarge,IoOptimized:IoOptimized,ImageOs:linux
 	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
 	// The code of the Nth pricing module.
 	//
-	// >  You can call the [DescribePricingModule](~~96469~~) operation to obtain the module code.
+	// >  You can call the [DescribePricingModule](https://help.aliyun.com/document_detail/96469.html) operation to obtain the module code.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// InstanceType
 	ModuleCode *string `json:"ModuleCode,omitempty" xml:"ModuleCode,omitempty"`
 	// The price type of the Nth pricing module. Valid values:
 	//
-	// *   Hour: hourly price
-	// *   Usage: usage price
-	// *   Month: monthly price
-	// *   Year: annual price
+	// 	- Hour: hourly price
 	//
-	// >  You can call the [DescribePricingModule](~~96469~~) operation to obtain the configuration parameters of the pricing module.
+	// 	- Usage: usage price
+	//
+	// 	- Month: monthly price
+	//
+	// 	- Year: annual price
+	//
+	// >  You can call the [DescribePricingModule](https://help.aliyun.com/document_detail/96469.html) operation to obtain the configuration parameters of the pricing module.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Hour
 	PriceType *string `json:"PriceType,omitempty" xml:"PriceType,omitempty"`
 }
 
@@ -10945,14 +14879,30 @@ func (s *GetPayAsYouGoPriceRequestModuleList) SetPriceType(v string) *GetPayAsYo
 
 type GetPayAsYouGoPriceResponseBody struct {
 	// The status code.
+	//
+	// example:
+	//
+	// Success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The data returned.
 	Data *GetPayAsYouGoPriceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The message returned.
+	//
+	// example:
+	//
+	// Successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 1537A007-72D7-4165-8A26-8694A38E219A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request is successful.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -10992,9 +14942,15 @@ func (s *GetPayAsYouGoPriceResponseBody) SetSuccess(v bool) *GetPayAsYouGoPriceR
 type GetPayAsYouGoPriceResponseBodyData struct {
 	// The type of the currency. Valid values:
 	//
-	// *   CNY: Chinese Yuan
-	// *   USD: US dollar
-	// *   JPY: Japanese Yen
+	// 	- CNY: Chinese Yuan
+	//
+	// 	- USD: US dollar
+	//
+	// 	- JPY: Japanese Yen
+	//
+	// example:
+	//
+	// CNY
 	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
 	// The price details of the pricing module.
 	ModuleDetails *GetPayAsYouGoPriceResponseBodyDataModuleDetails `json:"ModuleDetails,omitempty" xml:"ModuleDetails,omitempty" type:"Struct"`
@@ -11044,14 +15000,34 @@ func (s *GetPayAsYouGoPriceResponseBodyDataModuleDetails) SetModuleDetail(v []*G
 
 type GetPayAsYouGoPriceResponseBodyDataModuleDetailsModuleDetail struct {
 	// The discount price.
+	//
+	// example:
+	//
+	// 100
 	CostAfterDiscount *float32 `json:"CostAfterDiscount,omitempty" xml:"CostAfterDiscount,omitempty"`
 	// The discount that was applied.
+	//
+	// example:
+	//
+	// 20
 	InvoiceDiscount *float32 `json:"InvoiceDiscount,omitempty" xml:"InvoiceDiscount,omitempty"`
 	// The code of the pricing module.
+	//
+	// example:
+	//
+	// InstanceType
 	ModuleCode *string `json:"ModuleCode,omitempty" xml:"ModuleCode,omitempty"`
 	// The original price.
+	//
+	// example:
+	//
+	// 1.77
 	OriginalCost *float32 `json:"OriginalCost,omitempty" xml:"OriginalCost,omitempty"`
 	// The unit price.
+	//
+	// example:
+	//
+	// 0
 	UnitPrice *float32 `json:"UnitPrice,omitempty" xml:"UnitPrice,omitempty"`
 }
 
@@ -11107,10 +15083,22 @@ func (s *GetPayAsYouGoPriceResponseBodyDataPromotionDetails) SetPromotionDetail(
 
 type GetPayAsYouGoPriceResponseBodyDataPromotionDetailsPromotionDetail struct {
 	// The description of the discount.
+	//
+	// example:
+	//
+	// This discount allows you to use a service at the minimum price and is provided for testing purposes only.
 	PromotionDesc *string `json:"PromotionDesc,omitempty" xml:"PromotionDesc,omitempty"`
 	// The ID of the discount.
+	//
+	// example:
+	//
+	// 10200210
 	PromotionId *int64 `json:"PromotionId,omitempty" xml:"PromotionId,omitempty"`
 	// The name of the discount.
+	//
+	// example:
+	//
+	// This discount allows you to use a service at the minimum price and is provided for testing purposes only.
 	PromotionName *string `json:"PromotionName,omitempty" xml:"PromotionName,omitempty"`
 }
 
@@ -11168,30 +15156,79 @@ func (s *GetPayAsYouGoPriceResponse) SetBody(v *GetPayAsYouGoPriceResponseBody) 
 
 type GetResourcePackagePriceRequest struct {
 	// The validity period of the resource plan. The value must be the same as the duration of the resource plan specified in the specifications.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 6
 	Duration *int32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// The time when the resource plan takes effect. If you do not specify this parameter, the resource plan immediately takes effect by default. Specify the time in the ISO 8601 standard in the yyyy-MM-ddThh:mm:ssZ format. The time must be in UTC.
+	// The time when the resource plan takes effect. If you do not specify this parameter, the resource plan immediately takes effect by default.
+	//
+	// When the **OrderType*	- is **BUY**, resource packs with the **EffectiveDate longer than the current time of 6 months*	- are not supported.
+	//
+	// If the **OrderType*	- is **UPGRADE**, the **EffectiveDate*	- **must be less than or equal to*	- the actual expiration time of the upgraded instance.
+	//
+	// Specify the time in the ISO 8601 standard in the yyyy-MM-ddThh:mm:ssZ format. The time must be in UTC.
+	//
+	// example:
+	//
+	// 2020-02-10T12:00:00Z
 	EffectiveDate *string `json:"EffectiveDate,omitempty" xml:"EffectiveDate,omitempty"`
-	// The ID of the instance.
+	// The ID of the instance. **This parameter is required when the order type is renewal or upgrade.**
+	//
+	// example:
+	//
+	// OSSBAG-cn-0xl0002
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The type of the order. Valid values:
 	//
-	// *   BUY: You place the order to purchase an instance.
-	// *   UPGRADE: You place the order to upgrade an instance.
-	// *   RENEW: You place the order to renew an instance.
+	// 	- BUY: You place the order to purchase an instance.
+	//
+	// 	- UPGRADE: You place the order to upgrade an instance.
+	//
+	// 	- RENEW: You place the order to renew an instance.
 	//
 	// Default value: BUY.
+	//
+	// example:
+	//
+	// BUY
 	OrderType *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
 	OwnerId   *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The type of the resource plan. The value must be the same as the value of the **ProductCode** parameter that is returned when you call the **DescribeResourcePackageProduct** operation.
+	// The type of the resource plan. The value must be the same as the value of the **ProductCode*	- parameter that is returned when you call the **DescribeResourcePackageProduct*	- operation.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// FPT_ossbag_periodMonthlyAcc_NetworkOut_finance_common
 	PackageType *string `json:"PackageType,omitempty" xml:"PackageType,omitempty"`
 	// The unit of validity period of the resource plan. Valid values:
 	//
-	// *   Month
-	// *   Year
+	// 	- Month
+	//
+	// 	- Year
+	//
+	// example:
+	//
+	// Month
 	PricingCycle *string `json:"PricingCycle,omitempty" xml:"PricingCycle,omitempty"`
-	// The code of service. You can query the service code by calling the **QueryProductList** operation or viewing **Codes of Alibaba Cloud Services**.
+	// The code of service. You can query the service code by calling the **QueryProductList*	- operation or viewing **Codes of Alibaba Cloud Services**.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ossbag
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
 	// The specifications of the resource plan.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 500
 	Specification *string `json:"Specification,omitempty" xml:"Specification,omitempty"`
 }
 
@@ -11250,14 +15287,30 @@ func (s *GetResourcePackagePriceRequest) SetSpecification(v string) *GetResource
 
 type GetResourcePackagePriceResponseBody struct {
 	// The status code.
+	//
+	// example:
+	//
+	// Success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The data returned.
 	Data *GetResourcePackagePriceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The message returned.
+	//
+	// example:
+	//
+	// Successful!
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// BBEF51A3-E933-4F40-A534-C673CBDB9C80
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request is successful.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -11296,14 +15349,30 @@ func (s *GetResourcePackagePriceResponseBody) SetSuccess(v bool) *GetResourcePac
 
 type GetResourcePackagePriceResponseBodyData struct {
 	// The type of the currency.
+	//
+	// example:
+	//
+	// CNY
 	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
 	// The discounted amount. Unit: CNY.
+	//
+	// example:
+	//
+	// 215040
 	DiscountPrice *float32 `json:"DiscountPrice,omitempty" xml:"DiscountPrice,omitempty"`
 	// The original price. Unit: CNY.
+	//
+	// example:
+	//
+	// 1290240
 	OriginalPrice *float32 `json:"OriginalPrice,omitempty" xml:"OriginalPrice,omitempty"`
 	// The details of the discount.
 	Promotions *GetResourcePackagePriceResponseBodyDataPromotions `json:"Promotions,omitempty" xml:"Promotions,omitempty" type:"Struct"`
 	// The price at which the transaction is made. Unit: CNY.
+	//
+	// example:
+	//
+	// 1075200
 	TradePrice *float32 `json:"TradePrice,omitempty" xml:"TradePrice,omitempty"`
 }
 
@@ -11359,8 +15428,16 @@ func (s *GetResourcePackagePriceResponseBodyDataPromotions) SetPromotion(v []*Ge
 
 type GetResourcePackagePriceResponseBodyDataPromotionsPromotion struct {
 	// The ID of the promotion.
+	//
+	// example:
+	//
+	// 1000680914
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The description of the discount.
+	//
+	// example:
+	//
+	// A discount of 17% is offered if you purchase a resource plan for six months.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
@@ -11413,32 +15490,79 @@ func (s *GetResourcePackagePriceResponse) SetBody(v *GetResourcePackagePriceResp
 
 type GetSubscriptionPriceRequest struct {
 	// The ID of the instance for which the price is queried. This parameter is required if you upgrade an instance. You can specify this parameter to obtain the pre-upgrade configurations of the instance.
+	//
+	// example:
+	//
+	// i-khkjhxxxxxxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The information about the pricing module.
+	//
+	// This parameter is required.
 	ModuleList []*GetSubscriptionPriceRequestModuleList `json:"ModuleList,omitempty" xml:"ModuleList,omitempty" type:"Repeated"`
 	// The type of the order. Valid values:
 	//
-	// *   NewOrder: purchases an instance of an Alibaba Cloud service.
-	// *   Renewal: renews an instance of an Alibaba Cloud service.
-	// *   Upgrade: upgrades an instance of an Alibaba Cloud service.
+	// 	- NewOrder: purchases an instance of an Alibaba Cloud service.
+	//
+	// 	- Renewal: renews an instance of an Alibaba Cloud service.
+	//
+	// 	- Upgrade: upgrades an instance of an Alibaba Cloud service.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// NewOrder
 	OrderType *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
 	OwnerId   *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The code of the service. For more information about the service code, see **Codes of Alibaba Cloud Services**.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ecs
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
 	// The type of the service. Specify the parameter based on the pricing document of the specific service.
+	//
+	// example:
+	//
+	// ecs
 	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
 	// The quantity.
+	//
+	// example:
+	//
+	// 1
 	Quantity *int32 `json:"Quantity,omitempty" xml:"Quantity,omitempty"`
 	// The ID of the region in which the instance resides.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
 	// The service duration.
+	//
+	// example:
+	//
+	// 1
 	ServicePeriodQuantity *int32 `json:"ServicePeriodQuantity,omitempty" xml:"ServicePeriodQuantity,omitempty"`
 	// The unit of the service duration. Valid values:
 	//
-	// *   Year
-	// *   Month
+	// 	- Year
+	//
+	// 	- Month
+	//
+	// example:
+	//
+	// Year
 	ServicePeriodUnit *string `json:"ServicePeriodUnit,omitempty" xml:"ServicePeriodUnit,omitempty"`
 	// The billing method. Set the value to Subscription.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Subscription
 	SubscriptionType *string `json:"SubscriptionType,omitempty" xml:"SubscriptionType,omitempty"`
 }
 
@@ -11507,17 +15631,38 @@ func (s *GetSubscriptionPriceRequest) SetSubscriptionType(v string) *GetSubscrip
 
 type GetSubscriptionPriceRequestModuleList struct {
 	// The configurations of the Nth pricing module. Valid values of N: 1 to 50. Format: AA:aa,BB:bb. The values of AA and BB are the property IDs of the pricing module. The values of aa and bb are the property values of the pricing module.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// PackageCode:version_1
 	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
 	// The identifier of the Nth pricing module.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// PackageCode
 	ModuleCode *string `json:"ModuleCode,omitempty" xml:"ModuleCode,omitempty"`
 	// The status of the pricing module. This parameter is required only if the order type is Upgrade. Valid values:
 	//
-	// *   1: adds one or more instances.
-	// *   2: modifies the configurations of an instance. In the upgrade scenario, if the configurations of the pricing module change, you must specify this value for the parameter.
+	// 	- 1: adds one or more instances.
+	//
+	// 	- 2: modifies the configurations of an instance. In the upgrade scenario, if the configurations of the pricing module change, you must specify this value for the parameter.
 	//
 	// Default value: 1.
+	//
+	// example:
+	//
+	// 1
 	ModuleStatus *int32 `json:"ModuleStatus,omitempty" xml:"ModuleStatus,omitempty"`
 	// The tag of the specified resource. This parameter is required only if you upgrade or modify the configurations of an Alibaba Cloud service. For example, if you want to modify the configurations of a disk, you can use a tag to identify the ID of the disk.
+	//
+	// example:
+	//
+	// 213213123
 	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
 }
 
@@ -11551,14 +15696,30 @@ func (s *GetSubscriptionPriceRequestModuleList) SetTag(v string) *GetSubscriptio
 
 type GetSubscriptionPriceResponseBody struct {
 	// The status code.
+	//
+	// example:
+	//
+	// InvalidConfigCod
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The information about the service price.
 	Data *GetSubscriptionPriceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The message returned.
+	//
+	// example:
+	//
+	// Successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 30E7066E-AE6F-4E59-AFE6-11386CE3AFA7
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request is successful.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -11598,21 +15759,43 @@ func (s *GetSubscriptionPriceResponseBody) SetSuccess(v bool) *GetSubscriptionPr
 type GetSubscriptionPriceResponseBodyData struct {
 	// The type of currency. Valid values:
 	//
-	// *   CNY: Chinese Yuan
-	// *   USD: US dollar
-	// *   JPY: Japanese Yen
+	// 	- CNY: Chinese Yuan
+	//
+	// 	- USD: US dollar
+	//
+	// 	- JPY: Japanese Yen
+	//
+	// example:
+	//
+	// CNY
 	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
 	// The discount that was applied.
+	//
+	// example:
+	//
+	// 100
 	DiscountPrice *float32 `json:"DiscountPrice,omitempty" xml:"DiscountPrice,omitempty"`
 	// The price details of the pricing module.
 	ModuleDetails *GetSubscriptionPriceResponseBodyDataModuleDetails `json:"ModuleDetails,omitempty" xml:"ModuleDetails,omitempty" type:"Struct"`
 	// The original price of the service.
+	//
+	// example:
+	//
+	// 900
 	OriginalPrice *float32 `json:"OriginalPrice,omitempty" xml:"OriginalPrice,omitempty"`
 	// The details of the discount.
 	PromotionDetails *GetSubscriptionPriceResponseBodyDataPromotionDetails `json:"PromotionDetails,omitempty" xml:"PromotionDetails,omitempty" type:"Struct"`
 	// The quantity.
+	//
+	// example:
+	//
+	// 1
 	Quantity *int32 `json:"Quantity,omitempty" xml:"Quantity,omitempty"`
 	// The discount price.
+	//
+	// example:
+	//
+	// 0
 	TradePrice *float32 `json:"TradePrice,omitempty" xml:"TradePrice,omitempty"`
 }
 
@@ -11678,14 +15861,34 @@ func (s *GetSubscriptionPriceResponseBodyDataModuleDetails) SetModuleDetail(v []
 
 type GetSubscriptionPriceResponseBodyDataModuleDetailsModuleDetail struct {
 	// The discount price.
+	//
+	// example:
+	//
+	// 0
 	CostAfterDiscount *float32 `json:"CostAfterDiscount,omitempty" xml:"CostAfterDiscount,omitempty"`
 	// The discount that was applied.
+	//
+	// example:
+	//
+	// 100
 	InvoiceDiscount *float32 `json:"InvoiceDiscount,omitempty" xml:"InvoiceDiscount,omitempty"`
 	// The identifier of the pricing module.
+	//
+	// example:
+	//
+	// PackageCode
 	ModuleCode *string `json:"ModuleCode,omitempty" xml:"ModuleCode,omitempty"`
 	// The original price of the service.
+	//
+	// example:
+	//
+	// 200
 	OriginalCost *float32 `json:"OriginalCost,omitempty" xml:"OriginalCost,omitempty"`
 	// The unit price.
+	//
+	// example:
+	//
+	// 0
 	UnitPrice *float32 `json:"UnitPrice,omitempty" xml:"UnitPrice,omitempty"`
 }
 
@@ -11741,10 +15944,22 @@ func (s *GetSubscriptionPriceResponseBodyDataPromotionDetails) SetPromotionDetai
 
 type GetSubscriptionPriceResponseBodyDataPromotionDetailsPromotionDetail struct {
 	// The description of the discount.
+	//
+	// example:
+	//
+	// test
 	PromotionDesc *string `json:"PromotionDesc,omitempty" xml:"PromotionDesc,omitempty"`
 	// The ID of the discount.
+	//
+	// example:
+	//
+	// 1021199213
 	PromotionId *int64 `json:"PromotionId,omitempty" xml:"PromotionId,omitempty"`
 	// The name of the discount.
+	//
+	// example:
+	//
+	// test
 	PromotionName *string `json:"PromotionName,omitempty" xml:"PromotionName,omitempty"`
 }
 
@@ -11802,12 +16017,28 @@ func (s *GetSubscriptionPriceResponse) SetBody(v *GetSubscriptionPriceResponseBo
 
 type InquiryPriceRefundInstanceRequest struct {
 	// This parameter is required for scenarios that need idempotence. The UUID that is used to ensure the idempotence of the request.
+	//
+	// example:
+	//
+	// 793F021C-B589-1225-82A9-99232AEBE494
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The ID of the instance. This parameter is required for unsubscription scenarios.
+	//
+	// example:
+	//
+	// i-bp1etb69sqxgl4*******
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The code of the service. This parameter is required for unsubscription scenarios.
+	//
+	// example:
+	//
+	// ecs
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
 	// The type of the service. This parameter is required for unsubscription scenarios. Unless otherwise specified, set this parameter to an empty string.
+	//
+	// example:
+	//
+	// ”“
 	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
 }
 
@@ -11841,14 +16072,30 @@ func (s *InquiryPriceRefundInstanceRequest) SetProductType(v string) *InquiryPri
 
 type InquiryPriceRefundInstanceResponseBody struct {
 	// The HTTP status code.
+	//
+	// example:
+	//
+	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// data
 	Data *InquiryPriceRefundInstanceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The description of the execution result.
+	//
+	// example:
+	//
+	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// UUID
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values: true and false.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -11887,12 +16134,28 @@ func (s *InquiryPriceRefundInstanceResponseBody) SetSuccess(v bool) *InquiryPric
 
 type InquiryPriceRefundInstanceResponseBodyData struct {
 	// The currency.
+	//
+	// example:
+	//
+	// CNY. CNY: Chinese Yuan. USD: United States dollar. JPY: Japanese Yen.
 	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
 	// The site of the execution host.
+	//
+	// example:
+	//
+	// cn
 	HostId *string `json:"HostId,omitempty" xml:"HostId,omitempty"`
 	// The ID of the instance.
+	//
+	// example:
+	//
+	// i-bp1etb69sqxgl4*******
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The refundable amount.
+	//
+	// example:
+	//
+	// 12.34
 	RefundAmount *float64 `json:"RefundAmount,omitempty" xml:"RefundAmount,omitempty"`
 }
 
@@ -11955,33 +16218,80 @@ func (s *InquiryPriceRefundInstanceResponse) SetBody(v *InquiryPriceRefundInstan
 
 type ModifyAccountRelationRequest struct {
 	// The display name of the member. This helps clarify the scenario in which the account is used.
+	//
+	// example:
+	//
+	// Display name of the member
 	ChildNick *string `json:"ChildNick,omitempty" xml:"ChildNick,omitempty"`
 	// The ID of the Alibaba Cloud account that is used as the member.
+	//
+	// example:
+	//
+	// 1512996702208737
 	ChildUserId *int64 `json:"ChildUserId,omitempty" xml:"ChildUserId,omitempty"`
 	// The ID of the Alibaba Cloud account that is used as the management account.
+	//
+	// example:
+	//
+	// 1738376485192612
 	ParentUserId *int64 `json:"ParentUserId,omitempty" xml:"ParentUserId,omitempty"`
 	// The permissions that can be modified. Valid values:
 	//
-	// *   SYNCHRONIZE_FINANCE_IDENTITY: allows the credit control identity to be shared with the member.
-	// *   SYNCHRONIZE_FINANCE_DISCOUNT_POLICY_TO_TARGET: allows the discount policy to be shared with the member.
-	// *   FORBID_WITHDRAW_CASH: does not allow the member to withdraw the balance.
-	// *   FORBID_MANAGE_INVOICE: does not allow the member to manage invoices.
-	// *   CHECK_FINANCE_INFO: requests to view information about the financial relationship.
-	// *   MANAGE_TARGET_INVOICE: allows the member to manage invoices.
-	// *   CHECK_TARGET_CONSUMPTION: allows the member to view the bills.
+	// 	- SYNCHRONIZE_FINANCE_IDENTITY: allows the credit control identity to be shared with the member.
+	//
+	// 	- SYNCHRONIZE_FINANCE_DISCOUNT_POLICY_TO_TARGET: allows the discount policy to be shared with the member.
+	//
+	// 	- FORBID_WITHDRAW_CASH: does not allow the member to withdraw the balance.
+	//
+	// 	- FORBID_MANAGE_INVOICE: does not allow the member to manage invoices.
+	//
+	// 	- CHECK_FINANCE_INFO: requests to view information about the financial relationship.
+	//
+	// 	- MANAGE_TARGET_INVOICE: allows the member to manage invoices.
+	//
+	// 	- CHECK_TARGET_CONSUMPTION: allows the member to view the bills.
+	//
+	// example:
+	//
+	// SYNCHRONIZE_FINANCE_IDENTITY
 	PermissionCodes []*string `json:"PermissionCodes,omitempty" xml:"PermissionCodes,omitempty" type:"Repeated"`
 	// The ID of the financial relationship. Set this parameter to the value of the relationId response parameter returned by calling the QueryRelationList operation.
+	//
+	// example:
+	//
+	// 51463
 	RelationId *int64 `json:"RelationId,omitempty" xml:"RelationId,omitempty"`
 	// The operation to be performed. Valid values:
 	//
-	// *   ADD
-	// *   DELETE
+	// 	- ADD
+	//
+	// 	- DELETE
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ADD
 	RelationOperation *string `json:"RelationOperation,omitempty" xml:"RelationOperation,omitempty"`
 	// The type of the financial relationship. Set the value to enterprise_group.
+	//
+	// example:
+	//
+	// enterprise_group
 	RelationType *string `json:"RelationType,omitempty" xml:"RelationType,omitempty"`
 	// The unique ID of the request. The ID is used to mark a request and troubleshoot a problem.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// request_id
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The roles that can be assigned to the member. You cannot modify the roles.
+	//
+	// example:
+	//
+	// trusteeship
 	RoleCodes []*string `json:"RoleCodes,omitempty" xml:"RoleCodes,omitempty" type:"Repeated"`
 }
 
@@ -12040,14 +16350,30 @@ func (s *ModifyAccountRelationRequest) SetRoleCodes(v []*string) *ModifyAccountR
 
 type ModifyAccountRelationResponseBody struct {
 	// The status code returned.
+	//
+	// example:
+	//
+	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The data returned.
 	Data *ModifyAccountRelationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The message returned.
+	//
+	// example:
+	//
+	// Message returned
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The unique ID of the request.
+	//
+	// example:
+	//
+	// request_id
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request is successful.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -12085,6 +16411,10 @@ func (s *ModifyAccountRelationResponseBody) SetSuccess(v bool) *ModifyAccountRel
 }
 
 type ModifyAccountRelationResponseBodyData struct {
+	// HostId
+	//
+	// example:
+	//
 	// HostId
 	HostId *string `json:"HostId,omitempty" xml:"HostId,omitempty"`
 }
@@ -12151,10 +16481,28 @@ func (s *ModifyCostUnitRequest) SetUnitEntityList(v []*ModifyCostUnitRequestUnit
 
 type ModifyCostUnitRequestUnitEntityList struct {
 	// The new name of the cost center.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// newTest
 	NewUnitName *string `json:"NewUnitName,omitempty" xml:"NewUnitName,omitempty"`
 	// The user ID of the cost center owner.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1321312312
 	OwnerUid *int64 `json:"OwnerUid,omitempty" xml:"OwnerUid,omitempty"`
 	// The ID of the cost center.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2524352
 	UnitId *int64 `json:"UnitId,omitempty" xml:"UnitId,omitempty"`
 }
 
@@ -12183,14 +16531,30 @@ func (s *ModifyCostUnitRequestUnitEntityList) SetUnitId(v int64) *ModifyCostUnit
 
 type ModifyCostUnitResponseBody struct {
 	// The status code.
+	//
+	// example:
+	//
+	// Success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The data returned.
 	Data []*ModifyCostUnitResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// The error message returned.
+	//
+	// example:
+	//
+	// Successful!
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// F5B803CF-94D8-43AF-ADB3-D819AAD30E27
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the call was successful.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -12229,10 +16593,22 @@ func (s *ModifyCostUnitResponseBody) SetSuccess(v bool) *ModifyCostUnitResponseB
 
 type ModifyCostUnitResponseBodyData struct {
 	// Indicates whether the cost center was modified.
+	//
+	// example:
+	//
+	// true
 	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
 	// The user ID of the cost center owner.
+	//
+	// example:
+	//
+	// 823756287
 	OwnerUid *int64 `json:"OwnerUid,omitempty" xml:"OwnerUid,omitempty"`
 	// The ID of the cost center.
+	//
+	// example:
+	//
+	// 356349875
 	UnitId *int64 `json:"UnitId,omitempty" xml:"UnitId,omitempty"`
 }
 
@@ -12290,25 +16666,57 @@ func (s *ModifyCostUnitResponse) SetBody(v *ModifyCostUnitResponseBody) *ModifyC
 
 type ModifyInstanceRequest struct {
 	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests.
+	//
+	// example:
+	//
+	// JAKSJFHFAKJSF
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The ID of the instance for which you want to modify the configurations.
+	//
+	// example:
+	//
+	// rm-akjhkdsjhfskjfhd
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The type of configuration modifications. Valid values:
 	//
-	// *   Upgrade: upgrades the configurations of the instance.
-	// *   Downgrade: downgrades the configurations of the instance.
+	// 	- Upgrade: upgrades the configurations of the instance.
+	//
+	// 	- Downgrade: downgrades the configurations of the instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Upgrade
 	ModifyType *string `json:"ModifyType,omitempty" xml:"ModifyType,omitempty"`
 	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The details about the parameters.
 	Parameter []*ModifyInstanceRequestParameter `json:"Parameter,omitempty" xml:"Parameter,omitempty" type:"Repeated"`
 	// The code of the service to which the instance belongs.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// rds
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
 	// The type of the service to which the instance belongs.
+	//
+	// example:
+	//
+	// rds
 	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
 	// The billing method. Valid values:
 	//
-	// *   Subscription: subscription
-	// *   PayAsYouGo: pay-as-you-go
+	// 	- Subscription: subscription
+	//
+	// 	- PayAsYouGo: pay-as-you-go
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Subscription
 	SubscriptionType *string `json:"SubscriptionType,omitempty" xml:"SubscriptionType,omitempty"`
 }
 
@@ -12364,8 +16772,20 @@ type ModifyInstanceRequestParameter struct {
 	// The code of the parameter n. Valid values of n: 1 to 100. Multiple parameters are concatenated in the order of n.
 	//
 	// >  Only the parameters of the attributes that you want to modify for the instance must be configured. For example, if the instance has Attribute A and Attribute B and only Attribute A must be modified, configure only the parameter of Attribute A.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The value of the parameter n. Valid values of n: 1 to 100.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -12389,14 +16809,30 @@ func (s *ModifyInstanceRequestParameter) SetValue(v string) *ModifyInstanceReque
 
 type ModifyInstanceResponseBody struct {
 	// The status code.
+	//
+	// example:
+	//
+	// Success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The data returned.
 	Data *ModifyInstanceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The error message returned.
+	//
+	// example:
+	//
+	// Successful！
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 6000EE23-274B-4E07-A697-FF2E999520A4
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -12435,8 +16871,16 @@ func (s *ModifyInstanceResponseBody) SetSuccess(v bool) *ModifyInstanceResponseB
 
 type ModifyInstanceResponseBodyData struct {
 	// The ID of the host.
+	//
+	// example:
+	//
+	// testId
 	HostId *string `json:"HostId,omitempty" xml:"HostId,omitempty"`
 	// The ID of the order that was created.
+	//
+	// example:
+	//
+	// 202653252354351
 	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
 }
 
@@ -12489,14 +16933,30 @@ func (s *ModifyInstanceResponse) SetBody(v *ModifyInstanceResponseBody) *ModifyI
 
 type QueryAccountBalanceResponseBody struct {
 	// The status code returned.
+	//
+	// example:
+	//
+	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The data returned.
 	Data *QueryAccountBalanceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The message returned.
+	//
+	// example:
+	//
+	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 16176743-6DC7-4CB3-BB25-A13982D8DFAD
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request is successful.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -12535,18 +16995,40 @@ func (s *QueryAccountBalanceResponseBody) SetSuccess(v bool) *QueryAccountBalanc
 
 type QueryAccountBalanceResponseBodyData struct {
 	// The available balance of the account.
+	//
+	// example:
+	//
+	// 10000.00
 	AvailableAmount *string `json:"AvailableAmount,omitempty" xml:"AvailableAmount,omitempty"`
 	// The available balance in cash.
+	//
+	// example:
+	//
+	// 10000.00
 	AvailableCashAmount *string `json:"AvailableCashAmount,omitempty" xml:"AvailableCashAmount,omitempty"`
 	// The credit balance of the account.
+	//
+	// example:
+	//
+	// 0.00
 	CreditAmount *string `json:"CreditAmount,omitempty" xml:"CreditAmount,omitempty"`
 	// The type of the currency. Valid values:
 	//
-	// *   CNY: Chinese Yuan
-	// *   USD: US dollar
-	// *   JPY: Japanese Yen
+	// 	- CNY: Chinese Yuan
+	//
+	// 	- USD: US dollar
+	//
+	// 	- JPY: Japanese Yen
+	//
+	// example:
+	//
+	// CNY
 	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
 	// The credit line controlled by MYbank.
+	//
+	// example:
+	//
+	// 0.00
 	MybankCreditAmount *string `json:"MybankCreditAmount,omitempty" xml:"MybankCreditAmount,omitempty"`
 	QuotaLimit         *string `json:"QuotaLimit,omitempty" xml:"QuotaLimit,omitempty"`
 }
@@ -12620,31 +17102,67 @@ func (s *QueryAccountBalanceResponse) SetBody(v *QueryAccountBalanceResponseBody
 
 type QueryAccountBillRequest struct {
 	// The ID of the member. If you specify a value for this parameter, you can query the bills of the specified member. If you leave this parameter empty, the bills of the current account are queried by default.
+	//
+	// example:
+	//
+	// 122
 	BillOwnerId *int64 `json:"BillOwnerId,omitempty" xml:"BillOwnerId,omitempty"`
 	// The billing cycle. Format: YYYY-MM.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2018-07
 	BillingCycle *string `json:"BillingCycle,omitempty" xml:"BillingCycle,omitempty"`
 	// The billing date. This parameter is required only if the Granularity parameter is set to DAILY. Format: YYYY-MM-DD.
+	//
+	// example:
+	//
+	// 2021-06-01
 	BillingDate *string `json:"BillingDate,omitempty" xml:"BillingDate,omitempty"`
 	// The granularity at which bills are queried. Valid values:
 	//
-	// *   MONTHLY: queries bills by month. The data queried is consistent with the data that is displayed for the specified billing cycle on the Billing Details tab of the Bill Details page in User Center.
-	// *   DAILY: queries bills by day. The data queried is consistent with the data that is displayed for the specified day on the Billing Details tab of the Bill Details page in User Center.
+	// 	- MONTHLY: queries bills by month. The data queried is consistent with the data that is displayed for the specified billing cycle on the Billing Details tab of the Bill Details page in User Center.
+	//
+	// 	- DAILY: queries bills by day. The data queried is consistent with the data that is displayed for the specified day on the Billing Details tab of the Bill Details page in User Center.
 	//
 	// You must set the BillingDate parameter before you can set the Granularity parameter to DAILY.
+	//
+	// example:
+	//
+	// Monthly
 	Granularity *string `json:"Granularity,omitempty" xml:"Granularity,omitempty"`
 	// Specifies whether to summarize bills based on service codes. Valid values:
 	//
-	// *   true: summarizes bills based on service codes.
-	// *   false: does not summarize bills based on service codes.
+	// 	- true: summarizes bills based on service codes.
+	//
+	// 	- false: does not summarize bills based on service codes.
 	//
 	// Default value: false.
+	//
+	// example:
+	//
+	// false
 	IsGroupByProduct *bool  `json:"IsGroupByProduct,omitempty" xml:"IsGroupByProduct,omitempty"`
 	OwnerID          *int64 `json:"OwnerID,omitempty" xml:"OwnerID,omitempty"`
 	// The number of the page to return. Default value: 1.
+	//
+	// example:
+	//
+	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
 	// The number of entries to return on each page. Default value: 20. Maximum value: 300.
+	//
+	// example:
+	//
+	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The code of the service.
+	//
+	// example:
+	//
+	// rds
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
 }
 
@@ -12703,14 +17221,30 @@ func (s *QueryAccountBillRequest) SetProductCode(v string) *QueryAccountBillRequ
 
 type QueryAccountBillResponseBody struct {
 	// The status code returned.
+	//
+	// example:
+	//
+	// Success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The data returned.
 	Data *QueryAccountBillResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The message returned.
+	//
+	// example:
+	//
+	// Successful!
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 3BFC23FE-A182-4D96-A1E4-7521B30B8E43
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request is successful.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -12749,18 +17283,42 @@ func (s *QueryAccountBillResponseBody) SetSuccess(v bool) *QueryAccountBillRespo
 
 type QueryAccountBillResponseBodyData struct {
 	// The ID of your Alibaba Cloud account.
+	//
+	// example:
+	//
+	// 1857xxxxx489
 	AccountID *string `json:"AccountID,omitempty" xml:"AccountID,omitempty"`
 	// The name of the Alibaba Cloud account.
+	//
+	// example:
+	//
+	// test@test.aliyunid.com
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
 	// The billing cycle. Format: YYYY-MM.
+	//
+	// example:
+	//
+	// 2020-03
 	BillingCycle *string `json:"BillingCycle,omitempty" xml:"BillingCycle,omitempty"`
 	// The details of the bills.
 	Items *QueryAccountBillResponseBodyDataItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
 	// The page number of the returned page.
+	//
+	// example:
+	//
+	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
 	// The number of entries returned per page.
+	//
+	// example:
+	//
+	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The total number of returned entries.
+	//
+	// example:
+	//
+	// 1
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -12826,61 +17384,152 @@ func (s *QueryAccountBillResponseBodyDataItems) SetItem(v []*QueryAccountBillRes
 
 type QueryAccountBillResponseBodyDataItemsItem struct {
 	// The amount deducted by using credit refunds.
+	//
+	// example:
+	//
+	// 0
 	AdjustAmount *float32 `json:"AdjustAmount,omitempty" xml:"AdjustAmount,omitempty"`
 	// The ID of the account to which the bill belongs.
+	//
+	// example:
+	//
+	// 1857xxxxx489
 	BillAccountID *string `json:"BillAccountID,omitempty" xml:"BillAccountID,omitempty"`
 	// The name of the account to which the bill belongs.
+	//
+	// example:
+	//
+	// test@test.aliyunid.com
 	BillAccountName *string `json:"BillAccountName,omitempty" xml:"BillAccountName,omitempty"`
 	// The billing date.
+	//
+	// example:
+	//
+	// 2021-03-01
 	BillingDate *string `json:"BillingDate,omitempty" xml:"BillingDate,omitempty"`
 	// The business type.
+	//
+	// example:
+	//
+	// trusteeship
 	BizType *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
 	// The amount paid in cash. The amount that was deducted by using credit refunds is not included.
+	//
+	// example:
+	//
+	// 0
 	CashAmount *float32 `json:"CashAmount,omitempty" xml:"CashAmount,omitempty"`
 	// The cost center.
+	//
+	// example:
+	//
+	// Not allocated
 	CostUnit *string `json:"CostUnit,omitempty" xml:"CostUnit,omitempty"`
 	// The type of the currency. Valid values:
 	//
-	// *   CNY
-	// *   USD
-	// *   JPY
+	// 	- CNY
+	//
+	// 	- USD
+	//
+	// 	- JPY
+	//
+	// example:
+	//
+	// CNY
 	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
 	// The amount deducted by using vouchers.
+	//
+	// example:
+	//
+	// 0
 	DeductedByCashCoupons *float32 `json:"DeductedByCashCoupons,omitempty" xml:"DeductedByCashCoupons,omitempty"`
 	// The amount deducted by using coupons.
+	//
+	// example:
+	//
+	// 0
 	DeductedByCoupons *float32 `json:"DeductedByCoupons,omitempty" xml:"DeductedByCoupons,omitempty"`
 	// The amount deducted by using prepaid cards.
+	//
+	// example:
+	//
+	// 0
 	DeductedByPrepaidCard *float32 `json:"DeductedByPrepaidCard,omitempty" xml:"DeductedByPrepaidCard,omitempty"`
 	// The discount amount.
+	//
+	// example:
+	//
+	// 0
 	InvoiceDiscount *float32 `json:"InvoiceDiscount,omitempty" xml:"InvoiceDiscount,omitempty"`
 	// The unsettled amount or the amount settled with credits.
+	//
+	// example:
+	//
+	// 0
 	OutstandingAmount *float32 `json:"OutstandingAmount,omitempty" xml:"OutstandingAmount,omitempty"`
 	// The ID of the member.
+	//
+	// example:
+	//
+	// 325434254
 	OwnerID *string `json:"OwnerID,omitempty" xml:"OwnerID,omitempty"`
 	// The name of the member.
+	//
+	// example:
+	//
+	// aligzncloudtest2
 	OwnerName *string `json:"OwnerName,omitempty" xml:"OwnerName,omitempty"`
 	// The amount paid in cash. The amount that was deducted by using credit refunds is included.
+	//
+	// example:
+	//
+	// 0
 	PaymentAmount *float32 `json:"PaymentAmount,omitempty" xml:"PaymentAmount,omitempty"`
 	// The code of the service. The service code is consistent with that displayed in User Center.
+	//
+	// example:
+	//
+	// rds
 	PipCode *string `json:"PipCode,omitempty" xml:"PipCode,omitempty"`
 	// The pretax amount.
+	//
+	// example:
+	//
+	// 0
 	PretaxAmount *float32 `json:"PretaxAmount,omitempty" xml:"PretaxAmount,omitempty"`
 	// The pretax gross amount.
+	//
+	// example:
+	//
+	// 0
 	PretaxGrossAmount *float32 `json:"PretaxGrossAmount,omitempty" xml:"PretaxGrossAmount,omitempty"`
 	// The code of the service.
 	//
-	// > A value is returned only if the **IsGroupByProduct** parameter is set to true.
+	// > A value is returned only if the **IsGroupByProduct*	- parameter is set to true.
+	//
+	// example:
+	//
+	// rds
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
 	// The name of the service.
 	//
-	// > A value is returned only if the **IsGroupByProduct** parameter is set to true.
+	// > A value is returned only if the **IsGroupByProduct*	- parameter is set to true.
+	//
+	// example:
+	//
+	// rds
 	ProductName *string `json:"ProductName,omitempty" xml:"ProductName,omitempty"`
 	// The billing method. Valid values:
 	//
-	// *   Subscription: the subscription billing method
-	// *   PayAsYouGo: the pay-as-you-go billing method
+	// 	- Subscription: the subscription billing method
+	//
+	// 	- PayAsYouGo: the pay-as-you-go billing method
 	//
 	// > A value is returned only if the IsGroupByProduct parameter is set to true.
+	//
+	// example:
+	//
+	// PayAsYouGo
 	SubscriptionType *string `json:"SubscriptionType,omitempty" xml:"SubscriptionType,omitempty"`
 }
 
@@ -13033,22 +17682,58 @@ func (s *QueryAccountBillResponse) SetBody(v *QueryAccountBillResponseBody) *Que
 
 type QueryAccountTransactionDetailsRequest struct {
 	// The end of the creation time range to query.
+	//
+	// example:
+	//
+	// 2022-12-20
 	CreateTimeEnd *string `json:"CreateTimeEnd,omitempty" xml:"CreateTimeEnd,omitempty"`
 	// The beginning of the creation time range to query.
+	//
+	// example:
+	//
+	// 2022-01-20
 	CreateTimeStart *string `json:"CreateTimeStart,omitempty" xml:"CreateTimeStart,omitempty"`
 	// This parameter is invalid.
+	//
+	// example:
+	//
+	// 0
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The token that is used for paging.
+	//
+	// example:
+	//
+	// ABEDSDS124DASA
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The ID of the order or bill.
+	//
+	// example:
+	//
+	// 2022120336190912
 	RecordID *string `json:"RecordID,omitempty" xml:"RecordID,omitempty"`
 	// The transaction channel.
+	//
+	// example:
+	//
+	// ALIPAY
 	TransactionChannel *string `json:"TransactionChannel,omitempty" xml:"TransactionChannel,omitempty"`
 	// The serial number of the transaction channel.
+	//
+	// example:
+	//
+	// 2022112122001470591458665933
 	TransactionChannelSN *string `json:"TransactionChannelSN,omitempty" xml:"TransactionChannelSN,omitempty"`
 	// The number of the transaction.
+	//
+	// example:
+	//
+	// 410874027490089
 	TransactionNumber *string `json:"TransactionNumber,omitempty" xml:"TransactionNumber,omitempty"`
 	// The type of the transaction.
+	//
+	// example:
+	//
+	// CHARGE
 	TransactionType *string `json:"TransactionType,omitempty" xml:"TransactionType,omitempty"`
 }
 
@@ -13107,14 +17792,30 @@ func (s *QueryAccountTransactionDetailsRequest) SetTransactionType(v string) *Qu
 
 type QueryAccountTransactionDetailsResponseBody struct {
 	// The status code returned.
+	//
+	// example:
+	//
+	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The data returned.
 	Data *QueryAccountTransactionDetailsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The message returned.
+	//
+	// example:
+	//
+	// SUCCESS
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// asadadad-edafafafaasd
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request is successful.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -13153,14 +17854,30 @@ func (s *QueryAccountTransactionDetailsResponseBody) SetSuccess(v bool) *QueryAc
 
 type QueryAccountTransactionDetailsResponseBodyData struct {
 	// The name of the account.
+	//
+	// example:
+	//
+	// yidi
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
 	// The details of the transactions within the account.
 	AccountTransactionsList *QueryAccountTransactionDetailsResponseBodyDataAccountTransactionsList `json:"AccountTransactionsList,omitempty" xml:"AccountTransactionsList,omitempty" type:"Struct"`
 	// This parameter is invalid.
+	//
+	// example:
+	//
+	// 0
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The token that is used for paging.
+	//
+	// example:
+	//
+	// ASHDADS
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 100
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -13216,36 +17933,88 @@ func (s *QueryAccountTransactionDetailsResponseBodyDataAccountTransactionsList) 
 
 type QueryAccountTransactionDetailsResponseBodyDataAccountTransactionsListAccountTransactionsList struct {
 	// The amount of the transaction.
+	//
+	// example:
+	//
+	// 1.00
 	Amount *string `json:"Amount,omitempty" xml:"Amount,omitempty"`
 	// The balance of the account.
+	//
+	// example:
+	//
+	// 0
 	Balance *string `json:"Balance,omitempty" xml:"Balance,omitempty"`
 	// The billing cycle.
+	//
+	// example:
+	//
+	// 2022-10
 	BillingCycle *string `json:"BillingCycle,omitempty" xml:"BillingCycle,omitempty"`
 	// The type of transaction payment. Valid values:
 	//
 	// Cash: pay for the transaction in cash. Deposit: pay for the transaction with deposit. RegularBankCreditRefund: pay for the transaction with credit refund controlled by a bank. DirectPay: directly pay for the transaction.
+	//
+	// example:
+	//
+	// Cash
 	FundType *string `json:"FundType,omitempty" xml:"FundType,omitempty"`
 	// The ID of the order or bill.
+	//
+	// example:
+	//
+	// 2022120336190912
 	RecordID *string `json:"RecordID,omitempty" xml:"RecordID,omitempty"`
 	// The remarks.
+	//
+	// example:
+	//
+	// Test
 	Remarks *string `json:"Remarks,omitempty" xml:"Remarks,omitempty"`
 	// The transaction account.
+	//
+	// example:
+	//
+	// fortune_test@xxx.com
 	TransactionAccount *string `json:"TransactionAccount,omitempty" xml:"TransactionAccount,omitempty"`
 	// The transaction channel.
+	//
+	// example:
+	//
+	// ALIPAY
 	TransactionChannel *string `json:"TransactionChannel,omitempty" xml:"TransactionChannel,omitempty"`
 	// The serial number of the transaction channel.
+	//
+	// example:
+	//
+	// 123232434343532
 	TransactionChannelSN *string `json:"TransactionChannelSN,omitempty" xml:"TransactionChannelSN,omitempty"`
 	// Indicates whether the transaction is of the income type or the expenditure type. If one of the following types is specified, results for the specific type are returned. If the type that you specified for the parameter does not belong to the following types, no result is returned. If the parameter is left empty, results for transactions of the income and expenditure types are all returned. Valid values:
 	//
 	// Income and Expense.
+	//
+	// example:
+	//
+	// Income
 	TransactionFlow *string `json:"TransactionFlow,omitempty" xml:"TransactionFlow,omitempty"`
 	// The number of the transaction.
+	//
+	// example:
+	//
+	// 43342334
 	TransactionNumber *string `json:"TransactionNumber,omitempty" xml:"TransactionNumber,omitempty"`
 	// The time when the transaction was made.
+	//
+	// example:
+	//
+	// 2022-10-01
 	TransactionTime *string `json:"TransactionTime,omitempty" xml:"TransactionTime,omitempty"`
 	// The type of the transaction. If one of the following transaction types is specified, results for the specified transaction type are returned. If the transaction type that you specified does not belong to the following transaction types, no result is returned. If the parameter is left empty, results for all transaction types are returned. Valid values:
 	//
 	// Payment, Withdraw, Refund, Consumption, Transfer, and Adjust.
+	//
+	// example:
+	//
+	// Consumption
 	TransactionType *string `json:"TransactionType,omitempty" xml:"TransactionType,omitempty"`
 }
 
@@ -13353,45 +18122,100 @@ func (s *QueryAccountTransactionDetailsResponse) SetBody(v *QueryAccountTransact
 
 type QueryAccountTransactionsRequest struct {
 	// The end of the creation time range to query. By default, the transactions in the last month are queried. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. Example: 2018-01-01T00:00:00Z.
+	//
+	// example:
+	//
+	// 2020-03-06T01:55:00Z
 	CreateTimeEnd *string `json:"CreateTimeEnd,omitempty" xml:"CreateTimeEnd,omitempty"`
 	// The beginning of the creation time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. Example: 2018-01-01T00:00:00Z.
+	//
+	// example:
+	//
+	// 2020-03-05T01:46:09Z
 	CreateTimeStart *string `json:"CreateTimeStart,omitempty" xml:"CreateTimeStart,omitempty"`
 	// The number of the page to return.
+	//
+	// example:
+	//
+	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
 	// The number of entries to return on each page.
+	//
+	// example:
+	//
+	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The ID of the order or bill.
+	//
+	// example:
+	//
+	// 20200302
 	RecordID *string `json:"RecordID,omitempty" xml:"RecordID,omitempty"`
 	// The transaction channel. If you specify one of the following transaction channels for this parameter, the results for the specified transaction channel are returned. If the transaction channel that you specify does not belong to the following transaction channels, no result is returned. If you leave this parameter empty, the results for all the following transaction channels are returned by default. Valid values:
 	//
-	// *   AccountBalance
-	// *   BankTransfer
-	// *   Alipay
-	// *   AntCreditPay
-	// *   OfflineRemittance
-	// *   RegularBankCreditRefund
-	// *   CreditCard
-	// *   MyBankCredit
-	// *   HuaxiaBankCInstallment
-	// *   ApplePay
+	// 	- AccountBalance
+	//
+	// 	- BankTransfer
+	//
+	// 	- Alipay
+	//
+	// 	- AntCreditPay
+	//
+	// 	- OfflineRemittance
+	//
+	// 	- RegularBankCreditRefund
+	//
+	// 	- CreditCard
+	//
+	// 	- MyBankCredit
+	//
+	// 	- HuaxiaBankCInstallment
+	//
+	// 	- ApplePay
+	//
+	// example:
+	//
+	// AccountBalance
 	TransactionChannel *string `json:"TransactionChannel,omitempty" xml:"TransactionChannel,omitempty"`
 	// The serial number of the transaction channel.
+	//
+	// example:
+	//
+	// 12342134
 	TransactionChannelSN *string `json:"TransactionChannelSN,omitempty" xml:"TransactionChannelSN,omitempty"`
 	// The type of the transaction flow. If you specify one of the following types for this parameter, the results for the specified type are returned. If the type that you specify does not belong to the following types, no result is returned. If you leave this parameter empty, the results for the following two types are returned by default. Valid values:
 	//
-	// *   Income
-	// *   Expense
+	// 	- Income
+	//
+	// 	- Expense
+	//
+	// example:
+	//
+	// Income
 	TransactionFlow *string `json:"TransactionFlow,omitempty" xml:"TransactionFlow,omitempty"`
 	// The number of the transaction.
+	//
+	// example:
+	//
+	// 133314076
 	TransactionNumber *string `json:"TransactionNumber,omitempty" xml:"TransactionNumber,omitempty"`
 	// The type of the transaction. If you specify one of the following transaction types for this parameter, the results for the specified transaction type are returned. If the transaction type that you specify does not belong to the following types, no result is returned. If you leave this parameter empty, the results for all the following transaction types are returned by default. Valid values:
 	//
-	// *   Payment
-	// *   Withdraw
-	// *   Refund
-	// *   Consumption
-	// *   Transfer
-	// *   Adjust
+	// 	- Payment
+	//
+	// 	- Withdraw
+	//
+	// 	- Refund
+	//
+	// 	- Consumption
+	//
+	// 	- Transfer
+	//
+	// 	- Adjust
+	//
+	// example:
+	//
+	// Payment
 	TransactionType *string `json:"TransactionType,omitempty" xml:"TransactionType,omitempty"`
 }
 
@@ -13455,14 +18279,30 @@ func (s *QueryAccountTransactionsRequest) SetTransactionType(v string) *QueryAcc
 
 type QueryAccountTransactionsResponseBody struct {
 	// The status code returned.
+	//
+	// example:
+	//
+	// Success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The data returned.
 	Data *QueryAccountTransactionsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The message returned.
+	//
+	// example:
+	//
+	// Successful！
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 8634E02D-0942-4B1D-8295-5352FE9A1F39
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request is successful.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -13501,14 +18341,30 @@ func (s *QueryAccountTransactionsResponseBody) SetSuccess(v bool) *QueryAccountT
 
 type QueryAccountTransactionsResponseBodyData struct {
 	// The name of your Alibaba Cloud account.
+	//
+	// example:
+	//
+	// test@test.aliyunid.com
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
 	// The information about transactions.
 	AccountTransactionsList *QueryAccountTransactionsResponseBodyDataAccountTransactionsList `json:"AccountTransactionsList,omitempty" xml:"AccountTransactionsList,omitempty" type:"Struct"`
 	// The page number of the returned page.
+	//
+	// example:
+	//
+	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
 	// The number of entries returned per page.
+	//
+	// example:
+	//
+	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The total number of returned entries.
+	//
+	// example:
+	//
+	// 10
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -13564,56 +18420,126 @@ func (s *QueryAccountTransactionsResponseBodyDataAccountTransactionsList) SetAcc
 
 type QueryAccountTransactionsResponseBodyDataAccountTransactionsListAccountTransactionsList struct {
 	// The amount.
+	//
+	// example:
+	//
+	// 0
 	Amount *string `json:"Amount,omitempty" xml:"Amount,omitempty"`
 	// The balance of the account.
+	//
+	// example:
+	//
+	// 0
 	Balance *string `json:"Balance,omitempty" xml:"Balance,omitempty"`
 	// The billing cycle. Format: YYYY-MM.
+	//
+	// example:
+	//
+	// 2020-03
 	BillingCycle *string `json:"BillingCycle,omitempty" xml:"BillingCycle,omitempty"`
 	// The type of transaction payment. Valid values:
 	//
-	// *   Cash: pay for the transaction in cash.
-	// *   Deposit: pay for the transaction with deposit.
-	// *   RegularBankCreditRefund: pay for the transaction with credit refund controlled by a bank.
-	// *   DirectPay: directly pay for the transaction.
+	// 	- Cash: pay for the transaction in cash.
+	//
+	// 	- Deposit: pay for the transaction with deposit.
+	//
+	// 	- RegularBankCreditRefund: pay for the transaction with credit refund controlled by a bank.
+	//
+	// 	- DirectPay: directly pay for the transaction.
+	//
+	// example:
+	//
+	// Cash
 	FundType *string `json:"FundType,omitempty" xml:"FundType,omitempty"`
 	// The number of the order or bill.
+	//
+	// example:
+	//
+	// 2020030242
 	RecordID *string `json:"RecordID,omitempty" xml:"RecordID,omitempty"`
 	// The remarks on the transaction.
+	//
+	// example:
+	//
+	// NAT_GW
 	Remarks *string `json:"Remarks,omitempty" xml:"Remarks,omitempty"`
 	// The transaction account. For example, the account is a recharge account in Alipay or a transfer account.
+	//
+	// example:
+	//
+	// 213562146
 	TransactionAccount *string `json:"TransactionAccount,omitempty" xml:"TransactionAccount,omitempty"`
 	// The transaction channel.
 	//
-	// *   AccountBalance
-	// *   BankTransfer
-	// *   Alipay
-	// *   AntCreditPay
-	// *   OfflineRemittance
-	// *   RegularBankCreditRefund
-	// *   CreditCard
-	// *   MyBankCredit
-	// *   HuaxiaBankCInstallment
-	// *   ApplePay
+	// 	- AccountBalance
+	//
+	// 	- BankTransfer
+	//
+	// 	- Alipay
+	//
+	// 	- AntCreditPay
+	//
+	// 	- OfflineRemittance
+	//
+	// 	- RegularBankCreditRefund
+	//
+	// 	- CreditCard
+	//
+	// 	- MyBankCredit
+	//
+	// 	- HuaxiaBankCInstallment
+	//
+	// 	- ApplePay
+	//
+	// example:
+	//
+	// AccountBalance
 	TransactionChannel *string `json:"TransactionChannel,omitempty" xml:"TransactionChannel,omitempty"`
 	// The serial number of the transaction channel.
+	//
+	// example:
+	//
+	// 1234354325
 	TransactionChannelSN *string `json:"TransactionChannelSN,omitempty" xml:"TransactionChannelSN,omitempty"`
 	// The type of the transaction flow.
 	//
-	// *   Income
-	// *   Expense
+	// 	- Income
+	//
+	// 	- Expense
+	//
+	// example:
+	//
+	// Expense
 	TransactionFlow *string `json:"TransactionFlow,omitempty" xml:"TransactionFlow,omitempty"`
 	// The number of the transaction.
+	//
+	// example:
+	//
+	// 43342334
 	TransactionNumber *string `json:"TransactionNumber,omitempty" xml:"TransactionNumber,omitempty"`
 	// The time when the transaction was made.
+	//
+	// example:
+	//
+	// 2020-03-10T02:03:20Z
 	TransactionTime *string `json:"TransactionTime,omitempty" xml:"TransactionTime,omitempty"`
 	// The type of the transaction.
 	//
-	// *   Payment
-	// *   Withdraw
-	// *   Refund
-	// *   Consumption
-	// *   Transfer
-	// *   Adjust
+	// 	- Payment
+	//
+	// 	- Withdraw
+	//
+	// 	- Refund
+	//
+	// 	- Consumption
+	//
+	// 	- Transfer
+	//
+	// 	- Adjust
+	//
+	// example:
+	//
+	// Consumption
 	TransactionType *string `json:"TransactionType,omitempty" xml:"TransactionType,omitempty"`
 }
 
@@ -13721,38 +18647,89 @@ func (s *QueryAccountTransactionsResponse) SetBody(v *QueryAccountTransactionsRe
 
 type QueryAvailableInstancesRequest struct {
 	// The end time when the specified instance is created. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	//
+	// example:
+	//
+	// 2016-05-23T12:00:00Z
 	CreateTimeEnd *string `json:"CreateTimeEnd,omitempty" xml:"CreateTimeEnd,omitempty"`
 	// The start time when the specified instance is created. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	//
+	// example:
+	//
+	// 2016-05-23T12:00:00Z
 	CreateTimeStart *string `json:"CreateTimeStart,omitempty" xml:"CreateTimeStart,omitempty"`
 	// The end of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC. Example: 2016-05-23T12:00:00Z.
+	//
+	// example:
+	//
+	// 2016-05-23T12:00:00Z
 	EndTimeEnd *string `json:"EndTimeEnd,omitempty" xml:"EndTimeEnd,omitempty"`
 	// The beginning of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC. Example: 2016-05-23T12:00:00Z.
+	//
+	// example:
+	//
+	// 2016-05-23T12:00:00Z
 	EndTimeStart *string `json:"EndTimeStart,omitempty" xml:"EndTimeStart,omitempty"`
 	// The ID of the instance. Separate multiple IDs with commas (,). You can specify a maximum of 100 IDs.
+	//
+	// example:
+	//
+	// rm-xxxxxxxxxxxx
 	InstanceIDs *string `json:"InstanceIDs,omitempty" xml:"InstanceIDs,omitempty"`
 	OwnerId     *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The number of the page to return.
+	//
+	// example:
+	//
+	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
 	// The number of entries to return on each page.
+	//
+	// example:
+	//
+	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The code of the service. You can query the service code by calling the **QueryProductList** operation or viewing **Codes of Alibaba Cloud services**.
+	// The code of the service. You can query the service code by calling the **QueryProductList*	- operation or viewing **Codes of Alibaba Cloud services**.
 	//
 	// >This parameter cannot be left empty if the region is specified.
+	//
+	// example:
+	//
+	// rds
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
 	// The type of the service.
+	//
+	// example:
+	//
+	// rds
 	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
 	// The ID of the region in which the instance resides.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
 	// The renewal status of the specified instance. Valid values:
 	//
-	// *   AutoRenewal: The instance is automatically renewed.
-	// *   ManualRenewal: The instance is manually renewed.
-	// *   NotRenewal: The instance is not renewed.
+	// 	- AutoRenewal: The instance is automatically renewed.
+	//
+	// 	- ManualRenewal: The instance is manually renewed.
+	//
+	// 	- NotRenewal: The instance is not renewed.
+	//
+	// example:
+	//
+	// AutoRenewal
 	RenewStatus *string `json:"RenewStatus,omitempty" xml:"RenewStatus,omitempty"`
 	// The billing method. Valid values:
 	//
-	// *   Subscription: subscription
-	// *   PayAsYouGo: pay-as-you-go
+	// 	- Subscription: subscription
+	//
+	// 	- PayAsYouGo: pay-as-you-go
+	//
+	// example:
+	//
+	// Subscription
 	SubscriptionType *string `json:"SubscriptionType,omitempty" xml:"SubscriptionType,omitempty"`
 }
 
@@ -13831,14 +18808,30 @@ func (s *QueryAvailableInstancesRequest) SetSubscriptionType(v string) *QueryAva
 
 type QueryAvailableInstancesResponseBody struct {
 	// The status code returned.
+	//
+	// example:
+	//
+	// Success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The data returned.
 	Data *QueryAvailableInstancesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The message returned.
+	//
+	// example:
+	//
+	// Successful!
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// C7C15585-8349-4C62-BEE4-5A391841B9BE
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request is successful.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -13879,10 +18872,22 @@ type QueryAvailableInstancesResponseBodyData struct {
 	// The instances returned.
 	InstanceList []*QueryAvailableInstancesResponseBodyDataInstanceList `json:"InstanceList,omitempty" xml:"InstanceList,omitempty" type:"Repeated"`
 	// The page number of the returned page.
+	//
+	// example:
+	//
+	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
 	// The number of entries returned per page.
+	//
+	// example:
+	//
+	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The total number of returned entries.
+	//
+	// example:
+	//
+	// 11
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -13916,50 +18921,126 @@ func (s *QueryAvailableInstancesResponseBodyData) SetTotalCount(v int32) *QueryA
 
 type QueryAvailableInstancesResponseBodyDataInstanceList struct {
 	// The time when the specified instance was created.
+	//
+	// example:
+	//
+	// 2019-09-08T16:00:00Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The time when the instance was expired.
+	//
+	// example:
+	//
+	// 2019-09-08T16:00:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The time when the specified instance was expected to be released.
+	//
+	// example:
+	//
+	// 2019-09-08T16:00:00Z
 	ExpectedReleaseTime *string `json:"ExpectedReleaseTime,omitempty" xml:"ExpectedReleaseTime,omitempty"`
 	// The ID of the instance.
+	//
+	// example:
+	//
+	// 1049056
 	InstanceID *string `json:"InstanceID,omitempty" xml:"InstanceID,omitempty"`
 	// The ID of the instance owner.
+	//
+	// example:
+	//
+	// 325352345
 	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The code of the service.
+	//
+	// example:
+	//
+	// rds
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
 	// The type of the service.
+	//
+	// example:
+	//
+	// rds
 	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
 	// The ID of the region in which the instance resides.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
 	// The time when the instance was released.
+	//
+	// example:
+	//
+	// 2019-09-08T16:00:00Z
 	ReleaseTime *string `json:"ReleaseTime,omitempty" xml:"ReleaseTime,omitempty"`
 	// The renewal status of the specified instance. Valid values:
 	//
-	// *   AutoRenewal: The instance is automatically renewed.
-	// *   ManualRenewal: The instance is manually renewed.
-	// *   NotRenewal: The instance is not renewed.
+	// 	- AutoRenewal: The instance is automatically renewed.
+	//
+	// 	- ManualRenewal: The instance is manually renewed.
+	//
+	// 	- NotRenewal: The instance is not renewed.
+	//
+	// example:
+	//
+	// ManualRenewal
 	RenewStatus *string `json:"RenewStatus,omitempty" xml:"RenewStatus,omitempty"`
 	// The number of auto-renewal cycles.
+	//
+	// example:
+	//
+	// 1
 	RenewalDuration *int32 `json:"RenewalDuration,omitempty" xml:"RenewalDuration,omitempty"`
 	// The unit of the auto-renewal cycle. Valid values:
 	//
-	// *   M: month
-	// *   Y: year
+	// 	- M: month
+	//
+	// 	- Y: year
+	//
+	// example:
+	//
+	// M
 	RenewalDurationUnit *string `json:"RenewalDurationUnit,omitempty" xml:"RenewalDurationUnit,omitempty"`
 	// The seller.
+	//
+	// example:
+	//
+	// 123123123
 	Seller *string `json:"Seller,omitempty" xml:"Seller,omitempty"`
 	// The ID of the seller.
+	//
+	// example:
+	//
+	// 123123123
 	SellerId *int64 `json:"SellerId,omitempty" xml:"SellerId,omitempty"`
 	// The status of the instance.
+	//
+	// example:
+	//
+	// Creating: The instance is being created. WaitForExpire: The instance is about to expire. Normal: The instance can properly run. Expired: The instance is expired.
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The time when the specified instance was suspended.
+	//
+	// example:
+	//
+	// 2019-09-08T16:00:00Z
 	StopTime *string `json:"StopTime,omitempty" xml:"StopTime,omitempty"`
 	// The sub-status of the specified instance.
+	//
+	// example:
+	//
+	// Normal: The pay-as-you-go module can properly run. WaitForLimit: The pay-as-you-go module is about to be limited due to overdue payments. BandwidthLimited: The pay-as-you-go module is limited due to overdue payments.
 	SubStatus *string `json:"SubStatus,omitempty" xml:"SubStatus,omitempty"`
 	// The billing method. Valid values:
 	//
-	// *   Subscription: subscription
-	// *   PayAsYouGo: pay-as-you-go
+	// 	- Subscription: subscription
+	//
+	// 	- PayAsYouGo: pay-as-you-go
+	//
+	// example:
+	//
+	// Subscription
 	SubscriptionType *string `json:"SubscriptionType,omitempty" xml:"SubscriptionType,omitempty"`
 }
 
@@ -14092,40 +19173,87 @@ func (s *QueryAvailableInstancesResponse) SetBody(v *QueryAvailableInstancesResp
 
 type QueryBillRequest struct {
 	// The ID of the member.
+	//
+	// example:
+	//
+	// 123
 	BillOwnerId *int64 `json:"BillOwnerId,omitempty" xml:"BillOwnerId,omitempty"`
 	// The billing cycle, in the YYYY-MM format.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2018-07
 	BillingCycle *string `json:"BillingCycle,omitempty" xml:"BillingCycle,omitempty"`
 	// Specifies whether to display local currency information in bills. The parameter will be discontinued.
+	//
+	// example:
+	//
+	// false
 	IsDisplayLocalCurrency *bool `json:"IsDisplayLocalCurrency,omitempty" xml:"IsDisplayLocalCurrency,omitempty"`
 	// Specifies whether to filter out a bill whose pretax gross amount is 0. By default, a bill whose pretax gross amount is 0 is not filtered out. Valid values:
 	//
-	// *   true: filters out a bill whose pretax gross amount is 0.
-	// *   false: does not filter out a bill whose pretax gross amount is 0.
+	// 	- true: filters out a bill whose pretax gross amount is 0.
+	//
+	// 	- false: does not filter out a bill whose pretax gross amount is 0.
+	//
+	// example:
+	//
+	// true
 	IsHideZeroCharge *bool  `json:"IsHideZeroCharge,omitempty" xml:"IsHideZeroCharge,omitempty"`
 	OwnerId          *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The number of the page to return. Default value: 1.
+	//
+	// example:
+	//
+	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
 	// The number of entries to return on each page. Default value: 20. Maximum value: 300.
+	//
+	// example:
+	//
+	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The code of the service.
+	//
+	// example:
+	//
+	// rds
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
 	// The type of the service.
+	//
+	// example:
+	//
+	// rds
 	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
 	// The billing method. Valid values:
 	//
-	// *   Subscription
-	// *   PayAsYouGo
+	// 	- Subscription
+	//
+	// 	- PayAsYouGo
 	//
 	// **
 	//
 	// ****This parameter must be used together with the ProductCode parameter.
+	//
+	// example:
+	//
+	// Subscription
 	SubscriptionType *string `json:"SubscriptionType,omitempty" xml:"SubscriptionType,omitempty"`
 	// The type of the bill. Valid values:
 	//
-	// *   SubscriptionOrder
-	// *   PayAsYouGoBill
-	// *   Refund
-	// *   Adjustment
+	// 	- SubscriptionOrder
+	//
+	// 	- PayAsYouGoBill
+	//
+	// 	- Refund
+	//
+	// 	- Adjustment
+	//
+	// example:
+	//
+	// SubscriptionOrder
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
@@ -14194,14 +19322,30 @@ func (s *QueryBillRequest) SetType(v string) *QueryBillRequest {
 
 type QueryBillResponseBody struct {
 	// The status code returned.
+	//
+	// example:
+	//
+	// Success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The returned data.
 	Data *QueryBillResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The message returned.
+	//
+	// example:
+	//
+	// Successful!
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// AE3F4057-DFC9-4B81-8858-F620651010C9
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request is successful.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -14240,18 +19384,42 @@ func (s *QueryBillResponseBody) SetSuccess(v bool) *QueryBillResponseBody {
 
 type QueryBillResponseBodyData struct {
 	// The ID of the account.
+	//
+	// example:
+	//
+	// 185xxxxx489
 	AccountID *string `json:"AccountID,omitempty" xml:"AccountID,omitempty"`
 	// The name of the account.
+	//
+	// example:
+	//
+	// test@test.aliyunid.com
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
 	// The billing cycle, in the YYYY-MM format.
+	//
+	// example:
+	//
+	// 2020-02
 	BillingCycle *string `json:"BillingCycle,omitempty" xml:"BillingCycle,omitempty"`
 	// The details of the bills.
 	Items *QueryBillResponseBodyDataItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
 	// The page number of the returned page.
+	//
+	// example:
+	//
+	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
 	// The number of entries returned per page.
+	//
+	// example:
+	//
+	// 1
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The total number of returned entries.
+	//
+	// example:
+	//
+	// 20
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -14317,85 +19485,222 @@ func (s *QueryBillResponseBodyDataItems) SetItem(v []*QueryBillResponseBodyDataI
 
 type QueryBillResponseBodyDataItemsItem struct {
 	// The amount deducted by using credit refunds.
+	//
+	// example:
+	//
+	// 0
 	AdjustAmount *float32 `json:"AdjustAmount,omitempty" xml:"AdjustAmount,omitempty"`
 	// The amount paid after tax is deducted.
+	//
+	// example:
+	//
+	// 0
 	AfterTaxAmount *float32 `json:"AfterTaxAmount,omitempty" xml:"AfterTaxAmount,omitempty"`
 	// The amount paid in cash. The amount that was deducted by using credit refunds is not included.
+	//
+	// example:
+	//
+	// 0
 	CashAmount *float32 `json:"CashAmount,omitempty" xml:"CashAmount,omitempty"`
 	// The code of the commodity.
+	//
+	// example:
+	//
+	// rds
 	CommodityCode *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
 	// The type of the currency.
 	//
-	// *   CNY
-	// *   USD
-	// *   JPY
+	// 	- CNY
+	//
+	// 	- USD
+	//
+	// 	- JPY
+	//
+	// example:
+	//
+	// CNY
 	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
 	// The amount deducted by using vouchers.
+	//
+	// example:
+	//
+	// 0
 	DeductedByCashCoupons *float32 `json:"DeductedByCashCoupons,omitempty" xml:"DeductedByCashCoupons,omitempty"`
 	// The amount deducted by using coupons.
+	//
+	// example:
+	//
+	// 0
 	DeductedByCoupons *float32 `json:"DeductedByCoupons,omitempty" xml:"DeductedByCoupons,omitempty"`
 	// The amount deducted by using prepaid cards.
+	//
+	// example:
+	//
+	// 0
 	DeductedByPrepaidCard *float32 `json:"DeductedByPrepaidCard,omitempty" xml:"DeductedByPrepaidCard,omitempty"`
 	// The discount amount.
+	//
+	// example:
+	//
+	// 0
 	InvoiceDiscount *float32 `json:"InvoiceDiscount,omitempty" xml:"InvoiceDiscount,omitempty"`
 	// The type of the bill.
 	//
-	// *   SubscriptionOrder
-	// *   PayAsYouGoBill
-	// *   Refund
-	// *   Adjustment
+	// 	- SubscriptionOrder
+	//
+	// 	- PayAsYouGoBill
+	//
+	// 	- Refund
+	//
+	// 	- Adjustment
+	//
+	// example:
+	//
+	// SubscriptionOrder
 	Item *string `json:"Item,omitempty" xml:"Item,omitempty"`
 	// The unsettled amount of the bill.
+	//
+	// example:
+	//
+	// 0
 	OutstandingAmount *float32 `json:"OutstandingAmount,omitempty" xml:"OutstandingAmount,omitempty"`
 	// The ID of the member. This parameter is returned in a multi-account payment scenario.
+	//
+	// example:
+	//
+	// 3532535235
 	OwnerID *string `json:"OwnerID,omitempty" xml:"OwnerID,omitempty"`
 	// The amount paid with cash.
+	//
+	// example:
+	//
+	// 0
 	PaymentAmount *float32 `json:"PaymentAmount,omitempty" xml:"PaymentAmount,omitempty"`
 	// The currency used for payment.
+	//
+	// example:
+	//
+	// USD
 	PaymentCurrency *string `json:"PaymentCurrency,omitempty" xml:"PaymentCurrency,omitempty"`
 	// The time when the order was paid.
+	//
+	// example:
+	//
+	// 2020-03-11 08:00:00
 	PaymentTime *string `json:"PaymentTime,omitempty" xml:"PaymentTime,omitempty"`
 	// The ID of the transaction.
+	//
+	// example:
+	//
+	// 2O3AADJFEAF2PDKSFAMFCB11918
 	PaymentTransactionID *string `json:"PaymentTransactionID,omitempty" xml:"PaymentTransactionID,omitempty"`
 	// The code of the service.
+	//
+	// example:
+	//
+	// rds
 	PipCode *string `json:"PipCode,omitempty" xml:"PipCode,omitempty"`
 	// The pretax amount
+	//
+	// example:
+	//
+	// 100
 	PretaxAmount *float32 `json:"PretaxAmount,omitempty" xml:"PretaxAmount,omitempty"`
 	// The pretax amount paid in local currency.
+	//
+	// example:
+	//
+	// 0
 	PretaxAmountLocal *float32 `json:"PretaxAmountLocal,omitempty" xml:"PretaxAmountLocal,omitempty"`
 	// The pretax gross amount.
+	//
+	// example:
+	//
+	// 0
 	PretaxGrossAmount *float32 `json:"PretaxGrossAmount,omitempty" xml:"PretaxGrossAmount,omitempty"`
 	// The code of the service.
+	//
+	// example:
+	//
+	// rds
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
 	// The details of the service.
+	//
+	// example:
+	//
+	// ApsaraDB RDS (subscription)
 	ProductDetail *string `json:"ProductDetail,omitempty" xml:"ProductDetail,omitempty"`
 	// The name of the service.
+	//
+	// example:
+	//
+	// ApsaraDB RDS
 	ProductName *string `json:"ProductName,omitempty" xml:"ProductName,omitempty"`
 	// The type of the service.
+	//
+	// example:
+	//
+	// rds
 	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
 	// The ID of the order or bill.
+	//
+	// example:
+	//
+	// 2020xxxx5912
 	RecordID *string `json:"RecordID,omitempty" xml:"RecordID,omitempty"`
 	// The round down discount.
+	//
+	// example:
+	//
+	// 0
 	RoundDownDiscount *string `json:"RoundDownDiscount,omitempty" xml:"RoundDownDiscount,omitempty"`
 	// The payment status of the bill. Valid values:
 	//
-	// *   PayFinish: The bill is paid.
-	// *   PayUnclear: The bill is not cleared.
-	// *   PayUnsettle: The bill is not settled.
-	// *   NoSettle: The bill is free of settlement.
+	// 	- PayFinish: The bill is paid.
+	//
+	// 	- PayUnclear: The bill is not cleared.
+	//
+	// 	- PayUnsettle: The bill is not settled.
+	//
+	// 	- NoSettle: The bill is free of settlement.
+	//
+	// example:
+	//
+	// PayFinish
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The ID of the order corresponding to the bill.
+	//
+	// example:
+	//
+	// 325345254353
 	SubOrderId *string `json:"SubOrderId,omitempty" xml:"SubOrderId,omitempty"`
 	// The billing method. Valid values:
 	//
-	// *   Subscription
-	// *   PayAsYouGo
+	// 	- Subscription
+	//
+	// 	- PayAsYouGo
+	//
+	// example:
+	//
+	// PayAsYouGo
 	SubscriptionType *string `json:"SubscriptionType,omitempty" xml:"SubscriptionType,omitempty"`
 	// The tax.
+	//
+	// example:
+	//
+	// 0
 	Tax *float32 `json:"Tax,omitempty" xml:"Tax,omitempty"`
 	// The time when the bill ends.
+	//
+	// example:
+	//
+	// 2020-03-11 08:00:00
 	UsageEndTime *string `json:"UsageEndTime,omitempty" xml:"UsageEndTime,omitempty"`
 	// The time when the bill starts.
+	//
+	// example:
+	//
+	// 2020-03-11 07:00:00
 	UsageStartTime *string `json:"UsageStartTime,omitempty" xml:"UsageStartTime,omitempty"`
 }
 
@@ -14598,17 +19903,40 @@ func (s *QueryBillResponse) SetBody(v *QueryBillResponseBody) *QueryBillResponse
 
 type QueryBillOverviewRequest struct {
 	// The ID of the member. If you specify a value for this parameter, you can query the bills of the specified member. If you leave this parameter empty, the bills of the current account are queried by default.
+	//
+	// example:
+	//
+	// 1234
 	BillOwnerId *int64 `json:"BillOwnerId,omitempty" xml:"BillOwnerId,omitempty"`
 	// The billing cycle, in the YYYY-MM format.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2018-07
 	BillingCycle *string `json:"BillingCycle,omitempty" xml:"BillingCycle,omitempty"`
 	// The code of the service.
+	//
+	// example:
+	//
+	// rds
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
 	// The type of the service.
+	//
+	// example:
+	//
+	// rds
 	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
 	// The billing method. Valid values:
 	//
-	// *   Subscription: the subscription billing method
-	// *   PayAsYouGo: the pay-as-you-go billing method
+	// 	- Subscription: the subscription billing method
+	//
+	// 	- PayAsYouGo: the pay-as-you-go billing method
+	//
+	// example:
+	//
+	// Subscription
 	SubscriptionType *string `json:"SubscriptionType,omitempty" xml:"SubscriptionType,omitempty"`
 }
 
@@ -14647,14 +19975,30 @@ func (s *QueryBillOverviewRequest) SetSubscriptionType(v string) *QueryBillOverv
 
 type QueryBillOverviewResponseBody struct {
 	// The status code returned.
+	//
+	// example:
+	//
+	// Success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The data returned.
 	Data *QueryBillOverviewResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The message returned.
+	//
+	// example:
+	//
+	// Successful!
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// BCB1E1BC-05BF-4217-80EE-BF09A29407BA
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request is successful.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -14693,10 +20037,22 @@ func (s *QueryBillOverviewResponseBody) SetSuccess(v bool) *QueryBillOverviewRes
 
 type QueryBillOverviewResponseBodyData struct {
 	// The ID of the account.
+	//
+	// example:
+	//
+	// 185766xxxx
 	AccountID *string `json:"AccountID,omitempty" xml:"AccountID,omitempty"`
 	// The name of the account.
+	//
+	// example:
+	//
+	// test@test.aliyunid.com
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
 	// The billing cycle, in the YYYY-MM format.
+	//
+	// example:
+	//
+	// 2020-03
 	BillingCycle *string `json:"BillingCycle,omitempty" xml:"BillingCycle,omitempty"`
 	// The details of the bills.
 	Items *QueryBillOverviewResponseBodyDataItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
@@ -14749,69 +20105,183 @@ func (s *QueryBillOverviewResponseBodyDataItems) SetItem(v []*QueryBillOverviewR
 
 type QueryBillOverviewResponseBodyDataItemsItem struct {
 	// The amount deducted by using credit refunds.
-	AdjustAmount   *float32 `json:"AdjustAmount,omitempty" xml:"AdjustAmount,omitempty"`
+	//
+	// example:
+	//
+	// 0
+	AdjustAmount *float32 `json:"AdjustAmount,omitempty" xml:"AdjustAmount,omitempty"`
+	// example:
+	//
+	// 0
 	AfterTaxAmount *float32 `json:"AfterTaxAmount,omitempty" xml:"AfterTaxAmount,omitempty"`
 	// The ID of the account to which the bill belongs.
+	//
+	// example:
+	//
+	// 185766xxxx
 	BillAccountID *string `json:"BillAccountID,omitempty" xml:"BillAccountID,omitempty"`
 	// The name of the account to which the bill belongs.
+	//
+	// example:
+	//
+	// test@test.aliyunid.com
 	BillAccountName *string `json:"BillAccountName,omitempty" xml:"BillAccountName,omitempty"`
 	// The business type.
+	//
+	// example:
+	//
+	// trusteeship
 	BizType *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
 	// The amount paid in cash. The amount that was deducted by using credit refunds is not included.
+	//
+	// example:
+	//
+	// 0
 	CashAmount *float32 `json:"CashAmount,omitempty" xml:"CashAmount,omitempty"`
 	// The code of the commodity. The commodity code is the same as that displayed in User Center.
+	//
+	// example:
+	//
+	// rds
 	CommodityCode *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
 	// The type of the currency. Valid values:
 	//
-	// *   CNY
-	// *   USD
-	// *   JPY
+	// 	- CNY
+	//
+	// 	- USD
+	//
+	// 	- JPY
+	//
+	// example:
+	//
+	// CNY
 	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
 	// The amount deducted by using vouchers.
+	//
+	// example:
+	//
+	// 0
 	DeductedByCashCoupons *float32 `json:"DeductedByCashCoupons,omitempty" xml:"DeductedByCashCoupons,omitempty"`
 	// The amount deducted by using coupons.
+	//
+	// example:
+	//
+	// 0
 	DeductedByCoupons *float32 `json:"DeductedByCoupons,omitempty" xml:"DeductedByCoupons,omitempty"`
 	// The amount deducted by using prepaid cards.
+	//
+	// example:
+	//
+	// 0
 	DeductedByPrepaidCard *float32 `json:"DeductedByPrepaidCard,omitempty" xml:"DeductedByPrepaidCard,omitempty"`
 	// The discount amount.
+	//
+	// example:
+	//
+	// 0
 	InvoiceDiscount *float32 `json:"InvoiceDiscount,omitempty" xml:"InvoiceDiscount,omitempty"`
 	// The type of the bill. Valid values:
 	//
-	// *   SubscriptionOrder
-	// *   PayAsYouGoBill
-	// *   Refund
-	// *   Adjustment
+	// 	- SubscriptionOrder
+	//
+	// 	- PayAsYouGoBill
+	//
+	// 	- Refund
+	//
+	// 	- Adjustment
+	//
+	// example:
+	//
+	// PayAsYouGoBill
 	Item *string `json:"Item,omitempty" xml:"Item,omitempty"`
 	// The unsettled amount or the amount deducted by using credits. This may be an unsettled amount of a regular user or credits consumed by a credit user.
+	//
+	// example:
+	//
+	// 0
 	OutstandingAmount *float32 `json:"OutstandingAmount,omitempty" xml:"OutstandingAmount,omitempty"`
 	// The ID of the bill owner.
+	//
+	// example:
+	//
+	// 1222
 	OwnerID *string `json:"OwnerID,omitempty" xml:"OwnerID,omitempty"`
 	// The amount paid in cash. The amount that was deducted by using credit refunds is included.
-	PaymentAmount   *float32 `json:"PaymentAmount,omitempty" xml:"PaymentAmount,omitempty"`
-	PaymentCurrency *string  `json:"PaymentCurrency,omitempty" xml:"PaymentCurrency,omitempty"`
+	//
+	// example:
+	//
+	// 100
+	PaymentAmount *float32 `json:"PaymentAmount,omitempty" xml:"PaymentAmount,omitempty"`
+	// example:
+	//
+	// USD
+	PaymentCurrency *string `json:"PaymentCurrency,omitempty" xml:"PaymentCurrency,omitempty"`
 	// The code of the service. The service code is the same as that displayed in User Center.
+	//
+	// example:
+	//
+	// rds
 	PipCode *string `json:"PipCode,omitempty" xml:"PipCode,omitempty"`
 	// The pretax amount.
-	PretaxAmount      *float32 `json:"PretaxAmount,omitempty" xml:"PretaxAmount,omitempty"`
+	//
+	// example:
+	//
+	// 100
+	PretaxAmount *float32 `json:"PretaxAmount,omitempty" xml:"PretaxAmount,omitempty"`
+	// example:
+	//
+	// 0
 	PretaxAmountLocal *float32 `json:"PretaxAmountLocal,omitempty" xml:"PretaxAmountLocal,omitempty"`
 	// The pretax gross amount.
+	//
+	// example:
+	//
+	// 100
 	PretaxGrossAmount *float32 `json:"PretaxGrossAmount,omitempty" xml:"PretaxGrossAmount,omitempty"`
 	// The code of the service.
+	//
+	// example:
+	//
+	// rds
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
 	// The details of the service.
+	//
+	// example:
+	//
+	// NAT Gateway (Pay-As-You-Go)
 	ProductDetail *string `json:"ProductDetail,omitempty" xml:"ProductDetail,omitempty"`
 	// The name of the service.
+	//
+	// example:
+	//
+	// NAT Gateway
 	ProductName *string `json:"ProductName,omitempty" xml:"ProductName,omitempty"`
 	// The type of the service.
+	//
+	// example:
+	//
+	// rds
 	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
 	// The round down discount.
+	//
+	// example:
+	//
+	// 0
 	RoundDownDiscount *string `json:"RoundDownDiscount,omitempty" xml:"RoundDownDiscount,omitempty"`
 	// The billing method. Valid values:
 	//
-	// *   Subscription: the subscription billing method
-	// *   PayAsYouGo: the pay-as-you-go billing method
-	SubscriptionType *string  `json:"SubscriptionType,omitempty" xml:"SubscriptionType,omitempty"`
-	Tax              *float32 `json:"Tax,omitempty" xml:"Tax,omitempty"`
+	// 	- Subscription: the subscription billing method
+	//
+	// 	- PayAsYouGo: the pay-as-you-go billing method
+	//
+	// example:
+	//
+	// Subscription
+	SubscriptionType *string `json:"SubscriptionType,omitempty" xml:"SubscriptionType,omitempty"`
+	// example:
+	//
+	// 0
+	Tax *float32 `json:"Tax,omitempty" xml:"Tax,omitempty"`
 }
 
 func (s QueryBillOverviewResponseBodyDataItemsItem) String() string {
@@ -14993,14 +20463,30 @@ func (s *QueryBillOverviewResponse) SetBody(v *QueryBillOverviewResponseBody) *Q
 
 type QueryBillToOSSSubscriptionResponseBody struct {
 	// The status code returned.
+	//
+	// example:
+	//
+	// Success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The returned data.
 	Data *QueryBillToOSSSubscriptionResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The message returned.
+	//
+	// example:
+	//
+	// Successful!
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 9EEAE43F-1E4D-4734-AE93-5049878AC103
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request is successful.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -15039,8 +20525,16 @@ func (s *QueryBillToOSSSubscriptionResponseBody) SetSuccess(v bool) *QueryBillTo
 
 type QueryBillToOSSSubscriptionResponseBodyData struct {
 	// The ID of the account used to perform the query.
+	//
+	// example:
+	//
+	// 185xxxxx03489
 	AccountID *string `json:"AccountID,omitempty" xml:"AccountID,omitempty"`
 	// The name of the account used to perform the query.
+	//
+	// example:
+	//
+	// test@test.aliyunid.com
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
 	// The details of the subscribed bill.
 	Items *QueryBillToOSSSubscriptionResponseBodyDataItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
@@ -15088,26 +20582,56 @@ func (s *QueryBillToOSSSubscriptionResponseBodyDataItems) SetItem(v []*QueryBill
 
 type QueryBillToOSSSubscriptionResponseBodyDataItemsItem struct {
 	// The owner ID of the Object Storage Service (OSS) bucket.
+	//
+	// example:
+	//
+	// 1369168081849304
 	BucketOwnerId *int64 `json:"BucketOwnerId,omitempty" xml:"BucketOwnerId,omitempty"`
 	// The path in the OSS bucket.
+	//
+	// example:
+	//
+	// Billing/BillingItemDetailMonthly/
 	BucketPath *string `json:"BucketPath,omitempty" xml:"BucketPath,omitempty"`
 	// The maximum number of data rows in a single file. If the number of data rows in a bill exceeds the upper limit, the bill is split into multiple files. Then, multiple files are merged and compressed into a package.
+	//
+	// example:
+	//
+	// 300000
 	RowLimitPerFile *int32 `json:"RowLimitPerFile,omitempty" xml:"RowLimitPerFile,omitempty"`
 	// The ID of the OSS bucket that stores the subscribed bill.
+	//
+	// example:
+	//
+	// billingtestbucket
 	SubscribeBucket *string `json:"SubscribeBucket,omitempty" xml:"SubscribeBucket,omitempty"`
 	// The code of the language.
 	//
 	// Valid values:
 	//
-	// *   en: English
-	// *   zh: Chinese
+	// 	- en: English
+	//
+	// 	- zh: Chinese
+	//
+	// example:
+	//
+	// zh
 	SubscribeLanguage *string `json:"SubscribeLanguage,omitempty" xml:"SubscribeLanguage,omitempty"`
 	// The time when the subscribed bill was stored in the OSS bucket. The time is displayed in the YYYY-MM-DD hh:mm:ss format.
+	//
+	// example:
+	//
+	// 2019-10-30 15:40:11
 	SubscribeTime *string `json:"SubscribeTime,omitempty" xml:"SubscribeTime,omitempty"`
 	// The type of the subscribed bill. Valid values:
 	//
-	// *   BillingItemDetailForBillingPeriod: the bill of a billable item.
-	// *   InstanceDetailForBillingPeriod: the bill of an instance.
+	// 	- BillingItemDetailForBillingPeriod: the bill of a billable item.
+	//
+	// 	- InstanceDetailForBillingPeriod: the bill of an instance.
+	//
+	// example:
+	//
+	// BillingItemDetailForBillingPeriod
 	SubscribeType *string `json:"SubscribeType,omitempty" xml:"SubscribeType,omitempty"`
 }
 
@@ -15186,12 +20710,25 @@ func (s *QueryBillToOSSSubscriptionResponse) SetBody(v *QueryBillToOSSSubscripti
 type QueryCashCouponsRequest struct {
 	// Specifies whether the voucher takes effect. Valid values:
 	//
-	// *   true: The voucher takes effect.
-	// *   false: The voucher does not take effect.
+	// 	- true: The voucher takes effect.
+	//
+	// 	- false: The voucher does not take effect.
+	//
+	// example:
+	//
+	// true
 	EffectiveOrNot *bool `json:"EffectiveOrNot,omitempty" xml:"EffectiveOrNot,omitempty"`
 	// The end time of the validity period of the voucher. Specify the parameter in the yyyy-MM-ddTHH:mm:ssZ format. Example: 2018-08-01T00:00:00Z.
+	//
+	// example:
+	//
+	// 2018-08-01T00:00:00Z
 	ExpiryTimeEnd *string `json:"ExpiryTimeEnd,omitempty" xml:"ExpiryTimeEnd,omitempty"`
 	// The start time of the validity period of the voucher. Specify the parameter in the yyyy-MM-ddTHH:mm:ssZ format. Example: 2018-08-01T00:00:00Z.
+	//
+	// example:
+	//
+	// 2018-08-01T00:00:00Z
 	ExpiryTimeStart *string `json:"ExpiryTimeStart,omitempty" xml:"ExpiryTimeStart,omitempty"`
 }
 
@@ -15220,14 +20757,30 @@ func (s *QueryCashCouponsRequest) SetExpiryTimeStart(v string) *QueryCashCoupons
 
 type QueryCashCouponsResponseBody struct {
 	// The status code.
+	//
+	// example:
+	//
+	// Success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The data returned.
 	Data *QueryCashCouponsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The message returned.
+	//
+	// example:
+	//
+	// Successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 147B566E-DB4C-4E43-BDBB-5DB1D9D268DB
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request is successful.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -15283,29 +20836,71 @@ func (s *QueryCashCouponsResponseBodyData) SetCashCoupon(v []*QueryCashCouponsRe
 
 type QueryCashCouponsResponseBodyDataCashCoupon struct {
 	// The service to which the voucher is applicable.
+	//
+	// example:
+	//
+	// All Alibaba Cloud services
 	ApplicableProducts *string `json:"ApplicableProducts,omitempty" xml:"ApplicableProducts,omitempty"`
 	// The scenario to which the voucher is applicable.
+	//
+	// example:
+	//
+	// Pay for the pay-as-you-go bills of Alibaba Cloud services or purchase an instance of an Alibaba Cloud service
 	ApplicableScenarios *string `json:"ApplicableScenarios,omitempty" xml:"ApplicableScenarios,omitempty"`
 	// The remaining quota of the voucher.
+	//
+	// example:
+	//
+	// 100.00
 	Balance *string `json:"Balance,omitempty" xml:"Balance,omitempty"`
 	// The ID of the voucher.
+	//
+	// example:
+	//
+	// 34534253254325
 	CashCouponId *int64 `json:"CashCouponId,omitempty" xml:"CashCouponId,omitempty"`
 	// The code of the voucher.
+	//
+	// example:
+	//
+	// Q-b1485def8f04a
 	CashCouponNo *string `json:"CashCouponNo,omitempty" xml:"CashCouponNo,omitempty"`
 	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The time when the voucher took effect.
+	//
+	// example:
+	//
+	// 2018-08-02T15:15:50Z
 	EffectiveTime *string `json:"EffectiveTime,omitempty" xml:"EffectiveTime,omitempty"`
 	// The time when the voucher expired.
+	//
+	// example:
+	//
+	// 2019-01-29T15:15:50Z
 	ExpiryTime *string `json:"ExpiryTime,omitempty" xml:"ExpiryTime,omitempty"`
 	// The time when the voucher was released.
+	//
+	// example:
+	//
+	// 2018-08-02T15:15:50Z
 	GrantedTime *string `json:"GrantedTime,omitempty" xml:"GrantedTime,omitempty"`
 	// The denomination of the voucher.
+	//
+	// example:
+	//
+	// 100.00
 	NominalValue *string `json:"NominalValue,omitempty" xml:"NominalValue,omitempty"`
 	// The state of the voucher. Valid values:
 	//
-	// *   Available: The voucher is valid.
-	// *   Expired: The voucher has expired.
-	// *   Cancelled: The voucher is canceled.
+	// 	- Available: The voucher is valid.
+	//
+	// 	- Expired: The voucher has expired.
+	//
+	// 	- Cancelled: The voucher is canceled.
+	//
+	// example:
+	//
+	// Available
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -15404,6 +20999,12 @@ func (s *QueryCashCouponsResponse) SetBody(v *QueryCashCouponsResponseBody) *Que
 type QueryCommodityListRequest struct {
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	// The code of the service.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ecs
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
 }
 
@@ -15427,14 +21028,30 @@ func (s *QueryCommodityListRequest) SetProductCode(v string) *QueryCommodityList
 
 type QueryCommodityListResponseBody struct {
 	// The HTTP status code.
+	//
+	// example:
+	//
+	// NotApplicable
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The returned data.
 	Data *QueryCommodityListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The returned message.
+	//
+	// example:
+	//
+	// Successful!
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// Id of the request
+	//
+	// example:
+	//
+	// CC706AAC-75A6-55B5-9AB7-7D171C6C7655
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the information about the service was queried.
+	//
+	// example:
+	//
+	// True
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -15491,10 +21108,22 @@ func (s *QueryCommodityListResponseBodyData) SetCommodityList(v []*QueryCommodit
 
 type QueryCommodityListResponseBodyDataCommodityList struct {
 	// The payment type. Valid values: POSTPAY (pay-as-you-go) and PREPAY (subscription).
+	//
+	// example:
+	//
+	// POSTPAY
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
 	// The code of the service, which is the same as that on the Billing Management page.
+	//
+	// example:
+	//
+	// ecs
 	CommodityCode *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
 	// The name of the service.
+	//
+	// example:
+	//
+	// ECS (Pay-As-You-Go)
 	CommodityName *string `json:"CommodityName,omitempty" xml:"CommodityName,omitempty"`
 }
 
@@ -15552,12 +21181,32 @@ func (s *QueryCommodityListResponse) SetBody(v *QueryCommodityListResponseBody) 
 
 type QueryCostUnitRequest struct {
 	// The user ID of the cost center owner.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 28394563429587
 	OwnerUid *int64 `json:"OwnerUid,omitempty" xml:"OwnerUid,omitempty"`
 	// The page number of the page to return.
+	//
+	// example:
+	//
+	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
 	// The number of entries per page. A maximum of 300 entries can be returned per page.
+	//
+	// example:
+	//
+	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The ID of the parent cost center. A value of -1 indicates the root cost center.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// -1
 	ParentUnitId *int64 `json:"ParentUnitId,omitempty" xml:"ParentUnitId,omitempty"`
 }
 
@@ -15591,14 +21240,30 @@ func (s *QueryCostUnitRequest) SetParentUnitId(v int64) *QueryCostUnitRequest {
 
 type QueryCostUnitResponseBody struct {
 	// The status code.
+	//
+	// example:
+	//
+	// Success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The data returned.
 	Data *QueryCostUnitResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The error message returned.
+	//
+	// example:
+	//
+	// Successful!
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 6000EE23-274B-4E07-A697-FF2E999520A4
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -15639,10 +21304,22 @@ type QueryCostUnitResponseBodyData struct {
 	// The cost centers.
 	CostUnitDtoList []*QueryCostUnitResponseBodyDataCostUnitDtoList `json:"CostUnitDtoList,omitempty" xml:"CostUnitDtoList,omitempty" type:"Repeated"`
 	// The page number of the returned page.
+	//
+	// example:
+	//
+	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
 	// The number of entries returned on each page.
+	//
+	// example:
+	//
+	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The total number of returned entries.
+	//
+	// example:
+	//
+	// 1
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -15676,12 +21353,28 @@ func (s *QueryCostUnitResponseBodyData) SetTotalCount(v int32) *QueryCostUnitRes
 
 type QueryCostUnitResponseBodyDataCostUnitDtoList struct {
 	// The user ID of the cost center owner.
+	//
+	// example:
+	//
+	// 2343464
 	OwnerUid *int64 `json:"OwnerUid,omitempty" xml:"OwnerUid,omitempty"`
 	// The ID of the parent cost center. A value of -1 indicates the root cost center.
+	//
+	// example:
+	//
+	// -1
 	ParentUnitId *int64 `json:"ParentUnitId,omitempty" xml:"ParentUnitId,omitempty"`
 	// The ID of the cost center.
+	//
+	// example:
+	//
+	// 23534
 	UnitId *int64 `json:"UnitId,omitempty" xml:"UnitId,omitempty"`
 	// The name of the cost center.
+	//
+	// example:
+	//
+	// test
 	UnitName *string `json:"UnitName,omitempty" xml:"UnitName,omitempty"`
 }
 
@@ -15744,12 +21437,32 @@ func (s *QueryCostUnitResponse) SetBody(v *QueryCostUnitResponseBody) *QueryCost
 
 type QueryCostUnitResourceRequest struct {
 	// The user ID of the cost center owner.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 23453245
 	OwnerUid *int64 `json:"OwnerUid,omitempty" xml:"OwnerUid,omitempty"`
 	// The number of the page to return.
+	//
+	// example:
+	//
+	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
 	// The number of entries to return on each page.
+	//
+	// example:
+	//
+	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The ID of the cost center.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 235325
 	UnitId *int64 `json:"UnitId,omitempty" xml:"UnitId,omitempty"`
 }
 
@@ -15783,14 +21496,30 @@ func (s *QueryCostUnitResourceRequest) SetUnitId(v int64) *QueryCostUnitResource
 
 type QueryCostUnitResourceResponseBody struct {
 	// The status code.
+	//
+	// example:
+	//
+	// Success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The data returned.
 	Data *QueryCostUnitResourceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The error message.
+	//
+	// example:
+	//
+	// Successful！
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 04332CB7-9A57-4461-97E0-02821D044414
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -15833,12 +21562,24 @@ type QueryCostUnitResourceResponseBodyData struct {
 	// The statistical information about the cost center.
 	CostUnitStatisInfo *QueryCostUnitResourceResponseBodyDataCostUnitStatisInfo `json:"CostUnitStatisInfo,omitempty" xml:"CostUnitStatisInfo,omitempty" type:"Struct"`
 	// The page number of the returned page.
+	//
+	// example:
+	//
+	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
 	// The number of entries returned per page.
+	//
+	// example:
+	//
+	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The resource instances.
 	ResourceInstanceDtoList []*QueryCostUnitResourceResponseBodyDataResourceInstanceDtoList `json:"ResourceInstanceDtoList,omitempty" xml:"ResourceInstanceDtoList,omitempty" type:"Repeated"`
 	// The total number of returned entries.
+	//
+	// example:
+	//
+	// 12
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -15882,12 +21623,28 @@ func (s *QueryCostUnitResourceResponseBodyData) SetTotalCount(v int32) *QueryCos
 
 type QueryCostUnitResourceResponseBodyDataCostUnit struct {
 	// The user ID of the cost center owner.
+	//
+	// example:
+	//
+	// 321432
 	OwnerUid *int64 `json:"OwnerUid,omitempty" xml:"OwnerUid,omitempty"`
 	// The ID of the parent cost center. A value of -1 indicates the root cost center.
+	//
+	// example:
+	//
+	// 23421
 	ParentUnitId *int64 `json:"ParentUnitId,omitempty" xml:"ParentUnitId,omitempty"`
 	// The ID of the cost center.
+	//
+	// example:
+	//
+	// 123412
 	UnitId *int64 `json:"UnitId,omitempty" xml:"UnitId,omitempty"`
 	// The name of the cost center.
+	//
+	// example:
+	//
+	// test
 	UnitName *string `json:"UnitName,omitempty" xml:"UnitName,omitempty"`
 }
 
@@ -15921,18 +21678,46 @@ func (s *QueryCostUnitResourceResponseBodyDataCostUnit) SetUnitName(v string) *Q
 
 type QueryCostUnitResourceResponseBodyDataCostUnitStatisInfo struct {
 	// The number of resource instances in the cost center.
+	//
+	// example:
+	//
+	// 1
 	ResourceCount *int64 `json:"ResourceCount,omitempty" xml:"ResourceCount,omitempty"`
 	// The number of resource groups in the cost center.
+	//
+	// example:
+	//
+	// 1
 	ResourceGroupCount *int64 `json:"ResourceGroupCount,omitempty" xml:"ResourceGroupCount,omitempty"`
 	// The number of sub-cost centers in the cost center.
+	//
+	// example:
+	//
+	// 2
 	SubUnitCount *int64 `json:"SubUnitCount,omitempty" xml:"SubUnitCount,omitempty"`
 	// The total number of resource instances, including resource instances of sub-cost centers, in the cost center.
+	//
+	// example:
+	//
+	// 3
 	TotalResourceCount *int64 `json:"TotalResourceCount,omitempty" xml:"TotalResourceCount,omitempty"`
 	// The total number of resource groups, including resource groups of sub-cost centers, in the cost center.
+	//
+	// example:
+	//
+	// 2
 	TotalResourceGroupCount *int64 `json:"TotalResourceGroupCount,omitempty" xml:"TotalResourceGroupCount,omitempty"`
 	// The total number of the associated accounts, including associated accounts of sub-cost centers, in the cost center.
+	//
+	// example:
+	//
+	// 2
 	TotalUserCount *int64 `json:"TotalUserCount,omitempty" xml:"TotalUserCount,omitempty"`
 	// The number of sub-cost centers in the cost center.
+	//
+	// example:
+	//
+	// 0
 	UserCount *int64 `json:"UserCount,omitempty" xml:"UserCount,omitempty"`
 }
 
@@ -15981,30 +21766,84 @@ func (s *QueryCostUnitResourceResponseBodyDataCostUnitStatisInfo) SetUserCount(v
 
 type QueryCostUnitResourceResponseBodyDataResourceInstanceDtoList struct {
 	// The split code of the resource.
+	//
+	// example:
+	//
+	// test
 	ApportionCode *string `json:"ApportionCode,omitempty" xml:"ApportionCode,omitempty"`
 	// The split name of the resource.
+	//
+	// example:
+	//
+	// test
 	ApportionName *string `json:"ApportionName,omitempty" xml:"ApportionName,omitempty"`
 	// The product code of the resource.
+	//
+	// example:
+	//
+	// rds
 	CommodityCode *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
 	// The commodity name of the resource.
+	//
+	// example:
+	//
+	// ApsaraDB
 	CommodityName *string `json:"CommodityName,omitempty" xml:"CommodityName,omitempty"`
+	PipCode       *string `json:"PipCode,omitempty" xml:"PipCode,omitempty"`
 	// The resources related to the resource instance.
+	//
+	// example:
+	//
+	// oss
 	RelatedResources *string `json:"RelatedResources,omitempty" xml:"RelatedResources,omitempty"`
 	// The resource group to which the resource belongs.
+	//
+	// example:
+	//
+	// Default Resource Group
 	ResourceGroup *string `json:"ResourceGroup,omitempty" xml:"ResourceGroup,omitempty"`
 	// The instance ID of the resource.
+	//
+	// example:
+	//
+	// OSSBAG-cn-v0h1s4hma018
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 	// The custom name of the resource.
-	ResourceNick *string `json:"ResourceNick,omitempty" xml:"ResourceNick,omitempty"`
+	//
+	// example:
+	//
+	// testResource
+	ResourceNick   *string `json:"ResourceNick,omitempty" xml:"ResourceNick,omitempty"`
+	ResourceSource *string `json:"ResourceSource,omitempty" xml:"ResourceSource,omitempty"`
 	// The status of the resource.
+	//
+	// example:
+	//
+	// Available
 	ResourceStatus *string `json:"ResourceStatus,omitempty" xml:"ResourceStatus,omitempty"`
 	// The tags of the resource.
+	//
+	// example:
+	//
+	// testResource
 	ResourceTag *string `json:"ResourceTag,omitempty" xml:"ResourceTag,omitempty"`
 	// The type of the resource.
+	//
+	// example:
+	//
+	// FPT_ossbag_absolute_Storage_bj
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	// The user ID of the resource owner.
+	//
+	// example:
+	//
+	// 2424242134
 	ResourceUserId *int64 `json:"ResourceUserId,omitempty" xml:"ResourceUserId,omitempty"`
 	// The username of the resource owner.
+	//
+	// example:
+	//
+	// test@test.aliyun.com
 	ResourceUserName *string `json:"ResourceUserName,omitempty" xml:"ResourceUserName,omitempty"`
 }
 
@@ -16036,6 +21875,11 @@ func (s *QueryCostUnitResourceResponseBodyDataResourceInstanceDtoList) SetCommod
 	return s
 }
 
+func (s *QueryCostUnitResourceResponseBodyDataResourceInstanceDtoList) SetPipCode(v string) *QueryCostUnitResourceResponseBodyDataResourceInstanceDtoList {
+	s.PipCode = &v
+	return s
+}
+
 func (s *QueryCostUnitResourceResponseBodyDataResourceInstanceDtoList) SetRelatedResources(v string) *QueryCostUnitResourceResponseBodyDataResourceInstanceDtoList {
 	s.RelatedResources = &v
 	return s
@@ -16053,6 +21897,11 @@ func (s *QueryCostUnitResourceResponseBodyDataResourceInstanceDtoList) SetResour
 
 func (s *QueryCostUnitResourceResponseBodyDataResourceInstanceDtoList) SetResourceNick(v string) *QueryCostUnitResourceResponseBodyDataResourceInstanceDtoList {
 	s.ResourceNick = &v
+	return s
+}
+
+func (s *QueryCostUnitResourceResponseBodyDataResourceInstanceDtoList) SetResourceSource(v string) *QueryCostUnitResourceResponseBodyDataResourceInstanceDtoList {
+	s.ResourceSource = &v
 	return s
 }
 
@@ -16129,14 +21978,30 @@ func (s *QueryCustomerAddressListRequest) SetOwnerId(v int64) *QueryCustomerAddr
 
 type QueryCustomerAddressListResponseBody struct {
 	// The status code.
+	//
+	// example:
+	//
+	// Success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The data returned.
 	Data *QueryCustomerAddressListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The error message returned.
+	//
+	// example:
+	//
+	// Successful!
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// BBEF51A3-E933-4F40-A534-C673CBDB9C80
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -16210,28 +22075,76 @@ func (s *QueryCustomerAddressListResponseBodyDataCustomerInvoiceAddressList) Set
 
 type QueryCustomerAddressListResponseBodyDataCustomerInvoiceAddressListCustomerInvoiceAddress struct {
 	// The addressee.
+	//
+	// example:
+	//
+	// test
 	Addressee *string `json:"Addressee,omitempty" xml:"Addressee,omitempty"`
 	// The business type.
+	//
+	// example:
+	//
+	// test
 	BizType *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
 	// The city to which the invoice is mailed.
+	//
+	// example:
+	//
+	// Hangzhou
 	City *string `json:"City,omitempty" xml:"City,omitempty"`
 	// The name of the district to which the invoice is mailed.
+	//
+	// example:
+	//
+	// Test District
 	County *string `json:"County,omitempty" xml:"County,omitempty"`
 	// The detailed address to which the invoice is mailed. This parameter is returned after fields are concatenated.
+	//
+	// example:
+	//
+	// Test Address
 	DeliveryAddress *string `json:"DeliveryAddress,omitempty" xml:"DeliveryAddress,omitempty"`
 	// The ID.
+	//
+	// example:
+	//
+	// 311601051
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The phone number of the addressee.
+	//
+	// example:
+	//
+	// 138xxxxxxxx
 	Phone *string `json:"Phone,omitempty" xml:"Phone,omitempty"`
 	// The postcode.
+	//
+	// example:
+	//
+	// 000000
 	PostalCode *string `json:"PostalCode,omitempty" xml:"PostalCode,omitempty"`
 	// The province to which the invoice is mailed.
+	//
+	// example:
+	//
+	// Zhejiang
 	Province *string `json:"Province,omitempty" xml:"Province,omitempty"`
 	// The name of the street to which the invoice is mailed.
+	//
+	// example:
+	//
+	// Test Street
 	Street *string `json:"Street,omitempty" xml:"Street,omitempty"`
 	// The ID of the user.
+	//
+	// example:
+	//
+	// 4382956342857
 	UserId *int64 `json:"UserId,omitempty" xml:"UserId,omitempty"`
 	// The nickname of the user.
+	//
+	// example:
+	//
+	// testNick
 	UserNick *string `json:"UserNick,omitempty" xml:"UserNick,omitempty"`
 }
 
@@ -16334,27 +22247,74 @@ func (s *QueryCustomerAddressListResponse) SetBody(v *QueryCustomerAddressListRe
 
 type QueryDPUtilizationDetailRequest struct {
 	// The code of the resource, such as ecsRi and scu_bag. If this parameter is specified, the ProdCode parameter does not take effect for the request.
+	//
+	// example:
+	//
+	// ecsRi
 	CommodityCode *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
 	// The ID of the deducted instance. If this parameter is not specified, the details of all instances are returned.
+	//
+	// example:
+	//
+	// oss-123123
 	DeductedInstanceId *string `json:"DeductedInstanceId,omitempty" xml:"DeductedInstanceId,omitempty"`
 	// The end of the time range to query. Specify the time in the YYYY-MM-DD HH:mm:ss format.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2019-05-23 12:00:00
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// Specifies whether to query the resource plan usage of linked accounts. Valid values:
 	//
-	// *   true: queries the resource plan usage of linked accounts.
-	// *   false: does not query the resource plan usage of linked accounts.
+	// 	- true: queries the resource plan usage of linked accounts.
+	//
+	// 	- false: does not query the resource plan usage of linked accounts.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// true
 	IncludeShare *bool `json:"IncludeShare,omitempty" xml:"IncludeShare,omitempty"`
 	// The ID of the instance to query. If this parameter is not specified, the details of all used instances are returned.
+	//
+	// example:
+	//
+	// oss-123123
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The instance type of the instance.
+	//
+	// example:
+	//
+	// Instancetyp
 	InstanceSpec *string `json:"InstanceSpec,omitempty" xml:"InstanceSpec,omitempty"`
 	// The token that is used to retrieve the next page of results. For the first query, set the value to null. For subsequent queries, set the value to the token that is obtained from the NextToken parameter.
+	//
+	// example:
+	//
+	// CAESF***zNTAw
 	LastToken *string `json:"LastToken,omitempty" xml:"LastToken,omitempty"`
 	// The number of entries to return on each page. Default value: 20. Maximum value: 300.
+	//
+	// example:
+	//
+	// 20
 	Limit *int32 `json:"Limit,omitempty" xml:"Limit,omitempty"`
 	// The code of the service. Example: ecs.
+	//
+	// example:
+	//
+	// oss
 	ProdCode *string `json:"ProdCode,omitempty" xml:"ProdCode,omitempty"`
 	// The beginning of the time range to query. Specify the time in the YYYY-MM-DD HH:mm:ss format.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2019-05-23 12:00:00
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
@@ -16418,14 +22378,30 @@ func (s *QueryDPUtilizationDetailRequest) SetStartTime(v string) *QueryDPUtiliza
 
 type QueryDPUtilizationDetailResponseBody struct {
 	// The HTTP status code.
+	//
+	// example:
+	//
+	// Success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The returned data.
 	Data *QueryDPUtilizationDetailResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The error message.
+	//
+	// example:
+	//
+	// Successful！
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// DF58589C-A06C-4224-8615-7797E6474FA3
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request is successful.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -16466,6 +22442,10 @@ type QueryDPUtilizationDetailResponseBodyData struct {
 	// The detailed resource plan usage.
 	DetailList *QueryDPUtilizationDetailResponseBodyDataDetailList `json:"DetailList,omitempty" xml:"DetailList,omitempty" type:"Struct"`
 	// The token that is used to retrieve the next page of results. You can set the LastToken parameter to this value in the next request. If null is returned, all results are queried.
+	//
+	// example:
+	//
+	// CAESF***zNTAw
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 }
 
@@ -16506,35 +22486,92 @@ func (s *QueryDPUtilizationDetailResponseBodyDataDetailList) SetDetailList(v []*
 
 type QueryDPUtilizationDetailResponseBodyDataDetailListDetailList struct {
 	// The deduction date.
+	//
+	// example:
+	//
+	// 2019/5/23 12:00
 	DeductDate *string `json:"DeductDate,omitempty" xml:"DeductDate,omitempty"`
 	// The total computing capacity or storage capacity of the RI or SCU during the deduction.
+	//
+	// example:
+	//
+	// 1
 	DeductFactorTotal *float32 `json:"DeductFactorTotal,omitempty" xml:"DeductFactorTotal,omitempty"`
 	// The deduct factor. This parameter is returned only if the CommodityCode parameter is set to ecsRi.
+	//
+	// example:
+	//
+	// 24
 	DeductHours *float32 `json:"DeductHours,omitempty" xml:"DeductHours,omitempty"`
 	// The original measured amount.
+	//
+	// example:
+	//
+	// 1
 	DeductMeasure *float32 `json:"DeductMeasure,omitempty" xml:"DeductMeasure,omitempty"`
 	// The computing capacity or storage capacity that is deducted in a pay-as-you-go instance.
+	//
+	// example:
+	//
+	// 1
 	DeductQuantity *float32 `json:"DeductQuantity,omitempty" xml:"DeductQuantity,omitempty"`
 	// The code of the deducted service.
+	//
+	// example:
+	//
+	// rds
 	DeductedCommodityCode *string `json:"DeductedCommodityCode,omitempty" xml:"DeductedCommodityCode,omitempty"`
 	// The ID of the deducted instance.
+	//
+	// example:
+	//
+	// oss-123123
 	DeductedInstanceId *string `json:"DeductedInstanceId,omitempty" xml:"DeductedInstanceId,omitempty"`
 	// The name of the deducted service.
+	//
+	// example:
+	//
+	// ApsaraDB RDS
 	DeductedProductDetail *string `json:"DeductedProductDetail,omitempty" xml:"DeductedProductDetail,omitempty"`
 	// The ID of the RI.
+	//
+	// example:
+	//
+	// oss-123123
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The instance type of the deducted instance.
+	//
+	// example:
+	//
+	// rds.mysql.s3.large
 	InstanceSpec *string `json:"InstanceSpec,omitempty" xml:"InstanceSpec,omitempty"`
 	// The region in which the instance resides. This parameter can be left empty.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
 	// The billable item.
+	//
+	// example:
+	//
+	// PutRequest
 	ResCode *string `json:"ResCode,omitempty" xml:"ResCode,omitempty"`
 	// The UID of the deducted instance.
 	//
-	// *   If the deduction is shared, the value of this parameter indicates the UID of the deducted instance.
-	// *   If the deduction is not shared, the value of this parameter is the same as that of the uid parameter.
+	// 	- If the deduction is shared, the value of this parameter indicates the UID of the deducted instance.
+	//
+	// 	- If the deduction is not shared, the value of this parameter is the same as that of the uid parameter.
+	//
+	// example:
+	//
+	// 1111111111
 	ShareUid *int64 `json:"ShareUid,omitempty" xml:"ShareUid,omitempty"`
 	// The UID of the deducted instance.
+	//
+	// example:
+	//
+	// 1111111111
 	Uid *int64 `json:"Uid,omitempty" xml:"Uid,omitempty"`
 }
 
@@ -16647,44 +22684,101 @@ func (s *QueryDPUtilizationDetailResponse) SetBody(v *QueryDPUtilizationDetailRe
 
 type QueryEvaluateListRequest struct {
 	// The billing cycle.
+	//
+	// example:
+	//
+	// 202003
 	BillCycle *string `json:"BillCycle,omitempty" xml:"BillCycle,omitempty"`
 	// The market types in invoices.
 	//
 	// >  By default, this parameter is left empty. If this parameter is left empty, all market types are queried.
+	//
+	// example:
+	//
+	// ALIYUN
 	BizTypeList []*string `json:"BizTypeList,omitempty" xml:"BizTypeList,omitempty" type:"Repeated"`
 	// The maximum amount to be queried.
+	//
+	// example:
+	//
+	// 1000
 	EndAmount *int64 `json:"EndAmount,omitempty" xml:"EndAmount,omitempty"`
 	// The latest time when an order is paid Specify the time in the yyyy-mm-dd hh:mm:ss format.
+	//
+	// example:
+	//
+	// 2020-02-02 15:00:00
 	EndBizTime *string `json:"EndBizTime,omitempty" xml:"EndBizTime,omitempty"`
 	// The end of the time range to query.
+	//
+	// example:
+	//
+	// 2020-03-02 12:00:00
 	EndSearchTime *string `json:"EndSearchTime,omitempty" xml:"EndSearchTime,omitempty"`
 	// The ID of the external order.
+	//
+	// example:
+	//
+	// 2387432832696
 	OutBizId *string `json:"OutBizId,omitempty" xml:"OutBizId,omitempty"`
 	OwnerId  *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The number of the page to return.
+	//
+	// example:
+	//
+	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
 	// The number of entries to return on each page.
+	//
+	// example:
+	//
+	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The type of the sort. Valid values:
 	//
-	// *   1: Sort invoices by ID in descending order.
-	// *   2: Sort invoices by invoice type in descending order, and then sort invoices of the same type by ID in descending order.
-	// *   3: Sort invoices by invoice type in ascending order, and then sort invoices of the same type by ID in descending order.
+	// 	- 1: Sort invoices by ID in descending order.
+	//
+	// 	- 2: Sort invoices by invoice type in descending order, and then sort invoices of the same type by ID in descending order.
+	//
+	// 	- 3: Sort invoices by invoice type in ascending order, and then sort invoices of the same type by ID in descending order.
+	//
+	// example:
+	//
+	// 1
 	SortType *int32 `json:"SortType,omitempty" xml:"SortType,omitempty"`
 	// The minimum amount to be queried.
+	//
+	// example:
+	//
+	// 100
 	StartAmount *int64 `json:"StartAmount,omitempty" xml:"StartAmount,omitempty"`
 	// The earliest time when an order is paid. Specify the time in the yyyy-mm-dd hh:mm:ss format.
+	//
+	// example:
+	//
+	// 2020-02-02 12:00:00
 	StartBizTime *string `json:"StartBizTime,omitempty" xml:"StartBizTime,omitempty"`
 	// The beginning of the time range to query.
+	//
+	// example:
+	//
+	// 2020-02-02 12:00:00
 	StartSearchTime *string `json:"StartSearchTime,omitempty" xml:"StartSearchTime,omitempty"`
 	// The type of orders to be queried. Valid values:
 	//
-	// *   1: the orders in which the invoiceable amount is negative.
-	// *   2: the orders in which the invoiceable amount is positive.
-	// *   3: the orders in which the invoiceable amount is not 0.
-	// *   4: the orders in which the amount that has been invoiced is greater than 0.
+	// 	- 1: the orders in which the invoiceable amount is negative.
+	//
+	// 	- 2: the orders in which the invoiceable amount is positive.
+	//
+	// 	- 3: the orders in which the invoiceable amount is not 0.
+	//
+	// 	- 4: the orders in which the amount that has been invoiced is greater than 0.
 	//
 	// >  By default, this parameter is left empty. If this parameter is left empty, all orders are queried.
+	//
+	// example:
+	//
+	// 1
 	Type *int32 `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
@@ -16768,14 +22862,30 @@ func (s *QueryEvaluateListRequest) SetType(v int32) *QueryEvaluateListRequest {
 
 type QueryEvaluateListResponseBody struct {
 	// The status code.
+	//
+	// example:
+	//
+	// Success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The data returned.
 	Data *QueryEvaluateListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The error message returned.
+	//
+	// example:
+	//
+	// Successful！
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// D35FF10E-1B2E-4ABA-8401-0AE17725F50B
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -16816,16 +22926,40 @@ type QueryEvaluateListResponseBodyData struct {
 	// The data returned.
 	EvaluateList *QueryEvaluateListResponseBodyDataEvaluateList `json:"EvaluateList,omitempty" xml:"EvaluateList,omitempty" type:"Struct"`
 	// The ID of the host.
+	//
+	// example:
+	//
+	// cn
 	HostId *string `json:"HostId,omitempty" xml:"HostId,omitempty"`
 	// The number of the page returned.
+	//
+	// example:
+	//
+	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
 	// The number of entries returned per page.
+	//
+	// example:
+	//
+	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The total number of returned entries.
+	//
+	// example:
+	//
+	// 2
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 	// The invoiced amount that meets the query conditions. Unit: Cent.
+	//
+	// example:
+	//
+	// 12344
 	TotalInvoiceAmount *int64 `json:"TotalInvoiceAmount,omitempty" xml:"TotalInvoiceAmount,omitempty"`
 	// The invoiceable amount that meets the query conditions. Unit: Cent.
+	//
+	// example:
+	//
+	// 12344
 	TotalUnAppliedInvoiceAmount *int64 `json:"TotalUnAppliedInvoiceAmount,omitempty" xml:"TotalUnAppliedInvoiceAmount,omitempty"`
 }
 
@@ -16891,56 +23025,144 @@ func (s *QueryEvaluateListResponseBodyDataEvaluateList) SetEvaluate(v []*QueryEv
 
 type QueryEvaluateListResponseBodyDataEvaluateListEvaluate struct {
 	// The billing cycle.
+	//
+	// example:
+	//
+	// 202002
 	BillCycle *string `json:"BillCycle,omitempty" xml:"BillCycle,omitempty"`
 	// The ID of the bill.
+	//
+	// example:
+	//
+	// 234543254325
 	BillId *int64 `json:"BillId,omitempty" xml:"BillId,omitempty"`
 	// The time.
+	//
+	// example:
+	//
+	// 2018-10-10 18:05:44
 	BizTime *string `json:"BizTime,omitempty" xml:"BizTime,omitempty"`
 	// The market type in the invoice. Valid values:
 	//
-	// *   ALIYUN: Alibaba Cloud
-	// *   MARKETPLACE: Alibaba Cloud Marketplace
+	// 	- ALIYUN: Alibaba Cloud
+	//
+	// 	- MARKETPLACE: Alibaba Cloud Marketplace
+	//
+	// example:
+	//
+	// ALIYUN
 	BizType *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
 	// The invoiceable amount.
+	//
+	// example:
+	//
+	// 123213
 	CanInvoiceAmount *int64 `json:"CanInvoiceAmount,omitempty" xml:"CanInvoiceAmount,omitempty"`
 	// The creation time.
+	//
+	// example:
+	//
+	// 2018-10-10 18:05:44
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
 	// The modification time.
+	//
+	// example:
+	//
+	// 2018-10-10 18:05:44
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
 	// The ID of the invoice.
+	//
+	// example:
+	//
+	// 1325321532
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The invoiced amount.
+	//
+	// example:
+	//
+	// 10000
 	InvoicedAmount *int64 `json:"InvoicedAmount,omitempty" xml:"InvoicedAmount,omitempty"`
 	// The ID of the item.
+	//
+	// example:
+	//
+	// 23453245
 	ItemId *int64 `json:"ItemId,omitempty" xml:"ItemId,omitempty"`
 	// The name of the object to be invoiced.
+	//
+	// example:
+	//
+	// Refund of a voucher with denomination marked
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// If a refund is issued due to an order such as an unsubscription order or a configuration downgrade order, the refund amount is used to offset the amount of the invoice. The value is consistent with the value of the **OffsetCostAmount** parameter.
+	// If a refund is issued due to an order such as an unsubscription order or a configuration downgrade order, the refund amount is used to offset the amount of the invoice. The value is consistent with the value of the **OffsetCostAmount*	- parameter.
+	//
+	// example:
+	//
+	// 500
 	OffsetAcceptAmount *int64 `json:"OffsetAcceptAmount,omitempty" xml:"OffsetAcceptAmount,omitempty"`
-	// The refund amount used to offset the amount of the invoice. If a refund is issued due to an order such as an unsubscription order or a configuration downgrade order, the refund amount is used to offset the amount of the invoice. The value is consistent with the value of the **OffsetAcceptAmount** parameter.
+	// The refund amount used to offset the amount of the invoice. If a refund is issued due to an order such as an unsubscription order or a configuration downgrade order, the refund amount is used to offset the amount of the invoice. The value is consistent with the value of the **OffsetAcceptAmount*	- parameter.
+	//
+	// example:
+	//
+	// 500
 	OffsetCostAmount *int64 `json:"OffsetCostAmount,omitempty" xml:"OffsetCostAmount,omitempty"`
 	// The ID of the external object.
+	//
+	// example:
+	//
+	// 12341
 	OpId *string `json:"OpId,omitempty" xml:"OpId,omitempty"`
 	// The original amount.
+	//
+	// example:
+	//
+	// -10000
 	OriginalAmount *int64 `json:"OriginalAmount,omitempty" xml:"OriginalAmount,omitempty"`
 	// The ID of the external order.
+	//
+	// example:
+	//
+	// 124324213421
 	OutBizId *string `json:"OutBizId,omitempty" xml:"OutBizId,omitempty"`
 	// The balance.
+	//
+	// example:
+	//
+	// -10000
 	PresentAmount *int64 `json:"PresentAmount,omitempty" xml:"PresentAmount,omitempty"`
 	// The status of the invoiceable amount.
+	//
+	// example:
+	//
+	// 1
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The type of orders that are queried. Valid values:
 	//
-	// *   1: the orders in which the invoiceable amount is negative.
-	// *   2: the orders in which the invoiceable amount is positive.
-	// *   3: the orders in which the invoiceable amount is not 0.
-	// *   4: the orders in which the amount that has been invoiced is greater than 0.
+	// 	- 1: the orders in which the invoiceable amount is negative.
+	//
+	// 	- 2: the orders in which the invoiceable amount is positive.
+	//
+	// 	- 3: the orders in which the invoiceable amount is not 0.
+	//
+	// 	- 4: the orders in which the amount that has been invoiced is greater than 0.
 	//
 	// >  By default, this parameter is left empty. If this parameter is left empty, all orders are queried.
+	//
+	// example:
+	//
+	// 1
 	Type *int32 `json:"Type,omitempty" xml:"Type,omitempty"`
 	// The ID of the user.
+	//
+	// example:
+	//
+	// 2738543
 	UserId *int64 `json:"UserId,omitempty" xml:"UserId,omitempty"`
 	// The nickname of the user.
+	//
+	// example:
+	//
+	// test
 	UserNick *string `json:"UserNick,omitempty" xml:"UserNick,omitempty"`
 }
 
@@ -17088,6 +23310,12 @@ func (s *QueryEvaluateListResponse) SetBody(v *QueryEvaluateListResponseBody) *Q
 
 type QueryFinancialAccountInfoRequest struct {
 	// The ID of the Alibaba Cloud account.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1990699401005016
 	UserId *int64 `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
@@ -17106,14 +23334,30 @@ func (s *QueryFinancialAccountInfoRequest) SetUserId(v int64) *QueryFinancialAcc
 
 type QueryFinancialAccountInfoResponseBody struct {
 	// The status code.
+	//
+	// example:
+	//
+	// Success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The data returned.
 	Data *QueryFinancialAccountInfoResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The message returned.
+	//
+	// example:
+	//
+	// Successful!
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 97426BC2-792E-41F5-92B8-73C710DA7779
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -17152,16 +23396,40 @@ func (s *QueryFinancialAccountInfoResponseBody) SetSuccess(v bool) *QueryFinanci
 
 type QueryFinancialAccountInfoResponseBodyData struct {
 	// The type of the financial account. A value of MASTER indicates that the account is a management account. A value of MEMBER indicates that the account is a member.
+	//
+	// example:
+	//
+	// MEMBER
 	AccountType *string `json:"AccountType,omitempty" xml:"AccountType,omitempty"`
 	// Indicates whether the account is a financial account. A value of true indicates that the account is a financial account. A value of false indicates that the account is not a financial account.
+	//
+	// example:
+	//
+	// true
 	IsFinancialAccount *bool `json:"IsFinancialAccount,omitempty" xml:"IsFinancialAccount,omitempty"`
 	// The ID of the group to which the member belongs.
+	//
+	// example:
+	//
+	// 124
 	MemberGroupId *int64 `json:"MemberGroupId,omitempty" xml:"MemberGroupId,omitempty"`
 	// The name of the group to which the member belongs.
+	//
+	// example:
+	//
+	// Test group
 	MemberGroupName *string `json:"MemberGroupName,omitempty" xml:"MemberGroupName,omitempty"`
 	// The display name of the member.
+	//
+	// example:
+	//
+	// Test
 	MemberNickName *string `json:"MemberNickName,omitempty" xml:"MemberNickName,omitempty"`
 	// The username of the account.
+	//
+	// example:
+	//
+	// killortop3
 	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 }
 
@@ -17234,47 +23502,97 @@ func (s *QueryFinancialAccountInfoResponse) SetBody(v *QueryFinancialAccountInfo
 
 type QueryInstanceBillRequest struct {
 	// The ID of the member. If you specify a value for this parameter, you can query the bills of the specified member. If you leave this parameter empty, the bills of the current account are queried by default.
+	//
+	// example:
+	//
+	// 122
 	BillOwnerId *int64 `json:"BillOwnerId,omitempty" xml:"BillOwnerId,omitempty"`
 	// The billing cycle. Format: YYYY-MM.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2020-03
 	BillingCycle *string `json:"BillingCycle,omitempty" xml:"BillingCycle,omitempty"`
-	// The billing date. This parameter is required only if the **Granularity** parameter is set to DAILY. Format: YYYY-MM-DD.
+	// The billing date. This parameter is required only if the **Granularity*	- parameter is set to DAILY. Format: YYYY-MM-DD.
+	//
+	// example:
+	//
+	// 2020-03-03
 	BillingDate *string `json:"BillingDate,omitempty" xml:"BillingDate,omitempty"`
 	// The granularity at which bills are queried. Valid values:
 	//
-	// *   MONTHLY: queries bills by month. The data queried is consistent with the data that is displayed for the specified billing cycle on the Billing Details tab of the Bill Details page in User Center.
-	// *   DAILY: queries bills by day. The data queried is consistent with the data that is displayed for the specified day on the Billing Details tab of the Bill Details page in User Center.
+	// 	- MONTHLY: queries bills by month. The data queried is consistent with the data that is displayed for the specified billing cycle on the Billing Details tab of the Bill Details page in User Center.
 	//
-	// You must set the **BillingDate** parameter before you can set the Granularity parameter to DAILY.
+	// 	- DAILY: queries bills by day. The data queried is consistent with the data that is displayed for the specified day on the Billing Details tab of the Bill Details page in User Center.
+	//
+	// You must set the **BillingDate*	- parameter before you can set the Granularity parameter to DAILY.
+	//
+	// example:
+	//
+	// MONTHLY
 	Granularity *string `json:"Granularity,omitempty" xml:"Granularity,omitempty"`
 	// Specifies whether to query data by billable item. Valid values:
 	//
-	// *   false: does not query data by billable item. The data queried is consistent with the data that is displayed for the specified instance on the Billing Details tab of the Bill Details page in User Center.
-	// *   true: queries data by billable item. The data queried is consistent with the data that is displayed for the specified billable item on the Billing Details tab of the Bill Details page in User Center.
+	// 	- false: does not query data by billable item. The data queried is consistent with the data that is displayed for the specified instance on the Billing Details tab of the Bill Details page in User Center.
+	//
+	// 	- true: queries data by billable item. The data queried is consistent with the data that is displayed for the specified billable item on the Billing Details tab of the Bill Details page in User Center.
 	//
 	// Default value: false.
-	IsBillingItem *bool `json:"IsBillingItem,omitempty" xml:"IsBillingItem,omitempty"`
-	// Specifies whether to filter out a bill whose pretax gross amount and pretax amount are 0. Default value: false.******** Valid values:
 	//
-	// *   false: does not filter the bill.
-	// *   true: filters the bill.
+	// example:
+	//
+	// false
+	IsBillingItem *bool `json:"IsBillingItem,omitempty" xml:"IsBillingItem,omitempty"`
+	// Specifies whether to filter out a bill whose pretax gross amount and pretax amount are 0. Default value: false.*******	- Valid values:
+	//
+	// 	- false: does not filter the bill.
+	//
+	// 	- true: filters the bill.
+	//
+	// example:
+	//
+	// false
 	IsHideZeroCharge *bool  `json:"IsHideZeroCharge,omitempty" xml:"IsHideZeroCharge,omitempty"`
 	OwnerId          *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The number of the page to return. Default value: 1.
+	//
+	// example:
+	//
+	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
 	// The number of entries to return on each page. Default value: 20. Maximum value: 300.
+	//
+	// example:
+	//
+	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The code of the service.
+	//
+	// example:
+	//
+	// rds
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
 	// The type of the service. This parameter is required if the ProductCode parameter is set to the service code of Alibaba Cloud Marketplace.
+	//
+	// example:
+	//
+	// rds
 	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
 	// The billing method. Valid values:
 	//
-	// *   Subscription: the subscription billing method
-	// *   PayAsYouGo: the pay-as-you-go billing method
+	// 	- Subscription: the subscription billing method
+	//
+	// 	- PayAsYouGo: the pay-as-you-go billing method
 	//
 	// **
 	//
-	// ****This parameter must be used together with the **ProductCode** parameter.
+	// ****This parameter must be used together with the **ProductCode*	- parameter.
+	//
+	// example:
+	//
+	// PayAsYouGo
 	SubscriptionType *string `json:"SubscriptionType,omitempty" xml:"SubscriptionType,omitempty"`
 }
 
@@ -17348,14 +23666,30 @@ func (s *QueryInstanceBillRequest) SetSubscriptionType(v string) *QueryInstanceB
 
 type QueryInstanceBillResponseBody struct {
 	// The status code returned.
+	//
+	// example:
+	//
+	// Success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The data returned.
 	Data *QueryInstanceBillResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The message returned.
+	//
+	// example:
+	//
+	// Successful!
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 79EE7556-0CFD-44EB-9CD6-B3B526E3A85F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request is successful.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -17394,18 +23728,42 @@ func (s *QueryInstanceBillResponseBody) SetSuccess(v bool) *QueryInstanceBillRes
 
 type QueryInstanceBillResponseBodyData struct {
 	// The ID of the account.
+	//
+	// example:
+	//
+	// 185xxxx3489
 	AccountID *string `json:"AccountID,omitempty" xml:"AccountID,omitempty"`
 	// The name of the account.
+	//
+	// example:
+	//
+	// test@test.aliyunid.com
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
 	// The billing cycle in the YYYY-MM format.
+	//
+	// example:
+	//
+	// 2020-03
 	BillingCycle *string `json:"BillingCycle,omitempty" xml:"BillingCycle,omitempty"`
 	// The details of the bill.
 	Items *QueryInstanceBillResponseBodyDataItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
 	// The page number of the returned page.
+	//
+	// example:
+	//
+	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
 	// The number of entries returned per page.
+	//
+	// example:
+	//
+	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The total number of returned entries.
+	//
+	// example:
+	//
+	// 2
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -17471,102 +23829,272 @@ func (s *QueryInstanceBillResponseBodyDataItems) SetItem(v []*QueryInstanceBillR
 
 type QueryInstanceBillResponseBodyDataItemsItem struct {
 	// The amount deducted by using credit refunds.
+	//
+	// example:
+	//
+	// 0
 	AdjustAmount *float32 `json:"AdjustAmount,omitempty" xml:"AdjustAmount,omitempty"`
 	// The billing date. This parameter is returned only if the Granularity parameter is set to DAILY. Format: YYYY-MM-DD.
+	//
+	// example:
+	//
+	// 2020-03
 	BillingDate *string `json:"BillingDate,omitempty" xml:"BillingDate,omitempty"`
 	// The billable item. This parameter is returned only if the IsBillingItem parameter is set to true.
+	//
+	// example:
+	//
+	// Other
 	BillingItem *string `json:"BillingItem,omitempty" xml:"BillingItem,omitempty"`
 	// The billing type.
+	//
+	// example:
+	//
+	// Other
 	BillingType *string `json:"BillingType,omitempty" xml:"BillingType,omitempty"`
 	// The amount paid in cash. The amount that was deducted by using credit refunds is not included.
+	//
+	// example:
+	//
+	// 0
 	CashAmount *float32 `json:"CashAmount,omitempty" xml:"CashAmount,omitempty"`
 	// The code of the commodity. The commodity code is the same as that displayed in User Center.
+	//
+	// example:
+	//
+	// rds
 	CommodityCode *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
 	// The cost center.
+	//
+	// example:
+	//
+	// Not allocated
 	CostUnit *string `json:"CostUnit,omitempty" xml:"CostUnit,omitempty"`
 	// The type of the currency. Valid values:
 	//
-	// *   CNY
-	// *   USD
-	// *   JPY
+	// 	- CNY
+	//
+	// 	- USD
+	//
+	// 	- JPY
+	//
+	// example:
+	//
+	// CNY
 	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
 	// The amount deducted by using vouchers.
+	//
+	// example:
+	//
+	// 0
 	DeductedByCashCoupons *float32 `json:"DeductedByCashCoupons,omitempty" xml:"DeductedByCashCoupons,omitempty"`
 	// The amount deducted by using coupons.
+	//
+	// example:
+	//
+	// 0
 	DeductedByCoupons *float32 `json:"DeductedByCoupons,omitempty" xml:"DeductedByCoupons,omitempty"`
 	// The amount deducted by using prepaid cards.
+	//
+	// example:
+	//
+	// 0
 	DeductedByPrepaidCard *float32 `json:"DeductedByPrepaidCard,omitempty" xml:"DeductedByPrepaidCard,omitempty"`
 	// The amount deducted by using resource plans.
+	//
+	// example:
+	//
+	// NULL
 	DeductedByResourcePackage *string `json:"DeductedByResourcePackage,omitempty" xml:"DeductedByResourcePackage,omitempty"`
 	// The configurations of the instance.
+	//
+	// example:
+	//
+	// CPU:12
 	InstanceConfig *string `json:"InstanceConfig,omitempty" xml:"InstanceConfig,omitempty"`
 	// The ID of the instance.
+	//
+	// example:
+	//
+	// i-kjhdskjgshfdlkjfdh
 	InstanceID *string `json:"InstanceID,omitempty" xml:"InstanceID,omitempty"`
 	// The instance type of the instance.
+	//
+	// example:
+	//
+	// ecs.sn1ne.3xlarge
 	InstanceSpec *string `json:"InstanceSpec,omitempty" xml:"InstanceSpec,omitempty"`
 	// The public IP address.
+	//
+	// example:
+	//
+	// 34.xx.x.x
 	InternetIP *string `json:"InternetIP,omitempty" xml:"InternetIP,omitempty"`
 	// The private IP address.
+	//
+	// example:
+	//
+	// 192.xx.xx.xx
 	IntranetIP *string `json:"IntranetIP,omitempty" xml:"IntranetIP,omitempty"`
 	// The discount amount.
+	//
+	// example:
+	//
+	// 0
 	InvoiceDiscount *float32 `json:"InvoiceDiscount,omitempty" xml:"InvoiceDiscount,omitempty"`
 	// The type of the bill.
 	//
-	// *   SubscriptionOrder: subscription order
-	// *   PayAsYouGoBill: pay-as-you-go bill
-	// *   Refund: refund
-	// *   Adjustment: reconciliation
+	// 	- SubscriptionOrder: subscription order
+	//
+	// 	- PayAsYouGoBill: pay-as-you-go bill
+	//
+	// 	- Refund: refund
+	//
+	// 	- Adjustment: reconciliation
+	//
+	// example:
+	//
+	// PayAsYouGoBill
 	Item *string `json:"Item,omitempty" xml:"Item,omitempty"`
 	// The unit price. This parameter is returned only if the isBillingItem parameter is set to true.
+	//
+	// example:
+	//
+	// 100
 	ListPrice *string `json:"ListPrice,omitempty" xml:"ListPrice,omitempty"`
 	// The unit of the unit price. This parameter is returned only if the isBillingItem parameter is set to true.
+	//
+	// example:
+	//
+	// CNY
 	ListPriceUnit *string `json:"ListPriceUnit,omitempty" xml:"ListPriceUnit,omitempty"`
 	// The name of the instance.
+	//
+	// example:
+	//
+	// test
 	NickName *string `json:"NickName,omitempty" xml:"NickName,omitempty"`
 	// The unsettled amount.
+	//
+	// example:
+	//
+	// 0
 	OutstandingAmount *float32 `json:"OutstandingAmount,omitempty" xml:"OutstandingAmount,omitempty"`
 	// The ID of the member account. This parameter is returned in a multi-account payment scenario.
+	//
+	// example:
+	//
+	// 169***013
 	OwnerID *string `json:"OwnerID,omitempty" xml:"OwnerID,omitempty"`
 	// The amount paid in cash.
+	//
+	// example:
+	//
+	// 0
 	PaymentAmount *float32 `json:"PaymentAmount,omitempty" xml:"PaymentAmount,omitempty"`
 	// The code of the service. The service code is the same as that displayed in User Center.
+	//
+	// example:
+	//
+	// rds
 	PipCode *string `json:"PipCode,omitempty" xml:"PipCode,omitempty"`
 	// The pretax amount.
+	//
+	// example:
+	//
+	// 0
 	PretaxAmount *float32 `json:"PretaxAmount,omitempty" xml:"PretaxAmount,omitempty"`
 	// The pretax gross amount.
+	//
+	// example:
+	//
+	// 0
 	PretaxGrossAmount *float32 `json:"PretaxGrossAmount,omitempty" xml:"PretaxGrossAmount,omitempty"`
 	// The code of the service.
+	//
+	// example:
+	//
+	// rds
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
 	// The details of the service.
+	//
+	// example:
+	//
+	// ApsaraDB RDS
 	ProductDetail *string `json:"ProductDetail,omitempty" xml:"ProductDetail,omitempty"`
 	// The name of the service.
+	//
+	// example:
+	//
+	// ApsaraDB RDS
 	ProductName *string `json:"ProductName,omitempty" xml:"ProductName,omitempty"`
 	// The type of the service.
+	//
+	// example:
+	//
+	// rds
 	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
 	// The region.
+	//
+	// example:
+	//
+	// China (Hangzhou)
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
 	// The resource group.
+	//
+	// example:
+	//
+	// Default resource group
 	ResourceGroup *string `json:"ResourceGroup,omitempty" xml:"ResourceGroup,omitempty"`
 	// The validity period.
+	//
+	// example:
+	//
+	// 10
 	ServicePeriod *string `json:"ServicePeriod,omitempty" xml:"ServicePeriod,omitempty"`
 	// The unit of the validity period.
+	//
+	// example:
+	//
+	// Seconds
 	ServicePeriodUnit *string `json:"ServicePeriodUnit,omitempty" xml:"ServicePeriodUnit,omitempty"`
 	// The billing method. Valid values:
 	//
-	// *   Subscription: the subscription billing method
-	// *   PayAsYouGo: the pay-as-you-go billing method
+	// 	- Subscription: the subscription billing method
+	//
+	// 	- PayAsYouGo: the pay-as-you-go billing method
 	//
 	// **
 	//
 	// ****This parameter is returned together with the ProductCode parameter.
+	//
+	// example:
+	//
+	// PayAsYouGo
 	SubscriptionType *string `json:"SubscriptionType,omitempty" xml:"SubscriptionType,omitempty"`
 	// The tag.
+	//
+	// example:
+	//
+	// tag
 	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
 	// The usage of the billable item. This parameter is returned only if the isBillingItem parameter is set to true.
+	//
+	// example:
+	//
+	// 100
 	Usage *string `json:"Usage,omitempty" xml:"Usage,omitempty"`
 	// The unit of usage. This parameter is returned only if the isBillingItem parameter is set to true.
+	//
+	// example:
+	//
+	// GB
 	UsageUnit *string `json:"UsageUnit,omitempty" xml:"UsageUnit,omitempty"`
 	// The ID of the zone.
+	//
+	// example:
+	//
+	// cn-hangzhou-h
 	Zone *string `json:"Zone,omitempty" xml:"Zone,omitempty"`
 }
 
@@ -17816,6 +24344,12 @@ type QueryInstanceByTagRequest struct {
 	// The IDs of resources.
 	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
 	// The type of the resource. Specify the savings plan instance as the type of the resource.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// instance
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	// The tags.
 	Tag []*QueryInstanceByTagRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
@@ -17846,8 +24380,16 @@ func (s *QueryInstanceByTagRequest) SetTag(v []*QueryInstanceByTagRequestTag) *Q
 
 type QueryInstanceByTagRequestTag struct {
 	// The tag key.
+	//
+	// example:
+	//
+	// ecs
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The tag value.
+	//
+	// example:
+	//
+	// 001
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -17871,14 +24413,34 @@ func (s *QueryInstanceByTagRequestTag) SetValue(v string) *QueryInstanceByTagReq
 
 type QueryInstanceByTagResponseBody struct {
 	// The status code returned.
+	//
+	// example:
+	//
+	// PARAM_ERROR
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The error message returned.
+	//
+	// example:
+	//
+	// param is null
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The token that determines the start point of the query. The return value is the value of the NextToken response parameter that was returned last time the QueryInstanceByTag operation was called.
+	//
+	// example:
+	//
+	// CAESEgoQCg4KCm
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 9EC6C0B7-3397-5FAE-9915-8972CDDB1211
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request is successful.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 	// The instances returned.
 	TagResource []*QueryInstanceByTagResponseBodyTagResource `json:"TagResource,omitempty" xml:"TagResource,omitempty" type:"Repeated"`
@@ -17924,8 +24486,16 @@ func (s *QueryInstanceByTagResponseBody) SetTagResource(v []*QueryInstanceByTagR
 
 type QueryInstanceByTagResponseBodyTagResource struct {
 	// The ID of the resource.
+	//
+	// example:
+	//
+	// spn-xxxxx
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 	// The type of the resource. The returned resource type indicates a savings plan instance.
+	//
+	// example:
+	//
+	// instance
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	// The tags.
 	Tag []*QueryInstanceByTagResponseBodyTagResourceTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
@@ -17956,8 +24526,16 @@ func (s *QueryInstanceByTagResponseBodyTagResource) SetTag(v []*QueryInstanceByT
 
 type QueryInstanceByTagResponseBodyTagResourceTag struct {
 	// The tag key.
+	//
+	// example:
+	//
+	// tag1
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The tag value.
+	//
+	// example:
+	//
+	// 10
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -18009,11 +24587,31 @@ func (s *QueryInstanceByTagResponse) SetBody(v *QueryInstanceByTagResponseBody) 
 }
 
 type QueryInstanceGaapCostRequest struct {
-	BillingCycle     *string `json:"BillingCycle,omitempty" xml:"BillingCycle,omitempty"`
-	PageNum          *int32  `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	PageSize         *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	ProductCode      *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	ProductType      *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2020-03
+	BillingCycle *string `json:"BillingCycle,omitempty" xml:"BillingCycle,omitempty"`
+	// example:
+	//
+	// 1
+	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// rds
+	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	// example:
+	//
+	// rds
+	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
+	// example:
+	//
+	// PayAsYouGo
 	SubscriptionType *string `json:"SubscriptionType,omitempty" xml:"SubscriptionType,omitempty"`
 }
 
@@ -18056,11 +24654,23 @@ func (s *QueryInstanceGaapCostRequest) SetSubscriptionType(v string) *QueryInsta
 }
 
 type QueryInstanceGaapCostResponseBody struct {
-	Code      *string                                `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *QueryInstanceGaapCostResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                                `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                                  `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// Success
+	Code *string                                `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *QueryInstanceGaapCostResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// Successful!
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// CCBB1BB9-22F1-4177-867B-7A75D665B488
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s QueryInstanceGaapCostResponseBody) String() string {
@@ -18097,11 +24707,23 @@ func (s *QueryInstanceGaapCostResponseBody) SetSuccess(v bool) *QueryInstanceGaa
 }
 
 type QueryInstanceGaapCostResponseBodyData struct {
-	HostId     *string                                       `json:"HostId,omitempty" xml:"HostId,omitempty"`
-	Modules    *QueryInstanceGaapCostResponseBodyDataModules `json:"Modules,omitempty" xml:"Modules,omitempty" type:"Struct"`
-	PageNum    *int32                                        `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	PageSize   *int32                                        `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	TotalCount *int32                                        `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// example:
+	//
+	// 1.1.1.1
+	HostId  *string                                       `json:"HostId,omitempty" xml:"HostId,omitempty"`
+	Modules *QueryInstanceGaapCostResponseBodyDataModules `json:"Modules,omitempty" xml:"Modules,omitempty" type:"Struct"`
+	// example:
+	//
+	// 1
+	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 20
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s QueryInstanceGaapCostResponseBodyData) String() string {
@@ -18155,58 +24777,208 @@ func (s *QueryInstanceGaapCostResponseBodyDataModules) SetModule(v []*QueryInsta
 }
 
 type QueryInstanceGaapCostResponseBodyDataModulesModule struct {
-	AccountingUnit                   *string `json:"AccountingUnit,omitempty" xml:"AccountingUnit,omitempty"`
-	BillType                         *string `json:"BillType,omitempty" xml:"BillType,omitempty"`
-	BillingCycle                     *string `json:"BillingCycle,omitempty" xml:"BillingCycle,omitempty"`
-	Currency                         *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
-	DeductedByCashCoupons            *string `json:"DeductedByCashCoupons,omitempty" xml:"DeductedByCashCoupons,omitempty"`
-	DeductedByCoupons                *string `json:"DeductedByCoupons,omitempty" xml:"DeductedByCoupons,omitempty"`
-	DeductedByPrepaidCard            *string `json:"DeductedByPrepaidCard,omitempty" xml:"DeductedByPrepaidCard,omitempty"`
-	GaapDeductedByCashCoupons        *string `json:"GaapDeductedByCashCoupons,omitempty" xml:"GaapDeductedByCashCoupons,omitempty"`
-	GaapDeductedByCoupons            *string `json:"GaapDeductedByCoupons,omitempty" xml:"GaapDeductedByCoupons,omitempty"`
-	GaapDeductedByPrepaidCard        *string `json:"GaapDeductedByPrepaidCard,omitempty" xml:"GaapDeductedByPrepaidCard,omitempty"`
-	GaapPaymentAmount                *string `json:"GaapPaymentAmount,omitempty" xml:"GaapPaymentAmount,omitempty"`
-	GaapPretaxAmount                 *string `json:"GaapPretaxAmount,omitempty" xml:"GaapPretaxAmount,omitempty"`
-	GaapPretaxAmountLocal            *string `json:"GaapPretaxAmountLocal,omitempty" xml:"GaapPretaxAmountLocal,omitempty"`
-	GaapPretaxGrossAmount            *string `json:"GaapPretaxGrossAmount,omitempty" xml:"GaapPretaxGrossAmount,omitempty"`
-	GaapPricingDiscount              *string `json:"GaapPricingDiscount,omitempty" xml:"GaapPricingDiscount,omitempty"`
-	InstanceID                       *string `json:"InstanceID,omitempty" xml:"InstanceID,omitempty"`
-	MonthGaapDeductedByCashCoupons   *string `json:"MonthGaapDeductedByCashCoupons,omitempty" xml:"MonthGaapDeductedByCashCoupons,omitempty"`
-	MonthGaapDeductedByCoupons       *string `json:"MonthGaapDeductedByCoupons,omitempty" xml:"MonthGaapDeductedByCoupons,omitempty"`
-	MonthGaapDeductedByPrepaidCard   *string `json:"MonthGaapDeductedByPrepaidCard,omitempty" xml:"MonthGaapDeductedByPrepaidCard,omitempty"`
-	MonthGaapPaymentAmount           *string `json:"MonthGaapPaymentAmount,omitempty" xml:"MonthGaapPaymentAmount,omitempty"`
-	MonthGaapPretaxAmount            *string `json:"MonthGaapPretaxAmount,omitempty" xml:"MonthGaapPretaxAmount,omitempty"`
-	MonthGaapPretaxAmountLocal       *string `json:"MonthGaapPretaxAmountLocal,omitempty" xml:"MonthGaapPretaxAmountLocal,omitempty"`
-	MonthGaapPretaxGrossAmount       *string `json:"MonthGaapPretaxGrossAmount,omitempty" xml:"MonthGaapPretaxGrossAmount,omitempty"`
-	MonthGaapPricingDiscount         *string `json:"MonthGaapPricingDiscount,omitempty" xml:"MonthGaapPricingDiscount,omitempty"`
-	OrderId                          *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	OrderType                        *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
-	OwnerID                          *string `json:"OwnerID,omitempty" xml:"OwnerID,omitempty"`
-	PayTime                          *string `json:"PayTime,omitempty" xml:"PayTime,omitempty"`
-	PayerAccount                     *string `json:"PayerAccount,omitempty" xml:"PayerAccount,omitempty"`
-	PaymentAmount                    *string `json:"PaymentAmount,omitempty" xml:"PaymentAmount,omitempty"`
-	PaymentCurrency                  *string `json:"PaymentCurrency,omitempty" xml:"PaymentCurrency,omitempty"`
-	PretaxAmount                     *string `json:"PretaxAmount,omitempty" xml:"PretaxAmount,omitempty"`
-	PretaxAmountLocal                *string `json:"PretaxAmountLocal,omitempty" xml:"PretaxAmountLocal,omitempty"`
-	PretaxGrossAmount                *string `json:"PretaxGrossAmount,omitempty" xml:"PretaxGrossAmount,omitempty"`
-	PricingDiscount                  *string `json:"PricingDiscount,omitempty" xml:"PricingDiscount,omitempty"`
-	ProductCode                      *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	ProductType                      *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
-	Region                           *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	ResourceGroup                    *string `json:"ResourceGroup,omitempty" xml:"ResourceGroup,omitempty"`
-	SubOrderId                       *string `json:"SubOrderId,omitempty" xml:"SubOrderId,omitempty"`
-	SubscriptionType                 *string `json:"SubscriptionType,omitempty" xml:"SubscriptionType,omitempty"`
-	Tag                              *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	AccountingUnit *string `json:"AccountingUnit,omitempty" xml:"AccountingUnit,omitempty"`
+	// example:
+	//
+	// SubscriptionOrder
+	BillType *string `json:"BillType,omitempty" xml:"BillType,omitempty"`
+	// example:
+	//
+	// 2020-03
+	BillingCycle *string `json:"BillingCycle,omitempty" xml:"BillingCycle,omitempty"`
+	// example:
+	//
+	// CNY
+	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
+	// example:
+	//
+	// 0
+	DeductedByCashCoupons *string `json:"DeductedByCashCoupons,omitempty" xml:"DeductedByCashCoupons,omitempty"`
+	// example:
+	//
+	// 0
+	DeductedByCoupons *string `json:"DeductedByCoupons,omitempty" xml:"DeductedByCoupons,omitempty"`
+	// example:
+	//
+	// 0
+	DeductedByPrepaidCard *string `json:"DeductedByPrepaidCard,omitempty" xml:"DeductedByPrepaidCard,omitempty"`
+	// example:
+	//
+	// 0
+	GaapDeductedByCashCoupons *string `json:"GaapDeductedByCashCoupons,omitempty" xml:"GaapDeductedByCashCoupons,omitempty"`
+	// example:
+	//
+	// 0
+	GaapDeductedByCoupons *string `json:"GaapDeductedByCoupons,omitempty" xml:"GaapDeductedByCoupons,omitempty"`
+	// example:
+	//
+	// 0
+	GaapDeductedByPrepaidCard *string `json:"GaapDeductedByPrepaidCard,omitempty" xml:"GaapDeductedByPrepaidCard,omitempty"`
+	// example:
+	//
+	// 0
+	GaapPaymentAmount *string `json:"GaapPaymentAmount,omitempty" xml:"GaapPaymentAmount,omitempty"`
+	// example:
+	//
+	// 0
+	GaapPretaxAmount *string `json:"GaapPretaxAmount,omitempty" xml:"GaapPretaxAmount,omitempty"`
+	// example:
+	//
+	// 0
+	GaapPretaxAmountLocal *string `json:"GaapPretaxAmountLocal,omitempty" xml:"GaapPretaxAmountLocal,omitempty"`
+	// example:
+	//
+	// 0
+	GaapPretaxGrossAmount *string `json:"GaapPretaxGrossAmount,omitempty" xml:"GaapPretaxGrossAmount,omitempty"`
+	// example:
+	//
+	// 0
+	GaapPricingDiscount *string `json:"GaapPricingDiscount,omitempty" xml:"GaapPricingDiscount,omitempty"`
+	// example:
+	//
+	// OSSBAG-cn-0xl0xxxxxx
+	InstanceID *string `json:"InstanceID,omitempty" xml:"InstanceID,omitempty"`
+	// example:
+	//
+	// 0.75
+	MonthGaapDeductedByCashCoupons *string `json:"MonthGaapDeductedByCashCoupons,omitempty" xml:"MonthGaapDeductedByCashCoupons,omitempty"`
+	// example:
+	//
+	// 0
+	MonthGaapDeductedByCoupons *string `json:"MonthGaapDeductedByCoupons,omitempty" xml:"MonthGaapDeductedByCoupons,omitempty"`
+	// example:
+	//
+	// 0
+	MonthGaapDeductedByPrepaidCard *string `json:"MonthGaapDeductedByPrepaidCard,omitempty" xml:"MonthGaapDeductedByPrepaidCard,omitempty"`
+	// example:
+	//
+	// 0
+	MonthGaapPaymentAmount *string `json:"MonthGaapPaymentAmount,omitempty" xml:"MonthGaapPaymentAmount,omitempty"`
+	// example:
+	//
+	// 0
+	MonthGaapPretaxAmount *string `json:"MonthGaapPretaxAmount,omitempty" xml:"MonthGaapPretaxAmount,omitempty"`
+	// example:
+	//
+	// 0.99
+	MonthGaapPretaxAmountLocal *string `json:"MonthGaapPretaxAmountLocal,omitempty" xml:"MonthGaapPretaxAmountLocal,omitempty"`
+	// example:
+	//
+	// 0.99
+	MonthGaapPretaxGrossAmount *string `json:"MonthGaapPretaxGrossAmount,omitempty" xml:"MonthGaapPretaxGrossAmount,omitempty"`
+	// example:
+	//
+	// 0,.25
+	MonthGaapPricingDiscount *string `json:"MonthGaapPricingDiscount,omitempty" xml:"MonthGaapPricingDiscount,omitempty"`
+	// example:
+	//
+	// 213123213123
+	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// example:
+	//
+	// New
+	OrderType *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
+	// example:
+	//
+	// 123213123123
+	OwnerID *string `json:"OwnerID,omitempty" xml:"OwnerID,omitempty"`
+	// example:
+	//
+	// 2018-06-15 15:59:57
+	PayTime *string `json:"PayTime,omitempty" xml:"PayTime,omitempty"`
+	// example:
+	//
+	// 23534534
+	PayerAccount *string `json:"PayerAccount,omitempty" xml:"PayerAccount,omitempty"`
+	// example:
+	//
+	// 0
+	PaymentAmount *string `json:"PaymentAmount,omitempty" xml:"PaymentAmount,omitempty"`
+	// example:
+	//
+	// CNY
+	PaymentCurrency *string `json:"PaymentCurrency,omitempty" xml:"PaymentCurrency,omitempty"`
+	// example:
+	//
+	// 0
+	PretaxAmount *string `json:"PretaxAmount,omitempty" xml:"PretaxAmount,omitempty"`
+	// example:
+	//
+	// 0
+	PretaxAmountLocal *string `json:"PretaxAmountLocal,omitempty" xml:"PretaxAmountLocal,omitempty"`
+	// example:
+	//
+	// 123
+	PretaxGrossAmount *string `json:"PretaxGrossAmount,omitempty" xml:"PretaxGrossAmount,omitempty"`
+	// example:
+	//
+	// 1
+	PricingDiscount *string `json:"PricingDiscount,omitempty" xml:"PricingDiscount,omitempty"`
+	// example:
+	//
+	// rds
+	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	// example:
+	//
+	// rds
+	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	Region        *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	ResourceGroup *string `json:"ResourceGroup,omitempty" xml:"ResourceGroup,omitempty"`
+	// example:
+	//
+	// 12434345
+	SubOrderId *string `json:"SubOrderId,omitempty" xml:"SubOrderId,omitempty"`
+	// example:
+	//
+	// PayAsYouGo
+	SubscriptionType *string `json:"SubscriptionType,omitempty" xml:"SubscriptionType,omitempty"`
+	// example:
+	//
+	// tag
+	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	// example:
+	//
+	// 0
 	UnallocatedDeductedByCashCoupons *string `json:"UnallocatedDeductedByCashCoupons,omitempty" xml:"UnallocatedDeductedByCashCoupons,omitempty"`
-	UnallocatedDeductedByCoupons     *string `json:"UnallocatedDeductedByCoupons,omitempty" xml:"UnallocatedDeductedByCoupons,omitempty"`
+	// example:
+	//
+	// 0
+	UnallocatedDeductedByCoupons *string `json:"UnallocatedDeductedByCoupons,omitempty" xml:"UnallocatedDeductedByCoupons,omitempty"`
+	// example:
+	//
+	// 0
 	UnallocatedDeductedByPrepaidCard *string `json:"UnallocatedDeductedByPrepaidCard,omitempty" xml:"UnallocatedDeductedByPrepaidCard,omitempty"`
-	UnallocatedPaymentAmount         *string `json:"UnallocatedPaymentAmount,omitempty" xml:"UnallocatedPaymentAmount,omitempty"`
-	UnallocatedPretaxAmount          *string `json:"UnallocatedPretaxAmount,omitempty" xml:"UnallocatedPretaxAmount,omitempty"`
-	UnallocatedPretaxAmountLocal     *string `json:"UnallocatedPretaxAmountLocal,omitempty" xml:"UnallocatedPretaxAmountLocal,omitempty"`
-	UnallocatedPretaxGrossAmount     *string `json:"UnallocatedPretaxGrossAmount,omitempty" xml:"UnallocatedPretaxGrossAmount,omitempty"`
-	UnallocatedPricingDiscount       *string `json:"UnallocatedPricingDiscount,omitempty" xml:"UnallocatedPricingDiscount,omitempty"`
-	UsageEndDate                     *string `json:"UsageEndDate,omitempty" xml:"UsageEndDate,omitempty"`
-	UsageStartDate                   *string `json:"UsageStartDate,omitempty" xml:"UsageStartDate,omitempty"`
+	// example:
+	//
+	// 0
+	UnallocatedPaymentAmount *string `json:"UnallocatedPaymentAmount,omitempty" xml:"UnallocatedPaymentAmount,omitempty"`
+	// example:
+	//
+	// 0
+	UnallocatedPretaxAmount *string `json:"UnallocatedPretaxAmount,omitempty" xml:"UnallocatedPretaxAmount,omitempty"`
+	// example:
+	//
+	// 0
+	UnallocatedPretaxAmountLocal *string `json:"UnallocatedPretaxAmountLocal,omitempty" xml:"UnallocatedPretaxAmountLocal,omitempty"`
+	// example:
+	//
+	// 0
+	UnallocatedPretaxGrossAmount *string `json:"UnallocatedPretaxGrossAmount,omitempty" xml:"UnallocatedPretaxGrossAmount,omitempty"`
+	// example:
+	//
+	// 0
+	UnallocatedPricingDiscount *string `json:"UnallocatedPricingDiscount,omitempty" xml:"UnallocatedPricingDiscount,omitempty"`
+	// example:
+	//
+	// 2019-05-01 00:00:00
+	UsageEndDate *string `json:"UsageEndDate,omitempty" xml:"UsageEndDate,omitempty"`
+	// example:
+	//
+	// 2019-04-01 00:00:00
+	UsageStartDate *string `json:"UsageStartDate,omitempty" xml:"UsageStartDate,omitempty"`
 }
 
 func (s QueryInstanceGaapCostResponseBodyDataModulesModule) String() string {
@@ -18525,14 +25297,30 @@ func (s *QueryInvoicingCustomerListRequest) SetOwnerId(v int64) *QueryInvoicingC
 
 type QueryInvoicingCustomerListResponseBody struct {
 	// The status code.
+	//
+	// example:
+	//
+	// Success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The data returned.
 	Data *QueryInvoicingCustomerListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The error message returned.
+	//
+	// example:
+	//
+	// Successful!
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// BBEF51A3-E933-4F40-A534-C673CBDB9C80
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -18606,55 +25394,142 @@ func (s *QueryInvoicingCustomerListResponseBodyDataCustomerInvoiceList) SetCusto
 
 type QueryInvoicingCustomerListResponseBodyDataCustomerInvoiceListCustomerInvoice struct {
 	// The type of invoice that was changed to.
+	//
+	// example:
+	//
+	// 1
 	AdjustType *int64 `json:"AdjustType,omitempty" xml:"AdjustType,omitempty"`
 	// The bank that issues the invoice.
+	//
+	// example:
+	//
+	// Test Bank
 	Bank *string `json:"Bank,omitempty" xml:"Bank,omitempty"`
 	// The bank account number.
+	//
+	// example:
+	//
+	// 389576348573296349853476
 	BankNo *string `json:"BankNo,omitempty" xml:"BankNo,omitempty"`
 	// The authentication type of Alipay. Valid values:
 	//
-	// *   1: individual
-	// *   2: company
+	// 	- 1: individual
+	//
+	// 	- 2: company
+	//
+	// example:
+	//
+	// 1
 	CustomerType *int64 `json:"CustomerType,omitempty" xml:"CustomerType,omitempty"`
 	// The default note that is attached when the title is specified.
+	//
+	// example:
+	//
+	// PO Code: 12984554
 	DefaultRemark *string `json:"DefaultRemark,omitempty" xml:"DefaultRemark,omitempty"`
 	// The time when the payment ended.
+	//
+	// example:
+	//
+	// 202003
 	EndCycle *int64 `json:"EndCycle,omitempty" xml:"EndCycle,omitempty"`
 	// The time when the invoice was created. The time was in the yyyy-mm-dd hh:mm:ss format.
+	//
+	// example:
+	//
+	// 2018-09-07 15:26:20
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
 	// The ID of the invoice.
+	//
+	// example:
+	//
+	// 239875502738
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The company name in the invoice title.
+	//
+	// example:
+	//
+	// Test Company
 	InvoiceTitle *string `json:"InvoiceTitle,omitempty" xml:"InvoiceTitle,omitempty"`
 	// The type of issue.
+	//
+	// example:
+	//
+	// 1
 	IssueType *int64 `json:"IssueType,omitempty" xml:"IssueType,omitempty"`
 	// The address of the business license.
+	//
+	// example:
+	//
+	// XXX, XXX district, XXX city, XXX province
 	OperatingLicenseAddress *string `json:"OperatingLicenseAddress,omitempty" xml:"OperatingLicenseAddress,omitempty"`
 	// The phone number of the business license.
+	//
+	// example:
+	//
+	// 138xxxxxxxx
 	OperatingLicensePhone *string `json:"OperatingLicensePhone,omitempty" xml:"OperatingLicensePhone,omitempty"`
 	// The tax registration number.
+	//
+	// example:
+	//
+	// 21343245342534
 	RegisterNo *string `json:"RegisterNo,omitempty" xml:"RegisterNo,omitempty"`
 	// The time when the payment started.
+	//
+	// example:
+	//
+	// 202002
 	StartCycle *int64 `json:"StartCycle,omitempty" xml:"StartCycle,omitempty"`
 	// The status of the invoice title.
+	//
+	// example:
+	//
+	// 2
 	Status *int64 `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The path and file name of the scanned copy of the tax registration certificate.
+	//
+	// example:
+	//
+	// taxationLicense.jpg
 	TaxationLicense *string `json:"TaxationLicense,omitempty" xml:"TaxationLicense,omitempty"`
 	// The type of the taxpayer. Valid values:
 	//
-	// *   1: general taxpayer
-	// *   2: special taxpayer
+	// 	- 1: general taxpayer
+	//
+	// 	- 2: special taxpayer
+	//
+	// example:
+	//
+	// 1
 	TaxpayerType *int64 `json:"TaxpayerType,omitempty" xml:"TaxpayerType,omitempty"`
 	// The instruction document of the invoice title change.
+	//
+	// example:
+	//
+	// instruction.doc
 	TitleChangeInstructions *string `json:"TitleChangeInstructions,omitempty" xml:"TitleChangeInstructions,omitempty"`
 	// The type of the invoice. Valid values:
 	//
-	// *   0: plain value-added tax (VAT) invoice
-	// *   1: special VAT invoice
+	// 	- 0: plain value-added tax (VAT) invoice
+	//
+	// 	- 1: special VAT invoice
+	//
+	// example:
+	//
+	// 1
 	Type *int64 `json:"Type,omitempty" xml:"Type,omitempty"`
 	// The ID of the user.
+	//
+	// example:
+	//
+	// 34565465675
 	UserId *int64 `json:"UserId,omitempty" xml:"UserId,omitempty"`
 	// The nickname of the user.
+	//
+	// example:
+	//
+	// testNick
 	UserNick *string `json:"UserNick,omitempty" xml:"UserNick,omitempty"`
 }
 
@@ -18802,37 +25677,79 @@ func (s *QueryInvoicingCustomerListResponse) SetBody(v *QueryInvoicingCustomerLi
 
 type QueryOrdersRequest struct {
 	// The end time of the period during which the orders were created. By default, orders within the last hour are queried. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	//
+	// example:
+	//
+	// 2016-05-23T12:00:00Z
 	CreateTimeEnd *string `json:"CreateTimeEnd,omitempty" xml:"CreateTimeEnd,omitempty"`
 	// The start time of the period during which the orders were created. By default, orders within the last hour are queried. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	//
+	// example:
+	//
+	// 2016-05-23T13:00:00Z
 	CreateTimeStart *string `json:"CreateTimeStart,omitempty" xml:"CreateTimeStart,omitempty"`
 	// The type of the order. Valid values:
 	//
-	// *   New: purchases an instance.
-	// *   Renew: renews an instance.
-	// *   Upgrade: upgrades the configurations of an instance.
-	// *   Refund: applies for a refund.
+	// 	- New: purchases an instance.
+	//
+	// 	- Renew: renews an instance.
+	//
+	// 	- Upgrade: upgrades the configurations of an instance.
+	//
+	// 	- Refund: applies for a refund.
+	//
+	// example:
+	//
+	// New
 	OrderType *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
 	OwnerId   *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The page number of the page to return.
+	//
+	// example:
+	//
+	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
 	// The number of entries to return per page.
+	//
+	// example:
+	//
+	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The status of payment. Valid values for a non-refund order:
 	//
-	// *   Unpaid: The order is not paid.
-	// *   Paid: The order is paid.
-	// *   Cancelled: The order is canceled.
+	// 	- Unpaid: The order is not paid.
+	//
+	// 	- Paid: The order is paid.
+	//
+	// 	- Cancelled: The order is canceled.
 	//
 	// > : You can set this parameter to NULL for a refund order.
+	//
+	// example:
+	//
+	// Paid
 	PaymentStatus *string `json:"PaymentStatus,omitempty" xml:"PaymentStatus,omitempty"`
 	// The code of the service.
+	//
+	// example:
+	//
+	// rds
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
 	// The type of the service.
+	//
+	// example:
+	//
+	// rds
 	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
 	// The billing method. Valid values:
 	//
-	// *   Subscription: subscription
-	// *   PayAsYouGo: pay-as-you-go
+	// 	- Subscription: subscription
+	//
+	// 	- PayAsYouGo: pay-as-you-go
+	//
+	// example:
+	//
+	// Subscription
 	SubscriptionType *string `json:"SubscriptionType,omitempty" xml:"SubscriptionType,omitempty"`
 }
 
@@ -18896,14 +25813,30 @@ func (s *QueryOrdersRequest) SetSubscriptionType(v string) *QueryOrdersRequest {
 
 type QueryOrdersResponseBody struct {
 	// The status code.
+	//
+	// example:
+	//
+	// Success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The message returned.
 	Data *QueryOrdersResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The error message returned.
+	//
+	// example:
+	//
+	// Successful!
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 61293E7A-3406-4447-8620-EC88B0AA66AD
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -18942,14 +25875,30 @@ func (s *QueryOrdersResponseBody) SetSuccess(v bool) *QueryOrdersResponseBody {
 
 type QueryOrdersResponseBodyData struct {
 	// The hostname.
+	//
+	// example:
+	//
+	// test
 	HostName *string `json:"HostName,omitempty" xml:"HostName,omitempty"`
 	// The orders returned.
 	OrderList *QueryOrdersResponseBodyDataOrderList `json:"OrderList,omitempty" xml:"OrderList,omitempty" type:"Struct"`
 	// The page number of the returned page.
+	//
+	// example:
+	//
+	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
 	// The number of entries returned per page.
+	//
+	// example:
+	//
+	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The total number of returned entries.
+	//
+	// example:
+	//
+	// 1
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -19005,52 +25954,126 @@ func (s *QueryOrdersResponseBodyDataOrderList) SetOrder(v []*QueryOrdersResponse
 
 type QueryOrdersResponseBodyDataOrderListOrder struct {
 	// The aftertax amount of the order.
+	//
+	// example:
+	//
+	// 66
 	AfterTaxAmount *string `json:"AfterTaxAmount,omitempty" xml:"AfterTaxAmount,omitempty"`
 	// The service code.
+	//
+	// example:
+	//
+	// ecs
 	CommodityCode *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
 	// The time when the order was created.
+	//
+	// example:
+	//
+	// 2017-06-08T09:41:30Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The currency.
+	//
+	// example:
+	//
+	// CNY
 	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
 	// The ID of the order.
+	//
+	// example:
+	//
+	// 34532532
 	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
 	// The type of the order. Valid values:
 	//
-	// *   New: purchases an instance.
-	// *   Renew: renews an instance.
-	// *   Upgrade: upgrades the configurations of an instance.
-	// *   Refund: applies for a refund.
+	// 	- New: purchases an instance.
+	//
+	// 	- Renew: renews an instance.
+	//
+	// 	- Upgrade: upgrades the configurations of an instance.
+	//
+	// 	- Refund: applies for a refund.
+	//
+	// example:
+	//
+	// New
 	OrderType *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
 	// The currency of payment.
+	//
+	// example:
+	//
+	// CNY
 	PaymentCurrency *string `json:"PaymentCurrency,omitempty" xml:"PaymentCurrency,omitempty"`
 	// The status of payment. Valid values for a non-refund order:
 	//
-	// *   Unpaid: The order is not paid.
-	// *   Paid: The order is paid.
-	// *   Cancelled: The order is canceled.
+	// 	- Unpaid: The order is not paid.
+	//
+	// 	- Paid: The order is paid.
+	//
+	// 	- Cancelled: The order is canceled.
 	//
 	// > : The value is NULL for a refund order.
+	//
+	// example:
+	//
+	// Paid
 	PaymentStatus *string `json:"PaymentStatus,omitempty" xml:"PaymentStatus,omitempty"`
 	// The time of payment.
+	//
+	// example:
+	//
+	// 2017-06-08T09:41:30Z
 	PaymentTime *string `json:"PaymentTime,omitempty" xml:"PaymentTime,omitempty"`
 	// The pretax amount of the order.
+	//
+	// example:
+	//
+	// 0
 	PretaxAmount *string `json:"PretaxAmount,omitempty" xml:"PretaxAmount,omitempty"`
 	// The pretax amount of the order in local currency.
+	//
+	// example:
+	//
+	// 0
 	PretaxAmountLocal *string `json:"PretaxAmountLocal,omitempty" xml:"PretaxAmountLocal,omitempty"`
 	// The pretax gross amount of the order.
+	//
+	// example:
+	//
+	// 0
 	PretaxGrossAmount *string `json:"PretaxGrossAmount,omitempty" xml:"PretaxGrossAmount,omitempty"`
 	// The code of the main service.
+	//
+	// example:
+	//
+	// rds
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
 	// The type of the main service.
+	//
+	// example:
+	//
+	// rds
 	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
 	// The ID of the associated order.
+	//
+	// example:
+	//
+	// 234535345345342
 	RelatedOrderId *string `json:"RelatedOrderId,omitempty" xml:"RelatedOrderId,omitempty"`
 	// The billing method. Valid values:
 	//
-	// *   Subscription: subscription
-	// *   PayAsYouGo: pay-as-you-go
+	// 	- Subscription: subscription
+	//
+	// 	- PayAsYouGo: pay-as-you-go
+	//
+	// example:
+	//
+	// PayAsYouGo
 	SubscriptionType *string `json:"SubscriptionType,omitempty" xml:"SubscriptionType,omitempty"`
 	// The tax of the order.
+	//
+	// example:
+	//
+	// 1
 	Tax *string `json:"Tax,omitempty" xml:"Tax,omitempty"`
 }
 
@@ -19178,6 +26201,12 @@ func (s *QueryOrdersResponse) SetBody(v *QueryOrdersResponseBody) *QueryOrdersRe
 
 type QueryPermissionListRequest struct {
 	// The ID of the relationship. Set this parameter to the value of the RelationId response parameter returned by calling the QueryRelationList operation.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 51463
 	RelationId *int64 `json:"RelationId,omitempty" xml:"RelationId,omitempty"`
 }
 
@@ -19196,14 +26225,30 @@ func (s *QueryPermissionListRequest) SetRelationId(v int64) *QueryPermissionList
 
 type QueryPermissionListResponseBody struct {
 	// The status code returned.
+	//
+	// example:
+	//
+	// Success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The data returned.
 	Data *QueryPermissionListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The message returned.
+	//
+	// example:
+	//
+	// Successful!
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// F6E29451-A3CD-4705-806D-0112D08F5C49
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request is successful.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -19242,20 +26287,48 @@ func (s *QueryPermissionListResponseBody) SetSuccess(v bool) *QueryPermissionLis
 
 type QueryPermissionListResponseBodyData struct {
 	// The time when the relationship expired. If no value is returned, the relationship is still valid.
+	//
+	// example:
+	//
+	// 2021-03-06T15:12Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The ID of the management account.
+	//
+	// example:
+	//
+	// 1990699401005016
 	MasterId *int64 `json:"MasterId,omitempty" xml:"MasterId,omitempty"`
 	// The ID of the member.
+	//
+	// example:
+	//
+	// 1851253838840762
 	MemberId *int64 `json:"MemberId,omitempty" xml:"MemberId,omitempty"`
 	// The list of permissions.
 	PermissionList []*QueryPermissionListResponseBodyDataPermissionList `json:"PermissionList,omitempty" xml:"PermissionList,omitempty" type:"Repeated"`
 	// The type of the relationship. Valid values: FinancialManagement and FinancialTrusteeship.
+	//
+	// example:
+	//
+	// FinancialManagement
 	RelationType *string `json:"RelationType,omitempty" xml:"RelationType,omitempty"`
 	// The time when the relationship was established. The time follows the ISO 8601 standard in the yyyy-MM-ddThh:mm:ssZ format. The time is displayed in UTC. For example, 2016-05-23T12:00:00Z indicates that the relationship was established at 20:00:00 on May 23, 2016 (UTC+8).
+	//
+	// example:
+	//
+	// 2021-03-02T15:12Z
 	SetupTime *string `json:"SetupTime,omitempty" xml:"SetupTime,omitempty"`
 	// The time when the relationship took effect. The time follows the ISO 8601 standard in the yyyy-MM-ddThh:mm:ssZ format. The time is displayed in UTC. For example, 2016-05-23T12:00:00Z indicates that the relationship took effect at 20:00:00 on May 23, 2016 (UTC+8).
+	//
+	// example:
+	//
+	// 2021-03-02T15:12Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// The status of the relationship. For more information about valid values of this parameter, see the enumeration values of the RelationshipStatusEnum type in the following table.
+	//
+	// example:
+	//
+	// RELATED
 	State *string `json:"State,omitempty" xml:"State,omitempty"`
 }
 
@@ -19309,12 +26382,28 @@ func (s *QueryPermissionListResponseBodyData) SetState(v string) *QueryPermissio
 
 type QueryPermissionListResponseBodyDataPermissionList struct {
 	// The time when the permission expired. If no value is returned, the permission is still valid. The time follows the ISO 8601 standard in the yyyy-MM-ddThh:mm:ssZ format. The time is displayed in UTC. For example, 2016-05-23T12:00:00Z indicates that the permission expired at 20:00:00 on May 23, 2016 (UTC+8).
+	//
+	// example:
+	//
+	// 2021-03-05T15:12Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The code of the permission.
+	//
+	// example:
+	//
+	// allow_synchronize_finance_identity
 	PermissionCode *string `json:"PermissionCode,omitempty" xml:"PermissionCode,omitempty"`
 	// The name of the permission.
+	//
+	// example:
+	//
+	// The management account shares the credit control identity with the member.
 	PermissionName *string `json:"PermissionName,omitempty" xml:"PermissionName,omitempty"`
 	// The time when the permission took effect. The time follows the ISO 8601 standard in the yyyy-MM-ddThh:mm:ssZ format. The time is displayed in UTC. For example, 2016-05-23T12:00:00Z indicates that the permission took effect at 20:00:00 on May 23, 2016 (UTC+8).
+	//
+	// example:
+	//
+	// 2021-03-02T15:12Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
@@ -19378,12 +26467,25 @@ func (s *QueryPermissionListResponse) SetBody(v *QueryPermissionListResponseBody
 type QueryPrepaidCardsRequest struct {
 	// Specifies whether the prepaid card takes effect. Valid values:
 	//
-	// *   true
-	// *   false
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// true
 	EffectiveOrNot *bool `json:"EffectiveOrNot,omitempty" xml:"EffectiveOrNot,omitempty"`
 	// The end of the expiration time of prepaid cards to query. The value must be in the yyyy-MM-ddTHH:mm:ssZ format.
+	//
+	// example:
+	//
+	// 2018-08-01T00:00:00Z
 	ExpiryTimeEnd *string `json:"ExpiryTimeEnd,omitempty" xml:"ExpiryTimeEnd,omitempty"`
 	// The start of the expiration time of prepaid cards to query. The value must be in the yyyy-MM-ddTHH:mm:ssZ format.
+	//
+	// example:
+	//
+	// 2018-08-01T00:00:00Z
 	ExpiryTimeStart *string `json:"ExpiryTimeStart,omitempty" xml:"ExpiryTimeStart,omitempty"`
 }
 
@@ -19412,14 +26514,30 @@ func (s *QueryPrepaidCardsRequest) SetExpiryTimeStart(v string) *QueryPrepaidCar
 
 type QueryPrepaidCardsResponseBody struct {
 	// The status code returned.
+	//
+	// example:
+	//
+	// Success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The data returned.
 	Data *QueryPrepaidCardsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The message returned.
+	//
+	// example:
+	//
+	// Successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 7EA6C02D-06D0-4213-9C3B-E67910F7D1EB
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request is successful.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -19475,28 +26593,70 @@ func (s *QueryPrepaidCardsResponseBodyData) SetPrepaidCard(v []*QueryPrepaidCard
 
 type QueryPrepaidCardsResponseBodyDataPrepaidCard struct {
 	// The services to which the prepaid card is applicable.
+	//
+	// example:
+	//
+	// All Alibaba Cloud services
 	ApplicableProducts *string `json:"ApplicableProducts,omitempty" xml:"ApplicableProducts,omitempty"`
 	// The scenario to which the prepaid card is applicable.
+	//
+	// example:
+	//
+	// test
 	ApplicableScenarios *string `json:"ApplicableScenarios,omitempty" xml:"ApplicableScenarios,omitempty"`
 	// The balance of the prepaid card.
+	//
+	// example:
+	//
+	// 100.00
 	Balance *string `json:"Balance,omitempty" xml:"Balance,omitempty"`
 	// The time when the prepaid card took effect.
+	//
+	// example:
+	//
+	// 2018-08-03T01:39:11Z
 	EffectiveTime *string `json:"EffectiveTime,omitempty" xml:"EffectiveTime,omitempty"`
 	// The time when the prepaid card expired.
+	//
+	// example:
+	//
+	// 2019-08-04T01:39:11Z
 	ExpiryTime *string `json:"ExpiryTime,omitempty" xml:"ExpiryTime,omitempty"`
 	// The time when the prepaid card was issued.
+	//
+	// example:
+	//
+	// 2018-08-03T01:39:11Z
 	GrantedTime *string `json:"GrantedTime,omitempty" xml:"GrantedTime,omitempty"`
 	// The nominal value of the prepaid card.
+	//
+	// example:
+	//
+	// 100.00
 	NominalValue *string `json:"NominalValue,omitempty" xml:"NominalValue,omitempty"`
 	// The ID of the prepaid card.
+	//
+	// example:
+	//
+	// 213432432
 	PrepaidCardId *int64 `json:"PrepaidCardId,omitempty" xml:"PrepaidCardId,omitempty"`
 	// The number of the prepaid card.
+	//
+	// example:
+	//
+	// Q-7edaab979fc9
 	PrepaidCardNo *string `json:"PrepaidCardNo,omitempty" xml:"PrepaidCardNo,omitempty"`
 	// The status of the prepaid card. Valid values:
 	//
-	// *   Available: The prepaid card is valid.
-	// *   Expired: The prepaid card expired.
-	// *   Cancelled: The prepaid card is invalid.
+	// 	- Available: The prepaid card is valid.
+	//
+	// 	- Expired: The prepaid card expired.
+	//
+	// 	- Cancelled: The prepaid card is invalid.
+	//
+	// example:
+	//
+	// Available
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -19589,6 +26749,12 @@ func (s *QueryPrepaidCardsResponse) SetBody(v *QueryPrepaidCardsResponseBody) *Q
 
 type QueryPriceEntityListRequest struct {
 	// The code of the service.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ecs
 	CommodityCode *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
 	Lang          *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 }
@@ -19613,14 +26779,30 @@ func (s *QueryPriceEntityListRequest) SetLang(v string) *QueryPriceEntityListReq
 
 type QueryPriceEntityListResponseBody struct {
 	// The HTTP status code.
+	//
+	// example:
+	//
+	// Success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The data that is returned.
 	Data *QueryPriceEntityListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The message that is returned.
+	//
+	// example:
+	//
+	// Successful！
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 79EE7556-0CFD-44EB-9CD6-B3B526E3A85F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request is successful.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -19677,8 +26859,16 @@ func (s *QueryPriceEntityListResponseBodyData) SetPriceEntityInfoList(v []*Query
 
 type QueryPriceEntityListResponseBodyDataPriceEntityInfoList struct {
 	// The code of the billable item.
+	//
+	// example:
+	//
+	// instance_type
 	PriceEntityCode *string `json:"PriceEntityCode,omitempty" xml:"PriceEntityCode,omitempty"`
 	// The name of the billable item.
+	//
+	// example:
+	//
+	// Elastic Compute Service (ECS) instance
 	PriceEntityName *string `json:"PriceEntityName,omitempty" xml:"PriceEntityName,omitempty"`
 	// The factors of the billable item.
 	PriceFactorList []*QueryPriceEntityListResponseBodyDataPriceEntityInfoListPriceFactorList `json:"PriceFactorList,omitempty" xml:"PriceFactorList,omitempty" type:"Repeated"`
@@ -19709,8 +26899,16 @@ func (s *QueryPriceEntityListResponseBodyDataPriceEntityInfoList) SetPriceFactor
 
 type QueryPriceEntityListResponseBodyDataPriceEntityInfoListPriceFactorList struct {
 	// The code of the factor.
+	//
+	// example:
+	//
+	// vm_region_no
 	PriceFactorCode *string `json:"PriceFactorCode,omitempty" xml:"PriceFactorCode,omitempty"`
 	// The name of the factor.
+	//
+	// example:
+	//
+	// Region
 	PriceFactorName *string `json:"PriceFactorName,omitempty" xml:"PriceFactorName,omitempty"`
 	// The values of the factor.
 	PriceFactorValueList []*string `json:"PriceFactorValueList,omitempty" xml:"PriceFactorValueList,omitempty" type:"Repeated"`
@@ -19770,10 +26968,24 @@ func (s *QueryPriceEntityListResponse) SetBody(v *QueryPriceEntityListResponseBo
 
 type QueryProductListRequest struct {
 	// The page number of the page to return.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
 	// The number of entries to return on each page. Default value: 20.
+	//
+	// example:
+	//
+	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// Specifies whether to return the total number of services. Default value: false.
+	//
+	// example:
+	//
+	// true
 	QueryTotalCount *bool `json:"QueryTotalCount,omitempty" xml:"QueryTotalCount,omitempty"`
 }
 
@@ -19802,14 +27014,30 @@ func (s *QueryProductListRequest) SetQueryTotalCount(v bool) *QueryProductListRe
 
 type QueryProductListResponseBody struct {
 	// The HTTP status code returned.
+	//
+	// example:
+	//
+	// Success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The information about all Alibaba Cloud services.
 	Data *QueryProductListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The message returned.
+	//
+	// example:
+	//
+	// This API is not applicable for caller.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 94858229-2758-4663-A7D0-99490D541F15
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -19848,12 +27076,24 @@ func (s *QueryProductListResponseBody) SetSuccess(v bool) *QueryProductListRespo
 
 type QueryProductListResponseBodyData struct {
 	// The page number of the returned page.
+	//
+	// example:
+	//
+	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
 	// The number of entries returned on each page.
+	//
+	// example:
+	//
+	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The service definitions.
 	ProductList *QueryProductListResponseBodyDataProductList `json:"ProductList,omitempty" xml:"ProductList,omitempty" type:"Struct"`
 	// The total number of services.
+	//
+	// example:
+	//
+	// 449
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -19904,15 +27144,32 @@ func (s *QueryProductListResponseBodyDataProductList) SetProduct(v []*QueryProdu
 
 type QueryProductListResponseBodyDataProductListProduct struct {
 	// The code of the service.
+	//
+	// example:
+	//
+	// cdn
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
 	// The name of the service.
+	//
+	// example:
+	//
+	// CDN (Pay-as-you-go)
 	ProductName *string `json:"ProductName,omitempty" xml:"ProductName,omitempty"`
 	// The type of the service.
+	//
+	// example:
+	//
+	// CDN
 	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
 	// The billing method. Valid values:
 	//
-	// *   Subscription: subscription
-	// *   PayAsYouGo: pay-as-you-go
+	// 	- Subscription: subscription
+	//
+	// 	- PayAsYouGo: pay-as-you-go
+	//
+	// example:
+	//
+	// PayAsYouGo
 	SubscriptionType *string `json:"SubscriptionType,omitempty" xml:"SubscriptionType,omitempty"`
 }
 
@@ -19975,23 +27232,62 @@ func (s *QueryProductListResponse) SetBody(v *QueryProductListResponseBody) *Que
 
 type QueryRIUtilizationDetailRequest struct {
 	// The ID of the instance whose fees are deducted by using the RI. If this parameter is left empty, the usage details of all instances are queried.
+	//
+	// example:
+	//
+	// jsdgfsdhgsdjh
 	DeductedInstanceId *string `json:"DeductedInstanceId,omitempty" xml:"DeductedInstanceId,omitempty"`
 	// The time when the RI expires. Specify the time in the YYYY-MM-DD HH:mm:ss format.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2019-05-23 12:00:00
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The instance type of the RI.
+	//
+	// example:
+	//
+	// Instancetyp
 	InstanceSpec *string `json:"InstanceSpec,omitempty" xml:"InstanceSpec,omitempty"`
 	// The number of the page to return. Default value: 1.
+	//
+	// example:
+	//
+	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
 	// The number of entries to return on each page. Default value: 20. Maximum value: 300.
+	//
+	// example:
+	//
+	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The code of the service to which the RI is applied. Default value: ecsRi. Valid values:
 	//
-	// *   ecsRi: ECS RI.
-	// *   scu_bag: storage capacity unit (SCU).
+	// 	- ecsRi: ECS RI.
+	//
+	// 	- scu_bag: storage capacity unit (SCU).
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ecsRi
 	RICommodityCode *string `json:"RICommodityCode,omitempty" xml:"RICommodityCode,omitempty"`
 	// The ID of the RI. If this parameter is left empty, the usage details of all RIs are queried.
+	//
+	// example:
+	//
+	// dsudfgdsjh
 	RIInstanceId *string `json:"RIInstanceId,omitempty" xml:"RIInstanceId,omitempty"`
 	// The time when the RI was created. Specify the time in the YYYY-MM-DD HH:mm:ss format.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2019-05-23 12:00:00
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
@@ -20045,14 +27341,30 @@ func (s *QueryRIUtilizationDetailRequest) SetStartTime(v string) *QueryRIUtiliza
 
 type QueryRIUtilizationDetailResponseBody struct {
 	// The status code.
+	//
+	// example:
+	//
+	// Success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The data returned.
 	Data *QueryRIUtilizationDetailResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The message returned.
+	//
+	// example:
+	//
+	// Successful！
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// DF58589C-A06C-4224-8615-7797E6474FA3
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -20093,10 +27405,22 @@ type QueryRIUtilizationDetailResponseBodyData struct {
 	// The usage details of the RI.
 	DetailList *QueryRIUtilizationDetailResponseBodyDataDetailList `json:"DetailList,omitempty" xml:"DetailList,omitempty" type:"Struct"`
 	// The number of the returned page.
+	//
+	// example:
+	//
+	// 1
 	PageNum *int64 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
 	// The number of entries returned per page.
+	//
+	// example:
+	//
+	// 20
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The total number of returned entries.
+	//
+	// example:
+	//
+	// 0
 	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -20147,22 +27471,58 @@ func (s *QueryRIUtilizationDetailResponseBodyDataDetailList) SetDetailList(v []*
 
 type QueryRIUtilizationDetailResponseBodyDataDetailListDetailList struct {
 	// The time when the fees are deducted by using the RI.
+	//
+	// example:
+	//
+	// 2019-05-23 12:00:00
 	DeductDate *string `json:"DeductDate,omitempty" xml:"DeductDate,omitempty"`
 	// The total amount of computing power of the RI or capacity of SCU in the time period.
+	//
+	// example:
+	//
+	// 1
 	DeductFactorTotal *float32 `json:"DeductFactorTotal,omitempty" xml:"DeductFactorTotal,omitempty"`
 	// The deduct factor. This parameter is returned only if the RICommodityCode parameter is set to ecsRi.
+	//
+	// example:
+	//
+	// 24
 	DeductHours *string `json:"DeductHours,omitempty" xml:"DeductHours,omitempty"`
 	// The computing power or capacity of the pay-as-you-go instance whose fees are deducted by using the RI.
+	//
+	// example:
+	//
+	// 1
 	DeductQuantity *float32 `json:"DeductQuantity,omitempty" xml:"DeductQuantity,omitempty"`
 	// The code of the service whose fees are deducted by using the RI.
+	//
+	// example:
+	//
+	// rds
 	DeductedCommodityCode *string `json:"DeductedCommodityCode,omitempty" xml:"DeductedCommodityCode,omitempty"`
 	// The ID of the instance whose fees are deducted by using the RI.
+	//
+	// example:
+	//
+	// safdffghfgh
 	DeductedInstanceId *string `json:"DeductedInstanceId,omitempty" xml:"DeductedInstanceId,omitempty"`
 	// The name of the service whose fees are deducted by using the RI.
+	//
+	// example:
+	//
+	// ApsaraDB RDS
 	DeductedProductDetail *string `json:"DeductedProductDetail,omitempty" xml:"DeductedProductDetail,omitempty"`
 	// The instance type of the instance whose fees are deducted by using the RI.
+	//
+	// example:
+	//
+	// rds.mysql.s3.large
 	InstanceSpec *string `json:"InstanceSpec,omitempty" xml:"InstanceSpec,omitempty"`
 	// The ID of the RI.
+	//
+	// example:
+	//
+	// 324253645
 	RIInstanceId *string `json:"RIInstanceId,omitempty" xml:"RIInstanceId,omitempty"`
 }
 
@@ -20251,18 +27611,39 @@ func (s *QueryRIUtilizationDetailResponse) SetBody(v *QueryRIUtilizationDetailRe
 type QueryRedeemRequest struct {
 	// Specifies whether the redemption coupon takes effect. Valid values:
 	//
-	// *   true
-	// *   false
+	// 	- true
+	//
+	// 	- false
 	//
 	// Default value: false.
+	//
+	// example:
+	//
+	// true
 	EffectiveOrNot *bool `json:"EffectiveOrNot,omitempty" xml:"EffectiveOrNot,omitempty"`
 	// The end time when the redemption coupon expires. The value must be in the yyyy-MM-ddTHH:mm:ssZ format.
+	//
+	// example:
+	//
+	// 2018-08-01T00:00:00Z
 	ExpiryTimeEnd *string `json:"ExpiryTimeEnd,omitempty" xml:"ExpiryTimeEnd,omitempty"`
 	// The start time when the redemption coupon expires. The value must be in the yyyy-MM-ddTHH:mm:ssZ format.
+	//
+	// example:
+	//
+	// 2018-08-01T00:00:00Z
 	ExpiryTimeStart *string `json:"ExpiryTimeStart,omitempty" xml:"ExpiryTimeStart,omitempty"`
 	// The number of the page to return.
+	//
+	// example:
+	//
+	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
 	// The number of entries to return on each page.
+	//
+	// example:
+	//
+	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
@@ -20301,14 +27682,30 @@ func (s *QueryRedeemRequest) SetPageSize(v int32) *QueryRedeemRequest {
 
 type QueryRedeemResponseBody struct {
 	// The status code returned.
+	//
+	// example:
+	//
+	// Success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The data returned.
 	Data *QueryRedeemResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The message returned.
+	//
+	// example:
+	//
+	// Successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// E503DC7B-E4F0-4B3C-BC89-BCECF1338F0B
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request is successful.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -20347,12 +27744,24 @@ func (s *QueryRedeemResponseBody) SetSuccess(v bool) *QueryRedeemResponseBody {
 
 type QueryRedeemResponseBodyData struct {
 	// The page number of the returned page.
+	//
+	// example:
+	//
+	// 1
 	PageNum *int64 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
 	// The number of entries returned per page.
+	//
+	// example:
+	//
+	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The details of the redemption coupon.
 	Redeem *QueryRedeemResponseBodyDataRedeem `json:"Redeem,omitempty" xml:"Redeem,omitempty" type:"Struct"`
 	// The total number of returned entries.
+	//
+	// example:
+	//
+	// 1
 	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -20403,35 +27812,84 @@ func (s *QueryRedeemResponseBodyDataRedeem) SetRedeem(v []*QueryRedeemResponseBo
 
 type QueryRedeemResponseBodyDataRedeemRedeem struct {
 	// The services to which the redemption coupon is applicable.
+	//
+	// example:
+	//
+	// Elastic Compute Service (ECS)
 	ApplicableProducts *string `json:"ApplicableProducts,omitempty" xml:"ApplicableProducts,omitempty"`
 	// The balance of the redemption coupon.
+	//
+	// example:
+	//
+	// 0
 	Balance *string `json:"Balance,omitempty" xml:"Balance,omitempty"`
 	// The time when the redemption coupon took effect.
+	//
+	// example:
+	//
+	// 2018-05-14 20:25:00
 	EffectiveTime *string `json:"EffectiveTime,omitempty" xml:"EffectiveTime,omitempty"`
 	// The time when the redemption coupon expired.
+	//
+	// example:
+	//
+	// 2018-06-13 20:25:00
 	ExpiryTime *string `json:"ExpiryTime,omitempty" xml:"ExpiryTime,omitempty"`
 	// The time when the redemption coupon was issued.
+	//
+	// example:
+	//
+	// 2018-05-14 20:25:00
 	GrantedTime *string `json:"GrantedTime,omitempty" xml:"GrantedTime,omitempty"`
 	// The nominal value of the redemption coupon.
+	//
+	// example:
+	//
+	// 0
 	NominalValue *string `json:"NominalValue,omitempty" xml:"NominalValue,omitempty"`
 	// The ID of the redemption coupon.
+	//
+	// example:
+	//
+	// 1342
 	RedeemId *string `json:"RedeemId,omitempty" xml:"RedeemId,omitempty"`
 	// The number of the redemption coupon.
+	//
+	// example:
+	//
+	// 4889*****1610
 	RedeemNo *string `json:"RedeemNo,omitempty" xml:"RedeemNo,omitempty"`
 	// The specifications of the redemption coupon.
+	//
+	// example:
+	//
+	// N/A
 	Specification *string `json:"Specification,omitempty" xml:"Specification,omitempty"`
 	// The status of the redemption coupon. Valid values:
 	//
-	// *   Generated
-	// *   CallBack
-	// *   RefundPending
-	// *   Canceled
-	// *   Order_Canceled
-	// *   ActivePending
-	// *   ActiveSuccess
-	// *   ExchangePending
-	// *   ExchangeSuccess
-	// *   Expired
+	// 	- Generated
+	//
+	// 	- CallBack
+	//
+	// 	- RefundPending
+	//
+	// 	- Canceled
+	//
+	// 	- Order_Canceled
+	//
+	// 	- ActivePending
+	//
+	// 	- ActiveSuccess
+	//
+	// 	- ExchangePending
+	//
+	// 	- ExchangeSuccess
+	//
+	// 	- Expired
+	//
+	// example:
+	//
+	// Generated
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -20524,12 +27982,30 @@ func (s *QueryRedeemResponse) SetBody(v *QueryRedeemResponseBody) *QueryRedeemRe
 
 type QueryRelationListRequest struct {
 	// The number of the page to return. Default value: 1.
+	//
+	// example:
+	//
+	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
 	// The number of entries to return on each page. Default value: 20.
+	//
+	// example:
+	//
+	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The states of the relationships between the management account and its members. The valid values of this parameter are the enumeration members of the RelationshipStatusEnum data type. If you do not specify this parameter, valid relationship states are queried by default.
+	//
+	// example:
+	//
+	// RELATED
 	StatusList []*string `json:"StatusList,omitempty" xml:"StatusList,omitempty" type:"Repeated"`
 	// The ID of the Alibaba Cloud account.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1990699401005016
 	UserId *int64 `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
@@ -20563,14 +28039,30 @@ func (s *QueryRelationListRequest) SetUserId(v int64) *QueryRelationListRequest 
 
 type QueryRelationListResponseBody struct {
 	// The status code returned.
+	//
+	// example:
+	//
+	// Success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The data returned.
 	Data *QueryRelationListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The message returned.
+	//
+	// example:
+	//
+	// Successful!
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 7FC5D662-37FD-40A6-85B1-33442D815184
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -20611,10 +28103,22 @@ type QueryRelationListResponseBodyData struct {
 	// The relationships.
 	FinancialRelationInfoList []*QueryRelationListResponseBodyDataFinancialRelationInfoList `json:"FinancialRelationInfoList,omitempty" xml:"FinancialRelationInfoList,omitempty" type:"Repeated"`
 	// The page number of the returned page.
+	//
+	// example:
+	//
+	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
 	// The number of entries returned per page.
+	//
+	// example:
+	//
+	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 100
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -20648,24 +28152,64 @@ func (s *QueryRelationListResponseBodyData) SetTotalCount(v int32) *QueryRelatio
 
 type QueryRelationListResponseBodyDataFinancialRelationInfoList struct {
 	// The ID of the Alibaba Cloud account.
+	//
+	// example:
+	//
+	// 1851253838840762
 	AccountId *int64 `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
 	// The name of the account.
+	//
+	// example:
+	//
+	// caiwuyun_test4
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
 	// The display name of the account.
+	//
+	// example:
+	//
+	// test4
 	AccountNickName *string `json:"AccountNickName,omitempty" xml:"AccountNickName,omitempty"`
 	// The type of the account. Valid values: MASTER and MEMBER.
+	//
+	// example:
+	//
+	// MEMBER
 	AccountType *string `json:"AccountType,omitempty" xml:"AccountType,omitempty"`
 	// The time when the relationship became invalid. If no value is returned, the relationship is still valid.
+	//
+	// example:
+	//
+	// 2021-03-08T15:12Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The ID of the relationship.
+	//
+	// example:
+	//
+	// 51463
 	RelationId *int64 `json:"RelationId,omitempty" xml:"RelationId,omitempty"`
 	// The type of the relationship. Valid values: FinancialManagement and FinancialTrusteeship.
+	//
+	// example:
+	//
+	// FinancialManagement
 	RelationType *string `json:"RelationType,omitempty" xml:"RelationType,omitempty"`
 	// The time when the relationship was established. The time follows the ISO 8601 standard in the yyyy-MM-ddThh:mm:ssZ format. The time is displayed in UTC. Example: 2016-05-23T12:00:00Z.
+	//
+	// example:
+	//
+	// 2021-03-02T15:12Z
 	SetupTime *string `json:"SetupTime,omitempty" xml:"SetupTime,omitempty"`
 	// The time when the relationship became valid. The time follows the ISO 8601 standard in the yyyy-MM-ddThh:mm:ssZ format. The time is displayed in UTC. Example: 2016-05-23T12:00:00Z.
+	//
+	// example:
+	//
+	// 2021-03-02T15:12Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// The state of the relationship. One of the enumeration members of the RelationshipStatusEnum data type is returned.
+	//
+	// example:
+	//
+	// RELATED
 	State *string `json:"State,omitempty" xml:"State,omitempty"`
 }
 
@@ -20758,7 +28302,8 @@ func (s *QueryRelationListResponse) SetBody(v *QueryRelationListResponseBody) *Q
 
 type QueryResellerAvailableQuotaRequest struct {
 	ItemCodes *string `json:"ItemCodes,omitempty" xml:"ItemCodes,omitempty"`
-	OwnerId   *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// This parameter is required.
+	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 }
 
 func (s QueryResellerAvailableQuotaRequest) String() string {
@@ -20780,11 +28325,26 @@ func (s *QueryResellerAvailableQuotaRequest) SetOwnerId(v int64) *QueryResellerA
 }
 
 type QueryResellerAvailableQuotaResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// 300
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// Successful!
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 79EE7556-0CFD-44EB-9CD6-B3B526E3A85F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s QueryResellerAvailableQuotaResponseBody) String() string {
@@ -20850,6 +28410,9 @@ func (s *QueryResellerAvailableQuotaResponse) SetBody(v *QueryResellerAvailableQ
 }
 
 type QueryResellerUserAlarmThresholdRequest struct {
+	// example:
+	//
+	// quota_low_balance
 	AlarmType *string `json:"AlarmType,omitempty" xml:"AlarmType,omitempty"`
 	OwnerId   *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 }
@@ -20873,12 +28436,27 @@ func (s *QueryResellerUserAlarmThresholdRequest) SetOwnerId(v int64) *QueryResel
 }
 
 type QueryResellerUserAlarmThresholdResponseBody struct {
-	Code      *string                                            `json:"Code,omitempty" xml:"Code,omitempty"`
-	Count     *int32                                             `json:"Count,omitempty" xml:"Count,omitempty"`
-	Data      []*QueryResellerUserAlarmThresholdResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	Message   *string                                            `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                                              `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// 1
+	Count *int32                                             `json:"Count,omitempty" xml:"Count,omitempty"`
+	Data  []*QueryResellerUserAlarmThresholdResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// EAE08A27-386C-579E-966D-8853EC3C5D0E
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s QueryResellerUserAlarmThresholdResponseBody) String() string {
@@ -20920,10 +28498,22 @@ func (s *QueryResellerUserAlarmThresholdResponseBody) SetSuccess(v bool) *QueryR
 }
 
 type QueryResellerUserAlarmThresholdResponseBodyData struct {
-	Denominator     *int32  `json:"Denominator,omitempty" xml:"Denominator,omitempty"`
-	Numerator       *int32  `json:"Numerator,omitempty" xml:"Numerator,omitempty"`
+	// example:
+	//
+	// 100
+	Denominator *int32 `json:"Denominator,omitempty" xml:"Denominator,omitempty"`
+	// example:
+	//
+	// 10
+	Numerator *int32 `json:"Numerator,omitempty" xml:"Numerator,omitempty"`
+	// example:
+	//
+	// 100
 	ThresholdAmount *string `json:"ThresholdAmount,omitempty" xml:"ThresholdAmount,omitempty"`
-	ThresholdType   *int32  `json:"ThresholdType,omitempty" xml:"ThresholdType,omitempty"`
+	// example:
+	//
+	// 0
+	ThresholdType *int32 `json:"ThresholdType,omitempty" xml:"ThresholdType,omitempty"`
 }
 
 func (s QueryResellerUserAlarmThresholdResponseBodyData) String() string {
@@ -20985,17 +28575,41 @@ func (s *QueryResellerUserAlarmThresholdResponse) SetBody(v *QueryResellerUserAl
 
 type QueryResourcePackageInstancesRequest struct {
 	// The end of the expiration time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	//
+	// example:
+	//
+	// 2020-02-02T13:00:00Z
 	ExpiryTimeEnd *string `json:"ExpiryTimeEnd,omitempty" xml:"ExpiryTimeEnd,omitempty"`
 	// The beginning of the expiration time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	//
+	// example:
+	//
+	// 2020-02-02T12:00:00Z
 	ExpiryTimeStart *string `json:"ExpiryTimeStart,omitempty" xml:"ExpiryTimeStart,omitempty"`
 	// Specifies whether partners are involved.
+	//
+	// example:
+	//
+	// true
 	IncludePartner *bool  `json:"IncludePartner,omitempty" xml:"IncludePartner,omitempty"`
 	OwnerId        *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The number of the page to return. Default value: 1.
+	//
+	// example:
+	//
+	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
 	// The number of entries to return on each page. Default value: 20. Maximum value: 300.
+	//
+	// example:
+	//
+	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The code of the service.
+	//
+	// example:
+	//
+	// rds
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
 }
 
@@ -21044,20 +28658,48 @@ func (s *QueryResourcePackageInstancesRequest) SetProductCode(v string) *QueryRe
 
 type QueryResourcePackageInstancesResponseBody struct {
 	// The status code returned.
+	//
+	// example:
+	//
+	// Success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The data returned.
 	Data *QueryResourcePackageInstancesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The message returned.
+	//
+	// example:
+	//
+	// Successful!
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The page number of the returned page.
+	//
+	// example:
+	//
+	// 1
 	Page *int32 `json:"Page,omitempty" xml:"Page,omitempty"`
 	// The number of entries returned per page.
+	//
+	// example:
+	//
+	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 6000EE23-274B-4E07-A697-FF2E999520A4
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request is successful.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 	// The total number of returned entries.
+	//
+	// example:
+	//
+	// 12
 	Total *int32 `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
@@ -21111,14 +28753,30 @@ func (s *QueryResourcePackageInstancesResponseBody) SetTotal(v int32) *QueryReso
 
 type QueryResourcePackageInstancesResponseBodyData struct {
 	// The ID of the host.
+	//
+	// example:
+	//
+	// cn
 	HostId *string `json:"HostId,omitempty" xml:"HostId,omitempty"`
 	// The details of the instances.
 	Instances *QueryResourcePackageInstancesResponseBodyDataInstances `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Struct"`
 	// The page number of the returned page.
+	//
+	// example:
+	//
+	// 1
 	PageNum *string `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
 	// The number of entries returned per page.
+	//
+	// example:
+	//
+	// 20
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The total number of returned entries.
+	//
+	// example:
+	//
+	// 12
 	TotalCount *string `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -21176,33 +28834,82 @@ type QueryResourcePackageInstancesResponseBodyDataInstancesInstance struct {
 	// The services to which the resource plan is applicable.
 	ApplicableProducts *QueryResourcePackageInstancesResponseBodyDataInstancesInstanceApplicableProducts `json:"ApplicableProducts,omitempty" xml:"ApplicableProducts,omitempty" type:"Struct"`
 	// The commodity code.
+	//
+	// example:
+	//
+	// rds
 	CommodityCode *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
 	// The deduction type. Example: Absolute.
+	//
+	// example:
+	//
+	// Absolute
 	DeductType *string `json:"DeductType,omitempty" xml:"DeductType,omitempty"`
 	// The time when the resource plan took effect.
+	//
+	// example:
+	//
+	// 2018-09-12T09:51:56Z
 	EffectiveTime *string `json:"EffectiveTime,omitempty" xml:"EffectiveTime,omitempty"`
 	// The time when the resource plan expired.
+	//
+	// example:
+	//
+	// 2019-03-12T16:00:00Z
 	ExpiryTime *string `json:"ExpiryTime,omitempty" xml:"ExpiryTime,omitempty"`
 	// The ID of the instance.
+	//
+	// example:
+	//
+	// OSSBAG-cn-v0h1s4hma01
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The type of the resource plan.
+	//
+	// example:
+	//
+	// FPT_ossbag_absolute_Storage_sh
 	PackageType *string `json:"PackageType,omitempty" xml:"PackageType,omitempty"`
 	// The ID of the region.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
 	// The remaining quota.
+	//
+	// example:
+	//
+	// 40.000
 	RemainingAmount *string `json:"RemainingAmount,omitempty" xml:"RemainingAmount,omitempty"`
 	// The unit of the remaining quota.
+	//
+	// example:
+	//
+	// GB
 	RemainingAmountUnit *string `json:"RemainingAmountUnit,omitempty" xml:"RemainingAmountUnit,omitempty"`
 	// The remarks on the resource plan. The remarks must be made in Chinese.
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
 	// The status of the resource plan. Valid values:
 	//
-	// *   Available
-	// *   Expired
+	// 	- Available
+	//
+	// 	- Expired
+	//
+	// example:
+	//
+	// Available
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The total quota of the resource plan.
+	//
+	// example:
+	//
+	// 40.000
 	TotalAmount *string `json:"TotalAmount,omitempty" xml:"TotalAmount,omitempty"`
 	// The unit of the total quota.
+	//
+	// example:
+	//
+	// GB
 	TotalAmountUnit *string `json:"TotalAmountUnit,omitempty" xml:"TotalAmountUnit,omitempty"`
 }
 
@@ -21332,24 +29039,54 @@ func (s *QueryResourcePackageInstancesResponse) SetBody(v *QueryResourcePackageI
 
 type QuerySavingsPlansDeductLogRequest struct {
 	// The end of the time range to query. Specify the time in the format of yyyy-MM-dd HH:mm:ss.
+	//
+	// example:
+	//
+	// 2022-01-05 00:00:00
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The ID of the instance.
+	//
+	// example:
+	//
+	// spn-XXXXXXX
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The type of the instance ID based on which the data is queried. Valid values:
 	//
-	// *   spn: queries data based on the ID of the savings plan instance.
-	// *   product: queries data based on the ID of the cloud service instance.
+	// 	- spn: queries data based on the ID of the savings plan instance.
+	//
+	// 	- product: queries data based on the ID of the cloud service instance.
+	//
+	// example:
+	//
+	// spn
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
 	// The language of the return data. Valid values:
 	//
-	// *   ZH: Chinese
-	// *   EN: English
+	// 	- ZH: Chinese
+	//
+	// 	- EN: English
+	//
+	// example:
+	//
+	// ZH
 	Locale *string `json:"Locale,omitempty" xml:"Locale,omitempty"`
 	// The number of the page to return.
+	//
+	// example:
+	//
+	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
 	// The number of entries to return on each page.
+	//
+	// example:
+	//
+	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The beginning of the time range to query. Specify the time in the format of yyyy-MM-dd HH:mm:ss.
+	//
+	// example:
+	//
+	// 2022-01-01 00:00:00
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
@@ -21398,14 +29135,26 @@ func (s *QuerySavingsPlansDeductLogRequest) SetStartTime(v string) *QuerySavings
 
 type QuerySavingsPlansDeductLogResponseBody struct {
 	// The error code.
+	//
+	// example:
+	//
+	// PARAM_ERROR
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The return data.
 	Data *QuerySavingsPlansDeductLogResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The message returned.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 61293E7A-3406-4447-8620-EC88B0AA66AD
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the operation was successful.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -21446,10 +29195,22 @@ type QuerySavingsPlansDeductLogResponseBodyData struct {
 	// The deduction details.
 	Items []*QuerySavingsPlansDeductLogResponseBodyDataItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
 	// The page number of the returned page.
+	//
+	// example:
+	//
+	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
 	// The number of entries returned per page.
+	//
+	// example:
+	//
+	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The total number of entries.
+	//
+	// example:
+	//
+	// 20
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -21489,30 +29250,70 @@ type QuerySavingsPlansDeductLogResponseBodyDataItems struct {
 	// The service for which the fee is deducted.
 	DeductCommodity *string `json:"DeductCommodity,omitempty" xml:"DeductCommodity,omitempty"`
 	// The deducted amount.
+	//
+	// example:
+	//
+	// 0.52
 	DeductFee *string `json:"DeductFee,omitempty" xml:"DeductFee,omitempty"`
 	// The ID of the instance for which the fee is deducted.
+	//
+	// example:
+	//
+	// i-XXXXXXXXX
 	DeductInstanceId *string `json:"DeductInstanceId,omitempty" xml:"DeductInstanceId,omitempty"`
 	// The deduction rate.
+	//
+	// example:
+	//
+	// 1.0
 	DeductRate            *string `json:"DeductRate,omitempty" xml:"DeductRate,omitempty"`
 	DeductedOfficialPrice *string `json:"DeductedOfficialPrice,omitempty" xml:"DeductedOfficialPrice,omitempty"`
 	// The discount used for the current deduction.
+	//
+	// example:
+	//
+	// 0.069
 	DiscountRate *string `json:"DiscountRate,omitempty" xml:"DiscountRate,omitempty"`
 	// The end of the billing cycle for which the fee is deducted.
+	//
+	// example:
+	//
+	// 2020-12-01 01:00:00
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The ID of the savings plan instance.
+	//
+	// example:
+	//
+	// spn-xxxxxxx
 	InstanceId         *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	InstanceSpec       *string `json:"InstanceSpec,omitempty" xml:"InstanceSpec,omitempty"`
 	InstanceTypeFamily *string `json:"InstanceTypeFamily,omitempty" xml:"InstanceTypeFamily,omitempty"`
-	OwnerId            *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	Region             *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// example:
+	//
+	// 1906589291020438
+	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	Region  *string `json:"Region,omitempty" xml:"Region,omitempty"`
 	// The type of the savings plan. Valid values:
 	//
-	// *   universal: general-purpose
-	// *   ecs: ECS compute
+	// 	- universal: general-purpose
+	//
+	// 	- ecs: ECS compute
+	//
+	// example:
+	//
+	// ecs
 	SavingsType *string `json:"SavingsType,omitempty" xml:"SavingsType,omitempty"`
 	// The beginning of the billing cycle for which the fee is deducted. The time is in the format of yyyy-MM-dd HH:mm:ss.
+	//
+	// example:
+	//
+	// 2020-12-01 00:00:00
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// The ID of the user.
+	//
+	// example:
+	//
+	// 1906589291020438
 	UserId *int64 `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
@@ -21645,24 +29446,72 @@ func (s *QuerySavingsPlansDeductLogResponse) SetBody(v *QuerySavingsPlansDeductL
 
 type QuerySavingsPlansDiscountRequest struct {
 	// The code of the service.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ecs
 	CommodityCode *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
 	// The cycle based on which queries are performed.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1:Year
 	Cycle *string `json:"Cycle,omitempty" xml:"Cycle,omitempty"`
 	// The identifier of the language.
+	//
+	// example:
+	//
+	// ZH
 	Locale *string `json:"Locale,omitempty" xml:"Locale,omitempty"`
 	// The code of the pricing module.
+	//
+	// example:
+	//
+	// instance_type
 	ModuleCode *string `json:"ModuleCode,omitempty" xml:"ModuleCode,omitempty"`
 	// The number of the page to return.
+	//
+	// example:
+	//
+	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
 	// The number of entries to return on each page.
+	//
+	// example:
+	//
+	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The payment mode.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// total
 	PayMode *string `json:"PayMode,omitempty" xml:"PayMode,omitempty"`
 	// The ID of the region.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
 	// The type of the resource.
+	//
+	// example:
+	//
+	// ecs.g6
 	Spec *string `json:"Spec,omitempty" xml:"Spec,omitempty"`
 	// The type of the savings plan.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// universal
 	SpnType *string `json:"SpnType,omitempty" xml:"SpnType,omitempty"`
 }
 
@@ -21726,14 +29575,30 @@ func (s *QuerySavingsPlansDiscountRequest) SetSpnType(v string) *QuerySavingsPla
 
 type QuerySavingsPlansDiscountResponseBody struct {
 	// The error code returned.
+	//
+	// example:
+	//
+	// PARAM_ERROR
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The data returned.
 	Data *QuerySavingsPlansDiscountResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The error message returned.
+	//
+	// example:
+	//
+	// This API is not applicable for caller.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 6000EE23-274B-4E07-A697-FF2E999520A4
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request is successful.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -21772,6 +29637,10 @@ func (s *QuerySavingsPlansDiscountResponseBody) SetSuccess(v bool) *QuerySavings
 
 type QuerySavingsPlansDiscountResponseBodyData struct {
 	// The IP address of the request.
+	//
+	// example:
+	//
+	// 100.104.180.109
 	HostId *string `json:"HostId,omitempty" xml:"HostId,omitempty"`
 	// The information about the discounts on saving plans.
 	Items []*QuerySavingsPlansDiscountResponseBodyDataItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
@@ -21797,27 +29666,65 @@ func (s *QuerySavingsPlansDiscountResponseBodyData) SetItems(v []*QuerySavingsPl
 
 type QuerySavingsPlansDiscountResponseBodyDataItems struct {
 	// The details of the service.
+	//
+	// example:
+	//
+	// Pay-as-you-go Elastic Compute Service (ECS) instance
 	CommodityName *string `json:"CommodityName,omitempty" xml:"CommodityName,omitempty"`
 	// The contracted discount.
+	//
+	// example:
+	//
+	// 0.85
 	ContractDiscountRate *string `json:"ContractDiscountRate,omitempty" xml:"ContractDiscountRate,omitempty"`
 	// The cycle based on which queries were performed.
+	//
+	// example:
+	//
+	// 1:Year
 	Cycle *string `json:"Cycle,omitempty" xml:"Cycle,omitempty"`
 	// The discount provided by the official website.
+	//
+	// example:
+	//
+	// 0.85
 	DiscountRate *string `json:"DiscountRate,omitempty" xml:"DiscountRate,omitempty"`
 	// The name of the pricing module.
+	//
+	// example:
+	//
+	// Instance
 	ModuleName *string `json:"ModuleName,omitempty" xml:"ModuleName,omitempty"`
 	// The payment mode. Valid values:
 	//
-	// *   total: all upfront
-	// *   half: half upfront
-	// *   zero: no upfront
+	// 	- total: all upfront
+	//
+	// 	- half: half upfront
+	//
+	// 	- zero: no upfront
+	//
+	// example:
+	//
+	// total
 	PayMode *string `json:"PayMode,omitempty" xml:"PayMode,omitempty"`
 	// The ID of the region.
+	//
+	// example:
+	//
+	// cn-zhangjiakou-na62-a01
 	Region     *string `json:"Region,omitempty" xml:"Region,omitempty"`
 	RegionCode *string `json:"RegionCode,omitempty" xml:"RegionCode,omitempty"`
 	// The type of the resource.
+	//
+	// example:
+	//
+	// ecs.g6
 	Spec *string `json:"Spec,omitempty" xml:"Spec,omitempty"`
 	// The type of the savings plan.
+	//
+	// example:
+	//
+	// universal
 	SpnType *string `json:"SpnType,omitempty" xml:"SpnType,omitempty"`
 }
 
@@ -21910,24 +29817,54 @@ func (s *QuerySavingsPlansDiscountResponse) SetBody(v *QuerySavingsPlansDiscount
 
 type QuerySavingsPlansInstanceRequest struct {
 	// The end of the time range to query. Specify the time in the format of yyyy-MM-dd HH:mm:ss.
+	//
+	// example:
+	//
+	// 2021-01-01 00:00:00
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The ID of the savings plan instance.
+	//
+	// example:
+	//
+	// spn-xxxxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The language of the return data. Valid values:
 	//
-	// *   ZH: Chinese
-	// *   EN: English
+	// 	- ZH: Chinese
+	//
+	// 	- EN: English
+	//
+	// example:
+	//
+	// ZH
 	Locale *string `json:"Locale,omitempty" xml:"Locale,omitempty"`
 	// The number of the page to return.
+	//
+	// example:
+	//
+	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
 	// The number of entries to return on each page.
+	//
+	// example:
+	//
+	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The beginning of the time range to query. Specify the time in the format of yyyy-MM-dd HH:mm:ss.
+	//
+	// example:
+	//
+	// 2020-01-01 00:00:00
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// The status of the Instance.
 	//
-	// *  NORMAL
-	// * RELEASE
+	// 	- NORMAL
+	//
+	// 	- RELEASE
+	//
+	// example:
+	//
+	// NORMAL
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The tags.
 	Tag []*QuerySavingsPlansInstanceRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
@@ -21983,8 +29920,16 @@ func (s *QuerySavingsPlansInstanceRequest) SetTag(v []*QuerySavingsPlansInstance
 
 type QuerySavingsPlansInstanceRequestTag struct {
 	// The key of the tag to query.
+	//
+	// example:
+	//
+	// ecs
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The value of the tag to query.
+	//
+	// example:
+	//
+	// 001
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -22008,14 +29953,30 @@ func (s *QuerySavingsPlansInstanceRequestTag) SetValue(v string) *QuerySavingsPl
 
 type QuerySavingsPlansInstanceResponseBody struct {
 	// The error code.
+	//
+	// example:
+	//
+	// Success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The return data.
 	Data *QuerySavingsPlansInstanceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The message returned.
+	//
+	// example:
+	//
+	// Successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 61293E7A-3406-4447-8620-EC88B0AA66AD
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the operation was successful.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -22056,10 +30017,22 @@ type QuerySavingsPlansInstanceResponseBodyData struct {
 	// The details about the instances.
 	Items []*QuerySavingsPlansInstanceResponseBodyDataItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
 	// The page number of the returned page.
+	//
+	// example:
+	//
+	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
 	// The number of entries returned per page.
+	//
+	// example:
+	//
+	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The total number of entries.
+	//
+	// example:
+	//
+	// 100
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -22094,57 +30067,147 @@ func (s *QuerySavingsPlansInstanceResponseBodyData) SetTotalCount(v int32) *Quer
 type QuerySavingsPlansInstanceResponseBodyDataItems struct {
 	// The allocation status. Valid values:
 	//
-	// *   unallocated
-	// *   allocated
-	// *   beAllocated
+	// 	- unallocated
+	//
+	// 	- allocated
+	//
+	// 	- beAllocated
+	//
+	// example:
+	//
+	// unallocated
 	AllocationStatus *string `json:"AllocationStatus,omitempty" xml:"AllocationStatus,omitempty"`
-	CommodityCode    *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
+	// example:
+	//
+	// savingplan_common_public_cn
+	CommodityCode *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
 	// The currency. Valid values: CNY and USD.
-	Currency         *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
+	//
+	// example:
+	//
+	// CNY
+	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
+	// example:
+	//
+	// 100.0
 	CurrentPoolValue *string `json:"CurrentPoolValue,omitempty" xml:"CurrentPoolValue,omitempty"`
-	Cycle            *string `json:"Cycle,omitempty" xml:"Cycle,omitempty"`
-	DeductCycleType  *string `json:"DeductCycleType,omitempty" xml:"DeductCycleType,omitempty"`
+	// example:
+	//
+	// 1:Year
+	Cycle *string `json:"Cycle,omitempty" xml:"Cycle,omitempty"`
+	// example:
+	//
+	// HOUR
+	DeductCycleType *string `json:"DeductCycleType,omitempty" xml:"DeductCycleType,omitempty"`
 	// The time when the instance expires. The time is in the format of yyyy-MM-dd HH:mm:ss.
-	EndTime      *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	EndTimestamp *int64  `json:"EndTimestamp,omitempty" xml:"EndTimestamp,omitempty"`
+	//
+	// example:
+	//
+	// 2021-01-01 00:00:00
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// example:
+	//
+	// 1663135741039
+	EndTimestamp *int64 `json:"EndTimestamp,omitempty" xml:"EndTimestamp,omitempty"`
 	// The instance family information. For an instance of the Elastic Compute Service (ECS) compute type, the value indicates the ECS instance family or the ECS instance family package.
+	//
+	// example:
+	//
+	// ecs.g6
 	InstanceFamily *string `json:"InstanceFamily,omitempty" xml:"InstanceFamily,omitempty"`
 	// The ID of the savings plan instance.
-	InstanceId          *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	LastBillTotalUsage  *string `json:"LastBillTotalUsage,omitempty" xml:"LastBillTotalUsage,omitempty"`
+	//
+	// example:
+	//
+	// spn-xxxxxxxx
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// 100.0
+	LastBillTotalUsage *string `json:"LastBillTotalUsage,omitempty" xml:"LastBillTotalUsage,omitempty"`
+	// example:
+	//
+	// 0.8
 	LastBillUtilization *string `json:"LastBillUtilization,omitempty" xml:"LastBillUtilization,omitempty"`
 	// The payment type. Valid values:
 	//
-	// *   total: All Upfront
-	// *   half: Partial Upfront
-	// *   zero: No Upfront
+	// 	- total: All Upfront
+	//
+	// 	- half: Partial Upfront
+	//
+	// 	- zero: No Upfront
+	//
+	// example:
+	//
+	// total
 	PayMode *string `json:"PayMode,omitempty" xml:"PayMode,omitempty"`
 	// The commitment.
+	//
+	// example:
+	//
+	// 1.00
 	PoolValue *string `json:"PoolValue,omitempty" xml:"PoolValue,omitempty"`
 	// The prepaid amount.
+	//
+	// example:
+	//
+	// 8760.00
 	PrepayFee *string `json:"PrepayFee,omitempty" xml:"PrepayFee,omitempty"`
 	// The region.
-	Region        *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	//
+	// example:
+	//
+	// cn-zhangjiakou-na62-a01
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// example:
+	//
+	// 100.0
 	RestPoolValue *string `json:"RestPoolValue,omitempty" xml:"RestPoolValue,omitempty"`
 	// The type of the savings plan. Valid values:
 	//
-	// *   universal: general-purpose
-	// *   ecs: ECS compute
+	// 	- universal: general-purpose
+	//
+	// 	- ecs: ECS compute
+	//
+	// example:
+	//
+	// ECS
 	SavingsType *string `json:"SavingsType,omitempty" xml:"SavingsType,omitempty"`
 	// The time when the instance takes effect. The time is in the format of yyyy-MM-dd HH:mm:ss.
-	StartTime      *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	StartTimestamp *int64  `json:"StartTimestamp,omitempty" xml:"StartTimestamp,omitempty"`
+	//
+	// example:
+	//
+	// 2020-01-01 00:00:00
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// example:
+	//
+	// 1663135741039
+	StartTimestamp *int64 `json:"StartTimestamp,omitempty" xml:"StartTimestamp,omitempty"`
 	// The status of the instance. Valid values:
 	//
-	// *   NORMAL: normal
-	// *   LIMIT: stopped due to overdue payment
-	// *   RELEASE: released
+	// 	- NORMAL: normal
+	//
+	// 	- LIMIT: stopped due to overdue payment
+	//
+	// 	- RELEASE: released
+	//
+	// example:
+	//
+	// NORMAL
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The details about the tags.
 	Tags []*QuerySavingsPlansInstanceResponseBodyDataItemsTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// The total amount that is saved.
+	//
+	// example:
+	//
+	// 20.00
 	TotalSave *string `json:"TotalSave,omitempty" xml:"TotalSave,omitempty"`
 	// The total usage.
+	//
+	// example:
+	//
+	// 1.0
 	Utilization *string `json:"Utilization,omitempty" xml:"Utilization,omitempty"`
 }
 
@@ -22331,18 +30394,53 @@ func (s *QuerySavingsPlansInstanceResponse) SetBody(v *QuerySavingsPlansInstance
 }
 
 type QuerySettleBillRequest struct {
-	BillOwnerId            *int64  `json:"BillOwnerId,omitempty" xml:"BillOwnerId,omitempty"`
-	BillingCycle           *string `json:"BillingCycle,omitempty" xml:"BillingCycle,omitempty"`
-	IsDisplayLocalCurrency *bool   `json:"IsDisplayLocalCurrency,omitempty" xml:"IsDisplayLocalCurrency,omitempty"`
-	IsHideZeroCharge       *bool   `json:"IsHideZeroCharge,omitempty" xml:"IsHideZeroCharge,omitempty"`
-	MaxResults             *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken              *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	OwnerId                *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ProductCode            *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	ProductType            *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
-	RecordID               *string `json:"RecordID,omitempty" xml:"RecordID,omitempty"`
-	SubscriptionType       *string `json:"SubscriptionType,omitempty" xml:"SubscriptionType,omitempty"`
-	Type                   *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// 123
+	BillOwnerId *int64 `json:"BillOwnerId,omitempty" xml:"BillOwnerId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2018-07
+	BillingCycle *string `json:"BillingCycle,omitempty" xml:"BillingCycle,omitempty"`
+	// example:
+	//
+	// false
+	IsDisplayLocalCurrency *bool `json:"IsDisplayLocalCurrency,omitempty" xml:"IsDisplayLocalCurrency,omitempty"`
+	// example:
+	//
+	// true
+	IsHideZeroCharge *bool `json:"IsHideZeroCharge,omitempty" xml:"IsHideZeroCharge,omitempty"`
+	// example:
+	//
+	// 20
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// example:
+	//
+	// CAESEgoQCg4KCmdtdF9jcmVhdGUEARgBIkgKCQBwhGmPcAEAAAo7AzYAAAAxTDgwMDcxMjg3ZDJhNmM3ZDguTDgwMDAwMDAwMDAwMzE1MTIuTDgwMDcyZDMyZTJkYzg3N2U
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	OwnerId   *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// example:
+	//
+	// rds
+	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	// example:
+	//
+	// rds
+	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
+	// example:
+	//
+	// 12233
+	RecordID *string `json:"RecordID,omitempty" xml:"RecordID,omitempty"`
+	// example:
+	//
+	// Subscription
+	SubscriptionType *string `json:"SubscriptionType,omitempty" xml:"SubscriptionType,omitempty"`
+	// example:
+	//
+	// SubscriptionOrder
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s QuerySettleBillRequest) String() string {
@@ -22414,11 +30512,23 @@ func (s *QuerySettleBillRequest) SetType(v string) *QuerySettleBillRequest {
 }
 
 type QuerySettleBillResponseBody struct {
-	Code      *string                          `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *QuerySettleBillResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                          `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                            `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// Success
+	Code *string                          `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *QuerySettleBillResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// Successful!
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// AE3F4057-DFC9-4B81-8858-F620651010C9
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s QuerySettleBillResponseBody) String() string {
@@ -22455,13 +30565,31 @@ func (s *QuerySettleBillResponseBody) SetSuccess(v bool) *QuerySettleBillRespons
 }
 
 type QuerySettleBillResponseBodyData struct {
-	AccountID    *string                               `json:"AccountID,omitempty" xml:"AccountID,omitempty"`
-	AccountName  *string                               `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	// example:
+	//
+	// 185xxxxx489
+	AccountID *string `json:"AccountID,omitempty" xml:"AccountID,omitempty"`
+	// example:
+	//
+	// test@test.aliyunid.com
+	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	// example:
+	//
+	// 2020-02
 	BillingCycle *string                               `json:"BillingCycle,omitempty" xml:"BillingCycle,omitempty"`
 	Items        *QuerySettleBillResponseBodyDataItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
-	MaxResults   *int32                                `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken    *string                               `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	TotalCount   *int32                                `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// example:
+	//
+	// 20
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// example:
+	//
+	// CAESEgoQCg4KCmdtdF9jcmVhdGUQARgBIkgKCQBwhGmPcAEAAAo7AzYAAAAxTDgwMDcxMjg3ZDJhNmM3ZDguTDgwMDAwMDAwMDAwMzE1MTIuTDgwMDcyZDMyZTJkYzg3N2U
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// example:
+	//
+	// 200
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s QuerySettleBillResponseBodyData) String() string {
@@ -22525,41 +30653,140 @@ func (s *QuerySettleBillResponseBodyDataItems) SetItem(v []*QuerySettleBillRespo
 }
 
 type QuerySettleBillResponseBodyDataItemsItem struct {
-	AdjustAmount          *float32 `json:"AdjustAmount,omitempty" xml:"AdjustAmount,omitempty"`
-	AfterTaxAmount        *float32 `json:"AfterTaxAmount,omitempty" xml:"AfterTaxAmount,omitempty"`
-	BillAccountID         *string  `json:"BillAccountID,omitempty" xml:"BillAccountID,omitempty"`
-	BillAccountName       *string  `json:"BillAccountName,omitempty" xml:"BillAccountName,omitempty"`
-	BizType               *string  `json:"BizType,omitempty" xml:"BizType,omitempty"`
-	CashAmount            *float32 `json:"CashAmount,omitempty" xml:"CashAmount,omitempty"`
-	CommodityCode         *string  `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
-	Currency              *string  `json:"Currency,omitempty" xml:"Currency,omitempty"`
+	// example:
+	//
+	// 0
+	AdjustAmount *float32 `json:"AdjustAmount,omitempty" xml:"AdjustAmount,omitempty"`
+	// example:
+	//
+	// 0
+	AfterTaxAmount *float32 `json:"AfterTaxAmount,omitempty" xml:"AfterTaxAmount,omitempty"`
+	// example:
+	//
+	// 185xxxxx489
+	BillAccountID *string `json:"BillAccountID,omitempty" xml:"BillAccountID,omitempty"`
+	// example:
+	//
+	// test@test.aliyunid.com
+	BillAccountName *string `json:"BillAccountName,omitempty" xml:"BillAccountName,omitempty"`
+	// example:
+	//
+	// trusteeship
+	BizType *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
+	// example:
+	//
+	// 0
+	CashAmount *float32 `json:"CashAmount,omitempty" xml:"CashAmount,omitempty"`
+	// example:
+	//
+	// rds
+	CommodityCode *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
+	// example:
+	//
+	// CNY
+	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
+	// example:
+	//
+	// 0
 	DeductedByCashCoupons *float32 `json:"DeductedByCashCoupons,omitempty" xml:"DeductedByCashCoupons,omitempty"`
-	DeductedByCoupons     *float32 `json:"DeductedByCoupons,omitempty" xml:"DeductedByCoupons,omitempty"`
+	// example:
+	//
+	// 0
+	DeductedByCoupons *float32 `json:"DeductedByCoupons,omitempty" xml:"DeductedByCoupons,omitempty"`
+	// example:
+	//
+	// 0
 	DeductedByPrepaidCard *float32 `json:"DeductedByPrepaidCard,omitempty" xml:"DeductedByPrepaidCard,omitempty"`
-	InvoiceDiscount       *float32 `json:"InvoiceDiscount,omitempty" xml:"InvoiceDiscount,omitempty"`
-	Item                  *string  `json:"Item,omitempty" xml:"Item,omitempty"`
-	OutstandingAmount     *float32 `json:"OutstandingAmount,omitempty" xml:"OutstandingAmount,omitempty"`
-	OwnerID               *string  `json:"OwnerID,omitempty" xml:"OwnerID,omitempty"`
-	PaymentAmount         *float32 `json:"PaymentAmount,omitempty" xml:"PaymentAmount,omitempty"`
-	PaymentCurrency       *string  `json:"PaymentCurrency,omitempty" xml:"PaymentCurrency,omitempty"`
-	PaymentTime           *string  `json:"PaymentTime,omitempty" xml:"PaymentTime,omitempty"`
-	PaymentTransactionID  *string  `json:"PaymentTransactionID,omitempty" xml:"PaymentTransactionID,omitempty"`
-	PipCode               *string  `json:"PipCode,omitempty" xml:"PipCode,omitempty"`
-	PretaxAmount          *float32 `json:"PretaxAmount,omitempty" xml:"PretaxAmount,omitempty"`
-	PretaxAmountLocal     *float32 `json:"PretaxAmountLocal,omitempty" xml:"PretaxAmountLocal,omitempty"`
-	PretaxGrossAmount     *float32 `json:"PretaxGrossAmount,omitempty" xml:"PretaxGrossAmount,omitempty"`
-	ProductCode           *string  `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	ProductDetail         *string  `json:"ProductDetail,omitempty" xml:"ProductDetail,omitempty"`
-	ProductName           *string  `json:"ProductName,omitempty" xml:"ProductName,omitempty"`
-	ProductType           *string  `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
-	RecordID              *string  `json:"RecordID,omitempty" xml:"RecordID,omitempty"`
-	RoundDownDiscount     *string  `json:"RoundDownDiscount,omitempty" xml:"RoundDownDiscount,omitempty"`
-	Status                *string  `json:"Status,omitempty" xml:"Status,omitempty"`
-	SubOrderId            *string  `json:"SubOrderId,omitempty" xml:"SubOrderId,omitempty"`
-	SubscriptionType      *string  `json:"SubscriptionType,omitempty" xml:"SubscriptionType,omitempty"`
-	Tax                   *float32 `json:"Tax,omitempty" xml:"Tax,omitempty"`
-	UsageEndTime          *string  `json:"UsageEndTime,omitempty" xml:"UsageEndTime,omitempty"`
-	UsageStartTime        *string  `json:"UsageStartTime,omitempty" xml:"UsageStartTime,omitempty"`
+	// example:
+	//
+	// 0
+	InvoiceDiscount *float32 `json:"InvoiceDiscount,omitempty" xml:"InvoiceDiscount,omitempty"`
+	// example:
+	//
+	// SubscriptionOrder
+	Item *string `json:"Item,omitempty" xml:"Item,omitempty"`
+	// example:
+	//
+	// 0
+	OutstandingAmount *float32 `json:"OutstandingAmount,omitempty" xml:"OutstandingAmount,omitempty"`
+	// example:
+	//
+	// 3532535235
+	OwnerID *string `json:"OwnerID,omitempty" xml:"OwnerID,omitempty"`
+	// example:
+	//
+	// 0
+	PaymentAmount *float32 `json:"PaymentAmount,omitempty" xml:"PaymentAmount,omitempty"`
+	// example:
+	//
+	// USD
+	PaymentCurrency *string `json:"PaymentCurrency,omitempty" xml:"PaymentCurrency,omitempty"`
+	// example:
+	//
+	// 2020-03-11 08:00:00
+	PaymentTime *string `json:"PaymentTime,omitempty" xml:"PaymentTime,omitempty"`
+	// example:
+	//
+	// 2O3AADJFEAF2PDKSFAMFCB11918
+	PaymentTransactionID *string `json:"PaymentTransactionID,omitempty" xml:"PaymentTransactionID,omitempty"`
+	// example:
+	//
+	// rds
+	PipCode *string `json:"PipCode,omitempty" xml:"PipCode,omitempty"`
+	// example:
+	//
+	// 100
+	PretaxAmount *float32 `json:"PretaxAmount,omitempty" xml:"PretaxAmount,omitempty"`
+	// example:
+	//
+	// 0
+	PretaxAmountLocal *float32 `json:"PretaxAmountLocal,omitempty" xml:"PretaxAmountLocal,omitempty"`
+	// example:
+	//
+	// 0
+	PretaxGrossAmount *float32 `json:"PretaxGrossAmount,omitempty" xml:"PretaxGrossAmount,omitempty"`
+	// example:
+	//
+	// rds
+	ProductCode   *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	ProductDetail *string `json:"ProductDetail,omitempty" xml:"ProductDetail,omitempty"`
+	ProductName   *string `json:"ProductName,omitempty" xml:"ProductName,omitempty"`
+	// example:
+	//
+	// rds
+	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
+	// example:
+	//
+	// 2020xxxx5912
+	RecordID *string `json:"RecordID,omitempty" xml:"RecordID,omitempty"`
+	// example:
+	//
+	// 0
+	RoundDownDiscount *string `json:"RoundDownDiscount,omitempty" xml:"RoundDownDiscount,omitempty"`
+	// example:
+	//
+	// PayFinish
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// 325345254353
+	SubOrderId *string `json:"SubOrderId,omitempty" xml:"SubOrderId,omitempty"`
+	// example:
+	//
+	// PayAsYouGo
+	SubscriptionType *string `json:"SubscriptionType,omitempty" xml:"SubscriptionType,omitempty"`
+	// example:
+	//
+	// 0
+	Tax *float32 `json:"Tax,omitempty" xml:"Tax,omitempty"`
+	// example:
+	//
+	// 2020-03-11 08:00:00
+	UsageEndTime *string `json:"UsageEndTime,omitempty" xml:"UsageEndTime,omitempty"`
+	// example:
+	//
+	// 2020-03-11 07:00:00
+	UsageStartTime *string `json:"UsageStartTime,omitempty" xml:"UsageStartTime,omitempty"`
 }
 
 func (s QuerySettleBillResponseBodyDataItemsItem) String() string {
@@ -22776,13 +31003,35 @@ func (s *QuerySettleBillResponse) SetBody(v *QuerySettleBillResponseBody) *Query
 
 type QuerySkuPriceListRequest struct {
 	// The code of the service.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ecs
 	CommodityCode *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
 	Lang          *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	// The token that is used to retrieve the next page. You do not need to set this parameter if you query coverage details for the first time. The response returns a token that you can use to query coverage details of the next page. If a null value is returned for the NextPageToken parameter, no more coverage details can be queried.
+	//
+	// example:
+	//
+	// 080112060a0422020800180022490a470342000000315333303332363436363336333433393636333136333338333733373333333133373336363336323634363336363337333836333636333636313336363433363332
 	NextPageToken *string `json:"NextPageToken,omitempty" xml:"NextPageToken,omitempty"`
 	// The number of entries to be returned on each page. Maximum value: 50.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The code of the pricing object.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// instance_type
 	PriceEntityCode *string `json:"PriceEntityCode,omitempty" xml:"PriceEntityCode,omitempty"`
 	// The conditions of the pricing factors.
 	PriceFactorConditionMap map[string][]*string `json:"PriceFactorConditionMap,omitempty" xml:"PriceFactorConditionMap,omitempty"`
@@ -22828,13 +31077,35 @@ func (s *QuerySkuPriceListRequest) SetPriceFactorConditionMap(v map[string][]*st
 
 type QuerySkuPriceListShrinkRequest struct {
 	// The code of the service.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ecs
 	CommodityCode *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
 	Lang          *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	// The token that is used to retrieve the next page. You do not need to set this parameter if you query coverage details for the first time. The response returns a token that you can use to query coverage details of the next page. If a null value is returned for the NextPageToken parameter, no more coverage details can be queried.
+	//
+	// example:
+	//
+	// 080112060a0422020800180022490a470342000000315333303332363436363336333433393636333136333338333733373333333133373336363336323634363336363337333836333636333636313336363433363332
 	NextPageToken *string `json:"NextPageToken,omitempty" xml:"NextPageToken,omitempty"`
 	// The number of entries to be returned on each page. Maximum value: 50.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The code of the pricing object.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// instance_type
 	PriceEntityCode *string `json:"PriceEntityCode,omitempty" xml:"PriceEntityCode,omitempty"`
 	// The conditions of the pricing factors.
 	PriceFactorConditionMapShrink *string `json:"PriceFactorConditionMap,omitempty" xml:"PriceFactorConditionMap,omitempty"`
@@ -22880,14 +31151,30 @@ func (s *QuerySkuPriceListShrinkRequest) SetPriceFactorConditionMapShrink(v stri
 
 type QuerySkuPriceListResponseBody struct {
 	// The HTTP status code.
+	//
+	// example:
+	//
+	// Success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The data that is returned.
 	Data *QuerySkuPriceListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The message that is returned.
+	//
+	// example:
+	//
+	// Successful!
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// F5B803CF-94D8-43AF-ADB3-D819AAD30E27
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request is successful.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -22944,10 +31231,18 @@ func (s *QuerySkuPriceListResponseBodyData) SetSkuPricePage(v *QuerySkuPriceList
 
 type QuerySkuPriceListResponseBodyDataSkuPricePage struct {
 	// The token that is used to query the next page.
+	//
+	// example:
+	//
+	// 080112060a0422020800180022490a470342000000315333303332363436363336333433393636333136333338333733373333333133373336363336323634363336363337333836333636333636313336363433363332
 	NextPageToken *string `json:"NextPageToken,omitempty" xml:"NextPageToken,omitempty"`
 	// The SKUs.
 	SkuPriceList []*QuerySkuPriceListResponseBodyDataSkuPricePageSkuPriceList `json:"SkuPriceList,omitempty" xml:"SkuPriceList,omitempty" type:"Repeated"`
 	// The total number of SKUs.
+	//
+	// example:
+	//
+	// 18732
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -22978,6 +31273,10 @@ type QuerySkuPriceListResponseBodyDataSkuPricePageSkuPriceList struct {
 	// The prices of the SKUs.
 	CskuPriceList []*QuerySkuPriceListResponseBodyDataSkuPricePageSkuPriceListCskuPriceList `json:"CskuPriceList,omitempty" xml:"CskuPriceList,omitempty" type:"Repeated"`
 	// The code of the SKU.
+	//
+	// example:
+	//
+	// 017c15a31507bc6de22aa93777461adc
 	SkuCode *string `json:"SkuCode,omitempty" xml:"SkuCode,omitempty"`
 	// The values of the pricing factors.
 	SkuFactorMap map[string]*string `json:"SkuFactorMap,omitempty" xml:"SkuFactorMap,omitempty"`
@@ -23008,20 +31307,48 @@ func (s *QuerySkuPriceListResponseBodyDataSkuPricePageSkuPriceList) SetSkuFactor
 
 type QuerySkuPriceListResponseBodyDataSkuPricePageSkuPriceListCskuPriceList struct {
 	// The unique code of the SKU price.
+	//
+	// example:
+	//
+	// ac74dd7b52ae6389ddef099283fb8275
 	CskuCode *string `json:"CskuCode,omitempty" xml:"CskuCode,omitempty"`
 	// The currency.
+	//
+	// example:
+	//
+	// CNY
 	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
 	// The price.
+	//
+	// example:
+	//
+	// 100
 	Price *string `json:"Price,omitempty" xml:"Price,omitempty"`
 	// The pricing mode.
+	//
+	// example:
+	//
+	// STEP_ARRIVE
 	PriceMode *string `json:"PriceMode,omitempty" xml:"PriceMode,omitempty"`
 	// The pricing type.
+	//
+	// example:
+	//
+	// hourPrice
 	PriceType *string `json:"PriceType,omitempty" xml:"PriceType,omitempty"`
 	// The unit of the price.
+	//
+	// example:
+	//
+	// USD (per unit)
 	PriceUnit *string `json:"PriceUnit,omitempty" xml:"PriceUnit,omitempty"`
 	// If the PriceMode parameter is set to STEP_ACCUMULATION or STEP_ARRIVE, the value of this field exists and specifies the range. If the PriceMode parameter is set to NORMAL_PRICE, the value of this field is null.
 	RangeList []*QuerySkuPriceListResponseBodyDataSkuPricePageSkuPriceListCskuPriceListRangeList `json:"RangeList,omitempty" xml:"RangeList,omitempty" type:"Repeated"`
 	// The usage unit.
+	//
+	// example:
+	//
+	// Count
 	UsageUnit *string `json:"UsageUnit,omitempty" xml:"UsageUnit,omitempty"`
 }
 
@@ -23075,12 +31402,28 @@ func (s *QuerySkuPriceListResponseBodyDataSkuPricePageSkuPriceListCskuPriceList)
 
 type QuerySkuPriceListResponseBodyDataSkuPricePageSkuPriceListCskuPriceListRangeList struct {
 	// The code of the pricing factor.
+	//
+	// example:
+	//
+	// 212fbd27866307fc79ecf06934a88b2c
 	FactorCode *string `json:"FactorCode,omitempty" xml:"FactorCode,omitempty"`
 	// The maximum value.
+	//
+	// example:
+	//
+	// 10
 	Max *string `json:"Max,omitempty" xml:"Max,omitempty"`
 	// The minimum value.
+	//
+	// example:
+	//
+	// 1
 	Min *string `json:"Min,omitempty" xml:"Min,omitempty"`
 	// The closure type of the interval.
+	//
+	// example:
+	//
+	// LORC
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
@@ -23143,19 +31486,49 @@ func (s *QuerySkuPriceListResponse) SetBody(v *QuerySkuPriceListResponseBody) *Q
 
 type QuerySplitItemBillRequest struct {
 	// The ID of the member. If you specify a value for this parameter, you can query the split bills of the specified member. If you leave this parameter empty, the split bills of the current account are queried by default.
+	//
+	// example:
+	//
+	// 123
 	BillOwnerId *int64 `json:"BillOwnerId,omitempty" xml:"BillOwnerId,omitempty"`
 	// The billing cycle, in the YYYY-MM format.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2020-03
 	BillingCycle *string `json:"BillingCycle,omitempty" xml:"BillingCycle,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The number of the page to return. Default value: 1.
+	//
+	// example:
+	//
+	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
 	// The number of entries to return on each page. Default value: 20. Maximum value: 300.
+	//
+	// example:
+	//
+	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The code of the service.
+	//
+	// example:
+	//
+	// rds
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
 	// The type of the service.
+	//
+	// example:
+	//
+	// rds
 	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
 	// The billing method. Valid values: Subscription: subscription PayAsYouGo: pay-as-you-go This parameter must be used together with the ProductCode parameter.
+	//
+	// example:
+	//
+	// PayAsYouGo
 	SubscriptionType *string `json:"SubscriptionType,omitempty" xml:"SubscriptionType,omitempty"`
 }
 
@@ -23209,14 +31582,30 @@ func (s *QuerySplitItemBillRequest) SetSubscriptionType(v string) *QuerySplitIte
 
 type QuerySplitItemBillResponseBody struct {
 	// The status code returned.
+	//
+	// example:
+	//
+	// Success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The data returned.
 	Data *QuerySplitItemBillResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The message returned.
+	//
+	// example:
+	//
+	// Successful!
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 79EE7556-0CFD-44EB-9CD6-B3B526E3A85F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request is successful.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -23255,18 +31644,42 @@ func (s *QuerySplitItemBillResponseBody) SetSuccess(v bool) *QuerySplitItemBillR
 
 type QuerySplitItemBillResponseBodyData struct {
 	// The ID of the account.
+	//
+	// example:
+	//
+	// 185xxxx3489
 	AccountID *string `json:"AccountID,omitempty" xml:"AccountID,omitempty"`
 	// The name of the account.
+	//
+	// example:
+	//
+	// test@test.aliyunid.com
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
 	// The billing cycle, in the YYYY-MM format.
+	//
+	// example:
+	//
+	// 2020-03
 	BillingCycle *string `json:"BillingCycle,omitempty" xml:"BillingCycle,omitempty"`
 	// The details of the bills.
 	Items *QuerySplitItemBillResponseBodyDataItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
 	// The page number of the returned page. Default value: 1.
+	//
+	// example:
+	//
+	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
 	// The number of entries returned on each page. Default value: 20. Maximum value: 300.
+	//
+	// example:
+	//
+	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The total number of returned entries.
+	//
+	// example:
+	//
+	// 2
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -23332,100 +31745,292 @@ func (s *QuerySplitItemBillResponseBodyDataItems) SetItem(v []*QuerySplitItemBil
 
 type QuerySplitItemBillResponseBodyDataItemsItem struct {
 	// The amount deducted by using credit refunds.
+	//
+	// example:
+	//
+	// 0
 	AdjustAmount *float32 `json:"AdjustAmount,omitempty" xml:"AdjustAmount,omitempty"`
 	// The billing date, in the YYYY-MM-DD format.
+	//
+	// example:
+	//
+	// 2020-01-20
 	BillingDate *string `json:"BillingDate,omitempty" xml:"BillingDate,omitempty"`
 	// The billable item.
+	//
+	// example:
+	//
+	// Other
 	BillingItem *string `json:"BillingItem,omitempty" xml:"BillingItem,omitempty"`
 	// The billing type.
+	//
+	// example:
+	//
+	// Other
 	BillingType *string `json:"BillingType,omitempty" xml:"BillingType,omitempty"`
 	// The amount paid in cash. The amount that was deducted by using credit refunds is not included.
+	//
+	// example:
+	//
+	// 0
 	CashAmount *float32 `json:"CashAmount,omitempty" xml:"CashAmount,omitempty"`
 	// The code of the commodity. The commodity code is the same as that displayed in User Center.
+	//
+	// example:
+	//
+	// rds
 	CommodityCode *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
 	// The cost center.
+	//
+	// example:
+	//
+	// Not allocated
 	CostUnit *string `json:"CostUnit,omitempty" xml:"CostUnit,omitempty"`
 	// The type of the currency. Valid values: CNY, USD, and JPY.
+	//
+	// example:
+	//
+	// CNY
 	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
 	// The amount deducted by using vouchers.
+	//
+	// example:
+	//
+	// 0
 	DeductedByCashCoupons *float32 `json:"DeductedByCashCoupons,omitempty" xml:"DeductedByCashCoupons,omitempty"`
 	// The amount deducted by using coupons.
+	//
+	// example:
+	//
+	// 0
 	DeductedByCoupons *float32 `json:"DeductedByCoupons,omitempty" xml:"DeductedByCoupons,omitempty"`
 	// The amount deducted by using prepaid cards.
+	//
+	// example:
+	//
+	// 0
 	DeductedByPrepaidCard *float32 `json:"DeductedByPrepaidCard,omitempty" xml:"DeductedByPrepaidCard,omitempty"`
 	// The amount deducted by using resource plans.
+	//
+	// example:
+	//
+	// NULL
 	DeductedByResourcePackage *string `json:"DeductedByResourcePackage,omitempty" xml:"DeductedByResourcePackage,omitempty"`
 	// The configurations of the instance.
+	//
+	// example:
+	//
+	// CPU:12
 	InstanceConfig *string `json:"InstanceConfig,omitempty" xml:"InstanceConfig,omitempty"`
 	// The ID of the instance.
+	//
+	// example:
+	//
+	// i-kjhdskjgshfdlkjfdh
 	InstanceID *string `json:"InstanceID,omitempty" xml:"InstanceID,omitempty"`
 	// The instance type of the instance.
+	//
+	// example:
+	//
+	// ecs.sn1ne.3xlarge
 	InstanceSpec *string `json:"InstanceSpec,omitempty" xml:"InstanceSpec,omitempty"`
 	// The public IP address.
+	//
+	// example:
+	//
+	// 34.xx.x.x
 	InternetIP *string `json:"InternetIP,omitempty" xml:"InternetIP,omitempty"`
 	// The private IP address.
+	//
+	// example:
+	//
+	// 192.xx.xx.xx
 	IntranetIP *string `json:"IntranetIP,omitempty" xml:"IntranetIP,omitempty"`
 	// The discount amount.
+	//
+	// example:
+	//
+	// 0
 	InvoiceDiscount *float32 `json:"InvoiceDiscount,omitempty" xml:"InvoiceDiscount,omitempty"`
 	// The type of the bill. Valid values: SubscriptionOrder: subscription order PayAsYouGoBill: pay-as-you-go bill Refund: refund Adjustment: reconciliation
+	//
+	// example:
+	//
+	// PayAsYouGoBill
 	Item *string `json:"Item,omitempty" xml:"Item,omitempty"`
 	// The unit price. This parameter is returned only if the isBillingItem parameter is set to true.
+	//
+	// example:
+	//
+	// 100
 	ListPrice *string `json:"ListPrice,omitempty" xml:"ListPrice,omitempty"`
 	// The unit of the unit price. This parameter is returned only if the isBillingItem parameter is set to true.
+	//
+	// example:
+	//
+	// CNY
 	ListPriceUnit *string `json:"ListPriceUnit,omitempty" xml:"ListPriceUnit,omitempty"`
 	// The name of the instance.
+	//
+	// example:
+	//
+	// test
 	NickName *string `json:"NickName,omitempty" xml:"NickName,omitempty"`
 	// The unsettled amount of the bill.
+	//
+	// example:
+	//
+	// 0
 	OutstandingAmount *float32 `json:"OutstandingAmount,omitempty" xml:"OutstandingAmount,omitempty"`
 	// The ID of the member. This parameter is returned in a multi-account payment scenario.
+	//
+	// example:
+	//
+	// 169***013
 	OwnerID *string `json:"OwnerID,omitempty" xml:"OwnerID,omitempty"`
 	// The amount paid in cash.
+	//
+	// example:
+	//
+	// 0
 	PaymentAmount *float32 `json:"PaymentAmount,omitempty" xml:"PaymentAmount,omitempty"`
 	// The code of the service. The service code is the same as that displayed in User Center.
+	//
+	// example:
+	//
+	// rds
 	PipCode *string `json:"PipCode,omitempty" xml:"PipCode,omitempty"`
 	// The pretax amount.
+	//
+	// example:
+	//
+	// 0
 	PretaxAmount *float32 `json:"PretaxAmount,omitempty" xml:"PretaxAmount,omitempty"`
 	// The pretax gross amount.
+	//
+	// example:
+	//
+	// 0
 	PretaxGrossAmount *float32 `json:"PretaxGrossAmount,omitempty" xml:"PretaxGrossAmount,omitempty"`
 	// The code of the service.
+	//
+	// example:
+	//
+	// rds
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
 	// The details of the service.
+	//
+	// example:
+	//
+	// ApsaraDB RDS
 	ProductDetail *string `json:"ProductDetail,omitempty" xml:"ProductDetail,omitempty"`
 	// The name of the service.
+	//
+	// example:
+	//
+	// ApsaraDB RDS
 	ProductName *string `json:"ProductName,omitempty" xml:"ProductName,omitempty"`
 	// The type of the service.
+	//
+	// example:
+	//
+	// rds
 	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
 	// The ID of the region.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
 	// The resource group.
+	//
+	// example:
+	//
+	// Default resource group
 	ResourceGroup *string `json:"ResourceGroup,omitempty" xml:"ResourceGroup,omitempty"`
 	// The validity period.
+	//
+	// example:
+	//
+	// 10
 	ServicePeriod *string `json:"ServicePeriod,omitempty" xml:"ServicePeriod,omitempty"`
 	// The unit of the validity period.
+	//
+	// example:
+	//
+	// Seconds
 	ServicePeriodUnit *string `json:"ServicePeriodUnit,omitempty" xml:"ServicePeriodUnit,omitempty"`
 	// The ID of the account to which the split bill belongs.
+	//
+	// example:
+	//
+	// 122
 	SplitAccountID *string `json:"SplitAccountID,omitempty" xml:"SplitAccountID,omitempty"`
 	// The name of the account to which the split item belongs.
+	//
+	// example:
+	//
+	// 12@test.com
 	SplitAccountName *string `json:"SplitAccountName,omitempty" xml:"SplitAccountName,omitempty"`
 	// The month in which the split item is used.
+	//
+	// example:
+	//
+	// 2020-06
 	SplitBillingCycle *string `json:"SplitBillingCycle,omitempty" xml:"SplitBillingCycle,omitempty"`
 	// The commodity code of the split item.
+	//
+	// example:
+	//
+	// rds
 	SplitCommodityCode *string `json:"SplitCommodityCode,omitempty" xml:"SplitCommodityCode,omitempty"`
 	// The ID of the split item.
+	//
+	// example:
+	//
+	// i-28bycvyb4
 	SplitItemID *string `json:"SplitItemID,omitempty" xml:"SplitItemID,omitempty"`
 	// The name of the split item.
+	//
+	// example:
+	//
+	// iZ28bycvyb4Z
 	SplitItemName *string `json:"SplitItemName,omitempty" xml:"SplitItemName,omitempty"`
 	// The name of the service to which the split item belongs.
+	//
+	// example:
+	//
+	// rds
 	SplitProductDetail *string `json:"SplitProductDetail,omitempty" xml:"SplitProductDetail,omitempty"`
 	// The billing method. Valid values: Subscription: subscription PayAsYouGo: pay-as-you-go This parameter is returned together with the ProductCode parameter.
+	//
+	// example:
+	//
+	// PayAsYouGo
 	SubscriptionType *string `json:"SubscriptionType,omitempty" xml:"SubscriptionType,omitempty"`
 	// The tag.
+	//
+	// example:
+	//
+	// tag
 	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
 	// The usage of the split item. This parameter is returned only if the isBillingItem parameter is set to true.
+	//
+	// example:
+	//
+	// 100
 	Usage *string `json:"Usage,omitempty" xml:"Usage,omitempty"`
 	// The unit of usage. This parameter is returned only if the isBillingItem parameter is set to true.
+	//
+	// example:
+	//
+	// GB
 	UsageUnit *string `json:"UsageUnit,omitempty" xml:"UsageUnit,omitempty"`
 	// The ID of the zone.
+	//
+	// example:
+	//
+	// cn-hangzhou-h
 	Zone *string `json:"Zone,omitempty" xml:"Zone,omitempty"`
 }
 
@@ -23709,25 +32314,60 @@ func (s *QuerySplitItemBillResponse) SetBody(v *QuerySplitItemBillResponseBody) 
 type QueryUserOmsDataRequest struct {
 	// The time type of the usage data. Set the parameter based on the description in the documentation of the specified service. Valid values:
 	//
-	// *   Raw
-	// *   Hour
-	// *   Day
-	// *   Month
+	// 	- Raw
+	//
+	// 	- Hour
+	//
+	// 	- Day
+	//
+	// 	- Month
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Hour
 	DataType *string `json:"DataType,omitempty" xml:"DataType,omitempty"`
 	// The end of the time range to query.
 	//
 	// Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2020-02-21T12:00:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The name of the record from which the usage data starts to return. The usage data records whose names are alphabetically after the value of the Marker parameter are returned. By default, the usage data starts to return from the earliest record.
+	//
+	// example:
+	//
+	// NextToken
 	Marker  *string `json:"Marker,omitempty" xml:"Marker,omitempty"`
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The number of entries to return on each page. Valid values: 1 to 200. Default value: 100.
+	//
+	// example:
+	//
+	// 1
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The beginning of the time range to query.
 	//
 	// Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2020-02-20T12:00:00Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// The service whose usage data you want to query and the details of the usage data. The parameter value is usually set to the code of a service. Various usage models are provided for different services.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// rds
 	Table *string `json:"Table,omitempty" xml:"Table,omitempty"`
 }
 
@@ -23776,14 +32416,30 @@ func (s *QueryUserOmsDataRequest) SetTable(v string) *QueryUserOmsDataRequest {
 
 type QueryUserOmsDataResponseBody struct {
 	// The status code returned.
+	//
+	// example:
+	//
+	// Success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The data returned.
 	Data *QueryUserOmsDataResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The message returned.
+	//
+	// example:
+	//
+	// Successful！
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 6000EE23-274B-4E07-A697-FF2E999520A4
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request is successful.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -23822,8 +32478,16 @@ func (s *QueryUserOmsDataResponseBody) SetSuccess(v bool) *QueryUserOmsDataRespo
 
 type QueryUserOmsDataResponseBodyData struct {
 	// The ID of the host.
+	//
+	// example:
+	//
+	// cn
 	HostId *string `json:"HostId,omitempty" xml:"HostId,omitempty"`
 	// Indicates that the returned usage data starts from the next page. If no value is returned for this parameter or this parameter is not returned, no data can be queried.
+	//
+	// example:
+	//
+	// NextToken
 	Marker  *string                  `json:"Marker,omitempty" xml:"Marker,omitempty"`
 	OmsData []map[string]interface{} `json:"OmsData,omitempty" xml:"OmsData,omitempty" type:"Repeated"`
 }
@@ -23882,14 +32546,34 @@ func (s *QueryUserOmsDataResponse) SetBody(v *QueryUserOmsDataResponseBody) *Que
 
 type RefundInstanceRequest struct {
 	// This parameter is required for scenarios that need idempotence. The UUID that is used to ensure the idempotence of the request.
+	//
+	// example:
+	//
+	// 793F021C-B589-1225-82A9-99232AEBE494
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// This parameter is required for unsubscription scenarios. Valid values: 1 and 0. A value of 1 specifies that the instance is immediately released. A value of 0 specifies that the instance is shut down based on the shutdown policy. This parameter is supported only for specified services. Default value: 1.
+	//
+	// example:
+	//
+	// 1
 	ImmediatelyRelease *string `json:"ImmediatelyRelease,omitempty" xml:"ImmediatelyRelease,omitempty"`
 	// The ID of the instance. This parameter is required for unsubscription scenarios. Do not specify a custom name for this parameter.
+	//
+	// example:
+	//
+	// i-bp1etb69sqxgl4*******
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The code of the service. This parameter is required for unsubscription scenarios.
+	//
+	// example:
+	//
+	// ecs
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
 	// The type of the service. This parameter is required for unsubscription scenarios. Unless otherwise specified, set this parameter to an empty string.
+	//
+	// example:
+	//
+	// ”“
 	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
 }
 
@@ -23928,14 +32612,30 @@ func (s *RefundInstanceRequest) SetProductType(v string) *RefundInstanceRequest 
 
 type RefundInstanceResponseBody struct {
 	// The HTTP status code.
+	//
+	// example:
+	//
+	// ResourceNotExists
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The returned data.
 	Data *RefundInstanceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The description of the execution result.
+	//
+	// example:
+	//
+	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// UUID
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful. Valid values: true and false.
+	//
+	// example:
+	//
+	// false
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -23974,8 +32674,16 @@ func (s *RefundInstanceResponseBody) SetSuccess(v bool) *RefundInstanceResponseB
 
 type RefundInstanceResponseBodyData struct {
 	// The site of the execution host.
+	//
+	// example:
+	//
+	// cn
 	HostId *string `json:"HostId,omitempty" xml:"HostId,omitempty"`
 	// The ID of the refund order that is returned only if the instance is unsubscribed from.
+	//
+	// example:
+	//
+	// 2100000000***
 	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
 }
 
@@ -24028,13 +32736,34 @@ func (s *RefundInstanceResponse) SetBody(v *RefundInstanceResponseBody) *RefundI
 
 type ReleaseInstanceRequest struct {
 	// The ID of the instance. Separate multiple IDs with commas (,). A maximum of 100 IDs can be specified.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// rm-xxxxxxxxxxxx
 	InstanceIds *string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
-	OwnerId     *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// This parameter is required.
+	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The code of the service.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ecs
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
 	// The type of the service.
+	//
+	// example:
+	//
+	// ecs
 	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
 	// The region in which the instance resides.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
 	// The method that is used to renew the instance. Valid values:
 	//
@@ -24043,12 +32772,22 @@ type ReleaseInstanceRequest struct {
 	// ManualRenewal: manually renews the instance.
 	//
 	// NotRenewal: does not renew the instance.
+	//
+	// example:
+	//
+	// AutoRenewal
 	RenewStatus *string `json:"RenewStatus,omitempty" xml:"RenewStatus,omitempty"`
 	// The billing method. Valid values:
 	//
 	// Subscription: the subscription billing method.
 	//
 	// PayAsYouGo: the pay-as-you-go billing method.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// PayAsYouGo
 	SubscriptionType *string `json:"SubscriptionType,omitempty" xml:"SubscriptionType,omitempty"`
 }
 
@@ -24097,16 +32836,32 @@ func (s *ReleaseInstanceRequest) SetSubscriptionType(v string) *ReleaseInstanceR
 
 type ReleaseInstanceResponseBody struct {
 	// The HTTP status code.
+	//
+	// example:
+	//
+	// Invalid_Product_Code
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// data
 	Data *ReleaseInstanceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The description of the execution result.
+	//
+	// example:
+	//
+	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The ID of the request, which can be used for troubleshooting.
+	//
+	// example:
+	//
+	// UUID
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// A value of true indicates that the execution is complete.
 	//
 	// A value of false indicates that an error occurs during the execution.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -24145,8 +32900,16 @@ func (s *ReleaseInstanceResponseBody) SetSuccess(v bool) *ReleaseInstanceRespons
 
 type ReleaseInstanceResponseBodyData struct {
 	// The site of the execution host.
+	//
+	// example:
+	//
+	// cn
 	HostId *string `json:"HostId,omitempty" xml:"HostId,omitempty"`
 	// Indicates whether the instance is released.
+	//
+	// example:
+	//
+	// true
 	ReleaseResult *bool `json:"ReleaseResult,omitempty" xml:"ReleaseResult,omitempty"`
 }
 
@@ -24199,14 +32962,36 @@ func (s *ReleaseInstanceResponse) SetBody(v *ReleaseInstanceResponseBody) *Relea
 
 type RelieveAccountRelationRequest struct {
 	// The ID of the Alibaba Cloud account that is used as the member. You must set the RelationId parameter or all of the ParentUserId, ChildUserId, and RelationType parameters.
+	//
+	// example:
+	//
+	// 1512996702208737
 	ChildUserId *int64 `json:"ChildUserId,omitempty" xml:"ChildUserId,omitempty"`
 	// The ID of the Alibaba Cloud account that is used as the management account. You must set the RelationId parameter or all of the ParentUserId, ChildUserId, and RelationType parameters.
+	//
+	// example:
+	//
+	// 1738376485192612
 	ParentUserId *int64 `json:"ParentUserId,omitempty" xml:"ParentUserId,omitempty"`
 	// The ID of the financial relationship between the management account and the member. You must set the RelationId parameter or all of the ParentUserId, ChildUserId, and RelationType parameters.
+	//
+	// example:
+	//
+	// RelationId
 	RelationId *int64 `json:"RelationId,omitempty" xml:"RelationId,omitempty"`
 	// The type of the financial relationship. Set the value to enterprise_group.
+	//
+	// example:
+	//
+	// enterprise_group
 	RelationType *string `json:"RelationType,omitempty" xml:"RelationType,omitempty"`
 	// The unique ID of the request. The ID is used to mark a request and troubleshoot a problem.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// request_id
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -24245,14 +33030,30 @@ func (s *RelieveAccountRelationRequest) SetRequestId(v string) *RelieveAccountRe
 
 type RelieveAccountRelationResponseBody struct {
 	// The status code returned.
+	//
+	// example:
+	//
+	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The data returned.
 	Data *RelieveAccountRelationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The message returned.
+	//
+	// example:
+	//
+	// Message returned
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The unique ID of the request.
+	//
+	// example:
+	//
+	// request_id
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request is successful.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -24291,6 +33092,10 @@ func (s *RelieveAccountRelationResponseBody) SetSuccess(v bool) *RelieveAccountR
 
 type RelieveAccountRelationResponseBodyData struct {
 	// hostid
+	//
+	// example:
+	//
+	// HostId
 	HostId *string `json:"HostId,omitempty" xml:"HostId,omitempty"`
 }
 
@@ -24337,13 +33142,34 @@ func (s *RelieveAccountRelationResponse) SetBody(v *RelieveAccountRelationRespon
 }
 
 type RenewChangeInstanceRequest struct {
-	ClientToken *string                                `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	InstanceId  *string                                `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	OwnerId     *int64                                 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	Parameter   []*RenewChangeInstanceRequestParameter `json:"Parameter,omitempty" xml:"Parameter,omitempty" type:"Repeated"`
-	ProductCode *string                                `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	ProductType *string                                `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
-	RenewPeriod *int64                                 `json:"RenewPeriod,omitempty" xml:"RenewPeriod,omitempty"`
+	// example:
+	//
+	// JASIOFKVNVIXXXXXX
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// rm-skjdhaskjdh
+	InstanceId *string                                `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	OwnerId    *int64                                 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	Parameter  []*RenewChangeInstanceRequestParameter `json:"Parameter,omitempty" xml:"Parameter,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// rds
+	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	// example:
+	//
+	// rds
+	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2
+	RenewPeriod *int64 `json:"RenewPeriod,omitempty" xml:"RenewPeriod,omitempty"`
 }
 
 func (s RenewChangeInstanceRequest) String() string {
@@ -24390,7 +33216,17 @@ func (s *RenewChangeInstanceRequest) SetRenewPeriod(v int64) *RenewChangeInstanc
 }
 
 type RenewChangeInstanceRequestParameter struct {
-	Code  *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Bandwidth
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// disk
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -24413,12 +33249,25 @@ func (s *RenewChangeInstanceRequestParameter) SetValue(v string) *RenewChangeIns
 }
 
 type RenewChangeInstanceResponseBody struct {
-	Code    *string                              `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data    *RenewChangeInstanceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message *string                              `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// Success
+	Code *string                              `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *RenewChangeInstanceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// Successful!
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// Id of the request
+	//
+	// example:
+	//
+	// 79EE7556-0CFD-44EB-9CD6-B3B526E3A85F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s RenewChangeInstanceResponseBody) String() string {
@@ -24455,7 +33304,13 @@ func (s *RenewChangeInstanceResponseBody) SetSuccess(v bool) *RenewChangeInstanc
 }
 
 type RenewChangeInstanceResponseBodyData struct {
-	HostId  *string `json:"HostId,omitempty" xml:"HostId,omitempty"`
+	// example:
+	//
+	// 100.100.64.1:8150
+	HostId *string `json:"HostId,omitempty" xml:"HostId,omitempty"`
+	// example:
+	//
+	// 202407022550621
 	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
 }
 
@@ -24508,20 +33363,49 @@ func (s *RenewChangeInstanceResponse) SetBody(v *RenewChangeInstanceResponseBody
 
 type RenewInstanceRequest struct {
 	// The client token that is used to ensure the idempotence of the request.
+	//
+	// example:
+	//
+	// ASKJHKLASJHAFSLKJH
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The ID of the instance
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// rm-skjdhaskjdh
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The code of the service to which the instance belongs.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// rds
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
 	// The type of the service.
+	//
+	// example:
+	//
+	// rds
 	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
 	// The duration of the subscription renewal. Unit: months. Valid values:
 	//
-	// *   1 to 9
-	// *   12
-	// *   24
-	// *   36
+	// 	- 1 to 9
+	//
+	// 	- 12
+	//
+	// 	- 24
+	//
+	// 	- 36
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 6
 	RenewPeriod *int32 `json:"RenewPeriod,omitempty" xml:"RenewPeriod,omitempty"`
 }
 
@@ -24565,14 +33449,30 @@ func (s *RenewInstanceRequest) SetRenewPeriod(v int32) *RenewInstanceRequest {
 
 type RenewInstanceResponseBody struct {
 	// The status code.
+	//
+	// example:
+	//
+	// Success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The data returned.
 	Data *RenewInstanceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The error message returned.
+	//
+	// example:
+	//
+	// Successful！
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 6000EE23-274B-4E07-A697-FF2E999520A4
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -24611,6 +33511,10 @@ func (s *RenewInstanceResponseBody) SetSuccess(v bool) *RenewInstanceResponseBod
 
 type RenewInstanceResponseBodyData struct {
 	// The ID of the order.
+	//
+	// example:
+	//
+	// 202657601410661
 	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
 }
 
@@ -24658,20 +33562,43 @@ func (s *RenewInstanceResponse) SetBody(v *RenewInstanceResponseBody) *RenewInst
 
 type RenewResourcePackageRequest struct {
 	// The renewal period of the resource plan.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
 	Duration *int32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
 	// The time when the resource plan takes effect. If you leave this parameter empty, the resource plan immediately takes effect by default.
 	//
 	// Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	//
+	// example:
+	//
+	// 2020-02-02T12:00:00Z
 	EffectiveDate *string `json:"EffectiveDate,omitempty" xml:"EffectiveDate,omitempty"`
 	// The ID of the resource plan.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// lskd****sljhsdj
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The unit of the validity period for the resource plan. Valid values:
 	//
-	// *   Month
-	// *   Year
+	// 	- Month
+	//
+	// 	- Year
 	//
 	// Default value: Month.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Month
 	PricingCycle *string `json:"PricingCycle,omitempty" xml:"PricingCycle,omitempty"`
 }
 
@@ -24710,16 +33637,36 @@ func (s *RenewResourcePackageRequest) SetPricingCycle(v string) *RenewResourcePa
 
 type RenewResourcePackageResponseBody struct {
 	// The status code returned.
+	//
+	// example:
+	//
+	// Success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The data returned.
 	Data *RenewResourcePackageResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The message returned.
+	//
+	// example:
+	//
+	// Successful!
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The ID of the order.
+	//
+	// example:
+	//
+	// 204322301110333
 	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 6000EE23-274B-4E07-A697-FF2E999520A4
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request is successful.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -24763,8 +33710,16 @@ func (s *RenewResourcePackageResponseBody) SetSuccess(v bool) *RenewResourcePack
 
 type RenewResourcePackageResponseBodyData struct {
 	// The ID of the resource plan.
+	//
+	// example:
+	//
+	// OSSBAG-cn-0xl0n****003
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The ID of the order.
+	//
+	// example:
+	//
+	// 204322560333
 	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
 }
 
@@ -24820,6 +33775,12 @@ type SetAllExpirationDayRequest struct {
 	// The expiration date. You can set an expiration date only for ECS instances that have not expired. The expiration date that you specify do not take effect on expired ECS instances. After the expiration date is set, the expiration date is used when you renew ECS instances.
 	//
 	// You can set the expiration date to a day from the 1st to the 28th of each month.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10
 	UnifyExpireDay *string `json:"UnifyExpireDay,omitempty" xml:"UnifyExpireDay,omitempty"`
 }
 
@@ -24843,12 +33804,28 @@ func (s *SetAllExpirationDayRequest) SetUnifyExpireDay(v string) *SetAllExpirati
 
 type SetAllExpirationDayResponseBody struct {
 	// The HTTP status code.
+	//
+	// example:
+	//
+	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The message that is returned.
+	//
+	// example:
+	//
+	// The message that is returned
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// The ID of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request is successful.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -24911,39 +33888,81 @@ func (s *SetAllExpirationDayResponse) SetBody(v *SetAllExpirationDayResponseBody
 
 type SetRenewalRequest struct {
 	// The ID of the instance. You can enable auto-renewal for up to 100 subscription instances at a time. Separate multiple instance IDs with commas (,).
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// rm-askjdhaskfjh
 	InstanceIDs *string `json:"InstanceIDs,omitempty" xml:"InstanceIDs,omitempty"`
 	OwnerId     *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The code of the service.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// rds
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
 	// The type of the service.
+	//
+	// example:
+	//
+	// rds
 	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
 	// The auto-renewal period. Valid values:
 	//
-	// *   1
-	// *   2
-	// *   3
-	// *   6
-	// *   12
+	// 	- 1
+	//
+	// 	- 2
+	//
+	// 	- 3
+	//
+	// 	- 6
+	//
+	// 	- 12
 	//
 	// >  This parameter is required if the RenewalStatus parameter is set to AutoRenewal.
+	//
+	// example:
+	//
+	// 1
 	RenewalPeriod *int32 `json:"RenewalPeriod,omitempty" xml:"RenewalPeriod,omitempty"`
 	// The unit of the auto-renewal period. Valid values:
 	//
-	// *   M: months
-	// *   Y: years
+	// 	- M: months
+	//
+	// 	- Y: years
 	//
 	// >  This parameter is required if the RenewalStatus parameter is set to AutoRenewal.
+	//
+	// example:
+	//
+	// M
 	RenewalPeriodUnit *string `json:"RenewalPeriodUnit,omitempty" xml:"RenewalPeriodUnit,omitempty"`
 	// The status of renewal. Valid values:
 	//
-	// *   AutoRenewal: The instance is automatically renewed.
-	// *   ManualRenewal: The instance is manually renewed.
-	// *   NotRenewal: The instance is not renewed.
+	// 	- AutoRenewal: The instance is automatically renewed.
+	//
+	// 	- ManualRenewal: The instance is manually renewed.
+	//
+	// 	- NotRenewal: The instance is not renewed.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// AutoRenewal
 	RenewalStatus *string `json:"RenewalStatus,omitempty" xml:"RenewalStatus,omitempty"`
 	// The billing method. Valid values:
 	//
-	// *   Subscription: subscription
-	// *   PayAsYouGo: pay-as-you-go
+	// 	- Subscription: subscription
+	//
+	// 	- PayAsYouGo: pay-as-you-go
+	//
+	// example:
+	//
+	// PayAsYouGo
 	SubscriptionType *string `json:"SubscriptionType,omitempty" xml:"SubscriptionType,omitempty"`
 }
 
@@ -24997,12 +34016,28 @@ func (s *SetRenewalRequest) SetSubscriptionType(v string) *SetRenewalRequest {
 
 type SetRenewalResponseBody struct {
 	// The status code.
+	//
+	// example:
+	//
+	// Success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The error message returned.
+	//
+	// example:
+	//
+	// Successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 6000EE23-274B-4E07-A697-FF2E999520A4
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -25064,9 +34099,18 @@ func (s *SetRenewalResponse) SetBody(v *SetRenewalResponseBody) *SetRenewalRespo
 }
 
 type SetResellerUserAlarmThresholdRequest struct {
+	// example:
+	//
+	// [{\\"denominator\\":100,\\"numerator\\":30,\\"thresholdType\\":1}]
 	AlarmThresholds *string `json:"AlarmThresholds,omitempty" xml:"AlarmThresholds,omitempty"`
-	AlarmType       *string `json:"AlarmType,omitempty" xml:"AlarmType,omitempty"`
-	OwnerId         *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// quota_low_balance
+	AlarmType *string `json:"AlarmType,omitempty" xml:"AlarmType,omitempty"`
+	// This parameter is required.
+	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 }
 
 func (s SetResellerUserAlarmThresholdRequest) String() string {
@@ -25093,11 +34137,26 @@ func (s *SetResellerUserAlarmThresholdRequest) SetOwnerId(v int64) *SetResellerU
 }
 
 type SetResellerUserAlarmThresholdResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// true
+	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// Successful!
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 79EE7556-0CFD-44EB-9CD6-B3B526E3A85F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s SetResellerUserAlarmThresholdResponseBody) String() string {
@@ -25164,12 +34223,27 @@ func (s *SetResellerUserAlarmThresholdResponse) SetBody(v *SetResellerUserAlarmT
 
 type SetResellerUserQuotaRequest struct {
 	// The quota of a quota ledger. Unit: CNY.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 750
 	Amount *string `json:"Amount,omitempty" xml:"Amount,omitempty"`
 	// You do not need to set the parameter.
+	//
+	// example:
+	//
+	// N/A
 	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
 	// The ID of the business.
+	//
+	// example:
+	//
+	// OD2022040818295234777795624764689
 	OutBizId *string `json:"OutBizId,omitempty" xml:"OutBizId,omitempty"`
-	OwnerId  *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// This parameter is required.
+	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 }
 
 func (s SetResellerUserQuotaRequest) String() string {
@@ -25202,14 +34276,34 @@ func (s *SetResellerUserQuotaRequest) SetOwnerId(v int64) *SetResellerUserQuotaR
 
 type SetResellerUserQuotaResponseBody struct {
 	// The error code returned if the call failed. For more information, see the "Error codes" section of this topic.
+	//
+	// example:
+	//
+	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// Indicates whether the request is successful.
+	//
+	// example:
+	//
+	// true
 	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
 	// The message returned.
+	//
+	// example:
+	//
+	// Successful!
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// F5B803CF-94D8-43AF-ADB3-D819AAD30E27
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the call is successful. A value of true indicates that the call is successful. A value of false indicates that the call failed.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -25277,14 +34371,34 @@ func (s *SetResellerUserQuotaResponse) SetBody(v *SetResellerUserQuotaResponseBo
 
 type SetResellerUserStatusRequest struct {
 	// The type of the business. Valid values: FREEZE: the frozen business of the account. TRUSTEESHIP: the hosted business of the account.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// FREEZE
 	BusinessType *string `json:"BusinessType,omitempty" xml:"BusinessType,omitempty"`
-	OwnerId      *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// This parameter is required.
+	OwnerId *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The account status that you want to set. Valid values: Freeze: The account is frozen. Thaw: The account is unfrozen. Trusteeship: The account is hosted. TrusteeshipCancel: The account is not hosted.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Freeze
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// 停机模式
+	//
 	// 取值：
+	//
 	//     0：普通停机
+	//
 	//     1：立即停机
+	//
+	// example:
+	//
+	// 0
 	StopMode *string `json:"StopMode,omitempty" xml:"StopMode,omitempty"`
 }
 
@@ -25318,14 +34432,34 @@ func (s *SetResellerUserStatusRequest) SetStopMode(v string) *SetResellerUserSta
 
 type SetResellerUserStatusResponseBody struct {
 	// The error code returned if the call failed. For more information, see the "Error codes" section of this topic.
+	//
+	// example:
+	//
+	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// Indicates whether the request is successful.
+	//
+	// example:
+	//
+	// true
 	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
 	// The message returned.
+	//
+	// example:
+	//
+	// Successful!
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// F5B803CF-94D8-43AF-ADB3-D819AAD30E27
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the call is successful. A value of true indicates that the call is successful. A value of false indicates that the call failed.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -25393,30 +34527,73 @@ func (s *SetResellerUserStatusResponse) SetBody(v *SetResellerUserStatusResponse
 
 type SubscribeBillToOSSRequest struct {
 	// The initial billing cycle from which bills start to be pushed. After you subscribe to the bills, the system automatically pushes the data that is generated from the initial billing cycle to the current time. If the SubscribeType parameter is set to MonthBill, this parameter is invalid. Historical data is not pushed again. The data generated within the last year can be pushed.
+	//
+	// example:
+	//
+	// 2021-03
 	BeginBillingCycle *string `json:"BeginBillingCycle,omitempty" xml:"BeginBillingCycle,omitempty"`
 	// The owner ID of the OSS bucket that stores the bills. This parameter is required if you are a bidder or reseller and want to push data to an OSS bucket of a member account. In this case, you must specify this account as the account used to call this operation and grant the AliyunConsumeDump2OSSRole permission to this account. If you are a regular user, you do not need to set this parameter. By default, your account is used to call this operation.
+	//
+	// example:
+	//
+	// 12341324
 	BucketOwnerId *int64 `json:"BucketOwnerId,omitempty" xml:"BucketOwnerId,omitempty"`
 	// The path of the OSS bucket.
+	//
+	// example:
+	//
+	// testpath
 	BucketPath *string `json:"BucketPath,omitempty" xml:"BucketPath,omitempty"`
 	// The type of the account whose bills are to be pushed if multi-tier accounts are involved. Valid values:
 	//
-	// *   MA: the master account and a non-managed member account in Finance Cloud
-	// *   ACP1: a member account of a virtual network operator (VNO)
+	// 	- MA: the master account and a non-managed member account in Finance Cloud
+	//
+	// 	- ACP1: a member account of a virtual network operator (VNO)
 	//
 	// Default value: MA.
+	//
+	// example:
+	//
+	// MA
 	MultAccountRelSubscribe *string `json:"MultAccountRelSubscribe,omitempty" xml:"MultAccountRelSubscribe,omitempty"`
-	RowLimitPerFile         *int32  `json:"RowLimitPerFile,omitempty" xml:"RowLimitPerFile,omitempty"`
+	// The upper limit of the number of lines in a single file. When the bill file exceeds the upper limit, it will be split into multiple files and merged into a compressed package.
+	//
+	// example:
+	//
+	// 300000
+	RowLimitPerFile *int32 `json:"RowLimitPerFile,omitempty" xml:"RowLimitPerFile,omitempty"`
 	// The OSS bucket that stores the bills to which you want to subscribe.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// xxxxxx-bucket
 	SubscribeBucket *string `json:"SubscribeBucket,omitempty" xml:"SubscribeBucket,omitempty"`
 	// The type of the bill to which you want to subscribe. Valid values:
 	//
-	// *   BillingItemDetailForBillingPeriod: detailed bills of billable items
-	// *   InstanceDetailForBillingPeriod: detailed bills of instances
-	// *   BillingItemDetailMonthly: billable item-based bills summarized by billing cycle
-	// *   InstanceDetailMonthly: instance-based bills summarized by billing cycle
-	// *   SplitItemDetailDaily: split bills summarized by day
-	// *   MonthBill: monthly bills in the PDF format. You can subscribe to the monthly PDF bills only of the master account.
+	// 	- BillingItemDetailForBillingPeriod: detailed bills of billable items
+	//
+	// 	- InstanceDetailForBillingPeriod: detailed bills of instances
+	//
+	// 	- BillingItemDetailMonthly: billable item-based bills summarized by billing cycle
+	//
+	// 	- InstanceDetailMonthly: instance-based bills summarized by billing cycle
+	//
+	// 	- SplitItemDetailDaily: split bills summarized by day
+	//
+	// 	- MonthBill: monthly bills in the PDF format. You can subscribe to the monthly PDF bills only of the master account.
+	//
+	// example:
+	//
+	// BillingItemDetailForBillingPeriod
 	SubscribeType *string `json:"SubscribeType,omitempty" xml:"SubscribeType,omitempty"`
+	// Whether to protect network communications through the SSL (Secure Sockets Layer) encryption protocol. When this parameter is set to true, it means that SSL encryption is enabled to ensure the security and integrity of data transmission.
+	//
+	// example:
+	//
+	// true
+	UsingSsl *string `json:"UsingSsl,omitempty" xml:"UsingSsl,omitempty"`
 }
 
 func (s SubscribeBillToOSSRequest) String() string {
@@ -25462,14 +34639,35 @@ func (s *SubscribeBillToOSSRequest) SetSubscribeType(v string) *SubscribeBillToO
 	return s
 }
 
+func (s *SubscribeBillToOSSRequest) SetUsingSsl(v string) *SubscribeBillToOSSRequest {
+	s.UsingSsl = &v
+	return s
+}
+
 type SubscribeBillToOSSResponseBody struct {
 	// The status code returned.
+	//
+	// example:
+	//
+	// Success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The message returned.
+	//
+	// example:
+	//
+	// Successful!
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// F61FCE4B-9B56-4FD9-A17E-******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request is successful.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -25532,10 +34730,20 @@ func (s *SubscribeBillToOSSResponse) SetBody(v *SubscribeBillToOSSResponseBody) 
 
 type TagResourcesRequest struct {
 	// The IDs of resources.
+	//
+	// This parameter is required.
 	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
 	// The type of the resource. Specify savings plan instance as the type of the resource.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// instance
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	// The tags.
+	//
+	// This parameter is required.
 	Tag []*TagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
@@ -25564,8 +34772,20 @@ func (s *TagResourcesRequest) SetTag(v []*TagResourcesRequestTag) *TagResourcesR
 
 type TagResourcesRequestTag struct {
 	// The key of the tag. You can create N tag keys at a time. Valid values of N: 1 to 20. The value of this parameter can be an empty string.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// tag1
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The value of the tag N. Valid values of N: 1 to 20.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 001
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -25589,14 +34809,34 @@ func (s *TagResourcesRequestTag) SetValue(v string) *TagResourcesRequestTag {
 
 type TagResourcesResponseBody struct {
 	// The status code returned.
+	//
+	// example:
+	//
+	// InternalError
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The data returned.
+	//
+	// example:
+	//
+	// true
 	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
 	// The error message returned.
+	//
+	// example:
+	//
+	// This API is not applicable for caller.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 1537A007-72D7-4165-8A26-8694A38E219A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request is successful.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -25665,19 +34905,35 @@ func (s *TagResourcesResponse) SetBody(v *TagResourcesResponseBody) *TagResource
 type UnsubscribeBillToOSSRequest struct {
 	// The type of accounts whose bills are to be pushed if multi-tier accounts are involved. Valid values:
 	//
-	// *   MA: management account.
-	// *   ACP1: member account of a virtual network operator (VNO).
+	// 	- MA: management account.
+	//
+	// 	- ACP1: member account of a virtual network operator (VNO).
 	//
 	// Default value: MA.
+	//
+	// example:
+	//
+	// MA
 	MultAccountRelSubscribe *string `json:"MultAccountRelSubscribe,omitempty" xml:"MultAccountRelSubscribe,omitempty"`
 	// The type of the bill to which you want to subscribe. Valid values:
 	//
-	// *   BillingItemDetailForBillingPeriod: bills of billable items
-	// *   InstanceDetailForBillingPeriod: bills of instances
-	// *   BillingItemDetailMonthly: billable item-based bills summarized by billing cycle
-	// *   InstanceDetailMonthly: instance-based bills summarized by billing cycle
-	// *   SplitItemDetailDaily: split bills summarized by day
-	// *   MonthBill: monthly bills in the PDF format You can subscribe to the monthly PDF bills only of the master account.
+	// 	- BillingItemDetailForBillingPeriod: bills of billable items
+	//
+	// 	- InstanceDetailForBillingPeriod: bills of instances
+	//
+	// 	- BillingItemDetailMonthly: billable item-based bills summarized by billing cycle
+	//
+	// 	- InstanceDetailMonthly: instance-based bills summarized by billing cycle
+	//
+	// 	- SplitItemDetailDaily: split bills summarized by day
+	//
+	// 	- MonthBill: monthly bills in the PDF format You can subscribe to the monthly PDF bills only of the master account.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// BillingItemDetailForBillingPeriod
 	SubscribeType *string `json:"SubscribeType,omitempty" xml:"SubscribeType,omitempty"`
 }
 
@@ -25701,12 +34957,28 @@ func (s *UnsubscribeBillToOSSRequest) SetSubscribeType(v string) *UnsubscribeBil
 
 type UnsubscribeBillToOSSResponseBody struct {
 	// The status code returned.
+	//
+	// example:
+	//
+	// Success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The message returned.
+	//
+	// example:
+	//
+	// Successful!
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// D23FE74C-742F-4624-A82B-******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request is successful.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -25769,10 +35041,22 @@ func (s *UnsubscribeBillToOSSResponse) SetBody(v *UnsubscribeBillToOSSResponseBo
 
 type UntagResourcesRequest struct {
 	// Specifies whether to remove all tags. This parameter is valid only if the TagKey.n parameter is not set. Valid values: true and false.
+	//
+	// example:
+	//
+	// true
 	All *bool `json:"All,omitempty" xml:"All,omitempty"`
 	// The IDs of resources.
+	//
+	// This parameter is required.
 	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
 	// The type of the resource. Specify the savings plan instance as the type of the resource.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// instance
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	// The tag keys.
 	TagKey []*string `json:"TagKey,omitempty" xml:"TagKey,omitempty" type:"Repeated"`
@@ -25808,14 +35092,34 @@ func (s *UntagResourcesRequest) SetTagKey(v []*string) *UntagResourcesRequest {
 
 type UntagResourcesResponseBody struct {
 	// The status code returned.
+	//
+	// example:
+	//
+	// PARAM_ERROR
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The data returned.
+	//
+	// example:
+	//
+	// true
 	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
 	// The error message returned.
+	//
+	// example:
+	//
+	// This API is not applicable for caller.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// C7C15585-8349-4C62-BEE4-5A391841B9BE
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request is successful.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -25885,11 +35189,25 @@ type UpgradeResourcePackageRequest struct {
 	// The time when the resource plan takes effect. If you leave this parameter empty, the resource plan immediately takes effect by default.
 	//
 	// Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	//
+	// example:
+	//
+	// 2020-02-02T12:00:00Z
 	EffectiveDate *string `json:"EffectiveDate,omitempty" xml:"EffectiveDate,omitempty"`
 	// The ID of the resource plan.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// OSSBAG-cn-0xl*****x002
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The specifications to which you want to upgrade the resource plan.
+	//
+	// example:
+	//
+	// 51200
 	Specification *string `json:"Specification,omitempty" xml:"Specification,omitempty"`
 }
 
@@ -25923,16 +35241,36 @@ func (s *UpgradeResourcePackageRequest) SetSpecification(v string) *UpgradeResou
 
 type UpgradeResourcePackageResponseBody struct {
 	// The status code returned.
+	//
+	// example:
+	//
+	// Success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The data returned.
 	Data *UpgradeResourcePackageResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The message returned.
+	//
+	// example:
+	//
+	// Successful!
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The ID of the order.
+	//
+	// example:
+	//
+	// 73387246238746
 	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 6000EE23-274B-4E07-A697-FF2E999520A4
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request is successful.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -25976,8 +35314,16 @@ func (s *UpgradeResourcePackageResponseBody) SetSuccess(v bool) *UpgradeResource
 
 type UpgradeResourcePackageResponseBodyData struct {
 	// The ID of the resource plan.
+	//
+	// example:
+	//
+	// OSSBAG-cn-0xl*****002
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The ID of the order.
+	//
+	// example:
+	//
+	// 73387246238746
 	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
 }
 
@@ -26135,13 +35481,19 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
-/**
- * 1\\. For more information about a financial relationship, see [Financial relationships](https://help.aliyun.com/document_detail/100376.html?spm=a2c4g.11186623.6.563.52a83908ypl4yE) or [Financial relationships](https://www.alibabacloud.com/help/en/doc-detail/116383.html). 2. If enterprise names used by the management account and a member for real-name verification are the same, you do not need to call an API operation for confirmation. Otherwise, you must call the ConfirmRelation operation for confirmation.
- *
- * @param request AddAccountRelationRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return AddAccountRelationResponse
- */
+// Summary:
+//
+// Creates a financial relationship.
+//
+// Description:
+//
+// 1\\. For more information about a financial relationship, see [Financial relationships](https://help.aliyun.com/document_detail/100376.html?spm=a2c4g.11186623.6.563.52a83908ypl4yE) or [Financial relationships](https://www.alibabacloud.com/help/en/doc-detail/116383.html). 2. If enterprise names used by the management account and a member for real-name verification are the same, you do not need to call an API operation for confirmation. Otherwise, you must call the ConfirmRelation operation for confirmation.
+//
+// @param request - AddAccountRelationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AddAccountRelationResponse
 func (client *Client) AddAccountRelationWithOptions(request *AddAccountRelationRequest, runtime *util.RuntimeOptions) (_result *AddAccountRelationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -26199,12 +35551,17 @@ func (client *Client) AddAccountRelationWithOptions(request *AddAccountRelationR
 	return _result, _err
 }
 
-/**
- * 1\\. For more information about a financial relationship, see [Financial relationships](https://help.aliyun.com/document_detail/100376.html?spm=a2c4g.11186623.6.563.52a83908ypl4yE) or [Financial relationships](https://www.alibabacloud.com/help/en/doc-detail/116383.html). 2. If enterprise names used by the management account and a member for real-name verification are the same, you do not need to call an API operation for confirmation. Otherwise, you must call the ConfirmRelation operation for confirmation.
- *
- * @param request AddAccountRelationRequest
- * @return AddAccountRelationResponse
- */
+// Summary:
+//
+// Creates a financial relationship.
+//
+// Description:
+//
+// 1\\. For more information about a financial relationship, see [Financial relationships](https://help.aliyun.com/document_detail/100376.html?spm=a2c4g.11186623.6.563.52a83908ypl4yE) or [Financial relationships](https://www.alibabacloud.com/help/en/doc-detail/116383.html). 2. If enterprise names used by the management account and a member for real-name verification are the same, you do not need to call an API operation for confirmation. Otherwise, you must call the ConfirmRelation operation for confirmation.
+//
+// @param request - AddAccountRelationRequest
+//
+// @return AddAccountRelationResponse
 func (client *Client) AddAccountRelation(request *AddAccountRelationRequest) (_result *AddAccountRelationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &AddAccountRelationResponse{}
@@ -26216,6 +35573,15 @@ func (client *Client) AddAccountRelation(request *AddAccountRelationRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// Transfers resource instances from the source cost center to the destination cost center.
+//
+// @param request - AllocateCostUnitResourceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AllocateCostUnitResourceResponse
 func (client *Client) AllocateCostUnitResourceWithOptions(request *AllocateCostUnitResourceRequest, runtime *util.RuntimeOptions) (_result *AllocateCostUnitResourceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -26265,6 +35631,13 @@ func (client *Client) AllocateCostUnitResourceWithOptions(request *AllocateCostU
 	return _result, _err
 }
 
+// Summary:
+//
+// Transfers resource instances from the source cost center to the destination cost center.
+//
+// @param request - AllocateCostUnitResourceRequest
+//
+// @return AllocateCostUnitResourceResponse
 func (client *Client) AllocateCostUnitResource(request *AllocateCostUnitResourceRequest) (_result *AllocateCostUnitResourceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &AllocateCostUnitResourceResponse{}
@@ -26276,6 +35649,15 @@ func (client *Client) AllocateCostUnitResource(request *AllocateCostUnitResource
 	return _result, _err
 }
 
+// Summary:
+//
+// Submits an application for an invoice.
+//
+// @param request - ApplyInvoiceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ApplyInvoiceResponse
 func (client *Client) ApplyInvoiceWithOptions(request *ApplyInvoiceRequest, runtime *util.RuntimeOptions) (_result *ApplyInvoiceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -26345,6 +35727,13 @@ func (client *Client) ApplyInvoiceWithOptions(request *ApplyInvoiceRequest, runt
 	return _result, _err
 }
 
+// Summary:
+//
+// Submits an application for an invoice.
+//
+// @param request - ApplyInvoiceRequest
+//
+// @return ApplyInvoiceResponse
 func (client *Client) ApplyInvoice(request *ApplyInvoiceRequest) (_result *ApplyInvoiceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ApplyInvoiceResponse{}
@@ -26356,6 +35745,15 @@ func (client *Client) ApplyInvoice(request *ApplyInvoiceRequest) (_result *Apply
 	return _result, _err
 }
 
+// Summary:
+//
+// Cancels an unpaid order.
+//
+// @param request - CancelOrderRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CancelOrderResponse
 func (client *Client) CancelOrderWithOptions(request *CancelOrderRequest, runtime *util.RuntimeOptions) (_result *CancelOrderResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -26393,6 +35791,13 @@ func (client *Client) CancelOrderWithOptions(request *CancelOrderRequest, runtim
 	return _result, _err
 }
 
+// Summary:
+//
+// Cancels an unpaid order.
+//
+// @param request - CancelOrderRequest
+//
+// @return CancelOrderResponse
 func (client *Client) CancelOrder(request *CancelOrderRequest) (_result *CancelOrderResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CancelOrderResponse{}
@@ -26404,6 +35809,11 @@ func (client *Client) CancelOrder(request *CancelOrderRequest) (_result *CancelO
 	return _result, _err
 }
 
+// @param request - ChangeResellerConsumeAmountRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ChangeResellerConsumeAmountResponse
 func (client *Client) ChangeResellerConsumeAmountWithOptions(request *ChangeResellerConsumeAmountRequest, runtime *util.RuntimeOptions) (_result *ChangeResellerConsumeAmountResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -26465,6 +35875,9 @@ func (client *Client) ChangeResellerConsumeAmountWithOptions(request *ChangeRese
 	return _result, _err
 }
 
+// @param request - ChangeResellerConsumeAmountRequest
+//
+// @return ChangeResellerConsumeAmountResponse
 func (client *Client) ChangeResellerConsumeAmount(request *ChangeResellerConsumeAmountRequest) (_result *ChangeResellerConsumeAmountResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ChangeResellerConsumeAmountResponse{}
@@ -26476,13 +35889,19 @@ func (client *Client) ChangeResellerConsumeAmount(request *ChangeResellerConsume
 	return _result, _err
 }
 
-/**
- * 1\\. A member needs to confirm an invitation only if a financial management relationship is established between the management account and the member and enterprise names used by the management account and the member for real-name verification are different. 2. The permissions to be confirmed must be the same as those granted to the member when the management account initiates the invitation.
- *
- * @param request ConfirmRelationRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return ConfirmRelationResponse
- */
+// Summary:
+//
+// Confirms the invitation initiated by the master account.
+//
+// Description:
+//
+// 1\\. A member needs to confirm an invitation only if a financial management relationship is established between the management account and the member and enterprise names used by the management account and the member for real-name verification are different. 2. The permissions to be confirmed must be the same as those granted to the member when the management account initiates the invitation.
+//
+// @param request - ConfirmRelationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ConfirmRelationResponse
 func (client *Client) ConfirmRelationWithOptions(request *ConfirmRelationRequest, runtime *util.RuntimeOptions) (_result *ConfirmRelationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -26540,12 +35959,17 @@ func (client *Client) ConfirmRelationWithOptions(request *ConfirmRelationRequest
 	return _result, _err
 }
 
-/**
- * 1\\. A member needs to confirm an invitation only if a financial management relationship is established between the management account and the member and enterprise names used by the management account and the member for real-name verification are different. 2. The permissions to be confirmed must be the same as those granted to the member when the management account initiates the invitation.
- *
- * @param request ConfirmRelationRequest
- * @return ConfirmRelationResponse
- */
+// Summary:
+//
+// Confirms the invitation initiated by the master account.
+//
+// Description:
+//
+// 1\\. A member needs to confirm an invitation only if a financial management relationship is established between the management account and the member and enterprise names used by the management account and the member for real-name verification are different. 2. The permissions to be confirmed must be the same as those granted to the member when the management account initiates the invitation.
+//
+// @param request - ConfirmRelationRequest
+//
+// @return ConfirmRelationResponse
 func (client *Client) ConfirmRelation(request *ConfirmRelationRequest) (_result *ConfirmRelationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ConfirmRelationResponse{}
@@ -26557,6 +35981,15 @@ func (client *Client) ConfirmRelation(request *ConfirmRelationRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// Changes the billing method of an instance. You can call this operation to switch the billing method from pay-as-you-go to subscription for Server Load Balancer (SLB) instances, elastic IP addresses (EIPs), and NAT gateways, and switch the billing method from subscription to pay-as-you-go for SLB instances and EIPs.
+//
+// @param request - ConvertChargeTypeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ConvertChargeTypeResponse
 func (client *Client) ConvertChargeTypeWithOptions(request *ConvertChargeTypeRequest, runtime *util.RuntimeOptions) (_result *ConvertChargeTypeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -26610,6 +36043,13 @@ func (client *Client) ConvertChargeTypeWithOptions(request *ConvertChargeTypeReq
 	return _result, _err
 }
 
+// Summary:
+//
+// Changes the billing method of an instance. You can call this operation to switch the billing method from pay-as-you-go to subscription for Server Load Balancer (SLB) instances, elastic IP addresses (EIPs), and NAT gateways, and switch the billing method from subscription to pay-as-you-go for SLB instances and EIPs.
+//
+// @param request - ConvertChargeTypeRequest
+//
+// @return ConvertChargeTypeResponse
 func (client *Client) ConvertChargeType(request *ConvertChargeTypeRequest) (_result *ConvertChargeTypeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ConvertChargeTypeResponse{}
@@ -26621,13 +36061,19 @@ func (client *Client) ConvertChargeType(request *ConvertChargeTypeRequest) (_res
 	return _result, _err
 }
 
-/**
- * You can call this operation to create an account so as to establish a master-member financial relationship.
- *
- * @param request CreateAgAccountRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return CreateAgAccountResponse
- */
+// Summary:
+//
+// Creates an account to establish a financial relationship.
+//
+// Description:
+//
+// You can call this operation to create an account so as to establish a master-member financial relationship.
+//
+// @param request - CreateAgAccountRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateAgAccountResponse
 func (client *Client) CreateAgAccountWithOptions(request *CreateAgAccountRequest, runtime *util.RuntimeOptions) (_result *CreateAgAccountResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -26693,12 +36139,17 @@ func (client *Client) CreateAgAccountWithOptions(request *CreateAgAccountRequest
 	return _result, _err
 }
 
-/**
- * You can call this operation to create an account so as to establish a master-member financial relationship.
- *
- * @param request CreateAgAccountRequest
- * @return CreateAgAccountResponse
- */
+// Summary:
+//
+// Creates an account to establish a financial relationship.
+//
+// Description:
+//
+// You can call this operation to create an account so as to establish a master-member financial relationship.
+//
+// @param request - CreateAgAccountRequest
+//
+// @return CreateAgAccountResponse
 func (client *Client) CreateAgAccount(request *CreateAgAccountRequest) (_result *CreateAgAccountResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateAgAccountResponse{}
@@ -26710,6 +36161,15 @@ func (client *Client) CreateAgAccount(request *CreateAgAccountRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a cost center. You can create multiple cost centers at a time.
+//
+// @param request - CreateCostUnitRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateCostUnitResponse
 func (client *Client) CreateCostUnitWithOptions(request *CreateCostUnitRequest, runtime *util.RuntimeOptions) (_result *CreateCostUnitResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -26743,6 +36203,13 @@ func (client *Client) CreateCostUnitWithOptions(request *CreateCostUnitRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a cost center. You can create multiple cost centers at a time.
+//
+// @param request - CreateCostUnitRequest
+//
+// @return CreateCostUnitResponse
 func (client *Client) CreateCostUnit(request *CreateCostUnitRequest) (_result *CreateCostUnitResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateCostUnitResponse{}
@@ -26754,6 +36221,15 @@ func (client *Client) CreateCostUnit(request *CreateCostUnitRequest) (_result *C
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates an instance. If you call this operation, an order for a new instance is created and the order is automatically paid for. You cannot create Elastic Compute Service (ECS) instances or ApsaraDB RDS instances by calling the operation.
+//
+// @param request - CreateInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateInstanceResponse
 func (client *Client) CreateInstanceWithOptions(request *CreateInstanceRequest, runtime *util.RuntimeOptions) (_result *CreateInstanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -26823,6 +36299,13 @@ func (client *Client) CreateInstanceWithOptions(request *CreateInstanceRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates an instance. If you call this operation, an order for a new instance is created and the order is automatically paid for. You cannot create Elastic Compute Service (ECS) instances or ApsaraDB RDS instances by calling the operation.
+//
+// @param request - CreateInstanceRequest
+//
+// @return CreateInstanceResponse
 func (client *Client) CreateInstance(request *CreateInstanceRequest) (_result *CreateInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateInstanceResponse{}
@@ -26834,6 +36317,15 @@ func (client *Client) CreateInstance(request *CreateInstanceRequest) (_result *C
 	return _result, _err
 }
 
+// Summary:
+//
+// Indicates whether the call is successful. A value of true indicates that the call is successful. A value of false indicates that the call failed.
+//
+// @param request - CreateResellerUserQuotaRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateResellerUserQuotaResponse
 func (client *Client) CreateResellerUserQuotaWithOptions(request *CreateResellerUserQuotaRequest, runtime *util.RuntimeOptions) (_result *CreateResellerUserQuotaResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -26879,6 +36371,13 @@ func (client *Client) CreateResellerUserQuotaWithOptions(request *CreateReseller
 	return _result, _err
 }
 
+// Summary:
+//
+// Indicates whether the call is successful. A value of true indicates that the call is successful. A value of false indicates that the call failed.
+//
+// @param request - CreateResellerUserQuotaRequest
+//
+// @return CreateResellerUserQuotaResponse
 func (client *Client) CreateResellerUserQuota(request *CreateResellerUserQuotaRequest) (_result *CreateResellerUserQuotaResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateResellerUserQuotaResponse{}
@@ -26890,6 +36389,15 @@ func (client *Client) CreateResellerUserQuota(request *CreateResellerUserQuotaRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a resource plan.
+//
+// @param request - CreateResourcePackageRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateResourcePackageResponse
 func (client *Client) CreateResourcePackageWithOptions(request *CreateResourcePackageRequest, runtime *util.RuntimeOptions) (_result *CreateResourcePackageResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -26947,6 +36455,13 @@ func (client *Client) CreateResourcePackageWithOptions(request *CreateResourcePa
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a resource plan.
+//
+// @param request - CreateResourcePackageRequest
+//
+// @return CreateResourcePackageResponse
 func (client *Client) CreateResourcePackage(request *CreateResourcePackageRequest) (_result *CreateResourcePackageResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateResourcePackageResponse{}
@@ -26958,6 +36473,15 @@ func (client *Client) CreateResourcePackage(request *CreateResourcePackageReques
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a savings plan. After you call this operation, a savings plan is purchased and paid for.
+//
+// @param tmpReq - CreateSavingsPlansInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateSavingsPlansInstanceResponse
 func (client *Client) CreateSavingsPlansInstanceWithOptions(tmpReq *CreateSavingsPlansInstanceRequest, runtime *util.RuntimeOptions) (_result *CreateSavingsPlansInstanceResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -27037,6 +36561,13 @@ func (client *Client) CreateSavingsPlansInstanceWithOptions(tmpReq *CreateSaving
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a savings plan. After you call this operation, a savings plan is purchased and paid for.
+//
+// @param request - CreateSavingsPlansInstanceRequest
+//
+// @return CreateSavingsPlansInstanceResponse
 func (client *Client) CreateSavingsPlansInstance(request *CreateSavingsPlansInstanceRequest) (_result *CreateSavingsPlansInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateSavingsPlansInstanceResponse{}
@@ -27048,6 +36579,15 @@ func (client *Client) CreateSavingsPlansInstance(request *CreateSavingsPlansInst
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a cost center.
+//
+// @param request - DeleteCostUnitRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteCostUnitResponse
 func (client *Client) DeleteCostUnitWithOptions(request *DeleteCostUnitRequest, runtime *util.RuntimeOptions) (_result *DeleteCostUnitResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -27085,6 +36625,13 @@ func (client *Client) DeleteCostUnitWithOptions(request *DeleteCostUnitRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a cost center.
+//
+// @param request - DeleteCostUnitRequest
+//
+// @return DeleteCostUnitResponse
 func (client *Client) DeleteCostUnit(request *DeleteCostUnitRequest) (_result *DeleteCostUnitResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteCostUnitResponse{}
@@ -27096,13 +36643,19 @@ func (client *Client) DeleteCostUnit(request *DeleteCostUnitRequest) (_result *D
 	return _result, _err
 }
 
-/**
- * This operation is in beta testing and is only available for specific users in the whitelist. Excessive calls may result in performance issues. For example, the response times out.
- *
- * @param request DescribeCostBudgetsSummaryRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DescribeCostBudgetsSummaryResponse
- */
+// Summary:
+//
+// Query the summary information of the user "Cost Management-Budget".
+//
+// Description:
+//
+// This operation is in beta testing and is only available for specific users in the whitelist. Excessive calls may result in performance issues. For example, the response times out.
+//
+// @param request - DescribeCostBudgetsSummaryRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeCostBudgetsSummaryResponse
 func (client *Client) DescribeCostBudgetsSummaryWithOptions(request *DescribeCostBudgetsSummaryRequest, runtime *util.RuntimeOptions) (_result *DescribeCostBudgetsSummaryResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -27152,12 +36705,17 @@ func (client *Client) DescribeCostBudgetsSummaryWithOptions(request *DescribeCos
 	return _result, _err
 }
 
-/**
- * This operation is in beta testing and is only available for specific users in the whitelist. Excessive calls may result in performance issues. For example, the response times out.
- *
- * @param request DescribeCostBudgetsSummaryRequest
- * @return DescribeCostBudgetsSummaryResponse
- */
+// Summary:
+//
+// Query the summary information of the user "Cost Management-Budget".
+//
+// Description:
+//
+// This operation is in beta testing and is only available for specific users in the whitelist. Excessive calls may result in performance issues. For example, the response times out.
+//
+// @param request - DescribeCostBudgetsSummaryRequest
+//
+// @return DescribeCostBudgetsSummaryResponse
 func (client *Client) DescribeCostBudgetsSummary(request *DescribeCostBudgetsSummaryRequest) (_result *DescribeCostBudgetsSummaryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeCostBudgetsSummaryResponse{}
@@ -27169,13 +36727,19 @@ func (client *Client) DescribeCostBudgetsSummary(request *DescribeCostBudgetsSum
 	return _result, _err
 }
 
-/**
- * You can view and export the allocated costs of the current month after 10:00 on the fourth day of the next month. The allocated costs of a single allocation month may involve orders or bills in different billing cycles. If a historical allocated amount is incorrect, the historical allocated costs need to be adjusted. As a result, the allocated costs displayed for a single allocation month may be different at different time points.
- *
- * @param request DescribeInstanceAmortizedCostByAmortizationPeriodRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DescribeInstanceAmortizedCostByAmortizationPeriodResponse
- */
+// Summary:
+//
+// Queries the monthly allocated costs of instances by allocation month.
+//
+// Description:
+//
+// You can view and export the allocated costs of the current month after 10:00 on the fourth day of the next month. The allocated costs of a single allocation month may involve orders or bills in different billing cycles. If a historical allocated amount is incorrect, the historical allocated costs need to be adjusted. As a result, the allocated costs displayed for a single allocation month may be different at different time points.
+//
+// @param request - DescribeInstanceAmortizedCostByAmortizationPeriodRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeInstanceAmortizedCostByAmortizationPeriodResponse
 func (client *Client) DescribeInstanceAmortizedCostByAmortizationPeriodWithOptions(request *DescribeInstanceAmortizedCostByAmortizationPeriodRequest, runtime *util.RuntimeOptions) (_result *DescribeInstanceAmortizedCostByAmortizationPeriodResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -27249,12 +36813,17 @@ func (client *Client) DescribeInstanceAmortizedCostByAmortizationPeriodWithOptio
 	return _result, _err
 }
 
-/**
- * You can view and export the allocated costs of the current month after 10:00 on the fourth day of the next month. The allocated costs of a single allocation month may involve orders or bills in different billing cycles. If a historical allocated amount is incorrect, the historical allocated costs need to be adjusted. As a result, the allocated costs displayed for a single allocation month may be different at different time points.
- *
- * @param request DescribeInstanceAmortizedCostByAmortizationPeriodRequest
- * @return DescribeInstanceAmortizedCostByAmortizationPeriodResponse
- */
+// Summary:
+//
+// Queries the monthly allocated costs of instances by allocation month.
+//
+// Description:
+//
+// You can view and export the allocated costs of the current month after 10:00 on the fourth day of the next month. The allocated costs of a single allocation month may involve orders or bills in different billing cycles. If a historical allocated amount is incorrect, the historical allocated costs need to be adjusted. As a result, the allocated costs displayed for a single allocation month may be different at different time points.
+//
+// @param request - DescribeInstanceAmortizedCostByAmortizationPeriodRequest
+//
+// @return DescribeInstanceAmortizedCostByAmortizationPeriodResponse
 func (client *Client) DescribeInstanceAmortizedCostByAmortizationPeriod(request *DescribeInstanceAmortizedCostByAmortizationPeriodRequest) (_result *DescribeInstanceAmortizedCostByAmortizationPeriodResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeInstanceAmortizedCostByAmortizationPeriodResponse{}
@@ -27266,6 +36835,15 @@ func (client *Client) DescribeInstanceAmortizedCostByAmortizationPeriod(request 
 	return _result, _err
 }
 
+// Summary:
+//
+// 实例摊销日摊销成本
+//
+// @param request - DescribeInstanceAmortizedCostByAmortizationPeriodDateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeInstanceAmortizedCostByAmortizationPeriodDateResponse
 func (client *Client) DescribeInstanceAmortizedCostByAmortizationPeriodDateWithOptions(request *DescribeInstanceAmortizedCostByAmortizationPeriodDateRequest, runtime *util.RuntimeOptions) (_result *DescribeInstanceAmortizedCostByAmortizationPeriodDateResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -27343,6 +36921,13 @@ func (client *Client) DescribeInstanceAmortizedCostByAmortizationPeriodDateWithO
 	return _result, _err
 }
 
+// Summary:
+//
+// 实例摊销日摊销成本
+//
+// @param request - DescribeInstanceAmortizedCostByAmortizationPeriodDateRequest
+//
+// @return DescribeInstanceAmortizedCostByAmortizationPeriodDateResponse
 func (client *Client) DescribeInstanceAmortizedCostByAmortizationPeriodDate(request *DescribeInstanceAmortizedCostByAmortizationPeriodDateRequest) (_result *DescribeInstanceAmortizedCostByAmortizationPeriodDateResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeInstanceAmortizedCostByAmortizationPeriodDateResponse{}
@@ -27354,6 +36939,15 @@ func (client *Client) DescribeInstanceAmortizedCostByAmortizationPeriodDate(requ
 	return _result, _err
 }
 
+// Summary:
+//
+// 实例账期月摊销成本
+//
+// @param request - DescribeInstanceAmortizedCostByConsumePeriodRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeInstanceAmortizedCostByConsumePeriodResponse
 func (client *Client) DescribeInstanceAmortizedCostByConsumePeriodWithOptions(request *DescribeInstanceAmortizedCostByConsumePeriodRequest, runtime *util.RuntimeOptions) (_result *DescribeInstanceAmortizedCostByConsumePeriodResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -27427,6 +37021,13 @@ func (client *Client) DescribeInstanceAmortizedCostByConsumePeriodWithOptions(re
 	return _result, _err
 }
 
+// Summary:
+//
+// 实例账期月摊销成本
+//
+// @param request - DescribeInstanceAmortizedCostByConsumePeriodRequest
+//
+// @return DescribeInstanceAmortizedCostByConsumePeriodResponse
 func (client *Client) DescribeInstanceAmortizedCostByConsumePeriod(request *DescribeInstanceAmortizedCostByConsumePeriodRequest) (_result *DescribeInstanceAmortizedCostByConsumePeriodResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeInstanceAmortizedCostByConsumePeriodResponse{}
@@ -27438,15 +37039,23 @@ func (client *Client) DescribeInstanceAmortizedCostByConsumePeriod(request *Desc
 	return _result, _err
 }
 
-/**
- * *   Instance bills are generated after the total bill is split. In most cases, the instance bills do not include data generated on the last day of the specified billing cycle.
- * *   The instance information may change during the billing cycle. The instance configurations and types in monthly bills are subject to the point in time when you query bills. For more information, see the corresponding bill details.
- * *   You can query data generated after June 2020 for Cloud Communications services. You can query data generated after November 2020 for Alibaba Cloud Domains.
- *
- * @param request DescribeInstanceBillRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DescribeInstanceBillResponse
- */
+// Summary:
+//
+// Queries the billing information about instances or billable items in a billing cycle.
+//
+// Description:
+//
+//   Instance bills are generated after the total bill is split. In most cases, the instance bills do not include data generated on the last day of the specified billing cycle.
+//
+// 	- The instance information may change during the billing cycle. The instance configurations and types in monthly bills are subject to the point in time when you query bills. For more information, see the corresponding bill details.
+//
+// 	- You can query data generated after June 2020 for Cloud Communications services. You can query data generated after November 2020 for Alibaba Cloud Domains.
+//
+// @param request - DescribeInstanceBillRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeInstanceBillResponse
 func (client *Client) DescribeInstanceBillWithOptions(request *DescribeInstanceBillRequest, runtime *util.RuntimeOptions) (_result *DescribeInstanceBillResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -27532,14 +37141,21 @@ func (client *Client) DescribeInstanceBillWithOptions(request *DescribeInstanceB
 	return _result, _err
 }
 
-/**
- * *   Instance bills are generated after the total bill is split. In most cases, the instance bills do not include data generated on the last day of the specified billing cycle.
- * *   The instance information may change during the billing cycle. The instance configurations and types in monthly bills are subject to the point in time when you query bills. For more information, see the corresponding bill details.
- * *   You can query data generated after June 2020 for Cloud Communications services. You can query data generated after November 2020 for Alibaba Cloud Domains.
- *
- * @param request DescribeInstanceBillRequest
- * @return DescribeInstanceBillResponse
- */
+// Summary:
+//
+// Queries the billing information about instances or billable items in a billing cycle.
+//
+// Description:
+//
+//   Instance bills are generated after the total bill is split. In most cases, the instance bills do not include data generated on the last day of the specified billing cycle.
+//
+// 	- The instance information may change during the billing cycle. The instance configurations and types in monthly bills are subject to the point in time when you query bills. For more information, see the corresponding bill details.
+//
+// 	- You can query data generated after June 2020 for Cloud Communications services. You can query data generated after November 2020 for Alibaba Cloud Domains.
+//
+// @param request - DescribeInstanceBillRequest
+//
+// @return DescribeInstanceBillResponse
 func (client *Client) DescribeInstanceBill(request *DescribeInstanceBillRequest) (_result *DescribeInstanceBillResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeInstanceBillResponse{}
@@ -27551,6 +37167,15 @@ func (client *Client) DescribeInstanceBill(request *DescribeInstanceBillRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// 实例摊销日抵扣还原摊销成本
+//
+// @param request - DescribeInstanceDeductAmortizedCostByAmortizationPeriodRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeInstanceDeductAmortizedCostByAmortizationPeriodResponse
 func (client *Client) DescribeInstanceDeductAmortizedCostByAmortizationPeriodWithOptions(request *DescribeInstanceDeductAmortizedCostByAmortizationPeriodRequest, runtime *util.RuntimeOptions) (_result *DescribeInstanceDeductAmortizedCostByAmortizationPeriodResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -27620,6 +37245,13 @@ func (client *Client) DescribeInstanceDeductAmortizedCostByAmortizationPeriodWit
 	return _result, _err
 }
 
+// Summary:
+//
+// 实例摊销日抵扣还原摊销成本
+//
+// @param request - DescribeInstanceDeductAmortizedCostByAmortizationPeriodRequest
+//
+// @return DescribeInstanceDeductAmortizedCostByAmortizationPeriodResponse
 func (client *Client) DescribeInstanceDeductAmortizedCostByAmortizationPeriod(request *DescribeInstanceDeductAmortizedCostByAmortizationPeriodRequest) (_result *DescribeInstanceDeductAmortizedCostByAmortizationPeriodResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeInstanceDeductAmortizedCostByAmortizationPeriodResponse{}
@@ -27631,6 +37263,15 @@ func (client *Client) DescribeInstanceDeductAmortizedCostByAmortizationPeriod(re
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the pricing information about an Alibaba Cloud service.
+//
+// @param request - DescribePricingModuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribePricingModuleResponse
 func (client *Client) DescribePricingModuleWithOptions(request *DescribePricingModuleRequest, runtime *util.RuntimeOptions) (_result *DescribePricingModuleResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -27676,6 +37317,13 @@ func (client *Client) DescribePricingModuleWithOptions(request *DescribePricingM
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the pricing information about an Alibaba Cloud service.
+//
+// @param request - DescribePricingModuleRequest
+//
+// @return DescribePricingModuleResponse
 func (client *Client) DescribePricingModule(request *DescribePricingModuleRequest) (_result *DescribePricingModuleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribePricingModuleResponse{}
@@ -27687,13 +37335,19 @@ func (client *Client) DescribePricingModule(request *DescribePricingModuleReques
 	return _result, _err
 }
 
-/**
- * You can view and export the allocated costs of the current month after 10:00 on the fourth day of the next month. The allocated costs of a single allocation month may involve orders or bills in different billing cycles. If a historical allocated amount is incorrect, the historical allocated costs need to be adjusted. As a result, the allocated costs displayed for a single allocation month may be different at different time points.
- *
- * @param request DescribeProductAmortizedCostByAmortizationPeriodRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DescribeProductAmortizedCostByAmortizationPeriodResponse
- */
+// Summary:
+//
+// Queries the allocated costs of services by allocation month.
+//
+// Description:
+//
+// You can view and export the allocated costs of the current month after 10:00 on the fourth day of the next month. The allocated costs of a single allocation month may involve orders or bills in different billing cycles. If a historical allocated amount is incorrect, the historical allocated costs need to be adjusted. As a result, the allocated costs displayed for a single allocation month may be different at different time points.
+//
+// @param request - DescribeProductAmortizedCostByAmortizationPeriodRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeProductAmortizedCostByAmortizationPeriodResponse
 func (client *Client) DescribeProductAmortizedCostByAmortizationPeriodWithOptions(request *DescribeProductAmortizedCostByAmortizationPeriodRequest, runtime *util.RuntimeOptions) (_result *DescribeProductAmortizedCostByAmortizationPeriodResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -27763,12 +37417,17 @@ func (client *Client) DescribeProductAmortizedCostByAmortizationPeriodWithOption
 	return _result, _err
 }
 
-/**
- * You can view and export the allocated costs of the current month after 10:00 on the fourth day of the next month. The allocated costs of a single allocation month may involve orders or bills in different billing cycles. If a historical allocated amount is incorrect, the historical allocated costs need to be adjusted. As a result, the allocated costs displayed for a single allocation month may be different at different time points.
- *
- * @param request DescribeProductAmortizedCostByAmortizationPeriodRequest
- * @return DescribeProductAmortizedCostByAmortizationPeriodResponse
- */
+// Summary:
+//
+// Queries the allocated costs of services by allocation month.
+//
+// Description:
+//
+// You can view and export the allocated costs of the current month after 10:00 on the fourth day of the next month. The allocated costs of a single allocation month may involve orders or bills in different billing cycles. If a historical allocated amount is incorrect, the historical allocated costs need to be adjusted. As a result, the allocated costs displayed for a single allocation month may be different at different time points.
+//
+// @param request - DescribeProductAmortizedCostByAmortizationPeriodRequest
+//
+// @return DescribeProductAmortizedCostByAmortizationPeriodResponse
 func (client *Client) DescribeProductAmortizedCostByAmortizationPeriod(request *DescribeProductAmortizedCostByAmortizationPeriodRequest) (_result *DescribeProductAmortizedCostByAmortizationPeriodResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeProductAmortizedCostByAmortizationPeriodResponse{}
@@ -27780,6 +37439,15 @@ func (client *Client) DescribeProductAmortizedCostByAmortizationPeriod(request *
 	return _result, _err
 }
 
+// Summary:
+//
+// 产品账期月摊销成本
+//
+// @param request - DescribeProductAmortizedCostByConsumePeriodRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeProductAmortizedCostByConsumePeriodResponse
 func (client *Client) DescribeProductAmortizedCostByConsumePeriodWithOptions(request *DescribeProductAmortizedCostByConsumePeriodRequest, runtime *util.RuntimeOptions) (_result *DescribeProductAmortizedCostByConsumePeriodResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -27849,6 +37517,13 @@ func (client *Client) DescribeProductAmortizedCostByConsumePeriodWithOptions(req
 	return _result, _err
 }
 
+// Summary:
+//
+// 产品账期月摊销成本
+//
+// @param request - DescribeProductAmortizedCostByConsumePeriodRequest
+//
+// @return DescribeProductAmortizedCostByConsumePeriodResponse
 func (client *Client) DescribeProductAmortizedCostByConsumePeriod(request *DescribeProductAmortizedCostByConsumePeriodRequest) (_result *DescribeProductAmortizedCostByConsumePeriodResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeProductAmortizedCostByConsumePeriodResponse{}
@@ -27860,15 +37535,23 @@ func (client *Client) DescribeProductAmortizedCostByConsumePeriod(request *Descr
 	return _result, _err
 }
 
-/**
- * 1\\. The queried coverage details are the same as those displayed in the table on the Coverage tab of the Manage Reserved Instances page in the Billing Management console.
- * 2\\. You can call this operation to query the coverage details of RIs or SCUs.
- * 3\\. You can call this operation to query coverage details at an hourly, daily, or monthly granularity.
- *
- * @param request DescribeResourceCoverageDetailRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DescribeResourceCoverageDetailResponse
- */
+// Summary:
+//
+// Queries the coverage details of reserved instances (RIs) or storage capacity units (SCUs).
+//
+// Description:
+//
+// 1\\. The queried coverage details are the same as those displayed in the table on the Coverage tab of the Manage Reserved Instances page in the Billing Management console.
+//
+// 2\\. You can call this operation to query the coverage details of RIs or SCUs.
+//
+// 3\\. You can call this operation to query coverage details at an hourly, daily, or monthly granularity.
+//
+// @param request - DescribeResourceCoverageDetailRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeResourceCoverageDetailResponse
 func (client *Client) DescribeResourceCoverageDetailWithOptions(request *DescribeResourceCoverageDetailRequest, runtime *util.RuntimeOptions) (_result *DescribeResourceCoverageDetailResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -27926,14 +37609,21 @@ func (client *Client) DescribeResourceCoverageDetailWithOptions(request *Describ
 	return _result, _err
 }
 
-/**
- * 1\\. The queried coverage details are the same as those displayed in the table on the Coverage tab of the Manage Reserved Instances page in the Billing Management console.
- * 2\\. You can call this operation to query the coverage details of RIs or SCUs.
- * 3\\. You can call this operation to query coverage details at an hourly, daily, or monthly granularity.
- *
- * @param request DescribeResourceCoverageDetailRequest
- * @return DescribeResourceCoverageDetailResponse
- */
+// Summary:
+//
+// Queries the coverage details of reserved instances (RIs) or storage capacity units (SCUs).
+//
+// Description:
+//
+// 1\\. The queried coverage details are the same as those displayed in the table on the Coverage tab of the Manage Reserved Instances page in the Billing Management console.
+//
+// 2\\. You can call this operation to query the coverage details of RIs or SCUs.
+//
+// 3\\. You can call this operation to query coverage details at an hourly, daily, or monthly granularity.
+//
+// @param request - DescribeResourceCoverageDetailRequest
+//
+// @return DescribeResourceCoverageDetailResponse
 func (client *Client) DescribeResourceCoverageDetail(request *DescribeResourceCoverageDetailRequest) (_result *DescribeResourceCoverageDetailResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeResourceCoverageDetailResponse{}
@@ -27945,14 +37635,21 @@ func (client *Client) DescribeResourceCoverageDetail(request *DescribeResourceCo
 	return _result, _err
 }
 
-/**
- * The queried total coverage data is the same as the aggregated data displayed on the Coverage tab of the Manage Reserved Instances page in the Billing Management console.
- * You can call this operation to query the total coverage data of RIs or SCUs.
- *
- * @param request DescribeResourceCoverageTotalRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DescribeResourceCoverageTotalResponse
- */
+// Summary:
+//
+// Queries the total coverage data of reserved instances (RIs) or storage capacity units (SCUs).
+//
+// Description:
+//
+// The queried total coverage data is the same as the aggregated data displayed on the Coverage tab of the Manage Reserved Instances page in the Billing Management console.
+//
+// You can call this operation to query the total coverage data of RIs or SCUs.
+//
+// @param request - DescribeResourceCoverageTotalRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeResourceCoverageTotalResponse
 func (client *Client) DescribeResourceCoverageTotalWithOptions(request *DescribeResourceCoverageTotalRequest, runtime *util.RuntimeOptions) (_result *DescribeResourceCoverageTotalResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -28002,13 +37699,19 @@ func (client *Client) DescribeResourceCoverageTotalWithOptions(request *Describe
 	return _result, _err
 }
 
-/**
- * The queried total coverage data is the same as the aggregated data displayed on the Coverage tab of the Manage Reserved Instances page in the Billing Management console.
- * You can call this operation to query the total coverage data of RIs or SCUs.
- *
- * @param request DescribeResourceCoverageTotalRequest
- * @return DescribeResourceCoverageTotalResponse
- */
+// Summary:
+//
+// Queries the total coverage data of reserved instances (RIs) or storage capacity units (SCUs).
+//
+// Description:
+//
+// The queried total coverage data is the same as the aggregated data displayed on the Coverage tab of the Manage Reserved Instances page in the Billing Management console.
+//
+// You can call this operation to query the total coverage data of RIs or SCUs.
+//
+// @param request - DescribeResourceCoverageTotalRequest
+//
+// @return DescribeResourceCoverageTotalResponse
 func (client *Client) DescribeResourceCoverageTotal(request *DescribeResourceCoverageTotalRequest) (_result *DescribeResourceCoverageTotalResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeResourceCoverageTotalResponse{}
@@ -28020,6 +37723,15 @@ func (client *Client) DescribeResourceCoverageTotal(request *DescribeResourceCov
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about resource plans of an Alibaba Cloud service.
+//
+// @param request - DescribeResourcePackageProductRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeResourcePackageProductResponse
 func (client *Client) DescribeResourcePackageProductWithOptions(request *DescribeResourcePackageProductRequest, runtime *util.RuntimeOptions) (_result *DescribeResourcePackageProductResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -28053,6 +37765,13 @@ func (client *Client) DescribeResourcePackageProductWithOptions(request *Describ
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about resource plans of an Alibaba Cloud service.
+//
+// @param request - DescribeResourcePackageProductRequest
+//
+// @return DescribeResourcePackageProductResponse
 func (client *Client) DescribeResourcePackageProduct(request *DescribeResourcePackageProductRequest) (_result *DescribeResourcePackageProductResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeResourcePackageProductResponse{}
@@ -28064,6 +37783,15 @@ func (client *Client) DescribeResourcePackageProduct(request *DescribeResourcePa
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the usage details of reserved instances (RIs) or storage capacity units (SCUs).
+//
+// @param request - DescribeResourceUsageDetailRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeResourceUsageDetailResponse
 func (client *Client) DescribeResourceUsageDetailWithOptions(request *DescribeResourceUsageDetailRequest, runtime *util.RuntimeOptions) (_result *DescribeResourceUsageDetailResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -28121,6 +37849,13 @@ func (client *Client) DescribeResourceUsageDetailWithOptions(request *DescribeRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the usage details of reserved instances (RIs) or storage capacity units (SCUs).
+//
+// @param request - DescribeResourceUsageDetailRequest
+//
+// @return DescribeResourceUsageDetailResponse
 func (client *Client) DescribeResourceUsageDetail(request *DescribeResourceUsageDetailRequest) (_result *DescribeResourceUsageDetailResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeResourceUsageDetailResponse{}
@@ -28132,6 +37867,15 @@ func (client *Client) DescribeResourceUsageDetail(request *DescribeResourceUsage
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the total usage data of reserved instances or storage capacity units (SCUs).
+//
+// @param request - DescribeResourceUsageTotalRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeResourceUsageTotalResponse
 func (client *Client) DescribeResourceUsageTotalWithOptions(request *DescribeResourceUsageTotalRequest, runtime *util.RuntimeOptions) (_result *DescribeResourceUsageTotalResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -28181,6 +37925,13 @@ func (client *Client) DescribeResourceUsageTotalWithOptions(request *DescribeRes
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the total usage data of reserved instances or storage capacity units (SCUs).
+//
+// @param request - DescribeResourceUsageTotalRequest
+//
+// @return DescribeResourceUsageTotalResponse
 func (client *Client) DescribeResourceUsageTotal(request *DescribeResourceUsageTotalRequest) (_result *DescribeResourceUsageTotalResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeResourceUsageTotalResponse{}
@@ -28192,6 +37943,15 @@ func (client *Client) DescribeResourceUsageTotal(request *DescribeResourceUsageT
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the coverage details of savings plans.
+//
+// @param request - DescribeSavingsPlansCoverageDetailRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeSavingsPlansCoverageDetailResponse
 func (client *Client) DescribeSavingsPlansCoverageDetailWithOptions(request *DescribeSavingsPlansCoverageDetailRequest, runtime *util.RuntimeOptions) (_result *DescribeSavingsPlansCoverageDetailResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -28245,6 +38005,13 @@ func (client *Client) DescribeSavingsPlansCoverageDetailWithOptions(request *Des
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the coverage details of savings plans.
+//
+// @param request - DescribeSavingsPlansCoverageDetailRequest
+//
+// @return DescribeSavingsPlansCoverageDetailResponse
 func (client *Client) DescribeSavingsPlansCoverageDetail(request *DescribeSavingsPlansCoverageDetailRequest) (_result *DescribeSavingsPlansCoverageDetailResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeSavingsPlansCoverageDetailResponse{}
@@ -28256,6 +38023,15 @@ func (client *Client) DescribeSavingsPlansCoverageDetail(request *DescribeSaving
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the coverage summary of savings plans.
+//
+// @param request - DescribeSavingsPlansCoverageTotalRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeSavingsPlansCoverageTotalResponse
 func (client *Client) DescribeSavingsPlansCoverageTotalWithOptions(request *DescribeSavingsPlansCoverageTotalRequest, runtime *util.RuntimeOptions) (_result *DescribeSavingsPlansCoverageTotalResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -28301,6 +38077,13 @@ func (client *Client) DescribeSavingsPlansCoverageTotalWithOptions(request *Desc
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the coverage summary of savings plans.
+//
+// @param request - DescribeSavingsPlansCoverageTotalRequest
+//
+// @return DescribeSavingsPlansCoverageTotalResponse
 func (client *Client) DescribeSavingsPlansCoverageTotal(request *DescribeSavingsPlansCoverageTotalRequest) (_result *DescribeSavingsPlansCoverageTotalResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeSavingsPlansCoverageTotalResponse{}
@@ -28312,6 +38095,11 @@ func (client *Client) DescribeSavingsPlansCoverageTotal(request *DescribeSavings
 	return _result, _err
 }
 
+// @param request - DescribeSavingsPlansUsageDetailRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeSavingsPlansUsageDetailResponse
 func (client *Client) DescribeSavingsPlansUsageDetailWithOptions(request *DescribeSavingsPlansUsageDetailRequest, runtime *util.RuntimeOptions) (_result *DescribeSavingsPlansUsageDetailResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -28365,6 +38153,9 @@ func (client *Client) DescribeSavingsPlansUsageDetailWithOptions(request *Descri
 	return _result, _err
 }
 
+// @param request - DescribeSavingsPlansUsageDetailRequest
+//
+// @return DescribeSavingsPlansUsageDetailResponse
 func (client *Client) DescribeSavingsPlansUsageDetail(request *DescribeSavingsPlansUsageDetailRequest) (_result *DescribeSavingsPlansUsageDetailResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeSavingsPlansUsageDetailResponse{}
@@ -28376,6 +38167,15 @@ func (client *Client) DescribeSavingsPlansUsageDetail(request *DescribeSavingsPl
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the usage summary of savings plans.
+//
+// @param request - DescribeSavingsPlansUsageTotalRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeSavingsPlansUsageTotalResponse
 func (client *Client) DescribeSavingsPlansUsageTotalWithOptions(request *DescribeSavingsPlansUsageTotalRequest, runtime *util.RuntimeOptions) (_result *DescribeSavingsPlansUsageTotalResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -28421,6 +38221,13 @@ func (client *Client) DescribeSavingsPlansUsageTotalWithOptions(request *Describ
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the usage summary of savings plans.
+//
+// @param request - DescribeSavingsPlansUsageTotalRequest
+//
+// @return DescribeSavingsPlansUsageTotalResponse
 func (client *Client) DescribeSavingsPlansUsageTotal(request *DescribeSavingsPlansUsageTotalRequest) (_result *DescribeSavingsPlansUsageTotalResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeSavingsPlansUsageTotalResponse{}
@@ -28432,15 +38239,23 @@ func (client *Client) DescribeSavingsPlansUsageTotal(request *DescribeSavingsPla
 	return _result, _err
 }
 
-/**
- * *   The data that you query by calling this operation is the same as the data that is queried by billing cycles in the Split Bill module of Cost Allocation.
- * *   You can query split bills that were generated within the last 12 months by calling this operation.
- * *   You can query split bills only after you enable the [Split Bill](https://usercenter2.aliyun.com/finance/split-bill) service in the User Center console.
- *
- * @param request DescribeSplitItemBillRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DescribeSplitItemBillResponse
- */
+// Summary:
+//
+// Queries split bills.
+//
+// Description:
+//
+//   The data that you query by calling this operation is the same as the data that is queried by billing cycles in the Split Bill module of Cost Allocation.
+//
+// 	- You can query split bills that were generated within the last 12 months by calling this operation.
+//
+// 	- You can query split bills only after you enable the [Split Bill](https://usercenter2.aliyun.com/finance/split-bill) service in the User Center console.
+//
+// @param request - DescribeSplitItemBillRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeSplitItemBillResponse
 func (client *Client) DescribeSplitItemBillWithOptions(request *DescribeSplitItemBillRequest, runtime *util.RuntimeOptions) (_result *DescribeSplitItemBillResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -28481,6 +38296,10 @@ func (client *Client) DescribeSplitItemBillWithOptions(request *DescribeSplitIte
 
 	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
 		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PipCode)) {
+		query["PipCode"] = request.PipCode
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ProductCode)) {
@@ -28526,14 +38345,21 @@ func (client *Client) DescribeSplitItemBillWithOptions(request *DescribeSplitIte
 	return _result, _err
 }
 
-/**
- * *   The data that you query by calling this operation is the same as the data that is queried by billing cycles in the Split Bill module of Cost Allocation.
- * *   You can query split bills that were generated within the last 12 months by calling this operation.
- * *   You can query split bills only after you enable the [Split Bill](https://usercenter2.aliyun.com/finance/split-bill) service in the User Center console.
- *
- * @param request DescribeSplitItemBillRequest
- * @return DescribeSplitItemBillResponse
- */
+// Summary:
+//
+// Queries split bills.
+//
+// Description:
+//
+//   The data that you query by calling this operation is the same as the data that is queried by billing cycles in the Split Bill module of Cost Allocation.
+//
+// 	- You can query split bills that were generated within the last 12 months by calling this operation.
+//
+// 	- You can query split bills only after you enable the [Split Bill](https://usercenter2.aliyun.com/finance/split-bill) service in the User Center console.
+//
+// @param request - DescribeSplitItemBillRequest
+//
+// @return DescribeSplitItemBillResponse
 func (client *Client) DescribeSplitItemBill(request *DescribeSplitItemBillRequest) (_result *DescribeSplitItemBillResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeSplitItemBillResponse{}
@@ -28545,54 +38371,15 @@ func (client *Client) DescribeSplitItemBill(request *DescribeSplitItemBillReques
 	return _result, _err
 }
 
-func (client *Client) EnableBillGenerationWithOptions(request *EnableBillGenerationRequest, runtime *util.RuntimeOptions) (_result *EnableBillGenerationResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
-		query["OwnerId"] = request.OwnerId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ProductCode)) {
-		query["ProductCode"] = request.ProductCode
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("EnableBillGeneration"),
-		Version:     tea.String("2017-12-14"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &EnableBillGenerationResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) EnableBillGeneration(request *EnableBillGenerationRequest) (_result *EnableBillGenerationResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &EnableBillGenerationResponse{}
-	_body, _err := client.EnableBillGenerationWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
+// Summary:
+//
+// Queries the details of a financial relationship.
+//
+// @param request - GetAccountRelationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAccountRelationResponse
 func (client *Client) GetAccountRelationWithOptions(request *GetAccountRelationRequest, runtime *util.RuntimeOptions) (_result *GetAccountRelationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -28622,6 +38409,13 @@ func (client *Client) GetAccountRelationWithOptions(request *GetAccountRelationR
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the details of a financial relationship.
+//
+// @param request - GetAccountRelationRequest
+//
+// @return GetAccountRelationResponse
 func (client *Client) GetAccountRelation(request *GetAccountRelationRequest) (_result *GetAccountRelationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetAccountRelationResponse{}
@@ -28633,6 +38427,15 @@ func (client *Client) GetAccountRelation(request *GetAccountRelationRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the account information about a customer of a virtual network operator (VNO).
+//
+// @param request - GetCustomerAccountInfoRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetCustomerAccountInfoResponse
 func (client *Client) GetCustomerAccountInfoWithOptions(request *GetCustomerAccountInfoRequest, runtime *util.RuntimeOptions) (_result *GetCustomerAccountInfoResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -28666,6 +38469,13 @@ func (client *Client) GetCustomerAccountInfoWithOptions(request *GetCustomerAcco
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the account information about a customer of a virtual network operator (VNO).
+//
+// @param request - GetCustomerAccountInfoRequest
+//
+// @return GetCustomerAccountInfoResponse
 func (client *Client) GetCustomerAccountInfo(request *GetCustomerAccountInfoRequest) (_result *GetCustomerAccountInfoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetCustomerAccountInfoResponse{}
@@ -28677,13 +38487,19 @@ func (client *Client) GetCustomerAccountInfo(request *GetCustomerAccountInfoRequ
 	return _result, _err
 }
 
-/**
- * The system queries the IDs of customers of a VNO based on the AccessKey pair used in the request.
- *
- * @param request GetCustomerListRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return GetCustomerListResponse
- */
+// Summary:
+//
+// Queries the IDs of customers of a virtual network operator (VNO).
+//
+// Description:
+//
+// The system queries the IDs of customers of a VNO based on the AccessKey pair used in the request.
+//
+// @param request - GetCustomerListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetCustomerListResponse
 func (client *Client) GetCustomerListWithOptions(runtime *util.RuntimeOptions) (_result *GetCustomerListResponse, _err error) {
 	req := &openapi.OpenApiRequest{}
 	params := &openapi.Params{
@@ -28706,11 +38522,15 @@ func (client *Client) GetCustomerListWithOptions(runtime *util.RuntimeOptions) (
 	return _result, _err
 }
 
-/**
- * The system queries the IDs of customers of a VNO based on the AccessKey pair used in the request.
- *
- * @return GetCustomerListResponse
- */
+// Summary:
+//
+// Queries the IDs of customers of a virtual network operator (VNO).
+//
+// Description:
+//
+// The system queries the IDs of customers of a VNO based on the AccessKey pair used in the request.
+//
+// @return GetCustomerListResponse
 func (client *Client) GetCustomerList() (_result *GetCustomerListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetCustomerListResponse{}
@@ -28722,6 +38542,15 @@ func (client *Client) GetCustomerList() (_result *GetCustomerListResponse, _err 
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the details of an order that belongs to your Alibaba Cloud account or distributors.
+//
+// @param request - GetOrderDetailRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetOrderDetailResponse
 func (client *Client) GetOrderDetailWithOptions(request *GetOrderDetailRequest, runtime *util.RuntimeOptions) (_result *GetOrderDetailResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -28759,6 +38588,13 @@ func (client *Client) GetOrderDetailWithOptions(request *GetOrderDetailRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the details of an order that belongs to your Alibaba Cloud account or distributors.
+//
+// @param request - GetOrderDetailRequest
+//
+// @return GetOrderDetailResponse
 func (client *Client) GetOrderDetail(request *GetOrderDetailRequest) (_result *GetOrderDetailResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetOrderDetailResponse{}
@@ -28770,16 +38606,25 @@ func (client *Client) GetOrderDetail(request *GetOrderDetailRequest) (_result *G
 	return _result, _err
 }
 
-/**
- * ### Usage notes
- * 1.  Call the QueryProductList operation to obtain the code of the service. For more information, see [QueryProductList](~~95984~~).
- * 2.  Call the DescribePricingModule operation to obtain the configuration parameters of the service. For more information, see [DescribePricingModule](~~96469~~).
- * 3.  Call the GetPayAsYouGoPrice operation to obtain the pay-as-you-go price of the service based on the returned configuration parameters.
- *
- * @param request GetPayAsYouGoPriceRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return GetPayAsYouGoPriceResponse
- */
+// Summary:
+//
+// Queries the pay-as-you-go price of an Alibaba Cloud service.
+//
+// Description:
+//
+// ### Usage notes
+//
+// 1.  Call the QueryProductList operation to obtain the code of the service. For more information, see [QueryProductList](https://help.aliyun.com/document_detail/95984.html).
+//
+// 2.  Call the DescribePricingModule operation to obtain the configuration parameters of the service. For more information, see [DescribePricingModule](https://help.aliyun.com/document_detail/96469.html).
+//
+// 3.  Call the GetPayAsYouGoPrice operation to obtain the pay-as-you-go price of the service based on the returned configuration parameters.
+//
+// @param request - GetPayAsYouGoPriceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetPayAsYouGoPriceResponse
 func (client *Client) GetPayAsYouGoPriceWithOptions(request *GetPayAsYouGoPriceRequest, runtime *util.RuntimeOptions) (_result *GetPayAsYouGoPriceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -28833,15 +38678,23 @@ func (client *Client) GetPayAsYouGoPriceWithOptions(request *GetPayAsYouGoPriceR
 	return _result, _err
 }
 
-/**
- * ### Usage notes
- * 1.  Call the QueryProductList operation to obtain the code of the service. For more information, see [QueryProductList](~~95984~~).
- * 2.  Call the DescribePricingModule operation to obtain the configuration parameters of the service. For more information, see [DescribePricingModule](~~96469~~).
- * 3.  Call the GetPayAsYouGoPrice operation to obtain the pay-as-you-go price of the service based on the returned configuration parameters.
- *
- * @param request GetPayAsYouGoPriceRequest
- * @return GetPayAsYouGoPriceResponse
- */
+// Summary:
+//
+// Queries the pay-as-you-go price of an Alibaba Cloud service.
+//
+// Description:
+//
+// ### Usage notes
+//
+// 1.  Call the QueryProductList operation to obtain the code of the service. For more information, see [QueryProductList](https://help.aliyun.com/document_detail/95984.html).
+//
+// 2.  Call the DescribePricingModule operation to obtain the configuration parameters of the service. For more information, see [DescribePricingModule](https://help.aliyun.com/document_detail/96469.html).
+//
+// 3.  Call the GetPayAsYouGoPrice operation to obtain the pay-as-you-go price of the service based on the returned configuration parameters.
+//
+// @param request - GetPayAsYouGoPriceRequest
+//
+// @return GetPayAsYouGoPriceResponse
 func (client *Client) GetPayAsYouGoPrice(request *GetPayAsYouGoPriceRequest) (_result *GetPayAsYouGoPriceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetPayAsYouGoPriceResponse{}
@@ -28853,6 +38706,15 @@ func (client *Client) GetPayAsYouGoPrice(request *GetPayAsYouGoPriceRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the price of a resource plan.
+//
+// @param request - GetResourcePackagePriceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetResourcePackagePriceResponse
 func (client *Client) GetResourcePackagePriceWithOptions(request *GetResourcePackagePriceRequest, runtime *util.RuntimeOptions) (_result *GetResourcePackagePriceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -28918,6 +38780,13 @@ func (client *Client) GetResourcePackagePriceWithOptions(request *GetResourcePac
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the price of a resource plan.
+//
+// @param request - GetResourcePackagePriceRequest
+//
+// @return GetResourcePackagePriceResponse
 func (client *Client) GetResourcePackagePrice(request *GetResourcePackagePriceRequest) (_result *GetResourcePackagePriceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetResourcePackagePriceResponse{}
@@ -28929,15 +38798,23 @@ func (client *Client) GetResourcePackagePrice(request *GetResourcePackagePriceRe
 	return _result, _err
 }
 
-/**
- * 1.  Call the QueryProductList operation to obtain the code of the service. For more information, see [QueryProductList](~~95984~~).
- * 2.  Call the DescribePricingModule operation to obtain the configuration parameters of the service. For more information, see [DescribePricingModule](~~96469~~).
- * 3.  Call the GetSubscriptionPrice operation to obtain the pricing of the service based on the returned configuration parameters.
- *
- * @param request GetSubscriptionPriceRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return GetSubscriptionPriceResponse
- */
+// Summary:
+//
+// Queries the subscription price of an Alibaba Cloud service.
+//
+// Description:
+//
+// 1.  Call the QueryProductList operation to obtain the code of the service. For more information, see [QueryProductList](https://help.aliyun.com/document_detail/95984.html).
+//
+// 2.  Call the DescribePricingModule operation to obtain the configuration parameters of the service. For more information, see [DescribePricingModule](https://help.aliyun.com/document_detail/96469.html).
+//
+// 3.  Call the GetSubscriptionPrice operation to obtain the pricing of the service based on the returned configuration parameters.
+//
+// @param request - GetSubscriptionPriceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetSubscriptionPriceResponse
 func (client *Client) GetSubscriptionPriceWithOptions(request *GetSubscriptionPriceRequest, runtime *util.RuntimeOptions) (_result *GetSubscriptionPriceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -29011,14 +38888,21 @@ func (client *Client) GetSubscriptionPriceWithOptions(request *GetSubscriptionPr
 	return _result, _err
 }
 
-/**
- * 1.  Call the QueryProductList operation to obtain the code of the service. For more information, see [QueryProductList](~~95984~~).
- * 2.  Call the DescribePricingModule operation to obtain the configuration parameters of the service. For more information, see [DescribePricingModule](~~96469~~).
- * 3.  Call the GetSubscriptionPrice operation to obtain the pricing of the service based on the returned configuration parameters.
- *
- * @param request GetSubscriptionPriceRequest
- * @return GetSubscriptionPriceResponse
- */
+// Summary:
+//
+// Queries the subscription price of an Alibaba Cloud service.
+//
+// Description:
+//
+// 1.  Call the QueryProductList operation to obtain the code of the service. For more information, see [QueryProductList](https://help.aliyun.com/document_detail/95984.html).
+//
+// 2.  Call the DescribePricingModule operation to obtain the configuration parameters of the service. For more information, see [DescribePricingModule](https://help.aliyun.com/document_detail/96469.html).
+//
+// 3.  Call the GetSubscriptionPrice operation to obtain the pricing of the service based on the returned configuration parameters.
+//
+// @param request - GetSubscriptionPriceRequest
+//
+// @return GetSubscriptionPriceResponse
 func (client *Client) GetSubscriptionPrice(request *GetSubscriptionPriceRequest) (_result *GetSubscriptionPriceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetSubscriptionPriceResponse{}
@@ -29030,15 +38914,23 @@ func (client *Client) GetSubscriptionPrice(request *GetSubscriptionPriceRequest)
 	return _result, _err
 }
 
-/**
- * 1.  **Check the information about unsubscription and confirm the unsubscription terms and refundable amount. The resource that is unsubscribed cannot be restored.**
- * 2.  Refunds are applicable only for the actual paid amount. Vouchers used for the purchase are non-refundable.
- * 3.  For more information, see [Rules for unsubscribing from resources](https://www.alibabacloud.com/help/zh/user-center/user-guide/refund-rules).
- *
- * @param request InquiryPriceRefundInstanceRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return InquiryPriceRefundInstanceResponse
- */
+// Summary:
+//
+// Queries the refundable amount for an instance from which you want to unsubscribe.
+//
+// Description:
+//
+// 1.  **Check the information about unsubscription and confirm the unsubscription terms and refundable amount. The resource that is unsubscribed cannot be restored.**
+//
+// 2.  Refunds are applicable only for the actual paid amount. Vouchers used for the purchase are non-refundable.
+//
+// 3.  For more information, see [Rules for unsubscribing from resources](https://www.alibabacloud.com/help/zh/user-center/user-guide/refund-rules).
+//
+// @param request - InquiryPriceRefundInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return InquiryPriceRefundInstanceResponse
 func (client *Client) InquiryPriceRefundInstanceWithOptions(request *InquiryPriceRefundInstanceRequest, runtime *util.RuntimeOptions) (_result *InquiryPriceRefundInstanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -29084,14 +38976,21 @@ func (client *Client) InquiryPriceRefundInstanceWithOptions(request *InquiryPric
 	return _result, _err
 }
 
-/**
- * 1.  **Check the information about unsubscription and confirm the unsubscription terms and refundable amount. The resource that is unsubscribed cannot be restored.**
- * 2.  Refunds are applicable only for the actual paid amount. Vouchers used for the purchase are non-refundable.
- * 3.  For more information, see [Rules for unsubscribing from resources](https://www.alibabacloud.com/help/zh/user-center/user-guide/refund-rules).
- *
- * @param request InquiryPriceRefundInstanceRequest
- * @return InquiryPriceRefundInstanceResponse
- */
+// Summary:
+//
+// Queries the refundable amount for an instance from which you want to unsubscribe.
+//
+// Description:
+//
+// 1.  **Check the information about unsubscription and confirm the unsubscription terms and refundable amount. The resource that is unsubscribed cannot be restored.**
+//
+// 2.  Refunds are applicable only for the actual paid amount. Vouchers used for the purchase are non-refundable.
+//
+// 3.  For more information, see [Rules for unsubscribing from resources](https://www.alibabacloud.com/help/zh/user-center/user-guide/refund-rules).
+//
+// @param request - InquiryPriceRefundInstanceRequest
+//
+// @return InquiryPriceRefundInstanceResponse
 func (client *Client) InquiryPriceRefundInstance(request *InquiryPriceRefundInstanceRequest) (_result *InquiryPriceRefundInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &InquiryPriceRefundInstanceResponse{}
@@ -29103,6 +39002,15 @@ func (client *Client) InquiryPriceRefundInstance(request *InquiryPriceRefundInst
 	return _result, _err
 }
 
+// Summary:
+//
+// Adds or removes permissions granted to a member in a financial relationship.
+//
+// @param request - ModifyAccountRelationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyAccountRelationResponse
 func (client *Client) ModifyAccountRelationWithOptions(request *ModifyAccountRelationRequest, runtime *util.RuntimeOptions) (_result *ModifyAccountRelationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -29168,6 +39076,13 @@ func (client *Client) ModifyAccountRelationWithOptions(request *ModifyAccountRel
 	return _result, _err
 }
 
+// Summary:
+//
+// Adds or removes permissions granted to a member in a financial relationship.
+//
+// @param request - ModifyAccountRelationRequest
+//
+// @return ModifyAccountRelationResponse
 func (client *Client) ModifyAccountRelation(request *ModifyAccountRelationRequest) (_result *ModifyAccountRelationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyAccountRelationResponse{}
@@ -29179,6 +39094,15 @@ func (client *Client) ModifyAccountRelation(request *ModifyAccountRelationReques
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies one or more cost centers.
+//
+// @param request - ModifyCostUnitRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyCostUnitResponse
 func (client *Client) ModifyCostUnitWithOptions(request *ModifyCostUnitRequest, runtime *util.RuntimeOptions) (_result *ModifyCostUnitResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -29212,6 +39136,13 @@ func (client *Client) ModifyCostUnitWithOptions(request *ModifyCostUnitRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies one or more cost centers.
+//
+// @param request - ModifyCostUnitRequest
+//
+// @return ModifyCostUnitResponse
 func (client *Client) ModifyCostUnit(request *ModifyCostUnitRequest) (_result *ModifyCostUnitResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyCostUnitResponse{}
@@ -29223,6 +39154,15 @@ func (client *Client) ModifyCostUnit(request *ModifyCostUnitRequest) (_result *M
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the configurations of an instance. When you call this operation, the system generates a modification order and automatically completes the payment. You cannot call this operation to modify the configurations of an Elastic Compute Service (ECS) instance or ApsaraDB RDS instance. To modify the configurations of an ECS or ApsaraDB RDS instance, call the dedicated operation of the corresponding service.
+//
+// @param request - ModifyInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyInstanceResponse
 func (client *Client) ModifyInstanceWithOptions(request *ModifyInstanceRequest, runtime *util.RuntimeOptions) (_result *ModifyInstanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -29284,6 +39224,13 @@ func (client *Client) ModifyInstanceWithOptions(request *ModifyInstanceRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the configurations of an instance. When you call this operation, the system generates a modification order and automatically completes the payment. You cannot call this operation to modify the configurations of an Elastic Compute Service (ECS) instance or ApsaraDB RDS instance. To modify the configurations of an ECS or ApsaraDB RDS instance, call the dedicated operation of the corresponding service.
+//
+// @param request - ModifyInstanceRequest
+//
+// @return ModifyInstanceResponse
 func (client *Client) ModifyInstance(request *ModifyInstanceRequest) (_result *ModifyInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyInstanceResponse{}
@@ -29295,6 +39242,15 @@ func (client *Client) ModifyInstance(request *ModifyInstanceRequest) (_result *M
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the balance of your account.
+//
+// @param request - QueryAccountBalanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryAccountBalanceResponse
 func (client *Client) QueryAccountBalanceWithOptions(runtime *util.RuntimeOptions) (_result *QueryAccountBalanceResponse, _err error) {
 	req := &openapi.OpenApiRequest{}
 	params := &openapi.Params{
@@ -29317,6 +39273,11 @@ func (client *Client) QueryAccountBalanceWithOptions(runtime *util.RuntimeOption
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the balance of your account.
+//
+// @return QueryAccountBalanceResponse
 func (client *Client) QueryAccountBalance() (_result *QueryAccountBalanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryAccountBalanceResponse{}
@@ -29328,15 +39289,23 @@ func (client *Client) QueryAccountBalance() (_result *QueryAccountBalanceRespons
 	return _result, _err
 }
 
-/**
- * Before you call this operation, take note of the following items:
- * *   Account bills are summarized based on instance bills. In most cases, the account bills do not include the data generated on the last day of the specified period.
- * *   You can query the data generated in June 2020 or later for Cloud Communications services. However, the query results do not include the data of Alibaba Cloud Domains.
- *
- * @param request QueryAccountBillRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return QueryAccountBillResponse
- */
+// Summary:
+//
+// Queries the bills of your Alibaba Cloud account within a billing cycle. You can summarize the bills by resource owner.
+//
+// Description:
+//
+// Before you call this operation, take note of the following items:
+//
+// 	- Account bills are summarized based on instance bills. In most cases, the account bills do not include the data generated on the last day of the specified period.
+//
+// 	- You can query the data generated in June 2020 or later for Cloud Communications services. However, the query results do not include the data of Alibaba Cloud Domains.
+//
+// @param request - QueryAccountBillRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryAccountBillResponse
 func (client *Client) QueryAccountBillWithOptions(request *QueryAccountBillRequest, runtime *util.RuntimeOptions) (_result *QueryAccountBillResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -29402,14 +39371,21 @@ func (client *Client) QueryAccountBillWithOptions(request *QueryAccountBillReque
 	return _result, _err
 }
 
-/**
- * Before you call this operation, take note of the following items:
- * *   Account bills are summarized based on instance bills. In most cases, the account bills do not include the data generated on the last day of the specified period.
- * *   You can query the data generated in June 2020 or later for Cloud Communications services. However, the query results do not include the data of Alibaba Cloud Domains.
- *
- * @param request QueryAccountBillRequest
- * @return QueryAccountBillResponse
- */
+// Summary:
+//
+// Queries the bills of your Alibaba Cloud account within a billing cycle. You can summarize the bills by resource owner.
+//
+// Description:
+//
+// Before you call this operation, take note of the following items:
+//
+// 	- Account bills are summarized based on instance bills. In most cases, the account bills do not include the data generated on the last day of the specified period.
+//
+// 	- You can query the data generated in June 2020 or later for Cloud Communications services. However, the query results do not include the data of Alibaba Cloud Domains.
+//
+// @param request - QueryAccountBillRequest
+//
+// @return QueryAccountBillResponse
 func (client *Client) QueryAccountBill(request *QueryAccountBillRequest) (_result *QueryAccountBillResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryAccountBillResponse{}
@@ -29421,6 +39397,15 @@ func (client *Client) QueryAccountBill(request *QueryAccountBillRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the details of transactions within your account.
+//
+// @param request - QueryAccountTransactionDetailsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryAccountTransactionDetailsResponse
 func (client *Client) QueryAccountTransactionDetailsWithOptions(request *QueryAccountTransactionDetailsRequest, runtime *util.RuntimeOptions) (_result *QueryAccountTransactionDetailsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -29486,6 +39471,13 @@ func (client *Client) QueryAccountTransactionDetailsWithOptions(request *QueryAc
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the details of transactions within your account.
+//
+// @param request - QueryAccountTransactionDetailsRequest
+//
+// @return QueryAccountTransactionDetailsResponse
 func (client *Client) QueryAccountTransactionDetails(request *QueryAccountTransactionDetailsRequest) (_result *QueryAccountTransactionDetailsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryAccountTransactionDetailsResponse{}
@@ -29497,6 +39489,15 @@ func (client *Client) QueryAccountTransactionDetails(request *QueryAccountTransa
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries transactions within your Alibaba Cloud account.
+//
+// @param request - QueryAccountTransactionsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryAccountTransactionsResponse
 func (client *Client) QueryAccountTransactionsWithOptions(request *QueryAccountTransactionsRequest, runtime *util.RuntimeOptions) (_result *QueryAccountTransactionsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -29566,6 +39567,13 @@ func (client *Client) QueryAccountTransactionsWithOptions(request *QueryAccountT
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries transactions within your Alibaba Cloud account.
+//
+// @param request - QueryAccountTransactionsRequest
+//
+// @return QueryAccountTransactionsResponse
 func (client *Client) QueryAccountTransactions(request *QueryAccountTransactionsRequest) (_result *QueryAccountTransactionsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryAccountTransactionsResponse{}
@@ -29577,6 +39585,15 @@ func (client *Client) QueryAccountTransactions(request *QueryAccountTransactions
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries available instances.
+//
+// @param request - QueryAvailableInstancesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryAvailableInstancesResponse
 func (client *Client) QueryAvailableInstancesWithOptions(request *QueryAvailableInstancesRequest, runtime *util.RuntimeOptions) (_result *QueryAvailableInstancesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -29658,6 +39675,13 @@ func (client *Client) QueryAvailableInstancesWithOptions(request *QueryAvailable
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries available instances.
+//
+// @param request - QueryAvailableInstancesRequest
+//
+// @return QueryAvailableInstancesResponse
 func (client *Client) QueryAvailableInstances(request *QueryAvailableInstancesRequest) (_result *QueryAvailableInstancesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryAvailableInstancesResponse{}
@@ -29669,6 +39693,15 @@ func (client *Client) QueryAvailableInstances(request *QueryAvailableInstancesRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the bills in a billing cycle.
+//
+// @param request - QueryBillRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryBillResponse
 func (client *Client) QueryBillWithOptions(request *QueryBillRequest, runtime *util.RuntimeOptions) (_result *QueryBillResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -29742,6 +39775,13 @@ func (client *Client) QueryBillWithOptions(request *QueryBillRequest, runtime *u
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the bills in a billing cycle.
+//
+// @param request - QueryBillRequest
+//
+// @return QueryBillResponse
 func (client *Client) QueryBill(request *QueryBillRequest) (_result *QueryBillResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryBillResponse{}
@@ -29753,6 +39793,15 @@ func (client *Client) QueryBill(request *QueryBillRequest) (_result *QueryBillRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the bill overview information in a billing cycle.
+//
+// @param request - QueryBillOverviewRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryBillOverviewResponse
 func (client *Client) QueryBillOverviewWithOptions(request *QueryBillOverviewRequest, runtime *util.RuntimeOptions) (_result *QueryBillOverviewResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -29802,6 +39851,13 @@ func (client *Client) QueryBillOverviewWithOptions(request *QueryBillOverviewReq
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the bill overview information in a billing cycle.
+//
+// @param request - QueryBillOverviewRequest
+//
+// @return QueryBillOverviewResponse
 func (client *Client) QueryBillOverview(request *QueryBillOverviewRequest) (_result *QueryBillOverviewResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryBillOverviewResponse{}
@@ -29813,6 +39869,15 @@ func (client *Client) QueryBillOverview(request *QueryBillOverviewRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the subscribed bills that are stored in Object Storage Service (OSS) bucket.
+//
+// @param request - QueryBillToOSSSubscriptionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryBillToOSSSubscriptionResponse
 func (client *Client) QueryBillToOSSSubscriptionWithOptions(runtime *util.RuntimeOptions) (_result *QueryBillToOSSSubscriptionResponse, _err error) {
 	req := &openapi.OpenApiRequest{}
 	params := &openapi.Params{
@@ -29835,6 +39900,11 @@ func (client *Client) QueryBillToOSSSubscriptionWithOptions(runtime *util.Runtim
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the subscribed bills that are stored in Object Storage Service (OSS) bucket.
+//
+// @return QueryBillToOSSSubscriptionResponse
 func (client *Client) QueryBillToOSSSubscription() (_result *QueryBillToOSSSubscriptionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryBillToOSSSubscriptionResponse{}
@@ -29846,6 +39916,15 @@ func (client *Client) QueryBillToOSSSubscription() (_result *QueryBillToOSSSubsc
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about vouchers.
+//
+// @param request - QueryCashCouponsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryCashCouponsResponse
 func (client *Client) QueryCashCouponsWithOptions(request *QueryCashCouponsRequest, runtime *util.RuntimeOptions) (_result *QueryCashCouponsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -29887,6 +39966,13 @@ func (client *Client) QueryCashCouponsWithOptions(request *QueryCashCouponsReque
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about vouchers.
+//
+// @param request - QueryCashCouponsRequest
+//
+// @return QueryCashCouponsResponse
 func (client *Client) QueryCashCoupons(request *QueryCashCouponsRequest) (_result *QueryCashCouponsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryCashCouponsResponse{}
@@ -29898,13 +39984,19 @@ func (client *Client) QueryCashCoupons(request *QueryCashCouponsRequest) (_resul
 	return _result, _err
 }
 
-/**
- * You can call this operation to query the information about a service based on the service code.
- *
- * @param request QueryCommodityListRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return QueryCommodityListResponse
- */
+// Summary:
+//
+// Queries the information about a service based on the service code.
+//
+// Description:
+//
+// You can call this operation to query the information about a service based on the service code.
+//
+// @param request - QueryCommodityListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryCommodityListResponse
 func (client *Client) QueryCommodityListWithOptions(request *QueryCommodityListRequest, runtime *util.RuntimeOptions) (_result *QueryCommodityListResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -29934,12 +40026,17 @@ func (client *Client) QueryCommodityListWithOptions(request *QueryCommodityListR
 	return _result, _err
 }
 
-/**
- * You can call this operation to query the information about a service based on the service code.
- *
- * @param request QueryCommodityListRequest
- * @return QueryCommodityListResponse
- */
+// Summary:
+//
+// Queries the information about a service based on the service code.
+//
+// Description:
+//
+// You can call this operation to query the information about a service based on the service code.
+//
+// @param request - QueryCommodityListRequest
+//
+// @return QueryCommodityListResponse
 func (client *Client) QueryCommodityList(request *QueryCommodityListRequest) (_result *QueryCommodityListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryCommodityListResponse{}
@@ -29951,6 +40048,15 @@ func (client *Client) QueryCommodityList(request *QueryCommodityListRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries all cost centers within the current node of the cost center tree. If the ParentUnitId parameter is set to -1, all cost centers are queried.
+//
+// @param request - QueryCostUnitRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryCostUnitResponse
 func (client *Client) QueryCostUnitWithOptions(request *QueryCostUnitRequest, runtime *util.RuntimeOptions) (_result *QueryCostUnitResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -29996,6 +40102,13 @@ func (client *Client) QueryCostUnitWithOptions(request *QueryCostUnitRequest, ru
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries all cost centers within the current node of the cost center tree. If the ParentUnitId parameter is set to -1, all cost centers are queried.
+//
+// @param request - QueryCostUnitRequest
+//
+// @return QueryCostUnitResponse
 func (client *Client) QueryCostUnit(request *QueryCostUnitRequest) (_result *QueryCostUnitResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryCostUnitResponse{}
@@ -30007,6 +40120,15 @@ func (client *Client) QueryCostUnit(request *QueryCostUnitRequest) (_result *Que
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the resource instances that are allocated to a cost center. If the unitId parameter is set to 0, the unallocated primary resource instances and sub-resource instances are queried.
+//
+// @param request - QueryCostUnitResourceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryCostUnitResourceResponse
 func (client *Client) QueryCostUnitResourceWithOptions(request *QueryCostUnitResourceRequest, runtime *util.RuntimeOptions) (_result *QueryCostUnitResourceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -30052,6 +40174,13 @@ func (client *Client) QueryCostUnitResourceWithOptions(request *QueryCostUnitRes
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the resource instances that are allocated to a cost center. If the unitId parameter is set to 0, the unallocated primary resource instances and sub-resource instances are queried.
+//
+// @param request - QueryCostUnitResourceRequest
+//
+// @return QueryCostUnitResourceResponse
 func (client *Client) QueryCostUnitResource(request *QueryCostUnitResourceRequest) (_result *QueryCostUnitResourceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryCostUnitResourceResponse{}
@@ -30063,6 +40192,15 @@ func (client *Client) QueryCostUnitResource(request *QueryCostUnitResourceReques
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the addresses to which invoices are mailed.
+//
+// @param request - QueryCustomerAddressListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryCustomerAddressListResponse
 func (client *Client) QueryCustomerAddressListWithOptions(request *QueryCustomerAddressListRequest, runtime *util.RuntimeOptions) (_result *QueryCustomerAddressListResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -30096,6 +40234,13 @@ func (client *Client) QueryCustomerAddressListWithOptions(request *QueryCustomer
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the addresses to which invoices are mailed.
+//
+// @param request - QueryCustomerAddressListRequest
+//
+// @return QueryCustomerAddressListResponse
 func (client *Client) QueryCustomerAddressList(request *QueryCustomerAddressListRequest) (_result *QueryCustomerAddressListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryCustomerAddressListResponse{}
@@ -30107,14 +40252,21 @@ func (client *Client) QueryCustomerAddressList(request *QueryCustomerAddressList
 	return _result, _err
 }
 
-/**
- * Limits:
- * *   Only the usage records within the past year can be queried.
- *
- * @param request QueryDPUtilizationDetailRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return QueryDPUtilizationDetailResponse
- */
+// Summary:
+//
+// Queries the usage of resource plans, including reserved instances (RIs) and storage capacity units (SCUs).
+//
+// Description:
+//
+// Limits:
+//
+// 	- Only the usage records within the past year can be queried.
+//
+// @param request - QueryDPUtilizationDetailRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryDPUtilizationDetailResponse
 func (client *Client) QueryDPUtilizationDetailWithOptions(request *QueryDPUtilizationDetailRequest, runtime *util.RuntimeOptions) (_result *QueryDPUtilizationDetailResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -30184,13 +40336,19 @@ func (client *Client) QueryDPUtilizationDetailWithOptions(request *QueryDPUtiliz
 	return _result, _err
 }
 
-/**
- * Limits:
- * *   Only the usage records within the past year can be queried.
- *
- * @param request QueryDPUtilizationDetailRequest
- * @return QueryDPUtilizationDetailResponse
- */
+// Summary:
+//
+// Queries the usage of resource plans, including reserved instances (RIs) and storage capacity units (SCUs).
+//
+// Description:
+//
+// Limits:
+//
+// 	- Only the usage records within the past year can be queried.
+//
+// @param request - QueryDPUtilizationDetailRequest
+//
+// @return QueryDPUtilizationDetailResponse
 func (client *Client) QueryDPUtilizationDetail(request *QueryDPUtilizationDetailRequest) (_result *QueryDPUtilizationDetailResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryDPUtilizationDetailResponse{}
@@ -30202,6 +40360,15 @@ func (client *Client) QueryDPUtilizationDetail(request *QueryDPUtilizationDetail
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about the orders for which you want to apply for invoices.
+//
+// @param request - QueryEvaluateListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryEvaluateListResponse
 func (client *Client) QueryEvaluateListWithOptions(request *QueryEvaluateListRequest, runtime *util.RuntimeOptions) (_result *QueryEvaluateListResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -30287,6 +40454,13 @@ func (client *Client) QueryEvaluateListWithOptions(request *QueryEvaluateListReq
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about the orders for which you want to apply for invoices.
+//
+// @param request - QueryEvaluateListRequest
+//
+// @return QueryEvaluateListResponse
 func (client *Client) QueryEvaluateList(request *QueryEvaluateListRequest) (_result *QueryEvaluateListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryEvaluateListResponse{}
@@ -30298,6 +40472,15 @@ func (client *Client) QueryEvaluateList(request *QueryEvaluateListRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about a financial account.
+//
+// @param request - QueryFinancialAccountInfoRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryFinancialAccountInfoResponse
 func (client *Client) QueryFinancialAccountInfoWithOptions(request *QueryFinancialAccountInfoRequest, runtime *util.RuntimeOptions) (_result *QueryFinancialAccountInfoResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -30331,6 +40514,13 @@ func (client *Client) QueryFinancialAccountInfoWithOptions(request *QueryFinanci
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about a financial account.
+//
+// @param request - QueryFinancialAccountInfoRequest
+//
+// @return QueryFinancialAccountInfoResponse
 func (client *Client) QueryFinancialAccountInfo(request *QueryFinancialAccountInfoRequest) (_result *QueryFinancialAccountInfoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryFinancialAccountInfoResponse{}
@@ -30342,17 +40532,27 @@ func (client *Client) QueryFinancialAccountInfo(request *QueryFinancialAccountIn
 	return _result, _err
 }
 
-/**
- * ##
- * *   This API operation has been upgraded to DescribeInstanceBill. We recommend that you call the [DescribeInstanceBill](~~209402~~) operation to query the bills of instances or billable items in a billing cycle. You can call the QueryInstanceBill operation to query a maximum of 50,000 data rows in a bill.
- * *   Instance bills are generated after bills are split. In most cases, the instance bills do not include data generated on the last day of the specified period.
- * *   The instance information changes within a billing cycle. The instance configurations and specifications and the time when the instance was used in the billing cycle are all recorded. For more information, see the corresponding bill details.
- * *   You can query the data generated in June 2020 or later for Cloud Communications services, and the data generated in November 2020 or later for Alibaba Cloud Domains.
- *
- * @param request QueryInstanceBillRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return QueryInstanceBillResponse
- */
+// Summary:
+//
+// Queries the bills of instances or billable items in a billing cycle.
+//
+// Description:
+//
+// ##
+//
+// 	- This API operation has been upgraded to DescribeInstanceBill. We recommend that you call the [DescribeInstanceBill](https://help.aliyun.com/document_detail/209402.html) operation to query the bills of instances or billable items in a billing cycle. You can call the QueryInstanceBill operation to query a maximum of 50,000 data rows in a bill.
+//
+// 	- Instance bills are generated after bills are split. In most cases, the instance bills do not include data generated on the last day of the specified period.
+//
+// 	- The instance information changes within a billing cycle. The instance configurations and specifications and the time when the instance was used in the billing cycle are all recorded. For more information, see the corresponding bill details.
+//
+// 	- You can query the data generated in June 2020 or later for Cloud Communications services, and the data generated in November 2020 or later for Alibaba Cloud Domains.
+//
+// @param request - QueryInstanceBillRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryInstanceBillResponse
 func (client *Client) QueryInstanceBillWithOptions(request *QueryInstanceBillRequest, runtime *util.RuntimeOptions) (_result *QueryInstanceBillResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -30430,16 +40630,25 @@ func (client *Client) QueryInstanceBillWithOptions(request *QueryInstanceBillReq
 	return _result, _err
 }
 
-/**
- * ##
- * *   This API operation has been upgraded to DescribeInstanceBill. We recommend that you call the [DescribeInstanceBill](~~209402~~) operation to query the bills of instances or billable items in a billing cycle. You can call the QueryInstanceBill operation to query a maximum of 50,000 data rows in a bill.
- * *   Instance bills are generated after bills are split. In most cases, the instance bills do not include data generated on the last day of the specified period.
- * *   The instance information changes within a billing cycle. The instance configurations and specifications and the time when the instance was used in the billing cycle are all recorded. For more information, see the corresponding bill details.
- * *   You can query the data generated in June 2020 or later for Cloud Communications services, and the data generated in November 2020 or later for Alibaba Cloud Domains.
- *
- * @param request QueryInstanceBillRequest
- * @return QueryInstanceBillResponse
- */
+// Summary:
+//
+// Queries the bills of instances or billable items in a billing cycle.
+//
+// Description:
+//
+// ##
+//
+// 	- This API operation has been upgraded to DescribeInstanceBill. We recommend that you call the [DescribeInstanceBill](https://help.aliyun.com/document_detail/209402.html) operation to query the bills of instances or billable items in a billing cycle. You can call the QueryInstanceBill operation to query a maximum of 50,000 data rows in a bill.
+//
+// 	- Instance bills are generated after bills are split. In most cases, the instance bills do not include data generated on the last day of the specified period.
+//
+// 	- The instance information changes within a billing cycle. The instance configurations and specifications and the time when the instance was used in the billing cycle are all recorded. For more information, see the corresponding bill details.
+//
+// 	- You can query the data generated in June 2020 or later for Cloud Communications services, and the data generated in November 2020 or later for Alibaba Cloud Domains.
+//
+// @param request - QueryInstanceBillRequest
+//
+// @return QueryInstanceBillResponse
 func (client *Client) QueryInstanceBill(request *QueryInstanceBillRequest) (_result *QueryInstanceBillResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryInstanceBillResponse{}
@@ -30451,6 +40660,15 @@ func (client *Client) QueryInstanceBill(request *QueryInstanceBillRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries instances by tag.
+//
+// @param request - QueryInstanceByTagRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryInstanceByTagResponse
 func (client *Client) QueryInstanceByTagWithOptions(request *QueryInstanceByTagRequest, runtime *util.RuntimeOptions) (_result *QueryInstanceByTagResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -30492,6 +40710,13 @@ func (client *Client) QueryInstanceByTagWithOptions(request *QueryInstanceByTagR
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries instances by tag.
+//
+// @param request - QueryInstanceByTagRequest
+//
+// @return QueryInstanceByTagResponse
 func (client *Client) QueryInstanceByTag(request *QueryInstanceByTagRequest) (_result *QueryInstanceByTagResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryInstanceByTagResponse{}
@@ -30503,6 +40728,15 @@ func (client *Client) QueryInstanceByTag(request *QueryInstanceByTagRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// The code of the service.
+//
+// @param request - QueryInstanceGaapCostRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryInstanceGaapCostResponse
 func (client *Client) QueryInstanceGaapCostWithOptions(request *QueryInstanceGaapCostRequest, runtime *util.RuntimeOptions) (_result *QueryInstanceGaapCostResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -30556,6 +40790,13 @@ func (client *Client) QueryInstanceGaapCostWithOptions(request *QueryInstanceGaa
 	return _result, _err
 }
 
+// Summary:
+//
+// The code of the service.
+//
+// @param request - QueryInstanceGaapCostRequest
+//
+// @return QueryInstanceGaapCostResponse
 func (client *Client) QueryInstanceGaapCost(request *QueryInstanceGaapCostRequest) (_result *QueryInstanceGaapCostResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryInstanceGaapCostResponse{}
@@ -30567,6 +40808,15 @@ func (client *Client) QueryInstanceGaapCost(request *QueryInstanceGaapCostReques
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about invoice titles.
+//
+// @param request - QueryInvoicingCustomerListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryInvoicingCustomerListResponse
 func (client *Client) QueryInvoicingCustomerListWithOptions(request *QueryInvoicingCustomerListRequest, runtime *util.RuntimeOptions) (_result *QueryInvoicingCustomerListResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -30600,6 +40850,13 @@ func (client *Client) QueryInvoicingCustomerListWithOptions(request *QueryInvoic
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about invoice titles.
+//
+// @param request - QueryInvoicingCustomerListRequest
+//
+// @return QueryInvoicingCustomerListResponse
 func (client *Client) QueryInvoicingCustomerList(request *QueryInvoicingCustomerListRequest) (_result *QueryInvoicingCustomerListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryInvoicingCustomerListResponse{}
@@ -30611,6 +40868,15 @@ func (client *Client) QueryInvoicingCustomerList(request *QueryInvoicingCustomer
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the orders of your Alibaba Cloud account or distributors. By default, orders within the last hour are queried. To query earlier orders, specify the CreateTimeStart and CreateTimeEnd parameters.
+//
+// @param request - QueryOrdersRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryOrdersResponse
 func (client *Client) QueryOrdersWithOptions(request *QueryOrdersRequest, runtime *util.RuntimeOptions) (_result *QueryOrdersResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -30680,6 +40946,13 @@ func (client *Client) QueryOrdersWithOptions(request *QueryOrdersRequest, runtim
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the orders of your Alibaba Cloud account or distributors. By default, orders within the last hour are queried. To query earlier orders, specify the CreateTimeStart and CreateTimeEnd parameters.
+//
+// @param request - QueryOrdersRequest
+//
+// @return QueryOrdersResponse
 func (client *Client) QueryOrders(request *QueryOrdersRequest) (_result *QueryOrdersResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryOrdersResponse{}
@@ -30691,6 +40964,15 @@ func (client *Client) QueryOrders(request *QueryOrdersRequest) (_result *QueryOr
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries, by relationship ID, permissions granted to accounts between which a management-member relationship is established.
+//
+// @param request - QueryPermissionListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryPermissionListResponse
 func (client *Client) QueryPermissionListWithOptions(request *QueryPermissionListRequest, runtime *util.RuntimeOptions) (_result *QueryPermissionListResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -30724,6 +41006,13 @@ func (client *Client) QueryPermissionListWithOptions(request *QueryPermissionLis
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries, by relationship ID, permissions granted to accounts between which a management-member relationship is established.
+//
+// @param request - QueryPermissionListRequest
+//
+// @return QueryPermissionListResponse
 func (client *Client) QueryPermissionList(request *QueryPermissionListRequest) (_result *QueryPermissionListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryPermissionListResponse{}
@@ -30735,6 +41024,15 @@ func (client *Client) QueryPermissionList(request *QueryPermissionListRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries prepaid cards.
+//
+// @param request - QueryPrepaidCardsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryPrepaidCardsResponse
 func (client *Client) QueryPrepaidCardsWithOptions(request *QueryPrepaidCardsRequest, runtime *util.RuntimeOptions) (_result *QueryPrepaidCardsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -30776,6 +41074,13 @@ func (client *Client) QueryPrepaidCardsWithOptions(request *QueryPrepaidCardsReq
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries prepaid cards.
+//
+// @param request - QueryPrepaidCardsRequest
+//
+// @return QueryPrepaidCardsResponse
 func (client *Client) QueryPrepaidCards(request *QueryPrepaidCardsRequest) (_result *QueryPrepaidCardsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryPrepaidCardsResponse{}
@@ -30787,13 +41092,19 @@ func (client *Client) QueryPrepaidCards(request *QueryPrepaidCardsRequest) (_res
 	return _result, _err
 }
 
-/**
- * You can call this operation to query the billable items of a service. A billable item is the minimum unit used to calculate costs.
- *
- * @param request QueryPriceEntityListRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return QueryPriceEntityListResponse
- */
+// Summary:
+//
+// Queries the billable items of a service.
+//
+// Description:
+//
+// You can call this operation to query the billable items of a service. A billable item is the minimum unit used to calculate costs.
+//
+// @param request - QueryPriceEntityListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryPriceEntityListResponse
 func (client *Client) QueryPriceEntityListWithOptions(request *QueryPriceEntityListRequest, runtime *util.RuntimeOptions) (_result *QueryPriceEntityListResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -30823,12 +41134,17 @@ func (client *Client) QueryPriceEntityListWithOptions(request *QueryPriceEntityL
 	return _result, _err
 }
 
-/**
- * You can call this operation to query the billable items of a service. A billable item is the minimum unit used to calculate costs.
- *
- * @param request QueryPriceEntityListRequest
- * @return QueryPriceEntityListResponse
- */
+// Summary:
+//
+// Queries the billable items of a service.
+//
+// Description:
+//
+// You can call this operation to query the billable items of a service. A billable item is the minimum unit used to calculate costs.
+//
+// @param request - QueryPriceEntityListRequest
+//
+// @return QueryPriceEntityListResponse
 func (client *Client) QueryPriceEntityList(request *QueryPriceEntityListRequest) (_result *QueryPriceEntityListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryPriceEntityListResponse{}
@@ -30840,6 +41156,15 @@ func (client *Client) QueryPriceEntityList(request *QueryPriceEntityListRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about all Alibaba Cloud services.
+//
+// @param request - QueryProductListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryProductListResponse
 func (client *Client) QueryProductListWithOptions(request *QueryProductListRequest, runtime *util.RuntimeOptions) (_result *QueryProductListResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -30881,6 +41206,13 @@ func (client *Client) QueryProductListWithOptions(request *QueryProductListReque
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about all Alibaba Cloud services.
+//
+// @param request - QueryProductListRequest
+//
+// @return QueryProductListResponse
 func (client *Client) QueryProductList(request *QueryProductListRequest) (_result *QueryProductListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryProductListResponse{}
@@ -30892,6 +41224,15 @@ func (client *Client) QueryProductList(request *QueryProductListRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the usage details of a reserved instance (RI).
+//
+// @param request - QueryRIUtilizationDetailRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryRIUtilizationDetailResponse
 func (client *Client) QueryRIUtilizationDetailWithOptions(request *QueryRIUtilizationDetailRequest, runtime *util.RuntimeOptions) (_result *QueryRIUtilizationDetailResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -30953,6 +41294,13 @@ func (client *Client) QueryRIUtilizationDetailWithOptions(request *QueryRIUtiliz
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the usage details of a reserved instance (RI).
+//
+// @param request - QueryRIUtilizationDetailRequest
+//
+// @return QueryRIUtilizationDetailResponse
 func (client *Client) QueryRIUtilizationDetail(request *QueryRIUtilizationDetailRequest) (_result *QueryRIUtilizationDetailResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryRIUtilizationDetailResponse{}
@@ -30964,6 +41312,15 @@ func (client *Client) QueryRIUtilizationDetail(request *QueryRIUtilizationDetail
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about a redemption coupon.
+//
+// @param request - QueryRedeemRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryRedeemResponse
 func (client *Client) QueryRedeemWithOptions(request *QueryRedeemRequest, runtime *util.RuntimeOptions) (_result *QueryRedeemResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -30993,6 +41350,13 @@ func (client *Client) QueryRedeemWithOptions(request *QueryRedeemRequest, runtim
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about a redemption coupon.
+//
+// @param request - QueryRedeemRequest
+//
+// @return QueryRedeemResponse
 func (client *Client) QueryRedeem(request *QueryRedeemRequest) (_result *QueryRedeemResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryRedeemResponse{}
@@ -31004,6 +41368,15 @@ func (client *Client) QueryRedeem(request *QueryRedeemRequest) (_result *QueryRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the members of a management account.
+//
+// @param request - QueryRelationListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryRelationListResponse
 func (client *Client) QueryRelationListWithOptions(request *QueryRelationListRequest, runtime *util.RuntimeOptions) (_result *QueryRelationListResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -31049,6 +41422,13 @@ func (client *Client) QueryRelationListWithOptions(request *QueryRelationListReq
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the members of a management account.
+//
+// @param request - QueryRelationListRequest
+//
+// @return QueryRelationListResponse
 func (client *Client) QueryRelationList(request *QueryRelationListRequest) (_result *QueryRelationListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryRelationListResponse{}
@@ -31060,6 +41440,15 @@ func (client *Client) QueryRelationList(request *QueryRelationListRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// Indicates whether the call is successful. A value of true indicates that the call is successful. A value of false indicates that the call failed.
+//
+// @param request - QueryResellerAvailableQuotaRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryResellerAvailableQuotaResponse
 func (client *Client) QueryResellerAvailableQuotaWithOptions(request *QueryResellerAvailableQuotaRequest, runtime *util.RuntimeOptions) (_result *QueryResellerAvailableQuotaResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -31097,6 +41486,13 @@ func (client *Client) QueryResellerAvailableQuotaWithOptions(request *QueryResel
 	return _result, _err
 }
 
+// Summary:
+//
+// Indicates whether the call is successful. A value of true indicates that the call is successful. A value of false indicates that the call failed.
+//
+// @param request - QueryResellerAvailableQuotaRequest
+//
+// @return QueryResellerAvailableQuotaResponse
 func (client *Client) QueryResellerAvailableQuota(request *QueryResellerAvailableQuotaRequest) (_result *QueryResellerAvailableQuotaResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryResellerAvailableQuotaResponse{}
@@ -31108,6 +41504,15 @@ func (client *Client) QueryResellerAvailableQuota(request *QueryResellerAvailabl
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询用户的信控预警阀值,该接口暂未测试启用
+//
+// @param request - QueryResellerUserAlarmThresholdRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryResellerUserAlarmThresholdResponse
 func (client *Client) QueryResellerUserAlarmThresholdWithOptions(request *QueryResellerUserAlarmThresholdRequest, runtime *util.RuntimeOptions) (_result *QueryResellerUserAlarmThresholdResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -31145,6 +41550,13 @@ func (client *Client) QueryResellerUserAlarmThresholdWithOptions(request *QueryR
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询用户的信控预警阀值,该接口暂未测试启用
+//
+// @param request - QueryResellerUserAlarmThresholdRequest
+//
+// @return QueryResellerUserAlarmThresholdResponse
 func (client *Client) QueryResellerUserAlarmThreshold(request *QueryResellerUserAlarmThresholdRequest) (_result *QueryResellerUserAlarmThresholdResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryResellerUserAlarmThresholdResponse{}
@@ -31156,6 +41568,15 @@ func (client *Client) QueryResellerUserAlarmThreshold(request *QueryResellerUser
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the instances of a resource plan. You can query the resource plans that are expired within one year.
+//
+// @param request - QueryResourcePackageInstancesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryResourcePackageInstancesResponse
 func (client *Client) QueryResourcePackageInstancesWithOptions(request *QueryResourcePackageInstancesRequest, runtime *util.RuntimeOptions) (_result *QueryResourcePackageInstancesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -31213,6 +41634,13 @@ func (client *Client) QueryResourcePackageInstancesWithOptions(request *QueryRes
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the instances of a resource plan. You can query the resource plans that are expired within one year.
+//
+// @param request - QueryResourcePackageInstancesRequest
+//
+// @return QueryResourcePackageInstancesResponse
 func (client *Client) QueryResourcePackageInstances(request *QueryResourcePackageInstancesRequest) (_result *QueryResourcePackageInstancesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryResourcePackageInstancesResponse{}
@@ -31224,6 +41652,15 @@ func (client *Client) QueryResourcePackageInstances(request *QueryResourcePackag
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the deduction details of savings plans.
+//
+// @param request - QuerySavingsPlansDeductLogRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QuerySavingsPlansDeductLogResponse
 func (client *Client) QuerySavingsPlansDeductLogWithOptions(request *QuerySavingsPlansDeductLogRequest, runtime *util.RuntimeOptions) (_result *QuerySavingsPlansDeductLogResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -31281,6 +41718,13 @@ func (client *Client) QuerySavingsPlansDeductLogWithOptions(request *QuerySaving
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the deduction details of savings plans.
+//
+// @param request - QuerySavingsPlansDeductLogRequest
+//
+// @return QuerySavingsPlansDeductLogResponse
 func (client *Client) QuerySavingsPlansDeductLog(request *QuerySavingsPlansDeductLogRequest) (_result *QuerySavingsPlansDeductLogResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QuerySavingsPlansDeductLogResponse{}
@@ -31292,6 +41736,15 @@ func (client *Client) QuerySavingsPlansDeductLog(request *QuerySavingsPlansDeduc
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries discounts on savings plans.
+//
+// @param request - QuerySavingsPlansDiscountRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QuerySavingsPlansDiscountResponse
 func (client *Client) QuerySavingsPlansDiscountWithOptions(request *QuerySavingsPlansDiscountRequest, runtime *util.RuntimeOptions) (_result *QuerySavingsPlansDiscountResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -31321,6 +41774,13 @@ func (client *Client) QuerySavingsPlansDiscountWithOptions(request *QuerySavings
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries discounts on savings plans.
+//
+// @param request - QuerySavingsPlansDiscountRequest
+//
+// @return QuerySavingsPlansDiscountResponse
 func (client *Client) QuerySavingsPlansDiscount(request *QuerySavingsPlansDiscountRequest) (_result *QuerySavingsPlansDiscountResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QuerySavingsPlansDiscountResponse{}
@@ -31332,6 +41792,15 @@ func (client *Client) QuerySavingsPlansDiscount(request *QuerySavingsPlansDiscou
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about savings plan instances of the current user.
+//
+// @param request - QuerySavingsPlansInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QuerySavingsPlansInstanceResponse
 func (client *Client) QuerySavingsPlansInstanceWithOptions(request *QuerySavingsPlansInstanceRequest, runtime *util.RuntimeOptions) (_result *QuerySavingsPlansInstanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -31393,6 +41862,13 @@ func (client *Client) QuerySavingsPlansInstanceWithOptions(request *QuerySavings
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about savings plan instances of the current user.
+//
+// @param request - QuerySavingsPlansInstanceRequest
+//
+// @return QuerySavingsPlansInstanceResponse
 func (client *Client) QuerySavingsPlansInstance(request *QuerySavingsPlansInstanceRequest) (_result *QuerySavingsPlansInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QuerySavingsPlansInstanceResponse{}
@@ -31404,6 +41880,15 @@ func (client *Client) QuerySavingsPlansInstance(request *QuerySavingsPlansInstan
 	return _result, _err
 }
 
+// Summary:
+//
+// The code of the service.
+//
+// @param request - QuerySettleBillRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QuerySettleBillResponse
 func (client *Client) QuerySettleBillWithOptions(request *QuerySettleBillRequest, runtime *util.RuntimeOptions) (_result *QuerySettleBillResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -31481,6 +41966,13 @@ func (client *Client) QuerySettleBillWithOptions(request *QuerySettleBillRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// The code of the service.
+//
+// @param request - QuerySettleBillRequest
+//
+// @return QuerySettleBillResponse
 func (client *Client) QuerySettleBill(request *QuerySettleBillRequest) (_result *QuerySettleBillResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QuerySettleBillResponse{}
@@ -31492,6 +41984,15 @@ func (client *Client) QuerySettleBill(request *QuerySettleBillRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the stock keeping units (SKUs) of a service. In most cases, a service has one or more SKUs. A service may even have tens of thousands of SKUs. You can call this operation to query the SKUs of a specific service and the prices of the SKUs. You can configure request parameters to query the specified SKUs based on the configurations of the SKUs.
+//
+// @param tmpReq - QuerySkuPriceListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QuerySkuPriceListResponse
 func (client *Client) QuerySkuPriceListWithOptions(tmpReq *QuerySkuPriceListRequest, runtime *util.RuntimeOptions) (_result *QuerySkuPriceListResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -31527,6 +42028,13 @@ func (client *Client) QuerySkuPriceListWithOptions(tmpReq *QuerySkuPriceListRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the stock keeping units (SKUs) of a service. In most cases, a service has one or more SKUs. A service may even have tens of thousands of SKUs. You can call this operation to query the SKUs of a specific service and the prices of the SKUs. You can configure request parameters to query the specified SKUs based on the configurations of the SKUs.
+//
+// @param request - QuerySkuPriceListRequest
+//
+// @return QuerySkuPriceListResponse
 func (client *Client) QuerySkuPriceList(request *QuerySkuPriceListRequest) (_result *QuerySkuPriceListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QuerySkuPriceListResponse{}
@@ -31538,16 +42046,25 @@ func (client *Client) QuerySkuPriceList(request *QuerySkuPriceListRequest) (_res
 	return _result, _err
 }
 
-/**
- * *   This API operation has been upgraded to DescribeSplitItemBill. We recommend that you call the [DescribeSplitItemBill](~~208169~~) operation to query split bills. You can call the QuerySplitItemBill operation to query a maximum of 50,000 data rows in a bill.
- * *   The data queried by calling the QuerySplitItemBill operation is consistent with the data that is displayed for the specified billing cycle on the Split Bill page in User Center.
- * *   You can call this operation to query split bills generated within the last 12 months.
- * *   This operation returns split bills only after you activate the [Split Bill](https://usercenter2.aliyun.com/finance/split-bill) service in User Center.
- *
- * @param request QuerySplitItemBillRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return QuerySplitItemBillResponse
- */
+// Summary:
+//
+// Queries split bills.
+//
+// Description:
+//
+//   This API operation has been upgraded to DescribeSplitItemBill. We recommend that you call the [DescribeSplitItemBill](https://help.aliyun.com/document_detail/208169.html) operation to query split bills. You can call the QuerySplitItemBill operation to query a maximum of 50,000 data rows in a bill.
+//
+// 	- The data queried by calling the QuerySplitItemBill operation is consistent with the data that is displayed for the specified billing cycle on the Split Bill page in User Center.
+//
+// 	- You can call this operation to query split bills generated within the last 12 months.
+//
+// 	- This operation returns split bills only after you activate the [Split Bill](https://usercenter2.aliyun.com/finance/split-bill) service in User Center.
+//
+// @param request - QuerySplitItemBillRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QuerySplitItemBillResponse
 func (client *Client) QuerySplitItemBillWithOptions(request *QuerySplitItemBillRequest, runtime *util.RuntimeOptions) (_result *QuerySplitItemBillResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -31609,15 +42126,23 @@ func (client *Client) QuerySplitItemBillWithOptions(request *QuerySplitItemBillR
 	return _result, _err
 }
 
-/**
- * *   This API operation has been upgraded to DescribeSplitItemBill. We recommend that you call the [DescribeSplitItemBill](~~208169~~) operation to query split bills. You can call the QuerySplitItemBill operation to query a maximum of 50,000 data rows in a bill.
- * *   The data queried by calling the QuerySplitItemBill operation is consistent with the data that is displayed for the specified billing cycle on the Split Bill page in User Center.
- * *   You can call this operation to query split bills generated within the last 12 months.
- * *   This operation returns split bills only after you activate the [Split Bill](https://usercenter2.aliyun.com/finance/split-bill) service in User Center.
- *
- * @param request QuerySplitItemBillRequest
- * @return QuerySplitItemBillResponse
- */
+// Summary:
+//
+// Queries split bills.
+//
+// Description:
+//
+//   This API operation has been upgraded to DescribeSplitItemBill. We recommend that you call the [DescribeSplitItemBill](https://help.aliyun.com/document_detail/208169.html) operation to query split bills. You can call the QuerySplitItemBill operation to query a maximum of 50,000 data rows in a bill.
+//
+// 	- The data queried by calling the QuerySplitItemBill operation is consistent with the data that is displayed for the specified billing cycle on the Split Bill page in User Center.
+//
+// 	- You can call this operation to query split bills generated within the last 12 months.
+//
+// 	- This operation returns split bills only after you activate the [Split Bill](https://usercenter2.aliyun.com/finance/split-bill) service in User Center.
+//
+// @param request - QuerySplitItemBillRequest
+//
+// @return QuerySplitItemBillResponse
 func (client *Client) QuerySplitItemBill(request *QuerySplitItemBillRequest) (_result *QuerySplitItemBillResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QuerySplitItemBillResponse{}
@@ -31629,17 +42154,27 @@ func (client *Client) QuerySplitItemBill(request *QuerySplitItemBillRequest) (_r
 	return _result, _err
 }
 
-/**
- * You can call this operation to query the usage data of an Alibaba Cloud service. Take note of the following items:
- * *   The service code that you specify for querying the usage data of a specific Alibaba Cloud service must be valid. You can query the usage data by hour or by day.
- * *   The time that you specify must follow the ISO8601 standard in the yyyy-MM-ddTHH:mm:ssZ format.
- *     *   Latency exists in data pushes. Therefore, if you set the DataType parameter to Hour, the integrity of usage data recorded in the last 24 hours can be ensured. If you set the DataType parameter to Day, the integrity of usage data recorded in the last two days can be ensured.
- *     *   You can query the usage data that is recorded in the last quarter.
- *
- * @param request QueryUserOmsDataRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return QueryUserOmsDataResponse
- */
+// Summary:
+//
+// Queries the usage data of an Alibaba Cloud service.
+//
+// Description:
+//
+// You can call this operation to query the usage data of an Alibaba Cloud service. Take note of the following items:
+//
+// 	- The service code that you specify for querying the usage data of a specific Alibaba Cloud service must be valid. You can query the usage data by hour or by day.
+//
+// 	- The time that you specify must follow the ISO8601 standard in the yyyy-MM-ddTHH:mm:ssZ format.
+//
+//     	- Latency exists in data pushes. Therefore, if you set the DataType parameter to Hour, the integrity of usage data recorded in the last 24 hours can be ensured. If you set the DataType parameter to Day, the integrity of usage data recorded in the last two days can be ensured.
+//
+//     	- You can query the usage data that is recorded in the last quarter.
+//
+// @param request - QueryUserOmsDataRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryUserOmsDataResponse
 func (client *Client) QueryUserOmsDataWithOptions(request *QueryUserOmsDataRequest, runtime *util.RuntimeOptions) (_result *QueryUserOmsDataResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -31697,16 +42232,25 @@ func (client *Client) QueryUserOmsDataWithOptions(request *QueryUserOmsDataReque
 	return _result, _err
 }
 
-/**
- * You can call this operation to query the usage data of an Alibaba Cloud service. Take note of the following items:
- * *   The service code that you specify for querying the usage data of a specific Alibaba Cloud service must be valid. You can query the usage data by hour or by day.
- * *   The time that you specify must follow the ISO8601 standard in the yyyy-MM-ddTHH:mm:ssZ format.
- *     *   Latency exists in data pushes. Therefore, if you set the DataType parameter to Hour, the integrity of usage data recorded in the last 24 hours can be ensured. If you set the DataType parameter to Day, the integrity of usage data recorded in the last two days can be ensured.
- *     *   You can query the usage data that is recorded in the last quarter.
- *
- * @param request QueryUserOmsDataRequest
- * @return QueryUserOmsDataResponse
- */
+// Summary:
+//
+// Queries the usage data of an Alibaba Cloud service.
+//
+// Description:
+//
+// You can call this operation to query the usage data of an Alibaba Cloud service. Take note of the following items:
+//
+// 	- The service code that you specify for querying the usage data of a specific Alibaba Cloud service must be valid. You can query the usage data by hour or by day.
+//
+// 	- The time that you specify must follow the ISO8601 standard in the yyyy-MM-ddTHH:mm:ssZ format.
+//
+//     	- Latency exists in data pushes. Therefore, if you set the DataType parameter to Hour, the integrity of usage data recorded in the last 24 hours can be ensured. If you set the DataType parameter to Day, the integrity of usage data recorded in the last two days can be ensured.
+//
+//     	- You can query the usage data that is recorded in the last quarter.
+//
+// @param request - QueryUserOmsDataRequest
+//
+// @return QueryUserOmsDataResponse
 func (client *Client) QueryUserOmsData(request *QueryUserOmsDataRequest) (_result *QueryUserOmsDataResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryUserOmsDataResponse{}
@@ -31718,15 +42262,23 @@ func (client *Client) QueryUserOmsData(request *QueryUserOmsDataRequest) (_resul
 	return _result, _err
 }
 
-/**
- * 1.  Refunds are applicable only for the actual paid amount. Vouchers used for the purchase are non-refundable.
- * 2.  Check the information about unsubscription and confirm the unsubscription terms and refundable amount. The resource that is unsubscribed cannot be restored.
- * 3.  For more information, see [Rules for unsubscribing from resources](https://www.alibabacloud.com/help/zh/user-center/user-guide/refund-rules).
- *
- * @param request RefundInstanceRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return RefundInstanceResponse
- */
+// Summary:
+//
+// Unsubscribes from an instance that is no longer needed.
+//
+// Description:
+//
+// 1.  Refunds are applicable only for the actual paid amount. Vouchers used for the purchase are non-refundable.
+//
+// 2.  Check the information about unsubscription and confirm the unsubscription terms and refundable amount. The resource that is unsubscribed cannot be restored.
+//
+// 3.  For more information, see [Rules for unsubscribing from resources](https://www.alibabacloud.com/help/zh/user-center/user-guide/refund-rules).
+//
+// @param request - RefundInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RefundInstanceResponse
 func (client *Client) RefundInstanceWithOptions(request *RefundInstanceRequest, runtime *util.RuntimeOptions) (_result *RefundInstanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -31776,14 +42328,21 @@ func (client *Client) RefundInstanceWithOptions(request *RefundInstanceRequest, 
 	return _result, _err
 }
 
-/**
- * 1.  Refunds are applicable only for the actual paid amount. Vouchers used for the purchase are non-refundable.
- * 2.  Check the information about unsubscription and confirm the unsubscription terms and refundable amount. The resource that is unsubscribed cannot be restored.
- * 3.  For more information, see [Rules for unsubscribing from resources](https://www.alibabacloud.com/help/zh/user-center/user-guide/refund-rules).
- *
- * @param request RefundInstanceRequest
- * @return RefundInstanceResponse
- */
+// Summary:
+//
+// Unsubscribes from an instance that is no longer needed.
+//
+// Description:
+//
+// 1.  Refunds are applicable only for the actual paid amount. Vouchers used for the purchase are non-refundable.
+//
+// 2.  Check the information about unsubscription and confirm the unsubscription terms and refundable amount. The resource that is unsubscribed cannot be restored.
+//
+// 3.  For more information, see [Rules for unsubscribing from resources](https://www.alibabacloud.com/help/zh/user-center/user-guide/refund-rules).
+//
+// @param request - RefundInstanceRequest
+//
+// @return RefundInstanceResponse
 func (client *Client) RefundInstance(request *RefundInstanceRequest) (_result *RefundInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RefundInstanceResponse{}
@@ -31795,13 +42354,19 @@ func (client *Client) RefundInstance(request *RefundInstanceRequest) (_result *R
 	return _result, _err
 }
 
-/**
- * This operation is provided for only VNOs to release instances. If a non-specific VNO calls this operation, the request is blocked.
- *
- * @param request ReleaseInstanceRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return ReleaseInstanceResponse
- */
+// Summary:
+//
+// Releases instances by Virtual Network Operators (VNOs).
+//
+// Description:
+//
+// This operation is provided for only VNOs to release instances. If a non-specific VNO calls this operation, the request is blocked.
+//
+// @param request - ReleaseInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ReleaseInstanceResponse
 func (client *Client) ReleaseInstanceWithOptions(request *ReleaseInstanceRequest, runtime *util.RuntimeOptions) (_result *ReleaseInstanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -31859,12 +42424,17 @@ func (client *Client) ReleaseInstanceWithOptions(request *ReleaseInstanceRequest
 	return _result, _err
 }
 
-/**
- * This operation is provided for only VNOs to release instances. If a non-specific VNO calls this operation, the request is blocked.
- *
- * @param request ReleaseInstanceRequest
- * @return ReleaseInstanceResponse
- */
+// Summary:
+//
+// Releases instances by Virtual Network Operators (VNOs).
+//
+// Description:
+//
+// This operation is provided for only VNOs to release instances. If a non-specific VNO calls this operation, the request is blocked.
+//
+// @param request - ReleaseInstanceRequest
+//
+// @return ReleaseInstanceResponse
 func (client *Client) ReleaseInstance(request *ReleaseInstanceRequest) (_result *ReleaseInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ReleaseInstanceResponse{}
@@ -31876,6 +42446,15 @@ func (client *Client) ReleaseInstance(request *ReleaseInstanceRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// Terminates a financial relationship between the management account and a member.
+//
+// @param request - RelieveAccountRelationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RelieveAccountRelationResponse
 func (client *Client) RelieveAccountRelationWithOptions(request *RelieveAccountRelationRequest, runtime *util.RuntimeOptions) (_result *RelieveAccountRelationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -31925,6 +42504,13 @@ func (client *Client) RelieveAccountRelationWithOptions(request *RelieveAccountR
 	return _result, _err
 }
 
+// Summary:
+//
+// Terminates a financial relationship between the management account and a member.
+//
+// @param request - RelieveAccountRelationRequest
+//
+// @return RelieveAccountRelationResponse
 func (client *Client) RelieveAccountRelation(request *RelieveAccountRelationRequest) (_result *RelieveAccountRelationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RelieveAccountRelationResponse{}
@@ -31936,6 +42522,15 @@ func (client *Client) RelieveAccountRelation(request *RelieveAccountRelationRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// 续费变配接口
+//
+// @param request - RenewChangeInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RenewChangeInstanceResponse
 func (client *Client) RenewChangeInstanceWithOptions(request *RenewChangeInstanceRequest, runtime *util.RuntimeOptions) (_result *RenewChangeInstanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -31993,6 +42588,13 @@ func (client *Client) RenewChangeInstanceWithOptions(request *RenewChangeInstanc
 	return _result, _err
 }
 
+// Summary:
+//
+// 续费变配接口
+//
+// @param request - RenewChangeInstanceRequest
+//
+// @return RenewChangeInstanceResponse
 func (client *Client) RenewChangeInstance(request *RenewChangeInstanceRequest) (_result *RenewChangeInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RenewChangeInstanceResponse{}
@@ -32004,6 +42606,15 @@ func (client *Client) RenewChangeInstance(request *RenewChangeInstanceRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// Renews a specified instance. You cannot call this operation to renew Elastic Compute Service (ECS) instances, ApsaraDB RDS instances, or ApsaraDB for Redis instances. To renew these types of instances, call the dedicated operation of the corresponding service.
+//
+// @param request - RenewInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RenewInstanceResponse
 func (client *Client) RenewInstanceWithOptions(request *RenewInstanceRequest, runtime *util.RuntimeOptions) (_result *RenewInstanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -32057,6 +42668,13 @@ func (client *Client) RenewInstanceWithOptions(request *RenewInstanceRequest, ru
 	return _result, _err
 }
 
+// Summary:
+//
+// Renews a specified instance. You cannot call this operation to renew Elastic Compute Service (ECS) instances, ApsaraDB RDS instances, or ApsaraDB for Redis instances. To renew these types of instances, call the dedicated operation of the corresponding service.
+//
+// @param request - RenewInstanceRequest
+//
+// @return RenewInstanceResponse
 func (client *Client) RenewInstance(request *RenewInstanceRequest) (_result *RenewInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RenewInstanceResponse{}
@@ -32068,6 +42686,15 @@ func (client *Client) RenewInstance(request *RenewInstanceRequest) (_result *Ren
 	return _result, _err
 }
 
+// Summary:
+//
+// Renews a resource plan.
+//
+// @param request - RenewResourcePackageRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RenewResourcePackageResponse
 func (client *Client) RenewResourcePackageWithOptions(request *RenewResourcePackageRequest, runtime *util.RuntimeOptions) (_result *RenewResourcePackageResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -32117,6 +42744,13 @@ func (client *Client) RenewResourcePackageWithOptions(request *RenewResourcePack
 	return _result, _err
 }
 
+// Summary:
+//
+// Renews a resource plan.
+//
+// @param request - RenewResourcePackageRequest
+//
+// @return RenewResourcePackageResponse
 func (client *Client) RenewResourcePackage(request *RenewResourcePackageRequest) (_result *RenewResourcePackageResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RenewResourcePackageResponse{}
@@ -32128,6 +42762,15 @@ func (client *Client) RenewResourcePackage(request *RenewResourcePackageRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// Sets an expiration date for all Elastic Compute Service (ECS) instances.
+//
+// @param request - SetAllExpirationDayRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SetAllExpirationDayResponse
 func (client *Client) SetAllExpirationDayWithOptions(request *SetAllExpirationDayRequest, runtime *util.RuntimeOptions) (_result *SetAllExpirationDayResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -32165,6 +42808,13 @@ func (client *Client) SetAllExpirationDayWithOptions(request *SetAllExpirationDa
 	return _result, _err
 }
 
+// Summary:
+//
+// Sets an expiration date for all Elastic Compute Service (ECS) instances.
+//
+// @param request - SetAllExpirationDayRequest
+//
+// @return SetAllExpirationDayResponse
 func (client *Client) SetAllExpirationDay(request *SetAllExpirationDayRequest) (_result *SetAllExpirationDayResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SetAllExpirationDayResponse{}
@@ -32176,6 +42826,15 @@ func (client *Client) SetAllExpirationDay(request *SetAllExpirationDayRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// Enables auto-renewal for an instance.
+//
+// @param request - SetRenewalRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SetRenewalResponse
 func (client *Client) SetRenewalWithOptions(request *SetRenewalRequest, runtime *util.RuntimeOptions) (_result *SetRenewalResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -32237,6 +42896,13 @@ func (client *Client) SetRenewalWithOptions(request *SetRenewalRequest, runtime 
 	return _result, _err
 }
 
+// Summary:
+//
+// Enables auto-renewal for an instance.
+//
+// @param request - SetRenewalRequest
+//
+// @return SetRenewalResponse
 func (client *Client) SetRenewal(request *SetRenewalRequest) (_result *SetRenewalResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SetRenewalResponse{}
@@ -32248,6 +42914,11 @@ func (client *Client) SetRenewal(request *SetRenewalRequest) (_result *SetRenewa
 	return _result, _err
 }
 
+// @param request - SetResellerUserAlarmThresholdRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SetResellerUserAlarmThresholdResponse
 func (client *Client) SetResellerUserAlarmThresholdWithOptions(request *SetResellerUserAlarmThresholdRequest, runtime *util.RuntimeOptions) (_result *SetResellerUserAlarmThresholdResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -32289,6 +42960,9 @@ func (client *Client) SetResellerUserAlarmThresholdWithOptions(request *SetResel
 	return _result, _err
 }
 
+// @param request - SetResellerUserAlarmThresholdRequest
+//
+// @return SetResellerUserAlarmThresholdResponse
 func (client *Client) SetResellerUserAlarmThreshold(request *SetResellerUserAlarmThresholdRequest) (_result *SetResellerUserAlarmThresholdResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SetResellerUserAlarmThresholdResponse{}
@@ -32300,6 +42974,11 @@ func (client *Client) SetResellerUserAlarmThreshold(request *SetResellerUserAlar
 	return _result, _err
 }
 
+// @param request - SetResellerUserQuotaRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SetResellerUserQuotaResponse
 func (client *Client) SetResellerUserQuotaWithOptions(request *SetResellerUserQuotaRequest, runtime *util.RuntimeOptions) (_result *SetResellerUserQuotaResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -32345,6 +43024,9 @@ func (client *Client) SetResellerUserQuotaWithOptions(request *SetResellerUserQu
 	return _result, _err
 }
 
+// @param request - SetResellerUserQuotaRequest
+//
+// @return SetResellerUserQuotaResponse
 func (client *Client) SetResellerUserQuota(request *SetResellerUserQuotaRequest) (_result *SetResellerUserQuotaResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SetResellerUserQuotaResponse{}
@@ -32356,6 +43038,11 @@ func (client *Client) SetResellerUserQuota(request *SetResellerUserQuotaRequest)
 	return _result, _err
 }
 
+// @param request - SetResellerUserStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SetResellerUserStatusResponse
 func (client *Client) SetResellerUserStatusWithOptions(request *SetResellerUserStatusRequest, runtime *util.RuntimeOptions) (_result *SetResellerUserStatusResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -32401,6 +43088,9 @@ func (client *Client) SetResellerUserStatusWithOptions(request *SetResellerUserS
 	return _result, _err
 }
 
+// @param request - SetResellerUserStatusRequest
+//
+// @return SetResellerUserStatusResponse
 func (client *Client) SetResellerUserStatus(request *SetResellerUserStatusRequest) (_result *SetResellerUserStatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SetResellerUserStatusResponse{}
@@ -32412,39 +43102,71 @@ func (client *Client) SetResellerUserStatus(request *SetResellerUserStatusReques
 	return _result, _err
 }
 
-/**
- * Before you call this operation, take note of the following items:
- * *   You can subscribe to only one type of bill at a time.
- * *   The bills generated on the previous day are pushed on a daily basis the next day after you subscribe to the bills. The full-data bills for the previous month are pushed on the fourth day of each month. The monthly bills in the PDF format for the previous month are pushed on the fourth day of each month.
- * *   The daily bills may be delayed. The delayed bills are pushed the next day after they are generated. The delayed bills may include the bills that should have been pushed on the previous day. We recommend that you query the full-data bills for the previous month at the beginning of each month.
- * *   The bill subscriber must have the [AliyunConsumeDump2OSSRole](https://ram.console.aliyun.com/#/role/authorize?request=%7B%22Requests%22:%20%7B%22request1%22:%20%7B%22RoleName%22:%20%22AliyunConsumeDump2OSSRole%22,%20%22TemplateId%22:%20%22Dump2OSSRole%22%7D%7D,%20%22ReturnUrl%22:%20%22https:%2F%2Fusercenter2.aliyun.com%22,%20%22Service%22:%20%22Consume%22%7D) permission.
- * *   The SubscribeBillToOSS operation has the same functionality as the Save Expense Details to OSS Bucket feature in User Center.
- * *   To subscribe to the bills stored in an OSS bucket, make sure that the directory name specified for the OSS bucket conforms to the following naming rules:
- * 1.  1.  The directory name can contain only UTF-8 characters and cannot contain emoticons.
- * 2.  2.  Forward slashes (/) are used to separate paths and can be used to create subdirectories with ease. The directory name cannot start with a forward slash (/), a backslash (\\\\), or consecutive forward slashes (/).
- * 3.  3.  The name of a subdirectory cannot be set to two consecutive periods (..).
- * 4.  4.  The directory name must be 1 to 254 characters in length.
- * *   File names:
- *     *   **BillingItemDetailForBillingPeriod** (Detailed bills of billable items)
- *         *   File name format for a daily push: `UID_BillingItemDetail_YYYYMMDD`. Example: `169**_BillingItemDetail_20190310`.
- *         *   File name format for a full-data push at the beginning of the next month: `UID_BillingItemDetail_YYYYMM`. Example: `169**_BillingItemDetail_201903`.
- *     *   **InstanceDetailForBillingPeriod** (Detailed bills of instances)
- *         *   File name format for a daily push: `UID_InstanceDetail_YYYYMMDD`. Example: `169**_InstanceDetail_20190310`.
- *         *   File name format for a full-data push at the beginning of the next month: `UID_InstanceDetail_YYYYMM`. Example: `169**_InstanceDetail_201903`.
- *     *   **InstanceDetailMonthly** (Instance-based bills summarized by billing cycle)
- *         *   File name format for a daily push: `UID_InstanceDetailMonthly_YYYYMM`. Example: `169**_InstanceDetailMonthly_201903`. A bill of this type contains the full data generated from the beginning of the month to the current day, and is updated every day until the fourth day of the next month.
- *     *   **BillingItemDetailMonthly** (Billable item-based bills summarized by billing cycle)
- *         *   File name format for a daily push: `UID_BillingItemDetailMonthly_YYYYMM`. Example: `169**_BillingItemDetailMonthly_201903`. A bill of this type contains the full data generated from the beginning of the month to the current day, and is updated every day until the fourth day of the next month.
- *     *   **SplitItemDetailDaily** (Split bills summarized by day)
- *         *   File name format for a daily push: `UID_SplitItemDetailDaily_YYYYMM`. Example: `169**_SplitItemDetailDaily_201903`. A bill of this type contains the full data generated from the beginning of the month to the current day, and is updated every day until the fourth day of the next month.
- *     *   **MonthBill** (Monthly bill in the PDF format)
- *         *   File name format for a monthly push: `UID_MonthBill_YYYYMM`. Example: `169**_MonthBill_201903`. The bill for the previous month is pushed on the fourth day of each month.
- * *   The bills of the MonthBill type are PDF files, whereas the bills of other types are CSV files. If the number of data rows in a bill exceeds a threshold, the bill is automatically split into multiple CSV files. Then, the multiple CSV files are automatically merged and compressed into a ZIP file that has the same name format as the original file.
- *
- * @param request SubscribeBillToOSSRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return SubscribeBillToOSSResponse
- */
+// Summary:
+//
+// Subscribes to the bills that are stored in Object Storage Service (OSS) buckets.
+//
+// Description:
+//
+// Before you call this operation, take note of the following items:
+//
+// 	- You can subscribe to only one type of bill at a time.
+//
+// 	- The bills generated on the previous day are pushed on a daily basis the next day after you subscribe to the bills. The full-data bills for the previous month are pushed on the fourth day of each month. The monthly bills in the PDF format for the previous month are pushed on the fourth day of each month.
+//
+// 	- The daily bills may be delayed. The delayed bills are pushed the next day after they are generated. The delayed bills may include the bills that should have been pushed on the previous day. We recommend that you query the full-data bills for the previous month at the beginning of each month.
+//
+// 	- The bill subscriber must have the [AliyunConsumeDump2OSSRole](https://ram.console.aliyun.com/#/role/authorize?request=%7B%22Requests%22:%20%7B%22request1%22:%20%7B%22RoleName%22:%20%22AliyunConsumeDump2OSSRole%22,%20%22TemplateId%22:%20%22Dump2OSSRole%22%7D%7D,%20%22ReturnUrl%22:%20%22https:%2F%2Fusercenter2.aliyun.com%22,%20%22Service%22:%20%22Consume%22%7D) permission.
+//
+// 	- The SubscribeBillToOSS operation has the same functionality as the Save Expense Details to OSS Bucket feature in User Center.
+//
+// 	- To subscribe to the bills stored in an OSS bucket, make sure that the directory name specified for the OSS bucket conforms to the following naming rules:
+//
+// 1.  1.  The directory name can contain only UTF-8 characters and cannot contain emoticons.
+//
+// 2.  2.  Forward slashes (/) are used to separate paths and can be used to create subdirectories with ease. The directory name cannot start with a forward slash (/), a backslash (\\\\), or consecutive forward slashes (/).
+//
+// 3.  3.  The name of a subdirectory cannot be set to two consecutive periods (..).
+//
+// 4.  4.  The directory name must be 1 to 254 characters in length.
+//
+// 	- File names:
+//
+//     	- **BillingItemDetailForBillingPeriod*	- (Detailed bills of billable items)
+//
+//         	- File name format for a daily push: `UID_BillingItemDetail_YYYYMMDD`. Example: `169**_BillingItemDetail_20190310`.
+//
+//         	- File name format for a full-data push at the beginning of the next month: `UID_BillingItemDetail_YYYYMM`. Example: `169**_BillingItemDetail_201903`.
+//
+//     	- **InstanceDetailForBillingPeriod*	- (Detailed bills of instances)
+//
+//         	- File name format for a daily push: `UID_InstanceDetail_YYYYMMDD`. Example: `169**_InstanceDetail_20190310`.
+//
+//         	- File name format for a full-data push at the beginning of the next month: `UID_InstanceDetail_YYYYMM`. Example: `169**_InstanceDetail_201903`.
+//
+//     	- **InstanceDetailMonthly*	- (Instance-based bills summarized by billing cycle)
+//
+//         	- File name format for a daily push: `UID_InstanceDetailMonthly_YYYYMM`. Example: `169**_InstanceDetailMonthly_201903`. A bill of this type contains the full data generated from the beginning of the month to the current day, and is updated every day until the fourth day of the next month.
+//
+//     	- **BillingItemDetailMonthly*	- (Billable item-based bills summarized by billing cycle)
+//
+//         	- File name format for a daily push: `UID_BillingItemDetailMonthly_YYYYMM`. Example: `169**_BillingItemDetailMonthly_201903`. A bill of this type contains the full data generated from the beginning of the month to the current day, and is updated every day until the fourth day of the next month.
+//
+//     	- **SplitItemDetailDaily*	- (Split bills summarized by day)
+//
+//         	- File name format for a daily push: `UID_SplitItemDetailDaily_YYYYMM`. Example: `169**_SplitItemDetailDaily_201903`. A bill of this type contains the full data generated from the beginning of the month to the current day, and is updated every day until the fourth day of the next month.
+//
+//     	- **MonthBill*	- (Monthly bill in the PDF format)
+//
+//         	- File name format for a monthly push: `UID_MonthBill_YYYYMM`. Example: `169**_MonthBill_201903`. The bill for the previous month is pushed on the fourth day of each month.
+//
+// 	- The bills of the MonthBill type are PDF files, whereas the bills of other types are CSV files. If the number of data rows in a bill exceeds a threshold, the bill is automatically split into multiple CSV files. Then, the multiple CSV files are automatically merged and compressed into a ZIP file that has the same name format as the original file.
+//
+// @param request - SubscribeBillToOSSRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SubscribeBillToOSSResponse
 func (client *Client) SubscribeBillToOSSWithOptions(request *SubscribeBillToOSSRequest, runtime *util.RuntimeOptions) (_result *SubscribeBillToOSSResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -32479,6 +43201,10 @@ func (client *Client) SubscribeBillToOSSWithOptions(request *SubscribeBillToOSSR
 		query["SubscribeType"] = request.SubscribeType
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.UsingSsl)) {
+		query["UsingSsl"] = request.UsingSsl
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -32502,38 +43228,69 @@ func (client *Client) SubscribeBillToOSSWithOptions(request *SubscribeBillToOSSR
 	return _result, _err
 }
 
-/**
- * Before you call this operation, take note of the following items:
- * *   You can subscribe to only one type of bill at a time.
- * *   The bills generated on the previous day are pushed on a daily basis the next day after you subscribe to the bills. The full-data bills for the previous month are pushed on the fourth day of each month. The monthly bills in the PDF format for the previous month are pushed on the fourth day of each month.
- * *   The daily bills may be delayed. The delayed bills are pushed the next day after they are generated. The delayed bills may include the bills that should have been pushed on the previous day. We recommend that you query the full-data bills for the previous month at the beginning of each month.
- * *   The bill subscriber must have the [AliyunConsumeDump2OSSRole](https://ram.console.aliyun.com/#/role/authorize?request=%7B%22Requests%22:%20%7B%22request1%22:%20%7B%22RoleName%22:%20%22AliyunConsumeDump2OSSRole%22,%20%22TemplateId%22:%20%22Dump2OSSRole%22%7D%7D,%20%22ReturnUrl%22:%20%22https:%2F%2Fusercenter2.aliyun.com%22,%20%22Service%22:%20%22Consume%22%7D) permission.
- * *   The SubscribeBillToOSS operation has the same functionality as the Save Expense Details to OSS Bucket feature in User Center.
- * *   To subscribe to the bills stored in an OSS bucket, make sure that the directory name specified for the OSS bucket conforms to the following naming rules:
- * 1.  1.  The directory name can contain only UTF-8 characters and cannot contain emoticons.
- * 2.  2.  Forward slashes (/) are used to separate paths and can be used to create subdirectories with ease. The directory name cannot start with a forward slash (/), a backslash (\\\\), or consecutive forward slashes (/).
- * 3.  3.  The name of a subdirectory cannot be set to two consecutive periods (..).
- * 4.  4.  The directory name must be 1 to 254 characters in length.
- * *   File names:
- *     *   **BillingItemDetailForBillingPeriod** (Detailed bills of billable items)
- *         *   File name format for a daily push: `UID_BillingItemDetail_YYYYMMDD`. Example: `169**_BillingItemDetail_20190310`.
- *         *   File name format for a full-data push at the beginning of the next month: `UID_BillingItemDetail_YYYYMM`. Example: `169**_BillingItemDetail_201903`.
- *     *   **InstanceDetailForBillingPeriod** (Detailed bills of instances)
- *         *   File name format for a daily push: `UID_InstanceDetail_YYYYMMDD`. Example: `169**_InstanceDetail_20190310`.
- *         *   File name format for a full-data push at the beginning of the next month: `UID_InstanceDetail_YYYYMM`. Example: `169**_InstanceDetail_201903`.
- *     *   **InstanceDetailMonthly** (Instance-based bills summarized by billing cycle)
- *         *   File name format for a daily push: `UID_InstanceDetailMonthly_YYYYMM`. Example: `169**_InstanceDetailMonthly_201903`. A bill of this type contains the full data generated from the beginning of the month to the current day, and is updated every day until the fourth day of the next month.
- *     *   **BillingItemDetailMonthly** (Billable item-based bills summarized by billing cycle)
- *         *   File name format for a daily push: `UID_BillingItemDetailMonthly_YYYYMM`. Example: `169**_BillingItemDetailMonthly_201903`. A bill of this type contains the full data generated from the beginning of the month to the current day, and is updated every day until the fourth day of the next month.
- *     *   **SplitItemDetailDaily** (Split bills summarized by day)
- *         *   File name format for a daily push: `UID_SplitItemDetailDaily_YYYYMM`. Example: `169**_SplitItemDetailDaily_201903`. A bill of this type contains the full data generated from the beginning of the month to the current day, and is updated every day until the fourth day of the next month.
- *     *   **MonthBill** (Monthly bill in the PDF format)
- *         *   File name format for a monthly push: `UID_MonthBill_YYYYMM`. Example: `169**_MonthBill_201903`. The bill for the previous month is pushed on the fourth day of each month.
- * *   The bills of the MonthBill type are PDF files, whereas the bills of other types are CSV files. If the number of data rows in a bill exceeds a threshold, the bill is automatically split into multiple CSV files. Then, the multiple CSV files are automatically merged and compressed into a ZIP file that has the same name format as the original file.
- *
- * @param request SubscribeBillToOSSRequest
- * @return SubscribeBillToOSSResponse
- */
+// Summary:
+//
+// Subscribes to the bills that are stored in Object Storage Service (OSS) buckets.
+//
+// Description:
+//
+// Before you call this operation, take note of the following items:
+//
+// 	- You can subscribe to only one type of bill at a time.
+//
+// 	- The bills generated on the previous day are pushed on a daily basis the next day after you subscribe to the bills. The full-data bills for the previous month are pushed on the fourth day of each month. The monthly bills in the PDF format for the previous month are pushed on the fourth day of each month.
+//
+// 	- The daily bills may be delayed. The delayed bills are pushed the next day after they are generated. The delayed bills may include the bills that should have been pushed on the previous day. We recommend that you query the full-data bills for the previous month at the beginning of each month.
+//
+// 	- The bill subscriber must have the [AliyunConsumeDump2OSSRole](https://ram.console.aliyun.com/#/role/authorize?request=%7B%22Requests%22:%20%7B%22request1%22:%20%7B%22RoleName%22:%20%22AliyunConsumeDump2OSSRole%22,%20%22TemplateId%22:%20%22Dump2OSSRole%22%7D%7D,%20%22ReturnUrl%22:%20%22https:%2F%2Fusercenter2.aliyun.com%22,%20%22Service%22:%20%22Consume%22%7D) permission.
+//
+// 	- The SubscribeBillToOSS operation has the same functionality as the Save Expense Details to OSS Bucket feature in User Center.
+//
+// 	- To subscribe to the bills stored in an OSS bucket, make sure that the directory name specified for the OSS bucket conforms to the following naming rules:
+//
+// 1.  1.  The directory name can contain only UTF-8 characters and cannot contain emoticons.
+//
+// 2.  2.  Forward slashes (/) are used to separate paths and can be used to create subdirectories with ease. The directory name cannot start with a forward slash (/), a backslash (\\\\), or consecutive forward slashes (/).
+//
+// 3.  3.  The name of a subdirectory cannot be set to two consecutive periods (..).
+//
+// 4.  4.  The directory name must be 1 to 254 characters in length.
+//
+// 	- File names:
+//
+//     	- **BillingItemDetailForBillingPeriod*	- (Detailed bills of billable items)
+//
+//         	- File name format for a daily push: `UID_BillingItemDetail_YYYYMMDD`. Example: `169**_BillingItemDetail_20190310`.
+//
+//         	- File name format for a full-data push at the beginning of the next month: `UID_BillingItemDetail_YYYYMM`. Example: `169**_BillingItemDetail_201903`.
+//
+//     	- **InstanceDetailForBillingPeriod*	- (Detailed bills of instances)
+//
+//         	- File name format for a daily push: `UID_InstanceDetail_YYYYMMDD`. Example: `169**_InstanceDetail_20190310`.
+//
+//         	- File name format for a full-data push at the beginning of the next month: `UID_InstanceDetail_YYYYMM`. Example: `169**_InstanceDetail_201903`.
+//
+//     	- **InstanceDetailMonthly*	- (Instance-based bills summarized by billing cycle)
+//
+//         	- File name format for a daily push: `UID_InstanceDetailMonthly_YYYYMM`. Example: `169**_InstanceDetailMonthly_201903`. A bill of this type contains the full data generated from the beginning of the month to the current day, and is updated every day until the fourth day of the next month.
+//
+//     	- **BillingItemDetailMonthly*	- (Billable item-based bills summarized by billing cycle)
+//
+//         	- File name format for a daily push: `UID_BillingItemDetailMonthly_YYYYMM`. Example: `169**_BillingItemDetailMonthly_201903`. A bill of this type contains the full data generated from the beginning of the month to the current day, and is updated every day until the fourth day of the next month.
+//
+//     	- **SplitItemDetailDaily*	- (Split bills summarized by day)
+//
+//         	- File name format for a daily push: `UID_SplitItemDetailDaily_YYYYMM`. Example: `169**_SplitItemDetailDaily_201903`. A bill of this type contains the full data generated from the beginning of the month to the current day, and is updated every day until the fourth day of the next month.
+//
+//     	- **MonthBill*	- (Monthly bill in the PDF format)
+//
+//         	- File name format for a monthly push: `UID_MonthBill_YYYYMM`. Example: `169**_MonthBill_201903`. The bill for the previous month is pushed on the fourth day of each month.
+//
+// 	- The bills of the MonthBill type are PDF files, whereas the bills of other types are CSV files. If the number of data rows in a bill exceeds a threshold, the bill is automatically split into multiple CSV files. Then, the multiple CSV files are automatically merged and compressed into a ZIP file that has the same name format as the original file.
+//
+// @param request - SubscribeBillToOSSRequest
+//
+// @return SubscribeBillToOSSResponse
 func (client *Client) SubscribeBillToOSS(request *SubscribeBillToOSSRequest) (_result *SubscribeBillToOSSResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SubscribeBillToOSSResponse{}
@@ -32545,6 +43302,15 @@ func (client *Client) SubscribeBillToOSS(request *SubscribeBillToOSSRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// Add tags to resources.
+//
+// @param request - TagResourcesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return TagResourcesResponse
 func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runtime *util.RuntimeOptions) (_result *TagResourcesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -32586,6 +43352,13 @@ func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runt
 	return _result, _err
 }
 
+// Summary:
+//
+// Add tags to resources.
+//
+// @param request - TagResourcesRequest
+//
+// @return TagResourcesResponse
 func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagResourcesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &TagResourcesResponse{}
@@ -32597,6 +43370,15 @@ func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Unsubscribes from the bills that are stored in Object Storage Service (OSS) buckets.
+//
+// @param request - UnsubscribeBillToOSSRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UnsubscribeBillToOSSResponse
 func (client *Client) UnsubscribeBillToOSSWithOptions(request *UnsubscribeBillToOSSRequest, runtime *util.RuntimeOptions) (_result *UnsubscribeBillToOSSResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -32634,6 +43416,13 @@ func (client *Client) UnsubscribeBillToOSSWithOptions(request *UnsubscribeBillTo
 	return _result, _err
 }
 
+// Summary:
+//
+// Unsubscribes from the bills that are stored in Object Storage Service (OSS) buckets.
+//
+// @param request - UnsubscribeBillToOSSRequest
+//
+// @return UnsubscribeBillToOSSResponse
 func (client *Client) UnsubscribeBillToOSS(request *UnsubscribeBillToOSSRequest) (_result *UnsubscribeBillToOSSResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UnsubscribeBillToOSSResponse{}
@@ -32645,6 +43434,15 @@ func (client *Client) UnsubscribeBillToOSS(request *UnsubscribeBillToOSSRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// Removes tags from resources.
+//
+// @param request - UntagResourcesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UntagResourcesResponse
 func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, runtime *util.RuntimeOptions) (_result *UntagResourcesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -32690,6 +43488,13 @@ func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// Removes tags from resources.
+//
+// @param request - UntagResourcesRequest
+//
+// @return UntagResourcesResponse
 func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *UntagResourcesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UntagResourcesResponse{}
@@ -32701,6 +43506,15 @@ func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *U
 	return _result, _err
 }
 
+// Summary:
+//
+// Upgrades a resource plan.
+//
+// @param request - UpgradeResourcePackageRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpgradeResourcePackageResponse
 func (client *Client) UpgradeResourcePackageWithOptions(request *UpgradeResourcePackageRequest, runtime *util.RuntimeOptions) (_result *UpgradeResourcePackageResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -32746,6 +43560,13 @@ func (client *Client) UpgradeResourcePackageWithOptions(request *UpgradeResource
 	return _result, _err
 }
 
+// Summary:
+//
+// Upgrades a resource plan.
+//
+// @param request - UpgradeResourcePackageRequest
+//
+// @return UpgradeResourcePackageResponse
 func (client *Client) UpgradeResourcePackage(request *UpgradeResourcePackageRequest) (_result *UpgradeResourcePackageResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpgradeResourcePackageResponse{}
