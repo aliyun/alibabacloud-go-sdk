@@ -10,24 +10,38 @@ import (
 )
 
 type AddServiceSharedAccountsRequest struct {
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	//
 	// example:
 	//
 	// BBBAAfu+XtuBE55iRLHEYYuojI4=
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The service ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// service-63b8a060e9d54cxxxxxx
 	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	// The shared account and permissions of the service.
+	//
 	// This parameter is required.
 	SharedAccounts []*AddServiceSharedAccountsRequestSharedAccounts `json:"SharedAccounts,omitempty" xml:"SharedAccounts,omitempty" type:"Repeated"`
+	// The share type of the service. Default value: SharedAccount. Valid values:
+	//
+	// 	- SharedAccount: The service is shared by multiple accounts.
+	//
+	// 	- Reseller: The service is distributed.
+	//
 	// example:
 	//
 	// SharedAccount
@@ -68,12 +82,20 @@ func (s *AddServiceSharedAccountsRequest) SetType(v string) *AddServiceSharedAcc
 }
 
 type AddServiceSharedAccountsRequestSharedAccounts struct {
+	// The permissions on the service. Valid values:
+	//
+	// 	- Deployable: Permissions to deploy the service.
+	//
+	// 	- Accessible: Permissions to access the service.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// Accessible
 	Permission *string `json:"Permission,omitempty" xml:"Permission,omitempty"`
+	// The Alibaba Cloud account ID of the user.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -101,6 +123,8 @@ func (s *AddServiceSharedAccountsRequestSharedAccounts) SetUserAliUid(v string) 
 }
 
 type AddServiceSharedAccountsResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// E2815213-EA4F-5759-8EA1-56DD051BB3FD
@@ -1594,22 +1618,30 @@ func (s *DeleteArtifactResponse) SetBody(v *DeleteArtifactResponseBody) *DeleteA
 }
 
 type DeleteServiceRequest struct {
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	//
 	// example:
 	//
 	// 10CM943JP0EN9D51H
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The service ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// service-0e6fca6a51a54420****
 	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	// The service version.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -1647,6 +1679,8 @@ func (s *DeleteServiceRequest) SetServiceVersion(v string) *DeleteServiceRequest
 }
 
 type DeleteServiceResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 4DB0F536-B3BE-4F0D-BD29-E83FB56D****
@@ -4740,7 +4774,8 @@ func (s *GetServiceTemplateParameterConstraintsResponse) SetBody(v *GetServiceTe
 
 type GetUploadCredentialsRequest struct {
 	// This parameter is required.
-	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	FileName   *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	Visibility *string `json:"Visibility,omitempty" xml:"Visibility,omitempty"`
 }
 
 func (s GetUploadCredentialsRequest) String() string {
@@ -4753,6 +4788,11 @@ func (s GetUploadCredentialsRequest) GoString() string {
 
 func (s *GetUploadCredentialsRequest) SetFileName(v string) *GetUploadCredentialsRequest {
 	s.FileName = &v
+	return s
+}
+
+func (s *GetUploadCredentialsRequest) SetVisibility(v string) *GetUploadCredentialsRequest {
+	s.Visibility = &v
 	return s
 }
 
@@ -7506,6 +7546,8 @@ func (s *RegisterServiceResponse) SetBody(v *RegisterServiceResponseBody) *Regis
 }
 
 type ReleaseArtifactRequest struct {
+	// The ID of the artifact.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -7528,35 +7570,63 @@ func (s *ReleaseArtifactRequest) SetArtifactId(v string) *ReleaseArtifactRequest
 }
 
 type ReleaseArtifactResponseBody struct {
+	// The ID of the artifact.
+	//
 	// example:
 	//
 	// artifact-9feded91880e4c78xxxx
 	ArtifactId *string `json:"ArtifactId,omitempty" xml:"ArtifactId,omitempty"`
+	// The content of the artifact.
+	//
 	// example:
 	//
 	// "{\\"Url\\":\\"https://computenest-artifacts-draft-cn-hangzhou.oss-cn-hangzhou.aliyuncs.com/130920852836xxxx/cn-hangzhou/service-8072a04e5a134382xxxx/165095355xxxx/changes.txt\\",\\"ConfigurationMetadata\\":\\"{\\\\\\"WorkDir\\\\\\":\\\\\\"/root\\\\\\",\\\\\\"Platform\\\\\\":\\\\\\"Linux\\\\\\",\\\\\\"CommandType\\\\\\":\\\\\\"RunShellScript\\\\\\",\\\\\\"UpgradeScript\\\\\\":\\\\\\"cd /root\\\\\\\\ncp changes.txt cpchanges.txt\\\\\\\\nmv changes.txt mvchangge.txt\\\\\\"}\\"}"
 	ArtifactProperty *string `json:"ArtifactProperty,omitempty" xml:"ArtifactProperty,omitempty"`
+	// The type of the artifact.
+	//
 	// example:
 	//
 	// File
 	ArtifactType *string `json:"ArtifactType,omitempty" xml:"ArtifactType,omitempty"`
+	// The version of the artifact.
+	//
 	// example:
 	//
 	// draft
 	ArtifactVersion *string `json:"ArtifactVersion,omitempty" xml:"ArtifactVersion,omitempty"`
-	Description     *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The description of the artifact.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The time when the artifact was modified.
+	//
 	// example:
 	//
 	// 1650954178000
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 3818BA7D-3F50-1A44-9FF3-04A52A59XXXX
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The state of the artifact. Valid values:
+	//
+	// 	- Created: The artifact is created.
+	//
+	// 	- Scanning: The artifact is being scanned.
+	//
+	// 	- ScanFailed: The artifact failed to be scanned.
+	//
+	// 	- Delivering: The artifact is being distributed.
+	//
+	// 	- Available: The artifact is available.
+	//
+	// 	- Deleted: The artifact is deleted.
+	//
 	// example:
 	//
 	// Created
-	Status      *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The version name of the artifact.
 	VersionName *string `json:"VersionName,omitempty" xml:"VersionName,omitempty"`
 }
 
@@ -8942,17 +9012,34 @@ func (s *UpdateServiceInstanceAttributeResponse) SetBody(v *UpdateServiceInstanc
 }
 
 type UpdateServiceInstanceSpecRequest struct {
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	//
+	// example:
+	//
+	// 10CM943JP0EN9D51H
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// Specifies whether to enable Prometheus on the customer side. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
 	// example:
 	//
 	// true
-	EnableUserPrometheus *bool   `json:"EnableUserPrometheus,omitempty" xml:"EnableUserPrometheus,omitempty"`
-	OperationName        *string `json:"OperationName,omitempty" xml:"OperationName,omitempty"`
+	EnableUserPrometheus *bool `json:"EnableUserPrometheus,omitempty" xml:"EnableUserPrometheus,omitempty"`
+	// The name of the configuration update operation.
+	OperationName *string `json:"OperationName,omitempty" xml:"OperationName,omitempty"`
+	// The configuration parameters of the service instance.
+	//
 	// example:
 	//
 	// {\\"EcsInstanceParameter\\":\\"4vCPU 8GiB\\",\\"ZoneId\\":\\"cn-heyuan-a\\",\\"SystemDiskSize\\":50,\\"DataDiskSize\\":150,\\"InternetMaxBandwidthOut\\":2,\\"RegionId\\":\\"cn-heyuan\\"}
-	Parameters               map[string]interface{} `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
-	PredefinedParametersName *string                `json:"PredefinedParametersName,omitempty" xml:"PredefinedParametersName,omitempty"`
+	Parameters map[string]interface{} `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
+	// The name of the specification package.
+	PredefinedParametersName *string `json:"PredefinedParametersName,omitempty" xml:"PredefinedParametersName,omitempty"`
+	// The service instance ID.
+	//
 	// example:
 	//
 	// si-0e6fca6a51a54420****
@@ -8998,17 +9085,34 @@ func (s *UpdateServiceInstanceSpecRequest) SetServiceInstanceId(v string) *Updat
 }
 
 type UpdateServiceInstanceSpecShrinkRequest struct {
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	//
+	// example:
+	//
+	// 10CM943JP0EN9D51H
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// Specifies whether to enable Prometheus on the customer side. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
 	// example:
 	//
 	// true
-	EnableUserPrometheus *bool   `json:"EnableUserPrometheus,omitempty" xml:"EnableUserPrometheus,omitempty"`
-	OperationName        *string `json:"OperationName,omitempty" xml:"OperationName,omitempty"`
+	EnableUserPrometheus *bool `json:"EnableUserPrometheus,omitempty" xml:"EnableUserPrometheus,omitempty"`
+	// The name of the configuration update operation.
+	OperationName *string `json:"OperationName,omitempty" xml:"OperationName,omitempty"`
+	// The configuration parameters of the service instance.
+	//
 	// example:
 	//
 	// {\\"EcsInstanceParameter\\":\\"4vCPU 8GiB\\",\\"ZoneId\\":\\"cn-heyuan-a\\",\\"SystemDiskSize\\":50,\\"DataDiskSize\\":150,\\"InternetMaxBandwidthOut\\":2,\\"RegionId\\":\\"cn-heyuan\\"}
-	ParametersShrink         *string `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
+	ParametersShrink *string `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
+	// The name of the specification package.
 	PredefinedParametersName *string `json:"PredefinedParametersName,omitempty" xml:"PredefinedParametersName,omitempty"`
+	// The service instance ID.
+	//
 	// example:
 	//
 	// si-0e6fca6a51a54420****
@@ -9054,7 +9158,14 @@ func (s *UpdateServiceInstanceSpecShrinkRequest) SetServiceInstanceId(v string) 
 }
 
 type UpdateServiceInstanceSpecResponseBody struct {
+	// The order ID.
+	//
+	// example:
+	//
+	// 2306175xxxxxxxx
 	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// DF0F666F-FBBC-55C3-A368-C955DE7B4839
@@ -9352,6 +9463,10 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
+// Summary:
+//
+// Adds a shared account of a service.
+//
 // @param request - AddServiceSharedAccountsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -9406,6 +9521,10 @@ func (client *Client) AddServiceSharedAccountsWithOptions(request *AddServiceSha
 	return _result, _err
 }
 
+// Summary:
+//
+// Adds a shared account of a service.
+//
 // @param request - AddServiceSharedAccountsRequest
 //
 // @return AddServiceSharedAccountsResponse
@@ -9924,6 +10043,10 @@ func (client *Client) DeleteArtifact(request *DeleteArtifactRequest) (_result *D
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a service.
+//
 // @param request - DeleteServiceRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -9974,6 +10097,10 @@ func (client *Client) DeleteServiceWithOptions(request *DeleteServiceRequest, ru
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a service.
+//
 // @param request - DeleteServiceRequest
 //
 // @return DeleteServiceResponse
@@ -10583,6 +10710,10 @@ func (client *Client) GetUploadCredentialsWithOptions(request *GetUploadCredenti
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.FileName)) {
 		query["FileName"] = request.FileName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Visibility)) {
+		query["Visibility"] = request.Visibility
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -11328,7 +11459,7 @@ func (client *Client) RegisterService(request *RegisterServiceRequest) (_result 
 
 // Summary:
 //
-// 发布部署物
+// Publishes an artifact.
 //
 // @param request - ReleaseArtifactRequest
 //
@@ -11370,7 +11501,7 @@ func (client *Client) ReleaseArtifactWithOptions(request *ReleaseArtifactRequest
 
 // Summary:
 //
-// 发布部署物
+// Publishes an artifact.
 //
 // @param request - ReleaseArtifactRequest
 //
@@ -11888,7 +12019,7 @@ func (client *Client) UpdateServiceInstanceAttribute(request *UpdateServiceInsta
 
 // Summary:
 //
-// 变配服务实例
+// Updates the configurations of a service instance.
 //
 // @param tmpReq - UpdateServiceInstanceSpecRequest
 //
@@ -11956,7 +12087,7 @@ func (client *Client) UpdateServiceInstanceSpecWithOptions(tmpReq *UpdateService
 
 // Summary:
 //
-// 变配服务实例
+// Updates the configurations of a service instance.
 //
 // @param request - UpdateServiceInstanceSpecRequest
 //
