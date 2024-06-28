@@ -2850,6 +2850,7 @@ type DocOcrRequest struct {
 	//
 	// https://digital-cardocr-prod8.oss-cn-hangzhou.aliyuncs.com/1669520556530-expo/default/face/20221127114236530_w3kx2e6t.jpg
 	IdOcrPictureUrl *string `json:"IdOcrPictureUrl,omitempty" xml:"IdOcrPictureUrl,omitempty"`
+	IdThreshold     *string `json:"IdThreshold,omitempty" xml:"IdThreshold,omitempty"`
 	// example:
 	//
 	// dso9322***dsjsd22
@@ -2894,6 +2895,11 @@ func (s *DocOcrRequest) SetIdOcrPictureBase64(v string) *DocOcrRequest {
 
 func (s *DocOcrRequest) SetIdOcrPictureUrl(v string) *DocOcrRequest {
 	s.IdOcrPictureUrl = &v
+	return s
+}
+
+func (s *DocOcrRequest) SetIdThreshold(v string) *DocOcrRequest {
+	s.IdThreshold = &v
 	return s
 }
 
@@ -3069,6 +3075,7 @@ type EkycVerifyRequest struct {
 	//
 	// https://digital-cardocr-prod8.oss-cn-hangzhou.aliyuncs.com/1669520556530-expo/default/face/20221127114236530_w3kx2e6t.jpg
 	IdOcrPictureUrl *string `json:"IdOcrPictureUrl,omitempty" xml:"IdOcrPictureUrl,omitempty"`
+	IdThreshold     *string `json:"IdThreshold,omitempty" xml:"IdThreshold,omitempty"`
 	// example:
 	//
 	// e0c34a77f5ac40a5aa5e6ed20c353888
@@ -3133,6 +3140,11 @@ func (s *EkycVerifyRequest) SetIdOcrPictureBase64(v string) *EkycVerifyRequest {
 
 func (s *EkycVerifyRequest) SetIdOcrPictureUrl(v string) *EkycVerifyRequest {
 	s.IdOcrPictureUrl = &v
+	return s
+}
+
+func (s *EkycVerifyRequest) SetIdThreshold(v string) *EkycVerifyRequest {
+	s.IdThreshold = &v
 	return s
 }
 
@@ -3957,6 +3969,7 @@ type InitializeRequest struct {
 	//
 	// 01000000
 	DocType           *string `json:"DocType,omitempty" xml:"DocType,omitempty"`
+	DocVideo          *string `json:"DocVideo,omitempty" xml:"DocVideo,omitempty"`
 	ExperienceCode    *string `json:"ExperienceCode,omitempty" xml:"ExperienceCode,omitempty"`
 	FacePictureBase64 *string `json:"FacePictureBase64,omitempty" xml:"FacePictureBase64,omitempty"`
 	// example:
@@ -3971,6 +3984,7 @@ type InitializeRequest struct {
 	//
 	// Y
 	IdSpoof        *string `json:"IdSpoof,omitempty" xml:"IdSpoof,omitempty"`
+	IdThreshold    *string `json:"IdThreshold,omitempty" xml:"IdThreshold,omitempty"`
 	LanguageConfig *string `json:"LanguageConfig,omitempty" xml:"LanguageConfig,omitempty"`
 	// example:
 	//
@@ -3984,6 +3998,7 @@ type InitializeRequest struct {
 	//
 	// {\\"bioMetaInfo\\":\\"4.1.0:2916352,0\\",\\"deviceType\\":\\"web\\",\\"ua\\":\\"Mozilla/5.0 (Macintosh
 	MetaInfo *string `json:"MetaInfo,omitempty" xml:"MetaInfo,omitempty"`
+	Model    *string `json:"Model,omitempty" xml:"Model,omitempty"`
 	// OCR。
 	//
 	// example:
@@ -4045,6 +4060,11 @@ func (s *InitializeRequest) SetDocType(v string) *InitializeRequest {
 	return s
 }
 
+func (s *InitializeRequest) SetDocVideo(v string) *InitializeRequest {
+	s.DocVideo = &v
+	return s
+}
+
 func (s *InitializeRequest) SetExperienceCode(v string) *InitializeRequest {
 	s.ExperienceCode = &v
 	return s
@@ -4070,6 +4090,11 @@ func (s *InitializeRequest) SetIdSpoof(v string) *InitializeRequest {
 	return s
 }
 
+func (s *InitializeRequest) SetIdThreshold(v string) *InitializeRequest {
+	s.IdThreshold = &v
+	return s
+}
+
 func (s *InitializeRequest) SetLanguageConfig(v string) *InitializeRequest {
 	s.LanguageConfig = &v
 	return s
@@ -4087,6 +4112,11 @@ func (s *InitializeRequest) SetMerchantUserId(v string) *InitializeRequest {
 
 func (s *InitializeRequest) SetMetaInfo(v string) *InitializeRequest {
 	s.MetaInfo = &v
+	return s
+}
+
+func (s *InitializeRequest) SetModel(v string) *InitializeRequest {
+	s.Model = &v
 	return s
 }
 
@@ -5292,6 +5322,10 @@ func (client *Client) DocOcrWithOptions(request *DocOcrRequest, runtime *util.Ru
 		query["IdOcrPictureUrl"] = request.IdOcrPictureUrl
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.IdThreshold)) {
+		query["IdThreshold"] = request.IdThreshold
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.MerchantBizId)) {
 		query["MerchantBizId"] = request.MerchantBizId
 	}
@@ -5400,6 +5434,10 @@ func (client *Client) EkycVerifyWithOptions(request *EkycVerifyRequest, runtime 
 
 	if !tea.BoolValue(util.IsUnset(request.IdOcrPictureUrl)) {
 		query["IdOcrPictureUrl"] = request.IdOcrPictureUrl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IdThreshold)) {
+		query["IdThreshold"] = request.IdThreshold
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.MerchantBizId)) {
@@ -5816,6 +5854,10 @@ func (client *Client) InitializeWithOptions(request *InitializeRequest, runtime 
 		query["DocType"] = request.DocType
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.DocVideo)) {
+		query["DocVideo"] = request.DocVideo
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ExperienceCode)) {
 		query["ExperienceCode"] = request.ExperienceCode
 	}
@@ -5832,6 +5874,10 @@ func (client *Client) InitializeWithOptions(request *InitializeRequest, runtime 
 		query["IdSpoof"] = request.IdSpoof
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.IdThreshold)) {
+		query["IdThreshold"] = request.IdThreshold
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.LanguageConfig)) {
 		query["LanguageConfig"] = request.LanguageConfig
 	}
@@ -5846,6 +5892,10 @@ func (client *Client) InitializeWithOptions(request *InitializeRequest, runtime 
 
 	if !tea.BoolValue(util.IsUnset(request.MetaInfo)) {
 		query["MetaInfo"] = request.MetaInfo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Model)) {
+		query["Model"] = request.Model
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Ocr)) {
