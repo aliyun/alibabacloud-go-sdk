@@ -1,7 +1,4 @@
 // This file is auto-generated, don't edit it. Thanks.
-/**
- *
- */
 package client
 
 import (
@@ -15,18 +12,35 @@ import (
 type CancelScheduleTasksRequest struct {
 	// The cluster ID.
 	//
-	// >  You can call the [DescribeDBClusters](~~98094~~) operation to query the information of all clusters that are deployed in a specified region, such as the cluster IDs.
+	// >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to query the information of all clusters that are deployed in a specified region, such as the cluster IDs.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pc-**************
 	DBClusterId  *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The ID of the resource group.
+	//
+	// example:
+	//
+	// rg-************
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The ID of the scheduled task that you want to cancel.
 	//
-	// > *   You can call the [DescribeScheduleTasks](~~199648~~) operation to query the details of all scheduled tasks that belong to the current account, such as the task IDs.
-	// >*   You can cancel only the tasks whose status is `pending`.``
+	// > 	- You can call the [DescribeScheduleTasks](https://help.aliyun.com/document_detail/199648.html) operation to query the details of all scheduled tasks that belong to the current account, such as the task IDs.
+	//
+	// >	- You can cancel only the tasks whose status is `pending`.``
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ec8c4723-eac5-4f12-becb-01ac08******
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
@@ -75,8 +89,16 @@ func (s *CancelScheduleTasksRequest) SetTaskId(v string) *CancelScheduleTasksReq
 
 type CancelScheduleTasksResponseBody struct {
 	// The request ID.
+	//
+	// example:
+	//
+	// 7F2007D3-7E74-4ECB-89A8-BF130D******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request is successful.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -129,10 +151,22 @@ func (s *CancelScheduleTasksResponse) SetBody(v *CancelScheduleTasksResponseBody
 
 type CheckAccountNameRequest struct {
 	// The name of the account.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test_acc
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
 	// The ID of the cluster.
 	//
-	// > You can call the [DescribeDBClusters](~~98094~~) operation to query information about all clusters that are deployed in a specified region, such as the cluster ID.
+	// > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to query information about all clusters that are deployed in a specified region, such as the cluster ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pc-****************
 	DBClusterId          *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -180,6 +214,10 @@ func (s *CheckAccountNameRequest) SetResourceOwnerId(v int64) *CheckAccountNameR
 
 type CheckAccountNameResponseBody struct {
 	// The request ID.
+	//
+	// example:
+	//
+	// 925B84D9-CA72-432C-95CF-738C22******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -228,9 +266,21 @@ func (s *CheckAccountNameResponse) SetBody(v *CheckAccountNameResponseBody) *Che
 type CheckDBNameRequest struct {
 	// The ID of the cluster.
 	//
-	// > You can call the [DescribeDBClusters](~~98094~~) operation to query information about all clusters that are deployed in a region, such as the cluster IDs.
+	// > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to query information about all clusters that are deployed in a region, such as the cluster IDs.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pc-****************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	// The name of the database.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test_db
 	DBName               *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -278,8 +328,16 @@ func (s *CheckDBNameRequest) SetResourceOwnerId(v int64) *CheckDBNameRequest {
 
 type CheckDBNameResponseBody struct {
 	// The name of the database.
+	//
+	// example:
+	//
+	// test_db
 	DBName *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// CDB3258F-B5DE-43C4-8935-CBA0CA******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -333,17 +391,31 @@ func (s *CheckDBNameResponse) SetBody(v *CheckDBNameResponseBody) *CheckDBNameRe
 type CheckKMSAuthorizedRequest struct {
 	// The cluster ID.
 	//
-	// >  You can call the [DescribeDBClusters](~~98094~~) operation to query the information of all clusters that are deployed in a specific region, such as the cluster IDs.
+	// >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to query the information of all clusters that are deployed in a specific region, such as the cluster IDs.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pc-************
 	DBClusterId  *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The ID of the region.
 	//
-	// >  You can call the [DescribeRegions](~~98041~~) operation to query all regions that are available for your account, such as the region IDs.
+	// >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to query all regions that are available for your account, such as the region IDs.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The region in which the TDE key resides.
+	//
+	// example:
+	//
+	// cn-beijing
 	TDERegion *string `json:"TDERegion,omitempty" xml:"TDERegion,omitempty"`
 }
 
@@ -393,14 +465,31 @@ func (s *CheckKMSAuthorizedRequest) SetTDERegion(v string) *CheckKMSAuthorizedRe
 type CheckKMSAuthorizedResponseBody struct {
 	// Indicates whether the cluster is authorized to use KMS. Valid values:
 	//
-	// *   **0**: no.
-	// *   **1**: yes.
+	// 	- **0**: no.
+	//
+	// 	- **1**: yes.
+	//
+	// example:
+	//
+	// 0
 	AuthorizationState *int32 `json:"AuthorizationState,omitempty" xml:"AuthorizationState,omitempty"`
 	// The cluster ID.
+	//
+	// example:
+	//
+	// pc-************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// A7E6A8FD-C50B-46B2-BA85-D8B8D3******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The Alibaba Cloud Resource Name (ARN) of the RAM role. A RAM role is a virtual identity that you can create within your Alibaba Cloud account. For more information, see [RAM role overview](~~93689~~).
+	// The Alibaba Cloud Resource Name (ARN) of the RAM role. A RAM role is a virtual identity that you can create within your Alibaba Cloud account. For more information, see [RAM role overview](https://help.aliyun.com/document_detail/93689.html).
+	//
+	// example:
+	//
+	// acs:ram::1406926*****:role/aliyunrdsinstanceencryptiondefaultrole
 	RoleArn *string `json:"RoleArn,omitempty" xml:"RoleArn,omitempty"`
 }
 
@@ -498,8 +587,16 @@ func (s *CheckServiceLinkedRoleRequest) SetResourceOwnerId(v int64) *CheckServic
 
 type CheckServiceLinkedRoleResponseBody struct {
 	// Indicates whether the SLR is created.
+	//
+	// example:
+	//
+	// true
 	HasServiceLinkedRole *bool `json:"HasServiceLinkedRole,omitempty" xml:"HasServiceLinkedRole,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 3F9E6A3B-C13E-4064-A010-18582A******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -552,10 +649,22 @@ func (s *CheckServiceLinkedRoleResponse) SetBody(v *CheckServiceLinkedRoleRespon
 
 type CloseAITaskRequest struct {
 	// The ID of the cluster.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pc-**************
 	DBClusterId  *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The region ID of the cluster.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -601,8 +710,16 @@ func (s *CloseAITaskRequest) SetResourceOwnerId(v int64) *CloseAITaskRequest {
 
 type CloseAITaskResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 936C7025-27A5-4CB1-BB31-540E1F0CCA12
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The ID of the task for disabling the PolarDB for AI feature.
+	//
+	// example:
+	//
+	// 53879cdb-9a00-428e-acaf-ff4cff******
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
@@ -656,14 +773,25 @@ func (s *CloseAITaskResponse) SetBody(v *CloseAITaskResponseBody) *CloseAITaskRe
 type CloseDBClusterMigrationRequest struct {
 	// Specifies whether to continue to enable binary logging. Valid values:
 	//
-	// *   **true**: continues to enable binary logging.
-	// *   **false**: disables binary logging.
+	// 	- **true**: continues to enable binary logging.
+	//
+	// 	- **false**: disables binary logging.
 	//
 	// Default value: **true**.
 	//
 	// > If binary logging is disabled, your PolarDB cluster is restarted.
+	//
+	// example:
+	//
+	// true
 	ContinueEnableBinlog *bool `json:"ContinueEnableBinlog,omitempty" xml:"ContinueEnableBinlog,omitempty"`
 	// The ID of the cluster.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pc-**************
 	DBClusterId          *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -711,6 +839,10 @@ func (s *CloseDBClusterMigrationRequest) SetResourceOwnerId(v int64) *CloseDBClu
 
 type CloseDBClusterMigrationResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 3AA69096-757C-4647-B36C-29EBC2******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -759,56 +891,107 @@ func (s *CloseDBClusterMigrationResponse) SetBody(v *CloseDBClusterMigrationResp
 type CreateAccountRequest struct {
 	// The description of the account. The description must meet the following requirements:
 	//
-	// *   It cannot start with `http://` or `https://`.
-	// *   It must be 2 to 256 characters in length.
+	// 	- It cannot start with `http://` or `https://`.
+	//
+	// 	- It must be 2 to 256 characters in length.
+	//
+	// example:
+	//
+	// testdes
 	AccountDescription *string `json:"AccountDescription,omitempty" xml:"AccountDescription,omitempty"`
 	// The name of the account. The name must meet the following requirements:
 	//
-	// *   It must start with a lowercase letter and end with a letter or a digit.
-	// *   It can contain lowercase letters, digits, and underscores (\_).
-	// *   It must be 2 to 16 characters in length.
-	// *   It cannot be root, admin, or another username that is reserved by the system.
+	// 	- It must start with a lowercase letter and end with a letter or a digit.
+	//
+	// 	- It can contain lowercase letters, digits, and underscores (_).
+	//
+	// 	- It must be 2 to 16 characters in length.
+	//
+	// 	- It cannot be root, admin, or another username that is reserved by the system.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// testacc
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
 	// The password of the account. The password must meet the following requirements:
 	//
-	// *   It must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
-	// *   It must be 8 to 32 characters in length.
-	// *   Special characters include `! @ # $ % ^ & * ( ) _ + - =`
+	// 	- It must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
+	//
+	// 	- It must be 8 to 32 characters in length.
+	//
+	// 	- Special characters include `! @ # $ % ^ & 	- ( ) _ + - =`
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Test1111
 	AccountPassword *string `json:"AccountPassword,omitempty" xml:"AccountPassword,omitempty"`
 	// The permissions that are granted to the account. Valid values:
 	//
-	// *   **ReadWrite**: read and write permissions
-	// *   **ReadOnly**: read-only permissions
-	// *   **DMLOnly**: the permissions to execute only DML statements
-	// *   **DDLOnly**: the permissions to execute only DDL statements
-	// *   **ReadIndex**: the read and index permissions
+	// 	- **ReadWrite**: read and write permissions
+	//
+	// 	- **ReadOnly**: read-only permissions
+	//
+	// 	- **DMLOnly**: the permissions to execute only DML statements
+	//
+	// 	- **DDLOnly**: the permissions to execute only DDL statements
+	//
+	// 	- **ReadIndex**: the read and index permissions
 	//
 	// >
 	//
-	// *   The `AccountPrivilege` parameter is valid only after you specify the `DBName` parameter.
+	// 	- The `AccountPrivilege` parameter is valid only after you specify the `DBName` parameter.
 	//
-	// *   If multiple database names are specified by the `DBName` parameter, you must grant permissions on the databases. Separate multiple permissions with commas (,). For example, if you want to grant the account the read and write permissions on DB1 and the read-only permissions on DB2, set `DBName` to `DB1,DB2`, and set `AccountPrivilege` to `ReadWrite,ReadOnly`.
-	// *   This parameter is valid only for standard accounts of PolarDB for MySQL clusters.
+	// 	- If multiple database names are specified by the `DBName` parameter, you must grant permissions on the databases. Separate multiple permissions with commas (,). For example, if you want to grant the account the read and write permissions on DB1 and the read-only permissions on DB2, set `DBName` to `DB1,DB2`, and set `AccountPrivilege` to `ReadWrite,ReadOnly`.
+	//
+	// 	- This parameter is valid only for standard accounts of PolarDB for MySQL clusters.
+	//
+	// example:
+	//
+	// ReadWrite
 	AccountPrivilege *string `json:"AccountPrivilege,omitempty" xml:"AccountPrivilege,omitempty"`
 	// The type of the account. Valid values:
 	//
-	// *   **Normal**: standard account
-	// *   **Super**: privileged account
+	// 	- **Normal**: standard account
+	//
+	// 	- **Super**: privileged account
 	//
 	// >
 	//
-	// *   If you leave this parameter empty, the default value **Super** is used.
+	// 	- If you leave this parameter empty, the default value **Super*	- is used.
 	//
-	// *   You can create multiple privileged accounts for a PolarDB for Oracle or PolarDB for PostgreSQL cluster. A privileged account is granted more permissions than a standard account. For more information about how to create a database account, see [Create a database account](~~68508~~).
-	// *   You can create only one privileged account for a PolarDB for MySQL cluster. A privileged account is granted more permissions than a standard account. For more information about how to create a database account, see [Create a database account](~~68508~~).
+	// 	- You can create multiple privileged accounts for a PolarDB for Oracle or PolarDB for PostgreSQL cluster. A privileged account is granted more permissions than a standard account. For more information about how to create a database account, see [Create a database account](https://help.aliyun.com/document_detail/68508.html).
+	//
+	// 	- You can create only one privileged account for a PolarDB for MySQL cluster. A privileged account is granted more permissions than a standard account. For more information about how to create a database account, see [Create a database account](https://help.aliyun.com/document_detail/68508.html).
+	//
+	// example:
+	//
+	// Normal
 	AccountType *string `json:"AccountType,omitempty" xml:"AccountType,omitempty"`
 	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. The token is case-sensitive.
+	//
+	// example:
+	//
+	// 6000170000591aed949d0f54a343f1a4233c1e7d1c5c******
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The ID of cluster.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pc-**************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	// The name of the database that can be accessed by the account. To enter multiple database names, separate the names with commas (,).
 	//
 	// > This parameter is valid only for standard accounts of PolarDB for MySQL clusters.
+	//
+	// example:
+	//
+	// testdb
 	DBName               *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -892,6 +1075,10 @@ func (s *CreateAccountRequest) SetResourceOwnerId(v int64) *CreateAccountRequest
 
 type CreateAccountResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// CED079B7-A408-41A1-BFF1-EC608E******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -939,8 +1126,18 @@ func (s *CreateAccountResponse) SetBody(v *CreateAccountResponseBody) *CreateAcc
 
 type CreateBackupRequest struct {
 	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. The token is case-sensitive.
+	//
+	// example:
+	//
+	// 6000170000591aed949d0f54a343f1a4233c1e7d1c5c******
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The cluster ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pc-*************
 	DBClusterId          *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -988,8 +1185,16 @@ func (s *CreateBackupRequest) SetResourceOwnerId(v int64) *CreateBackupRequest {
 
 type CreateBackupResponseBody struct {
 	// The ID of the backup set.
+	//
+	// example:
+	//
+	// 11111111
 	BackupJobId *string `json:"BackupJobId,omitempty" xml:"BackupJobId,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// F3322AFE-083E-4D77-A074-421301******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1041,14 +1246,28 @@ func (s *CreateBackupResponse) SetBody(v *CreateBackupResponseBody) *CreateBacku
 }
 
 type CreateColdStorageInstanceRequest struct {
-	ClientToken                    *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// example:
+	//
+	// 6000170000591aed949d0f5********************
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// example:
+	//
+	// xxxxxxxxx
 	ColdStorageInstanceDescription *string `json:"ColdStorageInstanceDescription,omitempty" xml:"ColdStorageInstanceDescription,omitempty"`
-	DBClusterId                    *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	OwnerAccount                   *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId                        *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ResourceGroupId                *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	ResourceOwnerAccount           *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId                *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pc-wz9ye3xrtj60ua6d1
+	DBClusterId  *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// example:
+	//
+	// rg-************
+	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 }
 
 func (s CreateColdStorageInstanceRequest) String() string {
@@ -1100,8 +1319,14 @@ func (s *CreateColdStorageInstanceRequest) SetResourceOwnerId(v int64) *CreateCo
 }
 
 type CreateColdStorageInstanceResponseBody struct {
+	// example:
+	//
+	// pcs_2zeth2gf4i83e578t
 	ColdStorageInstanceId *string `json:"ColdStorageInstanceId,omitempty" xml:"ColdStorageInstanceId,omitempty"`
-	RequestId             *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// F6EBB4ED-D12F-5F49-824C-9DD9C0EC4CF2
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateColdStorageInstanceResponseBody) String() string {
@@ -1154,281 +1379,509 @@ func (s *CreateColdStorageInstanceResponse) SetBody(v *CreateColdStorageInstance
 type CreateDBClusterRequest struct {
 	// Specifies whether to enable the no-activity suspension feature. Default value: false. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
 	//
 	// > This parameter is valid only for serverless clusters.
+	//
+	// example:
+	//
+	// true
 	AllowShutDown *string `json:"AllowShutDown,omitempty" xml:"AllowShutDown,omitempty"`
-	Architecture  *string `json:"Architecture,omitempty" xml:"Architecture,omitempty"`
+	// The CPU architecture. Valid values:
+	//
+	// 	- X86
+	//
+	// 	- ARM
+	//
+	// example:
+	//
+	// X86
+	Architecture *string `json:"Architecture,omitempty" xml:"Architecture,omitempty"`
 	// Specifies whether to enable automatic renewal. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
 	//
 	// Default value: **false**.
 	//
-	// > This parameter is valid only when the **PayType** parameter is set to **Prepaid**.
+	// > This parameter is valid only when the **PayType*	- parameter is set to **Prepaid**.
+	//
+	// example:
+	//
+	// true
 	AutoRenew *bool `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
 	// The retention policy for the backup sets when you delete the cluster. Valid values:
 	//
-	// *   **ALL**: permanently retains all backups.
-	// *   **LATEST**: permanently retains the last backup. A backup is automatically created before you delete the cluster.
-	// *   **NONE**: No backup sets are retained after the cluster is deleted.
+	// 	- **ALL**: permanently retains all backups.
 	//
-	// The default value is **NONE** after you create a cluster.
+	// 	- **LATEST**: permanently retains the last backup. A backup is automatically created before you delete the cluster.
+	//
+	// 	- **NONE**: No backup sets are retained after the cluster is deleted.
+	//
+	// The default value is **NONE*	- after you create a cluster.
 	//
 	// >
 	//
-	// *   This parameter is valid only when the **DBType** parameter is set to **MySQL**.
+	// 	- This parameter is valid only when the **DBType*	- parameter is set to **MySQL**.
 	//
-	// *   This parameter is invalid for serverless clusters.
+	// 	- This parameter is invalid for serverless clusters.
+	//
+	// example:
+	//
+	// NONE
 	BackupRetentionPolicyOnClusterDeletion *string `json:"BackupRetentionPolicyOnClusterDeletion,omitempty" xml:"BackupRetentionPolicyOnClusterDeletion,omitempty"`
 	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that it is unique among different requests. The token can only contain ASCII characters and cannot exceed 64 characters in length. The token is case-sensitive.
+	//
+	// example:
+	//
+	// 6000170000591aed949d0f5********************
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The point in time when you want to clone data. Valid values:
 	//
-	// *   **LATEST**: The data of the latest point in time is cloned.
-	// *   **BackupID**: You can specify the ID of a backup set. In this case, data is cloned based on the specified backup set.
-	// *   **Timestamp**: You can specify a point in time in the past in the `YYYY-MM-DDThh:mm:ssZ` format. The time must be in UTC.
+	// 	- **LATEST**: The data of the latest point in time is cloned.
+	//
+	// 	- **BackupID**: You can specify the ID of a backup set. In this case, data is cloned based on the specified backup set.
+	//
+	// 	- **Timestamp**: You can specify a point in time in the past in the `YYYY-MM-DDThh:mm:ssZ` format. The time must be in UTC.
 	//
 	// Default value: **LATEST**.
 	//
-	// > If the **CreationOption** parameter is set to **CloneFromRDS**, the value of this parameter must be **LATEST**.
+	// > If the **CreationOption*	- parameter is set to **CloneFromRDS**, the value of this parameter must be **LATEST**.
+	//
+	// example:
+	//
+	// LATEST
 	CloneDataPoint *string `json:"CloneDataPoint,omitempty" xml:"CloneDataPoint,omitempty"`
 	// The network type of the cluster. Only virtual private clouds (VPCs) are supported. Set the value to **VPC**.
+	//
+	// example:
+	//
+	// VPC
 	ClusterNetworkType *string `json:"ClusterNetworkType,omitempty" xml:"ClusterNetworkType,omitempty"`
 	// The edition of the cluster. Default value: Normal. Valid values:
 	//
-	// *   **Normal**: Cluster Edition
-	// *   **Basic**: Single Node Edition
-	// *   **ArchiveNormal**: X-Engine Edition
-	// *   **NormalMultimaster**: Multi-master Cluster Edition
+	// 	- **Normal**: Cluster Edition
+	//
+	// 	- **Basic**: Single Node Edition
+	//
+	// 	- **ArchiveNormal**: X-Engine Edition
+	//
+	// 	- **NormalMultimaster**: Multi-master Cluster Edition
 	//
 	// >
 	//
-	// *   Only when the **DBType** parameter is set to **MySQL** and **the DBVersion** parameter is set to **5.6**, **5.7**, or **8.0**, you can set this parameter to **Basic**.
+	// 	- Only when the **DBType*	- parameter is set to **MySQL*	- and **the DBVersion*	- parameter is set to **5.6**, **5.7**, or **8.0**, you can set this parameter to **Basic**.
 	//
-	// *   Only when the **DBType** parameter is set to **MySQL** and the **DBVersion** parameter is set to **8.0**, you can set this parameter to **ArchiveNormal** or **NormalMultimaster**.
+	// 	- Only when the **DBType*	- parameter is set to **MySQL*	- and the **DBVersion*	- parameter is set to **8.0**, you can set this parameter to **ArchiveNormal*	- or **NormalMultimaster**.
 	//
-	// For more information, see [Product editions](~~183258~~).
+	// For more information, see [Product editions](https://help.aliyun.com/document_detail/183258.html).
+	//
+	// example:
+	//
+	// Normal
 	CreationCategory *string `json:"CreationCategory,omitempty" xml:"CreationCategory,omitempty"`
 	// The method that is used to create a cluster. Valid values:
 	//
-	// *   **Normal**: creates a PolarDB cluster. For more information about how to perform this operation in the console, see the following topics:
+	// 	- **Normal**: creates a PolarDB cluster. For more information about how to perform this operation in the console, see the following topics:
 	//
-	//     *   [Create a PolarDB for MySQL cluster](~~58769~~)
-	//     *   [Create a PolarDB for PostgreSQL cluster](~~118063~~)
-	//     *   [Create a PolarDB for Oracle cluster](~~118182~~)
+	//     	- [Create a PolarDB for MySQL cluster](https://help.aliyun.com/document_detail/58769.html)
 	//
-	// *   **CloneFromPolarDB**: clones data from an existing PolarDB cluster to a new PolarDB cluster. For more information about how to perform this operation in the console, see the following topics:
+	//     	- [Create a PolarDB for PostgreSQL cluster](https://help.aliyun.com/document_detail/118063.html)
 	//
-	//     *   [Clone a PolarDB for MySQL cluster](~~87966~~)
-	//     *   [Clone a PolarDB for PostgreSQL cluster](~~118108~~)
-	//     *   [Clone a PolarDB for Oracle cluster](~~118221~~)
+	//     	- [Create a PolarDB for Oracle cluster](https://help.aliyun.com/document_detail/118182.html)
 	//
-	// *   **CloneFromRDS**: clones data from an existing ApsaraDB RDS for MySQL instance to a new PolarDB for MySQL cluster. For more information about how to perform this operation in the console, see [Create a PolarDB for MySQL cluster by cloning an ApsaraDB RDS for MySQL instance](~~121812~~).
+	// 	- **CloneFromPolarDB**: clones data from an existing PolarDB cluster to a new PolarDB cluster. For more information about how to perform this operation in the console, see the following topics:
 	//
-	// *   **MigrationFromRDS**: migrates data from an existing ApsaraDB RDS for MySQL instance to a new PolarDB for MySQL cluster. By default, the created PolarDB cluster is in read-only mode, and the binary logging feature is enabled. For more information about how to perform this operation in the console, see [Create a PolarDB for MySQL cluster from an ApsaraDB RDS for MySQL instance](~~121582~~).
+	//     	- [Clone a PolarDB for MySQL cluster](https://help.aliyun.com/document_detail/87966.html)
 	//
-	// *   **CreateGdnStandby**: creates a secondary cluster. For more information about how to perform this operation in the console, see [Add a secondary cluster](~~160381~~).
+	//     	- [Clone a PolarDB for PostgreSQL cluster](https://help.aliyun.com/document_detail/118108.html)
+	//
+	//     	- [Clone a PolarDB for Oracle cluster](https://help.aliyun.com/document_detail/118221.html)
+	//
+	// 	- **CloneFromRDS**: clones data from an existing ApsaraDB RDS for MySQL instance to a new PolarDB for MySQL cluster. For more information about how to perform this operation in the console, see [Create a PolarDB for MySQL cluster by cloning an ApsaraDB RDS for MySQL instance](https://help.aliyun.com/document_detail/121812.html).
+	//
+	// 	- **MigrationFromRDS**: migrates data from an existing ApsaraDB RDS for MySQL instance to a new PolarDB for MySQL cluster. By default, the created PolarDB cluster is in read-only mode, and the binary logging feature is enabled. For more information about how to perform this operation in the console, see [Create a PolarDB for MySQL cluster from an ApsaraDB RDS for MySQL instance](https://help.aliyun.com/document_detail/121582.html).
+	//
+	// 	- **CreateGdnStandby**: creates a secondary cluster. For more information about how to perform this operation in the console, see [Add a secondary cluster](https://help.aliyun.com/document_detail/160381.html).
 	//
 	// Default value: **Normal**.
 	//
 	// >
 	//
-	// *   If the **DBType** parameter is set to **MySQL** and the **DBVersion** parameter is set to **5.6** or **5.7**, this parameter can be set to **CloneFromRDS** or **MigrationFromRDS**.
+	// 	- If the **DBType*	- parameter is set to **MySQL*	- and the **DBVersion*	- parameter is set to **5.6*	- or **5.7**, this parameter can be set to **CloneFromRDS*	- or **MigrationFromRDS**.
 	//
-	// *   If the **DBType** parameter is set to **MySQL** and the **DBVersion** parameter is set to **8.0**, this parameter can be set to **CreateGdnStandby**.
+	// 	- If the **DBType*	- parameter is set to **MySQL*	- and the **DBVersion*	- parameter is set to **8.0**, this parameter can be set to **CreateGdnStandby**.
+	//
+	// example:
+	//
+	// Normal
 	CreationOption *string `json:"CreationOption,omitempty" xml:"CreationOption,omitempty"`
 	// The name of the cluster. The name must meet the following requirements:
 	//
-	// *   It cannot start with `http://` or `https://`.
-	// *   It must be 2 to 256 characters in length.
+	// 	- It cannot start with `http://` or `https://`.
+	//
+	// 	- It must be 2 to 256 characters in length.
+	//
+	// example:
+	//
+	// test
 	DBClusterDescription *string `json:"DBClusterDescription,omitempty" xml:"DBClusterDescription,omitempty"`
 	// The minor version of the database engine. Valid values:
 	//
-	// *   **8.0.2**
-	// *   **8.0.1**
+	// 	- **8.0.2**
 	//
-	// > This parameter is valid only when the **DBType** parameter is set to **MySQL** and the **DBVersion** parameter is set to **8.0**.
+	// 	- **8.0.1**
+	//
+	// > This parameter is valid only when the **DBType*	- parameter is set to **MySQL*	- and the **DBVersion*	- parameter is set to **8.0**.
+	//
+	// example:
+	//
+	// 8.0.1
 	DBMinorVersion *string `json:"DBMinorVersion,omitempty" xml:"DBMinorVersion,omitempty"`
 	// The specifications of the node.
 	//
-	// *   For more information about specifications supported by PolarDB for MySQL, see [Specifications of compute nodes](~~102542~~).
-	// *   For information about node specifications supported by the Oracle database engine, see [Specifications of compute nodes](~~207921~~).
-	// *   For information about node specifications supported by the PostgreSQL database engine, see [Specifications of compute nodes](~~209380~~).
+	// 	- For more information about specifications supported by PolarDB for MySQL, see [Specifications of compute nodes](https://help.aliyun.com/document_detail/102542.html).
+	//
+	// 	- For information about node specifications supported by the Oracle database engine, see [Specifications of compute nodes](https://help.aliyun.com/document_detail/207921.html).
+	//
+	// 	- For information about node specifications supported by the PostgreSQL database engine, see [Specifications of compute nodes](https://help.aliyun.com/document_detail/209380.html).
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// polar.mysql.x2.medium
 	DBNodeClass *string `json:"DBNodeClass,omitempty" xml:"DBNodeClass,omitempty"`
-	// 标准版节点个数。
+	// example:
+	//
+	// 1
 	DBNodeNum *int32 `json:"DBNodeNum,omitempty" xml:"DBNodeNum,omitempty"`
 	// The type of the database engine. Valid values:
 	//
-	// *   **MySQL**
-	// *   **PostgreSQL**
-	// *   **Oracle**
+	// 	- **MySQL**
+	//
+	// 	- **PostgreSQL**
+	//
+	// 	- **Oracle**
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// MySQL
 	DBType *string `json:"DBType,omitempty" xml:"DBType,omitempty"`
 	// The version of the database engine.
 	//
-	// *   Valid values for the MySQL database engine:
+	// 	- Valid values for the MySQL database engine:
 	//
-	//     *   **5.6**
-	//     *   **5.7**
-	//     *   **8.0**
+	//     	- **5.6**
 	//
-	// *   Valid values for the PostgreSQL database engine:
+	//     	- **5.7**
 	//
-	//     *   **11**
-	//     *   **14**
+	//     	- **8.0**
 	//
-	// *   Valid value for the Oracle database engine: **11**
+	// 	- Valid values for the PostgreSQL database engine:
+	//
+	//     	- **11**
+	//
+	//     	- **14**
+	//
+	// 	- Valid value for the Oracle database engine: **11**
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 5.6
 	DBVersion *string `json:"DBVersion,omitempty" xml:"DBVersion,omitempty"`
 	// The time zone of the cluster. The time must be in UTC. You can set the parameter to a value that is on the hour from **-12:00 to +13:00**. Example: 00:00. Default value: **SYSTEM**, which means that the value is the same as the time zone of the region.
 	//
-	// > This parameter is valid only when the **DBType** parameter is set to **MySQL**.
+	// > This parameter is valid only when the **DBType*	- parameter is set to **MySQL**.
+	//
+	// example:
+	//
+	// SYSTEM
 	DefaultTimeZone *string `json:"DefaultTimeZone,omitempty" xml:"DefaultTimeZone,omitempty"`
 	// The ID of the Global Database Network (GDN).
 	//
-	// > This parameter is required only when the **CreationOption** parameter is set to **CreateGdnStandby**.
-	GDNId             *string `json:"GDNId,omitempty" xml:"GDNId,omitempty"`
+	// > This parameter is required only when the **CreationOption*	- parameter is set to **CreateGdnStandby**.
+	//
+	// example:
+	//
+	// gdn-***********
+	GDNId *string `json:"GDNId,omitempty" xml:"GDNId,omitempty"`
+	// example:
+	//
+	// ON
 	HotStandbyCluster *string `json:"HotStandbyCluster,omitempty" xml:"HotStandbyCluster,omitempty"`
-	// 开启Binlog功能，取值范围如下：
+	// example:
 	//
-	// - **ON**：集群开启Binlog功能
-	// - **OFF**：集群关闭Binlog功能
-	// > 当参数**DBType**为**MySQL**时，该参数才生效。
+	// ON
 	LoosePolarLogBin *string `json:"LoosePolarLogBin,omitempty" xml:"LoosePolarLogBin,omitempty"`
-	// 开启X-Engine存储引擎功能，取值范围如下：
+	// Specifies whether to enable X-Engine. Valid values:
 	//
-	// - **ON**：集群开启X-Engine引擎
-	// - **OFF**：集群关闭X-Engine引擎
-	// > 当参数**CreationOption**不等于**CreateGdnStandby**，**DBType**为**MySQL**且**DBVersion**为**8.0**时，该参数才生效。开启X-Engine引擎的节点内存规格必须大于等于16 GB。
+	// 	- **ON**
+	//
+	// 	- **OFF**
+	//
+	// >  This parameter takes effect only if you do not set **CreationOption*	- to **CreateGdnStandby*	- and you set **DBType*	- to **MySQL*	- and **DBVersion*	- to **8.0**. To enable X-Engine on a node, make sure that the memory of the node is greater than or equal to 8 GB in size.
+	//
+	// example:
+	//
+	// ON
 	LooseXEngine *string `json:"LooseXEngine,omitempty" xml:"LooseXEngine,omitempty"`
-	// 设置开启X-Engine存储引擎比例，取值范围10~90的整数。
-	// > 当参数**LooseXEngine**为**ON**时，该参数才生效。
+	// example:
+	//
+	// 50
 	LooseXEngineUseMemoryPct *string `json:"LooseXEngineUseMemoryPct,omitempty" xml:"LooseXEngineUseMemoryPct,omitempty"`
 	// Specifies whether the table names are case-sensitive. Valid values:
 	//
-	// *   **1**: The table names are case-insensitive.
-	// *   **0**: The table names are case-sensitive.
+	// 	- **1**: The table names are case-insensitive.
+	//
+	// 	- **0**: The table names are case-sensitive.
 	//
 	// Default value: **1**.
 	//
-	// > This parameter is valid only when the **DBType** parameter is set to **MySQL**.
+	// > This parameter is valid only when the **DBType*	- parameter is set to **MySQL**.
+	//
+	// example:
+	//
+	// 1
 	LowerCaseTableNames *string `json:"LowerCaseTableNames,omitempty" xml:"LowerCaseTableNames,omitempty"`
 	OwnerAccount        *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId             *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The ID of the parameter template.
 	//
-	// > You can call the [DescribeParameterGroups](~~207178~~) operation to query the details of all parameter templates of a specified region, such as the ID of a parameter template.
+	// > You can call the [DescribeParameterGroups](https://help.aliyun.com/document_detail/207178.html) operation to query the details of all parameter templates of a specified region, such as the ID of a parameter template.
+	//
+	// example:
+	//
+	// pcpg-**************
 	ParameterGroupId *string `json:"ParameterGroupId,omitempty" xml:"ParameterGroupId,omitempty"`
 	// The billing method. Valid values:
 	//
-	// *   **Postpaid**: pay-as-you-go
-	// *   **Prepaid**: subscription
+	// 	- **Postpaid**: pay-as-you-go
+	//
+	// 	- **Prepaid**: subscription
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Postpaid
 	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
 	// The subscription type of the subscription cluster. This parameter is required only when the PayType parameter is set to **Prepaid**. Valid values:
 	//
-	// *   **Year**: annual subscription. Unit: years.
-	// *   **Month**: monthly subscription. Unit: months.
-	Period          *string `json:"Period,omitempty" xml:"Period,omitempty"`
-	ProvisionedIops *int64  `json:"ProvisionedIops,omitempty" xml:"ProvisionedIops,omitempty"`
-	// 标准版数据库代理规格。
-	ProxyClass *string `json:"ProxyClass,omitempty" xml:"ProxyClass,omitempty"`
-	// 数据库代理类型，取值范围如下：
+	// 	- **Year**: annual subscription. Unit: years.
 	//
-	// - **Exclusive**：企业独享版
-	// - **General**：企业通用版
+	// 	- **Month**: monthly subscription. Unit: months.
+	//
+	// example:
+	//
+	// Month
+	Period *string `json:"Period,omitempty" xml:"Period,omitempty"`
+	// The provisioned read/write IOPS of the ESSD AutoPL disk. Valid values: 0 to min{50,000, 1,000 × Capacity - Baseline IOPS}
+	//
+	// Baseline IOPS = min{1,800 + 50 × Capacity, 50,000}
+	//
+	// >  This parameter is available only if the StorageType parameter is set to ESSDAUTOPL.
+	//
+	// example:
+	//
+	// 1000
+	ProvisionedIops *int64 `json:"ProvisionedIops,omitempty" xml:"ProvisionedIops,omitempty"`
+	// example:
+	//
+	// polar.maxscale.g2.medium.c
+	ProxyClass *string `json:"ProxyClass,omitempty" xml:"ProxyClass,omitempty"`
+	// example:
+	//
+	// Exclusive
 	ProxyType *string `json:"ProxyType,omitempty" xml:"ProxyType,omitempty"`
 	// The region ID of the cluster.
 	//
-	// > You can call the [DescribeRegions](~~98041~~) operation to query available regions.
+	// > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to query available regions.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the resource group.
+	//
+	// example:
+	//
+	// rg-************
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The maximum number of PCUs per node for scaling. Valid values: 1 PCU to 32 PCUs.
 	//
 	// > This parameter is valid only for serverless clusters.
+	//
+	// example:
+	//
+	// 3
 	ScaleMax *string `json:"ScaleMax,omitempty" xml:"ScaleMax,omitempty"`
 	// The minimum number of PCUs per node for scaling. Valid values: 1 PCU to 31 PCUs.
 	//
 	// > This parameter is valid only for serverless clusters.
+	//
+	// example:
+	//
+	// 1
 	ScaleMin *string `json:"ScaleMin,omitempty" xml:"ScaleMin,omitempty"`
 	// The maximum number of read-only nodes for scaling. Valid values: 0 to 15.
 	//
 	// > This parameter is valid only for serverless clusters.
+	//
+	// example:
+	//
+	// 4
 	ScaleRoNumMax *string `json:"ScaleRoNumMax,omitempty" xml:"ScaleRoNumMax,omitempty"`
 	// The minimum number of read-only nodes for scaling. Valid values: 0 to 15.
 	//
 	// > This parameter is valid only for serverless clusters.
+	//
+	// example:
+	//
+	// 2
 	ScaleRoNumMin *string `json:"ScaleRoNumMin,omitempty" xml:"ScaleRoNumMin,omitempty"`
 	// The IP whitelist of the cluster.
 	//
 	// > The whitelist can contain multiple IP addresses. Separate multiple IP addresses with commas (,).
+	//
+	// example:
+	//
+	// 10.***.***.***
 	SecurityIPList *string `json:"SecurityIPList,omitempty" xml:"SecurityIPList,omitempty"`
 	// The type of the serverless cluster. Set the value to **AgileServerless**.
 	//
 	// > This parameter is valid only for serverless clusters.
+	//
+	// example:
+	//
+	// AgileServerless
 	ServerlessType *string `json:"ServerlessType,omitempty" xml:"ServerlessType,omitempty"`
-	// The ID of the source ApsaraDB RDS instance or PolarDB cluster. This parameter is required only when the **CreationOption** parameter is set to **MigrationFromRDS**, **CloneFromRDS**, or **CloneFromPolarDB**.
+	// The ID of the source ApsaraDB RDS instance or PolarDB cluster. This parameter is required only when the **CreationOption*	- parameter is set to **MigrationFromRDS**, **CloneFromRDS**, or **CloneFromPolarDB**.
 	//
-	// *   If the **CreationOption** parameter is set to **MigrationFromRDS** or **CloneFromRDS**, you must set this parameter to the ID of the source ApsaraDB RDS instance. The source ApsaraDB RDS instance must use ApsaraDB RDS for MySQL 5.6, 5.7, or 8.0 High-availability Edition.
-	// *   If the **CreationOption** parameter is set to **CloneFromPolarDB**, you must set this parameter to the ID of the source PolarDB cluster. By default, the value of DBType of the destination cluster must be the same as that of the source cluster. For example, if a MySQL 8.0 cluster is used as the source cluster, you must set the **DBType** parameter to **MySQL** and the **DBVersion** parameter to **8.0** for the destination cluster.
+	// 	- If the **CreationOption*	- parameter is set to **MigrationFromRDS*	- or **CloneFromRDS**, you must set this parameter to the ID of the source ApsaraDB RDS instance. The source ApsaraDB RDS instance must use ApsaraDB RDS for MySQL 5.6, 5.7, or 8.0 High-availability Edition.
+	//
+	// 	- If the **CreationOption*	- parameter is set to **CloneFromPolarDB**, you must set this parameter to the ID of the source PolarDB cluster. By default, the value of DBType of the destination cluster must be the same as that of the source cluster. For example, if a MySQL 8.0 cluster is used as the source cluster, you must set the **DBType*	- parameter to **MySQL*	- and the **DBVersion*	- parameter to **8.0*	- for the destination cluster.
+	//
+	// example:
+	//
+	// rm-*************
 	SourceResourceId *string `json:"SourceResourceId,omitempty" xml:"SourceResourceId,omitempty"`
-	// 存储热备集群的可用区。适用于标准版3AZ场景。
+	// example:
 	//
-	// > 开启了多可用区数据强一致，该参数才生效。
-	StandbyAZ        *string `json:"StandbyAZ,omitempty" xml:"StandbyAZ,omitempty"`
+	// cn-hangzhou-g
+	StandbyAZ *string `json:"StandbyAZ,omitempty" xml:"StandbyAZ,omitempty"`
+	// example:
+	//
+	// Enable
 	StorageAutoScale *string `json:"StorageAutoScale,omitempty" xml:"StorageAutoScale,omitempty"`
-	StoragePayType   *string `json:"StoragePayType,omitempty" xml:"StoragePayType,omitempty"`
+	// example:
+	//
+	// Prepaid
+	StoragePayType *string `json:"StoragePayType,omitempty" xml:"StoragePayType,omitempty"`
 	// The storage space that uses the subscription billing method. Unit: GB.
+	//
+	// example:
+	//
+	// 50
 	StorageSpace *int64 `json:"StorageSpace,omitempty" xml:"StorageSpace,omitempty"`
 	// The storage type. Valid values for Enterprise Edition:
 	//
-	// *   **PSL5**
-	// *   **PSL4**
+	// 	- **PSL5**
+	//
+	// 	- **PSL4**
 	//
 	// Valid values for Standard Edition:
 	//
-	// *   **ESSDPL1**
-	// *   **ESSDPL2**
-	// *   **ESSDPL3**
+	// 	- **ESSDPL0**
+	//
+	// 	- **ESSDPL1**
+	//
+	// 	- **ESSDPL2**
+	//
+	// 	- **ESSDPL3**
+	//
+	// 	- **ESSDAUTOPL**
 	//
 	// > This parameter is invalid for serverless clusters.
-	StorageType       *string `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
-	StorageUpperBound *int64  `json:"StorageUpperBound,omitempty" xml:"StorageUpperBound,omitempty"`
-	// 集群是否开启了多可用区数据强一致。取值范围：
 	//
-	// - **ON**：表示开启了多可用区数据强一致，适用于标准版3AZ场景。
+	// example:
 	//
-	// - **OFF**：表示未开启多可用区数据强一致。
+	// PSL4
+	StorageType *string `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
+	// example:
+	//
+	// 800
+	StorageUpperBound *int64 `json:"StorageUpperBound,omitempty" xml:"StorageUpperBound,omitempty"`
+	// Specifies whether to enable multi-zone data consistency. Valid values:
+	//
+	// 	- **ON**: enables multi-zone data consistency. Set this parameter to ON for Standard Edition clusters of Multi-zone Edition.
+	//
+	// 	- **OFF**: disables multi-zone data consistency.
+	//
+	// example:
+	//
+	// ON
 	StrictConsistency *string `json:"StrictConsistency,omitempty" xml:"StrictConsistency,omitempty"`
 	// Specifies whether to enable transparent data encryption (TDE). Default value: false. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
 	//
 	// >
 	//
-	// *   This parameter is valid only when the **DBType** parameter is set to **PostgreSQL** or **Oracle**.
+	// 	- This parameter is valid only when the **DBType*	- parameter is set to **PostgreSQL*	- or **Oracle**.
 	//
-	// *   You can call the [ModifyDBClusterTDE](~~167982~~) operation to enable TDE for a PolarDB for MySQL cluster.
-	// *   TDE cannot be disabled after it is enabled.
+	// 	- You can call the [ModifyDBClusterTDE](https://help.aliyun.com/document_detail/167982.html) operation to enable TDE for a PolarDB for MySQL cluster.
+	//
+	// 	- TDE cannot be disabled after it is enabled.
+	//
+	// example:
+	//
+	// true
 	TDEStatus *bool `json:"TDEStatus,omitempty" xml:"TDEStatus,omitempty"`
 	// 1
 	Tag []*CreateDBClusterRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	// *   If the **Period** parameter is set to **Month**, the **UsedTime** parameter can be set to `1, 2, 3, 4, 5, 6, 7, 8, or 9`.
-	// *   If the **Period** parameter is set to **Year**, the **UsedTime** parameter can be set to `1, 2, or 3`.
+	// 	- If the **Period*	- parameter is set to **Month**, the **UsedTime*	- parameter can be set to `1, 2, 3, 4, 5, 6, 7, 8, or 9`.
+	//
+	// 	- If the **Period*	- parameter is set to **Year**, the **UsedTime*	- parameter can be set to `1, 2, or 3`.
+	//
+	// example:
+	//
+	// 1
 	UsedTime *string `json:"UsedTime,omitempty" xml:"UsedTime,omitempty"`
 	// The virtual private cloud (VPC) ID of the cluster.
+	//
+	// example:
+	//
+	// vpc-**********
 	VPCId *string `json:"VPCId,omitempty" xml:"VPCId,omitempty"`
 	// The vSwitch ID of the cluster.
 	//
 	// > If the VPCId parameter is specified, the VSwitchId parameter is required.
+	//
+	// example:
+	//
+	// vsw-**********
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
 	// The zone ID of the cluster.
 	//
-	// > You can call the [DescribeRegions](~~98041~~) operation to query available zones.
+	// > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to query available zones.
+	//
+	// example:
+	//
+	// cn-hangzhou-g
 	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
@@ -1711,13 +2164,21 @@ func (s *CreateDBClusterRequest) SetZoneId(v string) *CreateDBClusterRequest {
 }
 
 type CreateDBClusterRequestTag struct {
-	// The key of the tag that you want to create for the cluster. To create multiple tags for a cluster at a time, click the **+** icon.
+	// The key of the tag that you want to create for the cluster. To create multiple tags for a cluster at a time, click the **+*	- icon.
 	//
 	// > You can create up to 20 key-value pairs of tags at a time. Each value of the `Tag.N.Key` parameter is paired with a value of the `Tag.N.Value` parameter.
+	//
+	// example:
+	//
+	// type
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of the tag that you want to create for the cluster. To create multiple tags for a cluster at a time, click the **+** icon.
+	// The value of the tag that you want to create for the cluster. To create multiple tags for a cluster at a time, click the **+*	- icon.
 	//
 	// > You can create up to 20 key-value pairs of tags at a time. Each value of the `Tag.N.Value` parameter is paired with a value of the `Tag.N.Key` parameter.
+	//
+	// example:
+	//
+	// test
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -1741,12 +2202,28 @@ func (s *CreateDBClusterRequestTag) SetValue(v string) *CreateDBClusterRequestTa
 
 type CreateDBClusterResponseBody struct {
 	// The ID of cluster.
+	//
+	// example:
+	//
+	// pc-bp1s826a1up******
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	// The ID of the order.
+	//
+	// example:
+	//
+	// 211454967******
 	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// E56531A4-E552-40BA-9C58-137B80******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The ID of the resource group.
+	//
+	// example:
+	//
+	// rg-***************
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
@@ -1810,66 +2287,119 @@ func (s *CreateDBClusterResponse) SetBody(v *CreateDBClusterResponseBody) *Creat
 type CreateDBClusterEndpointRequest struct {
 	// Specifies whether to automatically associate newly added nodes with the cluster endpoint. Valid values:
 	//
-	// *   **Enable**: Newly added nodes are automatically associated with the cluster endpoint.
-	// *   **Disable**: Newly added nodes are not automatically associated with the cluster endpoint.
+	// 	- **Enable**: Newly added nodes are automatically associated with the cluster endpoint.
+	//
+	// 	- **Disable**: Newly added nodes are not automatically associated with the cluster endpoint.
 	//
 	// Default value: **Disable**.
+	//
+	// example:
+	//
+	// Disable
 	AutoAddNewNodes *string `json:"AutoAddNewNodes,omitempty" xml:"AutoAddNewNodes,omitempty"`
 	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. The token is case-sensitive.
+	//
+	// example:
+	//
+	// 6000170000591aed949d0f******************
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The ID of cluster.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pc-**************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	// The name of the custom cluster endpoint.
+	//
+	// example:
+	//
+	// test
 	DBEndpointDescription *string `json:"DBEndpointDescription,omitempty" xml:"DBEndpointDescription,omitempty"`
 	// The advanced configurations of the cluster endpoint. You must specify the configurations in the JSON format. You can specify the configurations of the following attributes: consistency level, transaction splitting, connection pool, and offload reads from the primary node.
 	//
-	// *   Specify the consistency level in the format of `{"ConsistLevel":"Consistency level"}`. Default value: 1. Valid values:
+	// 	- Specify the consistency level in the format of `{"ConsistLevel":"Consistency level"}`. Default value: 1. Valid values:
 	//
-	//     *   **0**: eventual consistency.
-	//     *   **1**: session consistency.
-	//     *   **2**: global consistency.
+	//     	- **0**: eventual consistency.
 	//
-	// *   Specify the transaction splitting feature in the format of `{"DistributedTransaction":"Transaction splitting"}`. Valid values:
+	//     	- **1**: session consistency.
 	//
-	//     *   **on**: enables the transaction splitting feature. By default, the feature is enabled.
-	//     *   **off**: disables the transaction splitting feature.
+	//     	- **2**: global consistency.
 	//
-	// *   Specify the offload reads from the primary node feature in the format of `{"MasterAcceptReads":"Offload reads from the primary node"}`. Default value: off. Valid values:
+	// 	- Specify the transaction splitting feature in the format of `{"DistributedTransaction":"Transaction splitting"}`. Valid values:
 	//
-	//     *   **on**: The primary node accepts read requests.
-	//     *   **off**: The primary node does not accept read requests.
+	//     	- **on**: enables the transaction splitting feature. By default, the feature is enabled.
 	//
-	// *   Specify the connection pool in the format of `{"ConnectionPersist":"Connection pool"}`. Default value: off. Valid values:
+	//     	- **off**: disables the transaction splitting feature.
 	//
-	//     *   **off**: disables the connection pool.
-	//     *   **Session**: enables the session-level connection pool.
-	//     *   **Transaction**: enables the transaction-level connection pool.
+	// 	- Specify the offload reads from the primary node feature in the format of `{"MasterAcceptReads":"Offload reads from the primary node"}`. Default value: off. Valid values:
+	//
+	//     	- **on**: The primary node accepts read requests.
+	//
+	//     	- **off**: The primary node does not accept read requests.
+	//
+	// 	- Specify the connection pool in the format of `{"ConnectionPersist":"Connection pool"}`. Default value: off. Valid values:
+	//
+	//     	- **off**: disables the connection pool.
+	//
+	//     	- **Session**: enables the session-level connection pool.
+	//
+	//     	- **Transaction**: enables the transaction-level connection pool.
 	//
 	// >- You can specify the transaction splitting, connection pool, and offload reads from the primary node features for a PolarDB for MySQL cluster only if ReadWriteMode is set to ReadWrite for the cluster endpoint.
+	//
 	// >- Only PolarDB for MySQL supports global consistency.
-	// >- If the **ReadWriteMode** parameter is set to **ReadOnly**, the consistency level must be **0**.
+	//
+	// >- If the **ReadWriteMode*	- parameter is set to **ReadOnly**, the consistency level must be **0**.
+	//
 	// >- You can use one record to specify the consistency level, transaction splitting, connection pool, and offload reads from the primary node features, such as `{"ConsistLevel":"1","DistributedTransaction":"on","ConnectionPersist":"Session","MasterAcceptReads":"on"}`.
-	// >- The transaction splitting settings are restricted by the consistency level settings. For example, if you set the consistency level to **0**, transaction splitting cannot be enabled. If you set the consistency level to **1** or **2**, transaction splitting can be enabled.
+	//
+	// >- The transaction splitting settings are restricted by the consistency level settings. For example, if you set the consistency level to **0**, transaction splitting cannot be enabled. If you set the consistency level to **1*	- or **2**, transaction splitting can be enabled.
+	//
+	// example:
+	//
+	// {"ConsistLevel": "1","DistributedTransaction": "on"}
 	EndpointConfig *string `json:"EndpointConfig,omitempty" xml:"EndpointConfig,omitempty"`
 	// The type of the cluster endpoint. Set the value to **Custom**.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Custom
 	EndpointType *string `json:"EndpointType,omitempty" xml:"EndpointType,omitempty"`
 	// The reader nodes that you want to associate with the endpoint. If you want to specify multiple reader nodes, separate the reader nodes with commas (,). If you do not specify this parameter, all nodes are used.
 	//
 	// >- You need to specify the node IDs for a PolarDB for MySQL cluster.
+	//
 	// >- You need to specify the role name of each node for a PolarDB for PostgreSQL cluster or a PolarDB for PostgreSQL (Compatible with Oracle) cluster. Example: `Writer, Reader1, Reader2`.
-	// >- If you set **ReadWriteMode** to **ReadOnly**, you can associate only one node with the endpoint. If the only node becomes faulty, the cluster endpoint may be unavailable for up to 1 hour. We recommend that you associate more than one node with the cluster endpoint in production environments. We recommend that you associate at least two nodes with the cluster endpoint to improve service availability.
-	// >- If you set **ReadWriteMode** to **ReadWrite**, you need to associate at least two nodes with the cluster endpoint.
+	//
+	// >- If you set **ReadWriteMode*	- to **ReadOnly**, you can associate only one node with the endpoint. If the only node becomes faulty, the cluster endpoint may be unavailable for up to 1 hour. We recommend that you associate more than one node with the cluster endpoint in production environments. We recommend that you associate at least two nodes with the cluster endpoint to improve service availability.
+	//
+	// >- If you set **ReadWriteMode*	- to **ReadWrite**, you need to associate at least two nodes with the cluster endpoint.
+	//
 	// >- PolarDB for MySQL does not impose a limit on the types of the two nodes. If the nodes are read-only nodes, write requests are forwarded to the primary node.
+	//
 	// >- PolarDB for PostgreSQL and PolarDB for PostgreSQL (compatible with Oracle) require a primary node.
+	//
+	// example:
+	//
+	// pi-**********,pi-*********
 	Nodes        *string `json:"Nodes,omitempty" xml:"Nodes,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The read/write mode. Valid values:
 	//
-	// *   **ReadWrite**: receives and forwards read and write requests. Automatic read/write splitting is enabled.
-	// *   **ReadOnly**: The account has the read-only permissions on the database.
+	// 	- **ReadWrite**: receives and forwards read and write requests. Automatic read/write splitting is enabled.
+	//
+	// 	- **ReadOnly**: The account has the read-only permissions on the database.
 	//
 	// Default value: **ReadOnly**.
+	//
+	// example:
+	//
+	// ReadOnly
 	ReadWriteMode        *string `json:"ReadWriteMode,omitempty" xml:"ReadWriteMode,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -1945,6 +2475,10 @@ func (s *CreateDBClusterEndpointRequest) SetResourceOwnerId(v int64) *CreateDBCl
 
 type CreateDBClusterEndpointResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// CD35F3-F3-44CA-AFFF-BAF869******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1993,25 +2527,57 @@ func (s *CreateDBClusterEndpointResponse) SetBody(v *CreateDBClusterEndpointResp
 type CreateDBEndpointAddressRequest struct {
 	// The prefix of the new endpoint. The prefix of the endpoint must meet the following requirements:
 	//
-	// *   The prefix can contain lowercase letters, digits, and hyphens (-).
-	// *   The prefix must start with a letter and end with a digit or a letter.
-	// *   The prefix must be 6 to 40 characters in length.
+	// 	- The prefix can contain lowercase letters, digits, and hyphens (-).
+	//
+	// 	- The prefix must start with a letter and end with a digit or a letter.
+	//
+	// 	- The prefix must be 6 to 40 characters in length.
+	//
+	// example:
+	//
+	// test-1
 	ConnectionStringPrefix *string `json:"ConnectionStringPrefix,omitempty" xml:"ConnectionStringPrefix,omitempty"`
 	// The ID of the cluster.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pc-**************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	// The ID of the endpoint.
 	//
-	// >  You can call the [DescribeDBClusterEndpoints](~~98205~~) operation to query endpoint details.
+	// >  You can call the [DescribeDBClusterEndpoints](https://help.aliyun.com/document_detail/98205.html) operation to query endpoint details.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pe-**************
 	DBEndpointId *string `json:"DBEndpointId,omitempty" xml:"DBEndpointId,omitempty"`
 	// The network type of the endpoint. Set the value to **Public**.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Public
 	NetType              *string `json:"NetType,omitempty" xml:"NetType,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The ID of the ECS security group.
+	//
+	// example:
+	//
+	// sg-bp**************
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
 	// The ID of the virtual private cloud (VPC).
+	//
+	// example:
+	//
+	// vpc-**********
 	VPCId *string `json:"VPCId,omitempty" xml:"VPCId,omitempty"`
 	// The details of the zones.
 	ZoneInfo []*CreateDBEndpointAddressRequestZoneInfo `json:"ZoneInfo,omitempty" xml:"ZoneInfo,omitempty" type:"Repeated"`
@@ -2082,8 +2648,16 @@ func (s *CreateDBEndpointAddressRequest) SetZoneInfo(v []*CreateDBEndpointAddres
 
 type CreateDBEndpointAddressRequestZoneInfo struct {
 	// The ID of the vSwitch.
+	//
+	// example:
+	//
+	// vsw-**********
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
 	// The ID of the zone.
+	//
+	// example:
+	//
+	// cn-hangzhou-b
 	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
@@ -2107,6 +2681,10 @@ func (s *CreateDBEndpointAddressRequestZoneInfo) SetZoneId(v string) *CreateDBEn
 
 type CreateDBEndpointAddressResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 6BD9CDE4-5E7B-4BF3-9BB8-83C73E******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2154,53 +2732,120 @@ func (s *CreateDBEndpointAddressResponse) SetBody(v *CreateDBEndpointAddressResp
 
 type CreateDBLinkRequest struct {
 	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that it is unique among different requests. The token can only contain ASCII characters and cannot exceed 64 characters in length. The token is case-sensitive.
+	//
+	// example:
+	//
+	// 6000170000591aed949d0f54a343f1a4233c1e7d1c5c******
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The ID of the source cluster that the database link connects.
 	//
-	// >  You can call the [DescribeDBClusters](~~173433~~) operation to query PolarDB clusters.
+	// >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/173433.html) operation to query PolarDB clusters.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pc-a************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	// The name of the database link.
 	//
-	// *   The name must contain lowercase letters and can also contain digits and underscores (\_).
-	// *   The name must start with a letter and end with a letter or digit.
-	// *   The name must be 1 to 64 characters in length.
+	// 	- The name must contain lowercase letters and can also contain digits and underscores (_).
+	//
+	// 	- The name must start with a letter and end with a letter or digit.
+	//
+	// 	- The name must be 1 to 64 characters in length.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// dblink_test
 	DBLinkName   *string `json:"DBLinkName,omitempty" xml:"DBLinkName,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The ID of the region.
 	//
-	// >  You can call the [DescribeRegions](~~98041~~) operation to query information about regions.
+	// >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to query information about regions.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the resource group.
+	//
+	// example:
+	//
+	// rg-************
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The name of the source database.
 	//
-	// >  You can call the [DescribeDatabases](~~173558~~) operation to query information about databases in a PolarDB cluster.
+	// >  You can call the [DescribeDatabases](https://help.aliyun.com/document_detail/173558.html) operation to query information about databases in a PolarDB cluster.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// testdb1
 	SourceDBName *string `json:"SourceDBName,omitempty" xml:"SourceDBName,omitempty"`
 	// The account of the destination database.
 	//
-	// >  You can call the [DescribeAccounts](~~173549~~) operation to query the account of a PolarDB cluster.
+	// >  You can call the [DescribeAccounts](https://help.aliyun.com/document_detail/173549.html) operation to query the account of a PolarDB cluster.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// testacc
 	TargetDBAccount *string `json:"TargetDBAccount,omitempty" xml:"TargetDBAccount,omitempty"`
 	// The ID of the destination cluster that the database link connects.
 	//
-	// > *   If the destination cluster is a user-created Oracle database on an ECS instance, set the value to `null`.
-	// > *   You can call the [DescribeDBClusters](~~173433~~) operation to query PolarDB clusters.
+	// > 	- If the destination cluster is a user-created Oracle database on an ECS instance, set the value to `null`.
+	//
+	// > 	- You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/173433.html) operation to query PolarDB clusters.
+	//
+	// example:
+	//
+	// pc-b************
 	TargetDBInstanceName *string `json:"TargetDBInstanceName,omitempty" xml:"TargetDBInstanceName,omitempty"`
 	// The name of the destination database.
 	//
-	// >  You can call the [DescribeDatabases](~~173558~~) operation to query information about databases in a PolarDB cluster.
+	// >  You can call the [DescribeDatabases](https://help.aliyun.com/document_detail/173558.html) operation to query information about databases in a PolarDB cluster.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// testdb2
 	TargetDBName *string `json:"TargetDBName,omitempty" xml:"TargetDBName,omitempty"`
 	// The account password of the destination database.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Test1111
 	TargetDBPasswd *string `json:"TargetDBPasswd,omitempty" xml:"TargetDBPasswd,omitempty"`
 	// The IP address of the user-created Oracle database on an ECS instance.
+	//
+	// example:
+	//
+	// 192.**.**.46
 	TargetIp *string `json:"TargetIp,omitempty" xml:"TargetIp,omitempty"`
 	// The port number of the user-created Oracle database on an ECS instance.
+	//
+	// example:
+	//
+	// 1521
 	TargetPort *string `json:"TargetPort,omitempty" xml:"TargetPort,omitempty"`
 	// The ID of the virtual private cloud (VPC).
 	//
-	// >  You can call the [DescribeVpcs](~~35739~~) operation to query information about VPCs.
+	// >  You can call the [DescribeVpcs](https://help.aliyun.com/document_detail/35739.html) operation to query information about VPCs.
+	//
+	// example:
+	//
+	// vpc-bp1qpo0kug3a20qqe****
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
@@ -2299,6 +2944,10 @@ func (s *CreateDBLinkRequest) SetVpcId(v string) *CreateDBLinkRequest {
 
 type CreateDBLinkResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// F9F1CB1A-B1D5-4EF5-A53A-************
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2346,42 +2995,86 @@ func (s *CreateDBLinkResponse) SetBody(v *CreateDBLinkResponseBody) *CreateDBLin
 
 type CreateDBNodesRequest struct {
 	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. The token is case-sensitive.
+	//
+	// example:
+	//
+	// 6000170000591aed949d0f54a343f1a4233c1e7d1c5c******
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The ID of the cluster.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pc-*************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	// The details of the read-only node.
+	//
+	// This parameter is required.
 	DBNode []*CreateDBNodesRequestDBNode `json:"DBNode,omitempty" xml:"DBNode,omitempty" type:"Repeated"`
 	// The type of the node. Valid values:
 	//
-	// *   RO
-	// *   STANDBY
-	// *   DLNode
+	// 	- RO
+	//
+	// 	- STANDBY
+	//
+	// 	- DLNode
+	//
+	// example:
+	//
+	// RO
 	DBNodeType *string `json:"DBNodeType,omitempty" xml:"DBNodeType,omitempty"`
 	// The ID of the cluster endpoint to which the read-only node is added. If you want to add the read-only node to multiple endpoints at the same time, separate the endpoint IDs with commas (,).
-	// > - You can call the [DescribeDBClusterEndpoints](~~98205~~) operation to query the details of cluster endpoints, including endpoint IDs.
+	//
+	// > - You can call the [DescribeDBClusterEndpoints](https://help.aliyun.com/document_detail/98205.html) operation to query the details of cluster endpoints, including endpoint IDs.
+	//
 	// >- You can enter the ID of the default cluster endpoint or a custom cluster endpoint.
-	// >- If you leave this parameter empty, the read-only node is added to all cluster endpoints for which the **Automatically Associate New Nodes** feature is enabled. If you set `AutoAddNewNodes` to `Enable`, the Automatically Associate New Nodes feature is enabled.
+	//
+	// >- If you leave this parameter empty, the read-only node is added to all cluster endpoints for which the **Automatically Associate New Nodes*	- feature is enabled. If you set `AutoAddNewNodes` to `Enable`, the Automatically Associate New Nodes feature is enabled.
+	//
+	// example:
+	//
+	// pe-****************,pe-****************
 	EndpointBindList *string `json:"EndpointBindList,omitempty" xml:"EndpointBindList,omitempty"`
 	// Specifies whether to enable the In-Memory Column Index (IMCI) feature. Default value: OFF. Valid values:
 	//
-	// *   **ON**
-	// *   **OFF**
+	// 	- **ON**
+	//
+	// 	- **OFF**
 	//
 	// > This parameter is invalid for a PolarDB for Oracle or PolarDB for PostgreSQL cluster.
+	//
+	// example:
+	//
+	// ON
 	ImciSwitch   *string `json:"ImciSwitch,omitempty" xml:"ImciSwitch,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The latest start time for upgrading the specifications within the scheduled time period. Specify the time in the `YYYY-MM-DDThh:mm:ssZ` format. The time must be in UTC.
 	//
 	// >- The value of this parameter must be at least 30 minutes later than the value of PlannedStartTime.
+	//
 	// >- If you specify `PlannedStartTime` but do not specify PlannedEndTime, the latest start time of the task is set to a value that is calculated by using the following formula: `PlannedEndTime value + 30 minutes`. For example, if you set `PlannedStartTime` to `2021-01-14T09:00:00Z` and you do not specify PlannedEndTime, the latest start time of the task is set to `2021-01-14T09:30:00Z`.
+	//
+	// example:
+	//
+	// 2021-01-14T09:30:00Z
 	PlannedEndTime *string `json:"PlannedEndTime,omitempty" xml:"PlannedEndTime,omitempty"`
 	// The earliest start time of the scheduled task for adding the read-only node. The scheduled task specifies that the task is run in the required period. Specify the time in the `YYYY-MM-DDThh:mm:ssZ` format. The time must be in UTC.
 	//
 	// >- The earliest start time of the scheduled task can be a point in time within the next 24 hours. For example, if the current time is `2021-01-14T09:00:00Z`, you can specify a point in time between `2021-01-14T09:00:00Z` and `2021-01-15T09:00:00Z`.
+	//
 	// >- If you leave this parameter empty, the task for adding the read-only node is immediately run by default.
+	//
+	// example:
+	//
+	// 2021-01-14T09:00:00Z
 	PlannedStartTime *string `json:"PlannedStartTime,omitempty" xml:"PlannedStartTime,omitempty"`
 	// The ID of the resource group.
+	//
+	// example:
+	//
+	// rg-************
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -2463,19 +3156,33 @@ func (s *CreateDBNodesRequest) SetResourceOwnerId(v int64) *CreateDBNodesRequest
 type CreateDBNodesRequestDBNode struct {
 	// The specifications of the read-only node that you want to add, which must be the same as the specifications of the existing nodes. For more information, see the following topics:
 	//
-	// *   PolarDB for MySQL: [Specifications of compute nodes](~~102542~~)
-	// *   PolarDB for PostgreSQL (Compatible with Oracle): [Specifications of compute nodes](~~207921~~)
-	// *   PolarDB for PostgreSQL: [Specifications of compute nodes](~~209380~~)
+	// 	- PolarDB for MySQL: [Specifications of compute nodes](https://help.aliyun.com/document_detail/102542.html)
+	//
+	// 	- PolarDB for PostgreSQL (Compatible with Oracle): [Specifications of compute nodes](https://help.aliyun.com/document_detail/207921.html)
+	//
+	// 	- PolarDB for PostgreSQL: [Specifications of compute nodes](https://help.aliyun.com/document_detail/209380.html)
 	//
 	// >- You need to specify either DBNode.N.ZoneId or DBNode.N.TargetClass. N is an integer that starts from 1. The maximum value of N is equal to 16 minus the number of existing nodes.
+	//
 	// >- You can add multiple read-only nodes at the same time only to PolarDB for MySQL clusters, which can contain up to of 15 read-only nodes.
+	//
 	// >- This parameter is required for PolarDB for PostgreSQL (Compatible with Oracle) clusters or PolarDB for PostgreSQL clusters. This parameter is optional for PolarDB for MySQL clusters.
+	//
+	// example:
+	//
+	// polar.mysql.x4.medium
 	TargetClass *string `json:"TargetClass,omitempty" xml:"TargetClass,omitempty"`
-	// The zone ID of the node that you want to add, which must be the same as the zone ID of existing nodes. You can call the [DescribeRegions](~~98041~~) operation to query the IDs of zones.
+	// The zone ID of the node that you want to add, which must be the same as the zone ID of existing nodes. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to query the IDs of zones.
 	//
 	// >- You need to specify either DBNode.N.ZoneId or DBNode.N.TargetClass. N is an integer that starts from 1. The maximum value of N is equal to 16 minus the number of existing nodes.
+	//
 	// >- You can add multiple read-only nodes at the same time only to PolarDB for MySQL clusters, which can contain up to of 15 read-only nodes.
+	//
 	// >- This parameter is required for PolarDB for PostgreSQL (Compatible with Oracle) clusters or PolarDB for PostgreSQL clusters. This parameter is optional for PolarDB for MySQL clusters.
+	//
+	// example:
+	//
+	// cn-qingdao-c
 	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
@@ -2499,12 +3206,24 @@ func (s *CreateDBNodesRequestDBNode) SetZoneId(v string) *CreateDBNodesRequestDB
 
 type CreateDBNodesResponseBody struct {
 	// The ID of the cluster.
+	//
+	// example:
+	//
+	// pc-***************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	// Details about the nodes.
 	DBNodeIds *CreateDBNodesResponseBodyDBNodeIds `json:"DBNodeIds,omitempty" xml:"DBNodeIds,omitempty" type:"Struct"`
 	// The ID of the order.
+	//
+	// example:
+	//
+	// 2148126708*****
 	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// E053E730-5755-4AA9-AA9D-A47867******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2583,56 +3302,107 @@ func (s *CreateDBNodesResponse) SetBody(v *CreateDBNodesResponseBody) *CreateDBN
 }
 
 type CreateDatabaseRequest struct {
-	// The name of the account that is authorized to access the database. You can call the [DescribeAccounts](~~98107~~) operation to query account information.
+	// The name of the account that is authorized to access the database. You can call the [DescribeAccounts](https://help.aliyun.com/document_detail/98107.html) operation to query account information.
+	//
 	// >- You can specify only a standard account. By default, privileged accounts have all permissions on all databases. You do not need to grant privileged accounts the permissions to access the database.
+	//
 	// >- This parameter is required for PolarDB for PostgreSQL (Compatible with Oracle) clusters or PolarDB for PostgreSQL clusters. This parameter is optional for PolarDB for MySQL clusters.
+	//
+	// example:
+	//
+	// testacc
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
 	// The permissions that are granted to the account. Valid values:
 	//
-	// *   **ReadWrite**: read and write permissions.
-	// *   **ReadOnly**: read-only permissions.
-	// *   **DMLOnly**: the permissions to execute only DML statements.
-	// *   **DDLOnly**: the permissions to execute only DDL statements.
-	// *   **ReadIndex**: the read-only and index permissions.
+	// 	- **ReadWrite**: read and write permissions.
 	//
-	// If you leave this parameter empty, the default value **ReadWrite** is used.
+	// 	- **ReadOnly**: read-only permissions.
+	//
+	// 	- **DMLOnly**: the permissions to execute only DML statements.
+	//
+	// 	- **DDLOnly**: the permissions to execute only DDL statements.
+	//
+	// 	- **ReadIndex**: the read-only and index permissions.
+	//
+	// If you leave this parameter empty, the default value **ReadWrite*	- is used.
 	//
 	// >- This parameter is valid only if you specify **AccountName**.
+	//
 	// >- This parameter is required for PolarDB for PostgreSQL (Compatible with Oracle) clusters or PolarDB for PostgreSQL clusters.
+	//
 	// >- This parameter is optional for PolarDB for MySQL clusters.
+	//
+	// example:
+	//
+	// ReadWrite
 	AccountPrivilege *string `json:"AccountPrivilege,omitempty" xml:"AccountPrivilege,omitempty"`
-	// The character set that is used by the cluster. For more information, see [Character set tables](~~99716~~).
+	// The character set that is used by the cluster. For more information, see [Character set tables](https://help.aliyun.com/document_detail/99716.html).
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// utf8
 	CharacterSetName *string `json:"CharacterSetName,omitempty" xml:"CharacterSetName,omitempty"`
 	// The language that indicates the collation of the databases that are created.
 	//
-	// > *   The language must be compatible with the character set that is specified by **CharacterSetName**.
-	// >*   This parameter is required for PolarDB for PostgreSQL (Compatible with Oracle) clusters or PolarDB for PostgreSQL clusters. This parameter is not supported by PolarDB for MySQL clusters.
+	// > 	- The language must be compatible with the character set that is specified by **CharacterSetName**.
 	//
-	// To view the valid values for this parameter, perform the following steps: Log on to the PolarDB console and click the ID of a cluster. In the left-side navigation pane, choose **Settings and Management** > **Databases**. Then, click **Create Database**.
+	// >	- This parameter is required for PolarDB for PostgreSQL (Compatible with Oracle) clusters or PolarDB for PostgreSQL clusters. This parameter is not supported by PolarDB for MySQL clusters.
+	//
+	// To view the valid values for this parameter, perform the following steps: Log on to the PolarDB console and click the ID of a cluster. In the left-side navigation pane, choose **Settings and Management*	- > **Databases**. Then, click **Create Database**.
+	//
+	// example:
+	//
+	// C
 	Collate *string `json:"Collate,omitempty" xml:"Collate,omitempty"`
 	// The language that indicates the character type of the database.
 	//
 	// >- The language must be compatible with the character set that is specified by **CharacterSetName**.
+	//
 	// >- The value that you specify must be the same as the value of **Collate**.
+	//
 	// >- This parameter is required for PolarDB for PostgreSQL (Compatible with Oracle) clusters or PolarDB for PostgreSQL clusters. This parameter is optional for PolarDB for MySQL clusters.
 	//
-	// To view the valid values for this parameter, perform the following steps: Log on to the PolarDB console and click the ID of a cluster. In the left-side navigation pane, choose **Settings and Management** > **Databases**. Then, click **Create Database**.
+	// To view the valid values for this parameter, perform the following steps: Log on to the PolarDB console and click the ID of a cluster. In the left-side navigation pane, choose **Settings and Management*	- > **Databases**. Then, click **Create Database**.
+	//
+	// example:
+	//
+	// C
 	Ctype *string `json:"Ctype,omitempty" xml:"Ctype,omitempty"`
 	// The ID of cluster.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pc-**************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	// The description of the database. The description must meet the following requirements:
 	//
-	// *   It cannot start with `http://` or `https://`.
-	// *   It must be 2 to 256 characters in length.
+	// 	- It cannot start with `http://` or `https://`.
+	//
+	// 	- It must be 2 to 256 characters in length.
 	//
 	// > This parameter is required for a PolarDB for Oracle or PolarDB for PostgreSQL cluster. This parameter is optional for a PolarDB for MySQL cluster.
+	//
+	// example:
+	//
+	// testdesc
 	DBDescription *string `json:"DBDescription,omitempty" xml:"DBDescription,omitempty"`
 	// The name of the database. The name must meet the following requirements:
 	//
-	// *   The name can contain lowercase letters, digits, hyphens (-), and underscores (\_).
-	// *   The name must start with a lowercase letter and end with a lowercase letter or a digit. The name must be 1 to 64 characters in length.
+	// 	- The name can contain lowercase letters, digits, hyphens (-), and underscores (_).
+	//
+	// 	- The name must start with a lowercase letter and end with a lowercase letter or a digit. The name must be 1 to 64 characters in length.
 	//
 	// > Do not use reserved words as database names, such as `test` or `mysql`.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// testDB
 	DBName               *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -2710,6 +3480,10 @@ func (s *CreateDatabaseRequest) SetResourceOwnerId(v int64) *CreateDatabaseReque
 
 type CreateDatabaseResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 93E98F25-BE02-40DA-83E3-F77F8D******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2757,17 +3531,34 @@ func (s *CreateDatabaseResponse) SetBody(v *CreateDatabaseResponseBody) *CreateD
 
 type CreateGlobalDatabaseNetworkRequest struct {
 	// The ID of the primary cluster.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pc-bp1q76364ird*****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	// The description of the GDN. The description must meet the following requirements:
 	//
-	// *   It cannot start with [http:// or https://.](http://https://。)
-	// *   It must start with a letter.
-	// *   It can contain letters, digits, underscores (\_), and hyphens (-).
-	// *   It must be 2 to 126 characters in length.
+	// 	- It cannot start with [http:// or https://.](http://https://。)
+	//
+	// 	- It must start with a letter.
+	//
+	// 	- It can contain letters, digits, underscores (_), and hyphens (-).
+	//
+	// 	- It must be 2 to 126 characters in length.
+	//
+	// example:
+	//
+	// GDN-fortest
 	GDNDescription *string `json:"GDNDescription,omitempty" xml:"GDNDescription,omitempty"`
 	OwnerAccount   *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId        *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The ID of the resource group.
+	//
+	// example:
+	//
+	// rg-************
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -2824,8 +3615,16 @@ func (s *CreateGlobalDatabaseNetworkRequest) SetSecurityToken(v string) *CreateG
 
 type CreateGlobalDatabaseNetworkResponseBody struct {
 	// The ID of the GDN.
+	//
+	// example:
+	//
+	// gd-m5ex5wqfqbou*****
 	GDNId *string `json:"GDNId,omitempty" xml:"GDNId,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// C61892A4-0850-4516-9E26-44D96C1782DE
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2880,18 +3679,42 @@ type CreateGlobalSecurityIPGroupRequest struct {
 	// The IP address in the whitelist template.
 	//
 	// >  Multiple IP addresses are separated by commas (,). You can create up to 1,000 IP addresses or CIDR blocks for all IP whitelists.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 192.168.0.1
 	GIpList *string `json:"GIpList,omitempty" xml:"GIpList,omitempty"`
 	// The name of the IP whitelist template. The name must meet the following requirements:
 	//
-	// *   The name can contain lowercase letters, digits, and underscores (\_).
-	// *   The name must start with a letter and end with a letter or digit.
-	// *   The name must be 2 to 120 characters in length.
+	// 	- The name can contain lowercase letters, digits, and underscores (_).
+	//
+	// 	- The name must start with a letter and end with a letter or digit.
+	//
+	// 	- The name must be 2 to 120 characters in length.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test_123
 	GlobalIgName *string `json:"GlobalIgName,omitempty" xml:"GlobalIgName,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The region ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the resource group.
+	//
+	// example:
+	//
+	// rg-************
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -2955,6 +3778,10 @@ type CreateGlobalSecurityIPGroupResponseBody struct {
 	// The details of the global IP whitelist template.
 	GlobalSecurityIPGroup []*CreateGlobalSecurityIPGroupResponseBodyGlobalSecurityIPGroup `json:"GlobalSecurityIPGroup,omitempty" xml:"GlobalSecurityIPGroup,omitempty" type:"Repeated"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 9B7BFB11-C077-4FE3-B051-F69CEB******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2980,16 +3807,34 @@ type CreateGlobalSecurityIPGroupResponseBodyGlobalSecurityIPGroup struct {
 	// The IP address in the whitelist template.
 	//
 	// >  Separate multiple IP addresses with commas (,). You can add up to 1,000 IP addresses or CIDR blocks to all IP whitelists.
+	//
+	// example:
+	//
+	// 192.168.0.1
 	GIpList *string `json:"GIpList,omitempty" xml:"GIpList,omitempty"`
 	// The name of the IP whitelist template. The name must meet the following requirements:
 	//
-	// *   The name can contain lowercase letters, digits, and underscores (\_).
-	// *   The name must start with a letter and end with a letter or a digit.
-	// *   The name must be 2 to 120 characters in length.
+	// 	- The name can contain lowercase letters, digits, and underscores (_).
+	//
+	// 	- The name must start with a letter and end with a letter or a digit.
+	//
+	// 	- The name must be 2 to 120 characters in length.
+	//
+	// example:
+	//
+	// test_123
 	GlobalIgName *string `json:"GlobalIgName,omitempty" xml:"GlobalIgName,omitempty"`
 	// The ID of the IP whitelist template.
+	//
+	// example:
+	//
+	// g-zsldxfiwjmti0kcm****
 	GlobalSecurityGroupId *string `json:"GlobalSecurityGroupId,omitempty" xml:"GlobalSecurityGroupId,omitempty"`
 	// The ID of the region.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -3051,32 +3896,73 @@ func (s *CreateGlobalSecurityIPGroupResponse) SetBody(v *CreateGlobalSecurityIPG
 }
 
 type CreateParameterGroupRequest struct {
-	// The type of the database engine. Only **MySQL** is supported.
+	// The type of the database engine. Only **MySQL*	- is supported.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// MySQL
 	DBType *string `json:"DBType,omitempty" xml:"DBType,omitempty"`
 	// The version of the database engine. Valid values:
 	//
-	// *   **5.6**
-	// *   **5.7**
-	// *   **8.0**
+	// 	- **5.6**
+	//
+	// 	- **5.7**
+	//
+	// 	- **8.0**
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 8.0
 	DBVersion    *string `json:"DBVersion,omitempty" xml:"DBVersion,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The description of the parameter template. It must be 0 to 199 characters in length.
+	//
+	// example:
+	//
+	// test_group
 	ParameterGroupDesc *string `json:"ParameterGroupDesc,omitempty" xml:"ParameterGroupDesc,omitempty"`
 	// The name of the parameter template. The name must meet the following requirements:
 	//
-	// *   It can contain letters, digits, and underscores (\_). It must start with a letter and cannot end with an underscore.**
-	// *   It must be 8 to 64 characters in length.
+	// 	- It can contain letters, digits, and underscores (_). It must start with a letter and cannot end with an underscore.**
+	//
+	// 	- It must be 8 to 64 characters in length.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test_group
 	ParameterGroupName *string `json:"ParameterGroupName,omitempty" xml:"ParameterGroupName,omitempty"`
 	// The JSON string that consists of parameters and values. The parameter values are strings. Example: `{"wait_timeout":"86400","innodb_old_blocks_time":"1000"}`.
 	//
-	// > You can call the [DescribeParameterTemplates](~~207428~~) operation to query the details of all parameters in the cluster of a specified engine version, such as the parameter name and valid values.
+	// > You can call the [DescribeParameterTemplates](https://help.aliyun.com/document_detail/207428.html) operation to query the details of all parameters in the cluster of a specified engine version, such as the parameter name and valid values.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// {"wait_timeout":"86400","innodb_old_blocks_time":"1000"}
 	Parameters *string `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
 	// The region ID.
 	//
-	// > You can call the [DescribeRegions](~~98041~~) operation to query available regions.
+	// > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to query available regions.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the resource group.
+	//
+	// example:
+	//
+	// rg-**********
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -3148,9 +4034,17 @@ func (s *CreateParameterGroupRequest) SetResourceOwnerId(v int64) *CreateParamet
 type CreateParameterGroupResponseBody struct {
 	// The ID of the parameter template.
 	//
-	// > You can call the [DescribeParameterGroups](~~207178~~) operation to query the details of all parameter templates of a specified region, such as the ID of a parameter template.
+	// > You can call the [DescribeParameterGroups](https://help.aliyun.com/document_detail/207178.html) operation to query the details of all parameter templates of a specified region, such as the ID of a parameter template.
+	//
+	// example:
+	//
+	// pcpg-**************
 	ParameterGroupId *string `json:"ParameterGroupId,omitempty" xml:"ParameterGroupId,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 514D1D87-E243-4A5F-A87D-2785C3******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3238,6 +4132,10 @@ func (s *CreateServiceLinkedRoleRequest) SetResourceOwnerId(v int64) *CreateServ
 
 type CreateServiceLinkedRoleResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 3F9E6A3B-C13E-4064-A010-18582A******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3285,27 +4183,58 @@ func (s *CreateServiceLinkedRoleResponse) SetBody(v *CreateServiceLinkedRoleResp
 
 type CreateStoragePlanRequest struct {
 	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value. Make sure that the value is unique among different requests. The token can only contain ASCII characters and cannot exceed 64 characters in length.
+	//
+	// example:
+	//
+	// 6000170000591aed949d0f5********************
 	ClientToken  *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The unit of the subscription duration for the storage plan. Valid values:
 	//
-	// *   **Month**
-	// *   **Year**
+	// 	- **Month**
+	//
+	// 	- **Year**
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Month
 	Period               *string `json:"Period,omitempty" xml:"Period,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The capacity of the storage plan. Unit: GB. Valid values: 50, 100, 200, 300, 500, 1000, 2000, 3000, 5000, 10000, 15000, 20000, 25000, 30000, 50000, 100000, and 200000
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 500
 	StorageClass *string `json:"StorageClass,omitempty" xml:"StorageClass,omitempty"`
 	// The type of the storage plan. Valid values:
 	//
-	// *   **Mainland**: The storage plan is used inside the Chinese mainland.
-	// *   **Overseas**: The storage plan is used outside the Chinese mainland.
+	// 	- **Mainland**: The storage plan is used inside the Chinese mainland.
+	//
+	// 	- **Overseas**: The storage plan is used outside the Chinese mainland.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Mainland
 	StorageType *string `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
 	// The subscription duration of the storage plan.
 	//
-	// *   If **Period** is set to **Month**, the value ranges from 1 to 9.
-	// *   If **Period** is set to **Year**, the value can be 1, 2, 3, or 5.
+	// 	- If **Period*	- is set to **Month**, the value ranges from 1 to 9.
+	//
+	// 	- If **Period*	- is set to **Year**, the value can be 1, 2, 3, or 5.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 3
 	UsedTime *string `json:"UsedTime,omitempty" xml:"UsedTime,omitempty"`
 }
 
@@ -3364,10 +4293,22 @@ func (s *CreateStoragePlanRequest) SetUsedTime(v string) *CreateStoragePlanReque
 
 type CreateStoragePlanResponseBody struct {
 	// The instance ID.
+	//
+	// example:
+	//
+	// POLARDB-cn-**************
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// The ID of the order.
+	//
+	// example:
+	//
+	// 2035638*******
 	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 69A85BAF-1089-4CDF-A82F-0A140F******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3425,8 +4366,20 @@ func (s *CreateStoragePlanResponse) SetBody(v *CreateStoragePlanResponseBody) *C
 
 type DeleteAccountRequest struct {
 	// The username of the account.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// testacc
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
 	// The cluster ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pc-*************
 	DBClusterId          *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -3474,6 +4427,10 @@ func (s *DeleteAccountRequest) SetResourceOwnerId(v int64) *DeleteAccountRequest
 
 type DeleteAccountResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 2FED790E-FB61-4721-8C1C-07C627******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3522,9 +4479,21 @@ func (s *DeleteAccountResponse) SetBody(v *DeleteAccountResponseBody) *DeleteAcc
 type DeleteBackupRequest struct {
 	// The backup ID. If you need to specify multiple backup IDs, separate the backup IDs with commas (,).
 	//
-	// >  You can call the [DescribeBackups](~~98102~~) operation to query the backup IDs.
+	// >  You can call the [DescribeBackups](https://help.aliyun.com/document_detail/98102.html) operation to query the backup IDs.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 11111111
 	BackupId *string `json:"BackupId,omitempty" xml:"BackupId,omitempty"`
 	// The cluster ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pc-**************
 	DBClusterId          *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -3572,6 +4541,10 @@ func (s *DeleteBackupRequest) SetResourceOwnerId(v int64) *DeleteBackupRequest {
 
 type DeleteBackupResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 3CF4F9FE-BF77-4739-8D68-B8DF5D******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3620,11 +4593,23 @@ func (s *DeleteBackupResponse) SetBody(v *DeleteBackupResponseBody) *DeleteBacku
 type DeleteDBClusterRequest struct {
 	// The retention policy for the backup sets when you delete the cluster. Valid values:
 	//
-	// *   **ALL**: permanently retains all backups.
-	// *   **LATEST**: permanently retains the most recent backup. A backup is automatically created before you delete the cluster.
-	// *   **NONE**: No backup sets are retained after you delete the cluster.
+	// 	- **ALL**: permanently retains all backups.
+	//
+	// 	- **LATEST**: permanently retains the most recent backup. A backup is automatically created before you delete the cluster.
+	//
+	// 	- **NONE**: No backup sets are retained after you delete the cluster.
+	//
+	// example:
+	//
+	// NONE
 	BackupRetentionPolicyOnClusterDeletion *string `json:"BackupRetentionPolicyOnClusterDeletion,omitempty" xml:"BackupRetentionPolicyOnClusterDeletion,omitempty"`
 	// The cluster ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pc-**************
 	DBClusterId          *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -3672,6 +4657,10 @@ func (s *DeleteDBClusterRequest) SetResourceOwnerId(v int64) *DeleteDBClusterReq
 
 type DeleteDBClusterResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// D0CEC6AC-7760-409A-A0D5-E6CD86******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3719,8 +4708,20 @@ func (s *DeleteDBClusterResponse) SetBody(v *DeleteDBClusterResponseBody) *Delet
 
 type DeleteDBClusterEndpointRequest struct {
 	// The cluster ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pc-******************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	// The ID of the custom cluster endpoint.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pe-******************
 	DBEndpointId         *string `json:"DBEndpointId,omitempty" xml:"DBEndpointId,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -3768,6 +4769,10 @@ func (s *DeleteDBClusterEndpointRequest) SetResourceOwnerId(v int64) *DeleteDBCl
 
 type DeleteDBClusterEndpointResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// CD3FA5F3-FAF3-44CA-AFFF-BAF869******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3816,13 +4821,31 @@ func (s *DeleteDBClusterEndpointResponse) SetBody(v *DeleteDBClusterEndpointResp
 type DeleteDBEndpointAddressRequest struct {
 	// The ID of the cluster.
 	//
-	// >  You can call the [DescribeDBClusters](~~98094~~) operation to query the details of all clusters that belong to your account, such as the cluster ID.
+	// >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to query the details of all clusters that belong to your account, such as the cluster ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pc-************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	// The ID of the endpoint.
 	//
-	// >  You can call the [DescribeDBClusterEndpoints](~~98205~~) operation to query the endpoints of a specified PolarDB cluster.
+	// >  You can call the [DescribeDBClusterEndpoints](https://help.aliyun.com/document_detail/98205.html) operation to query the endpoints of a specified PolarDB cluster.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pe-***************
 	DBEndpointId *string `json:"DBEndpointId,omitempty" xml:"DBEndpointId,omitempty"`
-	// The network type of the endpoint. Set the value to **Public** (public network).
+	// The network type of the endpoint. Set the value to **Public*	- (public network).
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Public
 	NetType              *string `json:"NetType,omitempty" xml:"NetType,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -3875,6 +4898,10 @@ func (s *DeleteDBEndpointAddressRequest) SetResourceOwnerId(v int64) *DeleteDBEn
 
 type DeleteDBEndpointAddressResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// D0CEC6AC-7760-409A-A0D5-E6CD86******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3923,9 +4950,21 @@ func (s *DeleteDBEndpointAddressResponse) SetBody(v *DeleteDBEndpointAddressResp
 type DeleteDBLinkRequest struct {
 	// The ID of the source cluster where a database link is to be deleted.
 	//
-	// >  You can call the [DescribeDBClusters](~~173433~~) operation to query PolarDB clusters.
+	// >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/173433.html) operation to query PolarDB clusters.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pc-**************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	// The name of the database link to be deleted.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// dblink_test
 	DBLinkName           *string `json:"DBLinkName,omitempty" xml:"DBLinkName,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -3973,6 +5012,10 @@ func (s *DeleteDBLinkRequest) SetResourceOwnerId(v int64) *DeleteDBLinkRequest {
 
 type DeleteDBLinkResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// F9F1CB1A-B1D5-4EF5-A53A-************
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4020,17 +5063,38 @@ func (s *DeleteDBLinkResponse) SetBody(v *DeleteDBLinkResponseBody) *DeleteDBLin
 
 type DeleteDBNodesRequest struct {
 	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. The token is case-sensitive.
+	//
+	// example:
+	//
+	// 6000170000591aed949d0f54a343f1a42***********
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The ID of the cluster.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pc-**************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	// The IDs of the nodes.
 	//
-	// > You can call the [DescribeDBClusters](~~185342~~) operation to query the details of all clusters that belong to your Alibaba Cloud account, such as the cluster ID.
+	// > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/185342.html) operation to query the details of all clusters that belong to your Alibaba Cloud account, such as the cluster ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pi-************
 	DBNodeId []*string `json:"DBNodeId,omitempty" xml:"DBNodeId,omitempty" type:"Repeated"`
 	// The type of the node. Valid values:
 	//
-	// *   RO
-	// *   STANDBY
+	// 	- RO
+	//
+	// 	- STANDBY
+	//
+	// example:
+	//
+	// RO
 	DBNodeType           *string `json:"DBNodeType,omitempty" xml:"DBNodeType,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -4088,10 +5152,22 @@ func (s *DeleteDBNodesRequest) SetResourceOwnerId(v int64) *DeleteDBNodesRequest
 
 type DeleteDBNodesResponseBody struct {
 	// The ID of the cluster.
+	//
+	// example:
+	//
+	// pc-**************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	// The ID of the order.
+	//
+	// example:
+	//
+	// 2035638*******
 	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 6566B2E6-3157-4B57-A693-AFB751******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4149,8 +5225,20 @@ func (s *DeleteDBNodesResponse) SetBody(v *DeleteDBNodesResponseBody) *DeleteDBN
 
 type DeleteDatabaseRequest struct {
 	// The cluster ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pc-*************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	// The name of the database.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// testdb
 	DBName               *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -4198,6 +5286,10 @@ func (s *DeleteDatabaseRequest) SetResourceOwnerId(v int64) *DeleteDatabaseReque
 
 type DeleteDatabaseResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 2FED790E-FB61-4721-8C1C-07C627******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4245,10 +5337,20 @@ func (s *DeleteDatabaseResponse) SetBody(v *DeleteDatabaseResponseBody) *DeleteD
 
 type DeleteGlobalDatabaseNetworkRequest struct {
 	// The ID of the GDN.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// gdn-bp1fttxsrmv*****
 	GDNId        *string `json:"GDNId,omitempty" xml:"GDNId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The ID of the resource group.
+	//
+	// example:
+	//
+	// rg-************
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -4300,6 +5402,10 @@ func (s *DeleteGlobalDatabaseNetworkRequest) SetSecurityToken(v string) *DeleteG
 
 type DeleteGlobalDatabaseNetworkResponseBody struct {
 	// The request ID.
+	//
+	// example:
+	//
+	// C61892A4-0850-4516-9E26-44D96C1782DE
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4348,17 +5454,39 @@ func (s *DeleteGlobalDatabaseNetworkResponse) SetBody(v *DeleteGlobalDatabaseNet
 type DeleteGlobalSecurityIPGroupRequest struct {
 	// The name of the IP whitelist template. The name of the IP whitelist template must meet the following requirements:
 	//
-	// *   The name can contain lowercase letters, digits, and underscores (\_).
-	// *   The name must start with a letter and end with a letter or digit.
-	// *   The name must be 2 to 120 characters in length.
+	// 	- The name can contain lowercase letters, digits, and underscores (_).
+	//
+	// 	- The name must start with a letter and end with a letter or digit.
+	//
+	// 	- The name must be 2 to 120 characters in length.
+	//
+	// example:
+	//
+	// test_123
 	GlobalIgName *string `json:"GlobalIgName,omitempty" xml:"GlobalIgName,omitempty"`
 	// The ID of the IP whitelist template.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// g-zsldxfiwjmti0kcm****
 	GlobalSecurityGroupId *string `json:"GlobalSecurityGroupId,omitempty" xml:"GlobalSecurityGroupId,omitempty"`
 	OwnerAccount          *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId               *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The region ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the resource group.
+	//
+	// example:
+	//
+	// rg-**********
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -4422,6 +5550,10 @@ type DeleteGlobalSecurityIPGroupResponseBody struct {
 	// The details of the global IP whitelist template.
 	GlobalSecurityIPGroup []*DeleteGlobalSecurityIPGroupResponseBodyGlobalSecurityIPGroup `json:"GlobalSecurityIPGroup,omitempty" xml:"GlobalSecurityIPGroup,omitempty" type:"Repeated"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 9B7BFB11-C077-4FE3-B051-F69CEB******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4449,16 +5581,34 @@ type DeleteGlobalSecurityIPGroupResponseBodyGlobalSecurityIPGroup struct {
 	// The IP address in the whitelist template.
 	//
 	// >  Multiple IP addresses are separated by commas (,). You can create up to 1,000 IP addresses or CIDR blocks for all IP whitelists.
+	//
+	// example:
+	//
+	// 192.168.0.1
 	GIpList *string `json:"GIpList,omitempty" xml:"GIpList,omitempty"`
 	// The name of the global IP whitelist template. The name must meet the following requirements:
 	//
-	// *   The name can contain lowercase letters, digits, and underscores (\_).
-	// *   The name must start with a letter and end with a letter or a digit.
-	// *   The name must be 2 to 120 characters in length.
+	// 	- The name can contain lowercase letters, digits, and underscores (_).
+	//
+	// 	- The name must start with a letter and end with a letter or a digit.
+	//
+	// 	- The name must be 2 to 120 characters in length.
+	//
+	// example:
+	//
+	// test_123
 	GlobalIgName *string `json:"GlobalIgName,omitempty" xml:"GlobalIgName,omitempty"`
 	// The ID of the global IP whitelist template.
+	//
+	// example:
+	//
+	// g-zsldxfiwjmti0kcm****
 	GlobalSecurityGroupId *string `json:"GlobalSecurityGroupId,omitempty" xml:"GlobalSecurityGroupId,omitempty"`
 	// The ID of the region.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -4527,11 +5677,23 @@ func (s *DeleteGlobalSecurityIPGroupResponse) SetBody(v *DeleteGlobalSecurityIPG
 type DeleteMaskingRulesRequest struct {
 	// The ID of the cluster.
 	//
-	// > You can call the [DescribeDBClusters](~~98094~~) operation to query the details of the clusters that belong to your Alibaba Cloud account, such as cluster IDs.
+	// > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to query the details of the clusters that belong to your Alibaba Cloud account, such as cluster IDs.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pc-*****************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	// The name of the masking rule. You can specify multiple masking rules at a time. Separate the masking rules with commas (,).
 	//
-	// > You can call the [DescribeMaskingRules](~~212573~~) operation to query details of all the masking rules for a specified cluster, such as the names of the masking rules.
+	// > You can call the [DescribeMaskingRules](https://help.aliyun.com/document_detail/212573.html) operation to query details of all the masking rules for a specified cluster, such as the names of the masking rules.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// testrule
 	RuleNameList *string `json:"RuleNameList,omitempty" xml:"RuleNameList,omitempty"`
 }
 
@@ -4557,13 +5719,26 @@ type DeleteMaskingRulesResponseBody struct {
 	// The message that is returned for the request.
 	//
 	// > If the request is successful, `Successful` is returned. If the request fails, an error message such as an error code is returned.
+	//
+	// example:
+	//
+	// Successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 2BCEE25B-797C-426B-BA7B-D28CCF******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request is successful. Valid value:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -4625,13 +5800,32 @@ type DeleteParameterGroupRequest struct {
 	// The parameter template ID.
 	//
 	//
-	// >  You can call the [DescribeParameterGroups](~~207178~~) operation to query the parameter template ID.
+	//
+	// >  You can call the [DescribeParameterGroups](https://help.aliyun.com/document_detail/207178.html) operation to query the parameter template ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pcpg-**************
 	ParameterGroupId *string `json:"ParameterGroupId,omitempty" xml:"ParameterGroupId,omitempty"`
 	// The region ID.
 	//
-	// >  You can call the [DescribeRegions](~~98041~~) operation to query available regions.
+	//
+	//
+	// >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to query available regions.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the resource group.
+	//
+	// example:
+	//
+	// rg-************
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -4682,6 +5876,10 @@ func (s *DeleteParameterGroupRequest) SetResourceOwnerId(v int64) *DeleteParamet
 
 type DeleteParameterGroupResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 4F7195E7-5F74-479D-AF59-1B4BF9******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4729,10 +5927,20 @@ func (s *DeleteParameterGroupResponse) SetBody(v *DeleteParameterGroupResponseBo
 
 type DescribeAITaskStatusRequest struct {
 	// The cluster ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pc-xxxxxxxxxx
 	DBClusterId  *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The ID of the region.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -4778,13 +5986,26 @@ func (s *DescribeAITaskStatusRequest) SetResourceOwnerId(v int64) *DescribeAITas
 
 type DescribeAITaskStatusResponseBody struct {
 	// The cluster ID.
+	//
+	// example:
+	//
+	// pc-xxxxxxxxxx
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 9B7BFB11-C077-4FE3-B051-F69CEB******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The state of the PolarDB for AI feature. Valid values:
 	//
-	// *   **1**: The feature is enabled.
-	// *   **2**: The feature is disabled.
+	// 	- **1**: The feature is enabled.
+	//
+	// 	- **2**: The feature is disabled.
+	//
+	// example:
+	//
+	// 1
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The state description of the PolarDB for AI feature.
 	StatusName *string `json:"StatusName,omitempty" xml:"StatusName,omitempty"`
@@ -4849,20 +6070,40 @@ func (s *DescribeAITaskStatusResponse) SetBody(v *DescribeAITaskStatusResponseBo
 
 type DescribeAccountsRequest struct {
 	// The name of the account.
+	//
+	// example:
+	//
+	// test_acc
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
 	// The cluster ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pc-***************
 	DBClusterId  *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The page number of the page to return. Set this parameter to an integer that is larger than 0. Default value: **1**.
+	//
+	// example:
+	//
+	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries to return on each page. Valid values:
 	//
-	// *   **30**
-	// *   **50**
-	// *   **100**
+	// 	- **30**
+	//
+	// 	- **50**
+	//
+	// 	- **100**
 	//
 	// Default value: **30**.
+	//
+	// example:
+	//
+	// 30
 	PageSize             *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -4920,10 +6161,22 @@ type DescribeAccountsResponseBody struct {
 	// The details of the account.
 	Accounts []*DescribeAccountsResponseBodyAccounts `json:"Accounts,omitempty" xml:"Accounts,omitempty" type:"Repeated"`
 	// The page number of the page returned.
+	//
+	// example:
+	//
+	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries returned per page.
+	//
+	// example:
+	//
+	// 1
 	PageRecordCount *int32 `json:"PageRecordCount,omitempty" xml:"PageRecordCount,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 155462B9-205F-4FFC-BB43-4855FE******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4957,26 +6210,54 @@ func (s *DescribeAccountsResponseBody) SetRequestId(v string) *DescribeAccountsR
 
 type DescribeAccountsResponseBodyAccounts struct {
 	// The description of the account.
+	//
+	// example:
+	//
+	// test
 	AccountDescription *string `json:"AccountDescription,omitempty" xml:"AccountDescription,omitempty"`
 	// The locking state of the account. Valid values:
 	//
-	// *   **UnLock**
-	// *   **Lock**
+	// 	- **UnLock**
+	//
+	// 	- **Lock**
+	//
+	// example:
+	//
+	// UnLock
 	AccountLockState *string `json:"AccountLockState,omitempty" xml:"AccountLockState,omitempty"`
 	// The name of the account.
+	//
+	// example:
+	//
+	// test_acc
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
 	// The validity period of the password.
+	//
+	// example:
+	//
+	// undefined
 	AccountPasswordValidTime *string `json:"AccountPasswordValidTime,omitempty" xml:"AccountPasswordValidTime,omitempty"`
 	// The state of the account. Valid values:
 	//
-	// *   **Creating**: The account is being created.
-	// *   **Available**: The account is available.
-	// *   **Deleting**: The account is being deleted
+	// 	- **Creating**: The account is being created.
+	//
+	// 	- **Available**: The account is available.
+	//
+	// 	- **Deleting**: The account is being deleted
+	//
+	// example:
+	//
+	// Available
 	AccountStatus *string `json:"AccountStatus,omitempty" xml:"AccountStatus,omitempty"`
 	// The type of the account. Valid values:
 	//
-	// *   **Normal**: a standard account
-	// *   **Super**: a privileged account
+	// 	- **Normal**: a standard account
+	//
+	// 	- **Super**: a privileged account
+	//
+	// example:
+	//
+	// Normal
 	AccountType *string `json:"AccountType,omitempty" xml:"AccountType,omitempty"`
 	// The list of database permissions that are granted to the account.
 	DatabasePrivileges []*DescribeAccountsResponseBodyAccountsDatabasePrivileges `json:"DatabasePrivileges,omitempty" xml:"DatabasePrivileges,omitempty" type:"Repeated"`
@@ -5027,8 +6308,16 @@ func (s *DescribeAccountsResponseBodyAccounts) SetDatabasePrivileges(v []*Descri
 
 type DescribeAccountsResponseBodyAccountsDatabasePrivileges struct {
 	// The permissions that the account is granted on the database. Valid values:
+	//
+	// example:
+	//
+	// ReadOnly
 	AccountPrivilege *string `json:"AccountPrivilege,omitempty" xml:"AccountPrivilege,omitempty"`
 	// The name of the database.
+	//
+	// example:
+	//
+	// DBtest
 	DBName *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
 }
 
@@ -5081,18 +6370,40 @@ func (s *DescribeAccountsResponse) SetBody(v *DescribeAccountsResponseBody) *Des
 
 type DescribeAutoRenewAttributeRequest struct {
 	// The ID of the cluster. If you need to specify multiple cluster IDs, separate the cluster IDs with commas (,).
+	//
+	// example:
+	//
+	// pc-****************
 	DBClusterIds *string `json:"DBClusterIds,omitempty" xml:"DBClusterIds,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The page number. The value must be an integer that is larger than 0 and does not exceed the maximum value of the INTEGER data type. Default value: 1.
+	//
+	// example:
+	//
+	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries to return on each page. Valid values: 30, 50, and 100. Default value: 30.
+	//
+	// example:
+	//
+	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The ID of the region.
 	//
-	// >  You can call the [DescribeRegions](~~98041~~) operation to query the region ID details.
+	// >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to query the region ID details.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the resource group.
+	//
+	// example:
+	//
+	// rg-re*********
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -5155,12 +6466,28 @@ type DescribeAutoRenewAttributeResponseBody struct {
 	// The renewal information about the clusters.
 	Items *DescribeAutoRenewAttributeResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
 	// The page number of the page returned.
+	//
+	// example:
+	//
+	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The total number of pages returned.
+	//
+	// example:
+	//
+	// 1
 	PageRecordCount *int32 `json:"PageRecordCount,omitempty" xml:"PageRecordCount,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 65D7ACE6-4A61-4B6E-B357-8CB24A******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The total number of entries.
+	//
+	// example:
+	//
+	// 1
 	TotalRecordCount *int32 `json:"TotalRecordCount,omitempty" xml:"TotalRecordCount,omitempty"`
 }
 
@@ -5217,25 +6544,53 @@ func (s *DescribeAutoRenewAttributeResponseBodyItems) SetAutoRenewAttribute(v []
 type DescribeAutoRenewAttributeResponseBodyItemsAutoRenewAttribute struct {
 	// Indicates whether the auto-renewal feature is enabled. Valid values:
 	//
-	// *   true: enabled
-	// *   false: disabled
+	// 	- true: enabled
+	//
+	// 	- false: disabled
+	//
+	// example:
+	//
+	// true
 	AutoRenewEnabled *bool `json:"AutoRenewEnabled,omitempty" xml:"AutoRenewEnabled,omitempty"`
 	// The ID of the cluster.
+	//
+	// example:
+	//
+	// pc-*****************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	// The renewal duration.
+	//
+	// example:
+	//
+	// 4
 	Duration *int32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
 	// The unit of the duration. Valid values:
 	//
-	// *   Year
-	// *   Month
+	// 	- Year
+	//
+	// 	- Month
+	//
+	// example:
+	//
+	// Month
 	PeriodUnit *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
 	// The ID of the region.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The renewal status. Valid values:
 	//
-	// *   AutoRenewal: The cluster is automatically renewed.
-	// *   Normal: The cluster is manually renewed. The system sends a text message to remind you before the cluster expires.
-	// *   NotRenewal: The cluster is not renewed. The system does not send a reminder for expiration but only sends a text message three days before the cluster expires to remind you that the cluster is not renewed.
+	// 	- AutoRenewal: The cluster is automatically renewed.
+	//
+	// 	- Normal: The cluster is manually renewed. The system sends a text message to remind you before the cluster expires.
+	//
+	// 	- NotRenewal: The cluster is not renewed. The system does not send a reminder for expiration but only sends a text message three days before the cluster expires to remind you that the cluster is not renewed.
+	//
+	// example:
+	//
+	// AutoRenewal
 	RenewalStatus *string `json:"RenewalStatus,omitempty" xml:"RenewalStatus,omitempty"`
 }
 
@@ -5308,26 +6663,58 @@ func (s *DescribeAutoRenewAttributeResponse) SetBody(v *DescribeAutoRenewAttribu
 
 type DescribeBackupLogsRequest struct {
 	// The region for the backup data.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	BackupRegion *string `json:"BackupRegion,omitempty" xml:"BackupRegion,omitempty"`
 	// The cluster ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pc-**************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	// The end of the time range to query. The end time must be later than the start time. Specify the time in the ISO 8601 standard in the `yyyy-MM-ddTHH:mmZ` format. The time must be in UTC.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2020-02-12T15:00Z
 	EndTime      *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The page number of the page to return. The value must be an integer that is larger than 0. Default value: **1**.
+	//
+	// example:
+	//
+	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries to return on each page. Valid values:
 	//
-	// *   **30**
-	// *   **50**
-	// *   **100**
+	// 	- **30**
+	//
+	// 	- **50**
+	//
+	// 	- **100**
 	//
 	// Default value: **30**.
+	//
+	// example:
+	//
+	// 30
 	PageSize             *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The beginning of the time range to query. Specify the time in the ISO 8601 standard in the `yyyy-MM-ddTHH:mmZ` format. The time must be in UTC.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2020-02-01T15:00Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
@@ -5393,12 +6780,28 @@ type DescribeBackupLogsResponseBody struct {
 	// The details of the backup logs.
 	Items *DescribeBackupLogsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
 	// The page number of the returned page.
+	//
+	// example:
+	//
+	// 1
 	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries returned per page.
+	//
+	// example:
+	//
+	// 2
 	PageRecordCount *string `json:"PageRecordCount,omitempty" xml:"PageRecordCount,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// ADAC63DB-0691-4ECE-949A-FAEA68******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The total number of returned entries.
+	//
+	// example:
+	//
+	// 2
 	TotalRecordCount *string `json:"TotalRecordCount,omitempty" xml:"TotalRecordCount,omitempty"`
 }
 
@@ -5453,21 +6856,53 @@ func (s *DescribeBackupLogsResponseBodyItems) SetBackupLog(v []*DescribeBackupLo
 }
 
 type DescribeBackupLogsResponseBodyItemsBackupLog struct {
-	// The time when the backup task ended. The time follows the ISO 8601 standard in the `YYYY-MM-DD\"T\"HH:mm:ssZ` format. The time is displayed in UTC.
+	// The time when the backup task ended. The time follows the ISO 8601 standard in the `YYYY-MM-DD\\"T\\"HH:mm:ssZ` format. The time is displayed in UTC.
+	//
+	// example:
+	//
+	// 2020-02-12T03:55:31Z
 	BackupLogEndTime *string `json:"BackupLogEndTime,omitempty" xml:"BackupLogEndTime,omitempty"`
 	// The ID of the backup log.
+	//
+	// example:
+	//
+	// 1111111111
 	BackupLogId *string `json:"BackupLogId,omitempty" xml:"BackupLogId,omitempty"`
 	// The name of the backup log.
+	//
+	// example:
+	//
+	// ib_logfile1
 	BackupLogName *string `json:"BackupLogName,omitempty" xml:"BackupLogName,omitempty"`
 	// The size of the backup log. Unit: bytes.
+	//
+	// example:
+	//
+	// 1073741824
 	BackupLogSize *string `json:"BackupLogSize,omitempty" xml:"BackupLogSize,omitempty"`
-	// The time when the backup task started. The time follows the ISO 8601 standard in the `YYYY-MM-DD\"T\"HH:mm:ssZ` format. The time is displayed in UTC.
+	// The time when the backup task started. The time follows the ISO 8601 standard in the `YYYY-MM-DD\\"T\\"HH:mm:ssZ` format. The time is displayed in UTC.
+	//
+	// example:
+	//
+	// 2020-02-12T03:54:43Z
 	BackupLogStartTime *string `json:"BackupLogStartTime,omitempty" xml:"BackupLogStartTime,omitempty"`
 	// The public URL used to download the backup log.
+	//
+	// example:
+	//
+	// http://***********.oss-cn-hangzhou.aliyuncs.com
 	DownloadLink *string `json:"DownloadLink,omitempty" xml:"DownloadLink,omitempty"`
 	// The internal URL used to download the backup log.
+	//
+	// example:
+	//
+	// http://***********.oss-cn-hangzhou-internal.aliyuncs.com
 	IntranetDownloadLink *string `json:"IntranetDownloadLink,omitempty" xml:"IntranetDownloadLink,omitempty"`
 	// The time when the download URL expires.
+	//
+	// example:
+	//
+	// 2020-02-14T08:40:50Z
 	LinkExpiredTime *string `json:"LinkExpiredTime,omitempty" xml:"LinkExpiredTime,omitempty"`
 }
 
@@ -5551,7 +6986,13 @@ func (s *DescribeBackupLogsResponse) SetBody(v *DescribeBackupLogsResponseBody) 
 type DescribeBackupPolicyRequest struct {
 	// The ID of cluster.
 	//
-	// > You can call the [DescribeDBClusters](~~98094~~) operation to query information about all clusters that are deployed in a specified region, such as the cluster ID.
+	// > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to query information about all clusters that are deployed in a specified region, such as the cluster ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pc-*************
 	DBClusterId          *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -5595,98 +7036,191 @@ func (s *DescribeBackupPolicyRequest) SetResourceOwnerId(v int64) *DescribeBacku
 type DescribeBackupPolicyResponseBody struct {
 	// The backup frequency. Default value: Normal. Valid values:
 	//
-	// *   **Normal**: standard backup. The system backs up data once a day.
-	// *   **2/24H**: enhanced backup. The system backs up data every 2 hours.
-	// *   **3/24H**: enhanced backup. The system backs up data every 3 hours.
-	// *   **4/24H**: enhanced backup. The system backs up data every 4 hours.
+	// 	- **Normal**: standard backup. The system backs up data once a day.
+	//
+	// 	- **2/24H**: enhanced backup. The system backs up data every 2 hours.
+	//
+	// 	- **3/24H**: enhanced backup. The system backs up data every 3 hours.
+	//
+	// 	- **4/24H**: enhanced backup. The system backs up data every 4 hours.
 	//
 	// > - If enhanced backup is enabled, all backups are retained for 24 hours. Backups are automatically deleted when the retention period ends. However, the system permanently retains the first backup that is created after 00:00 every day.
-	// >-  If enhanced backup is enabled, **PreferredBackupPeriod** is automatically set to all days in a week (from Monday to Sunday).
+	//
+	// >-  If enhanced backup is enabled, **PreferredBackupPeriod*	- is automatically set to all days in a week (from Monday to Sunday).
+	//
+	// example:
+	//
+	// Normal
 	BackupFrequency *string `json:"BackupFrequency,omitempty" xml:"BackupFrequency,omitempty"`
 	// Indicates whether backups are retained when you delete a cluster. Valid values:
 	//
-	// *   **ALL**: permanently retains all backups.
-	// *   **LATEST**: permanently retains only the last backup.
-	// *   **NONE**: does not retain backups.
+	// 	- **ALL**: permanently retains all backups.
+	//
+	// 	- **LATEST**: permanently retains only the last backup.
+	//
+	// 	- **NONE**: does not retain backups.
+	//
+	// example:
+	//
+	// NONE
 	BackupRetentionPolicyOnClusterDeletion *string `json:"BackupRetentionPolicyOnClusterDeletion,omitempty" xml:"BackupRetentionPolicyOnClusterDeletion,omitempty"`
 	// The backup frequency of level-1 backups. Default value: Normal. Valid values:
 	//
-	// *   **Normal**: standard backup. The system backs up data once a day.
-	// *   **2/24H**: frequent backup. The system backs up data every 2 hours.
-	// *   **3/24H**: frequent backup. The system backs up data every 3 hours.
-	// *   **4/24H**: frequent backup. The system backs up data every 4 hours.
+	// 	- **Normal**: standard backup. The system backs up data once a day.
+	//
+	// 	- **2/24H**: frequent backup. The system backs up data every 2 hours.
+	//
+	// 	- **3/24H**: frequent backup. The system backs up data every 3 hours.
+	//
+	// 	- **4/24H**: frequent backup. The system backs up data every 4 hours.
 	//
 	// >- This parameter is not supported for PolarDB for PostgreSQL (Compatible with Oracle) clusters or PolarDB for PostgreSQL clusters.
-	// >- This parameter is unavailable if the region where your PolarDB for MySQL cluster is deployed does not support the cross-region backup feature. For information about regions that support the cross-region backup feature, see [Overview](~~72672~~).
+	//
+	// >- This parameter is unavailable if the region where your PolarDB for MySQL cluster is deployed does not support the cross-region backup feature. For information about regions that support the cross-region backup feature, see [Overview](https://help.aliyun.com/document_detail/72672.html).
+	//
+	// example:
+	//
+	// Normal
 	DataLevel1BackupFrequency *string `json:"DataLevel1BackupFrequency,omitempty" xml:"DataLevel1BackupFrequency,omitempty"`
 	// The backup cycle of level-1 backups. Valid values:
 	//
-	// *   **Monday**
-	// *   **Tuesday**
-	// *   **Wednesday**
-	// *   **Thursday**
-	// *   **Friday**
-	// *   **Saturday**
-	// *   **Sunday**
+	// 	- **Monday**
+	//
+	// 	- **Tuesday**
+	//
+	// 	- **Wednesday**
+	//
+	// 	- **Thursday**
+	//
+	// 	- **Friday**
+	//
+	// 	- **Saturday**
+	//
+	// 	- **Sunday**
 	//
 	// >- You need to specify at least two values. Separate multiple values with commas (,).
+	//
 	// >- This parameter is not supported for PolarDB for PostgreSQL (Compatible with Oracle) clusters or PolarDB for PostgreSQL clusters.
-	// >- This parameter is unavailable if the region where your PolarDB for MySQL cluster is deployed does not support the cross-region backup feature. For information about regions that support the cross-region backup feature, see [Overview](~~72672~~).
+	//
+	// >- This parameter is unavailable if the region where your PolarDB for MySQL cluster is deployed does not support the cross-region backup feature. For information about regions that support the cross-region backup feature, see [Overview](https://help.aliyun.com/document_detail/72672.html).
+	//
+	// example:
+	//
+	// Monday,Tuesday
 	DataLevel1BackupPeriod *string `json:"DataLevel1BackupPeriod,omitempty" xml:"DataLevel1BackupPeriod,omitempty"`
 	// The retention period of level-1 backups. Valid values: 3 to 14. Unit: day.
+	//
+	// example:
+	//
+	// 7
 	DataLevel1BackupRetentionPeriod *string `json:"DataLevel1BackupRetentionPeriod,omitempty" xml:"DataLevel1BackupRetentionPeriod,omitempty"`
 	// The period of time during which automatic backup is performed. The value must be in the `hh:mmZ-hh:mmZ` format. The time must be in UTC. The start time and the end time must be on the hour and must have an interval of 1 hour. Example: `14:00Z-15:00Z`.
 	//
 	// >- This parameter is not supported for PolarDB for PostgreSQL (Compatible with Oracle) clusters or PolarDB for PostgreSQL clusters.
-	// >- This parameter is unavailable if the region where your PolarDB for MySQL cluster is deployed does not support the cross-region backup feature. For information about regions that support the cross-region backup feature, see [Overview](~~72672~~).
+	//
+	// >- This parameter is unavailable if the region where your PolarDB for MySQL cluster is deployed does not support the cross-region backup feature. For information about regions that support the cross-region backup feature, see [Overview](https://help.aliyun.com/document_detail/72672.html).
+	//
+	// example:
+	//
+	// 15:00Z-16:00Z
 	DataLevel1BackupTime *string `json:"DataLevel1BackupTime,omitempty" xml:"DataLevel1BackupTime,omitempty"`
-	// The region where the cross-region level-2 backup is stored. For information about regions that support the cross-region backup feature, see [Overview](~~72672~~).
+	// The region where the cross-region level-2 backup is stored. For information about regions that support the cross-region backup feature, see [Overview](https://help.aliyun.com/document_detail/72672.html).
+	//
+	// example:
+	//
+	// cn-hangzhou
 	DataLevel2BackupAnotherRegionRegion *string `json:"DataLevel2BackupAnotherRegionRegion,omitempty" xml:"DataLevel2BackupAnotherRegionRegion,omitempty"`
 	// The retention period of cross-region level-2 backups. Valid values:
 	//
-	// *   **0**: The cross-region level-2 backup feature is disabled.
-	// *   **30 to 7300**: Cross-region level-2 backups are retained for 30 to 7,300 days.
-	// *   **1**: Cross-region level-2 backups are permanently retained.
+	// 	- **0**: The cross-region level-2 backup feature is disabled.
+	//
+	// 	- **30 to 7300**: Cross-region level-2 backups are retained for 30 to 7,300 days.
+	//
+	// 	- **1**: Cross-region level-2 backups are permanently retained.
 	//
 	// > The default value is **0**. By default, the level-2 backup feature is disabled when you create a cluster.
+	//
+	// example:
+	//
+	// 30
 	DataLevel2BackupAnotherRegionRetentionPeriod *string `json:"DataLevel2BackupAnotherRegionRetentionPeriod,omitempty" xml:"DataLevel2BackupAnotherRegionRetentionPeriod,omitempty"`
 	// The backup cycle of level-2 backups. Valid values:
 	//
-	// *   **Monday**
-	// *   **Tuesday**
-	// *   **Wednesday**
-	// *   **Thursday**
-	// *   **Friday**
-	// *   **Saturday**
-	// *   **Sunday**
+	// 	- **Monday**
+	//
+	// 	- **Tuesday**
+	//
+	// 	- **Wednesday**
+	//
+	// 	- **Thursday**
+	//
+	// 	- **Friday**
+	//
+	// 	- **Saturday**
+	//
+	// 	- **Sunday**
 	//
 	// >- You need to specify at least two values. Separate multiple values with commas (,).
+	//
 	// >- This parameter is not supported for PolarDB for PostgreSQL (Compatible with Oracle) clusters or PolarDB for PostgreSQL clusters.
-	// >- This parameter is unavailable if the region where your PolarDB for MySQL cluster is deployed does not support the cross-region backup feature. For information about regions that support the cross-region backup feature, see [Overview](~~72672~~).
+	//
+	// >- This parameter is unavailable if the region where your PolarDB for MySQL cluster is deployed does not support the cross-region backup feature. For information about regions that support the cross-region backup feature, see [Overview](https://help.aliyun.com/document_detail/72672.html).
+	//
+	// example:
+	//
+	// Monday,Tuesday
 	DataLevel2BackupPeriod *string `json:"DataLevel2BackupPeriod,omitempty" xml:"DataLevel2BackupPeriod,omitempty"`
 	// The retention period of level-2 backups. Valid values:
 	//
-	// *   0: The level-2 backup feature is disabled.
-	// *   30 to 7300: Level-2 backups are retained for 30 to 7,300 days.
-	// *   \-1: Level-2 backups are permanently retained.
+	// 	- 0: The level-2 backup feature is disabled.
+	//
+	// 	- 30 to 7300: Level-2 backups are retained for 30 to 7,300 days.
+	//
+	// 	- \\-1: Level-2 backups are permanently retained.
 	//
 	// > The default value is **0**. By default, the level-2 backup feature is disabled when you create a cluster.
+	//
+	// example:
+	//
+	// 0
 	DataLevel2BackupRetentionPeriod *string `json:"DataLevel2BackupRetentionPeriod,omitempty" xml:"DataLevel2BackupRetentionPeriod,omitempty"`
 	// The backup cycle. Valid values:
 	//
-	// *   Monday
-	// *   Tuesday
-	// *   Wednesday
-	// *   Thursday
-	// *   Friday
-	// *   Saturday
-	// *   Sunday
+	// 	- Monday
+	//
+	// 	- Tuesday
+	//
+	// 	- Wednesday
+	//
+	// 	- Thursday
+	//
+	// 	- Friday
+	//
+	// 	- Saturday
+	//
+	// 	- Sunday
+	//
+	// example:
+	//
+	// Monday,Tuesday,Wednesday,Thursday,Friday,Saturday,Sunday
 	PreferredBackupPeriod *string `json:"PreferredBackupPeriod,omitempty" xml:"PreferredBackupPeriod,omitempty"`
 	// The time period when automatic backups are performed. The format is `HH:mmZ-HH:mmZ`. The time is displayed in UTC.
+	//
+	// example:
+	//
+	// 07:00Z-08:00Z
 	PreferredBackupTime *string `json:"PreferredBackupTime,omitempty" xml:"PreferredBackupTime,omitempty"`
 	// The time when the next automatic backup will be performed. The format is `YYYY-MM-DDThh:mmZ`. The time is displayed in UTC.
+	//
+	// example:
+	//
+	// 2020-11-16T07:30Z
 	PreferredNextBackupTime *string `json:"PreferredNextBackupTime,omitempty" xml:"PreferredNextBackupTime,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// EADFCE0F-9FB5-4685-B395-1440B******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -5799,13 +7333,28 @@ func (s *DescribeBackupPolicyResponse) SetBody(v *DescribeBackupPolicyResponseBo
 
 type DescribeBackupTasksRequest struct {
 	// The ID of the backup task.
+	//
+	// example:
+	//
+	// 11111111
 	BackupJobId *string `json:"BackupJobId,omitempty" xml:"BackupJobId,omitempty"`
 	// The backup mode. Valid values:
 	//
-	// *   **Automated**
-	// *   **Manual**
+	// 	- **Automated**
+	//
+	// 	- **Manual**
+	//
+	// example:
+	//
+	// Manual
 	BackupMode *string `json:"BackupMode,omitempty" xml:"BackupMode,omitempty"`
 	// The cluster ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pc-***************
 	DBClusterId          *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -5860,6 +7409,10 @@ type DescribeBackupTasksResponseBody struct {
 	// The details of the backup task.
 	Items *DescribeBackupTasksResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
 	// The request ID.
+	//
+	// example:
+	//
+	// FA8C1EF1-E3D4-44D7-B809-823187******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -5900,29 +7453,60 @@ func (s *DescribeBackupTasksResponseBodyItems) SetBackupJob(v []*DescribeBackupT
 
 type DescribeBackupTasksResponseBodyItemsBackupJob struct {
 	// The ID of the backup task.
+	//
+	// example:
+	//
+	// 11111111
 	BackupJobId *string `json:"BackupJobId,omitempty" xml:"BackupJobId,omitempty"`
 	// The state of the backup task. Valid values:
 	//
-	// *   **NoStart**
-	// *   **Preparing**
-	// *   **Waiting**
-	// *   **Uploading**
-	// *   **Checking**
-	// *   **Finished**
+	// 	- **NoStart**
+	//
+	// 	- **Preparing**
+	//
+	// 	- **Waiting**
+	//
+	// 	- **Uploading**
+	//
+	// 	- **Checking**
+	//
+	// 	- **Finished**
+	//
+	// example:
+	//
+	// NoStart
 	BackupProgressStatus *string `json:"BackupProgressStatus,omitempty" xml:"BackupProgressStatus,omitempty"`
 	// The backup mode. Valid values:
 	//
-	// *   **Automated**
-	// *   **Manual**
+	// 	- **Automated**
+	//
+	// 	- **Manual**
+	//
+	// example:
+	//
+	// Automated
 	JobMode *string `json:"JobMode,omitempty" xml:"JobMode,omitempty"`
 	// The progress of the backup task in percentage.
+	//
+	// example:
+	//
+	// 0
 	Process *string `json:"Process,omitempty" xml:"Process,omitempty"`
 	// The time when the backup task started. The time follows the ISO 8601 standard in the `YYYY-MM-DDThh:mm:ssZ` format. The time is displayed in UTC.
+	//
+	// example:
+	//
+	// 2020-08-08T07:24:01Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// The type of the backup task. Valid values:
 	//
-	// *   **TempBackupTask**: The backup task is an adhoc backup task.
-	// *   **NormalBackupTask**: The backup task is a common backup task.
+	// 	- **TempBackupTask**: The backup task is an adhoc backup task.
+	//
+	// 	- **NormalBackupTask**: The backup task is a common backup task.
+	//
+	// example:
+	//
+	// NormalBackupTask
 	TaskAction *string `json:"TaskAction,omitempty" xml:"TaskAction,omitempty"`
 }
 
@@ -5995,40 +7579,86 @@ func (s *DescribeBackupTasksResponse) SetBody(v *DescribeBackupTasksResponseBody
 
 type DescribeBackupsRequest struct {
 	// The ID of the backup set.
+	//
+	// example:
+	//
+	// 11111111
 	BackupId *string `json:"BackupId,omitempty" xml:"BackupId,omitempty"`
 	// The backup mode. Valid values:
 	//
-	// *   **Automated**
-	// *   **Manual**
+	// 	- **Automated**
+	//
+	// 	- **Manual**
+	//
+	// example:
+	//
+	// Automated
 	BackupMode *string `json:"BackupMode,omitempty" xml:"BackupMode,omitempty"`
 	// The region where the cross-region data backup file of the instance is stored.
 	//
 	// > This parameter is valid only for PolarDB for MySQL clusters.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	BackupRegion *string `json:"BackupRegion,omitempty" xml:"BackupRegion,omitempty"`
 	// The status of the backup set. Valid values:
 	//
-	// *   **Success**
-	// *   **Failed**
+	// 	- **Success**
+	//
+	// 	- **Failed**
+	//
+	// example:
+	//
+	// Success
 	BackupStatus *string `json:"BackupStatus,omitempty" xml:"BackupStatus,omitempty"`
 	// The ID of the cluster.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pc-****************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	// The end of the time range to query. Specify the time in the `YYYY-MM-DDThh:mmZ` format. The time must be in UTC. The end time must be later than the start time.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2020-11-16T00:00Z
 	EndTime      *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The page number. The value must be a positive integer that does not exceed the maximum value of the INTEGER data type. Default value: **1**.
+	//
+	// example:
+	//
+	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries to return on each page. Valid values:
 	//
-	// *   **30**
-	// *   **50**
-	// *   **100**
+	// 	- **30**
+	//
+	// 	- **50**
+	//
+	// 	- **100**
 	//
 	// Default value: **30**.
+	//
+	// example:
+	//
+	// 30
 	PageSize             *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The beginning of the time range to query. Specify the time in the `yyyy-MM-ddTHH:mmZ` format. The time must be in UTC.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2020-11-14T00:00Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
@@ -6109,12 +7739,28 @@ type DescribeBackupsResponseBody struct {
 	// The details of backup sets.
 	Items *DescribeBackupsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
 	// The page number.
+	//
+	// example:
+	//
+	// 1
 	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries per page.
+	//
+	// example:
+	//
+	// 1
 	PageRecordCount *string `json:"PageRecordCount,omitempty" xml:"PageRecordCount,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 24A1990B-4F6E-482B-B8CB-75C612******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The total number of returned entries.
+	//
+	// example:
+	//
+	// 1
 	TotalRecordCount *string `json:"TotalRecordCount,omitempty" xml:"TotalRecordCount,omitempty"`
 }
 
@@ -6170,46 +7816,98 @@ func (s *DescribeBackupsResponseBodyItems) SetBackup(v []*DescribeBackupsRespons
 
 type DescribeBackupsResponseBodyItemsBackup struct {
 	// The end time of the backup task. The time is displayed in UTC.
+	//
+	// example:
+	//
+	// 2020-11-15T07:30:20Z
 	BackupEndTime *string `json:"BackupEndTime,omitempty" xml:"BackupEndTime,omitempty"`
 	// The ID of the backup set.
+	//
+	// example:
+	//
+	// 61*******
 	BackupId *string `json:"BackupId,omitempty" xml:"BackupId,omitempty"`
-	// The backup method. Only **Snapshot** may be returned.
+	// The backup method. Only **Snapshot*	- may be returned.
+	//
+	// example:
+	//
+	// Snapshot
 	BackupMethod *string `json:"BackupMethod,omitempty" xml:"BackupMethod,omitempty"`
 	// The backup mode. Valid values:
 	//
-	// *   **Automated**
-	// *   **Manual**
+	// 	- **Automated**
+	//
+	// 	- **Manual**
+	//
+	// example:
+	//
+	// Automated
 	BackupMode *string `json:"BackupMode,omitempty" xml:"BackupMode,omitempty"`
 	// The size of the backup set. Unit: bytes.
 	//
-	// > After you delete the target snapshot backups, the storage space that is consumed by the backups is released. The released storage space is smaller than the size of the backup file, because the snapshots share specific data blocks. For more information, see [FAQ about backup](~~164881~~).
+	// > After you delete the target snapshot backups, the storage space that is consumed by the backups is released. The released storage space is smaller than the size of the backup file, because the snapshots share specific data blocks. For more information, see [FAQ about backup](https://help.aliyun.com/document_detail/164881.html).
+	//
+	// example:
+	//
+	// 4639948800
 	BackupSetSize *string `json:"BackupSetSize,omitempty" xml:"BackupSetSize,omitempty"`
 	// The start time of the backup task. The time is displayed in UTC. Unit: seconds.
+	//
+	// example:
+	//
+	// 2020-11-15T07:30:05Z
 	BackupStartTime *string `json:"BackupStartTime,omitempty" xml:"BackupStartTime,omitempty"`
 	// The status of the backup set. Valid values:
 	//
-	// *   **Success**
-	// *   **Failed**
+	// 	- **Success**
+	//
+	// 	- **Failed**
+	//
+	// example:
+	//
+	// Success
 	BackupStatus *string `json:"BackupStatus,omitempty" xml:"BackupStatus,omitempty"`
-	// The type of the backup. Only **FullBackup** may be returned.
+	// The type of the backup. Only **FullBackup*	- may be returned.
+	//
+	// example:
+	//
+	// FullBackup
 	BackupType *string `json:"BackupType,omitempty" xml:"BackupType,omitempty"`
 	// The level of the backup set. Valid values:
 	//
-	// *   **Level-1**
-	// *   **Level-2**
+	// 	- **Level-1**
+	//
+	// 	- **Level-2**
+	//
+	// example:
+	//
+	// Level-1
 	BackupsLevel *string `json:"BackupsLevel,omitempty" xml:"BackupsLevel,omitempty"`
 	// The snapshot checkpoint time. The value follows the Unix time format. Unit: seconds.
+	//
+	// example:
+	//
+	// 1605425407
 	ConsistentTime *string `json:"ConsistentTime,omitempty" xml:"ConsistentTime,omitempty"`
 	// The ID of the cluster.
+	//
+	// example:
+	//
+	// pc-****************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	// The expected expiration time of the backup set.
+	//
 	// > This parameter is supported only for instances that are enabled with sparse backup.
+	//
+	// example:
+	//
+	// 2022-10-24T08:13:23Z
 	ExpectExpireTime *string `json:"ExpectExpireTime,omitempty" xml:"ExpectExpireTime,omitempty"`
 	// The expected expiration type of the backup set (This parameter is supported only for instances that are enabled with sparse backup).
 	//
 	// Valid values:
 	//
-	// *   NEVER
+	// 	- NEVER
 	//
 	//     <!-- -->
 	//
@@ -6217,7 +7915,7 @@ type DescribeBackupsResponseBodyItemsBackup struct {
 	//
 	//     <!-- -->
 	//
-	// *   EXPIRED
+	// 	- EXPIRED
 	//
 	//     <!-- -->
 	//
@@ -6225,18 +7923,27 @@ type DescribeBackupsResponseBodyItemsBackup struct {
 	//
 	//     <!-- -->
 	//
-	// *   DELAY
+	// 	- DELAY
 	//
 	//     <!-- -->
 	//
 	//     <!-- -->
 	//
 	//     <!-- -->
+	//
+	// example:
+	//
+	// EXPIRED
 	ExpectExpireType *string `json:"ExpectExpireType,omitempty" xml:"ExpectExpireType,omitempty"`
 	// Indicates whether the backup set is available. Valid values:
 	//
-	// *   **0**: The backup set is unavailable.
-	// *   **1**: The backup set is available.
+	// 	- **0**: The backup set is unavailable.
+	//
+	// 	- **1**: The backup set is available.
+	//
+	// example:
+	//
+	// 0
 	IsAvail *string `json:"IsAvail,omitempty" xml:"IsAvail,omitempty"`
 }
 
@@ -6351,12 +8058,22 @@ type DescribeCharacterSetNameRequest struct {
 	// The ID of the cluster.
 	//
 	// > You can only query character sets that PolarDB for MySQL clusters support. If you enter the ID of a PolarDB for PostgreSQL or PolarDB for Oracle cluster, the returned value of the `CharacterSetNameItems` parameter is an empty string.
+	//
+	// example:
+	//
+	// pc-****************
 	DBClusterId  *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The region ID of the cluster.
 	//
-	// > You can call the [DescribeRegions](~~98041~~) operation to query available regions.
+	// > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to query available regions.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -6404,8 +8121,16 @@ type DescribeCharacterSetNameResponseBody struct {
 	// The character sets that are supported.
 	CharacterSetNameItems *DescribeCharacterSetNameResponseBodyCharacterSetNameItems `json:"CharacterSetNameItems,omitempty" xml:"CharacterSetNameItems,omitempty" type:"Struct"`
 	// The type of the database engine.
+	//
+	// example:
+	//
+	// POLARDB
 	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 34458CD3-33E0-4624-BFEF-840C15******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -6481,38 +8206,75 @@ func (s *DescribeCharacterSetNameResponse) SetBody(v *DescribeCharacterSetNameRe
 type DescribeClassListRequest struct {
 	// The code of the commodity. Valid values:
 	//
-	// *   polardb_sub: the subscription cluster in regions in the Chinese mainland
-	// *   polardb_sub \_intl: the subscription cluster in regions outside the Chinese mainland
-	// *   polardb_payg: the pay-as-you-go cluster in regions in the Chinese mainland
-	// *   polardb_payg_intl: the pay-as-you-go cluster in regions outside the Chinese mainland
-	// *   polardb_sub_jushita: the subscription cluster for CloudTmall
-	// *   polardb_payg_jushita: the pay-as-you-go cluster for CloudTmall
-	// *   polardb_sub_cainiao: the subscription cluster for Cainiao
-	// *   polardb_payg_cainiao: the pay-as-you-go cluster for Cainiao
+	// 	- polardb_sub: the subscription cluster in regions in the Chinese mainland
 	//
-	// > *   If you use an Alibaba Cloud account on the China site, you can view only the codes of the commodities that are available in the Chinese mainland.
-	// >*   If you are using an Alibaba Cloud international account, you can view only the codes of the commodities that are available outside the Chinese mainland.
-	// >*   If you use a CloudTmall account, you can view only the codes of the commodities that are available in CloudTmall.
-	// >*   If you use a Cainiao account, you can view only the codes of the commodities that are available in Cainiao.
+	// 	- polardb_sub _intl: the subscription cluster in regions outside the Chinese mainland
+	//
+	// 	- polardb_payg: the pay-as-you-go cluster in regions in the Chinese mainland
+	//
+	// 	- polardb_payg_intl: the pay-as-you-go cluster in regions outside the Chinese mainland
+	//
+	// 	- polardb_sub_jushita: the subscription cluster for CloudTmall
+	//
+	// 	- polardb_payg_jushita: the pay-as-you-go cluster for CloudTmall
+	//
+	// 	- polardb_sub_cainiao: the subscription cluster for Cainiao
+	//
+	// 	- polardb_payg_cainiao: the pay-as-you-go cluster for Cainiao
+	//
+	// > 	- If you use an Alibaba Cloud account on the China site, you can view only the codes of the commodities that are available in the Chinese mainland.
+	//
+	// >	- If you are using an Alibaba Cloud international account, you can view only the codes of the commodities that are available outside the Chinese mainland.
+	//
+	// >	- If you use a CloudTmall account, you can view only the codes of the commodities that are available in CloudTmall.
+	//
+	// >	- If you use a Cainiao account, you can view only the codes of the commodities that are available in Cainiao.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// polardb_sub
 	CommodityCode *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
 	// The number of nodes. Valid values:
 	//
-	// *   single: Standalone Edition.
-	// *   cluster: Cluster Edition.
-	// *   all: both Standalone Edition and Cluster Edition.
+	// 	- single: Standalone Edition.
+	//
+	// 	- cluster: Cluster Edition.
+	//
+	// 	- all: both Standalone Edition and Cluster Edition.
+	//
+	// example:
+	//
+	// cluster
 	MasterHa *string `json:"MasterHa,omitempty" xml:"MasterHa,omitempty"`
 	// The type of the order. Valid values:
 	//
-	// *   BUY: The order is used to purchase a cluster.
-	// *   UPGRADE: The order is used to change the specifications of a cluster.
-	// *   RENEW: The order is used to renew a cluster.
-	// *   CONVERT: The order is used to change the billing method of a cluster.
+	// 	- BUY: The order is used to purchase a cluster.
+	//
+	// 	- UPGRADE: The order is used to change the specifications of a cluster.
+	//
+	// 	- RENEW: The order is used to renew a cluster.
+	//
+	// 	- CONVERT: The order is used to change the billing method of a cluster.
+	//
+	// example:
+	//
+	// BUY
 	OrderType    *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The region ID of the cluster.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the resource group.
+	//
+	// example:
+	//
+	// rg-************
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -6575,8 +8337,16 @@ type DescribeClassListResponseBody struct {
 	// The specifications of the cluster.
 	Items []*DescribeClassListResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
 	// The region ID of the cluster.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 69A85BAF-1089-4CDF-A82F-0A140F******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -6605,49 +8375,114 @@ func (s *DescribeClassListResponseBody) SetRequestId(v string) *DescribeClassLis
 
 type DescribeClassListResponseBodyItems struct {
 	// The specifications of the cluster.
+	//
+	// example:
+	//
+	// polar.mysql.x4.medium
 	ClassCode *string `json:"ClassCode,omitempty" xml:"ClassCode,omitempty"`
 	// The instance family of the cluster. Valid values:
 	//
-	// *   Exclusive package: dedicated
-	// *   Exclusive physical machine: dedicated host
-	// *   Beginner: starter
-	// *   Historical specifications: historical
+	// 	- Exclusive package: dedicated
+	//
+	// 	- Exclusive physical machine: dedicated host
+	//
+	// 	- Beginner: starter
+	//
+	// 	- Historical specifications: historical
+	//
+	// example:
+	//
+	// Exclusive package
 	ClassGroup *string `json:"ClassGroup,omitempty" xml:"ClassGroup,omitempty"`
 	// The specification type of the cluster.
+	//
+	// example:
+	//
+	// enterprise
 	ClassTypeLevel *string `json:"ClassTypeLevel,omitempty" xml:"ClassTypeLevel,omitempty"`
 	// The number of vCPU cores. Unit: cores.
+	//
+	// example:
+	//
+	// 8
 	Cpu *string `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
 	// The maximum number of concurrent connections in the cluster.
+	//
+	// example:
+	//
+	// 8000
 	MaxConnections *string `json:"MaxConnections,omitempty" xml:"MaxConnections,omitempty"`
 	// The maximum IOPS. Unit: operations per second.
+	//
+	// example:
+	//
+	// 32000
 	MaxIOPS *string `json:"MaxIOPS,omitempty" xml:"MaxIOPS,omitempty"`
 	// The maximum storage capacity. Unit: TB.
+	//
+	// example:
+	//
+	// 20
 	MaxStorageCapacity *string `json:"MaxStorageCapacity,omitempty" xml:"MaxStorageCapacity,omitempty"`
 	// The memory size. Unit: GB.
+	//
+	// example:
+	//
+	// 32
 	MemoryClass *string `json:"MemoryClass,omitempty" xml:"MemoryClass,omitempty"`
 	// The maximum IOPS of an enhanced SSD (ESSD) of performance level 1 (PL1). Unit: operations per second.
+	//
+	// example:
+	//
+	// 50000
 	Pl1MaxIOPS *string `json:"Pl1MaxIOPS,omitempty" xml:"Pl1MaxIOPS,omitempty"`
 	// The maximum IOPS of an ESSD of performance level 2 (PL2). Unit: operations per second.
+	//
+	// example:
+	//
+	// 100000
 	Pl2MaxIOPS *string `json:"Pl2MaxIOPS,omitempty" xml:"Pl2MaxIOPS,omitempty"`
 	// The maximum IOPS of an ESSD of performance level 3 (PL3). Unit: operations per second.
+	//
+	// example:
+	//
+	// 1000000
 	Pl3MaxIOPS *string `json:"Pl3MaxIOPS,omitempty" xml:"Pl3MaxIOPS,omitempty"`
 	// The maximum Input/output operations per second (IOPS) for PolarStore Level 4 (PSL4). Unit: operations per second.
+	//
+	// example:
+	//
+	// 48000
 	Psl4MaxIOPS *string `json:"Psl4MaxIOPS,omitempty" xml:"Psl4MaxIOPS,omitempty"`
 	// The maximum IOPS for PolarStore Level 5 (PSL5). Unit: operations per second.
+	//
+	// example:
+	//
+	// 96000
 	Psl5MaxIOPS *string `json:"Psl5MaxIOPS,omitempty" xml:"Psl5MaxIOPS,omitempty"`
 	// The additional price.
 	//
 	// Unit: cents (USD).
 	//
 	// >- If you set MasterHa to cluster or single, the value of ReferenceExtPrice is the same as the value of ReferencePrice.
+	//
 	// >- If you set MasterHa to cluster or single, the value of ReferenceExtPrice is the price of the single-node cluster.
+	//
+	// example:
+	//
+	// 200000
 	ReferenceExtPrice *string `json:"ReferenceExtPrice,omitempty" xml:"ReferenceExtPrice,omitempty"`
 	// The price.
 	//
 	// Unit: cents (USD).
 	//
 	// >- If you set CommodityCode to a commodity that uses the pay-as-you-go billing method, ReferencePrice indicates the hourly fee that you need to pay.
+	//
 	// >- If you set CommodityCode to a commodity that uses the subscription billing method, ReferencePrice indicates the monthly fee that you need to pay.
+	//
+	// example:
+	//
+	// 200000
 	ReferencePrice *string `json:"ReferencePrice,omitempty" xml:"ReferencePrice,omitempty"`
 }
 
@@ -6765,6 +8600,12 @@ func (s *DescribeClassListResponse) SetBody(v *DescribeClassListResponseBody) *D
 
 type DescribeDBClusterAccessWhitelistRequest struct {
 	// The ID of the PolarDB cluster.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pc-***************
 	DBClusterId          *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -6811,6 +8652,10 @@ type DescribeDBClusterAccessWhitelistResponseBody struct {
 	// The details about the cluster.
 	Items *DescribeDBClusterAccessWhitelistResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 559E91A2-CDA3-4E9F-808B-29D738******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -6856,8 +8701,16 @@ func (s *DescribeDBClusterAccessWhitelistResponseBodyDBClusterSecurityGroups) Se
 
 type DescribeDBClusterAccessWhitelistResponseBodyDBClusterSecurityGroupsDBClusterSecurityGroup struct {
 	// The ID of the ECS security group.
+	//
+	// example:
+	//
+	// sg-bp**************
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
 	// The name of the ECS security group.
+	//
+	// example:
+	//
+	// vpc-********************
 	SecurityGroupName *string `json:"SecurityGroupName,omitempty" xml:"SecurityGroupName,omitempty"`
 }
 
@@ -6897,26 +8750,43 @@ func (s *DescribeDBClusterAccessWhitelistResponseBodyItems) SetDBClusterIPArray(
 }
 
 type DescribeDBClusterAccessWhitelistResponseBodyItemsDBClusterIPArray struct {
-	// The attributes of the IP whitelist group. Set this parameter to **hidden** to hide the IP whitelist group in the console.
+	// The attributes of the IP whitelist group. Set this parameter to **hidden*	- to hide the IP whitelist group in the console.
 	//
-	// > *   The IP whitelist group that has appeared in the console cannot be hidden.
-	// > *   This parameter can be specified only when the **WhiteListType** parameter is set to **IP**.
+	// > 	- The IP whitelist group that has appeared in the console cannot be hidden.
+	//
+	// > 	- This parameter can be specified only when the **WhiteListType*	- parameter is set to **IP**.
+	//
+	// example:
+	//
+	// hidden
 	DBClusterIPArrayAttribute *string `json:"DBClusterIPArrayAttribute,omitempty" xml:"DBClusterIPArrayAttribute,omitempty"`
 	// The name of the IP whitelist group. The group name must be 2 to 120 characters in length and consists of lowercase letters and digits. It must start with a letter, and end with a letter or a digit.
 	//
-	// *   If the specified whitelist group name does not exist, the whitelist group is created.
-	// *   If the specified whitelist group name exists, the whitelist group is modified.
-	// *   If you do not specify this parameter, the default group is modified.
+	// 	- If the specified whitelist group name does not exist, the whitelist group is created.
 	//
-	// > *   You can create a maximum of 50 IP whitelist groups for a cluster.
-	// >*   This parameter can be specified only when the **WhiteListType** parameter is set to **IP**.
+	// 	- If the specified whitelist group name exists, the whitelist group is modified.
+	//
+	// 	- If you do not specify this parameter, the default group is modified.
+	//
+	// > 	- You can create a maximum of 50 IP whitelist groups for a cluster.
+	//
+	// >	- This parameter can be specified only when the **WhiteListType*	- parameter is set to **IP**.
+	//
+	// example:
+	//
+	// default
 	DBClusterIPArrayName *string `json:"DBClusterIPArrayName,omitempty" xml:"DBClusterIPArrayName,omitempty"`
 	// The IP addresses or Classless Inter-Domain Routing (CIDR) blocks in the IP whitelist group. You can add 1,000 IP addresses or CIDR blocks to all the IP whitelist groups. Separate multiple IP addresses with commas (,). The following two formats are supported:
 	//
-	// *   IP addresses. Example: 10.23.12.24.
-	// *   CIDR blocks. Example: 10.23.12.24/24. 24 indicates the length of the prefix of the CIDR block. The length is the range of 1 to 32.
+	// 	- IP addresses. Example: 10.23.12.24.
 	//
-	// >  This parameter can be specified only when the **WhiteListType** parameter is set to **IP**.
+	// 	- CIDR blocks. Example: 10.23.12.24/24. 24 indicates the length of the prefix of the CIDR block. The length is the range of 1 to 32.
+	//
+	// >  This parameter can be specified only when the **WhiteListType*	- parameter is set to **IP**.
+	//
+	// example:
+	//
+	// 11.***.***.***,11.***.***.***
 	SecurityIps *string `json:"SecurityIps,omitempty" xml:"SecurityIps,omitempty"`
 }
 
@@ -6975,9 +8845,19 @@ func (s *DescribeDBClusterAccessWhitelistResponse) SetBody(v *DescribeDBClusterA
 type DescribeDBClusterAttributeRequest struct {
 	// The ID of cluster.
 	//
-	// > You can call the [DescribeDBClusters](~~98094~~) operation to query the details of the clusters that belong to your Alibaba Cloud account, such as cluster IDs.
+	// > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to query the details of the clusters that belong to your Alibaba Cloud account, such as cluster IDs.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pc-*****************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	// Specifies whether to query information about AI-related nodes.
+	//
+	// example:
+	//
+	// AI
 	DescribeType         *string `json:"DescribeType,omitempty" xml:"DescribeType,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -7027,172 +8907,393 @@ type DescribeDBClusterAttributeResponseBody struct {
 	AiCreatingTime *string `json:"AiCreatingTime,omitempty" xml:"AiCreatingTime,omitempty"`
 	// The information status of the AI node. Valid values:
 	//
-	// *   SearchNode: search node.
-	// *   DLNode: AI node
+	// 	- SearchNode: search node.
+	//
+	// 	- DLNode: AI node
+	//
+	// example:
+	//
+	// DLNode
 	AiType       *string `json:"AiType,omitempty" xml:"AiType,omitempty"`
 	Architecture *string `json:"Architecture,omitempty" xml:"Architecture,omitempty"`
 	// Maximum blktags in file system.
+	//
+	// example:
+	//
+	// 7,864,320
 	BlktagTotal *int64 `json:"BlktagTotal,omitempty" xml:"BlktagTotal,omitempty"`
 	// The current blktag usage.
-	BlktagUsed *int64 `json:"BlktagUsed,omitempty" xml:"BlktagUsed,omitempty"`
-	// [The edition of PolarDB](~~183258~~). Valid values:
 	//
-	// *   **Normal**: Cluster Edition.
-	// *   **Basic**: Single Node Edition.
-	// *   **Archive**: X-Engine Edition.
-	// *   **NormalMultimaster**: Multi-master Cluster Edition.
-	// *   **SENormal**: Standard Edition.
+	// example:
+	//
+	// 5,242,880
+	BlktagUsed *int64 `json:"BlktagUsed,omitempty" xml:"BlktagUsed,omitempty"`
+	// [The edition of PolarDB](https://help.aliyun.com/document_detail/183258.html). Valid values:
+	//
+	// 	- **Normal**: Cluster Edition.
+	//
+	// 	- **Basic**: Single Node Edition.
+	//
+	// 	- **Archive**: X-Engine Edition.
+	//
+	// 	- **NormalMultimaster**: Multi-master Cluster Edition.
+	//
+	// 	- **SENormal**: Standard Edition.
 	//
 	// >-  Only PolarDB for MySQL supports Single Node Edition.
+	//
 	// >- Only PolarDB for MySQL 8.0.1 supports Standard Edition.
+	//
 	// >- Only PolarDB for MySQL 8.0 supports X-Engine Edition and Multi-master Cluster Edition.
+	//
+	// example:
+	//
+	// Normal
 	Category            *string `json:"Category,omitempty" xml:"Category,omitempty"`
 	CompressStorageMode *string `json:"CompressStorageMode,omitempty" xml:"CompressStorageMode,omitempty"`
 	CompressStorageUsed *int64  `json:"CompressStorageUsed,omitempty" xml:"CompressStorageUsed,omitempty"`
 	// The time when the cluster was created.
+	//
+	// example:
+	//
+	// 2020-08-14T05:58:42Z
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
 	// The description of the cluster.
+	//
+	// example:
+	//
+	// test
 	DBClusterDescription *string `json:"DBClusterDescription,omitempty" xml:"DBClusterDescription,omitempty"`
 	// The ID of cluster.
+	//
+	// example:
+	//
+	// pc-*****************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	// The network type of the cluster.
+	//
+	// example:
+	//
+	// VPC
 	DBClusterNetworkType *string `json:"DBClusterNetworkType,omitempty" xml:"DBClusterNetworkType,omitempty"`
-	// The status of the cluster. For information about the valid values, see [Cluster states](~~99286~~).
+	// The status of the cluster. For information about the valid values, see [Cluster states](https://help.aliyun.com/document_detail/99286.html).
+	//
+	// example:
+	//
+	// Running
 	DBClusterStatus *string `json:"DBClusterStatus,omitempty" xml:"DBClusterStatus,omitempty"`
 	// The details of the nodes.
 	DBNodes []*DescribeDBClusterAttributeResponseBodyDBNodes `json:"DBNodes,omitempty" xml:"DBNodes,omitempty" type:"Repeated"`
 	// The type of the database engine.
+	//
+	// example:
+	//
+	// MySQL
 	DBType *string `json:"DBType,omitempty" xml:"DBType,omitempty"`
 	// The version of the database engine.
+	//
+	// example:
+	//
+	// 8.0
 	DBVersion *string `json:"DBVersion,omitempty" xml:"DBVersion,omitempty"`
 	// The status of the minor version. Valid values:
 	//
-	// *   **Stable**: The minor version is stable.
-	// *   **Old**: The minor version is outdated. We recommend that you upgrade the cluster to the latest version.
-	// *   **HighRisk**: The minor version has critical defects. We recommend that you immediately upgrade the cluster to the latest version.
+	// 	- **Stable**: The minor version is stable.
 	//
-	// > For more information about how to upgrade the minor version, see [Upgrade versions](~~158572~~).
+	// 	- **Old**: The minor version is outdated. We recommend that you upgrade the cluster to the latest version.
+	//
+	// 	- **HighRisk**: The minor version has critical defects. We recommend that you immediately upgrade the cluster to the latest version.
+	//
+	// > For more information about how to upgrade the minor version, see [Upgrade versions](https://help.aliyun.com/document_detail/158572.html).
+	//
+	// example:
+	//
+	// Stable
 	DBVersionStatus *string `json:"DBVersionStatus,omitempty" xml:"DBVersionStatus,omitempty"`
 	// The total physical storage of level-1 backups (snapshots). Unit: bytes.
+	//
+	// example:
+	//
+	// 74448896
 	DataLevel1BackupChainSize *int64 `json:"DataLevel1BackupChainSize,omitempty" xml:"DataLevel1BackupChainSize,omitempty"`
 	// Indicates the rule of data replication. Valid values: AsyncSync: asynchronous. SemiSync: semi-synchronous.
+	//
+	// example:
+	//
+	// AsyncSync
 	DataSyncMode *string `json:"DataSyncMode,omitempty" xml:"DataSyncMode,omitempty"`
 	// Indicates whether the cluster is locked and can be deleted. Valid values:
 	//
-	// *   **0**: The cluster is not locked and can be deleted.
-	// *   **1**: The cluster is locked and cannot be deleted.
+	// 	- **0**: The cluster is not locked and can be deleted.
+	//
+	// 	- **1**: The cluster is locked and cannot be deleted.
+	//
+	// example:
+	//
+	// 0
 	DeletionLock *int32 `json:"DeletionLock,omitempty" xml:"DeletionLock,omitempty"`
 	// The database type.
+	//
+	// example:
+	//
+	// POLARDB
 	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
 	// The time when the cluster expires.
 	//
 	// > A specific value will be returned only for subscription (**Prepaid**) clusters. For pay-as-you-go (**Postpaid**) clusters, an empty string will be returned.
+	//
+	// example:
+	//
+	// 2020-11-14T16:00:00Z
 	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
 	// Indicates whether the cluster has expired. Valid values:
 	//
 	// > This parameter is returned only for subscription (**Prepaid**) clusters.
+	//
+	// example:
+	//
+	// false
 	Expired *string `json:"Expired,omitempty" xml:"Expired,omitempty"`
 	// Indicates whether to replenish resources for the primary database after a cross-zone switchover. Valid values: true false
+	//
+	// example:
+	//
+	// false
 	HasCompleteStandbyRes *bool   `json:"HasCompleteStandbyRes,omitempty" xml:"HasCompleteStandbyRes,omitempty"`
 	HotStandbyCluster     *string `json:"HotStandbyCluster,omitempty" xml:"HotStandbyCluster,omitempty"`
 	// Maximum inodes in file system.
+	//
+	// example:
+	//
+	// 6,291,456
 	InodeTotal *int64 `json:"InodeTotal,omitempty" xml:"InodeTotal,omitempty"`
 	// The current inode usage.
+	//
+	// example:
+	//
+	// 4,194,304
 	InodeUsed *int64 `json:"InodeUsed,omitempty" xml:"InodeUsed,omitempty"`
 	// Indicates whether the kernel is of the latest version. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// false
 	IsLatestVersion *bool `json:"IsLatestVersion,omitempty" xml:"IsLatestVersion,omitempty"`
 	// Indicates whether PolarProxy uses the latest version. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// false
 	IsProxyLatestVersion *bool `json:"IsProxyLatestVersion,omitempty" xml:"IsProxyLatestVersion,omitempty"`
 	// The lock mode. Valid values:
 	//
-	// *   **Unlock**: The cluster is not locked.
-	// *   **ManualLock**: The cluster is manually locked.
-	// *   **LockByExpiration**: The cluster is automatically locked due to cluster expiration.
+	// 	- **Unlock**: The cluster is not locked.
+	//
+	// 	- **ManualLock**: The cluster is manually locked.
+	//
+	// 	- **LockByExpiration**: The cluster is automatically locked due to cluster expiration.
+	//
+	// example:
+	//
+	// Unlock
 	LockMode *string `json:"LockMode,omitempty" xml:"LockMode,omitempty"`
 	// The maintenance window of the cluster. The format is `HH:mmZ-HH:mmZ`. The time is displayed in UTC. For example, the value `16:00Z-17:00Z` indicates that the cluster can be maintained from 00:00 to 01:00 (UTC+08:00).
+	//
+	// example:
+	//
+	// 18:00Z-19:00Z
 	MaintainTime *string `json:"MaintainTime,omitempty" xml:"MaintainTime,omitempty"`
+	Orca         *string `json:"Orca,omitempty" xml:"Orca,omitempty"`
 	// The billing method of the cluster. Valid values:
 	//
-	// *   **Postpaid**: pay-as-you-go.
-	// *   **Prepaid**: subscription
+	// 	- **Postpaid**: pay-as-you-go.
+	//
+	// 	- **Prepaid**: subscription
+	//
+	// example:
+	//
+	// Prepaid
 	PayType         *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
 	ProvisionedIops *string `json:"ProvisionedIops,omitempty" xml:"ProvisionedIops,omitempty"`
 	// The number of CPU cores for PolarProxy.
+	//
+	// example:
+	//
+	// 4
 	ProxyCpuCores *string `json:"ProxyCpuCores,omitempty" xml:"ProxyCpuCores,omitempty"`
 	// The type of the serverless PolarProxy. Valid value: AgileServerless.
+	//
+	// example:
+	//
+	// AgileServerless
 	ProxyServerlessType *string `json:"ProxyServerlessType,omitempty" xml:"ProxyServerlessType,omitempty"`
 	// The number of CPU cores for PolarProxy Standard Enterprise Edition.
+	//
+	// example:
+	//
+	// 2
 	ProxyStandardCpuCores *string `json:"ProxyStandardCpuCores,omitempty" xml:"ProxyStandardCpuCores,omitempty"`
 	// The status of PolarProxy. Valid values:
 	//
-	// *   **Creating**: PolarProxy is being created.
-	// *   **Running**: PolarProxy is running.
-	// *   **Deleting**: PolarProxy is being released.
-	// *   **Rebooting**: PolarProxy is restarting.
-	// *   **DBNodeCreating**: PolarProxy is being added.
-	// *   **DBNodeDeleting**: PolarProxy is being deleted.
-	// *   **ClassChanging**: The specifications of PolarProxy are being changed.
-	// *   **NetAddressCreating**: The network connection is being created.
-	// *   **NetAddressDeleting**: The network connection is being deleted.
-	// *   **NetAddressModifying**: The network connection is being modified.
-	// *   **Deleted**: PolarProxy is released.
+	// 	- **Creating**: PolarProxy is being created.
+	//
+	// 	- **Running**: PolarProxy is running.
+	//
+	// 	- **Deleting**: PolarProxy is being released.
+	//
+	// 	- **Rebooting**: PolarProxy is restarting.
+	//
+	// 	- **DBNodeCreating**: PolarProxy is being added.
+	//
+	// 	- **DBNodeDeleting**: PolarProxy is being deleted.
+	//
+	// 	- **ClassChanging**: The specifications of PolarProxy are being changed.
+	//
+	// 	- **NetAddressCreating**: The network connection is being created.
+	//
+	// 	- **NetAddressDeleting**: The network connection is being deleted.
+	//
+	// 	- **NetAddressModifying**: The network connection is being modified.
+	//
+	// 	- **Deleted**: PolarProxy is released.
+	//
+	// example:
+	//
+	// Running
 	ProxyStatus *string `json:"ProxyStatus,omitempty" xml:"ProxyStatus,omitempty"`
 	// The type of PolarProxy. Valid values:
 	//
-	// *   **Exclusive**: Dedicated Enterprise Edition
-	// *   **General**: Standard Enterprise Edition
+	// 	- **Exclusive**: Dedicated Enterprise Edition
+	//
+	// 	- **General**: Standard Enterprise Edition
+	//
+	// example:
+	//
+	// Exclusive
 	ProxyType *string `json:"ProxyType,omitempty" xml:"ProxyType,omitempty"`
 	// The region ID of the security group.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 074467EF-86B9-4C23-ACBF-E9B81A******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The ID of your Alibaba Cloud resource group.
-	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	//
+	// example:
+	//
+	// rg-***************
+	ResourceGroupId  *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	RestoreDataPoint *string `json:"RestoreDataPoint,omitempty" xml:"RestoreDataPoint,omitempty"`
+	RestoreType      *string `json:"RestoreType,omitempty" xml:"RestoreType,omitempty"`
 	// The storage of SQL. Unit: bytes. If the value is -1, no data is stored.
+	//
+	// example:
+	//
+	// 0
 	SQLSize *int64 `json:"SQLSize,omitempty" xml:"SQLSize,omitempty"`
-	// The type of the serverless cluster. Only **AgileServerless** can be returned.
-	ServerlessType *string `json:"ServerlessType,omitempty" xml:"ServerlessType,omitempty"`
+	// The type of the serverless cluster. Only **AgileServerless*	- can be returned.
+	//
+	// example:
+	//
+	// AgileServerless
+	ServerlessType  *string `json:"ServerlessType,omitempty" xml:"ServerlessType,omitempty"`
+	SourceDBCluster *string `json:"SourceDBCluster,omitempty" xml:"SourceDBCluster,omitempty"`
 	// Indicates whether the cross-zone disaster recovery feature is enabled. Valid values: ON OFF 0: Customer Drill Mode
+	//
+	// example:
+	//
+	// OFF
 	StandbyHAMode *string `json:"StandbyHAMode,omitempty" xml:"StandbyHAMode,omitempty"`
 	// The maximum storage capacity of the current cluster specification. Unit: bytes.
+	//
+	// example:
+	//
+	// 10995116277760
 	StorageMax *int64 `json:"StorageMax,omitempty" xml:"StorageMax,omitempty"`
 	// The billing method of the storage. Valid values:
 	//
-	// *   **Postpaid**: pay-as-you-go
-	// *   **Prepaid**: subscription.
+	// 	- **Postpaid**: pay-as-you-go
+	//
+	// 	- **Prepaid**: subscription.
+	//
+	// example:
+	//
+	// Prepaid
 	StoragePayType *string `json:"StoragePayType,omitempty" xml:"StoragePayType,omitempty"`
 	// The storage space that uses the subscription billing method. Unit: bytes.
+	//
+	// example:
+	//
+	// 50
 	StorageSpace *int64 `json:"StorageSpace,omitempty" xml:"StorageSpace,omitempty"`
 	// The storage type. Set the value to **HighPerformance**.
+	//
+	// example:
+	//
+	// HighPerformance
 	StorageType *string `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
 	// The storage space consumed by the cluster. Unit: bytes.
+	//
+	// example:
+	//
+	// 3012558848
 	StorageUsed *int64 `json:"StorageUsed,omitempty" xml:"StorageUsed,omitempty"`
 	// Indicates whether the multi-zone data consistency feature is enabled for the cluster. Valid values:
 	//
-	// *   **ON**: Multi-zone data consistency is enabled, which is suitable for Standard Edition clusters that run Multi-zone Edition.
-	// *   **OFF**
+	// 	- **ON**: Multi-zone data consistency is enabled, which is suitable for Standard Edition clusters that run Multi-zone Edition.
+	//
+	// 	- **OFF**
+	//
+	// example:
+	//
+	// ON
 	StrictConsistency *string `json:"StrictConsistency,omitempty" xml:"StrictConsistency,omitempty"`
 	// The specification type of the compute node. Valid values:
 	//
-	// *   **Exclusive**: dedicated.
-	// *   **General**: general-purpose.
+	// 	- **Exclusive**: dedicated.
+	//
+	// 	- **General**: general-purpose.
 	//
 	// > This parameter is supported only for PolarDB for MySQL clusters of Cluster Edition.
+	//
+	// example:
+	//
+	// Exclusive
 	SubCategory                  *string `json:"SubCategory,omitempty" xml:"SubCategory,omitempty"`
 	SupportInstantSwitchWithImci *string `json:"SupportInstantSwitchWithImci,omitempty" xml:"SupportInstantSwitchWithImci,omitempty"`
 	// Details about the tags.
 	Tags []*DescribeDBClusterAttributeResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// The VPC ID of the cluster.
+	//
+	// example:
+	//
+	// vpc-*******************
 	VPCId *string `json:"VPCId,omitempty" xml:"VPCId,omitempty"`
 	// The vSwitch ID of the cluster.
+	//
+	// example:
+	//
+	// vsw-*********************
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
 	// The zone ID of the cluster.
+	//
+	// example:
+	//
+	// cn-hangzhou-i,cn-hangzhou-g
 	ZoneIds *string `json:"ZoneIds,omitempty" xml:"ZoneIds,omitempty"`
 }
 
@@ -7359,6 +9460,11 @@ func (s *DescribeDBClusterAttributeResponseBody) SetMaintainTime(v string) *Desc
 	return s
 }
 
+func (s *DescribeDBClusterAttributeResponseBody) SetOrca(v string) *DescribeDBClusterAttributeResponseBody {
+	s.Orca = &v
+	return s
+}
+
 func (s *DescribeDBClusterAttributeResponseBody) SetPayType(v string) *DescribeDBClusterAttributeResponseBody {
 	s.PayType = &v
 	return s
@@ -7409,6 +9515,16 @@ func (s *DescribeDBClusterAttributeResponseBody) SetResourceGroupId(v string) *D
 	return s
 }
 
+func (s *DescribeDBClusterAttributeResponseBody) SetRestoreDataPoint(v string) *DescribeDBClusterAttributeResponseBody {
+	s.RestoreDataPoint = &v
+	return s
+}
+
+func (s *DescribeDBClusterAttributeResponseBody) SetRestoreType(v string) *DescribeDBClusterAttributeResponseBody {
+	s.RestoreType = &v
+	return s
+}
+
 func (s *DescribeDBClusterAttributeResponseBody) SetSQLSize(v int64) *DescribeDBClusterAttributeResponseBody {
 	s.SQLSize = &v
 	return s
@@ -7416,6 +9532,11 @@ func (s *DescribeDBClusterAttributeResponseBody) SetSQLSize(v int64) *DescribeDB
 
 func (s *DescribeDBClusterAttributeResponseBody) SetServerlessType(v string) *DescribeDBClusterAttributeResponseBody {
 	s.ServerlessType = &v
+	return s
+}
+
+func (s *DescribeDBClusterAttributeResponseBody) SetSourceDBCluster(v string) *DescribeDBClusterAttributeResponseBody {
+	s.SourceDBCluster = &v
 	return s
 }
 
@@ -7486,68 +9607,151 @@ func (s *DescribeDBClusterAttributeResponseBody) SetZoneIds(v string) *DescribeD
 
 type DescribeDBClusterAttributeResponseBodyDBNodes struct {
 	// The number of CPU cores for compute node scale-out within seconds.
+	//
+	// example:
+	//
+	// 6
 	AddedCpuCores *string `json:"AddedCpuCores,omitempty" xml:"AddedCpuCores,omitempty"`
 	CpuCores      *string `json:"CpuCores,omitempty" xml:"CpuCores,omitempty"`
 	// The time when the node was created.
+	//
+	// example:
+	//
+	// 2020-03-23T21:35:43Z
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
 	// The type of the node.
+	//
+	// example:
+	//
+	// polar.mysql.x4.large
 	DBNodeClass *string `json:"DBNodeClass,omitempty" xml:"DBNodeClass,omitempty"`
 	// The ID of the node.
+	//
+	// example:
+	//
+	// pi-****************
 	DBNodeId *string `json:"DBNodeId,omitempty" xml:"DBNodeId,omitempty"`
 	// The role of the node. Valid values:
 	//
-	// *   **Writer**: The node is the primary node.
-	// *   **Reader**: The node is a read-only node.
+	// 	- **Writer**: The node is the primary node.
+	//
+	// 	- **Reader**: The node is a read-only node.
+	//
+	// example:
+	//
+	// Reader
 	DBNodeRole *string `json:"DBNodeRole,omitempty" xml:"DBNodeRole,omitempty"`
 	// The status of the node. Valid values:
 	//
-	// *   **Creating**: The cluster is being created.
-	// *   **Running**: The cluster is running.
-	// *   **Deleting**: The cluster is being deleted.
-	// *   **Rebooting**: The cluster is restarting.
-	// *   **DBNodeCreating**: PolarProxy is being added.
-	// *   **DBNodeDeleting**: PolarProxy is being deleted.
-	// *   **ClassChanging**: The specification type of PolarProxy are being modified.
-	// *   **NetAddressCreating**: The network connection is being created.
-	// *   **NetAddressDeleting**: The network connection is being deleted.
-	// *   **NetAddressModifying**: The network connection is being modified.
-	// *   **MinorVersionUpgrading**: The minor version is being updated.
-	// *   **Maintaining**: The cluster is being maintained.
-	// *   **Switching**: A failover is being performed.
+	// 	- **Creating**: The cluster is being created.
+	//
+	// 	- **Running**: The cluster is running.
+	//
+	// 	- **Deleting**: The cluster is being deleted.
+	//
+	// 	- **Rebooting**: The cluster is restarting.
+	//
+	// 	- **DBNodeCreating**: PolarProxy is being added.
+	//
+	// 	- **DBNodeDeleting**: PolarProxy is being deleted.
+	//
+	// 	- **ClassChanging**: The specification type of PolarProxy are being modified.
+	//
+	// 	- **NetAddressCreating**: The network connection is being created.
+	//
+	// 	- **NetAddressDeleting**: The network connection is being deleted.
+	//
+	// 	- **NetAddressModifying**: The network connection is being modified.
+	//
+	// 	- **MinorVersionUpgrading**: The minor version is being updated.
+	//
+	// 	- **Maintaining**: The cluster is being maintained.
+	//
+	// 	- **Switching**: A failover is being performed.
+	//
+	// example:
+	//
+	// Running
 	DBNodeStatus *string `json:"DBNodeStatus,omitempty" xml:"DBNodeStatus,omitempty"`
 	// The failover priority. Each node is assigned a failover priority. If a failover occurs, a node can be selected as a primary node. The priority determines the probability at which a node is selected as a primary node. A larger value indicates a higher priority. Valid values: 1 to 15.
+	//
+	// example:
+	//
+	// 1
 	FailoverPriority *int32 `json:"FailoverPriority,omitempty" xml:"FailoverPriority,omitempty"`
 	// Indicates whether the hot standby feature is enabled. Valid values:
 	//
-	// *   **ON**
-	// *   **OFF**
+	// 	- **ON**
+	//
+	// 	- **OFF**
+	//
+	// example:
+	//
+	// ON
 	HotReplicaMode *string `json:"HotReplicaMode,omitempty" xml:"HotReplicaMode,omitempty"`
 	// Indicates whether the In-Memory Column Index (IMCI) feature is enabled. Valid values:
 	//
-	// *   **ON**
-	// *   **OFF**
+	// 	- **ON**
+	//
+	// 	- **OFF**
+	//
+	// example:
+	//
+	// ON
 	ImciSwitch *string `json:"ImciSwitch,omitempty" xml:"ImciSwitch,omitempty"`
 	// The ID of the primary node in the cluster that runs Multi-master Cluster Edition.
+	//
+	// example:
+	//
+	// pi-bp18z52akld3*****
 	MasterId *string `json:"MasterId,omitempty" xml:"MasterId,omitempty"`
 	// The maximum number of concurrent connections in the cluster.
+	//
+	// example:
+	//
+	// 8000
 	MaxConnections *int32 `json:"MaxConnections,omitempty" xml:"MaxConnections,omitempty"`
 	// The maximum input/output operations per second (IOPS).
+	//
+	// example:
+	//
+	// 32000
 	MaxIOPS          *int32  `json:"MaxIOPS,omitempty" xml:"MaxIOPS,omitempty"`
 	MemorySize       *string `json:"MemorySize,omitempty" xml:"MemorySize,omitempty"`
+	Orca             *string `json:"Orca,omitempty" xml:"Orca,omitempty"`
 	RemoteMemorySize *string `json:"RemoteMemorySize,omitempty" xml:"RemoteMemorySize,omitempty"`
 	// Indicates whether the global consistency (high-performance mode) feature is enabled for the node. Valid values:
 	//
-	// *   **ON**
-	// *   **OFF**
+	// 	- **ON**
+	//
+	// 	- **OFF**
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ON
 	SccMode *string `json:"SccMode,omitempty" xml:"SccMode,omitempty"`
 	// The routing weight of the node. Valid values: 1 to 100 Default value: 1.
+	//
+	// example:
+	//
+	// 1
 	ServerWeight *string `json:"ServerWeight,omitempty" xml:"ServerWeight,omitempty"`
-	// The type of the serverless node. Only **AgileServerless** can be returned.
+	// The type of the serverless node. Only **AgileServerless*	- can be returned.
 	//
 	// > This parameter is supported only for serverless clusters.
+	//
+	// example:
+	//
+	// AgileServerless
 	ServerlessType *string `json:"ServerlessType,omitempty" xml:"ServerlessType,omitempty"`
 	SubCluster     *string `json:"SubCluster,omitempty" xml:"SubCluster,omitempty"`
 	// The ID of the zone.
+	//
+	// example:
+	//
+	// cn-hangzhou-i
 	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
@@ -7629,6 +9833,11 @@ func (s *DescribeDBClusterAttributeResponseBodyDBNodes) SetMemorySize(v string) 
 	return s
 }
 
+func (s *DescribeDBClusterAttributeResponseBodyDBNodes) SetOrca(v string) *DescribeDBClusterAttributeResponseBodyDBNodes {
+	s.Orca = &v
+	return s
+}
+
 func (s *DescribeDBClusterAttributeResponseBodyDBNodes) SetRemoteMemorySize(v string) *DescribeDBClusterAttributeResponseBodyDBNodes {
 	s.RemoteMemorySize = &v
 	return s
@@ -7661,8 +9870,16 @@ func (s *DescribeDBClusterAttributeResponseBodyDBNodes) SetZoneId(v string) *Des
 
 type DescribeDBClusterAttributeResponseBodyTags struct {
 	// The key of the tag.
+	//
+	// example:
+	//
+	// test
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The value of the tag.
+	//
+	// example:
+	//
+	// MySQL
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -7715,6 +9932,12 @@ func (s *DescribeDBClusterAttributeResponse) SetBody(v *DescribeDBClusterAttribu
 
 type DescribeDBClusterAuditLogCollectorRequest struct {
 	// The ID of the cluster.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pc-***************
 	DBClusterId          *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -7758,10 +9981,19 @@ func (s *DescribeDBClusterAuditLogCollectorRequest) SetResourceOwnerId(v int64) 
 type DescribeDBClusterAuditLogCollectorResponseBody struct {
 	// The status of SQL collector. Valid values:
 	//
-	// *   Enable
-	// *   Disabled
+	// 	- Enable
+	//
+	// 	- Disabled
+	//
+	// example:
+	//
+	// Disabled
 	CollectorStatus *string `json:"CollectorStatus,omitempty" xml:"CollectorStatus,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 59011D2B-2A38-4207-A86C-72BC1F882D19
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -7813,45 +10045,77 @@ func (s *DescribeDBClusterAuditLogCollectorResponse) SetBody(v *DescribeDBCluste
 }
 
 type DescribeDBClusterAvailableResourcesRequest struct {
-	// The specifications of the node. For more information, see [Specifications of compute nodes](~~102542~~).
+	// The specifications of the node. For more information, see [Specifications of compute nodes](https://help.aliyun.com/document_detail/102542.html).
+	//
+	// example:
+	//
+	// polar.mysql.x4.large
 	DBNodeClass *string `json:"DBNodeClass,omitempty" xml:"DBNodeClass,omitempty"`
 	// The type of the database engine. Valid values:
 	//
-	// *   **MySQL**
-	// *   **PostgreSQL**
-	// *   **Oracle**
+	// 	- **MySQL**
+	//
+	// 	- **PostgreSQL**
+	//
+	// 	- **Oracle**
+	//
+	// example:
+	//
+	// MySQL
 	DBType *string `json:"DBType,omitempty" xml:"DBType,omitempty"`
 	// The version of the database engine. Valid values for the MySQL database engine:
 	//
-	// *   **5.6**
-	// *   **5.7**
-	// *   **8.0**
+	// 	- **5.6**
+	//
+	// 	- **5.7**
+	//
+	// 	- **8.0**
 	//
 	// Valid values for the PostgreSQL database engine:
 	//
-	// *   **11**
-	// *   **14**
+	// 	- **11**
+	//
+	// 	- **14**
 	//
 	// Valid value for the Oracle database engine: **11**
 	//
-	// > This parameter is required when you specify the **DBType** parameter.
+	// > This parameter is required when you specify the **DBType*	- parameter.
+	//
+	// example:
+	//
+	// 5.6
 	DBVersion    *string `json:"DBVersion,omitempty" xml:"DBVersion,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The billing method of the cluster. Valid values:
 	//
-	// *   **Postpaid**: pay-as-you-go
-	// *   **Prepaid**: subscription
+	// 	- **Postpaid**: pay-as-you-go
+	//
+	// 	- **Prepaid**: subscription
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Postpaid
 	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
 	// The region ID of the cluster. Default value: **cn-hangzhou**.
 	//
-	// > You can call the [DescribeRegions](~~98041~~) operation to query the available regions.
+	// > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to query the available regions.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The zone ID of the cluster.
 	//
-	// > You can call the [DescribeRegions](~~98041~~) operation to query the available zones.
+	// > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to query the available zones.
+	//
+	// example:
+	//
+	// cn-hangzhou-i
 	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
@@ -7917,6 +10181,10 @@ type DescribeDBClusterAvailableResourcesResponseBody struct {
 	// The available zones of the cluster.
 	AvailableZones []*DescribeDBClusterAvailableResourcesResponseBodyAvailableZones `json:"AvailableZones,omitempty" xml:"AvailableZones,omitempty" type:"Repeated"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 2B19F698-8FFC-4918-B9E2-58D878******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -7940,10 +10208,18 @@ func (s *DescribeDBClusterAvailableResourcesResponseBody) SetRequestId(v string)
 
 type DescribeDBClusterAvailableResourcesResponseBodyAvailableZones struct {
 	// The region ID of the cluster.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The database engines that the available resources support.
 	SupportedEngines []*DescribeDBClusterAvailableResourcesResponseBodyAvailableZonesSupportedEngines `json:"SupportedEngines,omitempty" xml:"SupportedEngines,omitempty" type:"Repeated"`
 	// The zone ID of the cluster.
+	//
+	// example:
+	//
+	// cn-hangzhou-i
 	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
@@ -7974,6 +10250,10 @@ type DescribeDBClusterAvailableResourcesResponseBodyAvailableZonesSupportedEngin
 	// The available resources.
 	AvailableResources []*DescribeDBClusterAvailableResourcesResponseBodyAvailableZonesSupportedEnginesAvailableResources `json:"AvailableResources,omitempty" xml:"AvailableResources,omitempty" type:"Repeated"`
 	// The version of the database engine.
+	//
+	// example:
+	//
+	// mysql57
 	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
 }
 
@@ -7998,16 +10278,29 @@ func (s *DescribeDBClusterAvailableResourcesResponseBodyAvailableZonesSupportedE
 type DescribeDBClusterAvailableResourcesResponseBodyAvailableZonesSupportedEnginesAvailableResources struct {
 	// The edition of the cluster. Valid values:
 	//
-	// *   **Normal**: Cluster Edition.
-	// *   **Basic**: Single Node Edition.
-	// *   **ArchiveNormal**: X-Engine.
-	// *   **NormalMultimaster**: Multi-master Cluster (Database/Table) Edition.
-	// *   **SENormal**: Standard Edition.
+	// 	- **Normal**: Cluster Edition.
+	//
+	// 	- **Basic**: Single Node Edition.
+	//
+	// 	- **ArchiveNormal**: X-Engine.
+	//
+	// 	- **NormalMultimaster**: Multi-master Cluster (Database/Table) Edition.
+	//
+	// 	- **SENormal**: Standard Edition.
 	//
 	// >- Only PolarDB for MySQL supports Single Node Edition.
+	//
 	// >- Only PolarDB for MySQL 8.0 supports X-Engine Edition and Multi-master Cluster (Database/Table) Edition.
+	//
+	// example:
+	//
+	// Normal
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
 	// The specifications of the node.
+	//
+	// example:
+	//
+	// polar.mysql.x4.large
 	DBNodeClass *string `json:"DBNodeClass,omitempty" xml:"DBNodeClass,omitempty"`
 }
 
@@ -8060,15 +10353,31 @@ func (s *DescribeDBClusterAvailableResourcesResponse) SetBody(v *DescribeDBClust
 
 type DescribeDBClusterConnectivityRequest struct {
 	// The cluster ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pc-xxxxxxxxxxxxx
 	DBClusterId  *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The ID of the resource group.
+	//
+	// example:
+	//
+	// rg-************
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 	// The source IP address.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 192.***.***.1
 	SourceIpAddress *string `json:"SourceIpAddress,omitempty" xml:"SourceIpAddress,omitempty"`
 }
 
@@ -8123,19 +10432,41 @@ func (s *DescribeDBClusterConnectivityRequest) SetSourceIpAddress(v string) *Des
 type DescribeDBClusterConnectivityResponseBody struct {
 	// The error code for connection diagnosis. Valid values:
 	//
-	// *   **SRC_IP_NOT_IN_USER_WHITELIST**: The source IP address is not added to the whitelist.
-	// *   **CONNECTION_ABNORMAL**: The connection to the cluster is normal.
+	// 	- **SRC_IP_NOT_IN_USER_WHITELIST**: The source IP address is not added to the whitelist.
+	//
+	// 	- **CONNECTION_ABNORMAL**: The connection to the cluster is normal.
+	//
+	// example:
+	//
+	// SRC_IP_NOT_IN_USER_WHITELIST
 	ConnCheckErrorCode *string `json:"ConnCheckErrorCode,omitempty" xml:"ConnCheckErrorCode,omitempty"`
 	// The error message for connection diagnosis.
+	//
+	// example:
+	//
+	// Src ip:192.***.***.1 not in user whitelist
 	ConnCheckErrorMessage *string `json:"ConnCheckErrorMessage,omitempty" xml:"ConnCheckErrorMessage,omitempty"`
 	// The connection diagnosis result. Valid values:
 	//
-	// *   **Success**
-	// *   **Failed**
+	// 	- **Success**
+	//
+	// 	- **Failed**
+	//
+	// example:
+	//
+	// Failed
 	ConnCheckResult *string `json:"ConnCheckResult,omitempty" xml:"ConnCheckResult,omitempty"`
 	// The cluster ID.
+	//
+	// example:
+	//
+	// pc-xxxxxxxxxxxxx
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 73A85BAF-1039-4CDE-A83F-1A140F******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -8204,10 +10535,23 @@ func (s *DescribeDBClusterConnectivityResponse) SetBody(v *DescribeDBClusterConn
 type DescribeDBClusterEndpointsRequest struct {
 	// The ID of the cluster.
 	//
-	// > You can call the [DescribeDBClusters](~~98094~~) operation to query the details of the clusters that belong to your Alibaba Cloud account, such as cluster IDs.
+	// > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to query the details of the clusters that belong to your Alibaba Cloud account, such as cluster IDs.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pc-*************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	// The ID of the endpoint.
-	DBEndpointId         *string `json:"DBEndpointId,omitempty" xml:"DBEndpointId,omitempty"`
+	//
+	// example:
+	//
+	// pe-*************
+	DBEndpointId *string `json:"DBEndpointId,omitempty" xml:"DBEndpointId,omitempty"`
+	// example:
+	//
+	// AI
 	DescribeType         *string `json:"DescribeType,omitempty" xml:"DescribeType,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -8262,6 +10606,10 @@ type DescribeDBClusterEndpointsResponseBody struct {
 	// The details of the endpoints.
 	Items []*DescribeDBClusterEndpointsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 2DC120BF-6EBA-4C63-BE99-B09F9E******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -8288,51 +10636,95 @@ type DescribeDBClusterEndpointsResponseBodyItems struct {
 	AddressItems []*DescribeDBClusterEndpointsResponseBodyItemsAddressItems `json:"AddressItems,omitempty" xml:"AddressItems,omitempty" type:"Repeated"`
 	// Indicates whether new nodes are automatically associated with the default cluster endpoint. Valid values:
 	//
-	// *   **Enable**
-	// *   **Disable**
+	// 	- **Enable**
+	//
+	// 	- **Disable**
+	//
+	// example:
+	//
+	// Enable
 	AutoAddNewNodes *string `json:"AutoAddNewNodes,omitempty" xml:"AutoAddNewNodes,omitempty"`
 	// The ID of the cluster.
+	//
+	// example:
+	//
+	// pc-bp1s826a1up******
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	// The name of the endpoint.
+	//
+	// example:
+	//
+	// test
 	DBEndpointDescription *string `json:"DBEndpointDescription,omitempty" xml:"DBEndpointDescription,omitempty"`
 	// The ID of the endpoint.
+	//
+	// example:
+	//
+	// pe-*************
 	DBEndpointId *string `json:"DBEndpointId,omitempty" xml:"DBEndpointId,omitempty"`
 	// The advanced configurations of the endpoint.
 	//
-	// *   **DistributedTransaction**: indicates whether transaction splitting is enabled. Valid values:
+	// 	- **DistributedTransaction**: indicates whether transaction splitting is enabled. Valid values:
 	//
-	//     *   **on**
-	//     *   **off**
+	//     	- **on**
 	//
-	// *   **ConsistLevel**: the consistency level of sessions. Valid values:
+	//     	- **off**
 	//
-	//     *   **0**: eventual consistency.
-	//     *   **1**: session consistency.
-	//     *   **2**: global consistency.
+	// 	- **ConsistLevel**: the consistency level of sessions. Valid values:
 	//
-	// *   **LoadBalanceStrategy**: the load balancing policy that automatically schedules loads. Only **load** may be returned.
+	//     	- **0**: eventual consistency.
 	//
-	// *   **MasterAcceptReads**: indicates whether the primary node processes read requests. Valid values:
+	//     	- **1**: session consistency.
 	//
-	//     *   **on**
-	//     *   **off**
+	//     	- **2**: global consistency.
+	//
+	// 	- **LoadBalanceStrategy**: the load balancing policy that automatically schedules loads. Only **load*	- may be returned.
+	//
+	// 	- **MasterAcceptReads**: indicates whether the primary node processes read requests. Valid values:
+	//
+	//     	- **on**
+	//
+	//     	- **off**
+	//
+	// example:
+	//
+	// {\\"DistributedTransaction\\":\\"off\\",\\"ConsistLevel\\":\\"0\\",\\"LoadBalanceStrategy\\":\\"load\\",\\"MasterAcceptReads\\":\\"on\\"}
 	EndpointConfig *string `json:"EndpointConfig,omitempty" xml:"EndpointConfig,omitempty"`
 	// The type of the endpoint. Valid values:
 	//
-	// *   **Cluster**: the default endpoint.
-	// *   **Primary**: the primary endpoint.
-	// *   **Custom**: a custom cluster endpoint.
+	// 	- **Cluster**: the default endpoint.
+	//
+	// 	- **Primary**: the primary endpoint.
+	//
+	// 	- **Custom**: a custom cluster endpoint.
+	//
+	// example:
+	//
+	// Custom
 	EndpointType *string `json:"EndpointType,omitempty" xml:"EndpointType,omitempty"`
-	// The role name of each node in the endpoint. The role name of the primary node is **Writer**. Multiple read-only nodes can be associated with an endpoint. Therefore, the role name of each read-only node is suffixed with a number, such as **Reader1** and **Reader2**.
+	// The role name of each node in the endpoint. The role name of the primary node is **Writer**. Multiple read-only nodes can be associated with an endpoint. Therefore, the role name of each read-only node is suffixed with a number, such as **Reader1*	- and **Reader2**.
 	//
 	// > This parameter is valid only for PolarDB for PostgreSQL clusters and PolarDB for PostgreSQL (Compatible with Oracle)) clusters.
+	//
+	// example:
+	//
+	// Reader1
 	NodeWithRoles *string `json:"NodeWithRoles,omitempty" xml:"NodeWithRoles,omitempty"`
 	// The nodes in the endpoint.
+	//
+	// example:
+	//
+	// pi-***************,pi-***************
 	Nodes *string `json:"Nodes,omitempty" xml:"Nodes,omitempty"`
 	// The read/write mode. Valid values:
 	//
-	// *   **ReadWrite**: handles read and write requests. Automatic read/write splitting is enabled.
-	// *   **ReadOnly**: handles read-only requests.
+	// 	- **ReadWrite**: handles read and write requests. Automatic read/write splitting is enabled.
+	//
+	// 	- **ReadOnly**: handles read-only requests.
+	//
+	// example:
+	//
+	// ReadOnly
 	ReadWriteMode *string `json:"ReadWriteMode,omitempty" xml:"ReadWriteMode,omitempty"`
 }
 
@@ -8396,25 +10788,58 @@ func (s *DescribeDBClusterEndpointsResponseBodyItems) SetReadWriteMode(v string)
 
 type DescribeDBClusterEndpointsResponseBodyItemsAddressItems struct {
 	// The endpoint.
+	//
+	// example:
+	//
+	// ********.rwlb.polardb-pg-public.rds.aliyuncs.com
 	ConnectionString *string `json:"ConnectionString,omitempty" xml:"ConnectionString,omitempty"`
 	// The IP address.
+	//
+	// example:
+	//
+	// 192.***.***.***
 	IPAddress *string `json:"IPAddress,omitempty" xml:"IPAddress,omitempty"`
 	// The network type of the endpoint. Valid values:
 	//
-	// *   **Public**
-	// *   **Private**
+	// 	- **Public**
+	//
+	// 	- **Private**
+	//
+	// example:
+	//
+	// Private
 	NetType *string `json:"NetType,omitempty" xml:"NetType,omitempty"`
 	// The port.
+	//
+	// example:
+	//
+	// 1521
 	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
 	// The private domain name that is bound to the endpoint.
+	//
+	// example:
+	//
+	// ***.***.**.com
 	PrivateZoneConnectionString *string `json:"PrivateZoneConnectionString,omitempty" xml:"PrivateZoneConnectionString,omitempty"`
 	// The ID of the VPC.
+	//
+	// example:
+	//
+	// vpc-***************
 	VPCId *string `json:"VPCId,omitempty" xml:"VPCId,omitempty"`
 	// The ID of the vSwitch.
+	//
+	// example:
+	//
+	// vsw-************
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
 	// The ID of the virtual private cloud (VPC) instance.
 	//
 	// > This parameter is returned for only PolarDB for MySQL clusters.
+	//
+	// example:
+	//
+	// pe-*************
 	VpcInstanceId *string `json:"VpcInstanceId,omitempty" xml:"VpcInstanceId,omitempty"`
 }
 
@@ -8497,6 +10922,12 @@ func (s *DescribeDBClusterEndpointsResponse) SetBody(v *DescribeDBClusterEndpoin
 
 type DescribeDBClusterMigrationRequest struct {
 	// The ID of the cluster.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pc-**************
 	DBClusterId          *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -8539,52 +10970,110 @@ func (s *DescribeDBClusterMigrationRequest) SetResourceOwnerId(v int64) *Describ
 
 type DescribeDBClusterMigrationResponseBody struct {
 	// The description of a migration exception. If no exception occurs during the migration, an empty string is returned.
+	//
+	// example:
+	//
+	// test
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
 	// The endpoints of the PolarDB cluster.
 	DBClusterEndpointList []*DescribeDBClusterMigrationResponseBodyDBClusterEndpointList `json:"DBClusterEndpointList,omitempty" xml:"DBClusterEndpointList,omitempty" type:"Repeated"`
 	// The ID of the cluster.
+	//
+	// example:
+	//
+	// pc-****************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	// The mode of the PolarDB cluster. Valid values:
 	//
-	// *   **rw**: read and write mode
-	// *   **ro**: read-only mode
+	// 	- **rw**: read and write mode
+	//
+	// 	- **ro**: read-only mode
+	//
+	// example:
+	//
+	// ro
 	DBClusterReadWriteMode *string `json:"DBClusterReadWriteMode,omitempty" xml:"DBClusterReadWriteMode,omitempty"`
 	// The replication latency between the ApsaraDB RDS instance and the PolarDB cluster. Unit: seconds.
+	//
+	// example:
+	//
+	// 0
 	DelayedSeconds *int32 `json:"DelayedSeconds,omitempty" xml:"DelayedSeconds,omitempty"`
 	// The ID of the synchronous task.
+	//
+	// example:
+	//
+	// dts**********618bs
 	DtsInstanceId *string `json:"DtsInstanceId,omitempty" xml:"DtsInstanceId,omitempty"`
 	// The expiration time of the replication between ApsaraDB RDS and PolarDB. The time is in the `YYYY-MM-DDThh:mm:ssZ` format. The time is displayed in UTC.
+	//
+	// example:
+	//
+	// 2020-06-17T01:56:36Z
 	ExpiredTime *string `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
 	// The migration state of the PolarDB cluster. Valid values:
 	//
-	// *   **NO_MIGRATION**: No migration task is running.
-	// *   **RDS2POLARDB_CLONING**: Data is being replicated.
-	// *   **RDS2POLARDB_SYNCING**: Data is being replicated. During the replication, the PolarDB cluster is running in read-only mode and the source ApsaraDB RDS instance is running in read and write mode.
-	// *   **SWITCHING**: Databases are being switched.
-	// *   **POLARDB2RDS_SYNCING**: Databases are switched. The PolarDB cluster is running in read and write mode and the source ApsaraDB RDS instance is running in read-only mode. In this state, you can modify the endpoints for your applications.
-	// *   **ROLLBACK**: The migration is being rolled back. After the rollback is complete, the value **RDS2POLARDB_SYNCING** is returned.
-	// *   **CLOSING_MIGRATION**: The migration task is being terminated.
+	// 	- **NO_MIGRATION**: No migration task is running.
+	//
+	// 	- **RDS2POLARDB_CLONING**: Data is being replicated.
+	//
+	// 	- **RDS2POLARDB_SYNCING**: Data is being replicated. During the replication, the PolarDB cluster is running in read-only mode and the source ApsaraDB RDS instance is running in read and write mode.
+	//
+	// 	- **SWITCHING**: Databases are being switched.
+	//
+	// 	- **POLARDB2RDS_SYNCING**: Databases are switched. The PolarDB cluster is running in read and write mode and the source ApsaraDB RDS instance is running in read-only mode. In this state, you can modify the endpoints for your applications.
+	//
+	// 	- **ROLLBACK**: The migration is being rolled back. After the rollback is complete, the value **RDS2POLARDB_SYNCING*	- is returned.
+	//
+	// 	- **CLOSING_MIGRATION**: The migration task is being terminated.
+	//
+	// example:
+	//
+	// RDS2POLARDB_SYNCING
 	MigrationStatus *string `json:"MigrationStatus,omitempty" xml:"MigrationStatus,omitempty"`
 	// The endpoints of the ApsaraDB RDS instance.
 	RdsEndpointList []*DescribeDBClusterMigrationResponseBodyRdsEndpointList `json:"RdsEndpointList,omitempty" xml:"RdsEndpointList,omitempty" type:"Repeated"`
 	// The mode of the source ApsaraDB RDS instance. Valid values:
 	//
-	// *   **rw**: read and write mode
-	// *   **ro**: read-only mode
+	// 	- **rw**: read and write mode
+	//
+	// 	- **ro**: read-only mode
+	//
+	// example:
+	//
+	// rw
 	RdsReadWriteMode *string `json:"RdsReadWriteMode,omitempty" xml:"RdsReadWriteMode,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// F2A9EFA7-915F-4572-8299-85A307******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The ID of the source ApsaraDB RDS instance.
+	//
+	// example:
+	//
+	// rm-************
 	SourceRDSDBInstanceId *string `json:"SourceRDSDBInstanceId,omitempty" xml:"SourceRDSDBInstanceId,omitempty"`
 	// The type of the source database. Valid values:
 	//
-	// *   **PolarDBMySQL**: The source database is a PolarDB for MySQL database when the major version of your PolarDB cluster is upgraded.
-	// *   **RDS**: The source database is an ApsaraDB RDS database when data is migrated from ApsaraDB RDS to PolarDB for MySQL.
+	// 	- **PolarDBMySQL**: The source database is a PolarDB for MySQL database when the major version of your PolarDB cluster is upgraded.
+	//
+	// 	- **RDS**: The source database is an ApsaraDB RDS database when data is migrated from ApsaraDB RDS to PolarDB for MySQL.
+	//
+	// example:
+	//
+	// PolarDBMySQL
 	SrcDbType *string `json:"SrcDbType,omitempty" xml:"SrcDbType,omitempty"`
 	// The synchronization direction. Valid values:
 	//
-	// *   **RDS2POLARDB**: Data is replicated from an ApsaraDB RDS instance to a PolarDB cluster.
-	// *   **POLARDB2RDS**: Data is replicated from a PolarDB cluster to an ApsaraDB RDS instance.
+	// 	- **RDS2POLARDB**: Data is replicated from an ApsaraDB RDS instance to a PolarDB cluster.
+	//
+	// 	- **POLARDB2RDS**: Data is replicated from a PolarDB cluster to an ApsaraDB RDS instance.
+	//
+	// example:
+	//
+	// RDS2POLARDB
 	Topologies *string `json:"Topologies,omitempty" xml:"Topologies,omitempty"`
 }
 
@@ -8670,12 +11159,22 @@ type DescribeDBClusterMigrationResponseBodyDBClusterEndpointList struct {
 	// Details about the endpoints.
 	AddressItems []*DescribeDBClusterMigrationResponseBodyDBClusterEndpointListAddressItems `json:"AddressItems,omitempty" xml:"AddressItems,omitempty" type:"Repeated"`
 	// The ID of the endpoint.
+	//
+	// example:
+	//
+	// pe-***********
 	DBEndpointId *string `json:"DBEndpointId,omitempty" xml:"DBEndpointId,omitempty"`
 	// The type of the endpoint. Valid values:
 	//
-	// *   **Cluster**: the default cluster endpoint
-	// *   **Primary**: the primary endpoint
-	// *   **Custom**: the custom cluster endpoint
+	// 	- **Cluster**: the default cluster endpoint
+	//
+	// 	- **Primary**: the primary endpoint
+	//
+	// 	- **Custom**: the custom cluster endpoint
+	//
+	// example:
+	//
+	// Cluster
 	EndpointType  *string `json:"EndpointType,omitempty" xml:"EndpointType,omitempty"`
 	ReadWriteMode *string `json:"ReadWriteMode,omitempty" xml:"ReadWriteMode,omitempty"`
 }
@@ -8710,25 +11209,56 @@ func (s *DescribeDBClusterMigrationResponseBodyDBClusterEndpointList) SetReadWri
 
 type DescribeDBClusterMigrationResponseBodyDBClusterEndpointListAddressItems struct {
 	// The connection string.
+	//
+	// example:
+	//
+	// pc-**************.rwlb.rds.aliyuncs.com
 	ConnectionString *string `json:"ConnectionString,omitempty" xml:"ConnectionString,omitempty"`
 	// The IP address of the endpoint.
+	//
+	// example:
+	//
+	// 192.***.***.10
 	IPAddress *string `json:"IPAddress,omitempty" xml:"IPAddress,omitempty"`
 	// The network type of the endpoint. Valid values:
 	//
-	// *   **Public**: the public endpoint
-	// *   **Private**: the internal endpoint (VPC)
-	// *   **Inner**: the internal endpoint (classic network)
+	// 	- **Public**: the public endpoint
+	//
+	// 	- **Private**: the internal endpoint (VPC)
+	//
+	// 	- **Inner**: the internal endpoint (classic network)
+	//
+	// example:
+	//
+	// Private
 	NetType *string `json:"NetType,omitempty" xml:"NetType,omitempty"`
 	// The port number.
+	//
+	// example:
+	//
+	// 3306
 	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
 	// Indicates whether SSL encryption is enabled. Valid values:
 	//
-	// *   **Enabled**
-	// *   **Disabled**
+	// 	- **Enabled**
+	//
+	// 	- **Disabled**
+	//
+	// example:
+	//
+	// Enabled
 	SSLEnabled *string `json:"SSLEnabled,omitempty" xml:"SSLEnabled,omitempty"`
 	// The VPC ID.
+	//
+	// example:
+	//
+	// vpc-**********
 	VPCId *string `json:"VPCId,omitempty" xml:"VPCId,omitempty"`
 	// The vSwitch ID.
+	//
+	// example:
+	//
+	// vsw-**********
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
 }
 
@@ -8780,11 +11310,20 @@ type DescribeDBClusterMigrationResponseBodyRdsEndpointList struct {
 	AddressItems []*DescribeDBClusterMigrationResponseBodyRdsEndpointListAddressItems `json:"AddressItems,omitempty" xml:"AddressItems,omitempty" type:"Repeated"`
 	CustinsType  *string                                                              `json:"CustinsType,omitempty" xml:"CustinsType,omitempty"`
 	// The ID of the endpoint.
+	//
+	// example:
+	//
+	// rm-************-normal
 	DBEndpointId *string `json:"DBEndpointId,omitempty" xml:"DBEndpointId,omitempty"`
 	// The type of the endpoint. Valid values:
 	//
-	// *   **Normal**: the standard endpoint
-	// *   **ReadWriteSplitting**: the read/write splitting endpoint
+	// 	- **Normal**: the standard endpoint
+	//
+	// 	- **ReadWriteSplitting**: the read/write splitting endpoint
+	//
+	// example:
+	//
+	// Normal
 	EndpointType *string `json:"EndpointType,omitempty" xml:"EndpointType,omitempty"`
 }
 
@@ -8818,25 +11357,56 @@ func (s *DescribeDBClusterMigrationResponseBodyRdsEndpointList) SetEndpointType(
 
 type DescribeDBClusterMigrationResponseBodyRdsEndpointListAddressItems struct {
 	// The connection string.
+	//
+	// example:
+	//
+	// rm-***********.mysql.rds.aliyuncs.com
 	ConnectionString *string `json:"ConnectionString,omitempty" xml:"ConnectionString,omitempty"`
 	// The IP address of the endpoint.
+	//
+	// example:
+	//
+	// 172.***.***.173
 	IPAddress *string `json:"IPAddress,omitempty" xml:"IPAddress,omitempty"`
 	// The network type of the endpoint. Valid values:
 	//
-	// *   **Public**: the public endpoint
-	// *   **Private**: the internal endpoint (VPC)
-	// *   **Inner**: the internal endpoint (classic network)
+	// 	- **Public**: the public endpoint
+	//
+	// 	- **Private**: the internal endpoint (VPC)
+	//
+	// 	- **Inner**: the internal endpoint (classic network)
+	//
+	// example:
+	//
+	// Private
 	NetType *string `json:"NetType,omitempty" xml:"NetType,omitempty"`
 	// The port number.
+	//
+	// example:
+	//
+	// 3306
 	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
 	// Indicates whether SSL encryption is enabled. Valid values:
 	//
-	// *   **Enabled**
-	// *   **Disabled**
+	// 	- **Enabled**
+	//
+	// 	- **Disabled**
+	//
+	// example:
+	//
+	// Enabled
 	SSLEnabled *string `json:"SSLEnabled,omitempty" xml:"SSLEnabled,omitempty"`
 	// The VPC ID.
+	//
+	// example:
+	//
+	// vpc-************
 	VPCId *string `json:"VPCId,omitempty" xml:"VPCId,omitempty"`
 	// The vSwitch ID.
+	//
+	// example:
+	//
+	// vsw-**************
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
 }
 
@@ -8914,6 +11484,12 @@ func (s *DescribeDBClusterMigrationResponse) SetBody(v *DescribeDBClusterMigrati
 
 type DescribeDBClusterMonitorRequest struct {
 	// The cluster ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pc-****************
 	DBClusterId          *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -8956,8 +11532,16 @@ func (s *DescribeDBClusterMonitorRequest) SetResourceOwnerId(v int64) *DescribeD
 
 type DescribeDBClusterMonitorResponseBody struct {
 	// The interval at which monitoring data is collected. Unit: seconds.
+	//
+	// example:
+	//
+	// 60
 	Period *string `json:"Period,omitempty" xml:"Period,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 593AE1C5-B70C-463F-9207-074639******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -9010,11 +11594,22 @@ func (s *DescribeDBClusterMonitorResponse) SetBody(v *DescribeDBClusterMonitorRe
 
 type DescribeDBClusterParametersRequest struct {
 	// The ID of the cluster.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pc-**********
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	// The kernel parameter. Valid values:
 	//
-	// *   **Normal**: the kernel parameters.
-	// *   **MigrationFromRDS**: compares the current parameters with the parameters of the source RDS instance.
+	// 	- **Normal**: the kernel parameters.
+	//
+	// 	- **MigrationFromRDS**: compares the current parameters with the parameters of the source RDS instance.
+	//
+	// example:
+	//
+	// Normal
 	DescribeType         *string `json:"DescribeType,omitempty" xml:"DescribeType,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -9062,29 +11657,60 @@ func (s *DescribeDBClusterParametersRequest) SetResourceOwnerId(v int64) *Descri
 
 type DescribeDBClusterParametersResponseBody struct {
 	// The ID of the cluster.
+	//
+	// example:
+	//
+	// pc-bp1s826a1up******
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	// The database engine that the cluster runs. Valid values:
 	//
-	// *   **MySQL**
-	// *   **PostgreSQL**
-	// *   **Oracle**
+	// 	- **MySQL**
+	//
+	// 	- **PostgreSQL**
+	//
+	// 	- **Oracle**
+	//
+	// example:
+	//
+	// MySQL
 	DBType *string `json:"DBType,omitempty" xml:"DBType,omitempty"`
 	// The version of the database engine.
 	//
 	// - Valid values for the MySQL database engine:    - **5.6**
+	//
 	//   - **5.7**
+	//
 	//   - **8.0**
+	//
 	// - Valid value for the PostgreSQL database engine:    - **11**
+	//
 	//   - **14**
+	//
 	// - Valid value for the Oracle database engine: **11**
+	//
+	// example:
+	//
+	// 5.6
 	DBVersion *string `json:"DBVersion,omitempty" xml:"DBVersion,omitempty"`
 	// The cluster engine.
+	//
+	// example:
+	//
+	// POLARDB
 	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
 	// The number of parameters.
+	//
+	// example:
+	//
+	// 1
 	ParameterNumbers *string `json:"ParameterNumbers,omitempty" xml:"ParameterNumbers,omitempty"`
 	// A comparison between the current parameters of the PolarDB cluster and the parameters of the source RDS instance before migration.
 	Parameters *DescribeDBClusterParametersResponseBodyParameters `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Struct"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// EBEAA83D-1734-42E3-85E3-E25F6E******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The parameters that are in use.
 	RunningParameters *DescribeDBClusterParametersResponseBodyRunningParameters `json:"RunningParameters,omitempty" xml:"RunningParameters,omitempty" type:"Struct"`
@@ -9157,26 +11783,66 @@ func (s *DescribeDBClusterParametersResponseBodyParameters) SetParameters(v []*D
 
 type DescribeDBClusterParametersResponseBodyParametersParameters struct {
 	// Indicates whether the source parameters and current parameters have the same value.
+	//
+	// example:
+	//
+	// true
 	IsEqual              *string `json:"IsEqual,omitempty" xml:"IsEqual,omitempty"`
 	IsInstancePolarDBKey *string `json:"IsInstancePolarDBKey,omitempty" xml:"IsInstancePolarDBKey,omitempty"`
 	IsInstanceRdsKey     *string `json:"IsInstanceRdsKey,omitempty" xml:"IsInstanceRdsKey,omitempty"`
 	IsPolarDBKey         *string `json:"IsPolarDBKey,omitempty" xml:"IsPolarDBKey,omitempty"`
 	IsRdsKey             *string `json:"IsRdsKey,omitempty" xml:"IsRdsKey,omitempty"`
 	// The description of the parameter of the current cluster.
+	//
+	// example:
+	//
+	// The server\\"s default character set.
 	DistParameterDescription *string `json:"distParameterDescription,omitempty" xml:"distParameterDescription,omitempty"`
 	// The name of the parameter of the current cluster.
+	//
+	// example:
+	//
+	// character_set_server
 	DistParameterName *string `json:"distParameterName,omitempty" xml:"distParameterName,omitempty"`
 	// The valid values of the parameter of the current cluster.
+	//
+	// example:
+	//
+	// - utf8
+	//
+	// - gbk
 	DistParameterOptional *string `json:"distParameterOptional,omitempty" xml:"distParameterOptional,omitempty"`
 	// The value of the parameter of the current cluster.
+	//
+	// example:
+	//
+	// utf8
 	DistParameterValue *string `json:"distParameterValue,omitempty" xml:"distParameterValue,omitempty"`
 	// The description of the parameter of the source instance.
+	//
+	// example:
+	//
+	// The server\\"s default character set.
 	RdsParameterDescription *string `json:"rdsParameterDescription,omitempty" xml:"rdsParameterDescription,omitempty"`
 	// The name of the parameter of the source instance.
+	//
+	// example:
+	//
+	// character_set_server
 	RdsParameterName *string `json:"rdsParameterName,omitempty" xml:"rdsParameterName,omitempty"`
 	// The valid values of the parameter of the source instance.
+	//
+	// example:
+	//
+	// - utf8
+	//
+	// - gbk
 	RdsParameterOptional *string `json:"rdsParameterOptional,omitempty" xml:"rdsParameterOptional,omitempty"`
 	// The value of the parameter of the source instance.
+	//
+	// example:
+	//
+	// utf8
 	RdsParameterValue *string `json:"rdsParameterValue,omitempty" xml:"rdsParameterValue,omitempty"`
 }
 
@@ -9272,44 +11938,98 @@ func (s *DescribeDBClusterParametersResponseBodyRunningParameters) SetParameter(
 
 type DescribeDBClusterParametersResponseBodyRunningParametersParameter struct {
 	// The valid values of the parameter.
+	//
+	// example:
+	//
+	// [utf8|latin1|gbk|utf8mb4]
 	CheckingCode *string `json:"CheckingCode,omitempty" xml:"CheckingCode,omitempty"`
 	// The data type of the parameter value. Valid values:
 	//
-	// *   **INT**
-	// *   **STRING**
-	// *   **B**
+	// 	- **INT**
+	//
+	// 	- **STRING**
+	//
+	// 	- **B**
+	//
+	// example:
+	//
+	// INT
 	DataType *string `json:"DataType,omitempty" xml:"DataType,omitempty"`
 	// The default value of the parameter.
+	//
+	// example:
+	//
+	// utf8
 	DefaultParameterValue *string `json:"DefaultParameterValue,omitempty" xml:"DefaultParameterValue,omitempty"`
 	// A divisor of the parameter. For a parameter of the integer or byte type, the valid values must be a multiple of Factor unless you set Factor to 0.
+	//
+	// example:
+	//
+	// 20
 	Factor *string `json:"Factor,omitempty" xml:"Factor,omitempty"`
 	// Indicates whether a cluster restart is required to allow the parameter modification to take effect. Valid values:
 	//
-	// *   **false**
-	// *   **true**
+	// 	- **false**
+	//
+	// 	- **true**
+	//
+	// example:
+	//
+	// true
 	ForceRestart *bool `json:"ForceRestart,omitempty" xml:"ForceRestart,omitempty"`
 	// Indicates whether the parameter can be modified. Valid values:
 	//
-	// *   **false**
-	// *   **true**
+	// 	- **false**
+	//
+	// 	- **true**
+	//
+	// example:
+	//
+	// true
 	IsModifiable *bool `json:"IsModifiable,omitempty" xml:"IsModifiable,omitempty"`
 	// Indicates whether the parameter is a global parameter. Valid values:
 	//
-	// *   **0**: yes. The modified parameter value is synchronized to other nodes.
-	// *   **1**: no. You can customize the nodes to which the modified parameter value can be synchronized.
+	// 	- **0**: yes. The modified parameter value is synchronized to other nodes.
+	//
+	// 	- **1**: no. You can customize the nodes to which the modified parameter value can be synchronized.
+	//
+	// example:
+	//
+	// 0
 	IsNodeAvailable *string `json:"IsNodeAvailable,omitempty" xml:"IsNodeAvailable,omitempty"`
 	// The dependencies of the parameter.
+	//
+	// example:
+	//
+	// utf8
 	ParamRelyRule *string `json:"ParamRelyRule,omitempty" xml:"ParamRelyRule,omitempty"`
 	// The description of the parameter.
+	//
+	// example:
+	//
+	// The server\\"s default character set.
 	ParameterDescription *string `json:"ParameterDescription,omitempty" xml:"ParameterDescription,omitempty"`
 	// The name of the parameter.
+	//
+	// example:
+	//
+	// character_set_server
 	ParameterName *string `json:"ParameterName,omitempty" xml:"ParameterName,omitempty"`
 	// The status of the parameter. Valid values:
 	//
-	// *   **Normal**
-	// *   **Modifying**
+	// 	- **Normal**
+	//
+	// 	- **Modifying**
+	//
+	// example:
+	//
+	// Normal
 	ParameterStatus *string `json:"ParameterStatus,omitempty" xml:"ParameterStatus,omitempty"`
 	// The value of the parameter.
+	//
+	// example:
+	//
+	// utf8
 	ParameterValue *string `json:"ParameterValue,omitempty" xml:"ParameterValue,omitempty"`
 }
 
@@ -9412,15 +12132,39 @@ func (s *DescribeDBClusterParametersResponse) SetBody(v *DescribeDBClusterParame
 
 type DescribeDBClusterPerformanceRequest struct {
 	// The cluster ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pc-****************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	// The end of the time range to query. Specify the time in the ISO 8601 standard in the `yyyy-MM-ddTHH:mmZ` format. The time must be in UTC.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2020-09-23T01:00Z
 	EndTime  *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	Interval *string `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	// The performance metrics that you want to query. Separate multiple metrics with commas (,). For more information, see [Performance parameters](~~141787~~).
+	// The performance metrics that you want to query. Separate multiple metrics with commas (,). For more information, see [Performance parameters](https://help.aliyun.com/document_detail/141787.html).
 	//
 	// >  You can specify a maximum of five performance metrics.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// PolarDBDiskUsage
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The beginning of the time range to query. Specify the time in the ISO 8601 standard in the `yyyy-MM-ddTHH:mmZ` format. The time must be in UTC.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2020-09-23T01:01Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
@@ -9459,18 +12203,42 @@ func (s *DescribeDBClusterPerformanceRequest) SetStartTime(v string) *DescribeDB
 
 type DescribeDBClusterPerformanceResponseBody struct {
 	// The cluster ID.
+	//
+	// example:
+	//
+	// pc-*****************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	// The type of the database engine.
+	//
+	// example:
+	//
+	// MySQL
 	DBType *string `json:"DBType,omitempty" xml:"DBType,omitempty"`
 	// The version of the database engine.
+	//
+	// example:
+	//
+	// 8.0
 	DBVersion *string `json:"DBVersion,omitempty" xml:"DBVersion,omitempty"`
 	// The end time of the query. The time follows the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time is displayed in UTC.
+	//
+	// example:
+	//
+	// 2020-09-23T01:01:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The cluster performance metrics.
 	PerformanceKeys *DescribeDBClusterPerformanceResponseBodyPerformanceKeys `json:"PerformanceKeys,omitempty" xml:"PerformanceKeys,omitempty" type:"Struct"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 35D3E3DA-4650-407A-BFF5-59BFF1******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The start time of the query. The time follows the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time is displayed in UTC.
+	//
+	// example:
+	//
+	// 2020-09-23T01:00:00Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
@@ -9538,10 +12306,22 @@ type DescribeDBClusterPerformanceResponseBodyPerformanceKeysPerformanceItem stru
 	// The ID of the cluster node.
 	//
 	// >  The value of this parameter is not returned if the `Key` parameter is set to `PolarDBDiskUsage`.
+	//
+	// example:
+	//
+	// pi-*************
 	DBNodeId *string `json:"DBNodeId,omitempty" xml:"DBNodeId,omitempty"`
 	// The performance metrics that are returned.
+	//
+	// example:
+	//
+	// PolarDBDiskUsage
 	Measurement *string `json:"Measurement,omitempty" xml:"Measurement,omitempty"`
 	// The name of the performance metric.
+	//
+	// example:
+	//
+	// mean_data_size
 	MetricName *string `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
 	// The performance metrics.
 	Points *DescribeDBClusterPerformanceResponseBodyPerformanceKeysPerformanceItemPoints `json:"Points,omitempty" xml:"Points,omitempty" type:"Struct"`
@@ -9594,8 +12374,16 @@ func (s *DescribeDBClusterPerformanceResponseBodyPerformanceKeysPerformanceItemP
 
 type DescribeDBClusterPerformanceResponseBodyPerformanceKeysPerformanceItemPointsPerformanceItemValue struct {
 	// The timestamp of the metric. This value is a UNIX timestamp. Unit: millisecond.
+	//
+	// example:
+	//
+	// 1600822800000
 	Timestamp *int64 `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
 	// The value of the metric.
+	//
+	// example:
+	//
+	// 42.38
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -9649,7 +12437,13 @@ func (s *DescribeDBClusterPerformanceResponse) SetBody(v *DescribeDBClusterPerfo
 type DescribeDBClusterSSLRequest struct {
 	// The ID of the cluster.
 	//
-	// > You can call the [DescribeDBClusters](~~98094~~) operation to query the details of the clusters that belong to your Alibaba Cloud account, such as cluster IDs.
+	// > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to query the details of the clusters that belong to your Alibaba Cloud account, such as cluster IDs.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pc-************
 	DBClusterId          *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -9694,13 +12488,22 @@ type DescribeDBClusterSSLResponseBody struct {
 	// The list of SSL connections.
 	Items []*DescribeDBClusterSSLResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// C890995A-CF06-4F4D-8DB8-DD26C2******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether automatic rotation of SSL certificates is enabled. Valid values:
 	//
-	// *   **Enable**: The feature is enabled.
-	// *   **Disable**: The feature is disabled.
+	// 	- **Enable**: The feature is enabled.
+	//
+	// 	- **Disable**: The feature is disabled.
 	//
 	// > This parameter is valid only for a PolarDB for MySQL cluster.
+	//
+	// example:
+	//
+	// Enable
 	SSLAutoRotate *string `json:"SSLAutoRotate,omitempty" xml:"SSLAutoRotate,omitempty"`
 }
 
@@ -9729,15 +12532,32 @@ func (s *DescribeDBClusterSSLResponseBody) SetSSLAutoRotate(v string) *DescribeD
 
 type DescribeDBClusterSSLResponseBodyItems struct {
 	// The ID of the endpoint.
+	//
+	// example:
+	//
+	// pe-************
 	DBEndpointId *string `json:"DBEndpointId,omitempty" xml:"DBEndpointId,omitempty"`
 	// The SSL connection string.
+	//
+	// example:
+	//
+	// pc-************.mysql.polardb.rds.aliyuncs.com
 	SSLConnectionString *string `json:"SSLConnectionString,omitempty" xml:"SSLConnectionString,omitempty"`
 	// Indicates whether SSL encryption is enabled. Valid values:
 	//
-	// *   **Enabled**: SSL is enabled.
-	// *   **Disable**: SSL is disabled.
+	// 	- **Enabled**: SSL is enabled.
+	//
+	// 	- **Disable**: SSL is disabled.
+	//
+	// example:
+	//
+	// Enabled
 	SSLEnabled *string `json:"SSLEnabled,omitempty" xml:"SSLEnabled,omitempty"`
 	// The time when the server certificate expires. The time is in the `yyyy-MM-ddTHH:mm:ssZ` format. The time is displayed in UTC.
+	//
+	// example:
+	//
+	// 2021-11-13T07:14:22Z
 	SSLExpireTime *string `json:"SSLExpireTime,omitempty" xml:"SSLExpireTime,omitempty"`
 }
 
@@ -9800,6 +12620,12 @@ func (s *DescribeDBClusterSSLResponse) SetBody(v *DescribeDBClusterSSLResponseBo
 
 type DescribeDBClusterServerlessConfRequest struct {
 	// The ID of the serverless cluster.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pc-bp10gr51qasnl****
 	DBClusterId          *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -9843,26 +12669,62 @@ func (s *DescribeDBClusterServerlessConfRequest) SetResourceOwnerId(v int64) *De
 type DescribeDBClusterServerlessConfResponseBody struct {
 	// Indicates whether the no-activity suspension feature is enabled. Default value: false. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
 	AllowShutDown *string `json:"AllowShutDown,omitempty" xml:"AllowShutDown,omitempty"`
 	// The ID of the serverless cluster.
+	//
+	// example:
+	//
+	// pc-bp10gr51qasnl****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 5E71541A-6007-4DCC-A38A-F872C31FEB45
 	RequestId       *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	ScaleApRoNumMax *string `json:"ScaleApRoNumMax,omitempty" xml:"ScaleApRoNumMax,omitempty"`
 	ScaleApRoNumMin *string `json:"ScaleApRoNumMin,omitempty" xml:"ScaleApRoNumMin,omitempty"`
 	// The maximum number of PCUs per node for scaling. Valid values: 1 PCU to 32 PCUs.
+	//
+	// example:
+	//
+	// 3
 	ScaleMax *string `json:"ScaleMax,omitempty" xml:"ScaleMax,omitempty"`
 	// The minimum number of PCUs per node for scaling. Valid values: 1 PCU to 31 PCUs.
+	//
+	// example:
+	//
+	// 1
 	ScaleMin *string `json:"ScaleMin,omitempty" xml:"ScaleMin,omitempty"`
 	// The maximum number of read-only nodes for scaling. Valid values: 0 to 15.
+	//
+	// example:
+	//
+	// 4
 	ScaleRoNumMax *string `json:"ScaleRoNumMax,omitempty" xml:"ScaleRoNumMax,omitempty"`
 	// The minimum number of read-only nodes for scaling. Valid values: 0 to 15.
+	//
+	// example:
+	//
+	// 2
 	ScaleRoNumMin *string `json:"ScaleRoNumMin,omitempty" xml:"ScaleRoNumMin,omitempty"`
 	// The detection period for no-activity suspension. Valid values: 300 to 86400. Unit: seconds. The value must be a multiple of 300.
-	SecondsUntilAutoPause *string `json:"SecondsUntilAutoPause,omitempty" xml:"SecondsUntilAutoPause,omitempty"`
-	Switchs               *string `json:"Switchs,omitempty" xml:"Switchs,omitempty"`
+	//
+	// example:
+	//
+	// 10
+	SecondsUntilAutoPause             *string `json:"SecondsUntilAutoPause,omitempty" xml:"SecondsUntilAutoPause,omitempty"`
+	ServerlessRuleCpuEnlargeThreshold *string `json:"ServerlessRuleCpuEnlargeThreshold,omitempty" xml:"ServerlessRuleCpuEnlargeThreshold,omitempty"`
+	ServerlessRuleCpuShrinkThreshold  *string `json:"ServerlessRuleCpuShrinkThreshold,omitempty" xml:"ServerlessRuleCpuShrinkThreshold,omitempty"`
+	ServerlessRuleMode                *string `json:"ServerlessRuleMode,omitempty" xml:"ServerlessRuleMode,omitempty"`
+	Switchs                           *string `json:"Switchs,omitempty" xml:"Switchs,omitempty"`
 }
 
 func (s DescribeDBClusterServerlessConfResponseBody) String() string {
@@ -9923,6 +12785,21 @@ func (s *DescribeDBClusterServerlessConfResponseBody) SetSecondsUntilAutoPause(v
 	return s
 }
 
+func (s *DescribeDBClusterServerlessConfResponseBody) SetServerlessRuleCpuEnlargeThreshold(v string) *DescribeDBClusterServerlessConfResponseBody {
+	s.ServerlessRuleCpuEnlargeThreshold = &v
+	return s
+}
+
+func (s *DescribeDBClusterServerlessConfResponseBody) SetServerlessRuleCpuShrinkThreshold(v string) *DescribeDBClusterServerlessConfResponseBody {
+	s.ServerlessRuleCpuShrinkThreshold = &v
+	return s
+}
+
+func (s *DescribeDBClusterServerlessConfResponseBody) SetServerlessRuleMode(v string) *DescribeDBClusterServerlessConfResponseBody {
+	s.ServerlessRuleMode = &v
+	return s
+}
+
 func (s *DescribeDBClusterServerlessConfResponseBody) SetSwitchs(v string) *DescribeDBClusterServerlessConfResponseBody {
 	s.Switchs = &v
 	return s
@@ -9959,6 +12836,12 @@ func (s *DescribeDBClusterServerlessConfResponse) SetBody(v *DescribeDBClusterSe
 
 type DescribeDBClusterTDERequest struct {
 	// The ID of the cluster.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pc-***************
 	DBClusterId          *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -10001,22 +12884,48 @@ func (s *DescribeDBClusterTDERequest) SetResourceOwnerId(v int64) *DescribeDBClu
 
 type DescribeDBClusterTDEResponseBody struct {
 	// The ID of the cluster.
+	//
+	// example:
+	//
+	// pc-***************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	// Indicates whether automatic encryption is enabled for new tables. Valid values:
 	//
-	// *   **ON**
-	// *   **OFF**
+	// 	- **ON**
+	//
+	// 	- **OFF**
+	//
+	// example:
+	//
+	// ON
 	EncryptNewTables *string `json:"EncryptNewTables,omitempty" xml:"EncryptNewTables,omitempty"`
 	// The ID of the custom key.
+	//
+	// example:
+	//
+	// 2a4f4ac2-****-****-****-************
 	EncryptionKey *string `json:"EncryptionKey,omitempty" xml:"EncryptionKey,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// E37D1508-EC3B-4E06-A24A-C7AC31******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The region where the TDE key resides.
+	//
+	// example:
+	//
+	// cn-beijing
 	TDERegion *string `json:"TDERegion,omitempty" xml:"TDERegion,omitempty"`
 	// Indicates whether TDE encryption is enabled. Valid values:
 	//
-	// *   **Enabled**
-	// *   **Disabled**
+	// 	- **Enabled**
+	//
+	// 	- **Disabled**
+	//
+	// example:
+	//
+	// Enabled
 	TDEStatus *string `json:"TDEStatus,omitempty" xml:"TDEStatus,omitempty"`
 }
 
@@ -10089,11 +12998,22 @@ func (s *DescribeDBClusterTDEResponse) SetBody(v *DescribeDBClusterTDEResponseBo
 
 type DescribeDBClusterVersionRequest struct {
 	// The ID of the cluster.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pc-****************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	// Specify to return the latest version information or a list of upgradeable versions.Valid values:
 	//
 	// - AVAILABLE_VERSION
+	//
 	// - LATEST_VERSION
+	//
+	// example:
+	//
+	// LATEST_VERSION
 	DescribeType         *string `json:"DescribeType,omitempty" xml:"DescribeType,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -10141,57 +13061,120 @@ func (s *DescribeDBClusterVersionRequest) SetResourceOwnerId(v int64) *DescribeD
 
 type DescribeDBClusterVersionResponseBody struct {
 	// The ID of cluster.
+	//
+	// example:
+	//
+	// pc-****************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	// The latest version of the database engine.
+	//
+	// example:
+	//
+	// 8.0.1.1.16
 	DBLatestVersion *string `json:"DBLatestVersion,omitempty" xml:"DBLatestVersion,omitempty"`
 	// The minor version of the database engine.
 	//
 	// - If DBVersion is 8.0, the valid values of this parameter are:
+	//
 	//   - 8.0.2
+	//
 	//   - 8.0.1
+	//
 	// - If DBVersion is 5.7, set the value of this parameter to 5.7.28.
+	//
 	// - If DBVersion is 5.6, the value of this parameter is 5.6.16.
+	//
+	// example:
+	//
+	// 8.0.1
 	DBMinorVersion *string `json:"DBMinorVersion,omitempty" xml:"DBMinorVersion,omitempty"`
 	// The revision version of the database engine.
+	//
 	// >For a cluster of the PolarDB for MySQL 5.6, the DBRevisionVersion parameter returns the revision version information only if the Revision Version is released later than August 31, 2020. Otherwise, this parameter returns an empty value.
+	//
+	// example:
+	//
+	// 8.0.1.1.7
 	DBRevisionVersion     *string                                                      `json:"DBRevisionVersion,omitempty" xml:"DBRevisionVersion,omitempty"`
 	DBRevisionVersionList []*DescribeDBClusterVersionResponseBodyDBRevisionVersionList `json:"DBRevisionVersionList,omitempty" xml:"DBRevisionVersionList,omitempty" type:"Repeated"`
 	// The version of the database engine. Valid values:
 	//
 	// - 5.6
+	//
 	// - 5.7
+	//
 	// - 8.0
+	//
+	// example:
+	//
+	// 8.0
 	DBVersion *string `json:"DBVersion,omitempty" xml:"DBVersion,omitempty"`
 	// The status of the minor version. Valid values:
 	//
-	// *   **Stable**: The minor version is stable.
-	// *   **Old**: The minor version is outdated. We recommend that you upgrade the cluster to the latest version.
-	// *   **HighRisk**: The minor version has critical defects. We recommend that you immediately update the cluster to the latest minor version.
+	// 	- **Stable**: The minor version is stable.
 	//
-	// >  For more information about how to update the minor version, see [Minor version update](~~158572~~).
+	// 	- **Old**: The minor version is outdated. We recommend that you upgrade the cluster to the latest version.
+	//
+	// 	- **HighRisk**: The minor version has critical defects. We recommend that you immediately update the cluster to the latest minor version.
+	//
+	// >  For more information about how to update the minor version, see [Minor version update](https://help.aliyun.com/document_detail/158572.html).
+	//
+	// example:
+	//
+	// Stable
 	DBVersionStatus *string `json:"DBVersionStatus,omitempty" xml:"DBVersionStatus,omitempty"`
 	// Indicates whether the kernel is of the latest version. Valid values:
 	//
 	// - true
+	//
 	// - false
+	//
+	// example:
+	//
+	// true
 	IsLatestVersion *string `json:"IsLatestVersion,omitempty" xml:"IsLatestVersion,omitempty"`
 	// Indicates whether PolarProxy uses the latest version. Valid values:
 	//
 	// - true
+	//
 	// - false
+	//
+	// example:
+	//
+	// true
 	IsProxyLatestVersion *string `json:"IsProxyLatestVersion,omitempty" xml:"IsProxyLatestVersion,omitempty"`
 	// The latest version of PolarProxy.
+	//
+	// example:
+	//
+	// 2.4.17
 	ProxyLatestVersion *string `json:"ProxyLatestVersion,omitempty" xml:"ProxyLatestVersion,omitempty"`
 	// The revision version of the database engine.
-	ProxyRevisionVersion *string `json:"ProxyRevisionVersion,omitempty" xml:"ProxyRevisionVersion,omitempty"`
+	//
+	// example:
+	//
+	// 2.4.15
+	ProxyRevisionVersion     *string                                                         `json:"ProxyRevisionVersion,omitempty" xml:"ProxyRevisionVersion,omitempty"`
+	ProxyRevisionVersionList []*DescribeDBClusterVersionResponseBodyProxyRevisionVersionList `json:"ProxyRevisionVersionList,omitempty" xml:"ProxyRevisionVersionList,omitempty" type:"Repeated"`
 	// The status of PolarProxy. Valid values:
 	//
 	// - Stable: The minor version is stable.
+	//
 	// - Old: The minor version is outdated. We recommend that you upgrade the cluster to the latest version.
+	//
 	// - HighRisk: The minor version has critical defects. We recommend that you immediately upgrade the cluster to the latest version.
+	//
 	// - Beta: The minor version is a beta version.
+	//
+	// example:
+	//
+	// Stable
 	ProxyVersionStatus *string `json:"ProxyVersionStatus,omitempty" xml:"ProxyVersionStatus,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 47921222-0D37-4133-8C0D-017DC3******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -10258,6 +13241,11 @@ func (s *DescribeDBClusterVersionResponseBody) SetProxyRevisionVersion(v string)
 	return s
 }
 
+func (s *DescribeDBClusterVersionResponseBody) SetProxyRevisionVersionList(v []*DescribeDBClusterVersionResponseBodyProxyRevisionVersionList) *DescribeDBClusterVersionResponseBody {
+	s.ProxyRevisionVersionList = v
+	return s
+}
+
 func (s *DescribeDBClusterVersionResponseBody) SetProxyVersionStatus(v string) *DescribeDBClusterVersionResponseBody {
 	s.ProxyVersionStatus = &v
 	return s
@@ -10270,16 +13258,34 @@ func (s *DescribeDBClusterVersionResponseBody) SetRequestId(v string) *DescribeD
 
 type DescribeDBClusterVersionResponseBodyDBRevisionVersionList struct {
 	// The release notes for the revision version.
+	//
+	// example:
+	//
+	// ReleaseNote
 	ReleaseNote *string `json:"ReleaseNote,omitempty" xml:"ReleaseNote,omitempty"`
 	// The release status of the revision version. Valid values:
 	//
-	// *   **Stable**: The revision version is stable.
-	// *   **Old**: The revision version is outdated. We recommend that you do not update the cluster to this version.
-	// *   **HighRisk**: The revision version has critical defects. We recommend that you do not update the cluster to this version.
+	// 	- **Stable**: The revision version is stable.
+	//
+	// 	- **Old**: The revision version is outdated. We recommend that you do not update the cluster to this version.
+	//
+	// 	- **HighRisk**: The revision version has critical defects. We recommend that you do not update the cluster to this version.
+	//
+	// example:
+	//
+	// Stable
 	ReleaseType *string `json:"ReleaseType,omitempty" xml:"ReleaseType,omitempty"`
 	// The code of the revision version of the database engine to which the cluster can be upgraded.
+	//
+	// example:
+	//
+	// 20230707
 	RevisionVersionCode *string `json:"RevisionVersionCode,omitempty" xml:"RevisionVersionCode,omitempty"`
 	// The revision version of the database engine.
+	//
+	// example:
+	//
+	// 8.0.1.1.35.1
 	RevisionVersionName *string `json:"RevisionVersionName,omitempty" xml:"RevisionVersionName,omitempty"`
 }
 
@@ -10307,6 +13313,41 @@ func (s *DescribeDBClusterVersionResponseBodyDBRevisionVersionList) SetRevisionV
 }
 
 func (s *DescribeDBClusterVersionResponseBodyDBRevisionVersionList) SetRevisionVersionName(v string) *DescribeDBClusterVersionResponseBodyDBRevisionVersionList {
+	s.RevisionVersionName = &v
+	return s
+}
+
+type DescribeDBClusterVersionResponseBodyProxyRevisionVersionList struct {
+	ReleaseNote         *string `json:"ReleaseNote,omitempty" xml:"ReleaseNote,omitempty"`
+	ReleaseType         *string `json:"ReleaseType,omitempty" xml:"ReleaseType,omitempty"`
+	RevisionVersionCode *string `json:"RevisionVersionCode,omitempty" xml:"RevisionVersionCode,omitempty"`
+	RevisionVersionName *string `json:"RevisionVersionName,omitempty" xml:"RevisionVersionName,omitempty"`
+}
+
+func (s DescribeDBClusterVersionResponseBodyProxyRevisionVersionList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDBClusterVersionResponseBodyProxyRevisionVersionList) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDBClusterVersionResponseBodyProxyRevisionVersionList) SetReleaseNote(v string) *DescribeDBClusterVersionResponseBodyProxyRevisionVersionList {
+	s.ReleaseNote = &v
+	return s
+}
+
+func (s *DescribeDBClusterVersionResponseBodyProxyRevisionVersionList) SetReleaseType(v string) *DescribeDBClusterVersionResponseBodyProxyRevisionVersionList {
+	s.ReleaseType = &v
+	return s
+}
+
+func (s *DescribeDBClusterVersionResponseBodyProxyRevisionVersionList) SetRevisionVersionCode(v string) *DescribeDBClusterVersionResponseBodyProxyRevisionVersionList {
+	s.RevisionVersionCode = &v
+	return s
+}
+
+func (s *DescribeDBClusterVersionResponseBodyProxyRevisionVersionList) SetRevisionVersionName(v string) *DescribeDBClusterVersionResponseBodyProxyRevisionVersionList {
 	s.RevisionVersionName = &v
 	return s
 }
@@ -10342,54 +13383,124 @@ func (s *DescribeDBClusterVersionResponse) SetBody(v *DescribeDBClusterVersionRe
 
 type DescribeDBClustersRequest struct {
 	// The endpoint of the cluster.
+	//
+	// example:
+	//
+	// ********.rwlb.polardb-pg-public.rds.aliyuncs.com
 	ConnectionString *string `json:"ConnectionString,omitempty" xml:"ConnectionString,omitempty"`
 	// The description of the cluster. Fuzzy match is supported.
+	//
+	// example:
+	//
+	// pc-****************
 	DBClusterDescription *string `json:"DBClusterDescription,omitempty" xml:"DBClusterDescription,omitempty"`
 	// The ID of the cluster. Separate multiple cluster IDs with commas (,).
+	//
+	// example:
+	//
+	// pc-****************
 	DBClusterIds *string `json:"DBClusterIds,omitempty" xml:"DBClusterIds,omitempty"`
-	// The state of the cluster that you want to query. For information about valid values, see [Cluster states](~~99286~~).
+	// The state of the cluster that you want to query. For information about valid values, see [Cluster states](https://help.aliyun.com/document_detail/99286.html).
+	//
+	// example:
+	//
+	// Running
 	DBClusterStatus *string `json:"DBClusterStatus,omitempty" xml:"DBClusterStatus,omitempty"`
 	// The ID of the node. You can specify multiple node IDs. Separate multiple node IDs with commas (,).
+	//
+	// example:
+	//
+	// pi-***************
 	DBNodeIds *string `json:"DBNodeIds,omitempty" xml:"DBNodeIds,omitempty"`
 	// The database engine that the cluster runs. Valid values:
 	//
-	// *   **MySQL**
-	// *   **PostgreSQL**
-	// *   **Oracle**
+	// 	- **MySQL**
+	//
+	// 	- **PostgreSQL**
+	//
+	// 	- **Oracle**
+	//
+	// example:
+	//
+	// MySQL
 	DBType *string `json:"DBType,omitempty" xml:"DBType,omitempty"`
 	// The database engine version of the cluster.
+	//
+	// example:
+	//
+	// 5.6
 	DBVersion *string `json:"DBVersion,omitempty" xml:"DBVersion,omitempty"`
 	// The query mode of the list. The value Simple indicates that the simple mode is used. In this mode, only the basic metadata information of the cluster is returned.
 	//
 	// > If you do not specify this parameter, the detailed mode is used by default. Detailed information about the cluster is returned.
+	//
+	// example:
+	//
+	// Simple
 	DescribeType *string `json:"DescribeType,omitempty" xml:"DescribeType,omitempty"`
 	// Specifies whether the cluster has expired. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
 	Expired      *bool   `json:"Expired,omitempty" xml:"Expired,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The number of the page to return. The value must be an integer that is greater than 0. Default value: **1**.
+	// The page number. The value must be a positive integer that does not exceed the maximum value of the INTEGER data type. Default value: **1**.
+	//
+	// example:
+	//
+	// 10
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return per page. Valid values: **30**, **50**, or **100**.
+	// The number of entries per page. Valid values: **30**, **50**, or **100**.
 	//
 	// Default value: **30**.
+	//
+	// example:
+	//
+	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The billing method. Valid values:
 	//
-	// *   **Postpaid**: pay-as-you-go
-	// *   **Prepaid**: subscription
+	// 	- **Postpaid**: pay-as-you-go
+	//
+	// 	- **Prepaid**: subscription
+	//
+	// example:
+	//
+	// Postpaid
 	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
 	// Filters clusters created in the last N days. Valid values: 0 to 15.
+	//
+	// example:
+	//
+	// 7
 	RecentCreationInterval *int32 `json:"RecentCreationInterval,omitempty" xml:"RecentCreationInterval,omitempty"`
 	// Filters clusters that expire after N days. Valid values: 0 to 15.
+	//
+	// example:
+	//
+	// 6
 	RecentExpirationInterval *int32 `json:"RecentExpirationInterval,omitempty" xml:"RecentExpirationInterval,omitempty"`
 	// The region ID of the cluster.
 	//
-	// > You can call the [DescribeRegions](~~98041~~) operation to query the available regions.
+	// > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to query the available regions.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the resource group.
+	//
+	// example:
+	//
+	// rg-**********
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -10514,10 +13625,18 @@ type DescribeDBClustersRequestTag struct {
 	// The key of the tag. You can use tags to filter clusters. You can specify up to 20 tags. N specifies the serial number of each tag. The values that you specify for N must be unique and consecutive integers that start from 1. The value of Tag.N.Key is Tag.N.Value.
 	//
 	// > The tag key can be up to 64 characters in length and cannot start with `aliyun`, `acs:`, `http://`, or `https://`.
+	//
+	// example:
+	//
+	// MySQL
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The value of the tag.
 	//
 	// > The tag value can be up to 64 characters in length and cannot start with `aliyun`, `acs:`, `http://`, or `https://`.
+	//
+	// example:
+	//
+	// 5.6
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -10540,15 +13659,31 @@ func (s *DescribeDBClustersRequestTag) SetValue(v string) *DescribeDBClustersReq
 }
 
 type DescribeDBClustersResponseBody struct {
-	// The details of the cluster.
+	// The information about the clusters.
 	Items *DescribeDBClustersResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
 	// The number of the page to return.
+	//
+	// example:
+	//
+	// 12
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of clusters returned per page.
+	//
+	// example:
+	//
+	// 5
 	PageRecordCount *int32 `json:"PageRecordCount,omitempty" xml:"PageRecordCount,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 9B7BFB11-C077-4FE3-B051-F69CEB******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The total number of returned entries.
+	//
+	// example:
+	//
+	// 16
 	TotalRecordCount *int32 `json:"TotalRecordCount,omitempty" xml:"TotalRecordCount,omitempty"`
 }
 
@@ -10605,98 +13740,250 @@ func (s *DescribeDBClustersResponseBodyItems) SetDBCluster(v []*DescribeDBCluste
 type DescribeDBClustersResponseBodyItemsDBCluster struct {
 	// The type of the AI node. Valid values:
 	//
-	// *   SearchNode: search node.
-	// *   DLNode: AI node.
+	// 	- SearchNode: search node
+	//
+	// 	- DLNode: AI node
+	//
+	// Enumeration values:
+	//
+	// 	- SearchNode | DLNode: both
+	//
+	// 	- DLNode: AI node
+	//
+	// 	- SearchNode: search node
+	//
+	// example:
+	//
+	// SearchNode
 	AiType *string `json:"AiType,omitempty" xml:"AiType,omitempty"`
 	// The edition of the cluster. Valid values:
 	//
-	// *   **Normal**: Cluster Edition
-	// *   **Basic**: Single Node Edition
-	// *   **Archive**: X-Engine Edition
-	// *   **NormalMultimaster**: Multi-master Cluster (Database/Table)
+	// 	- **Normal**: Cluster Edition
+	//
+	// 	- **Basic**: Single Node Edition
+	//
+	// 	- **Archive**: X-Engine Edition
+	//
+	// 	- **NormalMultimaster**: Multi-master Cluster (Database/Table) Edition
+	//
+	// example:
+	//
+	// Normal
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	// The number of CPU cores.
+	//
+	// example:
+	//
+	// 1
 	CpuCores *string `json:"CpuCores,omitempty" xml:"CpuCores,omitempty"`
 	// The time when the cluster was created.
+	//
+	// example:
+	//
+	// 2020-08-14T05:58:42Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The description of the cluster.
+	//
+	// example:
+	//
+	// GDN-1
 	DBClusterDescription *string `json:"DBClusterDescription,omitempty" xml:"DBClusterDescription,omitempty"`
-	// The ID of the cluster.
+	// The cluster ID.
+	//
+	// example:
+	//
+	// pc-****************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	// The network type of the cluster.
+	//
+	// example:
+	//
+	// VPC
 	DBClusterNetworkType *string `json:"DBClusterNetworkType,omitempty" xml:"DBClusterNetworkType,omitempty"`
-	// The status of the cluster.
+	// The state of the cluster.
+	//
+	// example:
+	//
+	// Running
 	DBClusterStatus *string `json:"DBClusterStatus,omitempty" xml:"DBClusterStatus,omitempty"`
-	// The specifications of the node.
+	// The node specifications.
+	//
+	// example:
+	//
+	// polar.mysql.x4.large
 	DBNodeClass *string `json:"DBNodeClass,omitempty" xml:"DBNodeClass,omitempty"`
 	// The number of nodes.
+	//
+	// example:
+	//
+	// 2
 	DBNodeNumber *int32 `json:"DBNodeNumber,omitempty" xml:"DBNodeNumber,omitempty"`
-	// The nodes of the cluster.
+	// The information about the nodes.
 	DBNodes *DescribeDBClustersResponseBodyItemsDBClusterDBNodes `json:"DBNodes,omitempty" xml:"DBNodes,omitempty" type:"Struct"`
 	// The type of the database engine.
+	//
+	// example:
+	//
+	// MySQL
 	DBType *string `json:"DBType,omitempty" xml:"DBType,omitempty"`
-	// The version of the database.
+	// The version of the database engine.
+	//
+	// example:
+	//
+	// 5.6
 	DBVersion *string `json:"DBVersion,omitempty" xml:"DBVersion,omitempty"`
 	// Indicates whether the cluster is protected from deletion. Valid values:
 	//
-	// *   **0**: The cluster is not locked.
-	// *   **1**: The cluster is locked.
+	// 	- **0**: The cluster is not protected from deletion.
 	//
-	// > You cannot delete clusters that are locked.
+	// 	- **1**: The cluster is protected from deletion.
+	//
+	// >  You cannot delete clusters that are protected from deletion.
+	//
+	// example:
+	//
+	// 0
 	DeletionLock *int32 `json:"DeletionLock,omitempty" xml:"DeletionLock,omitempty"`
-	// The engine of the cluster.
+	// The database engine of the cluster.
+	//
+	// example:
+	//
+	// POLARDB
 	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
 	// The expiration time of the cluster.
 	//
-	// > A specific value is returned only for subscription (**Prepaid**) clusters. For pay-as-you-go (**Postpaid**) clusters, an empty string is returned.
+	// >  A specific value is returned only for subscription (**Prepaid**) clusters. For pay-as-you-go (**Postpaid**) clusters, no value is returned.
+	//
+	// example:
+	//
+	// 2020-11-14T16:00:00Z
 	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
 	// Indicates whether the cluster has expired. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
 	//
-	// > A specific value is returned only for subscription (**Prepaid**) clusters.
+	// 	- **false**
+	//
+	// >  A specific value is returned only for subscription (**Prepaid**) clusters.
+	//
+	// example:
+	//
+	// false
 	Expired *string `json:"Expired,omitempty" xml:"Expired,omitempty"`
 	// The lock state of the cluster. Valid values:
 	//
-	// *   **Unlock**: The cluster is not locked.
-	// *   **ManualLock**: The cluster is manually locked.
-	// *   **LockByExpiration**: The cluster is automatically locked due to cluster expiration.
-	LockMode   *string `json:"LockMode,omitempty" xml:"LockMode,omitempty"`
+	// 	- **Unlock**: The cluster is unlocked.
+	//
+	// 	- **ManualLock**: The cluster is manually locked.
+	//
+	// 	- **LockByExpiration**: The cluster is locked due to cluster expiration.
+	//
+	// example:
+	//
+	// Unlock
+	LockMode *string `json:"LockMode,omitempty" xml:"LockMode,omitempty"`
+	// The memory size for local operations. Unit: MB.
+	//
+	// example:
+	//
+	// 2048
 	MemorySize *string `json:"MemorySize,omitempty" xml:"MemorySize,omitempty"`
 	// The billing method of the cluster. Valid values:
 	//
-	// *   **Postpaid**: pay-as-you-go
-	// *   **Prepaid**: subscription
-	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	// The ID of the region in which the node resides.
-	RegionId         *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RemoteMemorySize *string `json:"RemoteMemorySize,omitempty" xml:"RemoteMemorySize,omitempty"`
-	// The ID of the resource group.
-	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// Indicates whether the cluster is a serverless cluster. **AgileServerless** indicates a serverless cluster. An empty value indicates a common cluster.
-	ServerlessType *string `json:"ServerlessType,omitempty" xml:"ServerlessType,omitempty"`
-	// The billing method of the storage space. Valid values:
+	// 	- **Postpaid**: pay-as-you-go
 	//
-	// *   **Postpaid**: pay-as-you-go
-	// *   **Prepaid**: subscription
+	// 	- **Prepaid**: subscription
+	//
+	// example:
+	//
+	// Prepaid
+	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	// The region ID of the cluster.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The memory size for distributed operations. Unit: MB.
+	//
+	// example:
+	//
+	// 3612
+	RemoteMemorySize *string `json:"RemoteMemorySize,omitempty" xml:"RemoteMemorySize,omitempty"`
+	// The resource group ID.
+	//
+	// example:
+	//
+	// rg-************
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// Indicates whether the cluster is a serverless cluster. **AgileServerless*	- indicates a serverless cluster. No value is returned for a common cluster.
+	//
+	// example:
+	//
+	// AgileServerless
+	ServerlessType *string `json:"ServerlessType,omitempty" xml:"ServerlessType,omitempty"`
+	// The storage billing method of the cluster. Valid values:
+	//
+	// 	- **Postpaid**: pay-as-you-go
+	//
+	// 	- **Prepaid**: subscription
+	//
+	// example:
+	//
+	// Prepaid
 	StoragePayType *string `json:"StoragePayType,omitempty" xml:"StoragePayType,omitempty"`
-	// The storage capacity that is billed based on the subscription billing method. Unit: byte.
-	StorageSpace *int64 `json:"StorageSpace,omitempty" xml:"StorageSpace,omitempty"`
-	// The storage space this is occupied by the cluster. Unit: bytes.
+	// The storage that is billed based on the subscription billing method. Unit: bytes.
+	//
+	// example:
+	//
+	// 50
+	StorageSpace *int64  `json:"StorageSpace,omitempty" xml:"StorageSpace,omitempty"`
+	StorageType  *string `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
+	// The used storage. Unit: bytes.
+	//
+	// example:
+	//
+	// 3009413120
 	StorageUsed *int64 `json:"StorageUsed,omitempty" xml:"StorageUsed,omitempty"`
 	// Indicates whether multi-zone data consistency is enabled for the cluster. Valid values:
 	//
-	// *   **ON**: multi-zone data consistency is enabled, which is suitable for Standard Edition clusters of Multi-zone Edition.
-	// *   **OFF**: multi-zone data consistency is disabled.
+	// 	- **ON**: Multi-zone data consistency is enabled. For Standard Edition clusters of Multi-zone Edition, this value is returned.
+	//
+	// 	- **OFF**: Multi-zone data consistency is disabled.
+	//
+	// example:
+	//
+	// ON
 	StrictConsistency *string `json:"StrictConsistency,omitempty" xml:"StrictConsistency,omitempty"`
-	SubCategory       *string `json:"SubCategory,omitempty" xml:"SubCategory,omitempty"`
-	// The tags of the cluster.
+	// The specification type of the compute node. Valid values:
+	//
+	// 	- **Exclusive**: dedicated.
+	//
+	// 	- **General**: general-purpose.
+	//
+	// example:
+	//
+	// Exclusive
+	SubCategory *string `json:"SubCategory,omitempty" xml:"SubCategory,omitempty"`
+	// The information about the tags.
 	Tags *DescribeDBClustersResponseBodyItemsDBClusterTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
-	// The VPC ID of the cluster.
+	// The virtual private cloud (VPC) ID of the cluster.
+	//
+	// example:
+	//
+	// vpc-****************
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 	// The vSwitch ID of the cluster.
+	//
+	// example:
+	//
+	// vsw-***************
 	VswitchId *string `json:"VswitchId,omitempty" xml:"VswitchId,omitempty"`
 	// The zone ID of the cluster.
+	//
+	// example:
+	//
+	// cn-hangzhou-i
 	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
@@ -10838,6 +14125,11 @@ func (s *DescribeDBClustersResponseBodyItemsDBCluster) SetStorageSpace(v int64) 
 	return s
 }
 
+func (s *DescribeDBClustersResponseBodyItemsDBCluster) SetStorageType(v string) *DescribeDBClustersResponseBodyItemsDBCluster {
+	s.StorageType = &v
+	return s
+}
+
 func (s *DescribeDBClustersResponseBodyItemsDBCluster) SetStorageUsed(v int64) *DescribeDBClustersResponseBodyItemsDBCluster {
 	s.StorageUsed = &v
 	return s
@@ -10892,32 +14184,72 @@ func (s *DescribeDBClustersResponseBodyItemsDBClusterDBNodes) SetDBNode(v []*Des
 
 type DescribeDBClustersResponseBodyItemsDBClusterDBNodesDBNode struct {
 	// The specifications of the node.
+	//
+	// example:
+	//
+	// polar.mysql.x4.large
 	DBNodeClass *string `json:"DBNodeClass,omitempty" xml:"DBNodeClass,omitempty"`
 	// The ID of the node.
+	//
+	// example:
+	//
+	// pi-****************
 	DBNodeId *string `json:"DBNodeId,omitempty" xml:"DBNodeId,omitempty"`
 	// The role of the node. Valid values:
 	//
-	// *   **Writer**: The node is the primary node.
-	// *   **Reader**: The node is the read-only node.
+	// 	- **Writer**: primary node
+	//
+	// 	- **Reader**: read-only node
+	//
+	// 	- **ColumnReader**: column store read-only node
+	//
+	// 	- **AI**: AI node
+	//
+	// example:
+	//
+	// Reader
 	DBNodeRole *string `json:"DBNodeRole,omitempty" xml:"DBNodeRole,omitempty"`
 	// Indicates whether the hot standby feature is enabled. Valid values:
 	//
-	// *   **ON**
-	// *   **OFF**
+	// 	- **ON**
+	//
+	// 	- **OFF**
+	//
+	// example:
+	//
+	// OFF
 	HotReplicaMode *string `json:"HotReplicaMode,omitempty" xml:"HotReplicaMode,omitempty"`
 	// Indicates whether the In-Memory Column Index (IMCI) feature is enabled. Valid values:
 	//
-	// *   **ON**
-	// *   **OFF**
-	ImciSwitch *string `json:"ImciSwitch,omitempty" xml:"ImciSwitch,omitempty"`
-	// The ID of the region in which the node resides.
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// Indicates whether the serverless feature is enabled for the current node.
+	// 	- **ON**
 	//
-	// *   **ON** indicates that the serverless feature is enabled.
-	// *   An empty value indicates that the serverless feature is disabled.
+	// 	- **OFF**
+	//
+	// example:
+	//
+	// OFF
+	ImciSwitch *string `json:"ImciSwitch,omitempty" xml:"ImciSwitch,omitempty"`
+	// The region ID of the node.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Indicates whether the serverless feature is enabled for the node.
+	//
+	// 	- **ON*	- indicates that the serverless feature is enabled.
+	//
+	// 	- No value is returned if the serverless feature is disabled.
+	//
+	// example:
+	//
+	// ON
 	Serverless *string `json:"Serverless,omitempty" xml:"Serverless,omitempty"`
-	// The zone ID of the node.
+	// The zone ID of node.
+	//
+	// example:
+	//
+	// cn-hangzhou-i
 	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
@@ -10988,8 +14320,16 @@ func (s *DescribeDBClustersResponseBodyItemsDBClusterTags) SetTag(v []*DescribeD
 
 type DescribeDBClustersResponseBodyItemsDBClusterTagsTag struct {
 	// The key of the tag.
+	//
+	// example:
+	//
+	// MySQL
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The value of the tag.
+	//
+	// example:
+	//
+	// 5.6
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -11043,54 +14383,101 @@ func (s *DescribeDBClustersResponse) SetBody(v *DescribeDBClustersResponseBody) 
 type DescribeDBClustersWithBackupsRequest struct {
 	// The name of the cluster. The name must meet the following requirements:
 	//
-	// *   It cannot start with `http://` or `https://`.
-	// *   It must be 2 to 256 characters in length.
+	// 	- It cannot start with `http://` or `https://`.
+	//
+	// 	- It must be 2 to 256 characters in length.
+	//
+	// example:
+	//
+	// test
 	DBClusterDescription *string `json:"DBClusterDescription,omitempty" xml:"DBClusterDescription,omitempty"`
 	// The ID of the cluster. If you need to specify multiple cluster IDs, separate the cluster IDs with commas (,).
+	//
+	// example:
+	//
+	// pc-**************
 	DBClusterIds *string `json:"DBClusterIds,omitempty" xml:"DBClusterIds,omitempty"`
 	// The type of the database engine. Valid values:
 	//
-	// *   **MySQL**
-	// *   **PostgreSQL**
-	// *   **Oracle**
+	// 	- **MySQL**
+	//
+	// 	- **PostgreSQL**
+	//
+	// 	- **Oracle**
+	//
+	// example:
+	//
+	// MySQL
 	DBType *string `json:"DBType,omitempty" xml:"DBType,omitempty"`
 	// The version of the database engine.
 	//
-	// *   Valid values for the MySQL database engine:
+	// 	- Valid values for the MySQL database engine:
 	//
-	//     *   **5.6**
-	//     *   **5.7**
-	//     *   **8.0**
+	//     	- **5.6**
 	//
-	// *   Valid values for the PostgreSQL database engine:
+	//     	- **5.7**
 	//
-	//     *   **11**
-	//     *   **14**
+	//     	- **8.0**
 	//
-	// *   Valid value for the Oracle database engine: **11**
+	// 	- Valid values for the PostgreSQL database engine:
+	//
+	//     	- **11**
+	//
+	//     	- **14**
+	//
+	// 	- Valid value for the Oracle database engine: **11**
+	//
+	// example:
+	//
+	// 8.0
 	DBVersion *string `json:"DBVersion,omitempty" xml:"DBVersion,omitempty"`
 	// Specifies whether the cluster is deleted. Valid values:
 	//
-	// *   **0**: not deleted
-	// *   **1**: deleted
+	// 	- **0**: not deleted
+	//
+	// 	- **1**: deleted
+	//
+	// example:
+	//
+	// 0
 	IsDeleted    *int32  `json:"IsDeleted,omitempty" xml:"IsDeleted,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The number of the page to return. The value must be a positive integer that does not exceed the maximum value of the INTEGER data type. Default value: **1**.
+	//
+	// example:
+	//
+	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries to return on each page. Valid values:
 	//
-	// *   **30**
-	// *   **50**
-	// *   **100**
+	// 	- **30**
+	//
+	// 	- **50**
+	//
+	// 	- **100**
 	//
 	// Default value: 30.
+	//
+	// example:
+	//
+	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The region ID of the cluster.
 	//
-	// > You can call the [DescribeRegions](~~98041~~) operation to query information about regions.
+	// > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to query information about regions.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the resource group.
+	//
+	// example:
+	//
+	// rg-************
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -11173,12 +14560,28 @@ type DescribeDBClustersWithBackupsResponseBody struct {
 	// The details about the cluster.
 	Items *DescribeDBClustersWithBackupsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
 	// The total number of returned pages.
+	//
+	// example:
+	//
+	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of clusters returned per page.
+	//
+	// example:
+	//
+	// 1
 	PageRecordCount *int32 `json:"PageRecordCount,omitempty" xml:"PageRecordCount,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// F8529AA2-522F-4B30-B80B-8F7D39******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The total number of returned entries.
+	//
+	// example:
+	//
+	// 1
 	TotalRecordCount *int32 `json:"TotalRecordCount,omitempty" xml:"TotalRecordCount,omitempty"`
 }
 
@@ -11234,71 +14637,162 @@ func (s *DescribeDBClustersWithBackupsResponseBodyItems) SetDBCluster(v []*Descr
 
 type DescribeDBClustersWithBackupsResponseBodyItemsDBCluster struct {
 	// The time when the cluster was created.
+	//
+	// example:
+	//
+	// 2022-05-09T09:33:51Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The name of the cluster.
+	//
+	// example:
+	//
+	// test
 	DBClusterDescription *string `json:"DBClusterDescription,omitempty" xml:"DBClusterDescription,omitempty"`
 	// The ID of cluster.
+	//
+	// example:
+	//
+	// pc-****************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	// The network type of the cluster.
+	//
+	// example:
+	//
+	// VPC
 	DBClusterNetworkType *string `json:"DBClusterNetworkType,omitempty" xml:"DBClusterNetworkType,omitempty"`
 	// The status of the cluster. Valid values:
 	//
-	// *   Creating: The cluster is being created.
-	// *   Running: The cluster is running.
-	// *   Deleting: The cluster is being released.
-	// *   Rebooting: The cluster is restarting.
-	// *   DBNodeCreating: The node is being added.
-	// *   DBNodeDeleting: The node is being deleted.
-	// *   ClassChanging: The specifications of the node are being changed.
-	// *   NetAddressCreating: The network connection is being created.
-	// *   NetAddressDeleting: The network connection is being deleted.
-	// *   NetAddressModifying: The network connection is being modified.
-	// *   Deleted: The cluster has been released.
+	// 	- Creating: The cluster is being created.
+	//
+	// 	- Running: The cluster is running.
+	//
+	// 	- Deleting: The cluster is being released.
+	//
+	// 	- Rebooting: The cluster is restarting.
+	//
+	// 	- DBNodeCreating: The node is being added.
+	//
+	// 	- DBNodeDeleting: The node is being deleted.
+	//
+	// 	- ClassChanging: The specifications of the node are being changed.
+	//
+	// 	- NetAddressCreating: The network connection is being created.
+	//
+	// 	- NetAddressDeleting: The network connection is being deleted.
+	//
+	// 	- NetAddressModifying: The network connection is being modified.
+	//
+	// 	- Deleted: The cluster has been released.
+	//
+	// example:
+	//
+	// Running
 	DBClusterStatus *string `json:"DBClusterStatus,omitempty" xml:"DBClusterStatus,omitempty"`
 	// The specifications of the node.
+	//
+	// example:
+	//
+	// polar.mysql.x4.medium
 	DBNodeClass *string `json:"DBNodeClass,omitempty" xml:"DBNodeClass,omitempty"`
 	// The type of the database engine.
+	//
+	// example:
+	//
+	// MySQL
 	DBType *string `json:"DBType,omitempty" xml:"DBType,omitempty"`
 	// The version of the database engine.
+	//
+	// example:
+	//
+	// 8.0
 	DBVersion *string `json:"DBVersion,omitempty" xml:"DBVersion,omitempty"`
 	// The time when the cluster was deleted.
+	//
+	// example:
+	//
+	// 2022-05-12T03:25:37Z
 	DeletedTime *string `json:"DeletedTime,omitempty" xml:"DeletedTime,omitempty"`
 	// Indicates whether the cluster is locked and can be deleted. Valid values:
 	//
-	// *   **0**: The cluster is not locked and can be deleted.
-	// *   **1**: The cluster is locked and cannot be deleted.
+	// 	- **0**: The cluster is not locked and can be deleted.
+	//
+	// 	- **1**: The cluster is locked and cannot be deleted.
+	//
+	// example:
+	//
+	// 0
 	DeletionLock *int32 `json:"DeletionLock,omitempty" xml:"DeletionLock,omitempty"`
 	// The type of the database engine.
+	//
+	// example:
+	//
+	// POLARDB
 	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
 	// The time when the cluster expires.
 	//
 	// > A specific value will be returned only for subscription clusters. For pay-as-you-go clusters, an empty string will be returned.
+	//
+	// example:
+	//
+	// 2022-09-14T16:00:00Z
 	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
 	// Indicates whether the cluster has expired.
 	//
 	// > A specific value will be returned only for subscription clusters.
+	//
+	// example:
+	//
+	// false
 	Expired *string `json:"Expired,omitempty" xml:"Expired,omitempty"`
 	// Indicates whether the cluster was released. Valid values:
 	//
-	// *   1: released
-	// *   0: not released
+	// 	- 1: released
+	//
+	// 	- 0: not released
+	//
+	// example:
+	//
+	// 1
 	IsDeleted *int32 `json:"IsDeleted,omitempty" xml:"IsDeleted,omitempty"`
 	// The state of the cluster lock. Valid values:
 	//
-	// *   **Unlock**: The cluster is not locked.
-	// *   **ManualLock**: The cluster is manually locked.
-	// *   **LockByExpiration**: The cluster is automatically locked after the cluster expires.
+	// 	- **Unlock**: The cluster is not locked.
+	//
+	// 	- **ManualLock**: The cluster is manually locked.
+	//
+	// 	- **LockByExpiration**: The cluster is automatically locked after the cluster expires.
+	//
+	// example:
+	//
+	// Unlock
 	LockMode *string `json:"LockMode,omitempty" xml:"LockMode,omitempty"`
 	// The billing method. Valid values:
 	//
-	// *   **Postpaid**: pay-as-you-go.
-	// *   **Prepaid**: subscription
+	// 	- **Postpaid**: pay-as-you-go.
+	//
+	// 	- **Prepaid**: subscription
+	//
+	// example:
+	//
+	// Postpaid
 	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
 	// The region ID of the cluster.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The VPC ID of the cluster.
+	//
+	// example:
+	//
+	// vpc-******************
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 	// The ID of the zone in which the instance is located.
+	//
+	// example:
+	//
+	// cn-hangzhou-h
 	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
@@ -11437,7 +14931,13 @@ func (s *DescribeDBClustersWithBackupsResponse) SetBody(v *DescribeDBClustersWit
 type DescribeDBInitializeVariableRequest struct {
 	// The ID of cluster.
 	//
-	// > You can call the [DescribeDBClusters](~~98094~~) operation to query information about all clusters that are deployed in a specified region, such as the cluster ID.
+	// > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to query information about all clusters that are deployed in a specified region, such as the cluster ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pc-****************
 	DBClusterId          *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -11481,12 +14981,25 @@ func (s *DescribeDBInitializeVariableRequest) SetResourceOwnerId(v int64) *Descr
 type DescribeDBInitializeVariableResponseBody struct {
 	// The type of the database engine. Valid values:
 	//
-	// *   Oracle
-	// *   PostgreSQL
+	// 	- Oracle
+	//
+	// 	- PostgreSQL
+	//
+	// example:
+	//
+	// PostgreSQL
 	DBType *string `json:"DBType,omitempty" xml:"DBType,omitempty"`
 	// The version of the database engine.
+	//
+	// example:
+	//
+	// 11
 	DBVersion *string `json:"DBVersion,omitempty" xml:"DBVersion,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 475F58B7-F394-4394-AA6E-4F1CBA******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The attributes that are returned.
 	Variables *DescribeDBInitializeVariableResponseBodyVariables `json:"Variables,omitempty" xml:"Variables,omitempty" type:"Struct"`
@@ -11539,23 +15052,40 @@ func (s *DescribeDBInitializeVariableResponseBodyVariables) SetVariable(v []*Des
 
 type DescribeDBInitializeVariableResponseBodyVariablesVariable struct {
 	// The character set that is supported.
+	//
+	// example:
+	//
+	// EUC_CN
 	Charset *string `json:"Charset,omitempty" xml:"Charset,omitempty"`
 	// The language that indicates the collation of the databases that are created.
 	//
 	// >- The language must be compatible with the character set that is specified by **CharacterSetName**.
+	//
 	// >- This parameter is required for PolarDB for PostgreSQL (Compatible with Oracle) clusters or PolarDB for PostgreSQL clusters.
+	//
 	// >- This parameter is optional for PolarDB for MySQL clusters.
 	//
-	// To view the valid values for this parameter, perform the following steps: Log on to the PolarDB console and click the ID of a cluster. In the left-side navigation pane, choose **Settings and Management** > **Databases**. Then, click **Create Database**.
+	// To view the valid values for this parameter, perform the following steps: Log on to the PolarDB console and click the ID of a cluster. In the left-side navigation pane, choose **Settings and Management*	- > **Databases**. Then, click **Create Database**.
+	//
+	// example:
+	//
+	// C
 	Collate *string `json:"Collate,omitempty" xml:"Collate,omitempty"`
 	// The language that indicates the character type of the database.
 	//
 	// >- The language must be compatible with the character set that is specified by **CharacterSetName**.
+	//
 	// >- The specified value must be the same as the value of **Collate**.
+	//
 	// >- This parameter is required for PolarDB for PostgreSQL (Compatible with Oracle) clusters or PolarDB for PostgreSQL clusters.
+	//
 	// >- This parameter is optional for PolarDB for MySQL clusters.
 	//
-	// To view the valid values for this parameter, perform the following steps: Log on to the PolarDB console and click the ID of a cluster. In the left-side navigation pane, choose **Settings and Management** > **Databases**. Then, click **Create Database**.
+	// To view the valid values for this parameter, perform the following steps: Log on to the PolarDB console and click the ID of a cluster. In the left-side navigation pane, choose **Settings and Management*	- > **Databases**. Then, click **Create Database**.
+	//
+	// example:
+	//
+	// C
 	Ctype *string `json:"Ctype,omitempty" xml:"Ctype,omitempty"`
 }
 
@@ -11614,9 +15144,19 @@ func (s *DescribeDBInitializeVariableResponse) SetBody(v *DescribeDBInitializeVa
 type DescribeDBLinksRequest struct {
 	// The ID of the cluster for which you want to query the database links.
 	//
-	// > You can call the [DescribeDBClusters](~~173433~~) operation to query PolarDB clusters.
+	// > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/173433.html) operation to query PolarDB clusters.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pc-a*************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	// The name of the database link. If you leave this parameter empty, the system returns all the database links.
+	//
+	// example:
+	//
+	// dblink_test
 	DBLinkName           *string `json:"DBLinkName,omitempty" xml:"DBLinkName,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -11664,10 +15204,18 @@ func (s *DescribeDBLinksRequest) SetResourceOwnerId(v int64) *DescribeDBLinksReq
 
 type DescribeDBLinksResponseBody struct {
 	// The ID of the cluster.
+	//
+	// example:
+	//
+	// pc-a*************
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
 	// Details about the database links.
 	DBLinkInfos []*DescribeDBLinksResponseBodyDBLinkInfos `json:"DBLinkInfos,omitempty" xml:"DBLinkInfos,omitempty" type:"Repeated"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 45D24263-7E3A-4140-9472-************
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -11696,18 +15244,42 @@ func (s *DescribeDBLinksResponseBody) SetRequestId(v string) *DescribeDBLinksRes
 
 type DescribeDBLinksResponseBodyDBLinkInfos struct {
 	// The ID of the source cluster that the database link connects.
+	//
+	// example:
+	//
+	// pc-a*************
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
 	// The name of the database link.
+	//
+	// example:
+	//
+	// dblink_test
 	DBLinkName *string `json:"DBLinkName,omitempty" xml:"DBLinkName,omitempty"`
 	// The name of the source database of the database link.
+	//
+	// example:
+	//
+	// testdb1
 	SourceDBName *string `json:"SourceDBName,omitempty" xml:"SourceDBName,omitempty"`
 	// The account of the destination database of the database link.
+	//
+	// example:
+	//
+	// testacc
 	TargetAccount *string `json:"TargetAccount,omitempty" xml:"TargetAccount,omitempty"`
 	// The ID of the destination cluster that the database link connects.
 	//
 	// > If the destination cluster is not a PolarDB for Oracle cluster, the returned value is empty.
+	//
+	// example:
+	//
+	// pc-b************
 	TargetDBInstanceName *string `json:"TargetDBInstanceName,omitempty" xml:"TargetDBInstanceName,omitempty"`
 	// The name of the destination database of the database link.
+	//
+	// example:
+	//
+	// testdb2
 	TargetDBName *string `json:"TargetDBName,omitempty" xml:"TargetDBName,omitempty"`
 }
 
@@ -11780,17 +15352,45 @@ func (s *DescribeDBLinksResponse) SetBody(v *DescribeDBLinksResponseBody) *Descr
 
 type DescribeDBNodePerformanceRequest struct {
 	// The cluster ID.
+	//
+	// example:
+	//
+	// pc-****************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	// The ID of the cluster node.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pi-*************
 	DBNodeId *string `json:"DBNodeId,omitempty" xml:"DBNodeId,omitempty"`
 	// The end of the time range to query. Specify the time in the ISO 8601 standard in the `yyyy-MM-ddTHH:mmZ` format. The time must be in UTC.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2020-09-23T01:01Z
 	EndTime  *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	Interval *string `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	// The performance metrics that you want to query. Separate multiple metrics with commas (,). For more information, see [Performance parameters](~~141787~~).
+	// The performance metrics that you want to query. Separate multiple metrics with commas (,). For more information, see [Performance parameters](https://help.aliyun.com/document_detail/141787.html).
 	//
 	// >  You can specify a maximum of five performance metrics.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// PolarDBDiskUsage
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The beginning of the time range to query. Specify the time in the ISO 8601 standard in the `yyyy-MM-ddTHH:mmZ` format. The time must be in UTC.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2020-09-23T01:00Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	Type      *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
@@ -11840,18 +15440,42 @@ func (s *DescribeDBNodePerformanceRequest) SetType(v string) *DescribeDBNodePerf
 
 type DescribeDBNodePerformanceResponseBody struct {
 	// The ID of the cluster node.
+	//
+	// example:
+	//
+	// pi-*****************
 	DBNodeId *string `json:"DBNodeId,omitempty" xml:"DBNodeId,omitempty"`
 	// The type of the database engine.
+	//
+	// example:
+	//
+	// MySQL
 	DBType *string `json:"DBType,omitempty" xml:"DBType,omitempty"`
 	// The version of the database engine.
+	//
+	// example:
+	//
+	// 8.0
 	DBVersion *string `json:"DBVersion,omitempty" xml:"DBVersion,omitempty"`
 	// The end time of the query. The time follows the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time is displayed in UTC.
+	//
+	// example:
+	//
+	// 2020-09-23T01:01:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The cluster performance metrics.
 	PerformanceKeys *DescribeDBNodePerformanceResponseBodyPerformanceKeys `json:"PerformanceKeys,omitempty" xml:"PerformanceKeys,omitempty" type:"Struct"`
 	// The request ID.
+	//
+	// example:
+	//
+	// E2FDB684-751D-424D-98B9-704BEA******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The start time of the query. The time follows the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time is displayed in UTC.
+	//
+	// example:
+	//
+	// 2020-09-23T01:00:00Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
@@ -11917,8 +15541,16 @@ func (s *DescribeDBNodePerformanceResponseBodyPerformanceKeys) SetPerformanceIte
 
 type DescribeDBNodePerformanceResponseBodyPerformanceKeysPerformanceItem struct {
 	// The performance metrics that you want to query.
+	//
+	// example:
+	//
+	// PolarDBDiskUsage
 	Measurement *string `json:"Measurement,omitempty" xml:"Measurement,omitempty"`
 	// The name of the performance metric.
+	//
+	// example:
+	//
+	// mean_sys_dir_size
 	MetricName *string `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
 	// The performance metrics.
 	Points *DescribeDBNodePerformanceResponseBodyPerformanceKeysPerformanceItemPoints `json:"Points,omitempty" xml:"Points,omitempty" type:"Struct"`
@@ -11966,8 +15598,16 @@ func (s *DescribeDBNodePerformanceResponseBodyPerformanceKeysPerformanceItemPoin
 
 type DescribeDBNodePerformanceResponseBodyPerformanceKeysPerformanceItemPointsPerformanceItemValue struct {
 	// The timestamp of the metric. This value is a UNIX timestamp. Unit: millisecond.
+	//
+	// example:
+	//
+	// 1600822800000
 	Timestamp *int64 `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
 	// The value of the metric.
+	//
+	// example:
+	//
+	// 9.33
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -12020,8 +15660,20 @@ func (s *DescribeDBNodePerformanceResponse) SetBody(v *DescribeDBNodePerformance
 
 type DescribeDBNodesParametersRequest struct {
 	// The cluster ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pc-****************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	// The node ID. You can specify multiple node IDs. Separate multiple node IDs with commas (,).
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pi-****************,pi-****************
 	DBNodeIds            *string `json:"DBNodeIds,omitempty" xml:"DBNodeIds,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -12071,16 +15723,34 @@ type DescribeDBNodesParametersResponseBody struct {
 	// The IDs of the nodes.
 	DBNodeIds []*DescribeDBNodesParametersResponseBodyDBNodeIds `json:"DBNodeIds,omitempty" xml:"DBNodeIds,omitempty" type:"Repeated"`
 	// The type of the database engine. Set the value to **MySQL**.
+	//
+	// example:
+	//
+	// MySQL
 	DBType *string `json:"DBType,omitempty" xml:"DBType,omitempty"`
 	// The version of the MySQL database engine. Valid values:
 	//
-	// *   **5.6**
-	// *   **5.7**
-	// *   **8.0**
+	// 	- **5.6**
+	//
+	// 	- **5.7**
+	//
+	// 	- **8.0**
+	//
+	// example:
+	//
+	// 5.6
 	DBVersion *string `json:"DBVersion,omitempty" xml:"DBVersion,omitempty"`
 	// The cluster engine.
+	//
+	// example:
+	//
+	// POLARDB
 	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 9B7BFB11-C077-4FE3-B051-F69CEB******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -12119,6 +15789,10 @@ func (s *DescribeDBNodesParametersResponseBody) SetRequestId(v string) *Describe
 
 type DescribeDBNodesParametersResponseBodyDBNodeIds struct {
 	// The ID of the node.
+	//
+	// example:
+	//
+	// pi-bp1r4qe3s534*****
 	DBNodeId *string `json:"DBNodeId,omitempty" xml:"DBNodeId,omitempty"`
 	// The parameters of the current node.
 	RunningParameters []*DescribeDBNodesParametersResponseBodyDBNodeIdsRunningParameters `json:"RunningParameters,omitempty" xml:"RunningParameters,omitempty" type:"Repeated"`
@@ -12144,44 +15818,98 @@ func (s *DescribeDBNodesParametersResponseBodyDBNodeIds) SetRunningParameters(v 
 
 type DescribeDBNodesParametersResponseBodyDBNodeIdsRunningParameters struct {
 	// The valid values of the parameter.
+	//
+	// example:
+	//
+	// [utf8|latin1|gbk|utf8mb4]
 	CheckingCode *string `json:"CheckingCode,omitempty" xml:"CheckingCode,omitempty"`
 	// The data type of the parameter value. Valid values:
 	//
-	// *   **INT**
-	// *   **STRING**
-	// *   **B**
+	// 	- **INT**
+	//
+	// 	- **STRING**
+	//
+	// 	- **B**
+	//
+	// example:
+	//
+	// INT
 	DataType *string `json:"DataType,omitempty" xml:"DataType,omitempty"`
 	// The default value of the parameter.
+	//
+	// example:
+	//
+	// utf8
 	DefaultParameterValue *string `json:"DefaultParameterValue,omitempty" xml:"DefaultParameterValue,omitempty"`
 	// A divisor of the parameter. For a parameter of the integer or byte type, the valid values must be a multiple of Factor unless you set Factor to 0.
+	//
+	// example:
+	//
+	// 20
 	Factor *string `json:"Factor,omitempty" xml:"Factor,omitempty"`
 	// Indicates whether a cluster restart is required to allow the parameter modification to take effect. Valid values:
 	//
-	// *   **false**
-	// *   **true**
+	// 	- **false**
+	//
+	// 	- **true**
+	//
+	// example:
+	//
+	// true
 	ForceRestart *bool `json:"ForceRestart,omitempty" xml:"ForceRestart,omitempty"`
 	// Indicates whether the parameter can be modified. Valid values:
 	//
-	// *   **false**
-	// *   **true**
+	// 	- **false**
+	//
+	// 	- **true**
+	//
+	// example:
+	//
+	// true
 	IsModifiable *bool `json:"IsModifiable,omitempty" xml:"IsModifiable,omitempty"`
 	// Indicates whether the parameter is a global parameter. Valid values:
 	//
-	// *   **0**: yes. The modified parameter value is synchronized to other nodes.
-	// *   **1**: no. You can customize the nodes to which the modified parameter value can be synchronized to.
+	// 	- **0**: yes. The modified parameter value is synchronized to other nodes.
+	//
+	// 	- **1**: no. You can customize the nodes to which the modified parameter value can be synchronized to.
+	//
+	// example:
+	//
+	// 1
 	IsNodeAvailable *string `json:"IsNodeAvailable,omitempty" xml:"IsNodeAvailable,omitempty"`
 	// The dependencies of the parameter.
+	//
+	// example:
+	//
+	// utf8
 	ParamRelyRule *string `json:"ParamRelyRule,omitempty" xml:"ParamRelyRule,omitempty"`
 	// The description of the parameter.
+	//
+	// example:
+	//
+	// The server\\"s default character set.
 	ParameterDescription *string `json:"ParameterDescription,omitempty" xml:"ParameterDescription,omitempty"`
 	// The name of the parameter.
+	//
+	// example:
+	//
+	// character_set_server
 	ParameterName *string `json:"ParameterName,omitempty" xml:"ParameterName,omitempty"`
 	// The status of the parameter. Valid values:
 	//
-	// *   **normal**
-	// *   **modifying**
+	// 	- **normal**
+	//
+	// 	- **modifying**
+	//
+	// example:
+	//
+	// normal
 	ParameterStatus *string `json:"ParameterStatus,omitempty" xml:"ParameterStatus,omitempty"`
 	// The value of the parameter.
+	//
+	// example:
+	//
+	// utf8
 	ParameterValue *string `json:"ParameterValue,omitempty" xml:"ParameterValue,omitempty"`
 }
 
@@ -12284,15 +16012,43 @@ func (s *DescribeDBNodesParametersResponse) SetBody(v *DescribeDBNodesParameters
 
 type DescribeDBProxyPerformanceRequest struct {
 	// The ID of cluster.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pc-****************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	// The ID of the endpoint.
+	//
+	// example:
+	//
+	// pe-****************
 	DBEndpointId *string `json:"DBEndpointId,omitempty" xml:"DBEndpointId,omitempty"`
 	// The end of the time range to query. Specify the time in the `yyyy-MM-ddTHH:mmZ` format. The time must be in UTC.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2020-09-24T02:08Z
 	EndTime  *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	Interval *string `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	// The performance metrics that you want to query. Separate multiple indicators with commas (,). For more information, see [Performance parameters](~~141787~~).
+	// The performance metrics that you want to query. Separate multiple indicators with commas (,). For more information, see [Performance parameters](https://help.aliyun.com/document_detail/141787.html).
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// PolarProxy_CpuUsage
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The beginning of the time range to query. Specify the time in the `yyyy-MM-ddTHH:mmZ` format. The time must be in UTC.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2020-09-23T01:01Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	Type      *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
@@ -12342,18 +16098,42 @@ func (s *DescribeDBProxyPerformanceRequest) SetType(v string) *DescribeDBProxyPe
 
 type DescribeDBProxyPerformanceResponseBody struct {
 	// The ID of the cluster.
+	//
+	// example:
+	//
+	// pc-*****************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	// The type of the database engine.
+	//
+	// example:
+	//
+	// MySQL
 	DBType *string `json:"DBType,omitempty" xml:"DBType,omitempty"`
 	// The version of the database engine.
+	//
+	// example:
+	//
+	// 8.0
 	DBVersion *string `json:"DBVersion,omitempty" xml:"DBVersion,omitempty"`
 	// The end time of the query. The time is in the `yyyy-MM-ddTHH:mm:ssZ` format. The time is displayed in UTC.
+	//
+	// example:
+	//
+	// 2020-09-23T01:01:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// Details about the performance metrics.
 	PerformanceKeys *DescribeDBProxyPerformanceResponseBodyPerformanceKeys `json:"PerformanceKeys,omitempty" xml:"PerformanceKeys,omitempty" type:"Struct"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 35D3E3DA-4650-407A-BFF5-59BFF1******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The start time of the query. The time is in the `yyyy-MM-ddTHH:mm:ssZ` format. The time is displayed in UTC.
+	//
+	// example:
+	//
+	// 2020-09-23T01:00:00Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
@@ -12419,10 +16199,22 @@ func (s *DescribeDBProxyPerformanceResponseBodyPerformanceKeys) SetPerformanceIt
 
 type DescribeDBProxyPerformanceResponseBodyPerformanceKeysPerformanceItem struct {
 	// The ID of the node.
+	//
+	// example:
+	//
+	// pi-*************
 	DBNodeId *string `json:"DBNodeId,omitempty" xml:"DBNodeId,omitempty"`
 	// The performance metric.
+	//
+	// example:
+	//
+	// PolarProxy_CpuUsage
 	Measurement *string `json:"Measurement,omitempty" xml:"Measurement,omitempty"`
 	// The name of the performance metric.
+	//
+	// example:
+	//
+	// service_connections_ps
 	MetricName *string `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
 	// The list of the performance metrics.
 	Points *DescribeDBProxyPerformanceResponseBodyPerformanceKeysPerformanceItemPoints `json:"Points,omitempty" xml:"Points,omitempty" type:"Struct"`
@@ -12475,8 +16267,16 @@ func (s *DescribeDBProxyPerformanceResponseBodyPerformanceKeysPerformanceItemPoi
 
 type DescribeDBProxyPerformanceResponseBodyPerformanceKeysPerformanceItemPointsPerformanceItemValue struct {
 	// The time when the metric value was collected. This value is a timestamp in milliseconds.
+	//
+	// example:
+	//
+	// 1600822800000
 	Timestamp *int64 `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
 	// The value of the metric.
+	//
+	// example:
+	//
+	// 10
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -12528,6 +16328,11 @@ func (s *DescribeDBProxyPerformanceResponse) SetBody(v *DescribeDBProxyPerforman
 }
 
 type DescribeDasConfigRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pc-****************
 	DBClusterId          *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -12570,9 +16375,19 @@ func (s *DescribeDasConfigRequest) SetResourceOwnerId(v int64) *DescribeDasConfi
 
 type DescribeDasConfigResponseBody struct {
 	// Id of the request
-	RequestId         *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	StorageAutoScale  *string `json:"StorageAutoScale,omitempty" xml:"StorageAutoScale,omitempty"`
-	StorageUpperBound *int64  `json:"StorageUpperBound,omitempty" xml:"StorageUpperBound,omitempty"`
+	//
+	// example:
+	//
+	// 593AE1C5-B70C-463F-9207-074639******
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// Enable
+	StorageAutoScale *string `json:"StorageAutoScale,omitempty" xml:"StorageAutoScale,omitempty"`
+	// example:
+	//
+	// 800
+	StorageUpperBound *int64 `json:"StorageUpperBound,omitempty" xml:"StorageUpperBound,omitempty"`
 }
 
 func (s DescribeDasConfigResponseBody) String() string {
@@ -12629,22 +16444,42 @@ func (s *DescribeDasConfigResponse) SetBody(v *DescribeDasConfigResponseBody) *D
 
 type DescribeDatabasesRequest struct {
 	// The ID of the cluster.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pc-**************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	// The name of the database.
 	//
 	// > You cannot specify multiple database names.
+	//
+	// example:
+	//
+	// test_db
 	DBName       *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The page number. The value must be a positive integer that does not exceed the maximum value of the INTEGER data type. Default value: **1**.
+	//
+	// example:
+	//
+	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries per page. Valid values:
 	//
-	// *   **30**
-	// *   **50**
-	// *   **100**
+	// 	- **30**
+	//
+	// 	- **50**
+	//
+	// 	- **100**
 	//
 	// Default value: **30**.
+	//
+	// example:
+	//
+	// 30
 	PageSize             *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -12702,10 +16537,22 @@ type DescribeDatabasesResponseBody struct {
 	// Details about databases.
 	Databases *DescribeDatabasesResponseBodyDatabases `json:"Databases,omitempty" xml:"Databases,omitempty" type:"Struct"`
 	// The page number.
+	//
+	// example:
+	//
+	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries per page.
+	//
+	// example:
+	//
+	// 1
 	PageRecordCount *int32 `json:"PageRecordCount,omitempty" xml:"PageRecordCount,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// E1DF8CA6-2300-448B-9ABF-760C4B******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -12759,25 +16606,53 @@ type DescribeDatabasesResponseBodyDatabasesDatabase struct {
 	//
 	// > A PolarDB for MySQL cluster does not support privileged accounts.
 	Accounts *DescribeDatabasesResponseBodyDatabasesDatabaseAccounts `json:"Accounts,omitempty" xml:"Accounts,omitempty" type:"Struct"`
-	// The character set that the database uses. For more information, see [Character set tables](~~99716~~).
+	// The character set that the database uses. For more information, see [Character set tables](https://help.aliyun.com/document_detail/99716.html).
+	//
+	// example:
+	//
+	// utf8mb4
 	CharacterSetName *string `json:"CharacterSetName,omitempty" xml:"CharacterSetName,omitempty"`
 	// The description of the database.
+	//
+	// example:
+	//
+	// test_des
 	DBDescription *string `json:"DBDescription,omitempty" xml:"DBDescription,omitempty"`
 	// The name of the database.
+	//
+	// example:
+	//
+	// test_db
 	DBName *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
 	// The state of the database. Valid values:
 	//
-	// *   **Creating**
-	// *   **Running**
-	// *   **Deleting**
+	// 	- **Creating**
+	//
+	// 	- **Running**
+	//
+	// 	- **Deleting**
+	//
+	// example:
+	//
+	// Running
 	DBStatus *string `json:"DBStatus,omitempty" xml:"DBStatus,omitempty"`
 	// The type of the database engine. Valid values:
 	//
-	// *   **MySQL**
-	// *   **Oracle**
-	// *   **PostgreSQL**
+	// 	- **MySQL**
+	//
+	// 	- **Oracle**
+	//
+	// 	- **PostgreSQL**
+	//
+	// example:
+	//
+	// MySQL
 	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
 	// The ID of the primary node in the cluster of Multi-master Cluster (Database/Table) Edition.
+	//
+	// example:
+	//
+	// 2
 	MasterID *string `json:"MasterID,omitempty" xml:"MasterID,omitempty"`
 }
 
@@ -12845,26 +16720,50 @@ type DescribeDatabasesResponseBodyDatabasesDatabaseAccountsAccount struct {
 	// The username of the account.
 	//
 	// > A PolarDB for MySQL cluster does not support privileged accounts.
+	//
+	// example:
+	//
+	// test_acc
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
 	// The permissions that are granted to the account. Valid values:
 	//
-	// *   **ReadWrite**: read and write permissions
-	// *   **ReadOnly**: read-only permissions
-	// *   **DMLOnly**: The account is granted the permissions to execute only DML statements on the database.
-	// *   **DDLOnly**: The account is granted the permissions to execute only DDL statements on the database.
-	// *   **ReadIndex**: The account has the read and index permissions on the database.
+	// 	- **ReadWrite**: read and write permissions
+	//
+	// 	- **ReadOnly**: read-only permissions
+	//
+	// 	- **DMLOnly**: The account is granted the permissions to execute only DML statements on the database.
+	//
+	// 	- **DDLOnly**: The account is granted the permissions to execute only DDL statements on the database.
+	//
+	// 	- **ReadIndex**: The account has the read and index permissions on the database.
+	//
+	// example:
+	//
+	// ReadOnly
 	AccountPrivilege *string `json:"AccountPrivilege,omitempty" xml:"AccountPrivilege,omitempty"`
 	// The state of the account. Valid values:
 	//
-	// *   **Creating**
-	// *   **Available**
-	// *   **Deleting**
+	// 	- **Creating**
+	//
+	// 	- **Available**
+	//
+	// 	- **Deleting**
+	//
+	// example:
+	//
+	// Available
 	AccountStatus *string `json:"AccountStatus,omitempty" xml:"AccountStatus,omitempty"`
 	// The authorization state of the account. Valid values:
 	//
-	// *   **Empowering**: The system is granting permissions to the account.
-	// *   **Empowered**: Permissions are granted to the account.
-	// *   **Removing**: The system is revoking permissions from the account.
+	// 	- **Empowering**: The system is granting permissions to the account.
+	//
+	// 	- **Empowered**: Permissions are granted to the account.
+	//
+	// 	- **Removing**: The system is revoking permissions from the account.
+	//
+	// example:
+	//
+	// Empowered
 	PrivilegeStatus *string `json:"PrivilegeStatus,omitempty" xml:"PrivilegeStatus,omitempty"`
 }
 
@@ -12927,40 +16826,86 @@ func (s *DescribeDatabasesResponse) SetBody(v *DescribeDatabasesResponseBody) *D
 
 type DescribeDetachedBackupsRequest struct {
 	// The ID of the backup set.
+	//
+	// example:
+	//
+	// 111111111
 	BackupId *string `json:"BackupId,omitempty" xml:"BackupId,omitempty"`
 	// The backup mode. Valid values:
 	//
-	// *   **Automated**
-	// *   **Manual**
+	// 	- **Automated**
+	//
+	// 	- **Manual**
+	//
+	// example:
+	//
+	// Manual
 	BackupMode *string `json:"BackupMode,omitempty" xml:"BackupMode,omitempty"`
 	// The region where the cross-region data backup file of the instance is stored.
 	//
 	// > This parameter is valid only for PolarDB for MySQL clusters.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	BackupRegion *string `json:"BackupRegion,omitempty" xml:"BackupRegion,omitempty"`
 	// The status of the backup set. Valid values:
 	//
-	// *   **Success**
-	// *   **Failed**
+	// 	- **Success**
+	//
+	// 	- **Failed**
+	//
+	// example:
+	//
+	// Success
 	BackupStatus *string `json:"BackupStatus,omitempty" xml:"BackupStatus,omitempty"`
 	// The ID of the cluster.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pc-****************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	// The end of the time range to query. Specify the time in the `YYYY-MM-DDThh:mmZ` format. The time must be in UTC. The end time must be later than the start time.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2020-05-14T00:00Z
 	EndTime      *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The page number. The value must be a positive integer that does not exceed the maximum value of the INTEGER data type. Default value: **1**.
+	//
+	// example:
+	//
+	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries per page. Valid values:
 	//
-	// *   **30**
-	// *   **50**
-	// *   **100**
+	// 	- **30**
+	//
+	// 	- **50**
+	//
+	// 	- **100**
 	//
 	// Default value: **30**.
+	//
+	// example:
+	//
+	// 30
 	PageSize             *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The beginning of the time range to query. Specify the time in the `yyyy-MM-ddTHH:mmZ` format. The time must be in UTC.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2020-05-01T00:00Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
@@ -13041,12 +16986,28 @@ type DescribeDetachedBackupsResponseBody struct {
 	// Details about the backup sets.
 	Items *DescribeDetachedBackupsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
 	// The page number.
+	//
+	// example:
+	//
+	// 1
 	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries per page.
+	//
+	// example:
+	//
+	// 15
 	PageRecordCount *string `json:"PageRecordCount,omitempty" xml:"PageRecordCount,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 717B2382-BB14-4DCB-BBC2-32DBE0******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The total number of returned entries.
+	//
+	// example:
+	//
+	// 50
 	TotalRecordCount *string `json:"TotalRecordCount,omitempty" xml:"TotalRecordCount,omitempty"`
 }
 
@@ -13102,47 +17063,104 @@ func (s *DescribeDetachedBackupsResponseBodyItems) SetBackup(v []*DescribeDetach
 
 type DescribeDetachedBackupsResponseBodyItemsBackup struct {
 	// The end time of the backup task. The time is displayed in UTC.
+	//
+	// example:
+	//
+	// 2020-05-12T03:25:55Z
 	BackupEndTime *string `json:"BackupEndTime,omitempty" xml:"BackupEndTime,omitempty"`
 	// The ID of the backup set.
+	//
+	// example:
+	//
+	// 111111111
 	BackupId *string `json:"BackupId,omitempty" xml:"BackupId,omitempty"`
 	// The backup method. Only snapshot backups are supported. The value is set to **Snapshot**.
+	//
+	// example:
+	//
+	// Snapshot
 	BackupMethod *string `json:"BackupMethod,omitempty" xml:"BackupMethod,omitempty"`
 	// The backup mode. Valid values:
 	//
-	// *   **Automated**
-	// *   **Manual**
+	// 	- **Automated**
+	//
+	// 	- **Manual**
+	//
+	// example:
+	//
+	// Manual
 	BackupMode *string `json:"BackupMode,omitempty" xml:"BackupMode,omitempty"`
 	// The size of the backup set. Unit: bytes.
 	//
 	// > After you delete the target snapshot backups, the storage space consumed by the backups is released. The released storage space is smaller than the size of the backup file, because the snapshots share certain data blocks.
+	//
+	// example:
+	//
+	// 7251056
 	BackupSetSize *string `json:"BackupSetSize,omitempty" xml:"BackupSetSize,omitempty"`
 	// The start time of the backup task. The time is displayed in UTC.
+	//
+	// example:
+	//
+	// 2020-05-12T03:25:44Z
 	BackupStartTime *string `json:"BackupStartTime,omitempty" xml:"BackupStartTime,omitempty"`
 	// The status of the backup set. Valid values:
 	//
-	// *   **Success**
-	// *   **Failed**
+	// 	- **Success**
+	//
+	// 	- **Failed**
+	//
+	// example:
+	//
+	// Success
 	BackupStatus *string `json:"BackupStatus,omitempty" xml:"BackupStatus,omitempty"`
 	// The type of the backup. Only full backups are supported. The value is set to **FullBackup**.
+	//
+	// example:
+	//
+	// FullBackup
 	BackupType *string `json:"BackupType,omitempty" xml:"BackupType,omitempty"`
 	// The level of the backup set. Valid values:
 	//
-	// *   **Level-1**: level-1 backup set
-	// *   **Level-2**: level-2 backup set
+	// 	- **Level-1**: level-1 backup set
+	//
+	// 	- **Level-2**: level-2 backup set
+	//
+	// example:
+	//
+	// Level-2
 	BackupsLevel *string `json:"BackupsLevel,omitempty" xml:"BackupsLevel,omitempty"`
 	// The snapshot checkpoint time. The value is a Unix timestamp.
+	//
+	// example:
+	//
+	// 1589253947
 	ConsistentTime *string `json:"ConsistentTime,omitempty" xml:"ConsistentTime,omitempty"`
 	// The ID of the cluster.
+	//
+	// example:
+	//
+	// pc-**************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	// Indicates whether the backup set is available. Valid values:
 	//
-	// *   **0**: The data backup set is unavailable.
-	// *   **1**: The data backup set is available.
+	// 	- **0**: The data backup set is unavailable.
+	//
+	// 	- **1**: The data backup set is available.
+	//
+	// example:
+	//
+	// 1
 	IsAvail *string `json:"IsAvail,omitempty" xml:"IsAvail,omitempty"`
 	// Indicates whether the backup set can be deleted. Valid values:
 	//
-	// *   **Enabled**: The backup set can be deleted.
-	// *   **Disabled**: The backup set cannot be deleted.
+	// 	- **Enabled**: The backup set can be deleted.
+	//
+	// 	- **Disabled**: The backup set cannot be deleted.
+	//
+	// example:
+	//
+	// Disabled
 	StoreStatus *string `json:"StoreStatus,omitempty" xml:"StoreStatus,omitempty"`
 }
 
@@ -13250,10 +17268,20 @@ func (s *DescribeDetachedBackupsResponse) SetBody(v *DescribeDetachedBackupsResp
 
 type DescribeGlobalDatabaseNetworkRequest struct {
 	// The ID of the GDN.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// gdn-bp1fttxsrmv*****
 	GDNId        *string `json:"GDNId,omitempty" xml:"GDNId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The ID of the resource group.
+	//
+	// example:
+	//
+	// rg-************
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -13307,35 +17335,78 @@ type DescribeGlobalDatabaseNetworkResponseBody struct {
 	// The information about the connection to the cluster.
 	Connections []*DescribeGlobalDatabaseNetworkResponseBodyConnections `json:"Connections,omitempty" xml:"Connections,omitempty" type:"Repeated"`
 	// The time at which the GDN was created.
+	//
+	// example:
+	//
+	// 2020-02-24T11:57:54Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The ID of the cluster.
+	//
+	// example:
+	//
+	// pc-bp1s826a1up******
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	// The clusters that are included in the GDN.
 	DBClusters []*DescribeGlobalDatabaseNetworkResponseBodyDBClusters `json:"DBClusters,omitempty" xml:"DBClusters,omitempty" type:"Repeated"`
 	// The type of the database engine. Only MySQL is supported.
+	//
+	// example:
+	//
+	// MySQL
 	DBType *string `json:"DBType,omitempty" xml:"DBType,omitempty"`
 	// The version of the database engine. Only version 8.0 is supported.
+	//
+	// example:
+	//
+	// 8.0
 	DBVersion *string `json:"DBVersion,omitempty" xml:"DBVersion,omitempty"`
 	// The description of the GDN. The description must meet the following requirements:
 	//
-	// *   It cannot start with `http://` or `https://`.
-	// *   It must start with a letter.
-	// *   It can contain letters, digits, underscores (\_), and hyphens (-).
-	// *   It must be 2 to 126 characters in length.
+	// 	- It cannot start with `http://` or `https://`.
+	//
+	// 	- It must start with a letter.
+	//
+	// 	- It can contain letters, digits, underscores (_), and hyphens (-).
+	//
+	// 	- It must be 2 to 126 characters in length.
+	//
+	// example:
+	//
+	// GDN-fortest
 	GDNDescription *string `json:"GDNDescription,omitempty" xml:"GDNDescription,omitempty"`
 	// The ID of the GDN.
+	//
+	// example:
+	//
+	// gdn-bp1fttxsrmv*****
 	GDNId *string `json:"GDNId,omitempty" xml:"GDNId,omitempty"`
 	// The status of the GDN. Valid values:
 	//
-	// *   **Creating**: The GDN is being created.
-	// *   **active**: The GDN is running.
-	// *   **deleting**: The GDN is being deleted.
-	// *   **locked**: The GDN is locked. If the GDN is locked, you cannot perform operations on clusters in the GDN.
-	// *   **removing_member**: The secondary cluster is being removed from the GDN.
+	// 	- **Creating**: The GDN is being created.
+	//
+	// 	- **active**: The GDN is running.
+	//
+	// 	- **deleting**: The GDN is being deleted.
+	//
+	// 	- **locked**: The GDN is locked. If the GDN is locked, you cannot perform operations on clusters in the GDN.
+	//
+	// 	- **removing_member**: The secondary cluster is being removed from the GDN.
+	//
+	// example:
+	//
+	// active
 	GDNStatus *string `json:"GDNStatus,omitempty" xml:"GDNStatus,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 67F2E75F-AE67-4FB2-821F-A81237EACD15
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The ID of the resource group.
+	//
+	// example:
+	//
+	// rg-************
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
@@ -13404,10 +17475,22 @@ func (s *DescribeGlobalDatabaseNetworkResponseBody) SetResourceGroupId(v string)
 
 type DescribeGlobalDatabaseNetworkResponseBodyConnections struct {
 	// The URL of the endpoint.
+	//
+	// example:
+	//
+	// abc.polardb.rds.aliyuncs.com
 	ConnectionString *string `json:"ConnectionString,omitempty" xml:"ConnectionString,omitempty"`
 	// The network type of the endpoint.
+	//
+	// example:
+	//
+	// Private
 	NetType *string `json:"NetType,omitempty" xml:"NetType,omitempty"`
 	// The port number of the endpoint.
+	//
+	// example:
+	//
+	// 3306
 	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
 }
 
@@ -13436,48 +17519,103 @@ func (s *DescribeGlobalDatabaseNetworkResponseBodyConnections) SetPort(v string)
 
 type DescribeGlobalDatabaseNetworkResponseBodyDBClusters struct {
 	// The description of the cluster.
+	//
+	// example:
+	//
+	// test
 	DBClusterDescription *string `json:"DBClusterDescription,omitempty" xml:"DBClusterDescription,omitempty"`
 	// The ID of the cluster in the GDN.
+	//
+	// example:
+	//
+	// pc-wz9fb5nn44u1d****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The status of the cluster in the GDN. For more information, see [Cluster status table](~~99286~~).
+	// The status of the cluster in the GDN. For more information, see [Cluster status table](https://help.aliyun.com/document_detail/99286.html).
+	//
+	// example:
+	//
+	// Running
 	DBClusterStatus *string `json:"DBClusterStatus,omitempty" xml:"DBClusterStatus,omitempty"`
 	// The specifications of the node in the cluster.
+	//
+	// example:
+	//
+	// polar.mysql.x4.large
 	DBNodeClass *string `json:"DBNodeClass,omitempty" xml:"DBNodeClass,omitempty"`
 	// The details of the node.
 	DBNodes []*DescribeGlobalDatabaseNetworkResponseBodyDBClustersDBNodes `json:"DBNodes,omitempty" xml:"DBNodes,omitempty" type:"Repeated"`
 	// The type of the database engine. Only MySQL is supported.
+	//
+	// example:
+	//
+	// MySQL
 	DBType *string `json:"DBType,omitempty" xml:"DBType,omitempty"`
 	// The version of the database engine. Only version 8.0 is supported.
+	//
+	// example:
+	//
+	// 8.0
 	DBVersion *string `json:"DBVersion,omitempty" xml:"DBVersion,omitempty"`
 	// The expiration time of the cluster.
 	//
 	// > A specific value is returned only for subscription (**Prepaid**) clusters. For pay-as-you-go (**Postpaid**) clusters, an empty string is returned.
+	//
+	// example:
+	//
+	// 2020-11-14T16:00:00Z
 	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
 	// Indicates whether the cluster is expired. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
 	//
 	// > This parameter is returned only for subscription (**Prepaid**) clusters.
+	//
+	// example:
+	//
+	// false
 	Expired *string `json:"Expired,omitempty" xml:"Expired,omitempty"`
 	// The billing method of the cluster. Valid values:
 	//
-	// *   **Postpaid**: pay-as-you-go.
-	// *   **Prepaid**: subscription.
+	// 	- **Postpaid**: pay-as-you-go.
+	//
+	// 	- **Prepaid**: subscription.
+	//
+	// example:
+	//
+	// Prepaid
 	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
 	// The ID of the region in which the cluster resides.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The latency of cross-region data replication between the primary cluster and secondary clusters. Unit: seconds.
+	//
+	// example:
+	//
+	// 1
 	ReplicaLag *string `json:"ReplicaLag,omitempty" xml:"ReplicaLag,omitempty"`
 	// The role of the cluster. Valid values:
 	//
-	// *   **Primary**: the primary cluster
-	// *   **standby**: the secondary cluster
+	// 	- **Primary**: the primary cluster
+	//
+	// 	- **standby**: the secondary cluster
 	//
 	// > A GDN consists of one primary cluster and up to four secondary clusters.
+	//
+	// example:
+	//
+	// primary
 	Role           *string `json:"Role,omitempty" xml:"Role,omitempty"`
 	ServerlessType *string `json:"ServerlessType,omitempty" xml:"ServerlessType,omitempty"`
 	// The storage space that is occupied by the cluster. Unit: bytes.
+	//
+	// example:
+	//
+	// 3012558848
 	StorageUsed *string `json:"StorageUsed,omitempty" xml:"StorageUsed,omitempty"`
 }
 
@@ -13566,39 +17704,88 @@ func (s *DescribeGlobalDatabaseNetworkResponseBodyDBClusters) SetStorageUsed(v s
 
 type DescribeGlobalDatabaseNetworkResponseBodyDBClustersDBNodes struct {
 	// The time when the node was created.
+	//
+	// example:
+	//
+	// 2020-03-23T21:35:43Z
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
 	// The specifications of the node in the cluster.
+	//
+	// example:
+	//
+	// polar.mysql.x4.large
 	DBNodeClass *string `json:"DBNodeClass,omitempty" xml:"DBNodeClass,omitempty"`
 	// The ID of the node.
+	//
+	// example:
+	//
+	// pi-****************
 	DBNodeId *string `json:"DBNodeId,omitempty" xml:"DBNodeId,omitempty"`
 	// The role of the node. Valid values:
 	//
-	// *   **Writer**: The node is the primary node.
-	// *   **Reader**: The node is a read-only node.
+	// 	- **Writer**: The node is the primary node.
+	//
+	// 	- **Reader**: The node is a read-only node.
+	//
+	// example:
+	//
+	// Reader
 	DBNodeRole *string `json:"DBNodeRole,omitempty" xml:"DBNodeRole,omitempty"`
 	// The status of the node. Valid values:
 	//
-	// *   **Creating**: The cluster is being created.
-	// *   **Running**: The cluster is running.
-	// *   **Deleting**: The cluster is being deleted.
-	// *   **Rebooting**: The cluster is restarting.
-	// *   **DBNodeCreating**: PolarProxy is being added.
-	// *   **DBNodeDeleting**: PolarProxy is being deleted.
-	// *   **ClassChanging**: The specifications of PolarProxy are being changed.
-	// *   **NetAddressCreating**: The network connection is being created.
-	// *   **NetAddressDeleting**: The network connection is being deleted.
-	// *   **NetAddressModifying**: The network connection is being modified.
-	// *   **MinorVersionUpgrading**: The minor version is being updated.
-	// *   **Maintaining**: The cluster is being maintained.
-	// *   **Switching**: A failover is being performed.
+	// 	- **Creating**: The cluster is being created.
+	//
+	// 	- **Running**: The cluster is running.
+	//
+	// 	- **Deleting**: The cluster is being deleted.
+	//
+	// 	- **Rebooting**: The cluster is restarting.
+	//
+	// 	- **DBNodeCreating**: PolarProxy is being added.
+	//
+	// 	- **DBNodeDeleting**: PolarProxy is being deleted.
+	//
+	// 	- **ClassChanging**: The specifications of PolarProxy are being changed.
+	//
+	// 	- **NetAddressCreating**: The network connection is being created.
+	//
+	// 	- **NetAddressDeleting**: The network connection is being deleted.
+	//
+	// 	- **NetAddressModifying**: The network connection is being modified.
+	//
+	// 	- **MinorVersionUpgrading**: The minor version is being updated.
+	//
+	// 	- **Maintaining**: The cluster is being maintained.
+	//
+	// 	- **Switching**: A failover is being performed.
+	//
+	// example:
+	//
+	// Running
 	DBNodeStatus *string `json:"DBNodeStatus,omitempty" xml:"DBNodeStatus,omitempty"`
 	// The priority of failover. Each node is assigned a failover priority. If a failover occurs, a node can be selected as the primary node based on the priority. A larger value indicates a higher priority. Valid values: 1 to 15.
+	//
+	// example:
+	//
+	// 1
 	FailoverPriority *int32 `json:"FailoverPriority,omitempty" xml:"FailoverPriority,omitempty"`
 	// The maximum number of concurrent connections to the cluster.
+	//
+	// example:
+	//
+	// 8000
 	MaxConnections *int32 `json:"MaxConnections,omitempty" xml:"MaxConnections,omitempty"`
 	// The maximum input/output operations per second (IOPS).
+	//
+	// example:
+	//
+	// 32000
 	MaxIOPS *int32 `json:"MaxIOPS,omitempty" xml:"MaxIOPS,omitempty"`
 	// The zone ID of the cluster.
+	//
+	// example:
+	//
+	// cn-hangzhou-i
 	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
@@ -13687,30 +17874,63 @@ func (s *DescribeGlobalDatabaseNetworkResponse) SetBody(v *DescribeGlobalDatabas
 type DescribeGlobalDatabaseNetworksRequest struct {
 	// The ID of the cluster.
 	//
-	// > You can call the [DescribeDBClusters](~~98094~~) operation to query information about all clusters that are deployed in a specified region, such as the cluster ID.
+	// > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to query information about all clusters that are deployed in a specified region, such as the cluster ID.
+	//
+	// example:
+	//
+	// pc-**************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	// Specify the region in which you want to query GDNs. You can create secondary clusters for the GDNs.
+	//
+	// example:
+	//
+	// cn-beijing
 	FilterRegion *string `json:"FilterRegion,omitempty" xml:"FilterRegion,omitempty"`
 	// The description of the GDN. The description must meet the following requirements:
 	//
-	// *   It cannot start with `http://` or `https://`.
-	// *   It must start with a letter.
-	// *   It can contain letters, digits, underscores (\_), and hyphens (-).
-	// *   It must be 2 to 126 characters in length.
+	// 	- It cannot start with `http://` or `https://`.
+	//
+	// 	- It must start with a letter.
+	//
+	// 	- It can contain letters, digits, underscores (_), and hyphens (-).
+	//
+	// 	- It must be 2 to 126 characters in length.
+	//
+	// example:
+	//
+	// test
 	GDNDescription *string `json:"GDNDescription,omitempty" xml:"GDNDescription,omitempty"`
 	// The ID of the GDN.
+	//
+	// example:
+	//
+	// gdn-****************
 	GDNId        *string `json:"GDNId,omitempty" xml:"GDNId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The page number. Default value: 1. The value must be an integer that is greater than 0.
+	//
+	// example:
+	//
+	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries to return on each page. Default value: 30. Valid values:
 	//
-	// *   30
-	// *   50
-	// *   100
+	// 	- 30
+	//
+	// 	- 50
+	//
+	// 	- 100
+	//
+	// example:
+	//
+	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The ID of the resource group.
+	//
+	// example:
+	//
+	// rg-************
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -13789,12 +18009,28 @@ type DescribeGlobalDatabaseNetworksResponseBody struct {
 	// Details about the GDNs.
 	Items []*DescribeGlobalDatabaseNetworksResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
 	// The page number.
+	//
+	// example:
+	//
+	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of records on the current page.
+	//
+	// example:
+	//
+	// 30
 	PageRecordCount *int32 `json:"PageRecordCount,omitempty" xml:"PageRecordCount,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 69A85BAF-1089-4CDF-A82F-0A140F******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The total number of returned entries.
+	//
+	// example:
+	//
+	// 1
 	TotalRecordCount *int32 `json:"TotalRecordCount,omitempty" xml:"TotalRecordCount,omitempty"`
 }
 
@@ -13833,29 +18069,60 @@ func (s *DescribeGlobalDatabaseNetworksResponseBody) SetTotalRecordCount(v int32
 
 type DescribeGlobalDatabaseNetworksResponseBodyItems struct {
 	// The time when the GDN was created. The time is in the `YYYY-MM-DDThh:mm:ssZ` format. The time is displayed in UTC.
+	//
+	// example:
+	//
+	// 2020-03-23T05:46:54Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// Details about clusters in the GDN.
 	DBClusters []*DescribeGlobalDatabaseNetworksResponseBodyItemsDBClusters `json:"DBClusters,omitempty" xml:"DBClusters,omitempty" type:"Repeated"`
-	// The type of the database engine. Only **MySQL** is supported.
+	// The type of the database engine. Only **MySQL*	- is supported.
+	//
+	// example:
+	//
+	// MySQL
 	DBType *string `json:"DBType,omitempty" xml:"DBType,omitempty"`
-	// The version of the database engine. Only the **8.0** version is supported.
+	// The version of the database engine. Only the **8.0*	- version is supported.
+	//
+	// example:
+	//
+	// 8.0
 	DBVersion *string `json:"DBVersion,omitempty" xml:"DBVersion,omitempty"`
 	// The description of the GDN. The description must meet the following requirements:
 	//
-	// *   It cannot start with `http://` or `https://`.
-	// *   It must start with a letter.
-	// *   It can contain letters, digits, underscores (\_), and hyphens (-).
-	// *   It must be 2 to 126 characters in length.
+	// 	- It cannot start with `http://` or `https://`.
+	//
+	// 	- It must start with a letter.
+	//
+	// 	- It can contain letters, digits, underscores (_), and hyphens (-).
+	//
+	// 	- It must be 2 to 126 characters in length.
+	//
+	// example:
+	//
+	// test
 	GDNDescription *string `json:"GDNDescription,omitempty" xml:"GDNDescription,omitempty"`
 	// The ID of the GDN.
+	//
+	// example:
+	//
+	// gdn-****************
 	GDNId *string `json:"GDNId,omitempty" xml:"GDNId,omitempty"`
 	// The status of the GDN. Valid values:
 	//
-	// *   **Creating**: The GDN is being created.
-	// *   **active**: The GDN is running.
-	// *   **deleting**: The GDN is being deleted.
-	// *   **locked**: The GDN is locked. If the GDN is locked, you cannot perform operations on clusters in the GDN.
-	// *   **removing_member**: The secondary cluster is being removed from the GDN.
+	// 	- **Creating**: The GDN is being created.
+	//
+	// 	- **active**: The GDN is running.
+	//
+	// 	- **deleting**: The GDN is being deleted.
+	//
+	// 	- **locked**: The GDN is locked. If the GDN is locked, you cannot perform operations on clusters in the GDN.
+	//
+	// 	- **removing_member**: The secondary cluster is being removed from the GDN.
+	//
+	// example:
+	//
+	// active
 	GDNStatus *string `json:"GDNStatus,omitempty" xml:"GDNStatus,omitempty"`
 }
 
@@ -13904,15 +18171,28 @@ func (s *DescribeGlobalDatabaseNetworksResponseBodyItems) SetGDNStatus(v string)
 
 type DescribeGlobalDatabaseNetworksResponseBodyItemsDBClusters struct {
 	// The ID of the cluster.
+	//
+	// example:
+	//
+	// pc-****************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	// The region ID of the cluster.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The role of the cluster. Valid values:
 	//
-	// *   **Primary**: the primary cluster
-	// *   **standby**: the secondary cluster
+	// 	- **Primary**: the primary cluster
 	//
-	// > A GDN consists of one primary cluster and up to four secondary clusters. For more information, see [GDN](~~160381~~).
+	// 	- **standby**: the secondary cluster
+	//
+	// > A GDN consists of one primary cluster and up to four secondary clusters. For more information, see [GDN](https://help.aliyun.com/document_detail/160381.html).
+	//
+	// example:
+	//
+	// primary
 	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
 }
 
@@ -13970,12 +18250,26 @@ func (s *DescribeGlobalDatabaseNetworksResponse) SetBody(v *DescribeGlobalDataba
 
 type DescribeGlobalSecurityIPGroupRequest struct {
 	// The ID of the IP whitelist template.
+	//
+	// example:
+	//
+	// g-zsldxfiwjmti0kcm****
 	GlobalSecurityGroupId *string `json:"GlobalSecurityGroupId,omitempty" xml:"GlobalSecurityGroupId,omitempty"`
 	OwnerAccount          *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId               *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The region ID of the IP whitelist template.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the resource group.
+	//
+	// example:
+	//
+	// rg-************
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -14034,6 +18328,10 @@ type DescribeGlobalSecurityIPGroupResponseBody struct {
 	// The details of the global IP whitelist template.
 	GlobalSecurityIPGroup []*DescribeGlobalSecurityIPGroupResponseBodyGlobalSecurityIPGroup `json:"GlobalSecurityIPGroup,omitempty" xml:"GlobalSecurityIPGroup,omitempty" type:"Repeated"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 9B7BFB11-C077-4FE3-B051-F69CEB******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -14061,16 +18359,34 @@ type DescribeGlobalSecurityIPGroupResponseBodyGlobalSecurityIPGroup struct {
 	// The IP address in the global IP whitelist template.
 	//
 	// >  Separate multiple IP addresses with commas (,). You can add up to 1,000 IP addresses or CIDR blocks to all IP whitelists.
+	//
+	// example:
+	//
+	// 192.168.0.1
 	GIpList *string `json:"GIpList,omitempty" xml:"GIpList,omitempty"`
 	// The name of the global IP whitelist template. The name must meet the following requirements:
 	//
-	// *   The name can contain lowercase letters, digits, and underscores (\_).
-	// *   The name must start with a letter and end with a letter or a digit.
-	// *   The name must be 2 to 120 characters in length.
+	// 	- The name can contain lowercase letters, digits, and underscores (_).
+	//
+	// 	- The name must start with a letter and end with a letter or a digit.
+	//
+	// 	- The name must be 2 to 120 characters in length.
+	//
+	// example:
+	//
+	// test_123
 	GlobalIgName *string `json:"GlobalIgName,omitempty" xml:"GlobalIgName,omitempty"`
 	// The ID of the global IP whitelist template.
+	//
+	// example:
+	//
+	// g-zsldxfiwjmti0kcm****
 	GlobalSecurityGroupId *string `json:"GlobalSecurityGroupId,omitempty" xml:"GlobalSecurityGroupId,omitempty"`
 	// The ID of the region.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -14138,12 +18454,28 @@ func (s *DescribeGlobalSecurityIPGroupResponse) SetBody(v *DescribeGlobalSecurit
 
 type DescribeGlobalSecurityIPGroupRelationRequest struct {
 	// The ID of cluster.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pc-*****************
 	DBClusterId  *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The region ID of the IP whitelist template.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the resource group.
+	//
+	// example:
+	//
+	// rg-**********
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -14200,10 +18532,18 @@ func (s *DescribeGlobalSecurityIPGroupRelationRequest) SetSecurityToken(v string
 
 type DescribeGlobalSecurityIPGroupRelationResponseBody struct {
 	// The ID of cluster.
+	//
+	// example:
+	//
+	// pc-*****************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	// The details of the global IP whitelist template.
 	GlobalSecurityIPGroupRel []*DescribeGlobalSecurityIPGroupRelationResponseBodyGlobalSecurityIPGroupRel `json:"GlobalSecurityIPGroupRel,omitempty" xml:"GlobalSecurityIPGroupRel,omitempty" type:"Repeated"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 9B7BFB11-C077-4FE3-B051-F69CEB******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -14234,16 +18574,34 @@ type DescribeGlobalSecurityIPGroupRelationResponseBodyGlobalSecurityIPGroupRel s
 	// The IP address in the global IP whitelist template.
 	//
 	// >  Separate multiple IP addresses with commas (,). You can add up to 1,000 IP addresses or CIDR blocks to all IP whitelists.
+	//
+	// example:
+	//
+	// 192.168.0.1
 	GIpList *string `json:"GIpList,omitempty" xml:"GIpList,omitempty"`
 	// The name of the global IP whitelist template. The name must meet the following requirements:
 	//
-	// *   The name can contain lowercase letters, digits, and underscores (\_).
-	// *   The name must start with a letter and end with a letter or a digit.
-	// *   The name must be 2 to 120 characters in length.
+	// 	- The name can contain lowercase letters, digits, and underscores (_).
+	//
+	// 	- The name must start with a letter and end with a letter or a digit.
+	//
+	// 	- The name must be 2 to 120 characters in length.
+	//
+	// example:
+	//
+	// test_123
 	GlobalIgName *string `json:"GlobalIgName,omitempty" xml:"GlobalIgName,omitempty"`
 	// The ID of the global IP whitelist template.
+	//
+	// example:
+	//
+	// g-zsldxfiwjmti0kcm****
 	GlobalSecurityGroupId *string `json:"GlobalSecurityGroupId,omitempty" xml:"GlobalSecurityGroupId,omitempty"`
 	// The ID of the region.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -14307,7 +18665,13 @@ func (s *DescribeGlobalSecurityIPGroupRelationResponse) SetBody(v *DescribeGloba
 type DescribeLogBackupPolicyRequest struct {
 	// The ID of the cluster.
 	//
-	// >  You can call the [DescribeDBClusters](~~98094~~) operation to query all the information about the available clusters in the target region, including the cluster ID.
+	// >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to query all the information about the available clusters in the target region, including the cluster ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pc-*****************
 	DBClusterId          *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -14351,25 +18715,49 @@ func (s *DescribeLogBackupPolicyRequest) SetResourceOwnerId(v int64) *DescribeLo
 type DescribeLogBackupPolicyResponseBody struct {
 	// Indicates whether the log backup feature is enabled. Valid values:
 	//
-	// *   0: The log backup feature is disabled.
-	// *   1: The log backup feature is enabled. By default, the log backup feature is enabled and cannot be disabled.
+	// 	- 0: The log backup feature is disabled.
+	//
+	// 	- 1: The log backup feature is enabled. By default, the log backup feature is enabled and cannot be disabled.
+	//
+	// example:
+	//
+	// 1
 	EnableBackupLog *int32 `json:"EnableBackupLog,omitempty" xml:"EnableBackupLog,omitempty"`
-	// The region in which you want to store cross-region log backups. For more information about regions that support the cross-region backup feature, see [Overview](~~72672~~).
+	// The region in which you want to store cross-region log backups. For more information about regions that support the cross-region backup feature, see [Overview](https://help.aliyun.com/document_detail/72672.html).
+	//
+	// example:
+	//
+	// cn-beijing
 	LogBackupAnotherRegionRegion *string `json:"LogBackupAnotherRegionRegion,omitempty" xml:"LogBackupAnotherRegionRegion,omitempty"`
 	// The retention period of cross-region log backups. Valid values:
 	//
-	// *   **0**: The cross-region backup feature is disabled.
-	// *   **30 to 7300**: Cross-region log backups are retained for 30 to 7,300 days.
-	// *   **-1**: The log backups are permanently retained.
+	// 	- **0**: The cross-region backup feature is disabled.
+	//
+	// 	- **30 to 7300**: Cross-region log backups are retained for 30 to 7,300 days.
+	//
+	// 	- **-1**: The log backups are permanently retained.
 	//
 	// >  When you create a cluster, the default value of this parameter is **0**.
+	//
+	// example:
+	//
+	// 0
 	LogBackupAnotherRegionRetentionPeriod *string `json:"LogBackupAnotherRegionRetentionPeriod,omitempty" xml:"LogBackupAnotherRegionRetentionPeriod,omitempty"`
 	// The retention period of the log backups. Valid values:
 	//
-	// *   3 to 7300: The log backups are retained for 3 to 7,300 days.
-	// *   \-1: The log backups are permanently retained.
+	// 	- 3 to 7300: The log backups are retained for 3 to 7,300 days.
+	//
+	// 	- \\-1: The log backups are permanently retained.
+	//
+	// example:
+	//
+	// 7
 	LogBackupRetentionPeriod *int32 `json:"LogBackupRetentionPeriod,omitempty" xml:"LogBackupRetentionPeriod,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 62EE0051-102B-488D-9C79-D607B8******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -14438,9 +18826,19 @@ func (s *DescribeLogBackupPolicyResponse) SetBody(v *DescribeLogBackupPolicyResp
 type DescribeMaskingRulesRequest struct {
 	// The ID of the cluster.
 	//
-	// > You can call the [DescribeDBClusters](~~98094~~) operation to query the details of the clusters that belong to your Alibaba Cloud account, such as cluster IDs.
+	// > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to query the details of the clusters that belong to your Alibaba Cloud account, such as cluster IDs.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pc-*****************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	// The name of the masking rule.
+	//
+	// example:
+	//
+	// testrule
 	RuleNameList *string `json:"RuleNameList,omitempty" xml:"RuleNameList,omitempty"`
 }
 
@@ -14464,19 +18862,36 @@ func (s *DescribeMaskingRulesRequest) SetRuleNameList(v string) *DescribeMasking
 
 type DescribeMaskingRulesResponseBody struct {
 	// The ID of the cluster.
+	//
+	// example:
+	//
+	// pc-bp1s826a1up******
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	// The result data that is returned.
 	Data *DescribeMaskingRulesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The message that is returned for the request.
 	//
 	// > If the request is successful, Successful is returned. If the request fails, an error message such as an error code is returned.
+	//
+	// example:
+	//
+	// Successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 2F83D131-1C18-4599-889D-729A9D******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request is successful. Valid value:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -14569,39 +18984,71 @@ func (s *DescribeMaskingRulesResponse) SetBody(v *DescribeMaskingRulesResponseBo
 type DescribeMetaListRequest struct {
 	// The ID of the data backup file.
 	//
-	// >*   When you run a query, you must specify the `BackId` or `RestoreTime` parameter.
-	// >*   You can call the [DescribeBackups](~~98102~~) operation to query the ID of the backup set.
+	// >	- When you run a query, you must specify the `BackId` or `RestoreTime` parameter.
+	//
+	// >	- You can call the [DescribeBackups](https://help.aliyun.com/document_detail/98102.html) operation to query the ID of the backup set.
+	//
+	// example:
+	//
+	// 111111
 	BackupId *string `json:"BackupId,omitempty" xml:"BackupId,omitempty"`
 	// The ID of the cluster.
 	//
-	// >  You can call the [DescribeDBClusters](~~98094~~) operation to query the details of all clusters under your account.
+	// >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to query the details of all clusters under your account.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pc-**************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	// Specify the specific database name (such as `test_db`) to query the names of all data tables that can be restored in the desired database.
 	//
-	// >*   You can specify only one database name each time.
-	// >*   If you do not specify this parameter, you can query the names of all databases that can be restored in the current backup set. However, you cannot query the names of data tables in each database.
+	// >	- You can specify only one database name each time.
+	//
+	// >	- If you do not specify this parameter, you can query the names of all databases that can be restored in the current backup set. However, you cannot query the names of data tables in each database.
+	//
+	// example:
+	//
+	// test_db
 	GetDbName    *string `json:"GetDbName,omitempty" xml:"GetDbName,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The number of the page to return. The value must be an integer that is greater than 0. Default value: **1**.
+	//
+	// example:
+	//
+	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries to return on each page. Valid values:
 	//
-	// *   **30**
+	// 	- **30**
 	//
-	// *   **50**
+	// 	- **50**
 	//
-	// *   **100**
+	// 	- **100**
 	//
 	//     Default value: **30**.
+	//
+	// example:
+	//
+	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the region in which the instance resides. You can call the [DescribeDBClusterAttribute](~~2319132~~) operation to query the region ID of the instance.
+	// The ID of the region in which the instance resides. You can call the [DescribeDBClusterAttribute](https://help.aliyun.com/document_detail/2319132.html) operation to query the region ID of the instance.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionCode           *string `json:"RegionCode,omitempty" xml:"RegionCode,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The point in time for the restoration. Specify the time in the YYYY-MM-DDThh:mmZ format. The time must be in UTC.
 	//
-	// >  When you run a query, you must specify the `BackId` or `RestoreTime` parameter. You can call the [DescribeBackups](~~98102~~) operation to query the point in time for the restoration.
+	// >  When you run a query, you must specify the `BackId` or `RestoreTime` parameter. You can call the [DescribeBackups](https://help.aliyun.com/document_detail/98102.html) operation to query the point in time for the restoration.
+	//
+	// example:
+	//
+	// 2020-10-04T01:40:00Z
 	RestoreTime   *string `json:"RestoreTime,omitempty" xml:"RestoreTime,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 }
@@ -14676,18 +19123,42 @@ func (s *DescribeMetaListRequest) SetSecurityToken(v string) *DescribeMetaListRe
 
 type DescribeMetaListResponseBody struct {
 	// The ID of the cluster.
+	//
+	// example:
+	//
+	// pc-bp1s826a1up******
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	// The details of databases and tables that can be restored.
 	Items []*DescribeMetaListResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
 	// The number of the returned page.
+	//
+	// example:
+	//
+	// 1
 	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries returned per page.
+	//
+	// example:
+	//
+	// 30
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// AA815DE7-B576-4B22-B33C-3FB31A******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The total number of returned pages.
+	//
+	// example:
+	//
+	// 1
 	TotalPageCount *string `json:"TotalPageCount,omitempty" xml:"TotalPageCount,omitempty"`
 	// The total number of entries.
+	//
+	// example:
+	//
+	// 2
 	TotalRecordCount *string `json:"TotalRecordCount,omitempty" xml:"TotalRecordCount,omitempty"`
 }
 
@@ -14736,6 +19207,10 @@ func (s *DescribeMetaListResponseBody) SetTotalRecordCount(v string) *DescribeMe
 
 type DescribeMetaListResponseBodyItems struct {
 	// The name of the database that can be restored.
+	//
+	// example:
+	//
+	// test_db
 	Database *string `json:"Database,omitempty" xml:"Database,omitempty"`
 	// The name of the table that can be restored.
 	Tables []*string `json:"Tables,omitempty" xml:"Tables,omitempty" type:"Repeated"`
@@ -14793,13 +19268,29 @@ type DescribeParameterGroupRequest struct {
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The ID of the parameter template.
 	//
-	// > You can call the [DescribeParameterGroups](~~207178~~) operation to query the details of all parameter templates of a specified region, such as the ID of a parameter template.
+	// > You can call the [DescribeParameterGroups](https://help.aliyun.com/document_detail/207178.html) operation to query the details of all parameter templates of a specified region, such as the ID of a parameter template.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pcpg-**************
 	ParameterGroupId *string `json:"ParameterGroupId,omitempty" xml:"ParameterGroupId,omitempty"`
 	// The region ID.
 	//
-	// >You can call the [DescribeRegions](~~98041~~) operation to query all regions that are available within your account, such as the region ID.
+	// >You can call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to query all regions that are available within your account, such as the region ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the resource group.
+	//
+	// example:
+	//
+	// rg-************
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -14852,6 +19343,10 @@ type DescribeParameterGroupResponseBody struct {
 	// Details about the parameter templates.
 	ParameterGroup []*DescribeParameterGroupResponseBodyParameterGroup `json:"ParameterGroup,omitempty" xml:"ParameterGroup,omitempty" type:"Repeated"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// F1F16757-D31B-49CA-9BF4-305BAF******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -14875,31 +19370,70 @@ func (s *DescribeParameterGroupResponseBody) SetRequestId(v string) *DescribePar
 
 type DescribeParameterGroupResponseBodyParameterGroup struct {
 	// The time when the parameter template was created. The time is in the `yyyy-MM-ddTHH:mm:ssZ` format. The time is displayed in UTC.
+	//
+	// example:
+	//
+	// 2023-03-10T08:40:39Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The type of the database engine.
+	//
+	// example:
+	//
+	// MySQL
 	DBType *string `json:"DBType,omitempty" xml:"DBType,omitempty"`
 	// The version of the database engine.
+	//
+	// example:
+	//
+	// 8.0
 	DBVersion *string `json:"DBVersion,omitempty" xml:"DBVersion,omitempty"`
 	// Indicates whether to restart the cluster when this parameter template is applied. Valid values:
 	//
-	// *   **0**: A restart is not required.
-	// *   **1**: A restart is required.
+	// 	- **0**: A restart is not required.
+	//
+	// 	- **1**: A restart is required.
+	//
+	// example:
+	//
+	// 1
 	ForceRestart *string `json:"ForceRestart,omitempty" xml:"ForceRestart,omitempty"`
 	// The number of parameters in the parameter template.
+	//
+	// example:
+	//
+	// 2
 	ParameterCounts *int32 `json:"ParameterCounts,omitempty" xml:"ParameterCounts,omitempty"`
 	// Details about the parameters.
 	ParameterDetail []*DescribeParameterGroupResponseBodyParameterGroupParameterDetail `json:"ParameterDetail,omitempty" xml:"ParameterDetail,omitempty" type:"Repeated"`
 	// The description of the parameter template.
+	//
+	// example:
+	//
+	// testgroup
 	ParameterGroupDesc *string `json:"ParameterGroupDesc,omitempty" xml:"ParameterGroupDesc,omitempty"`
 	// The ID of the parameter template.
+	//
+	// example:
+	//
+	// pcpg-**************
 	ParameterGroupId *string `json:"ParameterGroupId,omitempty" xml:"ParameterGroupId,omitempty"`
 	// The name of the parameter template.
+	//
+	// example:
+	//
+	// test
 	ParameterGroupName *string `json:"ParameterGroupName,omitempty" xml:"ParameterGroupName,omitempty"`
 	// The type of the parameter template. Valid values:
 	//
-	// *   **0**: the default parameter template.
-	// *   **1**: a custom parameter template.
-	// *   **2**: an automatic backup parameter template. After you apply this type of template, the system automatically backs up the original parameter settings and saves the backup as a template.
+	// 	- **0**: the default parameter template.
+	//
+	// 	- **1**: a custom parameter template.
+	//
+	// 	- **2**: an automatic backup parameter template. After you apply this type of template, the system automatically backs up the original parameter settings and saves the backup as a template.
+	//
+	// example:
+	//
+	// 1
 	ParameterGroupType *string `json:"ParameterGroupType,omitempty" xml:"ParameterGroupType,omitempty"`
 }
 
@@ -14963,8 +19497,16 @@ func (s *DescribeParameterGroupResponseBodyParameterGroup) SetParameterGroupType
 
 type DescribeParameterGroupResponseBodyParameterGroupParameterDetail struct {
 	// The name of the parameter.
+	//
+	// example:
+	//
+	// back_log
 	ParamName *string `json:"ParamName,omitempty" xml:"ParamName,omitempty"`
 	// The value of the parameter.
+	//
+	// example:
+	//
+	// 3000
 	ParamValue *string `json:"ParamValue,omitempty" xml:"ParamValue,omitempty"`
 }
 
@@ -15016,21 +19558,41 @@ func (s *DescribeParameterGroupResponse) SetBody(v *DescribeParameterGroupRespon
 }
 
 type DescribeParameterGroupsRequest struct {
-	// The type of the database engine. Only **MySQL** is supported.
+	// The type of the database engine. Only **MySQL*	- is supported.
+	//
+	// example:
+	//
+	// MySQL
 	DBType *string `json:"DBType,omitempty" xml:"DBType,omitempty"`
 	// The version of the database engine. Valid values:
 	//
-	// *   **5.6**
-	// *   **5.7**
-	// *   **8.0**
+	// 	- **5.6**
+	//
+	// 	- **5.7**
+	//
+	// 	- **8.0**
+	//
+	// example:
+	//
+	// 8.0
 	DBVersion    *string `json:"DBVersion,omitempty" xml:"DBVersion,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The region ID of the cluster.
 	//
-	// > You can call the [DescribeRegions](~~98041~~) operation to query all regions that are available for your account, such as the region ID.
+	// > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to query all regions that are available for your account, such as the region ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the resource group to which the virtual node belongs.
+	//
+	// example:
+	//
+	// rg-************
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -15088,6 +19650,10 @@ type DescribeParameterGroupsResponseBody struct {
 	// The details of parameter templates.
 	ParameterGroups []*DescribeParameterGroupsResponseBodyParameterGroups `json:"ParameterGroups,omitempty" xml:"ParameterGroups,omitempty" type:"Repeated"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 944CED46-A6F7-40C6-B6DC-C6E5CC******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -15111,29 +19677,68 @@ func (s *DescribeParameterGroupsResponseBody) SetRequestId(v string) *DescribePa
 
 type DescribeParameterGroupsResponseBodyParameterGroups struct {
 	// The time when the parameter template was created. The time is in the `yyyy-MM-ddTHH:mm:ssZ` format. The time is displayed in UTC.
+	//
+	// example:
+	//
+	// 2023-03-10T08:40:39Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The type of the engine.
+	//
+	// example:
+	//
+	// MySQL
 	DBType *string `json:"DBType,omitempty" xml:"DBType,omitempty"`
 	// The version of the database engine
+	//
+	// example:
+	//
+	// 8.0
 	DBVersion *string `json:"DBVersion,omitempty" xml:"DBVersion,omitempty"`
 	// Indicates whether to restart the cluster when this parameter template is applied. Valid values:
 	//
-	// *   **0**: A restart is not required.
-	// *   **1**: A restart is required.
+	// 	- **0**: A restart is not required.
+	//
+	// 	- **1**: A restart is required.
+	//
+	// example:
+	//
+	// 1
 	ForceRestart *string `json:"ForceRestart,omitempty" xml:"ForceRestart,omitempty"`
 	// The number of parameters in the parameter template.
+	//
+	// example:
+	//
+	// 2
 	ParameterCounts *int64 `json:"ParameterCounts,omitempty" xml:"ParameterCounts,omitempty"`
 	// The description of the parameter template.
+	//
+	// example:
+	//
+	// testgroup
 	ParameterGroupDesc *string `json:"ParameterGroupDesc,omitempty" xml:"ParameterGroupDesc,omitempty"`
 	// The ID of the parameter template.
+	//
+	// example:
+	//
+	// pcpg-**************
 	ParameterGroupId *string `json:"ParameterGroupId,omitempty" xml:"ParameterGroupId,omitempty"`
 	// The name of the parameter template.
+	//
+	// example:
+	//
+	// test
 	ParameterGroupName *string `json:"ParameterGroupName,omitempty" xml:"ParameterGroupName,omitempty"`
 	// The type of the parameter template. Valid values:
 	//
-	// *   **0**: the default parameter template.
-	// *   **1**: a custom parameter template.
-	// *   **2**: an automatic backup parameter template. After you apply this type of template, the system automatically backs up the original parameter settings and saves the backup as a template.
+	// 	- **0**: the default parameter template.
+	//
+	// 	- **1**: a custom parameter template.
+	//
+	// 	- **2**: an automatic backup parameter template. After you apply this type of template, the system automatically backs up the original parameter settings and saves the backup as a template.
+	//
+	// example:
+	//
+	// 1
 	ParameterGroupType *string `json:"ParameterGroupType,omitempty" xml:"ParameterGroupType,omitempty"`
 }
 
@@ -15220,21 +19825,45 @@ func (s *DescribeParameterGroupsResponse) SetBody(v *DescribeParameterGroupsResp
 }
 
 type DescribeParameterTemplatesRequest struct {
-	// The type of the database engine. Only **MySQL** is supported.
+	// The type of the database engine. Only **MySQL*	- is supported.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// MySQL
 	DBType *string `json:"DBType,omitempty" xml:"DBType,omitempty"`
 	// The version of the database. Valid values:
 	//
-	// *   **5.6**
-	// *   **5.7**
-	// *   **8.0**
+	// 	- **5.6**
+	//
+	// 	- **5.7**
+	//
+	// 	- **8.0**
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 5.7
 	DBVersion    *string `json:"DBVersion,omitempty" xml:"DBVersion,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The region ID.
 	//
-	// >  You can call the [DescribeRegions](~~98041~~) operation to query all regions that are available within your account, such as the region IDs.
+	// >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to query all regions that are available within your account, such as the region IDs.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the resource group.
+	//
+	// example:
+	//
+	// rg-************
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -15290,16 +19919,36 @@ func (s *DescribeParameterTemplatesRequest) SetResourceOwnerId(v int64) *Describ
 
 type DescribeParameterTemplatesResponseBody struct {
 	// The type of the database engine.
+	//
+	// example:
+	//
+	// MySQL
 	DBType *string `json:"DBType,omitempty" xml:"DBType,omitempty"`
 	// The version of the database engine.
+	//
+	// example:
+	//
+	// 5.7
 	DBVersion *string `json:"DBVersion,omitempty" xml:"DBVersion,omitempty"`
 	// The database engine of the cluster.
+	//
+	// example:
+	//
+	// POLARDB
 	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
 	// The number of parameters.
+	//
+	// example:
+	//
+	// 183
 	ParameterCount *string `json:"ParameterCount,omitempty" xml:"ParameterCount,omitempty"`
 	// The details of the parameters.
 	Parameters *DescribeParameterTemplatesResponseBodyParameters `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Struct"`
 	// The request ID.
+	//
+	// example:
+	//
+	// D963934D-8605-4473-8EAC-54C719******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -15360,29 +20009,64 @@ func (s *DescribeParameterTemplatesResponseBodyParameters) SetTemplateRecord(v [
 
 type DescribeParameterTemplatesResponseBodyParametersTemplateRecord struct {
 	// The valid values of the parameter.
+	//
+	// example:
+	//
+	// [ROW|STATEMENT|MIXED]
 	CheckingCode *string `json:"CheckingCode,omitempty" xml:"CheckingCode,omitempty"`
 	// Indicates whether the parameter setting can be modified. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
 	ForceModify *string `json:"ForceModify,omitempty" xml:"ForceModify,omitempty"`
 	// Indicates whether a cluster restart is required to make the parameter modification take effect. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// false
 	ForceRestart *string `json:"ForceRestart,omitempty" xml:"ForceRestart,omitempty"`
 	// Indicates whether the parameter is a global parameter. Valid values:
 	//
-	// *   **0**: yes. The modified parameter value is synchronized to other nodes by default.
-	// *   **1**: no. You can customize the nodes to which the modified parameter value can be synchronized.
+	// 	- **0**: yes. The modified parameter value is synchronized to other nodes by default.
+	//
+	// 	- **1**: no. You can customize the nodes to which the modified parameter value can be synchronized.
+	//
+	// example:
+	//
+	// 1
 	IsNodeAvailable *string `json:"IsNodeAvailable,omitempty" xml:"IsNodeAvailable,omitempty"`
 	// The parameter dependencies.
+	//
+	// example:
+	//
+	// utf8
 	ParamRelyRule *string `json:"ParamRelyRule,omitempty" xml:"ParamRelyRule,omitempty"`
 	// The description of the parameter.
+	//
+	// example:
+	//
+	// What form of binary logging the master will use.
 	ParameterDescription *string `json:"ParameterDescription,omitempty" xml:"ParameterDescription,omitempty"`
 	// The name of the parameter.
+	//
+	// example:
+	//
+	// binlog_format
 	ParameterName *string `json:"ParameterName,omitempty" xml:"ParameterName,omitempty"`
 	// The default value of the parameter.
+	//
+	// example:
+	//
+	// ROW
 	ParameterValue *string `json:"ParameterValue,omitempty" xml:"ParameterValue,omitempty"`
 }
 
@@ -15466,37 +20150,72 @@ func (s *DescribeParameterTemplatesResponse) SetBody(v *DescribeParameterTemplat
 type DescribePendingMaintenanceActionRequest struct {
 	// Specifies whether to return the historical tasks. Valid values:
 	//
-	// *   **0**: returns the current task.
-	// *   **1**: returns the historical tasks.
+	// 	- **0**: returns the current task.
+	//
+	// 	- **1**: returns the historical tasks.
 	//
 	// Default value: **0**.
+	//
+	// example:
+	//
+	// 0
 	IsHistory    *int32  `json:"IsHistory,omitempty" xml:"IsHistory,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The page number. The value of this parameter must be an integer that is greater than 0. Default value: **1**.
+	//
+	// example:
+	//
+	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries per page. Valid values: **30**, **50**, or **100**.
 	//
 	// Default value: **30**.
+	//
+	// example:
+	//
+	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region ID of the pending event. You can call the [DescribeRegions](~~98041~~) operation to query the regions and zones that are supported by PolarDB.
-	// >- You can set this parameter to **all** to view all pending events within your account.
+	// The region ID of the pending event. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to query the regions and zones that are supported by PolarDB.
+	//
+	// >- You can set this parameter to **all*	- to view all pending events within your account.
+	//
 	// >- If you set `Region` to **all**, you must set `TaskType` to **all**.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// all
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
 	// The ID of the resource group.
+	//
+	// example:
+	//
+	// rg-************
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 	// The task type of pending events. Valid values:
 	//
-	// *   **DatabaseSoftwareUpgrading**: database software upgrades
-	// *   **DatabaseHardwareMaintenance**: hardware maintenance and upgrades
-	// *   **DatabaseStorageUpgrading**: database storage upgrades
-	// *   **DatabaseProxyUpgrading**: minor version upgrades of the proxy
-	// *   **all**: queries the details of the pending events of all preceding types.
+	// 	- **DatabaseSoftwareUpgrading**: database software upgrades
+	//
+	// 	- **DatabaseHardwareMaintenance**: hardware maintenance and upgrades
+	//
+	// 	- **DatabaseStorageUpgrading**: database storage upgrades
+	//
+	// 	- **DatabaseProxyUpgrading**: minor version upgrades of the proxy
+	//
+	// 	- **all**: queries the details of the pending events of all preceding types.
 	//
 	// > If the `Region` parameter is set to **all**, the `TaskType` parameter must be set to **all**.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// all
 	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
 }
 
@@ -15567,12 +20286,28 @@ type DescribePendingMaintenanceActionResponseBody struct {
 	// Details about tasks.
 	Items []*DescribePendingMaintenanceActionResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
 	// The page number.
+	//
+	// example:
+	//
+	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries per page.
+	//
+	// example:
+	//
+	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 2F029645-FED9-4FE8-A6D3-488954******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The total number of returned entries.
+	//
+	// example:
+	//
+	// 1
 	TotalRecordCount *int32 `json:"TotalRecordCount,omitempty" xml:"TotalRecordCount,omitempty"`
 }
 
@@ -15611,66 +20346,132 @@ func (s *DescribePendingMaintenanceActionResponseBody) SetTotalRecordCount(v int
 
 type DescribePendingMaintenanceActionResponseBodyItems struct {
 	// The time when the task was created. The time is in the `yyyy-MM-ddTHH:mm:ssZ` format. The time is displayed in UTC.
+	//
+	// example:
+	//
+	// 2020-06-09T22:00:42Z
 	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
 	// The ID of the cluster.
+	//
+	// example:
+	//
+	// pc-************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	// The type of the database engine. Valid values:
 	//
-	// *   **MySQL**
-	// *   **PostgreSQL**
-	// *   **Oracle**
+	// 	- **MySQL**
+	//
+	// 	- **PostgreSQL**
+	//
+	// 	- **Oracle**
+	//
+	// example:
+	//
+	// MySQL
 	DBType *string `json:"DBType,omitempty" xml:"DBType,omitempty"`
 	// The version of the database engine.
 	//
-	// *   Valid values for the MySQL database engine:
+	// 	- Valid values for the MySQL database engine:
 	//
-	//     *   **5.6**
-	//     *   **5.7**
-	//     *   **8.0**
+	//     	- **5.6**
 	//
-	// *   Valid values for the PostgreSQL database engine:
+	//     	- **5.7**
 	//
-	//     *   **11**
-	//     *   **14**
+	//     	- **8.0**
 	//
-	// *   Valid value for the Oracle database engine: **11**
+	// 	- Valid values for the PostgreSQL database engine:
+	//
+	//     	- **11**
+	//
+	//     	- **14**
+	//
+	// 	- Valid value for the Oracle database engine: **11**
+	//
+	// example:
+	//
+	// 8.0
 	DBVersion *string `json:"DBVersion,omitempty" xml:"DBVersion,omitempty"`
 	// The deadline before which the task can be executed. The time is in the `yyyy-MM-ddTHH:mm:ssZ` format. The time is displayed in UTC.
+	//
+	// example:
+	//
+	// 2020-06-11T15:59:59Z
 	Deadline *string `json:"Deadline,omitempty" xml:"Deadline,omitempty"`
 	// The ID of the task.
+	//
+	// example:
+	//
+	// 111111
 	Id *int32 `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The time when the parameter was modified. The time is in the `yyyy-MM-ddTHH:mm:ssZ` format. The time is displayed in UTC.
+	//
+	// example:
+	//
+	// 2020-06-09T22:00:42Z
 	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
 	// The preparation time that is required before the pending event is switched. The time follows the `HH:mm:ss` format.
+	//
+	// example:
+	//
+	// 04:00:00
 	PrepareInterval *string `json:"PrepareInterval,omitempty" xml:"PrepareInterval,omitempty"`
 	// The region ID of the pending event.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
 	// The execution result of the task. Valid values:
 	//
-	// *   **manualCancel**: The task is manually canceled.
-	// *   **paramCheckNotPass**: The task fails to pass the parameter check.
+	// 	- **manualCancel**: The task is manually canceled.
 	//
-	// > This parameter is returned only when the value of the `Status` parameter is **6** or **7**. The value 6 indicates that the task is completed but fails to be executed. The value 7 indicates that the task is canceled.
+	// 	- **paramCheckNotPass**: The task fails to pass the parameter check.
+	//
+	// > This parameter is returned only when the value of the `Status` parameter is **6*	- or **7**. The value 6 indicates that the task is completed but fails to be executed. The value 7 indicates that the task is canceled.
+	//
+	// example:
+	//
+	// manualCancel
 	ResultInfo *string `json:"ResultInfo,omitempty" xml:"ResultInfo,omitempty"`
 	// The time when the task was executed in the background. The time is in the `yyyy-MM-ddTHH:mm:ssZ` format. The time is displayed in UTC.
+	//
+	// example:
+	//
+	// 2020-06-09T18:00:00Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// The status of the pending task.
 	//
-	// *   If you set the `IsHistory` parameter to **0**, the status of the pending task is returned. Valid values:
+	// 	- If you set the `IsHistory` parameter to **0**, the status of the pending task is returned. Valid values:
 	//
-	//     *   **2**: The start time of the task is to be specified.
-	//     *   **3**: The task is pending.
-	//     *   **4**: The task is running. In this case, you cannot modify the execution time.
+	//     	- **2**: The start time of the task is to be specified.
 	//
-	// *   If you set the `IsHistory` parameter to **1**, the details of the historical tasks are returned. Valid values:
+	//     	- **3**: The task is pending.
 	//
-	//     *   **5**: The task is completed and executed.
-	//     *   **6**: The task is completed but fails to be executed.
-	//     *   **7**: The task is canceled.
+	//     	- **4**: The task is running. In this case, you cannot modify the execution time.
+	//
+	// 	- If you set the `IsHistory` parameter to **1**, the details of the historical tasks are returned. Valid values:
+	//
+	//     	- **5**: The task is completed and executed.
+	//
+	//     	- **6**: The task is completed but fails to be executed.
+	//
+	//     	- **7**: The task is canceled.
+	//
+	// example:
+	//
+	// 3
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The time when the pending event was switched. The time is in the `yyyy-MM-ddTHH:mm:ssZ` format. The time is displayed in UTC.
+	//
+	// example:
+	//
+	// 2020-06-09T22:00:00Z
 	SwitchTime *string `json:"SwitchTime,omitempty" xml:"SwitchTime,omitempty"`
 	// The type of the pending event.
+	//
+	// example:
+	//
+	// DatabaseSoftwareUpgrading
 	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
 }
 
@@ -15784,16 +20585,31 @@ func (s *DescribePendingMaintenanceActionResponse) SetBody(v *DescribePendingMai
 type DescribePendingMaintenanceActionsRequest struct {
 	// Specifies whether to return the historical tasks. Valid values:
 	//
-	// *   **0**: returns the current task.
-	// *   **1**: returns the historical tasks.
+	// 	- **0**: returns the current task.
+	//
+	// 	- **1**: returns the historical tasks.
 	//
 	// Default value: **0**.
+	//
+	// example:
+	//
+	// 1
 	IsHistory    *int32  `json:"IsHistory,omitempty" xml:"IsHistory,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The ID of the region.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the resource group.
+	//
+	// example:
+	//
+	// rg-************
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -15850,6 +20666,10 @@ func (s *DescribePendingMaintenanceActionsRequest) SetSecurityToken(v string) *D
 
 type DescribePendingMaintenanceActionsResponseBody struct {
 	// The request ID.
+	//
+	// example:
+	//
+	// 314127C2-B6C1-4F58-B1F6-E6B645******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The details of pending events.
 	TypeList []*DescribePendingMaintenanceActionsResponseBodyTypeList `json:"TypeList,omitempty" xml:"TypeList,omitempty" type:"Repeated"`
@@ -15875,13 +20695,24 @@ func (s *DescribePendingMaintenanceActionsResponseBody) SetTypeList(v []*Describ
 
 type DescribePendingMaintenanceActionsResponseBodyTypeList struct {
 	// The number of pending events.
+	//
+	// example:
+	//
+	// 1
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
 	// The task type of pending events. Valid values:
 	//
-	// *   **DatabaseSoftwareUpgrading**: database software upgrades
-	// *   **DatabaseHardwareMaintenance**: hardware maintenance and upgrades
-	// *   **DatabaseStorageUpgrading**: database storage upgrades
-	// *   **DatabaseProxyUpgrading**: minor version upgrades of the proxy
+	// 	- **DatabaseSoftwareUpgrading**: database software upgrades
+	//
+	// 	- **DatabaseHardwareMaintenance**: hardware maintenance and upgrades
+	//
+	// 	- **DatabaseStorageUpgrading**: database storage upgrades
+	//
+	// 	- **DatabaseProxyUpgrading**: minor version upgrades of the proxy
+	//
+	// example:
+	//
+	// DatabaseSoftwareUpgrading
 	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
 }
 
@@ -15935,7 +20766,13 @@ func (s *DescribePendingMaintenanceActionsResponse) SetBody(v *DescribePendingMa
 type DescribePolarSQLCollectorPolicyRequest struct {
 	// The ID of the cluster.
 	//
-	// > You can call the [DescribeDBClusters](~~98094~~) operation to query the details of all the clusters for your account, such as the cluster ID.
+	// > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to query the details of all the clusters for your account, such as the cluster ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pc-****************
 	DBClusterId          *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -15978,13 +20815,26 @@ func (s *DescribePolarSQLCollectorPolicyRequest) SetResourceOwnerId(v int64) *De
 
 type DescribePolarSQLCollectorPolicyResponseBody struct {
 	// The IDs of the clusters.
+	//
+	// example:
+	//
+	// pc-bp1s826a1up******
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 3655211B-4D74-4E13-91E6-FF2AFE******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the SQL Explorer feature is enabled. Valid values:
 	//
-	// *   **Enable**
-	// *   **Disabled**
+	// 	- **Enable**
+	//
+	// 	- **Disabled**
+	//
+	// example:
+	//
+	// Enable
 	SQLCollectorStatus *string `json:"SQLCollectorStatus,omitempty" xml:"SQLCollectorStatus,omitempty"`
 }
 
@@ -16079,6 +20929,10 @@ type DescribeRegionsResponseBody struct {
 	// The list of regions.
 	Regions *DescribeRegionsResponseBodyRegions `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Struct"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 3F9E6A3B-C13E-4064-A010-18582A******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -16119,6 +20973,10 @@ func (s *DescribeRegionsResponseBodyRegions) SetRegion(v []*DescribeRegionsRespo
 
 type DescribeRegionsResponseBodyRegionsRegion struct {
 	// The ID of the region.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The list of zones.
 	Zones *DescribeRegionsResponseBodyRegionsRegionZones `json:"Zones,omitempty" xml:"Zones,omitempty" type:"Struct"`
@@ -16161,8 +21019,16 @@ func (s *DescribeRegionsResponseBodyRegionsRegionZones) SetZone(v []*DescribeReg
 
 type DescribeRegionsResponseBodyRegionsRegionZonesZone struct {
 	// Indicates whether virtual private clouds (VPCs) are supported.
+	//
+	// example:
+	//
+	// true
 	VpcEnabled *bool `json:"VpcEnabled,omitempty" xml:"VpcEnabled,omitempty"`
 	// The ID of the zone.
+	//
+	// example:
+	//
+	// cn-hangzhou-g
 	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
@@ -16215,65 +21081,118 @@ func (s *DescribeRegionsResponse) SetBody(v *DescribeRegionsResponseBody) *Descr
 
 type DescribeScheduleTasksRequest struct {
 	// The description of the cluster.
+	//
+	// example:
+	//
+	// testdb
 	DBClusterDescription *string `json:"DBClusterDescription,omitempty" xml:"DBClusterDescription,omitempty"`
 	// The cluster ID.
 	//
 	// >
 	//
-	// *   You can call the [DescribeDBClusters](~~98094~~) operation to query the information of all PolarDB clusters that are deployed in a specific region, such as the cluster IDs.
+	// 	- You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to query the information of all PolarDB clusters that are deployed in a specific region, such as the cluster IDs.
 	//
-	// *   If you do not specify this parameter, all scheduled tasks on your clusters are queried.
+	// 	- If you do not specify this parameter, all scheduled tasks on your clusters are queried.
+	//
+	// example:
+	//
+	// pc-**************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	// The ID of the order.
 	//
 	// >  The order ID can contain only digits.
+	//
+	// example:
+	//
+	// 20951253014****
 	OrderId      *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The page number of the page to return. Set this parameter to an integer that is greater than 0. Default value: **1**.
+	//
+	// example:
+	//
+	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries to return on each page. Valid values: **30**, **50**, and **100**. Default value: 30.
+	//
+	// example:
+	//
+	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The latest start time of the task that you specified when you created the scheduled task. The time is displayed in UTC.
+	//
+	// example:
+	//
+	// 2021-01-28T12:30Z
 	PlannedEndTime *string `json:"PlannedEndTime,omitempty" xml:"PlannedEndTime,omitempty"`
 	// The earliest start time of the task that you specified when you created the scheduled task. The time is displayed in UTC.
+	//
+	// example:
+	//
+	// 2021-01-28T12:00Z
 	PlannedStartTime *string `json:"PlannedStartTime,omitempty" xml:"PlannedStartTime,omitempty"`
 	// The ID of the region.
 	//
 	// >
 	//
-	// *   You can call the [DescribeRegions](~~98041~~) operation to query the region information of all clusters in a specific account.
+	// 	- You can call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to query the region information of all clusters in a specific account.
 	//
-	// *   If you do not specify this parameter, scheduled tasks on your clusters that are deployed in all regions are queried.
+	// 	- If you do not specify this parameter, scheduled tasks on your clusters that are deployed in all regions are queried.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the resource group.
+	//
+	// example:
+	//
+	// rg-************
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The state of the tasks that you want to query. Valid values:
 	//
-	// *   **pending**: The tasks are pending execution.
-	// *   **executing**: The tasks are being executed.
-	// *   **failure**: The tasks failed and need to be run again.
-	// *   **finish**: The tasks are complete.
-	// *   **cancel**: The tasks are canceled.
-	// *   **expired**: The tasks are expired. The tasks are not started within the time periods that are specified to start the tasks.
-	// *   **rollback**: The tasks are being rolled back.
+	// 	- **pending**: The tasks are pending execution.
+	//
+	// 	- **executing**: The tasks are being executed.
+	//
+	// 	- **failure**: The tasks failed and need to be run again.
+	//
+	// 	- **finish**: The tasks are complete.
+	//
+	// 	- **cancel**: The tasks are canceled.
+	//
+	// 	- **expired**: The tasks are expired. The tasks are not started within the time periods that are specified to start the tasks.
+	//
+	// 	- **rollback**: The tasks are being rolled back.
 	//
 	// >  If you do not specify this parameter, all scheduled tasks in all states are queried.
+	//
+	// example:
+	//
+	// finish
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The type of scheduled tasks that you want to query. Valid values:
 	//
-	// *   **CreateDBNodes**
-	// *   **ModifyDBNodeClass**
-	// *   **UpgradeDBClusterVersion**
-	// *   **ModifyDBClusterPrimaryZone**
+	// 	- **CreateDBNodes**
+	//
+	// 	- **ModifyDBNodeClass**
+	//
+	// 	- **UpgradeDBClusterVersion**
+	//
+	// 	- **ModifyDBClusterPrimaryZone**
 	//
 	// >
 	//
-	// *   If you specify the `PlannedStartTime` parameter when you call the four preceding operations, the details of each task are returned. Otherwise, an empty string is returned for the `TimerInfos` parameter.
+	// 	- If you specify the `PlannedStartTime` parameter when you call the four preceding operations, the details of each task are returned. Otherwise, an empty string is returned for the `TimerInfos` parameter.
 	//
-	// *   If you do not specify this parameter, all types of scheduled tasks on you clusters are queried.
+	// 	- If you do not specify this parameter, all types of scheduled tasks on you clusters are queried.
+	//
+	// example:
+	//
+	// CreateDBNodes
 	TaskAction *string `json:"TaskAction,omitempty" xml:"TaskAction,omitempty"`
 }
 
@@ -16365,11 +21284,23 @@ type DescribeScheduleTasksResponseBody struct {
 	Data *DescribeScheduleTasksResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The message that is returned for the request.
 	//
-	// >  If the request is successful, **Successful** is returned. If the request fails, an error message such as an error code is returned.
+	// >  If the request is successful, **Successful*	- is returned. If the request fails, an error message such as an error code is returned.
+	//
+	// example:
+	//
+	// Successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 936C7025-27A5-4CB1-BB31-540E1F0CCA12
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request is successful.
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -16403,12 +21334,24 @@ func (s *DescribeScheduleTasksResponseBody) SetSuccess(v bool) *DescribeSchedule
 
 type DescribeScheduleTasksResponseBodyData struct {
 	// The page number of the page returned.
+	//
+	// example:
+	//
+	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries returned per page.
+	//
+	// example:
+	//
+	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The details of the scheduled task.
 	TimerInfos []*DescribeScheduleTasksResponseBodyDataTimerInfos `json:"TimerInfos,omitempty" xml:"TimerInfos,omitempty" type:"Repeated"`
 	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 1
 	TotalRecordCount *int32 `json:"TotalRecordCount,omitempty" xml:"TotalRecordCount,omitempty"`
 }
 
@@ -16442,33 +21385,82 @@ func (s *DescribeScheduleTasksResponseBodyData) SetTotalRecordCount(v int32) *De
 
 type DescribeScheduleTasksResponseBodyDataTimerInfos struct {
 	// The type of the scheduled tasks.
+	//
+	// example:
+	//
+	// CreateDBNodes
 	Action *string `json:"Action,omitempty" xml:"Action,omitempty"`
 	// The cluster ID.
+	//
+	// example:
+	//
+	// pc-**************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	// The description of the cluster.
+	//
+	// example:
+	//
+	// test_cluster
 	DbClusterDescription *string `json:"DbClusterDescription,omitempty" xml:"DbClusterDescription,omitempty"`
 	// The state of the cluster.
+	//
+	// example:
+	//
+	// Running
 	DbClusterStatus *string `json:"DbClusterStatus,omitempty" xml:"DbClusterStatus,omitempty"`
 	// The ID of the order.
 	//
-	// >  This parameter is returned only when you set the `Action` parameter to **CreateDBNodes** or **ModifyDBNodeClass**.
+	// >  This parameter is returned only when you set the `Action` parameter to **CreateDBNodes*	- or **ModifyDBNodeClass**.
+	//
+	// example:
+	//
+	// 208161753******
 	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
 	// The latest start time of the task that you specified when you created the scheduled task. The time is displayed in UTC.
+	//
+	// example:
+	//
+	// 2021-01-28T12:30Z
 	PlannedEndTime *string `json:"PlannedEndTime,omitempty" xml:"PlannedEndTime,omitempty"`
 	// The earliest start time of the task that you specified when you created the scheduled task. The time is displayed in UTC.
+	//
+	// example:
+	//
+	// 2021-01-28T12:00Z
 	PlannedStartTime *string `json:"PlannedStartTime,omitempty" xml:"PlannedStartTime,omitempty"`
 	// The expected start time of the task. The time is displayed in UTC.
+	//
+	// example:
+	//
+	// 2021-01-28T12:16Z
 	PlannedTime *string `json:"PlannedTime,omitempty" xml:"PlannedTime,omitempty"`
 	// The ID of the region in which the scheduled task runs.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
 	// The state of the scheduled task.
+	//
+	// example:
+	//
+	// finish
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// Indicates whether the scheduled task can be canceled. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
 	TaskCancel *bool `json:"TaskCancel,omitempty" xml:"TaskCancel,omitempty"`
 	// The ID of the task.
+	//
+	// example:
+	//
+	// 53879cdb-9a00-428e-acaf-ff4cff******
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
@@ -16572,43 +21564,86 @@ func (s *DescribeScheduleTasksResponse) SetBody(v *DescribeScheduleTasksResponse
 type DescribeSlowLogRecordsRequest struct {
 	// The ID of cluster.
 	//
-	// > You can call the [DescribeDBClusters](~~98094~~) operation to query information about all clusters that are deployed in a specified region, such as the cluster ID.
+	// > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to query information about all clusters that are deployed in a specified region, such as the cluster ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pc-************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	// The name of the database.
+	//
+	// example:
+	//
+	// testdb
 	DBName *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
 	// The end of the time range to query. The end time must be later than the start time. The interval between the start time and end time must be within 24 hours. Specify the time in the `yyyy-MM-ddTHH:mmZ` format. The time must be in UTC.
 	//
 	// > This parameter must be set to a time value in UTC (UTC+0 time zone). If your service resides in another time zone, convert the time value. For example, if the local time in the time zone where your service resides is 12:00 (UTC +8) and you want to query slow query logs at 08:00 (UTC +8) to 12:00, set this parameter to a time value that ranges from 00:00, set this parameter to 04:00.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2022-11-16T04:00Z
 	EndTime      *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	NodeId       *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The number of the page to return. The value must be an integer that is larger than 0.
 	//
 	// Default value: **1**.
+	//
+	// example:
+	//
+	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries to return on each page. Valid values:
 	//
-	// *   **30**
-	// *   **50**
-	// *   **100**
+	// 	- **30**
+	//
+	// 	- **50**
+	//
+	// 	- **100**
 	//
 	// Default value: **30**.
+	//
+	// example:
+	//
+	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The region ID of the cluster.
 	//
-	// > You can call the [DescribeRegions](~~98041~~) operation to query all regions that are available for your account, such as the region ID.
+	// > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to query all regions that are available for your account, such as the region ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The unique ID of the SQL statement. The ID is used to obtain the slow query logs of the SQL statement.
+	//
+	// example:
+	//
+	// U2FsdGVk****
 	SQLHASH *string `json:"SQLHASH,omitempty" xml:"SQLHASH,omitempty"`
 	// The beginning of the time range to query. Specify the time in the `yyyy-MM-ddTHH:mmZ` format. The time must be in UTC.
 	//
 	// >
 	//
-	// *   You can specify a time range of up to 30 days.
+	// 	- You can specify a time range of up to 30 days.
 	//
-	// *   This parameter must be set to a time value in UTC (UTC+0 time zone). If your service resides in another time zone, convert the time value. For example, if the local time in the time zone where your service resides is 12:00 (UTC +8) and you want to query slow query logs at 08:00 (UTC +8) to 12:00, set this parameter to a time value that ranges from 00:00, set this parameter to 04:00.
+	// 	- This parameter must be set to a time value in UTC (UTC+0 time zone). If your service resides in another time zone, convert the time value. For example, if the local time in the time zone where your service resides is 12:00 (UTC +8) and you want to query slow query logs at 08:00 (UTC +8) to 12:00, set this parameter to a time value that ranges from 00:00, set this parameter to 04:00.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2022-11-15T16:00Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
@@ -16632,6 +21667,11 @@ func (s *DescribeSlowLogRecordsRequest) SetDBName(v string) *DescribeSlowLogReco
 
 func (s *DescribeSlowLogRecordsRequest) SetEndTime(v string) *DescribeSlowLogRecordsRequest {
 	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeSlowLogRecordsRequest) SetNodeId(v string) *DescribeSlowLogRecordsRequest {
+	s.NodeId = &v
 	return s
 }
 
@@ -16682,18 +21722,42 @@ func (s *DescribeSlowLogRecordsRequest) SetStartTime(v string) *DescribeSlowLogR
 
 type DescribeSlowLogRecordsResponseBody struct {
 	// The ID of cluster.
+	//
+	// example:
+	//
+	// pc-*****************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	// The type of the database engine.
+	//
+	// example:
+	//
+	// polardb_mysql
 	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
 	// Details about slow query logs.
 	Items *DescribeSlowLogRecordsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
 	// The number of the returned page.
+	//
+	// example:
+	//
+	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries returned per page.
+	//
+	// example:
+	//
+	// 1
 	PageRecordCount *int32 `json:"PageRecordCount,omitempty" xml:"PageRecordCount,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// A7E6A8FD-C50B-46B2-BA85-D8B8D3******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The total number of SQL statements.
+	//
+	// example:
+	//
+	// 1
 	TotalRecordCount *int32 `json:"TotalRecordCount,omitempty" xml:"TotalRecordCount,omitempty"`
 }
 
@@ -16759,22 +21823,58 @@ func (s *DescribeSlowLogRecordsResponseBodyItems) SetSQLSlowRecord(v []*Describe
 
 type DescribeSlowLogRecordsResponseBodyItemsSQLSlowRecord struct {
 	// The name of the database.
+	//
+	// example:
+	//
+	// testdb
 	DBName *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
 	// The ID of the node.
+	//
+	// example:
+	//
+	// pi-*****************
 	DBNodeId *string `json:"DBNodeId,omitempty" xml:"DBNodeId,omitempty"`
 	// The time when the SQL statement was executed. The time is in the `yyyy-MM-ddTHH:mmZ` format. The time is displayed in UTC.
+	//
+	// example:
+	//
+	// 2021-04-07T03:47Z
 	ExecutionStartTime *string `json:"ExecutionStartTime,omitempty" xml:"ExecutionStartTime,omitempty"`
 	// The IP address of the client that is used to connect to the database.
+	//
+	// example:
+	//
+	// testdb[testdb] @  [100.**.**.242]
 	HostAddress *string `json:"HostAddress,omitempty" xml:"HostAddress,omitempty"`
 	// The period of time during which the SQL statement was locked. Unit: seconds.
+	//
+	// example:
+	//
+	// 0
 	LockTimes *int64 `json:"LockTimes,omitempty" xml:"LockTimes,omitempty"`
 	// The number of rows parsed by the SQL statement.
+	//
+	// example:
+	//
+	// 0
 	ParseRowCounts *int64 `json:"ParseRowCounts,omitempty" xml:"ParseRowCounts,omitempty"`
 	// The time range for the query. Unit: milliseconds.
+	//
+	// example:
+	//
+	// 100
 	QueryTimeMS *int64 `json:"QueryTimeMS,omitempty" xml:"QueryTimeMS,omitempty"`
 	// The amount of time that was consumed to execute the SQL statement. Unit: seconds.
+	//
+	// example:
+	//
+	// 20
 	QueryTimes *int64 `json:"QueryTimes,omitempty" xml:"QueryTimes,omitempty"`
 	// The number of rows returned by the SQL statement.
+	//
+	// example:
+	//
+	// 0
 	ReturnRowCounts *int64 `json:"ReturnRowCounts,omitempty" xml:"ReturnRowCounts,omitempty"`
 	// The SQL statement that is executed in the query.
 	SQLText *string `json:"SQLText,omitempty" xml:"SQLText,omitempty"`
@@ -16869,24 +21969,60 @@ func (s *DescribeSlowLogRecordsResponse) SetBody(v *DescribeSlowLogRecordsRespon
 
 type DescribeSlowLogsRequest struct {
 	// The ID of cluster.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pc-****************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	// The name of the database.
+	//
+	// example:
+	//
+	// PolarDB_MySQL
 	DBName *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
 	// The end of the time range to query. The end time must be later than the start time. The time span between the start time and the end time cannot exceed 31 days. Specify the time in the yyyy-MM-ddZ format. The time must be in UTC.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2021-05-30Z
 	EndTime      *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The number of the page to return. Valid values: any non-zero positive integer.
 	//
 	// Default value: 1.
+	//
+	// example:
+	//
+	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries to return on each page. Valid values: 30 to 100. Default value: 30.
+	//
+	// example:
+	//
+	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The region ID of the cluster.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The beginning of the time range to query. Specify the time in the yyyy-MM-ddZ format. The time must be in UTC.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2021-05-01Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
@@ -16955,22 +22091,54 @@ func (s *DescribeSlowLogsRequest) SetStartTime(v string) *DescribeSlowLogsReques
 
 type DescribeSlowLogsResponseBody struct {
 	// The ID of cluster.
+	//
+	// example:
+	//
+	// pc-****************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	// The end date of the query.
+	//
+	// example:
+	//
+	// 2021-05-30Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The type of the database engine.
+	//
+	// example:
+	//
+	// polardb_mysql
 	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
 	// Details about slow query logs.
 	Items *DescribeSlowLogsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
 	// The number of the returned page.
+	//
+	// example:
+	//
+	// 3
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of SQL statements that are returned on the current page.
+	//
+	// example:
+	//
+	// 6
 	PageRecordCount *int32 `json:"PageRecordCount,omitempty" xml:"PageRecordCount,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 2553A660-E4EB-4AF4-A402-8AFF70A49143
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The start date of the query.
+	//
+	// example:
+	//
+	// 2021-05-01Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// The total number of returned entries.
+	//
+	// example:
+	//
+	// 5
 	TotalRecordCount *int32 `json:"TotalRecordCount,omitempty" xml:"TotalRecordCount,omitempty"`
 }
 
@@ -17046,32 +22214,88 @@ func (s *DescribeSlowLogsResponseBodyItems) SetSQLSlowLog(v []*DescribeSlowLogsR
 
 type DescribeSlowLogsResponseBodyItemsSQLSlowLog struct {
 	// The date when the data was generated.
+	//
+	// example:
+	//
+	// 2021-05-30Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The name of the database.
+	//
+	// example:
+	//
+	// PolarDB_MySQL
 	DBName *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
 	// The ID of the node.
+	//
+	// example:
+	//
+	// pi-***************
 	DBNodeId *string `json:"DBNodeId,omitempty" xml:"DBNodeId,omitempty"`
 	// The longest execution duration of a specific SQL statement in the query. Unit: seconds.
+	//
+	// example:
+	//
+	// 60
 	MaxExecutionTime *int64 `json:"MaxExecutionTime,omitempty" xml:"MaxExecutionTime,omitempty"`
 	// The longest lock duration that was caused by a specific SQL statement in the query. Unit: seconds.
+	//
+	// example:
+	//
+	// 1
 	MaxLockTime *int64 `json:"MaxLockTime,omitempty" xml:"MaxLockTime,omitempty"`
 	// The largest number of rows that were parsed by a specific SQL statement in the query.
+	//
+	// example:
+	//
+	// 1
 	ParseMaxRowCount *int64 `json:"ParseMaxRowCount,omitempty" xml:"ParseMaxRowCount,omitempty"`
 	// The total number of rows that were parsed by all SQL statements in the query.
+	//
+	// example:
+	//
+	// 2
 	ParseTotalRowCounts *int64 `json:"ParseTotalRowCounts,omitempty" xml:"ParseTotalRowCounts,omitempty"`
 	// The largest number of rows that were returned by a specific SQL statement in the query.
+	//
+	// example:
+	//
+	// 3
 	ReturnMaxRowCount *int64 `json:"ReturnMaxRowCount,omitempty" xml:"ReturnMaxRowCount,omitempty"`
 	// The total number of rows that were returned by all SQL statements in the query.
+	//
+	// example:
+	//
+	// 1
 	ReturnTotalRowCounts *int64 `json:"ReturnTotalRowCounts,omitempty" xml:"ReturnTotalRowCounts,omitempty"`
 	// The unique ID of the SQL statement. The ID is used to obtain the slow query logs of the SQL statement.
+	//
+	// example:
+	//
+	// U2FsdGVkxxxx
 	SQLHASH *string `json:"SQLHASH,omitempty" xml:"SQLHASH,omitempty"`
 	// The SQL statement that is executed in the query.
+	//
+	// example:
+	//
+	// select id,name from tb_table
 	SQLText *string `json:"SQLText,omitempty" xml:"SQLText,omitempty"`
 	// The total number of executions of the SQL statements.
+	//
+	// example:
+	//
+	// 2
 	TotalExecutionCounts *int64 `json:"TotalExecutionCounts,omitempty" xml:"TotalExecutionCounts,omitempty"`
 	// The total duration that was caused by all SQL statements in the query. Unit: seconds.
+	//
+	// example:
+	//
+	// 2
 	TotalExecutionTimes *int64 `json:"TotalExecutionTimes,omitempty" xml:"TotalExecutionTimes,omitempty"`
 	// The total lock duration that was caused by all SQL statements in the query. Unit: seconds.
+	//
+	// example:
+	//
+	// 1
 	TotalLockTimes *int64 `json:"TotalLockTimes,omitempty" xml:"TotalLockTimes,omitempty"`
 }
 
@@ -17185,42 +22409,79 @@ func (s *DescribeSlowLogsResponse) SetBody(v *DescribeSlowLogsResponseBody) *Des
 type DescribeTasksRequest struct {
 	// The cluster ID.
 	//
-	// >  You must specify `DBNodeId` or `DBClusterId`. You can call the [DescribeDBClusters](~~98094~~) operation to query the details of the clusters that belong to your Alibaba Cloud account, such as cluster IDs.
+	// >  You must specify `DBNodeId` or `DBClusterId`. You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to query the details of the clusters that belong to your Alibaba Cloud account, such as cluster IDs.
+	//
+	// example:
+	//
+	// pc-***************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	// The node ID.
 	//
-	// >  You must specify `DBNodeId` or `DBClusterId`. You can call the [DescribeDBClusters](~~98094~~) operation to query the details of the clusters that belong to your Alibaba Cloud account, such as node IDs.
+	// >  You must specify `DBNodeId` or `DBClusterId`. You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to query the details of the clusters that belong to your Alibaba Cloud account, such as node IDs.
+	//
+	// example:
+	//
+	// pi-***************
 	DBNodeId *string `json:"DBNodeId,omitempty" xml:"DBNodeId,omitempty"`
 	// The end of the time range to query. Specify the time in the ISO 8601 standard in the `YYYY-MM-DDThh:mmZ` format. The time must be in UTC. The end time must be later than the start time.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2020-12-02T03:00Z
 	EndTime      *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The page number of the page to return. The value is an integer that is greater than 0.
 	//
 	// Default value: **1**.
+	//
+	// example:
+	//
+	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries to return per page. Valid values: **30**, **50**, and **100**.
 	//
 	// Default value: **30**.
+	//
+	// example:
+	//
+	// 30
 	PageSize             *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The beginning of the time range to query. Specify the time in the ISO 8601 standard in the `yyyy-MM-ddTHH:mmZ` format. The time must be in UTC.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2020-11-30T00:00Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// The state of the tasks that you want to query. Valid values:
 	//
-	// *   **Waiting**: The task is pending.
-	// *   **Running**: The task is running.
-	// *   **Finished**: The task is completed.
-	// *   **Closed**: The task is closed.
-	// *   **Pause**: The task is suspended.
-	// *   **Stop**: The task is interrupted.
+	// 	- **Waiting**: The task is pending.
+	//
+	// 	- **Running**: The task is running.
+	//
+	// 	- **Finished**: The task is completed.
+	//
+	// 	- **Closed**: The task is closed.
+	//
+	// 	- **Pause**: The task is suspended.
+	//
+	// 	- **Stop**: The task is interrupted.
 	//
 	// >
 	//
-	// *   If you do not specify this parameter, the operation returns the details of only the tasks that are in the **Waiting** or **Running** state for the cluster or node.
+	// 	- If you do not specify this parameter, the operation returns the details of only the tasks that are in the **Waiting*	- or **Running*	- state for the cluster or node.
 	//
-	// *   You can enter multiple task states. Separate multiple task states with commas (,).
+	// 	- You can enter multiple task states. Separate multiple task states with commas (,).
+	//
+	// example:
+	//
+	// Running
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -17289,20 +22550,48 @@ func (s *DescribeTasksRequest) SetStatus(v string) *DescribeTasksRequest {
 
 type DescribeTasksResponseBody struct {
 	// The ID of the cluster for which the task was created.
+	//
+	// example:
+	//
+	// pc-***************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	// The end time of the query.
+	//
+	// example:
+	//
+	// 2020-12-02T03:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The page number of the page returned.
+	//
+	// example:
+	//
+	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries returned per page.
+	//
+	// example:
+	//
+	// 30
 	PageRecordCount *int32 `json:"PageRecordCount,omitempty" xml:"PageRecordCount,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 4352AD99-9FF5-41A6-A319-068089******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The start time of the query.
+	//
+	// example:
+	//
+	// 2020-11-30T00:00Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// The details of the task.
 	Tasks *DescribeTasksResponseBodyTasks `json:"Tasks,omitempty" xml:"Tasks,omitempty" type:"Struct"`
 	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 1
 	TotalRecordCount *int32 `json:"TotalRecordCount,omitempty" xml:"TotalRecordCount,omitempty"`
 }
 
@@ -17373,38 +22662,94 @@ func (s *DescribeTasksResponseBodyTasks) SetTask(v []*DescribeTasksResponseBodyT
 
 type DescribeTasksResponseBodyTasksTask struct {
 	// The time when the task was started. The time follows the ISO 8601 standard in the `YYYY-MM-DDThh:mm:ssZ` format. The time is displayed in UTC.
+	//
+	// example:
+	//
+	// 2020-12-02T02:39:15Z
 	BeginTime *string `json:"BeginTime,omitempty" xml:"BeginTime,omitempty"`
 	// The name of the current step.
+	//
+	// example:
+	//
+	// create_instance
 	CurrentStepName *string `json:"CurrentStepName,omitempty" xml:"CurrentStepName,omitempty"`
 	// The database name.
 	//
 	// >  This parameter is returned for only the tasks that involve database operations.
+	//
+	// example:
+	//
+	// test
 	DBName *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
 	// The estimated end time of the task. In most cases, this parameter is empty.
+	//
+	// example:
+	//
+	// null
 	ExpectedFinishTime *string `json:"ExpectedFinishTime,omitempty" xml:"ExpectedFinishTime,omitempty"`
 	// The time when the task was completed. The time follows the ISO 8601 standard in the `YYYY-MM-DDThh:mm:ssZ` format. The time is displayed in UTC.
+	//
+	// example:
+	//
+	// 2020-12-02T02:40:15Z
 	FinishTime *string `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
 	// The progress of the task in percentage.
+	//
+	// example:
+	//
+	// 100
 	Progress *int32 `json:"Progress,omitempty" xml:"Progress,omitempty"`
 	// The description of the task progress. If no progress description is provided for the task, this parameter is empty.
+	//
+	// example:
+	//
+	// null
 	ProgressInfo *string `json:"ProgressInfo,omitempty" xml:"ProgressInfo,omitempty"`
 	// The estimated remaining duration of the task. Unit: seconds.
+	//
+	// example:
+	//
+	// 1767
 	Remain *int32 `json:"Remain,omitempty" xml:"Remain,omitempty"`
 	// The progress of the subtasks. For example, the value `1/4` indicates that the task consists of four subtasks and the first subtask is in progress.
+	//
+	// example:
+	//
+	// 1/4
 	StepProgressInfo *string `json:"StepProgressInfo,omitempty" xml:"StepProgressInfo,omitempty"`
 	// The details of the subtasks.
+	//
+	// example:
+	//
+	// [{\\"remain\\":0,\\"name\\":\\"init_task\\",\\"progress\\":100},{\\"remain\\":1764,\\"name\\":\\"create_instance\\",\\"progress\\":0},{\\"remain\\":1,\\"name\\":\\"init_cluster\\",\\"progress\\":0},{\\"remain\\":2,\\"name\\":\\"create_backup\\",\\"progress\\":0}]
 	StepsInfo *string `json:"StepsInfo,omitempty" xml:"StepsInfo,omitempty"`
 	// The API operation that is used by the task. Example: `CreateDBInstance`.
+	//
+	// example:
+	//
+	// CreateDBInstance
 	TaskAction *string `json:"TaskAction,omitempty" xml:"TaskAction,omitempty"`
 	// The error code that is returned when an error occurs.
 	//
-	// >  This parameter is returned only when the task is in the **Stop** state.
+	// >  This parameter is returned only when the task is in the **Stop*	- state.
+	//
+	// example:
+	//
+	// null
 	TaskErrorCode *string `json:"TaskErrorCode,omitempty" xml:"TaskErrorCode,omitempty"`
 	// The error message that is returned when an error occurs.
 	//
-	// >  This parameter is returned only when the task is in the **Stop** state.
+	// >  This parameter is returned only when the task is in the **Stop*	- state.
+	//
+	// example:
+	//
+	// null
 	TaskErrorMessage *string `json:"TaskErrorMessage,omitempty" xml:"TaskErrorMessage,omitempty"`
 	// The ID of the task.
+	//
+	// example:
+	//
+	// 111111111
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
@@ -17518,17 +22863,31 @@ func (s *DescribeTasksResponse) SetBody(v *DescribeTasksResponseBody) *DescribeT
 type DescribeUserEncryptionKeyListRequest struct {
 	// The ID of the cluster.
 	//
-	// > You can call the [DescribeDBClusters](~~98094~~) operation to query information about all clusters that are deployed in a specified region, such as the cluster ID.
+	// > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to query information about all clusters that are deployed in a specified region, such as the cluster ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pc-************
 	DBClusterId  *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The ID of the region.
 	//
-	// > You can call the [DescribeRegions](~~98041~~) operation to query all regions that are available for your account, such as the region ID.
+	// > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to query all regions that are available for your account, such as the region ID.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The region where the TDE key resides.
+	//
+	// example:
+	//
+	// cn-beijing
 	TDERegion *string `json:"TDERegion,omitempty" xml:"TDERegion,omitempty"`
 }
 
@@ -17577,10 +22936,18 @@ func (s *DescribeUserEncryptionKeyListRequest) SetTDERegion(v string) *DescribeU
 
 type DescribeUserEncryptionKeyListResponseBody struct {
 	// The ID of the cluster.
+	//
+	// example:
+	//
+	// pc-************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	// Cluster key list.
 	KeyList []*string `json:"KeyList,omitempty" xml:"KeyList,omitempty" type:"Repeated"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// A7E6A8FD-C50B-46B2-BA85-D8B8D3******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -17639,26 +23006,54 @@ func (s *DescribeUserEncryptionKeyListResponse) SetBody(v *DescribeUserEncryptio
 type DescribeVSwitchesRequest struct {
 	// The dedicated cluster ID.
 	//
-	// >  You must specify at least one of the **VpcId** and **DedicatedHostGroupId** parameters.
+	// >  You must specify at least one of the **VpcId*	- and **DedicatedHostGroupId*	- parameters.
+	//
+	// example:
+	//
+	// dhg-4n****
 	DedicatedHostGroupId *string `json:"DedicatedHostGroupId,omitempty" xml:"DedicatedHostGroupId,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The page number of the page to return. Default value: 1.
+	//
+	// example:
+	//
+	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries to return per page. Maximum value: 50. Default value: 50.
+	//
+	// example:
+	//
+	// 50
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The ID of the region where the vSwitch belongs.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the resource group to which the vSwitch belongs.
+	//
+	// example:
+	//
+	// rg-bp67acfmxazb4ph****
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 	// The ID of the virtual private type (VPC) to which the vSwitch belongs.
 	//
-	// >  You must specify at least one of the **VpcId** and **DedicatedHostGroupId** parameters.
+	// >  You must specify at least one of the **VpcId*	- and **DedicatedHostGroupId*	- parameters.
+	//
+	// example:
+	//
+	// vpc-25cdvfeq58pl****
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 	// The ID of the zone to which the vSwitch belongs.
+	//
+	// example:
+	//
+	// cn-hangzhou-d
 	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
@@ -17732,12 +23127,28 @@ func (s *DescribeVSwitchesRequest) SetZoneId(v string) *DescribeVSwitchesRequest
 
 type DescribeVSwitchesResponseBody struct {
 	// The page number.
+	//
+	// example:
+	//
+	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries per page.
+	//
+	// example:
+	//
+	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 9A572171-4E27-40D1-BD36-D26C9E71E29E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The number of returned entries.
+	//
+	// example:
+	//
+	// 1
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 	// The details of the vSwitch.
 	VSwitchs []*DescribeVSwitchesResponseBodyVSwitchs `json:"VSwitchs,omitempty" xml:"VSwitchs,omitempty" type:"Repeated"`
@@ -17778,26 +23189,60 @@ func (s *DescribeVSwitchesResponseBody) SetVSwitchs(v []*DescribeVSwitchesRespon
 
 type DescribeVSwitchesResponseBodyVSwitchs struct {
 	// The number of available IP addresses in the vSwitch.
+	//
+	// example:
+	//
+	// 1
 	AvailableIpAddressCount *int64 `json:"AvailableIpAddressCount,omitempty" xml:"AvailableIpAddressCount,omitempty"`
 	// The IPv4 CIDR block of the vSwitch.
+	//
+	// example:
+	//
+	// 172.16.0.0/24
 	CidrBlock *string `json:"CidrBlock,omitempty" xml:"CidrBlock,omitempty"`
 	// The descriptions of the vSwitch.
+	//
+	// example:
+	//
+	// vSwitchDescription
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// Indicates whether the vSwitch is the default vSwitch. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
 	IsDefault *bool `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
 	// The zone to which the NAT gateway belongs.
+	//
+	// example:
+	//
+	// cn-hangzhou-b
 	IzNo *string `json:"IzNo,omitempty" xml:"IzNo,omitempty"`
 	// The status of the vSwitch. Valid values:
 	//
-	// *   **Pending**: The vSwitch is being configured.
-	// *   **Available**: The vSwitch is available.
+	// 	- **Pending**: The vSwitch is being configured.
+	//
+	// 	- **Available**: The vSwitch is available.
+	//
+	// example:
+	//
+	// Available
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The vSwitch ID.
+	//
+	// example:
+	//
+	// vsw-25bcdxs7pv1****
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
 	// The name of the vSwitch.
+	//
+	// example:
+	//
+	// vSwitch
 	VSwitchName *string `json:"VSwitchName,omitempty" xml:"VSwitchName,omitempty"`
 }
 
@@ -17880,6 +23325,12 @@ func (s *DescribeVSwitchesResponse) SetBody(v *DescribeVSwitchesResponseBody) *D
 
 type DisableDBClusterServerlessRequest struct {
 	// The cluster ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pc-***************
 	DBClusterId          *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -17922,8 +23373,16 @@ func (s *DisableDBClusterServerlessRequest) SetResourceOwnerId(v int64) *Disable
 
 type DisableDBClusterServerlessResponseBody struct {
 	// The ID of the serverless cluster.
+	//
+	// example:
+	//
+	// pc-****************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// CD3FA5F3-FAF3-44CA-AFFF-BAF869******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -17976,22 +23435,52 @@ func (s *DisableDBClusterServerlessResponse) SetBody(v *DisableDBClusterServerle
 
 type EnableDBClusterServerlessRequest struct {
 	// The cluster ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pc-**************
 	DBClusterId          *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The maximum number of stable AP read-only nodes. Valid values: 0 to 7.
+	//
+	// example:
+	//
+	// 1
 	ScaleApRoNumMax *string `json:"ScaleApRoNumMax,omitempty" xml:"ScaleApRoNumMax,omitempty"`
 	// The minimum number of stable AP read-only nodes. Valid values: 0 to 7.
+	//
+	// example:
+	//
+	// 1
 	ScaleApRoNumMin *string `json:"ScaleApRoNumMin,omitempty" xml:"ScaleApRoNumMin,omitempty"`
 	// The maximum number of PCUs per node for scaling. Valid values: 1 to 8 PCUs.
+	//
+	// example:
+	//
+	// 2
 	ScaleMax *string `json:"ScaleMax,omitempty" xml:"ScaleMax,omitempty"`
 	// The minimum number of PolarDB capacity units (PCUs) per node for scaling. Valid values: 1 to 8 PCUs.
+	//
+	// example:
+	//
+	// 1
 	ScaleMin *string `json:"ScaleMin,omitempty" xml:"ScaleMin,omitempty"`
 	// The maximum number of read-only nodes for scaling. Valid values: 0 to 7.
+	//
+	// example:
+	//
+	// 2
 	ScaleRoNumMax *string `json:"ScaleRoNumMax,omitempty" xml:"ScaleRoNumMax,omitempty"`
 	// The minimum number of read-only nodes for scaling. Valid values: 0 to 7.
+	//
+	// example:
+	//
+	// 1
 	ScaleRoNumMin *string `json:"ScaleRoNumMin,omitempty" xml:"ScaleRoNumMin,omitempty"`
 }
 
@@ -18060,8 +23549,16 @@ func (s *EnableDBClusterServerlessRequest) SetScaleRoNumMin(v string) *EnableDBC
 
 type EnableDBClusterServerlessResponseBody struct {
 	// The ID of the serverless cluster.
+	//
+	// example:
+	//
+	// pc-bp10gr51qasnl****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 5E71541A-6007-4DCC-A38A-F872C31FEB45
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -18113,13 +23610,26 @@ func (s *EnableDBClusterServerlessResponse) SetBody(v *EnableDBClusterServerless
 }
 
 type EnableFirewallRulesRequest struct {
-	DBClusterId          *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pc-************
+	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// example:
+	//
+	// true
 	Enable               *bool   `json:"Enable,omitempty" xml:"Enable,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	RuleNameList         *string `json:"RuleNameList,omitempty" xml:"RuleNameList,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test111
+	RuleNameList *string `json:"RuleNameList,omitempty" xml:"RuleNameList,omitempty"`
 }
 
 func (s EnableFirewallRulesRequest) String() string {
@@ -18166,10 +23676,20 @@ func (s *EnableFirewallRulesRequest) SetRuleNameList(v string) *EnableFirewallRu
 }
 
 type EnableFirewallRulesResponseBody struct {
+	// example:
+	//
+	// Message
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// Id of the request
+	//
+	// example:
+	//
+	// 99B355CE-526C-478B-B730-AD9D7C******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s EnableFirewallRulesResponseBody) String() string {
@@ -18227,62 +23747,125 @@ func (s *EnableFirewallRulesResponse) SetBody(v *EnableFirewallRulesResponseBody
 type EvaluateRegionResourceRequest struct {
 	// The cluster link type. The backend randomly selects the default value. Valid values:
 	//
-	// *   **lvs** :Linux virtual server
-	// *   **proxy**: proxy server
-	// *   **dns**: domain name system
+	// 	- **lvs*	- :Linux virtual server
+	//
+	// 	- **proxy**: proxy server
+	//
+	// 	- **dns**: domain name system
+	//
+	// example:
+	//
+	// lvs
 	DBInstanceConnType *string `json:"DBInstanceConnType,omitempty" xml:"DBInstanceConnType,omitempty"`
 	// The specifications of the node. For information about node specifications, see the following topics:
 	//
-	// *   PolarDB for MySQL: [Specifications of compute nodes](~~102542~~)
-	// *   PolarDB for Oracle: [Specifications of compute nodes](~~207921~~)
-	// *   PolarDB for PostgreSQL: [Specifications of compute nodes](~~209380~~)
+	// 	- PolarDB for MySQL: [Specifications of compute nodes](https://help.aliyun.com/document_detail/102542.html)
+	//
+	// 	- PolarDB for Oracle: [Specifications of compute nodes](https://help.aliyun.com/document_detail/207921.html)
+	//
+	// 	- PolarDB for PostgreSQL: [Specifications of compute nodes](https://help.aliyun.com/document_detail/209380.html)
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// polar.mysql.x4.large
 	DBNodeClass *string `json:"DBNodeClass,omitempty" xml:"DBNodeClass,omitempty"`
 	// The type of the database engine. Valid values:
 	//
-	// *   **MySQL**
-	// *   **PostgreSQL**
-	// *   **Oracle**
+	// 	- **MySQL**
+	//
+	// 	- **PostgreSQL**
+	//
+	// 	- **Oracle**
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// MySQL
 	DBType *string `json:"DBType,omitempty" xml:"DBType,omitempty"`
 	// The version of the database engine
 	//
-	// *   Valid values for the MySQL database engine:
+	// 	- Valid values for the MySQL database engine:
 	//
-	//     *   **5.6**
-	//     *   **5.7**
-	//     *   **8.0**
+	//     	- **5.6**
 	//
-	// *   Valid values for the PostgreSQL database engine:
+	//     	- **5.7**
 	//
-	//     *   **11**
-	//     *   **14**
+	//     	- **8.0**
 	//
-	// *   Valid value for the Oracle database engine: **11**
+	// 	- Valid values for the PostgreSQL database engine:
+	//
+	//     	- **11**
+	//
+	//     	- **14**
+	//
+	// 	- Valid value for the Oracle database engine: **11**
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 8.0
 	DBVersion *string `json:"DBVersion,omitempty" xml:"DBVersion,omitempty"`
 	// Specifies whether to return the zones in which the single-zone deployment method is supported. Default value: 0. Valid values:
 	//
-	// *   **0**: no value returned
-	// *   **1**: returns the zones.
+	// 	- **0**: no value returned
+	//
+	// 	- **1**: returns the zones.
+	//
+	// example:
+	//
+	// 1
 	DispenseMode *string `json:"DispenseMode,omitempty" xml:"DispenseMode,omitempty"`
 	// Specifies whether Maxscale is created. Default value: true. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// true
 	NeedMaxScaleLink *string `json:"NeedMaxScaleLink,omitempty" xml:"NeedMaxScaleLink,omitempty"`
 	OwnerAccount     *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId          *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The region ID.
 	//
-	// > You can call the [DescribeRegions](~~98041~~) operation to query available regions.
+	// > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to query available regions.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the resource group.
+	//
+	// example:
+	//
+	// rg-************
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The subdomain. It is the child domain of the top-level domain name or parent domain. For example, if the parent domain name is cn-beijing, its child domain can be cn-beijing-i-aliyun.
+	//
+	// example:
+	//
+	// cn-beijing-i-aliyun
 	SubDomain *string `json:"SubDomain,omitempty" xml:"SubDomain,omitempty"`
 	// The zone ID.
 	//
-	// > You can call the [DescribeRegions](~~98041~~) operation to query available zones.
+	// > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to query available zones.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou-g
 	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
@@ -18367,31 +23950,53 @@ func (s *EvaluateRegionResourceRequest) SetZoneId(v string) *EvaluateRegionResou
 type EvaluateRegionResourceResponseBody struct {
 	// Indicates whether sufficient resources are available. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
 	DBInstanceAvailable *string `json:"DBInstanceAvailable,omitempty" xml:"DBInstanceAvailable,omitempty"`
 	// The type of the database engine. Valid values:
 	//
-	// *   **MySQL**
-	// *   **PostgreSQL**
-	// *   **Oracle**
+	// 	- **MySQL**
+	//
+	// 	- **PostgreSQL**
+	//
+	// 	- **Oracle**
+	//
+	// example:
+	//
+	// MySQL
 	DBType *string `json:"DBType,omitempty" xml:"DBType,omitempty"`
 	// The version of the database engine
 	//
-	// *   Valid values for the MySQL database engine:
+	// 	- Valid values for the MySQL database engine:
 	//
-	//     *   **5.6**
-	//     *   **5.7**
-	//     *   **8.0**
+	//     	- **5.6**
 	//
-	// *   Valid values for the PostgreSQL database engine:
+	//     	- **5.7**
 	//
-	//     *   **11**
-	//     *   **14**
+	//     	- **8.0**
 	//
-	// *   Valid value for the Oracle database engine: **11**
+	// 	- Valid values for the PostgreSQL database engine:
+	//
+	//     	- **11**
+	//
+	//     	- **14**
+	//
+	// 	- Valid value for the Oracle database engine: **11**
+	//
+	// example:
+	//
+	// 8.0
 	DBVersion *string `json:"DBVersion,omitempty" xml:"DBVersion,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 69A85BAF-1089-4CDF-A82F-0A140F******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -18454,18 +24059,33 @@ func (s *EvaluateRegionResourceResponse) SetBody(v *EvaluateRegionResourceRespon
 
 type FailoverDBClusterRequest struct {
 	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. The token is case-sensitive.
+	//
+	// example:
+	//
+	// 6000170000591aed949d0f54a343f1a4233c1e7d1c5******
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The ID of the cluster.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pc-**************
 	DBClusterId          *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	RollBackForDisaster  *bool   `json:"RollBackForDisaster,omitempty" xml:"RollBackForDisaster,omitempty"`
-	// The ID of the read-only node that you want to promote to the primary node. You can call the [DescribeDBClusters](~~98094~~) operation to query node information, such as node IDs.
+	// The ID of the read-only node that you want to promote to the primary node. You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to query node information, such as node IDs.
 	//
-	// > *   If you leave this parameter empty, the system selects one or more available read-only nodes that have the highest failover priority as candidate primary nodes. If the failover to the first read-only node fails due to network issues, abnormal replication status, or other reasons, the system attempts to fail over your applications to the next read-only node until the failover is successful.
-	// >*  This parameter is required for PolarDB for Oracle and PolarDB for PostgreSQL clusters. This parameter is optional for PolarDB for MySQL clusters.
+	// > 	- If you leave this parameter empty, the system selects one or more available read-only nodes that have the highest failover priority as candidate primary nodes. If the failover to the first read-only node fails due to network issues, abnormal replication status, or other reasons, the system attempts to fail over your applications to the next read-only node until the failover is successful.
+	//
+	// >	- This parameter is required for PolarDB for Oracle and PolarDB for PostgreSQL clusters. This parameter is optional for PolarDB for MySQL clusters.
+	//
+	// example:
+	//
+	// pi-***********
 	TargetDBNodeId *string `json:"TargetDBNodeId,omitempty" xml:"TargetDBNodeId,omitempty"`
 }
 
@@ -18519,6 +24139,10 @@ func (s *FailoverDBClusterRequest) SetTargetDBNodeId(v string) *FailoverDBCluste
 
 type FailoverDBClusterResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// D0CEC6AC-7760-409A-A0D5-E6CD86******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -18566,20 +24190,48 @@ func (s *FailoverDBClusterResponse) SetBody(v *FailoverDBClusterResponseBody) *F
 
 type GrantAccountPrivilegeRequest struct {
 	// The username of the account.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// testacc
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
 	// The permissions that are granted to the account. Valid values:
 	//
-	// *   **ReadWrite**: read and write permissions
-	// *   **ReadOnly**: read-only permissions
-	// *   **DMLOnly**: The account is granted the permissions to execute only DML statements on the database.
-	// *   **DDLOnly**: The account is granted the permissions to execute only DDL statements on the database.
-	// *   **ReadIndex**: The account has the read and index permissions on the database.
+	// 	- **ReadWrite**: read and write permissions
 	//
-	// > The number of **AccountPrivilege** values must be the consistent with the number of **DBName** values. Each account permission must correspond to a database name in sequence. For example, you can set **DBName** to `testdb_1,testdb_2` and set **AccountPrivilege** to `ReadWrite,ReadOnly`. In this case, the specified standard account is granted the **read and write** permissions on the **testdb\_1** database and the **read** permission on the **testdb\_2** database.
+	// 	- **ReadOnly**: read-only permissions
+	//
+	// 	- **DMLOnly**: The account is granted the permissions to execute only DML statements on the database.
+	//
+	// 	- **DDLOnly**: The account is granted the permissions to execute only DDL statements on the database.
+	//
+	// 	- **ReadIndex**: The account has the read and index permissions on the database.
+	//
+	// > The number of **AccountPrivilege*	- values must be the consistent with the number of **DBName*	- values. Each account permission must correspond to a database name in sequence. For example, you can set **DBName*	- to `testdb_1,testdb_2` and set **AccountPrivilege*	- to `ReadWrite,ReadOnly`. In this case, the specified standard account is granted the **read and write*	- permissions on the **testdb_1*	- database and the **read*	- permission on the **testdb_2*	- database.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ReadWrite,ReadOnly
 	AccountPrivilege *string `json:"AccountPrivilege,omitempty" xml:"AccountPrivilege,omitempty"`
 	// The ID of the cluster.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pc-****************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	// The names of the databases that the account can access. You can grant the access permissions on one or more databases to the specified standard account. If you need to specify multiple database names, separate the database names with commas (,).
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// testdb_1,testdb_2
 	DBName               *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -18637,6 +24289,10 @@ func (s *GrantAccountPrivilegeRequest) SetResourceOwnerId(v int64) *GrantAccount
 
 type GrantAccountPrivilegeResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 2FED790E-FB61-4721-8C1C-07C627*****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -18684,22 +24340,42 @@ func (s *GrantAccountPrivilegeResponse) SetBody(v *GrantAccountPrivilegeResponse
 
 type ListTagResourcesRequest struct {
 	// The token required to obtain more results. This parameter is not required in the first query. If the first query does not return all results, you can use the token that is returned from the first query in the next query to obtain more results.
+	//
+	// example:
+	//
+	// 212db86sca4384811e0b5e8707e******
 	NextToken    *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the region. You can call the [DescribeRegions](~~98041~~) operation to query available region IDs.
+	// The ID of the region. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to query available region IDs.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The cluster ID. To query the tags of multiple clusters, click **Add** to add cluster IDs.
+	// The cluster ID. To query the tags of multiple clusters, click **Add*	- to add cluster IDs.
 	//
 	// >
 	//
-	// *   You must specify at least one of the `ResourceId.N` and `Tag.N.Key` parameters.
+	// 	- You must specify at least one of the `ResourceId.N` and `Tag.N.Key` parameters.
 	//
-	// *   If you specify the `ResourceId.N` parameter, you can add a maximum of 50 cluster IDs at a time.
+	// 	- If you specify the `ResourceId.N` parameter, you can add a maximum of 50 cluster IDs at a time.
+	//
+	// example:
+	//
+	// pc-****************
 	ResourceId           []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
 	ResourceOwnerAccount *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The type of the resource. Set the value to **cluster**.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cluster
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	// The tags.
 	Tag []*ListTagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
@@ -18759,15 +24435,23 @@ func (s *ListTagResourcesRequest) SetTag(v []*ListTagResourcesRequestTag) *ListT
 }
 
 type ListTagResourcesRequestTag struct {
-	// The key of the tag. To query the details of clusters to which multiple tags are bound, click **Add** to add tags.
+	// The key of the tag. To query the details of clusters to which multiple tags are bound, click **Add*	- to add tags.
 	//
 	// >
 	//
-	// *   You must specify at least one of the `ResourceId.N` and `Tag.N.Key` parameters.
+	// 	- You must specify at least one of the `ResourceId.N` and `Tag.N.Key` parameters.
 	//
-	// *   If you specify the `Tag.N.Key` parameter, you can create up to 20 tags at a time.
+	// 	- If you specify the `Tag.N.Key` parameter, you can create up to 20 tags at a time.
+	//
+	// example:
+	//
+	// type
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The tag value that is paired with the tag key. This parameter can be set to an empty string.
+	//
+	// example:
+	//
+	// test
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -18791,8 +24475,16 @@ func (s *ListTagResourcesRequestTag) SetValue(v string) *ListTagResourcesRequest
 
 type ListTagResourcesResponseBody struct {
 	// The token required to obtain more results. If not all results are returned in this query, the token is returned. You can use this token in the next query to obtain more results.
+	//
+	// example:
+	//
+	// 212db86sca4384811e0b5e8707e******
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 688C04E4-23F8-409F-8A38-B954D5******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The details of the queried clusters and tags.
 	TagResources *ListTagResourcesResponseBodyTagResources `json:"TagResources,omitempty" xml:"TagResources,omitempty" type:"Struct"`
@@ -18840,12 +24532,28 @@ func (s *ListTagResourcesResponseBodyTagResources) SetTagResource(v []*ListTagRe
 
 type ListTagResourcesResponseBodyTagResourcesTagResource struct {
 	// The cluster ID.
+	//
+	// example:
+	//
+	// pc-****************
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 	// The type of the resource. This parameter is set to **cluster**.
+	//
+	// example:
+	//
+	// cluster
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	// The key of the tag.
+	//
+	// example:
+	//
+	// type
 	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
 	// The value of the tag.
+	//
+	// example:
+	//
+	// test
 	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 
@@ -18908,12 +24616,22 @@ func (s *ListTagResourcesResponse) SetBody(v *ListTagResourcesResponseBody) *Lis
 
 type ManuallyStartDBClusterRequest struct {
 	// The cluster ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pc-xxxxxxxxxxxxx
 	DBClusterId  *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The region ID of the cluster.
 	//
-	// > You can call the [DescribeRegions](~~98041~~) operation to query available regions.
+	// > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to query available regions.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -18959,6 +24677,10 @@ func (s *ManuallyStartDBClusterRequest) SetResourceOwnerId(v int64) *ManuallySta
 
 type ManuallyStartDBClusterResponseBody struct {
 	// The request ID.
+	//
+	// example:
+	//
+	// 73A85BAF-1039-4CDE-A83F-1A140F******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -19007,12 +24729,31 @@ func (s *ManuallyStartDBClusterResponse) SetBody(v *ManuallyStartDBClusterRespon
 type ModifyAccountDescriptionRequest struct {
 	// The description of the account. The description must meet the following requirements:
 	//
-	// *   The description cannot start with `http://` or `https://`.
-	// *   The description must be 2 to 256 characters in length.
+	// 	- The description cannot start with `http://` or `https://`.
+	//
+	// 	- The description must be 2 to 256 characters in length.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test
 	AccountDescription *string `json:"AccountDescription,omitempty" xml:"AccountDescription,omitempty"`
 	// The name of the account.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// testacc
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
 	// The ID of the cluster.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pc-*************
 	DBClusterId          *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -19065,6 +24806,10 @@ func (s *ModifyAccountDescriptionRequest) SetResourceOwnerId(v int64) *ModifyAcc
 
 type ModifyAccountDescriptionResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 2FED790E-FB61-4721-8C1C-07C627******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -19112,14 +24857,34 @@ func (s *ModifyAccountDescriptionResponse) SetBody(v *ModifyAccountDescriptionRe
 
 type ModifyAccountPasswordRequest struct {
 	// The username of the account.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// testacc
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
 	// The cluster ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pc-************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	// The new password of the account. The new password must meet the following requirements:
 	//
-	// *   It must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
-	// *   It must be 8 to 32 characters in length.
-	// *   Special characters include `! @ # $ % ^ & * ( ) _ + - =`
+	// 	- It must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
+	//
+	// 	- It must be 8 to 32 characters in length.
+	//
+	// 	- Special characters include `! @ # $ % ^ & 	- ( ) _ + - =`
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Pw123456
 	NewAccountPassword   *string `json:"NewAccountPassword,omitempty" xml:"NewAccountPassword,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -19178,6 +24943,10 @@ func (s *ModifyAccountPasswordRequest) SetResourceOwnerId(v int64) *ModifyAccoun
 
 type ModifyAccountPasswordResponseBody struct {
 	// The request ID.
+	//
+	// example:
+	//
+	// 2FED790E-FB61-4721-8C1C-07C627******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -19225,40 +24994,74 @@ func (s *ModifyAccountPasswordResponse) SetBody(v *ModifyAccountPasswordResponse
 
 type ModifyAutoRenewAttributeRequest struct {
 	// The cluster ID. If you need to specify multiple cluster IDs, separate the cluster IDs with commas (,).
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pc-***************
 	DBClusterIds *string `json:"DBClusterIds,omitempty" xml:"DBClusterIds,omitempty"`
 	// The automatic renewal period.
 	//
+	// 	- Valid values when you set the **PeriodUnit*	- parameter to **Month**: `1, 2, 3, 6, and 12`.
 	//
-	// *   Valid values when **PeriodUnit** is set to **Month**: `1, 2, 3, 6, and 12`.
-	// *   Valid values when **PeriodUnit** is set to **Year**: `1, 2, and 3`.
+	// 	- Valid values when you set the **PeriodUnit*	- parameter to **Year**: `1, 2, and 3`.
 	//
 	// Default value: **1**.
+	//
+	// example:
+	//
+	// 1
 	Duration     *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The unit of the renewal period. Valid values:
 	//
-	// *   **Year**
-	// *   **Month**
+	// 	- **Year**
+	//
+	// 	- **Month**
 	//
 	// Default value: **Month**.
+	//
+	// example:
+	//
+	// Month
 	PeriodUnit *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
 	// The ID of the region. The region ID can be up to 50 characters in length.
+	//
 	// cn-hangzhou
 	//
-	// >  You can call the [DescribeRegions](~~98041~~) operation to query the available regions.
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The auto-renewal state of the cluster. Valid values:
 	//
-	// *   **AutoRenewal:** The cluster are automatically renewed.
-	// *   **Normal**: The cluster is manually renewed.
-	// *   **NotRenewal:** The cluster is not renewed after expiration.
+	//
+	// >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to query the available regions.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The auto-renewal status of the cluster. Valid values:
+	//
+	// 	- **AutoRenewal:*	- The cluster is automatically renewed.
+	//
+	// 	- **Normal**: The cluster is manually renewed.
+	//
+	// 	- **NotRenewal:*	- The cluster is not renewed after expiration.
 	//
 	// Default value: **AutoRenewal**.
 	//
-	// >  If this parameter is set to **NotRenewal**, the system does not send a text message for the cluster expiration, but only sends a message three days before the cluster expires to remind you that the cluster is not renewed.
+	// >  If you set this parameter to **NotRenewal**, the system sends a notification that indicates the cluster is not renewed three days before the cluster expires. After the cluster expires, the system no longer sends a notification.
+	//
+	// example:
+	//
+	// AutoRenewal
 	RenewalStatus *string `json:"RenewalStatus,omitempty" xml:"RenewalStatus,omitempty"`
 	// The ID of the resource group.
+	//
+	// example:
+	//
+	// rg-************
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -19324,6 +25127,10 @@ func (s *ModifyAutoRenewAttributeRequest) SetResourceOwnerId(v int64) *ModifyAut
 
 type ModifyAutoRenewAttributeResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 4CE6DF97-AEA4-484F-906F-C407EE******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -19372,105 +25179,199 @@ func (s *ModifyAutoRenewAttributeResponse) SetBody(v *ModifyAutoRenewAttributeRe
 type ModifyBackupPolicyRequest struct {
 	// The backup frequency. Default value: Normal. Valid values:
 	//
-	// *   **Normal**: standard backup. The system backs up data once a day.
-	// *   **2/24H**: enhanced backup. The system backs up data every 2 hours.
-	// *   **3/24H**: enhanced backup. The system backs up data every 3 hours.
-	// *   **4/24H**: enhanced backup. The system backs up data every 4 hours.
+	// 	- **Normal**: standard backup. The system backs up data once a day.
+	//
+	// 	- **2/24H**: enhanced backup. The system backs up data every 2 hours.
+	//
+	// 	- **3/24H**: enhanced backup. The system backs up data every 3 hours.
+	//
+	// 	- **4/24H**: enhanced backup. The system backs up data every 4 hours.
 	//
 	// >- If you enable enhanced backup, all backups are retained for 24 hours. For backup files that are created earlier than the previous 24 hours, the system permanently retains only the first backup that is created after 00:00 every day and deletes the rest.
-	// >- If you enable enhanced backup, **PreferredBackupPeriod** is automatically set to all days in a week (from Monday to Sunday).
-	// >- This parameter is invalid if the region where your PolarDB for MySQL cluster is deployed supports the cross-region backup feature. For information about the regions that support the cross-region backup feature, see [Overview](~~72672~~).
+	//
+	// >- If you enable enhanced backup, **PreferredBackupPeriod*	- is automatically set to all days in a week (from Monday to Sunday).
+	//
+	// >- This parameter is invalid if the region where your PolarDB for MySQL cluster is deployed supports the cross-region backup feature. For information about the regions that support the cross-region backup feature, see [Overview](https://help.aliyun.com/document_detail/72672.html).
+	//
+	// example:
+	//
+	// Normal
 	BackupFrequency *string `json:"BackupFrequency,omitempty" xml:"BackupFrequency,omitempty"`
 	// Specifies whether to retain backups when you delete a cluster. Valid values:
 	//
-	// *   **ALL**: permanently retains all backups.
-	// *   **LATEST**: permanently retains only the last backup.
-	// *   **NONE**: does not retain backups.
+	// 	- **ALL**: permanently retains all backups.
+	//
+	// 	- **LATEST**: permanently retains only the last backup.
+	//
+	// 	- **NONE**: does not retain backups.
 	//
 	// > The default value is NONE.
+	//
+	// example:
+	//
+	// NONE
 	BackupRetentionPolicyOnClusterDeletion *string `json:"BackupRetentionPolicyOnClusterDeletion,omitempty" xml:"BackupRetentionPolicyOnClusterDeletion,omitempty"`
 	// The ID of the cluster.
 	//
-	// > You can call the [DescribeDBClusters](~~98094~~) operation to query information about all clusters that are deployed in a specified region, such as the cluster ID.
+	// > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to query information about all clusters that are deployed in a specified region, such as the cluster ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pc-bp13wz9586voc****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	// The frequency of level-1 backups. Default value: Normal. Valid values:
 	//
-	// *   **Normal**: standard backup. The system backs up data once a day.
-	// *   **2/24H**: enhanced backup. The system backs up data every 2 hours.
-	// *   **3/24H**: enhanced backup. The system backs up data every 3 hours.
-	// *   **4/24H**: enhanced backup. The system backs up data every 4 hours.
+	// 	- **Normal**: standard backup. The system backs up data once a day.
+	//
+	// 	- **2/24H**: enhanced backup. The system backs up data every 2 hours.
+	//
+	// 	- **3/24H**: enhanced backup. The system backs up data every 3 hours.
+	//
+	// 	- **4/24H**: enhanced backup. The system backs up data every 4 hours.
 	//
 	// >- This parameter is invalid for PolarDB for Oracle clusters or PolarDB for PostgreSQL clusters.
-	// >- This parameter is invalid if the region where your PolarDB for MySQL cluster is deployed does not support the cross-region backup feature. For information about the regions that support the cross-region backup feature, see [Overview](~~72672~~).
+	//
+	// >- This parameter is invalid if the region where your PolarDB for MySQL cluster is deployed does not support the cross-region backup feature. For information about the regions that support the cross-region backup feature, see [Overview](https://help.aliyun.com/document_detail/72672.html).
+	//
+	// example:
+	//
+	// Normal
 	DataLevel1BackupFrequency *string `json:"DataLevel1BackupFrequency,omitempty" xml:"DataLevel1BackupFrequency,omitempty"`
 	// The backup cycle of level-1 backups. Valid values:
 	//
-	// *   **Monday**
-	// *   **Tuesday**
-	// *   **Wednesday**
-	// *   **Thursday**
-	// *   **Friday**
-	// *   **Saturday**
-	// *   **Sunday**
+	// 	- **Monday**
+	//
+	// 	- **Tuesday**
+	//
+	// 	- **Wednesday**
+	//
+	// 	- **Thursday**
+	//
+	// 	- **Friday**
+	//
+	// 	- **Saturday**
+	//
+	// 	- **Sunday**
 	//
 	// >- You need to specify at least two values. Separate multiple values with commas (,).
+	//
 	// >- This parameter is invalid for PolarDB for Oracle clusters or PolarDB for PostgreSQL clusters.
-	// >- This parameter is invalid if the region where your PolarDB for MySQL cluster is deployed does not support the cross-region backup feature. For information about the regions that support the cross-region backup feature, see [Overview](~~72672~~).
+	//
+	// >- This parameter is invalid if the region where your PolarDB for MySQL cluster is deployed does not support the cross-region backup feature. For information about the regions that support the cross-region backup feature, see [Overview](https://help.aliyun.com/document_detail/72672.html).
+	//
+	// example:
+	//
+	// Monday,Tuesday
 	DataLevel1BackupPeriod *string `json:"DataLevel1BackupPeriod,omitempty" xml:"DataLevel1BackupPeriod,omitempty"`
 	// The retention period of level-1 backups. Valid values: 3 to 14. Unit: days.
+	//
+	// example:
+	//
+	// 3
 	DataLevel1BackupRetentionPeriod *string `json:"DataLevel1BackupRetentionPeriod,omitempty" xml:"DataLevel1BackupRetentionPeriod,omitempty"`
 	// The time period during which automatic backup for level-1 backup is performed. The time period is in the `hh:mmZ-hh:mmZ` format and is displayed in UTC. The start time and end time are on the hour and have an interval of 1 hour. Example: `14:00Z-15:00Z`.
+	//
 	// >- This parameter is invalid for PolarDB for Oracle clusters or PolarDB for PostgreSQL clusters.
-	// >- This parameter is invalid if the region where your PolarDB for MySQL cluster is deployed does not support the cross-region backup feature. For information about the regions that support the cross-region backup feature, see [Overview](~~72672~~).
+	//
+	// >- This parameter is invalid if the region where your PolarDB for MySQL cluster is deployed does not support the cross-region backup feature. For information about the regions that support the cross-region backup feature, see [Overview](https://help.aliyun.com/document_detail/72672.html).
+	//
+	// example:
+	//
+	// 15:00Z-16:00Z
 	DataLevel1BackupTime *string `json:"DataLevel1BackupTime,omitempty" xml:"DataLevel1BackupTime,omitempty"`
-	// The region where the cross-region level-2 backup is stored. For information about regions that support the cross-region backup feature, see [Overview](~~72672~~).
+	// The region where the cross-region level-2 backup is stored. For information about regions that support the cross-region backup feature, see [Overview](https://help.aliyun.com/document_detail/72672.html).
+	//
+	// example:
+	//
+	// cn-hangzhou
 	DataLevel2BackupAnotherRegionRegion *string `json:"DataLevel2BackupAnotherRegionRegion,omitempty" xml:"DataLevel2BackupAnotherRegionRegion,omitempty"`
 	// The retention period of cross-region level-2 backups. Valid values:
 	//
-	// *   **0**: The cross-region level-2 backup feature is disabled.
-	// *   **30 to 7300**: Cross-region level-2 backups are retained for 30 to 7,300 days.
-	// *   **1**: Cross-region level-2 backups are permanently retained.
+	// 	- **0**: The cross-region level-2 backup feature is disabled.
+	//
+	// 	- **30 to 7300**: Cross-region level-2 backups are retained for 30 to 7,300 days.
+	//
+	// 	- **1**: Cross-region level-2 backups are permanently retained.
 	//
 	// > The default value is **0**. By default, the cross-region level-2 backup feature is disabled when you create a cluster.
+	//
+	// example:
+	//
+	// 30
 	DataLevel2BackupAnotherRegionRetentionPeriod *string `json:"DataLevel2BackupAnotherRegionRetentionPeriod,omitempty" xml:"DataLevel2BackupAnotherRegionRetentionPeriod,omitempty"`
 	// The backup cycle of level-2 backups. Valid values:
 	//
-	// *   **Monday**
-	// *   **Tuesday**
-	// *   **Wednesday**
-	// *   **Thursday**
-	// *   **Friday**
-	// *   **Saturday**
-	// *   **Sunday**
+	// 	- **Monday**
+	//
+	// 	- **Tuesday**
+	//
+	// 	- **Wednesday**
+	//
+	// 	- **Thursday**
+	//
+	// 	- **Friday**
+	//
+	// 	- **Saturday**
+	//
+	// 	- **Sunday**
 	//
 	// >- You need to specify at least two values. Separate multiple values with commas (,).
+	//
 	// >- This parameter is invalid for PolarDB for Oracle clusters or PolarDB for PostgreSQL clusters.
-	// >- This parameter is invalid if the region where your PolarDB for MySQL cluster is deployed does not support the cross-region backup feature. For information about the regions that support the cross-region backup feature, see [Overview](~~72672~~).
+	//
+	// >- This parameter is invalid if the region where your PolarDB for MySQL cluster is deployed does not support the cross-region backup feature. For information about the regions that support the cross-region backup feature, see [Overview](https://help.aliyun.com/document_detail/72672.html).
+	//
+	// example:
+	//
+	// Monday,Tuesday
 	DataLevel2BackupPeriod *string `json:"DataLevel2BackupPeriod,omitempty" xml:"DataLevel2BackupPeriod,omitempty"`
 	// The retention period of level-2 backups. Valid values:
 	//
-	// *   **0**: The level-2 backup feature is disabled.
-	// *   **30 to 7300**: Cross-region level-2 backups are retained for 30 to 7,300 days.
-	// *   **1**: Cross-region level-2 backups are permanently retained.
+	// 	- **0**: The level-2 backup feature is disabled.
+	//
+	// 	- **30 to 7300**: Cross-region level-2 backups are retained for 30 to 7,300 days.
+	//
+	// 	- **1**: Cross-region level-2 backups are permanently retained.
 	//
 	// > The default value is **0**. By default, the level-2 backup feature is disabled when you create a cluster.
+	//
+	// example:
+	//
+	// 0
 	DataLevel2BackupRetentionPeriod *string `json:"DataLevel2BackupRetentionPeriod,omitempty" xml:"DataLevel2BackupRetentionPeriod,omitempty"`
 	OwnerAccount                    *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId                         *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The backup cycle. Valid values:
 	//
-	// *   **Monday**
-	// *   **Tuesday**
-	// *   **Wednesday**
-	// *   **Thursday**
-	// *   **Friday**
-	// *   **Saturday**
-	// *   **Sunday**
+	// 	- **Monday**
+	//
+	// 	- **Tuesday**
+	//
+	// 	- **Wednesday**
+	//
+	// 	- **Thursday**
+	//
+	// 	- **Friday**
+	//
+	// 	- **Saturday**
+	//
+	// 	- **Sunday**
 	//
 	// >- You need to specify at least two values. Separate multiple values with commas (,).
-	// >- This parameter is invalid if the region where your PolarDB for MySQL cluster is deployed supports the cross-region backup feature. For information about the regions that support the cross-region backup feature, see [Overview](~~72672~~).
+	//
+	// >- This parameter is invalid if the region where your PolarDB for MySQL cluster is deployed supports the cross-region backup feature. For information about the regions that support the cross-region backup feature, see [Overview](https://help.aliyun.com/document_detail/72672.html).
+	//
+	// example:
+	//
+	// Monday,Tuesday
 	PreferredBackupPeriod *string `json:"PreferredBackupPeriod,omitempty" xml:"PreferredBackupPeriod,omitempty"`
 	// The time period during which automatic backup for level-1 backup is performed. The format is `hh:mmZ-hh:mmZ` format. The time is displayed in UTC. The start time and end time are on the hour and with an interval of one hour. Example: `14:00Z-15:00Z`.
+	//
+	// example:
+	//
+	// 15:00Z-16:00Z
 	PreferredBackupTime  *string `json:"PreferredBackupTime,omitempty" xml:"PreferredBackupTime,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -19571,6 +25472,10 @@ func (s *ModifyBackupPolicyRequest) SetResourceOwnerId(v int64) *ModifyBackupPol
 
 type ModifyBackupPolicyResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// C5A5DF0E-5968-4DC1-882E-AC2FE7******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -19618,25 +25523,46 @@ func (s *ModifyBackupPolicyResponse) SetBody(v *ModifyBackupPolicyResponseBody) 
 
 type ModifyDBClusterRequest struct {
 	// Enable storage compression function. The value of this parameter is ON.
+	//
+	// example:
+	//
+	// ON
 	CompressStorage *string `json:"CompressStorage,omitempty" xml:"CompressStorage,omitempty"`
 	// The cluster ID.
 	//
 	// >  You can call the DescribeDBClusters operation to query information about all PolarDB clusters that are deployed in a specified region, such as cluster IDs.
-	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pc-*************
+	DBClusterId     *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	DBNodeCrashList *string `json:"DBNodeCrashList,omitempty" xml:"DBNodeCrashList,omitempty"`
 	// The method used to replicate data across zones. Valid values:
 	//
-	// *   **AsyncSync**: the asynchronous mode.
-	// *   **SemiSync**: the semi-synchronous mode.
-	DataSyncMode *string `json:"DataSyncMode,omitempty" xml:"DataSyncMode,omitempty"`
+	// 	- **AsyncSync**: the asynchronous mode.
+	//
+	// 	- **SemiSync**: the semi-synchronous mode.
+	//
+	// example:
+	//
+	// AsynSync
+	DataSyncMode       *string `json:"DataSyncMode,omitempty" xml:"DataSyncMode,omitempty"`
+	FaultInjectionType *string `json:"FaultInjectionType,omitempty" xml:"FaultInjectionType,omitempty"`
 	// The fault scenario that you want to simulate for the cluster.
 	//
-	// *   Set the value to **0**. The value 0 indicates the scenario in which the primary zone of the cluster fails.
+	// 	- Set the value to **0**. The value 0 indicates the scenario in which the primary zone of the cluster fails.
 	//
 	// >
 	//
-	// *   This parameter takes effect only when you set the `StandbyHAMode` parameter to 0.
+	// 	- This parameter takes effect only when you set the `StandbyHAMode` parameter to 0.
 	//
-	// *   If you set this parameter to 0, all compute nodes deployed in the primary zone are unavailable. In this case, the switchover degrades the cluster performance.
+	// 	- If you set this parameter to 0, all compute nodes deployed in the primary zone are unavailable. In this case, the switchover degrades the cluster performance.
+	//
+	// example:
+	//
+	// 0
 	FaultSimulateMode    *string `json:"FaultSimulateMode,omitempty" xml:"FaultSimulateMode,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -19644,18 +25570,33 @@ type ModifyDBClusterRequest struct {
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// Specifies whether to enable the cross-zone automatic switchover mode. Valid values:
 	//
-	// *   **ON**: Enable the cross-zone automatic switchover mode.
-	// *   **OFF**: Disable the cross-zone automatic switchover mode.
-	// *   **0**: Enable the customer drill mode.
+	// 	- **ON**: Enable the cross-zone automatic switchover mode.
+	//
+	// 	- **OFF**: Disable the cross-zone automatic switchover mode.
+	//
+	// 	- **0**: Enable the customer drill mode.
+	//
+	// example:
+	//
+	// ON
 	StandbyHAMode *string `json:"StandbyHAMode,omitempty" xml:"StandbyHAMode,omitempty"`
 	// Specifies whether to enable automatic storage scaling for the cluster of Standard Edition. Valid values:
 	//
-	// *   Enable
-	// *   Disable
+	// 	- Enable
+	//
+	// 	- Disable
+	//
+	// example:
+	//
+	// Enable
 	StorageAutoScale *string `json:"StorageAutoScale,omitempty" xml:"StorageAutoScale,omitempty"`
 	// The maximum storage capacity of the cluster of Standard Edition in automatic scaling. Unit: GB.
 	//
 	// >  The maximum value of this parameter is 32000.
+	//
+	// example:
+	//
+	// 800
 	StorageUpperBound *int64 `json:"StorageUpperBound,omitempty" xml:"StorageUpperBound,omitempty"`
 }
 
@@ -19677,8 +25618,18 @@ func (s *ModifyDBClusterRequest) SetDBClusterId(v string) *ModifyDBClusterReques
 	return s
 }
 
+func (s *ModifyDBClusterRequest) SetDBNodeCrashList(v string) *ModifyDBClusterRequest {
+	s.DBNodeCrashList = &v
+	return s
+}
+
 func (s *ModifyDBClusterRequest) SetDataSyncMode(v string) *ModifyDBClusterRequest {
 	s.DataSyncMode = &v
+	return s
+}
+
+func (s *ModifyDBClusterRequest) SetFaultInjectionType(v string) *ModifyDBClusterRequest {
+	s.FaultInjectionType = &v
 	return s
 }
 
@@ -19724,9 +25675,19 @@ func (s *ModifyDBClusterRequest) SetStorageUpperBound(v int64) *ModifyDBClusterR
 
 type ModifyDBClusterResponseBody struct {
 	// The cluster ID.
+	//
+	// example:
+	//
+	// pc-*************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	OrderId     *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 2148126708*****
+	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// example:
+	//
+	// CD3FA5F3-FAF3-44CA-AFFF-BAF869******
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ModifyDBClusterResponseBody) String() string {
@@ -19782,32 +25743,55 @@ func (s *ModifyDBClusterResponse) SetBody(v *ModifyDBClusterResponseBody) *Modif
 }
 
 type ModifyDBClusterAccessWhitelistRequest struct {
-	// The attributes of the IP whitelist group. Set this parameter to **hidden** to hide the IP whitelist group in the console.
+	// The attributes of the IP whitelist group. Set this parameter to **hidden*	- to hide the IP whitelist group in the console.
 	//
-	// > *   The IP whitelist group that has appeared in the console cannot be hidden.
-	// > *   This parameter can be specified only when the **WhiteListType** parameter is set to **IP**.
+	// > 	- The IP whitelist group that has appeared in the console cannot be hidden.
+	//
+	// > 	- This parameter can be specified only when the **WhiteListType*	- parameter is set to **IP**.
+	//
+	// example:
+	//
+	// hidden
 	DBClusterIPArrayAttribute *string `json:"DBClusterIPArrayAttribute,omitempty" xml:"DBClusterIPArrayAttribute,omitempty"`
 	// The name of the IP whitelist group. The group name must be 2 to 120 characters in length and consists of lowercase letters and digits. It must start with a letter, and end with a letter or a digit.
 	//
-	// *   If the specified whitelist group name does not exist, the whitelist group is created.
-	// *   If the specified whitelist group name exists, the whitelist group is modified.
-	// *   If you do not specify this parameter, the default group is modified.
+	// 	- If the specified whitelist group name does not exist, the whitelist group is created.
+	//
+	// 	- If the specified whitelist group name exists, the whitelist group is modified.
+	//
+	// 	- If you do not specify this parameter, the default group is modified.
 	//
 	// >
 	//
-	// *   You can create a maximum of 50 IP whitelist groups for a cluster.
+	// 	- You can create a maximum of 50 IP whitelist groups for a cluster.
 	//
-	// *   This parameter can be specified only when the **WhiteListType** parameter is set to **IP**.
+	// 	- This parameter can be specified only when the **WhiteListType*	- parameter is set to **IP**.
+	//
+	// example:
+	//
+	// default
 	DBClusterIPArrayName *string `json:"DBClusterIPArrayName,omitempty" xml:"DBClusterIPArrayName,omitempty"`
 	// The cluster ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pc-*************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	// The method used to modify the IP whitelist. Valid values:
 	//
-	// *   **Cover** (default): overwrites the original IP whitelist.
-	// *   **Append**: appends IP addresses to the original whitelist.
-	// *   **Delete**: deletes IP addresses.
+	// 	- **Cover*	- (default): overwrites the original IP whitelist.
 	//
-	// >  This parameter can be specified only when the **WhiteListType** parameter is set to **IP**.
+	// 	- **Append**: appends IP addresses to the original whitelist.
+	//
+	// 	- **Delete**: deletes IP addresses.
+	//
+	// >  This parameter can be specified only when the **WhiteListType*	- parameter is set to **IP**.
+	//
+	// example:
+	//
+	// Cover
 	ModifyMode           *string `json:"ModifyMode,omitempty" xml:"ModifyMode,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -19815,22 +25799,37 @@ type ModifyDBClusterAccessWhitelistRequest struct {
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The ID of the security group. Separate multiple security groups with commas (,).
 	//
-	// > *   You can add a maximum of three security groups to a cluster.
-	// > *   This parameter can be specified only when the **WhiteListType** parameter is set to **SecurityGroup**.
+	// > 	- You can add a maximum of three security groups to a cluster.
+	//
+	// > 	- This parameter can be specified only when the **WhiteListType*	- parameter is set to **SecurityGroup**.
+	//
+	// example:
+	//
+	// sg-*********
 	SecurityGroupIds *string `json:"SecurityGroupIds,omitempty" xml:"SecurityGroupIds,omitempty"`
 	// The IP addresses or Classless Inter-Domain Routing (CIDR) blocks in the IP whitelist group. You can add 1,000 IP addresses or CIDR blocks to all the IP whitelist groups. Separate multiple IP addresses with commas (,). The following two formats are supported:
 	//
-	// *   IP addresses. Example: 10.23.12.24.
-	// *   CIDR blocks. Example: 10.23.12.24/24. 24 indicates the length of the prefix of the CIDR block. The length is the range of 1 to 32.
+	// 	- IP addresses. Example: 10.23.12.24.
 	//
-	// >  This parameter can be specified only when the **WhiteListType** parameter is set to **IP**.
+	// 	- CIDR blocks. Example: 10.23.12.24/24. 24 indicates the length of the prefix of the CIDR block. The length is the range of 1 to 32.
+	//
+	// >  This parameter can be specified only when the **WhiteListType*	- parameter is set to **IP**.
+	//
+	// example:
+	//
+	// 10.23.12.24
 	SecurityIps *string `json:"SecurityIps,omitempty" xml:"SecurityIps,omitempty"`
 	// The type of the whitelist. Valid values:
 	//
-	// *   **IP**: IP whitelist group.
-	// *   **SecurityGroup**: security group.
+	// 	- **IP**: IP whitelist group.
+	//
+	// 	- **SecurityGroup**: security group.
 	//
 	// Default value: **IP**.
+	//
+	// example:
+	//
+	// IP
 	WhiteListType *string `json:"WhiteListType,omitempty" xml:"WhiteListType,omitempty"`
 }
 
@@ -19899,6 +25898,10 @@ func (s *ModifyDBClusterAccessWhitelistRequest) SetWhiteListType(v string) *Modi
 
 type ModifyDBClusterAccessWhitelistResponseBody struct {
 	// The request ID.
+	//
+	// example:
+	//
+	// D0CEC6AC-7760-409A-A0D5-E6CD86******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -19946,37 +25949,68 @@ func (s *ModifyDBClusterAccessWhitelistResponse) SetBody(v *ModifyDBClusterAcces
 
 type ModifyDBClusterAndNodesParametersRequest struct {
 	// The cluster ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pc-****************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	// The node ID. You can set this parameter to modify the parameters of a specified node or of the cluster. Separate multiple node IDs with commas (,).
 	//
 	// > If you do not specify this parameter, only the cluster parameters are modified.
+	//
+	// example:
+	//
+	// pi-****************,pi-**********,
 	DBNodeIds *string `json:"DBNodeIds,omitempty" xml:"DBNodeIds,omitempty"`
 	// Specifies an immediate or scheduled task to modify parameters and restart the cluster. Default value: false. Valid values:
 	//
-	// *   **false**: runs the kernel upgrade task in a scheduled manner.
-	// *   **true**: immediately runs the kernel upgrade task.
+	// 	- **false**: runs the kernel upgrade task in a scheduled manner.
+	//
+	// 	- **true**: immediately runs the kernel upgrade task.
+	//
+	// example:
+	//
+	// false
 	FromTimeService *bool   `json:"FromTimeService,omitempty" xml:"FromTimeService,omitempty"`
 	OwnerAccount    *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId         *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The ID of the parameter template that is used for the instance.
+	//
+	// example:
+	//
+	// pcpg-**************
 	ParameterGroupId *string `json:"ParameterGroupId,omitempty" xml:"ParameterGroupId,omitempty"`
 	// The JSON string for the parameter and its value.
+	//
+	// example:
+	//
+	// {"wait_timeout":"86","innodb_old_blocks_time":"10"}
 	Parameters *string `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
 	// The latest start time to run the task. Specify the time in the `YYYY-MM-DDThh:mm:ssZ` format. The time must be in UTC.
 	//
 	// >
 	//
-	// *   The value of this parameter must be at least 30 minutes later than the value of the PlannedStartTime parameter.
+	// 	- The value of this parameter must be at least 30 minutes later than the value of the PlannedStartTime parameter.
 	//
-	// *   By default, if you specify the `PlannedStartTime` parameter but do not specify the PlannedEndTime parameter, the latest start time of the task is set to a value that is calculated by using the following formula: `Value of the PlannedEndTime parameter + 30 minutes`. For example, if you set the `PlannedStartTime` parameter to `2021-01-14T09:00:00Z` and you do not specify the PlannedEndTime parameter, the latest start time of the task is set to `2021-01-14T09:30:00Z`.
+	// 	- By default, if you specify the `PlannedStartTime` parameter but do not specify the PlannedEndTime parameter, the latest start time of the task is set to a value that is calculated by using the following formula: `Value of the PlannedEndTime parameter + 30 minutes`. For example, if you set the `PlannedStartTime` parameter to `2021-01-14T09:00:00Z` and you do not specify the PlannedEndTime parameter, the latest start time of the task is set to `2021-01-14T09:30:00Z`.
+	//
+	// example:
+	//
+	// 2021-01-14T09:30:00Z
 	PlannedEndTime *string `json:"PlannedEndTime,omitempty" xml:"PlannedEndTime,omitempty"`
 	// The earliest time to upgrade the specifications within the scheduled time period. Specify the time in the `YYYY-MM-DDThh:mm:ssZ` format. The time must be in UTC.
 	//
 	// >
 	//
-	// *   The earliest start time of the task can be a point in time within the next 24 hours. For example, if the current time is `2021-01-14T09:00:00Z`, you can specify a point in the time range from `2021-01-14T09:00:00Z` to `2021-01-15T09:00:00Z`.
+	// 	- The earliest start time of the task can be a point in time within the next 24 hours. For example, if the current time is `2021-01-14T09:00:00Z`, you can specify a point in the time range from `2021-01-14T09:00:00Z` to `2021-01-15T09:00:00Z`.
 	//
-	// *   If this parameter is empty, the upgrade task is immediately performed.
+	// 	- If this parameter is empty, the upgrade task is immediately performed.
+	//
+	// example:
+	//
+	// 2021-01-14T09:00:00Z
 	PlannedStartTime     *string `json:"PlannedStartTime,omitempty" xml:"PlannedStartTime,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -20047,6 +26081,10 @@ func (s *ModifyDBClusterAndNodesParametersRequest) SetResourceOwnerId(v int64) *
 
 type ModifyDBClusterAndNodesParametersResponseBody struct {
 	// The request ID.
+	//
+	// example:
+	//
+	// 9B7BFB11-C077-4FE3-B051-F69CEB******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -20095,10 +26133,23 @@ func (s *ModifyDBClusterAndNodesParametersResponse) SetBody(v *ModifyDBClusterAn
 type ModifyDBClusterAuditLogCollectorRequest struct {
 	// Specifies whether to enable or disable SQL collector. Valid values:
 	//
-	// *   Enable
-	// *   Disable
+	// 	- Enable
+	//
+	// 	- Disable
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Enable
 	CollectorStatus *string `json:"CollectorStatus,omitempty" xml:"CollectorStatus,omitempty"`
 	// The cluster ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pc-***************
 	DBClusterId          *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -20146,6 +26197,10 @@ func (s *ModifyDBClusterAuditLogCollectorRequest) SetResourceOwnerId(v int64) *M
 
 type ModifyDBClusterAuditLogCollectorResponseBody struct {
 	// The request ID.
+	//
+	// example:
+	//
+	// 22C0ACF0-DD29-4B67-9190-B7A48C******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -20194,14 +26249,25 @@ func (s *ModifyDBClusterAuditLogCollectorResponse) SetBody(v *ModifyDBClusterAud
 type ModifyDBClusterDeletionRequest struct {
 	// The cluster ID.
 	//
-	// >  You can call the [DescribeDBClusters](~~98094~~) operation to.obtain the cluster ID.
+	// >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to.obtain the cluster ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pc-bp1313h70cd5m****
 	DBClusterId  *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// Specifies whether to enable the cluster lock feature. Default value: false. Valid values:
 	//
-	// *   **true**: enables the cluster lock feature. If you enable the cluster lock feature, you cannot directly release the cluster. You must disable the cluster lock feature before you can release the cluster.
-	// *   **false**: disables the cluster lock feature.
+	// 	- **true**: enables the cluster lock feature. If you enable the cluster lock feature, you cannot directly release the cluster. You must disable the cluster lock feature before you can release the cluster.
+	//
+	// 	- **false**: disables the cluster lock feature.
+	//
+	// example:
+	//
+	// true
 	Protection           *bool   `json:"Protection,omitempty" xml:"Protection,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -20247,6 +26313,10 @@ func (s *ModifyDBClusterDeletionRequest) SetResourceOwnerId(v int64) *ModifyDBCl
 
 type ModifyDBClusterDeletionResponseBody struct {
 	// The request ID.
+	//
+	// example:
+	//
+	// 24C80BD8-C710-4138-893A-D2AFED4FC13D
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -20295,10 +26365,23 @@ func (s *ModifyDBClusterDeletionResponse) SetBody(v *ModifyDBClusterDeletionResp
 type ModifyDBClusterDescriptionRequest struct {
 	// The name of the cluster. The name must meet the following requirements:
 	//
-	// *   The name cannot start with `http://` or `https://`.
-	// *   The name must be 2 to 256 characters in length.
+	// 	- The name cannot start with `http://` or `https://`.
+	//
+	// 	- The name must be 2 to 256 characters in length.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ClusterDescriptionTest
 	DBClusterDescription *string `json:"DBClusterDescription,omitempty" xml:"DBClusterDescription,omitempty"`
 	// The ID of the PolarDB cluster.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pc-**************
 	DBClusterId          *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -20346,6 +26429,10 @@ func (s *ModifyDBClusterDescriptionRequest) SetResourceOwnerId(v int64) *ModifyD
 
 type ModifyDBClusterDescriptionResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// D0CEC6AC-7760-409A-A0D5-E6CD86******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -20394,91 +26481,141 @@ func (s *ModifyDBClusterDescriptionResponse) SetBody(v *ModifyDBClusterDescripti
 type ModifyDBClusterEndpointRequest struct {
 	// Specifies whether to automatically associate newly added nodes with the cluster endpoint. Default value: Disable. Valid values:
 	//
-	// *   **Enable**
-	// *   **Disable**
+	// 	- **Enable**
+	//
+	// 	- **Disable**
+	//
+	// example:
+	//
+	// Enable
 	AutoAddNewNodes *string `json:"AutoAddNewNodes,omitempty" xml:"AutoAddNewNodes,omitempty"`
 	// The ID of the cluster.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pc-*************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	// The name of the custom cluster endpoint.
+	//
+	// example:
+	//
+	// test
 	DBEndpointDescription *string `json:"DBEndpointDescription,omitempty" xml:"DBEndpointDescription,omitempty"`
 	// The ID of the endpoint.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pe-**************
 	DBEndpointId *string `json:"DBEndpointId,omitempty" xml:"DBEndpointId,omitempty"`
 	// The advanced configurations of the cluster endpoint, which are in the JSON format. You can specify the configurations of the following attributes: consistency level, transaction splitting, connection pool, and primary node accepts read requests.
 	//
-	// *   Specifies the load balancing policy in the format of `{\"LoadBalancePolicy\":\"Selected value\"}`. Default value: 0. Valid values:
+	// 	- Specifies the load balancing policy in the format of `{\\"LoadBalancePolicy\\":\\"Selected value\\"}`. Default value: 0. Valid values:
 	//
-	//     *   **0**: connections-based load balancing
-	//     *   **1**: active requests-based load balancing
+	//     	- **0**: connections-based load balancing
 	//
-	// *   Specifies whether to enable the primary node accepts read requests feature in the format of `{\"MasterAcceptReads\":\"Selected value\"}`. Default value: on. Valid values:
+	//     	- **1**: active requests-based load balancing
 	//
-	//     *   **on**
-	//     *   **off**
+	// 	- Specifies whether to enable the primary node accepts read requests feature in the format of `{\\"MasterAcceptReads\\":\\"Selected value\\"}`. Default value: on. Valid values:
 	//
-	// *   Specifies whether to enable the transaction splitting feature in the format of `{\"DistributedTransaction\":\"Selected value\"}`. Default value: on. Valid values:
+	//     	- **on**
 	//
-	//     *   **on**
-	//     *   **off**
+	//     	- **off**
 	//
-	// *   Specifies the consistency level in the format of `{\"ConsistLevel\":\"Selected value\"}`. Default value: 1. Valid values:
+	// 	- Specifies whether to enable the transaction splitting feature in the format of `{\\"DistributedTransaction\\":\\"Selected value\\"}`. Default value: on. Valid values:
 	//
-	//     *   **0**: eventual consistency (weak)
-	//     *   **1**: session consistency (medium)
-	//     *   **2**: global consistency (strong)
+	//     	- **on**
 	//
-	// *   Specifies the connection pool in the format of `{\"ConnectionPersist\":\"Selected value\"}`. Default value: off. Valid values:
+	//     	- **off**
 	//
-	//     *   **off**: disables the connection pool.
-	//     *   **Session**: enables the session-level connection pool.
-	//     *   **Transaction**: enables the transaction-level connection pool.
+	// 	- Specifies the consistency level in the format of `{\\"ConsistLevel\\":\\"Selected value\\"}`. Default value: 1. Valid values:
 	//
-	// *   Specifies whether to enable the parallel query feature in the format of `{\"MaxParallelDegree\":\"Selected value\"}`. Default value: off. Valid values:
+	//     	- **0**: eventual consistency (weak)
 	//
-	//     *   **on**
-	//     *   **off**
+	//     	- **1**: session consistency (medium)
 	//
-	// *   Specifies whether to enable the automatic request distribution between row store and column store nodes feature in the format of `{\"EnableHtapImci\":\"Selected value\"}`. Default value: off. Valid values:
+	//     	- **2**: global consistency (strong)
 	//
-	//     *   **on**
-	//     *   **off**
+	// 	- Specifies the connection pool in the format of `{\\"ConnectionPersist\\":\\"Selected value\\"}`. Default value: off. Valid values:
 	//
-	// *   Specifies whether to enable the overload protection feature in the format of `{\"EnableOverloadThrottle\":\"Selected value\"}`. Default value: off. Valid values:
+	//     	- **off**: disables the connection pool.
 	//
-	//     *   **on**
-	//     *   **off**
+	//     	- **Session**: enables the session-level connection pool.
+	//
+	//     	- **Transaction**: enables the transaction-level connection pool.
+	//
+	// 	- Specifies whether to enable the parallel query feature in the format of `{\\"MaxParallelDegree\\":\\"Selected value\\"}`. Default value: off. Valid values:
+	//
+	//     	- **on**
+	//
+	//     	- **off**
+	//
+	// 	- Specifies whether to enable the automatic request distribution between row store and column store nodes feature in the format of `{\\"EnableHtapImci\\":\\"Selected value\\"}`. Default value: off. Valid values:
+	//
+	//     	- **on**
+	//
+	//     	- **off**
+	//
+	// 	- Specifies whether to enable the overload protection feature in the format of `{\\"EnableOverloadThrottle\\":\\"Selected value\\"}`. Default value: off. Valid values:
+	//
+	//     	- **on**
+	//
+	//     	- **off**
 	//
 	// >
 	//
-	// *   You can specify the transaction splitting, primary node accepts read requests, connection pool, and overload protection features for a PolarDB for MySQL cluster only if ReadWriteMode is set to ReadWrite for the cluster endpoint.
+	// 	- You can specify the transaction splitting, primary node accepts read requests, connection pool, and overload protection features for a PolarDB for MySQL cluster only if ReadWriteMode is set to ReadWrite for the cluster endpoint.
 	//
-	// *   If the read /write mode of a PolarDB for MySQL cluster is set to **Read-only**, the **Connection-based SLB** and **Active Request-based SLB** SLB policies are supported. The **Read-write (Automatic read /write splitting) **mode of the cluster supports** Active Request-based SLB** policy.
-	// *   If ReadWriteMode is set to **ReadWrite** for the cluster endpoint of a PolarDB for MySQL cluster or if ReadWriteMode is set to **ReadOnly** and the load balancing policy is set to **active requests-based load balancing**, the automatic request distribution between row store and column store nodes feature is supported.
-	// *   Only PolarDB for MySQL supports global consistency.
-	// *   If the **ReadWriteMode** parameter is set to **ReadOnly**, the consistency level must be **0**.
-	// *   You can specify the consistency level, transaction splitting, connection pool, and primary node accepts read requests features at a time, such as `{\"ConsistLevel\":\"1\",\"DistributedTransaction\":\"on\",\"ConnectionPersist\":\"Session\",\"MasterAcceptReads\":\"on\"}`.
-	// *   The transaction splitting settings are restricted by the consistency level settings. For example, if you set the consistency level to **0**, transaction splitting cannot be enabled. If you set the consistency level to **1** or **2**, transaction splitting can be enabled.
+	// 	- If the read /write mode of a PolarDB for MySQL cluster is set to **Read-only**, the **Connection-based SLB*	- and **Active Request-based SLB*	- SLB policies are supported. The **Read-write (Automatic read /write splitting) **mode of the cluster supports*	- Active Request-based SLB*	- policy.
+	//
+	// 	- If ReadWriteMode is set to **ReadWrite*	- for the cluster endpoint of a PolarDB for MySQL cluster or if ReadWriteMode is set to **ReadOnly*	- and the load balancing policy is set to **active requests-based load balancing**, the automatic request distribution between row store and column store nodes feature is supported.
+	//
+	// 	- Only PolarDB for MySQL supports global consistency.
+	//
+	// 	- If the **ReadWriteMode*	- parameter is set to **ReadOnly**, the consistency level must be **0**.
+	//
+	// 	- You can specify the consistency level, transaction splitting, connection pool, and primary node accepts read requests features at a time, such as `{\\"ConsistLevel\\":\\"1\\",\\"DistributedTransaction\\":\\"on\\",\\"ConnectionPersist\\":\\"Session\\",\\"MasterAcceptReads\\":\\"on\\"}`.
+	//
+	// 	- The transaction splitting settings are restricted by the consistency level settings. For example, if you set the consistency level to **0**, transaction splitting cannot be enabled. If you set the consistency level to **1*	- or **2**, transaction splitting can be enabled.
+	//
+	// example:
+	//
+	// {"ConsistLevel":"1","DistributedTransaction":"on","MasterAcceptReads":"off","ConnectionPersist": "on"}
 	EndpointConfig *string `json:"EndpointConfig,omitempty" xml:"EndpointConfig,omitempty"`
 	// The reader nodes to be associated with the endpoint. If you need to specify multiple reader nodes, separate the reader nodes with commas (,). If you do not specify this parameter, the predefined nodes are used by default.
 	//
 	// >
 	//
-	// *   You must specify the node ID for each PolarDB for MySQL cluster.
+	// 	- You must specify the node ID for each PolarDB for MySQL cluster.
 	//
-	// *   You must specify the role name of each node for each PolarDB for PostgreSQL or PolarDB for Oracle cluster. Example: `Writer,Reader1,Reader2`.
+	// 	- You must specify the role name of each node for each PolarDB for PostgreSQL or PolarDB for Oracle cluster. Example: `Writer,Reader1,Reader2`.
 	//
-	// *   If you set **ReadWriteMode** to **ReadOnly**, only one node can be associated with the cluster endpoint. If the only node becomes faulty, the cluster endpoint may be unavailable for up to an hour. We recommend that you do not associate only one node with the cluster endpoint in production environments. We recommend that you associate at least two nodes with the cluster endpoint to improve service availability.
+	// 	- If you set **ReadWriteMode*	- to **ReadOnly**, only one node can be associated with the cluster endpoint. If the only node becomes faulty, the cluster endpoint may be unavailable for up to an hour. We recommend that you do not associate only one node with the cluster endpoint in production environments. We recommend that you associate at least two nodes with the cluster endpoint to improve service availability.
 	//
-	// *   If you set **ReadWriteMode** to **ReadWrite**, you must associate at least two nodes with the cluster endpoint.
+	// 	- If you set **ReadWriteMode*	- to **ReadWrite**, you must associate at least two nodes with the cluster endpoint.
 	//
-	//     *   No limits are imposed on the two nodes that you select for each PolarDB for MySQL cluster. If the two nodes are read-only nodes, write requests are forwarded to the primary node.
-	//     *   The following limit applies to PolarDB for PostgreSQL and PolarDB for Oracle clusters: One of the selected nodes must be the primary node.
+	//     	- No limits are imposed on the two nodes that you select for each PolarDB for MySQL cluster. If the two nodes are read-only nodes, write requests are forwarded to the primary node.
+	//
+	//     	- The following limit applies to PolarDB for PostgreSQL and PolarDB for Oracle clusters: One of the selected nodes must be the primary node.
+	//
+	// example:
+	//
+	// pi-**************,pi-*************
 	Nodes        *string `json:"Nodes,omitempty" xml:"Nodes,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The read/write mode. Valid values:
 	//
-	// *   **ReadWrite**: The cluster endpoint handles read and write requests. Automatic read/write splitting is enabled.
-	// *   **ReadOnly**: The cluster endpoint handles read-only requests.
+	// 	- **ReadWrite**: The cluster endpoint handles read and write requests. Automatic read/write splitting is enabled.
+	//
+	// 	- **ReadOnly**: The cluster endpoint handles read-only requests.
+	//
+	// example:
+	//
+	// ReadWrite
 	ReadWriteMode        *string `json:"ReadWriteMode,omitempty" xml:"ReadWriteMode,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -20549,6 +26686,10 @@ func (s *ModifyDBClusterEndpointRequest) SetResourceOwnerId(v int64) *ModifyDBCl
 
 type ModifyDBClusterEndpointResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// CD3FA5F3-FAF3-44CA-AFFF-BAF869******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -20596,10 +26737,24 @@ func (s *ModifyDBClusterEndpointResponse) SetBody(v *ModifyDBClusterEndpointResp
 
 type ModifyDBClusterMaintainTimeRequest struct {
 	// The cluster ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pc-***************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	// The maintenance window of the cluster. Specify the maintenance window in the `HH:mmZ-HH:mmZ` format. For example, the value `16:00Z-17:00Z` indicates that the cluster can be maintained from 00:00 to 01:00 (UTC+8).
 	//
+	//
+	//
 	// >  The maintenance window must start on the hour and last for an hour.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 02:00Z-03:00Z
 	MaintainTime         *string `json:"MaintainTime,omitempty" xml:"MaintainTime,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -20647,6 +26802,10 @@ func (s *ModifyDBClusterMaintainTimeRequest) SetResourceOwnerId(v int64) *Modify
 
 type ModifyDBClusterMaintainTimeResponseBody struct {
 	// The request ID.
+	//
+	// example:
+	//
+	// 70656639-1416-479F-AF13-D08197******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -20696,13 +26855,30 @@ type ModifyDBClusterMigrationRequest struct {
 	// The endpoints to be switched. The endpoints are in the JSON format.
 	//
 	// > This parameter is valid when the SwapConnectionString parameter is set to true.
+	//
+	// example:
+	//
+	// {"rm-2ze73el581cs*****.mysql.pre.rds.aliyuncs.com":"pc-2ze8200s298e*****.mysql.polardb.pre.rds.aliyuncs.com","rm-2ze73el581cs86*****.mysql.pre.rds.aliyuncs.com":"test-p*****.mysql.polardb.pre.rds.aliyuncs.com"}
 	ConnectionStrings *string `json:"ConnectionStrings,omitempty" xml:"ConnectionStrings,omitempty"`
 	// The ID of cluster.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pc-**************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	// The ID of the new instance or new cluster. Valid values:
 	//
-	// *   To perform a data migration, enter the ID of the PolarDB cluster.
-	// *   To perform a migration rollback, enter the ID of the ApsaraDB for RDS instance.
+	// 	- To perform a data migration, enter the ID of the PolarDB cluster.
+	//
+	// 	- To perform a migration rollback, enter the ID of the ApsaraDB for RDS instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pc-**************
 	NewMasterInstanceId  *string `json:"NewMasterInstanceId,omitempty" xml:"NewMasterInstanceId,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -20710,13 +26886,24 @@ type ModifyDBClusterMigrationRequest struct {
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 	// The ID of the source ApsaraDB RDS instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// rm-************
 	SourceRDSDBInstanceId *string `json:"SourceRDSDBInstanceId,omitempty" xml:"SourceRDSDBInstanceId,omitempty"`
 	// Specifies whether to switch the endpoints. Valid values:
 	//
-	// *   **true**: switches the endpoints. If you select this option, you do not need the change the endpoint in your applications.
-	// *   **false**: does not switch the endpoints. If you select this option, you must specify the endpoint of the PolarDB cluster in your applications.
+	// 	- **true**: switches the endpoints. If you select this option, you do not need the change the endpoint in your applications.
+	//
+	// 	- **false**: does not switch the endpoints. If you select this option, you must specify the endpoint of the PolarDB cluster in your applications.
 	//
 	// Default value: **false**.
+	//
+	// example:
+	//
+	// false
 	SwapConnectionString *string `json:"SwapConnectionString,omitempty" xml:"SwapConnectionString,omitempty"`
 }
 
@@ -20780,6 +26967,10 @@ func (s *ModifyDBClusterMigrationRequest) SetSwapConnectionString(v string) *Mod
 
 type ModifyDBClusterMigrationResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// A1B303A5-653F-4AEE-A598-023FF9******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -20827,10 +27018,22 @@ func (s *ModifyDBClusterMigrationResponse) SetBody(v *ModifyDBClusterMigrationRe
 
 type ModifyDBClusterMonitorRequest struct {
 	// The cluster ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pc-****************
 	DBClusterId  *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The interval at which monitoring data is collected. Valid values: **5** and **60**. Unit: seconds.
+	// The interval at which monitoring data is collected. Valid values: **5*	- and **60**. Unit: seconds.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 5
 	Period               *string `json:"Period,omitempty" xml:"Period,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -20876,6 +27079,10 @@ func (s *ModifyDBClusterMonitorRequest) SetResourceOwnerId(v int64) *ModifyDBClu
 
 type ModifyDBClusterMonitorResponseBody struct {
 	// The request ID.
+	//
+	// example:
+	//
+	// 75B92353-73B4-447B-8477-C85F3C******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -20924,12 +27131,23 @@ func (s *ModifyDBClusterMonitorResponse) SetBody(v *ModifyDBClusterMonitorRespon
 type ModifyDBClusterParametersRequest struct {
 	// The ID of the cluster.
 	//
-	// > You can call the [DescribeDBClusters](~~98094~~) operation to query information about all clusters that are deployed in a specified region, such as the cluster ID.
+	// > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to query information about all clusters that are deployed in a specified region, such as the cluster ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pc-**************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	// Specifies an immediate or scheduled task to modify parameters and restart the cluster. Valid values:
 	//
-	// *   false: scheduled task
-	// *   true: immediate task
+	// 	- false: scheduled task
+	//
+	// 	- true: immediate task
+	//
+	// example:
+	//
+	// false
 	FromTimeService *bool   `json:"FromTimeService,omitempty" xml:"FromTimeService,omitempty"`
 	OwnerAccount    *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId         *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -20937,35 +27155,53 @@ type ModifyDBClusterParametersRequest struct {
 	//
 	// >
 	//
-	// *   You can call the [DescribeParameterGroups](~~207178~~) operation to query the parameter template ID.
+	// 	- You can call the [DescribeParameterGroups](https://help.aliyun.com/document_detail/207178.html) operation to query the parameter template ID.
 	//
-	// *   You must specify this parameter or the `Parameters` parameter.
-	// *   This parameter is valid only for a PolarDB for MySQL cluster.
+	// 	- You must specify this parameter or the `Parameters` parameter.
+	//
+	// 	- This parameter is valid only for a PolarDB for MySQL cluster.
+	//
+	// example:
+	//
+	// pcpg-**************
 	ParameterGroupId *string `json:"ParameterGroupId,omitempty" xml:"ParameterGroupId,omitempty"`
 	// The JSON string that consists of parameters and values. The parameter values are strings, for example, `{"wait_timeout":"86","innodb_old_blocks_time":"10"}`.
 	//
 	// >
 	//
-	// *   You can call the [DescribeDBClusterParameters](~~98122~~) operation to query the parameters of the PolarDB cluster.
+	// 	- You can call the [DescribeDBClusterParameters](https://help.aliyun.com/document_detail/98122.html) operation to query the parameters of the PolarDB cluster.
 	//
-	// *   This parameter is required for a PolarDB for Oracle or PolarDB for PostgreSQL cluster.
-	// *   For PolarDB for MySQL clusters, you must specify this parameter or the `ParameterGroupId` parameter.
+	// 	- This parameter is required for a PolarDB for Oracle or PolarDB for PostgreSQL cluster.
+	//
+	// 	- For PolarDB for MySQL clusters, you must specify this parameter or the `ParameterGroupId` parameter.
+	//
+	// example:
+	//
+	// {"wait_timeout":"86","innodb_old_blocks_time":"10"}
 	Parameters *string `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
 	// The latest start time to run the task. Specify the time in the `YYYY-MM-DDThh:mm:ssZ` format. The time must be in UTC.
 	//
 	// >
 	//
-	// *   The value of this parameter must be at least 30 minutes later than the value of the PlannedStartTime parameter.
+	// 	- The value of this parameter must be at least 30 minutes later than the value of the PlannedStartTime parameter.
 	//
-	// *   By default, if you specify the `PlannedStartTime` parameter but do not specify the PlannedEndTime parameter, the latest start time of the task is set to a value that is calculated by using the following formula: `Value of the PlannedEndTime parameter + 30 minutes`. For example, if you set the `PlannedStartTime` parameter to `2021-01-14T09:00:00Z` and you do not specify the PlannedEndTime parameter, the latest start time of the task is set to `2021-01-14T09:30:00Z`.
+	// 	- By default, if you specify the `PlannedStartTime` parameter but do not specify the PlannedEndTime parameter, the latest start time of the task is set to a value that is calculated by using the following formula: `Value of the PlannedEndTime parameter + 30 minutes`. For example, if you set the `PlannedStartTime` parameter to `2021-01-14T09:00:00Z` and you do not specify the PlannedEndTime parameter, the latest start time of the task is set to `2021-01-14T09:30:00Z`.
+	//
+	// example:
+	//
+	// 2022-04-28T14:30:00Z
 	PlannedEndTime *string `json:"PlannedEndTime,omitempty" xml:"PlannedEndTime,omitempty"`
 	// The earliest time to upgrade the specifications within the scheduled time period. Specify the time in the `YYYY-MM-DDThh:mm:ssZ` format. The time must be in UTC.
 	//
 	// >
 	//
-	// *   The earliest start time of the task can be a point in time within the next 24 hours. For example, if the current time is `2021-01-14T09:00:00Z`, you can specify a point in the time range from `2021-01-14T09:00:00Z` to `2021-01-15T09:00:00Z`.
+	// 	- The earliest start time of the task can be a point in time within the next 24 hours. For example, if the current time is `2021-01-14T09:00:00Z`, you can specify a point in the time range from `2021-01-14T09:00:00Z` to `2021-01-15T09:00:00Z`.
 	//
-	// *   If this parameter is empty, the upgrade task is immediately performed.
+	// 	- If this parameter is empty, the upgrade task is immediately performed.
+	//
+	// example:
+	//
+	// 2022-04-28T14:00:00Z
 	PlannedStartTime     *string `json:"PlannedStartTime,omitempty" xml:"PlannedStartTime,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -21031,6 +27267,10 @@ func (s *ModifyDBClusterParametersRequest) SetResourceOwnerId(v int64) *ModifyDB
 
 type ModifyDBClusterParametersResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// C5D526E5-91B5-48B8-B980-FE07FF******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -21079,49 +27319,93 @@ func (s *ModifyDBClusterParametersResponse) SetBody(v *ModifyDBClusterParameters
 type ModifyDBClusterPrimaryZoneRequest struct {
 	// The ID of the cluster.
 	//
-	// > You can call the [DescribeDBClusters](~~173433~~) operation to query information about all clusters that are deployed in a specified region, such as the cluster ID.
-	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// Specifies an immediate or scheduled task to switch the primary zone. Valid values:
+	// > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/173433.html) operation to query information about all clusters that are deployed in a specified region, such as the cluster ID.
 	//
-	// *   false: scheduled task
-	// *   true: immediate task
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pc-**************
+	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// Specifies whether to change the primary zone immediately. Valid values:
+	//
+	// 	- false (default): changes the primary zone as scheduled.
+	//
+	// 	- true: changes the primary zone immediately.
+	//
+	// example:
+	//
+	// false
 	FromTimeService *bool `json:"FromTimeService,omitempty" xml:"FromTimeService,omitempty"`
-	// Specifies whether to switch back over to the original primary zone. Valid values: true: Switch over back to the original primary zone. false: Do not switch back over to the original primary zone. If this parameter is set to false, the primary zone of the cluster is changed to the specified destination zone.
+	// Specifies whether to switch back to the original primary zone.
+	//
+	// 	- true: switches back to the original primary zone.
+	//
+	// 	- false: does not switch back to the original primary zone.
+	//
+	// example:
+	//
+	// false
 	IsSwitchOverForDisaster *string `json:"IsSwitchOverForDisaster,omitempty" xml:"IsSwitchOverForDisaster,omitempty"`
 	OwnerAccount            *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId                 *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The latest start time to switch the primary zone within the scheduled time period. Specify the time in the ISO 8601 standard in the `YYYY-MM-DDThh:mm:ssZ` format. The time must be in UTC.
 	//
-	// >
+	// > 	- The latest start time must be at least 30 minutes later than the earliest start time.
 	//
-	// *   The latest start time must be at least 30 minutes later than the earliest start time.
+	// >	- If you specify the `PlannedStartTime` parameter but do not specify the PlannedEndTime parameter, the latest start time of the task is set to a value that is calculated by `the value of the PlannedEndTime parameter + 30 minutes` by default. For example, if you set the `PlannedStartTime` parameter to `2021-01-14T09:00:00Z` and you do not specify the PlannedEndTime parameter, the latest start time of the task is set to `2021-01-14T09:30:00Z`.
 	//
-	// *   If you specify the `PlannedStartTime` parameter but do not specify the PlannedEndTime parameter, the latest start time of the task is set to a value that is calculated by `the value of the PlannedEndTime parameter + 30 minutes` by default. For example, if you set the `PlannedStartTime` parameter to `2021-01-14T09:00:00Z` and you do not specify the PlannedEndTime parameter, the latest start time of the task is set to `2021-01-14T09:30:00Z`.
+	// example:
+	//
+	// 2021-01-14T09:30:00Z
 	PlannedEndTime *string `json:"PlannedEndTime,omitempty" xml:"PlannedEndTime,omitempty"`
-	// The earliest start time to switch the primary zone within the scheduled time period. Specify the time in the ISO 8601 standard in the `YYYY-MM-DDThh:mm:ssZ` format. The time must be in UTC.
+	// The start time to change the primary zone within the scheduled time period. Specify the time in the ISO 8601 standard in the `YYYY-MM-DDThh:mm:ssZ` format. The time must be in UTC.
 	//
-	// >
+	// > 	- The start time of the task can be a point in time within the next 24 hours. For example, if the current time is `2021-01-14T09:00:00Z`, you can specify a point in time from `2021-01-14T09:00:00Z` to `2021-01-15T09:00:00Z`.
 	//
-	// *   The earliest start time of the task can be a point in time within the next 24 hours. For example, if the current time is `2021-01-14T09:00:00Z`, you can specify a point in time that ranges from `2021-01-14T09:00:00Z` to `2021-01-15T09:00:00Z`.
+	// >	- If you leave this parameter empty, the primary zone is immediately changed.
 	//
-	// *   If you left this parameter empty, the primary zone is immediately switched.
+	// example:
+	//
+	// 2021-01-14T09:00:00Z
 	PlannedStartTime     *string `json:"PlannedStartTime,omitempty" xml:"PlannedStartTime,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The virtual private cloud (VPC) ID of the destination primary zone.
+	//
+	// example:
+	//
+	// vpc-**********
 	VPCId *string `json:"VPCId,omitempty" xml:"VPCId,omitempty"`
-	// The ID of vSwitch in the destination primary zone.
+	// The ID of the vSwitch in the destination primary zone.
 	//
-	// >
+	// > 	- For a PolarDB for PostgreSQL (Compatible with Oracle) cluster or a PolarDB for PostgreSQL cluster, this parameter is required.
 	//
-	// *   For a PolarDB for Oracle or PolarDB for PostgreSQL cluster, this parameter is required.
+	// >	- For a PolarDB for MySQL cluster, the default vSwitch is used if no vSwitches are created in the destination zone. If a vSwitch is in the destination zone, this parameter is required.
 	//
-	// *   For a PolarDB for MySQL cluster: - This parameter is optional if no vSwitches have been created in the destination zone. The default vSwitch is used. - This parameter is required if a vSwitch has been created in the destination zone.
+	// example:
+	//
+	// vsw-**************
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
 	// The ID of the destination primary zone.
 	//
-	// > You can call the [DescribeRegions](~~98041~~) operation to query available zones.
-	ZoneId   *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	// >  You can call the DescribeRegions operation to query available zones.[](~~98041~~)
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou-g
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	// The type of the zone. Valid values:
+	//
+	// 	- **Primary**: primary zone
+	//
+	// 	- **Standby**: secondary zone
+	//
+	// example:
+	//
+	// Primary
 	ZoneType *string `json:"ZoneType,omitempty" xml:"ZoneType,omitempty"`
 }
 
@@ -21200,6 +27484,10 @@ func (s *ModifyDBClusterPrimaryZoneRequest) SetZoneType(v string) *ModifyDBClust
 
 type ModifyDBClusterPrimaryZoneResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// ED12C6FF-3261-4571-AB57-3570F6******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -21246,10 +27534,23 @@ func (s *ModifyDBClusterPrimaryZoneResponse) SetBody(v *ModifyDBClusterPrimaryZo
 }
 
 type ModifyDBClusterResourceGroupRequest struct {
-	DBClusterId          *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	NewResourceGroupId   *string `json:"NewResourceGroupId,omitempty" xml:"NewResourceGroupId,omitempty"`
-	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pc-*************
+	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// rg-**********
+	NewResourceGroupId *string `json:"NewResourceGroupId,omitempty" xml:"NewResourceGroupId,omitempty"`
+	OwnerAccount       *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId            *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// example:
+	//
+	// rg-**********
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -21299,6 +27600,9 @@ func (s *ModifyDBClusterResourceGroupRequest) SetResourceOwnerId(v int64) *Modif
 }
 
 type ModifyDBClusterResourceGroupResponseBody struct {
+	// example:
+	//
+	// 70656639-1416-479F-AF13-D08197******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -21346,27 +27650,44 @@ func (s *ModifyDBClusterResourceGroupResponse) SetBody(v *ModifyDBClusterResourc
 
 type ModifyDBClusterSSLRequest struct {
 	// The ID of the cluster.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pc-************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	// The ID of the endpoint.
 	//
 	// >
 	//
-	// *   This parameter is required for a PolarDB for MySQL cluster.
+	// 	- This parameter is required for a PolarDB for MySQL cluster.
 	//
-	// *   This parameter is not required for a PolarDB for Oracle or PolarDB for PostgreSQL cluster. By default, SSL encryption is enabled for all endpoints.
-	// *   You can call the [DescribeDBClusterSSL](~~153414~~) operation to view the details of the endpoint.
+	// 	- This parameter is not required for a PolarDB for Oracle or PolarDB for PostgreSQL cluster. By default, SSL encryption is enabled for all endpoints.
+	//
+	// 	- You can call the [DescribeDBClusterSSL](https://help.aliyun.com/document_detail/153414.html) operation to view the details of the endpoint.
+	//
+	// example:
+	//
+	// pe-******************
 	DBEndpointId *string `json:"DBEndpointId,omitempty" xml:"DBEndpointId,omitempty"`
 	// The network type supported by the endpoint that is specified by **DBEndpointId**. Valid values:
 	//
-	// *   **Public**
-	// *   **Private**
-	// *   **Inner**
+	// 	- **Public**
+	//
+	// 	- **Private**
+	//
+	// 	- **Inner**
 	//
 	// >
 	//
-	// *   This parameter is required for a PolarDB for MySQL cluster.
+	// 	- This parameter is required for a PolarDB for MySQL cluster.
 	//
-	// *   This parameter is not required for a PolarDB for Oracle or PolarDB for PostgreSQL cluster. By default, SSL encryption is enabled for all endpoints.
+	// 	- This parameter is not required for a PolarDB for Oracle or PolarDB for PostgreSQL cluster. By default, SSL encryption is enabled for all endpoints.
+	//
+	// example:
+	//
+	// Public
 	NetType              *string `json:"NetType,omitempty" xml:"NetType,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -21374,16 +27695,27 @@ type ModifyDBClusterSSLRequest struct {
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// Specifies whether automatic rotation of SSL certificates is enabled.
 	//
-	// *   **Enable**: The feature is enabled.
-	// *   **Disable**: The feature is disabled.
+	// 	- **Enable**: The feature is enabled.
+	//
+	// 	- **Disable**: The feature is disabled.
+	//
+	// example:
+	//
+	// Enable
 	SSLAutoRotate *string `json:"SSLAutoRotate,omitempty" xml:"SSLAutoRotate,omitempty"`
 	// The SSL encryption status. Valid values:
 	//
-	// *   **Disable**: SSL encryption is disabled.
-	// *   **Enable**: SSL encryption is enabled.
-	// *   **Update**: The SSL certificate is updated.
+	// 	- **Disable**: SSL encryption is disabled.
 	//
-	// > After you enable SSL encryption or update the SSL certificate, you must download and configure the certificate. For more information, see [Configure SSL encryption](~~153182~~).
+	// 	- **Enable**: SSL encryption is enabled.
+	//
+	// 	- **Update**: The SSL certificate is updated.
+	//
+	// > After you enable SSL encryption or update the SSL certificate, you must download and configure the certificate. For more information, see [Configure SSL encryption](https://help.aliyun.com/document_detail/153182.html).
+	//
+	// example:
+	//
+	// Enable
 	SSLEnabled *string `json:"SSLEnabled,omitempty" xml:"SSLEnabled,omitempty"`
 }
 
@@ -21442,6 +27774,10 @@ func (s *ModifyDBClusterSSLRequest) SetSSLEnabled(v string) *ModifyDBClusterSSLR
 
 type ModifyDBClusterSSLResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// A94B1755-6D8B-4E27-BF3C-8562BC******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -21490,43 +27826,101 @@ func (s *ModifyDBClusterSSLResponse) SetBody(v *ModifyDBClusterSSLResponseBody) 
 type ModifyDBClusterServerlessConfRequest struct {
 	// Specifies whether to enable No-activity Suspension. Default value: false. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
 	AllowShutDown *string `json:"AllowShutDown,omitempty" xml:"AllowShutDown,omitempty"`
 	// The ID of the serverless cluster.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pc-bp10gr51qasnl****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	// Specifies an immediate or scheduled task to modify parameters and restart the cluster. Valid values:
 	//
-	// *   false: scheduled task
-	// *   true: immediate task
+	// 	- false: scheduled task
+	//
+	// 	- true: immediate task
+	//
+	// example:
+	//
+	// false
 	FromTimeService *bool   `json:"FromTimeService,omitempty" xml:"FromTimeService,omitempty"`
 	OwnerAccount    *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId         *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The latest start time for upgrading the specifications within the scheduled time period. Specify the time in the YYYY-MM-DDThh:mm:ssZ format. The time must be in UTC.
-	// > * The value of this parameter must be at least 30 minutes later than the value of PlannedStartTime.
-	// >*   If you specify PlannedStartTime but do not specify PlannedEndTime, the latest start time of the task is set to a value that is calculated by using the following formula: `PlannedEndTime value + 30 minutes`. For example, if you set PlannedStartTime to `2021-01-14T09:00:00Z` and you do not specify PlannedEndTime, the latest start time of the task is set to `2021-01-14T09:30:00Z`.
+	//
+	// > 	- The value of this parameter must be at least 30 minutes later than the value of PlannedStartTime.
+	//
+	// >	- If you specify PlannedStartTime but do not specify PlannedEndTime, the latest start time of the task is set to a value that is calculated by using the following formula: `PlannedEndTime value + 30 minutes`. For example, if you set PlannedStartTime to `2021-01-14T09:00:00Z` and you do not specify PlannedEndTime, the latest start time of the task is set to `2021-01-14T09:30:00Z`.
+	//
+	// example:
+	//
+	// 2021-01-14T09:30:00Z
 	PlannedEndTime *string `json:"PlannedEndTime,omitempty" xml:"PlannedEndTime,omitempty"`
 	// The earliest start time of the scheduled task for adding the read-only node. The scheduled task specifies that the task is run in the required period. Specify the time in the YYYY-MM-DDThh:mm:ssZ format. The time must be in UTC.
 	//
-	// > *   The earliest start time of the scheduled task can be a point in time within the next 24 hours. For example, if the current time is `2021-01-14T09:00:00Z`, you can specify a point in time between `2021-01-14T09:00:00Z` and `2021-01-15T09:00:00Z`.
-	// >*   If you leave this parameter empty, the task for adding the read-only node is immediately run by default.
+	// > 	- The earliest start time of the scheduled task can be a point in time within the next 24 hours. For example, if the current time is `2021-01-14T09:00:00Z`, you can specify a point in time between `2021-01-14T09:00:00Z` and `2021-01-15T09:00:00Z`.
+	//
+	// >	- If you leave this parameter empty, the task for adding the read-only node is immediately run by default.
+	//
+	// example:
+	//
+	// 2021-01-14T09:00:00Z
 	PlannedStartTime     *string `json:"PlannedStartTime,omitempty" xml:"PlannedStartTime,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The maximum number of stable AP read-only nodes. Valid values: 0 to 7.
+	//
+	// example:
+	//
+	// 1
 	ScaleApRoNumMax *string `json:"ScaleApRoNumMax,omitempty" xml:"ScaleApRoNumMax,omitempty"`
 	// The minimum number of stable AP read-only nodes. Valid values: 0 to 7.
+	//
+	// example:
+	//
+	// 1
 	ScaleApRoNumMin *string `json:"ScaleApRoNumMin,omitempty" xml:"ScaleApRoNumMin,omitempty"`
 	// The maximum number of PCUs per node for scaling. Valid values: 1 PCU to 32 PCUs.
+	//
+	// example:
+	//
+	// 10
 	ScaleMax *string `json:"ScaleMax,omitempty" xml:"ScaleMax,omitempty"`
 	// The minimum number of PCUs per node for scaling. Valid values: 1 PCU to 31 PCUs.
+	//
+	// example:
+	//
+	// 1
 	ScaleMin *string `json:"ScaleMin,omitempty" xml:"ScaleMin,omitempty"`
 	// The maximum number of read-only nodes for scaling. Valid values: 0 to 15.
+	//
+	// example:
+	//
+	// 2
 	ScaleRoNumMax *string `json:"ScaleRoNumMax,omitempty" xml:"ScaleRoNumMax,omitempty"`
 	// The minimum number of read-only nodes for scaling. Valid values: 0 to 15.
+	//
+	// example:
+	//
+	// 1
 	ScaleRoNumMin *string `json:"ScaleRoNumMin,omitempty" xml:"ScaleRoNumMin,omitempty"`
 	// The detection period for No-activity Suspension. Valid values: 5 to 1440. Unit: minutes. The detection duration must be a multiple of 5 minutes.
-	SecondsUntilAutoPause *string `json:"SecondsUntilAutoPause,omitempty" xml:"SecondsUntilAutoPause,omitempty"`
+	//
+	// example:
+	//
+	// 10
+	SecondsUntilAutoPause             *string `json:"SecondsUntilAutoPause,omitempty" xml:"SecondsUntilAutoPause,omitempty"`
+	ServerlessRuleCpuEnlargeThreshold *string `json:"ServerlessRuleCpuEnlargeThreshold,omitempty" xml:"ServerlessRuleCpuEnlargeThreshold,omitempty"`
+	ServerlessRuleCpuShrinkThreshold  *string `json:"ServerlessRuleCpuShrinkThreshold,omitempty" xml:"ServerlessRuleCpuShrinkThreshold,omitempty"`
+	ServerlessRuleMode                *string `json:"ServerlessRuleMode,omitempty" xml:"ServerlessRuleMode,omitempty"`
 }
 
 func (s ModifyDBClusterServerlessConfRequest) String() string {
@@ -21617,10 +28011,33 @@ func (s *ModifyDBClusterServerlessConfRequest) SetSecondsUntilAutoPause(v string
 	return s
 }
 
+func (s *ModifyDBClusterServerlessConfRequest) SetServerlessRuleCpuEnlargeThreshold(v string) *ModifyDBClusterServerlessConfRequest {
+	s.ServerlessRuleCpuEnlargeThreshold = &v
+	return s
+}
+
+func (s *ModifyDBClusterServerlessConfRequest) SetServerlessRuleCpuShrinkThreshold(v string) *ModifyDBClusterServerlessConfRequest {
+	s.ServerlessRuleCpuShrinkThreshold = &v
+	return s
+}
+
+func (s *ModifyDBClusterServerlessConfRequest) SetServerlessRuleMode(v string) *ModifyDBClusterServerlessConfRequest {
+	s.ServerlessRuleMode = &v
+	return s
+}
+
 type ModifyDBClusterServerlessConfResponseBody struct {
 	// The ID of the serverless cluster.
+	//
+	// example:
+	//
+	// pc-bp10gr51qasnl****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 5E71541A-6007-4DCC-A38A-F872C31FEB45
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -21673,30 +28090,64 @@ func (s *ModifyDBClusterServerlessConfResponse) SetBody(v *ModifyDBClusterServer
 
 type ModifyDBClusterStorageSpaceRequest struct {
 	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The token can only contain ASCII characters and cannot exceed 64 characters in length. The token is case-sensitive.
+	//
+	// example:
+	//
+	// 6000170000591aed949d0f54a343f1a4233c1e7d1c5c******
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The cluster ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pc-*************
 	DBClusterId  *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The latest time to upgrade the specifications within the scheduled time period. Specify the time in the `YYYY-MM-DDThh:mm:ssZ` format. The time must be in UTC.
+	//
 	// >- The value of this parameter must be at least 30 minutes later than PlannedStartTime.
+	//
 	// >- By default, if you specify `PlannedStartTime` but do not specify PlannedEndTime, the latest start time of the task is set to `PlannedEndTime + 30 minutes`. For example, if you set `PlannedStartTime` to `2021-01-14T09:00:00Z` and you do not specify PlannedEndTime, the latest start time of the task is `2021-01-14T09:30:00Z`.
+	//
+	// example:
+	//
+	// 2021-01-14T09:30:00Z
 	PlannedEndTime *string `json:"PlannedEndTime,omitempty" xml:"PlannedEndTime,omitempty"`
 	// The earliest time to upgrade the specifications within the scheduled time period. Specify the time in the `YYYY-MM-DDThh:mm:ssZ` format. The time must be in UTC.
+	//
 	// >- This parameter takes effect only when `ModifyType` is set to `Upgrade`.
+	//
 	// >- The earliest start time of the task can be a point in time within the next 24 hours. For example, if the current time is `2021-01-14T09:00:00Z`, you can specify a point in the time that ranges from `2021-01-14T09:00:00Z` to `2021-01-15T09:00:00Z`.
+	//
 	// >- If this parameter is left empty, the upgrade task is immediately performed.
+	//
+	// example:
+	//
+	// 2021-01-14T09:00:00Z
 	PlannedStartTime     *string `json:"PlannedStartTime,omitempty" xml:"PlannedStartTime,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The storage capacity that you can select when you change the cluster. Unit: GB.
 	//
 	// >  You can set this parameter for PolarDB for MySQL clusters of Standard Edition to a value that ranges from 20 to 32000.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 50
 	StorageSpace *int64 `json:"StorageSpace,omitempty" xml:"StorageSpace,omitempty"`
 	// The category of the cluster. Default value: ON. Valid values:
 	//
-	// *   **normal_exclusive**: dedicated
-	// *   **normal_general**: general-purpose
+	// 	- **normal_exclusive**: dedicated
+	//
+	// 	- **normal_general**: general-purpose
+	//
+	// example:
+	//
+	// normal_general
 	SubCategory *string `json:"SubCategory,omitempty" xml:"SubCategory,omitempty"`
 }
 
@@ -21760,10 +28211,22 @@ func (s *ModifyDBClusterStorageSpaceRequest) SetSubCategory(v string) *ModifyDBC
 
 type ModifyDBClusterStorageSpaceResponseBody struct {
 	// The cluster ID.
+	//
+	// example:
+	//
+	// pc-*************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	// The order ID.
+	//
+	// example:
+	//
+	// 2035629******
 	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 685F028C-4FCD-407D-A559-072D63******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -21821,21 +28284,46 @@ func (s *ModifyDBClusterStorageSpaceResponse) SetBody(v *ModifyDBClusterStorageS
 
 type ModifyDBClusterTDERequest struct {
 	// The ID of the cluster.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pc-************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	// Specifies whether to enable automatic encryption for new tables. Valid values:
 	//
-	// *   **ON**
-	// *   **OFF**
+	// 	- **ON**
+	//
+	// 	- **OFF**
+	//
+	// example:
+	//
+	// ON
 	EncryptNewTables *string `json:"EncryptNewTables,omitempty" xml:"EncryptNewTables,omitempty"`
 	// The ID of the custom key.
+	//
+	// example:
+	//
+	// 749c1df7-****-****-****-*********
 	EncryptionKey        *string `json:"EncryptionKey,omitempty" xml:"EncryptionKey,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The Alibaba Cloud Resource Name (ARN) of the RAM role. A RAM role is a virtual identity that you can create within your Alibaba Cloud account. For more information, see [RAM role overview](~~93689~~).
+	// The Alibaba Cloud Resource Name (ARN) of the RAM role. A RAM role is a virtual identity that you can create within your Alibaba Cloud account. For more information, see [RAM role overview](https://help.aliyun.com/document_detail/93689.html).
+	//
+	// example:
+	//
+	// acs:ram::1406926*****:role/aliyunrdsinstanceencryptiondefaultrole
 	RoleArn *string `json:"RoleArn,omitempty" xml:"RoleArn,omitempty"`
 	// Modifies the TDE status. Set the value to **Enable**.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Enable
 	TDEStatus *string `json:"TDEStatus,omitempty" xml:"TDEStatus,omitempty"`
 }
 
@@ -21894,6 +28382,10 @@ func (s *ModifyDBClusterTDERequest) SetTDEStatus(v string) *ModifyDBClusterTDERe
 
 type ModifyDBClusterTDEResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 5F859238-2A36-4A8D-BD0F-732112******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -21941,13 +28433,32 @@ func (s *ModifyDBClusterTDEResponse) SetBody(v *ModifyDBClusterTDEResponseBody) 
 
 type ModifyDBDescriptionRequest struct {
 	// The ID of cluster.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pc-***************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	// The description of the database. The description must meet the following requirements:
 	//
-	// *   It cannot start with `http://` or `https://`.
-	// *   It must be 2 to 256 characters in length.
+	// 	- It cannot start with `http://` or `https://`.
+	//
+	// 	- It must be 2 to 256 characters in length.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// DBDesc
 	DBDescription *string `json:"DBDescription,omitempty" xml:"DBDescription,omitempty"`
 	// The name of the database.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// testDB
 	DBName               *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -22000,6 +28511,10 @@ func (s *ModifyDBDescriptionRequest) SetResourceOwnerId(v int64) *ModifyDBDescri
 
 type ModifyDBDescriptionResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 5F295AAB-B599-4F0E-96D0-DBFAB3******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -22048,41 +28563,81 @@ func (s *ModifyDBDescriptionResponse) SetBody(v *ModifyDBDescriptionResponseBody
 type ModifyDBEndpointAddressRequest struct {
 	// The prefix of the new endpoint. The prefix must meet the following requirements:
 	//
-	// *   It can contain lowercase letters, digits, and hyphens (-).
-	// *   It must start with a letter and end with a digit or a letter.
-	// *   It must be 6 to 30 characters in length.
+	// 	- It can contain lowercase letters, digits, and hyphens (-).
+	//
+	// 	- It must start with a letter and end with a digit or a letter.
+	//
+	// 	- It must be 6 to 30 characters in length.
+	//
+	// example:
+	//
+	// example
 	ConnectionStringPrefix *string `json:"ConnectionStringPrefix,omitempty" xml:"ConnectionStringPrefix,omitempty"`
 	// The ID of cluster.
 	//
-	// > You can call the [DescribeDBClusters](~~98094~~) operation to query the details of the clusters that belong to your Alibaba Cloud account, such as cluster IDs.
+	// > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to query the details of the clusters that belong to your Alibaba Cloud account, such as cluster IDs.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pc-***************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	// The ID of the endpoint.
 	//
-	// > You can call the [DescribeDBClusterEndpoints](~~98205~~) operation to query endpoint IDs.
+	// > You can call the [DescribeDBClusterEndpoints](https://help.aliyun.com/document_detail/98205.html) operation to query endpoint IDs.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pe-****************
 	DBEndpointId *string `json:"DBEndpointId,omitempty" xml:"DBEndpointId,omitempty"`
 	// The network type of the endpoint. Valid values:
 	//
-	// *   **Public**
-	// *   **Private**
+	// 	- **Public**
+	//
+	// 	- **Private**
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Public
 	NetType      *string `json:"NetType,omitempty" xml:"NetType,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The port number. Valid values: 3000 to 5999.
 	//
 	// > This parameter is valid only for PolarDB for MySQL clusters. If you leave this parameter empty, the default port 3306 is used.
+	//
+	// example:
+	//
+	// 3306
 	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
 	// The prefix of the private domain name. The prefix must meet the following requirements:
 	//
-	// *   The prefix can contain lowercase letters, digits, and hyphens (-).
-	// *   The prefix must start with a letter and end with a digit or a letter.
-	// *   The prefix must be 6 to 30 characters in length.
+	// 	- The prefix can contain lowercase letters, digits, and hyphens (-).
 	//
-	// >- You can bind each internal endpoint of PolarDB to a private domain name. The private domain name takes effect only in the specified virtual private clouds (VPCs) in the current region. Private domain names are managed by using PrivateZone. You can use the CNAME record of PrivateZone to map domain names to PolarDB. You are charged a small fee for this feature. For more information, see [Pricing](~~71338~~).
-	// >- This parameter takes effect only if you set **NetType** to Private.
+	// 	- The prefix must start with a letter and end with a digit or a letter.
+	//
+	// 	- The prefix must be 6 to 30 characters in length.
+	//
+	// >- You can bind each internal endpoint of PolarDB to a private domain name. The private domain name takes effect only in the specified virtual private clouds (VPCs) in the current region. Private domain names are managed by using PrivateZone. You can use the CNAME record of PrivateZone to map domain names to PolarDB. You are charged a small fee for this feature. For more information, see [Pricing](https://help.aliyun.com/document_detail/71338.html).
+	//
+	// >- This parameter takes effect only if you set **NetType*	- to Private.
+	//
+	// example:
+	//
+	// aliyundoc
 	PrivateZoneAddressPrefix *string `json:"PrivateZoneAddressPrefix,omitempty" xml:"PrivateZoneAddressPrefix,omitempty"`
 	// The name of the private zone.
 	//
-	// > This parameter takes effect only when **NetType** is set to Private.
+	// > This parameter takes effect only when **NetType*	- is set to Private.
+	//
+	// example:
+	//
+	// aliyundoc.com
 	PrivateZoneName      *string `json:"PrivateZoneName,omitempty" xml:"PrivateZoneName,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -22153,6 +28708,10 @@ func (s *ModifyDBEndpointAddressRequest) SetResourceOwnerId(v int64) *ModifyDBEn
 
 type ModifyDBEndpointAddressResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// D0CEC6AC-7760-409A-A0D5-E6CD86******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -22200,41 +28759,86 @@ func (s *ModifyDBEndpointAddressResponse) SetBody(v *ModifyDBEndpointAddressResp
 
 type ModifyDBNodeClassRequest struct {
 	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The token can only contain ASCII characters and cannot exceed 64 characters in length. The token is case-sensitive.
+	//
+	// example:
+	//
+	// 6000170000591aed949d0f54a343f1a4233c1e7d1c5c******
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The ID of the cluster.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pc-*************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The specifications of all nodes. For more information, see [Specifications of computing nodes](~~102542~~).
+	// The specifications of all nodes. For more information, see [Specifications of computing nodes](https://help.aliyun.com/document_detail/102542.html).
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// polar.mysql.x4.large
 	DBNodeTargetClass *string `json:"DBNodeTargetClass,omitempty" xml:"DBNodeTargetClass,omitempty"`
 	// The type of the node. Valid values:
 	//
-	// *   RO
-	// *   STANDBY
-	// *   DLNode
+	// 	- RO
+	//
+	// 	- STANDBY
+	//
+	// 	- DLNode
+	//
+	// example:
+	//
+	// DLNode
 	DBNodeType *string `json:"DBNodeType,omitempty" xml:"DBNodeType,omitempty"`
 	// The type of the configuration change. Valid values:
 	//
-	// *   **Upgrade**
-	// *   **Downgrade**
+	// 	- **Upgrade**
+	//
+	// 	- **Downgrade**
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Upgrade
 	ModifyType   *string `json:"ModifyType,omitempty" xml:"ModifyType,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The latest start time to upgrade the specifications within the scheduled time period. Specify the time in the ISO 8601 standard in the `YYYY-MM-DDThh:mm:ssZ` format. The time must be in UTC.
 	//
-	// > *   The value of this parameter must be at least 30 minutes later than the value of PlannedStartTime.
-	// >*   By default, if you specify `PlannedStartTime` but do not specify PlannedEndTime, the latest start time of the task is set to `Value of PlannedEndTime + 30 minutes`. For example, if you set `PlannedStartTime` to `2021-01-14T09:00:00Z` and you do not specify PlannedEndTime, the latest start time of the task is `2021-01-14T09:30:00Z`.
+	// > 	- The value of this parameter must be at least 30 minutes later than the value of PlannedStartTime.
+	//
+	// >	- By default, if you specify `PlannedStartTime` but do not specify PlannedEndTime, the latest start time of the task is set to `Value of PlannedEndTime + 30 minutes`. For example, if you set `PlannedStartTime` to `2021-01-14T09:00:00Z` and you do not specify PlannedEndTime, the latest start time of the task is `2021-01-14T09:30:00Z`.
+	//
+	// example:
+	//
+	// 2021-01-14T09:30:00Z
 	PlannedEndTime *string `json:"PlannedEndTime,omitempty" xml:"PlannedEndTime,omitempty"`
 	// The earliest start time to upgrade the specifications within the scheduled time period. Specify the time in the ISO 8601 standard in the `YYYY-MM-DDThh:mm:ssZ` format. The time must be in UTC.
 	//
-	// >*   This parameter takes effect only when `ModifyType` is set to `Upgrade`.
-	// >*   The earliest start time of the task can be a point in time within the next 24 hours. For example, if the current time is `2021-01-14T09:00:00Z`, you can specify a point in the time that ranges from `2021-01-14T09:00:00Z` to `2021-01-15T09:00:00Z`.
-	// >*   If this parameter is left empty, the upgrade task is immediately performed.
+	// >	- This parameter takes effect only when `ModifyType` is set to `Upgrade`.
+	//
+	// >	- The earliest start time of the task can be a point in time within the next 24 hours. For example, if the current time is `2021-01-14T09:00:00Z`, you can specify a point in the time that ranges from `2021-01-14T09:00:00Z` to `2021-01-15T09:00:00Z`.
+	//
+	// >	- If this parameter is left empty, the upgrade task is immediately performed.
+	//
+	// example:
+	//
+	// 2021-01-14T09:00:00Z
 	PlannedStartTime     *string `json:"PlannedStartTime,omitempty" xml:"PlannedStartTime,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The category of the cluster. Valid values:
 	//
-	// *   **normal_exclusive**: dedicated.
-	// *   **normal_general**: genera-purpose.
+	// 	- **normal_exclusive**: dedicated.
+	//
+	// 	- **normal_general**: genera-purpose.
+	//
+	// example:
+	//
+	// normal_general
 	SubCategory *string `json:"SubCategory,omitempty" xml:"SubCategory,omitempty"`
 }
 
@@ -22308,10 +28912,22 @@ func (s *ModifyDBNodeClassRequest) SetSubCategory(v string) *ModifyDBNodeClassRe
 
 type ModifyDBNodeClassResponseBody struct {
 	// The cluster ID.
+	//
+	// example:
+	//
+	// pc-*************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	// The order ID.
+	//
+	// example:
+	//
+	// 2035629******
 	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 685F028C-4FCD-407D-A559-072D63******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -22370,14 +28986,33 @@ func (s *ModifyDBNodeClassResponse) SetBody(v *ModifyDBNodeClassResponseBody) *M
 type ModifyDBNodeHotReplicaModeRequest struct {
 	// The ID of the cluster.
 	//
-	// > You can call the [DescribeDBClusters](~~98094~~) operation to query the details of the clusters that belong to your Alibaba Cloud account, such as cluster IDs.
+	// > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to query the details of the clusters that belong to your Alibaba Cloud account, such as cluster IDs.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pc-2vc327c2a14a3u858
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	// The ID of the node in the cluster.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pi-2ze28275h9x5r4wt1
 	DBNodeId *string `json:"DBNodeId,omitempty" xml:"DBNodeId,omitempty"`
 	// Specifies whether to enable the hot standby feature. Valid values:
 	//
-	// *   **ON**
-	// *   **OFF**
+	// 	- **ON**
+	//
+	// 	- **OFF**
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ON
 	HotReplicaMode       *string `json:"HotReplicaMode,omitempty" xml:"HotReplicaMode,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -22431,11 +29066,23 @@ func (s *ModifyDBNodeHotReplicaModeRequest) SetResourceOwnerId(v int64) *ModifyD
 type ModifyDBNodeHotReplicaModeResponseBody struct {
 	// The ID of the cluster.
 	//
-	// > You can call the [DescribeDBClusters](~~98094~~) operation to query information about all clusters that are deployed in a specified region, such as the cluster ID.
+	// > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to query information about all clusters that are deployed in a specified region, such as the cluster ID.
+	//
+	// example:
+	//
+	// pc-2vc327c2a14a3u858
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	// The ID of the order.
+	//
+	// example:
+	//
+	// 2148126708*****
 	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 9F4DDFBF-205C-5A3E-8DC2-C60F3E3FDC38
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -22493,35 +29140,70 @@ func (s *ModifyDBNodeHotReplicaModeResponse) SetBody(v *ModifyDBNodeHotReplicaMo
 
 type ModifyDBNodesClassRequest struct {
 	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. The token is case-sensitive.
+	//
+	// example:
+	//
+	// 6000170000591aed949d0f54a343f1a4233c1e7d1c5c******
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The cluster ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pc-*************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	// The details of the nodes.
+	//
+	// This parameter is required.
 	DBNode []*ModifyDBNodesClassRequestDBNode `json:"DBNode,omitempty" xml:"DBNode,omitempty" type:"Repeated"`
 	// The type of the configuration change. Valid values:
 	//
-	// *   **Upgrade**
-	// *   **Downgrade**
+	// 	- **Upgrade**
+	//
+	// 	- **Downgrade**
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Upgrade
 	ModifyType   *string `json:"ModifyType,omitempty" xml:"ModifyType,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The latest start time to upgrade the specifications within the scheduled time period. Specify the time in the ISO 8601 standard in the `YYYY-MM-DDThh:mm:ssZ` format. The time must be in UTC.
 	//
-	// >*   The value of this parameter must be at least 30 minutes later than the value of PlannedStartTime.
-	// >*   By default, if you specify `PlannedStartTime` but do not specify PlannedEndTime, the latest start time of the task is set to `Value of PlannedEndTime + 30 minutes`. For example, if you set `PlannedStartTime` to `2021-01-14T09:00:00Z` and you do not specify PlannedEndTime, the latest start time of the task is `2021-01-14T09:30:00Z`.
+	// >	- The value of this parameter must be at least 30 minutes later than the value of PlannedStartTime.
+	//
+	// >	- By default, if you specify `PlannedStartTime` but do not specify PlannedEndTime, the latest start time of the task is set to `Value of PlannedEndTime + 30 minutes`. For example, if you set `PlannedStartTime` to `2021-01-14T09:00:00Z` and you do not specify PlannedEndTime, the latest start time of the task is `2021-01-14T09:30:00Z`.
+	//
+	// example:
+	//
+	// 2021-01-14T09:30:00Z
 	PlannedEndTime *string `json:"PlannedEndTime,omitempty" xml:"PlannedEndTime,omitempty"`
 	// The earliest start time to upgrade the specifications within the scheduled time period. Specify the time in the ISO 8601 standard in the `YYYY-MM-DDThh:mm:ssZ` format. The time must be in UTC.
 	//
-	// > *   This parameter takes effect only when `ModifyType` is set to `Upgrade`.
-	// >*   The earliest start time of the task can be a point in time within the next 24 hours. For example, if the current time is `2021-01-14T09:00:00Z`, you can specify a point in the time that ranges from `2021-01-14T09:00:00Z` to `2021-01-15T09:00:00Z`.
-	// >*   If this parameter is left empty, the upgrade task is immediately performed.
+	// > 	- This parameter takes effect only when `ModifyType` is set to `Upgrade`.
+	//
+	// >	- The earliest start time of the task can be a point in time within the next 24 hours. For example, if the current time is `2021-01-14T09:00:00Z`, you can specify a point in the time that ranges from `2021-01-14T09:00:00Z` to `2021-01-15T09:00:00Z`.
+	//
+	// >	- If this parameter is left empty, the upgrade task is immediately performed.
+	//
+	// example:
+	//
+	// 2021-01-14T09:00:00Z
 	PlannedStartTime     *string `json:"PlannedStartTime,omitempty" xml:"PlannedStartTime,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The category of the cluster. Valid values:
 	//
-	// *   **normal_exclusive**: dedicated
-	// *   **normal_general**: genera-purpose
+	// 	- **normal_exclusive**: dedicated
+	//
+	// 	- **normal_general**: genera-purpose
+	//
+	// example:
+	//
+	// normal_general
 	SubCategory *string `json:"SubCategory,omitempty" xml:"SubCategory,omitempty"`
 }
 
@@ -22592,10 +29274,18 @@ type ModifyDBNodesClassRequestDBNode struct {
 	// The ID of the node.
 	//
 	// >  If you specify this parameter, DBNode.N.TargetClass is required. N is an integer that starts from 1. The maximum value of N is calculated by using the following formula:16 - The number of current nodes.
+	//
+	// example:
+	//
+	// pi-*************
 	DBNodeId *string `json:"DBNodeId,omitempty" xml:"DBNodeId,omitempty"`
-	// The specifications of the node that you want to change. For more information, see [Specifications of compute nodes](~~102542~~).
+	// The specifications of the node that you want to change. For more information, see [Specifications of compute nodes](https://help.aliyun.com/document_detail/102542.html).
 	//
 	// >  If you specify this parameter, DBNode.N.DBNodeId is required. N is an integer that starts from 1. The maximum value of N is calculated by using the following formula:16 - The number of current nodes.
+	//
+	// example:
+	//
+	// polar.mysql.x4.medium
 	TargetClass *string `json:"TargetClass,omitempty" xml:"TargetClass,omitempty"`
 }
 
@@ -22619,10 +29309,22 @@ func (s *ModifyDBNodesClassRequestDBNode) SetTargetClass(v string) *ModifyDBNode
 
 type ModifyDBNodesClassResponseBody struct {
 	// The cluster ID.
+	//
+	// example:
+	//
+	// pc-*************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	// The ID of the order.
+	//
+	// example:
+	//
+	// 2035629******
 	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 685F028C-4FCD-407D-A559-072D63******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -22680,20 +29382,52 @@ func (s *ModifyDBNodesClassResponse) SetBody(v *ModifyDBNodesClassResponseBody) 
 
 type ModifyDBNodesParametersRequest struct {
 	// The cluster ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pc-**************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	// The ID of the node. You can specify multiple node IDs. Separate multiple node IDs with commas (,).
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pi-****************， pi-****************
 	DBNodeIds *string `json:"DBNodeIds,omitempty" xml:"DBNodeIds,omitempty"`
 	// Specifies whether to immediately run the task to modify parameters and restart the cluster. Valid values: false: runs the task on schedule. true: runs the task immediately. Default value: false.
+	//
+	// example:
+	//
+	// false
 	FromTimeService *bool   `json:"FromTimeService,omitempty" xml:"FromTimeService,omitempty"`
 	OwnerAccount    *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId         *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The ID of the parameter template that is used for the cluster.
+	//
+	// example:
+	//
+	// pcpg-**************
 	ParameterGroupId *string `json:"ParameterGroupId,omitempty" xml:"ParameterGroupId,omitempty"`
 	// The JSON string that specifies the parameter and its value.
+	//
+	// example:
+	//
+	// {"wait_timeout":"86","innodb_old_blocks_time":"10"}
 	Parameters *string `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
 	// The latest start time to run the task. Specify the time in the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time must be in UTC.
+	//
+	// example:
+	//
+	// 2022-04-28T14:30:00Z
 	PlannedEndTime *string `json:"PlannedEndTime,omitempty" xml:"PlannedEndTime,omitempty"`
 	// The earliest start time to run the task to upgrade the kernel version of the cluster. The task runs within a specified period of time. Specify the time in the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time must be in UTC.
+	//
+	// example:
+	//
+	// 2022-04-28T14:00:00Z
 	PlannedStartTime     *string `json:"PlannedStartTime,omitempty" xml:"PlannedStartTime,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -22764,6 +29498,10 @@ func (s *ModifyDBNodesParametersRequest) SetResourceOwnerId(v int64) *ModifyDBNo
 
 type ModifyDBNodesParametersResponseBody struct {
 	// The request ID.
+	//
+	// example:
+	//
+	// EBEAA83D-1734-42E3-85E3-E25F6E******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -22812,16 +29550,35 @@ func (s *ModifyDBNodesParametersResponse) SetBody(v *ModifyDBNodesParametersResp
 type ModifyGlobalDatabaseNetworkRequest struct {
 	// The description of the GDN. The description must meet the following requirements:
 	//
-	// *   It cannot start with `http://` or `https://`.
-	// *   It must start with a letter.
-	// *   It can contain letters, digits, underscores (\_), and hyphens (-).
-	// *   It must be 2 to 126 characters in length.
+	// 	- It cannot start with `http://` or `https://`.
+	//
+	// 	- It must start with a letter.
+	//
+	// 	- It can contain letters, digits, underscores (_), and hyphens (-).
+	//
+	// 	- It must be 2 to 126 characters in length.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// GDN-fortest
 	GDNDescription *string `json:"GDNDescription,omitempty" xml:"GDNDescription,omitempty"`
 	// The ID of the GDN.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// gdn-bp1fttxsrmv*****
 	GDNId        *string `json:"GDNId,omitempty" xml:"GDNId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The ID of the resource group.
+	//
+	// example:
+	//
+	// rg-************
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -22878,6 +29635,10 @@ func (s *ModifyGlobalDatabaseNetworkRequest) SetSecurityToken(v string) *ModifyG
 
 type ModifyGlobalDatabaseNetworkResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// C61892A4-0850-4516-9E26-44D96C1782DE
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -22927,20 +29688,50 @@ type ModifyGlobalSecurityIPGroupRequest struct {
 	// The IP address in the whitelist template.
 	//
 	// >  Multiple IP addresses are separated by commas (,). You can create up to 1,000 IP addresses or CIDR blocks for all IP whitelists.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 192.168.0.1
 	GIpList *string `json:"GIpList,omitempty" xml:"GIpList,omitempty"`
 	// The name of the IP whitelist template. The name must meet the following requirements:
 	//
-	// *   The name can contain lowercase letters, digits, and underscores (\_).
-	// *   The name must start with a letter and end with a letter or digit.
-	// *   The name must be 2 to 120 characters in length.
+	// 	- The name can contain lowercase letters, digits, and underscores (_).
+	//
+	// 	- The name must start with a letter and end with a letter or digit.
+	//
+	// 	- The name must be 2 to 120 characters in length.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test_123
 	GlobalIgName *string `json:"GlobalIgName,omitempty" xml:"GlobalIgName,omitempty"`
 	// The ID of the IP whitelist template.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// g-zsldxfiwjmti0kcm****
 	GlobalSecurityGroupId *string `json:"GlobalSecurityGroupId,omitempty" xml:"GlobalSecurityGroupId,omitempty"`
 	OwnerAccount          *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId               *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The region ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the resource group.
+	//
+	// example:
+	//
+	// rg-**********
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -23009,6 +29800,10 @@ type ModifyGlobalSecurityIPGroupResponseBody struct {
 	// The details of the global IP whitelist template.
 	GlobalSecurityIPGroup []*ModifyGlobalSecurityIPGroupResponseBodyGlobalSecurityIPGroup `json:"GlobalSecurityIPGroup,omitempty" xml:"GlobalSecurityIPGroup,omitempty" type:"Repeated"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 9B7BFB11-C077-4FE3-B051-F69CEB******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -23036,16 +29831,34 @@ type ModifyGlobalSecurityIPGroupResponseBodyGlobalSecurityIPGroup struct {
 	// The IP address in the whitelist template.
 	//
 	// >  Separate multiple IP addresses with commas (,). You can add up to 1,000 IP addresses or CIDR blocks to all IP whitelists.
+	//
+	// example:
+	//
+	// 192.168.0.1
 	GIpList *string `json:"GIpList,omitempty" xml:"GIpList,omitempty"`
 	// The name of the IP whitelist template. The name must meet the following requirements:
 	//
-	// *   The name can contain lowercase letters, digits, and underscores (\_).
-	// *   The name must start with a letter and end with a letter or a digit.
-	// *   The name must be 2 to 120 characters in length.
+	// 	- The name can contain lowercase letters, digits, and underscores (_).
+	//
+	// 	- The name must start with a letter and end with a letter or a digit.
+	//
+	// 	- The name must be 2 to 120 characters in length.
+	//
+	// example:
+	//
+	// test_123
 	GlobalIgName *string `json:"GlobalIgName,omitempty" xml:"GlobalIgName,omitempty"`
 	// The ID of the IP whitelist template.
+	//
+	// example:
+	//
+	// g-zsldxfiwjmti0kcm****
 	GlobalSecurityGroupId *string `json:"GlobalSecurityGroupId,omitempty" xml:"GlobalSecurityGroupId,omitempty"`
 	// The ID of the region.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -23114,17 +29927,41 @@ func (s *ModifyGlobalSecurityIPGroupResponse) SetBody(v *ModifyGlobalSecurityIPG
 type ModifyGlobalSecurityIPGroupNameRequest struct {
 	// The name of the IP whitelist template. The name must meet the following requirements:
 	//
-	// *   The name can contain lowercase letters, digits, and underscores (\_).
-	// *   The name must start with a letter and end with a letter or digit.
-	// *   The name must be 2 to 120 characters in length.
+	// 	- The name can contain lowercase letters, digits, and underscores (_).
+	//
+	// 	- The name must start with a letter and end with a letter or digit.
+	//
+	// 	- The name must be 2 to 120 characters in length.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test_123
 	GlobalIgName *string `json:"GlobalIgName,omitempty" xml:"GlobalIgName,omitempty"`
 	// The ID of the IP whitelist template.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// g-zsldxfiwjmti0kcm****
 	GlobalSecurityGroupId *string `json:"GlobalSecurityGroupId,omitempty" xml:"GlobalSecurityGroupId,omitempty"`
 	OwnerAccount          *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId               *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The region ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the resource group.
+	//
+	// example:
+	//
+	// rg-************
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -23188,6 +30025,10 @@ type ModifyGlobalSecurityIPGroupNameResponseBody struct {
 	// The details of the global IP whitelist template.
 	GlobalSecurityIPGroup []*ModifyGlobalSecurityIPGroupNameResponseBodyGlobalSecurityIPGroup `json:"GlobalSecurityIPGroup,omitempty" xml:"GlobalSecurityIPGroup,omitempty" type:"Repeated"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 9B7BFB11-C077-4FE3-B051-F69CEB******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -23213,16 +30054,34 @@ type ModifyGlobalSecurityIPGroupNameResponseBodyGlobalSecurityIPGroup struct {
 	// The IP address in the whitelist template.
 	//
 	// >  Separate multiple IP addresses with commas (,). You can add up to 1,000 IP addresses or CIDR blocks to all IP whitelists.
+	//
+	// example:
+	//
+	// 192.168.0.1
 	GIpList *string `json:"GIpList,omitempty" xml:"GIpList,omitempty"`
 	// The name of the IP whitelist template. The name must meet the following requirements:
 	//
-	// *   The name can contain lowercase letters, digits, and underscores (\_).
-	// *   The name must start with a letter and end with a letter or a digit.
-	// *   The name must be 2 to 120 characters in length.
+	// 	- The name can contain lowercase letters, digits, and underscores (_).
+	//
+	// 	- The name must start with a letter and end with a letter or a digit.
+	//
+	// 	- The name must be 2 to 120 characters in length.
+	//
+	// example:
+	//
+	// test_123
 	GlobalIgName *string `json:"GlobalIgName,omitempty" xml:"GlobalIgName,omitempty"`
 	// The ID of the IP whitelist template.
+	//
+	// example:
+	//
+	// g-zsldxfiwjmti0kcm****
 	GlobalSecurityGroupId *string `json:"GlobalSecurityGroupId,omitempty" xml:"GlobalSecurityGroupId,omitempty"`
 	// The ID of the region.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -23285,14 +30144,36 @@ func (s *ModifyGlobalSecurityIPGroupNameResponse) SetBody(v *ModifyGlobalSecurit
 
 type ModifyGlobalSecurityIPGroupRelationRequest struct {
 	// The ID of the cluster.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pc-*****************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	// The ID of the IP whitelist template.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// g-zsldxfiwjmti0kcm****
 	GlobalSecurityGroupId *string `json:"GlobalSecurityGroupId,omitempty" xml:"GlobalSecurityGroupId,omitempty"`
 	OwnerAccount          *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId               *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The region ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the resource group.
+	//
+	// example:
+	//
+	// rg-**********
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -23354,10 +30235,18 @@ func (s *ModifyGlobalSecurityIPGroupRelationRequest) SetSecurityToken(v string) 
 
 type ModifyGlobalSecurityIPGroupRelationResponseBody struct {
 	// The ID of the cluster.
+	//
+	// example:
+	//
+	// pc-*****************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	// The details of the global IP whitelist template.
 	GlobalSecurityIPGroupRel []*ModifyGlobalSecurityIPGroupRelationResponseBodyGlobalSecurityIPGroupRel `json:"GlobalSecurityIPGroupRel,omitempty" xml:"GlobalSecurityIPGroupRel,omitempty" type:"Repeated"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 9B7BFB11-C077-4FE3-B051-F69CEB******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -23388,16 +30277,34 @@ type ModifyGlobalSecurityIPGroupRelationResponseBodyGlobalSecurityIPGroupRel str
 	// The IP address in the whitelist template.
 	//
 	// >  Separate multiple IP addresses with commas (,). You can add up to 1,000 IP addresses or CIDR blocks to all IP whitelists.
+	//
+	// example:
+	//
+	// 192.168.0.1
 	GIpList *string `json:"GIpList,omitempty" xml:"GIpList,omitempty"`
 	// The name of the IP whitelist template. The name must meet the following requirements:
 	//
-	// *   The name can contain lowercase letters, digits, and underscores (\_).
-	// *   The name must start with a letter and end with a letter or a digit.
-	// *   The name must be 2 to 120 characters in length.
+	// 	- The name can contain lowercase letters, digits, and underscores (_).
+	//
+	// 	- The name must start with a letter and end with a letter or a digit.
+	//
+	// 	- The name must be 2 to 120 characters in length.
+	//
+	// example:
+	//
+	// test_123
 	GlobalIgName *string `json:"GlobalIgName,omitempty" xml:"GlobalIgName,omitempty"`
 	// The ID of the IP whitelist template.
+	//
+	// example:
+	//
+	// g-zsldxfiwjmti0kcm****
 	GlobalSecurityGroupId *string `json:"GlobalSecurityGroupId,omitempty" xml:"GlobalSecurityGroupId,omitempty"`
 	// The ID of the region.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -23461,22 +30368,43 @@ func (s *ModifyGlobalSecurityIPGroupRelationResponse) SetBody(v *ModifyGlobalSec
 type ModifyLogBackupPolicyRequest struct {
 	// The cluster ID.
 	//
-	// >  You can call the [DescribeDBClusters](~~98094~~) operation to query the information of all clusters that are deployed in a specific region, such as the cluster IDs.
+	// >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to query the information of all clusters that are deployed in a specific region, such as the cluster IDs.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pc-****************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The region in which you want to store cross-region log backups. For information about regions that support the cross-region backup feature, see [Overview](~~72672~~).
+	// The region in which you want to store cross-region log backups. For information about regions that support the cross-region backup feature, see [Overview](https://help.aliyun.com/document_detail/72672.html).
+	//
+	// example:
+	//
+	// cn-hangzhou
 	LogBackupAnotherRegionRegion *string `json:"LogBackupAnotherRegionRegion,omitempty" xml:"LogBackupAnotherRegionRegion,omitempty"`
 	// The retention period of cross-region log backups. Valid values:
 	//
-	// *   **0**: The cross-region backup feature is disabled.
-	// *   **30 to 7300**: Cross-region log backups are retained for 30 to 7,300 days.
-	// *   **-1**: The log backups are permanently retained.
+	// 	- **0**: The cross-region backup feature is disabled.
+	//
+	// 	- **30 to 7300**: Cross-region log backups are retained for 30 to 7,300 days.
+	//
+	// 	- **-1**: The log backups are permanently retained.
 	//
 	// >  When you create a cluster, the default value of this parameter is **0**.
+	//
+	// example:
+	//
+	// 30
 	LogBackupAnotherRegionRetentionPeriod *string `json:"LogBackupAnotherRegionRetentionPeriod,omitempty" xml:"LogBackupAnotherRegionRetentionPeriod,omitempty"`
 	// The retention period of the log backups. Valid values:
 	//
-	// *   3 to 7300: The log backups are retained for 3 to 7,300 days.
-	// *   \-1: The log backups are permanently retained.
+	// 	- 3 to 7300: The log backups are retained for 3 to 7,300 days.
+	//
+	// 	- \\-1: The log backups are permanently retained.
+	//
+	// example:
+	//
+	// 3
 	LogBackupRetentionPeriod *string `json:"LogBackupRetentionPeriod,omitempty" xml:"LogBackupRetentionPeriod,omitempty"`
 	OwnerAccount             *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId                  *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -23534,6 +30462,10 @@ func (s *ModifyLogBackupPolicyRequest) SetResourceOwnerId(v int64) *ModifyLogBac
 
 type ModifyLogBackupPolicyResponseBody struct {
 	// The request ID.
+	//
+	// example:
+	//
+	// 345174B4-FAB3-412E-A326-BEDDA9******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -23582,37 +30514,69 @@ func (s *ModifyLogBackupPolicyResponse) SetBody(v *ModifyLogBackupPolicyResponse
 type ModifyMaskingRulesRequest struct {
 	// The ID of the cluster.
 	//
-	// > You can call the [DescribeDBClusters](~~98094~~) operation to query the details of the clusters that belong to your Alibaba Cloud account, such as cluster IDs.
+	// > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to query the details of the clusters that belong to your Alibaba Cloud account, such as cluster IDs.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pc-*****************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	// Specifies whether to enable the specified masking rule. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
 	//
 	// > This parameter is valid only when the `RuleNameList` parameter is specfied.
+	//
+	// example:
+	//
+	// true
 	Enable *string `json:"Enable,omitempty" xml:"Enable,omitempty"`
 	// The parameter that is used to specify the masking rule that you want to modify and the value in the JSON format. All parameter values are of the string type. Example: `{"auto": {"databases": ["db1"], "tables": ["tb1"], "columns": ["c1,c2"] }, "description": "This rule will be applied to the columns c1 and c2 in table t1", "enabled": true, "applies_to": ["user"]}`. Parameters in the function:
 	//
-	// *   `"auto"`: specifies that the dynamic masking algorithm is supported. This parameter is required.
-	// *   `"databases"`: Optional. The names of databases to which the masking rule is applied. Separate the names with commas (,). If you leave this parameter empty, the masking rule applies to all databases in the cluster.
-	// *   `"tables"`: Optional. The names of tables to which the masking rule is applied. Separate the names with commas (,). If you leave this parameter empty, the rule applies to all tables in the cluster.
-	// *   `"columns"`: Required. The names of fields to which the masking rule is applied. Separate the names with commas (,).
-	// *   `"description"`: Optional. The description of the masking rule. The description can be up to 64 characters in length.
-	// *   `"enabled"`: Required. Specifies whether to enable the masking rule. Valid values: **true** and **false**.
-	// *   `"applies_to"`: The names of database accounts to which the masking rule is applied. Separate the names with commas (,).
-	// *   `"exempted"`: The names of database accounts to which the masking rule is not applied. Separate the names with commas (,).
+	// 	- `"auto"`: specifies that the dynamic masking algorithm is supported. This parameter is required.
+	//
+	// 	- `"databases"`: Optional. The names of databases to which the masking rule is applied. Separate the names with commas (,). If you leave this parameter empty, the masking rule applies to all databases in the cluster.
+	//
+	// 	- `"tables"`: Optional. The names of tables to which the masking rule is applied. Separate the names with commas (,). If you leave this parameter empty, the rule applies to all tables in the cluster.
+	//
+	// 	- `"columns"`: Required. The names of fields to which the masking rule is applied. Separate the names with commas (,).
+	//
+	// 	- `"description"`: Optional. The description of the masking rule. The description can be up to 64 characters in length.
+	//
+	// 	- `"enabled"`: Required. Specifies whether to enable the masking rule. Valid values: **true*	- and **false**.
+	//
+	// 	- `"applies_to"`: The names of database accounts to which the masking rule is applied. Separate the names with commas (,).
+	//
+	// 	- `"exempted"`: The names of database accounts to which the masking rule is not applied. Separate the names with commas (,).
 	//
 	// >- If you specify `RuleName`, `RuleConfig` parameter is required.
+	//
 	// >- You need to select either `"applies_to"` or `"exempted"`.
+	//
+	// example:
+	//
+	// {"auto": {"databases": ["db1"], "tables": ["tb1"], "columns": ["c1,c2"] }, "description": "This rule will be applied to the columns c1 and c2 in table t1", "enabled": true, "applies_to": ["user"]}
 	RuleConfig *string `json:"RuleConfig,omitempty" xml:"RuleConfig,omitempty"`
 	// The name of the data masking rule. You can specify only one rule name at a time.
 	//
-	// >- You can call the [DescribeMaskingRules](~~212573~~) operation to query the details of all masking rules for a specified cluster, such as the names of the masking rules.
+	// >- You can call the [DescribeMaskingRules](https://help.aliyun.com/document_detail/212573.html) operation to query the details of all masking rules for a specified cluster, such as the names of the masking rules.
+	//
 	// >- If the rule name does not exist in the cluster, the system automatically creates a masking rule based on the name and the value of `RuleConfig`.
+	//
+	// example:
+	//
+	// testrule
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
 	// The list of masking rule names. You can specify one or more masking rules at a time. Separate the masking rule names with commas (,).
 	//
 	// > You must specify either the `RuleName` or `RuleNameList` parameter.
+	//
+	// example:
+	//
+	// testrule
 	RuleNameList *string `json:"RuleNameList,omitempty" xml:"RuleNameList,omitempty"`
 	RuleVersion  *string `json:"RuleVersion,omitempty" xml:"RuleVersion,omitempty"`
 }
@@ -23659,13 +30623,26 @@ type ModifyMaskingRulesResponseBody struct {
 	// The message that is returned for the request.
 	//
 	// > If the request is successful, Successful is returned. If the request fails, an error message such as an error code is returned.
+	//
+	// example:
+	//
+	// Message
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 99B355CE-526C-478B-B730-AD9D7C******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request is successful. Valid value:
 	//
-	// *   **true**:
-	// *   **false**
+	// 	- **true**:
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -23723,19 +30700,41 @@ func (s *ModifyMaskingRulesResponse) SetBody(v *ModifyMaskingRulesResponseBody) 
 
 type ModifyPendingMaintenanceActionRequest struct {
 	// The ID of the task. You can specify multiple task IDs at a time to modify the switching time of the tasks in a unified manner. The task IDs must be separated with commas (,).
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 111111
 	Ids          *string `json:"Ids,omitempty" xml:"Ids,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The region ID of the cluster.
 	//
-	// >  You can call the [DescribeRegions](~~98041~~) operation to query the region ID details.
+	// >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to query the region ID details.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the resource group.
+	//
+	// example:
+	//
+	// rg-************
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 	// The time that you specify for the background to perform the action that corresponds to the pending event. Specify the time in the `yyyy-MM-ddTHH:mm:ssZ` format. The time must be in UTC.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2020-06-09T22:00:00Z
 	SwitchTime *string `json:"SwitchTime,omitempty" xml:"SwitchTime,omitempty"`
 }
 
@@ -23794,8 +30793,16 @@ func (s *ModifyPendingMaintenanceActionRequest) SetSwitchTime(v string) *ModifyP
 
 type ModifyPendingMaintenanceActionResponseBody struct {
 	// The ID of the task.
+	//
+	// example:
+	//
+	// 111111
 	Ids *string `json:"Ids,omitempty" xml:"Ids,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 93061E17-B56A-4324-BC95-D0FFD2******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -23848,19 +30855,46 @@ func (s *ModifyPendingMaintenanceActionResponse) SetBody(v *ModifyPendingMainten
 
 type OpenAITaskRequest struct {
 	// The cluster ID.
-	DBClusterId  *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pc-****************
+	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// example:
+	//
+	// DLNode
 	NodeType     *string `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The password used to access the database for which you want to enable the PolarDB for AI feature.
+	//
+	// example:
+	//
+	// testPassword
 	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
 	// The ID of the region.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the resource group.
+	//
+	// example:
+	//
+	// rg-************
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The username used to access the database for which you want to enable the PolarDB for AI feature.
+	//
+	// example:
+	//
+	// testAccountName
 	Username *string `json:"Username,omitempty" xml:"Username,omitempty"`
 }
 
@@ -23924,8 +30958,16 @@ func (s *OpenAITaskRequest) SetUsername(v string) *OpenAITaskRequest {
 
 type OpenAITaskResponseBody struct {
 	// The request ID.
+	//
+	// example:
+	//
+	// 9B7BFB11-C077-4FE3-B051-F69CEB******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The task ID.
+	//
+	// example:
+	//
+	// 53879cdb-9a00-428e-acaf-ff4cff******
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
@@ -23983,8 +31025,13 @@ type RefreshDBClusterStorageUsageRequest struct {
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// Specifies whether to enable real-time synchronization. Valid values:
 	//
-	// *   **true**
-	// *   **false**: T + 1
+	// 	- **true**
+	//
+	// 	- **false**: T + 1
+	//
+	// example:
+	//
+	// true
 	SyncRealTime *bool `json:"SyncRealTime,omitempty" xml:"SyncRealTime,omitempty"`
 }
 
@@ -24023,6 +31070,10 @@ func (s *RefreshDBClusterStorageUsageRequest) SetSyncRealTime(v bool) *RefreshDB
 
 type RefreshDBClusterStorageUsageResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// E56531A4-E552-40BA-9C58-137B80******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -24071,9 +31122,21 @@ func (s *RefreshDBClusterStorageUsageResponse) SetBody(v *RefreshDBClusterStorag
 type RemoveDBClusterFromGDNRequest struct {
 	// The ID of the cluster in the GDN.
 	//
-	// >  You can call the [DescribeGlobalDatabaseNetwork](~~264580~~) operation to view the ID of the cluster in the GDN.
+	// >  You can call the [DescribeGlobalDatabaseNetwork](https://help.aliyun.com/document_detail/264580.html) operation to view the ID of the cluster in the GDN.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pc-wz9fb5nn44u1d****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	// The ID of the GDN.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// gdn-bp1fttxsrmv*****
 	GDNId                *string `json:"GDNId,omitempty" xml:"GDNId,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -24127,6 +31190,10 @@ func (s *RemoveDBClusterFromGDNRequest) SetSecurityToken(v string) *RemoveDBClus
 
 type RemoveDBClusterFromGDNResponseBody struct {
 	// The request ID.
+	//
+	// example:
+	//
+	// 67F2E75F-AE67-4FB2-821F-A81237EACD15
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -24176,14 +31243,32 @@ type ResetAccountRequest struct {
 	// The username of the account.
 	//
 	// > You can reset only the permissions of a privileged account.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// testacc
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
 	// The password of the account. The password must meet the following requirements:
 	//
-	// *   It must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
-	// *   The password must be 8 to 32 characters in length.
-	// *   Special characters include `! @ # $ % ^ & * ( ) _ + - =`
+	// 	- It must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
+	//
+	// 	- The password must be 8 to 32 characters in length.
+	//
+	// 	- Special characters include `! @ # $ % ^ & 	- ( ) _ + - =`
+	//
+	// example:
+	//
+	// Pw123456
 	AccountPassword *string `json:"AccountPassword,omitempty" xml:"AccountPassword,omitempty"`
 	// The ID of the cluster.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pc-**************
 	DBClusterId          *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -24236,6 +31321,10 @@ func (s *ResetAccountRequest) SetResourceOwnerId(v int64) *ResetAccountRequest {
 
 type ResetAccountResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 2FED790E-FB61-4721-8C1C-07C627******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -24284,13 +31373,29 @@ func (s *ResetAccountResponse) SetBody(v *ResetAccountResponseBody) *ResetAccoun
 type ResetGlobalDatabaseNetworkRequest struct {
 	// The ID of the cluster in the GDN.
 	//
-	// >  You can call the [DescribeGlobalDatabaseNetwork](~~264580~~) operation to view the ID of the cluster in the GDN.
+	// >  You can call the [DescribeGlobalDatabaseNetwork](https://help.aliyun.com/document_detail/264580.html) operation to view the ID of the cluster in the GDN.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pc-wz9fb5nn44u1d****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	// The ID of the GDN.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// gdn-bp1fttxsrmv*****
 	GDNId        *string `json:"GDNId,omitempty" xml:"GDNId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The ID of the region.
+	//
+	// example:
+	//
+	// cn-qingdao
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -24347,6 +31452,10 @@ func (s *ResetGlobalDatabaseNetworkRequest) SetSecurityToken(v string) *ResetGlo
 
 type ResetGlobalDatabaseNetworkResponseBody struct {
 	// The request ID.
+	//
+	// example:
+	//
+	// 67F2E75F-AE67-4FB2-821F-A81237EACD15
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -24393,6 +31502,15 @@ func (s *ResetGlobalDatabaseNetworkResponse) SetBody(v *ResetGlobalDatabaseNetwo
 }
 
 type RestartDBLinkRequest struct {
+	// The cluster ID.
+	//
+	// >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to query the IDs of all clusters in an Alibaba Cloud account.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pc-****************
 	DBClusterId          *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -24440,9 +31558,24 @@ func (s *RestartDBLinkRequest) SetSecurityToken(v string) *RestartDBLinkRequest 
 }
 
 type RestartDBLinkResponseBody struct {
+	// The cluster ID.
+	//
+	// example:
+	//
+	// pc-****************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TaskId      *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// E56531A4-E552-40BA-9C58-137B80******
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The task ID.
+	//
+	// example:
+	//
+	// ec8c4723-eac5-4f12-becb-01ac08******
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s RestartDBLinkResponseBody) String() string {
@@ -24500,7 +31633,13 @@ func (s *RestartDBLinkResponse) SetBody(v *RestartDBLinkResponseBody) *RestartDB
 type RestartDBNodeRequest struct {
 	// The ID of the node.
 	//
-	// >  You can call the [DescribeDBClusters](~~185342~~) operation to query the details of all clusters that belong to your Alibaba Cloud account, such as cluster IDs.
+	// >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/185342.html) operation to query the details of all clusters that belong to your Alibaba Cloud account, such as cluster IDs.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pi-*************
 	DBNodeId             *string `json:"DBNodeId,omitempty" xml:"DBNodeId,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -24543,6 +31682,10 @@ func (s *RestartDBNodeRequest) SetResourceOwnerId(v int64) *RestartDBNodeRequest
 
 type RestartDBNodeResponseBody struct {
 	// The request ID.
+	//
+	// example:
+	//
+	// D0CEC6AC-7760-409A-A0D5-E6CD86******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -24591,11 +31734,21 @@ func (s *RestartDBNodeResponse) SetBody(v *RestartDBNodeResponseBody) *RestartDB
 type RestoreTableRequest struct {
 	// The ID of the backup set.
 	//
-	// >  You must specify this parameter if you need to restore a database or a table by using a backup set. You can call the [DescribeBackups](~~98102~~) operation to query the ID of the backup set.
+	// >  You must specify this parameter if you need to restore a database or a table by using a backup set. You can call the [DescribeBackups](https://help.aliyun.com/document_detail/98102.html) operation to query the ID of the backup set.
+	//
+	// example:
+	//
+	// 111111
 	BackupId *string `json:"BackupId,omitempty" xml:"BackupId,omitempty"`
 	// The cluster ID.
 	//
-	// >  You can call the [DescribeDBClusters](~~98094~~) operation to query the details of all clusters within your account.
+	// >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to query the details of all clusters within your account.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pc-bp***************
 	DBClusterId          *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -24605,14 +31758,24 @@ type RestoreTableRequest struct {
 	//
 	// >
 	//
-	// *   You must specify this parameter if you need to restore the database or the table to a point in time.
+	// 	- You must specify this parameter if you need to restore the database or the table to a point in time.
 	//
-	// *   You can restore your cluster to a particular time only over the past seven days.
+	// 	- You can restore your cluster to a particular time only over the past seven days.
+	//
+	// example:
+	//
+	// 2020-10-04T01:40:00Z
 	RestoreTime   *string `json:"RestoreTime,omitempty" xml:"RestoreTime,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 	// The JSON string that contains the information of the database and the table that you want to restore. All values of the database and table information are of the string type. Example: `[ { "tables":[ { "name":"testtb", "type":"table", "newname":"testtb_restore" } ], "name":"testdb", "type":"db", "newname":"testdb_restore" } ]`.
 	//
-	// >  You can call the [DescribeMetaList](~~194770~~) operation to query the names and details of databases and tables that can be restored and enter their information into the corresponding locations in the preceding example.
+	// >  You can call the [DescribeMetaList](https://help.aliyun.com/document_detail/194770.html) operation to query the names and details of databases and tables that can be restored and enter their information into the corresponding locations in the preceding example.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// [ { "tables":[ { "name":"testtb", "type":"table", "newname":"testtb_restore" } ], "name":"testdb", "type":"db", "newname":"testdb_restore" } ]
 	TableMeta *string `json:"TableMeta,omitempty" xml:"TableMeta,omitempty"`
 }
 
@@ -24671,6 +31834,10 @@ func (s *RestoreTableRequest) SetTableMeta(v string) *RestoreTableRequest {
 
 type RestoreTableResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 0C47508C-9DC8-455B-985E-2F2FA8******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -24720,10 +31887,28 @@ type RevokeAccountPrivilegeRequest struct {
 	// The name of the account.
 	//
 	// >  You can specify only a standard account.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// testacc
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
 	// The ID of the PolarDB cluster.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pc-****************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	// The names of the databases. If you need to specify multiple database names, separate the names with commas (,).
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// testdb
 	DBName               *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -24776,6 +31961,10 @@ func (s *RevokeAccountPrivilegeRequest) SetResourceOwnerId(v int64) *RevokeAccou
 
 type RevokeAccountPrivilegeResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 2FED790E-FB61-4721-8C1C-07C627******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -24824,20 +32013,43 @@ func (s *RevokeAccountPrivilegeResponse) SetBody(v *RevokeAccountPrivilegeRespon
 type SwitchOverGlobalDatabaseNetworkRequest struct {
 	// The ID of the cluster that will become the primary cluster in the GDN.
 	//
-	// You can call the [DescribeGlobalDatabaseNetwork](~~264580~~) operation to query the ID of the cluster in the GDN.
+	// You can call the [DescribeGlobalDatabaseNetwork](https://help.aliyun.com/document_detail/264580.html) operation to query the ID of the cluster in the GDN.
+	//
+	// example:
+	//
+	// pc-wz9fb5nn44u1d****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	// Specifies whether to forcibly switch over the primary and secondary clusters in the GDN. Valid values:
 	//
-	// *   **true**
-	// *   **false**
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// false
 	Forced *bool `json:"Forced,omitempty" xml:"Forced,omitempty"`
 	// The ID of the GDN.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// gdn-bp1fttxsrmv*****
 	GDNId        *string `json:"GDNId,omitempty" xml:"GDNId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The region ID of the cluster.
+	//
+	// example:
+	//
+	// cn-qingdao
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the resource group.
+	//
+	// example:
+	//
+	// rg-************
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -24904,6 +32116,10 @@ func (s *SwitchOverGlobalDatabaseNetworkRequest) SetSecurityToken(v string) *Swi
 
 type SwitchOverGlobalDatabaseNetworkResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 67F2E75F-AE67-4FB2-821F-A81237EACD15
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -24953,13 +32169,31 @@ type TagResourcesRequest struct {
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The region ID of the cluster.
-	RegionId             *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pc-*****************
 	ResourceId           []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
 	ResourceOwnerAccount *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The type of the resource. Set the value to **cluster**.
-	ResourceType *string                   `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	Tag          []*TagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cluster
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// This parameter is required.
+	Tag []*TagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s TagResourcesRequest) String() string {
@@ -25011,13 +32245,21 @@ func (s *TagResourcesRequest) SetTag(v []*TagResourcesRequestTag) *TagResourcesR
 }
 
 type TagResourcesRequestTag struct {
-	// The key of the tag. To create multiple tags for a cluster at a time, click **Add** to add tag keys.
+	// The key of the tag. To create multiple tags for a cluster at a time, click **Add*	- to add tag keys.
 	//
 	// >  You can create up to 20 tags at a time. A tag consists of a key and a value. Each value of `Tag.N.Key` is paired with a value of `Tag.N.Value`.
+	//
+	// example:
+	//
+	// type
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of the tag. To create multiple tags for a cluster at a time, click **Add** to add tag values.
+	// The value of the tag. To create multiple tags for a cluster at a time, click **Add*	- to add tag values.
 	//
 	// >  You can create up to 20 tags at a time. A tag consists of a key and a value. Each value of `Tag.N.Value` is paired with a value of `Tag.N.Key`.
+	//
+	// example:
+	//
+	// test
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -25041,6 +32283,10 @@ func (s *TagResourcesRequestTag) SetValue(v string) *TagResourcesRequestTag {
 
 type TagResourcesResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 1CB5286F-AF5A-4E09-BFE9-588D4C******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -25088,16 +32334,40 @@ func (s *TagResourcesResponse) SetBody(v *TagResourcesResponseBody) *TagResource
 
 type TempModifyDBNodeRequest struct {
 	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value. Make sure that the value is unique among different requests. The token can only contain ASCII characters and cannot exceed 64 characters in length.
+	//
+	// example:
+	//
+	// 6000170000591aed949d0f5********************
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The cluster ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pc-xxxxxxxxxx
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	// The information of the added node.
+	//
+	// This parameter is required.
 	DBNode []*TempModifyDBNodeRequestDBNode `json:"DBNode,omitempty" xml:"DBNode,omitempty" type:"Repeated"`
 	// The type of configuration change. Set the value to **TempUpgrade**.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// TempUpgrade
 	ModifyType *string `json:"ModifyType,omitempty" xml:"ModifyType,omitempty"`
 	// The type of operation performed on the cluster. Valid values:
 	//
-	// *   **Modify**: temporarily upgrade the configuration of the cluster.
+	// 	- **Modify**: temporarily upgrade the configuration of the cluster.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Modify
 	OperationType        *string `json:"OperationType,omitempty" xml:"OperationType,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -25106,6 +32376,12 @@ type TempModifyDBNodeRequest struct {
 	// The rollback time of the configuration for the temporary upgrade. Specify the time in the ISO 8601 standard in the YYYY-MM-DD hh:mm:ss format.
 	//
 	// >  The rollback time cannot be 1 hour earlier than the current time and cannot be later than one day before the time when the cluster expires.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2021-09-23 18:16:00
 	RestoreTime *string `json:"RestoreTime,omitempty" xml:"RestoreTime,omitempty"`
 }
 
@@ -25170,9 +32446,17 @@ func (s *TempModifyDBNodeRequest) SetRestoreTime(v string) *TempModifyDBNodeRequ
 type TempModifyDBNodeRequestDBNode struct {
 	// The instance type of the added node. The instance type of the added node must be the same as the instance type of the original node.
 	//
-	// >  You can call the [DescribeDBClusters](~~98094~~) operation to view the instance types of original nodes.
+	// >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to view the instance types of original nodes.
+	//
+	// example:
+	//
+	// polar.mysql.x4.medium
 	TargetClass *string `json:"TargetClass,omitempty" xml:"TargetClass,omitempty"`
 	// The ID of the zone in which the added node is deployed. The instance type of the added node must be the same as the instance type of the original node.
+	//
+	// example:
+	//
+	// cn-hangzhou-i
 	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
@@ -25196,12 +32480,24 @@ func (s *TempModifyDBNodeRequestDBNode) SetZoneId(v string) *TempModifyDBNodeReq
 
 type TempModifyDBNodeResponseBody struct {
 	// The cluster ID.
+	//
+	// example:
+	//
+	// pc-xxxxxxxxxxxxxxxxx
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	// The details of the nodes.
 	DBNodeIds []*string `json:"DBNodeIds,omitempty" xml:"DBNodeIds,omitempty" type:"Repeated"`
 	// The ID of the order.
+	//
+	// example:
+	//
+	// 2035638*******
 	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 69A85BAF-1089-4CDF-A82F-0A140F******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -25264,35 +32560,72 @@ func (s *TempModifyDBNodeResponse) SetBody(v *TempModifyDBNodeResponseBody) *Tem
 
 type TransformDBClusterPayTypeRequest struct {
 	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value. Make sure that the value is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	//
+	// example:
+	//
+	// 6000170000591aed949d0f5********************
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The cluster ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pc-bp10gr51qasnl****
 	DBClusterId  *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The billing method of the cluster. Valid values:
 	//
-	// *   **Postpaid**: pay-as-you-go.
-	// *   **Prepaid**: subscription.
+	// 	- **Postpaid**: pay-as-you-go.
+	//
+	// 	- **Prepaid**: subscription.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Prepaid
 	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
 	// The renewal cycle of the cluster. Valid values:
 	//
-	// *   **Year**
-	// *   **Month**
+	// 	- **Year**
 	//
-	// >  This parameter is required if you set the **PayType** parameter to **Prepaid**.
+	// 	- **Month**
+	//
+	// >  This parameter is required if you set the **PayType*	- parameter to **Prepaid**.
+	//
+	// example:
+	//
+	// Month
 	Period *string `json:"Period,omitempty" xml:"Period,omitempty"`
 	// The ID of the region.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the resource group.
+	//
+	// example:
+	//
+	// rg-acfm3f4un32****
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The subscription duration of the cluster. Valid values:
 	//
-	// *   If the **Period** parameter is set to **Year**, the **UsedTime** parameter can be set to 1, 2, or 3.
-	// *   If the **Period** parameter is set to **Month**, the **UsedTime** parameter can be set to 1, 2, 3, 4, 5, 6, 7, 8, or 9.
+	// 	- If the **Period*	- parameter is set to **Year**, the **UsedTime*	- parameter can be set to 1, 2, or 3.
 	//
-	// >  This parameter is required if you set the **PayType** parameter to **Prepaid**.
+	// 	- If the **Period*	- parameter is set to **Month**, the **UsedTime*	- parameter can be set to 1, 2, 3, 4, 5, 6, 7, 8, or 9.
+	//
+	// >  This parameter is required if you set the **PayType*	- parameter to **Prepaid**.
+	//
+	// example:
+	//
+	// 1
 	UsedTime *string `json:"UsedTime,omitempty" xml:"UsedTime,omitempty"`
 }
 
@@ -25362,18 +32695,39 @@ func (s *TransformDBClusterPayTypeRequest) SetUsedTime(v string) *TransformDBClu
 type TransformDBClusterPayTypeResponseBody struct {
 	// The billing method of the cluster. Valid values:
 	//
-	// *   **Postpaid**: pay-as-you-go.
-	// *   **Prepaid**: subscription.
+	// 	- **Postpaid**: pay-as-you-go.
+	//
+	// 	- **Prepaid**: subscription.
+	//
+	// example:
+	//
+	// Prepaid
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
 	// The cluster ID.
+	//
+	// example:
+	//
+	// pc-bp10gr51qasnl****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	// The time when the cluster expires.
 	//
-	// >  This parameter is returned if you set the **PayType** parameter to **Prepaid**.
+	// >  This parameter is returned if you set the **PayType*	- parameter to **Prepaid**.
+	//
+	// example:
+	//
+	// 2020-04-20T10:00:00Z
 	ExpiredTime *string `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
 	// The ID of the order.
+	//
+	// example:
+	//
+	// 20515760028****
 	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 5E71541A-6007-4DCC-A38A-F872C31FEB45
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -25440,23 +32794,49 @@ func (s *TransformDBClusterPayTypeResponse) SetBody(v *TransformDBClusterPayType
 }
 
 type UntagResourcesRequest struct {
-	// Specifies whether to unbinds all tags from the cluster. Valid values: **true** and **false**. Default value: **false**.
+	// Specifies whether to unbinds all tags from the cluster. Valid values: **true*	- and **false**. Default value: **false**.
 	//
 	// >  This parameter takes effect only when the value of the `TagKey.n` parameter is empty.
+	//
+	// example:
+	//
+	// true
 	All          *bool   `json:"All,omitempty" xml:"All,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The ID of the region.
 	//
-	// >  You can call the [DescribeRegions](~~98041~~) operation to query the available regions.
+	// >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to query the available regions.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The IDs of the clusters.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pc-***************
 	ResourceId           []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
 	ResourceOwnerAccount *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The type of the resource. Set the value to **cluster**.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cluster
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	// The keys of the tags.
+	//
+	// example:
+	//
+	// type
 	TagKey []*string `json:"TagKey,omitempty" xml:"TagKey,omitempty" type:"Repeated"`
 }
 
@@ -25515,6 +32895,10 @@ func (s *UntagResourcesRequest) SetTagKey(v []*string) *UntagResourcesRequest {
 
 type UntagResourcesResponseBody struct {
 	// The request ID.
+	//
+	// example:
+	//
+	// 2D69A58F-345C-4FDE-88E4-BF5189******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -25562,45 +32946,87 @@ func (s *UntagResourcesResponse) SetBody(v *UntagResourcesResponseBody) *UntagRe
 
 type UpgradeDBClusterVersionRequest struct {
 	// The ID of cluster.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pc-****************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	// Specifies whether to immediately run the kernel upgrade task. Valid values:
 	//
-	// *   **false** (default)
-	// *   **true**
+	// 	- **false*	- (default)
+	//
+	// 	- **true**
 	//
 	// >  This parameter is not required when you call the operation.
+	//
+	// example:
+	//
+	// false
 	FromTimeService *bool   `json:"FromTimeService,omitempty" xml:"FromTimeService,omitempty"`
 	OwnerAccount    *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId         *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The latest start time to run the task that updates the kernel version of the cluster. Specify the time in the `YYYY-MM-DDThh:mm:ssZ` format. The time must be in UTC.
 	//
-	// > *   The value of this parameter must be at least 30 minutes later than the value of PlannedStartTime.
-	// >*   If you specify `PlannedStartTime` but do not specify PlannedEndTime, the latest start time of the task is `PlannedEndTime + 30 minutes`. For example, if you set `PlannedStartTime` to `2021-01-14T09:00:00Z` and do not specify PlannedEndTime, the latest start time of the task is set to `2021-01-14T09:30:00Z`.
+	// > 	- The value of this parameter must be at least 30 minutes later than the value of PlannedStartTime.
+	//
+	// >	- If you specify `PlannedStartTime` but do not specify PlannedEndTime, the latest start time of the task is `PlannedEndTime + 30 minutes`. For example, if you set `PlannedStartTime` to `2021-01-14T09:00:00Z` and do not specify PlannedEndTime, the latest start time of the task is set to `2021-01-14T09:30:00Z`.
+	//
+	// example:
+	//
+	// 2021-01-14T09:30:00Z
 	PlannedEndTime *string `json:"PlannedEndTime,omitempty" xml:"PlannedEndTime,omitempty"`
 	// The earliest start time to run the task that updates the kernel version of the cluster. Specify the time in the `YYYY-MM-DDThh:mm:ssZ` format. The time must be in UTC.
 	//
-	// > *   The earliest start time of the task can be a point in time within the next 24 hours. For example, if the current time is `2021-01-14T09:00:00Z`, you can specify a point in time between `2021-01-14T09:00:00Z` and `2021-01-15T09:00:00Z`.
-	// >*   If you do not specify this parameter, the kernel update task runs immediately after you submit the request.
+	// > 	- The earliest start time of the task can be a point in time within the next 24 hours. For example, if the current time is `2021-01-14T09:00:00Z`, you can specify a point in time between `2021-01-14T09:00:00Z` and `2021-01-15T09:00:00Z`.
+	//
+	// >	- If you do not specify this parameter, the kernel update task runs immediately after you submit the request.
+	//
+	// example:
+	//
+	// 2021-01-14T09:00:00Z
 	PlannedStartTime     *string `json:"PlannedStartTime,omitempty" xml:"PlannedStartTime,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The code of the version to which you want to upgrade the cluster. You can call the [DescribeDBClusterVersion](~~2319145~~) operation to query the version code.
-	TargetDBRevisionVersionCode *string `json:"TargetDBRevisionVersionCode,omitempty" xml:"TargetDBRevisionVersionCode,omitempty"`
+	// The code of the version to which you want to upgrade the cluster. You can call the [DescribeDBClusterVersion](https://help.aliyun.com/document_detail/2319145.html) operation to query the version code.
+	//
+	// example:
+	//
+	// 20230707
+	TargetDBRevisionVersionCode    *string `json:"TargetDBRevisionVersionCode,omitempty" xml:"TargetDBRevisionVersionCode,omitempty"`
+	TargetProxyRevisionVersionCode *string `json:"TargetProxyRevisionVersionCode,omitempty" xml:"TargetProxyRevisionVersionCode,omitempty"`
 	// The upgrade tag. The value is fixed as **INNOVATE**.
 	//
-	// > *   This parameter is applicable only when you upgrade PolarDB for MySQL 8.0.1 to PolarDB for MySQL 8.0.2.
-	// >*   If you specify this parameter, you must set `UpgradePolicy` to **COLD**.
+	// > 	- This parameter is applicable only when you upgrade PolarDB for MySQL 8.0.1 to PolarDB for MySQL 8.0.2.
+	//
+	// >	- If you specify this parameter, you must set `UpgradePolicy` to **COLD**.
+	//
+	// example:
+	//
+	// INNOVATE
 	UpgradeLabel *string `json:"UpgradeLabel,omitempty" xml:"UpgradeLabel,omitempty"`
 	// The upgrade policy. Valid values:
 	//
-	// *   **HOT**: hot upgrade.
-	// *   **COLD**: cold upgrade. Only PolarDB for MySQL Cluster Edition that runs MySQL 8.0 supports this upgrade method.
+	// 	- **HOT**: hot upgrade.
+	//
+	// 	- **COLD**: cold upgrade. Only PolarDB for MySQL Cluster Edition that runs MySQL 8.0 supports this upgrade method.
+	//
+	// example:
+	//
+	// HOT
 	UpgradePolicy *string `json:"UpgradePolicy,omitempty" xml:"UpgradePolicy,omitempty"`
 	// The update type. Valid values:
 	//
-	// *   **PROXY**: specifies to upgrade PloarProxy.
-	// *   **DB**: specifies to upgrade the kernel version.
-	// *   **ALL**: specifies to upgrade both PloarProxy and kernel version.
+	// 	- **PROXY**: specifies to upgrade PloarProxy.
+	//
+	// 	- **DB**: specifies to upgrade the kernel version.
+	//
+	// 	- **ALL**: specifies to upgrade both PloarProxy and kernel version.
+	//
+	// example:
+	//
+	// PROXY
 	UpgradeType *string `json:"UpgradeType,omitempty" xml:"UpgradeType,omitempty"`
 }
 
@@ -25657,6 +33083,11 @@ func (s *UpgradeDBClusterVersionRequest) SetTargetDBRevisionVersionCode(v string
 	return s
 }
 
+func (s *UpgradeDBClusterVersionRequest) SetTargetProxyRevisionVersionCode(v string) *UpgradeDBClusterVersionRequest {
+	s.TargetProxyRevisionVersionCode = &v
+	return s
+}
+
 func (s *UpgradeDBClusterVersionRequest) SetUpgradeLabel(v string) *UpgradeDBClusterVersionRequest {
 	s.UpgradeLabel = &v
 	return s
@@ -25674,6 +33105,10 @@ func (s *UpgradeDBClusterVersionRequest) SetUpgradeType(v string) *UpgradeDBClus
 
 type UpgradeDBClusterVersionResponseBody struct {
 	// The ID of the request.
+	//
+	// example:
+	//
+	// CAE6755F-B79A-4861-B227-801FE8******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -25738,16 +33173,16 @@ func (client *Client) Init(config *openapi.Config) (_err error) {
 	client.EndpointMap = map[string]*string{
 		"cn-qingdao":                  tea.String("polardb.aliyuncs.com"),
 		"cn-beijing":                  tea.String("polardb.aliyuncs.com"),
+		"cn-wulanchabu":               tea.String("polardb.aliyuncs.com"),
 		"cn-hangzhou":                 tea.String("polardb.aliyuncs.com"),
 		"cn-shanghai":                 tea.String("polardb.aliyuncs.com"),
 		"cn-shenzhen":                 tea.String("polardb.aliyuncs.com"),
+		"cn-guangzhou":                tea.String("polardb.aliyuncs.com"),
 		"cn-hongkong":                 tea.String("polardb.aliyuncs.com"),
-		"ap-southeast-1":              tea.String("polardb.aliyuncs.com"),
-		"us-west-1":                   tea.String("polardb.aliyuncs.com"),
-		"us-east-1":                   tea.String("polardb.aliyuncs.com"),
 		"cn-hangzhou-finance":         tea.String("polardb.aliyuncs.com"),
 		"cn-shanghai-finance-1":       tea.String("polardb.aliyuncs.com"),
 		"cn-shenzhen-finance-1":       tea.String("polardb.aliyuncs.com"),
+		"cn-north-2-gov-1":            tea.String("polardb.aliyuncs.com"),
 		"ap-northeast-2-pop":          tea.String("polardb.aliyuncs.com"),
 		"cn-beijing-finance-1":        tea.String("polardb.aliyuncs.com"),
 		"cn-beijing-finance-pop":      tea.String("polardb.aliyuncs.com"),
@@ -25764,7 +33199,6 @@ func (client *Client) Init(config *openapi.Config) (_err error) {
 		"cn-hangzhou-test-306":        tea.String("polardb.aliyuncs.com"),
 		"cn-hongkong-finance-pop":     tea.String("polardb.aliyuncs.com"),
 		"cn-huhehaote-nebula-1":       tea.String("polardb.aliyuncs.com"),
-		"cn-north-2-gov-1":            tea.String("polardb.aliyuncs.com"),
 		"cn-qingdao-nebula":           tea.String("polardb.aliyuncs.com"),
 		"cn-shanghai-et15-b01":        tea.String("polardb.aliyuncs.com"),
 		"cn-shanghai-et2-b01":         tea.String("polardb.aliyuncs.com"),
@@ -25774,7 +33208,6 @@ func (client *Client) Init(config *openapi.Config) (_err error) {
 		"cn-shenzhen-st4-d01":         tea.String("polardb.aliyuncs.com"),
 		"cn-shenzhen-su18-b01":        tea.String("polardb.aliyuncs.com"),
 		"cn-wuhan":                    tea.String("polardb.aliyuncs.com"),
-		"cn-wulanchabu":               tea.String("polardb.aliyuncs.com"),
 		"cn-yushanfang":               tea.String("polardb.aliyuncs.com"),
 		"cn-zhangbei":                 tea.String("polardb.aliyuncs.com"),
 		"cn-zhangbei-na61-b01":        tea.String("polardb.aliyuncs.com"),
@@ -25814,6 +33247,15 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
+// Summary:
+//
+// Cancels scheduled tasks that are not yet started.
+//
+// @param request - CancelScheduleTasksRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CancelScheduleTasksResponse
 func (client *Client) CancelScheduleTasksWithOptions(request *CancelScheduleTasksRequest, runtime *util.RuntimeOptions) (_result *CancelScheduleTasksResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -25871,6 +33313,13 @@ func (client *Client) CancelScheduleTasksWithOptions(request *CancelScheduleTask
 	return _result, _err
 }
 
+// Summary:
+//
+// Cancels scheduled tasks that are not yet started.
+//
+// @param request - CancelScheduleTasksRequest
+//
+// @return CancelScheduleTasksResponse
 func (client *Client) CancelScheduleTasks(request *CancelScheduleTasksRequest) (_result *CancelScheduleTasksResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CancelScheduleTasksResponse{}
@@ -25882,6 +33331,15 @@ func (client *Client) CancelScheduleTasks(request *CancelScheduleTasksRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// Checks whether an account name is valid or unique in a cluster.
+//
+// @param request - CheckAccountNameRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CheckAccountNameResponse
 func (client *Client) CheckAccountNameWithOptions(request *CheckAccountNameRequest, runtime *util.RuntimeOptions) (_result *CheckAccountNameResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -25935,6 +33393,13 @@ func (client *Client) CheckAccountNameWithOptions(request *CheckAccountNameReque
 	return _result, _err
 }
 
+// Summary:
+//
+// Checks whether an account name is valid or unique in a cluster.
+//
+// @param request - CheckAccountNameRequest
+//
+// @return CheckAccountNameResponse
 func (client *Client) CheckAccountName(request *CheckAccountNameRequest) (_result *CheckAccountNameResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CheckAccountNameResponse{}
@@ -25946,6 +33411,15 @@ func (client *Client) CheckAccountName(request *CheckAccountNameRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// Checks whether a database name is valid or whether the name is already used by another database in the current cluster.
+//
+// @param request - CheckDBNameRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CheckDBNameResponse
 func (client *Client) CheckDBNameWithOptions(request *CheckDBNameRequest, runtime *util.RuntimeOptions) (_result *CheckDBNameResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -25999,6 +33473,13 @@ func (client *Client) CheckDBNameWithOptions(request *CheckDBNameRequest, runtim
 	return _result, _err
 }
 
+// Summary:
+//
+// Checks whether a database name is valid or whether the name is already used by another database in the current cluster.
+//
+// @param request - CheckDBNameRequest
+//
+// @return CheckDBNameResponse
 func (client *Client) CheckDBName(request *CheckDBNameRequest) (_result *CheckDBNameResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CheckDBNameResponse{}
@@ -26010,6 +33491,15 @@ func (client *Client) CheckDBName(request *CheckDBNameRequest) (_result *CheckDB
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries whether the cluster is authorized to use Key Management Service (KMS).
+//
+// @param request - CheckKMSAuthorizedRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CheckKMSAuthorizedResponse
 func (client *Client) CheckKMSAuthorizedWithOptions(request *CheckKMSAuthorizedRequest, runtime *util.RuntimeOptions) (_result *CheckKMSAuthorizedResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -26067,6 +33557,13 @@ func (client *Client) CheckKMSAuthorizedWithOptions(request *CheckKMSAuthorizedR
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries whether the cluster is authorized to use Key Management Service (KMS).
+//
+// @param request - CheckKMSAuthorizedRequest
+//
+// @return CheckKMSAuthorizedResponse
 func (client *Client) CheckKMSAuthorized(request *CheckKMSAuthorizedRequest) (_result *CheckKMSAuthorizedResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CheckKMSAuthorizedResponse{}
@@ -26078,6 +33575,15 @@ func (client *Client) CheckKMSAuthorized(request *CheckKMSAuthorizedRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// Checks whether a service-linked role (SLR) is created.
+//
+// @param request - CheckServiceLinkedRoleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CheckServiceLinkedRoleResponse
 func (client *Client) CheckServiceLinkedRoleWithOptions(request *CheckServiceLinkedRoleRequest, runtime *util.RuntimeOptions) (_result *CheckServiceLinkedRoleResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -26123,6 +33629,13 @@ func (client *Client) CheckServiceLinkedRoleWithOptions(request *CheckServiceLin
 	return _result, _err
 }
 
+// Summary:
+//
+// Checks whether a service-linked role (SLR) is created.
+//
+// @param request - CheckServiceLinkedRoleRequest
+//
+// @return CheckServiceLinkedRoleResponse
 func (client *Client) CheckServiceLinkedRole(request *CheckServiceLinkedRoleRequest) (_result *CheckServiceLinkedRoleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CheckServiceLinkedRoleResponse{}
@@ -26134,6 +33647,15 @@ func (client *Client) CheckServiceLinkedRole(request *CheckServiceLinkedRoleRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// 关闭DB4AI
+//
+// @param request - CloseAITaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CloseAITaskResponse
 func (client *Client) CloseAITaskWithOptions(request *CloseAITaskRequest, runtime *util.RuntimeOptions) (_result *CloseAITaskResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -26187,6 +33709,13 @@ func (client *Client) CloseAITaskWithOptions(request *CloseAITaskRequest, runtim
 	return _result, _err
 }
 
+// Summary:
+//
+// 关闭DB4AI
+//
+// @param request - CloseAITaskRequest
+//
+// @return CloseAITaskResponse
 func (client *Client) CloseAITask(request *CloseAITaskRequest) (_result *CloseAITaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CloseAITaskResponse{}
@@ -26198,15 +33727,23 @@ func (client *Client) CloseAITask(request *CloseAITaskRequest) (_result *CloseAI
 	return _result, _err
 }
 
-/**
- * *   You can call this operation to cancel the migration task before data migration.
- * *   You can call this operation to perform the migration task after data migration.
- * > Before you call this operation, ensure that a one-click upgrade task has been created for the cluster. You can call the [CreateDBCluster](~~98169~~) operation to create an upgrade task. Set the **CreationOption** parameter to **MigrationFromRDS**. For more information, see [Create a PolarDB for MySQL cluster by using the Migration from RDS method](~~121582~~).
- *
- * @param request CloseDBClusterMigrationRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return CloseDBClusterMigrationResponse
- */
+// Summary:
+//
+// Cancels or completes the migration task that upgrades an RDS cluster to a PolarDB cluster.
+//
+// Description:
+//
+//   You can call this operation to cancel the migration task before data migration.
+//
+// 	- You can call this operation to perform the migration task after data migration.
+//
+// > Before you call this operation, ensure that a one-click upgrade task has been created for the cluster. You can call the [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) operation to create an upgrade task. Set the **CreationOption*	- parameter to **MigrationFromRDS**. For more information, see [Create a PolarDB for MySQL cluster by using the Migration from RDS method](https://help.aliyun.com/document_detail/121582.html).
+//
+// @param request - CloseDBClusterMigrationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CloseDBClusterMigrationResponse
 func (client *Client) CloseDBClusterMigrationWithOptions(request *CloseDBClusterMigrationRequest, runtime *util.RuntimeOptions) (_result *CloseDBClusterMigrationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -26260,14 +33797,21 @@ func (client *Client) CloseDBClusterMigrationWithOptions(request *CloseDBCluster
 	return _result, _err
 }
 
-/**
- * *   You can call this operation to cancel the migration task before data migration.
- * *   You can call this operation to perform the migration task after data migration.
- * > Before you call this operation, ensure that a one-click upgrade task has been created for the cluster. You can call the [CreateDBCluster](~~98169~~) operation to create an upgrade task. Set the **CreationOption** parameter to **MigrationFromRDS**. For more information, see [Create a PolarDB for MySQL cluster by using the Migration from RDS method](~~121582~~).
- *
- * @param request CloseDBClusterMigrationRequest
- * @return CloseDBClusterMigrationResponse
- */
+// Summary:
+//
+// Cancels or completes the migration task that upgrades an RDS cluster to a PolarDB cluster.
+//
+// Description:
+//
+//   You can call this operation to cancel the migration task before data migration.
+//
+// 	- You can call this operation to perform the migration task after data migration.
+//
+// > Before you call this operation, ensure that a one-click upgrade task has been created for the cluster. You can call the [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) operation to create an upgrade task. Set the **CreationOption*	- parameter to **MigrationFromRDS**. For more information, see [Create a PolarDB for MySQL cluster by using the Migration from RDS method](https://help.aliyun.com/document_detail/121582.html).
+//
+// @param request - CloseDBClusterMigrationRequest
+//
+// @return CloseDBClusterMigrationResponse
 func (client *Client) CloseDBClusterMigration(request *CloseDBClusterMigrationRequest) (_result *CloseDBClusterMigrationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CloseDBClusterMigrationResponse{}
@@ -26279,6 +33823,15 @@ func (client *Client) CloseDBClusterMigration(request *CloseDBClusterMigrationRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a database account for a PolarDB cluster.
+//
+// @param request - CreateAccountRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateAccountResponse
 func (client *Client) CreateAccountWithOptions(request *CreateAccountRequest, runtime *util.RuntimeOptions) (_result *CreateAccountResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -26360,6 +33913,13 @@ func (client *Client) CreateAccountWithOptions(request *CreateAccountRequest, ru
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a database account for a PolarDB cluster.
+//
+// @param request - CreateAccountRequest
+//
+// @return CreateAccountResponse
 func (client *Client) CreateAccount(request *CreateAccountRequest) (_result *CreateAccountResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateAccountResponse{}
@@ -26371,16 +33931,25 @@ func (client *Client) CreateAccount(request *CreateAccountRequest) (_result *Cre
 	return _result, _err
 }
 
-/**
- * >
- * *   You can manually create up to three backups for each cluster.
- * *   The `Exceeding the daily backup times of this DB cluster` error message indicates that three manual backups already exist in your cluster. You must delete existing backups before you call this operation to manually create backups. For more information about how to delete backups, see [Delete backups](~~98101~~).
- * *   After you call this operation, a backup task is created in the backend. The task may be time-consuming if you want to back up large amounts of data.
- *
- * @param request CreateBackupRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return CreateBackupResponse
- */
+// Summary:
+//
+// Creates a full snapshot backup for a PolarDB cluster.
+//
+// Description:
+//
+// >
+//
+// 	- You can manually create up to three backups for each cluster.
+//
+// 	- The `Exceeding the daily backup times of this DB cluster` error message indicates that three manual backups already exist in your cluster. You must delete existing backups before you call this operation to manually create backups. For more information about how to delete backups, see [Delete backups](https://help.aliyun.com/document_detail/98101.html).
+//
+// 	- After you call this operation, a backup task is created in the backend. The task may be time-consuming if you want to back up large amounts of data.
+//
+// @param request - CreateBackupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateBackupResponse
 func (client *Client) CreateBackupWithOptions(request *CreateBackupRequest, runtime *util.RuntimeOptions) (_result *CreateBackupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -26434,15 +34003,23 @@ func (client *Client) CreateBackupWithOptions(request *CreateBackupRequest, runt
 	return _result, _err
 }
 
-/**
- * >
- * *   You can manually create up to three backups for each cluster.
- * *   The `Exceeding the daily backup times of this DB cluster` error message indicates that three manual backups already exist in your cluster. You must delete existing backups before you call this operation to manually create backups. For more information about how to delete backups, see [Delete backups](~~98101~~).
- * *   After you call this operation, a backup task is created in the backend. The task may be time-consuming if you want to back up large amounts of data.
- *
- * @param request CreateBackupRequest
- * @return CreateBackupResponse
- */
+// Summary:
+//
+// Creates a full snapshot backup for a PolarDB cluster.
+//
+// Description:
+//
+// >
+//
+// 	- You can manually create up to three backups for each cluster.
+//
+// 	- The `Exceeding the daily backup times of this DB cluster` error message indicates that three manual backups already exist in your cluster. You must delete existing backups before you call this operation to manually create backups. For more information about how to delete backups, see [Delete backups](https://help.aliyun.com/document_detail/98101.html).
+//
+// 	- After you call this operation, a backup task is created in the backend. The task may be time-consuming if you want to back up large amounts of data.
+//
+// @param request - CreateBackupRequest
+//
+// @return CreateBackupResponse
 func (client *Client) CreateBackup(request *CreateBackupRequest) (_result *CreateBackupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateBackupResponse{}
@@ -26454,6 +34031,15 @@ func (client *Client) CreateBackup(request *CreateBackupRequest) (_result *Creat
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建冷存储实例
+//
+// @param request - CreateColdStorageInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateColdStorageInstanceResponse
 func (client *Client) CreateColdStorageInstanceWithOptions(request *CreateColdStorageInstanceRequest, runtime *util.RuntimeOptions) (_result *CreateColdStorageInstanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -26515,6 +34101,13 @@ func (client *Client) CreateColdStorageInstanceWithOptions(request *CreateColdSt
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建冷存储实例
+//
+// @param request - CreateColdStorageInstanceRequest
+//
+// @return CreateColdStorageInstanceResponse
 func (client *Client) CreateColdStorageInstance(request *CreateColdStorageInstanceRequest) (_result *CreateColdStorageInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateColdStorageInstanceResponse{}
@@ -26526,6 +34119,15 @@ func (client *Client) CreateColdStorageInstance(request *CreateColdStorageInstan
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a PolarDB cluster.
+//
+// @param request - CreateDBClusterRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateDBClusterResponse
 func (client *Client) CreateDBClusterWithOptions(request *CreateDBClusterRequest, runtime *util.RuntimeOptions) (_result *CreateDBClusterResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -26771,6 +34373,13 @@ func (client *Client) CreateDBClusterWithOptions(request *CreateDBClusterRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a PolarDB cluster.
+//
+// @param request - CreateDBClusterRequest
+//
+// @return CreateDBClusterResponse
 func (client *Client) CreateDBCluster(request *CreateDBClusterRequest) (_result *CreateDBClusterResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateDBClusterResponse{}
@@ -26782,6 +34391,15 @@ func (client *Client) CreateDBCluster(request *CreateDBClusterRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a custom cluster endpoint for a PolarDB cluster.
+//
+// @param request - CreateDBClusterEndpointRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateDBClusterEndpointResponse
 func (client *Client) CreateDBClusterEndpointWithOptions(request *CreateDBClusterEndpointRequest, runtime *util.RuntimeOptions) (_result *CreateDBClusterEndpointResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -26859,6 +34477,13 @@ func (client *Client) CreateDBClusterEndpointWithOptions(request *CreateDBCluste
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a custom cluster endpoint for a PolarDB cluster.
+//
+// @param request - CreateDBClusterEndpointRequest
+//
+// @return CreateDBClusterEndpointResponse
 func (client *Client) CreateDBClusterEndpoint(request *CreateDBClusterEndpointRequest) (_result *CreateDBClusterEndpointResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateDBClusterEndpointResponse{}
@@ -26870,13 +34495,19 @@ func (client *Client) CreateDBClusterEndpoint(request *CreateDBClusterEndpointRe
 	return _result, _err
 }
 
-/**
- * > You can create a public endpoint for the primary endpoint, the default cluster endpoint, or a custom cluster endpoint.
- *
- * @param request CreateDBEndpointAddressRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return CreateDBEndpointAddressResponse
- */
+// Summary:
+//
+// Creates a public endpoint for the primary endpoint, the default cluster endpoint, or a custom cluster endpoint.
+//
+// Description:
+//
+// > You can create a public endpoint for the primary endpoint, the default cluster endpoint, or a custom cluster endpoint.
+//
+// @param request - CreateDBEndpointAddressRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateDBEndpointAddressResponse
 func (client *Client) CreateDBEndpointAddressWithOptions(request *CreateDBEndpointAddressRequest, runtime *util.RuntimeOptions) (_result *CreateDBEndpointAddressResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -26950,12 +34581,17 @@ func (client *Client) CreateDBEndpointAddressWithOptions(request *CreateDBEndpoi
 	return _result, _err
 }
 
-/**
- * > You can create a public endpoint for the primary endpoint, the default cluster endpoint, or a custom cluster endpoint.
- *
- * @param request CreateDBEndpointAddressRequest
- * @return CreateDBEndpointAddressResponse
- */
+// Summary:
+//
+// Creates a public endpoint for the primary endpoint, the default cluster endpoint, or a custom cluster endpoint.
+//
+// Description:
+//
+// > You can create a public endpoint for the primary endpoint, the default cluster endpoint, or a custom cluster endpoint.
+//
+// @param request - CreateDBEndpointAddressRequest
+//
+// @return CreateDBEndpointAddressResponse
 func (client *Client) CreateDBEndpointAddress(request *CreateDBEndpointAddressRequest) (_result *CreateDBEndpointAddressResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateDBEndpointAddressResponse{}
@@ -26967,16 +34603,25 @@ func (client *Client) CreateDBEndpointAddress(request *CreateDBEndpointAddressRe
 	return _result, _err
 }
 
-/**
- * A database link can be used to connect two PolarDB for PostgreSQL(Compatible with Oracle) clusters, or connect a PolarDB for PostgreSQL(Compatible with Oracle) cluster to a user-created PostgreSQL database that is hosted on an Elastic Compute Service (ECS) instance. You can use database links to query data across clusters.
- * > *   You can create up to 10 database links for a cluster.
- * > *   Each database link connects a source cluster and a destination cluster.
- * > *   The source cluster and the destination cluster or the destination ECS instance must be located in the same region.
- *
- * @param request CreateDBLinkRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return CreateDBLinkResponse
- */
+// Summary:
+//
+// Creates a database link.
+//
+// Description:
+//
+// A database link can be used to connect two PolarDB for PostgreSQL(Compatible with Oracle) clusters, or connect a PolarDB for PostgreSQL(Compatible with Oracle) cluster to a user-created PostgreSQL database that is hosted on an Elastic Compute Service (ECS) instance. You can use database links to query data across clusters.
+//
+// > 	- You can create up to 10 database links for a cluster.
+//
+// > 	- Each database link connects a source cluster and a destination cluster.
+//
+// > 	- The source cluster and the destination cluster or the destination ECS instance must be located in the same region.
+//
+// @param request - CreateDBLinkRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateDBLinkResponse
 func (client *Client) CreateDBLinkWithOptions(request *CreateDBLinkRequest, runtime *util.RuntimeOptions) (_result *CreateDBLinkResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -27074,15 +34719,23 @@ func (client *Client) CreateDBLinkWithOptions(request *CreateDBLinkRequest, runt
 	return _result, _err
 }
 
-/**
- * A database link can be used to connect two PolarDB for PostgreSQL(Compatible with Oracle) clusters, or connect a PolarDB for PostgreSQL(Compatible with Oracle) cluster to a user-created PostgreSQL database that is hosted on an Elastic Compute Service (ECS) instance. You can use database links to query data across clusters.
- * > *   You can create up to 10 database links for a cluster.
- * > *   Each database link connects a source cluster and a destination cluster.
- * > *   The source cluster and the destination cluster or the destination ECS instance must be located in the same region.
- *
- * @param request CreateDBLinkRequest
- * @return CreateDBLinkResponse
- */
+// Summary:
+//
+// Creates a database link.
+//
+// Description:
+//
+// A database link can be used to connect two PolarDB for PostgreSQL(Compatible with Oracle) clusters, or connect a PolarDB for PostgreSQL(Compatible with Oracle) cluster to a user-created PostgreSQL database that is hosted on an Elastic Compute Service (ECS) instance. You can use database links to query data across clusters.
+//
+// > 	- You can create up to 10 database links for a cluster.
+//
+// > 	- Each database link connects a source cluster and a destination cluster.
+//
+// > 	- The source cluster and the destination cluster or the destination ECS instance must be located in the same region.
+//
+// @param request - CreateDBLinkRequest
+//
+// @return CreateDBLinkResponse
 func (client *Client) CreateDBLink(request *CreateDBLinkRequest) (_result *CreateDBLinkResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateDBLinkResponse{}
@@ -27094,6 +34747,15 @@ func (client *Client) CreateDBLink(request *CreateDBLinkRequest) (_result *Creat
 	return _result, _err
 }
 
+// Summary:
+//
+// Adds a read-only node to a PolarDB cluster.
+//
+// @param request - CreateDBNodesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateDBNodesResponse
 func (client *Client) CreateDBNodesWithOptions(request *CreateDBNodesRequest, runtime *util.RuntimeOptions) (_result *CreateDBNodesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -27175,6 +34837,13 @@ func (client *Client) CreateDBNodesWithOptions(request *CreateDBNodesRequest, ru
 	return _result, _err
 }
 
+// Summary:
+//
+// Adds a read-only node to a PolarDB cluster.
+//
+// @param request - CreateDBNodesRequest
+//
+// @return CreateDBNodesResponse
 func (client *Client) CreateDBNodes(request *CreateDBNodesRequest) (_result *CreateDBNodesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateDBNodesResponse{}
@@ -27186,15 +34855,23 @@ func (client *Client) CreateDBNodes(request *CreateDBNodesRequest) (_result *Cre
 	return _result, _err
 }
 
-/**
- * Before you call this operation, make sure that the following requirements are met:
- * *   The cluster is in the Running state.
- * *   The cluster is unlocked.
- *
- * @param request CreateDatabaseRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return CreateDatabaseResponse
- */
+// Summary:
+//
+// Creates a database for a PolarDB cluster.
+//
+// Description:
+//
+// Before you call this operation, make sure that the following requirements are met:
+//
+// 	- The cluster is in the Running state.
+//
+// 	- The cluster is unlocked.
+//
+// @param request - CreateDatabaseRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateDatabaseResponse
 func (client *Client) CreateDatabaseWithOptions(request *CreateDatabaseRequest, runtime *util.RuntimeOptions) (_result *CreateDatabaseResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -27272,14 +34949,21 @@ func (client *Client) CreateDatabaseWithOptions(request *CreateDatabaseRequest, 
 	return _result, _err
 }
 
-/**
- * Before you call this operation, make sure that the following requirements are met:
- * *   The cluster is in the Running state.
- * *   The cluster is unlocked.
- *
- * @param request CreateDatabaseRequest
- * @return CreateDatabaseResponse
- */
+// Summary:
+//
+// Creates a database for a PolarDB cluster.
+//
+// Description:
+//
+// Before you call this operation, make sure that the following requirements are met:
+//
+// 	- The cluster is in the Running state.
+//
+// 	- The cluster is unlocked.
+//
+// @param request - CreateDatabaseRequest
+//
+// @return CreateDatabaseResponse
 func (client *Client) CreateDatabase(request *CreateDatabaseRequest) (_result *CreateDatabaseResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateDatabaseResponse{}
@@ -27291,13 +34975,19 @@ func (client *Client) CreateDatabase(request *CreateDatabaseRequest) (_result *C
 	return _result, _err
 }
 
-/**
- * >  A cluster belongs to only one GDN.
- *
- * @param request CreateGlobalDatabaseNetworkRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return CreateGlobalDatabaseNetworkResponse
- */
+// Summary:
+//
+// Creates a global database network (GDN).
+//
+// Description:
+//
+// >  A cluster belongs to only one GDN.
+//
+// @param request - CreateGlobalDatabaseNetworkRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateGlobalDatabaseNetworkResponse
 func (client *Client) CreateGlobalDatabaseNetworkWithOptions(request *CreateGlobalDatabaseNetworkRequest, runtime *util.RuntimeOptions) (_result *CreateGlobalDatabaseNetworkResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -27359,12 +35049,17 @@ func (client *Client) CreateGlobalDatabaseNetworkWithOptions(request *CreateGlob
 	return _result, _err
 }
 
-/**
- * >  A cluster belongs to only one GDN.
- *
- * @param request CreateGlobalDatabaseNetworkRequest
- * @return CreateGlobalDatabaseNetworkResponse
- */
+// Summary:
+//
+// Creates a global database network (GDN).
+//
+// Description:
+//
+// >  A cluster belongs to only one GDN.
+//
+// @param request - CreateGlobalDatabaseNetworkRequest
+//
+// @return CreateGlobalDatabaseNetworkResponse
 func (client *Client) CreateGlobalDatabaseNetwork(request *CreateGlobalDatabaseNetworkRequest) (_result *CreateGlobalDatabaseNetworkResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateGlobalDatabaseNetworkResponse{}
@@ -27376,6 +35071,15 @@ func (client *Client) CreateGlobalDatabaseNetwork(request *CreateGlobalDatabaseN
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a global IP whitelist template.
+//
+// @param request - CreateGlobalSecurityIPGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateGlobalSecurityIPGroupResponse
 func (client *Client) CreateGlobalSecurityIPGroupWithOptions(request *CreateGlobalSecurityIPGroupRequest, runtime *util.RuntimeOptions) (_result *CreateGlobalSecurityIPGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -27441,6 +35145,13 @@ func (client *Client) CreateGlobalSecurityIPGroupWithOptions(request *CreateGlob
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a global IP whitelist template.
+//
+// @param request - CreateGlobalSecurityIPGroupRequest
+//
+// @return CreateGlobalSecurityIPGroupResponse
 func (client *Client) CreateGlobalSecurityIPGroup(request *CreateGlobalSecurityIPGroupRequest) (_result *CreateGlobalSecurityIPGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateGlobalSecurityIPGroupResponse{}
@@ -27452,14 +35163,21 @@ func (client *Client) CreateGlobalSecurityIPGroup(request *CreateGlobalSecurityI
 	return _result, _err
 }
 
-/**
- * You can use parameter templates to manage multiple parameters at a time and apply existing parameters to a PolarDB cluster. For more information, see [Use a parameter template](~~207009~~).
- * > You can call this operation only on a PolarDB for MySQL cluster.
- *
- * @param request CreateParameterGroupRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return CreateParameterGroupResponse
- */
+// Summary:
+//
+// Creates a parameter template.
+//
+// Description:
+//
+// You can use parameter templates to manage multiple parameters at a time and apply existing parameters to a PolarDB cluster. For more information, see [Use a parameter template](https://help.aliyun.com/document_detail/207009.html).
+//
+// > You can call this operation only on a PolarDB for MySQL cluster.
+//
+// @param request - CreateParameterGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateParameterGroupResponse
 func (client *Client) CreateParameterGroupWithOptions(request *CreateParameterGroupRequest, runtime *util.RuntimeOptions) (_result *CreateParameterGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -27533,13 +35251,19 @@ func (client *Client) CreateParameterGroupWithOptions(request *CreateParameterGr
 	return _result, _err
 }
 
-/**
- * You can use parameter templates to manage multiple parameters at a time and apply existing parameters to a PolarDB cluster. For more information, see [Use a parameter template](~~207009~~).
- * > You can call this operation only on a PolarDB for MySQL cluster.
- *
- * @param request CreateParameterGroupRequest
- * @return CreateParameterGroupResponse
- */
+// Summary:
+//
+// Creates a parameter template.
+//
+// Description:
+//
+// You can use parameter templates to manage multiple parameters at a time and apply existing parameters to a PolarDB cluster. For more information, see [Use a parameter template](https://help.aliyun.com/document_detail/207009.html).
+//
+// > You can call this operation only on a PolarDB for MySQL cluster.
+//
+// @param request - CreateParameterGroupRequest
+//
+// @return CreateParameterGroupResponse
 func (client *Client) CreateParameterGroup(request *CreateParameterGroupRequest) (_result *CreateParameterGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateParameterGroupResponse{}
@@ -27551,6 +35275,15 @@ func (client *Client) CreateParameterGroup(request *CreateParameterGroupRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a service-linked role (SLR).
+//
+// @param request - CreateServiceLinkedRoleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateServiceLinkedRoleResponse
 func (client *Client) CreateServiceLinkedRoleWithOptions(request *CreateServiceLinkedRoleRequest, runtime *util.RuntimeOptions) (_result *CreateServiceLinkedRoleResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -27596,6 +35329,13 @@ func (client *Client) CreateServiceLinkedRoleWithOptions(request *CreateServiceL
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a service-linked role (SLR).
+//
+// @param request - CreateServiceLinkedRoleRequest
+//
+// @return CreateServiceLinkedRoleResponse
 func (client *Client) CreateServiceLinkedRole(request *CreateServiceLinkedRoleRequest) (_result *CreateServiceLinkedRoleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateServiceLinkedRoleResponse{}
@@ -27607,6 +35347,15 @@ func (client *Client) CreateServiceLinkedRole(request *CreateServiceLinkedRoleRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Purchases a storage plan.
+//
+// @param request - CreateStoragePlanRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateStoragePlanResponse
 func (client *Client) CreateStoragePlanWithOptions(request *CreateStoragePlanRequest, runtime *util.RuntimeOptions) (_result *CreateStoragePlanResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -27672,6 +35421,13 @@ func (client *Client) CreateStoragePlanWithOptions(request *CreateStoragePlanReq
 	return _result, _err
 }
 
+// Summary:
+//
+// Purchases a storage plan.
+//
+// @param request - CreateStoragePlanRequest
+//
+// @return CreateStoragePlanResponse
 func (client *Client) CreateStoragePlan(request *CreateStoragePlanRequest) (_result *CreateStoragePlanResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateStoragePlanResponse{}
@@ -27683,13 +35439,19 @@ func (client *Client) CreateStoragePlan(request *CreateStoragePlanRequest) (_res
 	return _result, _err
 }
 
-/**
- * > Before you call this operation, make sure that the cluster is in the Running state. Otherwise, the operation fails.
- *
- * @param request DeleteAccountRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DeleteAccountResponse
- */
+// Summary:
+//
+// Deletes a database account for a PolarDB cluster.
+//
+// Description:
+//
+// > Before you call this operation, make sure that the cluster is in the Running state. Otherwise, the operation fails.
+//
+// @param request - DeleteAccountRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteAccountResponse
 func (client *Client) DeleteAccountWithOptions(request *DeleteAccountRequest, runtime *util.RuntimeOptions) (_result *DeleteAccountResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -27743,12 +35505,17 @@ func (client *Client) DeleteAccountWithOptions(request *DeleteAccountRequest, ru
 	return _result, _err
 }
 
-/**
- * > Before you call this operation, make sure that the cluster is in the Running state. Otherwise, the operation fails.
- *
- * @param request DeleteAccountRequest
- * @return DeleteAccountResponse
- */
+// Summary:
+//
+// Deletes a database account for a PolarDB cluster.
+//
+// Description:
+//
+// > Before you call this operation, make sure that the cluster is in the Running state. Otherwise, the operation fails.
+//
+// @param request - DeleteAccountRequest
+//
+// @return DeleteAccountResponse
 func (client *Client) DeleteAccount(request *DeleteAccountRequest) (_result *DeleteAccountResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteAccountResponse{}
@@ -27760,17 +35527,27 @@ func (client *Client) DeleteAccount(request *DeleteAccountRequest) (_result *Del
 	return _result, _err
 }
 
-/**
- * Before you call this operation, make sure that the cluster meets the following requirements:
- * *   The cluster is in the Running state.
- * *   The backup sets are in the Success state.
- * > *   You can call the [DescribeBackups](~~98102~~) operation to query the status of backup sets.
- * >*   After you delete the backup set file, the storage space that is occupied by the file is released. The released storage space is smaller than the size of the file because your snapshots share some data blocks
- *
- * @param request DeleteBackupRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DeleteBackupResponse
- */
+// Summary:
+//
+// Deletes the backup sets of a PolarDB cluster.
+//
+// Description:
+//
+// Before you call this operation, make sure that the cluster meets the following requirements:
+//
+// 	- The cluster is in the Running state.
+//
+// 	- The backup sets are in the Success state.
+//
+// > 	- You can call the [DescribeBackups](https://help.aliyun.com/document_detail/98102.html) operation to query the status of backup sets.
+//
+// >	- After you delete the backup set file, the storage space that is occupied by the file is released. The released storage space is smaller than the size of the file because your snapshots share some data blocks
+//
+// @param request - DeleteBackupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteBackupResponse
 func (client *Client) DeleteBackupWithOptions(request *DeleteBackupRequest, runtime *util.RuntimeOptions) (_result *DeleteBackupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -27824,16 +35601,25 @@ func (client *Client) DeleteBackupWithOptions(request *DeleteBackupRequest, runt
 	return _result, _err
 }
 
-/**
- * Before you call this operation, make sure that the cluster meets the following requirements:
- * *   The cluster is in the Running state.
- * *   The backup sets are in the Success state.
- * > *   You can call the [DescribeBackups](~~98102~~) operation to query the status of backup sets.
- * >*   After you delete the backup set file, the storage space that is occupied by the file is released. The released storage space is smaller than the size of the file because your snapshots share some data blocks
- *
- * @param request DeleteBackupRequest
- * @return DeleteBackupResponse
- */
+// Summary:
+//
+// Deletes the backup sets of a PolarDB cluster.
+//
+// Description:
+//
+// Before you call this operation, make sure that the cluster meets the following requirements:
+//
+// 	- The cluster is in the Running state.
+//
+// 	- The backup sets are in the Success state.
+//
+// > 	- You can call the [DescribeBackups](https://help.aliyun.com/document_detail/98102.html) operation to query the status of backup sets.
+//
+// >	- After you delete the backup set file, the storage space that is occupied by the file is released. The released storage space is smaller than the size of the file because your snapshots share some data blocks
+//
+// @param request - DeleteBackupRequest
+//
+// @return DeleteBackupResponse
 func (client *Client) DeleteBackup(request *DeleteBackupRequest) (_result *DeleteBackupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteBackupResponse{}
@@ -27845,6 +35631,15 @@ func (client *Client) DeleteBackup(request *DeleteBackupRequest) (_result *Delet
 	return _result, _err
 }
 
+// Summary:
+//
+// Releases a pay-as-you-go PolarDB cluster.
+//
+// @param request - DeleteDBClusterRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteDBClusterResponse
 func (client *Client) DeleteDBClusterWithOptions(request *DeleteDBClusterRequest, runtime *util.RuntimeOptions) (_result *DeleteDBClusterResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -27898,6 +35693,13 @@ func (client *Client) DeleteDBClusterWithOptions(request *DeleteDBClusterRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// Releases a pay-as-you-go PolarDB cluster.
+//
+// @param request - DeleteDBClusterRequest
+//
+// @return DeleteDBClusterResponse
 func (client *Client) DeleteDBCluster(request *DeleteDBClusterRequest) (_result *DeleteDBClusterResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteDBClusterResponse{}
@@ -27909,6 +35711,15 @@ func (client *Client) DeleteDBCluster(request *DeleteDBClusterRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// Releases a custom cluster endpoint of a PolarDB cluster.
+//
+// @param request - DeleteDBClusterEndpointRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteDBClusterEndpointResponse
 func (client *Client) DeleteDBClusterEndpointWithOptions(request *DeleteDBClusterEndpointRequest, runtime *util.RuntimeOptions) (_result *DeleteDBClusterEndpointResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -27962,6 +35773,13 @@ func (client *Client) DeleteDBClusterEndpointWithOptions(request *DeleteDBCluste
 	return _result, _err
 }
 
+// Summary:
+//
+// Releases a custom cluster endpoint of a PolarDB cluster.
+//
+// @param request - DeleteDBClusterEndpointRequest
+//
+// @return DeleteDBClusterEndpointResponse
 func (client *Client) DeleteDBClusterEndpoint(request *DeleteDBClusterEndpointRequest) (_result *DeleteDBClusterEndpointResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteDBClusterEndpointResponse{}
@@ -27973,14 +35791,21 @@ func (client *Client) DeleteDBClusterEndpoint(request *DeleteDBClusterEndpointRe
 	return _result, _err
 }
 
-/**
- * > *   You can delete a public-facing or classic network endpoint of the primary endpoint, the default cluster endpoint, or a custom cluster endpoint.
- * > *   Classic network endpoints are supported only on the China site (aliyun.com). Therefore, you do not need to delete classic network endpoints on the International site (alibabacloud.com).
- *
- * @param request DeleteDBEndpointAddressRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DeleteDBEndpointAddressResponse
- */
+// Summary:
+//
+// Releases the public endpoints of a PolarDB cluster, including the primary endpoint, default cluster endpoint, and custom cluster endpoint.
+//
+// Description:
+//
+// > 	- You can delete a public-facing or classic network endpoint of the primary endpoint, the default cluster endpoint, or a custom cluster endpoint.
+//
+// > 	- Classic network endpoints are supported only on the China site (aliyun.com). Therefore, you do not need to delete classic network endpoints on the International site (alibabacloud.com).
+//
+// @param request - DeleteDBEndpointAddressRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteDBEndpointAddressResponse
 func (client *Client) DeleteDBEndpointAddressWithOptions(request *DeleteDBEndpointAddressRequest, runtime *util.RuntimeOptions) (_result *DeleteDBEndpointAddressResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -28038,13 +35863,19 @@ func (client *Client) DeleteDBEndpointAddressWithOptions(request *DeleteDBEndpoi
 	return _result, _err
 }
 
-/**
- * > *   You can delete a public-facing or classic network endpoint of the primary endpoint, the default cluster endpoint, or a custom cluster endpoint.
- * > *   Classic network endpoints are supported only on the China site (aliyun.com). Therefore, you do not need to delete classic network endpoints on the International site (alibabacloud.com).
- *
- * @param request DeleteDBEndpointAddressRequest
- * @return DeleteDBEndpointAddressResponse
- */
+// Summary:
+//
+// Releases the public endpoints of a PolarDB cluster, including the primary endpoint, default cluster endpoint, and custom cluster endpoint.
+//
+// Description:
+//
+// > 	- You can delete a public-facing or classic network endpoint of the primary endpoint, the default cluster endpoint, or a custom cluster endpoint.
+//
+// > 	- Classic network endpoints are supported only on the China site (aliyun.com). Therefore, you do not need to delete classic network endpoints on the International site (alibabacloud.com).
+//
+// @param request - DeleteDBEndpointAddressRequest
+//
+// @return DeleteDBEndpointAddressResponse
 func (client *Client) DeleteDBEndpointAddress(request *DeleteDBEndpointAddressRequest) (_result *DeleteDBEndpointAddressResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteDBEndpointAddressResponse{}
@@ -28056,6 +35887,15 @@ func (client *Client) DeleteDBEndpointAddress(request *DeleteDBEndpointAddressRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a database link from a PolarDB for PostgreSQL (Compatible with Oracle) cluster.
+//
+// @param request - DeleteDBLinkRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteDBLinkResponse
 func (client *Client) DeleteDBLinkWithOptions(request *DeleteDBLinkRequest, runtime *util.RuntimeOptions) (_result *DeleteDBLinkResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -28109,6 +35949,13 @@ func (client *Client) DeleteDBLinkWithOptions(request *DeleteDBLinkRequest, runt
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a database link from a PolarDB for PostgreSQL (Compatible with Oracle) cluster.
+//
+// @param request - DeleteDBLinkRequest
+//
+// @return DeleteDBLinkResponse
 func (client *Client) DeleteDBLink(request *DeleteDBLinkRequest) (_result *DeleteDBLinkResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteDBLinkResponse{}
@@ -28120,6 +35967,15 @@ func (client *Client) DeleteDBLink(request *DeleteDBLinkRequest) (_result *Delet
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a read-only node from a PolarDB cluster.
+//
+// @param request - DeleteDBNodesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteDBNodesResponse
 func (client *Client) DeleteDBNodesWithOptions(request *DeleteDBNodesRequest, runtime *util.RuntimeOptions) (_result *DeleteDBNodesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -28181,6 +36037,13 @@ func (client *Client) DeleteDBNodesWithOptions(request *DeleteDBNodesRequest, ru
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a read-only node from a PolarDB cluster.
+//
+// @param request - DeleteDBNodesRequest
+//
+// @return DeleteDBNodesResponse
 func (client *Client) DeleteDBNodes(request *DeleteDBNodesRequest) (_result *DeleteDBNodesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteDBNodesResponse{}
@@ -28192,14 +36055,21 @@ func (client *Client) DeleteDBNodes(request *DeleteDBNodesRequest) (_result *Del
 	return _result, _err
 }
 
-/**
- * >- The cluster must be in the Running state and unlocked. Otherwise, the specified database cannot be deleted.
- * >- The delete operation is performed in an asynchronous manner. A long period of time may be required to delete a large database. A success response for this operation only indicates that the request to delete the database is sent. You must query the database to check whether the database is deleted.
- *
- * @param request DeleteDatabaseRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DeleteDatabaseResponse
- */
+// Summary:
+//
+// Deletes a database from a PolarDB cluster.
+//
+// Description:
+//
+// >- The cluster must be in the Running state and unlocked. Otherwise, the specified database cannot be deleted.
+//
+// >- The delete operation is performed in an asynchronous manner. A long period of time may be required to delete a large database. A success response for this operation only indicates that the request to delete the database is sent. You must query the database to check whether the database is deleted.
+//
+// @param request - DeleteDatabaseRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteDatabaseResponse
 func (client *Client) DeleteDatabaseWithOptions(request *DeleteDatabaseRequest, runtime *util.RuntimeOptions) (_result *DeleteDatabaseResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -28253,13 +36123,19 @@ func (client *Client) DeleteDatabaseWithOptions(request *DeleteDatabaseRequest, 
 	return _result, _err
 }
 
-/**
- * >- The cluster must be in the Running state and unlocked. Otherwise, the specified database cannot be deleted.
- * >- The delete operation is performed in an asynchronous manner. A long period of time may be required to delete a large database. A success response for this operation only indicates that the request to delete the database is sent. You must query the database to check whether the database is deleted.
- *
- * @param request DeleteDatabaseRequest
- * @return DeleteDatabaseResponse
- */
+// Summary:
+//
+// Deletes a database from a PolarDB cluster.
+//
+// Description:
+//
+// >- The cluster must be in the Running state and unlocked. Otherwise, the specified database cannot be deleted.
+//
+// >- The delete operation is performed in an asynchronous manner. A long period of time may be required to delete a large database. A success response for this operation only indicates that the request to delete the database is sent. You must query the database to check whether the database is deleted.
+//
+// @param request - DeleteDatabaseRequest
+//
+// @return DeleteDatabaseResponse
 func (client *Client) DeleteDatabase(request *DeleteDatabaseRequest) (_result *DeleteDatabaseResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteDatabaseResponse{}
@@ -28271,13 +36147,19 @@ func (client *Client) DeleteDatabase(request *DeleteDatabaseRequest) (_result *D
 	return _result, _err
 }
 
-/**
- * >  You can delete a GDN only when the GDN includes only a primary cluster.
- *
- * @param request DeleteGlobalDatabaseNetworkRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DeleteGlobalDatabaseNetworkResponse
- */
+// Summary:
+//
+// Deletes a global database network (GDN).
+//
+// Description:
+//
+// >  You can delete a GDN only when the GDN includes only a primary cluster.
+//
+// @param request - DeleteGlobalDatabaseNetworkRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteGlobalDatabaseNetworkResponse
 func (client *Client) DeleteGlobalDatabaseNetworkWithOptions(request *DeleteGlobalDatabaseNetworkRequest, runtime *util.RuntimeOptions) (_result *DeleteGlobalDatabaseNetworkResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -28335,12 +36217,17 @@ func (client *Client) DeleteGlobalDatabaseNetworkWithOptions(request *DeleteGlob
 	return _result, _err
 }
 
-/**
- * >  You can delete a GDN only when the GDN includes only a primary cluster.
- *
- * @param request DeleteGlobalDatabaseNetworkRequest
- * @return DeleteGlobalDatabaseNetworkResponse
- */
+// Summary:
+//
+// Deletes a global database network (GDN).
+//
+// Description:
+//
+// >  You can delete a GDN only when the GDN includes only a primary cluster.
+//
+// @param request - DeleteGlobalDatabaseNetworkRequest
+//
+// @return DeleteGlobalDatabaseNetworkResponse
 func (client *Client) DeleteGlobalDatabaseNetwork(request *DeleteGlobalDatabaseNetworkRequest) (_result *DeleteGlobalDatabaseNetworkResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteGlobalDatabaseNetworkResponse{}
@@ -28352,6 +36239,15 @@ func (client *Client) DeleteGlobalDatabaseNetwork(request *DeleteGlobalDatabaseN
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a global IP whitelist template.
+//
+// @param request - DeleteGlobalSecurityIPGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteGlobalSecurityIPGroupResponse
 func (client *Client) DeleteGlobalSecurityIPGroupWithOptions(request *DeleteGlobalSecurityIPGroupRequest, runtime *util.RuntimeOptions) (_result *DeleteGlobalSecurityIPGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -28417,6 +36313,13 @@ func (client *Client) DeleteGlobalSecurityIPGroupWithOptions(request *DeleteGlob
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a global IP whitelist template.
+//
+// @param request - DeleteGlobalSecurityIPGroupRequest
+//
+// @return DeleteGlobalSecurityIPGroupResponse
 func (client *Client) DeleteGlobalSecurityIPGroup(request *DeleteGlobalSecurityIPGroupRequest) (_result *DeleteGlobalSecurityIPGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteGlobalSecurityIPGroupResponse{}
@@ -28428,6 +36331,15 @@ func (client *Client) DeleteGlobalSecurityIPGroup(request *DeleteGlobalSecurityI
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a data masking rule.
+//
+// @param request - DeleteMaskingRulesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteMaskingRulesResponse
 func (client *Client) DeleteMaskingRulesWithOptions(request *DeleteMaskingRulesRequest, runtime *util.RuntimeOptions) (_result *DeleteMaskingRulesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -28465,6 +36377,13 @@ func (client *Client) DeleteMaskingRulesWithOptions(request *DeleteMaskingRulesR
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a data masking rule.
+//
+// @param request - DeleteMaskingRulesRequest
+//
+// @return DeleteMaskingRulesResponse
 func (client *Client) DeleteMaskingRules(request *DeleteMaskingRulesRequest) (_result *DeleteMaskingRulesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteMaskingRulesResponse{}
@@ -28476,14 +36395,21 @@ func (client *Client) DeleteMaskingRules(request *DeleteMaskingRulesRequest) (_r
 	return _result, _err
 }
 
-/**
- * You can use parameter templates to manage multiple parameters at a time and quickly apply existing parameters to a PolarDB cluster. For more information, see [Use a parameter template](~~207009~~).
- * >  When you delete a parameter template, the parameter settings that are applied to PolarDB clusters are not affected.
- *
- * @param request DeleteParameterGroupRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DeleteParameterGroupResponse
- */
+// Summary:
+//
+// Deletes a parameter template of a PolarDB cluster.
+//
+// Description:
+//
+// You can use parameter templates to manage multiple parameters at a time and quickly apply existing parameters to a PolarDB cluster. For more information, see [Use a parameter template](https://help.aliyun.com/document_detail/207009.html).
+//
+// >  When you delete a parameter template, the parameter settings that are applied to PolarDB clusters are not affected.
+//
+// @param request - DeleteParameterGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteParameterGroupResponse
 func (client *Client) DeleteParameterGroupWithOptions(request *DeleteParameterGroupRequest, runtime *util.RuntimeOptions) (_result *DeleteParameterGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -28541,13 +36467,19 @@ func (client *Client) DeleteParameterGroupWithOptions(request *DeleteParameterGr
 	return _result, _err
 }
 
-/**
- * You can use parameter templates to manage multiple parameters at a time and quickly apply existing parameters to a PolarDB cluster. For more information, see [Use a parameter template](~~207009~~).
- * >  When you delete a parameter template, the parameter settings that are applied to PolarDB clusters are not affected.
- *
- * @param request DeleteParameterGroupRequest
- * @return DeleteParameterGroupResponse
- */
+// Summary:
+//
+// Deletes a parameter template of a PolarDB cluster.
+//
+// Description:
+//
+// You can use parameter templates to manage multiple parameters at a time and quickly apply existing parameters to a PolarDB cluster. For more information, see [Use a parameter template](https://help.aliyun.com/document_detail/207009.html).
+//
+// >  When you delete a parameter template, the parameter settings that are applied to PolarDB clusters are not affected.
+//
+// @param request - DeleteParameterGroupRequest
+//
+// @return DeleteParameterGroupResponse
 func (client *Client) DeleteParameterGroup(request *DeleteParameterGroupRequest) (_result *DeleteParameterGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteParameterGroupResponse{}
@@ -28559,6 +36491,15 @@ func (client *Client) DeleteParameterGroup(request *DeleteParameterGroupRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the state of the PolarDB for AI feature for a cluster.
+//
+// @param request - DescribeAITaskStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeAITaskStatusResponse
 func (client *Client) DescribeAITaskStatusWithOptions(request *DescribeAITaskStatusRequest, runtime *util.RuntimeOptions) (_result *DescribeAITaskStatusResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -28588,6 +36529,13 @@ func (client *Client) DescribeAITaskStatusWithOptions(request *DescribeAITaskSta
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the state of the PolarDB for AI feature for a cluster.
+//
+// @param request - DescribeAITaskStatusRequest
+//
+// @return DescribeAITaskStatusResponse
 func (client *Client) DescribeAITaskStatus(request *DescribeAITaskStatusRequest) (_result *DescribeAITaskStatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeAITaskStatusResponse{}
@@ -28599,6 +36547,15 @@ func (client *Client) DescribeAITaskStatus(request *DescribeAITaskStatusRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries information about a database account of a PolarDB cluster.
+//
+// @param request - DescribeAccountsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeAccountsResponse
 func (client *Client) DescribeAccountsWithOptions(request *DescribeAccountsRequest, runtime *util.RuntimeOptions) (_result *DescribeAccountsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -28660,6 +36617,13 @@ func (client *Client) DescribeAccountsWithOptions(request *DescribeAccountsReque
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries information about a database account of a PolarDB cluster.
+//
+// @param request - DescribeAccountsRequest
+//
+// @return DescribeAccountsResponse
 func (client *Client) DescribeAccounts(request *DescribeAccountsRequest) (_result *DescribeAccountsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeAccountsResponse{}
@@ -28671,6 +36635,15 @@ func (client *Client) DescribeAccounts(request *DescribeAccountsRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the auto-renewal attributes of a subscription PolarDB cluster.
+//
+// @param request - DescribeAutoRenewAttributeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeAutoRenewAttributeResponse
 func (client *Client) DescribeAutoRenewAttributeWithOptions(request *DescribeAutoRenewAttributeRequest, runtime *util.RuntimeOptions) (_result *DescribeAutoRenewAttributeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -28736,6 +36709,13 @@ func (client *Client) DescribeAutoRenewAttributeWithOptions(request *DescribeAut
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the auto-renewal attributes of a subscription PolarDB cluster.
+//
+// @param request - DescribeAutoRenewAttributeRequest
+//
+// @return DescribeAutoRenewAttributeResponse
 func (client *Client) DescribeAutoRenewAttribute(request *DescribeAutoRenewAttributeRequest) (_result *DescribeAutoRenewAttributeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeAutoRenewAttributeResponse{}
@@ -28747,6 +36727,15 @@ func (client *Client) DescribeAutoRenewAttribute(request *DescribeAutoRenewAttri
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries backup logs and the URLs to download the backup logs.
+//
+// @param request - DescribeBackupLogsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeBackupLogsResponse
 func (client *Client) DescribeBackupLogsWithOptions(request *DescribeBackupLogsRequest, runtime *util.RuntimeOptions) (_result *DescribeBackupLogsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -28816,6 +36805,13 @@ func (client *Client) DescribeBackupLogsWithOptions(request *DescribeBackupLogsR
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries backup logs and the URLs to download the backup logs.
+//
+// @param request - DescribeBackupLogsRequest
+//
+// @return DescribeBackupLogsResponse
 func (client *Client) DescribeBackupLogs(request *DescribeBackupLogsRequest) (_result *DescribeBackupLogsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeBackupLogsResponse{}
@@ -28827,6 +36823,15 @@ func (client *Client) DescribeBackupLogs(request *DescribeBackupLogsRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the automatic backup policy of a PolarDB cluster.
+//
+// @param request - DescribeBackupPolicyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeBackupPolicyResponse
 func (client *Client) DescribeBackupPolicyWithOptions(request *DescribeBackupPolicyRequest, runtime *util.RuntimeOptions) (_result *DescribeBackupPolicyResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -28876,6 +36881,13 @@ func (client *Client) DescribeBackupPolicyWithOptions(request *DescribeBackupPol
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the automatic backup policy of a PolarDB cluster.
+//
+// @param request - DescribeBackupPolicyRequest
+//
+// @return DescribeBackupPolicyResponse
 func (client *Client) DescribeBackupPolicy(request *DescribeBackupPolicyRequest) (_result *DescribeBackupPolicyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeBackupPolicyResponse{}
@@ -28887,6 +36899,15 @@ func (client *Client) DescribeBackupPolicy(request *DescribeBackupPolicyRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the backup tasks of a PolarDB cluster.
+//
+// @param request - DescribeBackupTasksRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeBackupTasksResponse
 func (client *Client) DescribeBackupTasksWithOptions(request *DescribeBackupTasksRequest, runtime *util.RuntimeOptions) (_result *DescribeBackupTasksResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -28944,6 +36965,13 @@ func (client *Client) DescribeBackupTasksWithOptions(request *DescribeBackupTask
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the backup tasks of a PolarDB cluster.
+//
+// @param request - DescribeBackupTasksRequest
+//
+// @return DescribeBackupTasksResponse
 func (client *Client) DescribeBackupTasks(request *DescribeBackupTasksRequest) (_result *DescribeBackupTasksResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeBackupTasksResponse{}
@@ -28955,6 +36983,15 @@ func (client *Client) DescribeBackupTasks(request *DescribeBackupTasksRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the backup details of a PolarDB cluster.
+//
+// @param request - DescribeBackupsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeBackupsResponse
 func (client *Client) DescribeBackupsWithOptions(request *DescribeBackupsRequest, runtime *util.RuntimeOptions) (_result *DescribeBackupsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -29036,6 +37073,13 @@ func (client *Client) DescribeBackupsWithOptions(request *DescribeBackupsRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the backup details of a PolarDB cluster.
+//
+// @param request - DescribeBackupsRequest
+//
+// @return DescribeBackupsResponse
 func (client *Client) DescribeBackups(request *DescribeBackupsRequest) (_result *DescribeBackupsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeBackupsResponse{}
@@ -29047,6 +37091,15 @@ func (client *Client) DescribeBackups(request *DescribeBackupsRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries character sets that are supported by a PolarDB for MySQL cluster.
+//
+// @param request - DescribeCharacterSetNameRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeCharacterSetNameResponse
 func (client *Client) DescribeCharacterSetNameWithOptions(request *DescribeCharacterSetNameRequest, runtime *util.RuntimeOptions) (_result *DescribeCharacterSetNameResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -29100,6 +37153,13 @@ func (client *Client) DescribeCharacterSetNameWithOptions(request *DescribeChara
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries character sets that are supported by a PolarDB for MySQL cluster.
+//
+// @param request - DescribeCharacterSetNameRequest
+//
+// @return DescribeCharacterSetNameResponse
 func (client *Client) DescribeCharacterSetName(request *DescribeCharacterSetNameRequest) (_result *DescribeCharacterSetNameResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeCharacterSetNameResponse{}
@@ -29111,6 +37171,15 @@ func (client *Client) DescribeCharacterSetName(request *DescribeCharacterSetName
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the specifications of a cluster.
+//
+// @param request - DescribeClassListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeClassListResponse
 func (client *Client) DescribeClassListWithOptions(request *DescribeClassListRequest, runtime *util.RuntimeOptions) (_result *DescribeClassListResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -29176,6 +37245,13 @@ func (client *Client) DescribeClassListWithOptions(request *DescribeClassListReq
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the specifications of a cluster.
+//
+// @param request - DescribeClassListRequest
+//
+// @return DescribeClassListResponse
 func (client *Client) DescribeClassList(request *DescribeClassListRequest) (_result *DescribeClassListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeClassListResponse{}
@@ -29187,6 +37263,15 @@ func (client *Client) DescribeClassList(request *DescribeClassListRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the IP address whitelists and security groups of a PolarDB cluster.
+//
+// @param request - DescribeDBClusterAccessWhitelistRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDBClusterAccessWhitelistResponse
 func (client *Client) DescribeDBClusterAccessWhitelistWithOptions(request *DescribeDBClusterAccessWhitelistRequest, runtime *util.RuntimeOptions) (_result *DescribeDBClusterAccessWhitelistResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -29236,6 +37321,13 @@ func (client *Client) DescribeDBClusterAccessWhitelistWithOptions(request *Descr
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the IP address whitelists and security groups of a PolarDB cluster.
+//
+// @param request - DescribeDBClusterAccessWhitelistRequest
+//
+// @return DescribeDBClusterAccessWhitelistResponse
 func (client *Client) DescribeDBClusterAccessWhitelist(request *DescribeDBClusterAccessWhitelistRequest) (_result *DescribeDBClusterAccessWhitelistResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDBClusterAccessWhitelistResponse{}
@@ -29247,6 +37339,15 @@ func (client *Client) DescribeDBClusterAccessWhitelist(request *DescribeDBCluste
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries information about a PolarDB cluster.
+//
+// @param request - DescribeDBClusterAttributeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDBClusterAttributeResponse
 func (client *Client) DescribeDBClusterAttributeWithOptions(request *DescribeDBClusterAttributeRequest, runtime *util.RuntimeOptions) (_result *DescribeDBClusterAttributeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -29300,6 +37401,13 @@ func (client *Client) DescribeDBClusterAttributeWithOptions(request *DescribeDBC
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries information about a PolarDB cluster.
+//
+// @param request - DescribeDBClusterAttributeRequest
+//
+// @return DescribeDBClusterAttributeResponse
 func (client *Client) DescribeDBClusterAttribute(request *DescribeDBClusterAttributeRequest) (_result *DescribeDBClusterAttributeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDBClusterAttributeResponse{}
@@ -29311,6 +37419,15 @@ func (client *Client) DescribeDBClusterAttribute(request *DescribeDBClusterAttri
 	return _result, _err
 }
 
+// Summary:
+//
+// Describe SQL collector for a PolarDB cluster. Features related to SQL collector include audit log and SQL Explorer.
+//
+// @param request - DescribeDBClusterAuditLogCollectorRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDBClusterAuditLogCollectorResponse
 func (client *Client) DescribeDBClusterAuditLogCollectorWithOptions(request *DescribeDBClusterAuditLogCollectorRequest, runtime *util.RuntimeOptions) (_result *DescribeDBClusterAuditLogCollectorResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -29360,6 +37477,13 @@ func (client *Client) DescribeDBClusterAuditLogCollectorWithOptions(request *Des
 	return _result, _err
 }
 
+// Summary:
+//
+// Describe SQL collector for a PolarDB cluster. Features related to SQL collector include audit log and SQL Explorer.
+//
+// @param request - DescribeDBClusterAuditLogCollectorRequest
+//
+// @return DescribeDBClusterAuditLogCollectorResponse
 func (client *Client) DescribeDBClusterAuditLogCollector(request *DescribeDBClusterAuditLogCollectorRequest) (_result *DescribeDBClusterAuditLogCollectorResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDBClusterAuditLogCollectorResponse{}
@@ -29371,6 +37495,15 @@ func (client *Client) DescribeDBClusterAuditLogCollector(request *DescribeDBClus
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries available resources in a PolarDB cluster.
+//
+// @param request - DescribeDBClusterAvailableResourcesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDBClusterAvailableResourcesResponse
 func (client *Client) DescribeDBClusterAvailableResourcesWithOptions(request *DescribeDBClusterAvailableResourcesRequest, runtime *util.RuntimeOptions) (_result *DescribeDBClusterAvailableResourcesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -29440,6 +37573,13 @@ func (client *Client) DescribeDBClusterAvailableResourcesWithOptions(request *De
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries available resources in a PolarDB cluster.
+//
+// @param request - DescribeDBClusterAvailableResourcesRequest
+//
+// @return DescribeDBClusterAvailableResourcesResponse
 func (client *Client) DescribeDBClusterAvailableResources(request *DescribeDBClusterAvailableResourcesRequest) (_result *DescribeDBClusterAvailableResourcesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDBClusterAvailableResourcesResponse{}
@@ -29451,6 +37591,15 @@ func (client *Client) DescribeDBClusterAvailableResources(request *DescribeDBClu
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries whether the source IP address can access a cluster.
+//
+// @param request - DescribeDBClusterConnectivityRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDBClusterConnectivityResponse
 func (client *Client) DescribeDBClusterConnectivityWithOptions(request *DescribeDBClusterConnectivityRequest, runtime *util.RuntimeOptions) (_result *DescribeDBClusterConnectivityResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -29512,6 +37661,13 @@ func (client *Client) DescribeDBClusterConnectivityWithOptions(request *Describe
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries whether the source IP address can access a cluster.
+//
+// @param request - DescribeDBClusterConnectivityRequest
+//
+// @return DescribeDBClusterConnectivityResponse
 func (client *Client) DescribeDBClusterConnectivity(request *DescribeDBClusterConnectivityRequest) (_result *DescribeDBClusterConnectivityResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDBClusterConnectivityResponse{}
@@ -29523,6 +37679,15 @@ func (client *Client) DescribeDBClusterConnectivity(request *DescribeDBClusterCo
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the endpoints of a PolarDB cluster.
+//
+// @param request - DescribeDBClusterEndpointsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDBClusterEndpointsResponse
 func (client *Client) DescribeDBClusterEndpointsWithOptions(request *DescribeDBClusterEndpointsRequest, runtime *util.RuntimeOptions) (_result *DescribeDBClusterEndpointsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -29580,6 +37745,13 @@ func (client *Client) DescribeDBClusterEndpointsWithOptions(request *DescribeDBC
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the endpoints of a PolarDB cluster.
+//
+// @param request - DescribeDBClusterEndpointsRequest
+//
+// @return DescribeDBClusterEndpointsResponse
 func (client *Client) DescribeDBClusterEndpoints(request *DescribeDBClusterEndpointsRequest) (_result *DescribeDBClusterEndpointsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDBClusterEndpointsResponse{}
@@ -29591,14 +37763,21 @@ func (client *Client) DescribeDBClusterEndpoints(request *DescribeDBClusterEndpo
 	return _result, _err
 }
 
-/**
- * *   You can call this operation to query the status of data migration from an ApsaraDB RDS instance to a PolarDB cluster. For more information, see [Upgrade ApsaraDB RDS for MySQL to PolarDB for MySQL with one click](~~121582~~).
- * *   Before you call this operation, make sure that a one-click upgrade task has been created for the cluster. You can call the [CreateDBCluster](~~98169~~) operation to create an upgrade task. Set the **CreationOption** parameter to **MigrationFromRDS**.
- *
- * @param request DescribeDBClusterMigrationRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DescribeDBClusterMigrationResponse
- */
+// Summary:
+//
+// Queries the migration status of PolarDB clusters.
+//
+// Description:
+//
+//   You can call this operation to query the status of data migration from an ApsaraDB RDS instance to a PolarDB cluster. For more information, see [Upgrade ApsaraDB RDS for MySQL to PolarDB for MySQL with one click](https://help.aliyun.com/document_detail/121582.html).
+//
+// 	- Before you call this operation, make sure that a one-click upgrade task has been created for the cluster. You can call the [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) operation to create an upgrade task. Set the **CreationOption*	- parameter to **MigrationFromRDS**.
+//
+// @param request - DescribeDBClusterMigrationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDBClusterMigrationResponse
 func (client *Client) DescribeDBClusterMigrationWithOptions(request *DescribeDBClusterMigrationRequest, runtime *util.RuntimeOptions) (_result *DescribeDBClusterMigrationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -29648,13 +37827,19 @@ func (client *Client) DescribeDBClusterMigrationWithOptions(request *DescribeDBC
 	return _result, _err
 }
 
-/**
- * *   You can call this operation to query the status of data migration from an ApsaraDB RDS instance to a PolarDB cluster. For more information, see [Upgrade ApsaraDB RDS for MySQL to PolarDB for MySQL with one click](~~121582~~).
- * *   Before you call this operation, make sure that a one-click upgrade task has been created for the cluster. You can call the [CreateDBCluster](~~98169~~) operation to create an upgrade task. Set the **CreationOption** parameter to **MigrationFromRDS**.
- *
- * @param request DescribeDBClusterMigrationRequest
- * @return DescribeDBClusterMigrationResponse
- */
+// Summary:
+//
+// Queries the migration status of PolarDB clusters.
+//
+// Description:
+//
+//   You can call this operation to query the status of data migration from an ApsaraDB RDS instance to a PolarDB cluster. For more information, see [Upgrade ApsaraDB RDS for MySQL to PolarDB for MySQL with one click](https://help.aliyun.com/document_detail/121582.html).
+//
+// 	- Before you call this operation, make sure that a one-click upgrade task has been created for the cluster. You can call the [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) operation to create an upgrade task. Set the **CreationOption*	- parameter to **MigrationFromRDS**.
+//
+// @param request - DescribeDBClusterMigrationRequest
+//
+// @return DescribeDBClusterMigrationResponse
 func (client *Client) DescribeDBClusterMigration(request *DescribeDBClusterMigrationRequest) (_result *DescribeDBClusterMigrationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDBClusterMigrationResponse{}
@@ -29666,6 +37851,15 @@ func (client *Client) DescribeDBClusterMigration(request *DescribeDBClusterMigra
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the interval at which the monitoring data of a PolarDB cluster is collected.
+//
+// @param request - DescribeDBClusterMonitorRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDBClusterMonitorResponse
 func (client *Client) DescribeDBClusterMonitorWithOptions(request *DescribeDBClusterMonitorRequest, runtime *util.RuntimeOptions) (_result *DescribeDBClusterMonitorResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -29715,6 +37909,13 @@ func (client *Client) DescribeDBClusterMonitorWithOptions(request *DescribeDBClu
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the interval at which the monitoring data of a PolarDB cluster is collected.
+//
+// @param request - DescribeDBClusterMonitorRequest
+//
+// @return DescribeDBClusterMonitorResponse
 func (client *Client) DescribeDBClusterMonitor(request *DescribeDBClusterMonitorRequest) (_result *DescribeDBClusterMonitorResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDBClusterMonitorResponse{}
@@ -29726,6 +37927,15 @@ func (client *Client) DescribeDBClusterMonitor(request *DescribeDBClusterMonitor
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the parameters of a PolarDB cluster.
+//
+// @param request - DescribeDBClusterParametersRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDBClusterParametersResponse
 func (client *Client) DescribeDBClusterParametersWithOptions(request *DescribeDBClusterParametersRequest, runtime *util.RuntimeOptions) (_result *DescribeDBClusterParametersResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -29779,6 +37989,13 @@ func (client *Client) DescribeDBClusterParametersWithOptions(request *DescribeDB
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the parameters of a PolarDB cluster.
+//
+// @param request - DescribeDBClusterParametersRequest
+//
+// @return DescribeDBClusterParametersResponse
 func (client *Client) DescribeDBClusterParameters(request *DescribeDBClusterParametersRequest) (_result *DescribeDBClusterParametersResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDBClusterParametersResponse{}
@@ -29790,24 +38007,41 @@ func (client *Client) DescribeDBClusterParameters(request *DescribeDBClusterPara
 	return _result, _err
 }
 
-/**
- * *   When the monitoring data is collected every 5 seconds:
- *     *   If the query time range is less than or equal to 1 hour, the data is displayed at intervals of 5 seconds.
- *     *   If the query time range is less than or equal to one day, the data is displayed at intervals of 1 minute.
- *     *   If the query time range is less than or equal to seven days, the data is displayed at intervals of 10 minutes.
- *     *   If the query time range is less than or equal to 30 days, the data is displayed at intervals of 1 hour.
- *     *   When the query time range is greater than 30 days, the data is displayed at intervals of 1 day.
- * *   When the monitoring data is collected every 60 seconds:
- *     *   If the query time range is less than or equal to one day, the data is displayed at intervals of 1 minute.
- *     *   If the query time range is less than or equal to seven days, the data is displayed at intervals of 10 minutes.
- *     *   If the query time range is less than or equal to 30 days, the data is displayed at intervals of 1 hour.
- *     *   When the query time range is greater than 30 days, the data is displayed at intervals of 1 day.
- * >  By default, the monitoring data is collected once every 60 seconds. You can call the [ModifyDBClusterMonitor](~~159557~~) operation to set the data collection interval to every 5 seconds.
- *
- * @param request DescribeDBClusterPerformanceRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DescribeDBClusterPerformanceResponse
- */
+// Summary:
+//
+// Queries the performance data of a PolarDB cluster.
+//
+// Description:
+//
+//   When the monitoring data is collected every 5 seconds:
+//
+//     	- If the query time range is less than or equal to 1 hour, the data is displayed at intervals of 5 seconds.
+//
+//     	- If the query time range is less than or equal to one day, the data is displayed at intervals of 1 minute.
+//
+//     	- If the query time range is less than or equal to seven days, the data is displayed at intervals of 10 minutes.
+//
+//     	- If the query time range is less than or equal to 30 days, the data is displayed at intervals of 1 hour.
+//
+//     	- When the query time range is greater than 30 days, the data is displayed at intervals of 1 day.
+//
+// 	- When the monitoring data is collected every 60 seconds:
+//
+//     	- If the query time range is less than or equal to one day, the data is displayed at intervals of 1 minute.
+//
+//     	- If the query time range is less than or equal to seven days, the data is displayed at intervals of 10 minutes.
+//
+//     	- If the query time range is less than or equal to 30 days, the data is displayed at intervals of 1 hour.
+//
+//     	- When the query time range is greater than 30 days, the data is displayed at intervals of 1 day.
+//
+// >  By default, the monitoring data is collected once every 60 seconds. You can call the [ModifyDBClusterMonitor](https://help.aliyun.com/document_detail/159557.html) operation to set the data collection interval to every 5 seconds.
+//
+// @param request - DescribeDBClusterPerformanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDBClusterPerformanceResponse
 func (client *Client) DescribeDBClusterPerformanceWithOptions(request *DescribeDBClusterPerformanceRequest, runtime *util.RuntimeOptions) (_result *DescribeDBClusterPerformanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -29857,23 +38091,39 @@ func (client *Client) DescribeDBClusterPerformanceWithOptions(request *DescribeD
 	return _result, _err
 }
 
-/**
- * *   When the monitoring data is collected every 5 seconds:
- *     *   If the query time range is less than or equal to 1 hour, the data is displayed at intervals of 5 seconds.
- *     *   If the query time range is less than or equal to one day, the data is displayed at intervals of 1 minute.
- *     *   If the query time range is less than or equal to seven days, the data is displayed at intervals of 10 minutes.
- *     *   If the query time range is less than or equal to 30 days, the data is displayed at intervals of 1 hour.
- *     *   When the query time range is greater than 30 days, the data is displayed at intervals of 1 day.
- * *   When the monitoring data is collected every 60 seconds:
- *     *   If the query time range is less than or equal to one day, the data is displayed at intervals of 1 minute.
- *     *   If the query time range is less than or equal to seven days, the data is displayed at intervals of 10 minutes.
- *     *   If the query time range is less than or equal to 30 days, the data is displayed at intervals of 1 hour.
- *     *   When the query time range is greater than 30 days, the data is displayed at intervals of 1 day.
- * >  By default, the monitoring data is collected once every 60 seconds. You can call the [ModifyDBClusterMonitor](~~159557~~) operation to set the data collection interval to every 5 seconds.
- *
- * @param request DescribeDBClusterPerformanceRequest
- * @return DescribeDBClusterPerformanceResponse
- */
+// Summary:
+//
+// Queries the performance data of a PolarDB cluster.
+//
+// Description:
+//
+//   When the monitoring data is collected every 5 seconds:
+//
+//     	- If the query time range is less than or equal to 1 hour, the data is displayed at intervals of 5 seconds.
+//
+//     	- If the query time range is less than or equal to one day, the data is displayed at intervals of 1 minute.
+//
+//     	- If the query time range is less than or equal to seven days, the data is displayed at intervals of 10 minutes.
+//
+//     	- If the query time range is less than or equal to 30 days, the data is displayed at intervals of 1 hour.
+//
+//     	- When the query time range is greater than 30 days, the data is displayed at intervals of 1 day.
+//
+// 	- When the monitoring data is collected every 60 seconds:
+//
+//     	- If the query time range is less than or equal to one day, the data is displayed at intervals of 1 minute.
+//
+//     	- If the query time range is less than or equal to seven days, the data is displayed at intervals of 10 minutes.
+//
+//     	- If the query time range is less than or equal to 30 days, the data is displayed at intervals of 1 hour.
+//
+//     	- When the query time range is greater than 30 days, the data is displayed at intervals of 1 day.
+//
+// >  By default, the monitoring data is collected once every 60 seconds. You can call the [ModifyDBClusterMonitor](https://help.aliyun.com/document_detail/159557.html) operation to set the data collection interval to every 5 seconds.
+//
+// @param request - DescribeDBClusterPerformanceRequest
+//
+// @return DescribeDBClusterPerformanceResponse
 func (client *Client) DescribeDBClusterPerformance(request *DescribeDBClusterPerformanceRequest) (_result *DescribeDBClusterPerformanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDBClusterPerformanceResponse{}
@@ -29885,6 +38135,15 @@ func (client *Client) DescribeDBClusterPerformance(request *DescribeDBClusterPer
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the Secure Sockets Layer (SSL) settings of a PolarDB cluster.
+//
+// @param request - DescribeDBClusterSSLRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDBClusterSSLResponse
 func (client *Client) DescribeDBClusterSSLWithOptions(request *DescribeDBClusterSSLRequest, runtime *util.RuntimeOptions) (_result *DescribeDBClusterSSLResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -29934,6 +38193,13 @@ func (client *Client) DescribeDBClusterSSLWithOptions(request *DescribeDBCluster
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the Secure Sockets Layer (SSL) settings of a PolarDB cluster.
+//
+// @param request - DescribeDBClusterSSLRequest
+//
+// @return DescribeDBClusterSSLResponse
 func (client *Client) DescribeDBClusterSSL(request *DescribeDBClusterSSLRequest) (_result *DescribeDBClusterSSLResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDBClusterSSLResponse{}
@@ -29945,6 +38211,15 @@ func (client *Client) DescribeDBClusterSSL(request *DescribeDBClusterSSLRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the configurations of a serverless cluster.
+//
+// @param request - DescribeDBClusterServerlessConfRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDBClusterServerlessConfResponse
 func (client *Client) DescribeDBClusterServerlessConfWithOptions(request *DescribeDBClusterServerlessConfRequest, runtime *util.RuntimeOptions) (_result *DescribeDBClusterServerlessConfResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -29994,6 +38269,13 @@ func (client *Client) DescribeDBClusterServerlessConfWithOptions(request *Descri
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the configurations of a serverless cluster.
+//
+// @param request - DescribeDBClusterServerlessConfRequest
+//
+// @return DescribeDBClusterServerlessConfResponse
 func (client *Client) DescribeDBClusterServerlessConf(request *DescribeDBClusterServerlessConfRequest) (_result *DescribeDBClusterServerlessConfResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDBClusterServerlessConfResponse{}
@@ -30005,6 +38287,15 @@ func (client *Client) DescribeDBClusterServerlessConf(request *DescribeDBCluster
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the Transparent Data Encryption (TDE) settings of a PolarDB for MySQL cluster.
+//
+// @param request - DescribeDBClusterTDERequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDBClusterTDEResponse
 func (client *Client) DescribeDBClusterTDEWithOptions(request *DescribeDBClusterTDERequest, runtime *util.RuntimeOptions) (_result *DescribeDBClusterTDEResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -30054,6 +38345,13 @@ func (client *Client) DescribeDBClusterTDEWithOptions(request *DescribeDBCluster
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the Transparent Data Encryption (TDE) settings of a PolarDB for MySQL cluster.
+//
+// @param request - DescribeDBClusterTDERequest
+//
+// @return DescribeDBClusterTDEResponse
 func (client *Client) DescribeDBClusterTDE(request *DescribeDBClusterTDERequest) (_result *DescribeDBClusterTDEResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDBClusterTDEResponse{}
@@ -30065,6 +38363,15 @@ func (client *Client) DescribeDBClusterTDE(request *DescribeDBClusterTDERequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about the database engine version of a PolarDB for MySQL cluster.
+//
+// @param request - DescribeDBClusterVersionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDBClusterVersionResponse
 func (client *Client) DescribeDBClusterVersionWithOptions(request *DescribeDBClusterVersionRequest, runtime *util.RuntimeOptions) (_result *DescribeDBClusterVersionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -30118,6 +38425,13 @@ func (client *Client) DescribeDBClusterVersionWithOptions(request *DescribeDBClu
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about the database engine version of a PolarDB for MySQL cluster.
+//
+// @param request - DescribeDBClusterVersionRequest
+//
+// @return DescribeDBClusterVersionResponse
 func (client *Client) DescribeDBClusterVersion(request *DescribeDBClusterVersionRequest) (_result *DescribeDBClusterVersionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDBClusterVersionResponse{}
@@ -30129,6 +38443,15 @@ func (client *Client) DescribeDBClusterVersion(request *DescribeDBClusterVersion
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries PolarDB clusters or the clusters that can be accessed by an authorized RAM user.
+//
+// @param request - DescribeDBClustersRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDBClustersResponse
 func (client *Client) DescribeDBClustersWithOptions(request *DescribeDBClustersRequest, runtime *util.RuntimeOptions) (_result *DescribeDBClustersResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -30242,6 +38565,13 @@ func (client *Client) DescribeDBClustersWithOptions(request *DescribeDBClustersR
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries PolarDB clusters or the clusters that can be accessed by an authorized RAM user.
+//
+// @param request - DescribeDBClustersRequest
+//
+// @return DescribeDBClustersResponse
 func (client *Client) DescribeDBClusters(request *DescribeDBClustersRequest) (_result *DescribeDBClustersResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDBClustersResponse{}
@@ -30253,6 +38583,15 @@ func (client *Client) DescribeDBClusters(request *DescribeDBClustersRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about PolarDB clusters that contain backup sets in a region.
+//
+// @param request - DescribeDBClustersWithBackupsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDBClustersWithBackupsResponse
 func (client *Client) DescribeDBClustersWithBackupsWithOptions(request *DescribeDBClustersWithBackupsRequest, runtime *util.RuntimeOptions) (_result *DescribeDBClustersWithBackupsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -30334,6 +38673,13 @@ func (client *Client) DescribeDBClustersWithBackupsWithOptions(request *Describe
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about PolarDB clusters that contain backup sets in a region.
+//
+// @param request - DescribeDBClustersWithBackupsRequest
+//
+// @return DescribeDBClustersWithBackupsResponse
 func (client *Client) DescribeDBClustersWithBackups(request *DescribeDBClustersWithBackupsRequest) (_result *DescribeDBClustersWithBackupsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDBClustersWithBackupsResponse{}
@@ -30345,6 +38691,15 @@ func (client *Client) DescribeDBClustersWithBackups(request *DescribeDBClustersW
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the attributes that are supported by a PolarDB for PostgreSQL (Compatible with Oracle) cluster or a PolarDB for PostgreSQL cluster, such as the character sets and collations.
+//
+// @param request - DescribeDBInitializeVariableRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDBInitializeVariableResponse
 func (client *Client) DescribeDBInitializeVariableWithOptions(request *DescribeDBInitializeVariableRequest, runtime *util.RuntimeOptions) (_result *DescribeDBInitializeVariableResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -30394,6 +38749,13 @@ func (client *Client) DescribeDBInitializeVariableWithOptions(request *DescribeD
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the attributes that are supported by a PolarDB for PostgreSQL (Compatible with Oracle) cluster or a PolarDB for PostgreSQL cluster, such as the character sets and collations.
+//
+// @param request - DescribeDBInitializeVariableRequest
+//
+// @return DescribeDBInitializeVariableResponse
 func (client *Client) DescribeDBInitializeVariable(request *DescribeDBInitializeVariableRequest) (_result *DescribeDBInitializeVariableResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDBInitializeVariableResponse{}
@@ -30405,13 +38767,19 @@ func (client *Client) DescribeDBInitializeVariable(request *DescribeDBInitialize
 	return _result, _err
 }
 
-/**
- * > You can query only the database links that use a PolarDB for Oracle cluster as the source.
- *
- * @param request DescribeDBLinksRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DescribeDBLinksResponse
- */
+// Summary:
+//
+// Queries the database links of a PolarDB for PostgreSQL (Compatible with Oracle) cluster.
+//
+// Description:
+//
+// > You can query only the database links that use a PolarDB for Oracle cluster as the source.
+//
+// @param request - DescribeDBLinksRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDBLinksResponse
 func (client *Client) DescribeDBLinksWithOptions(request *DescribeDBLinksRequest, runtime *util.RuntimeOptions) (_result *DescribeDBLinksResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -30465,12 +38833,17 @@ func (client *Client) DescribeDBLinksWithOptions(request *DescribeDBLinksRequest
 	return _result, _err
 }
 
-/**
- * > You can query only the database links that use a PolarDB for Oracle cluster as the source.
- *
- * @param request DescribeDBLinksRequest
- * @return DescribeDBLinksResponse
- */
+// Summary:
+//
+// Queries the database links of a PolarDB for PostgreSQL (Compatible with Oracle) cluster.
+//
+// Description:
+//
+// > You can query only the database links that use a PolarDB for Oracle cluster as the source.
+//
+// @param request - DescribeDBLinksRequest
+//
+// @return DescribeDBLinksResponse
 func (client *Client) DescribeDBLinks(request *DescribeDBLinksRequest) (_result *DescribeDBLinksResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDBLinksResponse{}
@@ -30482,24 +38855,41 @@ func (client *Client) DescribeDBLinks(request *DescribeDBLinksRequest) (_result 
 	return _result, _err
 }
 
-/**
- * *   When the monitoring data is collected every 5 seconds:
- *     *   If the query time range is less than or equal to 1 hour, the data is displayed at intervals of 5 seconds.
- *     *   If the query time range is less than or equal to one day, the data is displayed at intervals of 1 minute.
- *     *   If the query time range is less than or equal to seven days, the data is displayed at intervals of 10 minutes.
- *     *   If the query time range is less than or equal to 30 days, the data is displayed at intervals of 1 hour.
- *     *   When the query time range is greater than 30 days, the data is displayed at intervals of 1 day.
- * *   When the monitoring data is collected every 60 seconds:
- *     *   If the query time range is less than or equal to one day, the data is displayed at intervals of 1 minute.
- *     *   If the query time range is less than or equal to seven days, the data is displayed at intervals of 10 minutes.
- *     *   If the query time range is less than or equal to 30 days, the data is displayed at intervals of 1 hour.
- *     *   When the query time range is greater than 30 days, the data is displayed at intervals of 1 day.
- * >  By default, the monitoring data is collected once every 60 seconds. You can call the [ModifyDBClusterMonitor](~~159557~~) operation to set the data collection interval to every 5 seconds.
- *
- * @param request DescribeDBNodePerformanceRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DescribeDBNodePerformanceResponse
- */
+// Summary:
+//
+// Queries the performance data of a node in a PolarDB cluster.
+//
+// Description:
+//
+//   When the monitoring data is collected every 5 seconds:
+//
+//     	- If the query time range is less than or equal to 1 hour, the data is displayed at intervals of 5 seconds.
+//
+//     	- If the query time range is less than or equal to one day, the data is displayed at intervals of 1 minute.
+//
+//     	- If the query time range is less than or equal to seven days, the data is displayed at intervals of 10 minutes.
+//
+//     	- If the query time range is less than or equal to 30 days, the data is displayed at intervals of 1 hour.
+//
+//     	- When the query time range is greater than 30 days, the data is displayed at intervals of 1 day.
+//
+// 	- When the monitoring data is collected every 60 seconds:
+//
+//     	- If the query time range is less than or equal to one day, the data is displayed at intervals of 1 minute.
+//
+//     	- If the query time range is less than or equal to seven days, the data is displayed at intervals of 10 minutes.
+//
+//     	- If the query time range is less than or equal to 30 days, the data is displayed at intervals of 1 hour.
+//
+//     	- When the query time range is greater than 30 days, the data is displayed at intervals of 1 day.
+//
+// >  By default, the monitoring data is collected once every 60 seconds. You can call the [ModifyDBClusterMonitor](https://help.aliyun.com/document_detail/159557.html) operation to set the data collection interval to every 5 seconds.
+//
+// @param request - DescribeDBNodePerformanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDBNodePerformanceResponse
 func (client *Client) DescribeDBNodePerformanceWithOptions(request *DescribeDBNodePerformanceRequest, runtime *util.RuntimeOptions) (_result *DescribeDBNodePerformanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -30557,23 +38947,39 @@ func (client *Client) DescribeDBNodePerformanceWithOptions(request *DescribeDBNo
 	return _result, _err
 }
 
-/**
- * *   When the monitoring data is collected every 5 seconds:
- *     *   If the query time range is less than or equal to 1 hour, the data is displayed at intervals of 5 seconds.
- *     *   If the query time range is less than or equal to one day, the data is displayed at intervals of 1 minute.
- *     *   If the query time range is less than or equal to seven days, the data is displayed at intervals of 10 minutes.
- *     *   If the query time range is less than or equal to 30 days, the data is displayed at intervals of 1 hour.
- *     *   When the query time range is greater than 30 days, the data is displayed at intervals of 1 day.
- * *   When the monitoring data is collected every 60 seconds:
- *     *   If the query time range is less than or equal to one day, the data is displayed at intervals of 1 minute.
- *     *   If the query time range is less than or equal to seven days, the data is displayed at intervals of 10 minutes.
- *     *   If the query time range is less than or equal to 30 days, the data is displayed at intervals of 1 hour.
- *     *   When the query time range is greater than 30 days, the data is displayed at intervals of 1 day.
- * >  By default, the monitoring data is collected once every 60 seconds. You can call the [ModifyDBClusterMonitor](~~159557~~) operation to set the data collection interval to every 5 seconds.
- *
- * @param request DescribeDBNodePerformanceRequest
- * @return DescribeDBNodePerformanceResponse
- */
+// Summary:
+//
+// Queries the performance data of a node in a PolarDB cluster.
+//
+// Description:
+//
+//   When the monitoring data is collected every 5 seconds:
+//
+//     	- If the query time range is less than or equal to 1 hour, the data is displayed at intervals of 5 seconds.
+//
+//     	- If the query time range is less than or equal to one day, the data is displayed at intervals of 1 minute.
+//
+//     	- If the query time range is less than or equal to seven days, the data is displayed at intervals of 10 minutes.
+//
+//     	- If the query time range is less than or equal to 30 days, the data is displayed at intervals of 1 hour.
+//
+//     	- When the query time range is greater than 30 days, the data is displayed at intervals of 1 day.
+//
+// 	- When the monitoring data is collected every 60 seconds:
+//
+//     	- If the query time range is less than or equal to one day, the data is displayed at intervals of 1 minute.
+//
+//     	- If the query time range is less than or equal to seven days, the data is displayed at intervals of 10 minutes.
+//
+//     	- If the query time range is less than or equal to 30 days, the data is displayed at intervals of 1 hour.
+//
+//     	- When the query time range is greater than 30 days, the data is displayed at intervals of 1 day.
+//
+// >  By default, the monitoring data is collected once every 60 seconds. You can call the [ModifyDBClusterMonitor](https://help.aliyun.com/document_detail/159557.html) operation to set the data collection interval to every 5 seconds.
+//
+// @param request - DescribeDBNodePerformanceRequest
+//
+// @return DescribeDBNodePerformanceResponse
 func (client *Client) DescribeDBNodePerformance(request *DescribeDBNodePerformanceRequest) (_result *DescribeDBNodePerformanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDBNodePerformanceResponse{}
@@ -30585,6 +38991,15 @@ func (client *Client) DescribeDBNodePerformance(request *DescribeDBNodePerforman
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the parameters of a specified node in a cluster.
+//
+// @param request - DescribeDBNodesParametersRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDBNodesParametersResponse
 func (client *Client) DescribeDBNodesParametersWithOptions(request *DescribeDBNodesParametersRequest, runtime *util.RuntimeOptions) (_result *DescribeDBNodesParametersResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -30638,6 +39053,13 @@ func (client *Client) DescribeDBNodesParametersWithOptions(request *DescribeDBNo
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the parameters of a specified node in a cluster.
+//
+// @param request - DescribeDBNodesParametersRequest
+//
+// @return DescribeDBNodesParametersResponse
 func (client *Client) DescribeDBNodesParameters(request *DescribeDBNodesParametersRequest) (_result *DescribeDBNodesParametersResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDBNodesParametersResponse{}
@@ -30649,13 +39071,19 @@ func (client *Client) DescribeDBNodesParameters(request *DescribeDBNodesParamete
 	return _result, _err
 }
 
-/**
- * > This operation is applicable only to PolarDB for MySQL clusters.
- *
- * @param request DescribeDBProxyPerformanceRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DescribeDBProxyPerformanceResponse
- */
+// Summary:
+//
+// Queries the performance data of PolarProxy.
+//
+// Description:
+//
+// > This operation is applicable only to PolarDB for MySQL clusters.
+//
+// @param request - DescribeDBProxyPerformanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDBProxyPerformanceResponse
 func (client *Client) DescribeDBProxyPerformanceWithOptions(request *DescribeDBProxyPerformanceRequest, runtime *util.RuntimeOptions) (_result *DescribeDBProxyPerformanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -30713,12 +39141,17 @@ func (client *Client) DescribeDBProxyPerformanceWithOptions(request *DescribeDBP
 	return _result, _err
 }
 
-/**
- * > This operation is applicable only to PolarDB for MySQL clusters.
- *
- * @param request DescribeDBProxyPerformanceRequest
- * @return DescribeDBProxyPerformanceResponse
- */
+// Summary:
+//
+// Queries the performance data of PolarProxy.
+//
+// Description:
+//
+// > This operation is applicable only to PolarDB for MySQL clusters.
+//
+// @param request - DescribeDBProxyPerformanceRequest
+//
+// @return DescribeDBProxyPerformanceResponse
 func (client *Client) DescribeDBProxyPerformance(request *DescribeDBProxyPerformanceRequest) (_result *DescribeDBProxyPerformanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDBProxyPerformanceResponse{}
@@ -30730,6 +39163,15 @@ func (client *Client) DescribeDBProxyPerformance(request *DescribeDBProxyPerform
 	return _result, _err
 }
 
+// Summary:
+//
+// 查看实例的 DAS 配置
+//
+// @param request - DescribeDasConfigRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDasConfigResponse
 func (client *Client) DescribeDasConfigWithOptions(request *DescribeDasConfigRequest, runtime *util.RuntimeOptions) (_result *DescribeDasConfigResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -30779,6 +39221,13 @@ func (client *Client) DescribeDasConfigWithOptions(request *DescribeDasConfigReq
 	return _result, _err
 }
 
+// Summary:
+//
+// 查看实例的 DAS 配置
+//
+// @param request - DescribeDasConfigRequest
+//
+// @return DescribeDasConfigResponse
 func (client *Client) DescribeDasConfig(request *DescribeDasConfigRequest) (_result *DescribeDasConfigResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDasConfigResponse{}
@@ -30790,6 +39239,15 @@ func (client *Client) DescribeDasConfig(request *DescribeDasConfigRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about databases in a PolarDB cluster.
+//
+// @param request - DescribeDatabasesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDatabasesResponse
 func (client *Client) DescribeDatabasesWithOptions(request *DescribeDatabasesRequest, runtime *util.RuntimeOptions) (_result *DescribeDatabasesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -30851,6 +39309,13 @@ func (client *Client) DescribeDatabasesWithOptions(request *DescribeDatabasesReq
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about databases in a PolarDB cluster.
+//
+// @param request - DescribeDatabasesRequest
+//
+// @return DescribeDatabasesResponse
 func (client *Client) DescribeDatabases(request *DescribeDatabasesRequest) (_result *DescribeDatabasesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDatabasesResponse{}
@@ -30862,14 +39327,21 @@ func (client *Client) DescribeDatabases(request *DescribeDatabasesRequest) (_res
 	return _result, _err
 }
 
-/**
- * Before you call this operation, make sure that the PolarDB cluster is in the **Released** state. You must also confirm that the **Retain All Backups Permanently** or **Retain Last Automatic Backup Permanently** backup retention policy takes effect after you release the cluster. If you delete all backup sets after the cluster is released, you cannot use this API operation to query the cluster.
- * > You can call the [DescribeDBClusterAttribute](~~98181~~) operation to query the cluster status.
- *
- * @param request DescribeDetachedBackupsRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DescribeDetachedBackupsResponse
- */
+// Summary:
+//
+// Queries the information about the backup sets in a released PolarDB cluster.
+//
+// Description:
+//
+// Before you call this operation, make sure that the PolarDB cluster is in the **Released*	- state. You must also confirm that the **Retain All Backups Permanently*	- or **Retain Last Automatic Backup Permanently*	- backup retention policy takes effect after you release the cluster. If you delete all backup sets after the cluster is released, you cannot use this API operation to query the cluster.
+//
+// > You can call the [DescribeDBClusterAttribute](https://help.aliyun.com/document_detail/98181.html) operation to query the cluster status.
+//
+// @param request - DescribeDetachedBackupsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDetachedBackupsResponse
 func (client *Client) DescribeDetachedBackupsWithOptions(request *DescribeDetachedBackupsRequest, runtime *util.RuntimeOptions) (_result *DescribeDetachedBackupsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -30951,13 +39423,19 @@ func (client *Client) DescribeDetachedBackupsWithOptions(request *DescribeDetach
 	return _result, _err
 }
 
-/**
- * Before you call this operation, make sure that the PolarDB cluster is in the **Released** state. You must also confirm that the **Retain All Backups Permanently** or **Retain Last Automatic Backup Permanently** backup retention policy takes effect after you release the cluster. If you delete all backup sets after the cluster is released, you cannot use this API operation to query the cluster.
- * > You can call the [DescribeDBClusterAttribute](~~98181~~) operation to query the cluster status.
- *
- * @param request DescribeDetachedBackupsRequest
- * @return DescribeDetachedBackupsResponse
- */
+// Summary:
+//
+// Queries the information about the backup sets in a released PolarDB cluster.
+//
+// Description:
+//
+// Before you call this operation, make sure that the PolarDB cluster is in the **Released*	- state. You must also confirm that the **Retain All Backups Permanently*	- or **Retain Last Automatic Backup Permanently*	- backup retention policy takes effect after you release the cluster. If you delete all backup sets after the cluster is released, you cannot use this API operation to query the cluster.
+//
+// > You can call the [DescribeDBClusterAttribute](https://help.aliyun.com/document_detail/98181.html) operation to query the cluster status.
+//
+// @param request - DescribeDetachedBackupsRequest
+//
+// @return DescribeDetachedBackupsResponse
 func (client *Client) DescribeDetachedBackups(request *DescribeDetachedBackupsRequest) (_result *DescribeDetachedBackupsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDetachedBackupsResponse{}
@@ -30969,6 +39447,15 @@ func (client *Client) DescribeDetachedBackups(request *DescribeDetachedBackupsRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about a Global Database Network (GDN).
+//
+// @param request - DescribeGlobalDatabaseNetworkRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeGlobalDatabaseNetworkResponse
 func (client *Client) DescribeGlobalDatabaseNetworkWithOptions(request *DescribeGlobalDatabaseNetworkRequest, runtime *util.RuntimeOptions) (_result *DescribeGlobalDatabaseNetworkResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -31026,6 +39513,13 @@ func (client *Client) DescribeGlobalDatabaseNetworkWithOptions(request *Describe
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about a Global Database Network (GDN).
+//
+// @param request - DescribeGlobalDatabaseNetworkRequest
+//
+// @return DescribeGlobalDatabaseNetworkResponse
 func (client *Client) DescribeGlobalDatabaseNetwork(request *DescribeGlobalDatabaseNetworkRequest) (_result *DescribeGlobalDatabaseNetworkResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeGlobalDatabaseNetworkResponse{}
@@ -31037,6 +39531,15 @@ func (client *Client) DescribeGlobalDatabaseNetwork(request *DescribeGlobalDatab
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about all Global Database Networks (GDNs) that belong to an account.
+//
+// @param request - DescribeGlobalDatabaseNetworksRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeGlobalDatabaseNetworksResponse
 func (client *Client) DescribeGlobalDatabaseNetworksWithOptions(request *DescribeGlobalDatabaseNetworksRequest, runtime *util.RuntimeOptions) (_result *DescribeGlobalDatabaseNetworksResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -31114,6 +39617,13 @@ func (client *Client) DescribeGlobalDatabaseNetworksWithOptions(request *Describ
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about all Global Database Networks (GDNs) that belong to an account.
+//
+// @param request - DescribeGlobalDatabaseNetworksRequest
+//
+// @return DescribeGlobalDatabaseNetworksResponse
 func (client *Client) DescribeGlobalDatabaseNetworks(request *DescribeGlobalDatabaseNetworksRequest) (_result *DescribeGlobalDatabaseNetworksResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeGlobalDatabaseNetworksResponse{}
@@ -31125,6 +39635,15 @@ func (client *Client) DescribeGlobalDatabaseNetworks(request *DescribeGlobalData
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries global IP whitelist templates.
+//
+// @param request - DescribeGlobalSecurityIPGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeGlobalSecurityIPGroupResponse
 func (client *Client) DescribeGlobalSecurityIPGroupWithOptions(request *DescribeGlobalSecurityIPGroupRequest, runtime *util.RuntimeOptions) (_result *DescribeGlobalSecurityIPGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -31186,6 +39705,13 @@ func (client *Client) DescribeGlobalSecurityIPGroupWithOptions(request *Describe
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries global IP whitelist templates.
+//
+// @param request - DescribeGlobalSecurityIPGroupRequest
+//
+// @return DescribeGlobalSecurityIPGroupResponse
 func (client *Client) DescribeGlobalSecurityIPGroup(request *DescribeGlobalSecurityIPGroupRequest) (_result *DescribeGlobalSecurityIPGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeGlobalSecurityIPGroupResponse{}
@@ -31197,6 +39723,15 @@ func (client *Client) DescribeGlobalSecurityIPGroup(request *DescribeGlobalSecur
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the relationship between a cluster and a global IP whitelist template.
+//
+// @param request - DescribeGlobalSecurityIPGroupRelationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeGlobalSecurityIPGroupRelationResponse
 func (client *Client) DescribeGlobalSecurityIPGroupRelationWithOptions(request *DescribeGlobalSecurityIPGroupRelationRequest, runtime *util.RuntimeOptions) (_result *DescribeGlobalSecurityIPGroupRelationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -31258,6 +39793,13 @@ func (client *Client) DescribeGlobalSecurityIPGroupRelationWithOptions(request *
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the relationship between a cluster and a global IP whitelist template.
+//
+// @param request - DescribeGlobalSecurityIPGroupRelationRequest
+//
+// @return DescribeGlobalSecurityIPGroupRelationResponse
 func (client *Client) DescribeGlobalSecurityIPGroupRelation(request *DescribeGlobalSecurityIPGroupRelationRequest) (_result *DescribeGlobalSecurityIPGroupRelationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeGlobalSecurityIPGroupRelationResponse{}
@@ -31269,6 +39811,15 @@ func (client *Client) DescribeGlobalSecurityIPGroupRelation(request *DescribeGlo
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the retention policy of log backups in a PolarDB cluster.
+//
+// @param request - DescribeLogBackupPolicyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeLogBackupPolicyResponse
 func (client *Client) DescribeLogBackupPolicyWithOptions(request *DescribeLogBackupPolicyRequest, runtime *util.RuntimeOptions) (_result *DescribeLogBackupPolicyResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -31318,6 +39869,13 @@ func (client *Client) DescribeLogBackupPolicyWithOptions(request *DescribeLogBac
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the retention policy of log backups in a PolarDB cluster.
+//
+// @param request - DescribeLogBackupPolicyRequest
+//
+// @return DescribeLogBackupPolicyResponse
 func (client *Client) DescribeLogBackupPolicy(request *DescribeLogBackupPolicyRequest) (_result *DescribeLogBackupPolicyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeLogBackupPolicyResponse{}
@@ -31329,6 +39887,15 @@ func (client *Client) DescribeLogBackupPolicy(request *DescribeLogBackupPolicyRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the data masking rules of a PolarDB cluster or the information about a specified masking rule.
+//
+// @param request - DescribeMaskingRulesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeMaskingRulesResponse
 func (client *Client) DescribeMaskingRulesWithOptions(request *DescribeMaskingRulesRequest, runtime *util.RuntimeOptions) (_result *DescribeMaskingRulesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -31366,6 +39933,13 @@ func (client *Client) DescribeMaskingRulesWithOptions(request *DescribeMaskingRu
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the data masking rules of a PolarDB cluster or the information about a specified masking rule.
+//
+// @param request - DescribeMaskingRulesRequest
+//
+// @return DescribeMaskingRulesResponse
 func (client *Client) DescribeMaskingRules(request *DescribeMaskingRulesRequest) (_result *DescribeMaskingRulesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeMaskingRulesResponse{}
@@ -31377,6 +39951,15 @@ func (client *Client) DescribeMaskingRules(request *DescribeMaskingRulesRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the details of the databases or tables that can be restored.
+//
+// @param request - DescribeMetaListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeMetaListResponse
 func (client *Client) DescribeMetaListWithOptions(request *DescribeMetaListRequest, runtime *util.RuntimeOptions) (_result *DescribeMetaListResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -31454,6 +40037,13 @@ func (client *Client) DescribeMetaListWithOptions(request *DescribeMetaListReque
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the details of the databases or tables that can be restored.
+//
+// @param request - DescribeMetaListRequest
+//
+// @return DescribeMetaListResponse
 func (client *Client) DescribeMetaList(request *DescribeMetaListRequest) (_result *DescribeMetaListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeMetaListResponse{}
@@ -31465,14 +40055,21 @@ func (client *Client) DescribeMetaList(request *DescribeMetaListRequest) (_resul
 	return _result, _err
 }
 
-/**
- * You can use parameter templates to manage multiple parameters at a time and apply existing parameters to a PolarDB cluster. For more information, see [Use a parameter template](~~207009~~).
- * > This parameter is valid only for a PolarDB for MySQL cluster.
- *
- * @param request DescribeParameterGroupRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DescribeParameterGroupResponse
- */
+// Summary:
+//
+// Queries the information about a parameter template.
+//
+// Description:
+//
+// You can use parameter templates to manage multiple parameters at a time and apply existing parameters to a PolarDB cluster. For more information, see [Use a parameter template](https://help.aliyun.com/document_detail/207009.html).
+//
+// > This parameter is valid only for a PolarDB for MySQL cluster.
+//
+// @param request - DescribeParameterGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeParameterGroupResponse
 func (client *Client) DescribeParameterGroupWithOptions(request *DescribeParameterGroupRequest, runtime *util.RuntimeOptions) (_result *DescribeParameterGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -31530,13 +40127,19 @@ func (client *Client) DescribeParameterGroupWithOptions(request *DescribeParamet
 	return _result, _err
 }
 
-/**
- * You can use parameter templates to manage multiple parameters at a time and apply existing parameters to a PolarDB cluster. For more information, see [Use a parameter template](~~207009~~).
- * > This parameter is valid only for a PolarDB for MySQL cluster.
- *
- * @param request DescribeParameterGroupRequest
- * @return DescribeParameterGroupResponse
- */
+// Summary:
+//
+// Queries the information about a parameter template.
+//
+// Description:
+//
+// You can use parameter templates to manage multiple parameters at a time and apply existing parameters to a PolarDB cluster. For more information, see [Use a parameter template](https://help.aliyun.com/document_detail/207009.html).
+//
+// > This parameter is valid only for a PolarDB for MySQL cluster.
+//
+// @param request - DescribeParameterGroupRequest
+//
+// @return DescribeParameterGroupResponse
 func (client *Client) DescribeParameterGroup(request *DescribeParameterGroupRequest) (_result *DescribeParameterGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeParameterGroupResponse{}
@@ -31548,14 +40151,21 @@ func (client *Client) DescribeParameterGroup(request *DescribeParameterGroupRequ
 	return _result, _err
 }
 
-/**
- * You can use parameter templates to manage multiple parameters at a time and apply existing parameters to a PolarDB cluster. For more information, see [Use a parameter template](~~207009~~).
- * > This operation is applicable only to PolarDB for MySQL clusters.
- *
- * @param request DescribeParameterGroupsRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DescribeParameterGroupsResponse
- */
+// Summary:
+//
+// Queries parameter templates that are available in a specified region.
+//
+// Description:
+//
+// You can use parameter templates to manage multiple parameters at a time and apply existing parameters to a PolarDB cluster. For more information, see [Use a parameter template](https://help.aliyun.com/document_detail/207009.html).
+//
+// > This operation is applicable only to PolarDB for MySQL clusters.
+//
+// @param request - DescribeParameterGroupsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeParameterGroupsResponse
 func (client *Client) DescribeParameterGroupsWithOptions(request *DescribeParameterGroupsRequest, runtime *util.RuntimeOptions) (_result *DescribeParameterGroupsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -31617,13 +40227,19 @@ func (client *Client) DescribeParameterGroupsWithOptions(request *DescribeParame
 	return _result, _err
 }
 
-/**
- * You can use parameter templates to manage multiple parameters at a time and apply existing parameters to a PolarDB cluster. For more information, see [Use a parameter template](~~207009~~).
- * > This operation is applicable only to PolarDB for MySQL clusters.
- *
- * @param request DescribeParameterGroupsRequest
- * @return DescribeParameterGroupsResponse
- */
+// Summary:
+//
+// Queries parameter templates that are available in a specified region.
+//
+// Description:
+//
+// You can use parameter templates to manage multiple parameters at a time and apply existing parameters to a PolarDB cluster. For more information, see [Use a parameter template](https://help.aliyun.com/document_detail/207009.html).
+//
+// > This operation is applicable only to PolarDB for MySQL clusters.
+//
+// @param request - DescribeParameterGroupsRequest
+//
+// @return DescribeParameterGroupsResponse
 func (client *Client) DescribeParameterGroups(request *DescribeParameterGroupsRequest) (_result *DescribeParameterGroupsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeParameterGroupsResponse{}
@@ -31635,6 +40251,15 @@ func (client *Client) DescribeParameterGroups(request *DescribeParameterGroupsRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the default parameters in a cluster.
+//
+// @param request - DescribeParameterTemplatesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeParameterTemplatesResponse
 func (client *Client) DescribeParameterTemplatesWithOptions(request *DescribeParameterTemplatesRequest, runtime *util.RuntimeOptions) (_result *DescribeParameterTemplatesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -31696,6 +40321,13 @@ func (client *Client) DescribeParameterTemplatesWithOptions(request *DescribePar
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the default parameters in a cluster.
+//
+// @param request - DescribeParameterTemplatesRequest
+//
+// @return DescribeParameterTemplatesResponse
 func (client *Client) DescribeParameterTemplates(request *DescribeParameterTemplatesRequest) (_result *DescribeParameterTemplatesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeParameterTemplatesResponse{}
@@ -31707,6 +40339,15 @@ func (client *Client) DescribeParameterTemplates(request *DescribeParameterTempl
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about a pending event.
+//
+// @param request - DescribePendingMaintenanceActionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribePendingMaintenanceActionResponse
 func (client *Client) DescribePendingMaintenanceActionWithOptions(request *DescribePendingMaintenanceActionRequest, runtime *util.RuntimeOptions) (_result *DescribePendingMaintenanceActionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -31780,6 +40421,13 @@ func (client *Client) DescribePendingMaintenanceActionWithOptions(request *Descr
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about a pending event.
+//
+// @param request - DescribePendingMaintenanceActionRequest
+//
+// @return DescribePendingMaintenanceActionResponse
 func (client *Client) DescribePendingMaintenanceAction(request *DescribePendingMaintenanceActionRequest) (_result *DescribePendingMaintenanceActionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribePendingMaintenanceActionResponse{}
@@ -31791,6 +40439,15 @@ func (client *Client) DescribePendingMaintenanceAction(request *DescribePendingM
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the numbers of pending events of different task types.
+//
+// @param request - DescribePendingMaintenanceActionsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribePendingMaintenanceActionsResponse
 func (client *Client) DescribePendingMaintenanceActionsWithOptions(request *DescribePendingMaintenanceActionsRequest, runtime *util.RuntimeOptions) (_result *DescribePendingMaintenanceActionsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -31852,6 +40509,13 @@ func (client *Client) DescribePendingMaintenanceActionsWithOptions(request *Desc
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the numbers of pending events of different task types.
+//
+// @param request - DescribePendingMaintenanceActionsRequest
+//
+// @return DescribePendingMaintenanceActionsResponse
 func (client *Client) DescribePendingMaintenanceActions(request *DescribePendingMaintenanceActionsRequest) (_result *DescribePendingMaintenanceActionsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribePendingMaintenanceActionsResponse{}
@@ -31863,6 +40527,15 @@ func (client *Client) DescribePendingMaintenanceActions(request *DescribePending
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries whether the SQL Explorer feature is enabled for the cluster.
+//
+// @param request - DescribePolarSQLCollectorPolicyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribePolarSQLCollectorPolicyResponse
 func (client *Client) DescribePolarSQLCollectorPolicyWithOptions(request *DescribePolarSQLCollectorPolicyRequest, runtime *util.RuntimeOptions) (_result *DescribePolarSQLCollectorPolicyResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -31892,6 +40565,13 @@ func (client *Client) DescribePolarSQLCollectorPolicyWithOptions(request *Descri
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries whether the SQL Explorer feature is enabled for the cluster.
+//
+// @param request - DescribePolarSQLCollectorPolicyRequest
+//
+// @return DescribePolarSQLCollectorPolicyResponse
 func (client *Client) DescribePolarSQLCollectorPolicy(request *DescribePolarSQLCollectorPolicyRequest) (_result *DescribePolarSQLCollectorPolicyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribePolarSQLCollectorPolicyResponse{}
@@ -31903,6 +40583,15 @@ func (client *Client) DescribePolarSQLCollectorPolicy(request *DescribePolarSQLC
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the regions and zones available for PolarDB.
+//
+// @param request - DescribeRegionsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeRegionsResponse
 func (client *Client) DescribeRegionsWithOptions(request *DescribeRegionsRequest, runtime *util.RuntimeOptions) (_result *DescribeRegionsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -31948,6 +40637,13 @@ func (client *Client) DescribeRegionsWithOptions(request *DescribeRegionsRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the regions and zones available for PolarDB.
+//
+// @param request - DescribeRegionsRequest
+//
+// @return DescribeRegionsResponse
 func (client *Client) DescribeRegions(request *DescribeRegionsRequest) (_result *DescribeRegionsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeRegionsResponse{}
@@ -31959,6 +40655,15 @@ func (client *Client) DescribeRegions(request *DescribeRegionsRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the details of all scheduled tasks.
+//
+// @param request - DescribeScheduleTasksRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeScheduleTasksResponse
 func (client *Client) DescribeScheduleTasksWithOptions(request *DescribeScheduleTasksRequest, runtime *util.RuntimeOptions) (_result *DescribeScheduleTasksResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -32048,6 +40753,13 @@ func (client *Client) DescribeScheduleTasksWithOptions(request *DescribeSchedule
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the details of all scheduled tasks.
+//
+// @param request - DescribeScheduleTasksRequest
+//
+// @return DescribeScheduleTasksResponse
 func (client *Client) DescribeScheduleTasks(request *DescribeScheduleTasksRequest) (_result *DescribeScheduleTasksResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeScheduleTasksResponse{}
@@ -32059,13 +40771,19 @@ func (client *Client) DescribeScheduleTasks(request *DescribeScheduleTasksReques
 	return _result, _err
 }
 
-/**
- * > This operation is applicable only to PolarDB for MySQL clusters.
- *
- * @param request DescribeSlowLogRecordsRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DescribeSlowLogRecordsResponse
- */
+// Summary:
+//
+// Queries the details of the slow query logs of a PolarDB cluster.
+//
+// Description:
+//
+// > This operation is applicable only to PolarDB for MySQL clusters.
+//
+// @param request - DescribeSlowLogRecordsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeSlowLogRecordsResponse
 func (client *Client) DescribeSlowLogRecordsWithOptions(request *DescribeSlowLogRecordsRequest, runtime *util.RuntimeOptions) (_result *DescribeSlowLogRecordsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -32082,6 +40800,10 @@ func (client *Client) DescribeSlowLogRecordsWithOptions(request *DescribeSlowLog
 
 	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
 		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NodeId)) {
+		query["NodeId"] = request.NodeId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
@@ -32143,12 +40865,17 @@ func (client *Client) DescribeSlowLogRecordsWithOptions(request *DescribeSlowLog
 	return _result, _err
 }
 
-/**
- * > This operation is applicable only to PolarDB for MySQL clusters.
- *
- * @param request DescribeSlowLogRecordsRequest
- * @return DescribeSlowLogRecordsResponse
- */
+// Summary:
+//
+// Queries the details of the slow query logs of a PolarDB cluster.
+//
+// Description:
+//
+// > This operation is applicable only to PolarDB for MySQL clusters.
+//
+// @param request - DescribeSlowLogRecordsRequest
+//
+// @return DescribeSlowLogRecordsResponse
 func (client *Client) DescribeSlowLogRecords(request *DescribeSlowLogRecordsRequest) (_result *DescribeSlowLogRecordsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeSlowLogRecordsResponse{}
@@ -32160,13 +40887,19 @@ func (client *Client) DescribeSlowLogRecords(request *DescribeSlowLogRecordsRequ
 	return _result, _err
 }
 
-/**
- * > This operation is applicable only to PolarDB for MySQL clusters.
- *
- * @param request DescribeSlowLogsRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DescribeSlowLogsResponse
- */
+// Summary:
+//
+// Queries the statistics about the slow query logs of a PolarDB cluster.
+//
+// Description:
+//
+// > This operation is applicable only to PolarDB for MySQL clusters.
+//
+// @param request - DescribeSlowLogsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeSlowLogsResponse
 func (client *Client) DescribeSlowLogsWithOptions(request *DescribeSlowLogsRequest, runtime *util.RuntimeOptions) (_result *DescribeSlowLogsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -32240,12 +40973,17 @@ func (client *Client) DescribeSlowLogsWithOptions(request *DescribeSlowLogsReque
 	return _result, _err
 }
 
-/**
- * > This operation is applicable only to PolarDB for MySQL clusters.
- *
- * @param request DescribeSlowLogsRequest
- * @return DescribeSlowLogsResponse
- */
+// Summary:
+//
+// Queries the statistics about the slow query logs of a PolarDB cluster.
+//
+// Description:
+//
+// > This operation is applicable only to PolarDB for MySQL clusters.
+//
+// @param request - DescribeSlowLogsRequest
+//
+// @return DescribeSlowLogsResponse
 func (client *Client) DescribeSlowLogs(request *DescribeSlowLogsRequest) (_result *DescribeSlowLogsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeSlowLogsResponse{}
@@ -32257,14 +40995,21 @@ func (client *Client) DescribeSlowLogs(request *DescribeSlowLogsRequest) (_resul
 	return _result, _err
 }
 
-/**
- * *   You can call this operation to view the details of a task that is generated by a specific API operation or in the console. The system calls the specific API operation when you perform an operation in the console. For example, you can view the details of the task when you call the [CreateDBCluster](~~98169~~) operation or [create a cluster](~~58769~~) in the console.
- * *   You can view the details of tasks that are generated only when you call the [CreateDBCluster](~~98169~~) operation to create a cluster and `CreationOption` is not set to `CreateGdnStandby`.
- *
- * @param request DescribeTasksRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DescribeTasksResponse
- */
+// Summary:
+//
+// Queries the details of the tasks that are generated by calling API operations. For example, you can call this operation to view the details of the task when you create a cluster.
+//
+// Description:
+//
+//   You can call this operation to view the details of a task that is generated by a specific API operation or in the console. The system calls the specific API operation when you perform an operation in the console. For example, you can view the details of the task when you call the [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) operation or [create a cluster](https://help.aliyun.com/document_detail/58769.html) in the console.
+//
+// 	- You can view the details of tasks that are generated only when you call the [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) operation to create a cluster and `CreationOption` is not set to `CreateGdnStandby`.
+//
+// @param request - DescribeTasksRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeTasksResponse
 func (client *Client) DescribeTasksWithOptions(request *DescribeTasksRequest, runtime *util.RuntimeOptions) (_result *DescribeTasksResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -32338,13 +41083,19 @@ func (client *Client) DescribeTasksWithOptions(request *DescribeTasksRequest, ru
 	return _result, _err
 }
 
-/**
- * *   You can call this operation to view the details of a task that is generated by a specific API operation or in the console. The system calls the specific API operation when you perform an operation in the console. For example, you can view the details of the task when you call the [CreateDBCluster](~~98169~~) operation or [create a cluster](~~58769~~) in the console.
- * *   You can view the details of tasks that are generated only when you call the [CreateDBCluster](~~98169~~) operation to create a cluster and `CreationOption` is not set to `CreateGdnStandby`.
- *
- * @param request DescribeTasksRequest
- * @return DescribeTasksResponse
- */
+// Summary:
+//
+// Queries the details of the tasks that are generated by calling API operations. For example, you can call this operation to view the details of the task when you create a cluster.
+//
+// Description:
+//
+//   You can call this operation to view the details of a task that is generated by a specific API operation or in the console. The system calls the specific API operation when you perform an operation in the console. For example, you can view the details of the task when you call the [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) operation or [create a cluster](https://help.aliyun.com/document_detail/58769.html) in the console.
+//
+// 	- You can view the details of tasks that are generated only when you call the [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) operation to create a cluster and `CreationOption` is not set to `CreateGdnStandby`.
+//
+// @param request - DescribeTasksRequest
+//
+// @return DescribeTasksResponse
 func (client *Client) DescribeTasks(request *DescribeTasksRequest) (_result *DescribeTasksResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeTasksResponse{}
@@ -32356,6 +41107,15 @@ func (client *Client) DescribeTasks(request *DescribeTasksRequest) (_result *Des
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the Key Management Service (KMS)-managed customer master keys (CMKs) that are used to encrypt data in a PolarDB cluster.
+//
+// @param request - DescribeUserEncryptionKeyListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeUserEncryptionKeyListResponse
 func (client *Client) DescribeUserEncryptionKeyListWithOptions(request *DescribeUserEncryptionKeyListRequest, runtime *util.RuntimeOptions) (_result *DescribeUserEncryptionKeyListResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -32413,6 +41173,13 @@ func (client *Client) DescribeUserEncryptionKeyListWithOptions(request *Describe
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the Key Management Service (KMS)-managed customer master keys (CMKs) that are used to encrypt data in a PolarDB cluster.
+//
+// @param request - DescribeUserEncryptionKeyListRequest
+//
+// @return DescribeUserEncryptionKeyListResponse
 func (client *Client) DescribeUserEncryptionKeyList(request *DescribeUserEncryptionKeyListRequest) (_result *DescribeUserEncryptionKeyListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeUserEncryptionKeyListResponse{}
@@ -32424,6 +41191,15 @@ func (client *Client) DescribeUserEncryptionKeyList(request *DescribeUserEncrypt
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a vSwitch.
+//
+// @param request - DescribeVSwitchesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeVSwitchesResponse
 func (client *Client) DescribeVSwitchesWithOptions(request *DescribeVSwitchesRequest, runtime *util.RuntimeOptions) (_result *DescribeVSwitchesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -32501,6 +41277,13 @@ func (client *Client) DescribeVSwitchesWithOptions(request *DescribeVSwitchesReq
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a vSwitch.
+//
+// @param request - DescribeVSwitchesRequest
+//
+// @return DescribeVSwitchesResponse
 func (client *Client) DescribeVSwitches(request *DescribeVSwitchesRequest) (_result *DescribeVSwitchesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeVSwitchesResponse{}
@@ -32512,6 +41295,15 @@ func (client *Client) DescribeVSwitches(request *DescribeVSwitchesRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// Disables a stable serverless cluster.
+//
+// @param request - DisableDBClusterServerlessRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DisableDBClusterServerlessResponse
 func (client *Client) DisableDBClusterServerlessWithOptions(request *DisableDBClusterServerlessRequest, runtime *util.RuntimeOptions) (_result *DisableDBClusterServerlessResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -32561,6 +41353,13 @@ func (client *Client) DisableDBClusterServerlessWithOptions(request *DisableDBCl
 	return _result, _err
 }
 
+// Summary:
+//
+// Disables a stable serverless cluster.
+//
+// @param request - DisableDBClusterServerlessRequest
+//
+// @return DisableDBClusterServerlessResponse
 func (client *Client) DisableDBClusterServerless(request *DisableDBClusterServerlessRequest) (_result *DisableDBClusterServerlessResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DisableDBClusterServerlessResponse{}
@@ -32572,6 +41371,15 @@ func (client *Client) DisableDBClusterServerless(request *DisableDBClusterServer
 	return _result, _err
 }
 
+// Summary:
+//
+// Enables a stable serverless cluster.
+//
+// @param request - EnableDBClusterServerlessRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return EnableDBClusterServerlessResponse
 func (client *Client) EnableDBClusterServerlessWithOptions(request *EnableDBClusterServerlessRequest, runtime *util.RuntimeOptions) (_result *EnableDBClusterServerlessResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -32645,6 +41453,13 @@ func (client *Client) EnableDBClusterServerlessWithOptions(request *EnableDBClus
 	return _result, _err
 }
 
+// Summary:
+//
+// Enables a stable serverless cluster.
+//
+// @param request - EnableDBClusterServerlessRequest
+//
+// @return EnableDBClusterServerlessResponse
 func (client *Client) EnableDBClusterServerless(request *EnableDBClusterServerlessRequest) (_result *EnableDBClusterServerlessResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &EnableDBClusterServerlessResponse{}
@@ -32656,6 +41471,15 @@ func (client *Client) EnableDBClusterServerless(request *EnableDBClusterServerle
 	return _result, _err
 }
 
+// Summary:
+//
+// 修改sql防火墙状态
+//
+// @param request - EnableFirewallRulesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return EnableFirewallRulesResponse
 func (client *Client) EnableFirewallRulesWithOptions(request *EnableFirewallRulesRequest, runtime *util.RuntimeOptions) (_result *EnableFirewallRulesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -32713,6 +41537,13 @@ func (client *Client) EnableFirewallRulesWithOptions(request *EnableFirewallRule
 	return _result, _err
 }
 
+// Summary:
+//
+// 修改sql防火墙状态
+//
+// @param request - EnableFirewallRulesRequest
+//
+// @return EnableFirewallRulesResponse
 func (client *Client) EnableFirewallRules(request *EnableFirewallRulesRequest) (_result *EnableFirewallRulesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &EnableFirewallRulesResponse{}
@@ -32724,6 +41555,15 @@ func (client *Client) EnableFirewallRules(request *EnableFirewallRulesRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// Evaluates available resources.
+//
+// @param request - EvaluateRegionResourceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return EvaluateRegionResourceResponse
 func (client *Client) EvaluateRegionResourceWithOptions(request *EvaluateRegionResourceRequest, runtime *util.RuntimeOptions) (_result *EvaluateRegionResourceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -32809,6 +41649,13 @@ func (client *Client) EvaluateRegionResourceWithOptions(request *EvaluateRegionR
 	return _result, _err
 }
 
+// Summary:
+//
+// Evaluates available resources.
+//
+// @param request - EvaluateRegionResourceRequest
+//
+// @return EvaluateRegionResourceResponse
 func (client *Client) EvaluateRegionResource(request *EvaluateRegionResourceRequest) (_result *EvaluateRegionResourceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &EvaluateRegionResourceResponse{}
@@ -32820,6 +41667,15 @@ func (client *Client) EvaluateRegionResource(request *EvaluateRegionResourceRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// Performs a manual failover to promote a read-only node to the primary node in a PolarDB cluster.
+//
+// @param request - FailoverDBClusterRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return FailoverDBClusterResponse
 func (client *Client) FailoverDBClusterWithOptions(request *FailoverDBClusterRequest, runtime *util.RuntimeOptions) (_result *FailoverDBClusterResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -32881,6 +41737,13 @@ func (client *Client) FailoverDBClusterWithOptions(request *FailoverDBClusterReq
 	return _result, _err
 }
 
+// Summary:
+//
+// Performs a manual failover to promote a read-only node to the primary node in a PolarDB cluster.
+//
+// @param request - FailoverDBClusterRequest
+//
+// @return FailoverDBClusterResponse
 func (client *Client) FailoverDBCluster(request *FailoverDBClusterRequest) (_result *FailoverDBClusterResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &FailoverDBClusterResponse{}
@@ -32892,17 +41755,27 @@ func (client *Client) FailoverDBCluster(request *FailoverDBClusterRequest) (_res
 	return _result, _err
 }
 
-/**
- * > *   An account can be authorized to access one or more databases.
- * > *   If the specified account already has the access permissions on the specified databases, the operation returns a successful response.
- * > *   Before you call this operation, make sure that the cluster is in the Running state. Otherwise, the operation fails.
- * > *   You can call this operation only on a PolarDB for MySQL cluster.
- * > *   By default, a privileged account for a cluster has all the permissions on the databases in the cluster.
- *
- * @param request GrantAccountPrivilegeRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return GrantAccountPrivilegeResponse
- */
+// Summary:
+//
+// Grants a standard account the permissions to access one or more databases in a specified PolarDB cluster.
+//
+// Description:
+//
+// > 	- An account can be authorized to access one or more databases.
+//
+// > 	- If the specified account already has the access permissions on the specified databases, the operation returns a successful response.
+//
+// > 	- Before you call this operation, make sure that the cluster is in the Running state. Otherwise, the operation fails.
+//
+// > 	- You can call this operation only on a PolarDB for MySQL cluster.
+//
+// > 	- By default, a privileged account for a cluster has all the permissions on the databases in the cluster.
+//
+// @param request - GrantAccountPrivilegeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GrantAccountPrivilegeResponse
 func (client *Client) GrantAccountPrivilegeWithOptions(request *GrantAccountPrivilegeRequest, runtime *util.RuntimeOptions) (_result *GrantAccountPrivilegeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -32964,16 +41837,25 @@ func (client *Client) GrantAccountPrivilegeWithOptions(request *GrantAccountPriv
 	return _result, _err
 }
 
-/**
- * > *   An account can be authorized to access one or more databases.
- * > *   If the specified account already has the access permissions on the specified databases, the operation returns a successful response.
- * > *   Before you call this operation, make sure that the cluster is in the Running state. Otherwise, the operation fails.
- * > *   You can call this operation only on a PolarDB for MySQL cluster.
- * > *   By default, a privileged account for a cluster has all the permissions on the databases in the cluster.
- *
- * @param request GrantAccountPrivilegeRequest
- * @return GrantAccountPrivilegeResponse
- */
+// Summary:
+//
+// Grants a standard account the permissions to access one or more databases in a specified PolarDB cluster.
+//
+// Description:
+//
+// > 	- An account can be authorized to access one or more databases.
+//
+// > 	- If the specified account already has the access permissions on the specified databases, the operation returns a successful response.
+//
+// > 	- Before you call this operation, make sure that the cluster is in the Running state. Otherwise, the operation fails.
+//
+// > 	- You can call this operation only on a PolarDB for MySQL cluster.
+//
+// > 	- By default, a privileged account for a cluster has all the permissions on the databases in the cluster.
+//
+// @param request - GrantAccountPrivilegeRequest
+//
+// @return GrantAccountPrivilegeResponse
 func (client *Client) GrantAccountPrivilege(request *GrantAccountPrivilegeRequest) (_result *GrantAccountPrivilegeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GrantAccountPrivilegeResponse{}
@@ -32985,6 +41867,15 @@ func (client *Client) GrantAccountPrivilege(request *GrantAccountPrivilegeReques
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the tags that are bound to one or more PolarDB clusters, or queries the PolarDB clusters to which one or more tags are bound.
+//
+// @param request - ListTagResourcesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListTagResourcesResponse
 func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesRequest, runtime *util.RuntimeOptions) (_result *ListTagResourcesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -33050,6 +41941,13 @@ func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesReque
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the tags that are bound to one or more PolarDB clusters, or queries the PolarDB clusters to which one or more tags are bound.
+//
+// @param request - ListTagResourcesRequest
+//
+// @return ListTagResourcesResponse
 func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_result *ListTagResourcesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListTagResourcesResponse{}
@@ -33061,6 +41959,15 @@ func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// Manually starts a cluster.
+//
+// @param request - ManuallyStartDBClusterRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ManuallyStartDBClusterResponse
 func (client *Client) ManuallyStartDBClusterWithOptions(request *ManuallyStartDBClusterRequest, runtime *util.RuntimeOptions) (_result *ManuallyStartDBClusterResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -33114,6 +42021,13 @@ func (client *Client) ManuallyStartDBClusterWithOptions(request *ManuallyStartDB
 	return _result, _err
 }
 
+// Summary:
+//
+// Manually starts a cluster.
+//
+// @param request - ManuallyStartDBClusterRequest
+//
+// @return ManuallyStartDBClusterResponse
 func (client *Client) ManuallyStartDBCluster(request *ManuallyStartDBClusterRequest) (_result *ManuallyStartDBClusterResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ManuallyStartDBClusterResponse{}
@@ -33125,6 +42039,15 @@ func (client *Client) ManuallyStartDBCluster(request *ManuallyStartDBClusterRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the description of a database account of a PolarDB cluster.
+//
+// @param request - ModifyAccountDescriptionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyAccountDescriptionResponse
 func (client *Client) ModifyAccountDescriptionWithOptions(request *ModifyAccountDescriptionRequest, runtime *util.RuntimeOptions) (_result *ModifyAccountDescriptionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -33182,6 +42105,13 @@ func (client *Client) ModifyAccountDescriptionWithOptions(request *ModifyAccount
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the description of a database account of a PolarDB cluster.
+//
+// @param request - ModifyAccountDescriptionRequest
+//
+// @return ModifyAccountDescriptionResponse
 func (client *Client) ModifyAccountDescription(request *ModifyAccountDescriptionRequest) (_result *ModifyAccountDescriptionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyAccountDescriptionResponse{}
@@ -33193,6 +42123,15 @@ func (client *Client) ModifyAccountDescription(request *ModifyAccountDescription
 	return _result, _err
 }
 
+// Summary:
+//
+// Changes the password of a database account for a specified PolarDB cluster.
+//
+// @param request - ModifyAccountPasswordRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyAccountPasswordResponse
 func (client *Client) ModifyAccountPasswordWithOptions(request *ModifyAccountPasswordRequest, runtime *util.RuntimeOptions) (_result *ModifyAccountPasswordResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -33254,6 +42193,13 @@ func (client *Client) ModifyAccountPasswordWithOptions(request *ModifyAccountPas
 	return _result, _err
 }
 
+// Summary:
+//
+// Changes the password of a database account for a specified PolarDB cluster.
+//
+// @param request - ModifyAccountPasswordRequest
+//
+// @return ModifyAccountPasswordResponse
 func (client *Client) ModifyAccountPassword(request *ModifyAccountPasswordRequest) (_result *ModifyAccountPasswordResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyAccountPasswordResponse{}
@@ -33265,6 +42211,15 @@ func (client *Client) ModifyAccountPassword(request *ModifyAccountPasswordReques
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the auto-renewal attributes of a subscription PolarDB cluster.
+//
+// @param request - ModifyAutoRenewAttributeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyAutoRenewAttributeResponse
 func (client *Client) ModifyAutoRenewAttributeWithOptions(request *ModifyAutoRenewAttributeRequest, runtime *util.RuntimeOptions) (_result *ModifyAutoRenewAttributeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -33334,6 +42289,13 @@ func (client *Client) ModifyAutoRenewAttributeWithOptions(request *ModifyAutoRen
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the auto-renewal attributes of a subscription PolarDB cluster.
+//
+// @param request - ModifyAutoRenewAttributeRequest
+//
+// @return ModifyAutoRenewAttributeResponse
 func (client *Client) ModifyAutoRenewAttribute(request *ModifyAutoRenewAttributeRequest) (_result *ModifyAutoRenewAttributeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyAutoRenewAttributeResponse{}
@@ -33345,13 +42307,19 @@ func (client *Client) ModifyAutoRenewAttribute(request *ModifyAutoRenewAttribute
 	return _result, _err
 }
 
-/**
- * > You can also modify the automatic backup policy of a PolarDB cluster in the console. For more information, see [Backup settings](~~280422~~).
- *
- * @param request ModifyBackupPolicyRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return ModifyBackupPolicyResponse
- */
+// Summary:
+//
+// Modifies the automatic backup policy of a PolarDB cluster.
+//
+// Description:
+//
+// > You can also modify the automatic backup policy of a PolarDB cluster in the console. For more information, see [Backup settings](https://help.aliyun.com/document_detail/280422.html).
+//
+// @param request - ModifyBackupPolicyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyBackupPolicyResponse
 func (client *Client) ModifyBackupPolicyWithOptions(request *ModifyBackupPolicyRequest, runtime *util.RuntimeOptions) (_result *ModifyBackupPolicyResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -33449,12 +42417,17 @@ func (client *Client) ModifyBackupPolicyWithOptions(request *ModifyBackupPolicyR
 	return _result, _err
 }
 
-/**
- * > You can also modify the automatic backup policy of a PolarDB cluster in the console. For more information, see [Backup settings](~~280422~~).
- *
- * @param request ModifyBackupPolicyRequest
- * @return ModifyBackupPolicyResponse
- */
+// Summary:
+//
+// Modifies the automatic backup policy of a PolarDB cluster.
+//
+// Description:
+//
+// > You can also modify the automatic backup policy of a PolarDB cluster in the console. For more information, see [Backup settings](https://help.aliyun.com/document_detail/280422.html).
+//
+// @param request - ModifyBackupPolicyRequest
+//
+// @return ModifyBackupPolicyResponse
 func (client *Client) ModifyBackupPolicy(request *ModifyBackupPolicyRequest) (_result *ModifyBackupPolicyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyBackupPolicyResponse{}
@@ -33466,6 +42439,15 @@ func (client *Client) ModifyBackupPolicy(request *ModifyBackupPolicyRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the configurations of a PolarDB for MySQL cluster.
+//
+// @param request - ModifyDBClusterRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyDBClusterResponse
 func (client *Client) ModifyDBClusterWithOptions(request *ModifyDBClusterRequest, runtime *util.RuntimeOptions) (_result *ModifyDBClusterResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -33480,8 +42462,16 @@ func (client *Client) ModifyDBClusterWithOptions(request *ModifyDBClusterRequest
 		query["DBClusterId"] = request.DBClusterId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.DBNodeCrashList)) {
+		query["DBNodeCrashList"] = request.DBNodeCrashList
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.DataSyncMode)) {
 		query["DataSyncMode"] = request.DataSyncMode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FaultInjectionType)) {
+		query["FaultInjectionType"] = request.FaultInjectionType
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.FaultSimulateMode)) {
@@ -33539,6 +42529,13 @@ func (client *Client) ModifyDBClusterWithOptions(request *ModifyDBClusterRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the configurations of a PolarDB for MySQL cluster.
+//
+// @param request - ModifyDBClusterRequest
+//
+// @return ModifyDBClusterResponse
 func (client *Client) ModifyDBCluster(request *ModifyDBClusterRequest) (_result *ModifyDBClusterResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyDBClusterResponse{}
@@ -33550,6 +42547,15 @@ func (client *Client) ModifyDBCluster(request *ModifyDBClusterRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates or modifies the whitelists (IP whitelists and security groups) of a specified cluster.
+//
+// @param request - ModifyDBClusterAccessWhitelistRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyDBClusterAccessWhitelistResponse
 func (client *Client) ModifyDBClusterAccessWhitelistWithOptions(request *ModifyDBClusterAccessWhitelistRequest, runtime *util.RuntimeOptions) (_result *ModifyDBClusterAccessWhitelistResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -33623,6 +42629,13 @@ func (client *Client) ModifyDBClusterAccessWhitelistWithOptions(request *ModifyD
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates or modifies the whitelists (IP whitelists and security groups) of a specified cluster.
+//
+// @param request - ModifyDBClusterAccessWhitelistRequest
+//
+// @return ModifyDBClusterAccessWhitelistResponse
 func (client *Client) ModifyDBClusterAccessWhitelist(request *ModifyDBClusterAccessWhitelistRequest) (_result *ModifyDBClusterAccessWhitelistResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyDBClusterAccessWhitelistResponse{}
@@ -33634,6 +42647,15 @@ func (client *Client) ModifyDBClusterAccessWhitelist(request *ModifyDBClusterAcc
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies cluster parameters and applies them to specified nodes.
+//
+// @param request - ModifyDBClusterAndNodesParametersRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyDBClusterAndNodesParametersResponse
 func (client *Client) ModifyDBClusterAndNodesParametersWithOptions(request *ModifyDBClusterAndNodesParametersRequest, runtime *util.RuntimeOptions) (_result *ModifyDBClusterAndNodesParametersResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -33707,6 +42729,13 @@ func (client *Client) ModifyDBClusterAndNodesParametersWithOptions(request *Modi
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies cluster parameters and applies them to specified nodes.
+//
+// @param request - ModifyDBClusterAndNodesParametersRequest
+//
+// @return ModifyDBClusterAndNodesParametersResponse
 func (client *Client) ModifyDBClusterAndNodesParameters(request *ModifyDBClusterAndNodesParametersRequest) (_result *ModifyDBClusterAndNodesParametersResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyDBClusterAndNodesParametersResponse{}
@@ -33718,6 +42747,15 @@ func (client *Client) ModifyDBClusterAndNodesParameters(request *ModifyDBCluster
 	return _result, _err
 }
 
+// Summary:
+//
+// Enables or disables SQL collector for a PolarDB cluster. The features related to SQL collector include Audit Logs and SQL Explorer.
+//
+// @param request - ModifyDBClusterAuditLogCollectorRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyDBClusterAuditLogCollectorResponse
 func (client *Client) ModifyDBClusterAuditLogCollectorWithOptions(request *ModifyDBClusterAuditLogCollectorRequest, runtime *util.RuntimeOptions) (_result *ModifyDBClusterAuditLogCollectorResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -33771,6 +42809,13 @@ func (client *Client) ModifyDBClusterAuditLogCollectorWithOptions(request *Modif
 	return _result, _err
 }
 
+// Summary:
+//
+// Enables or disables SQL collector for a PolarDB cluster. The features related to SQL collector include Audit Logs and SQL Explorer.
+//
+// @param request - ModifyDBClusterAuditLogCollectorRequest
+//
+// @return ModifyDBClusterAuditLogCollectorResponse
 func (client *Client) ModifyDBClusterAuditLogCollector(request *ModifyDBClusterAuditLogCollectorRequest) (_result *ModifyDBClusterAuditLogCollectorResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyDBClusterAuditLogCollectorResponse{}
@@ -33782,6 +42827,15 @@ func (client *Client) ModifyDBClusterAuditLogCollector(request *ModifyDBClusterA
 	return _result, _err
 }
 
+// Summary:
+//
+// Enables or disables the cluster lock feature for a PolarDB cluster.
+//
+// @param request - ModifyDBClusterDeletionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyDBClusterDeletionResponse
 func (client *Client) ModifyDBClusterDeletionWithOptions(request *ModifyDBClusterDeletionRequest, runtime *util.RuntimeOptions) (_result *ModifyDBClusterDeletionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -33835,6 +42889,13 @@ func (client *Client) ModifyDBClusterDeletionWithOptions(request *ModifyDBCluste
 	return _result, _err
 }
 
+// Summary:
+//
+// Enables or disables the cluster lock feature for a PolarDB cluster.
+//
+// @param request - ModifyDBClusterDeletionRequest
+//
+// @return ModifyDBClusterDeletionResponse
 func (client *Client) ModifyDBClusterDeletion(request *ModifyDBClusterDeletionRequest) (_result *ModifyDBClusterDeletionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyDBClusterDeletionResponse{}
@@ -33846,6 +42907,15 @@ func (client *Client) ModifyDBClusterDeletion(request *ModifyDBClusterDeletionRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the name of a PolarDB cluster.
+//
+// @param request - ModifyDBClusterDescriptionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyDBClusterDescriptionResponse
 func (client *Client) ModifyDBClusterDescriptionWithOptions(request *ModifyDBClusterDescriptionRequest, runtime *util.RuntimeOptions) (_result *ModifyDBClusterDescriptionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -33899,6 +42969,13 @@ func (client *Client) ModifyDBClusterDescriptionWithOptions(request *ModifyDBClu
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the name of a PolarDB cluster.
+//
+// @param request - ModifyDBClusterDescriptionRequest
+//
+// @return ModifyDBClusterDescriptionResponse
 func (client *Client) ModifyDBClusterDescription(request *ModifyDBClusterDescriptionRequest) (_result *ModifyDBClusterDescriptionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyDBClusterDescriptionResponse{}
@@ -33910,6 +42987,15 @@ func (client *Client) ModifyDBClusterDescription(request *ModifyDBClusterDescrip
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the attributes of a specified PolarDB cluster endpoint. For example, you can modify the following attributes for the specified cluster endpoint: read/write mode, consistency level, transaction splitting, primary node accepts read requests, and connection pool. You can also call the operation to specify whether newly added nodes are automatically associated with the specified cluster endpoint.
+//
+// @param request - ModifyDBClusterEndpointRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyDBClusterEndpointResponse
 func (client *Client) ModifyDBClusterEndpointWithOptions(request *ModifyDBClusterEndpointRequest, runtime *util.RuntimeOptions) (_result *ModifyDBClusterEndpointResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -33983,6 +43069,13 @@ func (client *Client) ModifyDBClusterEndpointWithOptions(request *ModifyDBCluste
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the attributes of a specified PolarDB cluster endpoint. For example, you can modify the following attributes for the specified cluster endpoint: read/write mode, consistency level, transaction splitting, primary node accepts read requests, and connection pool. You can also call the operation to specify whether newly added nodes are automatically associated with the specified cluster endpoint.
+//
+// @param request - ModifyDBClusterEndpointRequest
+//
+// @return ModifyDBClusterEndpointResponse
 func (client *Client) ModifyDBClusterEndpoint(request *ModifyDBClusterEndpointRequest) (_result *ModifyDBClusterEndpointResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyDBClusterEndpointResponse{}
@@ -33994,13 +43087,19 @@ func (client *Client) ModifyDBClusterEndpoint(request *ModifyDBClusterEndpointRe
 	return _result, _err
 }
 
-/**
- * >  We recommend that you set the routine maintenance window to off-peak hours. Alibaba Cloud maintains your cluster within the specified maintenance window to minimize the negative impacts on your business.
- *
- * @param request ModifyDBClusterMaintainTimeRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return ModifyDBClusterMaintainTimeResponse
- */
+// Summary:
+//
+// Modifies the maintenance window of a PolarDB cluster.
+//
+// Description:
+//
+// >  We recommend that you set the routine maintenance window to off-peak hours. Alibaba Cloud maintains your cluster within the specified maintenance window to minimize the negative impacts on your business.
+//
+// @param request - ModifyDBClusterMaintainTimeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyDBClusterMaintainTimeResponse
 func (client *Client) ModifyDBClusterMaintainTimeWithOptions(request *ModifyDBClusterMaintainTimeRequest, runtime *util.RuntimeOptions) (_result *ModifyDBClusterMaintainTimeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -34054,12 +43153,17 @@ func (client *Client) ModifyDBClusterMaintainTimeWithOptions(request *ModifyDBCl
 	return _result, _err
 }
 
-/**
- * >  We recommend that you set the routine maintenance window to off-peak hours. Alibaba Cloud maintains your cluster within the specified maintenance window to minimize the negative impacts on your business.
- *
- * @param request ModifyDBClusterMaintainTimeRequest
- * @return ModifyDBClusterMaintainTimeResponse
- */
+// Summary:
+//
+// Modifies the maintenance window of a PolarDB cluster.
+//
+// Description:
+//
+// >  We recommend that you set the routine maintenance window to off-peak hours. Alibaba Cloud maintains your cluster within the specified maintenance window to minimize the negative impacts on your business.
+//
+// @param request - ModifyDBClusterMaintainTimeRequest
+//
+// @return ModifyDBClusterMaintainTimeResponse
 func (client *Client) ModifyDBClusterMaintainTime(request *ModifyDBClusterMaintainTimeRequest) (_result *ModifyDBClusterMaintainTimeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyDBClusterMaintainTimeResponse{}
@@ -34071,15 +43175,23 @@ func (client *Client) ModifyDBClusterMaintainTime(request *ModifyDBClusterMainta
 	return _result, _err
 }
 
-/**
- * *   You can call this operation to switch the task that migrates data from ApsaraDB for RDS to PolarDB.
- * *   You can call this operation to roll back the task that migrates data from ApsaraDB for RDS to PolarDB.
- * > Before you call this operation, ensure that a one-click upgrade task has been created for the cluster. You can call the [CreateDBCluster](~~98169~~) operation to create an upgrade task. Set the **CreationOption** parameter to **MigrationFromRDS**. For more information, see [Create a PolarDB for MySQL cluster by using the Migration from RDS method](~~121582~~).
- *
- * @param request ModifyDBClusterMigrationRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return ModifyDBClusterMigrationResponse
- */
+// Summary:
+//
+// Switches or rolls back the task that migrates data from ApsaraDB for RDS to PolarDB.
+//
+// Description:
+//
+//   You can call this operation to switch the task that migrates data from ApsaraDB for RDS to PolarDB.
+//
+// 	- You can call this operation to roll back the task that migrates data from ApsaraDB for RDS to PolarDB.
+//
+// > Before you call this operation, ensure that a one-click upgrade task has been created for the cluster. You can call the [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) operation to create an upgrade task. Set the **CreationOption*	- parameter to **MigrationFromRDS**. For more information, see [Create a PolarDB for MySQL cluster by using the Migration from RDS method](https://help.aliyun.com/document_detail/121582.html).
+//
+// @param request - ModifyDBClusterMigrationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyDBClusterMigrationResponse
 func (client *Client) ModifyDBClusterMigrationWithOptions(request *ModifyDBClusterMigrationRequest, runtime *util.RuntimeOptions) (_result *ModifyDBClusterMigrationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -34149,14 +43261,21 @@ func (client *Client) ModifyDBClusterMigrationWithOptions(request *ModifyDBClust
 	return _result, _err
 }
 
-/**
- * *   You can call this operation to switch the task that migrates data from ApsaraDB for RDS to PolarDB.
- * *   You can call this operation to roll back the task that migrates data from ApsaraDB for RDS to PolarDB.
- * > Before you call this operation, ensure that a one-click upgrade task has been created for the cluster. You can call the [CreateDBCluster](~~98169~~) operation to create an upgrade task. Set the **CreationOption** parameter to **MigrationFromRDS**. For more information, see [Create a PolarDB for MySQL cluster by using the Migration from RDS method](~~121582~~).
- *
- * @param request ModifyDBClusterMigrationRequest
- * @return ModifyDBClusterMigrationResponse
- */
+// Summary:
+//
+// Switches or rolls back the task that migrates data from ApsaraDB for RDS to PolarDB.
+//
+// Description:
+//
+//   You can call this operation to switch the task that migrates data from ApsaraDB for RDS to PolarDB.
+//
+// 	- You can call this operation to roll back the task that migrates data from ApsaraDB for RDS to PolarDB.
+//
+// > Before you call this operation, ensure that a one-click upgrade task has been created for the cluster. You can call the [CreateDBCluster](https://help.aliyun.com/document_detail/98169.html) operation to create an upgrade task. Set the **CreationOption*	- parameter to **MigrationFromRDS**. For more information, see [Create a PolarDB for MySQL cluster by using the Migration from RDS method](https://help.aliyun.com/document_detail/121582.html).
+//
+// @param request - ModifyDBClusterMigrationRequest
+//
+// @return ModifyDBClusterMigrationResponse
 func (client *Client) ModifyDBClusterMigration(request *ModifyDBClusterMigrationRequest) (_result *ModifyDBClusterMigrationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyDBClusterMigrationResponse{}
@@ -34168,23 +43287,39 @@ func (client *Client) ModifyDBClusterMigration(request *ModifyDBClusterMigration
 	return _result, _err
 }
 
-/**
- * *   When the monitoring data is collected every 5 seconds:
- *     *   If the query time range is less than or equal to 1 hour, the data is displayed at intervals of 5 seconds.
- *     *   If the query time range is less than or equal to one day, the data is displayed at intervals of 1 minute.
- *     *   If the query time range is less than or equal to seven days, the data is displayed at intervals of 10 minutes.
- *     *   If the query time range is less than or equal to 30 days, the data is displayed at intervals of 1 hour.
- *     *   When the query time range is greater than 30 days, the data is displayed at intervals of 1 day.
- * *   When the monitoring data is collected every 60 seconds:
- *     *   If the query time range is less than or equal to one day, the data is displayed at intervals of 1 minute.
- *     *   If the query time range is less than or equal to seven days, the data is displayed at intervals of 10 minutes.
- *     *   If the query time range is less than or equal to 30 days, the data is displayed at intervals of 1 hour.
- *     *   When the query time range is greater than 30 days, the data is displayed at intervals of 1 day.
- *
- * @param request ModifyDBClusterMonitorRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return ModifyDBClusterMonitorResponse
- */
+// Summary:
+//
+// Modifies the interval at which the monitoring data of a PolarDB cluster is collected.
+//
+// Description:
+//
+//   When the monitoring data is collected every 5 seconds:
+//
+//     	- If the query time range is less than or equal to 1 hour, the data is displayed at intervals of 5 seconds.
+//
+//     	- If the query time range is less than or equal to one day, the data is displayed at intervals of 1 minute.
+//
+//     	- If the query time range is less than or equal to seven days, the data is displayed at intervals of 10 minutes.
+//
+//     	- If the query time range is less than or equal to 30 days, the data is displayed at intervals of 1 hour.
+//
+//     	- When the query time range is greater than 30 days, the data is displayed at intervals of 1 day.
+//
+// 	- When the monitoring data is collected every 60 seconds:
+//
+//     	- If the query time range is less than or equal to one day, the data is displayed at intervals of 1 minute.
+//
+//     	- If the query time range is less than or equal to seven days, the data is displayed at intervals of 10 minutes.
+//
+//     	- If the query time range is less than or equal to 30 days, the data is displayed at intervals of 1 hour.
+//
+//     	- When the query time range is greater than 30 days, the data is displayed at intervals of 1 day.
+//
+// @param request - ModifyDBClusterMonitorRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyDBClusterMonitorResponse
 func (client *Client) ModifyDBClusterMonitorWithOptions(request *ModifyDBClusterMonitorRequest, runtime *util.RuntimeOptions) (_result *ModifyDBClusterMonitorResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -34238,22 +43373,37 @@ func (client *Client) ModifyDBClusterMonitorWithOptions(request *ModifyDBCluster
 	return _result, _err
 }
 
-/**
- * *   When the monitoring data is collected every 5 seconds:
- *     *   If the query time range is less than or equal to 1 hour, the data is displayed at intervals of 5 seconds.
- *     *   If the query time range is less than or equal to one day, the data is displayed at intervals of 1 minute.
- *     *   If the query time range is less than or equal to seven days, the data is displayed at intervals of 10 minutes.
- *     *   If the query time range is less than or equal to 30 days, the data is displayed at intervals of 1 hour.
- *     *   When the query time range is greater than 30 days, the data is displayed at intervals of 1 day.
- * *   When the monitoring data is collected every 60 seconds:
- *     *   If the query time range is less than or equal to one day, the data is displayed at intervals of 1 minute.
- *     *   If the query time range is less than or equal to seven days, the data is displayed at intervals of 10 minutes.
- *     *   If the query time range is less than or equal to 30 days, the data is displayed at intervals of 1 hour.
- *     *   When the query time range is greater than 30 days, the data is displayed at intervals of 1 day.
- *
- * @param request ModifyDBClusterMonitorRequest
- * @return ModifyDBClusterMonitorResponse
- */
+// Summary:
+//
+// Modifies the interval at which the monitoring data of a PolarDB cluster is collected.
+//
+// Description:
+//
+//   When the monitoring data is collected every 5 seconds:
+//
+//     	- If the query time range is less than or equal to 1 hour, the data is displayed at intervals of 5 seconds.
+//
+//     	- If the query time range is less than or equal to one day, the data is displayed at intervals of 1 minute.
+//
+//     	- If the query time range is less than or equal to seven days, the data is displayed at intervals of 10 minutes.
+//
+//     	- If the query time range is less than or equal to 30 days, the data is displayed at intervals of 1 hour.
+//
+//     	- When the query time range is greater than 30 days, the data is displayed at intervals of 1 day.
+//
+// 	- When the monitoring data is collected every 60 seconds:
+//
+//     	- If the query time range is less than or equal to one day, the data is displayed at intervals of 1 minute.
+//
+//     	- If the query time range is less than or equal to seven days, the data is displayed at intervals of 10 minutes.
+//
+//     	- If the query time range is less than or equal to 30 days, the data is displayed at intervals of 1 hour.
+//
+//     	- When the query time range is greater than 30 days, the data is displayed at intervals of 1 day.
+//
+// @param request - ModifyDBClusterMonitorRequest
+//
+// @return ModifyDBClusterMonitorResponse
 func (client *Client) ModifyDBClusterMonitor(request *ModifyDBClusterMonitorRequest) (_result *ModifyDBClusterMonitorResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyDBClusterMonitorResponse{}
@@ -34265,15 +43415,23 @@ func (client *Client) ModifyDBClusterMonitor(request *ModifyDBClusterMonitorRequ
 	return _result, _err
 }
 
-/**
- * PolarDB supports the parameter template feature to centrally manage clusters. You can configure a number of parameters at a time by using a parameter template and apply the template to a PolarDB cluster. For more information, see [Use a parameter template](~~207009~~).
- * **
- * **Only PolarDB for MySQL clusters support parameter templates.
- *
- * @param request ModifyDBClusterParametersRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return ModifyDBClusterParametersResponse
- */
+// Summary:
+//
+// Modifies the parameters of a specified PolarDB cluster or applies existing parameter templates to a specified cluster.
+//
+// Description:
+//
+// PolarDB supports the parameter template feature to centrally manage clusters. You can configure a number of parameters at a time by using a parameter template and apply the template to a PolarDB cluster. For more information, see [Use a parameter template](https://help.aliyun.com/document_detail/207009.html).
+//
+// **
+//
+// **Only PolarDB for MySQL clusters support parameter templates.
+//
+// @param request - ModifyDBClusterParametersRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyDBClusterParametersResponse
 func (client *Client) ModifyDBClusterParametersWithOptions(request *ModifyDBClusterParametersRequest, runtime *util.RuntimeOptions) (_result *ModifyDBClusterParametersResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -34343,14 +43501,21 @@ func (client *Client) ModifyDBClusterParametersWithOptions(request *ModifyDBClus
 	return _result, _err
 }
 
-/**
- * PolarDB supports the parameter template feature to centrally manage clusters. You can configure a number of parameters at a time by using a parameter template and apply the template to a PolarDB cluster. For more information, see [Use a parameter template](~~207009~~).
- * **
- * **Only PolarDB for MySQL clusters support parameter templates.
- *
- * @param request ModifyDBClusterParametersRequest
- * @return ModifyDBClusterParametersResponse
- */
+// Summary:
+//
+// Modifies the parameters of a specified PolarDB cluster or applies existing parameter templates to a specified cluster.
+//
+// Description:
+//
+// PolarDB supports the parameter template feature to centrally manage clusters. You can configure a number of parameters at a time by using a parameter template and apply the template to a PolarDB cluster. For more information, see [Use a parameter template](https://help.aliyun.com/document_detail/207009.html).
+//
+// **
+//
+// **Only PolarDB for MySQL clusters support parameter templates.
+//
+// @param request - ModifyDBClusterParametersRequest
+//
+// @return ModifyDBClusterParametersResponse
 func (client *Client) ModifyDBClusterParameters(request *ModifyDBClusterParametersRequest) (_result *ModifyDBClusterParametersResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyDBClusterParametersResponse{}
@@ -34362,6 +43527,15 @@ func (client *Client) ModifyDBClusterParameters(request *ModifyDBClusterParamete
 	return _result, _err
 }
 
+// Summary:
+//
+// Changes the primary zone of a PolarDB cluster.
+//
+// @param request - ModifyDBClusterPrimaryZoneRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyDBClusterPrimaryZoneResponse
 func (client *Client) ModifyDBClusterPrimaryZoneWithOptions(request *ModifyDBClusterPrimaryZoneRequest, runtime *util.RuntimeOptions) (_result *ModifyDBClusterPrimaryZoneResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -34443,6 +43617,13 @@ func (client *Client) ModifyDBClusterPrimaryZoneWithOptions(request *ModifyDBClu
 	return _result, _err
 }
 
+// Summary:
+//
+// Changes the primary zone of a PolarDB cluster.
+//
+// @param request - ModifyDBClusterPrimaryZoneRequest
+//
+// @return ModifyDBClusterPrimaryZoneResponse
 func (client *Client) ModifyDBClusterPrimaryZone(request *ModifyDBClusterPrimaryZoneRequest) (_result *ModifyDBClusterPrimaryZoneResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyDBClusterPrimaryZoneResponse{}
@@ -34454,6 +43635,11 @@ func (client *Client) ModifyDBClusterPrimaryZone(request *ModifyDBClusterPrimary
 	return _result, _err
 }
 
+// @param request - ModifyDBClusterResourceGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyDBClusterResourceGroupResponse
 func (client *Client) ModifyDBClusterResourceGroupWithOptions(request *ModifyDBClusterResourceGroupRequest, runtime *util.RuntimeOptions) (_result *ModifyDBClusterResourceGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -34511,6 +43697,9 @@ func (client *Client) ModifyDBClusterResourceGroupWithOptions(request *ModifyDBC
 	return _result, _err
 }
 
+// @param request - ModifyDBClusterResourceGroupRequest
+//
+// @return ModifyDBClusterResourceGroupResponse
 func (client *Client) ModifyDBClusterResourceGroup(request *ModifyDBClusterResourceGroupRequest) (_result *ModifyDBClusterResourceGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyDBClusterResourceGroupResponse{}
@@ -34522,6 +43711,15 @@ func (client *Client) ModifyDBClusterResourceGroup(request *ModifyDBClusterResou
 	return _result, _err
 }
 
+// Summary:
+//
+// Enables or disables Secure Sockets Layer (SSL) encryption or updates the Certificate Authorities (CA) certificate for a specified PolarDB cluster.
+//
+// @param request - ModifyDBClusterSSLRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyDBClusterSSLResponse
 func (client *Client) ModifyDBClusterSSLWithOptions(request *ModifyDBClusterSSLRequest, runtime *util.RuntimeOptions) (_result *ModifyDBClusterSSLResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -34587,6 +43785,13 @@ func (client *Client) ModifyDBClusterSSLWithOptions(request *ModifyDBClusterSSLR
 	return _result, _err
 }
 
+// Summary:
+//
+// Enables or disables Secure Sockets Layer (SSL) encryption or updates the Certificate Authorities (CA) certificate for a specified PolarDB cluster.
+//
+// @param request - ModifyDBClusterSSLRequest
+//
+// @return ModifyDBClusterSSLResponse
 func (client *Client) ModifyDBClusterSSL(request *ModifyDBClusterSSLRequest) (_result *ModifyDBClusterSSLResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyDBClusterSSLResponse{}
@@ -34598,6 +43803,15 @@ func (client *Client) ModifyDBClusterSSL(request *ModifyDBClusterSSLRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the configurations of a serverless cluster.
+//
+// @param request - ModifyDBClusterServerlessConfRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyDBClusterServerlessConfResponse
 func (client *Client) ModifyDBClusterServerlessConfWithOptions(request *ModifyDBClusterServerlessConfRequest, runtime *util.RuntimeOptions) (_result *ModifyDBClusterServerlessConfResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -34668,6 +43882,18 @@ func (client *Client) ModifyDBClusterServerlessConfWithOptions(request *ModifyDB
 		query["SecondsUntilAutoPause"] = request.SecondsUntilAutoPause
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ServerlessRuleCpuEnlargeThreshold)) {
+		query["ServerlessRuleCpuEnlargeThreshold"] = request.ServerlessRuleCpuEnlargeThreshold
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServerlessRuleCpuShrinkThreshold)) {
+		query["ServerlessRuleCpuShrinkThreshold"] = request.ServerlessRuleCpuShrinkThreshold
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServerlessRuleMode)) {
+		query["ServerlessRuleMode"] = request.ServerlessRuleMode
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -34691,6 +43917,13 @@ func (client *Client) ModifyDBClusterServerlessConfWithOptions(request *ModifyDB
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the configurations of a serverless cluster.
+//
+// @param request - ModifyDBClusterServerlessConfRequest
+//
+// @return ModifyDBClusterServerlessConfResponse
 func (client *Client) ModifyDBClusterServerlessConf(request *ModifyDBClusterServerlessConfRequest) (_result *ModifyDBClusterServerlessConfResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyDBClusterServerlessConfResponse{}
@@ -34702,6 +43935,15 @@ func (client *Client) ModifyDBClusterServerlessConf(request *ModifyDBClusterServ
 	return _result, _err
 }
 
+// Summary:
+//
+// Changes the storage capacity of a pay-as-you-go cluster of Enterprise Edition or a cluster of Standard Edition.
+//
+// @param request - ModifyDBClusterStorageSpaceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyDBClusterStorageSpaceResponse
 func (client *Client) ModifyDBClusterStorageSpaceWithOptions(request *ModifyDBClusterStorageSpaceRequest, runtime *util.RuntimeOptions) (_result *ModifyDBClusterStorageSpaceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -34771,6 +44013,13 @@ func (client *Client) ModifyDBClusterStorageSpaceWithOptions(request *ModifyDBCl
 	return _result, _err
 }
 
+// Summary:
+//
+// Changes the storage capacity of a pay-as-you-go cluster of Enterprise Edition or a cluster of Standard Edition.
+//
+// @param request - ModifyDBClusterStorageSpaceRequest
+//
+// @return ModifyDBClusterStorageSpaceResponse
 func (client *Client) ModifyDBClusterStorageSpace(request *ModifyDBClusterStorageSpaceRequest) (_result *ModifyDBClusterStorageSpaceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyDBClusterStorageSpaceResponse{}
@@ -34782,14 +44031,21 @@ func (client *Client) ModifyDBClusterStorageSpace(request *ModifyDBClusterStorag
 	return _result, _err
 }
 
-/**
- * > *   To perform this operation, you must activate KMS first. For more information, see [Purchase a dedicated KMS instance](~~153781~~).
- * > *   After TDE is enabled, you cannot disable TDE.
- *
- * @param request ModifyDBClusterTDERequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return ModifyDBClusterTDEResponse
- */
+// Summary:
+//
+// Enables the TDE feature or changes the encryption method for a specified PolarDB for MySQL cluster.
+//
+// Description:
+//
+// > 	- To perform this operation, you must activate KMS first. For more information, see [Purchase a dedicated KMS instance](https://help.aliyun.com/document_detail/153781.html).
+//
+// > 	- After TDE is enabled, you cannot disable TDE.
+//
+// @param request - ModifyDBClusterTDERequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyDBClusterTDEResponse
 func (client *Client) ModifyDBClusterTDEWithOptions(request *ModifyDBClusterTDERequest, runtime *util.RuntimeOptions) (_result *ModifyDBClusterTDEResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -34855,13 +44111,19 @@ func (client *Client) ModifyDBClusterTDEWithOptions(request *ModifyDBClusterTDER
 	return _result, _err
 }
 
-/**
- * > *   To perform this operation, you must activate KMS first. For more information, see [Purchase a dedicated KMS instance](~~153781~~).
- * > *   After TDE is enabled, you cannot disable TDE.
- *
- * @param request ModifyDBClusterTDERequest
- * @return ModifyDBClusterTDEResponse
- */
+// Summary:
+//
+// Enables the TDE feature or changes the encryption method for a specified PolarDB for MySQL cluster.
+//
+// Description:
+//
+// > 	- To perform this operation, you must activate KMS first. For more information, see [Purchase a dedicated KMS instance](https://help.aliyun.com/document_detail/153781.html).
+//
+// > 	- After TDE is enabled, you cannot disable TDE.
+//
+// @param request - ModifyDBClusterTDERequest
+//
+// @return ModifyDBClusterTDEResponse
 func (client *Client) ModifyDBClusterTDE(request *ModifyDBClusterTDERequest) (_result *ModifyDBClusterTDEResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyDBClusterTDEResponse{}
@@ -34873,6 +44135,15 @@ func (client *Client) ModifyDBClusterTDE(request *ModifyDBClusterTDERequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the description of a database in a PolarDB for MySQL cluster.
+//
+// @param request - ModifyDBDescriptionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyDBDescriptionResponse
 func (client *Client) ModifyDBDescriptionWithOptions(request *ModifyDBDescriptionRequest, runtime *util.RuntimeOptions) (_result *ModifyDBDescriptionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -34930,6 +44201,13 @@ func (client *Client) ModifyDBDescriptionWithOptions(request *ModifyDBDescriptio
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the description of a database in a PolarDB for MySQL cluster.
+//
+// @param request - ModifyDBDescriptionRequest
+//
+// @return ModifyDBDescriptionResponse
 func (client *Client) ModifyDBDescription(request *ModifyDBDescriptionRequest) (_result *ModifyDBDescriptionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyDBDescriptionResponse{}
@@ -34941,6 +44219,15 @@ func (client *Client) ModifyDBDescription(request *ModifyDBDescriptionRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the endpoints of a PolarDB cluster, including the primary endpoint, default cluster endpoint, custom cluster endpoint, and private domain name.
+//
+// @param request - ModifyDBEndpointAddressRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyDBEndpointAddressResponse
 func (client *Client) ModifyDBEndpointAddressWithOptions(request *ModifyDBEndpointAddressRequest, runtime *util.RuntimeOptions) (_result *ModifyDBEndpointAddressResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -35014,6 +44301,13 @@ func (client *Client) ModifyDBEndpointAddressWithOptions(request *ModifyDBEndpoi
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the endpoints of a PolarDB cluster, including the primary endpoint, default cluster endpoint, custom cluster endpoint, and private domain name.
+//
+// @param request - ModifyDBEndpointAddressRequest
+//
+// @return ModifyDBEndpointAddressResponse
 func (client *Client) ModifyDBEndpointAddress(request *ModifyDBEndpointAddressRequest) (_result *ModifyDBEndpointAddressResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyDBEndpointAddressResponse{}
@@ -35025,6 +44319,15 @@ func (client *Client) ModifyDBEndpointAddress(request *ModifyDBEndpointAddressRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Changes the node specifications of a PolarDB cluster.
+//
+// @param request - ModifyDBNodeClassRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyDBNodeClassResponse
 func (client *Client) ModifyDBNodeClassWithOptions(request *ModifyDBNodeClassRequest, runtime *util.RuntimeOptions) (_result *ModifyDBNodeClassResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -35102,6 +44405,13 @@ func (client *Client) ModifyDBNodeClassWithOptions(request *ModifyDBNodeClassReq
 	return _result, _err
 }
 
+// Summary:
+//
+// Changes the node specifications of a PolarDB cluster.
+//
+// @param request - ModifyDBNodeClassRequest
+//
+// @return ModifyDBNodeClassResponse
 func (client *Client) ModifyDBNodeClass(request *ModifyDBNodeClassRequest) (_result *ModifyDBNodeClassResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyDBNodeClassResponse{}
@@ -35113,6 +44423,15 @@ func (client *Client) ModifyDBNodeClass(request *ModifyDBNodeClassRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// Enables or disables a cluster node.
+//
+// @param request - ModifyDBNodeHotReplicaModeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyDBNodeHotReplicaModeResponse
 func (client *Client) ModifyDBNodeHotReplicaModeWithOptions(request *ModifyDBNodeHotReplicaModeRequest, runtime *util.RuntimeOptions) (_result *ModifyDBNodeHotReplicaModeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -35170,6 +44489,13 @@ func (client *Client) ModifyDBNodeHotReplicaModeWithOptions(request *ModifyDBNod
 	return _result, _err
 }
 
+// Summary:
+//
+// Enables or disables a cluster node.
+//
+// @param request - ModifyDBNodeHotReplicaModeRequest
+//
+// @return ModifyDBNodeHotReplicaModeResponse
 func (client *Client) ModifyDBNodeHotReplicaMode(request *ModifyDBNodeHotReplicaModeRequest) (_result *ModifyDBNodeHotReplicaModeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyDBNodeHotReplicaModeResponse{}
@@ -35181,6 +44507,15 @@ func (client *Client) ModifyDBNodeHotReplicaMode(request *ModifyDBNodeHotReplica
 	return _result, _err
 }
 
+// Summary:
+//
+// Changes the specifications of a node in a PolarDB cluster.
+//
+// @param request - ModifyDBNodesClassRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyDBNodesClassResponse
 func (client *Client) ModifyDBNodesClassWithOptions(request *ModifyDBNodesClassRequest, runtime *util.RuntimeOptions) (_result *ModifyDBNodesClassResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -35254,6 +44589,13 @@ func (client *Client) ModifyDBNodesClassWithOptions(request *ModifyDBNodesClassR
 	return _result, _err
 }
 
+// Summary:
+//
+// Changes the specifications of a node in a PolarDB cluster.
+//
+// @param request - ModifyDBNodesClassRequest
+//
+// @return ModifyDBNodesClassResponse
 func (client *Client) ModifyDBNodesClass(request *ModifyDBNodesClassRequest) (_result *ModifyDBNodesClassResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyDBNodesClassResponse{}
@@ -35265,6 +44607,15 @@ func (client *Client) ModifyDBNodesClass(request *ModifyDBNodesClassRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the parameters of a node and applies them to specified nodes.
+//
+// @param request - ModifyDBNodesParametersRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyDBNodesParametersResponse
 func (client *Client) ModifyDBNodesParametersWithOptions(request *ModifyDBNodesParametersRequest, runtime *util.RuntimeOptions) (_result *ModifyDBNodesParametersResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -35338,6 +44689,13 @@ func (client *Client) ModifyDBNodesParametersWithOptions(request *ModifyDBNodesP
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the parameters of a node and applies them to specified nodes.
+//
+// @param request - ModifyDBNodesParametersRequest
+//
+// @return ModifyDBNodesParametersResponse
 func (client *Client) ModifyDBNodesParameters(request *ModifyDBNodesParametersRequest) (_result *ModifyDBNodesParametersResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyDBNodesParametersResponse{}
@@ -35349,6 +44707,15 @@ func (client *Client) ModifyDBNodesParameters(request *ModifyDBNodesParametersRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies a Global Database Network (GDN).
+//
+// @param request - ModifyGlobalDatabaseNetworkRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyGlobalDatabaseNetworkResponse
 func (client *Client) ModifyGlobalDatabaseNetworkWithOptions(request *ModifyGlobalDatabaseNetworkRequest, runtime *util.RuntimeOptions) (_result *ModifyGlobalDatabaseNetworkResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -35410,6 +44777,13 @@ func (client *Client) ModifyGlobalDatabaseNetworkWithOptions(request *ModifyGlob
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies a Global Database Network (GDN).
+//
+// @param request - ModifyGlobalDatabaseNetworkRequest
+//
+// @return ModifyGlobalDatabaseNetworkResponse
 func (client *Client) ModifyGlobalDatabaseNetwork(request *ModifyGlobalDatabaseNetworkRequest) (_result *ModifyGlobalDatabaseNetworkResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyGlobalDatabaseNetworkResponse{}
@@ -35421,6 +44795,15 @@ func (client *Client) ModifyGlobalDatabaseNetwork(request *ModifyGlobalDatabaseN
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies an IP whitelist template.
+//
+// @param request - ModifyGlobalSecurityIPGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyGlobalSecurityIPGroupResponse
 func (client *Client) ModifyGlobalSecurityIPGroupWithOptions(request *ModifyGlobalSecurityIPGroupRequest, runtime *util.RuntimeOptions) (_result *ModifyGlobalSecurityIPGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -35490,6 +44873,13 @@ func (client *Client) ModifyGlobalSecurityIPGroupWithOptions(request *ModifyGlob
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies an IP whitelist template.
+//
+// @param request - ModifyGlobalSecurityIPGroupRequest
+//
+// @return ModifyGlobalSecurityIPGroupResponse
 func (client *Client) ModifyGlobalSecurityIPGroup(request *ModifyGlobalSecurityIPGroupRequest) (_result *ModifyGlobalSecurityIPGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyGlobalSecurityIPGroupResponse{}
@@ -35501,6 +44891,15 @@ func (client *Client) ModifyGlobalSecurityIPGroup(request *ModifyGlobalSecurityI
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the name of a global IP whitelist template.
+//
+// @param request - ModifyGlobalSecurityIPGroupNameRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyGlobalSecurityIPGroupNameResponse
 func (client *Client) ModifyGlobalSecurityIPGroupNameWithOptions(request *ModifyGlobalSecurityIPGroupNameRequest, runtime *util.RuntimeOptions) (_result *ModifyGlobalSecurityIPGroupNameResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -35566,6 +44965,13 @@ func (client *Client) ModifyGlobalSecurityIPGroupNameWithOptions(request *Modify
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the name of a global IP whitelist template.
+//
+// @param request - ModifyGlobalSecurityIPGroupNameRequest
+//
+// @return ModifyGlobalSecurityIPGroupNameResponse
 func (client *Client) ModifyGlobalSecurityIPGroupName(request *ModifyGlobalSecurityIPGroupNameRequest) (_result *ModifyGlobalSecurityIPGroupNameResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyGlobalSecurityIPGroupNameResponse{}
@@ -35577,6 +44983,15 @@ func (client *Client) ModifyGlobalSecurityIPGroupName(request *ModifyGlobalSecur
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the relationship between a cluster and a global IP whitelist template.
+//
+// @param request - ModifyGlobalSecurityIPGroupRelationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyGlobalSecurityIPGroupRelationResponse
 func (client *Client) ModifyGlobalSecurityIPGroupRelationWithOptions(request *ModifyGlobalSecurityIPGroupRelationRequest, runtime *util.RuntimeOptions) (_result *ModifyGlobalSecurityIPGroupRelationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -35642,6 +45057,13 @@ func (client *Client) ModifyGlobalSecurityIPGroupRelationWithOptions(request *Mo
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the relationship between a cluster and a global IP whitelist template.
+//
+// @param request - ModifyGlobalSecurityIPGroupRelationRequest
+//
+// @return ModifyGlobalSecurityIPGroupRelationResponse
 func (client *Client) ModifyGlobalSecurityIPGroupRelation(request *ModifyGlobalSecurityIPGroupRelationRequest) (_result *ModifyGlobalSecurityIPGroupRelationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyGlobalSecurityIPGroupRelationResponse{}
@@ -35653,6 +45075,15 @@ func (client *Client) ModifyGlobalSecurityIPGroupRelation(request *ModifyGlobalS
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the retention policy of the log backups in a PolarDB cluster.
+//
+// @param request - ModifyLogBackupPolicyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyLogBackupPolicyResponse
 func (client *Client) ModifyLogBackupPolicyWithOptions(request *ModifyLogBackupPolicyRequest, runtime *util.RuntimeOptions) (_result *ModifyLogBackupPolicyResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -35714,6 +45145,13 @@ func (client *Client) ModifyLogBackupPolicyWithOptions(request *ModifyLogBackupP
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the retention policy of the log backups in a PolarDB cluster.
+//
+// @param request - ModifyLogBackupPolicyRequest
+//
+// @return ModifyLogBackupPolicyResponse
 func (client *Client) ModifyLogBackupPolicy(request *ModifyLogBackupPolicyRequest) (_result *ModifyLogBackupPolicyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyLogBackupPolicyResponse{}
@@ -35725,6 +45163,15 @@ func (client *Client) ModifyLogBackupPolicy(request *ModifyLogBackupPolicyReques
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies or adds a data masking rule.
+//
+// @param request - ModifyMaskingRulesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyMaskingRulesResponse
 func (client *Client) ModifyMaskingRulesWithOptions(request *ModifyMaskingRulesRequest, runtime *util.RuntimeOptions) (_result *ModifyMaskingRulesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -35778,6 +45225,13 @@ func (client *Client) ModifyMaskingRulesWithOptions(request *ModifyMaskingRulesR
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies or adds a data masking rule.
+//
+// @param request - ModifyMaskingRulesRequest
+//
+// @return ModifyMaskingRulesResponse
 func (client *Client) ModifyMaskingRules(request *ModifyMaskingRulesRequest) (_result *ModifyMaskingRulesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyMaskingRulesResponse{}
@@ -35789,6 +45243,15 @@ func (client *Client) ModifyMaskingRules(request *ModifyMaskingRulesRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the switching time of a pending event.
+//
+// @param request - ModifyPendingMaintenanceActionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyPendingMaintenanceActionResponse
 func (client *Client) ModifyPendingMaintenanceActionWithOptions(request *ModifyPendingMaintenanceActionRequest, runtime *util.RuntimeOptions) (_result *ModifyPendingMaintenanceActionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -35854,6 +45317,13 @@ func (client *Client) ModifyPendingMaintenanceActionWithOptions(request *ModifyP
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the switching time of a pending event.
+//
+// @param request - ModifyPendingMaintenanceActionRequest
+//
+// @return ModifyPendingMaintenanceActionResponse
 func (client *Client) ModifyPendingMaintenanceAction(request *ModifyPendingMaintenanceActionRequest) (_result *ModifyPendingMaintenanceActionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyPendingMaintenanceActionResponse{}
@@ -35865,6 +45335,15 @@ func (client *Client) ModifyPendingMaintenanceAction(request *ModifyPendingMaint
 	return _result, _err
 }
 
+// Summary:
+//
+// Enables the PolarDB for AI feature for a cluster.
+//
+// @param request - OpenAITaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return OpenAITaskResponse
 func (client *Client) OpenAITaskWithOptions(request *OpenAITaskRequest, runtime *util.RuntimeOptions) (_result *OpenAITaskResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -35934,6 +45413,13 @@ func (client *Client) OpenAITaskWithOptions(request *OpenAITaskRequest, runtime 
 	return _result, _err
 }
 
+// Summary:
+//
+// Enables the PolarDB for AI feature for a cluster.
+//
+// @param request - OpenAITaskRequest
+//
+// @return OpenAITaskResponse
 func (client *Client) OpenAITask(request *OpenAITaskRequest) (_result *OpenAITaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &OpenAITaskResponse{}
@@ -35945,6 +45431,15 @@ func (client *Client) OpenAITask(request *OpenAITaskRequest) (_result *OpenAITas
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates the storage usage of a cluster.
+//
+// @param request - RefreshDBClusterStorageUsageRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RefreshDBClusterStorageUsageResponse
 func (client *Client) RefreshDBClusterStorageUsageWithOptions(request *RefreshDBClusterStorageUsageRequest, runtime *util.RuntimeOptions) (_result *RefreshDBClusterStorageUsageResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -35994,6 +45489,13 @@ func (client *Client) RefreshDBClusterStorageUsageWithOptions(request *RefreshDB
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates the storage usage of a cluster.
+//
+// @param request - RefreshDBClusterStorageUsageRequest
+//
+// @return RefreshDBClusterStorageUsageResponse
 func (client *Client) RefreshDBClusterStorageUsage(request *RefreshDBClusterStorageUsageRequest) (_result *RefreshDBClusterStorageUsageResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RefreshDBClusterStorageUsageResponse{}
@@ -36005,13 +45507,19 @@ func (client *Client) RefreshDBClusterStorageUsage(request *RefreshDBClusterStor
 	return _result, _err
 }
 
-/**
- * >  You cannot remove the primary cluster from a GDN.
- *
- * @param request RemoveDBClusterFromGDNRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return RemoveDBClusterFromGDNResponse
- */
+// Summary:
+//
+// Removes a secondary cluster from a GDN.
+//
+// Description:
+//
+// >  You cannot remove the primary cluster from a GDN.
+//
+// @param request - RemoveDBClusterFromGDNRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RemoveDBClusterFromGDNResponse
 func (client *Client) RemoveDBClusterFromGDNWithOptions(request *RemoveDBClusterFromGDNRequest, runtime *util.RuntimeOptions) (_result *RemoveDBClusterFromGDNResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -36069,12 +45577,17 @@ func (client *Client) RemoveDBClusterFromGDNWithOptions(request *RemoveDBCluster
 	return _result, _err
 }
 
-/**
- * >  You cannot remove the primary cluster from a GDN.
- *
- * @param request RemoveDBClusterFromGDNRequest
- * @return RemoveDBClusterFromGDNResponse
- */
+// Summary:
+//
+// Removes a secondary cluster from a GDN.
+//
+// Description:
+//
+// >  You cannot remove the primary cluster from a GDN.
+//
+// @param request - RemoveDBClusterFromGDNRequest
+//
+// @return RemoveDBClusterFromGDNResponse
 func (client *Client) RemoveDBClusterFromGDN(request *RemoveDBClusterFromGDNRequest) (_result *RemoveDBClusterFromGDNResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RemoveDBClusterFromGDNResponse{}
@@ -36086,14 +45599,21 @@ func (client *Client) RemoveDBClusterFromGDN(request *RemoveDBClusterFromGDNRequ
 	return _result, _err
 }
 
-/**
- * >- Only PolarDB for MySQL clusters support this operation.
- * >- If the privileged account of your cluster encounters exceptions, you can call this operation to reset the permissions. For example, the permissions are accidentally revoked.
- *
- * @param request ResetAccountRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return ResetAccountResponse
- */
+// Summary:
+//
+// Resets the permissions of a privileged account for a PolarDB cluster.
+//
+// Description:
+//
+// >- Only PolarDB for MySQL clusters support this operation.
+//
+// >- If the privileged account of your cluster encounters exceptions, you can call this operation to reset the permissions. For example, the permissions are accidentally revoked.
+//
+// @param request - ResetAccountRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ResetAccountResponse
 func (client *Client) ResetAccountWithOptions(request *ResetAccountRequest, runtime *util.RuntimeOptions) (_result *ResetAccountResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -36151,13 +45671,19 @@ func (client *Client) ResetAccountWithOptions(request *ResetAccountRequest, runt
 	return _result, _err
 }
 
-/**
- * >- Only PolarDB for MySQL clusters support this operation.
- * >- If the privileged account of your cluster encounters exceptions, you can call this operation to reset the permissions. For example, the permissions are accidentally revoked.
- *
- * @param request ResetAccountRequest
- * @return ResetAccountResponse
- */
+// Summary:
+//
+// Resets the permissions of a privileged account for a PolarDB cluster.
+//
+// Description:
+//
+// >- Only PolarDB for MySQL clusters support this operation.
+//
+// >- If the privileged account of your cluster encounters exceptions, you can call this operation to reset the permissions. For example, the permissions are accidentally revoked.
+//
+// @param request - ResetAccountRequest
+//
+// @return ResetAccountResponse
 func (client *Client) ResetAccount(request *ResetAccountRequest) (_result *ResetAccountResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ResetAccountResponse{}
@@ -36169,6 +45695,15 @@ func (client *Client) ResetAccount(request *ResetAccountRequest) (_result *Reset
 	return _result, _err
 }
 
+// Summary:
+//
+// Rebuilds a secondary cluster in a Global Database Network (GDN).
+//
+// @param request - ResetGlobalDatabaseNetworkRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ResetGlobalDatabaseNetworkResponse
 func (client *Client) ResetGlobalDatabaseNetworkWithOptions(request *ResetGlobalDatabaseNetworkRequest, runtime *util.RuntimeOptions) (_result *ResetGlobalDatabaseNetworkResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -36230,6 +45765,13 @@ func (client *Client) ResetGlobalDatabaseNetworkWithOptions(request *ResetGlobal
 	return _result, _err
 }
 
+// Summary:
+//
+// Rebuilds a secondary cluster in a Global Database Network (GDN).
+//
+// @param request - ResetGlobalDatabaseNetworkRequest
+//
+// @return ResetGlobalDatabaseNetworkResponse
 func (client *Client) ResetGlobalDatabaseNetwork(request *ResetGlobalDatabaseNetworkRequest) (_result *ResetGlobalDatabaseNetworkResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ResetGlobalDatabaseNetworkResponse{}
@@ -36241,6 +45783,15 @@ func (client *Client) ResetGlobalDatabaseNetwork(request *ResetGlobalDatabaseNet
 	return _result, _err
 }
 
+// Summary:
+//
+// Restarts database links.
+//
+// @param request - RestartDBLinkRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RestartDBLinkResponse
 func (client *Client) RestartDBLinkWithOptions(request *RestartDBLinkRequest, runtime *util.RuntimeOptions) (_result *RestartDBLinkResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -36294,6 +45845,13 @@ func (client *Client) RestartDBLinkWithOptions(request *RestartDBLinkRequest, ru
 	return _result, _err
 }
 
+// Summary:
+//
+// Restarts database links.
+//
+// @param request - RestartDBLinkRequest
+//
+// @return RestartDBLinkResponse
 func (client *Client) RestartDBLink(request *RestartDBLinkRequest) (_result *RestartDBLinkResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RestartDBLinkResponse{}
@@ -36305,6 +45863,15 @@ func (client *Client) RestartDBLink(request *RestartDBLinkRequest) (_result *Res
 	return _result, _err
 }
 
+// Summary:
+//
+// Restarts a node in a PolarDB cluster.
+//
+// @param request - RestartDBNodeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RestartDBNodeResponse
 func (client *Client) RestartDBNodeWithOptions(request *RestartDBNodeRequest, runtime *util.RuntimeOptions) (_result *RestartDBNodeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -36354,6 +45921,13 @@ func (client *Client) RestartDBNodeWithOptions(request *RestartDBNodeRequest, ru
 	return _result, _err
 }
 
+// Summary:
+//
+// Restarts a node in a PolarDB cluster.
+//
+// @param request - RestartDBNodeRequest
+//
+// @return RestartDBNodeResponse
 func (client *Client) RestartDBNode(request *RestartDBNodeRequest) (_result *RestartDBNodeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RestartDBNodeResponse{}
@@ -36365,6 +45939,15 @@ func (client *Client) RestartDBNode(request *RestartDBNodeRequest) (_result *Res
 	return _result, _err
 }
 
+// Summary:
+//
+// Restores PolarDB databases and tables.
+//
+// @param request - RestoreTableRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RestoreTableResponse
 func (client *Client) RestoreTableWithOptions(request *RestoreTableRequest, runtime *util.RuntimeOptions) (_result *RestoreTableResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -36430,6 +46013,13 @@ func (client *Client) RestoreTableWithOptions(request *RestoreTableRequest, runt
 	return _result, _err
 }
 
+// Summary:
+//
+// Restores PolarDB databases and tables.
+//
+// @param request - RestoreTableRequest
+//
+// @return RestoreTableResponse
 func (client *Client) RestoreTable(request *RestoreTableRequest) (_result *RestoreTableResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RestoreTableResponse{}
@@ -36441,6 +46031,15 @@ func (client *Client) RestoreTable(request *RestoreTableRequest) (_result *Resto
 	return _result, _err
 }
 
+// Summary:
+//
+// Revokes the access permissions on one or more databases from a specified PolarDB standard account.
+//
+// @param request - RevokeAccountPrivilegeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RevokeAccountPrivilegeResponse
 func (client *Client) RevokeAccountPrivilegeWithOptions(request *RevokeAccountPrivilegeRequest, runtime *util.RuntimeOptions) (_result *RevokeAccountPrivilegeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -36498,6 +46097,13 @@ func (client *Client) RevokeAccountPrivilegeWithOptions(request *RevokeAccountPr
 	return _result, _err
 }
 
+// Summary:
+//
+// Revokes the access permissions on one or more databases from a specified PolarDB standard account.
+//
+// @param request - RevokeAccountPrivilegeRequest
+//
+// @return RevokeAccountPrivilegeResponse
 func (client *Client) RevokeAccountPrivilege(request *RevokeAccountPrivilegeRequest) (_result *RevokeAccountPrivilegeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RevokeAccountPrivilegeResponse{}
@@ -36509,6 +46115,11 @@ func (client *Client) RevokeAccountPrivilege(request *RevokeAccountPrivilegeRequ
 	return _result, _err
 }
 
+// @param request - SwitchOverGlobalDatabaseNetworkRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SwitchOverGlobalDatabaseNetworkResponse
 func (client *Client) SwitchOverGlobalDatabaseNetworkWithOptions(request *SwitchOverGlobalDatabaseNetworkRequest, runtime *util.RuntimeOptions) (_result *SwitchOverGlobalDatabaseNetworkResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -36578,6 +46189,9 @@ func (client *Client) SwitchOverGlobalDatabaseNetworkWithOptions(request *Switch
 	return _result, _err
 }
 
+// @param request - SwitchOverGlobalDatabaseNetworkRequest
+//
+// @return SwitchOverGlobalDatabaseNetworkResponse
 func (client *Client) SwitchOverGlobalDatabaseNetwork(request *SwitchOverGlobalDatabaseNetworkRequest) (_result *SwitchOverGlobalDatabaseNetworkResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SwitchOverGlobalDatabaseNetworkResponse{}
@@ -36589,6 +46203,11 @@ func (client *Client) SwitchOverGlobalDatabaseNetwork(request *SwitchOverGlobalD
 	return _result, _err
 }
 
+// @param request - TagResourcesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return TagResourcesResponse
 func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runtime *util.RuntimeOptions) (_result *TagResourcesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -36650,6 +46269,9 @@ func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runt
 	return _result, _err
 }
 
+// @param request - TagResourcesRequest
+//
+// @return TagResourcesResponse
 func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagResourcesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &TagResourcesResponse{}
@@ -36661,6 +46283,15 @@ func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Temporarily upgrades the configuration of a PolarDB cluster or adds one or more nodes to a cluster.
+//
+// @param request - TempModifyDBNodeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return TempModifyDBNodeResponse
 func (client *Client) TempModifyDBNodeWithOptions(request *TempModifyDBNodeRequest, runtime *util.RuntimeOptions) (_result *TempModifyDBNodeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -36730,6 +46361,13 @@ func (client *Client) TempModifyDBNodeWithOptions(request *TempModifyDBNodeReque
 	return _result, _err
 }
 
+// Summary:
+//
+// Temporarily upgrades the configuration of a PolarDB cluster or adds one or more nodes to a cluster.
+//
+// @param request - TempModifyDBNodeRequest
+//
+// @return TempModifyDBNodeResponse
 func (client *Client) TempModifyDBNode(request *TempModifyDBNodeRequest) (_result *TempModifyDBNodeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &TempModifyDBNodeResponse{}
@@ -36741,15 +46379,23 @@ func (client *Client) TempModifyDBNode(request *TempModifyDBNodeRequest) (_resul
 	return _result, _err
 }
 
-/**
- * > *   PolarDB clusters support the subscription and pay-as-you-go billing methods. You can change the billing method from subscription to pay-as-you-go or from pay-as-you-go to subscription based on your business requirements. For more information, see [Change the billing method from subscription to pay-as-you-go](~~172886~~) and [Change the billing method from pay-as-you-go to subscription](~~84076~~).
- * >*   You cannot change the billing method from pay-as-you-go to subscription if your account balance is insufficient.
- * >*   If you change the billing method from subscription to pay-as-you-go, the system automatically refunds the balance of the prepaid subscription fees.
- *
- * @param request TransformDBClusterPayTypeRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return TransformDBClusterPayTypeResponse
- */
+// Summary:
+//
+// Changes the billing method of a PolarDB cluster.
+//
+// Description:
+//
+// > 	- PolarDB clusters support the subscription and pay-as-you-go billing methods. You can change the billing method from subscription to pay-as-you-go or from pay-as-you-go to subscription based on your business requirements. For more information, see [Change the billing method from subscription to pay-as-you-go](https://help.aliyun.com/document_detail/172886.html) and [Change the billing method from pay-as-you-go to subscription](https://help.aliyun.com/document_detail/84076.html).
+//
+// >	- You cannot change the billing method from pay-as-you-go to subscription if your account balance is insufficient.
+//
+// >	- If you change the billing method from subscription to pay-as-you-go, the system automatically refunds the balance of the prepaid subscription fees.
+//
+// @param request - TransformDBClusterPayTypeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return TransformDBClusterPayTypeResponse
 func (client *Client) TransformDBClusterPayTypeWithOptions(request *TransformDBClusterPayTypeRequest, runtime *util.RuntimeOptions) (_result *TransformDBClusterPayTypeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -36823,14 +46469,21 @@ func (client *Client) TransformDBClusterPayTypeWithOptions(request *TransformDBC
 	return _result, _err
 }
 
-/**
- * > *   PolarDB clusters support the subscription and pay-as-you-go billing methods. You can change the billing method from subscription to pay-as-you-go or from pay-as-you-go to subscription based on your business requirements. For more information, see [Change the billing method from subscription to pay-as-you-go](~~172886~~) and [Change the billing method from pay-as-you-go to subscription](~~84076~~).
- * >*   You cannot change the billing method from pay-as-you-go to subscription if your account balance is insufficient.
- * >*   If you change the billing method from subscription to pay-as-you-go, the system automatically refunds the balance of the prepaid subscription fees.
- *
- * @param request TransformDBClusterPayTypeRequest
- * @return TransformDBClusterPayTypeResponse
- */
+// Summary:
+//
+// Changes the billing method of a PolarDB cluster.
+//
+// Description:
+//
+// > 	- PolarDB clusters support the subscription and pay-as-you-go billing methods. You can change the billing method from subscription to pay-as-you-go or from pay-as-you-go to subscription based on your business requirements. For more information, see [Change the billing method from subscription to pay-as-you-go](https://help.aliyun.com/document_detail/172886.html) and [Change the billing method from pay-as-you-go to subscription](https://help.aliyun.com/document_detail/84076.html).
+//
+// >	- You cannot change the billing method from pay-as-you-go to subscription if your account balance is insufficient.
+//
+// >	- If you change the billing method from subscription to pay-as-you-go, the system automatically refunds the balance of the prepaid subscription fees.
+//
+// @param request - TransformDBClusterPayTypeRequest
+//
+// @return TransformDBClusterPayTypeResponse
 func (client *Client) TransformDBClusterPayType(request *TransformDBClusterPayTypeRequest) (_result *TransformDBClusterPayTypeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &TransformDBClusterPayTypeResponse{}
@@ -36842,6 +46495,15 @@ func (client *Client) TransformDBClusterPayType(request *TransformDBClusterPayTy
 	return _result, _err
 }
 
+// Summary:
+//
+// Unbinds tags from PolarDB clusters.
+//
+// @param request - UntagResourcesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UntagResourcesResponse
 func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, runtime *util.RuntimeOptions) (_result *UntagResourcesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -36907,6 +46569,13 @@ func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// Unbinds tags from PolarDB clusters.
+//
+// @param request - UntagResourcesRequest
+//
+// @return UntagResourcesResponse
 func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *UntagResourcesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UntagResourcesResponse{}
@@ -36918,14 +46587,21 @@ func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *U
 	return _result, _err
 }
 
-/**
- * > *  You can update only the revision version of a PolarDB for MySQL cluster, for example, from 8.0.1.1.3 to 8.0.1.1.4.
- * >*   You can use only your Alibaba Cloud account to create scheduled tasks that update the kernel version of a PolarDB for MySQL cluster. RAM users are not authorized to update the kernel version of a PolarDB for MySQL cluster.
- *
- * @param request UpgradeDBClusterVersionRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return UpgradeDBClusterVersionResponse
- */
+// Summary:
+//
+// Upgrades the kernel version of a PolarDB for MySQL cluster.
+//
+// Description:
+//
+// > 	- You can update only the revision version of a PolarDB for MySQL cluster, for example, from 8.0.1.1.3 to 8.0.1.1.4.
+//
+// >	- You can use only your Alibaba Cloud account to create scheduled tasks that update the kernel version of a PolarDB for MySQL cluster. RAM users are not authorized to update the kernel version of a PolarDB for MySQL cluster.
+//
+// @param request - UpgradeDBClusterVersionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpgradeDBClusterVersionResponse
 func (client *Client) UpgradeDBClusterVersionWithOptions(request *UpgradeDBClusterVersionRequest, runtime *util.RuntimeOptions) (_result *UpgradeDBClusterVersionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -36968,6 +46644,10 @@ func (client *Client) UpgradeDBClusterVersionWithOptions(request *UpgradeDBClust
 		query["TargetDBRevisionVersionCode"] = request.TargetDBRevisionVersionCode
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.TargetProxyRevisionVersionCode)) {
+		query["TargetProxyRevisionVersionCode"] = request.TargetProxyRevisionVersionCode
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.UpgradeLabel)) {
 		query["UpgradeLabel"] = request.UpgradeLabel
 	}
@@ -37003,13 +46683,19 @@ func (client *Client) UpgradeDBClusterVersionWithOptions(request *UpgradeDBClust
 	return _result, _err
 }
 
-/**
- * > *  You can update only the revision version of a PolarDB for MySQL cluster, for example, from 8.0.1.1.3 to 8.0.1.1.4.
- * >*   You can use only your Alibaba Cloud account to create scheduled tasks that update the kernel version of a PolarDB for MySQL cluster. RAM users are not authorized to update the kernel version of a PolarDB for MySQL cluster.
- *
- * @param request UpgradeDBClusterVersionRequest
- * @return UpgradeDBClusterVersionResponse
- */
+// Summary:
+//
+// Upgrades the kernel version of a PolarDB for MySQL cluster.
+//
+// Description:
+//
+// > 	- You can update only the revision version of a PolarDB for MySQL cluster, for example, from 8.0.1.1.3 to 8.0.1.1.4.
+//
+// >	- You can use only your Alibaba Cloud account to create scheduled tasks that update the kernel version of a PolarDB for MySQL cluster. RAM users are not authorized to update the kernel version of a PolarDB for MySQL cluster.
+//
+// @param request - UpgradeDBClusterVersionRequest
+//
+// @return UpgradeDBClusterVersionResponse
 func (client *Client) UpgradeDBClusterVersion(request *UpgradeDBClusterVersionRequest) (_result *UpgradeDBClusterVersionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpgradeDBClusterVersionResponse{}
