@@ -1885,6 +1885,162 @@ func (s *AddSkillGroupsToUserResponse) SetBody(v *AddSkillGroupsToUserResponseBo
 	return s
 }
 
+type AddTicketTaskRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// assignee@ccc-test
+	Assignee *string `json:"Assignee,omitempty" xml:"Assignee,omitempty"`
+	// This parameter is required.
+	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ccc-test
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// After
+	Position *string `json:"Position,omitempty" xml:"Position,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 3b8c672f-48f6-45f5-bf41-9d4cb2b4a716
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 3d26b90a-c5d2-4b09-8219-********
+	TicketId *string `json:"TicketId,omitempty" xml:"TicketId,omitempty"`
+}
+
+func (s AddTicketTaskRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddTicketTaskRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AddTicketTaskRequest) SetAssignee(v string) *AddTicketTaskRequest {
+	s.Assignee = &v
+	return s
+}
+
+func (s *AddTicketTaskRequest) SetComment(v string) *AddTicketTaskRequest {
+	s.Comment = &v
+	return s
+}
+
+func (s *AddTicketTaskRequest) SetInstanceId(v string) *AddTicketTaskRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *AddTicketTaskRequest) SetPosition(v string) *AddTicketTaskRequest {
+	s.Position = &v
+	return s
+}
+
+func (s *AddTicketTaskRequest) SetTaskId(v string) *AddTicketTaskRequest {
+	s.TaskId = &v
+	return s
+}
+
+func (s *AddTicketTaskRequest) SetTicketId(v string) *AddTicketTaskRequest {
+	s.TicketId = &v
+	return s
+}
+
+type AddTicketTaskResponseBody struct {
+	// example:
+	//
+	// OK
+	Code *string     `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32    `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string   `json:"Message,omitempty" xml:"Message,omitempty"`
+	Params         []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+	// example:
+	//
+	// B06B3244-1B44-481B-90C4-F2F92E59D6B5
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s AddTicketTaskResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddTicketTaskResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *AddTicketTaskResponseBody) SetCode(v string) *AddTicketTaskResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *AddTicketTaskResponseBody) SetData(v interface{}) *AddTicketTaskResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *AddTicketTaskResponseBody) SetHttpStatusCode(v int32) *AddTicketTaskResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *AddTicketTaskResponseBody) SetMessage(v string) *AddTicketTaskResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *AddTicketTaskResponseBody) SetParams(v []*string) *AddTicketTaskResponseBody {
+	s.Params = v
+	return s
+}
+
+func (s *AddTicketTaskResponseBody) SetRequestId(v string) *AddTicketTaskResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type AddTicketTaskResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AddTicketTaskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s AddTicketTaskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddTicketTaskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *AddTicketTaskResponse) SetHeaders(v map[string]*string) *AddTicketTaskResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *AddTicketTaskResponse) SetStatusCode(v int32) *AddTicketTaskResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *AddTicketTaskResponse) SetBody(v *AddTicketTaskResponseBody) *AddTicketTaskResponse {
+	s.Body = v
+	return s
+}
+
 type AddUsersToSkillGroupRequest struct {
 	// This parameter is required.
 	//
@@ -8214,6 +8370,158 @@ func (s *CreateSkillGroupResponse) SetBody(v *CreateSkillGroupResponseBody) *Cre
 	return s
 }
 
+type CreateTicketRequest struct {
+	// example:
+	//
+	// job-38860977107324****
+	ContactId *string `json:"ContactId,omitempty" xml:"ContactId,omitempty"`
+	Context   *string `json:"Context,omitempty" xml:"Context,omitempty"`
+	// example:
+	//
+	// 51e155ce-3747-4f21-b402-13c69597b920
+	CustomerId *string `json:"CustomerId,omitempty" xml:"CustomerId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ccc-test
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// CHAT
+	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	// example:
+	//
+	// e9e4c76c-948d-4a6e-9ce2-9da0f5967a73
+	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	Title      *string `json:"Title,omitempty" xml:"Title,omitempty"`
+}
+
+func (s CreateTicketRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTicketRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTicketRequest) SetContactId(v string) *CreateTicketRequest {
+	s.ContactId = &v
+	return s
+}
+
+func (s *CreateTicketRequest) SetContext(v string) *CreateTicketRequest {
+	s.Context = &v
+	return s
+}
+
+func (s *CreateTicketRequest) SetCustomerId(v string) *CreateTicketRequest {
+	s.CustomerId = &v
+	return s
+}
+
+func (s *CreateTicketRequest) SetInstanceId(v string) *CreateTicketRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *CreateTicketRequest) SetSource(v string) *CreateTicketRequest {
+	s.Source = &v
+	return s
+}
+
+func (s *CreateTicketRequest) SetTemplateId(v string) *CreateTicketRequest {
+	s.TemplateId = &v
+	return s
+}
+
+func (s *CreateTicketRequest) SetTitle(v string) *CreateTicketRequest {
+	s.Title = &v
+	return s
+}
+
+type CreateTicketResponseBody struct {
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// 3d26b90a-c5d2-4b09-8219-60cda1******
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// A450574A-337F-43E2-BC59-9C6594C994C6
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateTicketResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTicketResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTicketResponseBody) SetCode(v string) *CreateTicketResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CreateTicketResponseBody) SetData(v string) *CreateTicketResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *CreateTicketResponseBody) SetHttpStatusCode(v int32) *CreateTicketResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *CreateTicketResponseBody) SetMessage(v string) *CreateTicketResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CreateTicketResponseBody) SetRequestId(v string) *CreateTicketResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateTicketResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateTicketResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateTicketResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTicketResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTicketResponse) SetHeaders(v map[string]*string) *CreateTicketResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateTicketResponse) SetStatusCode(v int32) *CreateTicketResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateTicketResponse) SetBody(v *CreateTicketResponseBody) *CreateTicketResponse {
+	s.Body = v
+	return s
+}
+
 type CreateUserRequest struct {
 	AvatarUrl *string `json:"AvatarUrl,omitempty" xml:"AvatarUrl,omitempty"`
 	// example:
@@ -9619,6 +9927,236 @@ func (s *DeleteSkillGroupResponse) SetBody(v *DeleteSkillGroupResponseBody) *Del
 	return s
 }
 
+type DeleteTicketRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ccc-test
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// 3d26b90a-c5d2-4b09-8219-********
+	TicketId *string `json:"TicketId,omitempty" xml:"TicketId,omitempty"`
+}
+
+func (s DeleteTicketRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteTicketRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteTicketRequest) SetInstanceId(v string) *DeleteTicketRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DeleteTicketRequest) SetTicketId(v string) *DeleteTicketRequest {
+	s.TicketId = &v
+	return s
+}
+
+type DeleteTicketResponseBody struct {
+	// example:
+	//
+	// OK
+	Code *string     `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32    `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string   `json:"Message,omitempty" xml:"Message,omitempty"`
+	Params         []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 2263B273-AC1B-44EB-BA98-87F2322C6780
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteTicketResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteTicketResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteTicketResponseBody) SetCode(v string) *DeleteTicketResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DeleteTicketResponseBody) SetData(v interface{}) *DeleteTicketResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DeleteTicketResponseBody) SetHttpStatusCode(v int32) *DeleteTicketResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *DeleteTicketResponseBody) SetMessage(v string) *DeleteTicketResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DeleteTicketResponseBody) SetParams(v []*string) *DeleteTicketResponseBody {
+	s.Params = v
+	return s
+}
+
+func (s *DeleteTicketResponseBody) SetRequestId(v string) *DeleteTicketResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteTicketResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteTicketResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteTicketResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteTicketResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteTicketResponse) SetHeaders(v map[string]*string) *DeleteTicketResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteTicketResponse) SetStatusCode(v int32) *DeleteTicketResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteTicketResponse) SetBody(v *DeleteTicketResponseBody) *DeleteTicketResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteTicketTemplateRequest struct {
+	// example:
+	//
+	// ef1e71e9-ae9d-487c-96ad-9181d85cf802
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// **43c2671b-8939-4223-***-6bd187905cc8_1717664210492
+	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+}
+
+func (s DeleteTicketTemplateRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteTicketTemplateRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteTicketTemplateRequest) SetInstanceId(v string) *DeleteTicketTemplateRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DeleteTicketTemplateRequest) SetTemplateId(v string) *DeleteTicketTemplateRequest {
+	s.TemplateId = &v
+	return s
+}
+
+type DeleteTicketTemplateResponseBody struct {
+	// example:
+	//
+	// OK
+	Code *string     `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32    `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string   `json:"Message,omitempty" xml:"Message,omitempty"`
+	Params         []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 01B12EE4-6AF2-4730-8B78-EC15F4E5C025
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteTicketTemplateResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteTicketTemplateResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteTicketTemplateResponseBody) SetCode(v string) *DeleteTicketTemplateResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DeleteTicketTemplateResponseBody) SetData(v interface{}) *DeleteTicketTemplateResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DeleteTicketTemplateResponseBody) SetHttpStatusCode(v int32) *DeleteTicketTemplateResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *DeleteTicketTemplateResponseBody) SetMessage(v string) *DeleteTicketTemplateResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DeleteTicketTemplateResponseBody) SetParams(v []*string) *DeleteTicketTemplateResponseBody {
+	s.Params = v
+	return s
+}
+
+func (s *DeleteTicketTemplateResponseBody) SetRequestId(v string) *DeleteTicketTemplateResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteTicketTemplateResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteTicketTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteTicketTemplateResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteTicketTemplateResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteTicketTemplateResponse) SetHeaders(v map[string]*string) *DeleteTicketTemplateResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteTicketTemplateResponse) SetStatusCode(v int32) *DeleteTicketTemplateResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteTicketTemplateResponse) SetBody(v *DeleteTicketTemplateResponseBody) *DeleteTicketTemplateResponse {
+	s.Body = v
+	return s
+}
+
 type DisableSchemaPropertyRequest struct {
 	// This parameter is required.
 	//
@@ -9752,6 +10290,122 @@ func (s *DisableSchemaPropertyResponse) SetStatusCode(v int32) *DisableSchemaPro
 }
 
 func (s *DisableSchemaPropertyResponse) SetBody(v *DisableSchemaPropertyResponseBody) *DisableSchemaPropertyResponse {
+	s.Body = v
+	return s
+}
+
+type DisableTicketTemplateRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ccc-test
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// 43c2671b-8939-4223-86d0-6bd187905cc8_1717664210492
+	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+}
+
+func (s DisableTicketTemplateRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DisableTicketTemplateRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DisableTicketTemplateRequest) SetInstanceId(v string) *DisableTicketTemplateRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DisableTicketTemplateRequest) SetTemplateId(v string) *DisableTicketTemplateRequest {
+	s.TemplateId = &v
+	return s
+}
+
+type DisableTicketTemplateResponseBody struct {
+	// example:
+	//
+	// OK
+	Code *string     `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32    `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string   `json:"Message,omitempty" xml:"Message,omitempty"`
+	Params         []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 943D8EF3-3321-471F-A104-51C96FCA94D6
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DisableTicketTemplateResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DisableTicketTemplateResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DisableTicketTemplateResponseBody) SetCode(v string) *DisableTicketTemplateResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DisableTicketTemplateResponseBody) SetData(v interface{}) *DisableTicketTemplateResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DisableTicketTemplateResponseBody) SetHttpStatusCode(v int32) *DisableTicketTemplateResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *DisableTicketTemplateResponseBody) SetMessage(v string) *DisableTicketTemplateResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DisableTicketTemplateResponseBody) SetParams(v []*string) *DisableTicketTemplateResponseBody {
+	s.Params = v
+	return s
+}
+
+func (s *DisableTicketTemplateResponseBody) SetRequestId(v string) *DisableTicketTemplateResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DisableTicketTemplateResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DisableTicketTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DisableTicketTemplateResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DisableTicketTemplateResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DisableTicketTemplateResponse) SetHeaders(v map[string]*string) *DisableTicketTemplateResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DisableTicketTemplateResponse) SetStatusCode(v int32) *DisableTicketTemplateResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DisableTicketTemplateResponse) SetBody(v *DisableTicketTemplateResponseBody) *DisableTicketTemplateResponse {
 	s.Body = v
 	return s
 }
@@ -10006,6 +10660,122 @@ func (s *EnableSchemaPropertyResponse) SetStatusCode(v int32) *EnableSchemaPrope
 }
 
 func (s *EnableSchemaPropertyResponse) SetBody(v *EnableSchemaPropertyResponseBody) *EnableSchemaPropertyResponse {
+	s.Body = v
+	return s
+}
+
+type EnableTicketTemplateRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ccc-test
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// 43c2671b-8939-4223-86d0-6bd187905cc8_1717664210492
+	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+}
+
+func (s EnableTicketTemplateRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EnableTicketTemplateRequest) GoString() string {
+	return s.String()
+}
+
+func (s *EnableTicketTemplateRequest) SetInstanceId(v string) *EnableTicketTemplateRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *EnableTicketTemplateRequest) SetTemplateId(v string) *EnableTicketTemplateRequest {
+	s.TemplateId = &v
+	return s
+}
+
+type EnableTicketTemplateResponseBody struct {
+	// example:
+	//
+	// OK
+	Code *string     `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32    `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string   `json:"Message,omitempty" xml:"Message,omitempty"`
+	Params         []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+	// example:
+	//
+	// BA03159C-E808-4FF1-B27E-A61B6E888D7F
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s EnableTicketTemplateResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EnableTicketTemplateResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *EnableTicketTemplateResponseBody) SetCode(v string) *EnableTicketTemplateResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *EnableTicketTemplateResponseBody) SetData(v interface{}) *EnableTicketTemplateResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *EnableTicketTemplateResponseBody) SetHttpStatusCode(v int32) *EnableTicketTemplateResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *EnableTicketTemplateResponseBody) SetMessage(v string) *EnableTicketTemplateResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *EnableTicketTemplateResponseBody) SetParams(v []*string) *EnableTicketTemplateResponseBody {
+	s.Params = v
+	return s
+}
+
+func (s *EnableTicketTemplateResponseBody) SetRequestId(v string) *EnableTicketTemplateResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type EnableTicketTemplateResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *EnableTicketTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s EnableTicketTemplateResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EnableTicketTemplateResponse) GoString() string {
+	return s.String()
+}
+
+func (s *EnableTicketTemplateResponse) SetHeaders(v map[string]*string) *EnableTicketTemplateResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *EnableTicketTemplateResponse) SetStatusCode(v int32) *EnableTicketTemplateResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *EnableTicketTemplateResponse) SetBody(v *EnableTicketTemplateResponseBody) *EnableTicketTemplateResponse {
 	s.Body = v
 	return s
 }
@@ -17184,6 +17954,964 @@ func (s *GetSkillGroupResponse) SetStatusCode(v int32) *GetSkillGroupResponse {
 }
 
 func (s *GetSkillGroupResponse) SetBody(v *GetSkillGroupResponseBody) *GetSkillGroupResponse {
+	s.Body = v
+	return s
+}
+
+type GetTicketRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ccc-test
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 3d26b90a-c5d2-4b09-8219-********
+	TicketId *string `json:"TicketId,omitempty" xml:"TicketId,omitempty"`
+}
+
+func (s GetTicketRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTicketRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetTicketRequest) SetInstanceId(v string) *GetTicketRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *GetTicketRequest) SetTicketId(v string) *GetTicketRequest {
+	s.TicketId = &v
+	return s
+}
+
+type GetTicketResponseBody struct {
+	// example:
+	//
+	// OK
+	Code *string                    `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *GetTicketResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32    `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string   `json:"Message,omitempty" xml:"Message,omitempty"`
+	Params         []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+	// example:
+	//
+	// BF268B34-09C2-43FD-BAC4-5D31EA633111
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetTicketResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTicketResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetTicketResponseBody) SetCode(v string) *GetTicketResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetTicketResponseBody) SetData(v *GetTicketResponseBodyData) *GetTicketResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetTicketResponseBody) SetHttpStatusCode(v int32) *GetTicketResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *GetTicketResponseBody) SetMessage(v string) *GetTicketResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetTicketResponseBody) SetParams(v []*string) *GetTicketResponseBody {
+	s.Params = v
+	return s
+}
+
+func (s *GetTicketResponseBody) SetRequestId(v string) *GetTicketResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetTicketResponseBodyData struct {
+	// example:
+	//
+	// agent1@ccc-test
+	Assignee     *string `json:"Assignee,omitempty" xml:"Assignee,omitempty"`
+	AssigneeName *string `json:"AssigneeName,omitempty" xml:"AssigneeName,omitempty"`
+	// example:
+	//
+	// 8939-4223-86d0-6bd187905cc8
+	CategoryId   *string `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
+	CategoryName *string `json:"CategoryName,omitempty" xml:"CategoryName,omitempty"`
+	// example:
+	//
+	// Completed
+	CloseCode *string `json:"CloseCode,omitempty" xml:"CloseCode,omitempty"`
+	Comment   *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	Context   *string `json:"Context,omitempty" xml:"Context,omitempty"`
+	// example:
+	//
+	// 1620259200000
+	CreatedTime *int64 `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	// example:
+	//
+	// creator@ccc-test
+	Creator     *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
+	CreatorName *string `json:"CreatorName,omitempty" xml:"CreatorName,omitempty"`
+	// example:
+	//
+	// 912f0b78-6639-4a93-ae18-0d832885c27e
+	CurrentTaskId   *string `json:"CurrentTaskId,omitempty" xml:"CurrentTaskId,omitempty"`
+	CurrentTaskName *string `json:"CurrentTaskName,omitempty" xml:"CurrentTaskName,omitempty"`
+	// example:
+	//
+	// 1693793208075
+	CurrentTaskStartTime *int64 `json:"CurrentTaskStartTime,omitempty" xml:"CurrentTaskStartTime,omitempty"`
+	// example:
+	//
+	// 4223-86d0-6bd187905-891798749
+	CustomerId *string `json:"CustomerId,omitempty" xml:"CustomerId,omitempty"`
+	// example:
+	//
+	// 1687846259999
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// example:
+	//
+	// ccc-test
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// job-399383842187575296
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// example:
+	//
+	// Audio
+	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	// example:
+	//
+	// 1620259200000
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// example:
+	//
+	// Processing
+	State *string `json:"State,omitempty" xml:"State,omitempty"`
+	// example:
+	//
+	// ccc-test_43c2671b-8939-4223-86d0-6bd187905cc8_*****0666238
+	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// example:
+	//
+	// 0
+	TemplateVersion *string `json:"TemplateVersion,omitempty" xml:"TemplateVersion,omitempty"`
+	// example:
+	//
+	// b3a6a131-359e-46bd-9bc5-1f5cb0ea093f
+	TicketId *string `json:"TicketId,omitempty" xml:"TicketId,omitempty"`
+	Title    *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// example:
+	//
+	// 1693793208075
+	UpdatedTime *int64 `json:"UpdatedTime,omitempty" xml:"UpdatedTime,omitempty"`
+}
+
+func (s GetTicketResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTicketResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetTicketResponseBodyData) SetAssignee(v string) *GetTicketResponseBodyData {
+	s.Assignee = &v
+	return s
+}
+
+func (s *GetTicketResponseBodyData) SetAssigneeName(v string) *GetTicketResponseBodyData {
+	s.AssigneeName = &v
+	return s
+}
+
+func (s *GetTicketResponseBodyData) SetCategoryId(v string) *GetTicketResponseBodyData {
+	s.CategoryId = &v
+	return s
+}
+
+func (s *GetTicketResponseBodyData) SetCategoryName(v string) *GetTicketResponseBodyData {
+	s.CategoryName = &v
+	return s
+}
+
+func (s *GetTicketResponseBodyData) SetCloseCode(v string) *GetTicketResponseBodyData {
+	s.CloseCode = &v
+	return s
+}
+
+func (s *GetTicketResponseBodyData) SetComment(v string) *GetTicketResponseBodyData {
+	s.Comment = &v
+	return s
+}
+
+func (s *GetTicketResponseBodyData) SetContext(v string) *GetTicketResponseBodyData {
+	s.Context = &v
+	return s
+}
+
+func (s *GetTicketResponseBodyData) SetCreatedTime(v int64) *GetTicketResponseBodyData {
+	s.CreatedTime = &v
+	return s
+}
+
+func (s *GetTicketResponseBodyData) SetCreator(v string) *GetTicketResponseBodyData {
+	s.Creator = &v
+	return s
+}
+
+func (s *GetTicketResponseBodyData) SetCreatorName(v string) *GetTicketResponseBodyData {
+	s.CreatorName = &v
+	return s
+}
+
+func (s *GetTicketResponseBodyData) SetCurrentTaskId(v string) *GetTicketResponseBodyData {
+	s.CurrentTaskId = &v
+	return s
+}
+
+func (s *GetTicketResponseBodyData) SetCurrentTaskName(v string) *GetTicketResponseBodyData {
+	s.CurrentTaskName = &v
+	return s
+}
+
+func (s *GetTicketResponseBodyData) SetCurrentTaskStartTime(v int64) *GetTicketResponseBodyData {
+	s.CurrentTaskStartTime = &v
+	return s
+}
+
+func (s *GetTicketResponseBodyData) SetCustomerId(v string) *GetTicketResponseBodyData {
+	s.CustomerId = &v
+	return s
+}
+
+func (s *GetTicketResponseBodyData) SetEndTime(v int64) *GetTicketResponseBodyData {
+	s.EndTime = &v
+	return s
+}
+
+func (s *GetTicketResponseBodyData) SetInstanceId(v string) *GetTicketResponseBodyData {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *GetTicketResponseBodyData) SetJobId(v string) *GetTicketResponseBodyData {
+	s.JobId = &v
+	return s
+}
+
+func (s *GetTicketResponseBodyData) SetSource(v string) *GetTicketResponseBodyData {
+	s.Source = &v
+	return s
+}
+
+func (s *GetTicketResponseBodyData) SetStartTime(v int64) *GetTicketResponseBodyData {
+	s.StartTime = &v
+	return s
+}
+
+func (s *GetTicketResponseBodyData) SetState(v string) *GetTicketResponseBodyData {
+	s.State = &v
+	return s
+}
+
+func (s *GetTicketResponseBodyData) SetTemplateId(v string) *GetTicketResponseBodyData {
+	s.TemplateId = &v
+	return s
+}
+
+func (s *GetTicketResponseBodyData) SetTemplateVersion(v string) *GetTicketResponseBodyData {
+	s.TemplateVersion = &v
+	return s
+}
+
+func (s *GetTicketResponseBodyData) SetTicketId(v string) *GetTicketResponseBodyData {
+	s.TicketId = &v
+	return s
+}
+
+func (s *GetTicketResponseBodyData) SetTitle(v string) *GetTicketResponseBodyData {
+	s.Title = &v
+	return s
+}
+
+func (s *GetTicketResponseBodyData) SetUpdatedTime(v int64) *GetTicketResponseBodyData {
+	s.UpdatedTime = &v
+	return s
+}
+
+type GetTicketResponse struct {
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetTicketResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetTicketResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTicketResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetTicketResponse) SetHeaders(v map[string]*string) *GetTicketResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetTicketResponse) SetStatusCode(v int32) *GetTicketResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetTicketResponse) SetBody(v *GetTicketResponseBody) *GetTicketResponse {
+	s.Body = v
+	return s
+}
+
+type GetTicketSummaryReportRequest struct {
+	// example:
+	//
+	// assignee@ccc-test
+	Assignee *string `json:"Assignee,omitempty" xml:"Assignee,omitempty"`
+	// example:
+	//
+	// Agent
+	AssigneeType *string `json:"AssigneeType,omitempty" xml:"AssigneeType,omitempty"`
+	// example:
+	//
+	// 43c2671b-***-***-86d0-6bd187905cc8
+	CategoryId *string `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
+	// example:
+	//
+	// creator@ccc-test
+	Creator *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
+	// example:
+	//
+	// 1719590399999
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ccc-test
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 100
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// participant@ccc-test
+	Participant *string `json:"Participant,omitempty" xml:"Participant,omitempty"`
+	// example:
+	//
+	// 1716998400000
+	StartTime *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	State     *string `json:"State,omitempty" xml:"State,omitempty"`
+}
+
+func (s GetTicketSummaryReportRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTicketSummaryReportRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetTicketSummaryReportRequest) SetAssignee(v string) *GetTicketSummaryReportRequest {
+	s.Assignee = &v
+	return s
+}
+
+func (s *GetTicketSummaryReportRequest) SetAssigneeType(v string) *GetTicketSummaryReportRequest {
+	s.AssigneeType = &v
+	return s
+}
+
+func (s *GetTicketSummaryReportRequest) SetCategoryId(v string) *GetTicketSummaryReportRequest {
+	s.CategoryId = &v
+	return s
+}
+
+func (s *GetTicketSummaryReportRequest) SetCreator(v string) *GetTicketSummaryReportRequest {
+	s.Creator = &v
+	return s
+}
+
+func (s *GetTicketSummaryReportRequest) SetEndTime(v int64) *GetTicketSummaryReportRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *GetTicketSummaryReportRequest) SetInstanceId(v string) *GetTicketSummaryReportRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *GetTicketSummaryReportRequest) SetPageNumber(v int32) *GetTicketSummaryReportRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *GetTicketSummaryReportRequest) SetPageSize(v int32) *GetTicketSummaryReportRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *GetTicketSummaryReportRequest) SetParticipant(v string) *GetTicketSummaryReportRequest {
+	s.Participant = &v
+	return s
+}
+
+func (s *GetTicketSummaryReportRequest) SetStartTime(v int64) *GetTicketSummaryReportRequest {
+	s.StartTime = &v
+	return s
+}
+
+func (s *GetTicketSummaryReportRequest) SetState(v string) *GetTicketSummaryReportRequest {
+	s.State = &v
+	return s
+}
+
+type GetTicketSummaryReportResponseBody struct {
+	// example:
+	//
+	// OK
+	Code *string                                 `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *GetTicketSummaryReportResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int64  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// EAF3C248-E123-441B-A545-B6CD02E98EED
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetTicketSummaryReportResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTicketSummaryReportResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetTicketSummaryReportResponseBody) SetCode(v string) *GetTicketSummaryReportResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetTicketSummaryReportResponseBody) SetData(v *GetTicketSummaryReportResponseBodyData) *GetTicketSummaryReportResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetTicketSummaryReportResponseBody) SetHttpStatusCode(v int64) *GetTicketSummaryReportResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *GetTicketSummaryReportResponseBody) SetMessage(v string) *GetTicketSummaryReportResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetTicketSummaryReportResponseBody) SetRequestId(v string) *GetTicketSummaryReportResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetTicketSummaryReportResponseBodyData struct {
+	// example:
+	//
+	// 3
+	TicketsAssigned *string `json:"TicketsAssigned,omitempty" xml:"TicketsAssigned,omitempty"`
+	// example:
+	//
+	// 10
+	TicketsCreated *string `json:"TicketsCreated,omitempty" xml:"TicketsCreated,omitempty"`
+	// example:
+	//
+	// 5
+	TicketsParticipated *string `json:"TicketsParticipated,omitempty" xml:"TicketsParticipated,omitempty"`
+}
+
+func (s GetTicketSummaryReportResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTicketSummaryReportResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetTicketSummaryReportResponseBodyData) SetTicketsAssigned(v string) *GetTicketSummaryReportResponseBodyData {
+	s.TicketsAssigned = &v
+	return s
+}
+
+func (s *GetTicketSummaryReportResponseBodyData) SetTicketsCreated(v string) *GetTicketSummaryReportResponseBodyData {
+	s.TicketsCreated = &v
+	return s
+}
+
+func (s *GetTicketSummaryReportResponseBodyData) SetTicketsParticipated(v string) *GetTicketSummaryReportResponseBodyData {
+	s.TicketsParticipated = &v
+	return s
+}
+
+type GetTicketSummaryReportResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetTicketSummaryReportResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetTicketSummaryReportResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTicketSummaryReportResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetTicketSummaryReportResponse) SetHeaders(v map[string]*string) *GetTicketSummaryReportResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetTicketSummaryReportResponse) SetStatusCode(v int32) *GetTicketSummaryReportResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetTicketSummaryReportResponse) SetBody(v *GetTicketSummaryReportResponseBody) *GetTicketSummaryReportResponse {
+	s.Body = v
+	return s
+}
+
+type GetTicketTemplateRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ccc-test
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// 4ca2e2-c8d19b82c-d7ce393ac8197d3ab
+	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// example:
+	//
+	// 1703517780627
+	TemplateVersion *string `json:"TemplateVersion,omitempty" xml:"TemplateVersion,omitempty"`
+}
+
+func (s GetTicketTemplateRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTicketTemplateRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetTicketTemplateRequest) SetInstanceId(v string) *GetTicketTemplateRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *GetTicketTemplateRequest) SetTemplateId(v string) *GetTicketTemplateRequest {
+	s.TemplateId = &v
+	return s
+}
+
+func (s *GetTicketTemplateRequest) SetTemplateVersion(v string) *GetTicketTemplateRequest {
+	s.TemplateVersion = &v
+	return s
+}
+
+type GetTicketTemplateResponseBody struct {
+	// example:
+	//
+	// OK
+	Code *string                            `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *GetTicketTemplateResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32    `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string   `json:"Message,omitempty" xml:"Message,omitempty"`
+	Params         []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+	// example:
+	//
+	// BF268B34-09C2-43FD-BAC4-5D31EA633111
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetTicketTemplateResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTicketTemplateResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetTicketTemplateResponseBody) SetCode(v string) *GetTicketTemplateResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetTicketTemplateResponseBody) SetData(v *GetTicketTemplateResponseBodyData) *GetTicketTemplateResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetTicketTemplateResponseBody) SetHttpStatusCode(v int32) *GetTicketTemplateResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *GetTicketTemplateResponseBody) SetMessage(v string) *GetTicketTemplateResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetTicketTemplateResponseBody) SetParams(v []*string) *GetTicketTemplateResponseBody {
+	s.Params = v
+	return s
+}
+
+func (s *GetTicketTemplateResponseBody) SetRequestId(v string) *GetTicketTemplateResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetTicketTemplateResponseBodyData struct {
+	// example:
+	//
+	// 43c2671b-****-4223-86d0-6bd187905cc8
+	CategoryId *string `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
+	// example:
+	//
+	// editor-xxx@ccc-test
+	Editor *string `json:"Editor,omitempty" xml:"Editor,omitempty"`
+	// example:
+	//
+	// ccc-test
+	InstanceId        *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Name              *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	ProcessDefinition *string `json:"ProcessDefinition,omitempty" xml:"ProcessDefinition,omitempty"`
+	// example:
+	//
+	// Enabled
+	State *string `json:"State,omitempty" xml:"State,omitempty"`
+	// example:
+	//
+	// 4ca2e2-c8d19b82c-d7ce393ac8197d3ab
+	TemplateId   *string                                          `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	TicketFields []*GetTicketTemplateResponseBodyDataTicketFields `json:"TicketFields,omitempty" xml:"TicketFields,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1717664210000
+	UpdatedTime *int64 `json:"UpdatedTime,omitempty" xml:"UpdatedTime,omitempty"`
+}
+
+func (s GetTicketTemplateResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTicketTemplateResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetTicketTemplateResponseBodyData) SetCategoryId(v string) *GetTicketTemplateResponseBodyData {
+	s.CategoryId = &v
+	return s
+}
+
+func (s *GetTicketTemplateResponseBodyData) SetEditor(v string) *GetTicketTemplateResponseBodyData {
+	s.Editor = &v
+	return s
+}
+
+func (s *GetTicketTemplateResponseBodyData) SetInstanceId(v string) *GetTicketTemplateResponseBodyData {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *GetTicketTemplateResponseBodyData) SetName(v string) *GetTicketTemplateResponseBodyData {
+	s.Name = &v
+	return s
+}
+
+func (s *GetTicketTemplateResponseBodyData) SetProcessDefinition(v string) *GetTicketTemplateResponseBodyData {
+	s.ProcessDefinition = &v
+	return s
+}
+
+func (s *GetTicketTemplateResponseBodyData) SetState(v string) *GetTicketTemplateResponseBodyData {
+	s.State = &v
+	return s
+}
+
+func (s *GetTicketTemplateResponseBodyData) SetTemplateId(v string) *GetTicketTemplateResponseBodyData {
+	s.TemplateId = &v
+	return s
+}
+
+func (s *GetTicketTemplateResponseBodyData) SetTicketFields(v []*GetTicketTemplateResponseBodyDataTicketFields) *GetTicketTemplateResponseBodyData {
+	s.TicketFields = v
+	return s
+}
+
+func (s *GetTicketTemplateResponseBodyData) SetUpdatedTime(v int64) *GetTicketTemplateResponseBodyData {
+	s.UpdatedTime = &v
+	return s
+}
+
+type GetTicketTemplateResponseBodyDataTicketFields struct {
+	// example:
+	//
+	// false
+	Array *bool `json:"Array,omitempty" xml:"Array,omitempty"`
+	// example:
+	//
+	// {}
+	Attributes *string `json:"Attributes,omitempty" xml:"Attributes,omitempty"`
+	// example:
+	//
+	// 1717664210000
+	CreatedTime *int64 `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	// example:
+	//
+	// creator@cccV2-kmz
+	Creator *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
+	// example:
+	//
+	// string
+	DataType    *string `json:"DataType,omitempty" xml:"DataType,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// false
+	Disabled    *bool   `json:"Disabled,omitempty" xml:"Disabled,omitempty"`
+	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// example:
+	//
+	// 1
+	DisplayOrder *int32 `json:"DisplayOrder,omitempty" xml:"DisplayOrder,omitempty"`
+	// example:
+	//
+	// textbox
+	EditorType *string `json:"EditorType,omitempty" xml:"EditorType,omitempty"`
+	// example:
+	//
+	// 30
+	MaxLength *int32 `json:"MaxLength,omitempty" xml:"MaxLength,omitempty"`
+	// example:
+	//
+	// 10
+	Maximum *float64 `json:"Maximum,omitempty" xml:"Maximum,omitempty"`
+	// example:
+	//
+	// 1
+	MinLength *int32 `json:"MinLength,omitempty" xml:"MinLength,omitempty"`
+	// example:
+	//
+	// 1
+	Minimum *float64 `json:"Minimum,omitempty" xml:"Minimum,omitempty"`
+	// example:
+	//
+	// name
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// ^
+	Pattern             *string `json:"Pattern,omitempty" xml:"Pattern,omitempty"`
+	PatternErrorMessage *string `json:"PatternErrorMessage,omitempty" xml:"PatternErrorMessage,omitempty"`
+	// example:
+	//
+	// false
+	ReadOnly *bool `json:"ReadOnly,omitempty" xml:"ReadOnly,omitempty"`
+	// example:
+	//
+	// false
+	Required *bool `json:"Required,omitempty" xml:"Required,omitempty"`
+	// example:
+	//
+	// false
+	System *bool `json:"System,omitempty" xml:"System,omitempty"`
+	// example:
+	//
+	// 1717664210000
+	UpdatedTime *int64 `json:"UpdatedTime,omitempty" xml:"UpdatedTime,omitempty"`
+}
+
+func (s GetTicketTemplateResponseBodyDataTicketFields) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTicketTemplateResponseBodyDataTicketFields) GoString() string {
+	return s.String()
+}
+
+func (s *GetTicketTemplateResponseBodyDataTicketFields) SetArray(v bool) *GetTicketTemplateResponseBodyDataTicketFields {
+	s.Array = &v
+	return s
+}
+
+func (s *GetTicketTemplateResponseBodyDataTicketFields) SetAttributes(v string) *GetTicketTemplateResponseBodyDataTicketFields {
+	s.Attributes = &v
+	return s
+}
+
+func (s *GetTicketTemplateResponseBodyDataTicketFields) SetCreatedTime(v int64) *GetTicketTemplateResponseBodyDataTicketFields {
+	s.CreatedTime = &v
+	return s
+}
+
+func (s *GetTicketTemplateResponseBodyDataTicketFields) SetCreator(v string) *GetTicketTemplateResponseBodyDataTicketFields {
+	s.Creator = &v
+	return s
+}
+
+func (s *GetTicketTemplateResponseBodyDataTicketFields) SetDataType(v string) *GetTicketTemplateResponseBodyDataTicketFields {
+	s.DataType = &v
+	return s
+}
+
+func (s *GetTicketTemplateResponseBodyDataTicketFields) SetDescription(v string) *GetTicketTemplateResponseBodyDataTicketFields {
+	s.Description = &v
+	return s
+}
+
+func (s *GetTicketTemplateResponseBodyDataTicketFields) SetDisabled(v bool) *GetTicketTemplateResponseBodyDataTicketFields {
+	s.Disabled = &v
+	return s
+}
+
+func (s *GetTicketTemplateResponseBodyDataTicketFields) SetDisplayName(v string) *GetTicketTemplateResponseBodyDataTicketFields {
+	s.DisplayName = &v
+	return s
+}
+
+func (s *GetTicketTemplateResponseBodyDataTicketFields) SetDisplayOrder(v int32) *GetTicketTemplateResponseBodyDataTicketFields {
+	s.DisplayOrder = &v
+	return s
+}
+
+func (s *GetTicketTemplateResponseBodyDataTicketFields) SetEditorType(v string) *GetTicketTemplateResponseBodyDataTicketFields {
+	s.EditorType = &v
+	return s
+}
+
+func (s *GetTicketTemplateResponseBodyDataTicketFields) SetMaxLength(v int32) *GetTicketTemplateResponseBodyDataTicketFields {
+	s.MaxLength = &v
+	return s
+}
+
+func (s *GetTicketTemplateResponseBodyDataTicketFields) SetMaximum(v float64) *GetTicketTemplateResponseBodyDataTicketFields {
+	s.Maximum = &v
+	return s
+}
+
+func (s *GetTicketTemplateResponseBodyDataTicketFields) SetMinLength(v int32) *GetTicketTemplateResponseBodyDataTicketFields {
+	s.MinLength = &v
+	return s
+}
+
+func (s *GetTicketTemplateResponseBodyDataTicketFields) SetMinimum(v float64) *GetTicketTemplateResponseBodyDataTicketFields {
+	s.Minimum = &v
+	return s
+}
+
+func (s *GetTicketTemplateResponseBodyDataTicketFields) SetName(v string) *GetTicketTemplateResponseBodyDataTicketFields {
+	s.Name = &v
+	return s
+}
+
+func (s *GetTicketTemplateResponseBodyDataTicketFields) SetPattern(v string) *GetTicketTemplateResponseBodyDataTicketFields {
+	s.Pattern = &v
+	return s
+}
+
+func (s *GetTicketTemplateResponseBodyDataTicketFields) SetPatternErrorMessage(v string) *GetTicketTemplateResponseBodyDataTicketFields {
+	s.PatternErrorMessage = &v
+	return s
+}
+
+func (s *GetTicketTemplateResponseBodyDataTicketFields) SetReadOnly(v bool) *GetTicketTemplateResponseBodyDataTicketFields {
+	s.ReadOnly = &v
+	return s
+}
+
+func (s *GetTicketTemplateResponseBodyDataTicketFields) SetRequired(v bool) *GetTicketTemplateResponseBodyDataTicketFields {
+	s.Required = &v
+	return s
+}
+
+func (s *GetTicketTemplateResponseBodyDataTicketFields) SetSystem(v bool) *GetTicketTemplateResponseBodyDataTicketFields {
+	s.System = &v
+	return s
+}
+
+func (s *GetTicketTemplateResponseBodyDataTicketFields) SetUpdatedTime(v int64) *GetTicketTemplateResponseBodyDataTicketFields {
+	s.UpdatedTime = &v
+	return s
+}
+
+type GetTicketTemplateResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetTicketTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetTicketTemplateResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTicketTemplateResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetTicketTemplateResponse) SetHeaders(v map[string]*string) *GetTicketTemplateResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetTicketTemplateResponse) SetStatusCode(v int32) *GetTicketTemplateResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetTicketTemplateResponse) SetBody(v *GetTicketTemplateResponseBody) *GetTicketTemplateResponse {
 	s.Body = v
 	return s
 }
@@ -25592,6 +27320,168 @@ func (s *ListCasesResponse) SetStatusCode(v int32) *ListCasesResponse {
 }
 
 func (s *ListCasesResponse) SetBody(v *ListCasesResponseBody) *ListCasesResponse {
+	s.Body = v
+	return s
+}
+
+type ListCommonTicketFieldsRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ccc-test
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+}
+
+func (s ListCommonTicketFieldsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCommonTicketFieldsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListCommonTicketFieldsRequest) SetInstanceId(v string) *ListCommonTicketFieldsRequest {
+	s.InstanceId = &v
+	return s
+}
+
+type ListCommonTicketFieldsResponseBody struct {
+	// example:
+	//
+	// OK
+	Code *string                                 `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *ListCommonTicketFieldsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32    `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string   `json:"Message,omitempty" xml:"Message,omitempty"`
+	Params         []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 30C7D235-DDCF-4C7F-A462-5E2598252C2B
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListCommonTicketFieldsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCommonTicketFieldsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListCommonTicketFieldsResponseBody) SetCode(v string) *ListCommonTicketFieldsResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListCommonTicketFieldsResponseBody) SetData(v *ListCommonTicketFieldsResponseBodyData) *ListCommonTicketFieldsResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListCommonTicketFieldsResponseBody) SetHttpStatusCode(v int32) *ListCommonTicketFieldsResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *ListCommonTicketFieldsResponseBody) SetMessage(v string) *ListCommonTicketFieldsResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListCommonTicketFieldsResponseBody) SetParams(v []*string) *ListCommonTicketFieldsResponseBody {
+	s.Params = v
+	return s
+}
+
+func (s *ListCommonTicketFieldsResponseBody) SetRequestId(v string) *ListCommonTicketFieldsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListCommonTicketFieldsResponseBodyData struct {
+	// example:
+	//
+	// 1703517780627
+	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	// Schema ID。
+	//
+	// example:
+	//
+	// ticketing
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// ccc-test
+	InstanceId *string                         `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Properties map[string]*DataPropertiesValue `json:"Properties,omitempty" xml:"Properties,omitempty"`
+	// example:
+	//
+	// 1716211430928
+	UpdatedTime *string `json:"UpdatedTime,omitempty" xml:"UpdatedTime,omitempty"`
+}
+
+func (s ListCommonTicketFieldsResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCommonTicketFieldsResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListCommonTicketFieldsResponseBodyData) SetCreatedTime(v string) *ListCommonTicketFieldsResponseBodyData {
+	s.CreatedTime = &v
+	return s
+}
+
+func (s *ListCommonTicketFieldsResponseBodyData) SetId(v string) *ListCommonTicketFieldsResponseBodyData {
+	s.Id = &v
+	return s
+}
+
+func (s *ListCommonTicketFieldsResponseBodyData) SetInstanceId(v string) *ListCommonTicketFieldsResponseBodyData {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ListCommonTicketFieldsResponseBodyData) SetProperties(v map[string]*DataPropertiesValue) *ListCommonTicketFieldsResponseBodyData {
+	s.Properties = v
+	return s
+}
+
+func (s *ListCommonTicketFieldsResponseBodyData) SetUpdatedTime(v string) *ListCommonTicketFieldsResponseBodyData {
+	s.UpdatedTime = &v
+	return s
+}
+
+type ListCommonTicketFieldsResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListCommonTicketFieldsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListCommonTicketFieldsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCommonTicketFieldsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListCommonTicketFieldsResponse) SetHeaders(v map[string]*string) *ListCommonTicketFieldsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListCommonTicketFieldsResponse) SetStatusCode(v int32) *ListCommonTicketFieldsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListCommonTicketFieldsResponse) SetBody(v *ListCommonTicketFieldsResponseBody) *ListCommonTicketFieldsResponse {
 	s.Body = v
 	return s
 }
@@ -43671,6 +45561,743 @@ func (s *ListSkillLevelsOfUserResponse) SetBody(v *ListSkillLevelsOfUserResponse
 	return s
 }
 
+type ListTicketTasksRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ccc-test
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// 5491d3b4-14ee-4341-b5f1-db2c78beddeb
+	TicketId *string `json:"TicketId,omitempty" xml:"TicketId,omitempty"`
+}
+
+func (s ListTicketTasksRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTicketTasksRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListTicketTasksRequest) SetInstanceId(v string) *ListTicketTasksRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ListTicketTasksRequest) SetTicketId(v string) *ListTicketTasksRequest {
+	s.TicketId = &v
+	return s
+}
+
+type ListTicketTasksResponseBody struct {
+	// example:
+	//
+	// OK
+	Code *string                            `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data []*ListTicketTasksResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32    `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string   `json:"Message,omitempty" xml:"Message,omitempty"`
+	Params         []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+	// example:
+	//
+	// DE803553-8AA9-4B9D-9E4E-A82BC69EDCEE
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListTicketTasksResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTicketTasksResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListTicketTasksResponseBody) SetCode(v string) *ListTicketTasksResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListTicketTasksResponseBody) SetData(v []*ListTicketTasksResponseBodyData) *ListTicketTasksResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListTicketTasksResponseBody) SetHttpStatusCode(v int32) *ListTicketTasksResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *ListTicketTasksResponseBody) SetMessage(v string) *ListTicketTasksResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListTicketTasksResponseBody) SetParams(v []*string) *ListTicketTasksResponseBody {
+	s.Params = v
+	return s
+}
+
+func (s *ListTicketTasksResponseBody) SetRequestId(v string) *ListTicketTasksResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListTicketTasksResponseBodyData struct {
+	// example:
+	//
+	// CounterSignTask
+	Action *string `json:"Action,omitempty" xml:"Action,omitempty"`
+	// example:
+	//
+	// assignee@ccc-test
+	Assignee *string `json:"Assignee,omitempty" xml:"Assignee,omitempty"`
+	// example:
+	//
+	// assignee
+	AssigneeName *string `json:"AssigneeName,omitempty" xml:"AssigneeName,omitempty"`
+	Comment      *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// example:
+	//
+	// 1620269200000
+	EndTime  *int64    `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	FileKeys []*string `json:"FileKeys,omitempty" xml:"FileKeys,omitempty" type:"Repeated"`
+	FileUrls []*string `json:"FileUrls,omitempty" xml:"FileUrls,omitempty" type:"Repeated"`
+	// example:
+	//
+	// ccc-test
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// 1620259200000
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// example:
+	//
+	// APPROVAL__6zu2QjAz
+	TaskDefinitionNodeId *string `json:"TaskDefinitionNodeId,omitempty" xml:"TaskDefinitionNodeId,omitempty"`
+	// example:
+	//
+	// APPROVAL
+	TaskDefinitionNodeType *string `json:"TaskDefinitionNodeType,omitempty" xml:"TaskDefinitionNodeType,omitempty"`
+	// example:
+	//
+	// eb039a4a6a5742c6b44ccff0c1fca745
+	TaskId   *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+	// example:
+	//
+	// 5491d3b4-14ee-4341-b5f1-db2c78beddeb
+	TicketId *string `json:"TicketId,omitempty" xml:"TicketId,omitempty"`
+}
+
+func (s ListTicketTasksResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTicketTasksResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListTicketTasksResponseBodyData) SetAction(v string) *ListTicketTasksResponseBodyData {
+	s.Action = &v
+	return s
+}
+
+func (s *ListTicketTasksResponseBodyData) SetAssignee(v string) *ListTicketTasksResponseBodyData {
+	s.Assignee = &v
+	return s
+}
+
+func (s *ListTicketTasksResponseBodyData) SetAssigneeName(v string) *ListTicketTasksResponseBodyData {
+	s.AssigneeName = &v
+	return s
+}
+
+func (s *ListTicketTasksResponseBodyData) SetComment(v string) *ListTicketTasksResponseBodyData {
+	s.Comment = &v
+	return s
+}
+
+func (s *ListTicketTasksResponseBodyData) SetEndTime(v int64) *ListTicketTasksResponseBodyData {
+	s.EndTime = &v
+	return s
+}
+
+func (s *ListTicketTasksResponseBodyData) SetFileKeys(v []*string) *ListTicketTasksResponseBodyData {
+	s.FileKeys = v
+	return s
+}
+
+func (s *ListTicketTasksResponseBodyData) SetFileUrls(v []*string) *ListTicketTasksResponseBodyData {
+	s.FileUrls = v
+	return s
+}
+
+func (s *ListTicketTasksResponseBodyData) SetInstanceId(v string) *ListTicketTasksResponseBodyData {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ListTicketTasksResponseBodyData) SetStartTime(v int64) *ListTicketTasksResponseBodyData {
+	s.StartTime = &v
+	return s
+}
+
+func (s *ListTicketTasksResponseBodyData) SetTaskDefinitionNodeId(v string) *ListTicketTasksResponseBodyData {
+	s.TaskDefinitionNodeId = &v
+	return s
+}
+
+func (s *ListTicketTasksResponseBodyData) SetTaskDefinitionNodeType(v string) *ListTicketTasksResponseBodyData {
+	s.TaskDefinitionNodeType = &v
+	return s
+}
+
+func (s *ListTicketTasksResponseBodyData) SetTaskId(v string) *ListTicketTasksResponseBodyData {
+	s.TaskId = &v
+	return s
+}
+
+func (s *ListTicketTasksResponseBodyData) SetTaskName(v string) *ListTicketTasksResponseBodyData {
+	s.TaskName = &v
+	return s
+}
+
+func (s *ListTicketTasksResponseBodyData) SetTicketId(v string) *ListTicketTasksResponseBodyData {
+	s.TicketId = &v
+	return s
+}
+
+type ListTicketTasksResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListTicketTasksResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListTicketTasksResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTicketTasksResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListTicketTasksResponse) SetHeaders(v map[string]*string) *ListTicketTasksResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListTicketTasksResponse) SetStatusCode(v int32) *ListTicketTasksResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListTicketTasksResponse) SetBody(v *ListTicketTasksResponseBody) *ListTicketTasksResponse {
+	s.Body = v
+	return s
+}
+
+type ListTicketsRequest struct {
+	// example:
+	//
+	// assignee@cccV2-kmz
+	Assignee *string `json:"Assignee,omitempty" xml:"Assignee,omitempty"`
+	// example:
+	//
+	// Agent
+	AssigneeType *string `json:"AssigneeType,omitempty" xml:"AssigneeType,omitempty"`
+	// example:
+	//
+	// 43c2671b-****-4223-86d0-6bd187905cc8
+	CategoryId *string `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
+	// example:
+	//
+	// creator@cccV2-kmz
+	Creator *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
+	// example:
+	//
+	// 51e155ce-3747-*****-b402-13c69597b920
+	CustomerId *string `json:"CustomerId,omitempty" xml:"CustomerId,omitempty"`
+	// example:
+	//
+	// 1646928000000
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ccc-test
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// ["job-12******","job-23****"]
+	JobIdList *string `json:"JobIdList,omitempty" xml:"JobIdList,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// participant@cccV2-kmz
+	Participant *string `json:"Participant,omitempty" xml:"Participant,omitempty"`
+	// example:
+	//
+	// 1646841600000
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// example:
+	//
+	// Processing
+	State *string `json:"State,omitempty" xml:"State,omitempty"`
+	// example:
+	//
+	// 5491d3b4-14ee-4341-b5f1-db2c78beddeb
+	TicketId *string `json:"TicketId,omitempty" xml:"TicketId,omitempty"`
+	Title    *string `json:"Title,omitempty" xml:"Title,omitempty"`
+}
+
+func (s ListTicketsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTicketsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListTicketsRequest) SetAssignee(v string) *ListTicketsRequest {
+	s.Assignee = &v
+	return s
+}
+
+func (s *ListTicketsRequest) SetAssigneeType(v string) *ListTicketsRequest {
+	s.AssigneeType = &v
+	return s
+}
+
+func (s *ListTicketsRequest) SetCategoryId(v string) *ListTicketsRequest {
+	s.CategoryId = &v
+	return s
+}
+
+func (s *ListTicketsRequest) SetCreator(v string) *ListTicketsRequest {
+	s.Creator = &v
+	return s
+}
+
+func (s *ListTicketsRequest) SetCustomerId(v string) *ListTicketsRequest {
+	s.CustomerId = &v
+	return s
+}
+
+func (s *ListTicketsRequest) SetEndTime(v int64) *ListTicketsRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *ListTicketsRequest) SetInstanceId(v string) *ListTicketsRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ListTicketsRequest) SetJobIdList(v string) *ListTicketsRequest {
+	s.JobIdList = &v
+	return s
+}
+
+func (s *ListTicketsRequest) SetPageNumber(v int64) *ListTicketsRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListTicketsRequest) SetPageSize(v int64) *ListTicketsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListTicketsRequest) SetParticipant(v string) *ListTicketsRequest {
+	s.Participant = &v
+	return s
+}
+
+func (s *ListTicketsRequest) SetStartTime(v int64) *ListTicketsRequest {
+	s.StartTime = &v
+	return s
+}
+
+func (s *ListTicketsRequest) SetState(v string) *ListTicketsRequest {
+	s.State = &v
+	return s
+}
+
+func (s *ListTicketsRequest) SetTicketId(v string) *ListTicketsRequest {
+	s.TicketId = &v
+	return s
+}
+
+func (s *ListTicketsRequest) SetTitle(v string) *ListTicketsRequest {
+	s.Title = &v
+	return s
+}
+
+type ListTicketsResponseBody struct {
+	// example:
+	//
+	// OK
+	Code *string                      `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *ListTicketsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int64  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 7BEEA660-A45A-45E3-98CC-AFC65E715C23
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListTicketsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTicketsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListTicketsResponseBody) SetCode(v string) *ListTicketsResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListTicketsResponseBody) SetData(v *ListTicketsResponseBodyData) *ListTicketsResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListTicketsResponseBody) SetHttpStatusCode(v int64) *ListTicketsResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *ListTicketsResponseBody) SetMessage(v string) *ListTicketsResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListTicketsResponseBody) SetRequestId(v string) *ListTicketsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListTicketsResponseBodyData struct {
+	List []*ListTicketsResponseBodyDataList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 10
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListTicketsResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTicketsResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListTicketsResponseBodyData) SetList(v []*ListTicketsResponseBodyDataList) *ListTicketsResponseBodyData {
+	s.List = v
+	return s
+}
+
+func (s *ListTicketsResponseBodyData) SetPageNumber(v int64) *ListTicketsResponseBodyData {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListTicketsResponseBodyData) SetPageSize(v int64) *ListTicketsResponseBodyData {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListTicketsResponseBodyData) SetTotalCount(v int64) *ListTicketsResponseBodyData {
+	s.TotalCount = &v
+	return s
+}
+
+type ListTicketsResponseBodyDataList struct {
+	// example:
+	//
+	// assignee@ccc-test
+	Assignee *string `json:"Assignee,omitempty" xml:"Assignee,omitempty"`
+	// example:
+	//
+	// Assignee
+	AssigneeName *string `json:"AssigneeName,omitempty" xml:"AssigneeName,omitempty"`
+	// example:
+	//
+	// 43c2671b-*****-4223-86d0-6bd187905cc8
+	CategoryId   *string `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
+	CategoryName *string `json:"CategoryName,omitempty" xml:"CategoryName,omitempty"`
+	// example:
+	//
+	// Completed
+	CloseCode *string `json:"CloseCode,omitempty" xml:"CloseCode,omitempty"`
+	Comment   *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// example:
+	//
+	// {"productName":"alynx"}
+	Context *string `json:"Context,omitempty" xml:"Context,omitempty"`
+	// example:
+	//
+	// 1631440860000
+	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	// example:
+	//
+	// creator@ccc-test
+	Creator *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
+	// example:
+	//
+	// Creator
+	CreatorName *string `json:"CreatorName,omitempty" xml:"CreatorName,omitempty"`
+	// example:
+	//
+	// 0707dab6-34a8-11ef-9823-161e3802b2d4
+	CurrentTaskId   *string `json:"CurrentTaskId,omitempty" xml:"CurrentTaskId,omitempty"`
+	CurrentTaskName *string `json:"CurrentTaskName,omitempty" xml:"CurrentTaskName,omitempty"`
+	// example:
+	//
+	// 1631440860000
+	CurrentTaskStartTime *int64 `json:"CurrentTaskStartTime,omitempty" xml:"CurrentTaskStartTime,omitempty"`
+	// example:
+	//
+	// 51e155ce-*****1-b402-13c69597b920
+	CustomerId *string `json:"CustomerId,omitempty" xml:"CustomerId,omitempty"`
+	// example:
+	//
+	// 1631440860000
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// example:
+	//
+	// ccc-test
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// job-47150***150396416
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// example:
+	//
+	// CHAT
+	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	// example:
+	//
+	// 1631440860000
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// example:
+	//
+	// Processing
+	State *string `json:"State,omitempty" xml:"State,omitempty"`
+	// example:
+	//
+	// c844a5f0-496c-4c5b-8a0c-dd27686e8ff6
+	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// example:
+	//
+	// 0
+	TemplateVersion *string `json:"TemplateVersion,omitempty" xml:"TemplateVersion,omitempty"`
+	// example:
+	//
+	// feb83abd-9f08-49d2-9b56-41d1b66ca0ac
+	TicketId *string `json:"TicketId,omitempty" xml:"TicketId,omitempty"`
+	Title    *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// example:
+	//
+	// 1631440860000
+	UpdatedTime *string `json:"UpdatedTime,omitempty" xml:"UpdatedTime,omitempty"`
+}
+
+func (s ListTicketsResponseBodyDataList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTicketsResponseBodyDataList) GoString() string {
+	return s.String()
+}
+
+func (s *ListTicketsResponseBodyDataList) SetAssignee(v string) *ListTicketsResponseBodyDataList {
+	s.Assignee = &v
+	return s
+}
+
+func (s *ListTicketsResponseBodyDataList) SetAssigneeName(v string) *ListTicketsResponseBodyDataList {
+	s.AssigneeName = &v
+	return s
+}
+
+func (s *ListTicketsResponseBodyDataList) SetCategoryId(v string) *ListTicketsResponseBodyDataList {
+	s.CategoryId = &v
+	return s
+}
+
+func (s *ListTicketsResponseBodyDataList) SetCategoryName(v string) *ListTicketsResponseBodyDataList {
+	s.CategoryName = &v
+	return s
+}
+
+func (s *ListTicketsResponseBodyDataList) SetCloseCode(v string) *ListTicketsResponseBodyDataList {
+	s.CloseCode = &v
+	return s
+}
+
+func (s *ListTicketsResponseBodyDataList) SetComment(v string) *ListTicketsResponseBodyDataList {
+	s.Comment = &v
+	return s
+}
+
+func (s *ListTicketsResponseBodyDataList) SetContext(v string) *ListTicketsResponseBodyDataList {
+	s.Context = &v
+	return s
+}
+
+func (s *ListTicketsResponseBodyDataList) SetCreatedTime(v string) *ListTicketsResponseBodyDataList {
+	s.CreatedTime = &v
+	return s
+}
+
+func (s *ListTicketsResponseBodyDataList) SetCreator(v string) *ListTicketsResponseBodyDataList {
+	s.Creator = &v
+	return s
+}
+
+func (s *ListTicketsResponseBodyDataList) SetCreatorName(v string) *ListTicketsResponseBodyDataList {
+	s.CreatorName = &v
+	return s
+}
+
+func (s *ListTicketsResponseBodyDataList) SetCurrentTaskId(v string) *ListTicketsResponseBodyDataList {
+	s.CurrentTaskId = &v
+	return s
+}
+
+func (s *ListTicketsResponseBodyDataList) SetCurrentTaskName(v string) *ListTicketsResponseBodyDataList {
+	s.CurrentTaskName = &v
+	return s
+}
+
+func (s *ListTicketsResponseBodyDataList) SetCurrentTaskStartTime(v int64) *ListTicketsResponseBodyDataList {
+	s.CurrentTaskStartTime = &v
+	return s
+}
+
+func (s *ListTicketsResponseBodyDataList) SetCustomerId(v string) *ListTicketsResponseBodyDataList {
+	s.CustomerId = &v
+	return s
+}
+
+func (s *ListTicketsResponseBodyDataList) SetEndTime(v int64) *ListTicketsResponseBodyDataList {
+	s.EndTime = &v
+	return s
+}
+
+func (s *ListTicketsResponseBodyDataList) SetInstanceId(v string) *ListTicketsResponseBodyDataList {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ListTicketsResponseBodyDataList) SetJobId(v string) *ListTicketsResponseBodyDataList {
+	s.JobId = &v
+	return s
+}
+
+func (s *ListTicketsResponseBodyDataList) SetSource(v string) *ListTicketsResponseBodyDataList {
+	s.Source = &v
+	return s
+}
+
+func (s *ListTicketsResponseBodyDataList) SetStartTime(v int64) *ListTicketsResponseBodyDataList {
+	s.StartTime = &v
+	return s
+}
+
+func (s *ListTicketsResponseBodyDataList) SetState(v string) *ListTicketsResponseBodyDataList {
+	s.State = &v
+	return s
+}
+
+func (s *ListTicketsResponseBodyDataList) SetTemplateId(v string) *ListTicketsResponseBodyDataList {
+	s.TemplateId = &v
+	return s
+}
+
+func (s *ListTicketsResponseBodyDataList) SetTemplateVersion(v string) *ListTicketsResponseBodyDataList {
+	s.TemplateVersion = &v
+	return s
+}
+
+func (s *ListTicketsResponseBodyDataList) SetTicketId(v string) *ListTicketsResponseBodyDataList {
+	s.TicketId = &v
+	return s
+}
+
+func (s *ListTicketsResponseBodyDataList) SetTitle(v string) *ListTicketsResponseBodyDataList {
+	s.Title = &v
+	return s
+}
+
+func (s *ListTicketsResponseBodyDataList) SetUpdatedTime(v string) *ListTicketsResponseBodyDataList {
+	s.UpdatedTime = &v
+	return s
+}
+
+type ListTicketsResponse struct {
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListTicketsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListTicketsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTicketsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListTicketsResponse) SetHeaders(v map[string]*string) *ListTicketsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListTicketsResponse) SetStatusCode(v int32) *ListTicketsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListTicketsResponse) SetBody(v *ListTicketsResponseBody) *ListTicketsResponse {
+	s.Body = v
+	return s
+}
+
 type ListUnassignedNumbersRequest struct {
 	// This parameter is required.
 	//
@@ -49453,6 +52080,234 @@ func (s *RegisterDevicesResponse) SetBody(v *RegisterDevicesResponseBody) *Regis
 	return s
 }
 
+type RejectChatRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ccc-test
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// chat-65382141036853491
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+}
+
+func (s RejectChatRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RejectChatRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RejectChatRequest) SetInstanceId(v string) *RejectChatRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *RejectChatRequest) SetJobId(v string) *RejectChatRequest {
+	s.JobId = &v
+	return s
+}
+
+type RejectChatResponseBody struct {
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// B59382D2-5755-4C6D-861F-FA2AAD8F89F7
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s RejectChatResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RejectChatResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RejectChatResponseBody) SetCode(v string) *RejectChatResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *RejectChatResponseBody) SetHttpStatusCode(v int32) *RejectChatResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *RejectChatResponseBody) SetMessage(v string) *RejectChatResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *RejectChatResponseBody) SetRequestId(v string) *RejectChatResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type RejectChatResponse struct {
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RejectChatResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s RejectChatResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RejectChatResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RejectChatResponse) SetHeaders(v map[string]*string) *RejectChatResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RejectChatResponse) SetStatusCode(v int32) *RejectChatResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *RejectChatResponse) SetBody(v *RejectChatResponseBody) *RejectChatResponse {
+	s.Body = v
+	return s
+}
+
+type RejectTicketRequest struct {
+	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ccc-test
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// f2c6722b-cd13-442d-bf10-22a07c70d6d5
+	TicketId *string `json:"TicketId,omitempty" xml:"TicketId,omitempty"`
+}
+
+func (s RejectTicketRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RejectTicketRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RejectTicketRequest) SetComment(v string) *RejectTicketRequest {
+	s.Comment = &v
+	return s
+}
+
+func (s *RejectTicketRequest) SetInstanceId(v string) *RejectTicketRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *RejectTicketRequest) SetTicketId(v string) *RejectTicketRequest {
+	s.TicketId = &v
+	return s
+}
+
+type RejectTicketResponseBody struct {
+	// example:
+	//
+	// OK
+	Code *string     `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32    `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string   `json:"Message,omitempty" xml:"Message,omitempty"`
+	Params         []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 678F7002-CA01-4ABF-A112-585AFBDF3A3B
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s RejectTicketResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RejectTicketResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RejectTicketResponseBody) SetCode(v string) *RejectTicketResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *RejectTicketResponseBody) SetData(v interface{}) *RejectTicketResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *RejectTicketResponseBody) SetHttpStatusCode(v int32) *RejectTicketResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *RejectTicketResponseBody) SetMessage(v string) *RejectTicketResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *RejectTicketResponseBody) SetParams(v []*string) *RejectTicketResponseBody {
+	s.Params = v
+	return s
+}
+
+func (s *RejectTicketResponseBody) SetRequestId(v string) *RejectTicketResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type RejectTicketResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RejectTicketResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s RejectTicketResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RejectTicketResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RejectTicketResponse) SetHeaders(v map[string]*string) *RejectTicketResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RejectTicketResponse) SetStatusCode(v int32) *RejectTicketResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *RejectTicketResponse) SetBody(v *RejectTicketResponseBody) *RejectTicketResponse {
+	s.Body = v
+	return s
+}
+
 type ReleaseCallRequest struct {
 	// example:
 	//
@@ -49875,6 +52730,139 @@ func (s *ReleaseCallResponse) SetStatusCode(v int32) *ReleaseCallResponse {
 }
 
 func (s *ReleaseCallResponse) SetBody(v *ReleaseCallResponseBody) *ReleaseCallResponse {
+	s.Body = v
+	return s
+}
+
+type ReleaseChatRequest struct {
+	// example:
+	//
+	// ccc-test
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// chat-6538214103685****
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// example:
+	//
+	// 9XYGTGWtq2wFi_Bpg7aUnIoYi_vG_rO3bjEn0YtsxbHRHrYHlz1LDBLJAyZcLxieRQR4h_6AnWvTjJeNU5jg************Hwej7WgWrmA=
+	Token *string `json:"Token,omitempty" xml:"Token,omitempty"`
+	// example:
+	//
+	// edbcf95a-ef9f-4296-a0a6-985ac9e36db3
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// CUSTOMER
+	UserType *string `json:"UserType,omitempty" xml:"UserType,omitempty"`
+}
+
+func (s ReleaseChatRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ReleaseChatRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ReleaseChatRequest) SetInstanceId(v string) *ReleaseChatRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ReleaseChatRequest) SetJobId(v string) *ReleaseChatRequest {
+	s.JobId = &v
+	return s
+}
+
+func (s *ReleaseChatRequest) SetToken(v string) *ReleaseChatRequest {
+	s.Token = &v
+	return s
+}
+
+func (s *ReleaseChatRequest) SetUserId(v string) *ReleaseChatRequest {
+	s.UserId = &v
+	return s
+}
+
+func (s *ReleaseChatRequest) SetUserType(v string) *ReleaseChatRequest {
+	s.UserType = &v
+	return s
+}
+
+type ReleaseChatResponseBody struct {
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// B06B3244-1B44-481B-90C4-F2F92E59D6B5
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ReleaseChatResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ReleaseChatResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ReleaseChatResponseBody) SetCode(v string) *ReleaseChatResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ReleaseChatResponseBody) SetHttpStatusCode(v int32) *ReleaseChatResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *ReleaseChatResponseBody) SetMessage(v string) *ReleaseChatResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ReleaseChatResponseBody) SetRequestId(v string) *ReleaseChatResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ReleaseChatResponse struct {
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ReleaseChatResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ReleaseChatResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ReleaseChatResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ReleaseChatResponse) SetHeaders(v map[string]*string) *ReleaseChatResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ReleaseChatResponse) SetStatusCode(v int32) *ReleaseChatResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ReleaseChatResponse) SetBody(v *ReleaseChatResponseBody) *ReleaseChatResponse {
 	s.Body = v
 	return s
 }
@@ -51451,6 +54439,130 @@ func (s *RestoreArchivedRecordingsResponse) SetStatusCode(v int32) *RestoreArchi
 }
 
 func (s *RestoreArchivedRecordingsResponse) SetBody(v *RestoreArchivedRecordingsResponseBody) *RestoreArchivedRecordingsResponse {
+	s.Body = v
+	return s
+}
+
+type ResubmitTicketRequest struct {
+	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ccc-test
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// f2c6722b-cd13-442d-bf10-22a07c70d6d5
+	TicketId *string `json:"TicketId,omitempty" xml:"TicketId,omitempty"`
+}
+
+func (s ResubmitTicketRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ResubmitTicketRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ResubmitTicketRequest) SetComment(v string) *ResubmitTicketRequest {
+	s.Comment = &v
+	return s
+}
+
+func (s *ResubmitTicketRequest) SetInstanceId(v string) *ResubmitTicketRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ResubmitTicketRequest) SetTicketId(v string) *ResubmitTicketRequest {
+	s.TicketId = &v
+	return s
+}
+
+type ResubmitTicketResponseBody struct {
+	// example:
+	//
+	// OK
+	Code *string     `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32    `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string   `json:"Message,omitempty" xml:"Message,omitempty"`
+	Params         []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 03C67DAD-EB26-41D8-949D-9B0C470FB716
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ResubmitTicketResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ResubmitTicketResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ResubmitTicketResponseBody) SetCode(v string) *ResubmitTicketResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ResubmitTicketResponseBody) SetData(v interface{}) *ResubmitTicketResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ResubmitTicketResponseBody) SetHttpStatusCode(v int32) *ResubmitTicketResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *ResubmitTicketResponseBody) SetMessage(v string) *ResubmitTicketResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ResubmitTicketResponseBody) SetParams(v []*string) *ResubmitTicketResponseBody {
+	s.Params = v
+	return s
+}
+
+func (s *ResubmitTicketResponseBody) SetRequestId(v string) *ResubmitTicketResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ResubmitTicketResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ResubmitTicketResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ResubmitTicketResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ResubmitTicketResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ResubmitTicketResponse) SetHeaders(v map[string]*string) *ResubmitTicketResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ResubmitTicketResponse) SetStatusCode(v int32) *ResubmitTicketResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ResubmitTicketResponse) SetBody(v *ResubmitTicketResponseBody) *ResubmitTicketResponse {
 	s.Body = v
 	return s
 }
@@ -56620,6 +59732,270 @@ func (s *TakeBreakResponse) SetBody(v *TakeBreakResponseBody) *TakeBreakResponse
 	return s
 }
 
+type TerminateTicketRequest struct {
+	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ccc-test
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// 5491d3b4-14ee-4341-b5f1-db2c78beddeb
+	TicketId *string `json:"TicketId,omitempty" xml:"TicketId,omitempty"`
+}
+
+func (s TerminateTicketRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TerminateTicketRequest) GoString() string {
+	return s.String()
+}
+
+func (s *TerminateTicketRequest) SetComment(v string) *TerminateTicketRequest {
+	s.Comment = &v
+	return s
+}
+
+func (s *TerminateTicketRequest) SetInstanceId(v string) *TerminateTicketRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *TerminateTicketRequest) SetTicketId(v string) *TerminateTicketRequest {
+	s.TicketId = &v
+	return s
+}
+
+type TerminateTicketResponseBody struct {
+	// example:
+	//
+	// OK
+	Code *string     `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32    `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string   `json:"Message,omitempty" xml:"Message,omitempty"`
+	Params         []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 03C67DAD-EB26-41D8-949D-9B0C470FB716
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s TerminateTicketResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TerminateTicketResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *TerminateTicketResponseBody) SetCode(v string) *TerminateTicketResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *TerminateTicketResponseBody) SetData(v interface{}) *TerminateTicketResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *TerminateTicketResponseBody) SetHttpStatusCode(v int32) *TerminateTicketResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *TerminateTicketResponseBody) SetMessage(v string) *TerminateTicketResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *TerminateTicketResponseBody) SetParams(v []*string) *TerminateTicketResponseBody {
+	s.Params = v
+	return s
+}
+
+func (s *TerminateTicketResponseBody) SetRequestId(v string) *TerminateTicketResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type TerminateTicketResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *TerminateTicketResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s TerminateTicketResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TerminateTicketResponse) GoString() string {
+	return s.String()
+}
+
+func (s *TerminateTicketResponse) SetHeaders(v map[string]*string) *TerminateTicketResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *TerminateTicketResponse) SetStatusCode(v int32) *TerminateTicketResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *TerminateTicketResponse) SetBody(v *TerminateTicketResponseBody) *TerminateTicketResponse {
+	s.Body = v
+	return s
+}
+
+type TransferTicketTaskRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// assignee@ccc-test
+	Assignee *string `json:"Assignee,omitempty" xml:"Assignee,omitempty"`
+	Comment  *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ccc-test
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// f780ade8-3ca9-458b-b067-63077946a570
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// example:
+	//
+	// 5491d3b4-14ee-4341-b5f1-db2c78beddeb
+	TicketId *string `json:"TicketId,omitempty" xml:"TicketId,omitempty"`
+}
+
+func (s TransferTicketTaskRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TransferTicketTaskRequest) GoString() string {
+	return s.String()
+}
+
+func (s *TransferTicketTaskRequest) SetAssignee(v string) *TransferTicketTaskRequest {
+	s.Assignee = &v
+	return s
+}
+
+func (s *TransferTicketTaskRequest) SetComment(v string) *TransferTicketTaskRequest {
+	s.Comment = &v
+	return s
+}
+
+func (s *TransferTicketTaskRequest) SetInstanceId(v string) *TransferTicketTaskRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *TransferTicketTaskRequest) SetTaskId(v string) *TransferTicketTaskRequest {
+	s.TaskId = &v
+	return s
+}
+
+func (s *TransferTicketTaskRequest) SetTicketId(v string) *TransferTicketTaskRequest {
+	s.TicketId = &v
+	return s
+}
+
+type TransferTicketTaskResponseBody struct {
+	// example:
+	//
+	// OK
+	Code *string     `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32    `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string   `json:"Message,omitempty" xml:"Message,omitempty"`
+	Params         []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 678F7002-CA01-4ABF-A112-585AFBDF3A3B
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s TransferTicketTaskResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TransferTicketTaskResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *TransferTicketTaskResponseBody) SetCode(v string) *TransferTicketTaskResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *TransferTicketTaskResponseBody) SetData(v interface{}) *TransferTicketTaskResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *TransferTicketTaskResponseBody) SetHttpStatusCode(v int32) *TransferTicketTaskResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *TransferTicketTaskResponseBody) SetMessage(v string) *TransferTicketTaskResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *TransferTicketTaskResponseBody) SetParams(v []*string) *TransferTicketTaskResponseBody {
+	s.Params = v
+	return s
+}
+
+func (s *TransferTicketTaskResponseBody) SetRequestId(v string) *TransferTicketTaskResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type TransferTicketTaskResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *TransferTicketTaskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s TransferTicketTaskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TransferTicketTaskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *TransferTicketTaskResponse) SetHeaders(v map[string]*string) *TransferTicketTaskResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *TransferTicketTaskResponse) SetStatusCode(v int32) *TransferTicketTaskResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *TransferTicketTaskResponse) SetBody(v *TransferTicketTaskResponseBody) *TransferTicketTaskResponse {
+	s.Body = v
+	return s
+}
+
 type UnmuteCallRequest struct {
 	// example:
 	//
@@ -57826,6 +61202,270 @@ func (s *UpdateSchemaPropertyResponse) SetBody(v *UpdateSchemaPropertyResponseBo
 	return s
 }
 
+type UpdateTicketRequest struct {
+	Context *string `json:"Context,omitempty" xml:"Context,omitempty"`
+	// example:
+	//
+	// 51e155ce-***-****-b402-13c69597b920
+	CustomerId *string `json:"CustomerId,omitempty" xml:"CustomerId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ccc-test
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 5491d3b4-14ee-4341-b5f1-db2c78beddeb
+	TicketId *string `json:"TicketId,omitempty" xml:"TicketId,omitempty"`
+	Title    *string `json:"Title,omitempty" xml:"Title,omitempty"`
+}
+
+func (s UpdateTicketRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateTicketRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateTicketRequest) SetContext(v string) *UpdateTicketRequest {
+	s.Context = &v
+	return s
+}
+
+func (s *UpdateTicketRequest) SetCustomerId(v string) *UpdateTicketRequest {
+	s.CustomerId = &v
+	return s
+}
+
+func (s *UpdateTicketRequest) SetInstanceId(v string) *UpdateTicketRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *UpdateTicketRequest) SetTicketId(v string) *UpdateTicketRequest {
+	s.TicketId = &v
+	return s
+}
+
+func (s *UpdateTicketRequest) SetTitle(v string) *UpdateTicketRequest {
+	s.Title = &v
+	return s
+}
+
+type UpdateTicketResponseBody struct {
+	// example:
+	//
+	// OK
+	Code *string     `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32    `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string   `json:"Message,omitempty" xml:"Message,omitempty"`
+	Params         []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 7BEEA660-A45A-45E3-98CC-AFC65E715C23
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateTicketResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateTicketResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateTicketResponseBody) SetCode(v string) *UpdateTicketResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *UpdateTicketResponseBody) SetData(v interface{}) *UpdateTicketResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *UpdateTicketResponseBody) SetHttpStatusCode(v int32) *UpdateTicketResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *UpdateTicketResponseBody) SetMessage(v string) *UpdateTicketResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *UpdateTicketResponseBody) SetParams(v []*string) *UpdateTicketResponseBody {
+	s.Params = v
+	return s
+}
+
+func (s *UpdateTicketResponseBody) SetRequestId(v string) *UpdateTicketResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateTicketResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateTicketResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateTicketResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateTicketResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateTicketResponse) SetHeaders(v map[string]*string) *UpdateTicketResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateTicketResponse) SetStatusCode(v int32) *UpdateTicketResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateTicketResponse) SetBody(v *UpdateTicketResponseBody) *UpdateTicketResponse {
+	s.Body = v
+	return s
+}
+
+type WithdrawTicketRequest struct {
+	// This parameter is required.
+	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ccc-test
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 5491d3b4-14ee-4341-b5f1-db2c78beddeb
+	TicketId *string `json:"TicketId,omitempty" xml:"TicketId,omitempty"`
+}
+
+func (s WithdrawTicketRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s WithdrawTicketRequest) GoString() string {
+	return s.String()
+}
+
+func (s *WithdrawTicketRequest) SetComment(v string) *WithdrawTicketRequest {
+	s.Comment = &v
+	return s
+}
+
+func (s *WithdrawTicketRequest) SetInstanceId(v string) *WithdrawTicketRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *WithdrawTicketRequest) SetTicketId(v string) *WithdrawTicketRequest {
+	s.TicketId = &v
+	return s
+}
+
+type WithdrawTicketResponseBody struct {
+	// example:
+	//
+	// OK
+	Code *string     `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32    `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string   `json:"Message,omitempty" xml:"Message,omitempty"`
+	Params         []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 2778FA12-EDD6-42AA-9B15-AF855072E5E5
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s WithdrawTicketResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s WithdrawTicketResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *WithdrawTicketResponseBody) SetCode(v string) *WithdrawTicketResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *WithdrawTicketResponseBody) SetData(v interface{}) *WithdrawTicketResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *WithdrawTicketResponseBody) SetHttpStatusCode(v int32) *WithdrawTicketResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *WithdrawTicketResponseBody) SetMessage(v string) *WithdrawTicketResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *WithdrawTicketResponseBody) SetParams(v []*string) *WithdrawTicketResponseBody {
+	s.Params = v
+	return s
+}
+
+func (s *WithdrawTicketResponseBody) SetRequestId(v string) *WithdrawTicketResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type WithdrawTicketResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *WithdrawTicketResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s WithdrawTicketResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s WithdrawTicketResponse) GoString() string {
+	return s.String()
+}
+
+func (s *WithdrawTicketResponse) SetHeaders(v map[string]*string) *WithdrawTicketResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *WithdrawTicketResponse) SetStatusCode(v int32) *WithdrawTicketResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *WithdrawTicketResponse) SetBody(v *WithdrawTicketResponseBody) *WithdrawTicketResponse {
+	s.Body = v
+	return s
+}
+
 type Client struct {
 	openapi.Client
 }
@@ -58534,6 +62174,78 @@ func (client *Client) AddSkillGroupsToUser(request *AddSkillGroupsToUserRequest)
 	runtime := &util.RuntimeOptions{}
 	_result = &AddSkillGroupsToUserResponse{}
 	_body, _err := client.AddSkillGroupsToUserWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param request - AddTicketTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AddTicketTaskResponse
+func (client *Client) AddTicketTaskWithOptions(request *AddTicketTaskRequest, runtime *util.RuntimeOptions) (_result *AddTicketTaskResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Assignee)) {
+		query["Assignee"] = request.Assignee
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Comment)) {
+		query["Comment"] = request.Comment
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Position)) {
+		query["Position"] = request.Position
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskId)) {
+		query["TaskId"] = request.TaskId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TicketId)) {
+		query["TicketId"] = request.TicketId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AddTicketTask"),
+		Version:     tea.String("2020-07-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &AddTicketTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - AddTicketTaskRequest
+//
+// @return AddTicketTaskResponse
+func (client *Client) AddTicketTask(request *AddTicketTaskRequest) (_result *AddTicketTaskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &AddTicketTaskResponse{}
+	_body, _err := client.AddTicketTaskWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -60213,6 +63925,82 @@ func (client *Client) CreateSkillGroup(request *CreateSkillGroupRequest) (_resul
 	return _result, _err
 }
 
+// @param request - CreateTicketRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateTicketResponse
+func (client *Client) CreateTicketWithOptions(request *CreateTicketRequest, runtime *util.RuntimeOptions) (_result *CreateTicketResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ContactId)) {
+		query["ContactId"] = request.ContactId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Context)) {
+		query["Context"] = request.Context
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CustomerId)) {
+		query["CustomerId"] = request.CustomerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Source)) {
+		query["Source"] = request.Source
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateId)) {
+		query["TemplateId"] = request.TemplateId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Title)) {
+		query["Title"] = request.Title
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateTicket"),
+		Version:     tea.String("2020-07-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateTicketResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - CreateTicketRequest
+//
+// @return CreateTicketResponse
+func (client *Client) CreateTicket(request *CreateTicketRequest) (_result *CreateTicketResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateTicketResponse{}
+	_body, _err := client.CreateTicketWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 // @param request - CreateUserRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -60867,6 +64655,118 @@ func (client *Client) DeleteSkillGroup(request *DeleteSkillGroupRequest) (_resul
 	return _result, _err
 }
 
+// @param request - DeleteTicketRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteTicketResponse
+func (client *Client) DeleteTicketWithOptions(request *DeleteTicketRequest, runtime *util.RuntimeOptions) (_result *DeleteTicketResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TicketId)) {
+		query["TicketId"] = request.TicketId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteTicket"),
+		Version:     tea.String("2020-07-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteTicketResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - DeleteTicketRequest
+//
+// @return DeleteTicketResponse
+func (client *Client) DeleteTicket(request *DeleteTicketRequest) (_result *DeleteTicketResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteTicketResponse{}
+	_body, _err := client.DeleteTicketWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param request - DeleteTicketTemplateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteTicketTemplateResponse
+func (client *Client) DeleteTicketTemplateWithOptions(request *DeleteTicketTemplateRequest, runtime *util.RuntimeOptions) (_result *DeleteTicketTemplateResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateId)) {
+		query["TemplateId"] = request.TemplateId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteTicketTemplate"),
+		Version:     tea.String("2020-07-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteTicketTemplateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - DeleteTicketTemplateRequest
+//
+// @return DeleteTicketTemplateResponse
+func (client *Client) DeleteTicketTemplate(request *DeleteTicketTemplateRequest) (_result *DeleteTicketTemplateResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteTicketTemplateResponse{}
+	_body, _err := client.DeleteTicketTemplateWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 // @param request - DisableSchemaPropertyRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -60924,6 +64824,62 @@ func (client *Client) DisableSchemaProperty(request *DisableSchemaPropertyReques
 	runtime := &util.RuntimeOptions{}
 	_result = &DisableSchemaPropertyResponse{}
 	_body, _err := client.DisableSchemaPropertyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param request - DisableTicketTemplateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DisableTicketTemplateResponse
+func (client *Client) DisableTicketTemplateWithOptions(request *DisableTicketTemplateRequest, runtime *util.RuntimeOptions) (_result *DisableTicketTemplateResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateId)) {
+		query["TemplateId"] = request.TemplateId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DisableTicketTemplate"),
+		Version:     tea.String("2020-07-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DisableTicketTemplateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - DisableTicketTemplateRequest
+//
+// @return DisableTicketTemplateResponse
+func (client *Client) DisableTicketTemplate(request *DisableTicketTemplateRequest) (_result *DisableTicketTemplateResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DisableTicketTemplateResponse{}
+	_body, _err := client.DisableTicketTemplateWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -61048,6 +65004,62 @@ func (client *Client) EnableSchemaProperty(request *EnableSchemaPropertyRequest)
 	runtime := &util.RuntimeOptions{}
 	_result = &EnableSchemaPropertyResponse{}
 	_body, _err := client.EnableSchemaPropertyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param request - EnableTicketTemplateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return EnableTicketTemplateResponse
+func (client *Client) EnableTicketTemplateWithOptions(request *EnableTicketTemplateRequest, runtime *util.RuntimeOptions) (_result *EnableTicketTemplateResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateId)) {
+		query["TemplateId"] = request.TemplateId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("EnableTicketTemplate"),
+		Version:     tea.String("2020-07-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &EnableTicketTemplateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - EnableTicketTemplateRequest
+//
+// @return EnableTicketTemplateResponse
+func (client *Client) EnableTicketTemplate(request *EnableTicketTemplateRequest) (_result *EnableTicketTemplateResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &EnableTicketTemplateResponse{}
+	_body, _err := client.EnableTicketTemplateWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -62786,6 +66798,214 @@ func (client *Client) GetSkillGroup(request *GetSkillGroupRequest) (_result *Get
 	runtime := &util.RuntimeOptions{}
 	_result = &GetSkillGroupResponse{}
 	_body, _err := client.GetSkillGroupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param request - GetTicketRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetTicketResponse
+func (client *Client) GetTicketWithOptions(request *GetTicketRequest, runtime *util.RuntimeOptions) (_result *GetTicketResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TicketId)) {
+		query["TicketId"] = request.TicketId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetTicket"),
+		Version:     tea.String("2020-07-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetTicketResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - GetTicketRequest
+//
+// @return GetTicketResponse
+func (client *Client) GetTicket(request *GetTicketRequest) (_result *GetTicketResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetTicketResponse{}
+	_body, _err := client.GetTicketWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param request - GetTicketSummaryReportRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetTicketSummaryReportResponse
+func (client *Client) GetTicketSummaryReportWithOptions(request *GetTicketSummaryReportRequest, runtime *util.RuntimeOptions) (_result *GetTicketSummaryReportResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Assignee)) {
+		query["Assignee"] = request.Assignee
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AssigneeType)) {
+		query["AssigneeType"] = request.AssigneeType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CategoryId)) {
+		query["CategoryId"] = request.CategoryId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Creator)) {
+		query["Creator"] = request.Creator
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Participant)) {
+		query["Participant"] = request.Participant
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.State)) {
+		query["State"] = request.State
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetTicketSummaryReport"),
+		Version:     tea.String("2020-07-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetTicketSummaryReportResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - GetTicketSummaryReportRequest
+//
+// @return GetTicketSummaryReportResponse
+func (client *Client) GetTicketSummaryReport(request *GetTicketSummaryReportRequest) (_result *GetTicketSummaryReportResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetTicketSummaryReportResponse{}
+	_body, _err := client.GetTicketSummaryReportWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param request - GetTicketTemplateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetTicketTemplateResponse
+func (client *Client) GetTicketTemplateWithOptions(request *GetTicketTemplateRequest, runtime *util.RuntimeOptions) (_result *GetTicketTemplateResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateId)) {
+		query["TemplateId"] = request.TemplateId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateVersion)) {
+		query["TemplateVersion"] = request.TemplateVersion
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetTicketTemplate"),
+		Version:     tea.String("2020-07-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetTicketTemplateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - GetTicketTemplateRequest
+//
+// @return GetTicketTemplateResponse
+func (client *Client) GetTicketTemplate(request *GetTicketTemplateRequest) (_result *GetTicketTemplateResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetTicketTemplateResponse{}
+	_body, _err := client.GetTicketTemplateWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -64844,6 +69064,58 @@ func (client *Client) ListCases(request *ListCasesRequest) (_result *ListCasesRe
 	runtime := &util.RuntimeOptions{}
 	_result = &ListCasesResponse{}
 	_body, _err := client.ListCasesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param request - ListCommonTicketFieldsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListCommonTicketFieldsResponse
+func (client *Client) ListCommonTicketFieldsWithOptions(request *ListCommonTicketFieldsRequest, runtime *util.RuntimeOptions) (_result *ListCommonTicketFieldsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListCommonTicketFields"),
+		Version:     tea.String("2020-07-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListCommonTicketFieldsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - ListCommonTicketFieldsRequest
+//
+// @return ListCommonTicketFieldsResponse
+func (client *Client) ListCommonTicketFields(request *ListCommonTicketFieldsRequest) (_result *ListCommonTicketFieldsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListCommonTicketFieldsResponse{}
+	_body, _err := client.ListCommonTicketFieldsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -67379,6 +71651,170 @@ func (client *Client) ListSkillLevelsOfUser(request *ListSkillLevelsOfUserReques
 	return _result, _err
 }
 
+// @param request - ListTicketTasksRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListTicketTasksResponse
+func (client *Client) ListTicketTasksWithOptions(request *ListTicketTasksRequest, runtime *util.RuntimeOptions) (_result *ListTicketTasksResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TicketId)) {
+		query["TicketId"] = request.TicketId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListTicketTasks"),
+		Version:     tea.String("2020-07-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListTicketTasksResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - ListTicketTasksRequest
+//
+// @return ListTicketTasksResponse
+func (client *Client) ListTicketTasks(request *ListTicketTasksRequest) (_result *ListTicketTasksResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListTicketTasksResponse{}
+	_body, _err := client.ListTicketTasksWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param request - ListTicketsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListTicketsResponse
+func (client *Client) ListTicketsWithOptions(request *ListTicketsRequest, runtime *util.RuntimeOptions) (_result *ListTicketsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Assignee)) {
+		query["Assignee"] = request.Assignee
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AssigneeType)) {
+		query["AssigneeType"] = request.AssigneeType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CategoryId)) {
+		query["CategoryId"] = request.CategoryId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Creator)) {
+		query["Creator"] = request.Creator
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CustomerId)) {
+		query["CustomerId"] = request.CustomerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.JobIdList)) {
+		query["JobIdList"] = request.JobIdList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Participant)) {
+		query["Participant"] = request.Participant
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.State)) {
+		query["State"] = request.State
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TicketId)) {
+		query["TicketId"] = request.TicketId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Title)) {
+		query["Title"] = request.Title
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListTickets"),
+		Version:     tea.String("2020-07-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListTicketsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - ListTicketsRequest
+//
+// @return ListTicketsResponse
+func (client *Client) ListTickets(request *ListTicketsRequest) (_result *ListTicketsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListTicketsResponse{}
+	_body, _err := client.ListTicketsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 // Summary:
 //
 // 获取未分配号码列表
@@ -69007,6 +73443,122 @@ func (client *Client) RegisterDevices(request *RegisterDevicesRequest) (_result 
 	return _result, _err
 }
 
+// @param request - RejectChatRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RejectChatResponse
+func (client *Client) RejectChatWithOptions(request *RejectChatRequest, runtime *util.RuntimeOptions) (_result *RejectChatResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.JobId)) {
+		query["JobId"] = request.JobId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RejectChat"),
+		Version:     tea.String("2020-07-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &RejectChatResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - RejectChatRequest
+//
+// @return RejectChatResponse
+func (client *Client) RejectChat(request *RejectChatRequest) (_result *RejectChatResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &RejectChatResponse{}
+	_body, _err := client.RejectChatWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param request - RejectTicketRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RejectTicketResponse
+func (client *Client) RejectTicketWithOptions(request *RejectTicketRequest, runtime *util.RuntimeOptions) (_result *RejectTicketResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Comment)) {
+		query["Comment"] = request.Comment
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TicketId)) {
+		query["TicketId"] = request.TicketId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RejectTicket"),
+		Version:     tea.String("2020-07-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &RejectTicketResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - RejectTicketRequest
+//
+// @return RejectTicketResponse
+func (client *Client) RejectTicket(request *RejectTicketRequest) (_result *RejectTicketResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &RejectTicketResponse{}
+	_body, _err := client.RejectTicketWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 // @param request - ReleaseCallRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -69068,6 +73620,74 @@ func (client *Client) ReleaseCall(request *ReleaseCallRequest) (_result *Release
 	runtime := &util.RuntimeOptions{}
 	_result = &ReleaseCallResponse{}
 	_body, _err := client.ReleaseCallWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param request - ReleaseChatRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ReleaseChatResponse
+func (client *Client) ReleaseChatWithOptions(request *ReleaseChatRequest, runtime *util.RuntimeOptions) (_result *ReleaseChatResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.JobId)) {
+		query["JobId"] = request.JobId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Token)) {
+		query["Token"] = request.Token
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		query["UserId"] = request.UserId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserType)) {
+		query["UserType"] = request.UserType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ReleaseChat"),
+		Version:     tea.String("2020-07-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ReleaseChatResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - ReleaseChatRequest
+//
+// @return ReleaseChatResponse
+func (client *Client) ReleaseChat(request *ReleaseChatRequest) (_result *ReleaseChatResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ReleaseChatResponse{}
+	_body, _err := client.ReleaseChatWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -69812,6 +74432,66 @@ func (client *Client) RestoreArchivedRecordings(request *RestoreArchivedRecordin
 	runtime := &util.RuntimeOptions{}
 	_result = &RestoreArchivedRecordingsResponse{}
 	_body, _err := client.RestoreArchivedRecordingsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param request - ResubmitTicketRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ResubmitTicketResponse
+func (client *Client) ResubmitTicketWithOptions(request *ResubmitTicketRequest, runtime *util.RuntimeOptions) (_result *ResubmitTicketResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Comment)) {
+		query["Comment"] = request.Comment
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TicketId)) {
+		query["TicketId"] = request.TicketId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ResubmitTicket"),
+		Version:     tea.String("2020-07-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ResubmitTicketResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - ResubmitTicketRequest
+//
+// @return ResubmitTicketResponse
+func (client *Client) ResubmitTicket(request *ResubmitTicketRequest) (_result *ResubmitTicketResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ResubmitTicketResponse{}
+	_body, _err := client.ResubmitTicketWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -71137,6 +75817,134 @@ func (client *Client) TakeBreak(request *TakeBreakRequest) (_result *TakeBreakRe
 	return _result, _err
 }
 
+// @param request - TerminateTicketRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return TerminateTicketResponse
+func (client *Client) TerminateTicketWithOptions(request *TerminateTicketRequest, runtime *util.RuntimeOptions) (_result *TerminateTicketResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Comment)) {
+		query["Comment"] = request.Comment
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TicketId)) {
+		query["TicketId"] = request.TicketId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("TerminateTicket"),
+		Version:     tea.String("2020-07-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &TerminateTicketResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - TerminateTicketRequest
+//
+// @return TerminateTicketResponse
+func (client *Client) TerminateTicket(request *TerminateTicketRequest) (_result *TerminateTicketResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &TerminateTicketResponse{}
+	_body, _err := client.TerminateTicketWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param request - TransferTicketTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return TransferTicketTaskResponse
+func (client *Client) TransferTicketTaskWithOptions(request *TransferTicketTaskRequest, runtime *util.RuntimeOptions) (_result *TransferTicketTaskResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Assignee)) {
+		query["Assignee"] = request.Assignee
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Comment)) {
+		query["Comment"] = request.Comment
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskId)) {
+		query["TaskId"] = request.TaskId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TicketId)) {
+		query["TicketId"] = request.TicketId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("TransferTicketTask"),
+		Version:     tea.String("2020-07-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &TransferTicketTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - TransferTicketTaskRequest
+//
+// @return TransferTicketTaskResponse
+func (client *Client) TransferTicketTask(request *TransferTicketTaskRequest) (_result *TransferTicketTaskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &TransferTicketTaskResponse{}
+	_body, _err := client.TransferTicketTaskWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 // @param request - UnmuteCallRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -71484,6 +76292,134 @@ func (client *Client) UpdateSchemaProperty(request *UpdateSchemaPropertyRequest)
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateSchemaPropertyResponse{}
 	_body, _err := client.UpdateSchemaPropertyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param request - UpdateTicketRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateTicketResponse
+func (client *Client) UpdateTicketWithOptions(request *UpdateTicketRequest, runtime *util.RuntimeOptions) (_result *UpdateTicketResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Context)) {
+		query["Context"] = request.Context
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CustomerId)) {
+		query["CustomerId"] = request.CustomerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TicketId)) {
+		query["TicketId"] = request.TicketId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Title)) {
+		query["Title"] = request.Title
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateTicket"),
+		Version:     tea.String("2020-07-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateTicketResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - UpdateTicketRequest
+//
+// @return UpdateTicketResponse
+func (client *Client) UpdateTicket(request *UpdateTicketRequest) (_result *UpdateTicketResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateTicketResponse{}
+	_body, _err := client.UpdateTicketWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param request - WithdrawTicketRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return WithdrawTicketResponse
+func (client *Client) WithdrawTicketWithOptions(request *WithdrawTicketRequest, runtime *util.RuntimeOptions) (_result *WithdrawTicketResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Comment)) {
+		query["Comment"] = request.Comment
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TicketId)) {
+		query["TicketId"] = request.TicketId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("WithdrawTicket"),
+		Version:     tea.String("2020-07-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &WithdrawTicketResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - WithdrawTicketRequest
+//
+// @return WithdrawTicketResponse
+func (client *Client) WithdrawTicket(request *WithdrawTicketRequest) (_result *WithdrawTicketResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &WithdrawTicketResponse{}
+	_body, _err := client.WithdrawTicketWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
