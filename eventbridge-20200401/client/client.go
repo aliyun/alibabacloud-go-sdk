@@ -19136,17 +19136,25 @@ func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRabbitMQParam
 
 type ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRocketMQParameters struct {
 	// The message body.
-	Body *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRocketMQParametersBody `json:"Body,omitempty" xml:"Body,omitempty" type:"Struct"`
+	Body             *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRocketMQParametersBody             `json:"Body,omitempty" xml:"Body,omitempty" type:"Struct"`
+	InstanceEndpoint *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRocketMQParametersInstanceEndpoint `json:"InstanceEndpoint,omitempty" xml:"InstanceEndpoint,omitempty" type:"Struct"`
 	// The parameters that are returned if Message Queue for Apache RocketMQ is specified as the event target.
-	InstanceId *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRocketMQParametersInstanceId `json:"InstanceId,omitempty" xml:"InstanceId,omitempty" type:"Struct"`
+	InstanceId       *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRocketMQParametersInstanceId       `json:"InstanceId,omitempty" xml:"InstanceId,omitempty" type:"Struct"`
+	InstancePassword *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRocketMQParametersInstancePassword `json:"InstancePassword,omitempty" xml:"InstancePassword,omitempty" type:"Struct"`
+	InstanceType     *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRocketMQParametersInstanceType     `json:"InstanceType,omitempty" xml:"InstanceType,omitempty" type:"Struct"`
+	InstanceUsername *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRocketMQParametersInstanceUsername `json:"InstanceUsername,omitempty" xml:"InstanceUsername,omitempty" type:"Struct"`
 	// The keys that are used to filter messages.
-	Keys *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRocketMQParametersKeys `json:"Keys,omitempty" xml:"Keys,omitempty" type:"Struct"`
+	Keys    *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRocketMQParametersKeys    `json:"Keys,omitempty" xml:"Keys,omitempty" type:"Struct"`
+	Network *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRocketMQParametersNetwork `json:"Network,omitempty" xml:"Network,omitempty" type:"Struct"`
 	// The attributes that are used to filter messages.
-	Properties *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRocketMQParametersProperties `json:"Properties,omitempty" xml:"Properties,omitempty" type:"Struct"`
+	Properties      *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRocketMQParametersProperties      `json:"Properties,omitempty" xml:"Properties,omitempty" type:"Struct"`
+	SecurityGroupId *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRocketMQParametersSecurityGroupId `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty" type:"Struct"`
 	// The tags that are used to filter messages.
 	Tags *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRocketMQParametersTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
 	// The name of the topic on the Message Queue for Apache RocketMQ instance.
-	Topic *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRocketMQParametersTopic `json:"Topic,omitempty" xml:"Topic,omitempty" type:"Struct"`
+	Topic      *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRocketMQParametersTopic      `json:"Topic,omitempty" xml:"Topic,omitempty" type:"Struct"`
+	VSwitchIds *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRocketMQParametersVSwitchIds `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty" type:"Struct"`
+	VpcId      *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRocketMQParametersVpcId      `json:"VpcId,omitempty" xml:"VpcId,omitempty" type:"Struct"`
 }
 
 func (s ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRocketMQParameters) String() string {
@@ -19162,8 +19170,28 @@ func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRocketMQParam
 	return s
 }
 
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRocketMQParameters) SetInstanceEndpoint(v *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRocketMQParametersInstanceEndpoint) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRocketMQParameters {
+	s.InstanceEndpoint = v
+	return s
+}
+
 func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRocketMQParameters) SetInstanceId(v *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRocketMQParametersInstanceId) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRocketMQParameters {
 	s.InstanceId = v
+	return s
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRocketMQParameters) SetInstancePassword(v *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRocketMQParametersInstancePassword) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRocketMQParameters {
+	s.InstancePassword = v
+	return s
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRocketMQParameters) SetInstanceType(v *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRocketMQParametersInstanceType) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRocketMQParameters {
+	s.InstanceType = v
+	return s
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRocketMQParameters) SetInstanceUsername(v *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRocketMQParametersInstanceUsername) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRocketMQParameters {
+	s.InstanceUsername = v
 	return s
 }
 
@@ -19172,8 +19200,18 @@ func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRocketMQParam
 	return s
 }
 
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRocketMQParameters) SetNetwork(v *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRocketMQParametersNetwork) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRocketMQParameters {
+	s.Network = v
+	return s
+}
+
 func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRocketMQParameters) SetProperties(v *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRocketMQParametersProperties) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRocketMQParameters {
 	s.Properties = v
+	return s
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRocketMQParameters) SetSecurityGroupId(v *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRocketMQParametersSecurityGroupId) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRocketMQParameters {
+	s.SecurityGroupId = v
 	return s
 }
 
@@ -19184,6 +19222,16 @@ func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRocketMQParam
 
 func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRocketMQParameters) SetTopic(v *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRocketMQParametersTopic) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRocketMQParameters {
 	s.Topic = v
+	return s
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRocketMQParameters) SetVSwitchIds(v *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRocketMQParametersVSwitchIds) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRocketMQParameters {
+	s.VSwitchIds = v
+	return s
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRocketMQParameters) SetVpcId(v *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRocketMQParametersVpcId) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRocketMQParameters {
+	s.VpcId = v
 	return s
 }
 
@@ -19235,6 +19283,35 @@ func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRocketMQParam
 	return s
 }
 
+type ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRocketMQParametersInstanceEndpoint struct {
+	Form     *string `json:"Form,omitempty" xml:"Form,omitempty"`
+	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
+	Value    *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRocketMQParametersInstanceEndpoint) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRocketMQParametersInstanceEndpoint) GoString() string {
+	return s.String()
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRocketMQParametersInstanceEndpoint) SetForm(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRocketMQParametersInstanceEndpoint {
+	s.Form = &v
+	return s
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRocketMQParametersInstanceEndpoint) SetTemplate(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRocketMQParametersInstanceEndpoint {
+	s.Template = &v
+	return s
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRocketMQParametersInstanceEndpoint) SetValue(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRocketMQParametersInstanceEndpoint {
+	s.Value = &v
+	return s
+}
+
 type ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRocketMQParametersInstanceId struct {
 	// The method that is used to transform events. Default value: CONSTANT.
 	//
@@ -19271,6 +19348,93 @@ func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRocketMQParam
 }
 
 func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRocketMQParametersInstanceId) SetValue(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRocketMQParametersInstanceId {
+	s.Value = &v
+	return s
+}
+
+type ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRocketMQParametersInstancePassword struct {
+	Form     *string `json:"Form,omitempty" xml:"Form,omitempty"`
+	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
+	Value    *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRocketMQParametersInstancePassword) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRocketMQParametersInstancePassword) GoString() string {
+	return s.String()
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRocketMQParametersInstancePassword) SetForm(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRocketMQParametersInstancePassword {
+	s.Form = &v
+	return s
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRocketMQParametersInstancePassword) SetTemplate(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRocketMQParametersInstancePassword {
+	s.Template = &v
+	return s
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRocketMQParametersInstancePassword) SetValue(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRocketMQParametersInstancePassword {
+	s.Value = &v
+	return s
+}
+
+type ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRocketMQParametersInstanceType struct {
+	Form     *string `json:"Form,omitempty" xml:"Form,omitempty"`
+	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
+	Value    *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRocketMQParametersInstanceType) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRocketMQParametersInstanceType) GoString() string {
+	return s.String()
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRocketMQParametersInstanceType) SetForm(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRocketMQParametersInstanceType {
+	s.Form = &v
+	return s
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRocketMQParametersInstanceType) SetTemplate(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRocketMQParametersInstanceType {
+	s.Template = &v
+	return s
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRocketMQParametersInstanceType) SetValue(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRocketMQParametersInstanceType {
+	s.Value = &v
+	return s
+}
+
+type ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRocketMQParametersInstanceUsername struct {
+	Form     *string `json:"Form,omitempty" xml:"Form,omitempty"`
+	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
+	Value    *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRocketMQParametersInstanceUsername) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRocketMQParametersInstanceUsername) GoString() string {
+	return s.String()
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRocketMQParametersInstanceUsername) SetForm(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRocketMQParametersInstanceUsername {
+	s.Form = &v
+	return s
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRocketMQParametersInstanceUsername) SetTemplate(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRocketMQParametersInstanceUsername {
+	s.Template = &v
+	return s
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRocketMQParametersInstanceUsername) SetValue(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRocketMQParametersInstanceUsername {
 	s.Value = &v
 	return s
 }
@@ -19323,6 +19487,35 @@ func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRocketMQParam
 	return s
 }
 
+type ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRocketMQParametersNetwork struct {
+	Form     *string `json:"Form,omitempty" xml:"Form,omitempty"`
+	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
+	Value    *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRocketMQParametersNetwork) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRocketMQParametersNetwork) GoString() string {
+	return s.String()
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRocketMQParametersNetwork) SetForm(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRocketMQParametersNetwork {
+	s.Form = &v
+	return s
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRocketMQParametersNetwork) SetTemplate(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRocketMQParametersNetwork {
+	s.Template = &v
+	return s
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRocketMQParametersNetwork) SetValue(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRocketMQParametersNetwork {
+	s.Value = &v
+	return s
+}
+
 type ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRocketMQParametersProperties struct {
 	// The method that is used to transform events.
 	//
@@ -19367,6 +19560,35 @@ func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRocketMQParam
 }
 
 func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRocketMQParametersProperties) SetValue(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRocketMQParametersProperties {
+	s.Value = &v
+	return s
+}
+
+type ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRocketMQParametersSecurityGroupId struct {
+	Form     *string `json:"Form,omitempty" xml:"Form,omitempty"`
+	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
+	Value    *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRocketMQParametersSecurityGroupId) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRocketMQParametersSecurityGroupId) GoString() string {
+	return s.String()
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRocketMQParametersSecurityGroupId) SetForm(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRocketMQParametersSecurityGroupId {
+	s.Form = &v
+	return s
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRocketMQParametersSecurityGroupId) SetTemplate(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRocketMQParametersSecurityGroupId {
+	s.Template = &v
+	return s
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRocketMQParametersSecurityGroupId) SetValue(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRocketMQParametersSecurityGroupId {
 	s.Value = &v
 	return s
 }
@@ -19455,6 +19677,64 @@ func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRocketMQParam
 }
 
 func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRocketMQParametersTopic) SetValue(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRocketMQParametersTopic {
+	s.Value = &v
+	return s
+}
+
+type ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRocketMQParametersVSwitchIds struct {
+	Form     *string `json:"Form,omitempty" xml:"Form,omitempty"`
+	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
+	Value    *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRocketMQParametersVSwitchIds) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRocketMQParametersVSwitchIds) GoString() string {
+	return s.String()
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRocketMQParametersVSwitchIds) SetForm(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRocketMQParametersVSwitchIds {
+	s.Form = &v
+	return s
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRocketMQParametersVSwitchIds) SetTemplate(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRocketMQParametersVSwitchIds {
+	s.Template = &v
+	return s
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRocketMQParametersVSwitchIds) SetValue(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRocketMQParametersVSwitchIds {
+	s.Value = &v
+	return s
+}
+
+type ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRocketMQParametersVpcId struct {
+	Form     *string `json:"Form,omitempty" xml:"Form,omitempty"`
+	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
+	Value    *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRocketMQParametersVpcId) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRocketMQParametersVpcId) GoString() string {
+	return s.String()
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRocketMQParametersVpcId) SetForm(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRocketMQParametersVpcId {
+	s.Form = &v
+	return s
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRocketMQParametersVpcId) SetTemplate(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRocketMQParametersVpcId {
+	s.Template = &v
+	return s
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRocketMQParametersVpcId) SetValue(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkRocketMQParametersVpcId {
 	s.Value = &v
 	return s
 }
@@ -28851,17 +29131,25 @@ func (s *UpdateEventStreamingRequestSinkSinkRabbitMQParametersVirtualHostName) S
 
 type UpdateEventStreamingRequestSinkSinkRocketMQParameters struct {
 	// The message content.
-	Body *UpdateEventStreamingRequestSinkSinkRocketMQParametersBody `json:"Body,omitempty" xml:"Body,omitempty" type:"Struct"`
+	Body             *UpdateEventStreamingRequestSinkSinkRocketMQParametersBody             `json:"Body,omitempty" xml:"Body,omitempty" type:"Struct"`
+	InstanceEndpoint *UpdateEventStreamingRequestSinkSinkRocketMQParametersInstanceEndpoint `json:"InstanceEndpoint,omitempty" xml:"InstanceEndpoint,omitempty" type:"Struct"`
 	// The ID of the ApsaraMQ for RocketMQ instance.
-	InstanceId *UpdateEventStreamingRequestSinkSinkRocketMQParametersInstanceId `json:"InstanceId,omitempty" xml:"InstanceId,omitempty" type:"Struct"`
+	InstanceId       *UpdateEventStreamingRequestSinkSinkRocketMQParametersInstanceId       `json:"InstanceId,omitempty" xml:"InstanceId,omitempty" type:"Struct"`
+	InstancePassword *UpdateEventStreamingRequestSinkSinkRocketMQParametersInstancePassword `json:"InstancePassword,omitempty" xml:"InstancePassword,omitempty" type:"Struct"`
+	InstanceType     *UpdateEventStreamingRequestSinkSinkRocketMQParametersInstanceType     `json:"InstanceType,omitempty" xml:"InstanceType,omitempty" type:"Struct"`
+	InstanceUsername *UpdateEventStreamingRequestSinkSinkRocketMQParametersInstanceUsername `json:"InstanceUsername,omitempty" xml:"InstanceUsername,omitempty" type:"Struct"`
 	// The attributes that you want to use to filter messages.
-	Keys *UpdateEventStreamingRequestSinkSinkRocketMQParametersKeys `json:"Keys,omitempty" xml:"Keys,omitempty" type:"Struct"`
+	Keys    *UpdateEventStreamingRequestSinkSinkRocketMQParametersKeys    `json:"Keys,omitempty" xml:"Keys,omitempty" type:"Struct"`
+	Network *UpdateEventStreamingRequestSinkSinkRocketMQParametersNetwork `json:"Network,omitempty" xml:"Network,omitempty" type:"Struct"`
 	// The attributes that you want to use to filter messages.
-	Properties *UpdateEventStreamingRequestSinkSinkRocketMQParametersProperties `json:"Properties,omitempty" xml:"Properties,omitempty" type:"Struct"`
+	Properties      *UpdateEventStreamingRequestSinkSinkRocketMQParametersProperties      `json:"Properties,omitempty" xml:"Properties,omitempty" type:"Struct"`
+	SecurityGroupId *UpdateEventStreamingRequestSinkSinkRocketMQParametersSecurityGroupId `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty" type:"Struct"`
 	// The attributes that you want to use to filter messages.
 	Tags *UpdateEventStreamingRequestSinkSinkRocketMQParametersTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
 	// The topic on the ApsaraMQ for RocketMQ instance.
-	Topic *UpdateEventStreamingRequestSinkSinkRocketMQParametersTopic `json:"Topic,omitempty" xml:"Topic,omitempty" type:"Struct"`
+	Topic      *UpdateEventStreamingRequestSinkSinkRocketMQParametersTopic      `json:"Topic,omitempty" xml:"Topic,omitempty" type:"Struct"`
+	VSwitchIds *UpdateEventStreamingRequestSinkSinkRocketMQParametersVSwitchIds `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty" type:"Struct"`
+	VpcId      *UpdateEventStreamingRequestSinkSinkRocketMQParametersVpcId      `json:"VpcId,omitempty" xml:"VpcId,omitempty" type:"Struct"`
 }
 
 func (s UpdateEventStreamingRequestSinkSinkRocketMQParameters) String() string {
@@ -28877,8 +29165,28 @@ func (s *UpdateEventStreamingRequestSinkSinkRocketMQParameters) SetBody(v *Updat
 	return s
 }
 
+func (s *UpdateEventStreamingRequestSinkSinkRocketMQParameters) SetInstanceEndpoint(v *UpdateEventStreamingRequestSinkSinkRocketMQParametersInstanceEndpoint) *UpdateEventStreamingRequestSinkSinkRocketMQParameters {
+	s.InstanceEndpoint = v
+	return s
+}
+
 func (s *UpdateEventStreamingRequestSinkSinkRocketMQParameters) SetInstanceId(v *UpdateEventStreamingRequestSinkSinkRocketMQParametersInstanceId) *UpdateEventStreamingRequestSinkSinkRocketMQParameters {
 	s.InstanceId = v
+	return s
+}
+
+func (s *UpdateEventStreamingRequestSinkSinkRocketMQParameters) SetInstancePassword(v *UpdateEventStreamingRequestSinkSinkRocketMQParametersInstancePassword) *UpdateEventStreamingRequestSinkSinkRocketMQParameters {
+	s.InstancePassword = v
+	return s
+}
+
+func (s *UpdateEventStreamingRequestSinkSinkRocketMQParameters) SetInstanceType(v *UpdateEventStreamingRequestSinkSinkRocketMQParametersInstanceType) *UpdateEventStreamingRequestSinkSinkRocketMQParameters {
+	s.InstanceType = v
+	return s
+}
+
+func (s *UpdateEventStreamingRequestSinkSinkRocketMQParameters) SetInstanceUsername(v *UpdateEventStreamingRequestSinkSinkRocketMQParametersInstanceUsername) *UpdateEventStreamingRequestSinkSinkRocketMQParameters {
+	s.InstanceUsername = v
 	return s
 }
 
@@ -28887,8 +29195,18 @@ func (s *UpdateEventStreamingRequestSinkSinkRocketMQParameters) SetKeys(v *Updat
 	return s
 }
 
+func (s *UpdateEventStreamingRequestSinkSinkRocketMQParameters) SetNetwork(v *UpdateEventStreamingRequestSinkSinkRocketMQParametersNetwork) *UpdateEventStreamingRequestSinkSinkRocketMQParameters {
+	s.Network = v
+	return s
+}
+
 func (s *UpdateEventStreamingRequestSinkSinkRocketMQParameters) SetProperties(v *UpdateEventStreamingRequestSinkSinkRocketMQParametersProperties) *UpdateEventStreamingRequestSinkSinkRocketMQParameters {
 	s.Properties = v
+	return s
+}
+
+func (s *UpdateEventStreamingRequestSinkSinkRocketMQParameters) SetSecurityGroupId(v *UpdateEventStreamingRequestSinkSinkRocketMQParametersSecurityGroupId) *UpdateEventStreamingRequestSinkSinkRocketMQParameters {
+	s.SecurityGroupId = v
 	return s
 }
 
@@ -28899,6 +29217,16 @@ func (s *UpdateEventStreamingRequestSinkSinkRocketMQParameters) SetTags(v *Updat
 
 func (s *UpdateEventStreamingRequestSinkSinkRocketMQParameters) SetTopic(v *UpdateEventStreamingRequestSinkSinkRocketMQParametersTopic) *UpdateEventStreamingRequestSinkSinkRocketMQParameters {
 	s.Topic = v
+	return s
+}
+
+func (s *UpdateEventStreamingRequestSinkSinkRocketMQParameters) SetVSwitchIds(v *UpdateEventStreamingRequestSinkSinkRocketMQParametersVSwitchIds) *UpdateEventStreamingRequestSinkSinkRocketMQParameters {
+	s.VSwitchIds = v
+	return s
+}
+
+func (s *UpdateEventStreamingRequestSinkSinkRocketMQParameters) SetVpcId(v *UpdateEventStreamingRequestSinkSinkRocketMQParametersVpcId) *UpdateEventStreamingRequestSinkSinkRocketMQParameters {
+	s.VpcId = v
 	return s
 }
 
@@ -28950,6 +29278,35 @@ func (s *UpdateEventStreamingRequestSinkSinkRocketMQParametersBody) SetValue(v s
 	return s
 }
 
+type UpdateEventStreamingRequestSinkSinkRocketMQParametersInstanceEndpoint struct {
+	Form     *string `json:"Form,omitempty" xml:"Form,omitempty"`
+	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
+	Value    *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s UpdateEventStreamingRequestSinkSinkRocketMQParametersInstanceEndpoint) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateEventStreamingRequestSinkSinkRocketMQParametersInstanceEndpoint) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateEventStreamingRequestSinkSinkRocketMQParametersInstanceEndpoint) SetForm(v string) *UpdateEventStreamingRequestSinkSinkRocketMQParametersInstanceEndpoint {
+	s.Form = &v
+	return s
+}
+
+func (s *UpdateEventStreamingRequestSinkSinkRocketMQParametersInstanceEndpoint) SetTemplate(v string) *UpdateEventStreamingRequestSinkSinkRocketMQParametersInstanceEndpoint {
+	s.Template = &v
+	return s
+}
+
+func (s *UpdateEventStreamingRequestSinkSinkRocketMQParametersInstanceEndpoint) SetValue(v string) *UpdateEventStreamingRequestSinkSinkRocketMQParametersInstanceEndpoint {
+	s.Value = &v
+	return s
+}
+
 type UpdateEventStreamingRequestSinkSinkRocketMQParametersInstanceId struct {
 	// The method that you want to use to transform events. Default value: CONSTANT.
 	//
@@ -28986,6 +29343,93 @@ func (s *UpdateEventStreamingRequestSinkSinkRocketMQParametersInstanceId) SetTem
 }
 
 func (s *UpdateEventStreamingRequestSinkSinkRocketMQParametersInstanceId) SetValue(v string) *UpdateEventStreamingRequestSinkSinkRocketMQParametersInstanceId {
+	s.Value = &v
+	return s
+}
+
+type UpdateEventStreamingRequestSinkSinkRocketMQParametersInstancePassword struct {
+	Form     *string `json:"Form,omitempty" xml:"Form,omitempty"`
+	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
+	Value    *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s UpdateEventStreamingRequestSinkSinkRocketMQParametersInstancePassword) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateEventStreamingRequestSinkSinkRocketMQParametersInstancePassword) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateEventStreamingRequestSinkSinkRocketMQParametersInstancePassword) SetForm(v string) *UpdateEventStreamingRequestSinkSinkRocketMQParametersInstancePassword {
+	s.Form = &v
+	return s
+}
+
+func (s *UpdateEventStreamingRequestSinkSinkRocketMQParametersInstancePassword) SetTemplate(v string) *UpdateEventStreamingRequestSinkSinkRocketMQParametersInstancePassword {
+	s.Template = &v
+	return s
+}
+
+func (s *UpdateEventStreamingRequestSinkSinkRocketMQParametersInstancePassword) SetValue(v string) *UpdateEventStreamingRequestSinkSinkRocketMQParametersInstancePassword {
+	s.Value = &v
+	return s
+}
+
+type UpdateEventStreamingRequestSinkSinkRocketMQParametersInstanceType struct {
+	Form     *string `json:"Form,omitempty" xml:"Form,omitempty"`
+	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
+	Value    *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s UpdateEventStreamingRequestSinkSinkRocketMQParametersInstanceType) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateEventStreamingRequestSinkSinkRocketMQParametersInstanceType) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateEventStreamingRequestSinkSinkRocketMQParametersInstanceType) SetForm(v string) *UpdateEventStreamingRequestSinkSinkRocketMQParametersInstanceType {
+	s.Form = &v
+	return s
+}
+
+func (s *UpdateEventStreamingRequestSinkSinkRocketMQParametersInstanceType) SetTemplate(v string) *UpdateEventStreamingRequestSinkSinkRocketMQParametersInstanceType {
+	s.Template = &v
+	return s
+}
+
+func (s *UpdateEventStreamingRequestSinkSinkRocketMQParametersInstanceType) SetValue(v string) *UpdateEventStreamingRequestSinkSinkRocketMQParametersInstanceType {
+	s.Value = &v
+	return s
+}
+
+type UpdateEventStreamingRequestSinkSinkRocketMQParametersInstanceUsername struct {
+	Form     *string `json:"Form,omitempty" xml:"Form,omitempty"`
+	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
+	Value    *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s UpdateEventStreamingRequestSinkSinkRocketMQParametersInstanceUsername) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateEventStreamingRequestSinkSinkRocketMQParametersInstanceUsername) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateEventStreamingRequestSinkSinkRocketMQParametersInstanceUsername) SetForm(v string) *UpdateEventStreamingRequestSinkSinkRocketMQParametersInstanceUsername {
+	s.Form = &v
+	return s
+}
+
+func (s *UpdateEventStreamingRequestSinkSinkRocketMQParametersInstanceUsername) SetTemplate(v string) *UpdateEventStreamingRequestSinkSinkRocketMQParametersInstanceUsername {
+	s.Template = &v
+	return s
+}
+
+func (s *UpdateEventStreamingRequestSinkSinkRocketMQParametersInstanceUsername) SetValue(v string) *UpdateEventStreamingRequestSinkSinkRocketMQParametersInstanceUsername {
 	s.Value = &v
 	return s
 }
@@ -29038,6 +29482,35 @@ func (s *UpdateEventStreamingRequestSinkSinkRocketMQParametersKeys) SetValue(v s
 	return s
 }
 
+type UpdateEventStreamingRequestSinkSinkRocketMQParametersNetwork struct {
+	Form     *string `json:"Form,omitempty" xml:"Form,omitempty"`
+	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
+	Value    *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s UpdateEventStreamingRequestSinkSinkRocketMQParametersNetwork) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateEventStreamingRequestSinkSinkRocketMQParametersNetwork) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateEventStreamingRequestSinkSinkRocketMQParametersNetwork) SetForm(v string) *UpdateEventStreamingRequestSinkSinkRocketMQParametersNetwork {
+	s.Form = &v
+	return s
+}
+
+func (s *UpdateEventStreamingRequestSinkSinkRocketMQParametersNetwork) SetTemplate(v string) *UpdateEventStreamingRequestSinkSinkRocketMQParametersNetwork {
+	s.Template = &v
+	return s
+}
+
+func (s *UpdateEventStreamingRequestSinkSinkRocketMQParametersNetwork) SetValue(v string) *UpdateEventStreamingRequestSinkSinkRocketMQParametersNetwork {
+	s.Value = &v
+	return s
+}
+
 type UpdateEventStreamingRequestSinkSinkRocketMQParametersProperties struct {
 	// The method that you want to use to transform events.
 	//
@@ -29082,6 +29555,35 @@ func (s *UpdateEventStreamingRequestSinkSinkRocketMQParametersProperties) SetTem
 }
 
 func (s *UpdateEventStreamingRequestSinkSinkRocketMQParametersProperties) SetValue(v string) *UpdateEventStreamingRequestSinkSinkRocketMQParametersProperties {
+	s.Value = &v
+	return s
+}
+
+type UpdateEventStreamingRequestSinkSinkRocketMQParametersSecurityGroupId struct {
+	Form     *string `json:"Form,omitempty" xml:"Form,omitempty"`
+	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
+	Value    *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s UpdateEventStreamingRequestSinkSinkRocketMQParametersSecurityGroupId) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateEventStreamingRequestSinkSinkRocketMQParametersSecurityGroupId) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateEventStreamingRequestSinkSinkRocketMQParametersSecurityGroupId) SetForm(v string) *UpdateEventStreamingRequestSinkSinkRocketMQParametersSecurityGroupId {
+	s.Form = &v
+	return s
+}
+
+func (s *UpdateEventStreamingRequestSinkSinkRocketMQParametersSecurityGroupId) SetTemplate(v string) *UpdateEventStreamingRequestSinkSinkRocketMQParametersSecurityGroupId {
+	s.Template = &v
+	return s
+}
+
+func (s *UpdateEventStreamingRequestSinkSinkRocketMQParametersSecurityGroupId) SetValue(v string) *UpdateEventStreamingRequestSinkSinkRocketMQParametersSecurityGroupId {
 	s.Value = &v
 	return s
 }
@@ -29170,6 +29672,64 @@ func (s *UpdateEventStreamingRequestSinkSinkRocketMQParametersTopic) SetTemplate
 }
 
 func (s *UpdateEventStreamingRequestSinkSinkRocketMQParametersTopic) SetValue(v string) *UpdateEventStreamingRequestSinkSinkRocketMQParametersTopic {
+	s.Value = &v
+	return s
+}
+
+type UpdateEventStreamingRequestSinkSinkRocketMQParametersVSwitchIds struct {
+	Form     *string `json:"Form,omitempty" xml:"Form,omitempty"`
+	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
+	Value    *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s UpdateEventStreamingRequestSinkSinkRocketMQParametersVSwitchIds) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateEventStreamingRequestSinkSinkRocketMQParametersVSwitchIds) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateEventStreamingRequestSinkSinkRocketMQParametersVSwitchIds) SetForm(v string) *UpdateEventStreamingRequestSinkSinkRocketMQParametersVSwitchIds {
+	s.Form = &v
+	return s
+}
+
+func (s *UpdateEventStreamingRequestSinkSinkRocketMQParametersVSwitchIds) SetTemplate(v string) *UpdateEventStreamingRequestSinkSinkRocketMQParametersVSwitchIds {
+	s.Template = &v
+	return s
+}
+
+func (s *UpdateEventStreamingRequestSinkSinkRocketMQParametersVSwitchIds) SetValue(v string) *UpdateEventStreamingRequestSinkSinkRocketMQParametersVSwitchIds {
+	s.Value = &v
+	return s
+}
+
+type UpdateEventStreamingRequestSinkSinkRocketMQParametersVpcId struct {
+	Form     *string `json:"Form,omitempty" xml:"Form,omitempty"`
+	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
+	Value    *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s UpdateEventStreamingRequestSinkSinkRocketMQParametersVpcId) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateEventStreamingRequestSinkSinkRocketMQParametersVpcId) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateEventStreamingRequestSinkSinkRocketMQParametersVpcId) SetForm(v string) *UpdateEventStreamingRequestSinkSinkRocketMQParametersVpcId {
+	s.Form = &v
+	return s
+}
+
+func (s *UpdateEventStreamingRequestSinkSinkRocketMQParametersVpcId) SetTemplate(v string) *UpdateEventStreamingRequestSinkSinkRocketMQParametersVpcId {
+	s.Template = &v
+	return s
+}
+
+func (s *UpdateEventStreamingRequestSinkSinkRocketMQParametersVpcId) SetValue(v string) *UpdateEventStreamingRequestSinkSinkRocketMQParametersVpcId {
 	s.Value = &v
 	return s
 }
