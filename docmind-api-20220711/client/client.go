@@ -17,9 +17,10 @@ import (
 type AyncTradeDocumentPackageExtractSmartAppRequest struct {
 	CustomExtractionRange []*string `json:"CustomExtractionRange,omitempty" xml:"CustomExtractionRange,omitempty" type:"Repeated"`
 	FileName              *string   `json:"FileName,omitempty" xml:"FileName,omitempty"`
-	FileUrl               *string   `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
-	Option                *string   `json:"Option,omitempty" xml:"Option,omitempty"`
-	TemplateName          *string   `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+	// This parameter is required.
+	FileUrl      *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	Option       *string `json:"Option,omitempty" xml:"Option,omitempty"`
+	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
 }
 
 func (s AyncTradeDocumentPackageExtractSmartAppRequest) String() string {
@@ -58,9 +59,10 @@ func (s *AyncTradeDocumentPackageExtractSmartAppRequest) SetTemplateName(v strin
 type AyncTradeDocumentPackageExtractSmartAppShrinkRequest struct {
 	CustomExtractionRangeShrink *string `json:"CustomExtractionRange,omitempty" xml:"CustomExtractionRange,omitempty"`
 	FileName                    *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
-	FileUrl                     *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
-	Option                      *string `json:"Option,omitempty" xml:"Option,omitempty"`
-	TemplateName                *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+	// This parameter is required.
+	FileUrl      *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	Option       *string `json:"Option,omitempty" xml:"Option,omitempty"`
+	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
 }
 
 func (s AyncTradeDocumentPackageExtractSmartAppShrinkRequest) String() string {
@@ -424,7 +426,8 @@ type GetDocumentConvertResultResponseBody struct {
 	// example:
 	//
 	// noPermission
-	Code      *string                                     `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// This parameter is required.
 	Completed *bool                                       `json:"Completed,omitempty" xml:"Completed,omitempty"`
 	Data      []*GetDocumentConvertResultResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// example:
@@ -435,6 +438,8 @@ type GetDocumentConvertResultResponseBody struct {
 	//
 	// 43A29C77-405E-4CC0-BC55-EE694AD00655
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// Success
@@ -2347,6 +2352,7 @@ func (s *SubmitDigitalDocStructureJobResponse) SetBody(v *SubmitDigitalDocStruct
 }
 
 type SubmitDocStructureJobRequest struct {
+	AllowPptFormat *bool `json:"AllowPptFormat,omitempty" xml:"AllowPptFormat,omitempty"`
 	// example:
 	//
 	// docStructure.pdf
@@ -2369,6 +2375,11 @@ func (s SubmitDocStructureJobRequest) String() string {
 
 func (s SubmitDocStructureJobRequest) GoString() string {
 	return s.String()
+}
+
+func (s *SubmitDocStructureJobRequest) SetAllowPptFormat(v bool) *SubmitDocStructureJobRequest {
+	s.AllowPptFormat = &v
+	return s
 }
 
 func (s *SubmitDocStructureJobRequest) SetFileName(v string) *SubmitDocStructureJobRequest {
@@ -2397,6 +2408,7 @@ func (s *SubmitDocStructureJobRequest) SetStructureType(v string) *SubmitDocStru
 }
 
 type SubmitDocStructureJobAdvanceRequest struct {
+	AllowPptFormat *bool `json:"AllowPptFormat,omitempty" xml:"AllowPptFormat,omitempty"`
 	// example:
 	//
 	// docStructure.pdf
@@ -2419,6 +2431,11 @@ func (s SubmitDocStructureJobAdvanceRequest) String() string {
 
 func (s SubmitDocStructureJobAdvanceRequest) GoString() string {
 	return s.String()
+}
+
+func (s *SubmitDocStructureJobAdvanceRequest) SetAllowPptFormat(v bool) *SubmitDocStructureJobAdvanceRequest {
+	s.AllowPptFormat = &v
+	return s
 }
 
 func (s *SubmitDocStructureJobAdvanceRequest) SetFileName(v string) *SubmitDocStructureJobAdvanceRequest {
@@ -2535,134 +2552,6 @@ func (s *SubmitDocStructureJobResponse) SetStatusCode(v int32) *SubmitDocStructu
 }
 
 func (s *SubmitDocStructureJobResponse) SetBody(v *SubmitDocStructureJobResponseBody) *SubmitDocStructureJobResponse {
-	s.Body = v
-	return s
-}
-
-type SubmitDocumentCompareJobRequest struct {
-	CompareFileName *string `json:"CompareFileName,omitempty" xml:"CompareFileName,omitempty"`
-	CompareFileUrl  *string `json:"CompareFileUrl,omitempty" xml:"CompareFileUrl,omitempty"`
-	OriginFileName  *string `json:"OriginFileName,omitempty" xml:"OriginFileName,omitempty"`
-	OriginFileUrl   *string `json:"OriginFileUrl,omitempty" xml:"OriginFileUrl,omitempty"`
-}
-
-func (s SubmitDocumentCompareJobRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitDocumentCompareJobRequest) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitDocumentCompareJobRequest) SetCompareFileName(v string) *SubmitDocumentCompareJobRequest {
-	s.CompareFileName = &v
-	return s
-}
-
-func (s *SubmitDocumentCompareJobRequest) SetCompareFileUrl(v string) *SubmitDocumentCompareJobRequest {
-	s.CompareFileUrl = &v
-	return s
-}
-
-func (s *SubmitDocumentCompareJobRequest) SetOriginFileName(v string) *SubmitDocumentCompareJobRequest {
-	s.OriginFileName = &v
-	return s
-}
-
-func (s *SubmitDocumentCompareJobRequest) SetOriginFileUrl(v string) *SubmitDocumentCompareJobRequest {
-	s.OriginFileUrl = &v
-	return s
-}
-
-type SubmitDocumentCompareJobResponseBody struct {
-	// example:
-	//
-	// noPermission
-	Code *string                                   `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data *SubmitDocumentCompareJobResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// example:
-	//
-	// You are not authorized to perform this operation.
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// example:
-	//
-	// 43A29C77-405E-4CC0-BC55-EE694AD00655
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s SubmitDocumentCompareJobResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitDocumentCompareJobResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitDocumentCompareJobResponseBody) SetCode(v string) *SubmitDocumentCompareJobResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *SubmitDocumentCompareJobResponseBody) SetData(v *SubmitDocumentCompareJobResponseBodyData) *SubmitDocumentCompareJobResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *SubmitDocumentCompareJobResponseBody) SetMessage(v string) *SubmitDocumentCompareJobResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *SubmitDocumentCompareJobResponseBody) SetRequestId(v string) *SubmitDocumentCompareJobResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type SubmitDocumentCompareJobResponseBodyData struct {
-	// example:
-	//
-	// docmind-20220816-15bc7965
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-}
-
-func (s SubmitDocumentCompareJobResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitDocumentCompareJobResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitDocumentCompareJobResponseBodyData) SetId(v string) *SubmitDocumentCompareJobResponseBodyData {
-	s.Id = &v
-	return s
-}
-
-type SubmitDocumentCompareJobResponse struct {
-	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-	Body       *SubmitDocumentCompareJobResponseBody `json:"body,omitempty" xml:"body,omitempty"`
-}
-
-func (s SubmitDocumentCompareJobResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitDocumentCompareJobResponse) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitDocumentCompareJobResponse) SetHeaders(v map[string]*string) *SubmitDocumentCompareJobResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *SubmitDocumentCompareJobResponse) SetStatusCode(v int32) *SubmitDocumentCompareJobResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *SubmitDocumentCompareJobResponse) SetBody(v *SubmitDocumentCompareJobResponseBody) *SubmitDocumentCompareJobResponse {
 	s.Body = v
 	return s
 }
@@ -3098,6 +2987,15 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
+// Summary:
+//
+// 整票识别
+//
+// @param tmpReq - AyncTradeDocumentPackageExtractSmartAppRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AyncTradeDocumentPackageExtractSmartAppResponse
 func (client *Client) AyncTradeDocumentPackageExtractSmartAppWithOptions(tmpReq *AyncTradeDocumentPackageExtractSmartAppRequest, runtime *util.RuntimeOptions) (_result *AyncTradeDocumentPackageExtractSmartAppResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -3153,6 +3051,13 @@ func (client *Client) AyncTradeDocumentPackageExtractSmartAppWithOptions(tmpReq 
 	return _result, _err
 }
 
+// Summary:
+//
+// 整票识别
+//
+// @param request - AyncTradeDocumentPackageExtractSmartAppRequest
+//
+// @return AyncTradeDocumentPackageExtractSmartAppResponse
 func (client *Client) AyncTradeDocumentPackageExtractSmartApp(request *AyncTradeDocumentPackageExtractSmartAppRequest) (_result *AyncTradeDocumentPackageExtractSmartAppResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &AyncTradeDocumentPackageExtractSmartAppResponse{}
@@ -3164,6 +3069,15 @@ func (client *Client) AyncTradeDocumentPackageExtractSmartApp(request *AyncTrade
 	return _result, _err
 }
 
+// Summary:
+//
+// 文档智能解析结果查询
+//
+// @param request - GetDocStructureResultRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetDocStructureResultResponse
 func (client *Client) GetDocStructureResultWithOptions(request *GetDocStructureResultRequest, runtime *util.RuntimeOptions) (_result *GetDocStructureResultResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3205,6 +3119,13 @@ func (client *Client) GetDocStructureResultWithOptions(request *GetDocStructureR
 	return _result, _err
 }
 
+// Summary:
+//
+// 文档智能解析结果查询
+//
+// @param request - GetDocStructureResultRequest
+//
+// @return GetDocStructureResultResponse
 func (client *Client) GetDocStructureResult(request *GetDocStructureResultRequest) (_result *GetDocStructureResultResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetDocStructureResultResponse{}
@@ -3216,6 +3137,15 @@ func (client *Client) GetDocStructureResult(request *GetDocStructureResultReques
 	return _result, _err
 }
 
+// Summary:
+//
+// 文档对比结果查询
+//
+// @param request - GetDocumentCompareResultRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetDocumentCompareResultResponse
 func (client *Client) GetDocumentCompareResultWithOptions(request *GetDocumentCompareResultRequest, runtime *util.RuntimeOptions) (_result *GetDocumentCompareResultResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3249,6 +3179,13 @@ func (client *Client) GetDocumentCompareResultWithOptions(request *GetDocumentCo
 	return _result, _err
 }
 
+// Summary:
+//
+// 文档对比结果查询
+//
+// @param request - GetDocumentCompareResultRequest
+//
+// @return GetDocumentCompareResultResponse
 func (client *Client) GetDocumentCompareResult(request *GetDocumentCompareResultRequest) (_result *GetDocumentCompareResultResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetDocumentCompareResultResponse{}
@@ -3260,6 +3197,15 @@ func (client *Client) GetDocumentCompareResult(request *GetDocumentCompareResult
 	return _result, _err
 }
 
+// Summary:
+//
+// 文档转换结果查询
+//
+// @param request - GetDocumentConvertResultRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetDocumentConvertResultResponse
 func (client *Client) GetDocumentConvertResultWithOptions(request *GetDocumentConvertResultRequest, runtime *util.RuntimeOptions) (_result *GetDocumentConvertResultResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3293,6 +3239,13 @@ func (client *Client) GetDocumentConvertResultWithOptions(request *GetDocumentCo
 	return _result, _err
 }
 
+// Summary:
+//
+// 文档转换结果查询
+//
+// @param request - GetDocumentConvertResultRequest
+//
+// @return GetDocumentConvertResultResponse
 func (client *Client) GetDocumentConvertResult(request *GetDocumentConvertResultRequest) (_result *GetDocumentConvertResultResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetDocumentConvertResultResponse{}
@@ -3304,6 +3257,15 @@ func (client *Client) GetDocumentConvertResult(request *GetDocumentConvertResult
 	return _result, _err
 }
 
+// Summary:
+//
+// 文档抽取结果查询
+//
+// @param request - GetDocumentExtractResultRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetDocumentExtractResultResponse
 func (client *Client) GetDocumentExtractResultWithOptions(request *GetDocumentExtractResultRequest, runtime *util.RuntimeOptions) (_result *GetDocumentExtractResultResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3337,6 +3299,13 @@ func (client *Client) GetDocumentExtractResultWithOptions(request *GetDocumentEx
 	return _result, _err
 }
 
+// Summary:
+//
+// 文档抽取结果查询
+//
+// @param request - GetDocumentExtractResultRequest
+//
+// @return GetDocumentExtractResultResponse
 func (client *Client) GetDocumentExtractResult(request *GetDocumentExtractResultRequest) (_result *GetDocumentExtractResultResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetDocumentExtractResultResponse{}
@@ -3348,6 +3317,15 @@ func (client *Client) GetDocumentExtractResult(request *GetDocumentExtractResult
 	return _result, _err
 }
 
+// Summary:
+//
+// openmind
+//
+// @param request - GetPageNumRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetPageNumResponse
 func (client *Client) GetPageNumWithOptions(request *GetPageNumRequest, runtime *util.RuntimeOptions) (_result *GetPageNumResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3381,6 +3359,13 @@ func (client *Client) GetPageNumWithOptions(request *GetPageNumRequest, runtime 
 	return _result, _err
 }
 
+// Summary:
+//
+// openmind
+//
+// @param request - GetPageNumRequest
+//
+// @return GetPageNumResponse
 func (client *Client) GetPageNum(request *GetPageNumRequest) (_result *GetPageNumResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetPageNumResponse{}
@@ -3392,6 +3377,15 @@ func (client *Client) GetPageNum(request *GetPageNumRequest) (_result *GetPageNu
 	return _result, _err
 }
 
+// Summary:
+//
+// 表格智能解析结果查询
+//
+// @param request - GetTableUnderstandingResultRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetTableUnderstandingResultResponse
 func (client *Client) GetTableUnderstandingResultWithOptions(request *GetTableUnderstandingResultRequest, runtime *util.RuntimeOptions) (_result *GetTableUnderstandingResultResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3425,6 +3419,13 @@ func (client *Client) GetTableUnderstandingResultWithOptions(request *GetTableUn
 	return _result, _err
 }
 
+// Summary:
+//
+// 表格智能解析结果查询
+//
+// @param request - GetTableUnderstandingResultRequest
+//
+// @return GetTableUnderstandingResultResponse
 func (client *Client) GetTableUnderstandingResult(request *GetTableUnderstandingResultRequest) (_result *GetTableUnderstandingResultResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetTableUnderstandingResultResponse{}
@@ -3436,6 +3437,15 @@ func (client *Client) GetTableUnderstandingResult(request *GetTableUnderstanding
 	return _result, _err
 }
 
+// Summary:
+//
+// 图片转excel
+//
+// @param tmpReq - SubmitConvertImageToExcelJobRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SubmitConvertImageToExcelJobResponse
 func (client *Client) SubmitConvertImageToExcelJobWithOptions(tmpReq *SubmitConvertImageToExcelJobRequest, runtime *util.RuntimeOptions) (_result *SubmitConvertImageToExcelJobResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -3491,6 +3501,13 @@ func (client *Client) SubmitConvertImageToExcelJobWithOptions(tmpReq *SubmitConv
 	return _result, _err
 }
 
+// Summary:
+//
+// 图片转excel
+//
+// @param request - SubmitConvertImageToExcelJobRequest
+//
+// @return SubmitConvertImageToExcelJobResponse
 func (client *Client) SubmitConvertImageToExcelJob(request *SubmitConvertImageToExcelJobRequest) (_result *SubmitConvertImageToExcelJobResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SubmitConvertImageToExcelJobResponse{}
@@ -3502,6 +3519,15 @@ func (client *Client) SubmitConvertImageToExcelJob(request *SubmitConvertImageTo
 	return _result, _err
 }
 
+// Summary:
+//
+// 图片转markdown
+//
+// @param tmpReq - SubmitConvertImageToMarkdownJobRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SubmitConvertImageToMarkdownJobResponse
 func (client *Client) SubmitConvertImageToMarkdownJobWithOptions(tmpReq *SubmitConvertImageToMarkdownJobRequest, runtime *util.RuntimeOptions) (_result *SubmitConvertImageToMarkdownJobResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -3553,6 +3579,13 @@ func (client *Client) SubmitConvertImageToMarkdownJobWithOptions(tmpReq *SubmitC
 	return _result, _err
 }
 
+// Summary:
+//
+// 图片转markdown
+//
+// @param request - SubmitConvertImageToMarkdownJobRequest
+//
+// @return SubmitConvertImageToMarkdownJobResponse
 func (client *Client) SubmitConvertImageToMarkdownJob(request *SubmitConvertImageToMarkdownJobRequest) (_result *SubmitConvertImageToMarkdownJobResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SubmitConvertImageToMarkdownJobResponse{}
@@ -3564,6 +3597,15 @@ func (client *Client) SubmitConvertImageToMarkdownJob(request *SubmitConvertImag
 	return _result, _err
 }
 
+// Summary:
+//
+// 图片转pdf
+//
+// @param tmpReq - SubmitConvertImageToPdfJobRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SubmitConvertImageToPdfJobResponse
 func (client *Client) SubmitConvertImageToPdfJobWithOptions(tmpReq *SubmitConvertImageToPdfJobRequest, runtime *util.RuntimeOptions) (_result *SubmitConvertImageToPdfJobResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -3615,6 +3657,13 @@ func (client *Client) SubmitConvertImageToPdfJobWithOptions(tmpReq *SubmitConver
 	return _result, _err
 }
 
+// Summary:
+//
+// 图片转pdf
+//
+// @param request - SubmitConvertImageToPdfJobRequest
+//
+// @return SubmitConvertImageToPdfJobResponse
 func (client *Client) SubmitConvertImageToPdfJob(request *SubmitConvertImageToPdfJobRequest) (_result *SubmitConvertImageToPdfJobResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SubmitConvertImageToPdfJobResponse{}
@@ -3626,6 +3675,15 @@ func (client *Client) SubmitConvertImageToPdfJob(request *SubmitConvertImageToPd
 	return _result, _err
 }
 
+// Summary:
+//
+// 图片转word
+//
+// @param tmpReq - SubmitConvertImageToWordJobRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SubmitConvertImageToWordJobResponse
 func (client *Client) SubmitConvertImageToWordJobWithOptions(tmpReq *SubmitConvertImageToWordJobRequest, runtime *util.RuntimeOptions) (_result *SubmitConvertImageToWordJobResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -3677,6 +3735,13 @@ func (client *Client) SubmitConvertImageToWordJobWithOptions(tmpReq *SubmitConve
 	return _result, _err
 }
 
+// Summary:
+//
+// 图片转word
+//
+// @param request - SubmitConvertImageToWordJobRequest
+//
+// @return SubmitConvertImageToWordJobResponse
 func (client *Client) SubmitConvertImageToWordJob(request *SubmitConvertImageToWordJobRequest) (_result *SubmitConvertImageToWordJobResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SubmitConvertImageToWordJobResponse{}
@@ -3688,6 +3753,15 @@ func (client *Client) SubmitConvertImageToWordJob(request *SubmitConvertImageToW
 	return _result, _err
 }
 
+// Summary:
+//
+// pdf转excel
+//
+// @param request - SubmitConvertPdfToExcelJobRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SubmitConvertPdfToExcelJobResponse
 func (client *Client) SubmitConvertPdfToExcelJobWithOptions(request *SubmitConvertPdfToExcelJobRequest, runtime *util.RuntimeOptions) (_result *SubmitConvertPdfToExcelJobResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3733,6 +3807,13 @@ func (client *Client) SubmitConvertPdfToExcelJobWithOptions(request *SubmitConve
 	return _result, _err
 }
 
+// Summary:
+//
+// pdf转excel
+//
+// @param request - SubmitConvertPdfToExcelJobRequest
+//
+// @return SubmitConvertPdfToExcelJobResponse
 func (client *Client) SubmitConvertPdfToExcelJob(request *SubmitConvertPdfToExcelJobRequest) (_result *SubmitConvertPdfToExcelJobResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SubmitConvertPdfToExcelJobResponse{}
@@ -3763,7 +3844,7 @@ func (client *Client) SubmitConvertPdfToExcelJobAdvance(request *SubmitConvertPd
 
 	credentialType := client.Credential.GetType()
 	openPlatformEndpoint := client.OpenPlatformEndpoint
-	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
+	if tea.BoolValue(util.Empty(openPlatformEndpoint)) {
 		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
 	}
 
@@ -3791,12 +3872,17 @@ func (client *Client) SubmitConvertPdfToExcelJobAdvance(request *SubmitConvertPd
 	}
 	authResponse := &openplatform.AuthorizeFileUploadResponse{}
 	ossConfig := &oss.Config{
+		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
 		Type:            tea.String("access_key"),
 		Protocol:        client.Protocol,
 		RegionId:        client.RegionId,
 	}
-	var ossClient *oss.Client
+	ossClient, _err := oss.NewClient(ossConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
 	fileObj := &fileform.FileField{}
 	ossHeader := &oss.PostObjectRequestHeader{}
 	uploadRequest := &oss.PostObjectRequest{}
@@ -3850,6 +3936,15 @@ func (client *Client) SubmitConvertPdfToExcelJobAdvance(request *SubmitConvertPd
 	return _result, _err
 }
 
+// Summary:
+//
+// pdf转图片
+//
+// @param request - SubmitConvertPdfToImageJobRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SubmitConvertPdfToImageJobResponse
 func (client *Client) SubmitConvertPdfToImageJobWithOptions(request *SubmitConvertPdfToImageJobRequest, runtime *util.RuntimeOptions) (_result *SubmitConvertPdfToImageJobResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3887,6 +3982,13 @@ func (client *Client) SubmitConvertPdfToImageJobWithOptions(request *SubmitConve
 	return _result, _err
 }
 
+// Summary:
+//
+// pdf转图片
+//
+// @param request - SubmitConvertPdfToImageJobRequest
+//
+// @return SubmitConvertPdfToImageJobResponse
 func (client *Client) SubmitConvertPdfToImageJob(request *SubmitConvertPdfToImageJobRequest) (_result *SubmitConvertPdfToImageJobResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SubmitConvertPdfToImageJobResponse{}
@@ -3917,7 +4019,7 @@ func (client *Client) SubmitConvertPdfToImageJobAdvance(request *SubmitConvertPd
 
 	credentialType := client.Credential.GetType()
 	openPlatformEndpoint := client.OpenPlatformEndpoint
-	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
+	if tea.BoolValue(util.Empty(openPlatformEndpoint)) {
 		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
 	}
 
@@ -3945,12 +4047,17 @@ func (client *Client) SubmitConvertPdfToImageJobAdvance(request *SubmitConvertPd
 	}
 	authResponse := &openplatform.AuthorizeFileUploadResponse{}
 	ossConfig := &oss.Config{
+		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
 		Type:            tea.String("access_key"),
 		Protocol:        client.Protocol,
 		RegionId:        client.RegionId,
 	}
-	var ossClient *oss.Client
+	ossClient, _err := oss.NewClient(ossConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
 	fileObj := &fileform.FileField{}
 	ossHeader := &oss.PostObjectRequestHeader{}
 	uploadRequest := &oss.PostObjectRequest{}
@@ -4004,6 +4111,15 @@ func (client *Client) SubmitConvertPdfToImageJobAdvance(request *SubmitConvertPd
 	return _result, _err
 }
 
+// Summary:
+//
+// pdf转markdown
+//
+// @param request - SubmitConvertPdfToMarkdownJobRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SubmitConvertPdfToMarkdownJobResponse
 func (client *Client) SubmitConvertPdfToMarkdownJobWithOptions(request *SubmitConvertPdfToMarkdownJobRequest, runtime *util.RuntimeOptions) (_result *SubmitConvertPdfToMarkdownJobResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4041,6 +4157,13 @@ func (client *Client) SubmitConvertPdfToMarkdownJobWithOptions(request *SubmitCo
 	return _result, _err
 }
 
+// Summary:
+//
+// pdf转markdown
+//
+// @param request - SubmitConvertPdfToMarkdownJobRequest
+//
+// @return SubmitConvertPdfToMarkdownJobResponse
 func (client *Client) SubmitConvertPdfToMarkdownJob(request *SubmitConvertPdfToMarkdownJobRequest) (_result *SubmitConvertPdfToMarkdownJobResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SubmitConvertPdfToMarkdownJobResponse{}
@@ -4071,7 +4194,7 @@ func (client *Client) SubmitConvertPdfToMarkdownJobAdvance(request *SubmitConver
 
 	credentialType := client.Credential.GetType()
 	openPlatformEndpoint := client.OpenPlatformEndpoint
-	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
+	if tea.BoolValue(util.Empty(openPlatformEndpoint)) {
 		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
 	}
 
@@ -4099,12 +4222,17 @@ func (client *Client) SubmitConvertPdfToMarkdownJobAdvance(request *SubmitConver
 	}
 	authResponse := &openplatform.AuthorizeFileUploadResponse{}
 	ossConfig := &oss.Config{
+		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
 		Type:            tea.String("access_key"),
 		Protocol:        client.Protocol,
 		RegionId:        client.RegionId,
 	}
-	var ossClient *oss.Client
+	ossClient, _err := oss.NewClient(ossConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
 	fileObj := &fileform.FileField{}
 	ossHeader := &oss.PostObjectRequestHeader{}
 	uploadRequest := &oss.PostObjectRequest{}
@@ -4158,6 +4286,15 @@ func (client *Client) SubmitConvertPdfToMarkdownJobAdvance(request *SubmitConver
 	return _result, _err
 }
 
+// Summary:
+//
+// pdf转word
+//
+// @param request - SubmitConvertPdfToWordJobRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SubmitConvertPdfToWordJobResponse
 func (client *Client) SubmitConvertPdfToWordJobWithOptions(request *SubmitConvertPdfToWordJobRequest, runtime *util.RuntimeOptions) (_result *SubmitConvertPdfToWordJobResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4199,6 +4336,13 @@ func (client *Client) SubmitConvertPdfToWordJobWithOptions(request *SubmitConver
 	return _result, _err
 }
 
+// Summary:
+//
+// pdf转word
+//
+// @param request - SubmitConvertPdfToWordJobRequest
+//
+// @return SubmitConvertPdfToWordJobResponse
 func (client *Client) SubmitConvertPdfToWordJob(request *SubmitConvertPdfToWordJobRequest) (_result *SubmitConvertPdfToWordJobResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SubmitConvertPdfToWordJobResponse{}
@@ -4229,7 +4373,7 @@ func (client *Client) SubmitConvertPdfToWordJobAdvance(request *SubmitConvertPdf
 
 	credentialType := client.Credential.GetType()
 	openPlatformEndpoint := client.OpenPlatformEndpoint
-	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
+	if tea.BoolValue(util.Empty(openPlatformEndpoint)) {
 		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
 	}
 
@@ -4257,12 +4401,17 @@ func (client *Client) SubmitConvertPdfToWordJobAdvance(request *SubmitConvertPdf
 	}
 	authResponse := &openplatform.AuthorizeFileUploadResponse{}
 	ossConfig := &oss.Config{
+		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
 		Type:            tea.String("access_key"),
 		Protocol:        client.Protocol,
 		RegionId:        client.RegionId,
 	}
-	var ossClient *oss.Client
+	ossClient, _err := oss.NewClient(ossConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
 	fileObj := &fileform.FileField{}
 	ossHeader := &oss.PostObjectRequestHeader{}
 	uploadRequest := &oss.PostObjectRequest{}
@@ -4316,6 +4465,15 @@ func (client *Client) SubmitConvertPdfToWordJobAdvance(request *SubmitConvertPdf
 	return _result, _err
 }
 
+// Summary:
+//
+// 电子解析
+//
+// @param request - SubmitDigitalDocStructureJobRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SubmitDigitalDocStructureJobResponse
 func (client *Client) SubmitDigitalDocStructureJobWithOptions(request *SubmitDigitalDocStructureJobRequest, runtime *util.RuntimeOptions) (_result *SubmitDigitalDocStructureJobResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4365,6 +4523,13 @@ func (client *Client) SubmitDigitalDocStructureJobWithOptions(request *SubmitDig
 	return _result, _err
 }
 
+// Summary:
+//
+// 电子解析
+//
+// @param request - SubmitDigitalDocStructureJobRequest
+//
+// @return SubmitDigitalDocStructureJobResponse
 func (client *Client) SubmitDigitalDocStructureJob(request *SubmitDigitalDocStructureJobRequest) (_result *SubmitDigitalDocStructureJobResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SubmitDigitalDocStructureJobResponse{}
@@ -4395,7 +4560,7 @@ func (client *Client) SubmitDigitalDocStructureJobAdvance(request *SubmitDigital
 
 	credentialType := client.Credential.GetType()
 	openPlatformEndpoint := client.OpenPlatformEndpoint
-	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
+	if tea.BoolValue(util.Empty(openPlatformEndpoint)) {
 		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
 	}
 
@@ -4423,12 +4588,17 @@ func (client *Client) SubmitDigitalDocStructureJobAdvance(request *SubmitDigital
 	}
 	authResponse := &openplatform.AuthorizeFileUploadResponse{}
 	ossConfig := &oss.Config{
+		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
 		Type:            tea.String("access_key"),
 		Protocol:        client.Protocol,
 		RegionId:        client.RegionId,
 	}
-	var ossClient *oss.Client
+	ossClient, _err := oss.NewClient(ossConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
 	fileObj := &fileform.FileField{}
 	ossHeader := &oss.PostObjectRequestHeader{}
 	uploadRequest := &oss.PostObjectRequest{}
@@ -4482,12 +4652,25 @@ func (client *Client) SubmitDigitalDocStructureJobAdvance(request *SubmitDigital
 	return _result, _err
 }
 
+// Summary:
+//
+// 文档智能解析
+//
+// @param request - SubmitDocStructureJobRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SubmitDocStructureJobResponse
 func (client *Client) SubmitDocStructureJobWithOptions(request *SubmitDocStructureJobRequest, runtime *util.RuntimeOptions) (_result *SubmitDocStructureJobResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AllowPptFormat)) {
+		query["AllowPptFormat"] = request.AllowPptFormat
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.FileName)) {
 		query["FileName"] = request.FileName
 	}
@@ -4531,6 +4714,13 @@ func (client *Client) SubmitDocStructureJobWithOptions(request *SubmitDocStructu
 	return _result, _err
 }
 
+// Summary:
+//
+// 文档智能解析
+//
+// @param request - SubmitDocStructureJobRequest
+//
+// @return SubmitDocStructureJobResponse
 func (client *Client) SubmitDocStructureJob(request *SubmitDocStructureJobRequest) (_result *SubmitDocStructureJobResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SubmitDocStructureJobResponse{}
@@ -4561,7 +4751,7 @@ func (client *Client) SubmitDocStructureJobAdvance(request *SubmitDocStructureJo
 
 	credentialType := client.Credential.GetType()
 	openPlatformEndpoint := client.OpenPlatformEndpoint
-	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
+	if tea.BoolValue(util.Empty(openPlatformEndpoint)) {
 		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
 	}
 
@@ -4589,12 +4779,17 @@ func (client *Client) SubmitDocStructureJobAdvance(request *SubmitDocStructureJo
 	}
 	authResponse := &openplatform.AuthorizeFileUploadResponse{}
 	ossConfig := &oss.Config{
+		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
 		Type:            tea.String("access_key"),
 		Protocol:        client.Protocol,
 		RegionId:        client.RegionId,
 	}
-	var ossClient *oss.Client
+	ossClient, _err := oss.NewClient(ossConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
 	fileObj := &fileform.FileField{}
 	ossHeader := &oss.PostObjectRequestHeader{}
 	uploadRequest := &oss.PostObjectRequest{}
@@ -4648,62 +4843,15 @@ func (client *Client) SubmitDocStructureJobAdvance(request *SubmitDocStructureJo
 	return _result, _err
 }
 
-func (client *Client) SubmitDocumentCompareJobWithOptions(request *SubmitDocumentCompareJobRequest, runtime *util.RuntimeOptions) (_result *SubmitDocumentCompareJobResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.CompareFileName)) {
-		query["CompareFileName"] = request.CompareFileName
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.CompareFileUrl)) {
-		query["CompareFileUrl"] = request.CompareFileUrl
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.OriginFileName)) {
-		query["OriginFileName"] = request.OriginFileName
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.OriginFileUrl)) {
-		query["OriginFileUrl"] = request.OriginFileUrl
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("SubmitDocumentCompareJob"),
-		Version:     tea.String("2022-07-11"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &SubmitDocumentCompareJobResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) SubmitDocumentCompareJob(request *SubmitDocumentCompareJobRequest) (_result *SubmitDocumentCompareJobResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &SubmitDocumentCompareJobResponse{}
-	_body, _err := client.SubmitDocumentCompareJobWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
+// Summary:
+//
+// 文档抽取
+//
+// @param request - SubmitDocumentExtractJobRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SubmitDocumentExtractJobResponse
 func (client *Client) SubmitDocumentExtractJobWithOptions(request *SubmitDocumentExtractJobRequest, runtime *util.RuntimeOptions) (_result *SubmitDocumentExtractJobResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4745,6 +4893,13 @@ func (client *Client) SubmitDocumentExtractJobWithOptions(request *SubmitDocumen
 	return _result, _err
 }
 
+// Summary:
+//
+// 文档抽取
+//
+// @param request - SubmitDocumentExtractJobRequest
+//
+// @return SubmitDocumentExtractJobResponse
 func (client *Client) SubmitDocumentExtractJob(request *SubmitDocumentExtractJobRequest) (_result *SubmitDocumentExtractJobResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SubmitDocumentExtractJobResponse{}
@@ -4775,7 +4930,7 @@ func (client *Client) SubmitDocumentExtractJobAdvance(request *SubmitDocumentExt
 
 	credentialType := client.Credential.GetType()
 	openPlatformEndpoint := client.OpenPlatformEndpoint
-	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
+	if tea.BoolValue(util.Empty(openPlatformEndpoint)) {
 		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
 	}
 
@@ -4803,12 +4958,17 @@ func (client *Client) SubmitDocumentExtractJobAdvance(request *SubmitDocumentExt
 	}
 	authResponse := &openplatform.AuthorizeFileUploadResponse{}
 	ossConfig := &oss.Config{
+		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
 		Type:            tea.String("access_key"),
 		Protocol:        client.Protocol,
 		RegionId:        client.RegionId,
 	}
-	var ossClient *oss.Client
+	ossClient, _err := oss.NewClient(ossConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
 	fileObj := &fileform.FileField{}
 	ossHeader := &oss.PostObjectRequestHeader{}
 	uploadRequest := &oss.PostObjectRequest{}
@@ -4862,6 +5022,15 @@ func (client *Client) SubmitDocumentExtractJobAdvance(request *SubmitDocumentExt
 	return _result, _err
 }
 
+// Summary:
+//
+// 表格智能解析
+//
+// @param request - SubmitTableUnderstandingJobRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SubmitTableUnderstandingJobResponse
 func (client *Client) SubmitTableUnderstandingJobWithOptions(request *SubmitTableUnderstandingJobRequest, runtime *util.RuntimeOptions) (_result *SubmitTableUnderstandingJobResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4903,6 +5072,13 @@ func (client *Client) SubmitTableUnderstandingJobWithOptions(request *SubmitTabl
 	return _result, _err
 }
 
+// Summary:
+//
+// 表格智能解析
+//
+// @param request - SubmitTableUnderstandingJobRequest
+//
+// @return SubmitTableUnderstandingJobResponse
 func (client *Client) SubmitTableUnderstandingJob(request *SubmitTableUnderstandingJobRequest) (_result *SubmitTableUnderstandingJobResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SubmitTableUnderstandingJobResponse{}
@@ -4933,7 +5109,7 @@ func (client *Client) SubmitTableUnderstandingJobAdvance(request *SubmitTableUnd
 
 	credentialType := client.Credential.GetType()
 	openPlatformEndpoint := client.OpenPlatformEndpoint
-	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
+	if tea.BoolValue(util.Empty(openPlatformEndpoint)) {
 		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
 	}
 
@@ -4961,12 +5137,17 @@ func (client *Client) SubmitTableUnderstandingJobAdvance(request *SubmitTableUnd
 	}
 	authResponse := &openplatform.AuthorizeFileUploadResponse{}
 	ossConfig := &oss.Config{
+		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
 		Type:            tea.String("access_key"),
 		Protocol:        client.Protocol,
 		RegionId:        client.RegionId,
 	}
-	var ossClient *oss.Client
+	ossClient, _err := oss.NewClient(ossConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
 	fileObj := &fileform.FileField{}
 	ossHeader := &oss.PostObjectRequestHeader{}
 	uploadRequest := &oss.PostObjectRequest{}
