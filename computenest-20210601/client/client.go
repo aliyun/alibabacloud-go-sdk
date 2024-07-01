@@ -308,7 +308,8 @@ type CreateServiceInstanceRequest struct {
 	// example:
 	//
 	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceAutoPay *bool   `json:"ResourceAutoPay,omitempty" xml:"ResourceAutoPay,omitempty"`
 	// example:
 	//
 	// rg-bp67acfmxazb4p****
@@ -403,6 +404,11 @@ func (s *CreateServiceInstanceRequest) SetParameters(v map[string]interface{}) *
 
 func (s *CreateServiceInstanceRequest) SetRegionId(v string) *CreateServiceInstanceRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *CreateServiceInstanceRequest) SetResourceAutoPay(v bool) *CreateServiceInstanceRequest {
+	s.ResourceAutoPay = &v
 	return s
 }
 
@@ -642,7 +648,8 @@ type CreateServiceInstanceShrinkRequest struct {
 	// example:
 	//
 	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceAutoPay *bool   `json:"ResourceAutoPay,omitempty" xml:"ResourceAutoPay,omitempty"`
 	// example:
 	//
 	// rg-bp67acfmxazb4p****
@@ -737,6 +744,11 @@ func (s *CreateServiceInstanceShrinkRequest) SetParametersShrink(v string) *Crea
 
 func (s *CreateServiceInstanceShrinkRequest) SetRegionId(v string) *CreateServiceInstanceShrinkRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *CreateServiceInstanceShrinkRequest) SetResourceAutoPay(v bool) *CreateServiceInstanceShrinkRequest {
+	s.ResourceAutoPay = &v
 	return s
 }
 
@@ -4108,6 +4120,10 @@ func (client *Client) CreateServiceInstanceWithOptions(tmpReq *CreateServiceInst
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceAutoPay)) {
+		query["ResourceAutoPay"] = request.ResourceAutoPay
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
