@@ -1490,6 +1490,35 @@ func (s *ModuleFlightItemListItemListSubItemsShoppingItemMapValueSearchPricePric
 	return s
 }
 
+type ModuleAgentInfosAttributeShowInfoMapValue struct {
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	Text *string `json:"text,omitempty" xml:"text,omitempty"`
+}
+
+func (s ModuleAgentInfosAttributeShowInfoMapValue) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModuleAgentInfosAttributeShowInfoMapValue) GoString() string {
+	return s.String()
+}
+
+func (s *ModuleAgentInfosAttributeShowInfoMapValue) SetCode(v string) *ModuleAgentInfosAttributeShowInfoMapValue {
+	s.Code = &v
+	return s
+}
+
+func (s *ModuleAgentInfosAttributeShowInfoMapValue) SetName(v string) *ModuleAgentInfosAttributeShowInfoMapValue {
+	s.Name = &v
+	return s
+}
+
+func (s *ModuleAgentInfosAttributeShowInfoMapValue) SetText(v string) *ModuleAgentInfosAttributeShowInfoMapValue {
+	s.Text = &v
+	return s
+}
+
 type ModuleAgentInfoAttributeShowInfoMapValue struct {
 	// example:
 	//
@@ -5576,6 +5605,773 @@ func (s *AccessTokenResponse) SetStatusCode(v int32) *AccessTokenResponse {
 }
 
 func (s *AccessTokenResponse) SetBody(v *AccessTokenResponseBody) *AccessTokenResponse {
+	s.Body = v
+	return s
+}
+
+type AddDepartmentHeaders struct {
+	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	// example:
+	//
+	// feth00jqwls
+	XAcsBtripCorpToken *string `json:"x-acs-btrip-corp-token,omitempty" xml:"x-acs-btrip-corp-token,omitempty"`
+}
+
+func (s AddDepartmentHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddDepartmentHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *AddDepartmentHeaders) SetCommonHeaders(v map[string]*string) *AddDepartmentHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *AddDepartmentHeaders) SetXAcsBtripCorpToken(v string) *AddDepartmentHeaders {
+	s.XAcsBtripCorpToken = &v
+	return s
+}
+
+type AddDepartmentRequest struct {
+	// This parameter is required.
+	DeptName              *string   `json:"dept_name,omitempty" xml:"dept_name,omitempty"`
+	ManagerEmployeeIdList []*string `json:"manager_employee_id_list,omitempty" xml:"manager_employee_id_list,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// dept123
+	OutDeptId *string `json:"out_dept_id,omitempty" xml:"out_dept_id,omitempty"`
+	// example:
+	//
+	// dept456
+	OutDeptPid *string `json:"out_dept_pid,omitempty" xml:"out_dept_pid,omitempty"`
+}
+
+func (s AddDepartmentRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddDepartmentRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AddDepartmentRequest) SetDeptName(v string) *AddDepartmentRequest {
+	s.DeptName = &v
+	return s
+}
+
+func (s *AddDepartmentRequest) SetManagerEmployeeIdList(v []*string) *AddDepartmentRequest {
+	s.ManagerEmployeeIdList = v
+	return s
+}
+
+func (s *AddDepartmentRequest) SetOutDeptId(v string) *AddDepartmentRequest {
+	s.OutDeptId = &v
+	return s
+}
+
+func (s *AddDepartmentRequest) SetOutDeptPid(v string) *AddDepartmentRequest {
+	s.OutDeptPid = &v
+	return s
+}
+
+type AddDepartmentShrinkRequest struct {
+	// This parameter is required.
+	DeptName                    *string `json:"dept_name,omitempty" xml:"dept_name,omitempty"`
+	ManagerEmployeeIdListShrink *string `json:"manager_employee_id_list,omitempty" xml:"manager_employee_id_list,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// dept123
+	OutDeptId *string `json:"out_dept_id,omitempty" xml:"out_dept_id,omitempty"`
+	// example:
+	//
+	// dept456
+	OutDeptPid *string `json:"out_dept_pid,omitempty" xml:"out_dept_pid,omitempty"`
+}
+
+func (s AddDepartmentShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddDepartmentShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AddDepartmentShrinkRequest) SetDeptName(v string) *AddDepartmentShrinkRequest {
+	s.DeptName = &v
+	return s
+}
+
+func (s *AddDepartmentShrinkRequest) SetManagerEmployeeIdListShrink(v string) *AddDepartmentShrinkRequest {
+	s.ManagerEmployeeIdListShrink = &v
+	return s
+}
+
+func (s *AddDepartmentShrinkRequest) SetOutDeptId(v string) *AddDepartmentShrinkRequest {
+	s.OutDeptId = &v
+	return s
+}
+
+func (s *AddDepartmentShrinkRequest) SetOutDeptPid(v string) *AddDepartmentShrinkRequest {
+	s.OutDeptPid = &v
+	return s
+}
+
+type AddDepartmentResponseBody struct {
+	// example:
+	//
+	// SUCCESS
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32  `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	Message        *string `json:"message,omitempty" xml:"message,omitempty"`
+	// example:
+	//
+	// B72B39C8-32DE-558D-AD1C-D53F11F6ADFE
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// traceId
+	//
+	// example:
+	//
+	// 21041ce316577904808056433edbb2
+	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
+}
+
+func (s AddDepartmentResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddDepartmentResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *AddDepartmentResponseBody) SetCode(v string) *AddDepartmentResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *AddDepartmentResponseBody) SetHttpStatusCode(v int32) *AddDepartmentResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *AddDepartmentResponseBody) SetMessage(v string) *AddDepartmentResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *AddDepartmentResponseBody) SetRequestId(v string) *AddDepartmentResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *AddDepartmentResponseBody) SetSuccess(v bool) *AddDepartmentResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *AddDepartmentResponseBody) SetTraceId(v string) *AddDepartmentResponseBody {
+	s.TraceId = &v
+	return s
+}
+
+type AddDepartmentResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AddDepartmentResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s AddDepartmentResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddDepartmentResponse) GoString() string {
+	return s.String()
+}
+
+func (s *AddDepartmentResponse) SetHeaders(v map[string]*string) *AddDepartmentResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *AddDepartmentResponse) SetStatusCode(v int32) *AddDepartmentResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *AddDepartmentResponse) SetBody(v *AddDepartmentResponseBody) *AddDepartmentResponse {
+	s.Body = v
+	return s
+}
+
+type AddEmployeeHeaders struct {
+	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	// example:
+	//
+	// feth00jqwls
+	XAcsBtripCorpToken *string `json:"x-acs-btrip-corp-token,omitempty" xml:"x-acs-btrip-corp-token,omitempty"`
+}
+
+func (s AddEmployeeHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddEmployeeHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *AddEmployeeHeaders) SetCommonHeaders(v map[string]*string) *AddEmployeeHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *AddEmployeeHeaders) SetXAcsBtripCorpToken(v string) *AddEmployeeHeaders {
+	s.XAcsBtripCorpToken = &v
+	return s
+}
+
+type AddEmployeeRequest struct {
+	// example:
+	//
+	// https://static-legacy.dingtalk.com/media/lADPF8XMoxJeUkbNA2LNA5s_923_866.jpg
+	Avatar           *string   `json:"avatar,omitempty" xml:"avatar,omitempty"`
+	BaseCityCodeList []*string `json:"base_city_code_list,omitempty" xml:"base_city_code_list,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 2000-01-02
+	Birthday           *string                       `json:"birthday,omitempty" xml:"birthday,omitempty"`
+	CertList           []*AddEmployeeRequestCertList `json:"cert_list,omitempty" xml:"cert_list,omitempty" type:"Repeated"`
+	CustomRoleCodeList []*string                     `json:"custom_role_code_list,omitempty" xml:"custom_role_code_list,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 123@163.com
+	Email *string `json:"email,omitempty" xml:"email,omitempty"`
+	// example:
+	//
+	// F
+	Gender *string `json:"gender,omitempty" xml:"gender,omitempty"`
+	// example:
+	//
+	// false
+	IsAdmin *bool `json:"is_admin,omitempty" xml:"is_admin,omitempty"`
+	// example:
+	//
+	// false
+	IsBoss *bool `json:"is_boss,omitempty" xml:"is_boss,omitempty"`
+	// example:
+	//
+	// false
+	IsDeptLeader *bool `json:"is_dept_leader,omitempty" xml:"is_dept_leader,omitempty"`
+	// example:
+	//
+	// 1001
+	JobNo *string `json:"job_no,omitempty" xml:"job_no,omitempty"`
+	// example:
+	//
+	// user456
+	ManagerUserId *string   `json:"manager_user_id,omitempty" xml:"manager_user_id,omitempty"`
+	OutDeptIdList []*string `json:"out_dept_id_list,omitempty" xml:"out_dept_id_list,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 13111111111
+	Phone *string `json:"phone,omitempty" xml:"phone,omitempty"`
+	// example:
+	//
+	// M4
+	PositionLevel *string `json:"position_level,omitempty" xml:"position_level,omitempty"`
+	RealName      *string `json:"real_name,omitempty" xml:"real_name,omitempty"`
+	// example:
+	//
+	// John/Wilson
+	RealNameEn *string `json:"real_name_en,omitempty" xml:"real_name_en,omitempty"`
+	// example:
+	//
+	// union123
+	UnionId *string `json:"union_id,omitempty" xml:"union_id,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// user123
+	UserId *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
+	// This parameter is required.
+	UserNick *string `json:"user_nick,omitempty" xml:"user_nick,omitempty"`
+}
+
+func (s AddEmployeeRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddEmployeeRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AddEmployeeRequest) SetAvatar(v string) *AddEmployeeRequest {
+	s.Avatar = &v
+	return s
+}
+
+func (s *AddEmployeeRequest) SetBaseCityCodeList(v []*string) *AddEmployeeRequest {
+	s.BaseCityCodeList = v
+	return s
+}
+
+func (s *AddEmployeeRequest) SetBirthday(v string) *AddEmployeeRequest {
+	s.Birthday = &v
+	return s
+}
+
+func (s *AddEmployeeRequest) SetCertList(v []*AddEmployeeRequestCertList) *AddEmployeeRequest {
+	s.CertList = v
+	return s
+}
+
+func (s *AddEmployeeRequest) SetCustomRoleCodeList(v []*string) *AddEmployeeRequest {
+	s.CustomRoleCodeList = v
+	return s
+}
+
+func (s *AddEmployeeRequest) SetEmail(v string) *AddEmployeeRequest {
+	s.Email = &v
+	return s
+}
+
+func (s *AddEmployeeRequest) SetGender(v string) *AddEmployeeRequest {
+	s.Gender = &v
+	return s
+}
+
+func (s *AddEmployeeRequest) SetIsAdmin(v bool) *AddEmployeeRequest {
+	s.IsAdmin = &v
+	return s
+}
+
+func (s *AddEmployeeRequest) SetIsBoss(v bool) *AddEmployeeRequest {
+	s.IsBoss = &v
+	return s
+}
+
+func (s *AddEmployeeRequest) SetIsDeptLeader(v bool) *AddEmployeeRequest {
+	s.IsDeptLeader = &v
+	return s
+}
+
+func (s *AddEmployeeRequest) SetJobNo(v string) *AddEmployeeRequest {
+	s.JobNo = &v
+	return s
+}
+
+func (s *AddEmployeeRequest) SetManagerUserId(v string) *AddEmployeeRequest {
+	s.ManagerUserId = &v
+	return s
+}
+
+func (s *AddEmployeeRequest) SetOutDeptIdList(v []*string) *AddEmployeeRequest {
+	s.OutDeptIdList = v
+	return s
+}
+
+func (s *AddEmployeeRequest) SetPhone(v string) *AddEmployeeRequest {
+	s.Phone = &v
+	return s
+}
+
+func (s *AddEmployeeRequest) SetPositionLevel(v string) *AddEmployeeRequest {
+	s.PositionLevel = &v
+	return s
+}
+
+func (s *AddEmployeeRequest) SetRealName(v string) *AddEmployeeRequest {
+	s.RealName = &v
+	return s
+}
+
+func (s *AddEmployeeRequest) SetRealNameEn(v string) *AddEmployeeRequest {
+	s.RealNameEn = &v
+	return s
+}
+
+func (s *AddEmployeeRequest) SetUnionId(v string) *AddEmployeeRequest {
+	s.UnionId = &v
+	return s
+}
+
+func (s *AddEmployeeRequest) SetUserId(v string) *AddEmployeeRequest {
+	s.UserId = &v
+	return s
+}
+
+func (s *AddEmployeeRequest) SetUserNick(v string) *AddEmployeeRequest {
+	s.UserNick = &v
+	return s
+}
+
+type AddEmployeeRequestCertList struct {
+	// example:
+	//
+	// 2000-01-02
+	Birthday *string `json:"birthday,omitempty" xml:"birthday,omitempty"`
+	// example:
+	//
+	// 2099-03-12
+	CertExpiredTime *string `json:"cert_expired_time,omitempty" xml:"cert_expired_time,omitempty"`
+	// example:
+	//
+	// CN
+	CertNation *string `json:"cert_nation,omitempty" xml:"cert_nation,omitempty"`
+	// example:
+	//
+	// 123
+	CertNo *string `json:"cert_no,omitempty" xml:"cert_no,omitempty"`
+	// example:
+	//
+	// 0
+	CertType *int32 `json:"cert_type,omitempty" xml:"cert_type,omitempty"`
+	// example:
+	//
+	// F
+	Gender *string `json:"gender,omitempty" xml:"gender,omitempty"`
+	// example:
+	//
+	// CN
+	Nationality *string `json:"nationality,omitempty" xml:"nationality,omitempty"`
+	// example:
+	//
+	// 13111111111
+	Phone    *string `json:"phone,omitempty" xml:"phone,omitempty"`
+	RealName *string `json:"real_name,omitempty" xml:"real_name,omitempty"`
+	// example:
+	//
+	// John/Wilson
+	RealNameEn *string `json:"real_name_en,omitempty" xml:"real_name_en,omitempty"`
+}
+
+func (s AddEmployeeRequestCertList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddEmployeeRequestCertList) GoString() string {
+	return s.String()
+}
+
+func (s *AddEmployeeRequestCertList) SetBirthday(v string) *AddEmployeeRequestCertList {
+	s.Birthday = &v
+	return s
+}
+
+func (s *AddEmployeeRequestCertList) SetCertExpiredTime(v string) *AddEmployeeRequestCertList {
+	s.CertExpiredTime = &v
+	return s
+}
+
+func (s *AddEmployeeRequestCertList) SetCertNation(v string) *AddEmployeeRequestCertList {
+	s.CertNation = &v
+	return s
+}
+
+func (s *AddEmployeeRequestCertList) SetCertNo(v string) *AddEmployeeRequestCertList {
+	s.CertNo = &v
+	return s
+}
+
+func (s *AddEmployeeRequestCertList) SetCertType(v int32) *AddEmployeeRequestCertList {
+	s.CertType = &v
+	return s
+}
+
+func (s *AddEmployeeRequestCertList) SetGender(v string) *AddEmployeeRequestCertList {
+	s.Gender = &v
+	return s
+}
+
+func (s *AddEmployeeRequestCertList) SetNationality(v string) *AddEmployeeRequestCertList {
+	s.Nationality = &v
+	return s
+}
+
+func (s *AddEmployeeRequestCertList) SetPhone(v string) *AddEmployeeRequestCertList {
+	s.Phone = &v
+	return s
+}
+
+func (s *AddEmployeeRequestCertList) SetRealName(v string) *AddEmployeeRequestCertList {
+	s.RealName = &v
+	return s
+}
+
+func (s *AddEmployeeRequestCertList) SetRealNameEn(v string) *AddEmployeeRequestCertList {
+	s.RealNameEn = &v
+	return s
+}
+
+type AddEmployeeShrinkRequest struct {
+	// example:
+	//
+	// https://static-legacy.dingtalk.com/media/lADPF8XMoxJeUkbNA2LNA5s_923_866.jpg
+	Avatar                 *string `json:"avatar,omitempty" xml:"avatar,omitempty"`
+	BaseCityCodeListShrink *string `json:"base_city_code_list,omitempty" xml:"base_city_code_list,omitempty"`
+	// example:
+	//
+	// 2000-01-02
+	Birthday                 *string `json:"birthday,omitempty" xml:"birthday,omitempty"`
+	CertListShrink           *string `json:"cert_list,omitempty" xml:"cert_list,omitempty"`
+	CustomRoleCodeListShrink *string `json:"custom_role_code_list,omitempty" xml:"custom_role_code_list,omitempty"`
+	// example:
+	//
+	// 123@163.com
+	Email *string `json:"email,omitempty" xml:"email,omitempty"`
+	// example:
+	//
+	// F
+	Gender *string `json:"gender,omitempty" xml:"gender,omitempty"`
+	// example:
+	//
+	// false
+	IsAdmin *bool `json:"is_admin,omitempty" xml:"is_admin,omitempty"`
+	// example:
+	//
+	// false
+	IsBoss *bool `json:"is_boss,omitempty" xml:"is_boss,omitempty"`
+	// example:
+	//
+	// false
+	IsDeptLeader *bool `json:"is_dept_leader,omitempty" xml:"is_dept_leader,omitempty"`
+	// example:
+	//
+	// 1001
+	JobNo *string `json:"job_no,omitempty" xml:"job_no,omitempty"`
+	// example:
+	//
+	// user456
+	ManagerUserId       *string `json:"manager_user_id,omitempty" xml:"manager_user_id,omitempty"`
+	OutDeptIdListShrink *string `json:"out_dept_id_list,omitempty" xml:"out_dept_id_list,omitempty"`
+	// example:
+	//
+	// 13111111111
+	Phone *string `json:"phone,omitempty" xml:"phone,omitempty"`
+	// example:
+	//
+	// M4
+	PositionLevel *string `json:"position_level,omitempty" xml:"position_level,omitempty"`
+	RealName      *string `json:"real_name,omitempty" xml:"real_name,omitempty"`
+	// example:
+	//
+	// John/Wilson
+	RealNameEn *string `json:"real_name_en,omitempty" xml:"real_name_en,omitempty"`
+	// example:
+	//
+	// union123
+	UnionId *string `json:"union_id,omitempty" xml:"union_id,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// user123
+	UserId *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
+	// This parameter is required.
+	UserNick *string `json:"user_nick,omitempty" xml:"user_nick,omitempty"`
+}
+
+func (s AddEmployeeShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddEmployeeShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AddEmployeeShrinkRequest) SetAvatar(v string) *AddEmployeeShrinkRequest {
+	s.Avatar = &v
+	return s
+}
+
+func (s *AddEmployeeShrinkRequest) SetBaseCityCodeListShrink(v string) *AddEmployeeShrinkRequest {
+	s.BaseCityCodeListShrink = &v
+	return s
+}
+
+func (s *AddEmployeeShrinkRequest) SetBirthday(v string) *AddEmployeeShrinkRequest {
+	s.Birthday = &v
+	return s
+}
+
+func (s *AddEmployeeShrinkRequest) SetCertListShrink(v string) *AddEmployeeShrinkRequest {
+	s.CertListShrink = &v
+	return s
+}
+
+func (s *AddEmployeeShrinkRequest) SetCustomRoleCodeListShrink(v string) *AddEmployeeShrinkRequest {
+	s.CustomRoleCodeListShrink = &v
+	return s
+}
+
+func (s *AddEmployeeShrinkRequest) SetEmail(v string) *AddEmployeeShrinkRequest {
+	s.Email = &v
+	return s
+}
+
+func (s *AddEmployeeShrinkRequest) SetGender(v string) *AddEmployeeShrinkRequest {
+	s.Gender = &v
+	return s
+}
+
+func (s *AddEmployeeShrinkRequest) SetIsAdmin(v bool) *AddEmployeeShrinkRequest {
+	s.IsAdmin = &v
+	return s
+}
+
+func (s *AddEmployeeShrinkRequest) SetIsBoss(v bool) *AddEmployeeShrinkRequest {
+	s.IsBoss = &v
+	return s
+}
+
+func (s *AddEmployeeShrinkRequest) SetIsDeptLeader(v bool) *AddEmployeeShrinkRequest {
+	s.IsDeptLeader = &v
+	return s
+}
+
+func (s *AddEmployeeShrinkRequest) SetJobNo(v string) *AddEmployeeShrinkRequest {
+	s.JobNo = &v
+	return s
+}
+
+func (s *AddEmployeeShrinkRequest) SetManagerUserId(v string) *AddEmployeeShrinkRequest {
+	s.ManagerUserId = &v
+	return s
+}
+
+func (s *AddEmployeeShrinkRequest) SetOutDeptIdListShrink(v string) *AddEmployeeShrinkRequest {
+	s.OutDeptIdListShrink = &v
+	return s
+}
+
+func (s *AddEmployeeShrinkRequest) SetPhone(v string) *AddEmployeeShrinkRequest {
+	s.Phone = &v
+	return s
+}
+
+func (s *AddEmployeeShrinkRequest) SetPositionLevel(v string) *AddEmployeeShrinkRequest {
+	s.PositionLevel = &v
+	return s
+}
+
+func (s *AddEmployeeShrinkRequest) SetRealName(v string) *AddEmployeeShrinkRequest {
+	s.RealName = &v
+	return s
+}
+
+func (s *AddEmployeeShrinkRequest) SetRealNameEn(v string) *AddEmployeeShrinkRequest {
+	s.RealNameEn = &v
+	return s
+}
+
+func (s *AddEmployeeShrinkRequest) SetUnionId(v string) *AddEmployeeShrinkRequest {
+	s.UnionId = &v
+	return s
+}
+
+func (s *AddEmployeeShrinkRequest) SetUserId(v string) *AddEmployeeShrinkRequest {
+	s.UserId = &v
+	return s
+}
+
+func (s *AddEmployeeShrinkRequest) SetUserNick(v string) *AddEmployeeShrinkRequest {
+	s.UserNick = &v
+	return s
+}
+
+type AddEmployeeResponseBody struct {
+	// example:
+	//
+	// SUCCESS
+	Code    *string `json:"code,omitempty" xml:"code,omitempty"`
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// example:
+	//
+	// C61ECFF6-606B-5F66-B81D-D77369043A5F
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// traceId
+	//
+	// example:
+	//
+	// 21041ce316577904808056433edbb2
+	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
+}
+
+func (s AddEmployeeResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddEmployeeResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *AddEmployeeResponseBody) SetCode(v string) *AddEmployeeResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *AddEmployeeResponseBody) SetMessage(v string) *AddEmployeeResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *AddEmployeeResponseBody) SetRequestId(v string) *AddEmployeeResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *AddEmployeeResponseBody) SetSuccess(v bool) *AddEmployeeResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *AddEmployeeResponseBody) SetTraceId(v string) *AddEmployeeResponseBody {
+	s.TraceId = &v
+	return s
+}
+
+type AddEmployeeResponse struct {
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AddEmployeeResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s AddEmployeeResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddEmployeeResponse) GoString() string {
+	return s.String()
+}
+
+func (s *AddEmployeeResponse) SetHeaders(v map[string]*string) *AddEmployeeResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *AddEmployeeResponse) SetStatusCode(v int32) *AddEmployeeResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *AddEmployeeResponse) SetBody(v *AddEmployeeResponseBody) *AddEmployeeResponse {
 	s.Body = v
 	return s
 }
@@ -16117,7 +16913,8 @@ type CarOrderListQueryResponseBodyModule struct {
 	// example:
 	//
 	// CS-OIPK34H
-	ThirdpartApplyId *string `json:"thirdpart_apply_id,omitempty" xml:"thirdpart_apply_id,omitempty"`
+	ThirdpartApplyId    *string `json:"thirdpart_apply_id,omitempty" xml:"thirdpart_apply_id,omitempty"`
+	ThirdpartBusinessId *string `json:"thirdpart_business_id,omitempty" xml:"thirdpart_business_id,omitempty"`
 	// example:
 	//
 	// CS-112JKDF
@@ -16368,6 +17165,11 @@ func (s *CarOrderListQueryResponseBodyModule) SetTakenTime(v string) *CarOrderLi
 
 func (s *CarOrderListQueryResponseBodyModule) SetThirdpartApplyId(v string) *CarOrderListQueryResponseBodyModule {
 	s.ThirdpartApplyId = &v
+	return s
+}
+
+func (s *CarOrderListQueryResponseBodyModule) SetThirdpartBusinessId(v string) *CarOrderListQueryResponseBodyModule {
+	s.ThirdpartBusinessId = &v
 	return s
 }
 
@@ -17049,7 +17851,8 @@ type CarOrderQueryResponseBodyModuleOrderBaseInfo struct {
 	// example:
 	//
 	// xxxxx
-	ThirdpartApplyId *string `json:"thirdpart_apply_id,omitempty" xml:"thirdpart_apply_id,omitempty"`
+	ThirdpartApplyId    *string `json:"thirdpart_apply_id,omitempty" xml:"thirdpart_apply_id,omitempty"`
+	ThirdpartBusinessId *string `json:"thirdpart_business_id,omitempty" xml:"thirdpart_business_id,omitempty"`
 	// example:
 	//
 	// xxxxx
@@ -17141,6 +17944,11 @@ func (s *CarOrderQueryResponseBodyModuleOrderBaseInfo) SetThirdDepartId(v string
 
 func (s *CarOrderQueryResponseBodyModuleOrderBaseInfo) SetThirdpartApplyId(v string) *CarOrderQueryResponseBodyModuleOrderBaseInfo {
 	s.ThirdpartApplyId = &v
+	return s
+}
+
+func (s *CarOrderQueryResponseBodyModuleOrderBaseInfo) SetThirdpartBusinessId(v string) *CarOrderQueryResponseBodyModuleOrderBaseInfo {
+	s.ThirdpartBusinessId = &v
 	return s
 }
 
@@ -21825,6 +22633,138 @@ func (s *DeleteCustomRoleResponse) SetBody(v *DeleteCustomRoleResponseBody) *Del
 	return s
 }
 
+type DeleteDepartmentHeaders struct {
+	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	// example:
+	//
+	// feth00jqwls
+	XAcsBtripCorpToken *string `json:"x-acs-btrip-corp-token,omitempty" xml:"x-acs-btrip-corp-token,omitempty"`
+}
+
+func (s DeleteDepartmentHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDepartmentHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDepartmentHeaders) SetCommonHeaders(v map[string]*string) *DeleteDepartmentHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *DeleteDepartmentHeaders) SetXAcsBtripCorpToken(v string) *DeleteDepartmentHeaders {
+	s.XAcsBtripCorpToken = &v
+	return s
+}
+
+type DeleteDepartmentRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// dept123
+	OutDeptId *string `json:"out_dept_id,omitempty" xml:"out_dept_id,omitempty"`
+}
+
+func (s DeleteDepartmentRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDepartmentRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDepartmentRequest) SetOutDeptId(v string) *DeleteDepartmentRequest {
+	s.OutDeptId = &v
+	return s
+}
+
+type DeleteDepartmentResponseBody struct {
+	// example:
+	//
+	// SUCCESS
+	Code    *string `json:"code,omitempty" xml:"code,omitempty"`
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// example:
+	//
+	// 407543AF-2BD9-5890-BD92-9D1AB7218B27
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// traceId
+	//
+	// example:
+	//
+	// 210e847f16611516748613869de4f6
+	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
+}
+
+func (s DeleteDepartmentResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDepartmentResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDepartmentResponseBody) SetCode(v string) *DeleteDepartmentResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DeleteDepartmentResponseBody) SetMessage(v string) *DeleteDepartmentResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DeleteDepartmentResponseBody) SetRequestId(v string) *DeleteDepartmentResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteDepartmentResponseBody) SetSuccess(v bool) *DeleteDepartmentResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *DeleteDepartmentResponseBody) SetTraceId(v string) *DeleteDepartmentResponseBody {
+	s.TraceId = &v
+	return s
+}
+
+type DeleteDepartmentResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteDepartmentResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteDepartmentResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDepartmentResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDepartmentResponse) SetHeaders(v map[string]*string) *DeleteDepartmentResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteDepartmentResponse) SetStatusCode(v int32) *DeleteDepartmentResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteDepartmentResponse) SetBody(v *DeleteDepartmentResponseBody) *DeleteDepartmentResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteEmployeesFromCustomRoleHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
 	// example:
@@ -23928,6 +24868,732 @@ func (s *ExceedApplySyncResponse) SetStatusCode(v int32) *ExceedApplySyncRespons
 }
 
 func (s *ExceedApplySyncResponse) SetBody(v *ExceedApplySyncResponseBody) *ExceedApplySyncResponse {
+	s.Body = v
+	return s
+}
+
+type ExternalUserAddHeaders struct {
+	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	// example:
+	//
+	// feth00jqwls
+	XAcsBtripCorpToken *string `json:"x-acs-btrip-corp-token,omitempty" xml:"x-acs-btrip-corp-token,omitempty"`
+}
+
+func (s ExternalUserAddHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExternalUserAddHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *ExternalUserAddHeaders) SetCommonHeaders(v map[string]*string) *ExternalUserAddHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *ExternalUserAddHeaders) SetXAcsBtripCorpToken(v string) *ExternalUserAddHeaders {
+	s.XAcsBtripCorpToken = &v
+	return s
+}
+
+type ExternalUserAddRequest struct {
+	// example:
+	//
+	// 2000-01-02
+	Birthday        *string                                  `json:"birthday,omitempty" xml:"birthday,omitempty"`
+	CertRequestList []*ExternalUserAddRequestCertRequestList `json:"cert_request_list,omitempty" xml:"cert_request_list,omitempty" type:"Repeated"`
+	// example:
+	//
+	// zhangsan@alibaba-inc.com
+	Email *string `json:"email,omitempty" xml:"email,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0012
+	ExternalUserId *string `json:"external_user_id,omitempty" xml:"external_user_id,omitempty"`
+	// example:
+	//
+	// 13438009765
+	Phone *string `json:"phone,omitempty" xml:"phone,omitempty"`
+	// This parameter is required.
+	RealName *string `json:"real_name,omitempty" xml:"real_name,omitempty"`
+	// example:
+	//
+	// zhang/san
+	RealNameEn *string `json:"real_name_en,omitempty" xml:"real_name_en,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2
+	UserType *int32 `json:"user_type,omitempty" xml:"user_type,omitempty"`
+}
+
+func (s ExternalUserAddRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExternalUserAddRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ExternalUserAddRequest) SetBirthday(v string) *ExternalUserAddRequest {
+	s.Birthday = &v
+	return s
+}
+
+func (s *ExternalUserAddRequest) SetCertRequestList(v []*ExternalUserAddRequestCertRequestList) *ExternalUserAddRequest {
+	s.CertRequestList = v
+	return s
+}
+
+func (s *ExternalUserAddRequest) SetEmail(v string) *ExternalUserAddRequest {
+	s.Email = &v
+	return s
+}
+
+func (s *ExternalUserAddRequest) SetExternalUserId(v string) *ExternalUserAddRequest {
+	s.ExternalUserId = &v
+	return s
+}
+
+func (s *ExternalUserAddRequest) SetPhone(v string) *ExternalUserAddRequest {
+	s.Phone = &v
+	return s
+}
+
+func (s *ExternalUserAddRequest) SetRealName(v string) *ExternalUserAddRequest {
+	s.RealName = &v
+	return s
+}
+
+func (s *ExternalUserAddRequest) SetRealNameEn(v string) *ExternalUserAddRequest {
+	s.RealNameEn = &v
+	return s
+}
+
+func (s *ExternalUserAddRequest) SetUserType(v int32) *ExternalUserAddRequest {
+	s.UserType = &v
+	return s
+}
+
+type ExternalUserAddRequestCertRequestList struct {
+	// example:
+	//
+	// 2034-10-01
+	CertExpiredTime *string `json:"cert_expired_time,omitempty" xml:"cert_expired_time,omitempty"`
+	// example:
+	//
+	// CN
+	CertNation *string `json:"cert_nation,omitempty" xml:"cert_nation,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 330101199010010213
+	CertNo *string `json:"cert_no,omitempty" xml:"cert_no,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0
+	CertType *int32 `json:"cert_type,omitempty" xml:"cert_type,omitempty"`
+	// example:
+	//
+	// CN
+	Nationality *string `json:"nationality,omitempty" xml:"nationality,omitempty"`
+}
+
+func (s ExternalUserAddRequestCertRequestList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExternalUserAddRequestCertRequestList) GoString() string {
+	return s.String()
+}
+
+func (s *ExternalUserAddRequestCertRequestList) SetCertExpiredTime(v string) *ExternalUserAddRequestCertRequestList {
+	s.CertExpiredTime = &v
+	return s
+}
+
+func (s *ExternalUserAddRequestCertRequestList) SetCertNation(v string) *ExternalUserAddRequestCertRequestList {
+	s.CertNation = &v
+	return s
+}
+
+func (s *ExternalUserAddRequestCertRequestList) SetCertNo(v string) *ExternalUserAddRequestCertRequestList {
+	s.CertNo = &v
+	return s
+}
+
+func (s *ExternalUserAddRequestCertRequestList) SetCertType(v int32) *ExternalUserAddRequestCertRequestList {
+	s.CertType = &v
+	return s
+}
+
+func (s *ExternalUserAddRequestCertRequestList) SetNationality(v string) *ExternalUserAddRequestCertRequestList {
+	s.Nationality = &v
+	return s
+}
+
+type ExternalUserAddShrinkRequest struct {
+	// example:
+	//
+	// 2000-01-02
+	Birthday              *string `json:"birthday,omitempty" xml:"birthday,omitempty"`
+	CertRequestListShrink *string `json:"cert_request_list,omitempty" xml:"cert_request_list,omitempty"`
+	// example:
+	//
+	// zhangsan@alibaba-inc.com
+	Email *string `json:"email,omitempty" xml:"email,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0012
+	ExternalUserId *string `json:"external_user_id,omitempty" xml:"external_user_id,omitempty"`
+	// example:
+	//
+	// 13438009765
+	Phone *string `json:"phone,omitempty" xml:"phone,omitempty"`
+	// This parameter is required.
+	RealName *string `json:"real_name,omitempty" xml:"real_name,omitempty"`
+	// example:
+	//
+	// zhang/san
+	RealNameEn *string `json:"real_name_en,omitempty" xml:"real_name_en,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2
+	UserType *int32 `json:"user_type,omitempty" xml:"user_type,omitempty"`
+}
+
+func (s ExternalUserAddShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExternalUserAddShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ExternalUserAddShrinkRequest) SetBirthday(v string) *ExternalUserAddShrinkRequest {
+	s.Birthday = &v
+	return s
+}
+
+func (s *ExternalUserAddShrinkRequest) SetCertRequestListShrink(v string) *ExternalUserAddShrinkRequest {
+	s.CertRequestListShrink = &v
+	return s
+}
+
+func (s *ExternalUserAddShrinkRequest) SetEmail(v string) *ExternalUserAddShrinkRequest {
+	s.Email = &v
+	return s
+}
+
+func (s *ExternalUserAddShrinkRequest) SetExternalUserId(v string) *ExternalUserAddShrinkRequest {
+	s.ExternalUserId = &v
+	return s
+}
+
+func (s *ExternalUserAddShrinkRequest) SetPhone(v string) *ExternalUserAddShrinkRequest {
+	s.Phone = &v
+	return s
+}
+
+func (s *ExternalUserAddShrinkRequest) SetRealName(v string) *ExternalUserAddShrinkRequest {
+	s.RealName = &v
+	return s
+}
+
+func (s *ExternalUserAddShrinkRequest) SetRealNameEn(v string) *ExternalUserAddShrinkRequest {
+	s.RealNameEn = &v
+	return s
+}
+
+func (s *ExternalUserAddShrinkRequest) SetUserType(v int32) *ExternalUserAddShrinkRequest {
+	s.UserType = &v
+	return s
+}
+
+type ExternalUserAddResponseBody struct {
+	// example:
+	//
+	// success
+	Code    *string `json:"code,omitempty" xml:"code,omitempty"`
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// example:
+	//
+	// B72B39C8-32DE-558D-AD1C-D53F11F6ADFE
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// example:
+	//
+	// 210f079416784321627628333de4ab
+	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
+}
+
+func (s ExternalUserAddResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExternalUserAddResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ExternalUserAddResponseBody) SetCode(v string) *ExternalUserAddResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ExternalUserAddResponseBody) SetMessage(v string) *ExternalUserAddResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ExternalUserAddResponseBody) SetRequestId(v string) *ExternalUserAddResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ExternalUserAddResponseBody) SetSuccess(v bool) *ExternalUserAddResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *ExternalUserAddResponseBody) SetTraceId(v string) *ExternalUserAddResponseBody {
+	s.TraceId = &v
+	return s
+}
+
+type ExternalUserAddResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ExternalUserAddResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ExternalUserAddResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExternalUserAddResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ExternalUserAddResponse) SetHeaders(v map[string]*string) *ExternalUserAddResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ExternalUserAddResponse) SetStatusCode(v int32) *ExternalUserAddResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ExternalUserAddResponse) SetBody(v *ExternalUserAddResponseBody) *ExternalUserAddResponse {
+	s.Body = v
+	return s
+}
+
+type ExternalUserDeleteHeaders struct {
+	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	// example:
+	//
+	// feth00jqwls
+	XAcsBtripCorpToken *string `json:"x-acs-btrip-corp-token,omitempty" xml:"x-acs-btrip-corp-token,omitempty"`
+}
+
+func (s ExternalUserDeleteHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExternalUserDeleteHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *ExternalUserDeleteHeaders) SetCommonHeaders(v map[string]*string) *ExternalUserDeleteHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *ExternalUserDeleteHeaders) SetXAcsBtripCorpToken(v string) *ExternalUserDeleteHeaders {
+	s.XAcsBtripCorpToken = &v
+	return s
+}
+
+type ExternalUserDeleteResponseBody struct {
+	// example:
+	//
+	// success
+	Code    *string `json:"code,omitempty" xml:"code,omitempty"`
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// example:
+	//
+	// B72B39C8-32DE-558D-AD1C-D53F11F6ADFE
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// example:
+	//
+	// 210f079416784321627628333de4ab
+	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
+}
+
+func (s ExternalUserDeleteResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExternalUserDeleteResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ExternalUserDeleteResponseBody) SetCode(v string) *ExternalUserDeleteResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ExternalUserDeleteResponseBody) SetMessage(v string) *ExternalUserDeleteResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ExternalUserDeleteResponseBody) SetRequestId(v string) *ExternalUserDeleteResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ExternalUserDeleteResponseBody) SetSuccess(v bool) *ExternalUserDeleteResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *ExternalUserDeleteResponseBody) SetTraceId(v string) *ExternalUserDeleteResponseBody {
+	s.TraceId = &v
+	return s
+}
+
+type ExternalUserDeleteResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ExternalUserDeleteResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ExternalUserDeleteResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExternalUserDeleteResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ExternalUserDeleteResponse) SetHeaders(v map[string]*string) *ExternalUserDeleteResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ExternalUserDeleteResponse) SetStatusCode(v int32) *ExternalUserDeleteResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ExternalUserDeleteResponse) SetBody(v *ExternalUserDeleteResponseBody) *ExternalUserDeleteResponse {
+	s.Body = v
+	return s
+}
+
+type ExternalUserUpdateHeaders struct {
+	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	// example:
+	//
+	// feth00jqwls
+	XAcsBtripCorpToken *string `json:"x-acs-btrip-corp-token,omitempty" xml:"x-acs-btrip-corp-token,omitempty"`
+}
+
+func (s ExternalUserUpdateHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExternalUserUpdateHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *ExternalUserUpdateHeaders) SetCommonHeaders(v map[string]*string) *ExternalUserUpdateHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *ExternalUserUpdateHeaders) SetXAcsBtripCorpToken(v string) *ExternalUserUpdateHeaders {
+	s.XAcsBtripCorpToken = &v
+	return s
+}
+
+type ExternalUserUpdateRequest struct {
+	// example:
+	//
+	// 2000-01-02
+	Birthday        *string                                     `json:"birthday,omitempty" xml:"birthday,omitempty"`
+	CertRequestList []*ExternalUserUpdateRequestCertRequestList `json:"cert_request_list,omitempty" xml:"cert_request_list,omitempty" type:"Repeated"`
+	// example:
+	//
+	// zhangsan@alibaba-inc.com
+	Email *string `json:"email,omitempty" xml:"email,omitempty"`
+	// example:
+	//
+	// 13438009765
+	Phone    *string `json:"phone,omitempty" xml:"phone,omitempty"`
+	RealName *string `json:"real_name,omitempty" xml:"real_name,omitempty"`
+	// example:
+	//
+	// zhang/san
+	RealNameEn *string `json:"real_name_en,omitempty" xml:"real_name_en,omitempty"`
+}
+
+func (s ExternalUserUpdateRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExternalUserUpdateRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ExternalUserUpdateRequest) SetBirthday(v string) *ExternalUserUpdateRequest {
+	s.Birthday = &v
+	return s
+}
+
+func (s *ExternalUserUpdateRequest) SetCertRequestList(v []*ExternalUserUpdateRequestCertRequestList) *ExternalUserUpdateRequest {
+	s.CertRequestList = v
+	return s
+}
+
+func (s *ExternalUserUpdateRequest) SetEmail(v string) *ExternalUserUpdateRequest {
+	s.Email = &v
+	return s
+}
+
+func (s *ExternalUserUpdateRequest) SetPhone(v string) *ExternalUserUpdateRequest {
+	s.Phone = &v
+	return s
+}
+
+func (s *ExternalUserUpdateRequest) SetRealName(v string) *ExternalUserUpdateRequest {
+	s.RealName = &v
+	return s
+}
+
+func (s *ExternalUserUpdateRequest) SetRealNameEn(v string) *ExternalUserUpdateRequest {
+	s.RealNameEn = &v
+	return s
+}
+
+type ExternalUserUpdateRequestCertRequestList struct {
+	// example:
+	//
+	// 2034-10-01
+	CertExpiredTime *string `json:"cert_expired_time,omitempty" xml:"cert_expired_time,omitempty"`
+	// example:
+	//
+	// CN
+	CertNation *string `json:"cert_nation,omitempty" xml:"cert_nation,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 330101199010010213
+	CertNo *string `json:"cert_no,omitempty" xml:"cert_no,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0
+	CertType *int32 `json:"cert_type,omitempty" xml:"cert_type,omitempty"`
+	// example:
+	//
+	// CN
+	Nationality *string `json:"nationality,omitempty" xml:"nationality,omitempty"`
+}
+
+func (s ExternalUserUpdateRequestCertRequestList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExternalUserUpdateRequestCertRequestList) GoString() string {
+	return s.String()
+}
+
+func (s *ExternalUserUpdateRequestCertRequestList) SetCertExpiredTime(v string) *ExternalUserUpdateRequestCertRequestList {
+	s.CertExpiredTime = &v
+	return s
+}
+
+func (s *ExternalUserUpdateRequestCertRequestList) SetCertNation(v string) *ExternalUserUpdateRequestCertRequestList {
+	s.CertNation = &v
+	return s
+}
+
+func (s *ExternalUserUpdateRequestCertRequestList) SetCertNo(v string) *ExternalUserUpdateRequestCertRequestList {
+	s.CertNo = &v
+	return s
+}
+
+func (s *ExternalUserUpdateRequestCertRequestList) SetCertType(v int32) *ExternalUserUpdateRequestCertRequestList {
+	s.CertType = &v
+	return s
+}
+
+func (s *ExternalUserUpdateRequestCertRequestList) SetNationality(v string) *ExternalUserUpdateRequestCertRequestList {
+	s.Nationality = &v
+	return s
+}
+
+type ExternalUserUpdateShrinkRequest struct {
+	// example:
+	//
+	// 2000-01-02
+	Birthday              *string `json:"birthday,omitempty" xml:"birthday,omitempty"`
+	CertRequestListShrink *string `json:"cert_request_list,omitempty" xml:"cert_request_list,omitempty"`
+	// example:
+	//
+	// zhangsan@alibaba-inc.com
+	Email *string `json:"email,omitempty" xml:"email,omitempty"`
+	// example:
+	//
+	// 13438009765
+	Phone    *string `json:"phone,omitempty" xml:"phone,omitempty"`
+	RealName *string `json:"real_name,omitempty" xml:"real_name,omitempty"`
+	// example:
+	//
+	// zhang/san
+	RealNameEn *string `json:"real_name_en,omitempty" xml:"real_name_en,omitempty"`
+}
+
+func (s ExternalUserUpdateShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExternalUserUpdateShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ExternalUserUpdateShrinkRequest) SetBirthday(v string) *ExternalUserUpdateShrinkRequest {
+	s.Birthday = &v
+	return s
+}
+
+func (s *ExternalUserUpdateShrinkRequest) SetCertRequestListShrink(v string) *ExternalUserUpdateShrinkRequest {
+	s.CertRequestListShrink = &v
+	return s
+}
+
+func (s *ExternalUserUpdateShrinkRequest) SetEmail(v string) *ExternalUserUpdateShrinkRequest {
+	s.Email = &v
+	return s
+}
+
+func (s *ExternalUserUpdateShrinkRequest) SetPhone(v string) *ExternalUserUpdateShrinkRequest {
+	s.Phone = &v
+	return s
+}
+
+func (s *ExternalUserUpdateShrinkRequest) SetRealName(v string) *ExternalUserUpdateShrinkRequest {
+	s.RealName = &v
+	return s
+}
+
+func (s *ExternalUserUpdateShrinkRequest) SetRealNameEn(v string) *ExternalUserUpdateShrinkRequest {
+	s.RealNameEn = &v
+	return s
+}
+
+type ExternalUserUpdateResponseBody struct {
+	// example:
+	//
+	// success
+	Code    *string `json:"code,omitempty" xml:"code,omitempty"`
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// example:
+	//
+	// B72B39C8-32DE-558D-AD1C-D53F11F6ADFE
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// example:
+	//
+	// 210f079416784321627628333de4ab
+	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
+}
+
+func (s ExternalUserUpdateResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExternalUserUpdateResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ExternalUserUpdateResponseBody) SetCode(v string) *ExternalUserUpdateResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ExternalUserUpdateResponseBody) SetMessage(v string) *ExternalUserUpdateResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ExternalUserUpdateResponseBody) SetRequestId(v string) *ExternalUserUpdateResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ExternalUserUpdateResponseBody) SetSuccess(v bool) *ExternalUserUpdateResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *ExternalUserUpdateResponseBody) SetTraceId(v string) *ExternalUserUpdateResponseBody {
+	s.TraceId = &v
+	return s
+}
+
+type ExternalUserUpdateResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ExternalUserUpdateResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ExternalUserUpdateResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExternalUserUpdateResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ExternalUserUpdateResponse) SetHeaders(v map[string]*string) *ExternalUserUpdateResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ExternalUserUpdateResponse) SetStatusCode(v int32) *ExternalUserUpdateResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ExternalUserUpdateResponse) SetBody(v *ExternalUserUpdateResponseBody) *ExternalUserUpdateResponse {
 	s.Body = v
 	return s
 }
@@ -34415,7 +36081,8 @@ func (s *FlightModifyOtaSearchV2ResponseBody) SetTraceId(v string) *FlightModify
 }
 
 type FlightModifyOtaSearchV2ResponseBodyModule struct {
-	AgentInfo *FlightModifyOtaSearchV2ResponseBodyModuleAgentInfo `json:"agent_info,omitempty" xml:"agent_info,omitempty" type:"Struct"`
+	AgentInfos []*FlightModifyOtaSearchV2ResponseBodyModuleAgentInfos `json:"agentInfos,omitempty" xml:"agentInfos,omitempty" type:"Repeated"`
+	AgentInfo  *FlightModifyOtaSearchV2ResponseBodyModuleAgentInfo    `json:"agent_info,omitempty" xml:"agent_info,omitempty" type:"Struct"`
 	// example:
 	//
 	// 2136019116915615639457351e06ee
@@ -34434,6 +36101,11 @@ func (s FlightModifyOtaSearchV2ResponseBodyModule) String() string {
 
 func (s FlightModifyOtaSearchV2ResponseBodyModule) GoString() string {
 	return s.String()
+}
+
+func (s *FlightModifyOtaSearchV2ResponseBodyModule) SetAgentInfos(v []*FlightModifyOtaSearchV2ResponseBodyModuleAgentInfos) *FlightModifyOtaSearchV2ResponseBodyModule {
+	s.AgentInfos = v
+	return s
 }
 
 func (s *FlightModifyOtaSearchV2ResponseBodyModule) SetAgentInfo(v *FlightModifyOtaSearchV2ResponseBodyModuleAgentInfo) *FlightModifyOtaSearchV2ResponseBodyModule {
@@ -34458,6 +36130,272 @@ func (s *FlightModifyOtaSearchV2ResponseBodyModule) SetPassengerCount(v *FlightM
 
 func (s *FlightModifyOtaSearchV2ResponseBodyModule) SetSessionId(v string) *FlightModifyOtaSearchV2ResponseBodyModule {
 	s.SessionId = &v
+	return s
+}
+
+type FlightModifyOtaSearchV2ResponseBodyModuleAgentInfos struct {
+	AttributeShowInfoMap map[string][]*ModuleAgentInfosAttributeShowInfoMapValue            `json:"attribute_show_info_map,omitempty" xml:"attribute_show_info_map,omitempty"`
+	BestDiscount         *float64                                                           `json:"best_discount,omitempty" xml:"best_discount,omitempty"`
+	CabinClassInfo       *FlightModifyOtaSearchV2ResponseBodyModuleAgentInfosCabinClassInfo `json:"cabin_class_info,omitempty" xml:"cabin_class_info,omitempty" type:"Struct"`
+	CabinCode            *int32                                                             `json:"cabin_code,omitempty" xml:"cabin_code,omitempty"`
+	CabinName            *string                                                            `json:"cabin_name,omitempty" xml:"cabin_name,omitempty"`
+	ItemId               *string                                                            `json:"item_id,omitempty" xml:"item_id,omitempty"`
+	ModifyTypeDesc       *string                                                            `json:"modify_type_desc,omitempty" xml:"modify_type_desc,omitempty"`
+	ModifyTypeName       *string                                                            `json:"modify_type_name,omitempty" xml:"modify_type_name,omitempty"`
+	PriceInfoDTO         *FlightModifyOtaSearchV2ResponseBodyModuleAgentInfosPriceInfoDTO   `json:"price_info_d_t_o,omitempty" xml:"price_info_d_t_o,omitempty" type:"Struct"`
+	Quantity             *int32                                                             `json:"quantity,omitempty" xml:"quantity,omitempty"`
+	SupportChildTicket   *bool                                                              `json:"support_child_ticket,omitempty" xml:"support_child_ticket,omitempty"`
+}
+
+func (s FlightModifyOtaSearchV2ResponseBodyModuleAgentInfos) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FlightModifyOtaSearchV2ResponseBodyModuleAgentInfos) GoString() string {
+	return s.String()
+}
+
+func (s *FlightModifyOtaSearchV2ResponseBodyModuleAgentInfos) SetAttributeShowInfoMap(v map[string][]*ModuleAgentInfosAttributeShowInfoMapValue) *FlightModifyOtaSearchV2ResponseBodyModuleAgentInfos {
+	s.AttributeShowInfoMap = v
+	return s
+}
+
+func (s *FlightModifyOtaSearchV2ResponseBodyModuleAgentInfos) SetBestDiscount(v float64) *FlightModifyOtaSearchV2ResponseBodyModuleAgentInfos {
+	s.BestDiscount = &v
+	return s
+}
+
+func (s *FlightModifyOtaSearchV2ResponseBodyModuleAgentInfos) SetCabinClassInfo(v *FlightModifyOtaSearchV2ResponseBodyModuleAgentInfosCabinClassInfo) *FlightModifyOtaSearchV2ResponseBodyModuleAgentInfos {
+	s.CabinClassInfo = v
+	return s
+}
+
+func (s *FlightModifyOtaSearchV2ResponseBodyModuleAgentInfos) SetCabinCode(v int32) *FlightModifyOtaSearchV2ResponseBodyModuleAgentInfos {
+	s.CabinCode = &v
+	return s
+}
+
+func (s *FlightModifyOtaSearchV2ResponseBodyModuleAgentInfos) SetCabinName(v string) *FlightModifyOtaSearchV2ResponseBodyModuleAgentInfos {
+	s.CabinName = &v
+	return s
+}
+
+func (s *FlightModifyOtaSearchV2ResponseBodyModuleAgentInfos) SetItemId(v string) *FlightModifyOtaSearchV2ResponseBodyModuleAgentInfos {
+	s.ItemId = &v
+	return s
+}
+
+func (s *FlightModifyOtaSearchV2ResponseBodyModuleAgentInfos) SetModifyTypeDesc(v string) *FlightModifyOtaSearchV2ResponseBodyModuleAgentInfos {
+	s.ModifyTypeDesc = &v
+	return s
+}
+
+func (s *FlightModifyOtaSearchV2ResponseBodyModuleAgentInfos) SetModifyTypeName(v string) *FlightModifyOtaSearchV2ResponseBodyModuleAgentInfos {
+	s.ModifyTypeName = &v
+	return s
+}
+
+func (s *FlightModifyOtaSearchV2ResponseBodyModuleAgentInfos) SetPriceInfoDTO(v *FlightModifyOtaSearchV2ResponseBodyModuleAgentInfosPriceInfoDTO) *FlightModifyOtaSearchV2ResponseBodyModuleAgentInfos {
+	s.PriceInfoDTO = v
+	return s
+}
+
+func (s *FlightModifyOtaSearchV2ResponseBodyModuleAgentInfos) SetQuantity(v int32) *FlightModifyOtaSearchV2ResponseBodyModuleAgentInfos {
+	s.Quantity = &v
+	return s
+}
+
+func (s *FlightModifyOtaSearchV2ResponseBodyModuleAgentInfos) SetSupportChildTicket(v bool) *FlightModifyOtaSearchV2ResponseBodyModuleAgentInfos {
+	s.SupportChildTicket = &v
+	return s
+}
+
+type FlightModifyOtaSearchV2ResponseBodyModuleAgentInfosCabinClassInfo struct {
+	CabinClass      *string `json:"cabin_class,omitempty" xml:"cabin_class,omitempty"`
+	ClassName       *string `json:"class_name,omitempty" xml:"class_name,omitempty"`
+	InnerCabinClass *int32  `json:"inner_cabin_class,omitempty" xml:"inner_cabin_class,omitempty"`
+	Quantity        *string `json:"quantity,omitempty" xml:"quantity,omitempty"`
+}
+
+func (s FlightModifyOtaSearchV2ResponseBodyModuleAgentInfosCabinClassInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FlightModifyOtaSearchV2ResponseBodyModuleAgentInfosCabinClassInfo) GoString() string {
+	return s.String()
+}
+
+func (s *FlightModifyOtaSearchV2ResponseBodyModuleAgentInfosCabinClassInfo) SetCabinClass(v string) *FlightModifyOtaSearchV2ResponseBodyModuleAgentInfosCabinClassInfo {
+	s.CabinClass = &v
+	return s
+}
+
+func (s *FlightModifyOtaSearchV2ResponseBodyModuleAgentInfosCabinClassInfo) SetClassName(v string) *FlightModifyOtaSearchV2ResponseBodyModuleAgentInfosCabinClassInfo {
+	s.ClassName = &v
+	return s
+}
+
+func (s *FlightModifyOtaSearchV2ResponseBodyModuleAgentInfosCabinClassInfo) SetInnerCabinClass(v int32) *FlightModifyOtaSearchV2ResponseBodyModuleAgentInfosCabinClassInfo {
+	s.InnerCabinClass = &v
+	return s
+}
+
+func (s *FlightModifyOtaSearchV2ResponseBodyModuleAgentInfosCabinClassInfo) SetQuantity(v string) *FlightModifyOtaSearchV2ResponseBodyModuleAgentInfosCabinClassInfo {
+	s.Quantity = &v
+	return s
+}
+
+type FlightModifyOtaSearchV2ResponseBodyModuleAgentInfosPriceInfoDTO struct {
+	AdultPrice              *int32                                                                             `json:"adult_price,omitempty" xml:"adult_price,omitempty"`
+	AdultTax                *int32                                                                             `json:"adult_tax,omitempty" xml:"adult_tax,omitempty"`
+	AdultTotalPrice         *int32                                                                             `json:"adult_total_price,omitempty" xml:"adult_total_price,omitempty"`
+	BeforeControlPrice      *int32                                                                             `json:"before_control_price,omitempty" xml:"before_control_price,omitempty"`
+	ChildPrice              *int32                                                                             `json:"child_price,omitempty" xml:"child_price,omitempty"`
+	ChildTax                *int32                                                                             `json:"child_tax,omitempty" xml:"child_tax,omitempty"`
+	ChildTotalPrice         *int32                                                                             `json:"child_total_price,omitempty" xml:"child_total_price,omitempty"`
+	InfantPrice             *int32                                                                             `json:"infant_price,omitempty" xml:"infant_price,omitempty"`
+	InfantTax               *int32                                                                             `json:"infant_tax,omitempty" xml:"infant_tax,omitempty"`
+	InfantTotalPrice        *int32                                                                             `json:"infant_total_price,omitempty" xml:"infant_total_price,omitempty"`
+	OriginalAdultPrice      *int32                                                                             `json:"original_adult_price,omitempty" xml:"original_adult_price,omitempty"`
+	OriginalAdultTotalPrice *int32                                                                             `json:"original_adult_total_price,omitempty" xml:"original_adult_total_price,omitempty"`
+	ReShopPriceInfoDTO      *FlightModifyOtaSearchV2ResponseBodyModuleAgentInfosPriceInfoDTOReShopPriceInfoDTO `json:"re_shop_price_info_d_t_o,omitempty" xml:"re_shop_price_info_d_t_o,omitempty" type:"Struct"`
+}
+
+func (s FlightModifyOtaSearchV2ResponseBodyModuleAgentInfosPriceInfoDTO) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FlightModifyOtaSearchV2ResponseBodyModuleAgentInfosPriceInfoDTO) GoString() string {
+	return s.String()
+}
+
+func (s *FlightModifyOtaSearchV2ResponseBodyModuleAgentInfosPriceInfoDTO) SetAdultPrice(v int32) *FlightModifyOtaSearchV2ResponseBodyModuleAgentInfosPriceInfoDTO {
+	s.AdultPrice = &v
+	return s
+}
+
+func (s *FlightModifyOtaSearchV2ResponseBodyModuleAgentInfosPriceInfoDTO) SetAdultTax(v int32) *FlightModifyOtaSearchV2ResponseBodyModuleAgentInfosPriceInfoDTO {
+	s.AdultTax = &v
+	return s
+}
+
+func (s *FlightModifyOtaSearchV2ResponseBodyModuleAgentInfosPriceInfoDTO) SetAdultTotalPrice(v int32) *FlightModifyOtaSearchV2ResponseBodyModuleAgentInfosPriceInfoDTO {
+	s.AdultTotalPrice = &v
+	return s
+}
+
+func (s *FlightModifyOtaSearchV2ResponseBodyModuleAgentInfosPriceInfoDTO) SetBeforeControlPrice(v int32) *FlightModifyOtaSearchV2ResponseBodyModuleAgentInfosPriceInfoDTO {
+	s.BeforeControlPrice = &v
+	return s
+}
+
+func (s *FlightModifyOtaSearchV2ResponseBodyModuleAgentInfosPriceInfoDTO) SetChildPrice(v int32) *FlightModifyOtaSearchV2ResponseBodyModuleAgentInfosPriceInfoDTO {
+	s.ChildPrice = &v
+	return s
+}
+
+func (s *FlightModifyOtaSearchV2ResponseBodyModuleAgentInfosPriceInfoDTO) SetChildTax(v int32) *FlightModifyOtaSearchV2ResponseBodyModuleAgentInfosPriceInfoDTO {
+	s.ChildTax = &v
+	return s
+}
+
+func (s *FlightModifyOtaSearchV2ResponseBodyModuleAgentInfosPriceInfoDTO) SetChildTotalPrice(v int32) *FlightModifyOtaSearchV2ResponseBodyModuleAgentInfosPriceInfoDTO {
+	s.ChildTotalPrice = &v
+	return s
+}
+
+func (s *FlightModifyOtaSearchV2ResponseBodyModuleAgentInfosPriceInfoDTO) SetInfantPrice(v int32) *FlightModifyOtaSearchV2ResponseBodyModuleAgentInfosPriceInfoDTO {
+	s.InfantPrice = &v
+	return s
+}
+
+func (s *FlightModifyOtaSearchV2ResponseBodyModuleAgentInfosPriceInfoDTO) SetInfantTax(v int32) *FlightModifyOtaSearchV2ResponseBodyModuleAgentInfosPriceInfoDTO {
+	s.InfantTax = &v
+	return s
+}
+
+func (s *FlightModifyOtaSearchV2ResponseBodyModuleAgentInfosPriceInfoDTO) SetInfantTotalPrice(v int32) *FlightModifyOtaSearchV2ResponseBodyModuleAgentInfosPriceInfoDTO {
+	s.InfantTotalPrice = &v
+	return s
+}
+
+func (s *FlightModifyOtaSearchV2ResponseBodyModuleAgentInfosPriceInfoDTO) SetOriginalAdultPrice(v int32) *FlightModifyOtaSearchV2ResponseBodyModuleAgentInfosPriceInfoDTO {
+	s.OriginalAdultPrice = &v
+	return s
+}
+
+func (s *FlightModifyOtaSearchV2ResponseBodyModuleAgentInfosPriceInfoDTO) SetOriginalAdultTotalPrice(v int32) *FlightModifyOtaSearchV2ResponseBodyModuleAgentInfosPriceInfoDTO {
+	s.OriginalAdultTotalPrice = &v
+	return s
+}
+
+func (s *FlightModifyOtaSearchV2ResponseBodyModuleAgentInfosPriceInfoDTO) SetReShopPriceInfoDTO(v *FlightModifyOtaSearchV2ResponseBodyModuleAgentInfosPriceInfoDTOReShopPriceInfoDTO) *FlightModifyOtaSearchV2ResponseBodyModuleAgentInfosPriceInfoDTO {
+	s.ReShopPriceInfoDTO = v
+	return s
+}
+
+type FlightModifyOtaSearchV2ResponseBodyModuleAgentInfosPriceInfoDTOReShopPriceInfoDTO struct {
+	ReShopAdultChangeFee *int32 `json:"re_shop_adult_change_fee,omitempty" xml:"re_shop_adult_change_fee,omitempty"`
+	ReShopAdultPrice     *int32 `json:"re_shop_adult_price,omitempty" xml:"re_shop_adult_price,omitempty"`
+	ReShopAdultPriceGap  *int32 `json:"re_shop_adult_price_gap,omitempty" xml:"re_shop_adult_price_gap,omitempty"`
+	ReShopChildChangeFee *int32 `json:"re_shop_child_change_fee,omitempty" xml:"re_shop_child_change_fee,omitempty"`
+	ReShopChildPrice     *int32 `json:"re_shop_child_price,omitempty" xml:"re_shop_child_price,omitempty"`
+	ReShopChildPriceGap  *int32 `json:"re_shop_child_price_gap,omitempty" xml:"re_shop_child_price_gap,omitempty"`
+	ReShopInfChangeFee   *int32 `json:"re_shop_inf_change_fee,omitempty" xml:"re_shop_inf_change_fee,omitempty"`
+	ReShopInfPrice       *int32 `json:"re_shop_inf_price,omitempty" xml:"re_shop_inf_price,omitempty"`
+	ReShopInfPriceGap    *int32 `json:"re_shop_inf_price_gap,omitempty" xml:"re_shop_inf_price_gap,omitempty"`
+}
+
+func (s FlightModifyOtaSearchV2ResponseBodyModuleAgentInfosPriceInfoDTOReShopPriceInfoDTO) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FlightModifyOtaSearchV2ResponseBodyModuleAgentInfosPriceInfoDTOReShopPriceInfoDTO) GoString() string {
+	return s.String()
+}
+
+func (s *FlightModifyOtaSearchV2ResponseBodyModuleAgentInfosPriceInfoDTOReShopPriceInfoDTO) SetReShopAdultChangeFee(v int32) *FlightModifyOtaSearchV2ResponseBodyModuleAgentInfosPriceInfoDTOReShopPriceInfoDTO {
+	s.ReShopAdultChangeFee = &v
+	return s
+}
+
+func (s *FlightModifyOtaSearchV2ResponseBodyModuleAgentInfosPriceInfoDTOReShopPriceInfoDTO) SetReShopAdultPrice(v int32) *FlightModifyOtaSearchV2ResponseBodyModuleAgentInfosPriceInfoDTOReShopPriceInfoDTO {
+	s.ReShopAdultPrice = &v
+	return s
+}
+
+func (s *FlightModifyOtaSearchV2ResponseBodyModuleAgentInfosPriceInfoDTOReShopPriceInfoDTO) SetReShopAdultPriceGap(v int32) *FlightModifyOtaSearchV2ResponseBodyModuleAgentInfosPriceInfoDTOReShopPriceInfoDTO {
+	s.ReShopAdultPriceGap = &v
+	return s
+}
+
+func (s *FlightModifyOtaSearchV2ResponseBodyModuleAgentInfosPriceInfoDTOReShopPriceInfoDTO) SetReShopChildChangeFee(v int32) *FlightModifyOtaSearchV2ResponseBodyModuleAgentInfosPriceInfoDTOReShopPriceInfoDTO {
+	s.ReShopChildChangeFee = &v
+	return s
+}
+
+func (s *FlightModifyOtaSearchV2ResponseBodyModuleAgentInfosPriceInfoDTOReShopPriceInfoDTO) SetReShopChildPrice(v int32) *FlightModifyOtaSearchV2ResponseBodyModuleAgentInfosPriceInfoDTOReShopPriceInfoDTO {
+	s.ReShopChildPrice = &v
+	return s
+}
+
+func (s *FlightModifyOtaSearchV2ResponseBodyModuleAgentInfosPriceInfoDTOReShopPriceInfoDTO) SetReShopChildPriceGap(v int32) *FlightModifyOtaSearchV2ResponseBodyModuleAgentInfosPriceInfoDTOReShopPriceInfoDTO {
+	s.ReShopChildPriceGap = &v
+	return s
+}
+
+func (s *FlightModifyOtaSearchV2ResponseBodyModuleAgentInfosPriceInfoDTOReShopPriceInfoDTO) SetReShopInfChangeFee(v int32) *FlightModifyOtaSearchV2ResponseBodyModuleAgentInfosPriceInfoDTOReShopPriceInfoDTO {
+	s.ReShopInfChangeFee = &v
+	return s
+}
+
+func (s *FlightModifyOtaSearchV2ResponseBodyModuleAgentInfosPriceInfoDTOReShopPriceInfoDTO) SetReShopInfPrice(v int32) *FlightModifyOtaSearchV2ResponseBodyModuleAgentInfosPriceInfoDTOReShopPriceInfoDTO {
+	s.ReShopInfPrice = &v
+	return s
+}
+
+func (s *FlightModifyOtaSearchV2ResponseBodyModuleAgentInfosPriceInfoDTOReShopPriceInfoDTO) SetReShopInfPriceGap(v int32) *FlightModifyOtaSearchV2ResponseBodyModuleAgentInfosPriceInfoDTOReShopPriceInfoDTO {
+	s.ReShopInfPriceGap = &v
 	return s
 }
 
@@ -38140,7 +40078,8 @@ type FlightOrderListQueryResponseBodyModule struct {
 	// example:
 	//
 	// CS-UMN98989
-	ThirdpartApplyId *string `json:"thirdpart_apply_id,omitempty" xml:"thirdpart_apply_id,omitempty"`
+	ThirdpartApplyId    *string `json:"thirdpart_apply_id,omitempty" xml:"thirdpart_apply_id,omitempty"`
+	ThirdpartBusinessId *string `json:"thirdpart_business_id,omitempty" xml:"thirdpart_business_id,omitempty"`
 	// example:
 	//
 	// cs9897766
@@ -38324,6 +40263,11 @@ func (s *FlightOrderListQueryResponseBodyModule) SetThirdPartProjectId(v string)
 
 func (s *FlightOrderListQueryResponseBodyModule) SetThirdpartApplyId(v string) *FlightOrderListQueryResponseBodyModule {
 	s.ThirdpartApplyId = &v
+	return s
+}
+
+func (s *FlightOrderListQueryResponseBodyModule) SetThirdpartBusinessId(v string) *FlightOrderListQueryResponseBodyModule {
+	s.ThirdpartBusinessId = &v
 	return s
 }
 
@@ -39642,8 +41586,9 @@ type FlightOrderQueryResponseBodyModuleOrderBaseInfo struct {
 	// example:
 	//
 	// CS-FLIGHT
-	ThirdpartApplyId *string `json:"thirdpart_apply_id,omitempty" xml:"thirdpart_apply_id,omitempty"`
-	ThirdpartCorpId  *string `json:"thirdpart_corp_id,omitempty" xml:"thirdpart_corp_id,omitempty"`
+	ThirdpartApplyId    *string `json:"thirdpart_apply_id,omitempty" xml:"thirdpart_apply_id,omitempty"`
+	ThirdpartBusinessId *string `json:"thirdpart_business_id,omitempty" xml:"thirdpart_business_id,omitempty"`
+	ThirdpartCorpId     *string `json:"thirdpart_corp_id,omitempty" xml:"thirdpart_corp_id,omitempty"`
 	// example:
 	//
 	// CS-FLIGHT
@@ -39735,6 +41680,11 @@ func (s *FlightOrderQueryResponseBodyModuleOrderBaseInfo) SetOrderStatus(v int32
 
 func (s *FlightOrderQueryResponseBodyModuleOrderBaseInfo) SetThirdpartApplyId(v string) *FlightOrderQueryResponseBodyModuleOrderBaseInfo {
 	s.ThirdpartApplyId = &v
+	return s
+}
+
+func (s *FlightOrderQueryResponseBodyModuleOrderBaseInfo) SetThirdpartBusinessId(v string) *FlightOrderQueryResponseBodyModuleOrderBaseInfo {
+	s.ThirdpartBusinessId = &v
 	return s
 }
 
@@ -53797,6 +55747,7 @@ func (s *HotelBillSettlementQueryResponseBodyModule) SetTotalNum(v int64) *Hotel
 }
 
 type HotelBillSettlementQueryResponseBodyModuleDataList struct {
+	AgreementPromotionFee *float64 `json:"agreement_promotion_fee,omitempty" xml:"agreement_promotion_fee,omitempty"`
 	// example:
 	//
 	// 234432432
@@ -53992,6 +55943,11 @@ func (s HotelBillSettlementQueryResponseBodyModuleDataList) String() string {
 
 func (s HotelBillSettlementQueryResponseBodyModuleDataList) GoString() string {
 	return s.String()
+}
+
+func (s *HotelBillSettlementQueryResponseBodyModuleDataList) SetAgreementPromotionFee(v float64) *HotelBillSettlementQueryResponseBodyModuleDataList {
+	s.AgreementPromotionFee = &v
+	return s
 }
 
 func (s *HotelBillSettlementQueryResponseBodyModuleDataList) SetAlipayTradeNo(v string) *HotelBillSettlementQueryResponseBodyModuleDataList {
@@ -58916,7 +60872,8 @@ type HotelOrderListQueryResponseBodyModule struct {
 	// example:
 	//
 	// CS-THIRDAPPLY
-	ThirdpartApplyId *string `json:"thirdpart_apply_id,omitempty" xml:"thirdpart_apply_id,omitempty"`
+	ThirdpartApplyId    *string `json:"thirdpart_apply_id,omitempty" xml:"thirdpart_apply_id,omitempty"`
+	ThirdpartBusinessId *string `json:"thirdpart_business_id,omitempty" xml:"thirdpart_business_id,omitempty"`
 	// example:
 	//
 	// CS-ITINEARY
@@ -59095,6 +61052,11 @@ func (s *HotelOrderListQueryResponseBodyModule) SetRoomType(v string) *HotelOrde
 
 func (s *HotelOrderListQueryResponseBodyModule) SetThirdpartApplyId(v string) *HotelOrderListQueryResponseBodyModule {
 	s.ThirdpartApplyId = &v
+	return s
+}
+
+func (s *HotelOrderListQueryResponseBodyModule) SetThirdpartBusinessId(v string) *HotelOrderListQueryResponseBodyModule {
+	s.ThirdpartBusinessId = &v
 	return s
 }
 
@@ -60802,7 +62764,8 @@ type HotelOrderQueryResponseBodyModuleOrderBaseInfo struct {
 	// example:
 	//
 	// 12345678
-	ThirdpartApplyId *string `json:"thirdpart_apply_id,omitempty" xml:"thirdpart_apply_id,omitempty"`
+	ThirdpartApplyId    *string `json:"thirdpart_apply_id,omitempty" xml:"thirdpart_apply_id,omitempty"`
+	ThirdpartBusinessId *string `json:"thirdpart_business_id,omitempty" xml:"thirdpart_business_id,omitempty"`
 	// example:
 	//
 	// 12345678
@@ -60898,6 +62861,11 @@ func (s *HotelOrderQueryResponseBodyModuleOrderBaseInfo) SetOrderType(v int32) *
 
 func (s *HotelOrderQueryResponseBodyModuleOrderBaseInfo) SetThirdpartApplyId(v string) *HotelOrderQueryResponseBodyModuleOrderBaseInfo {
 	s.ThirdpartApplyId = &v
+	return s
+}
+
+func (s *HotelOrderQueryResponseBodyModuleOrderBaseInfo) SetThirdpartBusinessId(v string) *HotelOrderQueryResponseBodyModuleOrderBaseInfo {
+	s.ThirdpartBusinessId = &v
 	return s
 }
 
@@ -63983,6 +65951,271 @@ func (s *HotelStaticInfoResponse) SetStatusCode(v int32) *HotelStaticInfoRespons
 }
 
 func (s *HotelStaticInfoResponse) SetBody(v *HotelStaticInfoResponseBody) *HotelStaticInfoResponse {
+	s.Body = v
+	return s
+}
+
+type HotelSuggestHeaders struct {
+	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	// example:
+	//
+	// feth00jqwls
+	XAcsBtripSoCorpToken *string `json:"x-acs-btrip-so-corp-token,omitempty" xml:"x-acs-btrip-so-corp-token,omitempty"`
+}
+
+func (s HotelSuggestHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s HotelSuggestHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *HotelSuggestHeaders) SetCommonHeaders(v map[string]*string) *HotelSuggestHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *HotelSuggestHeaders) SetXAcsBtripSoCorpToken(v string) *HotelSuggestHeaders {
+	s.XAcsBtripSoCorpToken = &v
+	return s
+}
+
+type HotelSuggestRequest struct {
+	// example:
+	//
+	// 23141
+	BtripUserId *string `json:"btrip_user_id,omitempty" xml:"btrip_user_id,omitempty"`
+	// example:
+	//
+	// 2024-06-19
+	CheckIn *string `json:"check_in,omitempty" xml:"check_in,omitempty"`
+	// example:
+	//
+	// 2024-10-30
+	CheckOut *string `json:"check_out,omitempty" xml:"check_out,omitempty"`
+	// example:
+	//
+	// 330100
+	CityCode *string `json:"city_code,omitempty" xml:"city_code,omitempty"`
+	Keyword  *string `json:"keyword,omitempty" xml:"keyword,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	SearchType *int32 `json:"search_type,omitempty" xml:"search_type,omitempty"`
+}
+
+func (s HotelSuggestRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s HotelSuggestRequest) GoString() string {
+	return s.String()
+}
+
+func (s *HotelSuggestRequest) SetBtripUserId(v string) *HotelSuggestRequest {
+	s.BtripUserId = &v
+	return s
+}
+
+func (s *HotelSuggestRequest) SetCheckIn(v string) *HotelSuggestRequest {
+	s.CheckIn = &v
+	return s
+}
+
+func (s *HotelSuggestRequest) SetCheckOut(v string) *HotelSuggestRequest {
+	s.CheckOut = &v
+	return s
+}
+
+func (s *HotelSuggestRequest) SetCityCode(v string) *HotelSuggestRequest {
+	s.CityCode = &v
+	return s
+}
+
+func (s *HotelSuggestRequest) SetKeyword(v string) *HotelSuggestRequest {
+	s.Keyword = &v
+	return s
+}
+
+func (s *HotelSuggestRequest) SetSearchType(v int32) *HotelSuggestRequest {
+	s.SearchType = &v
+	return s
+}
+
+type HotelSuggestResponseBody struct {
+	// example:
+	//
+	// 200
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// example:
+	//
+	// None
+	Message *string                         `json:"message,omitempty" xml:"message,omitempty"`
+	Module  *HotelSuggestResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
+	// example:
+	//
+	// A5009956-1077-52FB-B520-EA8C7E91D722
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// example:
+	//
+	// 21041ce316577904808056433edbb2
+	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
+}
+
+func (s HotelSuggestResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s HotelSuggestResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *HotelSuggestResponseBody) SetCode(v string) *HotelSuggestResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *HotelSuggestResponseBody) SetMessage(v string) *HotelSuggestResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *HotelSuggestResponseBody) SetModule(v *HotelSuggestResponseBodyModule) *HotelSuggestResponseBody {
+	s.Module = v
+	return s
+}
+
+func (s *HotelSuggestResponseBody) SetRequestId(v string) *HotelSuggestResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *HotelSuggestResponseBody) SetSuccess(v bool) *HotelSuggestResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *HotelSuggestResponseBody) SetTraceId(v string) *HotelSuggestResponseBody {
+	s.TraceId = &v
+	return s
+}
+
+type HotelSuggestResponseBodyModule struct {
+	GuessSuggestInfos   []*KeywordSuggestInfo                                `json:"guess_suggest_infos,omitempty" xml:"guess_suggest_infos,omitempty" type:"Repeated"`
+	KeywordSuggestInfos []*KeywordSuggestInfo                                `json:"keyword_suggest_infos,omitempty" xml:"keyword_suggest_infos,omitempty" type:"Repeated"`
+	PopularSuggestInfos []*HotelSuggestResponseBodyModulePopularSuggestInfos `json:"popular_suggest_infos,omitempty" xml:"popular_suggest_infos,omitempty" type:"Repeated"`
+	Tips                *string                                              `json:"tips,omitempty" xml:"tips,omitempty"`
+}
+
+func (s HotelSuggestResponseBodyModule) String() string {
+	return tea.Prettify(s)
+}
+
+func (s HotelSuggestResponseBodyModule) GoString() string {
+	return s.String()
+}
+
+func (s *HotelSuggestResponseBodyModule) SetGuessSuggestInfos(v []*KeywordSuggestInfo) *HotelSuggestResponseBodyModule {
+	s.GuessSuggestInfos = v
+	return s
+}
+
+func (s *HotelSuggestResponseBodyModule) SetKeywordSuggestInfos(v []*KeywordSuggestInfo) *HotelSuggestResponseBodyModule {
+	s.KeywordSuggestInfos = v
+	return s
+}
+
+func (s *HotelSuggestResponseBodyModule) SetPopularSuggestInfos(v []*HotelSuggestResponseBodyModulePopularSuggestInfos) *HotelSuggestResponseBodyModule {
+	s.PopularSuggestInfos = v
+	return s
+}
+
+func (s *HotelSuggestResponseBodyModule) SetTips(v string) *HotelSuggestResponseBodyModule {
+	s.Tips = &v
+	return s
+}
+
+type HotelSuggestResponseBodyModulePopularSuggestInfos struct {
+	// example:
+	//
+	// https://gw.alicdn.com/imgextra/i1/O1CN01bwXBj71paiJolualE_!!6000000005377-2-tps-54-54.png
+	Icon         *string                                                          `json:"icon,omitempty" xml:"icon,omitempty"`
+	PopularInfos []*HotelSuggestResponseBodyModulePopularSuggestInfosPopularInfos `json:"popular_infos,omitempty" xml:"popular_infos,omitempty" type:"Repeated"`
+	Title        *string                                                          `json:"title,omitempty" xml:"title,omitempty"`
+}
+
+func (s HotelSuggestResponseBodyModulePopularSuggestInfos) String() string {
+	return tea.Prettify(s)
+}
+
+func (s HotelSuggestResponseBodyModulePopularSuggestInfos) GoString() string {
+	return s.String()
+}
+
+func (s *HotelSuggestResponseBodyModulePopularSuggestInfos) SetIcon(v string) *HotelSuggestResponseBodyModulePopularSuggestInfos {
+	s.Icon = &v
+	return s
+}
+
+func (s *HotelSuggestResponseBodyModulePopularSuggestInfos) SetPopularInfos(v []*HotelSuggestResponseBodyModulePopularSuggestInfosPopularInfos) *HotelSuggestResponseBodyModulePopularSuggestInfos {
+	s.PopularInfos = v
+	return s
+}
+
+func (s *HotelSuggestResponseBodyModulePopularSuggestInfos) SetTitle(v string) *HotelSuggestResponseBodyModulePopularSuggestInfos {
+	s.Title = &v
+	return s
+}
+
+type HotelSuggestResponseBodyModulePopularSuggestInfosPopularInfos struct {
+	DisplayName *string `json:"display_name,omitempty" xml:"display_name,omitempty"`
+}
+
+func (s HotelSuggestResponseBodyModulePopularSuggestInfosPopularInfos) String() string {
+	return tea.Prettify(s)
+}
+
+func (s HotelSuggestResponseBodyModulePopularSuggestInfosPopularInfos) GoString() string {
+	return s.String()
+}
+
+func (s *HotelSuggestResponseBodyModulePopularSuggestInfosPopularInfos) SetDisplayName(v string) *HotelSuggestResponseBodyModulePopularSuggestInfosPopularInfos {
+	s.DisplayName = &v
+	return s
+}
+
+type HotelSuggestResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *HotelSuggestResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s HotelSuggestResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s HotelSuggestResponse) GoString() string {
+	return s.String()
+}
+
+func (s *HotelSuggestResponse) SetHeaders(v map[string]*string) *HotelSuggestResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *HotelSuggestResponse) SetStatusCode(v int32) *HotelSuggestResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *HotelSuggestResponse) SetBody(v *HotelSuggestResponseBody) *HotelSuggestResponse {
 	s.Body = v
 	return s
 }
@@ -94218,7 +96451,8 @@ type TrainOrderListQueryResponseBodyModule struct {
 	// example:
 	//
 	// 0
-	Status *int32 `json:"status,omitempty" xml:"status,omitempty"`
+	Status              *int32  `json:"status,omitempty" xml:"status,omitempty"`
+	ThirdPartBusinessId *string `json:"thirdPart_business_id,omitempty" xml:"thirdPart_business_id,omitempty"`
 	// example:
 	//
 	// CS-SKPFDS
@@ -94394,6 +96628,11 @@ func (s *TrainOrderListQueryResponseBodyModule) SetSeatType(v string) *TrainOrde
 
 func (s *TrainOrderListQueryResponseBodyModule) SetStatus(v int32) *TrainOrderListQueryResponseBodyModule {
 	s.Status = &v
+	return s
+}
+
+func (s *TrainOrderListQueryResponseBodyModule) SetThirdPartBusinessId(v string) *TrainOrderListQueryResponseBodyModule {
+	s.ThirdPartBusinessId = &v
 	return s
 }
 
@@ -96391,7 +98630,8 @@ type TrainOrderQueryV2ResponseBodyModuleOrderBaseInfo struct {
 	// example:
 	//
 	// 4
-	OrderStatus *int32 `json:"order_status,omitempty" xml:"order_status,omitempty"`
+	OrderStatus         *int32  `json:"order_status,omitempty" xml:"order_status,omitempty"`
+	ThirdPartBusinessId *string `json:"thirdPart_business_id,omitempty" xml:"thirdPart_business_id,omitempty"`
 	// example:
 	//
 	// 01-2023-01214
@@ -96495,6 +98735,11 @@ func (s *TrainOrderQueryV2ResponseBodyModuleOrderBaseInfo) SetOrderId(v int64) *
 
 func (s *TrainOrderQueryV2ResponseBodyModuleOrderBaseInfo) SetOrderStatus(v int32) *TrainOrderQueryV2ResponseBodyModuleOrderBaseInfo {
 	s.OrderStatus = &v
+	return s
+}
+
+func (s *TrainOrderQueryV2ResponseBodyModuleOrderBaseInfo) SetThirdPartBusinessId(v string) *TrainOrderQueryV2ResponseBodyModuleOrderBaseInfo {
+	s.ThirdPartBusinessId = &v
 	return s
 }
 
@@ -99563,6 +101808,918 @@ func (s *UpdateCustomRoleResponse) SetBody(v *UpdateCustomRoleResponseBody) *Upd
 	return s
 }
 
+type UpdateDepartmentHeaders struct {
+	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	// example:
+	//
+	// feth00jqwis
+	XAcsBtripCorpToken *string `json:"x-acs-btrip-corp-token,omitempty" xml:"x-acs-btrip-corp-token,omitempty"`
+}
+
+func (s UpdateDepartmentHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateDepartmentHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateDepartmentHeaders) SetCommonHeaders(v map[string]*string) *UpdateDepartmentHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *UpdateDepartmentHeaders) SetXAcsBtripCorpToken(v string) *UpdateDepartmentHeaders {
+	s.XAcsBtripCorpToken = &v
+	return s
+}
+
+type UpdateDepartmentRequest struct {
+	// This parameter is required.
+	DeptName              *string   `json:"dept_name,omitempty" xml:"dept_name,omitempty"`
+	ManagerEmployeeIdList []*string `json:"manager_employee_id_list,omitempty" xml:"manager_employee_id_list,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// dept123
+	OutDeptId *string `json:"out_dept_id,omitempty" xml:"out_dept_id,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// dept456
+	OutDeptPid *string `json:"out_dept_pid,omitempty" xml:"out_dept_pid,omitempty"`
+}
+
+func (s UpdateDepartmentRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateDepartmentRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateDepartmentRequest) SetDeptName(v string) *UpdateDepartmentRequest {
+	s.DeptName = &v
+	return s
+}
+
+func (s *UpdateDepartmentRequest) SetManagerEmployeeIdList(v []*string) *UpdateDepartmentRequest {
+	s.ManagerEmployeeIdList = v
+	return s
+}
+
+func (s *UpdateDepartmentRequest) SetOutDeptId(v string) *UpdateDepartmentRequest {
+	s.OutDeptId = &v
+	return s
+}
+
+func (s *UpdateDepartmentRequest) SetOutDeptPid(v string) *UpdateDepartmentRequest {
+	s.OutDeptPid = &v
+	return s
+}
+
+type UpdateDepartmentShrinkRequest struct {
+	// This parameter is required.
+	DeptName                    *string `json:"dept_name,omitempty" xml:"dept_name,omitempty"`
+	ManagerEmployeeIdListShrink *string `json:"manager_employee_id_list,omitempty" xml:"manager_employee_id_list,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// dept123
+	OutDeptId *string `json:"out_dept_id,omitempty" xml:"out_dept_id,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// dept456
+	OutDeptPid *string `json:"out_dept_pid,omitempty" xml:"out_dept_pid,omitempty"`
+}
+
+func (s UpdateDepartmentShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateDepartmentShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateDepartmentShrinkRequest) SetDeptName(v string) *UpdateDepartmentShrinkRequest {
+	s.DeptName = &v
+	return s
+}
+
+func (s *UpdateDepartmentShrinkRequest) SetManagerEmployeeIdListShrink(v string) *UpdateDepartmentShrinkRequest {
+	s.ManagerEmployeeIdListShrink = &v
+	return s
+}
+
+func (s *UpdateDepartmentShrinkRequest) SetOutDeptId(v string) *UpdateDepartmentShrinkRequest {
+	s.OutDeptId = &v
+	return s
+}
+
+func (s *UpdateDepartmentShrinkRequest) SetOutDeptPid(v string) *UpdateDepartmentShrinkRequest {
+	s.OutDeptPid = &v
+	return s
+}
+
+type UpdateDepartmentResponseBody struct {
+	// example:
+	//
+	// SUCCESS
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32  `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	Message        *string `json:"message,omitempty" xml:"message,omitempty"`
+	// example:
+	//
+	// 407543AF-2BD9-5890-BD92-9D1AB7218B27
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// traceId
+	//
+	// example:
+	//
+	// 21041ce316577904808056433edbb2
+	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
+}
+
+func (s UpdateDepartmentResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateDepartmentResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateDepartmentResponseBody) SetCode(v string) *UpdateDepartmentResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *UpdateDepartmentResponseBody) SetHttpStatusCode(v int32) *UpdateDepartmentResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *UpdateDepartmentResponseBody) SetMessage(v string) *UpdateDepartmentResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *UpdateDepartmentResponseBody) SetRequestId(v string) *UpdateDepartmentResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateDepartmentResponseBody) SetSuccess(v bool) *UpdateDepartmentResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *UpdateDepartmentResponseBody) SetTraceId(v string) *UpdateDepartmentResponseBody {
+	s.TraceId = &v
+	return s
+}
+
+type UpdateDepartmentResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateDepartmentResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateDepartmentResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateDepartmentResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateDepartmentResponse) SetHeaders(v map[string]*string) *UpdateDepartmentResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateDepartmentResponse) SetStatusCode(v int32) *UpdateDepartmentResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateDepartmentResponse) SetBody(v *UpdateDepartmentResponseBody) *UpdateDepartmentResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateEmployeeHeaders struct {
+	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	// example:
+	//
+	// feth00jqwls
+	XAcsBtripCorpToken *string `json:"x-acs-btrip-corp-token,omitempty" xml:"x-acs-btrip-corp-token,omitempty"`
+}
+
+func (s UpdateEmployeeHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateEmployeeHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateEmployeeHeaders) SetCommonHeaders(v map[string]*string) *UpdateEmployeeHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *UpdateEmployeeHeaders) SetXAcsBtripCorpToken(v string) *UpdateEmployeeHeaders {
+	s.XAcsBtripCorpToken = &v
+	return s
+}
+
+type UpdateEmployeeRequest struct {
+	// example:
+	//
+	// https://static-legacy.dingtalk.com/media/lADPF8XMoxJeUkbNA2LNA5s_923_866.jpg
+	Avatar           *string   `json:"avatar,omitempty" xml:"avatar,omitempty"`
+	BaseCityCodeList []*string `json:"base_city_code_list,omitempty" xml:"base_city_code_list,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 2000-01-02
+	Birthday           *string                          `json:"birthday,omitempty" xml:"birthday,omitempty"`
+	CertList           []*UpdateEmployeeRequestCertList `json:"cert_list,omitempty" xml:"cert_list,omitempty" type:"Repeated"`
+	CustomRoleCodeList []*string                        `json:"custom_role_code_list,omitempty" xml:"custom_role_code_list,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 123@163.com
+	Email *string `json:"email,omitempty" xml:"email,omitempty"`
+	// example:
+	//
+	// F
+	Gender *string `json:"gender,omitempty" xml:"gender,omitempty"`
+	// example:
+	//
+	// false
+	IsAdmin *bool `json:"is_admin,omitempty" xml:"is_admin,omitempty"`
+	// example:
+	//
+	// false
+	IsBoss *bool `json:"is_boss,omitempty" xml:"is_boss,omitempty"`
+	// example:
+	//
+	// false
+	IsDeptLeader *bool `json:"is_dept_leader,omitempty" xml:"is_dept_leader,omitempty"`
+	// example:
+	//
+	// 1001
+	JobNo *string `json:"job_no,omitempty" xml:"job_no,omitempty"`
+	// example:
+	//
+	// user456
+	ManagerUserId *string   `json:"manager_user_id,omitempty" xml:"manager_user_id,omitempty"`
+	OutDeptIdList []*string `json:"out_dept_id_list,omitempty" xml:"out_dept_id_list,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 13111111111
+	Phone *string `json:"phone,omitempty" xml:"phone,omitempty"`
+	// example:
+	//
+	// M4
+	PositionLevel *string `json:"position_level,omitempty" xml:"position_level,omitempty"`
+	RealName      *string `json:"real_name,omitempty" xml:"real_name,omitempty"`
+	// example:
+	//
+	// John/Wilson
+	RealNameEn *string `json:"real_name_en,omitempty" xml:"real_name_en,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// user123
+	UserId   *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
+	UserNick *string `json:"user_nick,omitempty" xml:"user_nick,omitempty"`
+}
+
+func (s UpdateEmployeeRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateEmployeeRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateEmployeeRequest) SetAvatar(v string) *UpdateEmployeeRequest {
+	s.Avatar = &v
+	return s
+}
+
+func (s *UpdateEmployeeRequest) SetBaseCityCodeList(v []*string) *UpdateEmployeeRequest {
+	s.BaseCityCodeList = v
+	return s
+}
+
+func (s *UpdateEmployeeRequest) SetBirthday(v string) *UpdateEmployeeRequest {
+	s.Birthday = &v
+	return s
+}
+
+func (s *UpdateEmployeeRequest) SetCertList(v []*UpdateEmployeeRequestCertList) *UpdateEmployeeRequest {
+	s.CertList = v
+	return s
+}
+
+func (s *UpdateEmployeeRequest) SetCustomRoleCodeList(v []*string) *UpdateEmployeeRequest {
+	s.CustomRoleCodeList = v
+	return s
+}
+
+func (s *UpdateEmployeeRequest) SetEmail(v string) *UpdateEmployeeRequest {
+	s.Email = &v
+	return s
+}
+
+func (s *UpdateEmployeeRequest) SetGender(v string) *UpdateEmployeeRequest {
+	s.Gender = &v
+	return s
+}
+
+func (s *UpdateEmployeeRequest) SetIsAdmin(v bool) *UpdateEmployeeRequest {
+	s.IsAdmin = &v
+	return s
+}
+
+func (s *UpdateEmployeeRequest) SetIsBoss(v bool) *UpdateEmployeeRequest {
+	s.IsBoss = &v
+	return s
+}
+
+func (s *UpdateEmployeeRequest) SetIsDeptLeader(v bool) *UpdateEmployeeRequest {
+	s.IsDeptLeader = &v
+	return s
+}
+
+func (s *UpdateEmployeeRequest) SetJobNo(v string) *UpdateEmployeeRequest {
+	s.JobNo = &v
+	return s
+}
+
+func (s *UpdateEmployeeRequest) SetManagerUserId(v string) *UpdateEmployeeRequest {
+	s.ManagerUserId = &v
+	return s
+}
+
+func (s *UpdateEmployeeRequest) SetOutDeptIdList(v []*string) *UpdateEmployeeRequest {
+	s.OutDeptIdList = v
+	return s
+}
+
+func (s *UpdateEmployeeRequest) SetPhone(v string) *UpdateEmployeeRequest {
+	s.Phone = &v
+	return s
+}
+
+func (s *UpdateEmployeeRequest) SetPositionLevel(v string) *UpdateEmployeeRequest {
+	s.PositionLevel = &v
+	return s
+}
+
+func (s *UpdateEmployeeRequest) SetRealName(v string) *UpdateEmployeeRequest {
+	s.RealName = &v
+	return s
+}
+
+func (s *UpdateEmployeeRequest) SetRealNameEn(v string) *UpdateEmployeeRequest {
+	s.RealNameEn = &v
+	return s
+}
+
+func (s *UpdateEmployeeRequest) SetUserId(v string) *UpdateEmployeeRequest {
+	s.UserId = &v
+	return s
+}
+
+func (s *UpdateEmployeeRequest) SetUserNick(v string) *UpdateEmployeeRequest {
+	s.UserNick = &v
+	return s
+}
+
+type UpdateEmployeeRequestCertList struct {
+	// example:
+	//
+	// 2000-01-02
+	Birthday *string `json:"birthday,omitempty" xml:"birthday,omitempty"`
+	// example:
+	//
+	// 2099-03-12
+	CertExpiredTime *string `json:"cert_expired_time,omitempty" xml:"cert_expired_time,omitempty"`
+	// example:
+	//
+	// CN
+	CertNation *string `json:"cert_nation,omitempty" xml:"cert_nation,omitempty"`
+	// example:
+	//
+	// 123
+	CertNo *string `json:"cert_no,omitempty" xml:"cert_no,omitempty"`
+	// example:
+	//
+	// 0
+	CertType *int32 `json:"cert_type,omitempty" xml:"cert_type,omitempty"`
+	// example:
+	//
+	// F
+	Gender *string `json:"gender,omitempty" xml:"gender,omitempty"`
+	// example:
+	//
+	// CN
+	Nationality *string `json:"nationality,omitempty" xml:"nationality,omitempty"`
+	// example:
+	//
+	// 13111111111
+	Phone    *string `json:"phone,omitempty" xml:"phone,omitempty"`
+	RealName *string `json:"real_name,omitempty" xml:"real_name,omitempty"`
+	// example:
+	//
+	// John/Wilson
+	RealNameEn *string `json:"real_name_en,omitempty" xml:"real_name_en,omitempty"`
+}
+
+func (s UpdateEmployeeRequestCertList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateEmployeeRequestCertList) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateEmployeeRequestCertList) SetBirthday(v string) *UpdateEmployeeRequestCertList {
+	s.Birthday = &v
+	return s
+}
+
+func (s *UpdateEmployeeRequestCertList) SetCertExpiredTime(v string) *UpdateEmployeeRequestCertList {
+	s.CertExpiredTime = &v
+	return s
+}
+
+func (s *UpdateEmployeeRequestCertList) SetCertNation(v string) *UpdateEmployeeRequestCertList {
+	s.CertNation = &v
+	return s
+}
+
+func (s *UpdateEmployeeRequestCertList) SetCertNo(v string) *UpdateEmployeeRequestCertList {
+	s.CertNo = &v
+	return s
+}
+
+func (s *UpdateEmployeeRequestCertList) SetCertType(v int32) *UpdateEmployeeRequestCertList {
+	s.CertType = &v
+	return s
+}
+
+func (s *UpdateEmployeeRequestCertList) SetGender(v string) *UpdateEmployeeRequestCertList {
+	s.Gender = &v
+	return s
+}
+
+func (s *UpdateEmployeeRequestCertList) SetNationality(v string) *UpdateEmployeeRequestCertList {
+	s.Nationality = &v
+	return s
+}
+
+func (s *UpdateEmployeeRequestCertList) SetPhone(v string) *UpdateEmployeeRequestCertList {
+	s.Phone = &v
+	return s
+}
+
+func (s *UpdateEmployeeRequestCertList) SetRealName(v string) *UpdateEmployeeRequestCertList {
+	s.RealName = &v
+	return s
+}
+
+func (s *UpdateEmployeeRequestCertList) SetRealNameEn(v string) *UpdateEmployeeRequestCertList {
+	s.RealNameEn = &v
+	return s
+}
+
+type UpdateEmployeeShrinkRequest struct {
+	// example:
+	//
+	// https://static-legacy.dingtalk.com/media/lADPF8XMoxJeUkbNA2LNA5s_923_866.jpg
+	Avatar                 *string `json:"avatar,omitempty" xml:"avatar,omitempty"`
+	BaseCityCodeListShrink *string `json:"base_city_code_list,omitempty" xml:"base_city_code_list,omitempty"`
+	// example:
+	//
+	// 2000-01-02
+	Birthday                 *string `json:"birthday,omitempty" xml:"birthday,omitempty"`
+	CertListShrink           *string `json:"cert_list,omitempty" xml:"cert_list,omitempty"`
+	CustomRoleCodeListShrink *string `json:"custom_role_code_list,omitempty" xml:"custom_role_code_list,omitempty"`
+	// example:
+	//
+	// 123@163.com
+	Email *string `json:"email,omitempty" xml:"email,omitempty"`
+	// example:
+	//
+	// F
+	Gender *string `json:"gender,omitempty" xml:"gender,omitempty"`
+	// example:
+	//
+	// false
+	IsAdmin *bool `json:"is_admin,omitempty" xml:"is_admin,omitempty"`
+	// example:
+	//
+	// false
+	IsBoss *bool `json:"is_boss,omitempty" xml:"is_boss,omitempty"`
+	// example:
+	//
+	// false
+	IsDeptLeader *bool `json:"is_dept_leader,omitempty" xml:"is_dept_leader,omitempty"`
+	// example:
+	//
+	// 1001
+	JobNo *string `json:"job_no,omitempty" xml:"job_no,omitempty"`
+	// example:
+	//
+	// user456
+	ManagerUserId       *string `json:"manager_user_id,omitempty" xml:"manager_user_id,omitempty"`
+	OutDeptIdListShrink *string `json:"out_dept_id_list,omitempty" xml:"out_dept_id_list,omitempty"`
+	// example:
+	//
+	// 13111111111
+	Phone *string `json:"phone,omitempty" xml:"phone,omitempty"`
+	// example:
+	//
+	// M4
+	PositionLevel *string `json:"position_level,omitempty" xml:"position_level,omitempty"`
+	RealName      *string `json:"real_name,omitempty" xml:"real_name,omitempty"`
+	// example:
+	//
+	// John/Wilson
+	RealNameEn *string `json:"real_name_en,omitempty" xml:"real_name_en,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// user123
+	UserId   *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
+	UserNick *string `json:"user_nick,omitempty" xml:"user_nick,omitempty"`
+}
+
+func (s UpdateEmployeeShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateEmployeeShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateEmployeeShrinkRequest) SetAvatar(v string) *UpdateEmployeeShrinkRequest {
+	s.Avatar = &v
+	return s
+}
+
+func (s *UpdateEmployeeShrinkRequest) SetBaseCityCodeListShrink(v string) *UpdateEmployeeShrinkRequest {
+	s.BaseCityCodeListShrink = &v
+	return s
+}
+
+func (s *UpdateEmployeeShrinkRequest) SetBirthday(v string) *UpdateEmployeeShrinkRequest {
+	s.Birthday = &v
+	return s
+}
+
+func (s *UpdateEmployeeShrinkRequest) SetCertListShrink(v string) *UpdateEmployeeShrinkRequest {
+	s.CertListShrink = &v
+	return s
+}
+
+func (s *UpdateEmployeeShrinkRequest) SetCustomRoleCodeListShrink(v string) *UpdateEmployeeShrinkRequest {
+	s.CustomRoleCodeListShrink = &v
+	return s
+}
+
+func (s *UpdateEmployeeShrinkRequest) SetEmail(v string) *UpdateEmployeeShrinkRequest {
+	s.Email = &v
+	return s
+}
+
+func (s *UpdateEmployeeShrinkRequest) SetGender(v string) *UpdateEmployeeShrinkRequest {
+	s.Gender = &v
+	return s
+}
+
+func (s *UpdateEmployeeShrinkRequest) SetIsAdmin(v bool) *UpdateEmployeeShrinkRequest {
+	s.IsAdmin = &v
+	return s
+}
+
+func (s *UpdateEmployeeShrinkRequest) SetIsBoss(v bool) *UpdateEmployeeShrinkRequest {
+	s.IsBoss = &v
+	return s
+}
+
+func (s *UpdateEmployeeShrinkRequest) SetIsDeptLeader(v bool) *UpdateEmployeeShrinkRequest {
+	s.IsDeptLeader = &v
+	return s
+}
+
+func (s *UpdateEmployeeShrinkRequest) SetJobNo(v string) *UpdateEmployeeShrinkRequest {
+	s.JobNo = &v
+	return s
+}
+
+func (s *UpdateEmployeeShrinkRequest) SetManagerUserId(v string) *UpdateEmployeeShrinkRequest {
+	s.ManagerUserId = &v
+	return s
+}
+
+func (s *UpdateEmployeeShrinkRequest) SetOutDeptIdListShrink(v string) *UpdateEmployeeShrinkRequest {
+	s.OutDeptIdListShrink = &v
+	return s
+}
+
+func (s *UpdateEmployeeShrinkRequest) SetPhone(v string) *UpdateEmployeeShrinkRequest {
+	s.Phone = &v
+	return s
+}
+
+func (s *UpdateEmployeeShrinkRequest) SetPositionLevel(v string) *UpdateEmployeeShrinkRequest {
+	s.PositionLevel = &v
+	return s
+}
+
+func (s *UpdateEmployeeShrinkRequest) SetRealName(v string) *UpdateEmployeeShrinkRequest {
+	s.RealName = &v
+	return s
+}
+
+func (s *UpdateEmployeeShrinkRequest) SetRealNameEn(v string) *UpdateEmployeeShrinkRequest {
+	s.RealNameEn = &v
+	return s
+}
+
+func (s *UpdateEmployeeShrinkRequest) SetUserId(v string) *UpdateEmployeeShrinkRequest {
+	s.UserId = &v
+	return s
+}
+
+func (s *UpdateEmployeeShrinkRequest) SetUserNick(v string) *UpdateEmployeeShrinkRequest {
+	s.UserNick = &v
+	return s
+}
+
+type UpdateEmployeeResponseBody struct {
+	// example:
+	//
+	// SUCCESS
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32  `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	Message        *string `json:"message,omitempty" xml:"message,omitempty"`
+	// example:
+	//
+	// A5009956-1077-52FB-B520-EA8C7E91D722
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// traceId
+	//
+	// example:
+	//
+	// 21041ce316577904808056433edbb2
+	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
+}
+
+func (s UpdateEmployeeResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateEmployeeResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateEmployeeResponseBody) SetCode(v string) *UpdateEmployeeResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *UpdateEmployeeResponseBody) SetHttpStatusCode(v int32) *UpdateEmployeeResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *UpdateEmployeeResponseBody) SetMessage(v string) *UpdateEmployeeResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *UpdateEmployeeResponseBody) SetRequestId(v string) *UpdateEmployeeResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateEmployeeResponseBody) SetSuccess(v bool) *UpdateEmployeeResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *UpdateEmployeeResponseBody) SetTraceId(v string) *UpdateEmployeeResponseBody {
+	s.TraceId = &v
+	return s
+}
+
+type UpdateEmployeeResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateEmployeeResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateEmployeeResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateEmployeeResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateEmployeeResponse) SetHeaders(v map[string]*string) *UpdateEmployeeResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateEmployeeResponse) SetStatusCode(v int32) *UpdateEmployeeResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateEmployeeResponse) SetBody(v *UpdateEmployeeResponseBody) *UpdateEmployeeResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateEmployeeLeaveStatusHeaders struct {
+	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	// example:
+	//
+	// feth00jqwls
+	XAcsBtripCorpToken *string `json:"x-acs-btrip-corp-token,omitempty" xml:"x-acs-btrip-corp-token,omitempty"`
+}
+
+func (s UpdateEmployeeLeaveStatusHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateEmployeeLeaveStatusHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateEmployeeLeaveStatusHeaders) SetCommonHeaders(v map[string]*string) *UpdateEmployeeLeaveStatusHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *UpdateEmployeeLeaveStatusHeaders) SetXAcsBtripCorpToken(v string) *UpdateEmployeeLeaveStatusHeaders {
+	s.XAcsBtripCorpToken = &v
+	return s
+}
+
+type UpdateEmployeeLeaveStatusRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// true
+	IsLeave *bool `json:"is_leave,omitempty" xml:"is_leave,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// user123
+	UserId *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
+}
+
+func (s UpdateEmployeeLeaveStatusRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateEmployeeLeaveStatusRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateEmployeeLeaveStatusRequest) SetIsLeave(v bool) *UpdateEmployeeLeaveStatusRequest {
+	s.IsLeave = &v
+	return s
+}
+
+func (s *UpdateEmployeeLeaveStatusRequest) SetUserId(v string) *UpdateEmployeeLeaveStatusRequest {
+	s.UserId = &v
+	return s
+}
+
+type UpdateEmployeeLeaveStatusResponseBody struct {
+	// example:
+	//
+	// SUCCESS
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32  `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	Message        *string `json:"message,omitempty" xml:"message,omitempty"`
+	// example:
+	//
+	// C61ECFF6-606B-5F66-B81D-D77369043A5F
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// traceId
+	//
+	// example:
+	//
+	// 21041ce316577904808056433edbb2
+	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
+}
+
+func (s UpdateEmployeeLeaveStatusResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateEmployeeLeaveStatusResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateEmployeeLeaveStatusResponseBody) SetCode(v string) *UpdateEmployeeLeaveStatusResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *UpdateEmployeeLeaveStatusResponseBody) SetHttpStatusCode(v int32) *UpdateEmployeeLeaveStatusResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *UpdateEmployeeLeaveStatusResponseBody) SetMessage(v string) *UpdateEmployeeLeaveStatusResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *UpdateEmployeeLeaveStatusResponseBody) SetRequestId(v string) *UpdateEmployeeLeaveStatusResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateEmployeeLeaveStatusResponseBody) SetSuccess(v bool) *UpdateEmployeeLeaveStatusResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *UpdateEmployeeLeaveStatusResponseBody) SetTraceId(v string) *UpdateEmployeeLeaveStatusResponseBody {
+	s.TraceId = &v
+	return s
+}
+
+type UpdateEmployeeLeaveStatusResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateEmployeeLeaveStatusResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateEmployeeLeaveStatusResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateEmployeeLeaveStatusResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateEmployeeLeaveStatusResponse) SetHeaders(v map[string]*string) *UpdateEmployeeLeaveStatusResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateEmployeeLeaveStatusResponse) SetStatusCode(v int32) *UpdateEmployeeLeaveStatusResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateEmployeeLeaveStatusResponse) SetBody(v *UpdateEmployeeLeaveStatusResponseBody) *UpdateEmployeeLeaveStatusResponse {
+	s.Body = v
+	return s
+}
+
 type UserQueryHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
 	// example:
@@ -100066,6 +103223,7 @@ type VatInvoiceScanQueryResponseBodyModuleItems struct {
 	//
 	// 661619906841
 	MachineCode *string `json:"machine_code,omitempty" xml:"machine_code,omitempty"`
+	OfdOssUrl   *string `json:"ofd_oss_url,omitempty" xml:"ofd_oss_url,omitempty"`
 	// example:
 	//
 	// https://www.testurl.com
@@ -100193,6 +103351,11 @@ func (s *VatInvoiceScanQueryResponseBodyModuleItems) SetInvoiceTypeDesc(v string
 
 func (s *VatInvoiceScanQueryResponseBodyModuleItems) SetMachineCode(v string) *VatInvoiceScanQueryResponseBodyModuleItems {
 	s.MachineCode = &v
+	return s
+}
+
+func (s *VatInvoiceScanQueryResponseBodyModuleItems) SetOfdOssUrl(v string) *VatInvoiceScanQueryResponseBodyModuleItems {
+	s.OfdOssUrl = &v
 	return s
 }
 
@@ -100822,6 +103985,264 @@ func (client *Client) AccessToken(request *AccessTokenRequest) (_result *AccessT
 	headers := make(map[string]*string)
 	_result = &AccessTokenResponse{}
 	_body, _err := client.AccessTokenWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建企业部门
+//
+// @param tmpReq - AddDepartmentRequest
+//
+// @param headers - AddDepartmentHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AddDepartmentResponse
+func (client *Client) AddDepartmentWithOptions(tmpReq *AddDepartmentRequest, headers *AddDepartmentHeaders, runtime *util.RuntimeOptions) (_result *AddDepartmentResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &AddDepartmentShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.ManagerEmployeeIdList)) {
+		request.ManagerEmployeeIdListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ManagerEmployeeIdList, tea.String("manager_employee_id_list"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DeptName)) {
+		body["dept_name"] = request.DeptName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ManagerEmployeeIdListShrink)) {
+		body["manager_employee_id_list"] = request.ManagerEmployeeIdListShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OutDeptId)) {
+		body["out_dept_id"] = request.OutDeptId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OutDeptPid)) {
+		body["out_dept_pid"] = request.OutDeptPid
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsBtripCorpToken)) {
+		realHeaders["x-acs-btrip-corp-token"] = util.ToJSONString(headers.XAcsBtripCorpToken)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AddDepartment"),
+		Version:     tea.String("2022-05-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/department/v2/add"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &AddDepartmentResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建企业部门
+//
+// @param request - AddDepartmentRequest
+//
+// @return AddDepartmentResponse
+func (client *Client) AddDepartment(request *AddDepartmentRequest) (_result *AddDepartmentResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &AddDepartmentHeaders{}
+	_result = &AddDepartmentResponse{}
+	_body, _err := client.AddDepartmentWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 添加员工
+//
+// @param tmpReq - AddEmployeeRequest
+//
+// @param headers - AddEmployeeHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AddEmployeeResponse
+func (client *Client) AddEmployeeWithOptions(tmpReq *AddEmployeeRequest, headers *AddEmployeeHeaders, runtime *util.RuntimeOptions) (_result *AddEmployeeResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &AddEmployeeShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.BaseCityCodeList)) {
+		request.BaseCityCodeListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.BaseCityCodeList, tea.String("base_city_code_list"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.CertList)) {
+		request.CertListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CertList, tea.String("cert_list"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.CustomRoleCodeList)) {
+		request.CustomRoleCodeListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CustomRoleCodeList, tea.String("custom_role_code_list"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.OutDeptIdList)) {
+		request.OutDeptIdListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.OutDeptIdList, tea.String("out_dept_id_list"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Avatar)) {
+		body["avatar"] = request.Avatar
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BaseCityCodeListShrink)) {
+		body["base_city_code_list"] = request.BaseCityCodeListShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Birthday)) {
+		body["birthday"] = request.Birthday
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CertListShrink)) {
+		body["cert_list"] = request.CertListShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CustomRoleCodeListShrink)) {
+		body["custom_role_code_list"] = request.CustomRoleCodeListShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Email)) {
+		body["email"] = request.Email
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Gender)) {
+		body["gender"] = request.Gender
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IsAdmin)) {
+		body["is_admin"] = request.IsAdmin
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IsBoss)) {
+		body["is_boss"] = request.IsBoss
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IsDeptLeader)) {
+		body["is_dept_leader"] = request.IsDeptLeader
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.JobNo)) {
+		body["job_no"] = request.JobNo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ManagerUserId)) {
+		body["manager_user_id"] = request.ManagerUserId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OutDeptIdListShrink)) {
+		body["out_dept_id_list"] = request.OutDeptIdListShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Phone)) {
+		body["phone"] = request.Phone
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PositionLevel)) {
+		body["position_level"] = request.PositionLevel
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RealName)) {
+		body["real_name"] = request.RealName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RealNameEn)) {
+		body["real_name_en"] = request.RealNameEn
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UnionId)) {
+		body["union_id"] = request.UnionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		body["user_id"] = request.UserId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserNick)) {
+		body["user_nick"] = request.UserNick
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsBtripCorpToken)) {
+		realHeaders["x-acs-btrip-corp-token"] = util.ToJSONString(headers.XAcsBtripCorpToken)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AddEmployee"),
+		Version:     tea.String("2022-05-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/employee/v2/add"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &AddEmployeeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 添加员工
+//
+// @param request - AddEmployeeRequest
+//
+// @return AddEmployeeResponse
+func (client *Client) AddEmployee(request *AddEmployeeRequest) (_result *AddEmployeeResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &AddEmployeeHeaders{}
+	_result = &AddEmployeeResponse{}
+	_body, _err := client.AddEmployeeWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -104286,6 +107707,79 @@ func (client *Client) DeleteCustomRole(request *DeleteCustomRoleRequest) (_resul
 
 // Summary:
 //
+// 删除企业部门
+//
+// @param request - DeleteDepartmentRequest
+//
+// @param headers - DeleteDepartmentHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteDepartmentResponse
+func (client *Client) DeleteDepartmentWithOptions(request *DeleteDepartmentRequest, headers *DeleteDepartmentHeaders, runtime *util.RuntimeOptions) (_result *DeleteDepartmentResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.OutDeptId)) {
+		body["out_dept_id"] = request.OutDeptId
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsBtripCorpToken)) {
+		realHeaders["x-acs-btrip-corp-token"] = util.ToJSONString(headers.XAcsBtripCorpToken)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteDepartment"),
+		Version:     tea.String("2022-05-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/department/v2/delete"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteDepartmentResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除企业部门
+//
+// @param request - DeleteDepartmentRequest
+//
+// @return DeleteDepartmentResponse
+func (client *Client) DeleteDepartment(request *DeleteDepartmentRequest) (_result *DeleteDepartmentResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &DeleteDepartmentHeaders{}
+	_result = &DeleteDepartmentResponse{}
+	_body, _err := client.DeleteDepartmentWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 批量删除企业自定义角色下人员
 //
 // @param tmpReq - DeleteEmployeesFromCustomRoleRequest
@@ -104975,6 +108469,271 @@ func (client *Client) ExceedApplySync(request *ExceedApplySyncRequest) (_result 
 	headers := &ExceedApplySyncHeaders{}
 	_result = &ExceedApplySyncResponse{}
 	_body, _err := client.ExceedApplySyncWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 添加外部出行人与证件信息
+//
+// @param tmpReq - ExternalUserAddRequest
+//
+// @param headers - ExternalUserAddHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ExternalUserAddResponse
+func (client *Client) ExternalUserAddWithOptions(tmpReq *ExternalUserAddRequest, headers *ExternalUserAddHeaders, runtime *util.RuntimeOptions) (_result *ExternalUserAddResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &ExternalUserAddShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.CertRequestList)) {
+		request.CertRequestListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CertRequestList, tea.String("cert_request_list"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Birthday)) {
+		body["birthday"] = request.Birthday
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CertRequestListShrink)) {
+		body["cert_request_list"] = request.CertRequestListShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Email)) {
+		body["email"] = request.Email
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExternalUserId)) {
+		body["external_user_id"] = request.ExternalUserId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Phone)) {
+		body["phone"] = request.Phone
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RealName)) {
+		body["real_name"] = request.RealName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RealNameEn)) {
+		body["real_name_en"] = request.RealNameEn
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserType)) {
+		body["user_type"] = request.UserType
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsBtripCorpToken)) {
+		realHeaders["x-acs-btrip-corp-token"] = util.ToJSONString(headers.XAcsBtripCorpToken)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ExternalUserAdd"),
+		Version:     tea.String("2022-05-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/user/v1/externalUsers"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ExternalUserAddResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 添加外部出行人与证件信息
+//
+// @param request - ExternalUserAddRequest
+//
+// @return ExternalUserAddResponse
+func (client *Client) ExternalUserAdd(request *ExternalUserAddRequest) (_result *ExternalUserAddResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &ExternalUserAddHeaders{}
+	_result = &ExternalUserAddResponse{}
+	_body, _err := client.ExternalUserAddWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除外部出行人
+//
+// @param headers - ExternalUserDeleteHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ExternalUserDeleteResponse
+func (client *Client) ExternalUserDeleteWithOptions(externalUserId *string, headers *ExternalUserDeleteHeaders, runtime *util.RuntimeOptions) (_result *ExternalUserDeleteResponse, _err error) {
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsBtripCorpToken)) {
+		realHeaders["x-acs-btrip-corp-token"] = util.ToJSONString(headers.XAcsBtripCorpToken)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ExternalUserDelete"),
+		Version:     tea.String("2022-05-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/user/v1/externalUsers/" + tea.StringValue(openapiutil.GetEncodeParam(externalUserId))),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ExternalUserDeleteResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除外部出行人
+//
+// @return ExternalUserDeleteResponse
+func (client *Client) ExternalUserDelete(externalUserId *string) (_result *ExternalUserDeleteResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &ExternalUserDeleteHeaders{}
+	_result = &ExternalUserDeleteResponse{}
+	_body, _err := client.ExternalUserDeleteWithOptions(externalUserId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改外部出行人与证件信息
+//
+// @param tmpReq - ExternalUserUpdateRequest
+//
+// @param headers - ExternalUserUpdateHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ExternalUserUpdateResponse
+func (client *Client) ExternalUserUpdateWithOptions(externalUserId *string, tmpReq *ExternalUserUpdateRequest, headers *ExternalUserUpdateHeaders, runtime *util.RuntimeOptions) (_result *ExternalUserUpdateResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &ExternalUserUpdateShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.CertRequestList)) {
+		request.CertRequestListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CertRequestList, tea.String("cert_request_list"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Birthday)) {
+		body["birthday"] = request.Birthday
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CertRequestListShrink)) {
+		body["cert_request_list"] = request.CertRequestListShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Email)) {
+		body["email"] = request.Email
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Phone)) {
+		body["phone"] = request.Phone
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RealName)) {
+		body["real_name"] = request.RealName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RealNameEn)) {
+		body["real_name_en"] = request.RealNameEn
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsBtripCorpToken)) {
+		realHeaders["x-acs-btrip-corp-token"] = util.ToJSONString(headers.XAcsBtripCorpToken)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ExternalUserUpdate"),
+		Version:     tea.String("2022-05-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/user/v1/externalUsers/" + tea.StringValue(openapiutil.GetEncodeParam(externalUserId))),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ExternalUserUpdateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改外部出行人与证件信息
+//
+// @param request - ExternalUserUpdateRequest
+//
+// @return ExternalUserUpdateResponse
+func (client *Client) ExternalUserUpdate(externalUserId *string, request *ExternalUserUpdateRequest) (_result *ExternalUserUpdateResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &ExternalUserUpdateHeaders{}
+	_result = &ExternalUserUpdateResponse{}
+	_body, _err := client.ExternalUserUpdateWithOptions(externalUserId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -110110,6 +113869,99 @@ func (client *Client) HotelStaticInfo(request *HotelStaticInfoRequest) (_result 
 	headers := &HotelStaticInfoHeaders{}
 	_result = &HotelStaticInfoResponse{}
 	_body, _err := client.HotelStaticInfoWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 酒店关键词搜索
+//
+// @param request - HotelSuggestRequest
+//
+// @param headers - HotelSuggestHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return HotelSuggestResponse
+func (client *Client) HotelSuggestWithOptions(request *HotelSuggestRequest, headers *HotelSuggestHeaders, runtime *util.RuntimeOptions) (_result *HotelSuggestResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BtripUserId)) {
+		query["btrip_user_id"] = request.BtripUserId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CheckIn)) {
+		query["check_in"] = request.CheckIn
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CheckOut)) {
+		query["check_out"] = request.CheckOut
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CityCode)) {
+		query["city_code"] = request.CityCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Keyword)) {
+		query["keyword"] = request.Keyword
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SearchType)) {
+		query["search_type"] = request.SearchType
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsBtripSoCorpToken)) {
+		realHeaders["x-acs-btrip-so-corp-token"] = util.ToJSONString(headers.XAcsBtripSoCorpToken)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("HotelSuggest"),
+		Version:     tea.String("2022-05-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/dtb-hotel/v1/suggest-infos"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &HotelSuggestResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 酒店关键词搜索
+//
+// @param request - HotelSuggestRequest
+//
+// @return HotelSuggestResponse
+func (client *Client) HotelSuggest(request *HotelSuggestRequest) (_result *HotelSuggestResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &HotelSuggestHeaders{}
+	_result = &HotelSuggestResponse{}
+	_body, _err := client.HotelSuggestWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -116815,6 +120667,337 @@ func (client *Client) UpdateCustomRole(request *UpdateCustomRoleRequest) (_resul
 	headers := &UpdateCustomRoleHeaders{}
 	_result = &UpdateCustomRoleResponse{}
 	_body, _err := client.UpdateCustomRoleWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改企业部门
+//
+// @param tmpReq - UpdateDepartmentRequest
+//
+// @param headers - UpdateDepartmentHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateDepartmentResponse
+func (client *Client) UpdateDepartmentWithOptions(tmpReq *UpdateDepartmentRequest, headers *UpdateDepartmentHeaders, runtime *util.RuntimeOptions) (_result *UpdateDepartmentResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &UpdateDepartmentShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.ManagerEmployeeIdList)) {
+		request.ManagerEmployeeIdListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ManagerEmployeeIdList, tea.String("manager_employee_id_list"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DeptName)) {
+		body["dept_name"] = request.DeptName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ManagerEmployeeIdListShrink)) {
+		body["manager_employee_id_list"] = request.ManagerEmployeeIdListShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OutDeptId)) {
+		body["out_dept_id"] = request.OutDeptId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OutDeptPid)) {
+		body["out_dept_pid"] = request.OutDeptPid
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsBtripCorpToken)) {
+		realHeaders["x-acs-btrip-corp-token"] = util.ToJSONString(headers.XAcsBtripCorpToken)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateDepartment"),
+		Version:     tea.String("2022-05-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/department/v2/update"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateDepartmentResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改企业部门
+//
+// @param request - UpdateDepartmentRequest
+//
+// @return UpdateDepartmentResponse
+func (client *Client) UpdateDepartment(request *UpdateDepartmentRequest) (_result *UpdateDepartmentResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &UpdateDepartmentHeaders{}
+	_result = &UpdateDepartmentResponse{}
+	_body, _err := client.UpdateDepartmentWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新员工信息
+//
+// @param tmpReq - UpdateEmployeeRequest
+//
+// @param headers - UpdateEmployeeHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateEmployeeResponse
+func (client *Client) UpdateEmployeeWithOptions(tmpReq *UpdateEmployeeRequest, headers *UpdateEmployeeHeaders, runtime *util.RuntimeOptions) (_result *UpdateEmployeeResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &UpdateEmployeeShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.BaseCityCodeList)) {
+		request.BaseCityCodeListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.BaseCityCodeList, tea.String("base_city_code_list"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.CertList)) {
+		request.CertListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CertList, tea.String("cert_list"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.CustomRoleCodeList)) {
+		request.CustomRoleCodeListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CustomRoleCodeList, tea.String("custom_role_code_list"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.OutDeptIdList)) {
+		request.OutDeptIdListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.OutDeptIdList, tea.String("out_dept_id_list"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Avatar)) {
+		body["avatar"] = request.Avatar
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BaseCityCodeListShrink)) {
+		body["base_city_code_list"] = request.BaseCityCodeListShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Birthday)) {
+		body["birthday"] = request.Birthday
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CertListShrink)) {
+		body["cert_list"] = request.CertListShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CustomRoleCodeListShrink)) {
+		body["custom_role_code_list"] = request.CustomRoleCodeListShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Email)) {
+		body["email"] = request.Email
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Gender)) {
+		body["gender"] = request.Gender
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IsAdmin)) {
+		body["is_admin"] = request.IsAdmin
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IsBoss)) {
+		body["is_boss"] = request.IsBoss
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IsDeptLeader)) {
+		body["is_dept_leader"] = request.IsDeptLeader
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.JobNo)) {
+		body["job_no"] = request.JobNo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ManagerUserId)) {
+		body["manager_user_id"] = request.ManagerUserId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OutDeptIdListShrink)) {
+		body["out_dept_id_list"] = request.OutDeptIdListShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Phone)) {
+		body["phone"] = request.Phone
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PositionLevel)) {
+		body["position_level"] = request.PositionLevel
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RealName)) {
+		body["real_name"] = request.RealName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RealNameEn)) {
+		body["real_name_en"] = request.RealNameEn
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		body["user_id"] = request.UserId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserNick)) {
+		body["user_nick"] = request.UserNick
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsBtripCorpToken)) {
+		realHeaders["x-acs-btrip-corp-token"] = util.ToJSONString(headers.XAcsBtripCorpToken)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateEmployee"),
+		Version:     tea.String("2022-05-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/employee/v2/update"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateEmployeeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新员工信息
+//
+// @param request - UpdateEmployeeRequest
+//
+// @return UpdateEmployeeResponse
+func (client *Client) UpdateEmployee(request *UpdateEmployeeRequest) (_result *UpdateEmployeeResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &UpdateEmployeeHeaders{}
+	_result = &UpdateEmployeeResponse{}
+	_body, _err := client.UpdateEmployeeWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新员工在职状态
+//
+// @param request - UpdateEmployeeLeaveStatusRequest
+//
+// @param headers - UpdateEmployeeLeaveStatusHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateEmployeeLeaveStatusResponse
+func (client *Client) UpdateEmployeeLeaveStatusWithOptions(request *UpdateEmployeeLeaveStatusRequest, headers *UpdateEmployeeLeaveStatusHeaders, runtime *util.RuntimeOptions) (_result *UpdateEmployeeLeaveStatusResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.IsLeave)) {
+		body["is_leave"] = request.IsLeave
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		body["user_id"] = request.UserId
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsBtripCorpToken)) {
+		realHeaders["x-acs-btrip-corp-token"] = util.ToJSONString(headers.XAcsBtripCorpToken)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateEmployeeLeaveStatus"),
+		Version:     tea.String("2022-05-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/employee/v2/updateLeaveStatus"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateEmployeeLeaveStatusResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新员工在职状态
+//
+// @param request - UpdateEmployeeLeaveStatusRequest
+//
+// @return UpdateEmployeeLeaveStatusResponse
+func (client *Client) UpdateEmployeeLeaveStatus(request *UpdateEmployeeLeaveStatusRequest) (_result *UpdateEmployeeLeaveStatusResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &UpdateEmployeeLeaveStatusHeaders{}
+	_result = &UpdateEmployeeLeaveStatusResponse{}
+	_body, _err := client.UpdateEmployeeLeaveStatusWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
