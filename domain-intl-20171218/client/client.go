@@ -1,7 +1,4 @@
 // This file is auto-generated, don't edit it. Thanks.
-/**
- *
- */
 package client
 
 import (
@@ -13,7 +10,8 @@ import (
 )
 
 type AcknowledgeTaskResultRequest struct {
-	Lang         *string   `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// This parameter is required.
 	TaskDetailNo []*string `json:"TaskDetailNo,omitempty" xml:"TaskDetailNo,omitempty" type:"Repeated"`
 	UserClientIp *string   `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
 }
@@ -65,9 +63,9 @@ func (s *AcknowledgeTaskResultResponseBody) SetResult(v int32) *AcknowledgeTaskR
 }
 
 type AcknowledgeTaskResultResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *AcknowledgeTaskResultResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AcknowledgeTaskResultResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s AcknowledgeTaskResultResponse) String() string {
@@ -94,6 +92,7 @@ func (s *AcknowledgeTaskResultResponse) SetBody(v *AcknowledgeTaskResultResponse
 }
 
 type BatchFuzzyMatchDomainSensitiveWordRequest struct {
+	// This parameter is required.
 	Keyword      *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
 	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
@@ -226,9 +225,9 @@ func (s *BatchFuzzyMatchDomainSensitiveWordResponseBodySensitiveWordMatchResultL
 }
 
 type BatchFuzzyMatchDomainSensitiveWordResponse struct {
-	Headers    map[string]*string                              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *BatchFuzzyMatchDomainSensitiveWordResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *BatchFuzzyMatchDomainSensitiveWordResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s BatchFuzzyMatchDomainSensitiveWordResponse) String() string {
@@ -255,7 +254,9 @@ func (s *BatchFuzzyMatchDomainSensitiveWordResponse) SetBody(v *BatchFuzzyMatchD
 }
 
 type CancelDomainVerificationRequest struct {
-	ActionType   *string `json:"ActionType,omitempty" xml:"ActionType,omitempty"`
+	// This parameter is required.
+	ActionType *string `json:"ActionType,omitempty" xml:"ActionType,omitempty"`
+	// This parameter is required.
 	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
@@ -307,9 +308,9 @@ func (s *CancelDomainVerificationResponseBody) SetRequestId(v string) *CancelDom
 }
 
 type CancelDomainVerificationResponse struct {
-	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CancelDomainVerificationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CancelDomainVerificationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CancelDomainVerificationResponse) String() string {
@@ -336,7 +337,8 @@ func (s *CancelDomainVerificationResponse) SetBody(v *CancelDomainVerificationRe
 }
 
 type CancelTaskRequest struct {
-	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// This parameter is required.
 	TaskNo       *string `json:"TaskNo,omitempty" xml:"TaskNo,omitempty"`
 	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
 }
@@ -382,9 +384,9 @@ func (s *CancelTaskResponseBody) SetRequestId(v string) *CancelTaskResponseBody 
 }
 
 type CancelTaskResponse struct {
-	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CancelTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CancelTaskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CancelTaskResponse) String() string {
@@ -411,11 +413,31 @@ func (s *CancelTaskResponse) SetBody(v *CancelTaskResponseBody) *CancelTaskRespo
 }
 
 type CheckDomainRequest struct {
-	DomainName   *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	FeeCommand   *string `json:"FeeCommand,omitempty" xml:"FeeCommand,omitempty"`
-	FeeCurrency  *string `json:"FeeCurrency,omitempty" xml:"FeeCurrency,omitempty"`
-	FeePeriod    *int32  `json:"FeePeriod,omitempty" xml:"FeePeriod,omitempty"`
-	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test**.xin
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// example:
+	//
+	// create
+	FeeCommand *string `json:"FeeCommand,omitempty" xml:"FeeCommand,omitempty"`
+	// example:
+	//
+	// USD
+	FeeCurrency *string `json:"FeeCurrency,omitempty" xml:"FeeCurrency,omitempty"`
+	// example:
+	//
+	// 1
+	FeePeriod *int32 `json:"FeePeriod,omitempty" xml:"FeePeriod,omitempty"`
+	// example:
+	//
+	// en
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// example:
+	//
+	// 127.0.0.1
 	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
 }
 
@@ -458,13 +480,34 @@ func (s *CheckDomainRequest) SetUserClientIp(v string) *CheckDomainRequest {
 }
 
 type CheckDomainResponseBody struct {
-	Avail        *string `json:"Avail,omitempty" xml:"Avail,omitempty"`
-	DomainName   *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	DynamicCheck *bool   `json:"DynamicCheck,omitempty" xml:"DynamicCheck,omitempty"`
-	Premium      *string `json:"Premium,omitempty" xml:"Premium,omitempty"`
-	Price        *int64  `json:"Price,omitempty" xml:"Price,omitempty"`
-	Reason       *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
-	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 1
+	Avail *string `json:"Avail,omitempty" xml:"Avail,omitempty"`
+	// example:
+	//
+	// nvgtntights.com
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// example:
+	//
+	// false
+	DynamicCheck *bool `json:"DynamicCheck,omitempty" xml:"DynamicCheck,omitempty"`
+	// example:
+	//
+	// true
+	Premium *string `json:"Premium,omitempty" xml:"Premium,omitempty"`
+	// example:
+	//
+	// 2000
+	Price *int64 `json:"Price,omitempty" xml:"Price,omitempty"`
+	// example:
+	//
+	// In use
+	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	// example:
+	//
+	// AF7D4DCE-0776-47F2-A9B2-6FB85A87AA60
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CheckDomainResponseBody) String() string {
@@ -511,9 +554,9 @@ func (s *CheckDomainResponseBody) SetRequestId(v string) *CheckDomainResponseBod
 }
 
 type CheckDomainResponse struct {
-	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CheckDomainResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CheckDomainResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CheckDomainResponse) String() string {
@@ -540,6 +583,7 @@ func (s *CheckDomainResponse) SetBody(v *CheckDomainResponseBody) *CheckDomainRe
 }
 
 type CheckDomainSunriseClaimRequest struct {
+	// This parameter is required.
 	DomainName   *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
@@ -598,9 +642,9 @@ func (s *CheckDomainSunriseClaimResponseBody) SetResult(v int32) *CheckDomainSun
 }
 
 type CheckDomainSunriseClaimResponse struct {
-	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CheckDomainSunriseClaimResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CheckDomainSunriseClaimResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CheckDomainSunriseClaimResponse) String() string {
@@ -627,6 +671,7 @@ func (s *CheckDomainSunriseClaimResponse) SetBody(v *CheckDomainSunriseClaimResp
 }
 
 type CheckTransferInFeasibilityRequest struct {
+	// This parameter is required.
 	DomainName                *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	Lang                      *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	TransferAuthorizationCode *string `json:"TransferAuthorizationCode,omitempty" xml:"TransferAuthorizationCode,omitempty"`
@@ -703,9 +748,9 @@ func (s *CheckTransferInFeasibilityResponseBody) SetRequestId(v string) *CheckTr
 }
 
 type CheckTransferInFeasibilityResponse struct {
-	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CheckTransferInFeasibilityResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CheckTransferInFeasibilityResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CheckTransferInFeasibilityResponse) String() string {
@@ -732,10 +777,12 @@ func (s *CheckTransferInFeasibilityResponse) SetBody(v *CheckTransferInFeasibili
 }
 
 type ConfirmTransferInEmailRequest struct {
-	DomainName   []*string `json:"DomainName,omitempty" xml:"DomainName,omitempty" type:"Repeated"`
-	Email        *string   `json:"Email,omitempty" xml:"Email,omitempty"`
-	Lang         *string   `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	UserClientIp *string   `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
+	// This parameter is required.
+	DomainName []*string `json:"DomainName,omitempty" xml:"DomainName,omitempty" type:"Repeated"`
+	// This parameter is required.
+	Email        *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
 }
 
 func (s ConfirmTransferInEmailRequest) String() string {
@@ -830,9 +877,9 @@ func (s *ConfirmTransferInEmailResponseBodySuccessList) SetSuccessDomain(v []*st
 }
 
 type ConfirmTransferInEmailResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ConfirmTransferInEmailResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ConfirmTransferInEmailResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ConfirmTransferInEmailResponse) String() string {
@@ -859,6 +906,7 @@ func (s *ConfirmTransferInEmailResponse) SetBody(v *ConfirmTransferInEmailRespon
 }
 
 type DeleteEmailVerificationRequest struct {
+	// This parameter is required.
 	Email        *string `json:"Email,omitempty" xml:"Email,omitempty"`
 	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
@@ -975,9 +1023,9 @@ func (s *DeleteEmailVerificationResponseBodySuccessList) SetMessage(v string) *D
 }
 
 type DeleteEmailVerificationResponse struct {
-	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteEmailVerificationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteEmailVerificationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteEmailVerificationResponse) String() string {
@@ -1004,7 +1052,8 @@ func (s *DeleteEmailVerificationResponse) SetBody(v *DeleteEmailVerificationResp
 }
 
 type DeleteRegistrantProfileRequest struct {
-	Lang                *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// This parameter is required.
 	RegistrantProfileId *int64  `json:"RegistrantProfileId,omitempty" xml:"RegistrantProfileId,omitempty"`
 	UserClientIp        *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
 }
@@ -1050,9 +1099,9 @@ func (s *DeleteRegistrantProfileResponseBody) SetRequestId(v string) *DeleteRegi
 }
 
 type DeleteRegistrantProfileResponse struct {
-	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteRegistrantProfileResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteRegistrantProfileResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteRegistrantProfileResponse) String() string {
@@ -1079,6 +1128,7 @@ func (s *DeleteRegistrantProfileResponse) SetBody(v *DeleteRegistrantProfileResp
 }
 
 type EmailVerifiedRequest struct {
+	// This parameter is required.
 	Email        *string `json:"Email,omitempty" xml:"Email,omitempty"`
 	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
@@ -1125,9 +1175,9 @@ func (s *EmailVerifiedResponseBody) SetRequestId(v string) *EmailVerifiedRespons
 }
 
 type EmailVerifiedResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *EmailVerifiedResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *EmailVerifiedResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s EmailVerifiedResponse) String() string {
@@ -1154,6 +1204,7 @@ func (s *EmailVerifiedResponse) SetBody(v *EmailVerifiedResponseBody) *EmailVeri
 }
 
 type FuzzyMatchDomainSensitiveWordRequest struct {
+	// This parameter is required.
 	Keyword      *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
 	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
@@ -1252,9 +1303,9 @@ func (s *FuzzyMatchDomainSensitiveWordResponseBodyMatchedSentiveWordsMatchedSens
 }
 
 type FuzzyMatchDomainSensitiveWordResponse struct {
-	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *FuzzyMatchDomainSensitiveWordResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *FuzzyMatchDomainSensitiveWordResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s FuzzyMatchDomainSensitiveWordResponse) String() string {
@@ -1470,9 +1521,9 @@ func (s *ListEmailVerificationResponseBodyData) SetVerificationTime(v string) *L
 }
 
 type ListEmailVerificationResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListEmailVerificationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListEmailVerificationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListEmailVerificationResponse) String() string {
@@ -1499,6 +1550,7 @@ func (s *ListEmailVerificationResponse) SetBody(v *ListEmailVerificationResponse
 }
 
 type LookupTmchNoticeRequest struct {
+	// This parameter is required.
 	ClaimKey     *string `json:"ClaimKey,omitempty" xml:"ClaimKey,omitempty"`
 	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
@@ -1934,9 +1986,9 @@ func (s *LookupTmchNoticeResponseBodyClaimsClaimJurDesc) SetJurCC(v string) *Loo
 }
 
 type LookupTmchNoticeResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *LookupTmchNoticeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *LookupTmchNoticeResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s LookupTmchNoticeResponse) String() string {
@@ -1963,10 +2015,12 @@ func (s *LookupTmchNoticeResponse) SetBody(v *LookupTmchNoticeResponseBody) *Loo
 }
 
 type PollTaskResultRequest struct {
-	DomainName       *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	InstanceId       *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Lang             *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	PageNum          *int32  `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Lang       *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// This parameter is required.
+	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// This parameter is required.
 	PageSize         *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	TaskNo           *string `json:"TaskNo,omitempty" xml:"TaskNo,omitempty"`
 	TaskResultStatus *int32  `json:"TaskResultStatus,omitempty" xml:"TaskResultStatus,omitempty"`
@@ -2187,9 +2241,9 @@ func (s *PollTaskResultResponseBodyDataTaskDetail) SetUpdateTime(v string) *Poll
 }
 
 type PollTaskResultResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *PollTaskResultResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *PollTaskResultResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s PollTaskResultResponse) String() string {
@@ -2216,6 +2270,7 @@ func (s *PollTaskResultResponse) SetBody(v *PollTaskResultResponseBody) *PollTas
 }
 
 type QueryArtExtensionRequest struct {
+	// This parameter is required.
 	DomainName   *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
@@ -2322,9 +2377,9 @@ func (s *QueryArtExtensionResponseBody) SetTitle(v string) *QueryArtExtensionRes
 }
 
 type QueryArtExtensionResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *QueryArtExtensionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryArtExtensionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s QueryArtExtensionResponse) String() string {
@@ -2351,10 +2406,12 @@ func (s *QueryArtExtensionResponse) SetBody(v *QueryArtExtensionResponseBody) *Q
 }
 
 type QueryChangeLogListRequest struct {
-	DomainName   *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	EndDate      *int64  `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
-	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	PageNum      *int32  `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	EndDate    *int64  `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	Lang       *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// This parameter is required.
+	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// This parameter is required.
 	PageSize     *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	StartDate    *int64  `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
 	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
@@ -2533,9 +2590,9 @@ func (s *QueryChangeLogListResponseBodyDataChangeLog) SetTime(v string) *QueryCh
 }
 
 type QueryChangeLogListResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *QueryChangeLogListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryChangeLogListResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s QueryChangeLogListResponse) String() string {
@@ -2562,7 +2619,9 @@ func (s *QueryChangeLogListResponse) SetBody(v *QueryChangeLogListResponseBody) 
 }
 
 type QueryContactInfoRequest struct {
-	ContactType  *string `json:"ContactType,omitempty" xml:"ContactType,omitempty"`
+	// This parameter is required.
+	ContactType *string `json:"ContactType,omitempty" xml:"ContactType,omitempty"`
+	// This parameter is required.
 	DomainName   *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
@@ -2686,9 +2745,9 @@ func (s *QueryContactInfoResponseBody) SetTelephone(v string) *QueryContactInfoR
 }
 
 type QueryContactInfoResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *QueryContactInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryContactInfoResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s QueryContactInfoResponse) String() string {
@@ -2715,6 +2774,7 @@ func (s *QueryContactInfoResponse) SetBody(v *QueryContactInfoResponseBody) *Que
 }
 
 type QueryDSRecordRequest struct {
+	// This parameter is required.
 	DomainName   *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
@@ -2802,9 +2862,9 @@ func (s *QueryDSRecordResponseBodyDSRecordList) SetKeyTag(v int32) *QueryDSRecor
 }
 
 type QueryDSRecordResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *QueryDSRecordResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryDSRecordResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s QueryDSRecordResponse) String() string {
@@ -2831,6 +2891,7 @@ func (s *QueryDSRecordResponse) SetBody(v *QueryDSRecordResponseBody) *QueryDSRe
 }
 
 type QueryDnsHostRequest struct {
+	// This parameter is required.
 	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
@@ -2906,9 +2967,9 @@ func (s *QueryDnsHostResponseBodyDnsHostList) SetIpList(v []*string) *QueryDnsHo
 }
 
 type QueryDnsHostResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *QueryDnsHostResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryDnsHostResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s QueryDnsHostResponse) String() string {
@@ -2935,6 +2996,7 @@ func (s *QueryDnsHostResponse) SetBody(v *QueryDnsHostResponseBody) *QueryDnsHos
 }
 
 type QueryDomainByDomainNameRequest struct {
+	// This parameter is required.
 	DomainName   *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
@@ -3130,9 +3192,9 @@ func (s *QueryDomainByDomainNameResponseBodyDnsList) SetDns(v []*string) *QueryD
 }
 
 type QueryDomainByDomainNameResponse struct {
-	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *QueryDomainByDomainNameResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryDomainByDomainNameResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s QueryDomainByDomainNameResponse) String() string {
@@ -3159,6 +3221,7 @@ func (s *QueryDomainByDomainNameResponse) SetBody(v *QueryDomainByDomainNameResp
 }
 
 type QueryDomainByInstanceIdRequest struct {
+	// This parameter is required.
 	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
@@ -3354,9 +3417,9 @@ func (s *QueryDomainByInstanceIdResponseBodyDnsList) SetDns(v []*string) *QueryD
 }
 
 type QueryDomainByInstanceIdResponse struct {
-	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *QueryDomainByInstanceIdResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryDomainByInstanceIdResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s QueryDomainByInstanceIdResponse) String() string {
@@ -3383,19 +3446,63 @@ func (s *QueryDomainByInstanceIdResponse) SetBody(v *QueryDomainByInstanceIdResp
 }
 
 type QueryDomainListRequest struct {
-	DomainName            *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	EndExpirationDate     *int64  `json:"EndExpirationDate,omitempty" xml:"EndExpirationDate,omitempty"`
-	EndRegistrationDate   *int64  `json:"EndRegistrationDate,omitempty" xml:"EndRegistrationDate,omitempty"`
-	Lang                  *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	OrderByType           *string `json:"OrderByType,omitempty" xml:"OrderByType,omitempty"`
-	OrderKeyType          *string `json:"OrderKeyType,omitempty" xml:"OrderKeyType,omitempty"`
-	PageNum               *int32  `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	PageSize              *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	ProductDomainType     *string `json:"ProductDomainType,omitempty" xml:"ProductDomainType,omitempty"`
-	QueryType             *string `json:"QueryType,omitempty" xml:"QueryType,omitempty"`
-	StartExpirationDate   *int64  `json:"StartExpirationDate,omitempty" xml:"StartExpirationDate,omitempty"`
-	StartRegistrationDate *int64  `json:"StartRegistrationDate,omitempty" xml:"StartRegistrationDate,omitempty"`
-	UserClientIp          *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
+	Ccompany *string `json:"Ccompany,omitempty" xml:"Ccompany,omitempty"`
+	// example:
+	//
+	// example.com
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// example:
+	//
+	// 1522080000000
+	EndExpirationDate *int64 `json:"EndExpirationDate,omitempty" xml:"EndExpirationDate,omitempty"`
+	// example:
+	//
+	// 1522080000000
+	EndRegistrationDate *int64 `json:"EndRegistrationDate,omitempty" xml:"EndRegistrationDate,omitempty"`
+	// example:
+	//
+	// en
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// example:
+	//
+	// DESC
+	OrderByType *string `json:"OrderByType,omitempty" xml:"OrderByType,omitempty"`
+	// example:
+	//
+	// ExpirationDate
+	OrderKeyType *string `json:"OrderKeyType,omitempty" xml:"OrderKeyType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 50
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// gTLD
+	ProductDomainType *string `json:"ProductDomainType,omitempty" xml:"ProductDomainType,omitempty"`
+	// example:
+	//
+	// 1
+	QueryType *string `json:"QueryType,omitempty" xml:"QueryType,omitempty"`
+	// example:
+	//
+	// 1522080000000
+	StartExpirationDate *int64 `json:"StartExpirationDate,omitempty" xml:"StartExpirationDate,omitempty"`
+	// example:
+	//
+	// 1522080000000
+	StartRegistrationDate *int64 `json:"StartRegistrationDate,omitempty" xml:"StartRegistrationDate,omitempty"`
+	// example:
+	//
+	// 127.0.0.1
+	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
 }
 
 func (s QueryDomainListRequest) String() string {
@@ -3404,6 +3511,11 @@ func (s QueryDomainListRequest) String() string {
 
 func (s QueryDomainListRequest) GoString() string {
 	return s.String()
+}
+
+func (s *QueryDomainListRequest) SetCcompany(v string) *QueryDomainListRequest {
+	s.Ccompany = &v
+	return s
 }
 
 func (s *QueryDomainListRequest) SetDomainName(v string) *QueryDomainListRequest {
@@ -3472,14 +3584,35 @@ func (s *QueryDomainListRequest) SetUserClientIp(v string) *QueryDomainListReque
 }
 
 type QueryDomainListResponseBody struct {
+	// example:
+	//
+	// 1
 	CurrentPageNum *int32                           `json:"CurrentPageNum,omitempty" xml:"CurrentPageNum,omitempty"`
 	Data           *QueryDomainListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	NextPage       *bool                            `json:"NextPage,omitempty" xml:"NextPage,omitempty"`
-	PageSize       *int32                           `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	PrePage        *bool                            `json:"PrePage,omitempty" xml:"PrePage,omitempty"`
-	RequestId      *string                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalItemNum   *int32                           `json:"TotalItemNum,omitempty" xml:"TotalItemNum,omitempty"`
-	TotalPageNum   *int32                           `json:"TotalPageNum,omitempty" xml:"TotalPageNum,omitempty"`
+	// example:
+	//
+	// False
+	NextPage *bool `json:"NextPage,omitempty" xml:"NextPage,omitempty"`
+	// example:
+	//
+	// 50
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// True
+	PrePage *bool `json:"PrePage,omitempty" xml:"PrePage,omitempty"`
+	// example:
+	//
+	// AF7D4DCE-0776-47F2-A9B2-6FB85A87AA60
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 3
+	TotalItemNum *int32 `json:"TotalItemNum,omitempty" xml:"TotalItemNum,omitempty"`
+	// example:
+	//
+	// 2
+	TotalPageNum *int32 `json:"TotalPageNum,omitempty" xml:"TotalPageNum,omitempty"`
 }
 
 func (s QueryDomainListResponseBody) String() string {
@@ -3548,21 +3681,63 @@ func (s *QueryDomainListResponseBodyData) SetDomain(v []*QueryDomainListResponse
 }
 
 type QueryDomainListResponseBodyDataDomain struct {
-	DomainAuditStatus      *string `json:"DomainAuditStatus,omitempty" xml:"DomainAuditStatus,omitempty"`
-	DomainName             *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	DomainStatus           *string `json:"DomainStatus,omitempty" xml:"DomainStatus,omitempty"`
-	DomainType             *string `json:"DomainType,omitempty" xml:"DomainType,omitempty"`
-	ExpirationCurrDateDiff *int32  `json:"ExpirationCurrDateDiff,omitempty" xml:"ExpirationCurrDateDiff,omitempty"`
-	ExpirationDate         *string `json:"ExpirationDate,omitempty" xml:"ExpirationDate,omitempty"`
-	ExpirationDateLong     *int64  `json:"ExpirationDateLong,omitempty" xml:"ExpirationDateLong,omitempty"`
-	ExpirationDateStatus   *string `json:"ExpirationDateStatus,omitempty" xml:"ExpirationDateStatus,omitempty"`
-	InstanceId             *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Premium                *bool   `json:"Premium,omitempty" xml:"Premium,omitempty"`
-	ProductId              *string `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
-	RegistrantType         *string `json:"RegistrantType,omitempty" xml:"RegistrantType,omitempty"`
-	RegistrationDate       *string `json:"RegistrationDate,omitempty" xml:"RegistrationDate,omitempty"`
-	RegistrationDateLong   *int64  `json:"RegistrationDateLong,omitempty" xml:"RegistrationDateLong,omitempty"`
-	Remark                 *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// example:
+	//
+	// FAILED
+	DomainAuditStatus *string `json:"DomainAuditStatus,omitempty" xml:"DomainAuditStatus,omitempty"`
+	// example:
+	//
+	// jwssc8.com
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// example:
+	//
+	// 1
+	DomainStatus *string `json:"DomainStatus,omitempty" xml:"DomainStatus,omitempty"`
+	// example:
+	//
+	// New gTLD
+	DomainType *string `json:"DomainType,omitempty" xml:"DomainType,omitempty"`
+	// example:
+	//
+	// -30
+	ExpirationCurrDateDiff *int32 `json:"ExpirationCurrDateDiff,omitempty" xml:"ExpirationCurrDateDiff,omitempty"`
+	// example:
+	//
+	// Nov 02,2019 04:00:45
+	ExpirationDate *string `json:"ExpirationDate,omitempty" xml:"ExpirationDate,omitempty"`
+	// example:
+	//
+	// 1522080000000
+	ExpirationDateLong *int64 `json:"ExpirationDateLong,omitempty" xml:"ExpirationDateLong,omitempty"`
+	// example:
+	//
+	// 1
+	ExpirationDateStatus *string `json:"ExpirationDateStatus,omitempty" xml:"ExpirationDateStatus,omitempty"`
+	// example:
+	//
+	// ST49P7TZLDAWSH2
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// False
+	Premium *bool `json:"Premium,omitempty" xml:"Premium,omitempty"`
+	// example:
+	//
+	// 2
+	ProductId *string `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
+	// example:
+	//
+	// 1
+	RegistrantType *string `json:"RegistrantType,omitempty" xml:"RegistrantType,omitempty"`
+	// example:
+	//
+	// Nov 02,2017 04:00:45
+	RegistrationDate *string `json:"RegistrationDate,omitempty" xml:"RegistrationDate,omitempty"`
+	// example:
+	//
+	// 1522080000000
+	RegistrationDateLong *int64  `json:"RegistrationDateLong,omitempty" xml:"RegistrationDateLong,omitempty"`
+	Remark               *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
 }
 
 func (s QueryDomainListResponseBodyDataDomain) String() string {
@@ -3649,9 +3824,9 @@ func (s *QueryDomainListResponseBodyDataDomain) SetRemark(v string) *QueryDomain
 }
 
 type QueryDomainListResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *QueryDomainListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryDomainListResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s QueryDomainListResponse) String() string {
@@ -3678,6 +3853,7 @@ func (s *QueryDomainListResponse) SetBody(v *QueryDomainListResponseBody) *Query
 }
 
 type QueryDomainRealNameVerificationInfoRequest struct {
+	// This parameter is required.
 	DomainName   *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	FetchImage   *bool   `json:"FetchImage,omitempty" xml:"FetchImage,omitempty"`
 	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
@@ -3772,9 +3948,9 @@ func (s *QueryDomainRealNameVerificationInfoResponseBody) SetSubmissionDate(v st
 }
 
 type QueryDomainRealNameVerificationInfoResponse struct {
-	Headers    map[string]*string                               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *QueryDomainRealNameVerificationInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryDomainRealNameVerificationInfoResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s QueryDomainRealNameVerificationInfoResponse) String() string {
@@ -3801,8 +3977,19 @@ func (s *QueryDomainRealNameVerificationInfoResponse) SetBody(v *QueryDomainReal
 }
 
 type QueryEnsAssociationRequest struct {
-	DomainName   *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// abc.luxe
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// example:
+	//
+	// en
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// example:
+	//
+	// 127.0.0.1
 	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
 }
 
@@ -3830,7 +4017,13 @@ func (s *QueryEnsAssociationRequest) SetUserClientIp(v string) *QueryEnsAssociat
 }
 
 type QueryEnsAssociationResponseBody struct {
-	Address   *string `json:"Address,omitempty" xml:"Address,omitempty"`
+	// example:
+	//
+	// 0x0000000000000000000000000000000000000003
+	Address *string `json:"Address,omitempty" xml:"Address,omitempty"`
+	// example:
+	//
+	// AF7D4DCE-0776-47F2-A9B2-6FB85A87AA60
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3853,9 +4046,9 @@ func (s *QueryEnsAssociationResponseBody) SetRequestId(v string) *QueryEnsAssoci
 }
 
 type QueryEnsAssociationResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *QueryEnsAssociationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryEnsAssociationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s QueryEnsAssociationResponse) String() string {
@@ -3882,8 +4075,10 @@ func (s *QueryEnsAssociationResponse) SetBody(v *QueryEnsAssociationResponseBody
 }
 
 type QueryFailReasonForDomainRealNameVerificationRequest struct {
-	DomainName                 *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	Lang                       *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// This parameter is required.
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	Lang       *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// This parameter is required.
 	RealNameVerificationAction *string `json:"RealNameVerificationAction,omitempty" xml:"RealNameVerificationAction,omitempty"`
 	UserClientIp               *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
 }
@@ -3963,9 +4158,9 @@ func (s *QueryFailReasonForDomainRealNameVerificationResponseBodyData) SetFailRe
 }
 
 type QueryFailReasonForDomainRealNameVerificationResponse struct {
-	Headers    map[string]*string                                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *QueryFailReasonForDomainRealNameVerificationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryFailReasonForDomainRealNameVerificationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s QueryFailReasonForDomainRealNameVerificationResponse) String() string {
@@ -3992,7 +4187,8 @@ func (s *QueryFailReasonForDomainRealNameVerificationResponse) SetBody(v *QueryF
 }
 
 type QueryFailReasonForRegistrantProfileRealNameVerificationRequest struct {
-	Lang                *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// This parameter is required.
 	RegistrantProfileID *int64  `json:"RegistrantProfileID,omitempty" xml:"RegistrantProfileID,omitempty"`
 	UserClientIp        *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
 }
@@ -4067,9 +4263,9 @@ func (s *QueryFailReasonForRegistrantProfileRealNameVerificationResponseBodyData
 }
 
 type QueryFailReasonForRegistrantProfileRealNameVerificationResponse struct {
-	Headers    map[string]*string                                                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *QueryFailReasonForRegistrantProfileRealNameVerificationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryFailReasonForRegistrantProfileRealNameVerificationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s QueryFailReasonForRegistrantProfileRealNameVerificationResponse) String() string {
@@ -4096,8 +4292,19 @@ func (s *QueryFailReasonForRegistrantProfileRealNameVerificationResponse) SetBod
 }
 
 type QueryLocalEnsAssociationRequest struct {
-	DomainName   *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// abc.luxe
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// example:
+	//
+	// en
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// example:
+	//
+	// 127.0.0.1
 	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
 }
 
@@ -4125,7 +4332,13 @@ func (s *QueryLocalEnsAssociationRequest) SetUserClientIp(v string) *QueryLocalE
 }
 
 type QueryLocalEnsAssociationResponseBody struct {
-	Address   *string `json:"Address,omitempty" xml:"Address,omitempty"`
+	// example:
+	//
+	// 0x0000000000000000000000000000000000000003
+	Address *string `json:"Address,omitempty" xml:"Address,omitempty"`
+	// example:
+	//
+	// AF7D4DCE-0776-47F2-A9B2-6FB85A87AA60
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4148,9 +4361,9 @@ func (s *QueryLocalEnsAssociationResponseBody) SetRequestId(v string) *QueryLoca
 }
 
 type QueryLocalEnsAssociationResponse struct {
-	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *QueryLocalEnsAssociationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryLocalEnsAssociationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s QueryLocalEnsAssociationResponse) String() string {
@@ -4177,8 +4390,9 @@ func (s *QueryLocalEnsAssociationResponse) SetBody(v *QueryLocalEnsAssociationRe
 }
 
 type QueryRegistrantProfileRealNameVerificationInfoRequest struct {
-	FetchImage          *bool   `json:"FetchImage,omitempty" xml:"FetchImage,omitempty"`
-	Lang                *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	FetchImage *bool   `json:"FetchImage,omitempty" xml:"FetchImage,omitempty"`
+	Lang       *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// This parameter is required.
 	RegistrantProfileId *int64  `json:"RegistrantProfileId,omitempty" xml:"RegistrantProfileId,omitempty"`
 	UserClientIp        *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
 }
@@ -4271,9 +4485,9 @@ func (s *QueryRegistrantProfileRealNameVerificationInfoResponseBody) SetSubmissi
 }
 
 type QueryRegistrantProfileRealNameVerificationInfoResponse struct {
-	Headers    map[string]*string                                          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *QueryRegistrantProfileRealNameVerificationInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryRegistrantProfileRealNameVerificationInfoResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s QueryRegistrantProfileRealNameVerificationInfoResponse) String() string {
@@ -4578,9 +4792,9 @@ func (s *QueryRegistrantProfilesResponseBodyRegistrantProfilesRegistrantProfile)
 }
 
 type QueryRegistrantProfilesResponse struct {
-	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *QueryRegistrantProfilesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryRegistrantProfilesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s QueryRegistrantProfilesResponse) String() string {
@@ -4607,14 +4821,16 @@ func (s *QueryRegistrantProfilesResponse) SetBody(v *QueryRegistrantProfilesResp
 }
 
 type QueryTaskDetailHistoryRequest struct {
-	DomainName         *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	DomainNameCursor   *string `json:"DomainNameCursor,omitempty" xml:"DomainNameCursor,omitempty"`
-	Lang               *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	DomainName       *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	DomainNameCursor *string `json:"DomainNameCursor,omitempty" xml:"DomainNameCursor,omitempty"`
+	Lang             *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// This parameter is required.
 	PageSize           *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	TaskDetailNoCursor *string `json:"TaskDetailNoCursor,omitempty" xml:"TaskDetailNoCursor,omitempty"`
-	TaskNo             *string `json:"TaskNo,omitempty" xml:"TaskNo,omitempty"`
-	TaskStatus         *int32  `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
-	UserClientIp       *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
+	// This parameter is required.
+	TaskNo       *string `json:"TaskNo,omitempty" xml:"TaskNo,omitempty"`
+	TaskStatus   *int32  `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
+	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
 }
 
 func (s QueryTaskDetailHistoryRequest) String() string {
@@ -5045,9 +5261,9 @@ func (s *QueryTaskDetailHistoryResponseBodyPrePageCursor) SetUpdateTime(v string
 }
 
 type QueryTaskDetailHistoryResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *QueryTaskDetailHistoryResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryTaskDetailHistoryResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s QueryTaskDetailHistoryResponse) String() string {
@@ -5074,11 +5290,14 @@ func (s *QueryTaskDetailHistoryResponse) SetBody(v *QueryTaskDetailHistoryRespon
 }
 
 type QueryTaskDetailListRequest struct {
-	DomainName   *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	PageNum      *int32  `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	PageSize     *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Lang       *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// This parameter is required.
+	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// This parameter is required.
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// This parameter is required.
 	TaskNo       *string `json:"TaskNo,omitempty" xml:"TaskNo,omitempty"`
 	TaskStatus   *int32  `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
 	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
@@ -5298,9 +5517,9 @@ func (s *QueryTaskDetailListResponseBodyDataTaskDetail) SetUpdateTime(v string) 
 }
 
 type QueryTaskDetailListResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *QueryTaskDetailListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryTaskDetailListResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s QueryTaskDetailListResponse) String() string {
@@ -5331,9 +5550,10 @@ type QueryTaskInfoHistoryRequest struct {
 	CreateTimeCursor *int64  `json:"CreateTimeCursor,omitempty" xml:"CreateTimeCursor,omitempty"`
 	EndCreateTime    *int64  `json:"EndCreateTime,omitempty" xml:"EndCreateTime,omitempty"`
 	Lang             *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	PageSize         *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	TaskNoCursor     *string `json:"TaskNoCursor,omitempty" xml:"TaskNoCursor,omitempty"`
-	UserClientIp     *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
+	// This parameter is required.
+	PageSize     *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	TaskNoCursor *string `json:"TaskNoCursor,omitempty" xml:"TaskNoCursor,omitempty"`
+	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
 }
 
 func (s QueryTaskInfoHistoryRequest) String() string {
@@ -5687,9 +5907,9 @@ func (s *QueryTaskInfoHistoryResponseBodyPrePageCursor) SetTaskTypeDescription(v
 }
 
 type QueryTaskInfoHistoryResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *QueryTaskInfoHistoryResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryTaskInfoHistoryResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s QueryTaskInfoHistoryResponse) String() string {
@@ -5719,9 +5939,11 @@ type QueryTaskListRequest struct {
 	BeginCreateTime *int64  `json:"BeginCreateTime,omitempty" xml:"BeginCreateTime,omitempty"`
 	EndCreateTime   *int64  `json:"EndCreateTime,omitempty" xml:"EndCreateTime,omitempty"`
 	Lang            *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	PageNum         *int32  `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	PageSize        *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	UserClientIp    *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
+	// This parameter is required.
+	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// This parameter is required.
+	PageSize     *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
 }
 
 func (s QueryTaskListRequest) String() string {
@@ -5910,9 +6132,9 @@ func (s *QueryTaskListResponseBodyDataTaskInfo) SetTaskTypeDescription(v string)
 }
 
 type QueryTaskListResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *QueryTaskListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryTaskListResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s QueryTaskListResponse) String() string {
@@ -5939,6 +6161,7 @@ func (s *QueryTaskListResponse) SetBody(v *QueryTaskListResponseBody) *QueryTask
 }
 
 type QueryTransferInByInstanceIdRequest struct {
+	// This parameter is required.
 	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
@@ -6111,9 +6334,9 @@ func (s *QueryTransferInByInstanceIdResponseBody) SetWhoisMailStatus(v bool) *Qu
 }
 
 type QueryTransferInByInstanceIdResponse struct {
-	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *QueryTransferInByInstanceIdResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryTransferInByInstanceIdResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s QueryTransferInByInstanceIdResponse) String() string {
@@ -6140,9 +6363,11 @@ func (s *QueryTransferInByInstanceIdResponse) SetBody(v *QueryTransferInByInstan
 }
 
 type QueryTransferInListRequest struct {
-	DomainName             *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	Lang                   *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	PageNum                *int32  `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	Lang       *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// This parameter is required.
+	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// This parameter is required.
 	PageSize               *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	SimpleTransferInStatus *string `json:"SimpleTransferInStatus,omitempty" xml:"SimpleTransferInStatus,omitempty"`
 	SubmissionEndDate      *int64  `json:"SubmissionEndDate,omitempty" xml:"SubmissionEndDate,omitempty"`
@@ -6412,9 +6637,9 @@ func (s *QueryTransferInListResponseBodyDataTransferInInfo) SetWhoisMailStatus(v
 }
 
 type QueryTransferInListResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *QueryTransferInListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryTransferInListResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s QueryTransferInListResponse) String() string {
@@ -6441,6 +6666,7 @@ func (s *QueryTransferInListResponse) SetBody(v *QueryTransferInListResponseBody
 }
 
 type QueryTransferOutInfoRequest struct {
+	// This parameter is required.
 	DomainName   *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
@@ -6529,9 +6755,9 @@ func (s *QueryTransferOutInfoResponseBody) SetTransferAuthorizationCodeSendDate(
 }
 
 type QueryTransferOutInfoResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *QueryTransferOutInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryTransferOutInfoResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s QueryTransferOutInfoResponse) String() string {
@@ -6558,12 +6784,16 @@ func (s *QueryTransferOutInfoResponse) SetBody(v *QueryTransferOutInfoResponseBo
 }
 
 type RegistrantProfileRealNameVerificationRequest struct {
-	IdentityCredential     *string `json:"IdentityCredential,omitempty" xml:"IdentityCredential,omitempty"`
-	IdentityCredentialNo   *string `json:"IdentityCredentialNo,omitempty" xml:"IdentityCredentialNo,omitempty"`
+	// This parameter is required.
+	IdentityCredential *string `json:"IdentityCredential,omitempty" xml:"IdentityCredential,omitempty"`
+	// This parameter is required.
+	IdentityCredentialNo *string `json:"IdentityCredentialNo,omitempty" xml:"IdentityCredentialNo,omitempty"`
+	// This parameter is required.
 	IdentityCredentialType *string `json:"IdentityCredentialType,omitempty" xml:"IdentityCredentialType,omitempty"`
 	Lang                   *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	RegistrantProfileID    *int64  `json:"RegistrantProfileID,omitempty" xml:"RegistrantProfileID,omitempty"`
-	UserClientIp           *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
+	// This parameter is required.
+	RegistrantProfileID *int64  `json:"RegistrantProfileID,omitempty" xml:"RegistrantProfileID,omitempty"`
+	UserClientIp        *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
 }
 
 func (s RegistrantProfileRealNameVerificationRequest) String() string {
@@ -6622,9 +6852,9 @@ func (s *RegistrantProfileRealNameVerificationResponseBody) SetRequestId(v strin
 }
 
 type RegistrantProfileRealNameVerificationResponse struct {
-	Headers    map[string]*string                                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *RegistrantProfileRealNameVerificationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RegistrantProfileRealNameVerificationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RegistrantProfileRealNameVerificationResponse) String() string {
@@ -6651,6 +6881,7 @@ func (s *RegistrantProfileRealNameVerificationResponse) SetBody(v *RegistrantPro
 }
 
 type ResendEmailVerificationRequest struct {
+	// This parameter is required.
 	Email        *string `json:"Email,omitempty" xml:"Email,omitempty"`
 	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
@@ -6767,9 +6998,9 @@ func (s *ResendEmailVerificationResponseBodySuccessList) SetMessage(v string) *R
 }
 
 type ResendEmailVerificationResponse struct {
-	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ResendEmailVerificationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ResendEmailVerificationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ResendEmailVerificationResponse) String() string {
@@ -6796,8 +7027,9 @@ func (s *ResendEmailVerificationResponse) SetBody(v *ResendEmailVerificationResp
 }
 
 type SaveBatchTaskForCreatingOrderActivateRequest struct {
-	CouponNo           *string                                                           `json:"CouponNo,omitempty" xml:"CouponNo,omitempty"`
-	Lang               *string                                                           `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	CouponNo *string `json:"CouponNo,omitempty" xml:"CouponNo,omitempty"`
+	Lang     *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// This parameter is required.
 	OrderActivateParam []*SaveBatchTaskForCreatingOrderActivateRequestOrderActivateParam `json:"OrderActivateParam,omitempty" xml:"OrderActivateParam,omitempty" type:"Repeated"`
 	PromotionNo        *string                                                           `json:"PromotionNo,omitempty" xml:"PromotionNo,omitempty"`
 	UseCoupon          *bool                                                             `json:"UseCoupon,omitempty" xml:"UseCoupon,omitempty"`
@@ -7009,9 +7241,9 @@ func (s *SaveBatchTaskForCreatingOrderActivateResponseBody) SetTaskNo(v string) 
 }
 
 type SaveBatchTaskForCreatingOrderActivateResponse struct {
-	Headers    map[string]*string                                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SaveBatchTaskForCreatingOrderActivateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SaveBatchTaskForCreatingOrderActivateResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SaveBatchTaskForCreatingOrderActivateResponse) String() string {
@@ -7038,8 +7270,9 @@ func (s *SaveBatchTaskForCreatingOrderActivateResponse) SetBody(v *SaveBatchTask
 }
 
 type SaveBatchTaskForCreatingOrderRedeemRequest struct {
-	CouponNo         *string                                                       `json:"CouponNo,omitempty" xml:"CouponNo,omitempty"`
-	Lang             *string                                                       `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	CouponNo *string `json:"CouponNo,omitempty" xml:"CouponNo,omitempty"`
+	Lang     *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// This parameter is required.
 	OrderRedeemParam []*SaveBatchTaskForCreatingOrderRedeemRequestOrderRedeemParam `json:"OrderRedeemParam,omitempty" xml:"OrderRedeemParam,omitempty" type:"Repeated"`
 	PromotionNo      *string                                                       `json:"PromotionNo,omitempty" xml:"PromotionNo,omitempty"`
 	UseCoupon        *bool                                                         `json:"UseCoupon,omitempty" xml:"UseCoupon,omitempty"`
@@ -7137,9 +7370,9 @@ func (s *SaveBatchTaskForCreatingOrderRedeemResponseBody) SetTaskNo(v string) *S
 }
 
 type SaveBatchTaskForCreatingOrderRedeemResponse struct {
-	Headers    map[string]*string                               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SaveBatchTaskForCreatingOrderRedeemResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SaveBatchTaskForCreatingOrderRedeemResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SaveBatchTaskForCreatingOrderRedeemResponse) String() string {
@@ -7166,8 +7399,9 @@ func (s *SaveBatchTaskForCreatingOrderRedeemResponse) SetBody(v *SaveBatchTaskFo
 }
 
 type SaveBatchTaskForCreatingOrderRenewRequest struct {
-	CouponNo        *string                                                     `json:"CouponNo,omitempty" xml:"CouponNo,omitempty"`
-	Lang            *string                                                     `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	CouponNo *string `json:"CouponNo,omitempty" xml:"CouponNo,omitempty"`
+	Lang     *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// This parameter is required.
 	OrderRenewParam []*SaveBatchTaskForCreatingOrderRenewRequestOrderRenewParam `json:"OrderRenewParam,omitempty" xml:"OrderRenewParam,omitempty" type:"Repeated"`
 	PromotionNo     *string                                                     `json:"PromotionNo,omitempty" xml:"PromotionNo,omitempty"`
 	UseCoupon       *bool                                                       `json:"UseCoupon,omitempty" xml:"UseCoupon,omitempty"`
@@ -7271,9 +7505,9 @@ func (s *SaveBatchTaskForCreatingOrderRenewResponseBody) SetTaskNo(v string) *Sa
 }
 
 type SaveBatchTaskForCreatingOrderRenewResponse struct {
-	Headers    map[string]*string                              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SaveBatchTaskForCreatingOrderRenewResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SaveBatchTaskForCreatingOrderRenewResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SaveBatchTaskForCreatingOrderRenewResponse) String() string {
@@ -7300,8 +7534,9 @@ func (s *SaveBatchTaskForCreatingOrderRenewResponse) SetBody(v *SaveBatchTaskFor
 }
 
 type SaveBatchTaskForCreatingOrderTransferRequest struct {
-	CouponNo           *string                                                           `json:"CouponNo,omitempty" xml:"CouponNo,omitempty"`
-	Lang               *string                                                           `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	CouponNo *string `json:"CouponNo,omitempty" xml:"CouponNo,omitempty"`
+	Lang     *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// This parameter is required.
 	OrderTransferParam []*SaveBatchTaskForCreatingOrderTransferRequestOrderTransferParam `json:"OrderTransferParam,omitempty" xml:"OrderTransferParam,omitempty" type:"Repeated"`
 	PromotionNo        *string                                                           `json:"PromotionNo,omitempty" xml:"PromotionNo,omitempty"`
 	UseCoupon          *bool                                                             `json:"UseCoupon,omitempty" xml:"UseCoupon,omitempty"`
@@ -7411,9 +7646,9 @@ func (s *SaveBatchTaskForCreatingOrderTransferResponseBody) SetTaskNo(v string) 
 }
 
 type SaveBatchTaskForCreatingOrderTransferResponse struct {
-	Headers    map[string]*string                                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SaveBatchTaskForCreatingOrderTransferResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SaveBatchTaskForCreatingOrderTransferResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SaveBatchTaskForCreatingOrderTransferResponse) String() string {
@@ -7440,10 +7675,12 @@ func (s *SaveBatchTaskForCreatingOrderTransferResponse) SetBody(v *SaveBatchTask
 }
 
 type SaveBatchTaskForDomainNameProxyServiceRequest struct {
+	// This parameter is required.
 	DomainName   []*string `json:"DomainName,omitempty" xml:"DomainName,omitempty" type:"Repeated"`
 	Lang         *string   `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	UserClientIp *string   `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
-	Status       *bool     `json:"status,omitempty" xml:"status,omitempty"`
+	// This parameter is required.
+	Status *bool `json:"status,omitempty" xml:"status,omitempty"`
 }
 
 func (s SaveBatchTaskForDomainNameProxyServiceRequest) String() string {
@@ -7498,9 +7735,9 @@ func (s *SaveBatchTaskForDomainNameProxyServiceResponseBody) SetTaskNo(v string)
 }
 
 type SaveBatchTaskForDomainNameProxyServiceResponse struct {
-	Headers    map[string]*string                                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SaveBatchTaskForDomainNameProxyServiceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SaveBatchTaskForDomainNameProxyServiceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SaveBatchTaskForDomainNameProxyServiceResponse) String() string {
@@ -7527,7 +7764,9 @@ func (s *SaveBatchTaskForDomainNameProxyServiceResponse) SetBody(v *SaveBatchTas
 }
 
 type SaveBatchTaskForModifyingDomainDnsRequest struct {
-	AliyunDns        *bool     `json:"AliyunDns,omitempty" xml:"AliyunDns,omitempty"`
+	// This parameter is required.
+	AliyunDns *bool `json:"AliyunDns,omitempty" xml:"AliyunDns,omitempty"`
+	// This parameter is required.
 	DomainName       []*string `json:"DomainName,omitempty" xml:"DomainName,omitempty" type:"Repeated"`
 	DomainNameServer []*string `json:"DomainNameServer,omitempty" xml:"DomainNameServer,omitempty" type:"Repeated"`
 	Lang             *string   `json:"Lang,omitempty" xml:"Lang,omitempty"`
@@ -7591,9 +7830,9 @@ func (s *SaveBatchTaskForModifyingDomainDnsResponseBody) SetTaskNo(v string) *Sa
 }
 
 type SaveBatchTaskForModifyingDomainDnsResponse struct {
-	Headers    map[string]*string                              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SaveBatchTaskForModifyingDomainDnsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SaveBatchTaskForModifyingDomainDnsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SaveBatchTaskForModifyingDomainDnsResponse) String() string {
@@ -7620,8 +7859,10 @@ func (s *SaveBatchTaskForModifyingDomainDnsResponse) SetBody(v *SaveBatchTaskFor
 }
 
 type SaveBatchTaskForReserveDropListDomainRequest struct {
-	ContactTemplateId *string                                                `json:"ContactTemplateId,omitempty" xml:"ContactTemplateId,omitempty"`
-	Domains           []*SaveBatchTaskForReserveDropListDomainRequestDomains `json:"Domains,omitempty" xml:"Domains,omitempty" type:"Repeated"`
+	// This parameter is required.
+	ContactTemplateId *string `json:"ContactTemplateId,omitempty" xml:"ContactTemplateId,omitempty"`
+	// This parameter is required.
+	Domains []*SaveBatchTaskForReserveDropListDomainRequestDomains `json:"Domains,omitempty" xml:"Domains,omitempty" type:"Repeated"`
 }
 
 func (s SaveBatchTaskForReserveDropListDomainRequest) String() string {
@@ -7643,6 +7884,9 @@ func (s *SaveBatchTaskForReserveDropListDomainRequest) SetDomains(v []*SaveBatch
 }
 
 type SaveBatchTaskForReserveDropListDomainRequestDomains struct {
+	Dns1 *string `json:"Dns1,omitempty" xml:"Dns1,omitempty"`
+	Dns2 *string `json:"Dns2,omitempty" xml:"Dns2,omitempty"`
+	// This parameter is required.
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 }
 
@@ -7652,6 +7896,16 @@ func (s SaveBatchTaskForReserveDropListDomainRequestDomains) String() string {
 
 func (s SaveBatchTaskForReserveDropListDomainRequestDomains) GoString() string {
 	return s.String()
+}
+
+func (s *SaveBatchTaskForReserveDropListDomainRequestDomains) SetDns1(v string) *SaveBatchTaskForReserveDropListDomainRequestDomains {
+	s.Dns1 = &v
+	return s
+}
+
+func (s *SaveBatchTaskForReserveDropListDomainRequestDomains) SetDns2(v string) *SaveBatchTaskForReserveDropListDomainRequestDomains {
+	s.Dns2 = &v
+	return s
 }
 
 func (s *SaveBatchTaskForReserveDropListDomainRequestDomains) SetDomainName(v string) *SaveBatchTaskForReserveDropListDomainRequestDomains {
@@ -7683,9 +7937,9 @@ func (s *SaveBatchTaskForReserveDropListDomainResponseBody) SetTaskNo(v string) 
 }
 
 type SaveBatchTaskForReserveDropListDomainResponse struct {
-	Headers    map[string]*string                                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SaveBatchTaskForReserveDropListDomainResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SaveBatchTaskForReserveDropListDomainResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SaveBatchTaskForReserveDropListDomainResponse) String() string {
@@ -7712,10 +7966,12 @@ func (s *SaveBatchTaskForReserveDropListDomainResponse) SetBody(v *SaveBatchTask
 }
 
 type SaveBatchTaskForTransferProhibitionLockRequest struct {
-	DomainName   []*string `json:"DomainName,omitempty" xml:"DomainName,omitempty" type:"Repeated"`
-	Lang         *string   `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	Status       *bool     `json:"Status,omitempty" xml:"Status,omitempty"`
-	UserClientIp *string   `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
+	// This parameter is required.
+	DomainName []*string `json:"DomainName,omitempty" xml:"DomainName,omitempty" type:"Repeated"`
+	Lang       *string   `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// This parameter is required.
+	Status       *bool   `json:"Status,omitempty" xml:"Status,omitempty"`
+	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
 }
 
 func (s SaveBatchTaskForTransferProhibitionLockRequest) String() string {
@@ -7770,9 +8026,9 @@ func (s *SaveBatchTaskForTransferProhibitionLockResponseBody) SetTaskNo(v string
 }
 
 type SaveBatchTaskForTransferProhibitionLockResponse struct {
-	Headers    map[string]*string                                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SaveBatchTaskForTransferProhibitionLockResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SaveBatchTaskForTransferProhibitionLockResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SaveBatchTaskForTransferProhibitionLockResponse) String() string {
@@ -7799,10 +8055,12 @@ func (s *SaveBatchTaskForTransferProhibitionLockResponse) SetBody(v *SaveBatchTa
 }
 
 type SaveBatchTaskForUpdateProhibitionLockRequest struct {
-	DomainName   []*string `json:"DomainName,omitempty" xml:"DomainName,omitempty" type:"Repeated"`
-	Lang         *string   `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	Status       *bool     `json:"Status,omitempty" xml:"Status,omitempty"`
-	UserClientIp *string   `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
+	// This parameter is required.
+	DomainName []*string `json:"DomainName,omitempty" xml:"DomainName,omitempty" type:"Repeated"`
+	Lang       *string   `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// This parameter is required.
+	Status       *bool   `json:"Status,omitempty" xml:"Status,omitempty"`
+	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
 }
 
 func (s SaveBatchTaskForUpdateProhibitionLockRequest) String() string {
@@ -7857,9 +8115,9 @@ func (s *SaveBatchTaskForUpdateProhibitionLockResponseBody) SetTaskNo(v string) 
 }
 
 type SaveBatchTaskForUpdateProhibitionLockResponse struct {
-	Headers    map[string]*string                                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SaveBatchTaskForUpdateProhibitionLockResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SaveBatchTaskForUpdateProhibitionLockResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SaveBatchTaskForUpdateProhibitionLockResponse) String() string {
@@ -7886,12 +8144,15 @@ func (s *SaveBatchTaskForUpdateProhibitionLockResponse) SetBody(v *SaveBatchTask
 }
 
 type SaveBatchTaskForUpdatingContactInfoRequest struct {
-	AddTransferLock     *bool     `json:"AddTransferLock,omitempty" xml:"AddTransferLock,omitempty"`
-	ContactType         *string   `json:"ContactType,omitempty" xml:"ContactType,omitempty"`
-	DomainName          []*string `json:"DomainName,omitempty" xml:"DomainName,omitempty" type:"Repeated"`
-	Lang                *string   `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	RegistrantProfileId *int64    `json:"RegistrantProfileId,omitempty" xml:"RegistrantProfileId,omitempty"`
-	UserClientIp        *string   `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
+	AddTransferLock *bool `json:"AddTransferLock,omitempty" xml:"AddTransferLock,omitempty"`
+	// This parameter is required.
+	ContactType *string `json:"ContactType,omitempty" xml:"ContactType,omitempty"`
+	// This parameter is required.
+	DomainName []*string `json:"DomainName,omitempty" xml:"DomainName,omitempty" type:"Repeated"`
+	Lang       *string   `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// This parameter is required.
+	RegistrantProfileId *int64  `json:"RegistrantProfileId,omitempty" xml:"RegistrantProfileId,omitempty"`
+	UserClientIp        *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
 }
 
 func (s SaveBatchTaskForUpdatingContactInfoRequest) String() string {
@@ -7956,9 +8217,9 @@ func (s *SaveBatchTaskForUpdatingContactInfoResponseBody) SetTaskNo(v string) *S
 }
 
 type SaveBatchTaskForUpdatingContactInfoResponse struct {
-	Headers    map[string]*string                               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SaveBatchTaskForUpdatingContactInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SaveBatchTaskForUpdatingContactInfoResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SaveBatchTaskForUpdatingContactInfoResponse) String() string {
@@ -7985,10 +8246,12 @@ func (s *SaveBatchTaskForUpdatingContactInfoResponse) SetBody(v *SaveBatchTaskFo
 }
 
 type SaveBatchTaskForUpdatingContactInfoByNewContactRequest struct {
-	Address                *string   `json:"Address,omitempty" xml:"Address,omitempty"`
-	City                   *string   `json:"City,omitempty" xml:"City,omitempty"`
-	ContactType            *string   `json:"ContactType,omitempty" xml:"ContactType,omitempty"`
-	Country                *string   `json:"Country,omitempty" xml:"Country,omitempty"`
+	Address *string `json:"Address,omitempty" xml:"Address,omitempty"`
+	City    *string `json:"City,omitempty" xml:"City,omitempty"`
+	// This parameter is required.
+	ContactType *string `json:"ContactType,omitempty" xml:"ContactType,omitempty"`
+	Country     *string `json:"Country,omitempty" xml:"Country,omitempty"`
+	// This parameter is required.
 	DomainName             []*string `json:"DomainName,omitempty" xml:"DomainName,omitempty" type:"Repeated"`
 	Email                  *string   `json:"Email,omitempty" xml:"Email,omitempty"`
 	Lang                   *string   `json:"Lang,omitempty" xml:"Lang,omitempty"`
@@ -8115,9 +8378,9 @@ func (s *SaveBatchTaskForUpdatingContactInfoByNewContactResponseBody) SetTaskNo(
 }
 
 type SaveBatchTaskForUpdatingContactInfoByNewContactResponse struct {
-	Headers    map[string]*string                                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SaveBatchTaskForUpdatingContactInfoByNewContactResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SaveBatchTaskForUpdatingContactInfoByNewContactResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SaveBatchTaskForUpdatingContactInfoByNewContactResponse) String() string {
@@ -8144,23 +8407,74 @@ func (s *SaveBatchTaskForUpdatingContactInfoByNewContactResponse) SetBody(v *Sav
 }
 
 type SaveRegistrantProfileRequest struct {
-	Address                  *string `json:"Address,omitempty" xml:"Address,omitempty"`
-	City                     *string `json:"City,omitempty" xml:"City,omitempty"`
-	Country                  *string `json:"Country,omitempty" xml:"Country,omitempty"`
-	DefaultRegistrantProfile *bool   `json:"DefaultRegistrantProfile,omitempty" xml:"DefaultRegistrantProfile,omitempty"`
-	Email                    *string `json:"Email,omitempty" xml:"Email,omitempty"`
-	Lang                     *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	PostalCode               *string `json:"PostalCode,omitempty" xml:"PostalCode,omitempty"`
-	Province                 *string `json:"Province,omitempty" xml:"Province,omitempty"`
-	RegistrantName           *string `json:"RegistrantName,omitempty" xml:"RegistrantName,omitempty"`
-	RegistrantOrganization   *string `json:"RegistrantOrganization,omitempty" xml:"RegistrantOrganization,omitempty"`
-	RegistrantProfileId      *int64  `json:"RegistrantProfileId,omitempty" xml:"RegistrantProfileId,omitempty"`
-	RegistrantProfileType    *string `json:"RegistrantProfileType,omitempty" xml:"RegistrantProfileType,omitempty"`
-	RegistrantType           *string `json:"RegistrantType,omitempty" xml:"RegistrantType,omitempty"`
-	TelArea                  *string `json:"TelArea,omitempty" xml:"TelArea,omitempty"`
-	TelExt                   *string `json:"TelExt,omitempty" xml:"TelExt,omitempty"`
-	Telephone                *string `json:"Telephone,omitempty" xml:"Telephone,omitempty"`
-	UserClientIp             *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
+	// example:
+	//
+	// *****************************************************
+	Address *string `json:"Address,omitempty" xml:"Address,omitempty"`
+	// example:
+	//
+	// long yan shi
+	City *string `json:"City,omitempty" xml:"City,omitempty"`
+	// example:
+	//
+	// CN
+	Country *string `json:"Country,omitempty" xml:"Country,omitempty"`
+	// example:
+	//
+	// false
+	DefaultRegistrantProfile *bool `json:"DefaultRegistrantProfile,omitempty" xml:"DefaultRegistrantProfile,omitempty"`
+	// example:
+	//
+	// username@example.com
+	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	// example:
+	//
+	// en
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// example:
+	//
+	// 236300
+	PostalCode *string `json:"PostalCode,omitempty" xml:"PostalCode,omitempty"`
+	// example:
+	//
+	// fu jian
+	Province *string `json:"Province,omitempty" xml:"Province,omitempty"`
+	// example:
+	//
+	// chen zi chen
+	RegistrantName *string `json:"RegistrantName,omitempty" xml:"RegistrantName,omitempty"`
+	// example:
+	//
+	// liu yang
+	RegistrantOrganization *string `json:"RegistrantOrganization,omitempty" xml:"RegistrantOrganization,omitempty"`
+	// example:
+	//
+	// 12659727
+	RegistrantProfileId *int64 `json:"RegistrantProfileId,omitempty" xml:"RegistrantProfileId,omitempty"`
+	// example:
+	//
+	// common
+	RegistrantProfileType *string `json:"RegistrantProfileType,omitempty" xml:"RegistrantProfileType,omitempty"`
+	// example:
+	//
+	// 1
+	RegistrantType *string `json:"RegistrantType,omitempty" xml:"RegistrantType,omitempty"`
+	// example:
+	//
+	// 86
+	TelArea *string `json:"TelArea,omitempty" xml:"TelArea,omitempty"`
+	// example:
+	//
+	// 7381
+	TelExt *string `json:"TelExt,omitempty" xml:"TelExt,omitempty"`
+	// example:
+	//
+	// 1829756****
+	Telephone *string `json:"Telephone,omitempty" xml:"Telephone,omitempty"`
+	// example:
+	//
+	// 127.0.0.1
+	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
 }
 
 func (s SaveRegistrantProfileRequest) String() string {
@@ -8257,8 +8571,14 @@ func (s *SaveRegistrantProfileRequest) SetUserClientIp(v string) *SaveRegistrant
 }
 
 type SaveRegistrantProfileResponseBody struct {
-	RegistrantProfileId *int64  `json:"RegistrantProfileId,omitempty" xml:"RegistrantProfileId,omitempty"`
-	RequestId           *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 12380891
+	RegistrantProfileId *int64 `json:"RegistrantProfileId,omitempty" xml:"RegistrantProfileId,omitempty"`
+	// example:
+	//
+	// A9C35C47-3366-482E-B872-8C9EA4733FE9
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s SaveRegistrantProfileResponseBody) String() string {
@@ -8280,9 +8600,9 @@ func (s *SaveRegistrantProfileResponseBody) SetRequestId(v string) *SaveRegistra
 }
 
 type SaveRegistrantProfileResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SaveRegistrantProfileResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SaveRegistrantProfileResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SaveRegistrantProfileResponse) String() string {
@@ -8309,10 +8629,15 @@ func (s *SaveRegistrantProfileResponse) SetBody(v *SaveRegistrantProfileResponse
 }
 
 type SaveSingleTaskForAddingDSRecordRequest struct {
-	Algorithm    *int32  `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
-	Digest       *string `json:"Digest,omitempty" xml:"Digest,omitempty"`
-	DigestType   *int32  `json:"DigestType,omitempty" xml:"DigestType,omitempty"`
-	DomainName   *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// This parameter is required.
+	Algorithm *int32 `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
+	// This parameter is required.
+	Digest *string `json:"Digest,omitempty" xml:"Digest,omitempty"`
+	// This parameter is required.
+	DigestType *int32 `json:"DigestType,omitempty" xml:"DigestType,omitempty"`
+	// This parameter is required.
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// This parameter is required.
 	KeyTag       *int32  `json:"KeyTag,omitempty" xml:"KeyTag,omitempty"`
 	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
@@ -8385,9 +8710,9 @@ func (s *SaveSingleTaskForAddingDSRecordResponseBody) SetTaskNo(v string) *SaveS
 }
 
 type SaveSingleTaskForAddingDSRecordResponse struct {
-	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SaveSingleTaskForAddingDSRecordResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SaveSingleTaskForAddingDSRecordResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SaveSingleTaskForAddingDSRecordResponse) String() string {
@@ -8414,6 +8739,7 @@ func (s *SaveSingleTaskForAddingDSRecordResponse) SetBody(v *SaveSingleTaskForAd
 }
 
 type SaveSingleTaskForApprovingTransferOutRequest struct {
+	// This parameter is required.
 	DomainName   *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
@@ -8466,9 +8792,9 @@ func (s *SaveSingleTaskForApprovingTransferOutResponseBody) SetTaskNo(v string) 
 }
 
 type SaveSingleTaskForApprovingTransferOutResponse struct {
-	Headers    map[string]*string                                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SaveSingleTaskForApprovingTransferOutResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SaveSingleTaskForApprovingTransferOutResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SaveSingleTaskForApprovingTransferOutResponse) String() string {
@@ -8495,9 +8821,25 @@ func (s *SaveSingleTaskForApprovingTransferOutResponse) SetBody(v *SaveSingleTas
 }
 
 type SaveSingleTaskForAssociatingEnsRequest struct {
-	Address      *string `json:"Address,omitempty" xml:"Address,omitempty"`
-	DomainName   *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0x0000000000000000000000000000000000000003
+	Address *string `json:"Address,omitempty" xml:"Address,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// abc.luxe
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// example:
+	//
+	// en
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// example:
+	//
+	// 127.0.0.1
 	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
 }
 
@@ -8530,8 +8872,14 @@ func (s *SaveSingleTaskForAssociatingEnsRequest) SetUserClientIp(v string) *Save
 }
 
 type SaveSingleTaskForAssociatingEnsResponseBody struct {
+	// example:
+	//
+	// A9C35C47-3366-482E-B872-8C9EA4733FE9
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TaskNo    *string `json:"TaskNo,omitempty" xml:"TaskNo,omitempty"`
+	// example:
+	//
+	// 561bc091-f16f-4132-8d63-f15edce45731
+	TaskNo *string `json:"TaskNo,omitempty" xml:"TaskNo,omitempty"`
 }
 
 func (s SaveSingleTaskForAssociatingEnsResponseBody) String() string {
@@ -8553,9 +8901,9 @@ func (s *SaveSingleTaskForAssociatingEnsResponseBody) SetTaskNo(v string) *SaveS
 }
 
 type SaveSingleTaskForAssociatingEnsResponse struct {
-	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SaveSingleTaskForAssociatingEnsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SaveSingleTaskForAssociatingEnsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SaveSingleTaskForAssociatingEnsResponse) String() string {
@@ -8582,6 +8930,7 @@ func (s *SaveSingleTaskForAssociatingEnsResponse) SetBody(v *SaveSingleTaskForAs
 }
 
 type SaveSingleTaskForCancelingTransferInRequest struct {
+	// This parameter is required.
 	DomainName   *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
@@ -8634,9 +8983,9 @@ func (s *SaveSingleTaskForCancelingTransferInResponseBody) SetTaskNo(v string) *
 }
 
 type SaveSingleTaskForCancelingTransferInResponse struct {
-	Headers    map[string]*string                                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SaveSingleTaskForCancelingTransferInResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SaveSingleTaskForCancelingTransferInResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SaveSingleTaskForCancelingTransferInResponse) String() string {
@@ -8663,6 +9012,7 @@ func (s *SaveSingleTaskForCancelingTransferInResponse) SetBody(v *SaveSingleTask
 }
 
 type SaveSingleTaskForCancelingTransferOutRequest struct {
+	// This parameter is required.
 	DomainName   *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
@@ -8715,9 +9065,9 @@ func (s *SaveSingleTaskForCancelingTransferOutResponseBody) SetTaskNo(v string) 
 }
 
 type SaveSingleTaskForCancelingTransferOutResponse struct {
-	Headers    map[string]*string                                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SaveSingleTaskForCancelingTransferOutResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SaveSingleTaskForCancelingTransferOutResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SaveSingleTaskForCancelingTransferOutResponse) String() string {
@@ -8744,8 +9094,11 @@ func (s *SaveSingleTaskForCancelingTransferOutResponse) SetBody(v *SaveSingleTas
 }
 
 type SaveSingleTaskForCreatingDnsHostRequest struct {
-	DnsName      *string   `json:"DnsName,omitempty" xml:"DnsName,omitempty"`
-	InstanceId   *string   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	DnsName *string `json:"DnsName,omitempty" xml:"DnsName,omitempty"`
+	// This parameter is required.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
 	Ip           []*string `json:"Ip,omitempty" xml:"Ip,omitempty" type:"Repeated"`
 	Lang         *string   `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	UserClientIp *string   `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
@@ -8808,9 +9161,9 @@ func (s *SaveSingleTaskForCreatingDnsHostResponseBody) SetTaskNo(v string) *Save
 }
 
 type SaveSingleTaskForCreatingDnsHostResponse struct {
-	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SaveSingleTaskForCreatingDnsHostResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SaveSingleTaskForCreatingDnsHostResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SaveSingleTaskForCreatingDnsHostResponse) String() string {
@@ -8837,13 +9190,14 @@ func (s *SaveSingleTaskForCreatingDnsHostResponse) SetBody(v *SaveSingleTaskForC
 }
 
 type SaveSingleTaskForCreatingOrderActivateRequest struct {
-	Address                   *string `json:"Address,omitempty" xml:"Address,omitempty"`
-	AliyunDns                 *bool   `json:"AliyunDns,omitempty" xml:"AliyunDns,omitempty"`
-	City                      *string `json:"City,omitempty" xml:"City,omitempty"`
-	Country                   *string `json:"Country,omitempty" xml:"Country,omitempty"`
-	CouponNo                  *string `json:"CouponNo,omitempty" xml:"CouponNo,omitempty"`
-	Dns1                      *string `json:"Dns1,omitempty" xml:"Dns1,omitempty"`
-	Dns2                      *string `json:"Dns2,omitempty" xml:"Dns2,omitempty"`
+	Address   *string `json:"Address,omitempty" xml:"Address,omitempty"`
+	AliyunDns *bool   `json:"AliyunDns,omitempty" xml:"AliyunDns,omitempty"`
+	City      *string `json:"City,omitempty" xml:"City,omitempty"`
+	Country   *string `json:"Country,omitempty" xml:"Country,omitempty"`
+	CouponNo  *string `json:"CouponNo,omitempty" xml:"CouponNo,omitempty"`
+	Dns1      *string `json:"Dns1,omitempty" xml:"Dns1,omitempty"`
+	Dns2      *string `json:"Dns2,omitempty" xml:"Dns2,omitempty"`
+	// This parameter is required.
 	DomainName                *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	Email                     *string `json:"Email,omitempty" xml:"Email,omitempty"`
 	EnableDomainProxy         *bool   `json:"EnableDomainProxy,omitempty" xml:"EnableDomainProxy,omitempty"`
@@ -9033,9 +9387,9 @@ func (s *SaveSingleTaskForCreatingOrderActivateResponseBody) SetTaskNo(v string)
 }
 
 type SaveSingleTaskForCreatingOrderActivateResponse struct {
-	Headers    map[string]*string                                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SaveSingleTaskForCreatingOrderActivateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SaveSingleTaskForCreatingOrderActivateResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SaveSingleTaskForCreatingOrderActivateResponse) String() string {
@@ -9062,14 +9416,16 @@ func (s *SaveSingleTaskForCreatingOrderActivateResponse) SetBody(v *SaveSingleTa
 }
 
 type SaveSingleTaskForCreatingOrderRedeemRequest struct {
-	CouponNo              *string `json:"CouponNo,omitempty" xml:"CouponNo,omitempty"`
-	CurrentExpirationDate *int64  `json:"CurrentExpirationDate,omitempty" xml:"CurrentExpirationDate,omitempty"`
-	DomainName            *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	Lang                  *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	PromotionNo           *string `json:"PromotionNo,omitempty" xml:"PromotionNo,omitempty"`
-	UseCoupon             *bool   `json:"UseCoupon,omitempty" xml:"UseCoupon,omitempty"`
-	UsePromotion          *bool   `json:"UsePromotion,omitempty" xml:"UsePromotion,omitempty"`
-	UserClientIp          *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
+	CouponNo *string `json:"CouponNo,omitempty" xml:"CouponNo,omitempty"`
+	// This parameter is required.
+	CurrentExpirationDate *int64 `json:"CurrentExpirationDate,omitempty" xml:"CurrentExpirationDate,omitempty"`
+	// This parameter is required.
+	DomainName   *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	PromotionNo  *string `json:"PromotionNo,omitempty" xml:"PromotionNo,omitempty"`
+	UseCoupon    *bool   `json:"UseCoupon,omitempty" xml:"UseCoupon,omitempty"`
+	UsePromotion *bool   `json:"UsePromotion,omitempty" xml:"UsePromotion,omitempty"`
+	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
 }
 
 func (s SaveSingleTaskForCreatingOrderRedeemRequest) String() string {
@@ -9144,9 +9500,9 @@ func (s *SaveSingleTaskForCreatingOrderRedeemResponseBody) SetTaskNo(v string) *
 }
 
 type SaveSingleTaskForCreatingOrderRedeemResponse struct {
-	Headers    map[string]*string                                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SaveSingleTaskForCreatingOrderRedeemResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SaveSingleTaskForCreatingOrderRedeemResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SaveSingleTaskForCreatingOrderRedeemResponse) String() string {
@@ -9173,15 +9529,18 @@ func (s *SaveSingleTaskForCreatingOrderRedeemResponse) SetBody(v *SaveSingleTask
 }
 
 type SaveSingleTaskForCreatingOrderRenewRequest struct {
-	CouponNo              *string `json:"CouponNo,omitempty" xml:"CouponNo,omitempty"`
-	CurrentExpirationDate *int64  `json:"CurrentExpirationDate,omitempty" xml:"CurrentExpirationDate,omitempty"`
-	DomainName            *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	Lang                  *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	PromotionNo           *string `json:"PromotionNo,omitempty" xml:"PromotionNo,omitempty"`
-	SubscriptionDuration  *int32  `json:"SubscriptionDuration,omitempty" xml:"SubscriptionDuration,omitempty"`
-	UseCoupon             *bool   `json:"UseCoupon,omitempty" xml:"UseCoupon,omitempty"`
-	UsePromotion          *bool   `json:"UsePromotion,omitempty" xml:"UsePromotion,omitempty"`
-	UserClientIp          *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
+	CouponNo *string `json:"CouponNo,omitempty" xml:"CouponNo,omitempty"`
+	// This parameter is required.
+	CurrentExpirationDate *int64 `json:"CurrentExpirationDate,omitempty" xml:"CurrentExpirationDate,omitempty"`
+	// This parameter is required.
+	DomainName  *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	Lang        *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	PromotionNo *string `json:"PromotionNo,omitempty" xml:"PromotionNo,omitempty"`
+	// This parameter is required.
+	SubscriptionDuration *int32  `json:"SubscriptionDuration,omitempty" xml:"SubscriptionDuration,omitempty"`
+	UseCoupon            *bool   `json:"UseCoupon,omitempty" xml:"UseCoupon,omitempty"`
+	UsePromotion         *bool   `json:"UsePromotion,omitempty" xml:"UsePromotion,omitempty"`
+	UserClientIp         *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
 }
 
 func (s SaveSingleTaskForCreatingOrderRenewRequest) String() string {
@@ -9261,9 +9620,9 @@ func (s *SaveSingleTaskForCreatingOrderRenewResponseBody) SetTaskNo(v string) *S
 }
 
 type SaveSingleTaskForCreatingOrderRenewResponse struct {
-	Headers    map[string]*string                               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SaveSingleTaskForCreatingOrderRenewResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SaveSingleTaskForCreatingOrderRenewResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SaveSingleTaskForCreatingOrderRenewResponse) String() string {
@@ -9290,16 +9649,19 @@ func (s *SaveSingleTaskForCreatingOrderRenewResponse) SetBody(v *SaveSingleTaskF
 }
 
 type SaveSingleTaskForCreatingOrderTransferRequest struct {
-	AuthorizationCode     *string `json:"AuthorizationCode,omitempty" xml:"AuthorizationCode,omitempty"`
-	CouponNo              *string `json:"CouponNo,omitempty" xml:"CouponNo,omitempty"`
+	// This parameter is required.
+	AuthorizationCode *string `json:"AuthorizationCode,omitempty" xml:"AuthorizationCode,omitempty"`
+	CouponNo          *string `json:"CouponNo,omitempty" xml:"CouponNo,omitempty"`
+	// This parameter is required.
 	DomainName            *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	Lang                  *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	PermitPremiumTransfer *bool   `json:"PermitPremiumTransfer,omitempty" xml:"PermitPremiumTransfer,omitempty"`
 	PromotionNo           *string `json:"PromotionNo,omitempty" xml:"PromotionNo,omitempty"`
-	RegistrantProfileId   *int64  `json:"RegistrantProfileId,omitempty" xml:"RegistrantProfileId,omitempty"`
-	UseCoupon             *bool   `json:"UseCoupon,omitempty" xml:"UseCoupon,omitempty"`
-	UsePromotion          *bool   `json:"UsePromotion,omitempty" xml:"UsePromotion,omitempty"`
-	UserClientIp          *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
+	// This parameter is required.
+	RegistrantProfileId *int64  `json:"RegistrantProfileId,omitempty" xml:"RegistrantProfileId,omitempty"`
+	UseCoupon           *bool   `json:"UseCoupon,omitempty" xml:"UseCoupon,omitempty"`
+	UsePromotion        *bool   `json:"UsePromotion,omitempty" xml:"UsePromotion,omitempty"`
+	UserClientIp        *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
 }
 
 func (s SaveSingleTaskForCreatingOrderTransferRequest) String() string {
@@ -9384,9 +9746,9 @@ func (s *SaveSingleTaskForCreatingOrderTransferResponseBody) SetTaskNo(v string)
 }
 
 type SaveSingleTaskForCreatingOrderTransferResponse struct {
-	Headers    map[string]*string                                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SaveSingleTaskForCreatingOrderTransferResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SaveSingleTaskForCreatingOrderTransferResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SaveSingleTaskForCreatingOrderTransferResponse) String() string {
@@ -9413,7 +9775,9 @@ func (s *SaveSingleTaskForCreatingOrderTransferResponse) SetBody(v *SaveSingleTa
 }
 
 type SaveSingleTaskForDeletingDSRecordRequest struct {
-	DomainName   *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// This parameter is required.
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// This parameter is required.
 	KeyTag       *int32  `json:"KeyTag,omitempty" xml:"KeyTag,omitempty"`
 	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
@@ -9471,9 +9835,9 @@ func (s *SaveSingleTaskForDeletingDSRecordResponseBody) SetTaskNo(v string) *Sav
 }
 
 type SaveSingleTaskForDeletingDSRecordResponse struct {
-	Headers    map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SaveSingleTaskForDeletingDSRecordResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SaveSingleTaskForDeletingDSRecordResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SaveSingleTaskForDeletingDSRecordResponse) String() string {
@@ -9500,8 +9864,11 @@ func (s *SaveSingleTaskForDeletingDSRecordResponse) SetBody(v *SaveSingleTaskFor
 }
 
 type SaveSingleTaskForDeletingDnsHostRequest struct {
-	DnsName      *string   `json:"DnsName,omitempty" xml:"DnsName,omitempty"`
-	InstanceId   *string   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	DnsName *string `json:"DnsName,omitempty" xml:"DnsName,omitempty"`
+	// This parameter is required.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
 	Ip           []*string `json:"Ip,omitempty" xml:"Ip,omitempty" type:"Repeated"`
 	Lang         *string   `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	UserClientIp *string   `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
@@ -9564,9 +9931,9 @@ func (s *SaveSingleTaskForDeletingDnsHostResponseBody) SetTaskNo(v string) *Save
 }
 
 type SaveSingleTaskForDeletingDnsHostResponse struct {
-	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SaveSingleTaskForDeletingDnsHostResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SaveSingleTaskForDeletingDnsHostResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SaveSingleTaskForDeletingDnsHostResponse) String() string {
@@ -9593,8 +9960,19 @@ func (s *SaveSingleTaskForDeletingDnsHostResponse) SetBody(v *SaveSingleTaskForD
 }
 
 type SaveSingleTaskForDisassociatingEnsRequest struct {
-	DomainName   *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// abc.luxe
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// example:
+	//
+	// en
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// example:
+	//
+	// 127.0.0.1
 	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
 }
 
@@ -9622,8 +10000,14 @@ func (s *SaveSingleTaskForDisassociatingEnsRequest) SetUserClientIp(v string) *S
 }
 
 type SaveSingleTaskForDisassociatingEnsResponseBody struct {
+	// example:
+	//
+	// A9C35C47-3366-482E-B872-8C9EA4733FE9
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TaskNo    *string `json:"TaskNo,omitempty" xml:"TaskNo,omitempty"`
+	// example:
+	//
+	// 561bc091-f16f-4132-8d63-f15edce45731
+	TaskNo *string `json:"TaskNo,omitempty" xml:"TaskNo,omitempty"`
 }
 
 func (s SaveSingleTaskForDisassociatingEnsResponseBody) String() string {
@@ -9645,9 +10029,9 @@ func (s *SaveSingleTaskForDisassociatingEnsResponseBody) SetTaskNo(v string) *Sa
 }
 
 type SaveSingleTaskForDisassociatingEnsResponse struct {
-	Headers    map[string]*string                              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SaveSingleTaskForDisassociatingEnsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SaveSingleTaskForDisassociatingEnsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SaveSingleTaskForDisassociatingEnsResponse) String() string {
@@ -9674,8 +10058,10 @@ func (s *SaveSingleTaskForDisassociatingEnsResponse) SetBody(v *SaveSingleTaskFo
 }
 
 type SaveSingleTaskForDomainNameProxyServiceRequest struct {
-	DomainName   *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// This parameter is required.
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	Lang       *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// This parameter is required.
 	Status       *bool   `json:"Status,omitempty" xml:"Status,omitempty"`
 	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
 }
@@ -9732,9 +10118,9 @@ func (s *SaveSingleTaskForDomainNameProxyServiceResponseBody) SetTaskNo(v string
 }
 
 type SaveSingleTaskForDomainNameProxyServiceResponse struct {
-	Headers    map[string]*string                                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SaveSingleTaskForDomainNameProxyServiceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SaveSingleTaskForDomainNameProxyServiceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SaveSingleTaskForDomainNameProxyServiceResponse) String() string {
@@ -9761,10 +10147,15 @@ func (s *SaveSingleTaskForDomainNameProxyServiceResponse) SetBody(v *SaveSingleT
 }
 
 type SaveSingleTaskForModifyingDSRecordRequest struct {
-	Algorithm    *int32  `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
-	Digest       *string `json:"Digest,omitempty" xml:"Digest,omitempty"`
-	DigestType   *int32  `json:"DigestType,omitempty" xml:"DigestType,omitempty"`
-	DomainName   *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// This parameter is required.
+	Algorithm *int32 `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
+	// This parameter is required.
+	Digest *string `json:"Digest,omitempty" xml:"Digest,omitempty"`
+	// This parameter is required.
+	DigestType *int32 `json:"DigestType,omitempty" xml:"DigestType,omitempty"`
+	// This parameter is required.
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// This parameter is required.
 	KeyTag       *int32  `json:"KeyTag,omitempty" xml:"KeyTag,omitempty"`
 	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
@@ -9837,9 +10228,9 @@ func (s *SaveSingleTaskForModifyingDSRecordResponseBody) SetTaskNo(v string) *Sa
 }
 
 type SaveSingleTaskForModifyingDSRecordResponse struct {
-	Headers    map[string]*string                              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SaveSingleTaskForModifyingDSRecordResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SaveSingleTaskForModifyingDSRecordResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SaveSingleTaskForModifyingDSRecordResponse) String() string {
@@ -9866,8 +10257,11 @@ func (s *SaveSingleTaskForModifyingDSRecordResponse) SetBody(v *SaveSingleTaskFo
 }
 
 type SaveSingleTaskForModifyingDnsHostRequest struct {
-	DnsName      *string   `json:"DnsName,omitempty" xml:"DnsName,omitempty"`
-	InstanceId   *string   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	DnsName *string `json:"DnsName,omitempty" xml:"DnsName,omitempty"`
+	// This parameter is required.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
 	Ip           []*string `json:"Ip,omitempty" xml:"Ip,omitempty" type:"Repeated"`
 	Lang         *string   `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	UserClientIp *string   `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
@@ -9930,9 +10324,9 @@ func (s *SaveSingleTaskForModifyingDnsHostResponseBody) SetTaskNo(v string) *Sav
 }
 
 type SaveSingleTaskForModifyingDnsHostResponse struct {
-	Headers    map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SaveSingleTaskForModifyingDnsHostResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SaveSingleTaskForModifyingDnsHostResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SaveSingleTaskForModifyingDnsHostResponse) String() string {
@@ -9959,6 +10353,7 @@ func (s *SaveSingleTaskForModifyingDnsHostResponse) SetBody(v *SaveSingleTaskFor
 }
 
 type SaveSingleTaskForQueryingTransferAuthorizationCodeRequest struct {
+	// This parameter is required.
 	DomainName   *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
@@ -10011,9 +10406,9 @@ func (s *SaveSingleTaskForQueryingTransferAuthorizationCodeResponseBody) SetTask
 }
 
 type SaveSingleTaskForQueryingTransferAuthorizationCodeResponse struct {
-	Headers    map[string]*string                                              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SaveSingleTaskForQueryingTransferAuthorizationCodeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SaveSingleTaskForQueryingTransferAuthorizationCodeResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SaveSingleTaskForQueryingTransferAuthorizationCodeResponse) String() string {
@@ -10040,8 +10435,9 @@ func (s *SaveSingleTaskForQueryingTransferAuthorizationCodeResponse) SetBody(v *
 }
 
 type SaveSingleTaskForSaveArtExtensionRequest struct {
-	DateOrPeriod            *string `json:"DateOrPeriod,omitempty" xml:"DateOrPeriod,omitempty"`
-	Dimensions              *string `json:"Dimensions,omitempty" xml:"Dimensions,omitempty"`
+	DateOrPeriod *string `json:"DateOrPeriod,omitempty" xml:"DateOrPeriod,omitempty"`
+	Dimensions   *string `json:"Dimensions,omitempty" xml:"Dimensions,omitempty"`
+	// This parameter is required.
 	DomainName              *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	Features                *string `json:"Features,omitempty" xml:"Features,omitempty"`
 	InscriptionsAndMarkings *string `json:"InscriptionsAndMarkings,omitempty" xml:"InscriptionsAndMarkings,omitempty"`
@@ -10146,9 +10542,9 @@ func (s *SaveSingleTaskForSaveArtExtensionResponseBody) SetTaskNo(v string) *Sav
 }
 
 type SaveSingleTaskForSaveArtExtensionResponse struct {
-	Headers    map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SaveSingleTaskForSaveArtExtensionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SaveSingleTaskForSaveArtExtensionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SaveSingleTaskForSaveArtExtensionResponse) String() string {
@@ -10175,6 +10571,7 @@ func (s *SaveSingleTaskForSaveArtExtensionResponse) SetBody(v *SaveSingleTaskFor
 }
 
 type SaveSingleTaskForSynchronizingDSRecordRequest struct {
+	// This parameter is required.
 	DomainName   *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
@@ -10227,9 +10624,9 @@ func (s *SaveSingleTaskForSynchronizingDSRecordResponseBody) SetTaskNo(v string)
 }
 
 type SaveSingleTaskForSynchronizingDSRecordResponse struct {
-	Headers    map[string]*string                                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SaveSingleTaskForSynchronizingDSRecordResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SaveSingleTaskForSynchronizingDSRecordResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SaveSingleTaskForSynchronizingDSRecordResponse) String() string {
@@ -10256,6 +10653,7 @@ func (s *SaveSingleTaskForSynchronizingDSRecordResponse) SetBody(v *SaveSingleTa
 }
 
 type SaveSingleTaskForSynchronizingDnsHostRequest struct {
+	// This parameter is required.
 	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
@@ -10308,9 +10706,9 @@ func (s *SaveSingleTaskForSynchronizingDnsHostResponseBody) SetTaskNo(v string) 
 }
 
 type SaveSingleTaskForSynchronizingDnsHostResponse struct {
-	Headers    map[string]*string                                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SaveSingleTaskForSynchronizingDnsHostResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SaveSingleTaskForSynchronizingDnsHostResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SaveSingleTaskForSynchronizingDnsHostResponse) String() string {
@@ -10337,8 +10735,10 @@ func (s *SaveSingleTaskForSynchronizingDnsHostResponse) SetBody(v *SaveSingleTas
 }
 
 type SaveSingleTaskForTransferProhibitionLockRequest struct {
-	DomainName   *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// This parameter is required.
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	Lang       *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// This parameter is required.
 	Status       *bool   `json:"Status,omitempty" xml:"Status,omitempty"`
 	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
 }
@@ -10395,9 +10795,9 @@ func (s *SaveSingleTaskForTransferProhibitionLockResponseBody) SetTaskNo(v strin
 }
 
 type SaveSingleTaskForTransferProhibitionLockResponse struct {
-	Headers    map[string]*string                                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SaveSingleTaskForTransferProhibitionLockResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SaveSingleTaskForTransferProhibitionLockResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SaveSingleTaskForTransferProhibitionLockResponse) String() string {
@@ -10424,8 +10824,10 @@ func (s *SaveSingleTaskForTransferProhibitionLockResponse) SetBody(v *SaveSingle
 }
 
 type SaveSingleTaskForUpdateProhibitionLockRequest struct {
-	DomainName   *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// This parameter is required.
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	Lang       *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// This parameter is required.
 	Status       *bool   `json:"Status,omitempty" xml:"Status,omitempty"`
 	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
 }
@@ -10482,9 +10884,9 @@ func (s *SaveSingleTaskForUpdateProhibitionLockResponseBody) SetTaskNo(v string)
 }
 
 type SaveSingleTaskForUpdateProhibitionLockResponse struct {
-	Headers    map[string]*string                                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SaveSingleTaskForUpdateProhibitionLockResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SaveSingleTaskForUpdateProhibitionLockResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SaveSingleTaskForUpdateProhibitionLockResponse) String() string {
@@ -10511,11 +10913,14 @@ func (s *SaveSingleTaskForUpdateProhibitionLockResponse) SetBody(v *SaveSingleTa
 }
 
 type SaveSingleTaskForUpdatingContactInfoRequest struct {
-	AddTransferLock     *bool   `json:"AddTransferLock,omitempty" xml:"AddTransferLock,omitempty"`
-	ContactType         *string `json:"ContactType,omitempty" xml:"ContactType,omitempty"`
-	DomainName          *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	InstanceId          *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Lang                *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	AddTransferLock *bool `json:"AddTransferLock,omitempty" xml:"AddTransferLock,omitempty"`
+	// This parameter is required.
+	ContactType *string `json:"ContactType,omitempty" xml:"ContactType,omitempty"`
+	// This parameter is required.
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Lang       *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// This parameter is required.
 	RegistrantProfileId *int64  `json:"RegistrantProfileId,omitempty" xml:"RegistrantProfileId,omitempty"`
 	UserClientIp        *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
 }
@@ -10587,9 +10992,9 @@ func (s *SaveSingleTaskForUpdatingContactInfoResponseBody) SetTaskNo(v string) *
 }
 
 type SaveSingleTaskForUpdatingContactInfoResponse struct {
-	Headers    map[string]*string                                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SaveSingleTaskForUpdatingContactInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SaveSingleTaskForUpdatingContactInfoResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SaveSingleTaskForUpdatingContactInfoResponse) String() string {
@@ -10616,6 +11021,7 @@ func (s *SaveSingleTaskForUpdatingContactInfoResponse) SetBody(v *SaveSingleTask
 }
 
 type SaveTaskForSubmittingDomainDeleteRequest struct {
+	// This parameter is required.
 	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
@@ -10668,9 +11074,9 @@ func (s *SaveTaskForSubmittingDomainDeleteResponseBody) SetTaskNo(v string) *Sav
 }
 
 type SaveTaskForSubmittingDomainDeleteResponse struct {
-	Headers    map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SaveTaskForSubmittingDomainDeleteResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SaveTaskForSubmittingDomainDeleteResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SaveTaskForSubmittingDomainDeleteResponse) String() string {
@@ -10697,12 +11103,16 @@ func (s *SaveTaskForSubmittingDomainDeleteResponse) SetBody(v *SaveTaskForSubmit
 }
 
 type SaveTaskForSubmittingDomainRealNameVerificationByIdentityCredentialRequest struct {
-	DomainName             []*string `json:"DomainName,omitempty" xml:"DomainName,omitempty" type:"Repeated"`
-	IdentityCredential     *string   `json:"IdentityCredential,omitempty" xml:"IdentityCredential,omitempty"`
-	IdentityCredentialNo   *string   `json:"IdentityCredentialNo,omitempty" xml:"IdentityCredentialNo,omitempty"`
-	IdentityCredentialType *string   `json:"IdentityCredentialType,omitempty" xml:"IdentityCredentialType,omitempty"`
-	Lang                   *string   `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	UserClientIp           *string   `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
+	// This parameter is required.
+	DomainName []*string `json:"DomainName,omitempty" xml:"DomainName,omitempty" type:"Repeated"`
+	// This parameter is required.
+	IdentityCredential *string `json:"IdentityCredential,omitempty" xml:"IdentityCredential,omitempty"`
+	// This parameter is required.
+	IdentityCredentialNo *string `json:"IdentityCredentialNo,omitempty" xml:"IdentityCredentialNo,omitempty"`
+	// This parameter is required.
+	IdentityCredentialType *string `json:"IdentityCredentialType,omitempty" xml:"IdentityCredentialType,omitempty"`
+	Lang                   *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	UserClientIp           *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
 }
 
 func (s SaveTaskForSubmittingDomainRealNameVerificationByIdentityCredentialRequest) String() string {
@@ -10767,9 +11177,9 @@ func (s *SaveTaskForSubmittingDomainRealNameVerificationByIdentityCredentialResp
 }
 
 type SaveTaskForSubmittingDomainRealNameVerificationByIdentityCredentialResponse struct {
-	Headers    map[string]*string                                                               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                                                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SaveTaskForSubmittingDomainRealNameVerificationByIdentityCredentialResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                                               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                                                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SaveTaskForSubmittingDomainRealNameVerificationByIdentityCredentialResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SaveTaskForSubmittingDomainRealNameVerificationByIdentityCredentialResponse) String() string {
@@ -10796,9 +11206,12 @@ func (s *SaveTaskForSubmittingDomainRealNameVerificationByIdentityCredentialResp
 }
 
 type SaveTaskForSubmittingDomainRealNameVerificationByRegistrantProfileIDRequest struct {
-	DomainName          *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	InstanceId          *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Lang                *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// This parameter is required.
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// This parameter is required.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Lang       *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// This parameter is required.
 	RegistrantProfileId *int64  `json:"RegistrantProfileId,omitempty" xml:"RegistrantProfileId,omitempty"`
 	UserClientIp        *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
 }
@@ -10860,9 +11273,9 @@ func (s *SaveTaskForSubmittingDomainRealNameVerificationByRegistrantProfileIDRes
 }
 
 type SaveTaskForSubmittingDomainRealNameVerificationByRegistrantProfileIDResponse struct {
-	Headers    map[string]*string                                                                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                                                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SaveTaskForSubmittingDomainRealNameVerificationByRegistrantProfileIDResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                                                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                                                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SaveTaskForSubmittingDomainRealNameVerificationByRegistrantProfileIDResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SaveTaskForSubmittingDomainRealNameVerificationByRegistrantProfileIDResponse) String() string {
@@ -10889,25 +11302,33 @@ func (s *SaveTaskForSubmittingDomainRealNameVerificationByRegistrantProfileIDRes
 }
 
 type SaveTaskForUpdatingRegistrantInfoByIdentityCredentialRequest struct {
-	Address                *string   `json:"Address,omitempty" xml:"Address,omitempty"`
-	City                   *string   `json:"City,omitempty" xml:"City,omitempty"`
-	Country                *string   `json:"Country,omitempty" xml:"Country,omitempty"`
-	DomainName             []*string `json:"DomainName,omitempty" xml:"DomainName,omitempty" type:"Repeated"`
-	Email                  *string   `json:"Email,omitempty" xml:"Email,omitempty"`
-	IdentityCredential     *string   `json:"IdentityCredential,omitempty" xml:"IdentityCredential,omitempty"`
-	IdentityCredentialNo   *string   `json:"IdentityCredentialNo,omitempty" xml:"IdentityCredentialNo,omitempty"`
-	IdentityCredentialType *string   `json:"IdentityCredentialType,omitempty" xml:"IdentityCredentialType,omitempty"`
-	Lang                   *string   `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	PostalCode             *string   `json:"PostalCode,omitempty" xml:"PostalCode,omitempty"`
-	Province               *string   `json:"Province,omitempty" xml:"Province,omitempty"`
-	RegistrantName         *string   `json:"RegistrantName,omitempty" xml:"RegistrantName,omitempty"`
-	RegistrantOrganization *string   `json:"RegistrantOrganization,omitempty" xml:"RegistrantOrganization,omitempty"`
-	RegistrantType         *string   `json:"RegistrantType,omitempty" xml:"RegistrantType,omitempty"`
-	TelArea                *string   `json:"TelArea,omitempty" xml:"TelArea,omitempty"`
-	TelExt                 *string   `json:"TelExt,omitempty" xml:"TelExt,omitempty"`
-	Telephone              *string   `json:"Telephone,omitempty" xml:"Telephone,omitempty"`
-	TransferOutProhibited  *bool     `json:"TransferOutProhibited,omitempty" xml:"TransferOutProhibited,omitempty"`
-	UserClientIp           *string   `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
+	Address *string `json:"Address,omitempty" xml:"Address,omitempty"`
+	City    *string `json:"City,omitempty" xml:"City,omitempty"`
+	Country *string `json:"Country,omitempty" xml:"Country,omitempty"`
+	// This parameter is required.
+	DomainName []*string `json:"DomainName,omitempty" xml:"DomainName,omitempty" type:"Repeated"`
+	Email      *string   `json:"Email,omitempty" xml:"Email,omitempty"`
+	// This parameter is required.
+	IdentityCredential *string `json:"IdentityCredential,omitempty" xml:"IdentityCredential,omitempty"`
+	// This parameter is required.
+	IdentityCredentialNo *string `json:"IdentityCredentialNo,omitempty" xml:"IdentityCredentialNo,omitempty"`
+	// This parameter is required.
+	IdentityCredentialType *string `json:"IdentityCredentialType,omitempty" xml:"IdentityCredentialType,omitempty"`
+	Lang                   *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	PostalCode             *string `json:"PostalCode,omitempty" xml:"PostalCode,omitempty"`
+	Province               *string `json:"Province,omitempty" xml:"Province,omitempty"`
+	RegistrantName         *string `json:"RegistrantName,omitempty" xml:"RegistrantName,omitempty"`
+	RegistrantOrganization *string `json:"RegistrantOrganization,omitempty" xml:"RegistrantOrganization,omitempty"`
+	// This parameter is required.
+	RegistrantType *string `json:"RegistrantType,omitempty" xml:"RegistrantType,omitempty"`
+	// This parameter is required.
+	TelArea *string `json:"TelArea,omitempty" xml:"TelArea,omitempty"`
+	TelExt  *string `json:"TelExt,omitempty" xml:"TelExt,omitempty"`
+	// This parameter is required.
+	Telephone *string `json:"Telephone,omitempty" xml:"Telephone,omitempty"`
+	// This parameter is required.
+	TransferOutProhibited *bool   `json:"TransferOutProhibited,omitempty" xml:"TransferOutProhibited,omitempty"`
+	UserClientIp          *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
 }
 
 func (s SaveTaskForUpdatingRegistrantInfoByIdentityCredentialRequest) String() string {
@@ -11037,9 +11458,9 @@ func (s *SaveTaskForUpdatingRegistrantInfoByIdentityCredentialResponseBody) SetT
 }
 
 type SaveTaskForUpdatingRegistrantInfoByIdentityCredentialResponse struct {
-	Headers    map[string]*string                                                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SaveTaskForUpdatingRegistrantInfoByIdentityCredentialResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SaveTaskForUpdatingRegistrantInfoByIdentityCredentialResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SaveTaskForUpdatingRegistrantInfoByIdentityCredentialResponse) String() string {
@@ -11066,11 +11487,14 @@ func (s *SaveTaskForUpdatingRegistrantInfoByIdentityCredentialResponse) SetBody(
 }
 
 type SaveTaskForUpdatingRegistrantInfoByRegistrantProfileIDRequest struct {
-	DomainName            []*string `json:"DomainName,omitempty" xml:"DomainName,omitempty" type:"Repeated"`
-	Lang                  *string   `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	RegistrantProfileId   *int64    `json:"RegistrantProfileId,omitempty" xml:"RegistrantProfileId,omitempty"`
-	TransferOutProhibited *bool     `json:"TransferOutProhibited,omitempty" xml:"TransferOutProhibited,omitempty"`
-	UserClientIp          *string   `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
+	// This parameter is required.
+	DomainName []*string `json:"DomainName,omitempty" xml:"DomainName,omitempty" type:"Repeated"`
+	Lang       *string   `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// This parameter is required.
+	RegistrantProfileId *int64 `json:"RegistrantProfileId,omitempty" xml:"RegistrantProfileId,omitempty"`
+	// This parameter is required.
+	TransferOutProhibited *bool   `json:"TransferOutProhibited,omitempty" xml:"TransferOutProhibited,omitempty"`
+	UserClientIp          *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
 }
 
 func (s SaveTaskForUpdatingRegistrantInfoByRegistrantProfileIDRequest) String() string {
@@ -11130,9 +11554,9 @@ func (s *SaveTaskForUpdatingRegistrantInfoByRegistrantProfileIDResponseBody) Set
 }
 
 type SaveTaskForUpdatingRegistrantInfoByRegistrantProfileIDResponse struct {
-	Headers    map[string]*string                                                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SaveTaskForUpdatingRegistrantInfoByRegistrantProfileIDResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SaveTaskForUpdatingRegistrantInfoByRegistrantProfileIDResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SaveTaskForUpdatingRegistrantInfoByRegistrantProfileIDResponse) String() string {
@@ -11159,6 +11583,7 @@ func (s *SaveTaskForUpdatingRegistrantInfoByRegistrantProfileIDResponse) SetBody
 }
 
 type SubmitEmailVerificationRequest struct {
+	// This parameter is required.
 	Email        *string `json:"Email,omitempty" xml:"Email,omitempty"`
 	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	SendIfExist  *bool   `json:"SendIfExist,omitempty" xml:"SendIfExist,omitempty"`
@@ -11316,9 +11741,9 @@ func (s *SubmitEmailVerificationResponseBodySuccessList) SetMessage(v string) *S
 }
 
 type SubmitEmailVerificationResponse struct {
-	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SubmitEmailVerificationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SubmitEmailVerificationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SubmitEmailVerificationResponse) String() string {
@@ -11345,7 +11770,8 @@ func (s *SubmitEmailVerificationResponse) SetBody(v *SubmitEmailVerificationResp
 }
 
 type TransferInCheckMailTokenRequest struct {
-	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// This parameter is required.
 	Token        *string `json:"Token,omitempty" xml:"Token,omitempty"`
 	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
 }
@@ -11437,9 +11863,9 @@ func (s *TransferInCheckMailTokenResponseBodySuccessList) SetSuccessDomain(v []*
 }
 
 type TransferInCheckMailTokenResponse struct {
-	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *TransferInCheckMailTokenResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *TransferInCheckMailTokenResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s TransferInCheckMailTokenResponse) String() string {
@@ -11466,8 +11892,10 @@ func (s *TransferInCheckMailTokenResponse) SetBody(v *TransferInCheckMailTokenRe
 }
 
 type TransferInReenterTransferAuthorizationCodeRequest struct {
-	DomainName                *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	Lang                      *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// This parameter is required.
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	Lang       *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// This parameter is required.
 	TransferAuthorizationCode *string `json:"TransferAuthorizationCode,omitempty" xml:"TransferAuthorizationCode,omitempty"`
 	UserClientIp              *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
 }
@@ -11518,9 +11946,9 @@ func (s *TransferInReenterTransferAuthorizationCodeResponseBody) SetRequestId(v 
 }
 
 type TransferInReenterTransferAuthorizationCodeResponse struct {
-	Headers    map[string]*string                                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *TransferInReenterTransferAuthorizationCodeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *TransferInReenterTransferAuthorizationCodeResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s TransferInReenterTransferAuthorizationCodeResponse) String() string {
@@ -11547,6 +11975,7 @@ func (s *TransferInReenterTransferAuthorizationCodeResponse) SetBody(v *Transfer
 }
 
 type TransferInRefetchWhoisEmailRequest struct {
+	// This parameter is required.
 	DomainName   *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
@@ -11593,9 +12022,9 @@ func (s *TransferInRefetchWhoisEmailResponseBody) SetRequestId(v string) *Transf
 }
 
 type TransferInRefetchWhoisEmailResponse struct {
-	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *TransferInRefetchWhoisEmailResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *TransferInRefetchWhoisEmailResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s TransferInRefetchWhoisEmailResponse) String() string {
@@ -11622,6 +12051,7 @@ func (s *TransferInRefetchWhoisEmailResponse) SetBody(v *TransferInRefetchWhoisE
 }
 
 type TransferInResendMailTokenRequest struct {
+	// This parameter is required.
 	DomainName   *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
@@ -11668,9 +12098,9 @@ func (s *TransferInResendMailTokenResponseBody) SetRequestId(v string) *Transfer
 }
 
 type TransferInResendMailTokenResponse struct {
-	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *TransferInResendMailTokenResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *TransferInResendMailTokenResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s TransferInResendMailTokenResponse) String() string {
@@ -11815,9 +12245,9 @@ func (s *VerifyContactFieldResponseBody) SetRequestId(v string) *VerifyContactFi
 }
 
 type VerifyContactFieldResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *VerifyContactFieldResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *VerifyContactFieldResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s VerifyContactFieldResponse) String() string {
@@ -11844,7 +12274,8 @@ func (s *VerifyContactFieldResponse) SetBody(v *VerifyContactFieldResponseBody) 
 }
 
 type VerifyEmailRequest struct {
-	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// This parameter is required.
 	Token        *string `json:"Token,omitempty" xml:"Token,omitempty"`
 	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
 }
@@ -11890,9 +12321,9 @@ func (s *VerifyEmailResponseBody) SetRequestId(v string) *VerifyEmailResponseBod
 }
 
 type VerifyEmailResponse struct {
-	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *VerifyEmailResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *VerifyEmailResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s VerifyEmailResponse) String() string {
@@ -11965,6 +12396,11 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
+// @param request - AcknowledgeTaskResultRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AcknowledgeTaskResultResponse
 func (client *Client) AcknowledgeTaskResultWithOptions(request *AcknowledgeTaskResultRequest, runtime *util.RuntimeOptions) (_result *AcknowledgeTaskResultResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -12006,6 +12442,9 @@ func (client *Client) AcknowledgeTaskResultWithOptions(request *AcknowledgeTaskR
 	return _result, _err
 }
 
+// @param request - AcknowledgeTaskResultRequest
+//
+// @return AcknowledgeTaskResultResponse
 func (client *Client) AcknowledgeTaskResult(request *AcknowledgeTaskResultRequest) (_result *AcknowledgeTaskResultResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &AcknowledgeTaskResultResponse{}
@@ -12017,6 +12456,11 @@ func (client *Client) AcknowledgeTaskResult(request *AcknowledgeTaskResultReques
 	return _result, _err
 }
 
+// @param request - BatchFuzzyMatchDomainSensitiveWordRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return BatchFuzzyMatchDomainSensitiveWordResponse
 func (client *Client) BatchFuzzyMatchDomainSensitiveWordWithOptions(request *BatchFuzzyMatchDomainSensitiveWordRequest, runtime *util.RuntimeOptions) (_result *BatchFuzzyMatchDomainSensitiveWordResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -12058,6 +12502,9 @@ func (client *Client) BatchFuzzyMatchDomainSensitiveWordWithOptions(request *Bat
 	return _result, _err
 }
 
+// @param request - BatchFuzzyMatchDomainSensitiveWordRequest
+//
+// @return BatchFuzzyMatchDomainSensitiveWordResponse
 func (client *Client) BatchFuzzyMatchDomainSensitiveWord(request *BatchFuzzyMatchDomainSensitiveWordRequest) (_result *BatchFuzzyMatchDomainSensitiveWordResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &BatchFuzzyMatchDomainSensitiveWordResponse{}
@@ -12069,6 +12516,11 @@ func (client *Client) BatchFuzzyMatchDomainSensitiveWord(request *BatchFuzzyMatc
 	return _result, _err
 }
 
+// @param request - CancelDomainVerificationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CancelDomainVerificationResponse
 func (client *Client) CancelDomainVerificationWithOptions(request *CancelDomainVerificationRequest, runtime *util.RuntimeOptions) (_result *CancelDomainVerificationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -12114,6 +12566,9 @@ func (client *Client) CancelDomainVerificationWithOptions(request *CancelDomainV
 	return _result, _err
 }
 
+// @param request - CancelDomainVerificationRequest
+//
+// @return CancelDomainVerificationResponse
 func (client *Client) CancelDomainVerification(request *CancelDomainVerificationRequest) (_result *CancelDomainVerificationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CancelDomainVerificationResponse{}
@@ -12125,6 +12580,11 @@ func (client *Client) CancelDomainVerification(request *CancelDomainVerification
 	return _result, _err
 }
 
+// @param request - CancelTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CancelTaskResponse
 func (client *Client) CancelTaskWithOptions(request *CancelTaskRequest, runtime *util.RuntimeOptions) (_result *CancelTaskResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -12166,6 +12626,9 @@ func (client *Client) CancelTaskWithOptions(request *CancelTaskRequest, runtime 
 	return _result, _err
 }
 
+// @param request - CancelTaskRequest
+//
+// @return CancelTaskResponse
 func (client *Client) CancelTask(request *CancelTaskRequest) (_result *CancelTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CancelTaskResponse{}
@@ -12177,6 +12640,11 @@ func (client *Client) CancelTask(request *CancelTaskRequest) (_result *CancelTas
 	return _result, _err
 }
 
+// @param request - CheckDomainRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CheckDomainResponse
 func (client *Client) CheckDomainWithOptions(request *CheckDomainRequest, runtime *util.RuntimeOptions) (_result *CheckDomainResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -12230,6 +12698,9 @@ func (client *Client) CheckDomainWithOptions(request *CheckDomainRequest, runtim
 	return _result, _err
 }
 
+// @param request - CheckDomainRequest
+//
+// @return CheckDomainResponse
 func (client *Client) CheckDomain(request *CheckDomainRequest) (_result *CheckDomainResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CheckDomainResponse{}
@@ -12241,6 +12712,11 @@ func (client *Client) CheckDomain(request *CheckDomainRequest) (_result *CheckDo
 	return _result, _err
 }
 
+// @param request - CheckDomainSunriseClaimRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CheckDomainSunriseClaimResponse
 func (client *Client) CheckDomainSunriseClaimWithOptions(request *CheckDomainSunriseClaimRequest, runtime *util.RuntimeOptions) (_result *CheckDomainSunriseClaimResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -12282,6 +12758,9 @@ func (client *Client) CheckDomainSunriseClaimWithOptions(request *CheckDomainSun
 	return _result, _err
 }
 
+// @param request - CheckDomainSunriseClaimRequest
+//
+// @return CheckDomainSunriseClaimResponse
 func (client *Client) CheckDomainSunriseClaim(request *CheckDomainSunriseClaimRequest) (_result *CheckDomainSunriseClaimResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CheckDomainSunriseClaimResponse{}
@@ -12293,6 +12772,11 @@ func (client *Client) CheckDomainSunriseClaim(request *CheckDomainSunriseClaimRe
 	return _result, _err
 }
 
+// @param request - CheckTransferInFeasibilityRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CheckTransferInFeasibilityResponse
 func (client *Client) CheckTransferInFeasibilityWithOptions(request *CheckTransferInFeasibilityRequest, runtime *util.RuntimeOptions) (_result *CheckTransferInFeasibilityResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -12338,6 +12822,9 @@ func (client *Client) CheckTransferInFeasibilityWithOptions(request *CheckTransf
 	return _result, _err
 }
 
+// @param request - CheckTransferInFeasibilityRequest
+//
+// @return CheckTransferInFeasibilityResponse
 func (client *Client) CheckTransferInFeasibility(request *CheckTransferInFeasibilityRequest) (_result *CheckTransferInFeasibilityResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CheckTransferInFeasibilityResponse{}
@@ -12349,6 +12836,11 @@ func (client *Client) CheckTransferInFeasibility(request *CheckTransferInFeasibi
 	return _result, _err
 }
 
+// @param request - ConfirmTransferInEmailRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ConfirmTransferInEmailResponse
 func (client *Client) ConfirmTransferInEmailWithOptions(request *ConfirmTransferInEmailRequest, runtime *util.RuntimeOptions) (_result *ConfirmTransferInEmailResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -12394,6 +12886,9 @@ func (client *Client) ConfirmTransferInEmailWithOptions(request *ConfirmTransfer
 	return _result, _err
 }
 
+// @param request - ConfirmTransferInEmailRequest
+//
+// @return ConfirmTransferInEmailResponse
 func (client *Client) ConfirmTransferInEmail(request *ConfirmTransferInEmailRequest) (_result *ConfirmTransferInEmailResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ConfirmTransferInEmailResponse{}
@@ -12405,6 +12900,11 @@ func (client *Client) ConfirmTransferInEmail(request *ConfirmTransferInEmailRequ
 	return _result, _err
 }
 
+// @param request - DeleteEmailVerificationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteEmailVerificationResponse
 func (client *Client) DeleteEmailVerificationWithOptions(request *DeleteEmailVerificationRequest, runtime *util.RuntimeOptions) (_result *DeleteEmailVerificationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -12446,6 +12946,9 @@ func (client *Client) DeleteEmailVerificationWithOptions(request *DeleteEmailVer
 	return _result, _err
 }
 
+// @param request - DeleteEmailVerificationRequest
+//
+// @return DeleteEmailVerificationResponse
 func (client *Client) DeleteEmailVerification(request *DeleteEmailVerificationRequest) (_result *DeleteEmailVerificationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteEmailVerificationResponse{}
@@ -12457,6 +12960,11 @@ func (client *Client) DeleteEmailVerification(request *DeleteEmailVerificationRe
 	return _result, _err
 }
 
+// @param request - DeleteRegistrantProfileRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteRegistrantProfileResponse
 func (client *Client) DeleteRegistrantProfileWithOptions(request *DeleteRegistrantProfileRequest, runtime *util.RuntimeOptions) (_result *DeleteRegistrantProfileResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -12498,6 +13006,9 @@ func (client *Client) DeleteRegistrantProfileWithOptions(request *DeleteRegistra
 	return _result, _err
 }
 
+// @param request - DeleteRegistrantProfileRequest
+//
+// @return DeleteRegistrantProfileResponse
 func (client *Client) DeleteRegistrantProfile(request *DeleteRegistrantProfileRequest) (_result *DeleteRegistrantProfileResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteRegistrantProfileResponse{}
@@ -12509,6 +13020,11 @@ func (client *Client) DeleteRegistrantProfile(request *DeleteRegistrantProfileRe
 	return _result, _err
 }
 
+// @param request - EmailVerifiedRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return EmailVerifiedResponse
 func (client *Client) EmailVerifiedWithOptions(request *EmailVerifiedRequest, runtime *util.RuntimeOptions) (_result *EmailVerifiedResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -12550,6 +13066,9 @@ func (client *Client) EmailVerifiedWithOptions(request *EmailVerifiedRequest, ru
 	return _result, _err
 }
 
+// @param request - EmailVerifiedRequest
+//
+// @return EmailVerifiedResponse
 func (client *Client) EmailVerified(request *EmailVerifiedRequest) (_result *EmailVerifiedResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &EmailVerifiedResponse{}
@@ -12561,6 +13080,11 @@ func (client *Client) EmailVerified(request *EmailVerifiedRequest) (_result *Ema
 	return _result, _err
 }
 
+// @param request - FuzzyMatchDomainSensitiveWordRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return FuzzyMatchDomainSensitiveWordResponse
 func (client *Client) FuzzyMatchDomainSensitiveWordWithOptions(request *FuzzyMatchDomainSensitiveWordRequest, runtime *util.RuntimeOptions) (_result *FuzzyMatchDomainSensitiveWordResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -12602,6 +13126,9 @@ func (client *Client) FuzzyMatchDomainSensitiveWordWithOptions(request *FuzzyMat
 	return _result, _err
 }
 
+// @param request - FuzzyMatchDomainSensitiveWordRequest
+//
+// @return FuzzyMatchDomainSensitiveWordResponse
 func (client *Client) FuzzyMatchDomainSensitiveWord(request *FuzzyMatchDomainSensitiveWordRequest) (_result *FuzzyMatchDomainSensitiveWordResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &FuzzyMatchDomainSensitiveWordResponse{}
@@ -12613,6 +13140,11 @@ func (client *Client) FuzzyMatchDomainSensitiveWord(request *FuzzyMatchDomainSen
 	return _result, _err
 }
 
+// @param request - ListEmailVerificationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListEmailVerificationResponse
 func (client *Client) ListEmailVerificationWithOptions(request *ListEmailVerificationRequest, runtime *util.RuntimeOptions) (_result *ListEmailVerificationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -12674,6 +13206,9 @@ func (client *Client) ListEmailVerificationWithOptions(request *ListEmailVerific
 	return _result, _err
 }
 
+// @param request - ListEmailVerificationRequest
+//
+// @return ListEmailVerificationResponse
 func (client *Client) ListEmailVerification(request *ListEmailVerificationRequest) (_result *ListEmailVerificationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListEmailVerificationResponse{}
@@ -12685,6 +13220,11 @@ func (client *Client) ListEmailVerification(request *ListEmailVerificationReques
 	return _result, _err
 }
 
+// @param request - LookupTmchNoticeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return LookupTmchNoticeResponse
 func (client *Client) LookupTmchNoticeWithOptions(request *LookupTmchNoticeRequest, runtime *util.RuntimeOptions) (_result *LookupTmchNoticeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -12726,6 +13266,9 @@ func (client *Client) LookupTmchNoticeWithOptions(request *LookupTmchNoticeReque
 	return _result, _err
 }
 
+// @param request - LookupTmchNoticeRequest
+//
+// @return LookupTmchNoticeResponse
 func (client *Client) LookupTmchNotice(request *LookupTmchNoticeRequest) (_result *LookupTmchNoticeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &LookupTmchNoticeResponse{}
@@ -12737,6 +13280,11 @@ func (client *Client) LookupTmchNotice(request *LookupTmchNoticeRequest) (_resul
 	return _result, _err
 }
 
+// @param request - PollTaskResultRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return PollTaskResultResponse
 func (client *Client) PollTaskResultWithOptions(request *PollTaskResultRequest, runtime *util.RuntimeOptions) (_result *PollTaskResultResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -12798,6 +13346,9 @@ func (client *Client) PollTaskResultWithOptions(request *PollTaskResultRequest, 
 	return _result, _err
 }
 
+// @param request - PollTaskResultRequest
+//
+// @return PollTaskResultResponse
 func (client *Client) PollTaskResult(request *PollTaskResultRequest) (_result *PollTaskResultResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &PollTaskResultResponse{}
@@ -12809,6 +13360,11 @@ func (client *Client) PollTaskResult(request *PollTaskResultRequest) (_result *P
 	return _result, _err
 }
 
+// @param request - QueryArtExtensionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryArtExtensionResponse
 func (client *Client) QueryArtExtensionWithOptions(request *QueryArtExtensionRequest, runtime *util.RuntimeOptions) (_result *QueryArtExtensionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -12850,6 +13406,9 @@ func (client *Client) QueryArtExtensionWithOptions(request *QueryArtExtensionReq
 	return _result, _err
 }
 
+// @param request - QueryArtExtensionRequest
+//
+// @return QueryArtExtensionResponse
 func (client *Client) QueryArtExtension(request *QueryArtExtensionRequest) (_result *QueryArtExtensionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryArtExtensionResponse{}
@@ -12861,6 +13420,11 @@ func (client *Client) QueryArtExtension(request *QueryArtExtensionRequest) (_res
 	return _result, _err
 }
 
+// @param request - QueryChangeLogListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryChangeLogListResponse
 func (client *Client) QueryChangeLogListWithOptions(request *QueryChangeLogListRequest, runtime *util.RuntimeOptions) (_result *QueryChangeLogListResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -12918,6 +13482,9 @@ func (client *Client) QueryChangeLogListWithOptions(request *QueryChangeLogListR
 	return _result, _err
 }
 
+// @param request - QueryChangeLogListRequest
+//
+// @return QueryChangeLogListResponse
 func (client *Client) QueryChangeLogList(request *QueryChangeLogListRequest) (_result *QueryChangeLogListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryChangeLogListResponse{}
@@ -12929,6 +13496,11 @@ func (client *Client) QueryChangeLogList(request *QueryChangeLogListRequest) (_r
 	return _result, _err
 }
 
+// @param request - QueryContactInfoRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryContactInfoResponse
 func (client *Client) QueryContactInfoWithOptions(request *QueryContactInfoRequest, runtime *util.RuntimeOptions) (_result *QueryContactInfoResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -12974,6 +13546,9 @@ func (client *Client) QueryContactInfoWithOptions(request *QueryContactInfoReque
 	return _result, _err
 }
 
+// @param request - QueryContactInfoRequest
+//
+// @return QueryContactInfoResponse
 func (client *Client) QueryContactInfo(request *QueryContactInfoRequest) (_result *QueryContactInfoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryContactInfoResponse{}
@@ -12985,6 +13560,11 @@ func (client *Client) QueryContactInfo(request *QueryContactInfoRequest) (_resul
 	return _result, _err
 }
 
+// @param request - QueryDSRecordRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryDSRecordResponse
 func (client *Client) QueryDSRecordWithOptions(request *QueryDSRecordRequest, runtime *util.RuntimeOptions) (_result *QueryDSRecordResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -13026,6 +13606,9 @@ func (client *Client) QueryDSRecordWithOptions(request *QueryDSRecordRequest, ru
 	return _result, _err
 }
 
+// @param request - QueryDSRecordRequest
+//
+// @return QueryDSRecordResponse
 func (client *Client) QueryDSRecord(request *QueryDSRecordRequest) (_result *QueryDSRecordResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryDSRecordResponse{}
@@ -13037,6 +13620,11 @@ func (client *Client) QueryDSRecord(request *QueryDSRecordRequest) (_result *Que
 	return _result, _err
 }
 
+// @param request - QueryDnsHostRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryDnsHostResponse
 func (client *Client) QueryDnsHostWithOptions(request *QueryDnsHostRequest, runtime *util.RuntimeOptions) (_result *QueryDnsHostResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -13078,6 +13666,9 @@ func (client *Client) QueryDnsHostWithOptions(request *QueryDnsHostRequest, runt
 	return _result, _err
 }
 
+// @param request - QueryDnsHostRequest
+//
+// @return QueryDnsHostResponse
 func (client *Client) QueryDnsHost(request *QueryDnsHostRequest) (_result *QueryDnsHostResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryDnsHostResponse{}
@@ -13089,6 +13680,11 @@ func (client *Client) QueryDnsHost(request *QueryDnsHostRequest) (_result *Query
 	return _result, _err
 }
 
+// @param request - QueryDomainByDomainNameRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryDomainByDomainNameResponse
 func (client *Client) QueryDomainByDomainNameWithOptions(request *QueryDomainByDomainNameRequest, runtime *util.RuntimeOptions) (_result *QueryDomainByDomainNameResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -13130,6 +13726,9 @@ func (client *Client) QueryDomainByDomainNameWithOptions(request *QueryDomainByD
 	return _result, _err
 }
 
+// @param request - QueryDomainByDomainNameRequest
+//
+// @return QueryDomainByDomainNameResponse
 func (client *Client) QueryDomainByDomainName(request *QueryDomainByDomainNameRequest) (_result *QueryDomainByDomainNameResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryDomainByDomainNameResponse{}
@@ -13141,6 +13740,11 @@ func (client *Client) QueryDomainByDomainName(request *QueryDomainByDomainNameRe
 	return _result, _err
 }
 
+// @param request - QueryDomainByInstanceIdRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryDomainByInstanceIdResponse
 func (client *Client) QueryDomainByInstanceIdWithOptions(request *QueryDomainByInstanceIdRequest, runtime *util.RuntimeOptions) (_result *QueryDomainByInstanceIdResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -13182,6 +13786,9 @@ func (client *Client) QueryDomainByInstanceIdWithOptions(request *QueryDomainByI
 	return _result, _err
 }
 
+// @param request - QueryDomainByInstanceIdRequest
+//
+// @return QueryDomainByInstanceIdResponse
 func (client *Client) QueryDomainByInstanceId(request *QueryDomainByInstanceIdRequest) (_result *QueryDomainByInstanceIdResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryDomainByInstanceIdResponse{}
@@ -13193,12 +13800,21 @@ func (client *Client) QueryDomainByInstanceId(request *QueryDomainByInstanceIdRe
 	return _result, _err
 }
 
+// @param request - QueryDomainListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryDomainListResponse
 func (client *Client) QueryDomainListWithOptions(request *QueryDomainListRequest, runtime *util.RuntimeOptions) (_result *QueryDomainListResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Ccompany)) {
+		query["Ccompany"] = request.Ccompany
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
 		query["DomainName"] = request.DomainName
 	}
@@ -13274,6 +13890,9 @@ func (client *Client) QueryDomainListWithOptions(request *QueryDomainListRequest
 	return _result, _err
 }
 
+// @param request - QueryDomainListRequest
+//
+// @return QueryDomainListResponse
 func (client *Client) QueryDomainList(request *QueryDomainListRequest) (_result *QueryDomainListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryDomainListResponse{}
@@ -13285,6 +13904,11 @@ func (client *Client) QueryDomainList(request *QueryDomainListRequest) (_result 
 	return _result, _err
 }
 
+// @param request - QueryDomainRealNameVerificationInfoRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryDomainRealNameVerificationInfoResponse
 func (client *Client) QueryDomainRealNameVerificationInfoWithOptions(request *QueryDomainRealNameVerificationInfoRequest, runtime *util.RuntimeOptions) (_result *QueryDomainRealNameVerificationInfoResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -13330,6 +13954,9 @@ func (client *Client) QueryDomainRealNameVerificationInfoWithOptions(request *Qu
 	return _result, _err
 }
 
+// @param request - QueryDomainRealNameVerificationInfoRequest
+//
+// @return QueryDomainRealNameVerificationInfoResponse
 func (client *Client) QueryDomainRealNameVerificationInfo(request *QueryDomainRealNameVerificationInfoRequest) (_result *QueryDomainRealNameVerificationInfoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryDomainRealNameVerificationInfoResponse{}
@@ -13341,6 +13968,11 @@ func (client *Client) QueryDomainRealNameVerificationInfo(request *QueryDomainRe
 	return _result, _err
 }
 
+// @param request - QueryEnsAssociationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryEnsAssociationResponse
 func (client *Client) QueryEnsAssociationWithOptions(request *QueryEnsAssociationRequest, runtime *util.RuntimeOptions) (_result *QueryEnsAssociationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -13382,6 +14014,9 @@ func (client *Client) QueryEnsAssociationWithOptions(request *QueryEnsAssociatio
 	return _result, _err
 }
 
+// @param request - QueryEnsAssociationRequest
+//
+// @return QueryEnsAssociationResponse
 func (client *Client) QueryEnsAssociation(request *QueryEnsAssociationRequest) (_result *QueryEnsAssociationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryEnsAssociationResponse{}
@@ -13393,6 +14028,11 @@ func (client *Client) QueryEnsAssociation(request *QueryEnsAssociationRequest) (
 	return _result, _err
 }
 
+// @param request - QueryFailReasonForDomainRealNameVerificationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryFailReasonForDomainRealNameVerificationResponse
 func (client *Client) QueryFailReasonForDomainRealNameVerificationWithOptions(request *QueryFailReasonForDomainRealNameVerificationRequest, runtime *util.RuntimeOptions) (_result *QueryFailReasonForDomainRealNameVerificationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -13438,6 +14078,9 @@ func (client *Client) QueryFailReasonForDomainRealNameVerificationWithOptions(re
 	return _result, _err
 }
 
+// @param request - QueryFailReasonForDomainRealNameVerificationRequest
+//
+// @return QueryFailReasonForDomainRealNameVerificationResponse
 func (client *Client) QueryFailReasonForDomainRealNameVerification(request *QueryFailReasonForDomainRealNameVerificationRequest) (_result *QueryFailReasonForDomainRealNameVerificationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryFailReasonForDomainRealNameVerificationResponse{}
@@ -13449,6 +14092,11 @@ func (client *Client) QueryFailReasonForDomainRealNameVerification(request *Quer
 	return _result, _err
 }
 
+// @param request - QueryFailReasonForRegistrantProfileRealNameVerificationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryFailReasonForRegistrantProfileRealNameVerificationResponse
 func (client *Client) QueryFailReasonForRegistrantProfileRealNameVerificationWithOptions(request *QueryFailReasonForRegistrantProfileRealNameVerificationRequest, runtime *util.RuntimeOptions) (_result *QueryFailReasonForRegistrantProfileRealNameVerificationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -13490,6 +14138,9 @@ func (client *Client) QueryFailReasonForRegistrantProfileRealNameVerificationWit
 	return _result, _err
 }
 
+// @param request - QueryFailReasonForRegistrantProfileRealNameVerificationRequest
+//
+// @return QueryFailReasonForRegistrantProfileRealNameVerificationResponse
 func (client *Client) QueryFailReasonForRegistrantProfileRealNameVerification(request *QueryFailReasonForRegistrantProfileRealNameVerificationRequest) (_result *QueryFailReasonForRegistrantProfileRealNameVerificationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryFailReasonForRegistrantProfileRealNameVerificationResponse{}
@@ -13501,6 +14152,11 @@ func (client *Client) QueryFailReasonForRegistrantProfileRealNameVerification(re
 	return _result, _err
 }
 
+// @param request - QueryLocalEnsAssociationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryLocalEnsAssociationResponse
 func (client *Client) QueryLocalEnsAssociationWithOptions(request *QueryLocalEnsAssociationRequest, runtime *util.RuntimeOptions) (_result *QueryLocalEnsAssociationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -13542,6 +14198,9 @@ func (client *Client) QueryLocalEnsAssociationWithOptions(request *QueryLocalEns
 	return _result, _err
 }
 
+// @param request - QueryLocalEnsAssociationRequest
+//
+// @return QueryLocalEnsAssociationResponse
 func (client *Client) QueryLocalEnsAssociation(request *QueryLocalEnsAssociationRequest) (_result *QueryLocalEnsAssociationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryLocalEnsAssociationResponse{}
@@ -13553,6 +14212,11 @@ func (client *Client) QueryLocalEnsAssociation(request *QueryLocalEnsAssociation
 	return _result, _err
 }
 
+// @param request - QueryRegistrantProfileRealNameVerificationInfoRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryRegistrantProfileRealNameVerificationInfoResponse
 func (client *Client) QueryRegistrantProfileRealNameVerificationInfoWithOptions(request *QueryRegistrantProfileRealNameVerificationInfoRequest, runtime *util.RuntimeOptions) (_result *QueryRegistrantProfileRealNameVerificationInfoResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -13598,6 +14262,9 @@ func (client *Client) QueryRegistrantProfileRealNameVerificationInfoWithOptions(
 	return _result, _err
 }
 
+// @param request - QueryRegistrantProfileRealNameVerificationInfoRequest
+//
+// @return QueryRegistrantProfileRealNameVerificationInfoResponse
 func (client *Client) QueryRegistrantProfileRealNameVerificationInfo(request *QueryRegistrantProfileRealNameVerificationInfoRequest) (_result *QueryRegistrantProfileRealNameVerificationInfoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryRegistrantProfileRealNameVerificationInfoResponse{}
@@ -13609,6 +14276,11 @@ func (client *Client) QueryRegistrantProfileRealNameVerificationInfo(request *Qu
 	return _result, _err
 }
 
+// @param request - QueryRegistrantProfilesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryRegistrantProfilesResponse
 func (client *Client) QueryRegistrantProfilesWithOptions(request *QueryRegistrantProfilesRequest, runtime *util.RuntimeOptions) (_result *QueryRegistrantProfilesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -13682,6 +14354,9 @@ func (client *Client) QueryRegistrantProfilesWithOptions(request *QueryRegistran
 	return _result, _err
 }
 
+// @param request - QueryRegistrantProfilesRequest
+//
+// @return QueryRegistrantProfilesResponse
 func (client *Client) QueryRegistrantProfiles(request *QueryRegistrantProfilesRequest) (_result *QueryRegistrantProfilesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryRegistrantProfilesResponse{}
@@ -13693,6 +14368,11 @@ func (client *Client) QueryRegistrantProfiles(request *QueryRegistrantProfilesRe
 	return _result, _err
 }
 
+// @param request - QueryTaskDetailHistoryRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryTaskDetailHistoryResponse
 func (client *Client) QueryTaskDetailHistoryWithOptions(request *QueryTaskDetailHistoryRequest, runtime *util.RuntimeOptions) (_result *QueryTaskDetailHistoryResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -13754,6 +14434,9 @@ func (client *Client) QueryTaskDetailHistoryWithOptions(request *QueryTaskDetail
 	return _result, _err
 }
 
+// @param request - QueryTaskDetailHistoryRequest
+//
+// @return QueryTaskDetailHistoryResponse
 func (client *Client) QueryTaskDetailHistory(request *QueryTaskDetailHistoryRequest) (_result *QueryTaskDetailHistoryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryTaskDetailHistoryResponse{}
@@ -13765,6 +14448,11 @@ func (client *Client) QueryTaskDetailHistory(request *QueryTaskDetailHistoryRequ
 	return _result, _err
 }
 
+// @param request - QueryTaskDetailListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryTaskDetailListResponse
 func (client *Client) QueryTaskDetailListWithOptions(request *QueryTaskDetailListRequest, runtime *util.RuntimeOptions) (_result *QueryTaskDetailListResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -13826,6 +14514,9 @@ func (client *Client) QueryTaskDetailListWithOptions(request *QueryTaskDetailLis
 	return _result, _err
 }
 
+// @param request - QueryTaskDetailListRequest
+//
+// @return QueryTaskDetailListResponse
 func (client *Client) QueryTaskDetailList(request *QueryTaskDetailListRequest) (_result *QueryTaskDetailListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryTaskDetailListResponse{}
@@ -13837,6 +14528,11 @@ func (client *Client) QueryTaskDetailList(request *QueryTaskDetailListRequest) (
 	return _result, _err
 }
 
+// @param request - QueryTaskInfoHistoryRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryTaskInfoHistoryResponse
 func (client *Client) QueryTaskInfoHistoryWithOptions(request *QueryTaskInfoHistoryRequest, runtime *util.RuntimeOptions) (_result *QueryTaskInfoHistoryResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -13894,6 +14590,9 @@ func (client *Client) QueryTaskInfoHistoryWithOptions(request *QueryTaskInfoHist
 	return _result, _err
 }
 
+// @param request - QueryTaskInfoHistoryRequest
+//
+// @return QueryTaskInfoHistoryResponse
 func (client *Client) QueryTaskInfoHistory(request *QueryTaskInfoHistoryRequest) (_result *QueryTaskInfoHistoryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryTaskInfoHistoryResponse{}
@@ -13905,6 +14604,11 @@ func (client *Client) QueryTaskInfoHistory(request *QueryTaskInfoHistoryRequest)
 	return _result, _err
 }
 
+// @param request - QueryTaskListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryTaskListResponse
 func (client *Client) QueryTaskListWithOptions(request *QueryTaskListRequest, runtime *util.RuntimeOptions) (_result *QueryTaskListResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -13958,6 +14662,9 @@ func (client *Client) QueryTaskListWithOptions(request *QueryTaskListRequest, ru
 	return _result, _err
 }
 
+// @param request - QueryTaskListRequest
+//
+// @return QueryTaskListResponse
 func (client *Client) QueryTaskList(request *QueryTaskListRequest) (_result *QueryTaskListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryTaskListResponse{}
@@ -13969,6 +14676,11 @@ func (client *Client) QueryTaskList(request *QueryTaskListRequest) (_result *Que
 	return _result, _err
 }
 
+// @param request - QueryTransferInByInstanceIdRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryTransferInByInstanceIdResponse
 func (client *Client) QueryTransferInByInstanceIdWithOptions(request *QueryTransferInByInstanceIdRequest, runtime *util.RuntimeOptions) (_result *QueryTransferInByInstanceIdResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14010,6 +14722,9 @@ func (client *Client) QueryTransferInByInstanceIdWithOptions(request *QueryTrans
 	return _result, _err
 }
 
+// @param request - QueryTransferInByInstanceIdRequest
+//
+// @return QueryTransferInByInstanceIdResponse
 func (client *Client) QueryTransferInByInstanceId(request *QueryTransferInByInstanceIdRequest) (_result *QueryTransferInByInstanceIdResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryTransferInByInstanceIdResponse{}
@@ -14021,6 +14736,11 @@ func (client *Client) QueryTransferInByInstanceId(request *QueryTransferInByInst
 	return _result, _err
 }
 
+// @param request - QueryTransferInListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryTransferInListResponse
 func (client *Client) QueryTransferInListWithOptions(request *QueryTransferInListRequest, runtime *util.RuntimeOptions) (_result *QueryTransferInListResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14082,6 +14802,9 @@ func (client *Client) QueryTransferInListWithOptions(request *QueryTransferInLis
 	return _result, _err
 }
 
+// @param request - QueryTransferInListRequest
+//
+// @return QueryTransferInListResponse
 func (client *Client) QueryTransferInList(request *QueryTransferInListRequest) (_result *QueryTransferInListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryTransferInListResponse{}
@@ -14093,6 +14816,11 @@ func (client *Client) QueryTransferInList(request *QueryTransferInListRequest) (
 	return _result, _err
 }
 
+// @param request - QueryTransferOutInfoRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryTransferOutInfoResponse
 func (client *Client) QueryTransferOutInfoWithOptions(request *QueryTransferOutInfoRequest, runtime *util.RuntimeOptions) (_result *QueryTransferOutInfoResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14134,6 +14862,9 @@ func (client *Client) QueryTransferOutInfoWithOptions(request *QueryTransferOutI
 	return _result, _err
 }
 
+// @param request - QueryTransferOutInfoRequest
+//
+// @return QueryTransferOutInfoResponse
 func (client *Client) QueryTransferOutInfo(request *QueryTransferOutInfoRequest) (_result *QueryTransferOutInfoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryTransferOutInfoResponse{}
@@ -14145,6 +14876,11 @@ func (client *Client) QueryTransferOutInfo(request *QueryTransferOutInfoRequest)
 	return _result, _err
 }
 
+// @param request - RegistrantProfileRealNameVerificationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RegistrantProfileRealNameVerificationResponse
 func (client *Client) RegistrantProfileRealNameVerificationWithOptions(request *RegistrantProfileRealNameVerificationRequest, runtime *util.RuntimeOptions) (_result *RegistrantProfileRealNameVerificationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14200,6 +14936,9 @@ func (client *Client) RegistrantProfileRealNameVerificationWithOptions(request *
 	return _result, _err
 }
 
+// @param request - RegistrantProfileRealNameVerificationRequest
+//
+// @return RegistrantProfileRealNameVerificationResponse
 func (client *Client) RegistrantProfileRealNameVerification(request *RegistrantProfileRealNameVerificationRequest) (_result *RegistrantProfileRealNameVerificationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RegistrantProfileRealNameVerificationResponse{}
@@ -14211,6 +14950,11 @@ func (client *Client) RegistrantProfileRealNameVerification(request *RegistrantP
 	return _result, _err
 }
 
+// @param request - ResendEmailVerificationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ResendEmailVerificationResponse
 func (client *Client) ResendEmailVerificationWithOptions(request *ResendEmailVerificationRequest, runtime *util.RuntimeOptions) (_result *ResendEmailVerificationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14252,6 +14996,9 @@ func (client *Client) ResendEmailVerificationWithOptions(request *ResendEmailVer
 	return _result, _err
 }
 
+// @param request - ResendEmailVerificationRequest
+//
+// @return ResendEmailVerificationResponse
 func (client *Client) ResendEmailVerification(request *ResendEmailVerificationRequest) (_result *ResendEmailVerificationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ResendEmailVerificationResponse{}
@@ -14263,6 +15010,11 @@ func (client *Client) ResendEmailVerification(request *ResendEmailVerificationRe
 	return _result, _err
 }
 
+// @param request - SaveBatchTaskForCreatingOrderActivateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SaveBatchTaskForCreatingOrderActivateResponse
 func (client *Client) SaveBatchTaskForCreatingOrderActivateWithOptions(request *SaveBatchTaskForCreatingOrderActivateRequest, runtime *util.RuntimeOptions) (_result *SaveBatchTaskForCreatingOrderActivateResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14320,6 +15072,9 @@ func (client *Client) SaveBatchTaskForCreatingOrderActivateWithOptions(request *
 	return _result, _err
 }
 
+// @param request - SaveBatchTaskForCreatingOrderActivateRequest
+//
+// @return SaveBatchTaskForCreatingOrderActivateResponse
 func (client *Client) SaveBatchTaskForCreatingOrderActivate(request *SaveBatchTaskForCreatingOrderActivateRequest) (_result *SaveBatchTaskForCreatingOrderActivateResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SaveBatchTaskForCreatingOrderActivateResponse{}
@@ -14331,6 +15086,11 @@ func (client *Client) SaveBatchTaskForCreatingOrderActivate(request *SaveBatchTa
 	return _result, _err
 }
 
+// @param request - SaveBatchTaskForCreatingOrderRedeemRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SaveBatchTaskForCreatingOrderRedeemResponse
 func (client *Client) SaveBatchTaskForCreatingOrderRedeemWithOptions(request *SaveBatchTaskForCreatingOrderRedeemRequest, runtime *util.RuntimeOptions) (_result *SaveBatchTaskForCreatingOrderRedeemResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14388,6 +15148,9 @@ func (client *Client) SaveBatchTaskForCreatingOrderRedeemWithOptions(request *Sa
 	return _result, _err
 }
 
+// @param request - SaveBatchTaskForCreatingOrderRedeemRequest
+//
+// @return SaveBatchTaskForCreatingOrderRedeemResponse
 func (client *Client) SaveBatchTaskForCreatingOrderRedeem(request *SaveBatchTaskForCreatingOrderRedeemRequest) (_result *SaveBatchTaskForCreatingOrderRedeemResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SaveBatchTaskForCreatingOrderRedeemResponse{}
@@ -14399,6 +15162,11 @@ func (client *Client) SaveBatchTaskForCreatingOrderRedeem(request *SaveBatchTask
 	return _result, _err
 }
 
+// @param request - SaveBatchTaskForCreatingOrderRenewRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SaveBatchTaskForCreatingOrderRenewResponse
 func (client *Client) SaveBatchTaskForCreatingOrderRenewWithOptions(request *SaveBatchTaskForCreatingOrderRenewRequest, runtime *util.RuntimeOptions) (_result *SaveBatchTaskForCreatingOrderRenewResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14456,6 +15224,9 @@ func (client *Client) SaveBatchTaskForCreatingOrderRenewWithOptions(request *Sav
 	return _result, _err
 }
 
+// @param request - SaveBatchTaskForCreatingOrderRenewRequest
+//
+// @return SaveBatchTaskForCreatingOrderRenewResponse
 func (client *Client) SaveBatchTaskForCreatingOrderRenew(request *SaveBatchTaskForCreatingOrderRenewRequest) (_result *SaveBatchTaskForCreatingOrderRenewResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SaveBatchTaskForCreatingOrderRenewResponse{}
@@ -14467,6 +15238,11 @@ func (client *Client) SaveBatchTaskForCreatingOrderRenew(request *SaveBatchTaskF
 	return _result, _err
 }
 
+// @param request - SaveBatchTaskForCreatingOrderTransferRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SaveBatchTaskForCreatingOrderTransferResponse
 func (client *Client) SaveBatchTaskForCreatingOrderTransferWithOptions(request *SaveBatchTaskForCreatingOrderTransferRequest, runtime *util.RuntimeOptions) (_result *SaveBatchTaskForCreatingOrderTransferResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14524,6 +15300,9 @@ func (client *Client) SaveBatchTaskForCreatingOrderTransferWithOptions(request *
 	return _result, _err
 }
 
+// @param request - SaveBatchTaskForCreatingOrderTransferRequest
+//
+// @return SaveBatchTaskForCreatingOrderTransferResponse
 func (client *Client) SaveBatchTaskForCreatingOrderTransfer(request *SaveBatchTaskForCreatingOrderTransferRequest) (_result *SaveBatchTaskForCreatingOrderTransferResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SaveBatchTaskForCreatingOrderTransferResponse{}
@@ -14535,6 +15314,11 @@ func (client *Client) SaveBatchTaskForCreatingOrderTransfer(request *SaveBatchTa
 	return _result, _err
 }
 
+// @param request - SaveBatchTaskForDomainNameProxyServiceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SaveBatchTaskForDomainNameProxyServiceResponse
 func (client *Client) SaveBatchTaskForDomainNameProxyServiceWithOptions(request *SaveBatchTaskForDomainNameProxyServiceRequest, runtime *util.RuntimeOptions) (_result *SaveBatchTaskForDomainNameProxyServiceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14580,6 +15364,9 @@ func (client *Client) SaveBatchTaskForDomainNameProxyServiceWithOptions(request 
 	return _result, _err
 }
 
+// @param request - SaveBatchTaskForDomainNameProxyServiceRequest
+//
+// @return SaveBatchTaskForDomainNameProxyServiceResponse
 func (client *Client) SaveBatchTaskForDomainNameProxyService(request *SaveBatchTaskForDomainNameProxyServiceRequest) (_result *SaveBatchTaskForDomainNameProxyServiceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SaveBatchTaskForDomainNameProxyServiceResponse{}
@@ -14591,6 +15378,11 @@ func (client *Client) SaveBatchTaskForDomainNameProxyService(request *SaveBatchT
 	return _result, _err
 }
 
+// @param request - SaveBatchTaskForModifyingDomainDnsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SaveBatchTaskForModifyingDomainDnsResponse
 func (client *Client) SaveBatchTaskForModifyingDomainDnsWithOptions(request *SaveBatchTaskForModifyingDomainDnsRequest, runtime *util.RuntimeOptions) (_result *SaveBatchTaskForModifyingDomainDnsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14640,6 +15432,9 @@ func (client *Client) SaveBatchTaskForModifyingDomainDnsWithOptions(request *Sav
 	return _result, _err
 }
 
+// @param request - SaveBatchTaskForModifyingDomainDnsRequest
+//
+// @return SaveBatchTaskForModifyingDomainDnsResponse
 func (client *Client) SaveBatchTaskForModifyingDomainDns(request *SaveBatchTaskForModifyingDomainDnsRequest) (_result *SaveBatchTaskForModifyingDomainDnsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SaveBatchTaskForModifyingDomainDnsResponse{}
@@ -14651,6 +15446,15 @@ func (client *Client) SaveBatchTaskForModifyingDomainDns(request *SaveBatchTaskF
 	return _result, _err
 }
 
+// Summary:
+//
+// 国际站删除抢注批量接口
+//
+// @param request - SaveBatchTaskForReserveDropListDomainRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SaveBatchTaskForReserveDropListDomainResponse
 func (client *Client) SaveBatchTaskForReserveDropListDomainWithOptions(request *SaveBatchTaskForReserveDropListDomainRequest, runtime *util.RuntimeOptions) (_result *SaveBatchTaskForReserveDropListDomainResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14688,6 +15492,13 @@ func (client *Client) SaveBatchTaskForReserveDropListDomainWithOptions(request *
 	return _result, _err
 }
 
+// Summary:
+//
+// 国际站删除抢注批量接口
+//
+// @param request - SaveBatchTaskForReserveDropListDomainRequest
+//
+// @return SaveBatchTaskForReserveDropListDomainResponse
 func (client *Client) SaveBatchTaskForReserveDropListDomain(request *SaveBatchTaskForReserveDropListDomainRequest) (_result *SaveBatchTaskForReserveDropListDomainResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SaveBatchTaskForReserveDropListDomainResponse{}
@@ -14699,6 +15510,11 @@ func (client *Client) SaveBatchTaskForReserveDropListDomain(request *SaveBatchTa
 	return _result, _err
 }
 
+// @param request - SaveBatchTaskForTransferProhibitionLockRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SaveBatchTaskForTransferProhibitionLockResponse
 func (client *Client) SaveBatchTaskForTransferProhibitionLockWithOptions(request *SaveBatchTaskForTransferProhibitionLockRequest, runtime *util.RuntimeOptions) (_result *SaveBatchTaskForTransferProhibitionLockResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14744,6 +15560,9 @@ func (client *Client) SaveBatchTaskForTransferProhibitionLockWithOptions(request
 	return _result, _err
 }
 
+// @param request - SaveBatchTaskForTransferProhibitionLockRequest
+//
+// @return SaveBatchTaskForTransferProhibitionLockResponse
 func (client *Client) SaveBatchTaskForTransferProhibitionLock(request *SaveBatchTaskForTransferProhibitionLockRequest) (_result *SaveBatchTaskForTransferProhibitionLockResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SaveBatchTaskForTransferProhibitionLockResponse{}
@@ -14755,6 +15574,11 @@ func (client *Client) SaveBatchTaskForTransferProhibitionLock(request *SaveBatch
 	return _result, _err
 }
 
+// @param request - SaveBatchTaskForUpdateProhibitionLockRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SaveBatchTaskForUpdateProhibitionLockResponse
 func (client *Client) SaveBatchTaskForUpdateProhibitionLockWithOptions(request *SaveBatchTaskForUpdateProhibitionLockRequest, runtime *util.RuntimeOptions) (_result *SaveBatchTaskForUpdateProhibitionLockResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14800,6 +15624,9 @@ func (client *Client) SaveBatchTaskForUpdateProhibitionLockWithOptions(request *
 	return _result, _err
 }
 
+// @param request - SaveBatchTaskForUpdateProhibitionLockRequest
+//
+// @return SaveBatchTaskForUpdateProhibitionLockResponse
 func (client *Client) SaveBatchTaskForUpdateProhibitionLock(request *SaveBatchTaskForUpdateProhibitionLockRequest) (_result *SaveBatchTaskForUpdateProhibitionLockResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SaveBatchTaskForUpdateProhibitionLockResponse{}
@@ -14811,6 +15638,11 @@ func (client *Client) SaveBatchTaskForUpdateProhibitionLock(request *SaveBatchTa
 	return _result, _err
 }
 
+// @param request - SaveBatchTaskForUpdatingContactInfoRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SaveBatchTaskForUpdatingContactInfoResponse
 func (client *Client) SaveBatchTaskForUpdatingContactInfoWithOptions(request *SaveBatchTaskForUpdatingContactInfoRequest, runtime *util.RuntimeOptions) (_result *SaveBatchTaskForUpdatingContactInfoResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14864,6 +15696,9 @@ func (client *Client) SaveBatchTaskForUpdatingContactInfoWithOptions(request *Sa
 	return _result, _err
 }
 
+// @param request - SaveBatchTaskForUpdatingContactInfoRequest
+//
+// @return SaveBatchTaskForUpdatingContactInfoResponse
 func (client *Client) SaveBatchTaskForUpdatingContactInfo(request *SaveBatchTaskForUpdatingContactInfoRequest) (_result *SaveBatchTaskForUpdatingContactInfoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SaveBatchTaskForUpdatingContactInfoResponse{}
@@ -14875,6 +15710,11 @@ func (client *Client) SaveBatchTaskForUpdatingContactInfo(request *SaveBatchTask
 	return _result, _err
 }
 
+// @param request - SaveBatchTaskForUpdatingContactInfoByNewContactRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SaveBatchTaskForUpdatingContactInfoByNewContactResponse
 func (client *Client) SaveBatchTaskForUpdatingContactInfoByNewContactWithOptions(request *SaveBatchTaskForUpdatingContactInfoByNewContactRequest, runtime *util.RuntimeOptions) (_result *SaveBatchTaskForUpdatingContactInfoByNewContactResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14968,6 +15808,9 @@ func (client *Client) SaveBatchTaskForUpdatingContactInfoByNewContactWithOptions
 	return _result, _err
 }
 
+// @param request - SaveBatchTaskForUpdatingContactInfoByNewContactRequest
+//
+// @return SaveBatchTaskForUpdatingContactInfoByNewContactResponse
 func (client *Client) SaveBatchTaskForUpdatingContactInfoByNewContact(request *SaveBatchTaskForUpdatingContactInfoByNewContactRequest) (_result *SaveBatchTaskForUpdatingContactInfoByNewContactResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SaveBatchTaskForUpdatingContactInfoByNewContactResponse{}
@@ -14979,6 +15822,11 @@ func (client *Client) SaveBatchTaskForUpdatingContactInfoByNewContact(request *S
 	return _result, _err
 }
 
+// @param request - SaveRegistrantProfileRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SaveRegistrantProfileResponse
 func (client *Client) SaveRegistrantProfileWithOptions(request *SaveRegistrantProfileRequest, runtime *util.RuntimeOptions) (_result *SaveRegistrantProfileResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15076,6 +15924,9 @@ func (client *Client) SaveRegistrantProfileWithOptions(request *SaveRegistrantPr
 	return _result, _err
 }
 
+// @param request - SaveRegistrantProfileRequest
+//
+// @return SaveRegistrantProfileResponse
 func (client *Client) SaveRegistrantProfile(request *SaveRegistrantProfileRequest) (_result *SaveRegistrantProfileResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SaveRegistrantProfileResponse{}
@@ -15087,6 +15938,11 @@ func (client *Client) SaveRegistrantProfile(request *SaveRegistrantProfileReques
 	return _result, _err
 }
 
+// @param request - SaveSingleTaskForAddingDSRecordRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SaveSingleTaskForAddingDSRecordResponse
 func (client *Client) SaveSingleTaskForAddingDSRecordWithOptions(request *SaveSingleTaskForAddingDSRecordRequest, runtime *util.RuntimeOptions) (_result *SaveSingleTaskForAddingDSRecordResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15144,6 +16000,9 @@ func (client *Client) SaveSingleTaskForAddingDSRecordWithOptions(request *SaveSi
 	return _result, _err
 }
 
+// @param request - SaveSingleTaskForAddingDSRecordRequest
+//
+// @return SaveSingleTaskForAddingDSRecordResponse
 func (client *Client) SaveSingleTaskForAddingDSRecord(request *SaveSingleTaskForAddingDSRecordRequest) (_result *SaveSingleTaskForAddingDSRecordResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SaveSingleTaskForAddingDSRecordResponse{}
@@ -15155,6 +16014,11 @@ func (client *Client) SaveSingleTaskForAddingDSRecord(request *SaveSingleTaskFor
 	return _result, _err
 }
 
+// @param request - SaveSingleTaskForApprovingTransferOutRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SaveSingleTaskForApprovingTransferOutResponse
 func (client *Client) SaveSingleTaskForApprovingTransferOutWithOptions(request *SaveSingleTaskForApprovingTransferOutRequest, runtime *util.RuntimeOptions) (_result *SaveSingleTaskForApprovingTransferOutResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15196,6 +16060,9 @@ func (client *Client) SaveSingleTaskForApprovingTransferOutWithOptions(request *
 	return _result, _err
 }
 
+// @param request - SaveSingleTaskForApprovingTransferOutRequest
+//
+// @return SaveSingleTaskForApprovingTransferOutResponse
 func (client *Client) SaveSingleTaskForApprovingTransferOut(request *SaveSingleTaskForApprovingTransferOutRequest) (_result *SaveSingleTaskForApprovingTransferOutResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SaveSingleTaskForApprovingTransferOutResponse{}
@@ -15207,6 +16074,11 @@ func (client *Client) SaveSingleTaskForApprovingTransferOut(request *SaveSingleT
 	return _result, _err
 }
 
+// @param request - SaveSingleTaskForAssociatingEnsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SaveSingleTaskForAssociatingEnsResponse
 func (client *Client) SaveSingleTaskForAssociatingEnsWithOptions(request *SaveSingleTaskForAssociatingEnsRequest, runtime *util.RuntimeOptions) (_result *SaveSingleTaskForAssociatingEnsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15252,6 +16124,9 @@ func (client *Client) SaveSingleTaskForAssociatingEnsWithOptions(request *SaveSi
 	return _result, _err
 }
 
+// @param request - SaveSingleTaskForAssociatingEnsRequest
+//
+// @return SaveSingleTaskForAssociatingEnsResponse
 func (client *Client) SaveSingleTaskForAssociatingEns(request *SaveSingleTaskForAssociatingEnsRequest) (_result *SaveSingleTaskForAssociatingEnsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SaveSingleTaskForAssociatingEnsResponse{}
@@ -15263,6 +16138,11 @@ func (client *Client) SaveSingleTaskForAssociatingEns(request *SaveSingleTaskFor
 	return _result, _err
 }
 
+// @param request - SaveSingleTaskForCancelingTransferInRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SaveSingleTaskForCancelingTransferInResponse
 func (client *Client) SaveSingleTaskForCancelingTransferInWithOptions(request *SaveSingleTaskForCancelingTransferInRequest, runtime *util.RuntimeOptions) (_result *SaveSingleTaskForCancelingTransferInResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15304,6 +16184,9 @@ func (client *Client) SaveSingleTaskForCancelingTransferInWithOptions(request *S
 	return _result, _err
 }
 
+// @param request - SaveSingleTaskForCancelingTransferInRequest
+//
+// @return SaveSingleTaskForCancelingTransferInResponse
 func (client *Client) SaveSingleTaskForCancelingTransferIn(request *SaveSingleTaskForCancelingTransferInRequest) (_result *SaveSingleTaskForCancelingTransferInResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SaveSingleTaskForCancelingTransferInResponse{}
@@ -15315,6 +16198,11 @@ func (client *Client) SaveSingleTaskForCancelingTransferIn(request *SaveSingleTa
 	return _result, _err
 }
 
+// @param request - SaveSingleTaskForCancelingTransferOutRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SaveSingleTaskForCancelingTransferOutResponse
 func (client *Client) SaveSingleTaskForCancelingTransferOutWithOptions(request *SaveSingleTaskForCancelingTransferOutRequest, runtime *util.RuntimeOptions) (_result *SaveSingleTaskForCancelingTransferOutResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15356,6 +16244,9 @@ func (client *Client) SaveSingleTaskForCancelingTransferOutWithOptions(request *
 	return _result, _err
 }
 
+// @param request - SaveSingleTaskForCancelingTransferOutRequest
+//
+// @return SaveSingleTaskForCancelingTransferOutResponse
 func (client *Client) SaveSingleTaskForCancelingTransferOut(request *SaveSingleTaskForCancelingTransferOutRequest) (_result *SaveSingleTaskForCancelingTransferOutResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SaveSingleTaskForCancelingTransferOutResponse{}
@@ -15367,6 +16258,11 @@ func (client *Client) SaveSingleTaskForCancelingTransferOut(request *SaveSingleT
 	return _result, _err
 }
 
+// @param request - SaveSingleTaskForCreatingDnsHostRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SaveSingleTaskForCreatingDnsHostResponse
 func (client *Client) SaveSingleTaskForCreatingDnsHostWithOptions(request *SaveSingleTaskForCreatingDnsHostRequest, runtime *util.RuntimeOptions) (_result *SaveSingleTaskForCreatingDnsHostResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15416,6 +16312,9 @@ func (client *Client) SaveSingleTaskForCreatingDnsHostWithOptions(request *SaveS
 	return _result, _err
 }
 
+// @param request - SaveSingleTaskForCreatingDnsHostRequest
+//
+// @return SaveSingleTaskForCreatingDnsHostResponse
 func (client *Client) SaveSingleTaskForCreatingDnsHost(request *SaveSingleTaskForCreatingDnsHostRequest) (_result *SaveSingleTaskForCreatingDnsHostResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SaveSingleTaskForCreatingDnsHostResponse{}
@@ -15427,6 +16326,11 @@ func (client *Client) SaveSingleTaskForCreatingDnsHost(request *SaveSingleTaskFo
 	return _result, _err
 }
 
+// @param request - SaveSingleTaskForCreatingOrderActivateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SaveSingleTaskForCreatingOrderActivateResponse
 func (client *Client) SaveSingleTaskForCreatingOrderActivateWithOptions(request *SaveSingleTaskForCreatingOrderActivateRequest, runtime *util.RuntimeOptions) (_result *SaveSingleTaskForCreatingOrderActivateResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15564,6 +16468,9 @@ func (client *Client) SaveSingleTaskForCreatingOrderActivateWithOptions(request 
 	return _result, _err
 }
 
+// @param request - SaveSingleTaskForCreatingOrderActivateRequest
+//
+// @return SaveSingleTaskForCreatingOrderActivateResponse
 func (client *Client) SaveSingleTaskForCreatingOrderActivate(request *SaveSingleTaskForCreatingOrderActivateRequest) (_result *SaveSingleTaskForCreatingOrderActivateResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SaveSingleTaskForCreatingOrderActivateResponse{}
@@ -15575,6 +16482,11 @@ func (client *Client) SaveSingleTaskForCreatingOrderActivate(request *SaveSingle
 	return _result, _err
 }
 
+// @param request - SaveSingleTaskForCreatingOrderRedeemRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SaveSingleTaskForCreatingOrderRedeemResponse
 func (client *Client) SaveSingleTaskForCreatingOrderRedeemWithOptions(request *SaveSingleTaskForCreatingOrderRedeemRequest, runtime *util.RuntimeOptions) (_result *SaveSingleTaskForCreatingOrderRedeemResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15636,6 +16548,9 @@ func (client *Client) SaveSingleTaskForCreatingOrderRedeemWithOptions(request *S
 	return _result, _err
 }
 
+// @param request - SaveSingleTaskForCreatingOrderRedeemRequest
+//
+// @return SaveSingleTaskForCreatingOrderRedeemResponse
 func (client *Client) SaveSingleTaskForCreatingOrderRedeem(request *SaveSingleTaskForCreatingOrderRedeemRequest) (_result *SaveSingleTaskForCreatingOrderRedeemResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SaveSingleTaskForCreatingOrderRedeemResponse{}
@@ -15647,6 +16562,11 @@ func (client *Client) SaveSingleTaskForCreatingOrderRedeem(request *SaveSingleTa
 	return _result, _err
 }
 
+// @param request - SaveSingleTaskForCreatingOrderRenewRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SaveSingleTaskForCreatingOrderRenewResponse
 func (client *Client) SaveSingleTaskForCreatingOrderRenewWithOptions(request *SaveSingleTaskForCreatingOrderRenewRequest, runtime *util.RuntimeOptions) (_result *SaveSingleTaskForCreatingOrderRenewResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15712,6 +16632,9 @@ func (client *Client) SaveSingleTaskForCreatingOrderRenewWithOptions(request *Sa
 	return _result, _err
 }
 
+// @param request - SaveSingleTaskForCreatingOrderRenewRequest
+//
+// @return SaveSingleTaskForCreatingOrderRenewResponse
 func (client *Client) SaveSingleTaskForCreatingOrderRenew(request *SaveSingleTaskForCreatingOrderRenewRequest) (_result *SaveSingleTaskForCreatingOrderRenewResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SaveSingleTaskForCreatingOrderRenewResponse{}
@@ -15723,6 +16646,11 @@ func (client *Client) SaveSingleTaskForCreatingOrderRenew(request *SaveSingleTas
 	return _result, _err
 }
 
+// @param request - SaveSingleTaskForCreatingOrderTransferRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SaveSingleTaskForCreatingOrderTransferResponse
 func (client *Client) SaveSingleTaskForCreatingOrderTransferWithOptions(request *SaveSingleTaskForCreatingOrderTransferRequest, runtime *util.RuntimeOptions) (_result *SaveSingleTaskForCreatingOrderTransferResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15792,6 +16720,9 @@ func (client *Client) SaveSingleTaskForCreatingOrderTransferWithOptions(request 
 	return _result, _err
 }
 
+// @param request - SaveSingleTaskForCreatingOrderTransferRequest
+//
+// @return SaveSingleTaskForCreatingOrderTransferResponse
 func (client *Client) SaveSingleTaskForCreatingOrderTransfer(request *SaveSingleTaskForCreatingOrderTransferRequest) (_result *SaveSingleTaskForCreatingOrderTransferResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SaveSingleTaskForCreatingOrderTransferResponse{}
@@ -15803,6 +16734,11 @@ func (client *Client) SaveSingleTaskForCreatingOrderTransfer(request *SaveSingle
 	return _result, _err
 }
 
+// @param request - SaveSingleTaskForDeletingDSRecordRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SaveSingleTaskForDeletingDSRecordResponse
 func (client *Client) SaveSingleTaskForDeletingDSRecordWithOptions(request *SaveSingleTaskForDeletingDSRecordRequest, runtime *util.RuntimeOptions) (_result *SaveSingleTaskForDeletingDSRecordResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15848,6 +16784,9 @@ func (client *Client) SaveSingleTaskForDeletingDSRecordWithOptions(request *Save
 	return _result, _err
 }
 
+// @param request - SaveSingleTaskForDeletingDSRecordRequest
+//
+// @return SaveSingleTaskForDeletingDSRecordResponse
 func (client *Client) SaveSingleTaskForDeletingDSRecord(request *SaveSingleTaskForDeletingDSRecordRequest) (_result *SaveSingleTaskForDeletingDSRecordResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SaveSingleTaskForDeletingDSRecordResponse{}
@@ -15859,6 +16798,11 @@ func (client *Client) SaveSingleTaskForDeletingDSRecord(request *SaveSingleTaskF
 	return _result, _err
 }
 
+// @param request - SaveSingleTaskForDeletingDnsHostRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SaveSingleTaskForDeletingDnsHostResponse
 func (client *Client) SaveSingleTaskForDeletingDnsHostWithOptions(request *SaveSingleTaskForDeletingDnsHostRequest, runtime *util.RuntimeOptions) (_result *SaveSingleTaskForDeletingDnsHostResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15908,6 +16852,9 @@ func (client *Client) SaveSingleTaskForDeletingDnsHostWithOptions(request *SaveS
 	return _result, _err
 }
 
+// @param request - SaveSingleTaskForDeletingDnsHostRequest
+//
+// @return SaveSingleTaskForDeletingDnsHostResponse
 func (client *Client) SaveSingleTaskForDeletingDnsHost(request *SaveSingleTaskForDeletingDnsHostRequest) (_result *SaveSingleTaskForDeletingDnsHostResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SaveSingleTaskForDeletingDnsHostResponse{}
@@ -15919,6 +16866,11 @@ func (client *Client) SaveSingleTaskForDeletingDnsHost(request *SaveSingleTaskFo
 	return _result, _err
 }
 
+// @param request - SaveSingleTaskForDisassociatingEnsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SaveSingleTaskForDisassociatingEnsResponse
 func (client *Client) SaveSingleTaskForDisassociatingEnsWithOptions(request *SaveSingleTaskForDisassociatingEnsRequest, runtime *util.RuntimeOptions) (_result *SaveSingleTaskForDisassociatingEnsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15960,6 +16912,9 @@ func (client *Client) SaveSingleTaskForDisassociatingEnsWithOptions(request *Sav
 	return _result, _err
 }
 
+// @param request - SaveSingleTaskForDisassociatingEnsRequest
+//
+// @return SaveSingleTaskForDisassociatingEnsResponse
 func (client *Client) SaveSingleTaskForDisassociatingEns(request *SaveSingleTaskForDisassociatingEnsRequest) (_result *SaveSingleTaskForDisassociatingEnsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SaveSingleTaskForDisassociatingEnsResponse{}
@@ -15971,6 +16926,11 @@ func (client *Client) SaveSingleTaskForDisassociatingEns(request *SaveSingleTask
 	return _result, _err
 }
 
+// @param request - SaveSingleTaskForDomainNameProxyServiceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SaveSingleTaskForDomainNameProxyServiceResponse
 func (client *Client) SaveSingleTaskForDomainNameProxyServiceWithOptions(request *SaveSingleTaskForDomainNameProxyServiceRequest, runtime *util.RuntimeOptions) (_result *SaveSingleTaskForDomainNameProxyServiceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16016,6 +16976,9 @@ func (client *Client) SaveSingleTaskForDomainNameProxyServiceWithOptions(request
 	return _result, _err
 }
 
+// @param request - SaveSingleTaskForDomainNameProxyServiceRequest
+//
+// @return SaveSingleTaskForDomainNameProxyServiceResponse
 func (client *Client) SaveSingleTaskForDomainNameProxyService(request *SaveSingleTaskForDomainNameProxyServiceRequest) (_result *SaveSingleTaskForDomainNameProxyServiceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SaveSingleTaskForDomainNameProxyServiceResponse{}
@@ -16027,6 +16990,11 @@ func (client *Client) SaveSingleTaskForDomainNameProxyService(request *SaveSingl
 	return _result, _err
 }
 
+// @param request - SaveSingleTaskForModifyingDSRecordRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SaveSingleTaskForModifyingDSRecordResponse
 func (client *Client) SaveSingleTaskForModifyingDSRecordWithOptions(request *SaveSingleTaskForModifyingDSRecordRequest, runtime *util.RuntimeOptions) (_result *SaveSingleTaskForModifyingDSRecordResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16084,6 +17052,9 @@ func (client *Client) SaveSingleTaskForModifyingDSRecordWithOptions(request *Sav
 	return _result, _err
 }
 
+// @param request - SaveSingleTaskForModifyingDSRecordRequest
+//
+// @return SaveSingleTaskForModifyingDSRecordResponse
 func (client *Client) SaveSingleTaskForModifyingDSRecord(request *SaveSingleTaskForModifyingDSRecordRequest) (_result *SaveSingleTaskForModifyingDSRecordResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SaveSingleTaskForModifyingDSRecordResponse{}
@@ -16095,6 +17066,11 @@ func (client *Client) SaveSingleTaskForModifyingDSRecord(request *SaveSingleTask
 	return _result, _err
 }
 
+// @param request - SaveSingleTaskForModifyingDnsHostRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SaveSingleTaskForModifyingDnsHostResponse
 func (client *Client) SaveSingleTaskForModifyingDnsHostWithOptions(request *SaveSingleTaskForModifyingDnsHostRequest, runtime *util.RuntimeOptions) (_result *SaveSingleTaskForModifyingDnsHostResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16144,6 +17120,9 @@ func (client *Client) SaveSingleTaskForModifyingDnsHostWithOptions(request *Save
 	return _result, _err
 }
 
+// @param request - SaveSingleTaskForModifyingDnsHostRequest
+//
+// @return SaveSingleTaskForModifyingDnsHostResponse
 func (client *Client) SaveSingleTaskForModifyingDnsHost(request *SaveSingleTaskForModifyingDnsHostRequest) (_result *SaveSingleTaskForModifyingDnsHostResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SaveSingleTaskForModifyingDnsHostResponse{}
@@ -16155,6 +17134,11 @@ func (client *Client) SaveSingleTaskForModifyingDnsHost(request *SaveSingleTaskF
 	return _result, _err
 }
 
+// @param request - SaveSingleTaskForQueryingTransferAuthorizationCodeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SaveSingleTaskForQueryingTransferAuthorizationCodeResponse
 func (client *Client) SaveSingleTaskForQueryingTransferAuthorizationCodeWithOptions(request *SaveSingleTaskForQueryingTransferAuthorizationCodeRequest, runtime *util.RuntimeOptions) (_result *SaveSingleTaskForQueryingTransferAuthorizationCodeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16196,6 +17180,9 @@ func (client *Client) SaveSingleTaskForQueryingTransferAuthorizationCodeWithOpti
 	return _result, _err
 }
 
+// @param request - SaveSingleTaskForQueryingTransferAuthorizationCodeRequest
+//
+// @return SaveSingleTaskForQueryingTransferAuthorizationCodeResponse
 func (client *Client) SaveSingleTaskForQueryingTransferAuthorizationCode(request *SaveSingleTaskForQueryingTransferAuthorizationCodeRequest) (_result *SaveSingleTaskForQueryingTransferAuthorizationCodeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SaveSingleTaskForQueryingTransferAuthorizationCodeResponse{}
@@ -16207,6 +17194,11 @@ func (client *Client) SaveSingleTaskForQueryingTransferAuthorizationCode(request
 	return _result, _err
 }
 
+// @param request - SaveSingleTaskForSaveArtExtensionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SaveSingleTaskForSaveArtExtensionResponse
 func (client *Client) SaveSingleTaskForSaveArtExtensionWithOptions(request *SaveSingleTaskForSaveArtExtensionRequest, runtime *util.RuntimeOptions) (_result *SaveSingleTaskForSaveArtExtensionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16284,6 +17276,9 @@ func (client *Client) SaveSingleTaskForSaveArtExtensionWithOptions(request *Save
 	return _result, _err
 }
 
+// @param request - SaveSingleTaskForSaveArtExtensionRequest
+//
+// @return SaveSingleTaskForSaveArtExtensionResponse
 func (client *Client) SaveSingleTaskForSaveArtExtension(request *SaveSingleTaskForSaveArtExtensionRequest) (_result *SaveSingleTaskForSaveArtExtensionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SaveSingleTaskForSaveArtExtensionResponse{}
@@ -16295,6 +17290,11 @@ func (client *Client) SaveSingleTaskForSaveArtExtension(request *SaveSingleTaskF
 	return _result, _err
 }
 
+// @param request - SaveSingleTaskForSynchronizingDSRecordRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SaveSingleTaskForSynchronizingDSRecordResponse
 func (client *Client) SaveSingleTaskForSynchronizingDSRecordWithOptions(request *SaveSingleTaskForSynchronizingDSRecordRequest, runtime *util.RuntimeOptions) (_result *SaveSingleTaskForSynchronizingDSRecordResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16336,6 +17336,9 @@ func (client *Client) SaveSingleTaskForSynchronizingDSRecordWithOptions(request 
 	return _result, _err
 }
 
+// @param request - SaveSingleTaskForSynchronizingDSRecordRequest
+//
+// @return SaveSingleTaskForSynchronizingDSRecordResponse
 func (client *Client) SaveSingleTaskForSynchronizingDSRecord(request *SaveSingleTaskForSynchronizingDSRecordRequest) (_result *SaveSingleTaskForSynchronizingDSRecordResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SaveSingleTaskForSynchronizingDSRecordResponse{}
@@ -16347,6 +17350,11 @@ func (client *Client) SaveSingleTaskForSynchronizingDSRecord(request *SaveSingle
 	return _result, _err
 }
 
+// @param request - SaveSingleTaskForSynchronizingDnsHostRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SaveSingleTaskForSynchronizingDnsHostResponse
 func (client *Client) SaveSingleTaskForSynchronizingDnsHostWithOptions(request *SaveSingleTaskForSynchronizingDnsHostRequest, runtime *util.RuntimeOptions) (_result *SaveSingleTaskForSynchronizingDnsHostResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16388,6 +17396,9 @@ func (client *Client) SaveSingleTaskForSynchronizingDnsHostWithOptions(request *
 	return _result, _err
 }
 
+// @param request - SaveSingleTaskForSynchronizingDnsHostRequest
+//
+// @return SaveSingleTaskForSynchronizingDnsHostResponse
 func (client *Client) SaveSingleTaskForSynchronizingDnsHost(request *SaveSingleTaskForSynchronizingDnsHostRequest) (_result *SaveSingleTaskForSynchronizingDnsHostResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SaveSingleTaskForSynchronizingDnsHostResponse{}
@@ -16399,6 +17410,11 @@ func (client *Client) SaveSingleTaskForSynchronizingDnsHost(request *SaveSingleT
 	return _result, _err
 }
 
+// @param request - SaveSingleTaskForTransferProhibitionLockRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SaveSingleTaskForTransferProhibitionLockResponse
 func (client *Client) SaveSingleTaskForTransferProhibitionLockWithOptions(request *SaveSingleTaskForTransferProhibitionLockRequest, runtime *util.RuntimeOptions) (_result *SaveSingleTaskForTransferProhibitionLockResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16444,6 +17460,9 @@ func (client *Client) SaveSingleTaskForTransferProhibitionLockWithOptions(reques
 	return _result, _err
 }
 
+// @param request - SaveSingleTaskForTransferProhibitionLockRequest
+//
+// @return SaveSingleTaskForTransferProhibitionLockResponse
 func (client *Client) SaveSingleTaskForTransferProhibitionLock(request *SaveSingleTaskForTransferProhibitionLockRequest) (_result *SaveSingleTaskForTransferProhibitionLockResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SaveSingleTaskForTransferProhibitionLockResponse{}
@@ -16455,6 +17474,11 @@ func (client *Client) SaveSingleTaskForTransferProhibitionLock(request *SaveSing
 	return _result, _err
 }
 
+// @param request - SaveSingleTaskForUpdateProhibitionLockRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SaveSingleTaskForUpdateProhibitionLockResponse
 func (client *Client) SaveSingleTaskForUpdateProhibitionLockWithOptions(request *SaveSingleTaskForUpdateProhibitionLockRequest, runtime *util.RuntimeOptions) (_result *SaveSingleTaskForUpdateProhibitionLockResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16500,6 +17524,9 @@ func (client *Client) SaveSingleTaskForUpdateProhibitionLockWithOptions(request 
 	return _result, _err
 }
 
+// @param request - SaveSingleTaskForUpdateProhibitionLockRequest
+//
+// @return SaveSingleTaskForUpdateProhibitionLockResponse
 func (client *Client) SaveSingleTaskForUpdateProhibitionLock(request *SaveSingleTaskForUpdateProhibitionLockRequest) (_result *SaveSingleTaskForUpdateProhibitionLockResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SaveSingleTaskForUpdateProhibitionLockResponse{}
@@ -16511,6 +17538,11 @@ func (client *Client) SaveSingleTaskForUpdateProhibitionLock(request *SaveSingle
 	return _result, _err
 }
 
+// @param request - SaveSingleTaskForUpdatingContactInfoRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SaveSingleTaskForUpdatingContactInfoResponse
 func (client *Client) SaveSingleTaskForUpdatingContactInfoWithOptions(request *SaveSingleTaskForUpdatingContactInfoRequest, runtime *util.RuntimeOptions) (_result *SaveSingleTaskForUpdatingContactInfoResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16568,6 +17600,9 @@ func (client *Client) SaveSingleTaskForUpdatingContactInfoWithOptions(request *S
 	return _result, _err
 }
 
+// @param request - SaveSingleTaskForUpdatingContactInfoRequest
+//
+// @return SaveSingleTaskForUpdatingContactInfoResponse
 func (client *Client) SaveSingleTaskForUpdatingContactInfo(request *SaveSingleTaskForUpdatingContactInfoRequest) (_result *SaveSingleTaskForUpdatingContactInfoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SaveSingleTaskForUpdatingContactInfoResponse{}
@@ -16579,6 +17614,11 @@ func (client *Client) SaveSingleTaskForUpdatingContactInfo(request *SaveSingleTa
 	return _result, _err
 }
 
+// @param request - SaveTaskForSubmittingDomainDeleteRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SaveTaskForSubmittingDomainDeleteResponse
 func (client *Client) SaveTaskForSubmittingDomainDeleteWithOptions(request *SaveTaskForSubmittingDomainDeleteRequest, runtime *util.RuntimeOptions) (_result *SaveTaskForSubmittingDomainDeleteResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16620,6 +17660,9 @@ func (client *Client) SaveTaskForSubmittingDomainDeleteWithOptions(request *Save
 	return _result, _err
 }
 
+// @param request - SaveTaskForSubmittingDomainDeleteRequest
+//
+// @return SaveTaskForSubmittingDomainDeleteResponse
 func (client *Client) SaveTaskForSubmittingDomainDelete(request *SaveTaskForSubmittingDomainDeleteRequest) (_result *SaveTaskForSubmittingDomainDeleteResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SaveTaskForSubmittingDomainDeleteResponse{}
@@ -16631,6 +17674,11 @@ func (client *Client) SaveTaskForSubmittingDomainDelete(request *SaveTaskForSubm
 	return _result, _err
 }
 
+// @param request - SaveTaskForSubmittingDomainRealNameVerificationByIdentityCredentialRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SaveTaskForSubmittingDomainRealNameVerificationByIdentityCredentialResponse
 func (client *Client) SaveTaskForSubmittingDomainRealNameVerificationByIdentityCredentialWithOptions(request *SaveTaskForSubmittingDomainRealNameVerificationByIdentityCredentialRequest, runtime *util.RuntimeOptions) (_result *SaveTaskForSubmittingDomainRealNameVerificationByIdentityCredentialResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16686,6 +17734,9 @@ func (client *Client) SaveTaskForSubmittingDomainRealNameVerificationByIdentityC
 	return _result, _err
 }
 
+// @param request - SaveTaskForSubmittingDomainRealNameVerificationByIdentityCredentialRequest
+//
+// @return SaveTaskForSubmittingDomainRealNameVerificationByIdentityCredentialResponse
 func (client *Client) SaveTaskForSubmittingDomainRealNameVerificationByIdentityCredential(request *SaveTaskForSubmittingDomainRealNameVerificationByIdentityCredentialRequest) (_result *SaveTaskForSubmittingDomainRealNameVerificationByIdentityCredentialResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SaveTaskForSubmittingDomainRealNameVerificationByIdentityCredentialResponse{}
@@ -16697,6 +17748,11 @@ func (client *Client) SaveTaskForSubmittingDomainRealNameVerificationByIdentityC
 	return _result, _err
 }
 
+// @param request - SaveTaskForSubmittingDomainRealNameVerificationByRegistrantProfileIDRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SaveTaskForSubmittingDomainRealNameVerificationByRegistrantProfileIDResponse
 func (client *Client) SaveTaskForSubmittingDomainRealNameVerificationByRegistrantProfileIDWithOptions(request *SaveTaskForSubmittingDomainRealNameVerificationByRegistrantProfileIDRequest, runtime *util.RuntimeOptions) (_result *SaveTaskForSubmittingDomainRealNameVerificationByRegistrantProfileIDResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16746,6 +17802,9 @@ func (client *Client) SaveTaskForSubmittingDomainRealNameVerificationByRegistran
 	return _result, _err
 }
 
+// @param request - SaveTaskForSubmittingDomainRealNameVerificationByRegistrantProfileIDRequest
+//
+// @return SaveTaskForSubmittingDomainRealNameVerificationByRegistrantProfileIDResponse
 func (client *Client) SaveTaskForSubmittingDomainRealNameVerificationByRegistrantProfileID(request *SaveTaskForSubmittingDomainRealNameVerificationByRegistrantProfileIDRequest) (_result *SaveTaskForSubmittingDomainRealNameVerificationByRegistrantProfileIDResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SaveTaskForSubmittingDomainRealNameVerificationByRegistrantProfileIDResponse{}
@@ -16757,6 +17816,11 @@ func (client *Client) SaveTaskForSubmittingDomainRealNameVerificationByRegistran
 	return _result, _err
 }
 
+// @param request - SaveTaskForUpdatingRegistrantInfoByIdentityCredentialRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SaveTaskForUpdatingRegistrantInfoByIdentityCredentialResponse
 func (client *Client) SaveTaskForUpdatingRegistrantInfoByIdentityCredentialWithOptions(request *SaveTaskForUpdatingRegistrantInfoByIdentityCredentialRequest, runtime *util.RuntimeOptions) (_result *SaveTaskForUpdatingRegistrantInfoByIdentityCredentialResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16864,6 +17928,9 @@ func (client *Client) SaveTaskForUpdatingRegistrantInfoByIdentityCredentialWithO
 	return _result, _err
 }
 
+// @param request - SaveTaskForUpdatingRegistrantInfoByIdentityCredentialRequest
+//
+// @return SaveTaskForUpdatingRegistrantInfoByIdentityCredentialResponse
 func (client *Client) SaveTaskForUpdatingRegistrantInfoByIdentityCredential(request *SaveTaskForUpdatingRegistrantInfoByIdentityCredentialRequest) (_result *SaveTaskForUpdatingRegistrantInfoByIdentityCredentialResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SaveTaskForUpdatingRegistrantInfoByIdentityCredentialResponse{}
@@ -16875,6 +17942,11 @@ func (client *Client) SaveTaskForUpdatingRegistrantInfoByIdentityCredential(requ
 	return _result, _err
 }
 
+// @param request - SaveTaskForUpdatingRegistrantInfoByRegistrantProfileIDRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SaveTaskForUpdatingRegistrantInfoByRegistrantProfileIDResponse
 func (client *Client) SaveTaskForUpdatingRegistrantInfoByRegistrantProfileIDWithOptions(request *SaveTaskForUpdatingRegistrantInfoByRegistrantProfileIDRequest, runtime *util.RuntimeOptions) (_result *SaveTaskForUpdatingRegistrantInfoByRegistrantProfileIDResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16924,6 +17996,9 @@ func (client *Client) SaveTaskForUpdatingRegistrantInfoByRegistrantProfileIDWith
 	return _result, _err
 }
 
+// @param request - SaveTaskForUpdatingRegistrantInfoByRegistrantProfileIDRequest
+//
+// @return SaveTaskForUpdatingRegistrantInfoByRegistrantProfileIDResponse
 func (client *Client) SaveTaskForUpdatingRegistrantInfoByRegistrantProfileID(request *SaveTaskForUpdatingRegistrantInfoByRegistrantProfileIDRequest) (_result *SaveTaskForUpdatingRegistrantInfoByRegistrantProfileIDResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SaveTaskForUpdatingRegistrantInfoByRegistrantProfileIDResponse{}
@@ -16935,6 +18010,11 @@ func (client *Client) SaveTaskForUpdatingRegistrantInfoByRegistrantProfileID(req
 	return _result, _err
 }
 
+// @param request - SubmitEmailVerificationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SubmitEmailVerificationResponse
 func (client *Client) SubmitEmailVerificationWithOptions(request *SubmitEmailVerificationRequest, runtime *util.RuntimeOptions) (_result *SubmitEmailVerificationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16980,6 +18060,9 @@ func (client *Client) SubmitEmailVerificationWithOptions(request *SubmitEmailVer
 	return _result, _err
 }
 
+// @param request - SubmitEmailVerificationRequest
+//
+// @return SubmitEmailVerificationResponse
 func (client *Client) SubmitEmailVerification(request *SubmitEmailVerificationRequest) (_result *SubmitEmailVerificationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SubmitEmailVerificationResponse{}
@@ -16991,6 +18074,11 @@ func (client *Client) SubmitEmailVerification(request *SubmitEmailVerificationRe
 	return _result, _err
 }
 
+// @param request - TransferInCheckMailTokenRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return TransferInCheckMailTokenResponse
 func (client *Client) TransferInCheckMailTokenWithOptions(request *TransferInCheckMailTokenRequest, runtime *util.RuntimeOptions) (_result *TransferInCheckMailTokenResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -17032,6 +18120,9 @@ func (client *Client) TransferInCheckMailTokenWithOptions(request *TransferInChe
 	return _result, _err
 }
 
+// @param request - TransferInCheckMailTokenRequest
+//
+// @return TransferInCheckMailTokenResponse
 func (client *Client) TransferInCheckMailToken(request *TransferInCheckMailTokenRequest) (_result *TransferInCheckMailTokenResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &TransferInCheckMailTokenResponse{}
@@ -17043,6 +18134,11 @@ func (client *Client) TransferInCheckMailToken(request *TransferInCheckMailToken
 	return _result, _err
 }
 
+// @param request - TransferInReenterTransferAuthorizationCodeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return TransferInReenterTransferAuthorizationCodeResponse
 func (client *Client) TransferInReenterTransferAuthorizationCodeWithOptions(request *TransferInReenterTransferAuthorizationCodeRequest, runtime *util.RuntimeOptions) (_result *TransferInReenterTransferAuthorizationCodeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -17088,6 +18184,9 @@ func (client *Client) TransferInReenterTransferAuthorizationCodeWithOptions(requ
 	return _result, _err
 }
 
+// @param request - TransferInReenterTransferAuthorizationCodeRequest
+//
+// @return TransferInReenterTransferAuthorizationCodeResponse
 func (client *Client) TransferInReenterTransferAuthorizationCode(request *TransferInReenterTransferAuthorizationCodeRequest) (_result *TransferInReenterTransferAuthorizationCodeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &TransferInReenterTransferAuthorizationCodeResponse{}
@@ -17099,6 +18198,11 @@ func (client *Client) TransferInReenterTransferAuthorizationCode(request *Transf
 	return _result, _err
 }
 
+// @param request - TransferInRefetchWhoisEmailRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return TransferInRefetchWhoisEmailResponse
 func (client *Client) TransferInRefetchWhoisEmailWithOptions(request *TransferInRefetchWhoisEmailRequest, runtime *util.RuntimeOptions) (_result *TransferInRefetchWhoisEmailResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -17140,6 +18244,9 @@ func (client *Client) TransferInRefetchWhoisEmailWithOptions(request *TransferIn
 	return _result, _err
 }
 
+// @param request - TransferInRefetchWhoisEmailRequest
+//
+// @return TransferInRefetchWhoisEmailResponse
 func (client *Client) TransferInRefetchWhoisEmail(request *TransferInRefetchWhoisEmailRequest) (_result *TransferInRefetchWhoisEmailResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &TransferInRefetchWhoisEmailResponse{}
@@ -17151,6 +18258,11 @@ func (client *Client) TransferInRefetchWhoisEmail(request *TransferInRefetchWhoi
 	return _result, _err
 }
 
+// @param request - TransferInResendMailTokenRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return TransferInResendMailTokenResponse
 func (client *Client) TransferInResendMailTokenWithOptions(request *TransferInResendMailTokenRequest, runtime *util.RuntimeOptions) (_result *TransferInResendMailTokenResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -17192,6 +18304,9 @@ func (client *Client) TransferInResendMailTokenWithOptions(request *TransferInRe
 	return _result, _err
 }
 
+// @param request - TransferInResendMailTokenRequest
+//
+// @return TransferInResendMailTokenResponse
 func (client *Client) TransferInResendMailToken(request *TransferInResendMailTokenRequest) (_result *TransferInResendMailTokenResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &TransferInResendMailTokenResponse{}
@@ -17203,6 +18318,11 @@ func (client *Client) TransferInResendMailToken(request *TransferInResendMailTok
 	return _result, _err
 }
 
+// @param request - VerifyContactFieldRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return VerifyContactFieldResponse
 func (client *Client) VerifyContactFieldWithOptions(request *VerifyContactFieldRequest, runtime *util.RuntimeOptions) (_result *VerifyContactFieldResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -17292,6 +18412,9 @@ func (client *Client) VerifyContactFieldWithOptions(request *VerifyContactFieldR
 	return _result, _err
 }
 
+// @param request - VerifyContactFieldRequest
+//
+// @return VerifyContactFieldResponse
 func (client *Client) VerifyContactField(request *VerifyContactFieldRequest) (_result *VerifyContactFieldResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &VerifyContactFieldResponse{}
@@ -17303,6 +18426,11 @@ func (client *Client) VerifyContactField(request *VerifyContactFieldRequest) (_r
 	return _result, _err
 }
 
+// @param request - VerifyEmailRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return VerifyEmailResponse
 func (client *Client) VerifyEmailWithOptions(request *VerifyEmailRequest, runtime *util.RuntimeOptions) (_result *VerifyEmailResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -17344,6 +18472,9 @@ func (client *Client) VerifyEmailWithOptions(request *VerifyEmailRequest, runtim
 	return _result, _err
 }
 
+// @param request - VerifyEmailRequest
+//
+// @return VerifyEmailResponse
 func (client *Client) VerifyEmail(request *VerifyEmailRequest) (_result *VerifyEmailResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &VerifyEmailResponse{}
