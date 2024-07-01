@@ -1809,6 +1809,7 @@ type AllocateClusterPublicConnectionRequest struct {
 	//
 	// amv-bp1z5d2q71is2****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	Engine      *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
 }
 
 func (s AllocateClusterPublicConnectionRequest) String() string {
@@ -1826,6 +1827,11 @@ func (s *AllocateClusterPublicConnectionRequest) SetConnectionStringPrefix(v str
 
 func (s *AllocateClusterPublicConnectionRequest) SetDBClusterId(v string) *AllocateClusterPublicConnectionRequest {
 	s.DBClusterId = &v
+	return s
+}
+
+func (s *AllocateClusterPublicConnectionRequest) SetEngine(v string) *AllocateClusterPublicConnectionRequest {
+	s.Engine = &v
 	return s
 }
 
@@ -2411,6 +2417,7 @@ type CreateAccountRequest struct {
 	//
 	// amv-bp11q28kvl688****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	Engine      *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
 }
 
 func (s CreateAccountRequest) String() string {
@@ -2443,6 +2450,11 @@ func (s *CreateAccountRequest) SetAccountType(v string) *CreateAccountRequest {
 
 func (s *CreateAccountRequest) SetDBClusterId(v string) *CreateAccountRequest {
 	s.DBClusterId = &v
+	return s
+}
+
+func (s *CreateAccountRequest) SetEngine(v string) *CreateAccountRequest {
+	s.Engine = &v
 	return s
 }
 
@@ -2538,6 +2550,7 @@ type CreateDBClusterRequest struct {
 	//
 	// 5.0
 	DBClusterVersion *string `json:"DBClusterVersion,omitempty" xml:"DBClusterVersion,omitempty"`
+	DiskEncryption   *bool   `json:"DiskEncryption,omitempty" xml:"DiskEncryption,omitempty"`
 	// Specifies whether to allocate all reserved computing resources to the user_default resource group. Valid values:
 	//
 	// 	- **true*	- (default)
@@ -2547,7 +2560,8 @@ type CreateDBClusterRequest struct {
 	// example:
 	//
 	// true
-	EnableDefaultResourcePool *bool `json:"EnableDefaultResourcePool,omitempty" xml:"EnableDefaultResourcePool,omitempty"`
+	EnableDefaultResourcePool *bool   `json:"EnableDefaultResourcePool,omitempty" xml:"EnableDefaultResourcePool,omitempty"`
+	KmsId                     *string `json:"KmsId,omitempty" xml:"KmsId,omitempty"`
 	// The billing method of the cluster. Valid values:
 	//
 	// 	- **Postpaid**: pay-as-you-go.
@@ -2699,8 +2713,18 @@ func (s *CreateDBClusterRequest) SetDBClusterVersion(v string) *CreateDBClusterR
 	return s
 }
 
+func (s *CreateDBClusterRequest) SetDiskEncryption(v bool) *CreateDBClusterRequest {
+	s.DiskEncryption = &v
+	return s
+}
+
 func (s *CreateDBClusterRequest) SetEnableDefaultResourcePool(v bool) *CreateDBClusterRequest {
 	s.EnableDefaultResourcePool = &v
+	return s
+}
+
+func (s *CreateDBClusterRequest) SetKmsId(v string) *CreateDBClusterRequest {
+	s.KmsId = &v
 	return s
 }
 
@@ -2926,7 +2950,7 @@ type CreateDBResourceGroupRequest struct {
 	//
 	// amv-bp11q28kvl688****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// Specifies whether to enable the preemptible instance feature for the resource group. After you enable the preemptible instance feature, you are charged for resources at a lower unit price but the resources are probably released. You can enable the preemptible instance feature only for job resource groups. Valid values:
+	// Specifies whether to enable the spot instance feature for the resource group. After you enable the spot instance feature, you are charged for resources at a lower unit price but the resources are probably released. You can enable the spot instance feature only for job resource groups. Valid values:
 	//
 	// 	- **True**
 	//
@@ -3083,7 +3107,7 @@ type CreateDBResourceGroupRequestRules struct {
 	//
 	// 	- The name must start with a letter or digit.
 	//
-	// 	- The name can contain letters, digits, hyphens (_), and underscores (_).
+	// 	- The name can contain letters, digits, hyphens (-), and underscores (_).
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
 	// The execution duration of the query. Unit: milliseconds.
 	QueryTime *string `json:"QueryTime,omitempty" xml:"QueryTime,omitempty"`
@@ -3135,7 +3159,7 @@ type CreateDBResourceGroupShrinkRequest struct {
 	//
 	// amv-bp11q28kvl688****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// Specifies whether to enable the preemptible instance feature for the resource group. After you enable the preemptible instance feature, you are charged for resources at a lower unit price but the resources are probably released. You can enable the preemptible instance feature only for job resource groups. Valid values:
+	// Specifies whether to enable the spot instance feature for the resource group. After you enable the spot instance feature, you are charged for resources at a lower unit price but the resources are probably released. You can enable the spot instance feature only for job resource groups. Valid values:
 	//
 	// 	- **True**
 	//
@@ -3747,6 +3771,357 @@ func (s *CreateOssSubDirectoryResponse) SetBody(v *CreateOssSubDirectoryResponse
 	return s
 }
 
+type CreatePerformanceViewRequest struct {
+	// example:
+	//
+	// Basic
+	CreateFromViewType *string `json:"CreateFromViewType,omitempty" xml:"CreateFromViewType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// amv-bp1ub9grke1****
+	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// example:
+	//
+	// true
+	FillOriginViewKeys *bool   `json:"FillOriginViewKeys,omitempty" xml:"FillOriginViewKeys,omitempty"`
+	OwnerAccount       *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId            *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-beijing
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// This parameter is required.
+	ViewDetail *CreatePerformanceViewRequestViewDetail `json:"ViewDetail,omitempty" xml:"ViewDetail,omitempty" type:"Struct"`
+	// This parameter is required.
+	ViewName *string `json:"ViewName,omitempty" xml:"ViewName,omitempty"`
+}
+
+func (s CreatePerformanceViewRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreatePerformanceViewRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreatePerformanceViewRequest) SetCreateFromViewType(v string) *CreatePerformanceViewRequest {
+	s.CreateFromViewType = &v
+	return s
+}
+
+func (s *CreatePerformanceViewRequest) SetDBClusterId(v string) *CreatePerformanceViewRequest {
+	s.DBClusterId = &v
+	return s
+}
+
+func (s *CreatePerformanceViewRequest) SetFillOriginViewKeys(v bool) *CreatePerformanceViewRequest {
+	s.FillOriginViewKeys = &v
+	return s
+}
+
+func (s *CreatePerformanceViewRequest) SetOwnerAccount(v string) *CreatePerformanceViewRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *CreatePerformanceViewRequest) SetOwnerId(v int64) *CreatePerformanceViewRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *CreatePerformanceViewRequest) SetRegionId(v string) *CreatePerformanceViewRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *CreatePerformanceViewRequest) SetResourceOwnerAccount(v string) *CreatePerformanceViewRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *CreatePerformanceViewRequest) SetResourceOwnerId(v int64) *CreatePerformanceViewRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *CreatePerformanceViewRequest) SetViewDetail(v *CreatePerformanceViewRequestViewDetail) *CreatePerformanceViewRequest {
+	s.ViewDetail = v
+	return s
+}
+
+func (s *CreatePerformanceViewRequest) SetViewName(v string) *CreatePerformanceViewRequest {
+	s.ViewName = &v
+	return s
+}
+
+type CreatePerformanceViewRequestViewDetail struct {
+	Categories []*CreatePerformanceViewRequestViewDetailCategories `json:"Categories,omitempty" xml:"Categories,omitempty" type:"Repeated"`
+	// example:
+	//
+	// true
+	ChartLinked *bool `json:"ChartLinked,omitempty" xml:"ChartLinked,omitempty"`
+	// example:
+	//
+	// 2
+	ChartsPerLine *int32 `json:"ChartsPerLine,omitempty" xml:"ChartsPerLine,omitempty"`
+}
+
+func (s CreatePerformanceViewRequestViewDetail) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreatePerformanceViewRequestViewDetail) GoString() string {
+	return s.String()
+}
+
+func (s *CreatePerformanceViewRequestViewDetail) SetCategories(v []*CreatePerformanceViewRequestViewDetailCategories) *CreatePerformanceViewRequestViewDetail {
+	s.Categories = v
+	return s
+}
+
+func (s *CreatePerformanceViewRequestViewDetail) SetChartLinked(v bool) *CreatePerformanceViewRequestViewDetail {
+	s.ChartLinked = &v
+	return s
+}
+
+func (s *CreatePerformanceViewRequestViewDetail) SetChartsPerLine(v int32) *CreatePerformanceViewRequestViewDetail {
+	s.ChartsPerLine = &v
+	return s
+}
+
+type CreatePerformanceViewRequestViewDetailCategories struct {
+	// example:
+	//
+	// Node
+	Category *string                                                 `json:"Category,omitempty" xml:"Category,omitempty"`
+	Keys     []*CreatePerformanceViewRequestViewDetailCategoriesKeys `json:"Keys,omitempty" xml:"Keys,omitempty" type:"Repeated"`
+}
+
+func (s CreatePerformanceViewRequestViewDetailCategories) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreatePerformanceViewRequestViewDetailCategories) GoString() string {
+	return s.String()
+}
+
+func (s *CreatePerformanceViewRequestViewDetailCategories) SetCategory(v string) *CreatePerformanceViewRequestViewDetailCategories {
+	s.Category = &v
+	return s
+}
+
+func (s *CreatePerformanceViewRequestViewDetailCategories) SetKeys(v []*CreatePerformanceViewRequestViewDetailCategoriesKeys) *CreatePerformanceViewRequestViewDetailCategories {
+	s.Keys = v
+	return s
+}
+
+type CreatePerformanceViewRequestViewDetailCategoriesKeys struct {
+	// example:
+	//
+	// AnalyticDB_CPU
+	KeyName *string `json:"KeyName,omitempty" xml:"KeyName,omitempty"`
+	// example:
+	//
+	// true
+	Selected *bool `json:"Selected,omitempty" xml:"Selected,omitempty"`
+}
+
+func (s CreatePerformanceViewRequestViewDetailCategoriesKeys) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreatePerformanceViewRequestViewDetailCategoriesKeys) GoString() string {
+	return s.String()
+}
+
+func (s *CreatePerformanceViewRequestViewDetailCategoriesKeys) SetKeyName(v string) *CreatePerformanceViewRequestViewDetailCategoriesKeys {
+	s.KeyName = &v
+	return s
+}
+
+func (s *CreatePerformanceViewRequestViewDetailCategoriesKeys) SetSelected(v bool) *CreatePerformanceViewRequestViewDetailCategoriesKeys {
+	s.Selected = &v
+	return s
+}
+
+type CreatePerformanceViewShrinkRequest struct {
+	// example:
+	//
+	// Basic
+	CreateFromViewType *string `json:"CreateFromViewType,omitempty" xml:"CreateFromViewType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// amv-bp1ub9grke1****
+	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// example:
+	//
+	// true
+	FillOriginViewKeys *bool   `json:"FillOriginViewKeys,omitempty" xml:"FillOriginViewKeys,omitempty"`
+	OwnerAccount       *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId            *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-beijing
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// This parameter is required.
+	ViewDetailShrink *string `json:"ViewDetail,omitempty" xml:"ViewDetail,omitempty"`
+	// This parameter is required.
+	ViewName *string `json:"ViewName,omitempty" xml:"ViewName,omitempty"`
+}
+
+func (s CreatePerformanceViewShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreatePerformanceViewShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreatePerformanceViewShrinkRequest) SetCreateFromViewType(v string) *CreatePerformanceViewShrinkRequest {
+	s.CreateFromViewType = &v
+	return s
+}
+
+func (s *CreatePerformanceViewShrinkRequest) SetDBClusterId(v string) *CreatePerformanceViewShrinkRequest {
+	s.DBClusterId = &v
+	return s
+}
+
+func (s *CreatePerformanceViewShrinkRequest) SetFillOriginViewKeys(v bool) *CreatePerformanceViewShrinkRequest {
+	s.FillOriginViewKeys = &v
+	return s
+}
+
+func (s *CreatePerformanceViewShrinkRequest) SetOwnerAccount(v string) *CreatePerformanceViewShrinkRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *CreatePerformanceViewShrinkRequest) SetOwnerId(v int64) *CreatePerformanceViewShrinkRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *CreatePerformanceViewShrinkRequest) SetRegionId(v string) *CreatePerformanceViewShrinkRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *CreatePerformanceViewShrinkRequest) SetResourceOwnerAccount(v string) *CreatePerformanceViewShrinkRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *CreatePerformanceViewShrinkRequest) SetResourceOwnerId(v int64) *CreatePerformanceViewShrinkRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *CreatePerformanceViewShrinkRequest) SetViewDetailShrink(v string) *CreatePerformanceViewShrinkRequest {
+	s.ViewDetailShrink = &v
+	return s
+}
+
+func (s *CreatePerformanceViewShrinkRequest) SetViewName(v string) *CreatePerformanceViewShrinkRequest {
+	s.ViewName = &v
+	return s
+}
+
+type CreatePerformanceViewResponseBody struct {
+	// example:
+	//
+	// {
+	//
+	//     "PolicyType": "AccountLevelIdentityBasedPolicy",
+	//
+	//     "AuthPrincipalOwnerId": "1*****************7",
+	//
+	//     "EncodedDiagnosticMessage": "AQIBIAAAAOPdwKY2QLOvgMEc7SkkoJfj1kvZwsaRqNYMh10Tv0wTe0fCzaCdrvgazfNb0EnJKETgXyhR+3BIQjx9WAqZryejBsp1Bl4qI5En/D9dEhcXAtKCxCmE2kZCiEzpy8BoEUt+bs0DmlaGWO5xkEpttypLIB4rUhDvZd+zwPg4EXk4KSSWSWsurxtqDkKEMshKlQFBTKvJcKwyhk62IeYly4hQ+5IpXjkh1GQXuDRCQ==",
+	//
+	//     "AuthPrincipalType": "SubUser",
+	//
+	//     "AuthPrincipalDisplayName": "2***************9",
+	//
+	//     "NoPermissionType": "ImplicitDeny",
+	//
+	//     "AuthAction": "adb:DescribeExcessivePrimaryKeys"
+	//
+	// }
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// example:
+	//
+	// SUCCESS
+	CreateStatus *string `json:"CreateStatus,omitempty" xml:"CreateStatus,omitempty"`
+	// example:
+	//
+	// E031AABF-BD56-5966-A063-4283EF18DB45
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreatePerformanceViewResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreatePerformanceViewResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreatePerformanceViewResponseBody) SetAccessDeniedDetail(v string) *CreatePerformanceViewResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
+}
+
+func (s *CreatePerformanceViewResponseBody) SetCreateStatus(v string) *CreatePerformanceViewResponseBody {
+	s.CreateStatus = &v
+	return s
+}
+
+func (s *CreatePerformanceViewResponseBody) SetRequestId(v string) *CreatePerformanceViewResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreatePerformanceViewResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreatePerformanceViewResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreatePerformanceViewResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreatePerformanceViewResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreatePerformanceViewResponse) SetHeaders(v map[string]*string) *CreatePerformanceViewResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreatePerformanceViewResponse) SetStatusCode(v int32) *CreatePerformanceViewResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreatePerformanceViewResponse) SetBody(v *CreatePerformanceViewResponseBody) *CreatePerformanceViewResponse {
+	s.Body = v
+	return s
+}
+
 type CreateSparkTemplateRequest struct {
 	// The application type. Valid values:
 	//
@@ -3922,7 +4297,7 @@ func (s *CreateSparkTemplateResponse) SetBody(v *CreateSparkTemplateResponseBody
 type DeleteAccountRequest struct {
 	// The name of the database account.
 	//
-	// > You can call the [DescribeAccounts](https://help.aliyun.com/document_detail/612430.html) operation to query the information about database accounts in a cluster, including the database account name.
+	// >  You can call the [DescribeAccounts](https://help.aliyun.com/document_detail/612430.html) operation to query the information about database accounts for a cluster, including the account name.
 	//
 	// This parameter is required.
 	//
@@ -3938,6 +4313,7 @@ type DeleteAccountRequest struct {
 	//
 	// amv-bp11q28kvl688****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	Engine      *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
 }
 
 func (s DeleteAccountRequest) String() string {
@@ -3955,6 +4331,11 @@ func (s *DeleteAccountRequest) SetAccountName(v string) *DeleteAccountRequest {
 
 func (s *DeleteAccountRequest) SetDBClusterId(v string) *DeleteAccountRequest {
 	s.DBClusterId = &v
+	return s
+}
+
+func (s *DeleteAccountRequest) SetEngine(v string) *DeleteAccountRequest {
+	s.Engine = &v
 	return s
 }
 
@@ -4275,6 +4656,153 @@ func (s *DeleteElasticPlanResponse) SetStatusCode(v int32) *DeleteElasticPlanRes
 }
 
 func (s *DeleteElasticPlanResponse) SetBody(v *DeleteElasticPlanResponseBody) *DeleteElasticPlanResponse {
+	s.Body = v
+	return s
+}
+
+type DeletePerformanceViewRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// amv-uf6wjk5xxxxxxxxxx
+	DBClusterId  *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// This parameter is required.
+	ViewName *string `json:"ViewName,omitempty" xml:"ViewName,omitempty"`
+}
+
+func (s DeletePerformanceViewRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeletePerformanceViewRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeletePerformanceViewRequest) SetDBClusterId(v string) *DeletePerformanceViewRequest {
+	s.DBClusterId = &v
+	return s
+}
+
+func (s *DeletePerformanceViewRequest) SetOwnerAccount(v string) *DeletePerformanceViewRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *DeletePerformanceViewRequest) SetOwnerId(v int64) *DeletePerformanceViewRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DeletePerformanceViewRequest) SetRegionId(v string) *DeletePerformanceViewRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DeletePerformanceViewRequest) SetResourceOwnerAccount(v string) *DeletePerformanceViewRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *DeletePerformanceViewRequest) SetResourceOwnerId(v int64) *DeletePerformanceViewRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *DeletePerformanceViewRequest) SetViewName(v string) *DeletePerformanceViewRequest {
+	s.ViewName = &v
+	return s
+}
+
+type DeletePerformanceViewResponseBody struct {
+	// example:
+	//
+	// {
+	//
+	//     "PolicyType": "AccountLevelIdentityBasedPolicy",
+	//
+	//     "AuthPrincipalOwnerId": "1*****************7",
+	//
+	//     "EncodedDiagnosticMessage": "AQIBIAAAAOPdwKY2QLOvgMEc7SkkoJfj1kvZwsaRqNYMh10Tv0wTe0fCzaCdrvgazfNb0EnJKETgXyhR+3BIQjx9WAqZryejBsp1Bl4qI5En/D9dEhcXAtKCxCmE2kZCiEzpy8BoEUt+bs0DmlaGWO5xkEpttypLIB4rUhDvZd+zwPg4EXk4KSSWSWsurxtqDkKEMshKlQFBTKvJcKwyhk62IeYly4hQ+5IpXjkh1GQXuDRCQ==",
+	//
+	//     "AuthPrincipalType": "SubUser",
+	//
+	//     "AuthPrincipalDisplayName": "2***************9",
+	//
+	//     "NoPermissionType": "ImplicitDeny",
+	//
+	//     "AuthAction": "adb:DescribeExcessivePrimaryKeys"
+	//
+	// }
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// example:
+	//
+	// SUCCESS
+	DeleteStatus *bool `json:"DeleteStatus,omitempty" xml:"DeleteStatus,omitempty"`
+	// example:
+	//
+	// 1AD222E9-E606-4A42-BF6D-8A4442913CEF
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeletePerformanceViewResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeletePerformanceViewResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeletePerformanceViewResponseBody) SetAccessDeniedDetail(v string) *DeletePerformanceViewResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
+}
+
+func (s *DeletePerformanceViewResponseBody) SetDeleteStatus(v bool) *DeletePerformanceViewResponseBody {
+	s.DeleteStatus = &v
+	return s
+}
+
+func (s *DeletePerformanceViewResponseBody) SetRequestId(v string) *DeletePerformanceViewResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeletePerformanceViewResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeletePerformanceViewResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeletePerformanceViewResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeletePerformanceViewResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeletePerformanceViewResponse) SetHeaders(v map[string]*string) *DeletePerformanceViewResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeletePerformanceViewResponse) SetStatusCode(v int32) *DeletePerformanceViewResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeletePerformanceViewResponse) SetBody(v *DeletePerformanceViewResponseBody) *DeletePerformanceViewResponse {
 	s.Body = v
 	return s
 }
@@ -5517,6 +6045,7 @@ type DescribeAccountsRequest struct {
 	//
 	// amv-bp11q28kvl688****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	Engine      *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
 	OwnerId     *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 }
 
@@ -5535,6 +6064,11 @@ func (s *DescribeAccountsRequest) SetAccountName(v string) *DescribeAccountsRequ
 
 func (s *DescribeAccountsRequest) SetDBClusterId(v string) *DescribeAccountsRequest {
 	s.DBClusterId = &v
+	return s
+}
+
+func (s *DescribeAccountsRequest) SetEngine(v string) *DescribeAccountsRequest {
+	s.Engine = &v
 	return s
 }
 
@@ -5602,7 +6136,7 @@ type DescribeAccountsResponseBodyAccountListDBAccount struct {
 	//
 	// test_accout
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	// The state of the database account. Valid values:
+	// The status of the database account. Valid values:
 	//
 	// 	- **Creating**
 	//
@@ -5624,7 +6158,8 @@ type DescribeAccountsResponseBodyAccountListDBAccount struct {
 	//
 	// Normal
 	AccountType *string `json:"AccountType,omitempty" xml:"AccountType,omitempty"`
-	// The ID of the RAM user.
+	Engine      *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	// The ID of the Resource Access Management (RAM) user.
 	//
 	// example:
 	//
@@ -5657,6 +6192,11 @@ func (s *DescribeAccountsResponseBodyAccountListDBAccount) SetAccountStatus(v st
 
 func (s *DescribeAccountsResponseBodyAccountListDBAccount) SetAccountType(v string) *DescribeAccountsResponseBodyAccountListDBAccount {
 	s.AccountType = &v
+	return s
+}
+
+func (s *DescribeAccountsResponseBodyAccountListDBAccount) SetEngine(v string) *DescribeAccountsResponseBodyAccountListDBAccount {
+	s.Engine = &v
 	return s
 }
 
@@ -6559,7 +7099,7 @@ func (s *DescribeAllDataSourceResponse) SetBody(v *DescribeAllDataSourceResponse
 type DescribeApsActionLogsRequest struct {
 	// The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
 	//
-	// >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/454250.html) operation to query the ID of the cluster.
+	// >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/454250.html) operation to query the IDs of all AnalyticDB for MySQL Data Lakehouse Edition (V3.0) clusters within a region.
 	//
 	// This parameter is required.
 	//
@@ -6567,9 +7107,9 @@ type DescribeApsActionLogsRequest struct {
 	//
 	// amv-bp1r053byu48p****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The end time of the logs to be queried. Specify the time in the ISO 8601 standard in the **yyyy-MM-ddTHH:mmZ*	- format. The time must be in UTC.
+	// The end time of the logs to be queried. Specify the time in the ISO 8601 standard in the **yyyy-MM-ddTHH:mm:ssZ*	- format. The time must be in UTC.
 	//
-	// >  The end time must be later than the start time. Their interval cannot be longer than 30 days.
+	// >  The end time must be later than the start time. The maximum time range that can be specified is 30 days.
 	//
 	// This parameter is required.
 	//
@@ -6585,15 +7125,15 @@ type DescribeApsActionLogsRequest struct {
 	Keyword      *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The number of the page to return. The value must be an integer that is greater than 0. Default value: 1.
+	// The page number. Pages start from page 1. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page. Default value: 30. Valid values:
+	// The number of entries per page. Valid values:
 	//
-	// 	- **30**
+	// 	- **30*	- (default)
 	//
 	// 	- **50**
 	//
@@ -6615,7 +7155,7 @@ type DescribeApsActionLogsRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The task phase during which the logs to be queried are generated. Valid values:
+	// The phase during which the logs to be queried were generated. Valid values:
 	//
 	// 	- **StructureMigrate**: schema migration.
 	//
@@ -6623,7 +7163,7 @@ type DescribeApsActionLogsRequest struct {
 	//
 	// 	- **IncrementalSync**: incremental data synchronization.
 	//
-	// >  If you do not specify this parameter, logs of all the task phases are queried.
+	// >  If you do not specify this parameter, logs of all the phases are queried.
 	//
 	// example:
 	//
@@ -6637,7 +7177,7 @@ type DescribeApsActionLogsRequest struct {
 	//
 	// 2023-02-11T08:30:00Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The type of the log. Separate multiple log types with commas (,). Valid values:
+	// The types of the logs. Separate multiple log types with commas (,). Valid values:
 	//
 	// 	- **INFO**
 	//
@@ -6651,7 +7191,7 @@ type DescribeApsActionLogsRequest struct {
 	//
 	// INFO,WARN,ERROR
 	State *string `json:"State,omitempty" xml:"State,omitempty"`
-	// The ID of the real-time data ingestion task.
+	// The ID of the real-time data ingestion job.
 	//
 	// This parameter is required.
 	//
@@ -6740,7 +7280,29 @@ func (s *DescribeApsActionLogsRequest) SetWorkloadId(v string) *DescribeApsActio
 }
 
 type DescribeApsActionLogsResponseBody struct {
-	// Details of the logs.
+	// The information about the request denial.
+	//
+	// example:
+	//
+	// {
+	//
+	//   "AuthAction": "xxx",
+	//
+	//   "AuthPrincipalDisplayName": "sampleName",
+	//
+	//   "AuthPrincipalOwnerId": "111111111111111111",
+	//
+	//   "AuthPrincipalType": "SubUser",
+	//
+	//   "AuthResource": "xxx",
+	//
+	//   "NoPermissionType": "xxx",
+	//
+	//   "PolicyType": "xxx"
+	//
+	// }
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// The queried logs.
 	ActionLogs []*DescribeApsActionLogsResponseBodyActionLogs `json:"ActionLogs,omitempty" xml:"ActionLogs,omitempty" type:"Repeated"`
 	// The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
 	//
@@ -6748,19 +7310,19 @@ type DescribeApsActionLogsResponseBody struct {
 	//
 	// amv-bp1r053byu48p****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The page number of the returned page.
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned on each page.
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 30
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -6772,7 +7334,7 @@ type DescribeApsActionLogsResponseBody struct {
 	//
 	// 3
 	TotalCount *string `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// The ID of the real-time data ingestion task.
+	// The ID of the real-time data ingestion job.
 	//
 	// example:
 	//
@@ -6786,6 +7348,11 @@ func (s DescribeApsActionLogsResponseBody) String() string {
 
 func (s DescribeApsActionLogsResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeApsActionLogsResponseBody) SetAccessDeniedDetail(v string) *DescribeApsActionLogsResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
 }
 
 func (s *DescribeApsActionLogsResponseBody) SetActionLogs(v []*DescribeApsActionLogsResponseBodyActionLogs) *DescribeApsActionLogsResponseBody {
@@ -6830,7 +7397,7 @@ type DescribeApsActionLogsResponseBodyActionLogs struct {
 	//
 	// DDL migration job finished
 	Context *string `json:"Context,omitempty" xml:"Context,omitempty"`
-	// The task phase during which the logs are generated. Valid values:
+	// The phase during which the log was generated. Valid values:
 	//
 	// 	- **StructureMigrate**: schema migration.
 	//
@@ -6854,7 +7421,7 @@ type DescribeApsActionLogsResponseBodyActionLogs struct {
 	//
 	// INFO,WARN,ERROR
 	State *string `json:"State,omitempty" xml:"State,omitempty"`
-	// The time when the log is generated. The time follows the ISO 8601 standard in the **yyyy-MM-ddTHH:mm:ssZ*	- format. The time is displayed in UTC.
+	// The time when the log was generated. The time follows the ISO 8601 standard in the **yyyy-MM-ddTHH:mm:ssZ*	- format. The time is displayed in UTC.
 	//
 	// example:
 	//
@@ -6930,7 +7497,14 @@ type DescribeApsResourceGroupsRequest struct {
 	//
 	// amv-bp1t6rym21****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The region ID.
+	//
+	// >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/454314.html) operation to query the most recent region list.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The ID of the data synchronization job.
 	//
 	// example:
@@ -8355,6 +8929,7 @@ type DescribeClusterNetInfoRequest struct {
 	//
 	// amv-wz9dqvn0o7****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	Engine      *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
 }
 
 func (s DescribeClusterNetInfoRequest) String() string {
@@ -8367,6 +8942,11 @@ func (s DescribeClusterNetInfoRequest) GoString() string {
 
 func (s *DescribeClusterNetInfoRequest) SetDBClusterId(v string) *DescribeClusterNetInfoRequest {
 	s.DBClusterId = &v
+	return s
+}
+
+func (s *DescribeClusterNetInfoRequest) SetEngine(v string) *DescribeClusterNetInfoRequest {
+	s.Engine = &v
 	return s
 }
 
@@ -8473,7 +9053,8 @@ type DescribeClusterNetInfoResponseBodyItemsAddress struct {
 	// example:
 	//
 	// 3306
-	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
+	Port  *string                                              `json:"Port,omitempty" xml:"Port,omitempty"`
+	Ports *DescribeClusterNetInfoResponseBodyItemsAddressPorts `json:"Ports,omitempty" xml:"Ports,omitempty" type:"Struct"`
 	// The VPC ID.
 	//
 	// > If NetType is set to Public, an empty string is returned for this parameter.
@@ -8525,6 +9106,11 @@ func (s *DescribeClusterNetInfoResponseBodyItemsAddress) SetPort(v string) *Desc
 	return s
 }
 
+func (s *DescribeClusterNetInfoResponseBodyItemsAddress) SetPorts(v *DescribeClusterNetInfoResponseBodyItemsAddressPorts) *DescribeClusterNetInfoResponseBodyItemsAddress {
+	s.Ports = v
+	return s
+}
+
 func (s *DescribeClusterNetInfoResponseBodyItemsAddress) SetVPCId(v string) *DescribeClusterNetInfoResponseBodyItemsAddress {
 	s.VPCId = &v
 	return s
@@ -8532,6 +9118,46 @@ func (s *DescribeClusterNetInfoResponseBodyItemsAddress) SetVPCId(v string) *Des
 
 func (s *DescribeClusterNetInfoResponseBodyItemsAddress) SetVSwitchId(v string) *DescribeClusterNetInfoResponseBodyItemsAddress {
 	s.VSwitchId = &v
+	return s
+}
+
+type DescribeClusterNetInfoResponseBodyItemsAddressPorts struct {
+	Ports []*DescribeClusterNetInfoResponseBodyItemsAddressPortsPorts `json:"ports,omitempty" xml:"ports,omitempty" type:"Repeated"`
+}
+
+func (s DescribeClusterNetInfoResponseBodyItemsAddressPorts) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeClusterNetInfoResponseBodyItemsAddressPorts) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeClusterNetInfoResponseBodyItemsAddressPorts) SetPorts(v []*DescribeClusterNetInfoResponseBodyItemsAddressPortsPorts) *DescribeClusterNetInfoResponseBodyItemsAddressPorts {
+	s.Ports = v
+	return s
+}
+
+type DescribeClusterNetInfoResponseBodyItemsAddressPortsPorts struct {
+	Port     *string `json:"Port,omitempty" xml:"Port,omitempty"`
+	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+}
+
+func (s DescribeClusterNetInfoResponseBodyItemsAddressPortsPorts) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeClusterNetInfoResponseBodyItemsAddressPortsPorts) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeClusterNetInfoResponseBodyItemsAddressPortsPorts) SetPort(v string) *DescribeClusterNetInfoResponseBodyItemsAddressPortsPorts {
+	s.Port = &v
+	return s
+}
+
+func (s *DescribeClusterNetInfoResponseBodyItemsAddressPortsPorts) SetProtocol(v string) *DescribeClusterNetInfoResponseBodyItemsAddressPortsPorts {
+	s.Protocol = &v
 	return s
 }
 
@@ -9595,7 +10221,7 @@ func (s *DescribeDBClusterAttributeRequest) SetDBClusterId(v string) *DescribeDB
 }
 
 type DescribeDBClusterAttributeResponseBody struct {
-	// The queried AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster information.
+	// The queried information about the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
 	Items *DescribeDBClusterAttributeResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -9641,6 +10267,8 @@ func (s *DescribeDBClusterAttributeResponseBodyItems) SetDBCluster(v []*Describe
 }
 
 type DescribeDBClusterAttributeResponseBodyItemsDBCluster struct {
+	ClickhouseEngineCacheSize *int32 `json:"ClickhouseEngineCacheSize,omitempty" xml:"ClickhouseEngineCacheSize,omitempty"`
+	ClickhouseEngineEnabled   *bool  `json:"ClickhouseEngineEnabled,omitempty" xml:"ClickhouseEngineEnabled,omitempty"`
 	// The billing method of the cluster. Valid values:
 	//
 	// 	- **ads**: pay-as-you-go.
@@ -9651,13 +10279,13 @@ type DescribeDBClusterAttributeResponseBodyItemsDBCluster struct {
 	//
 	// ads_pre
 	CommodityCode *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
-	// The specifications of reserved computing resources. Each ACU is equivalent to 1 core and 4 GB memory. Computing resources are used to compute data. The increase in the computing resources can accelerate queries. You can scale computing resources based on your business requirements.
+	// The specifications of reserved computing resources. Each ACU is approximately equal to 1 core and 4 GB memory. Computing resources are used to compute data. The increase in the computing resources can accelerate queries. You can scale computing resources based on your business requirements.
 	//
 	// example:
 	//
 	// 16ACU
 	ComputeResource *string `json:"ComputeResource,omitempty" xml:"ComputeResource,omitempty"`
-	// The total amount of computing resources in the cluster. Each ACU is equivalent to 1 core and 4 GB memory.
+	// The total amount of computing resources in the cluster. Each ACU is approximately equal to 1 core and 4 GB memory.
 	//
 	// example:
 	//
@@ -9669,7 +10297,7 @@ type DescribeDBClusterAttributeResponseBodyItemsDBCluster struct {
 	//
 	// amv-wz9509beptiz****.ads.aliyuncs.com
 	ConnectionString *string `json:"ConnectionString,omitempty" xml:"ConnectionString,omitempty"`
-	// The time when the cluster was created. The time follows the ISO 8601 standard in the `yyyy-MM-ddThh:mm:ssZ` format. The time is displayed in UTC.
+	// The time when the cluster was created. The time follows the ISO 8601 standard in the `YYYY-MM-DDThh:mm:ssZ` format. The time is displayed in UTC.
 	//
 	// example:
 	//
@@ -9693,7 +10321,7 @@ type DescribeDBClusterAttributeResponseBodyItemsDBCluster struct {
 	//
 	// VPC
 	DBClusterNetworkType *string `json:"DBClusterNetworkType,omitempty" xml:"DBClusterNetworkType,omitempty"`
-	// The state of the cluster. Valid values:
+	// The status of the cluster. Valid values:
 	//
 	// 	- **Preparing**
 	//
@@ -9717,7 +10345,7 @@ type DescribeDBClusterAttributeResponseBodyItemsDBCluster struct {
 	//
 	// Running
 	DBClusterStatus *string `json:"DBClusterStatus,omitempty" xml:"DBClusterStatus,omitempty"`
-	// The cluster type. By default, **Common*	- is returned, which indicates a common cluster.
+	// The type of the cluster. By default, **Common*	- is returned, which indicates a common cluster.
 	//
 	// example:
 	//
@@ -9741,7 +10369,7 @@ type DescribeDBClusterAttributeResponseBodyItemsDBCluster struct {
 	//
 	// 3.1.16
 	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
-	// The expiration time of the cluster.
+	// The time when the cluster expires.
 	//
 	// 	- If the billing method of the cluster is subscription, the actual expiration time is returned.
 	//
@@ -9757,15 +10385,17 @@ type DescribeDBClusterAttributeResponseBodyItemsDBCluster struct {
 	//
 	// 	- **false**
 	//
+	// >
 	//
-	// > - If the cluster has expired, the system locks or releases the cluster within a period of time. We recommend that you renew the expired cluster. For more information, see [Renewal policy](https://help.aliyun.com/document_detail/135248.html).
+	// 	- If the cluster has expired, the system locks or releases the cluster within a period of time. We recommend that you renew the expired cluster. For more information, see [Renewal policy](https://help.aliyun.com/document_detail/135248.html).
 	//
-	// > - This parameter is not returned for pay-as-you-go clusters.
+	// 	- This parameter is not returned for pay-as-you-go clusters.
 	//
 	// example:
 	//
 	// false
 	Expired *string `json:"Expired,omitempty" xml:"Expired,omitempty"`
+	KmsId   *string `json:"KmsId,omitempty" xml:"KmsId,omitempty"`
 	// The lock mode of the cluster. Valid values:
 	//
 	// 	- **Unlock**: The cluster is not locked.
@@ -9815,15 +10445,16 @@ type DescribeDBClusterAttributeResponseBodyItemsDBCluster struct {
 	// example:
 	//
 	// 3306
-	Port        *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
-	ProductForm *string `json:"ProductForm,omitempty" xml:"ProductForm,omitempty"`
+	Port           *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
+	ProductForm    *string `json:"ProductForm,omitempty" xml:"ProductForm,omitempty"`
+	ProductVersion *string `json:"ProductVersion,omitempty" xml:"ProductVersion,omitempty"`
 	// The region ID of the cluster.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The remaining reserved computing resources that are available in the cluster. Each ACU is equivalent to 1 core and 4 GB memory.
+	// The amount of remaining reserved computing resources that are available in the cluster. Each ACU is approximately equal to 1 core and 4 GB memory.
 	//
 	// example:
 	//
@@ -9837,13 +10468,13 @@ type DescribeDBClusterAttributeResponseBodyItemsDBCluster struct {
 	//
 	// rg-acfmyiu4ekp****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The specifications of reserved storage resources. Each AnalyticDB compute unit (ACU) is equivalent to 1 core and 4 GB memory. Storage resources are used to read and write data. The increase in the storage resources can improve the read and write performance of the cluster.
+	// The specifications of reserved storage resources. Each AnalyticDB compute unit (ACU) is approximately equal to 1 core and 4 GB memory. Storage resources are used to read and write data. The increase in the storage resources can improve the read and write performance of the cluster.
 	//
 	// example:
 	//
 	// 24ACU
 	StorageResource *string `json:"StorageResource,omitempty" xml:"StorageResource,omitempty"`
-	// The total amount of storage resources in the cluster. Each ACU is equivalent to 1 core and 4 GB memory.
+	// The total amount of storage resources in the cluster. Each ACU is approximately equal to 1 core and 4 GB memory.
 	//
 	// example:
 	//
@@ -9889,6 +10520,16 @@ func (s DescribeDBClusterAttributeResponseBodyItemsDBCluster) String() string {
 
 func (s DescribeDBClusterAttributeResponseBodyItemsDBCluster) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeDBClusterAttributeResponseBodyItemsDBCluster) SetClickhouseEngineCacheSize(v int32) *DescribeDBClusterAttributeResponseBodyItemsDBCluster {
+	s.ClickhouseEngineCacheSize = &v
+	return s
+}
+
+func (s *DescribeDBClusterAttributeResponseBodyItemsDBCluster) SetClickhouseEngineEnabled(v bool) *DescribeDBClusterAttributeResponseBodyItemsDBCluster {
+	s.ClickhouseEngineEnabled = &v
+	return s
 }
 
 func (s *DescribeDBClusterAttributeResponseBodyItemsDBCluster) SetCommodityCode(v string) *DescribeDBClusterAttributeResponseBodyItemsDBCluster {
@@ -9966,6 +10607,11 @@ func (s *DescribeDBClusterAttributeResponseBodyItemsDBCluster) SetExpired(v stri
 	return s
 }
 
+func (s *DescribeDBClusterAttributeResponseBodyItemsDBCluster) SetKmsId(v string) *DescribeDBClusterAttributeResponseBodyItemsDBCluster {
+	s.KmsId = &v
+	return s
+}
+
 func (s *DescribeDBClusterAttributeResponseBodyItemsDBCluster) SetLockMode(v string) *DescribeDBClusterAttributeResponseBodyItemsDBCluster {
 	s.LockMode = &v
 	return s
@@ -9998,6 +10644,11 @@ func (s *DescribeDBClusterAttributeResponseBodyItemsDBCluster) SetPort(v int32) 
 
 func (s *DescribeDBClusterAttributeResponseBodyItemsDBCluster) SetProductForm(v string) *DescribeDBClusterAttributeResponseBodyItemsDBCluster {
 	s.ProductForm = &v
+	return s
+}
+
+func (s *DescribeDBClusterAttributeResponseBodyItemsDBCluster) SetProductVersion(v string) *DescribeDBClusterAttributeResponseBodyItemsDBCluster {
+	s.ProductVersion = &v
 	return s
 }
 
@@ -10189,6 +10840,7 @@ func (s *DescribeDBClusterHealthStatusRequest) SetRegionId(v string) *DescribeDB
 }
 
 type DescribeDBClusterHealthStatusResponseBody struct {
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The access nodes of the queried cluster.
 	CS *DescribeDBClusterHealthStatusResponseBodyCS `json:"CS,omitempty" xml:"CS,omitempty" type:"Struct"`
 	// The compute node groups of the queried cluster.
@@ -10223,6 +10875,11 @@ func (s DescribeDBClusterHealthStatusResponseBody) String() string {
 
 func (s DescribeDBClusterHealthStatusResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeDBClusterHealthStatusResponseBody) SetAccessDeniedDetail(v string) *DescribeDBClusterHealthStatusResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
 }
 
 func (s *DescribeDBClusterHealthStatusResponseBody) SetCS(v *DescribeDBClusterHealthStatusResponseBodyCS) *DescribeDBClusterHealthStatusResponseBody {
@@ -10731,13 +11388,241 @@ func (s *DescribeDBClusterPerformanceResponseBodyPerformances) SetUnit(v string)
 }
 
 type DescribeDBClusterPerformanceResponseBodyPerformancesSeries struct {
-	// The name of the performance metric value.
+	// 	- CPU
+	//
+	//     	- **AnalyticDB_CPU_Usage_Percentage**: the CPU utilization.
+	//
+	//         	- AnalyticDB_Storage_CPU_Avg_Usage_Percentage: the average CPU utilization across storage nodes.
+	//
+	//         	- AnalyticDB_Storage_CPU_Max_Usage_Percentage: the maximum CPU utilization across storage nodes.
+	//
+	//         	- AnalyticDB_Compute_CPU_Max_Usage_Percentage: the average CPU utilization across compute nodes.
+	//
+	//         	- AnalyticDB_Compute_CPU_Max_Usage_Percentage: the maximum CPU utilization across compute nodes.
+	//
+	//         	- AnalyticDB_CS_CPU_Avg_Usage_Percentage: the average CPU utilization across access nodes.
+	//
+	//         	- AnalyticDB_CS_CPU_Max_Usage_Percentage: the maximum CPU utilization across access nodes.
+	//
+	// 	- Connections
+	//
+	//     	- **AnalyticDB_Instance_Connection_Count**: the number of connections to the cluster.
+	//
+	//         	- AnalyticDB_Instance_Connection_Count: the number of connections to the cluster.
+	//
+	// 	- Writes
+	//
+	//     	- **AnalyticDB_TPS**: the write TPS.
+	//
+	//         	- tps: the sum of the insert_tps, update_tps, delete_tps, and load_tps values.
+	//
+	//         	- insert_tps: the number of successful INSERT INTO VALUES operations per second.
+	//
+	//         	- update_tps: the number of successful UPDATE operations per second.
+	//
+	//         	- delete_tps: the number of successful DELETE operations per second.
+	//
+	//         	- load_tps: the number of successful INSERT OVERWRITE operations per second.
+	//
+	//     	- **AnalyticDB_InsertRT**: the write response time.
+	//
+	//         	- AnalyticDB_Avg_InsertRT: the average amount of time consumed by writes.
+	//
+	//         	- AnalyticDB_Max_InsertRT: the maximum amount of time consumed by a single write.
+	//
+	//     	- **AnalyticDB_InsertBytes**: the write throughput.
+	//
+	//         	- AnalyticDB_InsertBytes: the amount of written data.
+	//
+	// 	- Updates
+	//
+	//     	- **AnalyticDB_UpdateRT**: the update response time.
+	//
+	//         	- updateinto_avg_rt: the average amount of time consumed by updates.
+	//
+	//         	- updateinto_max_rt: the maximum amount of time consumed by a single update.
+	//
+	// 	- Deletes
+	//
+	//     	- **AnalyticDB_DeleteRT**: the delete response time.
+	//
+	//         	- delete_avg_rt: the average amount of time consumed by deletes.
+	//
+	//         	- delete_max_rt: the maximum amount of time consumed by a single delete.
+	//
+	// 	- Queries
+	//
+	//     	- **AnalyticDB_QPS**: the QPS.
+	//
+	//         	- AnalyticDB_QPS: the number of SELECT operations completed per second.
+	//
+	//         	- AnalyticDB_ETL_QPS: the number of INSERT OVERWRITE operations completed per second.
+	//
+	//     	- **AnalyticDB_QueryRT**: the query response time.
+	//
+	//         	- AnalyticDB_Avg_QueryRT: the average amount of time consumed by queries.
+	//
+	//         	- AnalyticDB_Max_QueryRT: the maximum amount of time consumed by a single query.
+	//
+	//         	- etl_avg_rt: the average amount of time consumed by extract-transform-load (ETL) operations.
+	//
+	//         	- etl_max_rt: the maximum amount of time consumed by a single ETL operation.
+	//
+	//     	- **AnalyticDB_QueryWaitTime**: the query wait time.
+	//
+	//         	- AnalyticDB_Avg_QueryWaitTime: the average wait time for SELECT and ETL operations.
+	//
+	//         	- AnalyticDB_Max_QueryWaitTime: the maximum wait time for SELECT and ETL operations.
+	//
+	//     	- AnalyticDB_QueryFailedRatio: the query failure rate.
+	//
+	//         	- query_failed_ratio: the failure rate of SELECT and ETL operations.
+	//
+	// 	- Disks
+	//
+	//     	- **AnalyticDB_IO_Throughput**: the disk I/O throughput.
+	//
+	//         	- AnalyticDB_Storage_Read_IO_Throughput: the average read throughput across storage nodes.
+	//
+	//         	- AnalyticDB_Storage_Write_IO_Throughput: the average write throughput across storage nodes.
+	//
+	//         	- AnalyticDB_Compute_Read_IO_Throughput: the average read throughput across compute nodes.
+	//
+	//         	- AnalyticDB_Compute_Write_IO_Throughput: the average write throughput across compute nodes.
+	//
+	//     	- **AnalyticDB_Disk_IO_Avg_Usage_Percentage**: the average I/O usage.
+	//
+	//         	- AnalyticDB_Disk_IO_Avg_Usage_Percentage: the average I/O usage across storage nodes.
+	//
+	//     	- **AnalyticDB_Disk_IO_Avg_Waiting_Time**: the average I/O wait time.
+	//
+	//         	- AnalyticDB_Disk_IO_Avg_Waiting_Time: the average I/O wait time of storage nodes.
+	//
+	//     	- **AnalyticDB_IOPS**: the disk IOPS.
+	//
+	//         	- AnalyticDB_Storage_Read_IOPS: the average read IOPS of storage nodes.
+	//
+	//         	- AnalyticDB_Storage_Write_IOPS: the average write IOPS of storage nodes.
+	//
+	//         	- AnalyticDB_Compute_Read_IOPS: the average read IOPS of compute nodes.
+	//
+	//         	- AnalyticDB_Compute_Write_IOPS: the average write IOPS of compute nodes.
+	//
+	//     	- **AnalyticDB_DiskUsage**: the disk storage that is used.
+	//
+	//         	- disk_used_ratio: the average disk usage across nodes.
+	//
+	//         	- worker_max_node_disk_used_ratio: the maximum disk usage across nodes.
+	//
+	//     	- **AnalyticDB_Hot_Data_Usage**: the disk storage that is used by hot data.
+	//
+	//         	- AnalyticDB_Hot_Data_Usage: the disk storage that is used by hot data.
+	//
+	//     	- **AnalyticDB_Cold_Data_Usage**: the disk storage that is used by cold data.
+	//
+	//         	- AnalyticDB_Cold_Data_Usage: the disk storage that is used by cold data.
+	//
+	//     	- AnalyticDB_DiskUsedRatio: the node disk usage.
+	//
+	//         	- disk_used_ratio: the average disk usage across nodes.
+	//
+	//         	- worker_max_node_disk_used_ratio: the maximum disk usage across nodes.
+	//
+	//     	- AnalyticDB_DiskUsedSize: the total data size of the cluster.
+	//
+	//         	- user_used_disk_max: the maximum hot data size across nodes.
+	//
+	//         	- user_used_disk_avg: the average hot data size across nodes.
+	//
+	//         	- hot_disk_used: the hot data size.
+	//
+	//         	- cold_disk_used: the cold data size.
+	//
+	// 	- Other
+	//
+	//     	- **AnalyticDB_BuildTaskCount**: the number of BUILD jobs.
+	//
+	//         	- max_build_task_count: the maximum number of running BUILD jobs across nodes.
+	//
+	//         	- avg_build_task_count: the average number of running BUILD jobs across nodes.
+	//
+	//     	- **AnalyticDB_ComputeMemoryUsedRatio**: the compute memory usage.
+	//
+	//         	- max_worker_compute_memory_used_ratio: the maximum compute memory usage across storage nodes.
+	//
+	//         	- avg_worker_compute_memory_used_ratio: the average compute memory usage across storage nodes.
+	//
+	//         	- max_executor_compute_memory_used_ratio: the maximum compute memory usage across compute nodes.
+	//
+	//         	- avg_executor_compute_memory_used_ratio: the average compute memory usage across compute nodes.
+	//
+	//     	- AnalyticDB_UnavailableNodeCount: the number of unavailable nodes.
+	//
+	//         	- worker_unavailable_node_count: the number of unavailable storage nodes.
+	//
+	//         	- executor_unavailable_node_count: the number of unavailable compute nodes.
+	//
+	// 	- WLM
+	//
+	//     	- AnalyticDB_WLM_ResubmitQueries_Count: the number of resubmitted WLM queries.
+	//
+	//         	- AnalyticDB_WLM_ResubmitQueries_Count: the number of resubmitted WLM queries.
+	//
+	//     	- AnalyticDB_WLM_SQA_AvgRt_MS: the average amount of time consumed by accelerated short WLM queries.
+	//
+	//         	- AnalyticDB_WLM_SQA_AvgRt_MS: the average amount of time consumed by accelerated short WLM queries.
+	//
+	//     	- AnalyticDB_WLM_SQA_Queries_Count: the number of accelerated short WLM queries.
+	//
+	//         	- AnalyticDB_WLM_SQA_Queries_Count: the number of accelerated short WLM queries.
+	//
+	//     	- AnalyticDB_WLM_TotalQueries_Count: the total number of WLM queries.
+	//
+	//         	- AnalyticDB_WLM_TotalQueries_Count: the total number of WLM queries.
+	//
+	// 	- APS
+	//
+	//     	- AnalyticDB_APS_BPS: the bytes per second (BPS) of APS provided by the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+	//
+	//         	- APS_Read_BPS: the read BPS of APS.
+	//
+	//     	- AnalyticDB_APS_CPU: the CPU utilization of APS provided by the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+	//
+	//         	- APS_CPU_Avg_Usage_Percentage: the average CPU utilization of APS.
+	//
+	//         	- APS_CPU_Max_Usage_Percentage: the maximum CPU utilization of APS.
+	//
+	//     	- AnalyticDB_APS_Memory: the memory usage of APS provided by the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+	//
+	//         	- APS_Memory_Avg_Usage_Percentage: the average memory usage of APS.
+	//
+	//         	- APS_Memory_Max_Usage_Percentage: the maximum memory usage of APS.
+	//
+	//     	- AnalyticDB_APS_RPS: the number of records per second of APS provided by the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+	//
+	//         	- APS_Read_RPS: the number of read records per second of APS.
+	//
+	//     	- AnalyticDB_APS_RT: the response time of APS provided by the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+	//
+	//         	- APS_Read_Avg_RT: the average response time of APS.
+	//
+	//         	- APS_Read_Max_RT: the maximum response time of APS.
+	//
+	// 	- 	- *
+	//
+	//     	- *
+	//
+	//     	- *
+	//
+	//     	- *
+	//
+	//     	- *
 	//
 	// example:
 	//
 	// AnalyticDB_Storage_CPU_Avg_Usage_Percentage
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The tag value.
+	// The tags that are added to the cluster.
 	//
 	// example:
 	//
@@ -11403,7 +12288,7 @@ func (s *DescribeDBClustersRequestTag) SetValue(v string) *DescribeDBClustersReq
 }
 
 type DescribeDBClustersResponseBody struct {
-	// The queried cluster.
+	// The queried clusters.
 	Items *DescribeDBClustersResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
 	// The page number.
 	//
@@ -11493,7 +12378,7 @@ type DescribeDBClustersResponseBodyItemsDBCluster struct {
 	//
 	// ads_pre
 	CommodityCode *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
-	// The specifications of reserved computing resources. Each ACU is equivalent to 1 core and 4 GB memory. Computing resources are used to compute data. The increase in the computing resources can accelerate queries. You can scale computing resources based on your business requirements.
+	// The specifications of reserved computing resources. Each ACU is approximately equal to 1 core and 4 GB memory. Computing resources are used to compute data. The increase in the computing resources can accelerate queries. You can scale computing resources based on your business requirements.
 	//
 	// example:
 	//
@@ -11529,7 +12414,7 @@ type DescribeDBClustersResponseBodyItemsDBCluster struct {
 	//
 	// VPC
 	DBClusterNetworkType *string `json:"DBClusterNetworkType,omitempty" xml:"DBClusterNetworkType,omitempty"`
-	// The state of the cluster. Valid values:
+	// The status of the cluster. Valid values:
 	//
 	// 	- **Preparing**
 	//
@@ -11568,7 +12453,7 @@ type DescribeDBClustersResponseBodyItemsDBCluster struct {
 	DBNodeClass   *string `json:"DBNodeClass,omitempty" xml:"DBNodeClass,omitempty"`
 	DBNodeCount   *int64  `json:"DBNodeCount,omitempty" xml:"DBNodeCount,omitempty"`
 	DBNodeStorage *int64  `json:"DBNodeStorage,omitempty" xml:"DBNodeStorage,omitempty"`
-	// The version of AnalyticDB for MySQL Data Lakehouse Edition. **5.0*	- is returned.
+	// The engine version of the AnalyticDB for MySQL Data Lakehouse Edition cluster. **5.0*	- is returned.
 	//
 	// example:
 	//
@@ -11577,18 +12462,20 @@ type DescribeDBClustersResponseBodyItemsDBCluster struct {
 	DiskType          *string `json:"DiskType,omitempty" xml:"DiskType,omitempty"`
 	DtsJobId          *string `json:"DtsJobId,omitempty" xml:"DtsJobId,omitempty"`
 	ElasticIOResource *int32  `json:"ElasticIOResource,omitempty" xml:"ElasticIOResource,omitempty"`
-	// The database engine of the cluster. **AnalyticDB*	- is returned.
+	// The engine of the cluster. **AnalyticDB*	- is returned.
 	//
 	// example:
 	//
 	// AnalyticDB
 	Engine        *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
 	ExecutorCount *string `json:"ExecutorCount,omitempty" xml:"ExecutorCount,omitempty"`
-	// The time when the cluster expired. The time follows the ISO 8601 standard in the *yyyy-MM-ddTHH:mm:ssZ	- format. The time is displayed in UTC.
+	// The time when the cluster expires. The time follows the ISO 8601 standard in the *yyyy-MM-ddTHH:mm:ssZ	- format. The time is displayed in UTC.
 	//
-	// > - The expiration time is returned for a subscription cluster.
+	// >
 	//
-	// > - Anempty string is returned for a pay-as-you-go cluster.
+	// 	- If the billing method of the cluster is subscription, the actual expiration time is returned.
+	//
+	// 	- If the billing method of the cluster is pay-as-you-go, null is returned.
 	//
 	// example:
 	//
@@ -11600,9 +12487,11 @@ type DescribeDBClustersResponseBodyItemsDBCluster struct {
 	//
 	// 	- **false**
 	//
-	// > - If the cluster has expired, the system locks or releases the cluster within a period of time. We recommend that you renew expired clusters. For more information, see [Renewal policy](https://help.aliyun.com/document_detail/135246.html).
+	// >
 	//
-	// > - This parameter is not returned for pay-as-you-go clusters.
+	// 	- If the cluster has expired, the system locks or releases the cluster within a period of time. We recommend that you renew the expired cluster. For more information, see [Renewal policy](https://help.aliyun.com/document_detail/135246.html).
+	//
+	// 	- This parameter is not returned for pay-as-you-go clusters.
 	//
 	// example:
 	//
@@ -11610,7 +12499,7 @@ type DescribeDBClustersResponseBodyItemsDBCluster struct {
 	Expired   *string `json:"Expired,omitempty" xml:"Expired,omitempty"`
 	InnerIp   *string `json:"InnerIp,omitempty" xml:"InnerIp,omitempty"`
 	InnerPort *string `json:"InnerPort,omitempty" xml:"InnerPort,omitempty"`
-	// The lock state of the cluster. Valid values:
+	// The lock status of the cluster. Valid values:
 	//
 	// 	- **Unlock**: The cluster is not locked.
 	//
@@ -11651,16 +12540,17 @@ type DescribeDBClustersResponseBodyItemsDBCluster struct {
 	// example:
 	//
 	// 3306
-	Port          *string `json:"Port,omitempty" xml:"Port,omitempty"`
-	ProductForm   *string `json:"ProductForm,omitempty" xml:"ProductForm,omitempty"`
-	RdsInstanceId *string `json:"RdsInstanceId,omitempty" xml:"RdsInstanceId,omitempty"`
+	Port           *string `json:"Port,omitempty" xml:"Port,omitempty"`
+	ProductForm    *string `json:"ProductForm,omitempty" xml:"ProductForm,omitempty"`
+	ProductVersion *string `json:"ProductVersion,omitempty" xml:"ProductVersion,omitempty"`
+	RdsInstanceId  *string `json:"RdsInstanceId,omitempty" xml:"RdsInstanceId,omitempty"`
 	// The region ID of the cluster.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The amount of remaining reserved computing resources that are available in the cluster. Each ACU is equivalent to 1 core and 4 GB memory.
+	// The remaining reserved computing resources that are available in the cluster. Each ACU is approximately equal to 1 core and 4 GB memory.
 	//
 	// example:
 	//
@@ -11674,7 +12564,7 @@ type DescribeDBClustersResponseBodyItemsDBCluster struct {
 	//
 	// rg-acfmyiu4ekp****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The specifications of reserved storage resources. Each AnalyticDB compute unit (ACU) is equivalent to 1 core and 4 GB memory. Storage resources are used to read and write data. The increase in the storage resources can improve the read and write performance of the cluster.
+	// The specifications of reserved storage resources. Each AnalyticDB compute unit (ACU) is approximately equal to 1 core and 4 GB memory. Storage resources are used to read and write data. The increase in the storage resources can improve the read and write performance of the cluster.
 	//
 	// example:
 	//
@@ -11854,6 +12744,11 @@ func (s *DescribeDBClustersResponseBodyItemsDBCluster) SetPort(v string) *Descri
 
 func (s *DescribeDBClustersResponseBodyItemsDBCluster) SetProductForm(v string) *DescribeDBClustersResponseBodyItemsDBCluster {
 	s.ProductForm = &v
+	return s
+}
+
+func (s *DescribeDBClustersResponseBodyItemsDBCluster) SetProductVersion(v string) *DescribeDBClustersResponseBodyItemsDBCluster {
+	s.ProductVersion = &v
 	return s
 }
 
@@ -13455,10 +14350,6 @@ func (s *DescribeDiagnosisSQLInfoRequest) SetRegionId(v string) *DescribeDiagnos
 
 type DescribeDiagnosisSQLInfoResponseBody struct {
 	// The queried execution information, including the SQL statement, statistics, execution plan, and operator information.
-	//
-	// example:
-	//
-	// {     "DiagnosisSQLInfo": {         "hasSharedStage": false,         "resourceGroup": "user_default",         "cost": 274,         "queuedTime": 0,         "outputDataSize": 9,         "scheduled": true,         "query": "/*+display=tpch_q14*/SELECT 100.00 	- SUM(CASE WHEN p_type LIKE \\"PROMO%\\" THEN l_extendedprice 	- (1 - l_discount) ELSE 0 END) / SUM(l_extendedprice 	- (1 - l_discount)) AS promo_revenue FROM lineitem l, part p WHERE l_partkey = p_partkey AND l_shipdate &gt;= DATE \\"1995-09-01\\" AND l_shipdate &lt; DATE \\"1995-09-01\\" + INTERVAL \\"1\\" MONTH",         "outputRows": 1,         "userName": "test_user",         "parentId": 0,         "maxOutputRows": 200000,         "scanSize": 8247470,         "peakMemory": 13188295,         "startTime": 1626330527632,         "state": "FINISHED",         "endTime": 1626330527905,         "writeTableRows": 0,         "scanRows": 351966     } }
 	DiagnosisSQLInfo *string `json:"DiagnosisSQLInfo,omitempty" xml:"DiagnosisSQLInfo,omitempty"`
 	// The request ID.
 	//
@@ -13691,6 +14582,7 @@ func (s *DescribeDownloadRecordsRequest) SetRegionId(v string) *DescribeDownload
 }
 
 type DescribeDownloadRecordsResponseBody struct {
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The queried download tasks.
 	Records []*DescribeDownloadRecordsResponseBodyRecords `json:"Records,omitempty" xml:"Records,omitempty" type:"Repeated"`
 	// The request ID.
@@ -13709,6 +14601,11 @@ func (s DescribeDownloadRecordsResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeDownloadRecordsResponseBody) SetAccessDeniedDetail(v string) *DescribeDownloadRecordsResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
+}
+
 func (s *DescribeDownloadRecordsResponseBody) SetRecords(v []*DescribeDownloadRecordsResponseBodyRecords) *DescribeDownloadRecordsResponseBody {
 	s.Records = v
 	return s
@@ -13720,13 +14617,13 @@ func (s *DescribeDownloadRecordsResponseBody) SetRequestId(v string) *DescribeDo
 }
 
 type DescribeDownloadRecordsResponseBodyRecords struct {
-	// The download task ID.
+	// The download job ID.
 	//
 	// example:
 	//
 	// 636890
 	DownloadId *int64 `json:"DownloadId,omitempty" xml:"DownloadId,omitempty"`
-	// The error message returned if the download task failed.
+	// The error message returned if the download job failed.
 	//
 	// example:
 	//
@@ -13738,7 +14635,7 @@ type DescribeDownloadRecordsResponseBodyRecords struct {
 	//
 	// 20210806094635-20210806095135
 	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
-	// The state of the download task. Valid values:
+	// The status of the download job. Valid values:
 	//
 	// 	- **running**
 	//
@@ -13751,10 +14648,6 @@ type DescribeDownloadRecordsResponseBodyRecords struct {
 	// finished
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The download URL of the file.
-	//
-	// example:
-	//
-	// https://perth-download-task.oss-cn-beijing.aliyuncs.com/adbmysql/query-sql-logs/amv-*********/20210805104301-20210805164302.xlsx?Expires=1943514161&OSSAccessKeyId=*********&Signature=******"
 	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
 }
 
@@ -14413,9 +15306,9 @@ func (s *DescribeElasticPlanJobsResponse) SetBody(v *DescribeElasticPlanJobsResp
 }
 
 type DescribeElasticPlanSpecificationsRequest struct {
-	// The ID of the cluster.
+	// The cluster ID.
 	//
-	// >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/454250.html) operation to query the ID of an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+	// >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/454250.html) operation to query the IDs of all AnalyticDB for MySQL Data Lakehouse Edition (V3.0) clusters within a region.
 	//
 	// This parameter is required.
 	//
@@ -14425,9 +15318,11 @@ type DescribeElasticPlanSpecificationsRequest struct {
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	// The name of the resource group.
 	//
-	// > 	- This parameter is required only when you query the resource specifications that can be scaled for an interactive resource group.
+	// >
 	//
-	// > 	- You can call the [DescribeDBResourceGroup](https://help.aliyun.com/document_detail/459446.html) operation to query the name of a resource group within a specific cluster.
+	// 	- This parameter must be specified only when you query the resource specifications that are supported by an interactive resource group.
+	//
+	// 	- You can call the [DescribeDBResourceGroup](https://help.aliyun.com/document_detail/459446.html) operation to query the name of a resource group within a cluster.
 	//
 	// example:
 	//
@@ -14435,9 +15330,9 @@ type DescribeElasticPlanSpecificationsRequest struct {
 	ResourceGroupName *string `json:"ResourceGroupName,omitempty" xml:"ResourceGroupName,omitempty"`
 	// The type of the scaling plan. Valid values:
 	//
-	// 	- EXECUTOR: interactive resource groups, which fall into the computing resource category.
+	// 	- EXECUTOR: the interactive resource group type, which specifies the computing resource type.
 	//
-	// 	- WORKER: EIUs.
+	// 	- WORKER: the elastic I/O unit (EIU) type.
 	//
 	// This parameter is required.
 	//
@@ -14471,27 +15366,27 @@ func (s *DescribeElasticPlanSpecificationsRequest) SetType(v string) *DescribeEl
 }
 
 type DescribeElasticPlanSpecificationsResponseBody struct {
-	// The page number of the returned page.
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of resource specifications returned per page.
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 5
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// A5C433C2-001F-58E3-99F5-3274C14DF8BD
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The resource specifications that can be scaled.
+	// The queried resource specifications.
 	Specifications []*string `json:"Specifications,omitempty" xml:"Specifications,omitempty" type:"Repeated"`
-	// The number of resource specifications that can be scaled.
+	// The total number of entries returned.
 	//
 	// example:
 	//
@@ -15045,6 +15940,456 @@ func (s *DescribeEnabledPrivilegesResponse) SetBody(v *DescribeEnabledPrivileges
 	return s
 }
 
+type DescribeExcessivePrimaryKeysRequest struct {
+	// The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V5.0) cluster.
+	//
+	// >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the IDs of all AnalyticDB for MySQL Data Lakehouse Edition (V5.0) clusters within a region.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// am-bp1xxxxxxxx47
+	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The end of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-ddTHH:mm:ssZ	- format. The time must be in UTC.
+	//
+	// example:
+	//
+	// 2019-06-01T16:00:00Z
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The language of file titles and error messages. Valid values:
+	//
+	// 	- **zh (default)**: simplified Chinese.
+	//
+	// 	- **en**: English.
+	//
+	// 	- **ja**: Japanese.
+	//
+	// 	- **zh-tw**: traditional Chinese.
+	//
+	// example:
+	//
+	// zh
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The order in which table fields are sorted. Specify the value in the JSON format.
+	//
+	// Example:
+	//
+	//     [
+	//
+	//         {
+	//
+	//             "Field":"Name",
+	//
+	//             "Type":"Asc"
+	//
+	//         }
+	//
+	//     ]
+	//
+	// In the preceding code, Field specifies the field that is used to sort the table data. Set the value to Name. Type specifies the sorting order. Valid values: Desc and Asc.
+	//
+	// Field and Type are case-insensitive.
+	//
+	// example:
+	//
+	// [{"Field":"TableName", "Type": "Desc" }]
+	Order        *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The page number.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Valid values:
+	//
+	// 	- **30*	- (default)
+	//
+	// 	- **50**
+	//
+	// 	- **100**
+	//
+	// example:
+	//
+	// 30
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The region ID.
+	//
+	// >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/143074.html) operation to query the most recent region list.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The beginning of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-ddTHH:mm:ssZ	- format. The time must be in UTC.
+	//
+	// example:
+	//
+	// 2019-06-01T16:00:00Z
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s DescribeExcessivePrimaryKeysRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeExcessivePrimaryKeysRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeExcessivePrimaryKeysRequest) SetDBClusterId(v string) *DescribeExcessivePrimaryKeysRequest {
+	s.DBClusterId = &v
+	return s
+}
+
+func (s *DescribeExcessivePrimaryKeysRequest) SetEndTime(v string) *DescribeExcessivePrimaryKeysRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeExcessivePrimaryKeysRequest) SetLang(v string) *DescribeExcessivePrimaryKeysRequest {
+	s.Lang = &v
+	return s
+}
+
+func (s *DescribeExcessivePrimaryKeysRequest) SetOrder(v string) *DescribeExcessivePrimaryKeysRequest {
+	s.Order = &v
+	return s
+}
+
+func (s *DescribeExcessivePrimaryKeysRequest) SetOwnerAccount(v string) *DescribeExcessivePrimaryKeysRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *DescribeExcessivePrimaryKeysRequest) SetOwnerId(v int64) *DescribeExcessivePrimaryKeysRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DescribeExcessivePrimaryKeysRequest) SetPageNumber(v int32) *DescribeExcessivePrimaryKeysRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeExcessivePrimaryKeysRequest) SetPageSize(v int32) *DescribeExcessivePrimaryKeysRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeExcessivePrimaryKeysRequest) SetRegionId(v string) *DescribeExcessivePrimaryKeysRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeExcessivePrimaryKeysRequest) SetResourceOwnerAccount(v string) *DescribeExcessivePrimaryKeysRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *DescribeExcessivePrimaryKeysRequest) SetResourceOwnerId(v int64) *DescribeExcessivePrimaryKeysRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *DescribeExcessivePrimaryKeysRequest) SetStartTime(v string) *DescribeExcessivePrimaryKeysRequest {
+	s.StartTime = &v
+	return s
+}
+
+type DescribeExcessivePrimaryKeysResponseBody struct {
+	// The queried information about the request denial.
+	//
+	// example:
+	//
+	// {
+	//
+	//     "PolicyType": "AccountLevelIdentityBasedPolicy",
+	//
+	//     "AuthPrincipalOwnerId": "1906102576997697",
+	//
+	//     "EncodedDiagnosticMessage": "AQIBIAAAAOPdwKY2QLOvgMEc7SkkoJfj1kvZwsaRqNYMh10Tv0wTe0fCzaCdrvgazfNb0EnJKETgXyhR+3BIQjx9WAqZryejBsp1Bl4qI5En/D9dEhcXAtKCxCmE2kZCiEzpy8BoEUt+bs0DmlaGWO5xkEpttypLIB4rUhDvZd+zwPg4EXk4KSSWSWsurxtqDkKEMshKlQFBTKvJcNqPqHV6lwR4INiAGjIvK1ngXxN1O+6ORRB6A8YvztEOGywOk81ZmuNk0YrNy+qk7+UVDTHeXKsy8h9e/ePY/LMidj0RCmDpo/YpCumd0UGe0qEPe2U+UJAm/+UHlnEFLVg6BP3yIB5D++MCy7mgWm8Kwyhk62IeYly4hQ+5IpXjkh1GQXuDgLVVPVpxEek9n30vnCUL4KsaMgfa7dgojb+3TM8xGsD2zVK5STJNrsXclscIJEqyNXd7CBYiRJVZi1HPO6drN9WW0chLpCSTgjO8n0bNanZaxXKumW9PSwV58UoSFASeMWfZK3TLngX+oq8nGmnTwcJosVjfF4RGzAnS1IXt0Q9N2WHDnpwyLBU/nOz7Hsy8IZ+h+OVjsBTXSM9688/vOF707a5mNzpETvQeGRcua3A5livcKAM2cML0yeUs/Zyj/+BGqtVa+wektspDHC/CECh6R5lxQjRmUdPawY8VDs2onmdLuEH8DdmYt+Yv/jBFBUMWOyAluzkPYcX5nuQKouCIUJUFTSbsJsuH5CTIh7Ls5rbmkj+T1qTVz8gnDR8LxwaqoMSna+elXgVyOOxXtMkenVntsmoC3p/4G7yTPL1hu8JyWGIIvZHZGGLXGEH7FeSuMV8buKxPGFWG3arG8e9LGvDdz5dgTien4y6G5AQ0o1iQdXDos5VWdH3u7k5PrsvdEOpvMi6uSd8a42na80FsYlgGlwM5upydcWUC5Un2HCkJpT1xgk2L6shdVTrK6bidRrqE784FhW9bBQePzGaxSupPENZya0VUctRt+7uq3QwIn4y5jzjgX0E0jgmqPrgiVDjBesMQZYfGPCGysWYWYzfoh+G6V7N2VVGtNnGUwNWzM0WJBPONAgxPv+AmixFRCQ==",
+	//
+	//     "AuthPrincipalType": "SubUser",
+	//
+	//     "AuthPrincipalDisplayName": "202515810214480629",
+	//
+	//     "NoPermissionType": "ImplicitDeny",
+	//
+	//     "AuthAction": "adb:DescribeExcessivePrimaryKeys"
+	//
+	//   }
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// The cluster ID.
+	//
+	// >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the IDs of all AnalyticDB for MySQL clusters within a region.
+	//
+	// example:
+	//
+	// am-bp1ub9grke1****
+	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The queried detection items and detection results.
+	DetectionItems []*DescribeExcessivePrimaryKeysResponseBodyDetectionItems `json:"DetectionItems,omitempty" xml:"DetectionItems,omitempty" type:"Repeated"`
+	// The page number.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Valid values:
+	//
+	// 	- **30*	- (default)
+	//
+	// 	- **50**
+	//
+	// 	- **100**
+	//
+	// example:
+	//
+	// 30
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 863D51B7-5321-41D8-A0B6-A088B0******
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The queried tables that have excessive primary key fields.
+	Tables []*DescribeExcessivePrimaryKeysResponseBodyTables `json:"Tables,omitempty" xml:"Tables,omitempty" type:"Repeated"`
+	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 300
+	TotalCount *string `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s DescribeExcessivePrimaryKeysResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeExcessivePrimaryKeysResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeExcessivePrimaryKeysResponseBody) SetAccessDeniedDetail(v string) *DescribeExcessivePrimaryKeysResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
+}
+
+func (s *DescribeExcessivePrimaryKeysResponseBody) SetDBClusterId(v string) *DescribeExcessivePrimaryKeysResponseBody {
+	s.DBClusterId = &v
+	return s
+}
+
+func (s *DescribeExcessivePrimaryKeysResponseBody) SetDetectionItems(v []*DescribeExcessivePrimaryKeysResponseBodyDetectionItems) *DescribeExcessivePrimaryKeysResponseBody {
+	s.DetectionItems = v
+	return s
+}
+
+func (s *DescribeExcessivePrimaryKeysResponseBody) SetPageNumber(v int32) *DescribeExcessivePrimaryKeysResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeExcessivePrimaryKeysResponseBody) SetPageSize(v int32) *DescribeExcessivePrimaryKeysResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeExcessivePrimaryKeysResponseBody) SetRequestId(v string) *DescribeExcessivePrimaryKeysResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeExcessivePrimaryKeysResponseBody) SetTables(v []*DescribeExcessivePrimaryKeysResponseBodyTables) *DescribeExcessivePrimaryKeysResponseBody {
+	s.Tables = v
+	return s
+}
+
+func (s *DescribeExcessivePrimaryKeysResponseBody) SetTotalCount(v string) *DescribeExcessivePrimaryKeysResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type DescribeExcessivePrimaryKeysResponseBodyDetectionItems struct {
+	// The detection result.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The name of the detection item.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The severity level of the detection result.
+	//
+	// example:
+	//
+	// NORMAL
+	//
+	// WARNNING
+	//
+	// CRITICAL
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s DescribeExcessivePrimaryKeysResponseBodyDetectionItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeExcessivePrimaryKeysResponseBodyDetectionItems) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeExcessivePrimaryKeysResponseBodyDetectionItems) SetMessage(v string) *DescribeExcessivePrimaryKeysResponseBodyDetectionItems {
+	s.Message = &v
+	return s
+}
+
+func (s *DescribeExcessivePrimaryKeysResponseBodyDetectionItems) SetName(v string) *DescribeExcessivePrimaryKeysResponseBodyDetectionItems {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeExcessivePrimaryKeysResponseBodyDetectionItems) SetStatus(v string) *DescribeExcessivePrimaryKeysResponseBodyDetectionItems {
+	s.Status = &v
+	return s
+}
+
+type DescribeExcessivePrimaryKeysResponseBodyTables struct {
+	// The total number of columns.
+	//
+	// example:
+	//
+	// 21
+	ColumnCount *int32 `json:"ColumnCount,omitempty" xml:"ColumnCount,omitempty"`
+	// The queried primary key fields.
+	//
+	// example:
+	//
+	// 2
+	PrimaryKeyColumns *string `json:"PrimaryKeyColumns,omitempty" xml:"PrimaryKeyColumns,omitempty"`
+	// The number of primary key fields.
+	//
+	// example:
+	//
+	// 3
+	PrimaryKeyCount *int32 `json:"PrimaryKeyCount,omitempty" xml:"PrimaryKeyCount,omitempty"`
+	// The data size of primary key indexes. Unit: bytes.
+	//
+	// example:
+	//
+	// 222
+	PrimaryKeyIndexSize *int64 `json:"PrimaryKeyIndexSize,omitempty" xml:"PrimaryKeyIndexSize,omitempty"`
+	// The name of the database.
+	//
+	// example:
+	//
+	// adb_demo
+	SchemaName *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
+	// The percentage of the table size. Unit: %.
+	//
+	// >  Formula: Table storage percentage = Total data size of a table/Total data size of the cluster × 100%.
+	//
+	// example:
+	//
+	// 23
+	SpaceRatio *float64 `json:"SpaceRatio,omitempty" xml:"SpaceRatio,omitempty"`
+	// The name of the table
+	//
+	// example:
+	//
+	// test
+	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	// The cold data size. Unit: bytes.
+	//
+	// >  Formula: Cold data size = Data size of table records + Data size of regular indexes + Data size of primary key indexes + Data size of other data.
+	//
+	// example:
+	//
+	// 4
+	TotalSize *int64 `json:"TotalSize,omitempty" xml:"TotalSize,omitempty"`
+}
+
+func (s DescribeExcessivePrimaryKeysResponseBodyTables) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeExcessivePrimaryKeysResponseBodyTables) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeExcessivePrimaryKeysResponseBodyTables) SetColumnCount(v int32) *DescribeExcessivePrimaryKeysResponseBodyTables {
+	s.ColumnCount = &v
+	return s
+}
+
+func (s *DescribeExcessivePrimaryKeysResponseBodyTables) SetPrimaryKeyColumns(v string) *DescribeExcessivePrimaryKeysResponseBodyTables {
+	s.PrimaryKeyColumns = &v
+	return s
+}
+
+func (s *DescribeExcessivePrimaryKeysResponseBodyTables) SetPrimaryKeyCount(v int32) *DescribeExcessivePrimaryKeysResponseBodyTables {
+	s.PrimaryKeyCount = &v
+	return s
+}
+
+func (s *DescribeExcessivePrimaryKeysResponseBodyTables) SetPrimaryKeyIndexSize(v int64) *DescribeExcessivePrimaryKeysResponseBodyTables {
+	s.PrimaryKeyIndexSize = &v
+	return s
+}
+
+func (s *DescribeExcessivePrimaryKeysResponseBodyTables) SetSchemaName(v string) *DescribeExcessivePrimaryKeysResponseBodyTables {
+	s.SchemaName = &v
+	return s
+}
+
+func (s *DescribeExcessivePrimaryKeysResponseBodyTables) SetSpaceRatio(v float64) *DescribeExcessivePrimaryKeysResponseBodyTables {
+	s.SpaceRatio = &v
+	return s
+}
+
+func (s *DescribeExcessivePrimaryKeysResponseBodyTables) SetTableName(v string) *DescribeExcessivePrimaryKeysResponseBodyTables {
+	s.TableName = &v
+	return s
+}
+
+func (s *DescribeExcessivePrimaryKeysResponseBodyTables) SetTotalSize(v int64) *DescribeExcessivePrimaryKeysResponseBodyTables {
+	s.TotalSize = &v
+	return s
+}
+
+type DescribeExcessivePrimaryKeysResponse struct {
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeExcessivePrimaryKeysResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeExcessivePrimaryKeysResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeExcessivePrimaryKeysResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeExcessivePrimaryKeysResponse) SetHeaders(v map[string]*string) *DescribeExcessivePrimaryKeysResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeExcessivePrimaryKeysResponse) SetStatusCode(v int32) *DescribeExcessivePrimaryKeysResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeExcessivePrimaryKeysResponse) SetBody(v *DescribeExcessivePrimaryKeysResponseBody) *DescribeExcessivePrimaryKeysResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeJobResourceUsageRequest struct {
 	// The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
 	//
@@ -15261,6 +16606,8 @@ type DescribeJobResourceUsageResponseBodyDataJobAcuUsageAcuUsageDetail struct {
 	//
 	// 16ACU
 	ReservedAcuNumber *float32 `json:"ReservedAcuNumber,omitempty" xml:"ReservedAcuNumber,omitempty"`
+	SpotAcuNumber     *float32 `json:"SpotAcuNumber,omitempty" xml:"SpotAcuNumber,omitempty"`
+	SpotAcuPercentage *float32 `json:"SpotAcuPercentage,omitempty" xml:"SpotAcuPercentage,omitempty"`
 	// The total number of ACUs.
 	//
 	// example:
@@ -15284,6 +16631,16 @@ func (s *DescribeJobResourceUsageResponseBodyDataJobAcuUsageAcuUsageDetail) SetE
 
 func (s *DescribeJobResourceUsageResponseBodyDataJobAcuUsageAcuUsageDetail) SetReservedAcuNumber(v float32) *DescribeJobResourceUsageResponseBodyDataJobAcuUsageAcuUsageDetail {
 	s.ReservedAcuNumber = &v
+	return s
+}
+
+func (s *DescribeJobResourceUsageResponseBodyDataJobAcuUsageAcuUsageDetail) SetSpotAcuNumber(v float32) *DescribeJobResourceUsageResponseBodyDataJobAcuUsageAcuUsageDetail {
+	s.SpotAcuNumber = &v
+	return s
+}
+
+func (s *DescribeJobResourceUsageResponseBodyDataJobAcuUsageAcuUsageDetail) SetSpotAcuPercentage(v float32) *DescribeJobResourceUsageResponseBodyDataJobAcuUsageAcuUsageDetail {
+	s.SpotAcuPercentage = &v
 	return s
 }
 
@@ -15596,6 +16953,445 @@ func (s *DescribePatternPerformanceResponse) SetBody(v *DescribePatternPerforman
 	return s
 }
 
+type DescribePerformanceViewAttributeRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// amv-bp11q28kvl688****
+	DBClusterId  *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// This parameter is required.
+	ViewName *string `json:"ViewName,omitempty" xml:"ViewName,omitempty"`
+}
+
+func (s DescribePerformanceViewAttributeRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribePerformanceViewAttributeRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePerformanceViewAttributeRequest) SetDBClusterId(v string) *DescribePerformanceViewAttributeRequest {
+	s.DBClusterId = &v
+	return s
+}
+
+func (s *DescribePerformanceViewAttributeRequest) SetOwnerAccount(v string) *DescribePerformanceViewAttributeRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *DescribePerformanceViewAttributeRequest) SetOwnerId(v int64) *DescribePerformanceViewAttributeRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DescribePerformanceViewAttributeRequest) SetRegionId(v string) *DescribePerformanceViewAttributeRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribePerformanceViewAttributeRequest) SetResourceOwnerAccount(v string) *DescribePerformanceViewAttributeRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *DescribePerformanceViewAttributeRequest) SetResourceOwnerId(v int64) *DescribePerformanceViewAttributeRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *DescribePerformanceViewAttributeRequest) SetViewName(v string) *DescribePerformanceViewAttributeRequest {
+	s.ViewName = &v
+	return s
+}
+
+type DescribePerformanceViewAttributeResponseBody struct {
+	// example:
+	//
+	// {
+	//
+	//     "PolicyType": "AccountLevelIdentityBasedPolicy",
+	//
+	//     "AuthPrincipalOwnerId": "1*****************7",
+	//
+	//     "EncodedDiagnosticMessage": "AQIBIAAAAOPdwKY2QLOvgMEc7SkkoJfj1kvZwsaRqNYMh10Tv0wTe0fCzaCdrvgazfNb0EnJKETgXyhR+3BIQjx9WAqZryejBsp1Bl4qI5En/D9dEhcXAtKCxCmE2kZCiEzpy8BoEUt+bs0DmlaGWO5xkEpttypLIB4rUhDvZd+zwPg4EXk4KSSWSWsurxtqDkKEMshKlQFBTKvJcKwyhk62IeYly4hQ+5IpXjkh1GQXuDRCQ==",
+	//
+	//     "AuthPrincipalType": "SubUser",
+	//
+	//     "AuthPrincipalDisplayName": "2***************9",
+	//
+	//     "NoPermissionType": "ImplicitDeny",
+	//
+	//     "AuthAction": "adb:DescribeExcessivePrimaryKeys"
+	//
+	// }
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// example:
+	//
+	// Basic
+	CreateFromViewType *string `json:"CreateFromViewType,omitempty" xml:"CreateFromViewType,omitempty"`
+	// example:
+	//
+	// amv-bp198m028ih55xxxx
+	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// example:
+	//
+	// true
+	FillOriginViewKeys *bool `json:"FillOriginViewKeys,omitempty" xml:"FillOriginViewKeys,omitempty"`
+	// example:
+	//
+	// E031AABF-BD56-5966-A063-4283EF18DB45
+	RequestId  *string                                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ViewDetail *DescribePerformanceViewAttributeResponseBodyViewDetail `json:"ViewDetail,omitempty" xml:"ViewDetail,omitempty" type:"Struct"`
+	ViewName   *string                                                 `json:"ViewName,omitempty" xml:"ViewName,omitempty"`
+}
+
+func (s DescribePerformanceViewAttributeResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribePerformanceViewAttributeResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePerformanceViewAttributeResponseBody) SetAccessDeniedDetail(v string) *DescribePerformanceViewAttributeResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
+}
+
+func (s *DescribePerformanceViewAttributeResponseBody) SetCreateFromViewType(v string) *DescribePerformanceViewAttributeResponseBody {
+	s.CreateFromViewType = &v
+	return s
+}
+
+func (s *DescribePerformanceViewAttributeResponseBody) SetDBClusterId(v string) *DescribePerformanceViewAttributeResponseBody {
+	s.DBClusterId = &v
+	return s
+}
+
+func (s *DescribePerformanceViewAttributeResponseBody) SetFillOriginViewKeys(v bool) *DescribePerformanceViewAttributeResponseBody {
+	s.FillOriginViewKeys = &v
+	return s
+}
+
+func (s *DescribePerformanceViewAttributeResponseBody) SetRequestId(v string) *DescribePerformanceViewAttributeResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribePerformanceViewAttributeResponseBody) SetViewDetail(v *DescribePerformanceViewAttributeResponseBodyViewDetail) *DescribePerformanceViewAttributeResponseBody {
+	s.ViewDetail = v
+	return s
+}
+
+func (s *DescribePerformanceViewAttributeResponseBody) SetViewName(v string) *DescribePerformanceViewAttributeResponseBody {
+	s.ViewName = &v
+	return s
+}
+
+type DescribePerformanceViewAttributeResponseBodyViewDetail struct {
+	Categories []*DescribePerformanceViewAttributeResponseBodyViewDetailCategories `json:"Categories,omitempty" xml:"Categories,omitempty" type:"Repeated"`
+	// example:
+	//
+	// true
+	ChartLinked *bool `json:"ChartLinked,omitempty" xml:"ChartLinked,omitempty"`
+	// example:
+	//
+	// 2
+	ChartsPerLine *int32 `json:"ChartsPerLine,omitempty" xml:"ChartsPerLine,omitempty"`
+}
+
+func (s DescribePerformanceViewAttributeResponseBodyViewDetail) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribePerformanceViewAttributeResponseBodyViewDetail) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePerformanceViewAttributeResponseBodyViewDetail) SetCategories(v []*DescribePerformanceViewAttributeResponseBodyViewDetailCategories) *DescribePerformanceViewAttributeResponseBodyViewDetail {
+	s.Categories = v
+	return s
+}
+
+func (s *DescribePerformanceViewAttributeResponseBodyViewDetail) SetChartLinked(v bool) *DescribePerformanceViewAttributeResponseBodyViewDetail {
+	s.ChartLinked = &v
+	return s
+}
+
+func (s *DescribePerformanceViewAttributeResponseBodyViewDetail) SetChartsPerLine(v int32) *DescribePerformanceViewAttributeResponseBodyViewDetail {
+	s.ChartsPerLine = &v
+	return s
+}
+
+type DescribePerformanceViewAttributeResponseBodyViewDetailCategories struct {
+	// example:
+	//
+	// Node
+	Category *string                                                                 `json:"Category,omitempty" xml:"Category,omitempty"`
+	Keys     []*DescribePerformanceViewAttributeResponseBodyViewDetailCategoriesKeys `json:"Keys,omitempty" xml:"Keys,omitempty" type:"Repeated"`
+}
+
+func (s DescribePerformanceViewAttributeResponseBodyViewDetailCategories) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribePerformanceViewAttributeResponseBodyViewDetailCategories) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePerformanceViewAttributeResponseBodyViewDetailCategories) SetCategory(v string) *DescribePerformanceViewAttributeResponseBodyViewDetailCategories {
+	s.Category = &v
+	return s
+}
+
+func (s *DescribePerformanceViewAttributeResponseBodyViewDetailCategories) SetKeys(v []*DescribePerformanceViewAttributeResponseBodyViewDetailCategoriesKeys) *DescribePerformanceViewAttributeResponseBodyViewDetailCategories {
+	s.Keys = v
+	return s
+}
+
+type DescribePerformanceViewAttributeResponseBodyViewDetailCategoriesKeys struct {
+	// example:
+	//
+	// AnalyticDB_CPU
+	KeyName *string `json:"KeyName,omitempty" xml:"KeyName,omitempty"`
+	// example:
+	//
+	// true
+	Selected *bool `json:"Selected,omitempty" xml:"Selected,omitempty"`
+}
+
+func (s DescribePerformanceViewAttributeResponseBodyViewDetailCategoriesKeys) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribePerformanceViewAttributeResponseBodyViewDetailCategoriesKeys) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePerformanceViewAttributeResponseBodyViewDetailCategoriesKeys) SetKeyName(v string) *DescribePerformanceViewAttributeResponseBodyViewDetailCategoriesKeys {
+	s.KeyName = &v
+	return s
+}
+
+func (s *DescribePerformanceViewAttributeResponseBodyViewDetailCategoriesKeys) SetSelected(v bool) *DescribePerformanceViewAttributeResponseBodyViewDetailCategoriesKeys {
+	s.Selected = &v
+	return s
+}
+
+type DescribePerformanceViewAttributeResponse struct {
+	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribePerformanceViewAttributeResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribePerformanceViewAttributeResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribePerformanceViewAttributeResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePerformanceViewAttributeResponse) SetHeaders(v map[string]*string) *DescribePerformanceViewAttributeResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribePerformanceViewAttributeResponse) SetStatusCode(v int32) *DescribePerformanceViewAttributeResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribePerformanceViewAttributeResponse) SetBody(v *DescribePerformanceViewAttributeResponseBody) *DescribePerformanceViewAttributeResponse {
+	s.Body = v
+	return s
+}
+
+type DescribePerformanceViewsRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// amv-bp1ub9grke1****
+	DBClusterId  *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+}
+
+func (s DescribePerformanceViewsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribePerformanceViewsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePerformanceViewsRequest) SetDBClusterId(v string) *DescribePerformanceViewsRequest {
+	s.DBClusterId = &v
+	return s
+}
+
+func (s *DescribePerformanceViewsRequest) SetOwnerAccount(v string) *DescribePerformanceViewsRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *DescribePerformanceViewsRequest) SetOwnerId(v int64) *DescribePerformanceViewsRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DescribePerformanceViewsRequest) SetRegionId(v string) *DescribePerformanceViewsRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribePerformanceViewsRequest) SetResourceOwnerAccount(v string) *DescribePerformanceViewsRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *DescribePerformanceViewsRequest) SetResourceOwnerId(v int64) *DescribePerformanceViewsRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+type DescribePerformanceViewsResponseBody struct {
+	// example:
+	//
+	// {
+	//
+	//     "PolicyType": "AccountLevelIdentityBasedPolicy",
+	//
+	//     "AuthPrincipalOwnerId": "1*****************7",
+	//
+	//     "EncodedDiagnosticMessage": "AQIBIAAAAOPdwKY2QLOvgMEc7SkkoJfj1kvZwsaRqNYMh10Tv0wTe0fCzaCdrvgazfNb0EnJKETgXyhR+3BIQjx9WAqZryejBsp1Bl4qI5En/D9dEhcXAtKCxCmE2kZCiEzpy8BoEUt+bs0DmlaGWO5xkEpttypLIB4rUhDvZd+zwPg4EXk4KSSWSWsurxtqDkKEMshKlQFBTKvJcKwyhk62IeYly4hQ+5IpXjkh1GQXuDRCQ==",
+	//
+	//     "AuthPrincipalType": "SubUser",
+	//
+	//     "AuthPrincipalDisplayName": "2***************9",
+	//
+	//     "NoPermissionType": "ImplicitDeny",
+	//
+	//     "AuthAction": "adb:DescribeExcessivePrimaryKeys"
+	//
+	// }
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// example:
+	//
+	// 3A8F6106-6AFD-5A34-9C80-8DE2C42D06E8
+	RequestId *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Views     []*DescribePerformanceViewsResponseBodyViews `json:"Views,omitempty" xml:"Views,omitempty" type:"Repeated"`
+}
+
+func (s DescribePerformanceViewsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribePerformanceViewsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePerformanceViewsResponseBody) SetAccessDeniedDetail(v string) *DescribePerformanceViewsResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
+}
+
+func (s *DescribePerformanceViewsResponseBody) SetRequestId(v string) *DescribePerformanceViewsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribePerformanceViewsResponseBody) SetViews(v []*DescribePerformanceViewsResponseBodyViews) *DescribePerformanceViewsResponseBody {
+	s.Views = v
+	return s
+}
+
+type DescribePerformanceViewsResponseBodyViews struct {
+	// example:
+	//
+	// 2024-06-18T07:06:53.000+00:00
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// 2024-06-18T07:07:32.000+00:00
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	ViewName   *string `json:"ViewName,omitempty" xml:"ViewName,omitempty"`
+}
+
+func (s DescribePerformanceViewsResponseBodyViews) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribePerformanceViewsResponseBodyViews) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePerformanceViewsResponseBodyViews) SetCreateTime(v string) *DescribePerformanceViewsResponseBodyViews {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *DescribePerformanceViewsResponseBodyViews) SetUpdateTime(v string) *DescribePerformanceViewsResponseBodyViews {
+	s.UpdateTime = &v
+	return s
+}
+
+func (s *DescribePerformanceViewsResponseBodyViews) SetViewName(v string) *DescribePerformanceViewsResponseBodyViews {
+	s.ViewName = &v
+	return s
+}
+
+type DescribePerformanceViewsResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribePerformanceViewsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribePerformanceViewsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribePerformanceViewsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePerformanceViewsResponse) SetHeaders(v map[string]*string) *DescribePerformanceViewsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribePerformanceViewsResponse) SetStatusCode(v int32) *DescribePerformanceViewsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribePerformanceViewsResponse) SetBody(v *DescribePerformanceViewsResponseBody) *DescribePerformanceViewsResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeRegionsRequest struct {
 	// The language that is used for the region and zone names indicated by the LocalName parameter in the response parameters. Valid values:
 	//
@@ -15878,7 +17674,7 @@ type DescribeSQLPatternsRequest struct {
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The order by which to sort query results. Specify the parameter value in the JSON string format. Example: `[{"Field":"AverageQueryTime","Type":"Asc"}]`.
+	// The order by which to sort query results. Specify the parameter value in the JSON format. Example: `[{"Field":"AverageQueryTime","Type":"Asc"}]`.
 	//
 	// 	- `Field` specifies the field by which to sort the query results. Valid values:
 	//
@@ -16008,6 +17804,7 @@ func (s *DescribeSQLPatternsRequest) SetStartTime(v string) *DescribeSQLPatterns
 }
 
 type DescribeSQLPatternsResponseBody struct {
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The page number.
 	//
 	// example:
@@ -16042,6 +17839,11 @@ func (s DescribeSQLPatternsResponseBody) String() string {
 
 func (s DescribeSQLPatternsResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeSQLPatternsResponseBody) SetAccessDeniedDetail(v string) *DescribeSQLPatternsResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
 }
 
 func (s *DescribeSQLPatternsResponseBody) SetPageNumber(v int32) *DescribeSQLPatternsResponseBody {
@@ -16100,13 +17902,13 @@ type DescribeSQLPatternsResponseBodyPatternDetails struct {
 	//
 	// 234149.23
 	AverageScanSize *float64 `json:"AverageScanSize,omitempty" xml:"AverageScanSize,omitempty"`
-	// Indicates whether the execution of the SQL pattern can be blocked. Valid values:
+	// Indicates whether the execution of the SQL pattern can be intercepted. Valid values:
 	//
 	// 	- **true**
 	//
 	// 	- **false**
 	//
-	// >  Only SELECT and INSERT statements can be blocked.
+	// >  Only SELECT and INSERT statements can be intercepted.
 	//
 	// example:
 	//
@@ -16172,7 +17974,7 @@ type DescribeSQLPatternsResponseBodyPatternDetails struct {
 	//
 	// tpch.orders
 	Tables *string `json:"Tables,omitempty" xml:"Tables,omitempty"`
-	// The database username that is used to commit the SQL pattern.
+	// The name of the database account that is used to commit the SQL pattern.
 	//
 	// example:
 	//
@@ -20208,7 +22010,7 @@ func (s *GetSparkConfigLogPathResponse) SetBody(v *GetSparkConfigLogPathResponse
 }
 
 type GetSparkDefinitionsRequest struct {
-	// The ID of the cluster.
+	// The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
 	//
 	// example:
 	//
@@ -21106,7 +22908,7 @@ type GetTableResponseBody struct {
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// Details of the table.
+	// The queried table.
 	Table *TableModel `json:"Table,omitempty" xml:"Table,omitempty"`
 }
 
@@ -23466,6 +25268,7 @@ type ModifyAccountDescriptionRequest struct {
 	//
 	// amv-bp11q28kvl688****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	Engine      *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
 }
 
 func (s ModifyAccountDescriptionRequest) String() string {
@@ -23488,6 +25291,11 @@ func (s *ModifyAccountDescriptionRequest) SetAccountName(v string) *ModifyAccoun
 
 func (s *ModifyAccountDescriptionRequest) SetDBClusterId(v string) *ModifyAccountDescriptionRequest {
 	s.DBClusterId = &v
+	return s
+}
+
+func (s *ModifyAccountDescriptionRequest) SetEngine(v string) *ModifyAccountDescriptionRequest {
+	s.Engine = &v
 	return s
 }
 
@@ -23551,7 +25359,7 @@ type ModifyAccountPrivilegesRequest struct {
 	//
 	// account1
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	// The permissions of the database account.
+	// The permissions that you want to grant to the database account.
 	//
 	// This parameter is required.
 	AccountPrivileges []*ModifyAccountPrivilegesRequestAccountPrivileges `json:"AccountPrivileges,omitempty" xml:"AccountPrivileges,omitempty" type:"Repeated"`
@@ -23563,7 +25371,7 @@ type ModifyAccountPrivilegesRequest struct {
 	//
 	// amv-bp1k5p066e1a****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The region ID of the cluster.
+	// The region ID.
 	//
 	// This parameter is required.
 	//
@@ -23602,15 +25410,15 @@ func (s *ModifyAccountPrivilegesRequest) SetRegionId(v string) *ModifyAccountPri
 }
 
 type ModifyAccountPrivilegesRequestAccountPrivileges struct {
-	// The objects on which the permission takes effect, including databases, tables, and columns.
+	// The objects on which you want to grant permissions, including databases, tables, and columns.
 	PrivilegeObject *ModifyAccountPrivilegesRequestAccountPrivilegesPrivilegeObject `json:"PrivilegeObject,omitempty" xml:"PrivilegeObject,omitempty" type:"Struct"`
-	// The permission level of the database account. You can call the `DescribeEnabledPrivileges` operation to query the permission level of the database account.
+	// The permission level that you want to assign to the database account. You can call the `DescribeEnabledPrivileges` operation to query the permission level that can be assigned to the database account.
 	//
 	// example:
 	//
 	// Global
 	PrivilegeType *string `json:"PrivilegeType,omitempty" xml:"PrivilegeType,omitempty"`
-	// The permissions that you want to modify. You can call the `DescribeEnabledPrivileges` operation to query the permissions of the database account.
+	// The permissions that you want to grant to the database account.
 	Privileges []*string `json:"Privileges,omitempty" xml:"Privileges,omitempty" type:"Repeated"`
 }
 
@@ -23638,19 +25446,19 @@ func (s *ModifyAccountPrivilegesRequestAccountPrivileges) SetPrivileges(v []*str
 }
 
 type ModifyAccountPrivilegesRequestAccountPrivilegesPrivilegeObject struct {
-	// The columns on which the database account has permissions. This parameter is required if the PrivilegeType parameter is set to Column.
+	// The columns on which you want to grant permissions. This parameter must be specified when the PrivilegeType parameter is set to Column.
 	//
 	// example:
 	//
 	// column1
 	Column *string `json:"Column,omitempty" xml:"Column,omitempty"`
-	// The databases on which the database account has permissions. This parameter is required if the PrivilegeType parameter is set to Database, Table, or Column.
+	// The databases on which you want to grant permissions. This parameter must be specified when the PrivilegeType parameter is set to Database, Table, or Column.
 	//
 	// example:
 	//
 	// tsdb1
 	Database *string `json:"Database,omitempty" xml:"Database,omitempty"`
-	// The tables on which the database account has permissions. This parameter is required if the PrivilegeType parameter is set to Table or Column.
+	// The tables on which you want to grant permissions. This parameter must be specified when the PrivilegeType parameter is set to Table or Column.
 	//
 	// example:
 	//
@@ -23690,7 +25498,7 @@ type ModifyAccountPrivilegesShrinkRequest struct {
 	//
 	// account1
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	// The permissions of the database account.
+	// The permissions that you want to grant to the database account.
 	//
 	// This parameter is required.
 	AccountPrivilegesShrink *string `json:"AccountPrivileges,omitempty" xml:"AccountPrivileges,omitempty"`
@@ -23702,7 +25510,7 @@ type ModifyAccountPrivilegesShrinkRequest struct {
 	//
 	// amv-bp1k5p066e1a****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The region ID of the cluster.
+	// The region ID.
 	//
 	// This parameter is required.
 	//
@@ -23741,7 +25549,7 @@ func (s *ModifyAccountPrivilegesShrinkRequest) SetRegionId(v string) *ModifyAcco
 }
 
 type ModifyAccountPrivilegesResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -23792,13 +25600,13 @@ func (s *ModifyAccountPrivilegesResponse) SetBody(v *ModifyAccountPrivilegesResp
 }
 
 type ModifyAuditLogConfigRequest struct {
-	// Modifies the status of SQL audit. Valid values:
+	// The status to which you want to change the SQL audit feature. Valid values:
 	//
-	// 	- **on**: enables SQL audit.
+	// 	- **on**
 	//
-	// 	- **off**: disables SQL audit.
+	// 	- **off**
 	//
-	// >  After you disable the SQL audit feature, all SQL audit logs are deleted. You must query and export SQL audit logs before you disable SQL audit. For more information, see Query and export SQL audit logs. When you re-enable SQL audit, audit logs that are generated from the last time when SQL audit was enabled are available for queries.
+	// >  After you disable the SQL audit feature, all SQL audit logs are deleted. You must query and export SQL audit logs before you disable SQL audit. For more information, see [DescribeAuditLogRecords](https://help.aliyun.com/document_detail/612426.html). When you re-enable SQL audit, audit logs that are generated from the time when SQL audit was last enabled are available for queries.
 	//
 	// This parameter is required.
 	//
@@ -25342,6 +27150,321 @@ func (s *ModifyElasticPlanResponse) SetBody(v *ModifyElasticPlanResponseBody) *M
 	return s
 }
 
+type ModifyPerformanceViewRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// amv-bp1ub9grke1****
+	DBClusterId  *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// This parameter is required.
+	ViewDetail *ModifyPerformanceViewRequestViewDetail `json:"ViewDetail,omitempty" xml:"ViewDetail,omitempty" type:"Struct"`
+	// This parameter is required.
+	ViewName *string `json:"ViewName,omitempty" xml:"ViewName,omitempty"`
+}
+
+func (s ModifyPerformanceViewRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyPerformanceViewRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyPerformanceViewRequest) SetDBClusterId(v string) *ModifyPerformanceViewRequest {
+	s.DBClusterId = &v
+	return s
+}
+
+func (s *ModifyPerformanceViewRequest) SetOwnerAccount(v string) *ModifyPerformanceViewRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *ModifyPerformanceViewRequest) SetOwnerId(v int64) *ModifyPerformanceViewRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *ModifyPerformanceViewRequest) SetRegionId(v string) *ModifyPerformanceViewRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ModifyPerformanceViewRequest) SetResourceOwnerAccount(v string) *ModifyPerformanceViewRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *ModifyPerformanceViewRequest) SetResourceOwnerId(v int64) *ModifyPerformanceViewRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *ModifyPerformanceViewRequest) SetViewDetail(v *ModifyPerformanceViewRequestViewDetail) *ModifyPerformanceViewRequest {
+	s.ViewDetail = v
+	return s
+}
+
+func (s *ModifyPerformanceViewRequest) SetViewName(v string) *ModifyPerformanceViewRequest {
+	s.ViewName = &v
+	return s
+}
+
+type ModifyPerformanceViewRequestViewDetail struct {
+	Categories []*ModifyPerformanceViewRequestViewDetailCategories `json:"Categories,omitempty" xml:"Categories,omitempty" type:"Repeated"`
+	// example:
+	//
+	// true
+	ChartLinked *bool `json:"ChartLinked,omitempty" xml:"ChartLinked,omitempty"`
+	// example:
+	//
+	// 3
+	ChartsPerLine *int32 `json:"ChartsPerLine,omitempty" xml:"ChartsPerLine,omitempty"`
+}
+
+func (s ModifyPerformanceViewRequestViewDetail) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyPerformanceViewRequestViewDetail) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyPerformanceViewRequestViewDetail) SetCategories(v []*ModifyPerformanceViewRequestViewDetailCategories) *ModifyPerformanceViewRequestViewDetail {
+	s.Categories = v
+	return s
+}
+
+func (s *ModifyPerformanceViewRequestViewDetail) SetChartLinked(v bool) *ModifyPerformanceViewRequestViewDetail {
+	s.ChartLinked = &v
+	return s
+}
+
+func (s *ModifyPerformanceViewRequestViewDetail) SetChartsPerLine(v int32) *ModifyPerformanceViewRequestViewDetail {
+	s.ChartsPerLine = &v
+	return s
+}
+
+type ModifyPerformanceViewRequestViewDetailCategories struct {
+	// example:
+	//
+	// Node
+	Category *string                                                 `json:"Category,omitempty" xml:"Category,omitempty"`
+	Keys     []*ModifyPerformanceViewRequestViewDetailCategoriesKeys `json:"Keys,omitempty" xml:"Keys,omitempty" type:"Repeated"`
+}
+
+func (s ModifyPerformanceViewRequestViewDetailCategories) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyPerformanceViewRequestViewDetailCategories) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyPerformanceViewRequestViewDetailCategories) SetCategory(v string) *ModifyPerformanceViewRequestViewDetailCategories {
+	s.Category = &v
+	return s
+}
+
+func (s *ModifyPerformanceViewRequestViewDetailCategories) SetKeys(v []*ModifyPerformanceViewRequestViewDetailCategoriesKeys) *ModifyPerformanceViewRequestViewDetailCategories {
+	s.Keys = v
+	return s
+}
+
+type ModifyPerformanceViewRequestViewDetailCategoriesKeys struct {
+	// example:
+	//
+	// AnalyticDB_CPU
+	KeyName *string `json:"KeyName,omitempty" xml:"KeyName,omitempty"`
+	// example:
+	//
+	// true
+	Selected *bool `json:"Selected,omitempty" xml:"Selected,omitempty"`
+}
+
+func (s ModifyPerformanceViewRequestViewDetailCategoriesKeys) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyPerformanceViewRequestViewDetailCategoriesKeys) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyPerformanceViewRequestViewDetailCategoriesKeys) SetKeyName(v string) *ModifyPerformanceViewRequestViewDetailCategoriesKeys {
+	s.KeyName = &v
+	return s
+}
+
+func (s *ModifyPerformanceViewRequestViewDetailCategoriesKeys) SetSelected(v bool) *ModifyPerformanceViewRequestViewDetailCategoriesKeys {
+	s.Selected = &v
+	return s
+}
+
+type ModifyPerformanceViewShrinkRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// amv-bp1ub9grke1****
+	DBClusterId  *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// This parameter is required.
+	ViewDetailShrink *string `json:"ViewDetail,omitempty" xml:"ViewDetail,omitempty"`
+	// This parameter is required.
+	ViewName *string `json:"ViewName,omitempty" xml:"ViewName,omitempty"`
+}
+
+func (s ModifyPerformanceViewShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyPerformanceViewShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyPerformanceViewShrinkRequest) SetDBClusterId(v string) *ModifyPerformanceViewShrinkRequest {
+	s.DBClusterId = &v
+	return s
+}
+
+func (s *ModifyPerformanceViewShrinkRequest) SetOwnerAccount(v string) *ModifyPerformanceViewShrinkRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *ModifyPerformanceViewShrinkRequest) SetOwnerId(v int64) *ModifyPerformanceViewShrinkRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *ModifyPerformanceViewShrinkRequest) SetRegionId(v string) *ModifyPerformanceViewShrinkRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ModifyPerformanceViewShrinkRequest) SetResourceOwnerAccount(v string) *ModifyPerformanceViewShrinkRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *ModifyPerformanceViewShrinkRequest) SetResourceOwnerId(v int64) *ModifyPerformanceViewShrinkRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *ModifyPerformanceViewShrinkRequest) SetViewDetailShrink(v string) *ModifyPerformanceViewShrinkRequest {
+	s.ViewDetailShrink = &v
+	return s
+}
+
+func (s *ModifyPerformanceViewShrinkRequest) SetViewName(v string) *ModifyPerformanceViewShrinkRequest {
+	s.ViewName = &v
+	return s
+}
+
+type ModifyPerformanceViewResponseBody struct {
+	// example:
+	//
+	// {
+	//
+	//     "PolicyType": "AccountLevelIdentityBasedPolicy",
+	//
+	//     "AuthPrincipalOwnerId": "1*****************7",
+	//
+	//     "EncodedDiagnosticMessage": "AQIBIAAAAOPdwKY2QLOvgMEc7SkkoJfj1kvZwsaRqNYMh10Tv0wTe0fCzaCdrvgazfNb0EnJKETgXyhR+3BIQjx9WAqZryejBsp1Bl4qI5En/D9dEhcXAtKCxCmE2kZCiEzpy8BoEUt+bs0DmlaGWO5xkEpttypLIB4rUhDvZd+zwPg4EXk4KSSWSWsurxtqDkKEMshKlQFBTKvJcKwyhk62IeYly4hQ+5IpXjkh1GQXuDRCQ==",
+	//
+	//     "AuthPrincipalType": "SubUser",
+	//
+	//     "AuthPrincipalDisplayName": "2***************9",
+	//
+	//     "NoPermissionType": "ImplicitDeny",
+	//
+	//     "AuthAction": "adb:DescribeExcessivePrimaryKeys"
+	//
+	// }
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// example:
+	//
+	// SUCCESS
+	ModifyStatus *string `json:"ModifyStatus,omitempty" xml:"ModifyStatus,omitempty"`
+	// example:
+	//
+	// C7EDB8E4-9769-4233-88C7-DCA4C9******
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ModifyPerformanceViewResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyPerformanceViewResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyPerformanceViewResponseBody) SetAccessDeniedDetail(v string) *ModifyPerformanceViewResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
+}
+
+func (s *ModifyPerformanceViewResponseBody) SetModifyStatus(v string) *ModifyPerformanceViewResponseBody {
+	s.ModifyStatus = &v
+	return s
+}
+
+func (s *ModifyPerformanceViewResponseBody) SetRequestId(v string) *ModifyPerformanceViewResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ModifyPerformanceViewResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyPerformanceViewResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ModifyPerformanceViewResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyPerformanceViewResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyPerformanceViewResponse) SetHeaders(v map[string]*string) *ModifyPerformanceViewResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyPerformanceViewResponse) SetStatusCode(v int32) *ModifyPerformanceViewResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ModifyPerformanceViewResponse) SetBody(v *ModifyPerformanceViewResponseBody) *ModifyPerformanceViewResponse {
+	s.Body = v
+	return s
+}
+
 type PreloadSparkAppMetricsRequest struct {
 	// The Spark application ID.
 	//
@@ -25545,6 +27668,7 @@ type ReleaseClusterPublicConnectionRequest struct {
 	//
 	// amv-bp11q28kvl688****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	Engine      *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
 }
 
 func (s ReleaseClusterPublicConnectionRequest) String() string {
@@ -25557,6 +27681,11 @@ func (s ReleaseClusterPublicConnectionRequest) GoString() string {
 
 func (s *ReleaseClusterPublicConnectionRequest) SetDBClusterId(v string) *ReleaseClusterPublicConnectionRequest {
 	s.DBClusterId = &v
+	return s
+}
+
+func (s *ReleaseClusterPublicConnectionRequest) SetEngine(v string) *ReleaseClusterPublicConnectionRequest {
+	s.Engine = &v
 	return s
 }
 
@@ -25758,7 +27887,7 @@ type ResetAccountPasswordRequest struct {
 	AccountDescription *string `json:"AccountDescription,omitempty" xml:"AccountDescription,omitempty"`
 	// The name of the database account.
 	//
-	// > You can call the [DescribeAccounts](https://help.aliyun.com/document_detail/612430.html) operation to query the information about database accounts in a cluster, including the database account name.
+	// >  You can call the [DescribeAccounts](https://help.aliyun.com/document_detail/612430.html) operation to query the information about database accounts of an AnalyticDB for MySQL cluster, including database account names.
 	//
 	// This parameter is required.
 	//
@@ -25788,6 +27917,7 @@ type ResetAccountPasswordRequest struct {
 	//
 	// amv-bp11q28kvl688****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	Engine      *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
 }
 
 func (s ResetAccountPasswordRequest) String() string {
@@ -25815,6 +27945,11 @@ func (s *ResetAccountPasswordRequest) SetAccountPassword(v string) *ResetAccount
 
 func (s *ResetAccountPasswordRequest) SetDBClusterId(v string) *ResetAccountPasswordRequest {
 	s.DBClusterId = &v
+	return s
+}
+
+func (s *ResetAccountPasswordRequest) SetEngine(v string) *ResetAccountPasswordRequest {
+	s.Engine = &v
 	return s
 }
 
@@ -26066,7 +28201,7 @@ type StartSparkSQLEngineRequest struct {
 	//
 	// 10
 	MaxExecutor *int64 `json:"MaxExecutor,omitempty" xml:"MaxExecutor,omitempty"`
-	// The minimum number of executors that are required to execute SQL statements. Valid values: 0 to 2000. A value of 0 indicates that no executors are permanent if no SQL statements are executed. If this value exceeds the total number of executes that are supported by the resource group, the Spark SQL engine fails to be started. The value must be less than the value of MaxExecutor.
+	// The minimum number of executors that are required to execute SQL statements. Valid values: 0 to 2000. A value of 0 indicates that no executors are permanent if no SQL statements are executed. If this value exceeds the total number of executors that are supported by the resource group, the Spark SQL engine fails to be started. The value must be less than the value of MaxExecutor.
 	//
 	// example:
 	//
@@ -27010,7 +29145,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 //
 // Description:
 //
-// For information about the endpoints of AnalyticDB for MySQL, see Endpoints.
+// For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
 //
 // @param request - AllocateClusterPublicConnectionRequest
 //
@@ -27029,6 +29164,10 @@ func (client *Client) AllocateClusterPublicConnectionWithOptions(request *Alloca
 
 	if !tea.BoolValue(util.IsUnset(request.DBClusterId)) {
 		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Engine)) {
+		query["Engine"] = request.Engine
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -27060,7 +29199,7 @@ func (client *Client) AllocateClusterPublicConnectionWithOptions(request *Alloca
 //
 // Description:
 //
-// For information about the endpoints of AnalyticDB for MySQL, see Endpoints.
+// For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
 //
 // @param request - AllocateClusterPublicConnectionRequest
 //
@@ -27467,6 +29606,10 @@ func (client *Client) CreateAccountWithOptions(request *CreateAccountRequest, ru
 		query["DBClusterId"] = request.DBClusterId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Engine)) {
+		query["Engine"] = request.Engine
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -27551,8 +29694,16 @@ func (client *Client) CreateDBClusterWithOptions(request *CreateDBClusterRequest
 		query["DBClusterVersion"] = request.DBClusterVersion
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.DiskEncryption)) {
+		query["DiskEncryption"] = request.DiskEncryption
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.EnableDefaultResourcePool)) {
 		query["EnableDefaultResourcePool"] = request.EnableDefaultResourcePool
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.KmsId)) {
+		query["KmsId"] = request.KmsId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.PayType)) {
@@ -27670,7 +29821,7 @@ func (client *Client) CreateDBCluster(request *CreateDBClusterRequest) (_result 
 //
 // Description:
 //
-// For information about the endpoints of the current service, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
+// For information about the endpoints of AnalyticDB for MySQL, see Endpoints.
 //
 // @param tmpReq - CreateDBResourceGroupRequest
 //
@@ -27766,7 +29917,7 @@ func (client *Client) CreateDBResourceGroupWithOptions(tmpReq *CreateDBResourceG
 //
 // Description:
 //
-// For information about the endpoints of the current service, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
+// For information about the endpoints of AnalyticDB for MySQL, see Endpoints.
 //
 // @param request - CreateDBResourceGroupRequest
 //
@@ -27966,6 +30117,100 @@ func (client *Client) CreateOssSubDirectory(request *CreateOssSubDirectoryReques
 	return _result, _err
 }
 
+// @param tmpReq - CreatePerformanceViewRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreatePerformanceViewResponse
+func (client *Client) CreatePerformanceViewWithOptions(tmpReq *CreatePerformanceViewRequest, runtime *util.RuntimeOptions) (_result *CreatePerformanceViewResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &CreatePerformanceViewShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.ViewDetail)) {
+		request.ViewDetailShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ViewDetail, tea.String("ViewDetail"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CreateFromViewType)) {
+		query["CreateFromViewType"] = request.CreateFromViewType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DBClusterId)) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FillOriginViewKeys)) {
+		query["FillOriginViewKeys"] = request.FillOriginViewKeys
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ViewDetailShrink)) {
+		query["ViewDetail"] = request.ViewDetailShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ViewName)) {
+		query["ViewName"] = request.ViewName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreatePerformanceView"),
+		Version:     tea.String("2021-12-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreatePerformanceViewResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - CreatePerformanceViewRequest
+//
+// @return CreatePerformanceViewResponse
+func (client *Client) CreatePerformanceView(request *CreatePerformanceViewRequest) (_result *CreatePerformanceViewResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreatePerformanceViewResponse{}
+	_body, _err := client.CreatePerformanceViewWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 // Summary:
 //
 // Creates a Spark application template.
@@ -28062,6 +30307,10 @@ func (client *Client) CreateSparkTemplate(request *CreateSparkTemplateRequest) (
 //
 // Deletes a database account from an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
 //
+// Description:
+//
+// For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
+//
 // @param request - DeleteAccountRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -28079,6 +30328,10 @@ func (client *Client) DeleteAccountWithOptions(request *DeleteAccountRequest, ru
 
 	if !tea.BoolValue(util.IsUnset(request.DBClusterId)) {
 		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Engine)) {
+		query["Engine"] = request.Engine
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -28107,6 +30360,10 @@ func (client *Client) DeleteAccountWithOptions(request *DeleteAccountRequest, ru
 // Summary:
 //
 // Deletes a database account from an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+//
+// Description:
+//
+// For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
 //
 // @param request - DeleteAccountRequest
 //
@@ -28342,6 +30599,82 @@ func (client *Client) DeleteElasticPlan(request *DeleteElasticPlanRequest) (_res
 	return _result, _err
 }
 
+// @param request - DeletePerformanceViewRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeletePerformanceViewResponse
+func (client *Client) DeletePerformanceViewWithOptions(request *DeletePerformanceViewRequest, runtime *util.RuntimeOptions) (_result *DeletePerformanceViewResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBClusterId)) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ViewName)) {
+		query["ViewName"] = request.ViewName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeletePerformanceView"),
+		Version:     tea.String("2021-12-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeletePerformanceViewResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - DeletePerformanceViewRequest
+//
+// @return DeletePerformanceViewResponse
+func (client *Client) DeletePerformanceView(request *DeletePerformanceViewRequest) (_result *DeletePerformanceViewResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeletePerformanceViewResponse{}
+	_body, _err := client.DeletePerformanceViewWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 // Summary:
 //
 // Deletes a worflow instance from an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
@@ -28510,6 +30843,14 @@ func (client *Client) DeleteSparkTemplate(request *DeleteSparkTemplateRequest) (
 //
 // Deletes Spark template files.
 //
+// Description:
+//
+//   General endpoint: `adb.aliyuncs.com`.
+//
+// 	- Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+//
+// 	- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+//
 // @param request - DeleteSparkTemplateFileRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -28555,6 +30896,14 @@ func (client *Client) DeleteSparkTemplateFileWithOptions(request *DeleteSparkTem
 // Summary:
 //
 // Deletes Spark template files.
+//
+// Description:
+//
+//   General endpoint: `adb.aliyuncs.com`.
+//
+// 	- Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+//
+// 	- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
 //
 // @param request - DeleteSparkTemplateFileRequest
 //
@@ -28869,6 +31218,10 @@ func (client *Client) DescribeAccountsWithOptions(request *DescribeAccountsReque
 		query["DBClusterId"] = request.DBClusterId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Engine)) {
+		query["Engine"] = request.Engine
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
 		query["OwnerId"] = request.OwnerId
 	}
@@ -28920,7 +31273,13 @@ func (client *Client) DescribeAccounts(request *DescribeAccountsRequest) (_resul
 
 // Summary:
 //
-// 用于查询ADB for MySQL实例下某个数据库某个表的列的列表
+// Queries the information about table columns for an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+//
+// Description:
+//
+//   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+//
+// 	- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
 //
 // @param request - DescribeAdbMySqlColumnsRequest
 //
@@ -28974,7 +31333,13 @@ func (client *Client) DescribeAdbMySqlColumnsWithOptions(request *DescribeAdbMyS
 
 // Summary:
 //
-// 用于查询ADB for MySQL实例下某个数据库某个表的列的列表
+// Queries the information about table columns for an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+//
+// Description:
+//
+//   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+//
+// 	- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
 //
 // @param request - DescribeAdbMySqlColumnsRequest
 //
@@ -28993,6 +31358,12 @@ func (client *Client) DescribeAdbMySqlColumns(request *DescribeAdbMySqlColumnsRe
 // Summary:
 //
 // Queries a list of databases for an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+//
+// Description:
+//
+//   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+//
+// 	- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
 //
 // @param request - DescribeAdbMySqlSchemasRequest
 //
@@ -29040,6 +31411,12 @@ func (client *Client) DescribeAdbMySqlSchemasWithOptions(request *DescribeAdbMyS
 //
 // Queries a list of databases for an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
 //
+// Description:
+//
+//   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+//
+// 	- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+//
 // @param request - DescribeAdbMySqlSchemasRequest
 //
 // @return DescribeAdbMySqlSchemasResponse
@@ -29057,6 +31434,12 @@ func (client *Client) DescribeAdbMySqlSchemas(request *DescribeAdbMySqlSchemasRe
 // Summary:
 //
 // Queries a list of tables for an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+//
+// Description:
+//
+//   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+//
+// 	- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
 //
 // @param request - DescribeAdbMySqlTablesRequest
 //
@@ -29108,6 +31491,12 @@ func (client *Client) DescribeAdbMySqlTablesWithOptions(request *DescribeAdbMySq
 //
 // Queries a list of tables for an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
 //
+// Description:
+//
+//   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+//
+// 	- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+//
 // @param request - DescribeAdbMySqlTablesRequest
 //
 // @return DescribeAdbMySqlTablesResponse
@@ -29125,6 +31514,12 @@ func (client *Client) DescribeAdbMySqlTables(request *DescribeAdbMySqlTablesRequ
 // Summary:
 //
 // Queries a list of databases, tables, and columns in an AnalyticDB for MySQL cluster.
+//
+// Description:
+//
+//   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+//
+// 	- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
 //
 // @param request - DescribeAllDataSourceRequest
 //
@@ -29180,6 +31575,12 @@ func (client *Client) DescribeAllDataSourceWithOptions(request *DescribeAllDataS
 //
 // Queries a list of databases, tables, and columns in an AnalyticDB for MySQL cluster.
 //
+// Description:
+//
+//   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+//
+// 	- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+//
 // @param request - DescribeAllDataSourceRequest
 //
 // @return DescribeAllDataSourceResponse
@@ -29194,6 +31595,18 @@ func (client *Client) DescribeAllDataSource(request *DescribeAllDataSourceReques
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the logs of a real-time data ingestion job for an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+//
+// Description:
+//
+//   General endpoint: `adb.aliyuncs.com`.
+//
+// 	- Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+//
+// 	- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+//
 // @param request - DescribeApsActionLogsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -29284,6 +31697,18 @@ func (client *Client) DescribeApsActionLogsWithOptions(request *DescribeApsActio
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the logs of a real-time data ingestion job for an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+//
+// Description:
+//
+//   General endpoint: `adb.aliyuncs.com`.
+//
+// 	- Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+//
+// 	- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+//
 // @param request - DescribeApsActionLogsRequest
 //
 // @return DescribeApsActionLogsResponse
@@ -29300,7 +31725,7 @@ func (client *Client) DescribeApsActionLogs(request *DescribeApsActionLogsReques
 
 // Summary:
 //
-// Queries the information about resource groups of an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster, including the resource metrics.
+// Queries the information about resource groups of an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
 //
 // Description:
 //
@@ -29356,7 +31781,7 @@ func (client *Client) DescribeApsResourceGroupsWithOptions(request *DescribeApsR
 
 // Summary:
 //
-// Queries the information about resource groups of an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster, including the resource metrics.
+// Queries the information about resource groups of an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
 //
 // Description:
 //
@@ -29386,11 +31811,7 @@ func (client *Client) DescribeApsResourceGroups(request *DescribeApsResourceGrou
 //
 //   SQL audit logs can be queried only when SQL audit is enabled. Only SQL audit logs within the last 30 days can be queried. If SQL audit was disabled and re-enabled, only SQL audit logs from the time when SQL audit was re-enabled can be queried. The following operations are not recorded in SQL audit logs: **INSERT INTO VALUES**, **REPLACE INTO VALUES**, and **UPSERT INTO VALUES**.
 //
-// 	- General endpoint: `adb.aliyuncs.com`.
-//
-// 	- Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
-//
-// 	- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+// 	- For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
 //
 // @param request - DescribeAuditLogRecordsRequest
 //
@@ -29510,11 +31931,7 @@ func (client *Client) DescribeAuditLogRecordsWithOptions(request *DescribeAuditL
 //
 //   SQL audit logs can be queried only when SQL audit is enabled. Only SQL audit logs within the last 30 days can be queried. If SQL audit was disabled and re-enabled, only SQL audit logs from the time when SQL audit was re-enabled can be queried. The following operations are not recorded in SQL audit logs: **INSERT INTO VALUES**, **REPLACE INTO VALUES**, and **UPSERT INTO VALUES**.
 //
-// 	- General endpoint: `adb.aliyuncs.com`.
-//
-// 	- Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
-//
-// 	- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+// 	- For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
 //
 // @param request - DescribeAuditLogRecordsRequest
 //
@@ -29797,6 +32214,10 @@ func (client *Client) DescribeClusterNetInfoWithOptions(request *DescribeCluster
 		query["DBClusterId"] = request.DBClusterId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Engine)) {
+		query["Engine"] = request.Engine
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -29962,6 +32383,12 @@ func (client *Client) DescribeClusterResourceUsage(request *DescribeClusterResou
 //
 // Queries a list of columns in a table.
 //
+// Description:
+//
+//   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+//
+// 	- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+//
 // @param request - DescribeColumnsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -30015,6 +32442,12 @@ func (client *Client) DescribeColumnsWithOptions(request *DescribeColumnsRequest
 // Summary:
 //
 // Queries a list of columns in a table.
+//
+// Description:
+//
+//   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+//
+// 	- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
 //
 // @param request - DescribeColumnsRequest
 //
@@ -30248,11 +32681,7 @@ func (client *Client) DescribeDBClusterHealthStatus(request *DescribeDBClusterHe
 //
 // Description:
 //
-//   General endpoint: `adb.aliyuncs.com`.
-//
-// 	- Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
-//
-// 	- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+// For information about the endpoints of AnalyticDB for MySQL, see Endpoints.
 //
 // @param request - DescribeDBClusterPerformanceRequest
 //
@@ -30318,11 +32747,7 @@ func (client *Client) DescribeDBClusterPerformanceWithOptions(request *DescribeD
 //
 // Description:
 //
-//   General endpoint: `adb.aliyuncs.com`.
-//
-// 	- Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
-//
-// 	- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+// For information about the endpoints of AnalyticDB for MySQL, see Endpoints.
 //
 // @param request - DescribeDBClusterPerformanceRequest
 //
@@ -30994,6 +33419,10 @@ func (client *Client) DescribeDiagnosisSQLInfo(request *DescribeDiagnosisSQLInfo
 //
 // Queries the last five SQL query download tasks of an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
 //
+// Description:
+//
+// For information about the endpoints of AnalyticDB for MySQL, see Endpoints.
+//
 // @param request - DescribeDownloadRecordsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -31043,6 +33472,10 @@ func (client *Client) DescribeDownloadRecordsWithOptions(request *DescribeDownlo
 // Summary:
 //
 // Queries the last five SQL query download tasks of an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+//
+// Description:
+//
+// For information about the endpoints of AnalyticDB for MySQL, see Endpoints.
 //
 // @param request - DescribeDownloadRecordsRequest
 //
@@ -31136,7 +33569,7 @@ func (client *Client) DescribeElasticPlanAttribute(request *DescribeElasticPlanA
 //
 // Description:
 //
-// For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
+// For information about the endpoints of AnalyticDB for MySQL, see Endpoints.
 //
 // @param request - DescribeElasticPlanJobsRequest
 //
@@ -31206,7 +33639,7 @@ func (client *Client) DescribeElasticPlanJobsWithOptions(request *DescribeElasti
 //
 // Description:
 //
-// For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
+// For information about the endpoints of AnalyticDB for MySQL, see Endpoints.
 //
 // @param request - DescribeElasticPlanJobsRequest
 //
@@ -31224,7 +33657,11 @@ func (client *Client) DescribeElasticPlanJobs(request *DescribeElasticPlanJobsRe
 
 // Summary:
 //
-// Queries the resource specifications that can be scaled for different types of scaling plans of an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+// Queries the resource specifications that are supported by different types of scaling plans of an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+//
+// Description:
+//
+// For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
 //
 // @param request - DescribeElasticPlanSpecificationsRequest
 //
@@ -31274,7 +33711,11 @@ func (client *Client) DescribeElasticPlanSpecificationsWithOptions(request *Desc
 
 // Summary:
 //
-// Queries the resource specifications that can be scaled for different types of scaling plans of an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+// Queries the resource specifications that are supported by different types of scaling plans of an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+//
+// Description:
+//
+// For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
 //
 // @param request - DescribeElasticPlanSpecificationsRequest
 //
@@ -31432,6 +33873,110 @@ func (client *Client) DescribeEnabledPrivileges(request *DescribeEnabledPrivileg
 
 // Summary:
 //
+// Queries the information about tables that have excessive primary key fields in an AnalyticDB for MySQL Data Lakehouse Edition (V5.0) cluster.
+//
+// @param request - DescribeExcessivePrimaryKeysRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeExcessivePrimaryKeysResponse
+func (client *Client) DescribeExcessivePrimaryKeysWithOptions(request *DescribeExcessivePrimaryKeysRequest, runtime *util.RuntimeOptions) (_result *DescribeExcessivePrimaryKeysResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBClusterId)) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Lang)) {
+		query["Lang"] = request.Lang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Order)) {
+		query["Order"] = request.Order
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeExcessivePrimaryKeys"),
+		Version:     tea.String("2021-12-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeExcessivePrimaryKeysResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the information about tables that have excessive primary key fields in an AnalyticDB for MySQL Data Lakehouse Edition (V5.0) cluster.
+//
+// @param request - DescribeExcessivePrimaryKeysRequest
+//
+// @return DescribeExcessivePrimaryKeysResponse
+func (client *Client) DescribeExcessivePrimaryKeys(request *DescribeExcessivePrimaryKeysRequest) (_result *DescribeExcessivePrimaryKeysResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeExcessivePrimaryKeysResponse{}
+	_body, _err := client.DescribeExcessivePrimaryKeysWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 获取作业资源使用统计
 //
 // @param request - DescribeJobResourceUsageRequest
@@ -31504,7 +34049,11 @@ func (client *Client) DescribeJobResourceUsage(request *DescribeJobResourceUsage
 //
 // Description:
 //
-// For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
+//   General endpoint: `adb.aliyuncs.com`.
+//
+// 	- Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+//
+// 	- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
 //
 // @param request - DescribePatternPerformanceRequest
 //
@@ -31566,7 +34115,11 @@ func (client *Client) DescribePatternPerformanceWithOptions(request *DescribePat
 //
 // Description:
 //
-// For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
+//   General endpoint: `adb.aliyuncs.com`.
+//
+// 	- Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+//
+// 	- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
 //
 // @param request - DescribePatternPerformanceRequest
 //
@@ -31575,6 +34128,154 @@ func (client *Client) DescribePatternPerformance(request *DescribePatternPerform
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribePatternPerformanceResponse{}
 	_body, _err := client.DescribePatternPerformanceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param request - DescribePerformanceViewAttributeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribePerformanceViewAttributeResponse
+func (client *Client) DescribePerformanceViewAttributeWithOptions(request *DescribePerformanceViewAttributeRequest, runtime *util.RuntimeOptions) (_result *DescribePerformanceViewAttributeResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBClusterId)) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ViewName)) {
+		query["ViewName"] = request.ViewName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribePerformanceViewAttribute"),
+		Version:     tea.String("2021-12-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribePerformanceViewAttributeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - DescribePerformanceViewAttributeRequest
+//
+// @return DescribePerformanceViewAttributeResponse
+func (client *Client) DescribePerformanceViewAttribute(request *DescribePerformanceViewAttributeRequest) (_result *DescribePerformanceViewAttributeResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribePerformanceViewAttributeResponse{}
+	_body, _err := client.DescribePerformanceViewAttributeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param request - DescribePerformanceViewsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribePerformanceViewsResponse
+func (client *Client) DescribePerformanceViewsWithOptions(request *DescribePerformanceViewsRequest, runtime *util.RuntimeOptions) (_result *DescribePerformanceViewsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBClusterId)) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribePerformanceViews"),
+		Version:     tea.String("2021-12-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribePerformanceViewsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - DescribePerformanceViewsRequest
+//
+// @return DescribePerformanceViewsResponse
+func (client *Client) DescribePerformanceViews(request *DescribePerformanceViewsRequest) (_result *DescribePerformanceViewsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribePerformanceViewsResponse{}
+	_body, _err := client.DescribePerformanceViewsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -31670,6 +34371,14 @@ func (client *Client) DescribeRegions(request *DescribeRegionsRequest) (_result 
 //
 // Queries a list of SQL patterns for an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster within a time range.
 //
+// Description:
+//
+//   General endpoint: `adb.aliyuncs.com`.
+//
+// 	- Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+//
+// 	- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+//
 // @param request - DescribeSQLPatternsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -31744,6 +34453,14 @@ func (client *Client) DescribeSQLPatternsWithOptions(request *DescribeSQLPattern
 //
 // Queries a list of SQL patterns for an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster within a time range.
 //
+// Description:
+//
+//   General endpoint: `adb.aliyuncs.com`.
+//
+// 	- Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+//
+// 	- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+//
 // @param request - DescribeSQLPatternsRequest
 //
 // @return DescribeSQLPatternsResponse
@@ -31761,6 +34478,12 @@ func (client *Client) DescribeSQLPatterns(request *DescribeSQLPatternsRequest) (
 // Summary:
 //
 // Queries a list of databases in an AnalyticDB for MySQL cluster.
+//
+// Description:
+//
+//   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+//
+// 	- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
 //
 // @param request - DescribeSchemasRequest
 //
@@ -31808,6 +34531,12 @@ func (client *Client) DescribeSchemasWithOptions(request *DescribeSchemasRequest
 //
 // Queries a list of databases in an AnalyticDB for MySQL cluster.
 //
+// Description:
+//
+//   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+//
+// 	- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+//
 // @param request - DescribeSchemasRequest
 //
 // @return DescribeSchemasResponse
@@ -31824,7 +34553,13 @@ func (client *Client) DescribeSchemas(request *DescribeSchemasRequest) (_result 
 
 // Summary:
 //
-// 查询Spark code的执行日志
+// Queries the execution logs of Spark code.
+//
+// Description:
+//
+//   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+//
+// 	- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
 //
 // @param request - DescribeSparkCodeLogRequest
 //
@@ -31874,7 +34609,13 @@ func (client *Client) DescribeSparkCodeLogWithOptions(request *DescribeSparkCode
 
 // Summary:
 //
-// 查询Spark code的执行日志
+// Queries the execution logs of Spark code.
+//
+// Description:
+//
+//   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+//
+// 	- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
 //
 // @param request - DescribeSparkCodeLogRequest
 //
@@ -31974,6 +34715,12 @@ func (client *Client) DescribeSparkCodeOutput(request *DescribeSparkCodeOutputRe
 //
 // Queries the URL of the web UI for a Spark application.
 //
+// Description:
+//
+//   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+//
+// 	- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+//
 // @param request - DescribeSparkCodeWebUiRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -32023,6 +34770,12 @@ func (client *Client) DescribeSparkCodeWebUiWithOptions(request *DescribeSparkCo
 // Summary:
 //
 // Queries the URL of the web UI for a Spark application.
+//
+// Description:
+//
+//   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+//
+// 	- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
 //
 // @param request - DescribeSparkCodeWebUiRequest
 //
@@ -32306,6 +35059,12 @@ func (client *Client) DescribeTableAccessCount(request *DescribeTableAccessCount
 //
 // Queries a list of tables in a database.
 //
+// Description:
+//
+//   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+//
+// 	- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+//
 // @param request - DescribeTablesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -32355,6 +35114,12 @@ func (client *Client) DescribeTablesWithOptions(request *DescribeTablesRequest, 
 // Summary:
 //
 // Queries a list of tables in a database.
+//
+// Description:
+//
+//   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+//
+// 	- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
 //
 // @param request - DescribeTablesRequest
 //
@@ -32774,6 +35539,14 @@ func (client *Client) EnableElasticPlan(request *EnableElasticPlanRequest) (_res
 //
 // Queries whether a running SQL engine exists.
 //
+// Description:
+//
+//   General endpoint: `adb.aliyuncs.com`.
+//
+// 	- Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+//
+// 	- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+//
 // @param request - ExistRunningSQLEngineRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -32819,6 +35592,14 @@ func (client *Client) ExistRunningSQLEngineWithOptions(request *ExistRunningSQLE
 // Summary:
 //
 // Queries whether a running SQL engine exists.
+//
+// Description:
+//
+//   General endpoint: `adb.aliyuncs.com`.
+//
+// 	- Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+//
+// 	- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
 //
 // @param request - ExistRunningSQLEngineRequest
 //
@@ -33024,6 +35805,14 @@ func (client *Client) GetSparkAppAttemptLog(request *GetSparkAppAttemptLogReques
 //
 // Queries the information about an Spark application.
 //
+// Description:
+//
+//   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+//
+// 	- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+//
+// >  If HTTP status code 409 is returned when you call this operation in the China (Qingdao), China (Shenzhen), China (Guangzhou), or China (Hong Kong) region, contact technical support.
+//
 // @param request - GetSparkAppInfoRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -33071,6 +35860,14 @@ func (client *Client) GetSparkAppInfoWithOptions(request *GetSparkAppInfoRequest
 // Summary:
 //
 // Queries the information about an Spark application.
+//
+// Description:
+//
+//   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+//
+// 	- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+//
+// >  If HTTP status code 409 is returned when you call this operation in the China (Qingdao), China (Shenzhen), China (Guangzhou), or China (Hong Kong) region, contact technical support.
 //
 // @param request - GetSparkAppInfoRequest
 //
@@ -33508,11 +36305,11 @@ func (client *Client) GetSparkConfigLogPath(request *GetSparkConfigLogPathReques
 //
 // Description:
 //
-//   General endpoint: `adb.aliyuncs.com`.
-//
-// 	- Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+//   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
 //
 // 	- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+//
+// >  If HTTP status code 409 is returned when you call this operation in the China (Qingdao), China (Shenzhen), China (Guangzhou), or China (Hong Kong) region, contact technical support.
 //
 // @param request - GetSparkDefinitionsRequest
 //
@@ -33558,11 +36355,11 @@ func (client *Client) GetSparkDefinitionsWithOptions(request *GetSparkDefinition
 //
 // Description:
 //
-//   General endpoint: `adb.aliyuncs.com`.
-//
-// 	- Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+//   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
 //
 // 	- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+//
+// >  If HTTP status code 409 is returned when you call this operation in the China (Qingdao), China (Shenzhen), China (Guangzhou), or China (Hong Kong) region, contact technical support.
 //
 // @param request - GetSparkDefinitionsRequest
 //
@@ -33658,6 +36455,14 @@ func (client *Client) GetSparkLogAnalyzeTask(request *GetSparkLogAnalyzeTaskRequ
 //
 // Queries the state information about the Spark SQL engine.
 //
+// Description:
+//
+//   General endpoint: `adb.aliyuncs.com`.
+//
+// 	- Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+//
+// 	- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+//
 // @param request - GetSparkSQLEngineStateRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -33703,6 +36508,14 @@ func (client *Client) GetSparkSQLEngineStateWithOptions(request *GetSparkSQLEngi
 // Summary:
 //
 // Queries the state information about the Spark SQL engine.
+//
+// Description:
+//
+//   General endpoint: `adb.aliyuncs.com`.
+//
+// 	- Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+//
+// 	- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
 //
 // @param request - GetSparkSQLEngineStateRequest
 //
@@ -33954,8 +36767,6 @@ func (client *Client) GetSparkTemplateFullTree(request *GetSparkTemplateFullTree
 	return _result, _err
 }
 
-// Deprecated: OpenAPI GetTable is deprecated
-//
 // Summary:
 //
 // 获取表
@@ -33965,7 +36776,6 @@ func (client *Client) GetSparkTemplateFullTree(request *GetSparkTemplateFullTree
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetTableResponse
-// Deprecated
 func (client *Client) GetTableWithOptions(request *GetTableRequest, runtime *util.RuntimeOptions) (_result *GetTableResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -34011,8 +36821,6 @@ func (client *Client) GetTableWithOptions(request *GetTableRequest, runtime *uti
 	return _result, _err
 }
 
-// Deprecated: OpenAPI GetTable is deprecated
-//
 // Summary:
 //
 // 获取表
@@ -34020,7 +36828,6 @@ func (client *Client) GetTableWithOptions(request *GetTableRequest, runtime *uti
 // @param request - GetTableRequest
 //
 // @return GetTableResponse
-// Deprecated
 func (client *Client) GetTable(request *GetTableRequest) (_result *GetTableResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetTableResponse{}
@@ -34035,6 +36842,12 @@ func (client *Client) GetTable(request *GetTableRequest) (_result *GetTableRespo
 // Summary:
 //
 // Queries the information about columns.
+//
+// Description:
+//
+//   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+//
+// 	- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
 //
 // @param request - GetTableColumnsRequest
 //
@@ -34102,6 +36915,12 @@ func (client *Client) GetTableColumnsWithOptions(request *GetTableColumnsRequest
 //
 // Queries the information about columns.
 //
+// Description:
+//
+//   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+//
+// 	- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+//
 // @param request - GetTableColumnsRequest
 //
 // @return GetTableColumnsResponse
@@ -34119,6 +36938,12 @@ func (client *Client) GetTableColumns(request *GetTableColumnsRequest) (_result 
 // Summary:
 //
 // Queries the statement that is used to create a table.
+//
+// Description:
+//
+//   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+//
+// 	- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
 //
 // @param request - GetTableDDLRequest
 //
@@ -34173,6 +36998,12 @@ func (client *Client) GetTableDDLWithOptions(request *GetTableDDLRequest, runtim
 // Summary:
 //
 // Queries the statement that is used to create a table.
+//
+// Description:
+//
+//   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+//
+// 	- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
 //
 // @param request - GetTableDDLRequest
 //
@@ -35104,7 +37935,7 @@ func (client *Client) LoadSampleDataSet(request *LoadSampleDataSetRequest) (_res
 //
 // Description:
 //
-// For information about the endpoints of AnalyticDB for MySQL, see Endpoints.
+// For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
 //
 // @param request - ModifyAccountDescriptionRequest
 //
@@ -35127,6 +37958,10 @@ func (client *Client) ModifyAccountDescriptionWithOptions(request *ModifyAccount
 
 	if !tea.BoolValue(util.IsUnset(request.DBClusterId)) {
 		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Engine)) {
+		query["Engine"] = request.Engine
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -35158,7 +37993,7 @@ func (client *Client) ModifyAccountDescriptionWithOptions(request *ModifyAccount
 //
 // Description:
 //
-// For information about the endpoints of AnalyticDB for MySQL, see Endpoints.
+// For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
 //
 // @param request - ModifyAccountDescriptionRequest
 //
@@ -35176,7 +38011,11 @@ func (client *Client) ModifyAccountDescription(request *ModifyAccountDescription
 
 // Summary:
 //
-// 修改某一用户的权限
+// Modifies the permissions of a database account.
+//
+// Description:
+//
+// For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
 //
 // @param tmpReq - ModifyAccountPrivilegesRequest
 //
@@ -35236,7 +38075,11 @@ func (client *Client) ModifyAccountPrivilegesWithOptions(tmpReq *ModifyAccountPr
 
 // Summary:
 //
-// 修改某一用户的权限
+// Modifies the permissions of a database account.
+//
+// Description:
+//
+// For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
 //
 // @param request - ModifyAccountPrivilegesRequest
 //
@@ -35255,6 +38098,10 @@ func (client *Client) ModifyAccountPrivileges(request *ModifyAccountPrivilegesRe
 // Summary:
 //
 // Modifies the SQL audit configuration of an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+//
+// Description:
+//
+// For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
 //
 // @param request - ModifyAuditLogConfigRequest
 //
@@ -35321,6 +38168,10 @@ func (client *Client) ModifyAuditLogConfigWithOptions(request *ModifyAuditLogCon
 // Summary:
 //
 // Modifies the SQL audit configuration of an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+//
+// Description:
+//
+// For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
 //
 // @param request - ModifyAuditLogConfigRequest
 //
@@ -35446,7 +38297,7 @@ func (client *Client) ModifyBackupPolicy(request *ModifyBackupPolicyRequest) (_r
 //
 // Description:
 //
-// For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
+// For information about the endpoints of AnalyticDB for MySQL, see Endpoints.
 //
 // @param request - ModifyClusterAccessWhiteListRequest
 //
@@ -35508,7 +38359,7 @@ func (client *Client) ModifyClusterAccessWhiteListWithOptions(request *ModifyClu
 //
 // Description:
 //
-// For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
+// For information about the endpoints of AnalyticDB for MySQL, see Endpoints.
 //
 // @param request - ModifyClusterAccessWhiteListRequest
 //
@@ -35614,13 +38465,13 @@ func (client *Client) ModifyClusterConnectionString(request *ModifyClusterConnec
 //
 // 	- During a scaling event, you are not allowed to execute the `SUBMIT JOB` statement to submit asynchronous jobs. If your business requires asynchronous jobs, perform scaling during appropriate periods.
 //
-// 	- When cluster specifications are scaled up or down, data in the cluster is migrated for redistribution. The amount of time that is required for data migration is proportional to the volume of data. During a scaling event, the services provided by the cluster are not interrupted. During a scale-down event, data migration can take up to dozens of hours to complete. Proceed with caution especially when your cluster contains a large amount of data.
+// 	- When you scale a cluster, data in the cluster is migrated for redistribution. The amount of time that is required to migrate data is proportional to the data volume. During a scaling event, the services provided by the cluster are not interrupted. When you downgrade cluster specifications, data migration may require up to dozens of hours to complete. Proceed with caution especially if your cluster contains a large amount of data.
 //
 // 	- If the cluster has a built-in dataset loaded, make sure that the cluster has reserved storage resources of at least 24 AnalyticDB compute units (ACUs). Otherwise, the built-in dataset cannot be used.
 //
-// 	- When the scaling process is about to end, your service may encounter transient connections. We recommend that you scale your cluster during off-peak hours or make sure that your application is configured to automatically reconnect to your cluster.
+// 	- When the scaling process is about to end, transient connections may occur. We recommend that you scale your cluster during off-peak hours or make sure that your application is configured to automatically reconnect to your cluster.
 //
-// 	- You can change an AnalyticDB for MySQL cluster from Data Warehouse Edition (V3.0) to Data Lakehouse Edition (V3.0), but not the other way around. For more information, see Change a cluster from Data Warehouse Edition to Data Lakehouse Edition.
+// 	- You can change an AnalyticDB for MySQL cluster from Data Warehouse Edition (V3.0) to Data Lakehouse Edition (V3.0), but not the other way around. For more information, see Change a cluster from Data Warehouse Edition to Data Lakehouse Edition. For information about the endpoints of AnalyticDB for MySQL, see Endpoints.
 //
 // @param request - ModifyDBClusterRequest
 //
@@ -35706,13 +38557,13 @@ func (client *Client) ModifyDBClusterWithOptions(request *ModifyDBClusterRequest
 //
 // 	- During a scaling event, you are not allowed to execute the `SUBMIT JOB` statement to submit asynchronous jobs. If your business requires asynchronous jobs, perform scaling during appropriate periods.
 //
-// 	- When cluster specifications are scaled up or down, data in the cluster is migrated for redistribution. The amount of time that is required for data migration is proportional to the volume of data. During a scaling event, the services provided by the cluster are not interrupted. During a scale-down event, data migration can take up to dozens of hours to complete. Proceed with caution especially when your cluster contains a large amount of data.
+// 	- When you scale a cluster, data in the cluster is migrated for redistribution. The amount of time that is required to migrate data is proportional to the data volume. During a scaling event, the services provided by the cluster are not interrupted. When you downgrade cluster specifications, data migration may require up to dozens of hours to complete. Proceed with caution especially if your cluster contains a large amount of data.
 //
 // 	- If the cluster has a built-in dataset loaded, make sure that the cluster has reserved storage resources of at least 24 AnalyticDB compute units (ACUs). Otherwise, the built-in dataset cannot be used.
 //
-// 	- When the scaling process is about to end, your service may encounter transient connections. We recommend that you scale your cluster during off-peak hours or make sure that your application is configured to automatically reconnect to your cluster.
+// 	- When the scaling process is about to end, transient connections may occur. We recommend that you scale your cluster during off-peak hours or make sure that your application is configured to automatically reconnect to your cluster.
 //
-// 	- You can change an AnalyticDB for MySQL cluster from Data Warehouse Edition (V3.0) to Data Lakehouse Edition (V3.0), but not the other way around. For more information, see Change a cluster from Data Warehouse Edition to Data Lakehouse Edition.
+// 	- You can change an AnalyticDB for MySQL cluster from Data Warehouse Edition (V3.0) to Data Lakehouse Edition (V3.0), but not the other way around. For more information, see Change a cluster from Data Warehouse Edition to Data Lakehouse Edition. For information about the endpoints of AnalyticDB for MySQL, see Endpoints.
 //
 // @param request - ModifyDBClusterRequest
 //
@@ -35996,7 +38847,7 @@ func (client *Client) ModifyDBResourceGroup(request *ModifyDBResourceGroupReques
 //
 // Description:
 //
-// For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
+// For information about the endpoints of AnalyticDB for MySQL, see Endpoints.
 //
 // @param request - ModifyElasticPlanRequest
 //
@@ -36062,7 +38913,7 @@ func (client *Client) ModifyElasticPlanWithOptions(request *ModifyElasticPlanReq
 //
 // Description:
 //
-// For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
+// For information about the endpoints of AnalyticDB for MySQL, see Endpoints.
 //
 // @param request - ModifyElasticPlanRequest
 //
@@ -36078,9 +38929,103 @@ func (client *Client) ModifyElasticPlan(request *ModifyElasticPlanRequest) (_res
 	return _result, _err
 }
 
+// @param tmpReq - ModifyPerformanceViewRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyPerformanceViewResponse
+func (client *Client) ModifyPerformanceViewWithOptions(tmpReq *ModifyPerformanceViewRequest, runtime *util.RuntimeOptions) (_result *ModifyPerformanceViewResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &ModifyPerformanceViewShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.ViewDetail)) {
+		request.ViewDetailShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ViewDetail, tea.String("ViewDetail"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBClusterId)) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ViewDetailShrink)) {
+		query["ViewDetail"] = request.ViewDetailShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ViewName)) {
+		query["ViewName"] = request.ViewName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyPerformanceView"),
+		Version:     tea.String("2021-12-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ModifyPerformanceViewResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - ModifyPerformanceViewRequest
+//
+// @return ModifyPerformanceViewResponse
+func (client *Client) ModifyPerformanceView(request *ModifyPerformanceViewRequest) (_result *ModifyPerformanceViewResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyPerformanceViewResponse{}
+	_body, _err := client.ModifyPerformanceViewWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 // Summary:
 //
 // Preloads metrics for a Spark application.
+//
+// Description:
+//
+//   General endpoint: `adb.aliyuncs.com`.
+//
+// 	- Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+//
+// 	- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
 //
 // @param request - PreloadSparkAppMetricsRequest
 //
@@ -36130,6 +39075,14 @@ func (client *Client) PreloadSparkAppMetricsWithOptions(request *PreloadSparkApp
 //
 // Preloads metrics for a Spark application.
 //
+// Description:
+//
+//   General endpoint: `adb.aliyuncs.com`.
+//
+// 	- Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+//
+// 	- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+//
 // @param request - PreloadSparkAppMetricsRequest
 //
 // @return PreloadSparkAppMetricsResponse
@@ -36157,6 +39110,10 @@ func (client *Client) ReleaseClusterPublicConnectionWithOptions(request *Release
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.DBClusterId)) {
 		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Engine)) {
+		query["Engine"] = request.Engine
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -36199,6 +39156,14 @@ func (client *Client) ReleaseClusterPublicConnection(request *ReleaseClusterPubl
 // Summary:
 //
 // Renames a Spark template file.
+//
+// Description:
+//
+//   General endpoint: `adb.aliyuncs.com`.
+//
+// 	- Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+//
+// 	- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
 //
 // @param request - RenameSparkTemplateFileRequest
 //
@@ -36250,6 +39215,14 @@ func (client *Client) RenameSparkTemplateFileWithOptions(request *RenameSparkTem
 //
 // Renames a Spark template file.
 //
+// Description:
+//
+//   General endpoint: `adb.aliyuncs.com`.
+//
+// 	- Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+//
+// 	- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+//
 // @param request - RenameSparkTemplateFileRequest
 //
 // @return RenameSparkTemplateFileResponse
@@ -36267,6 +39240,10 @@ func (client *Client) RenameSparkTemplateFile(request *RenameSparkTemplateFileRe
 // Summary:
 //
 // Resets the password of a database account for an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+//
+// Description:
+//
+// For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
 //
 // @param request - ResetAccountPasswordRequest
 //
@@ -36295,6 +39272,10 @@ func (client *Client) ResetAccountPasswordWithOptions(request *ResetAccountPassw
 		query["DBClusterId"] = request.DBClusterId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Engine)) {
+		query["Engine"] = request.Engine
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -36321,6 +39302,10 @@ func (client *Client) ResetAccountPasswordWithOptions(request *ResetAccountPassw
 // Summary:
 //
 // Resets the password of a database account for an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+//
+// Description:
+//
+// For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
 //
 // @param request - ResetAccountPasswordRequest
 //
@@ -36426,11 +39411,11 @@ func (client *Client) SetSparkAppLogRootPath(request *SetSparkAppLogRootPathRequ
 //
 // Description:
 //
-//   General endpoint: `adb.aliyuncs.com`.
-//
-// 	- Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+//   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
 //
 // 	- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+//
+// >  If HTTP status code 409 is returned when you call this operation in the China (Qingdao), China (Shenzhen), China (Guangzhou), or China (Hong Kong) region, contact technical support.
 //
 // @param request - StartSparkSQLEngineRequest
 //
@@ -36500,11 +39485,11 @@ func (client *Client) StartSparkSQLEngineWithOptions(request *StartSparkSQLEngin
 //
 // Description:
 //
-//   General endpoint: `adb.aliyuncs.com`.
-//
-// 	- Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+//   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
 //
 // 	- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+//
+// >  If HTTP status code 409 is returned when you call this operation in the China (Qingdao), China (Shenzhen), China (Guangzhou), or China (Hong Kong) region, contact technical support.
 //
 // @param request - StartSparkSQLEngineRequest
 //
@@ -36628,6 +39613,14 @@ func (client *Client) SubmitSparkApp(request *SubmitSparkAppRequest) (_result *S
 //
 // Submits a Spark log analysis task and queries the analysis results.
 //
+// Description:
+//
+//   General endpoint: `adb.aliyuncs.com`.
+//
+// 	- Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+//
+// 	- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+//
 // @param request - SubmitSparkLogAnalyzeTaskRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -36669,6 +39662,14 @@ func (client *Client) SubmitSparkLogAnalyzeTaskWithOptions(request *SubmitSparkL
 // Summary:
 //
 // Submits a Spark log analysis task and queries the analysis results.
+//
+// Description:
+//
+//   General endpoint: `adb.aliyuncs.com`.
+//
+// 	- Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+//
+// 	- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
 //
 // @param request - SubmitSparkLogAnalyzeTaskRequest
 //
