@@ -234,7 +234,8 @@ type CreateDataLimitRequest struct {
 	// example:
 	//
 	// 2
-	FeatureType *int32 `json:"FeatureType,omitempty" xml:"FeatureType,omitempty"`
+	FeatureType   *int32 `json:"FeatureType,omitempty" xml:"FeatureType,omitempty"`
+	InstantlyScan *bool  `json:"InstantlyScan,omitempty" xml:"InstantlyScan,omitempty"`
 	// The language of the content within the request and response. Default value: **zh_cn**. Valid values:
 	//
 	// 	- **zh_cn**: Chinese
@@ -391,6 +392,11 @@ func (s *CreateDataLimitRequest) SetEventStatus(v int32) *CreateDataLimitRequest
 
 func (s *CreateDataLimitRequest) SetFeatureType(v int32) *CreateDataLimitRequest {
 	s.FeatureType = &v
+	return s
+}
+
+func (s *CreateDataLimitRequest) SetInstantlyScan(v bool) *CreateDataLimitRequest {
+	s.InstantlyScan = &v
 	return s
 }
 
@@ -15663,6 +15669,10 @@ func (client *Client) CreateDataLimitWithOptions(request *CreateDataLimitRequest
 
 	if !tea.BoolValue(util.IsUnset(request.FeatureType)) {
 		query["FeatureType"] = request.FeatureType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstantlyScan)) {
+		query["InstantlyScan"] = request.InstantlyScan
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Lang)) {
