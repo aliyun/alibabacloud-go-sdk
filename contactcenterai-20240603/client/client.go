@@ -11,13 +11,13 @@ import (
 
 type RunCompletionRequest struct {
 	// This parameter is required.
-	Dialogue   *RunCompletionRequestDialogue     `json:"Dialogue,omitempty" xml:"Dialogue,omitempty" type:"Struct"`
-	Dimensions []*RunCompletionRequestDimensions `json:"Dimensions,omitempty" xml:"Dimensions,omitempty" type:"Repeated"`
-	Fields     []*RunCompletionRequestFields     `json:"Fields,omitempty" xml:"Fields,omitempty" type:"Repeated"`
+	Dialogue *RunCompletionRequestDialogue `json:"Dialogue,omitempty" xml:"Dialogue,omitempty" type:"Struct"`
+	Fields   []*RunCompletionRequestFields `json:"Fields,omitempty" xml:"Fields,omitempty" type:"Repeated"`
 	// example:
 	//
 	// ccai-14b
-	ModelCode *string `json:"ModelCode,omitempty" xml:"ModelCode,omitempty"`
+	ModelCode         *string                                `json:"ModelCode,omitempty" xml:"ModelCode,omitempty"`
+	ServiceInspection *RunCompletionRequestServiceInspection `json:"ServiceInspection,omitempty" xml:"ServiceInspection,omitempty" type:"Struct"`
 	// example:
 	//
 	// false
@@ -39,11 +39,6 @@ func (s *RunCompletionRequest) SetDialogue(v *RunCompletionRequestDialogue) *Run
 	return s
 }
 
-func (s *RunCompletionRequest) SetDimensions(v []*RunCompletionRequestDimensions) *RunCompletionRequest {
-	s.Dimensions = v
-	return s
-}
-
 func (s *RunCompletionRequest) SetFields(v []*RunCompletionRequestFields) *RunCompletionRequest {
 	s.Fields = v
 	return s
@@ -51,6 +46,11 @@ func (s *RunCompletionRequest) SetFields(v []*RunCompletionRequestFields) *RunCo
 
 func (s *RunCompletionRequest) SetModelCode(v string) *RunCompletionRequest {
 	s.ModelCode = &v
+	return s
+}
+
+func (s *RunCompletionRequest) SetServiceInspection(v *RunCompletionRequestServiceInspection) *RunCompletionRequest {
+	s.ServiceInspection = v
 	return s
 }
 
@@ -125,37 +125,13 @@ func (s *RunCompletionRequestDialogueSentences) SetText(v string) *RunCompletion
 	return s
 }
 
-type RunCompletionRequestDimensions struct {
-	Desc *string `json:"Desc,omitempty" xml:"Desc,omitempty"`
-	// This parameter is required.
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-}
-
-func (s RunCompletionRequestDimensions) String() string {
-	return tea.Prettify(s)
-}
-
-func (s RunCompletionRequestDimensions) GoString() string {
-	return s.String()
-}
-
-func (s *RunCompletionRequestDimensions) SetDesc(v string) *RunCompletionRequestDimensions {
-	s.Desc = &v
-	return s
-}
-
-func (s *RunCompletionRequestDimensions) SetName(v string) *RunCompletionRequestDimensions {
-	s.Name = &v
-	return s
-}
-
 type RunCompletionRequestFields struct {
 	// example:
 	//
 	// phoneNumber
-	Code  *string   `json:"Code,omitempty" xml:"Code,omitempty"`
-	Desc  *string   `json:"Desc,omitempty" xml:"Desc,omitempty"`
-	Enums []*string `json:"Enums,omitempty" xml:"Enums,omitempty" type:"Repeated"`
+	Code       *string                                 `json:"Code,omitempty" xml:"Code,omitempty"`
+	Desc       *string                                 `json:"Desc,omitempty" xml:"Desc,omitempty"`
+	EnumValues []*RunCompletionRequestFieldsEnumValues `json:"EnumValues,omitempty" xml:"EnumValues,omitempty" type:"Repeated"`
 	// This parameter is required.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
@@ -178,13 +154,90 @@ func (s *RunCompletionRequestFields) SetDesc(v string) *RunCompletionRequestFiel
 	return s
 }
 
-func (s *RunCompletionRequestFields) SetEnums(v []*string) *RunCompletionRequestFields {
-	s.Enums = v
+func (s *RunCompletionRequestFields) SetEnumValues(v []*RunCompletionRequestFieldsEnumValues) *RunCompletionRequestFields {
+	s.EnumValues = v
 	return s
 }
 
 func (s *RunCompletionRequestFields) SetName(v string) *RunCompletionRequestFields {
 	s.Name = &v
+	return s
+}
+
+type RunCompletionRequestFieldsEnumValues struct {
+	Desc *string `json:"Desc,omitempty" xml:"Desc,omitempty"`
+	// This parameter is required.
+	EnumValue *string `json:"EnumValue,omitempty" xml:"EnumValue,omitempty"`
+}
+
+func (s RunCompletionRequestFieldsEnumValues) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunCompletionRequestFieldsEnumValues) GoString() string {
+	return s.String()
+}
+
+func (s *RunCompletionRequestFieldsEnumValues) SetDesc(v string) *RunCompletionRequestFieldsEnumValues {
+	s.Desc = &v
+	return s
+}
+
+func (s *RunCompletionRequestFieldsEnumValues) SetEnumValue(v string) *RunCompletionRequestFieldsEnumValues {
+	s.EnumValue = &v
+	return s
+}
+
+type RunCompletionRequestServiceInspection struct {
+	InspectionContents     []*RunCompletionRequestServiceInspectionInspectionContents `json:"InspectionContents,omitempty" xml:"InspectionContents,omitempty" type:"Repeated"`
+	InspectionIntroduction *string                                                    `json:"InspectionIntroduction,omitempty" xml:"InspectionIntroduction,omitempty"`
+	SceneIntroduction      *string                                                    `json:"SceneIntroduction,omitempty" xml:"SceneIntroduction,omitempty"`
+}
+
+func (s RunCompletionRequestServiceInspection) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunCompletionRequestServiceInspection) GoString() string {
+	return s.String()
+}
+
+func (s *RunCompletionRequestServiceInspection) SetInspectionContents(v []*RunCompletionRequestServiceInspectionInspectionContents) *RunCompletionRequestServiceInspection {
+	s.InspectionContents = v
+	return s
+}
+
+func (s *RunCompletionRequestServiceInspection) SetInspectionIntroduction(v string) *RunCompletionRequestServiceInspection {
+	s.InspectionIntroduction = &v
+	return s
+}
+
+func (s *RunCompletionRequestServiceInspection) SetSceneIntroduction(v string) *RunCompletionRequestServiceInspection {
+	s.SceneIntroduction = &v
+	return s
+}
+
+type RunCompletionRequestServiceInspectionInspectionContents struct {
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// This parameter is required.
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+}
+
+func (s RunCompletionRequestServiceInspectionInspectionContents) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunCompletionRequestServiceInspectionInspectionContents) GoString() string {
+	return s.String()
+}
+
+func (s *RunCompletionRequestServiceInspectionInspectionContents) SetContent(v string) *RunCompletionRequestServiceInspectionInspectionContents {
+	s.Content = &v
+	return s
+}
+
+func (s *RunCompletionRequestServiceInspectionInspectionContents) SetTitle(v string) *RunCompletionRequestServiceInspectionInspectionContents {
+	s.Title = &v
 	return s
 }
 
@@ -443,16 +496,16 @@ func (client *Client) RunCompletionWithOptions(workspaceId *string, appId *strin
 		body["Dialogue"] = request.Dialogue
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.Dimensions)) {
-		body["Dimensions"] = request.Dimensions
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.Fields)) {
 		body["Fields"] = request.Fields
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ModelCode)) {
 		body["ModelCode"] = request.ModelCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceInspection)) {
+		body["ServiceInspection"] = request.ServiceInspection
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Stream)) {
