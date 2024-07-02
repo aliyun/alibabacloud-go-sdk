@@ -497,6 +497,7 @@ func (s *CheckResourceStockResponse) SetBody(v *CheckResourceStockResponseBody) 
 }
 
 type CreateAndroidInstanceGroupRequest struct {
+	Amount *int32 `json:"Amount,omitempty" xml:"Amount,omitempty"`
 	// example:
 	//
 	// false
@@ -562,6 +563,11 @@ func (s CreateAndroidInstanceGroupRequest) String() string {
 
 func (s CreateAndroidInstanceGroupRequest) GoString() string {
 	return s.String()
+}
+
+func (s *CreateAndroidInstanceGroupRequest) SetAmount(v int32) *CreateAndroidInstanceGroupRequest {
+	s.Amount = &v
+	return s
 }
 
 func (s *CreateAndroidInstanceGroupRequest) SetAutoPay(v bool) *CreateAndroidInstanceGroupRequest {
@@ -1701,8 +1707,9 @@ type DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModel struct {
 	// example:
 	//
 	// 8
-	Cpu   *string                                                             `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
-	Disks []*DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModelDisks `json:"Disks,omitempty" xml:"Disks,omitempty" type:"Repeated"`
+	Cpu       *string                                                             `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	Disks     []*DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModelDisks `json:"Disks,omitempty" xml:"Disks,omitempty" type:"Repeated"`
+	ErrorCode *string                                                             `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	// example:
 	//
 	// 2024-02-01 10:56:36
@@ -1809,6 +1816,11 @@ func (s *DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModel) SetCpu(v s
 
 func (s *DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModel) SetDisks(v []*DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModelDisks) *DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModel {
 	s.Disks = v
+	return s
+}
+
+func (s *DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModel) SetErrorCode(v string) *DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModel {
+	s.ErrorCode = &v
 	return s
 }
 
@@ -5075,6 +5087,7 @@ func (s *ModifyPolicyGroupResponse) SetBody(v *ModifyPolicyGroupResponseBody) *M
 
 type RebootAndroidInstancesInGroupRequest struct {
 	AndroidInstanceIds []*string `json:"AndroidInstanceIds,omitempty" xml:"AndroidInstanceIds,omitempty" type:"Repeated"`
+	ForceStop          *bool     `json:"ForceStop,omitempty" xml:"ForceStop,omitempty"`
 }
 
 func (s RebootAndroidInstancesInGroupRequest) String() string {
@@ -5087,6 +5100,11 @@ func (s RebootAndroidInstancesInGroupRequest) GoString() string {
 
 func (s *RebootAndroidInstancesInGroupRequest) SetAndroidInstanceIds(v []*string) *RebootAndroidInstancesInGroupRequest {
 	s.AndroidInstanceIds = v
+	return s
+}
+
+func (s *RebootAndroidInstancesInGroupRequest) SetForceStop(v bool) *RebootAndroidInstancesInGroupRequest {
+	s.ForceStop = &v
 	return s
 }
 
@@ -5814,6 +5832,7 @@ func (s *StartAndroidInstanceResponse) SetBody(v *StartAndroidInstanceResponseBo
 
 type StopAndroidInstanceRequest struct {
 	AndroidInstanceIds []*string `json:"AndroidInstanceIds,omitempty" xml:"AndroidInstanceIds,omitempty" type:"Repeated"`
+	ForceStop          *bool     `json:"ForceStop,omitempty" xml:"ForceStop,omitempty"`
 }
 
 func (s StopAndroidInstanceRequest) String() string {
@@ -5826,6 +5845,11 @@ func (s StopAndroidInstanceRequest) GoString() string {
 
 func (s *StopAndroidInstanceRequest) SetAndroidInstanceIds(v []*string) *StopAndroidInstanceRequest {
 	s.AndroidInstanceIds = v
+	return s
+}
+
+func (s *StopAndroidInstanceRequest) SetForceStop(v bool) *StopAndroidInstanceRequest {
+	s.ForceStop = &v
 	return s
 }
 
@@ -6537,6 +6561,10 @@ func (client *Client) CreateAndroidInstanceGroupWithOptions(request *CreateAndro
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Amount)) {
+		query["Amount"] = request.Amount
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.AutoPay)) {
 		query["AutoPay"] = request.AutoPay
 	}
@@ -7222,7 +7250,7 @@ func (client *Client) DeletePolicyGroup(request *DeletePolicyGroupRequest) (_res
 
 // Summary:
 //
-// 查询安卓实例组
+// 查询实例组
 //
 // @param request - DescribeAndroidInstanceGroupsRequest
 //
@@ -7300,7 +7328,7 @@ func (client *Client) DescribeAndroidInstanceGroupsWithOptions(request *Describe
 
 // Summary:
 //
-// 查询安卓实例组
+// 查询实例组
 //
 // @param request - DescribeAndroidInstanceGroupsRequest
 //
@@ -8802,6 +8830,10 @@ func (client *Client) RebootAndroidInstancesInGroupWithOptions(request *RebootAn
 		query["AndroidInstanceIds"] = request.AndroidInstanceIds
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ForceStop)) {
+		query["ForceStop"] = request.ForceStop
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -9320,6 +9352,10 @@ func (client *Client) StopAndroidInstanceWithOptions(request *StopAndroidInstanc
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AndroidInstanceIds)) {
 		query["AndroidInstanceIds"] = request.AndroidInstanceIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ForceStop)) {
+		query["ForceStop"] = request.ForceStop
 	}
 
 	req := &openapi.OpenApiRequest{
