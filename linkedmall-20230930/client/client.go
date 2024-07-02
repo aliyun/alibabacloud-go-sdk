@@ -733,7 +733,9 @@ type Good struct {
 	// example:
 	//
 	// 1
-	Quantity *int32 `json:"quantity,omitempty" xml:"quantity,omitempty"`
+	Quantity *int32  `json:"quantity,omitempty" xml:"quantity,omitempty"`
+	SkuId    *string `json:"skuId,omitempty" xml:"skuId,omitempty"`
+	SkuTitle *string `json:"skuTitle,omitempty" xml:"skuTitle,omitempty"`
 }
 
 func (s Good) String() string {
@@ -756,6 +758,16 @@ func (s *Good) SetProductId(v string) *Good {
 
 func (s *Good) SetQuantity(v int32) *Good {
 	s.Quantity = &v
+	return s
+}
+
+func (s *Good) SetSkuId(v string) *Good {
+	s.SkuId = &v
+	return s
+}
+
+func (s *Good) SetSkuTitle(v string) *Good {
+	s.SkuTitle = &v
 	return s
 }
 
@@ -2293,6 +2305,10 @@ type ProductSpecValue struct {
 	Value *string `json:"value,omitempty" xml:"value,omitempty"`
 	// example:
 	//
+	// 秘色
+	ValueAlias *string `json:"valueAlias,omitempty" xml:"valueAlias,omitempty"`
+	// example:
+	//
 	// 1000
 	ValueId *int64 `json:"valueId,omitempty" xml:"valueId,omitempty"`
 }
@@ -2307,6 +2323,11 @@ func (s ProductSpecValue) GoString() string {
 
 func (s *ProductSpecValue) SetValue(v string) *ProductSpecValue {
 	s.Value = &v
+	return s
+}
+
+func (s *ProductSpecValue) SetValueAlias(v string) *ProductSpecValue {
+	s.ValueAlias = &v
 	return s
 }
 
@@ -3800,6 +3821,10 @@ type SkuSpec struct {
 	Value *string `json:"value,omitempty" xml:"value,omitempty"`
 	// example:
 	//
+	// 秘色
+	ValueAlias *string `json:"valueAlias,omitempty" xml:"valueAlias,omitempty"`
+	// example:
+	//
 	// 1000
 	ValueId *int64 `json:"valueId,omitempty" xml:"valueId,omitempty"`
 }
@@ -3824,6 +3849,11 @@ func (s *SkuSpec) SetKeyId(v int64) *SkuSpec {
 
 func (s *SkuSpec) SetValue(v string) *SkuSpec {
 	s.Value = &v
+	return s
+}
+
+func (s *SkuSpec) SetValueAlias(v string) *SkuSpec {
+	s.ValueAlias = &v
 	return s
 }
 
