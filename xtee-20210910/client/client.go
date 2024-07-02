@@ -3054,6 +3054,8 @@ func (s *CreateSampleApiRequest) SetServiceList(v string) *CreateSampleApiReques
 }
 
 type CreateSampleApiResponseBody struct {
+	Code    *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// Id of the request
 	//
 	// example:
@@ -3068,6 +3070,16 @@ func (s CreateSampleApiResponseBody) String() string {
 
 func (s CreateSampleApiResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *CreateSampleApiResponseBody) SetCode(v int32) *CreateSampleApiResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CreateSampleApiResponseBody) SetMessage(v string) *CreateSampleApiResponseBody {
+	s.Message = &v
+	return s
 }
 
 func (s *CreateSampleApiResponseBody) SetRequestId(v string) *CreateSampleApiResponseBody {
