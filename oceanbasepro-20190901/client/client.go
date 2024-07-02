@@ -513,6 +513,99 @@ func (s *BatchKillProcessListResponse) SetBody(v *BatchKillProcessListResponseBo
 	return s
 }
 
+type BatchKillSessionListRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ob317v4uif****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 342,354,343
+	SessionList *string `json:"SessionList,omitempty" xml:"SessionList,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// t4louaeei****
+	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+}
+
+func (s BatchKillSessionListRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchKillSessionListRequest) GoString() string {
+	return s.String()
+}
+
+func (s *BatchKillSessionListRequest) SetInstanceId(v string) *BatchKillSessionListRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *BatchKillSessionListRequest) SetSessionList(v string) *BatchKillSessionListRequest {
+	s.SessionList = &v
+	return s
+}
+
+func (s *BatchKillSessionListRequest) SetTenantId(v string) *BatchKillSessionListRequest {
+	s.TenantId = &v
+	return s
+}
+
+type BatchKillSessionListResponseBody struct {
+	// example:
+	//
+	// EE205C00-30E4-****-****-87E3A8A2AA0C
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s BatchKillSessionListResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchKillSessionListResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *BatchKillSessionListResponseBody) SetRequestId(v string) *BatchKillSessionListResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type BatchKillSessionListResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *BatchKillSessionListResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s BatchKillSessionListResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchKillSessionListResponse) GoString() string {
+	return s.String()
+}
+
+func (s *BatchKillSessionListResponse) SetHeaders(v map[string]*string) *BatchKillSessionListResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *BatchKillSessionListResponse) SetStatusCode(v int32) *BatchKillSessionListResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *BatchKillSessionListResponse) SetBody(v *BatchKillSessionListResponseBody) *BatchKillSessionListResponse {
+	s.Body = v
+	return s
+}
+
 type CancelProjectModifyRecordRequest struct {
 	// This parameter is required.
 	//
@@ -31156,6 +31249,123 @@ func (s *DescribeSecurityIpGroupsResponse) SetBody(v *DescribeSecurityIpGroupsRe
 	return s
 }
 
+type DescribeSessionListRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ob317v4uif****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// t4louaeei****
+	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+}
+
+func (s DescribeSessionListRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSessionListRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSessionListRequest) SetInstanceId(v string) *DescribeSessionListRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeSessionListRequest) SetTenantId(v string) *DescribeSessionListRequest {
+	s.TenantId = &v
+	return s
+}
+
+type DescribeSessionListResponseBody struct {
+	Data []*DescribeSessionListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// example:
+	//
+	// EE205C00-30E4-XXXX-XXXX-87E3A8A2AA0C
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeSessionListResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSessionListResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSessionListResponseBody) SetData(v []*DescribeSessionListResponseBodyData) *DescribeSessionListResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DescribeSessionListResponseBody) SetRequestId(v string) *DescribeSessionListResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeSessionListResponseBodyData struct {
+	// example:
+	//
+	// 192.168.1.100:80
+	Host *string `json:"Host,omitempty" xml:"Host,omitempty"`
+	// example:
+	//
+	// d2c90ad0-bc54-410f-bb89-2dcf14aa3c6d
+	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+}
+
+func (s DescribeSessionListResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSessionListResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSessionListResponseBodyData) SetHost(v string) *DescribeSessionListResponseBodyData {
+	s.Host = &v
+	return s
+}
+
+func (s *DescribeSessionListResponseBodyData) SetSessionId(v string) *DescribeSessionListResponseBodyData {
+	s.SessionId = &v
+	return s
+}
+
+type DescribeSessionListResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeSessionListResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeSessionListResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSessionListResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSessionListResponse) SetHeaders(v map[string]*string) *DescribeSessionListResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeSessionListResponse) SetStatusCode(v int32) *DescribeSessionListResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeSessionListResponse) SetBody(v *DescribeSessionListResponseBody) *DescribeSessionListResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeSlowSQLHistoryListRequest struct {
 	// The end time of the time range for querying the execution history of the slow SQL statement.
 	//
@@ -34638,12 +34848,16 @@ func (s *DescribeTenantMetricsResponse) SetBody(v *DescribeTenantMetricsResponse
 }
 
 type DescribeTenantReadableScnRequest struct {
+	// The ID of the OceanBase cluster.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ob317v4uif****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The ID of the tenant.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -34671,7 +34885,10 @@ func (s *DescribeTenantReadableScnRequest) SetTenantId(v string) *DescribeTenant
 }
 
 type DescribeTenantReadableScnResponseBody struct {
+	// The data in the return result of the request.
 	Data *DescribeTenantReadableScnResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 8442BB1E-3171-1192-B9DC-F6F4E53B2673
@@ -34697,6 +34914,8 @@ func (s *DescribeTenantReadableScnResponseBody) SetRequestId(v string) *Describe
 }
 
 type DescribeTenantReadableScnResponseBodyData struct {
+	// The maximum readable timestamp.
+	//
 	// example:
 	//
 	// 1715329164977
@@ -50436,6 +50655,74 @@ func (client *Client) BatchKillProcessList(request *BatchKillProcessListRequest)
 
 // Summary:
 //
+// 异步关闭集群租户的会话信息；关闭oceanbase云服务和业务之间的会话信息
+//
+// @param request - BatchKillSessionListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return BatchKillSessionListResponse
+func (client *Client) BatchKillSessionListWithOptions(request *BatchKillSessionListRequest, runtime *util.RuntimeOptions) (_result *BatchKillSessionListResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SessionList)) {
+		body["SessionList"] = request.SessionList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TenantId)) {
+		body["TenantId"] = request.TenantId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("BatchKillSessionList"),
+		Version:     tea.String("2019-09-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &BatchKillSessionListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 异步关闭集群租户的会话信息；关闭oceanbase云服务和业务之间的会话信息
+//
+// @param request - BatchKillSessionListRequest
+//
+// @return BatchKillSessionListResponse
+func (client *Client) BatchKillSessionList(request *BatchKillSessionListRequest) (_result *BatchKillSessionListResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &BatchKillSessionListResponse{}
+	_body, _err := client.BatchKillSessionListWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 根据记录id取消修改操作 （仅支持处于 PENDING 状态的修改记录）
 //
 // @param request - CancelProjectModifyRecordRequest
@@ -55930,6 +56217,70 @@ func (client *Client) DescribeSecurityIpGroups(request *DescribeSecurityIpGroups
 
 // Summary:
 //
+// 查询集群租户的会话信息；展示oceanbase云服务和业务之间的会话信息
+//
+// @param request - DescribeSessionListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeSessionListResponse
+func (client *Client) DescribeSessionListWithOptions(request *DescribeSessionListRequest, runtime *util.RuntimeOptions) (_result *DescribeSessionListResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TenantId)) {
+		body["TenantId"] = request.TenantId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeSessionList"),
+		Version:     tea.String("2019-09-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeSessionListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询集群租户的会话信息；展示oceanbase云服务和业务之间的会话信息
+//
+// @param request - DescribeSessionListRequest
+//
+// @return DescribeSessionListResponse
+func (client *Client) DescribeSessionList(request *DescribeSessionListRequest) (_result *DescribeSessionListResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeSessionListResponse{}
+	_body, _err := client.DescribeSessionListWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // You can call this operation to query the execution history of an SQL statement by SQL ID that is determined as a slow SQL statement during a specified period of time.
 //
 // @param request - DescribeSlowSQLHistoryListRequest
@@ -56424,7 +56775,7 @@ func (client *Client) DescribeTenantMetrics(request *DescribeTenantMetricsReques
 
 // Summary:
 //
-// 查询租户同步位点信息
+// You can call this operation to query the maximum readable timestamp of a tenant.
 //
 // @param request - DescribeTenantReadableScnRequest
 //
@@ -56470,7 +56821,7 @@ func (client *Client) DescribeTenantReadableScnWithOptions(request *DescribeTena
 
 // Summary:
 //
-// 查询租户同步位点信息
+// You can call this operation to query the maximum readable timestamp of a tenant.
 //
 // @param request - DescribeTenantReadableScnRequest
 //
