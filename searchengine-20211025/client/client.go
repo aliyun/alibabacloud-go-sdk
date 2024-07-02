@@ -12009,6 +12009,155 @@ func (s *ListInstancesResponse) SetBody(v *ListInstancesResponseBody) *ListInsta
 	return s
 }
 
+type ListLogsRequest struct {
+	// example:
+	//
+	// 1710432000
+	EndTime *string `json:"endTime,omitempty" xml:"endTime,omitempty"`
+	// example:
+	//
+	// 1
+	PageNum *string `json:"pageNum,omitempty" xml:"pageNum,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *string `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// example:
+	//
+	// status: 200 AND totalTime > 0.01
+	Query *string `json:"query,omitempty" xml:"query,omitempty"`
+	// example:
+	//
+	// 1706340600
+	StartTime *string `json:"startTime,omitempty" xml:"startTime,omitempty"`
+	// example:
+	//
+	// push
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+}
+
+func (s ListLogsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListLogsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListLogsRequest) SetEndTime(v string) *ListLogsRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *ListLogsRequest) SetPageNum(v string) *ListLogsRequest {
+	s.PageNum = &v
+	return s
+}
+
+func (s *ListLogsRequest) SetPageSize(v string) *ListLogsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListLogsRequest) SetQuery(v string) *ListLogsRequest {
+	s.Query = &v
+	return s
+}
+
+func (s *ListLogsRequest) SetStartTime(v string) *ListLogsRequest {
+	s.StartTime = &v
+	return s
+}
+
+func (s *ListLogsRequest) SetType(v string) *ListLogsRequest {
+	s.Type = &v
+	return s
+}
+
+type ListLogsResponseBody struct {
+	// id of request
+	//
+	// example:
+	//
+	// 022F36C7-9FB4-5D67-BEBC-3D14B0984463
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// ListResult
+	Result *ListLogsResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
+}
+
+func (s ListLogsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListLogsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListLogsResponseBody) SetRequestId(v string) *ListLogsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListLogsResponseBody) SetResult(v *ListLogsResponseBodyResult) *ListLogsResponseBody {
+	s.Result = v
+	return s
+}
+
+type ListLogsResponseBodyResult struct {
+	Result []interface{} `json:"result,omitempty" xml:"result,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 5
+	TotalCount *int32 `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
+}
+
+func (s ListLogsResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListLogsResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *ListLogsResponseBodyResult) SetResult(v []interface{}) *ListLogsResponseBodyResult {
+	s.Result = v
+	return s
+}
+
+func (s *ListLogsResponseBodyResult) SetTotalCount(v int32) *ListLogsResponseBodyResult {
+	s.TotalCount = &v
+	return s
+}
+
+type ListLogsResponse struct {
+	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListLogsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListLogsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListLogsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListLogsResponse) SetHeaders(v map[string]*string) *ListLogsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListLogsResponse) SetStatusCode(v int32) *ListLogsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListLogsResponse) SetBody(v *ListLogsResponseBody) *ListLogsResponse {
+	s.Body = v
+	return s
+}
+
 type ListOnlineConfigsRequest struct {
 	// The name of the domain
 	//
@@ -22444,6 +22593,82 @@ func (client *Client) ListInstances(request *ListInstancesRequest) (_result *Lis
 	headers := make(map[string]*string)
 	_result = &ListInstancesResponse{}
 	_body, _err := client.ListInstancesWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param request - ListLogsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListLogsResponse
+func (client *Client) ListLogsWithOptions(instanceId *string, request *ListLogsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListLogsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["endTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNum)) {
+		query["pageNum"] = request.PageNum
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["pageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Query)) {
+		query["query"] = request.Query
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["startTime"] = request.StartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		query["type"] = request.Type
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListLogs"),
+		Version:     tea.String("2021-10-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/ha3/instances/" + tea.StringValue(openapiutil.GetEncodeParam(instanceId)) + "/logs"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListLogsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - ListLogsRequest
+//
+// @return ListLogsResponse
+func (client *Client) ListLogs(instanceId *string, request *ListLogsRequest) (_result *ListLogsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListLogsResponse{}
+	_body, _err := client.ListLogsWithOptions(instanceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
