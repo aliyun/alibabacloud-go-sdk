@@ -4142,6 +4142,7 @@ type InitFaceVerifyRequest struct {
 	// 123456789
 	UserId                     *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 	ValidityDate               *string `json:"ValidityDate,omitempty" xml:"ValidityDate,omitempty"`
+	VideoEvidence              *string `json:"VideoEvidence,omitempty" xml:"VideoEvidence,omitempty"`
 	VoluntaryCustomizedContent *string `json:"VoluntaryCustomizedContent,omitempty" xml:"VoluntaryCustomizedContent,omitempty"`
 }
 
@@ -4315,6 +4316,11 @@ func (s *InitFaceVerifyRequest) SetUserId(v string) *InitFaceVerifyRequest {
 
 func (s *InitFaceVerifyRequest) SetValidityDate(v string) *InitFaceVerifyRequest {
 	s.ValidityDate = &v
+	return s
+}
+
+func (s *InitFaceVerifyRequest) SetVideoEvidence(v string) *InitFaceVerifyRequest {
+	s.VideoEvidence = &v
 	return s
 }
 
@@ -7589,6 +7595,10 @@ func (client *Client) InitFaceVerifyWithOptions(request *InitFaceVerifyRequest, 
 
 	if !tea.BoolValue(util.IsUnset(request.ValidityDate)) {
 		query["ValidityDate"] = request.ValidityDate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VideoEvidence)) {
+		query["VideoEvidence"] = request.VideoEvidence
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.VoluntaryCustomizedContent)) {
