@@ -2678,7 +2678,11 @@ type CreateARMServerInstancesRequest struct {
 	//
 	// false
 	AutoRenew *bool `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
-	// Specifies whether to use coupons. Valid values: true and false Default value: true.
+	// Specifies whether to use coupons. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false (default)
 	//
 	// example:
 	//
@@ -2706,49 +2710,49 @@ type CreateARMServerInstancesRequest struct {
 	//
 	// yourImage ID
 	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	// The specification of the Android in Container (AIC) instance. Valid values:
-	//
-	// 	- aic.cf53r.c1.np
-	//
-	// 	- aic.cf53r.c2.np
-	//
-	// 	- aic.cf53r.c3.np
-	//
-	// 	- aic.cf53r.c4.np
-	//
-	// 	- aic.cf53r.c5.np
-	//
-	// 	- aic.cf53r.c6.np
-	//
-	// 	- aic.cf53r.c7.np
-	//
-	// 	- aic.cf53r.c8.np
-	//
-	// 	- ens.a6c2
-	//
-	// 	- aic.cf52m1r.c1.np
-	//
-	// 	- aic.cf52m1r.c2.np
-	//
-	// 	- aic.cf52m1r.c3.np
-	//
-	// 	- aic.cf52m1r.c4.np
-	//
-	// 	- aic.cf52m1r.c5.np
-	//
-	// 	- aic.cf53r.c6
-	//
-	// 	- aic.cf52m1r.c6
-	//
-	// 	- aic.cf53r.c7
+	// The specification of the Android in Container (AIC) instance. Examples:
 	//
 	// 	- aic.cf52r.c1.np
 	//
 	// 	- aic.cf52r.c2.np
 	//
-	// 	- aic.cf52r.c3.np
+	// 	- aic.cf53r.c2.np
 	//
 	// 	- aic.cf52r.c4.np
+	//
+	// 	- aic.cf53r.c3.np
+	//
+	// 	- aic.cf52r.c3.np
+	//
+	// 	- aic.cf53r.c1.np
+	//
+	// 	- aic.cf53r.c5.np
+	//
+	// 	- aic.cf53r.c6
+	//
+	// 	- aic.cf53r.c4.np
+	//
+	// 	- aic.cf53r.c6.np
+	//
+	// 	- aic.cf53r.c7.np
+	//
+	// 	- aic.cf52m1r.c5.np
+	//
+	// 	- aic.cf53r.c8.np
+	//
+	// 	- aic.cf53r.c7
+	//
+	// 	- aic.cf52m1r.c2.np
+	//
+	// 	- aic.cf52m1r.c1.np
+	//
+	// 	- aic.cf52m1r.c3.np
+	//
+	// 	- aic.cf52m1r.c4.np
+	//
+	// 	- aic.cf52m1r.c6
+	//
+	// 	- ens.a6c2
 	//
 	// This parameter is required.
 	//
@@ -2762,7 +2766,7 @@ type CreateARMServerInstancesRequest struct {
 	//
 	// TestKeyPairName
 	KeyPairName *string `json:"KeyPairName,omitempty" xml:"KeyPairName,omitempty"`
-	// The name of the namespace.
+	// The namespace.
 	//
 	// example:
 	//
@@ -2806,39 +2810,21 @@ type CreateARMServerInstancesRequest struct {
 	//
 	// Month
 	PeriodUnit *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
-	// The resolution. Valid values:
+	// The resolution. Examples:
 	//
-	// 	- 1920\\*1080
+	// 	- 1920\\*864
 	//
 	// 	- 1080\\*1920
 	//
-	// 	- 1280\\*720
+	// 	- 1920\\*1080
 	//
 	// 	- 720\\*1280
 	//
 	// 	- 2400\\*1080
 	//
-	// 	- 1920\\*864
-	//
 	// 	- 1080\\*2400
-	//
-	// 	- 864\\*1920
-	//
-	// <!---->
-	//
-	// 	- 1920\\*1080
-	//
-	// 	- 1080\\*1920
 	//
 	// 	- 1280\\*720
-	//
-	// 	- 720\\*1280
-	//
-	// 	- 2400\\*1080
-	//
-	// 	- 1920\\*864
-	//
-	// 	- 1080\\*2400
 	//
 	// 	- 864\\*1920
 	//
@@ -2854,7 +2840,7 @@ type CreateARMServerInstancesRequest struct {
 	//
 	// AIC-Server
 	ServerName *string `json:"ServerName,omitempty" xml:"ServerName,omitempty"`
-	// The specification of the ARM server. Valid values:
+	// The specification of the ARM server. Examples:
 	//
 	// 	- cas.cf53r
 	//
@@ -3772,10 +3758,10 @@ func (s *CreateEnsRouteEntryResponse) SetBody(v *CreateEnsRouteEntryResponseBody
 }
 
 type CreateEnsSaleControlRequest struct {
-	// This parameter is required.
 	AliUidAccount *string `json:"AliUidAccount,omitempty" xml:"AliUidAccount,omitempty"`
 	// This parameter is required.
 	CommodityCode *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
+	CustomAccount *string `json:"CustomAccount,omitempty" xml:"CustomAccount,omitempty"`
 	// This parameter is required.
 	SaleControls []*CreateEnsSaleControlRequestSaleControls `json:"SaleControls,omitempty" xml:"SaleControls,omitempty" type:"Repeated"`
 }
@@ -3795,6 +3781,11 @@ func (s *CreateEnsSaleControlRequest) SetAliUidAccount(v string) *CreateEnsSaleC
 
 func (s *CreateEnsSaleControlRequest) SetCommodityCode(v string) *CreateEnsSaleControlRequest {
 	s.CommodityCode = &v
+	return s
+}
+
+func (s *CreateEnsSaleControlRequest) SetCustomAccount(v string) *CreateEnsSaleControlRequest {
+	s.CustomAccount = &v
 	return s
 }
 
@@ -3907,10 +3898,10 @@ func (s *CreateEnsSaleControlRequestSaleControlsModuleValue) SetModuleValue(v []
 }
 
 type CreateEnsSaleControlShrinkRequest struct {
-	// This parameter is required.
 	AliUidAccount *string `json:"AliUidAccount,omitempty" xml:"AliUidAccount,omitempty"`
 	// This parameter is required.
 	CommodityCode *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
+	CustomAccount *string `json:"CustomAccount,omitempty" xml:"CustomAccount,omitempty"`
 	// This parameter is required.
 	SaleControlsShrink *string `json:"SaleControls,omitempty" xml:"SaleControls,omitempty"`
 }
@@ -3930,6 +3921,11 @@ func (s *CreateEnsSaleControlShrinkRequest) SetAliUidAccount(v string) *CreateEn
 
 func (s *CreateEnsSaleControlShrinkRequest) SetCommodityCode(v string) *CreateEnsSaleControlShrinkRequest {
 	s.CommodityCode = &v
+	return s
+}
+
+func (s *CreateEnsSaleControlShrinkRequest) SetCustomAccount(v string) *CreateEnsSaleControlShrinkRequest {
+	s.CustomAccount = &v
 	return s
 }
 
@@ -8813,10 +8809,10 @@ func (s *DeleteEnsRouteEntryResponse) SetBody(v *DeleteEnsRouteEntryResponseBody
 }
 
 type DeleteEnsSaleConditionControlRequest struct {
-	// This parameter is required.
 	AliUidAccount *string `json:"AliUidAccount,omitempty" xml:"AliUidAccount,omitempty"`
 	// This parameter is required.
 	CommodityCode *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
+	CustomAccount *string `json:"CustomAccount,omitempty" xml:"CustomAccount,omitempty"`
 	// This parameter is required.
 	SaleControls []*DeleteEnsSaleConditionControlRequestSaleControls `json:"SaleControls,omitempty" xml:"SaleControls,omitempty" type:"Repeated"`
 }
@@ -8836,6 +8832,11 @@ func (s *DeleteEnsSaleConditionControlRequest) SetAliUidAccount(v string) *Delet
 
 func (s *DeleteEnsSaleConditionControlRequest) SetCommodityCode(v string) *DeleteEnsSaleConditionControlRequest {
 	s.CommodityCode = &v
+	return s
+}
+
+func (s *DeleteEnsSaleConditionControlRequest) SetCustomAccount(v string) *DeleteEnsSaleConditionControlRequest {
+	s.CustomAccount = &v
 	return s
 }
 
@@ -8902,10 +8903,10 @@ func (s *DeleteEnsSaleConditionControlRequestSaleControlsConditionControls) SetC
 }
 
 type DeleteEnsSaleConditionControlShrinkRequest struct {
-	// This parameter is required.
 	AliUidAccount *string `json:"AliUidAccount,omitempty" xml:"AliUidAccount,omitempty"`
 	// This parameter is required.
 	CommodityCode *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
+	CustomAccount *string `json:"CustomAccount,omitempty" xml:"CustomAccount,omitempty"`
 	// This parameter is required.
 	SaleControlsShrink *string `json:"SaleControls,omitempty" xml:"SaleControls,omitempty"`
 }
@@ -8925,6 +8926,11 @@ func (s *DeleteEnsSaleConditionControlShrinkRequest) SetAliUidAccount(v string) 
 
 func (s *DeleteEnsSaleConditionControlShrinkRequest) SetCommodityCode(v string) *DeleteEnsSaleConditionControlShrinkRequest {
 	s.CommodityCode = &v
+	return s
+}
+
+func (s *DeleteEnsSaleConditionControlShrinkRequest) SetCustomAccount(v string) *DeleteEnsSaleConditionControlShrinkRequest {
+	s.CustomAccount = &v
 	return s
 }
 
@@ -8980,10 +8986,10 @@ func (s *DeleteEnsSaleConditionControlResponse) SetBody(v *DeleteEnsSaleConditio
 }
 
 type DeleteEnsSaleControlRequest struct {
-	// This parameter is required.
 	AliUidAccount *string `json:"AliUidAccount,omitempty" xml:"AliUidAccount,omitempty"`
 	// This parameter is required.
 	CommodityCode *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
+	CustomAccount *string `json:"CustomAccount,omitempty" xml:"CustomAccount,omitempty"`
 	// This parameter is required.
 	SaleControls []*DeleteEnsSaleControlRequestSaleControls `json:"SaleControls,omitempty" xml:"SaleControls,omitempty" type:"Repeated"`
 }
@@ -9003,6 +9009,11 @@ func (s *DeleteEnsSaleControlRequest) SetAliUidAccount(v string) *DeleteEnsSaleC
 
 func (s *DeleteEnsSaleControlRequest) SetCommodityCode(v string) *DeleteEnsSaleControlRequest {
 	s.CommodityCode = &v
+	return s
+}
+
+func (s *DeleteEnsSaleControlRequest) SetCustomAccount(v string) *DeleteEnsSaleControlRequest {
+	s.CustomAccount = &v
 	return s
 }
 
@@ -9037,10 +9048,10 @@ func (s *DeleteEnsSaleControlRequestSaleControls) SetOrderType(v string) *Delete
 }
 
 type DeleteEnsSaleControlShrinkRequest struct {
-	// This parameter is required.
 	AliUidAccount *string `json:"AliUidAccount,omitempty" xml:"AliUidAccount,omitempty"`
 	// This parameter is required.
 	CommodityCode *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
+	CustomAccount *string `json:"CustomAccount,omitempty" xml:"CustomAccount,omitempty"`
 	// This parameter is required.
 	SaleControlsShrink *string `json:"SaleControls,omitempty" xml:"SaleControls,omitempty"`
 }
@@ -9060,6 +9071,11 @@ func (s *DeleteEnsSaleControlShrinkRequest) SetAliUidAccount(v string) *DeleteEn
 
 func (s *DeleteEnsSaleControlShrinkRequest) SetCommodityCode(v string) *DeleteEnsSaleControlShrinkRequest {
 	s.CommodityCode = &v
+	return s
+}
+
+func (s *DeleteEnsSaleControlShrinkRequest) SetCustomAccount(v string) *DeleteEnsSaleControlShrinkRequest {
+	s.CustomAccount = &v
 	return s
 }
 
@@ -10171,6 +10187,7 @@ func (s *DeleteSDGShrinkRequest) SetSDGIdShrink(v string) *DeleteSDGShrinkReques
 }
 
 type DeleteSDGResponseBody struct {
+	Data *DeleteSDGResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The request ID.
 	//
 	// example:
@@ -10187,8 +10204,111 @@ func (s DeleteSDGResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *DeleteSDGResponseBody) SetData(v *DeleteSDGResponseBodyData) *DeleteSDGResponseBody {
+	s.Data = v
+	return s
+}
+
 func (s *DeleteSDGResponseBody) SetRequestId(v string) *DeleteSDGResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+type DeleteSDGResponseBodyData struct {
+	Message *string                          `json:"Message,omitempty" xml:"Message,omitempty"`
+	Result  *DeleteSDGResponseBodyDataResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	Success *bool                            `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DeleteSDGResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteSDGResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteSDGResponseBodyData) SetMessage(v string) *DeleteSDGResponseBodyData {
+	s.Message = &v
+	return s
+}
+
+func (s *DeleteSDGResponseBodyData) SetResult(v *DeleteSDGResponseBodyDataResult) *DeleteSDGResponseBodyData {
+	s.Result = v
+	return s
+}
+
+func (s *DeleteSDGResponseBodyData) SetSuccess(v bool) *DeleteSDGResponseBodyData {
+	s.Success = &v
+	return s
+}
+
+type DeleteSDGResponseBodyDataResult struct {
+	FailedCount  *int64                                        `json:"FailedCount,omitempty" xml:"FailedCount,omitempty"`
+	FailedItems  []*DeleteSDGResponseBodyDataResultFailedItems `json:"FailedItems,omitempty" xml:"FailedItems,omitempty" type:"Repeated"`
+	SuccessCount *int64                                        `json:"SuccessCount,omitempty" xml:"SuccessCount,omitempty"`
+}
+
+func (s DeleteSDGResponseBodyDataResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteSDGResponseBodyDataResult) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteSDGResponseBodyDataResult) SetFailedCount(v int64) *DeleteSDGResponseBodyDataResult {
+	s.FailedCount = &v
+	return s
+}
+
+func (s *DeleteSDGResponseBodyDataResult) SetFailedItems(v []*DeleteSDGResponseBodyDataResultFailedItems) *DeleteSDGResponseBodyDataResult {
+	s.FailedItems = v
+	return s
+}
+
+func (s *DeleteSDGResponseBodyDataResult) SetSuccessCount(v int64) *DeleteSDGResponseBodyDataResult {
+	s.SuccessCount = &v
+	return s
+}
+
+type DeleteSDGResponseBodyDataResultFailedItems struct {
+	ErrMessage *string                                         `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
+	Item       *DeleteSDGResponseBodyDataResultFailedItemsItem `json:"Item,omitempty" xml:"Item,omitempty" type:"Struct"`
+}
+
+func (s DeleteSDGResponseBodyDataResultFailedItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteSDGResponseBodyDataResultFailedItems) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteSDGResponseBodyDataResultFailedItems) SetErrMessage(v string) *DeleteSDGResponseBodyDataResultFailedItems {
+	s.ErrMessage = &v
+	return s
+}
+
+func (s *DeleteSDGResponseBodyDataResultFailedItems) SetItem(v *DeleteSDGResponseBodyDataResultFailedItemsItem) *DeleteSDGResponseBodyDataResultFailedItems {
+	s.Item = v
+	return s
+}
+
+type DeleteSDGResponseBodyDataResultFailedItemsItem struct {
+	SdgId *string `json:"SdgId,omitempty" xml:"SdgId,omitempty"`
+}
+
+func (s DeleteSDGResponseBodyDataResultFailedItemsItem) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteSDGResponseBodyDataResultFailedItemsItem) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteSDGResponseBodyDataResultFailedItemsItem) SetSdgId(v string) *DeleteSDGResponseBodyDataResultFailedItemsItem {
+	s.SdgId = &v
 	return s
 }
 
@@ -10605,6 +10725,236 @@ func (s *DeleteVSwitchResponse) SetStatusCode(v int32) *DeleteVSwitchResponse {
 }
 
 func (s *DeleteVSwitchResponse) SetBody(v *DeleteVSwitchResponseBody) *DeleteVSwitchResponse {
+	s.Body = v
+	return s
+}
+
+type DeployInstanceSDGRequest struct {
+	// example:
+	//
+	// shared
+	DeploymentType *string `json:"DeploymentType,omitempty" xml:"DeploymentType,omitempty"`
+	// This parameter is required.
+	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// sdg-xxxx
+	SDGId *string `json:"SDGId,omitempty" xml:"SDGId,omitempty"`
+}
+
+func (s DeployInstanceSDGRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeployInstanceSDGRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeployInstanceSDGRequest) SetDeploymentType(v string) *DeployInstanceSDGRequest {
+	s.DeploymentType = &v
+	return s
+}
+
+func (s *DeployInstanceSDGRequest) SetInstanceIds(v []*string) *DeployInstanceSDGRequest {
+	s.InstanceIds = v
+	return s
+}
+
+func (s *DeployInstanceSDGRequest) SetSDGId(v string) *DeployInstanceSDGRequest {
+	s.SDGId = &v
+	return s
+}
+
+type DeployInstanceSDGShrinkRequest struct {
+	// example:
+	//
+	// shared
+	DeploymentType *string `json:"DeploymentType,omitempty" xml:"DeploymentType,omitempty"`
+	// This parameter is required.
+	InstanceIdsShrink *string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// sdg-xxxx
+	SDGId *string `json:"SDGId,omitempty" xml:"SDGId,omitempty"`
+}
+
+func (s DeployInstanceSDGShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeployInstanceSDGShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeployInstanceSDGShrinkRequest) SetDeploymentType(v string) *DeployInstanceSDGShrinkRequest {
+	s.DeploymentType = &v
+	return s
+}
+
+func (s *DeployInstanceSDGShrinkRequest) SetInstanceIdsShrink(v string) *DeployInstanceSDGShrinkRequest {
+	s.InstanceIdsShrink = &v
+	return s
+}
+
+func (s *DeployInstanceSDGShrinkRequest) SetSDGId(v string) *DeployInstanceSDGShrinkRequest {
+	s.SDGId = &v
+	return s
+}
+
+type DeployInstanceSDGResponseBody struct {
+	Data *DeployInstanceSDGResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// 125B04C7-3D0D-4245-AF96-14E3758E3F06
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeployInstanceSDGResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeployInstanceSDGResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeployInstanceSDGResponseBody) SetData(v *DeployInstanceSDGResponseBodyData) *DeployInstanceSDGResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DeployInstanceSDGResponseBody) SetRequestId(v string) *DeployInstanceSDGResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeployInstanceSDGResponseBodyData struct {
+	// example:
+	//
+	// success
+	Message *string                                  `json:"Message,omitempty" xml:"Message,omitempty"`
+	Result  *DeployInstanceSDGResponseBodyDataResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DeployInstanceSDGResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeployInstanceSDGResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *DeployInstanceSDGResponseBodyData) SetMessage(v string) *DeployInstanceSDGResponseBodyData {
+	s.Message = &v
+	return s
+}
+
+func (s *DeployInstanceSDGResponseBodyData) SetResult(v *DeployInstanceSDGResponseBodyDataResult) *DeployInstanceSDGResponseBodyData {
+	s.Result = v
+	return s
+}
+
+func (s *DeployInstanceSDGResponseBodyData) SetSuccess(v bool) *DeployInstanceSDGResponseBodyData {
+	s.Success = &v
+	return s
+}
+
+type DeployInstanceSDGResponseBodyDataResult struct {
+	// example:
+	//
+	// 0
+	FailedCount *int64                                                `json:"FailedCount,omitempty" xml:"FailedCount,omitempty"`
+	FailedItems []*DeployInstanceSDGResponseBodyDataResultFailedItems `json:"FailedItems,omitempty" xml:"FailedItems,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	SuccessCount *int64 `json:"SuccessCount,omitempty" xml:"SuccessCount,omitempty"`
+}
+
+func (s DeployInstanceSDGResponseBodyDataResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeployInstanceSDGResponseBodyDataResult) GoString() string {
+	return s.String()
+}
+
+func (s *DeployInstanceSDGResponseBodyDataResult) SetFailedCount(v int64) *DeployInstanceSDGResponseBodyDataResult {
+	s.FailedCount = &v
+	return s
+}
+
+func (s *DeployInstanceSDGResponseBodyDataResult) SetFailedItems(v []*DeployInstanceSDGResponseBodyDataResultFailedItems) *DeployInstanceSDGResponseBodyDataResult {
+	s.FailedItems = v
+	return s
+}
+
+func (s *DeployInstanceSDGResponseBodyDataResult) SetSuccessCount(v int64) *DeployInstanceSDGResponseBodyDataResult {
+	s.SuccessCount = &v
+	return s
+}
+
+type DeployInstanceSDGResponseBodyDataResultFailedItems struct {
+	// example:
+	//
+	// sdg not found
+	ErrMessage *string `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
+	// example:
+	//
+	// aic-xxxxx-0
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+}
+
+func (s DeployInstanceSDGResponseBodyDataResultFailedItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeployInstanceSDGResponseBodyDataResultFailedItems) GoString() string {
+	return s.String()
+}
+
+func (s *DeployInstanceSDGResponseBodyDataResultFailedItems) SetErrMessage(v string) *DeployInstanceSDGResponseBodyDataResultFailedItems {
+	s.ErrMessage = &v
+	return s
+}
+
+func (s *DeployInstanceSDGResponseBodyDataResultFailedItems) SetInstanceId(v string) *DeployInstanceSDGResponseBodyDataResultFailedItems {
+	s.InstanceId = &v
+	return s
+}
+
+type DeployInstanceSDGResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeployInstanceSDGResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeployInstanceSDGResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeployInstanceSDGResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeployInstanceSDGResponse) SetHeaders(v map[string]*string) *DeployInstanceSDGResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeployInstanceSDGResponse) SetStatusCode(v int32) *DeployInstanceSDGResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeployInstanceSDGResponse) SetBody(v *DeployInstanceSDGResponseBody) *DeployInstanceSDGResponse {
 	s.Body = v
 	return s
 }
@@ -11940,7 +12290,7 @@ type DescribeApplicationRequest struct {
 	//
 	// v1,v2
 	AppVersions *string `json:"AppVersions,omitempty" xml:"AppVersions,omitempty"`
-	// The region level by which edge resources of the application are collected. The value must be of the enumerated data type. Valid values:
+	// The region level by which edge resources of the application are collected. The value is of the enumeration type. Valid values:
 	//
 	// 	- National: Chinese mainland
 	//
@@ -11964,7 +12314,12 @@ type DescribeApplicationRequest struct {
 	//
 	// {\\"appInfo\\":true,\\"detailStat\\": true, \\"appVersionStat\\": true, \\"districtStat\\":true ,\\"instanceStat\\": true, \\"podCountStat\\": true}
 	OutDetailStatParams *string `json:"OutDetailStatParams,omitempty" xml:"OutDetailStatParams,omitempty"`
-	ResourceSelector    *string `json:"ResourceSelector,omitempty" xml:"ResourceSelector,omitempty"`
+	// The resource filter.
+	//
+	// example:
+	//
+	// [{\\"regionCode\\": \\"cn-wuxi-telecom_unicom_cmcc-3\\",    \\"ispCode\\": \\"telecom\\",    \\"count\\": 2	},{    \\"regionCode\\": \\"cn-shanghai-cmcc\\",    \\"count\\": 4	}]
+	ResourceSelector *string `json:"ResourceSelector,omitempty" xml:"ResourceSelector,omitempty"`
 }
 
 func (s DescribeApplicationRequest) String() string {
@@ -23384,6 +23739,12 @@ type DescribeInstancesRequest struct {
 	//
 	// EnsService
 	InstanceResourceType *string `json:"InstanceResourceType,omitempty" xml:"InstanceResourceType,omitempty"`
+	// The instance type.
+	//
+	// example:
+	//
+	// ens.se1.tiny
+	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
 	// The internal IP address of the instance.
 	//
 	// example:
@@ -23404,7 +23765,7 @@ type DescribeInstancesRequest struct {
 	//
 	// {"InstanceNameSort":"asc","ExpireTimeSort":"asc","CreationTimeSort":"desc"}}
 	OrderByParams *string `json:"OrderByParams,omitempty" xml:"OrderByParams,omitempty"`
-	// The number of the page to return. Pages start from page **1**.
+	// The page number. Pages start from page **1**.
 	//
 	// Default value: **1**.
 	//
@@ -23443,8 +23804,9 @@ type DescribeInstancesRequest struct {
 	// example:
 	//
 	// Running
-	Status *string                         `json:"Status,omitempty" xml:"Status,omitempty"`
-	Tags   []*DescribeInstancesRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The tags that are added to the resource.
+	Tags []*DescribeInstancesRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// The ID of the vSwitch.
 	//
 	// example:
@@ -23501,6 +23863,11 @@ func (s *DescribeInstancesRequest) SetInstanceResourceType(v string) *DescribeIn
 	return s
 }
 
+func (s *DescribeInstancesRequest) SetInstanceType(v string) *DescribeInstancesRequest {
+	s.InstanceType = &v
+	return s
+}
+
 func (s *DescribeInstancesRequest) SetIntranetIp(v string) *DescribeInstancesRequest {
 	s.IntranetIp = &v
 	return s
@@ -23553,8 +23920,16 @@ func (s *DescribeInstancesRequest) SetVSwitchId(v string) *DescribeInstancesRequ
 
 type DescribeInstancesRequestTags struct {
 	// The tag key. Valid values: 1 to 20.
+	//
+	// example:
+	//
+	// tag
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The tag value. Valid values: 1 to 20.
+	//
+	// example:
+	//
+	// 2
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -23633,6 +24008,12 @@ type DescribeInstancesShrinkRequest struct {
 	//
 	// EnsService
 	InstanceResourceType *string `json:"InstanceResourceType,omitempty" xml:"InstanceResourceType,omitempty"`
+	// The instance type.
+	//
+	// example:
+	//
+	// ens.se1.tiny
+	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
 	// The internal IP address of the instance.
 	//
 	// example:
@@ -23653,7 +24034,7 @@ type DescribeInstancesShrinkRequest struct {
 	//
 	// {"InstanceNameSort":"asc","ExpireTimeSort":"asc","CreationTimeSort":"desc"}}
 	OrderByParams *string `json:"OrderByParams,omitempty" xml:"OrderByParams,omitempty"`
-	// The number of the page to return. Pages start from page **1**.
+	// The page number. Pages start from page **1**.
 	//
 	// Default value: **1**.
 	//
@@ -23692,7 +24073,8 @@ type DescribeInstancesShrinkRequest struct {
 	// example:
 	//
 	// Running
-	Status     *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The tags that are added to the resource.
 	TagsShrink *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 	// The ID of the vSwitch.
 	//
@@ -23747,6 +24129,11 @@ func (s *DescribeInstancesShrinkRequest) SetInstanceName(v string) *DescribeInst
 
 func (s *DescribeInstancesShrinkRequest) SetInstanceResourceType(v string) *DescribeInstancesShrinkRequest {
 	s.InstanceResourceType = &v
+	return s
+}
+
+func (s *DescribeInstancesShrinkRequest) SetInstanceType(v string) *DescribeInstancesShrinkRequest {
+	s.InstanceType = &v
 	return s
 }
 
@@ -23891,6 +24278,11 @@ func (s *DescribeInstancesResponseBodyInstances) SetInstance(v []*DescribeInstan
 }
 
 type DescribeInstancesResponseBodyInstancesInstance struct {
+	// The automatic release time of the instance.
+	//
+	// example:
+	//
+	// 2023-06-28T14:38:52Z
 	AutoReleaseTime *string `json:"AutoReleaseTime,omitempty" xml:"AutoReleaseTime,omitempty"`
 	// The number of vCPUs.
 	//
@@ -23930,7 +24322,7 @@ type DescribeInstancesResponseBodyInstancesInstance struct {
 	//
 	// 	- For a Windows instance, the hostname must be 2 to 15 characters in length and can contain letters, digits, and hyphens (-). The hostname cannot contain periods (.) or contain only digits.
 	//
-	// 	- For other operating systems: The hostname must be 2 to 64 characters in length and can contain letters, digits, and hyphens (-). It can be separated by periods (.).
+	// 	- For an instance that runs another operating system such as Linux, the hostname must be 2 to 64 characters in length. You can use periods (.) to separate the hostname into multiple segments. Each segment can contain letters, digits, and hyphens (-).
 	//
 	// example:
 	//
@@ -23950,13 +24342,13 @@ type DescribeInstancesResponseBodyInstancesInstance struct {
 	//
 	// i-instanc****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The name of the virtual private cloud (VPC).
+	// The name of the instance.
 	//
 	// example:
 	//
 	// i-5itef0f28t17bcdw9deu6meub
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// The type of the instance. Valid values:
+	// The category of the instance. Valid values:
 	//
 	// 	- EnsInstance: ENS instances that you purchase.
 	//
@@ -24029,7 +24421,12 @@ type DescribeInstancesResponseBodyInstancesInstance struct {
 	// example:
 	//
 	// ens.sn1.stiny
-	SpecName     *string `json:"SpecName,omitempty" xml:"SpecName,omitempty"`
+	SpecName *string `json:"SpecName,omitempty" xml:"SpecName,omitempty"`
+	// The bidding policy of the preemptible instance.
+	//
+	// example:
+	//
+	// NoSpot
 	SpotStrategy *string `json:"SpotStrategy,omitempty" xml:"SpotStrategy,omitempty"`
 	// The status of the instance. Valid values:
 	//
@@ -24045,7 +24442,8 @@ type DescribeInstancesResponseBodyInstancesInstance struct {
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// Details of the system disk.
 	SystemDisk *DescribeInstancesResponseBodyInstancesInstanceSystemDisk `json:"SystemDisk,omitempty" xml:"SystemDisk,omitempty" type:"Struct"`
-	Tags       *DescribeInstancesResponseBodyInstancesInstanceTags       `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
+	// The tags of the instance.
+	Tags *DescribeInstancesResponseBodyInstancesInstanceTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
 }
 
 func (s DescribeInstancesResponseBodyInstancesInstance) String() string {
@@ -24238,7 +24636,12 @@ type DescribeInstancesResponseBodyInstancesInstanceDataDiskDataDisk struct {
 	//
 	// DiskName
 	DiskName *string `json:"DiskName,omitempty" xml:"DiskName,omitempty"`
-	DiskSize *int32  `json:"DiskSize,omitempty" xml:"DiskSize,omitempty"`
+	// The size of the disk. Unit: GiB.
+	//
+	// example:
+	//
+	// 100
+	DiskSize *int32 `json:"DiskSize,omitempty" xml:"DiskSize,omitempty"`
 	// The size of the disk. Unit: MiB.
 	//
 	// example:
@@ -24369,7 +24772,7 @@ type DescribeInstancesResponseBodyInstancesInstanceNetworkAttributes struct {
 	NetworkId *string `json:"NetworkId,omitempty" xml:"NetworkId,omitempty"`
 	// Details of the private IP addresses.
 	PrivateIpAddress *DescribeInstancesResponseBodyInstancesInstanceNetworkAttributesPrivateIpAddress `json:"PrivateIpAddress,omitempty" xml:"PrivateIpAddress,omitempty" type:"Struct"`
-	// The ID of the vSwitch.
+	// The vSwitch ID.
 	//
 	// example:
 	//
@@ -24717,7 +25120,17 @@ func (s *DescribeInstancesResponseBodyInstancesInstanceTags) SetTags(v []*Descri
 }
 
 type DescribeInstancesResponseBodyInstancesInstanceTagsTags struct {
-	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// The tag key.
+	//
+	// example:
+	//
+	// key1
+	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// The tag value.
+	//
+	// example:
+	//
+	// value1
 	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 
@@ -25509,11 +25922,9 @@ type DescribeLoadBalancerHTTPListenerAttributeResponseBody struct {
 	//
 	// 	- Unit: seconds.
 	//
-	// >
+	// >	- This parameter is returned only if you set HealthCheck to on.
 	//
-	// 	- This parameter is returned only if you set HealthCheck to on.
-	//
-	// 	- If the value of the HealthCheckTimeout parameter is smaller than the value of the HealthCheckInterval parameter, the timeout period specified by the HealthCheckTimeout parameter becomes invalid and the value of the HealthCheckInterval parameter is used as the timeout period.
+	// >	- If the value of the HealthCheckTimeout parameter is smaller than the value of the HealthCheckInterval parameter, the timeout period specified by the HealthCheckTimeout parameter becomes invalid and the value of the HealthCheckInterval parameter is used as the timeout period.
 	//
 	// example:
 	//
@@ -25521,11 +25932,9 @@ type DescribeLoadBalancerHTTPListenerAttributeResponseBody struct {
 	HealthCheckTimeout *int32 `json:"HealthCheckTimeout,omitempty" xml:"HealthCheckTimeout,omitempty"`
 	// The Uniform Resource Identifier (URI) that is used for health checks. The URI must be **1*	- to **80*	- characters in length.
 	//
-	// >
+	// >	- The URL must start with a forward slash (`/`) and contain characters other than forward slashes (`/`).
 	//
-	// 	- The URL must start with a forward slash (`/`) and contain characters other than forward slashes (`/`).
-	//
-	// 	- This parameter is returned only if you set HealthCheck to on.
+	// >	- This parameter is returned only if you set HealthCheck to on.
 	//
 	// example:
 	//
@@ -25625,6 +26034,16 @@ type DescribeLoadBalancerHTTPListenerAttributeResponseBody struct {
 	//
 	// 3
 	UnhealthyThreshold *int32 `json:"UnhealthyThreshold,omitempty" xml:"UnhealthyThreshold,omitempty"`
+	// Specifies whether to use the X-Forwarded-For header to obtain the real IP address of the client. Valid values:
+	//
+	// 	- **on**
+	//
+	// 	- **off*	- (default)
+	//
+	// example:
+	//
+	// on
+	XForwardedFor *string `json:"XForwardedFor,omitempty" xml:"XForwardedFor,omitempty"`
 }
 
 func (s DescribeLoadBalancerHTTPListenerAttributeResponseBody) String() string {
@@ -25737,6 +26156,11 @@ func (s *DescribeLoadBalancerHTTPListenerAttributeResponseBody) SetStatus(v stri
 
 func (s *DescribeLoadBalancerHTTPListenerAttributeResponseBody) SetUnhealthyThreshold(v int32) *DescribeLoadBalancerHTTPListenerAttributeResponseBody {
 	s.UnhealthyThreshold = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerHTTPListenerAttributeResponseBody) SetXForwardedFor(v string) *DescribeLoadBalancerHTTPListenerAttributeResponseBody {
+	s.XForwardedFor = &v
 	return s
 }
 
@@ -33443,6 +33867,362 @@ func (s *DescribeResourceTimelineResponse) SetBody(v *DescribeResourceTimelineRe
 	return s
 }
 
+type DescribeSDGRequest struct {
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	SDGIds   []*string `json:"SDGIds,omitempty" xml:"SDGIds,omitempty" type:"Repeated"`
+}
+
+func (s DescribeSDGRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSDGRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSDGRequest) SetPageNumber(v int32) *DescribeSDGRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeSDGRequest) SetPageSize(v int32) *DescribeSDGRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeSDGRequest) SetSDGIds(v []*string) *DescribeSDGRequest {
+	s.SDGIds = v
+	return s
+}
+
+type DescribeSDGShrinkRequest struct {
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize     *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	SDGIdsShrink *string `json:"SDGIds,omitempty" xml:"SDGIds,omitempty"`
+}
+
+func (s DescribeSDGShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSDGShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSDGShrinkRequest) SetPageNumber(v int32) *DescribeSDGShrinkRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeSDGShrinkRequest) SetPageSize(v int32) *DescribeSDGShrinkRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeSDGShrinkRequest) SetSDGIdsShrink(v string) *DescribeSDGShrinkRequest {
+	s.SDGIdsShrink = &v
+	return s
+}
+
+type DescribeSDGResponseBody struct {
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// F3B261DD-3858-4D3C-877D-303ADF374600
+	RequestId *string                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SDGs      []*DescribeSDGResponseBodySDGs `json:"SDGs,omitempty" xml:"SDGs,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 49
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s DescribeSDGResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSDGResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSDGResponseBody) SetPageNumber(v int32) *DescribeSDGResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeSDGResponseBody) SetPageSize(v int32) *DescribeSDGResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeSDGResponseBody) SetRequestId(v string) *DescribeSDGResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeSDGResponseBody) SetSDGs(v []*DescribeSDGResponseBodySDGs) *DescribeSDGResponseBody {
+	s.SDGs = v
+	return s
+}
+
+func (s *DescribeSDGResponseBody) SetTotalCount(v int32) *DescribeSDGResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type DescribeSDGResponseBodySDGs struct {
+	AvaliableRegionIds []*DescribeSDGResponseBodySDGsAvaliableRegionIds `json:"AvaliableRegionIds,omitempty" xml:"AvaliableRegionIds,omitempty" type:"Repeated"`
+	// example:
+	//
+	// aic-5x20dyeos****
+	CreationInstanceId *string `json:"CreationInstanceId,omitempty" xml:"CreationInstanceId,omitempty"`
+	// example:
+	//
+	// cn-hangzhou-26
+	CreationRegionId *string `json:"CreationRegionId,omitempty" xml:"CreationRegionId,omitempty"`
+	// example:
+	//
+	// 2023-02-27 15:07:21
+	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// sdg-xxxxx
+	ParentSDGId  *string                                    `json:"ParentSDGId,omitempty" xml:"ParentSDGId,omitempty"`
+	PreloadInfos []*DescribeSDGResponseBodySDGsPreloadInfos `json:"PreloadInfos,omitempty" xml:"PreloadInfos,omitempty" type:"Repeated"`
+	// example:
+	//
+	// sdg-30e1fdba7196bc****
+	SDGId *string `json:"SDGId,omitempty" xml:"SDGId,omitempty"`
+	// example:
+	//
+	// 20
+	Size *int64 `json:"Size,omitempty" xml:"Size,omitempty"`
+	// example:
+	//
+	// success
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// 2023-02-27 16:04:39
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+}
+
+func (s DescribeSDGResponseBodySDGs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSDGResponseBodySDGs) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSDGResponseBodySDGs) SetAvaliableRegionIds(v []*DescribeSDGResponseBodySDGsAvaliableRegionIds) *DescribeSDGResponseBodySDGs {
+	s.AvaliableRegionIds = v
+	return s
+}
+
+func (s *DescribeSDGResponseBodySDGs) SetCreationInstanceId(v string) *DescribeSDGResponseBodySDGs {
+	s.CreationInstanceId = &v
+	return s
+}
+
+func (s *DescribeSDGResponseBodySDGs) SetCreationRegionId(v string) *DescribeSDGResponseBodySDGs {
+	s.CreationRegionId = &v
+	return s
+}
+
+func (s *DescribeSDGResponseBodySDGs) SetCreationTime(v string) *DescribeSDGResponseBodySDGs {
+	s.CreationTime = &v
+	return s
+}
+
+func (s *DescribeSDGResponseBodySDGs) SetDescription(v string) *DescribeSDGResponseBodySDGs {
+	s.Description = &v
+	return s
+}
+
+func (s *DescribeSDGResponseBodySDGs) SetParentSDGId(v string) *DescribeSDGResponseBodySDGs {
+	s.ParentSDGId = &v
+	return s
+}
+
+func (s *DescribeSDGResponseBodySDGs) SetPreloadInfos(v []*DescribeSDGResponseBodySDGsPreloadInfos) *DescribeSDGResponseBodySDGs {
+	s.PreloadInfos = v
+	return s
+}
+
+func (s *DescribeSDGResponseBodySDGs) SetSDGId(v string) *DescribeSDGResponseBodySDGs {
+	s.SDGId = &v
+	return s
+}
+
+func (s *DescribeSDGResponseBodySDGs) SetSize(v int64) *DescribeSDGResponseBodySDGs {
+	s.Size = &v
+	return s
+}
+
+func (s *DescribeSDGResponseBodySDGs) SetStatus(v string) *DescribeSDGResponseBodySDGs {
+	s.Status = &v
+	return s
+}
+
+func (s *DescribeSDGResponseBodySDGs) SetUpdateTime(v string) *DescribeSDGResponseBodySDGs {
+	s.UpdateTime = &v
+	return s
+}
+
+type DescribeSDGResponseBodySDGsAvaliableRegionIds struct {
+	// example:
+	//
+	// 2023-02-27 15:13:26
+	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	// example:
+	//
+	// cn-hangzhou-26
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// sp-517qu0tgznrg622he7nf4wd7n
+	SnapshotId *string `json:"SnapshotId,omitempty" xml:"SnapshotId,omitempty"`
+	// example:
+	//
+	// success
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s DescribeSDGResponseBodySDGsAvaliableRegionIds) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSDGResponseBodySDGsAvaliableRegionIds) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSDGResponseBodySDGsAvaliableRegionIds) SetCreationTime(v string) *DescribeSDGResponseBodySDGsAvaliableRegionIds {
+	s.CreationTime = &v
+	return s
+}
+
+func (s *DescribeSDGResponseBodySDGsAvaliableRegionIds) SetRegionId(v string) *DescribeSDGResponseBodySDGsAvaliableRegionIds {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeSDGResponseBodySDGsAvaliableRegionIds) SetSnapshotId(v string) *DescribeSDGResponseBodySDGsAvaliableRegionIds {
+	s.SnapshotId = &v
+	return s
+}
+
+func (s *DescribeSDGResponseBodySDGsAvaliableRegionIds) SetStatus(v string) *DescribeSDGResponseBodySDGsAvaliableRegionIds {
+	s.Status = &v
+	return s
+}
+
+type DescribeSDGResponseBodySDGsPreloadInfos struct {
+	// example:
+	//
+	// 2023-02-16T06:18:40Z
+	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	// example:
+	//
+	// test-20000
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// example:
+	//
+	// 2
+	RedundantNum *int32 `json:"RedundantNum,omitempty" xml:"RedundantNum,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// 2021-01-22T08:17Z
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+}
+
+func (s DescribeSDGResponseBodySDGsPreloadInfos) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSDGResponseBodySDGsPreloadInfos) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSDGResponseBodySDGsPreloadInfos) SetCreationTime(v string) *DescribeSDGResponseBodySDGsPreloadInfos {
+	s.CreationTime = &v
+	return s
+}
+
+func (s *DescribeSDGResponseBodySDGsPreloadInfos) SetNamespace(v string) *DescribeSDGResponseBodySDGsPreloadInfos {
+	s.Namespace = &v
+	return s
+}
+
+func (s *DescribeSDGResponseBodySDGsPreloadInfos) SetRedundantNum(v int32) *DescribeSDGResponseBodySDGsPreloadInfos {
+	s.RedundantNum = &v
+	return s
+}
+
+func (s *DescribeSDGResponseBodySDGsPreloadInfos) SetRegionId(v string) *DescribeSDGResponseBodySDGsPreloadInfos {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeSDGResponseBodySDGsPreloadInfos) SetUpdateTime(v string) *DescribeSDGResponseBodySDGsPreloadInfos {
+	s.UpdateTime = &v
+	return s
+}
+
+type DescribeSDGResponse struct {
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeSDGResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeSDGResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSDGResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSDGResponse) SetHeaders(v map[string]*string) *DescribeSDGResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeSDGResponse) SetStatusCode(v int32) *DescribeSDGResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeSDGResponse) SetBody(v *DescribeSDGResponseBody) *DescribeSDGResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeSDGDeploymentStatusRequest struct {
 	// The number of the page to return. Pages start from page **1**. Default value: **1**.
 	//
@@ -37120,10 +37900,6 @@ type ExportImageRequest struct {
 	// whxyl****
 	OSSBucket *string `json:"OSSBucket,omitempty" xml:"OSSBucket,omitempty"`
 	// The prefix of the object as which you want to store the image in the OSS bucket. The prefix must be 1 to 30 characters in length and can contain digits and letters.
-	//
-	// example:
-	//
-	// dataCenter/972****/
 	OSSPrefix *string `json:"OSSPrefix,omitempty" xml:"OSSPrefix,omitempty"`
 	// The ID of the region.
 	//
@@ -39249,19 +40025,19 @@ func (s *ListApplicationsResponse) SetBody(v *ListApplicationsResponseBody) *Lis
 }
 
 type ListBucketsRequest struct {
-	// The number of the page. Pages start from page 1.
+	// The page number. Pages start from page 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The maximum number of returned buckets. If this parameter is not specified, the default value is 10. The value cannot be greater than 100.
+	// The maximum number of returned buckets. You can leave this parameter empty. The default value is 10. The value cannot be greater than 100.
 	//
 	// example:
 	//
 	// 5
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Specifies the prefix that returned bucket names must contain. If this parameter is not specified, prefix information will not be used as a filter.
+	// The prefix that returned bucket names must contain. If this parameter is not specified, prefix information will not be used as a filter.
 	//
 	// example:
 	//
@@ -39335,6 +40111,12 @@ func (s *ListBucketsResponseBody) SetTotalCount(v int64) *ListBucketsResponseBod
 type ListBucketsResponseBodyBucketInfos struct {
 	// The access control list (ACL) of the bucket.
 	//
+	// 	- **public-read-write**
+	//
+	// 	- **public-read**
+	//
+	// 	- **private*	- (default)
+	//
 	// example:
 	//
 	// private
@@ -39351,7 +40133,7 @@ type ListBucketsResponseBodyBucketInfos struct {
 	//
 	// numb
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	// The time when the bucket was created. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	// The time when the bucket was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
 	//
 	// example:
 	//
@@ -39363,13 +40145,13 @@ type ListBucketsResponseBodyBucketInfos struct {
 	//
 	// cn-dalian-unicom
 	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
-	// Single-node storage. Set the value to sink.
+	// The type of the single-node storage. Set the value to sink.
 	//
 	// example:
 	//
 	// sink
 	LogicalBucketType *string `json:"LogicalBucketType,omitempty" xml:"LogicalBucketType,omitempty"`
-	// The time when the bucket was modified. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	// The time when the bucket was modified. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
 	//
 	// example:
 	//
@@ -39470,7 +40252,7 @@ type ListObjectsRequest struct {
 	//
 	// url
 	EncodingType *string `json:"EncodingType,omitempty" xml:"EncodingType,omitempty"`
-	// The position from which the list operation starts. The name of the object after which the list operation starts. If this parameter is specified, objects whose names are alphabetically greater than the value of Marker are returned. The Marker parameter is used to list the returned objects by page, and its value must be less than 1,024 bytes in length.
+	// The position from which the list operation starts. If this parameter is specified, objects whose names are alphabetically greater than value of Marker are returned. The Marker parameter is used to list the returned objects by page, and its value must be smaller than 1,024 bytes in length.
 	//
 	// Even if the value specified for Marker does not exist in the list during a conditional query, the list starts from the object whose name is alphabetically greater than the value of Marker.
 	//
@@ -39478,9 +40260,7 @@ type ListObjectsRequest struct {
 	//
 	// a
 	Marker *string `json:"Marker,omitempty" xml:"Marker,omitempty"`
-	// The maximum number of objects to return.
-	//
-	// Valid values: 0 to 1000. Default value: 100.
+	// The maximum number of objects to return. Valid values: 0 to 1000. Default value: 100.
 	//
 	// example:
 	//
@@ -39494,9 +40274,7 @@ type ListObjectsRequest struct {
 	//
 	// b
 	Prefix *string `json:"Prefix,omitempty" xml:"Prefix,omitempty"`
-	// The position from which the list operation starts. The name of the object after which the list operation starts. If this parameter is specified, objects whose names are alphabetically greater than the value of StartAfter are returned. The StartAfter parameter is used to list the returned objects by page, and its value must be less than 1,000 bytes in length.
-	//
-	// Even if the value specified for StartAfter does not exist in the list during a conditional query, the list starts from the object whose name is alphabetically greater than the value of StartAfter.
+	// The position from which the list operation starts. If this parameter is specified, objects whose names are alphabetically greater than the value of StartAfter are returned. The StartAfter parameter is used to list the returned objects by page, and its value must be less than 1,000 bytes in length. Even if the value specified for StartAfter does not exist in the list during a conditional query, the list starts from the object whose name is alphabetically greater than the value of StartAfter.
 	//
 	// example:
 	//
@@ -39554,7 +40332,7 @@ type ListObjectsResponseBody struct {
 	//
 	// test
 	BucketName *string `json:"BucketName,omitempty" xml:"BucketName,omitempty"`
-	// The container for all object names between Prefix and the next occurrence of the string specified by a delimiter. A response can contain CommonPrefixes only if you specify a delimiter.
+	// If the delimiter parameter is specified in the request, the response contains CommonPrefixes. Objects whose names contain the same string from the prefix to the next occurrence of the delimiter are grouped as a single result element in CommonPrefixes.
 	CommonPrefixes []*string `json:"CommonPrefixes,omitempty" xml:"CommonPrefixes,omitempty" type:"Repeated"`
 	// The list of object metadata.
 	Contents []*ListObjectsResponseBodyContents `json:"Contents,omitempty" xml:"Contents,omitempty" type:"Repeated"`
@@ -39586,7 +40364,7 @@ type ListObjectsResponseBody struct {
 	//
 	// true
 	IsTruncated *bool `json:"IsTruncated,omitempty" xml:"IsTruncated,omitempty"`
-	// The number of objects returned for this request.
+	// The number of keys returned for this request.
 	//
 	// example:
 	//
@@ -39713,7 +40491,7 @@ type ListObjectsResponseBodyContents struct {
 	//
 	// 	- For an object that is created by calling the PutObject operation, the ETag value of the object is the MD5 hash of the object content.
 	//
-	// 	- If an object is created by using other methods, the ETag value of the object is the UUID of the object content.
+	// 	- For an object that is not created by calling the PutObject operation, the ETag value of the object is the UUID of the object content.
 	//
 	// 	- The ETag of an object can be used to check whether the object content is modified. However, we recommend that you use the MD5 hash of an object rather than the ETag value of the object to verify data integrity.
 	//
@@ -39794,6 +40572,189 @@ func (s *ListObjectsResponse) SetStatusCode(v int32) *ListObjectsResponse {
 }
 
 func (s *ListObjectsResponse) SetBody(v *ListObjectsResponseBody) *ListObjectsResponse {
+	s.Body = v
+	return s
+}
+
+type ListTagResourcesRequest struct {
+	// example:
+	//
+	// 153ba0bbb2be03f84eb48b699f0a4123
+	NextToken  *string   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// instance
+	ResourceType *string                       `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	Tag          []*ListTagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+}
+
+func (s ListTagResourcesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTagResourcesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListTagResourcesRequest) SetNextToken(v string) *ListTagResourcesRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListTagResourcesRequest) SetResourceId(v []*string) *ListTagResourcesRequest {
+	s.ResourceId = v
+	return s
+}
+
+func (s *ListTagResourcesRequest) SetResourceType(v string) *ListTagResourcesRequest {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *ListTagResourcesRequest) SetTag(v []*ListTagResourcesRequestTag) *ListTagResourcesRequest {
+	s.Tag = v
+	return s
+}
+
+type ListTagResourcesRequestTag struct {
+	// example:
+	//
+	// team
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// tagValue
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ListTagResourcesRequestTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTagResourcesRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *ListTagResourcesRequestTag) SetKey(v string) *ListTagResourcesRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *ListTagResourcesRequestTag) SetValue(v string) *ListTagResourcesRequestTag {
+	s.Value = &v
+	return s
+}
+
+type ListTagResourcesResponseBody struct {
+	// example:
+	//
+	// abcfeg368547ccdef
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// example:
+	//
+	// C78D9B61-69D8-5655-A312-A15DA5EA5D5E
+	RequestId    *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TagResources []*ListTagResourcesResponseBodyTagResources `json:"TagResources,omitempty" xml:"TagResources,omitempty" type:"Repeated"`
+}
+
+func (s ListTagResourcesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTagResourcesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListTagResourcesResponseBody) SetNextToken(v string) *ListTagResourcesResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListTagResourcesResponseBody) SetRequestId(v string) *ListTagResourcesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListTagResourcesResponseBody) SetTagResources(v []*ListTagResourcesResponseBodyTagResources) *ListTagResourcesResponseBody {
+	s.TagResources = v
+	return s
+}
+
+type ListTagResourcesResponseBodyTagResources struct {
+	// example:
+	//
+	// i-5zy93g7z1hnkdmav84joxyzgn
+	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// example:
+	//
+	// instance
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// example:
+	//
+	// test_tag_key-2
+	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// example:
+	//
+	// CLUSTER
+	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
+}
+
+func (s ListTagResourcesResponseBodyTagResources) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTagResourcesResponseBodyTagResources) GoString() string {
+	return s.String()
+}
+
+func (s *ListTagResourcesResponseBodyTagResources) SetResourceId(v string) *ListTagResourcesResponseBodyTagResources {
+	s.ResourceId = &v
+	return s
+}
+
+func (s *ListTagResourcesResponseBodyTagResources) SetResourceType(v string) *ListTagResourcesResponseBodyTagResources {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *ListTagResourcesResponseBodyTagResources) SetTagKey(v string) *ListTagResourcesResponseBodyTagResources {
+	s.TagKey = &v
+	return s
+}
+
+func (s *ListTagResourcesResponseBodyTagResources) SetTagValue(v string) *ListTagResourcesResponseBodyTagResources {
+	s.TagValue = &v
+	return s
+}
+
+type ListTagResourcesResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListTagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListTagResourcesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTagResourcesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListTagResourcesResponse) SetHeaders(v map[string]*string) *ListTagResourcesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListTagResourcesResponse) SetStatusCode(v int32) *ListTagResourcesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListTagResourcesResponse) SetBody(v *ListTagResourcesResponseBody) *ListTagResourcesResponse {
 	s.Body = v
 	return s
 }
@@ -41576,6 +42537,252 @@ func (s *ModifyVSwitchAttributeResponse) SetBody(v *ModifyVSwitchAttributeRespon
 	return s
 }
 
+type PreloadRegionSDGRequest struct {
+	// This parameter is required.
+	DestinationRegionIds []*string `json:"DestinationRegionIds,omitempty" xml:"DestinationRegionIds,omitempty" type:"Repeated"`
+	Namespaces           []*string `json:"Namespaces,omitempty" xml:"Namespaces,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2
+	RedundantNum *int32 `json:"RedundantNum,omitempty" xml:"RedundantNum,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// sdg-xxxx
+	SDGId *string `json:"SDGId,omitempty" xml:"SDGId,omitempty"`
+}
+
+func (s PreloadRegionSDGRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PreloadRegionSDGRequest) GoString() string {
+	return s.String()
+}
+
+func (s *PreloadRegionSDGRequest) SetDestinationRegionIds(v []*string) *PreloadRegionSDGRequest {
+	s.DestinationRegionIds = v
+	return s
+}
+
+func (s *PreloadRegionSDGRequest) SetNamespaces(v []*string) *PreloadRegionSDGRequest {
+	s.Namespaces = v
+	return s
+}
+
+func (s *PreloadRegionSDGRequest) SetRedundantNum(v int32) *PreloadRegionSDGRequest {
+	s.RedundantNum = &v
+	return s
+}
+
+func (s *PreloadRegionSDGRequest) SetSDGId(v string) *PreloadRegionSDGRequest {
+	s.SDGId = &v
+	return s
+}
+
+type PreloadRegionSDGShrinkRequest struct {
+	// This parameter is required.
+	DestinationRegionIdsShrink *string `json:"DestinationRegionIds,omitempty" xml:"DestinationRegionIds,omitempty"`
+	NamespacesShrink           *string `json:"Namespaces,omitempty" xml:"Namespaces,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2
+	RedundantNum *int32 `json:"RedundantNum,omitempty" xml:"RedundantNum,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// sdg-xxxx
+	SDGId *string `json:"SDGId,omitempty" xml:"SDGId,omitempty"`
+}
+
+func (s PreloadRegionSDGShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PreloadRegionSDGShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *PreloadRegionSDGShrinkRequest) SetDestinationRegionIdsShrink(v string) *PreloadRegionSDGShrinkRequest {
+	s.DestinationRegionIdsShrink = &v
+	return s
+}
+
+func (s *PreloadRegionSDGShrinkRequest) SetNamespacesShrink(v string) *PreloadRegionSDGShrinkRequest {
+	s.NamespacesShrink = &v
+	return s
+}
+
+func (s *PreloadRegionSDGShrinkRequest) SetRedundantNum(v int32) *PreloadRegionSDGShrinkRequest {
+	s.RedundantNum = &v
+	return s
+}
+
+func (s *PreloadRegionSDGShrinkRequest) SetSDGId(v string) *PreloadRegionSDGShrinkRequest {
+	s.SDGId = &v
+	return s
+}
+
+type PreloadRegionSDGResponseBody struct {
+	Data *PreloadRegionSDGResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// C0003E8B-B930-4F59-ADC0-0E209A9012A8
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s PreloadRegionSDGResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PreloadRegionSDGResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *PreloadRegionSDGResponseBody) SetData(v *PreloadRegionSDGResponseBodyData) *PreloadRegionSDGResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *PreloadRegionSDGResponseBody) SetRequestId(v string) *PreloadRegionSDGResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type PreloadRegionSDGResponseBodyData struct {
+	// example:
+	//
+	// success
+	Message *string                                 `json:"Message,omitempty" xml:"Message,omitempty"`
+	Result  *PreloadRegionSDGResponseBodyDataResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s PreloadRegionSDGResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PreloadRegionSDGResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *PreloadRegionSDGResponseBodyData) SetMessage(v string) *PreloadRegionSDGResponseBodyData {
+	s.Message = &v
+	return s
+}
+
+func (s *PreloadRegionSDGResponseBodyData) SetResult(v *PreloadRegionSDGResponseBodyDataResult) *PreloadRegionSDGResponseBodyData {
+	s.Result = v
+	return s
+}
+
+func (s *PreloadRegionSDGResponseBodyData) SetSuccess(v bool) *PreloadRegionSDGResponseBodyData {
+	s.Success = &v
+	return s
+}
+
+type PreloadRegionSDGResponseBodyDataResult struct {
+	// example:
+	//
+	// 0
+	FailedCount *int64                                               `json:"FailedCount,omitempty" xml:"FailedCount,omitempty"`
+	FailedItems []*PreloadRegionSDGResponseBodyDataResultFailedItems `json:"FailedItems,omitempty" xml:"FailedItems,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	SuccessCount *int64 `json:"SuccessCount,omitempty" xml:"SuccessCount,omitempty"`
+}
+
+func (s PreloadRegionSDGResponseBodyDataResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PreloadRegionSDGResponseBodyDataResult) GoString() string {
+	return s.String()
+}
+
+func (s *PreloadRegionSDGResponseBodyDataResult) SetFailedCount(v int64) *PreloadRegionSDGResponseBodyDataResult {
+	s.FailedCount = &v
+	return s
+}
+
+func (s *PreloadRegionSDGResponseBodyDataResult) SetFailedItems(v []*PreloadRegionSDGResponseBodyDataResultFailedItems) *PreloadRegionSDGResponseBodyDataResult {
+	s.FailedItems = v
+	return s
+}
+
+func (s *PreloadRegionSDGResponseBodyDataResult) SetSuccessCount(v int64) *PreloadRegionSDGResponseBodyDataResult {
+	s.SuccessCount = &v
+	return s
+}
+
+type PreloadRegionSDGResponseBodyDataResultFailedItems struct {
+	// example:
+	//
+	// cn-hangzhou-xxx
+	DestinationRegionId *string `json:"DestinationRegionId,omitempty" xml:"DestinationRegionId,omitempty"`
+	// example:
+	//
+	// region not found
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+}
+
+func (s PreloadRegionSDGResponseBodyDataResultFailedItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PreloadRegionSDGResponseBodyDataResultFailedItems) GoString() string {
+	return s.String()
+}
+
+func (s *PreloadRegionSDGResponseBodyDataResultFailedItems) SetDestinationRegionId(v string) *PreloadRegionSDGResponseBodyDataResultFailedItems {
+	s.DestinationRegionId = &v
+	return s
+}
+
+func (s *PreloadRegionSDGResponseBodyDataResultFailedItems) SetErrorMessage(v string) *PreloadRegionSDGResponseBodyDataResultFailedItems {
+	s.ErrorMessage = &v
+	return s
+}
+
+type PreloadRegionSDGResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *PreloadRegionSDGResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s PreloadRegionSDGResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PreloadRegionSDGResponse) GoString() string {
+	return s.String()
+}
+
+func (s *PreloadRegionSDGResponse) SetHeaders(v map[string]*string) *PreloadRegionSDGResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *PreloadRegionSDGResponse) SetStatusCode(v int32) *PreloadRegionSDGResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *PreloadRegionSDGResponse) SetBody(v *PreloadRegionSDGResponseBody) *PreloadRegionSDGResponse {
+	s.Body = v
+	return s
+}
+
 type PushApplicationDataRequest struct {
 	// The ID of the application.
 	//
@@ -41782,9 +42989,7 @@ type PutBucketRequest struct {
 	//
 	// private
 	BucketAcl *string `json:"BucketAcl,omitempty" xml:"BucketAcl,omitempty"`
-	// The name of the bucket.
-	//
-	// This parameter can contain 3 to 50 characters in length and can contain only lowercase letters, digits, and hyphens (-). The name cannot start or end with a hyphen (-).
+	// The name of the bucket. This parameter can contain 3 to 50 characters in length and can contain only lowercase letters, digits, and hyphens (-). The name cannot start or end with a hyphen (-).
 	//
 	// This parameter is required.
 	//
@@ -41797,7 +43002,8 @@ type PutBucketRequest struct {
 	// example:
 	//
 	// numb
-	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	Comment       *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	DispatchScope *string `json:"DispatchScope,omitempty" xml:"DispatchScope,omitempty"`
 	// The ID of the region where the node is located. If this parameter is not specified, the node is the global default node.
 	//
 	// example:
@@ -41832,6 +43038,11 @@ func (s *PutBucketRequest) SetBucketName(v string) *PutBucketRequest {
 
 func (s *PutBucketRequest) SetComment(v string) *PutBucketRequest {
 	s.Comment = &v
+	return s
+}
+
+func (s *PutBucketRequest) SetDispatchScope(v string) *PutBucketRequest {
+	s.DispatchScope = &v
 	return s
 }
 
@@ -42009,11 +43220,11 @@ type PutBucketLifecycleRequest struct {
 	//
 	// test
 	BucketName *string `json:"BucketName,omitempty" xml:"BucketName,omitempty"`
-	// The expiration data. EOS executes a lifecycle rule for objects that were last updated before the expiration date.
+	// The expiration time. EOS executes a lifecycle rule for objects that were last updated before the expiration time.
 	//
-	// Specify the time that follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time must be in UTC.
+	// Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
 	//
-	// > ExpirationDays and CreateBeforeDate are mutually exclusive.
+	// >  ExpirationDays and CreateBeforeDate are mutually exclusive.
 	//
 	// example:
 	//
@@ -42021,13 +43232,13 @@ type PutBucketLifecycleRequest struct {
 	CreatedBeforeDate *string `json:"CreatedBeforeDate,omitempty" xml:"CreatedBeforeDate,omitempty"`
 	// The number of days from when the objects were last modified to when the lifecycle rule takes effect. The value must be a positive integer that is greater than 0.
 	//
-	// > ExpirationDays and CreateBeforeDate are mutually exclusive.
+	// >  ExpirationDays and CreateBeforeDate are mutually exclusive.
 	//
 	// example:
 	//
 	// 5
 	ExpirationDays *int64 `json:"ExpirationDays,omitempty" xml:"ExpirationDays,omitempty"`
-	// The prefix of a rule. The prefix must be unique.
+	// The prefix of a object name. The prefix must be unique.
 	//
 	// 	- If you specify a prefix, the rule applies only to objects in the bucket that match the prefix.
 	//
@@ -42041,7 +43252,7 @@ type PutBucketLifecycleRequest struct {
 	//
 	// 	- You do not need to configure this parameter when you create a rule. The system automatically generates a unique ID.
 	//
-	// 	- When you update a rule, you need to specify the rule ID, and the rule must exist. Otherwise, an error occurs.
+	// 	- When you update a rule, you need to specify this parameter. Make sure that the rule specified by RuleId exists. Otherwise, an error occurs.
 	//
 	// example:
 	//
@@ -42049,9 +43260,9 @@ type PutBucketLifecycleRequest struct {
 	RuleId *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
 	// The status of the rule. Valid values:
 	//
-	// 	- **Enabled**: The rule is periodically executed.
+	// 	- **Enabled**
 	//
-	// 	- **Disabled**: The rule is ignored.
+	// 	- **Disabled**
 	//
 	// This parameter is required.
 	//
@@ -42774,7 +43985,7 @@ func (s *ReinitInstanceRequest) SetPassword(v string) *ReinitInstanceRequest {
 }
 
 type ReinitInstanceResponseBody struct {
-	// Id of the request
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -43590,6 +44801,205 @@ func (s *RemoveBackendServersResponse) SetStatusCode(v int32) *RemoveBackendServ
 }
 
 func (s *RemoveBackendServersResponse) SetBody(v *RemoveBackendServersResponseBody) *RemoveBackendServersResponse {
+	s.Body = v
+	return s
+}
+
+type RemoveInstanceSDGRequest struct {
+	// This parameter is required.
+	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
+}
+
+func (s RemoveInstanceSDGRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RemoveInstanceSDGRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RemoveInstanceSDGRequest) SetInstanceIds(v []*string) *RemoveInstanceSDGRequest {
+	s.InstanceIds = v
+	return s
+}
+
+type RemoveInstanceSDGShrinkRequest struct {
+	// This parameter is required.
+	InstanceIdsShrink *string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
+}
+
+func (s RemoveInstanceSDGShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RemoveInstanceSDGShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RemoveInstanceSDGShrinkRequest) SetInstanceIdsShrink(v string) *RemoveInstanceSDGShrinkRequest {
+	s.InstanceIdsShrink = &v
+	return s
+}
+
+type RemoveInstanceSDGResponseBody struct {
+	// example:
+	//
+	// 0
+	Code *int32                             `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *RemoveInstanceSDGResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// 125B04C7-3D0D-4245-AF96-14E3758E3F06
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s RemoveInstanceSDGResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RemoveInstanceSDGResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RemoveInstanceSDGResponseBody) SetCode(v int32) *RemoveInstanceSDGResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *RemoveInstanceSDGResponseBody) SetData(v *RemoveInstanceSDGResponseBodyData) *RemoveInstanceSDGResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *RemoveInstanceSDGResponseBody) SetRequestId(v string) *RemoveInstanceSDGResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type RemoveInstanceSDGResponseBodyData struct {
+	// example:
+	//
+	// success
+	Message *string                                  `json:"Message,omitempty" xml:"Message,omitempty"`
+	Result  *RemoveInstanceSDGResponseBodyDataResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s RemoveInstanceSDGResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RemoveInstanceSDGResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *RemoveInstanceSDGResponseBodyData) SetMessage(v string) *RemoveInstanceSDGResponseBodyData {
+	s.Message = &v
+	return s
+}
+
+func (s *RemoveInstanceSDGResponseBodyData) SetResult(v *RemoveInstanceSDGResponseBodyDataResult) *RemoveInstanceSDGResponseBodyData {
+	s.Result = v
+	return s
+}
+
+func (s *RemoveInstanceSDGResponseBodyData) SetSuccess(v bool) *RemoveInstanceSDGResponseBodyData {
+	s.Success = &v
+	return s
+}
+
+type RemoveInstanceSDGResponseBodyDataResult struct {
+	// example:
+	//
+	// 0
+	FailedCount *int64                                                `json:"FailedCount,omitempty" xml:"FailedCount,omitempty"`
+	FailedItems []*RemoveInstanceSDGResponseBodyDataResultFailedItems `json:"FailedItems,omitempty" xml:"FailedItems,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	SuccessCount *int64 `json:"SuccessCount,omitempty" xml:"SuccessCount,omitempty"`
+}
+
+func (s RemoveInstanceSDGResponseBodyDataResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RemoveInstanceSDGResponseBodyDataResult) GoString() string {
+	return s.String()
+}
+
+func (s *RemoveInstanceSDGResponseBodyDataResult) SetFailedCount(v int64) *RemoveInstanceSDGResponseBodyDataResult {
+	s.FailedCount = &v
+	return s
+}
+
+func (s *RemoveInstanceSDGResponseBodyDataResult) SetFailedItems(v []*RemoveInstanceSDGResponseBodyDataResultFailedItems) *RemoveInstanceSDGResponseBodyDataResult {
+	s.FailedItems = v
+	return s
+}
+
+func (s *RemoveInstanceSDGResponseBodyDataResult) SetSuccessCount(v int64) *RemoveInstanceSDGResponseBodyDataResult {
+	s.SuccessCount = &v
+	return s
+}
+
+type RemoveInstanceSDGResponseBodyDataResultFailedItems struct {
+	// example:
+	//
+	// sdg not found
+	ErrMessage *string `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
+	// example:
+	//
+	// aic-xxxxx-0
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+}
+
+func (s RemoveInstanceSDGResponseBodyDataResultFailedItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RemoveInstanceSDGResponseBodyDataResultFailedItems) GoString() string {
+	return s.String()
+}
+
+func (s *RemoveInstanceSDGResponseBodyDataResultFailedItems) SetErrMessage(v string) *RemoveInstanceSDGResponseBodyDataResultFailedItems {
+	s.ErrMessage = &v
+	return s
+}
+
+func (s *RemoveInstanceSDGResponseBodyDataResultFailedItems) SetInstanceId(v string) *RemoveInstanceSDGResponseBodyDataResultFailedItems {
+	s.InstanceId = &v
+	return s
+}
+
+type RemoveInstanceSDGResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RemoveInstanceSDGResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s RemoveInstanceSDGResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RemoveInstanceSDGResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RemoveInstanceSDGResponse) SetHeaders(v map[string]*string) *RemoveInstanceSDGResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RemoveInstanceSDGResponse) SetStatusCode(v int32) *RemoveInstanceSDGResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *RemoveInstanceSDGResponse) SetBody(v *RemoveInstanceSDGResponseBody) *RemoveInstanceSDGResponse {
 	s.Body = v
 	return s
 }
@@ -47523,7 +48933,8 @@ type SetLoadBalancerHTTPListenerAttributeRequest struct {
 	// example:
 	//
 	// 3
-	UnhealthyThreshold *int32 `json:"UnhealthyThreshold,omitempty" xml:"UnhealthyThreshold,omitempty"`
+	UnhealthyThreshold *int32  `json:"UnhealthyThreshold,omitempty" xml:"UnhealthyThreshold,omitempty"`
+	XForwardedFor      *string `json:"XForwardedFor,omitempty" xml:"XForwardedFor,omitempty"`
 }
 
 func (s SetLoadBalancerHTTPListenerAttributeRequest) String() string {
@@ -47611,6 +49022,11 @@ func (s *SetLoadBalancerHTTPListenerAttributeRequest) SetScheduler(v string) *Se
 
 func (s *SetLoadBalancerHTTPListenerAttributeRequest) SetUnhealthyThreshold(v int32) *SetLoadBalancerHTTPListenerAttributeRequest {
 	s.UnhealthyThreshold = &v
+	return s
+}
+
+func (s *SetLoadBalancerHTTPListenerAttributeRequest) SetXForwardedFor(v string) *SetLoadBalancerHTTPListenerAttributeRequest {
+	s.XForwardedFor = &v
 	return s
 }
 
@@ -49491,6 +50907,124 @@ func (s *StopSnatIpForSnatEntryResponse) SetBody(v *StopSnatIpForSnatEntryRespon
 	return s
 }
 
+type TagResourcesRequest struct {
+	// This parameter is required.
+	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// instance
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// This parameter is required.
+	Tag []*TagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+}
+
+func (s TagResourcesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TagResourcesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *TagResourcesRequest) SetResourceId(v []*string) *TagResourcesRequest {
+	s.ResourceId = v
+	return s
+}
+
+func (s *TagResourcesRequest) SetResourceType(v string) *TagResourcesRequest {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *TagResourcesRequest) SetTag(v []*TagResourcesRequestTag) *TagResourcesRequest {
+	s.Tag = v
+	return s
+}
+
+type TagResourcesRequestTag struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// team
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Deep
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s TagResourcesRequestTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TagResourcesRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *TagResourcesRequestTag) SetKey(v string) *TagResourcesRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *TagResourcesRequestTag) SetValue(v string) *TagResourcesRequestTag {
+	s.Value = &v
+	return s
+}
+
+type TagResourcesResponseBody struct {
+	// example:
+	//
+	// C50C391C-533A-55D3-AC97-5D9333DE288F
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s TagResourcesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TagResourcesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *TagResourcesResponseBody) SetRequestId(v string) *TagResourcesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type TagResourcesResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *TagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s TagResourcesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TagResourcesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *TagResourcesResponse) SetHeaders(v map[string]*string) *TagResourcesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *TagResourcesResponse) SetStatusCode(v int32) *TagResourcesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *TagResourcesResponse) SetBody(v *TagResourcesResponseBody) *TagResourcesResponse {
+	s.Body = v
+	return s
+}
+
 type UnAssociateEnsEipAddressRequest struct {
 	// The ID of the EIP.
 	//
@@ -49773,11 +51307,328 @@ func (s *UnassociateNetworkAclResponse) SetBody(v *UnassociateNetworkAclResponse
 	return s
 }
 
-type UpdateEnsSaleControlRequest struct {
+type UnloadRegionSDGRequest struct {
 	// This parameter is required.
+	DestinationRegionIds []*string `json:"DestinationRegionIds,omitempty" xml:"DestinationRegionIds,omitempty" type:"Repeated"`
+	Namespaces           []*string `json:"Namespaces,omitempty" xml:"Namespaces,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// sdg-xxxx
+	SDGId *string `json:"SDGId,omitempty" xml:"SDGId,omitempty"`
+}
+
+func (s UnloadRegionSDGRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UnloadRegionSDGRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UnloadRegionSDGRequest) SetDestinationRegionIds(v []*string) *UnloadRegionSDGRequest {
+	s.DestinationRegionIds = v
+	return s
+}
+
+func (s *UnloadRegionSDGRequest) SetNamespaces(v []*string) *UnloadRegionSDGRequest {
+	s.Namespaces = v
+	return s
+}
+
+func (s *UnloadRegionSDGRequest) SetSDGId(v string) *UnloadRegionSDGRequest {
+	s.SDGId = &v
+	return s
+}
+
+type UnloadRegionSDGShrinkRequest struct {
+	// This parameter is required.
+	DestinationRegionIdsShrink *string `json:"DestinationRegionIds,omitempty" xml:"DestinationRegionIds,omitempty"`
+	NamespacesShrink           *string `json:"Namespaces,omitempty" xml:"Namespaces,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// sdg-xxxx
+	SDGId *string `json:"SDGId,omitempty" xml:"SDGId,omitempty"`
+}
+
+func (s UnloadRegionSDGShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UnloadRegionSDGShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UnloadRegionSDGShrinkRequest) SetDestinationRegionIdsShrink(v string) *UnloadRegionSDGShrinkRequest {
+	s.DestinationRegionIdsShrink = &v
+	return s
+}
+
+func (s *UnloadRegionSDGShrinkRequest) SetNamespacesShrink(v string) *UnloadRegionSDGShrinkRequest {
+	s.NamespacesShrink = &v
+	return s
+}
+
+func (s *UnloadRegionSDGShrinkRequest) SetSDGId(v string) *UnloadRegionSDGShrinkRequest {
+	s.SDGId = &v
+	return s
+}
+
+type UnloadRegionSDGResponseBody struct {
+	Data *UnloadRegionSDGResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// 125B04C7-3D0D-4245-AF96-14E3758E3F06
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UnloadRegionSDGResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UnloadRegionSDGResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UnloadRegionSDGResponseBody) SetData(v *UnloadRegionSDGResponseBodyData) *UnloadRegionSDGResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *UnloadRegionSDGResponseBody) SetRequestId(v string) *UnloadRegionSDGResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UnloadRegionSDGResponseBodyData struct {
+	// example:
+	//
+	// success
+	Message *string                                `json:"Message,omitempty" xml:"Message,omitempty"`
+	Result  *UnloadRegionSDGResponseBodyDataResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s UnloadRegionSDGResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UnloadRegionSDGResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *UnloadRegionSDGResponseBodyData) SetMessage(v string) *UnloadRegionSDGResponseBodyData {
+	s.Message = &v
+	return s
+}
+
+func (s *UnloadRegionSDGResponseBodyData) SetResult(v *UnloadRegionSDGResponseBodyDataResult) *UnloadRegionSDGResponseBodyData {
+	s.Result = v
+	return s
+}
+
+func (s *UnloadRegionSDGResponseBodyData) SetSuccess(v bool) *UnloadRegionSDGResponseBodyData {
+	s.Success = &v
+	return s
+}
+
+type UnloadRegionSDGResponseBodyDataResult struct {
+	// example:
+	//
+	// 0
+	FailedCount *int64                                              `json:"FailedCount,omitempty" xml:"FailedCount,omitempty"`
+	FailedItems []*UnloadRegionSDGResponseBodyDataResultFailedItems `json:"FailedItems,omitempty" xml:"FailedItems,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	SuccessCount *int64 `json:"SuccessCount,omitempty" xml:"SuccessCount,omitempty"`
+}
+
+func (s UnloadRegionSDGResponseBodyDataResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UnloadRegionSDGResponseBodyDataResult) GoString() string {
+	return s.String()
+}
+
+func (s *UnloadRegionSDGResponseBodyDataResult) SetFailedCount(v int64) *UnloadRegionSDGResponseBodyDataResult {
+	s.FailedCount = &v
+	return s
+}
+
+func (s *UnloadRegionSDGResponseBodyDataResult) SetFailedItems(v []*UnloadRegionSDGResponseBodyDataResultFailedItems) *UnloadRegionSDGResponseBodyDataResult {
+	s.FailedItems = v
+	return s
+}
+
+func (s *UnloadRegionSDGResponseBodyDataResult) SetSuccessCount(v int64) *UnloadRegionSDGResponseBodyDataResult {
+	s.SuccessCount = &v
+	return s
+}
+
+type UnloadRegionSDGResponseBodyDataResultFailedItems struct {
+	// example:
+	//
+	// cn-hangzhou-xxx
+	DestinationRegionId *string `json:"DestinationRegionId,omitempty" xml:"DestinationRegionId,omitempty"`
+	// example:
+	//
+	// region not found
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+}
+
+func (s UnloadRegionSDGResponseBodyDataResultFailedItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UnloadRegionSDGResponseBodyDataResultFailedItems) GoString() string {
+	return s.String()
+}
+
+func (s *UnloadRegionSDGResponseBodyDataResultFailedItems) SetDestinationRegionId(v string) *UnloadRegionSDGResponseBodyDataResultFailedItems {
+	s.DestinationRegionId = &v
+	return s
+}
+
+func (s *UnloadRegionSDGResponseBodyDataResultFailedItems) SetErrorMessage(v string) *UnloadRegionSDGResponseBodyDataResultFailedItems {
+	s.ErrorMessage = &v
+	return s
+}
+
+type UnloadRegionSDGResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UnloadRegionSDGResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UnloadRegionSDGResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UnloadRegionSDGResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UnloadRegionSDGResponse) SetHeaders(v map[string]*string) *UnloadRegionSDGResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UnloadRegionSDGResponse) SetStatusCode(v int32) *UnloadRegionSDGResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UnloadRegionSDGResponse) SetBody(v *UnloadRegionSDGResponseBody) *UnloadRegionSDGResponse {
+	s.Body = v
+	return s
+}
+
+type UntagResourcesRequest struct {
+	// example:
+	//
+	// true
+	All *bool `json:"All,omitempty" xml:"All,omitempty"`
+	// This parameter is required.
+	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// instance
+	ResourceType *string   `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	TagKey       []*string `json:"TagKey,omitempty" xml:"TagKey,omitempty" type:"Repeated"`
+}
+
+func (s UntagResourcesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UntagResourcesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UntagResourcesRequest) SetAll(v bool) *UntagResourcesRequest {
+	s.All = &v
+	return s
+}
+
+func (s *UntagResourcesRequest) SetResourceId(v []*string) *UntagResourcesRequest {
+	s.ResourceId = v
+	return s
+}
+
+func (s *UntagResourcesRequest) SetResourceType(v string) *UntagResourcesRequest {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *UntagResourcesRequest) SetTagKey(v []*string) *UntagResourcesRequest {
+	s.TagKey = v
+	return s
+}
+
+type UntagResourcesResponseBody struct {
+	// example:
+	//
+	// 6AB7715D-8B97-5E81-854B-2429F8C7DEF2
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UntagResourcesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UntagResourcesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UntagResourcesResponseBody) SetRequestId(v string) *UntagResourcesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UntagResourcesResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UntagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UntagResourcesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UntagResourcesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UntagResourcesResponse) SetHeaders(v map[string]*string) *UntagResourcesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UntagResourcesResponse) SetStatusCode(v int32) *UntagResourcesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UntagResourcesResponse) SetBody(v *UntagResourcesResponseBody) *UntagResourcesResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateEnsSaleControlRequest struct {
 	AliUidAccount *string `json:"AliUidAccount,omitempty" xml:"AliUidAccount,omitempty"`
 	// This parameter is required.
 	CommodityCode *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
+	CustomAccount *string `json:"CustomAccount,omitempty" xml:"CustomAccount,omitempty"`
 	// This parameter is required.
 	SaleControls []*UpdateEnsSaleControlRequestSaleControls `json:"SaleControls,omitempty" xml:"SaleControls,omitempty" type:"Repeated"`
 }
@@ -49797,6 +51648,11 @@ func (s *UpdateEnsSaleControlRequest) SetAliUidAccount(v string) *UpdateEnsSaleC
 
 func (s *UpdateEnsSaleControlRequest) SetCommodityCode(v string) *UpdateEnsSaleControlRequest {
 	s.CommodityCode = &v
+	return s
+}
+
+func (s *UpdateEnsSaleControlRequest) SetCustomAccount(v string) *UpdateEnsSaleControlRequest {
+	s.CustomAccount = &v
 	return s
 }
 
@@ -49909,10 +51765,10 @@ func (s *UpdateEnsSaleControlRequestSaleControlsModuleValue) SetModuleValue(v []
 }
 
 type UpdateEnsSaleControlShrinkRequest struct {
-	// This parameter is required.
 	AliUidAccount *string `json:"AliUidAccount,omitempty" xml:"AliUidAccount,omitempty"`
 	// This parameter is required.
 	CommodityCode *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
+	CustomAccount *string `json:"CustomAccount,omitempty" xml:"CustomAccount,omitempty"`
 	// This parameter is required.
 	SaleControlsShrink *string `json:"SaleControls,omitempty" xml:"SaleControls,omitempty"`
 }
@@ -49932,6 +51788,11 @@ func (s *UpdateEnsSaleControlShrinkRequest) SetAliUidAccount(v string) *UpdateEn
 
 func (s *UpdateEnsSaleControlShrinkRequest) SetCommodityCode(v string) *UpdateEnsSaleControlShrinkRequest {
 	s.CommodityCode = &v
+	return s
+}
+
+func (s *UpdateEnsSaleControlShrinkRequest) SetCustomAccount(v string) *UpdateEnsSaleControlShrinkRequest {
+	s.CustomAccount = &v
 	return s
 }
 
@@ -50188,7 +52049,12 @@ type UpgradeApplicationResponseBody struct {
 	//
 	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TaskId    *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The task ID. You can use the task ID to query the upgrade progress or status.
+	//
+	// example:
+	//
+	// 6f24a774-6bd5-4026-bb7d-deffb1dad875
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s UpgradeApplicationResponseBody) String() string {
@@ -51858,6 +53724,10 @@ func (client *Client) CreateEnsSaleControlWithOptions(tmpReq *CreateEnsSaleContr
 
 	if !tea.BoolValue(util.IsUnset(request.CommodityCode)) {
 		query["CommodityCode"] = request.CommodityCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CustomAccount)) {
+		query["CustomAccount"] = request.CustomAccount
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SaleControlsShrink)) {
@@ -54394,6 +56264,10 @@ func (client *Client) DeleteEnsSaleConditionControlWithOptions(tmpReq *DeleteEns
 		query["CommodityCode"] = request.CommodityCode
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.CustomAccount)) {
+		query["CustomAccount"] = request.CustomAccount
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.SaleControlsShrink)) {
 		query["SaleControls"] = request.SaleControlsShrink
 	}
@@ -54466,6 +56340,10 @@ func (client *Client) DeleteEnsSaleControlWithOptions(tmpReq *DeleteEnsSaleContr
 
 	if !tea.BoolValue(util.IsUnset(request.CommodityCode)) {
 		query["CommodityCode"] = request.CommodityCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CustomAccount)) {
+		query["CustomAccount"] = request.CustomAccount
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SaleControlsShrink)) {
@@ -55319,7 +57197,11 @@ func (client *Client) DeleteSDGWithOptions(tmpReq *DeleteSDGRequest, runtime *ut
 		request.SDGIdShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SDGId, tea.String("SDGId"), tea.String("json"))
 	}
 
-	query := openapiutil.Query(util.ToMap(request))
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.SDGIdShrink)) {
+		query["SDGId"] = request.SDGIdShrink
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -55328,7 +57210,7 @@ func (client *Client) DeleteSDGWithOptions(tmpReq *DeleteSDGRequest, runtime *ut
 		Version:     tea.String("2017-11-10"),
 		Protocol:    tea.String("HTTPS"),
 		Pathname:    tea.String("/"),
-		Method:      tea.String("GET"),
+		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
 		ReqBodyType: tea.String("formData"),
@@ -55680,6 +57562,80 @@ func (client *Client) DeleteVSwitch(request *DeleteVSwitchRequest) (_result *Del
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteVSwitchResponse{}
 	_body, _err := client.DeleteVSwitchWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 部署SDG到计算实例
+//
+// @param tmpReq - DeployInstanceSDGRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeployInstanceSDGResponse
+func (client *Client) DeployInstanceSDGWithOptions(tmpReq *DeployInstanceSDGRequest, runtime *util.RuntimeOptions) (_result *DeployInstanceSDGResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &DeployInstanceSDGShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.InstanceIds)) {
+		request.InstanceIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.InstanceIds, tea.String("InstanceIds"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DeploymentType)) {
+		query["DeploymentType"] = request.DeploymentType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceIdsShrink)) {
+		query["InstanceIds"] = request.InstanceIdsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SDGId)) {
+		query["SDGId"] = request.SDGId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeployInstanceSDG"),
+		Version:     tea.String("2017-11-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeployInstanceSDGResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 部署SDG到计算实例
+//
+// @param request - DeployInstanceSDGRequest
+//
+// @return DeployInstanceSDGResponse
+func (client *Client) DeployInstanceSDG(request *DeployInstanceSDGRequest) (_result *DeployInstanceSDGResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeployInstanceSDGResponse{}
+	_body, _err := client.DeployInstanceSDGWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -59154,6 +61110,10 @@ func (client *Client) DescribeInstancesWithOptions(tmpReq *DescribeInstancesRequ
 		query["InstanceResourceType"] = request.InstanceResourceType
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.InstanceType)) {
+		query["InstanceType"] = request.InstanceType
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.IntranetIp)) {
 		query["IntranetIp"] = request.IntranetIp
 	}
@@ -59397,9 +61357,7 @@ func (client *Client) DescribeLoadBalancerAttribute(request *DescribeLoadBalance
 //
 // Description:
 //
-// >
-//
-// 	- You can call this operation up to 100 times per second per account.
+//   You can call this operation up to 100 times per second per account.
 //
 // 	- You can call this operation up to 10 times per second per user.
 //
@@ -59451,9 +61409,7 @@ func (client *Client) DescribeLoadBalancerHTTPListenerAttributeWithOptions(reque
 //
 // Description:
 //
-// >
-//
-// 	- You can call this operation up to 100 times per second per account.
+//   You can call this operation up to 100 times per second per account.
 //
 // 	- You can call this operation up to 10 times per second per user.
 //
@@ -60782,6 +62738,80 @@ func (client *Client) DescribeResourceTimeline(request *DescribeResourceTimeline
 
 // Summary:
 //
+// 查询SDG信息
+//
+// @param tmpReq - DescribeSDGRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeSDGResponse
+func (client *Client) DescribeSDGWithOptions(tmpReq *DescribeSDGRequest, runtime *util.RuntimeOptions) (_result *DescribeSDGResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &DescribeSDGShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.SDGIds)) {
+		request.SDGIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SDGIds, tea.String("SDGIds"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SDGIdsShrink)) {
+		query["SDGIds"] = request.SDGIdsShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeSDG"),
+		Version:     tea.String("2017-11-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeSDGResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询SDG信息
+//
+// @param request - DescribeSDGRequest
+//
+// @return DescribeSDGResponse
+func (client *Client) DescribeSDG(request *DescribeSDGRequest) (_result *DescribeSDGResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeSDGResponse{}
+	_body, _err := client.DescribeSDGWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the deployment status of the shared data group (SDG).
 //
 // @param request - DescribeSDGDeploymentStatusRequest
@@ -60860,7 +62890,15 @@ func (client *Client) DescribeSDGsWithOptions(tmpReq *DescribeSDGsRequest, runti
 		request.SDGIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SDGIds, tea.String("SDGIds"), tea.String("json"))
 	}
 
-	query := openapiutil.Query(util.ToMap(request))
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceIdsShrink)) {
+		query["InstanceIds"] = request.InstanceIdsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SDGIdsShrink)) {
+		query["SDGIds"] = request.SDGIdsShrink
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -60869,7 +62907,7 @@ func (client *Client) DescribeSDGsWithOptions(tmpReq *DescribeSDGsRequest, runti
 		Version:     tea.String("2017-11-10"),
 		Protocol:    tea.String("HTTPS"),
 		Pathname:    tea.String("/"),
-		Method:      tea.String("GET"),
+		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
 		ReqBodyType: tea.String("formData"),
@@ -62744,7 +64782,7 @@ func (client *Client) ListBuckets(request *ListBucketsRequest) (_result *ListBuc
 
 // Summary:
 //
-// Lists all objects in a bucket.
+// Queries the information about all objects in a bucket.
 //
 // @param request - ListObjectsRequest
 //
@@ -62810,7 +64848,7 @@ func (client *Client) ListObjectsWithOptions(request *ListObjectsRequest, runtim
 
 // Summary:
 //
-// Lists all objects in a bucket.
+// Queries the information about all objects in a bucket.
 //
 // @param request - ListObjectsRequest
 //
@@ -62819,6 +64857,78 @@ func (client *Client) ListObjects(request *ListObjectsRequest) (_result *ListObj
 	runtime := &util.RuntimeOptions{}
 	_result = &ListObjectsResponse{}
 	_body, _err := client.ListObjectsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询资源标签
+//
+// @param request - ListTagResourcesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListTagResourcesResponse
+func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesRequest, runtime *util.RuntimeOptions) (_result *ListTagResourcesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceId)) {
+		query["ResourceId"] = request.ResourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		query["ResourceType"] = request.ResourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["Tag"] = request.Tag
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListTagResources"),
+		Version:     tea.String("2017-11-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListTagResourcesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询资源标签
+//
+// @param request - ListTagResourcesRequest
+//
+// @return ListTagResourcesResponse
+func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_result *ListTagResourcesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListTagResourcesResponse{}
+	_body, _err := client.ListTagResourcesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -63958,6 +66068,88 @@ func (client *Client) ModifyVSwitchAttribute(request *ModifyVSwitchAttributeRequ
 
 // Summary:
 //
+// 节点及AIC的命名空间粒度预热SDG
+//
+// @param tmpReq - PreloadRegionSDGRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return PreloadRegionSDGResponse
+func (client *Client) PreloadRegionSDGWithOptions(tmpReq *PreloadRegionSDGRequest, runtime *util.RuntimeOptions) (_result *PreloadRegionSDGResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &PreloadRegionSDGShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.DestinationRegionIds)) {
+		request.DestinationRegionIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DestinationRegionIds, tea.String("DestinationRegionIds"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.Namespaces)) {
+		request.NamespacesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Namespaces, tea.String("Namespaces"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DestinationRegionIdsShrink)) {
+		query["DestinationRegionIds"] = request.DestinationRegionIdsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NamespacesShrink)) {
+		query["Namespaces"] = request.NamespacesShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RedundantNum)) {
+		query["RedundantNum"] = request.RedundantNum
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SDGId)) {
+		query["SDGId"] = request.SDGId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("PreloadRegionSDG"),
+		Version:     tea.String("2017-11-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &PreloadRegionSDGResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 节点及AIC的命名空间粒度预热SDG
+//
+// @param request - PreloadRegionSDGRequest
+//
+// @return PreloadRegionSDGResponse
+func (client *Client) PreloadRegionSDG(request *PreloadRegionSDGRequest) (_result *PreloadRegionSDGResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &PreloadRegionSDGResponse{}
+	_body, _err := client.PreloadRegionSDGWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Pushes the business or service data of an application to file servers.
 //
 // @param request - PushApplicationDataRequest
@@ -64053,6 +66245,10 @@ func (client *Client) PutBucketWithOptions(request *PutBucketRequest, runtime *u
 
 	if !tea.BoolValue(util.IsUnset(request.Comment)) {
 		body["Comment"] = request.Comment
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DispatchScope)) {
+		body["DispatchScope"] = request.DispatchScope
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.EnsRegionId)) {
@@ -64174,9 +66370,9 @@ func (client *Client) PutBucketAcl(request *PutBucketAclRequest) (_result *PutBu
 //
 // Description:
 //
-// - You can configure up to 1000 rules.
+//   You can configure up to 1,000 rules.
 //
-// - If an object meets multiple rules, the rule that has the earliest expiration time prevails.
+// 	- If an object meets multiple rules, the rule that has the earliest expiration time prevails.
 //
 // @param request - PutBucketLifecycleRequest
 //
@@ -64246,9 +66442,9 @@ func (client *Client) PutBucketLifecycleWithOptions(request *PutBucketLifecycleR
 //
 // Description:
 //
-// - You can configure up to 1000 rules.
+//   You can configure up to 1,000 rules.
 //
-// - If an object meets multiple rules, the rule that has the earliest expiration time prevails.
+// 	- If an object meets multiple rules, the rule that has the earliest expiration time prevails.
 //
 // @param request - PutBucketLifecycleRequest
 //
@@ -65173,6 +67369,72 @@ func (client *Client) RemoveBackendServers(request *RemoveBackendServersRequest)
 	runtime := &util.RuntimeOptions{}
 	_result = &RemoveBackendServersResponse{}
 	_body, _err := client.RemoveBackendServersWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 移除计算实例上已挂载的SDG
+//
+// @param tmpReq - RemoveInstanceSDGRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RemoveInstanceSDGResponse
+func (client *Client) RemoveInstanceSDGWithOptions(tmpReq *RemoveInstanceSDGRequest, runtime *util.RuntimeOptions) (_result *RemoveInstanceSDGResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &RemoveInstanceSDGShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.InstanceIds)) {
+		request.InstanceIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.InstanceIds, tea.String("InstanceIds"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceIdsShrink)) {
+		query["InstanceIds"] = request.InstanceIdsShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RemoveInstanceSDG"),
+		Version:     tea.String("2017-11-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &RemoveInstanceSDGResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 移除计算实例上已挂载的SDG
+//
+// @param request - RemoveInstanceSDGRequest
+//
+// @return RemoveInstanceSDGResponse
+func (client *Client) RemoveInstanceSDG(request *RemoveInstanceSDGRequest) (_result *RemoveInstanceSDGResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &RemoveInstanceSDGResponse{}
+	_body, _err := client.RemoveInstanceSDGWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -66785,6 +69047,10 @@ func (client *Client) SetLoadBalancerHTTPListenerAttributeWithOptions(request *S
 		query["UnhealthyThreshold"] = request.UnhealthyThreshold
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.XForwardedFor)) {
+		query["XForwardedFor"] = request.XForwardedFor
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -67994,6 +70260,74 @@ func (client *Client) StopSnatIpForSnatEntry(request *StopSnatIpForSnatEntryRequ
 
 // Summary:
 //
+// 资源打用户标签
+//
+// @param request - TagResourcesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return TagResourcesResponse
+func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runtime *util.RuntimeOptions) (_result *TagResourcesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ResourceId)) {
+		query["ResourceId"] = request.ResourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		query["ResourceType"] = request.ResourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["Tag"] = request.Tag
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("TagResources"),
+		Version:     tea.String("2017-11-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &TagResourcesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 资源打用户标签
+//
+// @param request - TagResourcesRequest
+//
+// @return TagResourcesResponse
+func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagResourcesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &TagResourcesResponse{}
+	_body, _err := client.TagResourcesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Disassociates an elastic IP address (EIP) from an instance.
 //
 // @param request - UnAssociateEnsEipAddressRequest
@@ -68182,6 +70516,156 @@ func (client *Client) UnassociateNetworkAcl(request *UnassociateNetworkAclReques
 
 // Summary:
 //
+// 释放预热的节点及AIC的命名空间粒度SDG
+//
+// @param tmpReq - UnloadRegionSDGRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UnloadRegionSDGResponse
+func (client *Client) UnloadRegionSDGWithOptions(tmpReq *UnloadRegionSDGRequest, runtime *util.RuntimeOptions) (_result *UnloadRegionSDGResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &UnloadRegionSDGShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.DestinationRegionIds)) {
+		request.DestinationRegionIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DestinationRegionIds, tea.String("DestinationRegionIds"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.Namespaces)) {
+		request.NamespacesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Namespaces, tea.String("Namespaces"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DestinationRegionIdsShrink)) {
+		query["DestinationRegionIds"] = request.DestinationRegionIdsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NamespacesShrink)) {
+		query["Namespaces"] = request.NamespacesShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SDGId)) {
+		query["SDGId"] = request.SDGId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UnloadRegionSDG"),
+		Version:     tea.String("2017-11-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UnloadRegionSDGResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 释放预热的节点及AIC的命名空间粒度SDG
+//
+// @param request - UnloadRegionSDGRequest
+//
+// @return UnloadRegionSDGResponse
+func (client *Client) UnloadRegionSDG(request *UnloadRegionSDGRequest) (_result *UnloadRegionSDGResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UnloadRegionSDGResponse{}
+	_body, _err := client.UnloadRegionSDGWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 资源去除用户标签
+//
+// @param request - UntagResourcesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UntagResourcesResponse
+func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, runtime *util.RuntimeOptions) (_result *UntagResourcesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.All)) {
+		query["All"] = request.All
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceId)) {
+		query["ResourceId"] = request.ResourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		query["ResourceType"] = request.ResourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TagKey)) {
+		query["TagKey"] = request.TagKey
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UntagResources"),
+		Version:     tea.String("2017-11-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UntagResourcesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 资源去除用户标签
+//
+// @param request - UntagResourcesRequest
+//
+// @return UntagResourcesResponse
+func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *UntagResourcesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UntagResourcesResponse{}
+	_body, _err := client.UntagResourcesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 修改售卖约束
 //
 // @param tmpReq - UpdateEnsSaleControlRequest
@@ -68207,6 +70691,10 @@ func (client *Client) UpdateEnsSaleControlWithOptions(tmpReq *UpdateEnsSaleContr
 
 	if !tea.BoolValue(util.IsUnset(request.CommodityCode)) {
 		query["CommodityCode"] = request.CommodityCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CustomAccount)) {
+		query["CustomAccount"] = request.CustomAccount
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SaleControlsShrink)) {
