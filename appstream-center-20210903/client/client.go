@@ -1,7 +1,4 @@
 // This file is auto-generated, don't edit it. Thanks.
-/**
- *
- */
 package client
 
 import (
@@ -13,26 +10,79 @@ import (
 )
 
 type GetConnectionTicketRequest struct {
-	AppId                *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	AppInstanceGroupId   *string `json:"AppInstanceGroupId,omitempty" xml:"AppInstanceGroupId,omitempty"`
-	AppInstanceId        *string `json:"AppInstanceId,omitempty" xml:"AppInstanceId,omitempty"`
-	AppVersion           *string `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
-	BizRegionId          *string `json:"BizRegionId,omitempty" xml:"BizRegionId,omitempty"`
-	ClientId             *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
-	ClientIp             *string `json:"ClientIp,omitempty" xml:"ClientIp,omitempty"`
-	ClientOS             *string `json:"ClientOS,omitempty" xml:"ClientOS,omitempty"`
+	// example:
+	//
+	// ca-etn4zizgaezo9gis9
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// example:
+	//
+	// aig-bw1o1gcwvd3e1ipeu
+	AppInstanceGroupId *string `json:"AppInstanceGroupId,omitempty" xml:"AppInstanceGroupId,omitempty"`
+	AppInstanceId      *string `json:"AppInstanceId,omitempty" xml:"AppInstanceId,omitempty"`
+	// example:
+	//
+	// 1.0.0.1
+	AppVersion *string `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	BizRegionId *string `json:"BizRegionId,omitempty" xml:"BizRegionId,omitempty"`
+	// example:
+	//
+	// f2463208-ec89-4309-8e8c-8b17acdcab93
+	ClientId *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
+	// example:
+	//
+	// 22.21.2.21
+	ClientIp *string `json:"ClientIp,omitempty" xml:"ClientIp,omitempty"`
+	// example:
+	//
+	// windows_"Windows 10 Enterprise LTSC 2019" 10.0 (Build 17763)
+	ClientOS *string `json:"ClientOS,omitempty" xml:"ClientOS,omitempty"`
+	// example:
+	//
+	// 2.0.1-D-20211008.101607
 	ClientVersion        *string `json:"ClientVersion,omitempty" xml:"ClientVersion,omitempty"`
 	ConnectionProperties *string `json:"ConnectionProperties,omitempty" xml:"ConnectionProperties,omitempty"`
-	EndUserId            *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
-	LoginRegionId        *string `json:"LoginRegionId,omitempty" xml:"LoginRegionId,omitempty"`
-	LoginToken           *string `json:"LoginToken,omitempty" xml:"LoginToken,omitempty"`
-	Param                *string `json:"Param,omitempty" xml:"Param,omitempty"`
-	ProductType          *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
-	ResourceId           *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	SessionId            *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
-	TaskId               *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	TenantId             *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
-	Uuid                 *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
+	// example:
+	//
+	// test.test
+	EndUserId *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	LoginRegionId *string `json:"LoginRegionId,omitempty" xml:"LoginRegionId,omitempty"`
+	// example:
+	//
+	// v1c4e2ef03d620f0f6cb41634196161219054e12d8aa5a13deb9ed14eebb76d674559115ad2e27a57f6820c1fd33e0ca36
+	LoginToken *string `json:"LoginToken,omitempty" xml:"LoginToken,omitempty"`
+	// example:
+	//
+	// /home/test/test.jpg
+	Param *string `json:"Param,omitempty" xml:"Param,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// CloudApp
+	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
+	ResourceId  *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// example:
+	//
+	// 09e2b2e6-3181-4c84-9539-6fc9f1c3199e
+	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	// example:
+	//
+	// 6f41731b-7091-4954-80c8-1d1e0b3ebb48
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// example:
+	//
+	// 1126819517152528
+	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// example:
+	//
+	// A8B35215993FBF283F28D617975204C4
+	Uuid *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
 }
 
 func (s GetConnectionTicketRequest) String() string {
@@ -144,22 +194,59 @@ func (s *GetConnectionTicketRequest) SetUuid(v string) *GetConnectionTicketReque
 }
 
 type GetConnectionTicketResponseBody struct {
-	AppInstanceGroupId      *string                                `json:"AppInstanceGroupId,omitempty" xml:"AppInstanceGroupId,omitempty"`
-	AppInstanceId           *string                                `json:"AppInstanceId,omitempty" xml:"AppInstanceId,omitempty"`
-	AppInstancePersistentId *string                                `json:"AppInstancePersistentId,omitempty" xml:"AppInstancePersistentId,omitempty"`
-	Code                    *string                                `json:"Code,omitempty" xml:"Code,omitempty"`
-	LoginToken              *string                                `json:"LoginToken,omitempty" xml:"LoginToken,omitempty"`
-	Message                 *string                                `json:"Message,omitempty" xml:"Message,omitempty"`
-	OsType                  *string                                `json:"OsType,omitempty" xml:"OsType,omitempty"`
-	Policy                  *GetConnectionTicketResponseBodyPolicy `json:"Policy,omitempty" xml:"Policy,omitempty" type:"Struct"`
-	RegionId                *string                                `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// aig-53fvrq1oanz6cxzi3
+	AppInstanceGroupId *string `json:"AppInstanceGroupId,omitempty" xml:"AppInstanceGroupId,omitempty"`
+	// example:
+	//
+	// ai-gc1gemx6vpa6vlync
+	AppInstanceId           *string `json:"AppInstanceId,omitempty" xml:"AppInstanceId,omitempty"`
+	AppInstancePersistentId *string `json:"AppInstancePersistentId,omitempty" xml:"AppInstancePersistentId,omitempty"`
+	// example:
+	//
+	// InternalError.TicketGenInternalError
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// v15418e331d8d068c29411646996786785303b8f61fd880aeaa50c5b584443cd9e65cc7eec72acdaad0a844666a3b26dab
+	LoginToken *string `json:"LoginToken,omitempty" xml:"LoginToken,omitempty"`
+	// example:
+	//
+	// reenter app instance failed
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// Windows
+	OsType *string                                `json:"OsType,omitempty" xml:"OsType,omitempty"`
+	Policy *GetConnectionTicketResponseBodyPolicy `json:"Policy,omitempty" xml:"Policy,omitempty" type:"Struct"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// Id of the request
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	RetryTimes *int32  `json:"RetryTimes,omitempty" xml:"RetryTimes,omitempty"`
-	TaskId     *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	//
+	// example:
+	//
+	// AD2D0761-1FE5-549D-B169-D3F8D19C6CDD
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 3
+	RetryTimes *int32 `json:"RetryTimes,omitempty" xml:"RetryTimes,omitempty"`
+	// example:
+	//
+	// f3d1b31c-605e-4d04-a896-015fc9fc03b4
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// example:
+	//
+	// Running
 	TaskStatus *string `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
 	TenantId   *int64  `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
-	Ticket     *string `json:"Ticket,omitempty" xml:"Ticket,omitempty"`
+	// example:
+	//
+	// n7n9bqZlPrvgUOPSJzfdb$89jWwlVISgrchpY0tOfVYGBBcdoPoH39PVHK63fQTEM14kzajQdWAnHTnSicc35W_eI2LbTSGKquKukwcU7opRwmInhtQH*mlmsZQ3ByOLYVmqI*1hFESs0
+	Ticket *string `json:"Ticket,omitempty" xml:"Ticket,omitempty"`
 }
 
 func (s GetConnectionTicketResponseBody) String() string {
@@ -275,9 +362,9 @@ func (s *GetConnectionTicketResponseBodyPolicy) SetResolutionWidth(v int32) *Get
 }
 
 type GetConnectionTicketResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetConnectionTicketResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetConnectionTicketResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetConnectionTicketResponse) String() string {
@@ -541,9 +628,9 @@ func (s *ListLFUAppResponseBodyData) SetRequestId(v string) *ListLFUAppResponseB
 }
 
 type ListLFUAppResponse struct {
-	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListLFUAppResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListLFUAppResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListLFUAppResponse) String() string {
@@ -570,21 +657,60 @@ func (s *ListLFUAppResponse) SetBody(v *ListLFUAppResponseBody) *ListLFUAppRespo
 }
 
 type ListPublishedAppInfoRequest struct {
-	AppName       *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	BizRegionId   *string `json:"BizRegionId,omitempty" xml:"BizRegionId,omitempty"`
-	CategoryId    *int64  `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
-	CategoryType  *int64  `json:"CategoryType,omitempty" xml:"CategoryType,omitempty"`
-	ClientId      *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
-	ClientIp      *string `json:"ClientIp,omitempty" xml:"ClientIp,omitempty"`
-	ClientOS      *string `json:"ClientOS,omitempty" xml:"ClientOS,omitempty"`
+	// example:
+	//
+	// Microsoft Word
+	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	BizRegionId *string `json:"BizRegionId,omitempty" xml:"BizRegionId,omitempty"`
+	// example:
+	//
+	// 1
+	CategoryId *int64 `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
+	// example:
+	//
+	// 1
+	CategoryType *int64 `json:"CategoryType,omitempty" xml:"CategoryType,omitempty"`
+	// example:
+	//
+	// 17b38aaa-761f-44c5-9862-2ad0f5025d15
+	ClientId *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
+	// example:
+	//
+	// 125.80.132.13
+	ClientIp *string `json:"ClientIp,omitempty" xml:"ClientIp,omitempty"`
+	// example:
+	//
+	// windows_\\"Windows 10 Enterprise\\" 10.0 (Build 14393)
+	ClientOS *string `json:"ClientOS,omitempty" xml:"ClientOS,omitempty"`
+	// example:
+	//
+	// 2.0.1-D-20211008.101607
 	ClientVersion *string `json:"ClientVersion,omitempty" xml:"ClientVersion,omitempty"`
-	EndUserId     *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
+	// example:
+	//
+	// test.test
+	EndUserId *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
+	// example:
+	//
+	// cn-shanghai
 	LoginRegionId *string `json:"LoginRegionId,omitempty" xml:"LoginRegionId,omitempty"`
-	LoginToken    *string `json:"LoginToken,omitempty" xml:"LoginToken,omitempty"`
-	OrderParam    *string `json:"OrderParam,omitempty" xml:"OrderParam,omitempty"`
-	ProductType   *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
-	SessionId     *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
-	SortType      *string `json:"SortType,omitempty" xml:"SortType,omitempty"`
+	// example:
+	//
+	// v189fa78c1aff77a0483b16497517322299131027b85bb84bbdc0871988ce8296d8fd891e2fdeaded3bd75f81f639acee8
+	LoginToken *string `json:"LoginToken,omitempty" xml:"LoginToken,omitempty"`
+	OrderParam *string `json:"OrderParam,omitempty" xml:"OrderParam,omitempty"`
+	// example:
+	//
+	// CloudApp
+	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
+	// example:
+	//
+	// c261a6a1-e242-4f4b-813c-5fe807e49f03
+	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	SortType  *string `json:"SortType,omitempty" xml:"SortType,omitempty"`
 }
 
 func (s ListPublishedAppInfoRequest) String() string {
@@ -673,8 +799,15 @@ func (s *ListPublishedAppInfoRequest) SetSortType(v string) *ListPublishedAppInf
 type ListPublishedAppInfoResponseBody struct {
 	// appModels
 	AppModels []*ListPublishedAppInfoResponseBodyAppModels `json:"AppModels,omitempty" xml:"AppModels,omitempty" type:"Repeated"`
-	NextToken *string                                      `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// example:
+	//
+	// 2NVfhLfgy5b3J5iJyoLQ6x4EULMg1hbhgB9NfnvdK9oj5zwxd17j4TuQkZze3RvhEvBinZYjknujF3Q1M
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// Id of the request
+	//
+	// example:
+	//
+	// DB70F8FE-63A3-587B-8560-CEC258E8B944
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -702,18 +835,48 @@ func (s *ListPublishedAppInfoResponseBody) SetRequestId(v string) *ListPublished
 }
 
 type ListPublishedAppInfoResponseBodyAppModels struct {
+	// example:
+	//
+	// img-f37nddbjc1lje14st
 	AppCenterImageId *string `json:"AppCenterImageId,omitempty" xml:"AppCenterImageId,omitempty"`
-	AppId            *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	AppName          *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	AppThemeColor    *string `json:"AppThemeColor,omitempty" xml:"AppThemeColor,omitempty"`
-	AppVersion       *string `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
-	AppVersionName   *string `json:"AppVersionName,omitempty" xml:"AppVersionName,omitempty"`
-	AuthTime         *string `json:"AuthTime,omitempty" xml:"AuthTime,omitempty"`
-	CategoryId       *int64  `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
-	CategoryType     *int64  `json:"CategoryType,omitempty" xml:"CategoryType,omitempty"`
-	IconUrl          *string `json:"IconUrl,omitempty" xml:"IconUrl,omitempty"`
-	IsAuth           *bool   `json:"IsAuth,omitempty" xml:"IsAuth,omitempty"`
-	UsedInSession    *bool   `json:"UsedInSession,omitempty" xml:"UsedInSession,omitempty"`
+	// example:
+	//
+	// ca-fxwp4koyr5y2sp4mz
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// example:
+	//
+	// Microsoft Word
+	AppName       *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	AppThemeColor *string `json:"AppThemeColor,omitempty" xml:"AppThemeColor,omitempty"`
+	// example:
+	//
+	// R2021a
+	AppVersion *string `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
+	// example:
+	//
+	// v1.0
+	AppVersionName *string `json:"AppVersionName,omitempty" xml:"AppVersionName,omitempty"`
+	AuthTime       *string `json:"AuthTime,omitempty" xml:"AuthTime,omitempty"`
+	// example:
+	//
+	// 2
+	CategoryId *int64 `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
+	// example:
+	//
+	// 1
+	CategoryType *int64 `json:"CategoryType,omitempty" xml:"CategoryType,omitempty"`
+	// example:
+	//
+	// https://app-streaming-icon-prod-shanghai.oss-cn-shanghai.aliyuncs.com/tenant/1973619010349344/1634523814270_Matlab.png
+	IconUrl *string `json:"IconUrl,omitempty" xml:"IconUrl,omitempty"`
+	// example:
+	//
+	// True
+	IsAuth *bool `json:"IsAuth,omitempty" xml:"IsAuth,omitempty"`
+	// example:
+	//
+	// True
+	UsedInSession *bool `json:"UsedInSession,omitempty" xml:"UsedInSession,omitempty"`
 }
 
 func (s ListPublishedAppInfoResponseBodyAppModels) String() string {
@@ -785,9 +948,9 @@ func (s *ListPublishedAppInfoResponseBodyAppModels) SetUsedInSession(v bool) *Li
 }
 
 type ListPublishedAppInfoResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListPublishedAppInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListPublishedAppInfoResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListPublishedAppInfoResponse) String() string {
@@ -814,18 +977,54 @@ func (s *ListPublishedAppInfoResponse) SetBody(v *ListPublishedAppInfoResponseBo
 }
 
 type ListRunningAppsRequest struct {
-	BizRegionId   *string `json:"BizRegionId,omitempty" xml:"BizRegionId,omitempty"`
-	ClientId      *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
-	ClientIp      *string `json:"ClientIp,omitempty" xml:"ClientIp,omitempty"`
-	ClientOS      *string `json:"ClientOS,omitempty" xml:"ClientOS,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	BizRegionId *string `json:"BizRegionId,omitempty" xml:"BizRegionId,omitempty"`
+	// example:
+	//
+	// 370b56f8-2812-4b6c-bfa6-2560791cad88
+	ClientId *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
+	// example:
+	//
+	// 22.21.2.32
+	ClientIp *string `json:"ClientIp,omitempty" xml:"ClientIp,omitempty"`
+	// example:
+	//
+	// windows_"Windows 10 Enterprise" 10.0 (Build 18363)
+	ClientOS *string `json:"ClientOS,omitempty" xml:"ClientOS,omitempty"`
+	// example:
+	//
+	// 0.1.0-R-20220512.175656
 	ClientVersion *string `json:"ClientVersion,omitempty" xml:"ClientVersion,omitempty"`
-	EndUserId     *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
+	// example:
+	//
+	// test.test
+	EndUserId *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
 	LoginRegionId *string `json:"LoginRegionId,omitempty" xml:"LoginRegionId,omitempty"`
-	LoginToken    *string `json:"LoginToken,omitempty" xml:"LoginToken,omitempty"`
-	ProductType   *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
-	SessionId     *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
-	TenantId      *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
-	Uuid          *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
+	// example:
+	//
+	// v1124500957832f30b3e716406562071655aa43b2a723ed2be0837815483d54e025db13ba5469f06f2410d0efc4d302e36
+	LoginToken *string `json:"LoginToken,omitempty" xml:"LoginToken,omitempty"`
+	// example:
+	//
+	// CloudApp
+	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
+	// example:
+	//
+	// a863f4c3-2f1d-4971-8cf7-e2b92ae97764
+	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	// example:
+	//
+	// 1735953493960828
+	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// example:
+	//
+	// 470E8C12AB78CE9C3F6627DD0409E51D
+	Uuid *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
 }
 
 func (s ListRunningAppsRequest) String() string {
@@ -898,6 +1097,10 @@ func (s *ListRunningAppsRequest) SetUuid(v string) *ListRunningAppsRequest {
 
 type ListRunningAppsResponseBody struct {
 	// Id of the request
+	//
+	// example:
+	//
+	// 2DC3521C-3820-5EA5-9A9A-00BB7AF4E8E5
 	RequestId        *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	RunningCloudApps []*ListRunningAppsResponseBodyRunningCloudApps `json:"RunningCloudApps,omitempty" xml:"RunningCloudApps,omitempty" type:"Repeated"`
 }
@@ -921,17 +1124,50 @@ func (s *ListRunningAppsResponseBody) SetRunningCloudApps(v []*ListRunningAppsRe
 }
 
 type ListRunningAppsResponseBodyRunningCloudApps struct {
-	AppId              *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// example:
+	//
+	// ca-dln05y44ze6esfl8x
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// example:
+	//
+	// aig-dk8p95irk9xs5xi6a
 	AppInstanceGroupId *string `json:"AppInstanceGroupId,omitempty" xml:"AppInstanceGroupId,omitempty"`
-	AppInstanceId      *string `json:"AppInstanceId,omitempty" xml:"AppInstanceId,omitempty"`
-	AppName            *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	AppVersion         *string `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
-	AppVersionName     *string `json:"AppVersionName,omitempty" xml:"AppVersionName,omitempty"`
-	Duration           *int64  `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	IconUrl            *string `json:"IconUrl,omitempty" xml:"IconUrl,omitempty"`
-	OsType             *string `json:"OsType,omitempty" xml:"OsType,omitempty"`
-	RegionId           *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	StartTime          *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// example:
+	//
+	// ai-gc1gemx6vpa6vlync
+	AppInstanceId *string `json:"AppInstanceId,omitempty" xml:"AppInstanceId,omitempty"`
+	// example:
+	//
+	// alihealth-keeper
+	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// example:
+	//
+	// 11.1
+	AppVersion *string `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
+	// example:
+	//
+	// test1.0
+	AppVersionName *string `json:"AppVersionName,omitempty" xml:"AppVersionName,omitempty"`
+	// example:
+	//
+	// 87
+	Duration *int64 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// example:
+	//
+	// https://app-icon-shanghai.oss-cn-shanghai.aliyuncs.com/tenant/187465/18_bf1.jpg
+	IconUrl *string `json:"IconUrl,omitempty" xml:"IconUrl,omitempty"`
+	// example:
+	//
+	// Windows
+	OsType *string `json:"OsType,omitempty" xml:"OsType,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// 1642748400
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s ListRunningAppsResponseBodyRunningCloudApps) String() string {
@@ -998,9 +1234,9 @@ func (s *ListRunningAppsResponseBodyRunningCloudApps) SetStartTime(v string) *Li
 }
 
 type ListRunningAppsResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListRunningAppsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListRunningAppsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListRunningAppsResponse) String() string {
@@ -1027,27 +1263,90 @@ func (s *ListRunningAppsResponse) SetBody(v *ListRunningAppsResponseBody) *ListR
 }
 
 type StopAppRequest struct {
-	AliUid             *int64  `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
-	ApiType            *string `json:"ApiType,omitempty" xml:"ApiType,omitempty"`
-	AppId              *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// example:
+	//
+	// 1924794279035094
+	AliUid *int64 `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
+	// example:
+	//
+	// AnonymousUserAPI
+	ApiType *string `json:"ApiType,omitempty" xml:"ApiType,omitempty"`
+	// example:
+	//
+	// ca-fxwp4koywsglzvvex
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// example:
+	//
+	// aig-89ibriac2wudyph38
 	AppInstanceGroupId *string `json:"AppInstanceGroupId,omitempty" xml:"AppInstanceGroupId,omitempty"`
-	AppInstanceId      *string `json:"AppInstanceId,omitempty" xml:"AppInstanceId,omitempty"`
-	BizRegionId        *string `json:"BizRegionId,omitempty" xml:"BizRegionId,omitempty"`
-	ClientChannel      *string `json:"ClientChannel,omitempty" xml:"ClientChannel,omitempty"`
-	ClientId           *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
-	ClientIp           *string `json:"ClientIp,omitempty" xml:"ClientIp,omitempty"`
-	ClientOS           *string `json:"ClientOS,omitempty" xml:"ClientOS,omitempty"`
-	ClientVersion      *string `json:"ClientVersion,omitempty" xml:"ClientVersion,omitempty"`
-	EndUserId          *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
-	ForceStop          *bool   `json:"ForceStop,omitempty" xml:"ForceStop,omitempty"`
-	IdpId              *string `json:"IdpId,omitempty" xml:"IdpId,omitempty"`
-	LoginRegionId      *string `json:"LoginRegionId,omitempty" xml:"LoginRegionId,omitempty"`
-	LoginToken         *string `json:"LoginToken,omitempty" xml:"LoginToken,omitempty"`
-	ProductType        *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
-	RegionId           *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	SessionId          *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
-	Uuid               *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
-	WyId               *string `json:"WyId,omitempty" xml:"WyId,omitempty"`
+	// example:
+	//
+	// ai-d297eyf83g5niwnjl
+	AppInstanceId *string `json:"AppInstanceId,omitempty" xml:"AppInstanceId,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	BizRegionId *string `json:"BizRegionId,omitempty" xml:"BizRegionId,omitempty"`
+	// example:
+	//
+	// pc
+	ClientChannel *string `json:"ClientChannel,omitempty" xml:"ClientChannel,omitempty"`
+	// example:
+	//
+	// 91b79184-51d0-42ad-8475-78cae95b0aa6
+	ClientId *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
+	// example:
+	//
+	// 22.21.2.79
+	ClientIp *string `json:"ClientIp,omitempty" xml:"ClientIp,omitempty"`
+	// example:
+	//
+	// windows_"Windows 10 Enterprise" 10.0 (Build 19042)
+	ClientOS *string `json:"ClientOS,omitempty" xml:"ClientOS,omitempty"`
+	// example:
+	//
+	// 3.1.1-R-20211022.144255
+	ClientVersion *string `json:"ClientVersion,omitempty" xml:"ClientVersion,omitempty"`
+	// example:
+	//
+	// test.test
+	EndUserId *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
+	// example:
+	//
+	// false
+	ForceStop *bool `json:"ForceStop,omitempty" xml:"ForceStop,omitempty"`
+	// example:
+	//
+	// idp-9ie5smicnct2xodn2
+	IdpId *string `json:"IdpId,omitempty" xml:"IdpId,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	LoginRegionId *string `json:"LoginRegionId,omitempty" xml:"LoginRegionId,omitempty"`
+	// example:
+	//
+	// v185fdd7f6d39fa7861981639366085772e150a390a5bb7b43c4e62440d94fc392b945770e1596cebe90085ce0af4d330e
+	LoginToken *string `json:"LoginToken,omitempty" xml:"LoginToken,omitempty"`
+	// example:
+	//
+	// CloudApp
+	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// 597e869d-ea14-4b83-9490-714f68bfe935
+	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	// example:
+	//
+	// 2943802884B27030B6759F9132B26903
+	Uuid *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
+	// example:
+	//
+	// ac3cb49059261898
+	WyId *string `json:"WyId,omitempty" xml:"WyId,omitempty"`
 }
 
 func (s StopAppRequest) String() string {
@@ -1164,6 +1463,9 @@ func (s *StopAppRequest) SetWyId(v string) *StopAppRequest {
 }
 
 type StopAppResponseBody struct {
+	// example:
+	//
+	// 83A9075B-C646-59A9-8232-CAE41AF4B9E3
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1181,9 +1483,9 @@ func (s *StopAppResponseBody) SetRequestId(v string) *StopAppResponseBody {
 }
 
 type StopAppResponse struct {
-	Headers    map[string]*string   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *StopAppResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *StopAppResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s StopAppResponse) String() string {
@@ -1210,19 +1512,63 @@ func (s *StopAppResponse) SetBody(v *StopAppResponseBody) *StopAppResponse {
 }
 
 type UnbindRequest struct {
-	AppId              *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// example:
+	//
+	// ca-fxwp4koxs8hopi94e
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// aig-e1l4kqqykxt4uzdx9
 	AppInstanceGroupId *string `json:"AppInstanceGroupId,omitempty" xml:"AppInstanceGroupId,omitempty"`
 	AppInstanceId      *string `json:"AppInstanceId,omitempty" xml:"AppInstanceId,omitempty"`
-	ClientId           *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
-	ClientIp           *string `json:"ClientIp,omitempty" xml:"ClientIp,omitempty"`
-	ClientOS           *string `json:"ClientOS,omitempty" xml:"ClientOS,omitempty"`
-	ClientVersion      *string `json:"ClientVersion,omitempty" xml:"ClientVersion,omitempty"`
-	EndUserId          *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
-	LoginRegionId      *string `json:"LoginRegionId,omitempty" xml:"LoginRegionId,omitempty"`
-	LoginToken         *string `json:"LoginToken,omitempty" xml:"LoginToken,omitempty"`
-	ProductType        *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
-	SessionId          *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
-	TenantId           *int64  `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// example:
+	//
+	// eac19bef-1e45-4190-a03a-4ea74b699ca7
+	ClientId *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
+	// example:
+	//
+	// 139.129.223.122
+	ClientIp *string `json:"ClientIp,omitempty" xml:"ClientIp,omitempty"`
+	// example:
+	//
+	// windows_\\"Windows 10 Pro\\" 10.0 (Build 19041)
+	ClientOS *string `json:"ClientOS,omitempty" xml:"ClientOS,omitempty"`
+	// example:
+	//
+	// 2.0.1-D-20220303.171122
+	ClientVersion *string `json:"ClientVersion,omitempty" xml:"ClientVersion,omitempty"`
+	// example:
+	//
+	// test.test
+	EndUserId *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
+	// example:
+	//
+	// cn-shanghai
+	LoginRegionId *string `json:"LoginRegionId,omitempty" xml:"LoginRegionId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// v1e9c8e83d83ea11270871640059145702bde8c5be8c6b9a854ffb6a43bd2673c19a5551c83800724e024f488dbfb0b247
+	LoginToken *string `json:"LoginToken,omitempty" xml:"LoginToken,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// CloudApp
+	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 11040139-4fb4-4b35-9b44-6c07c746a43e
+	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	// example:
+	//
+	// 1569416393841402
+	TenantId *int64 `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
 }
 
 func (s UnbindRequest) String() string {
@@ -1300,6 +1646,10 @@ func (s *UnbindRequest) SetTenantId(v int64) *UnbindRequest {
 
 type UnbindResponseBody struct {
 	// Id of the request
+	//
+	// example:
+	//
+	// 6EBD4046-2202-5FBD-8595-4B631F0C484B
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1317,9 +1667,9 @@ func (s *UnbindResponseBody) SetRequestId(v string) *UnbindResponseBody {
 }
 
 type UnbindResponse struct {
-	Headers    map[string]*string  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UnbindResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UnbindResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UnbindResponse) String() string {
@@ -1393,6 +1743,15 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取连接信息
+//
+// @param request - GetConnectionTicketRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetConnectionTicketResponse
 func (client *Client) GetConnectionTicketWithOptions(request *GetConnectionTicketRequest, runtime *util.RuntimeOptions) (_result *GetConnectionTicketResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -1502,6 +1861,13 @@ func (client *Client) GetConnectionTicketWithOptions(request *GetConnectionTicke
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取连接信息
+//
+// @param request - GetConnectionTicketRequest
+//
+// @return GetConnectionTicketResponse
 func (client *Client) GetConnectionTicket(request *GetConnectionTicketRequest) (_result *GetConnectionTicketResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetConnectionTicketResponse{}
@@ -1513,6 +1879,11 @@ func (client *Client) GetConnectionTicket(request *GetConnectionTicketRequest) (
 	return _result, _err
 }
 
+// @param request - ListLFUAppRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListLFUAppResponse
 func (client *Client) ListLFUAppWithOptions(request *ListLFUAppRequest, runtime *util.RuntimeOptions) (_result *ListLFUAppResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -1618,6 +1989,9 @@ func (client *Client) ListLFUAppWithOptions(request *ListLFUAppRequest, runtime 
 	return _result, _err
 }
 
+// @param request - ListLFUAppRequest
+//
+// @return ListLFUAppResponse
 func (client *Client) ListLFUApp(request *ListLFUAppRequest) (_result *ListLFUAppResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListLFUAppResponse{}
@@ -1629,6 +2003,15 @@ func (client *Client) ListLFUApp(request *ListLFUAppRequest) (_result *ListLFUAp
 	return _result, _err
 }
 
+// Summary:
+//
+// 已上架应用列表
+//
+// @param request - ListPublishedAppInfoRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListPublishedAppInfoResponse
 func (client *Client) ListPublishedAppInfoWithOptions(request *ListPublishedAppInfoRequest, runtime *util.RuntimeOptions) (_result *ListPublishedAppInfoResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -1718,6 +2101,13 @@ func (client *Client) ListPublishedAppInfoWithOptions(request *ListPublishedAppI
 	return _result, _err
 }
 
+// Summary:
+//
+// 已上架应用列表
+//
+// @param request - ListPublishedAppInfoRequest
+//
+// @return ListPublishedAppInfoResponse
 func (client *Client) ListPublishedAppInfo(request *ListPublishedAppInfoRequest) (_result *ListPublishedAppInfoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListPublishedAppInfoResponse{}
@@ -1729,6 +2119,15 @@ func (client *Client) ListPublishedAppInfo(request *ListPublishedAppInfoRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// 运行中应用列表
+//
+// @param request - ListRunningAppsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListRunningAppsResponse
 func (client *Client) ListRunningAppsWithOptions(request *ListRunningAppsRequest, runtime *util.RuntimeOptions) (_result *ListRunningAppsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -1806,6 +2205,13 @@ func (client *Client) ListRunningAppsWithOptions(request *ListRunningAppsRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// 运行中应用列表
+//
+// @param request - ListRunningAppsRequest
+//
+// @return ListRunningAppsResponse
 func (client *Client) ListRunningApps(request *ListRunningAppsRequest) (_result *ListRunningAppsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListRunningAppsResponse{}
@@ -1817,6 +2223,15 @@ func (client *Client) ListRunningApps(request *ListRunningAppsRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// 停止应用
+//
+// @param request - StopAppRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return StopAppResponse
 func (client *Client) StopAppWithOptions(request *StopAppRequest, runtime *util.RuntimeOptions) (_result *StopAppResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -1930,6 +2345,13 @@ func (client *Client) StopAppWithOptions(request *StopAppRequest, runtime *util.
 	return _result, _err
 }
 
+// Summary:
+//
+// 停止应用
+//
+// @param request - StopAppRequest
+//
+// @return StopAppResponse
 func (client *Client) StopApp(request *StopAppRequest) (_result *StopAppResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &StopAppResponse{}
@@ -1941,6 +2363,15 @@ func (client *Client) StopApp(request *StopAppRequest) (_result *StopAppResponse
 	return _result, _err
 }
 
+// Summary:
+//
+// 解绑实例
+//
+// @param request - UnbindRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UnbindResponse
 func (client *Client) UnbindWithOptions(request *UnbindRequest, runtime *util.RuntimeOptions) (_result *UnbindResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -2022,6 +2453,13 @@ func (client *Client) UnbindWithOptions(request *UnbindRequest, runtime *util.Ru
 	return _result, _err
 }
 
+// Summary:
+//
+// 解绑实例
+//
+// @param request - UnbindRequest
+//
+// @return UnbindResponse
 func (client *Client) Unbind(request *UnbindRequest) (_result *UnbindResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UnbindResponse{}
