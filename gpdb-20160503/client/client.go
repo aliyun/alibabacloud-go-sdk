@@ -1373,9 +1373,7 @@ type CreateCollectionRequest struct {
 	ManagerAccountPassword *string `json:"ManagerAccountPassword,omitempty" xml:"ManagerAccountPassword,omitempty"`
 	// The metadata of the vector data, which is a JSON string in the MAP format. The key specifies the field name, and the value specifies the data type.
 	//
-	// **
-	//
-	// **Warning**Reserved fields such as id, vector, to_tsvector, and source cannot be used.
+	// 	Warning: Reserved fields such as id, vector, to_tsvector, and source cannot be used.
 	//
 	// This parameter is required.
 	//
@@ -4687,8 +4685,6 @@ type CreateVectorIndexRequest struct {
 	Dimension *int32 `json:"Dimension,omitempty" xml:"Dimension,omitempty"`
 	// Specifies whether to use the memory mapping technology to create HNSW indexes. Valid values: 0 and 1. Default value: 0. We recommend that you set the value to 1 in scenarios that require upload speed but not data deletion.
 	//
-	// >
-	//
 	// 	- 0: uses segmented paging storage to create indexes. This method uses the shared buffer of PostgreSQL for caching and supports the delete and update operations.
 	//
 	// 	- 1: uses the memory mapping technology to create indexes. This method does not support the delete or update operation.
@@ -4725,7 +4721,13 @@ type CreateVectorIndexRequest struct {
 	//
 	// testpassword
 	ManagerAccountPassword *string `json:"ManagerAccountPassword,omitempty" xml:"ManagerAccountPassword,omitempty"`
-	// Distance Metrics。
+	// The method that is used to create vector indexes.Valid values:
+	//
+	// - l2: Euclidean distance.
+	//
+	// - ip: inner product distance.
+	//
+	// - cosine: cosine similarity.
 	//
 	// example:
 	//
@@ -16158,6 +16160,7 @@ func (s *DescribeDocumentRequest) SetRegionId(v string) *DescribeDocumentRequest
 }
 
 type DescribeDocumentResponseBody struct {
+	ChunkFileUrl *string `json:"ChunkFileUrl,omitempty" xml:"ChunkFileUrl,omitempty"`
 	// example:
 	//
 	// 100
@@ -16185,7 +16188,8 @@ type DescribeDocumentResponseBody struct {
 	// example:
 	//
 	// 10000
-	FileSize *int64 `json:"FileSize,omitempty" xml:"FileSize,omitempty"`
+	FileSize *int64  `json:"FileSize,omitempty" xml:"FileSize,omitempty"`
+	FileUrl  *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
 	// example:
 	//
 	// 1
@@ -16193,7 +16197,8 @@ type DescribeDocumentResponseBody struct {
 	// example:
 	//
 	// success
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	Message           *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	PlainChunkFileUrl *string `json:"PlainChunkFileUrl,omitempty" xml:"PlainChunkFileUrl,omitempty"`
 	// example:
 	//
 	// ABB39CC3-4488-4857-905D-2E4A051D0521
@@ -16218,6 +16223,11 @@ func (s DescribeDocumentResponseBody) String() string {
 
 func (s DescribeDocumentResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeDocumentResponseBody) SetChunkFileUrl(v string) *DescribeDocumentResponseBody {
+	s.ChunkFileUrl = &v
+	return s
 }
 
 func (s *DescribeDocumentResponseBody) SetDocsCount(v int32) *DescribeDocumentResponseBody {
@@ -16255,6 +16265,11 @@ func (s *DescribeDocumentResponseBody) SetFileSize(v int64) *DescribeDocumentRes
 	return s
 }
 
+func (s *DescribeDocumentResponseBody) SetFileUrl(v string) *DescribeDocumentResponseBody {
+	s.FileUrl = &v
+	return s
+}
+
 func (s *DescribeDocumentResponseBody) SetFileVersion(v int32) *DescribeDocumentResponseBody {
 	s.FileVersion = &v
 	return s
@@ -16262,6 +16277,11 @@ func (s *DescribeDocumentResponseBody) SetFileVersion(v int32) *DescribeDocument
 
 func (s *DescribeDocumentResponseBody) SetMessage(v string) *DescribeDocumentResponseBody {
 	s.Message = &v
+	return s
+}
+
+func (s *DescribeDocumentResponseBody) SetPlainChunkFileUrl(v string) *DescribeDocumentResponseBody {
+	s.PlainChunkFileUrl = &v
 	return s
 }
 
