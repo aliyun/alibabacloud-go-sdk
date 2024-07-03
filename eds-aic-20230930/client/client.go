@@ -3684,6 +3684,230 @@ func (s *DescribeSpecResponse) SetBody(v *DescribeSpecResponseBody) *DescribeSpe
 	return s
 }
 
+type DescribeTasksRequest struct {
+	// example:
+	//
+	// B8ED2BA9-0C6A-5643-818F-B5D60A64****
+	InvokeId *string `json:"InvokeId,omitempty" xml:"InvokeId,omitempty"`
+	// example:
+	//
+	// 10
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// example:
+	//
+	// FFbc8N4E1iOlcSxC+8boa0HHH2LKWbggYUinyrZWvtS1oTrMYCg1HuMLGuftj0****
+	NextToken   *string   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	ResourceIds []*string `json:"ResourceIds,omitempty" xml:"ResourceIds,omitempty" type:"Repeated"`
+	TaskIds     []*string `json:"TaskIds,omitempty" xml:"TaskIds,omitempty" type:"Repeated"`
+	// example:
+	//
+	// Processing
+	TaskStatus *string `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
+	// example:
+	//
+	// StartInstance
+	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+}
+
+func (s DescribeTasksRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeTasksRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeTasksRequest) SetInvokeId(v string) *DescribeTasksRequest {
+	s.InvokeId = &v
+	return s
+}
+
+func (s *DescribeTasksRequest) SetMaxResults(v int32) *DescribeTasksRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *DescribeTasksRequest) SetNextToken(v string) *DescribeTasksRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *DescribeTasksRequest) SetResourceIds(v []*string) *DescribeTasksRequest {
+	s.ResourceIds = v
+	return s
+}
+
+func (s *DescribeTasksRequest) SetTaskIds(v []*string) *DescribeTasksRequest {
+	s.TaskIds = v
+	return s
+}
+
+func (s *DescribeTasksRequest) SetTaskStatus(v string) *DescribeTasksRequest {
+	s.TaskStatus = &v
+	return s
+}
+
+func (s *DescribeTasksRequest) SetTaskType(v string) *DescribeTasksRequest {
+	s.TaskType = &v
+	return s
+}
+
+type DescribeTasksResponseBody struct {
+	Data []*DescribeTasksResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// example:
+	//
+	// AAAAAV3MpHK1AP0pfERHZN5pu6kU+SQXzm0H9mu/FiSc****
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// example:
+	//
+	// B8ED2BA9-0C6A-5643-818F-B5D60A64****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 10
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s DescribeTasksResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeTasksResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeTasksResponseBody) SetData(v []*DescribeTasksResponseBodyData) *DescribeTasksResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DescribeTasksResponseBody) SetNextToken(v string) *DescribeTasksResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *DescribeTasksResponseBody) SetRequestId(v string) *DescribeTasksResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeTasksResponseBody) SetTotalCount(v int32) *DescribeTasksResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type DescribeTasksResponseBodyData struct {
+	// example:
+	//
+	// 2022-10-11T08:53:32Z
+	FinishTime *string `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
+	// example:
+	//
+	// B8ED2BA9-0C6A-5643-818F-B5D60A64****
+	InvokeId *string `json:"InvokeId,omitempty" xml:"InvokeId,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// acp-25nt4kk9whhok****
+	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// example:
+	//
+	// 2022-10-11T08:53:32Z
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// example:
+	//
+	// t-bp67acfmxazb4p****
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// example:
+	//
+	// Processing
+	TaskStatus *string `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
+	// example:
+	//
+	// StartInstance
+	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+}
+
+func (s DescribeTasksResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeTasksResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeTasksResponseBodyData) SetFinishTime(v string) *DescribeTasksResponseBodyData {
+	s.FinishTime = &v
+	return s
+}
+
+func (s *DescribeTasksResponseBodyData) SetInvokeId(v string) *DescribeTasksResponseBodyData {
+	s.InvokeId = &v
+	return s
+}
+
+func (s *DescribeTasksResponseBodyData) SetRegionId(v string) *DescribeTasksResponseBodyData {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeTasksResponseBodyData) SetResourceId(v string) *DescribeTasksResponseBodyData {
+	s.ResourceId = &v
+	return s
+}
+
+func (s *DescribeTasksResponseBodyData) SetStartTime(v string) *DescribeTasksResponseBodyData {
+	s.StartTime = &v
+	return s
+}
+
+func (s *DescribeTasksResponseBodyData) SetTaskId(v string) *DescribeTasksResponseBodyData {
+	s.TaskId = &v
+	return s
+}
+
+func (s *DescribeTasksResponseBodyData) SetTaskStatus(v string) *DescribeTasksResponseBodyData {
+	s.TaskStatus = &v
+	return s
+}
+
+func (s *DescribeTasksResponseBodyData) SetTaskType(v string) *DescribeTasksResponseBodyData {
+	s.TaskType = &v
+	return s
+}
+
+type DescribeTasksResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeTasksResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeTasksResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeTasksResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeTasksResponse) SetHeaders(v map[string]*string) *DescribeTasksResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeTasksResponse) SetStatusCode(v int32) *DescribeTasksResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeTasksResponse) SetBody(v *DescribeTasksResponseBody) *DescribeTasksResponse {
+	s.Body = v
+	return s
+}
+
 type DetachKeyPairRequest struct {
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
 	// This parameter is required.
@@ -7932,6 +8156,90 @@ func (client *Client) DescribeSpec(request *DescribeSpecRequest) (_result *Descr
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeSpecResponse{}
 	_body, _err := client.DescribeSpecWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询异步任务
+//
+// @param request - DescribeTasksRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeTasksResponse
+func (client *Client) DescribeTasksWithOptions(request *DescribeTasksRequest, runtime *util.RuntimeOptions) (_result *DescribeTasksResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InvokeId)) {
+		query["InvokeId"] = request.InvokeId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceIds)) {
+		query["ResourceIds"] = request.ResourceIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskIds)) {
+		query["TaskIds"] = request.TaskIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskStatus)) {
+		query["TaskStatus"] = request.TaskStatus
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskType)) {
+		query["TaskType"] = request.TaskType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeTasks"),
+		Version:     tea.String("2023-09-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeTasksResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询异步任务
+//
+// @param request - DescribeTasksRequest
+//
+// @return DescribeTasksResponse
+func (client *Client) DescribeTasks(request *DescribeTasksRequest) (_result *DescribeTasksResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeTasksResponse{}
+	_body, _err := client.DescribeTasksWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
