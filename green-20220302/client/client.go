@@ -465,9 +465,10 @@ type DescribeImageModerationResultResponseBodyData struct {
 	// example:
 	//
 	// 1
-	FrameNum *int32                                                 `json:"FrameNum,omitempty" xml:"FrameNum,omitempty"`
-	ReqId    *string                                                `json:"ReqId,omitempty" xml:"ReqId,omitempty"`
-	Result   []*DescribeImageModerationResultResponseBodyDataResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	FrameNum  *int32                                                 `json:"FrameNum,omitempty" xml:"FrameNum,omitempty"`
+	ReqId     *string                                                `json:"ReqId,omitempty" xml:"ReqId,omitempty"`
+	Result    []*DescribeImageModerationResultResponseBodyDataResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	RiskLevel *string                                                `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
 }
 
 func (s DescribeImageModerationResultResponseBodyData) String() string {
@@ -500,6 +501,11 @@ func (s *DescribeImageModerationResultResponseBodyData) SetReqId(v string) *Desc
 
 func (s *DescribeImageModerationResultResponseBodyData) SetResult(v []*DescribeImageModerationResultResponseBodyDataResult) *DescribeImageModerationResultResponseBodyData {
 	s.Result = v
+	return s
+}
+
+func (s *DescribeImageModerationResultResponseBodyData) SetRiskLevel(v string) *DescribeImageModerationResultResponseBodyData {
+	s.RiskLevel = &v
 	return s
 }
 
@@ -1457,9 +1463,10 @@ type ImageModerationResponseBodyData struct {
 	// example:
 	//
 	// fb5ffab1-993b-449f-b8d6-b97d5e3331f2
-	DataId *string                                  `json:"DataId,omitempty" xml:"DataId,omitempty"`
-	Ext    *ImageModerationResponseBodyDataExt      `json:"Ext,omitempty" xml:"Ext,omitempty" type:"Struct"`
-	Result []*ImageModerationResponseBodyDataResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	DataId    *string                                  `json:"DataId,omitempty" xml:"DataId,omitempty"`
+	Ext       *ImageModerationResponseBodyDataExt      `json:"Ext,omitempty" xml:"Ext,omitempty" type:"Struct"`
+	Result    []*ImageModerationResponseBodyDataResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	RiskLevel *string                                  `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
 }
 
 func (s ImageModerationResponseBodyData) String() string {
@@ -1482,6 +1489,11 @@ func (s *ImageModerationResponseBodyData) SetExt(v *ImageModerationResponseBodyD
 
 func (s *ImageModerationResponseBodyData) SetResult(v []*ImageModerationResponseBodyDataResult) *ImageModerationResponseBodyData {
 	s.Result = v
+	return s
+}
+
+func (s *ImageModerationResponseBodyData) SetRiskLevel(v string) *ImageModerationResponseBodyData {
+	s.RiskLevel = &v
 	return s
 }
 
@@ -2136,8 +2148,9 @@ func (s *TextModerationPlusResponseBody) SetRequestId(v string) *TextModerationP
 }
 
 type TextModerationPlusResponseBodyData struct {
-	Advice []*TextModerationPlusResponseBodyDataAdvice `json:"Advice,omitempty" xml:"Advice,omitempty" type:"Repeated"`
-	Result []*TextModerationPlusResponseBodyDataResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	Advice    []*TextModerationPlusResponseBodyDataAdvice `json:"Advice,omitempty" xml:"Advice,omitempty" type:"Repeated"`
+	Result    []*TextModerationPlusResponseBodyDataResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	RiskLevel *string                                     `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
 	// example:
 	//
 	// 1
@@ -2159,6 +2172,11 @@ func (s *TextModerationPlusResponseBodyData) SetAdvice(v []*TextModerationPlusRe
 
 func (s *TextModerationPlusResponseBodyData) SetResult(v []*TextModerationPlusResponseBodyDataResult) *TextModerationPlusResponseBodyData {
 	s.Result = v
+	return s
+}
+
+func (s *TextModerationPlusResponseBodyData) SetRiskLevel(v string) *TextModerationPlusResponseBodyData {
+	s.RiskLevel = &v
 	return s
 }
 
