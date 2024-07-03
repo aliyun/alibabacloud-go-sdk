@@ -1863,7 +1863,7 @@ func (s *CreateMemberAccountsResponse) SetBody(v *CreateMemberAccountsResponseBo
 }
 
 type CreatePostpaidInstanceRequest struct {
-	// The region in which the WAF instance is deployed. Valid values:
+	// The region in which the Web Application Firewall (WAF) instance is deployed. Valid values:
 	//
 	// 	- **cn-hangzhou**: Chinese mainland.
 	//
@@ -1957,6 +1957,163 @@ func (s *CreatePostpaidInstanceResponse) SetStatusCode(v int32) *CreatePostpaidI
 }
 
 func (s *CreatePostpaidInstanceResponse) SetBody(v *CreatePostpaidInstanceResponseBody) *CreatePostpaidInstanceResponse {
+	s.Body = v
+	return s
+}
+
+type CreateSM2CertRequest struct {
+	// example:
+	//
+	// test-sm2
+	CertName *string `json:"CertName,omitempty" xml:"CertName,omitempty"`
+	// example:
+	//
+	// -----BEGIN CERTIFICATE-----
+	//
+	// ***
+	//
+	// -----END CERTIFICATE-----
+	EncryptCertificate *string `json:"EncryptCertificate,omitempty" xml:"EncryptCertificate,omitempty"`
+	// example:
+	//
+	// -----BEGIN PRIVATE KEY-----
+	//
+	// ***
+	//
+	// -----END PRIVATE KEY-----
+	EncryptPrivateKey *string `json:"EncryptPrivateKey,omitempty" xml:"EncryptPrivateKey,omitempty"`
+	// example:
+	//
+	// waf_v2_public_cn-***
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// rg-acfm***q
+	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
+	// example:
+	//
+	// -----BEGIN CERTIFICATE-----
+	//
+	// ***
+	//
+	// -----END CERTIFICATE-----
+	SignCertificate *string `json:"SignCertificate,omitempty" xml:"SignCertificate,omitempty"`
+	// example:
+	//
+	// -----BEGIN PRIVATE KEY-----
+	//
+	// ***
+	//
+	// -----END PRIVATE KEY-----
+	SignPrivateKey *string `json:"SignPrivateKey,omitempty" xml:"SignPrivateKey,omitempty"`
+}
+
+func (s CreateSM2CertRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSM2CertRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSM2CertRequest) SetCertName(v string) *CreateSM2CertRequest {
+	s.CertName = &v
+	return s
+}
+
+func (s *CreateSM2CertRequest) SetEncryptCertificate(v string) *CreateSM2CertRequest {
+	s.EncryptCertificate = &v
+	return s
+}
+
+func (s *CreateSM2CertRequest) SetEncryptPrivateKey(v string) *CreateSM2CertRequest {
+	s.EncryptPrivateKey = &v
+	return s
+}
+
+func (s *CreateSM2CertRequest) SetInstanceId(v string) *CreateSM2CertRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *CreateSM2CertRequest) SetRegionId(v string) *CreateSM2CertRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *CreateSM2CertRequest) SetResourceManagerResourceGroupId(v string) *CreateSM2CertRequest {
+	s.ResourceManagerResourceGroupId = &v
+	return s
+}
+
+func (s *CreateSM2CertRequest) SetSignCertificate(v string) *CreateSM2CertRequest {
+	s.SignCertificate = &v
+	return s
+}
+
+func (s *CreateSM2CertRequest) SetSignPrivateKey(v string) *CreateSM2CertRequest {
+	s.SignPrivateKey = &v
+	return s
+}
+
+type CreateSM2CertResponseBody struct {
+	// example:
+	//
+	// ***-cn-hangzhou
+	CertIdentifier *string `json:"CertIdentifier,omitempty" xml:"CertIdentifier,omitempty"`
+	// example:
+	//
+	// D7861F61-5B61-46CE-A47C-***
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateSM2CertResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSM2CertResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSM2CertResponseBody) SetCertIdentifier(v string) *CreateSM2CertResponseBody {
+	s.CertIdentifier = &v
+	return s
+}
+
+func (s *CreateSM2CertResponseBody) SetRequestId(v string) *CreateSM2CertResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateSM2CertResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateSM2CertResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateSM2CertResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSM2CertResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSM2CertResponse) SetHeaders(v map[string]*string) *CreateSM2CertResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateSM2CertResponse) SetStatusCode(v int32) *CreateSM2CertResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateSM2CertResponse) SetBody(v *CreateSM2CertResponseBody) *CreateSM2CertResponse {
 	s.Body = v
 	return s
 }
@@ -3749,16 +3906,28 @@ func (s *DescribeApisecEventDomainStatisticResponse) SetBody(v *DescribeApisecEv
 }
 
 type DescribeApisecLogDeliveriesRequest struct {
+	// The ID of the Web Application Firewall (WAF) instance.
+	//
+	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// waf_v3_public_cn-uqm2z****0a
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The region where the WAF instance is deployed. Valid values:
+	//
+	// 	- **cn-hangzhou**: Chinese mainland.
+	//
+	// 	- **ap-southeast-1**: outside the Chinese mainland.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the Alibaba Cloud resource group.
+	//
 	// example:
 	//
 	// rg-acfm***q
@@ -3789,7 +3958,10 @@ func (s *DescribeApisecLogDeliveriesRequest) SetResourceManagerResourceGroupId(v
 }
 
 type DescribeApisecLogDeliveriesResponseBody struct {
+	// The configurations of API security log subscription.
 	DeliveryConfigs []*DescribeApisecLogDeliveriesResponseBodyDeliveryConfigs `json:"DeliveryConfigs,omitempty" xml:"DeliveryConfigs,omitempty" type:"Repeated"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 2EFCFE18-78F8-5079-B312-07***48B
@@ -3815,22 +3987,42 @@ func (s *DescribeApisecLogDeliveriesResponseBody) SetRequestId(v string) *Descri
 }
 
 type DescribeApisecLogDeliveriesResponseBodyDeliveryConfigs struct {
+	// The type of the log subscription. Valid values:
+	//
+	// 	- **risk**: risk information.
+	//
+	// 	- **event**: attack event information.
+	//
+	// 	- **asset**: asset information.
+	//
 	// example:
 	//
 	// risk
 	AssertKey *string `json:"AssertKey,omitempty" xml:"AssertKey,omitempty"`
+	// The ID of the region where logs are stored.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	LogRegionId *string `json:"LogRegionId,omitempty" xml:"LogRegionId,omitempty"`
+	// The name of the Logstore in Simple Log Service.
+	//
 	// example:
 	//
 	// apisec-logstore***
 	LogStoreName *string `json:"LogStoreName,omitempty" xml:"LogStoreName,omitempty"`
+	// The name of the project in Simple Log Service.
+	//
 	// example:
 	//
 	// apisec-project-14316572********
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// The status of API security log subscription. Valid values:
+	//
+	// 	- **true**: enabled.
+	//
+	// 	- **false**: disabled.
+	//
 	// example:
 	//
 	// true
@@ -4131,28 +4323,46 @@ func (s *DescribeApisecSensitiveDomainStatisticResponse) SetBody(v *DescribeApis
 }
 
 type DescribeApisecSlsLogStoresRequest struct {
+	// The ID of the Web Application Firewall (WAF) instance.
+	//
+	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// waf_v3_public_cn-uqm2z****0a
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The ID of the region where logs are stored.
+	//
+	// >  You can call the [DescribeUserSlsLogRegions](https://help.aliyun.com/document_detail/2712598.html) operation to query available log storage regions.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	LogRegionId *string `json:"LogRegionId,omitempty" xml:"LogRegionId,omitempty"`
+	// The name of the project in Simple Log Service.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// apisec-project-14316572********
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// The region where the WAF instance is deployed. Valid values:
+	//
+	// 	- **cn-hangzhou**: Chinese mainland.
+	//
+	// 	- **ap-southeast-1**: outside the Chinese mainland.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the Alibaba Cloud resource group.
+	//
 	// example:
 	//
 	// rg-acfm***q
@@ -4193,7 +4403,10 @@ func (s *DescribeApisecSlsLogStoresRequest) SetResourceManagerResourceGroupId(v 
 }
 
 type DescribeApisecSlsLogStoresResponseBody struct {
+	// The names of the Logstores in Simple Log Service.
 	LogStores []*string `json:"LogStores,omitempty" xml:"LogStores,omitempty" type:"Repeated"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// D7861F61-5B61-46CE-A47C-6B19****5EB0
@@ -4248,22 +4461,38 @@ func (s *DescribeApisecSlsLogStoresResponse) SetBody(v *DescribeApisecSlsLogStor
 }
 
 type DescribeApisecSlsProjectsRequest struct {
+	// The ID of the Web Application Firewall (WAF) instance.
+	//
+	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// waf_v3_public_cn-uqm2z****0a
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The ID of the region where logs are stored.
+	//
+	// >  You can call the [DescribeUserSlsLogRegions](https://help.aliyun.com/document_detail/2712598.html) operation to query available log storage regions.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	LogRegionId *string `json:"LogRegionId,omitempty" xml:"LogRegionId,omitempty"`
+	// The region where the WAF instance is deployed. Valid values:
+	//
+	// 	- **cn-hangzhou**: Chinese mainland.
+	//
+	// 	- **ap-southeast-1**: outside the Chinese mainland.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the Alibaba Cloud resource group.
+	//
 	// example:
 	//
 	// rg-acfm***q
@@ -4299,7 +4528,10 @@ func (s *DescribeApisecSlsProjectsRequest) SetResourceManagerResourceGroupId(v s
 }
 
 type DescribeApisecSlsProjectsResponseBody struct {
+	// The names of the projects in Simple Log Service.
 	Projects []*string `json:"Projects,omitempty" xml:"Projects,omitempty" type:"Repeated"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// D7861F61-5B61-46CE-A47C-6B19****5EB0
@@ -5178,6 +5410,155 @@ func (s *DescribeCloudResourcesResponse) SetStatusCode(v int32) *DescribeCloudRe
 }
 
 func (s *DescribeCloudResourcesResponse) SetBody(v *DescribeCloudResourcesResponseBody) *DescribeCloudResourcesResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeDDoSStatusRequest struct {
+	// The ID of the WAF instance that you want to query.
+	//
+	// >  You can call the [DescribeInstanceInfo](https://help.aliyun.com/document_detail/140857.html) operation to query the ID of the WAF instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf_v3prepaid_public_cn-***
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The region in which the WAF instance is deployed. Valid values:
+	//
+	// 	- **cn-hangzhou**: Chinese mainland.
+	//
+	// 	- **ap-southeast-1**: outside the Chinese mainland.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the Alibaba Cloud resource group.
+	//
+	// example:
+	//
+	// rg-acfm***q
+	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
+}
+
+func (s DescribeDDoSStatusRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDDoSStatusRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDDoSStatusRequest) SetInstanceId(v string) *DescribeDDoSStatusRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeDDoSStatusRequest) SetRegionId(v string) *DescribeDDoSStatusRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeDDoSStatusRequest) SetResourceManagerResourceGroupId(v string) *DescribeDDoSStatusRequest {
+	s.ResourceManagerResourceGroupId = &v
+	return s
+}
+
+type DescribeDDoSStatusResponseBody struct {
+	// Indicates whether DDoS attacks occur on specific domain names.
+	DDoSStatus []*DescribeDDoSStatusResponseBodyDDoSStatus `json:"DDoSStatus,omitempty" xml:"DDoSStatus,omitempty" type:"Repeated"`
+	// The ID of the request.
+	//
+	// example:
+	//
+	// D7861F61-5B61-46CE-A47C-***
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeDDoSStatusResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDDoSStatusResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDDoSStatusResponseBody) SetDDoSStatus(v []*DescribeDDoSStatusResponseBodyDDoSStatus) *DescribeDDoSStatusResponseBody {
+	s.DDoSStatus = v
+	return s
+}
+
+func (s *DescribeDDoSStatusResponseBody) SetRequestId(v string) *DescribeDDoSStatusResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeDDoSStatusResponseBodyDDoSStatus struct {
+	// The type of events that are triggered by DDoS attacks. Valid values:
+	//
+	// 	- defense: traffic scrubbing events.
+	//
+	// 	- blackhole: blackhole filtering events.
+	//
+	// example:
+	//
+	// blackhole
+	EventType *string `json:"EventType,omitempty" xml:"EventType,omitempty"`
+	// Indicates whether DDoS attacks occur on specific domain names. Valid value:
+	//
+	// 	- **doing**: DDoS attacks occur on specific domain names.
+	//
+	// example:
+	//
+	// doing
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s DescribeDDoSStatusResponseBodyDDoSStatus) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDDoSStatusResponseBodyDDoSStatus) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDDoSStatusResponseBodyDDoSStatus) SetEventType(v string) *DescribeDDoSStatusResponseBodyDDoSStatus {
+	s.EventType = &v
+	return s
+}
+
+func (s *DescribeDDoSStatusResponseBodyDDoSStatus) SetStatus(v string) *DescribeDDoSStatusResponseBodyDDoSStatus {
+	s.Status = &v
+	return s
+}
+
+type DescribeDDoSStatusResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeDDoSStatusResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeDDoSStatusResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDDoSStatusResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDDoSStatusResponse) SetHeaders(v map[string]*string) *DescribeDDoSStatusResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeDDoSStatusResponse) SetStatusCode(v int32) *DescribeDDoSStatusResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeDDoSStatusResponse) SetBody(v *DescribeDDoSStatusResponseBody) *DescribeDDoSStatusResponse {
 	s.Body = v
 	return s
 }
@@ -18273,40 +18654,72 @@ func (s *ListTagValuesResponse) SetBody(v *ListTagValuesResponseBody) *ListTagVa
 }
 
 type ModifyApisecLogDeliveryRequest struct {
+	// The type of the log subscription. Valid values:
+	//
+	// 	- **risk**: risk information.
+	//
+	// 	- **event**: attack event information.
+	//
+	// 	- **asset**: asset information.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// risk
 	AssertKey *string `json:"AssertKey,omitempty" xml:"AssertKey,omitempty"`
+	// The ID of the Web Application Firewall (WAF) instance.
+	//
+	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// waf_v3_public_cn-uqm2z****0a
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The ID of the region where logs are stored.
+	//
+	// >  You can call the [DescribeUserSlsLogRegions](https://help.aliyun.com/document_detail/2712598.html) operation to query available log storage regions.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	LogRegionId *string `json:"LogRegionId,omitempty" xml:"LogRegionId,omitempty"`
+	// The name of the Logstore in Simple Log Service.
+	//
+	// >  API security logs can be delivered only to Logstores whose names start with apisec-.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// apisec-logstore***
 	LogStoreName *string `json:"LogStoreName,omitempty" xml:"LogStoreName,omitempty"`
+	// The name of the project in Simple Log Service.
+	//
+	// >  API security logs can be delivered only to projects whose names start with apisec-.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// apisec-project-14316572********
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// The region where the WAF instance is deployed. Valid values:
+	//
+	// 	- **cn-hangzhou**: Chinese mainland.
+	//
+	// 	- **ap-southeast-1**: outside the Chinese mainland.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the Alibaba Cloud resource group.
+	//
 	// example:
 	//
 	// rg-acfm***q
@@ -18357,6 +18770,8 @@ func (s *ModifyApisecLogDeliveryRequest) SetResourceManagerResourceGroupId(v str
 }
 
 type ModifyApisecLogDeliveryResponseBody struct {
+	// The ID of the request.
+	//
 	// example:
 	//
 	// F35F45B0-5D6B-4238-BE02-A62D****E840
@@ -18406,26 +18821,52 @@ func (s *ModifyApisecLogDeliveryResponse) SetBody(v *ModifyApisecLogDeliveryResp
 }
 
 type ModifyApisecLogDeliveryStatusRequest struct {
+	// The type of the log subscription. Valid values:
+	//
+	// 	- **risk**: risk information.
+	//
+	// 	- **event**: attack event information.
+	//
+	// 	- **asset**: asset information.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// risk
 	AssertKey *string `json:"AssertKey,omitempty" xml:"AssertKey,omitempty"`
+	// The ID of the Web Application Firewall (WAF) instance.
+	//
+	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// waf_v3_public_cn-uqm2z****0a
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The region where the WAF instance is deployed. Valid values:
+	//
+	// 	- **cn-hangzhou**: Chinese mainland.
+	//
+	// 	- **ap-southeast-1**: outside the Chinese mainland.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the Alibaba Cloud resource group.
+	//
 	// example:
 	//
 	// rg-acfm***q
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
+	// The status of API security log subscription. Valid values:
+	//
+	// 	- **true**: enabled.
+	//
+	// 	- **false**: disabled.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -18468,6 +18909,8 @@ func (s *ModifyApisecLogDeliveryStatusRequest) SetStatus(v bool) *ModifyApisecLo
 }
 
 type ModifyApisecLogDeliveryStatusResponseBody struct {
+	// The ID of the request.
+	//
 	// example:
 	//
 	// F35F45B0-5D6B-4238-BE02-A62D****E840
@@ -22433,6 +22876,94 @@ func (client *Client) CreatePostpaidInstance(request *CreatePostpaidInstanceRequ
 
 // Summary:
 //
+// 上传国密证书
+//
+// @param request - CreateSM2CertRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateSM2CertResponse
+func (client *Client) CreateSM2CertWithOptions(request *CreateSM2CertRequest, runtime *util.RuntimeOptions) (_result *CreateSM2CertResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CertName)) {
+		query["CertName"] = request.CertName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EncryptCertificate)) {
+		query["EncryptCertificate"] = request.EncryptCertificate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EncryptPrivateKey)) {
+		query["EncryptPrivateKey"] = request.EncryptPrivateKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceManagerResourceGroupId)) {
+		query["ResourceManagerResourceGroupId"] = request.ResourceManagerResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SignCertificate)) {
+		query["SignCertificate"] = request.SignCertificate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SignPrivateKey)) {
+		query["SignPrivateKey"] = request.SignPrivateKey
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateSM2Cert"),
+		Version:     tea.String("2021-10-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateSM2CertResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 上传国密证书
+//
+// @param request - CreateSM2CertRequest
+//
+// @return CreateSM2CertResponse
+func (client *Client) CreateSM2Cert(request *CreateSM2CertRequest) (_result *CreateSM2CertResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateSM2CertResponse{}
+	_body, _err := client.CreateSM2CertWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 删除API安全风险
 //
 // @param request - DeleteApisecAbnormalRequest
@@ -23389,7 +23920,7 @@ func (client *Client) DescribeApisecEventDomainStatistic(request *DescribeApisec
 
 // Summary:
 //
-// 获取API安全日志订阅列表
+// Queries the configurations of API security log subscription.
 //
 // @param request - DescribeApisecLogDeliveriesRequest
 //
@@ -23439,7 +23970,7 @@ func (client *Client) DescribeApisecLogDeliveriesWithOptions(request *DescribeAp
 
 // Summary:
 //
-// 获取API安全日志订阅列表
+// Queries the configurations of API security log subscription.
 //
 // @param request - DescribeApisecLogDeliveriesRequest
 //
@@ -23557,7 +24088,7 @@ func (client *Client) DescribeApisecSensitiveDomainStatistic(request *DescribeAp
 
 // Summary:
 //
-// 查询日志服务SLS的LogStore列表
+// Queries the Logstores whose names start with apisec- in Simple Log Service.
 //
 // @param request - DescribeApisecSlsLogStoresRequest
 //
@@ -23615,7 +24146,7 @@ func (client *Client) DescribeApisecSlsLogStoresWithOptions(request *DescribeApi
 
 // Summary:
 //
-// 查询日志服务SLS的LogStore列表
+// Queries the Logstores whose names start with apisec- in Simple Log Service.
 //
 // @param request - DescribeApisecSlsLogStoresRequest
 //
@@ -23633,7 +24164,7 @@ func (client *Client) DescribeApisecSlsLogStores(request *DescribeApisecSlsLogSt
 
 // Summary:
 //
-// 查询日志服务SLS的Project列表
+// Queries the projects whose names start with apisec- in Simple Log Service.
 //
 // @param request - DescribeApisecSlsProjectsRequest
 //
@@ -23687,7 +24218,7 @@ func (client *Client) DescribeApisecSlsProjectsWithOptions(request *DescribeApis
 
 // Summary:
 //
-// 查询日志服务SLS的Project列表
+// Queries the projects whose names start with apisec- in Simple Log Service.
 //
 // @param request - DescribeApisecSlsProjectsRequest
 //
@@ -23960,6 +24491,74 @@ func (client *Client) DescribeCloudResources(request *DescribeCloudResourcesRequ
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeCloudResourcesResponse{}
 	_body, _err := client.DescribeCloudResourcesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Checks whether DDoS attacks occur on specific domain names protected by a Web Application Firewall (WAF) instance.
+//
+// @param request - DescribeDDoSStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDDoSStatusResponse
+func (client *Client) DescribeDDoSStatusWithOptions(request *DescribeDDoSStatusRequest, runtime *util.RuntimeOptions) (_result *DescribeDDoSStatusResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceManagerResourceGroupId)) {
+		query["ResourceManagerResourceGroupId"] = request.ResourceManagerResourceGroupId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeDDoSStatus"),
+		Version:     tea.String("2021-10-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeDDoSStatusResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Checks whether DDoS attacks occur on specific domain names protected by a Web Application Firewall (WAF) instance.
+//
+// @param request - DescribeDDoSStatusRequest
+//
+// @return DescribeDDoSStatusResponse
+func (client *Client) DescribeDDoSStatus(request *DescribeDDoSStatusRequest) (_result *DescribeDDoSStatusResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeDDoSStatusResponse{}
+	_body, _err := client.DescribeDDoSStatusWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -28173,7 +28772,7 @@ func (client *Client) ListTagValues(request *ListTagValuesRequest) (_result *Lis
 
 // Summary:
 //
-// 修改API安全日志订阅
+// Modifies the configurations of API security log subscription.
 //
 // @param request - ModifyApisecLogDeliveryRequest
 //
@@ -28239,7 +28838,7 @@ func (client *Client) ModifyApisecLogDeliveryWithOptions(request *ModifyApisecLo
 
 // Summary:
 //
-// 修改API安全日志订阅
+// Modifies the configurations of API security log subscription.
 //
 // @param request - ModifyApisecLogDeliveryRequest
 //
@@ -28257,7 +28856,7 @@ func (client *Client) ModifyApisecLogDelivery(request *ModifyApisecLogDeliveryRe
 
 // Summary:
 //
-// 修改API安全日志订阅状态
+// Modifies the status of API security log subscription.
 //
 // @param request - ModifyApisecLogDeliveryStatusRequest
 //
@@ -28315,7 +28914,7 @@ func (client *Client) ModifyApisecLogDeliveryStatusWithOptions(request *ModifyAp
 
 // Summary:
 //
-// 修改API安全日志订阅状态
+// Modifies the status of API security log subscription.
 //
 // @param request - ModifyApisecLogDeliveryStatusRequest
 //
