@@ -1,7 +1,4 @@
 // This file is auto-generated, don't edit it. Thanks.
-/**
- *
- */
 package client
 
 import (
@@ -14,6 +11,9 @@ import (
 )
 
 type AccelerationInfo struct {
+	// example:
+	//
+	// deprecated
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
 }
 
@@ -32,11 +32,26 @@ func (s *AccelerationInfo) SetStatus(v string) *AccelerationInfo {
 
 type Alias struct {
 	AdditionalVersionWeight map[string]*float32 `json:"additionalVersionWeight" xml:"additionalVersionWeight"`
-	AliasName               *string             `json:"aliasName,omitempty" xml:"aliasName,omitempty"`
-	CreatedTime             *string             `json:"createdTime,omitempty" xml:"createdTime,omitempty"`
-	Description             *string             `json:"description,omitempty" xml:"description,omitempty"`
-	LastModifiedTime        *string             `json:"lastModifiedTime,omitempty" xml:"lastModifiedTime,omitempty"`
-	VersionId               *string             `json:"versionId,omitempty" xml:"versionId,omitempty"`
+	// example:
+	//
+	// prod
+	AliasName *string `json:"aliasName,omitempty" xml:"aliasName,omitempty"`
+	// example:
+	//
+	// 2006-01-02T15:04:05Z07:00
+	CreatedTime *string `json:"createdTime,omitempty" xml:"createdTime,omitempty"`
+	// example:
+	//
+	// alias for pre env
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// example:
+	//
+	// 2006-01-02T15:04:05Z07:00
+	LastModifiedTime *string `json:"lastModifiedTime,omitempty" xml:"lastModifiedTime,omitempty"`
+	// example:
+	//
+	// 1
+	VersionId *string `json:"versionId,omitempty" xml:"versionId,omitempty"`
 }
 
 func (s Alias) String() string {
@@ -78,13 +93,31 @@ func (s *Alias) SetVersionId(v string) *Alias {
 }
 
 type AsyncConfig struct {
-	AsyncTask                 *bool              `json:"asyncTask,omitempty" xml:"asyncTask,omitempty"`
-	CreatedTime               *string            `json:"createdTime,omitempty" xml:"createdTime,omitempty"`
-	DestinationConfig         *DestinationConfig `json:"destinationConfig,omitempty" xml:"destinationConfig,omitempty"`
-	FunctionArn               *string            `json:"functionArn,omitempty" xml:"functionArn,omitempty"`
-	LastModifiedTime          *string            `json:"lastModifiedTime,omitempty" xml:"lastModifiedTime,omitempty"`
-	MaxAsyncEventAgeInSeconds *int64             `json:"maxAsyncEventAgeInSeconds,omitempty" xml:"maxAsyncEventAgeInSeconds,omitempty"`
-	MaxAsyncRetryAttempts     *int64             `json:"maxAsyncRetryAttempts,omitempty" xml:"maxAsyncRetryAttempts,omitempty"`
+	// example:
+	//
+	// true
+	AsyncTask *bool `json:"asyncTask,omitempty" xml:"asyncTask,omitempty"`
+	// example:
+	//
+	// 2006-01-02T15:04:05Z07:00
+	CreatedTime       *string            `json:"createdTime,omitempty" xml:"createdTime,omitempty"`
+	DestinationConfig *DestinationConfig `json:"destinationConfig,omitempty" xml:"destinationConfig,omitempty"`
+	// example:
+	//
+	// acs:fc:cn-shanghai:1234/functions/my-func
+	FunctionArn *string `json:"functionArn,omitempty" xml:"functionArn,omitempty"`
+	// example:
+	//
+	// 2006-01-02T15:04:05Z07:00
+	LastModifiedTime *string `json:"lastModifiedTime,omitempty" xml:"lastModifiedTime,omitempty"`
+	// example:
+	//
+	// 3600
+	MaxAsyncEventAgeInSeconds *int64 `json:"maxAsyncEventAgeInSeconds,omitempty" xml:"maxAsyncEventAgeInSeconds,omitempty"`
+	// example:
+	//
+	// 3
+	MaxAsyncRetryAttempts *int64 `json:"maxAsyncRetryAttempts,omitempty" xml:"maxAsyncRetryAttempts,omitempty"`
 }
 
 func (s AsyncConfig) String() string {
@@ -131,21 +164,63 @@ func (s *AsyncConfig) SetMaxAsyncRetryAttempts(v int64) *AsyncConfig {
 }
 
 type AsyncTask struct {
-	AlreadyRetriedTimes *int64            `json:"alreadyRetriedTimes,omitempty" xml:"alreadyRetriedTimes,omitempty"`
-	DestinationStatus   *string           `json:"destinationStatus,omitempty" xml:"destinationStatus,omitempty"`
-	DurationMs          *int64            `json:"durationMs,omitempty" xml:"durationMs,omitempty"`
-	EndTime             *int64            `json:"endTime,omitempty" xml:"endTime,omitempty"`
-	Events              []*AsyncTaskEvent `json:"events" xml:"events" type:"Repeated"`
-	FunctionArn         *string           `json:"functionArn,omitempty" xml:"functionArn,omitempty"`
-	InstanceId          *string           `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
-	Qualifier           *string           `json:"qualifier,omitempty" xml:"qualifier,omitempty"`
-	RequestId           *string           `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	ReturnPayload       *string           `json:"returnPayload,omitempty" xml:"returnPayload,omitempty"`
-	StartedTime         *int64            `json:"startedTime,omitempty" xml:"startedTime,omitempty"`
-	Status              *string           `json:"status,omitempty" xml:"status,omitempty"`
-	TaskErrorMessage    *string           `json:"taskErrorMessage,omitempty" xml:"taskErrorMessage,omitempty"`
-	TaskId              *string           `json:"taskId,omitempty" xml:"taskId,omitempty"`
-	TaskPayload         *string           `json:"taskPayload,omitempty" xml:"taskPayload,omitempty"`
+	// example:
+	//
+	// 3
+	AlreadyRetriedTimes *int64 `json:"alreadyRetriedTimes,omitempty" xml:"alreadyRetriedTimes,omitempty"`
+	// example:
+	//
+	// Succeeded
+	DestinationStatus *string `json:"destinationStatus,omitempty" xml:"destinationStatus,omitempty"`
+	// example:
+	//
+	// 1000
+	DurationMs *int64 `json:"durationMs,omitempty" xml:"durationMs,omitempty"`
+	// example:
+	//
+	// 1633449590000
+	EndTime *int64            `json:"endTime,omitempty" xml:"endTime,omitempty"`
+	Events  []*AsyncTaskEvent `json:"events" xml:"events" type:"Repeated"`
+	// example:
+	//
+	// acs:fc:cn-shanghai:1234/functions/my-func
+	FunctionArn *string `json:"functionArn,omitempty" xml:"functionArn,omitempty"`
+	// example:
+	//
+	// D4-*******9FD1-882707E
+	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	// example:
+	//
+	// prod
+	Qualifier *string `json:"qualifier,omitempty" xml:"qualifier,omitempty"`
+	// example:
+	//
+	// e026ae92-61e5-472f-b32d-1c9e3c4e****
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// result
+	ReturnPayload *string `json:"returnPayload,omitempty" xml:"returnPayload,omitempty"`
+	// example:
+	//
+	// 1633449590000
+	StartedTime *int64 `json:"startedTime,omitempty" xml:"startedTime,omitempty"`
+	// example:
+	//
+	// Running
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// example:
+	//
+	// UnhandledInvocationError
+	TaskErrorMessage *string `json:"taskErrorMessage,omitempty" xml:"taskErrorMessage,omitempty"`
+	// example:
+	//
+	// e026ae92-61e5-472f-b32d-1c9e3c4e****
+	TaskId *string `json:"taskId,omitempty" xml:"taskId,omitempty"`
+	// example:
+	//
+	// body
+	TaskPayload *string `json:"taskPayload,omitempty" xml:"taskPayload,omitempty"`
 }
 
 func (s AsyncTask) String() string {
@@ -232,10 +307,22 @@ func (s *AsyncTask) SetTaskPayload(v string) *AsyncTask {
 }
 
 type AsyncTaskEvent struct {
+	// example:
+	//
+	// body
 	EventDetail *string `json:"eventDetail,omitempty" xml:"eventDetail,omitempty"`
-	EventId     *int64  `json:"eventId,omitempty" xml:"eventId,omitempty"`
-	Status      *string `json:"status,omitempty" xml:"status,omitempty"`
-	Timestamp   *int64  `json:"timestamp,omitempty" xml:"timestamp,omitempty"`
+	// example:
+	//
+	// 1
+	EventId *int64 `json:"eventId,omitempty" xml:"eventId,omitempty"`
+	// example:
+	//
+	// Succeeded
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// example:
+	//
+	// 1647420449721
+	Timestamp *int64 `json:"timestamp,omitempty" xml:"timestamp,omitempty"`
 }
 
 func (s AsyncTaskEvent) String() string {
@@ -267,7 +354,13 @@ func (s *AsyncTaskEvent) SetTimestamp(v int64) *AsyncTaskEvent {
 }
 
 type AuthConfig struct {
+	// example:
+	//
+	// {}
 	AuthInfo *string `json:"authInfo,omitempty" xml:"authInfo,omitempty"`
+	// example:
+	//
+	// anonymous, function, jwt
 	AuthType *string `json:"authType,omitempty" xml:"authType,omitempty"`
 }
 
@@ -290,8 +383,14 @@ func (s *AuthConfig) SetAuthType(v string) *AuthConfig {
 }
 
 type BatchWindow struct {
+	// example:
+	//
+	// 100
 	CountBasedWindow *int32 `json:"CountBasedWindow,omitempty" xml:"CountBasedWindow,omitempty"`
-	TimeBasedWindow  *int32 `json:"TimeBasedWindow,omitempty" xml:"TimeBasedWindow,omitempty"`
+	// example:
+	//
+	// 10
+	TimeBasedWindow *int32 `json:"TimeBasedWindow,omitempty" xml:"TimeBasedWindow,omitempty"`
 }
 
 func (s BatchWindow) String() string {
@@ -313,10 +412,19 @@ func (s *BatchWindow) SetTimeBasedWindow(v int32) *BatchWindow {
 }
 
 type CDNTriggerConfig struct {
-	EventName    *string              `json:"eventName,omitempty" xml:"eventName,omitempty"`
+	// example:
+	//
+	// CdnDomainStarted
+	EventName *string `json:"eventName,omitempty" xml:"eventName,omitempty"`
+	// example:
+	//
+	// 1.0.0
 	EventVersion *string              `json:"eventVersion,omitempty" xml:"eventVersion,omitempty"`
 	Filter       map[string][]*string `json:"filter" xml:"filter"`
-	Notes        *string              `json:"notes,omitempty" xml:"notes,omitempty"`
+	// example:
+	//
+	// 缓存事件触发器
+	Notes *string `json:"notes,omitempty" xml:"notes,omitempty"`
 }
 
 func (s CDNTriggerConfig) String() string {
@@ -348,9 +456,24 @@ func (s *CDNTriggerConfig) SetNotes(v string) *CDNTriggerConfig {
 }
 
 type CertConfig struct {
-	CertName    *string `json:"certName,omitempty" xml:"certName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// my-cert
+	CertName *string `json:"certName,omitempty" xml:"certName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// PEM format
 	Certificate *string `json:"certificate,omitempty" xml:"certificate,omitempty"`
-	PrivateKey  *string `json:"privateKey,omitempty" xml:"privateKey,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// PEM format
+	PrivateKey *string `json:"privateKey,omitempty" xml:"privateKey,omitempty"`
 }
 
 func (s CertConfig) String() string {
@@ -377,8 +500,14 @@ func (s *CertConfig) SetPrivateKey(v string) *CertConfig {
 }
 
 type ConcurrencyConfig struct {
-	FunctionArn         *string `json:"functionArn,omitempty" xml:"functionArn,omitempty"`
-	ReservedConcurrency *int64  `json:"reservedConcurrency,omitempty" xml:"reservedConcurrency,omitempty"`
+	// example:
+	//
+	// acs:fc:cn-shanghai:123:functions/demo
+	FunctionArn *string `json:"functionArn,omitempty" xml:"functionArn,omitempty"`
+	// example:
+	//
+	// 10
+	ReservedConcurrency *int64 `json:"reservedConcurrency,omitempty" xml:"reservedConcurrency,omitempty"`
 }
 
 func (s ConcurrencyConfig) String() string {
@@ -401,9 +530,22 @@ func (s *ConcurrencyConfig) SetReservedConcurrency(v int64) *ConcurrencyConfig {
 
 type CreateAliasInput struct {
 	AdditionalVersionWeight map[string]*float32 `json:"additionalVersionWeight" xml:"additionalVersionWeight"`
-	AliasName               *string             `json:"aliasName,omitempty" xml:"aliasName,omitempty"`
-	Description             *string             `json:"description,omitempty" xml:"description,omitempty"`
-	VersionId               *string             `json:"versionId,omitempty" xml:"versionId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// prod
+	AliasName *string `json:"aliasName,omitempty" xml:"aliasName,omitempty"`
+	// example:
+	//
+	// my alias
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	VersionId *string `json:"versionId,omitempty" xml:"versionId,omitempty"`
 }
 
 func (s CreateAliasInput) String() string {
@@ -435,9 +577,17 @@ func (s *CreateAliasInput) SetVersionId(v string) *CreateAliasInput {
 }
 
 type CreateCustomDomainInput struct {
-	AuthConfig  *AuthConfig  `json:"authConfig,omitempty" xml:"authConfig,omitempty"`
-	CertConfig  *CertConfig  `json:"certConfig,omitempty" xml:"certConfig,omitempty"`
-	DomainName  *string      `json:"domainName,omitempty" xml:"domainName,omitempty"`
+	AuthConfig *AuthConfig `json:"authConfig,omitempty" xml:"authConfig,omitempty"`
+	CertConfig *CertConfig `json:"certConfig,omitempty" xml:"certConfig,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// example.com
+	DomainName *string `json:"domainName,omitempty" xml:"domainName,omitempty"`
+	// example:
+	//
+	// HTTP
 	Protocol    *string      `json:"protocol,omitempty" xml:"protocol,omitempty"`
 	RouteConfig *RouteConfig `json:"routeConfig,omitempty" xml:"routeConfig,omitempty"`
 	TlsConfig   *TLSConfig   `json:"tlsConfig,omitempty" xml:"tlsConfig,omitempty"`
@@ -488,30 +638,69 @@ func (s *CreateCustomDomainInput) SetWafConfig(v *WAFConfig) *CreateCustomDomain
 }
 
 type CreateFunctionInput struct {
-	Code                    *InputCodeLocation       `json:"code,omitempty" xml:"code,omitempty"`
-	Cpu                     *float32                 `json:"cpu,omitempty" xml:"cpu,omitempty"`
-	CustomContainerConfig   *CustomContainerConfig   `json:"customContainerConfig,omitempty" xml:"customContainerConfig,omitempty"`
-	CustomDNS               *CustomDNS               `json:"customDNS,omitempty" xml:"customDNS,omitempty"`
-	CustomRuntimeConfig     *CustomRuntimeConfig     `json:"customRuntimeConfig,omitempty" xml:"customRuntimeConfig,omitempty"`
-	Description             *string                  `json:"description,omitempty" xml:"description,omitempty"`
-	DiskSize                *int32                   `json:"diskSize,omitempty" xml:"diskSize,omitempty"`
-	EnvironmentVariables    map[string]*string       `json:"environmentVariables" xml:"environmentVariables"`
-	FunctionName            *string                  `json:"functionName,omitempty" xml:"functionName,omitempty"`
-	GpuConfig               *GPUConfig               `json:"gpuConfig,omitempty" xml:"gpuConfig,omitempty"`
-	Handler                 *string                  `json:"handler,omitempty" xml:"handler,omitempty"`
+	Code *InputCodeLocation `json:"code,omitempty" xml:"code,omitempty"`
+	// example:
+	//
+	// 1
+	Cpu                   *float32               `json:"cpu,omitempty" xml:"cpu,omitempty"`
+	CustomContainerConfig *CustomContainerConfig `json:"customContainerConfig,omitempty" xml:"customContainerConfig,omitempty"`
+	CustomDNS             *CustomDNS             `json:"customDNS,omitempty" xml:"customDNS,omitempty"`
+	CustomRuntimeConfig   *CustomRuntimeConfig   `json:"customRuntimeConfig,omitempty" xml:"customRuntimeConfig,omitempty"`
+	// example:
+	//
+	// my function
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// example:
+	//
+	// 512
+	DiskSize             *int32             `json:"diskSize,omitempty" xml:"diskSize,omitempty"`
+	EnvironmentVariables map[string]*string `json:"environmentVariables" xml:"environmentVariables"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// my-function-1
+	FunctionName *string    `json:"functionName,omitempty" xml:"functionName,omitempty"`
+	GpuConfig    *GPUConfig `json:"gpuConfig,omitempty" xml:"gpuConfig,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// index.handler
+	Handler *string `json:"handler,omitempty" xml:"handler,omitempty"`
+	// example:
+	//
+	// 1
 	InstanceConcurrency     *int32                   `json:"instanceConcurrency,omitempty" xml:"instanceConcurrency,omitempty"`
 	InstanceLifecycleConfig *InstanceLifecycleConfig `json:"instanceLifecycleConfig,omitempty" xml:"instanceLifecycleConfig,omitempty"`
-	InternetAccess          *bool                    `json:"internetAccess,omitempty" xml:"internetAccess,omitempty"`
-	Layers                  []*string                `json:"layers" xml:"layers" type:"Repeated"`
-	LogConfig               *LogConfig               `json:"logConfig,omitempty" xml:"logConfig,omitempty"`
-	MemorySize              *int32                   `json:"memorySize,omitempty" xml:"memorySize,omitempty"`
-	NasConfig               *NASConfig               `json:"nasConfig,omitempty" xml:"nasConfig,omitempty"`
-	OssMountConfig          *OSSMountConfig          `json:"ossMountConfig,omitempty" xml:"ossMountConfig,omitempty"`
-	Role                    *string                  `json:"role,omitempty" xml:"role,omitempty"`
-	Runtime                 *string                  `json:"runtime,omitempty" xml:"runtime,omitempty"`
-	Timeout                 *int32                   `json:"timeout,omitempty" xml:"timeout,omitempty"`
-	TracingConfig           *TracingConfig           `json:"tracingConfig,omitempty" xml:"tracingConfig,omitempty"`
-	VpcConfig               *VPCConfig               `json:"vpcConfig,omitempty" xml:"vpcConfig,omitempty"`
+	// example:
+	//
+	// true
+	InternetAccess *bool      `json:"internetAccess,omitempty" xml:"internetAccess,omitempty"`
+	Layers         []*string  `json:"layers" xml:"layers" type:"Repeated"`
+	LogConfig      *LogConfig `json:"logConfig,omitempty" xml:"logConfig,omitempty"`
+	// example:
+	//
+	// 512
+	MemorySize     *int32          `json:"memorySize,omitempty" xml:"memorySize,omitempty"`
+	NasConfig      *NASConfig      `json:"nasConfig,omitempty" xml:"nasConfig,omitempty"`
+	OssMountConfig *OSSMountConfig `json:"ossMountConfig,omitempty" xml:"ossMountConfig,omitempty"`
+	// example:
+	//
+	// acs:ram::188077086902****:role/fc-test
+	Role *string `json:"role,omitempty" xml:"role,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// python3.10
+	Runtime *string `json:"runtime,omitempty" xml:"runtime,omitempty"`
+	// example:
+	//
+	// 60
+	Timeout       *int32         `json:"timeout,omitempty" xml:"timeout,omitempty"`
+	TracingConfig *TracingConfig `json:"tracingConfig,omitempty" xml:"tracingConfig,omitempty"`
+	VpcConfig     *VPCConfig     `json:"vpcConfig,omitempty" xml:"vpcConfig,omitempty"`
 }
 
 func (s CreateFunctionInput) String() string {
@@ -645,8 +834,14 @@ func (s *CreateFunctionInput) SetVpcConfig(v *VPCConfig) *CreateFunctionInput {
 type CreateLayerVersionInput struct {
 	Code              *InputCodeLocation `json:"code,omitempty" xml:"code,omitempty"`
 	CompatibleRuntime []*string          `json:"compatibleRuntime" xml:"compatibleRuntime" type:"Repeated"`
-	Description       *string            `json:"description,omitempty" xml:"description,omitempty"`
-	License           *string            `json:"license,omitempty" xml:"license,omitempty"`
+	// example:
+	//
+	// my first layer
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// example:
+	//
+	// Apache
+	License *string `json:"license,omitempty" xml:"license,omitempty"`
 }
 
 func (s CreateLayerVersionInput) String() string {
@@ -678,13 +873,40 @@ func (s *CreateLayerVersionInput) SetLicense(v string) *CreateLayerVersionInput 
 }
 
 type CreateTriggerInput struct {
-	Description    *string `json:"description,omitempty" xml:"description,omitempty"`
+	// example:
+	//
+	// trigger for test
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// example:
+	//
+	// acs:ram::1234567890:role/fc-test
 	InvocationRole *string `json:"invocationRole,omitempty" xml:"invocationRole,omitempty"`
-	Qualifier      *string `json:"qualifier,omitempty" xml:"qualifier,omitempty"`
-	SourceArn      *string `json:"sourceArn,omitempty" xml:"sourceArn,omitempty"`
-	TriggerConfig  *string `json:"triggerConfig,omitempty" xml:"triggerConfig,omitempty"`
-	TriggerName    *string `json:"triggerName,omitempty" xml:"triggerName,omitempty"`
-	TriggerType    *string `json:"triggerType,omitempty" xml:"triggerType,omitempty"`
+	// example:
+	//
+	// LATEST
+	Qualifier *string `json:"qualifier,omitempty" xml:"qualifier,omitempty"`
+	// example:
+	//
+	// acs:oss:cn-shanghai:12345:mybucket
+	SourceArn *string `json:"sourceArn,omitempty" xml:"sourceArn,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// {"events":["oss:ObjectCreated:*"],"filter":{"key":{"prefix":"/prefix","suffix":".zip"}}}
+	TriggerConfig *string `json:"triggerConfig,omitempty" xml:"triggerConfig,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// oss_create_object_demo
+	TriggerName *string `json:"triggerName,omitempty" xml:"triggerName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// oss
+	TriggerType *string `json:"triggerType,omitempty" xml:"triggerType,omitempty"`
 }
 
 func (s CreateTriggerInput) String() string {
@@ -731,6 +953,11 @@ func (s *CreateTriggerInput) SetTriggerType(v string) *CreateTriggerInput {
 }
 
 type CreateVpcBindingInput struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// vpc-8vb8x8dggvr0axxxxxxxx
 	VpcId *string `json:"vpcId,omitempty" xml:"vpcId,omitempty"`
 }
 
@@ -748,15 +975,30 @@ func (s *CreateVpcBindingInput) SetVpcId(v string) *CreateVpcBindingInput {
 }
 
 type CustomContainerConfig struct {
-	AccelerationInfo  *AccelerationInfo        `json:"accelerationInfo,omitempty" xml:"accelerationInfo,omitempty"`
-	AccelerationType  *string                  `json:"accelerationType,omitempty" xml:"accelerationType,omitempty"`
+	AccelerationInfo *AccelerationInfo `json:"accelerationInfo,omitempty" xml:"accelerationInfo,omitempty"`
+	// example:
+	//
+	// deprecated
+	AccelerationType *string `json:"accelerationType,omitempty" xml:"accelerationType,omitempty"`
+	// example:
+	//
+	// deprecated
 	AcrInstanceId     *string                  `json:"acrInstanceId,omitempty" xml:"acrInstanceId,omitempty"`
 	Command           []*string                `json:"command" xml:"command" type:"Repeated"`
 	Entrypoint        []*string                `json:"entrypoint" xml:"entrypoint" type:"Repeated"`
 	HealthCheckConfig *CustomHealthCheckConfig `json:"healthCheckConfig,omitempty" xml:"healthCheckConfig,omitempty"`
-	Image             *string                  `json:"image,omitempty" xml:"image,omitempty"`
-	Port              *int32                   `json:"port,omitempty" xml:"port,omitempty"`
-	ResolvedImageUri  *string                  `json:"resolvedImageUri,omitempty" xml:"resolvedImageUri,omitempty"`
+	// example:
+	//
+	// registry-vpc.cn-hangzhou.aliyuncs.com/fc-demo/helloworld:v1
+	Image *string `json:"image,omitempty" xml:"image,omitempty"`
+	// example:
+	//
+	// 9000
+	Port *int32 `json:"port,omitempty" xml:"port,omitempty"`
+	// example:
+	//
+	// stand-sh-registry-vpc.cn-shanghai.cr.aliyuncs.com/fc-demo2/springboot-helloworld@sha256:68d1****0d64d6
+	ResolvedImageUri *string `json:"resolvedImageUri,omitempty" xml:"resolvedImageUri,omitempty"`
 }
 
 func (s CustomContainerConfig) String() string {
@@ -842,18 +1084,36 @@ func (s *CustomDNS) SetSearches(v []*string) *CustomDNS {
 }
 
 type CustomDomain struct {
-	AccountId        *string      `json:"accountId,omitempty" xml:"accountId,omitempty"`
-	ApiVersion       *string      `json:"apiVersion,omitempty" xml:"apiVersion,omitempty"`
-	AuthConfig       *AuthConfig  `json:"authConfig,omitempty" xml:"authConfig,omitempty"`
-	CertConfig       *CertConfig  `json:"certConfig,omitempty" xml:"certConfig,omitempty"`
-	CreatedTime      *string      `json:"createdTime,omitempty" xml:"createdTime,omitempty"`
-	DomainName       *string      `json:"domainName,omitempty" xml:"domainName,omitempty"`
-	LastModifiedTime *string      `json:"lastModifiedTime,omitempty" xml:"lastModifiedTime,omitempty"`
-	Protocol         *string      `json:"protocol,omitempty" xml:"protocol,omitempty"`
-	RouteConfig      *RouteConfig `json:"routeConfig,omitempty" xml:"routeConfig,omitempty"`
-	SubdomainCount   *string      `json:"subdomainCount,omitempty" xml:"subdomainCount,omitempty"`
-	TlsConfig        *TLSConfig   `json:"tlsConfig,omitempty" xml:"tlsConfig,omitempty"`
-	WafConfig        *WAFConfig   `json:"wafConfig,omitempty" xml:"wafConfig,omitempty"`
+	AccountId *string `json:"accountId,omitempty" xml:"accountId,omitempty"`
+	// example:
+	//
+	// 2023-03-30
+	ApiVersion *string     `json:"apiVersion,omitempty" xml:"apiVersion,omitempty"`
+	AuthConfig *AuthConfig `json:"authConfig,omitempty" xml:"authConfig,omitempty"`
+	CertConfig *CertConfig `json:"certConfig,omitempty" xml:"certConfig,omitempty"`
+	// example:
+	//
+	// 2023-03-30T08:02:19Z
+	CreatedTime *string `json:"createdTime,omitempty" xml:"createdTime,omitempty"`
+	// example:
+	//
+	// example.com
+	DomainName *string `json:"domainName,omitempty" xml:"domainName,omitempty"`
+	// example:
+	//
+	// 2023-03-30T08:02:19Z
+	LastModifiedTime *string `json:"lastModifiedTime,omitempty" xml:"lastModifiedTime,omitempty"`
+	// example:
+	//
+	// HTTP
+	Protocol    *string      `json:"protocol,omitempty" xml:"protocol,omitempty"`
+	RouteConfig *RouteConfig `json:"routeConfig,omitempty" xml:"routeConfig,omitempty"`
+	// example:
+	//
+	// 1
+	SubdomainCount *string    `json:"subdomainCount,omitempty" xml:"subdomainCount,omitempty"`
+	TlsConfig      *TLSConfig `json:"tlsConfig,omitempty" xml:"tlsConfig,omitempty"`
+	WafConfig      *WAFConfig `json:"wafConfig,omitempty" xml:"wafConfig,omitempty"`
 }
 
 func (s CustomDomain) String() string {
@@ -925,12 +1185,30 @@ func (s *CustomDomain) SetWafConfig(v *WAFConfig) *CustomDomain {
 }
 
 type CustomHealthCheckConfig struct {
-	FailureThreshold    *int32  `json:"failureThreshold,omitempty" xml:"failureThreshold,omitempty"`
-	HttpGetUrl          *string `json:"httpGetUrl,omitempty" xml:"httpGetUrl,omitempty"`
-	InitialDelaySeconds *int32  `json:"initialDelaySeconds,omitempty" xml:"initialDelaySeconds,omitempty"`
-	PeriodSeconds       *int32  `json:"periodSeconds,omitempty" xml:"periodSeconds,omitempty"`
-	SuccessThreshold    *int32  `json:"successThreshold,omitempty" xml:"successThreshold,omitempty"`
-	TimeoutSeconds      *int32  `json:"timeoutSeconds,omitempty" xml:"timeoutSeconds,omitempty"`
+	// example:
+	//
+	// 1
+	FailureThreshold *int32 `json:"failureThreshold,omitempty" xml:"failureThreshold,omitempty"`
+	// example:
+	//
+	// /ready
+	HttpGetUrl *string `json:"httpGetUrl,omitempty" xml:"httpGetUrl,omitempty"`
+	// example:
+	//
+	// 1
+	InitialDelaySeconds *int32 `json:"initialDelaySeconds,omitempty" xml:"initialDelaySeconds,omitempty"`
+	// example:
+	//
+	// 1
+	PeriodSeconds *int32 `json:"periodSeconds,omitempty" xml:"periodSeconds,omitempty"`
+	// example:
+	//
+	// 2
+	SuccessThreshold *int32 `json:"successThreshold,omitempty" xml:"successThreshold,omitempty"`
+	// example:
+	//
+	// 2
+	TimeoutSeconds *int32 `json:"timeoutSeconds,omitempty" xml:"timeoutSeconds,omitempty"`
 }
 
 func (s CustomHealthCheckConfig) String() string {
@@ -975,7 +1253,10 @@ type CustomRuntimeConfig struct {
 	Args              []*string                `json:"args" xml:"args" type:"Repeated"`
 	Command           []*string                `json:"command" xml:"command" type:"Repeated"`
 	HealthCheckConfig *CustomHealthCheckConfig `json:"healthCheckConfig,omitempty" xml:"healthCheckConfig,omitempty"`
-	Port              *int32                   `json:"port,omitempty" xml:"port,omitempty"`
+	// example:
+	//
+	// 9000
+	Port *int32 `json:"port,omitempty" xml:"port,omitempty"`
 }
 
 func (s CustomRuntimeConfig) String() string {
@@ -1007,7 +1288,13 @@ func (s *CustomRuntimeConfig) SetPort(v int32) *CustomRuntimeConfig {
 }
 
 type DNSOption struct {
-	Name  *string `json:"name,omitempty" xml:"name,omitempty"`
+	// example:
+	//
+	// ndots
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// example:
+	//
+	// 2
 	Value *string `json:"value,omitempty" xml:"value,omitempty"`
 }
 
@@ -1047,7 +1334,13 @@ func (s *DeadLetterQueue) SetArn(v string) *DeadLetterQueue {
 }
 
 type DeliveryOption struct {
-	Concurrency *int64  `json:"concurrency,omitempty" xml:"concurrency,omitempty"`
+	// example:
+	//
+	// 2
+	Concurrency *int64 `json:"concurrency,omitempty" xml:"concurrency,omitempty"`
+	// example:
+	//
+	// RawData
 	EventSchema *string `json:"eventSchema,omitempty" xml:"eventSchema,omitempty"`
 }
 
@@ -1070,6 +1363,9 @@ func (s *DeliveryOption) SetEventSchema(v string) *DeliveryOption {
 }
 
 type Destination struct {
+	// example:
+	//
+	// acs:fc:cn-shanghai:xxx:functions/f1
 	Destination *string `json:"destination,omitempty" xml:"destination,omitempty"`
 }
 
@@ -1110,7 +1406,17 @@ func (s *DestinationConfig) SetOnSuccess(v *Destination) *DestinationConfig {
 }
 
 type EqualRule struct {
-	Match       *string `json:"match,omitempty" xml:"match,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// /old
+	Match *string `json:"match,omitempty" xml:"match,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// /new
 	Replacement *string `json:"replacement,omitempty" xml:"replacement,omitempty"`
 }
 
@@ -1133,8 +1439,17 @@ func (s *EqualRule) SetReplacement(v string) *EqualRule {
 }
 
 type Error struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// FunctionNotFound
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// function not found
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 1-64e70cf1-5cbef92ea8fc8c42899cf5d1
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1162,12 +1477,18 @@ func (s *Error) SetRequestId(v string) *Error {
 }
 
 type EventBridgeTriggerConfig struct {
-	AsyncInvocationType    *bool              `json:"asyncInvocationType,omitempty" xml:"asyncInvocationType,omitempty"`
+	AsyncInvocationType *bool `json:"asyncInvocationType,omitempty" xml:"asyncInvocationType,omitempty"`
+	// example:
+	//
+	// {}
 	EventRuleFilterPattern *string            `json:"eventRuleFilterPattern,omitempty" xml:"eventRuleFilterPattern,omitempty"`
 	EventSinkConfig        *EventSinkConfig   `json:"eventSinkConfig,omitempty" xml:"eventSinkConfig,omitempty"`
 	EventSourceConfig      *EventSourceConfig `json:"eventSourceConfig,omitempty" xml:"eventSourceConfig,omitempty"`
 	RunOptions             *RunOptions        `json:"runOptions,omitempty" xml:"runOptions,omitempty"`
-	TriggerEnable          *bool              `json:"triggerEnable,omitempty" xml:"triggerEnable,omitempty"`
+	// example:
+	//
+	// true
+	TriggerEnable *bool `json:"triggerEnable,omitempty" xml:"triggerEnable,omitempty"`
 }
 
 func (s EventBridgeTriggerConfig) String() string {
@@ -1227,7 +1548,10 @@ func (s *EventSinkConfig) SetDeliveryOption(v *DeliveryOption) *EventSinkConfig 
 
 type EventSourceConfig struct {
 	EventSourceParameters *EventSourceParameters `json:"eventSourceParameters,omitempty" xml:"eventSourceParameters,omitempty"`
-	EventSourceType       *string                `json:"eventSourceType,omitempty" xml:"eventSourceType,omitempty"`
+	// example:
+	//
+	// MNS
+	EventSourceType *string `json:"eventSourceType,omitempty" xml:"eventSourceType,omitempty"`
 }
 
 func (s EventSourceConfig) String() string {
@@ -1313,41 +1637,110 @@ func (s *Filter) SetKey(v *Key) *Filter {
 }
 
 type Function struct {
-	CodeChecksum               *string                  `json:"codeChecksum,omitempty" xml:"codeChecksum,omitempty"`
-	CodeSize                   *int64                   `json:"codeSize,omitempty" xml:"codeSize,omitempty"`
-	Cpu                        *float32                 `json:"cpu,omitempty" xml:"cpu,omitempty"`
-	CreatedTime                *string                  `json:"createdTime,omitempty" xml:"createdTime,omitempty"`
-	CustomContainerConfig      *CustomContainerConfig   `json:"customContainerConfig,omitempty" xml:"customContainerConfig,omitempty"`
-	CustomDNS                  *CustomDNS               `json:"customDNS,omitempty" xml:"customDNS,omitempty"`
-	CustomRuntimeConfig        *CustomRuntimeConfig     `json:"customRuntimeConfig,omitempty" xml:"customRuntimeConfig,omitempty"`
-	Description                *string                  `json:"description,omitempty" xml:"description,omitempty"`
-	DiskSize                   *int32                   `json:"diskSize,omitempty" xml:"diskSize,omitempty"`
-	EnvironmentVariables       map[string]*string       `json:"environmentVariables" xml:"environmentVariables"`
-	FunctionArn                *string                  `json:"functionArn,omitempty" xml:"functionArn,omitempty"`
-	FunctionId                 *string                  `json:"functionId,omitempty" xml:"functionId,omitempty"`
-	FunctionName               *string                  `json:"functionName,omitempty" xml:"functionName,omitempty"`
-	GpuConfig                  *GPUConfig               `json:"gpuConfig,omitempty" xml:"gpuConfig,omitempty"`
-	Handler                    *string                  `json:"handler,omitempty" xml:"handler,omitempty"`
-	InstanceConcurrency        *int32                   `json:"instanceConcurrency,omitempty" xml:"instanceConcurrency,omitempty"`
-	InstanceLifecycleConfig    *InstanceLifecycleConfig `json:"instanceLifecycleConfig,omitempty" xml:"instanceLifecycleConfig,omitempty"`
-	InternetAccess             *bool                    `json:"internetAccess,omitempty" xml:"internetAccess,omitempty"`
-	LastModifiedTime           *string                  `json:"lastModifiedTime,omitempty" xml:"lastModifiedTime,omitempty"`
-	LastUpdateStatus           *string                  `json:"lastUpdateStatus,omitempty" xml:"lastUpdateStatus,omitempty"`
-	LastUpdateStatusReason     *string                  `json:"lastUpdateStatusReason,omitempty" xml:"lastUpdateStatusReason,omitempty"`
-	LastUpdateStatusReasonCode *string                  `json:"lastUpdateStatusReasonCode,omitempty" xml:"lastUpdateStatusReasonCode,omitempty"`
-	Layers                     []*FunctionLayer         `json:"layers" xml:"layers" type:"Repeated"`
-	LogConfig                  *LogConfig               `json:"logConfig,omitempty" xml:"logConfig,omitempty"`
-	MemorySize                 *int32                   `json:"memorySize,omitempty" xml:"memorySize,omitempty"`
-	NasConfig                  *NASConfig               `json:"nasConfig,omitempty" xml:"nasConfig,omitempty"`
-	OssMountConfig             *OSSMountConfig          `json:"ossMountConfig,omitempty" xml:"ossMountConfig,omitempty"`
-	Role                       *string                  `json:"role,omitempty" xml:"role,omitempty"`
-	Runtime                    *string                  `json:"runtime,omitempty" xml:"runtime,omitempty"`
-	State                      *string                  `json:"state,omitempty" xml:"state,omitempty"`
-	StateReason                *string                  `json:"stateReason,omitempty" xml:"stateReason,omitempty"`
-	StateReasonCode            *string                  `json:"stateReasonCode,omitempty" xml:"stateReasonCode,omitempty"`
-	Timeout                    *int32                   `json:"timeout,omitempty" xml:"timeout,omitempty"`
-	TracingConfig              *TracingConfig           `json:"tracingConfig,omitempty" xml:"tracingConfig,omitempty"`
-	VpcConfig                  *VPCConfig               `json:"vpcConfig,omitempty" xml:"vpcConfig,omitempty"`
+	// example:
+	//
+	// 2825179536350****
+	CodeChecksum *string `json:"codeChecksum,omitempty" xml:"codeChecksum,omitempty"`
+	// example:
+	//
+	// 412
+	CodeSize *int64 `json:"codeSize,omitempty" xml:"codeSize,omitempty"`
+	// example:
+	//
+	// 1
+	Cpu *float32 `json:"cpu,omitempty" xml:"cpu,omitempty"`
+	// example:
+	//
+	// 2023-04-01T08:15:27Z
+	CreatedTime           *string                `json:"createdTime,omitempty" xml:"createdTime,omitempty"`
+	CustomContainerConfig *CustomContainerConfig `json:"customContainerConfig,omitempty" xml:"customContainerConfig,omitempty"`
+	CustomDNS             *CustomDNS             `json:"customDNS,omitempty" xml:"customDNS,omitempty"`
+	CustomRuntimeConfig   *CustomRuntimeConfig   `json:"customRuntimeConfig,omitempty" xml:"customRuntimeConfig,omitempty"`
+	// example:
+	//
+	// my function
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// example:
+	//
+	// 512
+	DiskSize             *int32             `json:"diskSize,omitempty" xml:"diskSize,omitempty"`
+	EnvironmentVariables map[string]*string `json:"environmentVariables" xml:"environmentVariables"`
+	// example:
+	//
+	// acs:fc:cn-shanghai:123:functions/functionName
+	FunctionArn *string `json:"functionArn,omitempty" xml:"functionArn,omitempty"`
+	// example:
+	//
+	// aa715851-1c20-4b89-a8fb-***
+	FunctionId *string `json:"functionId,omitempty" xml:"functionId,omitempty"`
+	// example:
+	//
+	// my-function-1
+	FunctionName *string    `json:"functionName,omitempty" xml:"functionName,omitempty"`
+	GpuConfig    *GPUConfig `json:"gpuConfig,omitempty" xml:"gpuConfig,omitempty"`
+	// example:
+	//
+	// index.handler
+	Handler *string `json:"handler,omitempty" xml:"handler,omitempty"`
+	// example:
+	//
+	// 1
+	InstanceConcurrency     *int32                   `json:"instanceConcurrency,omitempty" xml:"instanceConcurrency,omitempty"`
+	InstanceLifecycleConfig *InstanceLifecycleConfig `json:"instanceLifecycleConfig,omitempty" xml:"instanceLifecycleConfig,omitempty"`
+	// example:
+	//
+	// true
+	InternetAccess *bool `json:"internetAccess,omitempty" xml:"internetAccess,omitempty"`
+	// example:
+	//
+	// 2023-05-01T08:15:27Z
+	LastModifiedTime *string `json:"lastModifiedTime,omitempty" xml:"lastModifiedTime,omitempty"`
+	// example:
+	//
+	// InProgress
+	LastUpdateStatus *string `json:"lastUpdateStatus,omitempty" xml:"lastUpdateStatus,omitempty"`
+	// example:
+	//
+	// The system is currently processing the acceleration optimization for the image.
+	LastUpdateStatusReason *string `json:"lastUpdateStatusReason,omitempty" xml:"lastUpdateStatusReason,omitempty"`
+	// example:
+	//
+	// ImageOptimizing
+	LastUpdateStatusReasonCode *string          `json:"lastUpdateStatusReasonCode,omitempty" xml:"lastUpdateStatusReasonCode,omitempty"`
+	Layers                     []*FunctionLayer `json:"layers" xml:"layers" type:"Repeated"`
+	LogConfig                  *LogConfig       `json:"logConfig,omitempty" xml:"logConfig,omitempty"`
+	// example:
+	//
+	// 512
+	MemorySize     *int32          `json:"memorySize,omitempty" xml:"memorySize,omitempty"`
+	NasConfig      *NASConfig      `json:"nasConfig,omitempty" xml:"nasConfig,omitempty"`
+	OssMountConfig *OSSMountConfig `json:"ossMountConfig,omitempty" xml:"ossMountConfig,omitempty"`
+	// example:
+	//
+	// acs:ram::188077086902****:role/fc-test
+	Role *string `json:"role,omitempty" xml:"role,omitempty"`
+	// example:
+	//
+	// python3.10
+	Runtime *string `json:"runtime,omitempty" xml:"runtime,omitempty"`
+	// example:
+	//
+	// Pending
+	State *string `json:"state,omitempty" xml:"state,omitempty"`
+	// example:
+	//
+	// Function creating
+	StateReason *string `json:"stateReason,omitempty" xml:"stateReason,omitempty"`
+	// example:
+	//
+	// Creating
+	StateReasonCode *string `json:"stateReasonCode,omitempty" xml:"stateReasonCode,omitempty"`
+	// example:
+	//
+	// 60
+	Timeout       *int32         `json:"timeout,omitempty" xml:"timeout,omitempty"`
+	TracingConfig *TracingConfig `json:"tracingConfig,omitempty" xml:"tracingConfig,omitempty"`
+	VpcConfig     *VPCConfig     `json:"vpcConfig,omitempty" xml:"vpcConfig,omitempty"`
 }
 
 func (s Function) String() string {
@@ -1534,8 +1927,14 @@ func (s *Function) SetVpcConfig(v *VPCConfig) *Function {
 }
 
 type FunctionLayer struct {
-	Arn  *string `json:"arn,omitempty" xml:"arn,omitempty"`
-	Size *int64  `json:"size,omitempty" xml:"size,omitempty"`
+	// example:
+	//
+	// acs:fc:cn-beijing:186824xxxxxx:layers/fc_layer/versions/1
+	Arn *string `json:"arn,omitempty" xml:"arn,omitempty"`
+	// example:
+	//
+	// 421
+	Size *int64 `json:"size,omitempty" xml:"size,omitempty"`
 }
 
 func (s FunctionLayer) String() string {
@@ -1557,8 +1956,14 @@ func (s *FunctionLayer) SetSize(v int64) *FunctionLayer {
 }
 
 type GPUConfig struct {
-	GpuMemorySize *int32  `json:"gpuMemorySize,omitempty" xml:"gpuMemorySize,omitempty"`
-	GpuType       *string `json:"gpuType,omitempty" xml:"gpuType,omitempty"`
+	// example:
+	//
+	// 2048
+	GpuMemorySize *int32 `json:"gpuMemorySize,omitempty" xml:"gpuMemorySize,omitempty"`
+	// example:
+	//
+	// fc.gpu.ampere.1
+	GpuType *string `json:"gpuType,omitempty" xml:"gpuType,omitempty"`
 }
 
 func (s GPUConfig) String() string {
@@ -1580,7 +1985,13 @@ func (s *GPUConfig) SetGpuType(v string) *GPUConfig {
 }
 
 type GetResourceTagsOutput struct {
-	ResouceType *string            `json:"resouceType,omitempty" xml:"resouceType,omitempty"`
+	// example:
+	//
+	// ALIYUN::FC::FUNCTION
+	ResouceType *string `json:"resouceType,omitempty" xml:"resouceType,omitempty"`
+	// example:
+	//
+	// acs:fc:cn-shanghai:****:functions/demo
 	ResourceArn *string            `json:"resourceArn,omitempty" xml:"resourceArn,omitempty"`
 	Tags        map[string]*string `json:"tags" xml:"tags"`
 }
@@ -1609,7 +2020,13 @@ func (s *GetResourceTagsOutput) SetTags(v map[string]*string) *GetResourceTagsOu
 }
 
 type HTTPTrigger struct {
+	// example:
+	//
+	// https://svc-func-xxxxxxxx.cn-hangzhou.fcapp.run
 	UrlInternet *string `json:"urlInternet,omitempty" xml:"urlInternet,omitempty"`
+	// example:
+	//
+	// https://svc-func-xxxxxxxx.cn-hangzhou-vpc.fcapp.run
 	UrlIntranet *string `json:"urlIntranet,omitempty" xml:"urlIntranet,omitempty"`
 }
 
@@ -1632,8 +2049,17 @@ func (s *HTTPTrigger) SetUrlIntranet(v string) *HTTPTrigger {
 }
 
 type HTTPTriggerConfig struct {
-	AuthConfig         *string   `json:"authConfig,omitempty" xml:"authConfig,omitempty"`
-	AuthType           *string   `json:"authType,omitempty" xml:"authType,omitempty"`
+	// example:
+	//
+	// {"JWKS":{"foo":"bar"},"TokenLookup":"header:Authorization:Bearer,cookie:AuthorizationCookie","ClaimPassBy":"query:uid:uid,header:name:name"}
+	AuthConfig *string `json:"authConfig,omitempty" xml:"authConfig,omitempty"`
+	// example:
+	//
+	// anonymous
+	AuthType *string `json:"authType,omitempty" xml:"authType,omitempty"`
+	// example:
+	//
+	// true
 	DisableURLInternet *bool     `json:"disableURLInternet,omitempty" xml:"disableURLInternet,omitempty"`
 	Methods            []*string `json:"methods" xml:"methods" type:"Repeated"`
 }
@@ -1667,10 +2093,22 @@ func (s *HTTPTriggerConfig) SetMethods(v []*string) *HTTPTriggerConfig {
 }
 
 type InputCodeLocation struct {
-	Checksum      *string `json:"checksum,omitempty" xml:"checksum,omitempty"`
+	// example:
+	//
+	// 2825179536350****
+	Checksum *string `json:"checksum,omitempty" xml:"checksum,omitempty"`
+	// example:
+	//
+	// demo-bucket
 	OssBucketName *string `json:"ossBucketName,omitempty" xml:"ossBucketName,omitempty"`
+	// example:
+	//
+	// demo-object
 	OssObjectName *string `json:"ossObjectName,omitempty" xml:"ossObjectName,omitempty"`
-	ZipFile       *string `json:"zipFile,omitempty" xml:"zipFile,omitempty"`
+	// example:
+	//
+	// UEsDBAoAAAAAANF
+	ZipFile *string `json:"zipFile,omitempty" xml:"zipFile,omitempty"`
 }
 
 func (s InputCodeLocation) String() string {
@@ -1702,8 +2140,14 @@ func (s *InputCodeLocation) SetZipFile(v string) *InputCodeLocation {
 }
 
 type InstanceInfo struct {
+	// example:
+	//
+	// 1ef6b6ff-7f7b-485e-ab49-501ac681****
 	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
-	VersionId  *string `json:"versionId,omitempty" xml:"versionId,omitempty"`
+	// example:
+	//
+	// LATEST
+	VersionId *string `json:"versionId,omitempty" xml:"versionId,omitempty"`
 }
 
 func (s InstanceInfo) String() string {
@@ -1748,7 +2192,13 @@ func (s *InstanceLifecycleConfig) SetPreStop(v *LifecycleHook) *InstanceLifecycl
 }
 
 type JobConfig struct {
-	MaxRetryTime    *int32 `json:"maxRetryTime,omitempty" xml:"maxRetryTime,omitempty"`
+	// example:
+	//
+	// 3
+	MaxRetryTime *int32 `json:"maxRetryTime,omitempty" xml:"maxRetryTime,omitempty"`
+	// example:
+	//
+	// 60
 	TriggerInterval *int32 `json:"triggerInterval,omitempty" xml:"triggerInterval,omitempty"`
 }
 
@@ -1771,7 +2221,13 @@ func (s *JobConfig) SetTriggerInterval(v int32) *JobConfig {
 }
 
 type Key struct {
+	// example:
+	//
+	// serverless_
 	Prefix *string `json:"prefix,omitempty" xml:"prefix,omitempty"`
+	// example:
+	//
+	// .zip
 	Suffix *string `json:"suffix,omitempty" xml:"suffix,omitempty"`
 }
 
@@ -1794,17 +2250,46 @@ func (s *Key) SetSuffix(v string) *Key {
 }
 
 type Layer struct {
-	Acl               *string             `json:"acl,omitempty" xml:"acl,omitempty"`
-	Code              *OutputCodeLocation `json:"code,omitempty" xml:"code,omitempty"`
-	CodeChecksum      *string             `json:"codeChecksum,omitempty" xml:"codeChecksum,omitempty"`
-	CodeSize          *int64              `json:"codeSize,omitempty" xml:"codeSize,omitempty"`
-	CompatibleRuntime []*string           `json:"compatibleRuntime" xml:"compatibleRuntime" type:"Repeated"`
-	CreateTime        *string             `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	Description       *string             `json:"description,omitempty" xml:"description,omitempty"`
-	LayerName         *string             `json:"layerName,omitempty" xml:"layerName,omitempty"`
-	LayerVersionArn   *string             `json:"layerVersionArn,omitempty" xml:"layerVersionArn,omitempty"`
-	License           *string             `json:"license,omitempty" xml:"license,omitempty"`
-	Version           *int32              `json:"version,omitempty" xml:"version,omitempty"`
+	// example:
+	//
+	// 0
+	Acl  *string             `json:"acl,omitempty" xml:"acl,omitempty"`
+	Code *OutputCodeLocation `json:"code,omitempty" xml:"code,omitempty"`
+	// example:
+	//
+	// 2825179536350****
+	CodeChecksum *string `json:"codeChecksum,omitempty" xml:"codeChecksum,omitempty"`
+	// example:
+	//
+	// 421
+	CodeSize          *int64    `json:"codeSize,omitempty" xml:"codeSize,omitempty"`
+	CompatibleRuntime []*string `json:"compatibleRuntime" xml:"compatibleRuntime" type:"Repeated"`
+	// example:
+	//
+	// 2023-03-30T11:08:00Z
+	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// example:
+	//
+	// My first layer
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// MyLayer
+	LayerName *string `json:"layerName,omitempty" xml:"layerName,omitempty"`
+	// example:
+	//
+	// acs:fc:cn-beijing:186824xxxxxx:layers/fc_layer/versions/1
+	LayerVersionArn *string `json:"layerVersionArn,omitempty" xml:"layerVersionArn,omitempty"`
+	// example:
+	//
+	// Apache
+	License *string `json:"license,omitempty" xml:"license,omitempty"`
+	// example:
+	//
+	// 1
+	Version *int32 `json:"version,omitempty" xml:"version,omitempty"`
 }
 
 func (s Layer) String() string {
@@ -1871,8 +2356,14 @@ func (s *Layer) SetVersion(v int32) *Layer {
 }
 
 type LifecycleHook struct {
+	// example:
+	//
+	// index.initializer
 	Handler *string `json:"handler,omitempty" xml:"handler,omitempty"`
-	Timeout *int32  `json:"timeout,omitempty" xml:"timeout,omitempty"`
+	// example:
+	//
+	// 10
+	Timeout *int32 `json:"timeout,omitempty" xml:"timeout,omitempty"`
 }
 
 func (s LifecycleHook) String() string {
@@ -1894,8 +2385,11 @@ func (s *LifecycleHook) SetTimeout(v int32) *LifecycleHook {
 }
 
 type ListAliasesOutput struct {
-	Aliases   []*Alias `json:"aliases" xml:"aliases" type:"Repeated"`
-	NextToken *string  `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	Aliases []*Alias `json:"aliases" xml:"aliases" type:"Repeated"`
+	// example:
+	//
+	// test
+	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
 }
 
 func (s ListAliasesOutput) String() string {
@@ -1917,8 +2411,11 @@ func (s *ListAliasesOutput) SetNextToken(v string) *ListAliasesOutput {
 }
 
 type ListAsyncInvokeConfigOutput struct {
-	Configs   []*AsyncConfig `json:"configs" xml:"configs" type:"Repeated"`
-	NextToken *string        `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	Configs []*AsyncConfig `json:"configs" xml:"configs" type:"Repeated"`
+	// example:
+	//
+	// 8bj81uI8n****
+	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
 }
 
 func (s ListAsyncInvokeConfigOutput) String() string {
@@ -1963,8 +2460,11 @@ func (s *ListAsyncTaskOutput) SetTasks(v []*AsyncTask) *ListAsyncTaskOutput {
 }
 
 type ListConcurrencyConfigsOutput struct {
-	Configs   []*ConcurrencyConfig `json:"configs" xml:"configs" type:"Repeated"`
-	NextToken *string              `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	Configs []*ConcurrencyConfig `json:"configs" xml:"configs" type:"Repeated"`
+	// example:
+	//
+	// next_token
+	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
 }
 
 func (s ListConcurrencyConfigsOutput) String() string {
@@ -1987,7 +2487,10 @@ func (s *ListConcurrencyConfigsOutput) SetNextToken(v string) *ListConcurrencyCo
 
 type ListCustomDomainOutput struct {
 	CustomDomains []*CustomDomain `json:"customDomains" xml:"customDomains" type:"Repeated"`
-	NextToken     *string         `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// example:
+	//
+	// next_domain_name
+	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
 }
 
 func (s ListCustomDomainOutput) String() string {
@@ -2010,7 +2513,10 @@ func (s *ListCustomDomainOutput) SetNextToken(v string) *ListCustomDomainOutput 
 
 type ListFunctionsOutput struct {
 	Functions []*Function `json:"functions" xml:"functions" type:"Repeated"`
-	NextToken *string     `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// example:
+	//
+	// next_function_name
+	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
 }
 
 func (s ListFunctionsOutput) String() string {
@@ -2049,8 +2555,11 @@ func (s *ListInstancesOutput) SetInstances(v []*InstanceInfo) *ListInstancesOutp
 }
 
 type ListLayerVersionOutput struct {
-	Layers      []*Layer `json:"layers" xml:"layers" type:"Repeated"`
-	NextVersion *int32   `json:"nextVersion,omitempty" xml:"nextVersion,omitempty"`
+	Layers []*Layer `json:"layers" xml:"layers" type:"Repeated"`
+	// example:
+	//
+	// 10
+	NextVersion *int32 `json:"nextVersion,omitempty" xml:"nextVersion,omitempty"`
 }
 
 func (s ListLayerVersionOutput) String() string {
@@ -2072,8 +2581,11 @@ func (s *ListLayerVersionOutput) SetNextVersion(v int32) *ListLayerVersionOutput
 }
 
 type ListLayersOutput struct {
-	Layers    []*Layer `json:"layers" xml:"layers" type:"Repeated"`
-	NextToken *string  `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	Layers []*Layer `json:"layers" xml:"layers" type:"Repeated"`
+	// example:
+	//
+	// next-layer-name
+	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
 }
 
 func (s ListLayersOutput) String() string {
@@ -2095,6 +2607,9 @@ func (s *ListLayersOutput) SetNextToken(v string) *ListLayersOutput {
 }
 
 type ListProvisionConfigsOutput struct {
+	// example:
+	//
+	// next_token
 	NextToken        *string            `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
 	ProvisionConfigs []*ProvisionConfig `json:"provisionConfigs" xml:"provisionConfigs" type:"Repeated"`
 }
@@ -2118,6 +2633,9 @@ func (s *ListProvisionConfigsOutput) SetProvisionConfigs(v []*ProvisionConfig) *
 }
 
 type ListTagResourcesOutput struct {
+	// example:
+	//
+	// next_token
 	NextToken    *string        `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	RequestId    *string        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	TagResources []*TagResource `json:"TagResources" xml:"TagResources" type:"Repeated"`
@@ -2147,6 +2665,9 @@ func (s *ListTagResourcesOutput) SetTagResources(v []*TagResource) *ListTagResou
 }
 
 type ListTaggedResourcesOutput struct {
+	// example:
+	//
+	// next_token
 	NextToken *string     `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
 	Resources []*Resource `json:"resources" xml:"resources" type:"Repeated"`
 }
@@ -2170,6 +2691,9 @@ func (s *ListTaggedResourcesOutput) SetResources(v []*Resource) *ListTaggedResou
 }
 
 type ListTriggersOutput struct {
+	// example:
+	//
+	// next_token
 	NextToken *string    `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
 	Triggers  []*Trigger `json:"triggers" xml:"triggers" type:"Repeated"`
 }
@@ -2193,7 +2717,13 @@ func (s *ListTriggersOutput) SetTriggers(v []*Trigger) *ListTriggersOutput {
 }
 
 type ListVersionsOutput struct {
-	Direction *string    `json:"direction,omitempty" xml:"direction,omitempty"`
+	// example:
+	//
+	// FORWARD
+	Direction *string `json:"direction,omitempty" xml:"direction,omitempty"`
+	// example:
+	//
+	// 3
 	NextToken *string    `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
 	Versions  []*Version `json:"versions" xml:"versions" type:"Repeated"`
 }
@@ -2239,11 +2769,26 @@ func (s *ListVpcBindingsOutput) SetVpcIds(v []*string) *ListVpcBindingsOutput {
 }
 
 type LogConfig struct {
-	EnableInstanceMetrics *bool   `json:"enableInstanceMetrics,omitempty" xml:"enableInstanceMetrics,omitempty"`
-	EnableRequestMetrics  *bool   `json:"enableRequestMetrics,omitempty" xml:"enableRequestMetrics,omitempty"`
-	LogBeginRule          *string `json:"logBeginRule,omitempty" xml:"logBeginRule,omitempty"`
-	Logstore              *string `json:"logstore,omitempty" xml:"logstore,omitempty"`
-	Project               *string `json:"project,omitempty" xml:"project,omitempty"`
+	// example:
+	//
+	// true
+	EnableInstanceMetrics *bool `json:"enableInstanceMetrics,omitempty" xml:"enableInstanceMetrics,omitempty"`
+	// example:
+	//
+	// true
+	EnableRequestMetrics *bool `json:"enableRequestMetrics,omitempty" xml:"enableRequestMetrics,omitempty"`
+	// example:
+	//
+	// DefaultRegex
+	LogBeginRule *string `json:"logBeginRule,omitempty" xml:"logBeginRule,omitempty"`
+	// example:
+	//
+	// test-logstore
+	Logstore *string `json:"logstore,omitempty" xml:"logstore,omitempty"`
+	// example:
+	//
+	// test-project
+	Project *string `json:"project,omitempty" xml:"project,omitempty"`
 }
 
 func (s LogConfig) String() string {
@@ -2280,9 +2825,18 @@ func (s *LogConfig) SetProject(v string) *LogConfig {
 }
 
 type MNSTopicTriggerConfig struct {
-	FilterTag           *string `json:"filterTag,omitempty" xml:"filterTag,omitempty"`
+	// example:
+	//
+	// serverless
+	FilterTag *string `json:"filterTag,omitempty" xml:"filterTag,omitempty"`
+	// example:
+	//
+	// JSON
 	NotifyContentFormat *string `json:"notifyContentFormat,omitempty" xml:"notifyContentFormat,omitempty"`
-	NotifyStrategy      *string `json:"notifyStrategy,omitempty" xml:"notifyStrategy,omitempty"`
+	// example:
+	//
+	// BACKOFF_RETRY
+	NotifyStrategy *string `json:"notifyStrategy,omitempty" xml:"notifyStrategy,omitempty"`
 }
 
 func (s MNSTopicTriggerConfig) String() string {
@@ -2309,9 +2863,15 @@ func (s *MNSTopicTriggerConfig) SetNotifyStrategy(v string) *MNSTopicTriggerConf
 }
 
 type NASConfig struct {
+	// example:
+	//
+	// 100
 	GroupId     *int32            `json:"groupId,omitempty" xml:"groupId,omitempty"`
 	MountPoints []*NASMountConfig `json:"mountPoints" xml:"mountPoints" type:"Repeated"`
-	UserId      *int32            `json:"userId,omitempty" xml:"userId,omitempty"`
+	// example:
+	//
+	// 100
+	UserId *int32 `json:"userId,omitempty" xml:"userId,omitempty"`
 }
 
 func (s NASConfig) String() string {
@@ -2338,8 +2898,14 @@ func (s *NASConfig) SetUserId(v int32) *NASConfig {
 }
 
 type NASMountConfig struct {
-	EnableTLS  *bool   `json:"enableTLS,omitempty" xml:"enableTLS,omitempty"`
-	MountDir   *string `json:"mountDir,omitempty" xml:"mountDir,omitempty"`
+	EnableTLS *bool `json:"enableTLS,omitempty" xml:"enableTLS,omitempty"`
+	// example:
+	//
+	// /home/test
+	MountDir *string `json:"mountDir,omitempty" xml:"mountDir,omitempty"`
+	// example:
+	//
+	// ***-uni85.cn-hangzhou.nas.com:/
 	ServerAddr *string `json:"serverAddr,omitempty" xml:"serverAddr,omitempty"`
 }
 
@@ -2384,11 +2950,26 @@ func (s *OSSMountConfig) SetMountPoints(v []*OSSMountPoint) *OSSMountConfig {
 }
 
 type OSSMountPoint struct {
+	// example:
+	//
+	// my-bucket
 	BucketName *string `json:"bucketName,omitempty" xml:"bucketName,omitempty"`
+	// example:
+	//
+	// /my-dir
 	BucketPath *string `json:"bucketPath,omitempty" xml:"bucketPath,omitempty"`
-	Endpoint   *string `json:"endpoint,omitempty" xml:"endpoint,omitempty"`
-	MountDir   *string `json:"mountDir,omitempty" xml:"mountDir,omitempty"`
-	ReadOnly   *bool   `json:"readOnly,omitempty" xml:"readOnly,omitempty"`
+	// example:
+	//
+	// http://oss-cn-shanghai.aliyuncs.com
+	Endpoint *string `json:"endpoint,omitempty" xml:"endpoint,omitempty"`
+	// example:
+	//
+	// /mnt/dir
+	MountDir *string `json:"mountDir,omitempty" xml:"mountDir,omitempty"`
+	// example:
+	//
+	// true
+	ReadOnly *bool `json:"readOnly,omitempty" xml:"readOnly,omitempty"`
 }
 
 func (s OSSMountPoint) String() string {
@@ -2448,7 +3029,13 @@ func (s *OSSTriggerConfig) SetFilter(v *Filter) *OSSTriggerConfig {
 }
 
 type OutputCodeLocation struct {
-	Location       *string `json:"location,omitempty" xml:"location,omitempty"`
+	// example:
+	//
+	// https://xyz.oss-cn-shanghai.aliyuncs.com/xxx/xxx/xxx
+	Location *string `json:"location,omitempty" xml:"location,omitempty"`
+	// example:
+	//
+	// OSS
 	RepositoryType *string `json:"repositoryType,omitempty" xml:"repositoryType,omitempty"`
 }
 
@@ -2471,8 +3058,14 @@ func (s *OutputCodeLocation) SetRepositoryType(v string) *OutputCodeLocation {
 }
 
 type OutputFuncCode struct {
+	// example:
+	//
+	// 1234567890
 	Checksum *string `json:"checksum,omitempty" xml:"checksum,omitempty"`
-	Url      *string `json:"url,omitempty" xml:"url,omitempty"`
+	// example:
+	//
+	// http://func-code.oss-cn-shanghai.aliyuncs.com/1a2b3c4d5e6f
+	Url *string `json:"url,omitempty" xml:"url,omitempty"`
 }
 
 func (s OutputFuncCode) String() string {
@@ -2494,9 +3087,22 @@ func (s *OutputFuncCode) SetUrl(v string) *OutputFuncCode {
 }
 
 type PathConfig struct {
-	FunctionName  *string        `json:"functionName,omitempty" xml:"functionName,omitempty"`
-	Methods       []*string      `json:"methods" xml:"methods" type:"Repeated"`
-	Path          *string        `json:"path,omitempty" xml:"path,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// myFunction
+	FunctionName *string   `json:"functionName,omitempty" xml:"functionName,omitempty"`
+	Methods      []*string `json:"methods" xml:"methods" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// /api/*
+	Path *string `json:"path,omitempty" xml:"path,omitempty"`
+	// example:
+	//
+	// myAlias
 	Qualifier     *string        `json:"qualifier,omitempty" xml:"qualifier,omitempty"`
 	RewriteConfig *RewriteConfig `json:"rewriteConfig,omitempty" xml:"rewriteConfig,omitempty"`
 }
@@ -2535,11 +3141,26 @@ func (s *PathConfig) SetRewriteConfig(v *RewriteConfig) *PathConfig {
 }
 
 type ProvisionConfig struct {
-	AlwaysAllocateCPU      *bool                   `json:"alwaysAllocateCPU,omitempty" xml:"alwaysAllocateCPU,omitempty"`
-	Current                *int64                  `json:"current,omitempty" xml:"current,omitempty"`
-	CurrentError           *string                 `json:"currentError,omitempty" xml:"currentError,omitempty"`
-	FunctionArn            *string                 `json:"functionArn,omitempty" xml:"functionArn,omitempty"`
-	ScheduledActions       []*ScheduledAction      `json:"scheduledActions" xml:"scheduledActions" type:"Repeated"`
+	// example:
+	//
+	// true
+	AlwaysAllocateCPU *bool `json:"alwaysAllocateCPU,omitempty" xml:"alwaysAllocateCPU,omitempty"`
+	// example:
+	//
+	// 1
+	Current *int64 `json:"current,omitempty" xml:"current,omitempty"`
+	// example:
+	//
+	// image not found
+	CurrentError *string `json:"currentError,omitempty" xml:"currentError,omitempty"`
+	// example:
+	//
+	// acs:fc:cn-shanghai:124:functions/myFunction
+	FunctionArn      *string            `json:"functionArn,omitempty" xml:"functionArn,omitempty"`
+	ScheduledActions []*ScheduledAction `json:"scheduledActions" xml:"scheduledActions" type:"Repeated"`
+	// example:
+	//
+	// 5
 	Target                 *int64                  `json:"target,omitempty" xml:"target,omitempty"`
 	TargetTrackingPolicies []*TargetTrackingPolicy `json:"targetTrackingPolicies" xml:"targetTrackingPolicies" type:"Repeated"`
 }
@@ -2588,6 +3209,9 @@ func (s *ProvisionConfig) SetTargetTrackingPolicies(v []*TargetTrackingPolicy) *
 }
 
 type PublishVersionInput struct {
+	// example:
+	//
+	// my version
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 }
 
@@ -2605,10 +3229,19 @@ func (s *PublishVersionInput) SetDescription(v string) *PublishVersionInput {
 }
 
 type PutAsyncInvokeConfigInput struct {
-	AsyncTask                 *bool              `json:"asyncTask,omitempty" xml:"asyncTask,omitempty"`
-	DestinationConfig         *DestinationConfig `json:"destinationConfig,omitempty" xml:"destinationConfig,omitempty"`
-	MaxAsyncEventAgeInSeconds *int64             `json:"maxAsyncEventAgeInSeconds,omitempty" xml:"maxAsyncEventAgeInSeconds,omitempty"`
-	MaxAsyncRetryAttempts     *int64             `json:"maxAsyncRetryAttempts,omitempty" xml:"maxAsyncRetryAttempts,omitempty"`
+	// example:
+	//
+	// true
+	AsyncTask         *bool              `json:"asyncTask,omitempty" xml:"asyncTask,omitempty"`
+	DestinationConfig *DestinationConfig `json:"destinationConfig,omitempty" xml:"destinationConfig,omitempty"`
+	// example:
+	//
+	// 300
+	MaxAsyncEventAgeInSeconds *int64 `json:"maxAsyncEventAgeInSeconds,omitempty" xml:"maxAsyncEventAgeInSeconds,omitempty"`
+	// example:
+	//
+	// 3
+	MaxAsyncRetryAttempts *int64 `json:"maxAsyncRetryAttempts,omitempty" xml:"maxAsyncRetryAttempts,omitempty"`
 }
 
 func (s PutAsyncInvokeConfigInput) String() string {
@@ -2640,6 +3273,11 @@ func (s *PutAsyncInvokeConfigInput) SetMaxAsyncRetryAttempts(v int64) *PutAsyncI
 }
 
 type PutConcurrencyInput struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10
 	ReservedConcurrency *int64 `json:"reservedConcurrency,omitempty" xml:"reservedConcurrency,omitempty"`
 }
 
@@ -2657,8 +3295,16 @@ func (s *PutConcurrencyInput) SetReservedConcurrency(v int64) *PutConcurrencyInp
 }
 
 type PutProvisionConfigInput struct {
-	AlwaysAllocateCPU      *bool                   `json:"alwaysAllocateCPU,omitempty" xml:"alwaysAllocateCPU,omitempty"`
-	ScheduledActions       []*ScheduledAction      `json:"scheduledActions" xml:"scheduledActions" type:"Repeated"`
+	// example:
+	//
+	// true
+	AlwaysAllocateCPU *bool              `json:"alwaysAllocateCPU,omitempty" xml:"alwaysAllocateCPU,omitempty"`
+	ScheduledActions  []*ScheduledAction `json:"scheduledActions" xml:"scheduledActions" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
 	Target                 *int64                  `json:"target,omitempty" xml:"target,omitempty"`
 	TargetTrackingPolicies []*TargetTrackingPolicy `json:"targetTrackingPolicies" xml:"targetTrackingPolicies" type:"Repeated"`
 }
@@ -2692,7 +3338,17 @@ func (s *PutProvisionConfigInput) SetTargetTrackingPolicies(v []*TargetTrackingP
 }
 
 type RegexRule struct {
-	Match       *string `json:"match,omitempty" xml:"match,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ^/api/.+?/(.*)
+	Match *string `json:"match,omitempty" xml:"match,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// /api/v2/$1
 	Replacement *string `json:"replacement,omitempty" xml:"replacement,omitempty"`
 }
 
@@ -2715,7 +3371,13 @@ func (s *RegexRule) SetReplacement(v string) *RegexRule {
 }
 
 type Resource struct {
-	ResouceType *string            `json:"resouceType,omitempty" xml:"resouceType,omitempty"`
+	// example:
+	//
+	// ALIYUN::FC::FUNCTION
+	ResouceType *string `json:"resouceType,omitempty" xml:"resouceType,omitempty"`
+	// example:
+	//
+	// acs:fc:cn-shanghai:****:functions/demo
 	ResourceArn *string            `json:"resourceArn,omitempty" xml:"resourceArn,omitempty"`
 	Tags        map[string]*string `json:"tags" xml:"tags"`
 }
@@ -2744,6 +3406,9 @@ func (s *Resource) SetTags(v map[string]*string) *Resource {
 }
 
 type RetryStrategy struct {
+	// example:
+	//
+	// BACKOFF_RETRY
 	PushRetryStrategy *string `json:"PushRetryStrategy,omitempty" xml:"PushRetryStrategy,omitempty"`
 }
 
@@ -2809,9 +3474,15 @@ func (s *RouteConfig) SetRoutes(v []*PathConfig) *RouteConfig {
 type RunOptions struct {
 	BatchWindow     *BatchWindow     `json:"batchWindow,omitempty" xml:"batchWindow,omitempty"`
 	DeadLetterQueue *DeadLetterQueue `json:"deadLetterQueue,omitempty" xml:"deadLetterQueue,omitempty"`
-	ErrorsTolerance *string          `json:"errorsTolerance,omitempty" xml:"errorsTolerance,omitempty"`
-	Mode            *string          `json:"mode,omitempty" xml:"mode,omitempty"`
-	RetryStrategy   *RetryStrategy   `json:"retryStrategy,omitempty" xml:"retryStrategy,omitempty"`
+	// example:
+	//
+	// ALL
+	ErrorsTolerance *string `json:"errorsTolerance,omitempty" xml:"errorsTolerance,omitempty"`
+	// example:
+	//
+	// event-streaming
+	Mode          *string        `json:"mode,omitempty" xml:"mode,omitempty"`
+	RetryStrategy *RetryStrategy `json:"retryStrategy,omitempty" xml:"retryStrategy,omitempty"`
 }
 
 func (s RunOptions) String() string {
@@ -2848,6 +3519,9 @@ func (s *RunOptions) SetRetryStrategy(v *RetryStrategy) *RunOptions {
 }
 
 type SLSTriggerConfig struct {
+	// example:
+	//
+	// true
 	Enable            *bool                `json:"enable,omitempty" xml:"enable,omitempty"`
 	FunctionParameter map[string]*string   `json:"functionParameter" xml:"functionParameter"`
 	JobConfig         *JobConfig           `json:"jobConfig,omitempty" xml:"jobConfig,omitempty"`
@@ -2889,8 +3563,14 @@ func (s *SLSTriggerConfig) SetSourceConfig(v *SourceConfig) *SLSTriggerConfig {
 }
 
 type SLSTriggerLogConfig struct {
+	// example:
+	//
+	// my-sls-logstore-name
 	Logstore *string `json:"logstore,omitempty" xml:"logstore,omitempty"`
-	Project  *string `json:"project,omitempty" xml:"project,omitempty"`
+	// example:
+	//
+	// my-sls-project-name
+	Project *string `json:"project,omitempty" xml:"project,omitempty"`
 }
 
 func (s SLSTriggerLogConfig) String() string {
@@ -2912,11 +3592,32 @@ func (s *SLSTriggerLogConfig) SetProject(v string) *SLSTriggerLogConfig {
 }
 
 type ScheduledAction struct {
-	EndTime            *string `json:"endTime,omitempty" xml:"endTime,omitempty"`
-	Name               *string `json:"name,omitempty" xml:"name,omitempty"`
+	// example:
+	//
+	// 2024-03-10T10:10:10Z
+	EndTime *string `json:"endTime,omitempty" xml:"endTime,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test_1
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cron(0 0 22 	- 	- *)
 	ScheduleExpression *string `json:"scheduleExpression,omitempty" xml:"scheduleExpression,omitempty"`
-	StartTime          *string `json:"startTime,omitempty" xml:"startTime,omitempty"`
-	Target             *int64  `json:"target,omitempty" xml:"target,omitempty"`
+	// example:
+	//
+	// 2023-03-10T10:10:10Z
+	StartTime *string `json:"startTime,omitempty" xml:"startTime,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 50
+	Target *int64 `json:"target,omitempty" xml:"target,omitempty"`
 }
 
 func (s ScheduledAction) String() string {
@@ -2953,8 +3654,14 @@ func (s *ScheduledAction) SetTarget(v int64) *ScheduledAction {
 }
 
 type SourceConfig struct {
-	Logstore  *string `json:"logstore,omitempty" xml:"logstore,omitempty"`
-	StartTime *int64  `json:"startTime,omitempty" xml:"startTime,omitempty"`
+	// example:
+	//
+	// my-sls-logstore-name
+	Logstore *string `json:"logstore,omitempty" xml:"logstore,omitempty"`
+	// example:
+	//
+	// 1704790317
+	StartTime *int64 `json:"startTime,omitempty" xml:"startTime,omitempty"`
 }
 
 func (s SourceConfig) String() string {
@@ -2976,14 +3683,38 @@ func (s *SourceConfig) SetStartTime(v int64) *SourceConfig {
 }
 
 type SourceDTSParameters struct {
-	BrokerUrl      *string `json:"BrokerUrl,omitempty" xml:"BrokerUrl,omitempty"`
-	InitCheckPoint *int32  `json:"InitCheckPoint,omitempty" xml:"InitCheckPoint,omitempty"`
-	Password       *string `json:"Password,omitempty" xml:"Password,omitempty"`
-	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Sid            *string `json:"Sid,omitempty" xml:"Sid,omitempty"`
-	TaskId         *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	Topic          *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
-	Username       *string `json:"Username,omitempty" xml:"Username,omitempty"`
+	// example:
+	//
+	// dts-cn-shanghai-vpc.com:18003
+	BrokerUrl *string `json:"BrokerUrl,omitempty" xml:"BrokerUrl,omitempty"`
+	// example:
+	//
+	// 1677340805
+	InitCheckPoint *int32 `json:"InitCheckPoint,omitempty" xml:"InitCheckPoint,omitempty"`
+	// example:
+	//
+	// dtsTest123
+	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// dtse34j22j025a****
+	Sid *string `json:"Sid,omitempty" xml:"Sid,omitempty"`
+	// example:
+	//
+	// e34z2gm325q****
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// example:
+	//
+	// cn_shanghai_vpc_rm_uf6398ykj0218****_dts_trigger_upgrade_from_old_version2
+	Topic *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
+	// example:
+	//
+	// dts_trigger
+	Username *string `json:"Username,omitempty" xml:"Username,omitempty"`
 }
 
 func (s SourceDTSParameters) String() string {
@@ -3035,15 +3766,42 @@ func (s *SourceDTSParameters) SetUsername(v string) *SourceDTSParameters {
 }
 
 type SourceKafkaParameters struct {
-	ConsumerGroup   *string `json:"ConsumerGroup,omitempty" xml:"ConsumerGroup,omitempty"`
-	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Network         *string `json:"Network,omitempty" xml:"Network,omitempty"`
-	OffsetReset     *string `json:"OffsetReset,omitempty" xml:"OffsetReset,omitempty"`
-	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// DEFAULT_GROUP
+	ConsumerGroup *string `json:"ConsumerGroup,omitempty" xml:"ConsumerGroup,omitempty"`
+	// example:
+	//
+	// r-8vb64581862c****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// Default
+	Network *string `json:"Network,omitempty" xml:"Network,omitempty"`
+	// example:
+	//
+	// latest
+	OffsetReset *string `json:"OffsetReset,omitempty" xml:"OffsetReset,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// sg-bp1iv19sp1msc7zot4****
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	Topic           *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
-	VSwitchIds      *string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty"`
-	VpcId           *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// example:
+	//
+	// popvip_center_robot_order
+	Topic *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
+	// example:
+	//
+	// vsw-bp179l3llg3jjxwrq72****
+	VSwitchIds *string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty"`
+	// example:
+	//
+	// vpc-8vblalsi0vbhizr77****
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s SourceKafkaParameters) String() string {
@@ -3100,9 +3858,18 @@ func (s *SourceKafkaParameters) SetVpcId(v string) *SourceKafkaParameters {
 }
 
 type SourceMNSParameters struct {
-	IsBase64Decode *bool   `json:"IsBase64Decode,omitempty" xml:"IsBase64Decode,omitempty"`
-	QueueName      *string `json:"QueueName,omitempty" xml:"QueueName,omitempty"`
-	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// true
+	IsBase64Decode *bool `json:"IsBase64Decode,omitempty" xml:"IsBase64Decode,omitempty"`
+	// example:
+	//
+	// demo
+	QueueName *string `json:"QueueName,omitempty" xml:"QueueName,omitempty"`
+	// example:
+	//
+	// cn-shanghai
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s SourceMNSParameters) String() string {
@@ -3129,9 +3896,18 @@ func (s *SourceMNSParameters) SetRegionId(v string) *SourceMNSParameters {
 }
 
 type SourceMQTTParameters struct {
+	// example:
+	//
+	// mqtt-****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Topic      *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// testTopic
+	Topic *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
 }
 
 func (s SourceMQTTParameters) String() string {
@@ -3158,9 +3934,21 @@ func (s *SourceMQTTParameters) SetTopic(v string) *SourceMQTTParameters {
 }
 
 type SourceRabbitMQParameters struct {
-	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	QueueName       *string `json:"QueueName,omitempty" xml:"QueueName,omitempty"`
-	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// amqp-cn-nif22u74****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// demo
+	QueueName *string `json:"QueueName,omitempty" xml:"QueueName,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// eb-connect
 	VirtualHostName *string `json:"VirtualHostName,omitempty" xml:"VirtualHostName,omitempty"`
 }
 
@@ -3193,23 +3981,74 @@ func (s *SourceRabbitMQParameters) SetVirtualHostName(v string) *SourceRabbitMQP
 }
 
 type SourceRocketMQParameters struct {
-	AuthType                *string `json:"AuthType,omitempty" xml:"AuthType,omitempty"`
-	FilterType              *string `json:"FilterType,omitempty" xml:"FilterType,omitempty"`
-	GroupID                 *string `json:"GroupID,omitempty" xml:"GroupID,omitempty"`
-	InstanceEndpoint        *string `json:"InstanceEndpoint,omitempty" xml:"InstanceEndpoint,omitempty"`
-	InstanceId              *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	InstanceNetwork         *string `json:"InstanceNetwork,omitempty" xml:"InstanceNetwork,omitempty"`
-	InstancePassword        *string `json:"InstancePassword,omitempty" xml:"InstancePassword,omitempty"`
+	// example:
+	//
+	// ACL
+	AuthType *string `json:"AuthType,omitempty" xml:"AuthType,omitempty"`
+	// example:
+	//
+	// Tag
+	FilterType *string `json:"FilterType,omitempty" xml:"FilterType,omitempty"`
+	// example:
+	//
+	// GID_group1
+	GroupID *string `json:"GroupID,omitempty" xml:"GroupID,omitempty"`
+	// example:
+	//
+	// registry-vpc.cn-hangzhou.aliyuncs.com
+	InstanceEndpoint *string `json:"InstanceEndpoint,omitempty" xml:"InstanceEndpoint,omitempty"`
+	// example:
+	//
+	// MQ_INST_164901546557****_BAAN****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// PrivateNetwork
+	InstanceNetwork *string `json:"InstanceNetwork,omitempty" xml:"InstanceNetwork,omitempty"`
+	// example:
+	//
+	// 123
+	InstancePassword *string `json:"InstancePassword,omitempty" xml:"InstancePassword,omitempty"`
+	// example:
+	//
+	// sg-hp35r2hc3a3sv8q2****
 	InstanceSecurityGroupId *string `json:"InstanceSecurityGroupId,omitempty" xml:"InstanceSecurityGroupId,omitempty"`
-	InstanceType            *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	InstanceUsername        *string `json:"InstanceUsername,omitempty" xml:"InstanceUsername,omitempty"`
-	InstanceVSwitchIds      *string `json:"InstanceVSwitchIds,omitempty" xml:"InstanceVSwitchIds,omitempty"`
-	InstanceVpcId           *string `json:"InstanceVpcId,omitempty" xml:"InstanceVpcId,omitempty"`
-	Offset                  *string `json:"Offset,omitempty" xml:"Offset,omitempty"`
-	RegionId                *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Tag                     *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
-	Timestamp               *int32  `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
-	Topic                   *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
+	// example:
+	//
+	// Cloud_5
+	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	// example:
+	//
+	// 6W0xz2uPfiwp****
+	InstanceUsername *string `json:"InstanceUsername,omitempty" xml:"InstanceUsername,omitempty"`
+	// example:
+	//
+	// vsw-uf6gwtbn6etadpvz7****
+	InstanceVSwitchIds *string `json:"InstanceVSwitchIds,omitempty" xml:"InstanceVSwitchIds,omitempty"`
+	// example:
+	//
+	// vpc-uf6of9452b2pba82c****
+	InstanceVpcId *string `json:"InstanceVpcId,omitempty" xml:"InstanceVpcId,omitempty"`
+	// example:
+	//
+	// CONSUME_FROM_TIMESTAMP
+	Offset *string `json:"Offset,omitempty" xml:"Offset,omitempty"`
+	// example:
+	//
+	// cn-shanghai
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// test
+	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	// example:
+	//
+	// 1636597951964
+	Timestamp *int32 `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
+	// example:
+	//
+	// myTopic
+	Topic *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
 }
 
 func (s SourceRocketMQParameters) String() string {
@@ -3306,9 +4145,18 @@ func (s *SourceRocketMQParameters) SetTopic(v string) *SourceRocketMQParameters 
 }
 
 type TLSConfig struct {
+	// This parameter is required.
 	CipherSuites []*string `json:"cipherSuites" xml:"cipherSuites" type:"Repeated"`
-	MaxVersion   *string   `json:"maxVersion,omitempty" xml:"maxVersion,omitempty"`
-	MinVersion   *string   `json:"minVersion,omitempty" xml:"minVersion,omitempty"`
+	// example:
+	//
+	// TLSv1.3
+	MaxVersion *string `json:"maxVersion,omitempty" xml:"maxVersion,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// TLSv1.0
+	MinVersion *string `json:"minVersion,omitempty" xml:"minVersion,omitempty"`
 }
 
 func (s TLSConfig) String() string {
@@ -3335,7 +4183,13 @@ func (s *TLSConfig) SetMinVersion(v string) *TLSConfig {
 }
 
 type Tag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// k1
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// v1
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -3358,10 +4212,22 @@ func (s *Tag) SetValue(v string) *Tag {
 }
 
 type TagResource struct {
-	ResourceId   *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// example:
+	//
+	// acs:fc:cn-shanghai:****:functions/demo
+	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// example:
+	//
+	// ALIYUN::FC::FUNCTION
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	TagKey       *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
-	TagValue     *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
+	// example:
+	//
+	// key1
+	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// example:
+	//
+	// key1
+	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 
 func (s TagResource) String() string {
@@ -3393,8 +4259,14 @@ func (s *TagResource) SetTagValue(v string) *TagResource {
 }
 
 type TagResourceInput struct {
-	ResourceArn *string            `json:"resourceArn,omitempty" xml:"resourceArn,omitempty"`
-	Tags        map[string]*string `json:"tags" xml:"tags"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// acs:fc:cn-shanghai:xxx:functions/f1
+	ResourceArn *string `json:"resourceArn,omitempty" xml:"resourceArn,omitempty"`
+	// This parameter is required.
+	Tags map[string]*string `json:"tags" xml:"tags"`
 }
 
 func (s TagResourceInput) String() string {
@@ -3416,9 +4288,14 @@ func (s *TagResourceInput) SetTags(v map[string]*string) *TagResourceInput {
 }
 
 type TagResourcesInput struct {
-	ResourceId   []*string `json:"ResourceId" xml:"ResourceId" type:"Repeated"`
-	ResourceType *string   `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	Tag          []*Tag    `json:"Tag" xml:"Tag" type:"Repeated"`
+	// This parameter is required.
+	ResourceId []*string `json:"ResourceId" xml:"ResourceId" type:"Repeated"`
+	// example:
+	//
+	// FUNCTION
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// This parameter is required.
+	Tag []*Tag `json:"Tag" xml:"Tag" type:"Repeated"`
 }
 
 func (s TagResourcesInput) String() string {
@@ -3445,13 +4322,44 @@ func (s *TagResourcesInput) SetTag(v []*Tag) *TagResourcesInput {
 }
 
 type TargetTrackingPolicy struct {
-	EndTime      *string  `json:"endTime,omitempty" xml:"endTime,omitempty"`
-	MaxCapacity  *int64   `json:"maxCapacity,omitempty" xml:"maxCapacity,omitempty"`
+	// example:
+	//
+	// 2024-03-10T10:10:10Z
+	EndTime *string `json:"endTime,omitempty" xml:"endTime,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10
+	MaxCapacity *int64 `json:"maxCapacity,omitempty" xml:"maxCapacity,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0.6
 	MetricTarget *float32 `json:"metricTarget,omitempty" xml:"metricTarget,omitempty"`
-	MetricType   *string  `json:"metricType,omitempty" xml:"metricType,omitempty"`
-	MinCapacity  *int64   `json:"minCapacity,omitempty" xml:"minCapacity,omitempty"`
-	Name         *string  `json:"name,omitempty" xml:"name,omitempty"`
-	StartTime    *string  `json:"startTime,omitempty" xml:"startTime,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// CPUUtilization
+	MetricType *string `json:"metricType,omitempty" xml:"metricType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	MinCapacity *int64 `json:"minCapacity,omitempty" xml:"minCapacity,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test_1
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// example:
+	//
+	// 2023-03-10T10:10:10Z
+	StartTime *string `json:"startTime,omitempty" xml:"startTime,omitempty"`
 }
 
 func (s TargetTrackingPolicy) String() string {
@@ -3498,9 +4406,18 @@ func (s *TargetTrackingPolicy) SetStartTime(v string) *TargetTrackingPolicy {
 }
 
 type TimerTriggerConfig struct {
+	// example:
+	//
+	// 0 0 4 	- 	- *
 	CronExpression *string `json:"cronExpression,omitempty" xml:"cronExpression,omitempty"`
-	Enable         *bool   `json:"enable,omitempty" xml:"enable,omitempty"`
-	Payload        *string `json:"payload,omitempty" xml:"payload,omitempty"`
+	// example:
+	//
+	// true
+	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
+	// example:
+	//
+	// {"workflowInstanceId":"39639"}
+	Payload *string `json:"payload,omitempty" xml:"payload,omitempty"`
 }
 
 func (s TimerTriggerConfig) String() string {
@@ -3528,7 +4445,10 @@ func (s *TimerTriggerConfig) SetPayload(v string) *TimerTriggerConfig {
 
 type TracingConfig struct {
 	Params map[string]*string `json:"params" xml:"params"`
-	Type   *string            `json:"type,omitempty" xml:"type,omitempty"`
+	// example:
+	//
+	// Jaeger
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 
 func (s TracingConfig) String() string {
@@ -3640,8 +4560,14 @@ func (s *Trigger) SetTriggerType(v string) *Trigger {
 
 type UpdateAliasInput struct {
 	AdditionalVersionWeight map[string]*float32 `json:"additionalVersionWeight" xml:"additionalVersionWeight"`
-	Description             *string             `json:"description,omitempty" xml:"description,omitempty"`
-	VersionId               *string             `json:"versionId,omitempty" xml:"versionId,omitempty"`
+	// example:
+	//
+	// my alias
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// example:
+	//
+	// 1
+	VersionId *string `json:"versionId,omitempty" xml:"versionId,omitempty"`
 }
 
 func (s UpdateAliasInput) String() string {
@@ -3668,8 +4594,11 @@ func (s *UpdateAliasInput) SetVersionId(v string) *UpdateAliasInput {
 }
 
 type UpdateCustomDomainInput struct {
-	AuthConfig  *AuthConfig  `json:"authConfig,omitempty" xml:"authConfig,omitempty"`
-	CertConfig  *CertConfig  `json:"certConfig,omitempty" xml:"certConfig,omitempty"`
+	AuthConfig *AuthConfig `json:"authConfig,omitempty" xml:"authConfig,omitempty"`
+	CertConfig *CertConfig `json:"certConfig,omitempty" xml:"certConfig,omitempty"`
+	// example:
+	//
+	// HTTP
 	Protocol    *string      `json:"protocol,omitempty" xml:"protocol,omitempty"`
 	RouteConfig *RouteConfig `json:"routeConfig,omitempty" xml:"routeConfig,omitempty"`
 	TlsConfig   *TLSConfig   `json:"tlsConfig,omitempty" xml:"tlsConfig,omitempty"`
@@ -3715,29 +4644,56 @@ func (s *UpdateCustomDomainInput) SetWafConfig(v *WAFConfig) *UpdateCustomDomain
 }
 
 type UpdateFunctionInput struct {
-	Code                    *InputCodeLocation       `json:"code,omitempty" xml:"code,omitempty"`
-	Cpu                     *float32                 `json:"cpu,omitempty" xml:"cpu,omitempty"`
-	CustomContainerConfig   *CustomContainerConfig   `json:"customContainerConfig,omitempty" xml:"customContainerConfig,omitempty"`
-	CustomDNS               *CustomDNS               `json:"customDNS,omitempty" xml:"customDNS,omitempty"`
-	CustomRuntimeConfig     *CustomRuntimeConfig     `json:"customRuntimeConfig,omitempty" xml:"customRuntimeConfig,omitempty"`
-	Description             *string                  `json:"description,omitempty" xml:"description,omitempty"`
-	DiskSize                *int32                   `json:"diskSize,omitempty" xml:"diskSize,omitempty"`
-	EnvironmentVariables    map[string]*string       `json:"environmentVariables" xml:"environmentVariables"`
-	GpuConfig               *GPUConfig               `json:"gpuConfig,omitempty" xml:"gpuConfig,omitempty"`
-	Handler                 *string                  `json:"handler,omitempty" xml:"handler,omitempty"`
+	Code *InputCodeLocation `json:"code,omitempty" xml:"code,omitempty"`
+	// example:
+	//
+	// 1
+	Cpu                   *float32               `json:"cpu,omitempty" xml:"cpu,omitempty"`
+	CustomContainerConfig *CustomContainerConfig `json:"customContainerConfig,omitempty" xml:"customContainerConfig,omitempty"`
+	CustomDNS             *CustomDNS             `json:"customDNS,omitempty" xml:"customDNS,omitempty"`
+	CustomRuntimeConfig   *CustomRuntimeConfig   `json:"customRuntimeConfig,omitempty" xml:"customRuntimeConfig,omitempty"`
+	// example:
+	//
+	// my function
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// example:
+	//
+	// 512
+	DiskSize             *int32             `json:"diskSize,omitempty" xml:"diskSize,omitempty"`
+	EnvironmentVariables map[string]*string `json:"environmentVariables" xml:"environmentVariables"`
+	GpuConfig            *GPUConfig         `json:"gpuConfig,omitempty" xml:"gpuConfig,omitempty"`
+	// example:
+	//
+	// index.handler
+	Handler *string `json:"handler,omitempty" xml:"handler,omitempty"`
+	// example:
+	//
+	// 1
 	InstanceConcurrency     *int32                   `json:"instanceConcurrency,omitempty" xml:"instanceConcurrency,omitempty"`
 	InstanceLifecycleConfig *InstanceLifecycleConfig `json:"instanceLifecycleConfig,omitempty" xml:"instanceLifecycleConfig,omitempty"`
-	InternetAccess          *bool                    `json:"internetAccess,omitempty" xml:"internetAccess,omitempty"`
-	Layers                  []*string                `json:"layers" xml:"layers" type:"Repeated"`
-	LogConfig               *LogConfig               `json:"logConfig,omitempty" xml:"logConfig,omitempty"`
-	MemorySize              *int32                   `json:"memorySize,omitempty" xml:"memorySize,omitempty"`
-	NasConfig               *NASConfig               `json:"nasConfig,omitempty" xml:"nasConfig,omitempty"`
-	OssMountConfig          *OSSMountConfig          `json:"ossMountConfig,omitempty" xml:"ossMountConfig,omitempty"`
-	Role                    *string                  `json:"role,omitempty" xml:"role,omitempty"`
-	Runtime                 *string                  `json:"runtime,omitempty" xml:"runtime,omitempty"`
-	Timeout                 *int32                   `json:"timeout,omitempty" xml:"timeout,omitempty"`
-	TracingConfig           *TracingConfig           `json:"tracingConfig,omitempty" xml:"tracingConfig,omitempty"`
-	VpcConfig               *VPCConfig               `json:"vpcConfig,omitempty" xml:"vpcConfig,omitempty"`
+	// example:
+	//
+	// true
+	InternetAccess *bool      `json:"internetAccess,omitempty" xml:"internetAccess,omitempty"`
+	Layers         []*string  `json:"layers" xml:"layers" type:"Repeated"`
+	LogConfig      *LogConfig `json:"logConfig,omitempty" xml:"logConfig,omitempty"`
+	// example:
+	//
+	// 512
+	MemorySize     *int32          `json:"memorySize,omitempty" xml:"memorySize,omitempty"`
+	NasConfig      *NASConfig      `json:"nasConfig,omitempty" xml:"nasConfig,omitempty"`
+	OssMountConfig *OSSMountConfig `json:"ossMountConfig,omitempty" xml:"ossMountConfig,omitempty"`
+	// example:
+	//
+	// acs:ram::188077086902****:role/fc-test
+	Role    *string `json:"role,omitempty" xml:"role,omitempty"`
+	Runtime *string `json:"runtime,omitempty" xml:"runtime,omitempty"`
+	// example:
+	//
+	// 60
+	Timeout       *int32         `json:"timeout,omitempty" xml:"timeout,omitempty"`
+	TracingConfig *TracingConfig `json:"tracingConfig,omitempty" xml:"tracingConfig,omitempty"`
+	VpcConfig     *VPCConfig     `json:"vpcConfig,omitempty" xml:"vpcConfig,omitempty"`
 }
 
 func (s UpdateFunctionInput) String() string {
@@ -3864,10 +4820,22 @@ func (s *UpdateFunctionInput) SetVpcConfig(v *VPCConfig) *UpdateFunctionInput {
 }
 
 type UpdateTriggerInput struct {
-	Description    *string `json:"description,omitempty" xml:"description,omitempty"`
+	// example:
+	//
+	// trigger for test
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// example:
+	//
+	// acs:ram::1234567890:role/fc-test
 	InvocationRole *string `json:"invocationRole,omitempty" xml:"invocationRole,omitempty"`
-	Qualifier      *string `json:"qualifier,omitempty" xml:"qualifier,omitempty"`
-	TriggerConfig  *string `json:"triggerConfig,omitempty" xml:"triggerConfig,omitempty"`
+	// example:
+	//
+	// LATEST
+	Qualifier *string `json:"qualifier,omitempty" xml:"qualifier,omitempty"`
+	// example:
+	//
+	// {"events":["oss:ObjectCreated:*"],"filter":{"key":{"prefix":"/prefix","suffix":".zip"}}}
+	TriggerConfig *string `json:"triggerConfig,omitempty" xml:"triggerConfig,omitempty"`
 }
 
 func (s UpdateTriggerInput) String() string {
@@ -3899,9 +4867,15 @@ func (s *UpdateTriggerInput) SetTriggerConfig(v string) *UpdateTriggerInput {
 }
 
 type VPCConfig struct {
+	// example:
+	//
+	// sg-bp18hj1wtxgy3b0***
 	SecurityGroupId *string   `json:"securityGroupId,omitempty" xml:"securityGroupId,omitempty"`
 	VSwitchIds      []*string `json:"vSwitchIds" xml:"vSwitchIds" type:"Repeated"`
-	VpcId           *string   `json:"vpcId,omitempty" xml:"vpcId,omitempty"`
+	// example:
+	//
+	// vpc-***
+	VpcId *string `json:"vpcId,omitempty" xml:"vpcId,omitempty"`
 }
 
 func (s VPCConfig) String() string {
@@ -3928,10 +4902,22 @@ func (s *VPCConfig) SetVpcId(v string) *VPCConfig {
 }
 
 type Version struct {
-	CreatedTime      *string `json:"createdTime,omitempty" xml:"createdTime,omitempty"`
-	Description      *string `json:"description,omitempty" xml:"description,omitempty"`
+	// example:
+	//
+	// 2006-01-02T15:04:05Z07:00
+	CreatedTime *string `json:"createdTime,omitempty" xml:"createdTime,omitempty"`
+	// example:
+	//
+	// my version
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// example:
+	//
+	// 2006-01-02T15:04:05Z07:00
 	LastModifiedTime *string `json:"lastModifiedTime,omitempty" xml:"lastModifiedTime,omitempty"`
-	VersionId        *string `json:"versionId,omitempty" xml:"versionId,omitempty"`
+	// example:
+	//
+	// 1
+	VersionId *string `json:"versionId,omitempty" xml:"versionId,omitempty"`
 }
 
 func (s Version) String() string {
@@ -3963,6 +4949,9 @@ func (s *Version) SetVersionId(v string) *Version {
 }
 
 type WAFConfig struct {
+	// example:
+	//
+	// true
 	EnableWAF *bool `json:"enableWAF,omitempty" xml:"enableWAF,omitempty"`
 }
 
@@ -3980,7 +4969,17 @@ func (s *WAFConfig) SetEnableWAF(v bool) *WAFConfig {
 }
 
 type WildcardRule struct {
-	Match       *string `json:"match,omitempty" xml:"match,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// /api/*
+	Match *string `json:"match,omitempty" xml:"match,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// /$1
 	Replacement *string `json:"replacement,omitempty" xml:"replacement,omitempty"`
 }
 
@@ -4004,6 +5003,8 @@ func (s *WildcardRule) SetReplacement(v string) *WildcardRule {
 
 type CreateAliasRequest struct {
 	// The request parameters for creating an alias.
+	//
+	// This parameter is required.
 	Body *CreateAliasInput `json:"body,omitempty" xml:"body,omitempty"`
 }
 
@@ -4051,6 +5052,8 @@ func (s *CreateAliasResponse) SetBody(v *Alias) *CreateAliasResponse {
 
 type CreateCustomDomainRequest struct {
 	// The information about the custom domain name.
+	//
+	// This parameter is required.
 	Body *CreateCustomDomainInput `json:"body,omitempty" xml:"body,omitempty"`
 }
 
@@ -4098,6 +5101,8 @@ func (s *CreateCustomDomainResponse) SetBody(v *CustomDomain) *CreateCustomDomai
 
 type CreateFunctionRequest struct {
 	// The information about function configurations.
+	//
+	// This parameter is required.
 	Body *CreateFunctionInput `json:"body,omitempty" xml:"body,omitempty"`
 }
 
@@ -4145,6 +5150,8 @@ func (s *CreateFunctionResponse) SetBody(v *Function) *CreateFunctionResponse {
 
 type CreateLayerVersionRequest struct {
 	// The information about layer configurations.
+	//
+	// This parameter is required.
 	Body *CreateLayerVersionInput `json:"body,omitempty" xml:"body,omitempty"`
 }
 
@@ -4192,6 +5199,8 @@ func (s *CreateLayerVersionResponse) SetBody(v *Layer) *CreateLayerVersionRespon
 
 type CreateTriggerRequest struct {
 	// The trigger configurations.
+	//
+	// This parameter is required.
 	Body *CreateTriggerInput `json:"body,omitempty" xml:"body,omitempty"`
 }
 
@@ -4239,6 +5248,8 @@ func (s *CreateTriggerResponse) SetBody(v *Trigger) *CreateTriggerResponse {
 
 type CreateVpcBindingRequest struct {
 	// The configurations of the virtual private cloud (VPC) binding.
+	//
+	// This parameter is required.
 	Body *CreateVpcBindingInput `json:"body,omitempty" xml:"body,omitempty"`
 }
 
@@ -4303,6 +5314,10 @@ func (s *DeleteAliasResponse) SetStatusCode(v int32) *DeleteAliasResponse {
 
 type DeleteAsyncInvokeConfigRequest struct {
 	// The version or alias of the function.
+	//
+	// example:
+	//
+	// LATEST
 	Qualifier *string `json:"qualifier,omitempty" xml:"qualifier,omitempty"`
 }
 
@@ -4459,6 +5474,10 @@ func (s *DeleteLayerVersionResponse) SetStatusCode(v int32) *DeleteLayerVersionR
 
 type DeleteProvisionConfigRequest struct {
 	// The function alias or LATEST.
+	//
+	// example:
+	//
+	// LATEST
 	Qualifier *string `json:"qualifier,omitempty" xml:"qualifier,omitempty"`
 }
 
@@ -4575,6 +5594,10 @@ func (s *GetAliasResponse) SetBody(v *Alias) *GetAliasResponse {
 
 type GetAsyncInvokeConfigRequest struct {
 	// The version or alias of the function.
+	//
+	// example:
+	//
+	// LATEST
 	Qualifier *string `json:"qualifier,omitempty" xml:"qualifier,omitempty"`
 }
 
@@ -4621,6 +5644,11 @@ func (s *GetAsyncInvokeConfigResponse) SetBody(v *AsyncConfig) *GetAsyncInvokeCo
 }
 
 type GetAsyncTaskRequest struct {
+	// The function version or alias.
+	//
+	// example:
+	//
+	// LATEST
 	Qualifier *string `json:"qualifier,omitempty" xml:"qualifier,omitempty"`
 }
 
@@ -4726,6 +5754,10 @@ func (s *GetCustomDomainResponse) SetBody(v *CustomDomain) *GetCustomDomainRespo
 
 type GetFunctionRequest struct {
 	// The version or alias of the function.
+	//
+	// example:
+	//
+	// LATEST
 	Qualifier *string `json:"qualifier,omitempty" xml:"qualifier,omitempty"`
 }
 
@@ -4773,6 +5805,10 @@ func (s *GetFunctionResponse) SetBody(v *Function) *GetFunctionResponse {
 
 type GetFunctionCodeRequest struct {
 	// The version or alias of the function.
+	//
+	// example:
+	//
+	// LATEST
 	Qualifier *string `json:"qualifier,omitempty" xml:"qualifier,omitempty"`
 }
 
@@ -4878,6 +5914,10 @@ func (s *GetLayerVersionByArnResponse) SetBody(v *Layer) *GetLayerVersionByArnRe
 
 type GetProvisionConfigRequest struct {
 	// The function alias or LATEST.
+	//
+	// example:
+	//
+	// LATEST
 	Qualifier *string `json:"qualifier,omitempty" xml:"qualifier,omitempty"`
 }
 
@@ -4953,11 +5993,22 @@ func (s *GetTriggerResponse) SetBody(v *Trigger) *GetTriggerResponse {
 }
 
 type InvokeFunctionHeaders struct {
-	CommonHeaders  map[string]*string `json:"commonHeaders" xml:"commonHeaders"`
-	XFcAsyncTaskId *string            `json:"x-fc-async-task-id,omitempty" xml:"x-fc-async-task-id,omitempty"`
+	CommonHeaders map[string]*string `json:"commonHeaders" xml:"commonHeaders"`
+	// example:
+	//
+	// test-id
+	XFcAsyncTaskId *string `json:"x-fc-async-task-id,omitempty" xml:"x-fc-async-task-id,omitempty"`
 	// The type of function invocation. Valid values: Sync and Async.
+	//
+	// example:
+	//
+	// Sync
 	XFcInvocationType *string `json:"x-fc-invocation-type,omitempty" xml:"x-fc-invocation-type,omitempty"`
 	// The log type of function invocation. Valid values: None and Tail.
+	//
+	// example:
+	//
+	// Tail
 	XFcLogType *string `json:"x-fc-log-type,omitempty" xml:"x-fc-log-type,omitempty"`
 }
 
@@ -4991,8 +6042,16 @@ func (s *InvokeFunctionHeaders) SetXFcLogType(v string) *InvokeFunctionHeaders {
 
 type InvokeFunctionRequest struct {
 	// The request parameters of function invocation.
+	//
+	// example:
+	//
+	// event
 	Body io.Reader `json:"body,omitempty" xml:"body,omitempty"`
 	// The version or alias of the function.
+	//
+	// example:
+	//
+	// LATEST
 	Qualifier *string `json:"qualifier,omitempty" xml:"qualifier,omitempty"`
 }
 
@@ -5045,10 +6104,22 @@ func (s *InvokeFunctionResponse) SetBody(v io.Reader) *InvokeFunctionResponse {
 
 type ListAliasesRequest struct {
 	// The number of aliases returned.
+	//
+	// example:
+	//
+	// 10
 	Limit *int32 `json:"limit,omitempty" xml:"limit,omitempty"`
 	// The pagination token that is used in the next request to retrieve a new page of results.
+	//
+	// example:
+	//
+	// MTIzNCNhYmM=
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
 	// The alias prefix.
+	//
+	// example:
+	//
+	// my-alias
 	Prefix *string `json:"prefix,omitempty" xml:"prefix,omitempty"`
 }
 
@@ -5106,10 +6177,22 @@ func (s *ListAliasesResponse) SetBody(v *ListAliasesOutput) *ListAliasesResponse
 
 type ListAsyncInvokeConfigsRequest struct {
 	// The function name. If you do not configure this parameter, the asynchronous invocation configurations of all functions are displayed.
+	//
+	// example:
+	//
+	// my-func
 	FunctionName *string `json:"functionName,omitempty" xml:"functionName,omitempty"`
 	// The maximum number of entries to be returned.
+	//
+	// example:
+	//
+	// 10
 	Limit *int32 `json:"limit,omitempty" xml:"limit,omitempty"`
 	// The paging information. This parameter specifies the start point of the query.
+	//
+	// example:
+	//
+	// MTIzNCNhYmM=
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
 }
 
@@ -5166,15 +6249,88 @@ func (s *ListAsyncInvokeConfigsResponse) SetBody(v *ListAsyncInvokeConfigOutput)
 }
 
 type ListAsyncTasksRequest struct {
-	IncludePayload   *bool   `json:"includePayload,omitempty" xml:"includePayload,omitempty"`
-	Limit            *int32  `json:"limit,omitempty" xml:"limit,omitempty"`
-	NextToken        *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	Prefix           *string `json:"prefix,omitempty" xml:"prefix,omitempty"`
-	Qualifier        *string `json:"qualifier,omitempty" xml:"qualifier,omitempty"`
-	SortOrderByTime  *string `json:"sortOrderByTime,omitempty" xml:"sortOrderByTime,omitempty"`
-	StartedTimeBegin *int64  `json:"startedTimeBegin,omitempty" xml:"startedTimeBegin,omitempty"`
-	StartedTimeEnd   *int64  `json:"startedTimeEnd,omitempty" xml:"startedTimeEnd,omitempty"`
-	Status           *string `json:"status,omitempty" xml:"status,omitempty"`
+	// Specifies whether to return input parameters of the asynchronous tasks. Valid values:
+	//
+	// 	- true: returns the `invocationPayload` parameter in the response.
+	//
+	// 	- false: does not return the `invocationPayload` parameter in the response.
+	//
+	// >  The `invocationPayload` parameter indicates the input parameters of an asynchronous task.
+	//
+	// example:
+	//
+	// true
+	IncludePayload *bool `json:"includePayload,omitempty" xml:"includePayload,omitempty"`
+	// The number of asynchronous tasks to return. Valid values: [1,100]. Default value: 50.
+	//
+	// example:
+	//
+	// 10
+	Limit *int32 `json:"limit,omitempty" xml:"limit,omitempty"`
+	// The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of NextToken.
+	//
+	// example:
+	//
+	// MTIzNCNhYmM=
+	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// The ID prefix of asynchronous tasks. If this parameter is specified, a list of asynchronous tasks whose IDs match the prefix is returned.
+	//
+	// example:
+	//
+	// job-
+	Prefix *string `json:"prefix,omitempty" xml:"prefix,omitempty"`
+	// The function version or alias.
+	//
+	// example:
+	//
+	// LATEST
+	Qualifier *string `json:"qualifier,omitempty" xml:"qualifier,omitempty"`
+	// The order in which the returned asynchronous tasks are sorted.
+	//
+	// 	- asc: in ascending order.
+	//
+	// 	- desc: in descending order.
+	//
+	// example:
+	//
+	// asc
+	SortOrderByTime *string `json:"sortOrderByTime,omitempty" xml:"sortOrderByTime,omitempty"`
+	// The start time of the period in which the asynchronous tasks are launched.
+	//
+	// example:
+	//
+	// 1640966400000
+	StartedTimeBegin *int64 `json:"startedTimeBegin,omitempty" xml:"startedTimeBegin,omitempty"`
+	// The end time of the period in which the asynchronous tasks are launched.
+	//
+	// example:
+	//
+	// 1640966400000
+	StartedTimeEnd *int64 `json:"startedTimeEnd,omitempty" xml:"startedTimeEnd,omitempty"`
+	// The state of asynchronous tasks. The following items list the states of an asynchronous task:
+	//
+	// 	- Enqueued: The asynchronous invocation is enqueued and is waiting to be executed.
+	//
+	// 	- Succeeded: The invocation is successful.
+	//
+	// 	- Failed: The invocation fails.
+	//
+	// 	- Running: The invocation is being executed.
+	//
+	// 	- Stopped: The invocation is terminated.
+	//
+	// 	- Stopping: The invocation is being terminated.
+	//
+	// 	- Invalid: The invocation is invalid and not executed due to specific reasons. For example, the function is deleted.
+	//
+	// 	- Expired: The maximum validity period of messages is specified for asynchronous invocation. The invocation is discarded and not executed because the specified maximum validity period has elapsed.
+	//
+	// 	- Retrying: The asynchronous invocation is being retried due to an execution error.
+	//
+	// example:
+	//
+	// Running
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
 }
 
 func (s ListAsyncTasksRequest) String() string {
@@ -5261,10 +6417,22 @@ func (s *ListAsyncTasksResponse) SetBody(v *ListAsyncTaskOutput) *ListAsyncTasks
 
 type ListConcurrencyConfigsRequest struct {
 	// The function name. If you leave this parameter empty, the concurrency configurations of all functions are returned.
+	//
+	// example:
+	//
+	// my-func
 	FunctionName *string `json:"functionName,omitempty" xml:"functionName,omitempty"`
 	// The maximum number of entries returned.
+	//
+	// example:
+	//
+	// 10
 	Limit *int32 `json:"limit,omitempty" xml:"limit,omitempty"`
 	// The pagination token that is used in the next request to retrieve a new page of results.
+	//
+	// example:
+	//
+	// MTIzNCNhYmM=
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
 }
 
@@ -5322,10 +6490,22 @@ func (s *ListConcurrencyConfigsResponse) SetBody(v *ListConcurrencyConfigsOutput
 
 type ListCustomDomainsRequest struct {
 	// The number of custom domain names returned.
+	//
+	// example:
+	//
+	// 10
 	Limit *int32 `json:"limit,omitempty" xml:"limit,omitempty"`
 	// The pagination token that is used in the next request to retrieve a new page of results.
+	//
+	// example:
+	//
+	// MTIzNCNhYmM=
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
 	// The domain name prefix.
+	//
+	// example:
+	//
+	// foo
 	Prefix *string `json:"prefix,omitempty" xml:"prefix,omitempty"`
 }
 
@@ -5383,10 +6563,22 @@ func (s *ListCustomDomainsResponse) SetBody(v *ListCustomDomainOutput) *ListCust
 
 type ListFunctionVersionsRequest struct {
 	// The sorting mode of function versions. Valid values: BACKWARD and FORWARD.
+	//
+	// example:
+	//
+	// BACKWARD
 	Direction *string `json:"direction,omitempty" xml:"direction,omitempty"`
 	// The number of function versions that are returned.
+	//
+	// example:
+	//
+	// 10
 	Limit *int32 `json:"limit,omitempty" xml:"limit,omitempty"`
 	// The pagination token that is used in the next request to retrieve a new page of results.
+	//
+	// example:
+	//
+	// MTIzNCNhYmM=
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
 }
 
@@ -5444,10 +6636,22 @@ func (s *ListFunctionVersionsResponse) SetBody(v *ListVersionsOutput) *ListFunct
 
 type ListFunctionsRequest struct {
 	// The number of functions to return. The minimum value is 1 and the maximum value is 100.
+	//
+	// example:
+	//
+	// 10
 	Limit *int32 `json:"limit,omitempty" xml:"limit,omitempty"`
 	// The pagination token.
+	//
+	// example:
+	//
+	// MTIzNCNhYmM=
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
 	// The prefix of the function name.
+	//
+	// example:
+	//
+	// my-func
 	Prefix *string `json:"prefix,omitempty" xml:"prefix,omitempty"`
 }
 
@@ -5505,8 +6709,16 @@ func (s *ListFunctionsResponse) SetBody(v *ListFunctionsOutput) *ListFunctionsRe
 
 type ListInstancesRequest struct {
 	// The function version or alias.
+	//
+	// example:
+	//
+	// LATEST
 	Qualifier *string `json:"qualifier,omitempty" xml:"qualifier,omitempty"`
 	// Specifies whether to list all instances. Valid values: true and false.
+	//
+	// example:
+	//
+	// true
 	WithAllActive *bool `json:"withAllActive,omitempty" xml:"withAllActive,omitempty"`
 }
 
@@ -5559,8 +6771,16 @@ func (s *ListInstancesResponse) SetBody(v *ListInstancesOutput) *ListInstancesRe
 
 type ListLayerVersionsRequest struct {
 	// The number of versions to be returned.
+	//
+	// example:
+	//
+	// 10
 	Limit *int32 `json:"limit,omitempty" xml:"limit,omitempty"`
 	// The initial version of the layer.
+	//
+	// example:
+	//
+	// 1
 	StartVersion *string `json:"startVersion,omitempty" xml:"startVersion,omitempty"`
 }
 
@@ -5613,14 +6833,34 @@ func (s *ListLayerVersionsResponse) SetBody(v *ListLayerVersionOutput) *ListLaye
 
 type ListLayersRequest struct {
 	// The number of layers that are returned
+	//
+	// example:
+	//
+	// 10
 	Limit *int32 `json:"limit,omitempty" xml:"limit,omitempty"`
 	// The pagination token that is used in the next request to retrieve a new page of results.
+	//
+	// example:
+	//
+	// MTIzNCNhYmM=
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
 	// Specifies whether the layer is official. Valid values: true and false.
+	//
+	// example:
+	//
+	// true
 	Official *string `json:"official,omitempty" xml:"official,omitempty"`
 	// The name prefix of the layer.
+	//
+	// example:
+	//
+	// my-layer
 	Prefix *string `json:"prefix,omitempty" xml:"prefix,omitempty"`
 	// Specifies whether the layer is public. Valid values: true and false.
+	//
+	// example:
+	//
+	// true
 	Public *string `json:"public,omitempty" xml:"public,omitempty"`
 }
 
@@ -5688,10 +6928,22 @@ func (s *ListLayersResponse) SetBody(v *ListLayersOutput) *ListLayersResponse {
 
 type ListProvisionConfigsRequest struct {
 	// The name of the function. If this parameter is not specified, the provisioned configurations of all functions are listed.
+	//
+	// example:
+	//
+	// my-func
 	FunctionName *string `json:"functionName,omitempty" xml:"functionName,omitempty"`
 	// Number of provisioned configurations to return.
+	//
+	// example:
+	//
+	// 10
 	Limit *int32 `json:"limit,omitempty" xml:"limit,omitempty"`
 	// A pagination token.
+	//
+	// example:
+	//
+	// MTIzNCNhYmM=
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
 }
 
@@ -5749,12 +7001,26 @@ func (s *ListProvisionConfigsResponse) SetBody(v *ListProvisionConfigsOutput) *L
 
 type ListTagResourcesRequest struct {
 	// The number of resources to return.
+	//
+	// example:
+	//
+	// 10
 	Limit *int32 `json:"Limit,omitempty" xml:"Limit,omitempty"`
 	// The pagination token that is used in the next request to retrieve a new page of results.
+	//
+	// example:
+	//
+	// MTIzNCNhYmM=
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The resource IDs.
 	ResourceId []*string `json:"ResourceId" xml:"ResourceId" type:"Repeated"`
 	// The resource type.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ALIYUN::FC:FUNCTION
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	// The tags.
 	//
@@ -5799,10 +7065,18 @@ type ListTagResourcesRequestTag struct {
 	// The tag key.
 	//
 	// The tag key can be up to 64 characters in length, and cannot contain `http://` or `https://`. The tag key cannot start with `aliyun` or `acs:`.
+	//
+	// example:
+	//
+	// k1
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The tag value.
 	//
 	// The tag value can be up to 128 characters in length and can be an empty string.
+	//
+	// example:
+	//
+	// v1
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -5826,12 +7100,26 @@ func (s *ListTagResourcesRequestTag) SetValue(v string) *ListTagResourcesRequest
 
 type ListTagResourcesShrinkRequest struct {
 	// The number of resources to return.
+	//
+	// example:
+	//
+	// 10
 	Limit *int32 `json:"Limit,omitempty" xml:"Limit,omitempty"`
 	// The pagination token that is used in the next request to retrieve a new page of results.
+	//
+	// example:
+	//
+	// MTIzNCNhYmM=
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The resource IDs.
 	ResourceIdShrink *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 	// The resource type.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ALIYUN::FC:FUNCTION
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	// The tags.
 	//
@@ -5903,10 +7191,22 @@ func (s *ListTagResourcesResponse) SetBody(v *ListTagResourcesOutput) *ListTagRe
 
 type ListTriggersRequest struct {
 	// The number of triggers returned.
+	//
+	// example:
+	//
+	// 10
 	Limit *int32 `json:"limit,omitempty" xml:"limit,omitempty"`
 	// The token for the next page.
+	//
+	// example:
+	//
+	// MTIzNCNhYmM=
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
 	// The trigger name prefix.
+	//
+	// example:
+	//
+	// my-trigger
 	Prefix *string `json:"prefix,omitempty" xml:"prefix,omitempty"`
 }
 
@@ -5993,6 +7293,8 @@ func (s *ListVpcBindingsResponse) SetBody(v *ListVpcBindingsOutput) *ListVpcBind
 
 type PublishFunctionVersionRequest struct {
 	// The information about the function version.
+	//
+	// This parameter is required.
 	Body *PublishVersionInput `json:"body,omitempty" xml:"body,omitempty"`
 }
 
@@ -6040,8 +7342,14 @@ func (s *PublishFunctionVersionResponse) SetBody(v *Version) *PublishFunctionVer
 
 type PutAsyncInvokeConfigRequest struct {
 	// The configurations of asynchronous function invocation.
+	//
+	// This parameter is required.
 	Body *PutAsyncInvokeConfigInput `json:"body,omitempty" xml:"body,omitempty"`
 	// The version or alias of the function.
+	//
+	// example:
+	//
+	// LATEST
 	Qualifier *string `json:"qualifier,omitempty" xml:"qualifier,omitempty"`
 }
 
@@ -6094,6 +7402,8 @@ func (s *PutAsyncInvokeConfigResponse) SetBody(v *AsyncConfig) *PutAsyncInvokeCo
 
 type PutConcurrencyConfigRequest struct {
 	// The concurrency configurations.
+	//
+	// This parameter is required.
 	Body *PutConcurrencyInput `json:"body,omitempty" xml:"body,omitempty"`
 }
 
@@ -6140,7 +7450,17 @@ func (s *PutConcurrencyConfigResponse) SetBody(v *ConcurrencyConfig) *PutConcurr
 }
 
 type PutLayerACLRequest struct {
+	// example:
+	//
+	// 1
+	Acl *string `json:"acl,omitempty" xml:"acl,omitempty"`
+	// Deprecated
+	//
 	// Specifies whether the layer is a public layer. Valid values: true and false.
+	//
+	// example:
+	//
+	// true
 	Public *string `json:"public,omitempty" xml:"public,omitempty"`
 }
 
@@ -6150,6 +7470,11 @@ func (s PutLayerACLRequest) String() string {
 
 func (s PutLayerACLRequest) GoString() string {
 	return s.String()
+}
+
+func (s *PutLayerACLRequest) SetAcl(v string) *PutLayerACLRequest {
+	s.Acl = &v
+	return s
 }
 
 func (s *PutLayerACLRequest) SetPublic(v string) *PutLayerACLRequest {
@@ -6182,8 +7507,14 @@ func (s *PutLayerACLResponse) SetStatusCode(v int32) *PutLayerACLResponse {
 
 type PutProvisionConfigRequest struct {
 	// The information about the provisioned configuration.
+	//
+	// This parameter is required.
 	Body *PutProvisionConfigInput `json:"body,omitempty" xml:"body,omitempty"`
 	// The function alias or LATEST.
+	//
+	// example:
+	//
+	// LATEST
 	Qualifier *string `json:"qualifier,omitempty" xml:"qualifier,omitempty"`
 }
 
@@ -6235,6 +7566,11 @@ func (s *PutProvisionConfigResponse) SetBody(v *ProvisionConfig) *PutProvisionCo
 }
 
 type StopAsyncTaskRequest struct {
+	// The function version or alias.
+	//
+	// example:
+	//
+	// LATEST
 	Qualifier *string `json:"qualifier,omitempty" xml:"qualifier,omitempty"`
 }
 
@@ -6276,6 +7612,8 @@ func (s *StopAsyncTaskResponse) SetStatusCode(v int32) *StopAsyncTaskResponse {
 
 type TagResourcesRequest struct {
 	// The configuration of the resource tag.
+	//
+	// This parameter is required.
 	Body *TagResourcesInput `json:"body,omitempty" xml:"body,omitempty"`
 }
 
@@ -6317,10 +7655,22 @@ func (s *TagResourcesResponse) SetStatusCode(v int32) *TagResourcesResponse {
 
 type UntagResourcesRequest struct {
 	// Specifies whether to delete all tags.
+	//
+	// example:
+	//
+	// true
 	All *bool `json:"All,omitempty" xml:"All,omitempty"`
 	// The resource identifiers.
+	//
+	// This parameter is required.
 	ResourceId []*string `json:"ResourceId" xml:"ResourceId" type:"Repeated"`
 	// The resource type.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// function
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	// The tag to remove. You can specify a maximum of 50 tags.
 	TagKey []*string `json:"TagKey" xml:"TagKey" type:"Repeated"`
@@ -6356,10 +7706,22 @@ func (s *UntagResourcesRequest) SetTagKey(v []*string) *UntagResourcesRequest {
 
 type UntagResourcesShrinkRequest struct {
 	// Specifies whether to delete all tags.
+	//
+	// example:
+	//
+	// true
 	All *bool `json:"All,omitempty" xml:"All,omitempty"`
 	// The resource identifiers.
+	//
+	// This parameter is required.
 	ResourceIdShrink *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 	// The resource type.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// function
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	// The tag to remove. You can specify a maximum of 50 tags.
 	TagKeyShrink *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
@@ -6418,6 +7780,8 @@ func (s *UntagResourcesResponse) SetStatusCode(v int32) *UntagResourcesResponse 
 
 type UpdateAliasRequest struct {
 	// The alias information to be updated.
+	//
+	// This parameter is required.
 	Body *UpdateAliasInput `json:"body,omitempty" xml:"body,omitempty"`
 }
 
@@ -6465,6 +7829,8 @@ func (s *UpdateAliasResponse) SetBody(v *Alias) *UpdateAliasResponse {
 
 type UpdateCustomDomainRequest struct {
 	// The information about the custom domain name.
+	//
+	// This parameter is required.
 	Body *UpdateCustomDomainInput `json:"body,omitempty" xml:"body,omitempty"`
 }
 
@@ -6512,6 +7878,8 @@ func (s *UpdateCustomDomainResponse) SetBody(v *CustomDomain) *UpdateCustomDomai
 
 type UpdateFunctionRequest struct {
 	// The function information
+	//
+	// This parameter is required.
 	Body *UpdateFunctionInput `json:"body,omitempty" xml:"body,omitempty"`
 }
 
@@ -6559,6 +7927,8 @@ func (s *UpdateFunctionResponse) SetBody(v *Function) *UpdateFunctionResponse {
 
 type UpdateTriggerRequest struct {
 	// The trigger configurations.
+	//
+	// This parameter is required.
 	Body *UpdateTriggerInput `json:"body,omitempty" xml:"body,omitempty"`
 }
 
@@ -6651,6 +8021,17 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建函数别名。
+//
+// @param request - CreateAliasRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateAliasResponse
 func (client *Client) CreateAliasWithOptions(functionName *string, request *CreateAliasRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateAliasResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6680,6 +8061,13 @@ func (client *Client) CreateAliasWithOptions(functionName *string, request *Crea
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建函数别名。
+//
+// @param request - CreateAliasRequest
+//
+// @return CreateAliasResponse
 func (client *Client) CreateAlias(functionName *string, request *CreateAliasRequest) (_result *CreateAliasResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -6692,6 +8080,17 @@ func (client *Client) CreateAlias(functionName *string, request *CreateAliasRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建自定义域名。
+//
+// @param request - CreateCustomDomainRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateCustomDomainResponse
 func (client *Client) CreateCustomDomainWithOptions(request *CreateCustomDomainRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateCustomDomainResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6721,6 +8120,13 @@ func (client *Client) CreateCustomDomainWithOptions(request *CreateCustomDomainR
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建自定义域名。
+//
+// @param request - CreateCustomDomainRequest
+//
+// @return CreateCustomDomainResponse
 func (client *Client) CreateCustomDomain(request *CreateCustomDomainRequest) (_result *CreateCustomDomainResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -6733,6 +8139,17 @@ func (client *Client) CreateCustomDomain(request *CreateCustomDomainRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a function.
+//
+// @param request - CreateFunctionRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateFunctionResponse
 func (client *Client) CreateFunctionWithOptions(request *CreateFunctionRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateFunctionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6762,6 +8179,13 @@ func (client *Client) CreateFunctionWithOptions(request *CreateFunctionRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a function.
+//
+// @param request - CreateFunctionRequest
+//
+// @return CreateFunctionResponse
 func (client *Client) CreateFunction(request *CreateFunctionRequest) (_result *CreateFunctionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -6774,6 +8198,17 @@ func (client *Client) CreateFunction(request *CreateFunctionRequest) (_result *C
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建层版本。
+//
+// @param request - CreateLayerVersionRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateLayerVersionResponse
 func (client *Client) CreateLayerVersionWithOptions(layerName *string, request *CreateLayerVersionRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateLayerVersionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6803,6 +8238,13 @@ func (client *Client) CreateLayerVersionWithOptions(layerName *string, request *
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建层版本。
+//
+// @param request - CreateLayerVersionRequest
+//
+// @return CreateLayerVersionResponse
 func (client *Client) CreateLayerVersion(layerName *string, request *CreateLayerVersionRequest) (_result *CreateLayerVersionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -6815,6 +8257,17 @@ func (client *Client) CreateLayerVersion(layerName *string, request *CreateLayer
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建函数触发器。
+//
+// @param request - CreateTriggerRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateTriggerResponse
 func (client *Client) CreateTriggerWithOptions(functionName *string, request *CreateTriggerRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateTriggerResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6844,6 +8297,13 @@ func (client *Client) CreateTriggerWithOptions(functionName *string, request *Cr
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建函数触发器。
+//
+// @param request - CreateTriggerRequest
+//
+// @return CreateTriggerResponse
 func (client *Client) CreateTrigger(functionName *string, request *CreateTriggerRequest) (_result *CreateTriggerResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -6856,6 +8316,17 @@ func (client *Client) CreateTrigger(functionName *string, request *CreateTrigger
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a VPC connection.
+//
+// @param request - CreateVpcBindingRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateVpcBindingResponse
 func (client *Client) CreateVpcBindingWithOptions(functionName *string, request *CreateVpcBindingRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateVpcBindingResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6885,6 +8356,13 @@ func (client *Client) CreateVpcBindingWithOptions(functionName *string, request 
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a VPC connection.
+//
+// @param request - CreateVpcBindingRequest
+//
+// @return CreateVpcBindingResponse
 func (client *Client) CreateVpcBinding(functionName *string, request *CreateVpcBindingRequest) (_result *CreateVpcBindingResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -6897,6 +8375,15 @@ func (client *Client) CreateVpcBinding(functionName *string, request *CreateVpcB
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes an alias.
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteAliasResponse
 func (client *Client) DeleteAliasWithOptions(functionName *string, aliasName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteAliasResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -6921,6 +8408,11 @@ func (client *Client) DeleteAliasWithOptions(functionName *string, aliasName *st
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes an alias.
+//
+// @return DeleteAliasResponse
 func (client *Client) DeleteAlias(functionName *string, aliasName *string) (_result *DeleteAliasResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -6933,6 +8425,17 @@ func (client *Client) DeleteAlias(functionName *string, aliasName *string) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes an asynchronous invocation configuration.
+//
+// @param request - DeleteAsyncInvokeConfigRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteAsyncInvokeConfigResponse
 func (client *Client) DeleteAsyncInvokeConfigWithOptions(functionName *string, request *DeleteAsyncInvokeConfigRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteAsyncInvokeConfigResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6967,6 +8470,13 @@ func (client *Client) DeleteAsyncInvokeConfigWithOptions(functionName *string, r
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes an asynchronous invocation configuration.
+//
+// @param request - DeleteAsyncInvokeConfigRequest
+//
+// @return DeleteAsyncInvokeConfigResponse
 func (client *Client) DeleteAsyncInvokeConfig(functionName *string, request *DeleteAsyncInvokeConfigRequest) (_result *DeleteAsyncInvokeConfigResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -6979,6 +8489,15 @@ func (client *Client) DeleteAsyncInvokeConfig(functionName *string, request *Del
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a concurrency configuration.
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteConcurrencyConfigResponse
 func (client *Client) DeleteConcurrencyConfigWithOptions(functionName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteConcurrencyConfigResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -7003,6 +8522,11 @@ func (client *Client) DeleteConcurrencyConfigWithOptions(functionName *string, h
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a concurrency configuration.
+//
+// @return DeleteConcurrencyConfigResponse
 func (client *Client) DeleteConcurrencyConfig(functionName *string) (_result *DeleteConcurrencyConfigResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -7015,6 +8539,15 @@ func (client *Client) DeleteConcurrencyConfig(functionName *string) (_result *De
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a custom domain name.
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteCustomDomainResponse
 func (client *Client) DeleteCustomDomainWithOptions(domainName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteCustomDomainResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -7039,6 +8572,11 @@ func (client *Client) DeleteCustomDomainWithOptions(domainName *string, headers 
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a custom domain name.
+//
+// @return DeleteCustomDomainResponse
 func (client *Client) DeleteCustomDomain(domainName *string) (_result *DeleteCustomDomainResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -7051,6 +8589,15 @@ func (client *Client) DeleteCustomDomain(domainName *string) (_result *DeleteCus
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a function.
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteFunctionResponse
 func (client *Client) DeleteFunctionWithOptions(functionName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteFunctionResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -7075,6 +8622,11 @@ func (client *Client) DeleteFunctionWithOptions(functionName *string, headers ma
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a function.
+//
+// @return DeleteFunctionResponse
 func (client *Client) DeleteFunction(functionName *string) (_result *DeleteFunctionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -7087,6 +8639,15 @@ func (client *Client) DeleteFunction(functionName *string) (_result *DeleteFunct
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a function version.
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteFunctionVersionResponse
 func (client *Client) DeleteFunctionVersionWithOptions(functionName *string, versionId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteFunctionVersionResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -7111,6 +8672,11 @@ func (client *Client) DeleteFunctionVersionWithOptions(functionName *string, ver
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a function version.
+//
+// @return DeleteFunctionVersionResponse
 func (client *Client) DeleteFunctionVersion(functionName *string, versionId *string) (_result *DeleteFunctionVersionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -7123,6 +8689,15 @@ func (client *Client) DeleteFunctionVersion(functionName *string, versionId *str
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a layer version.
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteLayerVersionResponse
 func (client *Client) DeleteLayerVersionWithOptions(layerName *string, version *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteLayerVersionResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -7147,6 +8722,11 @@ func (client *Client) DeleteLayerVersionWithOptions(layerName *string, version *
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a layer version.
+//
+// @return DeleteLayerVersionResponse
 func (client *Client) DeleteLayerVersion(layerName *string, version *string) (_result *DeleteLayerVersionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -7159,6 +8739,17 @@ func (client *Client) DeleteLayerVersion(layerName *string, version *string) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a provisioned configuration.
+//
+// @param request - DeleteProvisionConfigRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteProvisionConfigResponse
 func (client *Client) DeleteProvisionConfigWithOptions(functionName *string, request *DeleteProvisionConfigRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteProvisionConfigResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7193,6 +8784,13 @@ func (client *Client) DeleteProvisionConfigWithOptions(functionName *string, req
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a provisioned configuration.
+//
+// @param request - DeleteProvisionConfigRequest
+//
+// @return DeleteProvisionConfigResponse
 func (client *Client) DeleteProvisionConfig(functionName *string, request *DeleteProvisionConfigRequest) (_result *DeleteProvisionConfigResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -7205,6 +8803,15 @@ func (client *Client) DeleteProvisionConfig(functionName *string, request *Delet
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a trigger.
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteTriggerResponse
 func (client *Client) DeleteTriggerWithOptions(functionName *string, triggerName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteTriggerResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -7229,6 +8836,11 @@ func (client *Client) DeleteTriggerWithOptions(functionName *string, triggerName
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a trigger.
+//
+// @return DeleteTriggerResponse
 func (client *Client) DeleteTrigger(functionName *string, triggerName *string) (_result *DeleteTriggerResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -7241,6 +8853,15 @@ func (client *Client) DeleteTrigger(functionName *string, triggerName *string) (
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes an access control policy from a specified policy group for a VPC firewall.
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteVpcBindingResponse
 func (client *Client) DeleteVpcBindingWithOptions(functionName *string, vpcId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteVpcBindingResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -7265,6 +8886,11 @@ func (client *Client) DeleteVpcBindingWithOptions(functionName *string, vpcId *s
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes an access control policy from a specified policy group for a VPC firewall.
+//
+// @return DeleteVpcBindingResponse
 func (client *Client) DeleteVpcBinding(functionName *string, vpcId *string) (_result *DeleteVpcBindingResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -7277,6 +8903,15 @@ func (client *Client) DeleteVpcBinding(functionName *string, vpcId *string) (_re
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries information about an alias.
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAliasResponse
 func (client *Client) GetAliasWithOptions(functionName *string, aliasName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetAliasResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -7301,6 +8936,11 @@ func (client *Client) GetAliasWithOptions(functionName *string, aliasName *strin
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries information about an alias.
+//
+// @return GetAliasResponse
 func (client *Client) GetAlias(functionName *string, aliasName *string) (_result *GetAliasResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -7313,6 +8953,17 @@ func (client *Client) GetAlias(functionName *string, aliasName *string) (_result
 	return _result, _err
 }
 
+// Summary:
+//
+// Gets asynchronous invocation configurations of a function.
+//
+// @param request - GetAsyncInvokeConfigRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAsyncInvokeConfigResponse
 func (client *Client) GetAsyncInvokeConfigWithOptions(functionName *string, request *GetAsyncInvokeConfigRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetAsyncInvokeConfigResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7347,6 +8998,13 @@ func (client *Client) GetAsyncInvokeConfigWithOptions(functionName *string, requ
 	return _result, _err
 }
 
+// Summary:
+//
+// Gets asynchronous invocation configurations of a function.
+//
+// @param request - GetAsyncInvokeConfigRequest
+//
+// @return GetAsyncInvokeConfigResponse
 func (client *Client) GetAsyncInvokeConfig(functionName *string, request *GetAsyncInvokeConfigRequest) (_result *GetAsyncInvokeConfigResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -7359,6 +9017,17 @@ func (client *Client) GetAsyncInvokeConfig(functionName *string, request *GetAsy
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about an asynchronous task.
+//
+// @param request - GetAsyncTaskRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAsyncTaskResponse
 func (client *Client) GetAsyncTaskWithOptions(functionName *string, taskId *string, request *GetAsyncTaskRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetAsyncTaskResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7393,6 +9062,13 @@ func (client *Client) GetAsyncTaskWithOptions(functionName *string, taskId *stri
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about an asynchronous task.
+//
+// @param request - GetAsyncTaskRequest
+//
+// @return GetAsyncTaskResponse
 func (client *Client) GetAsyncTask(functionName *string, taskId *string, request *GetAsyncTaskRequest) (_result *GetAsyncTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -7405,6 +9081,15 @@ func (client *Client) GetAsyncTask(functionName *string, taskId *string, request
 	return _result, _err
 }
 
+// Summary:
+//
+// Obtains a concurrency configuration.
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetConcurrencyConfigResponse
 func (client *Client) GetConcurrencyConfigWithOptions(functionName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetConcurrencyConfigResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -7429,6 +9114,11 @@ func (client *Client) GetConcurrencyConfigWithOptions(functionName *string, head
 	return _result, _err
 }
 
+// Summary:
+//
+// Obtains a concurrency configuration.
+//
+// @return GetConcurrencyConfigResponse
 func (client *Client) GetConcurrencyConfig(functionName *string) (_result *GetConcurrencyConfigResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -7441,6 +9131,15 @@ func (client *Client) GetConcurrencyConfig(functionName *string) (_result *GetCo
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries information about a custom domain name.
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetCustomDomainResponse
 func (client *Client) GetCustomDomainWithOptions(domainName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetCustomDomainResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -7465,6 +9164,11 @@ func (client *Client) GetCustomDomainWithOptions(domainName *string, headers map
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries information about a custom domain name.
+//
+// @return GetCustomDomainResponse
 func (client *Client) GetCustomDomain(domainName *string) (_result *GetCustomDomainResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -7477,6 +9181,17 @@ func (client *Client) GetCustomDomain(domainName *string) (_result *GetCustomDom
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries information about a function.
+//
+// @param request - GetFunctionRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetFunctionResponse
 func (client *Client) GetFunctionWithOptions(functionName *string, request *GetFunctionRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetFunctionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7511,6 +9226,13 @@ func (client *Client) GetFunctionWithOptions(functionName *string, request *GetF
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries information about a function.
+//
+// @param request - GetFunctionRequest
+//
+// @return GetFunctionResponse
 func (client *Client) GetFunction(functionName *string, request *GetFunctionRequest) (_result *GetFunctionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -7523,6 +9245,17 @@ func (client *Client) GetFunction(functionName *string, request *GetFunctionRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a code package of a function.
+//
+// @param request - GetFunctionCodeRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetFunctionCodeResponse
 func (client *Client) GetFunctionCodeWithOptions(functionName *string, request *GetFunctionCodeRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetFunctionCodeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7557,6 +9290,13 @@ func (client *Client) GetFunctionCodeWithOptions(functionName *string, request *
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a code package of a function.
+//
+// @param request - GetFunctionCodeRequest
+//
+// @return GetFunctionCodeResponse
 func (client *Client) GetFunctionCode(functionName *string, request *GetFunctionCodeRequest) (_result *GetFunctionCodeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -7569,6 +9309,15 @@ func (client *Client) GetFunctionCode(functionName *string, request *GetFunction
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries versions of a layer.
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetLayerVersionResponse
 func (client *Client) GetLayerVersionWithOptions(layerName *string, version *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetLayerVersionResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -7593,6 +9342,11 @@ func (client *Client) GetLayerVersionWithOptions(layerName *string, version *str
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries versions of a layer.
+//
+// @return GetLayerVersionResponse
 func (client *Client) GetLayerVersion(layerName *string, version *string) (_result *GetLayerVersionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -7605,6 +9359,15 @@ func (client *Client) GetLayerVersion(layerName *string, version *string) (_resu
 	return _result, _err
 }
 
+// Summary:
+//
+// Obtain version information of a layer by using ARNs.
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetLayerVersionByArnResponse
 func (client *Client) GetLayerVersionByArnWithOptions(arn *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetLayerVersionByArnResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -7629,6 +9392,11 @@ func (client *Client) GetLayerVersionByArnWithOptions(arn *string, headers map[s
 	return _result, _err
 }
 
+// Summary:
+//
+// Obtain version information of a layer by using ARNs.
+//
+// @return GetLayerVersionByArnResponse
 func (client *Client) GetLayerVersionByArn(arn *string) (_result *GetLayerVersionByArnResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -7641,6 +9409,17 @@ func (client *Client) GetLayerVersionByArn(arn *string) (_result *GetLayerVersio
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries provisioned configurations.
+//
+// @param request - GetProvisionConfigRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetProvisionConfigResponse
 func (client *Client) GetProvisionConfigWithOptions(functionName *string, request *GetProvisionConfigRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetProvisionConfigResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7675,6 +9454,13 @@ func (client *Client) GetProvisionConfigWithOptions(functionName *string, reques
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries provisioned configurations.
+//
+// @param request - GetProvisionConfigRequest
+//
+// @return GetProvisionConfigResponse
 func (client *Client) GetProvisionConfig(functionName *string, request *GetProvisionConfigRequest) (_result *GetProvisionConfigResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -7687,6 +9473,15 @@ func (client *Client) GetProvisionConfig(functionName *string, request *GetProvi
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries information about a trigger.
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetTriggerResponse
 func (client *Client) GetTriggerWithOptions(functionName *string, triggerName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetTriggerResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -7711,6 +9506,11 @@ func (client *Client) GetTriggerWithOptions(functionName *string, triggerName *s
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries information about a trigger.
+//
+// @return GetTriggerResponse
 func (client *Client) GetTrigger(functionName *string, triggerName *string) (_result *GetTriggerResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -7723,6 +9523,17 @@ func (client *Client) GetTrigger(functionName *string, triggerName *string) (_re
 	return _result, _err
 }
 
+// Summary:
+//
+// Invokes a function.
+//
+// @param request - InvokeFunctionRequest
+//
+// @param headers - InvokeFunctionHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return InvokeFunctionResponse
 func (client *Client) InvokeFunctionWithOptions(functionName *string, request *InvokeFunctionRequest, headers *InvokeFunctionHeaders, runtime *util.RuntimeOptions) (_result *InvokeFunctionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7809,6 +9620,13 @@ func (client *Client) InvokeFunctionWithOptions(functionName *string, request *I
 	return _result, _err
 }
 
+// Summary:
+//
+// Invokes a function.
+//
+// @param request - InvokeFunctionRequest
+//
+// @return InvokeFunctionResponse
 func (client *Client) InvokeFunction(functionName *string, request *InvokeFunctionRequest) (_result *InvokeFunctionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &InvokeFunctionHeaders{}
@@ -7821,6 +9639,17 @@ func (client *Client) InvokeFunction(functionName *string, request *InvokeFuncti
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries aliases.
+//
+// @param request - ListAliasesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListAliasesResponse
 func (client *Client) ListAliasesWithOptions(functionName *string, request *ListAliasesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListAliasesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7863,6 +9692,13 @@ func (client *Client) ListAliasesWithOptions(functionName *string, request *List
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries aliases.
+//
+// @param request - ListAliasesRequest
+//
+// @return ListAliasesResponse
 func (client *Client) ListAliases(functionName *string, request *ListAliasesRequest) (_result *ListAliasesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -7875,6 +9711,17 @@ func (client *Client) ListAliases(functionName *string, request *ListAliasesRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries all asynchronous configurations of a function.
+//
+// @param request - ListAsyncInvokeConfigsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListAsyncInvokeConfigsResponse
 func (client *Client) ListAsyncInvokeConfigsWithOptions(request *ListAsyncInvokeConfigsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListAsyncInvokeConfigsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7917,6 +9764,13 @@ func (client *Client) ListAsyncInvokeConfigsWithOptions(request *ListAsyncInvoke
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries all asynchronous configurations of a function.
+//
+// @param request - ListAsyncInvokeConfigsRequest
+//
+// @return ListAsyncInvokeConfigsResponse
 func (client *Client) ListAsyncInvokeConfigs(request *ListAsyncInvokeConfigsRequest) (_result *ListAsyncInvokeConfigsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -7929,6 +9783,17 @@ func (client *Client) ListAsyncInvokeConfigs(request *ListAsyncInvokeConfigsRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// Lists asynchronous tasks.
+//
+// @param request - ListAsyncTasksRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListAsyncTasksResponse
 func (client *Client) ListAsyncTasksWithOptions(functionName *string, request *ListAsyncTasksRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListAsyncTasksResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7995,6 +9860,13 @@ func (client *Client) ListAsyncTasksWithOptions(functionName *string, request *L
 	return _result, _err
 }
 
+// Summary:
+//
+// Lists asynchronous tasks.
+//
+// @param request - ListAsyncTasksRequest
+//
+// @return ListAsyncTasksResponse
 func (client *Client) ListAsyncTasks(functionName *string, request *ListAsyncTasksRequest) (_result *ListAsyncTasksResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -8007,6 +9879,17 @@ func (client *Client) ListAsyncTasks(functionName *string, request *ListAsyncTas
 	return _result, _err
 }
 
+// Summary:
+//
+// 列出函数并发度配置。
+//
+// @param request - ListConcurrencyConfigsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListConcurrencyConfigsResponse
 func (client *Client) ListConcurrencyConfigsWithOptions(request *ListConcurrencyConfigsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListConcurrencyConfigsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8049,6 +9932,13 @@ func (client *Client) ListConcurrencyConfigsWithOptions(request *ListConcurrency
 	return _result, _err
 }
 
+// Summary:
+//
+// 列出函数并发度配置。
+//
+// @param request - ListConcurrencyConfigsRequest
+//
+// @return ListConcurrencyConfigsResponse
 func (client *Client) ListConcurrencyConfigs(request *ListConcurrencyConfigsRequest) (_result *ListConcurrencyConfigsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -8061,6 +9951,17 @@ func (client *Client) ListConcurrencyConfigs(request *ListConcurrencyConfigsRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries custom domain names.
+//
+// @param request - ListCustomDomainsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListCustomDomainsResponse
 func (client *Client) ListCustomDomainsWithOptions(request *ListCustomDomainsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListCustomDomainsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8103,6 +10004,13 @@ func (client *Client) ListCustomDomainsWithOptions(request *ListCustomDomainsReq
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries custom domain names.
+//
+// @param request - ListCustomDomainsRequest
+//
+// @return ListCustomDomainsResponse
 func (client *Client) ListCustomDomains(request *ListCustomDomainsRequest) (_result *ListCustomDomainsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -8115,6 +10023,17 @@ func (client *Client) ListCustomDomains(request *ListCustomDomainsRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries versions of a function.
+//
+// @param request - ListFunctionVersionsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListFunctionVersionsResponse
 func (client *Client) ListFunctionVersionsWithOptions(functionName *string, request *ListFunctionVersionsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListFunctionVersionsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8157,6 +10076,13 @@ func (client *Client) ListFunctionVersionsWithOptions(functionName *string, requ
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries versions of a function.
+//
+// @param request - ListFunctionVersionsRequest
+//
+// @return ListFunctionVersionsResponse
 func (client *Client) ListFunctionVersions(functionName *string, request *ListFunctionVersionsRequest) (_result *ListFunctionVersionsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -8169,6 +10095,17 @@ func (client *Client) ListFunctionVersions(functionName *string, request *ListFu
 	return _result, _err
 }
 
+// Summary:
+//
+// 列出函数。
+//
+// @param request - ListFunctionsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListFunctionsResponse
 func (client *Client) ListFunctionsWithOptions(request *ListFunctionsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListFunctionsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8211,6 +10148,13 @@ func (client *Client) ListFunctionsWithOptions(request *ListFunctionsRequest, he
 	return _result, _err
 }
 
+// Summary:
+//
+// 列出函数。
+//
+// @param request - ListFunctionsRequest
+//
+// @return ListFunctionsResponse
 func (client *Client) ListFunctions(request *ListFunctionsRequest) (_result *ListFunctionsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -8223,6 +10167,17 @@ func (client *Client) ListFunctions(request *ListFunctionsRequest) (_result *Lis
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of function instances.
+//
+// @param request - ListInstancesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListInstancesResponse
 func (client *Client) ListInstancesWithOptions(functionName *string, request *ListInstancesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListInstancesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8261,6 +10216,13 @@ func (client *Client) ListInstancesWithOptions(functionName *string, request *Li
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of function instances.
+//
+// @param request - ListInstancesRequest
+//
+// @return ListInstancesResponse
 func (client *Client) ListInstances(functionName *string, request *ListInstancesRequest) (_result *ListInstancesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -8273,6 +10235,17 @@ func (client *Client) ListInstances(functionName *string, request *ListInstances
 	return _result, _err
 }
 
+// Summary:
+//
+// Gets a list of layer versions.
+//
+// @param request - ListLayerVersionsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListLayerVersionsResponse
 func (client *Client) ListLayerVersionsWithOptions(layerName *string, request *ListLayerVersionsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListLayerVersionsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8311,6 +10284,13 @@ func (client *Client) ListLayerVersionsWithOptions(layerName *string, request *L
 	return _result, _err
 }
 
+// Summary:
+//
+// Gets a list of layer versions.
+//
+// @param request - ListLayerVersionsRequest
+//
+// @return ListLayerVersionsResponse
 func (client *Client) ListLayerVersions(layerName *string, request *ListLayerVersionsRequest) (_result *ListLayerVersionsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -8323,6 +10303,17 @@ func (client *Client) ListLayerVersions(layerName *string, request *ListLayerVer
 	return _result, _err
 }
 
+// Summary:
+//
+// Gets a list of layers.
+//
+// @param request - ListLayersRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListLayersResponse
 func (client *Client) ListLayersWithOptions(request *ListLayersRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListLayersResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8373,6 +10364,13 @@ func (client *Client) ListLayersWithOptions(request *ListLayersRequest, headers 
 	return _result, _err
 }
 
+// Summary:
+//
+// Gets a list of layers.
+//
+// @param request - ListLayersRequest
+//
+// @return ListLayersResponse
 func (client *Client) ListLayers(request *ListLayersRequest) (_result *ListLayersResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -8385,6 +10383,17 @@ func (client *Client) ListLayers(request *ListLayersRequest) (_result *ListLayer
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of provisioned configurations.
+//
+// @param request - ListProvisionConfigsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListProvisionConfigsResponse
 func (client *Client) ListProvisionConfigsWithOptions(request *ListProvisionConfigsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListProvisionConfigsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8427,6 +10436,13 @@ func (client *Client) ListProvisionConfigsWithOptions(request *ListProvisionConf
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of provisioned configurations.
+//
+// @param request - ListProvisionConfigsRequest
+//
+// @return ListProvisionConfigsResponse
 func (client *Client) ListProvisionConfigs(request *ListProvisionConfigsRequest) (_result *ListProvisionConfigsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -8439,6 +10455,17 @@ func (client *Client) ListProvisionConfigs(request *ListProvisionConfigsRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// Lists all tagged resources.
+//
+// @param tmpReq - ListTagResourcesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListTagResourcesResponse
 func (client *Client) ListTagResourcesWithOptions(tmpReq *ListTagResourcesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListTagResourcesResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -8499,6 +10526,13 @@ func (client *Client) ListTagResourcesWithOptions(tmpReq *ListTagResourcesReques
 	return _result, _err
 }
 
+// Summary:
+//
+// Lists all tagged resources.
+//
+// @param request - ListTagResourcesRequest
+//
+// @return ListTagResourcesResponse
 func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_result *ListTagResourcesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -8511,6 +10545,17 @@ func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the triggers of a function.
+//
+// @param request - ListTriggersRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListTriggersResponse
 func (client *Client) ListTriggersWithOptions(functionName *string, request *ListTriggersRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListTriggersResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8553,6 +10598,13 @@ func (client *Client) ListTriggersWithOptions(functionName *string, request *Lis
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the triggers of a function.
+//
+// @param request - ListTriggersRequest
+//
+// @return ListTriggersResponse
 func (client *Client) ListTriggers(functionName *string, request *ListTriggersRequest) (_result *ListTriggersResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -8565,6 +10617,15 @@ func (client *Client) ListTriggers(functionName *string, request *ListTriggersRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of existing VPC connections.
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListVpcBindingsResponse
 func (client *Client) ListVpcBindingsWithOptions(functionName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListVpcBindingsResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -8589,6 +10650,11 @@ func (client *Client) ListVpcBindingsWithOptions(functionName *string, headers m
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of existing VPC connections.
+//
+// @return ListVpcBindingsResponse
 func (client *Client) ListVpcBindings(functionName *string) (_result *ListVpcBindingsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -8601,6 +10667,17 @@ func (client *Client) ListVpcBindings(functionName *string) (_result *ListVpcBin
 	return _result, _err
 }
 
+// Summary:
+//
+// Publishes a function version.
+//
+// @param request - PublishFunctionVersionRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return PublishFunctionVersionResponse
 func (client *Client) PublishFunctionVersionWithOptions(functionName *string, request *PublishFunctionVersionRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *PublishFunctionVersionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8630,6 +10707,13 @@ func (client *Client) PublishFunctionVersionWithOptions(functionName *string, re
 	return _result, _err
 }
 
+// Summary:
+//
+// Publishes a function version.
+//
+// @param request - PublishFunctionVersionRequest
+//
+// @return PublishFunctionVersionResponse
 func (client *Client) PublishFunctionVersion(functionName *string, request *PublishFunctionVersionRequest) (_result *PublishFunctionVersionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -8642,6 +10726,17 @@ func (client *Client) PublishFunctionVersion(functionName *string, request *Publ
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates or modifies an asynchronous invocation configuration for a function.
+//
+// @param request - PutAsyncInvokeConfigRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return PutAsyncInvokeConfigResponse
 func (client *Client) PutAsyncInvokeConfigWithOptions(functionName *string, request *PutAsyncInvokeConfigRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *PutAsyncInvokeConfigResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8677,6 +10772,13 @@ func (client *Client) PutAsyncInvokeConfigWithOptions(functionName *string, requ
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates or modifies an asynchronous invocation configuration for a function.
+//
+// @param request - PutAsyncInvokeConfigRequest
+//
+// @return PutAsyncInvokeConfigResponse
 func (client *Client) PutAsyncInvokeConfig(functionName *string, request *PutAsyncInvokeConfigRequest) (_result *PutAsyncInvokeConfigResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -8689,6 +10791,17 @@ func (client *Client) PutAsyncInvokeConfig(functionName *string, request *PutAsy
 	return _result, _err
 }
 
+// Summary:
+//
+// Configures concurrency of a function.
+//
+// @param request - PutConcurrencyConfigRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return PutConcurrencyConfigResponse
 func (client *Client) PutConcurrencyConfigWithOptions(functionName *string, request *PutConcurrencyConfigRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *PutConcurrencyConfigResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8718,6 +10831,13 @@ func (client *Client) PutConcurrencyConfigWithOptions(functionName *string, requ
 	return _result, _err
 }
 
+// Summary:
+//
+// Configures concurrency of a function.
+//
+// @param request - PutConcurrencyConfigRequest
+//
+// @return PutConcurrencyConfigResponse
 func (client *Client) PutConcurrencyConfig(functionName *string, request *PutConcurrencyConfigRequest) (_result *PutConcurrencyConfigResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -8730,12 +10850,27 @@ func (client *Client) PutConcurrencyConfig(functionName *string, request *PutCon
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies permissions of a layer.
+//
+// @param request - PutLayerACLRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return PutLayerACLResponse
 func (client *Client) PutLayerACLWithOptions(layerName *string, request *PutLayerACLRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *PutLayerACLResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Acl)) {
+		query["acl"] = request.Acl
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Public)) {
 		query["public"] = request.Public
 	}
@@ -8764,6 +10899,13 @@ func (client *Client) PutLayerACLWithOptions(layerName *string, request *PutLaye
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies permissions of a layer.
+//
+// @param request - PutLayerACLRequest
+//
+// @return PutLayerACLResponse
 func (client *Client) PutLayerACL(layerName *string, request *PutLayerACLRequest) (_result *PutLayerACLResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -8776,6 +10918,17 @@ func (client *Client) PutLayerACL(layerName *string, request *PutLayerACLRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates provisioned configurations.
+//
+// @param request - PutProvisionConfigRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return PutProvisionConfigResponse
 func (client *Client) PutProvisionConfigWithOptions(functionName *string, request *PutProvisionConfigRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *PutProvisionConfigResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8811,6 +10964,13 @@ func (client *Client) PutProvisionConfigWithOptions(functionName *string, reques
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates provisioned configurations.
+//
+// @param request - PutProvisionConfigRequest
+//
+// @return PutProvisionConfigResponse
 func (client *Client) PutProvisionConfig(functionName *string, request *PutProvisionConfigRequest) (_result *PutProvisionConfigResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -8823,6 +10983,17 @@ func (client *Client) PutProvisionConfig(functionName *string, request *PutProvi
 	return _result, _err
 }
 
+// Summary:
+//
+// Stops an asynchronous task.
+//
+// @param request - StopAsyncTaskRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return StopAsyncTaskResponse
 func (client *Client) StopAsyncTaskWithOptions(functionName *string, taskId *string, request *StopAsyncTaskRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *StopAsyncTaskResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8857,6 +11028,13 @@ func (client *Client) StopAsyncTaskWithOptions(functionName *string, taskId *str
 	return _result, _err
 }
 
+// Summary:
+//
+// Stops an asynchronous task.
+//
+// @param request - StopAsyncTaskRequest
+//
+// @return StopAsyncTaskResponse
 func (client *Client) StopAsyncTask(functionName *string, taskId *string, request *StopAsyncTaskRequest) (_result *StopAsyncTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -8869,6 +11047,17 @@ func (client *Client) StopAsyncTask(functionName *string, taskId *string, reques
 	return _result, _err
 }
 
+// Summary:
+//
+// Adds tags to a resource.
+//
+// @param request - TagResourcesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return TagResourcesResponse
 func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *TagResourcesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8898,6 +11087,13 @@ func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, head
 	return _result, _err
 }
 
+// Summary:
+//
+// Adds tags to a resource.
+//
+// @param request - TagResourcesRequest
+//
+// @return TagResourcesResponse
 func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagResourcesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -8910,6 +11106,17 @@ func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Removes tags from a resource.
+//
+// @param tmpReq - UntagResourcesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UntagResourcesResponse
 func (client *Client) UntagResourcesWithOptions(tmpReq *UntagResourcesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UntagResourcesResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -8966,6 +11173,13 @@ func (client *Client) UntagResourcesWithOptions(tmpReq *UntagResourcesRequest, h
 	return _result, _err
 }
 
+// Summary:
+//
+// Removes tags from a resource.
+//
+// @param request - UntagResourcesRequest
+//
+// @return UntagResourcesResponse
 func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *UntagResourcesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -8978,6 +11192,17 @@ func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *U
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates an alias.
+//
+// @param request - UpdateAliasRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateAliasResponse
 func (client *Client) UpdateAliasWithOptions(functionName *string, aliasName *string, request *UpdateAliasRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateAliasResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9007,6 +11232,13 @@ func (client *Client) UpdateAliasWithOptions(functionName *string, aliasName *st
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates an alias.
+//
+// @param request - UpdateAliasRequest
+//
+// @return UpdateAliasResponse
 func (client *Client) UpdateAlias(functionName *string, aliasName *string, request *UpdateAliasRequest) (_result *UpdateAliasResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -9019,6 +11251,17 @@ func (client *Client) UpdateAlias(functionName *string, aliasName *string, reque
 	return _result, _err
 }
 
+// Summary:
+//
+// Update a custom domain name.
+//
+// @param request - UpdateCustomDomainRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateCustomDomainResponse
 func (client *Client) UpdateCustomDomainWithOptions(domainName *string, request *UpdateCustomDomainRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateCustomDomainResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9048,6 +11291,13 @@ func (client *Client) UpdateCustomDomainWithOptions(domainName *string, request 
 	return _result, _err
 }
 
+// Summary:
+//
+// Update a custom domain name.
+//
+// @param request - UpdateCustomDomainRequest
+//
+// @return UpdateCustomDomainResponse
 func (client *Client) UpdateCustomDomain(domainName *string, request *UpdateCustomDomainRequest) (_result *UpdateCustomDomainResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -9060,6 +11310,17 @@ func (client *Client) UpdateCustomDomain(domainName *string, request *UpdateCust
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates the information about a function.
+//
+// @param request - UpdateFunctionRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateFunctionResponse
 func (client *Client) UpdateFunctionWithOptions(functionName *string, request *UpdateFunctionRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateFunctionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9089,6 +11350,13 @@ func (client *Client) UpdateFunctionWithOptions(functionName *string, request *U
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates the information about a function.
+//
+// @param request - UpdateFunctionRequest
+//
+// @return UpdateFunctionResponse
 func (client *Client) UpdateFunction(functionName *string, request *UpdateFunctionRequest) (_result *UpdateFunctionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -9101,6 +11369,17 @@ func (client *Client) UpdateFunction(functionName *string, request *UpdateFuncti
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies a trigger.
+//
+// @param request - UpdateTriggerRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateTriggerResponse
 func (client *Client) UpdateTriggerWithOptions(functionName *string, triggerName *string, request *UpdateTriggerRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateTriggerResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9130,6 +11409,13 @@ func (client *Client) UpdateTriggerWithOptions(functionName *string, triggerName
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies a trigger.
+//
+// @param request - UpdateTriggerRequest
+//
+// @return UpdateTriggerResponse
 func (client *Client) UpdateTrigger(functionName *string, triggerName *string, request *UpdateTriggerRequest) (_result *UpdateTriggerResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
