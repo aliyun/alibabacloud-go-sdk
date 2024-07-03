@@ -4576,25 +4576,27 @@ type CreateDBInstanceRequest struct {
 	//
 	// 	- Regular RDS instance
 	//
-	//     	- **Basic**: RDS Basic Edition.
+	//     	- **Basic**: RDS Basic Edition
 	//
-	//     	- **HighAvailability**: RDS High-availability Edition.
+	//     	- **HighAvailability**: RDS High-availability Edition
 	//
-	//     	- **cluster**: RDS Cluster Edition for ApsaraDB RDS for MySQL.
+	//     	- **cluster**: RDS Cluster Edition for ApsaraDB RDS for MySQL or PostgreSQL
 	//
-	//     	- **AlwaysOn**: RDS Cluster Edition for ApsaraDB RDS for SQL Server.
+	//     	- **AlwaysOn**: RDS Cluster Edition for ApsaraDB RDS for SQL Server
 	//
-	//     	- **Finance**: RDS Enterprise Edition.
+	//     	- **Finance**: RDS Basic Edition for serverless instances
 	//
 	// 	- Serverless instance
 	//
-	//     	- **serverless_basic**: RDS Basic Edition. This edition is available only for instances that run MySQL and PostgreSQL.
+	//     	- **serverless_basic**: RDS Basic Edition for serverless instances. This edition is available only for instances that run MySQL and PostgreSQL.
 	//
-	//     	- **serverless_standard**: RDS High-availability Edition. This edition is available only for instances that run MySQL and PostgreSQL.
+	//     	- **serverless_standard**: RDS High-availability Edition for serverless instances. This edition is available only for instances that run MySQL and PostgreSQL.
 	//
-	//     	- **serverless_ha**: RDS High-availability Edition for ApsaraDB RDS for SQL Server.
+	//     	- **serverless_ha**: RDS High-availability Edition for serverless instances. This edition is available only for instances that run SQL Server.
 	//
-	// > This parameter is required when you create a serverless instance.
+	//     **
+	//
+	//     **Note*	- This parameter is required when you create a serverless instance.
 	//
 	// example:
 	//
@@ -5653,25 +5655,27 @@ type CreateDBInstanceShrinkRequest struct {
 	//
 	// 	- Regular RDS instance
 	//
-	//     	- **Basic**: RDS Basic Edition.
+	//     	- **Basic**: RDS Basic Edition
 	//
-	//     	- **HighAvailability**: RDS High-availability Edition.
+	//     	- **HighAvailability**: RDS High-availability Edition
 	//
-	//     	- **cluster**: RDS Cluster Edition for ApsaraDB RDS for MySQL.
+	//     	- **cluster**: RDS Cluster Edition for ApsaraDB RDS for MySQL or PostgreSQL
 	//
-	//     	- **AlwaysOn**: RDS Cluster Edition for ApsaraDB RDS for SQL Server.
+	//     	- **AlwaysOn**: RDS Cluster Edition for ApsaraDB RDS for SQL Server
 	//
-	//     	- **Finance**: RDS Enterprise Edition.
+	//     	- **Finance**: RDS Basic Edition for serverless instances
 	//
 	// 	- Serverless instance
 	//
-	//     	- **serverless_basic**: RDS Basic Edition. This edition is available only for instances that run MySQL and PostgreSQL.
+	//     	- **serverless_basic**: RDS Basic Edition for serverless instances. This edition is available only for instances that run MySQL and PostgreSQL.
 	//
-	//     	- **serverless_standard**: RDS High-availability Edition. This edition is available only for instances that run MySQL and PostgreSQL.
+	//     	- **serverless_standard**: RDS High-availability Edition for serverless instances. This edition is available only for instances that run MySQL and PostgreSQL.
 	//
-	//     	- **serverless_ha**: RDS High-availability Edition for ApsaraDB RDS for SQL Server.
+	//     	- **serverless_ha**: RDS High-availability Edition for serverless instances. This edition is available only for instances that run SQL Server.
 	//
-	// > This parameter is required when you create a serverless instance.
+	//     **
+	//
+	//     **Note*	- This parameter is required when you create a serverless instance.
 	//
 	// example:
 	//
@@ -7778,6 +7782,157 @@ func (s *CreateDBInstanceForRebuildResponse) SetStatusCode(v int32) *CreateDBIns
 }
 
 func (s *CreateDBInstanceForRebuildResponse) SetBody(v *CreateDBInstanceForRebuildResponseBody) *CreateDBInstanceForRebuildResponse {
+	s.Body = v
+	return s
+}
+
+type CreateDBInstanceSecurityGroupRuleRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// rm-bp15i4hn07r******
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// example:
+	//
+	// zht_test
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// TCP
+	IpProtocol   *string `json:"IpProtocol,omitempty" xml:"IpProtocol,omitempty"`
+	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId      *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1/200
+	PortRange            *string `json:"PortRange,omitempty" xml:"PortRange,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// example:
+	//
+	// 192.XX.XX.100
+	SourceCidrIp *string `json:"SourceCidrIp,omitempty" xml:"SourceCidrIp,omitempty"`
+}
+
+func (s CreateDBInstanceSecurityGroupRuleRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDBInstanceSecurityGroupRuleRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDBInstanceSecurityGroupRuleRequest) SetDBInstanceId(v string) *CreateDBInstanceSecurityGroupRuleRequest {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *CreateDBInstanceSecurityGroupRuleRequest) SetDescription(v string) *CreateDBInstanceSecurityGroupRuleRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateDBInstanceSecurityGroupRuleRequest) SetIpProtocol(v string) *CreateDBInstanceSecurityGroupRuleRequest {
+	s.IpProtocol = &v
+	return s
+}
+
+func (s *CreateDBInstanceSecurityGroupRuleRequest) SetOwnerAccount(v string) *CreateDBInstanceSecurityGroupRuleRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *CreateDBInstanceSecurityGroupRuleRequest) SetOwnerId(v string) *CreateDBInstanceSecurityGroupRuleRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *CreateDBInstanceSecurityGroupRuleRequest) SetPortRange(v string) *CreateDBInstanceSecurityGroupRuleRequest {
+	s.PortRange = &v
+	return s
+}
+
+func (s *CreateDBInstanceSecurityGroupRuleRequest) SetResourceOwnerAccount(v string) *CreateDBInstanceSecurityGroupRuleRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *CreateDBInstanceSecurityGroupRuleRequest) SetResourceOwnerId(v int64) *CreateDBInstanceSecurityGroupRuleRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *CreateDBInstanceSecurityGroupRuleRequest) SetSourceCidrIp(v string) *CreateDBInstanceSecurityGroupRuleRequest {
+	s.SourceCidrIp = &v
+	return s
+}
+
+type CreateDBInstanceSecurityGroupRuleResponseBody struct {
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// successful
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 07F6177E-6DE4-408A-BB4F-0723301340F4
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateDBInstanceSecurityGroupRuleResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDBInstanceSecurityGroupRuleResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDBInstanceSecurityGroupRuleResponseBody) SetCode(v string) *CreateDBInstanceSecurityGroupRuleResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CreateDBInstanceSecurityGroupRuleResponseBody) SetMessage(v string) *CreateDBInstanceSecurityGroupRuleResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CreateDBInstanceSecurityGroupRuleResponseBody) SetRequestId(v string) *CreateDBInstanceSecurityGroupRuleResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateDBInstanceSecurityGroupRuleResponse struct {
+	Headers    map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateDBInstanceSecurityGroupRuleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateDBInstanceSecurityGroupRuleResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDBInstanceSecurityGroupRuleResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDBInstanceSecurityGroupRuleResponse) SetHeaders(v map[string]*string) *CreateDBInstanceSecurityGroupRuleResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateDBInstanceSecurityGroupRuleResponse) SetStatusCode(v int32) *CreateDBInstanceSecurityGroupRuleResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateDBInstanceSecurityGroupRuleResponse) SetBody(v *CreateDBInstanceSecurityGroupRuleResponseBody) *CreateDBInstanceSecurityGroupRuleResponse {
 	s.Body = v
 	return s
 }
@@ -13678,6 +13833,148 @@ func (s *DeleteDBInstanceEndpointAddressResponse) SetStatusCode(v int32) *Delete
 }
 
 func (s *DeleteDBInstanceEndpointAddressResponse) SetBody(v *DeleteDBInstanceEndpointAddressResponseBody) *DeleteDBInstanceEndpointAddressResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteDBInstanceSecurityGroupRuleRequest struct {
+	// example:
+	//
+	// ETnLKlblzczshOTUbOC******
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// rm-bp15i4hn07r******
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId      *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// example:
+	//
+	// rg-acfmy****
+	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// sgr-2ze17u******
+	SecurityGroupRuleIds *string `json:"SecurityGroupRuleIds,omitempty" xml:"SecurityGroupRuleIds,omitempty"`
+}
+
+func (s DeleteDBInstanceSecurityGroupRuleRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDBInstanceSecurityGroupRuleRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDBInstanceSecurityGroupRuleRequest) SetClientToken(v string) *DeleteDBInstanceSecurityGroupRuleRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *DeleteDBInstanceSecurityGroupRuleRequest) SetDBInstanceId(v string) *DeleteDBInstanceSecurityGroupRuleRequest {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *DeleteDBInstanceSecurityGroupRuleRequest) SetOwnerAccount(v string) *DeleteDBInstanceSecurityGroupRuleRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *DeleteDBInstanceSecurityGroupRuleRequest) SetOwnerId(v string) *DeleteDBInstanceSecurityGroupRuleRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DeleteDBInstanceSecurityGroupRuleRequest) SetResourceGroupId(v string) *DeleteDBInstanceSecurityGroupRuleRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *DeleteDBInstanceSecurityGroupRuleRequest) SetResourceOwnerAccount(v string) *DeleteDBInstanceSecurityGroupRuleRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *DeleteDBInstanceSecurityGroupRuleRequest) SetResourceOwnerId(v int64) *DeleteDBInstanceSecurityGroupRuleRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *DeleteDBInstanceSecurityGroupRuleRequest) SetSecurityGroupRuleIds(v string) *DeleteDBInstanceSecurityGroupRuleRequest {
+	s.SecurityGroupRuleIds = &v
+	return s
+}
+
+type DeleteDBInstanceSecurityGroupRuleResponseBody struct {
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// successful
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 07F6177E-6DE4-408A-BB4F-0723301340F8
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteDBInstanceSecurityGroupRuleResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDBInstanceSecurityGroupRuleResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDBInstanceSecurityGroupRuleResponseBody) SetCode(v string) *DeleteDBInstanceSecurityGroupRuleResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DeleteDBInstanceSecurityGroupRuleResponseBody) SetMessage(v string) *DeleteDBInstanceSecurityGroupRuleResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DeleteDBInstanceSecurityGroupRuleResponseBody) SetRequestId(v string) *DeleteDBInstanceSecurityGroupRuleResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteDBInstanceSecurityGroupRuleResponse struct {
+	Headers    map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteDBInstanceSecurityGroupRuleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteDBInstanceSecurityGroupRuleResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDBInstanceSecurityGroupRuleResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDBInstanceSecurityGroupRuleResponse) SetHeaders(v map[string]*string) *DeleteDBInstanceSecurityGroupRuleResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteDBInstanceSecurityGroupRuleResponse) SetStatusCode(v int32) *DeleteDBInstanceSecurityGroupRuleResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteDBInstanceSecurityGroupRuleResponse) SetBody(v *DeleteDBInstanceSecurityGroupRuleResponseBody) *DeleteDBInstanceSecurityGroupRuleResponse {
 	s.Body = v
 	return s
 }
@@ -20118,7 +20415,9 @@ type DescribeBackupsResponseBodyItemsBackup struct {
 	// example:
 	//
 	// {}
-	Encryption *string `json:"Encryption,omitempty" xml:"Encryption,omitempty"`
+	Encryption    *string `json:"Encryption,omitempty" xml:"Encryption,omitempty"`
+	Engine        *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
 	// The ID of the instance that generates the backup set. This parameter is used to indicate whether the instance that generates the backup set is a primary instance or a secondary instance.
 	//
 	// example:
@@ -20267,6 +20566,16 @@ func (s *DescribeBackupsResponseBodyItemsBackup) SetDBInstanceId(v string) *Desc
 
 func (s *DescribeBackupsResponseBodyItemsBackup) SetEncryption(v string) *DescribeBackupsResponseBodyItemsBackup {
 	s.Encryption = &v
+	return s
+}
+
+func (s *DescribeBackupsResponseBodyItemsBackup) SetEngine(v string) *DescribeBackupsResponseBodyItemsBackup {
+	s.Engine = &v
+	return s
+}
+
+func (s *DescribeBackupsResponseBodyItemsBackup) SetEngineVersion(v string) *DescribeBackupsResponseBodyItemsBackup {
+	s.EngineVersion = &v
 	return s
 }
 
@@ -24413,9 +24722,9 @@ type DescribeDBInstanceAttributeRequest struct {
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// Specifies whether the instance expires. Valid values:
 	//
-	// 	- **True**: The instance expires.
+	// 	- **True**
 	//
-	// 	- **False:*	- The instance does not expire.
+	// 	- **False**
 	//
 	// example:
 	//
@@ -24542,6 +24851,10 @@ type DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute struct {
 	//
 	// false
 	BurstingEnabled *bool `json:"BurstingEnabled,omitempty" xml:"BurstingEnabled,omitempty"`
+	// Indicates whether the conditions for a temporary upgrade are met.
+	//
+	// >  Pay-as-you-go instances do not support temporary upgrades.
+	//
 	// example:
 	//
 	// true
@@ -24564,7 +24877,7 @@ type DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute struct {
 	//
 	// Basic
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	// A reserved parameter. You do not need to specify this parameter.
+	// A reserved parameter.
 	//
 	// example:
 	//
@@ -24696,7 +25009,7 @@ type DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute struct {
 	//
 	// 	- **cloud_ssd**: standard SSD
 	//
-	// 	- **cloud_essd**: Enterprise SSD (ESSD)
+	// 	- **cloud_essd**: Enterprise SSD (ESSD).
 	//
 	// 	- **general_essd**: general ESSD
 	//
@@ -24704,7 +25017,7 @@ type DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute struct {
 	//
 	// local_ssd
 	DBInstanceStorageType *string `json:"DBInstanceStorageType,omitempty" xml:"DBInstanceStorageType,omitempty"`
-	// The instance type. Valid values:
+	// The type of the instance. Valid values:
 	//
 	// 	- **Primary**: primary instance
 	//
@@ -24724,7 +25037,7 @@ type DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute struct {
 	//
 	// 200
 	DBMaxQuantity *int32 `json:"DBMaxQuantity,omitempty" xml:"DBMaxQuantity,omitempty"`
-	// The ID of the dedicated cluster to which the instances belong.
+	// The ID of the dedicated cluster to which the instance belongs.
 	//
 	// example:
 	//
@@ -24902,7 +25215,7 @@ type DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute struct {
 	//
 	// 	- **Prepaid**: subscription
 	//
-	// 	- **SERVERLESS**: serverless
+	// 	- **SERVERLESS**
 	//
 	// example:
 	//
@@ -24982,10 +25295,18 @@ type DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute struct {
 	//
 	// rm-uf64zsu*****
 	TempDBInstanceId *string `json:"TempDBInstanceId,omitempty" xml:"TempDBInstanceId,omitempty"`
+	// The end time of the temporary upgrade of the instance.
+	//
+	// >  This parameter is unavailable for pay-as-you-go instances.
+	//
 	// example:
 	//
 	// 2024-05-30 00:00:00
 	TempUpgradeTimeEnd *string `json:"TempUpgradeTimeEnd,omitempty" xml:"TempUpgradeTimeEnd,omitempty"`
+	// The start time of the temporary upgrade of the instance.
+	//
+	// >  This parameter is unavailable for pay-as-you-go instances.
+	//
 	// example:
 	//
 	// 2024-05-29 00:00:00
@@ -25018,7 +25339,7 @@ type DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute struct {
 	//
 	// vsw-*****
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// The ID of the instance. This parameter is returned only when the instance resides in a VPC.
+	// The ID of the VPC. This parameter is returned only when the instance resides in a VPC.
 	//
 	// example:
 	//
@@ -25551,7 +25872,7 @@ type DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeDBClusterNod
 	//
 	// cn-beijing-h
 	NodeZoneId *string `json:"NodeZoneId,omitempty" xml:"NodeZoneId,omitempty"`
-	// The node status. Default value: true. Valid values:
+	// The node status. Valid values:
 	//
 	// 	- active
 	//
@@ -30265,6 +30586,125 @@ func (s *DescribeDBInstanceSSLResponse) SetStatusCode(v int32) *DescribeDBInstan
 }
 
 func (s *DescribeDBInstanceSSLResponse) SetBody(v *DescribeDBInstanceSSLResponseBody) *DescribeDBInstanceSSLResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeDBInstanceSecurityGroupRuleRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// rm-2ze202******
+	DBInstanceId         *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+}
+
+func (s DescribeDBInstanceSecurityGroupRuleRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDBInstanceSecurityGroupRuleRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDBInstanceSecurityGroupRuleRequest) SetDBInstanceId(v string) *DescribeDBInstanceSecurityGroupRuleRequest {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *DescribeDBInstanceSecurityGroupRuleRequest) SetOwnerAccount(v string) *DescribeDBInstanceSecurityGroupRuleRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *DescribeDBInstanceSecurityGroupRuleRequest) SetOwnerId(v string) *DescribeDBInstanceSecurityGroupRuleRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DescribeDBInstanceSecurityGroupRuleRequest) SetResourceOwnerAccount(v string) *DescribeDBInstanceSecurityGroupRuleRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *DescribeDBInstanceSecurityGroupRuleRequest) SetResourceOwnerId(v int64) *DescribeDBInstanceSecurityGroupRuleRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+type DescribeDBInstanceSecurityGroupRuleResponseBody struct {
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// successful
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 6BFF4136-10B9-130B-BF8E-D3504BCE4F43
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeDBInstanceSecurityGroupRuleResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDBInstanceSecurityGroupRuleResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDBInstanceSecurityGroupRuleResponseBody) SetCode(v string) *DescribeDBInstanceSecurityGroupRuleResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DescribeDBInstanceSecurityGroupRuleResponseBody) SetData(v string) *DescribeDBInstanceSecurityGroupRuleResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *DescribeDBInstanceSecurityGroupRuleResponseBody) SetMessage(v string) *DescribeDBInstanceSecurityGroupRuleResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DescribeDBInstanceSecurityGroupRuleResponseBody) SetRequestId(v string) *DescribeDBInstanceSecurityGroupRuleResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeDBInstanceSecurityGroupRuleResponse struct {
+	Headers    map[string]*string                               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeDBInstanceSecurityGroupRuleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeDBInstanceSecurityGroupRuleResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDBInstanceSecurityGroupRuleResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDBInstanceSecurityGroupRuleResponse) SetHeaders(v map[string]*string) *DescribeDBInstanceSecurityGroupRuleResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeDBInstanceSecurityGroupRuleResponse) SetStatusCode(v int32) *DescribeDBInstanceSecurityGroupRuleResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeDBInstanceSecurityGroupRuleResponse) SetBody(v *DescribeDBInstanceSecurityGroupRuleResponseBody) *DescribeDBInstanceSecurityGroupRuleResponse {
 	s.Body = v
 	return s
 }
@@ -52972,7 +53412,7 @@ type DescribeSlotsRequest struct {
 	//
 	// ETnLKlblzczshOTUbOC****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The instance ID. You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/26232.html) operation to query the ID of the instance.
+	// The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
 	//
 	// This parameter is required.
 	//
@@ -53722,6 +54162,8 @@ type DescribeSlowLogsRequest struct {
 	DBName *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
 	// The end of the time range to query. The end time must be later than the start time. The time span between the start time and the end time cannot exceed 31 days. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*Z format. The time must be in UTC.
 	//
+	// >  If the end date of the query is the same as the start date of the query, you can query the logs that are generated at 08:00 on the start date of the query. You can query the slow logs within a maximum time range of 24 hours.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -53961,9 +54403,7 @@ func (s *DescribeSlowLogsResponseBodyItems) SetSQLSlowLog(v []*DescribeSlowLogsR
 type DescribeSlowLogsResponseBodyItemsSQLSlowLog struct {
 	// The average execution duration per SQL statement in the query. Unit: seconds.
 	//
-	// **
-	//
-	// ****
+	// >  This parameter is returned only for instances that run SQL Server.
 	//
 	// example:
 	//
@@ -53971,7 +54411,7 @@ type DescribeSlowLogsResponseBodyItemsSQLSlowLog struct {
 	AvgExecutionTime *int64 `json:"AvgExecutionTime,omitempty" xml:"AvgExecutionTime,omitempty"`
 	// The average number of I/O writes per SQL statement in the query.
 	//
-	// > This parameter is returned only for instances that run SQL Server.
+	// >  This parameter is returned only for instances that run SQL Server.
 	//
 	// example:
 	//
@@ -53979,7 +54419,7 @@ type DescribeSlowLogsResponseBodyItemsSQLSlowLog struct {
 	AvgIOWriteCounts *int64 `json:"AvgIOWriteCounts,omitempty" xml:"AvgIOWriteCounts,omitempty"`
 	// The average number of rows that were affected by the last SQL statement in the query.
 	//
-	// > This parameter is returned only for instances that run SQL Server.
+	// >  This parameter is returned only for instances that run SQL Server.
 	//
 	// example:
 	//
@@ -53987,7 +54427,7 @@ type DescribeSlowLogsResponseBodyItemsSQLSlowLog struct {
 	AvgLastRowsAffectedCounts *int64 `json:"AvgLastRowsAffectedCounts,omitempty" xml:"AvgLastRowsAffectedCounts,omitempty"`
 	// The average number of logical reads per SQL statement in the query.
 	//
-	// > This parameter is returned only for instances that run SQL Server.
+	// >  This parameter is returned only for instances that run SQL Server.
 	//
 	// example:
 	//
@@ -53995,7 +54435,7 @@ type DescribeSlowLogsResponseBodyItemsSQLSlowLog struct {
 	AvgLogicalReadCounts *int64 `json:"AvgLogicalReadCounts,omitempty" xml:"AvgLogicalReadCounts,omitempty"`
 	// The average number of physical reads per SQL statement in the query.
 	//
-	// > This parameter is returned only for instances that run SQL Server.
+	// >  This parameter is returned only for instances that run SQL Server.
 	//
 	// example:
 	//
@@ -54003,7 +54443,7 @@ type DescribeSlowLogsResponseBodyItemsSQLSlowLog struct {
 	AvgPhysicalReadCounts *int64 `json:"AvgPhysicalReadCounts,omitempty" xml:"AvgPhysicalReadCounts,omitempty"`
 	// The average number of rows that were affected per SQL statement in the query.
 	//
-	// > This parameter is returned only for instances that run SQL Server.
+	// >  This parameter is returned only for instances that run SQL Server.
 	//
 	// example:
 	//
@@ -54035,7 +54475,7 @@ type DescribeSlowLogsResponseBodyItemsSQLSlowLog struct {
 	MaxExecutionTimeMS *int64 `json:"MaxExecutionTimeMS,omitempty" xml:"MaxExecutionTimeMS,omitempty"`
 	// The largest number of I/O writes that were performed by a specific SQL statement in the query.
 	//
-	// > This parameter is returned only for instances that run SQL Server.
+	// >  This parameter is returned only for instances that run SQL Server.
 	//
 	// example:
 	//
@@ -54043,7 +54483,7 @@ type DescribeSlowLogsResponseBodyItemsSQLSlowLog struct {
 	MaxIOWriteCounts *int64 `json:"MaxIOWriteCounts,omitempty" xml:"MaxIOWriteCounts,omitempty"`
 	// The largest number of rows that were affected by the last SQL statement in the query.
 	//
-	// > This parameter is returned only for instances that run SQL Server.
+	// >  This parameter is returned only for instances that run SQL Server.
 	//
 	// example:
 	//
@@ -54063,7 +54503,7 @@ type DescribeSlowLogsResponseBodyItemsSQLSlowLog struct {
 	MaxLockTimeMS *int64 `json:"MaxLockTimeMS,omitempty" xml:"MaxLockTimeMS,omitempty"`
 	// The largest number of logical reads that were performed by a specific SQL statement in the query.
 	//
-	// > This parameter is returned only for instances that run SQL Server.
+	// >  This parameter is returned only for instances that run SQL Server.
 	//
 	// example:
 	//
@@ -54071,7 +54511,7 @@ type DescribeSlowLogsResponseBodyItemsSQLSlowLog struct {
 	MaxLogicalReadCounts *int64 `json:"MaxLogicalReadCounts,omitempty" xml:"MaxLogicalReadCounts,omitempty"`
 	// The largest number of physical reads that were performed by a specific SQL statement in the query.
 	//
-	// > This parameter is returned only for instances that run SQL Server.
+	// >  This parameter is returned only for instances that run SQL Server.
 	//
 	// example:
 	//
@@ -54079,7 +54519,7 @@ type DescribeSlowLogsResponseBodyItemsSQLSlowLog struct {
 	MaxPhysicalReadCounts *int64 `json:"MaxPhysicalReadCounts,omitempty" xml:"MaxPhysicalReadCounts,omitempty"`
 	// The largest number of rows that were affected by a specific SQL statement in the query.
 	//
-	// > This parameter is returned only for instances that run SQL Server.
+	// >  This parameter is returned only for instances that run SQL Server.
 	//
 	// example:
 	//
@@ -54087,7 +54527,7 @@ type DescribeSlowLogsResponseBodyItemsSQLSlowLog struct {
 	MaxRowsAffectedCounts *int64 `json:"MaxRowsAffectedCounts,omitempty" xml:"MaxRowsAffectedCounts,omitempty"`
 	// The smallest number of I/O writes that were performed by a specific SQL statement in the query.
 	//
-	// > This parameter is returned only for instances that run SQL Server.
+	// >  This parameter is returned only for instances that run SQL Server.
 	//
 	// example:
 	//
@@ -54095,7 +54535,7 @@ type DescribeSlowLogsResponseBodyItemsSQLSlowLog struct {
 	MinIOWriteCounts *int64 `json:"MinIOWriteCounts,omitempty" xml:"MinIOWriteCounts,omitempty"`
 	// The smallest number of rows that were affected by the last SQL statement in the query.
 	//
-	// > This parameter is returned only for instances that run SQL Server.
+	// >  This parameter is returned only for instances that run SQL Server.
 	//
 	// example:
 	//
@@ -54103,7 +54543,7 @@ type DescribeSlowLogsResponseBodyItemsSQLSlowLog struct {
 	MinLastRowsAffectedCounts *int64 `json:"MinLastRowsAffectedCounts,omitempty" xml:"MinLastRowsAffectedCounts,omitempty"`
 	// The smallest number of logical reads that were performed by a specific SQL statement in the query.
 	//
-	// > This parameter is returned only for instances that run SQL Server.
+	// >  This parameter is returned only for instances that run SQL Server.
 	//
 	// example:
 	//
@@ -54111,7 +54551,7 @@ type DescribeSlowLogsResponseBodyItemsSQLSlowLog struct {
 	MinLogicalReadCounts *int64 `json:"MinLogicalReadCounts,omitempty" xml:"MinLogicalReadCounts,omitempty"`
 	// The smallest number of physical reads that were performed by a specific SQL statement in the query.
 	//
-	// > This parameter is returned only for instances that run SQL Server.
+	// >  This parameter is returned only for instances that run SQL Server.
 	//
 	// example:
 	//
@@ -54119,7 +54559,7 @@ type DescribeSlowLogsResponseBodyItemsSQLSlowLog struct {
 	MinPhysicalReadCounts *int64 `json:"MinPhysicalReadCounts,omitempty" xml:"MinPhysicalReadCounts,omitempty"`
 	// The smallest number of rows that were affected by a specific SQL statement in the query.
 	//
-	// > This parameter is returned only for instances that run SQL Server.
+	// >  This parameter is returned only for instances that run SQL Server.
 	//
 	// example:
 	//
@@ -54181,7 +54621,7 @@ type DescribeSlowLogsResponseBodyItemsSQLSlowLog struct {
 	SQLIdStr *string `json:"SQLIdStr,omitempty" xml:"SQLIdStr,omitempty"`
 	// The average amount of CPU time per SQL statement in the query. Unit: seconds.
 	//
-	// > This parameter is returned only for instances that run SQL Server.
+	// >  This parameter is returned only for instances that run SQL Server.
 	//
 	// example:
 	//
@@ -54189,7 +54629,7 @@ type DescribeSlowLogsResponseBodyItemsSQLSlowLog struct {
 	SQLServerAvgCpuTime *int64 `json:"SQLServerAvgCpuTime,omitempty" xml:"SQLServerAvgCpuTime,omitempty"`
 	// The average execution duration per SQL statement in the query. Unit: seconds.
 	//
-	// > This parameter is returned only for instances that run SQL Server.
+	// >  This parameter is returned only for instances that run SQL Server.
 	//
 	// example:
 	//
@@ -54197,15 +54637,15 @@ type DescribeSlowLogsResponseBodyItemsSQLSlowLog struct {
 	SQLServerAvgExecutionTime *int64 `json:"SQLServerAvgExecutionTime,omitempty" xml:"SQLServerAvgExecutionTime,omitempty"`
 	// The largest amount of CPU time that was used by a specific SQL statement in the query. Unit: seconds.
 	//
-	// > This parameter is returned only for instances that run SQL Server.
+	// >  This parameter is returned only for instances that run SQL Server.
 	//
 	// example:
 	//
 	// 0
 	SQLServerMaxCpuTime *int64 `json:"SQLServerMaxCpuTime,omitempty" xml:"SQLServerMaxCpuTime,omitempty"`
-	// The smallest amount of CPU time that was used by a specific SQL statement. Unit: seconds.
+	// The smallest amount of CPU time that was used by a specific SQL statement in the query. Unit: seconds.
 	//
-	// > This parameter is returned only for instances that run SQL Server.
+	// >  This parameter is returned only for instances that run SQL Server.
 	//
 	// example:
 	//
@@ -54213,7 +54653,7 @@ type DescribeSlowLogsResponseBodyItemsSQLSlowLog struct {
 	SQLServerMinCpuTime *int64 `json:"SQLServerMinCpuTime,omitempty" xml:"SQLServerMinCpuTime,omitempty"`
 	// The smallest execution duration of a specific SQL statement in the query. Unit: seconds.
 	//
-	// > This parameter is returned only for instances that run SQL Server.
+	// >  This parameter is returned only for instances that run SQL Server.
 	//
 	// example:
 	//
@@ -54221,7 +54661,7 @@ type DescribeSlowLogsResponseBodyItemsSQLSlowLog struct {
 	SQLServerMinExecutionTime *int64 `json:"SQLServerMinExecutionTime,omitempty" xml:"SQLServerMinExecutionTime,omitempty"`
 	// The total amount of CPU time that was used by all SQL statements in the query. Unit: seconds.
 	//
-	// > This parameter is returned only for instances that run SQL Server.
+	// >  This parameter is returned only for instances that run SQL Server.
 	//
 	// example:
 	//
@@ -54253,7 +54693,7 @@ type DescribeSlowLogsResponseBodyItemsSQLSlowLog struct {
 	SlowLogId *int64 `json:"SlowLogId,omitempty" xml:"SlowLogId,omitempty"`
 	// The total number of I/O writes that were performed by all SQL statements in the query.
 	//
-	// > This parameter is returned only for instances that run SQL Server.
+	// >  This parameter is returned only for instances that run SQL Server.
 	//
 	// example:
 	//
@@ -54261,7 +54701,7 @@ type DescribeSlowLogsResponseBodyItemsSQLSlowLog struct {
 	TotalIOWriteCounts *int64 `json:"TotalIOWriteCounts,omitempty" xml:"TotalIOWriteCounts,omitempty"`
 	// The total number of rows that were affected by the last SQL statement in the query.
 	//
-	// > This parameter is returned only for instances that run SQL Server.
+	// >  This parameter is returned only for instances that run SQL Server.
 	//
 	// example:
 	//
@@ -54279,7 +54719,7 @@ type DescribeSlowLogsResponseBodyItemsSQLSlowLog struct {
 	//
 	// 1
 	TotalLogicalReadCounts *int64 `json:"TotalLogicalReadCounts,omitempty" xml:"TotalLogicalReadCounts,omitempty"`
-	// The total number of physical reads that were performed by all SQL statements in the query .
+	// The total number of physical reads that were performed by all SQL statements in the query.
 	//
 	// example:
 	//
@@ -64915,6 +65355,174 @@ func (s *ModifyDBInstanceSSLResponse) SetStatusCode(v int32) *ModifyDBInstanceSS
 }
 
 func (s *ModifyDBInstanceSSLResponse) SetBody(v *ModifyDBInstanceSSLResponseBody) *ModifyDBInstanceSSLResponse {
+	s.Body = v
+	return s
+}
+
+type ModifyDBInstanceSecurityGroupRuleRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// rm-bp15i4hn07r******
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// zht_test
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// TCP
+	IpProtocol   *string `json:"IpProtocol,omitempty" xml:"IpProtocol,omitempty"`
+	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId      *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1/200
+	PortRange            *string `json:"PortRange,omitempty" xml:"PortRange,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// sgr-2ze17u******
+	SecurityGroupRuleId *string `json:"SecurityGroupRuleId,omitempty" xml:"SecurityGroupRuleId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 192.XX.XX.100
+	SourceCidrIp *string `json:"SourceCidrIp,omitempty" xml:"SourceCidrIp,omitempty"`
+}
+
+func (s ModifyDBInstanceSecurityGroupRuleRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyDBInstanceSecurityGroupRuleRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyDBInstanceSecurityGroupRuleRequest) SetDBInstanceId(v string) *ModifyDBInstanceSecurityGroupRuleRequest {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *ModifyDBInstanceSecurityGroupRuleRequest) SetDescription(v string) *ModifyDBInstanceSecurityGroupRuleRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *ModifyDBInstanceSecurityGroupRuleRequest) SetIpProtocol(v string) *ModifyDBInstanceSecurityGroupRuleRequest {
+	s.IpProtocol = &v
+	return s
+}
+
+func (s *ModifyDBInstanceSecurityGroupRuleRequest) SetOwnerAccount(v string) *ModifyDBInstanceSecurityGroupRuleRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *ModifyDBInstanceSecurityGroupRuleRequest) SetOwnerId(v string) *ModifyDBInstanceSecurityGroupRuleRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *ModifyDBInstanceSecurityGroupRuleRequest) SetPortRange(v string) *ModifyDBInstanceSecurityGroupRuleRequest {
+	s.PortRange = &v
+	return s
+}
+
+func (s *ModifyDBInstanceSecurityGroupRuleRequest) SetResourceOwnerAccount(v string) *ModifyDBInstanceSecurityGroupRuleRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *ModifyDBInstanceSecurityGroupRuleRequest) SetResourceOwnerId(v int64) *ModifyDBInstanceSecurityGroupRuleRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *ModifyDBInstanceSecurityGroupRuleRequest) SetSecurityGroupRuleId(v string) *ModifyDBInstanceSecurityGroupRuleRequest {
+	s.SecurityGroupRuleId = &v
+	return s
+}
+
+func (s *ModifyDBInstanceSecurityGroupRuleRequest) SetSourceCidrIp(v string) *ModifyDBInstanceSecurityGroupRuleRequest {
+	s.SourceCidrIp = &v
+	return s
+}
+
+type ModifyDBInstanceSecurityGroupRuleResponseBody struct {
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// successful
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 07F6177E-6DE4-408A-BB4F-0723301340F7
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ModifyDBInstanceSecurityGroupRuleResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyDBInstanceSecurityGroupRuleResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyDBInstanceSecurityGroupRuleResponseBody) SetCode(v string) *ModifyDBInstanceSecurityGroupRuleResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ModifyDBInstanceSecurityGroupRuleResponseBody) SetMessage(v string) *ModifyDBInstanceSecurityGroupRuleResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ModifyDBInstanceSecurityGroupRuleResponseBody) SetRequestId(v string) *ModifyDBInstanceSecurityGroupRuleResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ModifyDBInstanceSecurityGroupRuleResponse struct {
+	Headers    map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyDBInstanceSecurityGroupRuleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ModifyDBInstanceSecurityGroupRuleResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyDBInstanceSecurityGroupRuleResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyDBInstanceSecurityGroupRuleResponse) SetHeaders(v map[string]*string) *ModifyDBInstanceSecurityGroupRuleResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyDBInstanceSecurityGroupRuleResponse) SetStatusCode(v int32) *ModifyDBInstanceSecurityGroupRuleResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ModifyDBInstanceSecurityGroupRuleResponse) SetBody(v *ModifyDBInstanceSecurityGroupRuleResponseBody) *ModifyDBInstanceSecurityGroupRuleResponse {
 	s.Body = v
 	return s
 }
@@ -81337,6 +81945,98 @@ func (client *Client) CreateDBInstanceForRebuild(request *CreateDBInstanceForReb
 
 // Summary:
 //
+// 创建实例主机安全组规则
+//
+// @param request - CreateDBInstanceSecurityGroupRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateDBInstanceSecurityGroupRuleResponse
+func (client *Client) CreateDBInstanceSecurityGroupRuleWithOptions(request *CreateDBInstanceSecurityGroupRuleRequest, runtime *util.RuntimeOptions) (_result *CreateDBInstanceSecurityGroupRuleResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IpProtocol)) {
+		query["IpProtocol"] = request.IpProtocol
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PortRange)) {
+		query["PortRange"] = request.PortRange
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceCidrIp)) {
+		query["SourceCidrIp"] = request.SourceCidrIp
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateDBInstanceSecurityGroupRule"),
+		Version:     tea.String("2014-08-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateDBInstanceSecurityGroupRuleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建实例主机安全组规则
+//
+// @param request - CreateDBInstanceSecurityGroupRuleRequest
+//
+// @return CreateDBInstanceSecurityGroupRuleResponse
+func (client *Client) CreateDBInstanceSecurityGroupRule(request *CreateDBInstanceSecurityGroupRuleRequest) (_result *CreateDBInstanceSecurityGroupRuleResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateDBInstanceSecurityGroupRuleResponse{}
+	_body, _err := client.CreateDBInstanceSecurityGroupRuleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Adds a node to an ApsaraDB RDS for MySQL or ApsaraDB RDS for PostgreSQL instance that runs RDS Cluster Edition. An RDS instance that runs RDS Cluster Edition is referred to as an RDS cluster.
 //
 // Description:
@@ -84444,6 +85144,94 @@ func (client *Client) DeleteDBInstanceEndpointAddress(request *DeleteDBInstanceE
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteDBInstanceEndpointAddressResponse{}
 	_body, _err := client.DeleteDBInstanceEndpointAddressWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除实例主机安全组规则
+//
+// @param request - DeleteDBInstanceSecurityGroupRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteDBInstanceSecurityGroupRuleResponse
+func (client *Client) DeleteDBInstanceSecurityGroupRuleWithOptions(request *DeleteDBInstanceSecurityGroupRuleRequest, runtime *util.RuntimeOptions) (_result *DeleteDBInstanceSecurityGroupRuleResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityGroupRuleIds)) {
+		query["SecurityGroupRuleIds"] = request.SecurityGroupRuleIds
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteDBInstanceSecurityGroupRule"),
+		Version:     tea.String("2014-08-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteDBInstanceSecurityGroupRuleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除实例主机安全组规则
+//
+// @param request - DeleteDBInstanceSecurityGroupRuleRequest
+//
+// @return DeleteDBInstanceSecurityGroupRuleResponse
+func (client *Client) DeleteDBInstanceSecurityGroupRule(request *DeleteDBInstanceSecurityGroupRuleRequest) (_result *DeleteDBInstanceSecurityGroupRuleResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteDBInstanceSecurityGroupRuleResponse{}
+	_body, _err := client.DeleteDBInstanceSecurityGroupRuleWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -90360,6 +91148,82 @@ func (client *Client) DescribeDBInstanceSSL(request *DescribeDBInstanceSSLReques
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDBInstanceSSLResponse{}
 	_body, _err := client.DescribeDBInstanceSSLWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 描述实例主机安全组规则
+//
+// @param request - DescribeDBInstanceSecurityGroupRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDBInstanceSecurityGroupRuleResponse
+func (client *Client) DescribeDBInstanceSecurityGroupRuleWithOptions(request *DescribeDBInstanceSecurityGroupRuleRequest, runtime *util.RuntimeOptions) (_result *DescribeDBInstanceSecurityGroupRuleResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeDBInstanceSecurityGroupRule"),
+		Version:     tea.String("2014-08-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeDBInstanceSecurityGroupRuleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 描述实例主机安全组规则
+//
+// @param request - DescribeDBInstanceSecurityGroupRuleRequest
+//
+// @return DescribeDBInstanceSecurityGroupRuleResponse
+func (client *Client) DescribeDBInstanceSecurityGroupRule(request *DescribeDBInstanceSecurityGroupRuleRequest) (_result *DescribeDBInstanceSecurityGroupRuleResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeDBInstanceSecurityGroupRuleResponse{}
+	_body, _err := client.DescribeDBInstanceSecurityGroupRuleWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -97783,25 +98647,27 @@ func (client *Client) DescribeSlowLogRecords(request *DescribeSlowLogRecordsRequ
 //
 // ### [](#)Supported database engines
 //
-// 	- MySQL
+// 	- RDS MySQL
 //
 //     **
 //
 //     **Note*	- This operation is not supported for RDS instances that run MySQL 5.7 on RDS Basic Edition.
 //
-// 	- SQL Server
+// 	- RDS SQL Server
 //
 //     **
 //
 //     **Note*	- This operation is supported only for RDS instances that run SQL Server 2008 R2.
 //
-// 	- MariaDB
+// 	- RDS MariaDB
 //
 // ### [](#)Precautions
 //
 // 	- Slow query logs are not collected in real time and may show a latency of 6 to 8 hours.
 //
-// 	- If the return result is empty, check whether the StartTime and EndTime parameters meet the UTC format. If the parameters meet the UTC format, no slow logs are generated within the specified time range.
+// 	- If the return result is empty, check whether the StartTime and EndTime parameters are in UTC. If yes, no slow logs are generated within the specified time range.
+//
+// 	- Starting from December 13, 2023, the optimized template algorithm is used for slow queries. As a result, different **SQLHash*	- values are generated for the same SQLText before and after optimization. For more information, see [[Notice\\] Optimization of the template algorithm for slow queries](~~2637024~~).
 //
 // @param request - DescribeSlowLogsRequest
 //
@@ -97889,25 +98755,27 @@ func (client *Client) DescribeSlowLogsWithOptions(request *DescribeSlowLogsReque
 //
 // ### [](#)Supported database engines
 //
-// 	- MySQL
+// 	- RDS MySQL
 //
 //     **
 //
 //     **Note*	- This operation is not supported for RDS instances that run MySQL 5.7 on RDS Basic Edition.
 //
-// 	- SQL Server
+// 	- RDS SQL Server
 //
 //     **
 //
 //     **Note*	- This operation is supported only for RDS instances that run SQL Server 2008 R2.
 //
-// 	- MariaDB
+// 	- RDS MariaDB
 //
 // ### [](#)Precautions
 //
 // 	- Slow query logs are not collected in real time and may show a latency of 6 to 8 hours.
 //
-// 	- If the return result is empty, check whether the StartTime and EndTime parameters meet the UTC format. If the parameters meet the UTC format, no slow logs are generated within the specified time range.
+// 	- If the return result is empty, check whether the StartTime and EndTime parameters are in UTC. If yes, no slow logs are generated within the specified time range.
+//
+// 	- Starting from December 13, 2023, the optimized template algorithm is used for slow queries. As a result, different **SQLHash*	- values are generated for the same SQLText before and after optimization. For more information, see [[Notice\\] Optimization of the template algorithm for slow queries](~~2637024~~).
 //
 // @param request - DescribeSlowLogsRequest
 //
@@ -98241,17 +99109,21 @@ func (client *Client) DescribeTasks(request *DescribeTasksRequest) (_result *Des
 
 // Summary:
 //
-// Queries the check report of a major engine version upgrade for an ApsaraDB RDS for PostgreSQL instance.
+// Queries the check report for a major engine version upgrade of an ApsaraDB RDS for MySQL instance or ApsaraDB RDS for PostgreSQL instance.
 //
 // Description:
 //
 // ### [](#)Supported database engines
 //
+// MySQL
+//
 // PostgreSQL
 //
 // ### [](#)References
 //
-// > Before you call this operation, read the following documentation and make sure that you fully understand the prerequisites and impacts of this operation.
+// > Before you call this operation, read the following topics and make sure that you fully understand the prerequisites and impacts of this operation.
+//
+// 	- [Check report for the major engine version upgrade of an ApsaraDB RDS for MySQL instance](https://help.aliyun.com/document_detail/2794383.html)
 //
 // 	- [Upgrade the major engine version of an ApsaraDB RDS for PostgreSQL instance](https://help.aliyun.com/document_detail/203309.html)
 //
@@ -98329,17 +99201,21 @@ func (client *Client) DescribeUpgradeMajorVersionPrecheckTaskWithOptions(request
 
 // Summary:
 //
-// Queries the check report of a major engine version upgrade for an ApsaraDB RDS for PostgreSQL instance.
+// Queries the check report for a major engine version upgrade of an ApsaraDB RDS for MySQL instance or ApsaraDB RDS for PostgreSQL instance.
 //
 // Description:
 //
 // ### [](#)Supported database engines
 //
+// MySQL
+//
 // PostgreSQL
 //
 // ### [](#)References
 //
-// > Before you call this operation, read the following documentation and make sure that you fully understand the prerequisites and impacts of this operation.
+// > Before you call this operation, read the following topics and make sure that you fully understand the prerequisites and impacts of this operation.
+//
+// 	- [Check report for the major engine version upgrade of an ApsaraDB RDS for MySQL instance](https://help.aliyun.com/document_detail/2794383.html)
 //
 // 	- [Upgrade the major engine version of an ApsaraDB RDS for PostgreSQL instance](https://help.aliyun.com/document_detail/203309.html)
 //
@@ -103764,6 +104640,102 @@ func (client *Client) ModifyDBInstanceSSL(request *ModifyDBInstanceSSLRequest) (
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyDBInstanceSSLResponse{}
 	_body, _err := client.ModifyDBInstanceSSLWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改实例主机安全组规则
+//
+// @param request - ModifyDBInstanceSecurityGroupRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyDBInstanceSecurityGroupRuleResponse
+func (client *Client) ModifyDBInstanceSecurityGroupRuleWithOptions(request *ModifyDBInstanceSecurityGroupRuleRequest, runtime *util.RuntimeOptions) (_result *ModifyDBInstanceSecurityGroupRuleResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IpProtocol)) {
+		query["IpProtocol"] = request.IpProtocol
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PortRange)) {
+		query["PortRange"] = request.PortRange
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityGroupRuleId)) {
+		query["SecurityGroupRuleId"] = request.SecurityGroupRuleId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceCidrIp)) {
+		query["SourceCidrIp"] = request.SourceCidrIp
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyDBInstanceSecurityGroupRule"),
+		Version:     tea.String("2014-08-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ModifyDBInstanceSecurityGroupRuleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改实例主机安全组规则
+//
+// @param request - ModifyDBInstanceSecurityGroupRuleRequest
+//
+// @return ModifyDBInstanceSecurityGroupRuleResponse
+func (client *Client) ModifyDBInstanceSecurityGroupRule(request *ModifyDBInstanceSecurityGroupRuleRequest) (_result *ModifyDBInstanceSecurityGroupRuleResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyDBInstanceSecurityGroupRuleResponse{}
+	_body, _err := client.ModifyDBInstanceSecurityGroupRuleWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
