@@ -721,9 +721,10 @@ func (s *Model) SetWorkspaceId(v string) *Model {
 }
 
 type ModelVersion struct {
-	ApprovalStatus *string                `json:"ApprovalStatus,omitempty" xml:"ApprovalStatus,omitempty"`
-	EvaluationSpec map[string]interface{} `json:"EvaluationSpec,omitempty" xml:"EvaluationSpec,omitempty"`
-	ExtraInfo      map[string]interface{} `json:"ExtraInfo,omitempty" xml:"ExtraInfo,omitempty"`
+	ApprovalStatus  *string                `json:"ApprovalStatus,omitempty" xml:"ApprovalStatus,omitempty"`
+	CompressionSpec map[string]interface{} `json:"CompressionSpec,omitempty" xml:"CompressionSpec,omitempty"`
+	EvaluationSpec  map[string]interface{} `json:"EvaluationSpec,omitempty" xml:"EvaluationSpec,omitempty"`
+	ExtraInfo       map[string]interface{} `json:"ExtraInfo,omitempty" xml:"ExtraInfo,omitempty"`
 	// example:
 	//
 	// SavedModel
@@ -776,6 +777,11 @@ func (s ModelVersion) GoString() string {
 
 func (s *ModelVersion) SetApprovalStatus(v string) *ModelVersion {
 	s.ApprovalStatus = &v
+	return s
+}
+
+func (s *ModelVersion) SetCompressionSpec(v map[string]interface{}) *ModelVersion {
+	s.CompressionSpec = v
 	return s
 }
 
@@ -2243,6 +2249,10 @@ type CreateModelVersionRequest struct {
 	// example:
 	//
 	// {}
+	CompressionSpec map[string]interface{} `json:"CompressionSpec,omitempty" xml:"CompressionSpec,omitempty"`
+	// example:
+	//
+	// {}
 	EvaluationSpec map[string]interface{} `json:"EvaluationSpec,omitempty" xml:"EvaluationSpec,omitempty"`
 	// example:
 	//
@@ -2308,6 +2318,11 @@ func (s CreateModelVersionRequest) GoString() string {
 
 func (s *CreateModelVersionRequest) SetApprovalStatus(v string) *CreateModelVersionRequest {
 	s.ApprovalStatus = &v
+	return s
+}
+
+func (s *CreateModelVersionRequest) SetCompressionSpec(v map[string]interface{}) *CreateModelVersionRequest {
+	s.CompressionSpec = v
 	return s
 }
 
@@ -4866,6 +4881,10 @@ type GetModelVersionResponseBody struct {
 	// example:
 	//
 	// {}
+	CompressionSpec map[string]interface{} `json:"CompressionSpec,omitempty" xml:"CompressionSpec,omitempty"`
+	// example:
+	//
+	// {}
 	EvaluationSpec map[string]interface{} `json:"EvaluationSpec,omitempty" xml:"EvaluationSpec,omitempty"`
 	// example:
 	//
@@ -4946,6 +4965,11 @@ func (s GetModelVersionResponseBody) GoString() string {
 
 func (s *GetModelVersionResponseBody) SetApprovalStatus(v string) *GetModelVersionResponseBody {
 	s.ApprovalStatus = &v
+	return s
+}
+
+func (s *GetModelVersionResponseBody) SetCompressionSpec(v map[string]interface{}) *GetModelVersionResponseBody {
+	s.CompressionSpec = v
 	return s
 }
 
@@ -9033,6 +9057,10 @@ type UpdateModelVersionRequest struct {
 	// example:
 	//
 	// {}
+	CompressionSpec map[string]interface{} `json:"CompressionSpec,omitempty" xml:"CompressionSpec,omitempty"`
+	// example:
+	//
+	// {}
 	EvaluationSpec map[string]interface{} `json:"EvaluationSpec,omitempty" xml:"EvaluationSpec,omitempty"`
 	// example:
 	//
@@ -9075,6 +9103,11 @@ func (s UpdateModelVersionRequest) GoString() string {
 
 func (s *UpdateModelVersionRequest) SetApprovalStatus(v string) *UpdateModelVersionRequest {
 	s.ApprovalStatus = &v
+	return s
+}
+
+func (s *UpdateModelVersionRequest) SetCompressionSpec(v map[string]interface{}) *UpdateModelVersionRequest {
+	s.CompressionSpec = v
 	return s
 }
 
@@ -10178,6 +10211,10 @@ func (client *Client) CreateModelVersionWithOptions(ModelId *string, request *Cr
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ApprovalStatus)) {
 		body["ApprovalStatus"] = request.ApprovalStatus
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CompressionSpec)) {
+		body["CompressionSpec"] = request.CompressionSpec
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.EvaluationSpec)) {
@@ -13516,6 +13553,10 @@ func (client *Client) UpdateModelVersionWithOptions(ModelId *string, VersionName
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ApprovalStatus)) {
 		body["ApprovalStatus"] = request.ApprovalStatus
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CompressionSpec)) {
+		body["CompressionSpec"] = request.CompressionSpec
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.EvaluationSpec)) {
