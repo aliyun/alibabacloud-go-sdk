@@ -940,6 +940,106 @@ func (s *CloneSqlInstanceResponse) SetBody(v *CloneSqlInstanceResponseBody) *Clo
 	return s
 }
 
+type CreateAliasRequest struct {
+	// example:
+	//
+	// test
+	Alias *string `json:"alias,omitempty" xml:"alias,omitempty"`
+	// example:
+	//
+	// index
+	Index *string `json:"index,omitempty" xml:"index,omitempty"`
+	// example:
+	//
+	// true
+	NewMode *bool `json:"newMode,omitempty" xml:"newMode,omitempty"`
+}
+
+func (s CreateAliasRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAliasRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAliasRequest) SetAlias(v string) *CreateAliasRequest {
+	s.Alias = &v
+	return s
+}
+
+func (s *CreateAliasRequest) SetIndex(v string) *CreateAliasRequest {
+	s.Index = &v
+	return s
+}
+
+func (s *CreateAliasRequest) SetNewMode(v bool) *CreateAliasRequest {
+	s.NewMode = &v
+	return s
+}
+
+type CreateAliasResponseBody struct {
+	// id of request
+	//
+	// example:
+	//
+	// 10D5E615-69F7-5F49-B850-00169ADE513C
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Map
+	//
+	// example:
+	//
+	// {}
+	Result map[string]interface{} `json:"result,omitempty" xml:"result,omitempty"`
+}
+
+func (s CreateAliasResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAliasResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAliasResponseBody) SetRequestId(v string) *CreateAliasResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateAliasResponseBody) SetResult(v map[string]interface{}) *CreateAliasResponseBody {
+	s.Result = v
+	return s
+}
+
+type CreateAliasResponse struct {
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateAliasResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateAliasResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAliasResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAliasResponse) SetHeaders(v map[string]*string) *CreateAliasResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateAliasResponse) SetStatusCode(v int32) *CreateAliasResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateAliasResponse) SetBody(v *CreateAliasResponseBody) *CreateAliasResponse {
+	s.Body = v
+	return s
+}
+
 type CreateClusterRequest struct {
 	// The remarks of the query node
 	//
@@ -3171,6 +3271,68 @@ func (s *DeleteAdvanceConfigResponse) SetStatusCode(v int32) *DeleteAdvanceConfi
 }
 
 func (s *DeleteAdvanceConfigResponse) SetBody(v *DeleteAdvanceConfigResponseBody) *DeleteAdvanceConfigResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteAliasResponseBody struct {
+	// id of request
+	//
+	// example:
+	//
+	// FE03180A-0E29-5474-8A86-33F0683294A4
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Map
+	//
+	// example:
+	//
+	// {}
+	Result map[string]interface{} `json:"result,omitempty" xml:"result,omitempty"`
+}
+
+func (s DeleteAliasResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteAliasResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteAliasResponseBody) SetRequestId(v string) *DeleteAliasResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteAliasResponseBody) SetResult(v map[string]interface{}) *DeleteAliasResponseBody {
+	s.Result = v
+	return s
+}
+
+type DeleteAliasResponse struct {
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteAliasResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteAliasResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteAliasResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteAliasResponse) SetHeaders(v map[string]*string) *DeleteAliasResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteAliasResponse) SetStatusCode(v int32) *DeleteAliasResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteAliasResponse) SetBody(v *DeleteAliasResponseBody) *DeleteAliasResponse {
 	s.Body = v
 	return s
 }
@@ -8933,6 +9095,93 @@ func (s *ListAdvanceConfigsResponse) SetBody(v *ListAdvanceConfigsResponseBody) 
 	return s
 }
 
+type ListAliasesResponseBody struct {
+	// id of request
+	//
+	// example:
+	//
+	// 10D5E615-69F7-5F49-B850-00169ADE513C
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// List
+	Result []*ListAliasesResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Repeated"`
+}
+
+func (s ListAliasesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAliasesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListAliasesResponseBody) SetRequestId(v string) *ListAliasesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListAliasesResponseBody) SetResult(v []*ListAliasesResponseBodyResult) *ListAliasesResponseBody {
+	s.Result = v
+	return s
+}
+
+type ListAliasesResponseBodyResult struct {
+	// example:
+	//
+	// test
+	Alias *string `json:"alias,omitempty" xml:"alias,omitempty"`
+	// example:
+	//
+	// index
+	Index *string `json:"index,omitempty" xml:"index,omitempty"`
+}
+
+func (s ListAliasesResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAliasesResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *ListAliasesResponseBodyResult) SetAlias(v string) *ListAliasesResponseBodyResult {
+	s.Alias = &v
+	return s
+}
+
+func (s *ListAliasesResponseBodyResult) SetIndex(v string) *ListAliasesResponseBodyResult {
+	s.Index = &v
+	return s
+}
+
+type ListAliasesResponse struct {
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListAliasesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListAliasesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAliasesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListAliasesResponse) SetHeaders(v map[string]*string) *ListAliasesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListAliasesResponse) SetStatusCode(v int32) *ListAliasesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListAliasesResponse) SetBody(v *ListAliasesResponseBody) *ListAliasesResponse {
+	s.Body = v
+	return s
+}
+
 type ListClusterNamesResponseBody struct {
 	// id of request
 	//
@@ -13666,6 +13915,97 @@ func (s *ModifyAdvanceConfigFileResponse) SetStatusCode(v int32) *ModifyAdvanceC
 }
 
 func (s *ModifyAdvanceConfigFileResponse) SetBody(v *ModifyAdvanceConfigFileResponseBody) *ModifyAdvanceConfigFileResponse {
+	s.Body = v
+	return s
+}
+
+type ModifyAliasRequest struct {
+	// example:
+	//
+	// test
+	Alias *string `json:"alias,omitempty" xml:"alias,omitempty"`
+	// example:
+	//
+	// index
+	Index *string `json:"index,omitempty" xml:"index,omitempty"`
+}
+
+func (s ModifyAliasRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyAliasRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyAliasRequest) SetAlias(v string) *ModifyAliasRequest {
+	s.Alias = &v
+	return s
+}
+
+func (s *ModifyAliasRequest) SetIndex(v string) *ModifyAliasRequest {
+	s.Index = &v
+	return s
+}
+
+type ModifyAliasResponseBody struct {
+	// id of request
+	//
+	// example:
+	//
+	// F6E3D968-529C-5C40-AFDD-133A8B8FD930
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Map
+	//
+	// example:
+	//
+	// {}
+	Result map[string]interface{} `json:"result,omitempty" xml:"result,omitempty"`
+}
+
+func (s ModifyAliasResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyAliasResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyAliasResponseBody) SetRequestId(v string) *ModifyAliasResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ModifyAliasResponseBody) SetResult(v map[string]interface{}) *ModifyAliasResponseBody {
+	s.Result = v
+	return s
+}
+
+type ModifyAliasResponse struct {
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyAliasResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ModifyAliasResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyAliasResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyAliasResponse) SetHeaders(v map[string]*string) *ModifyAliasResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyAliasResponse) SetStatusCode(v int32) *ModifyAliasResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ModifyAliasResponse) SetBody(v *ModifyAliasResponseBody) *ModifyAliasResponse {
 	s.Body = v
 	return s
 }
@@ -18692,6 +19032,72 @@ func (client *Client) CloneSqlInstance(instanceId *string, database *string, sql
 	return _result, _err
 }
 
+// @param request - CreateAliasRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateAliasResponse
+func (client *Client) CreateAliasWithOptions(instanceId *string, request *CreateAliasRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateAliasResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.NewMode)) {
+		query["newMode"] = request.NewMode
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Alias)) {
+		body["alias"] = request.Alias
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Index)) {
+		body["index"] = request.Index
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateAlias"),
+		Version:     tea.String("2021-10-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/ha3/instances/" + tea.StringValue(openapiutil.GetEncodeParam(instanceId)) + "/aliases"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateAliasResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - CreateAliasRequest
+//
+// @return CreateAliasResponse
+func (client *Client) CreateAlias(instanceId *string, request *CreateAliasRequest) (_result *CreateAliasResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateAliasResponse{}
+	_body, _err := client.CreateAliasWithOptions(instanceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 // Summary:
 //
 // Creates a cluster.
@@ -19575,6 +19981,48 @@ func (client *Client) DeleteAdvanceConfig(instanceId *string, configName *string
 	headers := make(map[string]*string)
 	_result = &DeleteAdvanceConfigResponse{}
 	_body, _err := client.DeleteAdvanceConfigWithOptions(instanceId, configName, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteAliasResponse
+func (client *Client) DeleteAliasWithOptions(instanceId *string, alias *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteAliasResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteAlias"),
+		Version:     tea.String("2021-10-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/ha3/instances/" + tea.StringValue(openapiutil.GetEncodeParam(instanceId)) + "/aliases/" + tea.StringValue(openapiutil.GetEncodeParam(alias))),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteAliasResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @return DeleteAliasResponse
+func (client *Client) DeleteAlias(instanceId *string, alias *string) (_result *DeleteAliasResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteAliasResponse{}
+	_body, _err := client.DeleteAliasWithOptions(instanceId, alias, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -21678,6 +22126,48 @@ func (client *Client) ListAdvanceConfigs(instanceId *string, request *ListAdvanc
 	return _result, _err
 }
 
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListAliasesResponse
+func (client *Client) ListAliasesWithOptions(instanceId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListAliasesResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListAliases"),
+		Version:     tea.String("2021-10-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/ha3/instances/" + tea.StringValue(openapiutil.GetEncodeParam(instanceId)) + "/aliases"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListAliasesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @return ListAliasesResponse
+func (client *Client) ListAliases(instanceId *string) (_result *ListAliasesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListAliasesResponse{}
+	_body, _err := client.ListAliasesWithOptions(instanceId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 // Summary:
 //
 // Queries cluster names.
@@ -23635,6 +24125,66 @@ func (client *Client) ModifyAdvanceConfigFile(instanceId *string, configName *st
 	headers := make(map[string]*string)
 	_result = &ModifyAdvanceConfigFileResponse{}
 	_body, _err := client.ModifyAdvanceConfigFileWithOptions(instanceId, configName, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param request - ModifyAliasRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyAliasResponse
+func (client *Client) ModifyAliasWithOptions(instanceId *string, alias *string, request *ModifyAliasRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ModifyAliasResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Alias)) {
+		body["alias"] = request.Alias
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Index)) {
+		body["index"] = request.Index
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyAlias"),
+		Version:     tea.String("2021-10-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/ha3/instances/" + tea.StringValue(openapiutil.GetEncodeParam(instanceId)) + "/aliases/" + tea.StringValue(openapiutil.GetEncodeParam(alias))),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ModifyAliasResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - ModifyAliasRequest
+//
+// @return ModifyAliasResponse
+func (client *Client) ModifyAlias(instanceId *string, alias *string, request *ModifyAliasRequest) (_result *ModifyAliasResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ModifyAliasResponse{}
+	_body, _err := client.ModifyAliasWithOptions(instanceId, alias, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
