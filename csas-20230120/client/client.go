@@ -7670,6 +7670,266 @@ func (s *ListIdpDepartmentsResponse) SetBody(v *ListIdpDepartmentsResponseBody) 
 	return s
 }
 
+type ListNacUserCertRequest struct {
+	// example:
+	//
+	// 1
+	CurrentPage *string `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	Department  *string `json:"Department,omitempty" xml:"Department,omitempty"`
+	// example:
+	//
+	// windows
+	DeviceType *string `json:"DeviceType,omitempty" xml:"DeviceType,omitempty"`
+	// example:
+	//
+	// 1702770400
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 1702260834
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// example:
+	//
+	// Enabled
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// zhang**
+	Username *string `json:"Username,omitempty" xml:"Username,omitempty"`
+}
+
+func (s ListNacUserCertRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListNacUserCertRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListNacUserCertRequest) SetCurrentPage(v string) *ListNacUserCertRequest {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *ListNacUserCertRequest) SetDepartment(v string) *ListNacUserCertRequest {
+	s.Department = &v
+	return s
+}
+
+func (s *ListNacUserCertRequest) SetDeviceType(v string) *ListNacUserCertRequest {
+	s.DeviceType = &v
+	return s
+}
+
+func (s *ListNacUserCertRequest) SetEndTime(v int64) *ListNacUserCertRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *ListNacUserCertRequest) SetPageSize(v string) *ListNacUserCertRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListNacUserCertRequest) SetStartTime(v int64) *ListNacUserCertRequest {
+	s.StartTime = &v
+	return s
+}
+
+func (s *ListNacUserCertRequest) SetStatus(v string) *ListNacUserCertRequest {
+	s.Status = &v
+	return s
+}
+
+func (s *ListNacUserCertRequest) SetUsername(v string) *ListNacUserCertRequest {
+	s.Username = &v
+	return s
+}
+
+type ListNacUserCertResponseBody struct {
+	// example:
+	//
+	// 200
+	Code     *int64                                 `json:"Code,omitempty" xml:"Code,omitempty"`
+	DataList []*ListNacUserCertResponseBodyDataList `json:"DataList,omitempty" xml:"DataList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// successful
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 58D6B23E-E5DA-5418-8F61-51A3B5A30049
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 1
+	TotalNum *int64 `json:"TotalNum,omitempty" xml:"TotalNum,omitempty"`
+}
+
+func (s ListNacUserCertResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListNacUserCertResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListNacUserCertResponseBody) SetCode(v int64) *ListNacUserCertResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListNacUserCertResponseBody) SetDataList(v []*ListNacUserCertResponseBodyDataList) *ListNacUserCertResponseBody {
+	s.DataList = v
+	return s
+}
+
+func (s *ListNacUserCertResponseBody) SetMessage(v string) *ListNacUserCertResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListNacUserCertResponseBody) SetRequestId(v string) *ListNacUserCertResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListNacUserCertResponseBody) SetTotalNum(v int64) *ListNacUserCertResponseBody {
+	s.TotalNum = &v
+	return s
+}
+
+type ListNacUserCertResponseBodyDataList struct {
+	// example:
+	//
+	// 1
+	Aliuid     *string `json:"Aliuid,omitempty" xml:"Aliuid,omitempty"`
+	Department *string `json:"Department,omitempty" xml:"Department,omitempty"`
+	// example:
+	//
+	// 36efa42d-2c32-c4dc-e3fc-8541e33a****
+	DevTag *string `json:"DevTag,omitempty" xml:"DevTag,omitempty"`
+	// example:
+	//
+	// windows
+	DeviceType *string `json:"DeviceType,omitempty" xml:"DeviceType,omitempty"`
+	// example:
+	//
+	// 2029-06-30 09:31:54
+	ExpiredTime *string `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
+	// example:
+	//
+	// MS-XU****
+	Hostname *string `json:"Hostname,omitempty" xml:"Hostname,omitempty"`
+	// example:
+	//
+	// 08:f8:**:**:**:5e
+	Mac *string `json:"Mac,omitempty" xml:"Mac,omitempty"`
+	// example:
+	//
+	// Disabled
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// su_e8f218fb171edd167c2ad917d21f53148bdefc510ca1f3c3cc0249d3643d****
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// example:
+	//
+	// zhang**
+	Username *string `json:"Username,omitempty" xml:"Username,omitempty"`
+}
+
+func (s ListNacUserCertResponseBodyDataList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListNacUserCertResponseBodyDataList) GoString() string {
+	return s.String()
+}
+
+func (s *ListNacUserCertResponseBodyDataList) SetAliuid(v string) *ListNacUserCertResponseBodyDataList {
+	s.Aliuid = &v
+	return s
+}
+
+func (s *ListNacUserCertResponseBodyDataList) SetDepartment(v string) *ListNacUserCertResponseBodyDataList {
+	s.Department = &v
+	return s
+}
+
+func (s *ListNacUserCertResponseBodyDataList) SetDevTag(v string) *ListNacUserCertResponseBodyDataList {
+	s.DevTag = &v
+	return s
+}
+
+func (s *ListNacUserCertResponseBodyDataList) SetDeviceType(v string) *ListNacUserCertResponseBodyDataList {
+	s.DeviceType = &v
+	return s
+}
+
+func (s *ListNacUserCertResponseBodyDataList) SetExpiredTime(v string) *ListNacUserCertResponseBodyDataList {
+	s.ExpiredTime = &v
+	return s
+}
+
+func (s *ListNacUserCertResponseBodyDataList) SetHostname(v string) *ListNacUserCertResponseBodyDataList {
+	s.Hostname = &v
+	return s
+}
+
+func (s *ListNacUserCertResponseBodyDataList) SetMac(v string) *ListNacUserCertResponseBodyDataList {
+	s.Mac = &v
+	return s
+}
+
+func (s *ListNacUserCertResponseBodyDataList) SetStatus(v string) *ListNacUserCertResponseBodyDataList {
+	s.Status = &v
+	return s
+}
+
+func (s *ListNacUserCertResponseBodyDataList) SetUserId(v string) *ListNacUserCertResponseBodyDataList {
+	s.UserId = &v
+	return s
+}
+
+func (s *ListNacUserCertResponseBodyDataList) SetUsername(v string) *ListNacUserCertResponseBodyDataList {
+	s.Username = &v
+	return s
+}
+
+type ListNacUserCertResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListNacUserCertResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListNacUserCertResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListNacUserCertResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListNacUserCertResponse) SetHeaders(v map[string]*string) *ListNacUserCertResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListNacUserCertResponse) SetStatusCode(v int32) *ListNacUserCertResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListNacUserCertResponse) SetBody(v *ListNacUserCertResponseBody) *ListNacUserCertResponse {
+	s.Body = v
+	return s
+}
+
 type ListPolicesForPrivateAccessApplicationRequest struct {
 	// This parameter is required.
 	ApplicationIds []*string `json:"ApplicationIds,omitempty" xml:"ApplicationIds,omitempty" type:"Repeated"`
@@ -12877,6 +13137,128 @@ func (s *UpdateIdpDepartmentResponse) SetBody(v *UpdateIdpDepartmentResponseBody
 	return s
 }
 
+type UpdateNacUserCertStatusRequest struct {
+	IdList []*UpdateNacUserCertStatusRequestIdList `json:"IdList,omitempty" xml:"IdList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// Enabled
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s UpdateNacUserCertStatusRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateNacUserCertStatusRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateNacUserCertStatusRequest) SetIdList(v []*UpdateNacUserCertStatusRequestIdList) *UpdateNacUserCertStatusRequest {
+	s.IdList = v
+	return s
+}
+
+func (s *UpdateNacUserCertStatusRequest) SetStatus(v string) *UpdateNacUserCertStatusRequest {
+	s.Status = &v
+	return s
+}
+
+type UpdateNacUserCertStatusRequestIdList struct {
+	// example:
+	//
+	// 36efa42d-2c32-c4dc-e3fc-8541e33a****
+	DevTag *string `json:"DevTag,omitempty" xml:"DevTag,omitempty"`
+	// example:
+	//
+	// su_e8f218fb171edd167c2ad917d21f53148bdefc510ca1f3c3cc0249d3643d****
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+}
+
+func (s UpdateNacUserCertStatusRequestIdList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateNacUserCertStatusRequestIdList) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateNacUserCertStatusRequestIdList) SetDevTag(v string) *UpdateNacUserCertStatusRequestIdList {
+	s.DevTag = &v
+	return s
+}
+
+func (s *UpdateNacUserCertStatusRequestIdList) SetUserId(v string) *UpdateNacUserCertStatusRequestIdList {
+	s.UserId = &v
+	return s
+}
+
+type UpdateNacUserCertStatusResponseBody struct {
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// successful
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 102350E7-1A20-58F5-9D63-ABEA820AE6E1
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateNacUserCertStatusResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateNacUserCertStatusResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateNacUserCertStatusResponseBody) SetCode(v string) *UpdateNacUserCertStatusResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *UpdateNacUserCertStatusResponseBody) SetMessage(v string) *UpdateNacUserCertStatusResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *UpdateNacUserCertStatusResponseBody) SetRequestId(v string) *UpdateNacUserCertStatusResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateNacUserCertStatusResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateNacUserCertStatusResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateNacUserCertStatusResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateNacUserCertStatusResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateNacUserCertStatusResponse) SetHeaders(v map[string]*string) *UpdateNacUserCertStatusResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateNacUserCertStatusResponse) SetStatusCode(v int32) *UpdateNacUserCertStatusResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateNacUserCertStatusResponse) SetBody(v *UpdateNacUserCertStatusResponseBody) *UpdateNacUserCertStatusResponse {
+	s.Body = v
+	return s
+}
+
 type UpdatePrivateAccessApplicationRequest struct {
 	Addresses []*string `json:"Addresses,omitempty" xml:"Addresses,omitempty" type:"Repeated"`
 	// This parameter is required.
@@ -17607,6 +17989,94 @@ func (client *Client) ListIdpDepartments(request *ListIdpDepartmentsRequest) (_r
 
 // Summary:
 //
+// 入网用户列表
+//
+// @param request - ListNacUserCertRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListNacUserCertResponse
+func (client *Client) ListNacUserCertWithOptions(request *ListNacUserCertRequest, runtime *util.RuntimeOptions) (_result *ListNacUserCertResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CurrentPage)) {
+		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Department)) {
+		query["Department"] = request.Department
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DeviceType)) {
+		query["DeviceType"] = request.DeviceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		query["Status"] = request.Status
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Username)) {
+		query["Username"] = request.Username
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListNacUserCert"),
+		Version:     tea.String("2023-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListNacUserCertResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 入网用户列表
+//
+// @param request - ListNacUserCertRequest
+//
+// @return ListNacUserCertResponse
+func (client *Client) ListNacUserCert(request *ListNacUserCertRequest) (_result *ListNacUserCertResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListNacUserCertResponse{}
+	_body, _err := client.ListNacUserCertWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 批量查询内网访问应用的策略
 //
 // @param request - ListPolicesForPrivateAccessApplicationRequest
@@ -19232,6 +19702,73 @@ func (client *Client) UpdateIdpDepartment(request *UpdateIdpDepartmentRequest) (
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateIdpDepartmentResponse{}
 	_body, _err := client.UpdateIdpDepartmentWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新NAC User 状态
+//
+// @param request - UpdateNacUserCertStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateNacUserCertStatusResponse
+func (client *Client) UpdateNacUserCertStatusWithOptions(request *UpdateNacUserCertStatusRequest, runtime *util.RuntimeOptions) (_result *UpdateNacUserCertStatusResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	bodyFlat := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.IdList)) {
+		bodyFlat["IdList"] = request.IdList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		body["Status"] = request.Status
+	}
+
+	body = tea.ToMap(body,
+		openapiutil.Query(bodyFlat))
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateNacUserCertStatus"),
+		Version:     tea.String("2023-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateNacUserCertStatusResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新NAC User 状态
+//
+// @param request - UpdateNacUserCertStatusRequest
+//
+// @return UpdateNacUserCertStatusResponse
+func (client *Client) UpdateNacUserCertStatus(request *UpdateNacUserCertStatusRequest) (_result *UpdateNacUserCertStatusResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateNacUserCertStatusResponse{}
+	_body, _err := client.UpdateNacUserCertStatusWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
