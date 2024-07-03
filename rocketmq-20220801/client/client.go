@@ -785,16 +785,17 @@ type CreateInstanceRequestNetworkInfoVpcInfo struct {
 	//
 	// sg-bp17hpmgz96tvnsdy6so
 	SecurityGroupIds *string `json:"securityGroupIds,omitempty" xml:"securityGroupIds,omitempty"`
+	// Deprecated
+	//
 	// The ID of the vSwitch with which you want to associate the instance, If there are multiple vSwitchs, please concatenate them using the "|" character.
 	//
 	// >  After an ApsaraMQ for RocketMQ instance is created, you cannot change the vSwitch with which the instance is associated. If you want to change the vSwitch with which the instance is associated, you must release the instance and purchase a new instance.
 	//
-	// This parameter is required.
-	//
 	// example:
 	//
 	// vsw-uf6gwtbn6etadpv*******
-	VSwitchId *string `json:"vSwitchId,omitempty" xml:"vSwitchId,omitempty"`
+	VSwitchId *string                                             `json:"vSwitchId,omitempty" xml:"vSwitchId,omitempty"`
+	VSwitches []*CreateInstanceRequestNetworkInfoVpcInfoVSwitches `json:"vSwitches,omitempty" xml:"vSwitches,omitempty" type:"Repeated"`
 	// The ID of the VPC in which you want to deploy the instance.
 	//
 	// >  After an ApsaraMQ for RocketMQ instance is created, you cannot change the VPC in which the instance is deployed. If you want to change the VPC in which the instance is deployed, you must release the instance and create a new instance.
@@ -825,8 +826,30 @@ func (s *CreateInstanceRequestNetworkInfoVpcInfo) SetVSwitchId(v string) *Create
 	return s
 }
 
+func (s *CreateInstanceRequestNetworkInfoVpcInfo) SetVSwitches(v []*CreateInstanceRequestNetworkInfoVpcInfoVSwitches) *CreateInstanceRequestNetworkInfoVpcInfo {
+	s.VSwitches = v
+	return s
+}
+
 func (s *CreateInstanceRequestNetworkInfoVpcInfo) SetVpcId(v string) *CreateInstanceRequestNetworkInfoVpcInfo {
 	s.VpcId = &v
+	return s
+}
+
+type CreateInstanceRequestNetworkInfoVpcInfoVSwitches struct {
+	VSwitchId *string `json:"vSwitchId,omitempty" xml:"vSwitchId,omitempty"`
+}
+
+func (s CreateInstanceRequestNetworkInfoVpcInfoVSwitches) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateInstanceRequestNetworkInfoVpcInfoVSwitches) GoString() string {
+	return s.String()
+}
+
+func (s *CreateInstanceRequestNetworkInfoVpcInfoVSwitches) SetVSwitchId(v string) *CreateInstanceRequestNetworkInfoVpcInfoVSwitches {
+	s.VSwitchId = &v
 	return s
 }
 
