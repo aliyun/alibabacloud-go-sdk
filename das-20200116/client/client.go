@@ -2898,7 +2898,7 @@ type CreateStorageAnalysisTaskRequest struct {
 	//
 	// 	- If you set this parameter to a value in the `InsName#RoleId` format, such as `d-bp1872fa24d5****#299****5`, you can call this operation to analyze the specified node.
 	//
-	// >  If you run a storage analysis task on an ApsaraDB for MongoDB replica set instances and you do not specify this parameter, only the hidden node of the instance is analyzed by default. If you run a storage analysis task on an ApsaraDB for MongoDB sharded cluster instance, we recommend that you set this parameter to specify a node.
+	// >  If you run a storage analysis task on an ApsaraDB for MongoDB replica set instance and you do not specify this parameter, only the hidden node of the instance is analyzed by default. If you run a storage analysis task on an ApsaraDB for MongoDB sharded cluster instance, we recommend that you set this parameter to specify a node.
 	//
 	// example:
 	//
@@ -8883,7 +8883,7 @@ func (s *DescribeSqlLogConfigResponse) SetBody(v *DescribeSqlLogConfigResponseBo
 }
 
 type DescribeSqlLogRecordsRequest struct {
-	// The end of the time range to query. Specify the time in the UNIX timestamp format. Unit: milliseconds.
+	// The end of the time range to query. This value is a UNIX timestamp. Unit: millisecond.
 	//
 	// example:
 	//
@@ -8891,7 +8891,7 @@ type DescribeSqlLogRecordsRequest struct {
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The filter conditions.
 	Filters []*DescribeSqlLogRecordsRequestFilters `json:"Filters,omitempty" xml:"Filters,omitempty" type:"Repeated"`
-	// The ID of the database instance.
+	// The database instance ID.
 	//
 	// This parameter is required.
 	//
@@ -8901,9 +8901,9 @@ type DescribeSqlLogRecordsRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The node ID.
 	//
-	// 	- For ApsaraDB RDS for MySQL and PolarDB for MySQL, this parameter is available only for Cluster Edition instances. By default, if this parameter is not specified, the information about the logs of the primary node is returned.
+	// 	- For ApsaraDB RDS for MySQL instances and PolarDB for MySQL clusters, this parameter is valid only for instances of the Cluster Edition. If you do not specify this parameter, the log details of the primary node is queried by default.
 	//
-	// 	- Set this parameter to **polarx_cn*	- or **polarx_dn*	- if the node that you want to query belongs to a PolarDB-X 2.0 database instance. A value of polarx_cn indicates a compute node. A value of polarx_dn indicates a data node.
+	// 	- For PolarDB-X 2.0 instances, set this parameter to **polarx_cn*	- if the node is a compute node, or **polarx_dn*	- if the node is a data node.
 	//
 	// example:
 	//
@@ -8921,7 +8921,7 @@ type DescribeSqlLogRecordsRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The role of the node of the PolarDB-X 2.0 database instance. Valid values:
+	// The role of the node of the PolarDB-X 2.0 instance. Valid values:
 	//
 	// 	- \\*\\*polarx_cn\\*\\*: compute node
 	//
@@ -8931,7 +8931,7 @@ type DescribeSqlLogRecordsRequest struct {
 	//
 	// polarx_cn
 	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
-	// The beginning of the time range to query. Specify the time in the UNIX timestamp format. Unit: milliseconds.
+	// The beginning of the time range to query. This value is a UNIX timestamp. Unit: millisecond.
 	//
 	// example:
 	//
@@ -8988,9 +8988,9 @@ func (s *DescribeSqlLogRecordsRequest) SetStartTime(v int64) *DescribeSqlLogReco
 }
 
 type DescribeSqlLogRecordsRequestFilters struct {
-	// The name of the filter parameter.
+	// The filter parameter.
 	//
-	// >  For more information about the supported filter parameters and their valid values, see the following **supplement about the Key parameter**.
+	// >  For more information about the supported filter parameters and their valid values, see the **Supported parameters and values for Key*	- section of this topic.
 	//
 	// example:
 	//
@@ -9023,17 +9023,17 @@ func (s *DescribeSqlLogRecordsRequestFilters) SetValue(v string) *DescribeSqlLog
 }
 
 type DescribeSqlLogRecordsResponseBody struct {
-	// The response code.
+	// The HTTP status code that is returned.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned data.
+	// The data that is returned.
 	Data *DescribeSqlLogRecordsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The returned message.
+	// The message that is returned.
 	//
-	// >  If the request was successful, **Successful*	- is returned. If the request failed, error information such as an error code is returned.
+	// >  If the request is successful, **Successful*	- is returned. If the request fails, an error message that contains information such as an error code is returned.
 	//
 	// example:
 	//
@@ -9091,7 +9091,7 @@ func (s *DescribeSqlLogRecordsResponseBody) SetSuccess(v string) *DescribeSqlLog
 }
 
 type DescribeSqlLogRecordsResponseBodyData struct {
-	// The end of the time range to query. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	// The end of the time range to query. This value is a UNIX timestamp. Unit: millisecond.
 	//
 	// example:
 	//
@@ -9099,11 +9099,11 @@ type DescribeSqlLogRecordsResponseBodyData struct {
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// Indicates whether the task was complete. Valid values:
 	//
-	// 	- **0**: The task failed.
+	// 	- **0**: no
 	//
-	// 	- **1**: The task was complete.
+	// 	- **1**: yes
 	//
-	// >  If the value of **Finish*	- is 0 and the value of **JobId*	- is returned, the request is an asynchronous request and the return result cannot be directly obtained. You must query the return result by using the value of **JobId**. Specify JobId as the key of **Filters*	- and the value of **JobId*	- as the value of Filters. Example: `Filters=[{"Key": "JobId", "Value": "******"}]`.
+	// >  If the value of **Finish*	- is 0 and the value of **JobId*	- is returned, the request is an asynchronous request and the return result cannot be directly obtained. You must query the return result based on the value of **JobId**. Specify JobId as the key of **Filters*	- and the value of **JobId*	- as the value of Filters. Example: `Filters=[{"Key": "JobId", "Value": "******"}]`.
 	//
 	// example:
 	//
@@ -9117,13 +9117,13 @@ type DescribeSqlLogRecordsResponseBodyData struct {
 	//
 	// MzI4NTZfUUlOR0RBT19DTTlfTlUyMF9NWVNRTF9PREJTX0xWU18zMjg1Nl9teXNxbF9XZWQgTWFyIDA2IDE0OjUwOjQ3IENTVCAyMDI0XzBfMzBfRXhlY3V0ZVRpbWVfREVTQ19XZWQgTWFyIDA2IDE0OjM1OjQ3IENTVCAyMDI0Xw==_1709708406465
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// The beginning of the time range to query. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	// The beginning of the time range to query. This value is a UNIX timestamp. Unit: millisecond.
 	//
 	// example:
 	//
 	// 1596177993000
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -9194,31 +9194,31 @@ type DescribeSqlLogRecordsResponseBodyDataItemsSQLLogRecord struct {
 	//
 	// testname
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	// This is a reserved parameter.
+	// A reserved parameter.
 	//
 	// example:
 	//
 	// None
 	Collection *string `json:"Collection,omitempty" xml:"Collection,omitempty"`
-	// The duration of the query. Unit: milliseconds.
+	// The amount of time that is consumed to execute the SQL statement. Unit: millisecond.
 	//
 	// example:
 	//
 	// 58
 	Consume *int64 `json:"Consume,omitempty" xml:"Consume,omitempty"`
-	// The CPU execution duration. Unit: microseconds.
+	// The CPU execution duration. Unit: microsecond.
 	//
 	// example:
 	//
 	// 100
 	CpuTime *int64 `json:"CpuTime,omitempty" xml:"CpuTime,omitempty"`
-	// The name of the database.
+	// The database name.
 	//
 	// example:
 	//
 	// testdb
 	DBName *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
-	// The time when the query was performed. The time follows the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time is displayed in UTC.
+	// The time when the SQL statement was executed. The time follows the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time is displayed in UTC.
 	//
 	// example:
 	//
@@ -9230,7 +9230,7 @@ type DescribeSqlLogRecordsResponseBodyDataItemsSQLLogRecord struct {
 	//
 	// None
 	Ext *string `json:"Ext,omitempty" xml:"Ext,omitempty"`
-	// The number of rows that are pulled by the compute nodes of the PolarDB-X 2.0 database instance.
+	// The number of rows that are pulled by the compute nodes of the PolarDB-X 2.0 instance.
 	//
 	// example:
 	//
@@ -9242,7 +9242,7 @@ type DescribeSqlLogRecordsResponseBodyDataItemsSQLLogRecord struct {
 	//
 	// 11.197.XX.XX
 	HostAddress *string `json:"HostAddress,omitempty" xml:"HostAddress,omitempty"`
-	// The lock wait duration. Unit: milliseconds.
+	// The lock wait duration. Unit: millisecond.
 	//
 	// example:
 	//
@@ -9260,19 +9260,19 @@ type DescribeSqlLogRecordsResponseBodyDataItemsSQLLogRecord struct {
 	//
 	// pi-uf6k5f6g3912i****
 	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-	// The time when the query was performed. The value of this parameter is a UNIX timestamp. Unit: milliseconds.
+	// The timestamp generated when the SQL statement was executed. The value of this parameter is a UNIX timestamp. Unit: millisecond.
 	//
 	// example:
 	//
 	// 1701886532000
 	OriginTime *int64 `json:"OriginTime,omitempty" xml:"OriginTime,omitempty"`
-	// The parallel queue time of the PolarDB for MySQL instance. Unit: milliseconds.
+	// The parallel queue time of the PolarDB for MySQL instance. Unit: millisecond.
 	//
 	// example:
 	//
 	// 10
 	ParallelDegree *string `json:"ParallelDegree,omitempty" xml:"ParallelDegree,omitempty"`
-	// The parallelism of the PolarDB for MySQL instance.
+	// The parallelism of the PolarDB for MySQL cluster.
 	//
 	// example:
 	//
@@ -9284,7 +9284,7 @@ type DescribeSqlLogRecordsResponseBodyDataItemsSQLLogRecord struct {
 	//
 	// 0
 	PhysicAsyncRead *int64 `json:"PhysicAsyncRead,omitempty" xml:"PhysicAsyncRead,omitempty"`
-	// The number of physical reads.
+	// The total number of physical reads.
 	//
 	// example:
 	//
@@ -9296,25 +9296,25 @@ type DescribeSqlLogRecordsResponseBodyDataItemsSQLLogRecord struct {
 	//
 	// 0
 	PhysicSyncRead *int64 `json:"PhysicSyncRead,omitempty" xml:"PhysicSyncRead,omitempty"`
-	// The number of rows that are returned.
+	// The number of rows returned by the SQL statement.
 	//
 	// example:
 	//
 	// 0
 	ReturnRows *int64 `json:"ReturnRows,omitempty" xml:"ReturnRows,omitempty"`
-	// The total number of rows that are updated or returned by the compute nodes of the PolarDB-X 2.0 database instance.
+	// The total number of rows that are updated or returned by the compute nodes of the PolarDB-X 2.0 instance.
 	//
 	// example:
 	//
 	// 10
 	Rows *int64 `json:"Rows,omitempty" xml:"Rows,omitempty"`
-	// The number of rows that are scanned.
+	// The number of scanned rows.
 	//
 	// example:
 	//
 	// 0
 	ScanRows *int64 `json:"ScanRows,omitempty" xml:"ScanRows,omitempty"`
-	// The number of requests that are sent to the data nodes by the compute nodes of the PolarDB-X 2.0 database instance.
+	// The number of requests that are sent from the compute nodes to the data nodes of the PolarDB-X 2.0 instance.
 	//
 	// example:
 	//
@@ -9338,11 +9338,11 @@ type DescribeSqlLogRecordsResponseBodyDataItemsSQLLogRecord struct {
 	//
 	// select
 	SqlType *string `json:"SqlType,omitempty" xml:"SqlType,omitempty"`
-	// The state of the query. Valid values:
+	// The execution status of the SQL statement.
 	//
-	// 	- **0**: The query was successful.
+	// 	- **0**: The execution was successful.
 	//
-	// 	- **1**: The query failed to be performed.
+	// 	- **1**: The execution failed.
 	//
 	// example:
 	//
@@ -9354,7 +9354,7 @@ type DescribeSqlLogRecordsResponseBodyDataItemsSQLLogRecord struct {
 	//
 	// None
 	ThreadId *int64 `json:"ThreadId,omitempty" xml:"ThreadId,omitempty"`
-	// The trace ID of the PolarDB-X 2.0 database instance. The value is the execution ID of the SQL statement on the data nodes.
+	// The trace ID of the PolarDB-X 2.0 instance. The value is the execution ID of the SQL statement on the data node.
 	//
 	// example:
 	//
@@ -9372,7 +9372,7 @@ type DescribeSqlLogRecordsResponseBodyDataItemsSQLLogRecord struct {
 	//
 	// 0
 	UpdateRows *int64 `json:"UpdateRows,omitempty" xml:"UpdateRows,omitempty"`
-	// Indicates whether the In-Memory Column Index (IMCI) feature is enabled for the PolarDB for MySQL instance. Valid values:
+	// Indicates whether the In-Memory Column Index (IMCI) feature is enabled for the PolarDB for MySQL cluster. Valid values:
 	//
 	// 	- **true**
 	//
@@ -9388,7 +9388,7 @@ type DescribeSqlLogRecordsResponseBodyDataItemsSQLLogRecord struct {
 	//
 	// 100.115.XX.XX
 	Vip *string `json:"Vip,omitempty" xml:"Vip,omitempty"`
-	// The number of writes that are performed by the ApsaraDB RDS for SQL Server engine.
+	// The number of writes to the ApsaraDB RDS for SQL Server instance.
 	//
 	// example:
 	//
@@ -10112,6 +10112,7 @@ type DescribeSqlLogTaskResponseBodyDataQueries struct {
 	//
 	// testname
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	Collection  *string `json:"Collection,omitempty" xml:"Collection,omitempty"`
 	// The execution duration. Unit: millisecond.
 	//
 	// example:
@@ -10324,6 +10325,11 @@ func (s DescribeSqlLogTaskResponseBodyDataQueries) GoString() string {
 
 func (s *DescribeSqlLogTaskResponseBodyDataQueries) SetAccountName(v string) *DescribeSqlLogTaskResponseBodyDataQueries {
 	s.AccountName = &v
+	return s
+}
+
+func (s *DescribeSqlLogTaskResponseBodyDataQueries) SetCollection(v string) *DescribeSqlLogTaskResponseBodyDataQueries {
+	s.Collection = &v
 	return s
 }
 
@@ -32059,7 +32065,7 @@ type GetStorageAnalysisResultResponseBody struct {
 	//
 	// 200
 	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned data.
+	// The data returned.
 	Data *GetStorageAnalysisResultResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The returned message.
 	//
@@ -32372,19 +32378,19 @@ type GetStorageAnalysisResultResponseBodyDataStorageAnalysisResultNeedOptimizeIt
 	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
 	// The optimization suggestion. Valid values:
 	//
-	// 	- **NEED_ANALYZE_TABLE**: Execute the `ANALYZE TABLE` statement on the table during off-peak hours.
+	// 	- **NEED_ANALYZE_TABLE**: You can execute the `ANALYZE TABLE` statement on the table during off-peak hours. This is applicable only to ApsaraDB RDS for MySQL instances and PolarDB for MySQL clusters.
 	//
-	// 	- **NEED_OPTIMIZE_TABLE**: Reclaim space fragments during off-peak hours.
+	// 	- **NEED_OPTIMIZE_TABLE**: You can reclaim fragments during off-peak hours.
 	//
-	// 	- **CHANGE_TABLE_ENGINE_IF_NECESSARY**: Change the storage engine type of a table after risk assessment.
+	// 	- **CHANGE_TABLE_ENGINE_IF_NECESSARY**: Change the storage engine type of a table after risk assessment. This is applicable only to ApsaraDB RDS for MySQL instances and PolarDB for MySQL clusters.
 	//
-	// 	- **AUTO_INCREMENT_ID_BE_TO_RUN_OUT**: Pay attention to the usage of auto-increment IDs.
+	// 	- **AUTO_INCREMENT_ID_BE_TO_RUN_OUT**: Pay attention to the usage of auto-increment IDs. This is applicable only to ApsaraDB RDS for MySQL instances and PolarDB for MySQL clusters.
 	//
-	// 	- **DUPLICATE_INDEX**: Optimize indexes of tables.
+	// 	- **DUPLICATE_INDEX**: Optimize indexes of tables. This is applicable only to ApsaraDB RDS for MySQL instances and PolarDB for MySQL clusters.
 	//
-	// 	- **TABLE_SIZE**: Pay attention to the table size.
+	// 	- **TABLE_SIZE**: Pay attention to the table size. This is applicable only to ApsaraDB RDS for MySQL instances and PolarDB for MySQL clusters.
 	//
-	// 	- **TABLE_ROWS_AND_AVG_ROW_LENGTH**: Pay attention to the number of rows in a table and the average row length.
+	// 	- **TABLE_ROWS_AND_AVG_ROW_LENGTH**: Pay attention to the number of rows in a table and the average row length. This is applicable only to ApsaraDB RDS for MySQL instances and PolarDB for MySQL clusters.
 	//
 	// 	- **STORAGE_USED_PERCENT**: Pay attention to the space usage to prevent the instance from being locked if the instance is full.
 	//
@@ -32394,21 +32400,25 @@ type GetStorageAnalysisResultResponseBodyDataStorageAnalysisResultNeedOptimizeIt
 	OptimizeAdvice *string `json:"OptimizeAdvice,omitempty" xml:"OptimizeAdvice,omitempty"`
 	// The item to be optimized. Valid values:
 	//
-	// 	- **NEED_ANALYZE_TABLE**: tables whose storage statistics obtained from `information_schema.tables` are 50 GB larger or smaller than the physical file sizes.
+	// 	- **NEED_ANALYZE_TABLE**: tables whose storage statistics obtained from `information_schema.tables` are 50 GB larger or smaller than the physical file sizes. This is applicable only to ApsaraDB RDS for MySQL instances and PolarDB for MySQL clusters.
 	//
-	// 	- **NEED_OPTIMIZE_TABLE**: tables whose space fragments are larger than 6 GB and whose fragmentation rates are greater than 30%. The fragmentation rate of a table is generally calculated based on the following formula: `Fragmentation rate = DataFree/(DataSize + IndexSize + DataFree)`. In this topic, PhyTotalSize = DataSize + IndexSize + DataFree. Thus, the fragmentation rate can be calculated based on the following formula: `Fragmentation rate = DataFree/PhyTotalSize`.
+	// 	- **NEED_OPTIMIZE_TABLE**: tables whose space fragments are larger than 6 GB and whose fragmentation rates are greater than 30%. The fragmentation rate of a table is generally calculated based on the following formulas:
 	//
-	// 	- **TABLE_ENGINE**: tables whose storage engines are not InnoDB or XEngine.
+	//     	- ApsaraDB RDS for MySQL and PolarDB for MySQL: `Fragmentation rate = DataFree/(DataSize + IndexSize + DataFree)`. In this topic, PhyTotalSize = DataSize + IndexSize + DataFree. Thus, the fragmentation rate can be calculated based on the following formula: `Fragmentation rate = DataFree/PhyTotalSize`.
 	//
-	// 	- **AUTO_INCREMENT_ID_BE_TO_RUN_OUT**: tables whose usages of auto-increment IDs exceed 80%.
+	//     	- ApsaraDB for MongoDB: `Fragmentation rate = FragmentSize/PhyTotalSize`.
 	//
-	// 	- **DUPLICATE_INDEX**: tables whose indexes are redundant or duplicate.
+	// 	- **TABLE_ENGINE**: tables whose storage engines are not InnoDB or XEngine. This is applicable only to ApsaraDB RDS for MySQL instances and PolarDB for MySQL clusters.
 	//
-	// 	- **TABLE_SIZE**: single tables whose sizes are larger than 50 GB.
+	// 	- **AUTO_INCREMENT_ID_BE_TO_RUN_OUT**: tables whose usages of auto-increment IDs exceed 80%. This is applicable only to ApsaraDB RDS for MySQL instances and PolarDB for MySQL clusters.
 	//
-	// 	- **TABLE_ROWS_AND_AVG_ROW_LENGTH**: single tables that contain more than 5 million rows and whose average row lengths exceed 10 KB.
+	// 	- **DUPLICATE_INDEX**: tables whose indexes are redundant or duplicate. This is applicable only to ApsaraDB RDS for MySQL instances and PolarDB for MySQL clusters.
 	//
-	// 	- **TOTAL_DATA_FREE**: instances whose reclaimable spaces are larger than 60 GB and whose total fragmentation rate is larger than 5%.
+	// 	- **TABLE_SIZE**: single tables whose sizes are larger than 50 GB. This is applicable only to ApsaraDB RDS for MySQL instances and PolarDB for MySQL clusters.
+	//
+	// 	- **TABLE_ROWS_AND_AVG_ROW_LENGTH**: single tables that contain more than 5 million rows and whose average row lengths exceed 10 KB. This is applicable only to ApsaraDB RDS for MySQL instances and PolarDB for MySQL clusters.
+	//
+	// 	- **TOTAL_DATA_FREE**: instances whose reclaimable space is larger than 60 GB and whose total fragmentation rate is larger than 5%.
 	//
 	// 	- **STORAGE_USED_PERCENT**: instances whose space usage is larger than 90%.
 	//
@@ -32466,11 +32476,15 @@ type GetStorageAnalysisResultResponseBodyDataStorageAnalysisResultTableStats str
 	AvgRowLength *int64 `json:"AvgRowLength,omitempty" xml:"AvgRowLength,omitempty"`
 	// The size of space fragments. Unit: bytes.
 	//
+	// >  This parameter is applicable only to ApsaraDB RDS for MySQL instances and PolarDB for MySQL clusters. The fragmentation rate of a table is generally calculated based on the following formula: `Fragmentation rate = DataFree/(DataSize + IndexSize + DataFree)`. In this topic, `Fragmentation rate = DataFree/PhyTotalSize`.
+	//
 	// example:
 	//
 	// 7340032
 	DataFree *int64 `json:"DataFree,omitempty" xml:"DataFree,omitempty"`
-	// The storage space occupied by data. Unit: bytes.
+	// 	- For ApsaraDB RDS for MySQL instances and PolarDB for MySQL clusters, this parameter indicates the amount of space occupied by data. Unit: bytes.
+	//
+	// 	- For ApsaraDB for MongoDB instances, this parameter indicates the size of uncompressed data, that is, the amount of data. Unit: bytes.
 	//
 	// example:
 	//
@@ -32484,13 +32498,15 @@ type GetStorageAnalysisResultResponseBodyDataStorageAnalysisResultTableStats str
 	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
 	// The type of the storage engine used by the table.
 	//
+	// >  This parameter is applicable only to ApsaraDB RDS for MySQL instances and PolarDB for MySQL clusters.
+	//
 	// example:
 	//
 	// InnoDB
 	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	// 可回收空间大小（碎片空间大小），单位为Byte。
+	// The size of space that can be reclaimed. Unit: bytes.
 	//
-	// > 该参数仅适用于MongoDB实例。表碎片率计算方式为：`FragmentSize/PhyTotalSize`。
+	// >  This parameter is applicable only to ApsaraDB for MongoDB instances. `Fragmentation rate = FragmentSize/PhyTotalSize`.
 	//
 	// example:
 	//
@@ -32504,7 +32520,7 @@ type GetStorageAnalysisResultResponseBodyDataStorageAnalysisResultTableStats str
 	IndexSize *int64 `json:"IndexSize,omitempty" xml:"IndexSize,omitempty"`
 	// The storage space of the table. Unit: bytes.
 	//
-	// >  The value of this parameter is the sum of the values of **DataSize**, **IndexSize**, and **DataFree**.
+	// >  For ApsaraDB RDS for MySQL instances and PolarDB for MySQL clusters, the value of the parameter is the sum of **DataSize**, **IndexSize**, and **DataFree**. For ApsaraDB for MongoDB instances, the value of this parameter is the sum of **DataSize*	- and **IndexSize**.
 	//
 	// example:
 	//
@@ -32512,7 +32528,7 @@ type GetStorageAnalysisResultResponseBodyDataStorageAnalysisResultTableStats str
 	PhyTotalSize *int64 `json:"PhyTotalSize,omitempty" xml:"PhyTotalSize,omitempty"`
 	// The physical file size of the table. Unit: bytes.
 	//
-	// >  You may fail to obtain the physical file size because of the deployment mode of the database instance.
+	// >  This parameter is applicable only to ApsaraDB RDS for MySQL instances and PolarDB for MySQL clusters. Data of specific database instances cannot be obtained due to deployment mode.
 	//
 	// example:
 	//
@@ -32532,13 +32548,15 @@ type GetStorageAnalysisResultResponseBodyDataStorageAnalysisResultTableStats str
 	TableRows *int64 `json:"TableRows,omitempty" xml:"TableRows,omitempty"`
 	// The type of the table.
 	//
+	// >  This parameter is applicable only to ApsaraDB RDS for MySQL instances and PolarDB for MySQL clusters.
+	//
 	// example:
 	//
 	// BASE TABLE
 	TableType *string `json:"TableType,omitempty" xml:"TableType,omitempty"`
-	// The storage space occupied by table data and indexes. Unit: bytes.
+	// 	- For ApsaraDB RDS for MySQL instances and PolarDB for MySQL clusters, this parameter indicates the amount of space occupied by table data and indexes. Unit: bytes. The value is the sum of **DataSize*	- and **IndexSize**.
 	//
-	// >  The value of this parameter is the sum of the values of **DataSize*	- and **IndexSize**.
+	// 	- For ApsaraDB for MongoDB instances, this parameter indicates the actual size of space allocated by Block Manager. Unit: Bytes. The compression ratio of an ApsaraDB for MongoDB instance is calculated based on the following formula: `Compression ratio = TotalSize/DataSize`.
 	//
 	// example:
 	//
@@ -37410,9 +37428,11 @@ func (client *Client) CreateSqlLogTask(request *CreateSqlLogTaskRequest) (_resul
 //
 //   This operation is applicable only to ApsaraDB RDS for MySQL instances, PolarDB for MySQL clusters, and ApsaraDB for MongoDB instances.
 //
-// 	- If you use an Alibaba Cloud SDK or Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
+// 	- For ApsaraDB RDS for MySQL instances and PolarDB for MySQL clusters, this operation works the same as the storage analysis feature of the previous version. Tasks generated by this operation cannot be viewed on the Storage Analysis page of the new version in the Database Autonomy Service (DAS) console. If you want to view the tasks and results, call the related API operation to obtain data and save data to your computer.
 //
-// 	- If you use an SDK to call API operations of DAS, you must set the region ID to cn-shanghai.
+// 	- If you use an Alibaba Cloud SDK or DAS SDK to call this operation, we recommend that you use the latest version of the SDK.
+//
+// 	- If you use an SDK to call operations of DAS, you must set the region ID to cn-shanghai.
 //
 // @param request - CreateStorageAnalysisTaskRequest
 //
@@ -37472,9 +37492,11 @@ func (client *Client) CreateStorageAnalysisTaskWithOptions(request *CreateStorag
 //
 //   This operation is applicable only to ApsaraDB RDS for MySQL instances, PolarDB for MySQL clusters, and ApsaraDB for MongoDB instances.
 //
-// 	- If you use an Alibaba Cloud SDK or Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
+// 	- For ApsaraDB RDS for MySQL instances and PolarDB for MySQL clusters, this operation works the same as the storage analysis feature of the previous version. Tasks generated by this operation cannot be viewed on the Storage Analysis page of the new version in the Database Autonomy Service (DAS) console. If you want to view the tasks and results, call the related API operation to obtain data and save data to your computer.
 //
-// 	- If you use an SDK to call API operations of DAS, you must set the region ID to cn-shanghai.
+// 	- If you use an Alibaba Cloud SDK or DAS SDK to call this operation, we recommend that you use the latest version of the SDK.
+//
+// 	- If you use an SDK to call operations of DAS, you must set the region ID to cn-shanghai.
 //
 // @param request - CreateStorageAnalysisTaskRequest
 //
@@ -38652,7 +38674,7 @@ func (client *Client) DescribeSqlLogConfig(request *DescribeSqlLogConfigRequest)
 
 // Summary:
 //
-// Queries the information about the logs of Database Autonomy Service (DAS) Enterprise Edition.
+// Queries the log details of a database instance for which Database Autonomy Service (DAS) Enterprise Edition is enabled.
 //
 // Description:
 //
@@ -38732,7 +38754,7 @@ func (client *Client) DescribeSqlLogRecordsWithOptions(request *DescribeSqlLogRe
 
 // Summary:
 //
-// Queries the information about the logs of Database Autonomy Service (DAS) Enterprise Edition.
+// Queries the log details of a database instance for which Database Autonomy Service (DAS) Enterprise Edition is enabled.
 //
 // Description:
 //
@@ -44460,9 +44482,11 @@ func (client *Client) GetSqlOptimizeAdvice(request *GetSqlOptimizeAdviceRequest)
 //
 // 	- This operation is applicable only to ApsaraDB RDS for MySQL instances, PolarDB for MySQL clusters, and ApsaraDB for MongoDB instances.
 //
-// 	- If you use an Alibaba Cloud SDK or Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
+// 	- For ApsaraDB RDS for MySQL instances and PolarDB for MySQL clusters, this operation works the same as the storage analysis feature of the previous version. Tasks generated by this operation cannot be viewed on the Storage Analysis page of the new version in the Database Autonomy Service (DAS) console. If you want to view the tasks and results, call the related API operation to obtain data and save data to your computer.
 //
-// 	- If you use an SDK to call API operations of DAS, you must set the region ID to cn-shanghai.
+// 	- If you use an Alibaba Cloud SDK or DAS SDK to call this operation, we recommend that you use the latest version of the SDK.
+//
+// 	- If you use an SDK to call operations of DAS, you must set the region ID to cn-shanghai.
 //
 // @param request - GetStorageAnalysisResultRequest
 //
@@ -44520,9 +44544,11 @@ func (client *Client) GetStorageAnalysisResultWithOptions(request *GetStorageAna
 //
 // 	- This operation is applicable only to ApsaraDB RDS for MySQL instances, PolarDB for MySQL clusters, and ApsaraDB for MongoDB instances.
 //
-// 	- If you use an Alibaba Cloud SDK or Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
+// 	- For ApsaraDB RDS for MySQL instances and PolarDB for MySQL clusters, this operation works the same as the storage analysis feature of the previous version. Tasks generated by this operation cannot be viewed on the Storage Analysis page of the new version in the Database Autonomy Service (DAS) console. If you want to view the tasks and results, call the related API operation to obtain data and save data to your computer.
 //
-// 	- If you use an SDK to call API operations of DAS, you must set the region ID to cn-shanghai.
+// 	- If you use an Alibaba Cloud SDK or DAS SDK to call this operation, we recommend that you use the latest version of the SDK.
+//
+// 	- If you use an SDK to call operations of DAS, you must set the region ID to cn-shanghai.
 //
 // @param request - GetStorageAnalysisResultRequest
 //
