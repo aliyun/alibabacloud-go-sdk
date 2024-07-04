@@ -7831,7 +7831,7 @@ type CreateNodeGroupRequest struct {
 	//
 	// C-E525E04F3914****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The information about a machine group.
+	// The information about the node group.
 	//
 	// This parameter is required.
 	NodeGroup *NodeGroupConfig `json:"NodeGroup,omitempty" xml:"NodeGroup,omitempty"`
@@ -7926,6 +7926,125 @@ func (s *CreateNodeGroupResponse) SetStatusCode(v int32) *CreateNodeGroupRespons
 }
 
 func (s *CreateNodeGroupResponse) SetBody(v *CreateNodeGroupResponseBody) *CreateNodeGroupResponse {
+	s.Body = v
+	return s
+}
+
+type CreateScriptRequest struct {
+	// 集群ID。
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// c-b933c5aac8fe****
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// 区域ID。
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// 集群脚本类型。
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// BOOTSTRAP
+	ScriptType *string `json:"ScriptType,omitempty" xml:"ScriptType,omitempty"`
+	// 集群脚本列表。
+	//
+	// This parameter is required.
+	Scripts []*Script `json:"Scripts,omitempty" xml:"Scripts,omitempty" type:"Repeated"`
+}
+
+func (s CreateScriptRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateScriptRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateScriptRequest) SetClusterId(v string) *CreateScriptRequest {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *CreateScriptRequest) SetRegionId(v string) *CreateScriptRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *CreateScriptRequest) SetScriptType(v string) *CreateScriptRequest {
+	s.ScriptType = &v
+	return s
+}
+
+func (s *CreateScriptRequest) SetScripts(v []*Script) *CreateScriptRequest {
+	s.Scripts = v
+	return s
+}
+
+type CreateScriptResponseBody struct {
+	// 请求ID。
+	//
+	// example:
+	//
+	// DD6B1B2A-5837-5237-ABE4-FF0C8944****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// cs-d6d6bc841c0d415fb81808bc6d09****
+	ScriptId *string `json:"ScriptId,omitempty" xml:"ScriptId,omitempty"`
+}
+
+func (s CreateScriptResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateScriptResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateScriptResponseBody) SetRequestId(v string) *CreateScriptResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateScriptResponseBody) SetScriptId(v string) *CreateScriptResponseBody {
+	s.ScriptId = &v
+	return s
+}
+
+type CreateScriptResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateScriptResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateScriptResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateScriptResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateScriptResponse) SetHeaders(v map[string]*string) *CreateScriptResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateScriptResponse) SetStatusCode(v int32) *CreateScriptResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateScriptResponse) SetBody(v *CreateScriptResponseBody) *CreateScriptResponse {
 	s.Body = v
 	return s
 }
@@ -8286,6 +8405,120 @@ func (s *DeleteClusterResponse) SetBody(v *DeleteClusterResponseBody) *DeleteClu
 	return s
 }
 
+type DeleteScriptRequest struct {
+	// 集群ID。
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// c-b933c5aac8fe****
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// 区域ID。
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// 脚本ID。
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cs-da7476a7679a4d4c9cede62ebe09****
+	ScriptId *string `json:"ScriptId,omitempty" xml:"ScriptId,omitempty"`
+	// 集群脚本类型。
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// BOOTSTRAP
+	ScriptType *string `json:"ScriptType,omitempty" xml:"ScriptType,omitempty"`
+}
+
+func (s DeleteScriptRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteScriptRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteScriptRequest) SetClusterId(v string) *DeleteScriptRequest {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *DeleteScriptRequest) SetRegionId(v string) *DeleteScriptRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DeleteScriptRequest) SetScriptId(v string) *DeleteScriptRequest {
+	s.ScriptId = &v
+	return s
+}
+
+func (s *DeleteScriptRequest) SetScriptType(v string) *DeleteScriptRequest {
+	s.ScriptType = &v
+	return s
+}
+
+type DeleteScriptResponseBody struct {
+	// 请求ID。
+	//
+	// example:
+	//
+	// DD6B1B2A-5837-5237-ABE4-FF0C8944****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteScriptResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteScriptResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteScriptResponseBody) SetRequestId(v string) *DeleteScriptResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteScriptResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteScriptResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteScriptResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteScriptResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteScriptResponse) SetHeaders(v map[string]*string) *DeleteScriptResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteScriptResponse) SetStatusCode(v int32) *DeleteScriptResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteScriptResponse) SetBody(v *DeleteScriptResponseBody) *DeleteScriptResponse {
+	s.Body = v
+	return s
+}
+
 type GetApiTemplateRequest struct {
 	// 区域ID。
 	//
@@ -8325,6 +8558,8 @@ func (s *GetApiTemplateRequest) SetTemplateId(v string) *GetApiTemplateRequest {
 
 type GetApiTemplateResponseBody struct {
 	// Deprecated
+	//
+	// The content of the API operation template.
 	Data *ApiTemplate `json:"Data,omitempty" xml:"Data,omitempty"`
 	// 请求ID。
 	//
@@ -9109,7 +9344,7 @@ type GetAutoScalingPolicyResponseBodyScalingPolicy struct {
 	//
 	// asp-asduwe23znl***
 	ScalingPolicyId *string `json:"ScalingPolicyId,omitempty" xml:"ScalingPolicyId,omitempty"`
-	// The scaling rules.
+	// The auto scaling rules.
 	ScalingRules []*GetAutoScalingPolicyResponseBodyScalingPolicyScalingRules `json:"ScalingRules,omitempty" xml:"ScalingRules,omitempty" type:"Repeated"`
 }
 
@@ -9180,11 +9415,11 @@ func (s *GetAutoScalingPolicyResponseBodyScalingPolicyConstraints) SetMinCapacit
 }
 
 type GetAutoScalingPolicyResponseBodyScalingPolicyScalingRules struct {
-	// The type of the scaling activity. Valid values:
+	// The scaling type. Valid values:
 	//
-	// 	- SCALE_OUT: scale-out rules
+	// 	- SCALE_OUT
 	//
-	// 	- SCALE_IN: scale-in rules
+	// 	- SCALE_IN
 	//
 	// example:
 	//
@@ -9196,28 +9431,27 @@ type GetAutoScalingPolicyResponseBodyScalingPolicyScalingRules struct {
 	//
 	// CHANGE_IN_CAPACITY
 	AdjustmentType *string `json:"AdjustmentType,omitempty" xml:"AdjustmentType,omitempty"`
-	// The adjustment value. The value must be a positive number, which indicates the number of instances to be scaled out or in.
+	// The adjustment value. The parameter value must be a positive integer, which indicates the number of instances that you want to add or remove.
 	//
 	// example:
 	//
 	// 100
 	AdjustmentValue *int32 `json:"AdjustmentValue,omitempty" xml:"AdjustmentValue,omitempty"`
-	// The description of scaling by load.
-	MetricsTrigger     *MetricsTrigger `json:"MetricsTrigger,omitempty" xml:"MetricsTrigger,omitempty"`
-	MinAdjustmentValue *int32          `json:"MinAdjustmentValue,omitempty" xml:"MinAdjustmentValue,omitempty"`
+	// The description of load-based scaling.
+	MetricsTrigger *MetricsTrigger `json:"MetricsTrigger,omitempty" xml:"MetricsTrigger,omitempty"`
 	// The name of the auto scaling rule.
 	//
 	// example:
 	//
 	// scaling-out-memory
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// The description of scaling by time.
+	// The description of time-based scaling.
 	TimeTrigger *TimeTrigger `json:"TimeTrigger,omitempty" xml:"TimeTrigger,omitempty"`
-	// The type of the scaling rule. Valid values:
+	// The type of the auto scaling rule. Valid values:
 	//
-	// 	- TIME_TRIGGER: scaling by time.
+	// 	- TIME_TRIGGER: time-based scaling
 	//
-	// 	- METRICS_TRIGGER: scaling by load.
+	// 	- METRICS_TRIGGER: load-based scaling
 	//
 	// example:
 	//
@@ -9250,11 +9484,6 @@ func (s *GetAutoScalingPolicyResponseBodyScalingPolicyScalingRules) SetAdjustmen
 
 func (s *GetAutoScalingPolicyResponseBodyScalingPolicyScalingRules) SetMetricsTrigger(v *MetricsTrigger) *GetAutoScalingPolicyResponseBodyScalingPolicyScalingRules {
 	s.MetricsTrigger = v
-	return s
-}
-
-func (s *GetAutoScalingPolicyResponseBodyScalingPolicyScalingRules) SetMinAdjustmentValue(v int32) *GetAutoScalingPolicyResponseBodyScalingPolicyScalingRules {
-	s.MinAdjustmentValue = &v
 	return s
 }
 
@@ -9340,7 +9569,7 @@ func (s *GetClusterRequest) SetRegionId(v string) *GetClusterRequest {
 }
 
 type GetClusterResponseBody struct {
-	// The details of the master instance.
+	// The details of the cluster.
 	Cluster *Cluster `json:"Cluster,omitempty" xml:"Cluster,omitempty"`
 	// The ID of the request.
 	//
@@ -29527,7 +29756,7 @@ func (s *GetOperationRequest) SetRegionId(v string) *GetOperationRequest {
 }
 
 type GetOperationResponseBody struct {
-	// The operation that is performed.
+	// The operation that was performed.
 	Operation *Operation `json:"Operation,omitempty" xml:"Operation,omitempty"`
 	// The ID of the request.
 	//
@@ -29586,6 +29815,10 @@ func (s *GetOperationResponse) SetBody(v *GetOperationResponseBody) *GetOperatio
 
 type IncreaseNodesRequest struct {
 	// The configurations of the applications. Valid values of N: 1 to 1000.
+	//
+	// example:
+	//
+	// Month
 	ApplicationConfigs []*ApplicationConfig `json:"ApplicationConfigs,omitempty" xml:"ApplicationConfigs,omitempty" type:"Repeated"`
 	// Indicates whether to automatically pay for the orders involved in the scale-out operation. This parameter takes effect only when the PaymentType parameter is set to Subscription. Valid values:
 	//
@@ -29599,6 +29832,7 @@ type IncreaseNodesRequest struct {
 	//
 	// false
 	AutoPayOrder *bool `json:"AutoPayOrder,omitempty" xml:"AutoPayOrder,omitempty"`
+	AutoRenew    *bool `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
 	// The ID of the cluster.
 	//
 	// This parameter is required.
@@ -29614,7 +29848,12 @@ type IncreaseNodesRequest struct {
 	// example:
 	//
 	// 3
-	IncreaseNodeCount    *int32 `json:"IncreaseNodeCount,omitempty" xml:"IncreaseNodeCount,omitempty"`
+	IncreaseNodeCount *int32 `json:"IncreaseNodeCount,omitempty" xml:"IncreaseNodeCount,omitempty"`
+	// The minimum number of nodes that can be added. Valid values: 1 to 500.
+	//
+	// 	- If you configure this parameter, and the number of available Elastic Compute Service (ECS) instances is less than the value of the IncreaseNodeCount parameter, the system tries to add nodes based on the number specified by the `MinIncreaseNodeCount` parameter. If the minimum number of nodes are added, the scale-out status is `PARTIAL_COMPLETED`.
+	//
+	// 	- If you do not configure this parameter, and the number of available ECS instances is less than the value of the IncreaseNodeCount parameter, the scale-out process fails. The scale-out status is `FAILED`.
 	MinIncreaseNodeCount *int32 `json:"MinIncreaseNodeCount,omitempty" xml:"MinIncreaseNodeCount,omitempty"`
 	// The ID of the node group. The target node group to which you want to scale out the cluster.
 	//
@@ -29663,6 +29902,11 @@ func (s *IncreaseNodesRequest) SetApplicationConfigs(v []*ApplicationConfig) *In
 
 func (s *IncreaseNodesRequest) SetAutoPayOrder(v bool) *IncreaseNodesRequest {
 	s.AutoPayOrder = &v
+	return s
+}
+
+func (s *IncreaseNodesRequest) SetAutoRenew(v bool) *IncreaseNodesRequest {
+	s.AutoRenew = &v
 	return s
 }
 
@@ -29764,7 +30008,7 @@ func (s *IncreaseNodesResponse) SetBody(v *IncreaseNodesResponseBody) *IncreaseN
 }
 
 type JoinResourceGroupRequest struct {
-	// The region ID.
+	// The ID of the region in which you want to create the instance.
 	//
 	// This parameter is required.
 	//
@@ -29984,6 +30228,8 @@ func (s *ListApiTemplatesRequest) SetTemplateName(v string) *ListApiTemplatesReq
 
 type ListApiTemplatesResponseBody struct {
 	// Deprecated
+	//
+	// The API operation templates.
 	ApiTemplates []*ApiTemplate `json:"ApiTemplates,omitempty" xml:"ApiTemplates,omitempty" type:"Repeated"`
 	// 本次请求所返回的最大记录条数。
 	//
@@ -31081,58 +31327,6 @@ type ListClustersRequest struct {
 	PaymentTypes []*string `json:"PaymentTypes,omitempty" xml:"PaymentTypes,omitempty" type:"Repeated"`
 	// The region ID.
 	//
-	// Valid values:
-	//
-	// 	- cn-qingdao
-	//
-	// 	- cn-beijing
-	//
-	// 	- cn-zhangjiakou
-	//
-	// 	- cn-huhehaote
-	//
-	// 	- cn-hangzhou
-	//
-	// 	- cn-shanghai
-	//
-	// 	- cn-shenzhen
-	//
-	// 	- cn-chengdu
-	//
-	// 	- cn-hongkong
-	//
-	// 	- cn-wulanchabu
-	//
-	// 	- cn-heyuan-acdr-1
-	//
-	// 	- cn-qingdao-acdr-ut-1
-	//
-	// 	- ap-northeast-1
-	//
-	// 	- ap-southeast-1
-	//
-	// 	- ap-southeast-2
-	//
-	// 	- ap-southeast-3
-	//
-	// 	- ap-southeast-5
-	//
-	// 	- ap-south-1
-	//
-	// 	- us-east-1
-	//
-	// 	- us-west-1
-	//
-	// 	- me-east-1
-	//
-	// 	- me-central-1
-	//
-	// 	- eu-central-1
-	//
-	// 	- eu-west-1
-	//
-	// 	- cn-north-2-gov-1
-	//
 	// This parameter is required.
 	//
 	// example:
@@ -31212,7 +31406,7 @@ func (s *ListClustersRequest) SetTags(v []*Tag) *ListClustersRequest {
 }
 
 type ListClustersResponseBody struct {
-	// The list of clusters.
+	// The clusters.
 	Clusters []*ClusterSummary `json:"Clusters,omitempty" xml:"Clusters,omitempty" type:"Repeated"`
 	// The number of entries returned per page.
 	//
@@ -46207,6 +46401,228 @@ func (s *ListDoctorReportsResponse) SetBody(v *ListDoctorReportsResponseBody) *L
 	return s
 }
 
+type ListInspectionHistoryRequest struct {
+	// 集群ID。
+	//
+	// example:
+	//
+	// c-b933c5aac8fe****
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// 组件名称
+	Component *string `json:"Component,omitempty" xml:"Component,omitempty"`
+	// 节点id
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Language   *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	// 一次获取的最大记录数。取值范围：1~100。
+	//
+	// example:
+	//
+	// 20
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// 标记当前开始读取的位置，置空表示从头开始。
+	//
+	// example:
+	//
+	// DD6B1B2A-5837-5237-ABE4-FF0C89568980
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// 地域ID。
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// 服务名称
+	Service *string `json:"Service,omitempty" xml:"Service,omitempty"`
+	// 巡检历史类型 application/component
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s ListInspectionHistoryRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListInspectionHistoryRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListInspectionHistoryRequest) SetClusterId(v string) *ListInspectionHistoryRequest {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *ListInspectionHistoryRequest) SetComponent(v string) *ListInspectionHistoryRequest {
+	s.Component = &v
+	return s
+}
+
+func (s *ListInspectionHistoryRequest) SetInstanceId(v string) *ListInspectionHistoryRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ListInspectionHistoryRequest) SetLanguage(v string) *ListInspectionHistoryRequest {
+	s.Language = &v
+	return s
+}
+
+func (s *ListInspectionHistoryRequest) SetMaxResults(v int32) *ListInspectionHistoryRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListInspectionHistoryRequest) SetNextToken(v string) *ListInspectionHistoryRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListInspectionHistoryRequest) SetRegionId(v string) *ListInspectionHistoryRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ListInspectionHistoryRequest) SetService(v string) *ListInspectionHistoryRequest {
+	s.Service = &v
+	return s
+}
+
+func (s *ListInspectionHistoryRequest) SetType(v string) *ListInspectionHistoryRequest {
+	s.Type = &v
+	return s
+}
+
+type ListInspectionHistoryResponseBody struct {
+	// Created on 2023/8/21
+	Data []*ListInspectionHistoryResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// 本次请求所返回的最大记录条数。
+	//
+	// example:
+	//
+	// 20
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// 返回读取到的数据位置，空代表数据已经读取完毕。
+	//
+	// example:
+	//
+	// DD6B1B2A-5837-5237-ABE4-FF0C89568980
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// 请求ID。
+	//
+	// example:
+	//
+	// DD6B1B2A-5837-5237-ABE4-FF0C8944****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// 本次请求条件下的数据总量。
+	//
+	// example:
+	//
+	// 200
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListInspectionHistoryResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListInspectionHistoryResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListInspectionHistoryResponseBody) SetData(v []*ListInspectionHistoryResponseBodyData) *ListInspectionHistoryResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListInspectionHistoryResponseBody) SetMaxResults(v int32) *ListInspectionHistoryResponseBody {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListInspectionHistoryResponseBody) SetNextToken(v string) *ListInspectionHistoryResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListInspectionHistoryResponseBody) SetRequestId(v string) *ListInspectionHistoryResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListInspectionHistoryResponseBody) SetTotalCount(v int32) *ListInspectionHistoryResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListInspectionHistoryResponseBodyData struct {
+	// 变更消息
+	ChangeMessage *string `json:"ChangeMessage,omitempty" xml:"ChangeMessage,omitempty"`
+	// 巡检状态
+	HealthStatus *string `json:"HealthStatus,omitempty" xml:"HealthStatus,omitempty"`
+	// 巡检变更明细
+	//
+	// example:
+	//
+	// null
+	InspectionItems []map[string]*string `json:"InspectionItems,omitempty" xml:"InspectionItems,omitempty" type:"Repeated"`
+	ReportTime      *string              `json:"ReportTime,omitempty" xml:"ReportTime,omitempty"`
+}
+
+func (s ListInspectionHistoryResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListInspectionHistoryResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListInspectionHistoryResponseBodyData) SetChangeMessage(v string) *ListInspectionHistoryResponseBodyData {
+	s.ChangeMessage = &v
+	return s
+}
+
+func (s *ListInspectionHistoryResponseBodyData) SetHealthStatus(v string) *ListInspectionHistoryResponseBodyData {
+	s.HealthStatus = &v
+	return s
+}
+
+func (s *ListInspectionHistoryResponseBodyData) SetInspectionItems(v []map[string]*string) *ListInspectionHistoryResponseBodyData {
+	s.InspectionItems = v
+	return s
+}
+
+func (s *ListInspectionHistoryResponseBodyData) SetReportTime(v string) *ListInspectionHistoryResponseBodyData {
+	s.ReportTime = &v
+	return s
+}
+
+type ListInspectionHistoryResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListInspectionHistoryResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListInspectionHistoryResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListInspectionHistoryResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListInspectionHistoryResponse) SetHeaders(v map[string]*string) *ListInspectionHistoryResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListInspectionHistoryResponse) SetStatusCode(v int32) *ListInspectionHistoryResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListInspectionHistoryResponse) SetBody(v *ListInspectionHistoryResponseBody) *ListInspectionHistoryResponse {
+	s.Body = v
+	return s
+}
+
 type ListInstanceTypesRequest struct {
 	// 集群ID，仅升配场景使用。
 	//
@@ -46380,6 +46796,7 @@ func (s *ListInstanceTypesRequest) SetZoneId(v string) *ListInstanceTypesRequest
 }
 
 type ListInstanceTypesResponseBody struct {
+	// The instance types.
 	InstanceTypes []*InstanceType `json:"InstanceTypes,omitempty" xml:"InstanceTypes,omitempty" type:"Repeated"`
 	// 本次请求所返回的最大记录条数。
 	//
@@ -47069,6 +47486,352 @@ func (s *ListReleaseVersionsResponse) SetBody(v *ListReleaseVersionsResponseBody
 	return s
 }
 
+type ListResourceHealthInspectionsRequest struct {
+	// 应用名称。
+	//
+	// example:
+	//
+	// HDFS
+	ApplicationName *string `json:"ApplicationName,omitempty" xml:"ApplicationName,omitempty"`
+	// 集群ID。
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// c-b933c5aac8fe****
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// 组件名称。
+	//
+	// example:
+	//
+	// DataNode
+	ComponentName *string `json:"ComponentName,omitempty" xml:"ComponentName,omitempty"`
+	// 健康状态。
+	//
+	// example:
+	//
+	// ["BAD"]
+	HealthStatuses []*string `json:"HealthStatuses,omitempty" xml:"HealthStatuses,omitempty" type:"Repeated"`
+	// 语言
+	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	// 一次获取的最大记录数。取值范围：1~100。
+	//
+	// example:
+	//
+	// 20
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// 标记当前开始读取的位置，置空表示从头开始。
+	//
+	// example:
+	//
+	// DD6B1B2A-5837-5237-ABE4-FF0C89568980
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// 节点Id列表。
+	//
+	// example:
+	//
+	// ["i-bp14l5n4v46uxsscl033"]
+	NodeIds []*string `json:"NodeIds,omitempty" xml:"NodeIds,omitempty" type:"Repeated"`
+	// 节点名称列表。
+	//
+	// example:
+	//
+	// ["core1-1"]
+	NodeNames []*string `json:"NodeNames,omitempty" xml:"NodeNames,omitempty" type:"Repeated"`
+	// 地域ID。
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// 查询的目标资源类型，合法值：
+	//
+	// <p>
+	//
+	// - APPLICATION
+	//
+	// <p>
+	//
+	// - COMPONENT
+	//
+	// <p>
+	//
+	// - COMPONENT_INSTANCE
+	//
+	// <p>
+	//
+	// example:
+	//
+	// APPLICATION
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+}
+
+func (s ListResourceHealthInspectionsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListResourceHealthInspectionsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListResourceHealthInspectionsRequest) SetApplicationName(v string) *ListResourceHealthInspectionsRequest {
+	s.ApplicationName = &v
+	return s
+}
+
+func (s *ListResourceHealthInspectionsRequest) SetClusterId(v string) *ListResourceHealthInspectionsRequest {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *ListResourceHealthInspectionsRequest) SetComponentName(v string) *ListResourceHealthInspectionsRequest {
+	s.ComponentName = &v
+	return s
+}
+
+func (s *ListResourceHealthInspectionsRequest) SetHealthStatuses(v []*string) *ListResourceHealthInspectionsRequest {
+	s.HealthStatuses = v
+	return s
+}
+
+func (s *ListResourceHealthInspectionsRequest) SetLanguage(v string) *ListResourceHealthInspectionsRequest {
+	s.Language = &v
+	return s
+}
+
+func (s *ListResourceHealthInspectionsRequest) SetMaxResults(v int32) *ListResourceHealthInspectionsRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListResourceHealthInspectionsRequest) SetNextToken(v string) *ListResourceHealthInspectionsRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListResourceHealthInspectionsRequest) SetNodeIds(v []*string) *ListResourceHealthInspectionsRequest {
+	s.NodeIds = v
+	return s
+}
+
+func (s *ListResourceHealthInspectionsRequest) SetNodeNames(v []*string) *ListResourceHealthInspectionsRequest {
+	s.NodeNames = v
+	return s
+}
+
+func (s *ListResourceHealthInspectionsRequest) SetRegionId(v string) *ListResourceHealthInspectionsRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ListResourceHealthInspectionsRequest) SetResourceType(v string) *ListResourceHealthInspectionsRequest {
+	s.ResourceType = &v
+	return s
+}
+
+type ListResourceHealthInspectionsResponseBody struct {
+	HealthInspections []*ListResourceHealthInspectionsResponseBodyHealthInspections `json:"HealthInspections,omitempty" xml:"HealthInspections,omitempty" type:"Repeated"`
+	// 本次请求所返回的最大记录条数。
+	//
+	// example:
+	//
+	// 20
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// 返回读取到的数据位置，空代表数据已经读取完毕。
+	//
+	// example:
+	//
+	// DD6B1B2A-5837-5237-ABE4-FF0C89568980
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// 请求ID。
+	//
+	// example:
+	//
+	// DD6B1B2A-5837-5237-ABE4-FF0C8944****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// 本次请求条件下的数据总量。
+	//
+	// example:
+	//
+	// 200
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListResourceHealthInspectionsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListResourceHealthInspectionsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListResourceHealthInspectionsResponseBody) SetHealthInspections(v []*ListResourceHealthInspectionsResponseBodyHealthInspections) *ListResourceHealthInspectionsResponseBody {
+	s.HealthInspections = v
+	return s
+}
+
+func (s *ListResourceHealthInspectionsResponseBody) SetMaxResults(v int32) *ListResourceHealthInspectionsResponseBody {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListResourceHealthInspectionsResponseBody) SetNextToken(v string) *ListResourceHealthInspectionsResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListResourceHealthInspectionsResponseBody) SetRequestId(v string) *ListResourceHealthInspectionsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListResourceHealthInspectionsResponseBody) SetTotalCount(v int32) *ListResourceHealthInspectionsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListResourceHealthInspectionsResponseBodyHealthInspections struct {
+	// 应用名称。
+	//
+	// example:
+	//
+	// HDFS
+	ApplicationName *string `json:"ApplicationName,omitempty" xml:"ApplicationName,omitempty"`
+	// 组件名称。
+	//
+	// example:
+	//
+	// DataNode
+	ComponentName *string `json:"ComponentName,omitempty" xml:"ComponentName,omitempty"`
+	// 健康详细信息。
+	//
+	// example:
+	//
+	// Connection timeout
+	HealthMessage *string `json:"HealthMessage,omitempty" xml:"HealthMessage,omitempty"`
+	// 健康状态。
+	//
+	// example:
+	//
+	// GOOD
+	HealthStatus *string `json:"HealthStatus,omitempty" xml:"HealthStatus,omitempty"`
+	// 巡检项名称。
+	//
+	// example:
+	//
+	// live_status_check
+	InspectionName *string `json:"InspectionName,omitempty" xml:"InspectionName,omitempty"`
+	// 节点ID。
+	//
+	// example:
+	//
+	// core1-1
+	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	// 节点名称。
+	//
+	// example:
+	//
+	// core1-1
+	NodeName *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
+	// 最近上报时间戳。
+	//
+	// example:
+	//
+	// 1639709192940
+	ReportTime *int64 `json:"ReportTime,omitempty" xml:"ReportTime,omitempty"`
+	// 规则名称。
+	//
+	// example:
+	//
+	// live_status_check_1
+	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+}
+
+func (s ListResourceHealthInspectionsResponseBodyHealthInspections) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListResourceHealthInspectionsResponseBodyHealthInspections) GoString() string {
+	return s.String()
+}
+
+func (s *ListResourceHealthInspectionsResponseBodyHealthInspections) SetApplicationName(v string) *ListResourceHealthInspectionsResponseBodyHealthInspections {
+	s.ApplicationName = &v
+	return s
+}
+
+func (s *ListResourceHealthInspectionsResponseBodyHealthInspections) SetComponentName(v string) *ListResourceHealthInspectionsResponseBodyHealthInspections {
+	s.ComponentName = &v
+	return s
+}
+
+func (s *ListResourceHealthInspectionsResponseBodyHealthInspections) SetHealthMessage(v string) *ListResourceHealthInspectionsResponseBodyHealthInspections {
+	s.HealthMessage = &v
+	return s
+}
+
+func (s *ListResourceHealthInspectionsResponseBodyHealthInspections) SetHealthStatus(v string) *ListResourceHealthInspectionsResponseBodyHealthInspections {
+	s.HealthStatus = &v
+	return s
+}
+
+func (s *ListResourceHealthInspectionsResponseBodyHealthInspections) SetInspectionName(v string) *ListResourceHealthInspectionsResponseBodyHealthInspections {
+	s.InspectionName = &v
+	return s
+}
+
+func (s *ListResourceHealthInspectionsResponseBodyHealthInspections) SetNodeId(v string) *ListResourceHealthInspectionsResponseBodyHealthInspections {
+	s.NodeId = &v
+	return s
+}
+
+func (s *ListResourceHealthInspectionsResponseBodyHealthInspections) SetNodeName(v string) *ListResourceHealthInspectionsResponseBodyHealthInspections {
+	s.NodeName = &v
+	return s
+}
+
+func (s *ListResourceHealthInspectionsResponseBodyHealthInspections) SetReportTime(v int64) *ListResourceHealthInspectionsResponseBodyHealthInspections {
+	s.ReportTime = &v
+	return s
+}
+
+func (s *ListResourceHealthInspectionsResponseBodyHealthInspections) SetRuleName(v string) *ListResourceHealthInspectionsResponseBodyHealthInspections {
+	s.RuleName = &v
+	return s
+}
+
+type ListResourceHealthInspectionsResponse struct {
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListResourceHealthInspectionsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListResourceHealthInspectionsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListResourceHealthInspectionsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListResourceHealthInspectionsResponse) SetHeaders(v map[string]*string) *ListResourceHealthInspectionsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListResourceHealthInspectionsResponse) SetStatusCode(v int32) *ListResourceHealthInspectionsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListResourceHealthInspectionsResponse) SetBody(v *ListResourceHealthInspectionsResponseBody) *ListResourceHealthInspectionsResponse {
+	s.Body = v
+	return s
+}
+
 type ListScriptsRequest struct {
 	// 集群ID。
 	//
@@ -47159,8 +47922,9 @@ type ListScriptsResponseBody struct {
 	// example:
 	//
 	// DD6B1B2A-5837-5237-ABE4-FF0C8944****
-	RequestId *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Scripts   []*ListScriptsResponseBodyScripts `json:"Scripts,omitempty" xml:"Scripts,omitempty" type:"Repeated"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The scripts.
+	Scripts []*ListScriptsResponseBodyScripts `json:"Scripts,omitempty" xml:"Scripts,omitempty" type:"Repeated"`
 	// 本次请求条件下的数据总量。
 	//
 	// example:
@@ -47203,70 +47967,89 @@ func (s *ListScriptsResponseBody) SetTotalCount(v int32) *ListScriptsResponseBod
 }
 
 type ListScriptsResponseBodyScripts struct {
-	// API名称。
+	// The name of the API operation.
 	//
 	// example:
 	//
 	// ListScripts
 	Action *string `json:"Action,omitempty" xml:"Action,omitempty"`
-	// 结束执行时间。
+	// The time when the system finishes the running of the script. This parameter is returned only if the ScriptType parameter is set to NORMAL.
 	//
 	// example:
 	//
 	// 1639715635819
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// 执行失败策略。
+	// The policy that is used to handle execution failures of the script. Valid values:
+	//
+	// 	- FAILED_CONTINUE
+	//
+	// 	- FAILED_BLOCK
 	//
 	// example:
 	//
 	// FAILED_CONTINUE
 	ExecutionFailStrategy *string `json:"ExecutionFailStrategy,omitempty" xml:"ExecutionFailStrategy,omitempty"`
-	// 执行时机。
+	// The time based on which the system runs the script. Valid values:
+	//
+	// 	- BEFORE_INSTALL
+	//
+	// 	- AFTER_STARTED
 	//
 	// example:
 	//
 	// BEFORE_INSTALL
 	ExecutionMoment *string `json:"ExecutionMoment,omitempty" xml:"ExecutionMoment,omitempty"`
-	ExecutionState  *string `json:"ExecutionState,omitempty" xml:"ExecutionState,omitempty"`
-	// 最近一次编辑时间。
+	// The status of the script. This parameter is returned only if the `ScriptType` parameter is set to `NORMAL`. Valid values:
+	//
+	// 	- SCRIPT_COMPLETED
+	//
+	// 	- SCRIPT_SUBMISSION_FAILED
+	//
+	// 	- SCRIPT_RUNNING
+	//
+	// example:
+	//
+	// SCRIPT_COMPLETED
+	ExecutionState *string `json:"ExecutionState,omitempty" xml:"ExecutionState,omitempty"`
+	// The time when the script was last modified.
 	//
 	// example:
 	//
 	// 1639714634819
 	LastUpdateTime *int64 `json:"LastUpdateTime,omitempty" xml:"LastUpdateTime,omitempty"`
-	// 节点选择器。
+	// The node selector.
 	NodeSelector *NodeSelector `json:"NodeSelector,omitempty" xml:"NodeSelector,omitempty"`
-	// 区域ID。
+	// The region ID.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// 集群脚本执行参数。
+	// The runtime parameters of the script.
 	//
 	// example:
 	//
 	// --mode=client -h -p
 	ScriptArgs *string `json:"ScriptArgs,omitempty" xml:"ScriptArgs,omitempty"`
-	// 脚本ID。
+	// The script ID.
 	//
 	// example:
 	//
 	// cs-bf25219d103043a0820613e32781****
 	ScriptId *string `json:"ScriptId,omitempty" xml:"ScriptId,omitempty"`
-	// 集群脚本名称。
+	// The name of the script.
 	//
 	// example:
 	//
 	// check_env
 	ScriptName *string `json:"ScriptName,omitempty" xml:"ScriptName,omitempty"`
-	// 集群脚本路径。
+	// The path in which the script is stored.
 	//
 	// example:
 	//
 	// oss://bucket1/check_evn.sh
 	ScriptPath *string `json:"ScriptPath,omitempty" xml:"ScriptPath,omitempty"`
-	// 开始执行时间。
+	// The time when the system starts to run the script. This parameter is returned only if the ScriptType parameter is set to NORMAL.
 	//
 	// example:
 	//
@@ -47614,7 +48397,7 @@ type PutAutoScalingPolicyRequest struct {
 	//
 	// c-b933c5aac8fe****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// 最大最小值约束。
+	// The maximum and minimum numbers of nodes in a node group.
 	Constraints *ScalingConstraints `json:"Constraints,omitempty" xml:"Constraints,omitempty"`
 	// 节点组ID。节点组 Id-针对 ACK 集群，此字段为空。
 	//
@@ -47632,9 +48415,7 @@ type PutAutoScalingPolicyRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// 弹性伸缩规则描述列表。
-	//
-	// <p>
+	// The auto scaling rules. Number of elements in the array: 0 to 100.
 	ScalingRules []*ScalingRule `json:"ScalingRules,omitempty" xml:"ScalingRules,omitempty" type:"Repeated"`
 }
 
@@ -48115,10 +48896,14 @@ func (s *RunApplicationActionResponseBody) SetRequestId(v string) *RunApplicatio
 }
 
 type RunApplicationActionResponseBodyAbnInstances struct {
+	// The ID of the abnormal node.
+	//
 	// example:
 	//
 	// i-bp1cudc25w2bfwl5****
 	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	// The name of the abnormal node.
+	//
 	// example:
 	//
 	// core1-1
@@ -48199,7 +48984,7 @@ type TagResourcesRequest struct {
 	//
 	// cluster
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The list of tags to be bound.
+	// The tags.
 	//
 	// This parameter is required.
 	//
@@ -48631,6 +49416,12 @@ type UpdateApplicationConfigsRequest struct {
 	//
 	// i-bp1cudc25w2bfwl5****
 	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	// Specifies whether to refresh the configurations.
+	//
+	// example:
+	//
+	// true
+	RefreshConfig *bool `json:"RefreshConfig,omitempty" xml:"RefreshConfig,omitempty"`
 	// The region ID.
 	//
 	// This parameter is required.
@@ -48686,6 +49477,11 @@ func (s *UpdateApplicationConfigsRequest) SetNodeGroupId(v string) *UpdateApplic
 
 func (s *UpdateApplicationConfigsRequest) SetNodeId(v string) *UpdateApplicationConfigsRequest {
 	s.NodeId = &v
+	return s
+}
+
+func (s *UpdateApplicationConfigsRequest) SetRefreshConfig(v bool) *UpdateApplicationConfigsRequest {
+	s.RefreshConfig = &v
 	return s
 }
 
@@ -48752,6 +49548,201 @@ func (s *UpdateApplicationConfigsResponse) SetStatusCode(v int32) *UpdateApplica
 }
 
 func (s *UpdateApplicationConfigsResponse) SetBody(v *UpdateApplicationConfigsResponseBody) *UpdateApplicationConfigsResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateScriptRequest struct {
+	// 集群ID。
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// c-b933c5aac8fe****
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// 区域ID。
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// 集群脚本。
+	//
+	// This parameter is required.
+	Script *Script `json:"Script,omitempty" xml:"Script,omitempty"`
+	// 脚本ID。
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cs-da7476a7679a4d4c9cede62ebe09****
+	ScriptId *string `json:"ScriptId,omitempty" xml:"ScriptId,omitempty"`
+	// 集群脚本类型。
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// BOOTSTRAP
+	ScriptType *string `json:"ScriptType,omitempty" xml:"ScriptType,omitempty"`
+}
+
+func (s UpdateScriptRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateScriptRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateScriptRequest) SetClusterId(v string) *UpdateScriptRequest {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *UpdateScriptRequest) SetRegionId(v string) *UpdateScriptRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *UpdateScriptRequest) SetScript(v *Script) *UpdateScriptRequest {
+	s.Script = v
+	return s
+}
+
+func (s *UpdateScriptRequest) SetScriptId(v string) *UpdateScriptRequest {
+	s.ScriptId = &v
+	return s
+}
+
+func (s *UpdateScriptRequest) SetScriptType(v string) *UpdateScriptRequest {
+	s.ScriptType = &v
+	return s
+}
+
+type UpdateScriptShrinkRequest struct {
+	// 集群ID。
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// c-b933c5aac8fe****
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// 区域ID。
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// 集群脚本。
+	//
+	// This parameter is required.
+	ScriptShrink *string `json:"Script,omitempty" xml:"Script,omitempty"`
+	// 脚本ID。
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cs-da7476a7679a4d4c9cede62ebe09****
+	ScriptId *string `json:"ScriptId,omitempty" xml:"ScriptId,omitempty"`
+	// 集群脚本类型。
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// BOOTSTRAP
+	ScriptType *string `json:"ScriptType,omitempty" xml:"ScriptType,omitempty"`
+}
+
+func (s UpdateScriptShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateScriptShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateScriptShrinkRequest) SetClusterId(v string) *UpdateScriptShrinkRequest {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *UpdateScriptShrinkRequest) SetRegionId(v string) *UpdateScriptShrinkRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *UpdateScriptShrinkRequest) SetScriptShrink(v string) *UpdateScriptShrinkRequest {
+	s.ScriptShrink = &v
+	return s
+}
+
+func (s *UpdateScriptShrinkRequest) SetScriptId(v string) *UpdateScriptShrinkRequest {
+	s.ScriptId = &v
+	return s
+}
+
+func (s *UpdateScriptShrinkRequest) SetScriptType(v string) *UpdateScriptShrinkRequest {
+	s.ScriptType = &v
+	return s
+}
+
+type UpdateScriptResponseBody struct {
+	// 请求ID。
+	//
+	// example:
+	//
+	// DD6B1B2A-5837-5237-ABE4-FF0C8944****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateScriptResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateScriptResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateScriptResponseBody) SetRequestId(v string) *UpdateScriptResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateScriptResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateScriptResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateScriptResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateScriptResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateScriptResponse) SetHeaders(v map[string]*string) *UpdateScriptResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateScriptResponse) SetStatusCode(v int32) *UpdateScriptResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateScriptResponse) SetBody(v *UpdateScriptResponseBody) *UpdateScriptResponse {
 	s.Body = v
 	return s
 }
@@ -49111,13 +50102,73 @@ func (client *Client) CreateNodeGroup(request *CreateNodeGroupRequest) (_result 
 	return _result, _err
 }
 
+// @param request - CreateScriptRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateScriptResponse
+func (client *Client) CreateScriptWithOptions(request *CreateScriptRequest, runtime *util.RuntimeOptions) (_result *CreateScriptResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ScriptType)) {
+		query["ScriptType"] = request.ScriptType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Scripts)) {
+		query["Scripts"] = request.Scripts
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateScript"),
+		Version:     tea.String("2021-03-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateScriptResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - CreateScriptRequest
+//
+// @return CreateScriptResponse
+func (client *Client) CreateScript(request *CreateScriptRequest) (_result *CreateScriptResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateScriptResponse{}
+	_body, _err := client.CreateScriptWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 // Summary:
 //
 // Perform a scale-out operation on the target node group.
-//
-// Description:
-//
-// 缩容节点。
 //
 // @param request - DecreaseNodesRequest
 //
@@ -49176,10 +50227,6 @@ func (client *Client) DecreaseNodesWithOptions(request *DecreaseNodesRequest, ru
 // Summary:
 //
 // Perform a scale-out operation on the target node group.
-//
-// Description:
-//
-// 缩容节点。
 //
 // @param request - DecreaseNodesRequest
 //
@@ -49316,6 +50363,70 @@ func (client *Client) DeleteCluster(request *DeleteClusterRequest) (_result *Del
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteClusterResponse{}
 	_body, _err := client.DeleteClusterWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param request - DeleteScriptRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteScriptResponse
+func (client *Client) DeleteScriptWithOptions(request *DeleteScriptRequest, runtime *util.RuntimeOptions) (_result *DeleteScriptResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ScriptId)) {
+		query["ScriptId"] = request.ScriptId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ScriptType)) {
+		query["ScriptType"] = request.ScriptType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteScript"),
+		Version:     tea.String("2021-03-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteScriptResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - DeleteScriptRequest
+//
+// @return DeleteScriptResponse
+func (client *Client) DeleteScript(request *DeleteScriptRequest) (_result *DeleteScriptResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteScriptResponse{}
+	_body, _err := client.DeleteScriptWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -50811,10 +51922,6 @@ func (client *Client) GetNodeGroup(request *GetNodeGroupRequest) (_result *GetNo
 //
 // Gets the details of an asynchronous operation.
 //
-// Description:
-//
-// 获取操作详情。
-//
 // @param request - GetOperationRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -50865,10 +51972,6 @@ func (client *Client) GetOperationWithOptions(request *GetOperationRequest, runt
 //
 // Gets the details of an asynchronous operation.
 //
-// Description:
-//
-// 获取操作详情。
-//
 // @param request - GetOperationRequest
 //
 // @return GetOperationResponse
@@ -50904,6 +52007,10 @@ func (client *Client) IncreaseNodesWithOptions(request *IncreaseNodesRequest, ru
 
 	if !tea.BoolValue(util.IsUnset(request.AutoPayOrder)) {
 		query["AutoPayOrder"] = request.AutoPayOrder
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AutoRenew)) {
+		query["AutoRenew"] = request.AutoRenew
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
@@ -52743,6 +53850,90 @@ func (client *Client) ListDoctorReports(request *ListDoctorReportsRequest) (_res
 	return _result, _err
 }
 
+// @param request - ListInspectionHistoryRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListInspectionHistoryResponse
+func (client *Client) ListInspectionHistoryWithOptions(request *ListInspectionHistoryRequest, runtime *util.RuntimeOptions) (_result *ListInspectionHistoryResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Component)) {
+		query["Component"] = request.Component
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Language)) {
+		query["Language"] = request.Language
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Service)) {
+		query["Service"] = request.Service
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		query["Type"] = request.Type
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListInspectionHistory"),
+		Version:     tea.String("2021-03-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListInspectionHistoryResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - ListInspectionHistoryRequest
+//
+// @return ListInspectionHistoryResponse
+func (client *Client) ListInspectionHistory(request *ListInspectionHistoryRequest) (_result *ListInspectionHistoryResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListInspectionHistoryResponse{}
+	_body, _err := client.ListInspectionHistoryWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 // @param request - ListInstanceTypesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -53101,8 +54292,104 @@ func (client *Client) ListReleaseVersions(request *ListReleaseVersionsRequest) (
 
 // Description:
 //
-// 查询集群脚本。
+// 查询资源巡检项。
 //
+// @param request - ListResourceHealthInspectionsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListResourceHealthInspectionsResponse
+func (client *Client) ListResourceHealthInspectionsWithOptions(request *ListResourceHealthInspectionsRequest, runtime *util.RuntimeOptions) (_result *ListResourceHealthInspectionsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ApplicationName)) {
+		query["ApplicationName"] = request.ApplicationName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ComponentName)) {
+		query["ComponentName"] = request.ComponentName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HealthStatuses)) {
+		query["HealthStatuses"] = request.HealthStatuses
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Language)) {
+		query["Language"] = request.Language
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NodeIds)) {
+		query["NodeIds"] = request.NodeIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NodeNames)) {
+		query["NodeNames"] = request.NodeNames
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		query["ResourceType"] = request.ResourceType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListResourceHealthInspections"),
+		Version:     tea.String("2021-03-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListResourceHealthInspectionsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Description:
+//
+// 查询资源巡检项。
+//
+// @param request - ListResourceHealthInspectionsRequest
+//
+// @return ListResourceHealthInspectionsResponse
+func (client *Client) ListResourceHealthInspections(request *ListResourceHealthInspectionsRequest) (_result *ListResourceHealthInspectionsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListResourceHealthInspectionsResponse{}
+	_body, _err := client.ListResourceHealthInspectionsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 // @param request - ListScriptsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -53157,10 +54444,6 @@ func (client *Client) ListScriptsWithOptions(request *ListScriptsRequest, runtim
 	return _result, _err
 }
 
-// Description:
-//
-// 查询集群脚本。
-//
 // @param request - ListScriptsRequest
 //
 // @return ListScriptsResponse
@@ -53399,10 +54682,6 @@ func (client *Client) RemoveAutoScalingPolicy(request *RemoveAutoScalingPolicyRe
 	return _result, _err
 }
 
-// Description:
-//
-// 执行集群模板
-//
 // @param request - RunApiTemplateRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -53453,10 +54732,6 @@ func (client *Client) RunApiTemplateWithOptions(request *RunApiTemplateRequest, 
 	return _result, _err
 }
 
-// Description:
-//
-// 执行集群模板
-//
 // @param request - RunApiTemplateRequest
 //
 // @return RunApiTemplateResponse
@@ -53631,10 +54906,6 @@ func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagRe
 //
 // Unbinds tags from a specified column in an EMR cluster. If the tag is not bound to other resources, the tag is automatically deleted.
 //
-// Description:
-//
-// 删除指定资源标签。
-//
 // @param request - UntagResourcesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -53693,10 +54964,6 @@ func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, 
 //
 // Unbinds tags from a specified column in an EMR cluster. If the tag is not bound to other resources, the tag is automatically deleted.
 //
-// Description:
-//
-// 删除指定资源标签。
-//
 // @param request - UntagResourcesRequest
 //
 // @return UntagResourcesResponse
@@ -53711,6 +54978,10 @@ func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *U
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates an API operation template.
+//
 // Description:
 //
 // 修改集群模板
@@ -53773,6 +55044,10 @@ func (client *Client) UpdateApiTemplateWithOptions(request *UpdateApiTemplateReq
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates an API operation template.
+//
 // Description:
 //
 // 修改集群模板
@@ -53834,6 +55109,10 @@ func (client *Client) UpdateApplicationConfigsWithOptions(request *UpdateApplica
 		query["NodeId"] = request.NodeId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.RefreshConfig)) {
+		query["RefreshConfig"] = request.RefreshConfig
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
 	}
@@ -53868,6 +55147,80 @@ func (client *Client) UpdateApplicationConfigs(request *UpdateApplicationConfigs
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateApplicationConfigsResponse{}
 	_body, _err := client.UpdateApplicationConfigsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param tmpReq - UpdateScriptRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateScriptResponse
+func (client *Client) UpdateScriptWithOptions(tmpReq *UpdateScriptRequest, runtime *util.RuntimeOptions) (_result *UpdateScriptResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &UpdateScriptShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Script)) {
+		request.ScriptShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Script, tea.String("Script"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ScriptShrink)) {
+		query["Script"] = request.ScriptShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ScriptId)) {
+		query["ScriptId"] = request.ScriptId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ScriptType)) {
+		query["ScriptType"] = request.ScriptType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateScript"),
+		Version:     tea.String("2021-03-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateScriptResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - UpdateScriptRequest
+//
+// @return UpdateScriptResponse
+func (client *Client) UpdateScript(request *UpdateScriptRequest) (_result *UpdateScriptResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateScriptResponse{}
+	_body, _err := client.UpdateScriptWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
