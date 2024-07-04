@@ -24162,7 +24162,9 @@ type DescribeScheduledTasksRequest struct {
 	// example:
 	//
 	// 50
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize        *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RecurrenceType  *string `json:"RecurrenceType,omitempty" xml:"RecurrenceType,omitempty"`
+	RecurrenceValue *string `json:"RecurrenceValue,omitempty" xml:"RecurrenceValue,omitempty"`
 	// The region ID of the scaling group to which the scheduled task belongs.
 	//
 	// This parameter is required.
@@ -24185,6 +24187,8 @@ type DescribeScheduledTasksRequest struct {
 	ScheduledTaskIds []*string `json:"ScheduledTaskIds,omitempty" xml:"ScheduledTaskIds,omitempty" type:"Repeated"`
 	// The names of the scheduled tasks that you want to query.
 	ScheduledTaskNames []*string `json:"ScheduledTaskNames,omitempty" xml:"ScheduledTaskNames,omitempty" type:"Repeated"`
+	TaskEnabled        *bool     `json:"TaskEnabled,omitempty" xml:"TaskEnabled,omitempty"`
+	TaskName           *string   `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
 }
 
 func (s DescribeScheduledTasksRequest) String() string {
@@ -24212,6 +24216,16 @@ func (s *DescribeScheduledTasksRequest) SetPageNumber(v int32) *DescribeSchedule
 
 func (s *DescribeScheduledTasksRequest) SetPageSize(v int32) *DescribeScheduledTasksRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeScheduledTasksRequest) SetRecurrenceType(v string) *DescribeScheduledTasksRequest {
+	s.RecurrenceType = &v
+	return s
+}
+
+func (s *DescribeScheduledTasksRequest) SetRecurrenceValue(v string) *DescribeScheduledTasksRequest {
+	s.RecurrenceValue = &v
 	return s
 }
 
@@ -24247,6 +24261,16 @@ func (s *DescribeScheduledTasksRequest) SetScheduledTaskIds(v []*string) *Descri
 
 func (s *DescribeScheduledTasksRequest) SetScheduledTaskNames(v []*string) *DescribeScheduledTasksRequest {
 	s.ScheduledTaskNames = v
+	return s
+}
+
+func (s *DescribeScheduledTasksRequest) SetTaskEnabled(v bool) *DescribeScheduledTasksRequest {
+	s.TaskEnabled = &v
+	return s
+}
+
+func (s *DescribeScheduledTasksRequest) SetTaskName(v string) *DescribeScheduledTasksRequest {
+	s.TaskName = &v
 	return s
 }
 
@@ -42224,6 +42248,14 @@ func (client *Client) DescribeScheduledTasksWithOptions(request *DescribeSchedul
 		query["PageSize"] = request.PageSize
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.RecurrenceType)) {
+		query["RecurrenceType"] = request.RecurrenceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RecurrenceValue)) {
+		query["RecurrenceValue"] = request.RecurrenceValue
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
 	}
@@ -42250,6 +42282,14 @@ func (client *Client) DescribeScheduledTasksWithOptions(request *DescribeSchedul
 
 	if !tea.BoolValue(util.IsUnset(request.ScheduledTaskNames)) {
 		query["ScheduledTaskNames"] = request.ScheduledTaskNames
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskEnabled)) {
+		query["TaskEnabled"] = request.TaskEnabled
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskName)) {
+		query["TaskName"] = request.TaskName
 	}
 
 	req := &openapi.OpenApiRequest{
