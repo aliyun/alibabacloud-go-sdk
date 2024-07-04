@@ -14323,7 +14323,7 @@ type DescribeInstanceTopologyResponseBodyInstanceTopologyZonesNodes struct {
 	// i-bp16niirq4zdmgvm****
 	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
 	// The ID of the node.
-	NodeResource []*DescribeInstanceTopologyResponseBodyInstanceTopologyZonesNodesNodeResource `json:"NodeResource,omitempty" xml:"NodeResource,omitempty" type:"Repeated"`
+	NodeResource *DescribeInstanceTopologyResponseBodyInstanceTopologyZonesNodesNodeResource `json:"NodeResource,omitempty" xml:"NodeResource,omitempty" type:"Struct"`
 	// The ID of the OBServer where the resource unit resides.
 	//
 	// example:
@@ -14362,7 +14362,7 @@ func (s *DescribeInstanceTopologyResponseBodyInstanceTopologyZonesNodes) SetNode
 	return s
 }
 
-func (s *DescribeInstanceTopologyResponseBodyInstanceTopologyZonesNodes) SetNodeResource(v []*DescribeInstanceTopologyResponseBodyInstanceTopologyZonesNodesNodeResource) *DescribeInstanceTopologyResponseBodyInstanceTopologyZonesNodes {
+func (s *DescribeInstanceTopologyResponseBodyInstanceTopologyZonesNodes) SetNodeResource(v *DescribeInstanceTopologyResponseBodyInstanceTopologyZonesNodesNodeResource) *DescribeInstanceTopologyResponseBodyInstanceTopologyZonesNodes {
 	s.NodeResource = v
 	return s
 }
@@ -14383,16 +14383,9 @@ func (s *DescribeInstanceTopologyResponseBodyInstanceTopologyZonesNodes) SetRepl
 }
 
 type DescribeInstanceTopologyResponseBodyInstanceTopologyZonesNodesNodeResource struct {
-	// The memory size of the tenant, in GB.
-	Cpu *DescribeInstanceTopologyResponseBodyInstanceTopologyZonesNodesNodeResourceCpu `json:"Cpu,omitempty" xml:"Cpu,omitempty" type:"Struct"`
-	// The information about the CPU resources of the node.
+	Cpu      *DescribeInstanceTopologyResponseBodyInstanceTopologyZonesNodesNodeResourceCpu      `json:"Cpu,omitempty" xml:"Cpu,omitempty" type:"Struct"`
 	DiskSize *DescribeInstanceTopologyResponseBodyInstanceTopologyZonesNodesNodeResourceDiskSize `json:"DiskSize,omitempty" xml:"DiskSize,omitempty" type:"Struct"`
-	// The role to access the zone. Valid values:
-	//
-	//  - ReadWrite: a role that has the read and write privileges.
-	//
-	//  - ReadOnly: a role that has only the read-only privilege.
-	Memory *DescribeInstanceTopologyResponseBodyInstanceTopologyZonesNodesNodeResourceMemory `json:"Memory,omitempty" xml:"Memory,omitempty" type:"Struct"`
+	Memory   *DescribeInstanceTopologyResponseBodyInstanceTopologyZonesNodesNodeResourceMemory   `json:"Memory,omitempty" xml:"Memory,omitempty" type:"Struct"`
 }
 
 func (s DescribeInstanceTopologyResponseBodyInstanceTopologyZonesNodesNodeResource) String() string {
@@ -14419,14 +14412,10 @@ func (s *DescribeInstanceTopologyResponseBodyInstanceTopologyZonesNodesNodeResou
 }
 
 type DescribeInstanceTopologyResponseBodyInstanceTopologyZonesNodesNodeResourceCpu struct {
-	// The size of used storage space of the node, in GB.
-	//
 	// example:
 	//
 	// 14
 	TotalCpu *int32 `json:"TotalCpu,omitempty" xml:"TotalCpu,omitempty"`
-	// Indicates whether migration can be performed.
-	//
 	// example:
 	//
 	// 4
@@ -14452,36 +14441,8 @@ func (s *DescribeInstanceTopologyResponseBodyInstanceTopologyZonesNodesNodeResou
 }
 
 type DescribeInstanceTopologyResponseBodyInstanceTopologyZonesNodesNodeResourceDiskSize struct {
-	// The deployment type of the primary zone.
-	//
-	// example:
-	//
-	// 400
 	TotalDiskSize *float64 `json:"TotalDiskSize,omitempty" xml:"TotalDiskSize,omitempty"`
-	// The status of the tenant.
-	//
-	// - PENDING_CREATE: The tenant is being created.
-	//
-	// - RESTORE: The tenant is being recovered.
-	//
-	// - ONLINE: The tenant is running.
-	//
-	// - SPEC_MODIFYING: The specification of the tenant is being modified.
-	//
-	// - ALLOCATING_INTERNET_ADDRESS: An Internet address is being allocated.
-	//
-	// - PENDING_OFFLINE_INTERNET_ADDRESS: The Internet address is being disabled.
-	//
-	// - PRIMARY_ZONE_MODIFYING: The tenant is switching to a new primary zone.
-	//
-	// - PARAMETER_MODIFYING: Parameters are being modified.
-	//
-	// - WHITE_LIST_MODIFYING: The whitelist is being modified.
-	//
-	// example:
-	//
-	// 200
-	UsedDiskSize *float64 `json:"UsedDiskSize,omitempty" xml:"UsedDiskSize,omitempty"`
+	UsedDiskSize  *float64 `json:"UsedDiskSize,omitempty" xml:"UsedDiskSize,omitempty"`
 }
 
 func (s DescribeInstanceTopologyResponseBodyInstanceTopologyZonesNodesNodeResourceDiskSize) String() string {
@@ -14503,14 +14464,10 @@ func (s *DescribeInstanceTopologyResponseBodyInstanceTopologyZonesNodesNodeResou
 }
 
 type DescribeInstanceTopologyResponseBodyInstanceTopologyZonesNodesNodeResourceMemory struct {
-	// The ID of the replica node.
-	//
 	// example:
 	//
 	// 70
 	TotalMemory *int64 `json:"TotalMemory,omitempty" xml:"TotalMemory,omitempty"`
-	// The information of node resources.
-	//
 	// example:
 	//
 	// 10
