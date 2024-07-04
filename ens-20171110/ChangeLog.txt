@@ -3,6 +3,11 @@
 - Support API DeleteStorageGateway.
 
 
+2024-07-04 Version: v7.1.0
+- Support API CreateStorageGateway.
+- Support API DeleteStorageGateway.
+
+
 2024-07-03 Version: v7.1.0
 - Support API DeployInstanceSDG.
 - Support API DescribeSDG.
