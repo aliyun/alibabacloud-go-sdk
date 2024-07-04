@@ -91,6 +91,41 @@ func (s *AliyunAccounts) SetGmtModifyTime(v string) *AliyunAccounts {
 	return s
 }
 
+type AssumeUserInfo struct {
+	AccessKeyId   *string `json:"AccessKeyId,omitempty" xml:"AccessKeyId,omitempty"`
+	Id            *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	Type          *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s AssumeUserInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AssumeUserInfo) GoString() string {
+	return s.String()
+}
+
+func (s *AssumeUserInfo) SetAccessKeyId(v string) *AssumeUserInfo {
+	s.AccessKeyId = &v
+	return s
+}
+
+func (s *AssumeUserInfo) SetId(v string) *AssumeUserInfo {
+	s.Id = &v
+	return s
+}
+
+func (s *AssumeUserInfo) SetSecurityToken(v string) *AssumeUserInfo {
+	s.SecurityToken = &v
+	return s
+}
+
+func (s *AssumeUserInfo) SetType(v string) *AssumeUserInfo {
+	s.Type = &v
+	return s
+}
+
 type CodeSourceItem struct {
 	// example:
 	//
@@ -257,6 +292,107 @@ func (s *ContainerSpec) SetResources(v *ResourceRequirements) *ContainerSpec {
 
 func (s *ContainerSpec) SetWorkingDir(v string) *ContainerSpec {
 	s.WorkingDir = &v
+	return s
+}
+
+type CredentialConfig struct {
+	AliyunEnvRoleKey       *string                 `json:"AliyunEnvRoleKey,omitempty" xml:"AliyunEnvRoleKey,omitempty"`
+	CredentialConfigItems  []*CredentialConfigItem `json:"CredentialConfigItems,omitempty" xml:"CredentialConfigItems,omitempty" type:"Repeated"`
+	EnableCredentialInject *bool                   `json:"EnableCredentialInject,omitempty" xml:"EnableCredentialInject,omitempty"`
+}
+
+func (s CredentialConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CredentialConfig) GoString() string {
+	return s.String()
+}
+
+func (s *CredentialConfig) SetAliyunEnvRoleKey(v string) *CredentialConfig {
+	s.AliyunEnvRoleKey = &v
+	return s
+}
+
+func (s *CredentialConfig) SetCredentialConfigItems(v []*CredentialConfigItem) *CredentialConfig {
+	s.CredentialConfigItems = v
+	return s
+}
+
+func (s *CredentialConfig) SetEnableCredentialInject(v bool) *CredentialConfig {
+	s.EnableCredentialInject = &v
+	return s
+}
+
+type CredentialConfigItem struct {
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// if can be null:
+	// true
+	Roles []*CredentialRole `json:"Roles,omitempty" xml:"Roles,omitempty" type:"Repeated"`
+	Type  *string           `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s CredentialConfigItem) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CredentialConfigItem) GoString() string {
+	return s.String()
+}
+
+func (s *CredentialConfigItem) SetKey(v string) *CredentialConfigItem {
+	s.Key = &v
+	return s
+}
+
+func (s *CredentialConfigItem) SetRoles(v []*CredentialRole) *CredentialConfigItem {
+	s.Roles = v
+	return s
+}
+
+func (s *CredentialConfigItem) SetType(v string) *CredentialConfigItem {
+	s.Type = &v
+	return s
+}
+
+type CredentialRole struct {
+	AssumeRoleFor  *string         `json:"AssumeRoleFor,omitempty" xml:"AssumeRoleFor,omitempty"`
+	AssumeUserInfo *AssumeUserInfo `json:"AssumeUserInfo,omitempty" xml:"AssumeUserInfo,omitempty"`
+	Policy         *string         `json:"Policy,omitempty" xml:"Policy,omitempty"`
+	RoleArn        *string         `json:"RoleArn,omitempty" xml:"RoleArn,omitempty"`
+	RoleType       *string         `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
+}
+
+func (s CredentialRole) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CredentialRole) GoString() string {
+	return s.String()
+}
+
+func (s *CredentialRole) SetAssumeRoleFor(v string) *CredentialRole {
+	s.AssumeRoleFor = &v
+	return s
+}
+
+func (s *CredentialRole) SetAssumeUserInfo(v *AssumeUserInfo) *CredentialRole {
+	s.AssumeUserInfo = v
+	return s
+}
+
+func (s *CredentialRole) SetPolicy(v string) *CredentialRole {
+	s.Policy = &v
+	return s
+}
+
+func (s *CredentialRole) SetRoleArn(v string) *CredentialRole {
+	s.RoleArn = &v
+	return s
+}
+
+func (s *CredentialRole) SetRoleType(v string) *CredentialRole {
+	s.RoleType = &v
 	return s
 }
 
@@ -1426,8 +1562,9 @@ func (s *JobElasticSpec) SetPSMinParallelism(v int32) *JobElasticSpec {
 }
 
 type JobItem struct {
-	CodeSource  *JobItemCodeSource    `json:"CodeSource,omitempty" xml:"CodeSource,omitempty" type:"Struct"`
-	DataSources []*JobItemDataSources `json:"DataSources,omitempty" xml:"DataSources,omitempty" type:"Repeated"`
+	CodeSource       *JobItemCodeSource    `json:"CodeSource,omitempty" xml:"CodeSource,omitempty" type:"Struct"`
+	CredentialConfig *CredentialConfig     `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
+	DataSources      []*JobItemDataSources `json:"DataSources,omitempty" xml:"DataSources,omitempty" type:"Repeated"`
 	// example:
 	//
 	// tf-mnist-test
@@ -1556,6 +1693,11 @@ func (s JobItem) GoString() string {
 
 func (s *JobItem) SetCodeSource(v *JobItemCodeSource) *JobItem {
 	s.CodeSource = v
+	return s
+}
+
+func (s *JobItem) SetCredentialConfig(v *CredentialConfig) *JobItem {
+	s.CredentialConfig = v
 	return s
 }
 
