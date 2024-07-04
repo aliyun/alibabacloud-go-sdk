@@ -8146,6 +8146,264 @@ func (s *CreateSnatEntryResponse) SetBody(v *CreateSnatEntryResponseBody) *Creat
 	return s
 }
 
+type CreateStorageGatewayRequest struct {
+	// The array of orders.
+	//
+	// This parameter is required.
+	OrderDetails []*CreateStorageGatewayRequestOrderDetails `json:"OrderDetails,omitempty" xml:"OrderDetails,omitempty" type:"Repeated"`
+}
+
+func (s CreateStorageGatewayRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateStorageGatewayRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateStorageGatewayRequest) SetOrderDetails(v []*CreateStorageGatewayRequestOrderDetails) *CreateStorageGatewayRequest {
+	s.OrderDetails = v
+	return s
+}
+
+type CreateStorageGatewayRequestOrderDetails struct {
+	// The description of the gateway. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
+	//
+	// example:
+	//
+	// testDescription
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The ID of the node.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-shenzhen-3
+	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	// The name of the gateway. The name must be 2 to 128 characters in length. The name must start with a letter and cannot start with `http://` or `https://`. The name can contain letters, digits, colons (.), underscores (_), and hyphens (-).
+	//
+	// example:
+	//
+	// testGatewayName
+	GatewayName *string `json:"GatewayName,omitempty" xml:"GatewayName,omitempty"`
+	// The type of the gateway. Set this parameter to **1**. **1*	- indicates iSCSI.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	GatewayType *string `json:"GatewayType,omitempty" xml:"GatewayType,omitempty"`
+	// The ID of the VPC.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// n-123
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+}
+
+func (s CreateStorageGatewayRequestOrderDetails) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateStorageGatewayRequestOrderDetails) GoString() string {
+	return s.String()
+}
+
+func (s *CreateStorageGatewayRequestOrderDetails) SetDescription(v string) *CreateStorageGatewayRequestOrderDetails {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateStorageGatewayRequestOrderDetails) SetEnsRegionId(v string) *CreateStorageGatewayRequestOrderDetails {
+	s.EnsRegionId = &v
+	return s
+}
+
+func (s *CreateStorageGatewayRequestOrderDetails) SetGatewayName(v string) *CreateStorageGatewayRequestOrderDetails {
+	s.GatewayName = &v
+	return s
+}
+
+func (s *CreateStorageGatewayRequestOrderDetails) SetGatewayType(v string) *CreateStorageGatewayRequestOrderDetails {
+	s.GatewayType = &v
+	return s
+}
+
+func (s *CreateStorageGatewayRequestOrderDetails) SetVpcId(v string) *CreateStorageGatewayRequestOrderDetails {
+	s.VpcId = &v
+	return s
+}
+
+type CreateStorageGatewayShrinkRequest struct {
+	// The array of orders.
+	//
+	// This parameter is required.
+	OrderDetailsShrink *string `json:"OrderDetails,omitempty" xml:"OrderDetails,omitempty"`
+}
+
+func (s CreateStorageGatewayShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateStorageGatewayShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateStorageGatewayShrinkRequest) SetOrderDetailsShrink(v string) *CreateStorageGatewayShrinkRequest {
+	s.OrderDetailsShrink = &v
+	return s
+}
+
+type CreateStorageGatewayResponseBody struct {
+	// The list of created nodes.
+	AllocationId []*CreateStorageGatewayResponseBodyAllocationId `json:"AllocationId,omitempty" xml:"AllocationId,omitempty" type:"Repeated"`
+	// The success status code.
+	//
+	// 	- **PartSuccess**: partially succeeded.
+	//
+	// 	- **AllSuccess**: all succeeded.
+	//
+	// example:
+	//
+	// AllSuccess
+	BizStatusCode *string `json:"BizStatusCode,omitempty" xml:"BizStatusCode,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// EA3758E0-8899-17D3-9526-5F62CF33A586
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The list of nodes that are not created.
+	UnAllocationId []*CreateStorageGatewayResponseBodyUnAllocationId `json:"UnAllocationId,omitempty" xml:"UnAllocationId,omitempty" type:"Repeated"`
+}
+
+func (s CreateStorageGatewayResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateStorageGatewayResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateStorageGatewayResponseBody) SetAllocationId(v []*CreateStorageGatewayResponseBodyAllocationId) *CreateStorageGatewayResponseBody {
+	s.AllocationId = v
+	return s
+}
+
+func (s *CreateStorageGatewayResponseBody) SetBizStatusCode(v string) *CreateStorageGatewayResponseBody {
+	s.BizStatusCode = &v
+	return s
+}
+
+func (s *CreateStorageGatewayResponseBody) SetRequestId(v string) *CreateStorageGatewayResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateStorageGatewayResponseBody) SetUnAllocationId(v []*CreateStorageGatewayResponseBodyUnAllocationId) *CreateStorageGatewayResponseBody {
+	s.UnAllocationId = v
+	return s
+}
+
+type CreateStorageGatewayResponseBodyAllocationId struct {
+	// The ID of the node.
+	//
+	// example:
+	//
+	// cn-chengdu-telecom-4
+	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	// The ID of the instance.
+	//
+	// example:
+	//
+	// e426409223
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+}
+
+func (s CreateStorageGatewayResponseBodyAllocationId) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateStorageGatewayResponseBodyAllocationId) GoString() string {
+	return s.String()
+}
+
+func (s *CreateStorageGatewayResponseBodyAllocationId) SetEnsRegionId(v string) *CreateStorageGatewayResponseBodyAllocationId {
+	s.EnsRegionId = &v
+	return s
+}
+
+func (s *CreateStorageGatewayResponseBodyAllocationId) SetInstanceId(v string) *CreateStorageGatewayResponseBodyAllocationId {
+	s.InstanceId = &v
+	return s
+}
+
+type CreateStorageGatewayResponseBodyUnAllocationId struct {
+	// The ID of the node.
+	//
+	// example:
+	//
+	// cn-chengdu-26
+	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	// The ID of the instance.
+	//
+	// example:
+	//
+	// e426409258
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+}
+
+func (s CreateStorageGatewayResponseBodyUnAllocationId) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateStorageGatewayResponseBodyUnAllocationId) GoString() string {
+	return s.String()
+}
+
+func (s *CreateStorageGatewayResponseBodyUnAllocationId) SetEnsRegionId(v string) *CreateStorageGatewayResponseBodyUnAllocationId {
+	s.EnsRegionId = &v
+	return s
+}
+
+func (s *CreateStorageGatewayResponseBodyUnAllocationId) SetInstanceId(v string) *CreateStorageGatewayResponseBodyUnAllocationId {
+	s.InstanceId = &v
+	return s
+}
+
+type CreateStorageGatewayResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateStorageGatewayResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateStorageGatewayResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateStorageGatewayResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateStorageGatewayResponse) SetHeaders(v map[string]*string) *CreateStorageGatewayResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateStorageGatewayResponse) SetStatusCode(v int32) *CreateStorageGatewayResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateStorageGatewayResponse) SetBody(v *CreateStorageGatewayResponseBody) *CreateStorageGatewayResponse {
+	s.Body = v
+	return s
+}
+
 type CreateVSwitchRequest struct {
 	// The CIDR block of the vSwitch. Take note of the following limits:
 	//
@@ -10650,6 +10908,81 @@ func (s *DeleteSnatIpForSnatEntryResponse) SetStatusCode(v int32) *DeleteSnatIpF
 }
 
 func (s *DeleteSnatIpForSnatEntryResponse) SetBody(v *DeleteSnatIpForSnatEntryResponseBody) *DeleteSnatIpForSnatEntryResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteStorageGatewayRequest struct {
+	// The ID of the gateway.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// sgw-****
+	GatewayId *string `json:"GatewayId,omitempty" xml:"GatewayId,omitempty"`
+}
+
+func (s DeleteStorageGatewayRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteStorageGatewayRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteStorageGatewayRequest) SetGatewayId(v string) *DeleteStorageGatewayRequest {
+	s.GatewayId = &v
+	return s
+}
+
+type DeleteStorageGatewayResponseBody struct {
+	// The request ID.
+	//
+	// example:
+	//
+	// 853D6E71-E087-1557-B65C-32BFBEE5CD97
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteStorageGatewayResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteStorageGatewayResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteStorageGatewayResponseBody) SetRequestId(v string) *DeleteStorageGatewayResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteStorageGatewayResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteStorageGatewayResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteStorageGatewayResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteStorageGatewayResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteStorageGatewayResponse) SetHeaders(v map[string]*string) *DeleteStorageGatewayResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteStorageGatewayResponse) SetStatusCode(v int32) *DeleteStorageGatewayResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteStorageGatewayResponse) SetBody(v *DeleteStorageGatewayResponseBody) *DeleteStorageGatewayResponse {
 	s.Body = v
 	return s
 }
@@ -43002,7 +43335,16 @@ type PutBucketRequest struct {
 	// example:
 	//
 	// numb
-	Comment       *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// Scheduling Scope, this parameter is only effective for globally scheduled Buckets.
+	//
+	// - domestic
+	//
+	// - oversea
+	//
+	// example:
+	//
+	// domestic
 	DispatchScope *string `json:"DispatchScope,omitempty" xml:"DispatchScope,omitempty"`
 	// The ID of the region where the node is located. If this parameter is not specified, the node is the global default node.
 	//
@@ -48826,13 +49168,13 @@ type SetLoadBalancerHTTPListenerAttributeRequest struct {
 	//
 	// 2
 	HealthCheckInterval *int32 `json:"HealthCheckInterval,omitempty" xml:"HealthCheckInterval,omitempty"`
-	// The health check method used in HTTP health checks. Valid values:
+	// The HTTP request method for health checks. Examples:
 	//
 	// 	- **head**
 	//
 	// 	- **get**
 	//
-	// >  This parameter takes effect only if you set HealthCheck to on.
+	// >  This parameter takes effect only if the HealthCheck parameter is set to on.
 	//
 	// example:
 	//
@@ -48846,11 +49188,9 @@ type SetLoadBalancerHTTPListenerAttributeRequest struct {
 	//
 	// 	- Unit: seconds.
 	//
-	// >
+	// > 	- This parameter takes effect only if you set HealthCheck to on.
 	//
-	// 	- This parameter takes effect only if you set HealthCheck to on.
-	//
-	// 	- If the value of the HealthCheckTimeout parameter is smaller than the value of the HealthCheckInterval parameter, the timeout period specified by the HealthCheckTimeout parameter becomes invalid and the value of the HealthCheckInterval parameter is used as the timeout period.
+	// >	- If the value of the HealthCheckTimeout parameter is smaller than the value of the HealthCheckInterval parameter, the timeout period specified by the HealthCheckTimeout parameter becomes invalid and the value of the HealthCheckInterval parameter is used as the timeout period.
 	//
 	// example:
 	//
@@ -48858,11 +49198,9 @@ type SetLoadBalancerHTTPListenerAttributeRequest struct {
 	HealthCheckTimeout *int32 `json:"HealthCheckTimeout,omitempty" xml:"HealthCheckTimeout,omitempty"`
 	// The Uniform Resource Identifier (URI) that is used for health checks. The URI must be **1*	- to **80*	- characters in length.
 	//
-	// >
+	// > 	- The URL must start with a forward slash (`/`) and contain characters other than forward slashes (`/`).
 	//
-	// 	- The URL must start with a forward slash (`/`) and contain characters other than forward slashes (`/`).
-	//
-	// 	- This parameter takes effect only if you set HealthCheck to on.
+	// >	- This parameter takes effect only if you set HealthCheck to on.
 	//
 	// example:
 	//
@@ -48908,19 +49246,19 @@ type SetLoadBalancerHTTPListenerAttributeRequest struct {
 	//
 	// 60
 	RequestTimeout *int32 `json:"RequestTimeout,omitempty" xml:"RequestTimeout,omitempty"`
-	// The routing algorithm. Valid values:
+	// The scheduling algorithm. Examples:
 	//
 	// 	- **wrr**: Backend servers with higher weights receive more requests than those with lower weights.
 	//
-	// 	- **wlc**: Requests are distributed based on the weight and load of each backend server. The load refers to the number of connections to a backend server. If two backend servers have the same weight, the backend server that has fewer connections receives more requests.
+	// 	- **wlc**: Requests are distributed based on the weight and load of each backend server. The load refers to the number of connections on a backend server. If two backend servers have the same weight, the backend server that has fewer connections receives more requests.
 	//
 	// 	- **rr**: Requests are distributed to backend servers in sequence.
 	//
-	// 	- **sch**: consistent hashing that is based on source IP addresses. Requests from the same source IP address are distributed to the same backend server.
+	// 	- **sch**: Consistent hashing that is based on source IP addresses. Requests from the same source IP address are distributed to the same backend server.
 	//
-	// 	- **qch**: consistent hashing that is based on QUIC connection IDs. Requests that contain the same QUIC connection ID are distributed to the same backend server.
+	// 	- **qch**: Consistent hashing based on Quick UDP Internet Connection (QUIC) IDs. Requests that contain the same QUIC ID are scheduled to the same backend server.
 	//
-	// 	- **iqch**: consistent hashing that is based on specific three bytes of the iQUIC CIDs. Requests whose second to fourth bytes are the same are distributed to the same backend server.
+	// 	- **iqch**: Consistent hashing based on three specific bytes of iQUIC CID. Requests with the same second, third, and forth bytes are scheduled to the same backend server.
 	//
 	// example:
 	//
@@ -48933,8 +49271,17 @@ type SetLoadBalancerHTTPListenerAttributeRequest struct {
 	// example:
 	//
 	// 3
-	UnhealthyThreshold *int32  `json:"UnhealthyThreshold,omitempty" xml:"UnhealthyThreshold,omitempty"`
-	XForwardedFor      *string `json:"XForwardedFor,omitempty" xml:"XForwardedFor,omitempty"`
+	UnhealthyThreshold *int32 `json:"UnhealthyThreshold,omitempty" xml:"UnhealthyThreshold,omitempty"`
+	// Specifies whether to use the X-Forwarded-For header to obtain the real IP address of the client. Valid values:
+	//
+	// 	- **on**
+	//
+	// 	- **off*	- (default)
+	//
+	// example:
+	//
+	// on
+	XForwardedFor *string `json:"XForwardedFor,omitempty" xml:"XForwardedFor,omitempty"`
 }
 
 func (s SetLoadBalancerHTTPListenerAttributeRequest) String() string {
@@ -55777,6 +56124,72 @@ func (client *Client) CreateSnatEntry(request *CreateSnatEntryRequest) (_result 
 
 // Summary:
 //
+// Creates a storage gateway.
+//
+// @param tmpReq - CreateStorageGatewayRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateStorageGatewayResponse
+func (client *Client) CreateStorageGatewayWithOptions(tmpReq *CreateStorageGatewayRequest, runtime *util.RuntimeOptions) (_result *CreateStorageGatewayResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &CreateStorageGatewayShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.OrderDetails)) {
+		request.OrderDetailsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.OrderDetails, tea.String("OrderDetails"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.OrderDetailsShrink)) {
+		query["OrderDetails"] = request.OrderDetailsShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateStorageGateway"),
+		Version:     tea.String("2017-11-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateStorageGatewayResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates a storage gateway.
+//
+// @param request - CreateStorageGatewayRequest
+//
+// @return CreateStorageGatewayResponse
+func (client *Client) CreateStorageGateway(request *CreateStorageGatewayRequest) (_result *CreateStorageGatewayResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateStorageGatewayResponse{}
+	_body, _err := client.CreateStorageGatewayWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Creates a vSwitch.
 //
 // @param request - CreateVSwitchRequest
@@ -57494,6 +57907,66 @@ func (client *Client) DeleteSnatIpForSnatEntry(request *DeleteSnatIpForSnatEntry
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteSnatIpForSnatEntryResponse{}
 	_body, _err := client.DeleteSnatIpForSnatEntryWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes a storage gateway.
+//
+// @param request - DeleteStorageGatewayRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteStorageGatewayResponse
+func (client *Client) DeleteStorageGatewayWithOptions(request *DeleteStorageGatewayRequest, runtime *util.RuntimeOptions) (_result *DeleteStorageGatewayResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.GatewayId)) {
+		query["GatewayId"] = request.GatewayId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteStorageGateway"),
+		Version:     tea.String("2017-11-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteStorageGatewayResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes a storage gateway.
+//
+// @param request - DeleteStorageGatewayRequest
+//
+// @return DeleteStorageGatewayResponse
+func (client *Client) DeleteStorageGateway(request *DeleteStorageGatewayRequest) (_result *DeleteStorageGatewayResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteStorageGatewayResponse{}
+	_body, _err := client.DeleteStorageGatewayWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
