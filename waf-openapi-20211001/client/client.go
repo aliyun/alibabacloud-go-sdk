@@ -1962,10 +1962,14 @@ func (s *CreatePostpaidInstanceResponse) SetBody(v *CreatePostpaidInstanceRespon
 }
 
 type CreateSM2CertRequest struct {
+	// The name of the SM certificate.
+	//
 	// example:
 	//
 	// test-sm2
 	CertName *string `json:"CertName,omitempty" xml:"CertName,omitempty"`
+	// The content of the SM certificate.
+	//
 	// example:
 	//
 	// -----BEGIN CERTIFICATE-----
@@ -1974,6 +1978,8 @@ type CreateSM2CertRequest struct {
 	//
 	// -----END CERTIFICATE-----
 	EncryptCertificate *string `json:"EncryptCertificate,omitempty" xml:"EncryptCertificate,omitempty"`
+	// The private key of the SM certificate.
+	//
 	// example:
 	//
 	// -----BEGIN PRIVATE KEY-----
@@ -1982,18 +1988,32 @@ type CreateSM2CertRequest struct {
 	//
 	// -----END PRIVATE KEY-----
 	EncryptPrivateKey *string `json:"EncryptPrivateKey,omitempty" xml:"EncryptPrivateKey,omitempty"`
+	// The ID of the WAF instance.
+	//
+	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+	//
 	// example:
 	//
 	// waf_v2_public_cn-***
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The region in which the WAF instance is deployed. Valid values:
+	//
+	// 	- **cn-hangzhou**: Chinese mainland.
+	//
+	// 	- **ap-southeast-1**: outside the Chinese mainland.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the Alibaba Cloud resource group.
+	//
 	// example:
 	//
 	// rg-acfm***q
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
+	// The content of the signing certificate for the SM certificate.
+	//
 	// example:
 	//
 	// -----BEGIN CERTIFICATE-----
@@ -2002,6 +2022,8 @@ type CreateSM2CertRequest struct {
 	//
 	// -----END CERTIFICATE-----
 	SignCertificate *string `json:"SignCertificate,omitempty" xml:"SignCertificate,omitempty"`
+	// The private key of the signing certificate for the SM certificate.
+	//
 	// example:
 	//
 	// -----BEGIN PRIVATE KEY-----
@@ -2061,10 +2083,14 @@ func (s *CreateSM2CertRequest) SetSignPrivateKey(v string) *CreateSM2CertRequest
 }
 
 type CreateSM2CertResponseBody struct {
+	// The ID of the certificate.
+	//
 	// example:
 	//
 	// ***-cn-hangzhou
 	CertIdentifier *string `json:"CertIdentifier,omitempty" xml:"CertIdentifier,omitempty"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// D7861F61-5B61-46CE-A47C-***
@@ -21702,6 +21728,97 @@ func (s *ModifyTemplateResourcesResponse) SetBody(v *ModifyTemplateResourcesResp
 	return s
 }
 
+type ReleaseInstanceRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf_v2_public_cn-***
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// rg-acfm***q
+	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
+}
+
+func (s ReleaseInstanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ReleaseInstanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ReleaseInstanceRequest) SetInstanceId(v string) *ReleaseInstanceRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ReleaseInstanceRequest) SetRegionId(v string) *ReleaseInstanceRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ReleaseInstanceRequest) SetResourceManagerResourceGroupId(v string) *ReleaseInstanceRequest {
+	s.ResourceManagerResourceGroupId = &v
+	return s
+}
+
+type ReleaseInstanceResponseBody struct {
+	// example:
+	//
+	// 65626467-8002-5022-9F5F-***
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ReleaseInstanceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ReleaseInstanceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ReleaseInstanceResponseBody) SetRequestId(v string) *ReleaseInstanceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ReleaseInstanceResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ReleaseInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ReleaseInstanceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ReleaseInstanceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ReleaseInstanceResponse) SetHeaders(v map[string]*string) *ReleaseInstanceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ReleaseInstanceResponse) SetStatusCode(v int32) *ReleaseInstanceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ReleaseInstanceResponse) SetBody(v *ReleaseInstanceResponseBody) *ReleaseInstanceResponse {
+	s.Body = v
+	return s
+}
+
 type SyncProductInstanceRequest struct {
 	// The ID of the WAF instance.
 	//
@@ -22876,7 +22993,7 @@ func (client *Client) CreatePostpaidInstance(request *CreatePostpaidInstanceRequ
 
 // Summary:
 //
-// 上传国密证书
+// Uploads a ShangMi (SM) certificate for a domain name that is added to Web Application Firewall (WAF) in CNAME record mode.
 //
 // @param request - CreateSM2CertRequest
 //
@@ -22946,7 +23063,7 @@ func (client *Client) CreateSM2CertWithOptions(request *CreateSM2CertRequest, ru
 
 // Summary:
 //
-// 上传国密证书
+// Uploads a ShangMi (SM) certificate for a domain name that is added to Web Application Firewall (WAF) in CNAME record mode.
 //
 // @param request - CreateSM2CertRequest
 //
@@ -30125,6 +30242,74 @@ func (client *Client) ModifyTemplateResources(request *ModifyTemplateResourcesRe
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyTemplateResourcesResponse{}
 	_body, _err := client.ModifyTemplateResourcesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 释放实例
+//
+// @param request - ReleaseInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ReleaseInstanceResponse
+func (client *Client) ReleaseInstanceWithOptions(request *ReleaseInstanceRequest, runtime *util.RuntimeOptions) (_result *ReleaseInstanceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceManagerResourceGroupId)) {
+		query["ResourceManagerResourceGroupId"] = request.ResourceManagerResourceGroupId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ReleaseInstance"),
+		Version:     tea.String("2021-10-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ReleaseInstanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 释放实例
+//
+// @param request - ReleaseInstanceRequest
+//
+// @return ReleaseInstanceResponse
+func (client *Client) ReleaseInstance(request *ReleaseInstanceRequest) (_result *ReleaseInstanceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ReleaseInstanceResponse{}
+	_body, _err := client.ReleaseInstanceWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
