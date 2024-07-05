@@ -1134,9 +1134,10 @@ func (s *Element) SetElementContents(v []*ElementContent) *Element {
 }
 
 type ElementContent struct {
-	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	Type    *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	URL     *string `json:"URL,omitempty" xml:"URL,omitempty"`
+	Content   *string  `json:"Content,omitempty" xml:"Content,omitempty"`
+	TimeRange []*int64 `json:"TimeRange,omitempty" xml:"TimeRange,omitempty" type:"Repeated"`
+	Type      *string  `json:"Type,omitempty" xml:"Type,omitempty"`
+	URL       *string  `json:"URL,omitempty" xml:"URL,omitempty"`
 }
 
 func (s ElementContent) String() string {
@@ -1149,6 +1150,11 @@ func (s ElementContent) GoString() string {
 
 func (s *ElementContent) SetContent(v string) *ElementContent {
 	s.Content = &v
+	return s
+}
+
+func (s *ElementContent) SetTimeRange(v []*int64) *ElementContent {
+	s.TimeRange = v
 	return s
 }
 
@@ -1587,6 +1593,7 @@ type File struct {
 	FileCreateTime                        *string                `json:"FileCreateTime,omitempty" xml:"FileCreateTime,omitempty"`
 	FileHash                              *string                `json:"FileHash,omitempty" xml:"FileHash,omitempty"`
 	FileModifiedTime                      *string                `json:"FileModifiedTime,omitempty" xml:"FileModifiedTime,omitempty"`
+	FileStatus                            *string                `json:"FileStatus,omitempty" xml:"FileStatus,omitempty"`
 	Filename                              *string                `json:"Filename,omitempty" xml:"Filename,omitempty"`
 	FormatLongName                        *string                `json:"FormatLongName,omitempty" xml:"FormatLongName,omitempty"`
 	FormatName                            *string                `json:"FormatName,omitempty" xml:"FormatName,omitempty"`
@@ -1619,6 +1626,8 @@ type File struct {
 	ProduceTime                           *string                `json:"ProduceTime,omitempty" xml:"ProduceTime,omitempty"`
 	ProgramCount                          *int64                 `json:"ProgramCount,omitempty" xml:"ProgramCount,omitempty"`
 	ProjectName                           *string                `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	Reason                                *string                `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	SceneElements                         []*SceneElement        `json:"SceneElements,omitempty" xml:"SceneElements,omitempty" type:"Repeated"`
 	SemanticTypes                         []*string              `json:"SemanticTypes,omitempty" xml:"SemanticTypes,omitempty" type:"Repeated"`
 	ServerSideDataEncryption              *string                `json:"ServerSideDataEncryption,omitempty" xml:"ServerSideDataEncryption,omitempty"`
 	ServerSideEncryption                  *string                `json:"ServerSideEncryption,omitempty" xml:"ServerSideEncryption,omitempty"`
@@ -1801,6 +1810,11 @@ func (s *File) SetFileModifiedTime(v string) *File {
 	return s
 }
 
+func (s *File) SetFileStatus(v string) *File {
+	s.FileStatus = &v
+	return s
+}
+
 func (s *File) SetFilename(v string) *File {
 	s.Filename = &v
 	return s
@@ -1958,6 +1972,16 @@ func (s *File) SetProgramCount(v int64) *File {
 
 func (s *File) SetProjectName(v string) *File {
 	s.ProjectName = &v
+	return s
+}
+
+func (s *File) SetReason(v string) *File {
+	s.Reason = &v
+	return s
+}
+
+func (s *File) SetSceneElements(v []*SceneElement) *File {
+	s.SceneElements = v
 	return s
 }
 
@@ -3311,6 +3335,29 @@ func (s *Runtime) SetResource(v *Resource) *Runtime {
 	return s
 }
 
+type SceneElement struct {
+	FrameTimes []*int64 `json:"FrameTimes,omitempty" xml:"FrameTimes,omitempty" type:"Repeated"`
+	TimeRange  []*int64 `json:"TimeRange,omitempty" xml:"TimeRange,omitempty" type:"Repeated"`
+}
+
+func (s SceneElement) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SceneElement) GoString() string {
+	return s.String()
+}
+
+func (s *SceneElement) SetFrameTimes(v []*int64) *SceneElement {
+	s.FrameTimes = v
+	return s
+}
+
+func (s *SceneElement) SetTimeRange(v []*int64) *SceneElement {
+	s.TimeRange = v
+	return s
+}
+
 type Schedule struct {
 	// example:
 	//
@@ -3790,6 +3837,7 @@ func (s *TargetAudioFilterAudio) SetMixing(v bool) *TargetAudioFilterAudio {
 type TargetAudioTranscodeAudio struct {
 	Bitrate          *int32  `json:"Bitrate,omitempty" xml:"Bitrate,omitempty"`
 	BitrateOption    *string `json:"BitrateOption,omitempty" xml:"BitrateOption,omitempty"`
+	BitsPerSample    *int32  `json:"BitsPerSample,omitempty" xml:"BitsPerSample,omitempty"`
 	Channel          *int32  `json:"Channel,omitempty" xml:"Channel,omitempty"`
 	Codec            *string `json:"Codec,omitempty" xml:"Codec,omitempty"`
 	Quality          *int32  `json:"Quality,omitempty" xml:"Quality,omitempty"`
@@ -3812,6 +3860,11 @@ func (s *TargetAudioTranscodeAudio) SetBitrate(v int32) *TargetAudioTranscodeAud
 
 func (s *TargetAudioTranscodeAudio) SetBitrateOption(v string) *TargetAudioTranscodeAudio {
 	s.BitrateOption = &v
+	return s
+}
+
+func (s *TargetAudioTranscodeAudio) SetBitsPerSample(v int32) *TargetAudioTranscodeAudio {
+	s.BitsPerSample = &v
 	return s
 }
 
