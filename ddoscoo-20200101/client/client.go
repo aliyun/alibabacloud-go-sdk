@@ -444,8 +444,16 @@ func (s *AttachSceneDefenseObjectResponse) SetBody(v *AttachSceneDefenseObjectRe
 type ConfigDomainSecurityProfileRequest struct {
 	Cluster *string `json:"Cluster,omitempty" xml:"Cluster,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// {\\"global_rule_mode\\":\\"hard\\"}
 	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// live.abcde.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 }
 
@@ -473,6 +481,9 @@ func (s *ConfigDomainSecurityProfileRequest) SetDomain(v string) *ConfigDomainSe
 }
 
 type ConfigDomainSecurityProfileResponseBody struct {
+	// example:
+	//
+	// 9728769F-9466-534E-BE12-CAB29A675828
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -6614,7 +6625,8 @@ type DescribeDDosEventAreaRequest struct {
 	// example:
 	//
 	// 203.***.***.199
-	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	Ip    *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	Range *int64  `json:"Range,omitempty" xml:"Range,omitempty"`
 	// The UNIX timestamp when the query starts. Unit: seconds.
 	//
 	// > You can call the [DescribeDDosAllEventList](https://help.aliyun.com/document_detail/188604.html) operation to query the beginning time of all attack events.
@@ -6642,6 +6654,11 @@ func (s *DescribeDDosEventAreaRequest) SetEventType(v string) *DescribeDDosEvent
 
 func (s *DescribeDDosEventAreaRequest) SetIp(v string) *DescribeDDosEventAreaRequest {
 	s.Ip = &v
+	return s
+}
+
+func (s *DescribeDDosEventAreaRequest) SetRange(v int64) *DescribeDDosEventAreaRequest {
+	s.Range = &v
 	return s
 }
 
@@ -6990,7 +7007,8 @@ type DescribeDDosEventIspRequest struct {
 	// example:
 	//
 	// 203.***.***.199
-	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	Ip    *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	Range *int64  `json:"Range,omitempty" xml:"Range,omitempty"`
 	// The UNIX timestamp when the query starts. Unit: seconds.
 	//
 	// > You can call the [DescribeDDosAllEventList](https://help.aliyun.com/document_detail/188604.html) operation to query the beginning time of all attack events.
@@ -7018,6 +7036,11 @@ func (s *DescribeDDosEventIspRequest) SetEventType(v string) *DescribeDDosEventI
 
 func (s *DescribeDDosEventIspRequest) SetIp(v string) *DescribeDDosEventIspRequest {
 	s.Ip = &v
+	return s
+}
+
+func (s *DescribeDDosEventIspRequest) SetRange(v int64) *DescribeDDosEventIspRequest {
+	s.Range = &v
 	return s
 }
 
@@ -7855,6 +7878,156 @@ func (s *DescribeDefenseRecordsResponse) SetStatusCode(v int32) *DescribeDefense
 }
 
 func (s *DescribeDefenseRecordsResponse) SetBody(v *DescribeDefenseRecordsResponseBody) *DescribeDefenseRecordsResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeDestinationPortEventRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// defense
+	EventType *string `json:"EventType,omitempty" xml:"EventType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 203.107.XX.XX
+	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2
+	Range *int64 `json:"Range,omitempty" xml:"Range,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1720059000
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s DescribeDestinationPortEventRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDestinationPortEventRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDestinationPortEventRequest) SetEventType(v string) *DescribeDestinationPortEventRequest {
+	s.EventType = &v
+	return s
+}
+
+func (s *DescribeDestinationPortEventRequest) SetIp(v string) *DescribeDestinationPortEventRequest {
+	s.Ip = &v
+	return s
+}
+
+func (s *DescribeDestinationPortEventRequest) SetRange(v int64) *DescribeDestinationPortEventRequest {
+	s.Range = &v
+	return s
+}
+
+func (s *DescribeDestinationPortEventRequest) SetRegion(v string) *DescribeDestinationPortEventRequest {
+	s.Region = &v
+	return s
+}
+
+func (s *DescribeDestinationPortEventRequest) SetStartTime(v int64) *DescribeDestinationPortEventRequest {
+	s.StartTime = &v
+	return s
+}
+
+type DescribeDestinationPortEventResponseBody struct {
+	PortList []*DescribeDestinationPortEventResponseBodyPortList `json:"PortList,omitempty" xml:"PortList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 9E7F6B2C-03F2-462F-9076-B782CF0DD502
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeDestinationPortEventResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDestinationPortEventResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDestinationPortEventResponseBody) SetPortList(v []*DescribeDestinationPortEventResponseBodyPortList) *DescribeDestinationPortEventResponseBody {
+	s.PortList = v
+	return s
+}
+
+func (s *DescribeDestinationPortEventResponseBody) SetRequestId(v string) *DescribeDestinationPortEventResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeDestinationPortEventResponseBodyPortList struct {
+	// example:
+	//
+	// 80
+	DstPort *string `json:"DstPort,omitempty" xml:"DstPort,omitempty"`
+	// example:
+	//
+	// 8760950
+	InPkts *int64 `json:"InPkts,omitempty" xml:"InPkts,omitempty"`
+}
+
+func (s DescribeDestinationPortEventResponseBodyPortList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDestinationPortEventResponseBodyPortList) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDestinationPortEventResponseBodyPortList) SetDstPort(v string) *DescribeDestinationPortEventResponseBodyPortList {
+	s.DstPort = &v
+	return s
+}
+
+func (s *DescribeDestinationPortEventResponseBodyPortList) SetInPkts(v int64) *DescribeDestinationPortEventResponseBodyPortList {
+	s.InPkts = &v
+	return s
+}
+
+type DescribeDestinationPortEventResponse struct {
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeDestinationPortEventResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeDestinationPortEventResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDestinationPortEventResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDestinationPortEventResponse) SetHeaders(v map[string]*string) *DescribeDestinationPortEventResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeDestinationPortEventResponse) SetStatusCode(v int32) *DescribeDestinationPortEventResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeDestinationPortEventResponse) SetBody(v *DescribeDestinationPortEventResponseBody) *DescribeDestinationPortEventResponse {
 	s.Body = v
 	return s
 }
@@ -29771,11 +29944,14 @@ func (client *Client) CreateTagResources(request *CreateTagResourcesRequest) (_r
 	return _result, _err
 }
 
+// Deprecated: OpenAPI CreateWebCCRule is deprecated, please use ddoscoo::2020-01-01::ConfigWebCCRuleV2 instead.
+//
 // @param request - CreateWebCCRuleRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateWebCCRuleResponse
+// Deprecated
 func (client *Client) CreateWebCCRuleWithOptions(request *CreateWebCCRuleRequest, runtime *util.RuntimeOptions) (_result *CreateWebCCRuleResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -29841,9 +30017,12 @@ func (client *Client) CreateWebCCRuleWithOptions(request *CreateWebCCRuleRequest
 	return _result, _err
 }
 
+// Deprecated: OpenAPI CreateWebCCRule is deprecated, please use ddoscoo::2020-01-01::ConfigWebCCRuleV2 instead.
+//
 // @param request - CreateWebCCRuleRequest
 //
 // @return CreateWebCCRuleResponse
+// Deprecated
 func (client *Client) CreateWebCCRule(request *CreateWebCCRuleRequest) (_result *CreateWebCCRuleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateWebCCRuleResponse{}
@@ -30563,6 +30742,8 @@ func (client *Client) DeleteTagResources(request *DeleteTagResourcesRequest) (_r
 	return _result, _err
 }
 
+// Deprecated: OpenAPI DeleteWebCCRule is deprecated, please use ddoscoo::2020-01-01::DeleteWebCCRuleV2 instead.
+//
 // Summary:
 //
 // Deletes a custom frequency control rule of a website.
@@ -30572,6 +30753,7 @@ func (client *Client) DeleteTagResources(request *DeleteTagResourcesRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DeleteWebCCRuleResponse
+// Deprecated
 func (client *Client) DeleteWebCCRuleWithOptions(request *DeleteWebCCRuleRequest, runtime *util.RuntimeOptions) (_result *DeleteWebCCRuleResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -30613,6 +30795,8 @@ func (client *Client) DeleteWebCCRuleWithOptions(request *DeleteWebCCRuleRequest
 	return _result, _err
 }
 
+// Deprecated: OpenAPI DeleteWebCCRule is deprecated, please use ddoscoo::2020-01-01::DeleteWebCCRuleV2 instead.
+//
 // Summary:
 //
 // Deletes a custom frequency control rule of a website.
@@ -30620,6 +30804,7 @@ func (client *Client) DeleteWebCCRuleWithOptions(request *DeleteWebCCRuleRequest
 // @param request - DeleteWebCCRuleRequest
 //
 // @return DeleteWebCCRuleResponse
+// Deprecated
 func (client *Client) DeleteWebCCRule(request *DeleteWebCCRuleRequest) (_result *DeleteWebCCRuleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteWebCCRuleResponse{}
@@ -31802,6 +31987,10 @@ func (client *Client) DescribeDDosEventAreaWithOptions(request *DescribeDDosEven
 		query["Ip"] = request.Ip
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Range)) {
+		query["Range"] = request.Range
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
 		query["StartTime"] = request.StartTime
 	}
@@ -31952,6 +32141,10 @@ func (client *Client) DescribeDDosEventIspWithOptions(request *DescribeDDosEvent
 
 	if !tea.BoolValue(util.IsUnset(request.Ip)) {
 		query["Ip"] = request.Ip
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Range)) {
+		query["Range"] = request.Range
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
@@ -32308,6 +32501,82 @@ func (client *Client) DescribeDefenseRecords(request *DescribeDefenseRecordsRequ
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDefenseRecordsResponse{}
 	_body, _err := client.DescribeDefenseRecordsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询目的端口事件
+//
+// @param request - DescribeDestinationPortEventRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDestinationPortEventResponse
+func (client *Client) DescribeDestinationPortEventWithOptions(request *DescribeDestinationPortEventRequest, runtime *util.RuntimeOptions) (_result *DescribeDestinationPortEventResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EventType)) {
+		query["EventType"] = request.EventType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Ip)) {
+		query["Ip"] = request.Ip
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Range)) {
+		query["Range"] = request.Range
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Region)) {
+		query["Region"] = request.Region
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeDestinationPortEvent"),
+		Version:     tea.String("2020-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeDestinationPortEventResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询目的端口事件
+//
+// @param request - DescribeDestinationPortEventRequest
+//
+// @return DescribeDestinationPortEventResponse
+func (client *Client) DescribeDestinationPortEvent(request *DescribeDestinationPortEventRequest) (_result *DescribeDestinationPortEventResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeDestinationPortEventResponse{}
+	_body, _err := client.DescribeDestinationPortEventWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -37031,6 +37300,8 @@ func (client *Client) DescribeWebAreaBlockConfigs(request *DescribeWebAreaBlockC
 	return _result, _err
 }
 
+// Deprecated: OpenAPI DescribeWebCCRules is deprecated, please use ddoscoo::2020-01-01::ConfigWebCCRuleV2 instead.
+//
 // Summary:
 //
 // Queries the custom frequency control rules that are created for a website.
@@ -37040,6 +37311,7 @@ func (client *Client) DescribeWebAreaBlockConfigs(request *DescribeWebAreaBlockC
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return DescribeWebCCRulesResponse
+// Deprecated
 func (client *Client) DescribeWebCCRulesWithOptions(request *DescribeWebCCRulesRequest, runtime *util.RuntimeOptions) (_result *DescribeWebCCRulesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -37085,6 +37357,8 @@ func (client *Client) DescribeWebCCRulesWithOptions(request *DescribeWebCCRulesR
 	return _result, _err
 }
 
+// Deprecated: OpenAPI DescribeWebCCRules is deprecated, please use ddoscoo::2020-01-01::ConfigWebCCRuleV2 instead.
+//
 // Summary:
 //
 // Queries the custom frequency control rules that are created for a website.
@@ -37092,6 +37366,7 @@ func (client *Client) DescribeWebCCRulesWithOptions(request *DescribeWebCCRulesR
 // @param request - DescribeWebCCRulesRequest
 //
 // @return DescribeWebCCRulesResponse
+// Deprecated
 func (client *Client) DescribeWebCCRules(request *DescribeWebCCRulesRequest) (_result *DescribeWebCCRulesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeWebCCRulesResponse{}
@@ -40355,11 +40630,14 @@ func (client *Client) ModifyWebCCGlobalSwitch(request *ModifyWebCCGlobalSwitchRe
 	return _result, _err
 }
 
+// Deprecated: OpenAPI ModifyWebCCRule is deprecated, please use ddoscoo::2020-01-01::ConfigWebCCRuleV2 instead.
+//
 // @param request - ModifyWebCCRuleRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyWebCCRuleResponse
+// Deprecated
 func (client *Client) ModifyWebCCRuleWithOptions(request *ModifyWebCCRuleRequest, runtime *util.RuntimeOptions) (_result *ModifyWebCCRuleResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -40425,9 +40703,12 @@ func (client *Client) ModifyWebCCRuleWithOptions(request *ModifyWebCCRuleRequest
 	return _result, _err
 }
 
+// Deprecated: OpenAPI ModifyWebCCRule is deprecated, please use ddoscoo::2020-01-01::ConfigWebCCRuleV2 instead.
+//
 // @param request - ModifyWebCCRuleRequest
 //
 // @return ModifyWebCCRuleResponse
+// Deprecated
 func (client *Client) ModifyWebCCRule(request *ModifyWebCCRuleRequest) (_result *ModifyWebCCRuleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyWebCCRuleResponse{}
