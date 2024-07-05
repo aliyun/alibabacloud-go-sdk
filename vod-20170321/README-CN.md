@@ -10,7 +10,7 @@
 ## 安装
 你可以使用 `go mod` 来管理你的依赖，
 ```sh
-  go get github.com/alibabacloud-go/vod-20170321/v3
+  go get github.com/alibabacloud-go/vod-20170321/v4
 ```
 
 ## 问题
