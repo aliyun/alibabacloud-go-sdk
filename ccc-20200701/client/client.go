@@ -27324,6 +27324,131 @@ func (s *ListCasesResponse) SetBody(v *ListCasesResponseBody) *ListCasesResponse
 	return s
 }
 
+type ListCategoriesRequest struct {
+	// example:
+	//
+	// 43c2671b-***-***-86d0-6bd187905cc8
+	CategoryId *string `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ccc-test
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// Ticket
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s ListCategoriesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCategoriesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListCategoriesRequest) SetCategoryId(v string) *ListCategoriesRequest {
+	s.CategoryId = &v
+	return s
+}
+
+func (s *ListCategoriesRequest) SetInstanceId(v string) *ListCategoriesRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ListCategoriesRequest) SetType(v string) *ListCategoriesRequest {
+	s.Type = &v
+	return s
+}
+
+type ListCategoriesResponseBody struct {
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32    `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string   `json:"Message,omitempty" xml:"Message,omitempty"`
+	Params         []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+	// example:
+	//
+	// DE803553-8AA9-4B9D-9E4E-A82BC69EDCEE
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListCategoriesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCategoriesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListCategoriesResponseBody) SetCode(v string) *ListCategoriesResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListCategoriesResponseBody) SetData(v string) *ListCategoriesResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *ListCategoriesResponseBody) SetHttpStatusCode(v int32) *ListCategoriesResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *ListCategoriesResponseBody) SetMessage(v string) *ListCategoriesResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListCategoriesResponseBody) SetParams(v []*string) *ListCategoriesResponseBody {
+	s.Params = v
+	return s
+}
+
+func (s *ListCategoriesResponseBody) SetRequestId(v string) *ListCategoriesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListCategoriesResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListCategoriesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListCategoriesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCategoriesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListCategoriesResponse) SetHeaders(v map[string]*string) *ListCategoriesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListCategoriesResponse) SetStatusCode(v int32) *ListCategoriesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListCategoriesResponse) SetBody(v *ListCategoriesResponseBody) *ListCategoriesResponse {
+	s.Body = v
+	return s
+}
+
 type ListCommonTicketFieldsRequest struct {
 	// This parameter is required.
 	//
@@ -69549,6 +69674,66 @@ func (client *Client) ListCases(request *ListCasesRequest) (_result *ListCasesRe
 	runtime := &util.RuntimeOptions{}
 	_result = &ListCasesResponse{}
 	_body, _err := client.ListCasesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param request - ListCategoriesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListCategoriesResponse
+func (client *Client) ListCategoriesWithOptions(request *ListCategoriesRequest, runtime *util.RuntimeOptions) (_result *ListCategoriesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CategoryId)) {
+		query["CategoryId"] = request.CategoryId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		query["Type"] = request.Type
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListCategories"),
+		Version:     tea.String("2020-07-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListCategoriesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - ListCategoriesRequest
+//
+// @return ListCategoriesResponse
+func (client *Client) ListCategories(request *ListCategoriesRequest) (_result *ListCategoriesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListCategoriesResponse{}
+	_body, _err := client.ListCategoriesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
