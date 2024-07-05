@@ -3379,8 +3379,9 @@ func (s *Workspace) SetWorkspaceName(v string) *Workspace {
 }
 
 type CreateJobRequest struct {
-	CodeSource  *CreateJobRequestCodeSource    `json:"CodeSource,omitempty" xml:"CodeSource,omitempty" type:"Struct"`
-	DataSources []*CreateJobRequestDataSources `json:"DataSources,omitempty" xml:"DataSources,omitempty" type:"Repeated"`
+	CodeSource       *CreateJobRequestCodeSource    `json:"CodeSource,omitempty" xml:"CodeSource,omitempty" type:"Struct"`
+	CredentialConfig *CredentialConfig              `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
+	DataSources      []*CreateJobRequestDataSources `json:"DataSources,omitempty" xml:"DataSources,omitempty" type:"Repeated"`
 	// example:
 	//
 	// “”
@@ -3450,6 +3451,11 @@ func (s CreateJobRequest) GoString() string {
 
 func (s *CreateJobRequest) SetCodeSource(v *CreateJobRequestCodeSource) *CreateJobRequest {
 	s.CodeSource = v
+	return s
+}
+
+func (s *CreateJobRequest) SetCredentialConfig(v *CredentialConfig) *CreateJobRequest {
+	s.CredentialConfig = v
 	return s
 }
 
@@ -7061,6 +7067,10 @@ func (client *Client) CreateJobWithOptions(request *CreateJobRequest, headers ma
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.CodeSource)) {
 		body["CodeSource"] = request.CodeSource
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CredentialConfig)) {
+		body["CredentialConfig"] = request.CredentialConfig
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.DataSources)) {
