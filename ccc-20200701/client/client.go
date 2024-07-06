@@ -11423,6 +11423,138 @@ func (s *ExportDoNotCallNumbersResponse) SetBody(v *ExportDoNotCallNumbersRespon
 	return s
 }
 
+type FinishTicketTaskRequest struct {
+	// This parameter is required.
+	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ccc-test
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// b52a34dc-f514-4600-9c39-3cf657167c97
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// example:
+	//
+	// f2c6722b-cd13-442d-bf10-22a07c70d6d5
+	TicketId *string `json:"TicketId,omitempty" xml:"TicketId,omitempty"`
+}
+
+func (s FinishTicketTaskRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FinishTicketTaskRequest) GoString() string {
+	return s.String()
+}
+
+func (s *FinishTicketTaskRequest) SetComment(v string) *FinishTicketTaskRequest {
+	s.Comment = &v
+	return s
+}
+
+func (s *FinishTicketTaskRequest) SetInstanceId(v string) *FinishTicketTaskRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *FinishTicketTaskRequest) SetTaskId(v string) *FinishTicketTaskRequest {
+	s.TaskId = &v
+	return s
+}
+
+func (s *FinishTicketTaskRequest) SetTicketId(v string) *FinishTicketTaskRequest {
+	s.TicketId = &v
+	return s
+}
+
+type FinishTicketTaskResponseBody struct {
+	// example:
+	//
+	// OK
+	Code *string     `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32    `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string   `json:"Message,omitempty" xml:"Message,omitempty"`
+	Params         []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 7BEEA660-A45A-45E3-98CC-AFC65E715C23
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s FinishTicketTaskResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FinishTicketTaskResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *FinishTicketTaskResponseBody) SetCode(v string) *FinishTicketTaskResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *FinishTicketTaskResponseBody) SetData(v interface{}) *FinishTicketTaskResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *FinishTicketTaskResponseBody) SetHttpStatusCode(v int32) *FinishTicketTaskResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *FinishTicketTaskResponseBody) SetMessage(v string) *FinishTicketTaskResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *FinishTicketTaskResponseBody) SetParams(v []*string) *FinishTicketTaskResponseBody {
+	s.Params = v
+	return s
+}
+
+func (s *FinishTicketTaskResponseBody) SetRequestId(v string) *FinishTicketTaskResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type FinishTicketTaskResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *FinishTicketTaskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s FinishTicketTaskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FinishTicketTaskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *FinishTicketTaskResponse) SetHeaders(v map[string]*string) *FinishTicketTaskResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *FinishTicketTaskResponse) SetStatusCode(v int32) *FinishTicketTaskResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *FinishTicketTaskResponse) SetBody(v *FinishTicketTaskResponseBody) *FinishTicketTaskResponse {
+	s.Body = v
+	return s
+}
+
 type GetAccessChannelOfStagingRequest struct {
 	SearchPattern *string `json:"SearchPattern,omitempty" xml:"SearchPattern,omitempty"`
 }
@@ -65864,6 +65996,70 @@ func (client *Client) ExportDoNotCallNumbers(request *ExportDoNotCallNumbersRequ
 	runtime := &util.RuntimeOptions{}
 	_result = &ExportDoNotCallNumbersResponse{}
 	_body, _err := client.ExportDoNotCallNumbersWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param request - FinishTicketTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return FinishTicketTaskResponse
+func (client *Client) FinishTicketTaskWithOptions(request *FinishTicketTaskRequest, runtime *util.RuntimeOptions) (_result *FinishTicketTaskResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Comment)) {
+		query["Comment"] = request.Comment
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskId)) {
+		query["TaskId"] = request.TaskId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TicketId)) {
+		query["TicketId"] = request.TicketId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("FinishTicketTask"),
+		Version:     tea.String("2020-07-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &FinishTicketTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - FinishTicketTaskRequest
+//
+// @return FinishTicketTaskResponse
+func (client *Client) FinishTicketTask(request *FinishTicketTaskRequest) (_result *FinishTicketTaskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &FinishTicketTaskResponse{}
+	_body, _err := client.FinishTicketTaskWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
