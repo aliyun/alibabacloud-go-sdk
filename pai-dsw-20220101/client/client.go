@@ -409,7 +409,8 @@ type CreateInstanceRequest struct {
 	// example:
 	//
 	// PRIVATE
-	Accessibility *string `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
+	Accessibility *string                        `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
+	Affinity      *CreateInstanceRequestAffinity `json:"Affinity,omitempty" xml:"Affinity,omitempty" type:"Struct"`
 	// example:
 	//
 	// []
@@ -480,6 +481,11 @@ func (s CreateInstanceRequest) GoString() string {
 
 func (s *CreateInstanceRequest) SetAccessibility(v string) *CreateInstanceRequest {
 	s.Accessibility = &v
+	return s
+}
+
+func (s *CreateInstanceRequest) SetAffinity(v *CreateInstanceRequestAffinity) *CreateInstanceRequest {
+	s.Affinity = v
 	return s
 }
 
@@ -560,6 +566,40 @@ func (s *CreateInstanceRequest) SetWorkspaceId(v string) *CreateInstanceRequest 
 
 func (s *CreateInstanceRequest) SetWorkspaceSource(v string) *CreateInstanceRequest {
 	s.WorkspaceSource = &v
+	return s
+}
+
+type CreateInstanceRequestAffinity struct {
+	CPU *CreateInstanceRequestAffinityCPU `json:"CPU,omitempty" xml:"CPU,omitempty" type:"Struct"`
+}
+
+func (s CreateInstanceRequestAffinity) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateInstanceRequestAffinity) GoString() string {
+	return s.String()
+}
+
+func (s *CreateInstanceRequestAffinity) SetCPU(v *CreateInstanceRequestAffinityCPU) *CreateInstanceRequestAffinity {
+	s.CPU = v
+	return s
+}
+
+type CreateInstanceRequestAffinityCPU struct {
+	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
+}
+
+func (s CreateInstanceRequestAffinityCPU) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateInstanceRequestAffinityCPU) GoString() string {
+	return s.String()
+}
+
+func (s *CreateInstanceRequestAffinityCPU) SetEnable(v bool) *CreateInstanceRequestAffinityCPU {
+	s.Enable = &v
 	return s
 }
 
@@ -1759,7 +1799,8 @@ type GetInstanceResponseBody struct {
 	// example:
 	//
 	// 3600000
-	AccumulatedRunningTimeInMs *int64 `json:"AccumulatedRunningTimeInMs,omitempty" xml:"AccumulatedRunningTimeInMs,omitempty"`
+	AccumulatedRunningTimeInMs *int64                           `json:"AccumulatedRunningTimeInMs,omitempty" xml:"AccumulatedRunningTimeInMs,omitempty"`
+	Affinity                   *GetInstanceResponseBodyAffinity `json:"Affinity,omitempty" xml:"Affinity,omitempty" type:"Struct"`
 	// example:
 	//
 	// []
@@ -1935,6 +1976,11 @@ func (s *GetInstanceResponseBody) SetAccessibility(v string) *GetInstanceRespons
 
 func (s *GetInstanceResponseBody) SetAccumulatedRunningTimeInMs(v int64) *GetInstanceResponseBody {
 	s.AccumulatedRunningTimeInMs = &v
+	return s
+}
+
+func (s *GetInstanceResponseBody) SetAffinity(v *GetInstanceResponseBodyAffinity) *GetInstanceResponseBody {
+	s.Affinity = v
 	return s
 }
 
@@ -2140,6 +2186,40 @@ func (s *GetInstanceResponseBody) SetWorkspaceName(v string) *GetInstanceRespons
 
 func (s *GetInstanceResponseBody) SetWorkspaceSource(v string) *GetInstanceResponseBody {
 	s.WorkspaceSource = &v
+	return s
+}
+
+type GetInstanceResponseBodyAffinity struct {
+	CPU *GetInstanceResponseBodyAffinityCPU `json:"CPU,omitempty" xml:"CPU,omitempty" type:"Struct"`
+}
+
+func (s GetInstanceResponseBodyAffinity) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetInstanceResponseBodyAffinity) GoString() string {
+	return s.String()
+}
+
+func (s *GetInstanceResponseBodyAffinity) SetCPU(v *GetInstanceResponseBodyAffinityCPU) *GetInstanceResponseBodyAffinity {
+	s.CPU = v
+	return s
+}
+
+type GetInstanceResponseBodyAffinityCPU struct {
+	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
+}
+
+func (s GetInstanceResponseBodyAffinityCPU) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetInstanceResponseBodyAffinityCPU) GoString() string {
+	return s.String()
+}
+
+func (s *GetInstanceResponseBodyAffinityCPU) SetEnable(v bool) *GetInstanceResponseBodyAffinityCPU {
+	s.Enable = &v
 	return s
 }
 
@@ -5384,7 +5464,8 @@ type ListInstancesResponseBodyInstances struct {
 	// example:
 	//
 	// 3600000
-	AccumulatedRunningTimeInMs *int64 `json:"AccumulatedRunningTimeInMs,omitempty" xml:"AccumulatedRunningTimeInMs,omitempty"`
+	AccumulatedRunningTimeInMs *int64                                      `json:"AccumulatedRunningTimeInMs,omitempty" xml:"AccumulatedRunningTimeInMs,omitempty"`
+	Affinity                   *ListInstancesResponseBodyInstancesAffinity `json:"Affinity,omitempty" xml:"Affinity,omitempty" type:"Struct"`
 	// example:
 	//
 	// []
@@ -5539,6 +5620,11 @@ func (s *ListInstancesResponseBodyInstances) SetAccessibility(v string) *ListIns
 
 func (s *ListInstancesResponseBodyInstances) SetAccumulatedRunningTimeInMs(v int64) *ListInstancesResponseBodyInstances {
 	s.AccumulatedRunningTimeInMs = &v
+	return s
+}
+
+func (s *ListInstancesResponseBodyInstances) SetAffinity(v *ListInstancesResponseBodyInstancesAffinity) *ListInstancesResponseBodyInstances {
+	s.Affinity = v
 	return s
 }
 
@@ -5714,6 +5800,40 @@ func (s *ListInstancesResponseBodyInstances) SetWorkspaceName(v string) *ListIns
 
 func (s *ListInstancesResponseBodyInstances) SetWorkspaceSource(v string) *ListInstancesResponseBodyInstances {
 	s.WorkspaceSource = &v
+	return s
+}
+
+type ListInstancesResponseBodyInstancesAffinity struct {
+	CPU *ListInstancesResponseBodyInstancesAffinityCPU `json:"CPU,omitempty" xml:"CPU,omitempty" type:"Struct"`
+}
+
+func (s ListInstancesResponseBodyInstancesAffinity) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListInstancesResponseBodyInstancesAffinity) GoString() string {
+	return s.String()
+}
+
+func (s *ListInstancesResponseBodyInstancesAffinity) SetCPU(v *ListInstancesResponseBodyInstancesAffinityCPU) *ListInstancesResponseBodyInstancesAffinity {
+	s.CPU = v
+	return s
+}
+
+type ListInstancesResponseBodyInstancesAffinityCPU struct {
+	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
+}
+
+func (s ListInstancesResponseBodyInstancesAffinityCPU) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListInstancesResponseBodyInstancesAffinityCPU) GoString() string {
+	return s.String()
+}
+
+func (s *ListInstancesResponseBodyInstancesAffinityCPU) SetEnable(v bool) *ListInstancesResponseBodyInstancesAffinityCPU {
+	s.Enable = &v
 	return s
 }
 
@@ -6495,7 +6615,8 @@ type UpdateInstanceRequest struct {
 	// example:
 	//
 	// PRIVATE
-	Accessibility *string `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
+	Accessibility *string                        `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
+	Affinity      *UpdateInstanceRequestAffinity `json:"Affinity,omitempty" xml:"Affinity,omitempty" type:"Struct"`
 	// example:
 	//
 	// []
@@ -6566,6 +6687,11 @@ func (s UpdateInstanceRequest) GoString() string {
 
 func (s *UpdateInstanceRequest) SetAccessibility(v string) *UpdateInstanceRequest {
 	s.Accessibility = &v
+	return s
+}
+
+func (s *UpdateInstanceRequest) SetAffinity(v *UpdateInstanceRequestAffinity) *UpdateInstanceRequest {
+	s.Affinity = v
 	return s
 }
 
@@ -6646,6 +6772,40 @@ func (s *UpdateInstanceRequest) SetUserVpc(v *UpdateInstanceRequestUserVpc) *Upd
 
 func (s *UpdateInstanceRequest) SetWorkspaceSource(v string) *UpdateInstanceRequest {
 	s.WorkspaceSource = &v
+	return s
+}
+
+type UpdateInstanceRequestAffinity struct {
+	CPU *UpdateInstanceRequestAffinityCPU `json:"CPU,omitempty" xml:"CPU,omitempty" type:"Struct"`
+}
+
+func (s UpdateInstanceRequestAffinity) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateInstanceRequestAffinity) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateInstanceRequestAffinity) SetCPU(v *UpdateInstanceRequestAffinityCPU) *UpdateInstanceRequestAffinity {
+	s.CPU = v
+	return s
+}
+
+type UpdateInstanceRequestAffinityCPU struct {
+	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
+}
+
+func (s UpdateInstanceRequestAffinityCPU) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateInstanceRequestAffinityCPU) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateInstanceRequestAffinityCPU) SetEnable(v bool) *UpdateInstanceRequestAffinityCPU {
+	s.Enable = &v
 	return s
 }
 
@@ -7070,6 +7230,10 @@ func (client *Client) CreateInstanceWithOptions(request *CreateInstanceRequest, 
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Accessibility)) {
 		body["Accessibility"] = request.Accessibility
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Affinity)) {
+		body["Affinity"] = request.Affinity
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.CloudDisks)) {
@@ -8652,6 +8816,10 @@ func (client *Client) UpdateInstanceWithOptions(InstanceId *string, request *Upd
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Accessibility)) {
 		body["Accessibility"] = request.Accessibility
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Affinity)) {
+		body["Affinity"] = request.Affinity
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.CloudDisks)) {
