@@ -7167,7 +7167,7 @@ type DescribeAccessRulesRequest struct {
 	//
 	// vpc-test
 	AccessGroupName *string `json:"AccessGroupName,omitempty" xml:"AccessGroupName,omitempty"`
-	// The ID of the rule.
+	// The rule ID.
 	//
 	// example:
 	//
@@ -7318,13 +7318,29 @@ func (s *DescribeAccessRulesResponseBodyAccessRules) SetAccessRule(v []*Describe
 }
 
 type DescribeAccessRulesResponseBodyAccessRulesAccessRule struct {
+	// The name of the permission group.
+	//
+	// example:
+	//
+	// test
 	AccessGroupName *string `json:"AccessGroupName,omitempty" xml:"AccessGroupName,omitempty"`
 	// The ID of the rule.
 	//
 	// example:
 	//
 	// 1
-	AccessRuleId   *string `json:"AccessRuleId,omitempty" xml:"AccessRuleId,omitempty"`
+	AccessRuleId *string `json:"AccessRuleId,omitempty" xml:"AccessRuleId,omitempty"`
+	// The type of the file system.
+	//
+	// Valid values:
+	//
+	// 	- standard: General-purpose Apsara File Storage NAS (NAS) file system
+	//
+	// 	- extreme: Extreme NAS file system
+	//
+	// example:
+	//
+	// standard
 	FileSystemType *string `json:"FileSystemType,omitempty" xml:"FileSystemType,omitempty"`
 	// The IPv6 address or CIDR block of the authorized object.
 	//
@@ -7354,12 +7370,13 @@ type DescribeAccessRulesResponseBodyAccessRulesAccessRule struct {
 	//
 	// RDWR
 	RWAccess *string `json:"RWAccess,omitempty" xml:"RWAccess,omitempty"`
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The IP address or CIDR block of the authorized object.
+	// The region ID.
 	//
 	// example:
 	//
-	// 10.0.*.*/**
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The IP address or CIDR block of the authorized object.
 	SourceCidrIp *string `json:"SourceCidrIp,omitempty" xml:"SourceCidrIp,omitempty"`
 	// The access permissions for different types of users in the authorized object.
 	//
@@ -7470,7 +7487,7 @@ type DescribeAutoSnapshotPoliciesRequest struct {
 	AutoSnapshotPolicyId *string `json:"AutoSnapshotPolicyId,omitempty" xml:"AutoSnapshotPolicyId,omitempty"`
 	// The type of the file system.
 	//
-	// Valid value: extreme, which indicates Extreme NAS file systems.
+	// Valid value: extreme, which indicates Extreme Apsara File Storage NAS (NAS) file systems.
 	//
 	// example:
 	//
@@ -7629,7 +7646,12 @@ type DescribeAutoSnapshotPoliciesResponseBodyAutoSnapshotPoliciesAutoSnapshotPol
 	// example:
 	//
 	// 2
-	FileSystemNums *int32  `json:"FileSystemNums,omitempty" xml:"FileSystemNums,omitempty"`
+	FileSystemNums *int32 `json:"FileSystemNums,omitempty" xml:"FileSystemNums,omitempty"`
+	// The type of the file system.
+	//
+	// example:
+	//
+	// extreme
 	FileSystemType *string `json:"FileSystemType,omitempty" xml:"FileSystemType,omitempty"`
 	// The region ID of the automatic snapshot policy.
 	//
@@ -10258,6 +10280,7 @@ type DescribeFileSystemsResponseBodyFileSystemsFileSystem struct {
 	MeteredSize *int64 `json:"MeteredSize,omitempty" xml:"MeteredSize,omitempty"`
 	// The information about mount targets.
 	MountTargets *DescribeFileSystemsResponseBodyFileSystemsFileSystemMountTargets `json:"MountTargets,omitempty" xml:"MountTargets,omitempty" type:"Struct"`
+	Options      *DescribeFileSystemsResponseBodyFileSystemsFileSystemOptions      `json:"Options,omitempty" xml:"Options,omitempty" type:"Struct"`
 	// The information about storage plans.
 	Packages *DescribeFileSystemsResponseBodyFileSystemsFileSystemPackages `json:"Packages,omitempty" xml:"Packages,omitempty" type:"Struct"`
 	// The protocol type of the file system.
@@ -10422,6 +10445,11 @@ func (s *DescribeFileSystemsResponseBodyFileSystemsFileSystem) SetMeteredSize(v 
 
 func (s *DescribeFileSystemsResponseBodyFileSystemsFileSystem) SetMountTargets(v *DescribeFileSystemsResponseBodyFileSystemsFileSystemMountTargets) *DescribeFileSystemsResponseBodyFileSystemsFileSystem {
 	s.MountTargets = v
+	return s
+}
+
+func (s *DescribeFileSystemsResponseBodyFileSystemsFileSystem) SetOptions(v *DescribeFileSystemsResponseBodyFileSystemsFileSystemOptions) *DescribeFileSystemsResponseBodyFileSystemsFileSystem {
+	s.Options = v
 	return s
 }
 
@@ -10764,6 +10792,23 @@ func (s *DescribeFileSystemsResponseBodyFileSystemsFileSystemMountTargetsMountTa
 
 func (s *DescribeFileSystemsResponseBodyFileSystemsFileSystemMountTargetsMountTargetTagsTag) SetValue(v string) *DescribeFileSystemsResponseBodyFileSystemsFileSystemMountTargetsMountTargetTagsTag {
 	s.Value = &v
+	return s
+}
+
+type DescribeFileSystemsResponseBodyFileSystemsFileSystemOptions struct {
+	EnableOplock *bool `json:"EnableOplock,omitempty" xml:"EnableOplock,omitempty"`
+}
+
+func (s DescribeFileSystemsResponseBodyFileSystemsFileSystemOptions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeFileSystemsResponseBodyFileSystemsFileSystemOptions) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeFileSystemsResponseBodyFileSystemsFileSystemOptions) SetEnableOplock(v bool) *DescribeFileSystemsResponseBodyFileSystemsFileSystemOptions {
+	s.EnableOplock = &v
 	return s
 }
 
@@ -11500,6 +11545,19 @@ func (s *DescribeLifecyclePoliciesResponse) SetBody(v *DescribeLifecyclePolicies
 }
 
 type DescribeLogAnalysisRequest struct {
+	// The type of the file system.
+	//
+	// Valid values:
+	//
+	// 	- standard: General-purpose NAS file system
+	//
+	// 	- extreme: Extreme NAS file system
+	//
+	// 	- all (default): all types
+	//
+	// example:
+	//
+	// all
 	FileSystemType *string `json:"FileSystemType,omitempty" xml:"FileSystemType,omitempty"`
 	// The page number. Default value: 1.
 	//
@@ -13576,7 +13634,7 @@ type DescribeSnapshotsRequest struct {
 	FileSystemId *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
 	// The type of the file system.
 	//
-	// Valid value: extreme, which indicates Extreme NAS file systems.
+	// Valid value: extreme, which indicates Extreme Apsara File Storage NAS (NAS) file systems.
 	//
 	// example:
 	//
@@ -13799,7 +13857,12 @@ type DescribeSnapshotsResponseBodySnapshotsSnapshot struct {
 	// example:
 	//
 	// 1
-	EncryptType    *int32  `json:"EncryptType,omitempty" xml:"EncryptType,omitempty"`
+	EncryptType *int32 `json:"EncryptType,omitempty" xml:"EncryptType,omitempty"`
+	// The type of the file system.
+	//
+	// example:
+	//
+	// extreme
 	FileSystemType *string `json:"FileSystemType,omitempty" xml:"FileSystemType,omitempty"`
 	// The progress of the snapshot creation. The value of this parameter is expressed as a percentage.
 	//
@@ -13843,6 +13906,15 @@ type DescribeSnapshotsResponseBodySnapshotsSnapshot struct {
 	//
 	// FinanceJoshua
 	SnapshotName *string `json:"SnapshotName,omitempty" xml:"SnapshotName,omitempty"`
+	// The snapshot type. Valid values:
+	//
+	// 	- auto: automatically created snapshots
+	//
+	// 	- user: manually created snapshots
+	//
+	// example:
+	//
+	// user
 	SnapshotType *string `json:"SnapshotType,omitempty" xml:"SnapshotType,omitempty"`
 	// The ID of the source file system.
 	//
@@ -15060,7 +15132,7 @@ func (s *GetDirectoryOrFilePropertiesRequest) SetPath(v string) *GetDirectoryOrF
 }
 
 type GetDirectoryOrFilePropertiesResponseBody struct {
-	// The details about the file or directory.
+	// The details about the files or directories.
 	Entry *GetDirectoryOrFilePropertiesResponseBodyEntry `json:"Entry,omitempty" xml:"Entry,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -15108,8 +15180,21 @@ type GetDirectoryOrFilePropertiesResponseBodyEntry struct {
 	// example:
 	//
 	// 2021-02-11T10:08:10Z
-	CTime          *string `json:"CTime,omitempty" xml:"CTime,omitempty"`
-	HasArchiveFile *bool   `json:"HasArchiveFile,omitempty" xml:"HasArchiveFile,omitempty"`
+	CTime *string `json:"CTime,omitempty" xml:"CTime,omitempty"`
+	// Indicates whether the directory contains files stored in the Archive storage class.
+	//
+	// This parameter is returned only if the Type parameter is set to Directory.
+	//
+	// Valid values:
+	//
+	// 	- true: The directory contains files stored in the Archive storage class.
+	//
+	// 	- false: The directory does not contain files stored in the Archive storage class.
+	//
+	// example:
+	//
+	// false
+	HasArchiveFile *bool `json:"HasArchiveFile,omitempty" xml:"HasArchiveFile,omitempty"`
 	// Indicates whether the directory contains files stored in the IA storage medium.
 	//
 	// This parameter is returned only if the value of the Type parameter is Directory.
@@ -15835,7 +15920,18 @@ type ListLifecycleRetrieveJobsRequest struct {
 	// example:
 	//
 	// completed
-	Status      *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The storage class.
+	//
+	// 	- InfrequentAccess: the Infrequent Access (IA) storage class.
+	//
+	// 	- Archive: the Archive storage class.
+	//
+	// >  If the StorageType parameter is not specified, data retrieval tasks of all types are returned.
+	//
+	// example:
+	//
+	// InfrequentAccess
 	StorageType *string `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
 }
 
@@ -15960,7 +16056,8 @@ type ListLifecycleRetrieveJobsResponseBodyLifecycleRetrieveJobs struct {
 	// example:
 	//
 	// lrj-nfstest-ia-160****853-hshvw
-	JobId *string   `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The execution path of the data retrieval task.
 	Paths []*string `json:"Paths,omitempty" xml:"Paths,omitempty" type:"Repeated"`
 	// The total number of files that are retrieved.
 	//
@@ -15981,7 +16078,16 @@ type ListLifecycleRetrieveJobsResponseBodyLifecycleRetrieveJobs struct {
 	// example:
 	//
 	// completed
-	Status      *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The storage class.
+	//
+	// 	- InfrequentAccess: the IA storage class.
+	//
+	// 	- Archive: the Archive storage class.
+	//
+	// example:
+	//
+	// InfrequentAccess
 	StorageType *string `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
 	// The time when the task was updated.
 	//
@@ -17908,7 +18014,8 @@ type ModifyFileSystemRequest struct {
 	// example:
 	//
 	// 1ca404****
-	FileSystemId *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
+	FileSystemId *string                         `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
+	Options      *ModifyFileSystemRequestOptions `json:"Options,omitempty" xml:"Options,omitempty" type:"Struct"`
 }
 
 func (s ModifyFileSystemRequest) String() string {
@@ -17926,6 +18033,85 @@ func (s *ModifyFileSystemRequest) SetDescription(v string) *ModifyFileSystemRequ
 
 func (s *ModifyFileSystemRequest) SetFileSystemId(v string) *ModifyFileSystemRequest {
 	s.FileSystemId = &v
+	return s
+}
+
+func (s *ModifyFileSystemRequest) SetOptions(v *ModifyFileSystemRequestOptions) *ModifyFileSystemRequest {
+	s.Options = v
+	return s
+}
+
+type ModifyFileSystemRequestOptions struct {
+	EnableOplock *bool `json:"EnableOplock,omitempty" xml:"EnableOplock,omitempty"`
+}
+
+func (s ModifyFileSystemRequestOptions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyFileSystemRequestOptions) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyFileSystemRequestOptions) SetEnableOplock(v bool) *ModifyFileSystemRequestOptions {
+	s.EnableOplock = &v
+	return s
+}
+
+type ModifyFileSystemShrinkRequest struct {
+	// The description of the file system.
+	//
+	// Limits:
+	//
+	// 	- The description must be 2 to 128 characters in length.
+	//
+	// 	- It must start with a letter but cannot start with `http://` or `https://`.
+	//
+	// 	- The description can contain letters, digits, colons (:), underscores (_), and hyphens (-).
+	//
+	// example:
+	//
+	// NAS-test-1
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The ID of the file system.
+	//
+	// 	- Sample ID of a General-purpose NAS file system: `31a8e4****`.
+	//
+	// 	- The IDs of Extreme NAS file systems must start with `extreme-`. Example: `extreme-0015****`.
+	//
+	// 	- The IDs of Cloud Paralleled File System (CPFS) file systems must start with `cpfs-`. Example: `cpfs-125487****`.
+	//
+	// >CPFS file systems are available only on the China site (aliyun.com).
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1ca404****
+	FileSystemId  *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
+	OptionsShrink *string `json:"Options,omitempty" xml:"Options,omitempty"`
+}
+
+func (s ModifyFileSystemShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyFileSystemShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyFileSystemShrinkRequest) SetDescription(v string) *ModifyFileSystemShrinkRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *ModifyFileSystemShrinkRequest) SetFileSystemId(v string) *ModifyFileSystemShrinkRequest {
+	s.FileSystemId = &v
+	return s
+}
+
+func (s *ModifyFileSystemShrinkRequest) SetOptionsShrink(v string) *ModifyFileSystemShrinkRequest {
+	s.OptionsShrink = &v
 	return s
 }
 
@@ -18415,6 +18601,8 @@ type ModifyMountTargetRequest struct {
 	// 	- Active: The mount target is available.
 	//
 	// 	- Inactive: The mount target is unavailable.
+	//
+	// >  Only General-purpose Apsara File Storage NAS (NAS) file systems support changing the mount target status.
 	//
 	// example:
 	//
@@ -19446,7 +19634,11 @@ type SetDirQuotaRequest struct {
 	//
 	// 1ca404****
 	FileSystemId *string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
-	// The absolute path of a directory.
+	// The absolute path of the directory in the file system.
+	//
+	// > 	- You can set quotas only for the directories that have been created in a NAS file system. The path of the directory that you specify for a quota is the absolute path of the directory in the NAS file system, but not the local path of the compute node, such as an Elastic Compute Service (ECS) instance or a container.
+	//
+	// > 	- Directories whose names contain Chinese characters are not supported.
 	//
 	// This parameter is required.
 	//
@@ -26845,7 +27037,7 @@ func (client *Client) EnableSmbAcl(request *EnableSmbAclRequest) (_result *Enabl
 
 // Summary:
 //
-// Queries whether a specified directory contains files stored in the IA storage medium or whether a specified file is stored in the IA storage medium.
+// Queries whether a directory contains files that are stored in the Infrequent Access (IA) or Archive storage class, or whether a file is stored in the IA or Archive storage class.
 //
 // Description:
 //
@@ -26895,7 +27087,7 @@ func (client *Client) GetDirectoryOrFilePropertiesWithOptions(request *GetDirect
 
 // Summary:
 //
-// Queries whether a specified directory contains files stored in the IA storage medium or whether a specified file is stored in the IA storage medium.
+// Queries whether a directory contains files that are stored in the Infrequent Access (IA) or Archive storage class, or whether a file is stored in the IA or Archive storage class.
 //
 // Description:
 //
@@ -27951,16 +28143,22 @@ func (client *Client) ModifyDataFlowAutoRefresh(request *ModifyDataFlowAutoRefre
 //
 // Modifies the description of a file system.
 //
-// @param request - ModifyFileSystemRequest
+// @param tmpReq - ModifyFileSystemRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyFileSystemResponse
-func (client *Client) ModifyFileSystemWithOptions(request *ModifyFileSystemRequest, runtime *util.RuntimeOptions) (_result *ModifyFileSystemResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) ModifyFileSystemWithOptions(tmpReq *ModifyFileSystemRequest, runtime *util.RuntimeOptions) (_result *ModifyFileSystemResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
 		return _result, _err
 	}
+	request := &ModifyFileSystemShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Options)) {
+		request.OptionsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Options, tea.String("Options"), tea.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Description)) {
 		query["Description"] = request.Description
@@ -27968,6 +28166,10 @@ func (client *Client) ModifyFileSystemWithOptions(request *ModifyFileSystemReque
 
 	if !tea.BoolValue(util.IsUnset(request.FileSystemId)) {
 		query["FileSystemId"] = request.FileSystemId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OptionsShrink)) {
+		query["Options"] = request.OptionsShrink
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -28936,7 +29138,7 @@ func (client *Client) RetryLifecycleRetrieveJob(request *RetryLifecycleRetrieveJ
 //
 // Description:
 //
-// Only General-purpose NFS file systems support the directory quota feature.
+// Only General-purpose Apsara File Storage NAS (NAS) file systems support the directory quota feature.
 //
 // @param request - SetDirQuotaRequest
 //
@@ -29006,7 +29208,7 @@ func (client *Client) SetDirQuotaWithOptions(request *SetDirQuotaRequest, runtim
 //
 // Description:
 //
-// Only General-purpose NFS file systems support the directory quota feature.
+// Only General-purpose Apsara File Storage NAS (NAS) file systems support the directory quota feature.
 //
 // @param request - SetDirQuotaRequest
 //
