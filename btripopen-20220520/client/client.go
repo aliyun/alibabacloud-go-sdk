@@ -55831,11 +55831,15 @@ type HotelBillSettlementQueryResponseBodyModuleDataList struct {
 	// example:
 	//
 	// 5038018
-	Index            *string `json:"index,omitempty" xml:"index,omitempty"`
-	InvoiceTitle     *string `json:"invoice_title,omitempty" xml:"invoice_title,omitempty"`
-	IsEarlyDeparture *string `json:"is_early_departure,omitempty" xml:"is_early_departure,omitempty"`
-	IsNegotiation    *string `json:"is_negotiation,omitempty" xml:"is_negotiation,omitempty"`
-	IsShareStr       *string `json:"is_share_str,omitempty" xml:"is_share_str,omitempty"`
+	Index                *string  `json:"index,omitempty" xml:"index,omitempty"`
+	InsOrderId           *string  `json:"ins_order_id,omitempty" xml:"ins_order_id,omitempty"`
+	InsuranceNumber      *string  `json:"insurance_number,omitempty" xml:"insurance_number,omitempty"`
+	InsurancePrice       *float64 `json:"insurance_price,omitempty" xml:"insurance_price,omitempty"`
+	InsuranceProductName *string  `json:"insurance_product_name,omitempty" xml:"insurance_product_name,omitempty"`
+	InvoiceTitle         *string  `json:"invoice_title,omitempty" xml:"invoice_title,omitempty"`
+	IsEarlyDeparture     *string  `json:"is_early_departure,omitempty" xml:"is_early_departure,omitempty"`
+	IsNegotiation        *string  `json:"is_negotiation,omitempty" xml:"is_negotiation,omitempty"`
+	IsShareStr           *string  `json:"is_share_str,omitempty" xml:"is_share_str,omitempty"`
 	// example:
 	//
 	// 2
@@ -56137,6 +56141,26 @@ func (s *HotelBillSettlementQueryResponseBodyModuleDataList) SetHotelName(v stri
 
 func (s *HotelBillSettlementQueryResponseBodyModuleDataList) SetIndex(v string) *HotelBillSettlementQueryResponseBodyModuleDataList {
 	s.Index = &v
+	return s
+}
+
+func (s *HotelBillSettlementQueryResponseBodyModuleDataList) SetInsOrderId(v string) *HotelBillSettlementQueryResponseBodyModuleDataList {
+	s.InsOrderId = &v
+	return s
+}
+
+func (s *HotelBillSettlementQueryResponseBodyModuleDataList) SetInsuranceNumber(v string) *HotelBillSettlementQueryResponseBodyModuleDataList {
+	s.InsuranceNumber = &v
+	return s
+}
+
+func (s *HotelBillSettlementQueryResponseBodyModuleDataList) SetInsurancePrice(v float64) *HotelBillSettlementQueryResponseBodyModuleDataList {
+	s.InsurancePrice = &v
+	return s
+}
+
+func (s *HotelBillSettlementQueryResponseBodyModuleDataList) SetInsuranceProductName(v string) *HotelBillSettlementQueryResponseBodyModuleDataList {
+	s.InsuranceProductName = &v
 	return s
 }
 
@@ -62602,6 +62626,9 @@ func (s *HotelOrderQueryResponseBodyModule) SetPriceInfoList(v []*HotelOrderQuer
 }
 
 type HotelOrderQueryResponseBodyModuleHotelInfo struct {
+	BrandCode  *string `json:"brand_code,omitempty" xml:"brand_code,omitempty"`
+	BrandGroup *string `json:"brand_group,omitempty" xml:"brand_group,omitempty"`
+	BrandName  *string `json:"brand_name,omitempty" xml:"brand_name,omitempty"`
 	// example:
 	//
 	// 1669344020
@@ -62636,6 +62663,21 @@ func (s HotelOrderQueryResponseBodyModuleHotelInfo) String() string {
 
 func (s HotelOrderQueryResponseBodyModuleHotelInfo) GoString() string {
 	return s.String()
+}
+
+func (s *HotelOrderQueryResponseBodyModuleHotelInfo) SetBrandCode(v string) *HotelOrderQueryResponseBodyModuleHotelInfo {
+	s.BrandCode = &v
+	return s
+}
+
+func (s *HotelOrderQueryResponseBodyModuleHotelInfo) SetBrandGroup(v string) *HotelOrderQueryResponseBodyModuleHotelInfo {
+	s.BrandGroup = &v
+	return s
+}
+
+func (s *HotelOrderQueryResponseBodyModuleHotelInfo) SetBrandName(v string) *HotelOrderQueryResponseBodyModuleHotelInfo {
+	s.BrandName = &v
+	return s
 }
 
 func (s *HotelOrderQueryResponseBodyModuleHotelInfo) SetCheckIn(v int64) *HotelOrderQueryResponseBodyModuleHotelInfo {
@@ -65955,271 +65997,6 @@ func (s *HotelStaticInfoResponse) SetBody(v *HotelStaticInfoResponseBody) *Hotel
 	return s
 }
 
-type HotelSuggestHeaders struct {
-	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	// example:
-	//
-	// feth00jqwls
-	XAcsBtripSoCorpToken *string `json:"x-acs-btrip-so-corp-token,omitempty" xml:"x-acs-btrip-so-corp-token,omitempty"`
-}
-
-func (s HotelSuggestHeaders) String() string {
-	return tea.Prettify(s)
-}
-
-func (s HotelSuggestHeaders) GoString() string {
-	return s.String()
-}
-
-func (s *HotelSuggestHeaders) SetCommonHeaders(v map[string]*string) *HotelSuggestHeaders {
-	s.CommonHeaders = v
-	return s
-}
-
-func (s *HotelSuggestHeaders) SetXAcsBtripSoCorpToken(v string) *HotelSuggestHeaders {
-	s.XAcsBtripSoCorpToken = &v
-	return s
-}
-
-type HotelSuggestRequest struct {
-	// example:
-	//
-	// 23141
-	BtripUserId *string `json:"btrip_user_id,omitempty" xml:"btrip_user_id,omitempty"`
-	// example:
-	//
-	// 2024-06-19
-	CheckIn *string `json:"check_in,omitempty" xml:"check_in,omitempty"`
-	// example:
-	//
-	// 2024-10-30
-	CheckOut *string `json:"check_out,omitempty" xml:"check_out,omitempty"`
-	// example:
-	//
-	// 330100
-	CityCode *string `json:"city_code,omitempty" xml:"city_code,omitempty"`
-	Keyword  *string `json:"keyword,omitempty" xml:"keyword,omitempty"`
-	// This parameter is required.
-	//
-	// example:
-	//
-	// 1
-	SearchType *int32 `json:"search_type,omitempty" xml:"search_type,omitempty"`
-}
-
-func (s HotelSuggestRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s HotelSuggestRequest) GoString() string {
-	return s.String()
-}
-
-func (s *HotelSuggestRequest) SetBtripUserId(v string) *HotelSuggestRequest {
-	s.BtripUserId = &v
-	return s
-}
-
-func (s *HotelSuggestRequest) SetCheckIn(v string) *HotelSuggestRequest {
-	s.CheckIn = &v
-	return s
-}
-
-func (s *HotelSuggestRequest) SetCheckOut(v string) *HotelSuggestRequest {
-	s.CheckOut = &v
-	return s
-}
-
-func (s *HotelSuggestRequest) SetCityCode(v string) *HotelSuggestRequest {
-	s.CityCode = &v
-	return s
-}
-
-func (s *HotelSuggestRequest) SetKeyword(v string) *HotelSuggestRequest {
-	s.Keyword = &v
-	return s
-}
-
-func (s *HotelSuggestRequest) SetSearchType(v int32) *HotelSuggestRequest {
-	s.SearchType = &v
-	return s
-}
-
-type HotelSuggestResponseBody struct {
-	// example:
-	//
-	// 200
-	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// example:
-	//
-	// None
-	Message *string                         `json:"message,omitempty" xml:"message,omitempty"`
-	Module  *HotelSuggestResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
-	// example:
-	//
-	// A5009956-1077-52FB-B520-EA8C7E91D722
-	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// example:
-	//
-	// true
-	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
-	// example:
-	//
-	// 21041ce316577904808056433edbb2
-	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
-}
-
-func (s HotelSuggestResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s HotelSuggestResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *HotelSuggestResponseBody) SetCode(v string) *HotelSuggestResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *HotelSuggestResponseBody) SetMessage(v string) *HotelSuggestResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *HotelSuggestResponseBody) SetModule(v *HotelSuggestResponseBodyModule) *HotelSuggestResponseBody {
-	s.Module = v
-	return s
-}
-
-func (s *HotelSuggestResponseBody) SetRequestId(v string) *HotelSuggestResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *HotelSuggestResponseBody) SetSuccess(v bool) *HotelSuggestResponseBody {
-	s.Success = &v
-	return s
-}
-
-func (s *HotelSuggestResponseBody) SetTraceId(v string) *HotelSuggestResponseBody {
-	s.TraceId = &v
-	return s
-}
-
-type HotelSuggestResponseBodyModule struct {
-	GuessSuggestInfos   []*KeywordSuggestInfo                                `json:"guess_suggest_infos,omitempty" xml:"guess_suggest_infos,omitempty" type:"Repeated"`
-	KeywordSuggestInfos []*KeywordSuggestInfo                                `json:"keyword_suggest_infos,omitempty" xml:"keyword_suggest_infos,omitempty" type:"Repeated"`
-	PopularSuggestInfos []*HotelSuggestResponseBodyModulePopularSuggestInfos `json:"popular_suggest_infos,omitempty" xml:"popular_suggest_infos,omitempty" type:"Repeated"`
-	Tips                *string                                              `json:"tips,omitempty" xml:"tips,omitempty"`
-}
-
-func (s HotelSuggestResponseBodyModule) String() string {
-	return tea.Prettify(s)
-}
-
-func (s HotelSuggestResponseBodyModule) GoString() string {
-	return s.String()
-}
-
-func (s *HotelSuggestResponseBodyModule) SetGuessSuggestInfos(v []*KeywordSuggestInfo) *HotelSuggestResponseBodyModule {
-	s.GuessSuggestInfos = v
-	return s
-}
-
-func (s *HotelSuggestResponseBodyModule) SetKeywordSuggestInfos(v []*KeywordSuggestInfo) *HotelSuggestResponseBodyModule {
-	s.KeywordSuggestInfos = v
-	return s
-}
-
-func (s *HotelSuggestResponseBodyModule) SetPopularSuggestInfos(v []*HotelSuggestResponseBodyModulePopularSuggestInfos) *HotelSuggestResponseBodyModule {
-	s.PopularSuggestInfos = v
-	return s
-}
-
-func (s *HotelSuggestResponseBodyModule) SetTips(v string) *HotelSuggestResponseBodyModule {
-	s.Tips = &v
-	return s
-}
-
-type HotelSuggestResponseBodyModulePopularSuggestInfos struct {
-	// example:
-	//
-	// https://gw.alicdn.com/imgextra/i1/O1CN01bwXBj71paiJolualE_!!6000000005377-2-tps-54-54.png
-	Icon         *string                                                          `json:"icon,omitempty" xml:"icon,omitempty"`
-	PopularInfos []*HotelSuggestResponseBodyModulePopularSuggestInfosPopularInfos `json:"popular_infos,omitempty" xml:"popular_infos,omitempty" type:"Repeated"`
-	Title        *string                                                          `json:"title,omitempty" xml:"title,omitempty"`
-}
-
-func (s HotelSuggestResponseBodyModulePopularSuggestInfos) String() string {
-	return tea.Prettify(s)
-}
-
-func (s HotelSuggestResponseBodyModulePopularSuggestInfos) GoString() string {
-	return s.String()
-}
-
-func (s *HotelSuggestResponseBodyModulePopularSuggestInfos) SetIcon(v string) *HotelSuggestResponseBodyModulePopularSuggestInfos {
-	s.Icon = &v
-	return s
-}
-
-func (s *HotelSuggestResponseBodyModulePopularSuggestInfos) SetPopularInfos(v []*HotelSuggestResponseBodyModulePopularSuggestInfosPopularInfos) *HotelSuggestResponseBodyModulePopularSuggestInfos {
-	s.PopularInfos = v
-	return s
-}
-
-func (s *HotelSuggestResponseBodyModulePopularSuggestInfos) SetTitle(v string) *HotelSuggestResponseBodyModulePopularSuggestInfos {
-	s.Title = &v
-	return s
-}
-
-type HotelSuggestResponseBodyModulePopularSuggestInfosPopularInfos struct {
-	DisplayName *string `json:"display_name,omitempty" xml:"display_name,omitempty"`
-}
-
-func (s HotelSuggestResponseBodyModulePopularSuggestInfosPopularInfos) String() string {
-	return tea.Prettify(s)
-}
-
-func (s HotelSuggestResponseBodyModulePopularSuggestInfosPopularInfos) GoString() string {
-	return s.String()
-}
-
-func (s *HotelSuggestResponseBodyModulePopularSuggestInfosPopularInfos) SetDisplayName(v string) *HotelSuggestResponseBodyModulePopularSuggestInfosPopularInfos {
-	s.DisplayName = &v
-	return s
-}
-
-type HotelSuggestResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-	Body       *HotelSuggestResponseBody `json:"body,omitempty" xml:"body,omitempty"`
-}
-
-func (s HotelSuggestResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s HotelSuggestResponse) GoString() string {
-	return s.String()
-}
-
-func (s *HotelSuggestResponse) SetHeaders(v map[string]*string) *HotelSuggestResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *HotelSuggestResponse) SetStatusCode(v int32) *HotelSuggestResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *HotelSuggestResponse) SetBody(v *HotelSuggestResponseBody) *HotelSuggestResponse {
-	s.Body = v
-	return s
-}
-
 type IeFlightBillSettlementQueryHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
 	// example:
@@ -68309,6 +68086,7 @@ type InsInvoiceScanQueryResponseBodyModuleItems struct {
 	//
 	// 2022-12-01
 	BillDate *string `json:"bill_date,omitempty" xml:"bill_date,omitempty"`
+	Category *int32  `json:"category,omitempty" xml:"category,omitempty"`
 	// 校验码
 	//
 	// example:
@@ -68349,12 +68127,14 @@ type InsInvoiceScanQueryResponseBodyModuleItems struct {
 	InvoiceNo *string `json:"invoice_no,omitempty" xml:"invoice_no,omitempty"`
 	// 发票抬头
 	InvoiceTitle *string `json:"invoice_title,omitempty" xml:"invoice_title,omitempty"`
+	InvoiceType  *int32  `json:"invoice_type,omitempty" xml:"invoice_type,omitempty"`
 	// 机器码
 	//
 	// example:
 	//
 	// 661619906841
 	MachineCode *string `json:"machine_code,omitempty" xml:"machine_code,omitempty"`
+	OfdOssUrl   *string `json:"ofd_oss_url,omitempty" xml:"ofd_oss_url,omitempty"`
 	// example:
 	//
 	// 3137168772101111000
@@ -68411,6 +68191,7 @@ type InsInvoiceScanQueryResponseBodyModuleItems struct {
 	TaxRate *string `json:"tax_rate,omitempty" xml:"tax_rate,omitempty"`
 	// 大写金额
 	TotalAmountInWords *string `json:"total_amount_in_words,omitempty" xml:"total_amount_in_words,omitempty"`
+	XmlOssUrl          *string `json:"xml_oss_url,omitempty" xml:"xml_oss_url,omitempty"`
 }
 
 func (s InsInvoiceScanQueryResponseBodyModuleItems) String() string {
@@ -68433,6 +68214,11 @@ func (s *InsInvoiceScanQueryResponseBodyModuleItems) SetAmountWithoutTax(v strin
 
 func (s *InsInvoiceScanQueryResponseBodyModuleItems) SetBillDate(v string) *InsInvoiceScanQueryResponseBodyModuleItems {
 	s.BillDate = &v
+	return s
+}
+
+func (s *InsInvoiceScanQueryResponseBodyModuleItems) SetCategory(v int32) *InsInvoiceScanQueryResponseBodyModuleItems {
+	s.Category = &v
 	return s
 }
 
@@ -68506,8 +68292,18 @@ func (s *InsInvoiceScanQueryResponseBodyModuleItems) SetInvoiceTitle(v string) *
 	return s
 }
 
+func (s *InsInvoiceScanQueryResponseBodyModuleItems) SetInvoiceType(v int32) *InsInvoiceScanQueryResponseBodyModuleItems {
+	s.InvoiceType = &v
+	return s
+}
+
 func (s *InsInvoiceScanQueryResponseBodyModuleItems) SetMachineCode(v string) *InsInvoiceScanQueryResponseBodyModuleItems {
 	s.MachineCode = &v
+	return s
+}
+
+func (s *InsInvoiceScanQueryResponseBodyModuleItems) SetOfdOssUrl(v string) *InsInvoiceScanQueryResponseBodyModuleItems {
+	s.OfdOssUrl = &v
 	return s
 }
 
@@ -68608,6 +68404,11 @@ func (s *InsInvoiceScanQueryResponseBodyModuleItems) SetTaxRate(v string) *InsIn
 
 func (s *InsInvoiceScanQueryResponseBodyModuleItems) SetTotalAmountInWords(v string) *InsInvoiceScanQueryResponseBodyModuleItems {
 	s.TotalAmountInWords = &v
+	return s
+}
+
+func (s *InsInvoiceScanQueryResponseBodyModuleItems) SetXmlOssUrl(v string) *InsInvoiceScanQueryResponseBodyModuleItems {
+	s.XmlOssUrl = &v
 	return s
 }
 
@@ -82751,6 +82552,7 @@ func (s *MealOrderDetailQueryResponseBody) SetTraceId(v string) *MealOrderDetail
 }
 
 type MealOrderDetailQueryResponseBodyModule struct {
+	ApplyId *int64 `json:"apply_id,omitempty" xml:"apply_id,omitempty"`
 	// example:
 	//
 	// 2024032522001423601409393178
@@ -82822,6 +82624,11 @@ func (s MealOrderDetailQueryResponseBodyModule) String() string {
 
 func (s MealOrderDetailQueryResponseBodyModule) GoString() string {
 	return s.String()
+}
+
+func (s *MealOrderDetailQueryResponseBodyModule) SetApplyId(v int64) *MealOrderDetailQueryResponseBodyModule {
+	s.ApplyId = &v
+	return s
 }
 
 func (s *MealOrderDetailQueryResponseBodyModule) SetCorpCodeOrderId(v string) *MealOrderDetailQueryResponseBodyModule {
@@ -90618,6 +90425,8 @@ type TrainBillSettlementQueryResponseBodyModuleDataList struct {
 	// 1
 	CapitalDirection  *string `json:"capital_direction,omitempty" xml:"capital_direction,omitempty"`
 	CascadeDepartment *string `json:"cascade_department,omitempty" xml:"cascade_department,omitempty"`
+	ChangeAffiliateNo *string `json:"change_affiliate_no,omitempty" xml:"change_affiliate_no,omitempty"`
+	ChangeApplyId     *string `json:"change_apply_id,omitempty" xml:"change_apply_id,omitempty"`
 	// example:
 	//
 	// 23.0
@@ -90679,8 +90488,10 @@ type TrainBillSettlementQueryResponseBodyModuleDataList struct {
 	// example:
 	//
 	// 2345235435
-	ProjectCode *string `json:"project_code,omitempty" xml:"project_code,omitempty"`
-	ProjectName *string `json:"project_name,omitempty" xml:"project_name,omitempty"`
+	ProjectCode       *string `json:"project_code,omitempty" xml:"project_code,omitempty"`
+	ProjectName       *string `json:"project_name,omitempty" xml:"project_name,omitempty"`
+	RefundAffiliateNo *string `json:"refund_affiliate_no,omitempty" xml:"refund_affiliate_no,omitempty"`
+	RefundApplyId     *string `json:"refund_apply_id,omitempty" xml:"refund_apply_id,omitempty"`
 	// example:
 	//
 	// 0
@@ -90713,8 +90524,9 @@ type TrainBillSettlementQueryResponseBodyModuleDataList struct {
 	// example:
 	//
 	// 2
-	SettlementType *string `json:"settlement_type,omitempty" xml:"settlement_type,omitempty"`
-	ShortTicketNo  *string `json:"short_ticket_no,omitempty" xml:"short_ticket_no,omitempty"`
+	SettlementType  *string  `json:"settlement_type,omitempty" xml:"settlement_type,omitempty"`
+	ShortTicketNo   *string  `json:"short_ticket_no,omitempty" xml:"short_ticket_no,omitempty"`
+	SpeedPackageFee *float64 `json:"speed_package_fee,omitempty" xml:"speed_package_fee,omitempty"`
 	// example:
 	//
 	// 1
@@ -90859,6 +90671,16 @@ func (s *TrainBillSettlementQueryResponseBodyModuleDataList) SetCascadeDepartmen
 	return s
 }
 
+func (s *TrainBillSettlementQueryResponseBodyModuleDataList) SetChangeAffiliateNo(v string) *TrainBillSettlementQueryResponseBodyModuleDataList {
+	s.ChangeAffiliateNo = &v
+	return s
+}
+
+func (s *TrainBillSettlementQueryResponseBodyModuleDataList) SetChangeApplyId(v string) *TrainBillSettlementQueryResponseBodyModuleDataList {
+	s.ChangeApplyId = &v
+	return s
+}
+
 func (s *TrainBillSettlementQueryResponseBodyModuleDataList) SetChangeFee(v float64) *TrainBillSettlementQueryResponseBodyModuleDataList {
 	s.ChangeFee = &v
 	return s
@@ -90994,6 +90816,16 @@ func (s *TrainBillSettlementQueryResponseBodyModuleDataList) SetProjectName(v st
 	return s
 }
 
+func (s *TrainBillSettlementQueryResponseBodyModuleDataList) SetRefundAffiliateNo(v string) *TrainBillSettlementQueryResponseBodyModuleDataList {
+	s.RefundAffiliateNo = &v
+	return s
+}
+
+func (s *TrainBillSettlementQueryResponseBodyModuleDataList) SetRefundApplyId(v string) *TrainBillSettlementQueryResponseBodyModuleDataList {
+	s.RefundApplyId = &v
+	return s
+}
+
 func (s *TrainBillSettlementQueryResponseBodyModuleDataList) SetRefundFee(v float64) *TrainBillSettlementQueryResponseBodyModuleDataList {
 	s.RefundFee = &v
 	return s
@@ -91056,6 +90888,11 @@ func (s *TrainBillSettlementQueryResponseBodyModuleDataList) SetSettlementType(v
 
 func (s *TrainBillSettlementQueryResponseBodyModuleDataList) SetShortTicketNo(v string) *TrainBillSettlementQueryResponseBodyModuleDataList {
 	s.ShortTicketNo = &v
+	return s
+}
+
+func (s *TrainBillSettlementQueryResponseBodyModuleDataList) SetSpeedPackageFee(v float64) *TrainBillSettlementQueryResponseBodyModuleDataList {
+	s.SpeedPackageFee = &v
 	return s
 }
 
@@ -113869,99 +113706,6 @@ func (client *Client) HotelStaticInfo(request *HotelStaticInfoRequest) (_result 
 	headers := &HotelStaticInfoHeaders{}
 	_result = &HotelStaticInfoResponse{}
 	_body, _err := client.HotelStaticInfoWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-// Summary:
-//
-// 酒店关键词搜索
-//
-// @param request - HotelSuggestRequest
-//
-// @param headers - HotelSuggestHeaders
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return HotelSuggestResponse
-func (client *Client) HotelSuggestWithOptions(request *HotelSuggestRequest, headers *HotelSuggestHeaders, runtime *util.RuntimeOptions) (_result *HotelSuggestResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.BtripUserId)) {
-		query["btrip_user_id"] = request.BtripUserId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.CheckIn)) {
-		query["check_in"] = request.CheckIn
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.CheckOut)) {
-		query["check_out"] = request.CheckOut
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.CityCode)) {
-		query["city_code"] = request.CityCode
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Keyword)) {
-		query["keyword"] = request.Keyword
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.SearchType)) {
-		query["search_type"] = request.SearchType
-	}
-
-	realHeaders := make(map[string]*string)
-	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
-		realHeaders = headers.CommonHeaders
-	}
-
-	if !tea.BoolValue(util.IsUnset(headers.XAcsBtripSoCorpToken)) {
-		realHeaders["x-acs-btrip-so-corp-token"] = util.ToJSONString(headers.XAcsBtripSoCorpToken)
-	}
-
-	req := &openapi.OpenApiRequest{
-		Headers: realHeaders,
-		Query:   openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("HotelSuggest"),
-		Version:     tea.String("2022-05-20"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/dtb-hotel/v1/suggest-infos"),
-		Method:      tea.String("GET"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &HotelSuggestResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 酒店关键词搜索
-//
-// @param request - HotelSuggestRequest
-//
-// @return HotelSuggestResponse
-func (client *Client) HotelSuggest(request *HotelSuggestRequest) (_result *HotelSuggestResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := &HotelSuggestHeaders{}
-	_result = &HotelSuggestResponse{}
-	_body, _err := client.HotelSuggestWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}

@@ -1,4 +1,4 @@
-module github.com/alibabacloud-go/btripopen-20220520/v3
+module github.com/alibabacloud-go/btripopen-20220520/v4
 
 go 1.15
 
