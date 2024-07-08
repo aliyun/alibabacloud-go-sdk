@@ -2258,6 +2258,10 @@ type DescribePhoneNumberOperatorAttributeRequest struct {
 	//
 	// Dd1r***4id
 	AuthCode *string `json:"AuthCode,omitempty" xml:"AuthCode,omitempty"`
+	// example:
+	//
+	// 示例值
+	FlowName *string `json:"FlowName,omitempty" xml:"FlowName,omitempty"`
 	// The phone number to be queried.
 	//
 	// 	- If the value of Mask is NORMAL, specify an 11-digit phone number in plaintext.
@@ -2293,6 +2297,10 @@ type DescribePhoneNumberOperatorAttributeRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// example:
+	//
+	// 示例值示例值示例值
+	ResultCount *string `json:"ResultCount,omitempty" xml:"ResultCount,omitempty"`
 }
 
 func (s DescribePhoneNumberOperatorAttributeRequest) String() string {
@@ -2305,6 +2313,11 @@ func (s DescribePhoneNumberOperatorAttributeRequest) GoString() string {
 
 func (s *DescribePhoneNumberOperatorAttributeRequest) SetAuthCode(v string) *DescribePhoneNumberOperatorAttributeRequest {
 	s.AuthCode = &v
+	return s
+}
+
+func (s *DescribePhoneNumberOperatorAttributeRequest) SetFlowName(v string) *DescribePhoneNumberOperatorAttributeRequest {
+	s.FlowName = &v
 	return s
 }
 
@@ -2333,7 +2346,13 @@ func (s *DescribePhoneNumberOperatorAttributeRequest) SetResourceOwnerId(v int64
 	return s
 }
 
+func (s *DescribePhoneNumberOperatorAttributeRequest) SetResultCount(v string) *DescribePhoneNumberOperatorAttributeRequest {
+	s.ResultCount = &v
+	return s
+}
+
 type DescribePhoneNumberOperatorAttributeResponseBody struct {
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The response code. Valid values:
 	//
 	// 	- **OK**: The request is successful.
@@ -2372,6 +2391,11 @@ func (s DescribePhoneNumberOperatorAttributeResponseBody) String() string {
 
 func (s DescribePhoneNumberOperatorAttributeResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *DescribePhoneNumberOperatorAttributeResponseBody) SetAccessDeniedDetail(v string) *DescribePhoneNumberOperatorAttributeResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
 }
 
 func (s *DescribePhoneNumberOperatorAttributeResponseBody) SetCode(v string) *DescribePhoneNumberOperatorAttributeResponseBody {
@@ -9135,6 +9159,10 @@ func (client *Client) DescribePhoneNumberOperatorAttributeWithOptions(request *D
 		query["AuthCode"] = request.AuthCode
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.FlowName)) {
+		query["FlowName"] = request.FlowName
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.InputNumber)) {
 		query["InputNumber"] = request.InputNumber
 	}
@@ -9153,6 +9181,10 @@ func (client *Client) DescribePhoneNumberOperatorAttributeWithOptions(request *D
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
 		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResultCount)) {
+		query["ResultCount"] = request.ResultCount
 	}
 
 	req := &openapi.OpenApiRequest{
