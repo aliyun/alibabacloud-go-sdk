@@ -1,3 +1,12 @@
+2024-07-09 Version: v5.0.0
+- Support API DescribeCdnFullDomainsBlockIPConfig.
+- Support API DescribeCdnFullDomainsBlockIPHistory.
+- Support API SetCdnFullDomainsBlockIP.
+- Update API BatchDescribeCdnIpInfo: add param Language.
+- Update API DescribeEsExceptionData: update response param.
+- Update API DescribeUserDomains: update param DomainName.
+
+
 2024-03-24 Version: v4.3.0
 - Support API BatchDescribeCdnIpInfo.
 - Support API DescribeCdnDomainAtoaLogs.
