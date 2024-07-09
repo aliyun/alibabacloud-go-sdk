@@ -5352,6 +5352,10 @@ type CreateClusterNodePoolRequestScalingGroup struct {
 	Platform *string `json:"platform,omitempty" xml:"platform,omitempty"`
 	// The configurations of the private node pool.
 	PrivatePoolOptions *CreateClusterNodePoolRequestScalingGroupPrivatePoolOptions `json:"private_pool_options,omitempty" xml:"private_pool_options,omitempty" type:"Struct"`
+	// example:
+	//
+	// example-role
+	RamRoleName *string `json:"ram_role_name,omitempty" xml:"ram_role_name,omitempty"`
 	// The ApsaraDB RDS instances.
 	RdsInstances []*string `json:"rds_instances,omitempty" xml:"rds_instances,omitempty" type:"Repeated"`
 	// The scaling mode of the scaling group. Valid values:
@@ -5637,6 +5641,11 @@ func (s *CreateClusterNodePoolRequestScalingGroup) SetPlatform(v string) *Create
 
 func (s *CreateClusterNodePoolRequestScalingGroup) SetPrivatePoolOptions(v *CreateClusterNodePoolRequestScalingGroupPrivatePoolOptions) *CreateClusterNodePoolRequestScalingGroup {
 	s.PrivatePoolOptions = v
+	return s
+}
+
+func (s *CreateClusterNodePoolRequestScalingGroup) SetRamRoleName(v string) *CreateClusterNodePoolRequestScalingGroup {
+	s.RamRoleName = &v
 	return s
 }
 
@@ -10239,6 +10248,10 @@ type DescribeClusterNodePoolDetailResponseBodyScalingGroup struct {
 	//
 	// KubernetesWorkerRole-021dc54f-929b-437a-8ae0-34c24d3e****
 	RamPolicy *string `json:"ram_policy,omitempty" xml:"ram_policy,omitempty"`
+	// example:
+	//
+	// KubernetesWorkerRole-4a4fa089-80c1-48a5-b3c6-9349311f****
+	RamRoleName *string `json:"ram_role_name,omitempty" xml:"ram_role_name,omitempty"`
 	// After you specify the list of RDS instances, the ECS instances in the cluster are automatically added to the whitelist of the RDS instances.
 	RdsInstances []*string `json:"rds_instances,omitempty" xml:"rds_instances,omitempty" type:"Repeated"`
 	// The ID of the scaling group.
@@ -10529,6 +10542,11 @@ func (s *DescribeClusterNodePoolDetailResponseBodyScalingGroup) SetPrivatePoolOp
 
 func (s *DescribeClusterNodePoolDetailResponseBodyScalingGroup) SetRamPolicy(v string) *DescribeClusterNodePoolDetailResponseBodyScalingGroup {
 	s.RamPolicy = &v
+	return s
+}
+
+func (s *DescribeClusterNodePoolDetailResponseBodyScalingGroup) SetRamRoleName(v string) *DescribeClusterNodePoolDetailResponseBodyScalingGroup {
+	s.RamRoleName = &v
 	return s
 }
 
@@ -11860,6 +11878,10 @@ type DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroup struct {
 	//
 	// KubernetesWorkerRole-021dc54f-929b-437a-8ae0-34c24d3e****
 	RamPolicy *string `json:"ram_policy,omitempty" xml:"ram_policy,omitempty"`
+	// example:
+	//
+	// KubernetesWorkerRole-4a4fa089-80c1-48a5-b3c6-9349311f****
+	RamRoleName *string `json:"ram_role_name,omitempty" xml:"ram_role_name,omitempty"`
 	// The ApsaraDB RDS instances. If you specify the list of ApsaraDB RDS instances, ECS instances in the cluster are automatically added to the whitelist of the ApsaraDB RDS instances.
 	RdsInstances []*string `json:"rds_instances,omitempty" xml:"rds_instances,omitempty" type:"Repeated"`
 	// The scaling group ID.
@@ -12132,6 +12154,11 @@ func (s *DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroup) SetPrivatePo
 
 func (s *DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroup) SetRamPolicy(v string) *DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroup {
 	s.RamPolicy = &v
+	return s
+}
+
+func (s *DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroup) SetRamRoleName(v string) *DescribeClusterNodePoolsResponseBodyNodepoolsScalingGroup {
+	s.RamRoleName = &v
 	return s
 }
 
@@ -16185,7 +16212,7 @@ func (s *DescribeNodePoolVulsResponseBody) SetVulsFixServicePurchased(v bool) *D
 }
 
 type DescribeNodePoolVulsResponseBodyVulRecords struct {
-	// The node ID.
+	// The ID of the node.
 	//
 	// example:
 	//
@@ -16243,17 +16270,18 @@ type DescribeNodePoolVulsResponseBodyVulRecordsVulList struct {
 	//
 	// Valid values:
 	//
-	// 	- nntf: You can ignore the vulnerability
+	// 	- nntf: You can ignore the vulnerability.
 	//
-	// 	- later: You can fix the vulnerability later
+	// 	- later: You can fix the vulnerability later.
 	//
-	// 	- asap: You need to fix the vulnerability at the earliest opportunity
+	// 	- asap: You need to fix the vulnerability at the earliest opportunity.
 	//
 	// example:
 	//
 	// asap
-	Necessity  *string `json:"necessity,omitempty" xml:"necessity,omitempty"`
-	NeedReboot *bool   `json:"need_reboot,omitempty" xml:"need_reboot,omitempty"`
+	Necessity *string `json:"necessity,omitempty" xml:"necessity,omitempty"`
+	// Indicates whether a restart is required.
+	NeedReboot *bool `json:"need_reboot,omitempty" xml:"need_reboot,omitempty"`
 }
 
 func (s DescribeNodePoolVulsResponseBodyVulRecordsVulList) String() string {
@@ -17268,10 +17296,14 @@ func (s *DescribePolicyInstancesStatusResponse) SetBody(v *DescribePolicyInstanc
 }
 
 type DescribeResourcesDeleteProtectionRequest struct {
+	// The namespace to which the resource belongs.
+	//
 	// example:
 	//
 	// default
 	Namespace *string `json:"namespace,omitempty" xml:"namespace,omitempty"`
+	// The name of the resource that you want to query. Separate multiple resource names with commas (,).
+	//
 	// example:
 	//
 	// test1,test2
@@ -17326,18 +17358,38 @@ func (s *DescribeResourcesDeleteProtectionResponse) SetBody(v []*DescribeResourc
 }
 
 type DescribeResourcesDeleteProtectionResponseBody struct {
+	// The name of the resource.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The namespace to which the resource belongs.
+	//
 	// example:
 	//
 	// default
-	Namespace  *string `json:"namespace,omitempty" xml:"namespace,omitempty"`
-	Resource   *string `json:"resource,omitempty" xml:"resource,omitempty"`
-	Protection *bool   `json:"protection,omitempty" xml:"protection,omitempty"`
+	Namespace *string `json:"namespace,omitempty" xml:"namespace,omitempty"`
+	// The type of resource for which deletion protection is enabled.
+	//
+	// example:
+	//
+	// namespaces
+	Resource *string `json:"resource,omitempty" xml:"resource,omitempty"`
+	// Indicates whether deletion protection is enabled.
+	//
+	// 	- true: deletion protection is enabled.
+	//
+	// 	- false: deletion protection is disabled.
+	//
+	// Default value: false
+	//
+	// example:
+	//
+	// false
+	Protection *bool `json:"protection,omitempty" xml:"protection,omitempty"`
 }
 
 func (s DescribeResourcesDeleteProtectionResponseBody) String() string {
@@ -26097,10 +26149,14 @@ func (s *UpdateK8sClusterUserConfigExpireResponse) SetStatusCode(v int32) *Updat
 }
 
 type UpdateResourcesDeleteProtectionRequest struct {
+	// Specify whether to enable deletion protection. Set the value to true to enable deletion protection and set the value to false to disable deletion protection.
+	//
 	// example:
 	//
 	// true
 	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
+	// The namespace to which the resource belongs.
+	//
 	// if can be null:
 	// true
 	//
@@ -26108,11 +26164,14 @@ type UpdateResourcesDeleteProtectionRequest struct {
 	//
 	// default
 	Namespace *string `json:"namespace,omitempty" xml:"namespace,omitempty"`
+	// The type of resource for which deletion protection is enabled or disabled. You can specify namespaces or Services.
+	//
 	// example:
 	//
 	// services
-	ResourceType *string   `json:"resource_type,omitempty" xml:"resource_type,omitempty"`
-	Resources    []*string `json:"resources,omitempty" xml:"resources,omitempty" type:"Repeated"`
+	ResourceType *string `json:"resource_type,omitempty" xml:"resource_type,omitempty"`
+	// The resources list.
+	Resources []*string `json:"resources,omitempty" xml:"resources,omitempty" type:"Repeated"`
 }
 
 func (s UpdateResourcesDeleteProtectionRequest) String() string {
@@ -26144,19 +26203,24 @@ func (s *UpdateResourcesDeleteProtectionRequest) SetResources(v []*string) *Upda
 }
 
 type UpdateResourcesDeleteProtectionResponseBody struct {
+	// The namespace to which the resource belongs.
+	//
 	// example:
 	//
 	// default
-	Namespace  *string `json:"namespace,omitempty" xml:"namespace,omitempty"`
+	Namespace *string `json:"namespace,omitempty" xml:"namespace,omitempty"`
+	// Indicates the status of deletion protection. A value of true indicates that deletion protection is enabled and a value of false indicates that deletion protection is disabled.
 	Protection *string `json:"protection,omitempty" xml:"protection,omitempty"`
 	// Id of the request
 	//
 	// example:
 	//
 	// 0527ac9a-c899-4341-a21a-xxxxxxxxx
-	RequestId    *string   `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	ResourceType *string   `json:"resource_type,omitempty" xml:"resource_type,omitempty"`
-	Resources    []*string `json:"resources,omitempty" xml:"resources,omitempty" type:"Repeated"`
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// The type of resource for which deletion protection is enabled or disabled.
+	ResourceType *string `json:"resource_type,omitempty" xml:"resource_type,omitempty"`
+	// The list of resources whose deletion protection status is updated.
+	Resources []*string `json:"resources,omitempty" xml:"resources,omitempty" type:"Repeated"`
 }
 
 func (s UpdateResourcesDeleteProtectionResponseBody) String() string {
@@ -31608,7 +31672,7 @@ func (client *Client) DescribePolicyInstancesStatus(clusterId *string) (_result 
 
 // Summary:
 //
-// 修改资源删除保护配置
+// Queries whether the deletion protection feature is enabled for the specified resources. The resources that you can query include namespaces and Services.
 //
 // @param request - DescribeResourcesDeleteProtectionRequest
 //
@@ -31657,7 +31721,7 @@ func (client *Client) DescribeResourcesDeleteProtectionWithOptions(ClusterId *st
 
 // Summary:
 //
-// 修改资源删除保护配置
+// Queries whether the deletion protection feature is enabled for the specified resources. The resources that you can query include namespaces and Services.
 //
 // @param request - DescribeResourcesDeleteProtectionRequest
 //
@@ -35824,7 +35888,7 @@ func (client *Client) UpdateK8sClusterUserConfigExpire(ClusterId *string, reques
 
 // Summary:
 //
-// 修改资源删除保护配置
+// Updates the deletion protection status of the specified resources. You can enable or disable deletion protection for namespaces and Services.
 //
 // @param request - UpdateResourcesDeleteProtectionRequest
 //
@@ -35881,7 +35945,7 @@ func (client *Client) UpdateResourcesDeleteProtectionWithOptions(ClusterId *stri
 
 // Summary:
 //
-// 修改资源删除保护配置
+// Updates the deletion protection status of the specified resources. You can enable or disable deletion protection for namespaces and Services.
 //
 // @param request - UpdateResourcesDeleteProtectionRequest
 //
