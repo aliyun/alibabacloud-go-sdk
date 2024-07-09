@@ -1,7 +1,4 @@
 // This file is auto-generated, don't edit it. Thanks.
-/**
- *
- */
 package client
 
 import (
@@ -13,12 +10,48 @@ import (
 )
 
 type AddResolverEndpointRequest struct {
-	IpConfig        []*AddResolverEndpointRequestIpConfig `json:"IpConfig,omitempty" xml:"IpConfig,omitempty" type:"Repeated"`
-	Lang            *string                               `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	Name            *string                               `json:"Name,omitempty" xml:"Name,omitempty"`
-	SecurityGroupId *string                               `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	VpcId           *string                               `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	VpcRegionId     *string                               `json:"VpcRegionId,omitempty" xml:"VpcRegionId,omitempty"`
+	// The source IP addresses of outbound traffic. You must add two to six source IP addresses to ensure high availability.
+	//
+	// This parameter is required.
+	IpConfig []*AddResolverEndpointRequestIpConfig `json:"IpConfig,omitempty" xml:"IpConfig,omitempty" type:"Repeated"`
+	// The language.
+	//
+	// example:
+	//
+	// en
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The endpoint name. The name can be up to 20 characters in length. If the upper limit is exceeded, an error message is returned.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// endpoint-test-name
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The security group ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// kqlqlqjqqkq
+	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	// The outbound VPC ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// vpc-129343jslslsks
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// The region ID of the outbound virtual private cloud (VPC).
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	VpcRegionId *string `json:"VpcRegionId,omitempty" xml:"VpcRegionId,omitempty"`
 }
 
 func (s AddResolverEndpointRequest) String() string {
@@ -60,9 +93,35 @@ func (s *AddResolverEndpointRequest) SetVpcRegionId(v string) *AddResolverEndpoi
 }
 
 type AddResolverEndpointRequestIpConfig struct {
-	AzId      *string `json:"AzId,omitempty" xml:"AzId,omitempty"`
+	// The zone ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou-a
+	AzId *string `json:"AzId,omitempty" xml:"AzId,omitempty"`
+	// The IPv4 CIDR block of the vSwitch.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 172.16.0.0/24
 	CidrBlock *string `json:"CidrBlock,omitempty" xml:"CidrBlock,omitempty"`
-	Ip        *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	// The source IP address of outbound traffic. The IP address must be within the specified CIDR block.
+	//
+	// example:
+	//
+	// 172.16.xx.xx
+	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	// The vSwitch ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// sjqkql
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
 }
 
@@ -95,8 +154,18 @@ func (s *AddResolverEndpointRequestIpConfig) SetVSwitchId(v string) *AddResolver
 }
 
 type AddResolverEndpointResponseBody struct {
+	// The outbound endpoint ID.
+	//
+	// example:
+	//
+	// hra0**
 	EndpointId *string `json:"EndpointId,omitempty" xml:"EndpointId,omitempty"`
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 32436208-E1AF-4DAB-B3B8-24F5F25B0950
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s AddResolverEndpointResponseBody) String() string {
@@ -147,12 +216,48 @@ func (s *AddResolverEndpointResponse) SetBody(v *AddResolverEndpointResponseBody
 }
 
 type AddResolverRuleRequest struct {
-	EndpointId *string                            `json:"EndpointId,omitempty" xml:"EndpointId,omitempty"`
-	ForwardIp  []*AddResolverRuleRequestForwardIp `json:"ForwardIp,omitempty" xml:"ForwardIp,omitempty" type:"Repeated"`
-	Lang       *string                            `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	Name       *string                            `json:"Name,omitempty" xml:"Name,omitempty"`
-	Type       *string                            `json:"Type,omitempty" xml:"Type,omitempty"`
-	ZoneName   *string                            `json:"ZoneName,omitempty" xml:"ZoneName,omitempty"`
+	// The endpoint ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// hra0**
+	EndpointId *string `json:"EndpointId,omitempty" xml:"EndpointId,omitempty"`
+	// The destination IP address and port number.
+	//
+	// This parameter is required.
+	ForwardIp []*AddResolverRuleRequestForwardIp `json:"ForwardIp,omitempty" xml:"ForwardIp,omitempty" type:"Repeated"`
+	// The language.
+	//
+	// example:
+	//
+	// en
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The name of the forwarding rule.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The type of the forwarding rule. Valid value:
+	//
+	// 	- OUTBOUND: forwards Domain Name System (DNS) requests to one or more external IP addresses.
+	//
+	// example:
+	//
+	// OUTBOUND
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The name of the forward zone.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// example.com
+	ZoneName *string `json:"ZoneName,omitempty" xml:"ZoneName,omitempty"`
 }
 
 func (s AddResolverRuleRequest) String() string {
@@ -194,8 +299,22 @@ func (s *AddResolverRuleRequest) SetZoneName(v string) *AddResolverRuleRequest {
 }
 
 type AddResolverRuleRequestForwardIp struct {
-	Ip   *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
-	Port *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
+	// The destination IP address.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 172.16.xx.xx
+	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	// The port number.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 8080
+	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
 }
 
 func (s AddResolverRuleRequestForwardIp) String() string {
@@ -217,8 +336,18 @@ func (s *AddResolverRuleRequestForwardIp) SetPort(v int32) *AddResolverRuleReque
 }
 
 type AddResolverRuleResponseBody struct {
+	// The request ID.
+	//
+	// example:
+	//
+	// 725B8BED-901F-480C-BBAC-FA59A18580C1
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	RuleId    *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	// The forwarding rule ID.
+	//
+	// example:
+	//
+	// hra0**
+	RuleId *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
 }
 
 func (s AddResolverRuleResponseBody) String() string {
@@ -269,10 +398,44 @@ func (s *AddResolverRuleResponse) SetBody(v *AddResolverRuleResponseBody) *AddRe
 }
 
 type AddUserVpcAuthorizationRequest struct {
-	AuthChannel      *string `json:"AuthChannel,omitempty" xml:"AuthChannel,omitempty"`
-	AuthCode         *string `json:"AuthCode,omitempty" xml:"AuthCode,omitempty"`
-	AuthType         *string `json:"AuthType,omitempty" xml:"AuthType,omitempty"`
-	AuthorizedUserId *int64  `json:"AuthorizedUserId,omitempty" xml:"AuthorizedUserId,omitempty"`
+	// The authorization method. Valid values:
+	//
+	// 	- AUTH_CODE: An authorization code is used to associate VPCs across accounts. The system checks whether the value of AuthCode is valid.
+	//
+	// 	- RESOURCE_DIRECTORY: A resource directory is used to associate VPCs across accounts. The system checks whether the value of AuthorizedUserId and the current account are in the same resource directory.
+	//
+	// 	- If this parameter is empty, an authorization code is used to associate VPCs across accounts.
+	//
+	// example:
+	//
+	// AUTH_CODE
+	AuthChannel *string `json:"AuthChannel,omitempty" xml:"AuthChannel,omitempty"`
+	// The verification code.
+	//
+	// This parameter is required when AuthType is set to NORMAL or is left empty and AuthChannel is set to AUTH_CODE or is left empty.
+	//
+	// example:
+	//
+	// 123456
+	AuthCode *string `json:"AuthCode,omitempty" xml:"AuthCode,omitempty"`
+	// The authorization scope. Valid values:
+	//
+	// 	- NORMAL: general authorization.
+	//
+	// 	- CLOUD_PRODUCT: cloud service-related authorization
+	//
+	// example:
+	//
+	// NORMAL
+	AuthType *string `json:"AuthType,omitempty" xml:"AuthType,omitempty"`
+	// The ID of the Alibaba Cloud account.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 111222333
+	AuthorizedUserId *int64 `json:"AuthorizedUserId,omitempty" xml:"AuthorizedUserId,omitempty"`
 }
 
 func (s AddUserVpcAuthorizationRequest) String() string {
@@ -304,6 +467,11 @@ func (s *AddUserVpcAuthorizationRequest) SetAuthorizedUserId(v int64) *AddUserVp
 }
 
 type AddUserVpcAuthorizationResponseBody struct {
+	// The request ID.
+	//
+	// example:
+	//
+	// 46973D4C-E3E4-4ABA-9190-9A9DE406C7E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -350,14 +518,60 @@ func (s *AddUserVpcAuthorizationResponse) SetBody(v *AddUserVpcAuthorizationResp
 }
 
 type AddZoneRequest struct {
-	ClientToken     *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	DnsGroup        *string `json:"DnsGroup,omitempty" xml:"DnsGroup,omitempty"`
-	Lang            *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	ProxyPattern    *string `json:"ProxyPattern,omitempty" xml:"ProxyPattern,omitempty"`
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	//
+	// example:
+	//
+	// 21079fa016944979537637959d09bc
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The logical location of the built-in authoritative module in which the zone is added. Valid values:
+	//
+	// 	- Normal zone: regular module
+	//
+	// 	- Fast Zone: acceleration module
+	//
+	// example:
+	//
+	// FAST_ZONE
+	DnsGroup *string `json:"DnsGroup,omitempty" xml:"DnsGroup,omitempty"`
+	// The language.
+	//
+	// example:
+	//
+	// en
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// 	- Specifies whether to enable the recursive resolution proxy feature for the zone. Valid values: **ZONE**: disables the recursive resolution proxy feature for the zone.
+	//
+	// 	- **RECORD**: enables the recursive resolution proxy feature for the zone.
+	//
+	// example:
+	//
+	// ZONE
+	ProxyPattern *string `json:"ProxyPattern,omitempty" xml:"ProxyPattern,omitempty"`
+	// The ID of the resource group.
+	//
+	// example:
+	//
+	// rg-resourcegroupid1
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	ZoneName        *string `json:"ZoneName,omitempty" xml:"ZoneName,omitempty"`
-	ZoneTag         *string `json:"ZoneTag,omitempty" xml:"ZoneTag,omitempty"`
-	ZoneType        *string `json:"ZoneType,omitempty" xml:"ZoneType,omitempty"`
+	// The name of the zone.
+	//
+	// example:
+	//
+	// example.com
+	ZoneName *string `json:"ZoneName,omitempty" xml:"ZoneName,omitempty"`
+	// This parameter is not available. You can ignore it.
+	//
+	// example:
+	//
+	// BLINK
+	ZoneTag *string `json:"ZoneTag,omitempty" xml:"ZoneTag,omitempty"`
+	// This parameter is not available. You can ignore it.
+	//
+	// example:
+	//
+	// CLOUD_PRODUCT_ZONE
+	ZoneType *string `json:"ZoneType,omitempty" xml:"ZoneType,omitempty"`
 }
 
 func (s AddZoneRequest) String() string {
@@ -409,10 +623,29 @@ func (s *AddZoneRequest) SetZoneType(v string) *AddZoneRequest {
 }
 
 type AddZoneResponseBody struct {
+	// The request ID.
+	//
+	// example:
+	//
+	// 46973D4C-E3E4-4ABA-9190-9A9DE406C7E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
-	// zone ID。
-	ZoneId   *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	// Indicates whether the request was successful.
+	//
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The global ID of the zone.
+	//
+	// example:
+	//
+	// AgIDE1MQ_151
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	// The name of the zone.
+	//
+	// example:
+	//
+	// example.com
 	ZoneName *string `json:"ZoneName,omitempty" xml:"ZoneName,omitempty"`
 }
 
@@ -474,18 +707,87 @@ func (s *AddZoneResponse) SetBody(v *AddZoneResponseBody) *AddZoneResponse {
 }
 
 type AddZoneRecordRequest struct {
-	ClientToken  *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	Line         *string `json:"Line,omitempty" xml:"Line,omitempty"`
-	Priority     *int32  `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	Remark       *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	Rr           *string `json:"Rr,omitempty" xml:"Rr,omitempty"`
-	Ttl          *int32  `json:"Ttl,omitempty" xml:"Ttl,omitempty"`
-	Type         *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	//
+	// example:
+	//
+	// 6447728c8578e66aacf062d2df4446dc
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The language.
+	//
+	// example:
+	//
+	// en
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The resolution line. Default value: **default**.
+	//
+	// example:
+	//
+	// default
+	Line *string `json:"Line,omitempty" xml:"Line,omitempty"`
+	// The priority of the mail exchanger (MX) record. Valid values: **1 to 99**.
+	//
+	// example:
+	//
+	// 5
+	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// The language.
+	//
+	// example:
+	//
+	// en
+	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// The hostname.
+	//
+	// For example, you must set Rr to @ if you want to resolve @.example.com.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// www
+	Rr *string `json:"Rr,omitempty" xml:"Rr,omitempty"`
+	// The time to live (TTL) of the DNS record. Default value: **60**.
+	//
+	// example:
+	//
+	// 60
+	Ttl *int32 `json:"Ttl,omitempty" xml:"Ttl,omitempty"`
+	// The type of the DNS record. Valid values: **A**, **AAAA**, **CNAME**, **TXT**, **MX**, **PTR**, and **SRV**.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// A
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The IP address of the client.
+	//
+	// example:
+	//
+	// 2.2.XX.XX
 	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
-	Value        *string `json:"Value,omitempty" xml:"Value,omitempty"`
-	Weight       *int32  `json:"Weight,omitempty" xml:"Weight,omitempty"`
-	// Zone ID。
+	// The record value.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1.1.XX.XX
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The weight of the address. Valid values: **0 to 100**. Default value: 1.
+	//
+	// example:
+	//
+	// 1
+	Weight *int32 `json:"Weight,omitempty" xml:"Weight,omitempty"`
+	// The global ID of the zone.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// CAgICA1OA_58
 	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
@@ -558,9 +860,24 @@ func (s *AddZoneRecordRequest) SetZoneId(v string) *AddZoneRecordRequest {
 }
 
 type AddZoneRecordResponseBody struct {
-	RecordId  *int64  `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
+	// The ID of the DNS record.
+	//
+	// example:
+	//
+	// 5808
+	RecordId *int64 `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 0B7AD377-7E86-44A8-B9A8-53E8666E72FE
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the request was successful.
+	//
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s AddZoneRecordResponseBody) String() string {
@@ -616,9 +933,22 @@ func (s *AddZoneRecordResponse) SetBody(v *AddZoneRecordResponseBody) *AddZoneRe
 }
 
 type BindResolverRuleVpcRequest struct {
-	Lang   *string                          `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	RuleId *string                          `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
-	Vpc    []*BindResolverRuleVpcRequestVpc `json:"Vpc,omitempty" xml:"Vpc,omitempty" type:"Repeated"`
+	// The language.
+	//
+	// example:
+	//
+	// en
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The forwarding rule ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// hra0**
+	RuleId *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	// The VPCs.
+	Vpc []*BindResolverRuleVpcRequestVpc `json:"Vpc,omitempty" xml:"Vpc,omitempty" type:"Repeated"`
 }
 
 func (s BindResolverRuleVpcRequest) String() string {
@@ -645,9 +975,27 @@ func (s *BindResolverRuleVpcRequest) SetVpc(v []*BindResolverRuleVpcRequestVpc) 
 }
 
 type BindResolverRuleVpcRequestVpc struct {
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// vpcID
-	VpcId   *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// The VPC ID.
+	//
+	// example:
+	//
+	// vpc-kqk1i2o2ajsksl-vpc-test
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// The VPC type. Valid values:
+	//
+	// 	- STANDARD: standard VPC
+	//
+	// 	- EDS: Elastic Desktop Service (EDS) workspace VPC
+	//
+	// example:
+	//
+	// STANDARD
 	VpcType *string `json:"VpcType,omitempty" xml:"VpcType,omitempty"`
 }
 
@@ -675,6 +1023,11 @@ func (s *BindResolverRuleVpcRequestVpc) SetVpcType(v string) *BindResolverRuleVp
 }
 
 type BindResolverRuleVpcResponseBody struct {
+	// The request ID.
+	//
+	// example:
+	//
+	// 12FE6E98-3885-423E-B18B-88CC17052A31
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -721,11 +1074,34 @@ func (s *BindResolverRuleVpcResponse) SetBody(v *BindResolverRuleVpcResponseBody
 }
 
 type BindZoneVpcRequest struct {
-	ClientToken  *string                   `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	Lang         *string                   `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	UserClientIp *string                   `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
-	Vpcs         []*BindZoneVpcRequestVpcs `json:"Vpcs,omitempty" xml:"Vpcs,omitempty" type:"Repeated"`
-	ZoneId       *string                   `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	//
+	// example:
+	//
+	// 6447728c8578e66aacf062d2df4446dc
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The language.
+	//
+	// example:
+	//
+	// en
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The IP address of the client.
+	//
+	// example:
+	//
+	// 1.1.1.1
+	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
+	// The information about VPCs.
+	Vpcs []*BindZoneVpcRequestVpcs `json:"Vpcs,omitempty" xml:"Vpcs,omitempty" type:"Repeated"`
+	// The global ID of the zone.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// AgIDE0OQ_149
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s BindZoneVpcRequest) String() string {
@@ -762,9 +1138,28 @@ func (s *BindZoneVpcRequest) SetZoneId(v string) *BindZoneVpcRequest {
 }
 
 type BindZoneVpcRequestVpcs struct {
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	VpcId    *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	VpcType  *string `json:"VpcType,omitempty" xml:"VpcType,omitempty"`
+	// The VPC ID. If you do not specify this parameter, the VPCs that are bound to the zone are unbound from the zone.
+	//
+	// example:
+	//
+	// daily-vpc-id
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// The type of the VPC. Valid values:
+	//
+	// 	- **STANDARD**: standard VPC
+	//
+	// 	- **EDS**: Elastic Desktop Service (EDS) workspace VPC
+	//
+	// example:
+	//
+	// STANDARD
+	VpcType *string `json:"VpcType,omitempty" xml:"VpcType,omitempty"`
 }
 
 func (s BindZoneVpcRequestVpcs) String() string {
@@ -791,6 +1186,11 @@ func (s *BindZoneVpcRequestVpcs) SetVpcType(v string) *BindZoneVpcRequestVpcs {
 }
 
 type BindZoneVpcResponseBody struct {
+	// The request ID.
+	//
+	// example:
+	//
+	// 46973D4C-E3E4-4ABA-9190-9A9DE406C7E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -837,9 +1237,24 @@ func (s *BindZoneVpcResponse) SetBody(v *BindZoneVpcResponseBody) *BindZoneVpcRe
 }
 
 type CheckZoneNameRequest struct {
-	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The language.
+	//
+	// example:
+	//
+	// en
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The IP address of the client.
+	//
+	// example:
+	//
+	// 192.0.2.0
 	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
-	ZoneName     *string `json:"ZoneName,omitempty" xml:"ZoneName,omitempty"`
+	// The name of the zone. This parameter is required.
+	//
+	// example:
+	//
+	// example.com
+	ZoneName *string `json:"ZoneName,omitempty" xml:"ZoneName,omitempty"`
 }
 
 func (s CheckZoneNameRequest) String() string {
@@ -866,9 +1281,28 @@ func (s *CheckZoneNameRequest) SetZoneName(v string) *CheckZoneNameRequest {
 }
 
 type CheckZoneNameResponseBody struct {
-	Check     *bool   `json:"Check,omitempty" xml:"Check,omitempty"`
+	// Indicates whether the zone name is valid. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
+	Check *bool `json:"Check,omitempty" xml:"Check,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// CA29B88F-A571-4123-80D5-768AC2F7F806
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the request was successful.
+	//
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s CheckZoneNameResponseBody) String() string {
@@ -924,8 +1358,20 @@ func (s *CheckZoneNameResponse) SetBody(v *CheckZoneNameResponseBody) *CheckZone
 }
 
 type DeleteResolverEndpointRequest struct {
+	// The endpoint ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// hra0**
 	EndpointId *string `json:"EndpointId,omitempty" xml:"EndpointId,omitempty"`
-	Lang       *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The language.
+	//
+	// example:
+	//
+	// en
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 }
 
 func (s DeleteResolverEndpointRequest) String() string {
@@ -947,6 +1393,11 @@ func (s *DeleteResolverEndpointRequest) SetLang(v string) *DeleteResolverEndpoin
 }
 
 type DeleteResolverEndpointResponseBody struct {
+	// The request ID.
+	//
+	// example:
+	//
+	// 35134B4A-CEC0-43C8-AAD4-BA54AE3268B5
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -993,7 +1444,19 @@ func (s *DeleteResolverEndpointResponse) SetBody(v *DeleteResolverEndpointRespon
 }
 
 type DeleteResolverRuleRequest struct {
-	Lang   *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The language.
+	//
+	// example:
+	//
+	// en
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The forwarding rule ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// hra0**
 	RuleId *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
 }
 
@@ -1016,6 +1479,11 @@ func (s *DeleteResolverRuleRequest) SetRuleId(v string) *DeleteResolverRuleReque
 }
 
 type DeleteResolverRuleResponseBody struct {
+	// The request ID.
+	//
+	// example:
+	//
+	// 0C9959BE-3A6A-4803-8DCE-973B42ACD599
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1062,8 +1530,24 @@ func (s *DeleteResolverRuleResponse) SetBody(v *DeleteResolverRuleResponseBody) 
 }
 
 type DeleteUserVpcAuthorizationRequest struct {
-	AuthType         *string `json:"AuthType,omitempty" xml:"AuthType,omitempty"`
-	AuthorizedUserId *int64  `json:"AuthorizedUserId,omitempty" xml:"AuthorizedUserId,omitempty"`
+	// The authorization scope. Valid values:
+	//
+	// 	- NORMAL: general authorization
+	//
+	// 	- NORMAL: cloud service-related authorization
+	//
+	// example:
+	//
+	// NORMAL
+	AuthType *string `json:"AuthType,omitempty" xml:"AuthType,omitempty"`
+	// The ID of the Alibaba Cloud account.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 11111111
+	AuthorizedUserId *int64 `json:"AuthorizedUserId,omitempty" xml:"AuthorizedUserId,omitempty"`
 }
 
 func (s DeleteUserVpcAuthorizationRequest) String() string {
@@ -1085,6 +1569,11 @@ func (s *DeleteUserVpcAuthorizationRequest) SetAuthorizedUserId(v int64) *Delete
 }
 
 type DeleteUserVpcAuthorizationResponseBody struct {
+	// The request ID.
+	//
+	// example:
+	//
+	// 46973D4C-E3E4-4ABA-9190-9A9DE406C7E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1131,10 +1620,33 @@ func (s *DeleteUserVpcAuthorizationResponse) SetBody(v *DeleteUserVpcAuthorizati
 }
 
 type DeleteZoneRequest struct {
-	ClientToken  *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The client token that is used to ensure the idempotence of the request.
+	//
+	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+	//
+	// example:
+	//
+	// 21079fa016944979537637959d09bc
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The language.
+	//
+	// example:
+	//
+	// en
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The IP address of the client.
+	//
+	// example:
+	//
+	// 1.1.XX.XX
 	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
-	// zone ID
+	// The global ID of the zone.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// AgIDE1MA_150
 	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
@@ -1167,8 +1679,17 @@ func (s *DeleteZoneRequest) SetZoneId(v string) *DeleteZoneRequest {
 }
 
 type DeleteZoneResponseBody struct {
+	// The request ID.
+	//
+	// example:
+	//
+	// E246E023-F2EB-4034-83F7-B13FCF31459C
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// zone ID
+	// The global ID of the zone.
+	//
+	// example:
+	//
+	// AgIDE1MA_150
 	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
@@ -1220,9 +1741,31 @@ func (s *DeleteZoneResponse) SetBody(v *DeleteZoneResponseBody) *DeleteZoneRespo
 }
 
 type DeleteZoneRecordRequest struct {
-	ClientToken  *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	RecordId     *int64  `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	//
+	// example:
+	//
+	// 6447728c8578e66aacf062d2df4446dc
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The language.
+	//
+	// example:
+	//
+	// en
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The ID of the DNS record.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 5808
+	RecordId *int64 `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
+	// The IP address of the client.
+	//
+	// example:
+	//
+	// 1.1.XX.XX
 	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
 }
 
@@ -1255,7 +1798,17 @@ func (s *DeleteZoneRecordRequest) SetUserClientIp(v string) *DeleteZoneRecordReq
 }
 
 type DeleteZoneRecordResponseBody struct {
-	RecordId  *int64  `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
+	// The ID of the DNS record.
+	//
+	// example:
+	//
+	// 5808
+	RecordId *int64 `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 0B7AD377-7E86-44A8-B9A8-53E8666E72FE
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1307,15 +1860,70 @@ func (s *DeleteZoneRecordResponse) SetBody(v *DeleteZoneRecordResponseBody) *Del
 }
 
 type DescribeChangeLogsRequest struct {
-	EndTimestamp   *int64  `json:"EndTimestamp,omitempty" xml:"EndTimestamp,omitempty"`
-	EntityType     *string `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
-	Keyword        *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
-	Lang           *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	PageNumber     *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize       *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	StartTimestamp *int64  `json:"StartTimestamp,omitempty" xml:"StartTimestamp,omitempty"`
-	UserClientIp   *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
-	ZoneId         *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	// The end of the time range to query. Set the time to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	//
+	// example:
+	//
+	// 1516779348000
+	EndTimestamp *int64 `json:"EndTimestamp,omitempty" xml:"EndTimestamp,omitempty"`
+	// The type of operation logs. Valid values:
+	//
+	// 	- **PV_ZONE**: the logs that record the operations on zones
+	//
+	// 	- **PV_RECORD**: the logs that record the operations on DNS records
+	//
+	// If you set this parameter to other values, all types of operation logs are queried.
+	//
+	// example:
+	//
+	// PV_ZONE
+	EntityType *string `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
+	// The keyword for searches in "%KeyWord%" mode. The value is not case-sensitive.
+	//
+	// example:
+	//
+	// test
+	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	// The language.
+	//
+	// example:
+	//
+	// en
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The page number. Pages start from page **1**. Default value: **1**.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Maximum value: **100**. Default value: **20**.
+	//
+	// example:
+	//
+	// 100
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The beginning of the time range to query. Set the time to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	//
+	// example:
+	//
+	// 1516779348000
+	StartTimestamp *int64 `json:"StartTimestamp,omitempty" xml:"StartTimestamp,omitempty"`
+	// The IP address of the client.
+	//
+	// example:
+	//
+	// 1.1.XX.XX
+	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
+	// The global ID of the zone.\\
+	//
+	// If you specify this parameter, the logs that record the operations on the Domain Name System (DNS) records of the specified zone are queried.\\
+	//
+	// If you leave this parameter empty, the logs that record the operations on all zones that belong to the current Alibaba Cloud account and the DNS records of these zones are queried.
+	//
+	// example:
+	//
+	// 6726
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s DescribeChangeLogsRequest) String() string {
@@ -1372,12 +1980,38 @@ func (s *DescribeChangeLogsRequest) SetZoneId(v string) *DescribeChangeLogsReque
 }
 
 type DescribeChangeLogsResponseBody struct {
+	// The operation logs.
 	ChangeLogs *DescribeChangeLogsResponseBodyChangeLogs `json:"ChangeLogs,omitempty" xml:"ChangeLogs,omitempty" type:"Struct"`
-	PageNumber *int32                                    `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32                                    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId  *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalItems *int32                                    `json:"TotalItems,omitempty" xml:"TotalItems,omitempty"`
-	TotalPages *int32                                    `json:"TotalPages,omitempty" xml:"TotalPages,omitempty"`
+	// The page number.
+	//
+	// example:
+	//
+	// 2
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
+	// example:
+	//
+	// 1
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// F0FCB52A-D512-41A0-8595-40234EDCFD8B
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 100
+	TotalItems *int32 `json:"TotalItems,omitempty" xml:"TotalItems,omitempty"`
+	// The total number of pages.
+	//
+	// example:
+	//
+	// 100
+	TotalPages *int32 `json:"TotalPages,omitempty" xml:"TotalPages,omitempty"`
 }
 
 func (s DescribeChangeLogsResponseBody) String() string {
@@ -1436,18 +2070,86 @@ func (s *DescribeChangeLogsResponseBodyChangeLogs) SetChangeLog(v []*DescribeCha
 }
 
 type DescribeChangeLogsResponseBodyChangeLogsChangeLog struct {
-	Content        *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	CreatorId      *string `json:"CreatorId,omitempty" xml:"CreatorId,omitempty"`
+	// The details of the operation.
+	//
+	// example:
+	//
+	// add test-api.com
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The operator ID.
+	//
+	// example:
+	//
+	// 13270376
+	CreatorId *string `json:"CreatorId,omitempty" xml:"CreatorId,omitempty"`
+	// The subtype of the operator. Valid values:
+	//
+	// 	- CUSTOMER: Alibaba Cloud account
+	//
+	// 	- SUB: RAM user
+	//
+	// 	- STS: assumed role that obtains the Security Token Service (STS) token of a RAM role
+	//
+	// 	- OTHER: other types
+	//
+	// example:
+	//
+	// SUB
 	CreatorSubType *string `json:"CreatorSubType,omitempty" xml:"CreatorSubType,omitempty"`
-	CreatorType    *string `json:"CreatorType,omitempty" xml:"CreatorType,omitempty"`
-	EntityId       *string `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
-	EntityName     *string `json:"EntityName,omitempty" xml:"EntityName,omitempty"`
-	Id             *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
-	OperAction     *string `json:"OperAction,omitempty" xml:"OperAction,omitempty"`
-	OperIp         *string `json:"OperIp,omitempty" xml:"OperIp,omitempty"`
-	OperObject     *string `json:"OperObject,omitempty" xml:"OperObject,omitempty"`
-	OperTime       *string `json:"OperTime,omitempty" xml:"OperTime,omitempty"`
-	OperTimestamp  *int64  `json:"OperTimestamp,omitempty" xml:"OperTimestamp,omitempty"`
+	// The operator type. No value or **USER*	- is returned for this parameter.
+	//
+	// example:
+	//
+	// USER
+	CreatorType *string `json:"CreatorType,omitempty" xml:"CreatorType,omitempty"`
+	// The ID of the object on which the operation was performed.
+	//
+	// example:
+	//
+	// CAgICA1OA_58
+	EntityId *string `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
+	// The name of the object on which the operation was performed.
+	//
+	// example:
+	//
+	// test-api.com
+	EntityName *string `json:"EntityName,omitempty" xml:"EntityName,omitempty"`
+	// The log ID.
+	//
+	// example:
+	//
+	// 6726
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The operation type.
+	//
+	// example:
+	//
+	// add
+	OperAction *string `json:"OperAction,omitempty" xml:"OperAction,omitempty"`
+	// The IP address of the client.
+	//
+	// example:
+	//
+	// 1.1.1.1
+	OperIp *string `json:"OperIp,omitempty" xml:"OperIp,omitempty"`
+	// The type of the object on which the operation is performed.
+	//
+	// example:
+	//
+	// PV_ZONE
+	OperObject *string `json:"OperObject,omitempty" xml:"OperObject,omitempty"`
+	// The time when the operation is performed. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
+	//
+	// example:
+	//
+	// 2018-01-24T07:35Z
+	OperTime *string `json:"OperTime,omitempty" xml:"OperTime,omitempty"`
+	// The time when the operation was performed. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	//
+	// example:
+	//
+	// 1516779348000
+	OperTimestamp *int64 `json:"OperTimestamp,omitempty" xml:"OperTimestamp,omitempty"`
 }
 
 func (s DescribeChangeLogsResponseBodyChangeLogsChangeLog) String() string {
@@ -1548,12 +2250,58 @@ func (s *DescribeChangeLogsResponse) SetBody(v *DescribeChangeLogsResponseBody) 
 }
 
 type DescribeRegionsRequest struct {
-	AcceptLanguage   *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	AuthorizedUserId *int64  `json:"AuthorizedUserId,omitempty" xml:"AuthorizedUserId,omitempty"`
-	Lang             *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	Scene            *string `json:"Scene,omitempty" xml:"Scene,omitempty"`
-	UserClientIp     *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
-	VpcType          *string `json:"VpcType,omitempty" xml:"VpcType,omitempty"`
+	// The supported language. Valid values:
+	//
+	// 	- zh-CN: Chinese
+	//
+	// 	- en-US: English
+	//
+	// 	- ja: Japanese
+	//
+	// example:
+	//
+	// en-US
+	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// The ID of the Alibaba Cloud account to which the permissions on the resources are granted.
+	//
+	// example:
+	//
+	// 111222333
+	AuthorizedUserId *int64 `json:"AuthorizedUserId,omitempty" xml:"AuthorizedUserId,omitempty"`
+	// The language.
+	//
+	// example:
+	//
+	// en
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The scenario. Valid values:
+	//
+	// 	- AUTH: the built-in authoritative module
+	//
+	// 	- FWD: the forward module
+	//
+	// 	- RA: the traffic analysis module
+	//
+	// example:
+	//
+	// AUTH
+	Scene *string `json:"Scene,omitempty" xml:"Scene,omitempty"`
+	// The IP address of the client.
+	//
+	// example:
+	//
+	// 192.168.1.1
+	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
+	// The type of the virtual private cloud (VPC). Valid values:
+	//
+	// 	- STANDARD: standard VPC
+	//
+	// 	- EDS: Elastic Desktop Service (EDS) workspace VPC
+	//
+	// example:
+	//
+	// STANDARD
+	VpcType *string `json:"VpcType,omitempty" xml:"VpcType,omitempty"`
 }
 
 func (s DescribeRegionsRequest) String() string {
@@ -1595,8 +2343,14 @@ func (s *DescribeRegionsRequest) SetVpcType(v string) *DescribeRegionsRequest {
 }
 
 type DescribeRegionsResponseBody struct {
-	Regions   *DescribeRegionsResponseBodyRegions `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Struct"`
-	RequestId *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The regions.
+	Regions *DescribeRegionsResponseBodyRegions `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Struct"`
+	// The request ID.
+	//
+	// example:
+	//
+	// AF7D4DCE-0776-47F2-A9B2-6FB85A87AA60
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeRegionsResponseBody) String() string {
@@ -1635,10 +2389,30 @@ func (s *DescribeRegionsResponseBodyRegions) SetRegion(v []*DescribeRegionsRespo
 }
 
 type DescribeRegionsResponseBodyRegionsRegion struct {
-	LocalName      *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
+	// The display name of the region, which varies based on the current language.
+	//
+	// example:
+	//
+	// China (Beijing)
+	LocalName *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
+	// The endpoint of the service in the region.
+	//
+	// example:
+	//
+	// pvtz.aliyuncs.com
 	RegionEndpoint *string `json:"RegionEndpoint,omitempty" xml:"RegionEndpoint,omitempty"`
-	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RegionName     *string `json:"RegionName,omitempty" xml:"RegionName,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-beijing
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The name of the region.
+	//
+	// example:
+	//
+	// China (Beijing)
+	RegionName *string `json:"RegionName,omitempty" xml:"RegionName,omitempty"`
 }
 
 func (s DescribeRegionsResponseBodyRegionsRegion) String() string {
@@ -1699,15 +2473,65 @@ func (s *DescribeRegionsResponse) SetBody(v *DescribeRegionsResponseBody) *Descr
 }
 
 type DescribeRequestGraphRequest struct {
-	BizId          *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
-	BizType        *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
-	EndTimestamp   *int64  `json:"EndTimestamp,omitempty" xml:"EndTimestamp,omitempty"`
-	Lang           *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	StartTimestamp *int64  `json:"StartTimestamp,omitempty" xml:"StartTimestamp,omitempty"`
-	UserClientIp   *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
-	// VPC ID
+	// The business ID. BizId is specified together with BizType.
+	//
+	// 	- If you set BizType to AUTH_ZONE, set BizId to a zone ID.
+	//
+	// 	- If you set BizType to RESOLVER_RULE, set BizId to the ID of a forwarding rule.
+	//
+	// example:
+	//
+	// b9c93a8954c4098731e863c04302f45a
+	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	// The business type. Valid values:
+	//
+	// 	- AUTH_ZONE: authoritative zone
+	//
+	// 	- RESOLVER_RULE: forwarding rule
+	//
+	// example:
+	//
+	// AUTH_ZONE
+	BizType *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
+	// The end of the time range to query. Set the time to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1571673600000
+	EndTimestamp *int64 `json:"EndTimestamp,omitempty" xml:"EndTimestamp,omitempty"`
+	// The language.
+	//
+	// example:
+	//
+	// en
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The beginning of the time range to query. Set the time to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1571587200000
+	StartTimestamp *int64 `json:"StartTimestamp,omitempty" xml:"StartTimestamp,omitempty"`
+	// The IP address of the client.
+	//
+	// example:
+	//
+	// 127.0.0.1
+	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
+	// The ID of the virtual private cloud (VPC).
+	//
+	// example:
+	//
+	// vpc-1111
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	// zone ID
+	// The global ID of the zone. To query the number of DNS requests for a zone, you can specify ZoneId or BizType and BizId.
+	//
+	// example:
+	//
+	// 29c752a01cd281a20ddcfaecef
 	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
@@ -1760,8 +2584,14 @@ func (s *DescribeRequestGraphRequest) SetZoneId(v string) *DescribeRequestGraphR
 }
 
 type DescribeRequestGraphResponseBody struct {
+	// The information about the DNS requests.
 	RequestDetails *DescribeRequestGraphResponseBodyRequestDetails `json:"RequestDetails,omitempty" xml:"RequestDetails,omitempty" type:"Struct"`
-	RequestId      *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// EB71815-A421-4E51-8E8D-667F44ABE633
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeRequestGraphResponseBody) String() string {
@@ -1800,9 +2630,24 @@ func (s *DescribeRequestGraphResponseBodyRequestDetails) SetZoneRequestTop(v []*
 }
 
 type DescribeRequestGraphResponseBodyRequestDetailsZoneRequestTop struct {
-	RequestCount *int64  `json:"RequestCount,omitempty" xml:"RequestCount,omitempty"`
-	Time         *string `json:"Time,omitempty" xml:"Time,omitempty"`
-	Timestamp    *int64  `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
+	// The number of DNS requests.
+	//
+	// example:
+	//
+	// 103
+	RequestCount *int64 `json:"RequestCount,omitempty" xml:"RequestCount,omitempty"`
+	// The statistical time. The value is a string. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	//
+	// example:
+	//
+	// 2019-10-21T10:00Z
+	Time *string `json:"Time,omitempty" xml:"Time,omitempty"`
+	// The statistical timestamp. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	//
+	// example:
+	//
+	// 1571652000000
+	Timestamp *int64 `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
 }
 
 func (s DescribeRequestGraphResponseBodyRequestDetailsZoneRequestTop) String() string {
@@ -1858,8 +2703,25 @@ func (s *DescribeRequestGraphResponse) SetBody(v *DescribeRequestGraphResponseBo
 }
 
 type DescribeResolverAvailableZonesRequest struct {
-	AzId             *string `json:"AzId,omitempty" xml:"AzId,omitempty"`
-	Lang             *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The zone ID.
+	//
+	// example:
+	//
+	// cn-zhangjiakou-a
+	AzId *string `json:"AzId,omitempty" xml:"AzId,omitempty"`
+	// The language.
+	//
+	// example:
+	//
+	// en
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The region ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-zhangjiakou
 	ResolverRegionId *string `json:"ResolverRegionId,omitempty" xml:"ResolverRegionId,omitempty"`
 }
 
@@ -1887,8 +2749,14 @@ func (s *DescribeResolverAvailableZonesRequest) SetResolverRegionId(v string) *D
 }
 
 type DescribeResolverAvailableZonesResponseBody struct {
+	// The information about the queried zones.
 	AvailableZones []*DescribeResolverAvailableZonesResponseBodyAvailableZones `json:"AvailableZones,omitempty" xml:"AvailableZones,omitempty" type:"Repeated"`
-	RequestId      *string                                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 23268E49-0C3E-4A2C-AB70-B4C7D092470B
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeResolverAvailableZonesResponseBody) String() string {
@@ -1910,7 +2778,21 @@ func (s *DescribeResolverAvailableZonesResponseBody) SetRequestId(v string) *Des
 }
 
 type DescribeResolverAvailableZonesResponseBodyAvailableZones struct {
-	AzId   *string `json:"AzId,omitempty" xml:"AzId,omitempty"`
+	// The zone ID.
+	//
+	// example:
+	//
+	// cn-zhangjiakou-a
+	AzId *string `json:"AzId,omitempty" xml:"AzId,omitempty"`
+	// The state of resources in the zone. Valid values:
+	//
+	// 	- NORMAL: The resources are in the normal state.
+	//
+	// 	- SOLD_OUT: The resources are sold out.
+	//
+	// example:
+	//
+	// NORMAL
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -1962,8 +2844,20 @@ func (s *DescribeResolverAvailableZonesResponse) SetBody(v *DescribeResolverAvai
 }
 
 type DescribeResolverEndpointRequest struct {
+	// The endpoint ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// hra0**
 	EndpointId *string `json:"EndpointId,omitempty" xml:"EndpointId,omitempty"`
-	Lang       *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The language.
+	//
+	// example:
+	//
+	// en
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 }
 
 func (s DescribeResolverEndpointRequest) String() string {
@@ -1985,20 +2879,90 @@ func (s *DescribeResolverEndpointRequest) SetLang(v string) *DescribeResolverEnd
 }
 
 type DescribeResolverEndpointResponseBody struct {
-	CreateTime      *string                                          `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	CreateTimestamp *int64                                           `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
-	Id              *string                                          `json:"Id,omitempty" xml:"Id,omitempty"`
-	IpConfigs       []*DescribeResolverEndpointResponseBodyIpConfigs `json:"IpConfigs,omitempty" xml:"IpConfigs,omitempty" type:"Repeated"`
-	Name            *string                                          `json:"Name,omitempty" xml:"Name,omitempty"`
-	RequestId       *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	SecurityGroupId *string                                          `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	Status          *string                                          `json:"Status,omitempty" xml:"Status,omitempty"`
-	UpdateTime      *string                                          `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	UpdateTimestamp *int64                                           `json:"UpdateTimestamp,omitempty" xml:"UpdateTimestamp,omitempty"`
-	VpcId           *string                                          `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	VpcName         *string                                          `json:"VpcName,omitempty" xml:"VpcName,omitempty"`
-	VpcRegionId     *string                                          `json:"VpcRegionId,omitempty" xml:"VpcRegionId,omitempty"`
-	VpcRegionName   *string                                          `json:"VpcRegionName,omitempty" xml:"VpcRegionName,omitempty"`
+	// The time when the endpoint was created. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ss format. The time is displayed in UTC.
+	//
+	// example:
+	//
+	// 2020-07-13 10:45:56
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The time when the endpoint was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	//
+	// example:
+	//
+	// 1594608356000
+	CreateTimestamp *int64 `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
+	// The endpoint ID.
+	//
+	// example:
+	//
+	// hra0**
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The source IP address of outbound traffic.
+	IpConfigs []*DescribeResolverEndpointResponseBodyIpConfigs `json:"IpConfigs,omitempty" xml:"IpConfigs,omitempty" type:"Repeated"`
+	// The endpoint name.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 45020ED9-6319-4CA7-9475-6E8D6446E84F
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The security group ID.
+	//
+	// example:
+	//
+	// sg-8vb3sigz86xc-group-test
+	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	// The state of the endpoint. Valid values:
+	//
+	// 	- SUCCESS: The endpoint works as expected.
+	//
+	// 	- INIT: The endpoint is being created.
+	//
+	// 	- FAILED: The endpoint fails to be created.
+	//
+	// 	- CHANGE_INIT: The endpoint is being modified.
+	//
+	// 	- CHANGE_FAILED: The endpoint fails to be modified.
+	//
+	// 	- EXCEPTION: The endpoint encounters an exception.
+	//
+	// example:
+	//
+	// SUCCESS
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The time when the endpoint was last modified. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ss format. The time is displayed in UTC.
+	//
+	// example:
+	//
+	// 2020-07-13 10:48:39
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// The time when the endpoint was last modified. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	//
+	// example:
+	//
+	// 1594608519000
+	UpdateTimestamp *int64 `json:"UpdateTimestamp,omitempty" xml:"UpdateTimestamp,omitempty"`
+	// The outbound VPC ID.
+	//
+	// example:
+	//
+	// vpc-8vbl8mpum-vpc-id
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// The outbound VPC name.
+	//
+	// example:
+	//
+	// vpc-name-test
+	VpcName *string `json:"VpcName,omitempty" xml:"VpcName,omitempty"`
+	// The ID of the region where the outbound VPC resides.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	VpcRegionId *string `json:"VpcRegionId,omitempty" xml:"VpcRegionId,omitempty"`
+	// The name of the region where the outbound virtual private cloud (VPC) resides.
+	VpcRegionName *string `json:"VpcRegionName,omitempty" xml:"VpcRegionName,omitempty"`
 }
 
 func (s DescribeResolverEndpointResponseBody) String() string {
@@ -2080,9 +3044,29 @@ func (s *DescribeResolverEndpointResponseBody) SetVpcRegionName(v string) *Descr
 }
 
 type DescribeResolverEndpointResponseBodyIpConfigs struct {
-	AzId      *string `json:"AzId,omitempty" xml:"AzId,omitempty"`
+	// The ID of the zone where the vSwitch resides.
+	//
+	// example:
+	//
+	// cn-hangzhou-a
+	AzId *string `json:"AzId,omitempty" xml:"AzId,omitempty"`
+	// The IPv4 CIDR block of the vSwitch.
+	//
+	// example:
+	//
+	// 172.16.0.0/24
 	CidrBlock *string `json:"CidrBlock,omitempty" xml:"CidrBlock,omitempty"`
-	Ip        *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	// The IPv4 address.
+	//
+	// example:
+	//
+	// 172.16.xx.xx
+	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	// The vSwitch ID.
+	//
+	// example:
+	//
+	// vsw-8vbmks7hzrmk-vswitch-id
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
 }
 
@@ -2144,11 +3128,49 @@ func (s *DescribeResolverEndpointResponse) SetBody(v *DescribeResolverEndpointRe
 }
 
 type DescribeResolverEndpointsRequest struct {
-	Keyword    *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
-	Lang       *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Status     *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The keyword used to filter endpoints in %keyword% mode.
+	//
+	// example:
+	//
+	// test
+	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	// The language.
+	//
+	// example:
+	//
+	// en
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The page number. Default value: 1.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Default value: 20. Maximum value: 100.
+	//
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The state of the endpoint that you want to query. If you do not specify this parameter, all endpoints are returned. Valid values:
+	//
+	// 	- SUCCESS: The endpoint works as expected.
+	//
+	// 	- INIT: The endpoint is being created.
+	//
+	// 	- FAILED: The endpoint fails to be created.
+	//
+	// 	- CHANGE_INIT: The endpoint is being modified.
+	//
+	// 	- CHANGE_FAILED: The endpoint fails to be modified.
+	//
+	// 	- EXCEPTION: The endpoint encounters an exception.
+	//
+	// example:
+	//
+	// SUCCESS
+	Status      *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	VpcRegionId *string `json:"VpcRegionId,omitempty" xml:"VpcRegionId,omitempty"`
 }
 
 func (s DescribeResolverEndpointsRequest) String() string {
@@ -2184,13 +3206,44 @@ func (s *DescribeResolverEndpointsRequest) SetStatus(v string) *DescribeResolver
 	return s
 }
 
+func (s *DescribeResolverEndpointsRequest) SetVpcRegionId(v string) *DescribeResolverEndpointsRequest {
+	s.VpcRegionId = &v
+	return s
+}
+
 type DescribeResolverEndpointsResponseBody struct {
-	Endpoints  []*DescribeResolverEndpointsResponseBodyEndpoints `json:"Endpoints,omitempty" xml:"Endpoints,omitempty" type:"Repeated"`
-	PageNumber *int32                                            `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32                                            `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId  *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalItems *int32                                            `json:"TotalItems,omitempty" xml:"TotalItems,omitempty"`
-	TotalPages *int32                                            `json:"TotalPages,omitempty" xml:"TotalPages,omitempty"`
+	// The information about endpoints.
+	Endpoints []*DescribeResolverEndpointsResponseBodyEndpoints `json:"Endpoints,omitempty" xml:"Endpoints,omitempty" type:"Repeated"`
+	// The page number.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
+	// example:
+	//
+	// 2
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 83D1682B-B69A-4060-9FA8-2907C2A35600
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 1
+	TotalItems *int32 `json:"TotalItems,omitempty" xml:"TotalItems,omitempty"`
+	// The total number of pages returned.
+	//
+	// example:
+	//
+	// 1
+	TotalPages *int32 `json:"TotalPages,omitempty" xml:"TotalPages,omitempty"`
 }
 
 func (s DescribeResolverEndpointsResponseBody) String() string {
@@ -2232,19 +3285,92 @@ func (s *DescribeResolverEndpointsResponseBody) SetTotalPages(v int32) *Describe
 }
 
 type DescribeResolverEndpointsResponseBodyEndpoints struct {
-	CreateTime      *string                                                    `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	CreateTimestamp *int64                                                     `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
-	Id              *string                                                    `json:"Id,omitempty" xml:"Id,omitempty"`
-	IpConfigs       []*DescribeResolverEndpointsResponseBodyEndpointsIpConfigs `json:"IpConfigs,omitempty" xml:"IpConfigs,omitempty" type:"Repeated"`
-	Name            *string                                                    `json:"Name,omitempty" xml:"Name,omitempty"`
-	SecurityGroupId *string                                                    `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	Status          *string                                                    `json:"Status,omitempty" xml:"Status,omitempty"`
-	UpdateTime      *string                                                    `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	UpdateTimestamp *int64                                                     `json:"UpdateTimestamp,omitempty" xml:"UpdateTimestamp,omitempty"`
-	VpcId           *string                                                    `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	VpcName         *string                                                    `json:"VpcName,omitempty" xml:"VpcName,omitempty"`
-	VpcRegionId     *string                                                    `json:"VpcRegionId,omitempty" xml:"VpcRegionId,omitempty"`
-	VpcRegionName   *string                                                    `json:"VpcRegionName,omitempty" xml:"VpcRegionName,omitempty"`
+	// The time when the endpoint was created. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ss format. The time is displayed in UTC.
+	//
+	// example:
+	//
+	// 2020-07-13 10:36:26
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The time when the endpoint was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	//
+	// example:
+	//
+	// 1594607786000
+	CreateTimestamp *int64 `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
+	// The endpoint ID.
+	//
+	// example:
+	//
+	// hra0**
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The source IP addresses of outbound traffic.
+	IpConfigs []*DescribeResolverEndpointsResponseBodyEndpointsIpConfigs `json:"IpConfigs,omitempty" xml:"IpConfigs,omitempty" type:"Repeated"`
+	// The endpoint name.
+	//
+	// example:
+	//
+	// endpoint-test
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The security group ID.
+	//
+	// example:
+	//
+	// sg-8vb3sigz86xc-test-group
+	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	// The state of the endpoint. Valid values:
+	//
+	// 	- SUCCESS: The endpoint works as expected.
+	//
+	// 	- INIT: The endpoint is being created.
+	//
+	// 	- FAILED: The endpoint fails to be created.
+	//
+	// 	- CHANGE_INIT: The endpoint is being modified.
+	//
+	// 	- CHANGE_FAILED: The endpoint fails to be modified.
+	//
+	// 	- EXCEPTION: The endpoint encounters an exception.
+	//
+	// example:
+	//
+	// SUCCESS
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The time when the endpoint was last modified. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ss format. The time is displayed in UTC.
+	//
+	// example:
+	//
+	// 2020-07-13 10:38:24
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// The time when the endpoint was last modified. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	//
+	// example:
+	//
+	// 1594607904000
+	UpdateTimestamp *int64 `json:"UpdateTimestamp,omitempty" xml:"UpdateTimestamp,omitempty"`
+	// The ID of the outbound virtual private cloud (VPC).
+	//
+	// example:
+	//
+	// vpc-8vbl8mpum-test-vpc-id
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// The VPC name.
+	//
+	// example:
+	//
+	// vpc-test-name
+	VpcName *string `json:"VpcName,omitempty" xml:"VpcName,omitempty"`
+	// The region ID of the outbound VPC.
+	//
+	// example:
+	//
+	// cn-zhangjiakou
+	VpcRegionId *string `json:"VpcRegionId,omitempty" xml:"VpcRegionId,omitempty"`
+	// The name of the region where the outbound VPC resides.
+	//
+	// example:
+	//
+	// China East 1 (Hangzhou)
+	VpcRegionName *string `json:"VpcRegionName,omitempty" xml:"VpcRegionName,omitempty"`
 }
 
 func (s DescribeResolverEndpointsResponseBodyEndpoints) String() string {
@@ -2321,9 +3447,29 @@ func (s *DescribeResolverEndpointsResponseBodyEndpoints) SetVpcRegionName(v stri
 }
 
 type DescribeResolverEndpointsResponseBodyEndpointsIpConfigs struct {
-	AzId      *string `json:"AzId,omitempty" xml:"AzId,omitempty"`
+	// The ID of the zone where the vSwitch resides.
+	//
+	// example:
+	//
+	// cn-zhangjiakou-a
+	AzId *string `json:"AzId,omitempty" xml:"AzId,omitempty"`
+	// The IPv4 CIDR block of the vSwitch.
+	//
+	// example:
+	//
+	// 172.16.0.0/24
 	CidrBlock *string `json:"CidrBlock,omitempty" xml:"CidrBlock,omitempty"`
-	Ip        *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	// The IPv4 address.
+	//
+	// example:
+	//
+	// 172.16.xx.xx
+	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	// The vSwitch ID.
+	//
+	// example:
+	//
+	// vsw-8vbmks7h-test-vswitchId
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
 }
 
@@ -2385,7 +3531,19 @@ func (s *DescribeResolverEndpointsResponse) SetBody(v *DescribeResolverEndpoints
 }
 
 type DescribeResolverRuleRequest struct {
-	Lang   *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The language.
+	//
+	// example:
+	//
+	// en
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The forwarding rule ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// hra1**
 	RuleId *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
 }
 
@@ -2408,19 +3566,78 @@ func (s *DescribeResolverRuleRequest) SetRuleId(v string) *DescribeResolverRuleR
 }
 
 type DescribeResolverRuleResponseBody struct {
-	BindVpcs        []*DescribeResolverRuleResponseBodyBindVpcs   `json:"BindVpcs,omitempty" xml:"BindVpcs,omitempty" type:"Repeated"`
-	CreateTime      *string                                       `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	CreateTimestamp *int64                                        `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
-	EndpointId      *string                                       `json:"EndpointId,omitempty" xml:"EndpointId,omitempty"`
-	EndpointName    *string                                       `json:"EndpointName,omitempty" xml:"EndpointName,omitempty"`
-	ForwardIps      []*DescribeResolverRuleResponseBodyForwardIps `json:"ForwardIps,omitempty" xml:"ForwardIps,omitempty" type:"Repeated"`
-	Id              *string                                       `json:"Id,omitempty" xml:"Id,omitempty"`
-	Name            *string                                       `json:"Name,omitempty" xml:"Name,omitempty"`
-	RequestId       *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Type            *string                                       `json:"Type,omitempty" xml:"Type,omitempty"`
-	UpdateTime      *string                                       `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	UpdateTimestamp *int64                                        `json:"UpdateTimestamp,omitempty" xml:"UpdateTimestamp,omitempty"`
-	ZoneName        *string                                       `json:"ZoneName,omitempty" xml:"ZoneName,omitempty"`
+	// The virtual private clouds (VPCs) that are associated with the forwarding rule.
+	BindVpcs []*DescribeResolverRuleResponseBodyBindVpcs `json:"BindVpcs,omitempty" xml:"BindVpcs,omitempty" type:"Repeated"`
+	// The time when the forwarding rule was created. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ss format. The time is displayed in UTC.
+	//
+	// example:
+	//
+	// 2020-07-13 10:51:44
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The time when the forwarding rule was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	//
+	// example:
+	//
+	// 1594608704000
+	CreateTimestamp *int64 `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
+	// The endpoint ID.
+	//
+	// example:
+	//
+	// hra0**
+	EndpointId *string `json:"EndpointId,omitempty" xml:"EndpointId,omitempty"`
+	// The endpoint name.
+	//
+	// example:
+	//
+	// endpoint-test
+	EndpointName *string `json:"EndpointName,omitempty" xml:"EndpointName,omitempty"`
+	// The destination IP addresses.
+	ForwardIps []*DescribeResolverRuleResponseBodyForwardIps `json:"ForwardIps,omitempty" xml:"ForwardIps,omitempty" type:"Repeated"`
+	// The forwarding rule ID.
+	//
+	// example:
+	//
+	// hra1**
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The name of the forwarding rule.
+	//
+	// example:
+	//
+	// forward rule-test
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 13D5113B-7E34-407F-A9C1-D96CD2B04277
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The type of the forwarding rule. Valid value:
+	//
+	// 	- OUTBOUND: forwards Domain Name System (DNS) requests to one or more external IP addresses.
+	//
+	// example:
+	//
+	// OUTBOUND
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The time when the forwarding rule was last modified. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ss format. The time is displayed in UTC.
+	//
+	// example:
+	//
+	// 2020-07-13 10:51:44
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// The time when the forwarding rule was last modified. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	//
+	// example:
+	//
+	// 1594608704000
+	UpdateTimestamp *int64 `json:"UpdateTimestamp,omitempty" xml:"UpdateTimestamp,omitempty"`
+	// The name of the forward zone.
+	//
+	// example:
+	//
+	// example.com
+	ZoneName *string `json:"ZoneName,omitempty" xml:"ZoneName,omitempty"`
 }
 
 func (s DescribeResolverRuleResponseBody) String() string {
@@ -2497,12 +3714,45 @@ func (s *DescribeResolverRuleResponseBody) SetZoneName(v string) *DescribeResolv
 }
 
 type DescribeResolverRuleResponseBodyBindVpcs struct {
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The region name.
+	//
+	// example:
+	//
+	// hangzhou
 	RegionName *string `json:"RegionName,omitempty" xml:"RegionName,omitempty"`
-	// Vpc ID
-	VpcId     *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	VpcName   *string `json:"VpcName,omitempty" xml:"VpcName,omitempty"`
-	VpcType   *string `json:"VpcType,omitempty" xml:"VpcType,omitempty"`
+	// The VPC ID.
+	//
+	// example:
+	//
+	// vpc-8vbl8m-vpc-id
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// The VPC name.
+	//
+	// example:
+	//
+	// vpc-name-test
+	VpcName *string `json:"VpcName,omitempty" xml:"VpcName,omitempty"`
+	// The type of the VPC. Valid values:
+	//
+	// 	- STANDARD: standard VPC
+	//
+	// 	- EDS: Elastic Desktop Service (EDS) workspace VPC
+	//
+	// example:
+	//
+	// STANDARD
+	VpcType *string `json:"VpcType,omitempty" xml:"VpcType,omitempty"`
+	// The Alibaba Cloud account to which the VPC belongs.
+	//
+	// example:
+	//
+	// 324542413
 	VpcUserId *string `json:"VpcUserId,omitempty" xml:"VpcUserId,omitempty"`
 }
 
@@ -2545,8 +3795,18 @@ func (s *DescribeResolverRuleResponseBodyBindVpcs) SetVpcUserId(v string) *Descr
 }
 
 type DescribeResolverRuleResponseBodyForwardIps struct {
-	Ip   *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
-	Port *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
+	// The IP address.
+	//
+	// example:
+	//
+	// 172.16.xx.xx
+	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	// The port number.
+	//
+	// example:
+	//
+	// 8080
+	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
 }
 
 func (s DescribeResolverRuleResponseBodyForwardIps) String() string {
@@ -2597,12 +3857,46 @@ func (s *DescribeResolverRuleResponse) SetBody(v *DescribeResolverRuleResponseBo
 }
 
 type DescribeResolverRulesRequest struct {
-	EndpointId           *string `json:"EndpointId,omitempty" xml:"EndpointId,omitempty"`
-	Keyword              *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
-	Lang                 *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	NeedDetailAttributes *bool   `json:"NeedDetailAttributes,omitempty" xml:"NeedDetailAttributes,omitempty"`
-	PageNumber           *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize             *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the outbound endpoint.
+	//
+	// example:
+	//
+	// hra2**
+	EndpointId *string `json:"EndpointId,omitempty" xml:"EndpointId,omitempty"`
+	// The keyword used to filter forwarding rules in %keyword% mode.
+	//
+	// example:
+	//
+	// test
+	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	// The language.
+	//
+	// example:
+	//
+	// en
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// Specifies whether to return additional information. Default value: false.
+	//
+	// 	- If you set this parameter to true, additional information, such as the virtual private clouds (VPCs) that are associated with the queried forwarding rule, is returned.
+	//
+	// 	- If you set this parameter to false, no additional information is returned.
+	//
+	// example:
+	//
+	// true
+	NeedDetailAttributes *bool `json:"NeedDetailAttributes,omitempty" xml:"NeedDetailAttributes,omitempty"`
+	// The page number. Default value: 1.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Default value: 20. Maximum value: 100.
+	//
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
 func (s DescribeResolverRulesRequest) String() string {
@@ -2644,12 +3938,38 @@ func (s *DescribeResolverRulesRequest) SetPageSize(v int32) *DescribeResolverRul
 }
 
 type DescribeResolverRulesResponseBody struct {
-	PageNumber *int32                                    `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32                                    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId  *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Rules      []*DescribeResolverRulesResponseBodyRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
-	TotalItems *int32                                    `json:"TotalItems,omitempty" xml:"TotalItems,omitempty"`
-	TotalPages *int32                                    `json:"TotalPages,omitempty" xml:"TotalPages,omitempty"`
+	// The page number.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// A10E03D7-808C-422D-9144-F8586C2E2297
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The forwarding rules.
+	Rules []*DescribeResolverRulesResponseBodyRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
+	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 1
+	TotalItems *int32 `json:"TotalItems,omitempty" xml:"TotalItems,omitempty"`
+	// The total number of pages returned.
+	//
+	// example:
+	//
+	// 1
+	TotalPages *int32 `json:"TotalPages,omitempty" xml:"TotalPages,omitempty"`
 }
 
 func (s DescribeResolverRulesResponseBody) String() string {
@@ -2691,18 +4011,72 @@ func (s *DescribeResolverRulesResponseBody) SetTotalPages(v int32) *DescribeReso
 }
 
 type DescribeResolverRulesResponseBodyRules struct {
-	BindVpcs        []*DescribeResolverRulesResponseBodyRulesBindVpcs   `json:"BindVpcs,omitempty" xml:"BindVpcs,omitempty" type:"Repeated"`
-	CreateTime      *string                                             `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	CreateTimestamp *int64                                              `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
-	EndpointId      *string                                             `json:"EndpointId,omitempty" xml:"EndpointId,omitempty"`
-	EndpointName    *string                                             `json:"EndpointName,omitempty" xml:"EndpointName,omitempty"`
-	ForwardIps      []*DescribeResolverRulesResponseBodyRulesForwardIps `json:"ForwardIps,omitempty" xml:"ForwardIps,omitempty" type:"Repeated"`
-	Id              *string                                             `json:"Id,omitempty" xml:"Id,omitempty"`
-	Name            *string                                             `json:"Name,omitempty" xml:"Name,omitempty"`
-	Type            *string                                             `json:"Type,omitempty" xml:"Type,omitempty"`
-	UpdateTime      *string                                             `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	UpdateTimestamp *int64                                              `json:"UpdateTimestamp,omitempty" xml:"UpdateTimestamp,omitempty"`
-	ZoneName        *string                                             `json:"ZoneName,omitempty" xml:"ZoneName,omitempty"`
+	// The VPCs associated with the forwarding rule.
+	BindVpcs []*DescribeResolverRulesResponseBodyRulesBindVpcs `json:"BindVpcs,omitempty" xml:"BindVpcs,omitempty" type:"Repeated"`
+	// The time when the forwarding was created. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ss format. The time is displayed in UTC.
+	//
+	// example:
+	//
+	// 2020-07-13 10:51:44
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The time when the forwarding rule was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	//
+	// example:
+	//
+	// 1594608704000
+	CreateTimestamp *int64 `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
+	// The endpoint ID.
+	//
+	// example:
+	//
+	// hra0**
+	EndpointId *string `json:"EndpointId,omitempty" xml:"EndpointId,omitempty"`
+	// The endpoint name.
+	//
+	// example:
+	//
+	// endpoint-test
+	EndpointName *string `json:"EndpointName,omitempty" xml:"EndpointName,omitempty"`
+	// The destination IP addresses.
+	ForwardIps []*DescribeResolverRulesResponseBodyRulesForwardIps `json:"ForwardIps,omitempty" xml:"ForwardIps,omitempty" type:"Repeated"`
+	// The ID of the forwarding rule.
+	//
+	// example:
+	//
+	// hra1**
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The name of the forwarding rule.
+	//
+	// example:
+	//
+	// forward rule-test
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The type of the forwarding rule. Valid value:
+	//
+	// 	- OUTBOUND: Domain Name System (DNS) requests are forwarded to one or more IP addresses.
+	//
+	// example:
+	//
+	// OUTBOUND
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The time when the forwarding rule was last modified. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ss format. The time is displayed in UTC.
+	//
+	// example:
+	//
+	// 2020-07-13 10:51:44
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// The timestamp when the forwarding rule was last modified. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	//
+	// example:
+	//
+	// 1594608704000
+	UpdateTimestamp *int64 `json:"UpdateTimestamp,omitempty" xml:"UpdateTimestamp,omitempty"`
+	// The name of the forward zone.
+	//
+	// example:
+	//
+	// example.com
+	ZoneName *string `json:"ZoneName,omitempty" xml:"ZoneName,omitempty"`
 }
 
 func (s DescribeResolverRulesResponseBodyRules) String() string {
@@ -2774,12 +4148,45 @@ func (s *DescribeResolverRulesResponseBodyRules) SetZoneName(v string) *Describe
 }
 
 type DescribeResolverRulesResponseBodyRulesBindVpcs struct {
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The region name.
+	//
+	// example:
+	//
+	// ap-southeast-1
 	RegionName *string `json:"RegionName,omitempty" xml:"RegionName,omitempty"`
-	// VPC ID
-	VpcId     *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	VpcName   *string `json:"VpcName,omitempty" xml:"VpcName,omitempty"`
-	VpcType   *string `json:"VpcType,omitempty" xml:"VpcType,omitempty"`
+	// The VPC ID.
+	//
+	// example:
+	//
+	// vpc-8vbl8mpum-vpc-id
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// The VPC name.
+	//
+	// example:
+	//
+	// vpc-name-test
+	VpcName *string `json:"VpcName,omitempty" xml:"VpcName,omitempty"`
+	// The type of the virtual private cloud (VPC). Valid values:
+	//
+	// 	- STANDARD: standard VPC
+	//
+	// 	- EDS: Elastic Desktop Service (EDS) workspace VPC
+	//
+	// example:
+	//
+	// STANDARD
+	VpcType *string `json:"VpcType,omitempty" xml:"VpcType,omitempty"`
+	// The Alibaba Cloud account to which the VPC belongs.
+	//
+	// example:
+	//
+	// 121098702443**
 	VpcUserId *string `json:"VpcUserId,omitempty" xml:"VpcUserId,omitempty"`
 }
 
@@ -2822,8 +4229,18 @@ func (s *DescribeResolverRulesResponseBodyRulesBindVpcs) SetVpcUserId(v string) 
 }
 
 type DescribeResolverRulesResponseBodyRulesForwardIps struct {
-	Ip   *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
-	Port *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
+	// The IP address.
+	//
+	// example:
+	//
+	// 172.16.xx.xx
+	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	// The port number.
+	//
+	// example:
+	//
+	// 8080
+	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
 }
 
 func (s DescribeResolverRulesResponseBodyRulesForwardIps) String() string {
@@ -2874,7 +4291,17 @@ func (s *DescribeResolverRulesResponse) SetBody(v *DescribeResolverRulesResponse
 }
 
 type DescribeStatisticSummaryRequest struct {
-	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The language.
+	//
+	// example:
+	//
+	// en
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The IP address of the client.
+	//
+	// example:
+	//
+	// 127.0.0.1
 	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
 }
 
@@ -2897,9 +4324,21 @@ func (s *DescribeStatisticSummaryRequest) SetUserClientIp(v string) *DescribeSta
 }
 
 type DescribeStatisticSummaryResponseBody struct {
-	RequestId       *string                                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount      *int64                                               `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	VpcRequestTops  *DescribeStatisticSummaryResponseBodyVpcRequestTops  `json:"VpcRequestTops,omitempty" xml:"VpcRequestTops,omitempty" type:"Struct"`
+	// The request ID.
+	//
+	// example:
+	//
+	// A73F3BD0-B1A8-42A9-A9B6-689BBABC4891
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 2254
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The top 3 virtual private clouds (VPCs) that initiate the largest number of DNS requests.
+	VpcRequestTops *DescribeStatisticSummaryResponseBodyVpcRequestTops `json:"VpcRequestTops,omitempty" xml:"VpcRequestTops,omitempty" type:"Struct"`
+	// The top 3 zones with the largest number of DNS requests.
 	ZoneRequestTops *DescribeStatisticSummaryResponseBodyZoneRequestTops `json:"ZoneRequestTops,omitempty" xml:"ZoneRequestTops,omitempty" type:"Struct"`
 }
 
@@ -2949,12 +4388,45 @@ func (s *DescribeStatisticSummaryResponseBodyVpcRequestTops) SetVpcRequestTop(v 
 }
 
 type DescribeStatisticSummaryResponseBodyVpcRequestTopsVpcRequestTop struct {
-	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RegionName   *string `json:"RegionName,omitempty" xml:"RegionName,omitempty"`
-	RequestCount *int64  `json:"RequestCount,omitempty" xml:"RequestCount,omitempty"`
-	TunnelId     *string `json:"TunnelId,omitempty" xml:"TunnelId,omitempty"`
-	// VPC ID
-	VpcId   *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-beijing
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The name of the region.
+	//
+	// example:
+	//
+	// China (Beijing)
+	RegionName *string `json:"RegionName,omitempty" xml:"RegionName,omitempty"`
+	// The number of DNS requests.
+	//
+	// example:
+	//
+	// 2254
+	RequestCount *int64 `json:"RequestCount,omitempty" xml:"RequestCount,omitempty"`
+	// The tunnel ID.
+	//
+	// example:
+	//
+	// 46574
+	TunnelId *string `json:"TunnelId,omitempty" xml:"TunnelId,omitempty"`
+	// The VPC ID.
+	//
+	// example:
+	//
+	// vpc-2zeisd8c0j6wk1451jr6o
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// The type of the VPC. Valid values:
+	//
+	// 	- STANDARD: standard VPC
+	//
+	// 	- EDS: Elastic Desktop Service (EDS) workspace VPC
+	//
+	// example:
+	//
+	// STANDARD
 	VpcType *string `json:"VpcType,omitempty" xml:"VpcType,omitempty"`
 }
 
@@ -3014,9 +4486,28 @@ func (s *DescribeStatisticSummaryResponseBodyZoneRequestTops) SetZoneRequestTop(
 }
 
 type DescribeStatisticSummaryResponseBodyZoneRequestTopsZoneRequestTop struct {
-	BizType      *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
-	RequestCount *int64  `json:"RequestCount,omitempty" xml:"RequestCount,omitempty"`
-	ZoneName     *string `json:"ZoneName,omitempty" xml:"ZoneName,omitempty"`
+	// The business type. Valid values:
+	//
+	// 	- AUTH_ZONE: authoritative zone
+	//
+	// 	- RESOLVER_RULE: forwarding rule
+	//
+	// example:
+	//
+	// AUTH_ZONE
+	BizType *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
+	// The number of DNS requests.
+	//
+	// example:
+	//
+	// 2251
+	RequestCount *int64 `json:"RequestCount,omitempty" xml:"RequestCount,omitempty"`
+	// The name of the zone.
+	//
+	// example:
+	//
+	// host.local
+	ZoneName *string `json:"ZoneName,omitempty" xml:"ZoneName,omitempty"`
 }
 
 func (s DescribeStatisticSummaryResponseBodyZoneRequestTopsZoneRequestTop) String() string {
@@ -3072,7 +4563,19 @@ func (s *DescribeStatisticSummaryResponse) SetBody(v *DescribeStatisticSummaryRe
 }
 
 type DescribeSyncEcsHostTaskRequest struct {
-	Lang   *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The language.
+	//
+	// example:
+	//
+	// en
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The zone ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pvtz-test-id-2989149d628c56f00e
 	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
@@ -3095,12 +4598,42 @@ func (s *DescribeSyncEcsHostTaskRequest) SetZoneId(v string) *DescribeSyncEcsHos
 }
 
 type DescribeSyncEcsHostTaskResponseBody struct {
+	// The information about regions.
 	EcsRegions *DescribeSyncEcsHostTaskResponseBodyEcsRegions `json:"EcsRegions,omitempty" xml:"EcsRegions,omitempty" type:"Struct"`
-	Regions    *DescribeSyncEcsHostTaskResponseBodyRegions    `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Struct"`
-	RequestId  *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Status     *string                                        `json:"Status,omitempty" xml:"Status,omitempty"`
-	Success    *bool                                          `json:"Success,omitempty" xml:"Success,omitempty"`
-	ZoneId     *string                                        `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	// The information about the regions within the current account.
+	Regions *DescribeSyncEcsHostTaskResponseBodyRegions `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Struct"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 75446CC1-FC9A-4595-8D96-089D73D7A63D
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The state of the task. Valid values:
+	//
+	// 	- ON
+	//
+	// 	- OFF
+	//
+	// example:
+	//
+	// ON
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Indicates whether the task was successful. Valid values:
+	//
+	// 	- True
+	//
+	// 	- False
+	//
+	// example:
+	//
+	// True
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The zone ID.
+	//
+	// example:
+	//
+	// pvtz-test-id-2989149d628c56f00e
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s DescribeSyncEcsHostTaskResponseBody) String() string {
@@ -3159,8 +4692,14 @@ func (s *DescribeSyncEcsHostTaskResponseBodyEcsRegions) SetEcsRegion(v []*Descri
 }
 
 type DescribeSyncEcsHostTaskResponseBodyEcsRegionsEcsRegion struct {
+	// The region IDs.
 	RegionIds *DescribeSyncEcsHostTaskResponseBodyEcsRegionsEcsRegionRegionIds `json:"RegionIds,omitempty" xml:"RegionIds,omitempty" type:"Struct"`
-	UserId    *int64                                                           `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The Alibaba Cloud account to which the region belongs. This parameter is used in cross-account synchronization scenarios.
+	//
+	// example:
+	//
+	// 1234567890
+	UserId *int64 `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s DescribeSyncEcsHostTaskResponseBodyEcsRegionsEcsRegion) String() string {
@@ -3245,9 +4784,31 @@ func (s *DescribeSyncEcsHostTaskResponse) SetBody(v *DescribeSyncEcsHostTaskResp
 }
 
 type DescribeTagsRequest struct {
-	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	PageNumber   *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize     *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The language.
+	//
+	// example:
+	//
+	// en
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The page number.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Default value: 20. Maximum value: 200.
+	//
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The resource type. Valid value: ZONE.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ZONE
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 }
 
@@ -3280,11 +4841,32 @@ func (s *DescribeTagsRequest) SetResourceType(v string) *DescribeTagsRequest {
 }
 
 type DescribeTagsResponseBody struct {
-	PageNumber *int32                          `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32                          `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId  *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Tags       []*DescribeTagsResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	TotalCount *int32                          `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The page number.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 9EA7F720-B7C0-45C1-9CF4-B6A5A1179B68
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The tags added to the resources.
+	Tags []*DescribeTagsResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 200
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeTagsResponseBody) String() string {
@@ -3321,7 +4903,13 @@ func (s *DescribeTagsResponseBody) SetTotalCount(v int32) *DescribeTagsResponseB
 }
 
 type DescribeTagsResponseBodyTags struct {
-	Key    *string   `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The key of tag N added to the resource.
+	//
+	// example:
+	//
+	// env
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The values of tags added to the resources.
 	Values []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
 }
 
@@ -3373,10 +4961,34 @@ func (s *DescribeTagsResponse) SetBody(v *DescribeTagsResponseBody) *DescribeTag
 }
 
 type DescribeUserVpcAuthorizationsRequest struct {
-	AuthType         *string `json:"AuthType,omitempty" xml:"AuthType,omitempty"`
-	AuthorizedUserId *int64  `json:"AuthorizedUserId,omitempty" xml:"AuthorizedUserId,omitempty"`
-	PageNumber       *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize         *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The authorization scope. Valid values:
+	//
+	// 	- NORMAL: general authorization.
+	//
+	// 	- CLOUD_PRODUCT: cloud service-related authorization
+	//
+	// example:
+	//
+	// NORMAL
+	AuthType *string `json:"AuthType,omitempty" xml:"AuthType,omitempty"`
+	// The ID of the Alibaba Cloud account.
+	//
+	// example:
+	//
+	// 111222333
+	AuthorizedUserId *int64 `json:"AuthorizedUserId,omitempty" xml:"AuthorizedUserId,omitempty"`
+	// The page number. Default value: 1.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Default value: 20. Maximum value: 100.
+	//
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
 func (s DescribeUserVpcAuthorizationsRequest) String() string {
@@ -3408,12 +5020,38 @@ func (s *DescribeUserVpcAuthorizationsRequest) SetPageSize(v int32) *DescribeUse
 }
 
 type DescribeUserVpcAuthorizationsResponseBody struct {
-	PageNumber *int32                                            `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32                                            `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId  *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalItems *int32                                            `json:"TotalItems,omitempty" xml:"TotalItems,omitempty"`
-	TotalPages *int32                                            `json:"TotalPages,omitempty" xml:"TotalPages,omitempty"`
-	Users      []*DescribeUserVpcAuthorizationsResponseBodyUsers `json:"Users,omitempty" xml:"Users,omitempty" type:"Repeated"`
+	// The page number. Default value: 1.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Default value: 20. Maximum value: 100.
+	//
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 46973D4C-E3E4-4ABA-9190-9A9DE406C7E
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 100
+	TotalItems *int32 `json:"TotalItems,omitempty" xml:"TotalItems,omitempty"`
+	// The total number of pages returned.
+	//
+	// example:
+	//
+	// 5
+	TotalPages *int32 `json:"TotalPages,omitempty" xml:"TotalPages,omitempty"`
+	// The information about the Alibaba Cloud accounts.
+	Users []*DescribeUserVpcAuthorizationsResponseBodyUsers `json:"Users,omitempty" xml:"Users,omitempty" type:"Repeated"`
 }
 
 func (s DescribeUserVpcAuthorizationsResponseBody) String() string {
@@ -3455,11 +5093,38 @@ func (s *DescribeUserVpcAuthorizationsResponseBody) SetUsers(v []*DescribeUserVp
 }
 
 type DescribeUserVpcAuthorizationsResponseBodyUsers struct {
-	AuthType           *string `json:"AuthType,omitempty" xml:"AuthType,omitempty"`
+	// The authorization scope. Valid value:
+	//
+	// 	- NORMAL: general authorization.
+	//
+	// example:
+	//
+	// NORMAL
+	AuthType *string `json:"AuthType,omitempty" xml:"AuthType,omitempty"`
+	// The name of the Alibaba Cloud account.
+	//
+	// example:
+	//
+	// alidns***@test.com
 	AuthorizedAliyunId *string `json:"AuthorizedAliyunId,omitempty" xml:"AuthorizedAliyunId,omitempty"`
-	AuthorizedUserId   *int64  `json:"AuthorizedUserId,omitempty" xml:"AuthorizedUserId,omitempty"`
-	CreateTime         *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	CreateTimestamp    *int64  `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
+	// The ID of the Alibaba Cloud account.
+	//
+	// example:
+	//
+	// 111222333
+	AuthorizedUserId *int64 `json:"AuthorizedUserId,omitempty" xml:"AuthorizedUserId,omitempty"`
+	// The time when the authorization was performed. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
+	//
+	// example:
+	//
+	// 2023-05-08T02:31Z
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The time when the authorization was performed. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	//
+	// example:
+	//
+	// 1672740294000
+	CreateTimestamp *int64 `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
 }
 
 func (s DescribeUserVpcAuthorizationsResponseBodyUsers) String() string {
@@ -3525,8 +5190,19 @@ func (s *DescribeUserVpcAuthorizationsResponse) SetBody(v *DescribeUserVpcAuthor
 }
 
 type DescribeZoneInfoRequest struct {
+	// The language.
+	//
+	// example:
+	//
+	// en
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// Zone ID。
+	// The global ID of the zone.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// AgIDE1MA_149
 	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
@@ -3549,26 +5225,143 @@ func (s *DescribeZoneInfoRequest) SetZoneId(v string) *DescribeZoneInfoRequest {
 }
 
 type DescribeZoneInfoResponseBody struct {
-	BindVpcs         *DescribeZoneInfoResponseBodyBindVpcs `json:"BindVpcs,omitempty" xml:"BindVpcs,omitempty" type:"Struct"`
-	CreateTime       *string                               `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	CreateTimestamp  *int64                                `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
-	Creator          *string                               `json:"Creator,omitempty" xml:"Creator,omitempty"`
-	CreatorType      *string                               `json:"CreatorType,omitempty" xml:"CreatorType,omitempty"`
-	DnsGroup         *string                               `json:"DnsGroup,omitempty" xml:"DnsGroup,omitempty"`
-	DnsGroupChanging *bool                                 `json:"DnsGroupChanging,omitempty" xml:"DnsGroupChanging,omitempty"`
-	IsPtr            *bool                                 `json:"IsPtr,omitempty" xml:"IsPtr,omitempty"`
-	ProxyPattern     *string                               `json:"ProxyPattern,omitempty" xml:"ProxyPattern,omitempty"`
-	RecordCount      *int32                                `json:"RecordCount,omitempty" xml:"RecordCount,omitempty"`
-	Remark           *string                               `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	RequestId        *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ResourceGroupId  *string                               `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	SlaveDns         *bool                                 `json:"SlaveDns,omitempty" xml:"SlaveDns,omitempty"`
-	UpdateTime       *string                               `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	UpdateTimestamp  *int64                                `json:"UpdateTimestamp,omitempty" xml:"UpdateTimestamp,omitempty"`
-	// Zone ID。
-	ZoneId   *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	// The virtual private clouds (VPCs) bound to the zone.
+	BindVpcs *DescribeZoneInfoResponseBodyBindVpcs `json:"BindVpcs,omitempty" xml:"BindVpcs,omitempty" type:"Struct"`
+	// The time when the zone was created. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
+	//
+	// example:
+	//
+	// 2018-01-23T03:15Z
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The time when the zone was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	//
+	// example:
+	//
+	// 1516775741000
+	CreateTimestamp *int64 `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
+	// The creator of the zone.
+	//
+	// example:
+	//
+	// 2312234523451342
+	Creator *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
+	// The type of the operator.
+	//
+	// example:
+	//
+	// USER
+	CreatorType *string `json:"CreatorType,omitempty" xml:"CreatorType,omitempty"`
+	// The logical location of the built-in authoritative module in which the zone is added. Valid values:
+	//
+	// 	- NORMAL_ZONE: regular module
+	//
+	// 	- FAST_ZONE: acceleration module
+	//
+	// example:
+	//
+	// FAST_ZONE
+	DnsGroup *string `json:"DnsGroup,omitempty" xml:"DnsGroup,omitempty"`
+	// Indicates whether the zone is being removed to another logical location. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// false
+	DnsGroupChanging *bool `json:"DnsGroupChanging,omitempty" xml:"DnsGroupChanging,omitempty"`
+	// 	- Indicates whether the zone is a reverse lookup zone. Valid values: true and false. The value true indicates that the zone is a reverse lookup zone.
+	//
+	// 	- The value false indicates that the zone is not a reverse lookup zone.
+	//
+	// example:
+	//
+	// false
+	IsPtr *bool `json:"IsPtr,omitempty" xml:"IsPtr,omitempty"`
+	// 	- Indicates whether the recursive resolution proxy feature is enabled for the zone. Valid values: **ZONE**: The recursive resolution proxy feature is disabled for the zone.
+	//
+	// 	- **RECORD**: The recursive resolution proxy feature is enabled for the zone.
+	//
+	// example:
+	//
+	// ZONE
+	ProxyPattern *string `json:"ProxyPattern,omitempty" xml:"ProxyPattern,omitempty"`
+	// The total number of DNS records.
+	//
+	// example:
+	//
+	// 2
+	RecordCount *int32 `json:"RecordCount,omitempty" xml:"RecordCount,omitempty"`
+	// The description of the zone.
+	//
+	// example:
+	//
+	// specialZone
+	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// F73F41A3-B6DD-42CA-A793-FFF93277835D
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the resource group.
+	//
+	// example:
+	//
+	// rg-xxxxxxxx
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// Indicates whether the secondary Domain Name System (DNS) feature is enabled for the zone. Valid values:
+	//
+	// 	- **true**: The secondary DNS feature is enabled.
+	//
+	// 	- **false**: The secondary DNS feature is disabled.
+	//
+	// example:
+	//
+	// true
+	SlaveDns *bool `json:"SlaveDns,omitempty" xml:"SlaveDns,omitempty"`
+	// The time when the zone was last modified. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
+	//
+	// example:
+	//
+	// 2018-01-24T06:35Z
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// The time when the zone was last modified. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	//
+	// example:
+	//
+	// 1516775741000
+	UpdateTimestamp *int64 `json:"UpdateTimestamp,omitempty" xml:"UpdateTimestamp,omitempty"`
+	// The global ID of the zone.
+	//
+	// example:
+	//
+	// AgIDE0OQ_149<
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	// The zone name.
+	//
+	// example:
+	//
+	// test.com
 	ZoneName *string `json:"ZoneName,omitempty" xml:"ZoneName,omitempty"`
-	ZoneTag  *string `json:"ZoneTag,omitempty" xml:"ZoneTag,omitempty"`
+	// 	- If ZoneType is set to AUTH_ZONE, no value is returned for this parameter.
+	//
+	// 	- If ZoneType is set to CLOUD_PRODUCT_ZONE, the type of the cloud service is returned.
+	//
+	// example:
+	//
+	// pvtz
+	ZoneTag *string `json:"ZoneTag,omitempty" xml:"ZoneTag,omitempty"`
+	// The type of the zone. Valid values:
+	//
+	// 	- AUTH_ZONE: authoritative zone
+	//
+	// 	- CLOUD_PRODUCT_ZONE: authoritative zone for cloud services
+	//
+	// example:
+	//
+	// CLOUD_PRODUCT_ZONE
 	ZoneType *string `json:"ZoneType,omitempty" xml:"ZoneType,omitempty"`
 }
 
@@ -3698,13 +5491,46 @@ func (s *DescribeZoneInfoResponseBodyBindVpcs) SetVpc(v []*DescribeZoneInfoRespo
 }
 
 type DescribeZoneInfoResponseBodyBindVpcsVpc struct {
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The name of the region.
+	//
+	// example:
+	//
+	// 1304
 	RegionName *string `json:"RegionName,omitempty" xml:"RegionName,omitempty"`
-	// Vpc ID。
-	VpcId     *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	VpcName   *string `json:"VpcName,omitempty" xml:"VpcName,omitempty"`
-	VpcType   *string `json:"VpcType,omitempty" xml:"VpcType,omitempty"`
-	VpcUserId *int64  `json:"VpcUserId,omitempty" xml:"VpcUserId,omitempty"`
+	// The VPC ID.
+	//
+	// example:
+	//
+	// daily-vpc-id
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// The name of the VPC.
+	//
+	// example:
+	//
+	// daily-vpc-name
+	VpcName *string `json:"VpcName,omitempty" xml:"VpcName,omitempty"`
+	// The type of the VPC. Valid values:
+	//
+	// 	- STANDARD: standard VPC
+	//
+	// 	- EDS: Elastic Desktop Service (EDS) workspace VPC
+	//
+	// example:
+	//
+	// STANDARD
+	VpcType *string `json:"VpcType,omitempty" xml:"VpcType,omitempty"`
+	// The ID of the user to which the VPC belongs. The value null indicates that the VPC belongs to the current user.
+	//
+	// example:
+	//
+	// vpc-bp1aevy8sofi8mh1q****
+	VpcUserId *int64 `json:"VpcUserId,omitempty" xml:"VpcUserId,omitempty"`
 }
 
 func (s DescribeZoneInfoResponseBodyBindVpcsVpc) String() string {
@@ -3775,14 +5601,63 @@ func (s *DescribeZoneInfoResponse) SetBody(v *DescribeZoneInfoResponseBody) *Des
 }
 
 type DescribeZoneRecordsRequest struct {
-	Keyword      *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
-	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	PageNumber   *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize     *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	SearchMode   *string `json:"SearchMode,omitempty" xml:"SearchMode,omitempty"`
-	Tag          *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	// The hostname keyword based on which the system queries the DNS records.
+	//
+	// example:
+	//
+	// test
+	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	// The language.
+	//
+	// example:
+	//
+	// en
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The page number. Pages start from page **1**. Default value: **1**.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Maximum value: 100. Default value: 20.
+	//
+	// example:
+	//
+	// 100
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The search mode. Valid values:
+	//
+	// 	- **LIKE**: fuzzy search
+	//
+	// 	- **EXACT (default)**: exact search
+	//
+	// example:
+	//
+	// LIKE
+	SearchMode *string `json:"SearchMode,omitempty" xml:"SearchMode,omitempty"`
+	// The tags added to the DNS record.
+	//
+	// 	- This parameter is left empty by default. In this case, the DNS records of the zone are queried.
+	//
+	// 	- If you set Tag to ecs, the DNS records added to the hostnames of Elastic Compute Service (ECS) instances in the zone are queried.
+	//
+	// example:
+	//
+	// tag
+	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	// The IP address of the client.
+	//
+	// example:
+	//
+	// 1.1.XX.XX
 	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
-	// Zone ID。
+	// The zone ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// CAgICA1OA_58
 	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
@@ -3835,12 +5710,38 @@ func (s *DescribeZoneRecordsRequest) SetZoneId(v string) *DescribeZoneRecordsReq
 }
 
 type DescribeZoneRecordsResponseBody struct {
-	PageNumber *int32                                  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32                                  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Records    *DescribeZoneRecordsResponseBodyRecords `json:"Records,omitempty" xml:"Records,omitempty" type:"Struct"`
-	RequestId  *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalItems *int32                                  `json:"TotalItems,omitempty" xml:"TotalItems,omitempty"`
-	TotalPages *int32                                  `json:"TotalPages,omitempty" xml:"TotalPages,omitempty"`
+	// The page number.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
+	// example:
+	//
+	// 100
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The returned DNS records.
+	Records *DescribeZoneRecordsResponseBodyRecords `json:"Records,omitempty" xml:"Records,omitempty" type:"Struct"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 7B07FBC3-3A53-4939-A3C6-2BDFE407BAB2
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 100
+	TotalItems *int32 `json:"TotalItems,omitempty" xml:"TotalItems,omitempty"`
+	// The total number of returned pages.
+	//
+	// example:
+	//
+	// 100
+	TotalPages *int32 `json:"TotalPages,omitempty" xml:"TotalPages,omitempty"`
 }
 
 func (s DescribeZoneRecordsResponseBody) String() string {
@@ -3899,21 +5800,100 @@ func (s *DescribeZoneRecordsResponseBodyRecords) SetRecord(v []*DescribeZoneReco
 }
 
 type DescribeZoneRecordsResponseBodyRecordsRecord struct {
-	CreateTime      *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	CreateTimestamp *int64  `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
-	Line            *string `json:"Line,omitempty" xml:"Line,omitempty"`
-	Priority        *int32  `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	RecordId        *int64  `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
-	Remark          *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	Rr              *string `json:"Rr,omitempty" xml:"Rr,omitempty"`
-	Status          *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	Ttl             *int32  `json:"Ttl,omitempty" xml:"Ttl,omitempty"`
-	Type            *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	UpdateTime      *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	UpdateTimestamp *int64  `json:"UpdateTimestamp,omitempty" xml:"UpdateTimestamp,omitempty"`
-	Value           *string `json:"Value,omitempty" xml:"Value,omitempty"`
-	Weight          *int32  `json:"Weight,omitempty" xml:"Weight,omitempty"`
-	ZoneId          *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	// The time when the DNS record was created. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
+	//
+	// example:
+	//
+	// 2019-03-14T03:47Z
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The time when the DNS record was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	//
+	// example:
+	//
+	// 1672740294000
+	CreateTimestamp *int64 `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
+	// The resolution line.
+	//
+	// example:
+	//
+	// default
+	Line *string `json:"Line,omitempty" xml:"Line,omitempty"`
+	// The priority of the mail exchanger (MX) record.
+	//
+	// example:
+	//
+	// 60
+	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// The ID of the DNS record.
+	//
+	// example:
+	//
+	// 5809
+	RecordId *int64 `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
+	// The description of the DNS record.
+	//
+	// example:
+	//
+	// xxx
+	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// The hostname.
+	//
+	// example:
+	//
+	// www
+	Rr *string `json:"Rr,omitempty" xml:"Rr,omitempty"`
+	// The state of the DNS record. Valid values:
+	//
+	// 	- ENABLE: The DNS record is enabled.
+	//
+	// 	- DISABLE: The DNS record is disabled.
+	//
+	// example:
+	//
+	// ENABLE
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The time-to-live (TTL) of the DNS record.
+	//
+	// example:
+	//
+	// 60
+	Ttl *int32 `json:"Ttl,omitempty" xml:"Ttl,omitempty"`
+	// The type of the DNS record.
+	//
+	// example:
+	//
+	// A
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The time when the DNS record was updated. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
+	//
+	// example:
+	//
+	// 2023-05-08T02:31Z
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// The time when the DNS record was updated. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	//
+	// example:
+	//
+	// 1654777678000
+	UpdateTimestamp *int64 `json:"UpdateTimestamp,omitempty" xml:"UpdateTimestamp,omitempty"`
+	// The record value.
+	//
+	// example:
+	//
+	// 1.1.XX.XX
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The weight of the address.
+	//
+	// example:
+	//
+	// 1
+	Weight *int32 `json:"Weight,omitempty" xml:"Weight,omitempty"`
+	// The zone ID.
+	//
+	// example:
+	//
+	// a49f55537f3b0b1e6e43add0bf5f0033
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s DescribeZoneRecordsResponseBodyRecordsRecord) String() string {
@@ -4029,7 +6009,17 @@ func (s *DescribeZoneRecordsResponse) SetBody(v *DescribeZoneRecordsResponseBody
 }
 
 type DescribeZoneVpcTreeRequest struct {
-	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The language.
+	//
+	// example:
+	//
+	// en
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The IP address of the client.
+	//
+	// example:
+	//
+	// 127.0.0.1
 	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
 }
 
@@ -4052,8 +6042,14 @@ func (s *DescribeZoneVpcTreeRequest) SetUserClientIp(v string) *DescribeZoneVpcT
 }
 
 type DescribeZoneVpcTreeResponseBody struct {
-	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Zones     *DescribeZoneVpcTreeResponseBodyZones `json:"Zones,omitempty" xml:"Zones,omitempty" type:"Struct"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 7B07FBC3-3A53-4939-A3C6-2BDFE407BAB2
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The zones.
+	Zones *DescribeZoneVpcTreeResponseBodyZones `json:"Zones,omitempty" xml:"Zones,omitempty" type:"Struct"`
 }
 
 func (s DescribeZoneVpcTreeResponseBody) String() string {
@@ -4092,22 +6088,117 @@ func (s *DescribeZoneVpcTreeResponseBodyZones) SetZone(v []*DescribeZoneVpcTreeR
 }
 
 type DescribeZoneVpcTreeResponseBodyZonesZone struct {
-	CreateTime       *string                                       `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	CreateTimestamp  *int64                                        `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
-	Creator          *string                                       `json:"Creator,omitempty" xml:"Creator,omitempty"`
-	CreatorType      *string                                       `json:"CreatorType,omitempty" xml:"CreatorType,omitempty"`
-	DnsGroup         *string                                       `json:"DnsGroup,omitempty" xml:"DnsGroup,omitempty"`
-	DnsGroupChanging *bool                                         `json:"DnsGroupChanging,omitempty" xml:"DnsGroupChanging,omitempty"`
-	IsPtr            *bool                                         `json:"IsPtr,omitempty" xml:"IsPtr,omitempty"`
-	RecordCount      *int32                                        `json:"RecordCount,omitempty" xml:"RecordCount,omitempty"`
-	Remark           *string                                       `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	UpdateTime       *string                                       `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	UpdateTimestamp  *int64                                        `json:"UpdateTimestamp,omitempty" xml:"UpdateTimestamp,omitempty"`
-	Vpcs             *DescribeZoneVpcTreeResponseBodyZonesZoneVpcs `json:"Vpcs,omitempty" xml:"Vpcs,omitempty" type:"Struct"`
-	// Zone id
-	ZoneId   *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	// The time when the zone was created. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
+	//
+	// example:
+	//
+	// 2019-09-18T08:20Z
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The time when the zone was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	//
+	// example:
+	//
+	// 1568794812000
+	CreateTimestamp *int64 `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
+	// The creator of the zone.
+	//
+	// example:
+	//
+	// 5463564356
+	Creator *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
+	// The operator type.
+	//
+	// example:
+	//
+	// USER
+	CreatorType *string `json:"CreatorType,omitempty" xml:"CreatorType,omitempty"`
+	// The logical location of the built-in authoritative module in which the zone is added. Valid values:
+	//
+	// 	- NORMAL_ZONE: regular module
+	//
+	// 	- FAST_ZONE: acceleration module
+	//
+	// example:
+	//
+	// NORMAL_ZONE
+	DnsGroup *string `json:"DnsGroup,omitempty" xml:"DnsGroup,omitempty"`
+	// Indicates whether the zone is being removed to another logical location. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// true
+	DnsGroupChanging *bool `json:"DnsGroupChanging,omitempty" xml:"DnsGroupChanging,omitempty"`
+	// Indicates whether the zone is a reverse lookup zone. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// false
+	IsPtr *bool `json:"IsPtr,omitempty" xml:"IsPtr,omitempty"`
+	// The number of Domain Name System (DNS) records.
+	//
+	// example:
+	//
+	// 1
+	RecordCount *int32 `json:"RecordCount,omitempty" xml:"RecordCount,omitempty"`
+	// The description of the zone.
+	//
+	// example:
+	//
+	// demo
+	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// The time when the zone was last modified. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
+	//
+	// example:
+	//
+	// 2019-09-18T08:20Z
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// The time when the zone was last modified. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	//
+	// example:
+	//
+	// 1568794834000
+	UpdateTimestamp *int64 `json:"UpdateTimestamp,omitempty" xml:"UpdateTimestamp,omitempty"`
+	// The VPCs bound to the zones.
+	Vpcs *DescribeZoneVpcTreeResponseBodyZonesZoneVpcs `json:"Vpcs,omitempty" xml:"Vpcs,omitempty" type:"Struct"`
+	// The global ID of the zone.
+	//
+	// example:
+	//
+	// 6d83e3b31aa60ca4aaa7161f1b6baa95
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	// The name of the zone.
+	//
+	// example:
+	//
+	// localzone.demo
 	ZoneName *string `json:"ZoneName,omitempty" xml:"ZoneName,omitempty"`
-	ZoneTag  *string `json:"ZoneTag,omitempty" xml:"ZoneTag,omitempty"`
+	// The type of the cloud service.
+	//
+	// 	- If the value of the ZoneType parameter is AUTH_ZONE, no value is returned for this parameter.
+	//
+	// 	- If the value of the ZoneType parameter is CLOUD_PRODUCT_ZONE, the type of the cloud service is returned.
+	//
+	// example:
+	//
+	// BLINK
+	ZoneTag *string `json:"ZoneTag,omitempty" xml:"ZoneTag,omitempty"`
+	// The type of the zone. Valid values:
+	//
+	// 	- AUTH_ZONE: authoritative zone
+	//
+	// 	- CLOUD_PRODUCT_ZONE: authoritative zone for cloud services
+	//
+	// example:
+	//
+	// AUTH_ZONE
 	ZoneType *string `json:"ZoneType,omitempty" xml:"ZoneType,omitempty"`
 }
 
@@ -4217,12 +6308,39 @@ func (s *DescribeZoneVpcTreeResponseBodyZonesZoneVpcs) SetVpc(v []*DescribeZoneV
 }
 
 type DescribeZoneVpcTreeResponseBodyZonesZoneVpcsVpc struct {
-	// region Id
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-beijing
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The name of the region.
+	//
+	// example:
+	//
+	// China North 2
 	RegionName *string `json:"RegionName,omitempty" xml:"RegionName,omitempty"`
-	// vpc id
-	VpcId   *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// The VPC ID.
+	//
+	// example:
+	//
+	// vpc-2z21341ssdadsfzyd49ra
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// The name of the VPC.
+	//
+	// example:
+	//
+	// demo-vpc
 	VpcName *string `json:"VpcName,omitempty" xml:"VpcName,omitempty"`
+	// The type of the VPC. Valid values:
+	//
+	// 	- STANDARD: standard VPC
+	//
+	// 	- EDS: Elastic Desktop Service (EDS) workspace VPC
+	//
+	// example:
+	//
+	// STANDARD
 	VpcType *string `json:"VpcType,omitempty" xml:"VpcType,omitempty"`
 }
 
@@ -4289,18 +6407,78 @@ func (s *DescribeZoneVpcTreeResponse) SetBody(v *DescribeZoneVpcTreeResponseBody
 }
 
 type DescribeZonesRequest struct {
-	Keyword       *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
-	Lang          *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	PageNumber    *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize      *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The keyword of the zone name. The search is performed in the %KeyWord % mode and is not case-sensitive.
+	//
+	// example:
+	//
+	// test
+	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	// The language.
+	//
+	// example:
+	//
+	// en
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The page number. Pages start from page 1. Default value: 1.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Maximum value: 100. Default value: 20.
+	//
+	// example:
+	//
+	// 100
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	QueryRegionId *string `json:"QueryRegionId,omitempty" xml:"QueryRegionId,omitempty"`
-	// VPC ID。
-	QueryVpcId      *string                            `json:"QueryVpcId,omitempty" xml:"QueryVpcId,omitempty"`
-	ResourceGroupId *string                            `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	ResourceTag     []*DescribeZonesRequestResourceTag `json:"ResourceTag,omitempty" xml:"ResourceTag,omitempty" type:"Repeated"`
-	SearchMode      *string                            `json:"SearchMode,omitempty" xml:"SearchMode,omitempty"`
-	ZoneTag         []*string                          `json:"ZoneTag,omitempty" xml:"ZoneTag,omitempty" type:"Repeated"`
-	ZoneType        *string                            `json:"ZoneType,omitempty" xml:"ZoneType,omitempty"`
+	// The virtual private cloud (VPC) ID.
+	//
+	// example:
+	//
+	// vpc-xxxxx
+	QueryVpcId *string `json:"QueryVpcId,omitempty" xml:"QueryVpcId,omitempty"`
+	// The ID of the resource group.
+	//
+	// example:
+	//
+	// rg-xxxxx
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The tag added to the resource.
+	ResourceTag []*DescribeZonesRequestResourceTag `json:"ResourceTag,omitempty" xml:"ResourceTag,omitempty" type:"Repeated"`
+	// The search mode. Valid values:
+	//
+	// 	- **LIKE (default)**: fuzzy search
+	//
+	// 	- **EXACT**: exact search
+	//
+	// example:
+	//
+	// LIKE
+	SearchMode *string `json:"SearchMode,omitempty" xml:"SearchMode,omitempty"`
+	// The type of the cloud service.
+	//
+	// example:
+	//
+	// BLINK
+	ZoneTag []*string `json:"ZoneTag,omitempty" xml:"ZoneTag,omitempty" type:"Repeated"`
+	// The type of zones to query. Default value: AUTH_ZONE.
+	//
+	// Valid values:
+	//
+	// 	- **AUTH_ZONE**: authoritative zone
+	//
+	// 	- **CLOUD_PRODUCT_ZONE**: authoritative zone for cloud services
+	//
+	// example:
+	//
+	// CLOUD_PRODUCT_ZONE
+	ZoneType *string `json:"ZoneType,omitempty" xml:"ZoneType,omitempty"`
 }
 
 func (s DescribeZonesRequest) String() string {
@@ -4367,7 +6545,17 @@ func (s *DescribeZonesRequest) SetZoneType(v string) *DescribeZonesRequest {
 }
 
 type DescribeZonesRequestResourceTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The key of tag N added to the resource.
+	//
+	// example:
+	//
+	// env
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The value of tag N added to the resource.
+	//
+	// example:
+	//
+	// daily
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -4390,12 +6578,38 @@ func (s *DescribeZonesRequestResourceTag) SetValue(v string) *DescribeZonesReque
 }
 
 type DescribeZonesResponseBody struct {
-	PageNumber *int32                          `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32                          `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId  *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalItems *int32                          `json:"TotalItems,omitempty" xml:"TotalItems,omitempty"`
-	TotalPages *int32                          `json:"TotalPages,omitempty" xml:"TotalPages,omitempty"`
-	Zones      *DescribeZonesResponseBodyZones `json:"Zones,omitempty" xml:"Zones,omitempty" type:"Struct"`
+	// The page number.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 6856BCF6-11D6-4D7E-AC53-FD579933522B
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 3
+	TotalItems *int32 `json:"TotalItems,omitempty" xml:"TotalItems,omitempty"`
+	// The total number of pages.
+	//
+	// example:
+	//
+	// 3
+	TotalPages *int32 `json:"TotalPages,omitempty" xml:"TotalPages,omitempty"`
+	// The zones.
+	Zones *DescribeZonesResponseBodyZones `json:"Zones,omitempty" xml:"Zones,omitempty" type:"Struct"`
 }
 
 func (s DescribeZonesResponseBody) String() string {
@@ -4454,24 +6668,141 @@ func (s *DescribeZonesResponseBodyZones) SetZone(v []*DescribeZonesResponseBodyZ
 }
 
 type DescribeZonesResponseBodyZonesZone struct {
-	CreateTime       *string                                         `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	CreateTimestamp  *int64                                          `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
-	Creator          *string                                         `json:"Creator,omitempty" xml:"Creator,omitempty"`
-	CreatorSubType   *string                                         `json:"CreatorSubType,omitempty" xml:"CreatorSubType,omitempty"`
-	DnsGroup         *string                                         `json:"DnsGroup,omitempty" xml:"DnsGroup,omitempty"`
-	DnsGroupChanging *bool                                           `json:"DnsGroupChanging,omitempty" xml:"DnsGroupChanging,omitempty"`
-	IsPtr            *bool                                           `json:"IsPtr,omitempty" xml:"IsPtr,omitempty"`
-	ProxyPattern     *string                                         `json:"ProxyPattern,omitempty" xml:"ProxyPattern,omitempty"`
-	RecordCount      *int32                                          `json:"RecordCount,omitempty" xml:"RecordCount,omitempty"`
-	Remark           *string                                         `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	ResourceGroupId  *string                                         `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	ResourceTags     *DescribeZonesResponseBodyZonesZoneResourceTags `json:"ResourceTags,omitempty" xml:"ResourceTags,omitempty" type:"Struct"`
-	UpdateTime       *string                                         `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	UpdateTimestamp  *int64                                          `json:"UpdateTimestamp,omitempty" xml:"UpdateTimestamp,omitempty"`
-	// zone ID。
-	ZoneId   *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	// The time when the zone was created. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
+	//
+	// example:
+	//
+	// 2017-12-28T13:08Z
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The time when the zone was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	//
+	// example:
+	//
+	// 1514466483000
+	CreateTimestamp *int64 `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
+	// The creator of the zone.
+	//
+	// example:
+	//
+	// 5463564356
+	Creator *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
+	// The type of the user account.
+	//
+	// 	- **CUSTOMER**: Alibaba Cloud account
+	//
+	// 	- **SUB**: RAM user
+	//
+	// 	- **STS**: assumed role that obtains the Security Token Service (STS) token of a RAM role
+	//
+	// 	- **OTHER**: other types
+	//
+	// example:
+	//
+	// SUB
+	CreatorSubType *string `json:"CreatorSubType,omitempty" xml:"CreatorSubType,omitempty"`
+	// The logical location type of the built-in authoritative module in which the zone is added. Valid values:
+	//
+	// 	- **NORMAL_ZONE**: regular module
+	//
+	// 	- **FAST_ZONE**: acceleration module
+	//
+	// example:
+	//
+	// NORMAL_ZONE
+	DnsGroup *string `json:"DnsGroup,omitempty" xml:"DnsGroup,omitempty"`
+	// Indicates whether the zone is being removed to another logical location. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// false
+	DnsGroupChanging *bool `json:"DnsGroupChanging,omitempty" xml:"DnsGroupChanging,omitempty"`
+	// Indicates whether the zone is a reverse lookup zone. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
+	IsPtr *bool `json:"IsPtr,omitempty" xml:"IsPtr,omitempty"`
+	// Indicates whether the recursive resolution proxy feature is enabled for the zone. Valid values:
+	//
+	// 	- **ZONE**: The recursive resolution proxy feature is disabled for the zone.
+	//
+	// 	- **RECORD**: The recursive resolution proxy feature is enabled for the zone.
+	//
+	// example:
+	//
+	// ZONE
+	ProxyPattern *string `json:"ProxyPattern,omitempty" xml:"ProxyPattern,omitempty"`
+	// The number of Domain Name System (DNS) records.
+	//
+	// example:
+	//
+	// 2
+	RecordCount *int32 `json:"RecordCount,omitempty" xml:"RecordCount,omitempty"`
+	// The description of the zone.
+	//
+	// example:
+	//
+	// test
+	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// The ID of the resource group.
+	//
+	// example:
+	//
+	// rg-xxxxx
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The tags added to the resources.
+	ResourceTags *DescribeZonesResponseBodyZonesZoneResourceTags `json:"ResourceTags,omitempty" xml:"ResourceTags,omitempty" type:"Struct"`
+	// The time when the zone was last modified. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
+	//
+	// example:
+	//
+	// 2018-01-03T08:57Z
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// The time when the DNS record was updated. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since 00:00:00 UTC on January 1, 1970.
+	//
+	// example:
+	//
+	// 1514969843000
+	UpdateTimestamp *int64 `json:"UpdateTimestamp,omitempty" xml:"UpdateTimestamp,omitempty"`
+	// The zone ID.
+	//
+	// example:
+	//
+	// 6d83e3b31aa60ca4aaa7161f1b6b**95
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	// The name of the zone.
+	//
+	// example:
+	//
+	// test.com
 	ZoneName *string `json:"ZoneName,omitempty" xml:"ZoneName,omitempty"`
-	ZoneTag  *string `json:"ZoneTag,omitempty" xml:"ZoneTag,omitempty"`
+	// The type of the cloud service. Valid values:
+	//
+	// 	- If ZoneType is set to AUTH_ZONE, no value is returned for this parameter.
+	//
+	// 	- If ZoneType is set to CLOUD_PRODUCT_ZONE, the type of the cloud service is returned.
+	//
+	// example:
+	//
+	// BLINK
+	ZoneTag *string `json:"ZoneTag,omitempty" xml:"ZoneTag,omitempty"`
+	// The type of zones. Valid values:
+	//
+	// 	- **AUTH_ZONE**: authoritative zone
+	//
+	// 	- **CLOUD_PRODUCT_ZONE**: authoritative zone for cloud services
+	//
+	// example:
+	//
+	// CLOUD_PRODUCT_ZONE
 	ZoneType *string `json:"ZoneType,omitempty" xml:"ZoneType,omitempty"`
 }
 
@@ -4591,7 +6922,17 @@ func (s *DescribeZonesResponseBodyZonesZoneResourceTags) SetResourceTag(v []*Des
 }
 
 type DescribeZonesResponseBodyZonesZoneResourceTagsResourceTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The key of tag N added to the zone.
+	//
+	// example:
+	//
+	// env
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The value of tag N added to the zone.
+	//
+	// example:
+	//
+	// daily
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -4643,12 +6984,40 @@ func (s *DescribeZonesResponse) SetBody(v *DescribeZonesResponseBody) *DescribeZ
 }
 
 type ListTagResourcesRequest struct {
-	Lang         *string                       `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	NextToken    *string                       `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	ResourceId   []*string                     `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
-	ResourceType *string                       `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	Size         *int32                        `json:"Size,omitempty" xml:"Size,omitempty"`
-	Tag          []*ListTagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	// The language of the values for specific response parameters. Valid values: en, zh, and ja.
+	//
+	// example:
+	//
+	// en
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The pagination token that is used in the next request to retrieve a new page of results.
+	//
+	// example:
+	//
+	// 234235354
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The resource IDs, which are zone IDs. You can specify up to 50 zone IDs.
+	//
+	// example:
+	//
+	// 97fe9321a476d0861f624d3f738dcc38
+	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
+	// The resource type. Valid value: ZONE.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ZONE
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The number of entries per page. Valid values: `1 to 200`. Default value: 20.
+	//
+	// example:
+	//
+	// 20
+	Size *int32 `json:"Size,omitempty" xml:"Size,omitempty"`
+	// The tags added to the resources.
+	Tag []*ListTagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s ListTagResourcesRequest) String() string {
@@ -4690,7 +7059,17 @@ func (s *ListTagResourcesRequest) SetTag(v []*ListTagResourcesRequestTag) *ListT
 }
 
 type ListTagResourcesRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The key of tag N added to the resource.
+	//
+	// example:
+	//
+	// env
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The value of tag N added to the resource.
+	//
+	// example:
+	//
+	// daily
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -4713,8 +7092,19 @@ func (s *ListTagResourcesRequestTag) SetValue(v string) *ListTagResourcesRequest
 }
 
 type ListTagResourcesResponseBody struct {
-	NextToken    *string                                     `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	RequestId    *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The pagination token. It can be used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists.
+	//
+	// example:
+	//
+	// 234235354
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 75446CC1-FC9A-4595-8D96-089D73D7A63D
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The tags added to the resources.
 	TagResources []*ListTagResourcesResponseBodyTagResources `json:"TagResources,omitempty" xml:"TagResources,omitempty" type:"Repeated"`
 }
 
@@ -4742,10 +7132,30 @@ func (s *ListTagResourcesResponseBody) SetTagResources(v []*ListTagResourcesResp
 }
 
 type ListTagResourcesResponseBodyTagResources struct {
-	ResourceId   *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The resource ID, which is a zone ID.
+	//
+	// example:
+	//
+	// 97fe9321a476d0861f624d3f738dcc38
+	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The resource type.
+	//
+	// example:
+	//
+	// ZONE
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	TagKey       *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
-	TagValue     *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
+	// The key of tag N added to the resource.
+	//
+	// example:
+	//
+	// env
+	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// The value of tag N added to the resource.
+	//
+	// example:
+	//
+	// daily
+	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 
 func (s ListTagResourcesResponseBodyTagResources) String() string {
@@ -4806,10 +7216,33 @@ func (s *ListTagResourcesResponse) SetBody(v *ListTagResourcesResponseBody) *Lis
 }
 
 type MoveResourceGroupRequest struct {
-	ClientToken        *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	Lang               *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	//
+	// example:
+	//
+	// 21079fa016944979537637959d09bc
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The language of the values for specific response parameters. Default value: en. Valid values: en, zh, and ja.
+	//
+	// example:
+	//
+	// en
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The ID of the resource group.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// rg-aekzzk7hx3glaoq
 	NewResourceGroupId *string `json:"NewResourceGroupId,omitempty" xml:"NewResourceGroupId,omitempty"`
-	// Zone Id。
+	// The global ID of the zone.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// AgIDE1MA_149
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 }
 
@@ -4842,6 +7275,11 @@ func (s *MoveResourceGroupRequest) SetResourceId(v string) *MoveResourceGroupReq
 }
 
 type MoveResourceGroupResponseBody struct {
+	// The request ID.
+	//
+	// example:
+	//
+	// D1324D48-1E23-4AEF-9EDE-466120561C6F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4888,11 +7326,44 @@ func (s *MoveResourceGroupResponse) SetBody(v *MoveResourceGroupResponseBody) *M
 }
 
 type SetProxyPatternRequest struct {
-	ClientToken  *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	//
+	// example:
+	//
+	// 21079fa016944979537637959d09bc
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The language.
+	//
+	// example:
+	//
+	// en
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// Specifies whether to enable the recursive resolution proxy feature for the zone. Valid values:
+	//
+	// 	- **ZONE**: disables the recursive resolution proxy feature for the zone.
+	//
+	// 	- **RECORD**: enables the recursive resolution proxy feature for the zone.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ZONE
 	ProxyPattern *string `json:"ProxyPattern,omitempty" xml:"ProxyPattern,omitempty"`
+	// The IP address of the client.
+	//
+	// example:
+	//
+	// 1.1.1.1
 	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
-	ZoneId       *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	// The global ID of the zone.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// AgIDE0OQ_149
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s SetProxyPatternRequest) String() string {
@@ -4929,8 +7400,18 @@ func (s *SetProxyPatternRequest) SetZoneId(v string) *SetProxyPatternRequest {
 }
 
 type SetProxyPatternResponseBody struct {
+	// The request ID.
+	//
+	// example:
+	//
+	// C6F1D541-E7A6-447A-A2B5-9F7A20B2A8FB
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ZoneId    *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	// The global ID of the zone.
+	//
+	// example:
+	//
+	// AgIDE0OQ_149
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s SetProxyPatternResponseBody) String() string {
@@ -4981,10 +7462,43 @@ func (s *SetProxyPatternResponse) SetBody(v *SetProxyPatternResponseBody) *SetPr
 }
 
 type SetZoneRecordStatusRequest struct {
-	ClientToken  *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	RecordId     *int64  `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
-	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	//
+	// example:
+	//
+	// 6447728c8578e66aacf062d2df4446dc
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The language.
+	//
+	// example:
+	//
+	// en
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The ID of the DNS record.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 5809
+	RecordId *int64 `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
+	// The state of the DNS record. Valid values:
+	//
+	// 	- ENABLE: enables the DNS record.
+	//
+	// 	- DISABLE: suspends the DNS record.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// DISABLE
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The IP address of the client.
+	//
+	// example:
+	//
+	// 1.1.XX.XX
 	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
 }
 
@@ -5022,9 +7536,24 @@ func (s *SetZoneRecordStatusRequest) SetUserClientIp(v string) *SetZoneRecordSta
 }
 
 type SetZoneRecordStatusResponseBody struct {
-	RecordId  *int64  `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
+	// The ID of the DNS record.
+	//
+	// example:
+	//
+	// 5809
+	RecordId *int64 `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 39CB16E5-4180-49F2-A060-23C0ECEB80D9
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Status    *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The status of the DNS record.
+	//
+	// example:
+	//
+	// DISABLE
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s SetZoneRecordStatusResponseBody) String() string {
@@ -5080,11 +7609,42 @@ func (s *SetZoneRecordStatusResponse) SetBody(v *SetZoneRecordStatusResponseBody
 }
 
 type TagResourcesRequest struct {
-	Lang         *string                   `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	OverWrite    *bool                     `json:"OverWrite,omitempty" xml:"OverWrite,omitempty"`
-	ResourceId   []*string                 `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
-	ResourceType *string                   `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	Tag          []*TagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	// The language.
+	//
+	// example:
+	//
+	// en
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// Specifies whether to replace the original tags added to the resources. Valid values:
+	//
+	// 	- True: replaces the original tags.
+	//
+	// 	- False|Null: appends the specified one or more tags to the original tags. If a new tag has the same key but a different value from an original tag, the new tag replaces the original tag.
+	//
+	// example:
+	//
+	// true
+	OverWrite *bool `json:"OverWrite,omitempty" xml:"OverWrite,omitempty"`
+	// The resource IDs, which are zone IDs. You can specify **1 to 50*	- IDs.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 97fe9321a476d0861f624d3f738dcc38
+	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
+	// The resource type.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ZONE
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The tags to add to the resources.
+	//
+	// This parameter is required.
+	Tag []*TagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s TagResourcesRequest) String() string {
@@ -5121,7 +7681,17 @@ func (s *TagResourcesRequest) SetTag(v []*TagResourcesRequestTag) *TagResourcesR
 }
 
 type TagResourcesRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The key of tag N to add to the resource.
+	//
+	// example:
+	//
+	// env
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The value of tag N to add to the resource.
+	//
+	// example:
+	//
+	// daily
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -5144,6 +7714,11 @@ func (s *TagResourcesRequestTag) SetValue(v string) *TagResourcesRequestTag {
 }
 
 type TagResourcesResponseBody struct {
+	// The request ID.
+	//
+	// example:
+	//
+	// 75446CC1-FC9A-4595-8D96-089D73D7A63D
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -5190,11 +7765,44 @@ func (s *TagResourcesResponse) SetBody(v *TagResourcesResponseBody) *TagResource
 }
 
 type UntagResourcesRequest struct {
-	All          *bool     `json:"All,omitempty" xml:"All,omitempty"`
-	Lang         *string   `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	ResourceId   []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
-	ResourceType *string   `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	TagKey       []*string `json:"TagKey,omitempty" xml:"TagKey,omitempty" type:"Repeated"`
+	// Specifies whether to remove all tags from the specified one or more resources. This parameter is valid only if the TagKey parameter is left empty. Default value: false. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// true
+	All *bool `json:"All,omitempty" xml:"All,omitempty"`
+	// The language.
+	//
+	// example:
+	//
+	// en
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The resource IDs, which are zone IDs. You can specify up to 50 zone IDs.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 97fe9321a476d0861f624d3f738dcc38
+	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
+	// The resource type. Valid value: ZONE.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ZONE
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The keys of tags that you want to remove. You can specify up to 20 tag keys.
+	//
+	// example:
+	//
+	// env
+	TagKey []*string `json:"TagKey,omitempty" xml:"TagKey,omitempty" type:"Repeated"`
 }
 
 func (s UntagResourcesRequest) String() string {
@@ -5231,6 +7839,11 @@ func (s *UntagResourcesRequest) SetTagKey(v []*string) *UntagResourcesRequest {
 }
 
 type UntagResourcesResponseBody struct {
+	// The request ID.
+	//
+	// example:
+	//
+	// 75446CC1-FC9A-4595-8D96-089D73D7A63D
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -5277,10 +7890,32 @@ func (s *UntagResourcesResponse) SetBody(v *UntagResourcesResponseBody) *UntagRe
 }
 
 type UpdateRecordRemarkRequest struct {
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	//
+	// example:
+	//
+	// 6447728c8578e66aacf062d2df4446dc
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	Lang        *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	RecordId    *int64  `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
-	Remark      *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// The language.
+	//
+	// example:
+	//
+	// en
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The ID of the DNS record.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 18954952
+	RecordId *int64 `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
+	// The description of the DNS record.
+	//
+	// example:
+	//
+	// test record
+	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
 }
 
 func (s UpdateRecordRemarkRequest) String() string {
@@ -5312,7 +7947,17 @@ func (s *UpdateRecordRemarkRequest) SetRemark(v string) *UpdateRecordRemarkReque
 }
 
 type UpdateRecordRemarkResponseBody struct {
-	RecordId  *int64  `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
+	// The ID of the DNS record.
+	//
+	// example:
+	//
+	// 18954952
+	RecordId *int64 `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 0B7AD377-7E86-44A8-B9A8-53E8666E72FE
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -5364,10 +8009,28 @@ func (s *UpdateRecordRemarkResponse) SetBody(v *UpdateRecordRemarkResponseBody) 
 }
 
 type UpdateResolverEndpointRequest struct {
-	EndpointId *string                                  `json:"EndpointId,omitempty" xml:"EndpointId,omitempty"`
-	IpConfig   []*UpdateResolverEndpointRequestIpConfig `json:"IpConfig,omitempty" xml:"IpConfig,omitempty" type:"Repeated"`
-	Lang       *string                                  `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	Name       *string                                  `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The endpoint ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// hra0**
+	EndpointId *string `json:"EndpointId,omitempty" xml:"EndpointId,omitempty"`
+	// The source IP addresses of outbound traffic. You must add two to six source IP addresses to ensure high availability.
+	IpConfig []*UpdateResolverEndpointRequestIpConfig `json:"IpConfig,omitempty" xml:"IpConfig,omitempty" type:"Repeated"`
+	// The language.
+	//
+	// example:
+	//
+	// en
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The endpoint name.
+	//
+	// example:
+	//
+	// endpoint-test-name
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
 func (s UpdateResolverEndpointRequest) String() string {
@@ -5399,9 +8062,29 @@ func (s *UpdateResolverEndpointRequest) SetName(v string) *UpdateResolverEndpoin
 }
 
 type UpdateResolverEndpointRequestIpConfig struct {
-	AzId      *string `json:"AzId,omitempty" xml:"AzId,omitempty"`
+	// The zone ID.
+	//
+	// example:
+	//
+	// cn-hangzhou-a
+	AzId *string `json:"AzId,omitempty" xml:"AzId,omitempty"`
+	// The IPv4 CIDR block of the vSwitch.
+	//
+	// example:
+	//
+	// 172.16.0.0/24
 	CidrBlock *string `json:"CidrBlock,omitempty" xml:"CidrBlock,omitempty"`
-	Ip        *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	// The IP address.
+	//
+	// example:
+	//
+	// 172.16.xx.xx
+	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	// The vSwitch ID.
+	//
+	// example:
+	//
+	// sjqkql
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
 }
 
@@ -5434,6 +8117,11 @@ func (s *UpdateResolverEndpointRequestIpConfig) SetVSwitchId(v string) *UpdateRe
 }
 
 type UpdateResolverEndpointResponseBody struct {
+	// The request ID.
+	//
+	// example:
+	//
+	// EC0BDA3A-A92A-4AC8-B351-322A9C79D5C5
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -5480,10 +8168,29 @@ func (s *UpdateResolverEndpointResponse) SetBody(v *UpdateResolverEndpointRespon
 }
 
 type UpdateResolverRuleRequest struct {
+	EndpointId *string `json:"EndpointId,omitempty" xml:"EndpointId,omitempty"`
+	// The destination IP address and port number.
 	ForwardIp []*UpdateResolverRuleRequestForwardIp `json:"ForwardIp,omitempty" xml:"ForwardIp,omitempty" type:"Repeated"`
-	Lang      *string                               `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	Name      *string                               `json:"Name,omitempty" xml:"Name,omitempty"`
-	RuleId    *string                               `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	// The language.
+	//
+	// example:
+	//
+	// en
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The name of the forwarding rule.
+	//
+	// example:
+	//
+	// forward rule-test
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The forwarding rule ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// hra0**
+	RuleId *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
 }
 
 func (s UpdateResolverRuleRequest) String() string {
@@ -5492,6 +8199,11 @@ func (s UpdateResolverRuleRequest) String() string {
 
 func (s UpdateResolverRuleRequest) GoString() string {
 	return s.String()
+}
+
+func (s *UpdateResolverRuleRequest) SetEndpointId(v string) *UpdateResolverRuleRequest {
+	s.EndpointId = &v
+	return s
 }
 
 func (s *UpdateResolverRuleRequest) SetForwardIp(v []*UpdateResolverRuleRequestForwardIp) *UpdateResolverRuleRequest {
@@ -5515,8 +8227,18 @@ func (s *UpdateResolverRuleRequest) SetRuleId(v string) *UpdateResolverRuleReque
 }
 
 type UpdateResolverRuleRequestForwardIp struct {
-	Ip   *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
-	Port *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
+	// The destination IP address.
+	//
+	// example:
+	//
+	// 172.16.xx.xx
+	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	// The port number.
+	//
+	// example:
+	//
+	// 8080
+	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
 }
 
 func (s UpdateResolverRuleRequestForwardIp) String() string {
@@ -5538,6 +8260,11 @@ func (s *UpdateResolverRuleRequestForwardIp) SetPort(v int32) *UpdateResolverRul
 }
 
 type UpdateResolverRuleResponseBody struct {
+	// The request ID.
+	//
+	// example:
+	//
+	// 0C9959BE-3A6A-4803-8DCE-973B42ACD599
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -5584,10 +8311,36 @@ func (s *UpdateResolverRuleResponse) SetBody(v *UpdateResolverRuleResponseBody) 
 }
 
 type UpdateSyncEcsHostTaskRequest struct {
-	Lang   *string                               `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The language.
+	//
+	// example:
+	//
+	// en
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The information about regions to be synchronized.
+	//
+	// This parameter is required.
 	Region []*UpdateSyncEcsHostTaskRequestRegion `json:"Region,omitempty" xml:"Region,omitempty" type:"Repeated"`
-	Status *string                               `json:"Status,omitempty" xml:"Status,omitempty"`
-	ZoneId *string                               `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	// The state of the task. Valid values:
+	//
+	// 	- ON
+	//
+	// 	- OFF
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ON
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The zone ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test79afafec***********1d28f7889c
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s UpdateSyncEcsHostTaskRequest) String() string {
@@ -5619,8 +8372,18 @@ func (s *UpdateSyncEcsHostTaskRequest) SetZoneId(v string) *UpdateSyncEcsHostTas
 }
 
 type UpdateSyncEcsHostTaskRequestRegion struct {
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	UserId   *int64  `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The Alibaba Cloud account to which the region belongs. This parameter is used in cross-account synchronization scenarios.
+	//
+	// example:
+	//
+	// 1234567890
+	UserId *int64 `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s UpdateSyncEcsHostTaskRequestRegion) String() string {
@@ -5642,8 +8405,22 @@ func (s *UpdateSyncEcsHostTaskRequestRegion) SetUserId(v int64) *UpdateSyncEcsHo
 }
 
 type UpdateSyncEcsHostTaskResponseBody struct {
+	// The request ID.
+	//
+	// example:
+	//
+	// test-FC9A-4595-8D96-089D73D7A63D
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// Indicates whether the task was successful. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s UpdateSyncEcsHostTaskResponseBody) String() string {
@@ -5694,17 +8471,84 @@ func (s *UpdateSyncEcsHostTaskResponse) SetBody(v *UpdateSyncEcsHostTaskResponse
 }
 
 type UpdateZoneRecordRequest struct {
-	ClientToken  *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	Line         *string `json:"Line,omitempty" xml:"Line,omitempty"`
-	Priority     *int32  `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	RecordId     *int64  `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
-	Rr           *string `json:"Rr,omitempty" xml:"Rr,omitempty"`
-	Ttl          *int32  `json:"Ttl,omitempty" xml:"Ttl,omitempty"`
-	Type         *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	//
+	// example:
+	//
+	// 6447728c8578e66aacf062d2df4446dc
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The language.
+	//
+	// example:
+	//
+	// en
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The resolution line.
+	//
+	// example:
+	//
+	// default
+	Line *string `json:"Line,omitempty" xml:"Line,omitempty"`
+	// The priority of the mail exchanger (MX) record. Valid values: **1 to 99**.
+	//
+	// This parameter is required if the type of the DNS record is MX.
+	//
+	// example:
+	//
+	// 60
+	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// The ID of the DNS record.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 5809
+	RecordId *int64 `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
+	// The hostname.
+	//
+	// For example, you must set this parameter to @ if you want to resolve @.example.com.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// www
+	Rr *string `json:"Rr,omitempty" xml:"Rr,omitempty"`
+	// The time-to-live (TTL) of the DNS record.
+	//
+	// example:
+	//
+	// 60
+	Ttl *int32 `json:"Ttl,omitempty" xml:"Ttl,omitempty"`
+	// The type of the DNS record. Valid values: **A**, **AAAA**, **CNAME**, **TXT**, **MX**, **PTR**, and **SRV**.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// A
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The IP address of the client.
+	//
+	// example:
+	//
+	// 2.2.XX.XX
 	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
-	Value        *string `json:"Value,omitempty" xml:"Value,omitempty"`
-	Weight       *int32  `json:"Weight,omitempty" xml:"Weight,omitempty"`
+	// The record value.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1.1.XX.XX
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The weight of the address. Valid values: **1 to 100**.
+	//
+	// example:
+	//
+	// 1
+	Weight *int32 `json:"Weight,omitempty" xml:"Weight,omitempty"`
 }
 
 func (s UpdateZoneRecordRequest) String() string {
@@ -5771,7 +8615,17 @@ func (s *UpdateZoneRecordRequest) SetWeight(v int32) *UpdateZoneRecordRequest {
 }
 
 type UpdateZoneRecordResponseBody struct {
-	RecordId  *int64  `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
+	// The ID of the DNS record.
+	//
+	// example:
+	//
+	// 5809
+	RecordId *int64 `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 250E2C38-D0AD-4518-851D-1C1055805F82
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -5823,11 +8677,37 @@ func (s *UpdateZoneRecordResponse) SetBody(v *UpdateZoneRecordResponseBody) *Upd
 }
 
 type UpdateZoneRemarkRequest struct {
-	ClientToken  *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	Remark       *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	//
+	// example:
+	//
+	// 21079fa016944979537637959d09bc
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The language.
+	//
+	// example:
+	//
+	// en
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The new description.
+	//
+	// example:
+	//
+	// test
+	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// The IP address of the client.
+	//
+	// example:
+	//
+	// 1.1.1.1
 	UserClientIp *string `json:"UserClientIp,omitempty" xml:"UserClientIp,omitempty"`
-	// Zone ID。
+	// The unique ID of the zone.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// AgIDE1MA_149
 	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
@@ -5865,8 +8745,17 @@ func (s *UpdateZoneRemarkRequest) SetZoneId(v string) *UpdateZoneRemarkRequest {
 }
 
 type UpdateZoneRemarkResponseBody struct {
+	// The request ID.
+	//
+	// example:
+	//
+	// C6F1D541-E7A6-447A-A2B5-9F7A20B2A8FB
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Zone ID。
+	// The zone ID.
+	//
+	// example:
+	//
+	// AgIDE1MA_149
 	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
@@ -5964,6 +8853,15 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates an endpoint.
+//
+// @param request - AddResolverEndpointRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AddResolverEndpointResponse
 func (client *Client) AddResolverEndpointWithOptions(request *AddResolverEndpointRequest, runtime *util.RuntimeOptions) (_result *AddResolverEndpointResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6017,6 +8915,13 @@ func (client *Client) AddResolverEndpointWithOptions(request *AddResolverEndpoin
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates an endpoint.
+//
+// @param request - AddResolverEndpointRequest
+//
+// @return AddResolverEndpointResponse
 func (client *Client) AddResolverEndpoint(request *AddResolverEndpointRequest) (_result *AddResolverEndpointResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &AddResolverEndpointResponse{}
@@ -6028,6 +8933,15 @@ func (client *Client) AddResolverEndpoint(request *AddResolverEndpointRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a forwarding rule.
+//
+// @param request - AddResolverRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AddResolverRuleResponse
 func (client *Client) AddResolverRuleWithOptions(request *AddResolverRuleRequest, runtime *util.RuntimeOptions) (_result *AddResolverRuleResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6081,6 +8995,13 @@ func (client *Client) AddResolverRuleWithOptions(request *AddResolverRuleRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a forwarding rule.
+//
+// @param request - AddResolverRuleRequest
+//
+// @return AddResolverRuleResponse
 func (client *Client) AddResolverRule(request *AddResolverRuleRequest) (_result *AddResolverRuleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &AddResolverRuleResponse{}
@@ -6092,6 +9013,15 @@ func (client *Client) AddResolverRule(request *AddResolverRuleRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// Adds another account to associate one or more virtual private clouds (VPCs) of the current account with a private zone.
+//
+// @param request - AddUserVpcAuthorizationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AddUserVpcAuthorizationResponse
 func (client *Client) AddUserVpcAuthorizationWithOptions(request *AddUserVpcAuthorizationRequest, runtime *util.RuntimeOptions) (_result *AddUserVpcAuthorizationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6137,6 +9067,13 @@ func (client *Client) AddUserVpcAuthorizationWithOptions(request *AddUserVpcAuth
 	return _result, _err
 }
 
+// Summary:
+//
+// Adds another account to associate one or more virtual private clouds (VPCs) of the current account with a private zone.
+//
+// @param request - AddUserVpcAuthorizationRequest
+//
+// @return AddUserVpcAuthorizationResponse
 func (client *Client) AddUserVpcAuthorization(request *AddUserVpcAuthorizationRequest) (_result *AddUserVpcAuthorizationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &AddUserVpcAuthorizationResponse{}
@@ -6148,6 +9085,15 @@ func (client *Client) AddUserVpcAuthorization(request *AddUserVpcAuthorizationRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a zone.
+//
+// @param request - AddZoneRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AddZoneResponse
 func (client *Client) AddZoneWithOptions(request *AddZoneRequest, runtime *util.RuntimeOptions) (_result *AddZoneResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6209,6 +9155,13 @@ func (client *Client) AddZoneWithOptions(request *AddZoneRequest, runtime *util.
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a zone.
+//
+// @param request - AddZoneRequest
+//
+// @return AddZoneResponse
 func (client *Client) AddZone(request *AddZoneRequest) (_result *AddZoneResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &AddZoneResponse{}
@@ -6220,6 +9173,15 @@ func (client *Client) AddZone(request *AddZoneRequest) (_result *AddZoneResponse
 	return _result, _err
 }
 
+// Summary:
+//
+// Adds a Domain Name System (DNS) record for a zone.
+//
+// @param request - AddZoneRecordRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AddZoneRecordResponse
 func (client *Client) AddZoneRecordWithOptions(request *AddZoneRecordRequest, runtime *util.RuntimeOptions) (_result *AddZoneRecordResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6297,6 +9259,13 @@ func (client *Client) AddZoneRecordWithOptions(request *AddZoneRecordRequest, ru
 	return _result, _err
 }
 
+// Summary:
+//
+// Adds a Domain Name System (DNS) record for a zone.
+//
+// @param request - AddZoneRecordRequest
+//
+// @return AddZoneRecordResponse
 func (client *Client) AddZoneRecord(request *AddZoneRecordRequest) (_result *AddZoneRecordResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &AddZoneRecordResponse{}
@@ -6308,6 +9277,15 @@ func (client *Client) AddZoneRecord(request *AddZoneRecordRequest) (_result *Add
 	return _result, _err
 }
 
+// Summary:
+//
+// Associates a forwarding rule with virtual private clouds (VPCs).
+//
+// @param request - BindResolverRuleVpcRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return BindResolverRuleVpcResponse
 func (client *Client) BindResolverRuleVpcWithOptions(request *BindResolverRuleVpcRequest, runtime *util.RuntimeOptions) (_result *BindResolverRuleVpcResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6349,6 +9327,13 @@ func (client *Client) BindResolverRuleVpcWithOptions(request *BindResolverRuleVp
 	return _result, _err
 }
 
+// Summary:
+//
+// Associates a forwarding rule with virtual private clouds (VPCs).
+//
+// @param request - BindResolverRuleVpcRequest
+//
+// @return BindResolverRuleVpcResponse
 func (client *Client) BindResolverRuleVpc(request *BindResolverRuleVpcRequest) (_result *BindResolverRuleVpcResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &BindResolverRuleVpcResponse{}
@@ -6360,6 +9345,15 @@ func (client *Client) BindResolverRuleVpc(request *BindResolverRuleVpcRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// Binds a zone to virtual private clouds (VPCs) or unbinds a zone from VPCs.
+//
+// @param request - BindZoneVpcRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return BindZoneVpcResponse
 func (client *Client) BindZoneVpcWithOptions(request *BindZoneVpcRequest, runtime *util.RuntimeOptions) (_result *BindZoneVpcResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6409,6 +9403,13 @@ func (client *Client) BindZoneVpcWithOptions(request *BindZoneVpcRequest, runtim
 	return _result, _err
 }
 
+// Summary:
+//
+// Binds a zone to virtual private clouds (VPCs) or unbinds a zone from VPCs.
+//
+// @param request - BindZoneVpcRequest
+//
+// @return BindZoneVpcResponse
 func (client *Client) BindZoneVpc(request *BindZoneVpcRequest) (_result *BindZoneVpcResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &BindZoneVpcResponse{}
@@ -6420,6 +9421,15 @@ func (client *Client) BindZoneVpc(request *BindZoneVpcRequest) (_result *BindZon
 	return _result, _err
 }
 
+// Summary:
+//
+// Checks whether the name of a zone is valid based on specific rules.
+//
+// @param request - CheckZoneNameRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CheckZoneNameResponse
 func (client *Client) CheckZoneNameWithOptions(request *CheckZoneNameRequest, runtime *util.RuntimeOptions) (_result *CheckZoneNameResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6461,6 +9471,13 @@ func (client *Client) CheckZoneNameWithOptions(request *CheckZoneNameRequest, ru
 	return _result, _err
 }
 
+// Summary:
+//
+// Checks whether the name of a zone is valid based on specific rules.
+//
+// @param request - CheckZoneNameRequest
+//
+// @return CheckZoneNameResponse
 func (client *Client) CheckZoneName(request *CheckZoneNameRequest) (_result *CheckZoneNameResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CheckZoneNameResponse{}
@@ -6472,6 +9489,15 @@ func (client *Client) CheckZoneName(request *CheckZoneNameRequest) (_result *Che
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes an endpoint.
+//
+// @param request - DeleteResolverEndpointRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteResolverEndpointResponse
 func (client *Client) DeleteResolverEndpointWithOptions(request *DeleteResolverEndpointRequest, runtime *util.RuntimeOptions) (_result *DeleteResolverEndpointResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6509,6 +9535,13 @@ func (client *Client) DeleteResolverEndpointWithOptions(request *DeleteResolverE
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes an endpoint.
+//
+// @param request - DeleteResolverEndpointRequest
+//
+// @return DeleteResolverEndpointResponse
 func (client *Client) DeleteResolverEndpoint(request *DeleteResolverEndpointRequest) (_result *DeleteResolverEndpointResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteResolverEndpointResponse{}
@@ -6520,6 +9553,15 @@ func (client *Client) DeleteResolverEndpoint(request *DeleteResolverEndpointRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a forwarding rule.
+//
+// @param request - DeleteResolverRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteResolverRuleResponse
 func (client *Client) DeleteResolverRuleWithOptions(request *DeleteResolverRuleRequest, runtime *util.RuntimeOptions) (_result *DeleteResolverRuleResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6557,6 +9599,13 @@ func (client *Client) DeleteResolverRuleWithOptions(request *DeleteResolverRuleR
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a forwarding rule.
+//
+// @param request - DeleteResolverRuleRequest
+//
+// @return DeleteResolverRuleResponse
 func (client *Client) DeleteResolverRule(request *DeleteResolverRuleRequest) (_result *DeleteResolverRuleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteResolverRuleResponse{}
@@ -6568,6 +9617,15 @@ func (client *Client) DeleteResolverRule(request *DeleteResolverRuleRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes an account whose one or more virtual private clouds (VPCs) are associated with a private zone.
+//
+// @param request - DeleteUserVpcAuthorizationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteUserVpcAuthorizationResponse
 func (client *Client) DeleteUserVpcAuthorizationWithOptions(request *DeleteUserVpcAuthorizationRequest, runtime *util.RuntimeOptions) (_result *DeleteUserVpcAuthorizationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6605,6 +9663,13 @@ func (client *Client) DeleteUserVpcAuthorizationWithOptions(request *DeleteUserV
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes an account whose one or more virtual private clouds (VPCs) are associated with a private zone.
+//
+// @param request - DeleteUserVpcAuthorizationRequest
+//
+// @return DeleteUserVpcAuthorizationResponse
 func (client *Client) DeleteUserVpcAuthorization(request *DeleteUserVpcAuthorizationRequest) (_result *DeleteUserVpcAuthorizationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteUserVpcAuthorizationResponse{}
@@ -6616,6 +9681,15 @@ func (client *Client) DeleteUserVpcAuthorization(request *DeleteUserVpcAuthoriza
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a zone.
+//
+// @param request - DeleteZoneRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteZoneResponse
 func (client *Client) DeleteZoneWithOptions(request *DeleteZoneRequest, runtime *util.RuntimeOptions) (_result *DeleteZoneResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6661,6 +9735,13 @@ func (client *Client) DeleteZoneWithOptions(request *DeleteZoneRequest, runtime 
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a zone.
+//
+// @param request - DeleteZoneRequest
+//
+// @return DeleteZoneResponse
 func (client *Client) DeleteZone(request *DeleteZoneRequest) (_result *DeleteZoneResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteZoneResponse{}
@@ -6672,6 +9753,15 @@ func (client *Client) DeleteZone(request *DeleteZoneRequest) (_result *DeleteZon
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a Domain Name System (DNS) record of a zone.
+//
+// @param request - DeleteZoneRecordRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteZoneRecordResponse
 func (client *Client) DeleteZoneRecordWithOptions(request *DeleteZoneRecordRequest, runtime *util.RuntimeOptions) (_result *DeleteZoneRecordResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6717,6 +9807,13 @@ func (client *Client) DeleteZoneRecordWithOptions(request *DeleteZoneRecordReque
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a Domain Name System (DNS) record of a zone.
+//
+// @param request - DeleteZoneRecordRequest
+//
+// @return DeleteZoneRecordResponse
 func (client *Client) DeleteZoneRecord(request *DeleteZoneRecordRequest) (_result *DeleteZoneRecordResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteZoneRecordResponse{}
@@ -6728,6 +9825,15 @@ func (client *Client) DeleteZoneRecord(request *DeleteZoneRecordRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of operation logs.
+//
+// @param request - DescribeChangeLogsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeChangeLogsResponse
 func (client *Client) DescribeChangeLogsWithOptions(request *DescribeChangeLogsRequest, runtime *util.RuntimeOptions) (_result *DescribeChangeLogsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6793,6 +9899,13 @@ func (client *Client) DescribeChangeLogsWithOptions(request *DescribeChangeLogsR
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of operation logs.
+//
+// @param request - DescribeChangeLogsRequest
+//
+// @return DescribeChangeLogsResponse
 func (client *Client) DescribeChangeLogs(request *DescribeChangeLogsRequest) (_result *DescribeChangeLogsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeChangeLogsResponse{}
@@ -6804,6 +9917,15 @@ func (client *Client) DescribeChangeLogs(request *DescribeChangeLogsRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of available regions.
+//
+// @param request - DescribeRegionsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeRegionsResponse
 func (client *Client) DescribeRegionsWithOptions(request *DescribeRegionsRequest, runtime *util.RuntimeOptions) (_result *DescribeRegionsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6857,6 +9979,13 @@ func (client *Client) DescribeRegionsWithOptions(request *DescribeRegionsRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of available regions.
+//
+// @param request - DescribeRegionsRequest
+//
+// @return DescribeRegionsResponse
 func (client *Client) DescribeRegions(request *DescribeRegionsRequest) (_result *DescribeRegionsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeRegionsResponse{}
@@ -6868,6 +9997,15 @@ func (client *Client) DescribeRegions(request *DescribeRegionsRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about Domain Name System (DNS) requests.
+//
+// @param request - DescribeRequestGraphRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeRequestGraphResponse
 func (client *Client) DescribeRequestGraphWithOptions(request *DescribeRequestGraphRequest, runtime *util.RuntimeOptions) (_result *DescribeRequestGraphResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6929,6 +10067,13 @@ func (client *Client) DescribeRequestGraphWithOptions(request *DescribeRequestGr
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about Domain Name System (DNS) requests.
+//
+// @param request - DescribeRequestGraphRequest
+//
+// @return DescribeRequestGraphResponse
 func (client *Client) DescribeRequestGraph(request *DescribeRequestGraphRequest) (_result *DescribeRequestGraphResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeRequestGraphResponse{}
@@ -6940,6 +10085,15 @@ func (client *Client) DescribeRequestGraph(request *DescribeRequestGraphRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of available zones.
+//
+// @param request - DescribeResolverAvailableZonesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeResolverAvailableZonesResponse
 func (client *Client) DescribeResolverAvailableZonesWithOptions(request *DescribeResolverAvailableZonesRequest, runtime *util.RuntimeOptions) (_result *DescribeResolverAvailableZonesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6981,6 +10135,13 @@ func (client *Client) DescribeResolverAvailableZonesWithOptions(request *Describ
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of available zones.
+//
+// @param request - DescribeResolverAvailableZonesRequest
+//
+// @return DescribeResolverAvailableZonesResponse
 func (client *Client) DescribeResolverAvailableZones(request *DescribeResolverAvailableZonesRequest) (_result *DescribeResolverAvailableZonesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeResolverAvailableZonesResponse{}
@@ -6992,6 +10153,15 @@ func (client *Client) DescribeResolverAvailableZones(request *DescribeResolverAv
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about an endpoint.
+//
+// @param request - DescribeResolverEndpointRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeResolverEndpointResponse
 func (client *Client) DescribeResolverEndpointWithOptions(request *DescribeResolverEndpointRequest, runtime *util.RuntimeOptions) (_result *DescribeResolverEndpointResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7029,6 +10199,13 @@ func (client *Client) DescribeResolverEndpointWithOptions(request *DescribeResol
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about an endpoint.
+//
+// @param request - DescribeResolverEndpointRequest
+//
+// @return DescribeResolverEndpointResponse
 func (client *Client) DescribeResolverEndpoint(request *DescribeResolverEndpointRequest) (_result *DescribeResolverEndpointResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeResolverEndpointResponse{}
@@ -7040,6 +10217,15 @@ func (client *Client) DescribeResolverEndpoint(request *DescribeResolverEndpoint
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of endpoints.
+//
+// @param request - DescribeResolverEndpointsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeResolverEndpointsResponse
 func (client *Client) DescribeResolverEndpointsWithOptions(request *DescribeResolverEndpointsRequest, runtime *util.RuntimeOptions) (_result *DescribeResolverEndpointsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7066,6 +10252,10 @@ func (client *Client) DescribeResolverEndpointsWithOptions(request *DescribeReso
 		query["Status"] = request.Status
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.VpcRegionId)) {
+		query["VpcRegionId"] = request.VpcRegionId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -7089,6 +10279,13 @@ func (client *Client) DescribeResolverEndpointsWithOptions(request *DescribeReso
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of endpoints.
+//
+// @param request - DescribeResolverEndpointsRequest
+//
+// @return DescribeResolverEndpointsResponse
 func (client *Client) DescribeResolverEndpoints(request *DescribeResolverEndpointsRequest) (_result *DescribeResolverEndpointsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeResolverEndpointsResponse{}
@@ -7100,6 +10297,15 @@ func (client *Client) DescribeResolverEndpoints(request *DescribeResolverEndpoin
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about a forwarding rule.
+//
+// @param request - DescribeResolverRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeResolverRuleResponse
 func (client *Client) DescribeResolverRuleWithOptions(request *DescribeResolverRuleRequest, runtime *util.RuntimeOptions) (_result *DescribeResolverRuleResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7137,6 +10343,13 @@ func (client *Client) DescribeResolverRuleWithOptions(request *DescribeResolverR
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about a forwarding rule.
+//
+// @param request - DescribeResolverRuleRequest
+//
+// @return DescribeResolverRuleResponse
 func (client *Client) DescribeResolverRule(request *DescribeResolverRuleRequest) (_result *DescribeResolverRuleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeResolverRuleResponse{}
@@ -7148,6 +10361,15 @@ func (client *Client) DescribeResolverRule(request *DescribeResolverRuleRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of forwarding rules.
+//
+// @param request - DescribeResolverRulesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeResolverRulesResponse
 func (client *Client) DescribeResolverRulesWithOptions(request *DescribeResolverRulesRequest, runtime *util.RuntimeOptions) (_result *DescribeResolverRulesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7201,6 +10423,13 @@ func (client *Client) DescribeResolverRulesWithOptions(request *DescribeResolver
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of forwarding rules.
+//
+// @param request - DescribeResolverRulesRequest
+//
+// @return DescribeResolverRulesResponse
 func (client *Client) DescribeResolverRules(request *DescribeResolverRulesRequest) (_result *DescribeResolverRulesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeResolverRulesResponse{}
@@ -7212,6 +10441,15 @@ func (client *Client) DescribeResolverRules(request *DescribeResolverRulesReques
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the statistics on the Domain Name System (DNS) requests received on the previous day.
+//
+// @param request - DescribeStatisticSummaryRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeStatisticSummaryResponse
 func (client *Client) DescribeStatisticSummaryWithOptions(request *DescribeStatisticSummaryRequest, runtime *util.RuntimeOptions) (_result *DescribeStatisticSummaryResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7249,6 +10487,13 @@ func (client *Client) DescribeStatisticSummaryWithOptions(request *DescribeStati
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the statistics on the Domain Name System (DNS) requests received on the previous day.
+//
+// @param request - DescribeStatisticSummaryRequest
+//
+// @return DescribeStatisticSummaryResponse
 func (client *Client) DescribeStatisticSummary(request *DescribeStatisticSummaryRequest) (_result *DescribeStatisticSummaryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeStatisticSummaryResponse{}
@@ -7260,6 +10505,15 @@ func (client *Client) DescribeStatisticSummary(request *DescribeStatisticSummary
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about a hostname synchronization task.
+//
+// @param request - DescribeSyncEcsHostTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeSyncEcsHostTaskResponse
 func (client *Client) DescribeSyncEcsHostTaskWithOptions(request *DescribeSyncEcsHostTaskRequest, runtime *util.RuntimeOptions) (_result *DescribeSyncEcsHostTaskResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7297,6 +10551,13 @@ func (client *Client) DescribeSyncEcsHostTaskWithOptions(request *DescribeSyncEc
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about a hostname synchronization task.
+//
+// @param request - DescribeSyncEcsHostTaskRequest
+//
+// @return DescribeSyncEcsHostTaskResponse
 func (client *Client) DescribeSyncEcsHostTask(request *DescribeSyncEcsHostTaskRequest) (_result *DescribeSyncEcsHostTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeSyncEcsHostTaskResponse{}
@@ -7308,6 +10569,15 @@ func (client *Client) DescribeSyncEcsHostTask(request *DescribeSyncEcsHostTaskRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of existing tags.
+//
+// @param request - DescribeTagsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeTagsResponse
 func (client *Client) DescribeTagsWithOptions(request *DescribeTagsRequest, runtime *util.RuntimeOptions) (_result *DescribeTagsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7353,6 +10623,13 @@ func (client *Client) DescribeTagsWithOptions(request *DescribeTagsRequest, runt
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of existing tags.
+//
+// @param request - DescribeTagsRequest
+//
+// @return DescribeTagsResponse
 func (client *Client) DescribeTags(request *DescribeTagsRequest) (_result *DescribeTagsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeTagsResponse{}
@@ -7364,6 +10641,15 @@ func (client *Client) DescribeTags(request *DescribeTagsRequest) (_result *Descr
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of accounts whose virtual private clouds (VPCs) are associated with a private zone.
+//
+// @param request - DescribeUserVpcAuthorizationsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeUserVpcAuthorizationsResponse
 func (client *Client) DescribeUserVpcAuthorizationsWithOptions(request *DescribeUserVpcAuthorizationsRequest, runtime *util.RuntimeOptions) (_result *DescribeUserVpcAuthorizationsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7409,6 +10695,13 @@ func (client *Client) DescribeUserVpcAuthorizationsWithOptions(request *Describe
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of accounts whose virtual private clouds (VPCs) are associated with a private zone.
+//
+// @param request - DescribeUserVpcAuthorizationsRequest
+//
+// @return DescribeUserVpcAuthorizationsResponse
 func (client *Client) DescribeUserVpcAuthorizations(request *DescribeUserVpcAuthorizationsRequest) (_result *DescribeUserVpcAuthorizationsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeUserVpcAuthorizationsResponse{}
@@ -7420,6 +10713,15 @@ func (client *Client) DescribeUserVpcAuthorizations(request *DescribeUserVpcAuth
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about a zone.
+//
+// @param request - DescribeZoneInfoRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeZoneInfoResponse
 func (client *Client) DescribeZoneInfoWithOptions(request *DescribeZoneInfoRequest, runtime *util.RuntimeOptions) (_result *DescribeZoneInfoResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7457,6 +10759,13 @@ func (client *Client) DescribeZoneInfoWithOptions(request *DescribeZoneInfoReque
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about a zone.
+//
+// @param request - DescribeZoneInfoRequest
+//
+// @return DescribeZoneInfoResponse
 func (client *Client) DescribeZoneInfo(request *DescribeZoneInfoRequest) (_result *DescribeZoneInfoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeZoneInfoResponse{}
@@ -7468,6 +10777,15 @@ func (client *Client) DescribeZoneInfo(request *DescribeZoneInfoRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of Domain Name System (DNS) records for a zone.
+//
+// @param request - DescribeZoneRecordsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeZoneRecordsResponse
 func (client *Client) DescribeZoneRecordsWithOptions(request *DescribeZoneRecordsRequest, runtime *util.RuntimeOptions) (_result *DescribeZoneRecordsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7529,6 +10847,13 @@ func (client *Client) DescribeZoneRecordsWithOptions(request *DescribeZoneRecord
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of Domain Name System (DNS) records for a zone.
+//
+// @param request - DescribeZoneRecordsRequest
+//
+// @return DescribeZoneRecordsResponse
 func (client *Client) DescribeZoneRecords(request *DescribeZoneRecordsRequest) (_result *DescribeZoneRecordsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeZoneRecordsResponse{}
@@ -7540,6 +10865,19 @@ func (client *Client) DescribeZoneRecords(request *DescribeZoneRecordsRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of zones and a list of virtual private clouds (VPCs) that are bound to the zones.
+//
+// Description:
+//
+// We recommend that you do not call this API operation due to its poor performance. Instead, you can call the DescribeZones operation to query a list of zones. If you want to query the information about VPCs to which a zone is bound, you can call the DescribeZoneInfo operation based on the zone ID.
+//
+// @param request - DescribeZoneVpcTreeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeZoneVpcTreeResponse
 func (client *Client) DescribeZoneVpcTreeWithOptions(request *DescribeZoneVpcTreeRequest, runtime *util.RuntimeOptions) (_result *DescribeZoneVpcTreeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7577,6 +10915,17 @@ func (client *Client) DescribeZoneVpcTreeWithOptions(request *DescribeZoneVpcTre
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of zones and a list of virtual private clouds (VPCs) that are bound to the zones.
+//
+// Description:
+//
+// We recommend that you do not call this API operation due to its poor performance. Instead, you can call the DescribeZones operation to query a list of zones. If you want to query the information about VPCs to which a zone is bound, you can call the DescribeZoneInfo operation based on the zone ID.
+//
+// @param request - DescribeZoneVpcTreeRequest
+//
+// @return DescribeZoneVpcTreeResponse
 func (client *Client) DescribeZoneVpcTree(request *DescribeZoneVpcTreeRequest) (_result *DescribeZoneVpcTreeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeZoneVpcTreeResponse{}
@@ -7588,6 +10937,15 @@ func (client *Client) DescribeZoneVpcTree(request *DescribeZoneVpcTreeRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of zones for a user.
+//
+// @param request - DescribeZonesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeZonesResponse
 func (client *Client) DescribeZonesWithOptions(request *DescribeZonesRequest, runtime *util.RuntimeOptions) (_result *DescribeZonesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7661,6 +11019,13 @@ func (client *Client) DescribeZonesWithOptions(request *DescribeZonesRequest, ru
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of zones for a user.
+//
+// @param request - DescribeZonesRequest
+//
+// @return DescribeZonesResponse
 func (client *Client) DescribeZones(request *DescribeZonesRequest) (_result *DescribeZonesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeZonesResponse{}
@@ -7672,6 +11037,15 @@ func (client *Client) DescribeZones(request *DescribeZonesRequest) (_result *Des
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of tags added to one or more resources.
+//
+// @param request - ListTagResourcesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListTagResourcesResponse
 func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesRequest, runtime *util.RuntimeOptions) (_result *ListTagResourcesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7725,6 +11099,13 @@ func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesReque
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of tags added to one or more resources.
+//
+// @param request - ListTagResourcesRequest
+//
+// @return ListTagResourcesResponse
 func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_result *ListTagResourcesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListTagResourcesResponse{}
@@ -7736,6 +11117,15 @@ func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// Moves a zone to another resource group.
+//
+// @param request - MoveResourceGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return MoveResourceGroupResponse
 func (client *Client) MoveResourceGroupWithOptions(request *MoveResourceGroupRequest, runtime *util.RuntimeOptions) (_result *MoveResourceGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7781,6 +11171,13 @@ func (client *Client) MoveResourceGroupWithOptions(request *MoveResourceGroupReq
 	return _result, _err
 }
 
+// Summary:
+//
+// Moves a zone to another resource group.
+//
+// @param request - MoveResourceGroupRequest
+//
+// @return MoveResourceGroupResponse
 func (client *Client) MoveResourceGroup(request *MoveResourceGroupRequest) (_result *MoveResourceGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &MoveResourceGroupResponse{}
@@ -7792,6 +11189,15 @@ func (client *Client) MoveResourceGroup(request *MoveResourceGroupRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// Configures the recursive resolution proxy feature.
+//
+// @param request - SetProxyPatternRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SetProxyPatternResponse
 func (client *Client) SetProxyPatternWithOptions(request *SetProxyPatternRequest, runtime *util.RuntimeOptions) (_result *SetProxyPatternResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7841,6 +11247,13 @@ func (client *Client) SetProxyPatternWithOptions(request *SetProxyPatternRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// Configures the recursive resolution proxy feature.
+//
+// @param request - SetProxyPatternRequest
+//
+// @return SetProxyPatternResponse
 func (client *Client) SetProxyPattern(request *SetProxyPatternRequest) (_result *SetProxyPatternResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SetProxyPatternResponse{}
@@ -7852,6 +11265,15 @@ func (client *Client) SetProxyPattern(request *SetProxyPatternRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// Specifies the status of a Domain Name System (DNS) record for a zone.
+//
+// @param request - SetZoneRecordStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SetZoneRecordStatusResponse
 func (client *Client) SetZoneRecordStatusWithOptions(request *SetZoneRecordStatusRequest, runtime *util.RuntimeOptions) (_result *SetZoneRecordStatusResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7901,6 +11323,13 @@ func (client *Client) SetZoneRecordStatusWithOptions(request *SetZoneRecordStatu
 	return _result, _err
 }
 
+// Summary:
+//
+// Specifies the status of a Domain Name System (DNS) record for a zone.
+//
+// @param request - SetZoneRecordStatusRequest
+//
+// @return SetZoneRecordStatusResponse
 func (client *Client) SetZoneRecordStatus(request *SetZoneRecordStatusRequest) (_result *SetZoneRecordStatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SetZoneRecordStatusResponse{}
@@ -7912,6 +11341,15 @@ func (client *Client) SetZoneRecordStatus(request *SetZoneRecordStatusRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// Adds tags to resources.
+//
+// @param request - TagResourcesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return TagResourcesResponse
 func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runtime *util.RuntimeOptions) (_result *TagResourcesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7961,6 +11399,13 @@ func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runt
 	return _result, _err
 }
 
+// Summary:
+//
+// Adds tags to resources.
+//
+// @param request - TagResourcesRequest
+//
+// @return TagResourcesResponse
 func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagResourcesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &TagResourcesResponse{}
@@ -7972,6 +11417,15 @@ func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Removes tags from resources.
+//
+// @param request - UntagResourcesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UntagResourcesResponse
 func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, runtime *util.RuntimeOptions) (_result *UntagResourcesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8021,6 +11475,13 @@ func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// Removes tags from resources.
+//
+// @param request - UntagResourcesRequest
+//
+// @return UntagResourcesResponse
 func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *UntagResourcesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UntagResourcesResponse{}
@@ -8032,6 +11493,15 @@ func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *U
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the description of a Domain Name System (DNS) record that is added for a zone.
+//
+// @param request - UpdateRecordRemarkRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateRecordRemarkResponse
 func (client *Client) UpdateRecordRemarkWithOptions(request *UpdateRecordRemarkRequest, runtime *util.RuntimeOptions) (_result *UpdateRecordRemarkResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8077,6 +11547,13 @@ func (client *Client) UpdateRecordRemarkWithOptions(request *UpdateRecordRemarkR
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the description of a Domain Name System (DNS) record that is added for a zone.
+//
+// @param request - UpdateRecordRemarkRequest
+//
+// @return UpdateRecordRemarkResponse
 func (client *Client) UpdateRecordRemark(request *UpdateRecordRemarkRequest) (_result *UpdateRecordRemarkResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateRecordRemarkResponse{}
@@ -8088,6 +11565,15 @@ func (client *Client) UpdateRecordRemark(request *UpdateRecordRemarkRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies an endpoint.
+//
+// @param request - UpdateResolverEndpointRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateResolverEndpointResponse
 func (client *Client) UpdateResolverEndpointWithOptions(request *UpdateResolverEndpointRequest, runtime *util.RuntimeOptions) (_result *UpdateResolverEndpointResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8133,6 +11619,13 @@ func (client *Client) UpdateResolverEndpointWithOptions(request *UpdateResolverE
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies an endpoint.
+//
+// @param request - UpdateResolverEndpointRequest
+//
+// @return UpdateResolverEndpointResponse
 func (client *Client) UpdateResolverEndpoint(request *UpdateResolverEndpointRequest) (_result *UpdateResolverEndpointResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateResolverEndpointResponse{}
@@ -8144,12 +11637,25 @@ func (client *Client) UpdateResolverEndpoint(request *UpdateResolverEndpointRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies a forwarding rule.
+//
+// @param request - UpdateResolverRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateResolverRuleResponse
 func (client *Client) UpdateResolverRuleWithOptions(request *UpdateResolverRuleRequest, runtime *util.RuntimeOptions) (_result *UpdateResolverRuleResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EndpointId)) {
+		query["EndpointId"] = request.EndpointId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ForwardIp)) {
 		query["ForwardIp"] = request.ForwardIp
 	}
@@ -8189,6 +11695,13 @@ func (client *Client) UpdateResolverRuleWithOptions(request *UpdateResolverRuleR
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies a forwarding rule.
+//
+// @param request - UpdateResolverRuleRequest
+//
+// @return UpdateResolverRuleResponse
 func (client *Client) UpdateResolverRule(request *UpdateResolverRuleRequest) (_result *UpdateResolverRuleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateResolverRuleResponse{}
@@ -8200,6 +11713,15 @@ func (client *Client) UpdateResolverRule(request *UpdateResolverRuleRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates and updates a hostname synchronize task.
+//
+// @param request - UpdateSyncEcsHostTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateSyncEcsHostTaskResponse
 func (client *Client) UpdateSyncEcsHostTaskWithOptions(request *UpdateSyncEcsHostTaskRequest, runtime *util.RuntimeOptions) (_result *UpdateSyncEcsHostTaskResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8245,6 +11767,13 @@ func (client *Client) UpdateSyncEcsHostTaskWithOptions(request *UpdateSyncEcsHos
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates and updates a hostname synchronize task.
+//
+// @param request - UpdateSyncEcsHostTaskRequest
+//
+// @return UpdateSyncEcsHostTaskResponse
 func (client *Client) UpdateSyncEcsHostTask(request *UpdateSyncEcsHostTaskRequest) (_result *UpdateSyncEcsHostTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateSyncEcsHostTaskResponse{}
@@ -8256,6 +11785,15 @@ func (client *Client) UpdateSyncEcsHostTask(request *UpdateSyncEcsHostTaskReques
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies a Domain Name System (DNS) record of a zone.
+//
+// @param request - UpdateZoneRecordRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateZoneRecordResponse
 func (client *Client) UpdateZoneRecordWithOptions(request *UpdateZoneRecordRequest, runtime *util.RuntimeOptions) (_result *UpdateZoneRecordResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8329,6 +11867,13 @@ func (client *Client) UpdateZoneRecordWithOptions(request *UpdateZoneRecordReque
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies a Domain Name System (DNS) record of a zone.
+//
+// @param request - UpdateZoneRecordRequest
+//
+// @return UpdateZoneRecordResponse
 func (client *Client) UpdateZoneRecord(request *UpdateZoneRecordRequest) (_result *UpdateZoneRecordResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateZoneRecordResponse{}
@@ -8340,6 +11885,15 @@ func (client *Client) UpdateZoneRecord(request *UpdateZoneRecordRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the description of a zone.
+//
+// @param request - UpdateZoneRemarkRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateZoneRemarkResponse
 func (client *Client) UpdateZoneRemarkWithOptions(request *UpdateZoneRemarkRequest, runtime *util.RuntimeOptions) (_result *UpdateZoneRemarkResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8389,6 +11943,13 @@ func (client *Client) UpdateZoneRemarkWithOptions(request *UpdateZoneRemarkReque
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the description of a zone.
+//
+// @param request - UpdateZoneRemarkRequest
+//
+// @return UpdateZoneRemarkResponse
 func (client *Client) UpdateZoneRemark(request *UpdateZoneRemarkRequest) (_result *UpdateZoneRemarkResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateZoneRemarkResponse{}
