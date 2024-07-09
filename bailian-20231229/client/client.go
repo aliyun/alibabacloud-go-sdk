@@ -1604,6 +1604,209 @@ func (s *RetrieveResponse) SetBody(v *RetrieveResponseBody) *RetrieveResponse {
 	return s
 }
 
+type SubmitIndexAddDocumentsJobRequest struct {
+	CategoryIds []*string `json:"CategoryIds,omitempty" xml:"CategoryIds,omitempty" type:"Repeated"`
+	DocumentIds []*string `json:"DocumentIds,omitempty" xml:"DocumentIds,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 79c0aly8zw
+	IndexId *string `json:"IndexId,omitempty" xml:"IndexId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// DATA_CENTER_FILE
+	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+}
+
+func (s SubmitIndexAddDocumentsJobRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitIndexAddDocumentsJobRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitIndexAddDocumentsJobRequest) SetCategoryIds(v []*string) *SubmitIndexAddDocumentsJobRequest {
+	s.CategoryIds = v
+	return s
+}
+
+func (s *SubmitIndexAddDocumentsJobRequest) SetDocumentIds(v []*string) *SubmitIndexAddDocumentsJobRequest {
+	s.DocumentIds = v
+	return s
+}
+
+func (s *SubmitIndexAddDocumentsJobRequest) SetIndexId(v string) *SubmitIndexAddDocumentsJobRequest {
+	s.IndexId = &v
+	return s
+}
+
+func (s *SubmitIndexAddDocumentsJobRequest) SetSourceType(v string) *SubmitIndexAddDocumentsJobRequest {
+	s.SourceType = &v
+	return s
+}
+
+type SubmitIndexAddDocumentsJobShrinkRequest struct {
+	CategoryIdsShrink *string `json:"CategoryIds,omitempty" xml:"CategoryIds,omitempty"`
+	DocumentIdsShrink *string `json:"DocumentIds,omitempty" xml:"DocumentIds,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 79c0aly8zw
+	IndexId *string `json:"IndexId,omitempty" xml:"IndexId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// DATA_CENTER_FILE
+	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+}
+
+func (s SubmitIndexAddDocumentsJobShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitIndexAddDocumentsJobShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitIndexAddDocumentsJobShrinkRequest) SetCategoryIdsShrink(v string) *SubmitIndexAddDocumentsJobShrinkRequest {
+	s.CategoryIdsShrink = &v
+	return s
+}
+
+func (s *SubmitIndexAddDocumentsJobShrinkRequest) SetDocumentIdsShrink(v string) *SubmitIndexAddDocumentsJobShrinkRequest {
+	s.DocumentIdsShrink = &v
+	return s
+}
+
+func (s *SubmitIndexAddDocumentsJobShrinkRequest) SetIndexId(v string) *SubmitIndexAddDocumentsJobShrinkRequest {
+	s.IndexId = &v
+	return s
+}
+
+func (s *SubmitIndexAddDocumentsJobShrinkRequest) SetSourceType(v string) *SubmitIndexAddDocumentsJobShrinkRequest {
+	s.SourceType = &v
+	return s
+}
+
+type SubmitIndexAddDocumentsJobResponseBody struct {
+	// example:
+	//
+	// Index.InvalidParameter
+	Code *string                                     `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *SubmitIndexAddDocumentsJobResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// Required parameter(%s) missing or invalid, please check the request parameters.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 778C0B3B-03C1-5FC1-A947-36EDD13606AB
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 200
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s SubmitIndexAddDocumentsJobResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitIndexAddDocumentsJobResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitIndexAddDocumentsJobResponseBody) SetCode(v string) *SubmitIndexAddDocumentsJobResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *SubmitIndexAddDocumentsJobResponseBody) SetData(v *SubmitIndexAddDocumentsJobResponseBodyData) *SubmitIndexAddDocumentsJobResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *SubmitIndexAddDocumentsJobResponseBody) SetMessage(v string) *SubmitIndexAddDocumentsJobResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *SubmitIndexAddDocumentsJobResponseBody) SetRequestId(v string) *SubmitIndexAddDocumentsJobResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *SubmitIndexAddDocumentsJobResponseBody) SetStatus(v string) *SubmitIndexAddDocumentsJobResponseBody {
+	s.Status = &v
+	return s
+}
+
+func (s *SubmitIndexAddDocumentsJobResponseBody) SetSuccess(v bool) *SubmitIndexAddDocumentsJobResponseBody {
+	s.Success = &v
+	return s
+}
+
+type SubmitIndexAddDocumentsJobResponseBodyData struct {
+	// example:
+	//
+	// 42687eb254a34802bed398357f5498ae
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+}
+
+func (s SubmitIndexAddDocumentsJobResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitIndexAddDocumentsJobResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitIndexAddDocumentsJobResponseBodyData) SetId(v string) *SubmitIndexAddDocumentsJobResponseBodyData {
+	s.Id = &v
+	return s
+}
+
+type SubmitIndexAddDocumentsJobResponse struct {
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SubmitIndexAddDocumentsJobResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s SubmitIndexAddDocumentsJobResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitIndexAddDocumentsJobResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitIndexAddDocumentsJobResponse) SetHeaders(v map[string]*string) *SubmitIndexAddDocumentsJobResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SubmitIndexAddDocumentsJobResponse) SetStatusCode(v int32) *SubmitIndexAddDocumentsJobResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SubmitIndexAddDocumentsJobResponse) SetBody(v *SubmitIndexAddDocumentsJobResponseBody) *SubmitIndexAddDocumentsJobResponse {
+	s.Body = v
+	return s
+}
+
 type SubmitIndexJobRequest struct {
 	// This parameter is required.
 	//
@@ -2302,6 +2505,92 @@ func (client *Client) Retrieve(WorkspaceId *string, request *RetrieveRequest) (_
 	headers := make(map[string]*string)
 	_result = &RetrieveResponse{}
 	_body, _err := client.RetrieveWithOptions(WorkspaceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 知识索引
+//
+// @param tmpReq - SubmitIndexAddDocumentsJobRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SubmitIndexAddDocumentsJobResponse
+func (client *Client) SubmitIndexAddDocumentsJobWithOptions(WorkspaceId *string, tmpReq *SubmitIndexAddDocumentsJobRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *SubmitIndexAddDocumentsJobResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &SubmitIndexAddDocumentsJobShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.CategoryIds)) {
+		request.CategoryIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CategoryIds, tea.String("CategoryIds"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.DocumentIds)) {
+		request.DocumentIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DocumentIds, tea.String("DocumentIds"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CategoryIdsShrink)) {
+		query["CategoryIds"] = request.CategoryIdsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DocumentIdsShrink)) {
+		query["DocumentIds"] = request.DocumentIdsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IndexId)) {
+		query["IndexId"] = request.IndexId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceType)) {
+		query["SourceType"] = request.SourceType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SubmitIndexAddDocumentsJob"),
+		Version:     tea.String("2023-12-29"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/" + tea.StringValue(openapiutil.GetEncodeParam(WorkspaceId)) + "/index/add_documents_to_index"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SubmitIndexAddDocumentsJobResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 知识索引
+//
+// @param request - SubmitIndexAddDocumentsJobRequest
+//
+// @return SubmitIndexAddDocumentsJobResponse
+func (client *Client) SubmitIndexAddDocumentsJob(WorkspaceId *string, request *SubmitIndexAddDocumentsJobRequest) (_result *SubmitIndexAddDocumentsJobResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &SubmitIndexAddDocumentsJobResponse{}
+	_body, _err := client.SubmitIndexAddDocumentsJobWithOptions(WorkspaceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
