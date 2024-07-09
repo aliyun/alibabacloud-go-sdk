@@ -1061,12 +1061,16 @@ func (s *TimeRange) SetStartTime(v int64) *TimeRange {
 type AddMembersRequest struct {
 	// This parameter is required.
 	MemberArns []*string `json:"memberArns,omitempty" xml:"memberArns,omitempty" type:"Repeated"`
+	// The workspace ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// w-975bcfda9625****
 	WorkspaceId *string `json:"workspaceId,omitempty" xml:"workspaceId,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou
@@ -1097,6 +1101,8 @@ func (s *AddMembersRequest) SetRegionId(v string) *AddMembersRequest {
 }
 
 type AddMembersResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// DD6B1B2A-5837-5237-ABE4-FF0C8944****
@@ -1146,6 +1152,8 @@ func (s *AddMembersResponse) SetBody(v *AddMembersResponseBody) *AddMembersRespo
 }
 
 type CancelJobRunRequest struct {
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou
@@ -1166,11 +1174,13 @@ func (s *CancelJobRunRequest) SetRegionId(v string) *CancelJobRunRequest {
 }
 
 type CancelJobRunResponseBody struct {
+	// The job ID.
+	//
 	// example:
 	//
 	// jr-1a2bc3
 	JobRunId *string `json:"jobRunId,omitempty" xml:"jobRunId,omitempty"`
-	// 请求ID。
+	// The request ID.
 	//
 	// example:
 	//
@@ -1226,26 +1236,38 @@ func (s *CancelJobRunResponse) SetBody(v *CancelJobRunResponseBody) *CancelJobRu
 }
 
 type CreateSqlStatementRequest struct {
+	// The SQL code. You can specify one or more SQL statements.
+	//
 	// example:
 	//
 	// SHOW TABLES
 	CodeContent *string `json:"codeContent,omitempty" xml:"codeContent,omitempty"`
+	// The default Data Lake Formation (DLF) catalog ID.
+	//
 	// example:
 	//
 	// default_catalog
 	DefaultCatalog *string `json:"defaultCatalog,omitempty" xml:"defaultCatalog,omitempty"`
+	// The name of the default database.
+	//
 	// example:
 	//
 	// default
 	DefaultDatabase *string `json:"defaultDatabase,omitempty" xml:"defaultDatabase,omitempty"`
+	// The maximum number of entries to return. Valid values: 1 to 10000.
+	//
 	// example:
 	//
 	// 1000
 	Limit *int32 `json:"limit,omitempty" xml:"limit,omitempty"`
+	// The SQL Compute ID. You can create an SQL Compute in the workspace created in EMR Serverless Spark.
+	//
 	// example:
 	//
 	// sc-dfahdfjafhajd****
 	SqlComputeId *string `json:"sqlComputeId,omitempty" xml:"sqlComputeId,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou
@@ -1291,7 +1313,10 @@ func (s *CreateSqlStatementRequest) SetRegionId(v string) *CreateSqlStatementReq
 }
 
 type CreateSqlStatementResponseBody struct {
+	// The data returned.
 	Data *CreateSqlStatementResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// DD6B1B2A-5837-5237-ABE4-FF0C8944****
@@ -1317,6 +1342,8 @@ func (s *CreateSqlStatementResponseBody) SetRequestId(v string) *CreateSqlStatem
 }
 
 type CreateSqlStatementResponseBodyData struct {
+	// The ID of the SQL query.
+	//
 	// example:
 	//
 	// st-1231dfafadfa***
@@ -1366,6 +1393,8 @@ func (s *CreateSqlStatementResponse) SetBody(v *CreateSqlStatementResponseBody) 
 }
 
 type GetJobRunRequest struct {
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou
@@ -1386,8 +1415,9 @@ func (s *GetJobRunRequest) SetRegionId(v string) *GetJobRunRequest {
 }
 
 type GetJobRunResponseBody struct {
+	// The details of the job.
 	JobRun *GetJobRunResponseBodyJobRun `json:"jobRun,omitempty" xml:"jobRun,omitempty" type:"Struct"`
-	// 请求ID。
+	// The request ID.
 	//
 	// example:
 	//
@@ -1414,75 +1444,89 @@ func (s *GetJobRunResponseBody) SetRequestId(v string) *GetJobRunResponseBody {
 }
 
 type GetJobRunResponseBodyJobRun struct {
-	// 作业代码类型。
+	// The code type of the job. Valid values:
+	//
+	// 	- SQL
+	//
+	// 	- JAR
+	//
+	// 	- PYTHON
 	//
 	// example:
 	//
 	// SQL
-	CodeType               *string                                            `json:"codeType,omitempty" xml:"codeType,omitempty"`
+	CodeType *string `json:"codeType,omitempty" xml:"codeType,omitempty"`
+	// The task configurations of Spark.
 	ConfigurationOverrides *GetJobRunResponseBodyJobRunConfigurationOverrides `json:"configurationOverrides,omitempty" xml:"configurationOverrides,omitempty" type:"Struct"`
-	// 作业结束时间。
+	// The end time of the job.
 	//
 	// example:
 	//
 	// 1684119314000
 	EndTime *int64 `json:"endTime,omitempty" xml:"endTime,omitempty"`
-	// 运行超时时间。
+	// The timeout period of the job.
 	//
 	// example:
 	//
 	// 3600
-	ExecutionTimeoutSeconds *int32     `json:"executionTimeoutSeconds,omitempty" xml:"executionTimeoutSeconds,omitempty"`
-	JobDriver               *JobDriver `json:"jobDriver,omitempty" xml:"jobDriver,omitempty"`
-	// 任务实例ID。
+	ExecutionTimeoutSeconds *int32 `json:"executionTimeoutSeconds,omitempty" xml:"executionTimeoutSeconds,omitempty"`
+	// The information about Spark Driver.
+	JobDriver *JobDriver `json:"jobDriver,omitempty" xml:"jobDriver,omitempty"`
+	// The job ID.
 	//
 	// example:
 	//
 	// jr-231231
 	JobRunId *string `json:"jobRunId,omitempty" xml:"jobRunId,omitempty"`
-	Log      *RunLog `json:"log,omitempty" xml:"log,omitempty"`
-	// 作业实例名称。
+	// The path where the operational logs are stored.
+	Log *RunLog `json:"log,omitempty" xml:"log,omitempty"`
+	// The job name.
 	//
 	// example:
 	//
 	// jobName
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The version of the Spark engine on which the job runs.
+	//
 	// example:
 	//
 	// esr-3.3.1
 	ReleaseVersion *string `json:"releaseVersion,omitempty" xml:"releaseVersion,omitempty"`
-	// 创建用户Uid。
+	// The ID of the user who created the job.
 	//
 	// example:
 	//
 	// 1509789347011222
 	ResourceOwnerId *string `json:"resourceOwnerId,omitempty" xml:"resourceOwnerId,omitempty"`
+	// The name of the queue on which the job runs.
+	//
 	// example:
 	//
 	// root_queue
 	ResourceQueueId *string `json:"resourceQueueId,omitempty" xml:"resourceQueueId,omitempty"`
-	// 作业状态。
+	// The job state.
 	//
 	// example:
 	//
 	// Running
-	State             *string                                       `json:"state,omitempty" xml:"state,omitempty"`
+	State *string `json:"state,omitempty" xml:"state,omitempty"`
+	// The reason of the job status change.
 	StateChangeReason *GetJobRunResponseBodyJobRunStateChangeReason `json:"stateChangeReason,omitempty" xml:"stateChangeReason,omitempty" type:"Struct"`
-	// 作业提交时间。
+	// The time when the job was submitted.
 	//
 	// example:
 	//
 	// 1684119314000
 	SubmitTime *int64 `json:"submitTime,omitempty" xml:"submitTime,omitempty"`
-	// 标签。
+	// The tags of the job.
 	Tags []*Tag `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
-	// 作业web ui。
+	// The web UI of the job.
 	//
 	// example:
 	//
 	// http://spark-ui
 	WebUI *string `json:"webUI,omitempty" xml:"webUI,omitempty"`
-	// 工作空间id。
+	// The workspace ID.
 	//
 	// example:
 	//
@@ -1584,6 +1628,7 @@ func (s *GetJobRunResponseBodyJobRun) SetWorkspaceId(v string) *GetJobRunRespons
 }
 
 type GetJobRunResponseBodyJobRunConfigurationOverrides struct {
+	// The configurations.
 	Configurations []*Configuration `json:"configurations,omitempty" xml:"configurations,omitempty" type:"Repeated"`
 }
 
@@ -1601,10 +1646,14 @@ func (s *GetJobRunResponseBodyJobRunConfigurationOverrides) SetConfigurations(v 
 }
 
 type GetJobRunResponseBodyJobRunStateChangeReason struct {
+	// The error code.
+	//
 	// example:
 	//
 	// ERR-100000
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// connection refused
@@ -1659,6 +1708,8 @@ func (s *GetJobRunResponse) SetBody(v *GetJobRunResponseBody) *GetJobRunResponse
 }
 
 type GetSqlStatementRequest struct {
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou
@@ -1679,7 +1730,10 @@ func (s *GetSqlStatementRequest) SetRegionId(v string) *GetSqlStatementRequest {
 }
 
 type GetSqlStatementResponseBody struct {
+	// The data returned.
 	Data *GetSqlStatementResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// DD6B1B2A-5837-5237-ABE4-FF0C8944****
@@ -1705,20 +1759,42 @@ func (s *GetSqlStatementResponseBody) SetRequestId(v string) *GetSqlStatementRes
 }
 
 type GetSqlStatementResponseBodyData struct {
+	// The list of time that is consumed by SQL queries.
 	ExecutionTime []*int64 `json:"executionTime,omitempty" xml:"executionTime,omitempty" type:"Repeated"`
+	// The error code.
+	//
 	// example:
 	//
 	// ERROR-102
 	SqlErrorCode *string `json:"sqlErrorCode,omitempty" xml:"sqlErrorCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// error message
-	SqlErrorMessage *string                                      `json:"sqlErrorMessage,omitempty" xml:"sqlErrorMessage,omitempty"`
-	SqlOutputs      []*GetSqlStatementResponseBodyDataSqlOutputs `json:"sqlOutputs,omitempty" xml:"sqlOutputs,omitempty" type:"Repeated"`
+	SqlErrorMessage *string `json:"sqlErrorMessage,omitempty" xml:"sqlErrorMessage,omitempty"`
+	// The query results.
+	SqlOutputs []*GetSqlStatementResponseBodyDataSqlOutputs `json:"sqlOutputs,omitempty" xml:"sqlOutputs,omitempty" type:"Repeated"`
+	// The query status.
+	//
+	// Valid values:
+	//
+	// 	- running
+	//
+	// 	- available
+	//
+	// 	- cancelled
+	//
+	// 	- error
+	//
+	// 	- cancelling
+	//
 	// example:
 	//
 	// running
 	State *string `json:"state,omitempty" xml:"state,omitempty"`
+	// The query ID.
+	//
 	// example:
 	//
 	// st-1231311abadfaa
@@ -1764,10 +1840,14 @@ func (s *GetSqlStatementResponseBodyData) SetStatementId(v string) *GetSqlStatem
 }
 
 type GetSqlStatementResponseBodyDataSqlOutputs struct {
+	// The queried data, which is a string in the JSON format.
+	//
 	// example:
 	//
 	// [{\\"values\\":[\\"test_db\\",\\"test_table\\",false]}
 	Rows *string `json:"rows,omitempty" xml:"rows,omitempty"`
+	// The information about the schema, which is a string in the JSON format.
+	//
 	// example:
 	//
 	// {\\"type\\":\\"struct\\",\\"fields\\":[{\\"name\\":\\"namespace\\",\\"type\\":\\"string\\",\\"nullable\\":false,\\"metadata\\":{}},{\\"name\\":\\"tableName\\",\\"type\\":\\"string\\",\\"nullable\\":false,\\"metadata\\":{}},{\\"name\\":\\"isTemporary\\",\\"type\\":\\"boolean\\",\\"nullable\\":false,\\"metadata\\":{}}]}
@@ -1822,11 +1902,15 @@ func (s *GetSqlStatementResponse) SetBody(v *GetSqlStatementResponseBody) *GetSq
 }
 
 type GrantRoleToUsersRequest struct {
+	// The Alibaba Cloud Resource Name (ARN) of the role.
+	//
 	// example:
 	//
 	// acs:emr::w-975bcfda9625****:role/Owner
 	RoleArn  *string   `json:"roleArn,omitempty" xml:"roleArn,omitempty"`
 	UserArns []*string `json:"userArns,omitempty" xml:"userArns,omitempty" type:"Repeated"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou
@@ -1857,6 +1941,8 @@ func (s *GrantRoleToUsersRequest) SetRegionId(v string) *GrantRoleToUsersRequest
 }
 
 type GrantRoleToUsersResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// DD6B1B2A-5837-5237-ABE4-FF0C8944****
@@ -1906,54 +1992,60 @@ func (s *GrantRoleToUsersResponse) SetBody(v *GrantRoleToUsersResponseBody) *Gra
 }
 
 type ListJobRunsRequest struct {
-	// 创建用户Uid。
+	// The ID of the user who creates a Spark job.
 	//
 	// example:
 	//
 	// 1509789347011222
-	Creator            *string                    `json:"creator,omitempty" xml:"creator,omitempty"`
+	Creator *string `json:"creator,omitempty" xml:"creator,omitempty"`
+	// The range of end time.
 	EndTime            *ListJobRunsRequestEndTime `json:"endTime,omitempty" xml:"endTime,omitempty" type:"Struct"`
 	JobRunDeploymentId *string                    `json:"jobRunDeploymentId,omitempty" xml:"jobRunDeploymentId,omitempty"`
-	// 作业id。
+	// The job ID.
 	//
 	// example:
 	//
 	// j-xxx
 	JobRunId *string `json:"jobRunId,omitempty" xml:"jobRunId,omitempty"`
-	// 一次获取的最大记录数。
+	// The maximum number of entries to return.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// 作业名称。
+	// The job name.
 	//
 	// example:
 	//
 	// emr-spark-demo-job
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// 标记当前开始读取的位置，置空表示从头开始。
+	// The pagination token that is used in the request to retrieve a new page of results.
 	//
 	// example:
 	//
 	// DD6B1B2A-5837-5237-ABE4-FF0C89568980
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	// The name of the resource queue on which the Spark jobs run.
+	//
 	// example:
 	//
 	// dev_queue
-	ResourceQueueId *string                      `json:"resourceQueueId,omitempty" xml:"resourceQueueId,omitempty"`
-	StartTime       *ListJobRunsRequestStartTime `json:"startTime,omitempty" xml:"startTime,omitempty" type:"Struct"`
-	// 作业状态。
+	ResourceQueueId *string `json:"resourceQueueId,omitempty" xml:"resourceQueueId,omitempty"`
+	// The range of start time.
+	StartTime *ListJobRunsRequestStartTime `json:"startTime,omitempty" xml:"startTime,omitempty" type:"Struct"`
+	// The job states.
 	//
 	// example:
 	//
 	// ["Running","Submitted"]
 	States []*string `json:"states,omitempty" xml:"states,omitempty" type:"Repeated"`
-	// 标签。
+	// The tags of the job.
 	Tags []*ListJobRunsRequestTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
 }
 
@@ -2026,10 +2118,14 @@ func (s *ListJobRunsRequest) SetTags(v []*ListJobRunsRequestTags) *ListJobRunsRe
 }
 
 type ListJobRunsRequestEndTime struct {
+	// The end of the end time range.
+	//
 	// example:
 	//
 	// 1710432000000
 	EndTime *int64 `json:"endTime,omitempty" xml:"endTime,omitempty"`
+	// The beginning of the end time range.
+	//
 	// example:
 	//
 	// 1709740800000
@@ -2055,10 +2151,14 @@ func (s *ListJobRunsRequestEndTime) SetStartTime(v int64) *ListJobRunsRequestEnd
 }
 
 type ListJobRunsRequestStartTime struct {
+	// The end of the start time range.
+	//
 	// example:
 	//
 	// 1710432000000
 	EndTime *int64 `json:"endTime,omitempty" xml:"endTime,omitempty"`
+	// The beginning of the start time range.
+	//
 	// example:
 	//
 	// 1709740800000
@@ -2084,10 +2184,14 @@ func (s *ListJobRunsRequestStartTime) SetStartTime(v int64) *ListJobRunsRequestS
 }
 
 type ListJobRunsRequestTags struct {
+	// The key of tag N.
+	//
 	// example:
 	//
 	// tag_key
 	Key *string `json:"key,omitempty" xml:"key,omitempty"`
+	// The value of tag N.
+	//
 	// example:
 	//
 	// value
@@ -2113,54 +2217,60 @@ func (s *ListJobRunsRequestTags) SetValue(v string) *ListJobRunsRequestTags {
 }
 
 type ListJobRunsShrinkRequest struct {
-	// 创建用户Uid。
+	// The ID of the user who creates a Spark job.
 	//
 	// example:
 	//
 	// 1509789347011222
-	Creator            *string `json:"creator,omitempty" xml:"creator,omitempty"`
+	Creator *string `json:"creator,omitempty" xml:"creator,omitempty"`
+	// The range of end time.
 	EndTimeShrink      *string `json:"endTime,omitempty" xml:"endTime,omitempty"`
 	JobRunDeploymentId *string `json:"jobRunDeploymentId,omitempty" xml:"jobRunDeploymentId,omitempty"`
-	// 作业id。
+	// The job ID.
 	//
 	// example:
 	//
 	// j-xxx
 	JobRunId *string `json:"jobRunId,omitempty" xml:"jobRunId,omitempty"`
-	// 一次获取的最大记录数。
+	// The maximum number of entries to return.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// 作业名称。
+	// The job name.
 	//
 	// example:
 	//
 	// emr-spark-demo-job
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// 标记当前开始读取的位置，置空表示从头开始。
+	// The pagination token that is used in the request to retrieve a new page of results.
 	//
 	// example:
 	//
 	// DD6B1B2A-5837-5237-ABE4-FF0C89568980
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	// The name of the resource queue on which the Spark jobs run.
+	//
 	// example:
 	//
 	// dev_queue
 	ResourceQueueId *string `json:"resourceQueueId,omitempty" xml:"resourceQueueId,omitempty"`
+	// The range of start time.
 	StartTimeShrink *string `json:"startTime,omitempty" xml:"startTime,omitempty"`
-	// 作业状态。
+	// The job states.
 	//
 	// example:
 	//
 	// ["Running","Submitted"]
 	StatesShrink *string `json:"states,omitempty" xml:"states,omitempty"`
-	// 标签。
+	// The tags of the job.
 	TagsShrink *string `json:"tags,omitempty" xml:"tags,omitempty"`
 }
 
@@ -2233,26 +2343,27 @@ func (s *ListJobRunsShrinkRequest) SetTagsShrink(v string) *ListJobRunsShrinkReq
 }
 
 type ListJobRunsResponseBody struct {
+	// The list of Spark jobs.
 	JobRuns []*ListJobRunsResponseBodyJobRuns `json:"jobRuns,omitempty" xml:"jobRuns,omitempty" type:"Repeated"`
-	// 本次请求所返回的最大记录条数。
+	// The maximum number of entries returned.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// 返回读取到的数据位置，空代表数据已经读取完毕。
+	// A pagination token. It can be used in the next request to retrieve a new page of results.
 	//
 	// example:
 	//
 	// DD6B1B2A-5837-5237-ABE4-FF0C89568980
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// 请求ID。
+	// The request ID.
 	//
 	// example:
 	//
 	// DD6B1B2A-5837-5237-ABE4-FF0C8944****
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// 本次请求条件下的数据总量。
+	// The total number of entries returned.
 	//
 	// example:
 	//
@@ -2294,71 +2405,83 @@ func (s *ListJobRunsResponseBody) SetTotalCount(v int32) *ListJobRunsResponseBod
 }
 
 type ListJobRunsResponseBodyJobRuns struct {
-	// 作业代码类型。
+	// The code type of the job. Valid values:
+	//
+	// SQL
+	//
+	// JAR
+	//
+	// PYTHON
 	//
 	// example:
 	//
 	// SQL
-	CodeType               *string                                               `json:"codeType,omitempty" xml:"codeType,omitempty"`
+	CodeType *string `json:"codeType,omitempty" xml:"codeType,omitempty"`
+	// The advanced configurations of Spark.
 	ConfigurationOverrides *ListJobRunsResponseBodyJobRunsConfigurationOverrides `json:"configurationOverrides,omitempty" xml:"configurationOverrides,omitempty" type:"Struct"`
-	// 创建用户Uid。
+	// The ID of the user who created the job.
 	//
 	// example:
 	//
 	// 1509789347011222
 	Creator *string `json:"creator,omitempty" xml:"creator,omitempty"`
-	// 作业结束时间。
+	// The end time of the job.
 	//
 	// example:
 	//
 	// 1684119314000
 	EndTime *int64 `json:"endTime,omitempty" xml:"endTime,omitempty"`
-	// 运行超时时间。
+	// The timeout period of the job.
 	//
 	// example:
 	//
 	// 3600
-	ExecutionTimeoutSeconds *int32     `json:"executionTimeoutSeconds,omitempty" xml:"executionTimeoutSeconds,omitempty"`
-	JobDriver               *JobDriver `json:"jobDriver,omitempty" xml:"jobDriver,omitempty"`
-	// 任务实例ID。
+	ExecutionTimeoutSeconds *int32 `json:"executionTimeoutSeconds,omitempty" xml:"executionTimeoutSeconds,omitempty"`
+	// The information about Spark Driver.
+	JobDriver *JobDriver `json:"jobDriver,omitempty" xml:"jobDriver,omitempty"`
+	// The job ID.
 	//
 	// example:
 	//
 	// jr-231231
 	JobRunId *string `json:"jobRunId,omitempty" xml:"jobRunId,omitempty"`
-	Log      *RunLog `json:"log,omitempty" xml:"log,omitempty"`
-	// 作业实例名称。
+	// The path where the operational logs are stored.
+	Log *RunLog `json:"log,omitempty" xml:"log,omitempty"`
+	// The job name.
 	//
 	// example:
 	//
 	// jobName
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The version of Spark on which the jobs run.
+	//
 	// example:
 	//
 	// esr-native-3.4.0
 	ReleaseVersion *string `json:"releaseVersion,omitempty" xml:"releaseVersion,omitempty"`
-	// 作业状态。
+	// The job state.
 	//
 	// example:
 	//
 	// Running
-	State             *string                                          `json:"state,omitempty" xml:"state,omitempty"`
+	State *string `json:"state,omitempty" xml:"state,omitempty"`
+	// The reason of the job status change.
 	StateChangeReason *ListJobRunsResponseBodyJobRunsStateChangeReason `json:"stateChangeReason,omitempty" xml:"stateChangeReason,omitempty" type:"Struct"`
-	// 作业提交时间。
+	// The time when the job was submitted.
 	//
 	// example:
 	//
 	// 1684119314000
 	SubmitTime *int64 `json:"submitTime,omitempty" xml:"submitTime,omitempty"`
-	// 标签。
+	// The tags of the job.
 	Tags []*Tag `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
-	// 作业web ui。
+	// The web UI of the job.
 	//
 	// example:
 	//
 	// http://spark-ui
 	WebUI *string `json:"webUI,omitempty" xml:"webUI,omitempty"`
-	// 工作空间id。
+	// The workspace ID.
 	//
 	// example:
 	//
@@ -2455,6 +2578,7 @@ func (s *ListJobRunsResponseBodyJobRuns) SetWorkspaceId(v string) *ListJobRunsRe
 }
 
 type ListJobRunsResponseBodyJobRunsConfigurationOverrides struct {
+	// The SparkConf objects.
 	Configurations []*Configuration `json:"configurations,omitempty" xml:"configurations,omitempty" type:"Repeated"`
 }
 
@@ -2472,10 +2596,14 @@ func (s *ListJobRunsResponseBodyJobRunsConfigurationOverrides) SetConfigurations
 }
 
 type ListJobRunsResponseBodyJobRunsStateChangeReason struct {
+	// The error code.
+	//
 	// example:
 	//
 	// 0
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// success
@@ -2530,18 +2658,38 @@ func (s *ListJobRunsResponse) SetBody(v *ListJobRunsResponseBody) *ListJobRunsRe
 }
 
 type ListReleaseVersionsRequest struct {
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	// The type of the version.
+	//
+	// Valid values:
+	//
+	// 	- stable
+	//
+	// 	- beta
+	//
 	// example:
 	//
 	// stable
 	ReleaseType *string `json:"releaseType,omitempty" xml:"releaseType,omitempty"`
+	// The version of Serverless Spark.
+	//
 	// example:
 	//
 	// esr-2.1 (Spark 3.3.1, Scala 2.12, Java Runtime)
 	ReleaseVersion *string `json:"releaseVersion,omitempty" xml:"releaseVersion,omitempty"`
+	// The status of the version. Valid values:
+	//
+	// Valid values:
+	//
+	// 	- ONLINE
+	//
+	// 	- OFFLINE
+	//
 	// example:
 	//
 	// ONLINE
@@ -2577,26 +2725,27 @@ func (s *ListReleaseVersionsRequest) SetReleaseVersionStatus(v string) *ListRele
 }
 
 type ListReleaseVersionsResponseBody struct {
-	// 一次获取的最大记录数。
+	// The maximum number of entries returned.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// 下一页TOKEN。
+	// A pagination token. It can be used in the next request to retrieve a new page of results.
 	//
 	// example:
 	//
 	// 1
-	NextToken       *string                                           `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// The versions.
 	ReleaseVersions []*ListReleaseVersionsResponseBodyReleaseVersions `json:"releaseVersions,omitempty" xml:"releaseVersions,omitempty" type:"Repeated"`
-	// 请求ID。
+	// The request ID.
 	//
 	// example:
 	//
 	// DD6B1B2A-5837-5237-ABE4-FF0C8944****
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// 记录总数。
+	// The total number of entries returned.
 	//
 	// example:
 	//
@@ -2638,31 +2787,46 @@ func (s *ListReleaseVersionsResponseBody) SetTotalCount(v int32) *ListReleaseVer
 }
 
 type ListReleaseVersionsResponseBodyReleaseVersions struct {
+	// The version number of open source Spark.
+	//
 	// example:
 	//
 	// Spark 3.3.1
-	CommunityVersion *string   `json:"communityVersion,omitempty" xml:"communityVersion,omitempty"`
+	CommunityVersion *string `json:"communityVersion,omitempty" xml:"communityVersion,omitempty"`
+	// The CPU architectures.
 	CpuArchitectures []*string `json:"cpuArchitectures,omitempty" xml:"cpuArchitectures,omitempty" type:"Repeated"`
+	// The creation time.
+	//
 	// example:
 	//
 	// 1716215854101
 	GmtCreate *int64 `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
+	// The type of the Infrastructure as a Service (IaaS) layer.
+	//
 	// example:
 	//
 	// ASI
 	IaasType *string `json:"iaasType,omitempty" xml:"iaasType,omitempty"`
+	// The version.
+	//
 	// example:
 	//
 	// esr-2.1 (Spark 3.3.1, Scala 2.12, Java Runtime)
 	ReleaseVersion *string `json:"releaseVersion,omitempty" xml:"releaseVersion,omitempty"`
+	// The version of Scala.
+	//
 	// example:
 	//
 	// 2.12
 	ScalaVersion *string `json:"scalaVersion,omitempty" xml:"scalaVersion,omitempty"`
+	// The status of the version.
+	//
 	// example:
 	//
 	// ONLINE
 	State *string `json:"state,omitempty" xml:"state,omitempty"`
+	// The type of the version.
+	//
 	// example:
 	//
 	// stable
@@ -2747,27 +2911,32 @@ func (s *ListReleaseVersionsResponse) SetBody(v *ListReleaseVersionsResponseBody
 }
 
 type ListSessionClustersRequest struct {
-	// 一次获取的最大记录数。
+	Kind *string `json:"kind,omitempty" xml:"kind,omitempty"`
+	// The maximum number of entries to return.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// 标记当前开始读取的位置，置空表示从头开始。
+	// The pagination token that is used in the request to retrieve a new page of results.
 	//
 	// example:
 	//
 	// DD6B1B2A-5837-5237-ABE4-FF0C89568980
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// The name of the queue.
+	//
 	// example:
 	//
 	// root
 	QueueName *string `json:"queueName,omitempty" xml:"queueName,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
-	// 作业名称。
+	// The name of the job.
 	//
 	// example:
 	//
@@ -2781,6 +2950,11 @@ func (s ListSessionClustersRequest) String() string {
 
 func (s ListSessionClustersRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ListSessionClustersRequest) SetKind(v string) *ListSessionClustersRequest {
+	s.Kind = &v
+	return s
 }
 
 func (s *ListSessionClustersRequest) SetMaxResults(v int32) *ListSessionClustersRequest {
@@ -2809,26 +2983,27 @@ func (s *ListSessionClustersRequest) SetSessionClusterId(v string) *ListSessionC
 }
 
 type ListSessionClustersResponseBody struct {
-	// 本次请求所返回的最大记录条数。
+	// The maximum number of entries returned.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// 返回读取到的数据位置，空代表数据已经读取完毕。
+	// A pagination token. It can be used in the next request to retrieve a new page of results.
 	//
 	// example:
 	//
 	// DD6B1B2A-5837-5237-ABE4-FF0C89568980
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// 请求ID。
+	// The request ID.
 	//
 	// example:
 	//
 	// DD6B1B2A-5837-5237-ABE4-FF0C8944****
-	RequestId       *string                                           `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// The SQL Computes.
 	SessionClusters []*ListSessionClustersResponseBodySessionClusters `json:"sessionClusters,omitempty" xml:"sessionClusters,omitempty" type:"Repeated"`
-	// 本次请求条件下的数据总量。
+	// The total number of entries returned.
 	//
 	// example:
 	//
@@ -2870,43 +3045,56 @@ func (s *ListSessionClustersResponseBody) SetTotalCount(v int32) *ListSessionClu
 }
 
 type ListSessionClustersResponseBodySessionClusters struct {
-	ApplicationConfigs     []*ListSessionClustersResponseBodySessionClustersApplicationConfigs   `json:"applicationConfigs,omitempty" xml:"applicationConfigs,omitempty" type:"Repeated"`
+	// The SQL Compute configurations, which are equivalent to the configurations of the Spark job.
+	ApplicationConfigs []*ListSessionClustersResponseBodySessionClustersApplicationConfigs `json:"applicationConfigs,omitempty" xml:"applicationConfigs,omitempty" type:"Repeated"`
+	// The automatic startup configurations.
 	AutoStartConfiguration *ListSessionClustersResponseBodySessionClustersAutoStartConfiguration `json:"autoStartConfiguration,omitempty" xml:"autoStartConfiguration,omitempty" type:"Struct"`
-	AutoStopConfiguration  *ListSessionClustersResponseBodySessionClustersAutoStopConfiguration  `json:"autoStopConfiguration,omitempty" xml:"autoStopConfiguration,omitempty" type:"Struct"`
+	// The automatic termination configurations.
+	AutoStopConfiguration *ListSessionClustersResponseBodySessionClustersAutoStopConfiguration `json:"autoStopConfiguration,omitempty" xml:"autoStopConfiguration,omitempty" type:"Struct"`
+	Domain                *string                                                              `json:"domain,omitempty" xml:"domain,omitempty"`
+	DraftId               *string                                                              `json:"draftId,omitempty" xml:"draftId,omitempty"`
+	Kind                  *string                                                              `json:"kind,omitempty" xml:"kind,omitempty"`
+	// The name of the SQL Compute.
+	//
 	// example:
 	//
 	// adhoc_query
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// 作业实例名称。
+	// The name of the queue on which the SQL Compute runs.
 	//
 	// example:
 	//
 	// dev_queue
-	QueueName *string `json:"queueName,omitempty" xml:"queueName,omitempty"`
-	// SQL Compute id
+	QueueName      *string `json:"queueName,omitempty" xml:"queueName,omitempty"`
+	ReleaseVersion *string `json:"releaseVersion,omitempty" xml:"releaseVersion,omitempty"`
+	// The SQL Compute ID.
 	//
 	// example:
 	//
 	// sc-123131
 	SessionClusterId *string `json:"sessionClusterId,omitempty" xml:"sessionClusterId,omitempty"`
-	// 作业状态。
+	// The status of the SQL Compute.
 	//
 	// example:
 	//
 	// Running
-	State             *string                                                          `json:"state,omitempty" xml:"state,omitempty"`
+	State *string `json:"state,omitempty" xml:"state,omitempty"`
+	// The details of the last status change of the SQL Compute.
 	StateChangeReason *ListSessionClustersResponseBodySessionClustersStateChangeReason `json:"stateChangeReason,omitempty" xml:"stateChangeReason,omitempty" type:"Struct"`
-	// 任务实例ID。
+	// The user ID.
 	//
 	// example:
 	//
 	// 123131
 	UserId *string `json:"userId,omitempty" xml:"userId,omitempty"`
+	// The name of the user.
+	//
 	// example:
 	//
 	// test_user
 	UserName *string `json:"userName,omitempty" xml:"userName,omitempty"`
-	// 工作空间id。
+	WebUI    *string `json:"webUI,omitempty" xml:"webUI,omitempty"`
+	// The workspace ID.
 	//
 	// example:
 	//
@@ -2937,6 +3125,21 @@ func (s *ListSessionClustersResponseBodySessionClusters) SetAutoStopConfiguratio
 	return s
 }
 
+func (s *ListSessionClustersResponseBodySessionClusters) SetDomain(v string) *ListSessionClustersResponseBodySessionClusters {
+	s.Domain = &v
+	return s
+}
+
+func (s *ListSessionClustersResponseBodySessionClusters) SetDraftId(v string) *ListSessionClustersResponseBodySessionClusters {
+	s.DraftId = &v
+	return s
+}
+
+func (s *ListSessionClustersResponseBodySessionClusters) SetKind(v string) *ListSessionClustersResponseBodySessionClusters {
+	s.Kind = &v
+	return s
+}
+
 func (s *ListSessionClustersResponseBodySessionClusters) SetName(v string) *ListSessionClustersResponseBodySessionClusters {
 	s.Name = &v
 	return s
@@ -2944,6 +3147,11 @@ func (s *ListSessionClustersResponseBodySessionClusters) SetName(v string) *List
 
 func (s *ListSessionClustersResponseBodySessionClusters) SetQueueName(v string) *ListSessionClustersResponseBodySessionClusters {
 	s.QueueName = &v
+	return s
+}
+
+func (s *ListSessionClustersResponseBodySessionClusters) SetReleaseVersion(v string) *ListSessionClustersResponseBodySessionClusters {
+	s.ReleaseVersion = &v
 	return s
 }
 
@@ -2972,20 +3180,31 @@ func (s *ListSessionClustersResponseBodySessionClusters) SetUserName(v string) *
 	return s
 }
 
+func (s *ListSessionClustersResponseBodySessionClusters) SetWebUI(v string) *ListSessionClustersResponseBodySessionClusters {
+	s.WebUI = &v
+	return s
+}
+
 func (s *ListSessionClustersResponseBodySessionClusters) SetWorkspaceId(v string) *ListSessionClustersResponseBodySessionClusters {
 	s.WorkspaceId = &v
 	return s
 }
 
 type ListSessionClustersResponseBodySessionClustersApplicationConfigs struct {
+	// The name of the configuration file.
+	//
 	// example:
 	//
 	// spark-default.conf
 	ConfigFileName *string `json:"configFileName,omitempty" xml:"configFileName,omitempty"`
+	// The key of the configuration item.
+	//
 	// example:
 	//
 	// spark.app.name
 	ConfigItemKey *string `json:"configItemKey,omitempty" xml:"configItemKey,omitempty"`
+	// The value of the configuration item.
+	//
 	// example:
 	//
 	// test_application
@@ -3016,6 +3235,8 @@ func (s *ListSessionClustersResponseBodySessionClustersApplicationConfigs) SetCo
 }
 
 type ListSessionClustersResponseBodySessionClustersAutoStartConfiguration struct {
+	// Indicates whether automatic startup is enabled.
+	//
 	// example:
 	//
 	// true
@@ -3036,10 +3257,14 @@ func (s *ListSessionClustersResponseBodySessionClustersAutoStartConfiguration) S
 }
 
 type ListSessionClustersResponseBodySessionClustersAutoStopConfiguration struct {
+	// Indicates whether automatic termination is enabled.
+	//
 	// example:
 	//
 	// false
 	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
+	// The idle timeout period. The SQL Compute is automatically terminated if the idle timeout period is exceeded.
+	//
 	// example:
 	//
 	// 45
@@ -3065,10 +3290,14 @@ func (s *ListSessionClustersResponseBodySessionClustersAutoStopConfiguration) Se
 }
 
 type ListSessionClustersResponseBodySessionClustersStateChangeReason struct {
+	// The status change code.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The status change message.
+	//
 	// example:
 	//
 	// ok
@@ -3123,10 +3352,20 @@ func (s *ListSessionClustersResponse) SetBody(v *ListSessionClustersResponseBody
 }
 
 type ListWorkspaceQueuesRequest struct {
+	// The environment type.
+	//
+	// Valid values:
+	//
+	// 	- dev
+	//
+	// 	- production
+	//
 	// example:
 	//
 	// production
 	Environment *string `json:"environment,omitempty" xml:"environment,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou
@@ -3152,26 +3391,27 @@ func (s *ListWorkspaceQueuesRequest) SetRegionId(v string) *ListWorkspaceQueuesR
 }
 
 type ListWorkspaceQueuesResponseBody struct {
-	// 一次获取的最大记录数。
+	// The maximum number of entries returned.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// 下一页TOKEN。
+	// A pagination token. It can be used in the next request to retrieve a new page of results.
 	//
 	// example:
 	//
 	// 1
-	NextToken *string                                  `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	Queues    []*ListWorkspaceQueuesResponseBodyQueues `json:"queues,omitempty" xml:"queues,omitempty" type:"Repeated"`
-	// 请求ID。
+	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// The list of queues.
+	Queues []*ListWorkspaceQueuesResponseBodyQueues `json:"queues,omitempty" xml:"queues,omitempty" type:"Repeated"`
+	// The request ID.
 	//
 	// example:
 	//
 	// DD6B1B2A-5837-5237-ABE4-FF0C8944****
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// 记录总数。
+	// The total number of entries returned.
 	//
 	// example:
 	//
@@ -3213,66 +3453,71 @@ func (s *ListWorkspaceQueuesResponseBody) SetTotalCount(v int32) *ListWorkspaceQ
 }
 
 type ListWorkspaceQueuesResponseBodyQueues struct {
-	// 队列允许的操作
+	// The operations allowed for the queue.
 	AllowActions []*ListWorkspaceQueuesResponseBodyQueuesAllowActions `json:"allowActions,omitempty" xml:"allowActions,omitempty" type:"Repeated"`
+	// The ID of the user who created the queue.
+	//
 	// example:
 	//
 	// 237109
-	Creator      *string   `json:"creator,omitempty" xml:"creator,omitempty"`
+	Creator *string `json:"creator,omitempty" xml:"creator,omitempty"`
+	// The environment types of the queue.
 	Environments []*string `json:"environments,omitempty" xml:"environments,omitempty" type:"Repeated"`
-	// 队列资源最大容量
+	// The maximum capacity of resources that can be used in the queue.
 	//
 	// example:
 	//
 	// {"cpu": "2","memory": "2Gi"}
 	MaxResource *string `json:"maxResource,omitempty" xml:"maxResource,omitempty"`
-	// 队列资源最小容量
+	// The minimum capacity of resources that can be used in the queue.
 	//
 	// example:
 	//
 	// {"cpu": "2","memory": "2Gi"}
 	MinResource *string `json:"minResource,omitempty" xml:"minResource,omitempty"`
-	// 队列Label
+	// The queue label.
 	//
 	// example:
 	//
 	// dev_queue
 	Properties *string `json:"properties,omitempty" xml:"properties,omitempty"`
-	// 队列名称。
+	// The name of the queue.
 	//
 	// example:
 	//
 	// dev_queue
 	QueueName *string `json:"queueName,omitempty" xml:"queueName,omitempty"`
-	// 队列架构
+	// The queue architecture.
 	//
 	// example:
 	//
 	// {"arch": "x86"}
 	QueueScope *string `json:"queueScope,omitempty" xml:"queueScope,omitempty"`
+	// The status of the queue.
+	//
 	// example:
 	//
 	// RUNNING
 	QueueStatus *string `json:"queueStatus,omitempty" xml:"queueStatus,omitempty"`
-	// 队列类型
+	// The queue type.
 	//
 	// example:
 	//
 	// instance, instanceChildren
 	QueueType *string `json:"queueType,omitempty" xml:"queueType,omitempty"`
-	// regionId。
+	// The region ID.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
-	// 队列资源使用容量
+	// The capacity of resources that are used in the queue.
 	//
 	// example:
 	//
 	// {"cpu": "2","memory": "2Gi"}
 	UsedResource *string `json:"usedResource,omitempty" xml:"usedResource,omitempty"`
-	// 工作空间id。
+	// The workspace ID.
 	//
 	// example:
 	//
@@ -3354,31 +3599,31 @@ func (s *ListWorkspaceQueuesResponseBodyQueues) SetWorkspaceId(v string) *ListWo
 }
 
 type ListWorkspaceQueuesResponseBodyQueuesAllowActions struct {
-	// 行为 arn。
+	// The Alibaba Cloud Resource Name (ARN) of a behavior.
 	//
 	// example:
 	//
 	// acs:emr::workspaceId:action/create_queue
 	ActionArn *string `json:"actionArn,omitempty" xml:"actionArn,omitempty"`
-	// 权限名称。
+	// The name of the permission.
 	//
 	// example:
 	//
 	// view
 	ActionName *string `json:"actionName,omitempty" xml:"actionName,omitempty"`
-	// action 依赖列表。
+	// The dependencies of the operation.
 	//
 	// example:
 	//
 	// ["view"]
 	Dependencies []*string `json:"dependencies,omitempty" xml:"dependencies,omitempty" type:"Repeated"`
-	// action 描述。
+	// The description of the operation.
 	//
 	// example:
 	//
 	// 文件目录遍历、文件浏览
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// 权限展示名称。
+	// The display name of the permission.
 	//
 	// example:
 	//
@@ -3449,26 +3694,32 @@ func (s *ListWorkspaceQueuesResponse) SetBody(v *ListWorkspaceQueuesResponseBody
 }
 
 type ListWorkspacesRequest struct {
-	// 一次获取的最大记录数。
+	// The maximum number of entries to return.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// Fuzzy match is supported.
+	//
 	// example:
 	//
 	// test_workspace
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// 标记当前开始读取的位置，置空表示从头开始。
+	// The pagination token that is used in the next request to retrieve a new page of results.
 	//
 	// example:
 	//
 	// 1
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	// The workspace status.
+	//
 	// example:
 	//
 	// running
@@ -3509,30 +3760,31 @@ func (s *ListWorkspacesRequest) SetState(v string) *ListWorkspacesRequest {
 }
 
 type ListWorkspacesResponseBody struct {
-	// 一次获取的最大记录数。
+	// The maximum number of entries returned.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// 下一页TOKEN。
+	// A pagination token. It can be used in the next request to retrieve a new page of results.
 	//
 	// example:
 	//
 	// 1
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// 请求ID。
+	// The request ID.
 	//
 	// example:
 	//
 	// DD6B1B2A-5837-5237-ABE4-FF0C8944****
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// 记录总数。
+	// The total number of entries returned.
 	//
 	// example:
 	//
 	// 200
-	TotalCount *int32                                  `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
+	TotalCount *int32 `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
+	// The workspaces.
 	Workspaces []*ListWorkspacesResponseBodyWorkspaces `json:"workspaces,omitempty" xml:"workspaces,omitempty" type:"Repeated"`
 }
 
@@ -3570,102 +3822,111 @@ func (s *ListWorkspacesResponseBody) SetWorkspaces(v []*ListWorkspacesResponseBo
 }
 
 type ListWorkspacesResponseBodyWorkspaces struct {
-	// 是否自动续费(pre付费类型必须)。
+	// Indicates whether auto-renewal is enabled. This parameter is required only if the paymentType parameter is set to Subscription.
 	//
 	// example:
 	//
 	// true
 	AutoRenew *bool `json:"autoRenew,omitempty" xml:"autoRenew,omitempty"`
-	// 自动续费时长(pre付费类型必须)。
+	// The auto-renewal duration. This parameter is required only if the paymentType parameter is set to Subscription.
 	//
 	// example:
 	//
 	// 1
 	AutoRenewPeriod *int32 `json:"autoRenewPeriod,omitempty" xml:"autoRenewPeriod,omitempty"`
-	// 自动续费周期(pre付费类型必须)。
+	// The unit of the auto-renewal duration. This parameter is required only if the paymentType parameter is set to Subscription.
 	//
 	// example:
 	//
 	// YEAR, MONTH, WEEK, DAY, HOUR, MINUTE
 	AutoRenewPeriodUnit *string `json:"autoRenewPeriodUnit,omitempty" xml:"autoRenewPeriodUnit,omitempty"`
+	// The time when the workspace was created.
+	//
 	// example:
 	//
 	// 1684115879955
 	CreateTime *int64 `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	// dlf catalog 信息。
+	// The information of the Data Lake Formation (DLF) catalog.
 	//
 	// example:
 	//
 	// default
 	DlfCatalogId *string `json:"dlfCatalogId,omitempty" xml:"dlfCatalogId,omitempty"`
-	// 订购周期数量(pre付费类型必须)。
+	// The subscription period. This parameter is required only if the paymentType parameter is set to Subscription.
 	//
 	// example:
 	//
 	// 1
 	Duration *int32 `json:"duration,omitempty" xml:"duration,omitempty"`
+	// The time when the workspace was released.
+	//
 	// example:
 	//
 	// 1687103999999
 	EndTime *int64 `json:"endTime,omitempty" xml:"endTime,omitempty"`
-	// 失败原因。
+	// The reason for the failure.
 	//
 	// example:
 	//
 	// out of stock
 	FailReason *string `json:"failReason,omitempty" xml:"failReason,omitempty"`
-	// 订购周期(pre付费类型必须)。
+	// The unit of the subscription duration. This parameter is required only if the paymentType parameter is set to Subscription.
 	//
 	// example:
 	//
 	// YEAR, MONTH, WEEK, DAY, HOUR, MINUTE
 	PaymentDurationUnit *string `json:"paymentDurationUnit,omitempty" xml:"paymentDurationUnit,omitempty"`
-	// 支付状态。
+	// The status of the payment.
 	//
 	// example:
 	//
 	// PAID/UNPAID
 	PaymentStatus *string `json:"paymentStatus,omitempty" xml:"paymentStatus,omitempty"`
-	// 付费类型。
+	// The payment type.
 	//
 	// example:
 	//
 	// PayAsYouGo or Subscription
 	PaymentType *string `json:"paymentType,omitempty" xml:"paymentType,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-shanghai
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	// The reason why the workspace is released.
+	//
 	// example:
 	//
 	// SERVICE_RELEASE
 	ReleaseType *string `json:"releaseType,omitempty" xml:"releaseType,omitempty"`
-	// 资源规格。
+	// The resource specifications.
 	//
 	// example:
 	//
 	// 100cu
-	ResourceSpec      *string                                                `json:"resourceSpec,omitempty" xml:"resourceSpec,omitempty"`
+	ResourceSpec *string `json:"resourceSpec,omitempty" xml:"resourceSpec,omitempty"`
+	// The information about the workspace status change.
 	StateChangeReason *ListWorkspacesResponseBodyWorkspacesStateChangeReason `json:"stateChangeReason,omitempty" xml:"stateChangeReason,omitempty" type:"Struct"`
-	// oss 路径。
+	// The Object Storage Service (OSS) path.
 	//
 	// example:
 	//
 	// spark-result
 	Storage *string `json:"storage,omitempty" xml:"storage,omitempty"`
-	// Workspace Id。
+	// The workspace ID.
 	//
 	// example:
 	//
 	// w-******
 	WorkspaceId *string `json:"workspaceId,omitempty" xml:"workspaceId,omitempty"`
-	// 工作空间名称。
+	// The name of the workspace.
 	//
 	// example:
 	//
 	// spark批作业空间-1
 	WorkspaceName *string `json:"workspaceName,omitempty" xml:"workspaceName,omitempty"`
-	// 工作空间状态。
+	// The workspace status.
 	//
 	// example:
 	//
@@ -3777,10 +4038,14 @@ func (s *ListWorkspacesResponseBodyWorkspaces) SetWorkspaceStatus(v string) *Lis
 }
 
 type ListWorkspacesResponseBodyWorkspacesStateChangeReason struct {
+	// The error code.
+	//
 	// example:
 	//
 	// 0
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// Success
@@ -3835,37 +4100,62 @@ func (s *ListWorkspacesResponse) SetBody(v *ListWorkspacesResponseBody) *ListWor
 }
 
 type StartJobRunRequest struct {
+	// The client token that is used to ensure the idempotence of the request.
+	//
 	// example:
 	//
 	// 8e6aae2810c8f67229ca70bb31cd6028
 	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
+	// The code type of the job. Valid values:
+	//
+	// 	- SQL
+	//
+	// 	- JAR
+	//
+	// 	- PYTHON
+	//
 	// example:
 	//
 	// SQL
-	CodeType               *string                                   `json:"codeType,omitempty" xml:"codeType,omitempty"`
+	CodeType *string `json:"codeType,omitempty" xml:"codeType,omitempty"`
+	// The advanced configurations of Spark.
 	ConfigurationOverrides *StartJobRunRequestConfigurationOverrides `json:"configurationOverrides,omitempty" xml:"configurationOverrides,omitempty" type:"Struct"`
+	// The timeout period of the job.
+	//
 	// example:
 	//
 	// 100
-	ExecutionTimeoutSeconds *int32     `json:"executionTimeoutSeconds,omitempty" xml:"executionTimeoutSeconds,omitempty"`
-	JobDriver               *JobDriver `json:"jobDriver,omitempty" xml:"jobDriver,omitempty"`
+	ExecutionTimeoutSeconds *int32 `json:"executionTimeoutSeconds,omitempty" xml:"executionTimeoutSeconds,omitempty"`
+	// The information about Spark Driver.
+	JobDriver *JobDriver `json:"jobDriver,omitempty" xml:"jobDriver,omitempty"`
+	// The job ID.
+	//
 	// example:
 	//
 	// jr-12345
 	JobId *string `json:"jobId,omitempty" xml:"jobId,omitempty"`
+	// The job name.
+	//
 	// example:
 	//
 	// spark_job_name
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The version number of Spark.
+	//
 	// example:
 	//
 	// esr-3.3.1
 	ReleaseVersion *string `json:"releaseVersion,omitempty" xml:"releaseVersion,omitempty"`
+	// The name of the resource queue on which the Spark job runs.
+	//
 	// example:
 	//
 	// dev_queue
 	ResourceQueueId *string `json:"resourceQueueId,omitempty" xml:"resourceQueueId,omitempty"`
-	Tags            []*Tag  `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
+	// The tags of the job.
+	Tags []*Tag `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou
@@ -3936,6 +4226,7 @@ func (s *StartJobRunRequest) SetRegionId(v string) *StartJobRunRequest {
 }
 
 type StartJobRunRequestConfigurationOverrides struct {
+	// The SparkConf objects.
 	Configurations []*StartJobRunRequestConfigurationOverridesConfigurations `json:"configurations,omitempty" xml:"configurations,omitempty" type:"Repeated"`
 }
 
@@ -3953,14 +4244,20 @@ func (s *StartJobRunRequestConfigurationOverrides) SetConfigurations(v []*StartJ
 }
 
 type StartJobRunRequestConfigurationOverridesConfigurations struct {
+	// The configuration file of SparkConf.
+	//
 	// example:
 	//
 	// spark-default.conf
 	ConfigFileName *string `json:"configFileName,omitempty" xml:"configFileName,omitempty"`
+	// The key of SparkConf.
+	//
 	// example:
 	//
 	// spark.app.name
 	ConfigItemKey *string `json:"configItemKey,omitempty" xml:"configItemKey,omitempty"`
+	// The value of SparkConf.
+	//
 	// example:
 	//
 	// test_app
@@ -3991,11 +4288,13 @@ func (s *StartJobRunRequestConfigurationOverridesConfigurations) SetConfigItemVa
 }
 
 type StartJobRunResponseBody struct {
+	// The job ID.
+	//
 	// example:
 	//
 	// jr-54321
 	JobRunId *string `json:"jobRunId,omitempty" xml:"jobRunId,omitempty"`
-	// 请求ID。
+	// The request ID.
 	//
 	// example:
 	//
@@ -4051,6 +4350,8 @@ func (s *StartJobRunResponse) SetBody(v *StartJobRunResponseBody) *StartJobRunRe
 }
 
 type TerminateSqlStatementRequest struct {
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou
@@ -4071,6 +4372,8 @@ func (s *TerminateSqlStatementRequest) SetRegionId(v string) *TerminateSqlStatem
 }
 
 type TerminateSqlStatementResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// DD6B1B2A-5837-5237-ABE4-FF0C8944****
@@ -4168,7 +4471,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
-// 添加用户
+// Adds a RAM user or RAM role to a workspace as a member.
 //
 // @param request - AddMembersRequest
 //
@@ -4223,7 +4526,7 @@ func (client *Client) AddMembersWithOptions(request *AddMembersRequest, headers 
 
 // Summary:
 //
-// 添加用户
+// Adds a RAM user or RAM role to a workspace as a member.
 //
 // @param request - AddMembersRequest
 //
@@ -4242,7 +4545,7 @@ func (client *Client) AddMembers(request *AddMembersRequest) (_result *AddMember
 
 // Summary:
 //
-// 取消jobRun作业
+// Terminates a Spark job.
 //
 // @param request - CancelJobRunRequest
 //
@@ -4287,7 +4590,7 @@ func (client *Client) CancelJobRunWithOptions(workspaceId *string, jobRunId *str
 
 // Summary:
 //
-// 取消jobRun作业
+// Terminates a Spark job.
 //
 // @param request - CancelJobRunRequest
 //
@@ -4392,7 +4695,7 @@ func (client *Client) CreateSqlStatement(workspaceId *string, request *CreateSql
 
 // Summary:
 //
-// 获取任务
+// Obtain the job details.
 //
 // @param request - GetJobRunRequest
 //
@@ -4437,7 +4740,7 @@ func (client *Client) GetJobRunWithOptions(workspaceId *string, jobRunId *string
 
 // Summary:
 //
-// 获取任务
+// Obtain the job details.
 //
 // @param request - GetJobRunRequest
 //
@@ -4520,7 +4823,7 @@ func (client *Client) GetSqlStatement(workspaceId *string, statementId *string, 
 
 // Summary:
 //
-// 给用户授权Role列表
+// Assigns a specified role to users.
 //
 // @param request - GrantRoleToUsersRequest
 //
@@ -4575,7 +4878,7 @@ func (client *Client) GrantRoleToUsersWithOptions(request *GrantRoleToUsersReque
 
 // Summary:
 //
-// 给用户授权Role列表
+// Assigns a specified role to users.
 //
 // @param request - GrantRoleToUsersRequest
 //
@@ -4594,7 +4897,7 @@ func (client *Client) GrantRoleToUsers(request *GrantRoleToUsersRequest) (_resul
 
 // Summary:
 //
-// 查询run列表
+// Queries a list of Spark jobs.
 //
 // @param tmpReq - ListJobRunsRequest
 //
@@ -4701,7 +5004,7 @@ func (client *Client) ListJobRunsWithOptions(workspaceId *string, tmpReq *ListJo
 
 // Summary:
 //
-// 查询run列表
+// Queries a list of Spark jobs.
 //
 // @param request - ListJobRunsRequest
 //
@@ -4811,6 +5114,10 @@ func (client *Client) ListSessionClustersWithOptions(workspaceId *string, reques
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Kind)) {
+		query["kind"] = request.Kind
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
 		query["maxResults"] = request.MaxResults
 	}
@@ -4944,7 +5251,7 @@ func (client *Client) ListWorkspaceQueues(workspaceId *string, request *ListWork
 
 // Summary:
 //
-// 查看工作空间列表
+// Queries a list of workspaces.
 //
 // @param request - ListWorkspacesRequest
 //
@@ -5005,7 +5312,7 @@ func (client *Client) ListWorkspacesWithOptions(request *ListWorkspacesRequest, 
 
 // Summary:
 //
-// 查看工作空间列表
+// Queries a list of workspaces.
 //
 // @param request - ListWorkspacesRequest
 //
@@ -5024,7 +5331,7 @@ func (client *Client) ListWorkspaces(request *ListWorkspacesRequest) (_result *L
 
 // Summary:
 //
-// 启动作业
+// Starts a Spark job.
 //
 // @param request - StartJobRunRequest
 //
@@ -5111,7 +5418,7 @@ func (client *Client) StartJobRunWithOptions(workspaceId *string, request *Start
 
 // Summary:
 //
-// 启动作业
+// Starts a Spark job.
 //
 // @param request - StartJobRunRequest
 //
