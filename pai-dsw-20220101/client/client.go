@@ -428,6 +428,7 @@ type CreateInstanceRequest struct {
 	//
 	// {userName: "Chris"}
 	EnvironmentVariables map[string]*string `json:"EnvironmentVariables,omitempty" xml:"EnvironmentVariables,omitempty"`
+	ImageAuth            *string            `json:"ImageAuth,omitempty" xml:"ImageAuth,omitempty"`
 	// example:
 	//
 	// image-05cefd0be2exxxx
@@ -511,6 +512,11 @@ func (s *CreateInstanceRequest) SetEcsSpec(v string) *CreateInstanceRequest {
 
 func (s *CreateInstanceRequest) SetEnvironmentVariables(v map[string]*string) *CreateInstanceRequest {
 	s.EnvironmentVariables = v
+	return s
+}
+
+func (s *CreateInstanceRequest) SetImageAuth(v string) *CreateInstanceRequest {
+	s.ImageAuth = &v
 	return s
 }
 
@@ -1838,6 +1844,7 @@ type GetInstanceResponseBody struct {
 	//
 	// {"InstanceId":"dsw-05cefd0be2e5a278","CpuPercentThreshold":20,"GpuPercentThreshold":10,"MaxIdleTimeInMinutes":120,"IdleTimeInMinutes":30}
 	IdleInstanceCuller *GetInstanceResponseBodyIdleInstanceCuller `json:"IdleInstanceCuller,omitempty" xml:"IdleInstanceCuller,omitempty" type:"Struct"`
+	ImageAuth          *string                                    `json:"ImageAuth,omitempty" xml:"ImageAuth,omitempty"`
 	// example:
 	//
 	// image-05cefd0be2exxxx
@@ -2031,6 +2038,11 @@ func (s *GetInstanceResponseBody) SetHttpStatusCode(v int32) *GetInstanceRespons
 
 func (s *GetInstanceResponseBody) SetIdleInstanceCuller(v *GetInstanceResponseBodyIdleInstanceCuller) *GetInstanceResponseBody {
 	s.IdleInstanceCuller = v
+	return s
+}
+
+func (s *GetInstanceResponseBody) SetImageAuth(v string) *GetInstanceResponseBody {
+	s.ImageAuth = &v
 	return s
 }
 
@@ -5495,6 +5507,7 @@ type ListInstancesResponseBodyInstances struct {
 	//
 	// {"InstanceId":"dsw-05cefd0be2e5a278","CpuPercentThreshold":20,"GpuPercentThreshold":10,"MaxIdleTimeInMinutes":120,"IdleTimeInMinutes":30}
 	IdleInstanceCuller *ListInstancesResponseBodyInstancesIdleInstanceCuller `json:"IdleInstanceCuller,omitempty" xml:"IdleInstanceCuller,omitempty" type:"Struct"`
+	ImageAuth          *string                                               `json:"ImageAuth,omitempty" xml:"ImageAuth,omitempty"`
 	// example:
 	//
 	// image-05cefd0be2exxxx
@@ -5665,6 +5678,11 @@ func (s *ListInstancesResponseBodyInstances) SetGmtModifiedTime(v string) *ListI
 
 func (s *ListInstancesResponseBodyInstances) SetIdleInstanceCuller(v *ListInstancesResponseBodyInstancesIdleInstanceCuller) *ListInstancesResponseBodyInstances {
 	s.IdleInstanceCuller = v
+	return s
+}
+
+func (s *ListInstancesResponseBodyInstances) SetImageAuth(v string) *ListInstancesResponseBodyInstances {
+	s.ImageAuth = &v
 	return s
 }
 
@@ -6645,7 +6663,8 @@ type UpdateInstanceRequest struct {
 	// example:
 	//
 	// ecs.c6.large
-	EcsSpec *string `json:"EcsSpec,omitempty" xml:"EcsSpec,omitempty"`
+	EcsSpec   *string `json:"EcsSpec,omitempty" xml:"EcsSpec,omitempty"`
+	ImageAuth *string `json:"ImageAuth,omitempty" xml:"ImageAuth,omitempty"`
 	// example:
 	//
 	// image-05cefd0be2exxxx
@@ -6732,6 +6751,11 @@ func (s *UpdateInstanceRequest) SetDriver(v string) *UpdateInstanceRequest {
 
 func (s *UpdateInstanceRequest) SetEcsSpec(v string) *UpdateInstanceRequest {
 	s.EcsSpec = &v
+	return s
+}
+
+func (s *UpdateInstanceRequest) SetImageAuth(v string) *UpdateInstanceRequest {
+	s.ImageAuth = &v
 	return s
 }
 
@@ -7254,6 +7278,10 @@ func (client *Client) CreateInstanceWithOptions(request *CreateInstanceRequest, 
 
 	if !tea.BoolValue(util.IsUnset(request.EnvironmentVariables)) {
 		body["EnvironmentVariables"] = request.EnvironmentVariables
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ImageAuth)) {
+		body["ImageAuth"] = request.ImageAuth
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ImageId)) {
@@ -8852,6 +8880,10 @@ func (client *Client) UpdateInstanceWithOptions(InstanceId *string, request *Upd
 
 	if !tea.BoolValue(util.IsUnset(request.EcsSpec)) {
 		body["EcsSpec"] = request.EcsSpec
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ImageAuth)) {
+		body["ImageAuth"] = request.ImageAuth
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ImageId)) {
