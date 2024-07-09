@@ -4130,9 +4130,10 @@ type GetJobResponseBody struct {
 	// example:
 	//
 	// a*****
-	ClusterId   *string                          `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	CodeSource  *GetJobResponseBodyCodeSource    `json:"CodeSource,omitempty" xml:"CodeSource,omitempty" type:"Struct"`
-	DataSources []*GetJobResponseBodyDataSources `json:"DataSources,omitempty" xml:"DataSources,omitempty" type:"Repeated"`
+	ClusterId        *string                          `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	CodeSource       *GetJobResponseBodyCodeSource    `json:"CodeSource,omitempty" xml:"CodeSource,omitempty" type:"Struct"`
+	CredentialConfig *CredentialConfig                `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
+	DataSources      []*GetJobResponseBodyDataSources `json:"DataSources,omitempty" xml:"DataSources,omitempty" type:"Repeated"`
 	// example:
 	//
 	// tf-mnist-test
@@ -4266,6 +4267,11 @@ func (s *GetJobResponseBody) SetClusterId(v string) *GetJobResponseBody {
 
 func (s *GetJobResponseBody) SetCodeSource(v *GetJobResponseBodyCodeSource) *GetJobResponseBody {
 	s.CodeSource = v
+	return s
+}
+
+func (s *GetJobResponseBody) SetCredentialConfig(v *CredentialConfig) *GetJobResponseBody {
+	s.CredentialConfig = v
 	return s
 }
 
