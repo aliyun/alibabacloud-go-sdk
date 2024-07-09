@@ -159,6 +159,133 @@ func (s *CreateDocumentAnalyzeTaskResponse) SetBody(v *CreateDocumentAnalyzeTask
 	return s
 }
 
+type CreateImageAnalyzeTaskRequest struct {
+	Document *CreateImageAnalyzeTaskRequestDocument `json:"document,omitempty" xml:"document,omitempty" type:"Struct"`
+}
+
+func (s CreateImageAnalyzeTaskRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateImageAnalyzeTaskRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateImageAnalyzeTaskRequest) SetDocument(v *CreateImageAnalyzeTaskRequestDocument) *CreateImageAnalyzeTaskRequest {
+	s.Document = v
+	return s
+}
+
+type CreateImageAnalyzeTaskRequestDocument struct {
+	Content  *string `json:"content,omitempty" xml:"content,omitempty"`
+	FileName *string `json:"file_name,omitempty" xml:"file_name,omitempty"`
+	FileType *string `json:"file_type,omitempty" xml:"file_type,omitempty"`
+	Url      *string `json:"url,omitempty" xml:"url,omitempty"`
+}
+
+func (s CreateImageAnalyzeTaskRequestDocument) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateImageAnalyzeTaskRequestDocument) GoString() string {
+	return s.String()
+}
+
+func (s *CreateImageAnalyzeTaskRequestDocument) SetContent(v string) *CreateImageAnalyzeTaskRequestDocument {
+	s.Content = &v
+	return s
+}
+
+func (s *CreateImageAnalyzeTaskRequestDocument) SetFileName(v string) *CreateImageAnalyzeTaskRequestDocument {
+	s.FileName = &v
+	return s
+}
+
+func (s *CreateImageAnalyzeTaskRequestDocument) SetFileType(v string) *CreateImageAnalyzeTaskRequestDocument {
+	s.FileType = &v
+	return s
+}
+
+func (s *CreateImageAnalyzeTaskRequestDocument) SetUrl(v string) *CreateImageAnalyzeTaskRequestDocument {
+	s.Url = &v
+	return s
+}
+
+type CreateImageAnalyzeTaskResponseBody struct {
+	Latency   *int32                                    `json:"latency,omitempty" xml:"latency,omitempty"`
+	RequestId *string                                   `json:"request_id,omitempty" xml:"request_id,omitempty"`
+	Result    *CreateImageAnalyzeTaskResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
+}
+
+func (s CreateImageAnalyzeTaskResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateImageAnalyzeTaskResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateImageAnalyzeTaskResponseBody) SetLatency(v int32) *CreateImageAnalyzeTaskResponseBody {
+	s.Latency = &v
+	return s
+}
+
+func (s *CreateImageAnalyzeTaskResponseBody) SetRequestId(v string) *CreateImageAnalyzeTaskResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateImageAnalyzeTaskResponseBody) SetResult(v *CreateImageAnalyzeTaskResponseBodyResult) *CreateImageAnalyzeTaskResponseBody {
+	s.Result = v
+	return s
+}
+
+type CreateImageAnalyzeTaskResponseBodyResult struct {
+	TaskId *string `json:"task_id,omitempty" xml:"task_id,omitempty"`
+}
+
+func (s CreateImageAnalyzeTaskResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateImageAnalyzeTaskResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *CreateImageAnalyzeTaskResponseBodyResult) SetTaskId(v string) *CreateImageAnalyzeTaskResponseBodyResult {
+	s.TaskId = &v
+	return s
+}
+
+type CreateImageAnalyzeTaskResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateImageAnalyzeTaskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateImageAnalyzeTaskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateImageAnalyzeTaskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateImageAnalyzeTaskResponse) SetHeaders(v map[string]*string) *CreateImageAnalyzeTaskResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateImageAnalyzeTaskResponse) SetStatusCode(v int32) *CreateImageAnalyzeTaskResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateImageAnalyzeTaskResponse) SetBody(v *CreateImageAnalyzeTaskResponseBody) *CreateImageAnalyzeTaskResponse {
+	s.Body = v
+	return s
+}
+
 type GetDocumentAnalyzeTaskStatusRequest struct {
 	// This parameter is required.
 	TaskId *string `json:"task_id,omitempty" xml:"task_id,omitempty"`
@@ -214,6 +341,7 @@ func (s *GetDocumentAnalyzeTaskStatusResponseBody) SetUsage(v *GetDocumentAnalyz
 
 type GetDocumentAnalyzeTaskStatusResponseBodyResult struct {
 	Data   *GetDocumentAnalyzeTaskStatusResponseBodyResultData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	Error  *string                                             `json:"error,omitempty" xml:"error,omitempty"`
 	Status *string                                             `json:"status,omitempty" xml:"status,omitempty"`
 	TaskId *string                                             `json:"task_id,omitempty" xml:"task_id,omitempty"`
 }
@@ -228,6 +356,11 @@ func (s GetDocumentAnalyzeTaskStatusResponseBodyResult) GoString() string {
 
 func (s *GetDocumentAnalyzeTaskStatusResponseBodyResult) SetData(v *GetDocumentAnalyzeTaskStatusResponseBodyResultData) *GetDocumentAnalyzeTaskStatusResponseBodyResult {
 	s.Data = v
+	return s
+}
+
+func (s *GetDocumentAnalyzeTaskStatusResponseBodyResult) SetError(v string) *GetDocumentAnalyzeTaskStatusResponseBodyResult {
+	s.Error = &v
 	return s
 }
 
@@ -737,6 +870,344 @@ func (s *GetDocumentSplitResponse) SetStatusCode(v int32) *GetDocumentSplitRespo
 }
 
 func (s *GetDocumentSplitResponse) SetBody(v *GetDocumentSplitResponseBody) *GetDocumentSplitResponse {
+	s.Body = v
+	return s
+}
+
+type GetImageAnalyzeTaskStatusRequest struct {
+	// This parameter is required.
+	TaskId *string `json:"task_id,omitempty" xml:"task_id,omitempty"`
+}
+
+func (s GetImageAnalyzeTaskStatusRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetImageAnalyzeTaskStatusRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetImageAnalyzeTaskStatusRequest) SetTaskId(v string) *GetImageAnalyzeTaskStatusRequest {
+	s.TaskId = &v
+	return s
+}
+
+type GetImageAnalyzeTaskStatusResponseBody struct {
+	Latency   *int32                                       `json:"latency,omitempty" xml:"latency,omitempty"`
+	RequestId *string                                      `json:"request_id,omitempty" xml:"request_id,omitempty"`
+	Result    *GetImageAnalyzeTaskStatusResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
+	Usage     *GetImageAnalyzeTaskStatusResponseBodyUsage  `json:"usage,omitempty" xml:"usage,omitempty" type:"Struct"`
+}
+
+func (s GetImageAnalyzeTaskStatusResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetImageAnalyzeTaskStatusResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetImageAnalyzeTaskStatusResponseBody) SetLatency(v int32) *GetImageAnalyzeTaskStatusResponseBody {
+	s.Latency = &v
+	return s
+}
+
+func (s *GetImageAnalyzeTaskStatusResponseBody) SetRequestId(v string) *GetImageAnalyzeTaskStatusResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetImageAnalyzeTaskStatusResponseBody) SetResult(v *GetImageAnalyzeTaskStatusResponseBodyResult) *GetImageAnalyzeTaskStatusResponseBody {
+	s.Result = v
+	return s
+}
+
+func (s *GetImageAnalyzeTaskStatusResponseBody) SetUsage(v *GetImageAnalyzeTaskStatusResponseBodyUsage) *GetImageAnalyzeTaskStatusResponseBody {
+	s.Usage = v
+	return s
+}
+
+type GetImageAnalyzeTaskStatusResponseBodyResult struct {
+	Data   *GetImageAnalyzeTaskStatusResponseBodyResultData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	Error  *string                                          `json:"error,omitempty" xml:"error,omitempty"`
+	Status *string                                          `json:"status,omitempty" xml:"status,omitempty"`
+	TaskId *string                                          `json:"task_id,omitempty" xml:"task_id,omitempty"`
+}
+
+func (s GetImageAnalyzeTaskStatusResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetImageAnalyzeTaskStatusResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *GetImageAnalyzeTaskStatusResponseBodyResult) SetData(v *GetImageAnalyzeTaskStatusResponseBodyResultData) *GetImageAnalyzeTaskStatusResponseBodyResult {
+	s.Data = v
+	return s
+}
+
+func (s *GetImageAnalyzeTaskStatusResponseBodyResult) SetError(v string) *GetImageAnalyzeTaskStatusResponseBodyResult {
+	s.Error = &v
+	return s
+}
+
+func (s *GetImageAnalyzeTaskStatusResponseBodyResult) SetStatus(v string) *GetImageAnalyzeTaskStatusResponseBodyResult {
+	s.Status = &v
+	return s
+}
+
+func (s *GetImageAnalyzeTaskStatusResponseBodyResult) SetTaskId(v string) *GetImageAnalyzeTaskStatusResponseBodyResult {
+	s.TaskId = &v
+	return s
+}
+
+type GetImageAnalyzeTaskStatusResponseBodyResultData struct {
+	Content     *string `json:"content,omitempty" xml:"content,omitempty"`
+	ContentType *string `json:"content_type,omitempty" xml:"content_type,omitempty"`
+	PageNum     *int32  `json:"page_num,omitempty" xml:"page_num,omitempty"`
+}
+
+func (s GetImageAnalyzeTaskStatusResponseBodyResultData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetImageAnalyzeTaskStatusResponseBodyResultData) GoString() string {
+	return s.String()
+}
+
+func (s *GetImageAnalyzeTaskStatusResponseBodyResultData) SetContent(v string) *GetImageAnalyzeTaskStatusResponseBodyResultData {
+	s.Content = &v
+	return s
+}
+
+func (s *GetImageAnalyzeTaskStatusResponseBodyResultData) SetContentType(v string) *GetImageAnalyzeTaskStatusResponseBodyResultData {
+	s.ContentType = &v
+	return s
+}
+
+func (s *GetImageAnalyzeTaskStatusResponseBodyResultData) SetPageNum(v int32) *GetImageAnalyzeTaskStatusResponseBodyResultData {
+	s.PageNum = &v
+	return s
+}
+
+type GetImageAnalyzeTaskStatusResponseBodyUsage struct {
+	PvCount    *int64 `json:"pv_count,omitempty" xml:"pv_count,omitempty"`
+	TokenCount *int64 `json:"token_count,omitempty" xml:"token_count,omitempty"`
+}
+
+func (s GetImageAnalyzeTaskStatusResponseBodyUsage) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetImageAnalyzeTaskStatusResponseBodyUsage) GoString() string {
+	return s.String()
+}
+
+func (s *GetImageAnalyzeTaskStatusResponseBodyUsage) SetPvCount(v int64) *GetImageAnalyzeTaskStatusResponseBodyUsage {
+	s.PvCount = &v
+	return s
+}
+
+func (s *GetImageAnalyzeTaskStatusResponseBodyUsage) SetTokenCount(v int64) *GetImageAnalyzeTaskStatusResponseBodyUsage {
+	s.TokenCount = &v
+	return s
+}
+
+type GetImageAnalyzeTaskStatusResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetImageAnalyzeTaskStatusResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetImageAnalyzeTaskStatusResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetImageAnalyzeTaskStatusResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetImageAnalyzeTaskStatusResponse) SetHeaders(v map[string]*string) *GetImageAnalyzeTaskStatusResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetImageAnalyzeTaskStatusResponse) SetStatusCode(v int32) *GetImageAnalyzeTaskStatusResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetImageAnalyzeTaskStatusResponse) SetBody(v *GetImageAnalyzeTaskStatusResponseBody) *GetImageAnalyzeTaskStatusResponse {
+	s.Body = v
+	return s
+}
+
+type GetQueryAnalysisRequest struct {
+	History []*GetQueryAnalysisRequestHistory `json:"history,omitempty" xml:"history,omitempty" type:"Repeated"`
+	// This parameter is required.
+	Query *string `json:"query,omitempty" xml:"query,omitempty"`
+}
+
+func (s GetQueryAnalysisRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetQueryAnalysisRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetQueryAnalysisRequest) SetHistory(v []*GetQueryAnalysisRequestHistory) *GetQueryAnalysisRequest {
+	s.History = v
+	return s
+}
+
+func (s *GetQueryAnalysisRequest) SetQuery(v string) *GetQueryAnalysisRequest {
+	s.Query = &v
+	return s
+}
+
+type GetQueryAnalysisRequestHistory struct {
+	Content *string `json:"content,omitempty" xml:"content,omitempty"`
+	Role    *string `json:"role,omitempty" xml:"role,omitempty"`
+}
+
+func (s GetQueryAnalysisRequestHistory) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetQueryAnalysisRequestHistory) GoString() string {
+	return s.String()
+}
+
+func (s *GetQueryAnalysisRequestHistory) SetContent(v string) *GetQueryAnalysisRequestHistory {
+	s.Content = &v
+	return s
+}
+
+func (s *GetQueryAnalysisRequestHistory) SetRole(v string) *GetQueryAnalysisRequestHistory {
+	s.Role = &v
+	return s
+}
+
+type GetQueryAnalysisResponseBody struct {
+	Latency   *int32                              `json:"latency,omitempty" xml:"latency,omitempty"`
+	RequestId *string                             `json:"request_id,omitempty" xml:"request_id,omitempty"`
+	Result    *GetQueryAnalysisResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
+	Usage     *GetQueryAnalysisResponseBodyUsage  `json:"usage,omitempty" xml:"usage,omitempty" type:"Struct"`
+}
+
+func (s GetQueryAnalysisResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetQueryAnalysisResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetQueryAnalysisResponseBody) SetLatency(v int32) *GetQueryAnalysisResponseBody {
+	s.Latency = &v
+	return s
+}
+
+func (s *GetQueryAnalysisResponseBody) SetRequestId(v string) *GetQueryAnalysisResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetQueryAnalysisResponseBody) SetResult(v *GetQueryAnalysisResponseBodyResult) *GetQueryAnalysisResponseBody {
+	s.Result = v
+	return s
+}
+
+func (s *GetQueryAnalysisResponseBody) SetUsage(v *GetQueryAnalysisResponseBodyUsage) *GetQueryAnalysisResponseBody {
+	s.Usage = v
+	return s
+}
+
+type GetQueryAnalysisResponseBodyResult struct {
+	Intent  *string   `json:"intent,omitempty" xml:"intent,omitempty"`
+	Queries []*string `json:"queries,omitempty" xml:"queries,omitempty" type:"Repeated"`
+	Query   *string   `json:"query,omitempty" xml:"query,omitempty"`
+}
+
+func (s GetQueryAnalysisResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetQueryAnalysisResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *GetQueryAnalysisResponseBodyResult) SetIntent(v string) *GetQueryAnalysisResponseBodyResult {
+	s.Intent = &v
+	return s
+}
+
+func (s *GetQueryAnalysisResponseBodyResult) SetQueries(v []*string) *GetQueryAnalysisResponseBodyResult {
+	s.Queries = v
+	return s
+}
+
+func (s *GetQueryAnalysisResponseBodyResult) SetQuery(v string) *GetQueryAnalysisResponseBodyResult {
+	s.Query = &v
+	return s
+}
+
+type GetQueryAnalysisResponseBodyUsage struct {
+	InputTokens  *int64 `json:"input_tokens,omitempty" xml:"input_tokens,omitempty"`
+	OutputTokens *int64 `json:"output_tokens,omitempty" xml:"output_tokens,omitempty"`
+	TotalTokens  *int64 `json:"total_tokens,omitempty" xml:"total_tokens,omitempty"`
+}
+
+func (s GetQueryAnalysisResponseBodyUsage) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetQueryAnalysisResponseBodyUsage) GoString() string {
+	return s.String()
+}
+
+func (s *GetQueryAnalysisResponseBodyUsage) SetInputTokens(v int64) *GetQueryAnalysisResponseBodyUsage {
+	s.InputTokens = &v
+	return s
+}
+
+func (s *GetQueryAnalysisResponseBodyUsage) SetOutputTokens(v int64) *GetQueryAnalysisResponseBodyUsage {
+	s.OutputTokens = &v
+	return s
+}
+
+func (s *GetQueryAnalysisResponseBodyUsage) SetTotalTokens(v int64) *GetQueryAnalysisResponseBodyUsage {
+	s.TotalTokens = &v
+	return s
+}
+
+type GetQueryAnalysisResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetQueryAnalysisResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetQueryAnalysisResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetQueryAnalysisResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetQueryAnalysisResponse) SetHeaders(v map[string]*string) *GetQueryAnalysisResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetQueryAnalysisResponse) SetStatusCode(v int32) *GetQueryAnalysisResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetQueryAnalysisResponse) SetBody(v *GetQueryAnalysisResponseBody) *GetQueryAnalysisResponse {
 	s.Body = v
 	return s
 }
@@ -1268,7 +1739,7 @@ func (client *Client) Init(config *openapi.Config) (_err error) {
 
 // Summary:
 //
-// 创建异步提取任务
+// 创建文档解析异步提取任务
 //
 // @param request - CreateDocumentAnalyzeTaskRequest
 //
@@ -1317,7 +1788,7 @@ func (client *Client) CreateDocumentAnalyzeTaskWithOptions(workspaceName *string
 
 // Summary:
 //
-// 创建异步提取任务
+// 创建文档解析异步提取任务
 //
 // @param request - CreateDocumentAnalyzeTaskRequest
 //
@@ -1336,7 +1807,71 @@ func (client *Client) CreateDocumentAnalyzeTask(workspaceName *string, serviceId
 
 // Summary:
 //
-// 获取异步提取任务状态
+// 创建图片解析异步提取任务
+//
+// @param request - CreateImageAnalyzeTaskRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateImageAnalyzeTaskResponse
+func (client *Client) CreateImageAnalyzeTaskWithOptions(workspaceName *string, serviceId *string, request *CreateImageAnalyzeTaskRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateImageAnalyzeTaskResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Document)) {
+		body["document"] = request.Document
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateImageAnalyzeTask"),
+		Version:     tea.String("2024-05-29"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v3/openapi/workspaces/" + tea.StringValue(workspaceName) + "/image-analyze/" + tea.StringValue(serviceId) + "/async"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateImageAnalyzeTaskResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建图片解析异步提取任务
+//
+// @param request - CreateImageAnalyzeTaskRequest
+//
+// @return CreateImageAnalyzeTaskResponse
+func (client *Client) CreateImageAnalyzeTask(workspaceName *string, serviceId *string, request *CreateImageAnalyzeTaskRequest) (_result *CreateImageAnalyzeTaskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateImageAnalyzeTaskResponse{}
+	_body, _err := client.CreateImageAnalyzeTaskWithOptions(workspaceName, serviceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取文档解析异步提取任务状态
 //
 // @param request - GetDocumentAnalyzeTaskStatusRequest
 //
@@ -1381,7 +1916,7 @@ func (client *Client) GetDocumentAnalyzeTaskStatusWithOptions(workspaceName *str
 
 // Summary:
 //
-// 获取异步提取任务状态
+// 获取文档解析异步提取任务状态
 //
 // @param request - GetDocumentAnalyzeTaskStatusRequest
 //
@@ -1527,6 +2062,138 @@ func (client *Client) GetDocumentSplit(workspaceName *string, serviceId *string,
 	headers := make(map[string]*string)
 	_result = &GetDocumentSplitResponse{}
 	_body, _err := client.GetDocumentSplitWithOptions(workspaceName, serviceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取图片解析异步提取任务状态
+//
+// @param request - GetImageAnalyzeTaskStatusRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetImageAnalyzeTaskStatusResponse
+func (client *Client) GetImageAnalyzeTaskStatusWithOptions(workspaceName *string, serviceId *string, request *GetImageAnalyzeTaskStatusRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetImageAnalyzeTaskStatusResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.TaskId)) {
+		query["task_id"] = request.TaskId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetImageAnalyzeTaskStatus"),
+		Version:     tea.String("2024-05-29"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v3/openapi/workspaces/" + tea.StringValue(workspaceName) + "/image-analyze/" + tea.StringValue(serviceId) + "/async/task-status"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetImageAnalyzeTaskStatusResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取图片解析异步提取任务状态
+//
+// @param request - GetImageAnalyzeTaskStatusRequest
+//
+// @return GetImageAnalyzeTaskStatusResponse
+func (client *Client) GetImageAnalyzeTaskStatus(workspaceName *string, serviceId *string, request *GetImageAnalyzeTaskStatusRequest) (_result *GetImageAnalyzeTaskStatusResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetImageAnalyzeTaskStatusResponse{}
+	_body, _err := client.GetImageAnalyzeTaskStatusWithOptions(workspaceName, serviceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取query分析结果
+//
+// @param request - GetQueryAnalysisRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetQueryAnalysisResponse
+func (client *Client) GetQueryAnalysisWithOptions(workspaceName *string, serviceId *string, request *GetQueryAnalysisRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetQueryAnalysisResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.History)) {
+		body["history"] = request.History
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Query)) {
+		body["query"] = request.Query
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetQueryAnalysis"),
+		Version:     tea.String("2024-05-29"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v3/openapi/workspaces/" + tea.StringValue(workspaceName) + "/query-analyze/" + tea.StringValue(serviceId)),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetQueryAnalysisResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取query分析结果
+//
+// @param request - GetQueryAnalysisRequest
+//
+// @return GetQueryAnalysisResponse
+func (client *Client) GetQueryAnalysis(workspaceName *string, serviceId *string, request *GetQueryAnalysisRequest) (_result *GetQueryAnalysisResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetQueryAnalysisResponse{}
+	_body, _err := client.GetQueryAnalysisWithOptions(workspaceName, serviceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
