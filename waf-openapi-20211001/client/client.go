@@ -5135,13 +5135,16 @@ type DescribeCloudResourcesRequest struct {
 	// example:
 	//
 	// alb-43glijk0fr****gths
-	ResourceInstanceId *string `json:"ResourceInstanceId,omitempty" xml:"ResourceInstanceId,omitempty"`
+	ResourceInstanceId   *string `json:"ResourceInstanceId,omitempty" xml:"ResourceInstanceId,omitempty"`
+	ResourceInstanceName *string `json:"ResourceInstanceName,omitempty" xml:"ResourceInstanceName,omitempty"`
 	// The ID of the Alibaba Cloud resource group.
 	//
 	// example:
 	//
 	// rg-acfm4gh****wela
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
+	// Deprecated
+	//
 	// The name of the resource.
 	//
 	// example:
@@ -5228,6 +5231,11 @@ func (s *DescribeCloudResourcesRequest) SetResourceInstanceId(v string) *Describ
 	return s
 }
 
+func (s *DescribeCloudResourcesRequest) SetResourceInstanceName(v string) *DescribeCloudResourcesRequest {
+	s.ResourceInstanceName = &v
+	return s
+}
+
 func (s *DescribeCloudResourcesRequest) SetResourceManagerResourceGroupId(v string) *DescribeCloudResourcesRequest {
 	s.ResourceManagerResourceGroupId = &v
 	return s
@@ -5294,6 +5302,8 @@ func (s *DescribeCloudResourcesResponseBody) SetTotalCount(v int64) *DescribeClo
 }
 
 type DescribeCloudResourcesResponseBodyCloudResources struct {
+	HttpPortCount  *int32 `json:"HttpPortCount,omitempty" xml:"HttpPortCount,omitempty"`
+	HttpsPortCount *int32 `json:"HttpsPortCount,omitempty" xml:"HttpsPortCount,omitempty"`
 	// The ID of the Alibaba Cloud account to which the resource belongs.
 	//
 	// example:
@@ -5312,12 +5322,19 @@ type DescribeCloudResourcesResponseBodyCloudResources struct {
 	//
 	// test-resource-function
 	ResourceFunction *string `json:"ResourceFunction,omitempty" xml:"ResourceFunction,omitempty"`
+	// Deprecated
+	//
 	// The ID of the resource.
 	//
 	// example:
 	//
 	// alb-ffff****
-	ResourceInstance *string `json:"ResourceInstance,omitempty" xml:"ResourceInstance,omitempty"`
+	ResourceInstance     *string `json:"ResourceInstance,omitempty" xml:"ResourceInstance,omitempty"`
+	ResourceInstanceId   *string `json:"ResourceInstanceId,omitempty" xml:"ResourceInstanceId,omitempty"`
+	ResourceInstanceIp   *string `json:"ResourceInstanceIp,omitempty" xml:"ResourceInstanceIp,omitempty"`
+	ResourceInstanceName *string `json:"ResourceInstanceName,omitempty" xml:"ResourceInstanceName,omitempty"`
+	// Deprecated
+	//
 	// The name of the resource.
 	//
 	// example:
@@ -5366,6 +5383,16 @@ func (s DescribeCloudResourcesResponseBodyCloudResources) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeCloudResourcesResponseBodyCloudResources) SetHttpPortCount(v int32) *DescribeCloudResourcesResponseBodyCloudResources {
+	s.HttpPortCount = &v
+	return s
+}
+
+func (s *DescribeCloudResourcesResponseBodyCloudResources) SetHttpsPortCount(v int32) *DescribeCloudResourcesResponseBodyCloudResources {
+	s.HttpsPortCount = &v
+	return s
+}
+
 func (s *DescribeCloudResourcesResponseBodyCloudResources) SetOwnerUserId(v string) *DescribeCloudResourcesResponseBodyCloudResources {
 	s.OwnerUserId = &v
 	return s
@@ -5383,6 +5410,21 @@ func (s *DescribeCloudResourcesResponseBodyCloudResources) SetResourceFunction(v
 
 func (s *DescribeCloudResourcesResponseBodyCloudResources) SetResourceInstance(v string) *DescribeCloudResourcesResponseBodyCloudResources {
 	s.ResourceInstance = &v
+	return s
+}
+
+func (s *DescribeCloudResourcesResponseBodyCloudResources) SetResourceInstanceId(v string) *DescribeCloudResourcesResponseBodyCloudResources {
+	s.ResourceInstanceId = &v
+	return s
+}
+
+func (s *DescribeCloudResourcesResponseBodyCloudResources) SetResourceInstanceIp(v string) *DescribeCloudResourcesResponseBodyCloudResources {
+	s.ResourceInstanceIp = &v
+	return s
+}
+
+func (s *DescribeCloudResourcesResponseBodyCloudResources) SetResourceInstanceName(v string) *DescribeCloudResourcesResponseBodyCloudResources {
+	s.ResourceInstanceName = &v
 	return s
 }
 
@@ -5436,6 +5478,137 @@ func (s *DescribeCloudResourcesResponse) SetStatusCode(v int32) *DescribeCloudRe
 }
 
 func (s *DescribeCloudResourcesResponse) SetBody(v *DescribeCloudResourcesResponseBody) *DescribeCloudResourcesResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeCnameCountRequest struct {
+	// example:
+	//
+	// waf_v3prepaid_public_cn-***
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// rg-acfm***q
+	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
+}
+
+func (s DescribeCnameCountRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCnameCountRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCnameCountRequest) SetInstanceId(v string) *DescribeCnameCountRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeCnameCountRequest) SetRegionId(v string) *DescribeCnameCountRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeCnameCountRequest) SetResourceManagerResourceGroupId(v string) *DescribeCnameCountRequest {
+	s.ResourceManagerResourceGroupId = &v
+	return s
+}
+
+type DescribeCnameCountResponseBody struct {
+	CnameCount *DescribeCnameCountResponseBodyCnameCount `json:"CnameCount,omitempty" xml:"CnameCount,omitempty" type:"Struct"`
+	// example:
+	//
+	// F35F45B0-5D6B-4238-BE02-A62D****E840
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeCnameCountResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCnameCountResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCnameCountResponseBody) SetCnameCount(v *DescribeCnameCountResponseBodyCnameCount) *DescribeCnameCountResponseBody {
+	s.CnameCount = v
+	return s
+}
+
+func (s *DescribeCnameCountResponseBody) SetRequestId(v string) *DescribeCnameCountResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeCnameCountResponseBodyCnameCount struct {
+	// example:
+	//
+	// 1
+	Cname *int64 `json:"Cname,omitempty" xml:"Cname,omitempty"`
+	// example:
+	//
+	// 1
+	HybridCloudCname *int64 `json:"HybridCloudCname,omitempty" xml:"HybridCloudCname,omitempty"`
+	// example:
+	//
+	// 1
+	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
+}
+
+func (s DescribeCnameCountResponseBodyCnameCount) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCnameCountResponseBodyCnameCount) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCnameCountResponseBodyCnameCount) SetCname(v int64) *DescribeCnameCountResponseBodyCnameCount {
+	s.Cname = &v
+	return s
+}
+
+func (s *DescribeCnameCountResponseBodyCnameCount) SetHybridCloudCname(v int64) *DescribeCnameCountResponseBodyCnameCount {
+	s.HybridCloudCname = &v
+	return s
+}
+
+func (s *DescribeCnameCountResponseBodyCnameCount) SetTotal(v int64) *DescribeCnameCountResponseBodyCnameCount {
+	s.Total = &v
+	return s
+}
+
+type DescribeCnameCountResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeCnameCountResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeCnameCountResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCnameCountResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCnameCountResponse) SetHeaders(v map[string]*string) *DescribeCnameCountResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeCnameCountResponse) SetStatusCode(v int32) *DescribeCnameCountResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeCnameCountResponse) SetBody(v *DescribeCnameCountResponseBody) *DescribeCnameCountResponse {
 	s.Body = v
 	return s
 }
@@ -13724,7 +13897,11 @@ type DescribeProductInstancesRequest struct {
 	// example:
 	//
 	// lb-2zeugkfj81jvo****4tqm
-	ResourceInstanceId *string `json:"ResourceInstanceId,omitempty" xml:"ResourceInstanceId,omitempty"`
+	ResourceInstanceId   *string `json:"ResourceInstanceId,omitempty" xml:"ResourceInstanceId,omitempty"`
+	ResourceInstanceIp   *string `json:"ResourceInstanceIp,omitempty" xml:"ResourceInstanceIp,omitempty"`
+	ResourceInstanceName *string `json:"ResourceInstanceName,omitempty" xml:"ResourceInstanceName,omitempty"`
+	// Deprecated
+	//
 	// The public IP address of the instance.
 	//
 	// example:
@@ -13737,6 +13914,8 @@ type DescribeProductInstancesRequest struct {
 	//
 	// rg-aekz6ql****5uzi
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
+	// Deprecated
+	//
 	// The name of the instance.
 	//
 	// example:
@@ -13821,6 +14000,16 @@ func (s *DescribeProductInstancesRequest) SetResourceInstanceId(v string) *Descr
 	return s
 }
 
+func (s *DescribeProductInstancesRequest) SetResourceInstanceIp(v string) *DescribeProductInstancesRequest {
+	s.ResourceInstanceIp = &v
+	return s
+}
+
+func (s *DescribeProductInstancesRequest) SetResourceInstanceName(v string) *DescribeProductInstancesRequest {
+	s.ResourceInstanceName = &v
+	return s
+}
+
 func (s *DescribeProductInstancesRequest) SetResourceIp(v string) *DescribeProductInstancesRequest {
 	s.ResourceIp = &v
 	return s
@@ -13898,13 +14087,19 @@ type DescribeProductInstancesResponseBodyProductInstances struct {
 	// example:
 	//
 	// i-2ze1tm4pvghp****cluv
-	ResourceInstanceId *string `json:"ResourceInstanceId,omitempty" xml:"ResourceInstanceId,omitempty"`
+	ResourceInstanceId   *string `json:"ResourceInstanceId,omitempty" xml:"ResourceInstanceId,omitempty"`
+	ResourceInstanceIp   *string `json:"ResourceInstanceIp,omitempty" xml:"ResourceInstanceIp,omitempty"`
+	ResourceInstanceName *string `json:"ResourceInstanceName,omitempty" xml:"ResourceInstanceName,omitempty"`
+	// Deprecated
+	//
 	// The public IP address of the instance.
 	//
 	// example:
 	//
 	// 1.X.X.1
 	ResourceIp *string `json:"ResourceIp,omitempty" xml:"ResourceIp,omitempty"`
+	// Deprecated
+	//
 	// The name of the instance.
 	//
 	// example:
@@ -13968,6 +14163,16 @@ func (s *DescribeProductInstancesResponseBodyProductInstances) SetOwnerUserId(v 
 
 func (s *DescribeProductInstancesResponseBodyProductInstances) SetResourceInstanceId(v string) *DescribeProductInstancesResponseBodyProductInstances {
 	s.ResourceInstanceId = &v
+	return s
+}
+
+func (s *DescribeProductInstancesResponseBodyProductInstances) SetResourceInstanceIp(v string) *DescribeProductInstancesResponseBodyProductInstances {
+	s.ResourceInstanceIp = &v
+	return s
+}
+
+func (s *DescribeProductInstancesResponseBodyProductInstances) SetResourceInstanceName(v string) *DescribeProductInstancesResponseBodyProductInstances {
+	s.ResourceInstanceName = &v
 	return s
 }
 
@@ -21729,18 +21934,30 @@ func (s *ModifyTemplateResourcesResponse) SetBody(v *ModifyTemplateResourcesResp
 }
 
 type ReleaseInstanceRequest struct {
+	// The ID of the Web Application Firewall (WAF) instance.
+	//
+	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to obtain the ID of the WAF instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// waf_v2_public_cn-***
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The region in which the WAF instance is deployed. Valid values:
+	//
+	// 	- **cn-hangzhou**: the Chinese mainland.
+	//
+	// 	- **ap-southeast-1**: outside the Chinese mainland.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the Alibaba Cloud resource group.
+	//
 	// example:
 	//
 	// rg-acfm***q
@@ -21771,6 +21988,8 @@ func (s *ReleaseInstanceRequest) SetResourceManagerResourceGroupId(v string) *Re
 }
 
 type ReleaseInstanceResponseBody struct {
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 65626467-8002-5022-9F5F-***
@@ -24554,6 +24773,10 @@ func (client *Client) DescribeCloudResourcesWithOptions(request *DescribeCloudRe
 		query["ResourceInstanceId"] = request.ResourceInstanceId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ResourceInstanceName)) {
+		query["ResourceInstanceName"] = request.ResourceInstanceName
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ResourceManagerResourceGroupId)) {
 		query["ResourceManagerResourceGroupId"] = request.ResourceManagerResourceGroupId
 	}
@@ -24608,6 +24831,74 @@ func (client *Client) DescribeCloudResources(request *DescribeCloudResourcesRequ
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeCloudResourcesResponse{}
 	_body, _err := client.DescribeCloudResourcesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询Cname接入的数量
+//
+// @param request - DescribeCnameCountRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeCnameCountResponse
+func (client *Client) DescribeCnameCountWithOptions(request *DescribeCnameCountRequest, runtime *util.RuntimeOptions) (_result *DescribeCnameCountResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceManagerResourceGroupId)) {
+		query["ResourceManagerResourceGroupId"] = request.ResourceManagerResourceGroupId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeCnameCount"),
+		Version:     tea.String("2021-10-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeCnameCountResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询Cname接入的数量
+//
+// @param request - DescribeCnameCountRequest
+//
+// @return DescribeCnameCountResponse
+func (client *Client) DescribeCnameCount(request *DescribeCnameCountRequest) (_result *DescribeCnameCountResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeCnameCountResponse{}
+	_body, _err := client.DescribeCnameCountWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -26796,6 +27087,14 @@ func (client *Client) DescribeProductInstancesWithOptions(request *DescribeProdu
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceInstanceId)) {
 		query["ResourceInstanceId"] = request.ResourceInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceInstanceIp)) {
+		query["ResourceInstanceIp"] = request.ResourceInstanceIp
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceInstanceName)) {
+		query["ResourceInstanceName"] = request.ResourceInstanceName
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceIp)) {
@@ -30251,7 +30550,7 @@ func (client *Client) ModifyTemplateResources(request *ModifyTemplateResourcesRe
 
 // Summary:
 //
-// 释放实例
+// Releases a Web Application Firewall (WAF) 3.0 instance.
 //
 // @param request - ReleaseInstanceRequest
 //
@@ -30301,7 +30600,7 @@ func (client *Client) ReleaseInstanceWithOptions(request *ReleaseInstanceRequest
 
 // Summary:
 //
-// 释放实例
+// Releases a Web Application Firewall (WAF) 3.0 instance.
 //
 // @param request - ReleaseInstanceRequest
 //
