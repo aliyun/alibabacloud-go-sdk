@@ -218,6 +218,836 @@ func (s *CreateTextFileResponse) SetBody(v *CreateTextFileResponseBody) *CreateT
 	return s
 }
 
+type RunContractResultGenerationRequest struct {
+	// example:
+	//
+	// farui
+	AppId     *string                                      `json:"appId,omitempty" xml:"appId,omitempty"`
+	Assistant *RunContractResultGenerationRequestAssistant `json:"assistant,omitempty" xml:"assistant,omitempty" type:"Struct"`
+	// example:
+	//
+	// true
+	Stream *bool `json:"stream,omitempty" xml:"stream,omitempty"`
+}
+
+func (s RunContractResultGenerationRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunContractResultGenerationRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RunContractResultGenerationRequest) SetAppId(v string) *RunContractResultGenerationRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *RunContractResultGenerationRequest) SetAssistant(v *RunContractResultGenerationRequestAssistant) *RunContractResultGenerationRequest {
+	s.Assistant = v
+	return s
+}
+
+func (s *RunContractResultGenerationRequest) SetStream(v bool) *RunContractResultGenerationRequest {
+	s.Stream = &v
+	return s
+}
+
+type RunContractResultGenerationRequestAssistant struct {
+	MetaData *RunContractResultGenerationRequestAssistantMetaData `json:"metaData,omitempty" xml:"metaData,omitempty" type:"Struct"`
+	// example:
+	//
+	// contract_examime
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	// example:
+	//
+	// 1.0.0
+	Version *string `json:"version,omitempty" xml:"version,omitempty"`
+}
+
+func (s RunContractResultGenerationRequestAssistant) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunContractResultGenerationRequestAssistant) GoString() string {
+	return s.String()
+}
+
+func (s *RunContractResultGenerationRequestAssistant) SetMetaData(v *RunContractResultGenerationRequestAssistantMetaData) *RunContractResultGenerationRequestAssistant {
+	s.MetaData = v
+	return s
+}
+
+func (s *RunContractResultGenerationRequestAssistant) SetType(v string) *RunContractResultGenerationRequestAssistant {
+	s.Type = &v
+	return s
+}
+
+func (s *RunContractResultGenerationRequestAssistant) SetVersion(v string) *RunContractResultGenerationRequestAssistant {
+	s.Version = &v
+	return s
+}
+
+type RunContractResultGenerationRequestAssistantMetaData struct {
+	CustomRuleConfig *RunContractResultGenerationRequestAssistantMetaDataCustomRuleConfig `json:"customRuleConfig,omitempty" xml:"customRuleConfig,omitempty" type:"Struct"`
+	// example:
+	//
+	// 9a6b1ba60d9944249363ec3cc1529b7b
+	FileId *string `json:"fileId,omitempty" xml:"fileId,omitempty"`
+	// example:
+	//
+	// 1
+	Position *string `json:"position,omitempty" xml:"position,omitempty"`
+	// example:
+	//
+	// b265b416-ca1f-425d-9340-c968f39624e1
+	RuleTaskId *string                                                     `json:"ruleTaskId,omitempty" xml:"ruleTaskId,omitempty"`
+	Rules      []*RunContractResultGenerationRequestAssistantMetaDataRules `json:"rules,omitempty" xml:"rules,omitempty" type:"Repeated"`
+}
+
+func (s RunContractResultGenerationRequestAssistantMetaData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunContractResultGenerationRequestAssistantMetaData) GoString() string {
+	return s.String()
+}
+
+func (s *RunContractResultGenerationRequestAssistantMetaData) SetCustomRuleConfig(v *RunContractResultGenerationRequestAssistantMetaDataCustomRuleConfig) *RunContractResultGenerationRequestAssistantMetaData {
+	s.CustomRuleConfig = v
+	return s
+}
+
+func (s *RunContractResultGenerationRequestAssistantMetaData) SetFileId(v string) *RunContractResultGenerationRequestAssistantMetaData {
+	s.FileId = &v
+	return s
+}
+
+func (s *RunContractResultGenerationRequestAssistantMetaData) SetPosition(v string) *RunContractResultGenerationRequestAssistantMetaData {
+	s.Position = &v
+	return s
+}
+
+func (s *RunContractResultGenerationRequestAssistantMetaData) SetRuleTaskId(v string) *RunContractResultGenerationRequestAssistantMetaData {
+	s.RuleTaskId = &v
+	return s
+}
+
+func (s *RunContractResultGenerationRequestAssistantMetaData) SetRules(v []*RunContractResultGenerationRequestAssistantMetaDataRules) *RunContractResultGenerationRequestAssistantMetaData {
+	s.Rules = v
+	return s
+}
+
+type RunContractResultGenerationRequestAssistantMetaDataCustomRuleConfig struct {
+	CustomRules []*RunContractResultGenerationRequestAssistantMetaDataCustomRuleConfigCustomRules `json:"customRules,omitempty" xml:"customRules,omitempty" type:"Repeated"`
+}
+
+func (s RunContractResultGenerationRequestAssistantMetaDataCustomRuleConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunContractResultGenerationRequestAssistantMetaDataCustomRuleConfig) GoString() string {
+	return s.String()
+}
+
+func (s *RunContractResultGenerationRequestAssistantMetaDataCustomRuleConfig) SetCustomRules(v []*RunContractResultGenerationRequestAssistantMetaDataCustomRuleConfigCustomRules) *RunContractResultGenerationRequestAssistantMetaDataCustomRuleConfig {
+	s.CustomRules = v
+	return s
+}
+
+type RunContractResultGenerationRequestAssistantMetaDataCustomRuleConfigCustomRules struct {
+	// example:
+	//
+	// high
+	RiskLevel *string `json:"riskLevel,omitempty" xml:"riskLevel,omitempty"`
+	RuleDesc  *string `json:"ruleDesc,omitempty" xml:"ruleDesc,omitempty"`
+	RuleTitle *string `json:"ruleTitle,omitempty" xml:"ruleTitle,omitempty"`
+}
+
+func (s RunContractResultGenerationRequestAssistantMetaDataCustomRuleConfigCustomRules) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunContractResultGenerationRequestAssistantMetaDataCustomRuleConfigCustomRules) GoString() string {
+	return s.String()
+}
+
+func (s *RunContractResultGenerationRequestAssistantMetaDataCustomRuleConfigCustomRules) SetRiskLevel(v string) *RunContractResultGenerationRequestAssistantMetaDataCustomRuleConfigCustomRules {
+	s.RiskLevel = &v
+	return s
+}
+
+func (s *RunContractResultGenerationRequestAssistantMetaDataCustomRuleConfigCustomRules) SetRuleDesc(v string) *RunContractResultGenerationRequestAssistantMetaDataCustomRuleConfigCustomRules {
+	s.RuleDesc = &v
+	return s
+}
+
+func (s *RunContractResultGenerationRequestAssistantMetaDataCustomRuleConfigCustomRules) SetRuleTitle(v string) *RunContractResultGenerationRequestAssistantMetaDataCustomRuleConfigCustomRules {
+	s.RuleTitle = &v
+	return s
+}
+
+type RunContractResultGenerationRequestAssistantMetaDataRules struct {
+	// example:
+	//
+	// medium
+	RiskLevel *string `json:"riskLevel,omitempty" xml:"riskLevel,omitempty"`
+	// example:
+	//
+	// 2.1
+	RuleSequence *string `json:"ruleSequence,omitempty" xml:"ruleSequence,omitempty"`
+	RuleTag      *string `json:"ruleTag,omitempty" xml:"ruleTag,omitempty"`
+	RuleTitle    *string `json:"ruleTitle,omitempty" xml:"ruleTitle,omitempty"`
+}
+
+func (s RunContractResultGenerationRequestAssistantMetaDataRules) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunContractResultGenerationRequestAssistantMetaDataRules) GoString() string {
+	return s.String()
+}
+
+func (s *RunContractResultGenerationRequestAssistantMetaDataRules) SetRiskLevel(v string) *RunContractResultGenerationRequestAssistantMetaDataRules {
+	s.RiskLevel = &v
+	return s
+}
+
+func (s *RunContractResultGenerationRequestAssistantMetaDataRules) SetRuleSequence(v string) *RunContractResultGenerationRequestAssistantMetaDataRules {
+	s.RuleSequence = &v
+	return s
+}
+
+func (s *RunContractResultGenerationRequestAssistantMetaDataRules) SetRuleTag(v string) *RunContractResultGenerationRequestAssistantMetaDataRules {
+	s.RuleTag = &v
+	return s
+}
+
+func (s *RunContractResultGenerationRequestAssistantMetaDataRules) SetRuleTitle(v string) *RunContractResultGenerationRequestAssistantMetaDataRules {
+	s.RuleTitle = &v
+	return s
+}
+
+type RunContractResultGenerationShrinkRequest struct {
+	// example:
+	//
+	// farui
+	AppId           *string `json:"appId,omitempty" xml:"appId,omitempty"`
+	AssistantShrink *string `json:"assistant,omitempty" xml:"assistant,omitempty"`
+	// example:
+	//
+	// true
+	Stream *bool `json:"stream,omitempty" xml:"stream,omitempty"`
+}
+
+func (s RunContractResultGenerationShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunContractResultGenerationShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RunContractResultGenerationShrinkRequest) SetAppId(v string) *RunContractResultGenerationShrinkRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *RunContractResultGenerationShrinkRequest) SetAssistantShrink(v string) *RunContractResultGenerationShrinkRequest {
+	s.AssistantShrink = &v
+	return s
+}
+
+func (s *RunContractResultGenerationShrinkRequest) SetStream(v bool) *RunContractResultGenerationShrinkRequest {
+	s.Stream = &v
+	return s
+}
+
+type RunContractResultGenerationResponseBody struct {
+	// example:
+	//
+	// null
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// null
+	Message *string                                        `json:"Message,omitempty" xml:"Message,omitempty"`
+	Output  *RunContractResultGenerationResponseBodyOutput `json:"Output,omitempty" xml:"Output,omitempty" type:"Struct"`
+	// example:
+	//
+	// 744419D0-671A-5997-9840-E8AE48356194
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// True
+	Success *bool                                         `json:"Success,omitempty" xml:"Success,omitempty"`
+	Usage   *RunContractResultGenerationResponseBodyUsage `json:"Usage,omitempty" xml:"Usage,omitempty" type:"Struct"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *string `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+}
+
+func (s RunContractResultGenerationResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunContractResultGenerationResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RunContractResultGenerationResponseBody) SetCode(v string) *RunContractResultGenerationResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *RunContractResultGenerationResponseBody) SetMessage(v string) *RunContractResultGenerationResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *RunContractResultGenerationResponseBody) SetOutput(v *RunContractResultGenerationResponseBodyOutput) *RunContractResultGenerationResponseBody {
+	s.Output = v
+	return s
+}
+
+func (s *RunContractResultGenerationResponseBody) SetRequestId(v string) *RunContractResultGenerationResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *RunContractResultGenerationResponseBody) SetSuccess(v bool) *RunContractResultGenerationResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *RunContractResultGenerationResponseBody) SetUsage(v *RunContractResultGenerationResponseBodyUsage) *RunContractResultGenerationResponseBody {
+	s.Usage = v
+	return s
+}
+
+func (s *RunContractResultGenerationResponseBody) SetHttpStatusCode(v string) *RunContractResultGenerationResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+type RunContractResultGenerationResponseBodyOutput struct {
+	Result *RunContractResultGenerationResponseBodyOutputResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
+	// example:
+	//
+	// eaa56e1e-e205-4f5e-926e-5e2269ae7f68
+	ResultTaskId *string `json:"resultTaskId,omitempty" xml:"resultTaskId,omitempty"`
+}
+
+func (s RunContractResultGenerationResponseBodyOutput) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunContractResultGenerationResponseBodyOutput) GoString() string {
+	return s.String()
+}
+
+func (s *RunContractResultGenerationResponseBodyOutput) SetResult(v *RunContractResultGenerationResponseBodyOutputResult) *RunContractResultGenerationResponseBodyOutput {
+	s.Result = v
+	return s
+}
+
+func (s *RunContractResultGenerationResponseBodyOutput) SetResultTaskId(v string) *RunContractResultGenerationResponseBodyOutput {
+	s.ResultTaskId = &v
+	return s
+}
+
+type RunContractResultGenerationResponseBodyOutputResult struct {
+	ExamineBrief  *string `json:"examineBrief,omitempty" xml:"examineBrief,omitempty"`
+	ExamineResult *string `json:"examineResult,omitempty" xml:"examineResult,omitempty"`
+	// example:
+	//
+	// high
+	RiskLevel *string `json:"riskLevel,omitempty" xml:"riskLevel,omitempty"`
+	// example:
+	//
+	// 1.1
+	RuleSequence *string                                                        `json:"ruleSequence,omitempty" xml:"ruleSequence,omitempty"`
+	RuleTag      *string                                                        `json:"ruleTag,omitempty" xml:"ruleTag,omitempty"`
+	RuleTitle    *string                                                        `json:"ruleTitle,omitempty" xml:"ruleTitle,omitempty"`
+	SubRisks     []*RunContractResultGenerationResponseBodyOutputResultSubRisks `json:"subRisks,omitempty" xml:"subRisks,omitempty" type:"Repeated"`
+}
+
+func (s RunContractResultGenerationResponseBodyOutputResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunContractResultGenerationResponseBodyOutputResult) GoString() string {
+	return s.String()
+}
+
+func (s *RunContractResultGenerationResponseBodyOutputResult) SetExamineBrief(v string) *RunContractResultGenerationResponseBodyOutputResult {
+	s.ExamineBrief = &v
+	return s
+}
+
+func (s *RunContractResultGenerationResponseBodyOutputResult) SetExamineResult(v string) *RunContractResultGenerationResponseBodyOutputResult {
+	s.ExamineResult = &v
+	return s
+}
+
+func (s *RunContractResultGenerationResponseBodyOutputResult) SetRiskLevel(v string) *RunContractResultGenerationResponseBodyOutputResult {
+	s.RiskLevel = &v
+	return s
+}
+
+func (s *RunContractResultGenerationResponseBodyOutputResult) SetRuleSequence(v string) *RunContractResultGenerationResponseBodyOutputResult {
+	s.RuleSequence = &v
+	return s
+}
+
+func (s *RunContractResultGenerationResponseBodyOutputResult) SetRuleTag(v string) *RunContractResultGenerationResponseBodyOutputResult {
+	s.RuleTag = &v
+	return s
+}
+
+func (s *RunContractResultGenerationResponseBodyOutputResult) SetRuleTitle(v string) *RunContractResultGenerationResponseBodyOutputResult {
+	s.RuleTitle = &v
+	return s
+}
+
+func (s *RunContractResultGenerationResponseBodyOutputResult) SetSubRisks(v []*RunContractResultGenerationResponseBodyOutputResultSubRisks) *RunContractResultGenerationResponseBodyOutputResult {
+	s.SubRisks = v
+	return s
+}
+
+type RunContractResultGenerationResponseBodyOutputResultSubRisks struct {
+	OriginalContent *string `json:"originalContent,omitempty" xml:"originalContent,omitempty"`
+	ResultContent   *string `json:"resultContent,omitempty" xml:"resultContent,omitempty"`
+	ResultType      *string `json:"resultType,omitempty" xml:"resultType,omitempty"`
+	RiskBrief       *string `json:"riskBrief,omitempty" xml:"riskBrief,omitempty"`
+	RiskClause      *string `json:"riskClause,omitempty" xml:"riskClause,omitempty"`
+	RiskExplain     *string `json:"riskExplain,omitempty" xml:"riskExplain,omitempty"`
+}
+
+func (s RunContractResultGenerationResponseBodyOutputResultSubRisks) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunContractResultGenerationResponseBodyOutputResultSubRisks) GoString() string {
+	return s.String()
+}
+
+func (s *RunContractResultGenerationResponseBodyOutputResultSubRisks) SetOriginalContent(v string) *RunContractResultGenerationResponseBodyOutputResultSubRisks {
+	s.OriginalContent = &v
+	return s
+}
+
+func (s *RunContractResultGenerationResponseBodyOutputResultSubRisks) SetResultContent(v string) *RunContractResultGenerationResponseBodyOutputResultSubRisks {
+	s.ResultContent = &v
+	return s
+}
+
+func (s *RunContractResultGenerationResponseBodyOutputResultSubRisks) SetResultType(v string) *RunContractResultGenerationResponseBodyOutputResultSubRisks {
+	s.ResultType = &v
+	return s
+}
+
+func (s *RunContractResultGenerationResponseBodyOutputResultSubRisks) SetRiskBrief(v string) *RunContractResultGenerationResponseBodyOutputResultSubRisks {
+	s.RiskBrief = &v
+	return s
+}
+
+func (s *RunContractResultGenerationResponseBodyOutputResultSubRisks) SetRiskClause(v string) *RunContractResultGenerationResponseBodyOutputResultSubRisks {
+	s.RiskClause = &v
+	return s
+}
+
+func (s *RunContractResultGenerationResponseBodyOutputResultSubRisks) SetRiskExplain(v string) *RunContractResultGenerationResponseBodyOutputResultSubRisks {
+	s.RiskExplain = &v
+	return s
+}
+
+type RunContractResultGenerationResponseBodyUsage struct {
+	// example:
+	//
+	// 5
+	Input *int64 `json:"input,omitempty" xml:"input,omitempty"`
+	// example:
+	//
+	// page
+	Unit *string `json:"unit,omitempty" xml:"unit,omitempty"`
+}
+
+func (s RunContractResultGenerationResponseBodyUsage) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunContractResultGenerationResponseBodyUsage) GoString() string {
+	return s.String()
+}
+
+func (s *RunContractResultGenerationResponseBodyUsage) SetInput(v int64) *RunContractResultGenerationResponseBodyUsage {
+	s.Input = &v
+	return s
+}
+
+func (s *RunContractResultGenerationResponseBodyUsage) SetUnit(v string) *RunContractResultGenerationResponseBodyUsage {
+	s.Unit = &v
+	return s
+}
+
+type RunContractResultGenerationResponse struct {
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RunContractResultGenerationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s RunContractResultGenerationResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunContractResultGenerationResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RunContractResultGenerationResponse) SetHeaders(v map[string]*string) *RunContractResultGenerationResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RunContractResultGenerationResponse) SetStatusCode(v int32) *RunContractResultGenerationResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *RunContractResultGenerationResponse) SetBody(v *RunContractResultGenerationResponseBody) *RunContractResultGenerationResponse {
+	s.Body = v
+	return s
+}
+
+type RunContractRuleGenerationRequest struct {
+	// example:
+	//
+	// farui
+	AppId     *string                                    `json:"appId,omitempty" xml:"appId,omitempty"`
+	Assistant *RunContractRuleGenerationRequestAssistant `json:"assistant,omitempty" xml:"assistant,omitempty" type:"Struct"`
+	// example:
+	//
+	// true
+	Stream *bool `json:"stream,omitempty" xml:"stream,omitempty"`
+}
+
+func (s RunContractRuleGenerationRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunContractRuleGenerationRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RunContractRuleGenerationRequest) SetAppId(v string) *RunContractRuleGenerationRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *RunContractRuleGenerationRequest) SetAssistant(v *RunContractRuleGenerationRequestAssistant) *RunContractRuleGenerationRequest {
+	s.Assistant = v
+	return s
+}
+
+func (s *RunContractRuleGenerationRequest) SetStream(v bool) *RunContractRuleGenerationRequest {
+	s.Stream = &v
+	return s
+}
+
+type RunContractRuleGenerationRequestAssistant struct {
+	MetaData *RunContractRuleGenerationRequestAssistantMetaData `json:"metaData,omitempty" xml:"metaData,omitempty" type:"Struct"`
+	// example:
+	//
+	// contract_examime
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	// example:
+	//
+	// 1.0.0
+	Version *string `json:"version,omitempty" xml:"version,omitempty"`
+}
+
+func (s RunContractRuleGenerationRequestAssistant) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunContractRuleGenerationRequestAssistant) GoString() string {
+	return s.String()
+}
+
+func (s *RunContractRuleGenerationRequestAssistant) SetMetaData(v *RunContractRuleGenerationRequestAssistantMetaData) *RunContractRuleGenerationRequestAssistant {
+	s.MetaData = v
+	return s
+}
+
+func (s *RunContractRuleGenerationRequestAssistant) SetType(v string) *RunContractRuleGenerationRequestAssistant {
+	s.Type = &v
+	return s
+}
+
+func (s *RunContractRuleGenerationRequestAssistant) SetVersion(v string) *RunContractRuleGenerationRequestAssistant {
+	s.Version = &v
+	return s
+}
+
+type RunContractRuleGenerationRequestAssistantMetaData struct {
+	// example:
+	//
+	// 9a6b1ba60d9944249363ec3cc1529b7b
+	FileId *string `json:"fileId,omitempty" xml:"fileId,omitempty"`
+	// example:
+	//
+	// 1
+	Position *string `json:"position,omitempty" xml:"position,omitempty"`
+}
+
+func (s RunContractRuleGenerationRequestAssistantMetaData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunContractRuleGenerationRequestAssistantMetaData) GoString() string {
+	return s.String()
+}
+
+func (s *RunContractRuleGenerationRequestAssistantMetaData) SetFileId(v string) *RunContractRuleGenerationRequestAssistantMetaData {
+	s.FileId = &v
+	return s
+}
+
+func (s *RunContractRuleGenerationRequestAssistantMetaData) SetPosition(v string) *RunContractRuleGenerationRequestAssistantMetaData {
+	s.Position = &v
+	return s
+}
+
+type RunContractRuleGenerationShrinkRequest struct {
+	// example:
+	//
+	// farui
+	AppId           *string `json:"appId,omitempty" xml:"appId,omitempty"`
+	AssistantShrink *string `json:"assistant,omitempty" xml:"assistant,omitempty"`
+	// example:
+	//
+	// true
+	Stream *bool `json:"stream,omitempty" xml:"stream,omitempty"`
+}
+
+func (s RunContractRuleGenerationShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunContractRuleGenerationShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RunContractRuleGenerationShrinkRequest) SetAppId(v string) *RunContractRuleGenerationShrinkRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *RunContractRuleGenerationShrinkRequest) SetAssistantShrink(v string) *RunContractRuleGenerationShrinkRequest {
+	s.AssistantShrink = &v
+	return s
+}
+
+func (s *RunContractRuleGenerationShrinkRequest) SetStream(v bool) *RunContractRuleGenerationShrinkRequest {
+	s.Stream = &v
+	return s
+}
+
+type RunContractRuleGenerationResponseBody struct {
+	// example:
+	//
+	// null
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// null
+	Message *string                                      `json:"Message,omitempty" xml:"Message,omitempty"`
+	Output  *RunContractRuleGenerationResponseBodyOutput `json:"Output,omitempty" xml:"Output,omitempty" type:"Struct"`
+	// example:
+	//
+	// 744419D0-671A-5997-9840-E8AE48356194
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// True
+	Success *bool                                       `json:"Success,omitempty" xml:"Success,omitempty"`
+	Usage   *RunContractRuleGenerationResponseBodyUsage `json:"Usage,omitempty" xml:"Usage,omitempty" type:"Struct"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+}
+
+func (s RunContractRuleGenerationResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunContractRuleGenerationResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RunContractRuleGenerationResponseBody) SetCode(v string) *RunContractRuleGenerationResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *RunContractRuleGenerationResponseBody) SetMessage(v string) *RunContractRuleGenerationResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *RunContractRuleGenerationResponseBody) SetOutput(v *RunContractRuleGenerationResponseBodyOutput) *RunContractRuleGenerationResponseBody {
+	s.Output = v
+	return s
+}
+
+func (s *RunContractRuleGenerationResponseBody) SetRequestId(v string) *RunContractRuleGenerationResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *RunContractRuleGenerationResponseBody) SetSuccess(v bool) *RunContractRuleGenerationResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *RunContractRuleGenerationResponseBody) SetUsage(v *RunContractRuleGenerationResponseBodyUsage) *RunContractRuleGenerationResponseBody {
+	s.Usage = v
+	return s
+}
+
+func (s *RunContractRuleGenerationResponseBody) SetHttpStatusCode(v int32) *RunContractRuleGenerationResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+type RunContractRuleGenerationResponseBodyOutput struct {
+	// example:
+	//
+	// b265b416-ca1f-425d-9340-c968f39624e9
+	RuleTaskId *string                                             `json:"ruleTaskId,omitempty" xml:"ruleTaskId,omitempty"`
+	Rules      []*RunContractRuleGenerationResponseBodyOutputRules `json:"rules,omitempty" xml:"rules,omitempty" type:"Repeated"`
+}
+
+func (s RunContractRuleGenerationResponseBodyOutput) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunContractRuleGenerationResponseBodyOutput) GoString() string {
+	return s.String()
+}
+
+func (s *RunContractRuleGenerationResponseBodyOutput) SetRuleTaskId(v string) *RunContractRuleGenerationResponseBodyOutput {
+	s.RuleTaskId = &v
+	return s
+}
+
+func (s *RunContractRuleGenerationResponseBodyOutput) SetRules(v []*RunContractRuleGenerationResponseBodyOutputRules) *RunContractRuleGenerationResponseBodyOutput {
+	s.Rules = v
+	return s
+}
+
+type RunContractRuleGenerationResponseBodyOutputRules struct {
+	// example:
+	//
+	// medium
+	RiskLevel *string `json:"riskLevel,omitempty" xml:"riskLevel,omitempty"`
+	// example:
+	//
+	// 1.1
+	RuleSequence *string `json:"ruleSequence,omitempty" xml:"ruleSequence,omitempty"`
+	RuleTag      *string `json:"ruleTag,omitempty" xml:"ruleTag,omitempty"`
+	RuleTitle    *string `json:"ruleTitle,omitempty" xml:"ruleTitle,omitempty"`
+}
+
+func (s RunContractRuleGenerationResponseBodyOutputRules) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunContractRuleGenerationResponseBodyOutputRules) GoString() string {
+	return s.String()
+}
+
+func (s *RunContractRuleGenerationResponseBodyOutputRules) SetRiskLevel(v string) *RunContractRuleGenerationResponseBodyOutputRules {
+	s.RiskLevel = &v
+	return s
+}
+
+func (s *RunContractRuleGenerationResponseBodyOutputRules) SetRuleSequence(v string) *RunContractRuleGenerationResponseBodyOutputRules {
+	s.RuleSequence = &v
+	return s
+}
+
+func (s *RunContractRuleGenerationResponseBodyOutputRules) SetRuleTag(v string) *RunContractRuleGenerationResponseBodyOutputRules {
+	s.RuleTag = &v
+	return s
+}
+
+func (s *RunContractRuleGenerationResponseBodyOutputRules) SetRuleTitle(v string) *RunContractRuleGenerationResponseBodyOutputRules {
+	s.RuleTitle = &v
+	return s
+}
+
+type RunContractRuleGenerationResponseBodyUsage struct {
+	// example:
+	//
+	// 5
+	Input *int64 `json:"input,omitempty" xml:"input,omitempty"`
+	// example:
+	//
+	// page
+	Unit *string `json:"unit,omitempty" xml:"unit,omitempty"`
+}
+
+func (s RunContractRuleGenerationResponseBodyUsage) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunContractRuleGenerationResponseBodyUsage) GoString() string {
+	return s.String()
+}
+
+func (s *RunContractRuleGenerationResponseBodyUsage) SetInput(v int64) *RunContractRuleGenerationResponseBodyUsage {
+	s.Input = &v
+	return s
+}
+
+func (s *RunContractRuleGenerationResponseBodyUsage) SetUnit(v string) *RunContractRuleGenerationResponseBodyUsage {
+	s.Unit = &v
+	return s
+}
+
+type RunContractRuleGenerationResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RunContractRuleGenerationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s RunContractRuleGenerationResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunContractRuleGenerationResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RunContractRuleGenerationResponse) SetHeaders(v map[string]*string) *RunContractRuleGenerationResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RunContractRuleGenerationResponse) SetStatusCode(v int32) *RunContractRuleGenerationResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *RunContractRuleGenerationResponse) SetBody(v *RunContractRuleGenerationResponseBody) *RunContractRuleGenerationResponse {
+	s.Body = v
+	return s
+}
+
 type RunLegalAdviceConsultationRequest struct {
 	// example:
 	//
@@ -765,6 +1595,162 @@ func (client *Client) CreateTextFileAdvance(WorkspaceId *string, request *Create
 	}
 
 	_result = createTextFileResp
+	return _result, _err
+}
+
+// Summary:
+//
+// 生成合同审查结果
+//
+// @param tmpReq - RunContractResultGenerationRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RunContractResultGenerationResponse
+func (client *Client) RunContractResultGenerationWithOptions(workspaceId *string, tmpReq *RunContractResultGenerationRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *RunContractResultGenerationResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &RunContractResultGenerationShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Assistant)) {
+		request.AssistantShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Assistant, tea.String("assistant"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		body["appId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AssistantShrink)) {
+		body["assistant"] = request.AssistantShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Stream)) {
+		body["stream"] = request.Stream
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RunContractResultGeneration"),
+		Version:     tea.String("2024-06-28"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/" + tea.StringValue(openapiutil.GetEncodeParam(workspaceId)) + "/farui/contract/result/genarate"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &RunContractResultGenerationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 生成合同审查结果
+//
+// @param request - RunContractResultGenerationRequest
+//
+// @return RunContractResultGenerationResponse
+func (client *Client) RunContractResultGeneration(workspaceId *string, request *RunContractResultGenerationRequest) (_result *RunContractResultGenerationResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &RunContractResultGenerationResponse{}
+	_body, _err := client.RunContractResultGenerationWithOptions(workspaceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 生成合同审查规则
+//
+// @param tmpReq - RunContractRuleGenerationRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RunContractRuleGenerationResponse
+func (client *Client) RunContractRuleGenerationWithOptions(workspaceId *string, tmpReq *RunContractRuleGenerationRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *RunContractRuleGenerationResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &RunContractRuleGenerationShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Assistant)) {
+		request.AssistantShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Assistant, tea.String("assistant"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		body["appId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AssistantShrink)) {
+		body["assistant"] = request.AssistantShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Stream)) {
+		body["stream"] = request.Stream
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RunContractRuleGeneration"),
+		Version:     tea.String("2024-06-28"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/" + tea.StringValue(openapiutil.GetEncodeParam(workspaceId)) + "/farui/contract/rule/genarate"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &RunContractRuleGenerationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 生成合同审查规则
+//
+// @param request - RunContractRuleGenerationRequest
+//
+// @return RunContractRuleGenerationResponse
+func (client *Client) RunContractRuleGeneration(workspaceId *string, request *RunContractRuleGenerationRequest) (_result *RunContractRuleGenerationResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &RunContractRuleGenerationResponse{}
+	_body, _err := client.RunContractRuleGenerationWithOptions(workspaceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
 	return _result, _err
 }
 
