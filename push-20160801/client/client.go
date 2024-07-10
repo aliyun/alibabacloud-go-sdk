@@ -3675,8 +3675,6 @@ type QueryDeviceStatRequest struct {
 	//
 	// 23267207
 	AppKey *int64 `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
-	// This parameter is required.
-	//
 	// example:
 	//
 	// iOS
