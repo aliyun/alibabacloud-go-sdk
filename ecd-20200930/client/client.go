@@ -26401,7 +26401,8 @@ type DescribeOfficeSitesRequest struct {
 	// example:
 	//
 	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId           *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	SecurityProtection *string `json:"SecurityProtection,omitempty" xml:"SecurityProtection,omitempty"`
 	// The office network status.
 	//
 	// Valid values:
@@ -26517,6 +26518,11 @@ func (s *DescribeOfficeSitesRequest) SetRegionId(v string) *DescribeOfficeSitesR
 	return s
 }
 
+func (s *DescribeOfficeSitesRequest) SetSecurityProtection(v string) *DescribeOfficeSitesRequest {
+	s.SecurityProtection = &v
+	return s
+}
+
 func (s *DescribeOfficeSitesRequest) SetStatus(v string) *DescribeOfficeSitesRequest {
 	s.Status = &v
 	return s
@@ -26536,7 +26542,8 @@ type DescribeOfficeSitesResponseBody struct {
 	// example:
 	//
 	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount *int32  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeOfficeSitesResponseBody) String() string {
@@ -26559,6 +26566,11 @@ func (s *DescribeOfficeSitesResponseBody) SetOfficeSites(v []*DescribeOfficeSite
 
 func (s *DescribeOfficeSitesResponseBody) SetRequestId(v string) *DescribeOfficeSitesResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeOfficeSitesResponseBody) SetTotalCount(v int32) *DescribeOfficeSitesResponseBody {
+	s.TotalCount = &v
 	return s
 }
 
@@ -26810,7 +26822,8 @@ type DescribeOfficeSitesResponseBodyOfficeSites struct {
 	// example:
 	//
 	// 2
-	RdsLicenseStatus *string `json:"RdsLicenseStatus,omitempty" xml:"RdsLicenseStatus,omitempty"`
+	RdsLicenseStatus   *string `json:"RdsLicenseStatus,omitempty" xml:"RdsLicenseStatus,omitempty"`
+	SecurityProtection *string `json:"SecurityProtection,omitempty" xml:"SecurityProtection,omitempty"`
 	// Indicates whether single sign-on (SSO) is enabled.
 	//
 	// example:
@@ -27094,6 +27107,11 @@ func (s *DescribeOfficeSitesResponseBodyOfficeSites) SetRdsLicenseDomainName(v s
 
 func (s *DescribeOfficeSitesResponseBodyOfficeSites) SetRdsLicenseStatus(v string) *DescribeOfficeSitesResponseBodyOfficeSites {
 	s.RdsLicenseStatus = &v
+	return s
+}
+
+func (s *DescribeOfficeSitesResponseBodyOfficeSites) SetSecurityProtection(v string) *DescribeOfficeSitesResponseBodyOfficeSites {
+	s.SecurityProtection = &v
 	return s
 }
 
@@ -59160,6 +59178,10 @@ func (client *Client) DescribeOfficeSitesWithOptions(request *DescribeOfficeSite
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityProtection)) {
+		query["SecurityProtection"] = request.SecurityProtection
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Status)) {
