@@ -6069,6 +6069,248 @@ func (s *RecognizeGeneralResponse) SetBody(v *RecognizeGeneralResponseBody) *Rec
 	return s
 }
 
+type RecognizeGeneralStructureRequest struct {
+	Keys []*string `json:"Keys,omitempty" xml:"Keys,omitempty" type:"Repeated"`
+	// example:
+	//
+	// https://example.png
+	Url  *string   `json:"Url,omitempty" xml:"Url,omitempty"`
+	Body io.Reader `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s RecognizeGeneralStructureRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeGeneralStructureRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeGeneralStructureRequest) SetKeys(v []*string) *RecognizeGeneralStructureRequest {
+	s.Keys = v
+	return s
+}
+
+func (s *RecognizeGeneralStructureRequest) SetUrl(v string) *RecognizeGeneralStructureRequest {
+	s.Url = &v
+	return s
+}
+
+func (s *RecognizeGeneralStructureRequest) SetBody(v io.Reader) *RecognizeGeneralStructureRequest {
+	s.Body = v
+	return s
+}
+
+type RecognizeGeneralStructureShrinkRequest struct {
+	KeysShrink *string `json:"Keys,omitempty" xml:"Keys,omitempty"`
+	// example:
+	//
+	// https://example.png
+	Url  *string   `json:"Url,omitempty" xml:"Url,omitempty"`
+	Body io.Reader `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s RecognizeGeneralStructureShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeGeneralStructureShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeGeneralStructureShrinkRequest) SetKeysShrink(v string) *RecognizeGeneralStructureShrinkRequest {
+	s.KeysShrink = &v
+	return s
+}
+
+func (s *RecognizeGeneralStructureShrinkRequest) SetUrl(v string) *RecognizeGeneralStructureShrinkRequest {
+	s.Url = &v
+	return s
+}
+
+func (s *RecognizeGeneralStructureShrinkRequest) SetBody(v io.Reader) *RecognizeGeneralStructureShrinkRequest {
+	s.Body = v
+	return s
+}
+
+type RecognizeGeneralStructureResponseBody struct {
+	// example:
+	//
+	// LLMTimeout
+	Code *string                                    `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *RecognizeGeneralStructureResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// Large language model timeout, please try again with fewer keys.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 2F86F9B6-CF68-1574-860C-7CC5E46F14BC
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s RecognizeGeneralStructureResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeGeneralStructureResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeGeneralStructureResponseBody) SetCode(v string) *RecognizeGeneralStructureResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *RecognizeGeneralStructureResponseBody) SetData(v *RecognizeGeneralStructureResponseBodyData) *RecognizeGeneralStructureResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *RecognizeGeneralStructureResponseBody) SetMessage(v string) *RecognizeGeneralStructureResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *RecognizeGeneralStructureResponseBody) SetRequestId(v string) *RecognizeGeneralStructureResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type RecognizeGeneralStructureResponseBodyData struct {
+	// example:
+	//
+	// 2000
+	Height *int32 `json:"Height,omitempty" xml:"Height,omitempty"`
+	// example:
+	//
+	// 1
+	SubImageCount *int32                                                `json:"SubImageCount,omitempty" xml:"SubImageCount,omitempty"`
+	SubImages     []*RecognizeGeneralStructureResponseBodyDataSubImages `json:"SubImages,omitempty" xml:"SubImages,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1000
+	Width *int32 `json:"Width,omitempty" xml:"Width,omitempty"`
+}
+
+func (s RecognizeGeneralStructureResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeGeneralStructureResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeGeneralStructureResponseBodyData) SetHeight(v int32) *RecognizeGeneralStructureResponseBodyData {
+	s.Height = &v
+	return s
+}
+
+func (s *RecognizeGeneralStructureResponseBodyData) SetSubImageCount(v int32) *RecognizeGeneralStructureResponseBodyData {
+	s.SubImageCount = &v
+	return s
+}
+
+func (s *RecognizeGeneralStructureResponseBodyData) SetSubImages(v []*RecognizeGeneralStructureResponseBodyDataSubImages) *RecognizeGeneralStructureResponseBodyData {
+	s.SubImages = v
+	return s
+}
+
+func (s *RecognizeGeneralStructureResponseBodyData) SetWidth(v int32) *RecognizeGeneralStructureResponseBodyData {
+	s.Width = &v
+	return s
+}
+
+type RecognizeGeneralStructureResponseBodyDataSubImages struct {
+	// example:
+	//
+	// 0
+	Angle  *int32                                                    `json:"Angle,omitempty" xml:"Angle,omitempty"`
+	KvInfo *RecognizeGeneralStructureResponseBodyDataSubImagesKvInfo `json:"KvInfo,omitempty" xml:"KvInfo,omitempty" type:"Struct"`
+	// example:
+	//
+	// 0
+	SubImageId *int32 `json:"SubImageId,omitempty" xml:"SubImageId,omitempty"`
+}
+
+func (s RecognizeGeneralStructureResponseBodyDataSubImages) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeGeneralStructureResponseBodyDataSubImages) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeGeneralStructureResponseBodyDataSubImages) SetAngle(v int32) *RecognizeGeneralStructureResponseBodyDataSubImages {
+	s.Angle = &v
+	return s
+}
+
+func (s *RecognizeGeneralStructureResponseBodyDataSubImages) SetKvInfo(v *RecognizeGeneralStructureResponseBodyDataSubImagesKvInfo) *RecognizeGeneralStructureResponseBodyDataSubImages {
+	s.KvInfo = v
+	return s
+}
+
+func (s *RecognizeGeneralStructureResponseBodyDataSubImages) SetSubImageId(v int32) *RecognizeGeneralStructureResponseBodyDataSubImages {
+	s.SubImageId = &v
+	return s
+}
+
+type RecognizeGeneralStructureResponseBodyDataSubImagesKvInfo struct {
+	Data interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// 6
+	KvCount *int32 `json:"KvCount,omitempty" xml:"KvCount,omitempty"`
+}
+
+func (s RecognizeGeneralStructureResponseBodyDataSubImagesKvInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeGeneralStructureResponseBodyDataSubImagesKvInfo) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeGeneralStructureResponseBodyDataSubImagesKvInfo) SetData(v interface{}) *RecognizeGeneralStructureResponseBodyDataSubImagesKvInfo {
+	s.Data = v
+	return s
+}
+
+func (s *RecognizeGeneralStructureResponseBodyDataSubImagesKvInfo) SetKvCount(v int32) *RecognizeGeneralStructureResponseBodyDataSubImagesKvInfo {
+	s.KvCount = &v
+	return s
+}
+
+type RecognizeGeneralStructureResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RecognizeGeneralStructureResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s RecognizeGeneralStructureResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeGeneralStructureResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeGeneralStructureResponse) SetHeaders(v map[string]*string) *RecognizeGeneralStructureResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RecognizeGeneralStructureResponse) SetStatusCode(v int32) *RecognizeGeneralStructureResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *RecognizeGeneralStructureResponse) SetBody(v *RecognizeGeneralStructureResponseBody) *RecognizeGeneralStructureResponse {
+	s.Body = v
+	return s
+}
+
 type RecognizeHKIdcardRequest struct {
 	// example:
 	//
@@ -12859,6 +13101,78 @@ func (client *Client) RecognizeGeneral(request *RecognizeGeneralRequest) (_resul
 	runtime := &util.RuntimeOptions{}
 	_result = &RecognizeGeneralResponse{}
 	_body, _err := client.RecognizeGeneralWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// DocMaster
+//
+// @param tmpReq - RecognizeGeneralStructureRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RecognizeGeneralStructureResponse
+func (client *Client) RecognizeGeneralStructureWithOptions(tmpReq *RecognizeGeneralStructureRequest, runtime *util.RuntimeOptions) (_result *RecognizeGeneralStructureResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &RecognizeGeneralStructureShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Keys)) {
+		request.KeysShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Keys, tea.String("Keys"), tea.String("simple"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.KeysShrink)) {
+		query["Keys"] = request.KeysShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Url)) {
+		query["Url"] = request.Url
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query:  openapiutil.Query(query),
+		Body:   request.Body,
+		Stream: tmpReq.Body,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RecognizeGeneralStructure"),
+		Version:     tea.String("2021-07-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &RecognizeGeneralStructureResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// DocMaster
+//
+// @param request - RecognizeGeneralStructureRequest
+//
+// @return RecognizeGeneralStructureResponse
+func (client *Client) RecognizeGeneralStructure(request *RecognizeGeneralStructureRequest) (_result *RecognizeGeneralStructureResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &RecognizeGeneralStructureResponse{}
+	_body, _err := client.RecognizeGeneralStructureWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
