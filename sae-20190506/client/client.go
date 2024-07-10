@@ -1075,6 +1075,7 @@ type BuildPipelineDeployConfig struct {
 	MaximumInstanceCount   *int32  `json:"MaximumInstanceCount,omitempty" xml:"MaximumInstanceCount,omitempty"`
 	MinimumInstanceCount   *int32  `json:"MinimumInstanceCount,omitempty" xml:"MinimumInstanceCount,omitempty"`
 	UpdateApplicationInput *string `json:"UpdateApplicationInput,omitempty" xml:"UpdateApplicationInput,omitempty"`
+	UpdateTraffic          *bool   `json:"UpdateTraffic,omitempty" xml:"UpdateTraffic,omitempty"`
 }
 
 func (s BuildPipelineDeployConfig) String() string {
@@ -1102,6 +1103,11 @@ func (s *BuildPipelineDeployConfig) SetMinimumInstanceCount(v int32) *BuildPipel
 
 func (s *BuildPipelineDeployConfig) SetUpdateApplicationInput(v string) *BuildPipelineDeployConfig {
 	s.UpdateApplicationInput = &v
+	return s
+}
+
+func (s *BuildPipelineDeployConfig) SetUpdateTraffic(v bool) *BuildPipelineDeployConfig {
+	s.UpdateTraffic = &v
 	return s
 }
 
@@ -1546,6 +1552,7 @@ type BuildPipelineRunDeployConfig struct {
 	MaximumInstanceCount   *int32  `json:"MaximumInstanceCount,omitempty" xml:"MaximumInstanceCount,omitempty"`
 	MinimumInstanceCount   *int32  `json:"MinimumInstanceCount,omitempty" xml:"MinimumInstanceCount,omitempty"`
 	UpdateApplicationInput *string `json:"UpdateApplicationInput,omitempty" xml:"UpdateApplicationInput,omitempty"`
+	UpdateTraffic          *bool   `json:"UpdateTraffic,omitempty" xml:"UpdateTraffic,omitempty"`
 }
 
 func (s BuildPipelineRunDeployConfig) String() string {
@@ -1573,6 +1580,11 @@ func (s *BuildPipelineRunDeployConfig) SetMinimumInstanceCount(v int32) *BuildPi
 
 func (s *BuildPipelineRunDeployConfig) SetUpdateApplicationInput(v string) *BuildPipelineRunDeployConfig {
 	s.UpdateApplicationInput = &v
+	return s
+}
+
+func (s *BuildPipelineRunDeployConfig) SetUpdateTraffic(v bool) *BuildPipelineRunDeployConfig {
+	s.UpdateTraffic = &v
 	return s
 }
 
@@ -1777,6 +1789,149 @@ func (s *CertConfig) SetCertificate(v string) *CertConfig {
 
 func (s *CertConfig) SetPrivateKey(v string) *CertConfig {
 	s.PrivateKey = &v
+	return s
+}
+
+type Container struct {
+	// example:
+	//
+	// ["abc", ">", "file0"]
+	Args *string `json:"Args,omitempty" xml:"Args,omitempty"`
+	// example:
+	//
+	// ["/bin/sh"]
+	Command              *string            `json:"Command,omitempty" xml:"Command,omitempty"`
+	EnvironmentVariables map[string]*string `json:"EnvironmentVariables,omitempty" xml:"EnvironmentVariables,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// registry.cn-shanghai.aliyuncs.com/serverless_devsxxxxx
+	Image                *string               `json:"Image,omitempty" xml:"Image,omitempty"`
+	MetricsCollectConfig *MetricsCollectConfig `json:"MetricsCollectConfig,omitempty" xml:"MetricsCollectConfig,omitempty"`
+	// example:
+	//
+	// 8080
+	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
+	// example:
+	//
+	// 100
+	RequestConcurrency *int32 `json:"RequestConcurrency,omitempty" xml:"RequestConcurrency,omitempty"`
+	// example:
+	//
+	// 60
+	RequestTimeout *int32 `json:"RequestTimeout,omitempty" xml:"RequestTimeout,omitempty"`
+	// This parameter is required.
+	Resources         *ContainerResources `json:"Resources,omitempty" xml:"Resources,omitempty"`
+	SLSCollectConfigs *SLSCollectConfigs  `json:"SLSCollectConfigs,omitempty" xml:"SLSCollectConfigs,omitempty"`
+	StartupProbe      *StartupProbe       `json:"StartupProbe,omitempty" xml:"StartupProbe,omitempty"`
+	WebNASConfig      *WebNASConfig       `json:"WebNASConfig,omitempty" xml:"WebNASConfig,omitempty"`
+	WebOSSConfig      *WebOSSConfig       `json:"WebOSSConfig,omitempty" xml:"WebOSSConfig,omitempty"`
+}
+
+func (s Container) String() string {
+	return tea.Prettify(s)
+}
+
+func (s Container) GoString() string {
+	return s.String()
+}
+
+func (s *Container) SetArgs(v string) *Container {
+	s.Args = &v
+	return s
+}
+
+func (s *Container) SetCommand(v string) *Container {
+	s.Command = &v
+	return s
+}
+
+func (s *Container) SetEnvironmentVariables(v map[string]*string) *Container {
+	s.EnvironmentVariables = v
+	return s
+}
+
+func (s *Container) SetImage(v string) *Container {
+	s.Image = &v
+	return s
+}
+
+func (s *Container) SetMetricsCollectConfig(v *MetricsCollectConfig) *Container {
+	s.MetricsCollectConfig = v
+	return s
+}
+
+func (s *Container) SetPort(v int32) *Container {
+	s.Port = &v
+	return s
+}
+
+func (s *Container) SetRequestConcurrency(v int32) *Container {
+	s.RequestConcurrency = &v
+	return s
+}
+
+func (s *Container) SetRequestTimeout(v int32) *Container {
+	s.RequestTimeout = &v
+	return s
+}
+
+func (s *Container) SetResources(v *ContainerResources) *Container {
+	s.Resources = v
+	return s
+}
+
+func (s *Container) SetSLSCollectConfigs(v *SLSCollectConfigs) *Container {
+	s.SLSCollectConfigs = v
+	return s
+}
+
+func (s *Container) SetStartupProbe(v *StartupProbe) *Container {
+	s.StartupProbe = v
+	return s
+}
+
+func (s *Container) SetWebNASConfig(v *WebNASConfig) *Container {
+	s.WebNASConfig = v
+	return s
+}
+
+func (s *Container) SetWebOSSConfig(v *WebOSSConfig) *Container {
+	s.WebOSSConfig = v
+	return s
+}
+
+type ContainerResources struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2000
+	Cpu *int32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2048
+	Memory *int32 `json:"Memory,omitempty" xml:"Memory,omitempty"`
+}
+
+func (s ContainerResources) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ContainerResources) GoString() string {
+	return s.String()
+}
+
+func (s *ContainerResources) SetCpu(v int32) *ContainerResources {
+	s.Cpu = &v
+	return s
+}
+
+func (s *ContainerResources) SetMemory(v int32) *ContainerResources {
+	s.Memory = &v
 	return s
 }
 
@@ -2153,6 +2308,117 @@ func (s *CreateSlsResourceResponse) SetRequestId(v string) *CreateSlsResourceRes
 	return s
 }
 
+type CreateWebApplicationInput struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// sae-app
+	ApplicationName *string `json:"ApplicationName,omitempty" xml:"ApplicationName,omitempty"`
+	// example:
+	//
+	// my sae app
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// This parameter is required.
+	RevisionConfig   *RevisionConfig   `json:"RevisionConfig,omitempty" xml:"RevisionConfig,omitempty"`
+	WebNetworkConfig *WebNetworkConfig `json:"WebNetworkConfig,omitempty" xml:"WebNetworkConfig,omitempty"`
+	WebScalingConfig *WebScalingConfig `json:"WebScalingConfig,omitempty" xml:"WebScalingConfig,omitempty"`
+	WebTrafficConfig *WebTrafficConfig `json:"WebTrafficConfig,omitempty" xml:"WebTrafficConfig,omitempty"`
+}
+
+func (s CreateWebApplicationInput) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateWebApplicationInput) GoString() string {
+	return s.String()
+}
+
+func (s *CreateWebApplicationInput) SetApplicationName(v string) *CreateWebApplicationInput {
+	s.ApplicationName = &v
+	return s
+}
+
+func (s *CreateWebApplicationInput) SetDescription(v string) *CreateWebApplicationInput {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateWebApplicationInput) SetRevisionConfig(v *RevisionConfig) *CreateWebApplicationInput {
+	s.RevisionConfig = v
+	return s
+}
+
+func (s *CreateWebApplicationInput) SetWebNetworkConfig(v *WebNetworkConfig) *CreateWebApplicationInput {
+	s.WebNetworkConfig = v
+	return s
+}
+
+func (s *CreateWebApplicationInput) SetWebScalingConfig(v *WebScalingConfig) *CreateWebApplicationInput {
+	s.WebScalingConfig = v
+	return s
+}
+
+func (s *CreateWebApplicationInput) SetWebTrafficConfig(v *WebTrafficConfig) *CreateWebApplicationInput {
+	s.WebTrafficConfig = v
+	return s
+}
+
+type CreateWebCustomDomainInput struct {
+	DefaultForwardingAppName *string `json:"DefaultForwardingAppName,omitempty" xml:"DefaultForwardingAppName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// example.com
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// example:
+	//
+	// HTTP
+	Protocol      *string        `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	WebCertConfig *WebCertConfig `json:"WebCertConfig,omitempty" xml:"WebCertConfig,omitempty"`
+	WebTLSConfig  *WebTLSConfig  `json:"WebTLSConfig,omitempty" xml:"WebTLSConfig,omitempty"`
+	WebWAFConfig  *WebWAFConfig  `json:"WebWAFConfig,omitempty" xml:"WebWAFConfig,omitempty"`
+}
+
+func (s CreateWebCustomDomainInput) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateWebCustomDomainInput) GoString() string {
+	return s.String()
+}
+
+func (s *CreateWebCustomDomainInput) SetDefaultForwardingAppName(v string) *CreateWebCustomDomainInput {
+	s.DefaultForwardingAppName = &v
+	return s
+}
+
+func (s *CreateWebCustomDomainInput) SetDomainName(v string) *CreateWebCustomDomainInput {
+	s.DomainName = &v
+	return s
+}
+
+func (s *CreateWebCustomDomainInput) SetProtocol(v string) *CreateWebCustomDomainInput {
+	s.Protocol = &v
+	return s
+}
+
+func (s *CreateWebCustomDomainInput) SetWebCertConfig(v *WebCertConfig) *CreateWebCustomDomainInput {
+	s.WebCertConfig = v
+	return s
+}
+
+func (s *CreateWebCustomDomainInput) SetWebTLSConfig(v *WebTLSConfig) *CreateWebCustomDomainInput {
+	s.WebTLSConfig = v
+	return s
+}
+
+func (s *CreateWebCustomDomainInput) SetWebWAFConfig(v *WebWAFConfig) *CreateWebCustomDomainInput {
+	s.WebWAFConfig = v
+	return s
+}
+
 type CustomDNS struct {
 	DnsOptions  []*DNSOption `json:"dnsOptions,omitempty" xml:"dnsOptions,omitempty" type:"Repeated"`
 	NameServers []*string    `json:"nameServers,omitempty" xml:"nameServers,omitempty" type:"Repeated"`
@@ -2367,6 +2633,150 @@ func (s *DNSOption) SetName(v string) *DNSOption {
 
 func (s *DNSOption) SetValue(v string) *DNSOption {
 	s.Value = &v
+	return s
+}
+
+type DescribeInstanceLogsOutput struct {
+	WebLogEntrys []*WebLogEntry `json:"WebLogEntrys,omitempty" xml:"WebLogEntrys,omitempty" type:"Repeated"`
+}
+
+func (s DescribeInstanceLogsOutput) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInstanceLogsOutput) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstanceLogsOutput) SetWebLogEntrys(v []*WebLogEntry) *DescribeInstanceLogsOutput {
+	s.WebLogEntrys = v
+	return s
+}
+
+type DescribeWebAppStaticsOutput struct {
+	Length        *int32            `json:"Length,omitempty" xml:"Length,omitempty"`
+	WebAppStatics []*WebStaticsInfo `json:"WebAppStatics,omitempty" xml:"WebAppStatics,omitempty" type:"Repeated"`
+}
+
+func (s DescribeWebAppStaticsOutput) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeWebAppStaticsOutput) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeWebAppStaticsOutput) SetLength(v int32) *DescribeWebAppStaticsOutput {
+	s.Length = &v
+	return s
+}
+
+func (s *DescribeWebAppStaticsOutput) SetWebAppStatics(v []*WebStaticsInfo) *DescribeWebAppStaticsOutput {
+	s.WebAppStatics = v
+	return s
+}
+
+type DescribeWebStaticsQueryOutput struct {
+	Length     *int32            `json:"Length,omitempty" xml:"Length,omitempty"`
+	WebStatics []*WebStaticsInfo `json:"WebStatics,omitempty" xml:"WebStatics,omitempty" type:"Repeated"`
+}
+
+func (s DescribeWebStaticsQueryOutput) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeWebStaticsQueryOutput) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeWebStaticsQueryOutput) SetLength(v int32) *DescribeWebStaticsQueryOutput {
+	s.Length = &v
+	return s
+}
+
+func (s *DescribeWebStaticsQueryOutput) SetWebStatics(v []*WebStaticsInfo) *DescribeWebStaticsQueryOutput {
+	s.WebStatics = v
+	return s
+}
+
+type ExecAction struct {
+	Command []*string `json:"command,omitempty" xml:"command,omitempty" type:"Repeated"`
+}
+
+func (s ExecAction) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExecAction) GoString() string {
+	return s.String()
+}
+
+func (s *ExecAction) SetCommand(v []*string) *ExecAction {
+	s.Command = v
+	return s
+}
+
+type ExternalErrorSAEWeb struct {
+	Code      *int32  `json:"code,omitempty" xml:"code,omitempty"`
+	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	Message   *string `json:"message,omitempty" xml:"message,omitempty"`
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success   *bool   `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s ExternalErrorSAEWeb) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExternalErrorSAEWeb) GoString() string {
+	return s.String()
+}
+
+func (s *ExternalErrorSAEWeb) SetCode(v int32) *ExternalErrorSAEWeb {
+	s.Code = &v
+	return s
+}
+
+func (s *ExternalErrorSAEWeb) SetErrorCode(v string) *ExternalErrorSAEWeb {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *ExternalErrorSAEWeb) SetMessage(v string) *ExternalErrorSAEWeb {
+	s.Message = &v
+	return s
+}
+
+func (s *ExternalErrorSAEWeb) SetRequestId(v string) *ExternalErrorSAEWeb {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ExternalErrorSAEWeb) SetSuccess(v bool) *ExternalErrorSAEWeb {
+	s.Success = &v
+	return s
+}
+
+type GRPCAction struct {
+	Port    *int32  `json:"port,omitempty" xml:"port,omitempty"`
+	Service *string `json:"service,omitempty" xml:"service,omitempty"`
+}
+
+func (s GRPCAction) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GRPCAction) GoString() string {
+	return s.String()
+}
+
+func (s *GRPCAction) SetPort(v int32) *GRPCAction {
+	s.Port = &v
+	return s
+}
+
+func (s *GRPCAction) SetService(v string) *GRPCAction {
+	s.Service = &v
 	return s
 }
 
@@ -2709,6 +3119,70 @@ func (s *GetQuotaOutput) SetInstanceLimit(v int64) *GetQuotaOutput {
 
 func (s *GetQuotaOutput) SetInstanceUsed(v int64) *GetQuotaOutput {
 	s.InstanceUsed = &v
+	return s
+}
+
+type HTTPGetAction struct {
+	Host        *string       `json:"Host,omitempty" xml:"Host,omitempty"`
+	HttpHeaders []*HTTPHeader `json:"HttpHeaders,omitempty" xml:"HttpHeaders,omitempty" type:"Repeated"`
+	Path        *string       `json:"Path,omitempty" xml:"Path,omitempty"`
+	Port        *int32        `json:"Port,omitempty" xml:"Port,omitempty"`
+	Scheme      *string       `json:"Scheme,omitempty" xml:"Scheme,omitempty"`
+}
+
+func (s HTTPGetAction) String() string {
+	return tea.Prettify(s)
+}
+
+func (s HTTPGetAction) GoString() string {
+	return s.String()
+}
+
+func (s *HTTPGetAction) SetHost(v string) *HTTPGetAction {
+	s.Host = &v
+	return s
+}
+
+func (s *HTTPGetAction) SetHttpHeaders(v []*HTTPHeader) *HTTPGetAction {
+	s.HttpHeaders = v
+	return s
+}
+
+func (s *HTTPGetAction) SetPath(v string) *HTTPGetAction {
+	s.Path = &v
+	return s
+}
+
+func (s *HTTPGetAction) SetPort(v int32) *HTTPGetAction {
+	s.Port = &v
+	return s
+}
+
+func (s *HTTPGetAction) SetScheme(v string) *HTTPGetAction {
+	s.Scheme = &v
+	return s
+}
+
+type HTTPHeader struct {
+	Name  *string `json:"name,omitempty" xml:"name,omitempty"`
+	Value *string `json:"value,omitempty" xml:"value,omitempty"`
+}
+
+func (s HTTPHeader) String() string {
+	return tea.Prettify(s)
+}
+
+func (s HTTPHeader) GoString() string {
+	return s.String()
+}
+
+func (s *HTTPHeader) SetName(v string) *HTTPHeader {
+	s.Name = &v
+	return s
+}
+
+func (s *HTTPHeader) SetValue(v string) *HTTPHeader {
+	s.Value = &v
 	return s
 }
 
@@ -3347,6 +3821,268 @@ func (s *ListStaticsQueryResponse) SetStatics(v []*StaticsInfo) *ListStaticsQuer
 	return s
 }
 
+type ListWebApplicationInstancesBody struct {
+	Code      *int32                  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *ListWebInstancesOutput `json:"Data,omitempty" xml:"Data,omitempty"`
+	Message   *string                 `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ListWebApplicationInstancesBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListWebApplicationInstancesBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListWebApplicationInstancesBody) SetCode(v int32) *ListWebApplicationInstancesBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListWebApplicationInstancesBody) SetData(v *ListWebInstancesOutput) *ListWebApplicationInstancesBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListWebApplicationInstancesBody) SetMessage(v string) *ListWebApplicationInstancesBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListWebApplicationInstancesBody) SetRequestId(v string) *ListWebApplicationInstancesBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListWebApplicationInstancesBody) SetSuccess(v bool) *ListWebApplicationInstancesBody {
+	s.Success = &v
+	return s
+}
+
+type ListWebApplicationRevisionsBody struct {
+	Code      *int32                             `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *ListWebApplicationRevisionsOutput `json:"Data,omitempty" xml:"Data,omitempty"`
+	Message   *string                            `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                              `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ListWebApplicationRevisionsBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListWebApplicationRevisionsBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListWebApplicationRevisionsBody) SetCode(v int32) *ListWebApplicationRevisionsBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListWebApplicationRevisionsBody) SetData(v *ListWebApplicationRevisionsOutput) *ListWebApplicationRevisionsBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListWebApplicationRevisionsBody) SetMessage(v string) *ListWebApplicationRevisionsBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListWebApplicationRevisionsBody) SetRequestId(v string) *ListWebApplicationRevisionsBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListWebApplicationRevisionsBody) SetSuccess(v bool) *ListWebApplicationRevisionsBody {
+	s.Success = &v
+	return s
+}
+
+type ListWebApplicationRevisionsOutput struct {
+	NextToken *string     `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	Revisions []*Revision `json:"Revisions,omitempty" xml:"Revisions,omitempty" type:"Repeated"`
+}
+
+func (s ListWebApplicationRevisionsOutput) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListWebApplicationRevisionsOutput) GoString() string {
+	return s.String()
+}
+
+func (s *ListWebApplicationRevisionsOutput) SetNextToken(v string) *ListWebApplicationRevisionsOutput {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListWebApplicationRevisionsOutput) SetRevisions(v []*Revision) *ListWebApplicationRevisionsOutput {
+	s.Revisions = v
+	return s
+}
+
+type ListWebApplicationsBody struct {
+	Code      *int32                     `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *ListWebApplicationsOutput `json:"Data,omitempty" xml:"Data,omitempty"`
+	Message   *string                    `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                      `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ListWebApplicationsBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListWebApplicationsBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListWebApplicationsBody) SetCode(v int32) *ListWebApplicationsBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListWebApplicationsBody) SetData(v *ListWebApplicationsOutput) *ListWebApplicationsBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListWebApplicationsBody) SetMessage(v string) *ListWebApplicationsBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListWebApplicationsBody) SetRequestId(v string) *ListWebApplicationsBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListWebApplicationsBody) SetSuccess(v bool) *ListWebApplicationsBody {
+	s.Success = &v
+	return s
+}
+
+type ListWebApplicationsOutput struct {
+	NextToken                       *string                            `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	WebApplicationWithInstanceCount []*WebApplicationWithInstanceCount `json:"WebApplicationWithInstanceCount,omitempty" xml:"WebApplicationWithInstanceCount,omitempty" type:"Repeated"`
+}
+
+func (s ListWebApplicationsOutput) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListWebApplicationsOutput) GoString() string {
+	return s.String()
+}
+
+func (s *ListWebApplicationsOutput) SetNextToken(v string) *ListWebApplicationsOutput {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListWebApplicationsOutput) SetWebApplicationWithInstanceCount(v []*WebApplicationWithInstanceCount) *ListWebApplicationsOutput {
+	s.WebApplicationWithInstanceCount = v
+	return s
+}
+
+type ListWebCustomDomainBody struct {
+	Code      *int32                     `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *ListWebCustomDomainOutput `json:"Data,omitempty" xml:"Data,omitempty"`
+	Message   *string                    `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                      `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ListWebCustomDomainBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListWebCustomDomainBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListWebCustomDomainBody) SetCode(v int32) *ListWebCustomDomainBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListWebCustomDomainBody) SetData(v *ListWebCustomDomainOutput) *ListWebCustomDomainBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListWebCustomDomainBody) SetMessage(v string) *ListWebCustomDomainBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListWebCustomDomainBody) SetRequestId(v string) *ListWebCustomDomainBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListWebCustomDomainBody) SetSuccess(v bool) *ListWebCustomDomainBody {
+	s.Success = &v
+	return s
+}
+
+type ListWebCustomDomainOutput struct {
+	NextToken        *string            `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	WebCustomDomains []*WebCustomDomain `json:"WebCustomDomains,omitempty" xml:"WebCustomDomains,omitempty" type:"Repeated"`
+}
+
+func (s ListWebCustomDomainOutput) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListWebCustomDomainOutput) GoString() string {
+	return s.String()
+}
+
+func (s *ListWebCustomDomainOutput) SetNextToken(v string) *ListWebCustomDomainOutput {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListWebCustomDomainOutput) SetWebCustomDomains(v []*WebCustomDomain) *ListWebCustomDomainOutput {
+	s.WebCustomDomains = v
+	return s
+}
+
+type ListWebInstancesOutput struct {
+	CurrentError     *string                      `json:"CurrentError,omitempty" xml:"CurrentError,omitempty"`
+	WebInstances     []*WebInstanceInfo           `json:"WebInstances,omitempty" xml:"WebInstances,omitempty" type:"Repeated"`
+	WebVersionStatus map[string]*WebVersionStatus `json:"WebVersionStatus,omitempty" xml:"WebVersionStatus,omitempty"`
+}
+
+func (s ListWebInstancesOutput) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListWebInstancesOutput) GoString() string {
+	return s.String()
+}
+
+func (s *ListWebInstancesOutput) SetCurrentError(v string) *ListWebInstancesOutput {
+	s.CurrentError = &v
+	return s
+}
+
+func (s *ListWebInstancesOutput) SetWebInstances(v []*WebInstanceInfo) *ListWebInstancesOutput {
+	s.WebInstances = v
+	return s
+}
+
+func (s *ListWebInstancesOutput) SetWebVersionStatus(v map[string]*WebVersionStatus) *ListWebInstancesOutput {
+	s.WebVersionStatus = v
+	return s
+}
+
 type LogConfig struct {
 	EnableInstanceMetrics *bool   `json:"enableInstanceMetrics,omitempty" xml:"enableInstanceMetrics,omitempty"`
 	EnableRequestMetrics  *bool   `json:"enableRequestMetrics,omitempty" xml:"enableRequestMetrics,omitempty"`
@@ -3527,6 +4263,41 @@ func (s *MetricInfo) SetValue(v float32) *MetricInfo {
 	return s
 }
 
+type MetricsCollectConfig struct {
+	EnablePushToUserSLS *bool `json:"EnablePushToUserSLS,omitempty" xml:"EnablePushToUserSLS,omitempty"`
+	// example:
+	//
+	// my-sls-logstorename
+	LogstoreName *string `json:"LogstoreName,omitempty" xml:"LogstoreName,omitempty"`
+	// example:
+	//
+	// my-sls-project
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+}
+
+func (s MetricsCollectConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MetricsCollectConfig) GoString() string {
+	return s.String()
+}
+
+func (s *MetricsCollectConfig) SetEnablePushToUserSLS(v bool) *MetricsCollectConfig {
+	s.EnablePushToUserSLS = &v
+	return s
+}
+
+func (s *MetricsCollectConfig) SetLogstoreName(v string) *MetricsCollectConfig {
+	s.LogstoreName = &v
+	return s
+}
+
+func (s *MetricsCollectConfig) SetProjectName(v string) *MetricsCollectConfig {
+	s.ProjectName = &v
+	return s
+}
+
 type NASConfig struct {
 	MountPoints []*NASMountConfig `json:"mountPoints,omitempty" xml:"mountPoints,omitempty" type:"Repeated"`
 }
@@ -3593,7 +4364,6 @@ func (s *OSSMountConfig) SetMountPoints(v []*OSSMountPoint) *OSSMountConfig {
 type OSSMountPoint struct {
 	BucketName *string `json:"bucketName,omitempty" xml:"bucketName,omitempty"`
 	BucketPath *string `json:"bucketPath,omitempty" xml:"bucketPath,omitempty"`
-	Endpoint   *string `json:"endpoint,omitempty" xml:"endpoint,omitempty"`
 	MountDir   *string `json:"mountDir,omitempty" xml:"mountDir,omitempty"`
 	ReadOnly   *bool   `json:"readOnly,omitempty" xml:"readOnly,omitempty"`
 }
@@ -3613,11 +4383,6 @@ func (s *OSSMountPoint) SetBucketName(v string) *OSSMountPoint {
 
 func (s *OSSMountPoint) SetBucketPath(v string) *OSSMountPoint {
 	s.BucketPath = &v
-	return s
-}
-
-func (s *OSSMountPoint) SetEndpoint(v string) *OSSMountPoint {
-	s.Endpoint = &v
 	return s
 }
 
@@ -4274,6 +5039,29 @@ func (s *ProbeProbeHandlerTcpSocket) SetPort(v int32) *ProbeProbeHandlerTcpSocke
 	return s
 }
 
+type ProbeHandler struct {
+	HttpGet   *HTTPGetAction   `json:"HttpGet,omitempty" xml:"HttpGet,omitempty"`
+	TcpSocket *TCPSocketAction `json:"TcpSocket,omitempty" xml:"TcpSocket,omitempty"`
+}
+
+func (s ProbeHandler) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ProbeHandler) GoString() string {
+	return s.String()
+}
+
+func (s *ProbeHandler) SetHttpGet(v *HTTPGetAction) *ProbeHandler {
+	s.HttpGet = v
+	return s
+}
+
+func (s *ProbeHandler) SetTcpSocket(v *TCPSocketAction) *ProbeHandler {
+	s.TcpSocket = v
+	return s
+}
+
 type PublishApplicationVersionInput struct {
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 }
@@ -4288,6 +5076,116 @@ func (s PublishApplicationVersionInput) GoString() string {
 
 func (s *PublishApplicationVersionInput) SetDescription(v string) *PublishApplicationVersionInput {
 	s.Description = &v
+	return s
+}
+
+type PublishWebApplicationRevisionInput struct {
+	// This parameter is required.
+	Containers []*Container `json:"Containers,omitempty" xml:"Containers,omitempty" type:"Repeated"`
+	// example:
+	//
+	// test version
+	Description       *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	EnableArmsMetrics *bool   `json:"EnableArmsMetrics,omitempty" xml:"EnableArmsMetrics,omitempty"`
+	TakeEffect        *bool   `json:"TakeEffect,omitempty" xml:"TakeEffect,omitempty"`
+}
+
+func (s PublishWebApplicationRevisionInput) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PublishWebApplicationRevisionInput) GoString() string {
+	return s.String()
+}
+
+func (s *PublishWebApplicationRevisionInput) SetContainers(v []*Container) *PublishWebApplicationRevisionInput {
+	s.Containers = v
+	return s
+}
+
+func (s *PublishWebApplicationRevisionInput) SetDescription(v string) *PublishWebApplicationRevisionInput {
+	s.Description = &v
+	return s
+}
+
+func (s *PublishWebApplicationRevisionInput) SetEnableArmsMetrics(v bool) *PublishWebApplicationRevisionInput {
+	s.EnableArmsMetrics = &v
+	return s
+}
+
+func (s *PublishWebApplicationRevisionInput) SetTakeEffect(v bool) *PublishWebApplicationRevisionInput {
+	s.TakeEffect = &v
+	return s
+}
+
+type Revision struct {
+	CreatedTime    *string         `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	Description    *string         `json:"Description,omitempty" xml:"Description,omitempty"`
+	RevisionConfig *RevisionConfig `json:"RevisionConfig,omitempty" xml:"RevisionConfig,omitempty"`
+	RevisionId     *string         `json:"RevisionId,omitempty" xml:"RevisionId,omitempty"`
+	Weight         *float32        `json:"Weight,omitempty" xml:"Weight,omitempty"`
+}
+
+func (s Revision) String() string {
+	return tea.Prettify(s)
+}
+
+func (s Revision) GoString() string {
+	return s.String()
+}
+
+func (s *Revision) SetCreatedTime(v string) *Revision {
+	s.CreatedTime = &v
+	return s
+}
+
+func (s *Revision) SetDescription(v string) *Revision {
+	s.Description = &v
+	return s
+}
+
+func (s *Revision) SetRevisionConfig(v *RevisionConfig) *Revision {
+	s.RevisionConfig = v
+	return s
+}
+
+func (s *Revision) SetRevisionId(v string) *Revision {
+	s.RevisionId = &v
+	return s
+}
+
+func (s *Revision) SetWeight(v float32) *Revision {
+	s.Weight = &v
+	return s
+}
+
+type RevisionConfig struct {
+	// This parameter is required.
+	Containers        []*Container      `json:"Containers,omitempty" xml:"Containers,omitempty" type:"Repeated"`
+	EnableArmsMetrics *bool             `json:"EnableArmsMetrics,omitempty" xml:"EnableArmsMetrics,omitempty"`
+	WebNetworkConfig  *WebNetworkConfig `json:"WebNetworkConfig,omitempty" xml:"WebNetworkConfig,omitempty"`
+}
+
+func (s RevisionConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RevisionConfig) GoString() string {
+	return s.String()
+}
+
+func (s *RevisionConfig) SetContainers(v []*Container) *RevisionConfig {
+	s.Containers = v
+	return s
+}
+
+func (s *RevisionConfig) SetEnableArmsMetrics(v bool) *RevisionConfig {
+	s.EnableArmsMetrics = &v
+	return s
+}
+
+func (s *RevisionConfig) SetWebNetworkConfig(v *WebNetworkConfig) *RevisionConfig {
+	s.WebNetworkConfig = v
 	return s
 }
 
@@ -4328,6 +5226,70 @@ func (s *RoutePolicy) SetCondition(v string) *RoutePolicy {
 
 func (s *RoutePolicy) SetPolicyItems(v []*PolicyItem) *RoutePolicy {
 	s.PolicyItems = v
+	return s
+}
+
+type SLSCollectConfig struct {
+	LogPath      *string `json:"LogPath,omitempty" xml:"LogPath,omitempty"`
+	LogType      *string `json:"LogType,omitempty" xml:"LogType,omitempty"`
+	LogstoreName *string `json:"LogstoreName,omitempty" xml:"LogstoreName,omitempty"`
+	LogtailName  *string `json:"LogtailName,omitempty" xml:"LogtailName,omitempty"`
+	MachineGroup *string `json:"MachineGroup,omitempty" xml:"MachineGroup,omitempty"`
+	ProjectName  *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+}
+
+func (s SLSCollectConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SLSCollectConfig) GoString() string {
+	return s.String()
+}
+
+func (s *SLSCollectConfig) SetLogPath(v string) *SLSCollectConfig {
+	s.LogPath = &v
+	return s
+}
+
+func (s *SLSCollectConfig) SetLogType(v string) *SLSCollectConfig {
+	s.LogType = &v
+	return s
+}
+
+func (s *SLSCollectConfig) SetLogstoreName(v string) *SLSCollectConfig {
+	s.LogstoreName = &v
+	return s
+}
+
+func (s *SLSCollectConfig) SetLogtailName(v string) *SLSCollectConfig {
+	s.LogtailName = &v
+	return s
+}
+
+func (s *SLSCollectConfig) SetMachineGroup(v string) *SLSCollectConfig {
+	s.MachineGroup = &v
+	return s
+}
+
+func (s *SLSCollectConfig) SetProjectName(v string) *SLSCollectConfig {
+	s.ProjectName = &v
+	return s
+}
+
+type SLSCollectConfigs struct {
+	CollectConfigs []*SLSCollectConfig `json:"CollectConfigs,omitempty" xml:"CollectConfigs,omitempty" type:"Repeated"`
+}
+
+func (s SLSCollectConfigs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SLSCollectConfigs) GoString() string {
+	return s.String()
+}
+
+func (s *SLSCollectConfigs) SetCollectConfigs(v []*SLSCollectConfig) *SLSCollectConfigs {
+	s.CollectConfigs = v
 	return s
 }
 
@@ -4540,6 +5502,47 @@ func (s *SourceCodeRepoBranch) SetName(v string) *SourceCodeRepoBranch {
 	return s
 }
 
+type StartupProbe struct {
+	FailureThreshold    *int32        `json:"FailureThreshold,omitempty" xml:"FailureThreshold,omitempty"`
+	InitialDelaySeconds *int32        `json:"InitialDelaySeconds,omitempty" xml:"InitialDelaySeconds,omitempty"`
+	PeriodSeconds       *int32        `json:"PeriodSeconds,omitempty" xml:"PeriodSeconds,omitempty"`
+	ProbeHandler        *ProbeHandler `json:"ProbeHandler,omitempty" xml:"ProbeHandler,omitempty"`
+	TimeoutSeconds      *int32        `json:"TimeoutSeconds,omitempty" xml:"TimeoutSeconds,omitempty"`
+}
+
+func (s StartupProbe) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartupProbe) GoString() string {
+	return s.String()
+}
+
+func (s *StartupProbe) SetFailureThreshold(v int32) *StartupProbe {
+	s.FailureThreshold = &v
+	return s
+}
+
+func (s *StartupProbe) SetInitialDelaySeconds(v int32) *StartupProbe {
+	s.InitialDelaySeconds = &v
+	return s
+}
+
+func (s *StartupProbe) SetPeriodSeconds(v int32) *StartupProbe {
+	s.PeriodSeconds = &v
+	return s
+}
+
+func (s *StartupProbe) SetProbeHandler(v *ProbeHandler) *StartupProbe {
+	s.ProbeHandler = v
+	return s
+}
+
+func (s *StartupProbe) SetTimeoutSeconds(v int32) *StartupProbe {
+	s.TimeoutSeconds = &v
+	return s
+}
+
 type StaticsInfo struct {
 	ActiveCPUUsage     *int64   `json:"activeCPUUsage,omitempty" xml:"activeCPUUsage,omitempty"`
 	Cost               *float32 `json:"cost,omitempty" xml:"cost,omitempty"`
@@ -4696,6 +5699,29 @@ func (s *SubmenuItems) SetItemType(v string) *SubmenuItems {
 
 func (s *SubmenuItems) SetRelatingItems(v []*string) *SubmenuItems {
 	s.RelatingItems = v
+	return s
+}
+
+type TCPSocketAction struct {
+	Host *string `json:"Host,omitempty" xml:"Host,omitempty"`
+	Port *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
+}
+
+func (s TCPSocketAction) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TCPSocketAction) GoString() string {
+	return s.String()
+}
+
+func (s *TCPSocketAction) SetHost(v string) *TCPSocketAction {
+	s.Host = &v
+	return s
+}
+
+func (s *TCPSocketAction) SetPort(v int32) *TCPSocketAction {
+	s.Port = &v
 	return s
 }
 
@@ -5242,6 +6268,143 @@ func (s *UpdateCustomDomainInput) SetWafConfig(v *WAFConfig) *UpdateCustomDomain
 	return s
 }
 
+type UpdateWebApplicationInput struct {
+	// example:
+	//
+	// sae-app
+	Description      *string           `json:"Description,omitempty" xml:"Description,omitempty"`
+	WebNetworkConfig *WebNetworkConfig `json:"WebNetworkConfig,omitempty" xml:"WebNetworkConfig,omitempty"`
+}
+
+func (s UpdateWebApplicationInput) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateWebApplicationInput) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateWebApplicationInput) SetDescription(v string) *UpdateWebApplicationInput {
+	s.Description = &v
+	return s
+}
+
+func (s *UpdateWebApplicationInput) SetWebNetworkConfig(v *WebNetworkConfig) *UpdateWebApplicationInput {
+	s.WebNetworkConfig = v
+	return s
+}
+
+type UpdateWebApplicationScalingConfigInput struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10
+	MaximumInstanceCount *int64 `json:"MaximumInstanceCount,omitempty" xml:"MaximumInstanceCount,omitempty"`
+	// This parameter is required.
+	MinimumInstanceCount *int64 `json:"MinimumInstanceCount,omitempty" xml:"MinimumInstanceCount,omitempty"`
+}
+
+func (s UpdateWebApplicationScalingConfigInput) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateWebApplicationScalingConfigInput) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateWebApplicationScalingConfigInput) SetMaximumInstanceCount(v int64) *UpdateWebApplicationScalingConfigInput {
+	s.MaximumInstanceCount = &v
+	return s
+}
+
+func (s *UpdateWebApplicationScalingConfigInput) SetMinimumInstanceCount(v int64) *UpdateWebApplicationScalingConfigInput {
+	s.MinimumInstanceCount = &v
+	return s
+}
+
+type UpdateWebApplicationTrafficConfigInput struct {
+	// example:
+	//
+	// Anonymous
+	AuthType               *string             `json:"AuthType,omitempty" xml:"AuthType,omitempty"`
+	DisableURLInternet     *bool               `json:"DisableURLInternet,omitempty" xml:"DisableURLInternet,omitempty"`
+	RevisionsTrafficWeight map[string]*float32 `json:"RevisionsTrafficWeight,omitempty" xml:"RevisionsTrafficWeight,omitempty"`
+	WebAclConfig           *WebAclConfig       `json:"WebAclConfig,omitempty" xml:"WebAclConfig,omitempty"`
+}
+
+func (s UpdateWebApplicationTrafficConfigInput) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateWebApplicationTrafficConfigInput) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateWebApplicationTrafficConfigInput) SetAuthType(v string) *UpdateWebApplicationTrafficConfigInput {
+	s.AuthType = &v
+	return s
+}
+
+func (s *UpdateWebApplicationTrafficConfigInput) SetDisableURLInternet(v bool) *UpdateWebApplicationTrafficConfigInput {
+	s.DisableURLInternet = &v
+	return s
+}
+
+func (s *UpdateWebApplicationTrafficConfigInput) SetRevisionsTrafficWeight(v map[string]*float32) *UpdateWebApplicationTrafficConfigInput {
+	s.RevisionsTrafficWeight = v
+	return s
+}
+
+func (s *UpdateWebApplicationTrafficConfigInput) SetWebAclConfig(v *WebAclConfig) *UpdateWebApplicationTrafficConfigInput {
+	s.WebAclConfig = v
+	return s
+}
+
+type UpdateWebCustomDomainInput struct {
+	DefaultForwardingAppName *string `json:"DefaultForwardingAppName,omitempty" xml:"DefaultForwardingAppName,omitempty"`
+	// example:
+	//
+	// HTTP
+	Protocol      *string        `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	WebCertConfig *WebCertConfig `json:"WebCertConfig,omitempty" xml:"WebCertConfig,omitempty"`
+	WebTLSConfig  *WebTLSConfig  `json:"WebTLSConfig,omitempty" xml:"WebTLSConfig,omitempty"`
+	WebWAFConfig  *WebWAFConfig  `json:"WebWAFConfig,omitempty" xml:"WebWAFConfig,omitempty"`
+}
+
+func (s UpdateWebCustomDomainInput) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateWebCustomDomainInput) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateWebCustomDomainInput) SetDefaultForwardingAppName(v string) *UpdateWebCustomDomainInput {
+	s.DefaultForwardingAppName = &v
+	return s
+}
+
+func (s *UpdateWebCustomDomainInput) SetProtocol(v string) *UpdateWebCustomDomainInput {
+	s.Protocol = &v
+	return s
+}
+
+func (s *UpdateWebCustomDomainInput) SetWebCertConfig(v *WebCertConfig) *UpdateWebCustomDomainInput {
+	s.WebCertConfig = v
+	return s
+}
+
+func (s *UpdateWebCustomDomainInput) SetWebTLSConfig(v *WebTLSConfig) *UpdateWebCustomDomainInput {
+	s.WebTLSConfig = v
+	return s
+}
+
+func (s *UpdateWebCustomDomainInput) SetWebWAFConfig(v *WebWAFConfig) *UpdateWebCustomDomainInput {
+	s.WebWAFConfig = v
+	return s
+}
+
 type VPCConfig struct {
 	AnytunnelViaENI *bool     `json:"anytunnelViaENI,omitempty" xml:"anytunnelViaENI,omitempty"`
 	Role            *string   `json:"role,omitempty" xml:"role,omitempty"`
@@ -5372,6 +6535,967 @@ func (s WAFConfig) GoString() string {
 }
 
 func (s *WAFConfig) SetEnableWAF(v bool) *WAFConfig {
+	s.EnableWAF = &v
+	return s
+}
+
+type WebAclConfig struct {
+	// This parameter is required.
+	//
+	// if can be null:
+	// true
+	WebAclEntries []*WebAclEntryConfig `json:"WebAclEntries,omitempty" xml:"WebAclEntries,omitempty" type:"Repeated"`
+}
+
+func (s WebAclConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s WebAclConfig) GoString() string {
+	return s.String()
+}
+
+func (s *WebAclConfig) SetWebAclEntries(v []*WebAclEntryConfig) *WebAclConfig {
+	s.WebAclEntries = v
+	return s
+}
+
+type WebAclEntryConfig struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1.2.3.4/32
+	Entry *string `json:"Entry,omitempty" xml:"Entry,omitempty"`
+}
+
+func (s WebAclEntryConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s WebAclEntryConfig) GoString() string {
+	return s.String()
+}
+
+func (s *WebAclEntryConfig) SetEntry(v string) *WebAclEntryConfig {
+	s.Entry = &v
+	return s
+}
+
+type WebApplication struct {
+	// This parameter is required.
+	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+	// This parameter is required.
+	ApplicationName  *string           `json:"ApplicationName,omitempty" xml:"ApplicationName,omitempty"`
+	CreatedTime      *string           `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	Description      *string           `json:"Description,omitempty" xml:"Description,omitempty"`
+	InternetURL      *string           `json:"InternetURL,omitempty" xml:"InternetURL,omitempty"`
+	IntranetURL      *string           `json:"IntranetURL,omitempty" xml:"IntranetURL,omitempty"`
+	LastModifiedTime *string           `json:"LastModifiedTime,omitempty" xml:"LastModifiedTime,omitempty"`
+	NamespaceId      *string           `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
+	RevisionConfig   *RevisionConfig   `json:"RevisionConfig,omitempty" xml:"RevisionConfig,omitempty"`
+	VpcId            *string           `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	WebScalingConfig *WebScalingConfig `json:"WebScalingConfig,omitempty" xml:"WebScalingConfig,omitempty"`
+	WebTrafficConfig *WebTrafficConfig `json:"WebTrafficConfig,omitempty" xml:"WebTrafficConfig,omitempty"`
+}
+
+func (s WebApplication) String() string {
+	return tea.Prettify(s)
+}
+
+func (s WebApplication) GoString() string {
+	return s.String()
+}
+
+func (s *WebApplication) SetApplicationId(v string) *WebApplication {
+	s.ApplicationId = &v
+	return s
+}
+
+func (s *WebApplication) SetApplicationName(v string) *WebApplication {
+	s.ApplicationName = &v
+	return s
+}
+
+func (s *WebApplication) SetCreatedTime(v string) *WebApplication {
+	s.CreatedTime = &v
+	return s
+}
+
+func (s *WebApplication) SetDescription(v string) *WebApplication {
+	s.Description = &v
+	return s
+}
+
+func (s *WebApplication) SetInternetURL(v string) *WebApplication {
+	s.InternetURL = &v
+	return s
+}
+
+func (s *WebApplication) SetIntranetURL(v string) *WebApplication {
+	s.IntranetURL = &v
+	return s
+}
+
+func (s *WebApplication) SetLastModifiedTime(v string) *WebApplication {
+	s.LastModifiedTime = &v
+	return s
+}
+
+func (s *WebApplication) SetNamespaceId(v string) *WebApplication {
+	s.NamespaceId = &v
+	return s
+}
+
+func (s *WebApplication) SetRevisionConfig(v *RevisionConfig) *WebApplication {
+	s.RevisionConfig = v
+	return s
+}
+
+func (s *WebApplication) SetVpcId(v string) *WebApplication {
+	s.VpcId = &v
+	return s
+}
+
+func (s *WebApplication) SetWebScalingConfig(v *WebScalingConfig) *WebApplication {
+	s.WebScalingConfig = v
+	return s
+}
+
+func (s *WebApplication) SetWebTrafficConfig(v *WebTrafficConfig) *WebApplication {
+	s.WebTrafficConfig = v
+	return s
+}
+
+type WebApplicationBody struct {
+	Code      *int32          `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *WebApplication `json:"Data,omitempty" xml:"Data,omitempty"`
+	Message   *string         `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool           `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s WebApplicationBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s WebApplicationBody) GoString() string {
+	return s.String()
+}
+
+func (s *WebApplicationBody) SetCode(v int32) *WebApplicationBody {
+	s.Code = &v
+	return s
+}
+
+func (s *WebApplicationBody) SetData(v *WebApplication) *WebApplicationBody {
+	s.Data = v
+	return s
+}
+
+func (s *WebApplicationBody) SetMessage(v string) *WebApplicationBody {
+	s.Message = &v
+	return s
+}
+
+func (s *WebApplicationBody) SetRequestId(v string) *WebApplicationBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *WebApplicationBody) SetSuccess(v bool) *WebApplicationBody {
+	s.Success = &v
+	return s
+}
+
+type WebApplicationInstanceLogsBody struct {
+	Code      *int32                      `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *DescribeInstanceLogsOutput `json:"Data,omitempty" xml:"Data,omitempty"`
+	Message   *string                     `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                       `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s WebApplicationInstanceLogsBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s WebApplicationInstanceLogsBody) GoString() string {
+	return s.String()
+}
+
+func (s *WebApplicationInstanceLogsBody) SetCode(v int32) *WebApplicationInstanceLogsBody {
+	s.Code = &v
+	return s
+}
+
+func (s *WebApplicationInstanceLogsBody) SetData(v *DescribeInstanceLogsOutput) *WebApplicationInstanceLogsBody {
+	s.Data = v
+	return s
+}
+
+func (s *WebApplicationInstanceLogsBody) SetMessage(v string) *WebApplicationInstanceLogsBody {
+	s.Message = &v
+	return s
+}
+
+func (s *WebApplicationInstanceLogsBody) SetRequestId(v string) *WebApplicationInstanceLogsBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *WebApplicationInstanceLogsBody) SetSuccess(v bool) *WebApplicationInstanceLogsBody {
+	s.Success = &v
+	return s
+}
+
+type WebApplicationResourceStaticsBody struct {
+	Code      *int32                       `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *DescribeWebAppStaticsOutput `json:"Data,omitempty" xml:"Data,omitempty"`
+	Message   *string                      `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                        `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s WebApplicationResourceStaticsBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s WebApplicationResourceStaticsBody) GoString() string {
+	return s.String()
+}
+
+func (s *WebApplicationResourceStaticsBody) SetCode(v int32) *WebApplicationResourceStaticsBody {
+	s.Code = &v
+	return s
+}
+
+func (s *WebApplicationResourceStaticsBody) SetData(v *DescribeWebAppStaticsOutput) *WebApplicationResourceStaticsBody {
+	s.Data = v
+	return s
+}
+
+func (s *WebApplicationResourceStaticsBody) SetMessage(v string) *WebApplicationResourceStaticsBody {
+	s.Message = &v
+	return s
+}
+
+func (s *WebApplicationResourceStaticsBody) SetRequestId(v string) *WebApplicationResourceStaticsBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *WebApplicationResourceStaticsBody) SetSuccess(v bool) *WebApplicationResourceStaticsBody {
+	s.Success = &v
+	return s
+}
+
+type WebApplicationRevisionBody struct {
+	Code      *int32    `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *Revision `json:"Data,omitempty" xml:"Data,omitempty"`
+	Message   *string   `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool     `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s WebApplicationRevisionBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s WebApplicationRevisionBody) GoString() string {
+	return s.String()
+}
+
+func (s *WebApplicationRevisionBody) SetCode(v int32) *WebApplicationRevisionBody {
+	s.Code = &v
+	return s
+}
+
+func (s *WebApplicationRevisionBody) SetData(v *Revision) *WebApplicationRevisionBody {
+	s.Data = v
+	return s
+}
+
+func (s *WebApplicationRevisionBody) SetMessage(v string) *WebApplicationRevisionBody {
+	s.Message = &v
+	return s
+}
+
+func (s *WebApplicationRevisionBody) SetRequestId(v string) *WebApplicationRevisionBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *WebApplicationRevisionBody) SetSuccess(v bool) *WebApplicationRevisionBody {
+	s.Success = &v
+	return s
+}
+
+type WebApplicationScalingConfigBody struct {
+	Code      *int32            `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *WebScalingConfig `json:"Data,omitempty" xml:"Data,omitempty"`
+	Message   *string           `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool             `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s WebApplicationScalingConfigBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s WebApplicationScalingConfigBody) GoString() string {
+	return s.String()
+}
+
+func (s *WebApplicationScalingConfigBody) SetCode(v int32) *WebApplicationScalingConfigBody {
+	s.Code = &v
+	return s
+}
+
+func (s *WebApplicationScalingConfigBody) SetData(v *WebScalingConfig) *WebApplicationScalingConfigBody {
+	s.Data = v
+	return s
+}
+
+func (s *WebApplicationScalingConfigBody) SetMessage(v string) *WebApplicationScalingConfigBody {
+	s.Message = &v
+	return s
+}
+
+func (s *WebApplicationScalingConfigBody) SetRequestId(v string) *WebApplicationScalingConfigBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *WebApplicationScalingConfigBody) SetSuccess(v bool) *WebApplicationScalingConfigBody {
+	s.Success = &v
+	return s
+}
+
+type WebApplicationStatus struct {
+	InstanceCount    *int64            `json:"InstanceCount,omitempty" xml:"InstanceCount,omitempty"`
+	WebScalingConfig *WebScalingConfig `json:"WebScalingConfig,omitempty" xml:"WebScalingConfig,omitempty"`
+}
+
+func (s WebApplicationStatus) String() string {
+	return tea.Prettify(s)
+}
+
+func (s WebApplicationStatus) GoString() string {
+	return s.String()
+}
+
+func (s *WebApplicationStatus) SetInstanceCount(v int64) *WebApplicationStatus {
+	s.InstanceCount = &v
+	return s
+}
+
+func (s *WebApplicationStatus) SetWebScalingConfig(v *WebScalingConfig) *WebApplicationStatus {
+	s.WebScalingConfig = v
+	return s
+}
+
+type WebApplicationTrafficConfigBody struct {
+	Code      *int32            `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *WebTrafficConfig `json:"Data,omitempty" xml:"Data,omitempty"`
+	Message   *string           `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool             `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s WebApplicationTrafficConfigBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s WebApplicationTrafficConfigBody) GoString() string {
+	return s.String()
+}
+
+func (s *WebApplicationTrafficConfigBody) SetCode(v int32) *WebApplicationTrafficConfigBody {
+	s.Code = &v
+	return s
+}
+
+func (s *WebApplicationTrafficConfigBody) SetData(v *WebTrafficConfig) *WebApplicationTrafficConfigBody {
+	s.Data = v
+	return s
+}
+
+func (s *WebApplicationTrafficConfigBody) SetMessage(v string) *WebApplicationTrafficConfigBody {
+	s.Message = &v
+	return s
+}
+
+func (s *WebApplicationTrafficConfigBody) SetRequestId(v string) *WebApplicationTrafficConfigBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *WebApplicationTrafficConfigBody) SetSuccess(v bool) *WebApplicationTrafficConfigBody {
+	s.Success = &v
+	return s
+}
+
+type WebApplicationWithInstanceCount struct {
+	InstanceCount  *int64          `json:"InstanceCount,omitempty" xml:"InstanceCount,omitempty"`
+	WebApplication *WebApplication `json:"WebApplication,omitempty" xml:"WebApplication,omitempty"`
+}
+
+func (s WebApplicationWithInstanceCount) String() string {
+	return tea.Prettify(s)
+}
+
+func (s WebApplicationWithInstanceCount) GoString() string {
+	return s.String()
+}
+
+func (s *WebApplicationWithInstanceCount) SetInstanceCount(v int64) *WebApplicationWithInstanceCount {
+	s.InstanceCount = &v
+	return s
+}
+
+func (s *WebApplicationWithInstanceCount) SetWebApplication(v *WebApplication) *WebApplicationWithInstanceCount {
+	s.WebApplication = v
+	return s
+}
+
+type WebApplicationWithStatus struct {
+	Status         *WebApplicationStatus `json:"Status,omitempty" xml:"Status,omitempty"`
+	WebApplication *WebApplication       `json:"WebApplication,omitempty" xml:"WebApplication,omitempty"`
+}
+
+func (s WebApplicationWithStatus) String() string {
+	return tea.Prettify(s)
+}
+
+func (s WebApplicationWithStatus) GoString() string {
+	return s.String()
+}
+
+func (s *WebApplicationWithStatus) SetStatus(v *WebApplicationStatus) *WebApplicationWithStatus {
+	s.Status = v
+	return s
+}
+
+func (s *WebApplicationWithStatus) SetWebApplication(v *WebApplication) *WebApplicationWithStatus {
+	s.WebApplication = v
+	return s
+}
+
+type WebCertConfig struct {
+	CertName    *string `json:"CertName,omitempty" xml:"CertName,omitempty"`
+	Certificate *string `json:"Certificate,omitempty" xml:"Certificate,omitempty"`
+	PrivateKey  *string `json:"PrivateKey,omitempty" xml:"PrivateKey,omitempty"`
+}
+
+func (s WebCertConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s WebCertConfig) GoString() string {
+	return s.String()
+}
+
+func (s *WebCertConfig) SetCertName(v string) *WebCertConfig {
+	s.CertName = &v
+	return s
+}
+
+func (s *WebCertConfig) SetCertificate(v string) *WebCertConfig {
+	s.Certificate = &v
+	return s
+}
+
+func (s *WebCertConfig) SetPrivateKey(v string) *WebCertConfig {
+	s.PrivateKey = &v
+	return s
+}
+
+type WebCustomDomain struct {
+	// example:
+	//
+	// 123xxxxxx
+	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	// example:
+	//
+	// 2023-03-30T08:02:19Z
+	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	// example:
+	//
+	// appxxxxx
+	DefaultForwardingAppName *string `json:"DefaultForwardingAppName,omitempty" xml:"DefaultForwardingAppName,omitempty"`
+	// example:
+	//
+	// example.com
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// example:
+	//
+	// 2023-03-30T08:02:19Z
+	LastModifiedTime *string `json:"LastModifiedTime,omitempty" xml:"LastModifiedTime,omitempty"`
+	NamespaceId      *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
+	// example:
+	//
+	// HTTP
+	Protocol      *string        `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	WebCertConfig *WebCertConfig `json:"WebCertConfig,omitempty" xml:"WebCertConfig,omitempty"`
+	WebTLSConfig  *WebTLSConfig  `json:"WebTLSConfig,omitempty" xml:"WebTLSConfig,omitempty"`
+	WebWAFConfig  *WebWAFConfig  `json:"WebWAFConfig,omitempty" xml:"WebWAFConfig,omitempty"`
+}
+
+func (s WebCustomDomain) String() string {
+	return tea.Prettify(s)
+}
+
+func (s WebCustomDomain) GoString() string {
+	return s.String()
+}
+
+func (s *WebCustomDomain) SetAccountId(v string) *WebCustomDomain {
+	s.AccountId = &v
+	return s
+}
+
+func (s *WebCustomDomain) SetCreatedTime(v string) *WebCustomDomain {
+	s.CreatedTime = &v
+	return s
+}
+
+func (s *WebCustomDomain) SetDefaultForwardingAppName(v string) *WebCustomDomain {
+	s.DefaultForwardingAppName = &v
+	return s
+}
+
+func (s *WebCustomDomain) SetDomainName(v string) *WebCustomDomain {
+	s.DomainName = &v
+	return s
+}
+
+func (s *WebCustomDomain) SetLastModifiedTime(v string) *WebCustomDomain {
+	s.LastModifiedTime = &v
+	return s
+}
+
+func (s *WebCustomDomain) SetNamespaceId(v string) *WebCustomDomain {
+	s.NamespaceId = &v
+	return s
+}
+
+func (s *WebCustomDomain) SetProtocol(v string) *WebCustomDomain {
+	s.Protocol = &v
+	return s
+}
+
+func (s *WebCustomDomain) SetWebCertConfig(v *WebCertConfig) *WebCustomDomain {
+	s.WebCertConfig = v
+	return s
+}
+
+func (s *WebCustomDomain) SetWebTLSConfig(v *WebTLSConfig) *WebCustomDomain {
+	s.WebTLSConfig = v
+	return s
+}
+
+func (s *WebCustomDomain) SetWebWAFConfig(v *WebWAFConfig) *WebCustomDomain {
+	s.WebWAFConfig = v
+	return s
+}
+
+type WebCustomDomainBody struct {
+	Code      *int32           `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *WebCustomDomain `json:"Data,omitempty" xml:"Data,omitempty"`
+	Message   *string          `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool            `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s WebCustomDomainBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s WebCustomDomainBody) GoString() string {
+	return s.String()
+}
+
+func (s *WebCustomDomainBody) SetCode(v int32) *WebCustomDomainBody {
+	s.Code = &v
+	return s
+}
+
+func (s *WebCustomDomainBody) SetData(v *WebCustomDomain) *WebCustomDomainBody {
+	s.Data = v
+	return s
+}
+
+func (s *WebCustomDomainBody) SetMessage(v string) *WebCustomDomainBody {
+	s.Message = &v
+	return s
+}
+
+func (s *WebCustomDomainBody) SetRequestId(v string) *WebCustomDomainBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *WebCustomDomainBody) SetSuccess(v bool) *WebCustomDomainBody {
+	s.Success = &v
+	return s
+}
+
+type WebInstanceInfo struct {
+	ImageUrl *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
+	// example:
+	//
+	// c-66691780-1522405d-3021e147e0c3
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Status     *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// 1
+	VersionId *string `json:"VersionId,omitempty" xml:"VersionId,omitempty"`
+}
+
+func (s WebInstanceInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s WebInstanceInfo) GoString() string {
+	return s.String()
+}
+
+func (s *WebInstanceInfo) SetImageUrl(v string) *WebInstanceInfo {
+	s.ImageUrl = &v
+	return s
+}
+
+func (s *WebInstanceInfo) SetInstanceId(v string) *WebInstanceInfo {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *WebInstanceInfo) SetStatus(v string) *WebInstanceInfo {
+	s.Status = &v
+	return s
+}
+
+func (s *WebInstanceInfo) SetVersionId(v string) *WebInstanceInfo {
+	s.VersionId = &v
+	return s
+}
+
+type WebLogEntry struct {
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+}
+
+func (s WebLogEntry) String() string {
+	return tea.Prettify(s)
+}
+
+func (s WebLogEntry) GoString() string {
+	return s.String()
+}
+
+func (s *WebLogEntry) SetMessage(v string) *WebLogEntry {
+	s.Message = &v
+	return s
+}
+
+type WebNASConfig struct {
+	MountPoints []*WebNASMountPoint `json:"MountPoints,omitempty" xml:"MountPoints,omitempty" type:"Repeated"`
+}
+
+func (s WebNASConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s WebNASConfig) GoString() string {
+	return s.String()
+}
+
+func (s *WebNASConfig) SetMountPoints(v []*WebNASMountPoint) *WebNASConfig {
+	s.MountPoints = v
+	return s
+}
+
+type WebNASMountPoint struct {
+	MountDir *string `json:"MountDir,omitempty" xml:"MountDir,omitempty"`
+	NasAddr  *string `json:"NasAddr,omitempty" xml:"NasAddr,omitempty"`
+	NasPath  *string `json:"NasPath,omitempty" xml:"NasPath,omitempty"`
+}
+
+func (s WebNASMountPoint) String() string {
+	return tea.Prettify(s)
+}
+
+func (s WebNASMountPoint) GoString() string {
+	return s.String()
+}
+
+func (s *WebNASMountPoint) SetMountDir(v string) *WebNASMountPoint {
+	s.MountDir = &v
+	return s
+}
+
+func (s *WebNASMountPoint) SetNasAddr(v string) *WebNASMountPoint {
+	s.NasAddr = &v
+	return s
+}
+
+func (s *WebNASMountPoint) SetNasPath(v string) *WebNASMountPoint {
+	s.NasPath = &v
+	return s
+}
+
+type WebNetworkConfig struct {
+	// example:
+	//
+	// true
+	InternetAccess *bool `json:"InternetAccess,omitempty" xml:"InternetAccess,omitempty"`
+	// example:
+	//
+	// sg-bp18hj1wtxgy3b0***
+	SecurityGroupId *string   `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	VSwitchIds      []*string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty" type:"Repeated"`
+}
+
+func (s WebNetworkConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s WebNetworkConfig) GoString() string {
+	return s.String()
+}
+
+func (s *WebNetworkConfig) SetInternetAccess(v bool) *WebNetworkConfig {
+	s.InternetAccess = &v
+	return s
+}
+
+func (s *WebNetworkConfig) SetSecurityGroupId(v string) *WebNetworkConfig {
+	s.SecurityGroupId = &v
+	return s
+}
+
+func (s *WebNetworkConfig) SetVSwitchIds(v []*string) *WebNetworkConfig {
+	s.VSwitchIds = v
+	return s
+}
+
+type WebOSSConfig struct {
+	MountPoints []*WebOSSMountPoint `json:"MountPoints,omitempty" xml:"MountPoints,omitempty" type:"Repeated"`
+}
+
+func (s WebOSSConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s WebOSSConfig) GoString() string {
+	return s.String()
+}
+
+func (s *WebOSSConfig) SetMountPoints(v []*WebOSSMountPoint) *WebOSSConfig {
+	s.MountPoints = v
+	return s
+}
+
+type WebOSSMountPoint struct {
+	BucketName *string `json:"BucketName,omitempty" xml:"BucketName,omitempty"`
+	BucketPath *string `json:"BucketPath,omitempty" xml:"BucketPath,omitempty"`
+	MountDir   *string `json:"MountDir,omitempty" xml:"MountDir,omitempty"`
+	ReadOnly   *bool   `json:"ReadOnly,omitempty" xml:"ReadOnly,omitempty"`
+}
+
+func (s WebOSSMountPoint) String() string {
+	return tea.Prettify(s)
+}
+
+func (s WebOSSMountPoint) GoString() string {
+	return s.String()
+}
+
+func (s *WebOSSMountPoint) SetBucketName(v string) *WebOSSMountPoint {
+	s.BucketName = &v
+	return s
+}
+
+func (s *WebOSSMountPoint) SetBucketPath(v string) *WebOSSMountPoint {
+	s.BucketPath = &v
+	return s
+}
+
+func (s *WebOSSMountPoint) SetMountDir(v string) *WebOSSMountPoint {
+	s.MountDir = &v
+	return s
+}
+
+func (s *WebOSSMountPoint) SetReadOnly(v bool) *WebOSSMountPoint {
+	s.ReadOnly = &v
+	return s
+}
+
+type WebScalingConfig struct {
+	// example:
+	//
+	// 10
+	MaximumInstanceCount *int64 `json:"MaximumInstanceCount,omitempty" xml:"MaximumInstanceCount,omitempty"`
+	MinimumInstanceCount *int64 `json:"MinimumInstanceCount,omitempty" xml:"MinimumInstanceCount,omitempty"`
+}
+
+func (s WebScalingConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s WebScalingConfig) GoString() string {
+	return s.String()
+}
+
+func (s *WebScalingConfig) SetMaximumInstanceCount(v int64) *WebScalingConfig {
+	s.MaximumInstanceCount = &v
+	return s
+}
+
+func (s *WebScalingConfig) SetMinimumInstanceCount(v int64) *WebScalingConfig {
+	s.MinimumInstanceCount = &v
+	return s
+}
+
+type WebStaticsInfo struct {
+	CpuUsage           *int64 `json:"CpuUsage,omitempty" xml:"CpuUsage,omitempty"`
+	InternetTrafficOut *int64 `json:"InternetTrafficOut,omitempty" xml:"InternetTrafficOut,omitempty"`
+	Invocations        *int64 `json:"Invocations,omitempty" xml:"Invocations,omitempty"`
+	MemoryUsage        *int64 `json:"MemoryUsage,omitempty" xml:"MemoryUsage,omitempty"`
+}
+
+func (s WebStaticsInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s WebStaticsInfo) GoString() string {
+	return s.String()
+}
+
+func (s *WebStaticsInfo) SetCpuUsage(v int64) *WebStaticsInfo {
+	s.CpuUsage = &v
+	return s
+}
+
+func (s *WebStaticsInfo) SetInternetTrafficOut(v int64) *WebStaticsInfo {
+	s.InternetTrafficOut = &v
+	return s
+}
+
+func (s *WebStaticsInfo) SetInvocations(v int64) *WebStaticsInfo {
+	s.Invocations = &v
+	return s
+}
+
+func (s *WebStaticsInfo) SetMemoryUsage(v int64) *WebStaticsInfo {
+	s.MemoryUsage = &v
+	return s
+}
+
+type WebTLSConfig struct {
+	CipherSuites []*string `json:"CipherSuites,omitempty" xml:"CipherSuites,omitempty" type:"Repeated"`
+	MaxVersion   *string   `json:"MaxVersion,omitempty" xml:"MaxVersion,omitempty"`
+	MinVersion   *string   `json:"MinVersion,omitempty" xml:"MinVersion,omitempty"`
+}
+
+func (s WebTLSConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s WebTLSConfig) GoString() string {
+	return s.String()
+}
+
+func (s *WebTLSConfig) SetCipherSuites(v []*string) *WebTLSConfig {
+	s.CipherSuites = v
+	return s
+}
+
+func (s *WebTLSConfig) SetMaxVersion(v string) *WebTLSConfig {
+	s.MaxVersion = &v
+	return s
+}
+
+func (s *WebTLSConfig) SetMinVersion(v string) *WebTLSConfig {
+	s.MinVersion = &v
+	return s
+}
+
+type WebTrafficConfig struct {
+	// example:
+	//
+	// Anonymous
+	AuthType               *string             `json:"AuthType,omitempty" xml:"AuthType,omitempty"`
+	DisableInternetURL     *bool               `json:"DisableInternetURL,omitempty" xml:"DisableInternetURL,omitempty"`
+	RevisionsTrafficWeight map[string]*float32 `json:"RevisionsTrafficWeight,omitempty" xml:"RevisionsTrafficWeight,omitempty"`
+	WebAclConfig           *WebAclConfig       `json:"WebAclConfig,omitempty" xml:"WebAclConfig,omitempty"`
+}
+
+func (s WebTrafficConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s WebTrafficConfig) GoString() string {
+	return s.String()
+}
+
+func (s *WebTrafficConfig) SetAuthType(v string) *WebTrafficConfig {
+	s.AuthType = &v
+	return s
+}
+
+func (s *WebTrafficConfig) SetDisableInternetURL(v bool) *WebTrafficConfig {
+	s.DisableInternetURL = &v
+	return s
+}
+
+func (s *WebTrafficConfig) SetRevisionsTrafficWeight(v map[string]*float32) *WebTrafficConfig {
+	s.RevisionsTrafficWeight = v
+	return s
+}
+
+func (s *WebTrafficConfig) SetWebAclConfig(v *WebAclConfig) *WebTrafficConfig {
+	s.WebAclConfig = v
+	return s
+}
+
+type WebVersionStatus struct {
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s WebVersionStatus) String() string {
+	return tea.Prettify(s)
+}
+
+func (s WebVersionStatus) GoString() string {
+	return s.String()
+}
+
+func (s *WebVersionStatus) SetErrorMessage(v string) *WebVersionStatus {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *WebVersionStatus) SetStatus(v string) *WebVersionStatus {
+	s.Status = &v
+	return s
+}
+
+type WebWAFConfig struct {
+	EnableWAF *bool `json:"EnableWAF,omitempty" xml:"EnableWAF,omitempty"`
+}
+
+func (s WebWAFConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s WebWAFConfig) GoString() string {
+	return s.String()
+}
+
+func (s *WebWAFConfig) SetEnableWAF(v bool) *WebWAFConfig {
 	s.EnableWAF = &v
 	return s
 }
@@ -8833,10 +10957,7 @@ type CreateJobRequest struct {
 	// example:
 	//
 	// {"port":8080,"contextPath":"/","maxThreads":400,"uriEncoding":"ISO-8859-1","useBodyEncodingForUri":true}
-	TomcatConfig *string `json:"TomcatConfig,omitempty" xml:"TomcatConfig,omitempty"`
-	// example:
-	//
-	// {"type":"time","config":"0 1 */1 	- ?","timezone":"GMT+8:00"}
+	TomcatConfig  *string `json:"TomcatConfig,omitempty" xml:"TomcatConfig,omitempty"`
 	TriggerConfig *string `json:"TriggerConfig,omitempty" xml:"TriggerConfig,omitempty"`
 	// The vSwitch to which the elastic network interface (ENI) of the application instance is connected. The vSwitch must be located in the VPC specified by the VpcId parameter. The SAE namespace is bound with this vSwitch. The default value is the ID of the vSwitch that is bound to the namespace.
 	//
@@ -9811,6 +11932,122 @@ func (s *CreateSecretResponse) SetStatusCode(v int32) *CreateSecretResponse {
 }
 
 func (s *CreateSecretResponse) SetBody(v *CreateSecretResponseBody) *CreateSecretResponse {
+	s.Body = v
+	return s
+}
+
+type CreateWebApplicationRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-beijing:test
+	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
+	// This parameter is required.
+	Body *CreateWebApplicationInput `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateWebApplicationRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateWebApplicationRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateWebApplicationRequest) SetNamespaceId(v string) *CreateWebApplicationRequest {
+	s.NamespaceId = &v
+	return s
+}
+
+func (s *CreateWebApplicationRequest) SetBody(v *CreateWebApplicationInput) *CreateWebApplicationRequest {
+	s.Body = v
+	return s
+}
+
+type CreateWebApplicationResponse struct {
+	Headers    map[string]*string  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *WebApplicationBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateWebApplicationResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateWebApplicationResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateWebApplicationResponse) SetHeaders(v map[string]*string) *CreateWebApplicationResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateWebApplicationResponse) SetStatusCode(v int32) *CreateWebApplicationResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateWebApplicationResponse) SetBody(v *WebApplicationBody) *CreateWebApplicationResponse {
+	s.Body = v
+	return s
+}
+
+type CreateWebCustomDomainRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
+	// This parameter is required.
+	Body *CreateWebCustomDomainInput `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateWebCustomDomainRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateWebCustomDomainRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateWebCustomDomainRequest) SetNamespaceId(v string) *CreateWebCustomDomainRequest {
+	s.NamespaceId = &v
+	return s
+}
+
+func (s *CreateWebCustomDomainRequest) SetBody(v *CreateWebCustomDomainInput) *CreateWebCustomDomainRequest {
+	s.Body = v
+	return s
+}
+
+type CreateWebCustomDomainResponse struct {
+	Headers    map[string]*string   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *WebCustomDomainBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateWebCustomDomainResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateWebCustomDomainResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateWebCustomDomainResponse) SetHeaders(v map[string]*string) *CreateWebCustomDomainResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateWebCustomDomainResponse) SetStatusCode(v int32) *CreateWebCustomDomainResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateWebCustomDomainResponse) SetBody(v *WebCustomDomainBody) *CreateWebCustomDomainResponse {
 	s.Body = v
 	return s
 }
@@ -11298,6 +13535,159 @@ func (s *DeleteSecretResponse) SetStatusCode(v int32) *DeleteSecretResponse {
 }
 
 func (s *DeleteSecretResponse) SetBody(v *DeleteSecretResponseBody) *DeleteSecretResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteWebApplicationRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-beijing:test
+	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
+}
+
+func (s DeleteWebApplicationRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteWebApplicationRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteWebApplicationRequest) SetNamespaceId(v string) *DeleteWebApplicationRequest {
+	s.NamespaceId = &v
+	return s
+}
+
+type DeleteWebApplicationResponse struct {
+	Headers    map[string]*string  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *WebApplicationBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteWebApplicationResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteWebApplicationResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteWebApplicationResponse) SetHeaders(v map[string]*string) *DeleteWebApplicationResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteWebApplicationResponse) SetStatusCode(v int32) *DeleteWebApplicationResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteWebApplicationResponse) SetBody(v *WebApplicationBody) *DeleteWebApplicationResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteWebApplicationRevisionRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-shanghai
+	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
+}
+
+func (s DeleteWebApplicationRevisionRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteWebApplicationRevisionRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteWebApplicationRevisionRequest) SetNamespaceId(v string) *DeleteWebApplicationRevisionRequest {
+	s.NamespaceId = &v
+	return s
+}
+
+type DeleteWebApplicationRevisionResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *WebApplicationRevisionBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteWebApplicationRevisionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteWebApplicationRevisionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteWebApplicationRevisionResponse) SetHeaders(v map[string]*string) *DeleteWebApplicationRevisionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteWebApplicationRevisionResponse) SetStatusCode(v int32) *DeleteWebApplicationRevisionResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteWebApplicationRevisionResponse) SetBody(v *WebApplicationRevisionBody) *DeleteWebApplicationRevisionResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteWebCustomDomainRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-shanghai
+	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
+}
+
+func (s DeleteWebCustomDomainRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteWebCustomDomainRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteWebCustomDomainRequest) SetNamespaceId(v string) *DeleteWebCustomDomainRequest {
+	s.NamespaceId = &v
+	return s
+}
+
+type DeleteWebCustomDomainResponse struct {
+	Headers    map[string]*string   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *WebCustomDomainBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteWebCustomDomainResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteWebCustomDomainResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteWebCustomDomainResponse) SetHeaders(v map[string]*string) *DeleteWebCustomDomainResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteWebCustomDomainResponse) SetStatusCode(v int32) *DeleteWebCustomDomainResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteWebCustomDomainResponse) SetBody(v *WebCustomDomainBody) *DeleteWebCustomDomainResponse {
 	s.Body = v
 	return s
 }
@@ -13157,10 +15547,6 @@ type DescribeApplicationConfigResponseBodyData struct {
 	// 	- **kafkaInstanceId**: the ID of the Message Queue for Apache Kafka instance.
 	//
 	// 	- **region**: the region where the Message Queue for Apache Kafka instance resides.
-	//
-	// example:
-	//
-	// [{"createTime":1646304855512,"kafkaTopic":"test","logDir":"/tmp/a.log","logType":"file_log"},{"createTime":1646304855512,"kafkaTopic":"test2","logDir":"/sae-stdlog/kafka-jar*/*","logType":"stdout"}],"kafkaEndpoint":"10.0.X.XXX:XXXX,10.0.X.XXX:XXXX,10.0.X.XXX:XXXX","kafkaInstanceId":"alikafka_pre-cn-7pp2l8kr****","region":"cn-beijing"}]
 	KafkaConfigs *string `json:"KafkaConfigs,omitempty" xml:"KafkaConfigs,omitempty"`
 	// The details of the availability check that was performed on the container. If the container fails this health check multiple times, the system disables and restarts the container. You can use one of the following methods to perform the health check:
 	//
@@ -13336,10 +15722,6 @@ type DescribeApplicationConfigResponseBodyData struct {
 	// War
 	PackageType *string `json:"PackageType,omitempty" xml:"PackageType,omitempty"`
 	// The URL of the deployment package. This parameter is returned only if the **PackageType*	- parameter is set to **FatJar*	- or **War**.
-	//
-	// example:
-	//
-	// https://edas-bj.oss-cn-beijing.aliyuncs.com/apps/K8s_APP_ID/d4c97c37-aba3-403e-ae1e-6f7d8742****/hello-sae.war
 	PackageUrl *string `json:"PackageUrl,omitempty" xml:"PackageUrl,omitempty"`
 	// The version of the deployment package. This parameter is returned only if the **PackageType*	- parameter is set to **FatJar*	- or **War**.
 	//
@@ -21127,10 +23509,6 @@ type DescribeJobResponseBodyData struct {
 	// War
 	PackageType *string `json:"PackageType,omitempty" xml:"PackageType,omitempty"`
 	// The URL of the deployment package. This parameter is returned only if **PackageType*	- is set to **FatJar*	- or **War**.
-	//
-	// example:
-	//
-	// https://edas-bj.oss-cn-beijing.aliyuncs.com/apps/K8s_APP_ID/d4c97c37-aba3-403e-ae1e-6f7d8742****/hello-sae.war
 	PackageUrl *string `json:"PackageUrl,omitempty" xml:"PackageUrl,omitempty"`
 	// The version of the deployment package. This parameter is required only if **PackageType*	- is set to **FatJar*	- or **War**.
 	//
@@ -21293,10 +23671,7 @@ type DescribeJobResponseBodyData struct {
 	// example:
 	//
 	// {"port":8080,"contextPath":"/","maxThreads":400,"uriEncoding":"ISO-8859-1","useBodyEncodingForUri":true}
-	TomcatConfig *string `json:"TomcatConfig,omitempty" xml:"TomcatConfig,omitempty"`
-	// example:
-	//
-	// {"type":"time","config":"0 1 */1 	- ?","timezone":"GMT+8:00"}
+	TomcatConfig  *string `json:"TomcatConfig,omitempty" xml:"TomcatConfig,omitempty"`
 	TriggerConfig *string `json:"TriggerConfig,omitempty" xml:"TriggerConfig,omitempty"`
 	// The vSwitch ID.
 	//
@@ -24744,6 +27119,390 @@ func (s *DescribeSecretResponse) SetBody(v *DescribeSecretResponseBody) *Describ
 	return s
 }
 
+type DescribeWebApplicationRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-beijing:test
+	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
+}
+
+func (s DescribeWebApplicationRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeWebApplicationRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeWebApplicationRequest) SetNamespaceId(v string) *DescribeWebApplicationRequest {
+	s.NamespaceId = &v
+	return s
+}
+
+type DescribeWebApplicationResponse struct {
+	Headers    map[string]*string  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *WebApplicationBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeWebApplicationResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeWebApplicationResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeWebApplicationResponse) SetHeaders(v map[string]*string) *DescribeWebApplicationResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeWebApplicationResponse) SetStatusCode(v int32) *DescribeWebApplicationResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeWebApplicationResponse) SetBody(v *WebApplicationBody) *DescribeWebApplicationResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeWebApplicationResourceStaticsRequest struct {
+	// example:
+	//
+	// 1687832980387
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
+	// example:
+	//
+	// cn-beijing
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// 1562831689704
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s DescribeWebApplicationResourceStaticsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeWebApplicationResourceStaticsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeWebApplicationResourceStaticsRequest) SetEndTime(v int64) *DescribeWebApplicationResourceStaticsRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeWebApplicationResourceStaticsRequest) SetNamespaceId(v string) *DescribeWebApplicationResourceStaticsRequest {
+	s.NamespaceId = &v
+	return s
+}
+
+func (s *DescribeWebApplicationResourceStaticsRequest) SetRegionId(v string) *DescribeWebApplicationResourceStaticsRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeWebApplicationResourceStaticsRequest) SetStartTime(v int64) *DescribeWebApplicationResourceStaticsRequest {
+	s.StartTime = &v
+	return s
+}
+
+type DescribeWebApplicationResourceStaticsResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *WebApplicationResourceStaticsBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeWebApplicationResourceStaticsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeWebApplicationResourceStaticsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeWebApplicationResourceStaticsResponse) SetHeaders(v map[string]*string) *DescribeWebApplicationResourceStaticsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeWebApplicationResourceStaticsResponse) SetStatusCode(v int32) *DescribeWebApplicationResourceStaticsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeWebApplicationResourceStaticsResponse) SetBody(v *WebApplicationResourceStaticsBody) *DescribeWebApplicationResourceStaticsResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeWebApplicationRevisionRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
+}
+
+func (s DescribeWebApplicationRevisionRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeWebApplicationRevisionRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeWebApplicationRevisionRequest) SetNamespaceId(v string) *DescribeWebApplicationRevisionRequest {
+	s.NamespaceId = &v
+	return s
+}
+
+type DescribeWebApplicationRevisionResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *WebApplicationRevisionBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeWebApplicationRevisionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeWebApplicationRevisionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeWebApplicationRevisionResponse) SetHeaders(v map[string]*string) *DescribeWebApplicationRevisionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeWebApplicationRevisionResponse) SetStatusCode(v int32) *DescribeWebApplicationRevisionResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeWebApplicationRevisionResponse) SetBody(v *WebApplicationRevisionBody) *DescribeWebApplicationRevisionResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeWebApplicationScalingConfigRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-beijing:sae-test
+	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
+}
+
+func (s DescribeWebApplicationScalingConfigRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeWebApplicationScalingConfigRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeWebApplicationScalingConfigRequest) SetNamespaceId(v string) *DescribeWebApplicationScalingConfigRequest {
+	s.NamespaceId = &v
+	return s
+}
+
+type DescribeWebApplicationScalingConfigResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *WebApplicationScalingConfigBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeWebApplicationScalingConfigResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeWebApplicationScalingConfigResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeWebApplicationScalingConfigResponse) SetHeaders(v map[string]*string) *DescribeWebApplicationScalingConfigResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeWebApplicationScalingConfigResponse) SetStatusCode(v int32) *DescribeWebApplicationScalingConfigResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeWebApplicationScalingConfigResponse) SetBody(v *WebApplicationScalingConfigBody) *DescribeWebApplicationScalingConfigResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeWebApplicationTrafficConfigRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-beijing:test
+	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
+}
+
+func (s DescribeWebApplicationTrafficConfigRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeWebApplicationTrafficConfigRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeWebApplicationTrafficConfigRequest) SetNamespaceId(v string) *DescribeWebApplicationTrafficConfigRequest {
+	s.NamespaceId = &v
+	return s
+}
+
+type DescribeWebApplicationTrafficConfigResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *WebApplicationTrafficConfigBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeWebApplicationTrafficConfigResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeWebApplicationTrafficConfigResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeWebApplicationTrafficConfigResponse) SetHeaders(v map[string]*string) *DescribeWebApplicationTrafficConfigResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeWebApplicationTrafficConfigResponse) SetStatusCode(v int32) *DescribeWebApplicationTrafficConfigResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeWebApplicationTrafficConfigResponse) SetBody(v *WebApplicationTrafficConfigBody) *DescribeWebApplicationTrafficConfigResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeWebCustomDomainRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-shanghai
+	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
+}
+
+func (s DescribeWebCustomDomainRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeWebCustomDomainRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeWebCustomDomainRequest) SetNamespaceId(v string) *DescribeWebCustomDomainRequest {
+	s.NamespaceId = &v
+	return s
+}
+
+type DescribeWebCustomDomainResponse struct {
+	Headers    map[string]*string   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *WebCustomDomainBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeWebCustomDomainResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeWebCustomDomainResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeWebCustomDomainResponse) SetHeaders(v map[string]*string) *DescribeWebCustomDomainResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeWebCustomDomainResponse) SetStatusCode(v int32) *DescribeWebCustomDomainResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeWebCustomDomainResponse) SetBody(v *WebCustomDomainBody) *DescribeWebCustomDomainResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeWebInstanceLogsRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-shanghai
+	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
+}
+
+func (s DescribeWebInstanceLogsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeWebInstanceLogsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeWebInstanceLogsRequest) SetNamespaceId(v string) *DescribeWebInstanceLogsRequest {
+	s.NamespaceId = &v
+	return s
+}
+
+type DescribeWebInstanceLogsResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *WebApplicationInstanceLogsBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeWebInstanceLogsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeWebInstanceLogsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeWebInstanceLogsResponse) SetHeaders(v map[string]*string) *DescribeWebInstanceLogsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeWebInstanceLogsResponse) SetStatusCode(v int32) *DescribeWebInstanceLogsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeWebInstanceLogsResponse) SetBody(v *WebApplicationInstanceLogsBody) *DescribeWebInstanceLogsResponse {
+	s.Body = v
+	return s
+}
+
 type DisableApplicationScalingRuleRequest struct {
 	// timer-0800-2100
 	//
@@ -25512,10 +28271,41 @@ func (s *GetArmsTopNMetricResponse) SetBody(v *GetArmsTopNMetricResponseBody) *G
 }
 
 type GetAvailabilityMetricRequest struct {
-	AppSource   *string `json:"AppSource,omitempty" xml:"AppSource,omitempty"`
+	// The SAE application type. Valid values:
+	//
+	// 	- **micro_service**
+	//
+	// 	- **web**
+	//
+	// 	- **job**
+	//
+	// example:
+	//
+	// micro_service
+	AppSource *string `json:"AppSource,omitempty" xml:"AppSource,omitempty"`
+	// The CPU allocation policy. Valid values:
+	//
+	// 	- **request**: CPU cores are allocated only when a request is initiated.
+	//
+	// 	- **always**: Fixed CPU cores are always allocated.
+	//
+	// example:
+	//
+	// always
 	CpuStrategy *string `json:"CpuStrategy,omitempty" xml:"CpuStrategy,omitempty"`
+	// The number of entries to return. Valid values: 0 to 100.
+	//
 	// This parameter is required.
-	Limit    *int64  `json:"Limit,omitempty" xml:"Limit,omitempty"`
+	//
+	// example:
+	//
+	// 10
+	Limit *int64 `json:"Limit,omitempty" xml:"Limit,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -25574,7 +28364,7 @@ type GetAvailabilityMetricResponseBody struct {
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -25626,13 +28416,13 @@ func (s *GetAvailabilityMetricResponseBody) SetSuccess(v bool) *GetAvailabilityM
 }
 
 type GetAvailabilityMetricResponseBodyData struct {
-	// The ID of the application.
+	// The application ID.
 	//
 	// example:
 	//
 	// 017f39b8-dfa4-4e16-a84b-1dcee4b1****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// Indicates whether an auto scaling policy is enabled. The following limits are imposed on the ID:
+	// Indicates whether an auto scaling policy is enabled. Valid values:
 	//
 	// 	- **1**: An auto scaling policy is enabled.
 	//
@@ -25654,13 +28444,13 @@ type GetAvailabilityMetricResponseBodyData struct {
 	//
 	// 0
 	Instances *int64 `json:"Instances,omitempty" xml:"Instances,omitempty"`
-	// The name of the application.
+	// The application name.
 	//
 	// example:
 	//
 	// test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The ID of the namespace.
+	// The namespace ID.
 	//
 	// example:
 	//
@@ -25981,10 +28771,41 @@ func (s *GetChangeOrderMetricResponse) SetBody(v *GetChangeOrderMetricResponseBo
 }
 
 type GetScaleAppMetricRequest struct {
-	AppSource   *string `json:"AppSource,omitempty" xml:"AppSource,omitempty"`
+	// The SAE application type. Valid values:
+	//
+	// 	- **micro_service**
+	//
+	// 	- **web**
+	//
+	// 	- **job**
+	//
+	// example:
+	//
+	// micro_service
+	AppSource *string `json:"AppSource,omitempty" xml:"AppSource,omitempty"`
+	// The CPU allocation policy. Valid values:
+	//
+	// 	- **request**: CPU cores are allocated only when a request is initiated.
+	//
+	// 	- **always**: Fixed CPU cores are always allocated.
+	//
+	// example:
+	//
+	// always
 	CpuStrategy *string `json:"CpuStrategy,omitempty" xml:"CpuStrategy,omitempty"`
+	// The number of entries to return. Valid values: 0 to 100.
+	//
 	// This parameter is required.
-	Limit    *int64  `json:"Limit,omitempty" xml:"Limit,omitempty"`
+	//
+	// example:
+	//
+	// 10
+	Limit *int64 `json:"Limit,omitempty" xml:"Limit,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -26043,7 +28864,7 @@ type GetScaleAppMetricResponseBody struct {
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -26095,7 +28916,7 @@ func (s *GetScaleAppMetricResponseBody) SetSuccess(v bool) *GetScaleAppMetricRes
 }
 
 type GetScaleAppMetricResponseBodyData struct {
-	// The ID of the application.
+	// The application ID.
 	//
 	// example:
 	//
@@ -26107,13 +28928,13 @@ type GetScaleAppMetricResponseBodyData struct {
 	//
 	// 10
 	MaxReplicas *int64 `json:"MaxReplicas,omitempty" xml:"MaxReplicas,omitempty"`
-	// The name of the application.
+	// The application name.
 	//
 	// example:
 	//
 	// test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The ID of the namespace.
+	// The namespace ID.
 	//
 	// example:
 	//
@@ -27202,10 +30023,6 @@ type ListAppVersionsResponseBodyData struct {
 	// 	- The address of the image. This parameter is returned when the **Type*	- parameter is set to **image**.
 	//
 	// 	- The download link of the WAR or JAR package. This parameter is returned when the **Type*	- parameter is set to **upload**.
-	//
-	// example:
-	//
-	// https://edas-hz.oss-cn-hangzhou.aliyuncs.com/apps/K8s_APP_ID/1d0e7884-60f0-41d2-89dd-ec1f3c69****/hello-sae.war
 	BuildPackageUrl *string `json:"BuildPackageUrl,omitempty" xml:"BuildPackageUrl,omitempty"`
 	// The download link of the WAR or JAR package. This parameter is returned when the **Type*	- parameter is set to **url**.
 	//
@@ -27230,10 +30047,6 @@ type ListAppVersionsResponseBodyData struct {
 	// image
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 	// The ID of the version.
-	//
-	// example:
-	//
-	// registry-vpc.cn-hangzhou.aliyuncs.com/****/1362469756373809_shared_repo:42646692-66e7-4a21-b629-897752975cdf_159012464****
 	WarUrl *string `json:"WarUrl,omitempty" xml:"WarUrl,omitempty"`
 }
 
@@ -30099,11 +32912,8 @@ type ListJobsResponseBodyDataApplications struct {
 	// false
 	Suspend *bool `json:"Suspend,omitempty" xml:"Suspend,omitempty"`
 	// The tag of the job template.
-	Tags []*ListJobsResponseBodyDataApplicationsTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	// example:
-	//
-	// {"type":"time","config":"0 1 */1 	- ?","timezone":"GMT+8:00"}
-	TriggerConfig *string `json:"TriggerConfig,omitempty" xml:"TriggerConfig,omitempty"`
+	Tags          []*ListJobsResponseBodyDataApplicationsTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	TriggerConfig *string                                     `json:"TriggerConfig,omitempty" xml:"TriggerConfig,omitempty"`
 }
 
 func (s ListJobsResponseBodyDataApplications) String() string {
@@ -32143,6 +34953,401 @@ func (s *ListTagResourcesResponse) SetBody(v *ListTagResourcesResponseBody) *Lis
 	return s
 }
 
+type ListWebApplicationInstancesRequest struct {
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// example:
+	//
+	// c-667d143a-17b4e0fa-46d3a2******
+	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 10
+	Limit *string `json:"Limit,omitempty" xml:"Limit,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	NamespaceId *string   `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
+	StartTime   *int64    `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Statuses    []*string `json:"Statuses,omitempty" xml:"Statuses,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 001
+	VersionIds []*string `json:"VersionIds,omitempty" xml:"VersionIds,omitempty" type:"Repeated"`
+}
+
+func (s ListWebApplicationInstancesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListWebApplicationInstancesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListWebApplicationInstancesRequest) SetEndTime(v int64) *ListWebApplicationInstancesRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *ListWebApplicationInstancesRequest) SetInstanceIds(v []*string) *ListWebApplicationInstancesRequest {
+	s.InstanceIds = v
+	return s
+}
+
+func (s *ListWebApplicationInstancesRequest) SetLimit(v string) *ListWebApplicationInstancesRequest {
+	s.Limit = &v
+	return s
+}
+
+func (s *ListWebApplicationInstancesRequest) SetNamespaceId(v string) *ListWebApplicationInstancesRequest {
+	s.NamespaceId = &v
+	return s
+}
+
+func (s *ListWebApplicationInstancesRequest) SetStartTime(v int64) *ListWebApplicationInstancesRequest {
+	s.StartTime = &v
+	return s
+}
+
+func (s *ListWebApplicationInstancesRequest) SetStatuses(v []*string) *ListWebApplicationInstancesRequest {
+	s.Statuses = v
+	return s
+}
+
+func (s *ListWebApplicationInstancesRequest) SetVersionIds(v []*string) *ListWebApplicationInstancesRequest {
+	s.VersionIds = v
+	return s
+}
+
+type ListWebApplicationInstancesShrinkRequest struct {
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// example:
+	//
+	// c-667d143a-17b4e0fa-46d3a2******
+	InstanceIdsShrink *string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
+	// example:
+	//
+	// 10
+	Limit *string `json:"Limit,omitempty" xml:"Limit,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	NamespaceId    *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
+	StartTime      *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	StatusesShrink *string `json:"Statuses,omitempty" xml:"Statuses,omitempty"`
+	// example:
+	//
+	// 001
+	VersionIdsShrink *string `json:"VersionIds,omitempty" xml:"VersionIds,omitempty"`
+}
+
+func (s ListWebApplicationInstancesShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListWebApplicationInstancesShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListWebApplicationInstancesShrinkRequest) SetEndTime(v int64) *ListWebApplicationInstancesShrinkRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *ListWebApplicationInstancesShrinkRequest) SetInstanceIdsShrink(v string) *ListWebApplicationInstancesShrinkRequest {
+	s.InstanceIdsShrink = &v
+	return s
+}
+
+func (s *ListWebApplicationInstancesShrinkRequest) SetLimit(v string) *ListWebApplicationInstancesShrinkRequest {
+	s.Limit = &v
+	return s
+}
+
+func (s *ListWebApplicationInstancesShrinkRequest) SetNamespaceId(v string) *ListWebApplicationInstancesShrinkRequest {
+	s.NamespaceId = &v
+	return s
+}
+
+func (s *ListWebApplicationInstancesShrinkRequest) SetStartTime(v int64) *ListWebApplicationInstancesShrinkRequest {
+	s.StartTime = &v
+	return s
+}
+
+func (s *ListWebApplicationInstancesShrinkRequest) SetStatusesShrink(v string) *ListWebApplicationInstancesShrinkRequest {
+	s.StatusesShrink = &v
+	return s
+}
+
+func (s *ListWebApplicationInstancesShrinkRequest) SetVersionIdsShrink(v string) *ListWebApplicationInstancesShrinkRequest {
+	s.VersionIdsShrink = &v
+	return s
+}
+
+type ListWebApplicationInstancesResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListWebApplicationInstancesBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListWebApplicationInstancesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListWebApplicationInstancesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListWebApplicationInstancesResponse) SetHeaders(v map[string]*string) *ListWebApplicationInstancesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListWebApplicationInstancesResponse) SetStatusCode(v int32) *ListWebApplicationInstancesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListWebApplicationInstancesResponse) SetBody(v *ListWebApplicationInstancesBody) *ListWebApplicationInstancesResponse {
+	s.Body = v
+	return s
+}
+
+type ListWebApplicationRevisionsRequest struct {
+	// example:
+	//
+	// 10
+	Limit *int32 `json:"Limit,omitempty" xml:"Limit,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-shanghai
+	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
+	// example:
+	//
+	// A2RN
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+}
+
+func (s ListWebApplicationRevisionsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListWebApplicationRevisionsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListWebApplicationRevisionsRequest) SetLimit(v int32) *ListWebApplicationRevisionsRequest {
+	s.Limit = &v
+	return s
+}
+
+func (s *ListWebApplicationRevisionsRequest) SetNamespaceId(v string) *ListWebApplicationRevisionsRequest {
+	s.NamespaceId = &v
+	return s
+}
+
+func (s *ListWebApplicationRevisionsRequest) SetNextToken(v string) *ListWebApplicationRevisionsRequest {
+	s.NextToken = &v
+	return s
+}
+
+type ListWebApplicationRevisionsResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListWebApplicationRevisionsBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListWebApplicationRevisionsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListWebApplicationRevisionsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListWebApplicationRevisionsResponse) SetHeaders(v map[string]*string) *ListWebApplicationRevisionsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListWebApplicationRevisionsResponse) SetStatusCode(v int32) *ListWebApplicationRevisionsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListWebApplicationRevisionsResponse) SetBody(v *ListWebApplicationRevisionsBody) *ListWebApplicationRevisionsResponse {
+	s.Body = v
+	return s
+}
+
+type ListWebApplicationsRequest struct {
+	// example:
+	//
+	// 10
+	Limit *int32 `json:"Limit,omitempty" xml:"Limit,omitempty"`
+	// example:
+	//
+	// cn-beijing:test
+	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
+	// example:
+	//
+	// MTIzNCNhYmM
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// example:
+	//
+	// my-application
+	Prefix *string `json:"Prefix,omitempty" xml:"Prefix,omitempty"`
+}
+
+func (s ListWebApplicationsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListWebApplicationsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListWebApplicationsRequest) SetLimit(v int32) *ListWebApplicationsRequest {
+	s.Limit = &v
+	return s
+}
+
+func (s *ListWebApplicationsRequest) SetNamespaceId(v string) *ListWebApplicationsRequest {
+	s.NamespaceId = &v
+	return s
+}
+
+func (s *ListWebApplicationsRequest) SetNextToken(v string) *ListWebApplicationsRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListWebApplicationsRequest) SetPrefix(v string) *ListWebApplicationsRequest {
+	s.Prefix = &v
+	return s
+}
+
+type ListWebApplicationsResponse struct {
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListWebApplicationsBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListWebApplicationsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListWebApplicationsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListWebApplicationsResponse) SetHeaders(v map[string]*string) *ListWebApplicationsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListWebApplicationsResponse) SetStatusCode(v int32) *ListWebApplicationsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListWebApplicationsResponse) SetBody(v *ListWebApplicationsBody) *ListWebApplicationsResponse {
+	s.Body = v
+	return s
+}
+
+type ListWebCustomDomainsRequest struct {
+	// example:
+	//
+	// 7e41aff0-9eca-45c9-ac48-675e09******
+	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+	// example:
+	//
+	// 10
+	Limit *int32 `json:"Limit,omitempty" xml:"Limit,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
+	// example:
+	//
+	// A2RN
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// example:
+	//
+	// remoteresult
+	Prefix *string `json:"Prefix,omitempty" xml:"Prefix,omitempty"`
+}
+
+func (s ListWebCustomDomainsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListWebCustomDomainsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListWebCustomDomainsRequest) SetApplicationId(v string) *ListWebCustomDomainsRequest {
+	s.ApplicationId = &v
+	return s
+}
+
+func (s *ListWebCustomDomainsRequest) SetLimit(v int32) *ListWebCustomDomainsRequest {
+	s.Limit = &v
+	return s
+}
+
+func (s *ListWebCustomDomainsRequest) SetNamespaceId(v string) *ListWebCustomDomainsRequest {
+	s.NamespaceId = &v
+	return s
+}
+
+func (s *ListWebCustomDomainsRequest) SetNextToken(v string) *ListWebCustomDomainsRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListWebCustomDomainsRequest) SetPrefix(v string) *ListWebCustomDomainsRequest {
+	s.Prefix = &v
+	return s
+}
+
+type ListWebCustomDomainsResponse struct {
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListWebCustomDomainBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListWebCustomDomainsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListWebCustomDomainsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListWebCustomDomainsResponse) SetHeaders(v map[string]*string) *ListWebCustomDomainsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListWebCustomDomainsResponse) SetStatusCode(v int32) *ListWebCustomDomainsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListWebCustomDomainsResponse) SetBody(v *ListWebCustomDomainBody) *ListWebCustomDomainsResponse {
+	s.Body = v
+	return s
+}
+
 type OpenSaeServiceResponseBody struct {
 	// The ID of the order.
 	//
@@ -32201,6 +35406,64 @@ func (s *OpenSaeServiceResponse) SetStatusCode(v int32) *OpenSaeServiceResponse 
 }
 
 func (s *OpenSaeServiceResponse) SetBody(v *OpenSaeServiceResponseBody) *OpenSaeServiceResponse {
+	s.Body = v
+	return s
+}
+
+type PublishWebApplicationRevisionRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-shanghai
+	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
+	// This parameter is required.
+	Body *PublishWebApplicationRevisionInput `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s PublishWebApplicationRevisionRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PublishWebApplicationRevisionRequest) GoString() string {
+	return s.String()
+}
+
+func (s *PublishWebApplicationRevisionRequest) SetNamespaceId(v string) *PublishWebApplicationRevisionRequest {
+	s.NamespaceId = &v
+	return s
+}
+
+func (s *PublishWebApplicationRevisionRequest) SetBody(v *PublishWebApplicationRevisionInput) *PublishWebApplicationRevisionRequest {
+	s.Body = v
+	return s
+}
+
+type PublishWebApplicationRevisionResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *WebApplicationRevisionBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s PublishWebApplicationRevisionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PublishWebApplicationRevisionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *PublishWebApplicationRevisionResponse) SetHeaders(v map[string]*string) *PublishWebApplicationRevisionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *PublishWebApplicationRevisionResponse) SetStatusCode(v int32) *PublishWebApplicationRevisionResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *PublishWebApplicationRevisionResponse) SetBody(v *WebApplicationRevisionBody) *PublishWebApplicationRevisionResponse {
 	s.Body = v
 	return s
 }
@@ -33958,6 +37221,57 @@ func (s *StartApplicationResponse) SetBody(v *StartApplicationResponseBody) *Sta
 	return s
 }
 
+type StartWebApplicationRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-beijing:test
+	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
+}
+
+func (s StartWebApplicationRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartWebApplicationRequest) GoString() string {
+	return s.String()
+}
+
+func (s *StartWebApplicationRequest) SetNamespaceId(v string) *StartWebApplicationRequest {
+	s.NamespaceId = &v
+	return s
+}
+
+type StartWebApplicationResponse struct {
+	Headers    map[string]*string  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *WebApplicationBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s StartWebApplicationResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartWebApplicationResponse) GoString() string {
+	return s.String()
+}
+
+func (s *StartWebApplicationResponse) SetHeaders(v map[string]*string) *StartWebApplicationResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *StartWebApplicationResponse) SetStatusCode(v int32) *StartWebApplicationResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *StartWebApplicationResponse) SetBody(v *WebApplicationBody) *StartWebApplicationResponse {
+	s.Body = v
+	return s
+}
+
 type StopApplicationRequest struct {
 	// The returned message.
 	//
@@ -34125,6 +37439,57 @@ func (s *StopApplicationResponse) SetStatusCode(v int32) *StopApplicationRespons
 }
 
 func (s *StopApplicationResponse) SetBody(v *StopApplicationResponseBody) *StopApplicationResponse {
+	s.Body = v
+	return s
+}
+
+type StopWebApplicationRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-beijing:test
+	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
+}
+
+func (s StopWebApplicationRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopWebApplicationRequest) GoString() string {
+	return s.String()
+}
+
+func (s *StopWebApplicationRequest) SetNamespaceId(v string) *StopWebApplicationRequest {
+	s.NamespaceId = &v
+	return s
+}
+
+type StopWebApplicationResponse struct {
+	Headers    map[string]*string  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *WebApplicationBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s StopWebApplicationResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopWebApplicationResponse) GoString() string {
+	return s.String()
+}
+
+func (s *StopWebApplicationResponse) SetHeaders(v map[string]*string) *StopWebApplicationResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *StopWebApplicationResponse) SetStatusCode(v int32) *StopWebApplicationResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *StopWebApplicationResponse) SetBody(v *WebApplicationBody) *StopWebApplicationResponse {
 	s.Body = v
 	return s
 }
@@ -36908,10 +40273,7 @@ type UpdateJobRequest struct {
 	// example:
 	//
 	// {"port":8080,"contextPath":"/","maxThreads":400,"uriEncoding":"ISO-8859-1","useBodyEncodingForUri":true}
-	TomcatConfig *string `json:"TomcatConfig,omitempty" xml:"TomcatConfig,omitempty"`
-	// example:
-	//
-	// {"type":"time","config":"0 1 */1 	- ?","timezone":"GMT+8:00"}
+	TomcatConfig  *string `json:"TomcatConfig,omitempty" xml:"TomcatConfig,omitempty"`
 	TriggerConfig *string `json:"TriggerConfig,omitempty" xml:"TriggerConfig,omitempty"`
 	// The startup command of the WAR package. For information about how to configure the startup command, see [Configure startup commands](https://help.aliyun.com/document_detail/96677.html).
 	//
@@ -37971,6 +41333,238 @@ func (s *UpdateSecretResponse) SetStatusCode(v int32) *UpdateSecretResponse {
 }
 
 func (s *UpdateSecretResponse) SetBody(v *UpdateSecretResponseBody) *UpdateSecretResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateWebApplicationRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-beijing:test
+	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
+	// This parameter is required.
+	Body *UpdateWebApplicationInput `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateWebApplicationRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateWebApplicationRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateWebApplicationRequest) SetNamespaceId(v string) *UpdateWebApplicationRequest {
+	s.NamespaceId = &v
+	return s
+}
+
+func (s *UpdateWebApplicationRequest) SetBody(v *UpdateWebApplicationInput) *UpdateWebApplicationRequest {
+	s.Body = v
+	return s
+}
+
+type UpdateWebApplicationResponse struct {
+	Headers    map[string]*string  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *WebApplicationBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateWebApplicationResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateWebApplicationResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateWebApplicationResponse) SetHeaders(v map[string]*string) *UpdateWebApplicationResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateWebApplicationResponse) SetStatusCode(v int32) *UpdateWebApplicationResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateWebApplicationResponse) SetBody(v *WebApplicationBody) *UpdateWebApplicationResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateWebApplicationScalingConfigRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-beijing:test
+	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
+	// This parameter is required.
+	Body *UpdateWebApplicationScalingConfigInput `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateWebApplicationScalingConfigRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateWebApplicationScalingConfigRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateWebApplicationScalingConfigRequest) SetNamespaceId(v string) *UpdateWebApplicationScalingConfigRequest {
+	s.NamespaceId = &v
+	return s
+}
+
+func (s *UpdateWebApplicationScalingConfigRequest) SetBody(v *UpdateWebApplicationScalingConfigInput) *UpdateWebApplicationScalingConfigRequest {
+	s.Body = v
+	return s
+}
+
+type UpdateWebApplicationScalingConfigResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *WebApplicationScalingConfigBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateWebApplicationScalingConfigResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateWebApplicationScalingConfigResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateWebApplicationScalingConfigResponse) SetHeaders(v map[string]*string) *UpdateWebApplicationScalingConfigResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateWebApplicationScalingConfigResponse) SetStatusCode(v int32) *UpdateWebApplicationScalingConfigResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateWebApplicationScalingConfigResponse) SetBody(v *WebApplicationScalingConfigBody) *UpdateWebApplicationScalingConfigResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateWebApplicationTrafficConfigRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-beijing:test
+	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
+	// This parameter is required.
+	Body *UpdateWebApplicationTrafficConfigInput `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateWebApplicationTrafficConfigRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateWebApplicationTrafficConfigRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateWebApplicationTrafficConfigRequest) SetNamespaceId(v string) *UpdateWebApplicationTrafficConfigRequest {
+	s.NamespaceId = &v
+	return s
+}
+
+func (s *UpdateWebApplicationTrafficConfigRequest) SetBody(v *UpdateWebApplicationTrafficConfigInput) *UpdateWebApplicationTrafficConfigRequest {
+	s.Body = v
+	return s
+}
+
+type UpdateWebApplicationTrafficConfigResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *WebApplicationTrafficConfigBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateWebApplicationTrafficConfigResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateWebApplicationTrafficConfigResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateWebApplicationTrafficConfigResponse) SetHeaders(v map[string]*string) *UpdateWebApplicationTrafficConfigResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateWebApplicationTrafficConfigResponse) SetStatusCode(v int32) *UpdateWebApplicationTrafficConfigResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateWebApplicationTrafficConfigResponse) SetBody(v *WebApplicationTrafficConfigBody) *UpdateWebApplicationTrafficConfigResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateWebCustomDomainRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
+	// This parameter is required.
+	Body *UpdateWebCustomDomainInput `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateWebCustomDomainRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateWebCustomDomainRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateWebCustomDomainRequest) SetNamespaceId(v string) *UpdateWebCustomDomainRequest {
+	s.NamespaceId = &v
+	return s
+}
+
+func (s *UpdateWebCustomDomainRequest) SetBody(v *UpdateWebCustomDomainInput) *UpdateWebCustomDomainRequest {
+	s.Body = v
+	return s
+}
+
+type UpdateWebCustomDomainResponse struct {
+	Headers    map[string]*string   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *WebCustomDomainBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateWebCustomDomainResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateWebCustomDomainResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateWebCustomDomainResponse) SetHeaders(v map[string]*string) *UpdateWebCustomDomainResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateWebCustomDomainResponse) SetStatusCode(v int32) *UpdateWebCustomDomainResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateWebCustomDomainResponse) SetBody(v *WebCustomDomainBody) *UpdateWebCustomDomainResponse {
 	s.Body = v
 	return s
 }
@@ -39536,6 +43130,136 @@ func (client *Client) CreateSecret(request *CreateSecretRequest) (_result *Creat
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建应用
+//
+// @param request - CreateWebApplicationRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateWebApplicationResponse
+func (client *Client) CreateWebApplicationWithOptions(request *CreateWebApplicationRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateWebApplicationResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.NamespaceId)) {
+		query["NamespaceId"] = request.NamespaceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(request.Body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateWebApplication"),
+		Version:     tea.String("2019-05-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/pop/v2/api/web/applications"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateWebApplicationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建应用
+//
+// @param request - CreateWebApplicationRequest
+//
+// @return CreateWebApplicationResponse
+func (client *Client) CreateWebApplication(request *CreateWebApplicationRequest) (_result *CreateWebApplicationResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateWebApplicationResponse{}
+	_body, _err := client.CreateWebApplicationWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 新建自定义域名
+//
+// @param request - CreateWebCustomDomainRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateWebCustomDomainResponse
+func (client *Client) CreateWebCustomDomainWithOptions(request *CreateWebCustomDomainRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateWebCustomDomainResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.NamespaceId)) {
+		query["NamespaceId"] = request.NamespaceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(request.Body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateWebCustomDomain"),
+		Version:     tea.String("2019-05-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/pop/v2/api/web/custom-domains"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateWebCustomDomainResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 新建自定义域名
+//
+// @param request - CreateWebCustomDomainRequest
+//
+// @return CreateWebCustomDomainResponse
+func (client *Client) CreateWebCustomDomain(request *CreateWebCustomDomainRequest) (_result *CreateWebCustomDomainResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateWebCustomDomainResponse{}
+	_body, _err := client.CreateWebCustomDomainWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 // @param request - DeleteApplicationRequest
 //
 // @param headers - map
@@ -40089,6 +43813,198 @@ func (client *Client) DeleteSecret(request *DeleteSecretRequest) (_result *Delet
 	headers := make(map[string]*string)
 	_result = &DeleteSecretResponse{}
 	_body, _err := client.DeleteSecretWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除应用
+//
+// @param request - DeleteWebApplicationRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteWebApplicationResponse
+func (client *Client) DeleteWebApplicationWithOptions(ApplicationId *string, request *DeleteWebApplicationRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteWebApplicationResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.NamespaceId)) {
+		query["NamespaceId"] = request.NamespaceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteWebApplication"),
+		Version:     tea.String("2019-05-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/pop/v2/api/web/applications/" + tea.StringValue(openapiutil.GetEncodeParam(ApplicationId))),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteWebApplicationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除应用
+//
+// @param request - DeleteWebApplicationRequest
+//
+// @return DeleteWebApplicationResponse
+func (client *Client) DeleteWebApplication(ApplicationId *string, request *DeleteWebApplicationRequest) (_result *DeleteWebApplicationResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteWebApplicationResponse{}
+	_body, _err := client.DeleteWebApplicationWithOptions(ApplicationId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除应用版本
+//
+// @param request - DeleteWebApplicationRevisionRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteWebApplicationRevisionResponse
+func (client *Client) DeleteWebApplicationRevisionWithOptions(ApplicationId *string, RevisionId *string, request *DeleteWebApplicationRevisionRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteWebApplicationRevisionResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.NamespaceId)) {
+		query["NamespaceId"] = request.NamespaceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteWebApplicationRevision"),
+		Version:     tea.String("2019-05-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/pop/v2/api/web/application-revisions/" + tea.StringValue(openapiutil.GetEncodeParam(ApplicationId)) + "/revisions/" + tea.StringValue(openapiutil.GetEncodeParam(RevisionId))),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteWebApplicationRevisionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除应用版本
+//
+// @param request - DeleteWebApplicationRevisionRequest
+//
+// @return DeleteWebApplicationRevisionResponse
+func (client *Client) DeleteWebApplicationRevision(ApplicationId *string, RevisionId *string, request *DeleteWebApplicationRevisionRequest) (_result *DeleteWebApplicationRevisionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteWebApplicationRevisionResponse{}
+	_body, _err := client.DeleteWebApplicationRevisionWithOptions(ApplicationId, RevisionId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除自定义域名
+//
+// @param request - DeleteWebCustomDomainRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteWebCustomDomainResponse
+func (client *Client) DeleteWebCustomDomainWithOptions(DomainName *string, request *DeleteWebCustomDomainRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteWebCustomDomainResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.NamespaceId)) {
+		query["NamespaceId"] = request.NamespaceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteWebCustomDomain"),
+		Version:     tea.String("2019-05-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/pop/v2/api/web/custom-domains/" + tea.StringValue(openapiutil.GetEncodeParam(DomainName))),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteWebCustomDomainResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除自定义域名
+//
+// @param request - DeleteWebCustomDomainRequest
+//
+// @return DeleteWebCustomDomainResponse
+func (client *Client) DeleteWebCustomDomain(DomainName *string, request *DeleteWebCustomDomainRequest) (_result *DeleteWebCustomDomainResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteWebCustomDomainResponse{}
+	_body, _err := client.DeleteWebCustomDomainWithOptions(DomainName, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -42148,6 +46064,466 @@ func (client *Client) DescribeSecret(request *DescribeSecretRequest) (_result *D
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取应用信息
+//
+// @param request - DescribeWebApplicationRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeWebApplicationResponse
+func (client *Client) DescribeWebApplicationWithOptions(ApplicationId *string, request *DescribeWebApplicationRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DescribeWebApplicationResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.NamespaceId)) {
+		query["NamespaceId"] = request.NamespaceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeWebApplication"),
+		Version:     tea.String("2019-05-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/pop/v2/api/web/applications/" + tea.StringValue(openapiutil.GetEncodeParam(ApplicationId))),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeWebApplicationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取应用信息
+//
+// @param request - DescribeWebApplicationRequest
+//
+// @return DescribeWebApplicationResponse
+func (client *Client) DescribeWebApplication(ApplicationId *string, request *DescribeWebApplicationRequest) (_result *DescribeWebApplicationResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DescribeWebApplicationResponse{}
+	_body, _err := client.DescribeWebApplicationWithOptions(ApplicationId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 应用资源用量统计
+//
+// @param request - DescribeWebApplicationResourceStaticsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeWebApplicationResourceStaticsResponse
+func (client *Client) DescribeWebApplicationResourceStaticsWithOptions(ApplicationId *string, request *DescribeWebApplicationResourceStaticsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DescribeWebApplicationResourceStaticsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NamespaceId)) {
+		query["NamespaceId"] = request.NamespaceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeWebApplicationResourceStatics"),
+		Version:     tea.String("2019-05-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/pop/v2/api/web/applications-observability/" + tea.StringValue(openapiutil.GetEncodeParam(ApplicationId)) + "/resource"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeWebApplicationResourceStaticsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 应用资源用量统计
+//
+// @param request - DescribeWebApplicationResourceStaticsRequest
+//
+// @return DescribeWebApplicationResourceStaticsResponse
+func (client *Client) DescribeWebApplicationResourceStatics(ApplicationId *string, request *DescribeWebApplicationResourceStaticsRequest) (_result *DescribeWebApplicationResourceStaticsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DescribeWebApplicationResourceStaticsResponse{}
+	_body, _err := client.DescribeWebApplicationResourceStaticsWithOptions(ApplicationId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取应用版本
+//
+// @param request - DescribeWebApplicationRevisionRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeWebApplicationRevisionResponse
+func (client *Client) DescribeWebApplicationRevisionWithOptions(ApplicationId *string, RevisionId *string, request *DescribeWebApplicationRevisionRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DescribeWebApplicationRevisionResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.NamespaceId)) {
+		query["NamespaceId"] = request.NamespaceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeWebApplicationRevision"),
+		Version:     tea.String("2019-05-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/pop/v2/api/web/application-revisions/" + tea.StringValue(openapiutil.GetEncodeParam(ApplicationId)) + "/revisions/" + tea.StringValue(openapiutil.GetEncodeParam(RevisionId))),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeWebApplicationRevisionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取应用版本
+//
+// @param request - DescribeWebApplicationRevisionRequest
+//
+// @return DescribeWebApplicationRevisionResponse
+func (client *Client) DescribeWebApplicationRevision(ApplicationId *string, RevisionId *string, request *DescribeWebApplicationRevisionRequest) (_result *DescribeWebApplicationRevisionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DescribeWebApplicationRevisionResponse{}
+	_body, _err := client.DescribeWebApplicationRevisionWithOptions(ApplicationId, RevisionId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 弹性配置详情
+//
+// @param request - DescribeWebApplicationScalingConfigRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeWebApplicationScalingConfigResponse
+func (client *Client) DescribeWebApplicationScalingConfigWithOptions(ApplicationId *string, request *DescribeWebApplicationScalingConfigRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DescribeWebApplicationScalingConfigResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.NamespaceId)) {
+		query["NamespaceId"] = request.NamespaceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeWebApplicationScalingConfig"),
+		Version:     tea.String("2019-05-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/pop/v2/api/web/application-scaling/" + tea.StringValue(openapiutil.GetEncodeParam(ApplicationId))),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeWebApplicationScalingConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 弹性配置详情
+//
+// @param request - DescribeWebApplicationScalingConfigRequest
+//
+// @return DescribeWebApplicationScalingConfigResponse
+func (client *Client) DescribeWebApplicationScalingConfig(ApplicationId *string, request *DescribeWebApplicationScalingConfigRequest) (_result *DescribeWebApplicationScalingConfigResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DescribeWebApplicationScalingConfigResponse{}
+	_body, _err := client.DescribeWebApplicationScalingConfigWithOptions(ApplicationId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 流量配置详情
+//
+// @param request - DescribeWebApplicationTrafficConfigRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeWebApplicationTrafficConfigResponse
+func (client *Client) DescribeWebApplicationTrafficConfigWithOptions(ApplicationId *string, request *DescribeWebApplicationTrafficConfigRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DescribeWebApplicationTrafficConfigResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.NamespaceId)) {
+		query["NamespaceId"] = request.NamespaceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeWebApplicationTrafficConfig"),
+		Version:     tea.String("2019-05-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/pop/v2/api/web/application-traffic/" + tea.StringValue(openapiutil.GetEncodeParam(ApplicationId))),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeWebApplicationTrafficConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 流量配置详情
+//
+// @param request - DescribeWebApplicationTrafficConfigRequest
+//
+// @return DescribeWebApplicationTrafficConfigResponse
+func (client *Client) DescribeWebApplicationTrafficConfig(ApplicationId *string, request *DescribeWebApplicationTrafficConfigRequest) (_result *DescribeWebApplicationTrafficConfigResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DescribeWebApplicationTrafficConfigResponse{}
+	_body, _err := client.DescribeWebApplicationTrafficConfigWithOptions(ApplicationId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取域名.
+//
+// @param request - DescribeWebCustomDomainRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeWebCustomDomainResponse
+func (client *Client) DescribeWebCustomDomainWithOptions(DomainName *string, request *DescribeWebCustomDomainRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DescribeWebCustomDomainResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.NamespaceId)) {
+		query["NamespaceId"] = request.NamespaceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeWebCustomDomain"),
+		Version:     tea.String("2019-05-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/pop/v2/api/web/custom-domains/" + tea.StringValue(openapiutil.GetEncodeParam(DomainName))),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeWebCustomDomainResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取域名.
+//
+// @param request - DescribeWebCustomDomainRequest
+//
+// @return DescribeWebCustomDomainResponse
+func (client *Client) DescribeWebCustomDomain(DomainName *string, request *DescribeWebCustomDomainRequest) (_result *DescribeWebCustomDomainResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DescribeWebCustomDomainResponse{}
+	_body, _err := client.DescribeWebCustomDomainWithOptions(DomainName, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 应用实例日志
+//
+// @param request - DescribeWebInstanceLogsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeWebInstanceLogsResponse
+func (client *Client) DescribeWebInstanceLogsWithOptions(ApplicationId *string, InstanceId *string, request *DescribeWebInstanceLogsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DescribeWebInstanceLogsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.NamespaceId)) {
+		query["NamespaceId"] = request.NamespaceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeWebInstanceLogs"),
+		Version:     tea.String("2019-05-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/pop/v2/api/web/applications-observability/" + tea.StringValue(openapiutil.GetEncodeParam(ApplicationId)) + "/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/logs"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeWebInstanceLogsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 应用实例日志
+//
+// @param request - DescribeWebInstanceLogsRequest
+//
+// @return DescribeWebInstanceLogsResponse
+func (client *Client) DescribeWebInstanceLogs(ApplicationId *string, InstanceId *string, request *DescribeWebInstanceLogsRequest) (_result *DescribeWebInstanceLogsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DescribeWebInstanceLogsResponse{}
+	_body, _err := client.DescribeWebInstanceLogsWithOptions(ApplicationId, InstanceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 // @param request - DisableApplicationScalingRuleRequest
 //
 // @param headers - map
@@ -43918,6 +48294,336 @@ func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_resul
 
 // Summary:
 //
+// 应用实例列表
+//
+// @param tmpReq - ListWebApplicationInstancesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListWebApplicationInstancesResponse
+func (client *Client) ListWebApplicationInstancesWithOptions(ApplicationId *string, tmpReq *ListWebApplicationInstancesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListWebApplicationInstancesResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &ListWebApplicationInstancesShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.InstanceIds)) {
+		request.InstanceIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.InstanceIds, tea.String("InstanceIds"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.Statuses)) {
+		request.StatusesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Statuses, tea.String("Statuses"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.VersionIds)) {
+		request.VersionIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.VersionIds, tea.String("VersionIds"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceIdsShrink)) {
+		query["InstanceIds"] = request.InstanceIdsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Limit)) {
+		query["Limit"] = request.Limit
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NamespaceId)) {
+		query["NamespaceId"] = request.NamespaceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StatusesShrink)) {
+		query["Statuses"] = request.StatusesShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VersionIdsShrink)) {
+		query["VersionIds"] = request.VersionIdsShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListWebApplicationInstances"),
+		Version:     tea.String("2019-05-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/pop/v2/api/web/applications-observability/" + tea.StringValue(openapiutil.GetEncodeParam(ApplicationId)) + "/instances"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListWebApplicationInstancesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 应用实例列表
+//
+// @param request - ListWebApplicationInstancesRequest
+//
+// @return ListWebApplicationInstancesResponse
+func (client *Client) ListWebApplicationInstances(ApplicationId *string, request *ListWebApplicationInstancesRequest) (_result *ListWebApplicationInstancesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListWebApplicationInstancesResponse{}
+	_body, _err := client.ListWebApplicationInstancesWithOptions(ApplicationId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 版本列表
+//
+// @param request - ListWebApplicationRevisionsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListWebApplicationRevisionsResponse
+func (client *Client) ListWebApplicationRevisionsWithOptions(ApplicationId *string, request *ListWebApplicationRevisionsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListWebApplicationRevisionsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Limit)) {
+		query["Limit"] = request.Limit
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NamespaceId)) {
+		query["NamespaceId"] = request.NamespaceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListWebApplicationRevisions"),
+		Version:     tea.String("2019-05-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/pop/v2/api/web/application-revisions/" + tea.StringValue(openapiutil.GetEncodeParam(ApplicationId)) + "/revisions"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListWebApplicationRevisionsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 版本列表
+//
+// @param request - ListWebApplicationRevisionsRequest
+//
+// @return ListWebApplicationRevisionsResponse
+func (client *Client) ListWebApplicationRevisions(ApplicationId *string, request *ListWebApplicationRevisionsRequest) (_result *ListWebApplicationRevisionsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListWebApplicationRevisionsResponse{}
+	_body, _err := client.ListWebApplicationRevisionsWithOptions(ApplicationId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 应用列表
+//
+// @param request - ListWebApplicationsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListWebApplicationsResponse
+func (client *Client) ListWebApplicationsWithOptions(request *ListWebApplicationsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListWebApplicationsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Limit)) {
+		query["Limit"] = request.Limit
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NamespaceId)) {
+		query["NamespaceId"] = request.NamespaceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Prefix)) {
+		query["Prefix"] = request.Prefix
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListWebApplications"),
+		Version:     tea.String("2019-05-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/pop/v2/api/web/applications"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListWebApplicationsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 应用列表
+//
+// @param request - ListWebApplicationsRequest
+//
+// @return ListWebApplicationsResponse
+func (client *Client) ListWebApplications(request *ListWebApplicationsRequest) (_result *ListWebApplicationsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListWebApplicationsResponse{}
+	_body, _err := client.ListWebApplicationsWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 自定义域名列表.
+//
+// @param request - ListWebCustomDomainsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListWebCustomDomainsResponse
+func (client *Client) ListWebCustomDomainsWithOptions(request *ListWebCustomDomainsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListWebCustomDomainsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ApplicationId)) {
+		query["ApplicationId"] = request.ApplicationId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Limit)) {
+		query["Limit"] = request.Limit
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NamespaceId)) {
+		query["NamespaceId"] = request.NamespaceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Prefix)) {
+		query["Prefix"] = request.Prefix
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListWebCustomDomains"),
+		Version:     tea.String("2019-05-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/pop/v2/api/web/custom-domains"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListWebCustomDomainsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 自定义域名列表.
+//
+// @param request - ListWebCustomDomainsRequest
+//
+// @return ListWebCustomDomainsResponse
+func (client *Client) ListWebCustomDomains(request *ListWebCustomDomainsRequest) (_result *ListWebCustomDomainsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListWebCustomDomainsResponse{}
+	_body, _err := client.ListWebCustomDomainsWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Activates the Serverless App Engine (SAE) service for free.
 //
 // Description:
@@ -43967,6 +48673,71 @@ func (client *Client) OpenSaeService() (_result *OpenSaeServiceResponse, _err er
 	headers := make(map[string]*string)
 	_result = &OpenSaeServiceResponse{}
 	_body, _err := client.OpenSaeServiceWithOptions(headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 新建版本
+//
+// @param request - PublishWebApplicationRevisionRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return PublishWebApplicationRevisionResponse
+func (client *Client) PublishWebApplicationRevisionWithOptions(ApplicationId *string, request *PublishWebApplicationRevisionRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *PublishWebApplicationRevisionResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.NamespaceId)) {
+		query["NamespaceId"] = request.NamespaceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(request.Body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("PublishWebApplicationRevision"),
+		Version:     tea.String("2019-05-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/pop/v2/api/web/application-revisions/" + tea.StringValue(openapiutil.GetEncodeParam(ApplicationId)) + "/revisions"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &PublishWebApplicationRevisionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 新建版本
+//
+// @param request - PublishWebApplicationRevisionRequest
+//
+// @return PublishWebApplicationRevisionResponse
+func (client *Client) PublishWebApplicationRevision(ApplicationId *string, request *PublishWebApplicationRevisionRequest) (_result *PublishWebApplicationRevisionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &PublishWebApplicationRevisionResponse{}
+	_body, _err := client.PublishWebApplicationRevisionWithOptions(ApplicationId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -44556,6 +49327,70 @@ func (client *Client) StartApplication(request *StartApplicationRequest) (_resul
 
 // Summary:
 //
+// 启动应用
+//
+// @param request - StartWebApplicationRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return StartWebApplicationResponse
+func (client *Client) StartWebApplicationWithOptions(ApplicationId *string, request *StartWebApplicationRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *StartWebApplicationResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.NamespaceId)) {
+		query["NamespaceId"] = request.NamespaceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("StartWebApplication"),
+		Version:     tea.String("2019-05-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/pop/v2/api/web/application-ops/" + tea.StringValue(openapiutil.GetEncodeParam(ApplicationId)) + "/start"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &StartWebApplicationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 启动应用
+//
+// @param request - StartWebApplicationRequest
+//
+// @return StartWebApplicationResponse
+func (client *Client) StartWebApplication(ApplicationId *string, request *StartWebApplicationRequest) (_result *StartWebApplicationResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &StartWebApplicationResponse{}
+	_body, _err := client.StartWebApplicationWithOptions(ApplicationId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 0099b7be-5f5b-4512-a7fc-56049ef1\\*\\*\\*\\*
 //
 // @param request - StopApplicationRequest
@@ -44611,6 +49446,70 @@ func (client *Client) StopApplication(request *StopApplicationRequest) (_result 
 	headers := make(map[string]*string)
 	_result = &StopApplicationResponse{}
 	_body, _err := client.StopApplicationWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 停止应用
+//
+// @param request - StopWebApplicationRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return StopWebApplicationResponse
+func (client *Client) StopWebApplicationWithOptions(ApplicationId *string, request *StopWebApplicationRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *StopWebApplicationResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.NamespaceId)) {
+		query["NamespaceId"] = request.NamespaceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("StopWebApplication"),
+		Version:     tea.String("2019-05-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/pop/v2/api/web/application-ops/" + tea.StringValue(openapiutil.GetEncodeParam(ApplicationId)) + "/stop"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &StopWebApplicationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 停止应用
+//
+// @param request - StopWebApplicationRequest
+//
+// @return StopWebApplicationResponse
+func (client *Client) StopWebApplication(ApplicationId *string, request *StopWebApplicationRequest) (_result *StopWebApplicationResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &StopWebApplicationResponse{}
+	_body, _err := client.StopWebApplicationWithOptions(ApplicationId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -45923,6 +50822,266 @@ func (client *Client) UpdateSecret(request *UpdateSecretRequest) (_result *Updat
 	headers := make(map[string]*string)
 	_result = &UpdateSecretResponse{}
 	_body, _err := client.UpdateSecretWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新应用
+//
+// @param request - UpdateWebApplicationRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateWebApplicationResponse
+func (client *Client) UpdateWebApplicationWithOptions(ApplicationId *string, request *UpdateWebApplicationRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateWebApplicationResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.NamespaceId)) {
+		query["NamespaceId"] = request.NamespaceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(request.Body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateWebApplication"),
+		Version:     tea.String("2019-05-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/pop/v2/api/web/applications/" + tea.StringValue(openapiutil.GetEncodeParam(ApplicationId))),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateWebApplicationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新应用
+//
+// @param request - UpdateWebApplicationRequest
+//
+// @return UpdateWebApplicationResponse
+func (client *Client) UpdateWebApplication(ApplicationId *string, request *UpdateWebApplicationRequest) (_result *UpdateWebApplicationResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateWebApplicationResponse{}
+	_body, _err := client.UpdateWebApplicationWithOptions(ApplicationId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新弹性配置
+//
+// @param request - UpdateWebApplicationScalingConfigRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateWebApplicationScalingConfigResponse
+func (client *Client) UpdateWebApplicationScalingConfigWithOptions(ApplicationId *string, request *UpdateWebApplicationScalingConfigRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateWebApplicationScalingConfigResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.NamespaceId)) {
+		query["NamespaceId"] = request.NamespaceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(request.Body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateWebApplicationScalingConfig"),
+		Version:     tea.String("2019-05-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/pop/v2/api/web/application-scaling/" + tea.StringValue(openapiutil.GetEncodeParam(ApplicationId))),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateWebApplicationScalingConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新弹性配置
+//
+// @param request - UpdateWebApplicationScalingConfigRequest
+//
+// @return UpdateWebApplicationScalingConfigResponse
+func (client *Client) UpdateWebApplicationScalingConfig(ApplicationId *string, request *UpdateWebApplicationScalingConfigRequest) (_result *UpdateWebApplicationScalingConfigResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateWebApplicationScalingConfigResponse{}
+	_body, _err := client.UpdateWebApplicationScalingConfigWithOptions(ApplicationId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新流量配置
+//
+// @param request - UpdateWebApplicationTrafficConfigRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateWebApplicationTrafficConfigResponse
+func (client *Client) UpdateWebApplicationTrafficConfigWithOptions(ApplicationId *string, request *UpdateWebApplicationTrafficConfigRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateWebApplicationTrafficConfigResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.NamespaceId)) {
+		query["NamespaceId"] = request.NamespaceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(request.Body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateWebApplicationTrafficConfig"),
+		Version:     tea.String("2019-05-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/pop/v2/api/web/application-traffic/" + tea.StringValue(openapiutil.GetEncodeParam(ApplicationId))),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateWebApplicationTrafficConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新流量配置
+//
+// @param request - UpdateWebApplicationTrafficConfigRequest
+//
+// @return UpdateWebApplicationTrafficConfigResponse
+func (client *Client) UpdateWebApplicationTrafficConfig(ApplicationId *string, request *UpdateWebApplicationTrafficConfigRequest) (_result *UpdateWebApplicationTrafficConfigResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateWebApplicationTrafficConfigResponse{}
+	_body, _err := client.UpdateWebApplicationTrafficConfigWithOptions(ApplicationId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新自定义域名.
+//
+// @param request - UpdateWebCustomDomainRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateWebCustomDomainResponse
+func (client *Client) UpdateWebCustomDomainWithOptions(DomainName *string, request *UpdateWebCustomDomainRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateWebCustomDomainResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.NamespaceId)) {
+		query["NamespaceId"] = request.NamespaceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(request.Body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateWebCustomDomain"),
+		Version:     tea.String("2019-05-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/pop/v2/api/web/custom-domains/" + tea.StringValue(openapiutil.GetEncodeParam(DomainName))),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateWebCustomDomainResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新自定义域名.
+//
+// @param request - UpdateWebCustomDomainRequest
+//
+// @return UpdateWebCustomDomainResponse
+func (client *Client) UpdateWebCustomDomain(DomainName *string, request *UpdateWebCustomDomainRequest) (_result *UpdateWebCustomDomainResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateWebCustomDomainResponse{}
+	_body, _err := client.UpdateWebCustomDomainWithOptions(DomainName, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
