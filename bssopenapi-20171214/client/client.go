@@ -14373,7 +14373,8 @@ type GetOrderDetailResponseBodyDataOrderListOrder struct {
 	// example:
 	//
 	// 0
-	AfterTaxAmount *string `json:"AfterTaxAmount,omitempty" xml:"AfterTaxAmount,omitempty"`
+	AfterTaxAmount   *string                                                       `json:"AfterTaxAmount,omitempty" xml:"AfterTaxAmount,omitempty"`
+	BillModuleConfig *GetOrderDetailResponseBodyDataOrderListOrderBillModuleConfig `json:"BillModuleConfig,omitempty" xml:"BillModuleConfig,omitempty" type:"Struct"`
 	// The service code.
 	//
 	// example:
@@ -14453,7 +14454,8 @@ type GetOrderDetailResponseBodyDataOrderListOrder struct {
 	// example:
 	//
 	// DBInstanceClass:[DBInstanceClass:rds.mysql.s1.small;EngineVersion:8.0;Region:cn-qingdao;]DBFlowType:[Region:cn-qingdao;]
-	OriginalConfig *string `json:"OriginalConfig,omitempty" xml:"OriginalConfig,omitempty"`
+	OriginalConfig       *string                                                           `json:"OriginalConfig,omitempty" xml:"OriginalConfig,omitempty"`
+	OriginalModuleConfig *GetOrderDetailResponseBodyDataOrderListOrderOriginalModuleConfig `json:"OriginalModuleConfig,omitempty" xml:"OriginalModuleConfig,omitempty" type:"Struct"`
 	// The currency of payment.
 	//
 	// example:
@@ -14575,6 +14577,11 @@ func (s *GetOrderDetailResponseBodyDataOrderListOrder) SetAfterTaxAmount(v strin
 	return s
 }
 
+func (s *GetOrderDetailResponseBodyDataOrderListOrder) SetBillModuleConfig(v *GetOrderDetailResponseBodyDataOrderListOrderBillModuleConfig) *GetOrderDetailResponseBodyDataOrderListOrder {
+	s.BillModuleConfig = v
+	return s
+}
+
 func (s *GetOrderDetailResponseBodyDataOrderListOrder) SetCommodityCode(v string) *GetOrderDetailResponseBodyDataOrderListOrder {
 	s.CommodityCode = &v
 	return s
@@ -14627,6 +14634,11 @@ func (s *GetOrderDetailResponseBodyDataOrderListOrder) SetOrderType(v string) *G
 
 func (s *GetOrderDetailResponseBodyDataOrderListOrder) SetOriginalConfig(v string) *GetOrderDetailResponseBodyDataOrderListOrder {
 	s.OriginalConfig = &v
+	return s
+}
+
+func (s *GetOrderDetailResponseBodyDataOrderListOrder) SetOriginalModuleConfig(v *GetOrderDetailResponseBodyDataOrderListOrderOriginalModuleConfig) *GetOrderDetailResponseBodyDataOrderListOrder {
+	s.OriginalModuleConfig = v
 	return s
 }
 
@@ -14707,6 +14719,196 @@ func (s *GetOrderDetailResponseBodyDataOrderListOrder) SetUsageEndTime(v string)
 
 func (s *GetOrderDetailResponseBodyDataOrderListOrder) SetUsageStartTime(v string) *GetOrderDetailResponseBodyDataOrderListOrder {
 	s.UsageStartTime = &v
+	return s
+}
+
+type GetOrderDetailResponseBodyDataOrderListOrderBillModuleConfig struct {
+	BillModuleConfig []*GetOrderDetailResponseBodyDataOrderListOrderBillModuleConfigBillModuleConfig `json:"billModuleConfig,omitempty" xml:"billModuleConfig,omitempty" type:"Repeated"`
+}
+
+func (s GetOrderDetailResponseBodyDataOrderListOrderBillModuleConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetOrderDetailResponseBodyDataOrderListOrderBillModuleConfig) GoString() string {
+	return s.String()
+}
+
+func (s *GetOrderDetailResponseBodyDataOrderListOrderBillModuleConfig) SetBillModuleConfig(v []*GetOrderDetailResponseBodyDataOrderListOrderBillModuleConfigBillModuleConfig) *GetOrderDetailResponseBodyDataOrderListOrderBillModuleConfig {
+	s.BillModuleConfig = v
+	return s
+}
+
+type GetOrderDetailResponseBodyDataOrderListOrderBillModuleConfigBillModuleConfig struct {
+	ApiCode              *string                                                                                           `json:"ApiCode,omitempty" xml:"ApiCode,omitempty"`
+	BillModuleProperties *GetOrderDetailResponseBodyDataOrderListOrderBillModuleConfigBillModuleConfigBillModuleProperties `json:"BillModuleProperties,omitempty" xml:"BillModuleProperties,omitempty" type:"Struct"`
+	Code                 *string                                                                                           `json:"Code,omitempty" xml:"Code,omitempty"`
+	Name                 *string                                                                                           `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s GetOrderDetailResponseBodyDataOrderListOrderBillModuleConfigBillModuleConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetOrderDetailResponseBodyDataOrderListOrderBillModuleConfigBillModuleConfig) GoString() string {
+	return s.String()
+}
+
+func (s *GetOrderDetailResponseBodyDataOrderListOrderBillModuleConfigBillModuleConfig) SetApiCode(v string) *GetOrderDetailResponseBodyDataOrderListOrderBillModuleConfigBillModuleConfig {
+	s.ApiCode = &v
+	return s
+}
+
+func (s *GetOrderDetailResponseBodyDataOrderListOrderBillModuleConfigBillModuleConfig) SetBillModuleProperties(v *GetOrderDetailResponseBodyDataOrderListOrderBillModuleConfigBillModuleConfigBillModuleProperties) *GetOrderDetailResponseBodyDataOrderListOrderBillModuleConfigBillModuleConfig {
+	s.BillModuleProperties = v
+	return s
+}
+
+func (s *GetOrderDetailResponseBodyDataOrderListOrderBillModuleConfigBillModuleConfig) SetCode(v string) *GetOrderDetailResponseBodyDataOrderListOrderBillModuleConfigBillModuleConfig {
+	s.Code = &v
+	return s
+}
+
+func (s *GetOrderDetailResponseBodyDataOrderListOrderBillModuleConfigBillModuleConfig) SetName(v string) *GetOrderDetailResponseBodyDataOrderListOrderBillModuleConfigBillModuleConfig {
+	s.Name = &v
+	return s
+}
+
+type GetOrderDetailResponseBodyDataOrderListOrderBillModuleConfigBillModuleConfigBillModuleProperties struct {
+	BillModuleProperties []*GetOrderDetailResponseBodyDataOrderListOrderBillModuleConfigBillModuleConfigBillModulePropertiesBillModuleProperties `json:"billModuleProperties,omitempty" xml:"billModuleProperties,omitempty" type:"Repeated"`
+}
+
+func (s GetOrderDetailResponseBodyDataOrderListOrderBillModuleConfigBillModuleConfigBillModuleProperties) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetOrderDetailResponseBodyDataOrderListOrderBillModuleConfigBillModuleConfigBillModuleProperties) GoString() string {
+	return s.String()
+}
+
+func (s *GetOrderDetailResponseBodyDataOrderListOrderBillModuleConfigBillModuleConfigBillModuleProperties) SetBillModuleProperties(v []*GetOrderDetailResponseBodyDataOrderListOrderBillModuleConfigBillModuleConfigBillModulePropertiesBillModuleProperties) *GetOrderDetailResponseBodyDataOrderListOrderBillModuleConfigBillModuleConfigBillModuleProperties {
+	s.BillModuleProperties = v
+	return s
+}
+
+type GetOrderDetailResponseBodyDataOrderListOrderBillModuleConfigBillModuleConfigBillModulePropertiesBillModuleProperties struct {
+	AttrApiCode   *string `json:"AttrApiCode,omitempty" xml:"AttrApiCode,omitempty"`
+	ModuleApiCode *string `json:"ModuleApiCode,omitempty" xml:"ModuleApiCode,omitempty"`
+	Value         *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s GetOrderDetailResponseBodyDataOrderListOrderBillModuleConfigBillModuleConfigBillModulePropertiesBillModuleProperties) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetOrderDetailResponseBodyDataOrderListOrderBillModuleConfigBillModuleConfigBillModulePropertiesBillModuleProperties) GoString() string {
+	return s.String()
+}
+
+func (s *GetOrderDetailResponseBodyDataOrderListOrderBillModuleConfigBillModuleConfigBillModulePropertiesBillModuleProperties) SetAttrApiCode(v string) *GetOrderDetailResponseBodyDataOrderListOrderBillModuleConfigBillModuleConfigBillModulePropertiesBillModuleProperties {
+	s.AttrApiCode = &v
+	return s
+}
+
+func (s *GetOrderDetailResponseBodyDataOrderListOrderBillModuleConfigBillModuleConfigBillModulePropertiesBillModuleProperties) SetModuleApiCode(v string) *GetOrderDetailResponseBodyDataOrderListOrderBillModuleConfigBillModuleConfigBillModulePropertiesBillModuleProperties {
+	s.ModuleApiCode = &v
+	return s
+}
+
+func (s *GetOrderDetailResponseBodyDataOrderListOrderBillModuleConfigBillModuleConfigBillModulePropertiesBillModuleProperties) SetValue(v string) *GetOrderDetailResponseBodyDataOrderListOrderBillModuleConfigBillModuleConfigBillModulePropertiesBillModuleProperties {
+	s.Value = &v
+	return s
+}
+
+type GetOrderDetailResponseBodyDataOrderListOrderOriginalModuleConfig struct {
+	OriginalModuleConfig []*GetOrderDetailResponseBodyDataOrderListOrderOriginalModuleConfigOriginalModuleConfig `json:"originalModuleConfig,omitempty" xml:"originalModuleConfig,omitempty" type:"Repeated"`
+}
+
+func (s GetOrderDetailResponseBodyDataOrderListOrderOriginalModuleConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetOrderDetailResponseBodyDataOrderListOrderOriginalModuleConfig) GoString() string {
+	return s.String()
+}
+
+func (s *GetOrderDetailResponseBodyDataOrderListOrderOriginalModuleConfig) SetOriginalModuleConfig(v []*GetOrderDetailResponseBodyDataOrderListOrderOriginalModuleConfigOriginalModuleConfig) *GetOrderDetailResponseBodyDataOrderListOrderOriginalModuleConfig {
+	s.OriginalModuleConfig = v
+	return s
+}
+
+type GetOrderDetailResponseBodyDataOrderListOrderOriginalModuleConfigOriginalModuleConfig struct {
+	Code             *string                                                                                               `json:"Code,omitempty" xml:"Code,omitempty"`
+	ModuleProperties *GetOrderDetailResponseBodyDataOrderListOrderOriginalModuleConfigOriginalModuleConfigModuleProperties `json:"ModuleProperties,omitempty" xml:"ModuleProperties,omitempty" type:"Struct"`
+	Name             *string                                                                                               `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s GetOrderDetailResponseBodyDataOrderListOrderOriginalModuleConfigOriginalModuleConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetOrderDetailResponseBodyDataOrderListOrderOriginalModuleConfigOriginalModuleConfig) GoString() string {
+	return s.String()
+}
+
+func (s *GetOrderDetailResponseBodyDataOrderListOrderOriginalModuleConfigOriginalModuleConfig) SetCode(v string) *GetOrderDetailResponseBodyDataOrderListOrderOriginalModuleConfigOriginalModuleConfig {
+	s.Code = &v
+	return s
+}
+
+func (s *GetOrderDetailResponseBodyDataOrderListOrderOriginalModuleConfigOriginalModuleConfig) SetModuleProperties(v *GetOrderDetailResponseBodyDataOrderListOrderOriginalModuleConfigOriginalModuleConfigModuleProperties) *GetOrderDetailResponseBodyDataOrderListOrderOriginalModuleConfigOriginalModuleConfig {
+	s.ModuleProperties = v
+	return s
+}
+
+func (s *GetOrderDetailResponseBodyDataOrderListOrderOriginalModuleConfigOriginalModuleConfig) SetName(v string) *GetOrderDetailResponseBodyDataOrderListOrderOriginalModuleConfigOriginalModuleConfig {
+	s.Name = &v
+	return s
+}
+
+type GetOrderDetailResponseBodyDataOrderListOrderOriginalModuleConfigOriginalModuleConfigModuleProperties struct {
+	ModuleProperties []*GetOrderDetailResponseBodyDataOrderListOrderOriginalModuleConfigOriginalModuleConfigModulePropertiesModuleProperties `json:"moduleProperties,omitempty" xml:"moduleProperties,omitempty" type:"Repeated"`
+}
+
+func (s GetOrderDetailResponseBodyDataOrderListOrderOriginalModuleConfigOriginalModuleConfigModuleProperties) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetOrderDetailResponseBodyDataOrderListOrderOriginalModuleConfigOriginalModuleConfigModuleProperties) GoString() string {
+	return s.String()
+}
+
+func (s *GetOrderDetailResponseBodyDataOrderListOrderOriginalModuleConfigOriginalModuleConfigModuleProperties) SetModuleProperties(v []*GetOrderDetailResponseBodyDataOrderListOrderOriginalModuleConfigOriginalModuleConfigModulePropertiesModuleProperties) *GetOrderDetailResponseBodyDataOrderListOrderOriginalModuleConfigOriginalModuleConfigModuleProperties {
+	s.ModuleProperties = v
+	return s
+}
+
+type GetOrderDetailResponseBodyDataOrderListOrderOriginalModuleConfigOriginalModuleConfigModulePropertiesModuleProperties struct {
+	Code  *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Name  *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s GetOrderDetailResponseBodyDataOrderListOrderOriginalModuleConfigOriginalModuleConfigModulePropertiesModuleProperties) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetOrderDetailResponseBodyDataOrderListOrderOriginalModuleConfigOriginalModuleConfigModulePropertiesModuleProperties) GoString() string {
+	return s.String()
+}
+
+func (s *GetOrderDetailResponseBodyDataOrderListOrderOriginalModuleConfigOriginalModuleConfigModulePropertiesModuleProperties) SetCode(v string) *GetOrderDetailResponseBodyDataOrderListOrderOriginalModuleConfigOriginalModuleConfigModulePropertiesModuleProperties {
+	s.Code = &v
+	return s
+}
+
+func (s *GetOrderDetailResponseBodyDataOrderListOrderOriginalModuleConfigOriginalModuleConfigModulePropertiesModuleProperties) SetName(v string) *GetOrderDetailResponseBodyDataOrderListOrderOriginalModuleConfigOriginalModuleConfigModulePropertiesModuleProperties {
+	s.Name = &v
+	return s
+}
+
+func (s *GetOrderDetailResponseBodyDataOrderListOrderOriginalModuleConfigOriginalModuleConfigModulePropertiesModuleProperties) SetValue(v string) *GetOrderDetailResponseBodyDataOrderListOrderOriginalModuleConfigOriginalModuleConfigModulePropertiesModuleProperties {
+	s.Value = &v
 	return s
 }
 
