@@ -13463,7 +13463,16 @@ type DescribeCenInterRegionBandwidthLimitsResponseBodyCenInterRegionBandwidthLim
 	//
 	// cenbwp-uenczwb592fnvv****
 	BandwidthPackageId *string `json:"BandwidthPackageId,omitempty" xml:"BandwidthPackageId,omitempty"`
-	BandwidthType      *string `json:"BandwidthType,omitempty" xml:"BandwidthType,omitempty"`
+	// The bandwidth allocation method. Valid values:
+	//
+	// 	- **BandwidthPackage**: allocates bandwidth from a bandwidth plan.
+	//
+	// 	- **DataTransfer**: bandwidth is billed based on the pay-by-data-transfer metering method.
+	//
+	// example:
+	//
+	// BandwidthPackage
+	BandwidthType *string `json:"BandwidthType,omitempty" xml:"BandwidthType,omitempty"`
 	// The CEN instance ID.
 	//
 	// example:
@@ -33422,28 +33431,42 @@ func (s *RoutePrivateZoneInCenToVpcResponse) SetBody(v *RoutePrivateZoneInCenToV
 }
 
 type SetCenInterRegionBandwidthLimitRequest struct {
+	// The maximum bandwidth value of the inter-region connection. Unit: Mbit/s.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 8
 	BandwidthLimit *int64 `json:"BandwidthLimit,omitempty" xml:"BandwidthLimit,omitempty"`
+	// The bandwidth allocation method. Valid values:
+	//
+	// **BandwidthPackage**: allocates bandwidth from a bandwidth plan.
+	//
 	// example:
 	//
 	// BandwidthPackage
 	BandwidthType *string `json:"BandwidthType,omitempty" xml:"BandwidthType,omitempty"`
+	// The ID of the CEN instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cen-7qthudw0ll6jmx****
 	CenId *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
+	// The ID of the local region.
+	//
+	// You can call the [DescribeChildInstanceRegions](https://help.aliyun.com/document_detail/132080.html) operation to query regions where you can attach network instances to a CEN instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	LocalRegionId *string `json:"LocalRegionId,omitempty" xml:"LocalRegionId,omitempty"`
+	// The ID of the peer region.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -33510,6 +33533,8 @@ func (s *SetCenInterRegionBandwidthLimitRequest) SetResourceOwnerId(v int64) *Se
 }
 
 type SetCenInterRegionBandwidthLimitResponseBody struct {
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 530BC816-F575-412A-AAB2-435125D26328
@@ -43826,7 +43851,7 @@ func (client *Client) DescribeCenGeographicSpans(request *DescribeCenGeographicS
 
 // Summary:
 //
-// Queries the maximum bandwidth of inter-region connections.
+// Queries the bandwidth of connections between regions.
 //
 // @param request - DescribeCenInterRegionBandwidthLimitsRequest
 //
@@ -43896,7 +43921,7 @@ func (client *Client) DescribeCenInterRegionBandwidthLimitsWithOptions(request *
 
 // Summary:
 //
-// Queries the maximum bandwidth of inter-region connections.
+// Queries the bandwidth of connections between regions.
 //
 // @param request - DescribeCenInterRegionBandwidthLimitsRequest
 //
@@ -51342,6 +51367,22 @@ func (client *Client) RoutePrivateZoneInCenToVpc(request *RoutePrivateZoneInCenT
 	return _result, _err
 }
 
+// Summary:
+//
+// Configures, modifies, or deletes the bandwidth of inter-region connections for a Basic Edition transit router.
+//
+// Description:
+//
+// ### Prerequisites
+//
+// The Cloud Enterprise Network (CEN) instance is associated with a bandwidth plan. For more information, see the [CreateCenBandwidthPackage](https://help.aliyun.com/document_detail/65919.html) and [AssociateCenBandwidthPackage](https://help.aliyun.com/document_detail/65934.html) topics.
+//
+// You can call the **SetCenInterRegionBandwidthLimit*	- operation to configure, modify, or remove the maximum bandwidth value of an inter-region connection.
+//
+// - If you set **BandwidthLimit*	- to a value other than 0, the maximum bandwidth value of the inter-region connection is set or changed to the specified value.
+//
+// - If you set **BandwidthLimit*	- to 0, no bandwidth resource is allocated to the inter-region connection.
+//
 // @param request - SetCenInterRegionBandwidthLimitRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -51412,6 +51453,22 @@ func (client *Client) SetCenInterRegionBandwidthLimitWithOptions(request *SetCen
 	return _result, _err
 }
 
+// Summary:
+//
+// Configures, modifies, or deletes the bandwidth of inter-region connections for a Basic Edition transit router.
+//
+// Description:
+//
+// ### Prerequisites
+//
+// The Cloud Enterprise Network (CEN) instance is associated with a bandwidth plan. For more information, see the [CreateCenBandwidthPackage](https://help.aliyun.com/document_detail/65919.html) and [AssociateCenBandwidthPackage](https://help.aliyun.com/document_detail/65934.html) topics.
+//
+// You can call the **SetCenInterRegionBandwidthLimit*	- operation to configure, modify, or remove the maximum bandwidth value of an inter-region connection.
+//
+// - If you set **BandwidthLimit*	- to a value other than 0, the maximum bandwidth value of the inter-region connection is set or changed to the specified value.
+//
+// - If you set **BandwidthLimit*	- to 0, no bandwidth resource is allocated to the inter-region connection.
+//
 // @param request - SetCenInterRegionBandwidthLimitRequest
 //
 // @return SetCenInterRegionBandwidthLimitResponse
