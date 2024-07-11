@@ -36144,6 +36144,137 @@ func (s *SubmitIProductionJobResponse) SetBody(v *SubmitIProductionJobResponseBo
 	return s
 }
 
+type SubmitImageCopyrightRequest struct {
+	// This parameter is required.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// {"Bucket":"abc-test","Location":"oss-cn-shanghai","Object":"out.jpeg"}
+	Output *string `json:"Output,omitempty" xml:"Output,omitempty"`
+	// example:
+	//
+	// {"width":2999, "height":2999, "afa": 3, "type":1, "version":0}
+	Params *string `json:"Params,omitempty" xml:"Params,omitempty"`
+}
+
+func (s SubmitImageCopyrightRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitImageCopyrightRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitImageCopyrightRequest) SetMessage(v string) *SubmitImageCopyrightRequest {
+	s.Message = &v
+	return s
+}
+
+func (s *SubmitImageCopyrightRequest) SetOutput(v string) *SubmitImageCopyrightRequest {
+	s.Output = &v
+	return s
+}
+
+func (s *SubmitImageCopyrightRequest) SetParams(v string) *SubmitImageCopyrightRequest {
+	s.Params = &v
+	return s
+}
+
+type SubmitImageCopyrightResponseBody struct {
+	Data *SubmitImageCopyrightResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// ok
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// D1D5C080-8E2F-5030-8AB4-13092F17631B
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 200
+	StatusCode *int64 `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
+}
+
+func (s SubmitImageCopyrightResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitImageCopyrightResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitImageCopyrightResponseBody) SetData(v *SubmitImageCopyrightResponseBodyData) *SubmitImageCopyrightResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *SubmitImageCopyrightResponseBody) SetMessage(v string) *SubmitImageCopyrightResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *SubmitImageCopyrightResponseBody) SetRequestId(v string) *SubmitImageCopyrightResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *SubmitImageCopyrightResponseBody) SetStatusCode(v int64) *SubmitImageCopyrightResponseBody {
+	s.StatusCode = &v
+	return s
+}
+
+type SubmitImageCopyrightResponseBodyData struct {
+	// example:
+	//
+	// bfb786c639894f4d80648792021e****
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+}
+
+func (s SubmitImageCopyrightResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitImageCopyrightResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitImageCopyrightResponseBodyData) SetJobId(v string) *SubmitImageCopyrightResponseBodyData {
+	s.JobId = &v
+	return s
+}
+
+type SubmitImageCopyrightResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SubmitImageCopyrightResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s SubmitImageCopyrightResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitImageCopyrightResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitImageCopyrightResponse) SetHeaders(v map[string]*string) *SubmitImageCopyrightResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SubmitImageCopyrightResponse) SetStatusCode(v int32) *SubmitImageCopyrightResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SubmitImageCopyrightResponse) SetBody(v *SubmitImageCopyrightResponseBody) *SubmitImageCopyrightResponse {
+	s.Body = v
+	return s
+}
+
 type SubmitJobsRequest struct {
 	// The information about the input file. For more information, see the "Input" section of the [Parameter details](https://help.aliyun.com/document_detail/29253.html) topic.
 	//
@@ -53925,6 +54056,74 @@ func (client *Client) SubmitIProductionJob(request *SubmitIProductionJobRequest)
 	runtime := &util.RuntimeOptions{}
 	_result = &SubmitIProductionJobResponse{}
 	_body, _err := client.SubmitIProductionJobWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 提交图片版权水印任务
+//
+// @param request - SubmitImageCopyrightRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SubmitImageCopyrightResponse
+func (client *Client) SubmitImageCopyrightWithOptions(request *SubmitImageCopyrightRequest, runtime *util.RuntimeOptions) (_result *SubmitImageCopyrightResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Message)) {
+		query["Message"] = request.Message
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Output)) {
+		query["Output"] = request.Output
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Params)) {
+		query["Params"] = request.Params
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SubmitImageCopyright"),
+		Version:     tea.String("2014-06-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SubmitImageCopyrightResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 提交图片版权水印任务
+//
+// @param request - SubmitImageCopyrightRequest
+//
+// @return SubmitImageCopyrightResponse
+func (client *Client) SubmitImageCopyright(request *SubmitImageCopyrightRequest) (_result *SubmitImageCopyrightResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SubmitImageCopyrightResponse{}
+	_body, _err := client.SubmitImageCopyrightWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
