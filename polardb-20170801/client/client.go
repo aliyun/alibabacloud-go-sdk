@@ -12166,6 +12166,7 @@ type DescribeDBClusterPerformanceRequest struct {
 	//
 	// 2020-09-23T01:01Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Type      *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s DescribeDBClusterPerformanceRequest) String() string {
@@ -12198,6 +12199,11 @@ func (s *DescribeDBClusterPerformanceRequest) SetKey(v string) *DescribeDBCluste
 
 func (s *DescribeDBClusterPerformanceRequest) SetStartTime(v string) *DescribeDBClusterPerformanceRequest {
 	s.StartTime = &v
+	return s
+}
+
+func (s *DescribeDBClusterPerformanceRequest) SetType(v string) *DescribeDBClusterPerformanceRequest {
+	s.Type = &v
 	return s
 }
 
@@ -18930,8 +18936,13 @@ func (s *DescribeMaskingRulesResponseBody) SetSuccess(v bool) *DescribeMaskingRu
 
 type DescribeMaskingRulesResponseBodyData struct {
 	// Details about the masking rules.
-	RuleList    []*string `json:"RuleList,omitempty" xml:"RuleList,omitempty" type:"Repeated"`
-	RuleVersion *string   `json:"RuleVersion,omitempty" xml:"RuleVersion,omitempty"`
+	RuleList []*string `json:"RuleList,omitempty" xml:"RuleList,omitempty" type:"Repeated"`
+	// The version of the masking rule. Valid values: v1 and v2. Default value: v1
+	//
+	// example:
+	//
+	// v1
+	RuleVersion *string `json:"RuleVersion,omitempty" xml:"RuleVersion,omitempty"`
 }
 
 func (s DescribeMaskingRulesResponseBodyData) String() string {
@@ -30578,7 +30589,16 @@ type ModifyMaskingRulesRequest struct {
 	//
 	// testrule
 	RuleNameList *string `json:"RuleNameList,omitempty" xml:"RuleNameList,omitempty"`
-	RuleVersion  *string `json:"RuleVersion,omitempty" xml:"RuleVersion,omitempty"`
+	// The version of the masking rule. Default value: v1. Valid values:
+	//
+	// 	- v1
+	//
+	// 	- v2
+	//
+	// example:
+	//
+	// v2
+	RuleVersion *string `json:"RuleVersion,omitempty" xml:"RuleVersion,omitempty"`
 }
 
 func (s ModifyMaskingRulesRequest) String() string {
@@ -38066,6 +38086,10 @@ func (client *Client) DescribeDBClusterPerformanceWithOptions(request *DescribeD
 
 	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
 		query["StartTime"] = request.StartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		query["Type"] = request.Type
 	}
 
 	req := &openapi.OpenApiRequest{

@@ -1,3 +1,9 @@
+2024-07-11 Version: v6.1.2
+- Update API DescribeAccounts: update response param.
+- Update API DescribeDBClusterPerformance: add param Type.
+- Update API DescribeDBClusters: update response param.
+
+
 2024-06-28 Version: v6.1.1
 - Update API DescribeDBClusterAttribute: update response param.
 - Update API DescribeDBClusterAvailableResources: update response param.
