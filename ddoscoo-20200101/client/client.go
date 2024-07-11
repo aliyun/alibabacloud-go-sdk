@@ -442,13 +442,34 @@ func (s *AttachSceneDefenseObjectResponse) SetBody(v *AttachSceneDefenseObjectRe
 }
 
 type ConfigDomainSecurityProfileRequest struct {
+	// This parameter is unavailable.
 	Cluster *string `json:"Cluster,omitempty" xml:"Cluster,omitempty"`
+	// The configurations for the global mitigation policy feature. The configurations include the following fields:
+	//
+	// 	- **global_rule_mode**: optional. The mode for the global mitigation policy feature. Data type: string. Valid values:
+	//
+	//     	- **weak**: loose.
+	//
+	//     	- **default**: normal.
+	//
+	//     	- **hard**: strict.
+	//
+	// 	- **global_rule_enable**: optional. Specifies whether to enable the global mitigation policy feature. Data type: string. Valid values:
+	//
+	//     	- **0**: disabled.
+	//
+	//     	- **1**: enabled.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// {\\"global_rule_mode\\":\\"hard\\"}
 	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	// The domain name of the website.
+	//
+	// >  A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) operation to query all domain names.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -481,6 +502,8 @@ func (s *ConfigDomainSecurityProfileRequest) SetDomain(v string) *ConfigDomainSe
 }
 
 type ConfigDomainSecurityProfileResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 9728769F-9466-534E-BE12-CAB29A675828
@@ -544,19 +567,31 @@ type ConfigL7RsPolicyRequest struct {
 	//
 	// 	- **ProxyMode**: The load balancing algorithm for back-to-origin traffic. This field is required and must be a string. Valid values:
 	//
-	//     	- **ip_hash**: the IP hash algorithm. This algorithm is used to redirect the requests from the same IP address to the same origin server.
+	//     	- **ip_hash**: the IP hash algorithm. This algorithm is used to redirect requests from the same IP address to the same origin server.
 	//
 	//     	- **rr**: the round-robin algorithm. This algorithm is used to redirect requests to origin servers in turn. If you use this algorithm, you can specify a weight for each server based on server performance.
 	//
-	//     	- **least_time**: the least response time algorithm. This algorithm is used to minimize the latency when requests are forwarded from Anti-DDoS Pro or Anti-DDoS Premium instances to origin servers based on the intelligent DNS resolution feature.
+	//     	- **least_time**: the least response time algorithm. This algorithm is used to minimize the latency when requests are forwarded from the instance to origin servers based on the intelligent DNS resolution feature.
 	//
-	// 	- **Attributes**: the parameters for back-to-origin. This field is optional and must be a JSON array. Each element in the array contains the following fields:
+	// 	- **Attributes**: the parameters for back-to-origin processing. This field is optional and must be a JSON array. Each element in the array contains the following fields:
 	//
 	//     	- **RealServer**: the address of the origin server. This field is optional and must be a string.
 	//
-	//     	- **Attribute**: the parameter for back-to-origin. This field is optional and must be a JSON object. The value contains the following field:
+	//     	- **Attribute**: the parameter for back-to-origin processing. This field is optional and must be a JSON object. Valid values:
 	//
 	//         	- **Weight**: the weight of the server. This field is optional and must be an integer. This field takes effect only when **ProxyMode*	- is set to **rr**. Valid values: **1*	- to **100**. Default value: **100**. An origin server with a higher weight receives more requests.
+	//
+	//         	- **ConnectTimeout**: the timeout period for new connections. This field is optional and must be an integer. Valid values: **1*	- to **10**. Unit: seconds. Default value: **5**.
+	//
+	//         	- **FailTimeout**: the period after which a connection is considered to have failed. This field is optional and must be an integer. Valid values: **1*	- to **3600**. Unit: seconds. Default value: **10**.
+	//
+	//         	- **MaxFails**: the maximum number of failures allowed. This field is related to health checks. This field is optional and must be an integer. Valid values: **1*	- to **10**. Unit: seconds. Default value: **3**.
+	//
+	//         	- **Mode**: the primary/secondary attribute flag. This parameter is optional and must be a string. Valid values: **active*	- (primary) and **backup*	- (secondary).
+	//
+	//         	- **ReadTimeout**: the read timeout period. This field is optional and must be an integer. Valid values: **10*	- to **300**. Unit: seconds. Default value: **120**.
+	//
+	//         	- **SendTimeout**: the write timeout period. This field is optional and must be an integer. Valid values: **10*	- to **300**. Unit: seconds. Default value: **120**.
 	//
 	// This parameter is required.
 	//
@@ -572,7 +607,16 @@ type ConfigL7RsPolicyRequest struct {
 	//
 	// rg-acfm2pz25js****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	UpstreamRetry   *int32  `json:"UpstreamRetry,omitempty" xml:"UpstreamRetry,omitempty"`
+	// The retry switch. Valid values:
+	//
+	// 	- **1**: on
+	//
+	// 	- **0**: off
+	//
+	// example:
+	//
+	// 1
+	UpstreamRetry *int32 `json:"UpstreamRetry,omitempty" xml:"UpstreamRetry,omitempty"`
 }
 
 func (s ConfigL7RsPolicyRequest) String() string {
@@ -655,10 +699,22 @@ func (s *ConfigL7RsPolicyResponse) SetBody(v *ConfigL7RsPolicyResponseBody) *Con
 }
 
 type ConfigL7UsKeepaliveRequest struct {
+	// The domain name of the website.
+	//
+	// >  A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) operation to query all domain names.
+	//
 	// example:
 	//
 	// www.aliyun.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// The settings for back-to-origin persistent connections. The value is a string that consists of a JSON struct. The JSON struct contains the following fields:
+	//
+	// 	- **enabled**: the switch for back-to-origin persistent connections. This field is required, and the value is of the Boolean type.
+	//
+	// 	- **keepalive_requests**: the number of requests that reuse a persistent connection. This field is required, and the value is of the integer type.
+	//
+	// 	- **keepalive_timeout**: the timeout period for an idle persistent connection. This field is required, and the value is of the integer type.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -686,6 +742,8 @@ func (s *ConfigL7UsKeepaliveRequest) SetUpstreamKeepalive(v string) *ConfigL7UsK
 }
 
 type ConfigL7UsKeepaliveResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 6D48AED0-41DB-5D9B-B484-3B6AAD312AD1
@@ -1127,24 +1185,23 @@ func (s *ConfigLayer4RulePolicyResponse) SetBody(v *ConfigLayer4RulePolicyRespon
 type ConfigNetworkRegionBlockRequest struct {
 	// The details of the configurations of blocked locations. This parameter is a JSON string. The value consists of the following fields:
 	//
-	// 	- **RegionBlockSwitch**: the status of the Location Blacklist policy. This field is required and must be of the string type. Valid values:
+	// 	- **RegionBlockSwitch**: the status of the location blacklist feature. This field is required and must be of the string type. Valid values:
 	//
-	//     	- **on**: enables the policy.
+	//     	- **on**
 	//
-	//     	- **off**: disables the policy.
+	//     	- **off**
 	//
-	// 	- **Countries**: the codes of the countries or areas from which you want to block requests. This field is optional and must be of the array type.
+	// 	- **Countries**: the codes of the countries and areas from which you want to block requests. This field is optional and must be of the array type.
 	//
 	//     **
 	//
-	//     **Note**For more information, see the **Codes of countries and areas*	- section of the [Codes of administrative regions in China and codes of countries and areas](https://help.aliyun.com/document_detail/167926.html) topic.
-	//
+	//     **Note*	- For more information about the codes of countries and areas, see [Location parameters](https://help.aliyun.com/document_detail/167926.html).
 	//
 	// 	- **Provinces**: the codes of the administrative regions in China from which you want to block requests. This field is optional and must be of the array type.
 	//
 	//     **
 	//
-	//     **Note**For more information, see the **Codes of administrative regions in China*	- section of the [Codes of administrative regions in China and codes of countries and areas](https://help.aliyun.com/document_detail/167926.html) topic.
+	//     **Note*	- For more information about the codes of administrative regions in China, see [Location parameters](https://help.aliyun.com/document_detail/167926.html).
 	//
 	//     For example, `[11,12]` specifies Beijing and Tianjin.
 	//
@@ -1185,7 +1242,7 @@ func (s *ConfigNetworkRegionBlockRequest) SetInstanceId(v string) *ConfigNetwork
 }
 
 type ConfigNetworkRegionBlockResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -1371,11 +1428,11 @@ type ConfigUdpReflectRequest struct {
 	//
 	// ddoscoo-cn-i7m25564****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The region ID of the instance. Valid values:
+	// The region ID of the Anti-DDoS Proxy instance. Valid values:
 	//
-	// 	- **cn-hangzhou**: Chinese mainland, which indicates Anti-DDoS Pro instances. This is the default value.
+	// 	- **cn-hangzhou**: indicates an Anti-DDoS Proxy (Chinese Mainland) instance. This is the default value.
 	//
-	// 	- **ap-southeast-1**: outside the Chinese mainland, which indicates Anti-DDoS Premium instances.
+	// 	- **ap-southeast-1**: indicates an Anti-DDoS Proxy (Outside Chinese Mainland) instance.
 	//
 	// example:
 	//
@@ -1468,6 +1525,76 @@ type ConfigWebCCRuleV2Request struct {
 	//
 	// 600
 	Expires *int64 `json:"Expires,omitempty" xml:"Expires,omitempty"`
+	// The frequency control rule. This parameter is a JSON string that contains the following fields:
+	//
+	// 	- **action**: the action that is performed if the rule is matched. This field is required and must be of the string type. Valid values:
+	//
+	//     	- **block**: The requests that match the rule are blocked.
+	//
+	//     	- **challenge**: Completely Automated Public Turing test to tell Computers and Humans Apart (CAPTCHA) verification for the requests that match the rule is implemented.
+	//
+	//     	- **watch**: The requests that match the rule are recorded in logs and allowed.
+	//
+	// 	- **name**: the name of the rule. This field is required and must be of the string type.
+	//
+	// 	- **condition**: the match conditions. This field is required and must be of the map type. This field contains the following parameters:
+	//
+	//     **
+	//
+	//     **Note*	- The AND logical operator is used to evaluate multiple match conditions.
+	//
+	//     	- **field**: the match field. This field is required and must be of the string type.
+	//
+	//     	- **match_method**: the logical relation. This field is required and must be of the string type.
+	//
+	//         **
+	//
+	//         **Note*	- For information about the mappings between the **field*	- and **match_method*	- parameters, see the "Mappings between the field and match_method parameters" section of this topic.
+	//
+	//     	- **header_name**: the name of the custom HTTP header. This field is optional and must be of the string type.
+	//
+	//         **
+	//
+	//         **Note*	- This field is required only when **field*	- is set to **header**.
+	//
+	//     	- **content**: the match content. This field is required and must be of the string type.
+	//
+	// 	- **ratelimit**: the frequency control field. This field is optional and must be of the string type. The frequency can be measured based on IP addresses or custom headers. This field contains the following parameters:
+	//
+	//     	- **interval**: the statistical duration. Unit: seconds. This field is required and must be of the integer type.
+	//
+	//     	- **ttl**: the period during which the specified action is performed. Unit: seconds. This field is required and must be of the integer type.
+	//
+	//     	- **threshold**: the threshold. This field is required and must be of the integer type.
+	//
+	//     	- **subkey**: the name of the field. This field is optional and must be of the string type. This field is required only when target is set to header.
+	//
+	//     	- **target**: the statistical source. This field is required and must be of the string type. Valid values: ip and header.
+	//
+	// 	- **status_code**: the frequency control field. This field is optional and must be of the string type. Frequency control can be performed based on the quantity or percentage of status codes. This field contains the following parameters:
+	//
+	//     	- **enabled**: specifies whether to enable status code statistics. This field is required and must be of the Boolean type.
+	//
+	//     	- **code**: the status code. This field is required and must be of the integer type. Valid values: **100*	- to **599**.
+	//
+	//     	- **use_ratio**: specifies whether to use a ratio. This field is required and must be of the Boolean type. To use a ratio, set this field to true.
+	//
+	//     	- **ratio_threshold**: the ratio of the status code. This field is optional and must be of the integer type. If a ratio is used, the action specified in the rule is performed only when the ratio of the status code reaches **ratio_threshold**. Valid values: **1*	- to **100**.
+	//
+	//     	- **count_threshold**: the quantity of the status code. This field is optional and must be of the integer type. If a ratio is not used, the action specified in the rule is performed only when the quantity of the status code reaches **count_threshold**. Valid values: **2*	- to **50000**.
+	//
+	// 	- **statistics**: specifies whether deduplication is used for statistics. This field is optional and must be of the string type. By default, deduplication is not used for statistics. This field contains the following parameters:
+	//
+	//     	- **mode**: specifies whether deduplication is used for status code statistics. This field is required and must be of the string type. Valid values:
+	//
+	//         	- **count**: Deduplication is not used for statistics.
+	//
+	//         	- **distinct**: Deduplication is used for statistics.
+	//
+	//     	- **field**: the statistical source. This field is required and must be of the string type. Valid values: ip, header, and uri.
+	//
+	//     	- **header_name**: the name of the header. This field is optional and must be of the string type. This field is required only when field is set to header.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -1658,7 +1785,7 @@ func (s *ConfigWebCCTemplateResponse) SetBody(v *ConfigWebCCTemplateResponseBody
 }
 
 type ConfigWebIpSetRequest struct {
-	// IP address N or CIDR block N that you want to add to the blacklist. The maximum value of N is 200. You can add up to 200 IP addresses or CIDR blocks to the blacklist.
+	// The IP addresses and CIDR blocks in the blacklist. You can add up to 200 IP addresses or CIDR blocks to the blacklist.
 	//
 	// example:
 	//
@@ -1680,7 +1807,7 @@ type ConfigWebIpSetRequest struct {
 	//
 	// default
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// IP address N or CIDR block N that you want to add to the whitelist. The maximum value of N is 200. You can add up to 200 IP addresses or CIDR blocks to the whitelist.
+	// The IP addresses and CIDR blocks in the whitelist. You can add up to 200 IP addresses or CIDR blocks to the whitelist.
 	//
 	// example:
 	//
@@ -1917,7 +2044,7 @@ type CreateDomainResourceRequest struct {
 	//
 	// This parameter is required.
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
-	// An array that consists of the details of the protocol type and port number.
+	// The details about the protocol type and port number.
 	//
 	// This parameter is required.
 	ProxyTypes []*CreateDomainResourceRequestProxyTypes `json:"ProxyTypes,omitempty" xml:"ProxyTypes,omitempty" type:"Repeated"`
@@ -1931,7 +2058,7 @@ type CreateDomainResourceRequest struct {
 	//
 	// 	- **1**: domain name
 	//
-	//     If you deploy proxies, such as a Web Application Firewall (WAF) instance, between the origin server and the Anti-DDoS Pro or Anti-DDoS Premium instance, set the value to 1. If you use the domain name, you must enter the address of the proxy, such as the CNAME of WAF.
+	//     This parameter is suitable for scenarios where another proxy service, such as Web Application Firewall (WAF), is deployed between the origin server and Anti-DDoS Pro or Anti-DDoS Premium. The address is the jump address of the proxy service, such as the CNAME address of WAF.
 	//
 	// This parameter is required.
 	//
@@ -1980,7 +2107,7 @@ func (s *CreateDomainResourceRequest) SetRsType(v int32) *CreateDomainResourceRe
 }
 
 type CreateDomainResourceRequestProxyTypes struct {
-	// An array that consists of port numbers.
+	// The port numbers.
 	//
 	// This parameter is required.
 	ProxyPorts []*int32 `json:"ProxyPorts,omitempty" xml:"ProxyPorts,omitempty" type:"Repeated"`
@@ -2447,15 +2574,17 @@ type CreateSchedulerRuleRequest struct {
 	//
 	// testrule
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// The type of the custom defense rule. Valid values:
+	// The type of the rule. Valid values:
 	//
 	// 	- **2**: tiered protection
 	//
 	// 	- **3**: network acceleration
 	//
-	// 	- **5**: CDN interaction
+	// 	- **5**: Alibaba Cloud CDN (CDN) interaction
 	//
 	// 	- **6**: cloud service interaction
+	//
+	// 	- **8**: secure acceleration
 	//
 	// This parameter is required.
 	//
@@ -2606,7 +2735,7 @@ func (s *CreateSchedulerRuleResponse) SetBody(v *CreateSchedulerRuleResponseBody
 }
 
 type CreateTagResourcesRequest struct {
-	// The region ID of the instance. Set the value to **cn-hangzhou**, which indicates an Anti-DDoS Pro instance in the Chinese mainland.
+	// The region ID of the instance. Set the value to **cn-hangzhou**, which indicates an Anti-DDoS Proxy (Chinese Mainland) instance.
 	//
 	// This parameter is required.
 	//
@@ -2622,7 +2751,7 @@ type CreateTagResourcesRequest struct {
 	//
 	// rg-acfm2pz25js****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// An array consisting of the IDs of the Anti-DDoS Pro instances to which you want to add the tag.
+	// The IDs of the Anti-DDoS Proxy (Chinese Mainland) instances to which you want to add the tag.
 	//
 	// This parameter is required.
 	//
@@ -2760,6 +2889,12 @@ func (s *CreateTagResourcesResponse) SetBody(v *CreateTagResourcesResponseBody) 
 }
 
 type CreateWebCCRuleRequest struct {
+	// The action on the requests that trigger the custom frequency control rule. Valid values:
+	//
+	// 	- **close**: blocks the requests.
+	//
+	// 	- **captcha**: triggers Completely Automated Public Turing test to tell Computers and Humans Apart (CAPTCHA) verification for the requests.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -2772,6 +2907,10 @@ type CreateWebCCRuleRequest struct {
 	//
 	// 60
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
+	// The domain name of the website.
+	//
+	// >  A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) operation to query all domain names.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -2784,21 +2923,48 @@ type CreateWebCCRuleRequest struct {
 	//
 	// 20
 	Interval *int32 `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	// The matching mode. Valid values:
+	//
+	// 	- **prefix**: prefix match.
+	//
+	// 	- **match**: exact match.
+	//
+	// >  If the **URI*	- of the check path contains parameters, you must set this parameter to **prefix**.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// prefix
 	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	// The name of the rule. The name can be up to 128 characters in length and contain letters, digits, and underscores (_).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// testrule
-	Name            *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The ID of the resource group to which the Anti-DDoS Proxy instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
+	//
+	// For more information about resource groups, see [Create a resource group](https://help.aliyun.com/document_detail/94485.html).
+	//
+	// example:
+	//
+	// rg-acfm2pz25js****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The blocking duration. Valid values: **60*	- to **86400**. Unit: seconds.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 60
 	Ttl *int32 `json:"Ttl,omitempty" xml:"Ttl,omitempty"`
+	// The check path.
+	//
+	// >  The URI cannot be modified. The domain name of the website, the check path, and the rule name uniquely identify a rule.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -2861,6 +3027,8 @@ func (s *CreateWebCCRuleRequest) SetUri(v string) *CreateWebCCRuleRequest {
 }
 
 type CreateWebCCRuleResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 0bcf28g5-d57c-11e7-9bs0-d89d6717dxbc
@@ -3095,7 +3263,7 @@ type DeleteAsyncTaskRequest struct {
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The ID of the task that you want to delete.
 	//
-	// > You can call the [DescribeAsyncTasks](https://help.aliyun.com/document_detail/159405.html) operation to query the IDs of all asynchronous export tasks.
+	// >  You can call the [DescribeAsyncTasks](~~DescribeAsyncTasks~~) operation to query the IDs of all asynchronous export tasks.
 	//
 	// This parameter is required.
 	//
@@ -3124,7 +3292,7 @@ func (s *DeleteAsyncTaskRequest) SetTaskId(v int32) *DeleteAsyncTaskRequest {
 }
 
 type DeleteAsyncTaskResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -3828,7 +3996,7 @@ type DeleteTagResourcesRequest struct {
 	//
 	// false
 	All *bool `json:"All,omitempty" xml:"All,omitempty"`
-	// The region ID of the instance. Set the value to **cn-hangzhou**, which indicates an Anti-DDoS Pro instance in the Chinese mainland.
+	// The region ID of the instance. Set the value to **cn-hangzhou**, which indicates an Anti-DDoS Proxy (Chinese Mainland) instance.
 	//
 	// This parameter is required.
 	//
@@ -4059,16 +4227,28 @@ func (s *DeleteWebCCRuleResponse) SetBody(v *DeleteWebCCRuleResponseBody) *Delet
 }
 
 type DeleteWebCCRuleV2Request struct {
+	// The domain name of the website.
+	//
+	// >  A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) operation to query all domain names.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// www.example.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// The source of the rule. Valid values:
+	//
+	// 	- **manual*	- (default): manually created.
+	//
+	// 	- **clover**: automatically created. Specify this value when you want to delete intelligent protection rules.
+	//
 	// example:
 	//
 	// manual
 	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// The names of the rules that you want to delete.
+	//
 	// example:
 	//
 	// [\\"trdsss\\"]
@@ -4099,6 +4279,8 @@ func (s *DeleteWebCCRuleV2Request) SetRuleNames(v string) *DeleteWebCCRuleV2Requ
 }
 
 type DeleteWebCCRuleV2ResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 6D48AED0-41DB-5D9B-B484-3B6AAD312AD1
@@ -5790,6 +5972,11 @@ func (s *DescribeCertsResponseBody) SetRequestId(v string) *DescribeCertsRespons
 }
 
 type DescribeCertsResponseBodyCerts struct {
+	// The global certificate ID, which is in the certificate ID-cn-hangzhou format. If the ID of the certificate is 123, CertIdentifier is 123-cn-hangzhou.
+	//
+	// example:
+	//
+	// 126345-ap-southeast-1
 	CertIdentifier *string `json:"CertIdentifier,omitempty" xml:"CertIdentifier,omitempty"`
 	// The domain name that is associated with the certificate.
 	//
@@ -5799,21 +5986,21 @@ type DescribeCertsResponseBodyCerts struct {
 	Common *string `json:"Common,omitempty" xml:"Common,omitempty"`
 	// Indicates whether the certificate is associated with the domain name. Valid values:
 	//
-	// 	- **true**: The certificate is associated with the domain name.
+	// 	- **true**
 	//
-	// 	- **false**: The certificate is not associated with the domain name.
+	// 	- **false**
 	//
 	// example:
 	//
 	// true
 	DomainRelated *bool `json:"DomainRelated,omitempty" xml:"DomainRelated,omitempty"`
-	// The expiration date of the certificate. string
+	// The expiration date of the certificate. The value is a string.
 	//
 	// example:
 	//
 	// 2021-09-12
 	EndDate *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
-	// The ID of the certificate.
+	// The certificate ID.
 	//
 	// example:
 	//
@@ -5831,7 +6018,7 @@ type DescribeCertsResponseBodyCerts struct {
 	//
 	// testcert
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The issuance date of the certificate. string
+	// The issuance date of the certificate. The value is a string.
 	//
 	// example:
 	//
@@ -7050,7 +7237,7 @@ func (s *DescribeDDosEventIspRequest) SetStartTime(v int64) *DescribeDDosEventIs
 }
 
 type DescribeDDosEventIspResponseBody struct {
-	// An array that consists of the ISPs for the volumetric attack.
+	// The ISPs for the volumetric attack.
 	Isps []*DescribeDDosEventIspResponseBodyIsps `json:"Isps,omitempty" xml:"Isps,omitempty" type:"Repeated"`
 	// The ID of the request.
 	//
@@ -8742,7 +8929,7 @@ func (s *DescribeDomainResourceResponseBody) SetWebRules(v []*DescribeDomainReso
 type DescribeDomainResourceResponseBodyWebRules struct {
 	// The IP addresses that are included in the blacklist of the domain name.
 	BlackList []*string `json:"BlackList,omitempty" xml:"BlackList,omitempty" type:"Repeated"`
-	// Indicates whether the Frequency Control policy is enabled. Valid values:
+	// Indicates whether Frequency Control is enabled. Valid values:
 	//
 	// 	- **true**
 	//
@@ -8752,7 +8939,7 @@ type DescribeDomainResourceResponseBodyWebRules struct {
 	//
 	// true
 	CcEnabled *bool `json:"CcEnabled,omitempty" xml:"CcEnabled,omitempty"`
-	// Indicates whether the Custom Rule switch of the Frequency Control policy is turned on. Valid values:
+	// Indicates whether the Custom Rules switch of Frequency Control is turned on. Valid values:
 	//
 	// 	- **true**
 	//
@@ -8762,7 +8949,7 @@ type DescribeDomainResourceResponseBodyWebRules struct {
 	//
 	// true
 	CcRuleEnabled *bool `json:"CcRuleEnabled,omitempty" xml:"CcRuleEnabled,omitempty"`
-	// The mode of the Frequency Control policy. Valid values:
+	// The mode of Frequency Control. Valid values:
 	//
 	// 	- **default**: the Normal mode
 	//
@@ -8806,7 +8993,7 @@ type DescribeDomainResourceResponseBodyWebRules struct {
 	//
 	// false
 	Http2Enable *bool `json:"Http2Enable,omitempty" xml:"Http2Enable,omitempty"`
-	// Indicates whether Enforce HTTPS Routing is turned on. Valid values:
+	// Indicates whether Enable HTTPS Redirection is turned on. Valid values:
 	//
 	// 	- **true**
 	//
@@ -8816,7 +9003,7 @@ type DescribeDomainResourceResponseBodyWebRules struct {
 	//
 	// false
 	Http2HttpsEnable *bool `json:"Http2HttpsEnable,omitempty" xml:"Http2HttpsEnable,omitempty"`
-	// Indicates whether Enable HTTP is turned on. Valid values:
+	// Indicates whether Enable HTTP Redirection of Back-to-origin Requests is turned on. Valid values:
 	//
 	// 	- **true**
 	//
@@ -8828,11 +9015,11 @@ type DescribeDomainResourceResponseBodyWebRules struct {
 	Https2HttpEnable *bool `json:"Https2HttpEnable,omitempty" xml:"Https2HttpEnable,omitempty"`
 	// The advanced HTTPS settings. This parameter takes effect only when the value of the **ProxyType*	- parameter includes **https**. The value is a string that consists of a JSON struct. The JSON struct contains the following fields:
 	//
-	// 	- **Http2https**: indicates whether the feature of redirecting HTTP requests to HTTPS requests is enabled. Data type: integer. Valid values: **0*	- and **1**. The value 0 indicates that the feature is disabled. The value 1 indicates that the feature is enabled.
+	// 	- **Http2https**: indicates whether Enable HTTPS Redirection is turned on. Data type: integer. Valid values: **0*	- and **1**. The value 0 indicates that Enable HTTPS Redirection is turned on. The value 1 indicates that Enable HTTPS Redirection is turned off.
 	//
-	// 	- **Https2http**: indicates whether the feature of redirecting HTTPS requests to HTTP requests is enabled. Data type: integer. Valid values: **0*	- and **1**. The value 0 indicates that the feature is disabled. The value 1 indicates that the feature is enabled.
+	// 	- **Https2http**: indicates whether Enable HTTP Redirection of Back-to-origin Requests is turned on. Data type: integer. Valid values: **0*	- and **1**. The value 0 indicates that the feature is turned on. The value 1 indicates that the feature is turned off.
 	//
-	// 	- **Http2**: indicates whether HTTP/2 is supported. Data type: integer. Valid values: **0*	- and **1**. The value 0 indicates that HTTP/2 is not supported. The value 1 indicates that HTTP/2 is supported.
+	// 	- **Http2**: indicates whether Enable HTTP/2 is turned on. Data type: integer. Valid values: **0*	- and **1**. The value 0 indicates that Enable HTTP/2 is turned off. The value 1 indicates that Enable HTTP/2 is turned on.
 	//
 	// example:
 	//
@@ -8840,23 +9027,23 @@ type DescribeDomainResourceResponseBodyWebRules struct {
 	HttpsExt *string `json:"HttpsExt,omitempty" xml:"HttpsExt,omitempty"`
 	// The IDs of the instances to which the domain name is added.
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
-	// Indicates whether the Online Certificate Status Protocol (OCSP) feature is enabled. Valid values:
+	// Indicates whether the Online Certificate Status Protocol (OCSP) feature is turned on. Valid values:
 	//
-	// - **true**: yes
+	// 	- **true**
 	//
-	// - **false**: no
+	// 	- **false**
 	//
 	// example:
 	//
 	// false
 	OcspEnabled *bool `json:"OcspEnabled,omitempty" xml:"OcspEnabled,omitempty"`
-	// The load balancing algorithm for back-to-origin traffic. Valid values:
+	// The scheduling algorithm for back-to-origin traffic. Valid values:
 	//
 	// 	- **ip_hash**: the IP hash algorithm. This algorithm is used to redirect the requests from the same IP address to the same origin server.
 	//
 	// 	- **rr**: the round-robin algorithm. This algorithm is used to redirect requests to origin servers in turn.
 	//
-	// 	- **least_time**: the least response time algorithm. This algorithm is used to minimize the latency when requests are forwarded from Anti-DDoS Pro or Anti-DDoS Premium instances to origin servers based on the intelligent DNS resolution feature.
+	// 	- **least_time**: the least response time algorithm. This algorithm is used to minimize the latency when requests are forwarded from the instance to origin servers based on the intelligent DNS resolution feature.
 	//
 	// example:
 	//
@@ -8864,9 +9051,9 @@ type DescribeDomainResourceResponseBodyWebRules struct {
 	PolicyMode *string `json:"PolicyMode,omitempty" xml:"PolicyMode,omitempty"`
 	// Indicates whether the instance forwards the traffic that is destined for the website. Valid values:
 	//
-	// 	- **true**: Anti-DDoS Pro or Anti-DDoS Premium forwards the traffic that is destined for the website.
+	// 	- **true**
 	//
-	// 	- **false**: no
+	// 	- **false**
 	//
 	// example:
 	//
@@ -10838,26 +11025,44 @@ func (s *DescribeElasticBandwidthSpecResponse) SetBody(v *DescribeElasticBandwid
 }
 
 type DescribeElasticQpsRequest struct {
+	// The end of the time range to query. The value is a UNIX timestamp. Unit: seconds.
+	//
+	// >  This UNIX timestamp must indicate a point in time that is accurate to the minute.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1684339200
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The sampling interval. Unit: seconds. The value must be a multiple of 60. Default value: 60. Unit: seconds. The query result varies depending on the sampling interval.
+	//
 	// example:
 	//
 	// 60
 	Interval *string `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	// The IP address of the Anti-DDoS Proxy instance to query.
+	//
 	// example:
 	//
 	// 203.107.XX.XX
 	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	// The type of the service. Valid values:
+	//
+	// 	- **cn**: Anti-DDoS Proxy (Chinese Mainland)
+	//
+	// 	- **cn-hongkong**: Anti-DDoS Proxy (Outside Chinese Mainland)
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// The beginning of the time range to query. The value is a UNIX timestamp. Unit: seconds.
+	//
+	// >  This UNIX timestamp must indicate a point in time that is accurate to the minute.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -10900,7 +11105,10 @@ func (s *DescribeElasticQpsRequest) SetStartTime(v int64) *DescribeElasticQpsReq
 }
 
 type DescribeElasticQpsResponseBody struct {
+	// The information about the burstable QPS.
 	ElasticQps []*DescribeElasticQpsResponseBodyElasticQps `json:"ElasticQps,omitempty" xml:"ElasticQps,omitempty" type:"Repeated"`
+	// The request ID, which is used to locate and troubleshoot issues.
+	//
 	// example:
 	//
 	// 2E7F7F7B-39A8-5D92-BAB4-D89D9DCE7D4F
@@ -10926,38 +11134,56 @@ func (s *DescribeElasticQpsResponseBody) SetRequestId(v string) *DescribeElastic
 }
 
 type DescribeElasticQpsResponseBodyElasticQps struct {
+	// The index number of the returned data.
+	//
 	// example:
 	//
 	// 1
 	Index *int64 `json:"Index,omitempty" xml:"Index,omitempty"`
+	// The peak QPS of the normal service.
+	//
 	// example:
 	//
 	// 23
 	MaxNormalQps *int64 `json:"MaxNormalQps,omitempty" xml:"MaxNormalQps,omitempty"`
+	// The peak inbound QPS.
+	//
 	// example:
 	//
 	// 100
 	MaxQps *int64 `json:"MaxQps,omitempty" xml:"MaxQps,omitempty"`
+	// The total number of requests during the step size period.
+	//
 	// example:
 	//
 	// 15104
 	Pv *int64 `json:"Pv,omitempty" xml:"Pv,omitempty"`
+	// The total number of HTTP 2xx status codes during the step size period.
+	//
 	// example:
 	//
 	// 455
 	Status2 *int64 `json:"Status2,omitempty" xml:"Status2,omitempty"`
+	// The total number of HTTP 3xx status codes during the step size period.
+	//
 	// example:
 	//
 	// 100
 	Status3 *int64 `json:"Status3,omitempty" xml:"Status3,omitempty"`
+	// The total number of HTTP 4xx status codes during the step size period.
+	//
 	// example:
 	//
 	// 34
 	Status4 *int64 `json:"Status4,omitempty" xml:"Status4,omitempty"`
+	// The total number of HTTP 5xx status codes during the step size period.
+	//
 	// example:
 	//
 	// 0
 	Status5 *int64 `json:"Status5,omitempty" xml:"Status5,omitempty"`
+	// The total number of origin requests during the step size period.
+	//
 	// example:
 	//
 	// 1223
@@ -11047,18 +11273,24 @@ func (s *DescribeElasticQpsResponse) SetBody(v *DescribeElasticQpsResponseBody) 
 }
 
 type DescribeElasticQpsRecordRequest struct {
+	// The end of the time range to query. The value is a timestamp. Unit: milliseconds.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1688140799999
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The IP address of the Anti-DDoS Proxy instance to query.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 203.107.XX.XX
 	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	// The beginning of the time range to query. The value is a timestamp. Unit: milliseconds.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -11091,7 +11323,10 @@ func (s *DescribeElasticQpsRecordRequest) SetStartTime(v int64) *DescribeElastic
 }
 
 type DescribeElasticQpsRecordResponseBody struct {
+	// The QPS information about the instance.
 	ElasticQpsList []*DescribeElasticQpsRecordResponseBodyElasticQpsList `json:"ElasticQpsList,omitempty" xml:"ElasticQpsList,omitempty" type:"Repeated"`
+	// The request ID, which is used to locate and troubleshoot issues.
+	//
 	// example:
 	//
 	// F68B34E2-570C-508D-95FD-DFB6611D518F
@@ -11117,38 +11352,62 @@ func (s *DescribeElasticQpsRecordResponseBody) SetRequestId(v string) *DescribeE
 }
 
 type DescribeElasticQpsRecordResponseBodyElasticQpsList struct {
+	// The timestamp. Unit: milliseconds.
+	//
 	// example:
 	//
 	// 1688140799999
 	Date *int64 `json:"Date,omitempty" xml:"Date,omitempty"`
+	// The ID of the Anti-DDoS Proxy instance.
+	//
 	// example:
 	//
 	// ddoscoo-cn-7e225i41****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The IP address of the Anti-DDoS Proxy instance.
+	//
 	// example:
 	//
 	// 203.***.***.199
 	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	// The burstable QPS value. A value of 0 indicates that the burstable QPS feature is not enabled.
+	//
 	// example:
 	//
 	// 300000
 	OpsElasticQps *int64 `json:"OpsElasticQps,omitempty" xml:"OpsElasticQps,omitempty"`
+	// The service QPS (active).
+	//
 	// example:
 	//
 	// 1345
 	OpsQps *int64 `json:"OpsQps,omitempty" xml:"OpsQps,omitempty"`
+	// The service QPS (purchased).
+	//
 	// example:
 	//
 	// 1345
 	OriginQps *int64 `json:"OriginQps,omitempty" xml:"OriginQps,omitempty"`
+	// The daily peak 95th percentile QPS.
+	//
 	// example:
 	//
 	// 4367
 	Qps *int64 `json:"Qps,omitempty" xml:"Qps,omitempty"`
+	// The daily peak traffic.
+	//
 	// example:
 	//
 	// 122
 	QpsPeak *int64 `json:"QpsPeak,omitempty" xml:"QpsPeak,omitempty"`
+	// Indicates whether the instance has expired or is released. Valid values:
+	//
+	// 	- **1**: The instance runs as expected.
+	//
+	// 	- **2**: The instance has expired.
+	//
+	// 	- **4**: The instance is released.
+	//
 	// example:
 	//
 	// 1
@@ -12072,7 +12331,7 @@ func (s *DescribeInstanceExtRequest) SetPageSize(v string) *DescribeInstanceExtR
 }
 
 type DescribeInstanceExtResponseBody struct {
-	// The information about the instance.
+	// The extended information about the Anti-DDoS Proxy instance.
 	InstanceExtSpecs []*DescribeInstanceExtResponseBodyInstanceExtSpecs `json:"InstanceExtSpecs,omitempty" xml:"InstanceExtSpecs,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -12122,7 +12381,7 @@ type DescribeInstanceExtResponseBodyInstanceExtSpecs struct {
 	//
 	// 0
 	FunctionVersion *int64 `json:"FunctionVersion,omitempty" xml:"FunctionVersion,omitempty"`
-	// The instance ID
+	// The ID of the instance.
 	//
 	// example:
 	//
@@ -12134,23 +12393,23 @@ type DescribeInstanceExtResponseBodyInstanceExtSpecs struct {
 	//
 	// 100
 	NormalBandwidth *int64 `json:"NormalBandwidth,omitempty" xml:"NormalBandwidth,omitempty"`
-	// The type of the instance. Valid value:
+	// The type of the instance. Valid values:
 	//
-	// 	- **0**: Anti-DDoS Premium instance of the Insurance mitigation plan
+	// 	- **0**: Anti-DDoS Proxy (Outside Chinese Mainland) instance of the Insurance mitigation plan
 	//
-	// 	- **1**: Anti-DDoS Premium instance of the Unlimited mitigation plan
+	// 	- **1**: Anti-DDoS Proxy (Outside Chinese Mainland) instance of the Unlimited mitigation plan
 	//
-	// 	- **2**: Anti-DDoS Premium instance of the CMA mitigation plan
+	// 	- **2**: Anti-DDoS Proxy (Outside Chinese Mainland) instance of the Chinese Mainland Acceleration (CMA) mitigation plan
 	//
-	// 	- **3**: Anti-DDoS Premium instance of the Secure Chinese Mainland Acceleration (Sec-CMA) plan
+	// 	- **3**: Anti-DDoS Proxy (Outside Chinese Mainland) instance of the Secure Chinese Mainland Acceleration (Sec-CMA) mitigation plan
 	//
-	// 	- **9**: Anti-DDoS Pro instance of the Profession mitigation plan
+	// 	- **9**: Anti-DDoS Proxy (Chinese Mainland) instance of the Profession mitigation plan
 	//
 	// example:
 	//
 	// 0
 	ProductPlan *int64 `json:"ProductPlan,omitempty" xml:"ProductPlan,omitempty"`
-	// The Internet service provider (ISP) line resource of the Anti-DDoS Pro instance.
+	// The Internet service provider (ISP) line of the Anti-DDoS Proxy (Chinese Mainland) instance.
 	//
 	// example:
 	//
@@ -12221,10 +12480,24 @@ func (s *DescribeInstanceExtResponse) SetBody(v *DescribeInstanceExtResponseBody
 }
 
 type DescribeInstanceIdsRequest struct {
+	// The type of the instance to query. Valid values:
+	//
+	// 	- **0**: Anti-DDoS Proxy (Outside Chinese Mainland) instance of the Insurance mitigation plan
+	//
+	// 	- **1**: Anti-DDoS Proxy (Outside Chinese Mainland) instance of the Unlimited mitigation plan
+	//
+	// 	- **2**: Anti-DDoS Proxy (Outside Chinese Mainland) instance of the Chinese Mainland Acceleration (CMA) mitigation plan
+	//
+	// 	- **3**: Anti-DDoS Proxy (Outside Chinese Mainland) instance of the Secure Chinese Mainland Acceleration (Sec-CMA) mitigation plan
+	//
+	// 	- **9**: Anti-DDoS Proxy (Chinese Mainland) instance of the Profession mitigation plan
+	//
 	// example:
 	//
 	// 9
 	Edition *int32 `json:"Edition,omitempty" xml:"Edition,omitempty"`
+	// The IDs of instances to query.
+	//
 	// example:
 	//
 	// ddoscoo-cn-mp91j1ao****
@@ -12259,6 +12532,7 @@ func (s *DescribeInstanceIdsRequest) SetResourceGroupId(v string) *DescribeInsta
 }
 
 type DescribeInstanceIdsResponseBody struct {
+	// The ID, type, description, and IP version of the instance.
 	InstanceIds []*DescribeInstanceIdsResponseBodyInstanceIds `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
 	// example:
 	//
@@ -12285,22 +12559,50 @@ func (s *DescribeInstanceIdsResponseBody) SetRequestId(v string) *DescribeInstan
 }
 
 type DescribeInstanceIdsResponseBodyInstanceIds struct {
+	// The type of the instance. Valid values:
+	//
+	// 	- **0**: Anti-DDoS Proxy (Outside Chinese Mainland) instance of the Insurance mitigation plan
+	//
+	// 	- **1**: Anti-DDoS Proxy (Outside Chinese Mainland) instance of the Unlimited mitigation plan
+	//
+	// 	- **2**: Anti-DDoS Proxy (Outside Chinese Mainland) instance of the CMA mitigation plan
+	//
+	// 	- **3**: Anti-DDoS Proxy (Outside Chinese Mainland) instance of the Sec-CMA mitigation plan
+	//
+	// 	- **9**: Anti-DDoS Proxy (Chinese Mainland) instance of the Profession mitigation plan
+	//
 	// example:
 	//
 	// 9
 	Edition *int32 `json:"Edition,omitempty" xml:"Edition,omitempty"`
+	// The ID of the instance.
+	//
 	// example:
 	//
 	// ddoscoo-cn-zvp2eibz****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The IP address-based forwarding mode of the instance. Valid values:
+	//
+	// 	- **fnat**: Requests from IPv4 addresses are forwarded to origin servers that use IPv4 addresses and requests from IPv6 addresses are forwarded to origin servers that use IPv6 addresses.
+	//
+	// 	- **v6tov4**: All requests are forwarded to origin servers that use IPv4 addresses.
+	//
 	// example:
 	//
 	// fnat
 	IpMode *string `json:"IpMode,omitempty" xml:"IpMode,omitempty"`
+	// The IP version of the instance. Valid values:
+	//
+	// 	- **Ipv4**
+	//
+	// 	- **Ipv6**
+	//
 	// example:
 	//
 	// Ipv4
 	IpVersion *string `json:"IpVersion,omitempty" xml:"IpVersion,omitempty"`
+	// The description of the instance.
+	//
 	// example:
 	//
 	// test
@@ -12390,7 +12692,7 @@ func (s *DescribeInstanceSpecsRequest) SetInstanceIds(v []*string) *DescribeInst
 }
 
 type DescribeInstanceSpecsResponseBody struct {
-	// An array that consists of the specifications of instances.
+	// The details of the specifications of the instance.
 	InstanceSpecs []*DescribeInstanceSpecsResponseBodyInstanceSpecs `json:"InstanceSpecs,omitempty" xml:"InstanceSpecs,omitempty" type:"Repeated"`
 	// The ID of the request, which is used to locate and troubleshoot issues.
 	//
@@ -12419,7 +12721,7 @@ func (s *DescribeInstanceSpecsResponseBody) SetRequestId(v string) *DescribeInst
 }
 
 type DescribeInstanceSpecsResponseBodyInstanceSpecs struct {
-	// The clean bandwidth of normal services. Unit: Mbit/s.
+	// The clean bandwidth. Unit: Mbit/s.
 	//
 	// example:
 	//
@@ -12443,9 +12745,9 @@ type DescribeInstanceSpecsResponseBodyInstanceSpecs struct {
 	//
 	// 5000
 	CpsLimit *int64 `json:"CpsLimit,omitempty" xml:"CpsLimit,omitempty"`
-	// The number of available advanced mitigation sessions for this month. If **-1*	- is returned, advanced mitigation capabilities are unlimited.
+	// The number of available advanced mitigation sessions for this month. **-1**: unlimited
 	//
-	// > This parameter is returned only when **RegionId*	- is set to **ap-southeast-1**. If RegionId is set to ap-southeast-1, the specifications of Anti-DDoS Premium instances are queried.
+	// >  This parameter is returned only when the request parameter **RegionId*	- is set to **ap-southeast-1**. If RegionId is set to ap-southeast-1, the specifications of Anti-DDoS Proxy (Outside Chinese Mainland) instances are queried.
 	//
 	// example:
 	//
@@ -12479,7 +12781,21 @@ type DescribeInstanceSpecsResponseBodyInstanceSpecs struct {
 	//
 	// day
 	ElasticBwModel *string `json:"ElasticBwModel,omitempty" xml:"ElasticBwModel,omitempty"`
-	ElasticQps     *int64  `json:"ElasticQps,omitempty" xml:"ElasticQps,omitempty"`
+	// The burstable QPS. Unit: QPS
+	//
+	// example:
+	//
+	// 10
+	ElasticQps *int64 `json:"ElasticQps,omitempty" xml:"ElasticQps,omitempty"`
+	// The metering method of the burstable QPS. Valid values:
+	//
+	// 	- **day**: the metering method of daily 95th percentile
+	//
+	// 	- **month**: the metering method of monthly 95th percentile
+	//
+	// example:
+	//
+	// day
 	ElasticQpsMode *string `json:"ElasticQpsMode,omitempty" xml:"ElasticQpsMode,omitempty"`
 	// The function plan of the instance. Valid values:
 	//
@@ -12489,9 +12805,9 @@ type DescribeInstanceSpecsResponseBodyInstanceSpecs struct {
 	//
 	// 	- **cnhk**: Chinese Mainland Acceleration (CMA)
 	//
-	// 	- **cnhk_default**: Secure Chinese Mainland Acceleration (Sec-CMA) standard function plan
+	// 	- **cnhk_default**: Secure Chinese Mainland Acceleration (Sec-CMA) standard
 	//
-	// 	- **cnhk_enhance**: Sec-CMA enhanced function plan
+	// 	- **cnhk_enhance**: Sec-CMA enhanced
 	//
 	// example:
 	//
@@ -12509,13 +12825,13 @@ type DescribeInstanceSpecsResponseBodyInstanceSpecs struct {
 	//
 	// 50
 	PortLimit *int32 `json:"PortLimit,omitempty" xml:"PortLimit,omitempty"`
-	// The clean queries per second (QPS) of normal services.
+	// The clean QPS.
 	//
 	// example:
 	//
 	// 3000
 	QpsLimit *int32 `json:"QpsLimit,omitempty" xml:"QpsLimit,omitempty"`
-	// 实例业务带宽限速值。取值：0～15360，0表示不限速。单位：mbps。
+	// The threshold of the clean bandwidth. Valid values: 0 to 15360. The value 0 indicates that rate limiting is never triggered. Unit: Mbit/s
 	//
 	// example:
 	//
@@ -12678,7 +12994,7 @@ func (s *DescribeInstanceStatisticsRequest) SetInstanceIds(v []*string) *Describ
 }
 
 type DescribeInstanceStatisticsResponseBody struct {
-	// The statistics on the instances.
+	// The statistics on the instance.
 	InstanceStatistics []*DescribeInstanceStatisticsResponseBodyInstanceStatistics `json:"InstanceStatistics,omitempty" xml:"InstanceStatistics,omitempty" type:"Repeated"`
 	// The ID of the request, which is used to locate and troubleshoot issues.
 	//
@@ -12709,7 +13025,7 @@ func (s *DescribeInstanceStatisticsResponseBody) SetRequestId(v string) *Describ
 type DescribeInstanceStatisticsResponseBodyInstanceStatistics struct {
 	// The number of advanced mitigation sessions that are used in this month.
 	//
-	// > This parameter is returned only if Anti-DDoS Premium instances are queried.
+	// >  This parameter is returned only if Anti-DDoS Proxy (Outside Chinese Mainland) instances are queried.
 	//
 	// example:
 	//
@@ -12804,9 +13120,9 @@ func (s *DescribeInstanceStatisticsResponse) SetBody(v *DescribeInstanceStatisti
 }
 
 type DescribeInstanceStatusRequest struct {
-	// The ID of the instance to query.
+	// The ID of the Anti-DDoS Proxy instance to query.
 	//
-	// > You can call the [DescribeInstanceIds](https://help.aliyun.com/document_detail/157459.html) operation to query the IDs of all Anti-DDoS Pro or Anti-DDoS Premium instances.
+	// >  You can call the [DescribeInstanceIds](https://help.aliyun.com/document_detail/157459.html) operation to query the IDs of all Anti-DDoS Proxy (Chinese Mainland) or Anti-DDoS Proxy (Outside Chinese Mainland) instances.
 	//
 	// This parameter is required.
 	//
@@ -12814,11 +13130,11 @@ type DescribeInstanceStatusRequest struct {
 	//
 	// ddoscoo-cn-6ja1y6p5****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The type of the instance to query. Valid values:
+	// The type of the Anti-DDoS Proxy instance to query. Valid values:
 	//
-	// 	- **1**: an Anti-DDoS Pro instance
+	// 	- **1**: an Anti-DDoS Proxy (Chinese Mainland) instance
 	//
-	// 	- **2**: an Anti-DDoS Premium instance
+	// 	- **2**: an Anti-DDoS Proxy (Outside Chinese Mainland) instance
 	//
 	// This parameter is required.
 	//
@@ -12930,13 +13246,13 @@ func (s *DescribeInstanceStatusResponse) SetBody(v *DescribeInstanceStatusRespon
 type DescribeInstancesRequest struct {
 	// The mitigation plan of the instance to query. Valid values:
 	//
-	// 	- **0**: Anti-DDoS Premium instance of the Insurance mitigation plan
+	// 	- **0**: Anti-DDoS Proxy (Outside Chinese Mainland) instance of the Insurance mitigation plan
 	//
-	// 	- **1**: Anti-DDoS Premium instance of the Unlimited mitigation plan
+	// 	- **1**: Anti-DDoS Proxy (Outside Chinese Mainland) instance of the Unlimited mitigation plan
 	//
-	// 	- **2**: Anti-DDoS Premium instance of the Mainland China Acceleration (MCA) mitigation plan
+	// 	- **2**: Anti-DDoS Proxy (Outside Chinese Mainland) instance of the Chinese Mainland Acceleration (CMA) mitigation plan
 	//
-	// 	- **9**: Anti-DDoS Pro instance of the Profession mitigation plan
+	// 	- **9**: Anti-DDoS Proxy (Chinese Mainland) instance of the Profession mitigation plan
 	//
 	// example:
 	//
@@ -12963,8 +13279,9 @@ type DescribeInstancesRequest struct {
 	// example:
 	//
 	// 1640361500000
-	ExpireStartTime *int64    `json:"ExpireStartTime,omitempty" xml:"ExpireStartTime,omitempty"`
-	InstanceIds     []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
+	ExpireStartTime *int64 `json:"ExpireStartTime,omitempty" xml:"ExpireStartTime,omitempty"`
+	// The IDs of the instances to query. You can specify up to 200 instance IDs.
+	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
 	// The IP address of the instance to query.
 	//
 	// example:
@@ -13000,9 +13317,11 @@ type DescribeInstancesRequest struct {
 	// example:
 	//
 	// rg-acfm2pz25js****
-	ResourceGroupId *string                        `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	Status          []*int32                       `json:"Status,omitempty" xml:"Status,omitempty" type:"Repeated"`
-	Tag             []*DescribeInstancesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The states of the instances to query. You can specify up to two states.
+	Status []*int32 `json:"Status,omitempty" xml:"Status,omitempty" type:"Repeated"`
+	// The tags that are added to the instances to query.
+	Tag []*DescribeInstancesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s DescribeInstancesRequest) String() string {
@@ -13074,9 +13393,9 @@ func (s *DescribeInstancesRequest) SetTag(v []*DescribeInstancesRequestTag) *Des
 }
 
 type DescribeInstancesRequestTag struct {
-	// The key of tag N that is added to the instance to query. The maximum value of N is 200. You can specify up to 200 tags. When you specify tags, take note of the following rules:
+	// The key of the tag that is added to the instance to query. You can specify up to 200 tag keys. When you specify tags, take note of the following rules:
 	//
-	// 	- Each tag consists of a key (**Key**) and a value (**Value**), which are separated by a comma (,).
+	// 	- Each tag consists of a key (**Key**) and a value (**Value**), which are separated with a comma (,).
 	//
 	// 	- Separate multiple tags with commas (,).
 	//
@@ -13086,9 +13405,9 @@ type DescribeInstancesRequestTag struct {
 	//
 	// test-key
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of tag N that is added to the instance to query. The maximum value of N is 200. You can specify up to 200 tags. When you specify tags, take note of the following rules:
+	// The value of the tag that is added to the instance to query. You can specify up to 200 tag values. When you specify tags, take note of the following rules:
 	//
-	// 	- Each tag consists of a key (**Key**) and a value (**Value**), which are separated by a comma (,).
+	// 	- Each tag consists of a key (**Key**) and a value (**Value**), which are separated with a comma (,).
 	//
 	// 	- Separate multiple tags with commas (,).
 	//
@@ -13119,7 +13438,7 @@ func (s *DescribeInstancesRequestTag) SetValue(v string) *DescribeInstancesReque
 }
 
 type DescribeInstancesResponseBody struct {
-	// An array that consists of the details of the instances.
+	// The details about the instances.
 	Instances []*DescribeInstancesResponseBodyInstances `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Repeated"`
 	// The ID of the request, which is used to locate and troubleshoot issues.
 	//
@@ -13159,7 +13478,7 @@ func (s *DescribeInstancesResponseBody) SetTotalCount(v int64) *DescribeInstance
 }
 
 type DescribeInstancesResponseBodyInstances struct {
-	// The time when the instance is created. This value is a UNIX timestamp. Unit: milliseconds.
+	// The time when the instance was created. The value is a UNIX timestamp. Unit: milliseconds.
 	//
 	// example:
 	//
@@ -13173,19 +13492,19 @@ type DescribeInstancesResponseBodyInstances struct {
 	DebtStatus *int32 `json:"DebtStatus,omitempty" xml:"DebtStatus,omitempty"`
 	// The mitigation plan of the instance. Valid values:
 	//
-	// 	- **0**: Anti-DDoS Premium instance of the Insurance mitigation plan
+	// 	- **0**: Anti-DDoS Proxy (Outside Chinese Mainland) instance of the Insurance mitigation plan
 	//
-	// 	- **1**: Anti-DDoS Premium instance of the Unlimited mitigation plan
+	// 	- **1**: Anti-DDoS Proxy (Outside Chinese Mainland) instance of the Unlimited mitigation plan
 	//
-	// 	- **2**: Anti-DDoS Premium instance of the MCA mitigation plan
+	// 	- **2**: Anti-DDoS Proxy (Outside Chinese Mainland) instance of the Chinese Mainland Acceleration (CMA) mitigation plan
 	//
-	// 	- **9**: Anti-DDoS Pro instance of the Profession mitigation plan
+	// 	- **9**: Anti-DDoS Proxy (Chinese Mainland) instance of the Profession mitigation plan
 	//
 	// example:
 	//
 	// 9
 	Edition *int32 `json:"Edition,omitempty" xml:"Edition,omitempty"`
-	// The forwarding status of the instance. Valid values:
+	// The traffic forwarding status of the instance. Valid values:
 	//
 	// 	- **0**: The instance no longer forwards service traffic.
 	//
@@ -13195,7 +13514,7 @@ type DescribeInstancesResponseBodyInstances struct {
 	//
 	// 1
 	Enabled *int32 `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
-	// The time when the instance expires. This value is a UNIX timestamp. Unit: milliseconds.
+	// The time when the instance expires. The value is a UNIX timestamp. Unit: milliseconds.
 	//
 	// example:
 	//
@@ -13225,19 +13544,19 @@ type DescribeInstancesResponseBodyInstances struct {
 	IpMode *string `json:"IpMode,omitempty" xml:"IpMode,omitempty"`
 	// The IP version of the instance. Valid values:
 	//
-	// 	- **Ipv4**: IPv4
+	// 	- **Ipv4**
 	//
-	// 	- **Ipv6**: IPv6
+	// 	- **Ipv6**
 	//
 	// example:
 	//
 	// Ipv4
 	IpVersion *string `json:"IpVersion,omitempty" xml:"IpVersion,omitempty"`
-	// Indicates whether the 95th percentile metering method has been enabled for the instance. Valid values:
+	// Indicates whether the metering method of the 95th percentile burstable clean bandwidth is enabled for the instance. Valid values:
 	//
-	// 	- 0: The 95th percentile metering method has not been enabled for the instance.
+	// 	- 0: no
 	//
-	// 	- 1: The 95th percentile metering method has been enabled for the instance.
+	// 	- 1: yes
 	//
 	// example:
 	//
@@ -13245,9 +13564,9 @@ type DescribeInstancesResponseBodyInstances struct {
 	IsFirstOpenBw *int64 `json:"IsFirstOpenBw,omitempty" xml:"IsFirstOpenBw,omitempty"`
 	// Indicates whether the metering method of the 95th percentile burstable QPS is enabled for the instance. Valid values:
 	//
-	// - 0: no
+	// 	- 0: no
 	//
-	// - 1: yes
+	// 	- 1: yes
 	//
 	// example:
 	//
@@ -13424,7 +13743,7 @@ func (s *DescribeL7RsPolicyRequest) SetResourceGroupId(v string) *DescribeL7RsPo
 }
 
 type DescribeL7RsPolicyResponseBody struct {
-	// The details of the parameters for back-to-origin.
+	// The details about the parameters for back-to-origin processing.
 	Attributes []*DescribeL7RsPolicyResponseBodyAttributes `json:"Attributes,omitempty" xml:"Attributes,omitempty" type:"Repeated"`
 	// The scheduling algorithm for back-to-origin traffic. Valid values:
 	//
@@ -13443,8 +13762,17 @@ type DescribeL7RsPolicyResponseBody struct {
 	// example:
 	//
 	// 9E7F6B2C-03F2-462F-9076-B782CF0DD502
-	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	UpstreamRetry *int32  `json:"UpstreamRetry,omitempty" xml:"UpstreamRetry,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The back-to-origin retry switch. Valid values:
+	//
+	// 	- **1**: on
+	//
+	// 	- **0**: off
+	//
+	// example:
+	//
+	// 1
+	UpstreamRetry *int32 `json:"UpstreamRetry,omitempty" xml:"UpstreamRetry,omitempty"`
 }
 
 func (s DescribeL7RsPolicyResponseBody) String() string {
@@ -13476,7 +13804,7 @@ func (s *DescribeL7RsPolicyResponseBody) SetUpstreamRetry(v int32) *DescribeL7Rs
 }
 
 type DescribeL7RsPolicyResponseBodyAttributes struct {
-	// The parameter for back-to-origin.
+	// The parameter for back-to-origin processing.
 	Attribute *DescribeL7RsPolicyResponseBodyAttributesAttribute `json:"Attribute,omitempty" xml:"Attribute,omitempty" type:"Struct"`
 	// The address of the origin server.
 	//
@@ -13520,12 +13848,46 @@ func (s *DescribeL7RsPolicyResponseBodyAttributes) SetRsType(v int32) *DescribeL
 }
 
 type DescribeL7RsPolicyResponseBodyAttributesAttribute struct {
-	ConnectTimeout *int32  `json:"ConnectTimeout,omitempty" xml:"ConnectTimeout,omitempty"`
-	FailTimeout    *int32  `json:"FailTimeout,omitempty" xml:"FailTimeout,omitempty"`
-	MaxFails       *int32  `json:"MaxFails,omitempty" xml:"MaxFails,omitempty"`
-	Mode           *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
-	ReadTimeout    *int32  `json:"ReadTimeout,omitempty" xml:"ReadTimeout,omitempty"`
-	SendTimeout    *int32  `json:"SendTimeout,omitempty" xml:"SendTimeout,omitempty"`
+	// The timeout period for a new connection. Valid values: **1*	- to **10**. Unit: seconds. Default value: **5**.
+	//
+	// example:
+	//
+	// 5
+	ConnectTimeout *int32 `json:"ConnectTimeout,omitempty" xml:"ConnectTimeout,omitempty"`
+	// The expiration time of a connection, in seconds. If the number of failures at the origin server exceeds the **MaxFails*	- value, the address of the origin server is set to down and the expiration time is **FailTimeout**. The final value is the maximum value of **ConnectTimeout*	- and **FailTimeout**. Valid values: **1*	- to **3600**. Unit: seconds. Default value: **10**.
+	//
+	// example:
+	//
+	// 10
+	FailTimeout *int32 `json:"FailTimeout,omitempty" xml:"FailTimeout,omitempty"`
+	// The maximum number of failures. This parameter is related to health check. Valid values: **1*	- to **10**. Unit: seconds. Default value: **3**.
+	//
+	// example:
+	//
+	// 3
+	MaxFails *int32 `json:"MaxFails,omitempty" xml:"MaxFails,omitempty"`
+	// The primary/secondary flag. Valid values:
+	//
+	// 	- **active**: primary
+	//
+	// 	- **backup**: secondary
+	//
+	// example:
+	//
+	// active
+	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	// The timeout period for a read connection. Valid values: **10*	- to **300**. Unit: seconds. Default value: **120**.
+	//
+	// example:
+	//
+	// 120
+	ReadTimeout *int32 `json:"ReadTimeout,omitempty" xml:"ReadTimeout,omitempty"`
+	// The timeout period for a write connection. Valid values: **10*	- to **300**. Unit: seconds. Default value: **120**.
+	//
+	// example:
+	//
+	// 120
+	SendTimeout *int32 `json:"SendTimeout,omitempty" xml:"SendTimeout,omitempty"`
 	// The weight of the origin server. This parameter takes effect only when **ProxyMode*	- is set to **rr**.
 	//
 	// Valid values: **1*	- to **100**. Default value: **100**. A server with a higher weight receives more requests.
@@ -13609,6 +13971,10 @@ func (s *DescribeL7RsPolicyResponse) SetBody(v *DescribeL7RsPolicyResponseBody) 
 }
 
 type DescribeL7UsKeepaliveRequest struct {
+	// The domain name of the website.
+	//
+	// >  A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) operation to query all domain names.
+	//
 	// example:
 	//
 	// www.aliyun.com
@@ -13629,10 +13995,13 @@ func (s *DescribeL7UsKeepaliveRequest) SetDomain(v string) *DescribeL7UsKeepaliv
 }
 
 type DescribeL7UsKeepaliveResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 39499F01-19D9-4EA4-A0E9-C6014BA5CDBE
-	RequestId   *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The value of the Back-to-origin Persistent Connections parameter.
 	RsKeepalive *DescribeL7UsKeepaliveResponseBodyRsKeepalive `json:"RsKeepalive,omitempty" xml:"RsKeepalive,omitempty" type:"Struct"`
 }
 
@@ -13655,14 +14024,24 @@ func (s *DescribeL7UsKeepaliveResponseBody) SetRsKeepalive(v *DescribeL7UsKeepal
 }
 
 type DescribeL7UsKeepaliveResponseBodyRsKeepalive struct {
+	// Indicates whether Back-to-origin Persistent Connections is turned on. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false**
+	//
 	// example:
 	//
 	// true
 	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	// The number of requests that reuse persistent connections.
+	//
 	// example:
 	//
 	// 1000
 	KeepaliveRequests *int64 `json:"KeepaliveRequests,omitempty" xml:"KeepaliveRequests,omitempty"`
+	// The timeout period of idle persistent connections.
+	//
 	// example:
 	//
 	// 30
@@ -14202,9 +14581,9 @@ func (s *DescribeNetworkRegionBlockResponseBody) SetRequestId(v string) *Describ
 }
 
 type DescribeNetworkRegionBlockResponseBodyConfig struct {
-	// An array consisting of the codes of the countries or areas from which the requests are blocked.
+	// The codes of the countries or areas from which the requests are blocked.
 	Countries []*int64 `json:"Countries,omitempty" xml:"Countries,omitempty" type:"Repeated"`
-	// An array consisting of the codes of the administrative regions in China from which the requests are blocked.
+	// The codes of the administrative regions in China from which the requests are blocked.
 	Provinces []*int64 `json:"Provinces,omitempty" xml:"Provinces,omitempty" type:"Repeated"`
 	// The status of the Location Blacklist policy. Valid values:
 	//
@@ -14849,7 +15228,7 @@ func (s *DescribeNetworkRulesRequest) SetPageSize(v int32) *DescribeNetworkRules
 }
 
 type DescribeNetworkRulesResponseBody struct {
-	// An array that consists of the details of a port forwarding rule.
+	// The details of a port forwarding rule.
 	NetworkRules []*DescribeNetworkRulesResponseBodyNetworkRules `json:"NetworkRules,omitempty" xml:"NetworkRules,omitempty" type:"Repeated"`
 	// The ID of the request, which is used to locate and troubleshoot issues.
 	//
@@ -14909,9 +15288,9 @@ type DescribeNetworkRulesResponseBodyNetworkRules struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// Indicates whether the port forwarding rule is automatically created. Valid values:
 	//
-	// 	- **true**: yes
+	// 	- **true**
 	//
-	// 	- **false**: no
+	// 	- **false**
 	//
 	// example:
 	//
@@ -14927,9 +15306,14 @@ type DescribeNetworkRulesResponseBodyNetworkRules struct {
 	//
 	// tcp
 	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
-	// An array that consists of IP addresses of origin servers.
+	// The IP addresses of origin servers.
 	RealServers []*string `json:"RealServers,omitempty" xml:"RealServers,omitempty" type:"Repeated"`
-	Remark      *string   `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// The remarks of the port forwarding rule.
+	//
+	// example:
+	//
+	// Test
+	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
 }
 
 func (s DescribeNetworkRulesResponseBodyNetworkRules) String() string {
@@ -15868,22 +16252,30 @@ func (s *DescribePortAutoCcStatusResponse) SetBody(v *DescribePortAutoCcStatusRe
 }
 
 type DescribePortCcAttackTopIPRequest struct {
+	// The IP address of the Anti-DDoS Pro or Anti-DDoS Premium instance to query.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 203.107.XX.XX
 	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	// The maximum number of entries to return.
+	//
 	// example:
 	//
 	// 10
 	Limit *int64 `json:"Limit,omitempty" xml:"Limit,omitempty"`
+	// The attacked port.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 6663
 	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
+	// The beginning of the time range to query. Unit: seconds.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -15921,11 +16313,14 @@ func (s *DescribePortCcAttackTopIPRequest) SetStartTimestamp(v int64) *DescribeP
 }
 
 type DescribePortCcAttackTopIPResponseBody struct {
+	// The request ID, which is used to locate and troubleshoot issues.
+	//
 	// example:
 	//
 	// 24F36D81-5E2D-52E5-9DB6-A3ED23CF271A
-	RequestId *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TopIp     []*DescribePortCcAttackTopIPResponseBodyTopIp `json:"TopIp,omitempty" xml:"TopIp,omitempty" type:"Repeated"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The information about the source IP address of the attack.
+	TopIp []*DescribePortCcAttackTopIPResponseBodyTopIp `json:"TopIp,omitempty" xml:"TopIp,omitempty" type:"Repeated"`
 }
 
 func (s DescribePortCcAttackTopIPResponseBody) String() string {
@@ -15947,14 +16342,20 @@ func (s *DescribePortCcAttackTopIPResponseBody) SetTopIp(v []*DescribePortCcAtta
 }
 
 type DescribePortCcAttackTopIPResponseBodyTopIp struct {
+	// The code of the location from which the attack is initiated. For more information, see [Codes of administrative regions in China and codes of countries and areas](https://help.aliyun.com/document_detail/167926.html). For example, **110000*	- indicates Beijing, China, and **us*	- indicates the United States.
+	//
 	// example:
 	//
 	// cn-shanghai
 	AreaId *string `json:"AreaId,omitempty" xml:"AreaId,omitempty"`
+	// The number of attacks from the IP address.
+	//
 	// example:
 	//
 	// 33971
 	Pv *int64 `json:"Pv,omitempty" xml:"Pv,omitempty"`
+	// The source IP address of the attack.
+	//
 	// example:
 	//
 	// 172.18.XX.XX
@@ -16278,7 +16679,7 @@ func (s *DescribePortConnsListRequest) SetStartTime(v int64) *DescribePortConnsL
 }
 
 type DescribePortConnsListResponseBody struct {
-	// An array that consists of the connections established over the port.
+	// Details about the connections established over the port.
 	ConnsList []*DescribePortConnsListResponseBodyConnsList `json:"ConnsList,omitempty" xml:"ConnsList,omitempty" type:"Repeated"`
 	// The ID of the request, which is used to locate and troubleshoot issues.
 	//
@@ -16313,13 +16714,13 @@ type DescribePortConnsListResponseBodyConnsList struct {
 	//
 	// 3
 	ActConns *int64 `json:"ActConns,omitempty" xml:"ActConns,omitempty"`
-	// The number of concurrent connections.
+	// >  This parameter is in internal preview. Do not use this parameter.
 	//
 	// example:
 	//
 	// 8
 	Conns *int64 `json:"Conns,omitempty" xml:"Conns,omitempty"`
-	// The new connection creation rate.
+	// The number of new connections.
 	//
 	// example:
 	//
@@ -19096,7 +19497,7 @@ type DescribeTagKeysRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region ID of the instance. Set the value to **cn-hangzhou**, which indicates an Anti-DDoS Pro instance in the Chinese mainland.
+	// The region ID of the instance. Set the value to **cn-hangzhou**, which indicates an Anti-DDoS Proxy (Chinese Mainland) instance.
 	//
 	// This parameter is required.
 	//
@@ -19174,7 +19575,7 @@ type DescribeTagKeysResponseBody struct {
 	//
 	// 6623EA1F-30FB-5BC8-BEC9-74D55F6F08F1
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// An array that consists of the details of the tag key.
+	// The details about the tag keys.
 	TagKeys []*DescribeTagKeysResponseBodyTagKeys `json:"TagKeys,omitempty" xml:"TagKeys,omitempty" type:"Repeated"`
 	// The total number of entries returned.
 	//
@@ -19218,7 +19619,7 @@ func (s *DescribeTagKeysResponseBody) SetTotalCount(v int32) *DescribeTagKeysRes
 }
 
 type DescribeTagKeysResponseBodyTagKeys struct {
-	// The number of Anti-DDoS Pro instances to which the tag key is added.
+	// The number of Anti-DDoS Proxy (Chinese Mainland) instances to which the tag key is added.
 	//
 	// example:
 	//
@@ -19288,7 +19689,7 @@ type DescribeTagResourcesRequest struct {
 	//
 	// RGuYpqDdKhzXb8C3.D1BwQgc1tMBsoxdGiEKHHUUCf****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The region ID of the instance. Set the value to **cn-hangzhou**, which indicates an Anti-DDoS Pro instance in the Chinese mainland.
+	// The region ID of the instance. Set the value to **cn-hangzhou**, which indicates an Anti-DDoS Proxy (Chinese Mainland) instance.
 	//
 	// This parameter is required.
 	//
@@ -19304,7 +19705,7 @@ type DescribeTagResourcesRequest struct {
 	//
 	// rg-acfm2pz25js****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// An array consisting of IDs of the Anti-DDoS Pro instances that you want to query.
+	// The IDs of the Anti-DDoS Proxy (Chinese Mainland) instances that you want to query.
 	//
 	// example:
 	//
@@ -19412,7 +19813,7 @@ type DescribeTagResourcesResponseBody struct {
 	//
 	// 36E698F7-48A4-48D0-9554-0BB4BAAB99B3
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// An array consisting of the details of the tags that are added to the Anti-DDoS Pro instance.
+	// The tags that are added to the Anti-DDoS Proxy (Chinese Mainland) instance.
 	TagResources *DescribeTagResourcesResponseBodyTagResources `json:"TagResources,omitempty" xml:"TagResources,omitempty" type:"Struct"`
 }
 
@@ -19457,25 +19858,25 @@ func (s *DescribeTagResourcesResponseBodyTagResources) SetTagResource(v []*Descr
 }
 
 type DescribeTagResourcesResponseBodyTagResourcesTagResource struct {
-	// The ID of the Anti-DDoS Pro instance.
+	// The ID of the Anti-DDoS Proxy (Chinese Mainland) instance.
 	//
 	// example:
 	//
 	// ddoscoo-cn-zz121ogz****
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	// The type of the resource. The value is fixed as **INSTANCE**, which indicates an Anti-DDoS Pro instance.
+	// The resource type. The value is fixed as **INSTANCE**, which indicates an Anti-DDoS Proxy instance.
 	//
 	// example:
 	//
 	// INSTANCE
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The key of the tag that is added to the Anti-DDoS Pro instance.
+	// The key of the tag that is added to the Anti-DDoS Proxy (Chinese Mainland) instance.
 	//
 	// example:
 	//
 	// testvalue
 	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
-	// The value of the tag that is added to the Anti-DDoS Pro instance.
+	// The value of the tag that is added to the Anti-DDoS Proxy (Chinese Mainland) instance.
 	//
 	// example:
 	//
@@ -19687,9 +20088,9 @@ type DescribeUdpReflectRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The region ID of the instance. Valid values:
 	//
-	// 	- **cn-hangzhou**: Chinese mainland, which indicates an Anti-DDoS Pro instance. This is the default value.
+	// 	- **cn-hangzhou**: indicates an Anti-DDoS Proxy (Chinese Mainland) instance. This is the default value.
 	//
-	// 	- **ap-southeast-1**: outside the Chinese mainland, which indicates an Anti-DDoS Premium instance.
+	// 	- **ap-southeast-1**: indicates an Anti-DDoS Proxy (Outside Chinese Mainland) instance.
 	//
 	// example:
 	//
@@ -20835,18 +21236,30 @@ func (s *DescribeWebCCRulesResponse) SetBody(v *DescribeWebCCRulesResponseBody) 
 }
 
 type DescribeWebCCRulesV2Request struct {
+	// The domain name of the website that you want to add to the Anti-DDoS Proxy instance for protection.
+	//
 	// example:
 	//
 	// example.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// The number of entries that you want the system to skip before the system returns entries. Default value: **0**.
+	//
 	// example:
 	//
 	// 0
 	Offset *string `json:"Offset,omitempty" xml:"Offset,omitempty"`
+	// The method used to create the rule. Valid values:
+	//
+	// 	- **manual*	- (default): manually created.
+	//
+	// 	- **clover**: automatically created.
+	//
 	// example:
 	//
 	// manual
 	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// The number of entries per page. Maximum value: **20**. Default value: **20**.
+	//
 	// example:
 	//
 	// 20
@@ -20882,18 +21295,25 @@ func (s *DescribeWebCCRulesV2Request) SetPageSize(v string) *DescribeWebCCRulesV
 }
 
 type DescribeWebCCRulesV2ResponseBody struct {
+	// The domain name of the website.
+	//
 	// example:
 	//
 	// www.aliyun.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// CF33B4C3-196E-4015-AADD-5CAD00057B80
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of returned custom frequency control rules.
+	//
 	// example:
 	//
 	// 12
-	TotalCount *string                                       `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	TotalCount *string `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The custom frequency control rules.
 	WebCCRules []*DescribeWebCCRulesV2ResponseBodyWebCCRules `json:"WebCCRules,omitempty" xml:"WebCCRules,omitempty" type:"Repeated"`
 }
 
@@ -20926,18 +21346,29 @@ func (s *DescribeWebCCRulesV2ResponseBody) SetWebCCRules(v []*DescribeWebCCRules
 }
 
 type DescribeWebCCRulesV2ResponseBodyWebCCRules struct {
+	// The validity period of the rule. Unit: seconds. If the Action parameter is set to block, the system blocks the requests that match the rule within the validity period of the rule. The value 0 indicates that the rule is permanently valid.
+	//
 	// example:
 	//
 	// 0
 	Expires *int64 `json:"Expires,omitempty" xml:"Expires,omitempty"`
+	// The name of the rule.
+	//
 	// example:
 	//
 	// wq
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The method used to create the rule. Valid values:
+	//
+	// 	- **manual*	- (default): manually created.
+	//
+	// 	- **clover**: automatically created.
+	//
 	// example:
 	//
 	// manual
-	Owner      *string                                               `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// The details of the rule.
 	RuleDetail *DescribeWebCCRulesV2ResponseBodyWebCCRulesRuleDetail `json:"RuleDetail,omitempty" xml:"RuleDetail,omitempty" type:"Struct"`
 }
 
@@ -20970,28 +21401,52 @@ func (s *DescribeWebCCRulesV2ResponseBodyWebCCRules) SetRuleDetail(v *DescribeWe
 }
 
 type DescribeWebCCRulesV2ResponseBodyWebCCRulesRuleDetail struct {
+	// The action triggered if the rule is matched. Valid values:
+	//
+	// 	- **accept**: The requests that match the rule are allowed.
+	//
+	// 	- **block**: The requests that match the rule are blocked.
+	//
+	// 	- **challenge**: Completely Automated Public Turing test to tell Computers and Humans Apart (CAPTCHA) verification for the requests that match the rule is implemented.
+	//
+	// 	- **watch**: The requests that match the rule are recorded in logs and allowed.
+	//
 	// example:
 	//
 	// block
-	Action    *string                                                          `json:"Action,omitempty" xml:"Action,omitempty"`
+	Action *string `json:"Action,omitempty" xml:"Action,omitempty"`
+	// The match conditions.
 	Condition []*DescribeWebCCRulesV2ResponseBodyWebCCRulesRuleDetailCondition `json:"Condition,omitempty" xml:"Condition,omitempty" type:"Repeated"`
-	Count     *int32                                                           `json:"Count,omitempty" xml:"Count,omitempty"`
+	// The parameter is deprecated.
+	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
+	// The parameter is deprecated.
+	//
 	// example:
 	//
 	// 60
-	Interval *int32  `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	Mode     *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	Interval *int32 `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	// The parameter is deprecated.
+	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	// The name of the rule.
+	//
 	// example:
 	//
 	// ccauto14
-	Name       *string                                                         `json:"Name,omitempty" xml:"Name,omitempty"`
-	RateLimit  *DescribeWebCCRulesV2ResponseBodyWebCCRulesRuleDetailRateLimit  `json:"RateLimit,omitempty" xml:"RateLimit,omitempty" type:"Struct"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The frequency statistics.
+	RateLimit *DescribeWebCCRulesV2ResponseBodyWebCCRulesRuleDetailRateLimit `json:"RateLimit,omitempty" xml:"RateLimit,omitempty" type:"Struct"`
+	// The statistics after deduplication. By default, the system collects statistics before deduplication.
 	Statistics *DescribeWebCCRulesV2ResponseBodyWebCCRulesRuleDetailStatistics `json:"Statistics,omitempty" xml:"Statistics,omitempty" type:"Struct"`
+	// The status codes.
 	StatusCode *DescribeWebCCRulesV2ResponseBodyWebCCRulesRuleDetailStatusCode `json:"StatusCode,omitempty" xml:"StatusCode,omitempty" type:"Struct"`
+	// The parameter is deprecated.
+	//
 	// example:
 	//
 	// 300
 	Ttl *int32 `json:"Ttl,omitempty" xml:"Ttl,omitempty"`
+	// The parameter is deprecated.
+	//
 	// example:
 	//
 	// /p3shijihao
@@ -21062,18 +21517,28 @@ func (s *DescribeWebCCRulesV2ResponseBodyWebCCRulesRuleDetail) SetUri(v string) 
 }
 
 type DescribeWebCCRulesV2ResponseBodyWebCCRulesRuleDetailCondition struct {
+	// The match content.
+	//
 	// example:
 	//
 	// 192.0.XX.XX
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The match field.
+	//
 	// example:
 	//
 	// ip
 	Field *string `json:"Field,omitempty" xml:"Field,omitempty"`
+	// The custom HTTP request header.
+	//
+	// >  This parameter takes effect only when **Field*	- is set to **header**.
+	//
 	// example:
 	//
 	// null
 	HeaderName *string `json:"HeaderName,omitempty" xml:"HeaderName,omitempty"`
+	// The match method.
+	//
 	// example:
 	//
 	// belong
@@ -21109,22 +21574,36 @@ func (s *DescribeWebCCRulesV2ResponseBodyWebCCRulesRuleDetailCondition) SetMatch
 }
 
 type DescribeWebCCRulesV2ResponseBodyWebCCRulesRuleDetailRateLimit struct {
+	// The statistical period. Unit: seconds.
+	//
 	// example:
 	//
 	// 60
 	Interval *int32 `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	// The name of the field. This parameter is required only when the Target parameter is set to header.
+	//
 	// example:
 	//
 	// action
 	SubKey *string `json:"SubKey,omitempty" xml:"SubKey,omitempty"`
+	// The statistical method. Valid values:
+	//
+	// 	- **ip**
+	//
+	// 	- **header**
+	//
 	// example:
 	//
 	// ip
 	Target *string `json:"Target,omitempty" xml:"Target,omitempty"`
+	// The trigger threshold.
+	//
 	// example:
 	//
 	// 20
 	Threshold *int32 `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
+	// The blocking duration. Unit: seconds.
+	//
 	// example:
 	//
 	// 15
@@ -21165,14 +21644,30 @@ func (s *DescribeWebCCRulesV2ResponseBodyWebCCRulesRuleDetailRateLimit) SetTtl(v
 }
 
 type DescribeWebCCRulesV2ResponseBodyWebCCRulesRuleDetailStatistics struct {
+	// The statistical method. Valid values:
+	//
+	// 	- **ip**
+	//
+	// 	- **header**
+	//
+	// 	- **uri**
+	//
 	// example:
 	//
 	// uri
 	Field *string `json:"Field,omitempty" xml:"Field,omitempty"`
+	// The name of the header. This parameter is required only when the Field parameter is set to header.
+	//
 	// example:
 	//
 	// hello
 	HeaderName *string `json:"HeaderName,omitempty" xml:"HeaderName,omitempty"`
+	// Indicates whether the system collects statistics after deduplication. Valid values:
+	//
+	// 	- **count**: The system collects statistics before deduplication.
+	//
+	// 	- **distinct**: The system collects statistics after deduplication.
+	//
 	// example:
 	//
 	// count
@@ -21203,22 +21698,44 @@ func (s *DescribeWebCCRulesV2ResponseBodyWebCCRulesRuleDetailStatistics) SetMode
 }
 
 type DescribeWebCCRulesV2ResponseBodyWebCCRulesRuleDetailStatusCode struct {
+	// The status code. Valid values: **100*	- to **599**.
+	//
+	// 	- **200**: The request was successful.
+	//
+	// 	- Other codes: The request failed.
+	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// If a ratio is not used, the handling action is triggered only when the number of requests of the corresponding status code reaches the value of **CountThreshold**. Valid values: **2*	- to **50000**.
+	//
 	// example:
 	//
 	// 10
 	CountThreshold *int32 `json:"CountThreshold,omitempty" xml:"CountThreshold,omitempty"`
+	// Indicates whether the status code is enabled. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false**
+	//
 	// example:
 	//
 	// true
 	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	// If a ratio is used, the handling action is triggered only when the number of requests of the corresponding status code reaches the value of **RatioThreshold**. Valid values: **1*	- to **100**.
+	//
 	// example:
 	//
 	// 10
 	RatioThreshold *int32 `json:"RatioThreshold,omitempty" xml:"RatioThreshold,omitempty"`
+	// Indicates whether to use a ratio.
+	//
+	// 	- **true**
+	//
+	// 	- **false**
+	//
 	// example:
 	//
 	// true
@@ -21542,7 +22059,7 @@ func (s *DescribeWebCcProtectSwitchRequest) SetResourceGroupId(v string) *Descri
 }
 
 type DescribeWebCcProtectSwitchResponseBody struct {
-	// The status of each protection policy for a website.
+	// The status of each mitigation policy for the website.
 	ProtectSwitchList []*DescribeWebCcProtectSwitchResponseBodyProtectSwitchList `json:"ProtectSwitchList,omitempty" xml:"ProtectSwitchList,omitempty" type:"Repeated"`
 	// The ID of the request.
 	//
@@ -21571,70 +22088,70 @@ func (s *DescribeWebCcProtectSwitchResponseBody) SetRequestId(v string) *Describ
 }
 
 type DescribeWebCcProtectSwitchResponseBodyProtectSwitchList struct {
-	// The mode of the Intelligent Protection policy. Valid values:
+	// The mode of Intelligent Protection. Valid values:
 	//
-	// 	- **watch**: the Warning mode
+	// 	- **watch**: Warning
 	//
-	// 	- **defense**: the Defense mode
+	// 	- **defense**: Defense
 	//
 	// example:
 	//
 	// defense
 	AiMode *string `json:"AiMode,omitempty" xml:"AiMode,omitempty"`
-	// The status of the Intelligent Protection policy. Valid values:
+	// The status of Intelligent Protection. Valid values:
 	//
-	// 	- **0**: disabled
+	// 	- **0**: turned off
 	//
-	// 	- **1**: enabled
+	// 	- **1:*	- turned on
 	//
 	// example:
 	//
 	// 1
 	AiRuleEnable *int32 `json:"AiRuleEnable,omitempty" xml:"AiRuleEnable,omitempty"`
-	// The level of the Intelligent Protection policy. Valid values:
+	// The level of Intelligent Protection. Valid values:
 	//
-	// 	- **level30**: the Low level
+	// 	- **level30**: Loose
 	//
-	// 	- **level60**: the Normal level
+	// 	- **level60**: Normal
 	//
-	// 	- **level90**: the Strict level
+	// 	- **level90**: Strict
 	//
 	// example:
 	//
 	// level60
 	AiTemplate *string `json:"AiTemplate,omitempty" xml:"AiTemplate,omitempty"`
-	// The status of the Black Lists and White Lists (Domain Names) policy. Valid values:
+	// The status of Blacklist/Whitelist (Domain Names). Valid values:
 	//
-	// 	- **0**: disabled
+	// 	- **0**: turned off
 	//
-	// 	- **1**: enabled
+	// 	- **1:*	- turned on
 	//
 	// example:
 	//
 	// 1
 	BlackWhiteListEnable *int32 `json:"BlackWhiteListEnable,omitempty" xml:"BlackWhiteListEnable,omitempty"`
-	// The status of the Custom Rule switch for the Frequency Control policy. Valid values:
+	// The status of the Custom Rules switch for Frequency Control. Valid values:
 	//
-	// 	- **0**: disabled
+	// 	- **0**: turned off
 	//
-	// 	- **1**: enabled
+	// 	- **1:*	- turned on
 	//
 	// example:
 	//
 	// 0
 	CcCustomRuleEnable *int32 `json:"CcCustomRuleEnable,omitempty" xml:"CcCustomRuleEnable,omitempty"`
-	// The status of the Frequency Control policy. Valid values:
+	// The status of Frequency Control. Valid values:
 	//
-	// 	- **0**: disabled
+	// 	- **0**: turned off
 	//
-	// 	- **1**: enabled
+	// 	- **1:*	- turned on
 	//
 	// example:
 	//
 	// 1
 	CcEnable       *int32  `json:"CcEnable,omitempty" xml:"CcEnable,omitempty"`
 	CcGlobalSwitch *string `json:"CcGlobalSwitch,omitempty" xml:"CcGlobalSwitch,omitempty"`
-	// The mode of the Frequency Control policy. Valid values:
+	// The mode of Frequency Control. Valid values:
 	//
 	// 	- **default**: Normal
 	//
@@ -21654,21 +22171,21 @@ type DescribeWebCcProtectSwitchResponseBodyProtectSwitchList struct {
 	//
 	// www.aliyun.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	// The status of the Accurate Access Control policy. Valid values:
+	// The status of Accurate Access Control. Valid values:
 	//
-	// 	- **0**: disabled
+	// 	- **0**: turned off
 	//
-	// 	- **1**: enabled
+	// 	- **1:*	- turned on
 	//
 	// example:
 	//
 	// 0
 	PreciseRuleEnable *int32 `json:"PreciseRuleEnable,omitempty" xml:"PreciseRuleEnable,omitempty"`
-	// The status of the Location Blacklist (Domain Names) policy. Valid values:
+	// The status of Location Blacklist (Domain Names). Valid values:
 	//
-	// 	- **0**: disabled
+	// 	- **0**: turned off
 	//
-	// 	- **1**: enabled
+	// 	- **1:*	- turned on
 	//
 	// example:
 	//
@@ -22087,7 +22604,7 @@ func (s *DescribeWebPreciseAccessRuleRequest) SetResourceGroupId(v string) *Desc
 }
 
 type DescribeWebPreciseAccessRuleResponseBody struct {
-	// An array consisting of the configuration of the accurate access control rule that is created for the website.
+	// The configuration of the accurate access control rule that is created for the website.
 	PreciseAccessConfigList []*DescribeWebPreciseAccessRuleResponseBodyPreciseAccessConfigList `json:"PreciseAccessConfigList,omitempty" xml:"PreciseAccessConfigList,omitempty" type:"Repeated"`
 	// The ID of the request.
 	//
@@ -22122,7 +22639,7 @@ type DescribeWebPreciseAccessRuleResponseBodyPreciseAccessConfigList struct {
 	//
 	// www.aliyun.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	// An array that consists of the rules.
+	// The scheduling rules.
 	RuleList []*DescribeWebPreciseAccessRuleResponseBodyPreciseAccessConfigListRuleList `json:"RuleList,omitempty" xml:"RuleList,omitempty" type:"Repeated"`
 }
 
@@ -22147,11 +22664,11 @@ func (s *DescribeWebPreciseAccessRuleResponseBodyPreciseAccessConfigList) SetRul
 type DescribeWebPreciseAccessRuleResponseBodyPreciseAccessConfigListRuleList struct {
 	// The action triggered if the rule is matched. Valid values:
 	//
-	// 	- **accept**: allows the requests that match the rule.
+	// 	- **accept**: The requests that match the rule are allowed.
 	//
-	// 	- **block**: blocks the requests that match the rule.
+	// 	- **block**: The requests that match the rule are blocked.
 	//
-	// 	- **challenge**: implements Completely Automated Public Turing test to tell Computers and Humans Apart (CAPTCHA) verification for the requests that match the rule.
+	// 	- **challenge**: Completely Automated Public Turing test to tell Computers and Humans Apart (CAPTCHA) verification for the requests that match the rule is implemented.
 	//
 	// example:
 	//
@@ -22159,13 +22676,13 @@ type DescribeWebPreciseAccessRuleResponseBodyPreciseAccessConfigListRuleList str
 	Action *string `json:"Action,omitempty" xml:"Action,omitempty"`
 	// The match conditions.
 	ConditionList []*DescribeWebPreciseAccessRuleResponseBodyPreciseAccessConfigListRuleListConditionList `json:"ConditionList,omitempty" xml:"ConditionList,omitempty" type:"Repeated"`
-	// The validity period of the rule. Unit: seconds. This parameter takes effect only when **action*	- of a rule is **block**. Access requests that match the rule are blocked within the specified validity period of the rule. **0*	- indicates that the rule takes effect all the time.
+	// The validity period of the rule. Unit: seconds. This parameter takes effect only when **action*	- of a rule is **block**. Access requests that match the rule are blocked within the specified validity period of the rule. The value **0*	- indicates that the whitelist takes effect all the time.
 	//
 	// example:
 	//
 	// 0
 	Expires *int64 `json:"Expires,omitempty" xml:"Expires,omitempty"`
-	// The name of the rule.
+	// The name of the scheduling rule.
 	//
 	// example:
 	//
@@ -22173,7 +22690,7 @@ type DescribeWebPreciseAccessRuleResponseBodyPreciseAccessConfigListRuleList str
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The source of the rule. Valid values:
 	//
-	// 	- **manual**: manually created. This is the default value.
+	// 	- **manual*	- (default): manually created.
 	//
 	// 	- **auto**: automatically generated.
 	//
@@ -22230,9 +22747,9 @@ type DescribeWebPreciseAccessRuleResponseBodyPreciseAccessConfigListRuleListCond
 	//
 	// ip
 	Field *string `json:"Field,omitempty" xml:"Field,omitempty"`
-	// The custom HTTP header.
+	// The custom HTTP request header.
 	//
-	// > This parameter takes effect only when **Field*	- is set to **header**.
+	// >  This parameter takes effect only when **Field*	- is set to **header**.
 	//
 	// example:
 	//
@@ -22309,34 +22826,62 @@ func (s *DescribeWebPreciseAccessRuleResponse) SetBody(v *DescribeWebPreciseAcce
 }
 
 type DescribeWebReportTopIpRequest struct {
+	// The domain name of the website.
+	//
+	// >  A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) operation to query the domain names for which forwarding rules are configured.
+	//
 	// example:
 	//
 	// app.bmjqxvb.cn
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// The end of the time range to query. The value is a UNIX timestamp. Unit: seconds.
+	//
+	// >  This UNIX timestamp must indicate a point in time that is accurate to the minute.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1687228200
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The interval at which data is collected. Unit: seconds. Valid values are 300, 3600, and 86400.
+	//
+	// 	- If the time span between StartTime and EndTime is less than 3 days (3 days excluded), valid values are 300, 3600, and 86400.
+	//
+	// 	- If the time span between StartTime and EndTime is from 3 to 31 days (31 days excluded), valid values are 3600 and 86400.
+	//
+	// 	- If the time span between StartTime and EndTime is 31 days or longer, the valid value is 86400.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 300
 	Interval *int32 `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	// The source of the statistics. Valid value:
+	//
+	// 	- **visit**: indicates all IP addresses.
+	//
+	// 	- **block**: indicates blocked IP addresses.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// block
 	QueryType *string `json:"QueryType,omitempty" xml:"QueryType,omitempty"`
+	// The beginning of the time range to query. The value is a UNIX timestamp. Unit: seconds.
+	//
+	// >  This UNIX timestamp must indicate a point in time that is accurate to the minute.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1680424200
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The maximum number of entries to return.
+	//
 	// example:
 	//
 	// 5
@@ -22382,7 +22927,10 @@ func (s *DescribeWebReportTopIpRequest) SetTop(v int32) *DescribeWebReportTopIpR
 }
 
 type DescribeWebReportTopIpResponseBody struct {
+	// The response parameters.
 	DataList []*DescribeWebReportTopIpResponseBodyDataList `json:"DataList,omitempty" xml:"DataList,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// D21BE0C4-8E83-5E32-86C6-AA6BE9B1B5BD
@@ -22408,18 +22956,62 @@ func (s *DescribeWebReportTopIpResponseBody) SetRequestId(v string) *DescribeWeb
 }
 
 type DescribeWebReportTopIpResponseBodyDataList struct {
+	// The ID of the location.
+	//
 	// example:
 	//
 	// 90998690
 	AreaId *string `json:"AreaId,omitempty" xml:"AreaId,omitempty"`
+	// The number of entries returned.
+	//
 	// example:
 	//
 	// 5
 	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
+	// The Internet service provider (ISP) for the attack. Valid values:
+	//
+	// 	- **100017**: China Telecom
+	//
+	// 	- **100026**: China Unicom
+	//
+	// 	- **100025**: China Mobile
+	//
+	// 	- **100027**: China Education and Research Network
+	//
+	// 	- **100020**: China Mobile Tietong
+	//
+	// 	- **1000143**: Dr.Peng Telecom & Media Group
+	//
+	// 	- **100080**: Beijing Gehua CATV Network
+	//
+	// 	- **1000139**: National Radio and Television Administration
+	//
+	// 	- **100023**: Oriental Cable Network
+	//
+	// 	- **100063**: Founder Broadband
+	//
+	// 	- **1000337**: China Internet Exchange
+	//
+	// 	- **100021**: 21Vianet Group
+	//
+	// 	- **1000333**: Wasu Media Holding
+	//
+	// 	- **100093**: Wangsu Science & Technology
+	//
+	// 	- **1000401**: Tencent
+	//
+	// 	- **100099**: Baidu
+	//
+	// 	- **1000323**: Alibaba Cloud
+	//
+	// 	- **100098**: Alibaba
+	//
 	// example:
 	//
 	// 100017
 	Isp *string `json:"Isp,omitempty" xml:"Isp,omitempty"`
+	// The source IP address.
+	//
 	// example:
 	//
 	// 117.186.XX.XX
@@ -24300,9 +24892,9 @@ type ModifyCnameReuseRequest struct {
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 	// Specifies whether to enable CNAME reuse. Valid values:
 	//
-	// 	- **1**: enables CNAME reuse.
+	// 	- **0:*	- disabled
 	//
-	// 	- **2**: disables CNAME reuse.
+	// 	- **1:*	- enabled
 	//
 	// This parameter is required.
 	//
@@ -24428,7 +25020,7 @@ type ModifyDomainResourceRequest struct {
 	//
 	// This parameter is required.
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
-	// An array that consists of the details of the protocol type and port number.
+	// The details about the protocol type and port number.
 	//
 	// This parameter is required.
 	ProxyTypes []*ModifyDomainResourceRequestProxyTypes `json:"ProxyTypes,omitempty" xml:"ProxyTypes,omitempty" type:"Repeated"`
@@ -24491,7 +25083,7 @@ func (s *ModifyDomainResourceRequest) SetRsType(v int32) *ModifyDomainResourceRe
 }
 
 type ModifyDomainResourceRequestProxyTypes struct {
-	// An array that consists of port numbers.
+	// The port numbers.
 	//
 	// This parameter is required.
 	ProxyPorts []*int32 `json:"ProxyPorts,omitempty" xml:"ProxyPorts,omitempty" type:"Repeated"`
@@ -24778,18 +25370,32 @@ func (s *ModifyElasticBizBandWidthResponse) SetBody(v *ModifyElasticBizBandWidth
 }
 
 type ModifyElasticBizQpsRequest struct {
+	// The ID of the Anti-DDoS Proxy instance.
+	//
+	// >  You can call the [DescribeInstanceIds](https://help.aliyun.com/document_detail/157459.html) operation to query the IDs of all instances.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ddoscoo-cn-mp91j1ao****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The metering method for the burstable QPS. Valid values:
+	//
+	// 	- **month**: monthly 95th percentile
+	//
+	// 	- **day**: daily 95th percentile QPS
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// month
 	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	// The burstable QPS value.
+	//
+	// >  The default value is 300,000 for the Chinese mainland and 150,000 for regions outside the Chinese mainland.
+	//
 	// example:
 	//
 	// 300000
@@ -24820,6 +25426,8 @@ func (s *ModifyElasticBizQpsRequest) SetOpsElasticQps(v int64) *ModifyElasticBiz
 }
 
 type ModifyElasticBizQpsResponseBody struct {
+	// The request ID, which is used to locate and troubleshoot issues.
+	//
 	// example:
 	//
 	// 0bcf28g5-d57c-11e7-9bs0-d89d6717dxbc
@@ -25865,12 +26473,22 @@ func (s *ModifyPortAutoCcStatusResponse) SetBody(v *ModifyPortAutoCcStatusRespon
 }
 
 type ModifyQpsModeRequest struct {
+	// The region ID of the Anti-DDoS Pro instance.
+	//
+	// >  You can call the [DescribeInstanceIds](https://help.aliyun.com/document_detail/157459.html) operation to query the IDs of all instances.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ddoscoo-cn-7e225i41****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The metering method of QPS. Valid values:
+	//
+	// 	- **month**: monthly 95th percentile QPS.
+	//
+	// 	- **day**: daily 95th percentile QPS.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -25898,6 +26516,8 @@ func (s *ModifyQpsModeRequest) SetMode(v string) *ModifyQpsModeRequest {
 }
 
 type ModifyQpsModeResponseBody struct {
+	// The request ID, which is used to locate and troubleshoot issues.
+	//
 	// example:
 	//
 	// 48859E14-A9FB-4100-99FF-AAB75CA46776
@@ -26127,15 +26747,17 @@ type ModifySchedulerRuleRequest struct {
 	//
 	// testrule
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// The type of the rule. Valid values:
+	// The type of the scheduling rule. Valid values:
 	//
 	// 	- **2**: tiered protection
 	//
 	// 	- **3**: network acceleration
 	//
-	// 	- **5**: Alibaba Cloud CDN (CDN) interaction
+	// 	- **5**: CDN interaction
 	//
 	// 	- **6**: cloud service interaction
+	//
+	// 	- **8**: secure acceleration
 	//
 	// This parameter is required.
 	//
@@ -26143,7 +26765,7 @@ type ModifySchedulerRuleRequest struct {
 	//
 	// 2
 	RuleType *int32 `json:"RuleType,omitempty" xml:"RuleType,omitempty"`
-	// The details of the scheduling rule. This parameter is a JSON string. The string contains the following fields:
+	// The details of the scheduling rule. This parameter is a JSON string. The following list describes the fields in the value of the parameter:
 	//
 	// 	- **Type**: the address type of the interaction resource that you want to use in the scheduling rule. This field is required and must be of the string type. Valid values:
 	//
@@ -26166,6 +26788,8 @@ type ModifySchedulerRuleRequest struct {
 	//     	- **5**: the domain name that is configured in Alibaba Cloud CDN (CDN) in the CDN interaction scenario
 	//
 	//     	- **6*	- the IP address of the interaction resource in the cloud service interaction scenario
+	//
+	//     	- **8**: the IP address of the Secure Chinese Mainland Acceleration (Sec-CMA) instance in the secure acceleration scenario
 	//
 	// 	- **RegionId**: the region where the interaction resource is deployed. This parameter must be specified when **ValueType*	- is set to **2**. The value must be of the string type.
 	//
@@ -26935,12 +27559,22 @@ func (s *ModifyWebAreaBlockSwitchResponse) SetBody(v *ModifyWebAreaBlockSwitchRe
 }
 
 type ModifyWebCCGlobalSwitchRequest struct {
+	// Specifies whether the HTTP flood mitigation feature is enabled. Valid values:
+	//
+	// 	- **open**
+	//
+	// 	- **close**
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// open
 	CcGlobalSwitch *string `json:"CcGlobalSwitch,omitempty" xml:"CcGlobalSwitch,omitempty"`
+	// The domain name of the website.
+	//
+	// >  A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) operation to query all domain names.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -26968,6 +27602,8 @@ func (s *ModifyWebCCGlobalSwitchRequest) SetDomain(v string) *ModifyWebCCGlobalS
 }
 
 type ModifyWebCCGlobalSwitchResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 5AE2FC86-C840-41AE-9F1A-3A2747C7C1DF
@@ -27057,8 +27693,18 @@ type ModifyWebCCRuleRequest struct {
 	//
 	// default
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The blocking duration. Valid values: **60*	- to **86400**. Unit: seconds.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 60
 	Ttl *int32 `json:"Ttl,omitempty" xml:"Ttl,omitempty"`
+	// The check path.
+	//
+	// >  You cannot modify the Uniform Resource Identifier (URI). The domain name of the website, the check path, and the rule name uniquely identify a rule.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -27121,6 +27767,8 @@ func (s *ModifyWebCCRuleRequest) SetUri(v string) *ModifyWebCCRuleRequest {
 }
 
 type ModifyWebCCRuleResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 0bcf28g5-d57c-11e7-9bs0-d89d6717dxbc
@@ -27499,13 +28147,13 @@ func (s *ModifyWebCacheSwitchResponse) SetBody(v *ModifyWebCacheSwitchResponseBo
 }
 
 type ModifyWebIpSetSwitchRequest struct {
-	// The details of the Black Lists and White Lists (Domain Names) policy. This parameter is a JSON string. The string contains the following fields:
+	// The details of the Blacklist/Whitelist (Domain Names) feature. This parameter is a JSON string. The value consists of the following fields:
 	//
-	// 	- **Bwlist_Enable**: the status of the Black Lists and White Lists (Domain Names) policy. This field is required and must be of the integer type. Valid values:
+	// **bwlist_enable**: the status of the Blacklist/Whitelist (Domain Names) feature. This field is required and must be of the integer type. Valid values:
 	//
-	//     	- **0**: disabled
+	// 	- 0: turned off
 	//
-	//     	- **1**: enabled
+	// 	- 1: turned on
 	//
 	// This parameter is required.
 	//
@@ -28534,7 +29182,7 @@ func (client *Client) AttachSceneDefenseObject(request *AttachSceneDefenseObject
 
 // Summary:
 //
-// 配置安全概要属性
+// Configures the global mitigation policy feature, including the feature status and settings.
 //
 // @param request - ConfigDomainSecurityProfileRequest
 //
@@ -28584,7 +29232,7 @@ func (client *Client) ConfigDomainSecurityProfileWithOptions(request *ConfigDoma
 
 // Summary:
 //
-// 配置安全概要属性
+// Configures the global mitigation policy feature, including the feature status and settings.
 //
 // @param request - ConfigDomainSecurityProfileRequest
 //
@@ -28682,7 +29330,7 @@ func (client *Client) ConfigL7RsPolicy(request *ConfigL7RsPolicyRequest) (_resul
 
 // Summary:
 //
-// 配置长连接
+// Configures the settings for back-to-origin persistent connections for a domain name.
 //
 // @param request - ConfigL7UsKeepaliveRequest
 //
@@ -28728,7 +29376,7 @@ func (client *Client) ConfigL7UsKeepaliveWithOptions(request *ConfigL7UsKeepaliv
 
 // Summary:
 //
-// 配置长连接
+// Configures the settings for back-to-origin persistent connections for a domain name.
 //
 // @param request - ConfigL7UsKeepaliveRequest
 //
@@ -28994,7 +29642,7 @@ func (client *Client) ConfigLayer4RulePolicy(request *ConfigLayer4RulePolicyRequ
 
 // Summary:
 //
-// Configures blocked locations for an Anti-DDoS Pro or Anti-DDoS Premium instance.
+// Configures blocked locations for an Anti-DDoS Proxy instance.
 //
 // @param request - ConfigNetworkRegionBlockRequest
 //
@@ -29040,7 +29688,7 @@ func (client *Client) ConfigNetworkRegionBlockWithOptions(request *ConfigNetwork
 
 // Summary:
 //
-// Configures blocked locations for an Anti-DDoS Pro or Anti-DDoS Premium instance.
+// Configures blocked locations for an Anti-DDoS Proxy instance.
 //
 // @param request - ConfigNetworkRegionBlockRequest
 //
@@ -29850,17 +30498,17 @@ func (client *Client) CreateSchedulerRule(request *CreateSchedulerRuleRequest) (
 
 // Summary:
 //
-// Adds tags to multiple Anti-DDoS Pro instances at a time.
+// Adds tags to multiple Anti-DDoS Proxy (Chinese Mainland) instances at a time.
 //
 // Description:
 //
-// You can call the CreateTagResources operation to add a tag to multiple Anti-DDoS Pro instances at a time.
+// You can call the CreateTagResources operation to add a tag to multiple Anti-DDoS Proxy (Chinese Mainland) instances at a time.
 //
-// > Anti-DDoS Premium does not support the tag feature.
+// >  Anti-DDoS Proxy (Outside Chinese Mainland) does not support the tag feature.
 //
-// ### Limits
+// ### [](#qps-)QPS limits
 //
-// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
 //
 // @param request - CreateTagResourcesRequest
 //
@@ -29918,17 +30566,17 @@ func (client *Client) CreateTagResourcesWithOptions(request *CreateTagResourcesR
 
 // Summary:
 //
-// Adds tags to multiple Anti-DDoS Pro instances at a time.
+// Adds tags to multiple Anti-DDoS Proxy (Chinese Mainland) instances at a time.
 //
 // Description:
 //
-// You can call the CreateTagResources operation to add a tag to multiple Anti-DDoS Pro instances at a time.
+// You can call the CreateTagResources operation to add a tag to multiple Anti-DDoS Proxy (Chinese Mainland) instances at a time.
 //
-// > Anti-DDoS Premium does not support the tag feature.
+// >  Anti-DDoS Proxy (Outside Chinese Mainland) does not support the tag feature.
 //
-// ### Limits
+// ### [](#qps-)QPS limits
 //
-// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
 //
 // @param request - CreateTagResourcesRequest
 //
@@ -29945,6 +30593,10 @@ func (client *Client) CreateTagResources(request *CreateTagResourcesRequest) (_r
 }
 
 // Deprecated: OpenAPI CreateWebCCRule is deprecated, please use ddoscoo::2020-01-01::ConfigWebCCRuleV2 instead.
+//
+// Summary:
+//
+// Creates a custom frequency control rule for a website.
 //
 // @param request - CreateWebCCRuleRequest
 //
@@ -30018,6 +30670,10 @@ func (client *Client) CreateWebCCRuleWithOptions(request *CreateWebCCRuleRequest
 }
 
 // Deprecated: OpenAPI CreateWebCCRule is deprecated, please use ddoscoo::2020-01-01::ConfigWebCCRuleV2 instead.
+//
+// Summary:
+//
+// Creates a custom frequency control rule for a website.
 //
 // @param request - CreateWebCCRuleRequest
 //
@@ -30644,17 +31300,17 @@ func (client *Client) DeleteSchedulerRule(request *DeleteSchedulerRuleRequest) (
 
 // Summary:
 //
-// Removes tags from Anti-DDoS Pro instances.
+// Removes tags from Anti-DDoS Proxy (Chinese Mainland) instances.
 //
 // Description:
 //
-// You can call the DeleteTagResources operation to remove tags from Anti-DDoS Pro instances.
+// You can call the DeleteTagResources operation to remove tags from Anti-DDoS Proxy (Chinese Mainland) instances.
 //
-// > Only Anti-DDoS Pro supports tags.
+// >  Only Anti-DDoS Proxy (Chinese Mainland) supports tags.
 //
-// ### Limits
+// ### [](#qps-)QPS limits
 //
-// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
 //
 // @param request - DeleteTagResourcesRequest
 //
@@ -30716,17 +31372,17 @@ func (client *Client) DeleteTagResourcesWithOptions(request *DeleteTagResourcesR
 
 // Summary:
 //
-// Removes tags from Anti-DDoS Pro instances.
+// Removes tags from Anti-DDoS Proxy (Chinese Mainland) instances.
 //
 // Description:
 //
-// You can call the DeleteTagResources operation to remove tags from Anti-DDoS Pro instances.
+// You can call the DeleteTagResources operation to remove tags from Anti-DDoS Proxy (Chinese Mainland) instances.
 //
-// > Only Anti-DDoS Pro supports tags.
+// >  Only Anti-DDoS Proxy (Chinese Mainland) supports tags.
 //
-// ### Limits
+// ### [](#qps-)QPS limits
 //
-// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
 //
 // @param request - DeleteTagResourcesRequest
 //
@@ -30746,7 +31402,7 @@ func (client *Client) DeleteTagResources(request *DeleteTagResourcesRequest) (_r
 //
 // Summary:
 //
-// Deletes a custom frequency control rule of a website.
+// Deletes custom frequency control rules of a website.
 //
 // @param request - DeleteWebCCRuleRequest
 //
@@ -30799,7 +31455,7 @@ func (client *Client) DeleteWebCCRuleWithOptions(request *DeleteWebCCRuleRequest
 //
 // Summary:
 //
-// Deletes a custom frequency control rule of a website.
+// Deletes custom frequency control rules of a website.
 //
 // @param request - DeleteWebCCRuleRequest
 //
@@ -30818,7 +31474,7 @@ func (client *Client) DeleteWebCCRule(request *DeleteWebCCRuleRequest) (_result 
 
 // Summary:
 //
-// 删除新版cc规则
+// Deletes custom frequency control rules of a website.
 //
 // @param request - DeleteWebCCRuleV2Request
 //
@@ -30868,7 +31524,7 @@ func (client *Client) DeleteWebCCRuleV2WithOptions(request *DeleteWebCCRuleV2Req
 
 // Summary:
 //
-// 删除新版cc规则
+// Deletes custom frequency control rules of a website.
 //
 // @param request - DeleteWebCCRuleV2Request
 //
@@ -31586,17 +32242,17 @@ func (client *Client) DescribeBlackholeStatus(request *DescribeBlackholeStatusRe
 
 // Summary:
 //
-// Queries the Diversion from Origin Server configurations of one or more Anti-DDoS Pro instances.
+// Queries the Diversion from Origin Server configurations of one or more Anti-DDoS Proxy (Chinese Mainland) instances.
 //
 // Description:
 //
-// This operation is used to query the Diversion from Origin Server configurations of one or more Anti-DDoS Pro instances.
+// You can call this operation to query the Diversion from Origin Server configurations of one or more Anti-DDoS Proxy (Chinese Mainland) instances.
 //
-// > This operation is suitable only for Anti-DDoS Pro.
+// >  This operation is suitable only for Anti-DDoS Proxy (Chinese Mainland).
 //
-// ### Limits
+// ### [](#qps-)QPS limits
 //
-// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
 //
 // @param request - DescribeBlockStatusRequest
 //
@@ -31642,17 +32298,17 @@ func (client *Client) DescribeBlockStatusWithOptions(request *DescribeBlockStatu
 
 // Summary:
 //
-// Queries the Diversion from Origin Server configurations of one or more Anti-DDoS Pro instances.
+// Queries the Diversion from Origin Server configurations of one or more Anti-DDoS Proxy (Chinese Mainland) instances.
 //
 // Description:
 //
-// This operation is used to query the Diversion from Origin Server configurations of one or more Anti-DDoS Pro instances.
+// You can call this operation to query the Diversion from Origin Server configurations of one or more Anti-DDoS Proxy (Chinese Mainland) instances.
 //
-// > This operation is suitable only for Anti-DDoS Pro.
+// >  This operation is suitable only for Anti-DDoS Proxy (Chinese Mainland).
 //
-// ### Limits
+// ### [](#qps-)QPS limits
 //
-// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
 //
 // @param request - DescribeBlockStatusRequest
 //
@@ -31670,7 +32326,7 @@ func (client *Client) DescribeBlockStatus(request *DescribeBlockStatusRequest) (
 
 // Summary:
 //
-// Queries the certificate information about a website.
+// Queries information about all certificates that can be associated with the current domain name instead of the certificate currently in use. To query the information about the certificate that is currently in use, you can call the DescribeWebRules operation and view the values of the CertName and CertRegion response parameters.
 //
 // @param request - DescribeCertsRequest
 //
@@ -31716,7 +32372,7 @@ func (client *Client) DescribeCertsWithOptions(request *DescribeCertsRequest, ru
 
 // Summary:
 //
-// Queries the certificate information about a website.
+// Queries information about all certificates that can be associated with the current domain name instead of the certificate currently in use. To query the information about the certificate that is currently in use, you can call the DescribeWebRules operation and view the values of the CertName and CertRegion response parameters.
 //
 // @param request - DescribeCertsRequest
 //
@@ -31790,7 +32446,7 @@ func (client *Client) DescribeCnameReuses(request *DescribeCnameReusesRequest) (
 
 // Summary:
 //
-// Queries the attack events launched against one or more Anti-DDoS Pro or Anti-DDoS Premium instances.
+// Queries the attack events launched against one or more Anti-DDoS Proxy instances.
 //
 // @param request - DescribeDDoSEventsRequest
 //
@@ -31852,7 +32508,7 @@ func (client *Client) DescribeDDoSEventsWithOptions(request *DescribeDDoSEventsR
 
 // Summary:
 //
-// Queries the attack events launched against one or more Anti-DDoS Pro or Anti-DDoS Premium instances.
+// Queries the attack events launched against one or more Anti-DDoS Proxy instances.
 //
 // @param request - DescribeDDoSEventsRequest
 //
@@ -32342,17 +32998,17 @@ func (client *Client) DescribeDDosEventSrcIp(request *DescribeDDosEventSrcIpRequ
 
 // Summary:
 //
-// Queries the statistics on advanced mitigation sessions of an Anti-DDoS Premium instance.
+// Queries the statistics on advanced mitigation sessions of an Anti-DDoS Proxy (Outside Chinese Mainland) instance.
 //
 // Description:
 //
-// You can call the DescribeDefenseCountStatistics operation to query the information about advanced mitigation sessions of an Anti-DDoS Premium instance. For example, you can query the number of advanced mitigation sessions that are used within the current calendar month and the number of available global advanced mitigation sessions.
+// You can call the DescribeDefenseCountStatistics operation to query the information about advanced mitigation sessions of an Anti-DDoS Proxy (Outside Chinese Mainland) instance. For example, you can query the number of advanced mitigation sessions that are used within the current calendar month and the number of remaining advanced mitigation sessions.
 //
-// > This operation is suitable only for Anti-DDoS Premium.
+// >  This operation is suitable only for Anti-DDoS Proxy (Outside Chinese Mainland).
 //
-// ### Limits
+// ### [](#qps-)QPS limits
 //
-// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
 //
 // @param request - DescribeDefenseCountStatisticsRequest
 //
@@ -32394,17 +33050,17 @@ func (client *Client) DescribeDefenseCountStatisticsWithOptions(request *Describ
 
 // Summary:
 //
-// Queries the statistics on advanced mitigation sessions of an Anti-DDoS Premium instance.
+// Queries the statistics on advanced mitigation sessions of an Anti-DDoS Proxy (Outside Chinese Mainland) instance.
 //
 // Description:
 //
-// You can call the DescribeDefenseCountStatistics operation to query the information about advanced mitigation sessions of an Anti-DDoS Premium instance. For example, you can query the number of advanced mitigation sessions that are used within the current calendar month and the number of available global advanced mitigation sessions.
+// You can call the DescribeDefenseCountStatistics operation to query the information about advanced mitigation sessions of an Anti-DDoS Proxy (Outside Chinese Mainland) instance. For example, you can query the number of advanced mitigation sessions that are used within the current calendar month and the number of remaining advanced mitigation sessions.
 //
-// > This operation is suitable only for Anti-DDoS Premium.
+// >  This operation is suitable only for Anti-DDoS Proxy (Outside Chinese Mainland).
 //
-// ### Limits
+// ### [](#qps-)QPS limits
 //
-// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
 //
 // @param request - DescribeDefenseCountStatisticsRequest
 //
@@ -33618,7 +34274,7 @@ func (client *Client) DescribeElasticBandwidthSpec(request *DescribeElasticBandw
 
 // Summary:
 //
-// 高防弹性qps曲线图
+// Queries the line chart of the bills for the burstable QPS of an Anti-DDoS Proxy instance.
 //
 // @param request - DescribeElasticQpsRequest
 //
@@ -33676,7 +34332,7 @@ func (client *Client) DescribeElasticQpsWithOptions(request *DescribeElasticQpsR
 
 // Summary:
 //
-// 高防弹性qps曲线图
+// Queries the line chart of the bills for the burstable QPS of an Anti-DDoS Proxy instance.
 //
 // @param request - DescribeElasticQpsRequest
 //
@@ -33694,7 +34350,7 @@ func (client *Client) DescribeElasticQps(request *DescribeElasticQpsRequest) (_r
 
 // Summary:
 //
-// 查询qps日95流量图
+// Queries the burstable QPS details of an Anti-DDoS Proxy instance.
 //
 // @param request - DescribeElasticQpsRecordRequest
 //
@@ -33744,7 +34400,7 @@ func (client *Client) DescribeElasticQpsRecordWithOptions(request *DescribeElast
 
 // Summary:
 //
-// 查询qps日95流量图
+// Queries the burstable QPS details of an Anti-DDoS Proxy instance.
 //
 // @param request - DescribeElasticQpsRecordRequest
 //
@@ -34234,7 +34890,7 @@ func (client *Client) DescribeInstanceSpecs(request *DescribeInstanceSpecsReques
 
 // Summary:
 //
-// Queries the statistics on one or more Anti-DDoS Pro or Anti-DDoS Premium instances, such as the numbers of protected domain names and ports.
+// Queries the statistics on one or more Anti-DDoS Proxy instances, such as the numbers of protected domain names and ports.
 //
 // @param request - DescribeInstanceStatisticsRequest
 //
@@ -34276,7 +34932,7 @@ func (client *Client) DescribeInstanceStatisticsWithOptions(request *DescribeIns
 
 // Summary:
 //
-// Queries the statistics on one or more Anti-DDoS Pro or Anti-DDoS Premium instances, such as the numbers of protected domain names and ports.
+// Queries the statistics on one or more Anti-DDoS Proxy instances, such as the numbers of protected domain names and ports.
 //
 // @param request - DescribeInstanceStatisticsRequest
 //
@@ -34294,7 +34950,7 @@ func (client *Client) DescribeInstanceStatistics(request *DescribeInstanceStatis
 
 // Summary:
 //
-// Queries the status of a specified Anti-DDoS Pro or Anti-DDoS Premium instance.
+// Queries the status of a specified Anti-DDoS Proxy instance.
 //
 // @param request - DescribeInstanceStatusRequest
 //
@@ -34340,7 +34996,7 @@ func (client *Client) DescribeInstanceStatusWithOptions(request *DescribeInstanc
 
 // Summary:
 //
-// Queries the status of a specified Anti-DDoS Pro or Anti-DDoS Premium instance.
+// Queries the status of a specified Anti-DDoS Proxy instance.
 //
 // @param request - DescribeInstanceStatusRequest
 //
@@ -34530,7 +35186,7 @@ func (client *Client) DescribeL7RsPolicy(request *DescribeL7RsPolicyRequest) (_r
 
 // Summary:
 //
-// 查询长连接
+// Queries the configuration of back-to-origin persistent connections of a domain name.
 //
 // @param request - DescribeL7UsKeepaliveRequest
 //
@@ -34572,7 +35228,7 @@ func (client *Client) DescribeL7UsKeepaliveWithOptions(request *DescribeL7UsKeep
 
 // Summary:
 //
-// 查询长连接
+// Queries the configuration of back-to-origin persistent connections of a domain name.
 //
 // @param request - DescribeL7UsKeepaliveRequest
 //
@@ -35232,6 +35888,10 @@ func (client *Client) DescribePortAutoCcStatus(request *DescribePortAutoCcStatus
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the top source IP addresses of the volumetric attack events for the Anti-DDoS Pro or Anti-DDoS Premium instance.
+//
 // @param request - DescribePortCcAttackTopIPRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -35282,6 +35942,10 @@ func (client *Client) DescribePortCcAttackTopIPWithOptions(request *DescribePort
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the top source IP addresses of the volumetric attack events for the Anti-DDoS Pro or Anti-DDoS Premium instance.
+//
 // @param request - DescribePortCcAttackTopIPRequest
 //
 // @return DescribePortCcAttackTopIPResponse
@@ -35374,7 +36038,7 @@ func (client *Client) DescribePortConnsCount(request *DescribePortConnsCountRequ
 
 // Summary:
 //
-// Queries the connections established over the ports of one or more Anti-DDoS Pro or Anti-DDoS Premium instances.
+// Queries the connections established over the ports of one or more Anti-DDoS Proxy instances.
 //
 // @param request - DescribePortConnsListRequest
 //
@@ -35436,7 +36100,7 @@ func (client *Client) DescribePortConnsListWithOptions(request *DescribePortConn
 
 // Summary:
 //
-// Queries the connections established over the ports of one or more Anti-DDoS Pro or Anti-DDoS Premium instances.
+// Queries the connections established over the ports of one or more Anti-DDoS Proxy instances.
 //
 // @param request - DescribePortConnsListRequest
 //
@@ -36510,17 +37174,17 @@ func (client *Client) DescribeSystemLog(request *DescribeSystemLogRequest) (_res
 
 // Summary:
 //
-// Queries all tag keys and the Anti-DDoS Pro instances to which the tag keys are added.
+// Queries all tag keys and the number of Anti-DDoS Proxy (Chinese Mainland) instances to which each tag key is added.
 //
 // Description:
 //
-// You can call this operation to query all tag keys and the Anti-DDoS Pro instances to which the tag keys are added by page.
+// You can call this operation to query all tag keys and the number of Anti-DDoS Proxy (Chinese Mainland) instances to which each tag key is added by page.
 //
-// > The tag feature is suitable only for Anti-DDoS Pro.
+// >  Only Anti-DDoS Proxy (Chinese Mainland) supports tags.
 //
-// ### Limits
+// ### [](#qps-)QPS limits
 //
-// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
 //
 // @param request - DescribeTagKeysRequest
 //
@@ -36578,17 +37242,17 @@ func (client *Client) DescribeTagKeysWithOptions(request *DescribeTagKeysRequest
 
 // Summary:
 //
-// Queries all tag keys and the Anti-DDoS Pro instances to which the tag keys are added.
+// Queries all tag keys and the number of Anti-DDoS Proxy (Chinese Mainland) instances to which each tag key is added.
 //
 // Description:
 //
-// You can call this operation to query all tag keys and the Anti-DDoS Pro instances to which the tag keys are added by page.
+// You can call this operation to query all tag keys and the number of Anti-DDoS Proxy (Chinese Mainland) instances to which each tag key is added by page.
 //
-// > The tag feature is suitable only for Anti-DDoS Pro.
+// >  Only Anti-DDoS Proxy (Chinese Mainland) supports tags.
 //
-// ### Limits
+// ### [](#qps-)QPS limits
 //
-// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
 //
 // @param request - DescribeTagKeysRequest
 //
@@ -36606,17 +37270,17 @@ func (client *Client) DescribeTagKeys(request *DescribeTagKeysRequest) (_result 
 
 // Summary:
 //
-// Queries the information about the tags that are added to an Anti-DDoS Pro instance.
+// Queries the information about the tags that are added to an Anti-DDoS Proxy (Chinese Mainland) instance.
 //
 // Description:
 //
-// You can call the DescribeTagResources operation to query the information about the tags that are added to an Anti-DDoS Pro instance.
+// You can call the DescribeTagResources operation to query the information about the tags that are added to an Anti-DDoS Proxy (Chinese Mainland) instance.
 //
-// > Only Anti-DDoS Pro supports tags.
+// >  Only Anti-DDoS Proxy (Chinese Mainland) supports tags.
 //
-// ### Limits
+// ### [](#qps-)QPS limits
 //
-// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
 //
 // @param request - DescribeTagResourcesRequest
 //
@@ -36678,17 +37342,17 @@ func (client *Client) DescribeTagResourcesWithOptions(request *DescribeTagResour
 
 // Summary:
 //
-// Queries the information about the tags that are added to an Anti-DDoS Pro instance.
+// Queries the information about the tags that are added to an Anti-DDoS Proxy (Chinese Mainland) instance.
 //
 // Description:
 //
-// You can call the DescribeTagResources operation to query the information about the tags that are added to an Anti-DDoS Pro instance.
+// You can call the DescribeTagResources operation to query the information about the tags that are added to an Anti-DDoS Proxy (Chinese Mainland) instance.
 //
-// > Only Anti-DDoS Pro supports tags.
+// >  Only Anti-DDoS Proxy (Chinese Mainland) supports tags.
 //
-// ### Limits
+// ### [](#qps-)QPS limits
 //
-// You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
+// You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
 //
 // @param request - DescribeTagResourcesRequest
 //
@@ -37380,7 +38044,7 @@ func (client *Client) DescribeWebCCRules(request *DescribeWebCCRulesRequest) (_r
 
 // Summary:
 //
-// 查询新版cc规则
+// Queries the custom frequency control rules that are created for a website.
 //
 // @param request - DescribeWebCCRulesV2Request
 //
@@ -37434,7 +38098,7 @@ func (client *Client) DescribeWebCCRulesV2WithOptions(request *DescribeWebCCRule
 
 // Summary:
 //
-// 查询新版cc规则
+// Queries the custom frequency control rules that are created for a website.
 //
 // @param request - DescribeWebCCRulesV2Request
 //
@@ -37782,6 +38446,10 @@ func (client *Client) DescribeWebPreciseAccessRule(request *DescribeWebPreciseAc
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the top source IP addresses of the web resource exhaustion attacks for the Anti-DDoS Proxy instance.
+//
 // @param request - DescribeWebReportTopIpRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -37840,6 +38508,10 @@ func (client *Client) DescribeWebReportTopIpWithOptions(request *DescribeWebRepo
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the top source IP addresses of the web resource exhaustion attacks for the Anti-DDoS Proxy instance.
+//
 // @param request - DescribeWebReportTopIpRequest
 //
 // @return DescribeWebReportTopIpResponse
@@ -38836,11 +39508,11 @@ func (client *Client) ModifyBlackholeStatus(request *ModifyBlackholeStatusReques
 
 // Summary:
 //
-// Modifies the Diversion from Origin Server configuration of an Anti-DDoS Pro instance.
+// Modifies the Diversion from Origin Server configuration of an Anti-DDoS Proxy (Chinese Mainland) instance.
 //
 // Description:
 //
-// > This operation is suitable only for Anti-DDoS Pro.
+// >  This operation is suitable only for Anti-DDoS Proxy (Chinese Mainland).
 //
 // @param request - ModifyBlockStatusRequest
 //
@@ -38894,11 +39566,11 @@ func (client *Client) ModifyBlockStatusWithOptions(request *ModifyBlockStatusReq
 
 // Summary:
 //
-// Modifies the Diversion from Origin Server configuration of an Anti-DDoS Pro instance.
+// Modifies the Diversion from Origin Server configuration of an Anti-DDoS Proxy (Chinese Mainland) instance.
 //
 // Description:
 //
-// > This operation is suitable only for Anti-DDoS Pro.
+// >  This operation is suitable only for Anti-DDoS Proxy (Chinese Mainland).
 //
 // @param request - ModifyBlockStatusRequest
 //
@@ -39076,11 +39748,11 @@ func (client *Client) ModifyDomainResource(request *ModifyDomainResourceRequest)
 
 // Summary:
 //
-// Modifies the burstable protection bandwidth of a specified Anti-DDoS Pro instance.
+// Modifies the burstable protection bandwidth of a specified Anti-DDoS Proxy (Chinese Mainland) instance.
 //
 // Description:
 //
-// > This operation is suitable only for Anti-DDoS Pro.
+// >  This operation is suitable only for Anti-DDoS Proxy (Chinese Mainland).
 //
 // @param request - ModifyElasticBandWidthRequest
 //
@@ -39126,11 +39798,11 @@ func (client *Client) ModifyElasticBandWidthWithOptions(request *ModifyElasticBa
 
 // Summary:
 //
-// Modifies the burstable protection bandwidth of a specified Anti-DDoS Pro instance.
+// Modifies the burstable protection bandwidth of a specified Anti-DDoS Proxy (Chinese Mainland) instance.
 //
 // Description:
 //
-// > This operation is suitable only for Anti-DDoS Pro.
+// >  This operation is suitable only for Anti-DDoS Proxy (Chinese Mainland).
 //
 // @param request - ModifyElasticBandWidthRequest
 //
@@ -39224,7 +39896,11 @@ func (client *Client) ModifyElasticBizBandWidth(request *ModifyElasticBizBandWid
 
 // Summary:
 //
-// 开启/关闭弹性QPS 首次模式直接生效
+// Configures the burstable QPS and mode of an Anti-DDoS Proxy instance.
+//
+// Description:
+//
+// You can enable burstable QPS only for IPv4 instances.
 //
 // @param request - ModifyElasticBizQpsRequest
 //
@@ -39274,7 +39950,11 @@ func (client *Client) ModifyElasticBizQpsWithOptions(request *ModifyElasticBizQp
 
 // Summary:
 //
-// 开启/关闭弹性QPS 首次模式直接生效
+// Configures the burstable QPS and mode of an Anti-DDoS Proxy instance.
+//
+// Description:
+//
+// You can enable burstable QPS only for IPv4 instances.
 //
 // @param request - ModifyElasticBizQpsRequest
 //
@@ -39500,7 +40180,7 @@ func (client *Client) ModifyHealthCheckConfig(request *ModifyHealthCheckConfigRe
 //
 // Description:
 //
-// > This operation is suitable only for Anti-DDoS Pro.
+// >  This operation is suitable only for Anti-DDoS Proxy (Chinese Mainland).
 //
 // @param request - ModifyHttp2EnableRequest
 //
@@ -39554,7 +40234,7 @@ func (client *Client) ModifyHttp2EnableWithOptions(request *ModifyHttp2EnableReq
 //
 // Description:
 //
-// > This operation is suitable only for Anti-DDoS Pro.
+// >  This operation is suitable only for Anti-DDoS Proxy (Chinese Mainland).
 //
 // @param request - ModifyHttp2EnableRequest
 //
@@ -39932,7 +40612,7 @@ func (client *Client) ModifyPortAutoCcStatus(request *ModifyPortAutoCcStatusRequ
 
 // Summary:
 //
-// 修改弹性qps模式
+// Switches between the metering methods of the burstable clean bandwidth feature.
 //
 // @param request - ModifyQpsModeRequest
 //
@@ -39978,7 +40658,7 @@ func (client *Client) ModifyQpsModeWithOptions(request *ModifyQpsModeRequest, ru
 
 // Summary:
 //
-// 修改弹性qps模式
+// Switches between the metering methods of the burstable clean bandwidth feature.
 //
 // @param request - ModifyQpsModeRequest
 //
@@ -40568,7 +41248,7 @@ func (client *Client) ModifyWebAreaBlockSwitch(request *ModifyWebAreaBlockSwitch
 
 // Summary:
 //
-// 统一全局CC开关
+// Enables or disables the HTTP flood mitigation feature for a website.
 //
 // @param request - ModifyWebCCGlobalSwitchRequest
 //
@@ -40614,7 +41294,7 @@ func (client *Client) ModifyWebCCGlobalSwitchWithOptions(request *ModifyWebCCGlo
 
 // Summary:
 //
-// 统一全局CC开关
+// Enables or disables the HTTP flood mitigation feature for a website.
 //
 // @param request - ModifyWebCCGlobalSwitchRequest
 //
@@ -40631,6 +41311,10 @@ func (client *Client) ModifyWebCCGlobalSwitch(request *ModifyWebCCGlobalSwitchRe
 }
 
 // Deprecated: OpenAPI ModifyWebCCRule is deprecated, please use ddoscoo::2020-01-01::ConfigWebCCRuleV2 instead.
+//
+// Summary:
+//
+// Modifies the custom frequency control rule of a website.
 //
 // @param request - ModifyWebCCRuleRequest
 //
@@ -40704,6 +41388,10 @@ func (client *Client) ModifyWebCCRuleWithOptions(request *ModifyWebCCRuleRequest
 }
 
 // Deprecated: OpenAPI ModifyWebCCRule is deprecated, please use ddoscoo::2020-01-01::ConfigWebCCRuleV2 instead.
+//
+// Summary:
+//
+// Modifies the custom frequency control rule of a website.
 //
 // @param request - ModifyWebCCRuleRequest
 //
@@ -41298,7 +41986,7 @@ func (client *Client) ReleaseInstance(request *ReleaseInstanceRequest) (_result 
 
 // Summary:
 //
-// Switches service traffic to your Anti-DDoS Pro or Anti-DDoS Premium instance for scrubbing or switches service traffic back to the associated cloud resources.
+// Switches service traffic to an Anti-DDoS Pro or Anti-DDoS Premium instance for scrubbing or switches service traffic back to the associated cloud resources.
 //
 // Description:
 //
@@ -41358,7 +42046,7 @@ func (client *Client) SwitchSchedulerRuleWithOptions(request *SwitchSchedulerRul
 
 // Summary:
 //
-// Switches service traffic to your Anti-DDoS Pro or Anti-DDoS Premium instance for scrubbing or switches service traffic back to the associated cloud resources.
+// Switches service traffic to an Anti-DDoS Pro or Anti-DDoS Premium instance for scrubbing or switches service traffic back to the associated cloud resources.
 //
 // Description:
 //
