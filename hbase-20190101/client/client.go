@@ -1,7 +1,4 @@
 // This file is auto-generated, don't edit it. Thanks.
-/**
- *
- */
 package client
 
 import (
@@ -13,9 +10,22 @@ import (
 )
 
 type AddUserHdfsInfoRequest struct {
+	// example:
+	//
+	// ETnLKlblzczshOTUbOCz****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	ClusterId   *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	ExtInfo     *string `json:"ExtInfo,omitempty" xml:"ExtInfo,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// hb-bp16o0pd5****582s
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// {"dfs.nameservices":"hdfs_test","dfs.ha.namenodes":"nn1,nn2","dfs.namenode.http-address.hdfs_test.nn1":"TEST-xxx1.com:50070","dfs.namenode.http-address.hdfs_test.nn2":"TEST-xxx2.com:50070","dfs.namenode.rpc-address.hdfs_test.nn1":"TEST-xxx1.com:8020","dfs.namenode.rpc-address.hdfs_test.nn2":"TEST-xxx2.com:8020"}
+	ExtInfo *string `json:"ExtInfo,omitempty" xml:"ExtInfo,omitempty"`
 }
 
 func (s AddUserHdfsInfoRequest) String() string {
@@ -42,6 +52,9 @@ func (s *AddUserHdfsInfoRequest) SetExtInfo(v string) *AddUserHdfsInfoRequest {
 }
 
 type AddUserHdfsInfoResponseBody struct {
+	// example:
+	//
+	// FB0B7918-198C-46A8-AB9B-FE15403B1F0A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -88,8 +101,16 @@ func (s *AddUserHdfsInfoResponse) SetBody(v *AddUserHdfsInfoResponseBody) *AddUs
 }
 
 type AllocatePublicNetworkAddressRequest struct {
+	// example:
+	//
+	// 83b2b5e117a5b8bce0fae88d90576a84_6452320_82718582
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	ClusterId   *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// hb-t4naqsay5gn******
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 }
 
 func (s AllocatePublicNetworkAddressRequest) String() string {
@@ -157,6 +178,11 @@ func (s *AllocatePublicNetworkAddressResponse) SetBody(v *AllocatePublicNetworkA
 }
 
 type CancelActiveOperationTasksRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 11111,22222
 	Ids                  *string `json:"Ids,omitempty" xml:"Ids,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -204,7 +230,13 @@ func (s *CancelActiveOperationTasksRequest) SetSecurityToken(v string) *CancelAc
 }
 
 type CancelActiveOperationTasksResponseBody struct {
-	Ids       *string `json:"Ids,omitempty" xml:"Ids,omitempty"`
+	// example:
+	//
+	// 11111,22222
+	Ids *string `json:"Ids,omitempty" xml:"Ids,omitempty"`
+	// example:
+	//
+	// AE4F6C34-065F-45AA-F5BN-4B8D816F6305
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -256,7 +288,17 @@ func (s *CancelActiveOperationTasksResponse) SetBody(v *CancelActiveOperationTas
 }
 
 type CheckComponentsVersionRequest struct {
-	ClusterId  *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// hb-t4naqsay5gn****
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// HBASE,HADOOP
 	Components *string `json:"Components,omitempty" xml:"Components,omitempty"`
 }
 
@@ -280,7 +322,10 @@ func (s *CheckComponentsVersionRequest) SetComponents(v string) *CheckComponents
 
 type CheckComponentsVersionResponseBody struct {
 	Components *CheckComponentsVersionResponseBodyComponents `json:"Components,omitempty" xml:"Components,omitempty" type:"Struct"`
-	RequestId  *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// E3537EB4-1100-41CA-A147-C74CCC8BB12C
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CheckComponentsVersionResponseBody) String() string {
@@ -319,7 +364,13 @@ func (s *CheckComponentsVersionResponseBodyComponents) SetComponent(v []*CheckCo
 }
 
 type CheckComponentsVersionResponseBodyComponentsComponent struct {
-	Component       *string `json:"Component,omitempty" xml:"Component,omitempty"`
+	// example:
+	//
+	// HBASE
+	Component *string `json:"Component,omitempty" xml:"Component,omitempty"`
+	// example:
+	//
+	// true
 	IsLatestVersion *string `json:"IsLatestVersion,omitempty" xml:"IsLatestVersion,omitempty"`
 }
 
@@ -371,6 +422,11 @@ func (s *CheckComponentsVersionResponse) SetBody(v *CheckComponentsVersionRespon
 }
 
 type CloseBackupRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// hb-t4naqsay5gn****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 }
 
@@ -388,6 +444,9 @@ func (s *CloseBackupRequest) SetClusterId(v string) *CloseBackupRequest {
 }
 
 type CloseBackupResponseBody struct {
+	// example:
+	//
+	// F1A11940-0C34-4385-864F-A01E29B55F6A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -434,9 +493,23 @@ func (s *CloseBackupResponse) SetBody(v *CloseBackupResponseBody) *CloseBackupRe
 }
 
 type ConvertInstanceRequest struct {
-	ClusterId    *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	Duration     *int32  `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	PayType      *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// hb-bp16o0pd52e3y****
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// example:
+	//
+	// 7
+	Duration *int32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// example:
+	//
+	// Prepaid
+	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	// example:
+	//
+	// month
 	PricingCycle *string `json:"PricingCycle,omitempty" xml:"PricingCycle,omitempty"`
 }
 
@@ -469,7 +542,13 @@ func (s *ConvertInstanceRequest) SetPricingCycle(v string) *ConvertInstanceReque
 }
 
 type ConvertInstanceResponseBody struct {
-	OrderId   *int64  `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// example:
+	//
+	// 54124548879
+	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// example:
+	//
+	// 50373857-C47B-4B64-9332-D0B5280B59EA
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -521,9 +600,24 @@ func (s *ConvertInstanceResponse) SetBody(v *ConvertInstanceResponseBody) *Conve
 }
 
 type CreateAccountRequest struct {
-	AccountName     *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test01
+	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// **********
 	AccountPassword *string `json:"AccountPassword,omitempty" xml:"AccountPassword,omitempty"`
-	ClusterId       *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ld-bp150tns0sjxs****
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 }
 
 func (s CreateAccountRequest) String() string {
@@ -550,6 +644,9 @@ func (s *CreateAccountRequest) SetClusterId(v string) *CreateAccountRequest {
 }
 
 type CreateAccountResponseBody struct {
+	// example:
+	//
+	// 50373857-C47B-4B64-9332-D0B5280B59EA
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -596,6 +693,11 @@ func (s *CreateAccountResponse) SetBody(v *CreateAccountResponseBody) *CreateAcc
 }
 
 type CreateBackupPlanRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ld-wz94lbcqc****4x93
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 }
 
@@ -613,6 +715,9 @@ func (s *CreateBackupPlanRequest) SetClusterId(v string) *CreateBackupPlanReques
 }
 
 type CreateBackupPlanResponseBody struct {
+	// example:
+	//
+	// 50373857-C47B-4B64-9332-D0B5280B59EA
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -659,27 +764,104 @@ func (s *CreateBackupPlanResponse) SetBody(v *CreateBackupPlanResponseBody) *Cre
 }
 
 type CreateClusterRequest struct {
-	AutoRenewPeriod    *int32  `json:"AutoRenewPeriod,omitempty" xml:"AutoRenewPeriod,omitempty"`
-	ClientToken        *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	ClusterName        *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
-	ColdStorageSize    *int32  `json:"ColdStorageSize,omitempty" xml:"ColdStorageSize,omitempty"`
-	CoreInstanceType   *string `json:"CoreInstanceType,omitempty" xml:"CoreInstanceType,omitempty"`
-	DiskSize           *int32  `json:"DiskSize,omitempty" xml:"DiskSize,omitempty"`
-	DiskType           *string `json:"DiskType,omitempty" xml:"DiskType,omitempty"`
-	EncryptionKey      *string `json:"EncryptionKey,omitempty" xml:"EncryptionKey,omitempty"`
-	Engine             *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	EngineVersion      *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
+	// example:
+	//
+	// 2
+	AutoRenewPeriod *int32 `json:"AutoRenewPeriod,omitempty" xml:"AutoRenewPeriod,omitempty"`
+	// example:
+	//
+	// ETnLKlblzczshOTUbOCz****
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// example:
+	//
+	// hbase_test
+	ClusterName *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
+	// example:
+	//
+	// 1024
+	ColdStorageSize *int32 `json:"ColdStorageSize,omitempty" xml:"ColdStorageSize,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// hbase.sn1.medium
+	CoreInstanceType *string `json:"CoreInstanceType,omitempty" xml:"CoreInstanceType,omitempty"`
+	// example:
+	//
+	// 400
+	DiskSize *int32 `json:"DiskSize,omitempty" xml:"DiskSize,omitempty"`
+	// example:
+	//
+	// cloud_ssd
+	DiskType *string `json:"DiskType,omitempty" xml:"DiskType,omitempty"`
+	// example:
+	//
+	// 0d2470df-da7b-4786-b981-9a164dae****
+	EncryptionKey *string `json:"EncryptionKey,omitempty" xml:"EncryptionKey,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// hbase
+	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2.0
+	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
+	// example:
+	//
+	// hbase.sn1.medium
 	MasterInstanceType *string `json:"MasterInstanceType,omitempty" xml:"MasterInstanceType,omitempty"`
-	NodeCount          *int32  `json:"NodeCount,omitempty" xml:"NodeCount,omitempty"`
-	PayType            *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	Period             *int32  `json:"Period,omitempty" xml:"Period,omitempty"`
-	PeriodUnit         *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
-	RegionId           *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceGroupId    *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	SecurityIPList     *string `json:"SecurityIPList,omitempty" xml:"SecurityIPList,omitempty"`
-	VSwitchId          *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	VpcId              *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	ZoneId             *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2
+	NodeCount *int32 `json:"NodeCount,omitempty" xml:"NodeCount,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Prepaid
+	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	// example:
+	//
+	// 6
+	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
+	// example:
+	//
+	// month
+	PeriodUnit *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// rg-j4d53glb3****
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// example:
+	//
+	// 116.62.XX.XX/24
+	SecurityIPList *string `json:"SecurityIPList,omitempty" xml:"SecurityIPList,omitempty"`
+	// example:
+	//
+	// vsw-bp191otqj1ssyl****
+	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	// example:
+	//
+	// vpc-bp120k6ixs4eog****
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou-f
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s CreateClusterRequest) String() string {
@@ -796,8 +978,17 @@ func (s *CreateClusterRequest) SetZoneId(v string) *CreateClusterRequest {
 }
 
 type CreateClusterResponseBody struct {
+	// example:
+	//
+	// hb-bp1hy2sjf8gd****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	OrderId   *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// example:
+	//
+	// 23232069786****
+	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// example:
+	//
+	// 3E19E345-101D-4014-946C-A205
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -854,10 +1045,28 @@ func (s *CreateClusterResponse) SetBody(v *CreateClusterResponseBody) *CreateClu
 }
 
 type CreateGlobalResourceRequest struct {
-	ClientToken  *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	ClusterId    *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// xxxxx-xxxxx-xxxxx
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// hb-t4naqsay5gn****
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	RegionId  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// PubPhoenixSLBQueryServerVip
 	ResourceName *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// GLOBAL_VIP
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 }
 
@@ -895,6 +1104,9 @@ func (s *CreateGlobalResourceRequest) SetResourceType(v string) *CreateGlobalRes
 }
 
 type CreateGlobalResourceResponseBody struct {
+	// example:
+	//
+	// 1AB9ABDF-7E1E-44AD-8610-70A005115DD1
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -941,9 +1153,22 @@ func (s *CreateGlobalResourceResponse) SetBody(v *CreateGlobalResourceResponseBo
 }
 
 type CreateHBaseSlbServerRequest struct {
+	// example:
+	//
+	// xxxxx-xxxxx-xxxxx
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	ClusterId   *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	SlbServer   *string `json:"SlbServer,omitempty" xml:"SlbServer,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// hb-t4naqsay5gn****
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// thrift
+	SlbServer *string `json:"SlbServer,omitempty" xml:"SlbServer,omitempty"`
 }
 
 func (s CreateHBaseSlbServerRequest) String() string {
@@ -970,6 +1195,9 @@ func (s *CreateHBaseSlbServerRequest) SetSlbServer(v string) *CreateHBaseSlbServ
 }
 
 type CreateHBaseSlbServerResponseBody struct {
+	// example:
+	//
+	// 61FC5B21-87B0-41BC-9686-9DA395EB40B6
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1016,11 +1244,34 @@ func (s *CreateHBaseSlbServerResponse) SetBody(v *CreateHBaseSlbServerResponseBo
 }
 
 type CreateHbaseHaSlbRequest struct {
-	BdsId       *string `json:"BdsId,omitempty" xml:"BdsId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// bds-t4n3496whj23****
+	BdsId *string `json:"BdsId,omitempty" xml:"BdsId,omitempty"`
+	// example:
+	//
+	// ETnLKlblzczshOTUbOCz****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	HaId        *string `json:"HaId,omitempty" xml:"HaId,omitempty"`
-	HaTypes     *string `json:"HaTypes,omitempty" xml:"HaTypes,omitempty"`
-	HbaseType   *string `json:"HbaseType,omitempty" xml:"HbaseType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ha-v21tmnxjwh2yu****
+	HaId *string `json:"HaId,omitempty" xml:"HaId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// thrift
+	HaTypes *string `json:"HaTypes,omitempty" xml:"HaTypes,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Active
+	HbaseType *string `json:"HbaseType,omitempty" xml:"HbaseType,omitempty"`
 }
 
 func (s CreateHbaseHaSlbRequest) String() string {
@@ -1057,6 +1308,9 @@ func (s *CreateHbaseHaSlbRequest) SetHbaseType(v string) *CreateHbaseHaSlbReques
 }
 
 type CreateHbaseHaSlbResponseBody struct {
+	// example:
+	//
+	// C9D568D9-A59C-4AF2-8FBB-F086A841D58E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1103,35 +1357,166 @@ func (s *CreateHbaseHaSlbResponse) SetBody(v *CreateHbaseHaSlbResponseBody) *Cre
 }
 
 type CreateMultiZoneClusterRequest struct {
-	ArbiterVSwitchId     *string `json:"ArbiterVSwitchId,omitempty" xml:"ArbiterVSwitchId,omitempty"`
-	ArbiterZoneId        *string `json:"ArbiterZoneId,omitempty" xml:"ArbiterZoneId,omitempty"`
-	ArchVersion          *string `json:"ArchVersion,omitempty" xml:"ArchVersion,omitempty"`
-	AutoRenewPeriod      *int32  `json:"AutoRenewPeriod,omitempty" xml:"AutoRenewPeriod,omitempty"`
-	ClientToken          *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	ClusterName          *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
-	CoreDiskSize         *int32  `json:"CoreDiskSize,omitempty" xml:"CoreDiskSize,omitempty"`
-	CoreDiskType         *string `json:"CoreDiskType,omitempty" xml:"CoreDiskType,omitempty"`
-	CoreInstanceType     *string `json:"CoreInstanceType,omitempty" xml:"CoreInstanceType,omitempty"`
-	CoreNodeCount        *int32  `json:"CoreNodeCount,omitempty" xml:"CoreNodeCount,omitempty"`
-	Engine               *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	EngineVersion        *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
-	LogDiskSize          *int32  `json:"LogDiskSize,omitempty" xml:"LogDiskSize,omitempty"`
-	LogDiskType          *string `json:"LogDiskType,omitempty" xml:"LogDiskType,omitempty"`
-	LogInstanceType      *string `json:"LogInstanceType,omitempty" xml:"LogInstanceType,omitempty"`
-	LogNodeCount         *int32  `json:"LogNodeCount,omitempty" xml:"LogNodeCount,omitempty"`
-	MasterInstanceType   *string `json:"MasterInstanceType,omitempty" xml:"MasterInstanceType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// vsw-hangxzhouxb*****
+	ArbiterVSwitchId *string `json:"ArbiterVSwitchId,omitempty" xml:"ArbiterVSwitchId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou-b
+	ArbiterZoneId *string `json:"ArbiterZoneId,omitempty" xml:"ArbiterZoneId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2.0
+	ArchVersion *string `json:"ArchVersion,omitempty" xml:"ArchVersion,omitempty"`
+	// example:
+	//
+	// 0
+	AutoRenewPeriod *int32 `json:"AutoRenewPeriod,omitempty" xml:"AutoRenewPeriod,omitempty"`
+	// example:
+	//
+	// dfh3sf5gslfksfk****
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// example:
+	//
+	// hbaseue_test
+	ClusterName *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 400
+	CoreDiskSize *int32 `json:"CoreDiskSize,omitempty" xml:"CoreDiskSize,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cloud_ssd
+	CoreDiskType *string `json:"CoreDiskType,omitempty" xml:"CoreDiskType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// hbase.sn1.medium
+	CoreInstanceType *string `json:"CoreInstanceType,omitempty" xml:"CoreInstanceType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 4
+	CoreNodeCount *int32 `json:"CoreNodeCount,omitempty" xml:"CoreNodeCount,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// hbaseue
+	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2.0
+	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 400
+	LogDiskSize *int32 `json:"LogDiskSize,omitempty" xml:"LogDiskSize,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cloud_ssd
+	LogDiskType *string `json:"LogDiskType,omitempty" xml:"LogDiskType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// hbase.sn1.medium
+	LogInstanceType *string `json:"LogInstanceType,omitempty" xml:"LogInstanceType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 4
+	LogNodeCount *int32 `json:"LogNodeCount,omitempty" xml:"LogNodeCount,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// hbase.sn1.medium
+	MasterInstanceType *string `json:"MasterInstanceType,omitempty" xml:"MasterInstanceType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou-bef-aliyun-com
 	MultiZoneCombination *string `json:"MultiZoneCombination,omitempty" xml:"MultiZoneCombination,omitempty"`
-	PayType              *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	Period               *int32  `json:"Period,omitempty" xml:"Period,omitempty"`
-	PeriodUnit           *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
-	PrimaryVSwitchId     *string `json:"PrimaryVSwitchId,omitempty" xml:"PrimaryVSwitchId,omitempty"`
-	PrimaryZoneId        *string `json:"PrimaryZoneId,omitempty" xml:"PrimaryZoneId,omitempty"`
-	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	SecurityIPList       *string `json:"SecurityIPList,omitempty" xml:"SecurityIPList,omitempty"`
-	StandbyVSwitchId     *string `json:"StandbyVSwitchId,omitempty" xml:"StandbyVSwitchId,omitempty"`
-	StandbyZoneId        *string `json:"StandbyZoneId,omitempty" xml:"StandbyZoneId,omitempty"`
-	VpcId                *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Postpaid
+	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	// example:
+	//
+	// 1
+	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
+	// example:
+	//
+	// month
+	PeriodUnit *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// vsw-hangxzhouxe****
+	PrimaryVSwitchId *string `json:"PrimaryVSwitchId,omitempty" xml:"PrimaryVSwitchId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou-e
+	PrimaryZoneId *string `json:"PrimaryZoneId,omitempty" xml:"PrimaryZoneId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// rg-gg3f4f5d5g5w****
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// example:
+	//
+	// 127.0.0.1
+	SecurityIPList *string `json:"SecurityIPList,omitempty" xml:"SecurityIPList,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// vsw-hangxzhouxf****
+	StandbyVSwitchId *string `json:"StandbyVSwitchId,omitempty" xml:"StandbyVSwitchId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou-f
+	StandbyZoneId *string `json:"StandbyZoneId,omitempty" xml:"StandbyZoneId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// vpc-bp120k6ixs4eog****
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s CreateMultiZoneClusterRequest) String() string {
@@ -1288,8 +1673,17 @@ func (s *CreateMultiZoneClusterRequest) SetVpcId(v string) *CreateMultiZoneClust
 }
 
 type CreateMultiZoneClusterResponseBody struct {
+	// example:
+	//
+	// ld-t4nn71xa0yn56****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	OrderId   *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// example:
+	//
+	// 23232453****
+	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// example:
+	//
+	// 7F68E8F5-0377-4CF8-8B1D-FFFD6F5804D5
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1346,11 +1740,39 @@ func (s *CreateMultiZoneClusterResponse) SetBody(v *CreateMultiZoneClusterRespon
 }
 
 type CreateRestorePlanRequest struct {
-	ClusterId       *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	RestoreAllTable *bool   `json:"RestoreAllTable,omitempty" xml:"RestoreAllTable,omitempty"`
-	RestoreByCopy   *bool   `json:"RestoreByCopy,omitempty" xml:"RestoreByCopy,omitempty"`
-	RestoreToDate   *string `json:"RestoreToDate,omitempty" xml:"RestoreToDate,omitempty"`
-	Tables          *string `json:"Tables,omitempty" xml:"Tables,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ld-bp150tns0sjxs****
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// false
+	RestoreAllTable *bool `json:"RestoreAllTable,omitempty" xml:"RestoreAllTable,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// true
+	RestoreByCopy *bool `json:"RestoreByCopy,omitempty" xml:"RestoreByCopy,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2020-11-05T05:49:42Z
+	RestoreToDate *string `json:"RestoreToDate,omitempty" xml:"RestoreToDate,omitempty"`
+	// example:
+	//
+	// test_ns:test_table/test_ns:test_table2
+	Tables *string `json:"Tables,omitempty" xml:"Tables,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ld-bp169l540vc6c****
 	TargetClusterId *string `json:"TargetClusterId,omitempty" xml:"TargetClusterId,omitempty"`
 }
 
@@ -1393,6 +1815,9 @@ func (s *CreateRestorePlanRequest) SetTargetClusterId(v string) *CreateRestorePl
 }
 
 type CreateRestorePlanResponseBody struct {
+	// example:
+	//
+	// A0598673-EB6E-4F6D-9961-E0F2012090C0
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1439,24 +1864,84 @@ func (s *CreateRestorePlanResponse) SetBody(v *CreateRestorePlanResponseBody) *C
 }
 
 type CreateServerlessClusterRequest struct {
-	AutoRenewPeriod      *int32  `json:"AutoRenewPeriod,omitempty" xml:"AutoRenewPeriod,omitempty"`
-	ClientToken          *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	ClientType           *string `json:"ClientType,omitempty" xml:"ClientType,omitempty"`
-	ClusterName          *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
-	DiskType             *string `json:"DiskType,omitempty" xml:"DiskType,omitempty"`
-	Engine               *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	EngineVersion        *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
-	PayType              *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	Period               *int32  `json:"Period,omitempty" xml:"Period,omitempty"`
-	PeriodUnit           *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
-	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	ServerlessCapability *int32  `json:"ServerlessCapability,omitempty" xml:"ServerlessCapability,omitempty"`
-	ServerlessSpec       *string `json:"ServerlessSpec,omitempty" xml:"ServerlessSpec,omitempty"`
-	ServerlessStorage    *int32  `json:"ServerlessStorage,omitempty" xml:"ServerlessStorage,omitempty"`
-	VSwitchId            *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	VpcId                *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	ZoneId               *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	// example:
+	//
+	// 2
+	AutoRenewPeriod *int32 `json:"AutoRenewPeriod,omitempty" xml:"AutoRenewPeriod,omitempty"`
+	// example:
+	//
+	// ETnLKlblzczshOTUbOCz****
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// example:
+	//
+	// xx
+	ClientType *string `json:"ClientType,omitempty" xml:"ClientType,omitempty"`
+	// example:
+	//
+	// serverless-name
+	ClusterName *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
+	// example:
+	//
+	// cloud_ssd
+	DiskType *string `json:"DiskType,omitempty" xml:"DiskType,omitempty"`
+	// example:
+	//
+	// serverlesshbase
+	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	// example:
+	//
+	// 2.0
+	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Prepaid
+	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	// example:
+	//
+	// 6
+	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
+	// example:
+	//
+	// month
+	PeriodUnit *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// rg-j4d53glb3****
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// example:
+	//
+	// 1000
+	ServerlessCapability *int32 `json:"ServerlessCapability,omitempty" xml:"ServerlessCapability,omitempty"`
+	// example:
+	//
+	// serverless.small
+	ServerlessSpec *string `json:"ServerlessSpec,omitempty" xml:"ServerlessSpec,omitempty"`
+	// example:
+	//
+	// 100
+	ServerlessStorage *int32 `json:"ServerlessStorage,omitempty" xml:"ServerlessStorage,omitempty"`
+	// example:
+	//
+	// vsw-bp191ipotqj1ssyl*****
+	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	// example:
+	//
+	// vpc-bp120k6ixs4eog****
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou-f
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s CreateServerlessClusterRequest) String() string {
@@ -1558,9 +2043,21 @@ func (s *CreateServerlessClusterRequest) SetZoneId(v string) *CreateServerlessCl
 }
 
 type CreateServerlessClusterResponseBody struct {
+	// example:
+	//
+	// sh-bp1a969y7681****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	OrderId   *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	PassWord  *string `json:"PassWord,omitempty" xml:"PassWord,omitempty"`
+	// example:
+	//
+	// 23232453233*****
+	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// example:
+	//
+	// *********
+	PassWord *string `json:"PassWord,omitempty" xml:"PassWord,omitempty"`
+	// example:
+	//
+	// 3E19E345-101D-4014-946C-************
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1622,8 +2119,18 @@ func (s *CreateServerlessClusterResponse) SetBody(v *CreateServerlessClusterResp
 }
 
 type DeleteAccountRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test01
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	ClusterId   *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ld-bp150tns0sjxs****
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 }
 
 func (s DeleteAccountRequest) String() string {
@@ -1645,6 +2152,9 @@ func (s *DeleteAccountRequest) SetClusterId(v string) *DeleteAccountRequest {
 }
 
 type DeleteAccountResponseBody struct {
+	// example:
+	//
+	// 729CB2A7-3065-53A9-B27C-7033CA4881D9
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1691,9 +2201,24 @@ func (s *DeleteAccountResponse) SetBody(v *DeleteAccountResponseBody) *DeleteAcc
 }
 
 type DeleteGlobalResourceRequest struct {
-	ClusterId    *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// hb-t4naqsay5gn******
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	RegionId  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// PubPhoenixSLBQueryServerVip
 	ResourceName *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// GLOBAL_VIP
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 }
 
@@ -1726,6 +2251,9 @@ func (s *DeleteGlobalResourceRequest) SetResourceType(v string) *DeleteGlobalRes
 }
 
 type DeleteGlobalResourceResponseBody struct {
+	// example:
+	//
+	// BD0B0B9A-79E8-4FDD-9C51-93443490B784
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1772,8 +2300,18 @@ func (s *DeleteGlobalResourceResponse) SetBody(v *DeleteGlobalResourceResponseBo
 }
 
 type DeleteHBaseHaDBRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// bds-bp14112fd7g52s1****
 	BdsId *string `json:"BdsId,omitempty" xml:"BdsId,omitempty"`
-	HaId  *string `json:"HaId,omitempty" xml:"HaId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ha-sw2o0l01s4r76****
+	HaId *string `json:"HaId,omitempty" xml:"HaId,omitempty"`
 }
 
 func (s DeleteHBaseHaDBRequest) String() string {
@@ -1795,6 +2333,9 @@ func (s *DeleteHBaseHaDBRequest) SetHaId(v string) *DeleteHBaseHaDBRequest {
 }
 
 type DeleteHBaseHaDBResponseBody struct {
+	// example:
+	//
+	// B409CF51-E01F-4551-BE40-123678FA9026
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1841,7 +2382,17 @@ func (s *DeleteHBaseHaDBResponse) SetBody(v *DeleteHBaseHaDBResponseBody) *Delet
 }
 
 type DeleteHBaseSlbServerRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// hb-t4naqsay5gn****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// thrift
 	SlbServer *string `json:"SlbServer,omitempty" xml:"SlbServer,omitempty"`
 }
 
@@ -1864,6 +2415,9 @@ func (s *DeleteHBaseSlbServerRequest) SetSlbServer(v string) *DeleteHBaseSlbServ
 }
 
 type DeleteHBaseSlbServerResponseBody struct {
+	// example:
+	//
+	// 7242130A-82CF-49BF-AB32-30DCB819EBA6
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1910,8 +2464,23 @@ func (s *DeleteHBaseSlbServerResponse) SetBody(v *DeleteHBaseSlbServerResponseBo
 }
 
 type DeleteHbaseHaSlbRequest struct {
-	BdsId   *string `json:"BdsId,omitempty" xml:"BdsId,omitempty"`
-	HaId    *string `json:"HaId,omitempty" xml:"HaId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// bds-t4n3496whj23ia4k
+	BdsId *string `json:"BdsId,omitempty" xml:"BdsId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ha-v21tmnxjwh2yuy1il
+	HaId *string `json:"HaId,omitempty" xml:"HaId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// thrift
 	HaTypes *string `json:"HaTypes,omitempty" xml:"HaTypes,omitempty"`
 }
 
@@ -1939,6 +2508,9 @@ func (s *DeleteHbaseHaSlbRequest) SetHaTypes(v string) *DeleteHbaseHaSlbRequest 
 }
 
 type DeleteHbaseHaSlbResponseBody struct {
+	// example:
+	//
+	// C9D568D9-A59C-4AF2-8FBB-F086A841D58E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1985,8 +2557,16 @@ func (s *DeleteHbaseHaSlbResponse) SetBody(v *DeleteHbaseHaSlbResponseBody) *Del
 }
 
 type DeleteInstanceRequest struct {
-	ClusterId           *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	ImmediateDeleteFlag *bool   `json:"ImmediateDeleteFlag,omitempty" xml:"ImmediateDeleteFlag,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// hb-bp16o0pd52e3y****
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// example:
+	//
+	// false
+	ImmediateDeleteFlag *bool `json:"ImmediateDeleteFlag,omitempty" xml:"ImmediateDeleteFlag,omitempty"`
 }
 
 func (s DeleteInstanceRequest) String() string {
@@ -2008,6 +2588,9 @@ func (s *DeleteInstanceRequest) SetImmediateDeleteFlag(v bool) *DeleteInstanceRe
 }
 
 type DeleteInstanceResponseBody struct {
+	// example:
+	//
+	// 50373857-C47B-4B64-9332-D0B5280B59EA
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2054,8 +2637,16 @@ func (s *DeleteInstanceResponse) SetBody(v *DeleteInstanceResponseBody) *DeleteI
 }
 
 type DeleteMultiZoneClusterRequest struct {
-	ClusterId           *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	ImmediateDeleteFlag *bool   `json:"ImmediateDeleteFlag,omitempty" xml:"ImmediateDeleteFlag,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// d-t4nn71xa0yn56****
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// example:
+	//
+	// false
+	ImmediateDeleteFlag *bool `json:"ImmediateDeleteFlag,omitempty" xml:"ImmediateDeleteFlag,omitempty"`
 }
 
 func (s DeleteMultiZoneClusterRequest) String() string {
@@ -2077,6 +2668,9 @@ func (s *DeleteMultiZoneClusterRequest) SetImmediateDeleteFlag(v bool) *DeleteMu
 }
 
 type DeleteMultiZoneClusterResponseBody struct {
+	// example:
+	//
+	// 169A3910-A39E-4BC2-AA9F-E7AD8D473527
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2123,9 +2717,24 @@ func (s *DeleteMultiZoneClusterResponse) SetBody(v *DeleteMultiZoneClusterRespon
 }
 
 type DeleteServerlessClusterRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// sh-bp1pj13wh9****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	RegionId  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ZoneId    *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-shenzhen
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-shenzhen-e
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s DeleteServerlessClusterRequest) String() string {
@@ -2152,6 +2761,9 @@ func (s *DeleteServerlessClusterRequest) SetZoneId(v string) *DeleteServerlessCl
 }
 
 type DeleteServerlessClusterResponseBody struct {
+	// example:
+	//
+	// 46950E74-59C4-4E3E-9B38-A33B*********
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2198,7 +2810,17 @@ func (s *DeleteServerlessClusterResponse) SetBody(v *DeleteServerlessClusterResp
 }
 
 type DeleteUserHdfsInfoRequest struct {
-	ClusterId   *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// hb-bp16o0pd52e3y****
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// hdfs_test
 	NameService *string `json:"NameService,omitempty" xml:"NameService,omitempty"`
 }
 
@@ -2221,6 +2843,9 @@ func (s *DeleteUserHdfsInfoRequest) SetNameService(v string) *DeleteUserHdfsInfo
 }
 
 type DeleteUserHdfsInfoResponseBody struct {
+	// example:
+	//
+	// 50373857-C47B-4B64-9332-D0B5280B59EA
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2267,6 +2892,11 @@ func (s *DeleteUserHdfsInfoResponse) SetBody(v *DeleteUserHdfsInfoResponseBody) 
 }
 
 type DescribeAccountsRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ld-bp1uoihlf82e8****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 }
 
@@ -2284,8 +2914,11 @@ func (s *DescribeAccountsRequest) SetClusterId(v string) *DescribeAccountsReques
 }
 
 type DescribeAccountsResponseBody struct {
-	Accounts  *DescribeAccountsResponseBodyAccounts `json:"Accounts,omitempty" xml:"Accounts,omitempty" type:"Struct"`
-	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Accounts *DescribeAccountsResponseBodyAccounts `json:"Accounts,omitempty" xml:"Accounts,omitempty" type:"Struct"`
+	// example:
+	//
+	// F744E939-D08D-5623-82C8-9D1F9F7685D1
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeAccountsResponseBody) String() string {
@@ -2353,6 +2986,9 @@ func (s *DescribeAccountsResponse) SetBody(v *DescribeAccountsResponseBody) *Des
 }
 
 type DescribeActiveOperationTaskTypeRequest struct {
+	// example:
+	//
+	// 0
 	IsHistory            *int32  `json:"IsHistory,omitempty" xml:"IsHistory,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -2400,6 +3036,9 @@ func (s *DescribeActiveOperationTaskTypeRequest) SetSecurityToken(v string) *Des
 }
 
 type DescribeActiveOperationTaskTypeResponseBody struct {
+	// example:
+	//
+	// EC7E27FC-58F8-4722-89CF-D1B6B0971956
 	RequestId *string                                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	TypeList  []*DescribeActiveOperationTaskTypeResponseBodyTypeList `json:"TypeList,omitempty" xml:"TypeList,omitempty" type:"Repeated"`
 }
@@ -2423,8 +3062,17 @@ func (s *DescribeActiveOperationTaskTypeResponseBody) SetTypeList(v []*DescribeA
 }
 
 type DescribeActiveOperationTaskTypeResponseBodyTypeList struct {
-	Count          *int32  `json:"Count,omitempty" xml:"Count,omitempty"`
-	TaskType       *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+	// example:
+	//
+	// 1
+	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
+	// example:
+	//
+	// rds_apsaradb_upgrade
+	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+	// example:
+	//
+	// rds_apsaradb_upgrade
 	TaskTypeInfoEn *string `json:"TaskTypeInfoEn,omitempty" xml:"TaskTypeInfoEn,omitempty"`
 	TaskTypeInfoZh *string `json:"TaskTypeInfoZh,omitempty" xml:"TaskTypeInfoZh,omitempty"`
 }
@@ -2487,22 +3135,55 @@ func (s *DescribeActiveOperationTaskTypeResponse) SetBody(v *DescribeActiveOpera
 }
 
 type DescribeActiveOperationTasksRequest struct {
-	AllowCancel          *int32  `json:"AllowCancel,omitempty" xml:"AllowCancel,omitempty"`
-	AllowChange          *int32  `json:"AllowChange,omitempty" xml:"AllowChange,omitempty"`
-	ChangeLevel          *string `json:"ChangeLevel,omitempty" xml:"ChangeLevel,omitempty"`
-	DbType               *string `json:"DbType,omitempty" xml:"DbType,omitempty"`
-	InsName              *string `json:"InsName,omitempty" xml:"InsName,omitempty"`
-	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	PageNumber           *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize             *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	ProductId            *string `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
+	// example:
+	//
+	// 1
+	AllowCancel *int32 `json:"AllowCancel,omitempty" xml:"AllowCancel,omitempty"`
+	// example:
+	//
+	// 1
+	AllowChange *int32 `json:"AllowChange,omitempty" xml:"AllowChange,omitempty"`
+	// example:
+	//
+	// S1
+	ChangeLevel *string `json:"ChangeLevel,omitempty" xml:"ChangeLevel,omitempty"`
+	// example:
+	//
+	// hbaseue
+	DbType *string `json:"DbType,omitempty" xml:"DbType,omitempty"`
+	// example:
+	//
+	// ld-bp150tns0sjxs****
+	InsName      *string `json:"InsName,omitempty" xml:"InsName,omitempty"`
+	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 30
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// hbase
+	ProductId *string `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
 	Region               *string `json:"Region,omitempty" xml:"Region,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	Status               *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
-	TaskType             *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+	// example:
+	//
+	// 5
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// rds_apsaradb_upgrade
+	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
 }
 
 func (s DescribeActiveOperationTasksRequest) String() string {
@@ -2594,11 +3275,23 @@ func (s *DescribeActiveOperationTasksRequest) SetTaskType(v string) *DescribeAct
 }
 
 type DescribeActiveOperationTasksResponseBody struct {
-	Items            []*DescribeActiveOperationTasksResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
-	PageNumber       *int32                                           `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize         *int32                                           `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId        *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalRecordCount *int32                                           `json:"TotalRecordCount,omitempty" xml:"TotalRecordCount,omitempty"`
+	Items []*DescribeActiveOperationTasksResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 30
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// C634E813-42FA-53D2-A7EB-B881C4B264CC
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 1
+	TotalRecordCount *int32 `json:"TotalRecordCount,omitempty" xml:"TotalRecordCount,omitempty"`
 }
 
 func (s DescribeActiveOperationTasksResponseBody) String() string {
@@ -2635,32 +3328,98 @@ func (s *DescribeActiveOperationTasksResponseBody) SetTotalRecordCount(v int32) 
 }
 
 type DescribeActiveOperationTasksResponseBodyItems struct {
-	AllowCancel     *string   `json:"AllowCancel,omitempty" xml:"AllowCancel,omitempty"`
-	AllowChange     *string   `json:"AllowChange,omitempty" xml:"AllowChange,omitempty"`
-	ChangeLevel     *string   `json:"ChangeLevel,omitempty" xml:"ChangeLevel,omitempty"`
-	ChangeLevelEn   *string   `json:"ChangeLevelEn,omitempty" xml:"ChangeLevelEn,omitempty"`
-	ChangeLevelZh   *string   `json:"ChangeLevelZh,omitempty" xml:"ChangeLevelZh,omitempty"`
-	CreatedTime     *string   `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
-	CurrentAVZ      *string   `json:"CurrentAVZ,omitempty" xml:"CurrentAVZ,omitempty"`
-	DbType          *string   `json:"DbType,omitempty" xml:"DbType,omitempty"`
-	DbVersion       *string   `json:"DbVersion,omitempty" xml:"DbVersion,omitempty"`
-	Deadline        *string   `json:"Deadline,omitempty" xml:"Deadline,omitempty"`
-	Id              *int32    `json:"Id,omitempty" xml:"Id,omitempty"`
-	ImpactEn        *string   `json:"ImpactEn,omitempty" xml:"ImpactEn,omitempty"`
-	ImpactZh        *string   `json:"ImpactZh,omitempty" xml:"ImpactZh,omitempty"`
-	InsComment      *string   `json:"InsComment,omitempty" xml:"InsComment,omitempty"`
-	InsName         *string   `json:"InsName,omitempty" xml:"InsName,omitempty"`
-	ModifiedTime    *string   `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
-	PrepareInterval *string   `json:"PrepareInterval,omitempty" xml:"PrepareInterval,omitempty"`
-	Region          *string   `json:"Region,omitempty" xml:"Region,omitempty"`
-	ResultInfo      *string   `json:"ResultInfo,omitempty" xml:"ResultInfo,omitempty"`
-	StartTime       *string   `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	Status          *int32    `json:"Status,omitempty" xml:"Status,omitempty"`
-	SubInsNames     []*string `json:"SubInsNames,omitempty" xml:"SubInsNames,omitempty" type:"Repeated"`
-	SwitchTime      *string   `json:"SwitchTime,omitempty" xml:"SwitchTime,omitempty"`
-	TaskType        *string   `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
-	TaskTypeEn      *string   `json:"TaskTypeEn,omitempty" xml:"TaskTypeEn,omitempty"`
-	TaskTypeZh      *string   `json:"TaskTypeZh,omitempty" xml:"TaskTypeZh,omitempty"`
+	// example:
+	//
+	// 1
+	AllowCancel *string `json:"AllowCancel,omitempty" xml:"AllowCancel,omitempty"`
+	// example:
+	//
+	// 1
+	AllowChange *string `json:"AllowChange,omitempty" xml:"AllowChange,omitempty"`
+	// example:
+	//
+	// all
+	ChangeLevel *string `json:"ChangeLevel,omitempty" xml:"ChangeLevel,omitempty"`
+	// example:
+	//
+	// Risk repairment
+	ChangeLevelEn *string `json:"ChangeLevelEn,omitempty" xml:"ChangeLevelEn,omitempty"`
+	ChangeLevelZh *string `json:"ChangeLevelZh,omitempty" xml:"ChangeLevelZh,omitempty"`
+	// example:
+	//
+	// 2022-02-15 23:59:59
+	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	// example:
+	//
+	// cn-shanghai-et-a
+	CurrentAVZ *string `json:"CurrentAVZ,omitempty" xml:"CurrentAVZ,omitempty"`
+	// example:
+	//
+	// hbaseue
+	DbType *string `json:"DbType,omitempty" xml:"DbType,omitempty"`
+	// example:
+	//
+	// 2.0
+	DbVersion *string `json:"DbVersion,omitempty" xml:"DbVersion,omitempty"`
+	// example:
+	//
+	// 2022-02-19 23:59:59
+	Deadline *string `json:"Deadline,omitempty" xml:"Deadline,omitempty"`
+	// example:
+	//
+	// 111111
+	Id *int32 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// Transient instance disconnection
+	ImpactEn *string `json:"ImpactEn,omitempty" xml:"ImpactEn,omitempty"`
+	ImpactZh *string `json:"ImpactZh,omitempty" xml:"ImpactZh,omitempty"`
+	// example:
+	//
+	// --
+	InsComment *string `json:"InsComment,omitempty" xml:"InsComment,omitempty"`
+	// example:
+	//
+	// ld-bp150tns0sjxs****
+	InsName *string `json:"InsName,omitempty" xml:"InsName,omitempty"`
+	// example:
+	//
+	// 2022-02-19 14:00:00
+	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
+	// example:
+	//
+	// 14:00:00
+	PrepareInterval *string `json:"PrepareInterval,omitempty" xml:"PrepareInterval,omitempty"`
+	// example:
+	//
+	// cn-hanghzou
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// example:
+	//
+	// --
+	ResultInfo *string `json:"ResultInfo,omitempty" xml:"ResultInfo,omitempty"`
+	// example:
+	//
+	// 2022-02-19 10:00:00
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// example:
+	//
+	// 5
+	Status      *int32    `json:"Status,omitempty" xml:"Status,omitempty"`
+	SubInsNames []*string `json:"SubInsNames,omitempty" xml:"SubInsNames,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 2022-02-19 14:00:00
+	SwitchTime *string `json:"SwitchTime,omitempty" xml:"SwitchTime,omitempty"`
+	// example:
+	//
+	// rds_apsaradb_upgrade
+	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+	// example:
+	//
+	// rds_apsaradb_upgrade
+	TaskTypeEn *string `json:"TaskTypeEn,omitempty" xml:"TaskTypeEn,omitempty"`
+	TaskTypeZh *string `json:"TaskTypeZh,omitempty" xml:"TaskTypeZh,omitempty"`
 }
 
 func (s DescribeActiveOperationTasksResponseBodyItems) String() string {
@@ -2831,13 +3590,38 @@ func (s *DescribeActiveOperationTasksResponse) SetBody(v *DescribeActiveOperatio
 }
 
 type DescribeAvailableResourceRequest struct {
-	ChargeType       *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Prepaid
+	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	// example:
+	//
+	// hbase.sn1.large
 	CoreInstanceType *string `json:"CoreInstanceType,omitempty" xml:"CoreInstanceType,omitempty"`
-	DiskType         *string `json:"DiskType,omitempty" xml:"DiskType,omitempty"`
-	Engine           *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	EngineVersion    *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
-	RegionId         *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ZoneId           *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	// example:
+	//
+	// cloud_ssd
+	DiskType *string `json:"DiskType,omitempty" xml:"DiskType,omitempty"`
+	// example:
+	//
+	// hbaseue
+	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	// example:
+	//
+	// 2.0
+	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// cn-hangzhou-h
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s DescribeAvailableResourceRequest) String() string {
@@ -2885,7 +3669,10 @@ func (s *DescribeAvailableResourceRequest) SetZoneId(v string) *DescribeAvailabl
 
 type DescribeAvailableResourceResponseBody struct {
 	AvailableZones *DescribeAvailableResourceResponseBodyAvailableZones `json:"AvailableZones,omitempty" xml:"AvailableZones,omitempty" type:"Struct"`
-	RequestId      *string                                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// EA76F208-E334-592A-A0C6-41E15EC87ED0
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeAvailableResourceResponseBody) String() string {
@@ -2924,10 +3711,16 @@ func (s *DescribeAvailableResourceResponseBodyAvailableZones) SetAvailableZone(v
 }
 
 type DescribeAvailableResourceResponseBodyAvailableZonesAvailableZone struct {
-	MasterResources  *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneMasterResources  `json:"MasterResources,omitempty" xml:"MasterResources,omitempty" type:"Struct"`
+	MasterResources *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneMasterResources `json:"MasterResources,omitempty" xml:"MasterResources,omitempty" type:"Struct"`
+	// example:
+	//
+	// cn-shenzhen
 	RegionId         *string                                                                           `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	SupportedEngines *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEngines `json:"SupportedEngines,omitempty" xml:"SupportedEngines,omitempty" type:"Struct"`
-	ZoneId           *string                                                                           `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	// example:
+	//
+	// cn-shenzhen-e
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s DescribeAvailableResourceResponseBodyAvailableZonesAvailableZone) String() string {
@@ -2976,6 +3769,9 @@ func (s *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneMasterR
 }
 
 type DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneMasterResourcesMasterResource struct {
+	// example:
+	//
+	// hbase.sn1.medium
 	InstanceType       *string                                                                                                          `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
 	InstanceTypeDetail *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneMasterResourcesMasterResourceInstanceTypeDetail `json:"InstanceTypeDetail,omitempty" xml:"InstanceTypeDetail,omitempty" type:"Struct"`
 }
@@ -2999,7 +3795,13 @@ func (s *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneMasterR
 }
 
 type DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneMasterResourcesMasterResourceInstanceTypeDetail struct {
+	// example:
+	//
+	// 4
 	Cpu *int32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	// example:
+	//
+	// 8
 	Mem *int32 `json:"Mem,omitempty" xml:"Mem,omitempty"`
 }
 
@@ -3039,6 +3841,9 @@ func (s *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupport
 }
 
 type DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngine struct {
+	// example:
+	//
+	// hbase
 	Engine                  *string                                                                                                                 `json:"Engine,omitempty" xml:"Engine,omitempty"`
 	SupportedEngineVersions *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersions `json:"SupportedEngineVersions,omitempty" xml:"SupportedEngineVersions,omitempty" type:"Struct"`
 }
@@ -3080,7 +3885,10 @@ func (s *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupport
 
 type DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersionsSupportedEngineVersion struct {
 	SupportedCategories *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersionsSupportedEngineVersionSupportedCategories `json:"SupportedCategories,omitempty" xml:"SupportedCategories,omitempty" type:"Struct"`
-	Version             *string                                                                                                                                                          `json:"Version,omitempty" xml:"Version,omitempty"`
+	// example:
+	//
+	// 2.0
+	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersionsSupportedEngineVersion) String() string {
@@ -3119,6 +3927,9 @@ func (s *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupport
 }
 
 type DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersionsSupportedEngineVersionSupportedCategoriesSupportedCategories struct {
+	// example:
+	//
+	// cluster
 	Category              *string                                                                                                                                                                                                  `json:"Category,omitempty" xml:"Category,omitempty"`
 	SupportedStorageTypes *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersionsSupportedEngineVersionSupportedCategoriesSupportedCategoriesSupportedStorageTypes `json:"SupportedStorageTypes,omitempty" xml:"SupportedStorageTypes,omitempty" type:"Struct"`
 }
@@ -3160,7 +3971,10 @@ func (s *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupport
 
 type DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersionsSupportedEngineVersionSupportedCategoriesSupportedCategoriesSupportedStorageTypesSupportedStorageType struct {
 	CoreResources *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersionsSupportedEngineVersionSupportedCategoriesSupportedCategoriesSupportedStorageTypesSupportedStorageTypeCoreResources `json:"CoreResources,omitempty" xml:"CoreResources,omitempty" type:"Struct"`
-	StorageType   *string                                                                                                                                                                                                                                   `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
+	// example:
+	//
+	// cloud_ssd
+	StorageType *string `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
 }
 
 func (s DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersionsSupportedEngineVersionSupportedCategoriesSupportedCategoriesSupportedStorageTypesSupportedStorageType) String() string {
@@ -3200,9 +4014,15 @@ func (s *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupport
 
 type DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersionsSupportedEngineVersionSupportedCategoriesSupportedCategoriesSupportedStorageTypesSupportedStorageTypeCoreResourcesCoreResource struct {
 	DBInstanceStorageRange *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersionsSupportedEngineVersionSupportedCategoriesSupportedCategoriesSupportedStorageTypesSupportedStorageTypeCoreResourcesCoreResourceDBInstanceStorageRange `json:"DBInstanceStorageRange,omitempty" xml:"DBInstanceStorageRange,omitempty" type:"Struct"`
-	InstanceType           *string                                                                                                                                                                                                                                                                     `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	InstanceTypeDetail     *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersionsSupportedEngineVersionSupportedCategoriesSupportedCategoriesSupportedStorageTypesSupportedStorageTypeCoreResourcesCoreResourceInstanceTypeDetail     `json:"InstanceTypeDetail,omitempty" xml:"InstanceTypeDetail,omitempty" type:"Struct"`
-	MaxCoreCount           *int32                                                                                                                                                                                                                                                                      `json:"MaxCoreCount,omitempty" xml:"MaxCoreCount,omitempty"`
+	// example:
+	//
+	// hbase.sn1.large
+	InstanceType       *string                                                                                                                                                                                                                                                                 `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	InstanceTypeDetail *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersionsSupportedEngineVersionSupportedCategoriesSupportedCategoriesSupportedStorageTypesSupportedStorageTypeCoreResourcesCoreResourceInstanceTypeDetail `json:"InstanceTypeDetail,omitempty" xml:"InstanceTypeDetail,omitempty" type:"Struct"`
+	// example:
+	//
+	// 16
+	MaxCoreCount *int32 `json:"MaxCoreCount,omitempty" xml:"MaxCoreCount,omitempty"`
 }
 
 func (s DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersionsSupportedEngineVersionSupportedCategoriesSupportedCategoriesSupportedStorageTypesSupportedStorageTypeCoreResourcesCoreResource) String() string {
@@ -3234,8 +4054,17 @@ func (s *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupport
 }
 
 type DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersionsSupportedEngineVersionSupportedCategoriesSupportedCategoriesSupportedStorageTypesSupportedStorageTypeCoreResourcesCoreResourceDBInstanceStorageRange struct {
-	MaxSize  *int32 `json:"MaxSize,omitempty" xml:"MaxSize,omitempty"`
-	MinSize  *int32 `json:"MinSize,omitempty" xml:"MinSize,omitempty"`
+	// example:
+	//
+	// 8000
+	MaxSize *int32 `json:"MaxSize,omitempty" xml:"MaxSize,omitempty"`
+	// example:
+	//
+	// 400
+	MinSize *int32 `json:"MinSize,omitempty" xml:"MinSize,omitempty"`
+	// example:
+	//
+	// 40
 	StepSize *int32 `json:"StepSize,omitempty" xml:"StepSize,omitempty"`
 }
 
@@ -3263,7 +4092,13 @@ func (s *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupport
 }
 
 type DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersionsSupportedEngineVersionSupportedCategoriesSupportedCategoriesSupportedStorageTypesSupportedStorageTypeCoreResourcesCoreResourceInstanceTypeDetail struct {
+	// example:
+	//
+	// 4
 	Cpu *int32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	// example:
+	//
+	// 8
 	Mem *int32 `json:"Mem,omitempty" xml:"Mem,omitempty"`
 }
 
@@ -3315,6 +4150,11 @@ func (s *DescribeAvailableResourceResponse) SetBody(v *DescribeAvailableResource
 }
 
 type DescribeBackupPlanConfigRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ld-m5eznlga4k5bcxxxx
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 }
 
@@ -3332,11 +4172,23 @@ func (s *DescribeBackupPlanConfigRequest) SetClusterId(v string) *DescribeBackup
 }
 
 type DescribeBackupPlanConfigResponseBody struct {
-	FullBackupCycle     *int32                                      `json:"FullBackupCycle,omitempty" xml:"FullBackupCycle,omitempty"`
-	MinHFileBackupCount *int32                                      `json:"MinHFileBackupCount,omitempty" xml:"MinHFileBackupCount,omitempty"`
-	NextFullBackupDate  *string                                     `json:"NextFullBackupDate,omitempty" xml:"NextFullBackupDate,omitempty"`
-	RequestId           *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Tables              *DescribeBackupPlanConfigResponseBodyTables `json:"Tables,omitempty" xml:"Tables,omitempty" type:"Struct"`
+	// example:
+	//
+	// 7
+	FullBackupCycle *int32 `json:"FullBackupCycle,omitempty" xml:"FullBackupCycle,omitempty"`
+	// example:
+	//
+	// 3
+	MinHFileBackupCount *int32 `json:"MinHFileBackupCount,omitempty" xml:"MinHFileBackupCount,omitempty"`
+	// example:
+	//
+	// 2020-11-09T18:00:00Z
+	NextFullBackupDate *string `json:"NextFullBackupDate,omitempty" xml:"NextFullBackupDate,omitempty"`
+	// example:
+	//
+	// 33A23201-6038-4A6A-B76A-61047EA04E6A
+	RequestId *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Tables    *DescribeBackupPlanConfigResponseBodyTables `json:"Tables,omitempty" xml:"Tables,omitempty" type:"Struct"`
 }
 
 func (s DescribeBackupPlanConfigResponseBody) String() string {
@@ -3419,6 +4271,11 @@ func (s *DescribeBackupPlanConfigResponse) SetBody(v *DescribeBackupPlanConfigRe
 }
 
 type DescribeBackupPolicyRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// hb-t4naqsay5gn******
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 }
 
@@ -3436,12 +4293,30 @@ func (s *DescribeBackupPolicyRequest) SetClusterId(v string) *DescribeBackupPoli
 }
 
 type DescribeBackupPolicyResponseBody struct {
-	BackupRetentionPeriod       *string `json:"BackupRetentionPeriod,omitempty" xml:"BackupRetentionPeriod,omitempty"`
-	PreferredBackupEndTimeUTC   *string `json:"PreferredBackupEndTimeUTC,omitempty" xml:"PreferredBackupEndTimeUTC,omitempty"`
-	PreferredBackupPeriod       *string `json:"PreferredBackupPeriod,omitempty" xml:"PreferredBackupPeriod,omitempty"`
+	// example:
+	//
+	// 10
+	BackupRetentionPeriod *string `json:"BackupRetentionPeriod,omitempty" xml:"BackupRetentionPeriod,omitempty"`
+	// example:
+	//
+	// 18:00Z
+	PreferredBackupEndTimeUTC *string `json:"PreferredBackupEndTimeUTC,omitempty" xml:"PreferredBackupEndTimeUTC,omitempty"`
+	// example:
+	//
+	// Friday
+	PreferredBackupPeriod *string `json:"PreferredBackupPeriod,omitempty" xml:"PreferredBackupPeriod,omitempty"`
+	// example:
+	//
+	// 17:00Z
 	PreferredBackupStartTimeUTC *string `json:"PreferredBackupStartTimeUTC,omitempty" xml:"PreferredBackupStartTimeUTC,omitempty"`
-	PreferredBackupTime         *string `json:"PreferredBackupTime,omitempty" xml:"PreferredBackupTime,omitempty"`
-	RequestId                   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 01:00-02:00
+	PreferredBackupTime *string `json:"PreferredBackupTime,omitempty" xml:"PreferredBackupTime,omitempty"`
+	// example:
+	//
+	// 94AC38B6-7C6D-45B2-BC03-B8750071A482
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeBackupPolicyResponseBody) String() string {
@@ -3512,6 +4387,11 @@ func (s *DescribeBackupPolicyResponse) SetBody(v *DescribeBackupPolicyResponseBo
 }
 
 type DescribeBackupStatusRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ld-m5eznlga4k5bcxxxx
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 }
 
@@ -3529,10 +4409,22 @@ func (s *DescribeBackupStatusRequest) SetClusterId(v string) *DescribeBackupStat
 }
 
 type DescribeBackupStatusResponseBody struct {
+	// example:
+	//
+	// opened
 	BackupStatus *string `json:"BackupStatus,omitempty" xml:"BackupStatus,omitempty"`
+	// example:
+	//
+	// bds-m5e54q06ceyhxxxx
 	BdsClusterId *string `json:"BdsClusterId,omitempty" xml:"BdsClusterId,omitempty"`
-	ClusterId    *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// ld-m5eznlga4k5bcxxxx
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// example:
+	//
+	// F7E71430-A825-470A-B40B-DF3F3AAC9BEE
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeBackupStatusResponseBody) String() string {
@@ -3593,9 +4485,20 @@ func (s *DescribeBackupStatusResponse) SetBody(v *DescribeBackupStatusResponseBo
 }
 
 type DescribeBackupSummaryRequest struct {
-	ClusterId  *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ld-bp169l540vc6c****
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
 func (s DescribeBackupSummaryRequest) String() string {
@@ -3622,9 +4525,12 @@ func (s *DescribeBackupSummaryRequest) SetPageSize(v int32) *DescribeBackupSumma
 }
 
 type DescribeBackupSummaryResponseBody struct {
-	Full      *DescribeBackupSummaryResponseBodyFull `json:"Full,omitempty" xml:"Full,omitempty" type:"Struct"`
-	Incr      *DescribeBackupSummaryResponseBodyIncr `json:"Incr,omitempty" xml:"Incr,omitempty" type:"Struct"`
-	RequestId *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Full *DescribeBackupSummaryResponseBodyFull `json:"Full,omitempty" xml:"Full,omitempty" type:"Struct"`
+	Incr *DescribeBackupSummaryResponseBodyIncr `json:"Incr,omitempty" xml:"Incr,omitempty" type:"Struct"`
+	// example:
+	//
+	// 168793CB-7B31-43E7-ADAB-FE3E8D584D6E
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeBackupSummaryResponseBody) String() string {
@@ -3651,12 +4557,27 @@ func (s *DescribeBackupSummaryResponseBody) SetRequestId(v string) *DescribeBack
 }
 
 type DescribeBackupSummaryResponseBodyFull struct {
-	HasMore            *string                                       `json:"HasMore,omitempty" xml:"HasMore,omitempty"`
-	NextFullBackupDate *string                                       `json:"NextFullBackupDate,omitempty" xml:"NextFullBackupDate,omitempty"`
-	PageNumber         *int32                                        `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize           *int32                                        `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Records            *DescribeBackupSummaryResponseBodyFullRecords `json:"Records,omitempty" xml:"Records,omitempty" type:"Struct"`
-	Total              *int32                                        `json:"Total,omitempty" xml:"Total,omitempty"`
+	// example:
+	//
+	// false
+	HasMore *string `json:"HasMore,omitempty" xml:"HasMore,omitempty"`
+	// example:
+	//
+	// 2020-11-09T18:00:00Z
+	NextFullBackupDate *string `json:"NextFullBackupDate,omitempty" xml:"NextFullBackupDate,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32                                        `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Records  *DescribeBackupSummaryResponseBodyFullRecords `json:"Records,omitempty" xml:"Records,omitempty" type:"Struct"`
+	// example:
+	//
+	// 2
+	Total *int32 `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
 func (s DescribeBackupSummaryResponseBodyFull) String() string {
@@ -3715,13 +4636,34 @@ func (s *DescribeBackupSummaryResponseBodyFullRecords) SetRecord(v []*DescribeBa
 }
 
 type DescribeBackupSummaryResponseBodyFullRecordsRecord struct {
+	// example:
+	//
+	// 2020-11-02T18:00:00Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	DataSize   *string `json:"DataSize,omitempty" xml:"DataSize,omitempty"`
+	// example:
+	//
+	// 1.2 kB
+	DataSize *string `json:"DataSize,omitempty" xml:"DataSize,omitempty"`
+	// example:
+	//
+	// 2020-11-02T18:02:04Z
 	FinishTime *string `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
-	Process    *string `json:"Process,omitempty" xml:"Process,omitempty"`
-	RecordId   *string `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
-	Speed      *string `json:"Speed,omitempty" xml:"Speed,omitempty"`
-	Status     *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// 1/1
+	Process *string `json:"Process,omitempty" xml:"Process,omitempty"`
+	// example:
+	//
+	// 20201103020000
+	RecordId *string `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
+	// example:
+	//
+	// 0.00 MB/s
+	Speed *string `json:"Speed,omitempty" xml:"Speed,omitempty"`
+	// example:
+	//
+	// SUCCESS
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DescribeBackupSummaryResponseBodyFullRecordsRecord) String() string {
@@ -3768,12 +4710,30 @@ func (s *DescribeBackupSummaryResponseBodyFullRecordsRecord) SetStatus(v string)
 }
 
 type DescribeBackupSummaryResponseBodyIncr struct {
+	// example:
+	//
+	// 266 B
 	BackupLogSize *string `json:"BackupLogSize,omitempty" xml:"BackupLogSize,omitempty"`
-	Pos           *string `json:"Pos,omitempty" xml:"Pos,omitempty"`
-	QueueLogNum   *string `json:"QueueLogNum,omitempty" xml:"QueueLogNum,omitempty"`
+	// example:
+	//
+	// 2020-11-05T01:20:31Z
+	Pos *string `json:"Pos,omitempty" xml:"Pos,omitempty"`
+	// example:
+	//
+	// 0
+	QueueLogNum *string `json:"QueueLogNum,omitempty" xml:"QueueLogNum,omitempty"`
+	// example:
+	//
+	// 2
 	RunningLogNum *string `json:"RunningLogNum,omitempty" xml:"RunningLogNum,omitempty"`
-	Speed         *string `json:"Speed,omitempty" xml:"Speed,omitempty"`
-	Status        *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// 0.00 MB/s
+	Speed *string `json:"Speed,omitempty" xml:"Speed,omitempty"`
+	// example:
+	//
+	// RUNNING
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DescribeBackupSummaryResponseBodyIncr) String() string {
@@ -3844,10 +4804,26 @@ func (s *DescribeBackupSummaryResponse) SetBody(v *DescribeBackupSummaryResponse
 }
 
 type DescribeBackupTablesRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2020110302xxxx
 	BackupRecordId *string `json:"BackupRecordId,omitempty" xml:"BackupRecordId,omitempty"`
-	ClusterId      *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	PageNumber     *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize       *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ld-m5eznlga4k5bcxxxx
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
 func (s DescribeBackupTablesRequest) String() string {
@@ -3880,11 +4856,23 @@ func (s *DescribeBackupTablesRequest) SetPageSize(v int32) *DescribeBackupTables
 
 type DescribeBackupTablesResponseBody struct {
 	BackupRecords *DescribeBackupTablesResponseBodyBackupRecords `json:"BackupRecords,omitempty" xml:"BackupRecords,omitempty" type:"Struct"`
-	PageNumber    *int32                                         `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize      *int32                                         `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId     *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Tables        *DescribeBackupTablesResponseBodyTables        `json:"Tables,omitempty" xml:"Tables,omitempty" type:"Struct"`
-	Total         *int64                                         `json:"Total,omitempty" xml:"Total,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 01262E9C-B0CC-4663-82FA-D50173649F92
+	RequestId *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Tables    *DescribeBackupTablesResponseBodyTables `json:"Tables,omitempty" xml:"Tables,omitempty" type:"Struct"`
+	// example:
+	//
+	// 1
+	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
 func (s DescribeBackupTablesResponseBody) String() string {
@@ -3943,14 +4931,38 @@ func (s *DescribeBackupTablesResponseBodyBackupRecords) SetBackupRecord(v []*Des
 }
 
 type DescribeBackupTablesResponseBodyBackupRecordsBackupRecord struct {
-	DataSize  *string `json:"DataSize,omitempty" xml:"DataSize,omitempty"`
-	EndTime   *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	Process   *string `json:"Process,omitempty" xml:"Process,omitempty"`
-	Speed     *string `json:"Speed,omitempty" xml:"Speed,omitempty"`
+	// example:
+	//
+	// 1.2 kB
+	DataSize *string `json:"DataSize,omitempty" xml:"DataSize,omitempty"`
+	// example:
+	//
+	// 2020-11-02T18:00:05Z
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// example:
+	//
+	// null
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 14/14
+	Process *string `json:"Process,omitempty" xml:"Process,omitempty"`
+	// example:
+	//
+	// 0.00 MB/s
+	Speed *string `json:"Speed,omitempty" xml:"Speed,omitempty"`
+	// example:
+	//
+	// 2020-11-02T18:00:00Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	State     *string `json:"State,omitempty" xml:"State,omitempty"`
-	Table     *string `json:"Table,omitempty" xml:"Table,omitempty"`
+	// example:
+	//
+	// SUCCEEDED
+	State *string `json:"State,omitempty" xml:"State,omitempty"`
+	// example:
+	//
+	// default:test1
+	Table *string `json:"Table,omitempty" xml:"Table,omitempty"`
 }
 
 func (s DescribeBackupTablesResponseBodyBackupRecordsBackupRecord) String() string {
@@ -4048,13 +5060,39 @@ func (s *DescribeBackupTablesResponse) SetBody(v *DescribeBackupTablesResponseBo
 }
 
 type DescribeBackupsRequest struct {
-	BackupId     *string `json:"BackupId,omitempty" xml:"BackupId,omitempty"`
-	ClusterId    *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	EndTime      *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	EndTimeUTC   *string `json:"EndTimeUTC,omitempty" xml:"EndTimeUTC,omitempty"`
-	PageNumber   *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize     *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	StartTime    *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// example:
+	//
+	// job-xxxx
+	BackupId *string `json:"BackupId,omitempty" xml:"BackupId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// hb-t4naqsay5gn****
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// example:
+	//
+	// 2020-12-23 23:59:59
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// example:
+	//
+	// 2020-12-23T15:59:59Z
+	EndTimeUTC *string `json:"EndTimeUTC,omitempty" xml:"EndTimeUTC,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 2020-12-13 00:00:00
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// example:
+	//
+	// 2020-12-12T16:00:00Z
 	StartTimeUTC *string `json:"StartTimeUTC,omitempty" xml:"StartTimeUTC,omitempty"`
 }
 
@@ -4107,12 +5145,27 @@ func (s *DescribeBackupsRequest) SetStartTimeUTC(v string) *DescribeBackupsReque
 }
 
 type DescribeBackupsResponseBody struct {
-	Backups      *DescribeBackupsResponseBodyBackups `json:"Backups,omitempty" xml:"Backups,omitempty" type:"Struct"`
-	EnableStatus *string                             `json:"EnableStatus,omitempty" xml:"EnableStatus,omitempty"`
-	PageNumber   *int32                              `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize     *int32                              `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId    *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount   *int32                              `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	Backups *DescribeBackupsResponseBodyBackups `json:"Backups,omitempty" xml:"Backups,omitempty" type:"Struct"`
+	// example:
+	//
+	// enable
+	EnableStatus *string `json:"EnableStatus,omitempty" xml:"EnableStatus,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// A93CE373-0FDE-4CCB-9DBA-6700906825ED
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 1
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeBackupsResponseBody) String() string {
@@ -4171,18 +5224,54 @@ func (s *DescribeBackupsResponseBodyBackups) SetBackup(v []*DescribeBackupsRespo
 }
 
 type DescribeBackupsResponseBodyBackupsBackup struct {
-	BackupDBNames      *string `json:"BackupDBNames,omitempty" xml:"BackupDBNames,omitempty"`
-	BackupDownloadURL  *string `json:"BackupDownloadURL,omitempty" xml:"BackupDownloadURL,omitempty"`
-	BackupEndTime      *string `json:"BackupEndTime,omitempty" xml:"BackupEndTime,omitempty"`
-	BackupEndTimeUTC   *string `json:"BackupEndTimeUTC,omitempty" xml:"BackupEndTimeUTC,omitempty"`
-	BackupId           *int32  `json:"BackupId,omitempty" xml:"BackupId,omitempty"`
-	BackupMethod       *string `json:"BackupMethod,omitempty" xml:"BackupMethod,omitempty"`
-	BackupMode         *string `json:"BackupMode,omitempty" xml:"BackupMode,omitempty"`
-	BackupSize         *string `json:"BackupSize,omitempty" xml:"BackupSize,omitempty"`
-	BackupStartTime    *string `json:"BackupStartTime,omitempty" xml:"BackupStartTime,omitempty"`
+	// example:
+	//
+	// 1
+	BackupDBNames *string `json:"BackupDBNames,omitempty" xml:"BackupDBNames,omitempty"`
+	// example:
+	//
+	// 1
+	BackupDownloadURL *string `json:"BackupDownloadURL,omitempty" xml:"BackupDownloadURL,omitempty"`
+	// example:
+	//
+	// 2020-12-23 17:25:24
+	BackupEndTime *string `json:"BackupEndTime,omitempty" xml:"BackupEndTime,omitempty"`
+	// example:
+	//
+	// 2020-12-23T09:25:24Z
+	BackupEndTimeUTC *string `json:"BackupEndTimeUTC,omitempty" xml:"BackupEndTimeUTC,omitempty"`
+	// example:
+	//
+	// 511876087
+	BackupId *int32 `json:"BackupId,omitempty" xml:"BackupId,omitempty"`
+	// example:
+	//
+	// P
+	BackupMethod *string `json:"BackupMethod,omitempty" xml:"BackupMethod,omitempty"`
+	// example:
+	//
+	// 0
+	BackupMode *string `json:"BackupMode,omitempty" xml:"BackupMode,omitempty"`
+	// example:
+	//
+	// 0.00
+	BackupSize *string `json:"BackupSize,omitempty" xml:"BackupSize,omitempty"`
+	// example:
+	//
+	// 2020-12-23 17:25:08
+	BackupStartTime *string `json:"BackupStartTime,omitempty" xml:"BackupStartTime,omitempty"`
+	// example:
+	//
+	// 2020-12-23T09:25:08Z
 	BackupStartTimeUTC *string `json:"BackupStartTimeUTC,omitempty" xml:"BackupStartTimeUTC,omitempty"`
-	BackupStatus       *string `json:"BackupStatus,omitempty" xml:"BackupStatus,omitempty"`
-	BackupType         *string `json:"BackupType,omitempty" xml:"BackupType,omitempty"`
+	// example:
+	//
+	// 0
+	BackupStatus *string `json:"BackupStatus,omitempty" xml:"BackupStatus,omitempty"`
+	// example:
+	//
+	// F
+	BackupType *string `json:"BackupType,omitempty" xml:"BackupType,omitempty"`
 }
 
 func (s DescribeBackupsResponseBodyBackupsBackup) String() string {
@@ -4283,8 +5372,18 @@ func (s *DescribeBackupsResponse) SetBody(v *DescribeBackupsResponseBody) *Descr
 }
 
 type DescribeClusterConnectionRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ld-bp150tns0sjxs****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	RegionId  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DescribeClusterConnectionRequest) String() string {
@@ -4306,17 +5405,35 @@ func (s *DescribeClusterConnectionRequest) SetRegionId(v string) *DescribeCluste
 }
 
 type DescribeClusterConnectionResponseBody struct {
-	DbType              *string                                                   `json:"DbType,omitempty" xml:"DbType,omitempty"`
-	IsMultimod          *string                                                   `json:"IsMultimod,omitempty" xml:"IsMultimod,omitempty"`
-	NetType             *string                                                   `json:"NetType,omitempty" xml:"NetType,omitempty"`
+	// example:
+	//
+	// hbaseue
+	DbType *string `json:"DbType,omitempty" xml:"DbType,omitempty"`
+	// example:
+	//
+	// true
+	IsMultimod *string `json:"IsMultimod,omitempty" xml:"IsMultimod,omitempty"`
+	// example:
+	//
+	// VPC
+	NetType *string `json:"NetType,omitempty" xml:"NetType,omitempty"`
+	// example:
+	//
+	// 70220050-A465-5DCC-8C0C-C38C6E3DB24D
 	RequestId           *string                                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	ServiceConnAddrs    *DescribeClusterConnectionResponseBodyServiceConnAddrs    `json:"ServiceConnAddrs,omitempty" xml:"ServiceConnAddrs,omitempty" type:"Struct"`
 	SlbConnAddrs        *DescribeClusterConnectionResponseBodySlbConnAddrs        `json:"SlbConnAddrs,omitempty" xml:"SlbConnAddrs,omitempty" type:"Struct"`
 	ThriftConn          *DescribeClusterConnectionResponseBodyThriftConn          `json:"ThriftConn,omitempty" xml:"ThriftConn,omitempty" type:"Struct"`
 	UiProxyConnAddrInfo *DescribeClusterConnectionResponseBodyUiProxyConnAddrInfo `json:"UiProxyConnAddrInfo,omitempty" xml:"UiProxyConnAddrInfo,omitempty" type:"Struct"`
-	VSwitchId           *string                                                   `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	VpcId               *string                                                   `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	ZkConnAddrs         *DescribeClusterConnectionResponseBodyZkConnAddrs         `json:"ZkConnAddrs,omitempty" xml:"ZkConnAddrs,omitempty" type:"Struct"`
+	// example:
+	//
+	// vsw-bp1foll427ze3d4ps****
+	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	// example:
+	//
+	// vpc-bp15s22y1a7sff5gj****
+	VpcId       *string                                           `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	ZkConnAddrs *DescribeClusterConnectionResponseBodyZkConnAddrs `json:"ZkConnAddrs,omitempty" xml:"ZkConnAddrs,omitempty" type:"Struct"`
 }
 
 func (s DescribeClusterConnectionResponseBody) String() string {
@@ -4401,7 +5518,10 @@ func (s *DescribeClusterConnectionResponseBodyServiceConnAddrs) SetServiceConnAd
 
 type DescribeClusterConnectionResponseBodyServiceConnAddrsServiceConnAddr struct {
 	ConnAddrInfo *DescribeClusterConnectionResponseBodyServiceConnAddrsServiceConnAddrConnAddrInfo `json:"ConnAddrInfo,omitempty" xml:"ConnAddrInfo,omitempty" type:"Struct"`
-	ConnType     *string                                                                           `json:"ConnType,omitempty" xml:"ConnType,omitempty"`
+	// example:
+	//
+	// PhoenixConnAddr
+	ConnType *string `json:"ConnType,omitempty" xml:"ConnType,omitempty"`
 }
 
 func (s DescribeClusterConnectionResponseBodyServiceConnAddrsServiceConnAddr) String() string {
@@ -4423,9 +5543,18 @@ func (s *DescribeClusterConnectionResponseBodyServiceConnAddrsServiceConnAddr) S
 }
 
 type DescribeClusterConnectionResponseBodyServiceConnAddrsServiceConnAddrConnAddrInfo struct {
-	ConnAddr     *string `json:"ConnAddr,omitempty" xml:"ConnAddr,omitempty"`
+	// example:
+	//
+	// hb-****-proxy-phoenix.hbase.rds.aliyuncs.com
+	ConnAddr *string `json:"ConnAddr,omitempty" xml:"ConnAddr,omitempty"`
+	// example:
+	//
+	// 8765
 	ConnAddrPort *string `json:"ConnAddrPort,omitempty" xml:"ConnAddrPort,omitempty"`
-	NetType      *string `json:"NetType,omitempty" xml:"NetType,omitempty"`
+	// example:
+	//
+	// 2
+	NetType *string `json:"NetType,omitempty" xml:"NetType,omitempty"`
 }
 
 func (s DescribeClusterConnectionResponseBodyServiceConnAddrsServiceConnAddrConnAddrInfo) String() string {
@@ -4470,7 +5599,10 @@ func (s *DescribeClusterConnectionResponseBodySlbConnAddrs) SetSlbConnAddr(v []*
 
 type DescribeClusterConnectionResponseBodySlbConnAddrsSlbConnAddr struct {
 	ConnAddrInfo *DescribeClusterConnectionResponseBodySlbConnAddrsSlbConnAddrConnAddrInfo `json:"ConnAddrInfo,omitempty" xml:"ConnAddrInfo,omitempty" type:"Struct"`
-	SlbType      *string                                                                   `json:"SlbType,omitempty" xml:"SlbType,omitempty"`
+	// example:
+	//
+	// hbaseue
+	SlbType *string `json:"SlbType,omitempty" xml:"SlbType,omitempty"`
 }
 
 func (s DescribeClusterConnectionResponseBodySlbConnAddrsSlbConnAddr) String() string {
@@ -4492,9 +5624,18 @@ func (s *DescribeClusterConnectionResponseBodySlbConnAddrsSlbConnAddr) SetSlbTyp
 }
 
 type DescribeClusterConnectionResponseBodySlbConnAddrsSlbConnAddrConnAddrInfo struct {
-	ConnAddr     *string `json:"ConnAddr,omitempty" xml:"ConnAddr,omitempty"`
+	// example:
+	//
+	// ld-bp150tns0sjxs****-proxy-hbaseue-pub.hbaseue.rds.aliyuncs.com
+	ConnAddr *string `json:"ConnAddr,omitempty" xml:"ConnAddr,omitempty"`
+	// example:
+	//
+	// 9190
 	ConnAddrPort *string `json:"ConnAddrPort,omitempty" xml:"ConnAddrPort,omitempty"`
-	NetType      *string `json:"NetType,omitempty" xml:"NetType,omitempty"`
+	// example:
+	//
+	// 0
+	NetType *string `json:"NetType,omitempty" xml:"NetType,omitempty"`
 }
 
 func (s DescribeClusterConnectionResponseBodySlbConnAddrsSlbConnAddrConnAddrInfo) String() string {
@@ -4521,9 +5662,18 @@ func (s *DescribeClusterConnectionResponseBodySlbConnAddrsSlbConnAddrConnAddrInf
 }
 
 type DescribeClusterConnectionResponseBodyThriftConn struct {
-	ConnAddr     *string `json:"ConnAddr,omitempty" xml:"ConnAddr,omitempty"`
+	// example:
+	//
+	// hb-bp1u0639js2h7****-proxy-thrift.hbase.rds.aliyuncs.com
+	ConnAddr *string `json:"ConnAddr,omitempty" xml:"ConnAddr,omitempty"`
+	// example:
+	//
+	// 9099
 	ConnAddrPort *string `json:"ConnAddrPort,omitempty" xml:"ConnAddrPort,omitempty"`
-	NetType      *string `json:"NetType,omitempty" xml:"NetType,omitempty"`
+	// example:
+	//
+	// 2
+	NetType *string `json:"NetType,omitempty" xml:"NetType,omitempty"`
 }
 
 func (s DescribeClusterConnectionResponseBodyThriftConn) String() string {
@@ -4550,9 +5700,18 @@ func (s *DescribeClusterConnectionResponseBodyThriftConn) SetNetType(v string) *
 }
 
 type DescribeClusterConnectionResponseBodyUiProxyConnAddrInfo struct {
-	ConnAddr     *string `json:"ConnAddr,omitempty" xml:"ConnAddr,omitempty"`
+	// example:
+	//
+	// ld-bp150tns0sjxs****-master1-001.hbaseue.rds.aliyuncs.com
+	ConnAddr *string `json:"ConnAddr,omitempty" xml:"ConnAddr,omitempty"`
+	// example:
+	//
+	// 443
 	ConnAddrPort *string `json:"ConnAddrPort,omitempty" xml:"ConnAddrPort,omitempty"`
-	NetType      *string `json:"NetType,omitempty" xml:"NetType,omitempty"`
+	// example:
+	//
+	// PUBLIC
+	NetType *string `json:"NetType,omitempty" xml:"NetType,omitempty"`
 }
 
 func (s DescribeClusterConnectionResponseBodyUiProxyConnAddrInfo) String() string {
@@ -4596,9 +5755,18 @@ func (s *DescribeClusterConnectionResponseBodyZkConnAddrs) SetZkConnAddr(v []*De
 }
 
 type DescribeClusterConnectionResponseBodyZkConnAddrsZkConnAddr struct {
-	ConnAddr     *string `json:"ConnAddr,omitempty" xml:"ConnAddr,omitempty"`
+	// example:
+	//
+	// ld-bp150tns0sjxs****-master1-001.hbaseue.rds.aliyuncs.com
+	ConnAddr *string `json:"ConnAddr,omitempty" xml:"ConnAddr,omitempty"`
+	// example:
+	//
+	// 2181
 	ConnAddrPort *string `json:"ConnAddrPort,omitempty" xml:"ConnAddrPort,omitempty"`
-	NetType      *string `json:"NetType,omitempty" xml:"NetType,omitempty"`
+	// example:
+	//
+	// 2
+	NetType *string `json:"NetType,omitempty" xml:"NetType,omitempty"`
 }
 
 func (s DescribeClusterConnectionResponseBodyZkConnAddrsZkConnAddr) String() string {
@@ -4654,6 +5822,11 @@ func (s *DescribeClusterConnectionResponse) SetBody(v *DescribeClusterConnection
 }
 
 type DescribeColdStorageRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ld-bp1uoihlf82e8****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 }
 
@@ -4671,14 +5844,38 @@ func (s *DescribeColdStorageRequest) SetClusterId(v string) *DescribeColdStorage
 }
 
 type DescribeColdStorageResponseBody struct {
-	ClusterId             *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	ColdStorageSize       *string `json:"ColdStorageSize,omitempty" xml:"ColdStorageSize,omitempty"`
-	ColdStorageType       *string `json:"ColdStorageType,omitempty" xml:"ColdStorageType,omitempty"`
-	ColdStorageUseAmount  *string `json:"ColdStorageUseAmount,omitempty" xml:"ColdStorageUseAmount,omitempty"`
+	// example:
+	//
+	// ld-bp1uoihlf82e8****
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// example:
+	//
+	// 800
+	ColdStorageSize *string `json:"ColdStorageSize,omitempty" xml:"ColdStorageSize,omitempty"`
+	// example:
+	//
+	// BdsColdStorage
+	ColdStorageType *string `json:"ColdStorageType,omitempty" xml:"ColdStorageType,omitempty"`
+	// example:
+	//
+	// 20.00
+	ColdStorageUseAmount *string `json:"ColdStorageUseAmount,omitempty" xml:"ColdStorageUseAmount,omitempty"`
+	// example:
+	//
+	// 20.00
 	ColdStorageUsePercent *string `json:"ColdStorageUsePercent,omitempty" xml:"ColdStorageUsePercent,omitempty"`
-	OpenStatus            *string `json:"OpenStatus,omitempty" xml:"OpenStatus,omitempty"`
-	PayType               *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	RequestId             *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// open
+	OpenStatus *string `json:"OpenStatus,omitempty" xml:"OpenStatus,omitempty"`
+	// example:
+	//
+	// POSTPAY
+	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	// example:
+	//
+	// DCB9479E-F05F-4D1C-AFB7-C639B87764B7
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeColdStorageResponseBody) String() string {
@@ -4759,6 +5956,11 @@ func (s *DescribeColdStorageResponse) SetBody(v *DescribeColdStorageResponseBody
 }
 
 type DescribeDBInstanceUsageRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// hb-bp1u0639js2h7****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 }
 
@@ -4776,8 +5978,14 @@ func (s *DescribeDBInstanceUsageRequest) SetClusterId(v string) *DescribeDBInsta
 }
 
 type DescribeDBInstanceUsageResponseBody struct {
+	// example:
+	//
+	// A2D841CE-D066-53E8-B9AC-3731DCC85397
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *string `json:"Result,omitempty" xml:"Result,omitempty"`
+	// example:
+	//
+	// {\\"disk_usage_record\\":{\\"disk_used\\":\\"0.9GB\\",\\"disk_total\\":\\"1156.1GB\\",\\"usage_rate\\":\\"1%\\"}}
+	Result *string `json:"Result,omitempty" xml:"Result,omitempty"`
 }
 
 func (s DescribeDBInstanceUsageResponseBody) String() string {
@@ -4828,9 +6036,18 @@ func (s *DescribeDBInstanceUsageResponse) SetBody(v *DescribeDBInstanceUsageResp
 }
 
 type DescribeDeletedInstancesRequest struct {
-	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DescribeDeletedInstancesRequest) String() string {
@@ -4857,11 +6074,23 @@ func (s *DescribeDeletedInstancesRequest) SetRegionId(v string) *DescribeDeleted
 }
 
 type DescribeDeletedInstancesResponseBody struct {
-	Instances  *DescribeDeletedInstancesResponseBodyInstances `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Struct"`
-	PageNumber *int32                                         `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32                                         `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId  *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount *int64                                         `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	Instances *DescribeDeletedInstancesResponseBodyInstances `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Struct"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 0CAC5702-C862-44C0-AD54-C9CE70F4B246
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 1
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeDeletedInstancesResponseBody) String() string {
@@ -4915,18 +6144,54 @@ func (s *DescribeDeletedInstancesResponseBodyInstances) SetInstance(v []*Describ
 }
 
 type DescribeDeletedInstancesResponseBodyInstancesInstance struct {
-	ClusterType        *string `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
-	CreatedTime        *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
-	DeleteTime         *string `json:"DeleteTime,omitempty" xml:"DeleteTime,omitempty"`
-	Engine             *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	InstanceId         *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	InstanceName       *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	MajorVersion       *string `json:"MajorVersion,omitempty" xml:"MajorVersion,omitempty"`
+	// example:
+	//
+	// cluster
+	ClusterType *string `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
+	// example:
+	//
+	// 2020-11-02T07:16:07Z
+	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	// example:
+	//
+	// 2020-11-02T07:27:24Z
+	DeleteTime *string `json:"DeleteTime,omitempty" xml:"DeleteTime,omitempty"`
+	// example:
+	//
+	// hbase
+	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	// example:
+	//
+	// hb-bp10q7n2zdw12xxxx
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// e2e-test
+	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// example:
+	//
+	// 2.0
+	MajorVersion *string `json:"MajorVersion,omitempty" xml:"MajorVersion,omitempty"`
+	// example:
+	//
+	// null
 	ModuleStackVersion *string `json:"ModuleStackVersion,omitempty" xml:"ModuleStackVersion,omitempty"`
-	ParentId           *string `json:"ParentId,omitempty" xml:"ParentId,omitempty"`
-	RegionId           *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Status             *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	ZoneId             *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	// example:
+	//
+	// null
+	ParentId *string `json:"ParentId,omitempty" xml:"ParentId,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// DELETED
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// cn-hangzhou-f
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s DescribeDeletedInstancesResponseBodyInstancesInstance) String() string {
@@ -5027,6 +6292,11 @@ func (s *DescribeDeletedInstancesResponse) SetBody(v *DescribeDeletedInstancesRe
 }
 
 type DescribeDiskWarningLineRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// hb-bp1bl7iqzkahmyxxxx
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 }
 
@@ -5044,7 +6314,13 @@ func (s *DescribeDiskWarningLineRequest) SetClusterId(v string) *DescribeDiskWar
 }
 
 type DescribeDiskWarningLineResponseBody struct {
-	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 08DF8283-D290-4107-931E-7913D6D3480D
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 80
 	WarningLine *string `json:"WarningLine,omitempty" xml:"WarningLine,omitempty"`
 }
 
@@ -5096,6 +6372,11 @@ func (s *DescribeDiskWarningLineResponse) SetBody(v *DescribeDiskWarningLineResp
 }
 
 type DescribeEndpointsRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ld-bp150tns0sjxs****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 }
 
@@ -5114,11 +6395,26 @@ func (s *DescribeEndpointsRequest) SetClusterId(v string) *DescribeEndpointsRequ
 
 type DescribeEndpointsResponseBody struct {
 	ConnAddrs *DescribeEndpointsResponseBodyConnAddrs `json:"ConnAddrs,omitempty" xml:"ConnAddrs,omitempty" type:"Struct"`
-	Engine    *string                                 `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	NetType   *string                                 `json:"NetType,omitempty" xml:"NetType,omitempty"`
-	RequestId *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	VSwitchId *string                                 `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	VpcId     *string                                 `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// example:
+	//
+	// hbaseue
+	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	// example:
+	//
+	// VPC
+	NetType *string `json:"NetType,omitempty" xml:"NetType,omitempty"`
+	// example:
+	//
+	// F072593C-5234-5B56-9F63-3C7A3AD85D66
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// vsw-bp1foll427ze3d4ps****
+	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	// example:
+	//
+	// vpc-bp15s22y1a7sff5gj****
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s DescribeEndpointsResponseBody) String() string {
@@ -5177,10 +6473,22 @@ func (s *DescribeEndpointsResponseBodyConnAddrs) SetConnAddrInfo(v []*DescribeEn
 }
 
 type DescribeEndpointsResponseBodyConnAddrsConnAddrInfo struct {
-	ConnAddr     *string `json:"ConnAddr,omitempty" xml:"ConnAddr,omitempty"`
+	// example:
+	//
+	// ****
+	ConnAddr *string `json:"ConnAddr,omitempty" xml:"ConnAddr,omitempty"`
+	// example:
+	//
+	// ****
 	ConnAddrPort *string `json:"ConnAddrPort,omitempty" xml:"ConnAddrPort,omitempty"`
-	ConnType     *string `json:"ConnType,omitempty" xml:"ConnType,omitempty"`
-	NetType      *string `json:"NetType,omitempty" xml:"NetType,omitempty"`
+	// example:
+	//
+	// zkConn
+	ConnType *string `json:"ConnType,omitempty" xml:"ConnType,omitempty"`
+	// example:
+	//
+	// 2
+	NetType *string `json:"NetType,omitempty" xml:"NetType,omitempty"`
 }
 
 func (s DescribeEndpointsResponseBodyConnAddrsConnAddrInfo) String() string {
@@ -5241,6 +6549,11 @@ func (s *DescribeEndpointsResponse) SetBody(v *DescribeEndpointsResponseBody) *D
 }
 
 type DescribeInstanceRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ld-bp150tns0sjxs****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 }
 
@@ -5258,59 +6571,215 @@ func (s *DescribeInstanceRequest) SetClusterId(v string) *DescribeInstanceReques
 }
 
 type DescribeInstanceResponseBody struct {
-	AutoRenewal          *bool                                         `json:"AutoRenewal,omitempty" xml:"AutoRenewal,omitempty"`
-	BackupStatus         *string                                       `json:"BackupStatus,omitempty" xml:"BackupStatus,omitempty"`
-	ClusterId            *string                                       `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	ClusterName          *string                                       `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
-	ClusterType          *string                                       `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
-	ColdStorageSize      *int32                                        `json:"ColdStorageSize,omitempty" xml:"ColdStorageSize,omitempty"`
-	ColdStorageStatus    *string                                       `json:"ColdStorageStatus,omitempty" xml:"ColdStorageStatus,omitempty"`
-	ConfirmMaintainTime  *string                                       `json:"ConfirmMaintainTime,omitempty" xml:"ConfirmMaintainTime,omitempty"`
-	CoreDiskCount        *string                                       `json:"CoreDiskCount,omitempty" xml:"CoreDiskCount,omitempty"`
-	CoreDiskSize         *int32                                        `json:"CoreDiskSize,omitempty" xml:"CoreDiskSize,omitempty"`
-	CoreDiskType         *string                                       `json:"CoreDiskType,omitempty" xml:"CoreDiskType,omitempty"`
-	CoreInstanceType     *string                                       `json:"CoreInstanceType,omitempty" xml:"CoreInstanceType,omitempty"`
-	CoreNodeCount        *int32                                        `json:"CoreNodeCount,omitempty" xml:"CoreNodeCount,omitempty"`
-	CreatedTime          *string                                       `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
-	CreatedTimeUTC       *string                                       `json:"CreatedTimeUTC,omitempty" xml:"CreatedTimeUTC,omitempty"`
-	Duration             *int32                                        `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	EnableHbaseProxy     *bool                                         `json:"EnableHbaseProxy,omitempty" xml:"EnableHbaseProxy,omitempty"`
-	EncryptionKey        *string                                       `json:"EncryptionKey,omitempty" xml:"EncryptionKey,omitempty"`
-	EncryptionType       *string                                       `json:"EncryptionType,omitempty" xml:"EncryptionType,omitempty"`
-	Engine               *string                                       `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	ExpireTime           *string                                       `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	ExpireTimeUTC        *string                                       `json:"ExpireTimeUTC,omitempty" xml:"ExpireTimeUTC,omitempty"`
-	InstanceId           *string                                       `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	InstanceName         *string                                       `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	IsDeletionProtection *bool                                         `json:"IsDeletionProtection,omitempty" xml:"IsDeletionProtection,omitempty"`
-	IsHa                 *bool                                         `json:"IsHa,omitempty" xml:"IsHa,omitempty"`
-	IsLatestVersion      *bool                                         `json:"IsLatestVersion,omitempty" xml:"IsLatestVersion,omitempty"`
-	IsMultiModel         *bool                                         `json:"IsMultiModel,omitempty" xml:"IsMultiModel,omitempty"`
-	LproxyMinorVersion   *string                                       `json:"LproxyMinorVersion,omitempty" xml:"LproxyMinorVersion,omitempty"`
-	MaintainEndTime      *string                                       `json:"MaintainEndTime,omitempty" xml:"MaintainEndTime,omitempty"`
-	MaintainStartTime    *string                                       `json:"MaintainStartTime,omitempty" xml:"MaintainStartTime,omitempty"`
-	MajorVersion         *string                                       `json:"MajorVersion,omitempty" xml:"MajorVersion,omitempty"`
-	MasterDiskSize       *int32                                        `json:"MasterDiskSize,omitempty" xml:"MasterDiskSize,omitempty"`
-	MasterDiskType       *string                                       `json:"MasterDiskType,omitempty" xml:"MasterDiskType,omitempty"`
-	MasterInstanceType   *string                                       `json:"MasterInstanceType,omitempty" xml:"MasterInstanceType,omitempty"`
-	MasterNodeCount      *int32                                        `json:"MasterNodeCount,omitempty" xml:"MasterNodeCount,omitempty"`
-	MinorVersion         *string                                       `json:"MinorVersion,omitempty" xml:"MinorVersion,omitempty"`
-	ModuleId             *int32                                        `json:"ModuleId,omitempty" xml:"ModuleId,omitempty"`
-	ModuleStackVersion   *string                                       `json:"ModuleStackVersion,omitempty" xml:"ModuleStackVersion,omitempty"`
-	NeedUpgrade          *bool                                         `json:"NeedUpgrade,omitempty" xml:"NeedUpgrade,omitempty"`
-	NeedUpgradeComps     *DescribeInstanceResponseBodyNeedUpgradeComps `json:"NeedUpgradeComps,omitempty" xml:"NeedUpgradeComps,omitempty" type:"Struct"`
-	NetworkType          *string                                       `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
-	ParentId             *string                                       `json:"ParentId,omitempty" xml:"ParentId,omitempty"`
-	PayType              *string                                       `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	RegionId             *string                                       `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RequestId            *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ResourceGroupId      *string                                       `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	Status               *string                                       `json:"Status,omitempty" xml:"Status,omitempty"`
-	Tags                 *DescribeInstanceResponseBodyTags             `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
-	TaskProgress         *string                                       `json:"TaskProgress,omitempty" xml:"TaskProgress,omitempty"`
-	VpcId                *string                                       `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	VswitchId            *string                                       `json:"VswitchId,omitempty" xml:"VswitchId,omitempty"`
-	ZoneId               *string                                       `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	// example:
+	//
+	// false
+	AutoRenewal *bool `json:"AutoRenewal,omitempty" xml:"AutoRenewal,omitempty"`
+	// example:
+	//
+	// open
+	BackupStatus *string `json:"BackupStatus,omitempty" xml:"BackupStatus,omitempty"`
+	// example:
+	//
+	// ld-bp150tns0sjxs****
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// example:
+	//
+	// testhbase
+	ClusterName *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
+	// example:
+	//
+	// cluster
+	ClusterType *string `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
+	// example:
+	//
+	// 800
+	ColdStorageSize *int32 `json:"ColdStorageSize,omitempty" xml:"ColdStorageSize,omitempty"`
+	// example:
+	//
+	// open
+	ColdStorageStatus *string `json:"ColdStorageStatus,omitempty" xml:"ColdStorageStatus,omitempty"`
+	// example:
+	//
+	// true
+	ConfirmMaintainTime *string `json:"ConfirmMaintainTime,omitempty" xml:"ConfirmMaintainTime,omitempty"`
+	// example:
+	//
+	// 4
+	CoreDiskCount *string `json:"CoreDiskCount,omitempty" xml:"CoreDiskCount,omitempty"`
+	// example:
+	//
+	// 100
+	CoreDiskSize *int32 `json:"CoreDiskSize,omitempty" xml:"CoreDiskSize,omitempty"`
+	// example:
+	//
+	// cloud_ssd
+	CoreDiskType *string `json:"CoreDiskType,omitempty" xml:"CoreDiskType,omitempty"`
+	// example:
+	//
+	// hbase.sn2.2xlarge
+	CoreInstanceType *string `json:"CoreInstanceType,omitempty" xml:"CoreInstanceType,omitempty"`
+	// example:
+	//
+	// 2
+	CoreNodeCount *int32 `json:"CoreNodeCount,omitempty" xml:"CoreNodeCount,omitempty"`
+	// example:
+	//
+	// 2021-07-19T11:23:22
+	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	// example:
+	//
+	// 2021-07-19T03:23:22Z
+	CreatedTimeUTC *string `json:"CreatedTimeUTC,omitempty" xml:"CreatedTimeUTC,omitempty"`
+	// example:
+	//
+	// 12
+	Duration *int32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// false
+	EnableHbaseProxy *bool `json:"EnableHbaseProxy,omitempty" xml:"EnableHbaseProxy,omitempty"`
+	// example:
+	//
+	// 0d2470df-da7b-4786-b981-9a164dae****
+	EncryptionKey *string `json:"EncryptionKey,omitempty" xml:"EncryptionKey,omitempty"`
+	// example:
+	//
+	// NoEncryption
+	EncryptionType *string `json:"EncryptionType,omitempty" xml:"EncryptionType,omitempty"`
+	// example:
+	//
+	// hbaseue
+	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	// example:
+	//
+	// 2022-02-24T00:00:00
+	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	// example:
+	//
+	// 2022-02-23T16:00:00Z
+	ExpireTimeUTC *string `json:"ExpireTimeUTC,omitempty" xml:"ExpireTimeUTC,omitempty"`
+	// example:
+	//
+	// ld-bp150tns0sjxs****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// testhbase
+	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// example:
+	//
+	// false
+	IsDeletionProtection *bool `json:"IsDeletionProtection,omitempty" xml:"IsDeletionProtection,omitempty"`
+	// example:
+	//
+	// true
+	IsHa *bool `json:"IsHa,omitempty" xml:"IsHa,omitempty"`
+	// example:
+	//
+	// true
+	IsLatestVersion *bool `json:"IsLatestVersion,omitempty" xml:"IsLatestVersion,omitempty"`
+	// example:
+	//
+	// true
+	IsMultiModel *bool `json:"IsMultiModel,omitempty" xml:"IsMultiModel,omitempty"`
+	// example:
+	//
+	// 2.3.2
+	LproxyMinorVersion *string `json:"LproxyMinorVersion,omitempty" xml:"LproxyMinorVersion,omitempty"`
+	// example:
+	//
+	// 22:00Z
+	MaintainEndTime *string `json:"MaintainEndTime,omitempty" xml:"MaintainEndTime,omitempty"`
+	// example:
+	//
+	// 18:00Z
+	MaintainStartTime *string `json:"MaintainStartTime,omitempty" xml:"MaintainStartTime,omitempty"`
+	// example:
+	//
+	// 2.0
+	MajorVersion *string `json:"MajorVersion,omitempty" xml:"MajorVersion,omitempty"`
+	// example:
+	//
+	// 0
+	MasterDiskSize *int32 `json:"MasterDiskSize,omitempty" xml:"MasterDiskSize,omitempty"`
+	// example:
+	//
+	// cloud_efficiency
+	MasterDiskType *string `json:"MasterDiskType,omitempty" xml:"MasterDiskType,omitempty"`
+	// example:
+	//
+	// hbase.sn2.large
+	MasterInstanceType *string `json:"MasterInstanceType,omitempty" xml:"MasterInstanceType,omitempty"`
+	// example:
+	//
+	// 2
+	MasterNodeCount *int32 `json:"MasterNodeCount,omitempty" xml:"MasterNodeCount,omitempty"`
+	// example:
+	//
+	// 2.2.9.1
+	MinorVersion *string `json:"MinorVersion,omitempty" xml:"MinorVersion,omitempty"`
+	// example:
+	//
+	// 0
+	ModuleId *int32 `json:"ModuleId,omitempty" xml:"ModuleId,omitempty"`
+	// example:
+	//
+	// phoenxi:4.0
+	ModuleStackVersion *string `json:"ModuleStackVersion,omitempty" xml:"ModuleStackVersion,omitempty"`
+	// example:
+	//
+	// false
+	NeedUpgrade      *bool                                         `json:"NeedUpgrade,omitempty" xml:"NeedUpgrade,omitempty"`
+	NeedUpgradeComps *DescribeInstanceResponseBodyNeedUpgradeComps `json:"NeedUpgradeComps,omitempty" xml:"NeedUpgradeComps,omitempty" type:"Struct"`
+	// example:
+	//
+	// VPC
+	NetworkType *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
+	// example:
+	//
+	// ld-uf699153o1m2l****
+	ParentId *string `json:"ParentId,omitempty" xml:"ParentId,omitempty"`
+	// example:
+	//
+	// Prepaid
+	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// 3F429923-B6F6-52C5-9C2A-5B8A8C6BBA66
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// rg-acfmyiu4ekp****
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// example:
+	//
+	// ACTIVATION
+	Status *string                           `json:"Status,omitempty" xml:"Status,omitempty"`
+	Tags   *DescribeInstanceResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
+	// example:
+	//
+	// 25.00
+	TaskProgress *string `json:"TaskProgress,omitempty" xml:"TaskProgress,omitempty"`
+	TaskStatus   *string `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
+	// example:
+	//
+	// vpc-bp15s22y1a7sff5gj****
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// example:
+	//
+	// vsw-bp1foll427ze3d4ps****
+	VswitchId *string `json:"VswitchId,omitempty" xml:"VswitchId,omitempty"`
+	// example:
+	//
+	// cn-hangzhou-f
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s DescribeInstanceResponseBody) String() string {
@@ -5571,6 +7040,11 @@ func (s *DescribeInstanceResponseBody) SetTaskProgress(v string) *DescribeInstan
 	return s
 }
 
+func (s *DescribeInstanceResponseBody) SetTaskStatus(v string) *DescribeInstanceResponseBody {
+	s.TaskStatus = &v
+	return s
+}
+
 func (s *DescribeInstanceResponseBody) SetVpcId(v string) *DescribeInstanceResponseBody {
 	s.VpcId = &v
 	return s
@@ -5621,7 +7095,13 @@ func (s *DescribeInstanceResponseBodyTags) SetTag(v []*DescribeInstanceResponseB
 }
 
 type DescribeInstanceResponseBodyTagsTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// test_key
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// test_value
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -5673,6 +7153,9 @@ func (s *DescribeInstanceResponse) SetBody(v *DescribeInstanceResponseBody) *Des
 }
 
 type DescribeInstanceTypeRequest struct {
+	// example:
+	//
+	// hbase.n2.4xlarge
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
 }
 
@@ -5691,7 +7174,10 @@ func (s *DescribeInstanceTypeRequest) SetInstanceType(v string) *DescribeInstanc
 
 type DescribeInstanceTypeResponseBody struct {
 	InstanceTypeSpecList *DescribeInstanceTypeResponseBodyInstanceTypeSpecList `json:"InstanceTypeSpecList,omitempty" xml:"InstanceTypeSpecList,omitempty" type:"Struct"`
-	RequestId            *string                                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// DD23BBB4-64C2-42A4-B2E2-7E56C7AA815A
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeInstanceTypeResponseBody) String() string {
@@ -5730,9 +7216,18 @@ func (s *DescribeInstanceTypeResponseBodyInstanceTypeSpecList) SetInstanceTypeSp
 }
 
 type DescribeInstanceTypeResponseBodyInstanceTypeSpecListInstanceTypeSpec struct {
-	CpuSize      *int64  `json:"CpuSize,omitempty" xml:"CpuSize,omitempty"`
+	// example:
+	//
+	// 8
+	CpuSize *int64 `json:"CpuSize,omitempty" xml:"CpuSize,omitempty"`
+	// example:
+	//
+	// hbase.n2.4xlarge
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	MemSize      *int64  `json:"MemSize,omitempty" xml:"MemSize,omitempty"`
+	// example:
+	//
+	// 16
+	MemSize *int64 `json:"MemSize,omitempty" xml:"MemSize,omitempty"`
 }
 
 func (s DescribeInstanceTypeResponseBodyInstanceTypeSpecListInstanceTypeSpec) String() string {
@@ -5788,12 +7283,33 @@ func (s *DescribeInstanceTypeResponse) SetBody(v *DescribeInstanceTypeResponseBo
 }
 
 type DescribeInstancesRequest struct {
-	ClusterId       *string                        `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	ClusterName     *string                        `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
-	DbType          *string                        `json:"DbType,omitempty" xml:"DbType,omitempty"`
-	PageNumber      *int32                         `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize        *int32                         `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RegionId        *string                        `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// hb-bp1u0639js2h7****
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// example:
+	//
+	// test
+	ClusterName *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
+	// example:
+	//
+	// hbase
+	DbType *string `json:"DbType,omitempty" xml:"DbType,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// rg-4f51d54g5****
 	ResourceGroupId *string                        `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	Tag             []*DescribeInstancesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
@@ -5847,7 +7363,13 @@ func (s *DescribeInstancesRequest) SetTag(v []*DescribeInstancesRequestTag) *Des
 }
 
 type DescribeInstancesRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// key
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// value
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -5870,11 +7392,23 @@ func (s *DescribeInstancesRequestTag) SetValue(v string) *DescribeInstancesReque
 }
 
 type DescribeInstancesResponseBody struct {
-	Instances  *DescribeInstancesResponseBodyInstances `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Struct"`
-	PageNumber *int32                                  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32                                  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId  *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount *int64                                  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	Instances *DescribeInstancesResponseBodyInstances `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Struct"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// EBECBF12-2E34-41BE-8DE9-FC3700D4****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 18
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeInstancesResponseBody) String() string {
@@ -5928,44 +7462,155 @@ func (s *DescribeInstancesResponseBodyInstances) SetInstance(v []*DescribeInstan
 }
 
 type DescribeInstancesResponseBodyInstancesInstance struct {
-	AutoRenewal          *bool                                               `json:"AutoRenewal,omitempty" xml:"AutoRenewal,omitempty"`
-	BackupStatus         *string                                             `json:"BackupStatus,omitempty" xml:"BackupStatus,omitempty"`
-	ClusterId            *string                                             `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	ClusterName          *string                                             `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
-	ClusterType          *string                                             `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
-	ColdStorageStatus    *string                                             `json:"ColdStorageStatus,omitempty" xml:"ColdStorageStatus,omitempty"`
-	CoreDiskCount        *string                                             `json:"CoreDiskCount,omitempty" xml:"CoreDiskCount,omitempty"`
-	CoreDiskSize         *int32                                              `json:"CoreDiskSize,omitempty" xml:"CoreDiskSize,omitempty"`
-	CoreDiskType         *string                                             `json:"CoreDiskType,omitempty" xml:"CoreDiskType,omitempty"`
-	CoreInstanceType     *string                                             `json:"CoreInstanceType,omitempty" xml:"CoreInstanceType,omitempty"`
-	CoreNodeCount        *int32                                              `json:"CoreNodeCount,omitempty" xml:"CoreNodeCount,omitempty"`
-	CreatedTime          *string                                             `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
-	CreatedTimeUTC       *string                                             `json:"CreatedTimeUTC,omitempty" xml:"CreatedTimeUTC,omitempty"`
-	Duration             *int32                                              `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	Engine               *string                                             `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	ExpireTime           *string                                             `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	ExpireTimeUTC        *string                                             `json:"ExpireTimeUTC,omitempty" xml:"ExpireTimeUTC,omitempty"`
-	InstanceId           *string                                             `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	InstanceName         *string                                             `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	IsDeletionProtection *bool                                               `json:"IsDeletionProtection,omitempty" xml:"IsDeletionProtection,omitempty"`
-	IsHa                 *bool                                               `json:"IsHa,omitempty" xml:"IsHa,omitempty"`
-	MajorVersion         *string                                             `json:"MajorVersion,omitempty" xml:"MajorVersion,omitempty"`
-	MasterDiskSize       *int32                                              `json:"MasterDiskSize,omitempty" xml:"MasterDiskSize,omitempty"`
-	MasterDiskType       *string                                             `json:"MasterDiskType,omitempty" xml:"MasterDiskType,omitempty"`
-	MasterInstanceType   *string                                             `json:"MasterInstanceType,omitempty" xml:"MasterInstanceType,omitempty"`
-	MasterNodeCount      *int32                                              `json:"MasterNodeCount,omitempty" xml:"MasterNodeCount,omitempty"`
-	ModuleId             *int32                                              `json:"ModuleId,omitempty" xml:"ModuleId,omitempty"`
-	ModuleStackVersion   *string                                             `json:"ModuleStackVersion,omitempty" xml:"ModuleStackVersion,omitempty"`
-	NetworkType          *string                                             `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
-	ParentId             *string                                             `json:"ParentId,omitempty" xml:"ParentId,omitempty"`
-	PayType              *string                                             `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	RegionId             *string                                             `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceGroupId      *string                                             `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	Status               *string                                             `json:"Status,omitempty" xml:"Status,omitempty"`
-	Tags                 *DescribeInstancesResponseBodyInstancesInstanceTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
-	VpcId                *string                                             `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	VswitchId            *string                                             `json:"VswitchId,omitempty" xml:"VswitchId,omitempty"`
-	ZoneId               *string                                             `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	// example:
+	//
+	// false
+	AutoRenewal *bool `json:"AutoRenewal,omitempty" xml:"AutoRenewal,omitempty"`
+	// example:
+	//
+	// open
+	BackupStatus *string `json:"BackupStatus,omitempty" xml:"BackupStatus,omitempty"`
+	// example:
+	//
+	// hb-bp1u0639js2h7****
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// example:
+	//
+	// test
+	ClusterName *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
+	// example:
+	//
+	// cluster
+	ClusterType *string `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
+	// example:
+	//
+	// open
+	ColdStorageStatus *string `json:"ColdStorageStatus,omitempty" xml:"ColdStorageStatus,omitempty"`
+	// example:
+	//
+	// 2
+	CoreDiskCount *string `json:"CoreDiskCount,omitempty" xml:"CoreDiskCount,omitempty"`
+	// example:
+	//
+	// 100
+	CoreDiskSize *int32 `json:"CoreDiskSize,omitempty" xml:"CoreDiskSize,omitempty"`
+	// example:
+	//
+	// cloud_efficiency
+	CoreDiskType *string `json:"CoreDiskType,omitempty" xml:"CoreDiskType,omitempty"`
+	// example:
+	//
+	// hbase.sn1.large
+	CoreInstanceType *string `json:"CoreInstanceType,omitempty" xml:"CoreInstanceType,omitempty"`
+	// example:
+	//
+	// 2
+	CoreNodeCount *int32 `json:"CoreNodeCount,omitempty" xml:"CoreNodeCount,omitempty"`
+	// example:
+	//
+	// 2019-09-12T14:40:46
+	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	// example:
+	//
+	// 2019-09-12T14:40:46Z
+	CreatedTimeUTC *string `json:"CreatedTimeUTC,omitempty" xml:"CreatedTimeUTC,omitempty"`
+	// example:
+	//
+	// 12
+	Duration *int32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// example:
+	//
+	// hbase
+	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	// example:
+	//
+	// 2019-10-12T14:40:46
+	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	// example:
+	//
+	// 2019-10-12T14:40:46Z
+	ExpireTimeUTC *string `json:"ExpireTimeUTC,omitempty" xml:"ExpireTimeUTC,omitempty"`
+	// example:
+	//
+	// hb-bp1u0639js2h7****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// test
+	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// example:
+	//
+	// true
+	IsDeletionProtection *bool `json:"IsDeletionProtection,omitempty" xml:"IsDeletionProtection,omitempty"`
+	// example:
+	//
+	// true
+	IsHa *bool `json:"IsHa,omitempty" xml:"IsHa,omitempty"`
+	// example:
+	//
+	// 2.0
+	MajorVersion *string `json:"MajorVersion,omitempty" xml:"MajorVersion,omitempty"`
+	// example:
+	//
+	// 100
+	MasterDiskSize *int32 `json:"MasterDiskSize,omitempty" xml:"MasterDiskSize,omitempty"`
+	// example:
+	//
+	// cloud_efficiency
+	MasterDiskType *string `json:"MasterDiskType,omitempty" xml:"MasterDiskType,omitempty"`
+	// example:
+	//
+	// hbase.sn1.large
+	MasterInstanceType *string `json:"MasterInstanceType,omitempty" xml:"MasterInstanceType,omitempty"`
+	// example:
+	//
+	// 2
+	MasterNodeCount *int32 `json:"MasterNodeCount,omitempty" xml:"MasterNodeCount,omitempty"`
+	// example:
+	//
+	// 0
+	ModuleId *int32 `json:"ModuleId,omitempty" xml:"ModuleId,omitempty"`
+	// example:
+	//
+	// 1.0
+	ModuleStackVersion *string `json:"ModuleStackVersion,omitempty" xml:"ModuleStackVersion,omitempty"`
+	// example:
+	//
+	// VPC
+	NetworkType *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
+	// example:
+	//
+	// 2980****2123
+	ParentId *string `json:"ParentId,omitempty" xml:"ParentId,omitempty"`
+	// example:
+	//
+	// Prepaid
+	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// rg-4f51d54g5****
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// example:
+	//
+	// ACTIVATION
+	Status *string                                             `json:"Status,omitempty" xml:"Status,omitempty"`
+	Tags   *DescribeInstancesResponseBodyInstancesInstanceTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
+	// example:
+	//
+	// vpc-bp120k6ixs4eoghz*****
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// example:
+	//
+	// vsw-bp191ipotq****dbqf
+	VswitchId *string `json:"VswitchId,omitempty" xml:"VswitchId,omitempty"`
+	// example:
+	//
+	// cn-hangzhou-f
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s DescribeInstancesResponseBodyInstancesInstance) String() string {
@@ -6184,7 +7829,13 @@ func (s *DescribeInstancesResponseBodyInstancesInstanceTags) SetTag(v []*Describ
 }
 
 type DescribeInstancesResponseBodyInstancesInstanceTagsTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// test-key
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// test-value
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -6236,6 +7887,11 @@ func (s *DescribeInstancesResponse) SetBody(v *DescribeInstancesResponseBody) *D
 }
 
 type DescribeIpWhitelistRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ld-bp150tns0sjxs****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 }
 
@@ -6253,8 +7909,11 @@ func (s *DescribeIpWhitelistRequest) SetClusterId(v string) *DescribeIpWhitelist
 }
 
 type DescribeIpWhitelistResponseBody struct {
-	Groups    *DescribeIpWhitelistResponseBodyGroups `json:"Groups,omitempty" xml:"Groups,omitempty" type:"Struct"`
-	RequestId *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Groups *DescribeIpWhitelistResponseBodyGroups `json:"Groups,omitempty" xml:"Groups,omitempty" type:"Struct"`
+	// example:
+	//
+	// AFAA617B-3268-5883-982B-DB8EC8CC1F1B
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeIpWhitelistResponseBody) String() string {
@@ -6293,9 +7952,15 @@ func (s *DescribeIpWhitelistResponseBodyGroups) SetGroup(v []*DescribeIpWhitelis
 }
 
 type DescribeIpWhitelistResponseBodyGroupsGroup struct {
+	// example:
+	//
+	// default
 	GroupName *string                                           `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
 	IpList    *DescribeIpWhitelistResponseBodyGroupsGroupIpList `json:"IpList,omitempty" xml:"IpList,omitempty" type:"Struct"`
-	IpVersion *int32                                            `json:"IpVersion,omitempty" xml:"IpVersion,omitempty"`
+	// example:
+	//
+	// 4
+	IpVersion *int32 `json:"IpVersion,omitempty" xml:"IpVersion,omitempty"`
 }
 
 func (s DescribeIpWhitelistResponseBodyGroupsGroup) String() string {
@@ -6368,6 +8033,9 @@ func (s *DescribeIpWhitelistResponse) SetBody(v *DescribeIpWhitelistResponseBody
 }
 
 type DescribeMultiZoneAvailableRegionsRequest struct {
+	// example:
+	//
+	// zh-CN
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 }
 
@@ -6385,8 +8053,11 @@ func (s *DescribeMultiZoneAvailableRegionsRequest) SetAcceptLanguage(v string) *
 }
 
 type DescribeMultiZoneAvailableRegionsResponseBody struct {
-	Regions   *DescribeMultiZoneAvailableRegionsResponseBodyRegions `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Struct"`
-	RequestId *string                                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Regions *DescribeMultiZoneAvailableRegionsResponseBodyRegions `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Struct"`
+	// example:
+	//
+	// F03BB273-45EE-4B6C-A329-A6E6A8D15856
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeMultiZoneAvailableRegionsResponseBody) String() string {
@@ -6427,8 +8098,14 @@ func (s *DescribeMultiZoneAvailableRegionsResponseBodyRegions) SetRegion(v []*De
 type DescribeMultiZoneAvailableRegionsResponseBodyRegionsRegion struct {
 	AvailableCombines *DescribeMultiZoneAvailableRegionsResponseBodyRegionsRegionAvailableCombines `json:"AvailableCombines,omitempty" xml:"AvailableCombines,omitempty" type:"Struct"`
 	LocalName         *string                                                                      `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
-	RegionEndpoint    *string                                                                      `json:"RegionEndpoint,omitempty" xml:"RegionEndpoint,omitempty"`
-	RegionId          *string                                                                      `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// hbase.aliyuncs.com
+	RegionEndpoint *string `json:"RegionEndpoint,omitempty" xml:"RegionEndpoint,omitempty"`
+	// example:
+	//
+	// cn-shenzhen
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DescribeMultiZoneAvailableRegionsResponseBodyRegionsRegion) String() string {
@@ -6477,6 +8154,9 @@ func (s *DescribeMultiZoneAvailableRegionsResponseBodyRegionsRegionAvailableComb
 }
 
 type DescribeMultiZoneAvailableRegionsResponseBodyRegionsRegionAvailableCombinesAvailableCombine struct {
+	// example:
+	//
+	// cn-shenzhen-****-aliyun
 	Id    *string                                                                                           `json:"Id,omitempty" xml:"Id,omitempty"`
 	Zones *DescribeMultiZoneAvailableRegionsResponseBodyRegionsRegionAvailableCombinesAvailableCombineZones `json:"Zones,omitempty" xml:"Zones,omitempty" type:"Struct"`
 }
@@ -6546,8 +8226,21 @@ func (s *DescribeMultiZoneAvailableRegionsResponse) SetBody(v *DescribeMultiZone
 }
 
 type DescribeMultiZoneAvailableResourceRequest struct {
-	ChargeType      *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Prepaid
+	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// cn-hangzhou-bef-aliyun
 	ZoneCombination *string `json:"ZoneCombination,omitempty" xml:"ZoneCombination,omitempty"`
 }
 
@@ -6576,7 +8269,10 @@ func (s *DescribeMultiZoneAvailableResourceRequest) SetZoneCombination(v string)
 
 type DescribeMultiZoneAvailableResourceResponseBody struct {
 	AvailableZones *DescribeMultiZoneAvailableResourceResponseBodyAvailableZones `json:"AvailableZones,omitempty" xml:"AvailableZones,omitempty" type:"Struct"`
-	RequestId      *string                                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// B2EEBBA9-C627-4415-81A0-B77BC54F1D52
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeMultiZoneAvailableResourceResponseBody) String() string {
@@ -6615,10 +8311,16 @@ func (s *DescribeMultiZoneAvailableResourceResponseBodyAvailableZones) SetAvaila
 }
 
 type DescribeMultiZoneAvailableResourceResponseBodyAvailableZonesAvailableZone struct {
-	MasterResources  *DescribeMultiZoneAvailableResourceResponseBodyAvailableZonesAvailableZoneMasterResources  `json:"MasterResources,omitempty" xml:"MasterResources,omitempty" type:"Struct"`
+	MasterResources *DescribeMultiZoneAvailableResourceResponseBodyAvailableZonesAvailableZoneMasterResources `json:"MasterResources,omitempty" xml:"MasterResources,omitempty" type:"Struct"`
+	// example:
+	//
+	// cn-hangzhou
 	RegionId         *string                                                                                    `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	SupportedEngines *DescribeMultiZoneAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEngines `json:"SupportedEngines,omitempty" xml:"SupportedEngines,omitempty" type:"Struct"`
-	ZoneCombination  *string                                                                                    `json:"ZoneCombination,omitempty" xml:"ZoneCombination,omitempty"`
+	// example:
+	//
+	// cn-hangzhou-bef-aliyun
+	ZoneCombination *string `json:"ZoneCombination,omitempty" xml:"ZoneCombination,omitempty"`
 }
 
 func (s DescribeMultiZoneAvailableResourceResponseBodyAvailableZonesAvailableZone) String() string {
@@ -6667,6 +8369,9 @@ func (s *DescribeMultiZoneAvailableResourceResponseBodyAvailableZonesAvailableZo
 }
 
 type DescribeMultiZoneAvailableResourceResponseBodyAvailableZonesAvailableZoneMasterResourcesMasterResource struct {
+	// example:
+	//
+	// hbase.sn2.large
 	InstanceType       *string                                                                                                                   `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
 	InstanceTypeDetail *DescribeMultiZoneAvailableResourceResponseBodyAvailableZonesAvailableZoneMasterResourcesMasterResourceInstanceTypeDetail `json:"InstanceTypeDetail,omitempty" xml:"InstanceTypeDetail,omitempty" type:"Struct"`
 }
@@ -6690,7 +8395,13 @@ func (s *DescribeMultiZoneAvailableResourceResponseBodyAvailableZonesAvailableZo
 }
 
 type DescribeMultiZoneAvailableResourceResponseBodyAvailableZonesAvailableZoneMasterResourcesMasterResourceInstanceTypeDetail struct {
+	// example:
+	//
+	// 4
 	Cpu *int32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	// example:
+	//
+	// 16
 	Mem *int32 `json:"Mem,omitempty" xml:"Mem,omitempty"`
 }
 
@@ -6730,6 +8441,9 @@ func (s *DescribeMultiZoneAvailableResourceResponseBodyAvailableZonesAvailableZo
 }
 
 type DescribeMultiZoneAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngine struct {
+	// example:
+	//
+	// hbaseue
 	Engine                  *string                                                                                                                          `json:"Engine,omitempty" xml:"Engine,omitempty"`
 	SupportedEngineVersions *DescribeMultiZoneAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersions `json:"SupportedEngineVersions,omitempty" xml:"SupportedEngineVersions,omitempty" type:"Struct"`
 }
@@ -6771,7 +8485,10 @@ func (s *DescribeMultiZoneAvailableResourceResponseBodyAvailableZonesAvailableZo
 
 type DescribeMultiZoneAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersionsSupportedEngineVersion struct {
 	SupportedCategories *DescribeMultiZoneAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersionsSupportedEngineVersionSupportedCategories `json:"SupportedCategories,omitempty" xml:"SupportedCategories,omitempty" type:"Struct"`
-	Version             *string                                                                                                                                                                   `json:"Version,omitempty" xml:"Version,omitempty"`
+	// example:
+	//
+	// 2.0
+	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s DescribeMultiZoneAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersionsSupportedEngineVersion) String() string {
@@ -6810,6 +8527,9 @@ func (s *DescribeMultiZoneAvailableResourceResponseBodyAvailableZonesAvailableZo
 }
 
 type DescribeMultiZoneAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersionsSupportedEngineVersionSupportedCategoriesSupportedCategories struct {
+	// example:
+	//
+	// cluster
 	Category              *string                                                                                                                                                                                                           `json:"Category,omitempty" xml:"Category,omitempty"`
 	SupportedStorageTypes *DescribeMultiZoneAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersionsSupportedEngineVersionSupportedCategoriesSupportedCategoriesSupportedStorageTypes `json:"SupportedStorageTypes,omitempty" xml:"SupportedStorageTypes,omitempty" type:"Struct"`
 }
@@ -6851,7 +8571,10 @@ func (s *DescribeMultiZoneAvailableResourceResponseBodyAvailableZonesAvailableZo
 
 type DescribeMultiZoneAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersionsSupportedEngineVersionSupportedCategoriesSupportedCategoriesSupportedStorageTypesSupportedStorageType struct {
 	CoreResources *DescribeMultiZoneAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersionsSupportedEngineVersionSupportedCategoriesSupportedCategoriesSupportedStorageTypesSupportedStorageTypeCoreResources `json:"CoreResources,omitempty" xml:"CoreResources,omitempty" type:"Struct"`
-	StorageType   *string                                                                                                                                                                                                                                            `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
+	// example:
+	//
+	// cloud_efficiency
+	StorageType *string `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
 }
 
 func (s DescribeMultiZoneAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersionsSupportedEngineVersionSupportedCategoriesSupportedCategoriesSupportedStorageTypesSupportedStorageType) String() string {
@@ -6891,9 +8614,15 @@ func (s *DescribeMultiZoneAvailableResourceResponseBodyAvailableZonesAvailableZo
 
 type DescribeMultiZoneAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersionsSupportedEngineVersionSupportedCategoriesSupportedCategoriesSupportedStorageTypesSupportedStorageTypeCoreResourcesCoreResource struct {
 	DBInstanceStorageRange *DescribeMultiZoneAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersionsSupportedEngineVersionSupportedCategoriesSupportedCategoriesSupportedStorageTypesSupportedStorageTypeCoreResourcesCoreResourceDBInstanceStorageRange `json:"DBInstanceStorageRange,omitempty" xml:"DBInstanceStorageRange,omitempty" type:"Struct"`
-	InstanceType           *string                                                                                                                                                                                                                                                                              `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	InstanceTypeDetail     *DescribeMultiZoneAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersionsSupportedEngineVersionSupportedCategoriesSupportedCategoriesSupportedStorageTypesSupportedStorageTypeCoreResourcesCoreResourceInstanceTypeDetail     `json:"InstanceTypeDetail,omitempty" xml:"InstanceTypeDetail,omitempty" type:"Struct"`
-	MaxCoreCount           *int32                                                                                                                                                                                                                                                                               `json:"MaxCoreCount,omitempty" xml:"MaxCoreCount,omitempty"`
+	// example:
+	//
+	// hbase.sn2.2xlarge
+	InstanceType       *string                                                                                                                                                                                                                                                                          `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	InstanceTypeDetail *DescribeMultiZoneAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersionsSupportedEngineVersionSupportedCategoriesSupportedCategoriesSupportedStorageTypesSupportedStorageTypeCoreResourcesCoreResourceInstanceTypeDetail `json:"InstanceTypeDetail,omitempty" xml:"InstanceTypeDetail,omitempty" type:"Struct"`
+	// example:
+	//
+	// 30
+	MaxCoreCount *int32 `json:"MaxCoreCount,omitempty" xml:"MaxCoreCount,omitempty"`
 }
 
 func (s DescribeMultiZoneAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersionsSupportedEngineVersionSupportedCategoriesSupportedCategoriesSupportedStorageTypesSupportedStorageTypeCoreResourcesCoreResource) String() string {
@@ -6925,8 +8654,17 @@ func (s *DescribeMultiZoneAvailableResourceResponseBodyAvailableZonesAvailableZo
 }
 
 type DescribeMultiZoneAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersionsSupportedEngineVersionSupportedCategoriesSupportedCategoriesSupportedStorageTypesSupportedStorageTypeCoreResourcesCoreResourceDBInstanceStorageRange struct {
-	MaxSize  *int32 `json:"MaxSize,omitempty" xml:"MaxSize,omitempty"`
-	MinSize  *int32 `json:"MinSize,omitempty" xml:"MinSize,omitempty"`
+	// example:
+	//
+	// 64000
+	MaxSize *int32 `json:"MaxSize,omitempty" xml:"MaxSize,omitempty"`
+	// example:
+	//
+	// 400
+	MinSize *int32 `json:"MinSize,omitempty" xml:"MinSize,omitempty"`
+	// example:
+	//
+	// 40
 	StepSize *int32 `json:"StepSize,omitempty" xml:"StepSize,omitempty"`
 }
 
@@ -6954,7 +8692,13 @@ func (s *DescribeMultiZoneAvailableResourceResponseBodyAvailableZonesAvailableZo
 }
 
 type DescribeMultiZoneAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersionsSupportedEngineVersionSupportedCategoriesSupportedCategoriesSupportedStorageTypesSupportedStorageTypeCoreResourcesCoreResourceInstanceTypeDetail struct {
+	// example:
+	//
+	// 32
 	Cpu *int32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	// example:
+	//
+	// 8
 	Mem *int32 `json:"Mem,omitempty" xml:"Mem,omitempty"`
 }
 
@@ -7006,6 +8750,11 @@ func (s *DescribeMultiZoneAvailableResourceResponse) SetBody(v *DescribeMultiZon
 }
 
 type DescribeMultiZoneClusterRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ld-t4nn71xa0yn****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 }
 
@@ -7023,57 +8772,203 @@ func (s *DescribeMultiZoneClusterRequest) SetClusterId(v string) *DescribeMultiZ
 }
 
 type DescribeMultiZoneClusterResponseBody struct {
-	ArbiterVSwitchIds       *string                                                      `json:"ArbiterVSwitchIds,omitempty" xml:"ArbiterVSwitchIds,omitempty"`
-	ArbiterZoneId           *string                                                      `json:"ArbiterZoneId,omitempty" xml:"ArbiterZoneId,omitempty"`
-	AutoRenewal             *bool                                                        `json:"AutoRenewal,omitempty" xml:"AutoRenewal,omitempty"`
-	ClusterId               *string                                                      `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	ClusterName             *string                                                      `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
-	ColdStorageSize         *int32                                                       `json:"ColdStorageSize,omitempty" xml:"ColdStorageSize,omitempty"`
-	CoreDiskCount           *string                                                      `json:"CoreDiskCount,omitempty" xml:"CoreDiskCount,omitempty"`
-	CoreDiskSize            *int32                                                       `json:"CoreDiskSize,omitempty" xml:"CoreDiskSize,omitempty"`
-	CoreDiskType            *string                                                      `json:"CoreDiskType,omitempty" xml:"CoreDiskType,omitempty"`
-	CoreInstanceType        *string                                                      `json:"CoreInstanceType,omitempty" xml:"CoreInstanceType,omitempty"`
-	CoreNodeCount           *int32                                                       `json:"CoreNodeCount,omitempty" xml:"CoreNodeCount,omitempty"`
-	CreatedTime             *string                                                      `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
-	CreatedTimeUTC          *string                                                      `json:"CreatedTimeUTC,omitempty" xml:"CreatedTimeUTC,omitempty"`
-	Duration                *int32                                                       `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	EncryptionKey           *string                                                      `json:"EncryptionKey,omitempty" xml:"EncryptionKey,omitempty"`
-	EncryptionType          *string                                                      `json:"EncryptionType,omitempty" xml:"EncryptionType,omitempty"`
-	Engine                  *string                                                      `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	ExpireTime              *string                                                      `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	ExpireTimeUTC           *string                                                      `json:"ExpireTimeUTC,omitempty" xml:"ExpireTimeUTC,omitempty"`
-	InstanceId              *string                                                      `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	InstanceName            *string                                                      `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	IsDeletionProtection    *bool                                                        `json:"IsDeletionProtection,omitempty" xml:"IsDeletionProtection,omitempty"`
-	LogDiskCount            *string                                                      `json:"LogDiskCount,omitempty" xml:"LogDiskCount,omitempty"`
-	LogDiskSize             *int32                                                       `json:"LogDiskSize,omitempty" xml:"LogDiskSize,omitempty"`
-	LogDiskType             *string                                                      `json:"LogDiskType,omitempty" xml:"LogDiskType,omitempty"`
-	LogInstanceType         *string                                                      `json:"LogInstanceType,omitempty" xml:"LogInstanceType,omitempty"`
-	LogNodeCount            *int32                                                       `json:"LogNodeCount,omitempty" xml:"LogNodeCount,omitempty"`
-	MaintainEndTime         *string                                                      `json:"MaintainEndTime,omitempty" xml:"MaintainEndTime,omitempty"`
-	MaintainStartTime       *string                                                      `json:"MaintainStartTime,omitempty" xml:"MaintainStartTime,omitempty"`
-	MajorVersion            *string                                                      `json:"MajorVersion,omitempty" xml:"MajorVersion,omitempty"`
-	MasterDiskSize          *int32                                                       `json:"MasterDiskSize,omitempty" xml:"MasterDiskSize,omitempty"`
-	MasterDiskType          *string                                                      `json:"MasterDiskType,omitempty" xml:"MasterDiskType,omitempty"`
-	MasterInstanceType      *string                                                      `json:"MasterInstanceType,omitempty" xml:"MasterInstanceType,omitempty"`
-	MasterNodeCount         *int32                                                       `json:"MasterNodeCount,omitempty" xml:"MasterNodeCount,omitempty"`
-	ModuleId                *int32                                                       `json:"ModuleId,omitempty" xml:"ModuleId,omitempty"`
-	ModuleStackVersion      *string                                                      `json:"ModuleStackVersion,omitempty" xml:"ModuleStackVersion,omitempty"`
+	// example:
+	//
+	// vsw-t4nax9mp3wk0czn****
+	ArbiterVSwitchIds *string `json:"ArbiterVSwitchIds,omitempty" xml:"ArbiterVSwitchIds,omitempty"`
+	// example:
+	//
+	// ap-southeast-1c
+	ArbiterZoneId *string `json:"ArbiterZoneId,omitempty" xml:"ArbiterZoneId,omitempty"`
+	// example:
+	//
+	// false
+	AutoRenewal *bool `json:"AutoRenewal,omitempty" xml:"AutoRenewal,omitempty"`
+	// example:
+	//
+	// ld-t4nn71xa0yn****
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// example:
+	//
+	// mz_test
+	ClusterName     *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
+	ColdStorageSize *int32  `json:"ColdStorageSize,omitempty" xml:"ColdStorageSize,omitempty"`
+	// example:
+	//
+	// 4
+	CoreDiskCount *string `json:"CoreDiskCount,omitempty" xml:"CoreDiskCount,omitempty"`
+	// example:
+	//
+	// 100
+	CoreDiskSize *int32 `json:"CoreDiskSize,omitempty" xml:"CoreDiskSize,omitempty"`
+	// example:
+	//
+	// cloud_efficiency
+	CoreDiskType *string `json:"CoreDiskType,omitempty" xml:"CoreDiskType,omitempty"`
+	// example:
+	//
+	// hbase.sn1.large
+	CoreInstanceType *string `json:"CoreInstanceType,omitempty" xml:"CoreInstanceType,omitempty"`
+	// example:
+	//
+	// 6
+	CoreNodeCount *int32 `json:"CoreNodeCount,omitempty" xml:"CoreNodeCount,omitempty"`
+	// example:
+	//
+	// 2020-10-15T18:04:52
+	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	// example:
+	//
+	// 2020-10-15T10:04:52Z
+	CreatedTimeUTC *string `json:"CreatedTimeUTC,omitempty" xml:"CreatedTimeUTC,omitempty"`
+	// example:
+	//
+	// 1
+	Duration *int32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// example:
+	//
+	// 2a****
+	EncryptionKey *string `json:"EncryptionKey,omitempty" xml:"EncryptionKey,omitempty"`
+	// example:
+	//
+	// CloudDisk
+	EncryptionType *string `json:"EncryptionType,omitempty" xml:"EncryptionType,omitempty"`
+	// example:
+	//
+	// hbaseue
+	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	// example:
+	//
+	// 2020-11-16T08:00:00
+	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	// example:
+	//
+	// 2020-11-16T00:00:00Z
+	ExpireTimeUTC *string `json:"ExpireTimeUTC,omitempty" xml:"ExpireTimeUTC,omitempty"`
+	// example:
+	//
+	// ld-t4nn71xa0yn****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// mz_test
+	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// example:
+	//
+	// false
+	IsDeletionProtection *bool `json:"IsDeletionProtection,omitempty" xml:"IsDeletionProtection,omitempty"`
+	// example:
+	//
+	// 4
+	LogDiskCount *string `json:"LogDiskCount,omitempty" xml:"LogDiskCount,omitempty"`
+	// example:
+	//
+	// 100
+	LogDiskSize *int32 `json:"LogDiskSize,omitempty" xml:"LogDiskSize,omitempty"`
+	// example:
+	//
+	// cloud_efficiency
+	LogDiskType *string `json:"LogDiskType,omitempty" xml:"LogDiskType,omitempty"`
+	// example:
+	//
+	// hbase.sn1.large
+	LogInstanceType *string `json:"LogInstanceType,omitempty" xml:"LogInstanceType,omitempty"`
+	// example:
+	//
+	// 4
+	LogNodeCount *int32 `json:"LogNodeCount,omitempty" xml:"LogNodeCount,omitempty"`
+	// example:
+	//
+	// 06:00:00
+	MaintainEndTime *string `json:"MaintainEndTime,omitempty" xml:"MaintainEndTime,omitempty"`
+	// example:
+	//
+	// 02:00:00
+	MaintainStartTime *string `json:"MaintainStartTime,omitempty" xml:"MaintainStartTime,omitempty"`
+	// example:
+	//
+	// 2.0
+	MajorVersion *string `json:"MajorVersion,omitempty" xml:"MajorVersion,omitempty"`
+	// example:
+	//
+	// 50
+	MasterDiskSize *int32 `json:"MasterDiskSize,omitempty" xml:"MasterDiskSize,omitempty"`
+	// example:
+	//
+	// cloud_efficiency
+	MasterDiskType *string `json:"MasterDiskType,omitempty" xml:"MasterDiskType,omitempty"`
+	// example:
+	//
+	// hbase.sn1.large
+	MasterInstanceType *string `json:"MasterInstanceType,omitempty" xml:"MasterInstanceType,omitempty"`
+	// example:
+	//
+	// 2
+	MasterNodeCount *int32 `json:"MasterNodeCount,omitempty" xml:"MasterNodeCount,omitempty"`
+	// example:
+	//
+	// 0
+	ModuleId *int32 `json:"ModuleId,omitempty" xml:"ModuleId,omitempty"`
+	// example:
+	//
+	// 2.0
+	ModuleStackVersion *string `json:"ModuleStackVersion,omitempty" xml:"ModuleStackVersion,omitempty"`
+	// example:
+	//
+	// ap-southeast-1-abc-aliyun
 	MultiZoneCombination    *string                                                      `json:"MultiZoneCombination,omitempty" xml:"MultiZoneCombination,omitempty"`
 	MultiZoneInstanceModels *DescribeMultiZoneClusterResponseBodyMultiZoneInstanceModels `json:"MultiZoneInstanceModels,omitempty" xml:"MultiZoneInstanceModels,omitempty" type:"Struct"`
-	NetworkType             *string                                                      `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
-	ParentId                *string                                                      `json:"ParentId,omitempty" xml:"ParentId,omitempty"`
-	PayType                 *string                                                      `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	PrimaryVSwitchIds       *string                                                      `json:"PrimaryVSwitchIds,omitempty" xml:"PrimaryVSwitchIds,omitempty"`
-	PrimaryZoneId           *string                                                      `json:"PrimaryZoneId,omitempty" xml:"PrimaryZoneId,omitempty"`
-	RegionId                *string                                                      `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RequestId               *string                                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ResourceGroupId         *string                                                      `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	StandbyVSwitchIds       *string                                                      `json:"StandbyVSwitchIds,omitempty" xml:"StandbyVSwitchIds,omitempty"`
-	StandbyZoneId           *string                                                      `json:"StandbyZoneId,omitempty" xml:"StandbyZoneId,omitempty"`
-	Status                  *string                                                      `json:"Status,omitempty" xml:"Status,omitempty"`
-	Tags                    *DescribeMultiZoneClusterResponseBodyTags                    `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
-	VpcId                   *string                                                      `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// example:
+	//
+	// VPC
+	NetworkType *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
+	// example:
+	//
+	// ld-fls1gf31y5s35****
+	ParentId *string `json:"ParentId,omitempty" xml:"ParentId,omitempty"`
+	// example:
+	//
+	// Prepaid
+	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	// example:
+	//
+	// vsw-t4n3s1zd2gtidg****
+	PrimaryVSwitchIds *string `json:"PrimaryVSwitchIds,omitempty" xml:"PrimaryVSwitchIds,omitempty"`
+	// example:
+	//
+	// ap-southeast-1a
+	PrimaryZoneId *string `json:"PrimaryZoneId,omitempty" xml:"PrimaryZoneId,omitempty"`
+	// example:
+	//
+	// ap-southeast-1
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// A02C0E6D-3A47-4FA0-BA7E-60793CE256DA
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// rg-lk51f5fer315e****
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// example:
+	//
+	// vsw-t4nvvk7xur3rdi****
+	StandbyVSwitchIds *string `json:"StandbyVSwitchIds,omitempty" xml:"StandbyVSwitchIds,omitempty"`
+	// example:
+	//
+	// ap-southeast-1b
+	StandbyZoneId *string `json:"StandbyZoneId,omitempty" xml:"StandbyZoneId,omitempty"`
+	// example:
+	//
+	// ACTIVATION
+	Status       *string                                   `json:"Status,omitempty" xml:"Status,omitempty"`
+	Tags         *DescribeMultiZoneClusterResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
+	TaskProgress *string                                   `json:"TaskProgress,omitempty" xml:"TaskProgress,omitempty"`
+	TaskStatus   *string                                   `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
+	// example:
+	//
+	// vpc-t4nx81tmlixcq5****
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s DescribeMultiZoneClusterResponseBody) String() string {
@@ -7334,6 +9229,16 @@ func (s *DescribeMultiZoneClusterResponseBody) SetTags(v *DescribeMultiZoneClust
 	return s
 }
 
+func (s *DescribeMultiZoneClusterResponseBody) SetTaskProgress(v string) *DescribeMultiZoneClusterResponseBody {
+	s.TaskProgress = &v
+	return s
+}
+
+func (s *DescribeMultiZoneClusterResponseBody) SetTaskStatus(v string) *DescribeMultiZoneClusterResponseBody {
+	s.TaskStatus = &v
+	return s
+}
+
 func (s *DescribeMultiZoneClusterResponseBody) SetVpcId(v string) *DescribeMultiZoneClusterResponseBody {
 	s.VpcId = &v
 	return s
@@ -7357,15 +9262,30 @@ func (s *DescribeMultiZoneClusterResponseBodyMultiZoneInstanceModels) SetMultiZo
 }
 
 type DescribeMultiZoneClusterResponseBodyMultiZoneInstanceModelsMultiZoneInstanceModel struct {
-	HdfsMinorVersion       *string `json:"HdfsMinorVersion,omitempty" xml:"HdfsMinorVersion,omitempty"`
-	InsName                *string `json:"InsName,omitempty" xml:"InsName,omitempty"`
-	IsHdfsLatestVersion    *string `json:"IsHdfsLatestVersion,omitempty" xml:"IsHdfsLatestVersion,omitempty"`
+	HdfsMinorVersion *string `json:"HdfsMinorVersion,omitempty" xml:"HdfsMinorVersion,omitempty"`
+	// example:
+	//
+	// ld-t4nn71xa0yn****-az-a
+	InsName             *string `json:"InsName,omitempty" xml:"InsName,omitempty"`
+	IsHdfsLatestVersion *string `json:"IsHdfsLatestVersion,omitempty" xml:"IsHdfsLatestVersion,omitempty"`
+	// example:
+	//
+	// true
 	IsLatestVersion        *bool   `json:"IsLatestVersion,omitempty" xml:"IsLatestVersion,omitempty"`
 	LatestHdfsMinorVersion *string `json:"LatestHdfsMinorVersion,omitempty" xml:"LatestHdfsMinorVersion,omitempty"`
 	LatestMinorVersion     *string `json:"LatestMinorVersion,omitempty" xml:"LatestMinorVersion,omitempty"`
-	MinorVersion           *string `json:"MinorVersion,omitempty" xml:"MinorVersion,omitempty"`
-	Role                   *string `json:"Role,omitempty" xml:"Role,omitempty"`
-	Status                 *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// 2.1.24
+	MinorVersion *string `json:"MinorVersion,omitempty" xml:"MinorVersion,omitempty"`
+	// example:
+	//
+	// primary
+	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
+	// example:
+	//
+	// ACTIVATION
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DescribeMultiZoneClusterResponseBodyMultiZoneInstanceModelsMultiZoneInstanceModel) String() string {
@@ -7439,7 +9359,13 @@ func (s *DescribeMultiZoneClusterResponseBodyTags) SetTag(v []*DescribeMultiZone
 }
 
 type DescribeMultiZoneClusterResponseBodyTagsTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// test_key
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// test_value
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -7491,6 +9417,11 @@ func (s *DescribeMultiZoneClusterResponse) SetBody(v *DescribeMultiZoneClusterRe
 }
 
 type DescribeRecoverableTimeRangeRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ld-m5eznlga4k5bcxxxx
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 }
 
@@ -7508,9 +9439,18 @@ func (s *DescribeRecoverableTimeRangeRequest) SetClusterId(v string) *DescribeRe
 }
 
 type DescribeRecoverableTimeRangeResponseBody struct {
+	// example:
+	//
+	// A1A51D18-96DC-465C-9F1B-47180CA22524
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 2020-10-26T18:02:03Z
 	TimeBegin *string `json:"TimeBegin,omitempty" xml:"TimeBegin,omitempty"`
-	TimeEnd   *string `json:"TimeEnd,omitempty" xml:"TimeEnd,omitempty"`
+	// example:
+	//
+	// 2020-11-05T01:20:31Z
+	TimeEnd *string `json:"TimeEnd,omitempty" xml:"TimeEnd,omitempty"`
 }
 
 func (s DescribeRecoverableTimeRangeResponseBody) String() string {
@@ -7566,8 +9506,14 @@ func (s *DescribeRecoverableTimeRangeResponse) SetBody(v *DescribeRecoverableTim
 }
 
 type DescribeRegionsRequest struct {
+	// example:
+	//
+	// zh-CN
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	Engine         *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	// example:
+	//
+	// hbase
+	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
 }
 
 func (s DescribeRegionsRequest) String() string {
@@ -7589,8 +9535,11 @@ func (s *DescribeRegionsRequest) SetEngine(v string) *DescribeRegionsRequest {
 }
 
 type DescribeRegionsResponseBody struct {
-	Regions   *DescribeRegionsResponseBodyRegions `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Struct"`
-	RequestId *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Regions *DescribeRegionsResponseBodyRegions `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Struct"`
+	// example:
+	//
+	// 14D3924C-4FD8-4EE9-9B34-DA949D104F42
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeRegionsResponseBody) String() string {
@@ -7629,10 +9578,16 @@ func (s *DescribeRegionsResponseBodyRegions) SetRegion(v []*DescribeRegionsRespo
 }
 
 type DescribeRegionsResponseBodyRegionsRegion struct {
-	LocalName      *string                                        `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
-	RegionEndpoint *string                                        `json:"RegionEndpoint,omitempty" xml:"RegionEndpoint,omitempty"`
-	RegionId       *string                                        `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Zones          *DescribeRegionsResponseBodyRegionsRegionZones `json:"Zones,omitempty" xml:"Zones,omitempty" type:"Struct"`
+	LocalName *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
+	// example:
+	//
+	// hbase.aliyuncs.com
+	RegionEndpoint *string `json:"RegionEndpoint,omitempty" xml:"RegionEndpoint,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string                                        `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Zones    *DescribeRegionsResponseBodyRegionsRegionZones `json:"Zones,omitempty" xml:"Zones,omitempty" type:"Struct"`
 }
 
 func (s DescribeRegionsResponseBodyRegionsRegion) String() string {
@@ -7681,6 +9636,9 @@ func (s *DescribeRegionsResponseBodyRegionsRegionZones) SetZone(v []*DescribeReg
 }
 
 type DescribeRegionsResponseBodyRegionsRegionZonesZone struct {
+	// example:
+	//
+	// cn-hangzhou-b
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
 }
 
@@ -7727,9 +9685,25 @@ func (s *DescribeRegionsResponse) SetBody(v *DescribeRegionsResponseBody) *Descr
 }
 
 type DescribeRestoreFullDetailsRequest struct {
-	ClusterId       *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	PageNumber      *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize        *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ld-m5eznlga4k5bcxxxx
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2020110514xxxx
 	RestoreRecordId *string `json:"RestoreRecordId,omitempty" xml:"RestoreRecordId,omitempty"`
 }
 
@@ -7762,6 +9736,9 @@ func (s *DescribeRestoreFullDetailsRequest) SetRestoreRecordId(v string) *Descri
 }
 
 type DescribeRestoreFullDetailsResponseBody struct {
+	// example:
+	//
+	// CFE525CF-C691-4140-A981-D004DAA7A840
 	RequestId   *string                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	RestoreFull *DescribeRestoreFullDetailsResponseBodyRestoreFull `json:"RestoreFull,omitempty" xml:"RestoreFull,omitempty" type:"Struct"`
 }
@@ -7785,14 +9762,35 @@ func (s *DescribeRestoreFullDetailsResponseBody) SetRestoreFull(v *DescribeResto
 }
 
 type DescribeRestoreFullDetailsResponseBodyRestoreFull struct {
-	DataSize           *string                                                              `json:"DataSize,omitempty" xml:"DataSize,omitempty"`
-	Fail               *int32                                                               `json:"Fail,omitempty" xml:"Fail,omitempty"`
-	PageNumber         *int32                                                               `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 1.2 kB
+	DataSize *string `json:"DataSize,omitempty" xml:"DataSize,omitempty"`
+	// example:
+	//
+	// 0
+	Fail *int32 `json:"Fail,omitempty" xml:"Fail,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
 	PageSize           *int32                                                               `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	RestoreFullDetails *DescribeRestoreFullDetailsResponseBodyRestoreFullRestoreFullDetails `json:"RestoreFullDetails,omitempty" xml:"RestoreFullDetails,omitempty" type:"Struct"`
-	Speed              *string                                                              `json:"Speed,omitempty" xml:"Speed,omitempty"`
-	Succeed            *int32                                                               `json:"Succeed,omitempty" xml:"Succeed,omitempty"`
-	Total              *int64                                                               `json:"Total,omitempty" xml:"Total,omitempty"`
+	// example:
+	//
+	// 0.00 MB/s
+	Speed *string `json:"Speed,omitempty" xml:"Speed,omitempty"`
+	// example:
+	//
+	// 1
+	Succeed *int32 `json:"Succeed,omitempty" xml:"Succeed,omitempty"`
+	// example:
+	//
+	// 1
+	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
 func (s DescribeRestoreFullDetailsResponseBodyRestoreFull) String() string {
@@ -7861,14 +9859,38 @@ func (s *DescribeRestoreFullDetailsResponseBodyRestoreFullRestoreFullDetails) Se
 }
 
 type DescribeRestoreFullDetailsResponseBodyRestoreFullRestoreFullDetailsRestoreFullDetail struct {
-	DataSize  *string `json:"DataSize,omitempty" xml:"DataSize,omitempty"`
-	EndTime   *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	Process   *string `json:"Process,omitempty" xml:"Process,omitempty"`
-	Speed     *string `json:"Speed,omitempty" xml:"Speed,omitempty"`
+	// example:
+	//
+	// 1.2 kB
+	DataSize *string `json:"DataSize,omitempty" xml:"DataSize,omitempty"`
+	// example:
+	//
+	// 2020-11-05T06:45:51Z
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// example:
+	//
+	// null
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 14/14
+	Process *string `json:"Process,omitempty" xml:"Process,omitempty"`
+	// example:
+	//
+	// 0.00 MB/s
+	Speed *string `json:"Speed,omitempty" xml:"Speed,omitempty"`
+	// example:
+	//
+	// 2020-11-05T06:45:45Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	State     *string `json:"State,omitempty" xml:"State,omitempty"`
-	Table     *string `json:"Table,omitempty" xml:"Table,omitempty"`
+	// example:
+	//
+	// SUCCEEDED
+	State *string `json:"State,omitempty" xml:"State,omitempty"`
+	// example:
+	//
+	// default:test1
+	Table *string `json:"Table,omitempty" xml:"Table,omitempty"`
 }
 
 func (s DescribeRestoreFullDetailsResponseBodyRestoreFullRestoreFullDetailsRestoreFullDetail) String() string {
@@ -7949,7 +9971,17 @@ func (s *DescribeRestoreFullDetailsResponse) SetBody(v *DescribeRestoreFullDetai
 }
 
 type DescribeRestoreIncrDetailRequest struct {
-	ClusterId       *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ld-m5eyf188hw481xxxx
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2020110514xxxx
 	RestoreRecordId *string `json:"RestoreRecordId,omitempty" xml:"RestoreRecordId,omitempty"`
 }
 
@@ -7972,6 +10004,9 @@ func (s *DescribeRestoreIncrDetailRequest) SetRestoreRecordId(v string) *Describ
 }
 
 type DescribeRestoreIncrDetailResponseBody struct {
+	// example:
+	//
+	// D0FE2717-E194-465A-B27B-7373F96E580B
 	RequestId         *string                                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	RestoreIncrDetail *DescribeRestoreIncrDetailResponseBodyRestoreIncrDetail `json:"RestoreIncrDetail,omitempty" xml:"RestoreIncrDetail,omitempty" type:"Struct"`
 }
@@ -7995,13 +10030,34 @@ func (s *DescribeRestoreIncrDetailResponseBody) SetRestoreIncrDetail(v *Describe
 }
 
 type DescribeRestoreIncrDetailResponseBodyRestoreIncrDetail struct {
-	EndTime        *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	Process        *string `json:"Process,omitempty" xml:"Process,omitempty"`
-	RestoreDelay   *string `json:"RestoreDelay,omitempty" xml:"RestoreDelay,omitempty"`
+	// example:
+	//
+	// 2020-11-05T06:45:44Z
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// example:
+	//
+	// 0/0
+	Process *string `json:"Process,omitempty" xml:"Process,omitempty"`
+	// example:
+	//
+	// 0 ms
+	RestoreDelay *string `json:"RestoreDelay,omitempty" xml:"RestoreDelay,omitempty"`
+	// example:
+	//
+	// 2020-11-02T18:00:00Z
 	RestoreStartTs *string `json:"RestoreStartTs,omitempty" xml:"RestoreStartTs,omitempty"`
-	RestoredTs     *string `json:"RestoredTs,omitempty" xml:"RestoredTs,omitempty"`
-	StartTime      *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	State          *string `json:"State,omitempty" xml:"State,omitempty"`
+	// example:
+	//
+	// \\"\\"
+	RestoredTs *string `json:"RestoredTs,omitempty" xml:"RestoredTs,omitempty"`
+	// example:
+	//
+	// 2020-11-05T06:45:44Z
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// example:
+	//
+	// SUCCEEDED
+	State *string `json:"State,omitempty" xml:"State,omitempty"`
 }
 
 func (s DescribeRestoreIncrDetailResponseBodyRestoreIncrDetail) String() string {
@@ -8077,9 +10133,25 @@ func (s *DescribeRestoreIncrDetailResponse) SetBody(v *DescribeRestoreIncrDetail
 }
 
 type DescribeRestoreSchemaDetailsRequest struct {
-	ClusterId       *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	PageNumber      *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize        *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ld-m5eznlga4k5bcxxxx
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2020110514xxxx
 	RestoreRecordId *string `json:"RestoreRecordId,omitempty" xml:"RestoreRecordId,omitempty"`
 }
 
@@ -8112,6 +10184,9 @@ func (s *DescribeRestoreSchemaDetailsRequest) SetRestoreRecordId(v string) *Desc
 }
 
 type DescribeRestoreSchemaDetailsResponseBody struct {
+	// example:
+	//
+	// BC682A80-7677-4294-975C-CFEA425381DE
 	RequestId     *string                                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	RestoreSchema *DescribeRestoreSchemaDetailsResponseBodyRestoreSchema `json:"RestoreSchema,omitempty" xml:"RestoreSchema,omitempty" type:"Struct"`
 }
@@ -8135,12 +10210,27 @@ func (s *DescribeRestoreSchemaDetailsResponseBody) SetRestoreSchema(v *DescribeR
 }
 
 type DescribeRestoreSchemaDetailsResponseBodyRestoreSchema struct {
-	Fail                 *int32                                                                     `json:"Fail,omitempty" xml:"Fail,omitempty"`
-	PageNumber           *int32                                                                     `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 0
+	Fail *int32 `json:"Fail,omitempty" xml:"Fail,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
 	PageSize             *int32                                                                     `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	RestoreSchemaDetails *DescribeRestoreSchemaDetailsResponseBodyRestoreSchemaRestoreSchemaDetails `json:"RestoreSchemaDetails,omitempty" xml:"RestoreSchemaDetails,omitempty" type:"Struct"`
-	Succeed              *int32                                                                     `json:"Succeed,omitempty" xml:"Succeed,omitempty"`
-	Total                *int64                                                                     `json:"Total,omitempty" xml:"Total,omitempty"`
+	// example:
+	//
+	// 1
+	Succeed *int32 `json:"Succeed,omitempty" xml:"Succeed,omitempty"`
+	// example:
+	//
+	// 1
+	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
 func (s DescribeRestoreSchemaDetailsResponseBodyRestoreSchema) String() string {
@@ -8199,11 +10289,26 @@ func (s *DescribeRestoreSchemaDetailsResponseBodyRestoreSchemaRestoreSchemaDetai
 }
 
 type DescribeRestoreSchemaDetailsResponseBodyRestoreSchemaRestoreSchemaDetailsRestoreSchemaDetail struct {
-	EndTime   *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 2020-11-05T06:45:18Z
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// example:
+	//
+	// null
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 2020-11-05T06:45:14Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	State     *string `json:"State,omitempty" xml:"State,omitempty"`
-	Table     *string `json:"Table,omitempty" xml:"Table,omitempty"`
+	// example:
+	//
+	// SUCCEEDED
+	State *string `json:"State,omitempty" xml:"State,omitempty"`
+	// example:
+	//
+	// default:test1
+	Table *string `json:"Table,omitempty" xml:"Table,omitempty"`
 }
 
 func (s DescribeRestoreSchemaDetailsResponseBodyRestoreSchemaRestoreSchemaDetailsRestoreSchemaDetail) String() string {
@@ -8269,9 +10374,20 @@ func (s *DescribeRestoreSchemaDetailsResponse) SetBody(v *DescribeRestoreSchemaD
 }
 
 type DescribeRestoreSummaryRequest struct {
-	ClusterId  *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ld-m5eznlga4k5bcxxxx
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
 func (s DescribeRestoreSummaryRequest) String() string {
@@ -8298,12 +10414,27 @@ func (s *DescribeRestoreSummaryRequest) SetPageSize(v int32) *DescribeRestoreSum
 }
 
 type DescribeRestoreSummaryResponseBody struct {
-	HasMoreRestoreRecord *int32                                      `json:"HasMoreRestoreRecord,omitempty" xml:"HasMoreRestoreRecord,omitempty"`
-	PageNumber           *int32                                      `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize             *int32                                      `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId            *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Rescords             *DescribeRestoreSummaryResponseBodyRescords `json:"Rescords,omitempty" xml:"Rescords,omitempty" type:"Struct"`
-	Total                *int32                                      `json:"Total,omitempty" xml:"Total,omitempty"`
+	// example:
+	//
+	// 0
+	HasMoreRestoreRecord *int32 `json:"HasMoreRestoreRecord,omitempty" xml:"HasMoreRestoreRecord,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// AE639ED7-F0F3-4A71-911E-CF8EC088816E
+	RequestId *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Rescords  *DescribeRestoreSummaryResponseBodyRescords `json:"Rescords,omitempty" xml:"Rescords,omitempty" type:"Struct"`
+	// example:
+	//
+	// 1
+	Total *int32 `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
 func (s DescribeRestoreSummaryResponseBody) String() string {
@@ -8362,14 +10493,38 @@ func (s *DescribeRestoreSummaryResponseBodyRescords) SetRescord(v []*DescribeRes
 }
 
 type DescribeRestoreSummaryResponseBodyRescordsRescord struct {
-	BulkLoadProcess     *string `json:"BulkLoadProcess,omitempty" xml:"BulkLoadProcess,omitempty"`
-	CreateTime          *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	FinishTime          *string `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
+	// example:
+	//
+	// 1/1
+	BulkLoadProcess *string `json:"BulkLoadProcess,omitempty" xml:"BulkLoadProcess,omitempty"`
+	// example:
+	//
+	// 2020-11-05T06:45:14Z
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// 2020-11-05T06:45:51Z
+	FinishTime *string `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
+	// example:
+	//
+	// 1/1
 	HfileRestoreProcess *string `json:"HfileRestoreProcess,omitempty" xml:"HfileRestoreProcess,omitempty"`
-	LogProcess          *string `json:"LogProcess,omitempty" xml:"LogProcess,omitempty"`
-	RecordId            *string `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
-	SchemaProcess       *string `json:"SchemaProcess,omitempty" xml:"SchemaProcess,omitempty"`
-	Status              *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// 0/0
+	LogProcess *string `json:"LogProcess,omitempty" xml:"LogProcess,omitempty"`
+	// example:
+	//
+	// 20201105144514
+	RecordId *string `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
+	// example:
+	//
+	// 1/1
+	SchemaProcess *string `json:"SchemaProcess,omitempty" xml:"SchemaProcess,omitempty"`
+	// example:
+	//
+	// SUCCEEDED
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DescribeRestoreSummaryResponseBodyRescordsRescord) String() string {
@@ -8450,7 +10605,17 @@ func (s *DescribeRestoreSummaryResponse) SetBody(v *DescribeRestoreSummaryRespon
 }
 
 type DescribeRestoreTablesRequest struct {
-	ClusterId       *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ld-m5eznlga4k5bcxxxx
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2020110514xxxx
 	RestoreRecordId *string `json:"RestoreRecordId,omitempty" xml:"RestoreRecordId,omitempty"`
 }
 
@@ -8473,6 +10638,9 @@ func (s *DescribeRestoreTablesRequest) SetRestoreRecordId(v string) *DescribeRes
 }
 
 type DescribeRestoreTablesResponseBody struct {
+	// example:
+	//
+	// 18D9CC47-D913-48BF-AB6B-4FA9B28FBDB1
 	RequestId         *string                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	RestoreFull       *DescribeRestoreTablesResponseBodyRestoreFull       `json:"RestoreFull,omitempty" xml:"RestoreFull,omitempty" type:"Struct"`
 	RestoreIncrDetail *DescribeRestoreTablesResponseBodyRestoreIncrDetail `json:"RestoreIncrDetail,omitempty" xml:"RestoreIncrDetail,omitempty" type:"Struct"`
@@ -8520,14 +10688,35 @@ func (s *DescribeRestoreTablesResponseBody) SetTables(v *DescribeRestoreTablesRe
 }
 
 type DescribeRestoreTablesResponseBodyRestoreFull struct {
-	DataSize           *string                                                         `json:"DataSize,omitempty" xml:"DataSize,omitempty"`
-	Fail               *int32                                                          `json:"Fail,omitempty" xml:"Fail,omitempty"`
-	PageNumber         *int32                                                          `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 1.2 kB
+	DataSize *string `json:"DataSize,omitempty" xml:"DataSize,omitempty"`
+	// example:
+	//
+	// 0
+	Fail *int32 `json:"Fail,omitempty" xml:"Fail,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
 	PageSize           *int32                                                          `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	RestoreFullDetails *DescribeRestoreTablesResponseBodyRestoreFullRestoreFullDetails `json:"RestoreFullDetails,omitempty" xml:"RestoreFullDetails,omitempty" type:"Struct"`
-	Speed              *string                                                         `json:"Speed,omitempty" xml:"Speed,omitempty"`
-	Succeed            *int32                                                          `json:"Succeed,omitempty" xml:"Succeed,omitempty"`
-	Total              *int64                                                          `json:"Total,omitempty" xml:"Total,omitempty"`
+	// example:
+	//
+	// 0.00 MB/s
+	Speed *string `json:"Speed,omitempty" xml:"Speed,omitempty"`
+	// example:
+	//
+	// 1
+	Succeed *int32 `json:"Succeed,omitempty" xml:"Succeed,omitempty"`
+	// example:
+	//
+	// 1
+	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
 func (s DescribeRestoreTablesResponseBodyRestoreFull) String() string {
@@ -8596,14 +10785,38 @@ func (s *DescribeRestoreTablesResponseBodyRestoreFullRestoreFullDetails) SetRest
 }
 
 type DescribeRestoreTablesResponseBodyRestoreFullRestoreFullDetailsRestoreFullDetail struct {
-	DataSize  *string `json:"DataSize,omitempty" xml:"DataSize,omitempty"`
-	EndTime   *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	Process   *string `json:"Process,omitempty" xml:"Process,omitempty"`
-	Speed     *string `json:"Speed,omitempty" xml:"Speed,omitempty"`
+	// example:
+	//
+	// 1.2 kB
+	DataSize *string `json:"DataSize,omitempty" xml:"DataSize,omitempty"`
+	// example:
+	//
+	// 2020-11-05T06:45:51Z
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// example:
+	//
+	// “”
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 14/14
+	Process *string `json:"Process,omitempty" xml:"Process,omitempty"`
+	// example:
+	//
+	// 0.00 MB/s
+	Speed *string `json:"Speed,omitempty" xml:"Speed,omitempty"`
+	// example:
+	//
+	// 2020-11-05T06:45:45Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	State     *string `json:"State,omitempty" xml:"State,omitempty"`
-	Table     *string `json:"Table,omitempty" xml:"Table,omitempty"`
+	// example:
+	//
+	// SUCCEEDED
+	State *string `json:"State,omitempty" xml:"State,omitempty"`
+	// example:
+	//
+	// default:test1
+	Table *string `json:"Table,omitempty" xml:"Table,omitempty"`
 }
 
 func (s DescribeRestoreTablesResponseBodyRestoreFullRestoreFullDetailsRestoreFullDetail) String() string {
@@ -8655,13 +10868,34 @@ func (s *DescribeRestoreTablesResponseBodyRestoreFullRestoreFullDetailsRestoreFu
 }
 
 type DescribeRestoreTablesResponseBodyRestoreIncrDetail struct {
-	EndTime        *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	Process        *string `json:"Process,omitempty" xml:"Process,omitempty"`
-	RestoreDelay   *string `json:"RestoreDelay,omitempty" xml:"RestoreDelay,omitempty"`
+	// example:
+	//
+	// 2020-11-05T06:45:44Z
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// example:
+	//
+	// 0/0
+	Process *string `json:"Process,omitempty" xml:"Process,omitempty"`
+	// example:
+	//
+	// 0 ms
+	RestoreDelay *string `json:"RestoreDelay,omitempty" xml:"RestoreDelay,omitempty"`
+	// example:
+	//
+	// 2020-11-02T18:00:00Z
 	RestoreStartTs *string `json:"RestoreStartTs,omitempty" xml:"RestoreStartTs,omitempty"`
-	RestoredTs     *string `json:"RestoredTs,omitempty" xml:"RestoredTs,omitempty"`
-	StartTime      *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	State          *string `json:"State,omitempty" xml:"State,omitempty"`
+	// example:
+	//
+	// “”
+	RestoredTs *string `json:"RestoredTs,omitempty" xml:"RestoredTs,omitempty"`
+	// example:
+	//
+	// 2020-11-05T06:45:44Z
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// example:
+	//
+	// SUCCEEDED
+	State *string `json:"State,omitempty" xml:"State,omitempty"`
 }
 
 func (s DescribeRestoreTablesResponseBodyRestoreIncrDetail) String() string {
@@ -8708,12 +10942,27 @@ func (s *DescribeRestoreTablesResponseBodyRestoreIncrDetail) SetState(v string) 
 }
 
 type DescribeRestoreTablesResponseBodyRestoreSchema struct {
-	Fail                 *int32                                                              `json:"Fail,omitempty" xml:"Fail,omitempty"`
-	PageNumber           *int32                                                              `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 0
+	Fail *int32 `json:"Fail,omitempty" xml:"Fail,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
 	PageSize             *int32                                                              `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	RestoreSchemaDetails *DescribeRestoreTablesResponseBodyRestoreSchemaRestoreSchemaDetails `json:"RestoreSchemaDetails,omitempty" xml:"RestoreSchemaDetails,omitempty" type:"Struct"`
-	Succeed              *int32                                                              `json:"Succeed,omitempty" xml:"Succeed,omitempty"`
-	Total                *int64                                                              `json:"Total,omitempty" xml:"Total,omitempty"`
+	// example:
+	//
+	// 1
+	Succeed *int32 `json:"Succeed,omitempty" xml:"Succeed,omitempty"`
+	// example:
+	//
+	// 1
+	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
 func (s DescribeRestoreTablesResponseBodyRestoreSchema) String() string {
@@ -8772,11 +11021,26 @@ func (s *DescribeRestoreTablesResponseBodyRestoreSchemaRestoreSchemaDetails) Set
 }
 
 type DescribeRestoreTablesResponseBodyRestoreSchemaRestoreSchemaDetailsRestoreSchemaDetail struct {
-	EndTime   *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 2020-11-05T06:45:18Z
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// example:
+	//
+	// null
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 2020-11-05T06:45:14Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	State     *string `json:"State,omitempty" xml:"State,omitempty"`
-	Table     *string `json:"Table,omitempty" xml:"Table,omitempty"`
+	// example:
+	//
+	// SUCCEEDED
+	State *string `json:"State,omitempty" xml:"State,omitempty"`
+	// example:
+	//
+	// default:test1
+	Table *string `json:"Table,omitempty" xml:"Table,omitempty"`
 }
 
 func (s DescribeRestoreTablesResponseBodyRestoreSchemaRestoreSchemaDetailsRestoreSchemaDetail) String() string {
@@ -8813,11 +11077,29 @@ func (s *DescribeRestoreTablesResponseBodyRestoreSchemaRestoreSchemaDetailsResto
 }
 
 type DescribeRestoreTablesResponseBodyRestoreSummary struct {
-	EndTime       *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	RecordId      *string `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
+	// example:
+	//
+	// 2020-11-05T06:45:51Z
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// example:
+	//
+	// 20201105144514
+	RecordId *string `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
+	// example:
+	//
+	// 2020-11-04T05:15:00Z
 	RestoreToDate *string `json:"RestoreToDate,omitempty" xml:"RestoreToDate,omitempty"`
-	StartTime     *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	State         *string `json:"State,omitempty" xml:"State,omitempty"`
+	// example:
+	//
+	// 2020-11-05T06:45:14Z
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// example:
+	//
+	// SUCCEEDED
+	State *string `json:"State,omitempty" xml:"State,omitempty"`
+	// example:
+	//
+	// ld-m5e2t34kr54wgxxxx
 	TargetCluster *string `json:"TargetCluster,omitempty" xml:"TargetCluster,omitempty"`
 }
 
@@ -8906,6 +11188,11 @@ func (s *DescribeRestoreTablesResponse) SetBody(v *DescribeRestoreTablesResponse
 }
 
 type DescribeSecurityGroupsRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// hb-bp161ax8i03c4uq**
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 }
 
@@ -8923,6 +11210,9 @@ func (s *DescribeSecurityGroupsRequest) SetClusterId(v string) *DescribeSecurity
 }
 
 type DescribeSecurityGroupsResponseBody struct {
+	// example:
+	//
+	// 50373857-C47B-4B64-9332-D0B5280B59EA
 	RequestId        *string                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	SecurityGroupIds *DescribeSecurityGroupsResponseBodySecurityGroupIds `json:"SecurityGroupIds,omitempty" xml:"SecurityGroupIds,omitempty" type:"Struct"`
 }
@@ -8992,8 +11282,18 @@ func (s *DescribeSecurityGroupsResponse) SetBody(v *DescribeSecurityGroupsRespon
 }
 
 type DescribeServerlessClusterRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// hb-bp16f1441y6p2****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	ZoneId    *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// sdh0b7f4k5f****
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s DescribeServerlessClusterRequest) String() string {
@@ -9015,32 +11315,107 @@ func (s *DescribeServerlessClusterRequest) SetZoneId(v string) *DescribeServerle
 }
 
 type DescribeServerlessClusterResponseBody struct {
-	AutoRenew            *string `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
-	ClusterType          *string `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
-	CreateTime           *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	CuSize               *string `json:"CuSize,omitempty" xml:"CuSize,omitempty"`
-	DiskSize             *string `json:"DiskSize,omitempty" xml:"DiskSize,omitempty"`
-	ExpireTime           *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	HaType               *string `json:"HaType,omitempty" xml:"HaType,omitempty"`
-	HasUser              *string `json:"HasUser,omitempty" xml:"HasUser,omitempty"`
-	InnerEndpoint        *string `json:"InnerEndpoint,omitempty" xml:"InnerEndpoint,omitempty"`
-	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	InstanceName         *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// example:
+	//
+	// false
+	AutoRenew *string `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
+	// example:
+	//
+	// single
+	ClusterType *string `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
+	// example:
+	//
+	// 2019-10-12T14:40:46
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// 150
+	CuSize *string `json:"CuSize,omitempty" xml:"CuSize,omitempty"`
+	// example:
+	//
+	// 200
+	DiskSize *string `json:"DiskSize,omitempty" xml:"DiskSize,omitempty"`
+	// example:
+	//
+	// 2019-10-12T14:40:46
+	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	// example:
+	//
+	// false
+	HaType *string `json:"HaType,omitempty" xml:"HaType,omitempty"`
+	// example:
+	//
+	// false
+	HasUser *string `json:"HasUser,omitempty" xml:"HasUser,omitempty"`
+	// example:
+	//
+	// https://sh-wz91452kg946i****-lindorm-serverless-in.lindorm.rds.aliyuncs.com:443
+	InnerEndpoint *string `json:"InnerEndpoint,omitempty" xml:"InnerEndpoint,omitempty"`
+	// example:
+	//
+	// hb-bp16f1441y6p2****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// test
+	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// example:
+	//
+	// true
 	IsDeletionProtection *string `json:"IsDeletionProtection,omitempty" xml:"IsDeletionProtection,omitempty"`
 	LockMode             *string `json:"LockMode,omitempty" xml:"LockMode,omitempty"`
-	MainVersion          *string `json:"MainVersion,omitempty" xml:"MainVersion,omitempty"`
-	OuterEndpoint        *string `json:"OuterEndpoint,omitempty" xml:"OuterEndpoint,omitempty"`
-	PayType              *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RequestId            *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ReserverMaxQpsNum    *string `json:"ReserverMaxQpsNum,omitempty" xml:"ReserverMaxQpsNum,omitempty"`
-	ReserverMinQpsNum    *string `json:"ReserverMinQpsNum,omitempty" xml:"ReserverMinQpsNum,omitempty"`
-	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	Status               *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	UpdateStatus         *string `json:"UpdateStatus,omitempty" xml:"UpdateStatus,omitempty"`
-	VSwitchId            *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	VpcId                *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	ZoneId               *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	// example:
+	//
+	// 2.0.8
+	MainVersion *string `json:"MainVersion,omitempty" xml:"MainVersion,omitempty"`
+	// example:
+	//
+	// https://sh-wz91452kg946i****-lindorm-serverless.lindorm.rds.aliyuncs.com:443
+	OuterEndpoint *string `json:"OuterEndpoint,omitempty" xml:"OuterEndpoint,omitempty"`
+	// example:
+	//
+	// Postpaid
+	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// 89F81C30-320B-4550-91DB-C37C81D2358F
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 100
+	ReserverMaxQpsNum *string `json:"ReserverMaxQpsNum,omitempty" xml:"ReserverMaxQpsNum,omitempty"`
+	// example:
+	//
+	// 50
+	ReserverMinQpsNum *string `json:"ReserverMinQpsNum,omitempty" xml:"ReserverMinQpsNum,omitempty"`
+	// example:
+	//
+	// rg-fjm2d4v7sf****
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// example:
+	//
+	// ACTIVATION
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// NO
+	UpdateStatus *string `json:"UpdateStatus,omitempty" xml:"UpdateStatus,omitempty"`
+	// example:
+	//
+	// vsw-bp191ipotqf****
+	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	// example:
+	//
+	// vpc-bp120k6ixs4eoghz****
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// example:
+	//
+	// cn-hangzhou-f
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s DescribeServerlessClusterResponseBody) String() string {
@@ -9211,8 +11586,14 @@ func (s *DescribeServerlessClusterResponse) SetBody(v *DescribeServerlessCluster
 }
 
 type DescribeSubDomainRequest struct {
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ZoneId   *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	// example:
+	//
+	// cn-hangzhou-f
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s DescribeSubDomainRequest) String() string {
@@ -9234,7 +11615,13 @@ func (s *DescribeSubDomainRequest) SetZoneId(v string) *DescribeSubDomainRequest
 }
 
 type DescribeSubDomainResponseBody struct {
+	// example:
+	//
+	// F4208C83-B9BC-4A64-A739-8F88E98DA469
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// cn-hangzhou-h-aliyun
 	SubDomain *string `json:"SubDomain,omitempty" xml:"SubDomain,omitempty"`
 }
 
@@ -9286,10 +11673,26 @@ func (s *DescribeSubDomainResponse) SetBody(v *DescribeSubDomainResponseBody) *D
 }
 
 type EnableHBaseueBackupRequest struct {
-	ClientToken      *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	ColdStorageSize  *int32  `json:"ColdStorageSize,omitempty" xml:"ColdStorageSize,omitempty"`
+	// example:
+	//
+	// xxx
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// example:
+	//
+	// 800
+	ColdStorageSize *int32 `json:"ColdStorageSize,omitempty" xml:"ColdStorageSize,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ld-m5eznlga4k5bcxxxx
 	HbaseueClusterId *string `json:"HbaseueClusterId,omitempty" xml:"HbaseueClusterId,omitempty"`
-	NodeCount        *int32  `json:"NodeCount,omitempty" xml:"NodeCount,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2
+	NodeCount *int32 `json:"NodeCount,omitempty" xml:"NodeCount,omitempty"`
 }
 
 func (s EnableHBaseueBackupRequest) String() string {
@@ -9321,8 +11724,17 @@ func (s *EnableHBaseueBackupRequest) SetNodeCount(v int32) *EnableHBaseueBackupR
 }
 
 type EnableHBaseueBackupResponseBody struct {
+	// example:
+	//
+	// bds-m5e54q06ceyhxxxx
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	OrderId   *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// example:
+	//
+	// 1449xxx
+	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// example:
+	//
+	// 15272D5D-46E8-4400-9CC8-A7E7B589F575
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -9379,24 +11791,96 @@ func (s *EnableHBaseueBackupResponse) SetBody(v *EnableHBaseueBackupResponseBody
 }
 
 type EnableHBaseueModuleRequest struct {
-	AutoRenewPeriod    *int32  `json:"AutoRenewPeriod,omitempty" xml:"AutoRenewPeriod,omitempty"`
-	BdsId              *string `json:"BdsId,omitempty" xml:"BdsId,omitempty"`
-	ClientToken        *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	CoreInstanceType   *string `json:"CoreInstanceType,omitempty" xml:"CoreInstanceType,omitempty"`
-	DiskSize           *int32  `json:"DiskSize,omitempty" xml:"DiskSize,omitempty"`
-	DiskType           *string `json:"DiskType,omitempty" xml:"DiskType,omitempty"`
-	HbaseueClusterId   *string `json:"HbaseueClusterId,omitempty" xml:"HbaseueClusterId,omitempty"`
+	// example:
+	//
+	// 2
+	AutoRenewPeriod *int32 `json:"AutoRenewPeriod,omitempty" xml:"AutoRenewPeriod,omitempty"`
+	// example:
+	//
+	// bds-bp174pm3tsk3****
+	BdsId *string `json:"BdsId,omitempty" xml:"BdsId,omitempty"`
+	// example:
+	//
+	// ETnLKlblzczshOTUbOCz****
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// hbase.sn1.large
+	CoreInstanceType *string `json:"CoreInstanceType,omitempty" xml:"CoreInstanceType,omitempty"`
+	// example:
+	//
+	// 400
+	DiskSize *int32 `json:"DiskSize,omitempty" xml:"DiskSize,omitempty"`
+	// example:
+	//
+	// cloud_ssd
+	DiskType *string `json:"DiskType,omitempty" xml:"DiskType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ld-bp150tns0sjxs****
+	HbaseueClusterId *string `json:"HbaseueClusterId,omitempty" xml:"HbaseueClusterId,omitempty"`
+	// example:
+	//
+	// hbase.sn1.large
 	MasterInstanceType *string `json:"MasterInstanceType,omitempty" xml:"MasterInstanceType,omitempty"`
-	ModuleClusterName  *string `json:"ModuleClusterName,omitempty" xml:"ModuleClusterName,omitempty"`
-	ModuleTypeName     *string `json:"ModuleTypeName,omitempty" xml:"ModuleTypeName,omitempty"`
-	NodeCount          *int32  `json:"NodeCount,omitempty" xml:"NodeCount,omitempty"`
-	PayType            *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	Period             *int32  `json:"Period,omitempty" xml:"Period,omitempty"`
-	PeriodUnit         *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
-	RegionId           *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	VpcId              *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	VswitchId          *string `json:"VswitchId,omitempty" xml:"VswitchId,omitempty"`
-	ZoneId             *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	// example:
+	//
+	// cluster-name
+	ModuleClusterName *string `json:"ModuleClusterName,omitempty" xml:"ModuleClusterName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// solr
+	ModuleTypeName *string `json:"ModuleTypeName,omitempty" xml:"ModuleTypeName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2
+	NodeCount *int32 `json:"NodeCount,omitempty" xml:"NodeCount,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Prepaid
+	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	// example:
+	//
+	// 6
+	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
+	// example:
+	//
+	// month
+	PeriodUnit *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-shenzhen
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// vpc-bp120k6ixs4eog*****
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// vsw-bp191ipotqj1ssyl*****
+	VswitchId *string `json:"VswitchId,omitempty" xml:"VswitchId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-shenzhen-e
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s EnableHBaseueModuleRequest) String() string {
@@ -9498,8 +11982,17 @@ func (s *EnableHBaseueModuleRequest) SetZoneId(v string) *EnableHBaseueModuleReq
 }
 
 type EnableHBaseueModuleResponseBody struct {
+	// example:
+	//
+	// ld-bp150tns0sjxs****-m1-ps
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	OrderId   *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// example:
+	//
+	// 21474915573****
+	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// example:
+	//
+	// 407075EA-47F5-5A2D-888F-C1F90B8F3FCA
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -9556,34 +12049,154 @@ func (s *EnableHBaseueModuleResponse) SetBody(v *EnableHBaseueModuleResponseBody
 }
 
 type EvaluateMultiZoneResourceRequest struct {
-	ArbiterVSwitchId     *string `json:"ArbiterVSwitchId,omitempty" xml:"ArbiterVSwitchId,omitempty"`
-	ArbiterZoneId        *string `json:"ArbiterZoneId,omitempty" xml:"ArbiterZoneId,omitempty"`
-	ArchVersion          *string `json:"ArchVersion,omitempty" xml:"ArchVersion,omitempty"`
-	AutoRenewPeriod      *int32  `json:"AutoRenewPeriod,omitempty" xml:"AutoRenewPeriod,omitempty"`
-	ClientToken          *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	ClusterName          *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
-	CoreDiskSize         *int32  `json:"CoreDiskSize,omitempty" xml:"CoreDiskSize,omitempty"`
-	CoreDiskType         *string `json:"CoreDiskType,omitempty" xml:"CoreDiskType,omitempty"`
-	CoreInstanceType     *string `json:"CoreInstanceType,omitempty" xml:"CoreInstanceType,omitempty"`
-	CoreNodeCount        *int32  `json:"CoreNodeCount,omitempty" xml:"CoreNodeCount,omitempty"`
-	Engine               *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	EngineVersion        *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
-	LogDiskSize          *int32  `json:"LogDiskSize,omitempty" xml:"LogDiskSize,omitempty"`
-	LogDiskType          *string `json:"LogDiskType,omitempty" xml:"LogDiskType,omitempty"`
-	LogInstanceType      *string `json:"LogInstanceType,omitempty" xml:"LogInstanceType,omitempty"`
-	LogNodeCount         *int32  `json:"LogNodeCount,omitempty" xml:"LogNodeCount,omitempty"`
-	MasterInstanceType   *string `json:"MasterInstanceType,omitempty" xml:"MasterInstanceType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// vsw-hangxzhouxb****
+	ArbiterVSwitchId *string `json:"ArbiterVSwitchId,omitempty" xml:"ArbiterVSwitchId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou-b
+	ArbiterZoneId *string `json:"ArbiterZoneId,omitempty" xml:"ArbiterZoneId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2.0
+	ArchVersion *string `json:"ArchVersion,omitempty" xml:"ArchVersion,omitempty"`
+	// example:
+	//
+	// 0
+	AutoRenewPeriod *int32 `json:"AutoRenewPeriod,omitempty" xml:"AutoRenewPeriod,omitempty"`
+	// example:
+	//
+	// f4g8t5rd2gr94****
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// example:
+	//
+	// hbaseue_test
+	ClusterName *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 400
+	CoreDiskSize *int32 `json:"CoreDiskSize,omitempty" xml:"CoreDiskSize,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cloud_ssd
+	CoreDiskType *string `json:"CoreDiskType,omitempty" xml:"CoreDiskType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// hbase.sn1.medium
+	CoreInstanceType *string `json:"CoreInstanceType,omitempty" xml:"CoreInstanceType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 4
+	CoreNodeCount *int32 `json:"CoreNodeCount,omitempty" xml:"CoreNodeCount,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// hbaseue
+	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2.0
+	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
+	// example:
+	//
+	// 400
+	LogDiskSize *int32 `json:"LogDiskSize,omitempty" xml:"LogDiskSize,omitempty"`
+	// example:
+	//
+	// cloud_ssd
+	LogDiskType *string `json:"LogDiskType,omitempty" xml:"LogDiskType,omitempty"`
+	// example:
+	//
+	// hbase.sn1.medium
+	LogInstanceType *string `json:"LogInstanceType,omitempty" xml:"LogInstanceType,omitempty"`
+	// example:
+	//
+	// 4
+	LogNodeCount *int32 `json:"LogNodeCount,omitempty" xml:"LogNodeCount,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// hbase.sn1.medium
+	MasterInstanceType *string `json:"MasterInstanceType,omitempty" xml:"MasterInstanceType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou-bef-aliyun-com
 	MultiZoneCombination *string `json:"MultiZoneCombination,omitempty" xml:"MultiZoneCombination,omitempty"`
-	PayType              *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	Period               *int32  `json:"Period,omitempty" xml:"Period,omitempty"`
-	PeriodUnit           *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
-	PrimaryVSwitchId     *string `json:"PrimaryVSwitchId,omitempty" xml:"PrimaryVSwitchId,omitempty"`
-	PrimaryZoneId        *string `json:"PrimaryZoneId,omitempty" xml:"PrimaryZoneId,omitempty"`
-	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	SecurityIPList       *string `json:"SecurityIPList,omitempty" xml:"SecurityIPList,omitempty"`
-	StandbyVSwitchId     *string `json:"StandbyVSwitchId,omitempty" xml:"StandbyVSwitchId,omitempty"`
-	StandbyZoneId        *string `json:"StandbyZoneId,omitempty" xml:"StandbyZoneId,omitempty"`
-	VpcId                *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Postpaid
+	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	// example:
+	//
+	// 1
+	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
+	// example:
+	//
+	// month
+	PeriodUnit *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// vsw-hangxzhouxe*****
+	PrimaryVSwitchId *string `json:"PrimaryVSwitchId,omitempty" xml:"PrimaryVSwitchId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou-e
+	PrimaryZoneId *string `json:"PrimaryZoneId,omitempty" xml:"PrimaryZoneId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// 127.0.0.1
+	SecurityIPList *string `json:"SecurityIPList,omitempty" xml:"SecurityIPList,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// vsw-hangxzhouxf****
+	StandbyVSwitchId *string `json:"StandbyVSwitchId,omitempty" xml:"StandbyVSwitchId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou-f
+	StandbyZoneId *string `json:"StandbyZoneId,omitempty" xml:"StandbyZoneId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// vpc-bp120k6ixs4eog*****
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s EvaluateMultiZoneResourceRequest) String() string {
@@ -9735,8 +12348,14 @@ func (s *EvaluateMultiZoneResourceRequest) SetVpcId(v string) *EvaluateMultiZone
 }
 
 type EvaluateMultiZoneResourceResponseBody struct {
+	// example:
+	//
+	// FB703B69-D4D4-4879-B9FE-6A37F67C46FD
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s EvaluateMultiZoneResourceResponseBody) String() string {
@@ -9787,8 +12406,18 @@ func (s *EvaluateMultiZoneResourceResponse) SetBody(v *EvaluateMultiZoneResource
 }
 
 type GetMultimodeCmsUrlRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// hb-t4naqsay5gn******
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	RegionId  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s GetMultimodeCmsUrlRequest) String() string {
@@ -9810,9 +12439,18 @@ func (s *GetMultimodeCmsUrlRequest) SetRegionId(v string) *GetMultimodeCmsUrlReq
 }
 
 type GetMultimodeCmsUrlResponseBody struct {
-	ClusterId      *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// example:
+	//
+	// hb-t4naqsay5gn******
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// example:
+	//
+	// htpp://***********
 	MultimodCmsUrl *string `json:"MultimodCmsUrl,omitempty" xml:"MultimodCmsUrl,omitempty"`
-	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 44183B05-852E-4716-B902-52977140190F
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetMultimodeCmsUrlResponseBody) String() string {
@@ -9868,11 +12506,36 @@ func (s *GetMultimodeCmsUrlResponse) SetBody(v *GetMultimodeCmsUrlResponseBody) 
 }
 
 type GrantRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test01
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	AclActions  *string `json:"AclActions,omitempty" xml:"AclActions,omitempty"`
-	ClusterId   *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	Namespace   *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	TableName   *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// READ,WRITE
+	AclActions *string `json:"AclActions,omitempty" xml:"AclActions,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ld-bp150tns0sjxs****
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// default
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// table
+	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
 }
 
 func (s GrantRequest) String() string {
@@ -9909,6 +12572,9 @@ func (s *GrantRequest) SetTableName(v string) *GrantRequest {
 }
 
 type GrantResponseBody struct {
+	// example:
+	//
+	// 9CBF8DF0-4931-4A54-9B60-4C6E1AB5****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -9955,6 +12621,11 @@ func (s *GrantResponse) SetBody(v *GrantResponseBody) *GrantResponse {
 }
 
 type ListHBaseInstancesRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// vpc-t4nx81tmlixcq5i****
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
@@ -9973,7 +12644,10 @@ func (s *ListHBaseInstancesRequest) SetVpcId(v string) *ListHBaseInstancesReques
 
 type ListHBaseInstancesResponseBody struct {
 	Instances *ListHBaseInstancesResponseBodyInstances `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Struct"`
-	RequestId *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 89F81C30-320B-4550-91DB-C37C81D2358F
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListHBaseInstancesResponseBody) String() string {
@@ -10012,9 +12686,18 @@ func (s *ListHBaseInstancesResponseBodyInstances) SetInstance(v []*ListHBaseInst
 }
 
 type ListHBaseInstancesResponseBodyInstancesInstance struct {
-	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// hb-t4naqsay5gn****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// name_test
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	IsDefault    *bool   `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
+	// example:
+	//
+	// false
+	IsDefault *bool `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
 }
 
 func (s ListHBaseInstancesResponseBodyInstancesInstance) String() string {
@@ -10070,9 +12753,20 @@ func (s *ListHBaseInstancesResponse) SetBody(v *ListHBaseInstancesResponseBody) 
 }
 
 type ListInstanceServiceConfigHistoriesRequest struct {
-	ClusterId  *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// hb-t4naqsay5gn******
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// example:
+	//
+	// 10
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 1
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
 func (s ListInstanceServiceConfigHistoriesRequest) String() string {
@@ -10100,10 +12794,22 @@ func (s *ListInstanceServiceConfigHistoriesRequest) SetPageSize(v int32) *ListIn
 
 type ListInstanceServiceConfigHistoriesResponseBody struct {
 	ConfigureHistoryList *ListInstanceServiceConfigHistoriesResponseBodyConfigureHistoryList `json:"ConfigureHistoryList,omitempty" xml:"ConfigureHistoryList,omitempty" type:"Struct"`
-	PageNumber           *int32                                                              `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageRecordCount      *int32                                                              `json:"PageRecordCount,omitempty" xml:"PageRecordCount,omitempty"`
-	RequestId            *string                                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalRecordCount     *int64                                                              `json:"TotalRecordCount,omitempty" xml:"TotalRecordCount,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageRecordCount *int32 `json:"PageRecordCount,omitempty" xml:"PageRecordCount,omitempty"`
+	// example:
+	//
+	// 658C1549-2C02-4FD9-9490-EB3B285F9DCA
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 1
+	TotalRecordCount *int64 `json:"TotalRecordCount,omitempty" xml:"TotalRecordCount,omitempty"`
 }
 
 func (s ListInstanceServiceConfigHistoriesResponseBody) String() string {
@@ -10157,11 +12863,26 @@ func (s *ListInstanceServiceConfigHistoriesResponseBodyConfigureHistoryList) Set
 }
 
 type ListInstanceServiceConfigHistoriesResponseBodyConfigureHistoryListConfig struct {
+	// example:
+	//
+	// hbase#hbase-site.xml#hbase.client.keyvalue.maxsize
 	ConfigureName *string `json:"ConfigureName,omitempty" xml:"ConfigureName,omitempty"`
-	CreateTime    *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Effective     *string `json:"Effective,omitempty" xml:"Effective,omitempty"`
-	NewValue      *string `json:"NewValue,omitempty" xml:"NewValue,omitempty"`
-	OldValue      *string `json:"OldValue,omitempty" xml:"OldValue,omitempty"`
+	// example:
+	//
+	// 1608708923000
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// false
+	Effective *string `json:"Effective,omitempty" xml:"Effective,omitempty"`
+	// example:
+	//
+	// 10485770
+	NewValue *string `json:"NewValue,omitempty" xml:"NewValue,omitempty"`
+	// example:
+	//
+	// 10485760
+	OldValue *string `json:"OldValue,omitempty" xml:"OldValue,omitempty"`
 }
 
 func (s ListInstanceServiceConfigHistoriesResponseBodyConfigureHistoryListConfig) String() string {
@@ -10227,9 +12948,20 @@ func (s *ListInstanceServiceConfigHistoriesResponse) SetBody(v *ListInstanceServ
 }
 
 type ListInstanceServiceConfigurationsRequest struct {
-	ClusterId  *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// hb-t4naqsay5gn****
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// example:
+	//
+	// 10
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 1
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
 func (s ListInstanceServiceConfigurationsRequest) String() string {
@@ -10256,11 +12988,23 @@ func (s *ListInstanceServiceConfigurationsRequest) SetPageSize(v int32) *ListIns
 }
 
 type ListInstanceServiceConfigurationsResponseBody struct {
-	ConfigureList    *ListInstanceServiceConfigurationsResponseBodyConfigureList `json:"ConfigureList,omitempty" xml:"ConfigureList,omitempty" type:"Struct"`
-	PageNumber       *int32                                                      `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageRecordCount  *int32                                                      `json:"PageRecordCount,omitempty" xml:"PageRecordCount,omitempty"`
-	RequestId        *string                                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalRecordCount *int64                                                      `json:"TotalRecordCount,omitempty" xml:"TotalRecordCount,omitempty"`
+	ConfigureList *ListInstanceServiceConfigurationsResponseBodyConfigureList `json:"ConfigureList,omitempty" xml:"ConfigureList,omitempty" type:"Struct"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageRecordCount *int32 `json:"PageRecordCount,omitempty" xml:"PageRecordCount,omitempty"`
+	// example:
+	//
+	// 5B381E36-BCA3-4377-8638-B65C236617D5
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 42
+	TotalRecordCount *int64 `json:"TotalRecordCount,omitempty" xml:"TotalRecordCount,omitempty"`
 }
 
 func (s ListInstanceServiceConfigurationsResponseBody) String() string {
@@ -10314,13 +13058,34 @@ func (s *ListInstanceServiceConfigurationsResponseBodyConfigureList) SetConfig(v
 }
 
 type ListInstanceServiceConfigurationsResponseBodyConfigureListConfig struct {
+	// example:
+	//
+	// hbase#hbase-site.xml#hbase.client.keyvalue.maxsize
 	ConfigureName *string `json:"ConfigureName,omitempty" xml:"ConfigureName,omitempty"`
+	// example:
+	//
+	// INT
 	ConfigureUnit *string `json:"ConfigureUnit,omitempty" xml:"ConfigureUnit,omitempty"`
-	DefaultValue  *string `json:"DefaultValue,omitempty" xml:"DefaultValue,omitempty"`
-	Description   *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	NeedRestart   *string `json:"NeedRestart,omitempty" xml:"NeedRestart,omitempty"`
-	RunningValue  *string `json:"RunningValue,omitempty" xml:"RunningValue,omitempty"`
-	ValueRange    *string `json:"ValueRange,omitempty" xml:"ValueRange,omitempty"`
+	// example:
+	//
+	// 10485760
+	DefaultValue *string `json:"DefaultValue,omitempty" xml:"DefaultValue,omitempty"`
+	// example:
+	//
+	// hbase client keyvalue maxsize
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// true
+	NeedRestart *string `json:"NeedRestart,omitempty" xml:"NeedRestart,omitempty"`
+	// example:
+	//
+	// 10485760
+	RunningValue *string `json:"RunningValue,omitempty" xml:"RunningValue,omitempty"`
+	// example:
+	//
+	// R[10485760,52428800]
+	ValueRange *string `json:"ValueRange,omitempty" xml:"ValueRange,omitempty"`
 }
 
 func (s ListInstanceServiceConfigurationsResponseBodyConfigureListConfig) String() string {
@@ -10396,8 +13161,19 @@ func (s *ListInstanceServiceConfigurationsResponse) SetBody(v *ListInstanceServi
 }
 
 type ListTagResourcesRequest struct {
-	NextToken  *string                       `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	RegionId   *string                       `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// NextToken
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// bds-bp15e022622f****
 	ResourceId []*string                     `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
 	Tag        []*ListTagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
@@ -10431,7 +13207,13 @@ func (s *ListTagResourcesRequest) SetTag(v []*ListTagResourcesRequestTag) *ListT
 }
 
 type ListTagResourcesRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// key1
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// value1
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -10454,7 +13236,13 @@ func (s *ListTagResourcesRequestTag) SetValue(v string) *ListTagResourcesRequest
 }
 
 type ListTagResourcesResponseBody struct {
-	NextToken    *string                                   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// example:
+	//
+	// 1d2db86sca4384811e0b5e8707e68****
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// example:
+	//
+	// 74F02441-9A8D-48F6-933F-E317AEB28DBF
 	RequestId    *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	TagResources *ListTagResourcesResponseBodyTagResources `json:"TagResources,omitempty" xml:"TagResources,omitempty" type:"Struct"`
 }
@@ -10500,10 +13288,22 @@ func (s *ListTagResourcesResponseBodyTagResources) SetTagResource(v []*ListTagRe
 }
 
 type ListTagResourcesResponseBodyTagResourcesTagResource struct {
-	ResourceId   *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// example:
+	//
+	// bds-bp15e022622f****
+	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// example:
+	//
+	// ALIYUN::MULTIMOD::CLUSTER
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	TagKey       *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
-	TagValue     *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
+	// example:
+	//
+	// k1
+	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// example:
+	//
+	// v2
+	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 
 func (s ListTagResourcesResponseBodyTagResourcesTagResource) String() string {
@@ -10564,6 +13364,11 @@ func (s *ListTagResourcesResponse) SetBody(v *ListTagResourcesResponseBody) *Lis
 }
 
 type ListTagsRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -10581,6 +13386,9 @@ func (s *ListTagsRequest) SetRegionId(v string) *ListTagsRequest {
 }
 
 type ListTagsResponseBody struct {
+	// example:
+	//
+	// 36D1BE9B-3C4A-425B-947A-69E3D77999C4
 	RequestId *string                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Tags      *ListTagsResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
 }
@@ -10621,7 +13429,13 @@ func (s *ListTagsResponseBodyTags) SetTag(v []*ListTagsResponseBodyTagsTag) *Lis
 }
 
 type ListTagsResponseBodyTagsTag struct {
-	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// example:
+	//
+	// k1
+	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// example:
+	//
+	// v2
 	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 
@@ -10673,8 +13487,23 @@ func (s *ListTagsResponse) SetBody(v *ListTagsResponseBody) *ListTagsResponse {
 }
 
 type ModifyAccountPasswordRequest struct {
-	AccountName        *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	ClusterId          *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test01
+	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ld-bp150tns0sjxs****
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// **********
 	NewAccountPassword *string `json:"NewAccountPassword,omitempty" xml:"NewAccountPassword,omitempty"`
 }
 
@@ -10702,6 +13531,9 @@ func (s *ModifyAccountPasswordRequest) SetNewAccountPassword(v string) *ModifyAc
 }
 
 type ModifyAccountPasswordResponseBody struct {
+	// example:
+	//
+	// AFAA617B-3268-5883-982B-DB8EC8CC1F1B
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -10748,14 +13580,27 @@ func (s *ModifyAccountPasswordResponse) SetBody(v *ModifyAccountPasswordResponse
 }
 
 type ModifyActiveOperationTasksRequest struct {
-	Ids                  *string `json:"Ids,omitempty" xml:"Ids,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1111,2222
+	Ids *string `json:"Ids,omitempty" xml:"Ids,omitempty"`
+	// example:
+	//
+	// 1
 	ImmediateStart       *int32  `json:"ImmediateStart,omitempty" xml:"ImmediateStart,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	SwitchTime           *string `json:"SwitchTime,omitempty" xml:"SwitchTime,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2022-02-17T18:50:00Z
+	SwitchTime *string `json:"SwitchTime,omitempty" xml:"SwitchTime,omitempty"`
 }
 
 func (s ModifyActiveOperationTasksRequest) String() string {
@@ -10807,7 +13652,13 @@ func (s *ModifyActiveOperationTasksRequest) SetSwitchTime(v string) *ModifyActiv
 }
 
 type ModifyActiveOperationTasksResponseBody struct {
-	Ids       *string `json:"Ids,omitempty" xml:"Ids,omitempty"`
+	// example:
+	//
+	// 1111,2222
+	Ids *string `json:"Ids,omitempty" xml:"Ids,omitempty"`
+	// example:
+	//
+	// 8C9CC46A-9532-4752-B59F-580112C5A45B
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -10859,11 +13710,36 @@ func (s *ModifyActiveOperationTasksResponse) SetBody(v *ModifyActiveOperationTas
 }
 
 type ModifyBackupPlanConfigRequest struct {
-	ClusterId           *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	FullBackupCycle     *string `json:"FullBackupCycle,omitempty" xml:"FullBackupCycle,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ld-m5eznlga4k5bcxxxx
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 7
+	FullBackupCycle *string `json:"FullBackupCycle,omitempty" xml:"FullBackupCycle,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 3
 	MinHFileBackupCount *string `json:"MinHFileBackupCount,omitempty" xml:"MinHFileBackupCount,omitempty"`
-	NextFullBackupDate  *string `json:"NextFullBackupDate,omitempty" xml:"NextFullBackupDate,omitempty"`
-	Tables              *string `json:"Tables,omitempty" xml:"Tables,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2020-11-09T18:00:00Z
+	NextFullBackupDate *string `json:"NextFullBackupDate,omitempty" xml:"NextFullBackupDate,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// *
+	Tables *string `json:"Tables,omitempty" xml:"Tables,omitempty"`
 }
 
 func (s ModifyBackupPlanConfigRequest) String() string {
@@ -10900,6 +13776,9 @@ func (s *ModifyBackupPlanConfigRequest) SetTables(v string) *ModifyBackupPlanCon
 }
 
 type ModifyBackupPlanConfigResponseBody struct {
+	// example:
+	//
+	// 50F4A8C2-076F-4703-9813-2FCD7FBB91C2
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -10946,11 +13825,32 @@ func (s *ModifyBackupPlanConfigResponse) SetBody(v *ModifyBackupPlanConfigRespon
 }
 
 type ModifyBackupPolicyRequest struct {
-	ClusterId                   *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	PreferredBackupEndTimeUTC   *string `json:"PreferredBackupEndTimeUTC,omitempty" xml:"PreferredBackupEndTimeUTC,omitempty"`
-	PreferredBackupPeriod       *string `json:"PreferredBackupPeriod,omitempty" xml:"PreferredBackupPeriod,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// hb-t4naqsay5gn****
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// example:
+	//
+	// 18:00Z
+	PreferredBackupEndTimeUTC *string `json:"PreferredBackupEndTimeUTC,omitempty" xml:"PreferredBackupEndTimeUTC,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Thursday
+	PreferredBackupPeriod *string `json:"PreferredBackupPeriod,omitempty" xml:"PreferredBackupPeriod,omitempty"`
+	// example:
+	//
+	// 17:00Z
 	PreferredBackupStartTimeUTC *string `json:"PreferredBackupStartTimeUTC,omitempty" xml:"PreferredBackupStartTimeUTC,omitempty"`
-	PreferredBackupTime         *string `json:"PreferredBackupTime,omitempty" xml:"PreferredBackupTime,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 01:00-02:00
+	PreferredBackupTime *string `json:"PreferredBackupTime,omitempty" xml:"PreferredBackupTime,omitempty"`
 }
 
 func (s ModifyBackupPolicyRequest) String() string {
@@ -10987,6 +13887,9 @@ func (s *ModifyBackupPolicyRequest) SetPreferredBackupTime(v string) *ModifyBack
 }
 
 type ModifyBackupPolicyResponseBody struct {
+	// example:
+	//
+	// 17E3AC63-300D-4B69-9108-45EC20E50E85
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -11033,8 +13936,18 @@ func (s *ModifyBackupPolicyResponse) SetBody(v *ModifyBackupPolicyResponseBody) 
 }
 
 type ModifyClusterDeletionProtectionRequest struct {
-	ClusterId  *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	Protection *bool   `json:"Protection,omitempty" xml:"Protection,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ld-****************
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// true
+	Protection *bool `json:"Protection,omitempty" xml:"Protection,omitempty"`
 }
 
 func (s ModifyClusterDeletionProtectionRequest) String() string {
@@ -11056,6 +13969,9 @@ func (s *ModifyClusterDeletionProtectionRequest) SetProtection(v bool) *ModifyCl
 }
 
 type ModifyClusterDeletionProtectionResponseBody struct {
+	// example:
+	//
+	// 24C80BD8-C710-4138-893A-D2AFED4FC13D
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -11102,8 +14018,18 @@ func (s *ModifyClusterDeletionProtectionResponse) SetBody(v *ModifyClusterDeleti
 }
 
 type ModifyDiskWarningLineRequest struct {
-	ClusterId   *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	WarningLine *int32  `json:"WarningLine,omitempty" xml:"WarningLine,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ld-m5eznlga4k5bcxxxx
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 80
+	WarningLine *int32 `json:"WarningLine,omitempty" xml:"WarningLine,omitempty"`
 }
 
 func (s ModifyDiskWarningLineRequest) String() string {
@@ -11125,6 +14051,9 @@ func (s *ModifyDiskWarningLineRequest) SetWarningLine(v int32) *ModifyDiskWarnin
 }
 
 type ModifyDiskWarningLineResponseBody struct {
+	// example:
+	//
+	// FC4A930D-3AEE-4C9D-BC70-C0F2EEEAA174
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -11171,8 +14100,23 @@ func (s *ModifyDiskWarningLineResponse) SetBody(v *ModifyDiskWarningLineResponse
 }
 
 type ModifyInstanceMaintainTimeRequest struct {
-	ClusterId         *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	MaintainEndTime   *string `json:"MaintainEndTime,omitempty" xml:"MaintainEndTime,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ld-bp1b**6jco89****
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 06:00Z
+	MaintainEndTime *string `json:"MaintainEndTime,omitempty" xml:"MaintainEndTime,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 02:00Z
 	MaintainStartTime *string `json:"MaintainStartTime,omitempty" xml:"MaintainStartTime,omitempty"`
 }
 
@@ -11200,6 +14144,9 @@ func (s *ModifyInstanceMaintainTimeRequest) SetMaintainStartTime(v string) *Modi
 }
 
 type ModifyInstanceMaintainTimeResponseBody struct {
+	// example:
+	//
+	// C9085433-A56A-4089-B49A-DF5A4E2B7B06
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -11246,11 +14193,32 @@ func (s *ModifyInstanceMaintainTimeResponse) SetBody(v *ModifyInstanceMaintainTi
 }
 
 type ModifyInstanceNameRequest struct {
+	// example:
+	//
+	// ETnLKlblzczshOTUbOCz****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	ClusterId   *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ld-bp150tns0sjxs****
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// testhbaseone
 	ClusterName *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
-	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ZoneId      *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// cn-hangzhou-f
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s ModifyInstanceNameRequest) String() string {
@@ -11287,6 +14255,9 @@ func (s *ModifyInstanceNameRequest) SetZoneId(v string) *ModifyInstanceNameReque
 }
 
 type ModifyInstanceNameResponseBody struct {
+	// example:
+	//
+	// 959DA199-54E5-569D-AD46-92BED8515E62
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -11333,11 +14304,32 @@ func (s *ModifyInstanceNameResponse) SetBody(v *ModifyInstanceNameResponseBody) 
 }
 
 type ModifyInstanceServiceConfigRequest struct {
-	ClusterId      *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	ConfigureName  *string `json:"ConfigureName,omitempty" xml:"ConfigureName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// hb-t4naqsay5gn****
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// hbase#hbase-site.xml#hbase.client.keyvalue.maxsize
+	ConfigureName *string `json:"ConfigureName,omitempty" xml:"ConfigureName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10485770
 	ConfigureValue *string `json:"ConfigureValue,omitempty" xml:"ConfigureValue,omitempty"`
-	Parameters     *string `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
-	Restart        *bool   `json:"Restart,omitempty" xml:"Restart,omitempty"`
+	// example:
+	//
+	// {"key1=value1", "key2=value2"}
+	Parameters *string `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
+	// example:
+	//
+	// false
+	Restart *bool `json:"Restart,omitempty" xml:"Restart,omitempty"`
 }
 
 func (s ModifyInstanceServiceConfigRequest) String() string {
@@ -11374,6 +14366,9 @@ func (s *ModifyInstanceServiceConfigRequest) SetRestart(v bool) *ModifyInstanceS
 }
 
 type ModifyInstanceServiceConfigResponseBody struct {
+	// example:
+	//
+	// F008B7AB-025D-4C20-AE12-047C8F8C3D97
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -11420,8 +14415,19 @@ func (s *ModifyInstanceServiceConfigResponse) SetBody(v *ModifyInstanceServiceCo
 }
 
 type ModifyInstanceTypeRequest struct {
-	ClusterId          *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	CoreInstanceType   *string `json:"CoreInstanceType,omitempty" xml:"CoreInstanceType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// hb-bp1x940uh********
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// example:
+	//
+	// hbase.sn1.8xlarge
+	CoreInstanceType *string `json:"CoreInstanceType,omitempty" xml:"CoreInstanceType,omitempty"`
+	// example:
+	//
+	// hbase.sn1.large
 	MasterInstanceType *string `json:"MasterInstanceType,omitempty" xml:"MasterInstanceType,omitempty"`
 }
 
@@ -11449,7 +14455,13 @@ func (s *ModifyInstanceTypeRequest) SetMasterInstanceType(v string) *ModifyInsta
 }
 
 type ModifyInstanceTypeResponseBody struct {
-	OrderId   *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// example:
+	//
+	// 123412341234123
+	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// example:
+	//
+	// 3E19E345-101D-4014-946C-****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -11501,9 +14513,27 @@ func (s *ModifyInstanceTypeResponse) SetBody(v *ModifyInstanceTypeResponseBody) 
 }
 
 type ModifyIpWhitelistRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ld-bp1uoihlf82e8****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// group_01
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	IpList    *string `json:"IpList,omitempty" xml:"IpList,omitempty"`
+	// example:
+	//
+	// 42.120.XX.XX
+	IpList *string `json:"IpList,omitempty" xml:"IpList,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 4
 	IpVersion *string `json:"IpVersion,omitempty" xml:"IpVersion,omitempty"`
 }
 
@@ -11536,6 +14566,9 @@ func (s *ModifyIpWhitelistRequest) SetIpVersion(v string) *ModifyIpWhitelistRequ
 }
 
 type ModifyIpWhitelistResponseBody struct {
+	// example:
+	//
+	// 101CFA8A-FB88-5014-A10C-3A0DA9AD8B0B
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -11582,9 +14615,23 @@ func (s *ModifyIpWhitelistResponse) SetBody(v *ModifyIpWhitelistResponseBody) *M
 }
 
 type ModifyMultiZoneClusterNodeTypeRequest struct {
-	ClusterId          *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	CoreInstanceType   *string `json:"CoreInstanceType,omitempty" xml:"CoreInstanceType,omitempty"`
-	LogInstanceType    *string `json:"LogInstanceType,omitempty" xml:"LogInstanceType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ld-dj45g7d6rbrd****
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// example:
+	//
+	// hbase.sn1.large
+	CoreInstanceType *string `json:"CoreInstanceType,omitempty" xml:"CoreInstanceType,omitempty"`
+	// example:
+	//
+	// hbase.sn1.2xlarge
+	LogInstanceType *string `json:"LogInstanceType,omitempty" xml:"LogInstanceType,omitempty"`
+	// example:
+	//
+	// hbase.sn1.8xlarge
 	MasterInstanceType *string `json:"MasterInstanceType,omitempty" xml:"MasterInstanceType,omitempty"`
 }
 
@@ -11617,7 +14664,13 @@ func (s *ModifyMultiZoneClusterNodeTypeRequest) SetMasterInstanceType(v string) 
 }
 
 type ModifyMultiZoneClusterNodeTypeResponseBody struct {
-	OrderId   *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// example:
+	//
+	// 12341234123****
+	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// example:
+	//
+	// 06CF7A6F-A81C-431D-BACD-793F24A67C54
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -11669,7 +14722,17 @@ func (s *ModifyMultiZoneClusterNodeTypeResponse) SetBody(v *ModifyMultiZoneClust
 }
 
 type ModifySecurityGroupsRequest struct {
-	ClusterId        *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// hb-bp16f1441y6p2kv**
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// sg-t4ng4yyc916o81nu****,sg-x4gg4dyc9d6w********
 	SecurityGroupIds *string `json:"SecurityGroupIds,omitempty" xml:"SecurityGroupIds,omitempty"`
 }
 
@@ -11692,6 +14755,9 @@ func (s *ModifySecurityGroupsRequest) SetSecurityGroupIds(v string) *ModifySecur
 }
 
 type ModifySecurityGroupsResponseBody struct {
+	// example:
+	//
+	// F4AD2E65-482B-46B6-942E-765989B1C8A3
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -11738,9 +14804,24 @@ func (s *ModifySecurityGroupsResponse) SetBody(v *ModifySecurityGroupsResponseBo
 }
 
 type ModifyUIAccountPasswordRequest struct {
-	AccountName     *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test01
+	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// **********
 	AccountPassword *string `json:"AccountPassword,omitempty" xml:"AccountPassword,omitempty"`
-	ClusterId       *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ld-bp150tns0sjxs****
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 }
 
 func (s ModifyUIAccountPasswordRequest) String() string {
@@ -11767,6 +14848,9 @@ func (s *ModifyUIAccountPasswordRequest) SetClusterId(v string) *ModifyUIAccount
 }
 
 type ModifyUIAccountPasswordResponseBody struct {
+	// example:
+	//
+	// BED4ADEB-4EA9-507E-892C-84112D6AC7C1
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -11813,7 +14897,17 @@ func (s *ModifyUIAccountPasswordResponse) SetBody(v *ModifyUIAccountPasswordResp
 }
 
 type MoveResourceGroupRequest struct {
-	ClusterId          *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ld-bp169l540vc6c****
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// rg-aekzrk6zzsy****
 	NewResourceGroupId *string `json:"NewResourceGroupId,omitempty" xml:"NewResourceGroupId,omitempty"`
 }
 
@@ -11836,6 +14930,9 @@ func (s *MoveResourceGroupRequest) SetNewResourceGroupId(v string) *MoveResource
 }
 
 type MoveResourceGroupResponseBody struct {
+	// example:
+	//
+	// 8CD9BFBC-D575-5FCC-BA7E-956BF0D0****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -11882,6 +14979,11 @@ func (s *MoveResourceGroupResponse) SetBody(v *MoveResourceGroupResponseBody) *M
 }
 
 type OpenBackupRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// hb-t4naqsay5gn******
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 }
 
@@ -11899,6 +15001,9 @@ func (s *OpenBackupRequest) SetClusterId(v string) *OpenBackupRequest {
 }
 
 type OpenBackupResponseBody struct {
+	// example:
+	//
+	// C977DF60-7D06-4E34-A27D-8BC696C5112A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -11945,6 +15050,11 @@ func (s *OpenBackupResponse) SetBody(v *OpenBackupResponseBody) *OpenBackupRespo
 }
 
 type PurgeInstanceRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// hb-m5ek15uzs7613xxxx
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 }
 
@@ -11962,6 +15072,9 @@ func (s *PurgeInstanceRequest) SetClusterId(v string) *PurgeInstanceRequest {
 }
 
 type PurgeInstanceResponseBody struct {
+	// example:
+	//
+	// 276F899F-E952-496F-81B8-BD46D86854E3
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -12008,6 +15121,11 @@ func (s *PurgeInstanceResponse) SetBody(v *PurgeInstanceResponseBody) *PurgeInst
 }
 
 type QueryHBaseHaDBRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// bds-t4n3496whj23ia4k
 	BdsId *string `json:"BdsId,omitempty" xml:"BdsId,omitempty"`
 }
 
@@ -12026,10 +15144,22 @@ func (s *QueryHBaseHaDBRequest) SetBdsId(v string) *QueryHBaseHaDBRequest {
 
 type QueryHBaseHaDBResponseBody struct {
 	ClusterList *QueryHBaseHaDBResponseBodyClusterList `json:"ClusterList,omitempty" xml:"ClusterList,omitempty" type:"Struct"`
-	PageNumber  *int32                                 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize    *int32                                 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId   *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount  *int64                                 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 963355AD-A3B1-4654-AFFC-B5186EB8F889
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 1
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s QueryHBaseHaDBResponseBody) String() string {
@@ -12083,12 +15213,25 @@ func (s *QueryHBaseHaDBResponseBodyClusterList) SetCluster(v []*QueryHBaseHaDBRe
 }
 
 type QueryHBaseHaDBResponseBodyClusterListCluster struct {
+	// example:
+	//
+	// hb-t4nn7dy1u1etbzmzm
 	ActiveName *string `json:"ActiveName,omitempty" xml:"ActiveName,omitempty"`
 	// bdsId
-	BdsName       *string                                                    `json:"BdsName,omitempty" xml:"BdsName,omitempty"`
+	//
+	// example:
+	//
+	// bds-t4n3496whj23ia4k
+	BdsName *string `json:"BdsName,omitempty" xml:"BdsName,omitempty"`
+	// example:
+	//
+	// ha-v21tmnxjwh2yuy1il
 	HaName        *string                                                    `json:"HaName,omitempty" xml:"HaName,omitempty"`
 	HaSlbConnList *QueryHBaseHaDBResponseBodyClusterListClusterHaSlbConnList `json:"HaSlbConnList,omitempty" xml:"HaSlbConnList,omitempty" type:"Struct"`
-	StandbyName   *string                                                    `json:"StandbyName,omitempty" xml:"StandbyName,omitempty"`
+	// example:
+	//
+	// hb-t4n0ye37832tx22vz
+	StandbyName *string `json:"StandbyName,omitempty" xml:"StandbyName,omitempty"`
 }
 
 func (s QueryHBaseHaDBResponseBodyClusterListCluster) String() string {
@@ -12142,9 +15285,18 @@ func (s *QueryHBaseHaDBResponseBodyClusterListClusterHaSlbConnList) SetHaSlbConn
 }
 
 type QueryHBaseHaDBResponseBodyClusterListClusterHaSlbConnListHaSlbConn struct {
-	HbaseType   *string `json:"HbaseType,omitempty" xml:"HbaseType,omitempty"`
+	// example:
+	//
+	// Standby
+	HbaseType *string `json:"HbaseType,omitempty" xml:"HbaseType,omitempty"`
+	// example:
+	//
+	// ha-v21tmnxjwh2yuy1il-phoenix.bds.9b78df04-b.rds.aliyuncs.com:8765
 	SlbConnAddr *string `json:"SlbConnAddr,omitempty" xml:"SlbConnAddr,omitempty"`
-	SlbType     *string `json:"SlbType,omitempty" xml:"SlbType,omitempty"`
+	// example:
+	//
+	// phoenix
+	SlbType *string `json:"SlbType,omitempty" xml:"SlbType,omitempty"`
 }
 
 func (s QueryHBaseHaDBResponseBodyClusterListClusterHaSlbConnListHaSlbConn) String() string {
@@ -12200,9 +15352,22 @@ func (s *QueryHBaseHaDBResponse) SetBody(v *QueryHBaseHaDBResponseBody) *QueryHB
 }
 
 type QueryXpackRelateDBRequest struct {
-	ClusterId     *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	HasSingleNode *bool   `json:"HasSingleNode,omitempty" xml:"HasSingleNode,omitempty"`
-	RelateDbType  *string `json:"RelateDbType,omitempty" xml:"RelateDbType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ap-bp1qtz9rcbbt3p6ng
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// example:
+	//
+	// false
+	HasSingleNode *bool `json:"HasSingleNode,omitempty" xml:"HasSingleNode,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// hbase
+	RelateDbType *string `json:"RelateDbType,omitempty" xml:"RelateDbType,omitempty"`
 }
 
 func (s QueryXpackRelateDBRequest) String() string {
@@ -12230,7 +15395,10 @@ func (s *QueryXpackRelateDBRequest) SetRelateDbType(v string) *QueryXpackRelateD
 
 type QueryXpackRelateDBResponseBody struct {
 	ClusterList *QueryXpackRelateDBResponseBodyClusterList `json:"ClusterList,omitempty" xml:"ClusterList,omitempty" type:"Struct"`
-	RequestId   *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 288E9010-36DD-499C-B4DA-61E4362DA4CC
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s QueryXpackRelateDBResponseBody) String() string {
@@ -12269,13 +15437,34 @@ func (s *QueryXpackRelateDBResponseBodyClusterList) SetCluster(v []*QueryXpackRe
 }
 
 type QueryXpackRelateDBResponseBodyClusterListCluster struct {
-	ClusterId   *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// example:
+	//
+	// hb-bp16o0pd52e3y582s
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// example:
+	//
+	// hbase_test
 	ClusterName *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
-	DBType      *string `json:"DBType,omitempty" xml:"DBType,omitempty"`
-	DBVersion   *string `json:"DBVersion,omitempty" xml:"DBVersion,omitempty"`
-	IsRelated   *bool   `json:"IsRelated,omitempty" xml:"IsRelated,omitempty"`
-	LockMode    *string `json:"LockMode,omitempty" xml:"LockMode,omitempty"`
-	Status      *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// hbase
+	DBType *string `json:"DBType,omitempty" xml:"DBType,omitempty"`
+	// example:
+	//
+	// 2.0
+	DBVersion *string `json:"DBVersion,omitempty" xml:"DBVersion,omitempty"`
+	// example:
+	//
+	// false
+	IsRelated *bool `json:"IsRelated,omitempty" xml:"IsRelated,omitempty"`
+	// example:
+	//
+	// ..
+	LockMode *string `json:"LockMode,omitempty" xml:"LockMode,omitempty"`
+	// example:
+	//
+	// ACTIVATION
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s QueryXpackRelateDBResponseBodyClusterListCluster) String() string {
@@ -12351,27 +15540,106 @@ func (s *QueryXpackRelateDBResponse) SetBody(v *QueryXpackRelateDBResponseBody) 
 }
 
 type RelateDbForHBaseHaRequest struct {
-	ClusterId           *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	HaActive            *string `json:"HaActive,omitempty" xml:"HaActive,omitempty"`
-	HaActiveClusterKey  *string `json:"HaActiveClusterKey,omitempty" xml:"HaActiveClusterKey,omitempty"`
-	HaActiveDBType      *string `json:"HaActiveDBType,omitempty" xml:"HaActiveDBType,omitempty"`
-	HaActiveHbaseFsDir  *string `json:"HaActiveHbaseFsDir,omitempty" xml:"HaActiveHbaseFsDir,omitempty"`
-	HaActiveHdfsUri     *string `json:"HaActiveHdfsUri,omitempty" xml:"HaActiveHdfsUri,omitempty"`
-	HaActivePassword    *string `json:"HaActivePassword,omitempty" xml:"HaActivePassword,omitempty"`
-	HaActiveUser        *string `json:"HaActiveUser,omitempty" xml:"HaActiveUser,omitempty"`
-	HaActiveVersion     *string `json:"HaActiveVersion,omitempty" xml:"HaActiveVersion,omitempty"`
-	HaMigrateType       *string `json:"HaMigrateType,omitempty" xml:"HaMigrateType,omitempty"`
-	HaStandby           *string `json:"HaStandby,omitempty" xml:"HaStandby,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// bds-t4nj9v2x85******
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// hb-bp1w6krp539******
+	HaActive *string `json:"HaActive,omitempty" xml:"HaActive,omitempty"`
+	// example:
+	//
+	// hb-t4naqsay5gn******-master1-001.hbase.singapore.rds.aliyuncs.com,hb-t4naqsay5gn******-master3-001.hbase.singapore.rds.aliyuncs.com,hb-t4naqsay5gn******-master2-001.hbase.singapore.rds.aliyuncs.com:2181:/hbase
+	HaActiveClusterKey *string `json:"HaActiveClusterKey,omitempty" xml:"HaActiveClusterKey,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// hbase
+	HaActiveDBType *string `json:"HaActiveDBType,omitempty" xml:"HaActiveDBType,omitempty"`
+	// example:
+	//
+	// /hbase
+	HaActiveHbaseFsDir *string `json:"HaActiveHbaseFsDir,omitempty" xml:"HaActiveHbaseFsDir,omitempty"`
+	// example:
+	//
+	// hdfs://hb-t4naqsay5gn******-master1-001.hbase.rds.aliyuncs.com:8020,hb-t4naqsay5gn******-master2-001.hbase.rds.aliyuncs.com:8020
+	HaActiveHdfsUri *string `json:"HaActiveHdfsUri,omitempty" xml:"HaActiveHdfsUri,omitempty"`
+	// example:
+	//
+	// root
+	HaActivePassword *string `json:"HaActivePassword,omitempty" xml:"HaActivePassword,omitempty"`
+	// example:
+	//
+	// root
+	HaActiveUser *string `json:"HaActiveUser,omitempty" xml:"HaActiveUser,omitempty"`
+	// example:
+	//
+	// HBase2x
+	HaActiveVersion *string `json:"HaActiveVersion,omitempty" xml:"HaActiveVersion,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// CLUSTER
+	HaMigrateType *string `json:"HaMigrateType,omitempty" xml:"HaMigrateType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// hb-bp1bl7iqzka******
+	HaStandby *string `json:"HaStandby,omitempty" xml:"HaStandby,omitempty"`
+	// example:
+	//
+	// hb-bp1w6krp539******-master1-001.hbase.singapore.rds.aliyuncs.com,hb-bp1w6krp539******-master3-001.hbase.singapore.rds.aliyuncs.com,hb-t4naqsay5gn******-master2-001.hbase.singapore.rds.aliyuncs.com:2181:/hbase
 	HaStandbyClusterKey *string `json:"HaStandbyClusterKey,omitempty" xml:"HaStandbyClusterKey,omitempty"`
-	HaStandbyDBType     *string `json:"HaStandbyDBType,omitempty" xml:"HaStandbyDBType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// hbase
+	HaStandbyDBType *string `json:"HaStandbyDBType,omitempty" xml:"HaStandbyDBType,omitempty"`
+	// example:
+	//
+	// /hbase
 	HaStandbyHbaseFsDir *string `json:"HaStandbyHbaseFsDir,omitempty" xml:"HaStandbyHbaseFsDir,omitempty"`
-	HaStandbyHdfsUri    *string `json:"HaStandbyHdfsUri,omitempty" xml:"HaStandbyHdfsUri,omitempty"`
-	HaStandbyPassword   *string `json:"HaStandbyPassword,omitempty" xml:"HaStandbyPassword,omitempty"`
-	HaStandbyUser       *string `json:"HaStandbyUser,omitempty" xml:"HaStandbyUser,omitempty"`
-	HaStandbyVersion    *string `json:"HaStandbyVersion,omitempty" xml:"HaStandbyVersion,omitempty"`
-	HaTables            *string `json:"HaTables,omitempty" xml:"HaTables,omitempty"`
-	IsActiveStandard    *bool   `json:"IsActiveStandard,omitempty" xml:"IsActiveStandard,omitempty"`
-	IsStandbyStandard   *bool   `json:"IsStandbyStandard,omitempty" xml:"IsStandbyStandard,omitempty"`
+	// example:
+	//
+	// hdfs://hb-bp1w6krp539******-master1-001.hbase.rds.aliyuncs.com:8020,hb-bp1w6krp539******-master2-001.hbase.rds.aliyuncs.com:8020
+	HaStandbyHdfsUri *string `json:"HaStandbyHdfsUri,omitempty" xml:"HaStandbyHdfsUri,omitempty"`
+	// example:
+	//
+	// root
+	HaStandbyPassword *string `json:"HaStandbyPassword,omitempty" xml:"HaStandbyPassword,omitempty"`
+	// example:
+	//
+	// root
+	HaStandbyUser *string `json:"HaStandbyUser,omitempty" xml:"HaStandbyUser,omitempty"`
+	// example:
+	//
+	// HBase2x
+	HaStandbyVersion *string `json:"HaStandbyVersion,omitempty" xml:"HaStandbyVersion,omitempty"`
+	// example:
+	//
+	// test,test1
+	HaTables *string `json:"HaTables,omitempty" xml:"HaTables,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// true
+	IsActiveStandard *bool `json:"IsActiveStandard,omitempty" xml:"IsActiveStandard,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// true
+	IsStandbyStandard *bool `json:"IsStandbyStandard,omitempty" xml:"IsStandbyStandard,omitempty"`
 }
 
 func (s RelateDbForHBaseHaRequest) String() string {
@@ -12488,6 +15756,9 @@ func (s *RelateDbForHBaseHaRequest) SetIsStandbyStandard(v bool) *RelateDbForHBa
 }
 
 type RelateDbForHBaseHaResponseBody struct {
+	// example:
+	//
+	// DC654531-0799-4502-AFA5-80EE1C16829A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -12534,6 +15805,11 @@ func (s *RelateDbForHBaseHaResponse) SetBody(v *RelateDbForHBaseHaResponseBody) 
 }
 
 type ReleasePublicNetworkAddressRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// hb-t4naqsay5gn******
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 }
 
@@ -12551,6 +15827,9 @@ func (s *ReleasePublicNetworkAddressRequest) SetClusterId(v string) *ReleasePubl
 }
 
 type ReleasePublicNetworkAddressResponseBody struct {
+	// example:
+	//
+	// B18D4390-A968-4444-B323-4360B8E5DA3E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -12597,8 +15876,23 @@ func (s *ReleasePublicNetworkAddressResponse) SetBody(v *ReleasePublicNetworkAdd
 }
 
 type RenewInstanceRequest struct {
-	ClusterId    *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	Duration     *int32  `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// hb-bp1u0639js2h7****
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 5
+	Duration *int32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// month
 	PricingCycle *string `json:"PricingCycle,omitempty" xml:"PricingCycle,omitempty"`
 }
 
@@ -12626,7 +15920,13 @@ func (s *RenewInstanceRequest) SetPricingCycle(v string) *RenewInstanceRequest {
 }
 
 type RenewInstanceResponseBody struct {
-	OrderId   *int64  `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// example:
+	//
+	// 211235614240728
+	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// example:
+	//
+	// 729CB2A7-3065-53A9-B27C-7033CA4881D9
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -12678,8 +15978,18 @@ func (s *RenewInstanceResponse) SetBody(v *RenewInstanceResponseBody) *RenewInst
 }
 
 type ResizeColdStorageSizeRequest struct {
-	ClusterId       *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	ColdStorageSize *int32  `json:"ColdStorageSize,omitempty" xml:"ColdStorageSize,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ld-bp169l540vc6c****
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 900
+	ColdStorageSize *int32 `json:"ColdStorageSize,omitempty" xml:"ColdStorageSize,omitempty"`
 }
 
 func (s ResizeColdStorageSizeRequest) String() string {
@@ -12701,7 +16011,13 @@ func (s *ResizeColdStorageSizeRequest) SetColdStorageSize(v int32) *ResizeColdSt
 }
 
 type ResizeColdStorageSizeResponseBody struct {
-	OrderId   *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// example:
+	//
+	// 21711518427****
+	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// example:
+	//
+	// 5AA6F80E-535C-5611-BD13-3832D96A4D0E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -12753,8 +16069,18 @@ func (s *ResizeColdStorageSizeResponse) SetBody(v *ResizeColdStorageSizeResponse
 }
 
 type ResizeDiskSizeRequest struct {
-	ClusterId    *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	NodeDiskSize *int32  `json:"NodeDiskSize,omitempty" xml:"NodeDiskSize,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// hb-bp16o0pd52e3y****
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 120
+	NodeDiskSize *int32 `json:"NodeDiskSize,omitempty" xml:"NodeDiskSize,omitempty"`
 }
 
 func (s ResizeDiskSizeRequest) String() string {
@@ -12776,7 +16102,13 @@ func (s *ResizeDiskSizeRequest) SetNodeDiskSize(v int32) *ResizeDiskSizeRequest 
 }
 
 type ResizeDiskSizeResponseBody struct {
-	OrderId   *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// example:
+	//
+	// 3C22622B-8555-42BF-AD8A-1B960743****
+	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// example:
+	//
+	// 493A762B-E4A6-44E9-B877-CA6D0CAF8B29
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -12828,9 +16160,20 @@ func (s *ResizeDiskSizeResponse) SetBody(v *ResizeDiskSizeResponseBody) *ResizeD
 }
 
 type ResizeMultiZoneClusterDiskSizeRequest struct {
-	ClusterId    *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	CoreDiskSize *int32  `json:"CoreDiskSize,omitempty" xml:"CoreDiskSize,omitempty"`
-	LogDiskSize  *int32  `json:"LogDiskSize,omitempty" xml:"LogDiskSize,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ld-f5d6vc2r8d6****
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// example:
+	//
+	// 480
+	CoreDiskSize *int32 `json:"CoreDiskSize,omitempty" xml:"CoreDiskSize,omitempty"`
+	// example:
+	//
+	// 440
+	LogDiskSize *int32 `json:"LogDiskSize,omitempty" xml:"LogDiskSize,omitempty"`
 }
 
 func (s ResizeMultiZoneClusterDiskSizeRequest) String() string {
@@ -12857,7 +16200,13 @@ func (s *ResizeMultiZoneClusterDiskSizeRequest) SetLogDiskSize(v int32) *ResizeM
 }
 
 type ResizeMultiZoneClusterDiskSizeResponseBody struct {
-	OrderId   *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// example:
+	//
+	// 123412341****
+	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// example:
+	//
+	// 568339C4-9F71-43D0-994E-E039CD826E56
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -12909,14 +16258,40 @@ func (s *ResizeMultiZoneClusterDiskSizeResponse) SetBody(v *ResizeMultiZoneClust
 }
 
 type ResizeMultiZoneClusterNodeCountRequest struct {
-	ArbiterVSwitchId     *string `json:"ArbiterVSwitchId,omitempty" xml:"ArbiterVSwitchId,omitempty"`
-	ClusterId            *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	CoreNodeCount        *int32  `json:"CoreNodeCount,omitempty" xml:"CoreNodeCount,omitempty"`
-	LogNodeCount         *int32  `json:"LogNodeCount,omitempty" xml:"LogNodeCount,omitempty"`
-	PrimaryCoreNodeCount *int32  `json:"PrimaryCoreNodeCount,omitempty" xml:"PrimaryCoreNodeCount,omitempty"`
-	PrimaryVSwitchId     *string `json:"PrimaryVSwitchId,omitempty" xml:"PrimaryVSwitchId,omitempty"`
-	StandbyCoreNodeCount *int32  `json:"StandbyCoreNodeCount,omitempty" xml:"StandbyCoreNodeCount,omitempty"`
-	StandbyVSwitchId     *string `json:"StandbyVSwitchId,omitempty" xml:"StandbyVSwitchId,omitempty"`
+	// example:
+	//
+	// vsw-hangxzhouxb*****
+	ArbiterVSwitchId *string `json:"ArbiterVSwitchId,omitempty" xml:"ArbiterVSwitchId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ld-f5d8d6s4s2a1****
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// example:
+	//
+	// 6
+	CoreNodeCount *int32 `json:"CoreNodeCount,omitempty" xml:"CoreNodeCount,omitempty"`
+	// example:
+	//
+	// 8
+	LogNodeCount *int32 `json:"LogNodeCount,omitempty" xml:"LogNodeCount,omitempty"`
+	// example:
+	//
+	// 6
+	PrimaryCoreNodeCount *int32 `json:"PrimaryCoreNodeCount,omitempty" xml:"PrimaryCoreNodeCount,omitempty"`
+	// example:
+	//
+	// vsw-hangxzhouxe*****
+	PrimaryVSwitchId *string `json:"PrimaryVSwitchId,omitempty" xml:"PrimaryVSwitchId,omitempty"`
+	// example:
+	//
+	// 6
+	StandbyCoreNodeCount *int32 `json:"StandbyCoreNodeCount,omitempty" xml:"StandbyCoreNodeCount,omitempty"`
+	// example:
+	//
+	// vsw-hangxzhouxf****
+	StandbyVSwitchId *string `json:"StandbyVSwitchId,omitempty" xml:"StandbyVSwitchId,omitempty"`
 }
 
 func (s ResizeMultiZoneClusterNodeCountRequest) String() string {
@@ -12968,7 +16343,13 @@ func (s *ResizeMultiZoneClusterNodeCountRequest) SetStandbyVSwitchId(v string) *
 }
 
 type ResizeMultiZoneClusterNodeCountResponseBody struct {
-	OrderId   *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// example:
+	//
+	// 1234123412****
+	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// example:
+	//
+	// E2B7E9DA-1575-4B9D-A0E4-9468BAC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -13020,10 +16401,26 @@ func (s *ResizeMultiZoneClusterNodeCountResponse) SetBody(v *ResizeMultiZoneClus
 }
 
 type ResizeNodeCountRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// hb-bp16o0pd52e3y****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	NodeCount *int32  `json:"NodeCount,omitempty" xml:"NodeCount,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 5
+	NodeCount *int32 `json:"NodeCount,omitempty" xml:"NodeCount,omitempty"`
+	// example:
+	//
+	// vsw-bp191otqj1ssyl****
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	ZoneId    *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	// example:
+	//
+	// cn-hangzhou-f
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s ResizeNodeCountRequest) String() string {
@@ -13055,7 +16452,13 @@ func (s *ResizeNodeCountRequest) SetZoneId(v string) *ResizeNodeCountRequest {
 }
 
 type ResizeNodeCountResponseBody struct {
-	OrderId   *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// example:
+	//
+	// 20470860005****
+	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// example:
+	//
+	// B288B41F-6681-42A6-8905-47C3C42B19B0
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -13107,7 +16510,15 @@ func (s *ResizeNodeCountResponse) SetBody(v *ResizeNodeCountResponseBody) *Resiz
 }
 
 type RestartInstanceRequest struct {
-	ClusterId  *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ld-bp150tns0sjxs****
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// example:
+	//
+	// THRIFT
 	Components *string `json:"Components,omitempty" xml:"Components,omitempty"`
 }
 
@@ -13130,6 +16541,9 @@ func (s *RestartInstanceRequest) SetComponents(v string) *RestartInstanceRequest
 }
 
 type RestartInstanceResponseBody struct {
+	// example:
+	//
+	// F744E939-D08D-5623-82C8-9D1F9F7685D1
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -13176,11 +16590,36 @@ func (s *RestartInstanceResponse) SetBody(v *RestartInstanceResponseBody) *Resta
 }
 
 type RevokeRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test01
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	AclActions  *string `json:"AclActions,omitempty" xml:"AclActions,omitempty"`
-	ClusterId   *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	Namespace   *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	TableName   *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// READ,WRITE
+	AclActions *string `json:"AclActions,omitempty" xml:"AclActions,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ld-bp150tns0sjxs****
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// default
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// table
+	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
 }
 
 func (s RevokeRequest) String() string {
@@ -13217,6 +16656,9 @@ func (s *RevokeRequest) SetTableName(v string) *RevokeRequest {
 }
 
 type RevokeResponseBody struct {
+	// example:
+	//
+	// C9085433-A56A-4089-B49A-DF5A4E2B7B06
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -13263,9 +16705,29 @@ func (s *RevokeResponse) SetBody(v *RevokeResponseBody) *RevokeResponse {
 }
 
 type SwitchHbaseHaSlbRequest struct {
-	BdsId     *string `json:"BdsId,omitempty" xml:"BdsId,omitempty"`
-	HaId      *string `json:"HaId,omitempty" xml:"HaId,omitempty"`
-	HaTypes   *string `json:"HaTypes,omitempty" xml:"HaTypes,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// bds-t4n3496whj23ia4k
+	BdsId *string `json:"BdsId,omitempty" xml:"BdsId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ha-v21tmnxjwh2yuy1il
+	HaId *string `json:"HaId,omitempty" xml:"HaId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// thrift
+	HaTypes *string `json:"HaTypes,omitempty" xml:"HaTypes,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Active
 	HbaseType *string `json:"HbaseType,omitempty" xml:"HbaseType,omitempty"`
 }
 
@@ -13298,6 +16760,9 @@ func (s *SwitchHbaseHaSlbRequest) SetHbaseType(v string) *SwitchHbaseHaSlbReques
 }
 
 type SwitchHbaseHaSlbResponseBody struct {
+	// example:
+	//
+	// C9D568D9-A59C-4AF2-8FBB-F086A841D58E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -13344,8 +16809,23 @@ func (s *SwitchHbaseHaSlbResponse) SetBody(v *SwitchHbaseHaSlbResponseBody) *Swi
 }
 
 type SwitchServiceRequest struct {
-	ClusterId   *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	Operate     *string `json:"Operate,omitempty" xml:"Operate,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ld-uf6r2hn2zrxxxxxx
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// open
+	Operate *string `json:"Operate,omitempty" xml:"Operate,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// HBaseProxy
 	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
 }
 
@@ -13373,6 +16853,9 @@ func (s *SwitchServiceRequest) SetServiceName(v string) *SwitchServiceRequest {
 }
 
 type SwitchServiceResponseBody struct {
+	// example:
+	//
+	// F1005DE4-D981-559F-9E37-5172DXXXXXX
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -13419,9 +16902,20 @@ func (s *SwitchServiceResponse) SetBody(v *SwitchServiceResponseBody) *SwitchSer
 }
 
 type TagResourcesRequest struct {
-	RegionId   *string                   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceId []*string                 `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
-	Tag        []*TagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// bds-bp15e022622fk0w1
+	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
+	// This parameter is required.
+	Tag []*TagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s TagResourcesRequest) String() string {
@@ -13448,7 +16942,13 @@ func (s *TagResourcesRequest) SetTag(v []*TagResourcesRequestTag) *TagResourcesR
 }
 
 type TagResourcesRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// key1
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// value1
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -13471,6 +16971,9 @@ func (s *TagResourcesRequestTag) SetValue(v string) *TagResourcesRequestTag {
 }
 
 type TagResourcesResponseBody struct {
+	// example:
+	//
+	// 2656FA19-6059-40C8-A157-3FFBEAEC2369
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -13517,10 +17020,26 @@ func (s *TagResourcesResponse) SetBody(v *TagResourcesResponseBody) *TagResource
 }
 
 type UnTagResourcesRequest struct {
-	All        *bool     `json:"All,omitempty" xml:"All,omitempty"`
-	RegionId   *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// true
+	All *bool `json:"All,omitempty" xml:"All,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// bds-bp15e022622fk0w1
 	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
-	TagKey     []*string `json:"TagKey,omitempty" xml:"TagKey,omitempty" type:"Repeated"`
+	// example:
+	//
+	// key1
+	TagKey []*string `json:"TagKey,omitempty" xml:"TagKey,omitempty" type:"Repeated"`
 }
 
 func (s UnTagResourcesRequest) String() string {
@@ -13552,6 +17071,9 @@ func (s *UnTagResourcesRequest) SetTagKey(v []*string) *UnTagResourcesRequest {
 }
 
 type UnTagResourcesResponseBody struct {
+	// example:
+	//
+	// 9CBF8DF0-4931-4A54-9B60-4C6E1AB59286
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -13598,7 +17120,15 @@ func (s *UnTagResourcesResponse) SetBody(v *UnTagResourcesResponseBody) *UnTagRe
 }
 
 type UpgradeMinorVersionRequest struct {
-	ClusterId  *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// hb-t4naqsay5gn****
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// example:
+	//
+	// HADOOP
 	Components *string `json:"Components,omitempty" xml:"Components,omitempty"`
 }
 
@@ -13621,7 +17151,13 @@ func (s *UpgradeMinorVersionRequest) SetComponents(v string) *UpgradeMinorVersio
 }
 
 type UpgradeMinorVersionResponseBody struct {
-	RequestId           *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 7B8EC240-BB13-4DBC-B955-F90170E82609
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// HADOOP
 	UpgradingComponents *string `json:"UpgradingComponents,omitempty" xml:"UpgradingComponents,omitempty"`
 }
 
@@ -13673,12 +17209,34 @@ func (s *UpgradeMinorVersionResponse) SetBody(v *UpgradeMinorVersionResponseBody
 }
 
 type UpgradeMultiZoneClusterRequest struct {
-	ClusterId         *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	Components        *string `json:"Components,omitempty" xml:"Components,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ld-***************
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// LINDORM
+	Components *string `json:"Components,omitempty" xml:"Components,omitempty"`
+	// example:
+	//
+	// LPROXY
 	RestartComponents *string `json:"RestartComponents,omitempty" xml:"RestartComponents,omitempty"`
-	RunMode           *string `json:"RunMode,omitempty" xml:"RunMode,omitempty"`
-	UpgradeInsName    *string `json:"UpgradeInsName,omitempty" xml:"UpgradeInsName,omitempty"`
-	Versions          *string `json:"Versions,omitempty" xml:"Versions,omitempty"`
+	// example:
+	//
+	// serial
+	RunMode *string `json:"RunMode,omitempty" xml:"RunMode,omitempty"`
+	// example:
+	//
+	// ld-t4n40m3171t4******-az-b
+	UpgradeInsName *string `json:"UpgradeInsName,omitempty" xml:"UpgradeInsName,omitempty"`
+	// example:
+	//
+	// t-apsara-lindorm-2.1.20-20200518175539.alios7.x86_64
+	Versions *string `json:"Versions,omitempty" xml:"Versions,omitempty"`
 }
 
 func (s UpgradeMultiZoneClusterRequest) String() string {
@@ -13720,7 +17278,13 @@ func (s *UpgradeMultiZoneClusterRequest) SetVersions(v string) *UpgradeMultiZone
 }
 
 type UpgradeMultiZoneClusterResponseBody struct {
-	RequestId           *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// C532A4D4-9451-4460-BB3E-300FEC852D3F
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// LINDORM
 	UpgradingComponents *string `json:"UpgradingComponents,omitempty" xml:"UpgradingComponents,omitempty"`
 }
 
@@ -13772,8 +17336,23 @@ func (s *UpgradeMultiZoneClusterResponse) SetBody(v *UpgradeMultiZoneClusterResp
 }
 
 type XpackRelateDBRequest struct {
-	ClusterId    *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ap-bp1qtz9rcbbt3****
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// hb-bp16o0pd52e3****
 	DbClusterIds *string `json:"DbClusterIds,omitempty" xml:"DbClusterIds,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// hbase
 	RelateDbType *string `json:"RelateDbType,omitempty" xml:"RelateDbType,omitempty"`
 }
 
@@ -13801,6 +17380,9 @@ func (s *XpackRelateDBRequest) SetRelateDbType(v string) *XpackRelateDBRequest {
 }
 
 type XpackRelateDBResponseBody struct {
+	// example:
+	//
+	// 50373857-C47B-4B64-9332-D0B5280B59EA
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -13907,6 +17489,11 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
+// @param request - AddUserHdfsInfoRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AddUserHdfsInfoResponse
 func (client *Client) AddUserHdfsInfoWithOptions(request *AddUserHdfsInfoRequest, runtime *util.RuntimeOptions) (_result *AddUserHdfsInfoResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -13948,6 +17535,9 @@ func (client *Client) AddUserHdfsInfoWithOptions(request *AddUserHdfsInfoRequest
 	return _result, _err
 }
 
+// @param request - AddUserHdfsInfoRequest
+//
+// @return AddUserHdfsInfoResponse
 func (client *Client) AddUserHdfsInfo(request *AddUserHdfsInfoRequest) (_result *AddUserHdfsInfoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &AddUserHdfsInfoResponse{}
@@ -13959,6 +17549,11 @@ func (client *Client) AddUserHdfsInfo(request *AddUserHdfsInfoRequest) (_result 
 	return _result, _err
 }
 
+// @param request - AllocatePublicNetworkAddressRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AllocatePublicNetworkAddressResponse
 func (client *Client) AllocatePublicNetworkAddressWithOptions(request *AllocatePublicNetworkAddressRequest, runtime *util.RuntimeOptions) (_result *AllocatePublicNetworkAddressResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -13996,6 +17591,9 @@ func (client *Client) AllocatePublicNetworkAddressWithOptions(request *AllocateP
 	return _result, _err
 }
 
+// @param request - AllocatePublicNetworkAddressRequest
+//
+// @return AllocatePublicNetworkAddressResponse
 func (client *Client) AllocatePublicNetworkAddress(request *AllocatePublicNetworkAddressRequest) (_result *AllocatePublicNetworkAddressResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &AllocatePublicNetworkAddressResponse{}
@@ -14007,6 +17605,11 @@ func (client *Client) AllocatePublicNetworkAddress(request *AllocatePublicNetwor
 	return _result, _err
 }
 
+// @param request - CancelActiveOperationTasksRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CancelActiveOperationTasksResponse
 func (client *Client) CancelActiveOperationTasksWithOptions(request *CancelActiveOperationTasksRequest, runtime *util.RuntimeOptions) (_result *CancelActiveOperationTasksResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14060,6 +17663,9 @@ func (client *Client) CancelActiveOperationTasksWithOptions(request *CancelActiv
 	return _result, _err
 }
 
+// @param request - CancelActiveOperationTasksRequest
+//
+// @return CancelActiveOperationTasksResponse
 func (client *Client) CancelActiveOperationTasks(request *CancelActiveOperationTasksRequest) (_result *CancelActiveOperationTasksResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CancelActiveOperationTasksResponse{}
@@ -14071,6 +17677,11 @@ func (client *Client) CancelActiveOperationTasks(request *CancelActiveOperationT
 	return _result, _err
 }
 
+// @param request - CheckComponentsVersionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CheckComponentsVersionResponse
 func (client *Client) CheckComponentsVersionWithOptions(request *CheckComponentsVersionRequest, runtime *util.RuntimeOptions) (_result *CheckComponentsVersionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14108,6 +17719,9 @@ func (client *Client) CheckComponentsVersionWithOptions(request *CheckComponents
 	return _result, _err
 }
 
+// @param request - CheckComponentsVersionRequest
+//
+// @return CheckComponentsVersionResponse
 func (client *Client) CheckComponentsVersion(request *CheckComponentsVersionRequest) (_result *CheckComponentsVersionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CheckComponentsVersionResponse{}
@@ -14119,6 +17733,11 @@ func (client *Client) CheckComponentsVersion(request *CheckComponentsVersionRequ
 	return _result, _err
 }
 
+// @param request - CloseBackupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CloseBackupResponse
 func (client *Client) CloseBackupWithOptions(request *CloseBackupRequest, runtime *util.RuntimeOptions) (_result *CloseBackupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14152,6 +17771,9 @@ func (client *Client) CloseBackupWithOptions(request *CloseBackupRequest, runtim
 	return _result, _err
 }
 
+// @param request - CloseBackupRequest
+//
+// @return CloseBackupResponse
 func (client *Client) CloseBackup(request *CloseBackupRequest) (_result *CloseBackupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CloseBackupResponse{}
@@ -14163,6 +17785,11 @@ func (client *Client) CloseBackup(request *CloseBackupRequest) (_result *CloseBa
 	return _result, _err
 }
 
+// @param request - ConvertInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ConvertInstanceResponse
 func (client *Client) ConvertInstanceWithOptions(request *ConvertInstanceRequest, runtime *util.RuntimeOptions) (_result *ConvertInstanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14208,6 +17835,9 @@ func (client *Client) ConvertInstanceWithOptions(request *ConvertInstanceRequest
 	return _result, _err
 }
 
+// @param request - ConvertInstanceRequest
+//
+// @return ConvertInstanceResponse
 func (client *Client) ConvertInstance(request *ConvertInstanceRequest) (_result *ConvertInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ConvertInstanceResponse{}
@@ -14219,6 +17849,15 @@ func (client *Client) ConvertInstance(request *ConvertInstanceRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// 新建账户
+//
+// @param request - CreateAccountRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateAccountResponse
 func (client *Client) CreateAccountWithOptions(request *CreateAccountRequest, runtime *util.RuntimeOptions) (_result *CreateAccountResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14260,6 +17899,13 @@ func (client *Client) CreateAccountWithOptions(request *CreateAccountRequest, ru
 	return _result, _err
 }
 
+// Summary:
+//
+// 新建账户
+//
+// @param request - CreateAccountRequest
+//
+// @return CreateAccountResponse
 func (client *Client) CreateAccount(request *CreateAccountRequest) (_result *CreateAccountResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateAccountResponse{}
@@ -14271,6 +17917,11 @@ func (client *Client) CreateAccount(request *CreateAccountRequest) (_result *Cre
 	return _result, _err
 }
 
+// @param request - CreateBackupPlanRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateBackupPlanResponse
 func (client *Client) CreateBackupPlanWithOptions(request *CreateBackupPlanRequest, runtime *util.RuntimeOptions) (_result *CreateBackupPlanResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14304,6 +17955,9 @@ func (client *Client) CreateBackupPlanWithOptions(request *CreateBackupPlanReque
 	return _result, _err
 }
 
+// @param request - CreateBackupPlanRequest
+//
+// @return CreateBackupPlanResponse
 func (client *Client) CreateBackupPlan(request *CreateBackupPlanRequest) (_result *CreateBackupPlanResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateBackupPlanResponse{}
@@ -14315,6 +17969,11 @@ func (client *Client) CreateBackupPlan(request *CreateBackupPlanRequest) (_resul
 	return _result, _err
 }
 
+// @param request - CreateClusterRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateClusterResponse
 func (client *Client) CreateClusterWithOptions(request *CreateClusterRequest, runtime *util.RuntimeOptions) (_result *CreateClusterResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14428,6 +18087,9 @@ func (client *Client) CreateClusterWithOptions(request *CreateClusterRequest, ru
 	return _result, _err
 }
 
+// @param request - CreateClusterRequest
+//
+// @return CreateClusterResponse
 func (client *Client) CreateCluster(request *CreateClusterRequest) (_result *CreateClusterResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateClusterResponse{}
@@ -14439,6 +18101,11 @@ func (client *Client) CreateCluster(request *CreateClusterRequest) (_result *Cre
 	return _result, _err
 }
 
+// @param request - CreateGlobalResourceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateGlobalResourceResponse
 func (client *Client) CreateGlobalResourceWithOptions(request *CreateGlobalResourceRequest, runtime *util.RuntimeOptions) (_result *CreateGlobalResourceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14488,6 +18155,9 @@ func (client *Client) CreateGlobalResourceWithOptions(request *CreateGlobalResou
 	return _result, _err
 }
 
+// @param request - CreateGlobalResourceRequest
+//
+// @return CreateGlobalResourceResponse
 func (client *Client) CreateGlobalResource(request *CreateGlobalResourceRequest) (_result *CreateGlobalResourceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateGlobalResourceResponse{}
@@ -14499,6 +18169,11 @@ func (client *Client) CreateGlobalResource(request *CreateGlobalResourceRequest)
 	return _result, _err
 }
 
+// @param request - CreateHBaseSlbServerRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateHBaseSlbServerResponse
 func (client *Client) CreateHBaseSlbServerWithOptions(request *CreateHBaseSlbServerRequest, runtime *util.RuntimeOptions) (_result *CreateHBaseSlbServerResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14540,6 +18215,9 @@ func (client *Client) CreateHBaseSlbServerWithOptions(request *CreateHBaseSlbSer
 	return _result, _err
 }
 
+// @param request - CreateHBaseSlbServerRequest
+//
+// @return CreateHBaseSlbServerResponse
 func (client *Client) CreateHBaseSlbServer(request *CreateHBaseSlbServerRequest) (_result *CreateHBaseSlbServerResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateHBaseSlbServerResponse{}
@@ -14551,6 +18229,11 @@ func (client *Client) CreateHBaseSlbServer(request *CreateHBaseSlbServerRequest)
 	return _result, _err
 }
 
+// @param request - CreateHbaseHaSlbRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateHbaseHaSlbResponse
 func (client *Client) CreateHbaseHaSlbWithOptions(request *CreateHbaseHaSlbRequest, runtime *util.RuntimeOptions) (_result *CreateHbaseHaSlbResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14600,6 +18283,9 @@ func (client *Client) CreateHbaseHaSlbWithOptions(request *CreateHbaseHaSlbReque
 	return _result, _err
 }
 
+// @param request - CreateHbaseHaSlbRequest
+//
+// @return CreateHbaseHaSlbResponse
 func (client *Client) CreateHbaseHaSlb(request *CreateHbaseHaSlbRequest) (_result *CreateHbaseHaSlbResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateHbaseHaSlbResponse{}
@@ -14611,6 +18297,11 @@ func (client *Client) CreateHbaseHaSlb(request *CreateHbaseHaSlbRequest) (_resul
 	return _result, _err
 }
 
+// @param request - CreateMultiZoneClusterRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateMultiZoneClusterResponse
 func (client *Client) CreateMultiZoneClusterWithOptions(request *CreateMultiZoneClusterRequest, runtime *util.RuntimeOptions) (_result *CreateMultiZoneClusterResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14756,6 +18447,9 @@ func (client *Client) CreateMultiZoneClusterWithOptions(request *CreateMultiZone
 	return _result, _err
 }
 
+// @param request - CreateMultiZoneClusterRequest
+//
+// @return CreateMultiZoneClusterResponse
 func (client *Client) CreateMultiZoneCluster(request *CreateMultiZoneClusterRequest) (_result *CreateMultiZoneClusterResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateMultiZoneClusterResponse{}
@@ -14767,6 +18461,11 @@ func (client *Client) CreateMultiZoneCluster(request *CreateMultiZoneClusterRequ
 	return _result, _err
 }
 
+// @param request - CreateRestorePlanRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateRestorePlanResponse
 func (client *Client) CreateRestorePlanWithOptions(request *CreateRestorePlanRequest, runtime *util.RuntimeOptions) (_result *CreateRestorePlanResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14820,6 +18519,9 @@ func (client *Client) CreateRestorePlanWithOptions(request *CreateRestorePlanReq
 	return _result, _err
 }
 
+// @param request - CreateRestorePlanRequest
+//
+// @return CreateRestorePlanResponse
 func (client *Client) CreateRestorePlan(request *CreateRestorePlanRequest) (_result *CreateRestorePlanResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateRestorePlanResponse{}
@@ -14831,6 +18533,11 @@ func (client *Client) CreateRestorePlan(request *CreateRestorePlanRequest) (_res
 	return _result, _err
 }
 
+// @param request - CreateServerlessClusterRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateServerlessClusterResponse
 func (client *Client) CreateServerlessClusterWithOptions(request *CreateServerlessClusterRequest, runtime *util.RuntimeOptions) (_result *CreateServerlessClusterResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14932,6 +18639,9 @@ func (client *Client) CreateServerlessClusterWithOptions(request *CreateServerle
 	return _result, _err
 }
 
+// @param request - CreateServerlessClusterRequest
+//
+// @return CreateServerlessClusterResponse
 func (client *Client) CreateServerlessCluster(request *CreateServerlessClusterRequest) (_result *CreateServerlessClusterResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateServerlessClusterResponse{}
@@ -14943,6 +18653,15 @@ func (client *Client) CreateServerlessCluster(request *CreateServerlessClusterRe
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除账户
+//
+// @param request - DeleteAccountRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteAccountResponse
 func (client *Client) DeleteAccountWithOptions(request *DeleteAccountRequest, runtime *util.RuntimeOptions) (_result *DeleteAccountResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14980,6 +18699,13 @@ func (client *Client) DeleteAccountWithOptions(request *DeleteAccountRequest, ru
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除账户
+//
+// @param request - DeleteAccountRequest
+//
+// @return DeleteAccountResponse
 func (client *Client) DeleteAccount(request *DeleteAccountRequest) (_result *DeleteAccountResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteAccountResponse{}
@@ -14991,6 +18717,11 @@ func (client *Client) DeleteAccount(request *DeleteAccountRequest) (_result *Del
 	return _result, _err
 }
 
+// @param request - DeleteGlobalResourceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteGlobalResourceResponse
 func (client *Client) DeleteGlobalResourceWithOptions(request *DeleteGlobalResourceRequest, runtime *util.RuntimeOptions) (_result *DeleteGlobalResourceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15036,6 +18767,9 @@ func (client *Client) DeleteGlobalResourceWithOptions(request *DeleteGlobalResou
 	return _result, _err
 }
 
+// @param request - DeleteGlobalResourceRequest
+//
+// @return DeleteGlobalResourceResponse
 func (client *Client) DeleteGlobalResource(request *DeleteGlobalResourceRequest) (_result *DeleteGlobalResourceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteGlobalResourceResponse{}
@@ -15047,6 +18781,11 @@ func (client *Client) DeleteGlobalResource(request *DeleteGlobalResourceRequest)
 	return _result, _err
 }
 
+// @param request - DeleteHBaseHaDBRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteHBaseHaDBResponse
 func (client *Client) DeleteHBaseHaDBWithOptions(request *DeleteHBaseHaDBRequest, runtime *util.RuntimeOptions) (_result *DeleteHBaseHaDBResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15084,6 +18823,9 @@ func (client *Client) DeleteHBaseHaDBWithOptions(request *DeleteHBaseHaDBRequest
 	return _result, _err
 }
 
+// @param request - DeleteHBaseHaDBRequest
+//
+// @return DeleteHBaseHaDBResponse
 func (client *Client) DeleteHBaseHaDB(request *DeleteHBaseHaDBRequest) (_result *DeleteHBaseHaDBResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteHBaseHaDBResponse{}
@@ -15095,6 +18837,11 @@ func (client *Client) DeleteHBaseHaDB(request *DeleteHBaseHaDBRequest) (_result 
 	return _result, _err
 }
 
+// @param request - DeleteHBaseSlbServerRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteHBaseSlbServerResponse
 func (client *Client) DeleteHBaseSlbServerWithOptions(request *DeleteHBaseSlbServerRequest, runtime *util.RuntimeOptions) (_result *DeleteHBaseSlbServerResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15132,6 +18879,9 @@ func (client *Client) DeleteHBaseSlbServerWithOptions(request *DeleteHBaseSlbSer
 	return _result, _err
 }
 
+// @param request - DeleteHBaseSlbServerRequest
+//
+// @return DeleteHBaseSlbServerResponse
 func (client *Client) DeleteHBaseSlbServer(request *DeleteHBaseSlbServerRequest) (_result *DeleteHBaseSlbServerResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteHBaseSlbServerResponse{}
@@ -15143,6 +18893,11 @@ func (client *Client) DeleteHBaseSlbServer(request *DeleteHBaseSlbServerRequest)
 	return _result, _err
 }
 
+// @param request - DeleteHbaseHaSlbRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteHbaseHaSlbResponse
 func (client *Client) DeleteHbaseHaSlbWithOptions(request *DeleteHbaseHaSlbRequest, runtime *util.RuntimeOptions) (_result *DeleteHbaseHaSlbResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15184,6 +18939,9 @@ func (client *Client) DeleteHbaseHaSlbWithOptions(request *DeleteHbaseHaSlbReque
 	return _result, _err
 }
 
+// @param request - DeleteHbaseHaSlbRequest
+//
+// @return DeleteHbaseHaSlbResponse
 func (client *Client) DeleteHbaseHaSlb(request *DeleteHbaseHaSlbRequest) (_result *DeleteHbaseHaSlbResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteHbaseHaSlbResponse{}
@@ -15195,6 +18953,11 @@ func (client *Client) DeleteHbaseHaSlb(request *DeleteHbaseHaSlbRequest) (_resul
 	return _result, _err
 }
 
+// @param request - DeleteInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteInstanceResponse
 func (client *Client) DeleteInstanceWithOptions(request *DeleteInstanceRequest, runtime *util.RuntimeOptions) (_result *DeleteInstanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15232,6 +18995,9 @@ func (client *Client) DeleteInstanceWithOptions(request *DeleteInstanceRequest, 
 	return _result, _err
 }
 
+// @param request - DeleteInstanceRequest
+//
+// @return DeleteInstanceResponse
 func (client *Client) DeleteInstance(request *DeleteInstanceRequest) (_result *DeleteInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteInstanceResponse{}
@@ -15243,6 +19009,11 @@ func (client *Client) DeleteInstance(request *DeleteInstanceRequest) (_result *D
 	return _result, _err
 }
 
+// @param request - DeleteMultiZoneClusterRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteMultiZoneClusterResponse
 func (client *Client) DeleteMultiZoneClusterWithOptions(request *DeleteMultiZoneClusterRequest, runtime *util.RuntimeOptions) (_result *DeleteMultiZoneClusterResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15280,6 +19051,9 @@ func (client *Client) DeleteMultiZoneClusterWithOptions(request *DeleteMultiZone
 	return _result, _err
 }
 
+// @param request - DeleteMultiZoneClusterRequest
+//
+// @return DeleteMultiZoneClusterResponse
 func (client *Client) DeleteMultiZoneCluster(request *DeleteMultiZoneClusterRequest) (_result *DeleteMultiZoneClusterResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteMultiZoneClusterResponse{}
@@ -15291,6 +19065,11 @@ func (client *Client) DeleteMultiZoneCluster(request *DeleteMultiZoneClusterRequ
 	return _result, _err
 }
 
+// @param request - DeleteServerlessClusterRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteServerlessClusterResponse
 func (client *Client) DeleteServerlessClusterWithOptions(request *DeleteServerlessClusterRequest, runtime *util.RuntimeOptions) (_result *DeleteServerlessClusterResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15332,6 +19111,9 @@ func (client *Client) DeleteServerlessClusterWithOptions(request *DeleteServerle
 	return _result, _err
 }
 
+// @param request - DeleteServerlessClusterRequest
+//
+// @return DeleteServerlessClusterResponse
 func (client *Client) DeleteServerlessCluster(request *DeleteServerlessClusterRequest) (_result *DeleteServerlessClusterResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteServerlessClusterResponse{}
@@ -15343,6 +19125,11 @@ func (client *Client) DeleteServerlessCluster(request *DeleteServerlessClusterRe
 	return _result, _err
 }
 
+// @param request - DeleteUserHdfsInfoRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteUserHdfsInfoResponse
 func (client *Client) DeleteUserHdfsInfoWithOptions(request *DeleteUserHdfsInfoRequest, runtime *util.RuntimeOptions) (_result *DeleteUserHdfsInfoResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15380,6 +19167,9 @@ func (client *Client) DeleteUserHdfsInfoWithOptions(request *DeleteUserHdfsInfoR
 	return _result, _err
 }
 
+// @param request - DeleteUserHdfsInfoRequest
+//
+// @return DeleteUserHdfsInfoResponse
 func (client *Client) DeleteUserHdfsInfo(request *DeleteUserHdfsInfoRequest) (_result *DeleteUserHdfsInfoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteUserHdfsInfoResponse{}
@@ -15391,6 +19181,15 @@ func (client *Client) DeleteUserHdfsInfo(request *DeleteUserHdfsInfoRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询账户列表
+//
+// @param request - DescribeAccountsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeAccountsResponse
 func (client *Client) DescribeAccountsWithOptions(request *DescribeAccountsRequest, runtime *util.RuntimeOptions) (_result *DescribeAccountsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15424,6 +19223,13 @@ func (client *Client) DescribeAccountsWithOptions(request *DescribeAccountsReque
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询账户列表
+//
+// @param request - DescribeAccountsRequest
+//
+// @return DescribeAccountsResponse
 func (client *Client) DescribeAccounts(request *DescribeAccountsRequest) (_result *DescribeAccountsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeAccountsResponse{}
@@ -15435,6 +19241,11 @@ func (client *Client) DescribeAccounts(request *DescribeAccountsRequest) (_resul
 	return _result, _err
 }
 
+// @param request - DescribeActiveOperationTaskTypeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeActiveOperationTaskTypeResponse
 func (client *Client) DescribeActiveOperationTaskTypeWithOptions(request *DescribeActiveOperationTaskTypeRequest, runtime *util.RuntimeOptions) (_result *DescribeActiveOperationTaskTypeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15488,6 +19299,9 @@ func (client *Client) DescribeActiveOperationTaskTypeWithOptions(request *Descri
 	return _result, _err
 }
 
+// @param request - DescribeActiveOperationTaskTypeRequest
+//
+// @return DescribeActiveOperationTaskTypeResponse
 func (client *Client) DescribeActiveOperationTaskType(request *DescribeActiveOperationTaskTypeRequest) (_result *DescribeActiveOperationTaskTypeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeActiveOperationTaskTypeResponse{}
@@ -15499,6 +19313,11 @@ func (client *Client) DescribeActiveOperationTaskType(request *DescribeActiveOpe
 	return _result, _err
 }
 
+// @param request - DescribeActiveOperationTasksRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeActiveOperationTasksResponse
 func (client *Client) DescribeActiveOperationTasksWithOptions(request *DescribeActiveOperationTasksRequest, runtime *util.RuntimeOptions) (_result *DescribeActiveOperationTasksResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15592,6 +19411,9 @@ func (client *Client) DescribeActiveOperationTasksWithOptions(request *DescribeA
 	return _result, _err
 }
 
+// @param request - DescribeActiveOperationTasksRequest
+//
+// @return DescribeActiveOperationTasksResponse
 func (client *Client) DescribeActiveOperationTasks(request *DescribeActiveOperationTasksRequest) (_result *DescribeActiveOperationTasksResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeActiveOperationTasksResponse{}
@@ -15603,6 +19425,11 @@ func (client *Client) DescribeActiveOperationTasks(request *DescribeActiveOperat
 	return _result, _err
 }
 
+// @param request - DescribeAvailableResourceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeAvailableResourceResponse
 func (client *Client) DescribeAvailableResourceWithOptions(request *DescribeAvailableResourceRequest, runtime *util.RuntimeOptions) (_result *DescribeAvailableResourceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15660,6 +19487,9 @@ func (client *Client) DescribeAvailableResourceWithOptions(request *DescribeAvai
 	return _result, _err
 }
 
+// @param request - DescribeAvailableResourceRequest
+//
+// @return DescribeAvailableResourceResponse
 func (client *Client) DescribeAvailableResource(request *DescribeAvailableResourceRequest) (_result *DescribeAvailableResourceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeAvailableResourceResponse{}
@@ -15671,6 +19501,11 @@ func (client *Client) DescribeAvailableResource(request *DescribeAvailableResour
 	return _result, _err
 }
 
+// @param request - DescribeBackupPlanConfigRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeBackupPlanConfigResponse
 func (client *Client) DescribeBackupPlanConfigWithOptions(request *DescribeBackupPlanConfigRequest, runtime *util.RuntimeOptions) (_result *DescribeBackupPlanConfigResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15704,6 +19539,9 @@ func (client *Client) DescribeBackupPlanConfigWithOptions(request *DescribeBacku
 	return _result, _err
 }
 
+// @param request - DescribeBackupPlanConfigRequest
+//
+// @return DescribeBackupPlanConfigResponse
 func (client *Client) DescribeBackupPlanConfig(request *DescribeBackupPlanConfigRequest) (_result *DescribeBackupPlanConfigResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeBackupPlanConfigResponse{}
@@ -15715,6 +19553,11 @@ func (client *Client) DescribeBackupPlanConfig(request *DescribeBackupPlanConfig
 	return _result, _err
 }
 
+// @param request - DescribeBackupPolicyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeBackupPolicyResponse
 func (client *Client) DescribeBackupPolicyWithOptions(request *DescribeBackupPolicyRequest, runtime *util.RuntimeOptions) (_result *DescribeBackupPolicyResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15748,6 +19591,9 @@ func (client *Client) DescribeBackupPolicyWithOptions(request *DescribeBackupPol
 	return _result, _err
 }
 
+// @param request - DescribeBackupPolicyRequest
+//
+// @return DescribeBackupPolicyResponse
 func (client *Client) DescribeBackupPolicy(request *DescribeBackupPolicyRequest) (_result *DescribeBackupPolicyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeBackupPolicyResponse{}
@@ -15759,6 +19605,11 @@ func (client *Client) DescribeBackupPolicy(request *DescribeBackupPolicyRequest)
 	return _result, _err
 }
 
+// @param request - DescribeBackupStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeBackupStatusResponse
 func (client *Client) DescribeBackupStatusWithOptions(request *DescribeBackupStatusRequest, runtime *util.RuntimeOptions) (_result *DescribeBackupStatusResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15792,6 +19643,9 @@ func (client *Client) DescribeBackupStatusWithOptions(request *DescribeBackupSta
 	return _result, _err
 }
 
+// @param request - DescribeBackupStatusRequest
+//
+// @return DescribeBackupStatusResponse
 func (client *Client) DescribeBackupStatus(request *DescribeBackupStatusRequest) (_result *DescribeBackupStatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeBackupStatusResponse{}
@@ -15803,6 +19657,11 @@ func (client *Client) DescribeBackupStatus(request *DescribeBackupStatusRequest)
 	return _result, _err
 }
 
+// @param request - DescribeBackupSummaryRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeBackupSummaryResponse
 func (client *Client) DescribeBackupSummaryWithOptions(request *DescribeBackupSummaryRequest, runtime *util.RuntimeOptions) (_result *DescribeBackupSummaryResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15844,6 +19703,9 @@ func (client *Client) DescribeBackupSummaryWithOptions(request *DescribeBackupSu
 	return _result, _err
 }
 
+// @param request - DescribeBackupSummaryRequest
+//
+// @return DescribeBackupSummaryResponse
 func (client *Client) DescribeBackupSummary(request *DescribeBackupSummaryRequest) (_result *DescribeBackupSummaryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeBackupSummaryResponse{}
@@ -15855,6 +19717,11 @@ func (client *Client) DescribeBackupSummary(request *DescribeBackupSummaryReques
 	return _result, _err
 }
 
+// @param request - DescribeBackupTablesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeBackupTablesResponse
 func (client *Client) DescribeBackupTablesWithOptions(request *DescribeBackupTablesRequest, runtime *util.RuntimeOptions) (_result *DescribeBackupTablesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15900,6 +19767,9 @@ func (client *Client) DescribeBackupTablesWithOptions(request *DescribeBackupTab
 	return _result, _err
 }
 
+// @param request - DescribeBackupTablesRequest
+//
+// @return DescribeBackupTablesResponse
 func (client *Client) DescribeBackupTables(request *DescribeBackupTablesRequest) (_result *DescribeBackupTablesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeBackupTablesResponse{}
@@ -15911,6 +19781,11 @@ func (client *Client) DescribeBackupTables(request *DescribeBackupTablesRequest)
 	return _result, _err
 }
 
+// @param request - DescribeBackupsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeBackupsResponse
 func (client *Client) DescribeBackupsWithOptions(request *DescribeBackupsRequest, runtime *util.RuntimeOptions) (_result *DescribeBackupsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15972,6 +19847,9 @@ func (client *Client) DescribeBackupsWithOptions(request *DescribeBackupsRequest
 	return _result, _err
 }
 
+// @param request - DescribeBackupsRequest
+//
+// @return DescribeBackupsResponse
 func (client *Client) DescribeBackups(request *DescribeBackupsRequest) (_result *DescribeBackupsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeBackupsResponse{}
@@ -15983,6 +19861,11 @@ func (client *Client) DescribeBackups(request *DescribeBackupsRequest) (_result 
 	return _result, _err
 }
 
+// @param request - DescribeClusterConnectionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeClusterConnectionResponse
 func (client *Client) DescribeClusterConnectionWithOptions(request *DescribeClusterConnectionRequest, runtime *util.RuntimeOptions) (_result *DescribeClusterConnectionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16020,6 +19903,9 @@ func (client *Client) DescribeClusterConnectionWithOptions(request *DescribeClus
 	return _result, _err
 }
 
+// @param request - DescribeClusterConnectionRequest
+//
+// @return DescribeClusterConnectionResponse
 func (client *Client) DescribeClusterConnection(request *DescribeClusterConnectionRequest) (_result *DescribeClusterConnectionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeClusterConnectionResponse{}
@@ -16031,6 +19917,11 @@ func (client *Client) DescribeClusterConnection(request *DescribeClusterConnecti
 	return _result, _err
 }
 
+// @param request - DescribeColdStorageRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeColdStorageResponse
 func (client *Client) DescribeColdStorageWithOptions(request *DescribeColdStorageRequest, runtime *util.RuntimeOptions) (_result *DescribeColdStorageResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16064,6 +19955,9 @@ func (client *Client) DescribeColdStorageWithOptions(request *DescribeColdStorag
 	return _result, _err
 }
 
+// @param request - DescribeColdStorageRequest
+//
+// @return DescribeColdStorageResponse
 func (client *Client) DescribeColdStorage(request *DescribeColdStorageRequest) (_result *DescribeColdStorageResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeColdStorageResponse{}
@@ -16075,6 +19969,11 @@ func (client *Client) DescribeColdStorage(request *DescribeColdStorageRequest) (
 	return _result, _err
 }
 
+// @param request - DescribeDBInstanceUsageRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDBInstanceUsageResponse
 func (client *Client) DescribeDBInstanceUsageWithOptions(request *DescribeDBInstanceUsageRequest, runtime *util.RuntimeOptions) (_result *DescribeDBInstanceUsageResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16108,6 +20007,9 @@ func (client *Client) DescribeDBInstanceUsageWithOptions(request *DescribeDBInst
 	return _result, _err
 }
 
+// @param request - DescribeDBInstanceUsageRequest
+//
+// @return DescribeDBInstanceUsageResponse
 func (client *Client) DescribeDBInstanceUsage(request *DescribeDBInstanceUsageRequest) (_result *DescribeDBInstanceUsageResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDBInstanceUsageResponse{}
@@ -16119,6 +20021,11 @@ func (client *Client) DescribeDBInstanceUsage(request *DescribeDBInstanceUsageRe
 	return _result, _err
 }
 
+// @param request - DescribeDeletedInstancesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDeletedInstancesResponse
 func (client *Client) DescribeDeletedInstancesWithOptions(request *DescribeDeletedInstancesRequest, runtime *util.RuntimeOptions) (_result *DescribeDeletedInstancesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16160,6 +20067,9 @@ func (client *Client) DescribeDeletedInstancesWithOptions(request *DescribeDelet
 	return _result, _err
 }
 
+// @param request - DescribeDeletedInstancesRequest
+//
+// @return DescribeDeletedInstancesResponse
 func (client *Client) DescribeDeletedInstances(request *DescribeDeletedInstancesRequest) (_result *DescribeDeletedInstancesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDeletedInstancesResponse{}
@@ -16171,6 +20081,11 @@ func (client *Client) DescribeDeletedInstances(request *DescribeDeletedInstances
 	return _result, _err
 }
 
+// @param request - DescribeDiskWarningLineRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDiskWarningLineResponse
 func (client *Client) DescribeDiskWarningLineWithOptions(request *DescribeDiskWarningLineRequest, runtime *util.RuntimeOptions) (_result *DescribeDiskWarningLineResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16204,6 +20119,9 @@ func (client *Client) DescribeDiskWarningLineWithOptions(request *DescribeDiskWa
 	return _result, _err
 }
 
+// @param request - DescribeDiskWarningLineRequest
+//
+// @return DescribeDiskWarningLineResponse
 func (client *Client) DescribeDiskWarningLine(request *DescribeDiskWarningLineRequest) (_result *DescribeDiskWarningLineResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDiskWarningLineResponse{}
@@ -16215,6 +20133,11 @@ func (client *Client) DescribeDiskWarningLine(request *DescribeDiskWarningLineRe
 	return _result, _err
 }
 
+// @param request - DescribeEndpointsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeEndpointsResponse
 func (client *Client) DescribeEndpointsWithOptions(request *DescribeEndpointsRequest, runtime *util.RuntimeOptions) (_result *DescribeEndpointsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16248,6 +20171,9 @@ func (client *Client) DescribeEndpointsWithOptions(request *DescribeEndpointsReq
 	return _result, _err
 }
 
+// @param request - DescribeEndpointsRequest
+//
+// @return DescribeEndpointsResponse
 func (client *Client) DescribeEndpoints(request *DescribeEndpointsRequest) (_result *DescribeEndpointsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeEndpointsResponse{}
@@ -16259,6 +20185,11 @@ func (client *Client) DescribeEndpoints(request *DescribeEndpointsRequest) (_res
 	return _result, _err
 }
 
+// @param request - DescribeInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeInstanceResponse
 func (client *Client) DescribeInstanceWithOptions(request *DescribeInstanceRequest, runtime *util.RuntimeOptions) (_result *DescribeInstanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16292,6 +20223,9 @@ func (client *Client) DescribeInstanceWithOptions(request *DescribeInstanceReque
 	return _result, _err
 }
 
+// @param request - DescribeInstanceRequest
+//
+// @return DescribeInstanceResponse
 func (client *Client) DescribeInstance(request *DescribeInstanceRequest) (_result *DescribeInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeInstanceResponse{}
@@ -16303,6 +20237,11 @@ func (client *Client) DescribeInstance(request *DescribeInstanceRequest) (_resul
 	return _result, _err
 }
 
+// @param request - DescribeInstanceTypeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeInstanceTypeResponse
 func (client *Client) DescribeInstanceTypeWithOptions(request *DescribeInstanceTypeRequest, runtime *util.RuntimeOptions) (_result *DescribeInstanceTypeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16336,6 +20275,9 @@ func (client *Client) DescribeInstanceTypeWithOptions(request *DescribeInstanceT
 	return _result, _err
 }
 
+// @param request - DescribeInstanceTypeRequest
+//
+// @return DescribeInstanceTypeResponse
 func (client *Client) DescribeInstanceType(request *DescribeInstanceTypeRequest) (_result *DescribeInstanceTypeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeInstanceTypeResponse{}
@@ -16347,6 +20289,11 @@ func (client *Client) DescribeInstanceType(request *DescribeInstanceTypeRequest)
 	return _result, _err
 }
 
+// @param request - DescribeInstancesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeInstancesResponse
 func (client *Client) DescribeInstancesWithOptions(request *DescribeInstancesRequest, runtime *util.RuntimeOptions) (_result *DescribeInstancesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16408,6 +20355,9 @@ func (client *Client) DescribeInstancesWithOptions(request *DescribeInstancesReq
 	return _result, _err
 }
 
+// @param request - DescribeInstancesRequest
+//
+// @return DescribeInstancesResponse
 func (client *Client) DescribeInstances(request *DescribeInstancesRequest) (_result *DescribeInstancesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeInstancesResponse{}
@@ -16419,6 +20369,11 @@ func (client *Client) DescribeInstances(request *DescribeInstancesRequest) (_res
 	return _result, _err
 }
 
+// @param request - DescribeIpWhitelistRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeIpWhitelistResponse
 func (client *Client) DescribeIpWhitelistWithOptions(request *DescribeIpWhitelistRequest, runtime *util.RuntimeOptions) (_result *DescribeIpWhitelistResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16452,6 +20407,9 @@ func (client *Client) DescribeIpWhitelistWithOptions(request *DescribeIpWhitelis
 	return _result, _err
 }
 
+// @param request - DescribeIpWhitelistRequest
+//
+// @return DescribeIpWhitelistResponse
 func (client *Client) DescribeIpWhitelist(request *DescribeIpWhitelistRequest) (_result *DescribeIpWhitelistResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeIpWhitelistResponse{}
@@ -16463,6 +20421,11 @@ func (client *Client) DescribeIpWhitelist(request *DescribeIpWhitelistRequest) (
 	return _result, _err
 }
 
+// @param request - DescribeMultiZoneAvailableRegionsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeMultiZoneAvailableRegionsResponse
 func (client *Client) DescribeMultiZoneAvailableRegionsWithOptions(request *DescribeMultiZoneAvailableRegionsRequest, runtime *util.RuntimeOptions) (_result *DescribeMultiZoneAvailableRegionsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16496,6 +20459,9 @@ func (client *Client) DescribeMultiZoneAvailableRegionsWithOptions(request *Desc
 	return _result, _err
 }
 
+// @param request - DescribeMultiZoneAvailableRegionsRequest
+//
+// @return DescribeMultiZoneAvailableRegionsResponse
 func (client *Client) DescribeMultiZoneAvailableRegions(request *DescribeMultiZoneAvailableRegionsRequest) (_result *DescribeMultiZoneAvailableRegionsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeMultiZoneAvailableRegionsResponse{}
@@ -16507,6 +20473,11 @@ func (client *Client) DescribeMultiZoneAvailableRegions(request *DescribeMultiZo
 	return _result, _err
 }
 
+// @param request - DescribeMultiZoneAvailableResourceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeMultiZoneAvailableResourceResponse
 func (client *Client) DescribeMultiZoneAvailableResourceWithOptions(request *DescribeMultiZoneAvailableResourceRequest, runtime *util.RuntimeOptions) (_result *DescribeMultiZoneAvailableResourceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16548,6 +20519,9 @@ func (client *Client) DescribeMultiZoneAvailableResourceWithOptions(request *Des
 	return _result, _err
 }
 
+// @param request - DescribeMultiZoneAvailableResourceRequest
+//
+// @return DescribeMultiZoneAvailableResourceResponse
 func (client *Client) DescribeMultiZoneAvailableResource(request *DescribeMultiZoneAvailableResourceRequest) (_result *DescribeMultiZoneAvailableResourceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeMultiZoneAvailableResourceResponse{}
@@ -16559,6 +20533,11 @@ func (client *Client) DescribeMultiZoneAvailableResource(request *DescribeMultiZ
 	return _result, _err
 }
 
+// @param request - DescribeMultiZoneClusterRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeMultiZoneClusterResponse
 func (client *Client) DescribeMultiZoneClusterWithOptions(request *DescribeMultiZoneClusterRequest, runtime *util.RuntimeOptions) (_result *DescribeMultiZoneClusterResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16592,6 +20571,9 @@ func (client *Client) DescribeMultiZoneClusterWithOptions(request *DescribeMulti
 	return _result, _err
 }
 
+// @param request - DescribeMultiZoneClusterRequest
+//
+// @return DescribeMultiZoneClusterResponse
 func (client *Client) DescribeMultiZoneCluster(request *DescribeMultiZoneClusterRequest) (_result *DescribeMultiZoneClusterResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeMultiZoneClusterResponse{}
@@ -16603,6 +20585,11 @@ func (client *Client) DescribeMultiZoneCluster(request *DescribeMultiZoneCluster
 	return _result, _err
 }
 
+// @param request - DescribeRecoverableTimeRangeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeRecoverableTimeRangeResponse
 func (client *Client) DescribeRecoverableTimeRangeWithOptions(request *DescribeRecoverableTimeRangeRequest, runtime *util.RuntimeOptions) (_result *DescribeRecoverableTimeRangeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16636,6 +20623,9 @@ func (client *Client) DescribeRecoverableTimeRangeWithOptions(request *DescribeR
 	return _result, _err
 }
 
+// @param request - DescribeRecoverableTimeRangeRequest
+//
+// @return DescribeRecoverableTimeRangeResponse
 func (client *Client) DescribeRecoverableTimeRange(request *DescribeRecoverableTimeRangeRequest) (_result *DescribeRecoverableTimeRangeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeRecoverableTimeRangeResponse{}
@@ -16647,6 +20637,11 @@ func (client *Client) DescribeRecoverableTimeRange(request *DescribeRecoverableT
 	return _result, _err
 }
 
+// @param request - DescribeRegionsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeRegionsResponse
 func (client *Client) DescribeRegionsWithOptions(request *DescribeRegionsRequest, runtime *util.RuntimeOptions) (_result *DescribeRegionsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16684,6 +20679,9 @@ func (client *Client) DescribeRegionsWithOptions(request *DescribeRegionsRequest
 	return _result, _err
 }
 
+// @param request - DescribeRegionsRequest
+//
+// @return DescribeRegionsResponse
 func (client *Client) DescribeRegions(request *DescribeRegionsRequest) (_result *DescribeRegionsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeRegionsResponse{}
@@ -16695,6 +20693,11 @@ func (client *Client) DescribeRegions(request *DescribeRegionsRequest) (_result 
 	return _result, _err
 }
 
+// @param request - DescribeRestoreFullDetailsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeRestoreFullDetailsResponse
 func (client *Client) DescribeRestoreFullDetailsWithOptions(request *DescribeRestoreFullDetailsRequest, runtime *util.RuntimeOptions) (_result *DescribeRestoreFullDetailsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16740,6 +20743,9 @@ func (client *Client) DescribeRestoreFullDetailsWithOptions(request *DescribeRes
 	return _result, _err
 }
 
+// @param request - DescribeRestoreFullDetailsRequest
+//
+// @return DescribeRestoreFullDetailsResponse
 func (client *Client) DescribeRestoreFullDetails(request *DescribeRestoreFullDetailsRequest) (_result *DescribeRestoreFullDetailsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeRestoreFullDetailsResponse{}
@@ -16751,6 +20757,11 @@ func (client *Client) DescribeRestoreFullDetails(request *DescribeRestoreFullDet
 	return _result, _err
 }
 
+// @param request - DescribeRestoreIncrDetailRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeRestoreIncrDetailResponse
 func (client *Client) DescribeRestoreIncrDetailWithOptions(request *DescribeRestoreIncrDetailRequest, runtime *util.RuntimeOptions) (_result *DescribeRestoreIncrDetailResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16788,6 +20799,9 @@ func (client *Client) DescribeRestoreIncrDetailWithOptions(request *DescribeRest
 	return _result, _err
 }
 
+// @param request - DescribeRestoreIncrDetailRequest
+//
+// @return DescribeRestoreIncrDetailResponse
 func (client *Client) DescribeRestoreIncrDetail(request *DescribeRestoreIncrDetailRequest) (_result *DescribeRestoreIncrDetailResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeRestoreIncrDetailResponse{}
@@ -16799,6 +20813,11 @@ func (client *Client) DescribeRestoreIncrDetail(request *DescribeRestoreIncrDeta
 	return _result, _err
 }
 
+// @param request - DescribeRestoreSchemaDetailsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeRestoreSchemaDetailsResponse
 func (client *Client) DescribeRestoreSchemaDetailsWithOptions(request *DescribeRestoreSchemaDetailsRequest, runtime *util.RuntimeOptions) (_result *DescribeRestoreSchemaDetailsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16844,6 +20863,9 @@ func (client *Client) DescribeRestoreSchemaDetailsWithOptions(request *DescribeR
 	return _result, _err
 }
 
+// @param request - DescribeRestoreSchemaDetailsRequest
+//
+// @return DescribeRestoreSchemaDetailsResponse
 func (client *Client) DescribeRestoreSchemaDetails(request *DescribeRestoreSchemaDetailsRequest) (_result *DescribeRestoreSchemaDetailsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeRestoreSchemaDetailsResponse{}
@@ -16855,6 +20877,11 @@ func (client *Client) DescribeRestoreSchemaDetails(request *DescribeRestoreSchem
 	return _result, _err
 }
 
+// @param request - DescribeRestoreSummaryRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeRestoreSummaryResponse
 func (client *Client) DescribeRestoreSummaryWithOptions(request *DescribeRestoreSummaryRequest, runtime *util.RuntimeOptions) (_result *DescribeRestoreSummaryResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16896,6 +20923,9 @@ func (client *Client) DescribeRestoreSummaryWithOptions(request *DescribeRestore
 	return _result, _err
 }
 
+// @param request - DescribeRestoreSummaryRequest
+//
+// @return DescribeRestoreSummaryResponse
 func (client *Client) DescribeRestoreSummary(request *DescribeRestoreSummaryRequest) (_result *DescribeRestoreSummaryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeRestoreSummaryResponse{}
@@ -16907,6 +20937,11 @@ func (client *Client) DescribeRestoreSummary(request *DescribeRestoreSummaryRequ
 	return _result, _err
 }
 
+// @param request - DescribeRestoreTablesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeRestoreTablesResponse
 func (client *Client) DescribeRestoreTablesWithOptions(request *DescribeRestoreTablesRequest, runtime *util.RuntimeOptions) (_result *DescribeRestoreTablesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16944,6 +20979,9 @@ func (client *Client) DescribeRestoreTablesWithOptions(request *DescribeRestoreT
 	return _result, _err
 }
 
+// @param request - DescribeRestoreTablesRequest
+//
+// @return DescribeRestoreTablesResponse
 func (client *Client) DescribeRestoreTables(request *DescribeRestoreTablesRequest) (_result *DescribeRestoreTablesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeRestoreTablesResponse{}
@@ -16955,6 +20993,11 @@ func (client *Client) DescribeRestoreTables(request *DescribeRestoreTablesReques
 	return _result, _err
 }
 
+// @param request - DescribeSecurityGroupsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeSecurityGroupsResponse
 func (client *Client) DescribeSecurityGroupsWithOptions(request *DescribeSecurityGroupsRequest, runtime *util.RuntimeOptions) (_result *DescribeSecurityGroupsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16988,6 +21031,9 @@ func (client *Client) DescribeSecurityGroupsWithOptions(request *DescribeSecurit
 	return _result, _err
 }
 
+// @param request - DescribeSecurityGroupsRequest
+//
+// @return DescribeSecurityGroupsResponse
 func (client *Client) DescribeSecurityGroups(request *DescribeSecurityGroupsRequest) (_result *DescribeSecurityGroupsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeSecurityGroupsResponse{}
@@ -16999,6 +21045,11 @@ func (client *Client) DescribeSecurityGroups(request *DescribeSecurityGroupsRequ
 	return _result, _err
 }
 
+// @param request - DescribeServerlessClusterRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeServerlessClusterResponse
 func (client *Client) DescribeServerlessClusterWithOptions(request *DescribeServerlessClusterRequest, runtime *util.RuntimeOptions) (_result *DescribeServerlessClusterResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -17036,6 +21087,9 @@ func (client *Client) DescribeServerlessClusterWithOptions(request *DescribeServ
 	return _result, _err
 }
 
+// @param request - DescribeServerlessClusterRequest
+//
+// @return DescribeServerlessClusterResponse
 func (client *Client) DescribeServerlessCluster(request *DescribeServerlessClusterRequest) (_result *DescribeServerlessClusterResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeServerlessClusterResponse{}
@@ -17047,6 +21101,11 @@ func (client *Client) DescribeServerlessCluster(request *DescribeServerlessClust
 	return _result, _err
 }
 
+// @param request - DescribeSubDomainRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeSubDomainResponse
 func (client *Client) DescribeSubDomainWithOptions(request *DescribeSubDomainRequest, runtime *util.RuntimeOptions) (_result *DescribeSubDomainResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -17084,6 +21143,9 @@ func (client *Client) DescribeSubDomainWithOptions(request *DescribeSubDomainReq
 	return _result, _err
 }
 
+// @param request - DescribeSubDomainRequest
+//
+// @return DescribeSubDomainResponse
 func (client *Client) DescribeSubDomain(request *DescribeSubDomainRequest) (_result *DescribeSubDomainResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeSubDomainResponse{}
@@ -17095,6 +21157,11 @@ func (client *Client) DescribeSubDomain(request *DescribeSubDomainRequest) (_res
 	return _result, _err
 }
 
+// @param request - EnableHBaseueBackupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return EnableHBaseueBackupResponse
 func (client *Client) EnableHBaseueBackupWithOptions(request *EnableHBaseueBackupRequest, runtime *util.RuntimeOptions) (_result *EnableHBaseueBackupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -17140,6 +21207,9 @@ func (client *Client) EnableHBaseueBackupWithOptions(request *EnableHBaseueBacku
 	return _result, _err
 }
 
+// @param request - EnableHBaseueBackupRequest
+//
+// @return EnableHBaseueBackupResponse
 func (client *Client) EnableHBaseueBackup(request *EnableHBaseueBackupRequest) (_result *EnableHBaseueBackupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &EnableHBaseueBackupResponse{}
@@ -17151,6 +21221,11 @@ func (client *Client) EnableHBaseueBackup(request *EnableHBaseueBackupRequest) (
 	return _result, _err
 }
 
+// @param request - EnableHBaseueModuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return EnableHBaseueModuleResponse
 func (client *Client) EnableHBaseueModuleWithOptions(request *EnableHBaseueModuleRequest, runtime *util.RuntimeOptions) (_result *EnableHBaseueModuleResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -17252,6 +21327,9 @@ func (client *Client) EnableHBaseueModuleWithOptions(request *EnableHBaseueModul
 	return _result, _err
 }
 
+// @param request - EnableHBaseueModuleRequest
+//
+// @return EnableHBaseueModuleResponse
 func (client *Client) EnableHBaseueModule(request *EnableHBaseueModuleRequest) (_result *EnableHBaseueModuleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &EnableHBaseueModuleResponse{}
@@ -17263,6 +21341,11 @@ func (client *Client) EnableHBaseueModule(request *EnableHBaseueModuleRequest) (
 	return _result, _err
 }
 
+// @param request - EvaluateMultiZoneResourceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return EvaluateMultiZoneResourceResponse
 func (client *Client) EvaluateMultiZoneResourceWithOptions(request *EvaluateMultiZoneResourceRequest, runtime *util.RuntimeOptions) (_result *EvaluateMultiZoneResourceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -17404,6 +21487,9 @@ func (client *Client) EvaluateMultiZoneResourceWithOptions(request *EvaluateMult
 	return _result, _err
 }
 
+// @param request - EvaluateMultiZoneResourceRequest
+//
+// @return EvaluateMultiZoneResourceResponse
 func (client *Client) EvaluateMultiZoneResource(request *EvaluateMultiZoneResourceRequest) (_result *EvaluateMultiZoneResourceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &EvaluateMultiZoneResourceResponse{}
@@ -17415,6 +21501,11 @@ func (client *Client) EvaluateMultiZoneResource(request *EvaluateMultiZoneResour
 	return _result, _err
 }
 
+// @param request - GetMultimodeCmsUrlRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetMultimodeCmsUrlResponse
 func (client *Client) GetMultimodeCmsUrlWithOptions(request *GetMultimodeCmsUrlRequest, runtime *util.RuntimeOptions) (_result *GetMultimodeCmsUrlResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -17452,6 +21543,9 @@ func (client *Client) GetMultimodeCmsUrlWithOptions(request *GetMultimodeCmsUrlR
 	return _result, _err
 }
 
+// @param request - GetMultimodeCmsUrlRequest
+//
+// @return GetMultimodeCmsUrlResponse
 func (client *Client) GetMultimodeCmsUrl(request *GetMultimodeCmsUrlRequest) (_result *GetMultimodeCmsUrlResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetMultimodeCmsUrlResponse{}
@@ -17463,6 +21557,15 @@ func (client *Client) GetMultimodeCmsUrl(request *GetMultimodeCmsUrlRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// 授权账户权限
+//
+// @param request - GrantRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GrantResponse
 func (client *Client) GrantWithOptions(request *GrantRequest, runtime *util.RuntimeOptions) (_result *GrantResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -17512,6 +21615,13 @@ func (client *Client) GrantWithOptions(request *GrantRequest, runtime *util.Runt
 	return _result, _err
 }
 
+// Summary:
+//
+// 授权账户权限
+//
+// @param request - GrantRequest
+//
+// @return GrantResponse
 func (client *Client) Grant(request *GrantRequest) (_result *GrantResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GrantResponse{}
@@ -17523,6 +21633,11 @@ func (client *Client) Grant(request *GrantRequest) (_result *GrantResponse, _err
 	return _result, _err
 }
 
+// @param request - ListHBaseInstancesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListHBaseInstancesResponse
 func (client *Client) ListHBaseInstancesWithOptions(request *ListHBaseInstancesRequest, runtime *util.RuntimeOptions) (_result *ListHBaseInstancesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -17556,6 +21671,9 @@ func (client *Client) ListHBaseInstancesWithOptions(request *ListHBaseInstancesR
 	return _result, _err
 }
 
+// @param request - ListHBaseInstancesRequest
+//
+// @return ListHBaseInstancesResponse
 func (client *Client) ListHBaseInstances(request *ListHBaseInstancesRequest) (_result *ListHBaseInstancesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListHBaseInstancesResponse{}
@@ -17567,6 +21685,11 @@ func (client *Client) ListHBaseInstances(request *ListHBaseInstancesRequest) (_r
 	return _result, _err
 }
 
+// @param request - ListInstanceServiceConfigHistoriesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListInstanceServiceConfigHistoriesResponse
 func (client *Client) ListInstanceServiceConfigHistoriesWithOptions(request *ListInstanceServiceConfigHistoriesRequest, runtime *util.RuntimeOptions) (_result *ListInstanceServiceConfigHistoriesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -17608,6 +21731,9 @@ func (client *Client) ListInstanceServiceConfigHistoriesWithOptions(request *Lis
 	return _result, _err
 }
 
+// @param request - ListInstanceServiceConfigHistoriesRequest
+//
+// @return ListInstanceServiceConfigHistoriesResponse
 func (client *Client) ListInstanceServiceConfigHistories(request *ListInstanceServiceConfigHistoriesRequest) (_result *ListInstanceServiceConfigHistoriesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListInstanceServiceConfigHistoriesResponse{}
@@ -17619,6 +21745,11 @@ func (client *Client) ListInstanceServiceConfigHistories(request *ListInstanceSe
 	return _result, _err
 }
 
+// @param request - ListInstanceServiceConfigurationsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListInstanceServiceConfigurationsResponse
 func (client *Client) ListInstanceServiceConfigurationsWithOptions(request *ListInstanceServiceConfigurationsRequest, runtime *util.RuntimeOptions) (_result *ListInstanceServiceConfigurationsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -17660,6 +21791,9 @@ func (client *Client) ListInstanceServiceConfigurationsWithOptions(request *List
 	return _result, _err
 }
 
+// @param request - ListInstanceServiceConfigurationsRequest
+//
+// @return ListInstanceServiceConfigurationsResponse
 func (client *Client) ListInstanceServiceConfigurations(request *ListInstanceServiceConfigurationsRequest) (_result *ListInstanceServiceConfigurationsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListInstanceServiceConfigurationsResponse{}
@@ -17671,6 +21805,11 @@ func (client *Client) ListInstanceServiceConfigurations(request *ListInstanceSer
 	return _result, _err
 }
 
+// @param request - ListTagResourcesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListTagResourcesResponse
 func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesRequest, runtime *util.RuntimeOptions) (_result *ListTagResourcesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -17716,6 +21855,9 @@ func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesReque
 	return _result, _err
 }
 
+// @param request - ListTagResourcesRequest
+//
+// @return ListTagResourcesResponse
 func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_result *ListTagResourcesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListTagResourcesResponse{}
@@ -17727,6 +21869,11 @@ func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_resul
 	return _result, _err
 }
 
+// @param request - ListTagsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListTagsResponse
 func (client *Client) ListTagsWithOptions(request *ListTagsRequest, runtime *util.RuntimeOptions) (_result *ListTagsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -17760,6 +21907,9 @@ func (client *Client) ListTagsWithOptions(request *ListTagsRequest, runtime *uti
 	return _result, _err
 }
 
+// @param request - ListTagsRequest
+//
+// @return ListTagsResponse
 func (client *Client) ListTags(request *ListTagsRequest) (_result *ListTagsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListTagsResponse{}
@@ -17771,6 +21921,15 @@ func (client *Client) ListTags(request *ListTagsRequest) (_result *ListTagsRespo
 	return _result, _err
 }
 
+// Summary:
+//
+// 更改账户密码
+//
+// @param request - ModifyAccountPasswordRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyAccountPasswordResponse
 func (client *Client) ModifyAccountPasswordWithOptions(request *ModifyAccountPasswordRequest, runtime *util.RuntimeOptions) (_result *ModifyAccountPasswordResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -17812,6 +21971,13 @@ func (client *Client) ModifyAccountPasswordWithOptions(request *ModifyAccountPas
 	return _result, _err
 }
 
+// Summary:
+//
+// 更改账户密码
+//
+// @param request - ModifyAccountPasswordRequest
+//
+// @return ModifyAccountPasswordResponse
 func (client *Client) ModifyAccountPassword(request *ModifyAccountPasswordRequest) (_result *ModifyAccountPasswordResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyAccountPasswordResponse{}
@@ -17823,6 +21989,11 @@ func (client *Client) ModifyAccountPassword(request *ModifyAccountPasswordReques
 	return _result, _err
 }
 
+// @param request - ModifyActiveOperationTasksRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyActiveOperationTasksResponse
 func (client *Client) ModifyActiveOperationTasksWithOptions(request *ModifyActiveOperationTasksRequest, runtime *util.RuntimeOptions) (_result *ModifyActiveOperationTasksResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -17884,6 +22055,9 @@ func (client *Client) ModifyActiveOperationTasksWithOptions(request *ModifyActiv
 	return _result, _err
 }
 
+// @param request - ModifyActiveOperationTasksRequest
+//
+// @return ModifyActiveOperationTasksResponse
 func (client *Client) ModifyActiveOperationTasks(request *ModifyActiveOperationTasksRequest) (_result *ModifyActiveOperationTasksResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyActiveOperationTasksResponse{}
@@ -17895,6 +22069,11 @@ func (client *Client) ModifyActiveOperationTasks(request *ModifyActiveOperationT
 	return _result, _err
 }
 
+// @param request - ModifyBackupPlanConfigRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyBackupPlanConfigResponse
 func (client *Client) ModifyBackupPlanConfigWithOptions(request *ModifyBackupPlanConfigRequest, runtime *util.RuntimeOptions) (_result *ModifyBackupPlanConfigResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -17944,6 +22123,9 @@ func (client *Client) ModifyBackupPlanConfigWithOptions(request *ModifyBackupPla
 	return _result, _err
 }
 
+// @param request - ModifyBackupPlanConfigRequest
+//
+// @return ModifyBackupPlanConfigResponse
 func (client *Client) ModifyBackupPlanConfig(request *ModifyBackupPlanConfigRequest) (_result *ModifyBackupPlanConfigResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyBackupPlanConfigResponse{}
@@ -17955,6 +22137,11 @@ func (client *Client) ModifyBackupPlanConfig(request *ModifyBackupPlanConfigRequ
 	return _result, _err
 }
 
+// @param request - ModifyBackupPolicyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyBackupPolicyResponse
 func (client *Client) ModifyBackupPolicyWithOptions(request *ModifyBackupPolicyRequest, runtime *util.RuntimeOptions) (_result *ModifyBackupPolicyResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -18004,6 +22191,9 @@ func (client *Client) ModifyBackupPolicyWithOptions(request *ModifyBackupPolicyR
 	return _result, _err
 }
 
+// @param request - ModifyBackupPolicyRequest
+//
+// @return ModifyBackupPolicyResponse
 func (client *Client) ModifyBackupPolicy(request *ModifyBackupPolicyRequest) (_result *ModifyBackupPolicyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyBackupPolicyResponse{}
@@ -18015,6 +22205,11 @@ func (client *Client) ModifyBackupPolicy(request *ModifyBackupPolicyRequest) (_r
 	return _result, _err
 }
 
+// @param request - ModifyClusterDeletionProtectionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyClusterDeletionProtectionResponse
 func (client *Client) ModifyClusterDeletionProtectionWithOptions(request *ModifyClusterDeletionProtectionRequest, runtime *util.RuntimeOptions) (_result *ModifyClusterDeletionProtectionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -18052,6 +22247,9 @@ func (client *Client) ModifyClusterDeletionProtectionWithOptions(request *Modify
 	return _result, _err
 }
 
+// @param request - ModifyClusterDeletionProtectionRequest
+//
+// @return ModifyClusterDeletionProtectionResponse
 func (client *Client) ModifyClusterDeletionProtection(request *ModifyClusterDeletionProtectionRequest) (_result *ModifyClusterDeletionProtectionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyClusterDeletionProtectionResponse{}
@@ -18063,6 +22261,11 @@ func (client *Client) ModifyClusterDeletionProtection(request *ModifyClusterDele
 	return _result, _err
 }
 
+// @param request - ModifyDiskWarningLineRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyDiskWarningLineResponse
 func (client *Client) ModifyDiskWarningLineWithOptions(request *ModifyDiskWarningLineRequest, runtime *util.RuntimeOptions) (_result *ModifyDiskWarningLineResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -18100,6 +22303,9 @@ func (client *Client) ModifyDiskWarningLineWithOptions(request *ModifyDiskWarnin
 	return _result, _err
 }
 
+// @param request - ModifyDiskWarningLineRequest
+//
+// @return ModifyDiskWarningLineResponse
 func (client *Client) ModifyDiskWarningLine(request *ModifyDiskWarningLineRequest) (_result *ModifyDiskWarningLineResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyDiskWarningLineResponse{}
@@ -18111,6 +22317,11 @@ func (client *Client) ModifyDiskWarningLine(request *ModifyDiskWarningLineReques
 	return _result, _err
 }
 
+// @param request - ModifyInstanceMaintainTimeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyInstanceMaintainTimeResponse
 func (client *Client) ModifyInstanceMaintainTimeWithOptions(request *ModifyInstanceMaintainTimeRequest, runtime *util.RuntimeOptions) (_result *ModifyInstanceMaintainTimeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -18152,6 +22363,9 @@ func (client *Client) ModifyInstanceMaintainTimeWithOptions(request *ModifyInsta
 	return _result, _err
 }
 
+// @param request - ModifyInstanceMaintainTimeRequest
+//
+// @return ModifyInstanceMaintainTimeResponse
 func (client *Client) ModifyInstanceMaintainTime(request *ModifyInstanceMaintainTimeRequest) (_result *ModifyInstanceMaintainTimeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyInstanceMaintainTimeResponse{}
@@ -18163,6 +22377,11 @@ func (client *Client) ModifyInstanceMaintainTime(request *ModifyInstanceMaintain
 	return _result, _err
 }
 
+// @param request - ModifyInstanceNameRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyInstanceNameResponse
 func (client *Client) ModifyInstanceNameWithOptions(request *ModifyInstanceNameRequest, runtime *util.RuntimeOptions) (_result *ModifyInstanceNameResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -18212,6 +22431,9 @@ func (client *Client) ModifyInstanceNameWithOptions(request *ModifyInstanceNameR
 	return _result, _err
 }
 
+// @param request - ModifyInstanceNameRequest
+//
+// @return ModifyInstanceNameResponse
 func (client *Client) ModifyInstanceName(request *ModifyInstanceNameRequest) (_result *ModifyInstanceNameResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyInstanceNameResponse{}
@@ -18223,6 +22445,11 @@ func (client *Client) ModifyInstanceName(request *ModifyInstanceNameRequest) (_r
 	return _result, _err
 }
 
+// @param request - ModifyInstanceServiceConfigRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyInstanceServiceConfigResponse
 func (client *Client) ModifyInstanceServiceConfigWithOptions(request *ModifyInstanceServiceConfigRequest, runtime *util.RuntimeOptions) (_result *ModifyInstanceServiceConfigResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -18272,6 +22499,9 @@ func (client *Client) ModifyInstanceServiceConfigWithOptions(request *ModifyInst
 	return _result, _err
 }
 
+// @param request - ModifyInstanceServiceConfigRequest
+//
+// @return ModifyInstanceServiceConfigResponse
 func (client *Client) ModifyInstanceServiceConfig(request *ModifyInstanceServiceConfigRequest) (_result *ModifyInstanceServiceConfigResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyInstanceServiceConfigResponse{}
@@ -18283,6 +22513,11 @@ func (client *Client) ModifyInstanceServiceConfig(request *ModifyInstanceService
 	return _result, _err
 }
 
+// @param request - ModifyInstanceTypeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyInstanceTypeResponse
 func (client *Client) ModifyInstanceTypeWithOptions(request *ModifyInstanceTypeRequest, runtime *util.RuntimeOptions) (_result *ModifyInstanceTypeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -18324,6 +22559,9 @@ func (client *Client) ModifyInstanceTypeWithOptions(request *ModifyInstanceTypeR
 	return _result, _err
 }
 
+// @param request - ModifyInstanceTypeRequest
+//
+// @return ModifyInstanceTypeResponse
 func (client *Client) ModifyInstanceType(request *ModifyInstanceTypeRequest) (_result *ModifyInstanceTypeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyInstanceTypeResponse{}
@@ -18335,6 +22573,11 @@ func (client *Client) ModifyInstanceType(request *ModifyInstanceTypeRequest) (_r
 	return _result, _err
 }
 
+// @param request - ModifyIpWhitelistRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyIpWhitelistResponse
 func (client *Client) ModifyIpWhitelistWithOptions(request *ModifyIpWhitelistRequest, runtime *util.RuntimeOptions) (_result *ModifyIpWhitelistResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -18380,6 +22623,9 @@ func (client *Client) ModifyIpWhitelistWithOptions(request *ModifyIpWhitelistReq
 	return _result, _err
 }
 
+// @param request - ModifyIpWhitelistRequest
+//
+// @return ModifyIpWhitelistResponse
 func (client *Client) ModifyIpWhitelist(request *ModifyIpWhitelistRequest) (_result *ModifyIpWhitelistResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyIpWhitelistResponse{}
@@ -18391,6 +22637,11 @@ func (client *Client) ModifyIpWhitelist(request *ModifyIpWhitelistRequest) (_res
 	return _result, _err
 }
 
+// @param request - ModifyMultiZoneClusterNodeTypeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyMultiZoneClusterNodeTypeResponse
 func (client *Client) ModifyMultiZoneClusterNodeTypeWithOptions(request *ModifyMultiZoneClusterNodeTypeRequest, runtime *util.RuntimeOptions) (_result *ModifyMultiZoneClusterNodeTypeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -18436,6 +22687,9 @@ func (client *Client) ModifyMultiZoneClusterNodeTypeWithOptions(request *ModifyM
 	return _result, _err
 }
 
+// @param request - ModifyMultiZoneClusterNodeTypeRequest
+//
+// @return ModifyMultiZoneClusterNodeTypeResponse
 func (client *Client) ModifyMultiZoneClusterNodeType(request *ModifyMultiZoneClusterNodeTypeRequest) (_result *ModifyMultiZoneClusterNodeTypeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyMultiZoneClusterNodeTypeResponse{}
@@ -18447,6 +22701,11 @@ func (client *Client) ModifyMultiZoneClusterNodeType(request *ModifyMultiZoneClu
 	return _result, _err
 }
 
+// @param request - ModifySecurityGroupsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifySecurityGroupsResponse
 func (client *Client) ModifySecurityGroupsWithOptions(request *ModifySecurityGroupsRequest, runtime *util.RuntimeOptions) (_result *ModifySecurityGroupsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -18484,6 +22743,9 @@ func (client *Client) ModifySecurityGroupsWithOptions(request *ModifySecurityGro
 	return _result, _err
 }
 
+// @param request - ModifySecurityGroupsRequest
+//
+// @return ModifySecurityGroupsResponse
 func (client *Client) ModifySecurityGroups(request *ModifySecurityGroupsRequest) (_result *ModifySecurityGroupsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifySecurityGroupsResponse{}
@@ -18495,6 +22757,11 @@ func (client *Client) ModifySecurityGroups(request *ModifySecurityGroupsRequest)
 	return _result, _err
 }
 
+// @param request - ModifyUIAccountPasswordRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyUIAccountPasswordResponse
 func (client *Client) ModifyUIAccountPasswordWithOptions(request *ModifyUIAccountPasswordRequest, runtime *util.RuntimeOptions) (_result *ModifyUIAccountPasswordResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -18536,6 +22803,9 @@ func (client *Client) ModifyUIAccountPasswordWithOptions(request *ModifyUIAccoun
 	return _result, _err
 }
 
+// @param request - ModifyUIAccountPasswordRequest
+//
+// @return ModifyUIAccountPasswordResponse
 func (client *Client) ModifyUIAccountPassword(request *ModifyUIAccountPasswordRequest) (_result *ModifyUIAccountPasswordResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyUIAccountPasswordResponse{}
@@ -18547,6 +22817,11 @@ func (client *Client) ModifyUIAccountPassword(request *ModifyUIAccountPasswordRe
 	return _result, _err
 }
 
+// @param request - MoveResourceGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return MoveResourceGroupResponse
 func (client *Client) MoveResourceGroupWithOptions(request *MoveResourceGroupRequest, runtime *util.RuntimeOptions) (_result *MoveResourceGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -18584,6 +22859,9 @@ func (client *Client) MoveResourceGroupWithOptions(request *MoveResourceGroupReq
 	return _result, _err
 }
 
+// @param request - MoveResourceGroupRequest
+//
+// @return MoveResourceGroupResponse
 func (client *Client) MoveResourceGroup(request *MoveResourceGroupRequest) (_result *MoveResourceGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &MoveResourceGroupResponse{}
@@ -18595,6 +22873,11 @@ func (client *Client) MoveResourceGroup(request *MoveResourceGroupRequest) (_res
 	return _result, _err
 }
 
+// @param request - OpenBackupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return OpenBackupResponse
 func (client *Client) OpenBackupWithOptions(request *OpenBackupRequest, runtime *util.RuntimeOptions) (_result *OpenBackupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -18628,6 +22911,9 @@ func (client *Client) OpenBackupWithOptions(request *OpenBackupRequest, runtime 
 	return _result, _err
 }
 
+// @param request - OpenBackupRequest
+//
+// @return OpenBackupResponse
 func (client *Client) OpenBackup(request *OpenBackupRequest) (_result *OpenBackupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &OpenBackupResponse{}
@@ -18639,6 +22925,11 @@ func (client *Client) OpenBackup(request *OpenBackupRequest) (_result *OpenBacku
 	return _result, _err
 }
 
+// @param request - PurgeInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return PurgeInstanceResponse
 func (client *Client) PurgeInstanceWithOptions(request *PurgeInstanceRequest, runtime *util.RuntimeOptions) (_result *PurgeInstanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -18672,6 +22963,9 @@ func (client *Client) PurgeInstanceWithOptions(request *PurgeInstanceRequest, ru
 	return _result, _err
 }
 
+// @param request - PurgeInstanceRequest
+//
+// @return PurgeInstanceResponse
 func (client *Client) PurgeInstance(request *PurgeInstanceRequest) (_result *PurgeInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &PurgeInstanceResponse{}
@@ -18683,6 +22977,11 @@ func (client *Client) PurgeInstance(request *PurgeInstanceRequest) (_result *Pur
 	return _result, _err
 }
 
+// @param request - QueryHBaseHaDBRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryHBaseHaDBResponse
 func (client *Client) QueryHBaseHaDBWithOptions(request *QueryHBaseHaDBRequest, runtime *util.RuntimeOptions) (_result *QueryHBaseHaDBResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -18716,6 +23015,9 @@ func (client *Client) QueryHBaseHaDBWithOptions(request *QueryHBaseHaDBRequest, 
 	return _result, _err
 }
 
+// @param request - QueryHBaseHaDBRequest
+//
+// @return QueryHBaseHaDBResponse
 func (client *Client) QueryHBaseHaDB(request *QueryHBaseHaDBRequest) (_result *QueryHBaseHaDBResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryHBaseHaDBResponse{}
@@ -18727,6 +23029,11 @@ func (client *Client) QueryHBaseHaDB(request *QueryHBaseHaDBRequest) (_result *Q
 	return _result, _err
 }
 
+// @param request - QueryXpackRelateDBRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryXpackRelateDBResponse
 func (client *Client) QueryXpackRelateDBWithOptions(request *QueryXpackRelateDBRequest, runtime *util.RuntimeOptions) (_result *QueryXpackRelateDBResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -18768,6 +23075,9 @@ func (client *Client) QueryXpackRelateDBWithOptions(request *QueryXpackRelateDBR
 	return _result, _err
 }
 
+// @param request - QueryXpackRelateDBRequest
+//
+// @return QueryXpackRelateDBResponse
 func (client *Client) QueryXpackRelateDB(request *QueryXpackRelateDBRequest) (_result *QueryXpackRelateDBResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryXpackRelateDBResponse{}
@@ -18779,6 +23089,11 @@ func (client *Client) QueryXpackRelateDB(request *QueryXpackRelateDBRequest) (_r
 	return _result, _err
 }
 
+// @param request - RelateDbForHBaseHaRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RelateDbForHBaseHaResponse
 func (client *Client) RelateDbForHBaseHaWithOptions(request *RelateDbForHBaseHaRequest, runtime *util.RuntimeOptions) (_result *RelateDbForHBaseHaResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -18892,6 +23207,9 @@ func (client *Client) RelateDbForHBaseHaWithOptions(request *RelateDbForHBaseHaR
 	return _result, _err
 }
 
+// @param request - RelateDbForHBaseHaRequest
+//
+// @return RelateDbForHBaseHaResponse
 func (client *Client) RelateDbForHBaseHa(request *RelateDbForHBaseHaRequest) (_result *RelateDbForHBaseHaResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RelateDbForHBaseHaResponse{}
@@ -18903,6 +23221,11 @@ func (client *Client) RelateDbForHBaseHa(request *RelateDbForHBaseHaRequest) (_r
 	return _result, _err
 }
 
+// @param request - ReleasePublicNetworkAddressRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ReleasePublicNetworkAddressResponse
 func (client *Client) ReleasePublicNetworkAddressWithOptions(request *ReleasePublicNetworkAddressRequest, runtime *util.RuntimeOptions) (_result *ReleasePublicNetworkAddressResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -18936,6 +23259,9 @@ func (client *Client) ReleasePublicNetworkAddressWithOptions(request *ReleasePub
 	return _result, _err
 }
 
+// @param request - ReleasePublicNetworkAddressRequest
+//
+// @return ReleasePublicNetworkAddressResponse
 func (client *Client) ReleasePublicNetworkAddress(request *ReleasePublicNetworkAddressRequest) (_result *ReleasePublicNetworkAddressResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ReleasePublicNetworkAddressResponse{}
@@ -18947,6 +23273,11 @@ func (client *Client) ReleasePublicNetworkAddress(request *ReleasePublicNetworkA
 	return _result, _err
 }
 
+// @param request - RenewInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RenewInstanceResponse
 func (client *Client) RenewInstanceWithOptions(request *RenewInstanceRequest, runtime *util.RuntimeOptions) (_result *RenewInstanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -18988,6 +23319,9 @@ func (client *Client) RenewInstanceWithOptions(request *RenewInstanceRequest, ru
 	return _result, _err
 }
 
+// @param request - RenewInstanceRequest
+//
+// @return RenewInstanceResponse
 func (client *Client) RenewInstance(request *RenewInstanceRequest) (_result *RenewInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RenewInstanceResponse{}
@@ -18999,6 +23333,11 @@ func (client *Client) RenewInstance(request *RenewInstanceRequest) (_result *Ren
 	return _result, _err
 }
 
+// @param request - ResizeColdStorageSizeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ResizeColdStorageSizeResponse
 func (client *Client) ResizeColdStorageSizeWithOptions(request *ResizeColdStorageSizeRequest, runtime *util.RuntimeOptions) (_result *ResizeColdStorageSizeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -19036,6 +23375,9 @@ func (client *Client) ResizeColdStorageSizeWithOptions(request *ResizeColdStorag
 	return _result, _err
 }
 
+// @param request - ResizeColdStorageSizeRequest
+//
+// @return ResizeColdStorageSizeResponse
 func (client *Client) ResizeColdStorageSize(request *ResizeColdStorageSizeRequest) (_result *ResizeColdStorageSizeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ResizeColdStorageSizeResponse{}
@@ -19047,6 +23389,11 @@ func (client *Client) ResizeColdStorageSize(request *ResizeColdStorageSizeReques
 	return _result, _err
 }
 
+// @param request - ResizeDiskSizeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ResizeDiskSizeResponse
 func (client *Client) ResizeDiskSizeWithOptions(request *ResizeDiskSizeRequest, runtime *util.RuntimeOptions) (_result *ResizeDiskSizeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -19084,6 +23431,9 @@ func (client *Client) ResizeDiskSizeWithOptions(request *ResizeDiskSizeRequest, 
 	return _result, _err
 }
 
+// @param request - ResizeDiskSizeRequest
+//
+// @return ResizeDiskSizeResponse
 func (client *Client) ResizeDiskSize(request *ResizeDiskSizeRequest) (_result *ResizeDiskSizeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ResizeDiskSizeResponse{}
@@ -19095,6 +23445,11 @@ func (client *Client) ResizeDiskSize(request *ResizeDiskSizeRequest) (_result *R
 	return _result, _err
 }
 
+// @param request - ResizeMultiZoneClusterDiskSizeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ResizeMultiZoneClusterDiskSizeResponse
 func (client *Client) ResizeMultiZoneClusterDiskSizeWithOptions(request *ResizeMultiZoneClusterDiskSizeRequest, runtime *util.RuntimeOptions) (_result *ResizeMultiZoneClusterDiskSizeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -19136,6 +23491,9 @@ func (client *Client) ResizeMultiZoneClusterDiskSizeWithOptions(request *ResizeM
 	return _result, _err
 }
 
+// @param request - ResizeMultiZoneClusterDiskSizeRequest
+//
+// @return ResizeMultiZoneClusterDiskSizeResponse
 func (client *Client) ResizeMultiZoneClusterDiskSize(request *ResizeMultiZoneClusterDiskSizeRequest) (_result *ResizeMultiZoneClusterDiskSizeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ResizeMultiZoneClusterDiskSizeResponse{}
@@ -19147,6 +23505,11 @@ func (client *Client) ResizeMultiZoneClusterDiskSize(request *ResizeMultiZoneClu
 	return _result, _err
 }
 
+// @param request - ResizeMultiZoneClusterNodeCountRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ResizeMultiZoneClusterNodeCountResponse
 func (client *Client) ResizeMultiZoneClusterNodeCountWithOptions(request *ResizeMultiZoneClusterNodeCountRequest, runtime *util.RuntimeOptions) (_result *ResizeMultiZoneClusterNodeCountResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -19208,6 +23571,9 @@ func (client *Client) ResizeMultiZoneClusterNodeCountWithOptions(request *Resize
 	return _result, _err
 }
 
+// @param request - ResizeMultiZoneClusterNodeCountRequest
+//
+// @return ResizeMultiZoneClusterNodeCountResponse
 func (client *Client) ResizeMultiZoneClusterNodeCount(request *ResizeMultiZoneClusterNodeCountRequest) (_result *ResizeMultiZoneClusterNodeCountResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ResizeMultiZoneClusterNodeCountResponse{}
@@ -19219,6 +23585,11 @@ func (client *Client) ResizeMultiZoneClusterNodeCount(request *ResizeMultiZoneCl
 	return _result, _err
 }
 
+// @param request - ResizeNodeCountRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ResizeNodeCountResponse
 func (client *Client) ResizeNodeCountWithOptions(request *ResizeNodeCountRequest, runtime *util.RuntimeOptions) (_result *ResizeNodeCountResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -19264,6 +23635,9 @@ func (client *Client) ResizeNodeCountWithOptions(request *ResizeNodeCountRequest
 	return _result, _err
 }
 
+// @param request - ResizeNodeCountRequest
+//
+// @return ResizeNodeCountResponse
 func (client *Client) ResizeNodeCount(request *ResizeNodeCountRequest) (_result *ResizeNodeCountResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ResizeNodeCountResponse{}
@@ -19275,6 +23649,11 @@ func (client *Client) ResizeNodeCount(request *ResizeNodeCountRequest) (_result 
 	return _result, _err
 }
 
+// @param request - RestartInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RestartInstanceResponse
 func (client *Client) RestartInstanceWithOptions(request *RestartInstanceRequest, runtime *util.RuntimeOptions) (_result *RestartInstanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -19312,6 +23691,9 @@ func (client *Client) RestartInstanceWithOptions(request *RestartInstanceRequest
 	return _result, _err
 }
 
+// @param request - RestartInstanceRequest
+//
+// @return RestartInstanceResponse
 func (client *Client) RestartInstance(request *RestartInstanceRequest) (_result *RestartInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RestartInstanceResponse{}
@@ -19323,6 +23705,15 @@ func (client *Client) RestartInstance(request *RestartInstanceRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// 回收账户权限
+//
+// @param request - RevokeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RevokeResponse
 func (client *Client) RevokeWithOptions(request *RevokeRequest, runtime *util.RuntimeOptions) (_result *RevokeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -19372,6 +23763,13 @@ func (client *Client) RevokeWithOptions(request *RevokeRequest, runtime *util.Ru
 	return _result, _err
 }
 
+// Summary:
+//
+// 回收账户权限
+//
+// @param request - RevokeRequest
+//
+// @return RevokeResponse
 func (client *Client) Revoke(request *RevokeRequest) (_result *RevokeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RevokeResponse{}
@@ -19383,6 +23781,11 @@ func (client *Client) Revoke(request *RevokeRequest) (_result *RevokeResponse, _
 	return _result, _err
 }
 
+// @param request - SwitchHbaseHaSlbRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SwitchHbaseHaSlbResponse
 func (client *Client) SwitchHbaseHaSlbWithOptions(request *SwitchHbaseHaSlbRequest, runtime *util.RuntimeOptions) (_result *SwitchHbaseHaSlbResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -19428,6 +23831,9 @@ func (client *Client) SwitchHbaseHaSlbWithOptions(request *SwitchHbaseHaSlbReque
 	return _result, _err
 }
 
+// @param request - SwitchHbaseHaSlbRequest
+//
+// @return SwitchHbaseHaSlbResponse
 func (client *Client) SwitchHbaseHaSlb(request *SwitchHbaseHaSlbRequest) (_result *SwitchHbaseHaSlbResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SwitchHbaseHaSlbResponse{}
@@ -19439,6 +23845,15 @@ func (client *Client) SwitchHbaseHaSlb(request *SwitchHbaseHaSlbRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// 开通/关闭 扩展服务
+//
+// @param request - SwitchServiceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SwitchServiceResponse
 func (client *Client) SwitchServiceWithOptions(request *SwitchServiceRequest, runtime *util.RuntimeOptions) (_result *SwitchServiceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -19480,6 +23895,13 @@ func (client *Client) SwitchServiceWithOptions(request *SwitchServiceRequest, ru
 	return _result, _err
 }
 
+// Summary:
+//
+// 开通/关闭 扩展服务
+//
+// @param request - SwitchServiceRequest
+//
+// @return SwitchServiceResponse
 func (client *Client) SwitchService(request *SwitchServiceRequest) (_result *SwitchServiceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SwitchServiceResponse{}
@@ -19491,6 +23913,11 @@ func (client *Client) SwitchService(request *SwitchServiceRequest) (_result *Swi
 	return _result, _err
 }
 
+// @param request - TagResourcesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return TagResourcesResponse
 func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runtime *util.RuntimeOptions) (_result *TagResourcesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -19532,6 +23959,9 @@ func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runt
 	return _result, _err
 }
 
+// @param request - TagResourcesRequest
+//
+// @return TagResourcesResponse
 func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagResourcesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &TagResourcesResponse{}
@@ -19543,6 +23973,11 @@ func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagRe
 	return _result, _err
 }
 
+// @param request - UnTagResourcesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UnTagResourcesResponse
 func (client *Client) UnTagResourcesWithOptions(request *UnTagResourcesRequest, runtime *util.RuntimeOptions) (_result *UnTagResourcesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -19588,6 +24023,9 @@ func (client *Client) UnTagResourcesWithOptions(request *UnTagResourcesRequest, 
 	return _result, _err
 }
 
+// @param request - UnTagResourcesRequest
+//
+// @return UnTagResourcesResponse
 func (client *Client) UnTagResources(request *UnTagResourcesRequest) (_result *UnTagResourcesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UnTagResourcesResponse{}
@@ -19599,6 +24037,11 @@ func (client *Client) UnTagResources(request *UnTagResourcesRequest) (_result *U
 	return _result, _err
 }
 
+// @param request - UpgradeMinorVersionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpgradeMinorVersionResponse
 func (client *Client) UpgradeMinorVersionWithOptions(request *UpgradeMinorVersionRequest, runtime *util.RuntimeOptions) (_result *UpgradeMinorVersionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -19636,6 +24079,9 @@ func (client *Client) UpgradeMinorVersionWithOptions(request *UpgradeMinorVersio
 	return _result, _err
 }
 
+// @param request - UpgradeMinorVersionRequest
+//
+// @return UpgradeMinorVersionResponse
 func (client *Client) UpgradeMinorVersion(request *UpgradeMinorVersionRequest) (_result *UpgradeMinorVersionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpgradeMinorVersionResponse{}
@@ -19647,6 +24093,11 @@ func (client *Client) UpgradeMinorVersion(request *UpgradeMinorVersionRequest) (
 	return _result, _err
 }
 
+// @param request - UpgradeMultiZoneClusterRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpgradeMultiZoneClusterResponse
 func (client *Client) UpgradeMultiZoneClusterWithOptions(request *UpgradeMultiZoneClusterRequest, runtime *util.RuntimeOptions) (_result *UpgradeMultiZoneClusterResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -19700,6 +24151,9 @@ func (client *Client) UpgradeMultiZoneClusterWithOptions(request *UpgradeMultiZo
 	return _result, _err
 }
 
+// @param request - UpgradeMultiZoneClusterRequest
+//
+// @return UpgradeMultiZoneClusterResponse
 func (client *Client) UpgradeMultiZoneCluster(request *UpgradeMultiZoneClusterRequest) (_result *UpgradeMultiZoneClusterResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpgradeMultiZoneClusterResponse{}
@@ -19711,6 +24165,11 @@ func (client *Client) UpgradeMultiZoneCluster(request *UpgradeMultiZoneClusterRe
 	return _result, _err
 }
 
+// @param request - XpackRelateDBRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return XpackRelateDBResponse
 func (client *Client) XpackRelateDBWithOptions(request *XpackRelateDBRequest, runtime *util.RuntimeOptions) (_result *XpackRelateDBResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -19752,6 +24211,9 @@ func (client *Client) XpackRelateDBWithOptions(request *XpackRelateDBRequest, ru
 	return _result, _err
 }
 
+// @param request - XpackRelateDBRequest
+//
+// @return XpackRelateDBResponse
 func (client *Client) XpackRelateDB(request *XpackRelateDBRequest) (_result *XpackRelateDBResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &XpackRelateDBResponse{}
