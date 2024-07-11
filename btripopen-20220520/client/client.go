@@ -9737,7 +9737,8 @@ type ApplyInvoiceTaskRequestInvoiceTaskList struct {
 	// example:
 	//
 	// 1234567890
-	Telephone *string `json:"telephone,omitempty" xml:"telephone,omitempty"`
+	Telephone                          *string `json:"telephone,omitempty" xml:"telephone,omitempty"`
+	TrainAccelerationPackageInvoiceFee *string `json:"train_acceleration_package_invoice_fee,omitempty" xml:"train_acceleration_package_invoice_fee,omitempty"`
 	// example:
 	//
 	// 0
@@ -9848,6 +9849,11 @@ func (s *ApplyInvoiceTaskRequestInvoiceTaskList) SetServiceFee(v string) *ApplyI
 
 func (s *ApplyInvoiceTaskRequestInvoiceTaskList) SetTelephone(v string) *ApplyInvoiceTaskRequestInvoiceTaskList {
 	s.Telephone = &v
+	return s
+}
+
+func (s *ApplyInvoiceTaskRequestInvoiceTaskList) SetTrainAccelerationPackageInvoiceFee(v string) *ApplyInvoiceTaskRequestInvoiceTaskList {
+	s.TrainAccelerationPackageInvoiceFee = &v
 	return s
 }
 
@@ -18321,6 +18327,238 @@ func (s *CarSceneQueryResponse) SetStatusCode(v int32) *CarSceneQueryResponse {
 }
 
 func (s *CarSceneQueryResponse) SetBody(v *CarSceneQueryResponseBody) *CarSceneQueryResponse {
+	s.Body = v
+	return s
+}
+
+type ChannelCorpCreateHeaders struct {
+	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	// example:
+	//
+	// aqfrefd2321
+	XAcsBtripCorpToken *string `json:"x-acs-btrip-corp-token,omitempty" xml:"x-acs-btrip-corp-token,omitempty"`
+}
+
+func (s ChannelCorpCreateHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ChannelCorpCreateHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *ChannelCorpCreateHeaders) SetCommonHeaders(v map[string]*string) *ChannelCorpCreateHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *ChannelCorpCreateHeaders) SetXAcsBtripCorpToken(v string) *ChannelCorpCreateHeaders {
+	s.XAcsBtripCorpToken = &v
+	return s
+}
+
+type ChannelCorpCreateRequest struct {
+	// This parameter is required.
+	AdministratorName *string `json:"administrator_name,omitempty" xml:"administrator_name,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 18378889782
+	AdministratorPhone *string `json:"administrator_phone,omitempty" xml:"administrator_phone,omitempty"`
+	City               *string `json:"city,omitempty" xml:"city,omitempty"`
+	// This parameter is required.
+	CorpName *string `json:"corp_name,omitempty" xml:"corp_name,omitempty"`
+	Province *string `json:"province,omitempty" xml:"province,omitempty"`
+	// example:
+	//
+	// 1
+	Scope *int32 `json:"scope,omitempty" xml:"scope,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 00001
+	ThirdCorpId *string `json:"third_corp_id,omitempty" xml:"third_corp_id,omitempty"`
+}
+
+func (s ChannelCorpCreateRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ChannelCorpCreateRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ChannelCorpCreateRequest) SetAdministratorName(v string) *ChannelCorpCreateRequest {
+	s.AdministratorName = &v
+	return s
+}
+
+func (s *ChannelCorpCreateRequest) SetAdministratorPhone(v string) *ChannelCorpCreateRequest {
+	s.AdministratorPhone = &v
+	return s
+}
+
+func (s *ChannelCorpCreateRequest) SetCity(v string) *ChannelCorpCreateRequest {
+	s.City = &v
+	return s
+}
+
+func (s *ChannelCorpCreateRequest) SetCorpName(v string) *ChannelCorpCreateRequest {
+	s.CorpName = &v
+	return s
+}
+
+func (s *ChannelCorpCreateRequest) SetProvince(v string) *ChannelCorpCreateRequest {
+	s.Province = &v
+	return s
+}
+
+func (s *ChannelCorpCreateRequest) SetScope(v int32) *ChannelCorpCreateRequest {
+	s.Scope = &v
+	return s
+}
+
+func (s *ChannelCorpCreateRequest) SetThirdCorpId(v string) *ChannelCorpCreateRequest {
+	s.ThirdCorpId = &v
+	return s
+}
+
+type ChannelCorpCreateResponseBody struct {
+	// example:
+	//
+	// SUCCESS
+	Code    *string                              `json:"code,omitempty" xml:"code,omitempty"`
+	Message *string                              `json:"message,omitempty" xml:"message,omitempty"`
+	Module  *ChannelCorpCreateResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
+	// example:
+	//
+	// C61ECFF6-606B-5F66-B81D-D77369043A5F
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// example:
+	//
+	// 21041ce316577904808056433edbb2
+	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
+}
+
+func (s ChannelCorpCreateResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ChannelCorpCreateResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ChannelCorpCreateResponseBody) SetCode(v string) *ChannelCorpCreateResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ChannelCorpCreateResponseBody) SetMessage(v string) *ChannelCorpCreateResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ChannelCorpCreateResponseBody) SetModule(v *ChannelCorpCreateResponseBodyModule) *ChannelCorpCreateResponseBody {
+	s.Module = v
+	return s
+}
+
+func (s *ChannelCorpCreateResponseBody) SetRequestId(v string) *ChannelCorpCreateResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ChannelCorpCreateResponseBody) SetSuccess(v bool) *ChannelCorpCreateResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *ChannelCorpCreateResponseBody) SetTraceId(v string) *ChannelCorpCreateResponseBody {
+	s.TraceId = &v
+	return s
+}
+
+type ChannelCorpCreateResponseBodyModule struct {
+	AdministratorName *string `json:"administrator_name,omitempty" xml:"administrator_name,omitempty"`
+	// example:
+	//
+	// 18378889782
+	AdministratorPhone *string `json:"administrator_phone,omitempty" xml:"administrator_phone,omitempty"`
+	// example:
+	//
+	// dingaa15ca45cba9ee744a5
+	CorpId   *string `json:"corp_id,omitempty" xml:"corp_id,omitempty"`
+	CorpName *string `json:"corp_name,omitempty" xml:"corp_name,omitempty"`
+	// example:
+	//
+	// open12mplkebufu8701012jq
+	OpenAgentId *string `json:"open_agent_id,omitempty" xml:"open_agent_id,omitempty"`
+}
+
+func (s ChannelCorpCreateResponseBodyModule) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ChannelCorpCreateResponseBodyModule) GoString() string {
+	return s.String()
+}
+
+func (s *ChannelCorpCreateResponseBodyModule) SetAdministratorName(v string) *ChannelCorpCreateResponseBodyModule {
+	s.AdministratorName = &v
+	return s
+}
+
+func (s *ChannelCorpCreateResponseBodyModule) SetAdministratorPhone(v string) *ChannelCorpCreateResponseBodyModule {
+	s.AdministratorPhone = &v
+	return s
+}
+
+func (s *ChannelCorpCreateResponseBodyModule) SetCorpId(v string) *ChannelCorpCreateResponseBodyModule {
+	s.CorpId = &v
+	return s
+}
+
+func (s *ChannelCorpCreateResponseBodyModule) SetCorpName(v string) *ChannelCorpCreateResponseBodyModule {
+	s.CorpName = &v
+	return s
+}
+
+func (s *ChannelCorpCreateResponseBodyModule) SetOpenAgentId(v string) *ChannelCorpCreateResponseBodyModule {
+	s.OpenAgentId = &v
+	return s
+}
+
+type ChannelCorpCreateResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ChannelCorpCreateResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ChannelCorpCreateResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ChannelCorpCreateResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ChannelCorpCreateResponse) SetHeaders(v map[string]*string) *ChannelCorpCreateResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ChannelCorpCreateResponse) SetStatusCode(v int32) *ChannelCorpCreateResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ChannelCorpCreateResponse) SetBody(v *ChannelCorpCreateResponseBody) *ChannelCorpCreateResponse {
 	s.Body = v
 	return s
 }
@@ -35000,7 +35238,9 @@ type FlightModifyOrderDetailV2Request struct {
 	// example:
 	//
 	// 1017002195370467200
-	OrderId *string `json:"order_id,omitempty" xml:"order_id,omitempty"`
+	OrderId          *string `json:"order_id,omitempty" xml:"order_id,omitempty"`
+	OutModifyApplyId *string `json:"out_modify_apply_id,omitempty" xml:"out_modify_apply_id,omitempty"`
+	OutOrderId       *string `json:"out_order_id,omitempty" xml:"out_order_id,omitempty"`
 }
 
 func (s FlightModifyOrderDetailV2Request) String() string {
@@ -35028,6 +35268,16 @@ func (s *FlightModifyOrderDetailV2Request) SetNeedQueryServiceFee(v bool) *Fligh
 
 func (s *FlightModifyOrderDetailV2Request) SetOrderId(v string) *FlightModifyOrderDetailV2Request {
 	s.OrderId = &v
+	return s
+}
+
+func (s *FlightModifyOrderDetailV2Request) SetOutModifyApplyId(v string) *FlightModifyOrderDetailV2Request {
+	s.OutModifyApplyId = &v
+	return s
+}
+
+func (s *FlightModifyOrderDetailV2Request) SetOutOrderId(v string) *FlightModifyOrderDetailV2Request {
+	s.OutOrderId = &v
 	return s
 }
 
@@ -48525,7 +48775,9 @@ type FlightRefundDetailV2Request struct {
 	// example:
 	//
 	// 1002039195025156784
-	OrderId *string `json:"order_id,omitempty" xml:"order_id,omitempty"`
+	OrderId          *string `json:"order_id,omitempty" xml:"order_id,omitempty"`
+	OutOrderId       *string `json:"out_order_id,omitempty" xml:"out_order_id,omitempty"`
+	OutRefundApplyId *string `json:"out_refund_apply_id,omitempty" xml:"out_refund_apply_id,omitempty"`
 	// example:
 	//
 	// 1002039195025156700
@@ -48547,6 +48799,16 @@ func (s *FlightRefundDetailV2Request) SetIsvName(v string) *FlightRefundDetailV2
 
 func (s *FlightRefundDetailV2Request) SetOrderId(v string) *FlightRefundDetailV2Request {
 	s.OrderId = &v
+	return s
+}
+
+func (s *FlightRefundDetailV2Request) SetOutOrderId(v string) *FlightRefundDetailV2Request {
+	s.OutOrderId = &v
+	return s
+}
+
+func (s *FlightRefundDetailV2Request) SetOutRefundApplyId(v string) *FlightRefundDetailV2Request {
+	s.OutRefundApplyId = &v
 	return s
 }
 
@@ -58487,6 +58749,650 @@ func (s *HotelOrderCancelResponse) SetStatusCode(v int32) *HotelOrderCancelRespo
 }
 
 func (s *HotelOrderCancelResponse) SetBody(v *HotelOrderCancelResponseBody) *HotelOrderCancelResponse {
+	s.Body = v
+	return s
+}
+
+type HotelOrderChangeApplyHeaders struct {
+	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	// example:
+	//
+	// feth00jqwls
+	XAcsBtripCorpToken *string `json:"x-acs-btrip-corp-token,omitempty" xml:"x-acs-btrip-corp-token,omitempty"`
+}
+
+func (s HotelOrderChangeApplyHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s HotelOrderChangeApplyHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *HotelOrderChangeApplyHeaders) SetCommonHeaders(v map[string]*string) *HotelOrderChangeApplyHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *HotelOrderChangeApplyHeaders) SetXAcsBtripCorpToken(v string) *HotelOrderChangeApplyHeaders {
+	s.XAcsBtripCorpToken = &v
+	return s
+}
+
+type HotelOrderChangeApplyRequest struct {
+	// example:
+	//
+	// 123122
+	BtripUserId *string `json:"btrip_user_id,omitempty" xml:"btrip_user_id,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 3685792244476194816
+	DisOrderId *string `json:"dis_order_id,omitempty" xml:"dis_order_id,omitempty"`
+	// This parameter is required.
+	Reason *string `json:"reason,omitempty" xml:"reason,omitempty"`
+	// This parameter is required.
+	RoomInfoList []*HotelOrderChangeApplyRequestRoomInfoList `json:"room_info_list,omitempty" xml:"room_info_list,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1402002197440511306
+	SaleOrderId *string `json:"sale_order_id,omitempty" xml:"sale_order_id,omitempty"`
+}
+
+func (s HotelOrderChangeApplyRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s HotelOrderChangeApplyRequest) GoString() string {
+	return s.String()
+}
+
+func (s *HotelOrderChangeApplyRequest) SetBtripUserId(v string) *HotelOrderChangeApplyRequest {
+	s.BtripUserId = &v
+	return s
+}
+
+func (s *HotelOrderChangeApplyRequest) SetDisOrderId(v string) *HotelOrderChangeApplyRequest {
+	s.DisOrderId = &v
+	return s
+}
+
+func (s *HotelOrderChangeApplyRequest) SetReason(v string) *HotelOrderChangeApplyRequest {
+	s.Reason = &v
+	return s
+}
+
+func (s *HotelOrderChangeApplyRequest) SetRoomInfoList(v []*HotelOrderChangeApplyRequestRoomInfoList) *HotelOrderChangeApplyRequest {
+	s.RoomInfoList = v
+	return s
+}
+
+func (s *HotelOrderChangeApplyRequest) SetSaleOrderId(v string) *HotelOrderChangeApplyRequest {
+	s.SaleOrderId = &v
+	return s
+}
+
+type HotelOrderChangeApplyRequestRoomInfoList struct {
+	// This parameter is required.
+	CancelDate []*string `json:"cancel_date,omitempty" xml:"cancel_date,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 112
+	RoomNo *int32 `json:"room_no,omitempty" xml:"room_no,omitempty"`
+}
+
+func (s HotelOrderChangeApplyRequestRoomInfoList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s HotelOrderChangeApplyRequestRoomInfoList) GoString() string {
+	return s.String()
+}
+
+func (s *HotelOrderChangeApplyRequestRoomInfoList) SetCancelDate(v []*string) *HotelOrderChangeApplyRequestRoomInfoList {
+	s.CancelDate = v
+	return s
+}
+
+func (s *HotelOrderChangeApplyRequestRoomInfoList) SetRoomNo(v int32) *HotelOrderChangeApplyRequestRoomInfoList {
+	s.RoomNo = &v
+	return s
+}
+
+type HotelOrderChangeApplyShrinkRequest struct {
+	// example:
+	//
+	// 123122
+	BtripUserId *string `json:"btrip_user_id,omitempty" xml:"btrip_user_id,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 3685792244476194816
+	DisOrderId *string `json:"dis_order_id,omitempty" xml:"dis_order_id,omitempty"`
+	// This parameter is required.
+	Reason *string `json:"reason,omitempty" xml:"reason,omitempty"`
+	// This parameter is required.
+	RoomInfoListShrink *string `json:"room_info_list,omitempty" xml:"room_info_list,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1402002197440511306
+	SaleOrderId *string `json:"sale_order_id,omitempty" xml:"sale_order_id,omitempty"`
+}
+
+func (s HotelOrderChangeApplyShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s HotelOrderChangeApplyShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *HotelOrderChangeApplyShrinkRequest) SetBtripUserId(v string) *HotelOrderChangeApplyShrinkRequest {
+	s.BtripUserId = &v
+	return s
+}
+
+func (s *HotelOrderChangeApplyShrinkRequest) SetDisOrderId(v string) *HotelOrderChangeApplyShrinkRequest {
+	s.DisOrderId = &v
+	return s
+}
+
+func (s *HotelOrderChangeApplyShrinkRequest) SetReason(v string) *HotelOrderChangeApplyShrinkRequest {
+	s.Reason = &v
+	return s
+}
+
+func (s *HotelOrderChangeApplyShrinkRequest) SetRoomInfoListShrink(v string) *HotelOrderChangeApplyShrinkRequest {
+	s.RoomInfoListShrink = &v
+	return s
+}
+
+func (s *HotelOrderChangeApplyShrinkRequest) SetSaleOrderId(v string) *HotelOrderChangeApplyShrinkRequest {
+	s.SaleOrderId = &v
+	return s
+}
+
+type HotelOrderChangeApplyResponseBody struct {
+	// example:
+	//
+	// 0
+	Code    *string `json:"code,omitempty" xml:"code,omitempty"`
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// module
+	Module *HotelOrderChangeApplyResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
+	// example:
+	//
+	// 6E9ABA14-5135-58FB-9DFC-C751B5855605
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// example:
+	//
+	// 215045ec17018285034106091e8ba9
+	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
+}
+
+func (s HotelOrderChangeApplyResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s HotelOrderChangeApplyResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *HotelOrderChangeApplyResponseBody) SetCode(v string) *HotelOrderChangeApplyResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *HotelOrderChangeApplyResponseBody) SetMessage(v string) *HotelOrderChangeApplyResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *HotelOrderChangeApplyResponseBody) SetModule(v *HotelOrderChangeApplyResponseBodyModule) *HotelOrderChangeApplyResponseBody {
+	s.Module = v
+	return s
+}
+
+func (s *HotelOrderChangeApplyResponseBody) SetRequestId(v string) *HotelOrderChangeApplyResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *HotelOrderChangeApplyResponseBody) SetSuccess(v bool) *HotelOrderChangeApplyResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *HotelOrderChangeApplyResponseBody) SetTraceId(v string) *HotelOrderChangeApplyResponseBody {
+	s.TraceId = &v
+	return s
+}
+
+type HotelOrderChangeApplyResponseBodyModule struct {
+	// example:
+	//
+	// 123445443444
+	ChangeOrderId *string `json:"change_order_id,omitempty" xml:"change_order_id,omitempty"`
+}
+
+func (s HotelOrderChangeApplyResponseBodyModule) String() string {
+	return tea.Prettify(s)
+}
+
+func (s HotelOrderChangeApplyResponseBodyModule) GoString() string {
+	return s.String()
+}
+
+func (s *HotelOrderChangeApplyResponseBodyModule) SetChangeOrderId(v string) *HotelOrderChangeApplyResponseBodyModule {
+	s.ChangeOrderId = &v
+	return s
+}
+
+type HotelOrderChangeApplyResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *HotelOrderChangeApplyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s HotelOrderChangeApplyResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s HotelOrderChangeApplyResponse) GoString() string {
+	return s.String()
+}
+
+func (s *HotelOrderChangeApplyResponse) SetHeaders(v map[string]*string) *HotelOrderChangeApplyResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *HotelOrderChangeApplyResponse) SetStatusCode(v int32) *HotelOrderChangeApplyResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *HotelOrderChangeApplyResponse) SetBody(v *HotelOrderChangeApplyResponseBody) *HotelOrderChangeApplyResponse {
+	s.Body = v
+	return s
+}
+
+type HotelOrderChangeDetailHeaders struct {
+	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	// example:
+	//
+	// feth00jqwls
+	XAcsBtripCorpToken *string `json:"x-acs-btrip-corp-token,omitempty" xml:"x-acs-btrip-corp-token,omitempty"`
+}
+
+func (s HotelOrderChangeDetailHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s HotelOrderChangeDetailHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *HotelOrderChangeDetailHeaders) SetCommonHeaders(v map[string]*string) *HotelOrderChangeDetailHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *HotelOrderChangeDetailHeaders) SetXAcsBtripCorpToken(v string) *HotelOrderChangeDetailHeaders {
+	s.XAcsBtripCorpToken = &v
+	return s
+}
+
+type HotelOrderChangeDetailRequest struct {
+	// example:
+	//
+	// 123455
+	BtripUserId *string `json:"btrip_user_id,omitempty" xml:"btrip_user_id,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 21351235134
+	ChangeOrderId *string `json:"change_order_id,omitempty" xml:"change_order_id,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// dis123
+	DisOrderId *string `json:"dis_order_id,omitempty" xml:"dis_order_id,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1402002197440511306
+	SaleOrderId *string `json:"sale_order_id,omitempty" xml:"sale_order_id,omitempty"`
+}
+
+func (s HotelOrderChangeDetailRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s HotelOrderChangeDetailRequest) GoString() string {
+	return s.String()
+}
+
+func (s *HotelOrderChangeDetailRequest) SetBtripUserId(v string) *HotelOrderChangeDetailRequest {
+	s.BtripUserId = &v
+	return s
+}
+
+func (s *HotelOrderChangeDetailRequest) SetChangeOrderId(v string) *HotelOrderChangeDetailRequest {
+	s.ChangeOrderId = &v
+	return s
+}
+
+func (s *HotelOrderChangeDetailRequest) SetDisOrderId(v string) *HotelOrderChangeDetailRequest {
+	s.DisOrderId = &v
+	return s
+}
+
+func (s *HotelOrderChangeDetailRequest) SetSaleOrderId(v string) *HotelOrderChangeDetailRequest {
+	s.SaleOrderId = &v
+	return s
+}
+
+type HotelOrderChangeDetailResponseBody struct {
+	// example:
+	//
+	// 0
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// example:
+	//
+	// operation success
+	Message *string                                   `json:"message,omitempty" xml:"message,omitempty"`
+	Module  *HotelOrderChangeDetailResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
+	// example:
+	//
+	// C61ECFF6-606B-5F66-B81D-D77369043A5F
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// example:
+	//
+	// 21041ce316577904808056433edbb2
+	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
+}
+
+func (s HotelOrderChangeDetailResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s HotelOrderChangeDetailResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *HotelOrderChangeDetailResponseBody) SetCode(v string) *HotelOrderChangeDetailResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *HotelOrderChangeDetailResponseBody) SetMessage(v string) *HotelOrderChangeDetailResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *HotelOrderChangeDetailResponseBody) SetModule(v *HotelOrderChangeDetailResponseBodyModule) *HotelOrderChangeDetailResponseBody {
+	s.Module = v
+	return s
+}
+
+func (s *HotelOrderChangeDetailResponseBody) SetRequestId(v string) *HotelOrderChangeDetailResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *HotelOrderChangeDetailResponseBody) SetSuccess(v bool) *HotelOrderChangeDetailResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *HotelOrderChangeDetailResponseBody) SetTraceId(v string) *HotelOrderChangeDetailResponseBody {
+	s.TraceId = &v
+	return s
+}
+
+type HotelOrderChangeDetailResponseBodyModule struct {
+	// example:
+	//
+	// 1234
+	ChangeOrderId *string `json:"change_order_id,omitempty" xml:"change_order_id,omitempty"`
+	// example:
+	//
+	// 0
+	ChangeType *int32 `json:"change_type,omitempty" xml:"change_type,omitempty"`
+	// example:
+	//
+	// open12ih3c8jb8o47v10B4r4josN00
+	CorpId *string `json:"corp_id,omitempty" xml:"corp_id,omitempty"`
+	// example:
+	//
+	// dis1234
+	DisOrderId *string `json:"dis_order_id,omitempty" xml:"dis_order_id,omitempty"`
+	// example:
+	//
+	// 2024-07-07 13:42:49
+	GmtCreate *string `json:"gmt_create,omitempty" xml:"gmt_create,omitempty"`
+	// example:
+	//
+	// 2024-07-07 13:42:49
+	GmtModified  *string                                                 `json:"gmt_modified,omitempty" xml:"gmt_modified,omitempty"`
+	Reason       *string                                                 `json:"reason,omitempty" xml:"reason,omitempty"`
+	Remarks      *string                                                 `json:"remarks,omitempty" xml:"remarks,omitempty"`
+	RoomInfoList []*HotelOrderChangeDetailResponseBodyModuleRoomInfoList `json:"room_info_list,omitempty" xml:"room_info_list,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1402002197440511306
+	SaleOrderId *string `json:"sale_order_id,omitempty" xml:"sale_order_id,omitempty"`
+	// example:
+	//
+	// 0
+	Source *int32 `json:"source,omitempty" xml:"source,omitempty"`
+	// example:
+	//
+	// 1
+	Status *int32 `json:"status,omitempty" xml:"status,omitempty"`
+	// example:
+	//
+	// 2505048378320666
+	WorkOrderId *string `json:"work_order_id,omitempty" xml:"work_order_id,omitempty"`
+}
+
+func (s HotelOrderChangeDetailResponseBodyModule) String() string {
+	return tea.Prettify(s)
+}
+
+func (s HotelOrderChangeDetailResponseBodyModule) GoString() string {
+	return s.String()
+}
+
+func (s *HotelOrderChangeDetailResponseBodyModule) SetChangeOrderId(v string) *HotelOrderChangeDetailResponseBodyModule {
+	s.ChangeOrderId = &v
+	return s
+}
+
+func (s *HotelOrderChangeDetailResponseBodyModule) SetChangeType(v int32) *HotelOrderChangeDetailResponseBodyModule {
+	s.ChangeType = &v
+	return s
+}
+
+func (s *HotelOrderChangeDetailResponseBodyModule) SetCorpId(v string) *HotelOrderChangeDetailResponseBodyModule {
+	s.CorpId = &v
+	return s
+}
+
+func (s *HotelOrderChangeDetailResponseBodyModule) SetDisOrderId(v string) *HotelOrderChangeDetailResponseBodyModule {
+	s.DisOrderId = &v
+	return s
+}
+
+func (s *HotelOrderChangeDetailResponseBodyModule) SetGmtCreate(v string) *HotelOrderChangeDetailResponseBodyModule {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *HotelOrderChangeDetailResponseBodyModule) SetGmtModified(v string) *HotelOrderChangeDetailResponseBodyModule {
+	s.GmtModified = &v
+	return s
+}
+
+func (s *HotelOrderChangeDetailResponseBodyModule) SetReason(v string) *HotelOrderChangeDetailResponseBodyModule {
+	s.Reason = &v
+	return s
+}
+
+func (s *HotelOrderChangeDetailResponseBodyModule) SetRemarks(v string) *HotelOrderChangeDetailResponseBodyModule {
+	s.Remarks = &v
+	return s
+}
+
+func (s *HotelOrderChangeDetailResponseBodyModule) SetRoomInfoList(v []*HotelOrderChangeDetailResponseBodyModuleRoomInfoList) *HotelOrderChangeDetailResponseBodyModule {
+	s.RoomInfoList = v
+	return s
+}
+
+func (s *HotelOrderChangeDetailResponseBodyModule) SetSaleOrderId(v string) *HotelOrderChangeDetailResponseBodyModule {
+	s.SaleOrderId = &v
+	return s
+}
+
+func (s *HotelOrderChangeDetailResponseBodyModule) SetSource(v int32) *HotelOrderChangeDetailResponseBodyModule {
+	s.Source = &v
+	return s
+}
+
+func (s *HotelOrderChangeDetailResponseBodyModule) SetStatus(v int32) *HotelOrderChangeDetailResponseBodyModule {
+	s.Status = &v
+	return s
+}
+
+func (s *HotelOrderChangeDetailResponseBodyModule) SetWorkOrderId(v string) *HotelOrderChangeDetailResponseBodyModule {
+	s.WorkOrderId = &v
+	return s
+}
+
+type HotelOrderChangeDetailResponseBodyModuleRoomInfoList struct {
+	CancelDate           []*string                                                                   `json:"cancel_date,omitempty" xml:"cancel_date,omitempty" type:"Repeated"`
+	RoomDailyRefundInfos []*HotelOrderChangeDetailResponseBodyModuleRoomInfoListRoomDailyRefundInfos `json:"room_daily_refund_infos,omitempty" xml:"room_daily_refund_infos,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	RoomNo *int32 `json:"room_no,omitempty" xml:"room_no,omitempty"`
+}
+
+func (s HotelOrderChangeDetailResponseBodyModuleRoomInfoList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s HotelOrderChangeDetailResponseBodyModuleRoomInfoList) GoString() string {
+	return s.String()
+}
+
+func (s *HotelOrderChangeDetailResponseBodyModuleRoomInfoList) SetCancelDate(v []*string) *HotelOrderChangeDetailResponseBodyModuleRoomInfoList {
+	s.CancelDate = v
+	return s
+}
+
+func (s *HotelOrderChangeDetailResponseBodyModuleRoomInfoList) SetRoomDailyRefundInfos(v []*HotelOrderChangeDetailResponseBodyModuleRoomInfoListRoomDailyRefundInfos) *HotelOrderChangeDetailResponseBodyModuleRoomInfoList {
+	s.RoomDailyRefundInfos = v
+	return s
+}
+
+func (s *HotelOrderChangeDetailResponseBodyModuleRoomInfoList) SetRoomNo(v int32) *HotelOrderChangeDetailResponseBodyModuleRoomInfoList {
+	s.RoomNo = &v
+	return s
+}
+
+type HotelOrderChangeDetailResponseBodyModuleRoomInfoListRoomDailyRefundInfos struct {
+	// example:
+	//
+	// 2024-02-10
+	CheckInDate *string `json:"check_in_date,omitempty" xml:"check_in_date,omitempty"`
+	// example:
+	//
+	// 71000
+	PenaltyPrice *int64 `json:"penalty_price,omitempty" xml:"penalty_price,omitempty"`
+	// example:
+	//
+	// 71000
+	Price *int64 `json:"price,omitempty" xml:"price,omitempty"`
+	// example:
+	//
+	// 71000
+	RefundPrice *int64 `json:"refund_price,omitempty" xml:"refund_price,omitempty"`
+}
+
+func (s HotelOrderChangeDetailResponseBodyModuleRoomInfoListRoomDailyRefundInfos) String() string {
+	return tea.Prettify(s)
+}
+
+func (s HotelOrderChangeDetailResponseBodyModuleRoomInfoListRoomDailyRefundInfos) GoString() string {
+	return s.String()
+}
+
+func (s *HotelOrderChangeDetailResponseBodyModuleRoomInfoListRoomDailyRefundInfos) SetCheckInDate(v string) *HotelOrderChangeDetailResponseBodyModuleRoomInfoListRoomDailyRefundInfos {
+	s.CheckInDate = &v
+	return s
+}
+
+func (s *HotelOrderChangeDetailResponseBodyModuleRoomInfoListRoomDailyRefundInfos) SetPenaltyPrice(v int64) *HotelOrderChangeDetailResponseBodyModuleRoomInfoListRoomDailyRefundInfos {
+	s.PenaltyPrice = &v
+	return s
+}
+
+func (s *HotelOrderChangeDetailResponseBodyModuleRoomInfoListRoomDailyRefundInfos) SetPrice(v int64) *HotelOrderChangeDetailResponseBodyModuleRoomInfoListRoomDailyRefundInfos {
+	s.Price = &v
+	return s
+}
+
+func (s *HotelOrderChangeDetailResponseBodyModuleRoomInfoListRoomDailyRefundInfos) SetRefundPrice(v int64) *HotelOrderChangeDetailResponseBodyModuleRoomInfoListRoomDailyRefundInfos {
+	s.RefundPrice = &v
+	return s
+}
+
+type HotelOrderChangeDetailResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *HotelOrderChangeDetailResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s HotelOrderChangeDetailResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s HotelOrderChangeDetailResponse) GoString() string {
+	return s.String()
+}
+
+func (s *HotelOrderChangeDetailResponse) SetHeaders(v map[string]*string) *HotelOrderChangeDetailResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *HotelOrderChangeDetailResponse) SetStatusCode(v int32) *HotelOrderChangeDetailResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *HotelOrderChangeDetailResponse) SetBody(v *HotelOrderChangeDetailResponseBody) *HotelOrderChangeDetailResponse {
 	s.Body = v
 	return s
 }
@@ -103565,7 +104471,8 @@ type WaitApplyInvoiceTaskDetailQueryResponseBodyModule struct {
 	// example:
 	//
 	// 1234567890
-	Telephone *string `json:"telephone,omitempty" xml:"telephone,omitempty"`
+	Telephone                          *string `json:"telephone,omitempty" xml:"telephone,omitempty"`
+	TrainAccelerationPackageInvoiceFee *string `json:"train_acceleration_package_invoice_fee,omitempty" xml:"train_acceleration_package_invoice_fee,omitempty"`
 	// example:
 	//
 	// 0
@@ -103676,6 +104583,11 @@ func (s *WaitApplyInvoiceTaskDetailQueryResponseBodyModule) SetServiceFee(v stri
 
 func (s *WaitApplyInvoiceTaskDetailQueryResponseBodyModule) SetTelephone(v string) *WaitApplyInvoiceTaskDetailQueryResponseBodyModule {
 	s.Telephone = &v
+	return s
+}
+
+func (s *WaitApplyInvoiceTaskDetailQueryResponseBodyModule) SetTrainAccelerationPackageInvoiceFee(v string) *WaitApplyInvoiceTaskDetailQueryResponseBodyModule {
+	s.TrainAccelerationPackageInvoiceFee = &v
 	return s
 }
 
@@ -106396,6 +107308,103 @@ func (client *Client) CarSceneQuery() (_result *CarSceneQueryResponse, _err erro
 	headers := &CarSceneQueryHeaders{}
 	_result = &CarSceneQueryResponse{}
 	_body, _err := client.CarSceneQueryWithOptions(headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 渠道商创建企业
+//
+// @param request - ChannelCorpCreateRequest
+//
+// @param headers - ChannelCorpCreateHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ChannelCorpCreateResponse
+func (client *Client) ChannelCorpCreateWithOptions(request *ChannelCorpCreateRequest, headers *ChannelCorpCreateHeaders, runtime *util.RuntimeOptions) (_result *ChannelCorpCreateResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AdministratorName)) {
+		body["administrator_name"] = request.AdministratorName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AdministratorPhone)) {
+		body["administrator_phone"] = request.AdministratorPhone
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.City)) {
+		body["city"] = request.City
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CorpName)) {
+		body["corp_name"] = request.CorpName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Province)) {
+		body["province"] = request.Province
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Scope)) {
+		body["scope"] = request.Scope
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ThirdCorpId)) {
+		body["third_corp_id"] = request.ThirdCorpId
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsBtripCorpToken)) {
+		realHeaders["x-acs-btrip-corp-token"] = util.ToJSONString(headers.XAcsBtripCorpToken)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ChannelCorpCreate"),
+		Version:     tea.String("2022-05-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/corp/v1/channelCorps"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ChannelCorpCreateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 渠道商创建企业
+//
+// @param request - ChannelCorpCreateRequest
+//
+// @return ChannelCorpCreateResponse
+func (client *Client) ChannelCorpCreate(request *ChannelCorpCreateRequest) (_result *ChannelCorpCreateResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &ChannelCorpCreateHeaders{}
+	_result = &ChannelCorpCreateResponse{}
+	_body, _err := client.ChannelCorpCreateWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -109857,6 +110866,14 @@ func (client *Client) FlightModifyOrderDetailV2WithOptions(request *FlightModify
 		query["order_id"] = request.OrderId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.OutModifyApplyId)) {
+		query["out_modify_apply_id"] = request.OutModifyApplyId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OutOrderId)) {
+		query["out_order_id"] = request.OutOrderId
+	}
+
 	realHeaders := make(map[string]*string)
 	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
 		realHeaders = headers.CommonHeaders
@@ -111312,6 +112329,14 @@ func (client *Client) FlightRefundDetailV2WithOptions(request *FlightRefundDetai
 		query["order_id"] = request.OrderId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.OutOrderId)) {
+		query["out_order_id"] = request.OutOrderId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OutRefundApplyId)) {
+		query["out_refund_apply_id"] = request.OutRefundApplyId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.RefundApplyId)) {
 		query["refund_apply_id"] = request.RefundApplyId
 	}
@@ -112620,6 +113645,186 @@ func (client *Client) HotelOrderCancel(request *HotelOrderCancelRequest) (_resul
 	headers := &HotelOrderCancelHeaders{}
 	_result = &HotelOrderCancelResponse{}
 	_body, _err := client.HotelOrderCancelWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 酒店订单修改申请
+//
+// @param tmpReq - HotelOrderChangeApplyRequest
+//
+// @param headers - HotelOrderChangeApplyHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return HotelOrderChangeApplyResponse
+func (client *Client) HotelOrderChangeApplyWithOptions(tmpReq *HotelOrderChangeApplyRequest, headers *HotelOrderChangeApplyHeaders, runtime *util.RuntimeOptions) (_result *HotelOrderChangeApplyResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &HotelOrderChangeApplyShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.RoomInfoList)) {
+		request.RoomInfoListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.RoomInfoList, tea.String("room_info_list"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BtripUserId)) {
+		body["btrip_user_id"] = request.BtripUserId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DisOrderId)) {
+		body["dis_order_id"] = request.DisOrderId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Reason)) {
+		body["reason"] = request.Reason
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoomInfoListShrink)) {
+		body["room_info_list"] = request.RoomInfoListShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SaleOrderId)) {
+		body["sale_order_id"] = request.SaleOrderId
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsBtripCorpToken)) {
+		realHeaders["x-acs-btrip-corp-token"] = util.ToJSONString(headers.XAcsBtripCorpToken)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("HotelOrderChangeApply"),
+		Version:     tea.String("2022-05-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/dtb-hotel/v1/orders/action/change/apply"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &HotelOrderChangeApplyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 酒店订单修改申请
+//
+// @param request - HotelOrderChangeApplyRequest
+//
+// @return HotelOrderChangeApplyResponse
+func (client *Client) HotelOrderChangeApply(request *HotelOrderChangeApplyRequest) (_result *HotelOrderChangeApplyResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &HotelOrderChangeApplyHeaders{}
+	_result = &HotelOrderChangeApplyResponse{}
+	_body, _err := client.HotelOrderChangeApplyWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 酒店订单修改详情
+//
+// @param request - HotelOrderChangeDetailRequest
+//
+// @param headers - HotelOrderChangeDetailHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return HotelOrderChangeDetailResponse
+func (client *Client) HotelOrderChangeDetailWithOptions(request *HotelOrderChangeDetailRequest, headers *HotelOrderChangeDetailHeaders, runtime *util.RuntimeOptions) (_result *HotelOrderChangeDetailResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BtripUserId)) {
+		body["btrip_user_id"] = request.BtripUserId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ChangeOrderId)) {
+		body["change_order_id"] = request.ChangeOrderId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DisOrderId)) {
+		body["dis_order_id"] = request.DisOrderId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SaleOrderId)) {
+		body["sale_order_id"] = request.SaleOrderId
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsBtripCorpToken)) {
+		realHeaders["x-acs-btrip-corp-token"] = util.ToJSONString(headers.XAcsBtripCorpToken)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("HotelOrderChangeDetail"),
+		Version:     tea.String("2022-05-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/dtb-hotel/v1/orders/action/change/detail"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &HotelOrderChangeDetailResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 酒店订单修改详情
+//
+// @param request - HotelOrderChangeDetailRequest
+//
+// @return HotelOrderChangeDetailResponse
+func (client *Client) HotelOrderChangeDetail(request *HotelOrderChangeDetailRequest) (_result *HotelOrderChangeDetailResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &HotelOrderChangeDetailHeaders{}
+	_result = &HotelOrderChangeDetailResponse{}
+	_body, _err := client.HotelOrderChangeDetailWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
