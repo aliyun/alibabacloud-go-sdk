@@ -3029,7 +3029,10 @@ type Tensorboard struct {
 	// example:
 	//
 	// dlc-20210114104214-vf9lowjt3pso
-	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	JobId     *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	Priority  *string `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	QuotaId   *string `json:"QuotaId,omitempty" xml:"QuotaId,omitempty"`
+	QuotaName *string `json:"QuotaName,omitempty" xml:"QuotaName,omitempty"`
 	// example:
 	//
 	// Delete by user
@@ -3110,6 +3113,21 @@ func (s *Tensorboard) SetGmtModifyTime(v string) *Tensorboard {
 
 func (s *Tensorboard) SetJobId(v string) *Tensorboard {
 	s.JobId = &v
+	return s
+}
+
+func (s *Tensorboard) SetPriority(v string) *Tensorboard {
+	s.Priority = &v
+	return s
+}
+
+func (s *Tensorboard) SetQuotaId(v string) *Tensorboard {
+	s.QuotaId = &v
+	return s
+}
+
+func (s *Tensorboard) SetQuotaName(v string) *Tensorboard {
+	s.QuotaName = &v
 	return s
 }
 
@@ -3772,7 +3790,9 @@ type CreateTensorboardRequest struct {
 	// example:
 	//
 	// {"mountpath":"/root/data/"}
-	Options *string `json:"Options,omitempty" xml:"Options,omitempty"`
+	Options  *string `json:"Options,omitempty" xml:"Options,omitempty"`
+	Priority *string `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	QuotaId  *string `json:"QuotaId,omitempty" xml:"QuotaId,omitempty"`
 	// example:
 	//
 	// dlc-xxxxxx
@@ -3851,6 +3871,16 @@ func (s *CreateTensorboardRequest) SetMemory(v int64) *CreateTensorboardRequest 
 
 func (s *CreateTensorboardRequest) SetOptions(v string) *CreateTensorboardRequest {
 	s.Options = &v
+	return s
+}
+
+func (s *CreateTensorboardRequest) SetPriority(v string) *CreateTensorboardRequest {
+	s.Priority = &v
+	return s
+}
+
+func (s *CreateTensorboardRequest) SetQuotaId(v string) *CreateTensorboardRequest {
+	s.QuotaId = &v
 	return s
 }
 
@@ -6377,6 +6407,7 @@ type ListTensorboardsRequest struct {
 	// 50
 	PageSize    *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	PaymentType *string `json:"PaymentType,omitempty" xml:"PaymentType,omitempty"`
+	QuotaId     *string `json:"QuotaId,omitempty" xml:"QuotaId,omitempty"`
 	ShowOwn     *bool   `json:"ShowOwn,omitempty" xml:"ShowOwn,omitempty"`
 	// example:
 	//
@@ -6454,6 +6485,11 @@ func (s *ListTensorboardsRequest) SetPageSize(v int32) *ListTensorboardsRequest 
 
 func (s *ListTensorboardsRequest) SetPaymentType(v string) *ListTensorboardsRequest {
 	s.PaymentType = &v
+	return s
+}
+
+func (s *ListTensorboardsRequest) SetQuotaId(v string) *ListTensorboardsRequest {
+	s.QuotaId = &v
 	return s
 }
 
@@ -7245,6 +7281,14 @@ func (client *Client) CreateTensorboardWithOptions(request *CreateTensorboardReq
 
 	if !tea.BoolValue(util.IsUnset(request.Options)) {
 		body["Options"] = request.Options
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Priority)) {
+		body["Priority"] = request.Priority
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.QuotaId)) {
+		body["QuotaId"] = request.QuotaId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SourceId)) {
@@ -8501,6 +8545,10 @@ func (client *Client) ListTensorboardsWithOptions(request *ListTensorboardsReque
 
 	if !tea.BoolValue(util.IsUnset(request.PaymentType)) {
 		query["PaymentType"] = request.PaymentType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.QuotaId)) {
+		query["QuotaId"] = request.QuotaId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ShowOwn)) {
