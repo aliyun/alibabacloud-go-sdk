@@ -12,6 +12,8 @@ import (
 type CancelExecutionRequest struct {
 	// The ID of the execution.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// exec-xxx
@@ -94,7 +96,9 @@ func (s *CancelExecutionResponse) SetBody(v *CancelExecutionResponseBody) *Cance
 }
 
 type ChangeResourceGroupRequest struct {
-	// The ID of the resource group to which the cloud resource is to be moved. You can use resource groups to manage resources owned by your Alibaba Cloud account. Resource groups simplify the resource and permission management of your Alibaba Cloud account. For more information, see [What is Resource Management?](~~94475~~)
+	// The ID of the resource group to which the cloud resource is to be moved. You can use resource groups to manage resources owned by your Alibaba Cloud account. Resource groups simplify the resource and permission management of your Alibaba Cloud account. For more information, see [What is Resource Management?](https://help.aliyun.com/document_detail/94475.html)
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -118,6 +122,8 @@ type ChangeResourceGroupRequest struct {
 	//
 	// 	- If the ResourceType parameter is set to application, set the ResourceId parameter to the name of the application.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// TemplateName
@@ -133,6 +139,8 @@ type ChangeResourceGroupRequest struct {
 	// 	- stateconfiguration: desired-state configuration
 	//
 	// 	- application: application
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -222,17 +230,23 @@ func (s *ChangeResourceGroupResponse) SetBody(v *ChangeResourceGroupResponseBody
 type ContinueDeployApplicationGroupRequest struct {
 	// The name of the application.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// MyApplication
 	ApplicationName *string `json:"ApplicationName,omitempty" xml:"ApplicationName,omitempty"`
 	// The deployment information about the application group.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// {       "TemplateURL": "https://ros-template.oss-cn-zhangjiakou.aliyuncs.com/App_Management_Existing_Vpc_Ecs_Instance.json",       "Parameters": {         "ZoneId": "cn-hangzhou-k",         "ProjectName": "test",         "SystemDiskSize": 40,         "InstanceChargeType": "PostPaid",         "SecurityGroupId": "sg-bp1a4374akk63jl8tddy",         "VSwitchId": "vsw-bp1fcvc3zn0jrag86rrlm",         "SystemDiskCategory": "cloud_essd",         "InstancePassword": "******",         "InternetChargeType": "PayByTraffic",         "InstanceCount": 1,         "InternetMaxBandwidthOut": 0,         "VpcId": "vpc-bp1i99boyas8i8m9t3skp",         "EcsImageId": "centos_8_5_x64_20G_alibase_20211228.vhd",         "DataDiskSize": 100,         "EcsInstanceType": "ecs.s6-c1m4.small",         "DataDiskCategory": "cloud_efficiency",         "EnvironmentCommandId": "c-hz028fc3g031gcg"       }
 	DeployParameters *string `json:"DeployParameters,omitempty" xml:"DeployParameters,omitempty"`
 	// The name of the application group.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -341,6 +355,8 @@ type CreateApplicationRequest struct {
 	// application
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The application name.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -472,6 +488,8 @@ type CreateApplicationShrinkRequest struct {
 	// application
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The application name.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -678,6 +696,8 @@ func (s *CreateApplicationResponse) SetBody(v *CreateApplicationResponseBody) *C
 type CreateApplicationGroupRequest struct {
 	// The application name.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// MyApplication
@@ -695,6 +715,8 @@ type CreateApplicationGroupRequest struct {
 	// 218026174
 	CmsGroupId *string `json:"CmsGroupId,omitempty" xml:"CmsGroupId,omitempty"`
 	// The ID of the region in which the related sources reside.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -719,6 +741,8 @@ type CreateApplicationGroupRequest struct {
 	// v1
 	ImportTagValue *string `json:"ImportTagValue,omitempty" xml:"ImportTagValue,omitempty"`
 	// The name of the application group.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -998,6 +1022,8 @@ type CreateOpsItemRequest struct {
 	//
 	//     <!-- -->
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// Security
@@ -1042,7 +1068,7 @@ type CreateOpsItemRequest struct {
 	//
 	// example:
 	//
-	// [\"acs:oos:cn-hangzhou:1563457855438522:application/test-33333/applicationgroup/default-cn-hangzhou-1\"]
+	// [\\"acs:oos:cn-hangzhou:1563457855438522:application/test-33333/applicationgroup/default-cn-hangzhou-1\\"]
 	Resources *string `json:"Resources,omitempty" xml:"Resources,omitempty"`
 	// The severity level.
 	//
@@ -1080,6 +1106,8 @@ type CreateOpsItemRequest struct {
 	//
 	//     <!-- -->
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// Medium
@@ -1088,9 +1116,11 @@ type CreateOpsItemRequest struct {
 	//
 	// example:
 	//
-	// \[{\n \\"priority\\":3,\n \\"type\\":\\"SingleAZEcs\\",\n \\"url\\":\\"http://ecs.consle.aliyuncs.com\\",\n \\"description\\":\\"Create Elastic Compute Service (ECS) instances in different zones and import them to an application group.\\"\n}]
+	// [{\\n \\\\"priority\\\\":3,\\n \\\\"type\\\\":\\\\"SingleAZEcs\\\\",\\n \\\\"url\\\\":\\\\"http://ecs.consle.aliyuncs.com\\\\",\\n \\\\"description\\\\":\\\\"Create Elastic Compute Service (ECS) instances in different zones and import them to an application group.\\\\"\\n}]
 	Solutions *string `json:"Solutions,omitempty" xml:"Solutions,omitempty"`
 	// The source business.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -1108,7 +1138,9 @@ type CreateOpsItemRequest struct {
 	//
 	// }
 	Tags map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	// The title of the O\&M item.
+	// The title of the O\\&M item.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -1234,6 +1266,8 @@ type CreateOpsItemShrinkRequest struct {
 	//
 	//     <!-- -->
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// Security
@@ -1278,7 +1312,7 @@ type CreateOpsItemShrinkRequest struct {
 	//
 	// example:
 	//
-	// [\"acs:oos:cn-hangzhou:1563457855438522:application/test-33333/applicationgroup/default-cn-hangzhou-1\"]
+	// [\\"acs:oos:cn-hangzhou:1563457855438522:application/test-33333/applicationgroup/default-cn-hangzhou-1\\"]
 	Resources *string `json:"Resources,omitempty" xml:"Resources,omitempty"`
 	// The severity level.
 	//
@@ -1316,6 +1350,8 @@ type CreateOpsItemShrinkRequest struct {
 	//
 	//     <!-- -->
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// Medium
@@ -1324,9 +1360,11 @@ type CreateOpsItemShrinkRequest struct {
 	//
 	// example:
 	//
-	// \[{\n \\"priority\\":3,\n \\"type\\":\\"SingleAZEcs\\",\n \\"url\\":\\"http://ecs.consle.aliyuncs.com\\",\n \\"description\\":\\"Create Elastic Compute Service (ECS) instances in different zones and import them to an application group.\\"\n}]
+	// [{\\n \\\\"priority\\\\":3,\\n \\\\"type\\\\":\\\\"SingleAZEcs\\\\",\\n \\\\"url\\\\":\\\\"http://ecs.consle.aliyuncs.com\\\\",\\n \\\\"description\\\\":\\\\"Create Elastic Compute Service (ECS) instances in different zones and import them to an application group.\\\\"\\n}]
 	Solutions *string `json:"Solutions,omitempty" xml:"Solutions,omitempty"`
 	// The source business.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -1344,7 +1382,9 @@ type CreateOpsItemShrinkRequest struct {
 	//
 	// }
 	TagsShrink *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	// The title of the O\&M item.
+	// The title of the O\\&M item.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -1426,7 +1466,7 @@ func (s *CreateOpsItemShrinkRequest) SetTitle(v string) *CreateOpsItemShrinkRequ
 }
 
 type CreateOpsItemResponseBody struct {
-	// The information about the O\&M item.
+	// The information about the O\\&M item.
 	OpsItem *CreateOpsItemResponseBodyOpsItem `json:"OpsItem,omitempty" xml:"OpsItem,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -1455,49 +1495,49 @@ func (s *CreateOpsItemResponseBody) SetRequestId(v string) *CreateOpsItemRespons
 }
 
 type CreateOpsItemResponseBodyOpsItem struct {
-	// The attributes of the O\&M item.
+	// The attributes of the O\\&M item.
 	//
 	// example:
 	//
-	// {\"regionId\":\"cn-zhangjiakou\",\"appId\":\"992BKO1X75GRQ4E8\",\"instanceId\":\"i-8vbcymxagqsyyyjppbr4\",\"instance_name\":\"cdae\"}
+	// {\\"regionId\\":\\"cn-zhangjiakou\\",\\"appId\\":\\"992BKO1X75GRQ4E8\\",\\"instanceId\\":\\"i-8vbcymxagqsyyyjppbr4\\",\\"instance_name\\":\\"cdae\\"}
 	Attributes *string `json:"Attributes,omitempty" xml:"Attributes,omitempty"`
-	// The category of the O\&M item.
+	// The category of the O\\&M item.
 	//
 	// example:
 	//
 	// Security
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	// The time when the O\&M item was created.
+	// The time when the O\\&M item was created.
 	//
 	// example:
 	//
 	// 2023-03-24T03:55Z
 	CreateDate *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
-	// The user who created the O\&M item.
+	// The user who created the O\\&M item.
 	//
 	// example:
 	//
 	// root(130900000)
 	CreatedBy *string `json:"CreatedBy,omitempty" xml:"CreatedBy,omitempty"`
-	// The description of the O\&M item.
+	// The description of the O\\&M item.
 	//
 	// example:
 	//
 	// OpsItem
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The user who last modified the O\&M item.
+	// The user who last modified the O\\&M item.
 	//
 	// example:
 	//
 	// root(130900000)
 	LastModifiedBy *string `json:"LastModifiedBy,omitempty" xml:"LastModifiedBy,omitempty"`
-	// The ID of the O\&M item.
+	// The ID of the O\\&M item.
 	//
 	// example:
 	//
 	// oi-dba9c6eec9254a4d87c1
 	OpsItemId *string `json:"OpsItemId,omitempty" xml:"OpsItemId,omitempty"`
-	// The priority of the O\&M item.
+	// The priority of the O\\&M item.
 	//
 	// example:
 	//
@@ -1513,9 +1553,9 @@ type CreateOpsItemResponseBodyOpsItem struct {
 	//
 	// example:
 	//
-	// [\"acs:oos:cn-hangzhou:1563457855438522:application/dingTest/applicationgroup/fltest\"]
+	// [\\"acs:oos:cn-hangzhou:1563457855438522:application/dingTest/applicationgroup/fltest\\"]
 	Resources *string `json:"Resources,omitempty" xml:"Resources,omitempty"`
-	// The severity level of the O\&M item.
+	// The severity level of the O\\&M item.
 	//
 	// example:
 	//
@@ -1525,33 +1565,33 @@ type CreateOpsItemResponseBodyOpsItem struct {
 	//
 	// example:
 	//
-	// \[{\n \\"priority\\":3,\n \\"type\\":\\"url\\",\n \\"url\\":\\"https://example..com\\",\n \\"description\\":\\"Specify a cross-zone high availability cluster. \\"\n}]
+	// [{\\n \\\\"priority\\\\":3,\\n \\\\"type\\\\":\\\\"url\\\\",\\n \\\\"url\\\\":\\\\"https://example..com\\\\",\\n \\\\"description\\\\":\\\\"Specify a cross-zone high availability cluster. \\\\"\\n}]
 	Solutions *string `json:"Solutions,omitempty" xml:"Solutions,omitempty"`
-	// The source business of the O\&M item.
+	// The source business of the O\\&M item.
 	//
 	// example:
 	//
 	// /aliyun/ecs
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	// The state of the O\&M item.
+	// The state of the O\\&M item.
 	//
 	// example:
 	//
 	// Running
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The tags of the O\&M item.
+	// The tags of the O\\&M item.
 	//
 	// example:
 	//
 	// {"k1": "v1"}
 	Tags map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	// The title of the O\&M item.
+	// The title of the O\\&M item.
 	//
 	// example:
 	//
 	// ECS reboot is scheduled
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
-	// The time when the O\&M item was updated.
+	// The time when the O\\&M item was updated.
 	//
 	// example:
 	//
@@ -1682,7 +1722,7 @@ func (s *CreateOpsItemResponse) SetBody(v *CreateOpsItemResponseBody) *CreateOps
 }
 
 type CreateParameterRequest struct {
-	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can be up to 64 characters in length, and can contain letters, digits, hyphens (-), and underscores (\_). For more information, see "How to ensure idempotence".
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can be up to 64 characters in length, and can contain letters, digits, hyphens (-), and underscores (_). For more information, see "How to ensure idempotence".
 	//
 	// example:
 	//
@@ -1722,7 +1762,9 @@ type CreateParameterRequest struct {
 	//
 	// parameter
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The name of the parameter. The name must be 1 to 200 characters in length, and can contain letters, digits, hyphens (-), and underscores (\_). It cannot start with ALIYUN, ACS, ALIBABA, ALICLOUD, or OOS.
+	// The name of the parameter. The name must be 1 to 200 characters in length, and can contain letters, digits, hyphens (-), and underscores (_). It cannot start with ALIYUN, ACS, ALIBABA, ALICLOUD, or OOS.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -1748,11 +1790,15 @@ type CreateParameterRequest struct {
 	Tags map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
 	// The data type of the parameter. Valid values: String and StringList.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// String
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 	// The value of the common parameter. The value must be 1 to 4096 characters in length.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -1814,7 +1860,7 @@ func (s *CreateParameterRequest) SetValue(v string) *CreateParameterRequest {
 }
 
 type CreateParameterShrinkRequest struct {
-	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can be up to 64 characters in length, and can contain letters, digits, hyphens (-), and underscores (\_). For more information, see "How to ensure idempotence".
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can be up to 64 characters in length, and can contain letters, digits, hyphens (-), and underscores (_). For more information, see "How to ensure idempotence".
 	//
 	// example:
 	//
@@ -1854,7 +1900,9 @@ type CreateParameterShrinkRequest struct {
 	//
 	// parameter
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The name of the parameter. The name must be 1 to 200 characters in length, and can contain letters, digits, hyphens (-), and underscores (\_). It cannot start with ALIYUN, ACS, ALIBABA, ALICLOUD, or OOS.
+	// The name of the parameter. The name must be 1 to 200 characters in length, and can contain letters, digits, hyphens (-), and underscores (_). It cannot start with ALIYUN, ACS, ALIBABA, ALICLOUD, or OOS.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -1880,11 +1928,15 @@ type CreateParameterShrinkRequest struct {
 	TagsShrink *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 	// The data type of the parameter. Valid values: String and StringList.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// String
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 	// The value of the common parameter. The value must be 1 to 4096 characters in length.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -1979,7 +2031,7 @@ type CreateParameterResponseBodyParameter struct {
 	//
 	// example:
 	//
-	// "{\"AllowedValues\":[\"parameter\"],\"AllowedPattern\":\"parameter\",\"MinLength\":0,\"MaxLength\":20}"
+	// "{\\"AllowedValues\\":[\\"parameter\\"],\\"AllowedPattern\\":\\"parameter\\",\\"MinLength\\":0,\\"MaxLength\\":20}"
 	Constraints *string `json:"Constraints,omitempty" xml:"Constraints,omitempty"`
 	// The user who created the common parameter.
 	//
@@ -2160,6 +2212,8 @@ func (s *CreateParameterResponse) SetBody(v *CreateParameterResponseBody) *Creat
 type CreatePatchBaselineRequest struct {
 	// The rules of scanning and installing patches for the specified operating system.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// {"PatchRules":[{"PatchFilterGroup":[{"Key":"PatchSet","Values":["OS"]},{"Key":"ProductFamily","Values":["Windows"]},{"Key":"Product","Values":["Windows 10","Windows 7"]},{"Key":"Classification","Values":["Security Updates","Updates","Update Rollups","Critical Updates"]},{"Key":"Severity","Values":["Critical","Important","Moderate"]}],"ApproveAfterDays":7,"ApproveUntilDate":"","EnableNonSecurity":true,"ComplianceLevel":"Medium"}]}
@@ -2186,6 +2240,8 @@ type CreatePatchBaselineRequest struct {
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The name of the patch baseline.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// MyPatchBaseline
@@ -2207,6 +2263,8 @@ type CreatePatchBaselineRequest struct {
 	// 	- Anolis
 	//
 	// 	- AlmaLinux
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -2347,6 +2405,8 @@ func (s *CreatePatchBaselineRequestTags) SetValue(v string) *CreatePatchBaseline
 type CreatePatchBaselineShrinkRequest struct {
 	// The rules of scanning and installing patches for the specified operating system.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// {"PatchRules":[{"PatchFilterGroup":[{"Key":"PatchSet","Values":["OS"]},{"Key":"ProductFamily","Values":["Windows"]},{"Key":"Product","Values":["Windows 10","Windows 7"]},{"Key":"Classification","Values":["Security Updates","Updates","Update Rollups","Critical Updates"]},{"Key":"Severity","Values":["Critical","Important","Moderate"]}],"ApproveAfterDays":7,"ApproveUntilDate":"","EnableNonSecurity":true,"ComplianceLevel":"Medium"}]}
@@ -2373,6 +2433,8 @@ type CreatePatchBaselineShrinkRequest struct {
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The name of the patch baseline.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// MyPatchBaseline
@@ -2394,6 +2456,8 @@ type CreatePatchBaselineShrinkRequest struct {
 	// 	- Anolis
 	//
 	// 	- AlmaLinux
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -2772,7 +2836,7 @@ func (s *CreatePatchBaselineResponse) SetBody(v *CreatePatchBaselineResponseBody
 }
 
 type CreateSecretParameterRequest struct {
-	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can be up to 64 characters in length, and can contain letters, digits, hyphens (-), and underscores (\_). For more information, see "How to ensure idempotence".
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can be up to 64 characters in length, and can contain letters, digits, hyphens (-), and underscores (_). For more information, see "How to ensure idempotence".
 	//
 	// example:
 	//
@@ -2790,8 +2854,13 @@ type CreateSecretParameterRequest struct {
 	//
 	// example:
 	//
-	// \"{\"\"AllowedValues":["secretparameter"],"AllowedPattern":"secretparameter","MinLength":0,"MaxLength":20}\"
-	Constraints    *string `json:"Constraints,omitempty" xml:"Constraints,omitempty"`
+	// \\"{\\"\\"AllowedValues":["secretparameter"],"AllowedPattern":"secretparameter","MinLength":0,"MaxLength":20}\\"
+	Constraints *string `json:"Constraints,omitempty" xml:"Constraints,omitempty"`
+	// The instance ID of the KMS instance.
+	//
+	// example:
+	//
+	// kst-hzz****
 	DKMSInstanceId *string `json:"DKMSInstanceId,omitempty" xml:"DKMSInstanceId,omitempty"`
 	// The description of the encryption parameter. The description must be 1 to 200 characters in length.
 	//
@@ -2805,7 +2874,9 @@ type CreateSecretParameterRequest struct {
 	//
 	// 80e9409f-78fa-42ab-84bd-83f40c******
 	KeyId *string `json:"KeyId,omitempty" xml:"KeyId,omitempty"`
-	// The name of the parameter. The name must be 1 to 180 characters in length, and can contain letters, digits, hyphens (-), and underscores (\_). It cannot start with ALIYUN, ACS, ALIBABA, ALICLOUD, or OOS.
+	// The name of the parameter. The name must be 1 to 180 characters in length, and can contain letters, digits, hyphens (-), and underscores (_). It cannot start with ALIYUN, ACS, ALIBABA, ALICLOUD, or OOS.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -2836,6 +2907,8 @@ type CreateSecretParameterRequest struct {
 	// Secret
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 	// The value of the encryption parameter. The value must be 1 to 4096 characters in length.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -2907,7 +2980,7 @@ func (s *CreateSecretParameterRequest) SetValue(v string) *CreateSecretParameter
 }
 
 type CreateSecretParameterShrinkRequest struct {
-	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can be up to 64 characters in length, and can contain letters, digits, hyphens (-), and underscores (\_). For more information, see "How to ensure idempotence".
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can be up to 64 characters in length, and can contain letters, digits, hyphens (-), and underscores (_). For more information, see "How to ensure idempotence".
 	//
 	// example:
 	//
@@ -2925,8 +2998,13 @@ type CreateSecretParameterShrinkRequest struct {
 	//
 	// example:
 	//
-	// \"{\"\"AllowedValues":["secretparameter"],"AllowedPattern":"secretparameter","MinLength":0,"MaxLength":20}\"
-	Constraints    *string `json:"Constraints,omitempty" xml:"Constraints,omitempty"`
+	// \\"{\\"\\"AllowedValues":["secretparameter"],"AllowedPattern":"secretparameter","MinLength":0,"MaxLength":20}\\"
+	Constraints *string `json:"Constraints,omitempty" xml:"Constraints,omitempty"`
+	// The instance ID of the KMS instance.
+	//
+	// example:
+	//
+	// kst-hzz****
 	DKMSInstanceId *string `json:"DKMSInstanceId,omitempty" xml:"DKMSInstanceId,omitempty"`
 	// The description of the encryption parameter. The description must be 1 to 200 characters in length.
 	//
@@ -2940,7 +3018,9 @@ type CreateSecretParameterShrinkRequest struct {
 	//
 	// 80e9409f-78fa-42ab-84bd-83f40c******
 	KeyId *string `json:"KeyId,omitempty" xml:"KeyId,omitempty"`
-	// The name of the parameter. The name must be 1 to 180 characters in length, and can contain letters, digits, hyphens (-), and underscores (\_). It cannot start with ALIYUN, ACS, ALIBABA, ALICLOUD, or OOS.
+	// The name of the parameter. The name must be 1 to 180 characters in length, and can contain letters, digits, hyphens (-), and underscores (_). It cannot start with ALIYUN, ACS, ALIBABA, ALICLOUD, or OOS.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -2971,6 +3051,8 @@ type CreateSecretParameterShrinkRequest struct {
 	// Secret
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 	// The value of the encryption parameter. The value must be 1 to 4096 characters in length.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -3075,7 +3157,7 @@ type CreateSecretParameterResponseBodyParameter struct {
 	//
 	// example:
 	//
-	// \"{ 	"AllowedValues": ["secretparameter"], 	"AllowedPattern": "secretparameter", 	"MinLength": 0, 	"MaxLength": 20 }\"
+	// \\"{ 	"AllowedValues": ["secretparameter"], 	"AllowedPattern": "secretparameter", 	"MinLength": 0, 	"MaxLength": 20 }\\"
 	Constraints *string `json:"Constraints,omitempty" xml:"Constraints,omitempty"`
 	// The user who created the encryption parameter.
 	//
@@ -3088,7 +3170,12 @@ type CreateSecretParameterResponseBodyParameter struct {
 	// example:
 	//
 	// 2020-09-01T09:30:36Z
-	CreatedDate    *string `json:"CreatedDate,omitempty" xml:"CreatedDate,omitempty"`
+	CreatedDate *string `json:"CreatedDate,omitempty" xml:"CreatedDate,omitempty"`
+	// The instance ID of the KMS instance.
+	//
+	// example:
+	//
+	// kst-hzz****
 	DKMSInstanceId *string `json:"DKMSInstanceId,omitempty" xml:"DKMSInstanceId,omitempty"`
 	// The description of the encryption parameter.
 	//
@@ -3309,11 +3396,15 @@ type CreateStateConfigurationRequest struct {
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The schedule expression. The interval between two schedules must be a minimum of 30 minutes.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// The ID of the resource group.
 	ScheduleExpression *string `json:"ScheduleExpression,omitempty" xml:"ScheduleExpression,omitempty"`
 	// The schedule type. Set the value to rate.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -3327,11 +3418,15 @@ type CreateStateConfigurationRequest struct {
 	Tags map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
 	// The resources to be queried.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// {     "ResourceType": "ALIYUN::ECS::Instance",     "Filters": [       {         "Type": "All",         "RegionId": "cn-hangzhou",         "Parameters": {           "RegionId": "cn-hangzhou",           "Status": "Running"         }       }     ]   }
 	Targets *string `json:"Targets,omitempty" xml:"Targets,omitempty"`
-	// The name of the template. The name must be 1 to 200 characters in length and can contain letters, digits, hyphens (-), and underscores (\_).
+	// The name of the template. The name must be 1 to 200 characters in length and can contain letters, digits, hyphens (-), and underscores (_).
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -3452,11 +3547,15 @@ type CreateStateConfigurationShrinkRequest struct {
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The schedule expression. The interval between two schedules must be a minimum of 30 minutes.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// The ID of the resource group.
 	ScheduleExpression *string `json:"ScheduleExpression,omitempty" xml:"ScheduleExpression,omitempty"`
 	// The schedule type. Set the value to rate.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -3470,11 +3569,15 @@ type CreateStateConfigurationShrinkRequest struct {
 	TagsShrink *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 	// The resources to be queried.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// {     "ResourceType": "ALIYUN::ECS::Instance",     "Filters": [       {         "Type": "All",         "RegionId": "cn-hangzhou",         "Parameters": {           "RegionId": "cn-hangzhou",           "Status": "Running"         }       }     ]   }
 	Targets *string `json:"Targets,omitempty" xml:"Targets,omitempty"`
-	// The name of the template. The name must be 1 to 200 characters in length and can contain letters, digits, hyphens (-), and underscores (\_).
+	// The name of the template. The name must be 1 to 200 characters in length and can contain letters, digits, hyphens (-), and underscores (_).
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -3771,6 +3874,8 @@ func (s *CreateStateConfigurationResponse) SetBody(v *CreateStateConfigurationRe
 type CreateTemplateRequest struct {
 	// The content of the template. The content must be in the JSON or YAML format, and its maximum size is 64 KB.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// {"FormatVersion": "OOS-2019-06-01", "Description": "Describe instances of given status", "Parameters": {"Status": {"Type": "String", "Description": "(Required) The status of the Ecs instance."}}, "Tasks": [{"Properties": {"Parameters": {"Status": "{{ Status }}"}, "API": "DescribeInstances", "Service": "Ecs"}, "Name": "foo", "Action": "ACS::ExecuteApi"}]}
@@ -3793,7 +3898,9 @@ type CreateTemplateRequest struct {
 	//
 	// {"k1":"v1","k2":"v2"}
 	Tags map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	// The name of the template. The name can be 1 to 200 characters in length and can contain letters, digits, hyphens (-), and underscores (\_). The name cannot start with ALIYUN, ACS, ALIBABA, or ALICLOUD.
+	// The name of the template. The name can be 1 to 200 characters in length and can contain letters, digits, hyphens (-), and underscores (_). The name cannot start with ALIYUN, ACS, ALIBABA, or ALICLOUD.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -3848,6 +3955,8 @@ func (s *CreateTemplateRequest) SetVersionName(v string) *CreateTemplateRequest 
 type CreateTemplateShrinkRequest struct {
 	// The content of the template. The content must be in the JSON or YAML format, and its maximum size is 64 KB.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// {"FormatVersion": "OOS-2019-06-01", "Description": "Describe instances of given status", "Parameters": {"Status": {"Type": "String", "Description": "(Required) The status of the Ecs instance."}}, "Tasks": [{"Properties": {"Parameters": {"Status": "{{ Status }}"}, "API": "DescribeInstances", "Service": "Ecs"}, "Name": "foo", "Action": "ACS::ExecuteApi"}]}
@@ -3870,7 +3979,9 @@ type CreateTemplateShrinkRequest struct {
 	//
 	// {"k1":"v1","k2":"v2"}
 	TagsShrink *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	// The name of the template. The name can be 1 to 200 characters in length and can contain letters, digits, hyphens (-), and underscores (\_). The name cannot start with ALIYUN, ACS, ALIBABA, or ALICLOUD.
+	// The name of the template. The name can be 1 to 200 characters in length and can contain letters, digits, hyphens (-), and underscores (_). The name cannot start with ALIYUN, ACS, ALIBABA, or ALICLOUD.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -4169,6 +4280,8 @@ type DeleteApplicationRequest struct {
 	Force *bool `json:"Force,omitempty" xml:"Force,omitempty"`
 	// The application name.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// MyApplication
@@ -4273,11 +4386,15 @@ func (s *DeleteApplicationResponse) SetBody(v *DeleteApplicationResponseBody) *D
 type DeleteApplicationGroupRequest struct {
 	// The name of the application.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// MyApplication
 	ApplicationName *string `json:"ApplicationName,omitempty" xml:"ApplicationName,omitempty"`
 	// The name of the application group.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -4385,6 +4502,8 @@ type DeleteExecutionsRequest struct {
 	//
 	// You can specify multiple execution IDs in a JSON array in the format of `["xxxxxxxxx", "yyyyyyyyy", ... "zzzzzzzzz"]`. You can specify up to 100 execution IDs at a time. Separate multiple IDs with commas (,).
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// ["exec-xxx"]
@@ -4467,7 +4586,9 @@ func (s *DeleteExecutionsResponse) SetBody(v *DeleteExecutionsResponseBody) *Del
 }
 
 type DeleteParameterRequest struct {
-	// The name of the common parameter. The name can be up to 180 characters in length and can contain only letters, digits, hyphens (-), and underscores (\_). It cannot start with aliyun, acs, alibaba, alicloud, or oos.
+	// The name of the common parameter. The name can be up to 180 characters in length and can contain only letters, digits, hyphens (-), and underscores (_). It cannot start with aliyun, acs, alibaba, alicloud, or oos.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -4553,6 +4674,8 @@ func (s *DeleteParameterResponse) SetBody(v *DeleteParameterResponseBody) *Delet
 type DeletePatchBaselineRequest struct {
 	// The name of the patch baseline.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// MyPatchBaseline
@@ -4635,7 +4758,9 @@ func (s *DeletePatchBaselineResponse) SetBody(v *DeletePatchBaselineResponseBody
 }
 
 type DeleteSecretParameterRequest struct {
-	// The name of the encryption parameter. The name must be 1 to 180 characters in length and can contain letters, digits, hyphens (-), and underscores (\_). It cannot start with ALIYUN, ACS, ALIBABA, ALICLOUD, or OOS.
+	// The name of the encryption parameter. The name must be 1 to 180 characters in length and can contain letters, digits, hyphens (-), and underscores (_). It cannot start with ALIYUN, ACS, ALIBABA, ALICLOUD, or OOS.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -4733,6 +4858,8 @@ type DeleteStateConfigurationsRequest struct {
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The IDs of desired-state configurations.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// ["sc-asfgdhj12345"]
@@ -4826,7 +4953,9 @@ type DeleteTemplateRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The name of the template. The name can be 1 to 200 characters in length and can contain letters, digits, hyphens (-), and underscores (\_). It cannot start with ALIYUN, ACS, ALIBABA, or ALICLOUD.
+	// The name of the template. The name can be 1 to 200 characters in length and can contain letters, digits, hyphens (-), and underscores (_). It cannot start with ALIYUN, ACS, ALIBABA, or ALICLOUD.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -4923,6 +5052,8 @@ type DeleteTemplatesRequest struct {
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The names of the templates to be deleted.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// ["t1","t2"]
@@ -5006,17 +5137,23 @@ func (s *DeleteTemplatesResponse) SetBody(v *DeleteTemplatesResponseBody) *Delet
 type DeployApplicationGroupRequest struct {
 	// The name of the application.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// MyApplication
 	ApplicationName *string `json:"ApplicationName,omitempty" xml:"ApplicationName,omitempty"`
 	// The deployment information about the application group.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// {       "TemplateURL": "https://ros-template.oss-cn-zhangjiakou.aliyuncs.com/App_Management_Existing_Vpc_Ecs_Instance.json",       "Parameters": {         "ZoneId": "cn-hangzhou-k",         "ProjectName": "test",         "SystemDiskSize": 40,         "InstanceChargeType": "PostPaid",         "SecurityGroupId": "sg-bp1a4374akk63jl8tddy",         "VSwitchId": "vsw-bp1fcvc3zn0jrag86rrlm",         "SystemDiskCategory": "cloud_essd",         "InstancePassword": "******",         "InternetChargeType": "PayByTraffic",         "InstanceCount": 1,         "InternetMaxBandwidthOut": 0,         "VpcId": "vpc-bp1i99boyas8i8m9t3skp",         "EcsImageId": "centos_8_5_x64_20G_alibase_20211228.vhd",         "DataDiskSize": 100,         "EcsInstanceType": "ecs.s6-c1m4.small",         "DataDiskCategory": "cloud_efficiency",         "EnvironmentCommandId": "c-hz028fc3g031gcg"       }
 	DeployParameters *string `json:"DeployParameters,omitempty" xml:"DeployParameters,omitempty"`
 	// The name of the application group.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -5112,11 +5249,15 @@ func (s *DeployApplicationGroupResponse) SetBody(v *DeployApplicationGroupRespon
 type DescribeApplicationGroupBillRequest struct {
 	// The application name.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// test_application
 	ApplicationName *string `json:"ApplicationName,omitempty" xml:"ApplicationName,omitempty"`
 	// The billing cycle, in the YYYY-MM format.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -5129,6 +5270,8 @@ type DescribeApplicationGroupBillRequest struct {
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The application group name.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -5147,6 +5290,8 @@ type DescribeApplicationGroupBillRequest struct {
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The type of the cloud resource.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -5301,7 +5446,7 @@ type DescribeApplicationGroupBillResponseBodyApplicationGroupConsume struct {
 	//
 	// example:
 	//
-	// "{\"mem\":\"6.82\",\"cpu\":\"0.55\"}"
+	// "{\\"mem\\":\\"6.82\\",\\"cpu\\":\\"0.55\\"}"
 	Performance *string `json:"Performance,omitempty" xml:"Performance,omitempty"`
 	// The status of instance.
 	//
@@ -5608,7 +5753,7 @@ type GenerateExecutionPolicyResponseBody struct {
 	//
 	// example:
 	//
-	// [{\"Action\": [\"ecs:DescribeInvocationResults\", \"ecs:DescribeInstances\", \"ecs:RunCommand\", \"ecs:DescribeInvocations\"], \"ServiceName\": \"ecs\", \"Resources\": \"*\"}]
+	// [{\\"Action\\": [\\"ecs:DescribeInvocationResults\\", \\"ecs:DescribeInstances\\", \\"ecs:RunCommand\\", \\"ecs:DescribeInvocations\\"], \\"ServiceName\\": \\"ecs\\", \\"Resources\\": \\"*\\"}]
 	MissingPolicy *string `json:"MissingPolicy,omitempty" xml:"MissingPolicy,omitempty"`
 	// The RAM policy.
 	//
@@ -5678,6 +5823,8 @@ func (s *GenerateExecutionPolicyResponse) SetBody(v *GenerateExecutionPolicyResp
 
 type GetApplicationRequest struct {
 	// The application name.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -5938,11 +6085,15 @@ func (s *GetApplicationResponse) SetBody(v *GetApplicationResponseBody) *GetAppl
 type GetApplicationGroupRequest struct {
 	// The name of the application.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// MyApplication
 	ApplicationName *string `json:"ApplicationName,omitempty" xml:"ApplicationName,omitempty"`
 	// The name of the application group.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -6205,6 +6356,8 @@ func (s *GetApplicationGroupResponse) SetBody(v *GetApplicationGroupResponseBody
 type GetExecutionTemplateRequest struct {
 	// The ID of the execution.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// exec-046490ff88f242
@@ -6240,7 +6393,7 @@ type GetExecutionTemplateResponseBody struct {
 	//
 	// example:
 	//
-	// "{\n \"FormatVersion\": \"OOS-2019-06-01\",\n \"Parameters\": {\n \"Status\": {\n \"Type\": \"String\",\n \"Description\": \"(Required) The ID of the ECS instance.\"\n }\n },\n \"Tasks\": [\n {\n \"Name\": \"bar\",\n \"Properties\": {\n \"Parameters\": {\n \"Status\": \"{{ Status }}\"\n },\n \"API\": \"DescribeInstances\",\n \"Service\": \"Ecs\"\n },\n \"Action\": \"acs::ExecuteAPI\",\n \"Outputs\": {\n \"InstanceIds\", {\n \"ValueSelector\": \".Instances.Instance[].InstanceId\",\n \"Type\": \"List\"\n }\n }\n }\n ],\n \"Outputs\": {\n \"InstanceIds\": {\n \"Value\": \" {{ bar.InstanceIds }} \",\n \"Type\": \"List\"\n }\n }\n}\n"
+	// "{\\n \\"FormatVersion\\": \\"OOS-2019-06-01\\",\\n \\"Parameters\\": {\\n \\"Status\\": {\\n \\"Type\\": \\"String\\",\\n \\"Description\\": \\"(Required) The ID of the ECS instance.\\"\\n }\\n },\\n \\"Tasks\\": [\\n {\\n \\"Name\\": \\"bar\\",\\n \\"Properties\\": {\\n \\"Parameters\\": {\\n \\"Status\\": \\"{{ Status }}\\"\\n },\\n \\"API\\": \\"DescribeInstances\\",\\n \\"Service\\": \\"Ecs\\"\\n },\\n \\"Action\\": \\"acs::ExecuteAPI\\",\\n \\"Outputs\\": {\\n \\"InstanceIds\\", {\\n \\"ValueSelector\\": \\".Instances.Instance[].InstanceId\\",\\n \\"Type\\": \\"List\\"\\n }\\n }\\n }\\n ],\\n \\"Outputs\\": {\\n \\"InstanceIds\\": {\\n \\"Value\\": \\" {{ bar.InstanceIds }} \\",\\n \\"Type\\": \\"List\\"\\n }\\n }\\n}\\n"
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
 	// The ID of the request.
 	//
@@ -6687,7 +6840,9 @@ func (s *GetInventorySchemaResponse) SetBody(v *GetInventorySchemaResponseBody) 
 }
 
 type GetOpsItemRequest struct {
-	// The O\&M item ID.
+	// The O\\&M item ID.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -6720,7 +6875,7 @@ func (s *GetOpsItemRequest) SetRegionId(v string) *GetOpsItemRequest {
 }
 
 type GetOpsItemResponseBody struct {
-	// The information about the O\&M item.
+	// The information about the O\\&M item.
 	OpsItem *GetOpsItemResponseBodyOpsItem `json:"OpsItem,omitempty" xml:"OpsItem,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -6749,21 +6904,21 @@ func (s *GetOpsItemResponseBody) SetRequestId(v string) *GetOpsItemResponseBody 
 }
 
 type GetOpsItemResponseBodyOpsItem struct {
-	// The information about the attributes of the O\&M item.
+	// The information about the attributes of the O\\&M item.
 	Attributes map[string]interface{} `json:"Attributes,omitempty" xml:"Attributes,omitempty"`
-	// The category of the O\&M item.
+	// The category of the O\\&M item.
 	//
 	// example:
 	//
 	// Security
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	// The user who created the O\&M item.
+	// The user who created the O\\&M item.
 	//
 	// example:
 	//
 	// root(130900000)
 	CreateBy *string `json:"CreateBy,omitempty" xml:"CreateBy,omitempty"`
-	// The time when the O\&M item was created.
+	// The time when the O\\&M item was created.
 	//
 	// example:
 	//
@@ -6775,19 +6930,19 @@ type GetOpsItemResponseBodyOpsItem struct {
 	//
 	// test-update
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The user who last modified the O\&M item.
+	// The user who last modified the O\\&M item.
 	//
 	// example:
 	//
 	// modifiedBy
 	LastModifiedBy *string `json:"LastModifiedBy,omitempty" xml:"LastModifiedBy,omitempty"`
-	// The O\&M item ID.
+	// The O\\&M item ID.
 	//
 	// example:
 	//
 	// oi-d52b08695e2b46ae8413
 	OpsItemId *string `json:"OpsItemId,omitempty" xml:"OpsItemId,omitempty"`
-	// The priority of the O\&M item.
+	// The priority of the O\\&M item.
 	//
 	// example:
 	//
@@ -6801,39 +6956,39 @@ type GetOpsItemResponseBodyOpsItem struct {
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The Alibaba Cloud Resource Names (ARNs) of the associated resources.
 	Resources []*string `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Repeated"`
-	// The severity level of the O\&M item.
+	// The severity level of the O\\&M item.
 	//
 	// example:
 	//
 	// Medium
 	Severity *string `json:"Severity,omitempty" xml:"Severity,omitempty"`
-	// The solutions to the O\&M item.
+	// The solutions to the O\\&M item.
 	Solutions []map[string]interface{} `json:"Solutions,omitempty" xml:"Solutions,omitempty" type:"Repeated"`
-	// The source business of the O\&M item.
+	// The source business of the O\\&M item.
 	//
 	// example:
 	//
 	// /aliyun/appManager
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	// The status of the O\&M item.
+	// The status of the O\\&M item.
 	//
 	// example:
 	//
 	// Open
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The tags attached to the O\&M item.
+	// The tags attached to the O\\&M item.
 	//
 	// example:
 	//
 	// {"K1":"V1"}
 	Tags map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	// The title of the O\&M item.
+	// The title of the O\\&M item.
 	//
 	// example:
 	//
 	// test
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
-	// The time when the O\&M item was updated.
+	// The time when the O\\&M item was updated.
 	//
 	// example:
 	//
@@ -6964,7 +7119,9 @@ func (s *GetOpsItemResponse) SetBody(v *GetOpsItemResponseBody) *GetOpsItemRespo
 }
 
 type GetParameterRequest struct {
-	// The name of the common parameter. The name can be up to 200 characters in length and can contain letters, digits, hyphens (-), and underscores (\_).
+	// The name of the common parameter. The name can be up to 200 characters in length and can contain letters, digits, hyphens (-), and underscores (_).
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -7052,7 +7209,7 @@ type GetParameterResponseBodyParameter struct {
 	//
 	// example:
 	//
-	// \"{\"\"AllowedValues":["parameter"],"AllowedPattern":"parameter","MinLength":0,"MaxLength":20}\"
+	// \\"{\\"\\"AllowedValues":["parameter"],"AllowedPattern":"parameter","MinLength":0,"MaxLength":20}\\"
 	Constraints *string `json:"Constraints,omitempty" xml:"Constraints,omitempty"`
 	// The user who created the common parameter.
 	//
@@ -7244,6 +7401,8 @@ func (s *GetParameterResponse) SetBody(v *GetParameterResponseBody) *GetParamete
 type GetParametersRequest struct {
 	// The names of the common parameters.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// ["parameter1","parameter2"]
@@ -7315,7 +7474,7 @@ type GetParametersResponseBodyParameters struct {
 	//
 	// example:
 	//
-	// {\"MaxLength\": 2}
+	// {\\"MaxLength\\": 2}
 	Constraints *string `json:"Constraints,omitempty" xml:"Constraints,omitempty"`
 	// The user who created the common parameter.
 	//
@@ -7519,6 +7678,8 @@ type GetParametersByPathRequest struct {
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The path of the parameter. For example, if the name of a parameter is /path/path1/Myparameter, the path of the parameter is /path/path1/.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// /parameter
@@ -7641,7 +7802,7 @@ type GetParametersByPathResponseBodyParameters struct {
 	//
 	// example:
 	//
-	// {\"MaxLength\": 2}
+	// {\\"MaxLength\\": 2}
 	Constraints *string `json:"Constraints,omitempty" xml:"Constraints,omitempty"`
 	// The user who created the common parameter.
 	//
@@ -7821,6 +7982,8 @@ func (s *GetParametersByPathResponse) SetBody(v *GetParametersByPathResponseBody
 
 type GetPatchBaselineRequest struct {
 	// The name of the patch baseline.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -8137,7 +8300,9 @@ func (s *GetPatchBaselineResponse) SetBody(v *GetPatchBaselineResponseBody) *Get
 }
 
 type GetSecretParameterRequest struct {
-	// The name of the parameter. The name must be 1 to 180 characters in length, and can contain letters, digits, hyphens (-), and underscores (\_). It cannot start with ALIYUN, ACS, ALIBABA, ALICLOUD, or OOS.
+	// The name of the parameter. The name must be 1 to 180 characters in length, and can contain letters, digits, hyphens (-), and underscores (_). It cannot start with ALIYUN, ACS, ALIBABA, ALICLOUD, or OOS.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -8225,7 +8390,7 @@ type GetSecretParameterResponseBodyParameter struct {
 	//
 	// example:
 	//
-	// \"{\"\"AllowedValues":["secretparameter"],"AllowedPattern":".*","MinLength":0,"MaxLength":20}\"
+	// \\"{\\"\\"AllowedValues":["secretparameter"],"AllowedPattern":".*","MinLength":0,"MaxLength":20}\\"
 	Constraints *string `json:"Constraints,omitempty" xml:"Constraints,omitempty"`
 	// The user who created the encryption parameter.
 	//
@@ -8238,7 +8403,12 @@ type GetSecretParameterResponseBodyParameter struct {
 	// example:
 	//
 	// 2020-09-01T09:28:47Z
-	CreatedDate    *string `json:"CreatedDate,omitempty" xml:"CreatedDate,omitempty"`
+	CreatedDate *string `json:"CreatedDate,omitempty" xml:"CreatedDate,omitempty"`
+	// The instance ID of the KMS instance.
+	//
+	// example:
+	//
+	// kst-hzz****
 	DKMSInstanceId *string `json:"DKMSInstanceId,omitempty" xml:"DKMSInstanceId,omitempty"`
 	// The description of the encryption parameter.
 	//
@@ -8432,7 +8602,9 @@ func (s *GetSecretParameterResponse) SetBody(v *GetSecretParameterResponseBody) 
 }
 
 type GetSecretParametersRequest struct {
-	// The name of the encryption parameter. Multiple encryption parameters can form a JSON array in the format of \["xxxxxxxxx", "yyyyyyyyy", … "zzzzzzzzz"]. Each JSON array can contain a maximum of 10 encryption parameters. Multiple encryption parameters in the array are separated by commas (,).
+	// The name of the encryption parameter. Multiple encryption parameters can form a JSON array in the format of ["xxxxxxxxx", "yyyyyyyyy", … "zzzzzzzzz"]. Each JSON array can contain a maximum of 10 encryption parameters. Multiple encryption parameters in the array are separated by commas (,).
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -8520,7 +8692,7 @@ type GetSecretParametersResponseBodyParameters struct {
 	//
 	// example:
 	//
-	// {\"AllowedValues\": [\"test\"]}
+	// {\\"AllowedValues\\": [\\"test\\"]}
 	Constraints *string `json:"Constraints,omitempty" xml:"Constraints,omitempty"`
 	// The user who created the encryption parameter.
 	//
@@ -8735,6 +8907,8 @@ type GetSecretParametersByPathRequest struct {
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The path of the encryption parameter. The path must be 1 to 200 characters in length. For example, if the name of an encryption parameter is /secretParameter/mySecretParameter, the path of the encryption parameter is /secretParameter.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// /secretParameter
@@ -8872,7 +9046,7 @@ type GetSecretParametersByPathResponseBodyParameters struct {
 	//
 	// example:
 	//
-	// {\"AllowedPattern\": \"^[a-g]*$\"}
+	// {\\"AllowedPattern\\": \\"^[a-g]*$\\"}
 	Constraints *string `json:"Constraints,omitempty" xml:"Constraints,omitempty"`
 	// The user who created the encryption parameter.
 	//
@@ -9214,7 +9388,9 @@ type GetTemplateRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The name of the template. The name can be 1 to 200 characters in length and can contain letters, digits, hyphens (-), and underscores (\_). The name cannot start with ALIYUN, ACS, ALIBABA, or ALICLOUD.
+	// The name of the template. The name can be 1 to 200 characters in length and can contain letters, digits, hyphens (-), and underscores (_). The name cannot start with ALIYUN, ACS, ALIBABA, or ALICLOUD.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -9256,7 +9432,7 @@ type GetTemplateResponseBody struct {
 	//
 	// example:
 	//
-	// "FormatVersion: OOS-2019-06-01\nDescription:\n  en:  Creates an ECS image\n  zh-cn: 创建一个ECS镜像\n  name-en: Create Image\n  name-zh-cn: 创建镜像\n  categories:\n    - image_manage\n    - application_manage\nParameters:\n  regionId:\n    Type: String\n    Label:\n      en: RegionId\n      zh-cn: 地域ID\n    AssociationProperty: RegionId\n    Default: \"{{ ACS::RegionId }}\"\n  instanceId:\n    Label:\n      en: InstanceId\n      zh-cn: ECS实例ID\n    Type: String\n    AssociationProperty: ALIYUN::ECS::Instance::InstanceId\n    AssociationPropertyMetadata:\n      RegionId: regionId\n  imageName:\n    Label:\n      en: ImageName\n      zh-cn: 新镜像的名称\n    Type: String\n    Description:\n      en: <p class=\"p\"	Note:</p> <ul class=\"ul\"> <li class=\"li\">Length is 2~128 English or Chinese characters</li> <li class=\"li\"><font color=\"red\">must start with big or small letters or Chinese, not http:// and https://. </font></li> <li class=\"li\">Can contain numbers, colons (:), underscores (_), or dashes (-). </li> </ul>\n      zh-cn: <p class=\"p\">注意：</p> <ul class=\"ul\"> <li class=\"li\">长度为2~128个英文或中文字符</li> <li class=\"li\"><font color=\"red\">必须以大小字母或中文开头，不能以http://和https://开头。</font></li> <li class=\"li\">可以包含数字、半角冒号（:）、下划线（_）或者短划线（-）。</li> </ul>\n  tags:\n    Label:\n      en: Tags\n      zh-cn: 镜像标签\n    Type: Json\n    AssociationProperty: Tags\n    AssociationPropertyMetadata:\n      ShowSystem: false\n    Default: []\n  OOSAssumeRole:\n    Label:\n      en: OOSAssumeRole\n      zh-cn: OOS扮演的RAM角色\n    Type: String\n    Default: OOSServiceRole\nRamRole: \"{{ OOSAssumeRole }}\"\nTasks:\n- Name: createImage\n  Action: ACS::ECS::CreateImage\n  Description:\n    en: Create new image with the specified image name and instance ID\n    zh-cn: 通过指定实例ID和镜像名称创建新的镜像\n  Properties:\n    regionId: \"{{ regionId }}\"\n    imageName: \"{{ imageName }}__on_{{ ACS::ExecutionId }}_at_{{ Acs::CurrentDate }}\"\n    instanceId: \"{{ instanceId }}\"\n    tags: \"{{tags}}\"\n  Outputs:\n    imageId:\n      ValueSelector: imageId\n      Type: String\nOutputs:\n  imageId:\n    Type: String\n    Value: \"{{ createImage.imageId }}\"\nMetadata:\n  ALIYUN::OOS::Interface:\n    ParameterGroups:\n      - Parameters:\n          - regionId\n          - instanceId\n        Label:\n          default:\n            zh-cn: 选择实例\n            en: Select Ecs Instances\n      - Parameters:\n          - imageName\n          - tags\n        Label:\n          default:\n            zh-cn: 镜像设置\n            en: Image Configure\n      - Parameters:\n          - OOSAssumeRole\n        Label:\n          default:\n            zh-cn: 高级选项\n            en: Control Options"
+	// "FormatVersion: OOS-2019-06-01\\nDescription:\\n  en:  Creates an ECS image\\n  zh-cn: 创建一个ECS镜像\\n  name-en: Create Image\\n  name-zh-cn: 创建镜像\\n  categories:\\n    - image_manage\\n    - application_manage\\nParameters:\\n  regionId:\\n    Type: String\\n    Label:\\n      en: RegionId\\n      zh-cn: 地域ID\\n    AssociationProperty: RegionId\\n    Default: \\"{{ ACS::RegionId }}\\"\\n  instanceId:\\n    Label:\\n      en: InstanceId\\n      zh-cn: ECS实例ID\\n    Type: String\\n    AssociationProperty: ALIYUN::ECS::Instance::InstanceId\\n    AssociationPropertyMetadata:\\n      RegionId: regionId\\n  imageName:\\n    Label:\\n      en: ImageName\\n      zh-cn: 新镜像的名称\\n    Type: String\\n    Description:\\n      en: <p class=\\"p\\"	Note:</p> <ul class=\\"ul\\"> <li class=\\"li\\">Length is 2~128 English or Chinese characters</li> <li class=\\"li\\"><font color=\\"red\\">must start with big or small letters or Chinese, not http:// and https://. </font></li> <li class=\\"li\\">Can contain numbers, colons (:), underscores (_), or dashes (-). </li> </ul>\\n      zh-cn: <p class=\\"p\\">注意：</p> <ul class=\\"ul\\"> <li class=\\"li\\">长度为2~128个英文或中文字符</li> <li class=\\"li\\"><font color=\\"red\\">必须以大小字母或中文开头，不能以http://和https://开头。</font></li> <li class=\\"li\\">可以包含数字、半角冒号（:）、下划线（_）或者短划线（-）。</li> </ul>\\n  tags:\\n    Label:\\n      en: Tags\\n      zh-cn: 镜像标签\\n    Type: Json\\n    AssociationProperty: Tags\\n    AssociationPropertyMetadata:\\n      ShowSystem: false\\n    Default: []\\n  OOSAssumeRole:\\n    Label:\\n      en: OOSAssumeRole\\n      zh-cn: OOS扮演的RAM角色\\n    Type: String\\n    Default: OOSServiceRole\\nRamRole: \\"{{ OOSAssumeRole }}\\"\\nTasks:\\n- Name: createImage\\n  Action: ACS::ECS::CreateImage\\n  Description:\\n    en: Create new image with the specified image name and instance ID\\n    zh-cn: 通过指定实例ID和镜像名称创建新的镜像\\n  Properties:\\n    regionId: \\"{{ regionId }}\\"\\n    imageName: \\"{{ imageName }}__on_{{ ACS::ExecutionId }}_at_{{ Acs::CurrentDate }}\\"\\n    instanceId: \\"{{ instanceId }}\\"\\n    tags: \\"{{tags}}\\"\\n  Outputs:\\n    imageId:\\n      ValueSelector: imageId\\n      Type: String\\nOutputs:\\n  imageId:\\n    Type: String\\n    Value: \\"{{ createImage.imageId }}\\"\\nMetadata:\\n  ALIYUN::OOS::Interface:\\n    ParameterGroups:\\n      - Parameters:\\n          - regionId\\n          - instanceId\\n        Label:\\n          default:\\n            zh-cn: 选择实例\\n            en: Select Ecs Instances\\n      - Parameters:\\n          - imageName\\n          - tags\\n        Label:\\n          default:\\n            zh-cn: 镜像设置\\n            en: Image Configure\\n      - Parameters:\\n          - OOSAssumeRole\\n        Label:\\n          default:\\n            zh-cn: 高级选项\\n            en: Control Options"
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
 	// The request ID.
 	//
@@ -9308,7 +9484,7 @@ type GetTemplateResponseBodyTemplate struct {
 	//
 	// example:
 	//
-	// "{\"en\": \"Creates an ECS image\", \"zh-cn\": \"创建一个ECS镜像\", \"name-en\": \"Create Image\", \"name-zh-cn\": \"创建镜像\", \"categories\": [\"image_manage\", \"application_manage\"]}"
+	// "{\\"en\\": \\"Creates an ECS image\\", \\"zh-cn\\": \\"创建一个ECS镜像\\", \\"name-en\\": \\"Create Image\\", \\"name-zh-cn\\": \\"创建镜像\\", \\"categories\\": [\\"image_manage\\", \\"application_manage\\"]}"
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// Indicates whether the template was configured with a trigger.
 	//
@@ -10475,6 +10651,8 @@ func (s *ListApplicationsResponse) SetBody(v *ListApplicationsResponseBody) *Lis
 type ListExecutionLogsRequest struct {
 	// The ID of the execution.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// exec-xxx
@@ -10703,6 +10881,8 @@ type ListExecutionRiskyTasksRequest struct {
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The name of the template.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -11934,10 +12114,13 @@ func (s *ListExecutionsResponse) SetBody(v *ListExecutionsResponseBody) *ListExe
 type ListGitRepositoriesRequest struct {
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	OrgName     *string `json:"OrgName,omitempty" xml:"OrgName,omitempty"`
-	Owner       *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
-	PageNumber  *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize    *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Platform    *string `json:"Platform,omitempty" xml:"Platform,omitempty"`
+	// This parameter is required.
+	Owner      *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// This parameter is required.
+	Platform *string `json:"Platform,omitempty" xml:"Platform,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s ListGitRepositoriesRequest) String() string {
@@ -11975,6 +12158,11 @@ func (s *ListGitRepositoriesRequest) SetPageSize(v int32) *ListGitRepositoriesRe
 
 func (s *ListGitRepositoriesRequest) SetPlatform(v string) *ListGitRepositoriesRequest {
 	s.Platform = &v
+	return s
+}
+
+func (s *ListGitRepositoriesRequest) SetRegionId(v string) *ListGitRepositoriesRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -12588,6 +12776,8 @@ type ListInventoryEntriesRequest struct {
 	Filter []*ListInventoryEntriesRequestFilter `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Repeated"`
 	// The ID of the instance.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// i-bp1cpoxxxwxxxxxxxxxx
@@ -12627,6 +12817,8 @@ type ListInventoryEntriesRequest struct {
 	// 	- ACS:WindowsRegistry
 	//
 	// 	- ACS:WindowsUpdate
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -13101,7 +13293,7 @@ type ListOpsItemsResponseBody struct {
 	//
 	// gAAAAABfTgv5ewUWmNdJ3g7JVLvX70sPH90GZOVGC6KPDUL0FIIb
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The list of O\&M items.
+	// The list of O\\&M items.
 	OpsItems []*ListOpsItemsResponseBodyOpsItems `json:"OpsItems,omitempty" xml:"OpsItems,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -13157,13 +13349,13 @@ type ListOpsItemsResponseBodyOpsItems struct {
 	//
 	// Security
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	// The time when the O\&M item was created.
+	// The time when the O\\&M item was created.
 	//
 	// example:
 	//
 	// 2023-07-09T10:01Z
 	CreateDate *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
-	// The ID of the O\&M item.
+	// The ID of the O\\&M item.
 	//
 	// example:
 	//
@@ -13189,7 +13381,7 @@ type ListOpsItemsResponseBodyOpsItems struct {
 	//
 	// /aliyun/ecs
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	// The status of the O\&M item.
+	// The status of the O\\&M item.
 	//
 	// example:
 	//
@@ -13201,13 +13393,13 @@ type ListOpsItemsResponseBodyOpsItems struct {
 	//
 	// {"k1":"v1"}
 	Tags map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	// The title of the O\&M item.
+	// The title of the O\\&M item.
 	//
 	// example:
 	//
 	// Test
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
-	// The time when the O\&M item was updated.
+	// The time when the O\\&M item was updated.
 	//
 	// example:
 	//
@@ -13315,6 +13507,8 @@ type ListParameterVersionsRequest struct {
 	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The name of the common parameter.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -14726,6 +14920,8 @@ func (s *ListPatchBaselinesResponse) SetBody(v *ListPatchBaselinesResponseBody) 
 type ListResourceExecutionStatusRequest struct {
 	// The ID of the execution.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// exec-xxxxxxxxxxxx
@@ -14846,7 +15042,7 @@ type ListResourceExecutionStatusResponseBodyResourceExecutionStatus struct {
 	//
 	// example:
 	//
-	// { 				"commandOutput": "hello\n" 			}
+	// { 				"commandOutput": "hello\\n" 			}
 	Outputs *string `json:"Outputs,omitempty" xml:"Outputs,omitempty"`
 	// The ID of the resource.
 	//
@@ -14932,6 +15128,8 @@ type ListSecretParameterVersionsRequest struct {
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The name of the encryption parameter.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -15742,7 +15940,7 @@ type ListStateConfigurationsRequest struct {
 	//
 	// {"Key": "oos", "Value": "inventory"}
 	Tags map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	// The name of the template. The name must be 1 to 200 characters in length and can contain letters, digits, hyphens (-), and underscores (\_).
+	// The name of the template. The name must be 1 to 200 characters in length and can contain letters, digits, hyphens (-), and underscores (_).
 	//
 	// example:
 	//
@@ -15841,7 +16039,7 @@ type ListStateConfigurationsShrinkRequest struct {
 	//
 	// {"Key": "oos", "Value": "inventory"}
 	TagsShrink *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	// The name of the template. The name must be 1 to 200 characters in length and can contain letters, digits, hyphens (-), and underscores (\_).
+	// The name of the template. The name must be 1 to 200 characters in length and can contain letters, digits, hyphens (-), and underscores (_).
 	//
 	// example:
 	//
@@ -16281,6 +16479,8 @@ type ListTagResourcesRequest struct {
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The ID of the region.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// cn-hangzhou
@@ -16292,6 +16492,8 @@ type ListTagResourcesRequest struct {
 	// ["templateNam1","templateName2"]
 	ResourceIds map[string]interface{} `json:"ResourceIds,omitempty" xml:"ResourceIds,omitempty"`
 	// The type of the resource. Valid values: template execution
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -16347,6 +16549,8 @@ type ListTagResourcesShrinkRequest struct {
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The ID of the region.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// cn-hangzhou
@@ -16358,6 +16562,8 @@ type ListTagResourcesShrinkRequest struct {
 	// ["templateNam1","templateName2"]
 	ResourceIdsShrink *string `json:"ResourceIds,omitempty" xml:"ResourceIds,omitempty"`
 	// The type of the resource. Valid values: template execution
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -17215,6 +17421,8 @@ type ListTemplateVersionsRequest struct {
 	ShareType *string `json:"ShareType,omitempty" xml:"ShareType,omitempty"`
 	// The name of the template.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// describeinstances
@@ -17450,6 +17658,7 @@ type ListTemplatesRequest struct {
 	//
 	// true
 	HasTrigger *bool `json:"HasTrigger,omitempty" xml:"HasTrigger,omitempty"`
+	IsExample  *bool `json:"IsExample,omitempty" xml:"IsExample,omitempty"`
 	// The template is favorite or not.
 	//
 	// example:
@@ -17585,6 +17794,11 @@ func (s *ListTemplatesRequest) SetHasTrigger(v bool) *ListTemplatesRequest {
 	return s
 }
 
+func (s *ListTemplatesRequest) SetIsExample(v bool) *ListTemplatesRequest {
+	s.IsExample = &v
+	return s
+}
+
 func (s *ListTemplatesRequest) SetIsFavorite(v bool) *ListTemplatesRequest {
 	s.IsFavorite = &v
 	return s
@@ -17684,6 +17898,7 @@ type ListTemplatesShrinkRequest struct {
 	//
 	// true
 	HasTrigger *bool `json:"HasTrigger,omitempty" xml:"HasTrigger,omitempty"`
+	IsExample  *bool `json:"IsExample,omitempty" xml:"IsExample,omitempty"`
 	// The template is favorite or not.
 	//
 	// example:
@@ -17816,6 +18031,11 @@ func (s *ListTemplatesShrinkRequest) SetCreatedDateBefore(v string) *ListTemplat
 
 func (s *ListTemplatesShrinkRequest) SetHasTrigger(v bool) *ListTemplatesShrinkRequest {
 	s.HasTrigger = &v
+	return s
+}
+
+func (s *ListTemplatesShrinkRequest) SetIsExample(v bool) *ListTemplatesShrinkRequest {
+	s.IsExample = &v
 	return s
 }
 
@@ -18222,6 +18442,8 @@ func (s *ListTemplatesResponse) SetBody(v *ListTemplatesResponseBody) *ListTempl
 type NotifyExecutionRequest struct {
 	// The ID of the execution.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// exec-xxx
@@ -18259,6 +18481,8 @@ type NotifyExecutionRequest struct {
 	// 	- **RetryTask**: retries a failed task whose execution mode is Suspend upon Failure.
 	//
 	// 	- **SkipTask**: skips a failed task whose execution mode is Suspend upon Failure.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -18407,6 +18631,8 @@ func (s *NotifyExecutionResponse) SetBody(v *NotifyExecutionResponseBody) *Notif
 
 type RegisterDefaultPatchBaselineRequest struct {
 	// The name of the patch baseline.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -18695,7 +18921,7 @@ func (s *SearchInventoryRequest) SetRegionId(v string) *SearchInventoryRequest {
 }
 
 type SearchInventoryRequestFilter struct {
-	// The name of the component property. Valid values of N: 1 to 5. Different components have different property names. You can call the [GetInventorySchema](https://api.aliyun.com/#/?product=oos\&version=2019-06-01\&api=GetInventorySchema) operation to query the property names of different components. For example, the ACS:InstanceInformation component has the InstanceId property. Therefore, you can set this parameter to ACS:InstanceInformation.InstanceId.
+	// The name of the component property. Valid values of N: 1 to 5. Different components have different property names. You can call the [GetInventorySchema](https://api.aliyun.com/#/?product=oos\\&version=2019-06-01\\&api=GetInventorySchema) operation to query the property names of different components. For example, the ACS:InstanceInformation component has the InstanceId property. Therefore, you can set this parameter to ACS:InstanceInformation.InstanceId.
 	//
 	// example:
 	//
@@ -19133,7 +19359,7 @@ type StartExecutionRequest struct {
 	//
 	// {   "Description": "Example template, describe instances in some status",   "FormatVersion": "OOS-2019-06-01",   "Parameters": {},   "Tasks": [     {       "Name": "describeInstances",       "Action": "ACS::ExecuteAPI",       "Description": "desc-en",       "Properties": {         "Service": "ECS",         "API": "DescribeInstances",         "Parameters": {           "Status": "Running"         }       }     }   ] }
 	TemplateContent *string `json:"TemplateContent,omitempty" xml:"TemplateContent,omitempty"`
-	// The name of the template. The name must be 1 to 200 characters in length, and can contain letters, digits, hyphens (-), and underscores (\_).
+	// The name of the template. The name must be 1 to 200 characters in length, and can contain letters, digits, hyphens (-), and underscores (_).
 	//
 	// example:
 	//
@@ -19314,7 +19540,7 @@ type StartExecutionShrinkRequest struct {
 	//
 	// {   "Description": "Example template, describe instances in some status",   "FormatVersion": "OOS-2019-06-01",   "Parameters": {},   "Tasks": [     {       "Name": "describeInstances",       "Action": "ACS::ExecuteAPI",       "Description": "desc-en",       "Properties": {         "Service": "ECS",         "API": "DescribeInstances",         "Parameters": {           "Status": "Running"         }       }     }   ] }
 	TemplateContent *string `json:"TemplateContent,omitempty" xml:"TemplateContent,omitempty"`
-	// The name of the template. The name must be 1 to 200 characters in length, and can contain letters, digits, hyphens (-), and underscores (\_).
+	// The name of the template. The name must be 1 to 200 characters in length, and can contain letters, digits, hyphens (-), and underscores (_).
 	//
 	// example:
 	//
@@ -19788,21 +20014,25 @@ func (s *StartExecutionResponse) SetBody(v *StartExecutionResponseBody) *StartEx
 type TagResourcesRequest struct {
 	// The region ID.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The IDs of the resources for which you want to modify the resource group. The number of resource IDs is 1 to 50.
 	//
-	// 	- If you set ResourceType to template, specify ResourceIds in the \["TemplateName1","TemplateName2"] format.
+	// 	- If you set ResourceType to template, specify ResourceIds in the ["TemplateName1","TemplateName2"] format.
 	//
-	// 	- If you set ResourceType to parameter, specify ResourceIds in the \["Name1","Name2"] format.
+	// 	- If you set ResourceType to parameter, specify ResourceIds in the ["Name1","Name2"] format.
 	//
-	// 	- If you set ResourceType to secretparameter, specify ResourceIds in the \["Name1","Name2"] format.
+	// 	- If you set ResourceType to secretparameter, specify ResourceIds in the ["Name1","Name2"] format.
 	//
-	// 	- If you set ResourceType to stateconfiguration, specify ResourceIds in the \["StateConfigurationId 1","StateConfigurationId 2"] format.
+	// 	- If you set ResourceType to stateconfiguration, specify ResourceIds in the ["StateConfigurationId 1","StateConfigurationId 2"] format.
 	//
-	// 	- If you set ResourceType to application, specify ResourceIds in the \["Name1","Name2"] format.
+	// 	- If you set ResourceType to application, specify ResourceIds in the ["Name1","Name2"] format.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -19820,11 +20050,15 @@ type TagResourcesRequest struct {
 	//
 	// 	- application: application.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// template
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	// The tag keys and values. The number of key-value pairs ranges from 1 to 20.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -19863,21 +20097,25 @@ func (s *TagResourcesRequest) SetTags(v map[string]interface{}) *TagResourcesReq
 type TagResourcesShrinkRequest struct {
 	// The region ID.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The IDs of the resources for which you want to modify the resource group. The number of resource IDs is 1 to 50.
 	//
-	// 	- If you set ResourceType to template, specify ResourceIds in the \["TemplateName1","TemplateName2"] format.
+	// 	- If you set ResourceType to template, specify ResourceIds in the ["TemplateName1","TemplateName2"] format.
 	//
-	// 	- If you set ResourceType to parameter, specify ResourceIds in the \["Name1","Name2"] format.
+	// 	- If you set ResourceType to parameter, specify ResourceIds in the ["Name1","Name2"] format.
 	//
-	// 	- If you set ResourceType to secretparameter, specify ResourceIds in the \["Name1","Name2"] format.
+	// 	- If you set ResourceType to secretparameter, specify ResourceIds in the ["Name1","Name2"] format.
 	//
-	// 	- If you set ResourceType to stateconfiguration, specify ResourceIds in the \["StateConfigurationId 1","StateConfigurationId 2"] format.
+	// 	- If you set ResourceType to stateconfiguration, specify ResourceIds in the ["StateConfigurationId 1","StateConfigurationId 2"] format.
 	//
-	// 	- If you set ResourceType to application, specify ResourceIds in the \["Name1","Name2"] format.
+	// 	- If you set ResourceType to application, specify ResourceIds in the ["Name1","Name2"] format.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -19895,11 +20133,15 @@ type TagResourcesShrinkRequest struct {
 	//
 	// 	- application: application.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// template
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	// The tag keys and values. The number of key-value pairs ranges from 1 to 20.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -20001,11 +20243,15 @@ type TriggerExecutionRequest struct {
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
 	// The ID of the event-, alert-, or timer-triggered execution.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// exec-sadw3f23rsad
 	ExecutionId *string `json:"ExecutionId,omitempty" xml:"ExecutionId,omitempty"`
 	// The region ID.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -20018,6 +20264,8 @@ type TriggerExecutionRequest struct {
 	// 	- Alarm
 	//
 	// 	- Timer
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -20118,21 +20366,25 @@ type UntagResourcesRequest struct {
 	All *bool `json:"All,omitempty" xml:"All,omitempty"`
 	// The region ID.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The IDs of the resources for which you want to modify the resource group. The number of resource IDs is 1 to 50.
 	//
-	// 	- If you set ResourceType to template, specify ResourceIds in the \["TemplateName1","TemplateName2"] format.
+	// 	- If you set ResourceType to template, specify ResourceIds in the ["TemplateName1","TemplateName2"] format.
 	//
-	// 	- If you set ResourceType to parameter, specify ResourceIds in the \["Name1","Name2"] format.
+	// 	- If you set ResourceType to parameter, specify ResourceIds in the ["Name1","Name2"] format.
 	//
-	// 	- If you set ResourceType to secretparameter, specify ResourceIds in the \["Name1","Name2"] format.
+	// 	- If you set ResourceType to secretparameter, specify ResourceIds in the ["Name1","Name2"] format.
 	//
-	// 	- If you set ResourceType to stateconfiguration, specify ResourceIds in the \["StateConfigurationId 1","StateConfigurationId 2"] format.
+	// 	- If you set ResourceType to stateconfiguration, specify ResourceIds in the ["StateConfigurationId 1","StateConfigurationId 2"] format.
 	//
-	// 	- If you set ResourceType to application, specify ResourceIds in the \["Name1","Name2"] format.
+	// 	- If you set ResourceType to application, specify ResourceIds in the ["Name1","Name2"] format.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -20149,6 +20401,8 @@ type UntagResourcesRequest struct {
 	// 	- stateconfiguration: desired-state configuration.
 	//
 	// 	- application: application.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -20204,21 +20458,25 @@ type UntagResourcesShrinkRequest struct {
 	All *bool `json:"All,omitempty" xml:"All,omitempty"`
 	// The region ID.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The IDs of the resources for which you want to modify the resource group. The number of resource IDs is 1 to 50.
 	//
-	// 	- If you set ResourceType to template, specify ResourceIds in the \["TemplateName1","TemplateName2"] format.
+	// 	- If you set ResourceType to template, specify ResourceIds in the ["TemplateName1","TemplateName2"] format.
 	//
-	// 	- If you set ResourceType to parameter, specify ResourceIds in the \["Name1","Name2"] format.
+	// 	- If you set ResourceType to parameter, specify ResourceIds in the ["Name1","Name2"] format.
 	//
-	// 	- If you set ResourceType to secretparameter, specify ResourceIds in the \["Name1","Name2"] format.
+	// 	- If you set ResourceType to secretparameter, specify ResourceIds in the ["Name1","Name2"] format.
 	//
-	// 	- If you set ResourceType to stateconfiguration, specify ResourceIds in the \["StateConfigurationId 1","StateConfigurationId 2"] format.
+	// 	- If you set ResourceType to stateconfiguration, specify ResourceIds in the ["StateConfigurationId 1","StateConfigurationId 2"] format.
 	//
-	// 	- If you set ResourceType to application, specify ResourceIds in the \["Name1","Name2"] format.
+	// 	- If you set ResourceType to application, specify ResourceIds in the ["Name1","Name2"] format.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -20235,6 +20493,8 @@ type UntagResourcesShrinkRequest struct {
 	// 	- stateconfiguration: desired-state configuration.
 	//
 	// 	- application: application.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -20349,6 +20609,8 @@ type UpdateApplicationRequest struct {
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The application name.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// My-Application
@@ -20457,6 +20719,8 @@ type UpdateApplicationShrinkRequest struct {
 	// test application
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The application name.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -20652,11 +20916,15 @@ func (s *UpdateApplicationResponse) SetBody(v *UpdateApplicationResponseBody) *U
 type UpdateApplicationGroupRequest struct {
 	// The application name.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// MyApplication
 	ApplicationName *string `json:"ApplicationName,omitempty" xml:"ApplicationName,omitempty"`
 	// The name of the application group.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -20876,6 +21144,8 @@ type UpdateExecutionRequest struct {
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The ID of the execution.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// exec-c223xxxxxxxxxxxxxxxx
@@ -21019,13 +21289,13 @@ type UpdateOpsItemRequest struct {
 	//
 	// ecs_instance_SystemMaintenance.Reboot
 	DedupString *string `json:"DedupString,omitempty" xml:"DedupString,omitempty"`
-	// The description of the O\&M item.
+	// The description of the O\\&M item.
 	//
 	// example:
 	//
 	// test-update
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of the O\&M item.
+	// The ID of the O\\&M item.
 	//
 	// example:
 	//
@@ -21053,7 +21323,7 @@ type UpdateOpsItemRequest struct {
 	//
 	// example:
 	//
-	// [\"arn:acs:ecs:cn-heyuan:1139354755361920:instance/i-f8z928h7aqotd3o65032\"]
+	// [\\"arn:acs:ecs:cn-heyuan:1139354755361920:instance/i-f8z928h7aqotd3o65032\\"]
 	Resources *string `json:"Resources,omitempty" xml:"Resources,omitempty"`
 	// The severity level.
 	//
@@ -21065,7 +21335,7 @@ type UpdateOpsItemRequest struct {
 	//
 	// example:
 	//
-	// \[{\n \\"priority\\":3,\n \\"type\\":\\"url\\",\n \\"url\\":\\"https://example.com\\",\n \\"description\\":\\"Specify a cross-zone high availability cluster. \\"\n}]
+	// [{\\n \\\\"priority\\\\":3,\\n \\\\"type\\\\":\\\\"url\\\\",\\n \\\\"url\\\\":\\\\"https://example.com\\\\",\\n \\\\"description\\\\":\\\\"Specify a cross-zone high availability cluster. \\\\"\\n}]
 	Solutions *string `json:"Solutions,omitempty" xml:"Solutions,omitempty"`
 	// The source business.
 	//
@@ -21091,7 +21361,7 @@ type UpdateOpsItemRequest struct {
 	//
 	// }
 	Tags map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	// The title of the O\&M item.
+	// The title of the O\\&M item.
 	//
 	// example:
 	//
@@ -21201,13 +21471,13 @@ type UpdateOpsItemShrinkRequest struct {
 	//
 	// ecs_instance_SystemMaintenance.Reboot
 	DedupString *string `json:"DedupString,omitempty" xml:"DedupString,omitempty"`
-	// The description of the O\&M item.
+	// The description of the O\\&M item.
 	//
 	// example:
 	//
 	// test-update
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of the O\&M item.
+	// The ID of the O\\&M item.
 	//
 	// example:
 	//
@@ -21235,7 +21505,7 @@ type UpdateOpsItemShrinkRequest struct {
 	//
 	// example:
 	//
-	// [\"arn:acs:ecs:cn-heyuan:1139354755361920:instance/i-f8z928h7aqotd3o65032\"]
+	// [\\"arn:acs:ecs:cn-heyuan:1139354755361920:instance/i-f8z928h7aqotd3o65032\\"]
 	Resources *string `json:"Resources,omitempty" xml:"Resources,omitempty"`
 	// The severity level.
 	//
@@ -21247,7 +21517,7 @@ type UpdateOpsItemShrinkRequest struct {
 	//
 	// example:
 	//
-	// \[{\n \\"priority\\":3,\n \\"type\\":\\"url\\",\n \\"url\\":\\"https://example.com\\",\n \\"description\\":\\"Specify a cross-zone high availability cluster. \\"\n}]
+	// [{\\n \\\\"priority\\\\":3,\\n \\\\"type\\\\":\\\\"url\\\\",\\n \\\\"url\\\\":\\\\"https://example.com\\\\",\\n \\\\"description\\\\":\\\\"Specify a cross-zone high availability cluster. \\\\"\\n}]
 	Solutions *string `json:"Solutions,omitempty" xml:"Solutions,omitempty"`
 	// The source business.
 	//
@@ -21273,7 +21543,7 @@ type UpdateOpsItemShrinkRequest struct {
 	//
 	// }
 	TagsShrink *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	// The title of the O\&M item.
+	// The title of the O\\&M item.
 	//
 	// example:
 	//
@@ -21365,7 +21635,7 @@ func (s *UpdateOpsItemShrinkRequest) SetTitle(v string) *UpdateOpsItemShrinkRequ
 }
 
 type UpdateOpsItemResponseBody struct {
-	// The information about the O\&M item.
+	// The information about the O\\&M item.
 	OpsItem *UpdateOpsItemResponseBodyOpsItem `json:"OpsItem,omitempty" xml:"OpsItem,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -21394,11 +21664,11 @@ func (s *UpdateOpsItemResponseBody) SetRequestId(v string) *UpdateOpsItemRespons
 }
 
 type UpdateOpsItemResponseBodyOpsItem struct {
-	// The attributes of the O\&M item.
+	// The attributes of the O\\&M item.
 	//
 	// example:
 	//
-	// [{\"Attribute\": {\"Weight\": 100}, \"RealServer\": \"uaejc8hnqzqz5valyh8dibolpvza48ik.yundunwaf5.com\"}]
+	// [{\\"Attribute\\": {\\"Weight\\": 100}, \\"RealServer\\": \\"uaejc8hnqzqz5valyh8dibolpvza48ik.yundunwaf5.com\\"}]
 	Attributes *string `json:"Attributes,omitempty" xml:"Attributes,omitempty"`
 	// The category.
 	//
@@ -21406,7 +21676,7 @@ type UpdateOpsItemResponseBodyOpsItem struct {
 	//
 	// Security
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	// The time when the O\&M item was created.
+	// The time when the O\\&M item was created.
 	//
 	// example:
 	//
@@ -21424,13 +21694,13 @@ type UpdateOpsItemResponseBodyOpsItem struct {
 	//
 	// test-update
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The user who modified the O\&M item.
+	// The user who modified the O\\&M item.
 	//
 	// example:
 	//
 	// root(130900000)
 	LastModifiedBy *string `json:"LastModifiedBy,omitempty" xml:"LastModifiedBy,omitempty"`
-	// The ID of the O\&M item.
+	// The ID of the O\\&M item.
 	//
 	// example:
 	//
@@ -21482,13 +21752,13 @@ type UpdateOpsItemResponseBodyOpsItem struct {
 	//
 	// }
 	Tags map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	// The title of the O\&M item.
+	// The title of the O\\&M item.
 	//
 	// example:
 	//
 	// Test
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
-	// The time when the O\&M item was updated.
+	// The time when the O\\&M item was updated.
 	//
 	// example:
 	//
@@ -21625,7 +21895,9 @@ type UpdateParameterRequest struct {
 	//
 	// update
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The name of the common parameter. The name must be 1 to 200 characters in length, and can contain letters, digits, hyphens (-), and underscores (\_). It cannot start with ALIYUN, ACS, ALIBABA, ALICLOUD, or OOS.
+	// The name of the common parameter. The name must be 1 to 200 characters in length, and can contain letters, digits, hyphens (-), and underscores (_). It cannot start with ALIYUN, ACS, ALIBABA, ALICLOUD, or OOS.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -21650,6 +21922,8 @@ type UpdateParameterRequest struct {
 	// {"k1": "v1", "k2": "v2"}
 	Tags *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 	// The value of the common parameter. The value must be 1 to 4,096 characters in length.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -21729,7 +22003,7 @@ type UpdateParameterResponseBodyParameter struct {
 	//
 	// example:
 	//
-	// "{\"AllowedValues\":[\"parameter\"],\"AllowedPattern\":\"parameter\",\"MinLength\":0,\"MaxLength\":20}"
+	// "{\\"AllowedValues\\":[\\"parameter\\"],\\"AllowedPattern\\":\\"parameter\\",\\"MinLength\\":0,\\"MaxLength\\":20}"
 	Constraints *string `json:"Constraints,omitempty" xml:"Constraints,omitempty"`
 	// The user who created the common parameter.
 	//
@@ -21936,6 +22210,8 @@ type UpdatePatchBaselineRequest struct {
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The name of the patch baseline.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// MyPatchBaseline
@@ -22095,6 +22371,8 @@ type UpdatePatchBaselineShrinkRequest struct {
 	// UpdatePatchBaseline
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The name of the patch baseline.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -22474,7 +22752,9 @@ type UpdateSecretParameterRequest struct {
 	//
 	// SecretParameter
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The name of the parameter. The name must be 1 to 180 characters in length, and can contain letters, digits, hyphens (-), and underscores (\_). It cannot start with ALIYUN, ACS, ALIBABA, ALICLOUD, or OOS.
+	// The name of the parameter. The name must be 1 to 180 characters in length, and can contain letters, digits, hyphens (-), and underscores (_). It cannot start with ALIYUN, ACS, ALIBABA, ALICLOUD, or OOS.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -22499,6 +22779,8 @@ type UpdateSecretParameterRequest struct {
 	// {"k1": "v1", "k2": "v2"}
 	Tags map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
 	// The value of the parameter. The value must be 1 to 4096 characters in length.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -22551,7 +22833,9 @@ type UpdateSecretParameterShrinkRequest struct {
 	//
 	// SecretParameter
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The name of the parameter. The name must be 1 to 180 characters in length, and can contain letters, digits, hyphens (-), and underscores (\_). It cannot start with ALIYUN, ACS, ALIBABA, ALICLOUD, or OOS.
+	// The name of the parameter. The name must be 1 to 180 characters in length, and can contain letters, digits, hyphens (-), and underscores (_). It cannot start with ALIYUN, ACS, ALIBABA, ALICLOUD, or OOS.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -22576,6 +22860,8 @@ type UpdateSecretParameterShrinkRequest struct {
 	// {"k1": "v1", "k2": "v2"}
 	TagsShrink *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 	// The value of the parameter. The value must be 1 to 4096 characters in length.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -22655,7 +22941,7 @@ type UpdateSecretParameterResponseBodyParameter struct {
 	//
 	// example:
 	//
-	// \"{\"\"AllowedValues":["secretparameter"],"AllowedPattern":".*","MinLength":0,"MaxLength":20}\"
+	// \\"{\\"\\"AllowedValues":["secretparameter"],"AllowedPattern":".*","MinLength":0,"MaxLength":20}\\"
 	Constraints *string `json:"Constraints,omitempty" xml:"Constraints,omitempty"`
 	// The user who created the parameter.
 	//
@@ -22895,6 +23181,8 @@ type UpdateStateConfigurationRequest struct {
 	ScheduleType *string `json:"ScheduleType,omitempty" xml:"ScheduleType,omitempty"`
 	// The ID of the desired-state configuration.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// sc-asfgdhj12345
@@ -23026,6 +23314,8 @@ type UpdateStateConfigurationShrinkRequest struct {
 	// rate
 	ScheduleType *string `json:"ScheduleType,omitempty" xml:"ScheduleType,omitempty"`
 	// The ID of the desired-state configuration.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -23334,9 +23624,11 @@ func (s *UpdateStateConfigurationResponse) SetBody(v *UpdateStateConfigurationRe
 type UpdateTemplateRequest struct {
 	// The content of the template. The content must be in the JSON or YAML format, and its maximum size is 64 KB.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
-	// { "FormatVersion": "OOS-2019-06-01", "Description": { "en": "Bulky starts the ECS instances", "name-en": "Bulky Start Instances", }, "Parameters": { "regionId": { "Type": "String", "Label": { "en": "RegionId", }, "AssociationProperty": "RegionId", "Default": "{{ ACS::RegionId }}" }, "targets": { "Type": "Json", "Label": { "en": "TargetInstance", }, "AssociationProperty": "Targets", "AssociationPropertyMetadata": { "ResourceType": "ALIYUN::ECS::Instance", "RegionId": "regionId" } }, "rateControl": { "Label": { "en": "RateControl", }, "Type": "Json", "AssociationProperty": "RateControl", "Default": { "Mode": "Concurrency", "MaxErrors": 0, "Concurrency": 10 } }, "OOSAssumeRole": { "Label": { "en": "OOSAssumeRole", }, "Type": "String", "Default": "OOSServiceRole" } }, "RamRole": "{{ OOSAssumeRole }}", "Tasks": \[ { "Name": "getInstance", "Description": { "en": "Views the ECS instances", }, "Action": "ACS::SelectTargets", "Properties": { "ResourceType": "ALIYUN::ECS::Instance", "RegionId": "{{ regionId }}", "Filters": \[ "{{ targets }}" ] }, "Outputs": { "instanceIds": { "Type": "List", "ValueSelector": "Instances.Instance\[].InstanceId" } } }, { "Name": "startInstance", "Action": "ACS::ECS::StartInstance", "Description": { "en": "Starts the ECS instances", }, "Properties": { "regionId": "{{ regionId }}", "instanceId": "{{ ACS::TaskLoopItem }}" }, "Loop": { "RateControl": "{{ rateControl }}", "Items": "{{ getInstance.instanceIds }}" } } ], "Outputs": { "instanceIds": { "Type": "List", "Value": "{{ getInstance.instanceIds }}" } } }
+	// { "FormatVersion": "OOS-2019-06-01", "Description": { "en": "Bulky starts the ECS instances", "name-en": "Bulky Start Instances", }, "Parameters": { "regionId": { "Type": "String", "Label": { "en": "RegionId", }, "AssociationProperty": "RegionId", "Default": "{{ ACS::RegionId }}" }, "targets": { "Type": "Json", "Label": { "en": "TargetInstance", }, "AssociationProperty": "Targets", "AssociationPropertyMetadata": { "ResourceType": "ALIYUN::ECS::Instance", "RegionId": "regionId" } }, "rateControl": { "Label": { "en": "RateControl", }, "Type": "Json", "AssociationProperty": "RateControl", "Default": { "Mode": "Concurrency", "MaxErrors": 0, "Concurrency": 10 } }, "OOSAssumeRole": { "Label": { "en": "OOSAssumeRole", }, "Type": "String", "Default": "OOSServiceRole" } }, "RamRole": "{{ OOSAssumeRole }}", "Tasks": [ { "Name": "getInstance", "Description": { "en": "Views the ECS instances", }, "Action": "ACS::SelectTargets", "Properties": { "ResourceType": "ALIYUN::ECS::Instance", "RegionId": "{{ regionId }}", "Filters": [ "{{ targets }}" ] }, "Outputs": { "instanceIds": { "Type": "List", "ValueSelector": "Instances.Instance[].InstanceId" } } }, { "Name": "startInstance", "Action": "ACS::ECS::StartInstance", "Description": { "en": "Starts the ECS instances", }, "Properties": { "regionId": "{{ regionId }}", "instanceId": "{{ ACS::TaskLoopItem }}" }, "Loop": { "RateControl": "{{ rateControl }}", "Items": "{{ getInstance.instanceIds }}" } } ], "Outputs": { "instanceIds": { "Type": "List", "Value": "{{ getInstance.instanceIds }}" } } }
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
 	// The ID of the region.
 	//
@@ -23356,7 +23648,9 @@ type UpdateTemplateRequest struct {
 	//
 	// {"k1":"k2","k2":"v2"}
 	Tags map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	// The name of the template. The name can be up to 200 characters in length and can contain letters, digits, hyphens (-), and underscores (\_). The name cannot start with ALIYUN, ACS, ALIBABA, or ALICLOUD.
+	// The name of the template. The name can be up to 200 characters in length and can contain letters, digits, hyphens (-), and underscores (_). The name cannot start with ALIYUN, ACS, ALIBABA, or ALICLOUD.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -23411,9 +23705,11 @@ func (s *UpdateTemplateRequest) SetVersionName(v string) *UpdateTemplateRequest 
 type UpdateTemplateShrinkRequest struct {
 	// The content of the template. The content must be in the JSON or YAML format, and its maximum size is 64 KB.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
-	// { "FormatVersion": "OOS-2019-06-01", "Description": { "en": "Bulky starts the ECS instances", "name-en": "Bulky Start Instances", }, "Parameters": { "regionId": { "Type": "String", "Label": { "en": "RegionId", }, "AssociationProperty": "RegionId", "Default": "{{ ACS::RegionId }}" }, "targets": { "Type": "Json", "Label": { "en": "TargetInstance", }, "AssociationProperty": "Targets", "AssociationPropertyMetadata": { "ResourceType": "ALIYUN::ECS::Instance", "RegionId": "regionId" } }, "rateControl": { "Label": { "en": "RateControl", }, "Type": "Json", "AssociationProperty": "RateControl", "Default": { "Mode": "Concurrency", "MaxErrors": 0, "Concurrency": 10 } }, "OOSAssumeRole": { "Label": { "en": "OOSAssumeRole", }, "Type": "String", "Default": "OOSServiceRole" } }, "RamRole": "{{ OOSAssumeRole }}", "Tasks": \[ { "Name": "getInstance", "Description": { "en": "Views the ECS instances", }, "Action": "ACS::SelectTargets", "Properties": { "ResourceType": "ALIYUN::ECS::Instance", "RegionId": "{{ regionId }}", "Filters": \[ "{{ targets }}" ] }, "Outputs": { "instanceIds": { "Type": "List", "ValueSelector": "Instances.Instance\[].InstanceId" } } }, { "Name": "startInstance", "Action": "ACS::ECS::StartInstance", "Description": { "en": "Starts the ECS instances", }, "Properties": { "regionId": "{{ regionId }}", "instanceId": "{{ ACS::TaskLoopItem }}" }, "Loop": { "RateControl": "{{ rateControl }}", "Items": "{{ getInstance.instanceIds }}" } } ], "Outputs": { "instanceIds": { "Type": "List", "Value": "{{ getInstance.instanceIds }}" } } }
+	// { "FormatVersion": "OOS-2019-06-01", "Description": { "en": "Bulky starts the ECS instances", "name-en": "Bulky Start Instances", }, "Parameters": { "regionId": { "Type": "String", "Label": { "en": "RegionId", }, "AssociationProperty": "RegionId", "Default": "{{ ACS::RegionId }}" }, "targets": { "Type": "Json", "Label": { "en": "TargetInstance", }, "AssociationProperty": "Targets", "AssociationPropertyMetadata": { "ResourceType": "ALIYUN::ECS::Instance", "RegionId": "regionId" } }, "rateControl": { "Label": { "en": "RateControl", }, "Type": "Json", "AssociationProperty": "RateControl", "Default": { "Mode": "Concurrency", "MaxErrors": 0, "Concurrency": 10 } }, "OOSAssumeRole": { "Label": { "en": "OOSAssumeRole", }, "Type": "String", "Default": "OOSServiceRole" } }, "RamRole": "{{ OOSAssumeRole }}", "Tasks": [ { "Name": "getInstance", "Description": { "en": "Views the ECS instances", }, "Action": "ACS::SelectTargets", "Properties": { "ResourceType": "ALIYUN::ECS::Instance", "RegionId": "{{ regionId }}", "Filters": [ "{{ targets }}" ] }, "Outputs": { "instanceIds": { "Type": "List", "ValueSelector": "Instances.Instance[].InstanceId" } } }, { "Name": "startInstance", "Action": "ACS::ECS::StartInstance", "Description": { "en": "Starts the ECS instances", }, "Properties": { "regionId": "{{ regionId }}", "instanceId": "{{ ACS::TaskLoopItem }}" }, "Loop": { "RateControl": "{{ rateControl }}", "Items": "{{ getInstance.instanceIds }}" } } ], "Outputs": { "instanceIds": { "Type": "List", "Value": "{{ getInstance.instanceIds }}" } } }
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
 	// The ID of the region.
 	//
@@ -23433,7 +23729,9 @@ type UpdateTemplateShrinkRequest struct {
 	//
 	// {"k1":"k2","k2":"v2"}
 	TagsShrink *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	// The name of the template. The name can be up to 200 characters in length and can contain letters, digits, hyphens (-), and underscores (\_). The name cannot start with ALIYUN, ACS, ALIBABA, or ALICLOUD.
+	// The name of the template. The name can be up to 200 characters in length and can contain letters, digits, hyphens (-), and underscores (_). The name cannot start with ALIYUN, ACS, ALIBABA, or ALICLOUD.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -23956,6 +24254,15 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
+// Summary:
+//
+// Cancels an execution.
+//
+// @param request - CancelExecutionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CancelExecutionResponse
 func (client *Client) CancelExecutionWithOptions(request *CancelExecutionRequest, runtime *util.RuntimeOptions) (_result *CancelExecutionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -23993,6 +24300,13 @@ func (client *Client) CancelExecutionWithOptions(request *CancelExecutionRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// Cancels an execution.
+//
+// @param request - CancelExecutionRequest
+//
+// @return CancelExecutionResponse
 func (client *Client) CancelExecution(request *CancelExecutionRequest) (_result *CancelExecutionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CancelExecutionResponse{}
@@ -24004,6 +24318,15 @@ func (client *Client) CancelExecution(request *CancelExecutionRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the resource group to which a cloud resource belongs.
+//
+// @param request - ChangeResourceGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ChangeResourceGroupResponse
 func (client *Client) ChangeResourceGroupWithOptions(request *ChangeResourceGroupRequest, runtime *util.RuntimeOptions) (_result *ChangeResourceGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -24049,6 +24372,13 @@ func (client *Client) ChangeResourceGroupWithOptions(request *ChangeResourceGrou
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the resource group to which a cloud resource belongs.
+//
+// @param request - ChangeResourceGroupRequest
+//
+// @return ChangeResourceGroupResponse
 func (client *Client) ChangeResourceGroup(request *ChangeResourceGroupRequest) (_result *ChangeResourceGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ChangeResourceGroupResponse{}
@@ -24060,6 +24390,15 @@ func (client *Client) ChangeResourceGroup(request *ChangeResourceGroupRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// Continues deploying an application group when an error occurs for calling the DeployApplicationGroup operation. You can call this operation only for the applications which reside in the China (Hangzhou) region. Use an endpoint of the China (Hangzhou) region.
+//
+// @param request - ContinueDeployApplicationGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ContinueDeployApplicationGroupResponse
 func (client *Client) ContinueDeployApplicationGroupWithOptions(request *ContinueDeployApplicationGroupRequest, runtime *util.RuntimeOptions) (_result *ContinueDeployApplicationGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -24105,6 +24444,13 @@ func (client *Client) ContinueDeployApplicationGroupWithOptions(request *Continu
 	return _result, _err
 }
 
+// Summary:
+//
+// Continues deploying an application group when an error occurs for calling the DeployApplicationGroup operation. You can call this operation only for the applications which reside in the China (Hangzhou) region. Use an endpoint of the China (Hangzhou) region.
+//
+// @param request - ContinueDeployApplicationGroupRequest
+//
+// @return ContinueDeployApplicationGroupResponse
 func (client *Client) ContinueDeployApplicationGroup(request *ContinueDeployApplicationGroupRequest) (_result *ContinueDeployApplicationGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ContinueDeployApplicationGroupResponse{}
@@ -24116,6 +24462,15 @@ func (client *Client) ContinueDeployApplicationGroup(request *ContinueDeployAppl
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates an application. You can call this operation only for the applications that reside in the China (Hangzhou) region. Use an endpoint of the China (Hangzhou) region.
+//
+// @param tmpReq - CreateApplicationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateApplicationResponse
 func (client *Client) CreateApplicationWithOptions(tmpReq *CreateApplicationRequest, runtime *util.RuntimeOptions) (_result *CreateApplicationResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -24187,6 +24542,13 @@ func (client *Client) CreateApplicationWithOptions(tmpReq *CreateApplicationRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates an application. You can call this operation only for the applications that reside in the China (Hangzhou) region. Use an endpoint of the China (Hangzhou) region.
+//
+// @param request - CreateApplicationRequest
+//
+// @return CreateApplicationResponse
 func (client *Client) CreateApplication(request *CreateApplicationRequest) (_result *CreateApplicationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateApplicationResponse{}
@@ -24198,6 +24560,15 @@ func (client *Client) CreateApplication(request *CreateApplicationRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates an application group. You can call this operation only for the application groups that reside in the China (Hangzhou) region. Use an endpoint of the China (Hangzhou) region.
+//
+// @param request - CreateApplicationGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateApplicationGroupResponse
 func (client *Client) CreateApplicationGroupWithOptions(request *CreateApplicationGroupRequest, runtime *util.RuntimeOptions) (_result *CreateApplicationGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -24263,6 +24634,13 @@ func (client *Client) CreateApplicationGroupWithOptions(request *CreateApplicati
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates an application group. You can call this operation only for the application groups that reside in the China (Hangzhou) region. Use an endpoint of the China (Hangzhou) region.
+//
+// @param request - CreateApplicationGroupRequest
+//
+// @return CreateApplicationGroupResponse
 func (client *Client) CreateApplicationGroup(request *CreateApplicationGroupRequest) (_result *CreateApplicationGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateApplicationGroupResponse{}
@@ -24274,6 +24652,15 @@ func (client *Client) CreateApplicationGroup(request *CreateApplicationGroupRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates an O\\\\\\\\\\\\&M Item.
+//
+// @param tmpReq - CreateOpsItemRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateOpsItemResponse
 func (client *Client) CreateOpsItemWithOptions(tmpReq *CreateOpsItemRequest, runtime *util.RuntimeOptions) (_result *CreateOpsItemResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -24361,6 +24748,13 @@ func (client *Client) CreateOpsItemWithOptions(tmpReq *CreateOpsItemRequest, run
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates an O\\\\\\\\\\\\&M Item.
+//
+// @param request - CreateOpsItemRequest
+//
+// @return CreateOpsItemResponse
 func (client *Client) CreateOpsItem(request *CreateOpsItemRequest) (_result *CreateOpsItemResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateOpsItemResponse{}
@@ -24372,6 +24766,15 @@ func (client *Client) CreateOpsItem(request *CreateOpsItemRequest) (_result *Cre
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a common parameter.
+//
+// @param tmpReq - CreateParameterRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateParameterResponse
 func (client *Client) CreateParameterWithOptions(tmpReq *CreateParameterRequest, runtime *util.RuntimeOptions) (_result *CreateParameterResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -24443,6 +24846,13 @@ func (client *Client) CreateParameterWithOptions(tmpReq *CreateParameterRequest,
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a common parameter.
+//
+// @param request - CreateParameterRequest
+//
+// @return CreateParameterResponse
 func (client *Client) CreateParameter(request *CreateParameterRequest) (_result *CreateParameterResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateParameterResponse{}
@@ -24454,6 +24864,15 @@ func (client *Client) CreateParameter(request *CreateParameterRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a patch baseline.
+//
+// @param tmpReq - CreatePatchBaselineRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreatePatchBaselineResponse
 func (client *Client) CreatePatchBaselineWithOptions(tmpReq *CreatePatchBaselineRequest, runtime *util.RuntimeOptions) (_result *CreatePatchBaselineResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -24553,6 +24972,13 @@ func (client *Client) CreatePatchBaselineWithOptions(tmpReq *CreatePatchBaseline
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a patch baseline.
+//
+// @param request - CreatePatchBaselineRequest
+//
+// @return CreatePatchBaselineResponse
 func (client *Client) CreatePatchBaseline(request *CreatePatchBaselineRequest) (_result *CreatePatchBaselineResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreatePatchBaselineResponse{}
@@ -24564,6 +24990,15 @@ func (client *Client) CreatePatchBaseline(request *CreatePatchBaselineRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates an encryption parameter. Make sure that you have the permissions to call this operation.
+//
+// @param tmpReq - CreateSecretParameterRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateSecretParameterResponse
 func (client *Client) CreateSecretParameterWithOptions(tmpReq *CreateSecretParameterRequest, runtime *util.RuntimeOptions) (_result *CreateSecretParameterResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -24643,6 +25078,13 @@ func (client *Client) CreateSecretParameterWithOptions(tmpReq *CreateSecretParam
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates an encryption parameter. Make sure that you have the permissions to call this operation.
+//
+// @param request - CreateSecretParameterRequest
+//
+// @return CreateSecretParameterResponse
 func (client *Client) CreateSecretParameter(request *CreateSecretParameterRequest) (_result *CreateSecretParameterResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateSecretParameterResponse{}
@@ -24654,6 +25096,15 @@ func (client *Client) CreateSecretParameter(request *CreateSecretParameterReques
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a desired-state configuration.
+//
+// @param tmpReq - CreateStateConfigurationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateStateConfigurationResponse
 func (client *Client) CreateStateConfigurationWithOptions(tmpReq *CreateStateConfigurationRequest, runtime *util.RuntimeOptions) (_result *CreateStateConfigurationResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -24737,6 +25188,13 @@ func (client *Client) CreateStateConfigurationWithOptions(tmpReq *CreateStateCon
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a desired-state configuration.
+//
+// @param request - CreateStateConfigurationRequest
+//
+// @return CreateStateConfigurationResponse
 func (client *Client) CreateStateConfiguration(request *CreateStateConfigurationRequest) (_result *CreateStateConfigurationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateStateConfigurationResponse{}
@@ -24748,6 +25206,15 @@ func (client *Client) CreateStateConfiguration(request *CreateStateConfiguration
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a template.
+//
+// @param tmpReq - CreateTemplateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateTemplateResponse
 func (client *Client) CreateTemplateWithOptions(tmpReq *CreateTemplateRequest, runtime *util.RuntimeOptions) (_result *CreateTemplateResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -24807,6 +25274,13 @@ func (client *Client) CreateTemplateWithOptions(tmpReq *CreateTemplateRequest, r
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a template.
+//
+// @param request - CreateTemplateRequest
+//
+// @return CreateTemplateResponse
 func (client *Client) CreateTemplate(request *CreateTemplateRequest) (_result *CreateTemplateResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateTemplateResponse{}
@@ -24818,6 +25292,15 @@ func (client *Client) CreateTemplate(request *CreateTemplateRequest) (_result *C
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes an application. You can call this operation only for the applications that reside in the China (Hangzhou) region. Use an endpoint of the China (Hangzhou) region.
+//
+// @param request - DeleteApplicationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteApplicationResponse
 func (client *Client) DeleteApplicationWithOptions(request *DeleteApplicationRequest, runtime *util.RuntimeOptions) (_result *DeleteApplicationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -24863,6 +25346,13 @@ func (client *Client) DeleteApplicationWithOptions(request *DeleteApplicationReq
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes an application. You can call this operation only for the applications that reside in the China (Hangzhou) region. Use an endpoint of the China (Hangzhou) region.
+//
+// @param request - DeleteApplicationRequest
+//
+// @return DeleteApplicationResponse
 func (client *Client) DeleteApplication(request *DeleteApplicationRequest) (_result *DeleteApplicationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteApplicationResponse{}
@@ -24874,6 +25364,15 @@ func (client *Client) DeleteApplication(request *DeleteApplicationRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes an application group. You can call this operation only for the application groups which reside in the China (Hangzhou) region. Use an endpoint of the China (Hangzhou) region.
+//
+// @param request - DeleteApplicationGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteApplicationGroupResponse
 func (client *Client) DeleteApplicationGroupWithOptions(request *DeleteApplicationGroupRequest, runtime *util.RuntimeOptions) (_result *DeleteApplicationGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -24919,6 +25418,13 @@ func (client *Client) DeleteApplicationGroupWithOptions(request *DeleteApplicati
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes an application group. You can call this operation only for the application groups which reside in the China (Hangzhou) region. Use an endpoint of the China (Hangzhou) region.
+//
+// @param request - DeleteApplicationGroupRequest
+//
+// @return DeleteApplicationGroupResponse
 func (client *Client) DeleteApplicationGroup(request *DeleteApplicationGroupRequest) (_result *DeleteApplicationGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteApplicationGroupResponse{}
@@ -24930,6 +25436,15 @@ func (client *Client) DeleteApplicationGroup(request *DeleteApplicationGroupRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes multiple executions.
+//
+// @param request - DeleteExecutionsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteExecutionsResponse
 func (client *Client) DeleteExecutionsWithOptions(request *DeleteExecutionsRequest, runtime *util.RuntimeOptions) (_result *DeleteExecutionsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -24967,6 +25482,13 @@ func (client *Client) DeleteExecutionsWithOptions(request *DeleteExecutionsReque
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes multiple executions.
+//
+// @param request - DeleteExecutionsRequest
+//
+// @return DeleteExecutionsResponse
 func (client *Client) DeleteExecutions(request *DeleteExecutionsRequest) (_result *DeleteExecutionsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteExecutionsResponse{}
@@ -24978,6 +25500,15 @@ func (client *Client) DeleteExecutions(request *DeleteExecutionsRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a common parameter.
+//
+// @param request - DeleteParameterRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteParameterResponse
 func (client *Client) DeleteParameterWithOptions(request *DeleteParameterRequest, runtime *util.RuntimeOptions) (_result *DeleteParameterResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -25015,6 +25546,13 @@ func (client *Client) DeleteParameterWithOptions(request *DeleteParameterRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a common parameter.
+//
+// @param request - DeleteParameterRequest
+//
+// @return DeleteParameterResponse
 func (client *Client) DeleteParameter(request *DeleteParameterRequest) (_result *DeleteParameterResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteParameterResponse{}
@@ -25026,6 +25564,15 @@ func (client *Client) DeleteParameter(request *DeleteParameterRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a patch baseline.
+//
+// @param request - DeletePatchBaselineRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeletePatchBaselineResponse
 func (client *Client) DeletePatchBaselineWithOptions(request *DeletePatchBaselineRequest, runtime *util.RuntimeOptions) (_result *DeletePatchBaselineResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -25063,6 +25610,13 @@ func (client *Client) DeletePatchBaselineWithOptions(request *DeletePatchBaselin
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a patch baseline.
+//
+// @param request - DeletePatchBaselineRequest
+//
+// @return DeletePatchBaselineResponse
 func (client *Client) DeletePatchBaseline(request *DeletePatchBaselineRequest) (_result *DeletePatchBaselineResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeletePatchBaselineResponse{}
@@ -25074,6 +25628,15 @@ func (client *Client) DeletePatchBaseline(request *DeletePatchBaselineRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes an encryption parameter. Make sure that you have the permissions to call the DeleteSecret operation before you call this operation.
+//
+// @param request - DeleteSecretParameterRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteSecretParameterResponse
 func (client *Client) DeleteSecretParameterWithOptions(request *DeleteSecretParameterRequest, runtime *util.RuntimeOptions) (_result *DeleteSecretParameterResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -25111,6 +25674,13 @@ func (client *Client) DeleteSecretParameterWithOptions(request *DeleteSecretPara
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes an encryption parameter. Make sure that you have the permissions to call the DeleteSecret operation before you call this operation.
+//
+// @param request - DeleteSecretParameterRequest
+//
+// @return DeleteSecretParameterResponse
 func (client *Client) DeleteSecretParameter(request *DeleteSecretParameterRequest) (_result *DeleteSecretParameterResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteSecretParameterResponse{}
@@ -25122,6 +25692,15 @@ func (client *Client) DeleteSecretParameter(request *DeleteSecretParameterReques
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes multiple desired-state configurations at a time.
+//
+// @param request - DeleteStateConfigurationsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteStateConfigurationsResponse
 func (client *Client) DeleteStateConfigurationsWithOptions(request *DeleteStateConfigurationsRequest, runtime *util.RuntimeOptions) (_result *DeleteStateConfigurationsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -25163,6 +25742,13 @@ func (client *Client) DeleteStateConfigurationsWithOptions(request *DeleteStateC
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes multiple desired-state configurations at a time.
+//
+// @param request - DeleteStateConfigurationsRequest
+//
+// @return DeleteStateConfigurationsResponse
 func (client *Client) DeleteStateConfigurations(request *DeleteStateConfigurationsRequest) (_result *DeleteStateConfigurationsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteStateConfigurationsResponse{}
@@ -25174,6 +25760,15 @@ func (client *Client) DeleteStateConfigurations(request *DeleteStateConfiguratio
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a template.
+//
+// @param request - DeleteTemplateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteTemplateResponse
 func (client *Client) DeleteTemplateWithOptions(request *DeleteTemplateRequest, runtime *util.RuntimeOptions) (_result *DeleteTemplateResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -25215,6 +25810,13 @@ func (client *Client) DeleteTemplateWithOptions(request *DeleteTemplateRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a template.
+//
+// @param request - DeleteTemplateRequest
+//
+// @return DeleteTemplateResponse
 func (client *Client) DeleteTemplate(request *DeleteTemplateRequest) (_result *DeleteTemplateResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteTemplateResponse{}
@@ -25226,6 +25828,15 @@ func (client *Client) DeleteTemplate(request *DeleteTemplateRequest) (_result *D
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes multiple templates.
+//
+// @param request - DeleteTemplatesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteTemplatesResponse
 func (client *Client) DeleteTemplatesWithOptions(request *DeleteTemplatesRequest, runtime *util.RuntimeOptions) (_result *DeleteTemplatesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -25267,6 +25878,13 @@ func (client *Client) DeleteTemplatesWithOptions(request *DeleteTemplatesRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes multiple templates.
+//
+// @param request - DeleteTemplatesRequest
+//
+// @return DeleteTemplatesResponse
 func (client *Client) DeleteTemplates(request *DeleteTemplatesRequest) (_result *DeleteTemplatesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteTemplatesResponse{}
@@ -25278,6 +25896,15 @@ func (client *Client) DeleteTemplates(request *DeleteTemplatesRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// Deploys an application group. You can call this operation only for the applications which reside in the China (Hangzhou) region. Use an endpoint of the China (Hangzhou) region.
+//
+// @param request - DeployApplicationGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeployApplicationGroupResponse
 func (client *Client) DeployApplicationGroupWithOptions(request *DeployApplicationGroupRequest, runtime *util.RuntimeOptions) (_result *DeployApplicationGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -25323,6 +25950,13 @@ func (client *Client) DeployApplicationGroupWithOptions(request *DeployApplicati
 	return _result, _err
 }
 
+// Summary:
+//
+// Deploys an application group. You can call this operation only for the applications which reside in the China (Hangzhou) region. Use an endpoint of the China (Hangzhou) region.
+//
+// @param request - DeployApplicationGroupRequest
+//
+// @return DeployApplicationGroupResponse
 func (client *Client) DeployApplicationGroup(request *DeployApplicationGroupRequest) (_result *DeployApplicationGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeployApplicationGroupResponse{}
@@ -25334,6 +25968,15 @@ func (client *Client) DeployApplicationGroup(request *DeployApplicationGroupRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询应用分组资源成本
+//
+// @param request - DescribeApplicationGroupBillRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeApplicationGroupBillResponse
 func (client *Client) DescribeApplicationGroupBillWithOptions(request *DescribeApplicationGroupBillRequest, runtime *util.RuntimeOptions) (_result *DescribeApplicationGroupBillResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -25391,6 +26034,13 @@ func (client *Client) DescribeApplicationGroupBillWithOptions(request *DescribeA
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询应用分组资源成本
+//
+// @param request - DescribeApplicationGroupBillRequest
+//
+// @return DescribeApplicationGroupBillResponse
 func (client *Client) DescribeApplicationGroupBill(request *DescribeApplicationGroupBillRequest) (_result *DescribeApplicationGroupBillResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeApplicationGroupBillResponse{}
@@ -25402,6 +26052,15 @@ func (client *Client) DescribeApplicationGroupBill(request *DescribeApplicationG
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries supported regions.
+//
+// @param request - DescribeRegionsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeRegionsResponse
 func (client *Client) DescribeRegionsWithOptions(request *DescribeRegionsRequest, runtime *util.RuntimeOptions) (_result *DescribeRegionsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -25439,6 +26098,13 @@ func (client *Client) DescribeRegionsWithOptions(request *DescribeRegionsRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries supported regions.
+//
+// @param request - DescribeRegionsRequest
+//
+// @return DescribeRegionsResponse
 func (client *Client) DescribeRegions(request *DescribeRegionsRequest) (_result *DescribeRegionsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeRegionsResponse{}
@@ -25450,6 +26116,15 @@ func (client *Client) DescribeRegions(request *DescribeRegionsRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the Resource Access Management (RAM) policy required for template execution.
+//
+// @param request - GenerateExecutionPolicyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GenerateExecutionPolicyResponse
 func (client *Client) GenerateExecutionPolicyWithOptions(request *GenerateExecutionPolicyRequest, runtime *util.RuntimeOptions) (_result *GenerateExecutionPolicyResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -25499,6 +26174,13 @@ func (client *Client) GenerateExecutionPolicyWithOptions(request *GenerateExecut
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the Resource Access Management (RAM) policy required for template execution.
+//
+// @param request - GenerateExecutionPolicyRequest
+//
+// @return GenerateExecutionPolicyResponse
 func (client *Client) GenerateExecutionPolicy(request *GenerateExecutionPolicyRequest) (_result *GenerateExecutionPolicyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GenerateExecutionPolicyResponse{}
@@ -25510,6 +26192,15 @@ func (client *Client) GenerateExecutionPolicy(request *GenerateExecutionPolicyRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information of an application. You can call this operation only for the applications that reside in the China (Hangzhou) region. Use an endpoint of the China (Hangzhou) region.
+//
+// @param request - GetApplicationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetApplicationResponse
 func (client *Client) GetApplicationWithOptions(request *GetApplicationRequest, runtime *util.RuntimeOptions) (_result *GetApplicationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -25547,6 +26238,13 @@ func (client *Client) GetApplicationWithOptions(request *GetApplicationRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information of an application. You can call this operation only for the applications that reside in the China (Hangzhou) region. Use an endpoint of the China (Hangzhou) region.
+//
+// @param request - GetApplicationRequest
+//
+// @return GetApplicationResponse
 func (client *Client) GetApplication(request *GetApplicationRequest) (_result *GetApplicationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetApplicationResponse{}
@@ -25558,6 +26256,15 @@ func (client *Client) GetApplication(request *GetApplicationRequest) (_result *G
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about an application group. You can call this operation only for the application groups that reside in the China (Hangzhou) region. Use an endpoint of the China (Hangzhou) region.
+//
+// @param request - GetApplicationGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetApplicationGroupResponse
 func (client *Client) GetApplicationGroupWithOptions(request *GetApplicationGroupRequest, runtime *util.RuntimeOptions) (_result *GetApplicationGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -25599,6 +26306,13 @@ func (client *Client) GetApplicationGroupWithOptions(request *GetApplicationGrou
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about an application group. You can call this operation only for the application groups that reside in the China (Hangzhou) region. Use an endpoint of the China (Hangzhou) region.
+//
+// @param request - GetApplicationGroupRequest
+//
+// @return GetApplicationGroupResponse
 func (client *Client) GetApplicationGroup(request *GetApplicationGroupRequest) (_result *GetApplicationGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetApplicationGroupResponse{}
@@ -25610,6 +26324,15 @@ func (client *Client) GetApplicationGroup(request *GetApplicationGroupRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about the template of an execution, including the content of the template.
+//
+// @param request - GetExecutionTemplateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetExecutionTemplateResponse
 func (client *Client) GetExecutionTemplateWithOptions(request *GetExecutionTemplateRequest, runtime *util.RuntimeOptions) (_result *GetExecutionTemplateResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -25647,6 +26370,13 @@ func (client *Client) GetExecutionTemplateWithOptions(request *GetExecutionTempl
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about the template of an execution, including the content of the template.
+//
+// @param request - GetExecutionTemplateRequest
+//
+// @return GetExecutionTemplateResponse
 func (client *Client) GetExecutionTemplate(request *GetExecutionTemplateRequest) (_result *GetExecutionTemplateResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetExecutionTemplateResponse{}
@@ -25658,6 +26388,15 @@ func (client *Client) GetExecutionTemplate(request *GetExecutionTemplateRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the properties of a configuration list.
+//
+// @param request - GetInventorySchemaRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetInventorySchemaResponse
 func (client *Client) GetInventorySchemaWithOptions(request *GetInventorySchemaRequest, runtime *util.RuntimeOptions) (_result *GetInventorySchemaResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -25707,6 +26446,13 @@ func (client *Client) GetInventorySchemaWithOptions(request *GetInventorySchemaR
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the properties of a configuration list.
+//
+// @param request - GetInventorySchemaRequest
+//
+// @return GetInventorySchemaResponse
 func (client *Client) GetInventorySchema(request *GetInventorySchemaRequest) (_result *GetInventorySchemaResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetInventorySchemaResponse{}
@@ -25718,6 +26464,15 @@ func (client *Client) GetInventorySchema(request *GetInventorySchemaRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the details of an O\\\\\\\\\\\\&M item.
+//
+// @param request - GetOpsItemRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetOpsItemResponse
 func (client *Client) GetOpsItemWithOptions(request *GetOpsItemRequest, runtime *util.RuntimeOptions) (_result *GetOpsItemResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -25755,6 +26510,13 @@ func (client *Client) GetOpsItemWithOptions(request *GetOpsItemRequest, runtime 
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the details of an O\\\\\\\\\\\\&M item.
+//
+// @param request - GetOpsItemRequest
+//
+// @return GetOpsItemResponse
 func (client *Client) GetOpsItem(request *GetOpsItemRequest) (_result *GetOpsItemResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetOpsItemResponse{}
@@ -25766,6 +26528,15 @@ func (client *Client) GetOpsItem(request *GetOpsItemRequest) (_result *GetOpsIte
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a common parameter and its value.
+//
+// @param request - GetParameterRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetParameterResponse
 func (client *Client) GetParameterWithOptions(request *GetParameterRequest, runtime *util.RuntimeOptions) (_result *GetParameterResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -25811,6 +26582,13 @@ func (client *Client) GetParameterWithOptions(request *GetParameterRequest, runt
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a common parameter and its value.
+//
+// @param request - GetParameterRequest
+//
+// @return GetParameterResponse
 func (client *Client) GetParameter(request *GetParameterRequest) (_result *GetParameterResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetParameterResponse{}
@@ -25822,6 +26600,15 @@ func (client *Client) GetParameter(request *GetParameterRequest) (_result *GetPa
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about one or more parameters.
+//
+// @param request - GetParametersRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetParametersResponse
 func (client *Client) GetParametersWithOptions(request *GetParametersRequest, runtime *util.RuntimeOptions) (_result *GetParametersResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -25859,6 +26646,13 @@ func (client *Client) GetParametersWithOptions(request *GetParametersRequest, ru
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about one or more parameters.
+//
+// @param request - GetParametersRequest
+//
+// @return GetParametersResponse
 func (client *Client) GetParameters(request *GetParametersRequest) (_result *GetParametersResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetParametersResponse{}
@@ -25870,6 +26664,15 @@ func (client *Client) GetParameters(request *GetParametersRequest) (_result *Get
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries one or more parameters by path.
+//
+// @param request - GetParametersByPathRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetParametersByPathResponse
 func (client *Client) GetParametersByPathWithOptions(request *GetParametersByPathRequest, runtime *util.RuntimeOptions) (_result *GetParametersByPathResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -25919,6 +26722,13 @@ func (client *Client) GetParametersByPathWithOptions(request *GetParametersByPat
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries one or more parameters by path.
+//
+// @param request - GetParametersByPathRequest
+//
+// @return GetParametersByPathResponse
 func (client *Client) GetParametersByPath(request *GetParametersByPathRequest) (_result *GetParametersByPathResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetParametersByPathResponse{}
@@ -25930,6 +26740,15 @@ func (client *Client) GetParametersByPath(request *GetParametersByPathRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information of a patch baseline.
+//
+// @param request - GetPatchBaselineRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetPatchBaselineResponse
 func (client *Client) GetPatchBaselineWithOptions(request *GetPatchBaselineRequest, runtime *util.RuntimeOptions) (_result *GetPatchBaselineResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -25967,6 +26786,13 @@ func (client *Client) GetPatchBaselineWithOptions(request *GetPatchBaselineReque
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information of a patch baseline.
+//
+// @param request - GetPatchBaselineRequest
+//
+// @return GetPatchBaselineResponse
 func (client *Client) GetPatchBaseline(request *GetPatchBaselineRequest) (_result *GetPatchBaselineResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetPatchBaselineResponse{}
@@ -25978,6 +26804,15 @@ func (client *Client) GetPatchBaseline(request *GetPatchBaselineRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about an encryption parameter, including the parameter value. Make sure that you have the permissions to call the GetSecretValue operation before you call this operation.
+//
+// @param request - GetSecretParameterRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetSecretParameterResponse
 func (client *Client) GetSecretParameterWithOptions(request *GetSecretParameterRequest, runtime *util.RuntimeOptions) (_result *GetSecretParameterResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -26023,6 +26858,13 @@ func (client *Client) GetSecretParameterWithOptions(request *GetSecretParameterR
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about an encryption parameter, including the parameter value. Make sure that you have the permissions to call the GetSecretValue operation before you call this operation.
+//
+// @param request - GetSecretParameterRequest
+//
+// @return GetSecretParameterResponse
 func (client *Client) GetSecretParameter(request *GetSecretParameterRequest) (_result *GetSecretParameterResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetSecretParameterResponse{}
@@ -26034,6 +26876,15 @@ func (client *Client) GetSecretParameter(request *GetSecretParameterRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about one or more encryption parameters. Make sure that you have the permissions to call the GetSecretValue operation before you call this operation.
+//
+// @param request - GetSecretParametersRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetSecretParametersResponse
 func (client *Client) GetSecretParametersWithOptions(request *GetSecretParametersRequest, runtime *util.RuntimeOptions) (_result *GetSecretParametersResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -26075,6 +26926,13 @@ func (client *Client) GetSecretParametersWithOptions(request *GetSecretParameter
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about one or more encryption parameters. Make sure that you have the permissions to call the GetSecretValue operation before you call this operation.
+//
+// @param request - GetSecretParametersRequest
+//
+// @return GetSecretParametersResponse
 func (client *Client) GetSecretParameters(request *GetSecretParametersRequest) (_result *GetSecretParametersResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetSecretParametersResponse{}
@@ -26086,6 +26944,15 @@ func (client *Client) GetSecretParameters(request *GetSecretParametersRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries encryption parameters by path. Make sure that you have the permissions to call the GetSecretValue operation before you call this operation.
+//
+// @param request - GetSecretParametersByPathRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetSecretParametersByPathResponse
 func (client *Client) GetSecretParametersByPathWithOptions(request *GetSecretParametersByPathRequest, runtime *util.RuntimeOptions) (_result *GetSecretParametersByPathResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -26139,6 +27006,13 @@ func (client *Client) GetSecretParametersByPathWithOptions(request *GetSecretPar
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries encryption parameters by path. Make sure that you have the permissions to call the GetSecretValue operation before you call this operation.
+//
+// @param request - GetSecretParametersByPathRequest
+//
+// @return GetSecretParametersByPathResponse
 func (client *Client) GetSecretParametersByPath(request *GetSecretParametersByPathRequest) (_result *GetSecretParametersByPathResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetSecretParametersByPathResponse{}
@@ -26150,6 +27024,15 @@ func (client *Client) GetSecretParametersByPath(request *GetSecretParametersByPa
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the settings of the delivery feature.
+//
+// @param request - GetServiceSettingsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetServiceSettingsResponse
 func (client *Client) GetServiceSettingsWithOptions(request *GetServiceSettingsRequest, runtime *util.RuntimeOptions) (_result *GetServiceSettingsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -26183,6 +27066,13 @@ func (client *Client) GetServiceSettingsWithOptions(request *GetServiceSettingsR
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the settings of the delivery feature.
+//
+// @param request - GetServiceSettingsRequest
+//
+// @return GetServiceSettingsResponse
 func (client *Client) GetServiceSettings(request *GetServiceSettingsRequest) (_result *GetServiceSettingsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetServiceSettingsResponse{}
@@ -26194,6 +27084,15 @@ func (client *Client) GetServiceSettings(request *GetServiceSettingsRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about a template, including the content of the template.
+//
+// @param request - GetTemplateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetTemplateResponse
 func (client *Client) GetTemplateWithOptions(request *GetTemplateRequest, runtime *util.RuntimeOptions) (_result *GetTemplateResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -26235,6 +27134,13 @@ func (client *Client) GetTemplateWithOptions(request *GetTemplateRequest, runtim
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about a template, including the content of the template.
+//
+// @param request - GetTemplateRequest
+//
+// @return GetTemplateResponse
 func (client *Client) GetTemplate(request *GetTemplateRequest) (_result *GetTemplateResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetTemplateResponse{}
@@ -26246,6 +27152,15 @@ func (client *Client) GetTemplate(request *GetTemplateRequest) (_result *GetTemp
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the available actions, including atomic actions and cloud product actions.
+//
+// @param request - ListActionsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListActionsResponse
 func (client *Client) ListActionsWithOptions(request *ListActionsRequest, runtime *util.RuntimeOptions) (_result *ListActionsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -26291,6 +27206,13 @@ func (client *Client) ListActionsWithOptions(request *ListActionsRequest, runtim
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the available actions, including atomic actions and cloud product actions.
+//
+// @param request - ListActionsRequest
+//
+// @return ListActionsResponse
 func (client *Client) ListActions(request *ListActionsRequest) (_result *ListActionsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListActionsResponse{}
@@ -26302,6 +27224,15 @@ func (client *Client) ListActions(request *ListActionsRequest) (_result *ListAct
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of application groups. You can call this operation only for the application groups that reside in the China (Hangzhou) region. Use an endpoint of the China (Hangzhou) region.
+//
+// @param request - ListApplicationGroupsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListApplicationGroupsResponse
 func (client *Client) ListApplicationGroupsWithOptions(request *ListApplicationGroupsRequest, runtime *util.RuntimeOptions) (_result *ListApplicationGroupsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -26363,6 +27294,13 @@ func (client *Client) ListApplicationGroupsWithOptions(request *ListApplicationG
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of application groups. You can call this operation only for the application groups that reside in the China (Hangzhou) region. Use an endpoint of the China (Hangzhou) region.
+//
+// @param request - ListApplicationGroupsRequest
+//
+// @return ListApplicationGroupsResponse
 func (client *Client) ListApplicationGroups(request *ListApplicationGroupsRequest) (_result *ListApplicationGroupsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListApplicationGroupsResponse{}
@@ -26374,6 +27312,15 @@ func (client *Client) ListApplicationGroups(request *ListApplicationGroupsReques
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of applications. You can call this operation only for the applications that reside in the China (Hangzhou) region. Use an endpoint of the China (Hangzhou) region.
+//
+// @param tmpReq - ListApplicationsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListApplicationsResponse
 func (client *Client) ListApplicationsWithOptions(tmpReq *ListApplicationsRequest, runtime *util.RuntimeOptions) (_result *ListApplicationsResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -26437,6 +27384,13 @@ func (client *Client) ListApplicationsWithOptions(tmpReq *ListApplicationsReques
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of applications. You can call this operation only for the applications that reside in the China (Hangzhou) region. Use an endpoint of the China (Hangzhou) region.
+//
+// @param request - ListApplicationsRequest
+//
+// @return ListApplicationsResponse
 func (client *Client) ListApplications(request *ListApplicationsRequest) (_result *ListApplicationsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListApplicationsResponse{}
@@ -26448,9 +27402,13 @@ func (client *Client) ListApplications(request *ListApplicationsRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the logs of an execution.
+//
 // Description:
 //
-// ****
+// ***
 //
 // @param request - ListExecutionLogsRequest
 //
@@ -26510,9 +27468,13 @@ func (client *Client) ListExecutionLogsWithOptions(request *ListExecutionLogsReq
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the logs of an execution.
+//
 // Description:
 //
-// ****
+// ***
 //
 // @param request - ListExecutionLogsRequest
 //
@@ -26528,6 +27490,15 @@ func (client *Client) ListExecutionLogs(request *ListExecutionLogsRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries high-risk tasks in the execution of a template.
+//
+// @param request - ListExecutionRiskyTasksRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListExecutionRiskyTasksResponse
 func (client *Client) ListExecutionRiskyTasksWithOptions(request *ListExecutionRiskyTasksRequest, runtime *util.RuntimeOptions) (_result *ListExecutionRiskyTasksResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -26565,6 +27536,13 @@ func (client *Client) ListExecutionRiskyTasksWithOptions(request *ListExecutionR
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries high-risk tasks in the execution of a template.
+//
+// @param request - ListExecutionRiskyTasksRequest
+//
+// @return ListExecutionRiskyTasksResponse
 func (client *Client) ListExecutionRiskyTasks(request *ListExecutionRiskyTasksRequest) (_result *ListExecutionRiskyTasksResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListExecutionRiskyTasksResponse{}
@@ -26576,6 +27554,15 @@ func (client *Client) ListExecutionRiskyTasks(request *ListExecutionRiskyTasksRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries executions. Multiple methods are supported to filter executions.
+//
+// @param tmpReq - ListExecutionsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListExecutionsResponse
 func (client *Client) ListExecutionsWithOptions(tmpReq *ListExecutionsRequest, runtime *util.RuntimeOptions) (_result *ListExecutionsResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -26711,6 +27698,13 @@ func (client *Client) ListExecutionsWithOptions(tmpReq *ListExecutionsRequest, r
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries executions. Multiple methods are supported to filter executions.
+//
+// @param request - ListExecutionsRequest
+//
+// @return ListExecutionsResponse
 func (client *Client) ListExecutions(request *ListExecutionsRequest) (_result *ListExecutionsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListExecutionsResponse{}
@@ -26722,6 +27716,15 @@ func (client *Client) ListExecutions(request *ListExecutionsRequest) (_result *L
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取仓库信息
+//
+// @param request - ListGitRepositoriesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListGitRepositoriesResponse
 func (client *Client) ListGitRepositoriesWithOptions(request *ListGitRepositoriesRequest, runtime *util.RuntimeOptions) (_result *ListGitRepositoriesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -26752,6 +27755,10 @@ func (client *Client) ListGitRepositoriesWithOptions(request *ListGitRepositorie
 		query["Platform"] = request.Platform
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -26775,6 +27782,13 @@ func (client *Client) ListGitRepositoriesWithOptions(request *ListGitRepositorie
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取仓库信息
+//
+// @param request - ListGitRepositoriesRequest
+//
+// @return ListGitRepositoriesResponse
 func (client *Client) ListGitRepositories(request *ListGitRepositoriesRequest) (_result *ListGitRepositoriesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListGitRepositoriesResponse{}
@@ -26786,6 +27800,15 @@ func (client *Client) ListGitRepositories(request *ListGitRepositoriesRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about the patches of an instance.
+//
+// @param request - ListInstancePatchStatesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListInstancePatchStatesResponse
 func (client *Client) ListInstancePatchStatesWithOptions(request *ListInstancePatchStatesRequest, runtime *util.RuntimeOptions) (_result *ListInstancePatchStatesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -26831,6 +27854,13 @@ func (client *Client) ListInstancePatchStatesWithOptions(request *ListInstancePa
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about the patches of an instance.
+//
+// @param request - ListInstancePatchStatesRequest
+//
+// @return ListInstancePatchStatesResponse
 func (client *Client) ListInstancePatchStates(request *ListInstancePatchStatesRequest) (_result *ListInstancePatchStatesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListInstancePatchStatesResponse{}
@@ -26842,6 +27872,15 @@ func (client *Client) ListInstancePatchStates(request *ListInstancePatchStatesRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about the patches of an instance.
+//
+// @param request - ListInstancePatchesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListInstancePatchesResponse
 func (client *Client) ListInstancePatchesWithOptions(request *ListInstancePatchesRequest, runtime *util.RuntimeOptions) (_result *ListInstancePatchesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -26891,6 +27930,13 @@ func (client *Client) ListInstancePatchesWithOptions(request *ListInstancePatche
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about the patches of an instance.
+//
+// @param request - ListInstancePatchesRequest
+//
+// @return ListInstancePatchesResponse
 func (client *Client) ListInstancePatches(request *ListInstancePatchesRequest) (_result *ListInstancePatchesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListInstancePatchesResponse{}
@@ -26902,6 +27948,15 @@ func (client *Client) ListInstancePatches(request *ListInstancePatchesRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the configurations of an Elastic Compute Service (ECS) instance.
+//
+// @param request - ListInventoryEntriesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListInventoryEntriesResponse
 func (client *Client) ListInventoryEntriesWithOptions(request *ListInventoryEntriesRequest, runtime *util.RuntimeOptions) (_result *ListInventoryEntriesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -26955,6 +28010,13 @@ func (client *Client) ListInventoryEntriesWithOptions(request *ListInventoryEntr
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the configurations of an Elastic Compute Service (ECS) instance.
+//
+// @param request - ListInventoryEntriesRequest
+//
+// @return ListInventoryEntriesResponse
 func (client *Client) ListInventoryEntries(request *ListInventoryEntriesRequest) (_result *ListInventoryEntriesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListInventoryEntriesResponse{}
@@ -26966,6 +28028,15 @@ func (client *Client) ListInventoryEntries(request *ListInventoryEntriesRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries O\\&M items.
+//
+// @param tmpReq - ListOpsItemsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListOpsItemsResponse
 func (client *Client) ListOpsItemsWithOptions(tmpReq *ListOpsItemsRequest, runtime *util.RuntimeOptions) (_result *ListOpsItemsResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -27029,6 +28100,13 @@ func (client *Client) ListOpsItemsWithOptions(tmpReq *ListOpsItemsRequest, runti
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries O\\&M items.
+//
+// @param request - ListOpsItemsRequest
+//
+// @return ListOpsItemsResponse
 func (client *Client) ListOpsItems(request *ListOpsItemsRequest) (_result *ListOpsItemsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListOpsItemsResponse{}
@@ -27040,6 +28118,15 @@ func (client *Client) ListOpsItems(request *ListOpsItemsRequest) (_result *ListO
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the versions of a common parameter.
+//
+// @param request - ListParameterVersionsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListParameterVersionsResponse
 func (client *Client) ListParameterVersionsWithOptions(request *ListParameterVersionsRequest, runtime *util.RuntimeOptions) (_result *ListParameterVersionsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -27089,6 +28176,13 @@ func (client *Client) ListParameterVersionsWithOptions(request *ListParameterVer
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the versions of a common parameter.
+//
+// @param request - ListParameterVersionsRequest
+//
+// @return ListParameterVersionsResponse
 func (client *Client) ListParameterVersions(request *ListParameterVersionsRequest) (_result *ListParameterVersionsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListParameterVersionsResponse{}
@@ -27100,6 +28194,15 @@ func (client *Client) ListParameterVersions(request *ListParameterVersionsReques
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries common parameters. Multiple methods are supported to filter common parameters.
+//
+// @param tmpReq - ListParametersRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListParametersResponse
 func (client *Client) ListParametersWithOptions(tmpReq *ListParametersRequest, runtime *util.RuntimeOptions) (_result *ListParametersResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -27183,6 +28286,13 @@ func (client *Client) ListParametersWithOptions(tmpReq *ListParametersRequest, r
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries common parameters. Multiple methods are supported to filter common parameters.
+//
+// @param request - ListParametersRequest
+//
+// @return ListParametersResponse
 func (client *Client) ListParameters(request *ListParametersRequest) (_result *ListParametersResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListParametersResponse{}
@@ -27194,6 +28304,15 @@ func (client *Client) ListParameters(request *ListParametersRequest) (_result *L
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of patch baselines.
+//
+// @param tmpReq - ListPatchBaselinesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListPatchBaselinesResponse
 func (client *Client) ListPatchBaselinesWithOptions(tmpReq *ListPatchBaselinesRequest, runtime *util.RuntimeOptions) (_result *ListPatchBaselinesResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -27281,6 +28400,13 @@ func (client *Client) ListPatchBaselinesWithOptions(tmpReq *ListPatchBaselinesRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of patch baselines.
+//
+// @param request - ListPatchBaselinesRequest
+//
+// @return ListPatchBaselinesResponse
 func (client *Client) ListPatchBaselines(request *ListPatchBaselinesRequest) (_result *ListPatchBaselinesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListPatchBaselinesResponse{}
@@ -27292,6 +28418,15 @@ func (client *Client) ListPatchBaselines(request *ListPatchBaselinesRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about a scheduled execution that involves O&M operations on Elastic Compute Service (ECS) instances.
+//
+// @param request - ListResourceExecutionStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListResourceExecutionStatusResponse
 func (client *Client) ListResourceExecutionStatusWithOptions(request *ListResourceExecutionStatusRequest, runtime *util.RuntimeOptions) (_result *ListResourceExecutionStatusResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -27337,6 +28472,13 @@ func (client *Client) ListResourceExecutionStatusWithOptions(request *ListResour
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about a scheduled execution that involves O&M operations on Elastic Compute Service (ECS) instances.
+//
+// @param request - ListResourceExecutionStatusRequest
+//
+// @return ListResourceExecutionStatusResponse
 func (client *Client) ListResourceExecutionStatus(request *ListResourceExecutionStatusRequest) (_result *ListResourceExecutionStatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListResourceExecutionStatusResponse{}
@@ -27348,6 +28490,15 @@ func (client *Client) ListResourceExecutionStatus(request *ListResourceExecution
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries versions of an encryption parameter.
+//
+// @param request - ListSecretParameterVersionsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListSecretParameterVersionsResponse
 func (client *Client) ListSecretParameterVersionsWithOptions(request *ListSecretParameterVersionsRequest, runtime *util.RuntimeOptions) (_result *ListSecretParameterVersionsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -27401,6 +28552,13 @@ func (client *Client) ListSecretParameterVersionsWithOptions(request *ListSecret
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries versions of an encryption parameter.
+//
+// @param request - ListSecretParameterVersionsRequest
+//
+// @return ListSecretParameterVersionsResponse
 func (client *Client) ListSecretParameterVersions(request *ListSecretParameterVersionsRequest) (_result *ListSecretParameterVersionsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListSecretParameterVersionsResponse{}
@@ -27412,6 +28570,10 @@ func (client *Client) ListSecretParameterVersions(request *ListSecretParameterVe
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries common parameters. Multiple types of queries are supported.
+//
 // Description:
 //
 // Before you call this operation, make sure that you have the permission to manage Key Management Service (KMS) secrets.
@@ -27496,6 +28658,10 @@ func (client *Client) ListSecretParametersWithOptions(tmpReq *ListSecretParamete
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries common parameters. Multiple types of queries are supported.
+//
 // Description:
 //
 // Before you call this operation, make sure that you have the permission to manage Key Management Service (KMS) secrets.
@@ -27514,6 +28680,15 @@ func (client *Client) ListSecretParameters(request *ListSecretParametersRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries desired-state configurations.
+//
+// @param tmpReq - ListStateConfigurationsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListStateConfigurationsResponse
 func (client *Client) ListStateConfigurationsWithOptions(tmpReq *ListStateConfigurationsRequest, runtime *util.RuntimeOptions) (_result *ListStateConfigurationsResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -27581,6 +28756,13 @@ func (client *Client) ListStateConfigurationsWithOptions(tmpReq *ListStateConfig
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries desired-state configurations.
+//
+// @param request - ListStateConfigurationsRequest
+//
+// @return ListStateConfigurationsResponse
 func (client *Client) ListStateConfigurations(request *ListStateConfigurationsRequest) (_result *ListStateConfigurationsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListStateConfigurationsResponse{}
@@ -27592,6 +28774,15 @@ func (client *Client) ListStateConfigurations(request *ListStateConfigurationsRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the tags.
+//
+// @param request - ListTagKeysRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListTagKeysResponse
 func (client *Client) ListTagKeysWithOptions(request *ListTagKeysRequest, runtime *util.RuntimeOptions) (_result *ListTagKeysResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -27637,6 +28828,13 @@ func (client *Client) ListTagKeysWithOptions(request *ListTagKeysRequest, runtim
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the tags.
+//
+// @param request - ListTagKeysRequest
+//
+// @return ListTagKeysResponse
 func (client *Client) ListTagKeys(request *ListTagKeysRequest) (_result *ListTagKeysResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListTagKeysResponse{}
@@ -27648,6 +28846,15 @@ func (client *Client) ListTagKeys(request *ListTagKeysRequest) (_result *ListTag
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the tags that are added to one or more resources.
+//
+// @param tmpReq - ListTagResourcesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListTagResourcesResponse
 func (client *Client) ListTagResourcesWithOptions(tmpReq *ListTagResourcesRequest, runtime *util.RuntimeOptions) (_result *ListTagResourcesResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -27707,6 +28914,13 @@ func (client *Client) ListTagResourcesWithOptions(tmpReq *ListTagResourcesReques
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the tags that are added to one or more resources.
+//
+// @param request - ListTagResourcesRequest
+//
+// @return ListTagResourcesResponse
 func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_result *ListTagResourcesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListTagResourcesResponse{}
@@ -27718,6 +28932,15 @@ func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the values of created tags.
+//
+// @param request - ListTagValuesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListTagValuesResponse
 func (client *Client) ListTagValuesWithOptions(request *ListTagValuesRequest, runtime *util.RuntimeOptions) (_result *ListTagValuesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -27767,6 +28990,13 @@ func (client *Client) ListTagValuesWithOptions(request *ListTagValuesRequest, ru
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the values of created tags.
+//
+// @param request - ListTagValuesRequest
+//
+// @return ListTagValuesResponse
 func (client *Client) ListTagValues(request *ListTagValuesRequest) (_result *ListTagValuesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListTagValuesResponse{}
@@ -27778,6 +29008,15 @@ func (client *Client) ListTagValues(request *ListTagValuesRequest) (_result *Lis
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries task executions. Multiple methods are supported to filter task executions.
+//
+// @param request - ListTaskExecutionsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListTaskExecutionsResponse
 func (client *Client) ListTaskExecutionsWithOptions(request *ListTaskExecutionsRequest, runtime *util.RuntimeOptions) (_result *ListTaskExecutionsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -27871,6 +29110,13 @@ func (client *Client) ListTaskExecutionsWithOptions(request *ListTaskExecutionsR
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries task executions. Multiple methods are supported to filter task executions.
+//
+// @param request - ListTaskExecutionsRequest
+//
+// @return ListTaskExecutionsResponse
 func (client *Client) ListTaskExecutions(request *ListTaskExecutionsRequest) (_result *ListTaskExecutionsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListTaskExecutionsResponse{}
@@ -27882,6 +29128,15 @@ func (client *Client) ListTaskExecutions(request *ListTaskExecutionsRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of versions of a template.
+//
+// @param request - ListTemplateVersionsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListTemplateVersionsResponse
 func (client *Client) ListTemplateVersionsWithOptions(request *ListTemplateVersionsRequest, runtime *util.RuntimeOptions) (_result *ListTemplateVersionsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -27931,6 +29186,13 @@ func (client *Client) ListTemplateVersionsWithOptions(request *ListTemplateVersi
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of versions of a template.
+//
+// @param request - ListTemplateVersionsRequest
+//
+// @return ListTemplateVersionsResponse
 func (client *Client) ListTemplateVersions(request *ListTemplateVersionsRequest) (_result *ListTemplateVersionsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListTemplateVersionsResponse{}
@@ -27942,6 +29204,15 @@ func (client *Client) ListTemplateVersions(request *ListTemplateVersionsRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries templates. Multiple methods are supported to filter templates.
+//
+// @param tmpReq - ListTemplatesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListTemplatesResponse
 func (client *Client) ListTemplatesWithOptions(tmpReq *ListTemplatesRequest, runtime *util.RuntimeOptions) (_result *ListTemplatesResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -27972,6 +29243,10 @@ func (client *Client) ListTemplatesWithOptions(tmpReq *ListTemplatesRequest, run
 
 	if !tea.BoolValue(util.IsUnset(request.HasTrigger)) {
 		query["HasTrigger"] = request.HasTrigger
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IsExample)) {
+		query["IsExample"] = request.IsExample
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.IsFavorite)) {
@@ -28045,6 +29320,13 @@ func (client *Client) ListTemplatesWithOptions(tmpReq *ListTemplatesRequest, run
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries templates. Multiple methods are supported to filter templates.
+//
+// @param request - ListTemplatesRequest
+//
+// @return ListTemplatesResponse
 func (client *Client) ListTemplates(request *ListTemplatesRequest) (_result *ListTemplatesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListTemplatesResponse{}
@@ -28056,6 +29338,10 @@ func (client *Client) ListTemplates(request *ListTemplatesRequest) (_result *Lis
 	return _result, _err
 }
 
+// Summary:
+//
+// Notifies an execution in the Waiting state of the subsequent operations.
+//
 // Description:
 //
 // You can call this operation to notify an execution in the following scenarios:
@@ -28140,6 +29426,10 @@ func (client *Client) NotifyExecutionWithOptions(request *NotifyExecutionRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// Notifies an execution in the Waiting state of the subsequent operations.
+//
 // Description:
 //
 // You can call this operation to notify an execution in the following scenarios:
@@ -28164,6 +29454,15 @@ func (client *Client) NotifyExecution(request *NotifyExecutionRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// Registers the default patch baseline.
+//
+// @param request - RegisterDefaultPatchBaselineRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RegisterDefaultPatchBaselineResponse
 func (client *Client) RegisterDefaultPatchBaselineWithOptions(request *RegisterDefaultPatchBaselineRequest, runtime *util.RuntimeOptions) (_result *RegisterDefaultPatchBaselineResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -28201,6 +29500,13 @@ func (client *Client) RegisterDefaultPatchBaselineWithOptions(request *RegisterD
 	return _result, _err
 }
 
+// Summary:
+//
+// Registers the default patch baseline.
+//
+// @param request - RegisterDefaultPatchBaselineRequest
+//
+// @return RegisterDefaultPatchBaselineResponse
 func (client *Client) RegisterDefaultPatchBaseline(request *RegisterDefaultPatchBaselineRequest) (_result *RegisterDefaultPatchBaselineResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RegisterDefaultPatchBaselineResponse{}
@@ -28212,6 +29518,15 @@ func (client *Client) RegisterDefaultPatchBaseline(request *RegisterDefaultPatch
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the details or aggregate information of a configuration inventory.
+//
+// @param request - SearchInventoryRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SearchInventoryResponse
 func (client *Client) SearchInventoryWithOptions(request *SearchInventoryRequest, runtime *util.RuntimeOptions) (_result *SearchInventoryResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -28261,6 +29576,13 @@ func (client *Client) SearchInventoryWithOptions(request *SearchInventoryRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the details or aggregate information of a configuration inventory.
+//
+// @param request - SearchInventoryRequest
+//
+// @return SearchInventoryResponse
 func (client *Client) SearchInventory(request *SearchInventoryRequest) (_result *SearchInventoryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SearchInventoryResponse{}
@@ -28272,6 +29594,15 @@ func (client *Client) SearchInventory(request *SearchInventoryRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// Enables or disables the feature of delivering template execution records and sets the storage location.
+//
+// @param request - SetServiceSettingsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SetServiceSettingsResponse
 func (client *Client) SetServiceSettingsWithOptions(request *SetServiceSettingsRequest, runtime *util.RuntimeOptions) (_result *SetServiceSettingsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -28329,6 +29660,13 @@ func (client *Client) SetServiceSettingsWithOptions(request *SetServiceSettingsR
 	return _result, _err
 }
 
+// Summary:
+//
+// Enables or disables the feature of delivering template execution records and sets the storage location.
+//
+// @param request - SetServiceSettingsRequest
+//
+// @return SetServiceSettingsResponse
 func (client *Client) SetServiceSettings(request *SetServiceSettingsRequest) (_result *SetServiceSettingsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SetServiceSettingsResponse{}
@@ -28340,6 +29678,15 @@ func (client *Client) SetServiceSettings(request *SetServiceSettingsRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// Starts an execution.
+//
+// @param tmpReq - StartExecutionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return StartExecutionResponse
 func (client *Client) StartExecutionWithOptions(tmpReq *StartExecutionRequest, runtime *util.RuntimeOptions) (_result *StartExecutionResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -28431,6 +29778,13 @@ func (client *Client) StartExecutionWithOptions(tmpReq *StartExecutionRequest, r
 	return _result, _err
 }
 
+// Summary:
+//
+// Starts an execution.
+//
+// @param request - StartExecutionRequest
+//
+// @return StartExecutionResponse
 func (client *Client) StartExecution(request *StartExecutionRequest) (_result *StartExecutionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &StartExecutionResponse{}
@@ -28442,6 +29796,15 @@ func (client *Client) StartExecution(request *StartExecutionRequest) (_result *S
 	return _result, _err
 }
 
+// Summary:
+//
+// Adds tags to one or more resources.
+//
+// @param tmpReq - TagResourcesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return TagResourcesResponse
 func (client *Client) TagResourcesWithOptions(tmpReq *TagResourcesRequest, runtime *util.RuntimeOptions) (_result *TagResourcesResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -28497,6 +29860,13 @@ func (client *Client) TagResourcesWithOptions(tmpReq *TagResourcesRequest, runti
 	return _result, _err
 }
 
+// Summary:
+//
+// Adds tags to one or more resources.
+//
+// @param request - TagResourcesRequest
+//
+// @return TagResourcesResponse
 func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagResourcesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &TagResourcesResponse{}
@@ -28508,6 +29878,15 @@ func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Debugs a started execution that contains an event trigger task or alert trigger task. If the operation is called, a message body is sent to the event trigger task or alert trigger task. After the trigger task receives the message body, the trigger task generates a new child execution.
+//
+// @param request - TriggerExecutionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return TriggerExecutionResponse
 func (client *Client) TriggerExecutionWithOptions(request *TriggerExecutionRequest, runtime *util.RuntimeOptions) (_result *TriggerExecutionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -28557,6 +29936,13 @@ func (client *Client) TriggerExecutionWithOptions(request *TriggerExecutionReque
 	return _result, _err
 }
 
+// Summary:
+//
+// Debugs a started execution that contains an event trigger task or alert trigger task. If the operation is called, a message body is sent to the event trigger task or alert trigger task. After the trigger task receives the message body, the trigger task generates a new child execution.
+//
+// @param request - TriggerExecutionRequest
+//
+// @return TriggerExecutionResponse
 func (client *Client) TriggerExecution(request *TriggerExecutionRequest) (_result *TriggerExecutionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &TriggerExecutionResponse{}
@@ -28568,6 +29954,15 @@ func (client *Client) TriggerExecution(request *TriggerExecutionRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// Removes tags from one or more resources.
+//
+// @param tmpReq - UntagResourcesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UntagResourcesResponse
 func (client *Client) UntagResourcesWithOptions(tmpReq *UntagResourcesRequest, runtime *util.RuntimeOptions) (_result *UntagResourcesResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -28627,6 +30022,13 @@ func (client *Client) UntagResourcesWithOptions(tmpReq *UntagResourcesRequest, r
 	return _result, _err
 }
 
+// Summary:
+//
+// Removes tags from one or more resources.
+//
+// @param request - UntagResourcesRequest
+//
+// @return UntagResourcesResponse
 func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *UntagResourcesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UntagResourcesResponse{}
@@ -28638,6 +30040,15 @@ func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *U
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates an application. You can call this operation only for the applications that reside in the China (Hangzhou) region. Use an endpoint of the China (Hangzhou) region.
+//
+// @param tmpReq - UpdateApplicationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateApplicationResponse
 func (client *Client) UpdateApplicationWithOptions(tmpReq *UpdateApplicationRequest, runtime *util.RuntimeOptions) (_result *UpdateApplicationResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -28701,6 +30112,13 @@ func (client *Client) UpdateApplicationWithOptions(tmpReq *UpdateApplicationRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates an application. You can call this operation only for the applications that reside in the China (Hangzhou) region. Use an endpoint of the China (Hangzhou) region.
+//
+// @param request - UpdateApplicationRequest
+//
+// @return UpdateApplicationResponse
 func (client *Client) UpdateApplication(request *UpdateApplicationRequest) (_result *UpdateApplicationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateApplicationResponse{}
@@ -28712,6 +30130,15 @@ func (client *Client) UpdateApplication(request *UpdateApplicationRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates the information of an application group. You can call this operation only for the application groups that reside in the China (Hangzhou) region. Use an endpoint of the China (Hangzhou) region.
+//
+// @param request - UpdateApplicationGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateApplicationGroupResponse
 func (client *Client) UpdateApplicationGroupWithOptions(request *UpdateApplicationGroupRequest, runtime *util.RuntimeOptions) (_result *UpdateApplicationGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -28757,6 +30184,13 @@ func (client *Client) UpdateApplicationGroupWithOptions(request *UpdateApplicati
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates the information of an application group. You can call this operation only for the application groups that reside in the China (Hangzhou) region. Use an endpoint of the China (Hangzhou) region.
+//
+// @param request - UpdateApplicationGroupRequest
+//
+// @return UpdateApplicationGroupResponse
 func (client *Client) UpdateApplicationGroup(request *UpdateApplicationGroupRequest) (_result *UpdateApplicationGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateApplicationGroupResponse{}
@@ -28768,6 +30202,15 @@ func (client *Client) UpdateApplicationGroup(request *UpdateApplicationGroupRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates an execution.
+//
+// @param request - UpdateExecutionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateExecutionResponse
 func (client *Client) UpdateExecutionWithOptions(request *UpdateExecutionRequest, runtime *util.RuntimeOptions) (_result *UpdateExecutionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -28825,6 +30268,13 @@ func (client *Client) UpdateExecutionWithOptions(request *UpdateExecutionRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates an execution.
+//
+// @param request - UpdateExecutionRequest
+//
+// @return UpdateExecutionResponse
 func (client *Client) UpdateExecution(request *UpdateExecutionRequest) (_result *UpdateExecutionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateExecutionResponse{}
@@ -28836,6 +30286,15 @@ func (client *Client) UpdateExecution(request *UpdateExecutionRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies an O\\\\\\\\\\\\&M item.
+//
+// @param tmpReq - UpdateOpsItemRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateOpsItemResponse
 func (client *Client) UpdateOpsItemWithOptions(tmpReq *UpdateOpsItemRequest, runtime *util.RuntimeOptions) (_result *UpdateOpsItemResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -28931,6 +30390,13 @@ func (client *Client) UpdateOpsItemWithOptions(tmpReq *UpdateOpsItemRequest, run
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies an O\\\\\\\\\\\\&M item.
+//
+// @param request - UpdateOpsItemRequest
+//
+// @return UpdateOpsItemResponse
 func (client *Client) UpdateOpsItem(request *UpdateOpsItemRequest) (_result *UpdateOpsItemResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateOpsItemResponse{}
@@ -28942,6 +30408,15 @@ func (client *Client) UpdateOpsItem(request *UpdateOpsItemRequest) (_result *Upd
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates a common parameter.
+//
+// @param request - UpdateParameterRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateParameterResponse
 func (client *Client) UpdateParameterWithOptions(request *UpdateParameterRequest, runtime *util.RuntimeOptions) (_result *UpdateParameterResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -28995,6 +30470,13 @@ func (client *Client) UpdateParameterWithOptions(request *UpdateParameterRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates a common parameter.
+//
+// @param request - UpdateParameterRequest
+//
+// @return UpdateParameterResponse
 func (client *Client) UpdateParameter(request *UpdateParameterRequest) (_result *UpdateParameterResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateParameterResponse{}
@@ -29006,6 +30488,15 @@ func (client *Client) UpdateParameter(request *UpdateParameterRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates a patch baseline.
+//
+// @param tmpReq - UpdatePatchBaselineRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdatePatchBaselineResponse
 func (client *Client) UpdatePatchBaselineWithOptions(tmpReq *UpdatePatchBaselineRequest, runtime *util.RuntimeOptions) (_result *UpdatePatchBaselineResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -29101,6 +30592,13 @@ func (client *Client) UpdatePatchBaselineWithOptions(tmpReq *UpdatePatchBaseline
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates a patch baseline.
+//
+// @param request - UpdatePatchBaselineRequest
+//
+// @return UpdatePatchBaselineResponse
 func (client *Client) UpdatePatchBaseline(request *UpdatePatchBaselineRequest) (_result *UpdatePatchBaselineResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdatePatchBaselineResponse{}
@@ -29112,6 +30610,15 @@ func (client *Client) UpdatePatchBaseline(request *UpdatePatchBaselineRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates an encryption parameter.
+//
+// @param tmpReq - UpdateSecretParameterRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateSecretParameterResponse
 func (client *Client) UpdateSecretParameterWithOptions(tmpReq *UpdateSecretParameterRequest, runtime *util.RuntimeOptions) (_result *UpdateSecretParameterResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -29171,6 +30678,13 @@ func (client *Client) UpdateSecretParameterWithOptions(tmpReq *UpdateSecretParam
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates an encryption parameter.
+//
+// @param request - UpdateSecretParameterRequest
+//
+// @return UpdateSecretParameterResponse
 func (client *Client) UpdateSecretParameter(request *UpdateSecretParameterRequest) (_result *UpdateSecretParameterResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateSecretParameterResponse{}
@@ -29182,6 +30696,15 @@ func (client *Client) UpdateSecretParameter(request *UpdateSecretParameterReques
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates a desired-state configuration.
+//
+// @param tmpReq - UpdateStateConfigurationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateStateConfigurationResponse
 func (client *Client) UpdateStateConfigurationWithOptions(tmpReq *UpdateStateConfigurationRequest, runtime *util.RuntimeOptions) (_result *UpdateStateConfigurationResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -29265,6 +30788,13 @@ func (client *Client) UpdateStateConfigurationWithOptions(tmpReq *UpdateStateCon
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates a desired-state configuration.
+//
+// @param request - UpdateStateConfigurationRequest
+//
+// @return UpdateStateConfigurationResponse
 func (client *Client) UpdateStateConfiguration(request *UpdateStateConfigurationRequest) (_result *UpdateStateConfigurationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateStateConfigurationResponse{}
@@ -29276,6 +30806,15 @@ func (client *Client) UpdateStateConfiguration(request *UpdateStateConfiguration
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates the information about an existing template.
+//
+// @param tmpReq - UpdateTemplateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateTemplateResponse
 func (client *Client) UpdateTemplateWithOptions(tmpReq *UpdateTemplateRequest, runtime *util.RuntimeOptions) (_result *UpdateTemplateResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -29335,6 +30874,13 @@ func (client *Client) UpdateTemplateWithOptions(tmpReq *UpdateTemplateRequest, r
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates the information about an existing template.
+//
+// @param request - UpdateTemplateRequest
+//
+// @return UpdateTemplateResponse
 func (client *Client) UpdateTemplate(request *UpdateTemplateRequest) (_result *UpdateTemplateResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateTemplateResponse{}
@@ -29346,6 +30892,15 @@ func (client *Client) UpdateTemplate(request *UpdateTemplateRequest) (_result *U
 	return _result, _err
 }
 
+// Summary:
+//
+// Check whether a template is valid.
+//
+// @param request - ValidateTemplateContentRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ValidateTemplateContentResponse
 func (client *Client) ValidateTemplateContentWithOptions(request *ValidateTemplateContentRequest, runtime *util.RuntimeOptions) (_result *ValidateTemplateContentResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -29387,6 +30942,13 @@ func (client *Client) ValidateTemplateContentWithOptions(request *ValidateTempla
 	return _result, _err
 }
 
+// Summary:
+//
+// Check whether a template is valid.
+//
+// @param request - ValidateTemplateContentRequest
+//
+// @return ValidateTemplateContentResponse
 func (client *Client) ValidateTemplateContent(request *ValidateTemplateContentRequest) (_result *ValidateTemplateContentResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ValidateTemplateContentResponse{}
