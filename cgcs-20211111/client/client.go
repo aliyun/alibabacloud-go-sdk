@@ -2450,6 +2450,173 @@ func (s *DeleteAppVersionResponse) SetBody(v *DeleteAppVersionResponseBody) *Del
 	return s
 }
 
+type DescribeInstanceStatsInfoRequest struct {
+	DistrictIds   []*string `json:"DistrictIds,omitempty" xml:"DistrictIds,omitempty" type:"Repeated"`
+	InstanceTypes []*string `json:"InstanceTypes,omitempty" xml:"InstanceTypes,omitempty" type:"Repeated"`
+	ProjectIds    []*string `json:"ProjectIds,omitempty" xml:"ProjectIds,omitempty" type:"Repeated"`
+}
+
+func (s DescribeInstanceStatsInfoRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInstanceStatsInfoRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstanceStatsInfoRequest) SetDistrictIds(v []*string) *DescribeInstanceStatsInfoRequest {
+	s.DistrictIds = v
+	return s
+}
+
+func (s *DescribeInstanceStatsInfoRequest) SetInstanceTypes(v []*string) *DescribeInstanceStatsInfoRequest {
+	s.InstanceTypes = v
+	return s
+}
+
+func (s *DescribeInstanceStatsInfoRequest) SetProjectIds(v []*string) *DescribeInstanceStatsInfoRequest {
+	s.ProjectIds = v
+	return s
+}
+
+type DescribeInstanceStatsInfoResponseBody struct {
+	Data []*DescribeInstanceStatsInfoResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 46329898-489C-4E63-9BA1-C1DA5C5D0977
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeInstanceStatsInfoResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInstanceStatsInfoResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstanceStatsInfoResponseBody) SetData(v []*DescribeInstanceStatsInfoResponseBodyData) *DescribeInstanceStatsInfoResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DescribeInstanceStatsInfoResponseBody) SetRequestId(v string) *DescribeInstanceStatsInfoResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeInstanceStatsInfoResponseBodyData struct {
+	// example:
+	//
+	// huabei
+	DistrictId *string `json:"DistrictId,omitempty" xml:"DistrictId,omitempty"`
+	// example:
+	//
+	// gcs.r1c1m1.1xlarge
+	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	// example:
+	//
+	// 1
+	OperatingInstanceCount *int32 `json:"OperatingInstanceCount,omitempty" xml:"OperatingInstanceCount,omitempty"`
+	// example:
+	//
+	// 6733705348307226241003
+	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// example:
+	//
+	// 1
+	ReleasingInstanceCount *int32 `json:"ReleasingInstanceCount,omitempty" xml:"ReleasingInstanceCount,omitempty"`
+	// example:
+	//
+	// 1
+	ReservingInstanceCount *int32 `json:"ReservingInstanceCount,omitempty" xml:"ReservingInstanceCount,omitempty"`
+	// example:
+	//
+	// 1
+	RunningInstanceCount *int32 `json:"RunningInstanceCount,omitempty" xml:"RunningInstanceCount,omitempty"`
+	// example:
+	//
+	// 4
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s DescribeInstanceStatsInfoResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInstanceStatsInfoResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstanceStatsInfoResponseBodyData) SetDistrictId(v string) *DescribeInstanceStatsInfoResponseBodyData {
+	s.DistrictId = &v
+	return s
+}
+
+func (s *DescribeInstanceStatsInfoResponseBodyData) SetInstanceType(v string) *DescribeInstanceStatsInfoResponseBodyData {
+	s.InstanceType = &v
+	return s
+}
+
+func (s *DescribeInstanceStatsInfoResponseBodyData) SetOperatingInstanceCount(v int32) *DescribeInstanceStatsInfoResponseBodyData {
+	s.OperatingInstanceCount = &v
+	return s
+}
+
+func (s *DescribeInstanceStatsInfoResponseBodyData) SetProjectId(v string) *DescribeInstanceStatsInfoResponseBodyData {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *DescribeInstanceStatsInfoResponseBodyData) SetReleasingInstanceCount(v int32) *DescribeInstanceStatsInfoResponseBodyData {
+	s.ReleasingInstanceCount = &v
+	return s
+}
+
+func (s *DescribeInstanceStatsInfoResponseBodyData) SetReservingInstanceCount(v int32) *DescribeInstanceStatsInfoResponseBodyData {
+	s.ReservingInstanceCount = &v
+	return s
+}
+
+func (s *DescribeInstanceStatsInfoResponseBodyData) SetRunningInstanceCount(v int32) *DescribeInstanceStatsInfoResponseBodyData {
+	s.RunningInstanceCount = &v
+	return s
+}
+
+func (s *DescribeInstanceStatsInfoResponseBodyData) SetTotalCount(v int32) *DescribeInstanceStatsInfoResponseBodyData {
+	s.TotalCount = &v
+	return s
+}
+
+type DescribeInstanceStatsInfoResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeInstanceStatsInfoResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeInstanceStatsInfoResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInstanceStatsInfoResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstanceStatsInfoResponse) SetHeaders(v map[string]*string) *DescribeInstanceStatsInfoResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeInstanceStatsInfoResponse) SetStatusCode(v int32) *DescribeInstanceStatsInfoResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeInstanceStatsInfoResponse) SetBody(v *DescribeInstanceStatsInfoResponseBody) *DescribeInstanceStatsInfoResponse {
+	s.Body = v
+	return s
+}
+
 type GetAdaptationRequest struct {
 	// example:
 	//
@@ -6852,6 +7019,54 @@ func (client *Client) DeleteAppVersion(request *DeleteAppVersionRequest) (_resul
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteAppVersionResponse{}
 	_body, _err := client.DeleteAppVersionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param request - DescribeInstanceStatsInfoRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeInstanceStatsInfoResponse
+func (client *Client) DescribeInstanceStatsInfoWithOptions(request *DescribeInstanceStatsInfoRequest, runtime *util.RuntimeOptions) (_result *DescribeInstanceStatsInfoResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeInstanceStatsInfo"),
+		Version:     tea.String("2021-11-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeInstanceStatsInfoResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - DescribeInstanceStatsInfoRequest
+//
+// @return DescribeInstanceStatsInfoResponse
+func (client *Client) DescribeInstanceStatsInfo(request *DescribeInstanceStatsInfoRequest) (_result *DescribeInstanceStatsInfoResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeInstanceStatsInfoResponse{}
+	_body, _err := client.DescribeInstanceStatsInfoWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
