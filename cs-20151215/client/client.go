@@ -25926,6 +25926,102 @@ func (s *UntagResourcesResponse) SetBody(v *UntagResourcesResponseBody) *UntagRe
 	return s
 }
 
+type UpdateClusterAuditLogConfigRequest struct {
+	// example:
+	//
+	// false
+	Disable *bool `json:"disable,omitempty" xml:"disable,omitempty"`
+	// example:
+	//
+	// k8s-log-c82e6987e2961451182edacd74faf****
+	SlsProjectName *string `json:"sls_project_name,omitempty" xml:"sls_project_name,omitempty"`
+}
+
+func (s UpdateClusterAuditLogConfigRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateClusterAuditLogConfigRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateClusterAuditLogConfigRequest) SetDisable(v bool) *UpdateClusterAuditLogConfigRequest {
+	s.Disable = &v
+	return s
+}
+
+func (s *UpdateClusterAuditLogConfigRequest) SetSlsProjectName(v string) *UpdateClusterAuditLogConfigRequest {
+	s.SlsProjectName = &v
+	return s
+}
+
+type UpdateClusterAuditLogConfigResponseBody struct {
+	// example:
+	//
+	// c93095129fc41463aa455d89444fd****
+	ClusterId *string `json:"cluster_id,omitempty" xml:"cluster_id,omitempty"`
+	// example:
+	//
+	// 48BD70F6-A7E6-543D-9F23-08DEB764C92E
+	RequestId *string `json:"request_id,omitempty" xml:"request_id,omitempty"`
+	// example:
+	//
+	// T-5faa48fb31b6b8078d00****
+	TaskId *string `json:"task_id,omitempty" xml:"task_id,omitempty"`
+}
+
+func (s UpdateClusterAuditLogConfigResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateClusterAuditLogConfigResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateClusterAuditLogConfigResponseBody) SetClusterId(v string) *UpdateClusterAuditLogConfigResponseBody {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *UpdateClusterAuditLogConfigResponseBody) SetRequestId(v string) *UpdateClusterAuditLogConfigResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateClusterAuditLogConfigResponseBody) SetTaskId(v string) *UpdateClusterAuditLogConfigResponseBody {
+	s.TaskId = &v
+	return s
+}
+
+type UpdateClusterAuditLogConfigResponse struct {
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateClusterAuditLogConfigResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateClusterAuditLogConfigResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateClusterAuditLogConfigResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateClusterAuditLogConfigResponse) SetHeaders(v map[string]*string) *UpdateClusterAuditLogConfigResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateClusterAuditLogConfigResponse) SetStatusCode(v int32) *UpdateClusterAuditLogConfigResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateClusterAuditLogConfigResponse) SetBody(v *UpdateClusterAuditLogConfigResponseBody) *UpdateClusterAuditLogConfigResponse {
+	s.Body = v
+	return s
+}
+
 type UpdateContactGroupForAlertResponse struct {
 	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
 	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
@@ -35681,6 +35777,74 @@ func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *U
 	headers := make(map[string]*string)
 	_result = &UntagResourcesResponse{}
 	_body, _err := client.UntagResourcesWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新集群审计日志配置
+//
+// @param request - UpdateClusterAuditLogConfigRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateClusterAuditLogConfigResponse
+func (client *Client) UpdateClusterAuditLogConfigWithOptions(clusterid *string, request *UpdateClusterAuditLogConfigRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateClusterAuditLogConfigResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Disable)) {
+		body["disable"] = request.Disable
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SlsProjectName)) {
+		body["sls_project_name"] = request.SlsProjectName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateClusterAuditLogConfig"),
+		Version:     tea.String("2015-12-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/clusters/" + tea.StringValue(openapiutil.GetEncodeParam(clusterid)) + "/audit_log"),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateClusterAuditLogConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新集群审计日志配置
+//
+// @param request - UpdateClusterAuditLogConfigRequest
+//
+// @return UpdateClusterAuditLogConfigResponse
+func (client *Client) UpdateClusterAuditLogConfig(clusterid *string, request *UpdateClusterAuditLogConfigRequest) (_result *UpdateClusterAuditLogConfigResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateClusterAuditLogConfigResponse{}
+	_body, _err := client.UpdateClusterAuditLogConfigWithOptions(clusterid, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
