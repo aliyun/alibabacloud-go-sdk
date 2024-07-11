@@ -2188,7 +2188,8 @@ type ApproveOrderRequest struct {
 	// example:
 	//
 	// 23***
-	OldApprover *int64 `json:"OldApprover,omitempty" xml:"OldApprover,omitempty"`
+	OldApprover      *int64  `json:"OldApprover,omitempty" xml:"OldApprover,omitempty"`
+	RealLoginUserUid *string `json:"RealLoginUserUid,omitempty" xml:"RealLoginUserUid,omitempty"`
 	// The ID of the tenant. You can call the [GetUserActiveTenant](https://help.aliyun.com/document_detail/198073.html) operation to obtain the tenant ID.
 	//
 	// example:
@@ -2245,6 +2246,11 @@ func (s *ApproveOrderRequest) SetNewApproverList(v string) *ApproveOrderRequest 
 
 func (s *ApproveOrderRequest) SetOldApprover(v int64) *ApproveOrderRequest {
 	s.OldApprover = &v
+	return s
+}
+
+func (s *ApproveOrderRequest) SetRealLoginUserUid(v string) *ApproveOrderRequest {
+	s.RealLoginUserUid = &v
 	return s
 }
 
@@ -3828,9 +3834,9 @@ type CreateDataArchiveOrderRequestParam struct {
 	//
 	// >  If you set ArchiveMethod to a value other than inner_oss, you must connect the destination database for archiving data to Data Management (DMS) before you create the data archiving ticket. After the database is connected to DMS, the database is displayed in the Instances Connected section of the DMS console.
 	//
-	// 	- **inner_oss**: dedicated storage, which is a built-in Object Storage Service (OSS) bucket.
+	// 	- **inner_oss**: dedicated storage space, which is a built-in space.
 	//
-	// 	- **oss_userself**: OSS bucket of the user.
+	// 	- **oss_userself**: Object Storage Service (OSS) bucket of the user.
 	//
 	// 	- **mysql**: ApsaraDB RDS for MySQL instance.
 	//
@@ -3838,7 +3844,7 @@ type CreateDataArchiveOrderRequestParam struct {
 	//
 	// 	- **adb_mysql**: AnalyticDB for MySQL V3.0 cluster.
 	//
-	// 	- **lindorm**: ApsaraDB for Lindorm instance.
+	// 	- **lindorm**: Lindorm instance.
 	//
 	// This parameter is required.
 	//
@@ -3851,7 +3857,10 @@ type CreateDataArchiveOrderRequestParam struct {
 	// example:
 	//
 	// 00 05 11 	- 	- ?
-	CronStr    *string `json:"CronStr,omitempty" xml:"CronStr,omitempty"`
+	CronStr *string `json:"CronStr,omitempty" xml:"CronStr,omitempty"`
+	// example:
+	//
+	// 1***
 	DatabaseId *string `json:"DatabaseId,omitempty" xml:"DatabaseId,omitempty"`
 	// Specifies whether the database is a logical database.
 	//
@@ -3877,7 +3886,7 @@ type CreateDataArchiveOrderRequestParam struct {
 	//
 	// 	- **def**: Set this parameter to def if the source database is of the two-layer logical schema, such as a MySQL database, a PolarDB for MySQL cluster, or an AnalyticDB for MySQL instance.
 	//
-	// 	- **An empty string**: Set this parameter to an empty string if the source database is an ApsaraDB for Lindorm or ApsaraDB for MongoDB instance.
+	// 	- **Empty string**: Set this parameter to an empty string if the source database is a Lindorm or ApsaraDB for MongoDB instance.
 	//
 	// 	- **Catalog name**: Set this parameter to the catalog name of the source database if the source database is of the three-layer logical schema, such as a PostgreSQL database.
 	//
@@ -3907,13 +3916,13 @@ type CreateDataArchiveOrderRequestParam struct {
 	//
 	// This parameter is required.
 	TableIncludes []*CreateDataArchiveOrderRequestParamTableIncludes `json:"TableIncludes,omitempty" xml:"TableIncludes,omitempty" type:"Repeated"`
-	// The table names mapped to the destination database. If you call an API operation to create the data archiving ticket, you do not need to specify this parameter. The default value is used.
+	// The table names mapped to the destination database. This parameter is not required and the default value is used.
 	TableMapping []*string `json:"TableMapping,omitempty" xml:"TableMapping,omitempty" type:"Repeated"`
 	// The host of the destination instance. If the destination instance can be accessed over an internal network or the Internet, preferentially set the value to the internal endpoint of the destination instance.
 	//
-	// 	- If the data is archived in an OSS bucket, set the value to the name of the bucket.
+	// 	- If data is archived in an OSS bucket, set the value to the name of the bucket.
 	//
-	// 	- If the data is archived in the dedicated storage space, set the value to inner_oss.
+	// 	- If data is archived in dedicated storage space, set the value to inner_oss.
 	//
 	// This parameter is required.
 	//
@@ -4242,7 +4251,8 @@ type CreateDataCorrectOrderRequest struct {
 	// The parameters of the ticket.
 	//
 	// This parameter is required.
-	Param *CreateDataCorrectOrderRequestParam `json:"Param,omitempty" xml:"Param,omitempty" type:"Struct"`
+	Param            *CreateDataCorrectOrderRequestParam `json:"Param,omitempty" xml:"Param,omitempty" type:"Struct"`
+	RealLoginUserUid *string                             `json:"RealLoginUserUid,omitempty" xml:"RealLoginUserUid,omitempty"`
 	// The stakeholders of the data change. All stakeholders can view the ticket details and assist in the approval process. Irrelevant users other than DMS administrators and database administrators (DBAs) are not allowed to view the ticket details.
 	RelatedUserList []*int64 `json:"RelatedUserList,omitempty" xml:"RelatedUserList,omitempty" type:"Repeated"`
 	// The ID of the tenant. You can call the [GetUserActiveTenant](https://help.aliyun.com/document_detail/198073.html) or [ListUserTenants](https://help.aliyun.com/document_detail/198074.html) operation to obtain the tenant ID.
@@ -4273,6 +4283,11 @@ func (s *CreateDataCorrectOrderRequest) SetComment(v string) *CreateDataCorrectO
 
 func (s *CreateDataCorrectOrderRequest) SetParam(v *CreateDataCorrectOrderRequestParam) *CreateDataCorrectOrderRequest {
 	s.Param = v
+	return s
+}
+
+func (s *CreateDataCorrectOrderRequest) SetRealLoginUserUid(v string) *CreateDataCorrectOrderRequest {
+	s.RealLoginUserUid = &v
 	return s
 }
 
@@ -4494,7 +4509,8 @@ type CreateDataCorrectOrderShrinkRequest struct {
 	// The parameters of the ticket.
 	//
 	// This parameter is required.
-	ParamShrink *string `json:"Param,omitempty" xml:"Param,omitempty"`
+	ParamShrink      *string `json:"Param,omitempty" xml:"Param,omitempty"`
+	RealLoginUserUid *string `json:"RealLoginUserUid,omitempty" xml:"RealLoginUserUid,omitempty"`
 	// The stakeholders of the data change. All stakeholders can view the ticket details and assist in the approval process. Irrelevant users other than DMS administrators and database administrators (DBAs) are not allowed to view the ticket details.
 	RelatedUserListShrink *string `json:"RelatedUserList,omitempty" xml:"RelatedUserList,omitempty"`
 	// The ID of the tenant. You can call the [GetUserActiveTenant](https://help.aliyun.com/document_detail/198073.html) or [ListUserTenants](https://help.aliyun.com/document_detail/198074.html) operation to obtain the tenant ID.
@@ -4525,6 +4541,11 @@ func (s *CreateDataCorrectOrderShrinkRequest) SetComment(v string) *CreateDataCo
 
 func (s *CreateDataCorrectOrderShrinkRequest) SetParamShrink(v string) *CreateDataCorrectOrderShrinkRequest {
 	s.ParamShrink = &v
+	return s
+}
+
+func (s *CreateDataCorrectOrderShrinkRequest) SetRealLoginUserUid(v string) *CreateDataCorrectOrderShrinkRequest {
+	s.RealLoginUserUid = &v
 	return s
 }
 
@@ -5080,7 +5101,8 @@ type CreateDataExportOrderRequest struct {
 	// The parameters of the ticket.
 	//
 	// This parameter is required.
-	PluginParam *CreateDataExportOrderRequestPluginParam `json:"PluginParam,omitempty" xml:"PluginParam,omitempty" type:"Struct"`
+	PluginParam      *CreateDataExportOrderRequestPluginParam `json:"PluginParam,omitempty" xml:"PluginParam,omitempty" type:"Struct"`
+	RealLoginUserUid *string                                  `json:"RealLoginUserUid,omitempty" xml:"RealLoginUserUid,omitempty"`
 	// The stakeholders involved in this operation.
 	RelatedUserList []*int64 `json:"RelatedUserList,omitempty" xml:"RelatedUserList,omitempty" type:"Repeated"`
 	// The tenant ID.
@@ -5118,6 +5140,11 @@ func (s *CreateDataExportOrderRequest) SetParentId(v int64) *CreateDataExportOrd
 
 func (s *CreateDataExportOrderRequest) SetPluginParam(v *CreateDataExportOrderRequestPluginParam) *CreateDataExportOrderRequest {
 	s.PluginParam = v
+	return s
+}
+
+func (s *CreateDataExportOrderRequest) SetRealLoginUserUid(v string) *CreateDataExportOrderRequest {
+	s.RealLoginUserUid = &v
 	return s
 }
 
@@ -5346,6 +5373,7 @@ type CreateDataExportOrderShrinkRequest struct {
 	//
 	// This parameter is required.
 	PluginParamShrink *string `json:"PluginParam,omitempty" xml:"PluginParam,omitempty"`
+	RealLoginUserUid  *string `json:"RealLoginUserUid,omitempty" xml:"RealLoginUserUid,omitempty"`
 	// The stakeholders involved in this operation.
 	RelatedUserListShrink *string `json:"RelatedUserList,omitempty" xml:"RelatedUserList,omitempty"`
 	// The tenant ID.
@@ -5383,6 +5411,11 @@ func (s *CreateDataExportOrderShrinkRequest) SetParentId(v int64) *CreateDataExp
 
 func (s *CreateDataExportOrderShrinkRequest) SetPluginParamShrink(v string) *CreateDataExportOrderShrinkRequest {
 	s.PluginParamShrink = &v
+	return s
+}
+
+func (s *CreateDataExportOrderShrinkRequest) SetRealLoginUserUid(v string) *CreateDataExportOrderShrinkRequest {
+	s.RealLoginUserUid = &v
 	return s
 }
 
@@ -13201,7 +13234,8 @@ type ExecuteDataCorrectRequest struct {
 	// example:
 	//
 	// 406****
-	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	OrderId          *int64  `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	RealLoginUserUid *string `json:"RealLoginUserUid,omitempty" xml:"RealLoginUserUid,omitempty"`
 	// The ID of the tenant. You can call the [GetUserActiveTenant](https://help.aliyun.com/document_detail/198073.html) operation to query the tenant ID.
 	//
 	// example:
@@ -13225,6 +13259,11 @@ func (s *ExecuteDataCorrectRequest) SetActionDetail(v map[string]interface{}) *E
 
 func (s *ExecuteDataCorrectRequest) SetOrderId(v int64) *ExecuteDataCorrectRequest {
 	s.OrderId = &v
+	return s
+}
+
+func (s *ExecuteDataCorrectRequest) SetRealLoginUserUid(v string) *ExecuteDataCorrectRequest {
+	s.RealLoginUserUid = &v
 	return s
 }
 
@@ -13265,7 +13304,8 @@ type ExecuteDataCorrectShrinkRequest struct {
 	// example:
 	//
 	// 406****
-	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	OrderId          *int64  `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	RealLoginUserUid *string `json:"RealLoginUserUid,omitempty" xml:"RealLoginUserUid,omitempty"`
 	// The ID of the tenant. You can call the [GetUserActiveTenant](https://help.aliyun.com/document_detail/198073.html) operation to query the tenant ID.
 	//
 	// example:
@@ -13289,6 +13329,11 @@ func (s *ExecuteDataCorrectShrinkRequest) SetActionDetailShrink(v string) *Execu
 
 func (s *ExecuteDataCorrectShrinkRequest) SetOrderId(v int64) *ExecuteDataCorrectShrinkRequest {
 	s.OrderId = &v
+	return s
+}
+
+func (s *ExecuteDataCorrectShrinkRequest) SetRealLoginUserUid(v string) *ExecuteDataCorrectShrinkRequest {
+	s.RealLoginUserUid = &v
 	return s
 }
 
@@ -13411,7 +13456,8 @@ type ExecuteDataExportRequest struct {
 	// example:
 	//
 	// 1234
-	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	OrderId          *int64  `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	RealLoginUserUid *string `json:"RealLoginUserUid,omitempty" xml:"RealLoginUserUid,omitempty"`
 	// The ID of the tenant.
 	//
 	// > : To view the ID of the tenant, log on to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see [Manage DMS tenants](https://help.aliyun.com/document_detail/181330.html).
@@ -13437,6 +13483,11 @@ func (s *ExecuteDataExportRequest) SetActionDetail(v map[string]interface{}) *Ex
 
 func (s *ExecuteDataExportRequest) SetOrderId(v int64) *ExecuteDataExportRequest {
 	s.OrderId = &v
+	return s
+}
+
+func (s *ExecuteDataExportRequest) SetRealLoginUserUid(v string) *ExecuteDataExportRequest {
+	s.RealLoginUserUid = &v
 	return s
 }
 
@@ -13471,7 +13522,8 @@ type ExecuteDataExportShrinkRequest struct {
 	// example:
 	//
 	// 1234
-	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	OrderId          *int64  `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	RealLoginUserUid *string `json:"RealLoginUserUid,omitempty" xml:"RealLoginUserUid,omitempty"`
 	// The ID of the tenant.
 	//
 	// > : To view the ID of the tenant, log on to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see [Manage DMS tenants](https://help.aliyun.com/document_detail/181330.html).
@@ -13497,6 +13549,11 @@ func (s *ExecuteDataExportShrinkRequest) SetActionDetailShrink(v string) *Execut
 
 func (s *ExecuteDataExportShrinkRequest) SetOrderId(v int64) *ExecuteDataExportShrinkRequest {
 	s.OrderId = &v
+	return s
+}
+
+func (s *ExecuteDataExportShrinkRequest) SetRealLoginUserUid(v string) *ExecuteDataExportShrinkRequest {
+	s.RealLoginUserUid = &v
 	return s
 }
 
@@ -15911,7 +15968,7 @@ type GetDataArchiveOrderDetailResponseBody struct {
 	//
 	// example:
 	//
-	// User [199295823****] not exist
+	// User [19929582****] not exist
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	// The ID of the request, which is used to query logs and troubleshoot issues.
 	//
@@ -19197,7 +19254,8 @@ type GetDataExportDownloadURLRequest struct {
 	// example:
 	//
 	// 546****
-	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	OrderId          *int64  `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	RealLoginUserUid *string `json:"RealLoginUserUid,omitempty" xml:"RealLoginUserUid,omitempty"`
 	// The ID of the tenant. You can call the [GetUserActiveTenant](https://help.aliyun.com/document_detail/198073.html) or [ListUserTenants](https://help.aliyun.com/document_detail/198074.html) operation to obtain the tenant ID.
 	//
 	// example:
@@ -19216,6 +19274,11 @@ func (s GetDataExportDownloadURLRequest) GoString() string {
 
 func (s *GetDataExportDownloadURLRequest) SetOrderId(v int64) *GetDataExportDownloadURLRequest {
 	s.OrderId = &v
+	return s
+}
+
+func (s *GetDataExportDownloadURLRequest) SetRealLoginUserUid(v string) *GetDataExportDownloadURLRequest {
+	s.RealLoginUserUid = &v
 	return s
 }
 
@@ -27985,10 +28048,6 @@ func (s *GetStructSyncExecSqlDetailResponseBody) SetSuccess(v bool) *GetStructSy
 
 type GetStructSyncExecSqlDetailResponseBodyStructSyncExecSqlDetail struct {
 	// The SQL statements that are executed.
-	//
-	// example:
-	//
-	// /\\	- origin table[helloz_bak] exist, target table[helloz_bak] not exist \\*/\\n/\\	- generate [helloz_bak] create table sql \\*/\\ncreate table \\`helloz_bak\\`(\\n\\t\\`id\\` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT \\"Primary key\\",\\n\\t\\`gmt_create\\` datetime NOT NULL COMMENT \\"Creation time\\",\\n\\t\\`gmt_modified\\` datetime NOT NULL COMMENT \\"Modification time\\",\\n\\t\\`num\\` int(11) NOT NULL COMMENT \\"Number\\",\\n\\t\\`addr\\` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT \\"Address\\",\\n\\tPRIMARY KEY (\\`id\\`)\\n)\\nDEFAULT CHARACTER SET=utf8 COLLATE=utf8_general_ci\\nCOMMENT=\\"test\\"\\n\\n;
 	ExecSql *string `json:"ExecSql,omitempty" xml:"ExecSql,omitempty"`
 	// The total number of SQL statements.
 	//
@@ -28214,10 +28273,6 @@ func (s *GetStructSyncJobAnalyzeResultResponseBodyStructSyncJobAnalyzeResult) Se
 
 type GetStructSyncJobAnalyzeResultResponseBodyStructSyncJobAnalyzeResultResultList struct {
 	// The SQL script.
-	//
-	// example:
-	//
-	// /\\	- origin table[helloz_bak] exist, target table[helloz_bak] not exist \\*/\\n/\\	- generate [helloz_bak] create table sql \\*/\\ncreate table \\`helloz_bak\\`(\\n\\t\\`id\\` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT \\"Primary key\\",\\n\\t\\`gmt_create\\` datetime NOT NULL COMMENT \\"Creation time\\",\\n\\t\\`gmt_modified\\` datetime NOT NULL COMMENT \\"Modification time\\",\\n\\t\\`num\\` int(11) NOT NULL COMMENT \\"Number\\",\\n\\t\\`addr\\` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT \\"Address\\",\\n\\tPRIMARY KEY (\\`id\\`)\\n)\\nDEFAULT CHARACTER SET=utf8 COLLATE=utf8_general_ci\\nCOMMENT=\\"test\\"\\n\\n;
 	Script *string `json:"Script,omitempty" xml:"Script,omitempty"`
 	// The name of the source table.
 	//
@@ -29386,12 +29441,18 @@ func (s *GetTableDBTopologyResponse) SetBody(v *GetTableDBTopologyResponseBody) 
 }
 
 type GetTableDesignProjectFlowRequest struct {
+	// The ID of the schema design ticket. You can call the [ListOrders](https://help.aliyun.com/document_detail/144643.html) operation to obtain the ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 95****
 	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// The tenant ID.
+	//
+	// >  To view the tenant ID, go to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see the [View information about the current tenant](https://help.aliyun.com/document_detail/181330.html) section of the "Manage DMS tenants" topic.
+	//
 	// example:
 	//
 	// 3***
@@ -29417,19 +29478,32 @@ func (s *GetTableDesignProjectFlowRequest) SetTid(v int64) *GetTableDesignProjec
 }
 
 type GetTableDesignProjectFlowResponseBody struct {
+	// The error code returned if the request failed.
+	//
 	// example:
 	//
 	// UnknownError
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message returned if the request failed.
+	//
 	// example:
 	//
 	// UnknownError
-	ErrorMessage *string                                           `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	ProjectFlow  *GetTableDesignProjectFlowResponseBodyProjectFlow `json:"ProjectFlow,omitempty" xml:"ProjectFlow,omitempty" type:"Struct"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The information about the schema design process.
+	ProjectFlow *GetTableDesignProjectFlowResponseBodyProjectFlow `json:"ProjectFlow,omitempty" xml:"ProjectFlow,omitempty" type:"Struct"`
+	// The request ID. You can use the request ID to query logs and troubleshoot issues.
+	//
 	// example:
 	//
 	// B5FD0BC8-2D90-4478-B8EC-A0E92E0B1773
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false**
+	//
 	// example:
 	//
 	// true
@@ -29470,12 +29544,22 @@ func (s *GetTableDesignProjectFlowResponseBody) SetSuccess(v bool) *GetTableDesi
 }
 
 type GetTableDesignProjectFlowResponseBodyProjectFlow struct {
+	// The position of the current node in the process.
+	//
 	// example:
 	//
 	// 2
-	CurrentPosition *int32                                                           `json:"CurrentPosition,omitempty" xml:"CurrentPosition,omitempty"`
-	FlowNodeArray   []*GetTableDesignProjectFlowResponseBodyProjectFlowFlowNodeArray `json:"FlowNodeArray,omitempty" xml:"FlowNodeArray,omitempty" type:"Repeated"`
-	RuleComment     *string                                                          `json:"RuleComment,omitempty" xml:"RuleComment,omitempty"`
+	CurrentPosition *int32 `json:"CurrentPosition,omitempty" xml:"CurrentPosition,omitempty"`
+	// The nodes in the process.
+	FlowNodeArray []*GetTableDesignProjectFlowResponseBodyProjectFlowFlowNodeArray `json:"FlowNodeArray,omitempty" xml:"FlowNodeArray,omitempty" type:"Repeated"`
+	// The description of the security rule set that is applied to the schema design ticket.
+	//
+	// example:
+	//
+	// mysq_test
+	RuleComment *string `json:"RuleComment,omitempty" xml:"RuleComment,omitempty"`
+	// The name of the security rule set that is applied to the schema design ticket.
+	//
 	// example:
 	//
 	// mysql default
@@ -29511,27 +29595,55 @@ func (s *GetTableDesignProjectFlowResponseBodyProjectFlow) SetRuleName(v string)
 }
 
 type GetTableDesignProjectFlowResponseBodyProjectFlowFlowNodeArray struct {
+	// Indicates whether the ticket can be returned to the schema design node. Valid values:
+	//
+	// 	- **1**: The ticket can be returned to the schema design node.
+	//
+	// 	- **0**: The ticket cannot be returned to the schema design node. This value can be returned only for the PUBLISH node.
+	//
 	// example:
 	//
 	// 1
 	BackToDesign *bool `json:"BackToDesign,omitempty" xml:"BackToDesign,omitempty"`
+	// Indicates whether the current node can be skipped. Valid values:
+	//
+	// 	- **1**: The current node can be skipped.
+	//
+	// 	- **0**: The current node cannot be skipped. This value can be returned only for the PUBLISH node.
+	//
 	// example:
 	//
 	// 0
 	CanSkip *bool `json:"CanSkip,omitempty" xml:"CanSkip,omitempty"`
+	// The role of the node in the process.
+	//
+	// 	- START: The ticket was created.
+	//
+	// 	- DESIGN: The schema is being created.
+	//
+	// 	- PUBLISH: The schema is published.
+	//
+	// 	- END: The ticket is complete.
+	//
 	// example:
 	//
 	// DESIGN
-	NodeRole  *string `json:"NodeRole,omitempty" xml:"NodeRole,omitempty"`
+	NodeRole *string `json:"NodeRole,omitempty" xml:"NodeRole,omitempty"`
+	// The title of the node.
 	NodeTitle *string `json:"NodeTitle,omitempty" xml:"NodeTitle,omitempty"`
+	// The position of the node in the process. The value starts from 1.
+	//
 	// example:
 	//
 	// 1
 	Position *int32 `json:"Position,omitempty" xml:"Position,omitempty"`
+	// Indicates whether the node is the anchor node. A schema design process has only one anchor node, on which the schema is published. After the schema is published on the anchor node, a post-publish image is generated and the DDL metadata lock is released.
+	//
 	// example:
 	//
 	// false
-	PublishAnchor     *bool     `json:"PublishAnchor,omitempty" xml:"PublishAnchor,omitempty"`
+	PublishAnchor *bool `json:"PublishAnchor,omitempty" xml:"PublishAnchor,omitempty"`
+	// The available publishing strategies.
 	PublishStrategies []*string `json:"PublishStrategies,omitempty" xml:"PublishStrategies,omitempty" type:"Repeated"`
 }
 
@@ -29608,12 +29720,18 @@ func (s *GetTableDesignProjectFlowResponse) SetBody(v *GetTableDesignProjectFlow
 }
 
 type GetTableDesignProjectInfoRequest struct {
+	// The ID of the schema design ticket. You can call the [ListOrders](https://help.aliyun.com/document_detail/465867.html) operation to obtain the ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 95****
 	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// The tenant ID.
+	//
+	// >  To view the tenant ID, go to the Data Management (DMS) console and move the pointer over the profile picture in the upper-right corner. For more information, see [View information about the current tenant](https://help.aliyun.com/document_detail/181330.html) section of the "Manage DMS tenants" topic
+	//
 	// example:
 	//
 	// 3***
@@ -29639,19 +29757,32 @@ func (s *GetTableDesignProjectInfoRequest) SetTid(v int64) *GetTableDesignProjec
 }
 
 type GetTableDesignProjectInfoResponseBody struct {
+	// The error code returned if the request failed.
+	//
 	// example:
 	//
 	// UnknownError
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message returned if the request failed.
+	//
 	// example:
 	//
 	// UnknownError
-	ErrorMessage *string                                           `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	ProjectInfo  *GetTableDesignProjectInfoResponseBodyProjectInfo `json:"ProjectInfo,omitempty" xml:"ProjectInfo,omitempty" type:"Struct"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The information about the schema design project.
+	ProjectInfo *GetTableDesignProjectInfoResponseBodyProjectInfo `json:"ProjectInfo,omitempty" xml:"ProjectInfo,omitempty" type:"Struct"`
+	// The request ID. You can use the request ID to query logs and troubleshoot issues.
+	//
 	// example:
 	//
 	// 48778434-5796-571A-8455-A59146588401
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false**
+	//
 	// example:
 	//
 	// true
@@ -29692,33 +29823,62 @@ func (s *GetTableDesignProjectInfoResponseBody) SetSuccess(v bool) *GetTableDesi
 }
 
 type GetTableDesignProjectInfoResponseBodyProjectInfo struct {
+	// The information about the change base database of the schema design ticket.
 	BaseDatabase *GetTableDesignProjectInfoResponseBodyProjectInfoBaseDatabase `json:"BaseDatabase,omitempty" xml:"BaseDatabase,omitempty" type:"Struct"`
+	// The ID of the user who created the ticket.
+	//
 	// example:
 	//
 	// 71****
-	CreatorId   *int64  `json:"CreatorId,omitempty" xml:"CreatorId,omitempty"`
+	CreatorId *int64 `json:"CreatorId,omitempty" xml:"CreatorId,omitempty"`
+	// The description of the schema design project.
+	//
+	// example:
+	//
+	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The time when the ticket was created.
+	//
 	// example:
 	//
 	// 2024-04-23 02:57:01
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// The time when the ticket was last modified.
+	//
 	// example:
 	//
 	// 2024-04-23 02:57:01
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// The ticket ID.
+	//
 	// example:
 	//
 	// 95****
 	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// The project ID.
+	//
 	// example:
 	//
 	// 12****
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The state of the schema design project. Valid values:
+	//
+	// 	- **DESIGN**: The schema is being designed.
+	//
+	// 	- **PUBLISHED**: The schema is published.
+	//
+	// 	- **CLOSE**: The ticket is closed.
+	//
 	// example:
 	//
 	// DESIGN
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	Title  *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// The name of the schema design project.
+	//
+	// example:
+	//
+	// test
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 
 func (s GetTableDesignProjectInfoResponseBodyProjectInfo) String() string {
@@ -29775,27 +29935,64 @@ func (s *GetTableDesignProjectInfoResponseBodyProjectInfo) SetTitle(v string) *G
 }
 
 type GetTableDesignProjectInfoResponseBodyProjectInfoBaseDatabase struct {
+	// The alias of the database instance.
+	//
+	// example:
+	//
+	// poc_test
 	Alias *string `json:"Alias,omitempty" xml:"Alias,omitempty"`
+	// The database ID.
+	//
 	// example:
 	//
 	// 11****
 	DbId *int32 `json:"DbId,omitempty" xml:"DbId,omitempty"`
+	// The type of the database. For more information about the valid values of this parameter, see [DbType parameter](https://help.aliyun.com/document_detail/198106.html).
+	//
 	// example:
 	//
 	// POLARDB
 	DbType *string `json:"DbType,omitempty" xml:"DbType,omitempty"`
+	// The type of the environment in which the database instance is deployed. Valid values:
+	//
+	// 	- **product**: production environment.
+	//
+	// 	- **dev**: development environment.
+	//
+	// 	- **pre**: pre-release environment.
+	//
+	// 	- **test**: test environment.
+	//
+	// 	- **sit**: system integration testing (SIT) environment.
+	//
+	// 	- **uat**: user acceptance testing (UAT) environment.
+	//
+	// 	- **pet**: stress testing environment.
+	//
+	// 	- **stag**: staging environment.
+	//
 	// example:
 	//
 	// dev
 	EnvType *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
+	// Indicates whether the database is a logical database. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false**
+	//
 	// example:
 	//
 	// false
 	Logic *bool `json:"Logic,omitempty" xml:"Logic,omitempty"`
+	// The database name.
+	//
 	// example:
 	//
 	// bk_atc020
 	SchemaName *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
+	// The name that is used to search for the database.
+	//
 	// example:
 	//
 	// schema_name@127.0.XX.XX
@@ -30342,10 +30539,6 @@ type GetTaskResponseBodyTask struct {
 	// {"{\\"x\\":0,\\"y\\":0,\\"layoutType\\":\\"Horizontal\\"}",  "id": 51***}
 	GraphParam *string `json:"GraphParam,omitempty" xml:"GraphParam,omitempty"`
 	// The advanced configuration for the node.
-	//
-	// example:
-	//
-	// {\\\\"dbId\\\\":39\\*\\*\\*\\*,\\\\"dbType\\\\":\\\\"mysql\\\\",\\\\"locale\\\\":\\\\"zh\\\\",\\\\"sql\\\\":\\\\"/\\	- Make sure that the following SQL statements meet your business requirements before submitting the SQL statements for execution. \\*/\\\\\\n\\\\\\nCREATE TABLE IF NOT EXISTS \\`momo_weekGather\\` (\\\\\\n\\\\\\t\\`id\\` bigint AUTO_INCREMENT DEFAULT \\"0\\",\\\\\\n\\\\\\t\\`age\\` bit NULL,\\\\\\n\\\\\\t\\`action\\` varchar(150) NULL,\\\\\\n\\\\\\t\\`elapse_time\\` datetime NULL,\\\\\\n\\\\\\tPRIMARY KEY (\\`id\\`)\\\\\\n) ENGINE=InnoDB\\\\\\nDEFAULT CHARACTER SET=utf8;\\\\"}
 	NodeConfig *string `json:"NodeConfig,omitempty" xml:"NodeConfig,omitempty"`
 	// The configuration for the node.
 	//
@@ -30730,10 +30923,6 @@ type GetTaskFlowGraphResponseBodyTaskFlowGraphNodesNode struct {
 	// {\\"x\\":541,\\"y\\":322,\\"layoutType\\":\\"Horizontal\\"}
 	GraphParam *string `json:"GraphParam,omitempty" xml:"GraphParam,omitempty"`
 	// The advanced configuration of the node.
-	//
-	// example:
-	//
-	// {\\"dbId\\":39****,\\"dbType\\":\\"mysql\\",\\"locale\\":\\"zh\\",\\"sql\\":\\"/*XXXXX*/\\\\n\\\\nCREATE TABLE IF NOT EXISTS `momo_weekGather` (\\\\n\\\\t`id` bigint AUTO_INCREMENT DEFAULT \\"0\\",\\\\n\\\\t`age` bit NULL,\\\\n\\\\t`action` varchar(150) NULL,\\\\n\\\\t`elapse_time` datetime NULL,\\\\n\\\\tPRIMARY KEY (`id`)\\\\n) ENGINE=InnoDB\\\\nDEFAULT CHARACTER SET=utf8;\\"}
 	NodeConfig *string `json:"NodeConfig,omitempty" xml:"NodeConfig,omitempty"`
 	// The configuration of the node.
 	//
@@ -55313,7 +55502,8 @@ type SubmitOrderApprovalRequest struct {
 	// example:
 	//
 	// 12345
-	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	OrderId          *int64  `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	RealLoginUserUid *string `json:"RealLoginUserUid,omitempty" xml:"RealLoginUserUid,omitempty"`
 	// The ID of the tenant.
 	//
 	// > To view the tenant ID, move the pointer over the profile picture in the upper-right corner of the Data Management (DMS) console. For more information, see [Manage DMS tenants](https://help.aliyun.com/document_detail/181330.html).
@@ -55334,6 +55524,11 @@ func (s SubmitOrderApprovalRequest) GoString() string {
 
 func (s *SubmitOrderApprovalRequest) SetOrderId(v int64) *SubmitOrderApprovalRequest {
 	s.OrderId = &v
+	return s
+}
+
+func (s *SubmitOrderApprovalRequest) SetRealLoginUserUid(v string) *SubmitOrderApprovalRequest {
+	s.RealLoginUserUid = &v
 	return s
 }
 
@@ -60497,6 +60692,10 @@ func (client *Client) ApproveOrderWithOptions(request *ApproveOrderRequest, runt
 		query["OldApprover"] = request.OldApprover
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.RealLoginUserUid)) {
+		query["RealLoginUserUid"] = request.RealLoginUserUid
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Tid)) {
 		query["Tid"] = request.Tid
 	}
@@ -61134,7 +61333,11 @@ func (client *Client) CreateAuthorityTemplate(request *CreateAuthorityTemplateRe
 
 // Summary:
 //
-// Creates data archiving tickets.
+// Creates a data archiving ticket to archive data to destinations such as dedicated storage space or ApsaraDB RDS for MySQL instances.
+//
+// Description:
+//
+// You can call this API operation only for database instances that are managed in Security Collaboration mode.
 //
 // @param tmpReq - CreateDataArchiveOrderRequest
 //
@@ -61206,7 +61409,11 @@ func (client *Client) CreateDataArchiveOrderWithOptions(tmpReq *CreateDataArchiv
 
 // Summary:
 //
-// Creates data archiving tickets.
+// Creates a data archiving ticket to archive data to destinations such as dedicated storage space or ApsaraDB RDS for MySQL instances.
+//
+// Description:
+//
+// You can call this API operation only for database instances that are managed in Security Collaboration mode.
 //
 // @param request - CreateDataArchiveOrderRequest
 //
@@ -61261,6 +61468,10 @@ func (client *Client) CreateDataCorrectOrderWithOptions(tmpReq *CreateDataCorrec
 
 	if !tea.BoolValue(util.IsUnset(request.ParamShrink)) {
 		query["Param"] = request.ParamShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RealLoginUserUid)) {
+		query["RealLoginUserUid"] = request.RealLoginUserUid
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.RelatedUserListShrink)) {
@@ -61453,6 +61664,10 @@ func (client *Client) CreateDataExportOrderWithOptions(tmpReq *CreateDataExportO
 
 	if !tea.BoolValue(util.IsUnset(request.PluginParamShrink)) {
 		query["PluginParam"] = request.PluginParamShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RealLoginUserUid)) {
+		query["RealLoginUserUid"] = request.RealLoginUserUid
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.RelatedUserListShrink)) {
@@ -64493,6 +64708,10 @@ func (client *Client) ExecuteDataCorrectWithOptions(tmpReq *ExecuteDataCorrectRe
 		query["OrderId"] = request.OrderId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.RealLoginUserUid)) {
+		query["RealLoginUserUid"] = request.RealLoginUserUid
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Tid)) {
 		query["Tid"] = request.Tid
 	}
@@ -64565,6 +64784,10 @@ func (client *Client) ExecuteDataExportWithOptions(tmpReq *ExecuteDataExportRequ
 
 	if !tea.BoolValue(util.IsUnset(request.OrderId)) {
 		query["OrderId"] = request.OrderId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RealLoginUserUid)) {
+		query["RealLoginUserUid"] = request.RealLoginUserUid
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Tid)) {
@@ -65795,6 +66018,10 @@ func (client *Client) GetDataExportDownloadURLWithOptions(request *GetDataExport
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.OrderId)) {
 		query["OrderId"] = request.OrderId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RealLoginUserUid)) {
+		query["RealLoginUserUid"] = request.RealLoginUserUid
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Tid)) {
@@ -68156,7 +68383,7 @@ func (client *Client) GetTableDBTopology(request *GetTableDBTopologyRequest) (_r
 
 // Summary:
 //
-// 获取结构设计项目的流程信息
+// Queries the information about a schema design ticket, such as the current node of the ticket, whether the ticket can be returned to the schema design node, and the publishing strategy.
 //
 // @param request - GetTableDesignProjectFlowRequest
 //
@@ -68202,7 +68429,7 @@ func (client *Client) GetTableDesignProjectFlowWithOptions(request *GetTableDesi
 
 // Summary:
 //
-// 获取结构设计项目的流程信息
+// Queries the information about a schema design ticket, such as the current node of the ticket, whether the ticket can be returned to the schema design node, and the publishing strategy.
 //
 // @param request - GetTableDesignProjectFlowRequest
 //
@@ -68220,7 +68447,7 @@ func (client *Client) GetTableDesignProjectFlow(request *GetTableDesignProjectFl
 
 // Summary:
 //
-// 获取结构设计项目的详细信息
+// Queries the information about the project and change base database of a schema design ticket, such as the state of the ticket, the ID of the user who created the ticket, and the name and ID of the change base database.
 //
 // @param request - GetTableDesignProjectInfoRequest
 //
@@ -68266,7 +68493,7 @@ func (client *Client) GetTableDesignProjectInfoWithOptions(request *GetTableDesi
 
 // Summary:
 //
-// 获取结构设计项目的详细信息
+// Queries the information about the project and change base database of a schema design ticket, such as the state of the ticket, the ID of the user who created the ticket, and the name and ID of the change base database.
 //
 // @param request - GetTableDesignProjectInfoRequest
 //
@@ -75113,6 +75340,10 @@ func (client *Client) SubmitOrderApprovalWithOptions(request *SubmitOrderApprova
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.OrderId)) {
 		query["OrderId"] = request.OrderId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RealLoginUserUid)) {
+		query["RealLoginUserUid"] = request.RealLoginUserUid
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Tid)) {
