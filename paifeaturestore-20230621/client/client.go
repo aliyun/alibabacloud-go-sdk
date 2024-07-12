@@ -1779,9 +1779,10 @@ func (s *ExportModelFeatureTrainingSetFGTableResponse) SetBody(v *ExportModelFea
 }
 
 type ExportModelFeatureTrainingSetTableRequest struct {
-	FeatureViewConfig map[string]*FeatureViewConfigValue                          `json:"FeatureViewConfig,omitempty" xml:"FeatureViewConfig,omitempty"`
-	LabelInputConfig  *ExportModelFeatureTrainingSetTableRequestLabelInputConfig  `json:"LabelInputConfig,omitempty" xml:"LabelInputConfig,omitempty" type:"Struct"`
-	TrainingSetConfig *ExportModelFeatureTrainingSetTableRequestTrainingSetConfig `json:"TrainingSetConfig,omitempty" xml:"TrainingSetConfig,omitempty" type:"Struct"`
+	FeatureViewConfig       map[string]*FeatureViewConfigValue                          `json:"FeatureViewConfig,omitempty" xml:"FeatureViewConfig,omitempty"`
+	LabelInputConfig        *ExportModelFeatureTrainingSetTableRequestLabelInputConfig  `json:"LabelInputConfig,omitempty" xml:"LabelInputConfig,omitempty" type:"Struct"`
+	RealTimeIterateInterval *int64                                                      `json:"RealTimeIterateInterval,omitempty" xml:"RealTimeIterateInterval,omitempty"`
+	TrainingSetConfig       *ExportModelFeatureTrainingSetTableRequestTrainingSetConfig `json:"TrainingSetConfig,omitempty" xml:"TrainingSetConfig,omitempty" type:"Struct"`
 }
 
 func (s ExportModelFeatureTrainingSetTableRequest) String() string {
@@ -1799,6 +1800,11 @@ func (s *ExportModelFeatureTrainingSetTableRequest) SetFeatureViewConfig(v map[s
 
 func (s *ExportModelFeatureTrainingSetTableRequest) SetLabelInputConfig(v *ExportModelFeatureTrainingSetTableRequestLabelInputConfig) *ExportModelFeatureTrainingSetTableRequest {
 	s.LabelInputConfig = v
+	return s
+}
+
+func (s *ExportModelFeatureTrainingSetTableRequest) SetRealTimeIterateInterval(v int64) *ExportModelFeatureTrainingSetTableRequest {
+	s.RealTimeIterateInterval = &v
 	return s
 }
 
@@ -10411,6 +10417,10 @@ func (client *Client) ExportModelFeatureTrainingSetTableWithOptions(InstanceId *
 
 	if !tea.BoolValue(util.IsUnset(request.LabelInputConfig)) {
 		body["LabelInputConfig"] = request.LabelInputConfig
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RealTimeIterateInterval)) {
+		body["RealTimeIterateInterval"] = request.RealTimeIterateInterval
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.TrainingSetConfig)) {
