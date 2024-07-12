@@ -823,10 +823,19 @@ func (s *DescribeImageResultExtResponse) SetBody(v *DescribeImageResultExtRespon
 }
 
 type DescribeUploadTokenResponseBody struct {
-	Code      *int32                               `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *DescribeUploadTokenResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Msg       *string                              `json:"Msg,omitempty" xml:"Msg,omitempty"`
-	RequestId *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 200
+	Code *int32                               `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *DescribeUploadTokenResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// OK
+	Msg *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
+	// example:
+	//
+	// AAAAAA-BBBB-CCCCC-DDDD-EEEEEEEE****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeUploadTokenResponseBody) String() string {
@@ -858,14 +867,38 @@ func (s *DescribeUploadTokenResponseBody) SetRequestId(v string) *DescribeUpload
 }
 
 type DescribeUploadTokenResponseBodyData struct {
-	AccessKeyId         *string `json:"AccessKeyId,omitempty" xml:"AccessKeyId,omitempty"`
-	AccessKeySecret     *string `json:"AccessKeySecret,omitempty" xml:"AccessKeySecret,omitempty"`
-	BucketName          *string `json:"BucketName,omitempty" xml:"BucketName,omitempty"`
-	Expiration          *int32  `json:"Expiration,omitempty" xml:"Expiration,omitempty"`
-	FileNamePrefix      *string `json:"FileNamePrefix,omitempty" xml:"FileNamePrefix,omitempty"`
+	// example:
+	//
+	// STS.NUEUjvDqMuvH6oQA1TXxxH4wVR
+	AccessKeyId *string `json:"AccessKeyId,omitempty" xml:"AccessKeyId,omitempty"`
+	// example:
+	//
+	// xxxx
+	AccessKeySecret *string `json:"AccessKeySecret,omitempty" xml:"AccessKeySecret,omitempty"`
+	// example:
+	//
+	// oss-cip-shanghai
+	BucketName *string `json:"BucketName,omitempty" xml:"BucketName,omitempty"`
+	// example:
+	//
+	// 1720577200
+	Expiration *int32 `json:"Expiration,omitempty" xml:"Expiration,omitempty"`
+	// example:
+	//
+	// upload/1xxb89/
+	FileNamePrefix *string `json:"FileNamePrefix,omitempty" xml:"FileNamePrefix,omitempty"`
+	// example:
+	//
+	// https://oss-cn-shanghai-internal.aliyuncs.com
 	OssInternalEndPoint *string `json:"OssInternalEndPoint,omitempty" xml:"OssInternalEndPoint,omitempty"`
+	// example:
+	//
+	// https://oss-cn-shanghai.aliyuncs.com
 	OssInternetEndPoint *string `json:"OssInternetEndPoint,omitempty" xml:"OssInternetEndPoint,omitempty"`
-	SecurityToken       *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	// example:
+	//
+	// xxxx
+	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 }
 
 func (s DescribeUploadTokenResponseBodyData) String() string {
