@@ -2489,6 +2489,7 @@ func (s *CreateEventStreamingRequestRunOptionsScaledObjectTriggersMetadata) SetV
 type CreateEventStreamingRequestSink struct {
 	SinkCustomizedKafkaConnectorParameters *CreateEventStreamingRequestSinkSinkCustomizedKafkaConnectorParameters `json:"SinkCustomizedKafkaConnectorParameters,omitempty" xml:"SinkCustomizedKafkaConnectorParameters,omitempty" type:"Struct"`
 	SinkCustomizedKafkaParameters          *CreateEventStreamingRequestSinkSinkCustomizedKafkaParameters          `json:"SinkCustomizedKafkaParameters,omitempty" xml:"SinkCustomizedKafkaParameters,omitempty" type:"Struct"`
+	SinkDashVectorParameters               *CreateEventStreamingRequestSinkSinkDashVectorParameters               `json:"SinkDashVectorParameters,omitempty" xml:"SinkDashVectorParameters,omitempty" type:"Struct"`
 	// The parameters that are configured if you specify DataHub as the event target.
 	SinkDataHubParameters *CreateEventStreamingRequestSinkSinkDataHubParameters `json:"SinkDataHubParameters,omitempty" xml:"SinkDataHubParameters,omitempty" type:"Struct"`
 	// The parameters that are configured if you specify Function Compute as the event target.
@@ -2524,6 +2525,11 @@ func (s *CreateEventStreamingRequestSink) SetSinkCustomizedKafkaConnectorParamet
 
 func (s *CreateEventStreamingRequestSink) SetSinkCustomizedKafkaParameters(v *CreateEventStreamingRequestSinkSinkCustomizedKafkaParameters) *CreateEventStreamingRequestSink {
 	s.SinkCustomizedKafkaParameters = v
+	return s
+}
+
+func (s *CreateEventStreamingRequestSink) SetSinkDashVectorParameters(v *CreateEventStreamingRequestSinkSinkDashVectorParameters) *CreateEventStreamingRequestSink {
+	s.SinkDashVectorParameters = v
 	return s
 }
 
@@ -2638,6 +2644,187 @@ func (s CreateEventStreamingRequestSinkSinkCustomizedKafkaParameters) GoString()
 
 func (s *CreateEventStreamingRequestSinkSinkCustomizedKafkaParameters) SetInstanceId(v string) *CreateEventStreamingRequestSinkSinkCustomizedKafkaParameters {
 	s.InstanceId = &v
+	return s
+}
+
+type CreateEventStreamingRequestSinkSinkDashVectorParameters struct {
+	ApiKey                     *string                                                                            `json:"ApiKey,omitempty" xml:"ApiKey,omitempty"`
+	Collection                 *string                                                                            `json:"Collection,omitempty" xml:"Collection,omitempty"`
+	DashVectorSchemaParameters *CreateEventStreamingRequestSinkSinkDashVectorParametersDashVectorSchemaParameters `json:"DashVectorSchemaParameters,omitempty" xml:"DashVectorSchemaParameters,omitempty" type:"Struct"`
+	InstanceId                 *string                                                                            `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Network                    *string                                                                            `json:"Network,omitempty" xml:"Network,omitempty"`
+	Operation                  *string                                                                            `json:"Operation,omitempty" xml:"Operation,omitempty"`
+	Partition                  *CreateEventStreamingRequestSinkSinkDashVectorParametersPartition                  `json:"Partition,omitempty" xml:"Partition,omitempty" type:"Struct"`
+	PrimaryKeyId               *CreateEventStreamingRequestSinkSinkDashVectorParametersPrimaryKeyId               `json:"PrimaryKeyId,omitempty" xml:"PrimaryKeyId,omitempty" type:"Struct"`
+	Vector                     *CreateEventStreamingRequestSinkSinkDashVectorParametersVector                     `json:"Vector,omitempty" xml:"Vector,omitempty" type:"Struct"`
+}
+
+func (s CreateEventStreamingRequestSinkSinkDashVectorParameters) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateEventStreamingRequestSinkSinkDashVectorParameters) GoString() string {
+	return s.String()
+}
+
+func (s *CreateEventStreamingRequestSinkSinkDashVectorParameters) SetApiKey(v string) *CreateEventStreamingRequestSinkSinkDashVectorParameters {
+	s.ApiKey = &v
+	return s
+}
+
+func (s *CreateEventStreamingRequestSinkSinkDashVectorParameters) SetCollection(v string) *CreateEventStreamingRequestSinkSinkDashVectorParameters {
+	s.Collection = &v
+	return s
+}
+
+func (s *CreateEventStreamingRequestSinkSinkDashVectorParameters) SetDashVectorSchemaParameters(v *CreateEventStreamingRequestSinkSinkDashVectorParametersDashVectorSchemaParameters) *CreateEventStreamingRequestSinkSinkDashVectorParameters {
+	s.DashVectorSchemaParameters = v
+	return s
+}
+
+func (s *CreateEventStreamingRequestSinkSinkDashVectorParameters) SetInstanceId(v string) *CreateEventStreamingRequestSinkSinkDashVectorParameters {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *CreateEventStreamingRequestSinkSinkDashVectorParameters) SetNetwork(v string) *CreateEventStreamingRequestSinkSinkDashVectorParameters {
+	s.Network = &v
+	return s
+}
+
+func (s *CreateEventStreamingRequestSinkSinkDashVectorParameters) SetOperation(v string) *CreateEventStreamingRequestSinkSinkDashVectorParameters {
+	s.Operation = &v
+	return s
+}
+
+func (s *CreateEventStreamingRequestSinkSinkDashVectorParameters) SetPartition(v *CreateEventStreamingRequestSinkSinkDashVectorParametersPartition) *CreateEventStreamingRequestSinkSinkDashVectorParameters {
+	s.Partition = v
+	return s
+}
+
+func (s *CreateEventStreamingRequestSinkSinkDashVectorParameters) SetPrimaryKeyId(v *CreateEventStreamingRequestSinkSinkDashVectorParametersPrimaryKeyId) *CreateEventStreamingRequestSinkSinkDashVectorParameters {
+	s.PrimaryKeyId = v
+	return s
+}
+
+func (s *CreateEventStreamingRequestSinkSinkDashVectorParameters) SetVector(v *CreateEventStreamingRequestSinkSinkDashVectorParametersVector) *CreateEventStreamingRequestSinkSinkDashVectorParameters {
+	s.Vector = v
+	return s
+}
+
+type CreateEventStreamingRequestSinkSinkDashVectorParametersDashVectorSchemaParameters struct {
+	Form     *string `json:"Form,omitempty" xml:"Form,omitempty"`
+	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
+	Value    *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CreateEventStreamingRequestSinkSinkDashVectorParametersDashVectorSchemaParameters) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateEventStreamingRequestSinkSinkDashVectorParametersDashVectorSchemaParameters) GoString() string {
+	return s.String()
+}
+
+func (s *CreateEventStreamingRequestSinkSinkDashVectorParametersDashVectorSchemaParameters) SetForm(v string) *CreateEventStreamingRequestSinkSinkDashVectorParametersDashVectorSchemaParameters {
+	s.Form = &v
+	return s
+}
+
+func (s *CreateEventStreamingRequestSinkSinkDashVectorParametersDashVectorSchemaParameters) SetTemplate(v string) *CreateEventStreamingRequestSinkSinkDashVectorParametersDashVectorSchemaParameters {
+	s.Template = &v
+	return s
+}
+
+func (s *CreateEventStreamingRequestSinkSinkDashVectorParametersDashVectorSchemaParameters) SetValue(v string) *CreateEventStreamingRequestSinkSinkDashVectorParametersDashVectorSchemaParameters {
+	s.Value = &v
+	return s
+}
+
+type CreateEventStreamingRequestSinkSinkDashVectorParametersPartition struct {
+	Form     *string `json:"Form,omitempty" xml:"Form,omitempty"`
+	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
+	Value    *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CreateEventStreamingRequestSinkSinkDashVectorParametersPartition) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateEventStreamingRequestSinkSinkDashVectorParametersPartition) GoString() string {
+	return s.String()
+}
+
+func (s *CreateEventStreamingRequestSinkSinkDashVectorParametersPartition) SetForm(v string) *CreateEventStreamingRequestSinkSinkDashVectorParametersPartition {
+	s.Form = &v
+	return s
+}
+
+func (s *CreateEventStreamingRequestSinkSinkDashVectorParametersPartition) SetTemplate(v string) *CreateEventStreamingRequestSinkSinkDashVectorParametersPartition {
+	s.Template = &v
+	return s
+}
+
+func (s *CreateEventStreamingRequestSinkSinkDashVectorParametersPartition) SetValue(v string) *CreateEventStreamingRequestSinkSinkDashVectorParametersPartition {
+	s.Value = &v
+	return s
+}
+
+type CreateEventStreamingRequestSinkSinkDashVectorParametersPrimaryKeyId struct {
+	Form     *string `json:"Form,omitempty" xml:"Form,omitempty"`
+	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
+	Value    *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CreateEventStreamingRequestSinkSinkDashVectorParametersPrimaryKeyId) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateEventStreamingRequestSinkSinkDashVectorParametersPrimaryKeyId) GoString() string {
+	return s.String()
+}
+
+func (s *CreateEventStreamingRequestSinkSinkDashVectorParametersPrimaryKeyId) SetForm(v string) *CreateEventStreamingRequestSinkSinkDashVectorParametersPrimaryKeyId {
+	s.Form = &v
+	return s
+}
+
+func (s *CreateEventStreamingRequestSinkSinkDashVectorParametersPrimaryKeyId) SetTemplate(v string) *CreateEventStreamingRequestSinkSinkDashVectorParametersPrimaryKeyId {
+	s.Template = &v
+	return s
+}
+
+func (s *CreateEventStreamingRequestSinkSinkDashVectorParametersPrimaryKeyId) SetValue(v string) *CreateEventStreamingRequestSinkSinkDashVectorParametersPrimaryKeyId {
+	s.Value = &v
+	return s
+}
+
+type CreateEventStreamingRequestSinkSinkDashVectorParametersVector struct {
+	Form     *string `json:"Form,omitempty" xml:"Form,omitempty"`
+	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
+	Value    *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CreateEventStreamingRequestSinkSinkDashVectorParametersVector) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateEventStreamingRequestSinkSinkDashVectorParametersVector) GoString() string {
+	return s.String()
+}
+
+func (s *CreateEventStreamingRequestSinkSinkDashVectorParametersVector) SetForm(v string) *CreateEventStreamingRequestSinkSinkDashVectorParametersVector {
+	s.Form = &v
+	return s
+}
+
+func (s *CreateEventStreamingRequestSinkSinkDashVectorParametersVector) SetTemplate(v string) *CreateEventStreamingRequestSinkSinkDashVectorParametersVector {
+	s.Template = &v
+	return s
+}
+
+func (s *CreateEventStreamingRequestSinkSinkDashVectorParametersVector) SetValue(v string) *CreateEventStreamingRequestSinkSinkDashVectorParametersVector {
+	s.Value = &v
 	return s
 }
 
@@ -11175,6 +11362,7 @@ func (s *GetEventStreamingResponseBodyDataRunOptionsScaledObjectTriggersMetadata
 type GetEventStreamingResponseBodyDataSink struct {
 	SinkCustomizedKafkaConnectorParameters *GetEventStreamingResponseBodyDataSinkSinkCustomizedKafkaConnectorParameters `json:"SinkCustomizedKafkaConnectorParameters,omitempty" xml:"SinkCustomizedKafkaConnectorParameters,omitempty" type:"Struct"`
 	SinkCustomizedKafkaParameters          *GetEventStreamingResponseBodyDataSinkSinkCustomizedKafkaParameters          `json:"SinkCustomizedKafkaParameters,omitempty" xml:"SinkCustomizedKafkaParameters,omitempty" type:"Struct"`
+	SinkDashVectorParameters               *GetEventStreamingResponseBodyDataSinkSinkDashVectorParameters               `json:"SinkDashVectorParameters,omitempty" xml:"SinkDashVectorParameters,omitempty" type:"Struct"`
 	SinkDataHubParameters                  *GetEventStreamingResponseBodyDataSinkSinkDataHubParameters                  `json:"SinkDataHubParameters,omitempty" xml:"SinkDataHubParameters,omitempty" type:"Struct"`
 	// The parameters that are returned if the event target is Function Compute.
 	SinkFcParameters *GetEventStreamingResponseBodyDataSinkSinkFcParameters `json:"SinkFcParameters,omitempty" xml:"SinkFcParameters,omitempty" type:"Struct"`
@@ -11207,6 +11395,11 @@ func (s *GetEventStreamingResponseBodyDataSink) SetSinkCustomizedKafkaConnectorP
 
 func (s *GetEventStreamingResponseBodyDataSink) SetSinkCustomizedKafkaParameters(v *GetEventStreamingResponseBodyDataSinkSinkCustomizedKafkaParameters) *GetEventStreamingResponseBodyDataSink {
 	s.SinkCustomizedKafkaParameters = v
+	return s
+}
+
+func (s *GetEventStreamingResponseBodyDataSink) SetSinkDashVectorParameters(v *GetEventStreamingResponseBodyDataSinkSinkDashVectorParameters) *GetEventStreamingResponseBodyDataSink {
+	s.SinkDashVectorParameters = v
 	return s
 }
 
@@ -11316,6 +11509,187 @@ func (s GetEventStreamingResponseBodyDataSinkSinkCustomizedKafkaParameters) GoSt
 
 func (s *GetEventStreamingResponseBodyDataSinkSinkCustomizedKafkaParameters) SetInstanceId(v string) *GetEventStreamingResponseBodyDataSinkSinkCustomizedKafkaParameters {
 	s.InstanceId = &v
+	return s
+}
+
+type GetEventStreamingResponseBodyDataSinkSinkDashVectorParameters struct {
+	ApiKey                     *string                                                                                  `json:"ApiKey,omitempty" xml:"ApiKey,omitempty"`
+	Collection                 *string                                                                                  `json:"Collection,omitempty" xml:"Collection,omitempty"`
+	DashVectorSchemaParameters *GetEventStreamingResponseBodyDataSinkSinkDashVectorParametersDashVectorSchemaParameters `json:"DashVectorSchemaParameters,omitempty" xml:"DashVectorSchemaParameters,omitempty" type:"Struct"`
+	InstanceId                 *string                                                                                  `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Network                    *string                                                                                  `json:"Network,omitempty" xml:"Network,omitempty"`
+	Operation                  *string                                                                                  `json:"Operation,omitempty" xml:"Operation,omitempty"`
+	Partition                  *GetEventStreamingResponseBodyDataSinkSinkDashVectorParametersPartition                  `json:"Partition,omitempty" xml:"Partition,omitempty" type:"Struct"`
+	PrimaryKeyId               *GetEventStreamingResponseBodyDataSinkSinkDashVectorParametersPrimaryKeyId               `json:"PrimaryKeyId,omitempty" xml:"PrimaryKeyId,omitempty" type:"Struct"`
+	Vector                     *GetEventStreamingResponseBodyDataSinkSinkDashVectorParametersVector                     `json:"Vector,omitempty" xml:"Vector,omitempty" type:"Struct"`
+}
+
+func (s GetEventStreamingResponseBodyDataSinkSinkDashVectorParameters) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetEventStreamingResponseBodyDataSinkSinkDashVectorParameters) GoString() string {
+	return s.String()
+}
+
+func (s *GetEventStreamingResponseBodyDataSinkSinkDashVectorParameters) SetApiKey(v string) *GetEventStreamingResponseBodyDataSinkSinkDashVectorParameters {
+	s.ApiKey = &v
+	return s
+}
+
+func (s *GetEventStreamingResponseBodyDataSinkSinkDashVectorParameters) SetCollection(v string) *GetEventStreamingResponseBodyDataSinkSinkDashVectorParameters {
+	s.Collection = &v
+	return s
+}
+
+func (s *GetEventStreamingResponseBodyDataSinkSinkDashVectorParameters) SetDashVectorSchemaParameters(v *GetEventStreamingResponseBodyDataSinkSinkDashVectorParametersDashVectorSchemaParameters) *GetEventStreamingResponseBodyDataSinkSinkDashVectorParameters {
+	s.DashVectorSchemaParameters = v
+	return s
+}
+
+func (s *GetEventStreamingResponseBodyDataSinkSinkDashVectorParameters) SetInstanceId(v string) *GetEventStreamingResponseBodyDataSinkSinkDashVectorParameters {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *GetEventStreamingResponseBodyDataSinkSinkDashVectorParameters) SetNetwork(v string) *GetEventStreamingResponseBodyDataSinkSinkDashVectorParameters {
+	s.Network = &v
+	return s
+}
+
+func (s *GetEventStreamingResponseBodyDataSinkSinkDashVectorParameters) SetOperation(v string) *GetEventStreamingResponseBodyDataSinkSinkDashVectorParameters {
+	s.Operation = &v
+	return s
+}
+
+func (s *GetEventStreamingResponseBodyDataSinkSinkDashVectorParameters) SetPartition(v *GetEventStreamingResponseBodyDataSinkSinkDashVectorParametersPartition) *GetEventStreamingResponseBodyDataSinkSinkDashVectorParameters {
+	s.Partition = v
+	return s
+}
+
+func (s *GetEventStreamingResponseBodyDataSinkSinkDashVectorParameters) SetPrimaryKeyId(v *GetEventStreamingResponseBodyDataSinkSinkDashVectorParametersPrimaryKeyId) *GetEventStreamingResponseBodyDataSinkSinkDashVectorParameters {
+	s.PrimaryKeyId = v
+	return s
+}
+
+func (s *GetEventStreamingResponseBodyDataSinkSinkDashVectorParameters) SetVector(v *GetEventStreamingResponseBodyDataSinkSinkDashVectorParametersVector) *GetEventStreamingResponseBodyDataSinkSinkDashVectorParameters {
+	s.Vector = v
+	return s
+}
+
+type GetEventStreamingResponseBodyDataSinkSinkDashVectorParametersDashVectorSchemaParameters struct {
+	Form     *string `json:"Form,omitempty" xml:"Form,omitempty"`
+	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
+	Value    *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s GetEventStreamingResponseBodyDataSinkSinkDashVectorParametersDashVectorSchemaParameters) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetEventStreamingResponseBodyDataSinkSinkDashVectorParametersDashVectorSchemaParameters) GoString() string {
+	return s.String()
+}
+
+func (s *GetEventStreamingResponseBodyDataSinkSinkDashVectorParametersDashVectorSchemaParameters) SetForm(v string) *GetEventStreamingResponseBodyDataSinkSinkDashVectorParametersDashVectorSchemaParameters {
+	s.Form = &v
+	return s
+}
+
+func (s *GetEventStreamingResponseBodyDataSinkSinkDashVectorParametersDashVectorSchemaParameters) SetTemplate(v string) *GetEventStreamingResponseBodyDataSinkSinkDashVectorParametersDashVectorSchemaParameters {
+	s.Template = &v
+	return s
+}
+
+func (s *GetEventStreamingResponseBodyDataSinkSinkDashVectorParametersDashVectorSchemaParameters) SetValue(v string) *GetEventStreamingResponseBodyDataSinkSinkDashVectorParametersDashVectorSchemaParameters {
+	s.Value = &v
+	return s
+}
+
+type GetEventStreamingResponseBodyDataSinkSinkDashVectorParametersPartition struct {
+	Form     *string `json:"Form,omitempty" xml:"Form,omitempty"`
+	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
+	Value    *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s GetEventStreamingResponseBodyDataSinkSinkDashVectorParametersPartition) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetEventStreamingResponseBodyDataSinkSinkDashVectorParametersPartition) GoString() string {
+	return s.String()
+}
+
+func (s *GetEventStreamingResponseBodyDataSinkSinkDashVectorParametersPartition) SetForm(v string) *GetEventStreamingResponseBodyDataSinkSinkDashVectorParametersPartition {
+	s.Form = &v
+	return s
+}
+
+func (s *GetEventStreamingResponseBodyDataSinkSinkDashVectorParametersPartition) SetTemplate(v string) *GetEventStreamingResponseBodyDataSinkSinkDashVectorParametersPartition {
+	s.Template = &v
+	return s
+}
+
+func (s *GetEventStreamingResponseBodyDataSinkSinkDashVectorParametersPartition) SetValue(v string) *GetEventStreamingResponseBodyDataSinkSinkDashVectorParametersPartition {
+	s.Value = &v
+	return s
+}
+
+type GetEventStreamingResponseBodyDataSinkSinkDashVectorParametersPrimaryKeyId struct {
+	Form     *string `json:"Form,omitempty" xml:"Form,omitempty"`
+	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
+	Value    *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s GetEventStreamingResponseBodyDataSinkSinkDashVectorParametersPrimaryKeyId) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetEventStreamingResponseBodyDataSinkSinkDashVectorParametersPrimaryKeyId) GoString() string {
+	return s.String()
+}
+
+func (s *GetEventStreamingResponseBodyDataSinkSinkDashVectorParametersPrimaryKeyId) SetForm(v string) *GetEventStreamingResponseBodyDataSinkSinkDashVectorParametersPrimaryKeyId {
+	s.Form = &v
+	return s
+}
+
+func (s *GetEventStreamingResponseBodyDataSinkSinkDashVectorParametersPrimaryKeyId) SetTemplate(v string) *GetEventStreamingResponseBodyDataSinkSinkDashVectorParametersPrimaryKeyId {
+	s.Template = &v
+	return s
+}
+
+func (s *GetEventStreamingResponseBodyDataSinkSinkDashVectorParametersPrimaryKeyId) SetValue(v string) *GetEventStreamingResponseBodyDataSinkSinkDashVectorParametersPrimaryKeyId {
+	s.Value = &v
+	return s
+}
+
+type GetEventStreamingResponseBodyDataSinkSinkDashVectorParametersVector struct {
+	Form     *string `json:"Form,omitempty" xml:"Form,omitempty"`
+	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
+	Value    *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s GetEventStreamingResponseBodyDataSinkSinkDashVectorParametersVector) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetEventStreamingResponseBodyDataSinkSinkDashVectorParametersVector) GoString() string {
+	return s.String()
+}
+
+func (s *GetEventStreamingResponseBodyDataSinkSinkDashVectorParametersVector) SetForm(v string) *GetEventStreamingResponseBodyDataSinkSinkDashVectorParametersVector {
+	s.Form = &v
+	return s
+}
+
+func (s *GetEventStreamingResponseBodyDataSinkSinkDashVectorParametersVector) SetTemplate(v string) *GetEventStreamingResponseBodyDataSinkSinkDashVectorParametersVector {
+	s.Template = &v
+	return s
+}
+
+func (s *GetEventStreamingResponseBodyDataSinkSinkDashVectorParametersVector) SetValue(v string) *GetEventStreamingResponseBodyDataSinkSinkDashVectorParametersVector {
+	s.Value = &v
 	return s
 }
 
@@ -17361,6 +17735,7 @@ func (s *ListEventStreamingsResponseBodyDataEventStreamingsRunOptionsScaledObjec
 type ListEventStreamingsResponseBodyDataEventStreamingsSink struct {
 	SinkCustomizedKafkaConnectorParameters *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkCustomizedKafkaConnectorParameters `json:"SinkCustomizedKafkaConnectorParameters,omitempty" xml:"SinkCustomizedKafkaConnectorParameters,omitempty" type:"Struct"`
 	SinkCustomizedKafkaParameters          *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkCustomizedKafkaParameters          `json:"SinkCustomizedKafkaParameters,omitempty" xml:"SinkCustomizedKafkaParameters,omitempty" type:"Struct"`
+	SinkDashVectorParameters               *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDashVectorParameters               `json:"SinkDashVectorParameters,omitempty" xml:"SinkDashVectorParameters,omitempty" type:"Struct"`
 	SinkDataHubParameters                  *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDataHubParameters                  `json:"SinkDataHubParameters,omitempty" xml:"SinkDataHubParameters,omitempty" type:"Struct"`
 	// The parameters that are returned if Function Compute is specified as the event target.
 	SinkFcParameters *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkFcParameters `json:"SinkFcParameters,omitempty" xml:"SinkFcParameters,omitempty" type:"Struct"`
@@ -17393,6 +17768,11 @@ func (s *ListEventStreamingsResponseBodyDataEventStreamingsSink) SetSinkCustomiz
 
 func (s *ListEventStreamingsResponseBodyDataEventStreamingsSink) SetSinkCustomizedKafkaParameters(v *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkCustomizedKafkaParameters) *ListEventStreamingsResponseBodyDataEventStreamingsSink {
 	s.SinkCustomizedKafkaParameters = v
+	return s
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSink) SetSinkDashVectorParameters(v *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDashVectorParameters) *ListEventStreamingsResponseBodyDataEventStreamingsSink {
+	s.SinkDashVectorParameters = v
 	return s
 }
 
@@ -17502,6 +17882,187 @@ func (s ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkCustomizedKafk
 
 func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkCustomizedKafkaParameters) SetInstanceId(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkCustomizedKafkaParameters {
 	s.InstanceId = &v
+	return s
+}
+
+type ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDashVectorParameters struct {
+	ApiKey                     *string                                                                                                   `json:"ApiKey,omitempty" xml:"ApiKey,omitempty"`
+	Collection                 *string                                                                                                   `json:"Collection,omitempty" xml:"Collection,omitempty"`
+	DashVectorSchemaParameters *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDashVectorParametersDashVectorSchemaParameters `json:"DashVectorSchemaParameters,omitempty" xml:"DashVectorSchemaParameters,omitempty" type:"Struct"`
+	InstanceId                 *string                                                                                                   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Network                    *string                                                                                                   `json:"Network,omitempty" xml:"Network,omitempty"`
+	Operation                  *string                                                                                                   `json:"Operation,omitempty" xml:"Operation,omitempty"`
+	Partition                  *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDashVectorParametersPartition                  `json:"Partition,omitempty" xml:"Partition,omitempty" type:"Struct"`
+	PrimaryKeyId               *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDashVectorParametersPrimaryKeyId               `json:"PrimaryKeyId,omitempty" xml:"PrimaryKeyId,omitempty" type:"Struct"`
+	Vector                     *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDashVectorParametersVector                     `json:"Vector,omitempty" xml:"Vector,omitempty" type:"Struct"`
+}
+
+func (s ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDashVectorParameters) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDashVectorParameters) GoString() string {
+	return s.String()
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDashVectorParameters) SetApiKey(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDashVectorParameters {
+	s.ApiKey = &v
+	return s
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDashVectorParameters) SetCollection(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDashVectorParameters {
+	s.Collection = &v
+	return s
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDashVectorParameters) SetDashVectorSchemaParameters(v *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDashVectorParametersDashVectorSchemaParameters) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDashVectorParameters {
+	s.DashVectorSchemaParameters = v
+	return s
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDashVectorParameters) SetInstanceId(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDashVectorParameters {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDashVectorParameters) SetNetwork(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDashVectorParameters {
+	s.Network = &v
+	return s
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDashVectorParameters) SetOperation(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDashVectorParameters {
+	s.Operation = &v
+	return s
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDashVectorParameters) SetPartition(v *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDashVectorParametersPartition) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDashVectorParameters {
+	s.Partition = v
+	return s
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDashVectorParameters) SetPrimaryKeyId(v *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDashVectorParametersPrimaryKeyId) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDashVectorParameters {
+	s.PrimaryKeyId = v
+	return s
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDashVectorParameters) SetVector(v *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDashVectorParametersVector) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDashVectorParameters {
+	s.Vector = v
+	return s
+}
+
+type ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDashVectorParametersDashVectorSchemaParameters struct {
+	Form     *string `json:"Form,omitempty" xml:"Form,omitempty"`
+	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
+	Value    *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDashVectorParametersDashVectorSchemaParameters) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDashVectorParametersDashVectorSchemaParameters) GoString() string {
+	return s.String()
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDashVectorParametersDashVectorSchemaParameters) SetForm(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDashVectorParametersDashVectorSchemaParameters {
+	s.Form = &v
+	return s
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDashVectorParametersDashVectorSchemaParameters) SetTemplate(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDashVectorParametersDashVectorSchemaParameters {
+	s.Template = &v
+	return s
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDashVectorParametersDashVectorSchemaParameters) SetValue(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDashVectorParametersDashVectorSchemaParameters {
+	s.Value = &v
+	return s
+}
+
+type ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDashVectorParametersPartition struct {
+	Form     *string `json:"Form,omitempty" xml:"Form,omitempty"`
+	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
+	Value    *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDashVectorParametersPartition) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDashVectorParametersPartition) GoString() string {
+	return s.String()
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDashVectorParametersPartition) SetForm(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDashVectorParametersPartition {
+	s.Form = &v
+	return s
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDashVectorParametersPartition) SetTemplate(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDashVectorParametersPartition {
+	s.Template = &v
+	return s
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDashVectorParametersPartition) SetValue(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDashVectorParametersPartition {
+	s.Value = &v
+	return s
+}
+
+type ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDashVectorParametersPrimaryKeyId struct {
+	Form     *string `json:"Form,omitempty" xml:"Form,omitempty"`
+	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
+	Value    *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDashVectorParametersPrimaryKeyId) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDashVectorParametersPrimaryKeyId) GoString() string {
+	return s.String()
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDashVectorParametersPrimaryKeyId) SetForm(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDashVectorParametersPrimaryKeyId {
+	s.Form = &v
+	return s
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDashVectorParametersPrimaryKeyId) SetTemplate(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDashVectorParametersPrimaryKeyId {
+	s.Template = &v
+	return s
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDashVectorParametersPrimaryKeyId) SetValue(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDashVectorParametersPrimaryKeyId {
+	s.Value = &v
+	return s
+}
+
+type ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDashVectorParametersVector struct {
+	Form     *string `json:"Form,omitempty" xml:"Form,omitempty"`
+	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
+	Value    *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDashVectorParametersVector) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDashVectorParametersVector) GoString() string {
+	return s.String()
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDashVectorParametersVector) SetForm(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDashVectorParametersVector {
+	s.Form = &v
+	return s
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDashVectorParametersVector) SetTemplate(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDashVectorParametersVector {
+	s.Template = &v
+	return s
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDashVectorParametersVector) SetValue(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDashVectorParametersVector {
+	s.Value = &v
 	return s
 }
 
@@ -26830,6 +27391,7 @@ func (s *UpdateEventStreamingRequestRunOptionsScaledObjectTriggersMetadata) SetV
 type UpdateEventStreamingRequestSink struct {
 	SinkCustomizedKafkaConnectorParameters *UpdateEventStreamingRequestSinkSinkCustomizedKafkaConnectorParameters `json:"SinkCustomizedKafkaConnectorParameters,omitempty" xml:"SinkCustomizedKafkaConnectorParameters,omitempty" type:"Struct"`
 	SinkCustomizedKafkaParameters          *UpdateEventStreamingRequestSinkSinkCustomizedKafkaParameters          `json:"SinkCustomizedKafkaParameters,omitempty" xml:"SinkCustomizedKafkaParameters,omitempty" type:"Struct"`
+	SinkDashVectorParameters               *UpdateEventStreamingRequestSinkSinkDashVectorParameters               `json:"SinkDashVectorParameters,omitempty" xml:"SinkDashVectorParameters,omitempty" type:"Struct"`
 	SinkDataHubParameters                  *UpdateEventStreamingRequestSinkSinkDataHubParameters                  `json:"SinkDataHubParameters,omitempty" xml:"SinkDataHubParameters,omitempty" type:"Struct"`
 	// The parameters that are configured if you specify Function Compute as the event target.
 	SinkFcParameters *UpdateEventStreamingRequestSinkSinkFcParameters `json:"SinkFcParameters,omitempty" xml:"SinkFcParameters,omitempty" type:"Struct"`
@@ -26864,6 +27426,11 @@ func (s *UpdateEventStreamingRequestSink) SetSinkCustomizedKafkaConnectorParamet
 
 func (s *UpdateEventStreamingRequestSink) SetSinkCustomizedKafkaParameters(v *UpdateEventStreamingRequestSinkSinkCustomizedKafkaParameters) *UpdateEventStreamingRequestSink {
 	s.SinkCustomizedKafkaParameters = v
+	return s
+}
+
+func (s *UpdateEventStreamingRequestSink) SetSinkDashVectorParameters(v *UpdateEventStreamingRequestSinkSinkDashVectorParameters) *UpdateEventStreamingRequestSink {
+	s.SinkDashVectorParameters = v
 	return s
 }
 
@@ -26978,6 +27545,187 @@ func (s UpdateEventStreamingRequestSinkSinkCustomizedKafkaParameters) GoString()
 
 func (s *UpdateEventStreamingRequestSinkSinkCustomizedKafkaParameters) SetInstanceId(v string) *UpdateEventStreamingRequestSinkSinkCustomizedKafkaParameters {
 	s.InstanceId = &v
+	return s
+}
+
+type UpdateEventStreamingRequestSinkSinkDashVectorParameters struct {
+	ApiKey                     *string                                                                            `json:"ApiKey,omitempty" xml:"ApiKey,omitempty"`
+	Collection                 *string                                                                            `json:"Collection,omitempty" xml:"Collection,omitempty"`
+	DashVectorSchemaParameters *UpdateEventStreamingRequestSinkSinkDashVectorParametersDashVectorSchemaParameters `json:"DashVectorSchemaParameters,omitempty" xml:"DashVectorSchemaParameters,omitempty" type:"Struct"`
+	InstanceId                 *string                                                                            `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Network                    *string                                                                            `json:"Network,omitempty" xml:"Network,omitempty"`
+	Operation                  *string                                                                            `json:"Operation,omitempty" xml:"Operation,omitempty"`
+	Partition                  *UpdateEventStreamingRequestSinkSinkDashVectorParametersPartition                  `json:"Partition,omitempty" xml:"Partition,omitempty" type:"Struct"`
+	PrimaryKeyId               *UpdateEventStreamingRequestSinkSinkDashVectorParametersPrimaryKeyId               `json:"PrimaryKeyId,omitempty" xml:"PrimaryKeyId,omitempty" type:"Struct"`
+	Vector                     *UpdateEventStreamingRequestSinkSinkDashVectorParametersVector                     `json:"Vector,omitempty" xml:"Vector,omitempty" type:"Struct"`
+}
+
+func (s UpdateEventStreamingRequestSinkSinkDashVectorParameters) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateEventStreamingRequestSinkSinkDashVectorParameters) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateEventStreamingRequestSinkSinkDashVectorParameters) SetApiKey(v string) *UpdateEventStreamingRequestSinkSinkDashVectorParameters {
+	s.ApiKey = &v
+	return s
+}
+
+func (s *UpdateEventStreamingRequestSinkSinkDashVectorParameters) SetCollection(v string) *UpdateEventStreamingRequestSinkSinkDashVectorParameters {
+	s.Collection = &v
+	return s
+}
+
+func (s *UpdateEventStreamingRequestSinkSinkDashVectorParameters) SetDashVectorSchemaParameters(v *UpdateEventStreamingRequestSinkSinkDashVectorParametersDashVectorSchemaParameters) *UpdateEventStreamingRequestSinkSinkDashVectorParameters {
+	s.DashVectorSchemaParameters = v
+	return s
+}
+
+func (s *UpdateEventStreamingRequestSinkSinkDashVectorParameters) SetInstanceId(v string) *UpdateEventStreamingRequestSinkSinkDashVectorParameters {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *UpdateEventStreamingRequestSinkSinkDashVectorParameters) SetNetwork(v string) *UpdateEventStreamingRequestSinkSinkDashVectorParameters {
+	s.Network = &v
+	return s
+}
+
+func (s *UpdateEventStreamingRequestSinkSinkDashVectorParameters) SetOperation(v string) *UpdateEventStreamingRequestSinkSinkDashVectorParameters {
+	s.Operation = &v
+	return s
+}
+
+func (s *UpdateEventStreamingRequestSinkSinkDashVectorParameters) SetPartition(v *UpdateEventStreamingRequestSinkSinkDashVectorParametersPartition) *UpdateEventStreamingRequestSinkSinkDashVectorParameters {
+	s.Partition = v
+	return s
+}
+
+func (s *UpdateEventStreamingRequestSinkSinkDashVectorParameters) SetPrimaryKeyId(v *UpdateEventStreamingRequestSinkSinkDashVectorParametersPrimaryKeyId) *UpdateEventStreamingRequestSinkSinkDashVectorParameters {
+	s.PrimaryKeyId = v
+	return s
+}
+
+func (s *UpdateEventStreamingRequestSinkSinkDashVectorParameters) SetVector(v *UpdateEventStreamingRequestSinkSinkDashVectorParametersVector) *UpdateEventStreamingRequestSinkSinkDashVectorParameters {
+	s.Vector = v
+	return s
+}
+
+type UpdateEventStreamingRequestSinkSinkDashVectorParametersDashVectorSchemaParameters struct {
+	Form     *string `json:"Form,omitempty" xml:"Form,omitempty"`
+	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
+	Value    *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s UpdateEventStreamingRequestSinkSinkDashVectorParametersDashVectorSchemaParameters) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateEventStreamingRequestSinkSinkDashVectorParametersDashVectorSchemaParameters) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateEventStreamingRequestSinkSinkDashVectorParametersDashVectorSchemaParameters) SetForm(v string) *UpdateEventStreamingRequestSinkSinkDashVectorParametersDashVectorSchemaParameters {
+	s.Form = &v
+	return s
+}
+
+func (s *UpdateEventStreamingRequestSinkSinkDashVectorParametersDashVectorSchemaParameters) SetTemplate(v string) *UpdateEventStreamingRequestSinkSinkDashVectorParametersDashVectorSchemaParameters {
+	s.Template = &v
+	return s
+}
+
+func (s *UpdateEventStreamingRequestSinkSinkDashVectorParametersDashVectorSchemaParameters) SetValue(v string) *UpdateEventStreamingRequestSinkSinkDashVectorParametersDashVectorSchemaParameters {
+	s.Value = &v
+	return s
+}
+
+type UpdateEventStreamingRequestSinkSinkDashVectorParametersPartition struct {
+	Form     *string `json:"Form,omitempty" xml:"Form,omitempty"`
+	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
+	Value    *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s UpdateEventStreamingRequestSinkSinkDashVectorParametersPartition) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateEventStreamingRequestSinkSinkDashVectorParametersPartition) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateEventStreamingRequestSinkSinkDashVectorParametersPartition) SetForm(v string) *UpdateEventStreamingRequestSinkSinkDashVectorParametersPartition {
+	s.Form = &v
+	return s
+}
+
+func (s *UpdateEventStreamingRequestSinkSinkDashVectorParametersPartition) SetTemplate(v string) *UpdateEventStreamingRequestSinkSinkDashVectorParametersPartition {
+	s.Template = &v
+	return s
+}
+
+func (s *UpdateEventStreamingRequestSinkSinkDashVectorParametersPartition) SetValue(v string) *UpdateEventStreamingRequestSinkSinkDashVectorParametersPartition {
+	s.Value = &v
+	return s
+}
+
+type UpdateEventStreamingRequestSinkSinkDashVectorParametersPrimaryKeyId struct {
+	Form     *string `json:"Form,omitempty" xml:"Form,omitempty"`
+	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
+	Value    *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s UpdateEventStreamingRequestSinkSinkDashVectorParametersPrimaryKeyId) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateEventStreamingRequestSinkSinkDashVectorParametersPrimaryKeyId) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateEventStreamingRequestSinkSinkDashVectorParametersPrimaryKeyId) SetForm(v string) *UpdateEventStreamingRequestSinkSinkDashVectorParametersPrimaryKeyId {
+	s.Form = &v
+	return s
+}
+
+func (s *UpdateEventStreamingRequestSinkSinkDashVectorParametersPrimaryKeyId) SetTemplate(v string) *UpdateEventStreamingRequestSinkSinkDashVectorParametersPrimaryKeyId {
+	s.Template = &v
+	return s
+}
+
+func (s *UpdateEventStreamingRequestSinkSinkDashVectorParametersPrimaryKeyId) SetValue(v string) *UpdateEventStreamingRequestSinkSinkDashVectorParametersPrimaryKeyId {
+	s.Value = &v
+	return s
+}
+
+type UpdateEventStreamingRequestSinkSinkDashVectorParametersVector struct {
+	Form     *string `json:"Form,omitempty" xml:"Form,omitempty"`
+	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
+	Value    *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s UpdateEventStreamingRequestSinkSinkDashVectorParametersVector) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateEventStreamingRequestSinkSinkDashVectorParametersVector) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateEventStreamingRequestSinkSinkDashVectorParametersVector) SetForm(v string) *UpdateEventStreamingRequestSinkSinkDashVectorParametersVector {
+	s.Form = &v
+	return s
+}
+
+func (s *UpdateEventStreamingRequestSinkSinkDashVectorParametersVector) SetTemplate(v string) *UpdateEventStreamingRequestSinkSinkDashVectorParametersVector {
+	s.Template = &v
+	return s
+}
+
+func (s *UpdateEventStreamingRequestSinkSinkDashVectorParametersVector) SetValue(v string) *UpdateEventStreamingRequestSinkSinkDashVectorParametersVector {
+	s.Value = &v
 	return s
 }
 
