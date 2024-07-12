@@ -3,7 +3,7 @@ package client
 
 import (
 	gatewayclient "github.com/alibabacloud-go/alibabacloud-gateway-sls/client"
-	spi "github.com/alibabacloud-go/alibabacloud-gateway-spi/client"
+	httpclient "github.com/alibabacloud-go/alibabacloud-gateway-sls/http"
 	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	openapiutil "github.com/alibabacloud-go/openapi-util/service"
 	util "github.com/alibabacloud-go/tea-utils/v2/service"
@@ -600,6 +600,10 @@ type ETLConfiguration struct {
 	//
 	// 1714274900
 	FromTime *int64 `json:"fromTime,omitempty" xml:"fromTime,omitempty"`
+	// example:
+	//
+	// SPL
+	Lang *string `json:"lang,omitempty" xml:"lang,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -655,6 +659,11 @@ func (s *ETLConfiguration) SetFromTime(v int64) *ETLConfiguration {
 	return s
 }
 
+func (s *ETLConfiguration) SetLang(v string) *ETLConfiguration {
+	s.Lang = &v
+	return s
+}
+
 func (s *ETLConfiguration) SetLogstore(v string) *ETLConfiguration {
 	s.Logstore = &v
 	return s
@@ -689,8 +698,9 @@ type ETLConfigurationSink struct {
 	// Deprecated
 	AccessKeyId *string `json:"accessKeyId,omitempty" xml:"accessKeyId,omitempty"`
 	// Deprecated
-	AccessKeySecret *string `json:"accessKeySecret,omitempty" xml:"accessKeySecret,omitempty"`
-	Endpoint        *string `json:"endpoint,omitempty" xml:"endpoint,omitempty"`
+	AccessKeySecret *string   `json:"accessKeySecret,omitempty" xml:"accessKeySecret,omitempty"`
+	Datasets        []*string `json:"datasets,omitempty" xml:"datasets,omitempty" type:"Repeated"`
+	Endpoint        *string   `json:"endpoint,omitempty" xml:"endpoint,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -732,6 +742,11 @@ func (s *ETLConfigurationSink) SetAccessKeyId(v string) *ETLConfigurationSink {
 
 func (s *ETLConfigurationSink) SetAccessKeySecret(v string) *ETLConfigurationSink {
 	s.AccessKeySecret = &v
+	return s
+}
+
+func (s *ETLConfigurationSink) SetDatasets(v []*string) *ETLConfigurationSink {
+	s.Datasets = v
 	return s
 }
 
@@ -1988,6 +2003,10 @@ type OSSExport struct {
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// example:
 	//
+	// c7f01719d9feb105fc9d8df92af62010
+	ScheduleId *string `json:"scheduleId,omitempty" xml:"scheduleId,omitempty"`
+	// example:
+	//
 	// RUNNING
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
 }
@@ -2027,6 +2046,11 @@ func (s *OSSExport) SetLastModifiedTime(v int64) *OSSExport {
 
 func (s *OSSExport) SetName(v string) *OSSExport {
 	s.Name = &v
+	return s
+}
+
+func (s *OSSExport) SetScheduleId(v string) *OSSExport {
+	s.ScheduleId = &v
 	return s
 }
 
@@ -2274,6 +2298,10 @@ type OSSIngestion struct {
 	Schedule *Schedule `json:"schedule,omitempty" xml:"schedule,omitempty"`
 	// example:
 	//
+	// c7f01719d9feb105fc9d8df92af62010
+	ScheduleId *string `json:"scheduleId,omitempty" xml:"scheduleId,omitempty"`
+	// example:
+	//
 	// RUNNING
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
 }
@@ -2318,6 +2346,11 @@ func (s *OSSIngestion) SetName(v string) *OSSIngestion {
 
 func (s *OSSIngestion) SetSchedule(v *Schedule) *OSSIngestion {
 	s.Schedule = v
+	return s
+}
+
+func (s *OSSIngestion) SetScheduleId(v string) *OSSIngestion {
+	s.ScheduleId = &v
 	return s
 }
 
@@ -3409,285 +3442,6 @@ func (s *Dashboard) SetDisplayName(v string) *Dashboard {
 	return s
 }
 
-type EtlJob struct {
-	// This parameter is required.
-	//
-	// example:
-	//
-	// true
-	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
-	// This parameter is required.
-	EtlJobName *string `json:"etlJobName,omitempty" xml:"etlJobName,omitempty"`
-	// This parameter is required.
-	FunctionConfig *EtlJobFunctionConfig `json:"functionConfig,omitempty" xml:"functionConfig,omitempty" type:"Struct"`
-	// This parameter is required.
-	FunctionParameter map[string]interface{} `json:"functionParameter,omitempty" xml:"functionParameter,omitempty"`
-	// This parameter is required.
-	LogConfig *EtlJobLogConfig `json:"logConfig,omitempty" xml:"logConfig,omitempty" type:"Struct"`
-	// This parameter is required.
-	SourceConfig *EtlJobSourceConfig `json:"sourceConfig,omitempty" xml:"sourceConfig,omitempty" type:"Struct"`
-	// This parameter is required.
-	TriggerConfig *EtlJobTriggerConfig `json:"triggerConfig,omitempty" xml:"triggerConfig,omitempty" type:"Struct"`
-}
-
-func (s EtlJob) String() string {
-	return tea.Prettify(s)
-}
-
-func (s EtlJob) GoString() string {
-	return s.String()
-}
-
-func (s *EtlJob) SetEnable(v bool) *EtlJob {
-	s.Enable = &v
-	return s
-}
-
-func (s *EtlJob) SetEtlJobName(v string) *EtlJob {
-	s.EtlJobName = &v
-	return s
-}
-
-func (s *EtlJob) SetFunctionConfig(v *EtlJobFunctionConfig) *EtlJob {
-	s.FunctionConfig = v
-	return s
-}
-
-func (s *EtlJob) SetFunctionParameter(v map[string]interface{}) *EtlJob {
-	s.FunctionParameter = v
-	return s
-}
-
-func (s *EtlJob) SetLogConfig(v *EtlJobLogConfig) *EtlJob {
-	s.LogConfig = v
-	return s
-}
-
-func (s *EtlJob) SetSourceConfig(v *EtlJobSourceConfig) *EtlJob {
-	s.SourceConfig = v
-	return s
-}
-
-func (s *EtlJob) SetTriggerConfig(v *EtlJobTriggerConfig) *EtlJob {
-	s.TriggerConfig = v
-	return s
-}
-
-type EtlJobFunctionConfig struct {
-	AccountId *string `json:"accountId,omitempty" xml:"accountId,omitempty"`
-	Endpoint  *string `json:"endpoint,omitempty" xml:"endpoint,omitempty"`
-	// example:
-	//
-	// hello-wrold
-	FunctionName *string `json:"functionName,omitempty" xml:"functionName,omitempty"`
-	// This parameter is required.
-	//
-	// example:
-	//
-	// FunctionCompute
-	FunctionProvider *string `json:"functionProvider,omitempty" xml:"functionProvider,omitempty"`
-	// example:
-	//
-	// cn-hangzhou
-	RegionName *string `json:"regionName,omitempty" xml:"regionName,omitempty"`
-	RoleArn    *string `json:"roleArn,omitempty" xml:"roleArn,omitempty"`
-	// example:
-	//
-	// my-service
-	ServiceName *string `json:"serviceName,omitempty" xml:"serviceName,omitempty"`
-}
-
-func (s EtlJobFunctionConfig) String() string {
-	return tea.Prettify(s)
-}
-
-func (s EtlJobFunctionConfig) GoString() string {
-	return s.String()
-}
-
-func (s *EtlJobFunctionConfig) SetAccountId(v string) *EtlJobFunctionConfig {
-	s.AccountId = &v
-	return s
-}
-
-func (s *EtlJobFunctionConfig) SetEndpoint(v string) *EtlJobFunctionConfig {
-	s.Endpoint = &v
-	return s
-}
-
-func (s *EtlJobFunctionConfig) SetFunctionName(v string) *EtlJobFunctionConfig {
-	s.FunctionName = &v
-	return s
-}
-
-func (s *EtlJobFunctionConfig) SetFunctionProvider(v string) *EtlJobFunctionConfig {
-	s.FunctionProvider = &v
-	return s
-}
-
-func (s *EtlJobFunctionConfig) SetRegionName(v string) *EtlJobFunctionConfig {
-	s.RegionName = &v
-	return s
-}
-
-func (s *EtlJobFunctionConfig) SetRoleArn(v string) *EtlJobFunctionConfig {
-	s.RoleArn = &v
-	return s
-}
-
-func (s *EtlJobFunctionConfig) SetServiceName(v string) *EtlJobFunctionConfig {
-	s.ServiceName = &v
-	return s
-}
-
-type EtlJobLogConfig struct {
-	// This parameter is required.
-	Endpoint *string `json:"endpoint,omitempty" xml:"endpoint,omitempty"`
-	// This parameter is required.
-	LogstoreName *string `json:"logstoreName,omitempty" xml:"logstoreName,omitempty"`
-	// This parameter is required.
-	ProjectName *string `json:"projectName,omitempty" xml:"projectName,omitempty"`
-}
-
-func (s EtlJobLogConfig) String() string {
-	return tea.Prettify(s)
-}
-
-func (s EtlJobLogConfig) GoString() string {
-	return s.String()
-}
-
-func (s *EtlJobLogConfig) SetEndpoint(v string) *EtlJobLogConfig {
-	s.Endpoint = &v
-	return s
-}
-
-func (s *EtlJobLogConfig) SetLogstoreName(v string) *EtlJobLogConfig {
-	s.LogstoreName = &v
-	return s
-}
-
-func (s *EtlJobLogConfig) SetProjectName(v string) *EtlJobLogConfig {
-	s.ProjectName = &v
-	return s
-}
-
-type EtlJobSourceConfig struct {
-	// This parameter is required.
-	//
-	// example:
-	//
-	// my-logstore
-	LogstoreName *string `json:"logstoreName,omitempty" xml:"logstoreName,omitempty"`
-}
-
-func (s EtlJobSourceConfig) String() string {
-	return tea.Prettify(s)
-}
-
-func (s EtlJobSourceConfig) GoString() string {
-	return s.String()
-}
-
-func (s *EtlJobSourceConfig) SetLogstoreName(v string) *EtlJobSourceConfig {
-	s.LogstoreName = &v
-	return s
-}
-
-type EtlJobTriggerConfig struct {
-	// This parameter is required.
-	MaxRetryTime *int32 `json:"maxRetryTime,omitempty" xml:"maxRetryTime,omitempty"`
-	// This parameter is required.
-	RoleArn *string `json:"roleArn,omitempty" xml:"roleArn,omitempty"`
-	// example:
-	//
-	// at-unixtime
-	StartingPosition *string `json:"startingPosition,omitempty" xml:"startingPosition,omitempty"`
-	// example:
-	//
-	// 当 strtingPosition 为 at-unixtime 时生效
-	StartingUnixtime *int64 `json:"startingUnixtime,omitempty" xml:"startingUnixtime,omitempty"`
-	// This parameter is required.
-	TriggerInterval *int32 `json:"triggerInterval,omitempty" xml:"triggerInterval,omitempty"`
-}
-
-func (s EtlJobTriggerConfig) String() string {
-	return tea.Prettify(s)
-}
-
-func (s EtlJobTriggerConfig) GoString() string {
-	return s.String()
-}
-
-func (s *EtlJobTriggerConfig) SetMaxRetryTime(v int32) *EtlJobTriggerConfig {
-	s.MaxRetryTime = &v
-	return s
-}
-
-func (s *EtlJobTriggerConfig) SetRoleArn(v string) *EtlJobTriggerConfig {
-	s.RoleArn = &v
-	return s
-}
-
-func (s *EtlJobTriggerConfig) SetStartingPosition(v string) *EtlJobTriggerConfig {
-	s.StartingPosition = &v
-	return s
-}
-
-func (s *EtlJobTriggerConfig) SetStartingUnixtime(v int64) *EtlJobTriggerConfig {
-	s.StartingUnixtime = &v
-	return s
-}
-
-func (s *EtlJobTriggerConfig) SetTriggerInterval(v int32) *EtlJobTriggerConfig {
-	s.TriggerInterval = &v
-	return s
-}
-
-type EtlMeta struct {
-	// This parameter is required.
-	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
-	// This parameter is required.
-	EtlMetaKey *string `json:"etlMetaKey,omitempty" xml:"etlMetaKey,omitempty"`
-	// This parameter is required.
-	EtlMetaName  *string `json:"etlMetaName,omitempty" xml:"etlMetaName,omitempty"`
-	EtlMetaTag   *string `json:"etlMetaTag,omitempty" xml:"etlMetaTag,omitempty"`
-	EtlMetaValue *string `json:"etlMetaValue,omitempty" xml:"etlMetaValue,omitempty"`
-}
-
-func (s EtlMeta) String() string {
-	return tea.Prettify(s)
-}
-
-func (s EtlMeta) GoString() string {
-	return s.String()
-}
-
-func (s *EtlMeta) SetEnable(v bool) *EtlMeta {
-	s.Enable = &v
-	return s
-}
-
-func (s *EtlMeta) SetEtlMetaKey(v string) *EtlMeta {
-	s.EtlMetaKey = &v
-	return s
-}
-
-func (s *EtlMeta) SetEtlMetaName(v string) *EtlMeta {
-	s.EtlMetaName = &v
-	return s
-}
-
-func (s *EtlMeta) SetEtlMetaTag(v string) *EtlMeta {
-	s.EtlMetaTag = &v
-	return s
-}
-
-func (s *EtlMeta) SetEtlMetaValue(v string) *EtlMeta {
-	s.EtlMetaValue = &v
-	return s
-}
-
 type ExternalStore struct {
 	// This parameter is required.
 	//
@@ -4510,7 +4264,9 @@ type KeysValue struct {
 	// example:
 	//
 	// false
-	DocValue *bool `json:"doc_value,omitempty" xml:"doc_value,omitempty"`
+	DocValue    *bool   `json:"doc_value,omitempty" xml:"doc_value,omitempty"`
+	VectorIndex *string `json:"vector_index,omitempty" xml:"vector_index,omitempty"`
+	Embedding   *string `json:"embedding,omitempty" xml:"embedding,omitempty"`
 }
 
 func (s KeysValue) String() string {
@@ -4548,6 +4304,16 @@ func (s *KeysValue) SetToken(v []*string) *KeysValue {
 
 func (s *KeysValue) SetDocValue(v bool) *KeysValue {
 	s.DocValue = &v
+	return s
+}
+
+func (s *KeysValue) SetVectorIndex(v string) *KeysValue {
+	s.VectorIndex = &v
+	return s
+}
+
+func (s *KeysValue) SetEmbedding(v string) *KeysValue {
+	s.Embedding = &v
 	return s
 }
 
@@ -4708,14 +4474,36 @@ func (s *ConsumerGroupHeartBeatResponse) SetBody(v []*int32) *ConsumerGroupHeart
 }
 
 type ConsumerGroupUpdateCheckPointRequest struct {
-	// Shard ID。
-	Body []*ConsumerGroupUpdateCheckPointRequestBody `json:"body,omitempty" xml:"body,omitempty" type:"Repeated"`
+	// The value of the checkpoint.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// MTUyNDE1NTM3OTM3MzkwODQ5Ng==
+	Checkpoint *string `json:"checkpoint,omitempty" xml:"checkpoint,omitempty"`
+	// The ID of the shard.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0
+	Shard *int32 `json:"shard,omitempty" xml:"shard,omitempty"`
+	// The consumer.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// consumer_1
 	Consumer *string `json:"consumer,omitempty" xml:"consumer,omitempty"`
+	// Specifies whether to enable forceful updates. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
 	// example:
 	//
 	// False
@@ -4730,8 +4518,13 @@ func (s ConsumerGroupUpdateCheckPointRequest) GoString() string {
 	return s.String()
 }
 
-func (s *ConsumerGroupUpdateCheckPointRequest) SetBody(v []*ConsumerGroupUpdateCheckPointRequestBody) *ConsumerGroupUpdateCheckPointRequest {
-	s.Body = v
+func (s *ConsumerGroupUpdateCheckPointRequest) SetCheckpoint(v string) *ConsumerGroupUpdateCheckPointRequest {
+	s.Checkpoint = &v
+	return s
+}
+
+func (s *ConsumerGroupUpdateCheckPointRequest) SetShard(v int32) *ConsumerGroupUpdateCheckPointRequest {
+	s.Shard = &v
 	return s
 }
 
@@ -4742,41 +4535,6 @@ func (s *ConsumerGroupUpdateCheckPointRequest) SetConsumer(v string) *ConsumerGr
 
 func (s *ConsumerGroupUpdateCheckPointRequest) SetForceSuccess(v bool) *ConsumerGroupUpdateCheckPointRequest {
 	s.ForceSuccess = &v
-	return s
-}
-
-type ConsumerGroupUpdateCheckPointRequestBody struct {
-	// This parameter is required.
-	//
-	// example:
-	//
-	// MTUyNDE1NTM3OTM3MzkwODQ5Ng==
-	Checkpoint *string `json:"checkpoint,omitempty" xml:"checkpoint,omitempty"`
-	// Shard ID。
-	//
-	// This parameter is required.
-	//
-	// example:
-	//
-	// 0
-	Shard *int32 `json:"shard,omitempty" xml:"shard,omitempty"`
-}
-
-func (s ConsumerGroupUpdateCheckPointRequestBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ConsumerGroupUpdateCheckPointRequestBody) GoString() string {
-	return s.String()
-}
-
-func (s *ConsumerGroupUpdateCheckPointRequestBody) SetCheckpoint(v string) *ConsumerGroupUpdateCheckPointRequestBody {
-	s.Checkpoint = &v
-	return s
-}
-
-func (s *ConsumerGroupUpdateCheckPointRequestBody) SetShard(v int32) *ConsumerGroupUpdateCheckPointRequestBody {
-	s.Shard = &v
 	return s
 }
 
@@ -7106,30 +6864,9 @@ func (s *DeleteCollectionPolicyRequest) SetProductCode(v string) *DeleteCollecti
 	return s
 }
 
-type DeleteCollectionPolicyResponseBody struct {
-	// example:
-	//
-	// successful
-	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-}
-
-func (s DeleteCollectionPolicyResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteCollectionPolicyResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteCollectionPolicyResponseBody) SetMessage(v string) *DeleteCollectionPolicyResponseBody {
-	s.Message = &v
-	return s
-}
-
 type DeleteCollectionPolicyResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-	Body       *DeleteCollectionPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
 }
 
 func (s DeleteCollectionPolicyResponse) String() string {
@@ -7147,11 +6884,6 @@ func (s *DeleteCollectionPolicyResponse) SetHeaders(v map[string]*string) *Delet
 
 func (s *DeleteCollectionPolicyResponse) SetStatusCode(v int32) *DeleteCollectionPolicyResponse {
 	s.StatusCode = &v
-	return s
-}
-
-func (s *DeleteCollectionPolicyResponse) SetBody(v *DeleteCollectionPolicyResponseBody) *DeleteCollectionPolicyResponse {
-	s.Body = v
 	return s
 }
 
@@ -7565,29 +7297,6 @@ func (s *DeleteScheduledSQLResponse) SetHeaders(v map[string]*string) *DeleteSch
 }
 
 func (s *DeleteScheduledSQLResponse) SetStatusCode(v int32) *DeleteScheduledSQLResponse {
-	s.StatusCode = &v
-	return s
-}
-
-type DeleteShipperResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-}
-
-func (s DeleteShipperResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteShipperResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteShipperResponse) SetHeaders(v map[string]*string) *DeleteShipperResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DeleteShipperResponse) SetStatusCode(v int32) *DeleteShipperResponse {
 	s.StatusCode = &v
 	return s
 }
@@ -8100,7 +7809,6 @@ func (s *GetCollectionPolicyResponseBody) SetCollectionPolicy(v *GetCollectionPo
 }
 
 type GetCollectionPolicyResponseBodyCollectionPolicy struct {
-	Attribute        *GetCollectionPolicyResponseBodyCollectionPolicyAttribute        `json:"attribute,omitempty" xml:"attribute,omitempty" type:"Struct"`
 	CentralizeConfig *GetCollectionPolicyResponseBodyCollectionPolicyCentralizeConfig `json:"centralizeConfig,omitempty" xml:"centralizeConfig,omitempty" type:"Struct"`
 	// example:
 	//
@@ -8109,20 +7817,24 @@ type GetCollectionPolicyResponseBodyCollectionPolicy struct {
 	// example:
 	//
 	// access_log
-	DataCode *string `json:"dataCode,omitempty" xml:"dataCode,omitempty"`
+	DataCode   *string                                                    `json:"dataCode,omitempty" xml:"dataCode,omitempty"`
+	DataConfig *GetCollectionPolicyResponseBodyCollectionPolicyDataConfig `json:"dataConfig,omitempty" xml:"dataConfig,omitempty" type:"Struct"`
 	// example:
 	//
 	// true
-	Enabled      *string                                                      `json:"enabled,omitempty" xml:"enabled,omitempty"`
-	PolicyConfig *GetCollectionPolicyResponseBodyCollectionPolicyPolicyConfig `json:"policyConfig,omitempty" xml:"policyConfig,omitempty" type:"Struct"`
+	Enabled        *bool                                                        `json:"enabled,omitempty" xml:"enabled,omitempty"`
+	InternalPolicy *bool                                                        `json:"internalPolicy,omitempty" xml:"internalPolicy,omitempty"`
+	PolicyConfig   *GetCollectionPolicyResponseBodyCollectionPolicyPolicyConfig `json:"policyConfig,omitempty" xml:"policyConfig,omitempty" type:"Struct"`
 	// example:
 	//
 	// your_log_policy
 	PolicyName *string `json:"policyName,omitempty" xml:"policyName,omitempty"`
+	PolicyUid  *string `json:"policyUid,omitempty" xml:"policyUid,omitempty"`
 	// example:
 	//
 	// oss
-	ProductCode *string `json:"productCode,omitempty" xml:"productCode,omitempty"`
+	ProductCode       *string                                                           `json:"productCode,omitempty" xml:"productCode,omitempty"`
+	ResourceDirectory *GetCollectionPolicyResponseBodyCollectionPolicyResourceDirectory `json:"resourceDirectory,omitempty" xml:"resourceDirectory,omitempty" type:"Struct"`
 }
 
 func (s GetCollectionPolicyResponseBodyCollectionPolicy) String() string {
@@ -8131,11 +7843,6 @@ func (s GetCollectionPolicyResponseBodyCollectionPolicy) String() string {
 
 func (s GetCollectionPolicyResponseBodyCollectionPolicy) GoString() string {
 	return s.String()
-}
-
-func (s *GetCollectionPolicyResponseBodyCollectionPolicy) SetAttribute(v *GetCollectionPolicyResponseBodyCollectionPolicyAttribute) *GetCollectionPolicyResponseBodyCollectionPolicy {
-	s.Attribute = v
-	return s
 }
 
 func (s *GetCollectionPolicyResponseBodyCollectionPolicy) SetCentralizeConfig(v *GetCollectionPolicyResponseBodyCollectionPolicyCentralizeConfig) *GetCollectionPolicyResponseBodyCollectionPolicy {
@@ -8153,8 +7860,18 @@ func (s *GetCollectionPolicyResponseBodyCollectionPolicy) SetDataCode(v string) 
 	return s
 }
 
-func (s *GetCollectionPolicyResponseBodyCollectionPolicy) SetEnabled(v string) *GetCollectionPolicyResponseBodyCollectionPolicy {
+func (s *GetCollectionPolicyResponseBodyCollectionPolicy) SetDataConfig(v *GetCollectionPolicyResponseBodyCollectionPolicyDataConfig) *GetCollectionPolicyResponseBodyCollectionPolicy {
+	s.DataConfig = v
+	return s
+}
+
+func (s *GetCollectionPolicyResponseBodyCollectionPolicy) SetEnabled(v bool) *GetCollectionPolicyResponseBodyCollectionPolicy {
 	s.Enabled = &v
+	return s
+}
+
+func (s *GetCollectionPolicyResponseBodyCollectionPolicy) SetInternalPolicy(v bool) *GetCollectionPolicyResponseBodyCollectionPolicy {
+	s.InternalPolicy = &v
 	return s
 }
 
@@ -8168,37 +7885,18 @@ func (s *GetCollectionPolicyResponseBodyCollectionPolicy) SetPolicyName(v string
 	return s
 }
 
+func (s *GetCollectionPolicyResponseBodyCollectionPolicy) SetPolicyUid(v string) *GetCollectionPolicyResponseBodyCollectionPolicy {
+	s.PolicyUid = &v
+	return s
+}
+
 func (s *GetCollectionPolicyResponseBodyCollectionPolicy) SetProductCode(v string) *GetCollectionPolicyResponseBodyCollectionPolicy {
 	s.ProductCode = &v
 	return s
 }
 
-type GetCollectionPolicyResponseBodyCollectionPolicyAttribute struct {
-	// example:
-	//
-	// your-app-name
-	App *string `json:"app,omitempty" xml:"app,omitempty"`
-	// example:
-	//
-	// your-policy-group
-	PolicyGroup *string `json:"policyGroup,omitempty" xml:"policyGroup,omitempty"`
-}
-
-func (s GetCollectionPolicyResponseBodyCollectionPolicyAttribute) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetCollectionPolicyResponseBodyCollectionPolicyAttribute) GoString() string {
-	return s.String()
-}
-
-func (s *GetCollectionPolicyResponseBodyCollectionPolicyAttribute) SetApp(v string) *GetCollectionPolicyResponseBodyCollectionPolicyAttribute {
-	s.App = &v
-	return s
-}
-
-func (s *GetCollectionPolicyResponseBodyCollectionPolicyAttribute) SetPolicyGroup(v string) *GetCollectionPolicyResponseBodyCollectionPolicyAttribute {
-	s.PolicyGroup = &v
+func (s *GetCollectionPolicyResponseBodyCollectionPolicy) SetResourceDirectory(v *GetCollectionPolicyResponseBodyCollectionPolicyResourceDirectory) *GetCollectionPolicyResponseBodyCollectionPolicy {
+	s.ResourceDirectory = v
 	return s
 }
 
@@ -8249,6 +7947,29 @@ func (s *GetCollectionPolicyResponseBodyCollectionPolicyCentralizeConfig) SetDes
 	return s
 }
 
+type GetCollectionPolicyResponseBodyCollectionPolicyDataConfig struct {
+	DataProject *string `json:"dataProject,omitempty" xml:"dataProject,omitempty"`
+	DataRegion  *string `json:"dataRegion,omitempty" xml:"dataRegion,omitempty"`
+}
+
+func (s GetCollectionPolicyResponseBodyCollectionPolicyDataConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCollectionPolicyResponseBodyCollectionPolicyDataConfig) GoString() string {
+	return s.String()
+}
+
+func (s *GetCollectionPolicyResponseBodyCollectionPolicyDataConfig) SetDataProject(v string) *GetCollectionPolicyResponseBodyCollectionPolicyDataConfig {
+	s.DataProject = &v
+	return s
+}
+
+func (s *GetCollectionPolicyResponseBodyCollectionPolicyDataConfig) SetDataRegion(v string) *GetCollectionPolicyResponseBodyCollectionPolicyDataConfig {
+	s.DataRegion = &v
+	return s
+}
+
 type GetCollectionPolicyResponseBodyCollectionPolicyPolicyConfig struct {
 	InstanceIds []*string `json:"instanceIds,omitempty" xml:"instanceIds,omitempty" type:"Repeated"`
 	Regions     []*string `json:"regions,omitempty" xml:"regions,omitempty" type:"Repeated"`
@@ -8284,6 +8005,29 @@ func (s *GetCollectionPolicyResponseBodyCollectionPolicyPolicyConfig) SetResourc
 
 func (s *GetCollectionPolicyResponseBodyCollectionPolicyPolicyConfig) SetResourceTags(v map[string]interface{}) *GetCollectionPolicyResponseBodyCollectionPolicyPolicyConfig {
 	s.ResourceTags = v
+	return s
+}
+
+type GetCollectionPolicyResponseBodyCollectionPolicyResourceDirectory struct {
+	AccountGroupType *string   `json:"accountGroupType,omitempty" xml:"accountGroupType,omitempty"`
+	Members          []*string `json:"members,omitempty" xml:"members,omitempty" type:"Repeated"`
+}
+
+func (s GetCollectionPolicyResponseBodyCollectionPolicyResourceDirectory) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCollectionPolicyResponseBodyCollectionPolicyResourceDirectory) GoString() string {
+	return s.String()
+}
+
+func (s *GetCollectionPolicyResponseBodyCollectionPolicyResourceDirectory) SetAccountGroupType(v string) *GetCollectionPolicyResponseBodyCollectionPolicyResourceDirectory {
+	s.AccountGroupType = &v
+	return s
+}
+
+func (s *GetCollectionPolicyResponseBodyCollectionPolicyResourceDirectory) SetMembers(v []*string) *GetCollectionPolicyResponseBodyCollectionPolicyResourceDirectory {
+	s.Members = v
 	return s
 }
 
@@ -10292,295 +10036,6 @@ func (s *GetScheduledSQLResponse) SetBody(v *ScheduledSQL) *GetScheduledSQLRespo
 	return s
 }
 
-type GetShipperStatusRequest struct {
-	// The start time of the log shipping job. The value is a UNIX timestamp representing the number of seconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
-	//
-	// This parameter is required.
-	//
-	// example:
-	//
-	// 1409529600
-	From *int64 `json:"from,omitempty" xml:"from,omitempty"`
-	// The line from which the query starts. Default value: 0.
-	//
-	// example:
-	//
-	// 0
-	Offset *int32 `json:"offset,omitempty" xml:"offset,omitempty"`
-	// The number of entries per page. Default value: 100. Maximum value: 500.
-	//
-	// example:
-	//
-	// 100
-	Size *int32 `json:"size,omitempty" xml:"size,omitempty"`
-	// The status of the log shipping job. This parameter is empty by default, which indicates that log shipping jobs in all states are returned. Valid values: success, fail, and running.
-	//
-	// example:
-	//
-	// success
-	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The end time of the log shipping job. The value is a UNIX timestamp representing the number of seconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
-	//
-	// This parameter is required.
-	//
-	// example:
-	//
-	// 1627269085
-	To *int64 `json:"to,omitempty" xml:"to,omitempty"`
-}
-
-func (s GetShipperStatusRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetShipperStatusRequest) GoString() string {
-	return s.String()
-}
-
-func (s *GetShipperStatusRequest) SetFrom(v int64) *GetShipperStatusRequest {
-	s.From = &v
-	return s
-}
-
-func (s *GetShipperStatusRequest) SetOffset(v int32) *GetShipperStatusRequest {
-	s.Offset = &v
-	return s
-}
-
-func (s *GetShipperStatusRequest) SetSize(v int32) *GetShipperStatusRequest {
-	s.Size = &v
-	return s
-}
-
-func (s *GetShipperStatusRequest) SetStatus(v string) *GetShipperStatusRequest {
-	s.Status = &v
-	return s
-}
-
-func (s *GetShipperStatusRequest) SetTo(v int64) *GetShipperStatusRequest {
-	s.To = &v
-	return s
-}
-
-type GetShipperStatusResponseBody struct {
-	// The number of log shipping jobs returned on the current page.
-	//
-	// example:
-	//
-	// 10
-	Count *int64 `json:"count,omitempty" xml:"count,omitempty"`
-	// The statistics about log shipping jobs.
-	Statistics *GetShipperStatusResponseBodyStatistics `json:"statistics,omitempty" xml:"statistics,omitempty" type:"Struct"`
-	// The details of log shipping jobs.
-	Tasks *GetShipperStatusResponseBodyTasks `json:"tasks,omitempty" xml:"tasks,omitempty" type:"Struct"`
-	// The total number of log shipping jobs.
-	//
-	// example:
-	//
-	// 20
-	Total *int64 `json:"total,omitempty" xml:"total,omitempty"`
-}
-
-func (s GetShipperStatusResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetShipperStatusResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *GetShipperStatusResponseBody) SetCount(v int64) *GetShipperStatusResponseBody {
-	s.Count = &v
-	return s
-}
-
-func (s *GetShipperStatusResponseBody) SetStatistics(v *GetShipperStatusResponseBodyStatistics) *GetShipperStatusResponseBody {
-	s.Statistics = v
-	return s
-}
-
-func (s *GetShipperStatusResponseBody) SetTasks(v *GetShipperStatusResponseBodyTasks) *GetShipperStatusResponseBody {
-	s.Tasks = v
-	return s
-}
-
-func (s *GetShipperStatusResponseBody) SetTotal(v int64) *GetShipperStatusResponseBody {
-	s.Total = &v
-	return s
-}
-
-type GetShipperStatusResponseBodyStatistics struct {
-	// The number of log shipping jobs that are in the fail state.
-	//
-	// example:
-	//
-	// 0
-	Fail *int64 `json:"fail,omitempty" xml:"fail,omitempty"`
-	// The number of log shipping jobs that are in the running state.
-	//
-	// example:
-	//
-	// 0
-	Running *int64 `json:"running,omitempty" xml:"running,omitempty"`
-	// The number of log shipping jobs that are in the success state.
-	//
-	// example:
-	//
-	// 20
-	Success *int64 `json:"success,omitempty" xml:"success,omitempty"`
-}
-
-func (s GetShipperStatusResponseBodyStatistics) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetShipperStatusResponseBodyStatistics) GoString() string {
-	return s.String()
-}
-
-func (s *GetShipperStatusResponseBodyStatistics) SetFail(v int64) *GetShipperStatusResponseBodyStatistics {
-	s.Fail = &v
-	return s
-}
-
-func (s *GetShipperStatusResponseBodyStatistics) SetRunning(v int64) *GetShipperStatusResponseBodyStatistics {
-	s.Running = &v
-	return s
-}
-
-func (s *GetShipperStatusResponseBodyStatistics) SetSuccess(v int64) *GetShipperStatusResponseBodyStatistics {
-	s.Success = &v
-	return s
-}
-
-type GetShipperStatusResponseBodyTasks struct {
-	// The ID of the log shipping job.
-	//
-	// example:
-	//
-	// abcdefghijk
-	Id *string `json:"id,omitempty" xml:"id,omitempty"`
-	// The error code of the log shipping job.
-	//
-	// example:
-	//
-	// UnAuthorized
-	TaskCode *string `json:"taskCode,omitempty" xml:"taskCode,omitempty"`
-	// The start time of the log shipping job. The value is a UNIX timestamp representing the number of seconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
-	//
-	// example:
-	//
-	// 1448925013
-	TaskCreateTime *int64 `json:"taskCreateTime,omitempty" xml:"taskCreateTime,omitempty"`
-	// The number of logs that are shipped in the log shipping job.
-	//
-	// example:
-	//
-	// 0
-	TaskDataLines *int32 `json:"taskDataLines,omitempty" xml:"taskDataLines,omitempty"`
-	// The end time of the log shipping job. The value is a UNIX timestamp representing the number of seconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
-	//
-	// example:
-	//
-	// 1448926013
-	TaskFinishTime *int64 `json:"taskFinishTime,omitempty" xml:"taskFinishTime,omitempty"`
-	// The time when Simple Log Service receives the most recent log of the log shipping job. The value is a UNIX timestamp representing the number of seconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
-	//
-	// example:
-	//
-	// 1448915013
-	TaskLastDataReceiveTime *int64 `json:"taskLastDataReceiveTime,omitempty" xml:"taskLastDataReceiveTime,omitempty"`
-	// The error message of the log shipping job.
-	//
-	// example:
-	//
-	// Internal server error
-	TaskMessage *string `json:"taskMessage,omitempty" xml:"taskMessage,omitempty"`
-	// The status of the log shipping job. Valid values: running, success, and fail.
-	//
-	// example:
-	//
-	// success
-	TaskStatus *string `json:"taskStatus,omitempty" xml:"taskStatus,omitempty"`
-}
-
-func (s GetShipperStatusResponseBodyTasks) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetShipperStatusResponseBodyTasks) GoString() string {
-	return s.String()
-}
-
-func (s *GetShipperStatusResponseBodyTasks) SetId(v string) *GetShipperStatusResponseBodyTasks {
-	s.Id = &v
-	return s
-}
-
-func (s *GetShipperStatusResponseBodyTasks) SetTaskCode(v string) *GetShipperStatusResponseBodyTasks {
-	s.TaskCode = &v
-	return s
-}
-
-func (s *GetShipperStatusResponseBodyTasks) SetTaskCreateTime(v int64) *GetShipperStatusResponseBodyTasks {
-	s.TaskCreateTime = &v
-	return s
-}
-
-func (s *GetShipperStatusResponseBodyTasks) SetTaskDataLines(v int32) *GetShipperStatusResponseBodyTasks {
-	s.TaskDataLines = &v
-	return s
-}
-
-func (s *GetShipperStatusResponseBodyTasks) SetTaskFinishTime(v int64) *GetShipperStatusResponseBodyTasks {
-	s.TaskFinishTime = &v
-	return s
-}
-
-func (s *GetShipperStatusResponseBodyTasks) SetTaskLastDataReceiveTime(v int64) *GetShipperStatusResponseBodyTasks {
-	s.TaskLastDataReceiveTime = &v
-	return s
-}
-
-func (s *GetShipperStatusResponseBodyTasks) SetTaskMessage(v string) *GetShipperStatusResponseBodyTasks {
-	s.TaskMessage = &v
-	return s
-}
-
-func (s *GetShipperStatusResponseBodyTasks) SetTaskStatus(v string) *GetShipperStatusResponseBodyTasks {
-	s.TaskStatus = &v
-	return s
-}
-
-type GetShipperStatusResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-	Body       *GetShipperStatusResponseBody `json:"body,omitempty" xml:"body,omitempty"`
-}
-
-func (s GetShipperStatusResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetShipperStatusResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GetShipperStatusResponse) SetHeaders(v map[string]*string) *GetShipperStatusResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *GetShipperStatusResponse) SetStatusCode(v int32) *GetShipperStatusResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *GetShipperStatusResponse) SetBody(v *GetShipperStatusResponseBody) *GetShipperStatusResponse {
-	s.Body = v
-	return s
-}
-
 type GetSlsServiceResponse struct {
 	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
 	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
@@ -11201,7 +10656,7 @@ func (s *ListAnnotationLabelsResponse) SetBody(v *ListAnnotationLabelsResponseBo
 }
 
 type ListCollectionPoliciesRequest struct {
-	Attribute *ListCollectionPoliciesRequestAttribute `json:"attribute,omitempty" xml:"attribute,omitempty" type:"Struct"`
+	CentralProject *string `json:"centralProject,omitempty" xml:"centralProject,omitempty"`
 	// example:
 	//
 	// access_log
@@ -11210,14 +10665,7 @@ type ListCollectionPoliciesRequest struct {
 	//
 	// your-test-bucket1
 	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
-	// example:
-	//
-	// 1
-	PageNum *int32 `json:"pageNum,omitempty" xml:"pageNum,omitempty"`
-	// example:
-	//
-	// 10
-	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	Offset     *int32  `json:"offset,omitempty" xml:"offset,omitempty"`
 	// example:
 	//
 	// your_log_policy
@@ -11226,6 +10674,7 @@ type ListCollectionPoliciesRequest struct {
 	//
 	// oss
 	ProductCode *string `json:"productCode,omitempty" xml:"productCode,omitempty"`
+	Size        *int32  `json:"size,omitempty" xml:"size,omitempty"`
 }
 
 func (s ListCollectionPoliciesRequest) String() string {
@@ -11236,8 +10685,8 @@ func (s ListCollectionPoliciesRequest) GoString() string {
 	return s.String()
 }
 
-func (s *ListCollectionPoliciesRequest) SetAttribute(v *ListCollectionPoliciesRequestAttribute) *ListCollectionPoliciesRequest {
-	s.Attribute = v
+func (s *ListCollectionPoliciesRequest) SetCentralProject(v string) *ListCollectionPoliciesRequest {
+	s.CentralProject = &v
 	return s
 }
 
@@ -11251,13 +10700,8 @@ func (s *ListCollectionPoliciesRequest) SetInstanceId(v string) *ListCollectionP
 	return s
 }
 
-func (s *ListCollectionPoliciesRequest) SetPageNum(v int32) *ListCollectionPoliciesRequest {
-	s.PageNum = &v
-	return s
-}
-
-func (s *ListCollectionPoliciesRequest) SetPageSize(v int32) *ListCollectionPoliciesRequest {
-	s.PageSize = &v
+func (s *ListCollectionPoliciesRequest) SetOffset(v int32) *ListCollectionPoliciesRequest {
+	s.Offset = &v
 	return s
 }
 
@@ -11271,103 +10715,8 @@ func (s *ListCollectionPoliciesRequest) SetProductCode(v string) *ListCollection
 	return s
 }
 
-type ListCollectionPoliciesRequestAttribute struct {
-	// example:
-	//
-	// your-app-name
-	App *string `json:"app,omitempty" xml:"app,omitempty"`
-	// example:
-	//
-	// your-policy-group
-	PolicyGroup *string `json:"policyGroup,omitempty" xml:"policyGroup,omitempty"`
-}
-
-func (s ListCollectionPoliciesRequestAttribute) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListCollectionPoliciesRequestAttribute) GoString() string {
-	return s.String()
-}
-
-func (s *ListCollectionPoliciesRequestAttribute) SetApp(v string) *ListCollectionPoliciesRequestAttribute {
-	s.App = &v
-	return s
-}
-
-func (s *ListCollectionPoliciesRequestAttribute) SetPolicyGroup(v string) *ListCollectionPoliciesRequestAttribute {
-	s.PolicyGroup = &v
-	return s
-}
-
-type ListCollectionPoliciesShrinkRequest struct {
-	AttributeShrink *string `json:"attribute,omitempty" xml:"attribute,omitempty"`
-	// example:
-	//
-	// access_log
-	DataCode *string `json:"dataCode,omitempty" xml:"dataCode,omitempty"`
-	// example:
-	//
-	// your-test-bucket1
-	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
-	// example:
-	//
-	// 1
-	PageNum *int32 `json:"pageNum,omitempty" xml:"pageNum,omitempty"`
-	// example:
-	//
-	// 10
-	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// example:
-	//
-	// your_log_policy
-	PolicyName *string `json:"policyName,omitempty" xml:"policyName,omitempty"`
-	// example:
-	//
-	// oss
-	ProductCode *string `json:"productCode,omitempty" xml:"productCode,omitempty"`
-}
-
-func (s ListCollectionPoliciesShrinkRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListCollectionPoliciesShrinkRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ListCollectionPoliciesShrinkRequest) SetAttributeShrink(v string) *ListCollectionPoliciesShrinkRequest {
-	s.AttributeShrink = &v
-	return s
-}
-
-func (s *ListCollectionPoliciesShrinkRequest) SetDataCode(v string) *ListCollectionPoliciesShrinkRequest {
-	s.DataCode = &v
-	return s
-}
-
-func (s *ListCollectionPoliciesShrinkRequest) SetInstanceId(v string) *ListCollectionPoliciesShrinkRequest {
-	s.InstanceId = &v
-	return s
-}
-
-func (s *ListCollectionPoliciesShrinkRequest) SetPageNum(v int32) *ListCollectionPoliciesShrinkRequest {
-	s.PageNum = &v
-	return s
-}
-
-func (s *ListCollectionPoliciesShrinkRequest) SetPageSize(v int32) *ListCollectionPoliciesShrinkRequest {
-	s.PageSize = &v
-	return s
-}
-
-func (s *ListCollectionPoliciesShrinkRequest) SetPolicyName(v string) *ListCollectionPoliciesShrinkRequest {
-	s.PolicyName = &v
-	return s
-}
-
-func (s *ListCollectionPoliciesShrinkRequest) SetProductCode(v string) *ListCollectionPoliciesShrinkRequest {
-	s.ProductCode = &v
+func (s *ListCollectionPoliciesRequest) SetSize(v int32) *ListCollectionPoliciesRequest {
+	s.Size = &v
 	return s
 }
 
@@ -11375,8 +10724,9 @@ type ListCollectionPoliciesResponseBody struct {
 	// example:
 	//
 	// 1
-	CurrentCount *int32                                    `json:"currentCount,omitempty" xml:"currentCount,omitempty"`
-	Data         []*ListCollectionPoliciesResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	CurrentCount *int32                                          `json:"currentCount,omitempty" xml:"currentCount,omitempty"`
+	Data         []*ListCollectionPoliciesResponseBodyData       `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	Statistics   []*ListCollectionPoliciesResponseBodyStatistics `json:"statistics,omitempty" xml:"statistics,omitempty" type:"Repeated"`
 	// example:
 	//
 	// 1
@@ -11401,13 +10751,17 @@ func (s *ListCollectionPoliciesResponseBody) SetData(v []*ListCollectionPolicies
 	return s
 }
 
+func (s *ListCollectionPoliciesResponseBody) SetStatistics(v []*ListCollectionPoliciesResponseBodyStatistics) *ListCollectionPoliciesResponseBody {
+	s.Statistics = v
+	return s
+}
+
 func (s *ListCollectionPoliciesResponseBody) SetTotalCount(v int32) *ListCollectionPoliciesResponseBody {
 	s.TotalCount = &v
 	return s
 }
 
 type ListCollectionPoliciesResponseBodyData struct {
-	Attribute        *ListCollectionPoliciesResponseBodyDataAttribute        `json:"attribute,omitempty" xml:"attribute,omitempty" type:"Struct"`
 	CentralizeConfig *ListCollectionPoliciesResponseBodyDataCentralizeConfig `json:"centralizeConfig,omitempty" xml:"centralizeConfig,omitempty" type:"Struct"`
 	// example:
 	//
@@ -11416,20 +10770,24 @@ type ListCollectionPoliciesResponseBodyData struct {
 	// example:
 	//
 	// access_log
-	DataCode *string `json:"dataCode,omitempty" xml:"dataCode,omitempty"`
+	DataCode   *string                                           `json:"dataCode,omitempty" xml:"dataCode,omitempty"`
+	DataConfig *ListCollectionPoliciesResponseBodyDataDataConfig `json:"dataConfig,omitempty" xml:"dataConfig,omitempty" type:"Struct"`
 	// example:
 	//
 	// true
-	Enabled      *bool                                               `json:"enabled,omitempty" xml:"enabled,omitempty"`
-	PolicyConfig *ListCollectionPoliciesResponseBodyDataPolicyConfig `json:"policyConfig,omitempty" xml:"policyConfig,omitempty" type:"Struct"`
+	Enabled        *bool                                               `json:"enabled,omitempty" xml:"enabled,omitempty"`
+	InternalPolicy *bool                                               `json:"internalPolicy,omitempty" xml:"internalPolicy,omitempty"`
+	PolicyConfig   *ListCollectionPoliciesResponseBodyDataPolicyConfig `json:"policyConfig,omitempty" xml:"policyConfig,omitempty" type:"Struct"`
 	// example:
 	//
 	// your_log_policy
 	PolicyName *string `json:"policyName,omitempty" xml:"policyName,omitempty"`
+	PolicyUid  *string `json:"policyUid,omitempty" xml:"policyUid,omitempty"`
 	// example:
 	//
 	// oss
-	ProductCode *string `json:"productCode,omitempty" xml:"productCode,omitempty"`
+	ProductCode       *string                                                  `json:"productCode,omitempty" xml:"productCode,omitempty"`
+	ResourceDirectory *ListCollectionPoliciesResponseBodyDataResourceDirectory `json:"resourceDirectory,omitempty" xml:"resourceDirectory,omitempty" type:"Struct"`
 }
 
 func (s ListCollectionPoliciesResponseBodyData) String() string {
@@ -11438,11 +10796,6 @@ func (s ListCollectionPoliciesResponseBodyData) String() string {
 
 func (s ListCollectionPoliciesResponseBodyData) GoString() string {
 	return s.String()
-}
-
-func (s *ListCollectionPoliciesResponseBodyData) SetAttribute(v *ListCollectionPoliciesResponseBodyDataAttribute) *ListCollectionPoliciesResponseBodyData {
-	s.Attribute = v
-	return s
 }
 
 func (s *ListCollectionPoliciesResponseBodyData) SetCentralizeConfig(v *ListCollectionPoliciesResponseBodyDataCentralizeConfig) *ListCollectionPoliciesResponseBodyData {
@@ -11460,8 +10813,18 @@ func (s *ListCollectionPoliciesResponseBodyData) SetDataCode(v string) *ListColl
 	return s
 }
 
+func (s *ListCollectionPoliciesResponseBodyData) SetDataConfig(v *ListCollectionPoliciesResponseBodyDataDataConfig) *ListCollectionPoliciesResponseBodyData {
+	s.DataConfig = v
+	return s
+}
+
 func (s *ListCollectionPoliciesResponseBodyData) SetEnabled(v bool) *ListCollectionPoliciesResponseBodyData {
 	s.Enabled = &v
+	return s
+}
+
+func (s *ListCollectionPoliciesResponseBodyData) SetInternalPolicy(v bool) *ListCollectionPoliciesResponseBodyData {
+	s.InternalPolicy = &v
 	return s
 }
 
@@ -11475,37 +10838,18 @@ func (s *ListCollectionPoliciesResponseBodyData) SetPolicyName(v string) *ListCo
 	return s
 }
 
+func (s *ListCollectionPoliciesResponseBodyData) SetPolicyUid(v string) *ListCollectionPoliciesResponseBodyData {
+	s.PolicyUid = &v
+	return s
+}
+
 func (s *ListCollectionPoliciesResponseBodyData) SetProductCode(v string) *ListCollectionPoliciesResponseBodyData {
 	s.ProductCode = &v
 	return s
 }
 
-type ListCollectionPoliciesResponseBodyDataAttribute struct {
-	// example:
-	//
-	// your-app-name
-	App *string `json:"app,omitempty" xml:"app,omitempty"`
-	// example:
-	//
-	// your-policy-group
-	PolicyGroup *string `json:"policyGroup,omitempty" xml:"policyGroup,omitempty"`
-}
-
-func (s ListCollectionPoliciesResponseBodyDataAttribute) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListCollectionPoliciesResponseBodyDataAttribute) GoString() string {
-	return s.String()
-}
-
-func (s *ListCollectionPoliciesResponseBodyDataAttribute) SetApp(v string) *ListCollectionPoliciesResponseBodyDataAttribute {
-	s.App = &v
-	return s
-}
-
-func (s *ListCollectionPoliciesResponseBodyDataAttribute) SetPolicyGroup(v string) *ListCollectionPoliciesResponseBodyDataAttribute {
-	s.PolicyGroup = &v
+func (s *ListCollectionPoliciesResponseBodyData) SetResourceDirectory(v *ListCollectionPoliciesResponseBodyDataResourceDirectory) *ListCollectionPoliciesResponseBodyData {
+	s.ResourceDirectory = v
 	return s
 }
 
@@ -11556,6 +10900,29 @@ func (s *ListCollectionPoliciesResponseBodyDataCentralizeConfig) SetDestTTL(v in
 	return s
 }
 
+type ListCollectionPoliciesResponseBodyDataDataConfig struct {
+	DataProject *string `json:"dataProject,omitempty" xml:"dataProject,omitempty"`
+	DataRegion  *string `json:"dataRegion,omitempty" xml:"dataRegion,omitempty"`
+}
+
+func (s ListCollectionPoliciesResponseBodyDataDataConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCollectionPoliciesResponseBodyDataDataConfig) GoString() string {
+	return s.String()
+}
+
+func (s *ListCollectionPoliciesResponseBodyDataDataConfig) SetDataProject(v string) *ListCollectionPoliciesResponseBodyDataDataConfig {
+	s.DataProject = &v
+	return s
+}
+
+func (s *ListCollectionPoliciesResponseBodyDataDataConfig) SetDataRegion(v string) *ListCollectionPoliciesResponseBodyDataDataConfig {
+	s.DataRegion = &v
+	return s
+}
+
 type ListCollectionPoliciesResponseBodyDataPolicyConfig struct {
 	InstanceIds []*string `json:"instanceIds,omitempty" xml:"instanceIds,omitempty" type:"Repeated"`
 	Regions     []*string `json:"regions,omitempty" xml:"regions,omitempty" type:"Repeated"`
@@ -11591,6 +10958,75 @@ func (s *ListCollectionPoliciesResponseBodyDataPolicyConfig) SetResourceMode(v s
 
 func (s *ListCollectionPoliciesResponseBodyDataPolicyConfig) SetResourceTags(v map[string]interface{}) *ListCollectionPoliciesResponseBodyDataPolicyConfig {
 	s.ResourceTags = v
+	return s
+}
+
+type ListCollectionPoliciesResponseBodyDataResourceDirectory struct {
+	AccountGroupType *string   `json:"accountGroupType,omitempty" xml:"accountGroupType,omitempty"`
+	Members          []*string `json:"members,omitempty" xml:"members,omitempty" type:"Repeated"`
+}
+
+func (s ListCollectionPoliciesResponseBodyDataResourceDirectory) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCollectionPoliciesResponseBodyDataResourceDirectory) GoString() string {
+	return s.String()
+}
+
+func (s *ListCollectionPoliciesResponseBodyDataResourceDirectory) SetAccountGroupType(v string) *ListCollectionPoliciesResponseBodyDataResourceDirectory {
+	s.AccountGroupType = &v
+	return s
+}
+
+func (s *ListCollectionPoliciesResponseBodyDataResourceDirectory) SetMembers(v []*string) *ListCollectionPoliciesResponseBodyDataResourceDirectory {
+	s.Members = v
+	return s
+}
+
+type ListCollectionPoliciesResponseBodyStatistics struct {
+	PolicySourceList []*ListCollectionPoliciesResponseBodyStatisticsPolicySourceList `json:"policySourceList,omitempty" xml:"policySourceList,omitempty" type:"Repeated"`
+	ProductCode      *string                                                         `json:"productCode,omitempty" xml:"productCode,omitempty"`
+}
+
+func (s ListCollectionPoliciesResponseBodyStatistics) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCollectionPoliciesResponseBodyStatistics) GoString() string {
+	return s.String()
+}
+
+func (s *ListCollectionPoliciesResponseBodyStatistics) SetPolicySourceList(v []*ListCollectionPoliciesResponseBodyStatisticsPolicySourceList) *ListCollectionPoliciesResponseBodyStatistics {
+	s.PolicySourceList = v
+	return s
+}
+
+func (s *ListCollectionPoliciesResponseBodyStatistics) SetProductCode(v string) *ListCollectionPoliciesResponseBodyStatistics {
+	s.ProductCode = &v
+	return s
+}
+
+type ListCollectionPoliciesResponseBodyStatisticsPolicySourceList struct {
+	PolicyName *string `json:"policyName,omitempty" xml:"policyName,omitempty"`
+	PolicyUid  *string `json:"policyUid,omitempty" xml:"policyUid,omitempty"`
+}
+
+func (s ListCollectionPoliciesResponseBodyStatisticsPolicySourceList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCollectionPoliciesResponseBodyStatisticsPolicySourceList) GoString() string {
+	return s.String()
+}
+
+func (s *ListCollectionPoliciesResponseBodyStatisticsPolicySourceList) SetPolicyName(v string) *ListCollectionPoliciesResponseBodyStatisticsPolicySourceList {
+	s.PolicyName = &v
+	return s
+}
+
+func (s *ListCollectionPoliciesResponseBodyStatisticsPolicySourceList) SetPolicyUid(v string) *ListCollectionPoliciesResponseBodyStatisticsPolicySourceList {
+	s.PolicyUid = &v
 	return s
 }
 
@@ -12104,119 +11540,6 @@ func (s *ListETLsResponse) SetStatusCode(v int32) *ListETLsResponse {
 }
 
 func (s *ListETLsResponse) SetBody(v *ListETLsResponseBody) *ListETLsResponse {
-	s.Body = v
-	return s
-}
-
-type ListExternalStoreRequest struct {
-	// The name of the external store. You can query external stores that contain a specified string.
-	//
-	// example:
-	//
-	// store
-	ExternalStoreName *string `json:"externalStoreName,omitempty" xml:"externalStoreName,omitempty"`
-	// The line from which the query starts. Default value: 0.
-	//
-	// example:
-	//
-	// 0
-	Offset *int32 `json:"offset,omitempty" xml:"offset,omitempty"`
-	// The number of entries per page. Maximum value: 500.
-	//
-	// example:
-	//
-	// 10
-	Sizs *int32 `json:"sizs,omitempty" xml:"sizs,omitempty"`
-}
-
-func (s ListExternalStoreRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListExternalStoreRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ListExternalStoreRequest) SetExternalStoreName(v string) *ListExternalStoreRequest {
-	s.ExternalStoreName = &v
-	return s
-}
-
-func (s *ListExternalStoreRequest) SetOffset(v int32) *ListExternalStoreRequest {
-	s.Offset = &v
-	return s
-}
-
-func (s *ListExternalStoreRequest) SetSizs(v int32) *ListExternalStoreRequest {
-	s.Sizs = &v
-	return s
-}
-
-type ListExternalStoreResponseBody struct {
-	// The number of external stores returned on the current page.
-	//
-	// example:
-	//
-	// 3
-	Count *int32 `json:"count,omitempty" xml:"count,omitempty"`
-	// The names of the external stores.
-	Externalstores []*string `json:"externalstores,omitempty" xml:"externalstores,omitempty" type:"Repeated"`
-	// The number of external stores that meet the query conditions.
-	//
-	// example:
-	//
-	// 3
-	Total *int32 `json:"total,omitempty" xml:"total,omitempty"`
-}
-
-func (s ListExternalStoreResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListExternalStoreResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ListExternalStoreResponseBody) SetCount(v int32) *ListExternalStoreResponseBody {
-	s.Count = &v
-	return s
-}
-
-func (s *ListExternalStoreResponseBody) SetExternalstores(v []*string) *ListExternalStoreResponseBody {
-	s.Externalstores = v
-	return s
-}
-
-func (s *ListExternalStoreResponseBody) SetTotal(v int32) *ListExternalStoreResponseBody {
-	s.Total = &v
-	return s
-}
-
-type ListExternalStoreResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-	Body       *ListExternalStoreResponseBody `json:"body,omitempty" xml:"body,omitempty"`
-}
-
-func (s ListExternalStoreResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListExternalStoreResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ListExternalStoreResponse) SetHeaders(v map[string]*string) *ListExternalStoreResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ListExternalStoreResponse) SetStatusCode(v int32) *ListExternalStoreResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *ListExternalStoreResponse) SetBody(v *ListExternalStoreResponseBody) *ListExternalStoreResponse {
 	s.Body = v
 	return s
 }
@@ -13361,75 +12684,6 @@ func (s *ListShardsResponse) SetBody(v []*Shard) *ListShardsResponse {
 	return s
 }
 
-type ListShipperResponseBody struct {
-	// The number of log shipping jobs returned.
-	//
-	// example:
-	//
-	// 3
-	Count *int64 `json:"count,omitempty" xml:"count,omitempty"`
-	// The names of the log shipping jobs.
-	Shipper []*string `json:"shipper,omitempty" xml:"shipper,omitempty" type:"Repeated"`
-	// The total number of log shipping jobs.
-	//
-	// example:
-	//
-	// 5
-	Total *int64 `json:"total,omitempty" xml:"total,omitempty"`
-}
-
-func (s ListShipperResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListShipperResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ListShipperResponseBody) SetCount(v int64) *ListShipperResponseBody {
-	s.Count = &v
-	return s
-}
-
-func (s *ListShipperResponseBody) SetShipper(v []*string) *ListShipperResponseBody {
-	s.Shipper = v
-	return s
-}
-
-func (s *ListShipperResponseBody) SetTotal(v int64) *ListShipperResponseBody {
-	s.Total = &v
-	return s
-}
-
-type ListShipperResponse struct {
-	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-	Body       *ListShipperResponseBody `json:"body,omitempty" xml:"body,omitempty"`
-}
-
-func (s ListShipperResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListShipperResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ListShipperResponse) SetHeaders(v map[string]*string) *ListShipperResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ListShipperResponse) SetStatusCode(v int32) *ListShipperResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *ListShipperResponse) SetBody(v *ListShipperResponseBody) *ListShipperResponse {
-	s.Body = v
-	return s
-}
-
 type ListStoreViewsRequest struct {
 	// example:
 	//
@@ -13542,9 +12796,19 @@ func (s *ListStoreViewsResponse) SetBody(v *ListStoreViewsResponseBody) *ListSto
 }
 
 type ListTagResourcesRequest struct {
-	// The IDs of the resources for which you want to query tags. You must specify at least one of resourceId and tags.
+	// The IDs of the resources whose tags you want to query. You must specify at least one of resourceId and tags.
 	ResourceId []*string `json:"resourceId,omitempty" xml:"resourceId,omitempty" type:"Repeated"`
-	// The type of the resource. Set the value to project.
+	// The type of the resource. Valid values:
+	//
+	// 	- project
+	//
+	// 	- logstore
+	//
+	// 	- dashboard
+	//
+	// 	- MachineGroup
+	//
+	// 	- LogtailConfig
 	//
 	// This parameter is required.
 	//
@@ -13620,9 +12884,19 @@ func (s *ListTagResourcesRequestTags) SetValue(v string) *ListTagResourcesReques
 }
 
 type ListTagResourcesShrinkRequest struct {
-	// The IDs of the resources for which you want to query tags. You must specify at least one of resourceId and tags.
+	// The IDs of the resources whose tags you want to query. You must specify at least one of resourceId and tags.
 	ResourceIdShrink *string `json:"resourceId,omitempty" xml:"resourceId,omitempty"`
-	// The type of the resource. Set the value to project.
+	// The type of the resource. Valid values:
+	//
+	// 	- project
+	//
+	// 	- logstore
+	//
+	// 	- dashboard
+	//
+	// 	- MachineGroup
+	//
+	// 	- LogtailConfig
 	//
 	// This parameter is required.
 	//
@@ -13929,6 +13203,7 @@ func (s *PutProjectPolicyResponse) SetStatusCode(v int32) *PutProjectPolicyRespo
 }
 
 type PutProjectTransferAccelerationRequest struct {
+	// This parameter is required.
 	Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
 }
 
@@ -14471,7 +13746,17 @@ type TagResourcesRequest struct {
 	//
 	// This parameter is required.
 	ResourceId []*string `json:"resourceId,omitempty" xml:"resourceId,omitempty" type:"Repeated"`
-	// The type of the resource. Set the value to project.
+	// The type of the resource. Valid values:
+	//
+	// 	- project
+	//
+	// 	- logstore
+	//
+	// 	- dashboard
+	//
+	// 	- machinegroup
+	//
+	// 	- logtailconfig
 	//
 	// This parameter is required.
 	//
@@ -14479,7 +13764,7 @@ type TagResourcesRequest struct {
 	//
 	// project
 	ResourceType *string `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
-	// The tags that you want to add to the resource. Up to 20 tags are supported at a time. Each tag is a key-value pair.
+	// The tags that you want to add to the resource. You can specify up to 20 tags in each call. Each tag is a key-value pair.
 	//
 	// This parameter is required.
 	Tags []*TagResourcesRequestTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
@@ -14513,9 +13798,9 @@ type TagResourcesRequestTags struct {
 	//
 	// 	- The key must be `1 to 128` characters in length.
 	//
-	// 	- The key cannot contain `"http://"` or `"https://"`.
+	// 	- The key cannot contain `http://` or `https://`.
 	//
-	// 	- The key cannot start with `"acs:"` or `"aliyun"`.
+	// 	- The key cannot start with `acs:` or `aliyun`.
 	//
 	// This parameter is required.
 	//
@@ -14527,7 +13812,7 @@ type TagResourcesRequestTags struct {
 	//
 	// 	- The value must be `1 to 128` characters in length.
 	//
-	// 	- The value cannot contain `"http://"` or `"https://"`.
+	// 	- The value cannot contain `http://` or `https://`.
 	//
 	// This parameter is required.
 	//
@@ -14579,21 +13864,42 @@ func (s *TagResourcesResponse) SetStatusCode(v int32) *TagResourcesResponse {
 }
 
 type UntagResourcesRequest struct {
+	// Specifies whether to unbind all tags. Default value: false. Valid values:
+	//
+	// 	- false: unbinds only the tags that match the value of tags.
+	//
+	// 	- true: unbinds all tags that are bound to the resource.
+	//
 	// example:
 	//
 	// false
 	All *bool `json:"all,omitempty" xml:"all,omitempty"`
+	// The resource IDs. Each time you call this operation, you can unbind tags only from a single resource. Therefore, you can enter only one resource ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ali-test-project
 	ResourceId []*string `json:"resourceId,omitempty" xml:"resourceId,omitempty" type:"Repeated"`
+	// The type of the resource. Valid values:
+	//
+	// 	- project
+	//
+	// 	- logstore
+	//
+	// 	- dashboard
+	//
+	// 	- machinegroup
+	//
+	// 	- logtailconfig
+	//
 	// example:
 	//
 	// project
-	ResourceType *string   `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
-	Tags         []*string `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
+	ResourceType *string `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
+	// The tag keys. If you set all to false, only the tags that match the value of this parameter are unbound.
+	Tags []*string `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
 }
 
 func (s UntagResourcesRequest) String() string {
@@ -15394,6 +14700,8 @@ func (s *UpdateLogStoreResponse) SetStatusCode(v int32) *UpdateLogStoreResponse 
 }
 
 type UpdateLogStoreMeteringModeRequest struct {
+	// The billing mode. Valid values: ChargeByFunction and ChargeByDataIngest. Default value: ChargeByFunction. The value ChargeByFunction specifies the pay-by-feature billing mode. The value ChargeByDataIngest specifies the pay-by-ingested-data billing mode.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -16739,7 +16047,6 @@ func (s *UpdateStoreViewResponse) SetStatusCode(v int32) *UpdateStoreViewRespons
 }
 
 type UpsertCollectionPolicyRequest struct {
-	Attribute        *UpsertCollectionPolicyRequestAttribute        `json:"attribute,omitempty" xml:"attribute,omitempty" type:"Struct"`
 	CentralizeConfig *UpsertCollectionPolicyRequestCentralizeConfig `json:"centralizeConfig,omitempty" xml:"centralizeConfig,omitempty" type:"Struct"`
 	// example:
 	//
@@ -16750,7 +16057,8 @@ type UpsertCollectionPolicyRequest struct {
 	// example:
 	//
 	// access_log
-	DataCode *string `json:"dataCode,omitempty" xml:"dataCode,omitempty"`
+	DataCode   *string                                  `json:"dataCode,omitempty" xml:"dataCode,omitempty"`
+	DataConfig *UpsertCollectionPolicyRequestDataConfig `json:"dataConfig,omitempty" xml:"dataConfig,omitempty" type:"Struct"`
 	// This parameter is required.
 	//
 	// example:
@@ -16770,7 +16078,8 @@ type UpsertCollectionPolicyRequest struct {
 	// example:
 	//
 	// oss
-	ProductCode *string `json:"productCode,omitempty" xml:"productCode,omitempty"`
+	ProductCode       *string                                         `json:"productCode,omitempty" xml:"productCode,omitempty"`
+	ResourceDirectory *UpsertCollectionPolicyRequestResourceDirectory `json:"resourceDirectory,omitempty" xml:"resourceDirectory,omitempty" type:"Struct"`
 }
 
 func (s UpsertCollectionPolicyRequest) String() string {
@@ -16779,11 +16088,6 @@ func (s UpsertCollectionPolicyRequest) String() string {
 
 func (s UpsertCollectionPolicyRequest) GoString() string {
 	return s.String()
-}
-
-func (s *UpsertCollectionPolicyRequest) SetAttribute(v *UpsertCollectionPolicyRequestAttribute) *UpsertCollectionPolicyRequest {
-	s.Attribute = v
-	return s
 }
 
 func (s *UpsertCollectionPolicyRequest) SetCentralizeConfig(v *UpsertCollectionPolicyRequestCentralizeConfig) *UpsertCollectionPolicyRequest {
@@ -16798,6 +16102,11 @@ func (s *UpsertCollectionPolicyRequest) SetCentralizeEnabled(v bool) *UpsertColl
 
 func (s *UpsertCollectionPolicyRequest) SetDataCode(v string) *UpsertCollectionPolicyRequest {
 	s.DataCode = &v
+	return s
+}
+
+func (s *UpsertCollectionPolicyRequest) SetDataConfig(v *UpsertCollectionPolicyRequestDataConfig) *UpsertCollectionPolicyRequest {
+	s.DataConfig = v
 	return s
 }
 
@@ -16821,32 +16130,8 @@ func (s *UpsertCollectionPolicyRequest) SetProductCode(v string) *UpsertCollecti
 	return s
 }
 
-type UpsertCollectionPolicyRequestAttribute struct {
-	// example:
-	//
-	// your-app-name
-	App *string `json:"app,omitempty" xml:"app,omitempty"`
-	// example:
-	//
-	// your-policy-group
-	PolicyGroup *string `json:"policyGroup,omitempty" xml:"policyGroup,omitempty"`
-}
-
-func (s UpsertCollectionPolicyRequestAttribute) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpsertCollectionPolicyRequestAttribute) GoString() string {
-	return s.String()
-}
-
-func (s *UpsertCollectionPolicyRequestAttribute) SetApp(v string) *UpsertCollectionPolicyRequestAttribute {
-	s.App = &v
-	return s
-}
-
-func (s *UpsertCollectionPolicyRequestAttribute) SetPolicyGroup(v string) *UpsertCollectionPolicyRequestAttribute {
-	s.PolicyGroup = &v
+func (s *UpsertCollectionPolicyRequest) SetResourceDirectory(v *UpsertCollectionPolicyRequestResourceDirectory) *UpsertCollectionPolicyRequest {
+	s.ResourceDirectory = v
 	return s
 }
 
@@ -16897,6 +16182,23 @@ func (s *UpsertCollectionPolicyRequestCentralizeConfig) SetDestTTL(v int32) *Ups
 	return s
 }
 
+type UpsertCollectionPolicyRequestDataConfig struct {
+	DataRegion *string `json:"dataRegion,omitempty" xml:"dataRegion,omitempty"`
+}
+
+func (s UpsertCollectionPolicyRequestDataConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpsertCollectionPolicyRequestDataConfig) GoString() string {
+	return s.String()
+}
+
+func (s *UpsertCollectionPolicyRequestDataConfig) SetDataRegion(v string) *UpsertCollectionPolicyRequestDataConfig {
+	s.DataRegion = &v
+	return s
+}
+
 type UpsertCollectionPolicyRequestPolicyConfig struct {
 	InstanceIds []*string `json:"instanceIds,omitempty" xml:"instanceIds,omitempty" type:"Repeated"`
 	Regions     []*string `json:"regions,omitempty" xml:"regions,omitempty" type:"Repeated"`
@@ -16937,30 +16239,32 @@ func (s *UpsertCollectionPolicyRequestPolicyConfig) SetResourceTags(v map[string
 	return s
 }
 
-type UpsertCollectionPolicyResponseBody struct {
-	// example:
-	//
-	// successful
-	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+type UpsertCollectionPolicyRequestResourceDirectory struct {
+	AccountGroupType *string   `json:"accountGroupType,omitempty" xml:"accountGroupType,omitempty"`
+	Members          []*string `json:"members,omitempty" xml:"members,omitempty" type:"Repeated"`
 }
 
-func (s UpsertCollectionPolicyResponseBody) String() string {
+func (s UpsertCollectionPolicyRequestResourceDirectory) String() string {
 	return tea.Prettify(s)
 }
 
-func (s UpsertCollectionPolicyResponseBody) GoString() string {
+func (s UpsertCollectionPolicyRequestResourceDirectory) GoString() string {
 	return s.String()
 }
 
-func (s *UpsertCollectionPolicyResponseBody) SetMessage(v string) *UpsertCollectionPolicyResponseBody {
-	s.Message = &v
+func (s *UpsertCollectionPolicyRequestResourceDirectory) SetAccountGroupType(v string) *UpsertCollectionPolicyRequestResourceDirectory {
+	s.AccountGroupType = &v
+	return s
+}
+
+func (s *UpsertCollectionPolicyRequestResourceDirectory) SetMembers(v []*string) *UpsertCollectionPolicyRequestResourceDirectory {
+	s.Members = v
 	return s
 }
 
 type UpsertCollectionPolicyResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-	Body       *UpsertCollectionPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
 }
 
 func (s UpsertCollectionPolicyResponse) String() string {
@@ -16981,14 +16285,8 @@ func (s *UpsertCollectionPolicyResponse) SetStatusCode(v int32) *UpsertCollectio
 	return s
 }
 
-func (s *UpsertCollectionPolicyResponse) SetBody(v *UpsertCollectionPolicyResponseBody) *UpsertCollectionPolicyResponse {
-	s.Body = v
-	return s
-}
-
 type Client struct {
 	openapi.Client
-	Client_ spi.Client
 }
 
 func NewClient(config *openapi.Config) (*Client, error) {
@@ -17002,12 +16300,21 @@ func (client *Client) Init(config *openapi.Config) (_err error) {
 	if _err != nil {
 		return _err
 	}
-	interfaceSPI, _err := gatewayclient.NewClient()
+	gatewayClient, _err := gatewayclient.NewClient()
 	if _err != nil {
 		return _err
 	}
 
-	client.Spi = interfaceSPI
+	client.Spi = gatewayClient
+	if tea.BoolValue(util.IsUnset(config.HttpClient)) {
+		defaultHttpClient, _err := httpclient.NewHttpClient()
+		if _err != nil {
+			return _err
+		}
+
+		client.HttpClient = defaultHttpClient
+	}
+
 	client.SignatureAlgorithm = tea.String("v2")
 	client.EndpointRule = tea.String("central")
 	return nil
@@ -17235,7 +16542,19 @@ func (client *Client) ConsumerGroupHeartBeat(project *string, logstore *string, 
 
 // Summary:
 //
-// 更新指定消费组消费数据时Shard的checkpoint。
+// Updates the data consumption progress.
+//
+// Description:
+//
+//   If you do not specify a consumer, you must set **forceSuccess*	- to **true**. Otherwise, the checkpoint cannot be updated.
+//
+// 	- Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+//
+// 	- An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
+//
+// The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a Resource Access Management (RAM) user to call API operations or perform routine O\\&M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](https://help.aliyun.com/document_detail/47664.html).
+//
+// 	- The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong, the region of the project, and the name of the Logstore to which the logs belong. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html) and [Manage a Logstore](https://help.aliyun.com/document_detail/48990.html).
 //
 // @param request - ConsumerGroupUpdateCheckPointRequest
 //
@@ -17260,11 +16579,20 @@ func (client *Client) ConsumerGroupUpdateCheckPointWithOptions(project *string, 
 		query["forceSuccess"] = request.ForceSuccess
 	}
 
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Checkpoint)) {
+		body["checkpoint"] = request.Checkpoint
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Shard)) {
+		body["shard"] = request.Shard
+	}
+
 	req := &openapi.OpenApiRequest{
 		HostMap: hostMap,
 		Headers: headers,
 		Query:   openapiutil.Query(query),
-		Body:    util.ToArray(request.Body),
+		Body:    openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ConsumerGroupUpdateCheckPoint"),
@@ -17288,7 +16616,19 @@ func (client *Client) ConsumerGroupUpdateCheckPointWithOptions(project *string, 
 
 // Summary:
 //
-// 更新指定消费组消费数据时Shard的checkpoint。
+// Updates the data consumption progress.
+//
+// Description:
+//
+//   If you do not specify a consumer, you must set **forceSuccess*	- to **true**. Otherwise, the checkpoint cannot be updated.
+//
+// 	- Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+//
+// 	- An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
+//
+// The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a Resource Access Management (RAM) user to call API operations or perform routine O\\&M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](https://help.aliyun.com/document_detail/47664.html).
+//
+// 	- The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong, the region of the project, and the name of the Logstore to which the logs belong. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html) and [Manage a Logstore](https://help.aliyun.com/document_detail/48990.html).
 //
 // @param request - ConsumerGroupUpdateCheckPointRequest
 //
@@ -17608,7 +16948,7 @@ func (client *Client) CreateConfig(project *string, request *CreateConfigRequest
 
 // Summary:
 //
-// Creates a consumer group for a Logstore.
+// Creates a consumer group for a specified Logstore.
 //
 // Description:
 //
@@ -17674,7 +17014,7 @@ func (client *Client) CreateConsumerGroupWithOptions(project *string, logstore *
 
 // Summary:
 //
-// Creates a consumer group for a Logstore.
+// Creates a consumer group for a specified Logstore.
 //
 // Description:
 //
@@ -19572,7 +18912,7 @@ func (client *Client) DeleteCollectionPolicyWithOptions(policyName *string, requ
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
 		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
+		BodyType:    tea.String("none"),
 	}
 	_result = &DeleteCollectionPolicyResponse{}
 	_body, _err := client.Execute(params, req, runtime)
@@ -20311,7 +19651,7 @@ func (client *Client) DeleteMachineGroup(project *string, machineGroup *string) 
 
 // Summary:
 //
-// 删除OSS投递任务
+// Deletes an Object Storage Service (OSS) data shipping job.
 //
 // @param headers - map
 //
@@ -20347,7 +19687,7 @@ func (client *Client) DeleteOSSExportWithOptions(project *string, ossExportName 
 
 // Summary:
 //
-// 删除OSS投递任务
+// Deletes an Object Storage Service (OSS) data shipping job.
 //
 // @return DeleteOSSExportResponse
 func (client *Client) DeleteOSSExport(project *string, ossExportName *string) (_result *DeleteOSSExportResponse, _err error) {
@@ -20697,73 +20037,6 @@ func (client *Client) DeleteScheduledSQL(project *string, scheduledSQLName *stri
 	headers := make(map[string]*string)
 	_result = &DeleteScheduledSQLResponse{}
 	_body, _err := client.DeleteScheduledSQLWithOptions(project, scheduledSQLName, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-// Deprecated: OpenAPI DeleteShipper is deprecated
-//
-// Summary:
-//
-// Deletes the log shipping job of a Logstore.
-//
-// Description:
-//
-// Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
-//
-// @param headers - map
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return DeleteShipperResponse
-// Deprecated
-func (client *Client) DeleteShipperWithOptions(project *string, logstore *string, shipperName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteShipperResponse, _err error) {
-	hostMap := make(map[string]*string)
-	hostMap["project"] = project
-	req := &openapi.OpenApiRequest{
-		HostMap: hostMap,
-		Headers: headers,
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DeleteShipper"),
-		Version:     tea.String("2020-12-30"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/logstores/" + tea.StringValue(logstore) + "/shipper/" + tea.StringValue(shipperName)),
-		Method:      tea.String("DELETE"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("none"),
-	}
-	_result = &DeleteShipperResponse{}
-	_body, _err := client.Execute(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Deprecated: OpenAPI DeleteShipper is deprecated
-//
-// Summary:
-//
-// Deletes the log shipping job of a Logstore.
-//
-// Description:
-//
-// Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
-//
-// @return DeleteShipperResponse
-// Deprecated
-func (client *Client) DeleteShipper(project *string, logstore *string, shipperName *string) (_result *DeleteShipperResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &DeleteShipperResponse{}
-	_body, _err := client.DeleteShipperWithOptions(project, logstore, shipperName, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -23256,9 +22529,15 @@ func (client *Client) GetProjectLogs(project *string, request *GetProjectLogsReq
 //
 // Description:
 //
-// ### Usage notes
+// ### [](#)Usage notes
 //
-// Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+// 	- Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+//
+// 	- An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
+//
+// The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a Resource Access Management (RAM) user to call API operations or perform routine O\\&M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](https://help.aliyun.com/document_detail/47664.html).
+//
+// 	- The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html)
 //
 // @param headers - map
 //
@@ -23298,9 +22577,15 @@ func (client *Client) GetProjectPolicyWithOptions(project *string, headers map[s
 //
 // Description:
 //
-// ### Usage notes
+// ### [](#)Usage notes
 //
-// Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+// 	- Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+//
+// 	- An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
+//
+// The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a Resource Access Management (RAM) user to call API operations or perform routine O\\&M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](https://help.aliyun.com/document_detail/47664.html).
+//
+// 	- The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html)
 //
 // @return GetProjectPolicyResponse
 func (client *Client) GetProjectPolicy(project *string) (_result *GetProjectPolicyResponse, _err error) {
@@ -23426,103 +22711,6 @@ func (client *Client) GetScheduledSQL(project *string, scheduledSQLName *string)
 	headers := make(map[string]*string)
 	_result = &GetScheduledSQLResponse{}
 	_body, _err := client.GetScheduledSQLWithOptions(project, scheduledSQLName, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-// Deprecated: OpenAPI GetShipperStatus is deprecated
-//
-// Summary:
-//
-// Queries the status of a log shipping job.
-//
-// Description:
-//
-// Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
-//
-// @param request - GetShipperStatusRequest
-//
-// @param headers - map
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return GetShipperStatusResponse
-// Deprecated
-func (client *Client) GetShipperStatusWithOptions(project *string, logstore *string, shipperName *string, request *GetShipperStatusRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetShipperStatusResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	hostMap := make(map[string]*string)
-	hostMap["project"] = project
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.From)) {
-		query["from"] = request.From
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Offset)) {
-		query["offset"] = request.Offset
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Size)) {
-		query["size"] = request.Size
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Status)) {
-		query["status"] = request.Status
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.To)) {
-		query["to"] = request.To
-	}
-
-	req := &openapi.OpenApiRequest{
-		HostMap: hostMap,
-		Headers: headers,
-		Query:   openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("GetShipperStatus"),
-		Version:     tea.String("2020-12-30"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/logstores/" + tea.StringValue(logstore) + "/shipper/" + tea.StringValue(shipperName) + "/tasks"),
-		Method:      tea.String("GET"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &GetShipperStatusResponse{}
-	_body, _err := client.Execute(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Deprecated: OpenAPI GetShipperStatus is deprecated
-//
-// Summary:
-//
-// Queries the status of a log shipping job.
-//
-// Description:
-//
-// Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
-//
-// @param request - GetShipperStatusRequest
-//
-// @return GetShipperStatusResponse
-// Deprecated
-func (client *Client) GetShipperStatus(project *string, logstore *string, shipperName *string, request *GetShipperStatusRequest) (_result *GetShipperStatusResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &GetShipperStatusResponse{}
-	_body, _err := client.GetShipperStatusWithOptions(project, logstore, shipperName, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -24022,27 +23210,21 @@ func (client *Client) ListAnnotationLabels(request *ListAnnotationLabelsRequest)
 //
 // 通过调用ListCollectionPolicies接口查看配置的日志采集规则
 //
-// @param tmpReq - ListCollectionPoliciesRequest
+// @param request - ListCollectionPoliciesRequest
 //
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListCollectionPoliciesResponse
-func (client *Client) ListCollectionPoliciesWithOptions(tmpReq *ListCollectionPoliciesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListCollectionPoliciesResponse, _err error) {
-	_err = util.ValidateModel(tmpReq)
+func (client *Client) ListCollectionPoliciesWithOptions(request *ListCollectionPoliciesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListCollectionPoliciesResponse, _err error) {
+	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
-	request := &ListCollectionPoliciesShrinkRequest{}
-	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tmpReq.Attribute)) {
-		request.AttributeShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Attribute, tea.String("attribute"), tea.String("json"))
-	}
-
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.AttributeShrink)) {
-		query["attribute"] = request.AttributeShrink
+	if !tea.BoolValue(util.IsUnset(request.CentralProject)) {
+		query["centralProject"] = request.CentralProject
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.DataCode)) {
@@ -24053,12 +23235,8 @@ func (client *Client) ListCollectionPoliciesWithOptions(tmpReq *ListCollectionPo
 		query["instanceId"] = request.InstanceId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.PageNum)) {
-		query["pageNum"] = request.PageNum
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
-		query["pageSize"] = request.PageSize
+	if !tea.BoolValue(util.IsUnset(request.Offset)) {
+		query["offset"] = request.Offset
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.PolicyName)) {
@@ -24067,6 +23245,10 @@ func (client *Client) ListCollectionPoliciesWithOptions(tmpReq *ListCollectionPo
 
 	if !tea.BoolValue(util.IsUnset(request.ProductCode)) {
 		query["productCode"] = request.ProductCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Size)) {
+		query["size"] = request.Size
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -24530,89 +23712,6 @@ func (client *Client) ListETLs(project *string, request *ListETLsRequest) (_resu
 	headers := make(map[string]*string)
 	_result = &ListETLsResponse{}
 	_body, _err := client.ListETLsWithOptions(project, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries a list of external stores.
-//
-// Description:
-//
-// Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
-//
-// @param request - ListExternalStoreRequest
-//
-// @param headers - map
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return ListExternalStoreResponse
-func (client *Client) ListExternalStoreWithOptions(project *string, request *ListExternalStoreRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListExternalStoreResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	hostMap := make(map[string]*string)
-	hostMap["project"] = project
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.ExternalStoreName)) {
-		query["externalStoreName"] = request.ExternalStoreName
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Offset)) {
-		query["offset"] = request.Offset
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Sizs)) {
-		query["sizs"] = request.Sizs
-	}
-
-	req := &openapi.OpenApiRequest{
-		HostMap: hostMap,
-		Headers: headers,
-		Query:   openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("ListExternalStore"),
-		Version:     tea.String("2020-12-30"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/externalstores"),
-		Method:      tea.String("GET"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &ListExternalStoreResponse{}
-	_body, _err := client.Execute(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries a list of external stores.
-//
-// Description:
-//
-// Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
-//
-// @param request - ListExternalStoreRequest
-//
-// @return ListExternalStoreResponse
-func (client *Client) ListExternalStore(project *string, request *ListExternalStoreRequest) (_result *ListExternalStoreResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ListExternalStoreResponse{}
-	_body, _err := client.ListExternalStoreWithOptions(project, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -25524,73 +24623,6 @@ func (client *Client) ListShards(project *string, logstore *string) (_result *Li
 	return _result, _err
 }
 
-// Deprecated: OpenAPI ListShipper is deprecated
-//
-// Summary:
-//
-// Queries a list of log shipping jobs in a Logstore.
-//
-// Description:
-//
-// Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
-//
-// @param headers - map
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return ListShipperResponse
-// Deprecated
-func (client *Client) ListShipperWithOptions(project *string, logstore *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListShipperResponse, _err error) {
-	hostMap := make(map[string]*string)
-	hostMap["project"] = project
-	req := &openapi.OpenApiRequest{
-		HostMap: hostMap,
-		Headers: headers,
-	}
-	params := &openapi.Params{
-		Action:      tea.String("ListShipper"),
-		Version:     tea.String("2020-12-30"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/logstores/" + tea.StringValue(logstore) + "/shipper"),
-		Method:      tea.String("GET"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &ListShipperResponse{}
-	_body, _err := client.Execute(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Deprecated: OpenAPI ListShipper is deprecated
-//
-// Summary:
-//
-// Queries a list of log shipping jobs in a Logstore.
-//
-// Description:
-//
-// Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
-//
-// @return ListShipperResponse
-// Deprecated
-func (client *Client) ListShipper(project *string, logstore *string) (_result *ListShipperResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ListShipperResponse{}
-	_body, _err := client.ListShipperWithOptions(project, logstore, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 // Summary:
 //
 // 查询StoreView列表
@@ -25678,7 +24710,25 @@ func (client *Client) ListStoreViews(project *string, request *ListStoreViewsReq
 //
 // ### Usage notes
 //
-// Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+// 	- Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+//
+// 	- An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
+//
+// The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a Resource Access Management (RAM) user to call API operations or perform routine O&#x26;M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](https://help.aliyun.com/document_detail/47664.html).
+//
+// 	- The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html)
+//
+// 	- For more information, see [Authorization rules](https://help.aliyun.com/document_detail/29049.html). The following types of resources are supported: project, Logstore, dashboard, machine group, and Logtail configuration.
+//
+// ### Authentication resources
+//
+// The following table describes the authorization information that is required for this operation. You can add the information to the Action element of a RAM policy statement to grant a RAM user or a RAM role the permissions to call this operation.
+//
+// |Action|Resource|
+//
+// |:---|:---|
+//
+// |`log:ListTagResources`|The resource format varies based on the resource type.\\-`acs:log:{#regionId}:{#accountId}:project/{#ProjectName}`\\-`acs:log:${regionName}:${accountId}:project/${projectName}/logstore/${logstoreName}`\\-`acs:log:${regionName}:${accountId}:project/${projectName}/dashboard/${dashboardName}`\\-`acs:log:${regionName}:${accountId}:project/${projectName}/machinegroup/${machineGroupName}`\\-`acs:log:${regionName}:${accountId}:project/${projectName}/logtailconfig/${logtailConfigName}`|
 //
 // @param tmpReq - ListTagResourcesRequest
 //
@@ -25747,7 +24797,25 @@ func (client *Client) ListTagResourcesWithOptions(tmpReq *ListTagResourcesReques
 //
 // ### Usage notes
 //
-// Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+// 	- Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+//
+// 	- An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
+//
+// The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a Resource Access Management (RAM) user to call API operations or perform routine O&#x26;M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](https://help.aliyun.com/document_detail/47664.html).
+//
+// 	- The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html)
+//
+// 	- For more information, see [Authorization rules](https://help.aliyun.com/document_detail/29049.html). The following types of resources are supported: project, Logstore, dashboard, machine group, and Logtail configuration.
+//
+// ### Authentication resources
+//
+// The following table describes the authorization information that is required for this operation. You can add the information to the Action element of a RAM policy statement to grant a RAM user or a RAM role the permissions to call this operation.
+//
+// |Action|Resource|
+//
+// |:---|:---|
+//
+// |`log:ListTagResources`|The resource format varies based on the resource type.\\-`acs:log:{#regionId}:{#accountId}:project/{#ProjectName}`\\-`acs:log:${regionName}:${accountId}:project/${projectName}/logstore/${logstoreName}`\\-`acs:log:${regionName}:${accountId}:project/${projectName}/dashboard/${dashboardName}`\\-`acs:log:${regionName}:${accountId}:project/${projectName}/machinegroup/${machineGroupName}`\\-`acs:log:${regionName}:${accountId}:project/${projectName}/logtailconfig/${logtailConfigName}`|
 //
 // @param request - ListTagResourcesRequest
 //
@@ -26246,7 +25314,7 @@ func (client *Client) QueryMLServiceResultsWithOptions(serviceName *string, requ
 		Action:      tea.String("QueryMLServiceResults"),
 		Version:     tea.String("2020-12-30"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/ml/service/" + tea.StringValue(serviceName) + "/analysis"),
+		Pathname:    tea.String("/ml/v2/service/" + tea.StringValue(serviceName) + "/analysis"),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
@@ -26926,13 +25994,31 @@ func (client *Client) StopOSSIngestion(project *string, ossIngestionName *string
 
 // Summary:
 //
-// Creates and adds one or more tags to a specified resource. You can add tags only to projects.
+// Creates and adds tags to a resource. You can add tags only to projects.
 //
 // Description:
 //
 // ### Usage notes
 //
-// Host consists of a project name and a Log Service endpoint. You must specify a project in Host.
+// 	- Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+//
+// 	- An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
+//
+// The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a Resource Access Management (RAM) user to call API operations or perform routine O&#x26;M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](https://help.aliyun.com/document_detail/47664.html).
+//
+// 	- The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html)
+//
+// 	- For more information, see [Authorization rules](https://help.aliyun.com/document_detail/29049.html). The following types of resources are supported: project, Logstore, dashboard, machine group, and Logtail configuration.
+//
+// ### Authentication resources
+//
+// The following table describes the authorization information that is required for this operation. You can add the information to the Action element of a RAM policy statement to grant a RAM user or a RAM role the permissions to call this operation.
+//
+// |Action|Resource|
+//
+// |:---|:---|
+//
+// |`log:TagResources`|The resource format varies based on the resource type.\\-`acs:log:{#regionId}:{#accountId}:project/{#ProjectName}`\\-`acs:log:${regionName}:${accountId}:project/${projectName}/logstore/${logstoreName}`\\-`acs:log:${regionName}:${accountId}:project/${projectName}/dashboard/${dashboardName}`\\-`acs:log:${regionName}:${accountId}:project/${projectName}/machinegroup/${machineGroupName}`\\-`acs:log:${regionName}:${accountId}:project/${projectName}/logtailconfig/${logtailConfigName}`|
 //
 // @param request - TagResourcesRequest
 //
@@ -26985,13 +26071,31 @@ func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, head
 
 // Summary:
 //
-// Creates and adds one or more tags to a specified resource. You can add tags only to projects.
+// Creates and adds tags to a resource. You can add tags only to projects.
 //
 // Description:
 //
 // ### Usage notes
 //
-// Host consists of a project name and a Log Service endpoint. You must specify a project in Host.
+// 	- Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+//
+// 	- An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
+//
+// The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a Resource Access Management (RAM) user to call API operations or perform routine O&#x26;M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](https://help.aliyun.com/document_detail/47664.html).
+//
+// 	- The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html)
+//
+// 	- For more information, see [Authorization rules](https://help.aliyun.com/document_detail/29049.html). The following types of resources are supported: project, Logstore, dashboard, machine group, and Logtail configuration.
+//
+// ### Authentication resources
+//
+// The following table describes the authorization information that is required for this operation. You can add the information to the Action element of a RAM policy statement to grant a RAM user or a RAM role the permissions to call this operation.
+//
+// |Action|Resource|
+//
+// |:---|:---|
+//
+// |`log:TagResources`|The resource format varies based on the resource type.\\-`acs:log:{#regionId}:{#accountId}:project/{#ProjectName}`\\-`acs:log:${regionName}:${accountId}:project/${projectName}/logstore/${logstoreName}`\\-`acs:log:${regionName}:${accountId}:project/${projectName}/dashboard/${dashboardName}`\\-`acs:log:${regionName}:${accountId}:project/${projectName}/machinegroup/${machineGroupName}`\\-`acs:log:${regionName}:${accountId}:project/${projectName}/logtailconfig/${logtailConfigName}`|
 //
 // @param request - TagResourcesRequest
 //
@@ -27016,7 +26120,23 @@ func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagRe
 //
 // ### Usage notes
 //
-// Host consists of a project name and a Log Service endpoint. You must specify a project in Host.
+// 	- Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+//
+// 	- An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
+//
+// The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a Resource Access Management (RAM) user to call API operations or perform routine O&#x26;M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](https://help.aliyun.com/document_detail/47664.html).
+//
+// 	- The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html) For more information, see [Authorization rules](https://help.aliyun.com/document_detail/29049.html). The following types of resources are supported: project, Logstore, dashboard, machine group, and Logtail configuration.
+//
+// ### Authentication resources
+//
+// The following table describes the authorization information that is required for this operation. You can add the information to the Action element of a RAM policy statement to grant a RAM user or a RAM role the permissions to call this operation.
+//
+// |Action|Resource|
+//
+// |:---|:---|
+//
+// |`log:UntagResources`|The resource format varies based on the resource type.\\-`acs:log:{#regionId}:{#accountId}:project/{#ProjectName}`\\-`acs:log:${regionName}:${accountId}:project/${projectName}/logstore/${logstoreName}`\\-`acs:log:${regionName}:${accountId}:project/${projectName}/dashboard/${dashboardName}`\\-`acs:log:${regionName}:${accountId}:project/${projectName}/machinegroup/${machineGroupName}`\\-`acs:log:${regionName}:${accountId}:project/${projectName}/logtailconfig/${logtailConfigName}`|
 //
 // @param request - UntagResourcesRequest
 //
@@ -27079,7 +26199,23 @@ func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, 
 //
 // ### Usage notes
 //
-// Host consists of a project name and a Log Service endpoint. You must specify a project in Host.
+// 	- Host consists of a project name and a Simple Log Service endpoint. You must specify a project in Host.
+//
+// 	- An AccessKey pair is created and obtained. For more information, see [AccessKey pair](https://help.aliyun.com/document_detail/29009.html).
+//
+// The AccessKey pair of an Alibaba Cloud account has permissions on all API operations. Using these credentials to perform operations in Simple Log Service is a high-risk operation. We recommend that you use a Resource Access Management (RAM) user to call API operations or perform routine O&#x26;M. To create a RAM user, log on to the RAM console. Make sure that the RAM user has the management permissions on Simple Log Service resources. For more information, see [Create a RAM user and authorize the RAM user to access Simple Log Service](https://help.aliyun.com/document_detail/47664.html).
+//
+// 	- The information that is required to query logs is obtained. The information includes the name of the project to which the logs belong and the region of the project. For more information, see [Manage a project](https://help.aliyun.com/document_detail/48984.html) For more information, see [Authorization rules](https://help.aliyun.com/document_detail/29049.html). The following types of resources are supported: project, Logstore, dashboard, machine group, and Logtail configuration.
+//
+// ### Authentication resources
+//
+// The following table describes the authorization information that is required for this operation. You can add the information to the Action element of a RAM policy statement to grant a RAM user or a RAM role the permissions to call this operation.
+//
+// |Action|Resource|
+//
+// |:---|:---|
+//
+// |`log:UntagResources`|The resource format varies based on the resource type.\\-`acs:log:{#regionId}:{#accountId}:project/{#ProjectName}`\\-`acs:log:${regionName}:${accountId}:project/${projectName}/logstore/${logstoreName}`\\-`acs:log:${regionName}:${accountId}:project/${projectName}/dashboard/${dashboardName}`\\-`acs:log:${regionName}:${accountId}:project/${projectName}/machinegroup/${machineGroupName}`\\-`acs:log:${regionName}:${accountId}:project/${projectName}/logtailconfig/${logtailConfigName}`|
 //
 // @param request - UntagResourcesRequest
 //
@@ -27303,7 +26439,7 @@ func (client *Client) UpdateAnnotationLabel(request *UpdateAnnotationLabelReques
 
 // Summary:
 //
-// Updates a Logtail configuration.
+// Modifies a Logtail configuration.
 //
 // Description:
 //
@@ -27362,7 +26498,7 @@ func (client *Client) UpdateConfigWithOptions(project *string, configName *strin
 
 // Summary:
 //
-// Updates a Logtail configuration.
+// Modifies a Logtail configuration.
 //
 // Description:
 //
@@ -27880,7 +27016,7 @@ func (client *Client) UpdateLogStore(project *string, logstore *string, request 
 
 // Summary:
 //
-// 更新LogStore计量模式
+// Changes the billing mode of a Logstore.
 //
 // @param request - UpdateLogStoreMeteringModeRequest
 //
@@ -27928,7 +27064,7 @@ func (client *Client) UpdateLogStoreMeteringModeWithOptions(project *string, log
 
 // Summary:
 //
-// 更新LogStore计量模式
+// Changes the billing mode of a Logstore.
 //
 // @param request - UpdateLogStoreMeteringModeRequest
 //
@@ -29141,7 +28277,7 @@ func (client *Client) UpdateStoreView(project *string, name *string, request *Up
 
 // Summary:
 //
-// 调用UpsertCollectionPolicy接口更新采集策略的属性信息
+// 调用UpsertCollectionPolicy接口创建或更新日志采集规则
 //
 // @param request - UpsertCollectionPolicyRequest
 //
@@ -29156,10 +28292,6 @@ func (client *Client) UpsertCollectionPolicyWithOptions(request *UpsertCollectio
 		return _result, _err
 	}
 	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.Attribute)) {
-		body["attribute"] = request.Attribute
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.CentralizeConfig)) {
 		body["centralizeConfig"] = request.CentralizeConfig
 	}
@@ -29170,6 +28302,10 @@ func (client *Client) UpsertCollectionPolicyWithOptions(request *UpsertCollectio
 
 	if !tea.BoolValue(util.IsUnset(request.DataCode)) {
 		body["dataCode"] = request.DataCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DataConfig)) {
+		body["dataConfig"] = request.DataConfig
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Enabled)) {
@@ -29188,6 +28324,10 @@ func (client *Client) UpsertCollectionPolicyWithOptions(request *UpsertCollectio
 		body["productCode"] = request.ProductCode
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ResourceDirectory)) {
+		body["resourceDirectory"] = request.ResourceDirectory
+	}
+
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
@@ -29201,7 +28341,7 @@ func (client *Client) UpsertCollectionPolicyWithOptions(request *UpsertCollectio
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
 		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
+		BodyType:    tea.String("none"),
 	}
 	_result = &UpsertCollectionPolicyResponse{}
 	_body, _err := client.Execute(params, req, runtime)
@@ -29214,7 +28354,7 @@ func (client *Client) UpsertCollectionPolicyWithOptions(request *UpsertCollectio
 
 // Summary:
 //
-// 调用UpsertCollectionPolicy接口更新采集策略的属性信息
+// 调用UpsertCollectionPolicy接口创建或更新日志采集规则
 //
 // @param request - UpsertCollectionPolicyRequest
 //
