@@ -1,7 +1,4 @@
 // This file is auto-generated, don't edit it. Thanks.
-/**
- *
- */
 package client
 
 import (
@@ -107,9 +104,9 @@ func (s *AuditPublicTemplateRegistrationResponseBody) SetTemplateVersion(v strin
 }
 
 type AuditPublicTemplateRegistrationResponse struct {
-	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *AuditPublicTemplateRegistrationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AuditPublicTemplateRegistrationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s AuditPublicTemplateRegistrationResponse) String() string {
@@ -136,8 +133,11 @@ func (s *AuditPublicTemplateRegistrationResponse) SetBody(v *AuditPublicTemplate
 }
 
 type CreateActionRequest struct {
+	// This parameter is required.
 	ActionName *string `json:"ActionName,omitempty" xml:"ActionName,omitempty"`
+	// This parameter is required.
 	ActionType *string `json:"ActionType,omitempty" xml:"ActionType,omitempty"`
+	// This parameter is required.
 	Content    *string `json:"Content,omitempty" xml:"Content,omitempty"`
 	Popularity *int32  `json:"Popularity,omitempty" xml:"Popularity,omitempty"`
 	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
@@ -236,9 +236,9 @@ func (s *CreateActionResponseBody) SetTemplateVersion(v string) *CreateActionRes
 }
 
 type CreateActionResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateActionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateActionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateActionResponse) String() string {
@@ -265,13 +265,16 @@ func (s *CreateActionResponse) SetBody(v *CreateActionResponseBody) *CreateActio
 }
 
 type CreatePublicParameterRequest struct {
-	ClientToken   *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	Constraints   *string `json:"Constraints,omitempty" xml:"Constraints,omitempty"`
-	Description   *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name          *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	Constraints *string `json:"Constraints,omitempty" xml:"Constraints,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// This parameter is required.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// This parameter is required.
 	ParameterType *string `json:"ParameterType,omitempty" xml:"ParameterType,omitempty"`
 	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Value         *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	// This parameter is required.
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s CreatePublicParameterRequest) String() string {
@@ -424,9 +427,9 @@ func (s *CreatePublicParameterResponseBodyParameter) SetUpdatedDate(v string) *C
 }
 
 type CreatePublicParameterResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreatePublicParameterResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreatePublicParameterResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreatePublicParameterResponse) String() string {
@@ -453,10 +456,13 @@ func (s *CreatePublicParameterResponse) SetBody(v *CreatePublicParameterResponse
 }
 
 type CreatePublicPatchBaselineRequest struct {
-	ApprovalRules   *string `json:"ApprovalRules,omitempty" xml:"ApprovalRules,omitempty"`
-	ClientToken     *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	Description     *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name            *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// This parameter is required.
+	ApprovalRules *string `json:"ApprovalRules,omitempty" xml:"ApprovalRules,omitempty"`
+	ClientToken   *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	Description   *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// This parameter is required.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// This parameter is required.
 	OperationSystem *string `json:"OperationSystem,omitempty" xml:"OperationSystem,omitempty"`
 	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
@@ -594,9 +600,9 @@ func (s *CreatePublicPatchBaselineResponseBodyPatchBaseline) SetUpdatedDate(v st
 }
 
 type CreatePublicPatchBaselineResponse struct {
-	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreatePublicPatchBaselineResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreatePublicPatchBaselineResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreatePublicPatchBaselineResponse) String() string {
@@ -623,11 +629,14 @@ func (s *CreatePublicPatchBaselineResponse) SetBody(v *CreatePublicPatchBaseline
 }
 
 type CreatePublicTemplateRequest struct {
-	Category     *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	Content      *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	Popularity   *int32  `json:"Popularity,omitempty" xml:"Popularity,omitempty"`
-	Publisher    *string `json:"Publisher,omitempty" xml:"Publisher,omitempty"`
-	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	// This parameter is required.
+	Content    *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	IsExample  *bool   `json:"IsExample,omitempty" xml:"IsExample,omitempty"`
+	Popularity *int32  `json:"Popularity,omitempty" xml:"Popularity,omitempty"`
+	Publisher  *string `json:"Publisher,omitempty" xml:"Publisher,omitempty"`
+	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// This parameter is required.
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
 }
 
@@ -646,6 +655,11 @@ func (s *CreatePublicTemplateRequest) SetCategory(v string) *CreatePublicTemplat
 
 func (s *CreatePublicTemplateRequest) SetContent(v string) *CreatePublicTemplateRequest {
 	s.Content = &v
+	return s
+}
+
+func (s *CreatePublicTemplateRequest) SetIsExample(v bool) *CreatePublicTemplateRequest {
+	s.IsExample = &v
 	return s
 }
 
@@ -782,9 +796,9 @@ func (s *CreatePublicTemplateResponseBodyTemplate) SetUpdatedDate(v string) *Cre
 }
 
 type CreatePublicTemplateResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreatePublicTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreatePublicTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreatePublicTemplateResponse) String() string {
@@ -811,7 +825,9 @@ func (s *CreatePublicTemplateResponse) SetBody(v *CreatePublicTemplateResponseBo
 }
 
 type DeleteFailureMsgRequest struct {
-	Operation          *string `json:"Operation,omitempty" xml:"Operation,omitempty"`
+	// This parameter is required.
+	Operation *string `json:"Operation,omitempty" xml:"Operation,omitempty"`
+	// This parameter is required.
 	RequestFingerprint *string `json:"RequestFingerprint,omitempty" xml:"RequestFingerprint,omitempty"`
 }
 
@@ -851,9 +867,9 @@ func (s *DeleteFailureMsgResponseBody) SetRequestId(v string) *DeleteFailureMsgR
 }
 
 type DeleteFailureMsgResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteFailureMsgResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteFailureMsgResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteFailureMsgResponse) String() string {
@@ -880,6 +896,7 @@ func (s *DeleteFailureMsgResponse) SetBody(v *DeleteFailureMsgResponseBody) *Del
 }
 
 type DeletePublicParameterRequest struct {
+	// This parameter is required.
 	Name     *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
@@ -920,9 +937,9 @@ func (s *DeletePublicParameterResponseBody) SetRequestId(v string) *DeletePublic
 }
 
 type DeletePublicParameterResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeletePublicParameterResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeletePublicParameterResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeletePublicParameterResponse) String() string {
@@ -949,6 +966,7 @@ func (s *DeletePublicParameterResponse) SetBody(v *DeletePublicParameterResponse
 }
 
 type DeletePublicPatchBaselineRequest struct {
+	// This parameter is required.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
@@ -983,9 +1001,9 @@ func (s *DeletePublicPatchBaselineResponseBody) SetRequestId(v string) *DeletePu
 }
 
 type DeletePublicPatchBaselineResponse struct {
-	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeletePublicPatchBaselineResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeletePublicPatchBaselineResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeletePublicPatchBaselineResponse) String() string {
@@ -1012,7 +1030,8 @@ func (s *DeletePublicPatchBaselineResponse) SetBody(v *DeletePublicPatchBaseline
 }
 
 type DeletePublicTemplateRequest struct {
-	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// This parameter is required.
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
 }
 
@@ -1052,9 +1071,9 @@ func (s *DeletePublicTemplateResponseBody) SetRequestId(v string) *DeletePublicT
 }
 
 type DeletePublicTemplateResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeletePublicTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeletePublicTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeletePublicTemplateResponse) String() string {
@@ -1277,9 +1296,9 @@ func (s *DoCheckResourceResponseBody) SetUrl(v string) *DoCheckResourceResponseB
 }
 
 type DoCheckResourceResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DoCheckResourceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DoCheckResourceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DoCheckResourceResponse) String() string {
@@ -1382,9 +1401,9 @@ func (s *GetActionResponseBody) SetRequestId(v string) *GetActionResponseBody {
 }
 
 type GetActionResponse struct {
-	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetActionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetActionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetActionResponse) String() string {
@@ -1413,8 +1432,9 @@ func (s *GetActionResponse) SetBody(v *GetActionResponseBody) *GetActionResponse
 type GetFlowControlRequest struct {
 	Api     *string `json:"Api,omitempty" xml:"Api,omitempty"`
 	Service *string `json:"Service,omitempty" xml:"Service,omitempty"`
-	Type    *int32  `json:"Type,omitempty" xml:"Type,omitempty"`
-	Uid     *string `json:"Uid,omitempty" xml:"Uid,omitempty"`
+	// This parameter is required.
+	Type *int32  `json:"Type,omitempty" xml:"Type,omitempty"`
+	Uid  *string `json:"Uid,omitempty" xml:"Uid,omitempty"`
 }
 
 func (s GetFlowControlRequest) String() string {
@@ -1469,9 +1489,9 @@ func (s *GetFlowControlResponseBody) SetValue(v int32) *GetFlowControlResponseBo
 }
 
 type GetFlowControlResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetFlowControlResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetFlowControlResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetFlowControlResponse) String() string {
@@ -1498,6 +1518,7 @@ func (s *GetFlowControlResponse) SetBody(v *GetFlowControlResponseBody) *GetFlow
 }
 
 type GetPublicParameterRequest struct {
+	// This parameter is required.
 	Name             *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	ParameterVersion *int32  `json:"ParameterVersion,omitempty" xml:"ParameterVersion,omitempty"`
 	RegionId         *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
@@ -1639,9 +1660,9 @@ func (s *GetPublicParameterResponseBodyParameter) SetValue(v string) *GetPublicP
 }
 
 type GetPublicParameterResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetPublicParameterResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetPublicParameterResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetPublicParameterResponse) String() string {
@@ -1668,6 +1689,7 @@ func (s *GetPublicParameterResponse) SetBody(v *GetPublicParameterResponseBody) 
 }
 
 type GetPublicPatchBaselineRequest struct {
+	// This parameter is required.
 	Name     *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
@@ -1785,9 +1807,9 @@ func (s *GetPublicPatchBaselineResponseBodyPatchBaseline) SetUpdatedDate(v strin
 }
 
 type GetPublicPatchBaselineResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetPublicPatchBaselineResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetPublicPatchBaselineResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetPublicPatchBaselineResponse) String() string {
@@ -1814,7 +1836,8 @@ func (s *GetPublicPatchBaselineResponse) SetBody(v *GetPublicPatchBaselineRespon
 }
 
 type GetPublicTemplateRequest struct {
-	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// This parameter is required.
 	TemplateName    *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
 	TemplateVersion *string `json:"TemplateVersion,omitempty" xml:"TemplateVersion,omitempty"`
 }
@@ -1955,9 +1978,9 @@ func (s *GetPublicTemplateResponseBodyTemplate) SetUpdatedDate(v string) *GetPub
 }
 
 type GetPublicTemplateResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetPublicTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetPublicTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetPublicTemplateResponse) String() string {
@@ -1984,9 +2007,11 @@ func (s *GetPublicTemplateResponse) SetBody(v *GetPublicTemplateResponseBody) *G
 }
 
 type GetQuotaRequest struct {
+	// This parameter is required.
 	QuotaName *string `json:"QuotaName,omitempty" xml:"QuotaName,omitempty"`
 	RegionId  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Uid       *string `json:"Uid,omitempty" xml:"Uid,omitempty"`
+	// This parameter is required.
+	Uid *string `json:"Uid,omitempty" xml:"Uid,omitempty"`
 }
 
 func (s GetQuotaRequest) String() string {
@@ -2071,9 +2096,9 @@ func (s *GetQuotaResponseBodyQuota) SetTotalTemplate(v int32) *GetQuotaResponseB
 }
 
 type GetQuotaResponse struct {
-	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetQuotaResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetQuotaResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetQuotaResponse) String() string {
@@ -2100,7 +2125,9 @@ func (s *GetQuotaResponse) SetBody(v *GetQuotaResponseBody) *GetQuotaResponse {
 }
 
 type GetUserExecutionTemplateRequest struct {
-	AliUid      *string `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
+	// This parameter is required.
+	AliUid *string `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
+	// This parameter is required.
 	ExecutionId *string `json:"ExecutionId,omitempty" xml:"ExecutionId,omitempty"`
 	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
@@ -2235,9 +2262,9 @@ func (s *GetUserExecutionTemplateResponseBodyTemplate) SetUpdatedDate(v string) 
 }
 
 type GetUserExecutionTemplateResponse struct {
-	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetUserExecutionTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetUserExecutionTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetUserExecutionTemplateResponse) String() string {
@@ -2264,8 +2291,10 @@ func (s *GetUserExecutionTemplateResponse) SetBody(v *GetUserExecutionTemplateRe
 }
 
 type GetUserTemplateRequest struct {
-	AliUid          *string `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
-	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// This parameter is required.
+	AliUid   *string `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// This parameter is required.
 	TemplateName    *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
 	TemplateVersion *string `json:"TemplateVersion,omitempty" xml:"TemplateVersion,omitempty"`
 }
@@ -2405,9 +2434,9 @@ func (s *GetUserTemplateResponseBodyTemplate) SetUpdatedDate(v string) *GetUserT
 }
 
 type GetUserTemplateResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetUserTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetUserTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetUserTemplateResponse) String() string {
@@ -2563,9 +2592,9 @@ func (s *ListActionsResponseBodyActions) SetUpdateDate(v string) *ListActionsRes
 }
 
 type ListActionsResponse struct {
-	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListActionsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListActionsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListActionsResponse) String() string {
@@ -2644,9 +2673,9 @@ func (s *ListDefaultQuotaResponseBodyQuotas) SetTotalTemplate(v int32) *ListDefa
 }
 
 type ListDefaultQuotaResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListDefaultQuotaResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListDefaultQuotaResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListDefaultQuotaResponse) String() string {
@@ -2778,9 +2807,9 @@ func (s *ListFailureMsgsResponseBodyFailureMsgs) SetTaskExecutionId(v string) *L
 }
 
 type ListFailureMsgsResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListFailureMsgsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListFailureMsgsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListFailureMsgsResponse) String() string {
@@ -2807,13 +2836,15 @@ func (s *ListFailureMsgsResponse) SetBody(v *ListFailureMsgsResponseBody) *ListF
 }
 
 type ListOOSLogsRequest struct {
+	// This parameter is required.
 	EndTime            *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	ExecutionId        *string `json:"ExecutionId,omitempty" xml:"ExecutionId,omitempty"`
 	MaxResults         *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	NextToken          *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	RegionId           *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	RequestFingerprint *string `json:"RequestFingerprint,omitempty" xml:"RequestFingerprint,omitempty"`
-	StartTime          *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// This parameter is required.
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s ListOOSLogsRequest) String() string {
@@ -2895,9 +2926,9 @@ func (s *ListOOSLogsResponseBody) SetRequestId(v string) *ListOOSLogsResponseBod
 }
 
 type ListOOSLogsResponse struct {
-	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListOOSLogsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListOOSLogsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListOOSLogsResponse) String() string {
@@ -3107,9 +3138,9 @@ func (s *ListPublicParametersResponseBodyParameters) SetUpdatedDate(v string) *L
 }
 
 type ListPublicParametersResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListPublicParametersResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListPublicParametersResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListPublicParametersResponse) String() string {
@@ -3289,9 +3320,9 @@ func (s *ListPublicPatchBaselinesResponseBodyPatchBaselines) SetUpdatedDate(v st
 }
 
 type ListPublicPatchBaselinesResponse struct {
-	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListPublicPatchBaselinesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListPublicPatchBaselinesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListPublicPatchBaselinesResponse) String() string {
@@ -3471,9 +3502,9 @@ func (s *ListPublicTemplateRegistrationsResponseBodyRegistrations) SetUpdatedDat
 }
 
 type ListPublicTemplateRegistrationsResponse struct {
-	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListPublicTemplateRegistrationsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListPublicTemplateRegistrationsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListPublicTemplateRegistrationsResponse) String() string {
@@ -3503,6 +3534,7 @@ type ListPublicTemplatesRequest struct {
 	CreatedBy         *string `json:"CreatedBy,omitempty" xml:"CreatedBy,omitempty"`
 	CreatedDateAfter  *string `json:"CreatedDateAfter,omitempty" xml:"CreatedDateAfter,omitempty"`
 	CreatedDateBefore *string `json:"CreatedDateBefore,omitempty" xml:"CreatedDateBefore,omitempty"`
+	IsExample         *bool   `json:"IsExample,omitempty" xml:"IsExample,omitempty"`
 	MaxResults        *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	NextToken         *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	Popularity        *int32  `json:"Popularity,omitempty" xml:"Popularity,omitempty"`
@@ -3534,6 +3566,11 @@ func (s *ListPublicTemplatesRequest) SetCreatedDateAfter(v string) *ListPublicTe
 
 func (s *ListPublicTemplatesRequest) SetCreatedDateBefore(v string) *ListPublicTemplatesRequest {
 	s.CreatedDateBefore = &v
+	return s
+}
+
+func (s *ListPublicTemplatesRequest) SetIsExample(v bool) *ListPublicTemplatesRequest {
+	s.IsExample = &v
 	return s
 }
 
@@ -3707,9 +3744,9 @@ func (s *ListPublicTemplatesResponseBodyTemplates) SetUpdatedDate(v string) *Lis
 }
 
 type ListPublicTemplatesResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListPublicTemplatesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListPublicTemplatesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListPublicTemplatesResponse) String() string {
@@ -3736,7 +3773,9 @@ func (s *ListPublicTemplatesResponse) SetBody(v *ListPublicTemplatesResponseBody
 }
 
 type ListUserExecutionLogsRequest struct {
-	AliUid          *string `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
+	// This parameter is required.
+	AliUid *string `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
+	// This parameter is required.
 	ExecutionId     *string `json:"ExecutionId,omitempty" xml:"ExecutionId,omitempty"`
 	LogType         *string `json:"LogType,omitempty" xml:"LogType,omitempty"`
 	MaxResults      *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
@@ -3859,9 +3898,9 @@ func (s *ListUserExecutionLogsResponseBodyExecutionLogs) SetTimestamp(v string) 
 }
 
 type ListUserExecutionLogsResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListUserExecutionLogsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListUserExecutionLogsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListUserExecutionLogsResponse) String() string {
@@ -3888,6 +3927,7 @@ func (s *ListUserExecutionLogsResponse) SetBody(v *ListUserExecutionLogsResponse
 }
 
 type ListUserExecutionsRequest struct {
+	// This parameter is required.
 	AliUid                *string `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
 	EndDateAfter          *string `json:"EndDateAfter,omitempty" xml:"EndDateAfter,omitempty"`
 	EndDateBefore         *string `json:"EndDateBefore,omitempty" xml:"EndDateBefore,omitempty"`
@@ -4208,9 +4248,9 @@ func (s *ListUserExecutionsResponseBodyExecutionsCurrentTasks) SetTaskName(v str
 }
 
 type ListUserExecutionsResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListUserExecutionsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListUserExecutionsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListUserExecutionsResponse) String() string {
@@ -4237,7 +4277,9 @@ func (s *ListUserExecutionsResponse) SetBody(v *ListUserExecutionsResponseBody) 
 }
 
 type ListUserInstancePatchStatesRequest struct {
-	AliUid      *string `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
+	// This parameter is required.
+	AliUid *string `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
+	// This parameter is required.
 	InstanceIds *string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
 	MaxResults  *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	NextToken   *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
@@ -4402,9 +4444,9 @@ func (s *ListUserInstancePatchStatesResponseBodyInstancePatchStates) SetPatchGro
 }
 
 type ListUserInstancePatchStatesResponse struct {
-	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListUserInstancePatchStatesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListUserInstancePatchStatesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListUserInstancePatchStatesResponse) String() string {
@@ -4431,7 +4473,9 @@ func (s *ListUserInstancePatchStatesResponse) SetBody(v *ListUserInstancePatchSt
 }
 
 type ListUserInstancePatchesRequest struct {
-	AliUid     *string `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
+	// This parameter is required.
+	AliUid *string `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
+	// This parameter is required.
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	MaxResults *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	NextToken  *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
@@ -4554,9 +4598,9 @@ func (s *ListUserInstancePatchesResponseBodyPatches) SetTitle(v string) *ListUse
 }
 
 type ListUserInstancePatchesResponse struct {
-	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListUserInstancePatchesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListUserInstancePatchesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListUserInstancePatchesResponse) String() string {
@@ -4583,13 +4627,16 @@ func (s *ListUserInstancePatchesResponse) SetBody(v *ListUserInstancePatchesResp
 }
 
 type ListUserInventoryEntriesRequest struct {
-	AliUid     *string                                  `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
-	Filter     []*ListUserInventoryEntriesRequestFilter `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Repeated"`
-	InstanceId *string                                  `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	MaxResults *int32                                   `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken  *string                                  `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	RegionId   *string                                  `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	TypeName   *string                                  `json:"TypeName,omitempty" xml:"TypeName,omitempty"`
+	// This parameter is required.
+	AliUid *string                                  `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
+	Filter []*ListUserInventoryEntriesRequestFilter `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Repeated"`
+	// This parameter is required.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	MaxResults *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken  *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// This parameter is required.
+	TypeName *string `json:"TypeName,omitempty" xml:"TypeName,omitempty"`
 }
 
 func (s ListUserInventoryEntriesRequest) String() string {
@@ -4724,9 +4771,9 @@ func (s *ListUserInventoryEntriesResponseBody) SetTypeName(v string) *ListUserIn
 }
 
 type ListUserInventoryEntriesResponse struct {
-	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListUserInventoryEntriesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListUserInventoryEntriesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListUserInventoryEntriesResponse) String() string {
@@ -4753,6 +4800,7 @@ func (s *ListUserInventoryEntriesResponse) SetBody(v *ListUserInventoryEntriesRe
 }
 
 type ListUserTaskExecutionsRequest struct {
+	// This parameter is required.
 	AliUid                    *string `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
 	EndDateAfter              *string `json:"EndDateAfter,omitempty" xml:"EndDateAfter,omitempty"`
 	EndDateBefore             *string `json:"EndDateBefore,omitempty" xml:"EndDateBefore,omitempty"`
@@ -5026,9 +5074,9 @@ func (s *ListUserTaskExecutionsResponseBodyTaskExecutions) SetUpdateDate(v strin
 }
 
 type ListUserTaskExecutionsResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListUserTaskExecutionsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListUserTaskExecutionsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListUserTaskExecutionsResponse) String() string {
@@ -5055,6 +5103,7 @@ func (s *ListUserTaskExecutionsResponse) SetBody(v *ListUserTaskExecutionsRespon
 }
 
 type ListUserTemplatesRequest struct {
+	// This parameter is required.
 	AliUid            *string `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
 	Category          *string `json:"Category,omitempty" xml:"Category,omitempty"`
 	CreatedBy         *string `json:"CreatedBy,omitempty" xml:"CreatedBy,omitempty"`
@@ -5280,9 +5329,9 @@ func (s *ListUserTemplatesResponseBodyTemplates) SetUpdatedDate(v string) *ListU
 }
 
 type ListUserTemplatesResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListUserTemplatesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListUserTemplatesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListUserTemplatesResponse) String() string {
@@ -5309,7 +5358,9 @@ func (s *ListUserTemplatesResponse) SetBody(v *ListUserTemplatesResponseBody) *L
 }
 
 type ResetTimerTriggerExecutionRequest struct {
-	AliUid      *string `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
+	// This parameter is required.
+	AliUid *string `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
+	// This parameter is required.
 	ExecutionId *string `json:"ExecutionId,omitempty" xml:"ExecutionId,omitempty"`
 	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
@@ -5355,9 +5406,9 @@ func (s *ResetTimerTriggerExecutionResponseBody) SetRequestId(v string) *ResetTi
 }
 
 type ResetTimerTriggerExecutionResponse struct {
-	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ResetTimerTriggerExecutionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ResetTimerTriggerExecutionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ResetTimerTriggerExecutionResponse) String() string {
@@ -5384,7 +5435,9 @@ func (s *ResetTimerTriggerExecutionResponse) SetBody(v *ResetTimerTriggerExecuti
 }
 
 type ResetUserExecutionRequest struct {
-	AliUid      *string `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
+	// This parameter is required.
+	AliUid *string `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
+	// This parameter is required.
 	ExecutionId *string `json:"ExecutionId,omitempty" xml:"ExecutionId,omitempty"`
 	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	Status      *string `json:"Status,omitempty" xml:"Status,omitempty"`
@@ -5436,9 +5489,9 @@ func (s *ResetUserExecutionResponseBody) SetRequestId(v string) *ResetUserExecut
 }
 
 type ResetUserExecutionResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ResetUserExecutionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ResetUserExecutionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ResetUserExecutionResponse) String() string {
@@ -5467,9 +5520,11 @@ func (s *ResetUserExecutionResponse) SetBody(v *ResetUserExecutionResponseBody) 
 type SetFlowControlRequest struct {
 	Api     *string `json:"Api,omitempty" xml:"Api,omitempty"`
 	Service *string `json:"Service,omitempty" xml:"Service,omitempty"`
-	Type    *int32  `json:"Type,omitempty" xml:"Type,omitempty"`
-	Uid     *string `json:"Uid,omitempty" xml:"Uid,omitempty"`
-	Value   *int32  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// This parameter is required.
+	Type *int32  `json:"Type,omitempty" xml:"Type,omitempty"`
+	Uid  *string `json:"Uid,omitempty" xml:"Uid,omitempty"`
+	// This parameter is required.
+	Value *int32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s SetFlowControlRequest) String() string {
@@ -5523,9 +5578,9 @@ func (s *SetFlowControlResponseBody) SetRequestId(v string) *SetFlowControlRespo
 }
 
 type SetFlowControlResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SetFlowControlResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SetFlowControlResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SetFlowControlResponse) String() string {
@@ -5552,10 +5607,13 @@ func (s *SetFlowControlResponse) SetBody(v *SetFlowControlResponseBody) *SetFlow
 }
 
 type SetQuotaRequest struct {
+	// This parameter is required.
 	QuotaName *string `json:"QuotaName,omitempty" xml:"QuotaName,omitempty"`
 	RegionId  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Uid       *string `json:"Uid,omitempty" xml:"Uid,omitempty"`
-	Value     *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	// This parameter is required.
+	Uid *string `json:"Uid,omitempty" xml:"Uid,omitempty"`
+	// This parameter is required.
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s SetQuotaRequest) String() string {
@@ -5616,9 +5674,9 @@ func (s *SetQuotaResponseBody) SetUid(v string) *SetQuotaResponseBody {
 }
 
 type SetQuotaResponse struct {
-	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SetQuotaResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SetQuotaResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SetQuotaResponse) String() string {
@@ -5645,7 +5703,9 @@ func (s *SetQuotaResponse) SetBody(v *SetQuotaResponseBody) *SetQuotaResponse {
 }
 
 type TerminateUserExecutionRequest struct {
-	AliUid      *string `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
+	// This parameter is required.
+	AliUid *string `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
+	// This parameter is required.
 	ExecutionId *string `json:"ExecutionId,omitempty" xml:"ExecutionId,omitempty"`
 	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
@@ -5691,9 +5751,9 @@ func (s *TerminateUserExecutionResponseBody) SetRequestId(v string) *TerminateUs
 }
 
 type TerminateUserExecutionResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *TerminateUserExecutionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *TerminateUserExecutionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s TerminateUserExecutionResponse) String() string {
@@ -5720,8 +5780,11 @@ func (s *TerminateUserExecutionResponse) SetBody(v *TerminateUserExecutionRespon
 }
 
 type UpdateActionRequest struct {
+	// This parameter is required.
 	ActionName *string `json:"ActionName,omitempty" xml:"ActionName,omitempty"`
+	// This parameter is required.
 	ActionType *string `json:"ActionType,omitempty" xml:"ActionType,omitempty"`
+	// This parameter is required.
 	Content    *string `json:"Content,omitempty" xml:"Content,omitempty"`
 	Popularity *int32  `json:"Popularity,omitempty" xml:"Popularity,omitempty"`
 	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
@@ -5820,9 +5883,9 @@ func (s *UpdateActionResponseBody) SetTemplateVersion(v string) *UpdateActionRes
 }
 
 type UpdateActionResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateActionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateActionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateActionResponse) String() string {
@@ -5850,9 +5913,11 @@ func (s *UpdateActionResponse) SetBody(v *UpdateActionResponseBody) *UpdateActio
 
 type UpdatePublicParameterRequest struct {
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Value       *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	// This parameter is required.
+	Name     *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// This parameter is required.
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s UpdatePublicParameterRequest) String() string {
@@ -5990,9 +6055,9 @@ func (s *UpdatePublicParameterResponseBodyParameter) SetUpdatedDate(v string) *U
 }
 
 type UpdatePublicParameterResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdatePublicParameterResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdatePublicParameterResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdatePublicParameterResponse) String() string {
@@ -6022,8 +6087,9 @@ type UpdatePublicPatchBaselineRequest struct {
 	ApprovalRules *string `json:"ApprovalRules,omitempty" xml:"ApprovalRules,omitempty"`
 	ClientToken   *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	Description   *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name          *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// This parameter is required.
+	Name     *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s UpdatePublicPatchBaselineRequest) String() string {
@@ -6154,9 +6220,9 @@ func (s *UpdatePublicPatchBaselineResponseBodyPatchBaseline) SetUpdatedDate(v st
 }
 
 type UpdatePublicPatchBaselineResponse struct {
-	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdatePublicPatchBaselineResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdatePublicPatchBaselineResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdatePublicPatchBaselineResponse) String() string {
@@ -6183,11 +6249,13 @@ func (s *UpdatePublicPatchBaselineResponse) SetBody(v *UpdatePublicPatchBaseline
 }
 
 type UpdatePublicTemplateRequest struct {
-	Category     *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	Content      *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	Popularity   *int32  `json:"Popularity,omitempty" xml:"Popularity,omitempty"`
-	Publisher    *string `json:"Publisher,omitempty" xml:"Publisher,omitempty"`
-	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	// This parameter is required.
+	Content    *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	Popularity *int32  `json:"Popularity,omitempty" xml:"Popularity,omitempty"`
+	Publisher  *string `json:"Publisher,omitempty" xml:"Publisher,omitempty"`
+	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// This parameter is required.
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
 }
 
@@ -6342,9 +6410,9 @@ func (s *UpdatePublicTemplateResponseBodyTemplate) SetUpdatedDate(v string) *Upd
 }
 
 type UpdatePublicTemplateResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdatePublicTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdatePublicTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdatePublicTemplateResponse) String() string {
@@ -6371,10 +6439,12 @@ func (s *UpdatePublicTemplateResponse) SetBody(v *UpdatePublicTemplateResponseBo
 }
 
 type ValidatePublicTemplateContentRequest struct {
+	// This parameter is required.
 	Content      *string `json:"Content,omitempty" xml:"Content,omitempty"`
 	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
-	Type         *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// This parameter is required.
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s ValidatePublicTemplateContentRequest) String() string {
@@ -6494,9 +6564,9 @@ func (s *ValidatePublicTemplateContentResponseBodyTasks) SetType(v string) *Vali
 }
 
 type ValidatePublicTemplateContentResponse struct {
-	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ValidatePublicTemplateContentResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ValidatePublicTemplateContentResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ValidatePublicTemplateContentResponse) String() string {
@@ -6569,6 +6639,11 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
+// @param request - AuditPublicTemplateRegistrationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AuditPublicTemplateRegistrationResponse
 func (client *Client) AuditPublicTemplateRegistrationWithOptions(request *AuditPublicTemplateRegistrationRequest, runtime *util.RuntimeOptions) (_result *AuditPublicTemplateRegistrationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6614,6 +6689,9 @@ func (client *Client) AuditPublicTemplateRegistrationWithOptions(request *AuditP
 	return _result, _err
 }
 
+// @param request - AuditPublicTemplateRegistrationRequest
+//
+// @return AuditPublicTemplateRegistrationResponse
 func (client *Client) AuditPublicTemplateRegistration(request *AuditPublicTemplateRegistrationRequest) (_result *AuditPublicTemplateRegistrationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &AuditPublicTemplateRegistrationResponse{}
@@ -6625,6 +6703,11 @@ func (client *Client) AuditPublicTemplateRegistration(request *AuditPublicTempla
 	return _result, _err
 }
 
+// @param request - CreateActionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateActionResponse
 func (client *Client) CreateActionWithOptions(request *CreateActionRequest, runtime *util.RuntimeOptions) (_result *CreateActionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6674,6 +6757,9 @@ func (client *Client) CreateActionWithOptions(request *CreateActionRequest, runt
 	return _result, _err
 }
 
+// @param request - CreateActionRequest
+//
+// @return CreateActionResponse
 func (client *Client) CreateAction(request *CreateActionRequest) (_result *CreateActionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateActionResponse{}
@@ -6685,6 +6771,15 @@ func (client *Client) CreateAction(request *CreateActionRequest) (_result *Creat
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建一个公共参数。
+//
+// @param request - CreatePublicParameterRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreatePublicParameterResponse
 func (client *Client) CreatePublicParameterWithOptions(request *CreatePublicParameterRequest, runtime *util.RuntimeOptions) (_result *CreatePublicParameterResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6742,6 +6837,13 @@ func (client *Client) CreatePublicParameterWithOptions(request *CreatePublicPara
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建一个公共参数。
+//
+// @param request - CreatePublicParameterRequest
+//
+// @return CreatePublicParameterResponse
 func (client *Client) CreatePublicParameter(request *CreatePublicParameterRequest) (_result *CreatePublicParameterResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreatePublicParameterResponse{}
@@ -6753,6 +6855,11 @@ func (client *Client) CreatePublicParameter(request *CreatePublicParameterReques
 	return _result, _err
 }
 
+// @param request - CreatePublicPatchBaselineRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreatePublicPatchBaselineResponse
 func (client *Client) CreatePublicPatchBaselineWithOptions(request *CreatePublicPatchBaselineRequest, runtime *util.RuntimeOptions) (_result *CreatePublicPatchBaselineResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6806,6 +6913,9 @@ func (client *Client) CreatePublicPatchBaselineWithOptions(request *CreatePublic
 	return _result, _err
 }
 
+// @param request - CreatePublicPatchBaselineRequest
+//
+// @return CreatePublicPatchBaselineResponse
 func (client *Client) CreatePublicPatchBaseline(request *CreatePublicPatchBaselineRequest) (_result *CreatePublicPatchBaselineResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreatePublicPatchBaselineResponse{}
@@ -6817,6 +6927,11 @@ func (client *Client) CreatePublicPatchBaseline(request *CreatePublicPatchBaseli
 	return _result, _err
 }
 
+// @param request - CreatePublicTemplateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreatePublicTemplateResponse
 func (client *Client) CreatePublicTemplateWithOptions(request *CreatePublicTemplateRequest, runtime *util.RuntimeOptions) (_result *CreatePublicTemplateResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6829,6 +6944,10 @@ func (client *Client) CreatePublicTemplateWithOptions(request *CreatePublicTempl
 
 	if !tea.BoolValue(util.IsUnset(request.Content)) {
 		query["Content"] = request.Content
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IsExample)) {
+		query["IsExample"] = request.IsExample
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Popularity)) {
@@ -6870,6 +6989,9 @@ func (client *Client) CreatePublicTemplateWithOptions(request *CreatePublicTempl
 	return _result, _err
 }
 
+// @param request - CreatePublicTemplateRequest
+//
+// @return CreatePublicTemplateResponse
 func (client *Client) CreatePublicTemplate(request *CreatePublicTemplateRequest) (_result *CreatePublicTemplateResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreatePublicTemplateResponse{}
@@ -6881,6 +7003,11 @@ func (client *Client) CreatePublicTemplate(request *CreatePublicTemplateRequest)
 	return _result, _err
 }
 
+// @param request - DeleteFailureMsgRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteFailureMsgResponse
 func (client *Client) DeleteFailureMsgWithOptions(request *DeleteFailureMsgRequest, runtime *util.RuntimeOptions) (_result *DeleteFailureMsgResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6918,6 +7045,9 @@ func (client *Client) DeleteFailureMsgWithOptions(request *DeleteFailureMsgReque
 	return _result, _err
 }
 
+// @param request - DeleteFailureMsgRequest
+//
+// @return DeleteFailureMsgResponse
 func (client *Client) DeleteFailureMsg(request *DeleteFailureMsgRequest) (_result *DeleteFailureMsgResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteFailureMsgResponse{}
@@ -6929,6 +7059,15 @@ func (client *Client) DeleteFailureMsg(request *DeleteFailureMsgRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除公共参数。
+//
+// @param request - DeletePublicParameterRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeletePublicParameterResponse
 func (client *Client) DeletePublicParameterWithOptions(request *DeletePublicParameterRequest, runtime *util.RuntimeOptions) (_result *DeletePublicParameterResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6966,6 +7105,13 @@ func (client *Client) DeletePublicParameterWithOptions(request *DeletePublicPara
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除公共参数。
+//
+// @param request - DeletePublicParameterRequest
+//
+// @return DeletePublicParameterResponse
 func (client *Client) DeletePublicParameter(request *DeletePublicParameterRequest) (_result *DeletePublicParameterResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeletePublicParameterResponse{}
@@ -6977,6 +7123,11 @@ func (client *Client) DeletePublicParameter(request *DeletePublicParameterReques
 	return _result, _err
 }
 
+// @param request - DeletePublicPatchBaselineRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeletePublicPatchBaselineResponse
 func (client *Client) DeletePublicPatchBaselineWithOptions(request *DeletePublicPatchBaselineRequest, runtime *util.RuntimeOptions) (_result *DeletePublicPatchBaselineResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7010,6 +7161,9 @@ func (client *Client) DeletePublicPatchBaselineWithOptions(request *DeletePublic
 	return _result, _err
 }
 
+// @param request - DeletePublicPatchBaselineRequest
+//
+// @return DeletePublicPatchBaselineResponse
 func (client *Client) DeletePublicPatchBaseline(request *DeletePublicPatchBaselineRequest) (_result *DeletePublicPatchBaselineResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeletePublicPatchBaselineResponse{}
@@ -7021,6 +7175,11 @@ func (client *Client) DeletePublicPatchBaseline(request *DeletePublicPatchBaseli
 	return _result, _err
 }
 
+// @param request - DeletePublicTemplateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeletePublicTemplateResponse
 func (client *Client) DeletePublicTemplateWithOptions(request *DeletePublicTemplateRequest, runtime *util.RuntimeOptions) (_result *DeletePublicTemplateResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7058,6 +7217,9 @@ func (client *Client) DeletePublicTemplateWithOptions(request *DeletePublicTempl
 	return _result, _err
 }
 
+// @param request - DeletePublicTemplateRequest
+//
+// @return DeletePublicTemplateResponse
 func (client *Client) DeletePublicTemplate(request *DeletePublicTemplateRequest) (_result *DeletePublicTemplateResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeletePublicTemplateResponse{}
@@ -7069,6 +7231,11 @@ func (client *Client) DeletePublicTemplate(request *DeletePublicTemplateRequest)
 	return _result, _err
 }
 
+// @param request - DoCheckResourceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DoCheckResourceResponse
 func (client *Client) DoCheckResourceWithOptions(request *DoCheckResourceRequest, runtime *util.RuntimeOptions) (_result *DoCheckResourceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7154,6 +7321,9 @@ func (client *Client) DoCheckResourceWithOptions(request *DoCheckResourceRequest
 	return _result, _err
 }
 
+// @param request - DoCheckResourceRequest
+//
+// @return DoCheckResourceResponse
 func (client *Client) DoCheckResource(request *DoCheckResourceRequest) (_result *DoCheckResourceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DoCheckResourceResponse{}
@@ -7165,6 +7335,15 @@ func (client *Client) DoCheckResource(request *DoCheckResourceRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取action的详细信息
+//
+// @param request - GetActionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetActionResponse
 func (client *Client) GetActionWithOptions(request *GetActionRequest, runtime *util.RuntimeOptions) (_result *GetActionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7202,6 +7381,13 @@ func (client *Client) GetActionWithOptions(request *GetActionRequest, runtime *u
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取action的详细信息
+//
+// @param request - GetActionRequest
+//
+// @return GetActionResponse
 func (client *Client) GetAction(request *GetActionRequest) (_result *GetActionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetActionResponse{}
@@ -7213,6 +7399,11 @@ func (client *Client) GetAction(request *GetActionRequest) (_result *GetActionRe
 	return _result, _err
 }
 
+// @param request - GetFlowControlRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetFlowControlResponse
 func (client *Client) GetFlowControlWithOptions(request *GetFlowControlRequest, runtime *util.RuntimeOptions) (_result *GetFlowControlResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7258,6 +7449,9 @@ func (client *Client) GetFlowControlWithOptions(request *GetFlowControlRequest, 
 	return _result, _err
 }
 
+// @param request - GetFlowControlRequest
+//
+// @return GetFlowControlResponse
 func (client *Client) GetFlowControl(request *GetFlowControlRequest) (_result *GetFlowControlResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetFlowControlResponse{}
@@ -7269,6 +7463,15 @@ func (client *Client) GetFlowControl(request *GetFlowControlRequest) (_result *G
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取一个公共参数，包括参数值。
+//
+// @param request - GetPublicParameterRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetPublicParameterResponse
 func (client *Client) GetPublicParameterWithOptions(request *GetPublicParameterRequest, runtime *util.RuntimeOptions) (_result *GetPublicParameterResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7310,6 +7513,13 @@ func (client *Client) GetPublicParameterWithOptions(request *GetPublicParameterR
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取一个公共参数，包括参数值。
+//
+// @param request - GetPublicParameterRequest
+//
+// @return GetPublicParameterResponse
 func (client *Client) GetPublicParameter(request *GetPublicParameterRequest) (_result *GetPublicParameterResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetPublicParameterResponse{}
@@ -7321,6 +7531,11 @@ func (client *Client) GetPublicParameter(request *GetPublicParameterRequest) (_r
 	return _result, _err
 }
 
+// @param request - GetPublicPatchBaselineRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetPublicPatchBaselineResponse
 func (client *Client) GetPublicPatchBaselineWithOptions(request *GetPublicPatchBaselineRequest, runtime *util.RuntimeOptions) (_result *GetPublicPatchBaselineResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7358,6 +7573,9 @@ func (client *Client) GetPublicPatchBaselineWithOptions(request *GetPublicPatchB
 	return _result, _err
 }
 
+// @param request - GetPublicPatchBaselineRequest
+//
+// @return GetPublicPatchBaselineResponse
 func (client *Client) GetPublicPatchBaseline(request *GetPublicPatchBaselineRequest) (_result *GetPublicPatchBaselineResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetPublicPatchBaselineResponse{}
@@ -7369,6 +7587,11 @@ func (client *Client) GetPublicPatchBaseline(request *GetPublicPatchBaselineRequ
 	return _result, _err
 }
 
+// @param request - GetPublicTemplateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetPublicTemplateResponse
 func (client *Client) GetPublicTemplateWithOptions(request *GetPublicTemplateRequest, runtime *util.RuntimeOptions) (_result *GetPublicTemplateResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7410,6 +7633,9 @@ func (client *Client) GetPublicTemplateWithOptions(request *GetPublicTemplateReq
 	return _result, _err
 }
 
+// @param request - GetPublicTemplateRequest
+//
+// @return GetPublicTemplateResponse
 func (client *Client) GetPublicTemplate(request *GetPublicTemplateRequest) (_result *GetPublicTemplateResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetPublicTemplateResponse{}
@@ -7421,6 +7647,11 @@ func (client *Client) GetPublicTemplate(request *GetPublicTemplateRequest) (_res
 	return _result, _err
 }
 
+// @param request - GetQuotaRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetQuotaResponse
 func (client *Client) GetQuotaWithOptions(request *GetQuotaRequest, runtime *util.RuntimeOptions) (_result *GetQuotaResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7462,6 +7693,9 @@ func (client *Client) GetQuotaWithOptions(request *GetQuotaRequest, runtime *uti
 	return _result, _err
 }
 
+// @param request - GetQuotaRequest
+//
+// @return GetQuotaResponse
 func (client *Client) GetQuota(request *GetQuotaRequest) (_result *GetQuotaResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetQuotaResponse{}
@@ -7473,6 +7707,11 @@ func (client *Client) GetQuota(request *GetQuotaRequest) (_result *GetQuotaRespo
 	return _result, _err
 }
 
+// @param request - GetUserExecutionTemplateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetUserExecutionTemplateResponse
 func (client *Client) GetUserExecutionTemplateWithOptions(request *GetUserExecutionTemplateRequest, runtime *util.RuntimeOptions) (_result *GetUserExecutionTemplateResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7514,6 +7753,9 @@ func (client *Client) GetUserExecutionTemplateWithOptions(request *GetUserExecut
 	return _result, _err
 }
 
+// @param request - GetUserExecutionTemplateRequest
+//
+// @return GetUserExecutionTemplateResponse
 func (client *Client) GetUserExecutionTemplate(request *GetUserExecutionTemplateRequest) (_result *GetUserExecutionTemplateResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetUserExecutionTemplateResponse{}
@@ -7525,6 +7767,11 @@ func (client *Client) GetUserExecutionTemplate(request *GetUserExecutionTemplate
 	return _result, _err
 }
 
+// @param request - GetUserTemplateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetUserTemplateResponse
 func (client *Client) GetUserTemplateWithOptions(request *GetUserTemplateRequest, runtime *util.RuntimeOptions) (_result *GetUserTemplateResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7570,6 +7817,9 @@ func (client *Client) GetUserTemplateWithOptions(request *GetUserTemplateRequest
 	return _result, _err
 }
 
+// @param request - GetUserTemplateRequest
+//
+// @return GetUserTemplateResponse
 func (client *Client) GetUserTemplate(request *GetUserTemplateRequest) (_result *GetUserTemplateResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetUserTemplateResponse{}
@@ -7581,6 +7831,11 @@ func (client *Client) GetUserTemplate(request *GetUserTemplateRequest) (_result 
 	return _result, _err
 }
 
+// @param request - ListActionsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListActionsResponse
 func (client *Client) ListActionsWithOptions(request *ListActionsRequest, runtime *util.RuntimeOptions) (_result *ListActionsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7626,6 +7881,9 @@ func (client *Client) ListActionsWithOptions(request *ListActionsRequest, runtim
 	return _result, _err
 }
 
+// @param request - ListActionsRequest
+//
+// @return ListActionsResponse
 func (client *Client) ListActions(request *ListActionsRequest) (_result *ListActionsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListActionsResponse{}
@@ -7637,6 +7895,11 @@ func (client *Client) ListActions(request *ListActionsRequest) (_result *ListAct
 	return _result, _err
 }
 
+// @param request - ListDefaultQuotaRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListDefaultQuotaResponse
 func (client *Client) ListDefaultQuotaWithOptions(runtime *util.RuntimeOptions) (_result *ListDefaultQuotaResponse, _err error) {
 	req := &openapi.OpenApiRequest{}
 	params := &openapi.Params{
@@ -7659,6 +7922,7 @@ func (client *Client) ListDefaultQuotaWithOptions(runtime *util.RuntimeOptions) 
 	return _result, _err
 }
 
+// @return ListDefaultQuotaResponse
 func (client *Client) ListDefaultQuota() (_result *ListDefaultQuotaResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListDefaultQuotaResponse{}
@@ -7670,6 +7934,11 @@ func (client *Client) ListDefaultQuota() (_result *ListDefaultQuotaResponse, _er
 	return _result, _err
 }
 
+// @param request - ListFailureMsgsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListFailureMsgsResponse
 func (client *Client) ListFailureMsgsWithOptions(request *ListFailureMsgsRequest, runtime *util.RuntimeOptions) (_result *ListFailureMsgsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7711,6 +7980,9 @@ func (client *Client) ListFailureMsgsWithOptions(request *ListFailureMsgsRequest
 	return _result, _err
 }
 
+// @param request - ListFailureMsgsRequest
+//
+// @return ListFailureMsgsResponse
 func (client *Client) ListFailureMsgs(request *ListFailureMsgsRequest) (_result *ListFailureMsgsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListFailureMsgsResponse{}
@@ -7722,6 +7994,11 @@ func (client *Client) ListFailureMsgs(request *ListFailureMsgsRequest) (_result 
 	return _result, _err
 }
 
+// @param request - ListOOSLogsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListOOSLogsResponse
 func (client *Client) ListOOSLogsWithOptions(request *ListOOSLogsRequest, runtime *util.RuntimeOptions) (_result *ListOOSLogsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7779,6 +8056,9 @@ func (client *Client) ListOOSLogsWithOptions(request *ListOOSLogsRequest, runtim
 	return _result, _err
 }
 
+// @param request - ListOOSLogsRequest
+//
+// @return ListOOSLogsResponse
 func (client *Client) ListOOSLogs(request *ListOOSLogsRequest) (_result *ListOOSLogsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListOOSLogsResponse{}
@@ -7790,6 +8070,15 @@ func (client *Client) ListOOSLogs(request *ListOOSLogsRequest) (_result *ListOOS
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询公共参数。支持多种查询
+//
+// @param request - ListPublicParametersRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListPublicParametersResponse
 func (client *Client) ListPublicParametersWithOptions(request *ListPublicParametersRequest, runtime *util.RuntimeOptions) (_result *ListPublicParametersResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7855,6 +8144,13 @@ func (client *Client) ListPublicParametersWithOptions(request *ListPublicParamet
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询公共参数。支持多种查询
+//
+// @param request - ListPublicParametersRequest
+//
+// @return ListPublicParametersResponse
 func (client *Client) ListPublicParameters(request *ListPublicParametersRequest) (_result *ListPublicParametersResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListPublicParametersResponse{}
@@ -7866,6 +8162,11 @@ func (client *Client) ListPublicParameters(request *ListPublicParametersRequest)
 	return _result, _err
 }
 
+// @param request - ListPublicPatchBaselinesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListPublicPatchBaselinesResponse
 func (client *Client) ListPublicPatchBaselinesWithOptions(request *ListPublicPatchBaselinesRequest, runtime *util.RuntimeOptions) (_result *ListPublicPatchBaselinesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7919,6 +8220,9 @@ func (client *Client) ListPublicPatchBaselinesWithOptions(request *ListPublicPat
 	return _result, _err
 }
 
+// @param request - ListPublicPatchBaselinesRequest
+//
+// @return ListPublicPatchBaselinesResponse
 func (client *Client) ListPublicPatchBaselines(request *ListPublicPatchBaselinesRequest) (_result *ListPublicPatchBaselinesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListPublicPatchBaselinesResponse{}
@@ -7930,6 +8234,11 @@ func (client *Client) ListPublicPatchBaselines(request *ListPublicPatchBaselines
 	return _result, _err
 }
 
+// @param request - ListPublicTemplateRegistrationsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListPublicTemplateRegistrationsResponse
 func (client *Client) ListPublicTemplateRegistrationsWithOptions(request *ListPublicTemplateRegistrationsRequest, runtime *util.RuntimeOptions) (_result *ListPublicTemplateRegistrationsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7983,6 +8292,9 @@ func (client *Client) ListPublicTemplateRegistrationsWithOptions(request *ListPu
 	return _result, _err
 }
 
+// @param request - ListPublicTemplateRegistrationsRequest
+//
+// @return ListPublicTemplateRegistrationsResponse
 func (client *Client) ListPublicTemplateRegistrations(request *ListPublicTemplateRegistrationsRequest) (_result *ListPublicTemplateRegistrationsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListPublicTemplateRegistrationsResponse{}
@@ -7994,6 +8306,11 @@ func (client *Client) ListPublicTemplateRegistrations(request *ListPublicTemplat
 	return _result, _err
 }
 
+// @param request - ListPublicTemplatesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListPublicTemplatesResponse
 func (client *Client) ListPublicTemplatesWithOptions(request *ListPublicTemplatesRequest, runtime *util.RuntimeOptions) (_result *ListPublicTemplatesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8010,6 +8327,10 @@ func (client *Client) ListPublicTemplatesWithOptions(request *ListPublicTemplate
 
 	if !tea.BoolValue(util.IsUnset(request.CreatedDateBefore)) {
 		query["CreatedDateBefore"] = request.CreatedDateBefore
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IsExample)) {
+		query["IsExample"] = request.IsExample
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
@@ -8071,6 +8392,9 @@ func (client *Client) ListPublicTemplatesWithOptions(request *ListPublicTemplate
 	return _result, _err
 }
 
+// @param request - ListPublicTemplatesRequest
+//
+// @return ListPublicTemplatesResponse
 func (client *Client) ListPublicTemplates(request *ListPublicTemplatesRequest) (_result *ListPublicTemplatesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListPublicTemplatesResponse{}
@@ -8082,6 +8406,11 @@ func (client *Client) ListPublicTemplates(request *ListPublicTemplatesRequest) (
 	return _result, _err
 }
 
+// @param request - ListUserExecutionLogsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListUserExecutionLogsResponse
 func (client *Client) ListUserExecutionLogsWithOptions(request *ListUserExecutionLogsRequest, runtime *util.RuntimeOptions) (_result *ListUserExecutionLogsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8139,6 +8468,9 @@ func (client *Client) ListUserExecutionLogsWithOptions(request *ListUserExecutio
 	return _result, _err
 }
 
+// @param request - ListUserExecutionLogsRequest
+//
+// @return ListUserExecutionLogsResponse
 func (client *Client) ListUserExecutionLogs(request *ListUserExecutionLogsRequest) (_result *ListUserExecutionLogsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListUserExecutionLogsResponse{}
@@ -8150,6 +8482,11 @@ func (client *Client) ListUserExecutionLogs(request *ListUserExecutionLogsReques
 	return _result, _err
 }
 
+// @param request - ListUserExecutionsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListUserExecutionsResponse
 func (client *Client) ListUserExecutionsWithOptions(request *ListUserExecutionsRequest, runtime *util.RuntimeOptions) (_result *ListUserExecutionsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8251,6 +8588,9 @@ func (client *Client) ListUserExecutionsWithOptions(request *ListUserExecutionsR
 	return _result, _err
 }
 
+// @param request - ListUserExecutionsRequest
+//
+// @return ListUserExecutionsResponse
 func (client *Client) ListUserExecutions(request *ListUserExecutionsRequest) (_result *ListUserExecutionsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListUserExecutionsResponse{}
@@ -8262,6 +8602,11 @@ func (client *Client) ListUserExecutions(request *ListUserExecutionsRequest) (_r
 	return _result, _err
 }
 
+// @param request - ListUserInstancePatchStatesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListUserInstancePatchStatesResponse
 func (client *Client) ListUserInstancePatchStatesWithOptions(request *ListUserInstancePatchStatesRequest, runtime *util.RuntimeOptions) (_result *ListUserInstancePatchStatesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8311,6 +8656,9 @@ func (client *Client) ListUserInstancePatchStatesWithOptions(request *ListUserIn
 	return _result, _err
 }
 
+// @param request - ListUserInstancePatchStatesRequest
+//
+// @return ListUserInstancePatchStatesResponse
 func (client *Client) ListUserInstancePatchStates(request *ListUserInstancePatchStatesRequest) (_result *ListUserInstancePatchStatesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListUserInstancePatchStatesResponse{}
@@ -8322,6 +8670,11 @@ func (client *Client) ListUserInstancePatchStates(request *ListUserInstancePatch
 	return _result, _err
 }
 
+// @param request - ListUserInstancePatchesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListUserInstancePatchesResponse
 func (client *Client) ListUserInstancePatchesWithOptions(request *ListUserInstancePatchesRequest, runtime *util.RuntimeOptions) (_result *ListUserInstancePatchesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8371,6 +8724,9 @@ func (client *Client) ListUserInstancePatchesWithOptions(request *ListUserInstan
 	return _result, _err
 }
 
+// @param request - ListUserInstancePatchesRequest
+//
+// @return ListUserInstancePatchesResponse
 func (client *Client) ListUserInstancePatches(request *ListUserInstancePatchesRequest) (_result *ListUserInstancePatchesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListUserInstancePatchesResponse{}
@@ -8382,6 +8738,11 @@ func (client *Client) ListUserInstancePatches(request *ListUserInstancePatchesRe
 	return _result, _err
 }
 
+// @param request - ListUserInventoryEntriesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListUserInventoryEntriesResponse
 func (client *Client) ListUserInventoryEntriesWithOptions(request *ListUserInventoryEntriesRequest, runtime *util.RuntimeOptions) (_result *ListUserInventoryEntriesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8439,6 +8800,9 @@ func (client *Client) ListUserInventoryEntriesWithOptions(request *ListUserInven
 	return _result, _err
 }
 
+// @param request - ListUserInventoryEntriesRequest
+//
+// @return ListUserInventoryEntriesResponse
 func (client *Client) ListUserInventoryEntries(request *ListUserInventoryEntriesRequest) (_result *ListUserInventoryEntriesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListUserInventoryEntriesResponse{}
@@ -8450,6 +8814,11 @@ func (client *Client) ListUserInventoryEntries(request *ListUserInventoryEntries
 	return _result, _err
 }
 
+// @param request - ListUserTaskExecutionsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListUserTaskExecutionsResponse
 func (client *Client) ListUserTaskExecutionsWithOptions(request *ListUserTaskExecutionsRequest, runtime *util.RuntimeOptions) (_result *ListUserTaskExecutionsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8547,6 +8916,9 @@ func (client *Client) ListUserTaskExecutionsWithOptions(request *ListUserTaskExe
 	return _result, _err
 }
 
+// @param request - ListUserTaskExecutionsRequest
+//
+// @return ListUserTaskExecutionsResponse
 func (client *Client) ListUserTaskExecutions(request *ListUserTaskExecutionsRequest) (_result *ListUserTaskExecutionsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListUserTaskExecutionsResponse{}
@@ -8558,6 +8930,11 @@ func (client *Client) ListUserTaskExecutions(request *ListUserTaskExecutionsRequ
 	return _result, _err
 }
 
+// @param request - ListUserTemplatesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListUserTemplatesResponse
 func (client *Client) ListUserTemplatesWithOptions(request *ListUserTemplatesRequest, runtime *util.RuntimeOptions) (_result *ListUserTemplatesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8647,6 +9024,9 @@ func (client *Client) ListUserTemplatesWithOptions(request *ListUserTemplatesReq
 	return _result, _err
 }
 
+// @param request - ListUserTemplatesRequest
+//
+// @return ListUserTemplatesResponse
 func (client *Client) ListUserTemplates(request *ListUserTemplatesRequest) (_result *ListUserTemplatesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListUserTemplatesResponse{}
@@ -8658,6 +9038,11 @@ func (client *Client) ListUserTemplates(request *ListUserTemplatesRequest) (_res
 	return _result, _err
 }
 
+// @param request - ResetTimerTriggerExecutionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ResetTimerTriggerExecutionResponse
 func (client *Client) ResetTimerTriggerExecutionWithOptions(request *ResetTimerTriggerExecutionRequest, runtime *util.RuntimeOptions) (_result *ResetTimerTriggerExecutionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8699,6 +9084,9 @@ func (client *Client) ResetTimerTriggerExecutionWithOptions(request *ResetTimerT
 	return _result, _err
 }
 
+// @param request - ResetTimerTriggerExecutionRequest
+//
+// @return ResetTimerTriggerExecutionResponse
 func (client *Client) ResetTimerTriggerExecution(request *ResetTimerTriggerExecutionRequest) (_result *ResetTimerTriggerExecutionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ResetTimerTriggerExecutionResponse{}
@@ -8710,6 +9098,11 @@ func (client *Client) ResetTimerTriggerExecution(request *ResetTimerTriggerExecu
 	return _result, _err
 }
 
+// @param request - ResetUserExecutionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ResetUserExecutionResponse
 func (client *Client) ResetUserExecutionWithOptions(request *ResetUserExecutionRequest, runtime *util.RuntimeOptions) (_result *ResetUserExecutionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8755,6 +9148,9 @@ func (client *Client) ResetUserExecutionWithOptions(request *ResetUserExecutionR
 	return _result, _err
 }
 
+// @param request - ResetUserExecutionRequest
+//
+// @return ResetUserExecutionResponse
 func (client *Client) ResetUserExecution(request *ResetUserExecutionRequest) (_result *ResetUserExecutionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ResetUserExecutionResponse{}
@@ -8766,6 +9162,11 @@ func (client *Client) ResetUserExecution(request *ResetUserExecutionRequest) (_r
 	return _result, _err
 }
 
+// @param request - SetFlowControlRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SetFlowControlResponse
 func (client *Client) SetFlowControlWithOptions(request *SetFlowControlRequest, runtime *util.RuntimeOptions) (_result *SetFlowControlResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8815,6 +9216,9 @@ func (client *Client) SetFlowControlWithOptions(request *SetFlowControlRequest, 
 	return _result, _err
 }
 
+// @param request - SetFlowControlRequest
+//
+// @return SetFlowControlResponse
 func (client *Client) SetFlowControl(request *SetFlowControlRequest) (_result *SetFlowControlResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SetFlowControlResponse{}
@@ -8826,6 +9230,11 @@ func (client *Client) SetFlowControl(request *SetFlowControlRequest) (_result *S
 	return _result, _err
 }
 
+// @param request - SetQuotaRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SetQuotaResponse
 func (client *Client) SetQuotaWithOptions(request *SetQuotaRequest, runtime *util.RuntimeOptions) (_result *SetQuotaResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8871,6 +9280,9 @@ func (client *Client) SetQuotaWithOptions(request *SetQuotaRequest, runtime *uti
 	return _result, _err
 }
 
+// @param request - SetQuotaRequest
+//
+// @return SetQuotaResponse
 func (client *Client) SetQuota(request *SetQuotaRequest) (_result *SetQuotaResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SetQuotaResponse{}
@@ -8882,6 +9294,11 @@ func (client *Client) SetQuota(request *SetQuotaRequest) (_result *SetQuotaRespo
 	return _result, _err
 }
 
+// @param request - TerminateUserExecutionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return TerminateUserExecutionResponse
 func (client *Client) TerminateUserExecutionWithOptions(request *TerminateUserExecutionRequest, runtime *util.RuntimeOptions) (_result *TerminateUserExecutionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8923,6 +9340,9 @@ func (client *Client) TerminateUserExecutionWithOptions(request *TerminateUserEx
 	return _result, _err
 }
 
+// @param request - TerminateUserExecutionRequest
+//
+// @return TerminateUserExecutionResponse
 func (client *Client) TerminateUserExecution(request *TerminateUserExecutionRequest) (_result *TerminateUserExecutionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &TerminateUserExecutionResponse{}
@@ -8934,6 +9354,11 @@ func (client *Client) TerminateUserExecution(request *TerminateUserExecutionRequ
 	return _result, _err
 }
 
+// @param request - UpdateActionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateActionResponse
 func (client *Client) UpdateActionWithOptions(request *UpdateActionRequest, runtime *util.RuntimeOptions) (_result *UpdateActionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8983,6 +9408,9 @@ func (client *Client) UpdateActionWithOptions(request *UpdateActionRequest, runt
 	return _result, _err
 }
 
+// @param request - UpdateActionRequest
+//
+// @return UpdateActionResponse
 func (client *Client) UpdateAction(request *UpdateActionRequest) (_result *UpdateActionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateActionResponse{}
@@ -8994,6 +9422,15 @@ func (client *Client) UpdateAction(request *UpdateActionRequest) (_result *Updat
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新一个已存在的公共参数。
+//
+// @param request - UpdatePublicParameterRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdatePublicParameterResponse
 func (client *Client) UpdatePublicParameterWithOptions(request *UpdatePublicParameterRequest, runtime *util.RuntimeOptions) (_result *UpdatePublicParameterResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9039,6 +9476,13 @@ func (client *Client) UpdatePublicParameterWithOptions(request *UpdatePublicPara
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新一个已存在的公共参数。
+//
+// @param request - UpdatePublicParameterRequest
+//
+// @return UpdatePublicParameterResponse
 func (client *Client) UpdatePublicParameter(request *UpdatePublicParameterRequest) (_result *UpdatePublicParameterResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdatePublicParameterResponse{}
@@ -9050,6 +9494,11 @@ func (client *Client) UpdatePublicParameter(request *UpdatePublicParameterReques
 	return _result, _err
 }
 
+// @param request - UpdatePublicPatchBaselineRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdatePublicPatchBaselineResponse
 func (client *Client) UpdatePublicPatchBaselineWithOptions(request *UpdatePublicPatchBaselineRequest, runtime *util.RuntimeOptions) (_result *UpdatePublicPatchBaselineResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9099,6 +9548,9 @@ func (client *Client) UpdatePublicPatchBaselineWithOptions(request *UpdatePublic
 	return _result, _err
 }
 
+// @param request - UpdatePublicPatchBaselineRequest
+//
+// @return UpdatePublicPatchBaselineResponse
 func (client *Client) UpdatePublicPatchBaseline(request *UpdatePublicPatchBaselineRequest) (_result *UpdatePublicPatchBaselineResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdatePublicPatchBaselineResponse{}
@@ -9110,6 +9562,11 @@ func (client *Client) UpdatePublicPatchBaseline(request *UpdatePublicPatchBaseli
 	return _result, _err
 }
 
+// @param request - UpdatePublicTemplateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdatePublicTemplateResponse
 func (client *Client) UpdatePublicTemplateWithOptions(request *UpdatePublicTemplateRequest, runtime *util.RuntimeOptions) (_result *UpdatePublicTemplateResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9163,6 +9620,9 @@ func (client *Client) UpdatePublicTemplateWithOptions(request *UpdatePublicTempl
 	return _result, _err
 }
 
+// @param request - UpdatePublicTemplateRequest
+//
+// @return UpdatePublicTemplateResponse
 func (client *Client) UpdatePublicTemplate(request *UpdatePublicTemplateRequest) (_result *UpdatePublicTemplateResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdatePublicTemplateResponse{}
@@ -9174,6 +9634,11 @@ func (client *Client) UpdatePublicTemplate(request *UpdatePublicTemplateRequest)
 	return _result, _err
 }
 
+// @param request - ValidatePublicTemplateContentRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ValidatePublicTemplateContentResponse
 func (client *Client) ValidatePublicTemplateContentWithOptions(request *ValidatePublicTemplateContentRequest, runtime *util.RuntimeOptions) (_result *ValidatePublicTemplateContentResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9219,6 +9684,9 @@ func (client *Client) ValidatePublicTemplateContentWithOptions(request *Validate
 	return _result, _err
 }
 
+// @param request - ValidatePublicTemplateContentRequest
+//
+// @return ValidatePublicTemplateContentResponse
 func (client *Client) ValidatePublicTemplateContent(request *ValidatePublicTemplateContentRequest) (_result *ValidatePublicTemplateContentResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ValidatePublicTemplateContentResponse{}
