@@ -1618,6 +1618,7 @@ func (s *UpdateInstanceNameResponse) SetBody(v *UpdateInstanceNameResponseBody) 
 }
 
 type UpdatePublicNetworkStatusRequest struct {
+	Cidr *string `json:"Cidr,omitempty" xml:"Cidr,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -1642,6 +1643,11 @@ func (s UpdatePublicNetworkStatusRequest) String() string {
 
 func (s UpdatePublicNetworkStatusRequest) GoString() string {
 	return s.String()
+}
+
+func (s *UpdatePublicNetworkStatusRequest) SetCidr(v string) *UpdatePublicNetworkStatusRequest {
+	s.Cidr = &v
+	return s
 }
 
 func (s *UpdatePublicNetworkStatusRequest) SetComponentType(v string) *UpdatePublicNetworkStatusRequest {
@@ -2310,6 +2316,10 @@ func (client *Client) UpdatePublicNetworkStatusWithOptions(request *UpdatePublic
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Cidr)) {
+		query["Cidr"] = request.Cidr
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ComponentType)) {
 		query["ComponentType"] = request.ComponentType
 	}
