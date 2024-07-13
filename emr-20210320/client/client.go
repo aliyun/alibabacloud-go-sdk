@@ -7931,7 +7931,7 @@ func (s *CreateNodeGroupResponse) SetBody(v *CreateNodeGroupResponseBody) *Creat
 }
 
 type CreateScriptRequest struct {
-	// 集群ID。
+	// The cluster ID.
 	//
 	// This parameter is required.
 	//
@@ -7939,7 +7939,7 @@ type CreateScriptRequest struct {
 	//
 	// c-b933c5aac8fe****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// 区域ID。
+	// The region ID.
 	//
 	// This parameter is required.
 	//
@@ -7947,7 +7947,11 @@ type CreateScriptRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// 集群脚本类型。
+	// The type of the script. Valid values:
+	//
+	// 	- BOOTSTRAP: indicates a bootstrap action of the Elastic Compute Service (ECS) instance.
+	//
+	// 	- NORMAL: indicates a common script.
 	//
 	// This parameter is required.
 	//
@@ -7955,7 +7959,7 @@ type CreateScriptRequest struct {
 	//
 	// BOOTSTRAP
 	ScriptType *string `json:"ScriptType,omitempty" xml:"ScriptType,omitempty"`
-	// 集群脚本列表。
+	// The scripts.
 	//
 	// This parameter is required.
 	Scripts []*Script `json:"Scripts,omitempty" xml:"Scripts,omitempty" type:"Repeated"`
@@ -7990,12 +7994,14 @@ func (s *CreateScriptRequest) SetScripts(v []*Script) *CreateScriptRequest {
 }
 
 type CreateScriptResponseBody struct {
-	// 请求ID。
+	// The request ID.
 	//
 	// example:
 	//
 	// DD6B1B2A-5837-5237-ABE4-FF0C8944****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The script ID.
+	//
 	// example:
 	//
 	// cs-d6d6bc841c0d415fb81808bc6d09****
@@ -8406,7 +8412,7 @@ func (s *DeleteClusterResponse) SetBody(v *DeleteClusterResponseBody) *DeleteClu
 }
 
 type DeleteScriptRequest struct {
-	// 集群ID。
+	// The cluster ID.
 	//
 	// This parameter is required.
 	//
@@ -8414,7 +8420,7 @@ type DeleteScriptRequest struct {
 	//
 	// c-b933c5aac8fe****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// 区域ID。
+	// The region ID.
 	//
 	// This parameter is required.
 	//
@@ -8422,7 +8428,7 @@ type DeleteScriptRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// 脚本ID。
+	// The script ID.
 	//
 	// This parameter is required.
 	//
@@ -8430,7 +8436,11 @@ type DeleteScriptRequest struct {
 	//
 	// cs-da7476a7679a4d4c9cede62ebe09****
 	ScriptId *string `json:"ScriptId,omitempty" xml:"ScriptId,omitempty"`
-	// 集群脚本类型。
+	// The type of the script. Valid values:
+	//
+	// 	- BOOTSTRAP: indicates a bootstrap action of the Elastic Compute Service (ECS) instance.
+	//
+	// 	- NORMAL: indicates a common script.
 	//
 	// This parameter is required.
 	//
@@ -8469,7 +8479,7 @@ func (s *DeleteScriptRequest) SetScriptType(v string) *DeleteScriptRequest {
 }
 
 type DeleteScriptResponseBody struct {
-	// 请求ID。
+	// The request ID.
 	//
 	// example:
 	//
@@ -49352,13 +49362,9 @@ func (s *UpdateApiTemplateResponse) SetBody(v *UpdateApiTemplateResponseBody) *U
 }
 
 type UpdateApplicationConfigsRequest struct {
-	// The application configurations.
+	// 应用配置列表。
 	//
 	// This parameter is required.
-	//
-	// example:
-	//
-	// CLUSTER
 	ApplicationConfigs []*UpdateApplicationConfig `json:"ApplicationConfigs,omitempty" xml:"ApplicationConfigs,omitempty" type:"Repeated"`
 	// The application name.
 	//
@@ -49553,7 +49559,7 @@ func (s *UpdateApplicationConfigsResponse) SetBody(v *UpdateApplicationConfigsRe
 }
 
 type UpdateScriptRequest struct {
-	// 集群ID。
+	// The cluster ID.
 	//
 	// This parameter is required.
 	//
@@ -49561,7 +49567,7 @@ type UpdateScriptRequest struct {
 	//
 	// c-b933c5aac8fe****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// 区域ID。
+	// The region ID.
 	//
 	// This parameter is required.
 	//
@@ -49569,11 +49575,11 @@ type UpdateScriptRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// 集群脚本。
+	// The script.
 	//
 	// This parameter is required.
 	Script *Script `json:"Script,omitempty" xml:"Script,omitempty"`
-	// 脚本ID。
+	// The script ID.
 	//
 	// This parameter is required.
 	//
@@ -49581,7 +49587,11 @@ type UpdateScriptRequest struct {
 	//
 	// cs-da7476a7679a4d4c9cede62ebe09****
 	ScriptId *string `json:"ScriptId,omitempty" xml:"ScriptId,omitempty"`
-	// 集群脚本类型。
+	// The type of the script. Valid values:
+	//
+	// 	- BOOTSTRAP: indicates a bootstrap action of the Elastic Compute Service (ECS) instance.
+	//
+	// 	- NORMAL: indicates a common script.
 	//
 	// This parameter is required.
 	//
@@ -49625,7 +49635,7 @@ func (s *UpdateScriptRequest) SetScriptType(v string) *UpdateScriptRequest {
 }
 
 type UpdateScriptShrinkRequest struct {
-	// 集群ID。
+	// The cluster ID.
 	//
 	// This parameter is required.
 	//
@@ -49633,7 +49643,7 @@ type UpdateScriptShrinkRequest struct {
 	//
 	// c-b933c5aac8fe****
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// 区域ID。
+	// The region ID.
 	//
 	// This parameter is required.
 	//
@@ -49641,11 +49651,11 @@ type UpdateScriptShrinkRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// 集群脚本。
+	// The script.
 	//
 	// This parameter is required.
 	ScriptShrink *string `json:"Script,omitempty" xml:"Script,omitempty"`
-	// 脚本ID。
+	// The script ID.
 	//
 	// This parameter is required.
 	//
@@ -49653,7 +49663,11 @@ type UpdateScriptShrinkRequest struct {
 	//
 	// cs-da7476a7679a4d4c9cede62ebe09****
 	ScriptId *string `json:"ScriptId,omitempty" xml:"ScriptId,omitempty"`
-	// 集群脚本类型。
+	// The type of the script. Valid values:
+	//
+	// 	- BOOTSTRAP: indicates a bootstrap action of the Elastic Compute Service (ECS) instance.
+	//
+	// 	- NORMAL: indicates a common script.
 	//
 	// This parameter is required.
 	//
@@ -49697,7 +49711,7 @@ func (s *UpdateScriptShrinkRequest) SetScriptType(v string) *UpdateScriptShrinkR
 }
 
 type UpdateScriptResponseBody struct {
-	// 请求ID。
+	// The request ID.
 	//
 	// example:
 	//
@@ -50102,6 +50116,10 @@ func (client *Client) CreateNodeGroup(request *CreateNodeGroupRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// Adds a bootstrap action or a common script of an E-MapReduce (EMR) cluster.
+//
 // @param request - CreateScriptRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -50152,6 +50170,10 @@ func (client *Client) CreateScriptWithOptions(request *CreateScriptRequest, runt
 	return _result, _err
 }
 
+// Summary:
+//
+// Adds a bootstrap action or a common script of an E-MapReduce (EMR) cluster.
+//
 // @param request - CreateScriptRequest
 //
 // @return CreateScriptResponse
@@ -50370,6 +50392,10 @@ func (client *Client) DeleteCluster(request *DeleteClusterRequest) (_result *Del
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a bootstrap action or a common script of an E-MapReduce (EMR) cluster.
+//
 // @param request - DeleteScriptRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -50420,6 +50446,10 @@ func (client *Client) DeleteScriptWithOptions(request *DeleteScriptRequest, runt
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a bootstrap action or a common script of an E-MapReduce (EMR) cluster.
+//
 // @param request - DeleteScriptRequest
 //
 // @return DeleteScriptResponse
@@ -55077,10 +55107,6 @@ func (client *Client) UpdateApplicationConfigsWithOptions(request *UpdateApplica
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.ApplicationConfigs)) {
-		query["ApplicationConfigs"] = request.ApplicationConfigs
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.ApplicationName)) {
 		query["ApplicationName"] = request.ApplicationName
 	}
@@ -55117,8 +55143,17 @@ func (client *Client) UpdateApplicationConfigsWithOptions(request *UpdateApplica
 		query["RegionId"] = request.RegionId
 	}
 
+	body := map[string]interface{}{}
+	bodyFlat := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ApplicationConfigs)) {
+		bodyFlat["ApplicationConfigs"] = request.ApplicationConfigs
+	}
+
+	body = tea.ToMap(body,
+		openapiutil.Query(bodyFlat))
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UpdateApplicationConfigs"),
@@ -55154,6 +55189,10 @@ func (client *Client) UpdateApplicationConfigs(request *UpdateApplicationConfigs
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates a bootstrap action or a common script of an E-MapReduce (EMR) cluster.
+//
 // @param tmpReq - UpdateScriptRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -55214,6 +55253,10 @@ func (client *Client) UpdateScriptWithOptions(tmpReq *UpdateScriptRequest, runti
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates a bootstrap action or a common script of an E-MapReduce (EMR) cluster.
+//
 // @param request - UpdateScriptRequest
 //
 // @return UpdateScriptResponse
