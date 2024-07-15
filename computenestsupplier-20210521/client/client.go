@@ -174,24 +174,38 @@ func (s *AddServiceSharedAccountsResponse) SetBody(v *AddServiceSharedAccountsRe
 }
 
 type ContinueDeployServiceInstanceRequest struct {
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	//
 	// example:
 	//
 	// 123e4567-e89b-12d3-a456-426655440000
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// Specifies whether to perform only a dry run for the request to check information such as the permissions and instance status. Valid values:
+	//
+	// 	- true: performs a dry run for the request, but does not create a service instance.
+	//
+	// 	- false: performs a dry run for the request, and creates a service instance if the request passes the dry run.
+	//
 	// example:
 	//
 	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// The configuration parameters of the service instance.
+	//
 	// example:
 	//
 	// {"NodeCount": 3, "SystemDiskSize": 40, "InstancePassword": "******"}
 	Parameters *string `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the service instance.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -234,11 +248,16 @@ func (s *ContinueDeployServiceInstanceRequest) SetServiceInstanceId(v string) *C
 }
 
 type ContinueDeployServiceInstanceResponseBody struct {
+	// The dry run result.
 	DryRunResult *ContinueDeployServiceInstanceResponseBodyDryRunResult `json:"DryRunResult,omitempty" xml:"DryRunResult,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 82DF27ED-E538-5AC0-A11C-39334A873189
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the service instance.
+	//
 	// example:
 	//
 	// si-d6ab3a63ccbb4b17****
@@ -269,9 +288,18 @@ func (s *ContinueDeployServiceInstanceResponseBody) SetServiceInstanceId(v strin
 }
 
 type ContinueDeployServiceInstanceResponseBodyDryRunResult struct {
-	ParametersAllowedToBeModified              []*string `json:"ParametersAllowedToBeModified,omitempty" xml:"ParametersAllowedToBeModified,omitempty" type:"Repeated"`
+	// The parameters that can be modified. The operation that is performed to modify the parameters does not cause a validation error.
+	//
+	// >  This parameter is returned only if DryRun is set to true.
+	ParametersAllowedToBeModified []*string `json:"ParametersAllowedToBeModified,omitempty" xml:"ParametersAllowedToBeModified,omitempty" type:"Repeated"`
+	// The parameters that can be modified under specific conditions. The new values of the parameters determine whether the operation that is performed to modify the parameters causes a validation error.
+	//
+	// >  This parameter is returned only if DryRun is set to true.
 	ParametersConditionallyAllowedToBeModified []*string `json:"ParametersConditionallyAllowedToBeModified,omitempty" xml:"ParametersConditionallyAllowedToBeModified,omitempty" type:"Repeated"`
-	ParametersNotAllowedToBeModified           []*string `json:"ParametersNotAllowedToBeModified,omitempty" xml:"ParametersNotAllowedToBeModified,omitempty" type:"Repeated"`
+	// The parameters that cannot be modified. The operation that is performed to modify the parameters causes a validation error.
+	//
+	// >  This parameter is returned only if DryRun is set to true.
+	ParametersNotAllowedToBeModified []*string `json:"ParametersNotAllowedToBeModified,omitempty" xml:"ParametersNotAllowedToBeModified,omitempty" type:"Repeated"`
 }
 
 func (s ContinueDeployServiceInstanceResponseBodyDryRunResult) String() string {
@@ -327,23 +355,56 @@ func (s *ContinueDeployServiceInstanceResponse) SetBody(v *ContinueDeployService
 }
 
 type CreateArtifactRequest struct {
+	// The ID of the deployment package.
+	//
 	// example:
 	//
 	// artifact-eea08d1e2d3a43aexxxx
-	ArtifactId       *string                                `json:"ArtifactId,omitempty" xml:"ArtifactId,omitempty"`
+	ArtifactId *string `json:"ArtifactId,omitempty" xml:"ArtifactId,omitempty"`
+	// The properties of the deployment object.
 	ArtifactProperty *CreateArtifactRequestArtifactProperty `json:"ArtifactProperty,omitempty" xml:"ArtifactProperty,omitempty" type:"Struct"`
+	// The type of the deployment package. Valid values:
+	//
+	// 	- EcsImage: Elastic Compute Service (ECS) image.
+	//
+	// 	- AcrImage: container image.
+	//
+	// 	- File: Object Storage Service (OSS) object.
+	//
+	// 	- Script: script.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// EcsImage
 	ArtifactType *string `json:"ArtifactType,omitempty" xml:"ArtifactType,omitempty"`
-	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The description of the deployment package.
+	//
+	// example:
+	//
+	// Test artifact
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the deployment package.
+	//
 	// This parameter is required.
-	Name             *string                     `json:"Name,omitempty" xml:"Name,omitempty"`
-	ResourceGroupId  *string                     `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	SupportRegionIds []*string                   `json:"SupportRegionIds,omitempty" xml:"SupportRegionIds,omitempty" type:"Repeated"`
-	Tag              []*CreateArtifactRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	//
+	// example:
+	//
+	// Name
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The ID of the resource group.
+	//
+	// example:
+	//
+	// rg-aekzkt5buxxxxxx
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The supported regions.
+	SupportRegionIds []*string `json:"SupportRegionIds,omitempty" xml:"SupportRegionIds,omitempty" type:"Repeated"`
+	// The custom tags.
+	Tag []*CreateArtifactRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	// The version name of the deployment package.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -406,33 +467,78 @@ func (s *CreateArtifactRequest) SetVersionName(v string) *CreateArtifactRequest 
 }
 
 type CreateArtifactRequestArtifactProperty struct {
+	// The commodity code of the service in Alibaba Cloud Marketplace.
+	//
+	// >  This parameter is available only if the deployment package is an image.
+	//
 	// example:
 	//
 	// cmjj00xxxx
 	CommodityCode *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
+	// The commodity version of the service in Alibaba Cloud Marketplace.
+	//
+	// >  This parameter is available only if the deployment package is an image.
+	//
 	// example:
 	//
 	// V1.0
 	CommodityVersion *string `json:"CommodityVersion,omitempty" xml:"CommodityVersion,omitempty"`
+	// The script metadata.
+	//
 	// example:
 	//
 	// {\\"WorkDir\\":\\"/root\\",\\"CommandType\\":\\"RunShellScript\\",\\"Platform\\":\\"Linux\\",\\"Script\\":\\"echo hello\\"}
 	FileScriptMetadata *string `json:"FileScriptMetadata,omitempty" xml:"FileScriptMetadata,omitempty"`
+	// The image ID.
+	//
+	// >  This parameter is available only if the deployment package is an image.
+	//
 	// example:
 	//
 	// m-0xij191j9cuev6xxxxxx
 	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// The region ID.
+	//
+	// >  This parameter is available only if the deployment package is an image.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RepoId   *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
+	// The ID of the image repository.
+	//
+	// >  This parameter is available only if the deployment package is a container image or of the Helm chart type.
+	//
+	// example:
+	//
+	// crr-d8o1nponyc2t1gcg
+	RepoId *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
+	// The name of the image repository.
+	//
+	// >  This parameter is available only if the deployment package is a container image or of the Helm chart type.
+	//
+	// example:
+	//
+	// wordpress
 	RepoName *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
+	// The script content.
+	//
+	// >  This parameter is available only if the deployment package is a script.
+	//
 	// example:
 	//
 	// {"ScriptMetadata":"{\\"CommandType\\":\\"RunShellScript\\",\\"Platform\\":\\"Linux\\",\\"Script\\":\\"ls\\"}"}
 	ScriptMetadata *string `json:"ScriptMetadata,omitempty" xml:"ScriptMetadata,omitempty"`
-	Tag            *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	// The version tag of the image repository.
+	//
+	// >  This parameter is available only if the deployment package is a container image or of the Helm chart type.
+	//
+	// example:
+	//
+	// v1
+	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	// The object URL of the deployment package.
+	//
 	// example:
 	//
 	// https://service-info-private.oss-cn-hangzhou.aliyuncs.com/1309208528xxxxxx/template/2e1ce8fc-xxxx-481c-9e8e-789ba9db487d.json
@@ -498,7 +604,17 @@ func (s *CreateArtifactRequestArtifactProperty) SetUrl(v string) *CreateArtifact
 }
 
 type CreateArtifactRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag key.
+	//
+	// example:
+	//
+	// key1
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value.
+	//
+	// example:
+	//
+	// value1
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -521,23 +637,56 @@ func (s *CreateArtifactRequestTag) SetValue(v string) *CreateArtifactRequestTag 
 }
 
 type CreateArtifactShrinkRequest struct {
+	// The ID of the deployment package.
+	//
 	// example:
 	//
 	// artifact-eea08d1e2d3a43aexxxx
-	ArtifactId             *string `json:"ArtifactId,omitempty" xml:"ArtifactId,omitempty"`
+	ArtifactId *string `json:"ArtifactId,omitempty" xml:"ArtifactId,omitempty"`
+	// The properties of the deployment object.
 	ArtifactPropertyShrink *string `json:"ArtifactProperty,omitempty" xml:"ArtifactProperty,omitempty"`
+	// The type of the deployment package. Valid values:
+	//
+	// 	- EcsImage: Elastic Compute Service (ECS) image.
+	//
+	// 	- AcrImage: container image.
+	//
+	// 	- File: Object Storage Service (OSS) object.
+	//
+	// 	- Script: script.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// EcsImage
 	ArtifactType *string `json:"ArtifactType,omitempty" xml:"ArtifactType,omitempty"`
-	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The description of the deployment package.
+	//
+	// example:
+	//
+	// Test artifact
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the deployment package.
+	//
 	// This parameter is required.
-	Name             *string                           `json:"Name,omitempty" xml:"Name,omitempty"`
-	ResourceGroupId  *string                           `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	SupportRegionIds []*string                         `json:"SupportRegionIds,omitempty" xml:"SupportRegionIds,omitempty" type:"Repeated"`
-	Tag              []*CreateArtifactShrinkRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	//
+	// example:
+	//
+	// Name
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The ID of the resource group.
+	//
+	// example:
+	//
+	// rg-aekzkt5buxxxxxx
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The supported regions.
+	SupportRegionIds []*string `json:"SupportRegionIds,omitempty" xml:"SupportRegionIds,omitempty" type:"Repeated"`
+	// The custom tags.
+	Tag []*CreateArtifactShrinkRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	// The version name of the deployment package.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -600,7 +749,17 @@ func (s *CreateArtifactShrinkRequest) SetVersionName(v string) *CreateArtifactSh
 }
 
 type CreateArtifactShrinkRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag key.
+	//
+	// example:
+	//
+	// key1
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value.
+	//
+	// example:
+	//
+	// value1
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -623,40 +782,68 @@ func (s *CreateArtifactShrinkRequestTag) SetValue(v string) *CreateArtifactShrin
 }
 
 type CreateArtifactResponseBody struct {
+	// The ID of the deployment package.
+	//
 	// example:
 	//
 	// artifact-eea08d1e2d3a43aexxxx
 	ArtifactId *string `json:"ArtifactId,omitempty" xml:"ArtifactId,omitempty"`
+	// The properties of the deployment object.
+	//
 	// example:
 	//
 	// {\\"CommodityCode\\":\\"cmjj0005xxxx\\",\\"CommodityVersion\\":\\"V2022xxxx\\"}
 	ArtifactProperty *string `json:"ArtifactProperty,omitempty" xml:"ArtifactProperty,omitempty"`
+	// The type of the deployment package.
+	//
 	// example:
 	//
 	// EcsImage
 	ArtifactType *string `json:"ArtifactType,omitempty" xml:"ArtifactType,omitempty"`
+	// The version of the deployment package.
+	//
 	// example:
 	//
 	// 2
 	ArtifactVersion *string `json:"ArtifactVersion,omitempty" xml:"ArtifactVersion,omitempty"`
-	Description     *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The description of the deployment package.
+	//
+	// example:
+	//
+	// Test artifact
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The time when the deployment package was modified.
+	//
 	// example:
 	//
 	// 2022-11-11T12:00:00Z
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// The latest version of the deployment package.
+	//
 	// example:
 	//
 	// 1
-	MaxVersion *int64  `json:"MaxVersion,omitempty" xml:"MaxVersion,omitempty"`
-	Name       *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	MaxVersion *int64 `json:"MaxVersion,omitempty" xml:"MaxVersion,omitempty"`
+	// The name of the deployment package.
+	//
+	// example:
+	//
+	// Name
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// B1A0198B-F316-1B72-B8DD-28B6F6D6XXXX
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The status of the deployment package. Valid values:
+	//
 	// example:
 	//
 	// Created
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The ID of the region that supports the deployment package.
+	//
 	// example:
 	//
 	// [
@@ -669,6 +856,8 @@ type CreateArtifactResponseBody struct {
 	//
 	// 		]
 	SupportRegionIds *string `json:"SupportRegionIds,omitempty" xml:"SupportRegionIds,omitempty"`
+	// The name of the deployment package.
+	//
 	// example:
 	//
 	// v1
@@ -773,77 +962,230 @@ func (s *CreateArtifactResponse) SetBody(v *CreateArtifactResponseBody) *CreateA
 }
 
 type CreateServiceRequest struct {
+	// The alert configurations of the service.
+	//
+	// >  This parameter takes effect only when you specify an alert policy for **PolicyNames**.
+	//
+	// example:
+	//
+	// {
+	//
+	//   "TemplateUrl": "http://template.file.url",
+	//
+	//   // 应用分组级别告警元数据
+	//
+	//   "ApplicationGroups": [
+	//
+	//     {
+	//
+	//       "Name": "applicationGroup1",
+	//
+	//       "TemplateUrl": "url1"
+	//
+	//     },
+	//
+	//     {
+	//
+	//       "Name": "applicationGroup2",
+	//
+	//       "TemplateUrl": "url2"
+	//
+	//     }
+	//
+	//   ]
+	//
+	// }
 	AlarmMetadata *string `json:"AlarmMetadata,omitempty" xml:"AlarmMetadata,omitempty"`
+	// The approval type of the service usage application. Valid values:
+	//
+	// 	- Manual: The application is manually approved.
+	//
+	// 	- AutoPass: The application is automatically approved.
+	//
 	// example:
 	//
 	// Manual
-	ApprovalType    *string `json:"ApprovalType,omitempty" xml:"ApprovalType,omitempty"`
+	ApprovalType *string `json:"ApprovalType,omitempty" xml:"ApprovalType,omitempty"`
+	// The parameters for building the service
+	//
+	// example:
+	//
+	// { "ServiceTemplateId": "st-xxxxx"}
 	BuildParameters *string `json:"BuildParameters,omitempty" xml:"BuildParameters,omitempty"`
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+	//
 	// example:
 	//
 	// 10CM943JP0EN9D51H
-	ClientToken    *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The storage configurations of the service. The format in which the deployment information of a service is stored varies based on the deployment type of the service. In this case, the deployment information is stored in the JSON string format.
+	//
+	// example:
+	//
+	// {\\"TemplateConfigs\\":[{\\"Name\\":\\"模板1\\",\\"Url\\":\\"oss://computenest-test/template"
+	//
+	//             + ".json?RegionId=cn-beijing\\",\\"PredefinedParameters\\":[{\\"Name\\":\\"低配版\\","
+	//
+	//             + "\\"Parameters\\":{\\"InstanceType\\":\\"ecs.g5.large\\",\\"DataDiskSize\\":40}},{\\"Name\\":\\"高配版\\","
+	//
+	//             + "\\"Parameters\\":{\\"InstanceType\\":\\"ecs.g5.large\\",\\"DataDiskSize\\":200}}]}]}
 	DeployMetadata *string `json:"DeployMetadata,omitempty" xml:"DeployMetadata,omitempty"`
+	// The deployment type of the service. Valid values:
+	//
+	// 	- ros: The service is deployed by using Resource Orchestration Service (ROS).
+	//
+	// 	- terraform: The service is deployed by using Terraform.
+	//
+	// 	- ack: The service is deployed by using Container Service for Kubernetes (ACK).
+	//
+	// 	- spi: The service is deployed by calling a service provider interface (SPI).
+	//
+	// 	- operation: The service is deployed by using a hosted O\\&M service.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ros
 	DeployType *string `json:"DeployType,omitempty" xml:"DeployType,omitempty"`
+	// The duration for which hosted O\\&M is implemented. Unit: seconds.
+	//
 	// example:
 	//
 	// 0
 	Duration *int64 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// Specifies whether to enable the hosted O\\&M feature for the service. Default value: false. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
+	// >  This parameter is required if you set **ServiceType*	- to **private**.
+	//
 	// example:
 	//
 	// false
-	IsSupportOperated *bool   `json:"IsSupportOperated,omitempty" xml:"IsSupportOperated,omitempty"`
-	LicenseMetadata   *string `json:"LicenseMetadata,omitempty" xml:"LicenseMetadata,omitempty"`
-	LogMetadata       *string `json:"LogMetadata,omitempty" xml:"LogMetadata,omitempty"`
+	IsSupportOperated *bool `json:"IsSupportOperated,omitempty" xml:"IsSupportOperated,omitempty"`
+	// The license metadata.
+	//
+	// example:
+	//
+	// {\\"RetentionDays\\":3}
+	LicenseMetadata *string `json:"LicenseMetadata,omitempty" xml:"LicenseMetadata,omitempty"`
+	// The logging configurations.
+	//
+	// example:
+	//
+	// { "Logstores": [ { "LogstoreName": "access-log", "LogPath": "/home/admin/app/logs", # This parameter is not required for containers. Configure the parameter in the YAML file. "FilePattern": "access.log\\*" # This parameter is not required for containers. Configure the parameter in the YAML file. } ] }
+	LogMetadata *string `json:"LogMetadata,omitempty" xml:"LogMetadata,omitempty"`
+	// The hosted O\\&M configurations.
+	//
 	// example:
 	//
 	// {\\"PrometheusConfigMap\\":{\\"New_Vpc_Ack_And_Jumpserver\\":{}}}
 	OperationMetadata *string `json:"OperationMetadata,omitempty" xml:"OperationMetadata,omitempty"`
+	// The policy name. The name can be up to 128 characters in length. Separate multiple names with commas (,). Only hosted O\\&M policies are supported.
+	//
 	// example:
 	//
 	// policyName1, policyName2
 	PolicyNames *string `json:"PolicyNames,omitempty" xml:"PolicyNames,omitempty"`
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
-	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Resellable      *bool   `json:"Resellable,omitempty" xml:"Resellable,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Whether resell is supported.
+	//
+	// example:
+	//
+	// false
+	Resellable *bool `json:"Resellable,omitempty" xml:"Resellable,omitempty"`
+	// The ID of the resource group.
+	//
+	// example:
+	//
+	// rg-aek25refu7r3opq
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The service ID.
+	//
 	// example:
 	//
 	// service-0e6fca6a51a544xxxxxx
-	ServiceId   *string                            `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	// The service details.
 	ServiceInfo []*CreateServiceRequestServiceInfo `json:"ServiceInfo,omitempty" xml:"ServiceInfo,omitempty" type:"Repeated"`
+	// The service type. Valid values:
+	//
+	// 	- private: The service is a private service and is deployed within the account of a customer.
+	//
+	// 	- managed: The service is a fully managed service and is deployed within the account of a service provider.
+	//
+	// 	- operation: The service is a hosted O\\&M service.
+	//
+	// 	- poc: The service is a trial service.
+	//
 	// example:
 	//
 	// private
 	ServiceType *string `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
+	// The permission type of the deployment URL. Valid values:
+	//
+	// 	- Public: All users can go to the URL to create a service instance or a trial service instance.
+	//
+	// 	- Restricted: Only users in the whitelist can go to the URL to create a service instance or a trial service instance.
+	//
+	// 	- OnlyFormalRestricted: Only users in the whitelist can go to the URL to create a service instance.
+	//
+	// 	- OnlyTrailRestricted: Only users in the whitelist can go to the URL to create a trial service instance.
+	//
+	// 	- Hidden: Users not in the whitelist cannot see the service details page when they go to the URL and cannot request deployment permissions.
+	//
 	// example:
 	//
 	// Public
-	ShareType            *string                    `json:"ShareType,omitempty" xml:"ShareType,omitempty"`
-	SourceServiceId      *string                    `json:"SourceServiceId,omitempty" xml:"SourceServiceId,omitempty"`
-	SourceServiceVersion *string                    `json:"SourceServiceVersion,omitempty" xml:"SourceServiceVersion,omitempty"`
-	Tag                  []*CreateServiceRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	ShareType *string `json:"ShareType,omitempty" xml:"ShareType,omitempty"`
+	// The source service ID for resell。
+	//
+	// example:
+	//
+	// service-70a3b15bb62643xxxxxx
+	SourceServiceId *string `json:"SourceServiceId,omitempty" xml:"SourceServiceId,omitempty"`
+	// The source service version for resell。
+	//
+	// example:
+	//
+	// 1
+	SourceServiceVersion *string `json:"SourceServiceVersion,omitempty" xml:"SourceServiceVersion,omitempty"`
+	// The custom tags.
+	Tag []*CreateServiceRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	// The type of the tenant. Valid values:
+	//
+	// 	- SingleTenant
+	//
+	// 	- MultiTenant
+	//
 	// example:
 	//
 	// SingleTenant
 	TenantType *string `json:"TenantType,omitempty" xml:"TenantType,omitempty"`
+	// The trial duration. Unit: day. The maximum trial duration cannot exceed 30 days.
+	//
 	// example:
 	//
 	// 7
 	TrialDuration *int64 `json:"TrialDuration,omitempty" xml:"TrialDuration,omitempty"`
+	// The metadata about the upgrade.
+	//
 	// example:
 	//
 	// {\\"Description\\":\\"xxx\\",\\"SupportRollback\\":true,\\"SupportUpgradeFromVersions\\":[],\\"UpgradeComponents\\":[\\"Configuration\\"]}
 	UpgradeMetadata *string `json:"UpgradeMetadata,omitempty" xml:"UpgradeMetadata,omitempty"`
+	// The version name.
+	//
 	// example:
 	//
 	// Draft
@@ -989,24 +1331,45 @@ func (s *CreateServiceRequest) SetVersionName(v string) *CreateServiceRequest {
 }
 
 type CreateServiceRequestServiceInfo struct {
+	// Protocol document information about the service.
 	Agreements []*CreateServiceRequestServiceInfoAgreements `json:"Agreements,omitempty" xml:"Agreements,omitempty" type:"Repeated"`
+	// The URL of the service icon.
+	//
 	// example:
 	//
 	// http://img.tidb.oss.url
 	Image *string `json:"Image,omitempty" xml:"Image,omitempty"`
+	// The language of the service. Valid values:
+	//
+	// 	- zh-CN: Chinese
+	//
+	// 	- en-US: English
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// zh-CN
-	Locale             *string `json:"Locale,omitempty" xml:"Locale,omitempty"`
+	Locale *string `json:"Locale,omitempty" xml:"Locale,omitempty"`
+	// The URL of the detailed description of the service.
+	//
+	// example:
+	//
+	// http://description.tidb.oss.url
 	LongDescriptionUrl *string `json:"LongDescriptionUrl,omitempty" xml:"LongDescriptionUrl,omitempty"`
+	// The service name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// TiDB Database
-	Name             *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The description of the service.
+	//
+	// example:
+	//
+	// TiDB是A公司自主设计、研发的开源分布式关系型数据库。
 	ShortDescription *string `json:"ShortDescription,omitempty" xml:"ShortDescription,omitempty"`
 }
 
@@ -1049,8 +1412,18 @@ func (s *CreateServiceRequestServiceInfo) SetShortDescription(v string) *CreateS
 }
 
 type CreateServiceRequestServiceInfoAgreements struct {
+	// Protocol name.
+	//
+	// example:
+	//
+	// Name
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Url  *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	// Protocol url.
+	//
+	// example:
+	//
+	// https://aliyun.com/xxxxxxxx.html
+	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
 }
 
 func (s CreateServiceRequestServiceInfoAgreements) String() string {
@@ -1072,10 +1445,14 @@ func (s *CreateServiceRequestServiceInfoAgreements) SetUrl(v string) *CreateServ
 }
 
 type CreateServiceRequestTag struct {
+	// The tag key.
+	//
 	// example:
 	//
 	// Usage
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value.
+	//
 	// example:
 	//
 	// Web
@@ -1101,18 +1478,26 @@ func (s *CreateServiceRequestTag) SetValue(v string) *CreateServiceRequestTag {
 }
 
 type CreateServiceResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 4DB0F536-B3BE-4F0D-BD29-E83FB56D550C
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The service ID.
+	//
 	// example:
 	//
 	// service-0e6fca6a51a544xxxxxx
 	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	// The status of the service.
+	//
 	// example:
 	//
 	// Created
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The service version.
+	//
 	// example:
 	//
 	// draft
@@ -1177,44 +1562,98 @@ func (s *CreateServiceResponse) SetBody(v *CreateServiceResponseBody) *CreateSer
 }
 
 type CreateServiceInstanceRequest struct {
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	//
 	// example:
 	//
 	// 123e4567-e89b-12d3-a456-426655440000
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	DryRun      *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// Specifies whether to perform only a dry run for the request to check information such as the permissions and instance status. Valid values:
+	//
+	// 	- true: performs a dry run for the request, but does not create a service instance.
+	//
+	// 	- false: performs a dry run for the request, and creates a service instance if the request passes the dry run.
+	//
+	// example:
+	//
+	// false
+	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// The time when the service instance was released.
+	//
+	// >  This parameter is available only for the service instances that are managed by service providers.
+	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mmZ
+	//
+	// example:
+	//
+	// 2023-12-12T03:13:05Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The name of the service instance. The value must meet the following requirements:
+	//
+	// 	- The name cannot exceed 64 characters in length.
+	//
+	// 	- It can contain digits, letters, hyphens (-), and underscores (_). It must start with a digit or a letter.
+	//
 	// example:
 	//
 	// TestName
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The parameters that are specified for service instance deployment.
+	//
+	// >  If you want to specify the region in which the service instance is deployed, you must specify the information in Parameters.
+	//
 	// example:
 	//
 	// {"NodeCount": 3, "SystemDiskSize": 40, "InstancePassword": "******"}
 	Parameters map[string]interface{} `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
+	// The region ID. Valid values:
+	//
+	// 	- cn-hangzhou: China (Hangzhou)
+	//
+	// 	- ap-southeast-1: Singapore
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the resource group.
+	//
 	// example:
 	//
 	// rg-aekzuqyxxxxxx
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The service ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// service-0e6fca6a51a54420****
 	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	// The service version.
+	//
 	// example:
 	//
 	// 1
-	ServiceVersion    *string                            `json:"ServiceVersion,omitempty" xml:"ServiceVersion,omitempty"`
-	SpecificationName *string                            `json:"SpecificationName,omitempty" xml:"SpecificationName,omitempty"`
-	Tag               []*CreateServiceInstanceRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	TemplateName      *string                            `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+	ServiceVersion *string `json:"ServiceVersion,omitempty" xml:"ServiceVersion,omitempty"`
+	// The name of the package specification.
+	//
+	// example:
+	//
+	// 套餐一
+	SpecificationName *string `json:"SpecificationName,omitempty" xml:"SpecificationName,omitempty"`
+	// The custom tags.
+	Tag []*CreateServiceInstanceRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	// The template name. You must specify a template name if the service supports multiple templates.
+	//
+	// example:
+	//
+	// 模板1
+	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+	// The user ID.
+	//
 	// example:
 	//
 	// 1563457855xxxxxx
@@ -1295,10 +1734,14 @@ func (s *CreateServiceInstanceRequest) SetUserId(v string) *CreateServiceInstanc
 }
 
 type CreateServiceInstanceRequestTag struct {
+	// The tag key.
+	//
 	// example:
 	//
 	// key1
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value.
+	//
 	// example:
 	//
 	// value1
@@ -1324,44 +1767,98 @@ func (s *CreateServiceInstanceRequestTag) SetValue(v string) *CreateServiceInsta
 }
 
 type CreateServiceInstanceShrinkRequest struct {
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	//
 	// example:
 	//
 	// 123e4567-e89b-12d3-a456-426655440000
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	DryRun      *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// Specifies whether to perform only a dry run for the request to check information such as the permissions and instance status. Valid values:
+	//
+	// 	- true: performs a dry run for the request, but does not create a service instance.
+	//
+	// 	- false: performs a dry run for the request, and creates a service instance if the request passes the dry run.
+	//
+	// example:
+	//
+	// false
+	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// The time when the service instance was released.
+	//
+	// >  This parameter is available only for the service instances that are managed by service providers.
+	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mmZ
+	//
+	// example:
+	//
+	// 2023-12-12T03:13:05Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The name of the service instance. The value must meet the following requirements:
+	//
+	// 	- The name cannot exceed 64 characters in length.
+	//
+	// 	- It can contain digits, letters, hyphens (-), and underscores (_). It must start with a digit or a letter.
+	//
 	// example:
 	//
 	// TestName
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The parameters that are specified for service instance deployment.
+	//
+	// >  If you want to specify the region in which the service instance is deployed, you must specify the information in Parameters.
+	//
 	// example:
 	//
 	// {"NodeCount": 3, "SystemDiskSize": 40, "InstancePassword": "******"}
 	ParametersShrink *string `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
+	// The region ID. Valid values:
+	//
+	// 	- cn-hangzhou: China (Hangzhou)
+	//
+	// 	- ap-southeast-1: Singapore
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the resource group.
+	//
 	// example:
 	//
 	// rg-aekzuqyxxxxxx
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The service ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// service-0e6fca6a51a54420****
 	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	// The service version.
+	//
 	// example:
 	//
 	// 1
-	ServiceVersion    *string                                  `json:"ServiceVersion,omitempty" xml:"ServiceVersion,omitempty"`
-	SpecificationName *string                                  `json:"SpecificationName,omitempty" xml:"SpecificationName,omitempty"`
-	Tag               []*CreateServiceInstanceShrinkRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	TemplateName      *string                                  `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+	ServiceVersion *string `json:"ServiceVersion,omitempty" xml:"ServiceVersion,omitempty"`
+	// The name of the package specification.
+	//
+	// example:
+	//
+	// 套餐一
+	SpecificationName *string `json:"SpecificationName,omitempty" xml:"SpecificationName,omitempty"`
+	// The custom tags.
+	Tag []*CreateServiceInstanceShrinkRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	// The template name. You must specify a template name if the service supports multiple templates.
+	//
+	// example:
+	//
+	// 模板1
+	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+	// The user ID.
+	//
 	// example:
 	//
 	// 1563457855xxxxxx
@@ -1442,10 +1939,14 @@ func (s *CreateServiceInstanceShrinkRequest) SetUserId(v string) *CreateServiceI
 }
 
 type CreateServiceInstanceShrinkRequestTag struct {
+	// The tag key.
+	//
 	// example:
 	//
 	// key1
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value.
+	//
 	// example:
 	//
 	// value1
@@ -1471,14 +1972,36 @@ func (s *CreateServiceInstanceShrinkRequestTag) SetValue(v string) *CreateServic
 }
 
 type CreateServiceInstanceResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 4DB0F536-B3BE-4F0D-BD29-E83FB56D****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the service instance.
+	//
 	// example:
 	//
 	// si-d6ab3a63ccbb4b17****
 	ServiceInstanceId *string `json:"ServiceInstanceId,omitempty" xml:"ServiceInstanceId,omitempty"`
+	// The status of the service instance. Valid values:
+	//
+	// 	- Created
+	//
+	// 	- Deploying
+	//
+	// 	- DeployedFailed
+	//
+	// 	- Deployed
+	//
+	// 	- Upgrading
+	//
+	// 	- Deleting
+	//
+	// 	- Deleted
+	//
+	// 	- DeletedFailed
+	//
 	// example:
 	//
 	// Created
@@ -1538,12 +2061,16 @@ func (s *CreateServiceInstanceResponse) SetBody(v *CreateServiceInstanceResponse
 }
 
 type DeleteArtifactRequest struct {
+	// The ID of the artifact.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// artifact-eea08d1e2d3a43aexxxx
 	ArtifactId *string `json:"ArtifactId,omitempty" xml:"ArtifactId,omitempty"`
+	// The version of the artifact.
+	//
 	// example:
 	//
 	// 2
@@ -1569,6 +2096,8 @@ func (s *DeleteArtifactRequest) SetArtifactVersion(v string) *DeleteArtifactRequ
 }
 
 type DeleteArtifactResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// B1A0198B-F316-1B72-B8DD-28B6F6D6XXXX
@@ -1730,16 +2259,22 @@ func (s *DeleteServiceResponse) SetBody(v *DeleteServiceResponseBody) *DeleteSer
 }
 
 type DeleteServiceInstancesRequest struct {
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	//
 	// example:
 	//
 	// 123e4567-e89b-12d3-a456-426655440000
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The IDs of the service instances.
+	//
 	// This parameter is required.
 	ServiceInstanceId []*string `json:"ServiceInstanceId,omitempty" xml:"ServiceInstanceId,omitempty" type:"Repeated"`
 }
@@ -1768,6 +2303,8 @@ func (s *DeleteServiceInstancesRequest) SetServiceInstanceId(v []*string) *Delet
 }
 
 type DeleteServiceInstancesResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// DB140E67-D75F-5585-946E-41D8DC8F4E00
@@ -1817,16 +2354,22 @@ func (s *DeleteServiceInstancesResponse) SetBody(v *DeleteServiceInstancesRespon
 }
 
 type DeployServiceInstanceRequest struct {
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	//
 	// example:
 	//
 	// 123e4567-e89b-12d3-a456-426655440000
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the service instance.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -1859,6 +2402,8 @@ func (s *DeployServiceInstanceRequest) SetServiceInstanceId(v string) *DeploySer
 }
 
 type DeployServiceInstanceResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// B8A6AEA6-0D8F-589A-A7FF-B44FD842456E
@@ -1908,14 +2453,20 @@ func (s *DeployServiceInstanceResponse) SetBody(v *DeployServiceInstanceResponse
 }
 
 type GetArtifactRequest struct {
+	// The ID of the deployment package.
+	//
 	// example:
 	//
 	// artifact-eea08d1e2d3a43aexxxx
 	ArtifactId *string `json:"ArtifactId,omitempty" xml:"ArtifactId,omitempty"`
+	// The name of the deployment package.
+	//
 	// example:
 	//
 	// gpu-test
 	ArtifactName *string `json:"ArtifactName,omitempty" xml:"ArtifactName,omitempty"`
+	// The version of the deployment package.
+	//
 	// example:
 	//
 	// 1
@@ -1946,50 +2497,88 @@ func (s *GetArtifactRequest) SetArtifactVersion(v string) *GetArtifactRequest {
 }
 
 type GetArtifactResponseBody struct {
+	// The ID of the deployment package.
+	//
 	// example:
 	//
 	// artifact-eea08d1e2d3a43aexxxx
 	ArtifactId *string `json:"ArtifactId,omitempty" xml:"ArtifactId,omitempty"`
+	// The properties of the deployment package.
+	//
 	// example:
 	//
 	// {\\"CommodityCode\\":\\"cmjj0005xxxx\\",\\"CommodityVersion\\":\\"V2022xxxx\\"}
 	ArtifactProperty *string `json:"ArtifactProperty,omitempty" xml:"ArtifactProperty,omitempty"`
+	// The type of the deployment package.
+	//
 	// example:
 	//
 	// EcsImage
 	ArtifactType *string `json:"ArtifactType,omitempty" xml:"ArtifactType,omitempty"`
+	// The version of the deployment package.
+	//
 	// example:
 	//
 	// 2
 	ArtifactVersion *string `json:"ArtifactVersion,omitempty" xml:"ArtifactVersion,omitempty"`
-	Description     *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The description of the deployment package.
+	//
+	// example:
+	//
+	// Description
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The time when the deployment package was modified.
+	//
 	// example:
 	//
 	// 2022-10-20T02:19:55Z
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// The latest version of the deployment package.
+	//
 	// example:
 	//
 	// 2
-	MaxVersion *int64  `json:"MaxVersion,omitempty" xml:"MaxVersion,omitempty"`
-	Name       *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	MaxVersion *int64 `json:"MaxVersion,omitempty" xml:"MaxVersion,omitempty"`
+	// The name of the deployment package.
+	//
+	// example:
+	//
+	// Name
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The distribution progress of the deployment package.
+	//
 	// example:
 	//
 	// 100
 	Progress *string `json:"Progress,omitempty" xml:"Progress,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// B1A0198B-F316-1B72-B8DD-28B6F6D6XXXX
-	RequestId       *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the resource group.
+	//
+	// example:
+	//
+	// rg-aekzkt5buxxxxxx
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The status of the deployment package. Valid values:
+	//
 	// example:
 	//
 	// Available
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The ID of the region that supports the deployment package.
+	//
 	// example:
 	//
 	// ["cn-hangzhou","cn-beijing"]
-	SupportRegionIds *string                        `json:"SupportRegionIds,omitempty" xml:"SupportRegionIds,omitempty"`
-	Tags             []*GetArtifactResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	SupportRegionIds *string `json:"SupportRegionIds,omitempty" xml:"SupportRegionIds,omitempty"`
+	// The tags of the deployment package.
+	Tags []*GetArtifactResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// The version name of the deployment package.
+	//
 	// example:
 	//
 	// v1
@@ -2080,7 +2669,17 @@ func (s *GetArtifactResponseBody) SetVersionName(v string) *GetArtifactResponseB
 }
 
 type GetArtifactResponseBodyTags struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag key of the deployment package.
+	//
+	// example:
+	//
+	// key1
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value of the deployment package.
+	//
+	// example:
+	//
+	// value1
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -2132,12 +2731,20 @@ func (s *GetArtifactResponse) SetBody(v *GetArtifactResponseBody) *GetArtifactRe
 }
 
 type GetArtifactRepositoryCredentialsRequest struct {
+	// The type of the deployment package. Valid values:
+	//
+	// 	- File: Object Storage Service (OSS) object.
+	//
+	// 	- AcrImage: container image.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// File
 	ArtifactType *string `json:"ArtifactType,omitempty" xml:"ArtifactType,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou
@@ -2163,12 +2770,18 @@ func (s *GetArtifactRepositoryCredentialsRequest) SetDeployRegionId(v string) *G
 }
 
 type GetArtifactRepositoryCredentialsResponseBody struct {
+	// The information about the resources that can be uploaded.
 	AvailableResources []*GetArtifactRepositoryCredentialsResponseBodyAvailableResources `json:"AvailableResources,omitempty" xml:"AvailableResources,omitempty" type:"Repeated"`
-	Credentials        *GetArtifactRepositoryCredentialsResponseBodyCredentials          `json:"Credentials,omitempty" xml:"Credentials,omitempty" type:"Struct"`
+	// The credentials.
+	Credentials *GetArtifactRepositoryCredentialsResponseBodyCredentials `json:"Credentials,omitempty" xml:"Credentials,omitempty" type:"Struct"`
+	// The time when the credentials expired.
+	//
 	// example:
 	//
 	// 1526549792000
 	ExpireDate *string `json:"ExpireDate,omitempty" xml:"ExpireDate,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 94E89857-B994-44B6-9C4F-DBD200E9XXXX
@@ -2204,14 +2817,20 @@ func (s *GetArtifactRepositoryCredentialsResponseBody) SetRequestId(v string) *G
 }
 
 type GetArtifactRepositoryCredentialsResponseBodyAvailableResources struct {
+	// The path.
+	//
 	// example:
 	//
 	// "/xxx/"
 	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// oss-cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The repository name.
+	//
 	// example:
 	//
 	// computenest-artifacts-draft-cn-hangzhou
@@ -2242,22 +2861,32 @@ func (s *GetArtifactRepositoryCredentialsResponseBodyAvailableResources) SetRepo
 }
 
 type GetArtifactRepositoryCredentialsResponseBodyCredentials struct {
+	// The AccessKey ID.
+	//
 	// example:
 	//
 	// STS.xxx
 	AccessKeyId *string `json:"AccessKeyId,omitempty" xml:"AccessKeyId,omitempty"`
+	// The AccessKey secret.
+	//
 	// example:
 	//
 	// xxx
 	AccessKeySecret *string `json:"AccessKeySecret,omitempty" xml:"AccessKeySecret,omitempty"`
+	// The password.
+	//
 	// example:
 	//
 	// eyJ0aW1lIjoiMTUyNjU0OTc5:0705733****
 	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	// The Security Token Service (STS) token.
+	//
 	// example:
 	//
 	// xxx
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	// The username.
+	//
 	// example:
 	//
 	// xxx
@@ -2327,23 +2956,44 @@ func (s *GetArtifactRepositoryCredentialsResponse) SetBody(v *GetArtifactReposit
 }
 
 type GetServiceRequest struct {
+	// Specifies whether to filter information based on Alibaba Cloud account IDs.
+	//
+	// example:
+	//
+	// false
 	FilterAliUid *bool `json:"FilterAliUid,omitempty" xml:"FilterAliUid,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The service ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// service-4ee86df83fd948******
 	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	// The service version.
+	//
 	// example:
 	//
 	// 1
-	ServiceVersion    *string   `json:"ServiceVersion,omitempty" xml:"ServiceVersion,omitempty"`
-	SharedAccountType *string   `json:"SharedAccountType,omitempty" xml:"SharedAccountType,omitempty"`
-	ShowDetail        []*string `json:"ShowDetail,omitempty" xml:"ShowDetail,omitempty" type:"Repeated"`
+	ServiceVersion *string `json:"ServiceVersion,omitempty" xml:"ServiceVersion,omitempty"`
+	// The share type of the service. Default value: SharedAccount. Valid values:
+	//
+	// 	- SharedAccount: The service is shared by multiple accounts.
+	//
+	// 	- Resell: The service is distributed.
+	//
+	// example:
+	//
+	// SharedAccount
+	SharedAccountType *string `json:"SharedAccountType,omitempty" xml:"SharedAccountType,omitempty"`
+	// The information that you want to query.
+	ShowDetail []*string `json:"ShowDetail,omitempty" xml:"ShowDetail,omitempty" type:"Repeated"`
 }
 
 func (s GetServiceRequest) String() string {
@@ -2385,159 +3035,445 @@ func (s *GetServiceRequest) SetShowDetail(v []*string) *GetServiceRequest {
 }
 
 type GetServiceResponseBody struct {
+	// The alert configurations of the service.
+	//
+	// >  This parameter takes effect only when you specify an alert policy for **PolicyNames**.
+	//
+	// example:
+	//
+	// {
+	//
+	//   "TemplateUrl": "http://template.file.url",
+	//
+	//   // 应用分组级别告警元数据
+	//
+	//   "ApplicationGroups": [
+	//
+	//     {
+	//
+	//       "Name": "applicationGroup1",
+	//
+	//       "TemplateUrl": "url1"
+	//
+	//     },
+	//
+	//     {
+	//
+	//       "Name": "applicationGroup2",
+	//
+	//       "TemplateUrl": "url2"
+	//
+	//     }
+	//
+	//   ]
+	//
+	// }
 	AlarmMetadata *string `json:"AlarmMetadata,omitempty" xml:"AlarmMetadata,omitempty"`
+	// The approval type of the service usage application. Valid values:
+	//
+	// 	- Manual: The application is manually approved.
+	//
+	// 	- AutoPass: The application is automatically approved.
+	//
 	// example:
 	//
 	// Manual
-	ApprovalType *string                          `json:"ApprovalType,omitempty" xml:"ApprovalType,omitempty"`
-	BuildInfo    *string                          `json:"BuildInfo,omitempty" xml:"BuildInfo,omitempty"`
-	Categories   *string                          `json:"Categories,omitempty" xml:"Categories,omitempty"`
-	Commodity    *GetServiceResponseBodyCommodity `json:"Commodity,omitempty" xml:"Commodity,omitempty" type:"Struct"`
+	ApprovalType *string `json:"ApprovalType,omitempty" xml:"ApprovalType,omitempty"`
+	// The information of build service information.
+	//
+	// example:
+	//
+	// { "RepoUrl": "https://github.com/user/repo.git", "Brancn": "main"}
+	BuildInfo *string `json:"BuildInfo,omitempty" xml:"BuildInfo,omitempty"`
+	// The category of the service.
+	//
+	// example:
+	//
+	// DevOps
+	Categories *string `json:"Categories,omitempty" xml:"Categories,omitempty"`
+	// The commodity details.
+	Commodity *GetServiceResponseBodyCommodity `json:"Commodity,omitempty" xml:"Commodity,omitempty" type:"Struct"`
+	// The commodity code of the service in Alibaba Cloud Marketplace.
+	//
 	// example:
 	//
 	// cmjj00xxxx
 	CommodityCode *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
+	// The time when the service was created.
+	//
 	// example:
 	//
 	// 2021-05-20T00:00:00Z
-	CreateTime                  *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The binding configurations of the commodity module.
+	//
+	// example:
+	//
+	// componesConfigs
 	CrossRegionConnectionStatus *string `json:"CrossRegionConnectionStatus,omitempty" xml:"CrossRegionConnectionStatus,omitempty"`
+	// The validity period of the default license. Unit: day. Valid values: 1 to 1000.
+	//
 	// example:
 	//
 	// 1
-	DefaultLicenseDays *int64  `json:"DefaultLicenseDays,omitempty" xml:"DefaultLicenseDays,omitempty"`
-	DeployMetadata     *string `json:"DeployMetadata,omitempty" xml:"DeployMetadata,omitempty"`
+	DefaultLicenseDays *int64 `json:"DefaultLicenseDays,omitempty" xml:"DefaultLicenseDays,omitempty"`
+	// The storage configurations of the service. The format in which the deployment information of a service is stored varies based on the deployment type of the service. In this case, the deployment information is stored in the JSON string format.
+	//
+	// example:
+	//
+	// {\\"TemplateConfigs\\":[{\\"Name\\":\\"模板1\\",\\"Url\\":\\"oss://computenest-test/template"
+	//
+	//             + ".json?RegionId=cn-beijing\\",\\"PredefinedParameters\\":[{\\"Name\\":\\"低配版\\","
+	//
+	//             + "\\"Parameters\\":{\\"InstanceType\\":\\"ecs.g5.large\\",\\"DataDiskSize\\":40}},{\\"Name\\":\\"高配版\\","
+	//
+	//             + "\\"Parameters\\":{\\"InstanceType\\":\\"ecs.g5.large\\",\\"DataDiskSize\\":200}}]}]}
+	DeployMetadata *string `json:"DeployMetadata,omitempty" xml:"DeployMetadata,omitempty"`
+	// The deployment type of the service. Valid values:
+	//
+	// 	- ros: The service is deployed by using Resource Orchestration Service (ROS).
+	//
+	// 	- terraform: The service is deployed by using Terraform.
+	//
+	// 	- spi: The service is deployed by calling a service provider interface (SPI).
+	//
+	// 	- operation: The service is deployed by using a hosted O\\&M service.
+	//
+	// 	- container: The service is deployed by using a container.
+	//
+	// 	- pkg: The service is deployed by using a package.
+	//
 	// example:
 	//
 	// ros
 	DeployType *string `json:"DeployType,omitempty" xml:"DeployType,omitempty"`
+	// The duration for which hosted O\\&M is implemented. Unit: seconds.
+	//
 	// example:
 	//
 	// 259200
-	Duration     *int64             `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	Duration *int64 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// The report source.
 	EntitySource map[string]*string `json:"EntitySource,omitempty" xml:"EntitySource,omitempty"`
+	// Indicates whether the hosted O\\&M feature is enabled for the service. Default value: false. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
+	// >  This parameter is returned if you set **ServiceType*	- to **private**.
+	//
 	// example:
 	//
 	// false
-	IsSupportOperated *bool   `json:"IsSupportOperated,omitempty" xml:"IsSupportOperated,omitempty"`
-	LicenseMetadata   *string `json:"LicenseMetadata,omitempty" xml:"LicenseMetadata,omitempty"`
-	LogMetadata       *string `json:"LogMetadata,omitempty" xml:"LogMetadata,omitempty"`
+	IsSupportOperated *bool `json:"IsSupportOperated,omitempty" xml:"IsSupportOperated,omitempty"`
+	// The license metadata.
+	//
+	// example:
+	//
+	// {"renewType":"MONTHLY"}
+	LicenseMetadata *string `json:"LicenseMetadata,omitempty" xml:"LicenseMetadata,omitempty"`
+	// The logging configurations.
+	//
+	// example:
+	//
+	// { "Logstores": [ { "LogstoreName": "access-log", "LogPath": "/home/admin/app/logs", # This parameter is not required for containers. Configure the parameter in the YAML file. "FilePattern": "access.log\\*" # This parameter is not required for containers. Configure the parameter in the YAML file. } ] }
+	LogMetadata *string `json:"LogMetadata,omitempty" xml:"LogMetadata,omitempty"`
+	// The hosted O\\&M configurations.
+	//
 	// example:
 	//
 	// {\\"PrometheusConfigMap\\":{\\"New_Vpc_Ack_And_Jumpserver\\":{}}}
 	OperationMetadata *string `json:"OperationMetadata,omitempty" xml:"OperationMetadata,omitempty"`
+	// The source for which fees are generated. Valid values:
+	//
+	// 	- None: No fees are generated.
+	//
+	// 	- Marketplace: Fees are generated for Alibaba Cloud Marketplace.
+	//
+	// 	- Custom: The custom fees.
+	//
 	// example:
 	//
 	// None
 	PayFromType *string `json:"PayFromType,omitempty" xml:"PayFromType,omitempty"`
+	// The billing method of the service. Valid values:
+	//
+	// 	- Permanent: Once you purchase the service, you can use it permanently.
+	//
+	// 	- Subscription: You purchase the service from Alibaba Cloud Marketplace and are charged for the service on a subscription basis.
+	//
+	// 	- PayAsYouGo: You purchase the service from Alibaba Cloud Marketplace and are charged for the service on a pay-as-you-go basis.
+	//
+	// 	- CustomFixTime: You are charged for the service based on a custom duration fixed by the service provider.
+	//
 	// example:
 	//
 	// Permanent
 	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	// The permissions on the service. Valid values:
+	//
+	// 	- Deployable: Permissions to deploy the service.
+	//
+	// 	- Accessible: Permissions to access the service.
+	//
 	// example:
 	//
 	// Deployable
 	Permission *string `json:"Permission,omitempty" xml:"Permission,omitempty"`
+	// The policy name. The name can be up to 128 characters in length. Separate multiple names with commas (,). Only hosted O\\&M policies are supported.
+	//
 	// example:
 	//
 	// policyName1, policyName2
 	PolicyNames *string `json:"PolicyNames,omitempty" xml:"PolicyNames,omitempty"`
+	// The deployment progress of the service instance. Unit: percentage.
+	//
 	// example:
 	//
 	// 90
 	Progress *int64 `json:"Progress,omitempty" xml:"Progress,omitempty"`
+	// The time when the service was published.
+	//
 	// example:
 	//
 	// 2021-05-21T00:00:00Z
 	PublishTime *string `json:"PublishTime,omitempty" xml:"PublishTime,omitempty"`
+	// The registration ID.
+	//
 	// example:
 	//
 	// sr-04056c2ab4b94bxxxxxx
 	RegistrationId *string `json:"RegistrationId,omitempty" xml:"RegistrationId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// B1A0198B-F316-1B72-B8DD-28B6F6D6XXXX
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Resellable *bool   `json:"Resellable,omitempty" xml:"Resellable,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the distribution is supported. Valid values:
+	//
+	// 	- false
+	//
+	// 	- true
+	//
+	// example:
+	//
+	// false
+	Resellable *bool `json:"Resellable,omitempty" xml:"Resellable,omitempty"`
+	// The ID of the resource group.
+	//
 	// example:
 	//
 	// rg-aekzuqyxxxxxx
-	ResourceGroupId         *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The URL of the service audit file.
+	//
+	// example:
+	//
+	// https://service-info-public.oss-cn-hangzhou.aliyuncs.com/1690707531xxxxxx/service-document/be3382cd-xxxx-xxxx-xxxx-f8707ec12879.docx
 	ServiceAuditDocumentUrl *string `json:"ServiceAuditDocumentUrl,omitempty" xml:"ServiceAuditDocumentUrl,omitempty"`
-	ServiceDiscoverable     *string `json:"ServiceDiscoverable,omitempty" xml:"ServiceDiscoverable,omitempty"`
+	// Indicates whether the service is visible. Valid values:
+	//
+	// 	- INVISIBLE
+	//
+	// 	- DISCOVERABLE
+	//
+	// example:
+	//
+	// DISCOVERABLE
+	ServiceDiscoverable *string `json:"ServiceDiscoverable,omitempty" xml:"ServiceDiscoverable,omitempty"`
+	// The URL of the service documentation.
+	//
 	// example:
 	//
 	// http://example1.com
 	ServiceDocUrl *string `json:"ServiceDocUrl,omitempty" xml:"ServiceDocUrl,omitempty"`
+	// The service ID.
+	//
 	// example:
 	//
 	// service-70a3b15bb62643xxxxxx
-	ServiceId    *string                               `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	// The information about the service.
 	ServiceInfos []*GetServiceResponseBodyServiceInfos `json:"ServiceInfos,omitempty" xml:"ServiceInfos,omitempty" type:"Repeated"`
+	// The URL of the service page.
+	//
 	// example:
 	//
 	// http://example2.com
 	ServiceProductUrl *string `json:"ServiceProductUrl,omitempty" xml:"ServiceProductUrl,omitempty"`
+	// The type of the service. Valid values:
+	//
+	// 	- private: The service is a private service and is deployed within the account of a customer.
+	//
+	// 	- managed: The service is a fully managed service and is deployed within the account of a service provider.
+	//
+	// 	- operation: The service is a hosted O\\&M service.
+	//
 	// example:
 	//
 	// private
 	ServiceType *string `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
+	// The permission type of the deployment URL. Valid values:
+	//
+	// 	- Public: All users can go to the URL to create a service instance or a trial service instance.
+	//
+	// 	- Restricted: Only users in the whitelist can go to the URL to create a service instance or a trial service instance.
+	//
+	// 	- OnlyFormalRestricted: Only users in the whitelist can go to the URL to create a service instance.
+	//
+	// 	- OnlyTrailRestricted: Only users in the whitelist can go to the URL to create a trial service instance.
+	//
+	// 	- Hidden: Users not in the whitelist cannot see the service details page when they go to the URL and cannot request deployment permissions.
+	//
 	// example:
 	//
 	// Public
-	ShareType            *string                          `json:"ShareType,omitempty" xml:"ShareType,omitempty"`
-	ShareTypeStatus      *string                          `json:"ShareTypeStatus,omitempty" xml:"ShareTypeStatus,omitempty"`
-	SourceServiceId      *string                          `json:"SourceServiceId,omitempty" xml:"SourceServiceId,omitempty"`
-	SourceServiceVersion *string                          `json:"SourceServiceVersion,omitempty" xml:"SourceServiceVersion,omitempty"`
-	SourceSupplierName   *string                          `json:"SourceSupplierName,omitempty" xml:"SourceSupplierName,omitempty"`
-	Statistic            *GetServiceResponseBodyStatistic `json:"Statistic,omitempty" xml:"Statistic,omitempty" type:"Struct"`
+	ShareType *string `json:"ShareType,omitempty" xml:"ShareType,omitempty"`
+	// The share status of the instance.
+	//
+	// > This parameter is discontinued.
+	//
+	// example:
+	//
+	// This parameter is discontinued.
+	ShareTypeStatus *string `json:"ShareTypeStatus,omitempty" xml:"ShareTypeStatus,omitempty"`
+	// The ID of the distribution source service.
+	//
+	// example:
+	//
+	// service-70a3b15bb62643xxxxxx
+	SourceServiceId *string `json:"SourceServiceId,omitempty" xml:"SourceServiceId,omitempty"`
+	// The version of the distribution source service.
+	//
+	// example:
+	//
+	// 1
+	SourceServiceVersion *string `json:"SourceServiceVersion,omitempty" xml:"SourceServiceVersion,omitempty"`
+	// The name of the distribution source service provider.
+	//
+	// example:
+	//
+	// SourceSupplier
+	SourceSupplierName *string `json:"SourceSupplierName,omitempty" xml:"SourceSupplierName,omitempty"`
+	// The statistics.
+	Statistic *GetServiceResponseBodyStatistic `json:"Statistic,omitempty" xml:"Statistic,omitempty" type:"Struct"`
+	// The status of the service. Valid values:
+	//
+	// 	- Draft: The service is a draft.
+	//
+	// 	- Submitted: The service is submitted for review. You cannot modify services in this state.
+	//
+	// 	- Approved: The service is approved. You cannot modify services in this state. You can publish services in this state.
+	//
+	// 	- Launching: The service is being published.
+	//
+	// 	- Online: The service is published.
+	//
+	// 	- Offline: The service is unpublished.
+	//
 	// example:
 	//
 	// Online
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The description of the service status.
+	//
 	// example:
 	//
 	// deploy successfully
 	StatusDetail *string `json:"StatusDetail,omitempty" xml:"StatusDetail,omitempty"`
+	// The name of the service provider.
+	//
+	// example:
+	//
+	// Alibaba Cloud
 	SupplierName *string `json:"SupplierName,omitempty" xml:"SupplierName,omitempty"`
+	// The URL of the service provider.
+	//
 	// example:
 	//
 	// http://example.com
-	SupplierUrl *string                       `json:"SupplierUrl,omitempty" xml:"SupplierUrl,omitempty"`
-	Tags        []*GetServiceResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	SupplierUrl *string `json:"SupplierUrl,omitempty" xml:"SupplierUrl,omitempty"`
+	// The service tags.
+	Tags []*GetServiceResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// The type of the tenant. Valid values:
+	//
+	// 	- SingleTenant
+	//
+	// 	- MultiTenant
+	//
 	// example:
 	//
 	// SingleTenant
 	TenantType *string `json:"TenantType,omitempty" xml:"TenantType,omitempty"`
+	// The status of the test. Valid values:
+	//
+	// 	- `CONFIG_IS_NULL`: No test configurations exist.
+	//
+	// 	- `SERVICE_TEST_SUCCEED`: The service passed the test.
+	//
+	// 	- `SERVICE_TSET_DOING`: The service does not pass the test.
+	//
 	// example:
 	//
 	// SERVICE_TEST_SUCCEED
 	TestStatus *string `json:"TestStatus,omitempty" xml:"TestStatus,omitempty"`
+	// The trial duration. Unit: day. The maximum trial duration cannot exceed 30 days.
+	//
 	// example:
 	//
 	// 7
 	TrialDuration *int64 `json:"TrialDuration,omitempty" xml:"TrialDuration,omitempty"`
+	// The trial policy. Valid values:
+	//
+	// 	- Trial: Trials are supported.
+	//
+	// 	- NotTrial: Trials are not supported.
+	//
 	// example:
 	//
 	// Trial
 	TrialType *string `json:"TrialType,omitempty" xml:"TrialType,omitempty"`
+	// The time when the service was updated.
+	//
 	// example:
 	//
 	// 2021-05-22T00:00:00Z
 	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// The metadata about the upgrade.
+	//
 	// example:
 	//
 	// {\\"Description\\":\\"xxx\\",\\"SupportRollback\\":true,\\"SupportUpgradeFromVersions\\":[],\\"UpgradeComponents\\":[\\"Configuration\\"]}
 	UpgradeMetadata *string `json:"UpgradeMetadata,omitempty" xml:"UpgradeMetadata,omitempty"`
+	// The service version.
+	//
 	// example:
 	//
 	// 1.0
 	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
+	// The version name.
+	//
 	// example:
 	//
 	// v1
-	VersionName              *string `json:"VersionName,omitempty" xml:"VersionName,omitempty"`
-	VirtualInternetService   *string `json:"VirtualInternetService,omitempty" xml:"VirtualInternetService,omitempty"`
+	VersionName *string `json:"VersionName,omitempty" xml:"VersionName,omitempty"`
+	// Indicates whether the service is a virtual Internet service. Valid values:
+	//
+	// 	- false
+	//
+	// 	- true
+	//
+	// example:
+	//
+	// false
+	VirtualInternetService *string `json:"VirtualInternetService,omitempty" xml:"VirtualInternetService,omitempty"`
+	// The ID of the virtual Internet service.
+	//
+	// example:
+	//
+	// service-70a3b15bb62643xxxxxx
 	VirtualInternetServiceId *string `json:"VirtualInternetServiceId,omitempty" xml:"VirtualInternetServiceId,omitempty"`
 }
 
@@ -2825,15 +3761,48 @@ func (s *GetServiceResponseBody) SetVirtualInternetServiceId(v string) *GetServi
 }
 
 type GetServiceResponseBodyCommodity struct {
-	ChargeType          *string                                             `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	CommodityCode       *string                                             `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
-	Components          []*string                                           `json:"Components,omitempty" xml:"Components,omitempty" type:"Repeated"`
-	CssMetadata         *GetServiceResponseBodyCommodityCssMetadata         `json:"CssMetadata,omitempty" xml:"CssMetadata,omitempty" type:"Struct"`
+	// The billing method of the service. Valid values:
+	//
+	// 	- **PREPAY*	- (default): subscription.
+	//
+	// 	- **POSTPAY**: pay-as-you-go.
+	//
+	// example:
+	//
+	// PREPAY
+	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	// The commodity code of the service in Alibaba Cloud Marketplace.
+	//
+	// example:
+	//
+	// cmjj00xxxx
+	CommodityCode *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
+	// The commodity modules.
+	Components []*string `json:"Components,omitempty" xml:"Components,omitempty" type:"Repeated"`
+	// The configuration metadata related to Lingxiao.
+	CssMetadata *GetServiceResponseBodyCommodityCssMetadata `json:"CssMetadata,omitempty" xml:"CssMetadata,omitempty" type:"Struct"`
+	// The metadata of Alibaba Cloud Marketplace.
 	MarketplaceMetadata *GetServiceResponseBodyCommodityMarketplaceMetadata `json:"MarketplaceMetadata,omitempty" xml:"MarketplaceMetadata,omitempty" type:"Struct"`
-	MeteringEntities    []*GetServiceResponseBodyCommodityMeteringEntities  `json:"MeteringEntities,omitempty" xml:"MeteringEntities,omitempty" type:"Repeated"`
-	SaasBoostMetadata   *string                                             `json:"SaasBoostMetadata,omitempty" xml:"SaasBoostMetadata,omitempty"`
-	Specifications      []*GetServiceResponseBodyCommoditySpecifications    `json:"Specifications,omitempty" xml:"Specifications,omitempty" type:"Repeated"`
-	Type                *string                                             `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The information about the billable item.
+	MeteringEntities []*GetServiceResponseBodyCommodityMeteringEntities `json:"MeteringEntities,omitempty" xml:"MeteringEntities,omitempty" type:"Repeated"`
+	// The configuration metadata related to Saas Boost.
+	//
+	// example:
+	//
+	// { "Enabled":false // The public endpoint of the SaaS Boost instance. "PublicAccessUrl":"https://example.com" }
+	SaasBoostMetadata *string `json:"SaasBoostMetadata,omitempty" xml:"SaasBoostMetadata,omitempty"`
+	// The specification details of the service in Alibaba Cloud Marketplace.
+	Specifications []*GetServiceResponseBodyCommoditySpecifications `json:"Specifications,omitempty" xml:"Specifications,omitempty" type:"Repeated"`
+	// The service type. Valid values:
+	//
+	// 	- marketplace: Alibaba Cloud Marketplace.
+	//
+	// 	- Css: Lingxiao.
+	//
+	// example:
+	//
+	// Marketplace
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s GetServiceResponseBodyCommodity) String() string {
@@ -2890,9 +3859,12 @@ func (s *GetServiceResponseBodyCommodity) SetType(v string) *GetServiceResponseB
 }
 
 type GetServiceResponseBodyCommodityCssMetadata struct {
-	ComponentsMappings       []*GetServiceResponseBodyCommodityCssMetadataComponentsMappings       `json:"ComponentsMappings,omitempty" xml:"ComponentsMappings,omitempty" type:"Repeated"`
+	// The mapping information about the billing items.
+	ComponentsMappings []*GetServiceResponseBodyCommodityCssMetadataComponentsMappings `json:"ComponentsMappings,omitempty" xml:"ComponentsMappings,omitempty" type:"Repeated"`
+	// Metering item configuration information.
 	MeteringEntityExtraInfos []*GetServiceResponseBodyCommodityCssMetadataMeteringEntityExtraInfos `json:"MeteringEntityExtraInfos,omitempty" xml:"MeteringEntityExtraInfos,omitempty" type:"Repeated"`
-	MeteringEntityMappings   []*GetServiceResponseBodyCommodityCssMetadataMeteringEntityMappings   `json:"MeteringEntityMappings,omitempty" xml:"MeteringEntityMappings,omitempty" type:"Repeated"`
+	// The binding relationship between package and measurement dimension.
+	MeteringEntityMappings []*GetServiceResponseBodyCommodityCssMetadataMeteringEntityMappings `json:"MeteringEntityMappings,omitempty" xml:"MeteringEntityMappings,omitempty" type:"Repeated"`
 }
 
 func (s GetServiceResponseBodyCommodityCssMetadata) String() string {
@@ -2919,8 +3891,14 @@ func (s *GetServiceResponseBodyCommodityCssMetadata) SetMeteringEntityMappings(v
 }
 
 type GetServiceResponseBodyCommodityCssMetadataComponentsMappings struct {
-	Mappings     map[string]*string `json:"Mappings,omitempty" xml:"Mappings,omitempty"`
-	TemplateName *string            `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+	// The mappings.
+	Mappings map[string]*string `json:"Mappings,omitempty" xml:"Mappings,omitempty"`
+	// The template name.
+	//
+	// example:
+	//
+	// Template 1
+	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
 }
 
 func (s GetServiceResponseBodyCommodityCssMetadataComponentsMappings) String() string {
@@ -2942,10 +3920,30 @@ func (s *GetServiceResponseBodyCommodityCssMetadataComponentsMappings) SetTempla
 }
 
 type GetServiceResponseBodyCommodityCssMetadataMeteringEntityExtraInfos struct {
-	EntityId   *string `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
+	// The ID of the entity.
+	//
+	// example:
+	//
+	// cmgj0048****-Frequency-1
+	EntityId *string `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
+	// Name of a measurement indicator.
+	//
+	// example:
+	//
+	// AvgMemory
 	MetricName *string `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
-	Promql     *string `json:"Promql,omitempty" xml:"Promql,omitempty"`
-	Type       *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// Custom PromQL.
+	//
+	// example:
+	//
+	// avg_over_time(count(kube_pod_info{namespace=\\"default\\"})[1h:1m])
+	Promql *string `json:"Promql,omitempty" xml:"Promql,omitempty"`
+	// Measurement indicators.
+	//
+	// example:
+	//
+	// ComputeNestPrometheus
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s GetServiceResponseBodyCommodityCssMetadataMeteringEntityExtraInfos) String() string {
@@ -2977,9 +3975,24 @@ func (s *GetServiceResponseBodyCommodityCssMetadataMeteringEntityExtraInfos) Set
 }
 
 type GetServiceResponseBodyCommodityCssMetadataMeteringEntityMappings struct {
-	EntityIds         *string `json:"EntityIds,omitempty" xml:"EntityIds,omitempty"`
+	// The ID of the entity.
+	//
+	// example:
+	//
+	// cmgj0015****-Frequency-1
+	EntityIds *string `json:"EntityIds,omitempty" xml:"EntityIds,omitempty"`
+	// The package name.
+	//
+	// example:
+	//
+	// 按量付费套餐
 	SpecificationName *string `json:"SpecificationName,omitempty" xml:"SpecificationName,omitempty"`
-	TemplateName      *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+	// The template name.
+	//
+	// example:
+	//
+	// 模板1
+	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
 }
 
 func (s GetServiceResponseBodyCommodityCssMetadataMeteringEntityMappings) String() string {
@@ -3006,9 +4019,12 @@ func (s *GetServiceResponseBodyCommodityCssMetadataMeteringEntityMappings) SetTe
 }
 
 type GetServiceResponseBodyCommodityMarketplaceMetadata struct {
+	// The configurations of the billable items.
 	MeteringEntityExtraInfos []*GetServiceResponseBodyCommodityMarketplaceMetadataMeteringEntityExtraInfos `json:"MeteringEntityExtraInfos,omitempty" xml:"MeteringEntityExtraInfos,omitempty" type:"Repeated"`
-	MeteringEntityMappings   []*GetServiceResponseBodyCommodityMarketplaceMetadataMeteringEntityMappings   `json:"MeteringEntityMappings,omitempty" xml:"MeteringEntityMappings,omitempty" type:"Repeated"`
-	SpecificationMappings    []*GetServiceResponseBodyCommodityMarketplaceMetadataSpecificationMappings    `json:"SpecificationMappings,omitempty" xml:"SpecificationMappings,omitempty" type:"Repeated"`
+	// The billable items that are associated with the package.
+	MeteringEntityMappings []*GetServiceResponseBodyCommodityMarketplaceMetadataMeteringEntityMappings `json:"MeteringEntityMappings,omitempty" xml:"MeteringEntityMappings,omitempty" type:"Repeated"`
+	// The mappings between the service specifications and the template or package.
+	SpecificationMappings []*GetServiceResponseBodyCommodityMarketplaceMetadataSpecificationMappings `json:"SpecificationMappings,omitempty" xml:"SpecificationMappings,omitempty" type:"Repeated"`
 }
 
 func (s GetServiceResponseBodyCommodityMarketplaceMetadata) String() string {
@@ -3035,10 +4051,30 @@ func (s *GetServiceResponseBodyCommodityMarketplaceMetadata) SetSpecificationMap
 }
 
 type GetServiceResponseBodyCommodityMarketplaceMetadataMeteringEntityExtraInfos struct {
-	EntityId   *string `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
+	// The ID of the billable item.
+	//
+	// example:
+	//
+	// cmgjxxxxxxxx-NetworkOut-2
+	EntityId *string `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
+	// The metric name.
+	//
+	// example:
+	//
+	// NetworkLantency
 	MetricName *string `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
-	Promql     *string `json:"Promql,omitempty" xml:"Promql,omitempty"`
-	Type       *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The custom prometheus statement.
+	//
+	// example:
+	//
+	// avg_over_time(count(kube_pod_info{namespace=\\"default\\"})[1h:1m])
+	Promql *string `json:"Promql,omitempty" xml:"Promql,omitempty"`
+	// The metric.
+	//
+	// example:
+	//
+	// AvgPod
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s GetServiceResponseBodyCommodityMarketplaceMetadataMeteringEntityExtraInfos) String() string {
@@ -3070,9 +4106,24 @@ func (s *GetServiceResponseBodyCommodityMarketplaceMetadataMeteringEntityExtraIn
 }
 
 type GetServiceResponseBodyCommodityMarketplaceMetadataMeteringEntityMappings struct {
-	EntityIds         *string `json:"EntityIds,omitempty" xml:"EntityIds,omitempty"`
+	// The ID of the billable item.
+	//
+	// example:
+	//
+	// cmgjxxxxxxxx-NetworkOut-2
+	EntityIds *string `json:"EntityIds,omitempty" xml:"EntityIds,omitempty"`
+	// The name of the specification package.
+	//
+	// example:
+	//
+	// Pay-as-you-go Package
 	SpecificationName *string `json:"SpecificationName,omitempty" xml:"SpecificationName,omitempty"`
-	TemplateName      *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+	// The template name.
+	//
+	// example:
+	//
+	// Template 1
+	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
 }
 
 func (s GetServiceResponseBodyCommodityMarketplaceMetadataMeteringEntityMappings) String() string {
@@ -3099,10 +4150,34 @@ func (s *GetServiceResponseBodyCommodityMarketplaceMetadataMeteringEntityMapping
 }
 
 type GetServiceResponseBodyCommodityMarketplaceMetadataSpecificationMappings struct {
+	// The specification code of the service in Alibaba Cloud Marketplace.
+	//
+	// example:
+	//
+	// cmjj00xxxx
 	SpecificationCode *string `json:"SpecificationCode,omitempty" xml:"SpecificationCode,omitempty"`
+	// The name of the specification package.
+	//
+	// example:
+	//
+	// Pay-as-you-go
 	SpecificationName *string `json:"SpecificationName,omitempty" xml:"SpecificationName,omitempty"`
-	TemplateName      *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
-	TrialType         *string `json:"TrialType,omitempty" xml:"TrialType,omitempty"`
+	// The template name.
+	//
+	// example:
+	//
+	// Template 1
+	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+	// The trial policy. Valid values:
+	//
+	// 	- Trial: Trials are supported.
+	//
+	// 	- NotTrial: Trials are not supported.
+	//
+	// example:
+	//
+	// NotTrial
+	TrialType *string `json:"TrialType,omitempty" xml:"TrialType,omitempty"`
 }
 
 func (s GetServiceResponseBodyCommodityMarketplaceMetadataSpecificationMappings) String() string {
@@ -3134,8 +4209,18 @@ func (s *GetServiceResponseBodyCommodityMarketplaceMetadataSpecificationMappings
 }
 
 type GetServiceResponseBodyCommodityMeteringEntities struct {
+	// The ID of the billable item.
+	//
+	// example:
+	//
+	// cmgjxxxxxxxx-NetworkOut
 	EntityId *string `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
-	Name     *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The name of the billable item.
+	//
+	// example:
+	//
+	// spring-boot-demo
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
 func (s GetServiceResponseBodyCommodityMeteringEntities) String() string {
@@ -3157,8 +4242,19 @@ func (s *GetServiceResponseBodyCommodityMeteringEntities) SetName(v string) *Get
 }
 
 type GetServiceResponseBodyCommoditySpecifications struct {
-	Code  *string   `json:"Code,omitempty" xml:"Code,omitempty"`
-	Name  *string   `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The commodity code.
+	//
+	// example:
+	//
+	// cmjj00xxxx
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The specification name.
+	//
+	// example:
+	//
+	// specifications1
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The subscription duration. Unit: week or year.
 	Times []*string `json:"Times,omitempty" xml:"Times,omitempty" type:"Repeated"`
 }
 
@@ -3186,18 +4282,42 @@ func (s *GetServiceResponseBodyCommoditySpecifications) SetTimes(v []*string) *G
 }
 
 type GetServiceResponseBodyServiceInfos struct {
+	// The agreement information about the service.
 	Agreements []*GetServiceResponseBodyServiceInfosAgreements `json:"Agreements,omitempty" xml:"Agreements,omitempty" type:"Repeated"`
+	// The URL of the service icon.
+	//
 	// example:
 	//
 	// https://example.com/service-image/c1c4a559-cc60-4af1-b976-98f356602462.png
 	Image *string `json:"Image,omitempty" xml:"Image,omitempty"`
+	// The language of the service. Valid values:
+	//
+	// 	- zh-CN: Chinese
+	//
+	// 	- en-US: English
+	//
 	// example:
 	//
 	// zh-CN
-	Locale             *string `json:"Locale,omitempty" xml:"Locale,omitempty"`
+	Locale *string `json:"Locale,omitempty" xml:"Locale,omitempty"`
+	// The URL of the detailed description of the service.
+	//
+	// example:
+	//
+	// https://example.com
 	LongDescriptionUrl *string `json:"LongDescriptionUrl,omitempty" xml:"LongDescriptionUrl,omitempty"`
-	Name               *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	ShortDescription   *string `json:"ShortDescription,omitempty" xml:"ShortDescription,omitempty"`
+	// The service name.
+	//
+	// example:
+	//
+	// WordPress
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The description of the service.
+	//
+	// example:
+	//
+	// B是A公司自主设计并研发的开源分布式的关系型数据库
+	ShortDescription *string `json:"ShortDescription,omitempty" xml:"ShortDescription,omitempty"`
 }
 
 func (s GetServiceResponseBodyServiceInfos) String() string {
@@ -3239,8 +4359,18 @@ func (s *GetServiceResponseBodyServiceInfos) SetShortDescription(v string) *GetS
 }
 
 type GetServiceResponseBodyServiceInfosAgreements struct {
+	// The agreement name.
+	//
+	// example:
+	//
+	// Name
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Url  *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	// The agreement URL.
+	//
+	// example:
+	//
+	// https://aliyun.com/xxxxxxxx.html
+	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
 }
 
 func (s GetServiceResponseBodyServiceInfosAgreements) String() string {
@@ -3262,15 +4392,60 @@ func (s *GetServiceResponseBodyServiceInfosAgreements) SetUrl(v string) *GetServ
 }
 
 type GetServiceResponseBodyStatistic struct {
-	AccumulativeInstanceCount    *int32   `json:"AccumulativeInstanceCount,omitempty" xml:"AccumulativeInstanceCount,omitempty"`
-	AccumulativePocAmount        *float64 `json:"AccumulativePocAmount,omitempty" xml:"AccumulativePocAmount,omitempty"`
-	AccumulativeUserCount        *int32   `json:"AccumulativeUserCount,omitempty" xml:"AccumulativeUserCount,omitempty"`
-	AveragePocAmount             *float64 `json:"AveragePocAmount,omitempty" xml:"AveragePocAmount,omitempty"`
-	AveragePocDuration           *float64 `json:"AveragePocDuration,omitempty" xml:"AveragePocDuration,omitempty"`
-	AveragePocUnitAmount         *float64 `json:"AveragePocUnitAmount,omitempty" xml:"AveragePocUnitAmount,omitempty"`
-	DeployedServiceInstanceCount *int32   `json:"DeployedServiceInstanceCount,omitempty" xml:"DeployedServiceInstanceCount,omitempty"`
-	DeployedUserCount            *int32   `json:"DeployedUserCount,omitempty" xml:"DeployedUserCount,omitempty"`
-	SubmittedUsageCount          *int32   `json:"SubmittedUsageCount,omitempty" xml:"SubmittedUsageCount,omitempty"`
+	// The total number of service instances that belong to the service. The service instances that are deleted are counted.
+	//
+	// example:
+	//
+	// 75
+	AccumulativeInstanceCount *int32 `json:"AccumulativeInstanceCount,omitempty" xml:"AccumulativeInstanceCount,omitempty"`
+	// The total amount consumed for trial service instances. Unit: CNY.
+	//
+	// example:
+	//
+	// 80.35
+	AccumulativePocAmount *float64 `json:"AccumulativePocAmount,omitempty" xml:"AccumulativePocAmount,omitempty"`
+	// The total number of users who use the service. The historical users are counted.
+	//
+	// example:
+	//
+	// 60
+	AccumulativeUserCount *int32 `json:"AccumulativeUserCount,omitempty" xml:"AccumulativeUserCount,omitempty"`
+	// The average amount consumed for trial service instances per instance. Unit: CNY.
+	//
+	// example:
+	//
+	// 40.17
+	AveragePocAmount *float64 `json:"AveragePocAmount,omitempty" xml:"AveragePocAmount,omitempty"`
+	// The average duration for which trial service instances are in use. Unit: Hour.
+	//
+	// example:
+	//
+	// 1
+	AveragePocDuration *float64 `json:"AveragePocDuration,omitempty" xml:"AveragePocDuration,omitempty"`
+	// The average amount consumed for trial service instances per a period of time. Unit: CNY.
+	//
+	// example:
+	//
+	// 167.9
+	AveragePocUnitAmount *float64 `json:"AveragePocUnitAmount,omitempty" xml:"AveragePocUnitAmount,omitempty"`
+	// The number of online service instances. It means the number of service instances that are successfully deployed.
+	//
+	// example:
+	//
+	// 20
+	DeployedServiceInstanceCount *int32 `json:"DeployedServiceInstanceCount,omitempty" xml:"DeployedServiceInstanceCount,omitempty"`
+	// The number of online users. It means the number of users who successfully deployed the service instances.
+	//
+	// example:
+	//
+	// 10
+	DeployedUserCount *int32 `json:"DeployedUserCount,omitempty" xml:"DeployedUserCount,omitempty"`
+	// The number of service applications that are in the Submitted state.
+	//
+	// example:
+	//
+	// 10
+	SubmittedUsageCount *int32 `json:"SubmittedUsageCount,omitempty" xml:"SubmittedUsageCount,omitempty"`
 }
 
 func (s GetServiceResponseBodyStatistic) String() string {
@@ -3327,10 +4502,14 @@ func (s *GetServiceResponseBodyStatistic) SetSubmittedUsageCount(v int32) *GetSe
 }
 
 type GetServiceResponseBodyTags struct {
+	// The tag key.
+	//
 	// example:
 	//
 	// key1
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value.
+	//
 	// example:
 	//
 	// value1
@@ -3385,34 +4564,54 @@ func (s *GetServiceResponse) SetBody(v *GetServiceResponseBody) *GetServiceRespo
 }
 
 type GetServiceEstimateCostRequest struct {
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	//
 	// example:
 	//
 	// mRdxWuW2ts
-	ClientToken *string                                 `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	Commodity   *GetServiceEstimateCostRequestCommodity `json:"Commodity,omitempty" xml:"Commodity,omitempty" type:"Struct"`
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The subscription duration information about the purchase order of Alibaba Cloud Marketplace.
+	Commodity *GetServiceEstimateCostRequestCommodity `json:"Commodity,omitempty" xml:"Commodity,omitempty" type:"Struct"`
+	// The parameters that are specified to deploy the service instance.
+	//
 	// example:
 	//
 	// {\\"PayType\\":\\"PostPaid\\",\\"InstancePassword\\":\\"xxxxxxxxxx\\",\\"EcsInstanceType\\":\\"ecs.g6.large\\",\\"VSwitchId\\":\\"vsw-0jlueyydpuekoxxxxxxxx\\",\\"VpcId\\":\\"vpc-0jlps6mjbgvpqxxxxxxxx\\",\\"ZoneId\\":\\"cn-wulanchabu-a\\",\\"Enable\\":false,\\"RegionId\\":\\"cn-wulanchabu\\"}
 	Parameters map[string]interface{} `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-wulanchabu
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The service ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// service-16fbd358d75e49xxxxxx
 	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	// The ID of the service instance.
+	//
 	// example:
 	//
 	// si-d6ab3a63ccbb4b17****
 	ServiceInstanceId *string `json:"ServiceInstanceId,omitempty" xml:"ServiceInstanceId,omitempty"`
+	// The service version.
+	//
 	// example:
 	//
 	// draft
-	ServiceVersion    *string `json:"ServiceVersion,omitempty" xml:"ServiceVersion,omitempty"`
+	ServiceVersion *string `json:"ServiceVersion,omitempty" xml:"ServiceVersion,omitempty"`
+	// The package name.
+	//
+	// example:
+	//
+	// Package 1
 	SpecificationName *string `json:"SpecificationName,omitempty" xml:"SpecificationName,omitempty"`
+	// The template name.
+	//
 	// example:
 	//
 	// Custom_Image_Ecs
@@ -3473,7 +4672,23 @@ func (s *GetServiceEstimateCostRequest) SetTemplateName(v string) *GetServiceEst
 }
 
 type GetServiceEstimateCostRequestCommodity struct {
-	PayPeriod     *int32  `json:"PayPeriod,omitempty" xml:"PayPeriod,omitempty"`
+	// The subscription duration.
+	//
+	// example:
+	//
+	// 1
+	PayPeriod *int32 `json:"PayPeriod,omitempty" xml:"PayPeriod,omitempty"`
+	// The unit of the subscription duration. Valid values:
+	//
+	// 	- Year
+	//
+	// 	- Month
+	//
+	// 	- Day
+	//
+	// example:
+	//
+	// Month
 	PayPeriodUnit *string `json:"PayPeriodUnit,omitempty" xml:"PayPeriodUnit,omitempty"`
 }
 
@@ -3496,34 +4711,54 @@ func (s *GetServiceEstimateCostRequestCommodity) SetPayPeriodUnit(v string) *Get
 }
 
 type GetServiceEstimateCostShrinkRequest struct {
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	//
 	// example:
 	//
 	// mRdxWuW2ts
-	ClientToken     *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The subscription duration information about the purchase order of Alibaba Cloud Marketplace.
 	CommodityShrink *string `json:"Commodity,omitempty" xml:"Commodity,omitempty"`
+	// The parameters that are specified to deploy the service instance.
+	//
 	// example:
 	//
 	// {\\"PayType\\":\\"PostPaid\\",\\"InstancePassword\\":\\"xxxxxxxxxx\\",\\"EcsInstanceType\\":\\"ecs.g6.large\\",\\"VSwitchId\\":\\"vsw-0jlueyydpuekoxxxxxxxx\\",\\"VpcId\\":\\"vpc-0jlps6mjbgvpqxxxxxxxx\\",\\"ZoneId\\":\\"cn-wulanchabu-a\\",\\"Enable\\":false,\\"RegionId\\":\\"cn-wulanchabu\\"}
 	ParametersShrink *string `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-wulanchabu
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The service ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// service-16fbd358d75e49xxxxxx
 	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	// The ID of the service instance.
+	//
 	// example:
 	//
 	// si-d6ab3a63ccbb4b17****
 	ServiceInstanceId *string `json:"ServiceInstanceId,omitempty" xml:"ServiceInstanceId,omitempty"`
+	// The service version.
+	//
 	// example:
 	//
 	// draft
-	ServiceVersion    *string `json:"ServiceVersion,omitempty" xml:"ServiceVersion,omitempty"`
+	ServiceVersion *string `json:"ServiceVersion,omitempty" xml:"ServiceVersion,omitempty"`
+	// The package name.
+	//
+	// example:
+	//
+	// Package 1
 	SpecificationName *string `json:"SpecificationName,omitempty" xml:"SpecificationName,omitempty"`
+	// The template name.
+	//
 	// example:
 	//
 	// Custom_Image_Ecs
@@ -3584,11 +4819,20 @@ func (s *GetServiceEstimateCostShrinkRequest) SetTemplateName(v string) *GetServ
 }
 
 type GetServiceEstimateCostResponseBody struct {
+	// The subscription duration information about the purchase order of Alibaba Cloud Marketplace.
+	//
+	// example:
+	//
+	// {\\"PayPeriodUnit\\":Month,\\"PayPeriod\\":1}
 	Commodity map[string]interface{} `json:"Commodity,omitempty" xml:"Commodity,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// E73F09DC-6C13-5CB1-A10F-7A4E125ABD2C
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The list of resources.
+	//
 	// example:
 	//
 	// {
@@ -3744,12 +4988,16 @@ func (s *GetServiceEstimateCostResponse) SetBody(v *GetServiceEstimateCostRespon
 }
 
 type GetServiceInstanceRequest struct {
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the service instance.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -3777,49 +5025,104 @@ func (s *GetServiceInstanceRequest) SetServiceInstanceId(v string) *GetServiceIn
 }
 
 type GetServiceInstanceResponseBody struct {
+	// The business status of the service instance. Valid values:
+	//
+	// 	- Normal: The service instance is normal.
+	//
+	// 	- Renewing: The service instance is being renewed.
+	//
+	// 	- RenewFailed: The service instance failed to be renewed.
+	//
+	// 	- Expired: The service instance expired.
+	//
+	// example:
+	//
+	// Normal
 	BizStatus *string `json:"BizStatus,omitempty" xml:"BizStatus,omitempty"`
+	// The time when the service instance was created.
+	//
 	// example:
 	//
 	// 2021-05-20T00:00:00Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// Indicates whether the service instance supports the hosted O\\&M feature. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
 	// example:
 	//
 	// true
 	EnableInstanceOps *bool `json:"EnableInstanceOps,omitempty" xml:"EnableInstanceOps,omitempty"`
+	// Indicates whether the Prometheus monitoring feature is enabled on the user side.
+	//
 	// example:
 	//
 	// true
 	EnableUserPrometheus *bool `json:"EnableUserPrometheus,omitempty" xml:"EnableUserPrometheus,omitempty"`
+	// The time when the service instance expires.
+	//
 	// example:
 	//
 	// 2022-01-01T12:00:00
-	EndTime             *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The URL of the Grafana dashboard.
+	//
+	// example:
+	//
+	// https://g.xxxxxx.aliyun.com/d/xxxxxxxx-cn-mariadb/mysql-xxxxxxxx-quickstart-and-dashboard?orgId=355401&refresh=10s
 	GrafanaDashBoardUrl *string `json:"GrafanaDashBoardUrl,omitempty" xml:"GrafanaDashBoardUrl,omitempty"`
+	// Indicates whether the hosted O\\&M feature is enabled for the service instance. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
 	// example:
 	//
 	// true
 	IsOperated *bool `json:"IsOperated,omitempty" xml:"IsOperated,omitempty"`
+	// The license metadata.
+	//
 	// example:
 	//
 	// {"renewType":"MONTHLY"}
 	LicenseMetadata *string `json:"LicenseMetadata,omitempty" xml:"LicenseMetadata,omitempty"`
+	// The name of the service instance.
+	//
 	// example:
 	//
 	// TestName
-	Name          *string                                      `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The network configurations.
+	//
+	// >  This parameter is discontinued.
 	NetworkConfig *GetServiceInstanceResponseBodyNetworkConfig `json:"NetworkConfig,omitempty" xml:"NetworkConfig,omitempty" type:"Struct"`
+	// The ID of the service instance that is used to implement hosted O\\&M.
+	//
 	// example:
 	//
 	// si-d6ab3a63ccbb4b17****
 	OperatedServiceInstanceId *string `json:"OperatedServiceInstanceId,omitempty" xml:"OperatedServiceInstanceId,omitempty"`
+	// The end of the time range during which hosted O\\&M is implemented.
+	//
 	// example:
 	//
 	// 2022-01-28T06:48:56Z
 	OperationEndTime *string `json:"OperationEndTime,omitempty" xml:"OperationEndTime,omitempty"`
+	// The beginning of the time range during which hosted O\\&M is implemented.
+	//
 	// example:
 	//
 	// 2021-12-29T06:48:56Z
 	OperationStartTime *string `json:"OperationStartTime,omitempty" xml:"OperationStartTime,omitempty"`
+	// The outputs returned from creating the service instance.
+	//
+	// 	- If the service is deployed by using a ROS template, all output fields of the template are returned.
+	//
+	// 	- If the service is deployed by calling an SPI operation, the output fields of the service provider and for the Compute Nest additional features are returned.
+	//
 	// example:
 	//
 	// {
@@ -3832,6 +5135,8 @@ type GetServiceInstanceResponseBody struct {
 	//
 	// }
 	Outputs *string `json:"Outputs,omitempty" xml:"Outputs,omitempty"`
+	// The parameters that are specified to deploy the service instance.
+	//
 	// example:
 	//
 	// {
@@ -3840,21 +5145,52 @@ type GetServiceInstanceResponseBody struct {
 	//
 	// }
 	Parameters *string `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
+	// The billing method of the service. Valid values:
+	//
+	// 	- Permanent: Once you purchase the service, you can use it permanently.
+	//
+	// 	- Subscription: You purchase the service from Alibaba Cloud Marketplace and are charged for the service on a subscription basis.
+	//
+	// 	- PayAsYouGo: You purchase the service from Alibaba Cloud Marketplace and are charged for the service on a pay-as-you-go basis.
+	//
+	// 	- CustomFixTime: You are charged for the service based on a custom duration fixed by the service provider.
+	//
 	// example:
 	//
 	// Subscription
-	PayType                 *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	// The package name.
+	//
+	// example:
+	//
+	// Package 1
 	PredefinedParameterName *string `json:"PredefinedParameterName,omitempty" xml:"PredefinedParameterName,omitempty"`
+	// The deployment progress of the service instance. Unit: percentage.
+	//
 	// example:
 	//
 	// 90
-	Progress          *int64  `json:"Progress,omitempty" xml:"Progress,omitempty"`
+	Progress *int64 `json:"Progress,omitempty" xml:"Progress,omitempty"`
+	// The logon URL for the accounts in the resource directory corresponding to the service instance.
+	//
+	// example:
+	//
+	// https://signin.aliyun.com/switchRole.htm?parentAlias=1307782318217247.onaliyun.com&roleName=ResourceDirectoryAccountAccessRole
 	RdAccountLoginUrl *string `json:"RdAccountLoginUrl,omitempty" xml:"RdAccountLoginUrl,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 4DB0F536-B3BE-4F0D-BD29-E83FB56D550C
-	RequestId       *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the resource group.
+	//
+	// example:
+	//
+	// rg-aekzkt5buxxxxxx
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The list of resources.
+	//
 	// example:
 	//
 	// [
@@ -3866,38 +5202,91 @@ type GetServiceInstanceResponseBody struct {
 	//       }
 	//
 	// ]
-	Resources *string                                `json:"Resources,omitempty" xml:"Resources,omitempty"`
-	Service   *GetServiceInstanceResponseBodyService `json:"Service,omitempty" xml:"Service,omitempty" type:"Struct"`
+	Resources *string `json:"Resources,omitempty" xml:"Resources,omitempty"`
+	// The information about the service to which the service instance belongs.
+	Service *GetServiceInstanceResponseBodyService `json:"Service,omitempty" xml:"Service,omitempty" type:"Struct"`
+	// The ID of the service instance.
+	//
 	// example:
 	//
 	// si-d6ab3a63ccbb4b17****
 	ServiceInstanceId *string `json:"ServiceInstanceId,omitempty" xml:"ServiceInstanceId,omitempty"`
+	// The type of the service. Valid values:
+	//
+	// 	- private: The service is a private service and is deployed within the account of a customer.
+	//
+	// 	- managed: The service is a fully managed service and is deployed within the account of a service provider.
+	//
+	// 	- operation: The service is a hosted O\\&M service.
+	//
+	// 	- poc: The service is a trial service.
+	//
 	// example:
 	//
 	// private
 	ServiceType *string `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
+	// The source of the service instance. Valid values:
+	//
+	// 	- User: Compute Nest customer
+	//
+	// 	- Market: Alibaba Cloud Marketplace
+	//
+	// 	- Supplier: Compute Nest service provider
+	//
 	// example:
 	//
 	// User
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	// The deployment state of the service instance. Valid values:
+	//
+	// 	- Created
+	//
+	// 	- Deploying
+	//
+	// 	- DeployedFailed
+	//
+	// 	- Deployed
+	//
+	// 	- Upgrading
+	//
+	// 	- Deleting
+	//
+	// 	- Deleted
+	//
+	// 	- DeletedFailed
+	//
 	// example:
 	//
 	// Deployed
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The description of the deployment state of the service instance.
+	//
 	// example:
 	//
 	// deploy successfully
 	StatusDetail *string `json:"StatusDetail,omitempty" xml:"StatusDetail,omitempty"`
+	// The Alibaba Cloud account ID of the service provider.
+	//
 	// example:
 	//
 	// 1964460391538545
-	SupplierUid  *int64                                `json:"SupplierUid,omitempty" xml:"SupplierUid,omitempty"`
-	Tags         []*GetServiceInstanceResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	TemplateName *string                               `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+	SupplierUid *int64 `json:"SupplierUid,omitempty" xml:"SupplierUid,omitempty"`
+	// The custom tags.
+	Tags []*GetServiceInstanceResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// The template name.
+	//
+	// example:
+	//
+	// 模板1
+	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+	// The time when the service instance was updated.
+	//
 	// example:
 	//
 	// 2021-05-20T00:00:00Z
 	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// The Alibaba Cloud account ID of the user.
+	//
 	// example:
 	//
 	// 1234567
@@ -4078,15 +5467,25 @@ func (s *GetServiceInstanceResponseBody) SetUserId(v int64) *GetServiceInstanceR
 }
 
 type GetServiceInstanceResponseBodyNetworkConfig struct {
+	// The ID of the endpoint for the private connection.
+	//
+	// >  This parameter is discontinued.
+	//
 	// example:
 	//
 	// ep-m5ei37240541816b****
 	EndpointId *string `json:"EndpointId,omitempty" xml:"EndpointId,omitempty"`
+	// The ID of the endpoint service for the private connection.
+	//
+	// >  This parameter is discontinued.
+	//
 	// example:
 	//
 	// epsrv-5ei07324541816bxxxx
-	EndpointServiceId            *string                                                                    `json:"EndpointServiceId,omitempty" xml:"EndpointServiceId,omitempty"`
-	PrivateVpcConnections        []*GetServiceInstanceResponseBodyNetworkConfigPrivateVpcConnections        `json:"PrivateVpcConnections,omitempty" xml:"PrivateVpcConnections,omitempty" type:"Repeated"`
+	EndpointServiceId *string `json:"EndpointServiceId,omitempty" xml:"EndpointServiceId,omitempty"`
+	// The information about private connections.
+	PrivateVpcConnections []*GetServiceInstanceResponseBodyNetworkConfigPrivateVpcConnections `json:"PrivateVpcConnections,omitempty" xml:"PrivateVpcConnections,omitempty" type:"Repeated"`
+	// The information about the reverse private connection.
 	ReversePrivateVpcConnections []*GetServiceInstanceResponseBodyNetworkConfigReversePrivateVpcConnections `json:"ReversePrivateVpcConnections,omitempty" xml:"ReversePrivateVpcConnections,omitempty" type:"Repeated"`
 }
 
@@ -4119,15 +5518,22 @@ func (s *GetServiceInstanceResponseBodyNetworkConfig) SetReversePrivateVpcConnec
 }
 
 type GetServiceInstanceResponseBodyNetworkConfigPrivateVpcConnections struct {
+	// The network configurations, which are mainly used for the private connection.
 	ConnectionConfigs []*GetServiceInstanceResponseBodyNetworkConfigPrivateVpcConnectionsConnectionConfigs `json:"ConnectionConfigs,omitempty" xml:"ConnectionConfigs,omitempty" type:"Repeated"`
+	// The ID of the endpoint for the private connection.
+	//
 	// example:
 	//
 	// ep-m5ei37240541816b****
 	EndpointId *string `json:"EndpointId,omitempty" xml:"EndpointId,omitempty"`
+	// The ID of the endpoint service for the private connection.
+	//
 	// example:
 	//
 	// epsrv-5ei07324541816bxxxx
 	EndpointServiceId *string `json:"EndpointServiceId,omitempty" xml:"EndpointServiceId,omitempty"`
+	// The custom domain name.
+	//
 	// example:
 	//
 	// test.computenest.aliyuncs.com
@@ -4163,19 +5569,58 @@ func (s *GetServiceInstanceResponseBodyNetworkConfigPrivateVpcConnections) SetPr
 }
 
 type GetServiceInstanceResponseBodyNetworkConfigPrivateVpcConnectionsConnectionConfigs struct {
-	ConnectBandwidth *int32    `json:"ConnectBandwidth,omitempty" xml:"ConnectBandwidth,omitempty"`
-	DomainName       *string   `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	EndpointIps      []*string `json:"EndpointIps,omitempty" xml:"EndpointIps,omitempty" type:"Repeated"`
+	// The bandwidth limit for the private connection established based on the private network interconnection mode of Compute Nest.
+	//
+	// example:
+	//
+	// 1536Mbps
+	ConnectBandwidth *int32 `json:"ConnectBandwidth,omitempty" xml:"ConnectBandwidth,omitempty"`
+	// The domain name.
+	//
+	// example:
+	//
+	// example.com
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// The IP addresses of the endpoints for private connections.
+	EndpointIps []*string `json:"EndpointIps,omitempty" xml:"EndpointIps,omitempty" type:"Repeated"`
+	// The status of the Ingress endpoint. Valid values:
+	//
+	// 	- Ready: The Ingress endpoint is connected.
+	//
+	// 	- Pending: The Ingress endpoint is being connected.
+	//
+	// 	- Failed: The Ingress endpoint fails to be connected.
+	//
+	// 	- Deleted: The Ingress endpoint is deleted.
+	//
+	// 	- Deleting: The Ingress endpoint is being deleted.
+	//
 	// example:
 	//
 	// Ready
 	IngressEndpointStatus *string `json:"IngressEndpointStatus,omitempty" xml:"IngressEndpointStatus,omitempty"`
+	// The status of the network service. Valid values:
+	//
+	// 	- Ready: The network service is connected.
+	//
+	// 	- Pending: The network service is being connected.
+	//
+	// 	- Failed: The network service fails to be connected.
+	//
+	// 	- Deleted: The network service is deleted.
+	//
+	// 	- Deleting: The network service is being deleted.
+	//
 	// example:
 	//
 	// Ready
-	NetworkServiceStatus *string   `json:"NetworkServiceStatus,omitempty" xml:"NetworkServiceStatus,omitempty"`
-	SecurityGroups       []*string `json:"SecurityGroups,omitempty" xml:"SecurityGroups,omitempty" type:"Repeated"`
-	VSwitches            []*string `json:"VSwitches,omitempty" xml:"VSwitches,omitempty" type:"Repeated"`
+	NetworkServiceStatus *string `json:"NetworkServiceStatus,omitempty" xml:"NetworkServiceStatus,omitempty"`
+	// The names of the security groups.
+	SecurityGroups []*string `json:"SecurityGroups,omitempty" xml:"SecurityGroups,omitempty" type:"Repeated"`
+	// The names of the vSwitches.
+	VSwitches []*string `json:"VSwitches,omitempty" xml:"VSwitches,omitempty" type:"Repeated"`
+	// The virtual private cloud (VPC) ID.
+	//
 	// example:
 	//
 	// vpc-bp1vwnn14rqpyiczj****
@@ -4231,10 +5676,14 @@ func (s *GetServiceInstanceResponseBodyNetworkConfigPrivateVpcConnectionsConnect
 }
 
 type GetServiceInstanceResponseBodyNetworkConfigReversePrivateVpcConnections struct {
+	// The ID of the endpoint for the reverse private connection.
+	//
 	// example:
 	//
 	// ep-m5ei42370541816b****
 	EndpointId *string `json:"EndpointId,omitempty" xml:"EndpointId,omitempty"`
+	// The ID of the endpoint service for the reverse private connection.
+	//
 	// example:
 	//
 	// epsrv-5ei07324541816bxxxx
@@ -4260,46 +5709,107 @@ func (s *GetServiceInstanceResponseBodyNetworkConfigReversePrivateVpcConnections
 }
 
 type GetServiceInstanceResponseBodyService struct {
+	// The storage configurations of the service. The format in which the deployment information of a service is stored varies based on the deployment type of the service. In this case, the deployment information is stored in the JSON string format.
 	DeployMetadata *string `json:"DeployMetadata,omitempty" xml:"DeployMetadata,omitempty"`
+	// The deployment type of the service. Valid values:
+	//
+	// 	- ros: The service is deployed by using Resource Orchestration Service (ROS).
+	//
+	// 	- terraform: The service is deployed by using Terraform.
+	//
+	// 	- ack: The service is deployed by using Container Service for Kubernetes (ACK).
+	//
+	// 	- spi: The service is deployed by calling a service provider interface (SPI).
+	//
+	// 	- operation: The service is deployed by using a hosted O\\&M service.
+	//
 	// example:
 	//
 	// ros
 	DeployType *string `json:"DeployType,omitempty" xml:"DeployType,omitempty"`
+	// The time when the service was published.
+	//
 	// example:
 	//
 	// 2021-05-21T00:00:00Z
 	PublishTime *string `json:"PublishTime,omitempty" xml:"PublishTime,omitempty"`
+	// The URL of the service documentation.
+	//
 	// example:
 	//
 	// http://example.com
 	ServiceDocUrl *string `json:"ServiceDocUrl,omitempty" xml:"ServiceDocUrl,omitempty"`
+	// The service ID.
+	//
 	// example:
 	//
 	// service-9c8a3522528b4fe8****
-	ServiceId    *string                                              `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	// The information about the service.
 	ServiceInfos []*GetServiceInstanceResponseBodyServiceServiceInfos `json:"ServiceInfos,omitempty" xml:"ServiceInfos,omitempty" type:"Repeated"`
+	// The URL of the service page.
+	//
 	// example:
 	//
 	// https://service-info-private.oss-cn-hangzhou.aliyuncs.com
 	ServiceProductUrl *string `json:"ServiceProductUrl,omitempty" xml:"ServiceProductUrl,omitempty"`
+	// The type of the service. Valid values:
+	//
+	// 	- private: The service is a private service and is deployed within the account of a customer.
+	//
+	// 	- managed: The service is a fully managed service and is deployed within the account of a service provider.
+	//
+	// 	- operation: The service is a hosted O\\&M service.
+	//
 	// example:
 	//
 	// private
 	ServiceType *string `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
+	// The status of the service. Valid values:
+	//
+	// Draft: The registration request of the service is pending to be submitted.
+	//
+	// Submitted: The registration request of the service is submitted.
+	//
+	// Approved: The registration request of the service is approved.
+	//
+	// Online: The service is published.
+	//
+	// Offline: The service is unpublished.
+	//
+	// Deleted: The service is deleted.
+	//
+	// Launching: The service is being published.
+	//
 	// example:
 	//
 	// Online
-	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The name of the service provider.
+	//
+	// example:
+	//
+	// Alibaba Cloud
 	SupplierName *string `json:"SupplierName,omitempty" xml:"SupplierName,omitempty"`
+	// The URL of the service provider.
+	//
 	// example:
 	//
 	// http://example.com
-	SupplierUrl               *string   `json:"SupplierUrl,omitempty" xml:"SupplierUrl,omitempty"`
+	SupplierUrl *string `json:"SupplierUrl,omitempty" xml:"SupplierUrl,omitempty"`
+	// The service versions that can be updated.
 	UpgradableServiceVersions []*string `json:"UpgradableServiceVersions,omitempty" xml:"UpgradableServiceVersions,omitempty" type:"Repeated"`
+	// The service version.
+	//
 	// example:
 	//
 	// 1
-	Version     *string `json:"Version,omitempty" xml:"Version,omitempty"`
+	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
+	// The custom version name defined by the service provider.
+	//
+	// example:
+	//
+	// 20231127020225
 	VersionName *string `json:"VersionName,omitempty" xml:"VersionName,omitempty"`
 }
 
@@ -4382,15 +5892,29 @@ func (s *GetServiceInstanceResponseBodyService) SetVersionName(v string) *GetSer
 }
 
 type GetServiceInstanceResponseBodyServiceServiceInfos struct {
+	// The URL of the service icon.
+	//
 	// example:
 	//
 	// https://example.com/service-image/c1c4a559-cc60-4af1-b976-98f356602462.png
 	Image *string `json:"Image,omitempty" xml:"Image,omitempty"`
+	// The language of the service instance.
+	//
 	// example:
 	//
 	// zh-CN
-	Locale           *string `json:"Locale,omitempty" xml:"Locale,omitempty"`
-	Name             *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Locale *string `json:"Locale,omitempty" xml:"Locale,omitempty"`
+	// The service name.
+	//
+	// example:
+	//
+	// WordPress
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The description of the service.
+	//
+	// example:
+	//
+	// B是A公司自主设计并研发的开源分布式的关系型数据库
 	ShortDescription *string `json:"ShortDescription,omitempty" xml:"ShortDescription,omitempty"`
 }
 
@@ -4423,10 +5947,14 @@ func (s *GetServiceInstanceResponseBodyServiceServiceInfos) SetShortDescription(
 }
 
 type GetServiceInstanceResponseBodyTags struct {
+	// The tag key.
+	//
 	// example:
 	//
 	// key1
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value.
+	//
 	// example:
 	//
 	// value1
@@ -4481,42 +6009,67 @@ func (s *GetServiceInstanceResponse) SetBody(v *GetServiceInstanceResponseBody) 
 }
 
 type GetServiceTemplateParameterConstraintsRequest struct {
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+	//
 	// example:
 	//
 	// 10CM943JP0EN9D51H
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The ID of the region in which the service instance is deployed.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-huhehaote
 	DeployRegionId *string `json:"DeployRegionId,omitempty" xml:"DeployRegionId,omitempty"`
+	// Specifies whether to enable the private connection feature. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
 	// example:
 	//
 	// true
-	EnablePrivateVpcConnection *bool                                                      `json:"EnablePrivateVpcConnection,omitempty" xml:"EnablePrivateVpcConnection,omitempty"`
-	Parameters                 []*GetServiceTemplateParameterConstraintsRequestParameters `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Repeated"`
+	EnablePrivateVpcConnection *bool `json:"EnablePrivateVpcConnection,omitempty" xml:"EnablePrivateVpcConnection,omitempty"`
+	// The parameters in the template.
+	Parameters []*GetServiceTemplateParameterConstraintsRequestParameters `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Repeated"`
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The service ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// service-1c11f365190c44xxxxxx
 	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	// The ID of the service instance.
+	//
 	// example:
 	//
 	// si-d6ab3a63ccbb4b17****
 	ServiceInstanceId *string `json:"ServiceInstanceId,omitempty" xml:"ServiceInstanceId,omitempty"`
+	// The service version.
+	//
 	// example:
 	//
 	// draft
 	ServiceVersion *string `json:"ServiceVersion,omitempty" xml:"ServiceVersion,omitempty"`
+	// The template name.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 模板1
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
 }
 
@@ -4574,10 +6127,14 @@ func (s *GetServiceTemplateParameterConstraintsRequest) SetTemplateName(v string
 }
 
 type GetServiceTemplateParameterConstraintsRequestParameters struct {
+	// The parameter name.
+	//
 	// example:
 	//
 	// PayType
 	ParameterKey *string `json:"ParameterKey,omitempty" xml:"ParameterKey,omitempty"`
+	// The parameter value.
+	//
 	// example:
 	//
 	// PostPaid
@@ -4603,8 +6160,12 @@ func (s *GetServiceTemplateParameterConstraintsRequestParameters) SetParameterVa
 }
 
 type GetServiceTemplateParameterConstraintsResponseBody struct {
-	FamilyConstraints    []*string                                                                 `json:"FamilyConstraints,omitempty" xml:"FamilyConstraints,omitempty" type:"Repeated"`
+	// The constraint families.
+	FamilyConstraints []*string `json:"FamilyConstraints,omitempty" xml:"FamilyConstraints,omitempty" type:"Repeated"`
+	// The parameters in the template.
 	ParameterConstraints []*GetServiceTemplateParameterConstraintsResponseBodyParameterConstraints `json:"ParameterConstraints,omitempty" xml:"ParameterConstraints,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// C81C0732-DEBC-559C-B563-7EB2BEB21088
@@ -4635,21 +6196,40 @@ func (s *GetServiceTemplateParameterConstraintsResponseBody) SetRequestId(v stri
 }
 
 type GetServiceTemplateParameterConstraintsResponseBodyParameterConstraints struct {
-	AllowedValues             []*string `json:"AllowedValues,omitempty" xml:"AllowedValues,omitempty" type:"Repeated"`
+	// The valid values of the parameter.
+	AllowedValues []*string `json:"AllowedValues,omitempty" xml:"AllowedValues,omitempty" type:"Repeated"`
+	// The names of the associated parameters.
 	AssociationParameterNames []*string `json:"AssociationParameterNames,omitempty" xml:"AssociationParameterNames,omitempty" type:"Repeated"`
+	// The behavior of the parameter. Valid values:
+	//
+	// 	- NoLimit: The value of this parameter is not limited.
+	//
+	// 	- NotSupport: The value of this parameter cannot be queried.
+	//
+	// 	- QueryError: The query failed.
+	//
+	// >  If AllowedValues is not returned, Behavior and BehaviorReason are returned.
+	//
 	// example:
 	//
 	// NoLimit
 	Behavior *string `json:"Behavior,omitempty" xml:"Behavior,omitempty"`
+	// The reason why the behavior of the parameter is returned.
+	//
 	// example:
 	//
 	// none
-	BehaviorReason      *string                                                                                      `json:"BehaviorReason,omitempty" xml:"BehaviorReason,omitempty"`
+	BehaviorReason *string `json:"BehaviorReason,omitempty" xml:"BehaviorReason,omitempty"`
+	// The original constraint information.
 	OriginalConstraints []*GetServiceTemplateParameterConstraintsResponseBodyParameterConstraintsOriginalConstraints `json:"OriginalConstraints,omitempty" xml:"OriginalConstraints,omitempty" type:"Repeated"`
+	// The name of the parameter.
+	//
 	// example:
 	//
 	// PayType
 	ParameterKey *string `json:"ParameterKey,omitempty" xml:"ParameterKey,omitempty"`
+	// The type of the parameter.
+	//
 	// example:
 	//
 	// String
@@ -4700,15 +6280,22 @@ func (s *GetServiceTemplateParameterConstraintsResponseBodyParameterConstraints)
 }
 
 type GetServiceTemplateParameterConstraintsResponseBodyParameterConstraintsOriginalConstraints struct {
+	// The valid values of the parameter.
 	AllowedValues []*string `json:"AllowedValues,omitempty" xml:"AllowedValues,omitempty" type:"Repeated"`
+	// The property name.
+	//
 	// example:
 	//
 	// lnch_Source
 	PropertyName *string `json:"PropertyName,omitempty" xml:"PropertyName,omitempty"`
+	// The resource name.
+	//
 	// example:
 	//
 	// i-8vb0smn1lf6g77md****
 	ResourceName *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
+	// The resource type.
+	//
 	// example:
 	//
 	// serviceinstance
@@ -4773,8 +6360,19 @@ func (s *GetServiceTemplateParameterConstraintsResponse) SetBody(v *GetServiceTe
 }
 
 type GetUploadCredentialsRequest struct {
+	// The file name to upload.
+	//
 	// This parameter is required.
-	FileName   *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	//
+	// example:
+	//
+	// template.yaml
+	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	// Specifies whether the file is publicly accessible. Valid values: **public*	- or **private**. The default value is **private**.
+	//
+	// example:
+	//
+	// public
 	Visibility *string `json:"Visibility,omitempty" xml:"Visibility,omitempty"`
 }
 
@@ -4797,23 +6395,34 @@ func (s *GetUploadCredentialsRequest) SetVisibility(v string) *GetUploadCredenti
 }
 
 type GetUploadCredentialsResponseBody struct {
+	// The response code.
+	//
 	// example:
 	//
 	// 200
-	Code *string                               `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The response parameters.
 	Data *GetUploadCredentialsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The message returned.
+	//
 	// example:
 	//
 	// Success.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// FCC3321E-D518-1BC4-861E-588E9D4DAFB7
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. A value of true indicates the request was successful. A value of false indicates the request failed.
+	//
 	// example:
 	//
 	// true
@@ -4859,30 +6468,44 @@ func (s *GetUploadCredentialsResponseBody) SetSuccess(v bool) *GetUploadCredenti
 }
 
 type GetUploadCredentialsResponseBodyData struct {
+	// The AccessKey ID.
+	//
 	// example:
 	//
 	// STS.NUCe19W1FKaHAYAhe********
 	AccessKeyId *string `json:"AccessKeyId,omitempty" xml:"AccessKeyId,omitempty"`
+	// The AccessKey secret.
+	//
 	// example:
 	//
 	// 8LQGp59mY23pcXeTdcvSA1cUQZBeD92sFrXi********
 	AccessKeySecret *string `json:"AccessKeySecret,omitempty" xml:"AccessKeySecret,omitempty"`
+	// The bucket name.
+	//
 	// example:
 	//
 	// service-info-private
 	BucketName *string `json:"BucketName,omitempty" xml:"BucketName,omitempty"`
+	// The time when the AccessKey pair expires.
+	//
 	// example:
 	//
 	// 2023-05-18T12:27:59Z
 	ExpireDate *string `json:"ExpireDate,omitempty" xml:"ExpireDate,omitempty"`
+	// The name of the key.
+	//
 	// example:
 	//
 	// 221514575922756034/cn-hangzhou/d57c62fbd508xxxxxxxx.json
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The security token.
+	//
 	// example:
 	//
 	// CAISzQN1q6Ft5B2yfSjIr5b2LouNuu5n/KOjQ3/wjGUHYdlagYGdmzz2IH1Le3NrBO8esfgymGFU6v8dlo1dYLQeHhadQI5cs80HtFqLSNaE65LswPlZ2M2ISETPJzfV9pCK
@@ -4962,18 +6585,30 @@ func (s *GetUploadCredentialsResponse) SetBody(v *GetUploadCredentialsResponseBo
 }
 
 type ListAcrImageRepositoriesRequest struct {
+	// The type of the artifact. Default value: AcrImage. Valid values:
+	//
+	// 	- HelmChart: Helm chart image.
+	//
+	// 	- AcrImage: container image.
+	//
 	// example:
 	//
 	// AcrImage
 	ArtifactType *string `json:"ArtifactType,omitempty" xml:"ArtifactType,omitempty"`
+	// The number of entries per page. Valid values: 1 to 100. Default value: 20.
+	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The pagination token that is used in the next request to retrieve a new page of results.
+	//
 	// example:
 	//
 	// AAAAAWns8w4MmhzeptXVRG0PUEU=
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The name of the image repository.
+	//
 	// example:
 	//
 	// wordpress
@@ -5009,19 +6644,28 @@ func (s *ListAcrImageRepositoriesRequest) SetRepoName(v string) *ListAcrImageRep
 }
 
 type ListAcrImageRepositoriesResponseBody struct {
+	// The number of entries per page. Valid values: 1 to 100. Default value: 20.
+	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// A pagination token.
+	//
 	// example:
 	//
 	// AAAAAfu+XtuBE55iRLHEYYuojI4=
-	NextToken    *string                                             `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The images.
 	Repositories []*ListAcrImageRepositoriesResponseBodyRepositories `json:"Repositories,omitempty" xml:"Repositories,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// C4A145D8-6F6C-532A-9001-9730CDA27578
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	//
 	// example:
 	//
 	// 4
@@ -5062,18 +6706,26 @@ func (s *ListAcrImageRepositoriesResponseBody) SetTotalCount(v int32) *ListAcrIm
 }
 
 type ListAcrImageRepositoriesResponseBodyRepositories struct {
+	// The time when the image was created.
+	//
 	// example:
 	//
 	// 2021-05-20T00:00:00Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The time when the image was modified.
+	//
 	// example:
 	//
 	// 2021-05-20T00:00:00Z
 	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
+	// The image repo ID.
+	//
 	// example:
 	//
 	// crr-3gqhkza0wbxxxxxx
 	RepoId *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
+	// The image repo name.
+	//
 	// example:
 	//
 	// wordpress
@@ -5138,18 +6790,30 @@ func (s *ListAcrImageRepositoriesResponse) SetBody(v *ListAcrImageRepositoriesRe
 }
 
 type ListAcrImageTagsRequest struct {
+	// The type of the deployment package. Default value: AcrImage. Valid values:
+	//
+	// 	- HelmChart: Helm chart image.
+	//
+	// 	- AcrImage: container image.
+	//
 	// example:
 	//
 	// AcrImage
 	ArtifactType *string `json:"ArtifactType,omitempty" xml:"ArtifactType,omitempty"`
+	// The number of entries per page. Valid values: 1 to 100. Default value: 20.
+	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The pagination token that is used in the next request to retrieve a new page of results.
+	//
 	// example:
 	//
 	// AAAAAW8kZY+u1sYOaYf5JmgmDQQ=
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The image ID.
+	//
 	// example:
 	//
 	// crr-3gqhkza0wbxxxxxx
@@ -5185,19 +6849,28 @@ func (s *ListAcrImageTagsRequest) SetRepoId(v string) *ListAcrImageTagsRequest {
 }
 
 type ListAcrImageTagsResponseBody struct {
+	// The list of images.
 	Images []*ListAcrImageTagsResponseBodyImages `json:"Images,omitempty" xml:"Images,omitempty" type:"Repeated"`
+	// The number of entries per page. Valid values: 1 to 100. Default value: 20.
+	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The pagination token that is used in the next request to retrieve a new page of results.
+	//
 	// example:
 	//
 	// ey14..
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// FEF343B9-1A15-5789-BE88-7B36190F5BF6
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	//
 	// example:
 	//
 	// 1
@@ -5238,18 +6911,26 @@ func (s *ListAcrImageTagsResponseBody) SetTotalCount(v int32) *ListAcrImageTagsR
 }
 
 type ListAcrImageTagsResponseBodyImages struct {
+	// The time when the image was created.
+	//
 	// example:
 	//
 	// 2021-05-20T00:00:00Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The image size. Unit: bytes.
+	//
 	// example:
 	//
 	// 188394616
 	ImageSize *string `json:"ImageSize,omitempty" xml:"ImageSize,omitempty"`
+	// The time when the image was modified.
+	//
 	// example:
 	//
 	// 2021-05-20T00:00:00Z
 	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
+	// The image version.
+	//
 	// example:
 	//
 	// 5.7.2
@@ -5314,13 +6995,22 @@ func (s *ListAcrImageTagsResponse) SetBody(v *ListAcrImageTagsResponseBody) *Lis
 }
 
 type ListArtifactVersionsRequest struct {
+	// The ID of the deployment package.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// artifact-eea08d1e2d3a43aexxxx
 	ArtifactId *string `json:"ArtifactId,omitempty" xml:"ArtifactId,omitempty"`
-	MaxResults *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The number of entries per page. Valid values: 1 to 100. Default value: 20.
+	//
+	// example:
+	//
+	// 20
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of NextToken.
+	//
 	// example:
 	//
 	// AAAAAc3HCuYhJi/wvpk4xOr0VLbfVwapgMwCN1wYzPVzLbItEdB0uWSY7AGnM3qCgm/YnjuEfwSnMwiMkcUoI0hRQzE=
@@ -5351,19 +7041,28 @@ func (s *ListArtifactVersionsRequest) SetNextToken(v string) *ListArtifactVersio
 }
 
 type ListArtifactVersionsResponseBody struct {
+	// The version information about the deployment package.
 	Artifacts []*ListArtifactVersionsResponseBodyArtifacts `json:"Artifacts,omitempty" xml:"Artifacts,omitempty" type:"Repeated"`
+	// The number of entries per page. Valid values: 1 to 100. Default value: 20.
+	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The returned value of NextToken is a pagination token, which can be used in the next request to retrieve a new page of results.
+	//
 	// example:
 	//
 	// AAAAAc3HCuYhJi/wvpk4xOr0VLbfVwapgMwCN1wYzPVzLbItEdB0uWSY7AGnM3qCgm/YnjuEfwSnMwiMkcUoI0hRQzE=
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 46577928-3162-15A6-9084-69820EB9xxxx
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	//
 	// example:
 	//
 	// 2
@@ -5404,44 +7103,88 @@ func (s *ListArtifactVersionsResponseBody) SetTotalCount(v int32) *ListArtifactV
 }
 
 type ListArtifactVersionsResponseBodyArtifacts struct {
+	// The ID of the deployment package.
+	//
 	// example:
 	//
 	// artifact-eea08d1e2d3a43aexxxx
 	ArtifactId *string `json:"ArtifactId,omitempty" xml:"ArtifactId,omitempty"`
+	// The properties of the deployment package.
+	//
 	// example:
 	//
 	// {\\"CommodityCode\\":\\"cmjj0005xxxx\\",\\"CommodityVersion\\":\\"V2022xxxx\\"}
 	ArtifactProperty *string `json:"ArtifactProperty,omitempty" xml:"ArtifactProperty,omitempty"`
+	// The type of the deployment package.
+	//
 	// example:
 	//
 	// EcsImage
 	ArtifactType *string `json:"ArtifactType,omitempty" xml:"ArtifactType,omitempty"`
+	// The version of the deployment package.
+	//
 	// example:
 	//
 	// 2
 	ArtifactVersion *string `json:"ArtifactVersion,omitempty" xml:"ArtifactVersion,omitempty"`
+	// The time when the certificate was created.
+	//
 	// example:
 	//
 	// 2022-10-20T02:19:53Z
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// The time when the deployment package was modified.
+	//
 	// example:
 	//
 	// 2022-10-20T02:19:55Z
-	GmtModified   *string            `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// The distribution result of the image.
 	ImageDelivery map[string]*string `json:"ImageDelivery,omitempty" xml:"ImageDelivery,omitempty"`
+	// The distribution progress of the deployment package.
+	//
 	// example:
 	//
 	// 100
-	Progress   *string `json:"Progress,omitempty" xml:"Progress,omitempty"`
+	Progress *string `json:"Progress,omitempty" xml:"Progress,omitempty"`
+	// The result file of the security scan.
+	//
+	// example:
+	//
+	// https://compute-nest-security-audit-bucket-ap-southeast-1.oss-ap-southeast-1.aliyuncs.com/51416747xxxx/xxxx
 	ResultFile *string `json:"ResultFile,omitempty" xml:"ResultFile,omitempty"`
+	// The result of the security scan. Valid values:
+	//
+	// 	- Normal: No risks exist on the deployment package.
+	//
+	// 	- AtRisk: Risks exist on the deployment package.
+	//
+	// 	- Processing: The deployment package is being scanned.
+	//
 	// example:
 	//
 	// Normal
 	SecurityAuditResult *string `json:"SecurityAuditResult,omitempty" xml:"SecurityAuditResult,omitempty"`
+	// The status of the deployment package. Valid values:
+	//
+	// 	- Created: The deployment package is created.
+	//
+	// 	- Scanning: The deployment package is being scanned.
+	//
+	// 	- ScanFailed: The deployment package failed to be scanned.
+	//
+	// 	- Delivering: The deployment package is being distributed.
+	//
+	// 	- Available: The deployment package is available.
+	//
+	// 	- Deleted: The deployment package is deleted.
+	//
 	// example:
 	//
 	// Available
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The ID of the region that supports the deployment package.
+	//
 	// example:
 	//
 	// [
@@ -5454,6 +7197,8 @@ type ListArtifactVersionsResponseBodyArtifacts struct {
 	//
 	// 				]
 	SupportRegionIds *string `json:"SupportRegionIds,omitempty" xml:"SupportRegionIds,omitempty"`
+	// The version name of the deployment package.
+	//
 	// example:
 	//
 	// v1
@@ -5563,17 +7308,28 @@ func (s *ListArtifactVersionsResponse) SetBody(v *ListArtifactVersionsResponseBo
 }
 
 type ListArtifactsRequest struct {
+	// The filter.
 	Filter []*ListArtifactsRequestFilter `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Repeated"`
+	// The number of entries per page. Valid values: 1 to 100. Default value: 20.
+	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of NextToken.
+	//
 	// example:
 	//
 	// AAAAAc3HCuYhJi/wvpk4xOr0VLbfVwapgMwCN1wYzPVzLbItEdB0uWSY7AGnM3qCgm/YnjuEfwSnMwiMkcUoI0hRQzE=
-	NextToken       *string                    `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	ResourceGroupId *string                    `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	Tag             []*ListArtifactsRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The ID of the resource group.
+	//
+	// example:
+	//
+	// rg-aek25yfxxxxxxxx
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The tags.
+	Tag []*ListArtifactsRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s ListArtifactsRequest) String() string {
@@ -5610,10 +7366,19 @@ func (s *ListArtifactsRequest) SetTag(v []*ListArtifactsRequestTag) *ListArtifac
 }
 
 type ListArtifactsRequestFilter struct {
+	// The parameter name of the filter. You can specify one or more filters. Valid values:
+	//
+	// 	- *Name*: The name of the deployment package. Fuzzy match is used.
+	//
+	// 	- ArtifactId: The ID of the deployment package.
+	//
+	// 	- ArtifactType: The type of the deployment package.
+	//
 	// example:
 	//
 	// ArtifactType
-	Name   *string   `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The parameter values of the filter.
 	Values []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
 }
 
@@ -5636,7 +7401,17 @@ func (s *ListArtifactsRequestFilter) SetValues(v []*string) *ListArtifactsReques
 }
 
 type ListArtifactsRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag key.
+	//
+	// example:
+	//
+	// key1
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value.
+	//
+	// example:
+	//
+	// value1
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -5659,19 +7434,28 @@ func (s *ListArtifactsRequestTag) SetValue(v string) *ListArtifactsRequestTag {
 }
 
 type ListArtifactsResponseBody struct {
+	// The information about deployment packages.
 	Artifacts []*ListArtifactsResponseBodyArtifacts `json:"Artifacts,omitempty" xml:"Artifacts,omitempty" type:"Repeated"`
+	// The number of entries per page. Valid values: 1 to 100. Default value: 20.
+	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The returned value of NextToken is a pagination token, which can be used in the next request to retrieve a new page of results.
+	//
 	// example:
 	//
 	// AAAAAc3HCuYhJi/wvpk4xOr0VLbfVwapgMwCN1wYzPVzLbItEdB0uWSY7AGnM3qCgm/YnjuEfwSnMwiMkcUoI0hRQzE=
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 46577928-3162-15A6-9084-69820EB9xxxx
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	//
 	// example:
 	//
 	// 2
@@ -5712,30 +7496,68 @@ func (s *ListArtifactsResponseBody) SetTotalCount(v int32) *ListArtifactsRespons
 }
 
 type ListArtifactsResponseBodyArtifacts struct {
+	// The ID of the deployment package.
+	//
 	// example:
 	//
 	// artifact-eea08d1e2d3a43aexxxx
 	ArtifactId *string `json:"ArtifactId,omitempty" xml:"ArtifactId,omitempty"`
+	// The type of the deployment package.
+	//
 	// example:
 	//
 	// EcsImage
 	ArtifactType *string `json:"ArtifactType,omitempty" xml:"ArtifactType,omitempty"`
-	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The description of the deployment package.
+	//
+	// example:
+	//
+	// Description
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The time when the deployment package was modified.
+	//
 	// example:
 	//
 	// 2022-10-20T02:19:55Z
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// The latest version of the deployment package.
+	//
 	// example:
 	//
 	// 2
-	MaxVersion      *string `json:"MaxVersion,omitempty" xml:"MaxVersion,omitempty"`
-	Name            *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	MaxVersion *string `json:"MaxVersion,omitempty" xml:"MaxVersion,omitempty"`
+	// The name of the deployment package.
+	//
+	// example:
+	//
+	// Name
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The ID of the resource group.
+	//
+	// example:
+	//
+	// rg-aek25rexxxxxxxx
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The status of the deployment package. Valid values:
+	//
+	// 	- Created: The deployment package is created.
+	//
+	// 	- Scanning: The deployment package is being scanned.
+	//
+	// 	- ScanFailed: The deployment package failed to be scanned.
+	//
+	// 	- Delivering: The deployment package is being distributed.
+	//
+	// 	- Available: The deployment package is available.
+	//
+	// 	- Deleted: The deployment package is deleted.
+	//
 	// example:
 	//
 	// Created
-	Status *string                                   `json:"Status,omitempty" xml:"Status,omitempty"`
-	Tags   []*ListArtifactsResponseBodyArtifactsTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The tags.
+	Tags []*ListArtifactsResponseBodyArtifactsTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
 func (s ListArtifactsResponseBodyArtifacts) String() string {
@@ -5792,7 +7614,17 @@ func (s *ListArtifactsResponseBodyArtifacts) SetTags(v []*ListArtifactsResponseB
 }
 
 type ListArtifactsResponseBodyArtifactsTags struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag key.
+	//
+	// example:
+	//
+	// key1
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value.
+	//
+	// example:
+	//
+	// value1
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -5844,25 +7676,44 @@ func (s *ListArtifactsResponse) SetBody(v *ListArtifactsResponseBody) *ListArtif
 }
 
 type ListServiceInstancesRequest struct {
+	// The filter.
 	Filter []*ListServiceInstancesRequestFilter `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Repeated"`
+	// The number of entries per page. Valid values: 1 to 100. Default value: 20.
+	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of NextToken.
+	//
 	// example:
 	//
 	// BBBAAfu+XtuBE55iRLHEYYuojI4=
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou
-	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the resource group.
+	//
+	// example:
+	//
+	// rg-aekzkt5buxxxxxx
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// Specifies whether to display the information that the service instance is deleted. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
 	// example:
 	//
 	// false
-	ShowDeleted *bool                             `json:"ShowDeleted,omitempty" xml:"ShowDeleted,omitempty"`
-	Tag         []*ListServiceInstancesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	ShowDeleted *bool `json:"ShowDeleted,omitempty" xml:"ShowDeleted,omitempty"`
+	// The custom tags.
+	Tag []*ListServiceInstancesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s ListServiceInstancesRequest) String() string {
@@ -5909,10 +7760,43 @@ func (s *ListServiceInstancesRequest) SetTag(v []*ListServiceInstancesRequestTag
 }
 
 type ListServiceInstancesRequestFilter struct {
+	// The parameter name of the filter. You can specify one or more filters. Valid values:
+	//
+	// 	- Name: The service name. If you want to perform a fuzzy match, specify the service name in the *xxx	- format. For example, if the service name is My Service, you can set the filter value to *My	- or *Service*.
+	//
+	// 	- ServiceInstanceId: The ID of the service instance.
+	//
+	// 	- ServiceId: The service ID.
+	//
+	// 	- UserId: The user ID.
+	//
+	// 	- Version: The service version.
+	//
+	// 	- Status: The status of the service instance.
+	//
+	// 	- DeployType: The deployment type of the service.
+	//
+	// 	- ServiceType: The service type.
+	//
+	// 	- OperationStartTimeBefore: The time before the hosted O\\&M starts.
+	//
+	// 	- OperationStartTimeAfter: The time after the hosted O\\&M starts.
+	//
+	// 	- OperationEndTimeBefore: The time before the hosted O\\&M ends.
+	//
+	// 	- OperationEndTimeAfter: The time after the hosted O\\&M ends.
+	//
+	// 	- OperatedServiceInstanceId: The ID of the hosted O\\&M instance that belongs to a private service.
+	//
+	// 	- OperationServiceInstanceId: The ID of the hosted O\\&M service instance that belongs to a hosted O\\&M service.
+	//
+	// 	- EnableInstanceOps: Whether the hosted O\\&M feature is enabled for service instances.
+	//
 	// example:
 	//
 	// ServiceInstanceId
-	Name  *string   `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The parameter values of the filter.
 	Value []*string `json:"Value,omitempty" xml:"Value,omitempty" type:"Repeated"`
 }
 
@@ -5935,10 +7819,14 @@ func (s *ListServiceInstancesRequestFilter) SetValue(v []*string) *ListServiceIn
 }
 
 type ListServiceInstancesRequestTag struct {
+	// The tag key.
+	//
 	// example:
 	//
 	// key1
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value.
+	//
 	// example:
 	//
 	// value1
@@ -5964,19 +7852,28 @@ func (s *ListServiceInstancesRequestTag) SetValue(v string) *ListServiceInstance
 }
 
 type ListServiceInstancesResponseBody struct {
+	// The number of entries per page. Valid values: 1 to 100. Default value: 20.
+	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The returned value of NextToken is a pagination token, which can be used in the next request to retrieve a new page of results.
+	//
 	// example:
 	//
 	// AAAAAfu+XtuBE55iRLHEYYuojI4=
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// E50287CB-AABF-4877-92C0-289B339A1546
-	RequestId        *string                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The information about service instances.
 	ServiceInstances []*ListServiceInstancesResponseBodyServiceInstances `json:"ServiceInstances,omitempty" xml:"ServiceInstances,omitempty" type:"Repeated"`
+	// The total number of entries returned.
+	//
 	// example:
 	//
 	// 100
@@ -6017,79 +7914,178 @@ func (s *ListServiceInstancesResponseBody) SetTotalCount(v int32) *ListServiceIn
 }
 
 type ListServiceInstancesResponseBodyServiceInstances struct {
+	// The business status of the service instance. Valid values:
+	//
+	// 	- Normal: The service instance is normal.
+	//
+	// 	- Renewing: The service instance is being renewed.
+	//
+	// 	- RenewFailed: The service instance failed to be renewed.
+	//
+	// 	- Expired: The service instance expired.
+	//
+	// example:
+	//
+	// Normal
 	BizStatus *string `json:"BizStatus,omitempty" xml:"BizStatus,omitempty"`
+	// The time when the service instance was created.
+	//
 	// example:
 	//
 	// 2021-05-20T00:00:00Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// Indicates whether the service instance supports the hosted O\\&M feature. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
 	// example:
 	//
 	// true
 	EnableInstanceOps *bool `json:"EnableInstanceOps,omitempty" xml:"EnableInstanceOps,omitempty"`
+	// The time when the service instance expires.
+	//
 	// example:
 	//
 	// 2022-01-01T12:00:00
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// Indicates whether the hosted O\\&M feature is enabled for the service instance. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
 	// example:
 	//
 	// true
 	IsOperated *bool `json:"IsOperated,omitempty" xml:"IsOperated,omitempty"`
+	// The name of the service instance.
+	//
 	// example:
 	//
 	// TestName
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The ID of the service instance that is used to implement hosted O\\&M.
+	//
 	// example:
 	//
 	// si-d6ab3a63ccbb4b17****
 	OperatedServiceInstanceId *string `json:"OperatedServiceInstanceId,omitempty" xml:"OperatedServiceInstanceId,omitempty"`
+	// The end of the time range during which hosted O\\&M is implemented.
+	//
 	// example:
 	//
 	// 2021-12-29T06:48:56Z
 	OperationEndTime *string `json:"OperationEndTime,omitempty" xml:"OperationEndTime,omitempty"`
+	// The beginning of the time range during which hosted O\\&M is implemented.
+	//
 	// example:
 	//
 	// 2021-12-29T06:48:56Z
 	OperationStartTime *string `json:"OperationStartTime,omitempty" xml:"OperationStartTime,omitempty"`
+	// The parameters of the service instance.
+	//
 	// example:
 	//
 	// {"param":"value"}
 	Parameters *string `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
+	// The billing method of the service. Valid values:
+	//
+	// 	- Permanent: Once you purchase the service, you can use it permanently.
+	//
+	// 	- Subscription: You purchase the service from Alibaba Cloud Marketplace and are charged for the service on a subscription basis.
+	//
+	// 	- PayAsYouGo: You purchase the service from Alibaba Cloud Marketplace and are charged for the service on a pay-as-you-go basis.
+	//
+	// 	- CustomFixTime: You are charged for the service based on a custom duration fixed by the service provider.
+	//
 	// example:
 	//
 	// Subscription
 	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	// The deployment progress of the service instance. Unit: percentage.
+	//
 	// example:
 	//
 	// 90
-	Progress        *int64                                                   `json:"Progress,omitempty" xml:"Progress,omitempty"`
-	ResourceGroupId *string                                                  `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	Service         *ListServiceInstancesResponseBodyServiceInstancesService `json:"Service,omitempty" xml:"Service,omitempty" type:"Struct"`
+	Progress *int64 `json:"Progress,omitempty" xml:"Progress,omitempty"`
+	// The ID of the resource group.
+	//
+	// example:
+	//
+	// si-d6ab3a63ccxxxxxx
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The information about the service.
+	Service *ListServiceInstancesResponseBodyServiceInstancesService `json:"Service,omitempty" xml:"Service,omitempty" type:"Struct"`
+	// The ID of the service instance.
+	//
 	// example:
 	//
 	// si-d6ab3a63ccbb4b17****
 	ServiceInstanceId *string `json:"ServiceInstanceId,omitempty" xml:"ServiceInstanceId,omitempty"`
+	// The type of the service. Valid values:
+	//
+	// 	- private: The service is a private service and is deployed within the account of a customer.
+	//
+	// 	- managed: The service is a fully managed service and is deployed within the account of a service provider.
+	//
+	// 	- operation: The service is a hosted O\\&M service.
+	//
+	// 	- poc: The service is a trial service.
+	//
 	// example:
 	//
 	// private
 	ServiceType *string `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
+	// The source from which the service instance is created.
+	//
 	// example:
 	//
 	// Supplier
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	// The status of the service instance. Valid values:
+	//
+	// 	- Created
+	//
+	// 	- Deploying
+	//
+	// 	- DeployedFailed
+	//
+	// 	- Deployed
+	//
+	// 	- Upgrading
+	//
+	// 	- Deleting
+	//
+	// 	- Deleted
+	//
 	// example:
 	//
 	// Deployed
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The description of the deployment of the service instance.
+	//
 	// example:
 	//
 	// deploy successfully
-	StatusDetail *string                                                 `json:"StatusDetail,omitempty" xml:"StatusDetail,omitempty"`
-	Tags         []*ListServiceInstancesResponseBodyServiceInstancesTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	TemplateName *string                                                 `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+	StatusDetail *string `json:"StatusDetail,omitempty" xml:"StatusDetail,omitempty"`
+	// The custom tags.
+	Tags []*ListServiceInstancesResponseBodyServiceInstancesTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// The template name.
+	//
+	// example:
+	//
+	// 模板1
+	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+	// The time when the service instance was updated.
+	//
 	// example:
 	//
 	// 2021-05-20T00:00:00Z
 	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// The Alibaba Cloud account ID of the user.
+	//
 	// example:
 	//
 	// 1234567
@@ -6220,42 +8216,97 @@ func (s *ListServiceInstancesResponseBodyServiceInstances) SetUserId(v int64) *L
 }
 
 type ListServiceInstancesResponseBodyServiceInstancesService struct {
+	// The storage configurations of the service. The format in which the deployment information of a service is stored varies based on the deployment type of the service. In this case, the deployment information is stored in the JSON string format.
 	DeployMetadata *string `json:"DeployMetadata,omitempty" xml:"DeployMetadata,omitempty"`
+	// The deployment type of the service. Valid values:
+	//
+	// 	- ros: The service is deployed by using Resource Orchestration Service (ROS).
+	//
+	// 	- terraform: The service is deployed by using Terraform.
+	//
+	// 	- ack: The service is deployed by using Container Service for Kubernetes (ACK).
+	//
+	// 	- spi: The service is deployed by calling a service provider interface (SPI).
+	//
+	// 	- operation: The service is deployed by using a hosted O\\&M service.
+	//
 	// example:
 	//
 	// ros
 	DeployType *string `json:"DeployType,omitempty" xml:"DeployType,omitempty"`
+	// Indicates whether the private connection feature is enabled. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
 	// example:
 	//
 	// false
 	EnablePrivateVpcConnection *bool `json:"EnablePrivateVpcConnection,omitempty" xml:"EnablePrivateVpcConnection,omitempty"`
+	// The time when the service was published.
+	//
 	// example:
 	//
 	// 2021-05-21T00:00:00Z
 	PublishTime *string `json:"PublishTime,omitempty" xml:"PublishTime,omitempty"`
+	// The service ID.
+	//
 	// example:
 	//
 	// service-0e6fca6a51a54420****
-	ServiceId    *string                                                                `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	// The information about the service.
 	ServiceInfos []*ListServiceInstancesResponseBodyServiceInstancesServiceServiceInfos `json:"ServiceInfos,omitempty" xml:"ServiceInfos,omitempty" type:"Repeated"`
+	// The type of the service. Valid values:
+	//
+	// 	- private: The service is a private service and is deployed within the account of a customer.
+	//
+	// 	- managed: The service is a fully managed service and is deployed within the account of a service provider.
+	//
+	// 	- operation: The service is a hosted O\\&M service.
+	//
+	// 	- poc: The service is a trial service.
+	//
 	// example:
 	//
 	// private
-	ServiceType        *string `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
+	ServiceType *string `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
+	// The name of the distribution source service provider.
+	//
+	// example:
+	//
+	// Company A
 	SourceSupplierName *string `json:"SourceSupplierName,omitempty" xml:"SourceSupplierName,omitempty"`
+	// The status of the service.
+	//
 	// example:
 	//
 	// Online
-	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The name of the service provider.
+	//
+	// example:
+	//
+	// Alibaba Cloud
 	SupplierName *string `json:"SupplierName,omitempty" xml:"SupplierName,omitempty"`
+	// The URL of the service provider.
+	//
 	// example:
 	//
 	// http://example.com
 	SupplierUrl *string `json:"SupplierUrl,omitempty" xml:"SupplierUrl,omitempty"`
+	// The service version.
+	//
 	// example:
 	//
 	// 1.0
-	Version     *string `json:"Version,omitempty" xml:"Version,omitempty"`
+	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
+	// The custom version name defined by the service provider.
+	//
+	// example:
+	//
+	// 版本A
 	VersionName *string `json:"VersionName,omitempty" xml:"VersionName,omitempty"`
 }
 
@@ -6333,15 +8384,29 @@ func (s *ListServiceInstancesResponseBodyServiceInstancesService) SetVersionName
 }
 
 type ListServiceInstancesResponseBodyServiceInstancesServiceServiceInfos struct {
+	// The URL of the service icon.
+	//
 	// example:
 	//
 	// https://example.com/service-image/c1c4a559-cc60-4af1-b976-98f356602462.png
 	Image *string `json:"Image,omitempty" xml:"Image,omitempty"`
+	// The language of the service instance.
+	//
 	// example:
 	//
 	// zh-CN
-	Locale           *string `json:"Locale,omitempty" xml:"Locale,omitempty"`
-	Name             *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Locale *string `json:"Locale,omitempty" xml:"Locale,omitempty"`
+	// The service name.
+	//
+	// example:
+	//
+	// WordPress
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The description of the service.
+	//
+	// example:
+	//
+	// B是A公司自主设计并研发的开源分布式的关系型数据库
 	ShortDescription *string `json:"ShortDescription,omitempty" xml:"ShortDescription,omitempty"`
 }
 
@@ -6374,10 +8439,14 @@ func (s *ListServiceInstancesResponseBodyServiceInstancesServiceServiceInfos) Se
 }
 
 type ListServiceInstancesResponseBodyServiceInstancesTags struct {
+	// The tag key.
+	//
 	// example:
 	//
 	// key1
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value.
+	//
 	// example:
 	//
 	// value1
@@ -6432,15 +8501,25 @@ func (s *ListServiceInstancesResponse) SetBody(v *ListServiceInstancesResponseBo
 }
 
 type ListServiceUsagesRequest struct {
+	// The filter.
 	Filter []*ListServiceUsagesRequestFilter `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Repeated"`
+	// The number of entries per page. Valid values: 1 to 100. Default value: 20.
+	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of NextToken.
+	//
 	// example:
 	//
 	// AAAAAWns8w4MmhzeptXVRG0PUEU=
-	NextToken    *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The role of the service provider.
+	//
+	// example:
+	//
+	// Supplier
 	SupplierRole *string `json:"SupplierRole,omitempty" xml:"SupplierRole,omitempty"`
 }
 
@@ -6473,10 +8552,21 @@ func (s *ListServiceUsagesRequest) SetSupplierRole(v string) *ListServiceUsagesR
 }
 
 type ListServiceUsagesRequestFilter struct {
+	// The parameter name of the filter. You can specify one or more filters. Valid values:
+	//
+	// 	- ServiceId: the ID of the service.
+	//
+	// 	- ServiceName: the service name.
+	//
+	// 	- Status: the state of the service.
+	//
+	// 	- SupplierName: the name of the service provider.
+	//
 	// example:
 	//
 	// ServiceId
-	Name  *string   `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The parameter value N of the filter. Valid values of N: 1 to 10.
 	Value []*string `json:"Value,omitempty" xml:"Value,omitempty" type:"Repeated"`
 }
 
@@ -6499,19 +8589,28 @@ func (s *ListServiceUsagesRequestFilter) SetValue(v []*string) *ListServiceUsage
 }
 
 type ListServiceUsagesResponseBody struct {
+	// The number of entries per page. Valid values: 1 to 100. Default value: 20.
+	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The returned value of NextToken is a pagination token, which can be used in the next request to retrieve a new page of results.
+	//
 	// example:
 	//
 	// AAAAAYChudnQUoBH+mGWFpb6oP0=
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 18AD0960-A9FE-1AC8-ADF8-22131Fxxxxxx
-	RequestId     *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The service applications.
 	ServiceUsages []*ListServiceUsagesResponseBodyServiceUsages `json:"ServiceUsages,omitempty" xml:"ServiceUsages,omitempty" type:"Repeated"`
+	// The total number of entries returned.
+	//
 	// example:
 	//
 	// 1
@@ -6552,29 +8651,63 @@ func (s *ListServiceUsagesResponseBody) SetTotalCount(v int32) *ListServiceUsage
 }
 
 type ListServiceUsagesResponseBodyServiceUsages struct {
+	// The comment on the approval.
+	//
+	// example:
+	//
+	// Reject
 	Comments *string `json:"Comments,omitempty" xml:"Comments,omitempty"`
+	// The time when the application was created.
+	//
 	// example:
 	//
 	// 2022-05-25T02:02:02Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The service ID.
+	//
 	// example:
 	//
 	// service-c9f36ec6d19b4exxxxxx
-	ServiceId   *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	// The service name.
+	//
+	// example:
+	//
+	// ServiceTest
 	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
+	// The status of the service application. Valid values:
+	//
+	// 	- Submitted: The application is submitted or is to be approved.
+	//
+	// 	- Approved: The application is approved.
+	//
+	// 	- Rejected: The application is rejected.
+	//
+	// 	- Canceled: The application is canceled.
+	//
 	// example:
 	//
 	// Submitted
-	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The name of the service provider.
+	//
+	// example:
+	//
+	// SupplierAAA
 	SupplierName *string `json:"SupplierName,omitempty" xml:"SupplierName,omitempty"`
+	// The time when the application was updated.
+	//
 	// example:
 	//
 	// 2022-05-25T02:02:02Z
 	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// The ID of the Alibaba Cloud account.
+	//
 	// example:
 	//
 	// 127383705958xxxx
-	UserAliUid      *int64             `json:"UserAliUid,omitempty" xml:"UserAliUid,omitempty"`
+	UserAliUid *int64 `json:"UserAliUid,omitempty" xml:"UserAliUid,omitempty"`
+	// The user information.
 	UserInformation map[string]*string `json:"UserInformation,omitempty" xml:"UserInformation,omitempty"`
 }
 
@@ -6661,27 +8794,42 @@ func (s *ListServiceUsagesResponse) SetBody(v *ListServiceUsagesResponseBody) *L
 }
 
 type ListServicesRequest struct {
+	// Specifies whether to return all versions of a service. Default value: false, which specifies that only the default version of a service is returned.
+	//
 	// example:
 	//
 	// false
-	AllVersions *bool                        `json:"AllVersions,omitempty" xml:"AllVersions,omitempty"`
-	Filter      []*ListServicesRequestFilter `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Repeated"`
+	AllVersions *bool `json:"AllVersions,omitempty" xml:"AllVersions,omitempty"`
+	// The filters.
+	Filter []*ListServicesRequestFilter `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Repeated"`
+	// The number of entries per page. Valid values: 1 to 100. Default value: 20.
+	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of NextToken.
+	//
 	// example:
 	//
 	// BBBAAfu+XtuBE55iRLHEYYuojI4=
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
-	RegionId        *string                   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceGroupId *string                   `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	Tag             []*ListServicesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The resource group ID.
+	//
+	// example:
+	//
+	// rg-aekzkt5buxxxxxx
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The custom tags.
+	Tag []*ListServicesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s ListServicesRequest) String() string {
@@ -6728,10 +8876,21 @@ func (s *ListServicesRequest) SetTag(v []*ListServicesRequestTag) *ListServicesR
 }
 
 type ListServicesRequestFilter struct {
+	// The parameter name of the filter. You can specify one or more parameter names to query services. Valid values:
+	//
+	// 	- ServiceId: the ID of the service.
+	//
+	// 	- Name: the name of the service.
+	//
+	// 	- Status: the state of the service.
+	//
+	// 	- SupplierName: the name of the service provider.
+	//
 	// example:
 	//
 	// Status
-	Name  *string   `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The parameter values of the filter.
 	Value []*string `json:"Value,omitempty" xml:"Value,omitempty" type:"Repeated"`
 }
 
@@ -6754,10 +8913,14 @@ func (s *ListServicesRequestFilter) SetValue(v []*string) *ListServicesRequestFi
 }
 
 type ListServicesRequestTag struct {
+	// The tag key.
+	//
 	// example:
 	//
 	// key1
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value.
+	//
 	// example:
 	//
 	// value1
@@ -6783,19 +8946,28 @@ func (s *ListServicesRequestTag) SetValue(v string) *ListServicesRequestTag {
 }
 
 type ListServicesResponseBody struct {
+	// The number of entries per page. Valid values: 1 to 100. Default value: 20.
+	//
 	// example:
 	//
 	// 1
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// A pagination token.
+	//
 	// example:
 	//
 	// AAAAAfu+XtuBE55iRLHEYYuojI4=
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 51945B04-6AA6-410D-93BA-236E0248B104
-	RequestId *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Services  []*ListServicesResponseBodyServices `json:"Services,omitempty" xml:"Services,omitempty" type:"Repeated"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The services.
+	Services []*ListServicesResponseBodyServices `json:"Services,omitempty" xml:"Services,omitempty" type:"Repeated"`
+	// The total number of entries returned.
+	//
 	// example:
 	//
 	// 100
@@ -6836,102 +9008,297 @@ func (s *ListServicesResponseBody) SetTotalCount(v int32) *ListServicesResponseB
 }
 
 type ListServicesResponseBodyServices struct {
+	// The approval type for applications for using the service. Valid values:
+	//
+	// 	- Manual: The applications are manual reviewed.
+	//
+	// 	- AutoPass: The applications are automatically approved.
+	//
 	// example:
 	//
 	// AutoPass
 	ApprovalType *string `json:"ApprovalType,omitempty" xml:"ApprovalType,omitempty"`
+	// The ID of the artifact.
+	//
 	// example:
 	//
 	// artifact-21ca53ac16a643xxxxxx
 	ArtifactId *string `json:"ArtifactId,omitempty" xml:"ArtifactId,omitempty"`
+	// The version of the artifact.
+	//
 	// example:
 	//
 	// draft
-	ArtifactVersion *string                                    `json:"ArtifactVersion,omitempty" xml:"ArtifactVersion,omitempty"`
-	BuildInfo       *string                                    `json:"BuildInfo,omitempty" xml:"BuildInfo,omitempty"`
-	Categories      *string                                    `json:"Categories,omitempty" xml:"Categories,omitempty"`
-	Commodity       *ListServicesResponseBodyServicesCommodity `json:"Commodity,omitempty" xml:"Commodity,omitempty" type:"Struct"`
+	ArtifactVersion *string `json:"ArtifactVersion,omitempty" xml:"ArtifactVersion,omitempty"`
+	// The informathon for build service.
+	//
+	// example:
+	//
+	// { "RepoUrl": "https://github.com/user/repo.git", "Brancn": "main"}
+	BuildInfo *string `json:"BuildInfo,omitempty" xml:"BuildInfo,omitempty"`
+	// The category of the service.
+	//
+	// example:
+	//
+	// OpenSource
+	Categories *string `json:"Categories,omitempty" xml:"Categories,omitempty"`
+	// The commodity details.
+	Commodity *ListServicesResponseBodyServicesCommodity `json:"Commodity,omitempty" xml:"Commodity,omitempty" type:"Struct"`
+	// The commodity code of the service in Alibaba Cloud Marketplace.
+	//
 	// example:
 	//
 	// cmjj00xxxx
 	CommodityCode *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
+	// The time when the service was created.
+	//
 	// example:
 	//
 	// 2021-05-20T00:00:00Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// Indicates whether the version is the default version. Valid values:
+	//
+	// 	- false
+	//
+	// 	- true
+	//
 	// example:
 	//
 	// true
 	DefaultVersion *bool `json:"DefaultVersion,omitempty" xml:"DefaultVersion,omitempty"`
+	// The deployment type of the service. Valid values:
+	//
+	// 	- ros: The service is deployed by using Resource Orchestration Service (ROS).
+	//
+	// 	- terraform: The service is deployed by using Terraform.
+	//
+	// 	- spi: The service is deployed by calling the Service Provider Interface (SPI).
+	//
+	// 	- operation: The service is deployed by using a hosted O\\&M service.
+	//
+	// 	- container: The service is deployed by using a container.
+	//
+	// *
+	//
 	// example:
 	//
 	// ros
-	DeployType                       *string `json:"DeployType,omitempty" xml:"DeployType,omitempty"`
-	HasBeta                          *bool   `json:"HasBeta,omitempty" xml:"HasBeta,omitempty"`
-	HasDraft                         *bool   `json:"HasDraft,omitempty" xml:"HasDraft,omitempty"`
+	DeployType *string `json:"DeployType,omitempty" xml:"DeployType,omitempty"`
+	// Indicates whether the service has a beta version. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// true
+	HasBeta *bool `json:"HasBeta,omitempty" xml:"HasBeta,omitempty"`
+	// Indicates whether the service has a draft version. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// true
+	HasDraft *bool `json:"HasDraft,omitempty" xml:"HasDraft,omitempty"`
+	// The latest version of the distribution source service.
+	//
+	// example:
+	//
+	// 1
 	LatestResellSourceServiceVersion *string `json:"LatestResellSourceServiceVersion,omitempty" xml:"LatestResellSourceServiceVersion,omitempty"`
+	// The time when the service was published.
+	//
 	// example:
 	//
 	// 2021-05-21T00:00:00Z
 	PublishTime *string `json:"PublishTime,omitempty" xml:"PublishTime,omitempty"`
+	// The purpose of the artifact. Valid values:
+	//
+	// 	- ServiceDeployment: The artifact is used to create service instances.
+	//
+	// 	- ServiceUpgrade: The artifact is used to upgrade service instances.
+	//
 	// example:
 	//
 	// ServiceDeployment
-	RelationType        *string `json:"RelationType,omitempty" xml:"RelationType,omitempty"`
-	ResellApplyStatus   *string `json:"ResellApplyStatus,omitempty" xml:"ResellApplyStatus,omitempty"`
-	ResellServiceId     *string `json:"ResellServiceId,omitempty" xml:"ResellServiceId,omitempty"`
-	ResourceGroupId     *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	ServiceDiscoverable *string `json:"ServiceDiscoverable,omitempty" xml:"ServiceDiscoverable,omitempty"`
+	RelationType *string `json:"RelationType,omitempty" xml:"RelationType,omitempty"`
+	// The state of distribution authorization of the service. Valid values:
+	//
+	// 	- CanApply: Distributors can apply for distribution permissions.
+	//
+	// 	- Applied: The application for distribution permissions is submitted.
+	//
+	// 	- Approved: The application for distribution permissions is approved.
+	//
+	// example:
+	//
+	// CanApply
+	ResellApplyStatus *string `json:"ResellApplyStatus,omitempty" xml:"ResellApplyStatus,omitempty"`
+	// The ID of the distribution service.
+	//
 	// example:
 	//
 	// service-70a3b15bb62643xxxxxx
-	ServiceId    *string                                         `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	ResellServiceId *string `json:"ResellServiceId,omitempty" xml:"ResellServiceId,omitempty"`
+	// The resource group ID.
+	//
+	// example:
+	//
+	// rg-aekz5b555xxxxxx
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// Indicates whether the service is visible. Valid values:
+	//
+	// 	- INVISIBLE
+	//
+	// 	- DISCOVERABLE
+	//
+	// example:
+	//
+	// INVISIBLE
+	ServiceDiscoverable *string `json:"ServiceDiscoverable,omitempty" xml:"ServiceDiscoverable,omitempty"`
+	// The service ID.
+	//
+	// example:
+	//
+	// service-70a3b15bb62643xxxxxx
+	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	// The information about the service.
 	ServiceInfos []*ListServicesResponseBodyServicesServiceInfos `json:"ServiceInfos,omitempty" xml:"ServiceInfos,omitempty" type:"Repeated"`
+	// The type of the service. Valid values:
+	//
+	// 	- private: The service is a private service and is deployed within the account of a customer.
+	//
+	// 	- managed: The service is a fully managed service and is deployed within the account of a service provider.
+	//
+	// 	- operation: The service is a hosted O\\&M service.
+	//
 	// example:
 	//
 	// private
 	ServiceType *string `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
+	// The permission type of the deployment URL. Valid values:
+	//
+	// 	- Public: All users can go to the URL to create a formal service instance or a trial service instance.
+	//
+	// 	- Restricted: Only users in the whitelist can go to the URL to create a formal service instance or a trial service instance.
+	//
+	// 	- OnlyFormalRestricted: Only users in the whitelist can go to the URL to create a formal service instance.
+	//
+	// 	- OnlyTrailRestricted: Only users in the whitelist can go to the URL to create a trial service instance.
+	//
+	// 	- Hidden: Users not in the whitelist cannot see the service details page when they go to the URL and cannot request deployment permissions.
+	//
 	// example:
 	//
 	// Public
 	ShareType *string `json:"ShareType,omitempty" xml:"ShareType,omitempty"`
+	// The source image.
+	//
 	// example:
 	//
 	// centos_7
-	SourceImage          *string `json:"SourceImage,omitempty" xml:"SourceImage,omitempty"`
-	SourceServiceId      *string `json:"SourceServiceId,omitempty" xml:"SourceServiceId,omitempty"`
+	SourceImage *string `json:"SourceImage,omitempty" xml:"SourceImage,omitempty"`
+	// The ID of the distribution source service.
+	//
+	// example:
+	//
+	// service-70a3b15bb62643xxxxxx
+	SourceServiceId *string `json:"SourceServiceId,omitempty" xml:"SourceServiceId,omitempty"`
+	// The version of the distribution source service.
+	//
+	// example:
+	//
+	// 1
 	SourceServiceVersion *string `json:"SourceServiceVersion,omitempty" xml:"SourceServiceVersion,omitempty"`
-	SourceSupplierName   *string `json:"SourceSupplierName,omitempty" xml:"SourceSupplierName,omitempty"`
+	// The name of the distribution source service provider.
+	//
+	// example:
+	//
+	// SourceSupplier
+	SourceSupplierName *string `json:"SourceSupplierName,omitempty" xml:"SourceSupplierName,omitempty"`
+	// The state of the service. Valid values:
+	//
+	// 	- Draft: The service is a draft.
+	//
+	// 	- Submitted: The service is submitted for review. You cannot modify services in this state.
+	//
+	// 	- Approved: The service is approved. You cannot modify services in this state. You can publish services in this state.
+	//
+	// 	- Launching: The service is being published.
+	//
+	// 	- Online: The service is published.
+	//
+	// 	- Offline: The service is unpublished.
+	//
 	// example:
 	//
 	// Online
-	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The name of the service provider.
+	//
+	// example:
+	//
+	// Alibaba Cloud
 	SupplierName *string `json:"SupplierName,omitempty" xml:"SupplierName,omitempty"`
+	// The URL of the service provider.
+	//
 	// example:
 	//
 	// http://example.com
-	SupplierUrl *string                                 `json:"SupplierUrl,omitempty" xml:"SupplierUrl,omitempty"`
-	Tags        []*ListServicesResponseBodyServicesTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	SupplierUrl *string `json:"SupplierUrl,omitempty" xml:"SupplierUrl,omitempty"`
+	// The service tags.
+	Tags []*ListServicesResponseBodyServicesTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// The tenant type of the managed service. Valid values:
+	//
+	// 	- SingleTenant
+	//
+	// 	- MultiTenant
+	//
 	// example:
 	//
 	// SingleTenant
 	TenantType *string `json:"TenantType,omitempty" xml:"TenantType,omitempty"`
+	// The trial policy. Valid values:
+	//
+	// 	- Trial: Trials are supported.
+	//
+	// 	- NotTrial: Trials are not supported.
+	//
 	// example:
 	//
 	// Trial
 	TrialType *string `json:"TrialType,omitempty" xml:"TrialType,omitempty"`
+	// The time when the service was modified.
+	//
 	// example:
 	//
 	// 2021-05-21T00:00:00Z
 	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// The version of the service.
+	//
 	// example:
 	//
 	// 1.0
 	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
+	// The custom version name defined by the service provider.
+	//
 	// example:
 	//
 	// v2.0.0
-	VersionName            *string `json:"VersionName,omitempty" xml:"VersionName,omitempty"`
+	VersionName *string `json:"VersionName,omitempty" xml:"VersionName,omitempty"`
+	// Indicates whether the service is a virtual Internet service. Valid values:
+	//
+	// 	- false
+	//
+	// 	- true
+	//
+	// example:
+	//
+	// false
 	VirtualInternetService *string `json:"VirtualInternetService,omitempty" xml:"VirtualInternetService,omitempty"`
 }
 
@@ -7129,9 +9496,30 @@ func (s *ListServicesResponseBodyServices) SetVirtualInternetService(v string) *
 }
 
 type ListServicesResponseBodyServicesCommodity struct {
-	CommodityCode     *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
+	// The commodity code.
+	//
+	// example:
+	//
+	// cmjj00xxxx
+	CommodityCode *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
+	// The configuration metadata related to Saas Boost.
+	//
+	// example:
+	//
+	// { // Specifies whether to associate the service with the SaaS Boost commodity. Default value: false. "Enabled":true/false // The public endpoint of the SaaS Boost instance. "PublicAccessUrl":"https://example.com" }
 	SaasBoostMetadata *string `json:"SaasBoostMetadata,omitempty" xml:"SaasBoostMetadata,omitempty"`
-	Type              *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The platform type. Valid values:
+	//
+	// 	- marketplace: Alibaba Cloud Marketplace.
+	//
+	// 	- Css: Lingxiao.
+	//
+	// 	- SaasBoost: Saas Boost.
+	//
+	// example:
+	//
+	// Marketplace
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s ListServicesResponseBodyServicesCommodity) String() string {
@@ -7158,15 +9546,33 @@ func (s *ListServicesResponseBodyServicesCommodity) SetType(v string) *ListServi
 }
 
 type ListServicesResponseBodyServicesServiceInfos struct {
+	// The URL of the service icon.
+	//
 	// example:
 	//
 	// http://img.tidb.oss.url
 	Image *string `json:"Image,omitempty" xml:"Image,omitempty"`
+	// The language of the service. Valid values:
+	//
+	// 	- zh-CN: Chinese.
+	//
+	// 	- en-US: English.
+	//
 	// example:
 	//
 	// zh-CN
-	Locale           *string `json:"Locale,omitempty" xml:"Locale,omitempty"`
-	Name             *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Locale *string `json:"Locale,omitempty" xml:"Locale,omitempty"`
+	// The name of the service.
+	//
+	// example:
+	//
+	// SpringBoot-ECS容器版
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The description of the service.
+	//
+	// example:
+	//
+	// B是A公司自主设计并研发的开源分布式的关系型数据库
 	ShortDescription *string `json:"ShortDescription,omitempty" xml:"ShortDescription,omitempty"`
 }
 
@@ -7199,10 +9605,14 @@ func (s *ListServicesResponseBodyServicesServiceInfos) SetShortDescription(v str
 }
 
 type ListServicesResponseBodyServicesTags struct {
+	// The tag key.
+	//
 	// example:
 	//
 	// key1
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value.
+	//
 	// example:
 	//
 	// value1
@@ -7257,6 +9667,8 @@ func (s *ListServicesResponse) SetBody(v *ListServicesResponseBody) *ListService
 }
 
 type ModifyServiceInstanceResourcesRequest struct {
+	// The imported resources.
+	//
 	// example:
 	//
 	// {
@@ -7279,12 +9691,20 @@ type ModifyServiceInstanceResourcesRequest struct {
 	//
 	// }
 	Resources *string `json:"Resources,omitempty" xml:"Resources,omitempty"`
+	// The ID of the service instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// si-d8a0cc2a1ee04dce****
 	ServiceInstanceId *string `json:"ServiceInstanceId,omitempty" xml:"ServiceInstanceId,omitempty"`
+	// The type of operation performed on the service instance resource. Valid values:
+	//
+	// 	- Import: The resource is imported.
+	//
+	// 	- UnImport: The resource import is canceled.
+	//
 	// example:
 	//
 	// Import
@@ -7315,6 +9735,8 @@ func (s *ModifyServiceInstanceResourcesRequest) SetServiceInstanceResourcesActio
 }
 
 type ModifyServiceInstanceResourcesResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 46577928-3162-15A6-9084-69820EB9xxxx
@@ -7364,12 +9786,54 @@ func (s *ModifyServiceInstanceResourcesResponse) SetBody(v *ModifyServiceInstanc
 }
 
 type PushMeteringDataRequest struct {
+	// The metering data. Parameters in the example value:
+	//
+	// 	- InstanceId: the ID of an instance in Alibaba Cloud Marketplace. Parameter type: STRING.
+	//
+	// 	- StartTime: the time when the metering operation started. Set the parameter to a UNIX timestamp. Unit: seconds. Parameter type: LONG.
+	//
+	// 	- EndTime: the time when the metering operation ended. Set the parameter to a UNIX timestamp. Unit: seconds. Parameter type: LONG.
+	//
+	// 	- Entities: the metering entities. Parameter type: LIST.
+	//
+	//     	- Key: the name of the metering item. Parameter type: STRING.
+	//
+	//         	- Frequency: the number of times the instance was used.
+	//
+	//         	- Period: the usage duration of the instance. Unit: seconds.
+	//
+	//     Note: The metering unit is second, whereas the billing unit is hour. Therefore, when bills are generated, seconds are converted to hours. For example, the usage metered from 19:00 to 20:00 is 1800 seconds and the price is USD 1 per hour. In this case, the hourly bill for 19:00 to 20:00 is calculated by using the following formula: 1800/3600 x 1 = 0.5. If the result is a decimal, only the first two decimal places are retained.
+	//
+	//           - Storage: The used storage space. Unit: bytes.
+	//
+	//            Note: The metering unit is byte, whereas the billing unit is MB. Therefore, when bills are generated, bytes are converted to megabytes. For example, the usage metered from 19:00 to 20:00 is 524,288 bytes and the price is USD 1 per MB. In this case, the hourly bill for 19:00 to 20:00 is calculated by using the following formula: 524288/1024/1024 x 1 = 0.5. If the result is a decimal, only the first two decimal places are retained.  - NetworkOut: the upstream traffic consumed. Unit: bit.
+	//
+	//            Note: The metering unit is bit, whereas the billing unit is Mbit. Therefore, when bills are generated, bits are converted to megabits. For example, the usage metered from 19:00 to 20:00 is 524,288 bits and the price is USD 1 per Mbit. In this case, the hourly bill for 19:00 to 20:00 is calculated by using the following formula: 524288/1024/1024 x 1 = 0.5. If the result is a decimal, only the first two decimal places are retained.  - NetworkIn: the downstream traffic consumed. Unit: bit.
+	//
+	//            Note: The metering unit is bit, whereas the billing unit is Mbit. Therefore, when bills are generated, bits are converted to megabits. For example, the usage metered from 19:00 to 20:00 is 524,288 bits and the price is USD 1 per Mbit. In this case, the hourly bill for 19:00 to 20:00 is calculated by using the following formula: 524288/1024/1024 x 1 = 0.5. If the result is a decimal, only the first two decimal places are retained.  - Character: the number of characters.
+	//
+	//           - DailyActiveUser: the number of daily active users (DAU).
+	//
+	//           - PeriodMin: the usage duration of the instance. Unit: minutes.  - VirtualCpu: the number of virtual CPU cores.
+	//
+	//     	- Value: the value of the metering item. The value is equal to or greater than 0. Parameter type: INTEGER.
+	//
+	// **Note**:
+	//
+	// 	- If bills are generated for the commodity in real time, the difference between the values of StartTime and EndTime is not limited. However, the time specified by EndTime must be later than that specified by StartTime.
+	//
+	// 	- If bills are generated for the commodity by billing cycle, such as by hour, by day, or by month, the difference between the values of StartTime and EndTime must be greater than 5 minutes.
+	//
+	// 	- In a request for pushing multiple metering data records, the values of InstanceId must indicate instances of the same commodity. You cannot push metering data of instances of multiple commodities at a time.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// [{\\"StartTime\\":1681264800,\\"EndTime\\":1681268400,\\"Entities\\":[{\\"Key\\":\\"Unit\\",\\"Value\\":\\"0\\"}]}]
 	Metering *string `json:"Metering,omitempty" xml:"Metering,omitempty"`
+	// The service instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -7397,6 +9861,8 @@ func (s *PushMeteringDataRequest) SetServiceInstanceId(v string) *PushMeteringDa
 }
 
 type PushMeteringDataResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 94E89857-B994-44B6-9C4F-DBD200E9XXXX
@@ -7446,16 +9912,22 @@ func (s *PushMeteringDataResponse) SetBody(v *PushMeteringDataResponseBody) *Pus
 }
 
 type RegisterServiceRequest struct {
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	//
 	// example:
 	//
 	// 10CM943JP0EN9D51H
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The service ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -7488,10 +9960,14 @@ func (s *RegisterServiceRequest) SetServiceId(v string) *RegisterServiceRequest 
 }
 
 type RegisterServiceResponseBody struct {
+	// The registration ID.
+	//
 	// example:
 	//
 	// sr-72dd5071e90c40xxxxxx
 	RegistrationId *string `json:"RegistrationId,omitempty" xml:"RegistrationId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// A361BA9E-2713-52C8-AFFC-C26E5180456E
@@ -7595,6 +10071,10 @@ type ReleaseArtifactResponseBody struct {
 	// draft
 	ArtifactVersion *string `json:"ArtifactVersion,omitempty" xml:"ArtifactVersion,omitempty"`
 	// The description of the artifact.
+	//
+	// example:
+	//
+	// Description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The time when the artifact was modified.
 	//
@@ -7627,6 +10107,10 @@ type ReleaseArtifactResponseBody struct {
 	// Created
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The version name of the artifact.
+	//
+	// example:
+	//
+	// V1.0
 	VersionName *string `json:"VersionName,omitempty" xml:"VersionName,omitempty"`
 }
 
@@ -7713,16 +10197,24 @@ func (s *ReleaseArtifactResponse) SetBody(v *ReleaseArtifactResponseBody) *Relea
 }
 
 type RestartServiceInstanceRequest struct {
+	// The client token that is used to ensure the idempotence of the request.
+	//
+	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	//
 	// example:
 	//
 	// 10CM943JP0EN9****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The region ID where the service instance resides.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the service instance.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -7755,6 +10247,8 @@ func (s *RestartServiceInstanceRequest) SetServiceInstanceId(v string) *RestartS
 }
 
 type RestartServiceInstanceResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// B1A0198B-F316-1B72-B8DD-28B6F6D6XXXX
@@ -7804,16 +10298,24 @@ func (s *RestartServiceInstanceResponse) SetBody(v *RestartServiceInstanceRespon
 }
 
 type StartServiceInstanceRequest struct {
+	// The client token that is used to ensure the idempotence of the request.
+	//
+	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	//
 	// example:
 	//
 	// 10CM943JP0EN9****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The region ID where the service instance resides.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the service instance.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -7846,6 +10348,8 @@ func (s *StartServiceInstanceRequest) SetServiceInstanceId(v string) *StartServi
 }
 
 type StartServiceInstanceResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 2E91D771-0183-52CE-86CB-882D99B2CB77
@@ -7895,16 +10399,24 @@ func (s *StartServiceInstanceResponse) SetBody(v *StartServiceInstanceResponseBo
 }
 
 type StopServiceInstanceRequest struct {
+	// The client token that is used to ensure the idempotence of the request.
+	//
+	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+	//
 	// example:
 	//
 	// 10CM943JP0EN9****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The region id where the service instance resides.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the service instance.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -7937,6 +10449,8 @@ func (s *StopServiceInstanceRequest) SetServiceInstanceId(v string) *StopService
 }
 
 type StopServiceInstanceResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 49A369EF-A302-5006-B0CE-94CED47C38CF
@@ -7986,16 +10500,28 @@ func (s *StopServiceInstanceResponse) SetBody(v *StopServiceInstanceResponseBody
 }
 
 type UpdateArtifactRequest struct {
+	// The ID of the deployment package.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// artifact-eea08d1e2d3a43aexxxx
 	ArtifactId *string `json:"ArtifactId,omitempty" xml:"ArtifactId,omitempty"`
+	// The properties of the deployment package.
+	//
 	// This parameter is required.
 	ArtifactProperty *UpdateArtifactRequestArtifactProperty `json:"ArtifactProperty,omitempty" xml:"ArtifactProperty,omitempty" type:"Struct"`
-	Description      *string                                `json:"Description,omitempty" xml:"Description,omitempty"`
-	SupportRegionIds []*string                              `json:"SupportRegionIds,omitempty" xml:"SupportRegionIds,omitempty" type:"Repeated"`
+	// The description of the deployment package.
+	//
+	// example:
+	//
+	// Description
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The IDs of the regions that support the deployment package.
+	SupportRegionIds []*string `json:"SupportRegionIds,omitempty" xml:"SupportRegionIds,omitempty" type:"Repeated"`
+	// The version name of the deployment package.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -8038,30 +10564,59 @@ func (s *UpdateArtifactRequest) SetVersionName(v string) *UpdateArtifactRequest 
 }
 
 type UpdateArtifactRequestArtifactProperty struct {
+	// The commodity code of the service in Alibaba Cloud Marketplace.
+	//
+	// >  This parameter is available only if the deployment package is an image.
+	//
 	// example:
 	//
 	// cmjj00xxxx
 	CommodityCode *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
+	// The commodity version of the service in Alibaba Cloud Marketplace.
+	//
+	// >  This parameter is available only if the deployment package is an image.
+	//
 	// example:
 	//
 	// V1.0
 	CommodityVersion *string `json:"CommodityVersion,omitempty" xml:"CommodityVersion,omitempty"`
+	// The metadata of the Object Storage Service (OSS) object.
+	//
+	// >  This parameter is available only if the deployment package is an OSS object.
+	//
 	// example:
 	//
 	// {\\"WorkDir\\":\\"/root\\",\\"CommandType\\":\\"RunShellScript\\",\\"Platform\\":\\"Linux\\",\\"Script\\":\\"echo hello\\"}
 	FileScriptMetadata *string `json:"FileScriptMetadata,omitempty" xml:"FileScriptMetadata,omitempty"`
+	// The image ID.
+	//
+	// >  This parameter is available only if the deployment package is an image.
+	//
 	// example:
 	//
 	// m-0xij191j9cuev6ucxxxx
 	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// The region ID.
+	//
+	// >  This parameter is available only if the deployment package is an image.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The script content of the deployment package.
+	//
+	// >  This parameter is available only if the deployment package is a script.
+	//
 	// example:
 	//
 	// {"ScriptMetadata":"{\\"CommandType\\":\\"RunShellScript\\",\\"Platform\\":\\"Linux\\",\\"Script\\":\\"ls\\"}"}
 	ScriptMetadata *string `json:"ScriptMetadata,omitempty" xml:"ScriptMetadata,omitempty"`
+	// The URL of the deployment package object.
+	//
+	//
+	// > Note This parameter is available only if the deployment package is an file.
+	//
 	// example:
 	//
 	// https://service-info-private.oss-cn-hangzhou.aliyuncs.com/1309208528xxxxxx/template/2e1ce8fc-xxxx-481c-9e8e-789ba9db487d.json
@@ -8112,16 +10667,28 @@ func (s *UpdateArtifactRequestArtifactProperty) SetUrl(v string) *UpdateArtifact
 }
 
 type UpdateArtifactShrinkRequest struct {
+	// The ID of the deployment package.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// artifact-eea08d1e2d3a43aexxxx
 	ArtifactId *string `json:"ArtifactId,omitempty" xml:"ArtifactId,omitempty"`
+	// The properties of the deployment package.
+	//
 	// This parameter is required.
-	ArtifactPropertyShrink *string   `json:"ArtifactProperty,omitempty" xml:"ArtifactProperty,omitempty"`
-	Description            *string   `json:"Description,omitempty" xml:"Description,omitempty"`
-	SupportRegionIds       []*string `json:"SupportRegionIds,omitempty" xml:"SupportRegionIds,omitempty" type:"Repeated"`
+	ArtifactPropertyShrink *string `json:"ArtifactProperty,omitempty" xml:"ArtifactProperty,omitempty"`
+	// The description of the deployment package.
+	//
+	// example:
+	//
+	// Description
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The IDs of the regions that support the deployment package.
+	SupportRegionIds []*string `json:"SupportRegionIds,omitempty" xml:"SupportRegionIds,omitempty" type:"Repeated"`
+	// The version name of the deployment package.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -8164,35 +10731,68 @@ func (s *UpdateArtifactShrinkRequest) SetVersionName(v string) *UpdateArtifactSh
 }
 
 type UpdateArtifactResponseBody struct {
+	// The ID of the deployment package.
+	//
 	// example:
 	//
 	// artifact-eea08d1e2d3a43aexxxx
 	ArtifactId *string `json:"ArtifactId,omitempty" xml:"ArtifactId,omitempty"`
+	// The properties of the deployment package.
+	//
 	// example:
 	//
 	// {\\"CommodityCode\\":\\"cmjj0005xxxx\\",\\"CommodityVersion\\":\\"V2022xxxx\\"}
 	ArtifactProperty *string `json:"ArtifactProperty,omitempty" xml:"ArtifactProperty,omitempty"`
+	// The type of the deployment package.
+	//
 	// example:
 	//
 	// EcsImage
 	ArtifactType *string `json:"ArtifactType,omitempty" xml:"ArtifactType,omitempty"`
+	// The version of the deployment package.
+	//
 	// example:
 	//
 	// 2
 	ArtifactVersion *string `json:"ArtifactVersion,omitempty" xml:"ArtifactVersion,omitempty"`
-	Description     *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The description of the deployment package.
+	//
+	// example:
+	//
+	// Description
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The time when the deployment package was modified.
+	//
 	// example:
 	//
 	// 2022-10-20T02:19:55Z
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// B1A0198B-F316-1B72-B8DD-28B6F6D6XXXX
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The status of the deployment package. Valid values:
+	//
+	// 	- Created: The deployment package is created.
+	//
+	// 	- Scanning: The deployment package is being scanned.
+	//
+	// 	- ScanFailed: The deployment package failed to be scanned.
+	//
+	// 	- Delivering: The deployment package is being distributed.
+	//
+	// 	- Available: The deployment package is available.
+	//
+	// 	- Deleted: The deployment package is deleted.
+	//
 	// example:
 	//
 	// Available
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The ID of the region that supports the deployment package.
+	//
 	// example:
 	//
 	// [
@@ -8205,6 +10805,8 @@ type UpdateArtifactResponseBody struct {
 	//
 	// 		]
 	SupportRegionIds *string `json:"SupportRegionIds,omitempty" xml:"SupportRegionIds,omitempty"`
+	// The name of the deployment package.
+	//
 	// example:
 	//
 	// v1
@@ -8299,77 +10901,187 @@ func (s *UpdateArtifactResponse) SetBody(v *UpdateArtifactResponseBody) *UpdateA
 }
 
 type UpdateServiceRequest struct {
+	// The alert configurations of the service.
+	//
+	// >  This parameter takes effect only when you specify an alert policy for **PolicyNames**.
+	//
 	// example:
 	//
 	// {\\"CmsTemplateId\\":1162921,\\"TemplateUrl\\":\\"https://service-info-private.oss-cn-hangzhou.aliyuncs.com/1760465342xxxxxx/template/c072ef50-6c03-4d9c-8f0e-d1c440xxxxxx.json\\"}
 	AlarmMetadata *string `json:"AlarmMetadata,omitempty" xml:"AlarmMetadata,omitempty"`
-	ApprovalType  *string `json:"ApprovalType,omitempty" xml:"ApprovalType,omitempty"`
+	// The approval type of the service usage application. Valid values:
+	//
+	// - Manual: The application is manually approved.
+	//
+	// - AutoPass: The application is automatically approved.
+	//
+	// example:
+	//
+	// Manual
+	ApprovalType *string `json:"ApprovalType,omitempty" xml:"ApprovalType,omitempty"`
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	//
 	// example:
 	//
 	// 788E7CP0EN9D51P
-	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	ClientToken *string                        `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	Commodity   *UpdateServiceRequestCommodity `json:"Commodity,omitempty" xml:"Commodity,omitempty" type:"Struct"`
+	// The storage configurations of the service. The format in which the deployment information of a service is stored varies based on the deployment type of the service. In this case, the deployment information is stored in the JSON string format.
+	//
 	// example:
 	//
 	// {\\"EstimateTime\\":null,\\"SupplierDeployMetadata\\":{\\"DeployTimeout\\":7200},\\"EnableVnc\\":false}
 	DeployMetadata *string `json:"DeployMetadata,omitempty" xml:"DeployMetadata,omitempty"`
+	// The deployment type of the service. Valid values:
+	//
+	// 	- ros: The service is deployed by using Resource Orchestration Service (ROS).
+	//
+	// 	- terraform: The service is deployed by using Terraform.
+	//
+	// 	- spi: The service is deployed by calling a service provider interface (SPI).
+	//
+	// 	- operation: The service is deployed by using a hosted O\\&M service.
+	//
+	// 	- container: The service is deployed by using a container.
+	//
+	// 	- pkg: The service is deployed by using a package.
+	//
 	// example:
 	//
 	// ros
 	DeployType *string `json:"DeployType,omitempty" xml:"DeployType,omitempty"`
+	// The duration for which hosted O\\&M is implemented. Unit: seconds.
+	//
 	// example:
 	//
 	// 259200
 	Duration *int64 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// Specifies whether to enable the hosted O\\&M feature for the service. Default value: false. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
+	// >  This parameter is required if you set **ServiceType*	- to **private**.
+	//
 	// example:
 	//
 	// false
-	IsSupportOperated *bool   `json:"IsSupportOperated,omitempty" xml:"IsSupportOperated,omitempty"`
-	LicenseMetadata   *string `json:"LicenseMetadata,omitempty" xml:"LicenseMetadata,omitempty"`
-	LogMetadata       *string `json:"LogMetadata,omitempty" xml:"LogMetadata,omitempty"`
+	IsSupportOperated *bool `json:"IsSupportOperated,omitempty" xml:"IsSupportOperated,omitempty"`
+	// The license metadata.
+	//
+	// example:
+	//
+	// {\\"RetentionDays\\":3}
+	LicenseMetadata *string `json:"LicenseMetadata,omitempty" xml:"LicenseMetadata,omitempty"`
+	// The logging configurations.
+	//
+	// example:
+	//
+	// { "Logstores": [ { "LogstoreName": "access-log", "LogPath": "/home/admin/app/logs", # This parameter is not required for containers. Configure the parameter in the YAML file. "FilePattern": "access.log\\*" # This parameter is not required for containers. Configure the parameter in the YAML file. } ] }
+	LogMetadata *string `json:"LogMetadata,omitempty" xml:"LogMetadata,omitempty"`
+	// The hosted O\\&M configurations.
+	//
 	// example:
 	//
 	// {\\"PrometheusConfigMap\\":{\\"Custom_Image_Ecs\\":{\\"EnablePrometheus\\":false}}}
 	OperationMetadata *string `json:"OperationMetadata,omitempty" xml:"OperationMetadata,omitempty"`
+	// The policy name. The name can be up to 128 characters in length. Separate multiple names with commas (,). Only hosted O\\&M policies are supported.
+	//
 	// example:
 	//
 	// policyName1, policyName2
 	PolicyNames *string `json:"PolicyNames,omitempty" xml:"PolicyNames,omitempty"`
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Resellable *bool   `json:"Resellable,omitempty" xml:"Resellable,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Specifies whether to support distribution. Valid values:
+	//
+	// 	- false
+	//
+	// 	- true
+	//
+	// example:
+	//
+	// false
+	Resellable *bool `json:"Resellable,omitempty" xml:"Resellable,omitempty"`
+	// The service ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// service-1dda29c3eca648xxxxxx
-	ServiceId   *string                            `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	// The service details.
 	ServiceInfo []*UpdateServiceRequestServiceInfo `json:"ServiceInfo,omitempty" xml:"ServiceInfo,omitempty" type:"Repeated"`
+	// The service type. Valid values:
+	//
+	// 	- private: The service is a private service and is deployed within the account of a customer.
+	//
+	// 	- managed: The service is a fully managed service and is deployed within the account of a service provider.
+	//
+	// 	- operation: The service is a hosted O\\&M service.
+	//
+	// 	- poc: The service is a trial service.
+	//
 	// example:
 	//
 	// private
 	ServiceType *string `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
+	// The service version.
+	//
 	// example:
 	//
 	// 1
 	ServiceVersion *string `json:"ServiceVersion,omitempty" xml:"ServiceVersion,omitempty"`
-	ShareType      *string `json:"ShareType,omitempty" xml:"ShareType,omitempty"`
+	// The permission type of the deployment URL. Valid values:
+	//
+	// - Public: All users can go to the URL to create a service instance or a trial service instance.
+	//
+	// - Restricted: Only users in the whitelist can go to the URL to create a service instance or a trial service instance.
+	//
+	// - OnlyFormalRestricted: Only users in the whitelist can go to the URL to create a service instance.
+	//
+	// - OnlyTrailRestricted: Only users in the whitelist can go to the URL to create a trial service instance.
+	//
+	// - Hidden: Users not in the whitelist cannot see the service details page when they go to the URL and cannot request deployment permissions.
+	//
+	// example:
+	//
+	// Public
+	ShareType *string `json:"ShareType,omitempty" xml:"ShareType,omitempty"`
+	// The type of the tenant. Valid values:
+	//
+	// 	- SingleTenant
+	//
+	// 	- MultiTenant
+	//
 	// example:
 	//
 	// SingleTenant
 	TenantType *string `json:"TenantType,omitempty" xml:"TenantType,omitempty"`
+	// The trial duration. Unit: day. The maximum trial duration cannot exceed 30 days.
+	//
 	// example:
 	//
 	// 7
-	TrialDuration *int32                            `json:"TrialDuration,omitempty" xml:"TrialDuration,omitempty"`
-	UpdateOption  *UpdateServiceRequestUpdateOption `json:"UpdateOption,omitempty" xml:"UpdateOption,omitempty" type:"Struct"`
+	TrialDuration *int32 `json:"TrialDuration,omitempty" xml:"TrialDuration,omitempty"`
+	// The options for update the service.
+	UpdateOption *UpdateServiceRequestUpdateOption `json:"UpdateOption,omitempty" xml:"UpdateOption,omitempty" type:"Struct"`
+	// The metadata about the upgrade.
+	//
 	// example:
 	//
 	// {\\"Description\\":\\"xxx\\",\\"SupportRollback\\":true,\\"SupportUpgradeFromVersions\\":[],\\"UpgradeComponents\\":[\\"Configuration\\"]}
 	UpgradeMetadata *string `json:"UpgradeMetadata,omitempty" xml:"UpgradeMetadata,omitempty"`
+	// The version name.
+	//
 	// example:
 	//
 	// Draft
@@ -8396,6 +11108,11 @@ func (s *UpdateServiceRequest) SetApprovalType(v string) *UpdateServiceRequest {
 
 func (s *UpdateServiceRequest) SetClientToken(v string) *UpdateServiceRequest {
 	s.ClientToken = &v
+	return s
+}
+
+func (s *UpdateServiceRequest) SetCommodity(v *UpdateServiceRequestCommodity) *UpdateServiceRequest {
+	s.Commodity = v
 	return s
 }
 
@@ -8499,19 +11216,200 @@ func (s *UpdateServiceRequest) SetVersionName(v string) *UpdateServiceRequest {
 	return s
 }
 
+type UpdateServiceRequestCommodity struct {
+	ComponentsMappings       []*UpdateServiceRequestCommodityComponentsMappings       `json:"ComponentsMappings,omitempty" xml:"ComponentsMappings,omitempty" type:"Repeated"`
+	MeteringEntityExtraInfos []*UpdateServiceRequestCommodityMeteringEntityExtraInfos `json:"MeteringEntityExtraInfos,omitempty" xml:"MeteringEntityExtraInfos,omitempty" type:"Repeated"`
+	MeteringEntityMappings   []*UpdateServiceRequestCommodityMeteringEntityMappings   `json:"MeteringEntityMappings,omitempty" xml:"MeteringEntityMappings,omitempty" type:"Repeated"`
+	SaasBoostConfig          *string                                                  `json:"SaasBoostConfig,omitempty" xml:"SaasBoostConfig,omitempty"`
+	SpecificationMappings    []*UpdateServiceRequestCommoditySpecificationMappings    `json:"SpecificationMappings,omitempty" xml:"SpecificationMappings,omitempty" type:"Repeated"`
+}
+
+func (s UpdateServiceRequestCommodity) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateServiceRequestCommodity) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateServiceRequestCommodity) SetComponentsMappings(v []*UpdateServiceRequestCommodityComponentsMappings) *UpdateServiceRequestCommodity {
+	s.ComponentsMappings = v
+	return s
+}
+
+func (s *UpdateServiceRequestCommodity) SetMeteringEntityExtraInfos(v []*UpdateServiceRequestCommodityMeteringEntityExtraInfos) *UpdateServiceRequestCommodity {
+	s.MeteringEntityExtraInfos = v
+	return s
+}
+
+func (s *UpdateServiceRequestCommodity) SetMeteringEntityMappings(v []*UpdateServiceRequestCommodityMeteringEntityMappings) *UpdateServiceRequestCommodity {
+	s.MeteringEntityMappings = v
+	return s
+}
+
+func (s *UpdateServiceRequestCommodity) SetSaasBoostConfig(v string) *UpdateServiceRequestCommodity {
+	s.SaasBoostConfig = &v
+	return s
+}
+
+func (s *UpdateServiceRequestCommodity) SetSpecificationMappings(v []*UpdateServiceRequestCommoditySpecificationMappings) *UpdateServiceRequestCommodity {
+	s.SpecificationMappings = v
+	return s
+}
+
+type UpdateServiceRequestCommodityComponentsMappings struct {
+	Mappings     *string `json:"Mappings,omitempty" xml:"Mappings,omitempty"`
+	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+}
+
+func (s UpdateServiceRequestCommodityComponentsMappings) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateServiceRequestCommodityComponentsMappings) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateServiceRequestCommodityComponentsMappings) SetMappings(v string) *UpdateServiceRequestCommodityComponentsMappings {
+	s.Mappings = &v
+	return s
+}
+
+func (s *UpdateServiceRequestCommodityComponentsMappings) SetTemplateName(v string) *UpdateServiceRequestCommodityComponentsMappings {
+	s.TemplateName = &v
+	return s
+}
+
+type UpdateServiceRequestCommodityMeteringEntityExtraInfos struct {
+	EntityId   *string `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
+	MetricName *string `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
+	Promql     *string `json:"Promql,omitempty" xml:"Promql,omitempty"`
+	Type       *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s UpdateServiceRequestCommodityMeteringEntityExtraInfos) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateServiceRequestCommodityMeteringEntityExtraInfos) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateServiceRequestCommodityMeteringEntityExtraInfos) SetEntityId(v string) *UpdateServiceRequestCommodityMeteringEntityExtraInfos {
+	s.EntityId = &v
+	return s
+}
+
+func (s *UpdateServiceRequestCommodityMeteringEntityExtraInfos) SetMetricName(v string) *UpdateServiceRequestCommodityMeteringEntityExtraInfos {
+	s.MetricName = &v
+	return s
+}
+
+func (s *UpdateServiceRequestCommodityMeteringEntityExtraInfos) SetPromql(v string) *UpdateServiceRequestCommodityMeteringEntityExtraInfos {
+	s.Promql = &v
+	return s
+}
+
+func (s *UpdateServiceRequestCommodityMeteringEntityExtraInfos) SetType(v string) *UpdateServiceRequestCommodityMeteringEntityExtraInfos {
+	s.Type = &v
+	return s
+}
+
+type UpdateServiceRequestCommodityMeteringEntityMappings struct {
+	EntityIds         []*string `json:"EntityIds,omitempty" xml:"EntityIds,omitempty" type:"Repeated"`
+	SpecificationName *string   `json:"SpecificationName,omitempty" xml:"SpecificationName,omitempty"`
+	TemplateName      *string   `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+}
+
+func (s UpdateServiceRequestCommodityMeteringEntityMappings) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateServiceRequestCommodityMeteringEntityMappings) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateServiceRequestCommodityMeteringEntityMappings) SetEntityIds(v []*string) *UpdateServiceRequestCommodityMeteringEntityMappings {
+	s.EntityIds = v
+	return s
+}
+
+func (s *UpdateServiceRequestCommodityMeteringEntityMappings) SetSpecificationName(v string) *UpdateServiceRequestCommodityMeteringEntityMappings {
+	s.SpecificationName = &v
+	return s
+}
+
+func (s *UpdateServiceRequestCommodityMeteringEntityMappings) SetTemplateName(v string) *UpdateServiceRequestCommodityMeteringEntityMappings {
+	s.TemplateName = &v
+	return s
+}
+
+type UpdateServiceRequestCommoditySpecificationMappings struct {
+	SpecificationCode *string `json:"SpecificationCode,omitempty" xml:"SpecificationCode,omitempty"`
+	SpecificationName *string `json:"SpecificationName,omitempty" xml:"SpecificationName,omitempty"`
+	TemplateName      *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+}
+
+func (s UpdateServiceRequestCommoditySpecificationMappings) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateServiceRequestCommoditySpecificationMappings) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateServiceRequestCommoditySpecificationMappings) SetSpecificationCode(v string) *UpdateServiceRequestCommoditySpecificationMappings {
+	s.SpecificationCode = &v
+	return s
+}
+
+func (s *UpdateServiceRequestCommoditySpecificationMappings) SetSpecificationName(v string) *UpdateServiceRequestCommoditySpecificationMappings {
+	s.SpecificationName = &v
+	return s
+}
+
+func (s *UpdateServiceRequestCommoditySpecificationMappings) SetTemplateName(v string) *UpdateServiceRequestCommoditySpecificationMappings {
+	s.TemplateName = &v
+	return s
+}
+
 type UpdateServiceRequestServiceInfo struct {
+	// Protocol document information about the service.
 	Agreements []*UpdateServiceRequestServiceInfoAgreements `json:"Agreements,omitempty" xml:"Agreements,omitempty" type:"Repeated"`
+	// The URL of the service icon.
+	//
 	// example:
 	//
 	// http://img.tidb.oss.url
 	Image *string `json:"Image,omitempty" xml:"Image,omitempty"`
+	// The language of the service. Valid values:
+	//
+	// 	- zh-CN: Chinese
+	//
+	// 	- en-US: English
+	//
 	// example:
 	//
 	// zh-CN
-	Locale             *string `json:"Locale,omitempty" xml:"Locale,omitempty"`
+	Locale *string `json:"Locale,omitempty" xml:"Locale,omitempty"`
+	// The URL of the detailed description of the service.
+	//
+	// example:
+	//
+	// http://description.tidb.oss.url
 	LongDescriptionUrl *string `json:"LongDescriptionUrl,omitempty" xml:"LongDescriptionUrl,omitempty"`
-	Name               *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	ShortDescription   *string `json:"ShortDescription,omitempty" xml:"ShortDescription,omitempty"`
+	// The service name.
+	//
+	// example:
+	//
+	// kodbox-fc
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The description of the service.
+	//
+	// example:
+	//
+	// B是A公司自主设计并研发的开源分布式的关系型数据库
+	ShortDescription *string `json:"ShortDescription,omitempty" xml:"ShortDescription,omitempty"`
 }
 
 func (s UpdateServiceRequestServiceInfo) String() string {
@@ -8553,8 +11451,18 @@ func (s *UpdateServiceRequestServiceInfo) SetShortDescription(v string) *UpdateS
 }
 
 type UpdateServiceRequestServiceInfoAgreements struct {
+	// Protocol name.
+	//
+	// example:
+	//
+	// Name
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Url  *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	// Protocol url.
+	//
+	// example:
+	//
+	// https://aliyun.com/xxxxxxxx.html
+	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
 }
 
 func (s UpdateServiceRequestServiceInfoAgreements) String() string {
@@ -8576,6 +11484,15 @@ func (s *UpdateServiceRequestServiceInfoAgreements) SetUrl(v string) *UpdateServ
 }
 
 type UpdateServiceRequestUpdateOption struct {
+	// The options for update the service. Valid values:
+	//
+	// - CODE
+	//
+	// - PARAMETERS
+	//
+	// example:
+	//
+	// PARAMETERS
 	UpdateFrom *string `json:"UpdateFrom,omitempty" xml:"UpdateFrom,omitempty"`
 }
 
@@ -8593,77 +11510,187 @@ func (s *UpdateServiceRequestUpdateOption) SetUpdateFrom(v string) *UpdateServic
 }
 
 type UpdateServiceShrinkRequest struct {
+	// The alert configurations of the service.
+	//
+	// >  This parameter takes effect only when you specify an alert policy for **PolicyNames**.
+	//
 	// example:
 	//
 	// {\\"CmsTemplateId\\":1162921,\\"TemplateUrl\\":\\"https://service-info-private.oss-cn-hangzhou.aliyuncs.com/1760465342xxxxxx/template/c072ef50-6c03-4d9c-8f0e-d1c440xxxxxx.json\\"}
 	AlarmMetadata *string `json:"AlarmMetadata,omitempty" xml:"AlarmMetadata,omitempty"`
-	ApprovalType  *string `json:"ApprovalType,omitempty" xml:"ApprovalType,omitempty"`
+	// The approval type of the service usage application. Valid values:
+	//
+	// - Manual: The application is manually approved.
+	//
+	// - AutoPass: The application is automatically approved.
+	//
+	// example:
+	//
+	// Manual
+	ApprovalType *string `json:"ApprovalType,omitempty" xml:"ApprovalType,omitempty"`
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	//
 	// example:
 	//
 	// 788E7CP0EN9D51P
-	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	ClientToken     *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	CommodityShrink *string `json:"Commodity,omitempty" xml:"Commodity,omitempty"`
+	// The storage configurations of the service. The format in which the deployment information of a service is stored varies based on the deployment type of the service. In this case, the deployment information is stored in the JSON string format.
+	//
 	// example:
 	//
 	// {\\"EstimateTime\\":null,\\"SupplierDeployMetadata\\":{\\"DeployTimeout\\":7200},\\"EnableVnc\\":false}
 	DeployMetadata *string `json:"DeployMetadata,omitempty" xml:"DeployMetadata,omitempty"`
+	// The deployment type of the service. Valid values:
+	//
+	// 	- ros: The service is deployed by using Resource Orchestration Service (ROS).
+	//
+	// 	- terraform: The service is deployed by using Terraform.
+	//
+	// 	- spi: The service is deployed by calling a service provider interface (SPI).
+	//
+	// 	- operation: The service is deployed by using a hosted O\\&M service.
+	//
+	// 	- container: The service is deployed by using a container.
+	//
+	// 	- pkg: The service is deployed by using a package.
+	//
 	// example:
 	//
 	// ros
 	DeployType *string `json:"DeployType,omitempty" xml:"DeployType,omitempty"`
+	// The duration for which hosted O\\&M is implemented. Unit: seconds.
+	//
 	// example:
 	//
 	// 259200
 	Duration *int64 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// Specifies whether to enable the hosted O\\&M feature for the service. Default value: false. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
+	// >  This parameter is required if you set **ServiceType*	- to **private**.
+	//
 	// example:
 	//
 	// false
-	IsSupportOperated *bool   `json:"IsSupportOperated,omitempty" xml:"IsSupportOperated,omitempty"`
-	LicenseMetadata   *string `json:"LicenseMetadata,omitempty" xml:"LicenseMetadata,omitempty"`
-	LogMetadata       *string `json:"LogMetadata,omitempty" xml:"LogMetadata,omitempty"`
+	IsSupportOperated *bool `json:"IsSupportOperated,omitempty" xml:"IsSupportOperated,omitempty"`
+	// The license metadata.
+	//
+	// example:
+	//
+	// {\\"RetentionDays\\":3}
+	LicenseMetadata *string `json:"LicenseMetadata,omitempty" xml:"LicenseMetadata,omitempty"`
+	// The logging configurations.
+	//
+	// example:
+	//
+	// { "Logstores": [ { "LogstoreName": "access-log", "LogPath": "/home/admin/app/logs", # This parameter is not required for containers. Configure the parameter in the YAML file. "FilePattern": "access.log\\*" # This parameter is not required for containers. Configure the parameter in the YAML file. } ] }
+	LogMetadata *string `json:"LogMetadata,omitempty" xml:"LogMetadata,omitempty"`
+	// The hosted O\\&M configurations.
+	//
 	// example:
 	//
 	// {\\"PrometheusConfigMap\\":{\\"Custom_Image_Ecs\\":{\\"EnablePrometheus\\":false}}}
 	OperationMetadata *string `json:"OperationMetadata,omitempty" xml:"OperationMetadata,omitempty"`
+	// The policy name. The name can be up to 128 characters in length. Separate multiple names with commas (,). Only hosted O\\&M policies are supported.
+	//
 	// example:
 	//
 	// policyName1, policyName2
 	PolicyNames *string `json:"PolicyNames,omitempty" xml:"PolicyNames,omitempty"`
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Resellable *bool   `json:"Resellable,omitempty" xml:"Resellable,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Specifies whether to support distribution. Valid values:
+	//
+	// 	- false
+	//
+	// 	- true
+	//
+	// example:
+	//
+	// false
+	Resellable *bool `json:"Resellable,omitempty" xml:"Resellable,omitempty"`
+	// The service ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// service-1dda29c3eca648xxxxxx
-	ServiceId   *string                                  `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	// The service details.
 	ServiceInfo []*UpdateServiceShrinkRequestServiceInfo `json:"ServiceInfo,omitempty" xml:"ServiceInfo,omitempty" type:"Repeated"`
+	// The service type. Valid values:
+	//
+	// 	- private: The service is a private service and is deployed within the account of a customer.
+	//
+	// 	- managed: The service is a fully managed service and is deployed within the account of a service provider.
+	//
+	// 	- operation: The service is a hosted O\\&M service.
+	//
+	// 	- poc: The service is a trial service.
+	//
 	// example:
 	//
 	// private
 	ServiceType *string `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
+	// The service version.
+	//
 	// example:
 	//
 	// 1
 	ServiceVersion *string `json:"ServiceVersion,omitempty" xml:"ServiceVersion,omitempty"`
-	ShareType      *string `json:"ShareType,omitempty" xml:"ShareType,omitempty"`
+	// The permission type of the deployment URL. Valid values:
+	//
+	// - Public: All users can go to the URL to create a service instance or a trial service instance.
+	//
+	// - Restricted: Only users in the whitelist can go to the URL to create a service instance or a trial service instance.
+	//
+	// - OnlyFormalRestricted: Only users in the whitelist can go to the URL to create a service instance.
+	//
+	// - OnlyTrailRestricted: Only users in the whitelist can go to the URL to create a trial service instance.
+	//
+	// - Hidden: Users not in the whitelist cannot see the service details page when they go to the URL and cannot request deployment permissions.
+	//
+	// example:
+	//
+	// Public
+	ShareType *string `json:"ShareType,omitempty" xml:"ShareType,omitempty"`
+	// The type of the tenant. Valid values:
+	//
+	// 	- SingleTenant
+	//
+	// 	- MultiTenant
+	//
 	// example:
 	//
 	// SingleTenant
 	TenantType *string `json:"TenantType,omitempty" xml:"TenantType,omitempty"`
+	// The trial duration. Unit: day. The maximum trial duration cannot exceed 30 days.
+	//
 	// example:
 	//
 	// 7
-	TrialDuration      *int32  `json:"TrialDuration,omitempty" xml:"TrialDuration,omitempty"`
+	TrialDuration *int32 `json:"TrialDuration,omitempty" xml:"TrialDuration,omitempty"`
+	// The options for update the service.
 	UpdateOptionShrink *string `json:"UpdateOption,omitempty" xml:"UpdateOption,omitempty"`
+	// The metadata about the upgrade.
+	//
 	// example:
 	//
 	// {\\"Description\\":\\"xxx\\",\\"SupportRollback\\":true,\\"SupportUpgradeFromVersions\\":[],\\"UpgradeComponents\\":[\\"Configuration\\"]}
 	UpgradeMetadata *string `json:"UpgradeMetadata,omitempty" xml:"UpgradeMetadata,omitempty"`
+	// The version name.
+	//
 	// example:
 	//
 	// Draft
@@ -8690,6 +11717,11 @@ func (s *UpdateServiceShrinkRequest) SetApprovalType(v string) *UpdateServiceShr
 
 func (s *UpdateServiceShrinkRequest) SetClientToken(v string) *UpdateServiceShrinkRequest {
 	s.ClientToken = &v
+	return s
+}
+
+func (s *UpdateServiceShrinkRequest) SetCommodityShrink(v string) *UpdateServiceShrinkRequest {
+	s.CommodityShrink = &v
 	return s
 }
 
@@ -8794,18 +11826,42 @@ func (s *UpdateServiceShrinkRequest) SetVersionName(v string) *UpdateServiceShri
 }
 
 type UpdateServiceShrinkRequestServiceInfo struct {
+	// Protocol document information about the service.
 	Agreements []*UpdateServiceShrinkRequestServiceInfoAgreements `json:"Agreements,omitempty" xml:"Agreements,omitempty" type:"Repeated"`
+	// The URL of the service icon.
+	//
 	// example:
 	//
 	// http://img.tidb.oss.url
 	Image *string `json:"Image,omitempty" xml:"Image,omitempty"`
+	// The language of the service. Valid values:
+	//
+	// 	- zh-CN: Chinese
+	//
+	// 	- en-US: English
+	//
 	// example:
 	//
 	// zh-CN
-	Locale             *string `json:"Locale,omitempty" xml:"Locale,omitempty"`
+	Locale *string `json:"Locale,omitempty" xml:"Locale,omitempty"`
+	// The URL of the detailed description of the service.
+	//
+	// example:
+	//
+	// http://description.tidb.oss.url
 	LongDescriptionUrl *string `json:"LongDescriptionUrl,omitempty" xml:"LongDescriptionUrl,omitempty"`
-	Name               *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	ShortDescription   *string `json:"ShortDescription,omitempty" xml:"ShortDescription,omitempty"`
+	// The service name.
+	//
+	// example:
+	//
+	// kodbox-fc
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The description of the service.
+	//
+	// example:
+	//
+	// B是A公司自主设计并研发的开源分布式的关系型数据库
+	ShortDescription *string `json:"ShortDescription,omitempty" xml:"ShortDescription,omitempty"`
 }
 
 func (s UpdateServiceShrinkRequestServiceInfo) String() string {
@@ -8847,8 +11903,18 @@ func (s *UpdateServiceShrinkRequestServiceInfo) SetShortDescription(v string) *U
 }
 
 type UpdateServiceShrinkRequestServiceInfoAgreements struct {
+	// Protocol name.
+	//
+	// example:
+	//
+	// Name
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Url  *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	// Protocol url.
+	//
+	// example:
+	//
+	// https://aliyun.com/xxxxxxxx.html
+	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
 }
 
 func (s UpdateServiceShrinkRequestServiceInfoAgreements) String() string {
@@ -8870,6 +11936,8 @@ func (s *UpdateServiceShrinkRequestServiceInfoAgreements) SetUrl(v string) *Upda
 }
 
 type UpdateServiceResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// DF0F666F-FBBC-55C3-A368-C955DE7B4839
@@ -8919,18 +11987,25 @@ func (s *UpdateServiceResponse) SetBody(v *UpdateServiceResponseBody) *UpdateSer
 }
 
 type UpdateServiceInstanceAttributeRequest struct {
+	// The time when the service instance expires.
+	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mmZ
 	//
 	// example:
 	//
 	// 2023-12-25T02:28:40Z
-	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	EndTime     *string                                           `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	LicenseData *UpdateServiceInstanceAttributeRequestLicenseData `json:"LicenseData,omitempty" xml:"LicenseData,omitempty" type:"Struct"`
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The service instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -8952,6 +12027,11 @@ func (s *UpdateServiceInstanceAttributeRequest) SetEndTime(v string) *UpdateServ
 	return s
 }
 
+func (s *UpdateServiceInstanceAttributeRequest) SetLicenseData(v *UpdateServiceInstanceAttributeRequestLicenseData) *UpdateServiceInstanceAttributeRequest {
+	s.LicenseData = v
+	return s
+}
+
 func (s *UpdateServiceInstanceAttributeRequest) SetRegionId(v string) *UpdateServiceInstanceAttributeRequest {
 	s.RegionId = &v
 	return s
@@ -8962,7 +12042,82 @@ func (s *UpdateServiceInstanceAttributeRequest) SetServiceInstanceId(v string) *
 	return s
 }
 
+type UpdateServiceInstanceAttributeRequestLicenseData struct {
+	CustomData *string `json:"CustomData,omitempty" xml:"CustomData,omitempty"`
+}
+
+func (s UpdateServiceInstanceAttributeRequestLicenseData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateServiceInstanceAttributeRequestLicenseData) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateServiceInstanceAttributeRequestLicenseData) SetCustomData(v string) *UpdateServiceInstanceAttributeRequestLicenseData {
+	s.CustomData = &v
+	return s
+}
+
+type UpdateServiceInstanceAttributeShrinkRequest struct {
+	// The time when the service instance expires.
+	//
+	// Use the UTC time format: yyyy-MM-ddTHH:mmZ
+	//
+	// example:
+	//
+	// 2023-12-25T02:28:40Z
+	EndTime           *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	LicenseDataShrink *string `json:"LicenseData,omitempty" xml:"LicenseData,omitempty"`
+	// The region ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The service instance ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// si-3df88e962cdexxxxxxxx
+	ServiceInstanceId *string `json:"ServiceInstanceId,omitempty" xml:"ServiceInstanceId,omitempty"`
+}
+
+func (s UpdateServiceInstanceAttributeShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateServiceInstanceAttributeShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateServiceInstanceAttributeShrinkRequest) SetEndTime(v string) *UpdateServiceInstanceAttributeShrinkRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *UpdateServiceInstanceAttributeShrinkRequest) SetLicenseDataShrink(v string) *UpdateServiceInstanceAttributeShrinkRequest {
+	s.LicenseDataShrink = &v
+	return s
+}
+
+func (s *UpdateServiceInstanceAttributeShrinkRequest) SetRegionId(v string) *UpdateServiceInstanceAttributeShrinkRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *UpdateServiceInstanceAttributeShrinkRequest) SetServiceInstanceId(v string) *UpdateServiceInstanceAttributeShrinkRequest {
+	s.ServiceInstanceId = &v
+	return s
+}
+
 type UpdateServiceInstanceAttributeResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 0CB2E0A9-B4DF-5C16-86AD-C511C483144B
@@ -9029,6 +12184,10 @@ type UpdateServiceInstanceSpecRequest struct {
 	// true
 	EnableUserPrometheus *bool `json:"EnableUserPrometheus,omitempty" xml:"EnableUserPrometheus,omitempty"`
 	// The name of the configuration update operation.
+	//
+	// example:
+	//
+	// package modify
 	OperationName *string `json:"OperationName,omitempty" xml:"OperationName,omitempty"`
 	// The configuration parameters of the service instance.
 	//
@@ -9037,6 +12196,10 @@ type UpdateServiceInstanceSpecRequest struct {
 	// {\\"EcsInstanceParameter\\":\\"4vCPU 8GiB\\",\\"ZoneId\\":\\"cn-heyuan-a\\",\\"SystemDiskSize\\":50,\\"DataDiskSize\\":150,\\"InternetMaxBandwidthOut\\":2,\\"RegionId\\":\\"cn-heyuan\\"}
 	Parameters map[string]interface{} `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
 	// The name of the specification package.
+	//
+	// example:
+	//
+	// package one
 	PredefinedParametersName *string `json:"PredefinedParametersName,omitempty" xml:"PredefinedParametersName,omitempty"`
 	// The service instance ID.
 	//
@@ -9102,6 +12265,10 @@ type UpdateServiceInstanceSpecShrinkRequest struct {
 	// true
 	EnableUserPrometheus *bool `json:"EnableUserPrometheus,omitempty" xml:"EnableUserPrometheus,omitempty"`
 	// The name of the configuration update operation.
+	//
+	// example:
+	//
+	// package modify
 	OperationName *string `json:"OperationName,omitempty" xml:"OperationName,omitempty"`
 	// The configuration parameters of the service instance.
 	//
@@ -9110,6 +12277,10 @@ type UpdateServiceInstanceSpecShrinkRequest struct {
 	// {\\"EcsInstanceParameter\\":\\"4vCPU 8GiB\\",\\"ZoneId\\":\\"cn-heyuan-a\\",\\"SystemDiskSize\\":50,\\"DataDiskSize\\":150,\\"InternetMaxBandwidthOut\\":2,\\"RegionId\\":\\"cn-heyuan\\"}
 	ParametersShrink *string `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
 	// The name of the specification package.
+	//
+	// example:
+	//
+	// package one
 	PredefinedParametersName *string `json:"PredefinedParametersName,omitempty" xml:"PredefinedParametersName,omitempty"`
 	// The service instance ID.
 	//
@@ -9220,23 +12391,46 @@ func (s *UpdateServiceInstanceSpecResponse) SetBody(v *UpdateServiceInstanceSpec
 }
 
 type UpgradeServiceInstanceRequest struct {
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	//
 	// example:
 	//
 	// 10CM943JP0EN9D51H
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// Specifies whether to perform only a dry run for the request to check information such as the permissions and instance status. Valid values:
+	//
+	// 	- true: performs a dry run for the request, but does not create a service instance.
+	//
+	// 	- false: performs a dry run for the request, and creates a service instance if the request passes the dry run.
+	//
 	// example:
 	//
 	// false
-	DryRun     *string                `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	DryRun *string `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// The configuration parameters of the service instance.
+	//
+	// example:
+	//
+	// {
+	//
+	//       "param": "value"
+	//
+	// }
 	Parameters map[string]interface{} `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the service instance.
+	//
 	// example:
 	//
 	// si-5cbae874da0e47xxxxxx
 	ServiceInstanceId *string `json:"ServiceInstanceId,omitempty" xml:"ServiceInstanceId,omitempty"`
+	// The service version.
+	//
 	// example:
 	//
 	// 2
@@ -9282,23 +12476,46 @@ func (s *UpgradeServiceInstanceRequest) SetServiceVersion(v string) *UpgradeServ
 }
 
 type UpgradeServiceInstanceShrinkRequest struct {
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	//
 	// example:
 	//
 	// 10CM943JP0EN9D51H
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// Specifies whether to perform only a dry run for the request to check information such as the permissions and instance status. Valid values:
+	//
+	// 	- true: performs a dry run for the request, but does not create a service instance.
+	//
+	// 	- false: performs a dry run for the request, and creates a service instance if the request passes the dry run.
+	//
 	// example:
 	//
 	// false
-	DryRun           *string `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	DryRun *string `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// The configuration parameters of the service instance.
+	//
+	// example:
+	//
+	// {
+	//
+	//       "param": "value"
+	//
+	// }
 	ParametersShrink *string `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the service instance.
+	//
 	// example:
 	//
 	// si-5cbae874da0e47xxxxxx
 	ServiceInstanceId *string `json:"ServiceInstanceId,omitempty" xml:"ServiceInstanceId,omitempty"`
+	// The service version.
+	//
 	// example:
 	//
 	// 2
@@ -9344,18 +12561,41 @@ func (s *UpgradeServiceInstanceShrinkRequest) SetServiceVersion(v string) *Upgra
 }
 
 type UpgradeServiceInstanceResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// F224E002-AB0E-5FD9-A87E-54AEE56F6CAE
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the service instance.
+	//
 	// example:
 	//
 	// si-5cbae874da0e47xxxxxx
 	ServiceInstanceId *string `json:"ServiceInstanceId,omitempty" xml:"ServiceInstanceId,omitempty"`
+	// The deployment state of the service instance. Valid values:
+	//
+	// 	- Created
+	//
+	// 	- Deploying
+	//
+	// 	- DeployedFailed
+	//
+	// 	- Deployed
+	//
+	// 	- Upgrading
+	//
+	// 	- Deleting
+	//
+	// 	- Deleted
+	//
+	// 	- DeletedFailed
+	//
 	// example:
 	//
 	// Created
-	Status                    *string   `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The parameters required for the upgrade.
 	UpgradeRequiredParameters []*string `json:"UpgradeRequiredParameters,omitempty" xml:"UpgradeRequiredParameters,omitempty" type:"Repeated"`
 }
 
@@ -9539,6 +12779,10 @@ func (client *Client) AddServiceSharedAccounts(request *AddServiceSharedAccounts
 	return _result, _err
 }
 
+// Summary:
+//
+// Redeploys a service instance after the service instance failed to be deployed.
+//
 // @param request - ContinueDeployServiceInstanceRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -9593,6 +12837,10 @@ func (client *Client) ContinueDeployServiceInstanceWithOptions(request *Continue
 	return _result, _err
 }
 
+// Summary:
+//
+// Redeploys a service instance after the service instance failed to be deployed.
+//
 // @param request - ContinueDeployServiceInstanceRequest
 //
 // @return ContinueDeployServiceInstanceResponse
@@ -9609,7 +12857,7 @@ func (client *Client) ContinueDeployServiceInstance(request *ContinueDeployServi
 
 // Summary:
 //
-// 创建部署物
+// Creates a deployment package.
 //
 // @param tmpReq - CreateArtifactRequest
 //
@@ -9689,7 +12937,7 @@ func (client *Client) CreateArtifactWithOptions(tmpReq *CreateArtifactRequest, r
 
 // Summary:
 //
-// 创建部署物
+// Creates a deployment package.
 //
 // @param request - CreateArtifactRequest
 //
@@ -9707,7 +12955,7 @@ func (client *Client) CreateArtifact(request *CreateArtifactRequest) (_result *C
 
 // Summary:
 //
-// 创建新服务版本
+// Creates a service.
 //
 // @param request - CreateServiceRequest
 //
@@ -9849,7 +13097,7 @@ func (client *Client) CreateServiceWithOptions(request *CreateServiceRequest, ru
 
 // Summary:
 //
-// 创建新服务版本
+// Creates a service.
 //
 // @param request - CreateServiceRequest
 //
@@ -9867,7 +13115,7 @@ func (client *Client) CreateService(request *CreateServiceRequest) (_result *Cre
 
 // Summary:
 //
-// 商家侧创建服务实例
+// Creates and deploys a service instance.
 //
 // @param tmpReq - CreateServiceInstanceRequest
 //
@@ -9963,7 +13211,7 @@ func (client *Client) CreateServiceInstanceWithOptions(tmpReq *CreateServiceInst
 
 // Summary:
 //
-// 商家侧创建服务实例
+// Creates and deploys a service instance.
 //
 // @param request - CreateServiceInstanceRequest
 //
@@ -9981,7 +13229,7 @@ func (client *Client) CreateServiceInstance(request *CreateServiceInstanceReques
 
 // Summary:
 //
-// 删除部署物
+// Deletes an artifact.
 //
 // @param request - DeleteArtifactRequest
 //
@@ -10027,7 +13275,7 @@ func (client *Client) DeleteArtifactWithOptions(request *DeleteArtifactRequest, 
 
 // Summary:
 //
-// 删除部署物
+// Deletes an artifact.
 //
 // @param request - DeleteArtifactRequest
 //
@@ -10115,6 +13363,10 @@ func (client *Client) DeleteService(request *DeleteServiceRequest) (_result *Del
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a service instance.
+//
 // @param request - DeleteServiceInstancesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -10161,6 +13413,10 @@ func (client *Client) DeleteServiceInstancesWithOptions(request *DeleteServiceIn
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a service instance.
+//
 // @param request - DeleteServiceInstancesRequest
 //
 // @return DeleteServiceInstancesResponse
@@ -10175,6 +13431,10 @@ func (client *Client) DeleteServiceInstances(request *DeleteServiceInstancesRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// Deploys a service instance.
+//
 // @param request - DeployServiceInstanceRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -10221,6 +13481,10 @@ func (client *Client) DeployServiceInstanceWithOptions(request *DeployServiceIns
 	return _result, _err
 }
 
+// Summary:
+//
+// Deploys a service instance.
+//
 // @param request - DeployServiceInstanceRequest
 //
 // @return DeployServiceInstanceResponse
@@ -10237,7 +13501,7 @@ func (client *Client) DeployServiceInstance(request *DeployServiceInstanceReques
 
 // Summary:
 //
-// 获取部署物信息
+// Queries the information about a deployment package.
 //
 // @param request - GetArtifactRequest
 //
@@ -10287,7 +13551,7 @@ func (client *Client) GetArtifactWithOptions(request *GetArtifactRequest, runtim
 
 // Summary:
 //
-// 获取部署物信息
+// Queries the information about a deployment package.
 //
 // @param request - GetArtifactRequest
 //
@@ -10305,7 +13569,7 @@ func (client *Client) GetArtifact(request *GetArtifactRequest) (_result *GetArti
 
 // Summary:
 //
-// 获取部署物仓库访问凭证
+// Queries the credentials that are required to upload a deployment package.
 //
 // @param request - GetArtifactRepositoryCredentialsRequest
 //
@@ -10351,7 +13615,7 @@ func (client *Client) GetArtifactRepositoryCredentialsWithOptions(request *GetAr
 
 // Summary:
 //
-// 获取部署物仓库访问凭证
+// Queries the credentials that are required to upload a deployment package.
 //
 // @param request - GetArtifactRepositoryCredentialsRequest
 //
@@ -10369,7 +13633,7 @@ func (client *Client) GetArtifactRepositoryCredentials(request *GetArtifactRepos
 
 // Summary:
 //
-// 查询服务详情
+// Queries the information about a service.
 //
 // @param request - GetServiceRequest
 //
@@ -10431,7 +13695,7 @@ func (client *Client) GetServiceWithOptions(request *GetServiceRequest, runtime 
 
 // Summary:
 //
-// 查询服务详情
+// Queries the information about a service.
 //
 // @param request - GetServiceRequest
 //
@@ -10449,7 +13713,7 @@ func (client *Client) GetService(request *GetServiceRequest) (_result *GetServic
 
 // Summary:
 //
-// 计算巢服务部署询价
+// Queries the estimated price for creating a service instance.
 //
 // @param tmpReq - GetServiceEstimateCostRequest
 //
@@ -10533,7 +13797,7 @@ func (client *Client) GetServiceEstimateCostWithOptions(tmpReq *GetServiceEstima
 
 // Summary:
 //
-// 计算巢服务部署询价
+// Queries the estimated price for creating a service instance.
 //
 // @param request - GetServiceEstimateCostRequest
 //
@@ -10549,6 +13813,10 @@ func (client *Client) GetServiceEstimateCost(request *GetServiceEstimateCostRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about a service instance.
+//
 // @param request - GetServiceInstanceRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -10591,6 +13859,10 @@ func (client *Client) GetServiceInstanceWithOptions(request *GetServiceInstanceR
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about a service instance.
+//
 // @param request - GetServiceInstanceRequest
 //
 // @return GetServiceInstanceResponse
@@ -10607,7 +13879,7 @@ func (client *Client) GetServiceInstance(request *GetServiceInstanceRequest) (_r
 
 // Summary:
 //
-// 获取ROS模板参数限制
+// Queries the valid values of parameters in a Resource Orchestration Service (ROS) template.
 //
 // @param request - GetServiceTemplateParameterConstraintsRequest
 //
@@ -10681,7 +13953,7 @@ func (client *Client) GetServiceTemplateParameterConstraintsWithOptions(request 
 
 // Summary:
 //
-// 获取ROS模板参数限制
+// Queries the valid values of parameters in a Resource Orchestration Service (ROS) template.
 //
 // @param request - GetServiceTemplateParameterConstraintsRequest
 //
@@ -10697,6 +13969,10 @@ func (client *Client) GetServiceTemplateParameterConstraints(request *GetService
 	return _result, _err
 }
 
+// Summary:
+//
+// Obtain the AccessKey pair of uploaded files.
+//
 // @param request - GetUploadCredentialsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -10739,6 +14015,10 @@ func (client *Client) GetUploadCredentialsWithOptions(request *GetUploadCredenti
 	return _result, _err
 }
 
+// Summary:
+//
+// Obtain the AccessKey pair of uploaded files.
+//
 // @param request - GetUploadCredentialsRequest
 //
 // @return GetUploadCredentialsResponse
@@ -10755,7 +14035,7 @@ func (client *Client) GetUploadCredentials(request *GetUploadCredentialsRequest)
 
 // Summary:
 //
-// 展示部署物
+// Queries a list of images uploaded to Container Registry.
 //
 // @param request - ListAcrImageRepositoriesRequest
 //
@@ -10809,7 +14089,7 @@ func (client *Client) ListAcrImageRepositoriesWithOptions(request *ListAcrImageR
 
 // Summary:
 //
-// 展示部署物
+// Queries a list of images uploaded to Container Registry.
 //
 // @param request - ListAcrImageRepositoriesRequest
 //
@@ -10827,7 +14107,7 @@ func (client *Client) ListAcrImageRepositories(request *ListAcrImageRepositories
 
 // Summary:
 //
-// 展示部署物
+// Queries the versions of images that are uploaded to the image repository.
 //
 // @param request - ListAcrImageTagsRequest
 //
@@ -10881,7 +14161,7 @@ func (client *Client) ListAcrImageTagsWithOptions(request *ListAcrImageTagsReque
 
 // Summary:
 //
-// 展示部署物
+// Queries the versions of images that are uploaded to the image repository.
 //
 // @param request - ListAcrImageTagsRequest
 //
@@ -10899,7 +14179,7 @@ func (client *Client) ListAcrImageTags(request *ListAcrImageTagsRequest) (_resul
 
 // Summary:
 //
-// 展示部署物版本
+// Queries the version information about a deployment package.
 //
 // @param request - ListArtifactVersionsRequest
 //
@@ -10949,7 +14229,7 @@ func (client *Client) ListArtifactVersionsWithOptions(request *ListArtifactVersi
 
 // Summary:
 //
-// 展示部署物版本
+// Queries the version information about a deployment package.
 //
 // @param request - ListArtifactVersionsRequest
 //
@@ -10967,7 +14247,7 @@ func (client *Client) ListArtifactVersions(request *ListArtifactVersionsRequest)
 
 // Summary:
 //
-// 展示部署物
+// Queries a list of deployment packages.
 //
 // @param request - ListArtifactsRequest
 //
@@ -11025,7 +14305,7 @@ func (client *Client) ListArtifactsWithOptions(request *ListArtifactsRequest, ru
 
 // Summary:
 //
-// 展示部署物
+// Queries a list of deployment packages.
 //
 // @param request - ListArtifactsRequest
 //
@@ -11041,6 +14321,10 @@ func (client *Client) ListArtifacts(request *ListArtifactsRequest) (_result *Lis
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of service instances.
+//
 // @param request - ListServiceInstancesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -11103,6 +14387,10 @@ func (client *Client) ListServiceInstancesWithOptions(request *ListServiceInstan
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of service instances.
+//
 // @param request - ListServiceInstancesRequest
 //
 // @return ListServiceInstancesResponse
@@ -11119,7 +14407,7 @@ func (client *Client) ListServiceInstances(request *ListServiceInstancesRequest)
 
 // Summary:
 //
-// 商家获取服务使用申请接口
+// Queries the applications for using a service.
 //
 // @param request - ListServiceUsagesRequest
 //
@@ -11173,7 +14461,7 @@ func (client *Client) ListServiceUsagesWithOptions(request *ListServiceUsagesReq
 
 // Summary:
 //
-// 商家获取服务使用申请接口
+// Queries the applications for using a service.
 //
 // @param request - ListServiceUsagesRequest
 //
@@ -11191,7 +14479,7 @@ func (client *Client) ListServiceUsages(request *ListServiceUsagesRequest) (_res
 
 // Summary:
 //
-// 查询服务
+// Queries a list of services.
 //
 // @param request - ListServicesRequest
 //
@@ -11257,7 +14545,7 @@ func (client *Client) ListServicesWithOptions(request *ListServicesRequest, runt
 
 // Summary:
 //
-// 查询服务
+// Queries a list of services.
 //
 // @param request - ListServicesRequest
 //
@@ -11275,7 +14563,7 @@ func (client *Client) ListServices(request *ListServicesRequest) (_result *ListS
 
 // Summary:
 //
-// 修改服务实例资源
+// Modifies the resource information about a service instance.
 //
 // @param request - ModifyServiceInstanceResourcesRequest
 //
@@ -11325,7 +14613,7 @@ func (client *Client) ModifyServiceInstanceResourcesWithOptions(request *ModifyS
 
 // Summary:
 //
-// 修改服务实例资源
+// Modifies the resource information about a service instance.
 //
 // @param request - ModifyServiceInstanceResourcesRequest
 //
@@ -11341,6 +14629,10 @@ func (client *Client) ModifyServiceInstanceResources(request *ModifyServiceInsta
 	return _result, _err
 }
 
+// Summary:
+//
+// Pushes metering data of an Alibaba Cloud Marketplace commodity.
+//
 // @param request - PushMeteringDataRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -11383,6 +14675,10 @@ func (client *Client) PushMeteringDataWithOptions(request *PushMeteringDataReque
 	return _result, _err
 }
 
+// Summary:
+//
+// Pushes metering data of an Alibaba Cloud Marketplace commodity.
+//
 // @param request - PushMeteringDataRequest
 //
 // @return PushMeteringDataResponse
@@ -11397,6 +14693,10 @@ func (client *Client) PushMeteringData(request *PushMeteringDataRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// Registers an artifact.
+//
 // @param request - RegisterServiceRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -11443,6 +14743,10 @@ func (client *Client) RegisterServiceWithOptions(request *RegisterServiceRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// Registers an artifact.
+//
 // @param request - RegisterServiceRequest
 //
 // @return RegisterServiceResponse
@@ -11519,7 +14823,7 @@ func (client *Client) ReleaseArtifact(request *ReleaseArtifactRequest) (_result 
 
 // Summary:
 //
-// 重启服务实例
+// When the service instance is Deployed, call the RestartServiceInstance interface to restart the service instance.
 //
 // @param request - RestartServiceInstanceRequest
 //
@@ -11569,7 +14873,7 @@ func (client *Client) RestartServiceInstanceWithOptions(request *RestartServiceI
 
 // Summary:
 //
-// 重启服务实例
+// When the service instance is Deployed, call the RestartServiceInstance interface to restart the service instance.
 //
 // @param request - RestartServiceInstanceRequest
 //
@@ -11587,7 +14891,7 @@ func (client *Client) RestartServiceInstance(request *RestartServiceInstanceRequ
 
 // Summary:
 //
-// 启动服务实例
+// When the service instance status is Stopped (Stopped) or StartFailed (Startup failed), the StartServiceInstance interface is invoked to start the service instance.
 //
 // @param request - StartServiceInstanceRequest
 //
@@ -11637,7 +14941,7 @@ func (client *Client) StartServiceInstanceWithOptions(request *StartServiceInsta
 
 // Summary:
 //
-// 启动服务实例
+// When the service instance status is Stopped (Stopped) or StartFailed (Startup failed), the StartServiceInstance interface is invoked to start the service instance.
 //
 // @param request - StartServiceInstanceRequest
 //
@@ -11655,7 +14959,7 @@ func (client *Client) StartServiceInstance(request *StartServiceInstanceRequest)
 
 // Summary:
 //
-// 停止服务实例
+// When the service instance is Deployed and StopFailed, call the StopServiceInstance interface to stop the service instance.
 //
 // @param request - StopServiceInstanceRequest
 //
@@ -11705,7 +15009,7 @@ func (client *Client) StopServiceInstanceWithOptions(request *StopServiceInstanc
 
 // Summary:
 //
-// 停止服务实例
+// When the service instance is Deployed and StopFailed, call the StopServiceInstance interface to stop the service instance.
 //
 // @param request - StopServiceInstanceRequest
 //
@@ -11723,7 +15027,7 @@ func (client *Client) StopServiceInstance(request *StopServiceInstanceRequest) (
 
 // Summary:
 //
-// 更新部署物
+// Updates a deployment package.
 //
 // @param tmpReq - UpdateArtifactRequest
 //
@@ -11787,7 +15091,7 @@ func (client *Client) UpdateArtifactWithOptions(tmpReq *UpdateArtifactRequest, r
 
 // Summary:
 //
-// 更新部署物
+// Updates a deployment package.
 //
 // @param request - UpdateArtifactRequest
 //
@@ -11803,6 +15107,10 @@ func (client *Client) UpdateArtifact(request *UpdateArtifactRequest) (_result *U
 	return _result, _err
 }
 
+// Summary:
+//
+// Upgrades a service.
+//
 // @param tmpReq - UpdateServiceRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -11815,6 +15123,10 @@ func (client *Client) UpdateServiceWithOptions(tmpReq *UpdateServiceRequest, run
 	}
 	request := &UpdateServiceShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Commodity)) {
+		request.CommodityShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Commodity, tea.String("Commodity"), tea.String("json"))
+	}
+
 	if !tea.BoolValue(util.IsUnset(tmpReq.UpdateOption)) {
 		request.UpdateOptionShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.UpdateOption, tea.String("UpdateOption"), tea.String("json"))
 	}
@@ -11830,6 +15142,10 @@ func (client *Client) UpdateServiceWithOptions(tmpReq *UpdateServiceRequest, run
 
 	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
 		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CommodityShrink)) {
+		query["Commodity"] = request.CommodityShrink
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.DeployMetadata)) {
@@ -11935,6 +15251,10 @@ func (client *Client) UpdateServiceWithOptions(tmpReq *UpdateServiceRequest, run
 	return _result, _err
 }
 
+// Summary:
+//
+// Upgrades a service.
+//
 // @param request - UpdateServiceRequest
 //
 // @return UpdateServiceResponse
@@ -11951,21 +15271,31 @@ func (client *Client) UpdateService(request *UpdateServiceRequest) (_result *Upd
 
 // Summary:
 //
-// 更新服务实例属性
+// Updates the properties of a service instance.
 //
-// @param request - UpdateServiceInstanceAttributeRequest
+// @param tmpReq - UpdateServiceInstanceAttributeRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateServiceInstanceAttributeResponse
-func (client *Client) UpdateServiceInstanceAttributeWithOptions(request *UpdateServiceInstanceAttributeRequest, runtime *util.RuntimeOptions) (_result *UpdateServiceInstanceAttributeResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) UpdateServiceInstanceAttributeWithOptions(tmpReq *UpdateServiceInstanceAttributeRequest, runtime *util.RuntimeOptions) (_result *UpdateServiceInstanceAttributeResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
 		return _result, _err
 	}
+	request := &UpdateServiceInstanceAttributeShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.LicenseData)) {
+		request.LicenseDataShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.LicenseData, tea.String("LicenseData"), tea.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
 		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LicenseDataShrink)) {
+		query["LicenseData"] = request.LicenseDataShrink
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
@@ -12001,7 +15331,7 @@ func (client *Client) UpdateServiceInstanceAttributeWithOptions(request *UpdateS
 
 // Summary:
 //
-// 更新服务实例属性
+// Updates the properties of a service instance.
 //
 // @param request - UpdateServiceInstanceAttributeRequest
 //
@@ -12103,6 +15433,10 @@ func (client *Client) UpdateServiceInstanceSpec(request *UpdateServiceInstanceSp
 	return _result, _err
 }
 
+// Summary:
+//
+// Upgrades a service instance.
+//
 // @param tmpReq - UpgradeServiceInstanceRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -12167,6 +15501,10 @@ func (client *Client) UpgradeServiceInstanceWithOptions(tmpReq *UpgradeServiceIn
 	return _result, _err
 }
 
+// Summary:
+//
+// Upgrades a service instance.
+//
 // @param request - UpgradeServiceInstanceRequest
 //
 // @return UpgradeServiceInstanceResponse
