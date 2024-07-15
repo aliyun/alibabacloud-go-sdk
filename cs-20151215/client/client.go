@@ -2534,6 +2534,153 @@ func (s *CheckServiceRoleResponse) SetBody(v *CheckServiceRoleResponseBody) *Che
 	return s
 }
 
+type CleanClusterUserPermissionsRequest struct {
+	// example:
+	//
+	// false
+	Force *bool `json:"Force,omitempty" xml:"Force,omitempty"`
+}
+
+func (s CleanClusterUserPermissionsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CleanClusterUserPermissionsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CleanClusterUserPermissionsRequest) SetForce(v bool) *CleanClusterUserPermissionsRequest {
+	s.Force = &v
+	return s
+}
+
+type CleanClusterUserPermissionsResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+}
+
+func (s CleanClusterUserPermissionsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CleanClusterUserPermissionsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CleanClusterUserPermissionsResponse) SetHeaders(v map[string]*string) *CleanClusterUserPermissionsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CleanClusterUserPermissionsResponse) SetStatusCode(v int32) *CleanClusterUserPermissionsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+type CleanUserPermissionsRequest struct {
+	ClusterIds []*string `json:"ClusterIds,omitempty" xml:"ClusterIds,omitempty" type:"Repeated"`
+	// example:
+	//
+	// false
+	Force *bool `json:"Force,omitempty" xml:"Force,omitempty"`
+}
+
+func (s CleanUserPermissionsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CleanUserPermissionsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CleanUserPermissionsRequest) SetClusterIds(v []*string) *CleanUserPermissionsRequest {
+	s.ClusterIds = v
+	return s
+}
+
+func (s *CleanUserPermissionsRequest) SetForce(v bool) *CleanUserPermissionsRequest {
+	s.Force = &v
+	return s
+}
+
+type CleanUserPermissionsShrinkRequest struct {
+	ClusterIdsShrink *string `json:"ClusterIds,omitempty" xml:"ClusterIds,omitempty"`
+	// example:
+	//
+	// false
+	Force *bool `json:"Force,omitempty" xml:"Force,omitempty"`
+}
+
+func (s CleanUserPermissionsShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CleanUserPermissionsShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CleanUserPermissionsShrinkRequest) SetClusterIdsShrink(v string) *CleanUserPermissionsShrinkRequest {
+	s.ClusterIdsShrink = &v
+	return s
+}
+
+func (s *CleanUserPermissionsShrinkRequest) SetForce(v bool) *CleanUserPermissionsShrinkRequest {
+	s.Force = &v
+	return s
+}
+
+type CleanUserPermissionsResponseBody struct {
+	RequestId *string `json:"request_id,omitempty" xml:"request_id,omitempty"`
+	TaskId    *string `json:"task_id,omitempty" xml:"task_id,omitempty"`
+}
+
+func (s CleanUserPermissionsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CleanUserPermissionsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CleanUserPermissionsResponseBody) SetRequestId(v string) *CleanUserPermissionsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CleanUserPermissionsResponseBody) SetTaskId(v string) *CleanUserPermissionsResponseBody {
+	s.TaskId = &v
+	return s
+}
+
+type CleanUserPermissionsResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CleanUserPermissionsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CleanUserPermissionsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CleanUserPermissionsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CleanUserPermissionsResponse) SetHeaders(v map[string]*string) *CleanUserPermissionsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CleanUserPermissionsResponse) SetStatusCode(v int32) *CleanUserPermissionsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CleanUserPermissionsResponse) SetBody(v *CleanUserPermissionsResponseBody) *CleanUserPermissionsResponse {
+	s.Body = v
+	return s
+}
+
 type CreateAutoscalingConfigRequest struct {
 	// The waiting time before the auto scaling feature performs a scale-in activity. Only if the resource usage on a node remains below the scale-in threshold within the waiting time, the node is removed after the waiting time ends. Unit: minutes.
 	//
@@ -20860,6 +21007,208 @@ func (s *ListClusterChecksResponse) SetBody(v *ListClusterChecksResponseBody) *L
 	return s
 }
 
+type ListClusterKubeconfigStatesRequest struct {
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+}
+
+func (s ListClusterKubeconfigStatesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListClusterKubeconfigStatesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListClusterKubeconfigStatesRequest) SetPageNumber(v int32) *ListClusterKubeconfigStatesRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListClusterKubeconfigStatesRequest) SetPageSize(v int32) *ListClusterKubeconfigStatesRequest {
+	s.PageSize = &v
+	return s
+}
+
+type ListClusterKubeconfigStatesResponseBody struct {
+	Page   *ListClusterKubeconfigStatesResponseBodyPage     `json:"page,omitempty" xml:"page,omitempty" type:"Struct"`
+	States []*ListClusterKubeconfigStatesResponseBodyStates `json:"states,omitempty" xml:"states,omitempty" type:"Repeated"`
+}
+
+func (s ListClusterKubeconfigStatesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListClusterKubeconfigStatesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListClusterKubeconfigStatesResponseBody) SetPage(v *ListClusterKubeconfigStatesResponseBodyPage) *ListClusterKubeconfigStatesResponseBody {
+	s.Page = v
+	return s
+}
+
+func (s *ListClusterKubeconfigStatesResponseBody) SetStates(v []*ListClusterKubeconfigStatesResponseBodyStates) *ListClusterKubeconfigStatesResponseBody {
+	s.States = v
+	return s
+}
+
+type ListClusterKubeconfigStatesResponseBodyPage struct {
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"page_number,omitempty" xml:"page_number,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"page_size,omitempty" xml:"page_size,omitempty"`
+	// example:
+	//
+	// 5
+	TotalCount *int32 `json:"total_count,omitempty" xml:"total_count,omitempty"`
+}
+
+func (s ListClusterKubeconfigStatesResponseBodyPage) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListClusterKubeconfigStatesResponseBodyPage) GoString() string {
+	return s.String()
+}
+
+func (s *ListClusterKubeconfigStatesResponseBodyPage) SetPageNumber(v int32) *ListClusterKubeconfigStatesResponseBodyPage {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListClusterKubeconfigStatesResponseBodyPage) SetPageSize(v int32) *ListClusterKubeconfigStatesResponseBodyPage {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListClusterKubeconfigStatesResponseBodyPage) SetTotalCount(v int32) *ListClusterKubeconfigStatesResponseBodyPage {
+	s.TotalCount = &v
+	return s
+}
+
+type ListClusterKubeconfigStatesResponseBodyStates struct {
+	// example:
+	//
+	// tom
+	AccountDisplayName *string `json:"account_display_name,omitempty" xml:"account_display_name,omitempty"`
+	// example:
+	//
+	// 22855*****************
+	AccountId *string `json:"account_id,omitempty" xml:"account_id,omitempty"`
+	// example:
+	//
+	// tom
+	AccountName *string `json:"account_name,omitempty" xml:"account_name,omitempty"`
+	// example:
+	//
+	// Active
+	AccountState *string `json:"account_state,omitempty" xml:"account_state,omitempty"`
+	// example:
+	//
+	// RamUser
+	AccountType *string `json:"account_type,omitempty" xml:"account_type,omitempty"`
+	// example:
+	//
+	// 2027-07-15T01:32:20Z
+	CertExpireTime *string `json:"cert_expire_time,omitempty" xml:"cert_expire_time,omitempty"`
+	// example:
+	//
+	// Expired
+	CertState *string `json:"cert_state,omitempty" xml:"cert_state,omitempty"`
+	// example:
+	//
+	// true
+	Revokable *bool `json:"revokable,omitempty" xml:"revokable,omitempty"`
+}
+
+func (s ListClusterKubeconfigStatesResponseBodyStates) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListClusterKubeconfigStatesResponseBodyStates) GoString() string {
+	return s.String()
+}
+
+func (s *ListClusterKubeconfigStatesResponseBodyStates) SetAccountDisplayName(v string) *ListClusterKubeconfigStatesResponseBodyStates {
+	s.AccountDisplayName = &v
+	return s
+}
+
+func (s *ListClusterKubeconfigStatesResponseBodyStates) SetAccountId(v string) *ListClusterKubeconfigStatesResponseBodyStates {
+	s.AccountId = &v
+	return s
+}
+
+func (s *ListClusterKubeconfigStatesResponseBodyStates) SetAccountName(v string) *ListClusterKubeconfigStatesResponseBodyStates {
+	s.AccountName = &v
+	return s
+}
+
+func (s *ListClusterKubeconfigStatesResponseBodyStates) SetAccountState(v string) *ListClusterKubeconfigStatesResponseBodyStates {
+	s.AccountState = &v
+	return s
+}
+
+func (s *ListClusterKubeconfigStatesResponseBodyStates) SetAccountType(v string) *ListClusterKubeconfigStatesResponseBodyStates {
+	s.AccountType = &v
+	return s
+}
+
+func (s *ListClusterKubeconfigStatesResponseBodyStates) SetCertExpireTime(v string) *ListClusterKubeconfigStatesResponseBodyStates {
+	s.CertExpireTime = &v
+	return s
+}
+
+func (s *ListClusterKubeconfigStatesResponseBodyStates) SetCertState(v string) *ListClusterKubeconfigStatesResponseBodyStates {
+	s.CertState = &v
+	return s
+}
+
+func (s *ListClusterKubeconfigStatesResponseBodyStates) SetRevokable(v bool) *ListClusterKubeconfigStatesResponseBodyStates {
+	s.Revokable = &v
+	return s
+}
+
+type ListClusterKubeconfigStatesResponse struct {
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListClusterKubeconfigStatesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListClusterKubeconfigStatesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListClusterKubeconfigStatesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListClusterKubeconfigStatesResponse) SetHeaders(v map[string]*string) *ListClusterKubeconfigStatesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListClusterKubeconfigStatesResponse) SetStatusCode(v int32) *ListClusterKubeconfigStatesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListClusterKubeconfigStatesResponse) SetBody(v *ListClusterKubeconfigStatesResponseBody) *ListClusterKubeconfigStatesResponse {
+	s.Body = v
+	return s
+}
+
 type ListOperationPlansRequest struct {
 	// The cluster ID.
 	//
@@ -21338,6 +21687,181 @@ func (s *ListTagResourcesResponse) SetStatusCode(v int32) *ListTagResourcesRespo
 }
 
 func (s *ListTagResourcesResponse) SetBody(v *ListTagResourcesResponseBody) *ListTagResourcesResponse {
+	s.Body = v
+	return s
+}
+
+type ListUserKubeConfigStatesRequest struct {
+	// example:
+	//
+	// 2
+	PageNumber *int32 `json:"page_number,omitempty" xml:"page_number,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"page_size,omitempty" xml:"page_size,omitempty"`
+}
+
+func (s ListUserKubeConfigStatesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListUserKubeConfigStatesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListUserKubeConfigStatesRequest) SetPageNumber(v int32) *ListUserKubeConfigStatesRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListUserKubeConfigStatesRequest) SetPageSize(v int32) *ListUserKubeConfigStatesRequest {
+	s.PageSize = &v
+	return s
+}
+
+type ListUserKubeConfigStatesResponseBody struct {
+	Page   *ListUserKubeConfigStatesResponseBodyPage     `json:"page,omitempty" xml:"page,omitempty" type:"Struct"`
+	States []*ListUserKubeConfigStatesResponseBodyStates `json:"states,omitempty" xml:"states,omitempty" type:"Repeated"`
+}
+
+func (s ListUserKubeConfigStatesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListUserKubeConfigStatesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListUserKubeConfigStatesResponseBody) SetPage(v *ListUserKubeConfigStatesResponseBodyPage) *ListUserKubeConfigStatesResponseBody {
+	s.Page = v
+	return s
+}
+
+func (s *ListUserKubeConfigStatesResponseBody) SetStates(v []*ListUserKubeConfigStatesResponseBodyStates) *ListUserKubeConfigStatesResponseBody {
+	s.States = v
+	return s
+}
+
+type ListUserKubeConfigStatesResponseBodyPage struct {
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"page_number,omitempty" xml:"page_number,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"page_size,omitempty" xml:"page_size,omitempty"`
+	// example:
+	//
+	// 100
+	TotalCount *int32 `json:"total_count,omitempty" xml:"total_count,omitempty"`
+}
+
+func (s ListUserKubeConfigStatesResponseBodyPage) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListUserKubeConfigStatesResponseBodyPage) GoString() string {
+	return s.String()
+}
+
+func (s *ListUserKubeConfigStatesResponseBodyPage) SetPageNumber(v int32) *ListUserKubeConfigStatesResponseBodyPage {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListUserKubeConfigStatesResponseBodyPage) SetPageSize(v int32) *ListUserKubeConfigStatesResponseBodyPage {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListUserKubeConfigStatesResponseBodyPage) SetTotalCount(v int32) *ListUserKubeConfigStatesResponseBodyPage {
+	s.TotalCount = &v
+	return s
+}
+
+type ListUserKubeConfigStatesResponseBodyStates struct {
+	// example:
+	//
+	// 2026-11-30T07:41:50Z
+	CertExpireTime *string `json:"cert_expire_time,omitempty" xml:"cert_expire_time,omitempty"`
+	// example:
+	//
+	// Unissued
+	CertState *string `json:"cert_state,omitempty" xml:"cert_state,omitempty"`
+	// example:
+	//
+	// c5b5e80b0b64a4bf6939d2d8fbbc5****
+	ClusterId *string `json:"cluster_id,omitempty" xml:"cluster_id,omitempty"`
+	// example:
+	//
+	// cluster-demo
+	ClusterName *string `json:"cluster_name,omitempty" xml:"cluster_name,omitempty"`
+	// example:
+	//
+	// running
+	ClusterState *string `json:"cluster_state,omitempty" xml:"cluster_state,omitempty"`
+}
+
+func (s ListUserKubeConfigStatesResponseBodyStates) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListUserKubeConfigStatesResponseBodyStates) GoString() string {
+	return s.String()
+}
+
+func (s *ListUserKubeConfigStatesResponseBodyStates) SetCertExpireTime(v string) *ListUserKubeConfigStatesResponseBodyStates {
+	s.CertExpireTime = &v
+	return s
+}
+
+func (s *ListUserKubeConfigStatesResponseBodyStates) SetCertState(v string) *ListUserKubeConfigStatesResponseBodyStates {
+	s.CertState = &v
+	return s
+}
+
+func (s *ListUserKubeConfigStatesResponseBodyStates) SetClusterId(v string) *ListUserKubeConfigStatesResponseBodyStates {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *ListUserKubeConfigStatesResponseBodyStates) SetClusterName(v string) *ListUserKubeConfigStatesResponseBodyStates {
+	s.ClusterName = &v
+	return s
+}
+
+func (s *ListUserKubeConfigStatesResponseBodyStates) SetClusterState(v string) *ListUserKubeConfigStatesResponseBodyStates {
+	s.ClusterState = &v
+	return s
+}
+
+type ListUserKubeConfigStatesResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListUserKubeConfigStatesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListUserKubeConfigStatesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListUserKubeConfigStatesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListUserKubeConfigStatesResponse) SetHeaders(v map[string]*string) *ListUserKubeConfigStatesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListUserKubeConfigStatesResponse) SetStatusCode(v int32) *ListUserKubeConfigStatesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListUserKubeConfigStatesResponse) SetBody(v *ListUserKubeConfigStatesResponseBody) *ListUserKubeConfigStatesResponse {
 	s.Body = v
 	return s
 }
@@ -27710,6 +28234,144 @@ func (client *Client) CheckServiceRole(request *CheckServiceRoleRequest) (_resul
 
 // Summary:
 //
+// 清理某个用户在某个集群的证书以及权限
+//
+// @param request - CleanClusterUserPermissionsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CleanClusterUserPermissionsResponse
+func (client *Client) CleanClusterUserPermissionsWithOptions(ClusterId *string, Uid *string, request *CleanClusterUserPermissionsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CleanClusterUserPermissionsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Force)) {
+		query["Force"] = request.Force
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CleanClusterUserPermissions"),
+		Version:     tea.String("2015-12-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/cluster/" + tea.StringValue(openapiutil.GetEncodeParam(ClusterId)) + "/user/" + tea.StringValue(openapiutil.GetEncodeParam(Uid)) + "/permissions"),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
+	_result = &CleanClusterUserPermissionsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 清理某个用户在某个集群的证书以及权限
+//
+// @param request - CleanClusterUserPermissionsRequest
+//
+// @return CleanClusterUserPermissionsResponse
+func (client *Client) CleanClusterUserPermissions(ClusterId *string, Uid *string, request *CleanClusterUserPermissionsRequest) (_result *CleanClusterUserPermissionsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CleanClusterUserPermissionsResponse{}
+	_body, _err := client.CleanClusterUserPermissionsWithOptions(ClusterId, Uid, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 清除某个用户的证书以及相关RBAC权限
+//
+// @param tmpReq - CleanUserPermissionsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CleanUserPermissionsResponse
+func (client *Client) CleanUserPermissionsWithOptions(Uid *string, tmpReq *CleanUserPermissionsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CleanUserPermissionsResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &CleanUserPermissionsShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.ClusterIds)) {
+		request.ClusterIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ClusterIds, tea.String("ClusterIds"), tea.String("simple"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterIdsShrink)) {
+		query["ClusterIds"] = request.ClusterIdsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Force)) {
+		query["Force"] = request.Force
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CleanUserPermissions"),
+		Version:     tea.String("2015-12-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/users/" + tea.StringValue(openapiutil.GetEncodeParam(Uid)) + "/permissions"),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CleanUserPermissionsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 清除某个用户的证书以及相关RBAC权限
+//
+// @param request - CleanUserPermissionsRequest
+//
+// @return CleanUserPermissionsResponse
+func (client *Client) CleanUserPermissions(Uid *string, request *CleanUserPermissionsRequest) (_result *CleanUserPermissionsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CleanUserPermissionsResponse{}
+	_body, _err := client.CleanUserPermissionsWithOptions(Uid, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Creates a scaling configuration to allow the system to scale resources based on the given scaling rules. When you create a scaling configuration, you can specify the scaling metrics, thresholds, scaling order, and scaling interval.
 //
 // @param request - CreateAutoscalingConfigRequest
@@ -33224,6 +33886,74 @@ func (client *Client) ListClusterChecks(clusterId *string, request *ListClusterC
 
 // Summary:
 //
+// 获取当前集群已下发的用户Kubeconfig的状态列表
+//
+// @param request - ListClusterKubeconfigStatesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListClusterKubeconfigStatesResponse
+func (client *Client) ListClusterKubeconfigStatesWithOptions(ClusterId *string, request *ListClusterKubeconfigStatesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListClusterKubeconfigStatesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["pageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["pageSize"] = request.PageSize
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListClusterKubeconfigStates"),
+		Version:     tea.String("2015-12-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/clusters/" + tea.StringValue(openapiutil.GetEncodeParam(ClusterId)) + "/kubeconfig/states"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListClusterKubeconfigStatesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取当前集群已下发的用户Kubeconfig的状态列表
+//
+// @param request - ListClusterKubeconfigStatesRequest
+//
+// @return ListClusterKubeconfigStatesResponse
+func (client *Client) ListClusterKubeconfigStates(ClusterId *string, request *ListClusterKubeconfigStatesRequest) (_result *ListClusterKubeconfigStatesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListClusterKubeconfigStatesResponse{}
+	_body, _err := client.ListClusterKubeconfigStatesWithOptions(ClusterId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 获取自动运维执行计划列表
 //
 // @param request - ListOperationPlansRequest
@@ -33373,6 +34103,74 @@ func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_resul
 	headers := make(map[string]*string)
 	_result = &ListTagResourcesResponse{}
 	_body, _err := client.ListTagResourcesWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询单用户所有集群的证书状态
+//
+// @param request - ListUserKubeConfigStatesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListUserKubeConfigStatesResponse
+func (client *Client) ListUserKubeConfigStatesWithOptions(Uid *string, request *ListUserKubeConfigStatesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListUserKubeConfigStatesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["page_number"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["page_size"] = request.PageSize
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListUserKubeConfigStates"),
+		Version:     tea.String("2015-12-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/users/" + tea.StringValue(openapiutil.GetEncodeParam(Uid)) + "/kubeconfig/states"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListUserKubeConfigStatesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询单用户所有集群的证书状态
+//
+// @param request - ListUserKubeConfigStatesRequest
+//
+// @return ListUserKubeConfigStatesResponse
+func (client *Client) ListUserKubeConfigStates(Uid *string, request *ListUserKubeConfigStatesRequest) (_result *ListUserKubeConfigStatesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListUserKubeConfigStatesResponse{}
+	_body, _err := client.ListUserKubeConfigStatesWithOptions(Uid, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}

@@ -1,3 +1,10 @@
+2024-07-15 Version: v5.5.0
+- Support API CleanClusterUserPermissions.
+- Support API CleanUserPermissions.
+- Support API ListClusterKubeconfigStates.
+- Support API ListUserKubeConfigStates.
+
+
 2024-07-11 Version: v5.4.0
 - Support API UpdateClusterAuditLogConfig.
 
