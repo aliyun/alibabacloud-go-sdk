@@ -3147,6 +3147,10 @@ type ProvisionConfig struct {
 	AlwaysAllocateCPU *bool `json:"alwaysAllocateCPU,omitempty" xml:"alwaysAllocateCPU,omitempty"`
 	// example:
 	//
+	// true
+	AlwaysAllocateGPU *bool `json:"alwaysAllocateGPU,omitempty" xml:"alwaysAllocateGPU,omitempty"`
+	// example:
+	//
 	// 1
 	Current *int64 `json:"current,omitempty" xml:"current,omitempty"`
 	// example:
@@ -3175,6 +3179,11 @@ func (s ProvisionConfig) GoString() string {
 
 func (s *ProvisionConfig) SetAlwaysAllocateCPU(v bool) *ProvisionConfig {
 	s.AlwaysAllocateCPU = &v
+	return s
+}
+
+func (s *ProvisionConfig) SetAlwaysAllocateGPU(v bool) *ProvisionConfig {
+	s.AlwaysAllocateGPU = &v
 	return s
 }
 
@@ -3298,7 +3307,11 @@ type PutProvisionConfigInput struct {
 	// example:
 	//
 	// true
-	AlwaysAllocateCPU *bool              `json:"alwaysAllocateCPU,omitempty" xml:"alwaysAllocateCPU,omitempty"`
+	AlwaysAllocateCPU *bool `json:"alwaysAllocateCPU,omitempty" xml:"alwaysAllocateCPU,omitempty"`
+	// example:
+	//
+	// true
+	AlwaysAllocateGPU *bool              `json:"alwaysAllocateGPU,omitempty" xml:"alwaysAllocateGPU,omitempty"`
 	ScheduledActions  []*ScheduledAction `json:"scheduledActions" xml:"scheduledActions" type:"Repeated"`
 	// This parameter is required.
 	//
@@ -3319,6 +3332,11 @@ func (s PutProvisionConfigInput) GoString() string {
 
 func (s *PutProvisionConfigInput) SetAlwaysAllocateCPU(v bool) *PutProvisionConfigInput {
 	s.AlwaysAllocateCPU = &v
+	return s
+}
+
+func (s *PutProvisionConfigInput) SetAlwaysAllocateGPU(v bool) *PutProvisionConfigInput {
+	s.AlwaysAllocateGPU = &v
 	return s
 }
 
