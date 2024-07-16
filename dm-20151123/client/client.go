@@ -2607,6 +2607,7 @@ func (s *GetSuppressionListLevelResponse) SetBody(v *GetSuppressionListLevelResp
 }
 
 type GetTrackListRequest struct {
+	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -2633,6 +2634,7 @@ type GetTrackListRequest struct {
 	//
 	// 2019-09-29
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	TagName   *string `json:"TagName,omitempty" xml:"TagName,omitempty"`
 	Total     *string `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
@@ -2642,6 +2644,11 @@ func (s GetTrackListRequest) String() string {
 
 func (s GetTrackListRequest) GoString() string {
 	return s.String()
+}
+
+func (s *GetTrackListRequest) SetAccountName(v string) *GetTrackListRequest {
+	s.AccountName = &v
+	return s
 }
 
 func (s *GetTrackListRequest) SetEndTime(v string) *GetTrackListRequest {
@@ -2691,6 +2698,11 @@ func (s *GetTrackListRequest) SetResourceOwnerId(v int64) *GetTrackListRequest {
 
 func (s *GetTrackListRequest) SetStartTime(v string) *GetTrackListRequest {
 	s.StartTime = &v
+	return s
+}
+
+func (s *GetTrackListRequest) SetTagName(v string) *GetTrackListRequest {
+	s.TagName = &v
 	return s
 }
 
@@ -8595,6 +8607,10 @@ func (client *Client) GetTrackListWithOptions(request *GetTrackListRequest, runt
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AccountName)) {
+		query["AccountName"] = request.AccountName
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
 		query["EndTime"] = request.EndTime
 	}
@@ -8633,6 +8649,10 @@ func (client *Client) GetTrackListWithOptions(request *GetTrackListRequest, runt
 
 	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
 		query["StartTime"] = request.StartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TagName)) {
+		query["TagName"] = request.TagName
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Total)) {
