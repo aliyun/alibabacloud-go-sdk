@@ -833,6 +833,283 @@ func (s *CreateIndexResponse) SetBody(v *CreateIndexResponseBody) *CreateIndexRe
 	return s
 }
 
+type DeleteIndexRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// f89ie0fj5a
+	IndexId *string `json:"IndexId,omitempty" xml:"IndexId,omitempty"`
+}
+
+func (s DeleteIndexRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteIndexRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteIndexRequest) SetIndexId(v string) *DeleteIndexRequest {
+	s.IndexId = &v
+	return s
+}
+
+type DeleteIndexResponseBody struct {
+	// example:
+	//
+	// Index.InvalidParameter
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// Required parameter(%s) missing or invalid, please check the request parameters.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 17204B98-xxxx-4F9A-8464-2446A84821CA
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 200
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DeleteIndexResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteIndexResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteIndexResponseBody) SetCode(v string) *DeleteIndexResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DeleteIndexResponseBody) SetMessage(v string) *DeleteIndexResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DeleteIndexResponseBody) SetRequestId(v string) *DeleteIndexResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteIndexResponseBody) SetStatus(v string) *DeleteIndexResponseBody {
+	s.Status = &v
+	return s
+}
+
+func (s *DeleteIndexResponseBody) SetSuccess(v bool) *DeleteIndexResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DeleteIndexResponse struct {
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteIndexResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteIndexResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteIndexResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteIndexResponse) SetHeaders(v map[string]*string) *DeleteIndexResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteIndexResponse) SetStatusCode(v int32) *DeleteIndexResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteIndexResponse) SetBody(v *DeleteIndexResponseBody) *DeleteIndexResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteIndexDocumentRequest struct {
+	// This parameter is required.
+	DocumentIds []*string `json:"DocumentIds,omitempty" xml:"DocumentIds,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 79c0aly8zw
+	IndexId *string `json:"IndexId,omitempty" xml:"IndexId,omitempty"`
+}
+
+func (s DeleteIndexDocumentRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteIndexDocumentRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteIndexDocumentRequest) SetDocumentIds(v []*string) *DeleteIndexDocumentRequest {
+	s.DocumentIds = v
+	return s
+}
+
+func (s *DeleteIndexDocumentRequest) SetIndexId(v string) *DeleteIndexDocumentRequest {
+	s.IndexId = &v
+	return s
+}
+
+type DeleteIndexDocumentShrinkRequest struct {
+	// This parameter is required.
+	DocumentIdsShrink *string `json:"DocumentIds,omitempty" xml:"DocumentIds,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 79c0aly8zw
+	IndexId *string `json:"IndexId,omitempty" xml:"IndexId,omitempty"`
+}
+
+func (s DeleteIndexDocumentShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteIndexDocumentShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteIndexDocumentShrinkRequest) SetDocumentIdsShrink(v string) *DeleteIndexDocumentShrinkRequest {
+	s.DocumentIdsShrink = &v
+	return s
+}
+
+func (s *DeleteIndexDocumentShrinkRequest) SetIndexId(v string) *DeleteIndexDocumentShrinkRequest {
+	s.IndexId = &v
+	return s
+}
+
+type DeleteIndexDocumentResponseBody struct {
+	// example:
+	//
+	// Index.InvalidParameter
+	Code *string                              `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *DeleteIndexDocumentResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// Required parameter(%s) missing or invalid, please check the request parameters.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 17204B98-xxxx-4F9A-8464-2446A84821CA
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 200
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DeleteIndexDocumentResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteIndexDocumentResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteIndexDocumentResponseBody) SetCode(v string) *DeleteIndexDocumentResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DeleteIndexDocumentResponseBody) SetData(v *DeleteIndexDocumentResponseBodyData) *DeleteIndexDocumentResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DeleteIndexDocumentResponseBody) SetMessage(v string) *DeleteIndexDocumentResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DeleteIndexDocumentResponseBody) SetRequestId(v string) *DeleteIndexDocumentResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteIndexDocumentResponseBody) SetStatus(v string) *DeleteIndexDocumentResponseBody {
+	s.Status = &v
+	return s
+}
+
+func (s *DeleteIndexDocumentResponseBody) SetSuccess(v bool) *DeleteIndexDocumentResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DeleteIndexDocumentResponseBodyData struct {
+	DeletedDocument []*string `json:"DeletedDocument,omitempty" xml:"DeletedDocument,omitempty" type:"Repeated"`
+}
+
+func (s DeleteIndexDocumentResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteIndexDocumentResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteIndexDocumentResponseBodyData) SetDeletedDocument(v []*string) *DeleteIndexDocumentResponseBodyData {
+	s.DeletedDocument = v
+	return s
+}
+
+type DeleteIndexDocumentResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteIndexDocumentResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteIndexDocumentResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteIndexDocumentResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteIndexDocumentResponse) SetHeaders(v map[string]*string) *DeleteIndexDocumentResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteIndexDocumentResponse) SetStatusCode(v int32) *DeleteIndexDocumentResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteIndexDocumentResponse) SetBody(v *DeleteIndexDocumentResponseBody) *DeleteIndexDocumentResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeFileResponseBody struct {
 	// example:
 	//
@@ -1215,6 +1492,811 @@ func (s *GetIndexJobStatusResponse) SetStatusCode(v int32) *GetIndexJobStatusRes
 }
 
 func (s *GetIndexJobStatusResponse) SetBody(v *GetIndexJobStatusResponseBody) *GetIndexJobStatusResponse {
+	s.Body = v
+	return s
+}
+
+type ListChunksRequest struct {
+	Fields []*string `json:"Fields,omitempty" xml:"Fields,omitempty" type:"Repeated"`
+	// example:
+	//
+	// file_5f03dfea56da4050ab68d61871fc4cb3_10151493
+	Filed *string `json:"Filed,omitempty" xml:"Filed,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// otoru9en4v
+	IndexId *string `json:"IndexId,omitempty" xml:"IndexId,omitempty"`
+	// example:
+	//
+	// 1
+	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+}
+
+func (s ListChunksRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListChunksRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListChunksRequest) SetFields(v []*string) *ListChunksRequest {
+	s.Fields = v
+	return s
+}
+
+func (s *ListChunksRequest) SetFiled(v string) *ListChunksRequest {
+	s.Filed = &v
+	return s
+}
+
+func (s *ListChunksRequest) SetIndexId(v string) *ListChunksRequest {
+	s.IndexId = &v
+	return s
+}
+
+func (s *ListChunksRequest) SetPageNum(v int32) *ListChunksRequest {
+	s.PageNum = &v
+	return s
+}
+
+func (s *ListChunksRequest) SetPageSize(v int32) *ListChunksRequest {
+	s.PageSize = &v
+	return s
+}
+
+type ListChunksResponseBody struct {
+	// example:
+	//
+	// Index.InvalidParameter
+	Code *string                     `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *ListChunksResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// Required parameter(%s) missing or invalid, please check the request parameters.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 8F97A63B-55F1-527F-9D6E-467B6A7E8CF1
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 200
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ListChunksResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListChunksResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListChunksResponseBody) SetCode(v string) *ListChunksResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListChunksResponseBody) SetData(v *ListChunksResponseBodyData) *ListChunksResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListChunksResponseBody) SetMessage(v string) *ListChunksResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListChunksResponseBody) SetRequestId(v string) *ListChunksResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListChunksResponseBody) SetStatus(v string) *ListChunksResponseBody {
+	s.Status = &v
+	return s
+}
+
+func (s *ListChunksResponseBody) SetSuccess(v bool) *ListChunksResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ListChunksResponseBodyData struct {
+	Nodes []*ListChunksResponseBodyDataNodes `json:"Nodes,omitempty" xml:"Nodes,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 16
+	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
+}
+
+func (s ListChunksResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListChunksResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListChunksResponseBodyData) SetNodes(v []*ListChunksResponseBodyDataNodes) *ListChunksResponseBodyData {
+	s.Nodes = v
+	return s
+}
+
+func (s *ListChunksResponseBodyData) SetTotal(v int64) *ListChunksResponseBodyData {
+	s.Total = &v
+	return s
+}
+
+type ListChunksResponseBodyDataNodes struct {
+	Metadata interface{} `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
+	// example:
+	//
+	// 0.3
+	Score *float64 `json:"Score,omitempty" xml:"Score,omitempty"`
+	Text  *string  `json:"Text,omitempty" xml:"Text,omitempty"`
+}
+
+func (s ListChunksResponseBodyDataNodes) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListChunksResponseBodyDataNodes) GoString() string {
+	return s.String()
+}
+
+func (s *ListChunksResponseBodyDataNodes) SetMetadata(v interface{}) *ListChunksResponseBodyDataNodes {
+	s.Metadata = v
+	return s
+}
+
+func (s *ListChunksResponseBodyDataNodes) SetScore(v float64) *ListChunksResponseBodyDataNodes {
+	s.Score = &v
+	return s
+}
+
+func (s *ListChunksResponseBodyDataNodes) SetText(v string) *ListChunksResponseBodyDataNodes {
+	s.Text = &v
+	return s
+}
+
+type ListChunksResponse struct {
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListChunksResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListChunksResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListChunksResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListChunksResponse) SetHeaders(v map[string]*string) *ListChunksResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListChunksResponse) SetStatusCode(v int32) *ListChunksResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListChunksResponse) SetBody(v *ListChunksResponseBody) *ListChunksResponse {
+	s.Body = v
+	return s
+}
+
+type ListIndexDocumentsRequest struct {
+	DocumentName *string `json:"DocumentName,omitempty" xml:"DocumentName,omitempty"`
+	// example:
+	//
+	// FINISH
+	DocumentStatus *string `json:"DocumentStatus,omitempty" xml:"DocumentStatus,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 79c0aly8zw
+	IndexId *string `json:"IndexId,omitempty" xml:"IndexId,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+}
+
+func (s ListIndexDocumentsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListIndexDocumentsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListIndexDocumentsRequest) SetDocumentName(v string) *ListIndexDocumentsRequest {
+	s.DocumentName = &v
+	return s
+}
+
+func (s *ListIndexDocumentsRequest) SetDocumentStatus(v string) *ListIndexDocumentsRequest {
+	s.DocumentStatus = &v
+	return s
+}
+
+func (s *ListIndexDocumentsRequest) SetIndexId(v string) *ListIndexDocumentsRequest {
+	s.IndexId = &v
+	return s
+}
+
+func (s *ListIndexDocumentsRequest) SetPageNumber(v int32) *ListIndexDocumentsRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListIndexDocumentsRequest) SetPageSize(v int32) *ListIndexDocumentsRequest {
+	s.PageSize = &v
+	return s
+}
+
+type ListIndexDocumentsResponseBody struct {
+	// example:
+	//
+	// InvalidParameter
+	Code *string                             `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *ListIndexDocumentsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// Required parameter(%s) missing or invalid, please check the request parameters.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 35A267BF-xxxx-54DB-8394-AA3B0742D833
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 200
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ListIndexDocumentsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListIndexDocumentsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListIndexDocumentsResponseBody) SetCode(v string) *ListIndexDocumentsResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListIndexDocumentsResponseBody) SetData(v *ListIndexDocumentsResponseBodyData) *ListIndexDocumentsResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListIndexDocumentsResponseBody) SetMessage(v string) *ListIndexDocumentsResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListIndexDocumentsResponseBody) SetRequestId(v string) *ListIndexDocumentsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListIndexDocumentsResponseBody) SetStatus(v string) *ListIndexDocumentsResponseBody {
+	s.Status = &v
+	return s
+}
+
+func (s *ListIndexDocumentsResponseBody) SetSuccess(v bool) *ListIndexDocumentsResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ListIndexDocumentsResponseBodyData struct {
+	Documents []*ListIndexDocumentsResponseBodyDataDocuments `json:"Documents,omitempty" xml:"Documents,omitempty" type:"Repeated"`
+	// example:
+	//
+	// pno97tn8iu
+	IndexId *string `json:"IndexId,omitempty" xml:"IndexId,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 2437
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListIndexDocumentsResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListIndexDocumentsResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListIndexDocumentsResponseBodyData) SetDocuments(v []*ListIndexDocumentsResponseBodyDataDocuments) *ListIndexDocumentsResponseBodyData {
+	s.Documents = v
+	return s
+}
+
+func (s *ListIndexDocumentsResponseBodyData) SetIndexId(v string) *ListIndexDocumentsResponseBodyData {
+	s.IndexId = &v
+	return s
+}
+
+func (s *ListIndexDocumentsResponseBodyData) SetPageNumber(v int32) *ListIndexDocumentsResponseBodyData {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListIndexDocumentsResponseBodyData) SetPageSize(v int32) *ListIndexDocumentsResponseBodyData {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListIndexDocumentsResponseBodyData) SetTotalCount(v int64) *ListIndexDocumentsResponseBodyData {
+	s.TotalCount = &v
+	return s
+}
+
+type ListIndexDocumentsResponseBodyDataDocuments struct {
+	// example:
+	//
+	// 110002
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// pdf
+	DocumentType *string `json:"DocumentType,omitempty" xml:"DocumentType,omitempty"`
+	// example:
+	//
+	// doc_c134aa2073204a5d936d870bf960f56a10024701
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// check fileUrlKey[file_path] / fileNameKey[null] / fileExtensionKey[file_extension] is invalid
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	Name    *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 996764
+	Size *int32 `json:"Size,omitempty" xml:"Size,omitempty"`
+	// example:
+	//
+	// cate_21a407a3372c4ba7aedc649709143f0c10021401
+	SourceId *string `json:"SourceId,omitempty" xml:"SourceId,omitempty"`
+	// example:
+	//
+	// RUNNING
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s ListIndexDocumentsResponseBodyDataDocuments) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListIndexDocumentsResponseBodyDataDocuments) GoString() string {
+	return s.String()
+}
+
+func (s *ListIndexDocumentsResponseBodyDataDocuments) SetCode(v string) *ListIndexDocumentsResponseBodyDataDocuments {
+	s.Code = &v
+	return s
+}
+
+func (s *ListIndexDocumentsResponseBodyDataDocuments) SetDocumentType(v string) *ListIndexDocumentsResponseBodyDataDocuments {
+	s.DocumentType = &v
+	return s
+}
+
+func (s *ListIndexDocumentsResponseBodyDataDocuments) SetId(v string) *ListIndexDocumentsResponseBodyDataDocuments {
+	s.Id = &v
+	return s
+}
+
+func (s *ListIndexDocumentsResponseBodyDataDocuments) SetMessage(v string) *ListIndexDocumentsResponseBodyDataDocuments {
+	s.Message = &v
+	return s
+}
+
+func (s *ListIndexDocumentsResponseBodyDataDocuments) SetName(v string) *ListIndexDocumentsResponseBodyDataDocuments {
+	s.Name = &v
+	return s
+}
+
+func (s *ListIndexDocumentsResponseBodyDataDocuments) SetSize(v int32) *ListIndexDocumentsResponseBodyDataDocuments {
+	s.Size = &v
+	return s
+}
+
+func (s *ListIndexDocumentsResponseBodyDataDocuments) SetSourceId(v string) *ListIndexDocumentsResponseBodyDataDocuments {
+	s.SourceId = &v
+	return s
+}
+
+func (s *ListIndexDocumentsResponseBodyDataDocuments) SetStatus(v string) *ListIndexDocumentsResponseBodyDataDocuments {
+	s.Status = &v
+	return s
+}
+
+type ListIndexDocumentsResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListIndexDocumentsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListIndexDocumentsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListIndexDocumentsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListIndexDocumentsResponse) SetHeaders(v map[string]*string) *ListIndexDocumentsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListIndexDocumentsResponse) SetStatusCode(v int32) *ListIndexDocumentsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListIndexDocumentsResponse) SetBody(v *ListIndexDocumentsResponseBody) *ListIndexDocumentsResponse {
+	s.Body = v
+	return s
+}
+
+type ListIndicesRequest struct {
+	// example:
+	//
+	// idx_status_score
+	IndexName *string `json:"IndexName,omitempty" xml:"IndexName,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+}
+
+func (s ListIndicesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListIndicesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListIndicesRequest) SetIndexName(v string) *ListIndicesRequest {
+	s.IndexName = &v
+	return s
+}
+
+func (s *ListIndicesRequest) SetPageNumber(v string) *ListIndicesRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListIndicesRequest) SetPageSize(v string) *ListIndicesRequest {
+	s.PageSize = &v
+	return s
+}
+
+type ListIndicesResponseBody struct {
+	// example:
+	//
+	// Index.InvalidParameter
+	Code *string                      `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *ListIndicesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// Required parameter(%s) missing or invalid, please check the request parameters.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 17204B98-xxxx-4F9A-8464-2446A84821CA
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 200
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ListIndicesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListIndicesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListIndicesResponseBody) SetCode(v string) *ListIndicesResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListIndicesResponseBody) SetData(v *ListIndicesResponseBodyData) *ListIndicesResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListIndicesResponseBody) SetMessage(v string) *ListIndicesResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListIndicesResponseBody) SetRequestId(v string) *ListIndicesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListIndicesResponseBody) SetStatus(v string) *ListIndicesResponseBody {
+	s.Status = &v
+	return s
+}
+
+func (s *ListIndicesResponseBody) SetSuccess(v bool) *ListIndicesResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ListIndicesResponseBodyData struct {
+	Indices []*ListIndicesResponseBodyDataIndices `json:"Indices,omitempty" xml:"Indices,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 48
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListIndicesResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListIndicesResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListIndicesResponseBodyData) SetIndices(v []*ListIndicesResponseBodyDataIndices) *ListIndicesResponseBodyData {
+	s.Indices = v
+	return s
+}
+
+func (s *ListIndicesResponseBodyData) SetPageNumber(v int32) *ListIndicesResponseBodyData {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListIndicesResponseBodyData) SetPageSize(v int32) *ListIndicesResponseBodyData {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListIndicesResponseBodyData) SetTotalCount(v int32) *ListIndicesResponseBodyData {
+	s.TotalCount = &v
+	return s
+}
+
+type ListIndicesResponseBodyDataIndices struct {
+	// example:
+	//
+	// 5
+	ChunkSize *int32 `json:"ChunkSize,omitempty" xml:"ChunkSize,omitempty"`
+	// example:
+	//
+	// If each RAM user belongs to a RAM group, the configuration is considered compliant.
+	Description *string   `json:"Description,omitempty" xml:"Description,omitempty"`
+	DocumentIds []*string `json:"DocumentIds,omitempty" xml:"DocumentIds,omitempty" type:"Repeated"`
+	// example:
+	//
+	// conv-rewrite-qwen-1.8b
+	EmbeddingModelName *string `json:"EmbeddingModelName,omitempty" xml:"EmbeddingModelName,omitempty"`
+	// example:
+	//
+	// 259899
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// temp_mUB4j
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 10
+	OverlapSize *int32 `json:"OverlapSize,omitempty" xml:"OverlapSize,omitempty"`
+	// example:
+	//
+	// 0.01
+	RerankMinScore *string `json:"RerankMinScore,omitempty" xml:"RerankMinScore,omitempty"`
+	// example:
+	//
+	// gte-rerank-hybrid
+	RerankModelName *string `json:"RerankModelName,omitempty" xml:"RerankModelName,omitempty"`
+	// example:
+	//
+	// \\n
+	Separator *string `json:"Separator,omitempty" xml:"Separator,omitempty"`
+	// example:
+	//
+	// gp-bp1gq62t1788yw2ol
+	SinkInstanceId *string `json:"SinkInstanceId,omitempty" xml:"SinkInstanceId,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	SinkRegion *string `json:"SinkRegion,omitempty" xml:"SinkRegion,omitempty"`
+	// example:
+	//
+	// es
+	SinkType *string `json:"SinkType,omitempty" xml:"SinkType,omitempty"`
+	// example:
+	//
+	// DATA_CENTER_FILE
+	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	// example:
+	//
+	// structured
+	StructureType *string `json:"StructureType,omitempty" xml:"StructureType,omitempty"`
+}
+
+func (s ListIndicesResponseBodyDataIndices) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListIndicesResponseBodyDataIndices) GoString() string {
+	return s.String()
+}
+
+func (s *ListIndicesResponseBodyDataIndices) SetChunkSize(v int32) *ListIndicesResponseBodyDataIndices {
+	s.ChunkSize = &v
+	return s
+}
+
+func (s *ListIndicesResponseBodyDataIndices) SetDescription(v string) *ListIndicesResponseBodyDataIndices {
+	s.Description = &v
+	return s
+}
+
+func (s *ListIndicesResponseBodyDataIndices) SetDocumentIds(v []*string) *ListIndicesResponseBodyDataIndices {
+	s.DocumentIds = v
+	return s
+}
+
+func (s *ListIndicesResponseBodyDataIndices) SetEmbeddingModelName(v string) *ListIndicesResponseBodyDataIndices {
+	s.EmbeddingModelName = &v
+	return s
+}
+
+func (s *ListIndicesResponseBodyDataIndices) SetId(v string) *ListIndicesResponseBodyDataIndices {
+	s.Id = &v
+	return s
+}
+
+func (s *ListIndicesResponseBodyDataIndices) SetName(v string) *ListIndicesResponseBodyDataIndices {
+	s.Name = &v
+	return s
+}
+
+func (s *ListIndicesResponseBodyDataIndices) SetOverlapSize(v int32) *ListIndicesResponseBodyDataIndices {
+	s.OverlapSize = &v
+	return s
+}
+
+func (s *ListIndicesResponseBodyDataIndices) SetRerankMinScore(v string) *ListIndicesResponseBodyDataIndices {
+	s.RerankMinScore = &v
+	return s
+}
+
+func (s *ListIndicesResponseBodyDataIndices) SetRerankModelName(v string) *ListIndicesResponseBodyDataIndices {
+	s.RerankModelName = &v
+	return s
+}
+
+func (s *ListIndicesResponseBodyDataIndices) SetSeparator(v string) *ListIndicesResponseBodyDataIndices {
+	s.Separator = &v
+	return s
+}
+
+func (s *ListIndicesResponseBodyDataIndices) SetSinkInstanceId(v string) *ListIndicesResponseBodyDataIndices {
+	s.SinkInstanceId = &v
+	return s
+}
+
+func (s *ListIndicesResponseBodyDataIndices) SetSinkRegion(v string) *ListIndicesResponseBodyDataIndices {
+	s.SinkRegion = &v
+	return s
+}
+
+func (s *ListIndicesResponseBodyDataIndices) SetSinkType(v string) *ListIndicesResponseBodyDataIndices {
+	s.SinkType = &v
+	return s
+}
+
+func (s *ListIndicesResponseBodyDataIndices) SetSourceType(v string) *ListIndicesResponseBodyDataIndices {
+	s.SourceType = &v
+	return s
+}
+
+func (s *ListIndicesResponseBodyDataIndices) SetStructureType(v string) *ListIndicesResponseBodyDataIndices {
+	s.StructureType = &v
+	return s
+}
+
+type ListIndicesResponse struct {
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListIndicesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListIndicesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListIndicesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListIndicesResponse) SetHeaders(v map[string]*string) *ListIndicesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListIndicesResponse) SetStatusCode(v int32) *ListIndicesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListIndicesResponse) SetBody(v *ListIndicesResponseBody) *ListIndicesResponse {
 	s.Body = v
 	return s
 }
@@ -2282,6 +3364,144 @@ func (client *Client) CreateIndex(WorkspaceId *string, request *CreateIndexReque
 
 // Summary:
 //
+// 删除Index
+//
+// @param request - DeleteIndexRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteIndexResponse
+func (client *Client) DeleteIndexWithOptions(WorkspaceId *string, request *DeleteIndexRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteIndexResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.IndexId)) {
+		query["IndexId"] = request.IndexId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteIndex"),
+		Version:     tea.String("2023-12-29"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/" + tea.StringValue(openapiutil.GetEncodeParam(WorkspaceId)) + "/index/delete"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteIndexResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除Index
+//
+// @param request - DeleteIndexRequest
+//
+// @return DeleteIndexResponse
+func (client *Client) DeleteIndex(WorkspaceId *string, request *DeleteIndexRequest) (_result *DeleteIndexResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteIndexResponse{}
+	_body, _err := client.DeleteIndexWithOptions(WorkspaceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除index doc
+//
+// @param tmpReq - DeleteIndexDocumentRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteIndexDocumentResponse
+func (client *Client) DeleteIndexDocumentWithOptions(WorkspaceId *string, tmpReq *DeleteIndexDocumentRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteIndexDocumentResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &DeleteIndexDocumentShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.DocumentIds)) {
+		request.DocumentIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DocumentIds, tea.String("DocumentIds"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DocumentIdsShrink)) {
+		query["DocumentIds"] = request.DocumentIdsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IndexId)) {
+		query["IndexId"] = request.IndexId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteIndexDocument"),
+		Version:     tea.String("2023-12-29"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/" + tea.StringValue(openapiutil.GetEncodeParam(WorkspaceId)) + "/index/delete_index_document"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteIndexDocumentResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除index doc
+//
+// @param request - DeleteIndexDocumentRequest
+//
+// @return DeleteIndexDocumentResponse
+func (client *Client) DeleteIndexDocument(WorkspaceId *string, request *DeleteIndexDocumentRequest) (_result *DeleteIndexDocumentResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteIndexDocumentResponse{}
+	_body, _err := client.DeleteIndexDocumentWithOptions(WorkspaceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 获取文档基本信息，包括文档名称、类型、状态等。
 //
 // @param headers - map
@@ -2391,6 +3611,238 @@ func (client *Client) GetIndexJobStatus(WorkspaceId *string, request *GetIndexJo
 	headers := make(map[string]*string)
 	_result = &GetIndexJobStatusResponse{}
 	_body, _err := client.GetIndexJobStatusWithOptions(WorkspaceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Chunk
+//
+// @param request - ListChunksRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListChunksResponse
+func (client *Client) ListChunksWithOptions(WorkspaceId *string, request *ListChunksRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListChunksResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Fields)) {
+		body["Fields"] = request.Fields
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Filed)) {
+		body["Filed"] = request.Filed
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IndexId)) {
+		body["IndexId"] = request.IndexId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNum)) {
+		body["PageNum"] = request.PageNum
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		body["PageSize"] = request.PageSize
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListChunks"),
+		Version:     tea.String("2023-12-29"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/" + tea.StringValue(openapiutil.GetEncodeParam(WorkspaceId)) + "/index/list_chunks"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListChunksResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Chunk
+//
+// @param request - ListChunksRequest
+//
+// @return ListChunksResponse
+func (client *Client) ListChunks(WorkspaceId *string, request *ListChunksRequest) (_result *ListChunksResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListChunksResponse{}
+	_body, _err := client.ListChunksWithOptions(WorkspaceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询Index文件
+//
+// @param request - ListIndexDocumentsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListIndexDocumentsResponse
+func (client *Client) ListIndexDocumentsWithOptions(WorkspaceId *string, request *ListIndexDocumentsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListIndexDocumentsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DocumentName)) {
+		query["DocumentName"] = request.DocumentName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DocumentStatus)) {
+		query["DocumentStatus"] = request.DocumentStatus
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IndexId)) {
+		query["IndexId"] = request.IndexId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListIndexDocuments"),
+		Version:     tea.String("2023-12-29"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/" + tea.StringValue(openapiutil.GetEncodeParam(WorkspaceId)) + "/index/list_index_documents"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListIndexDocumentsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询Index文件
+//
+// @param request - ListIndexDocumentsRequest
+//
+// @return ListIndexDocumentsResponse
+func (client *Client) ListIndexDocuments(WorkspaceId *string, request *ListIndexDocumentsRequest) (_result *ListIndexDocumentsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListIndexDocumentsResponse{}
+	_body, _err := client.ListIndexDocumentsWithOptions(WorkspaceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询pipeline
+//
+// @param request - ListIndicesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListIndicesResponse
+func (client *Client) ListIndicesWithOptions(WorkspaceId *string, request *ListIndicesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListIndicesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.IndexName)) {
+		query["IndexName"] = request.IndexName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListIndices"),
+		Version:     tea.String("2023-12-29"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/" + tea.StringValue(openapiutil.GetEncodeParam(WorkspaceId)) + "/index/list_indices"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListIndicesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询pipeline
+//
+// @param request - ListIndicesRequest
+//
+// @return ListIndicesResponse
+func (client *Client) ListIndices(WorkspaceId *string, request *ListIndicesRequest) (_result *ListIndicesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListIndicesResponse{}
+	_body, _err := client.ListIndicesWithOptions(WorkspaceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
