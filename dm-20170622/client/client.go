@@ -1,7 +1,4 @@
 // This file is auto-generated, don't edit it. Thanks.
-/**
- *
- */
 package client
 
 import (
@@ -13,6 +10,7 @@ import (
 )
 
 type AddIpfilterRequest struct {
+	// This parameter is required.
 	IpAddress            *string `json:"IpAddress,omitempty" xml:"IpAddress,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
@@ -48,8 +46,14 @@ func (s *AddIpfilterRequest) SetResourceOwnerId(v int64) *AddIpfilterRequest {
 }
 
 type AddIpfilterResponseBody struct {
+	// example:
+	//
+	// 10795
 	IpFilterId *string `json:"IpFilterId,omitempty" xml:"IpFilterId,omitempty"`
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// F814E960-5AEE-5CB1-881B-6F1A3250B55A
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s AddIpfilterResponseBody) String() string {
@@ -100,16 +104,20 @@ func (s *AddIpfilterResponse) SetBody(v *AddIpfilterResponseBody) *AddIpfilterRe
 }
 
 type BatchSendMailRequest struct {
-	AccountName            *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	AddressType            *int32  `json:"AddressType,omitempty" xml:"AddressType,omitempty"`
-	ClickTrace             *string `json:"ClickTrace,omitempty" xml:"ClickTrace,omitempty"`
-	OwnerId                *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ReceiversName          *string `json:"ReceiversName,omitempty" xml:"ReceiversName,omitempty"`
-	ReplyAddress           *string `json:"ReplyAddress,omitempty" xml:"ReplyAddress,omitempty"`
-	ReplyAddressAlias      *string `json:"ReplyAddressAlias,omitempty" xml:"ReplyAddressAlias,omitempty"`
-	ResourceOwnerAccount   *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId        *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	TagName                *string `json:"TagName,omitempty" xml:"TagName,omitempty"`
+	// This parameter is required.
+	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	// This parameter is required.
+	AddressType *int32  `json:"AddressType,omitempty" xml:"AddressType,omitempty"`
+	ClickTrace  *string `json:"ClickTrace,omitempty" xml:"ClickTrace,omitempty"`
+	OwnerId     *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// This parameter is required.
+	ReceiversName        *string `json:"ReceiversName,omitempty" xml:"ReceiversName,omitempty"`
+	ReplyAddress         *string `json:"ReplyAddress,omitempty" xml:"ReplyAddress,omitempty"`
+	ReplyAddressAlias    *string `json:"ReplyAddressAlias,omitempty" xml:"ReplyAddressAlias,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	TagName              *string `json:"TagName,omitempty" xml:"TagName,omitempty"`
+	// This parameter is required.
 	TemplateName           *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
 	UnSubscribeFilterLevel *string `json:"UnSubscribeFilterLevel,omitempty" xml:"UnSubscribeFilterLevel,omitempty"`
 	UnSubscribeLinkType    *string `json:"UnSubscribeLinkType,omitempty" xml:"UnSubscribeLinkType,omitempty"`
@@ -241,6 +249,7 @@ func (s *BatchSendMailResponse) SetBody(v *BatchSendMailResponseBody) *BatchSend
 }
 
 type CheckDomainRequest struct {
+	// This parameter is required.
 	DomainId             *int32  `json:"DomainId,omitempty" xml:"DomainId,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
@@ -328,6 +337,7 @@ func (s *CheckDomainResponse) SetBody(v *CheckDomainResponseBody) *CheckDomainRe
 }
 
 type CheckDomainDnsRequest struct {
+	// This parameter is required.
 	DomainId             *int32  `json:"DomainId,omitempty" xml:"DomainId,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
@@ -421,6 +431,7 @@ func (s *CheckDomainDnsResponse) SetBody(v *CheckDomainDnsResponseBody) *CheckDo
 }
 
 type CreateDomainRequest struct {
+	// This parameter is required.
 	DomainName           *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
@@ -508,12 +519,14 @@ func (s *CreateDomainResponse) SetBody(v *CreateDomainResponseBody) *CreateDomai
 }
 
 type CreateMailAddressRequest struct {
+	// This parameter is required.
 	AccountName          *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ReplyAddress         *string `json:"ReplyAddress,omitempty" xml:"ReplyAddress,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	Sendtype             *string `json:"Sendtype,omitempty" xml:"Sendtype,omitempty"`
+	// This parameter is required.
+	Sendtype *string `json:"Sendtype,omitempty" xml:"Sendtype,omitempty"`
 }
 
 func (s CreateMailAddressRequest) String() string {
@@ -607,9 +620,11 @@ func (s *CreateMailAddressResponse) SetBody(v *CreateMailAddressResponseBody) *C
 }
 
 type CreateReceiverRequest struct {
-	Desc                 *string `json:"Desc,omitempty" xml:"Desc,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ReceiversAlias       *string `json:"ReceiversAlias,omitempty" xml:"ReceiversAlias,omitempty"`
+	Desc    *string `json:"Desc,omitempty" xml:"Desc,omitempty"`
+	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// This parameter is required.
+	ReceiversAlias *string `json:"ReceiversAlias,omitempty" xml:"ReceiversAlias,omitempty"`
+	// This parameter is required.
 	ReceiversName        *string `json:"ReceiversName,omitempty" xml:"ReceiversName,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -709,8 +724,16 @@ type CreateTagRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	TagDescription       *string `json:"TagDescription,omitempty" xml:"TagDescription,omitempty"`
-	TagName              *string `json:"TagName,omitempty" xml:"TagName,omitempty"`
+	// example:
+	//
+	// test description
+	TagDescription *string `json:"TagDescription,omitempty" xml:"TagDescription,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test
+	TagName *string `json:"TagName,omitempty" xml:"TagName,omitempty"`
 }
 
 func (s CreateTagRequest) String() string {
@@ -806,11 +829,12 @@ type CreateTemplateRequest struct {
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	SmsContent           *string `json:"SmsContent,omitempty" xml:"SmsContent,omitempty"`
 	SmsType              *int32  `json:"SmsType,omitempty" xml:"SmsType,omitempty"`
-	TemplateName         *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
-	TemplateNickName     *string `json:"TemplateNickName,omitempty" xml:"TemplateNickName,omitempty"`
-	TemplateSubject      *string `json:"TemplateSubject,omitempty" xml:"TemplateSubject,omitempty"`
-	TemplateText         *string `json:"TemplateText,omitempty" xml:"TemplateText,omitempty"`
-	TemplateType         *int32  `json:"TemplateType,omitempty" xml:"TemplateType,omitempty"`
+	// This parameter is required.
+	TemplateName     *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+	TemplateNickName *string `json:"TemplateNickName,omitempty" xml:"TemplateNickName,omitempty"`
+	TemplateSubject  *string `json:"TemplateSubject,omitempty" xml:"TemplateSubject,omitempty"`
+	TemplateText     *string `json:"TemplateText,omitempty" xml:"TemplateText,omitempty"`
+	TemplateType     *int32  `json:"TemplateType,omitempty" xml:"TemplateType,omitempty"`
 }
 
 func (s CreateTemplateRequest) String() string {
@@ -934,6 +958,7 @@ func (s *CreateTemplateResponse) SetBody(v *CreateTemplateResponseBody) *CreateT
 }
 
 type DeleteDomainRequest struct {
+	// This parameter is required.
 	DomainId             *int32  `json:"DomainId,omitempty" xml:"DomainId,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
@@ -1015,6 +1040,7 @@ func (s *DeleteDomainResponse) SetBody(v *DeleteDomainResponseBody) *DeleteDomai
 }
 
 type DeleteMailAddressRequest struct {
+	// This parameter is required.
 	MailAddressId        *int32  `json:"MailAddressId,omitempty" xml:"MailAddressId,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
@@ -1096,7 +1122,8 @@ func (s *DeleteMailAddressResponse) SetBody(v *DeleteMailAddressResponseBody) *D
 }
 
 type DeleteReceiverRequest struct {
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// This parameter is required.
 	ReceiverId           *string `json:"ReceiverId,omitempty" xml:"ReceiverId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -1177,8 +1204,9 @@ func (s *DeleteReceiverResponse) SetBody(v *DeleteReceiverResponseBody) *DeleteR
 }
 
 type DeleteReceiverDetailRequest struct {
-	Email                *string `json:"Email,omitempty" xml:"Email,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	Email   *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// This parameter is required.
 	ReceiverId           *string `json:"ReceiverId,omitempty" xml:"ReceiverId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -1267,7 +1295,8 @@ type DeleteTagRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	TagId                *int32  `json:"TagId,omitempty" xml:"TagId,omitempty"`
+	// This parameter is required.
+	TagId *int32 `json:"TagId,omitempty" xml:"TagId,omitempty"`
 }
 
 func (s DeleteTagRequest) String() string {
@@ -1349,7 +1378,8 @@ type DeleteTemplateRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	TemplateId           *int32  `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// This parameter is required.
+	TemplateId *int32 `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 }
 
 func (s DeleteTemplateRequest) String() string {
@@ -1603,6 +1633,7 @@ func (s *DescAccountSummaryResponse) SetBody(v *DescAccountSummaryResponseBody) 
 }
 
 type DescDomainRequest struct {
+	// This parameter is required.
 	DomainId                  *int32  `json:"DomainId,omitempty" xml:"DomainId,omitempty"`
 	OwnerId                   *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	RequireRealTimeDnsRecords *bool   `json:"RequireRealTimeDnsRecords,omitempty" xml:"RequireRealTimeDnsRecords,omitempty"`
@@ -1862,7 +1893,8 @@ type DescTemplateRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	TemplateId           *int32  `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// This parameter is required.
+	TemplateId *int32 `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 }
 
 func (s DescTemplateRequest) String() string {
@@ -2186,6 +2218,7 @@ func (s *GetAccountListResponse) SetBody(v *GetAccountListResponseBody) *GetAcco
 }
 
 type GetMailAddressMsgCallBackUrlRequest struct {
+	// This parameter is required.
 	MailFrom             *string `json:"MailFrom,omitempty" xml:"MailFrom,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
@@ -2279,17 +2312,35 @@ func (s *GetMailAddressMsgCallBackUrlResponse) SetBody(v *GetMailAddressMsgCallB
 }
 
 type GetTrackListRequest struct {
+	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2022-09-29
 	EndTime              *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	Offset               *string `json:"Offset,omitempty" xml:"Offset,omitempty"`
 	OffsetCreateTime     *string `json:"OffsetCreateTime,omitempty" xml:"OffsetCreateTime,omitempty"`
 	OffsetCreateTimeDesc *string `json:"OffsetCreateTimeDesc,omitempty" xml:"OffsetCreateTimeDesc,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	PageNumber           *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
 	PageSize             *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	StartTime            *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	Total                *string `json:"Total,omitempty" xml:"Total,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2022-09-29
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	TagName   *string `json:"TagName,omitempty" xml:"TagName,omitempty"`
+	Total     *string `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
 func (s GetTrackListRequest) String() string {
@@ -2298,6 +2349,11 @@ func (s GetTrackListRequest) String() string {
 
 func (s GetTrackListRequest) GoString() string {
 	return s.String()
+}
+
+func (s *GetTrackListRequest) SetAccountName(v string) *GetTrackListRequest {
+	s.AccountName = &v
+	return s
 }
 
 func (s *GetTrackListRequest) SetEndTime(v string) *GetTrackListRequest {
@@ -2350,19 +2406,36 @@ func (s *GetTrackListRequest) SetStartTime(v string) *GetTrackListRequest {
 	return s
 }
 
+func (s *GetTrackListRequest) SetTagName(v string) *GetTrackListRequest {
+	s.TagName = &v
+	return s
+}
+
 func (s *GetTrackListRequest) SetTotal(v string) *GetTrackListRequest {
 	s.Total = &v
 	return s
 }
 
 type GetTrackListResponseBody struct {
-	OffsetCreateTime     *string                       `json:"OffsetCreateTime,omitempty" xml:"OffsetCreateTime,omitempty"`
-	OffsetCreateTimeDesc *string                       `json:"OffsetCreateTimeDesc,omitempty" xml:"OffsetCreateTimeDesc,omitempty"`
-	PageNo               *int32                        `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	PageSize             *int32                        `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId            *string                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Total                *int32                        `json:"Total,omitempty" xml:"Total,omitempty"`
-	Data                 *GetTrackListResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	OffsetCreateTime     *string `json:"OffsetCreateTime,omitempty" xml:"OffsetCreateTime,omitempty"`
+	OffsetCreateTimeDesc *string `json:"OffsetCreateTimeDesc,omitempty" xml:"OffsetCreateTimeDesc,omitempty"`
+	// example:
+	//
+	// 1
+	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 10A1AD70-E48E-476D-98D9-39BD92193837
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 100
+	Total *int32                        `json:"Total,omitempty" xml:"Total,omitempty"`
+	Data  *GetTrackListResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 }
 
 func (s GetTrackListResponseBody) String() string {
@@ -2426,16 +2499,46 @@ func (s *GetTrackListResponseBodyData) SetStat(v []*GetTrackListResponseBodyData
 }
 
 type GetTrackListResponseBodyDataStat struct {
-	CreateTime           *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	RcptClickCount       *int64  `json:"RcptClickCount,omitempty" xml:"RcptClickCount,omitempty"`
-	RcptClickRate        *string `json:"RcptClickRate,omitempty" xml:"RcptClickRate,omitempty"`
-	RcptOpenCount        *int64  `json:"RcptOpenCount,omitempty" xml:"RcptOpenCount,omitempty"`
-	RcptOpenRate         *string `json:"RcptOpenRate,omitempty" xml:"RcptOpenRate,omitempty"`
-	RcptUniqueClickCount *int64  `json:"RcptUniqueClickCount,omitempty" xml:"RcptUniqueClickCount,omitempty"`
-	RcptUniqueClickRate  *string `json:"RcptUniqueClickRate,omitempty" xml:"RcptUniqueClickRate,omitempty"`
-	RcptUniqueOpenCount  *int64  `json:"RcptUniqueOpenCount,omitempty" xml:"RcptUniqueOpenCount,omitempty"`
-	RcptUniqueOpenRate   *string `json:"RcptUniqueOpenRate,omitempty" xml:"RcptUniqueOpenRate,omitempty"`
-	TotalNumber          *int64  `json:"TotalNumber,omitempty" xml:"TotalNumber,omitempty"`
+	// example:
+	//
+	// 2019-09-29T13:28Z
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// 0
+	RcptClickCount *int64 `json:"RcptClickCount,omitempty" xml:"RcptClickCount,omitempty"`
+	// example:
+	//
+	// 0
+	RcptClickRate *string `json:"RcptClickRate,omitempty" xml:"RcptClickRate,omitempty"`
+	// example:
+	//
+	// 0
+	RcptOpenCount *int64 `json:"RcptOpenCount,omitempty" xml:"RcptOpenCount,omitempty"`
+	// example:
+	//
+	// 0
+	RcptOpenRate *string `json:"RcptOpenRate,omitempty" xml:"RcptOpenRate,omitempty"`
+	// example:
+	//
+	// 0
+	RcptUniqueClickCount *int64 `json:"RcptUniqueClickCount,omitempty" xml:"RcptUniqueClickCount,omitempty"`
+	// example:
+	//
+	// 0
+	RcptUniqueClickRate *string `json:"RcptUniqueClickRate,omitempty" xml:"RcptUniqueClickRate,omitempty"`
+	// example:
+	//
+	// 0
+	RcptUniqueOpenCount *int64 `json:"RcptUniqueOpenCount,omitempty" xml:"RcptUniqueOpenCount,omitempty"`
+	// example:
+	//
+	// 0
+	RcptUniqueOpenRate *string `json:"RcptUniqueOpenRate,omitempty" xml:"RcptUniqueOpenRate,omitempty"`
+	// example:
+	//
+	// 0
+	TotalNumber *int64 `json:"TotalNumber,omitempty" xml:"TotalNumber,omitempty"`
 }
 
 func (s GetTrackListResponseBodyDataStat) String() string {
@@ -2526,6 +2629,7 @@ func (s *GetTrackListResponse) SetBody(v *GetTrackListResponseBody) *GetTrackLis
 }
 
 type ModifyMailAddressRequest struct {
+	// This parameter is required.
 	MailAddressId        *int32  `json:"MailAddressId,omitempty" xml:"MailAddressId,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	Password             *string `json:"Password,omitempty" xml:"Password,omitempty"`
@@ -2619,7 +2723,9 @@ func (s *ModifyMailAddressResponse) SetBody(v *ModifyMailAddressResponseBody) *M
 }
 
 type ModifyPWByDomainRequest struct {
-	DomainName      *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// This parameter is required.
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	// This parameter is required.
 	Password        *string `json:"Password,omitempty" xml:"Password,omitempty"`
 	ResourceOwnerId *string `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 }
@@ -2715,9 +2821,22 @@ type ModifyTagRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	TagDescription       *string `json:"TagDescription,omitempty" xml:"TagDescription,omitempty"`
-	TagId                *int32  `json:"TagId,omitempty" xml:"TagId,omitempty"`
-	TagName              *string `json:"TagName,omitempty" xml:"TagName,omitempty"`
+	// example:
+	//
+	// test description
+	TagDescription *string `json:"TagDescription,omitempty" xml:"TagDescription,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123
+	TagId *int32 `json:"TagId,omitempty" xml:"TagId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test
+	TagName *string `json:"TagName,omitempty" xml:"TagName,omitempty"`
 }
 
 func (s ModifyTagRequest) String() string {
@@ -2812,11 +2931,13 @@ type ModifyTemplateRequest struct {
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	SmsContent           *string `json:"SmsContent,omitempty" xml:"SmsContent,omitempty"`
 	SmsType              *int32  `json:"SmsType,omitempty" xml:"SmsType,omitempty"`
-	TemplateId           *int32  `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	TemplateName         *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
-	TemplateNickName     *string `json:"TemplateNickName,omitempty" xml:"TemplateNickName,omitempty"`
-	TemplateSubject      *string `json:"TemplateSubject,omitempty" xml:"TemplateSubject,omitempty"`
-	TemplateText         *string `json:"TemplateText,omitempty" xml:"TemplateText,omitempty"`
+	// This parameter is required.
+	TemplateId *int32 `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// This parameter is required.
+	TemplateName     *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+	TemplateNickName *string `json:"TemplateNickName,omitempty" xml:"TemplateNickName,omitempty"`
+	TemplateSubject  *string `json:"TemplateSubject,omitempty" xml:"TemplateSubject,omitempty"`
+	TemplateText     *string `json:"TemplateText,omitempty" xml:"TemplateText,omitempty"`
 }
 
 func (s ModifyTemplateRequest) String() string {
@@ -3742,10 +3863,11 @@ func (s *QueryReceiverByParamResponse) SetBody(v *QueryReceiverByParamResponseBo
 }
 
 type QueryReceiverDetailRequest struct {
-	KeyWord              *string `json:"KeyWord,omitempty" xml:"KeyWord,omitempty"`
-	NextStart            *string `json:"NextStart,omitempty" xml:"NextStart,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	PageSize             *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	KeyWord   *string `json:"KeyWord,omitempty" xml:"KeyWord,omitempty"`
+	NextStart *string `json:"NextStart,omitempty" xml:"NextStart,omitempty"`
+	OwnerId   *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	PageSize  *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// This parameter is required.
 	ReceiverId           *string `json:"ReceiverId,omitempty" xml:"ReceiverId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -3964,9 +4086,21 @@ func (s *QueryTagByParamRequest) SetResourceOwnerId(v int64) *QueryTagByParamReq
 }
 
 type QueryTagByParamResponseBody struct {
-	PageNumber *int32                           `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32                           `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId  *string                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 5
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 10A1AD70-E48E-476D-98D9-39BD92193837
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 2
 	TotalCount *int32                           `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 	Data       *QueryTagByParamResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 }
@@ -4022,9 +4156,18 @@ func (s *QueryTagByParamResponseBodyData) SetTag(v []*QueryTagByParamResponseBod
 }
 
 type QueryTagByParamResponseBodyDataTag struct {
+	// example:
+	//
+	// test description
 	TagDescription *string `json:"TagDescription,omitempty" xml:"TagDescription,omitempty"`
-	TagId          *string `json:"TagId,omitempty" xml:"TagId,omitempty"`
-	TagName        *string `json:"TagName,omitempty" xml:"TagName,omitempty"`
+	// example:
+	//
+	// 52366
+	TagId *string `json:"TagId,omitempty" xml:"TagId,omitempty"`
+	// example:
+	//
+	// test
+	TagName *string `json:"TagName,omitempty" xml:"TagName,omitempty"`
 }
 
 func (s QueryTagByParamResponseBodyDataTag) String() string {
@@ -4502,8 +4645,10 @@ func (s *QueryTemplateByParamResponse) SetBody(v *QueryTemplateByParamResponseBo
 }
 
 type SaveReceiverDetailRequest struct {
-	Detail               *string `json:"Detail,omitempty" xml:"Detail,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// This parameter is required.
+	Detail  *string `json:"Detail,omitempty" xml:"Detail,omitempty"`
+	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// This parameter is required.
 	ReceiverId           *string `json:"ReceiverId,omitempty" xml:"ReceiverId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -4641,13 +4786,15 @@ func (s *SaveReceiverDetailResponse) SetBody(v *SaveReceiverDetailResponseBody) 
 }
 
 type SenderStatisticsByTagNameAndBatchIDRequest struct {
-	AccountName          *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	// This parameter is required.
 	EndTime              *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	StartTime            *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	TagName              *string `json:"TagName,omitempty" xml:"TagName,omitempty"`
+	// This parameter is required.
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	TagName   *string `json:"TagName,omitempty" xml:"TagName,omitempty"`
 }
 
 func (s SenderStatisticsByTagNameAndBatchIDRequest) String() string {
@@ -5033,20 +5180,25 @@ func (s *SenderStatisticsDetailByParamResponse) SetBody(v *SenderStatisticsDetai
 }
 
 type SingleSendMailRequest struct {
-	AccountName            *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	AddressType            *int32  `json:"AddressType,omitempty" xml:"AddressType,omitempty"`
-	ClickTrace             *string `json:"ClickTrace,omitempty" xml:"ClickTrace,omitempty"`
-	FromAlias              *string `json:"FromAlias,omitempty" xml:"FromAlias,omitempty"`
-	HtmlBody               *string `json:"HtmlBody,omitempty" xml:"HtmlBody,omitempty"`
-	OwnerId                *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ReplyAddress           *string `json:"ReplyAddress,omitempty" xml:"ReplyAddress,omitempty"`
-	ReplyAddressAlias      *string `json:"ReplyAddressAlias,omitempty" xml:"ReplyAddressAlias,omitempty"`
-	ReplyToAddress         *bool   `json:"ReplyToAddress,omitempty" xml:"ReplyToAddress,omitempty"`
-	ResourceOwnerAccount   *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId        *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	Subject                *string `json:"Subject,omitempty" xml:"Subject,omitempty"`
-	TagName                *string `json:"TagName,omitempty" xml:"TagName,omitempty"`
-	TextBody               *string `json:"TextBody,omitempty" xml:"TextBody,omitempty"`
+	// This parameter is required.
+	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	// This parameter is required.
+	AddressType       *int32  `json:"AddressType,omitempty" xml:"AddressType,omitempty"`
+	ClickTrace        *string `json:"ClickTrace,omitempty" xml:"ClickTrace,omitempty"`
+	FromAlias         *string `json:"FromAlias,omitempty" xml:"FromAlias,omitempty"`
+	HtmlBody          *string `json:"HtmlBody,omitempty" xml:"HtmlBody,omitempty"`
+	OwnerId           *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ReplyAddress      *string `json:"ReplyAddress,omitempty" xml:"ReplyAddress,omitempty"`
+	ReplyAddressAlias *string `json:"ReplyAddressAlias,omitempty" xml:"ReplyAddressAlias,omitempty"`
+	// This parameter is required.
+	ReplyToAddress       *bool   `json:"ReplyToAddress,omitempty" xml:"ReplyToAddress,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// This parameter is required.
+	Subject  *string `json:"Subject,omitempty" xml:"Subject,omitempty"`
+	TagName  *string `json:"TagName,omitempty" xml:"TagName,omitempty"`
+	TextBody *string `json:"TextBody,omitempty" xml:"TextBody,omitempty"`
+	// This parameter is required.
 	ToAddress              *string `json:"ToAddress,omitempty" xml:"ToAddress,omitempty"`
 	UnSubscribeFilterLevel *string `json:"UnSubscribeFilterLevel,omitempty" xml:"UnSubscribeFilterLevel,omitempty"`
 	UnSubscribeLinkType    *string `json:"UnSubscribeLinkType,omitempty" xml:"UnSubscribeLinkType,omitempty"`
@@ -5198,22 +5350,62 @@ func (s *SingleSendMailResponse) SetBody(v *SingleSendMailResponseBody) *SingleS
 }
 
 type SingleSendMailV2Request struct {
-	AccountName          *string                                        `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	AddressType          *int32                                         `json:"AddressType,omitempty" xml:"AddressType,omitempty"`
-	ClickTrace           *string                                        `json:"ClickTrace,omitempty" xml:"ClickTrace,omitempty"`
-	FromAlias            *string                                        `json:"FromAlias,omitempty" xml:"FromAlias,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test***@example.net
+	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	AddressType *int32 `json:"AddressType,omitempty" xml:"AddressType,omitempty"`
+	// example:
+	//
+	// 0
+	ClickTrace *string `json:"ClickTrace,omitempty" xml:"ClickTrace,omitempty"`
+	FromAlias  *string `json:"FromAlias,omitempty" xml:"FromAlias,omitempty"`
+	// example:
+	//
+	// body
 	HtmlBody             *string                                        `json:"HtmlBody,omitempty" xml:"HtmlBody,omitempty"`
 	HtmlBodyPlaceHolders []*SingleSendMailV2RequestHtmlBodyPlaceHolders `json:"HtmlBodyPlaceHolders,omitempty" xml:"HtmlBodyPlaceHolders,omitempty" type:"Repeated"`
 	OwnerId              *int64                                         `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ReplyAddress         *string                                        `json:"ReplyAddress,omitempty" xml:"ReplyAddress,omitempty"`
-	ReplyAddressAlias    *string                                        `json:"ReplyAddressAlias,omitempty" xml:"ReplyAddressAlias,omitempty"`
-	ReplyToAddress       *bool                                          `json:"ReplyToAddress,omitempty" xml:"ReplyToAddress,omitempty"`
-	ResourceOwnerAccount *string                                        `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64                                         `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	Subject              *string                                        `json:"Subject,omitempty" xml:"Subject,omitempty"`
-	TagName              *string                                        `json:"TagName,omitempty" xml:"TagName,omitempty"`
-	TextBody             *string                                        `json:"TextBody,omitempty" xml:"TextBody,omitempty"`
-	ToAddress            *string                                        `json:"ToAddress,omitempty" xml:"ToAddress,omitempty"`
+	// example:
+	//
+	// test2***@example.net
+	ReplyAddress      *string `json:"ReplyAddress,omitempty" xml:"ReplyAddress,omitempty"`
+	ReplyAddressAlias *string `json:"ReplyAddressAlias,omitempty" xml:"ReplyAddressAlias,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// true
+	ReplyToAddress       *bool   `json:"ReplyToAddress,omitempty" xml:"ReplyToAddress,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Subject
+	Subject *string `json:"Subject,omitempty" xml:"Subject,omitempty"`
+	// example:
+	//
+	// test
+	TagName *string `json:"TagName,omitempty" xml:"TagName,omitempty"`
+	// example:
+	//
+	// body
+	TextBody *string `json:"TextBody,omitempty" xml:"TextBody,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test1***@example.net
+	ToAddress *string `json:"ToAddress,omitempty" xml:"ToAddress,omitempty"`
 }
 
 func (s SingleSendMailV2Request) String() string {
@@ -5306,7 +5498,10 @@ func (s *SingleSendMailV2Request) SetToAddress(v string) *SingleSendMailV2Reques
 
 type SingleSendMailV2RequestHtmlBodyPlaceHolders struct {
 	PlaceHolders map[string]*string `json:"PlaceHolders,omitempty" xml:"PlaceHolders,omitempty"`
-	ToAddress    *string            `json:"ToAddress,omitempty" xml:"ToAddress,omitempty"`
+	// example:
+	//
+	// test1***@example.net
+	ToAddress *string `json:"ToAddress,omitempty" xml:"ToAddress,omitempty"`
 }
 
 func (s SingleSendMailV2RequestHtmlBodyPlaceHolders) String() string {
@@ -5328,22 +5523,62 @@ func (s *SingleSendMailV2RequestHtmlBodyPlaceHolders) SetToAddress(v string) *Si
 }
 
 type SingleSendMailV2ShrinkRequest struct {
-	AccountName                *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	AddressType                *int32  `json:"AddressType,omitempty" xml:"AddressType,omitempty"`
-	ClickTrace                 *string `json:"ClickTrace,omitempty" xml:"ClickTrace,omitempty"`
-	FromAlias                  *string `json:"FromAlias,omitempty" xml:"FromAlias,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test***@example.net
+	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	AddressType *int32 `json:"AddressType,omitempty" xml:"AddressType,omitempty"`
+	// example:
+	//
+	// 0
+	ClickTrace *string `json:"ClickTrace,omitempty" xml:"ClickTrace,omitempty"`
+	FromAlias  *string `json:"FromAlias,omitempty" xml:"FromAlias,omitempty"`
+	// example:
+	//
+	// body
 	HtmlBody                   *string `json:"HtmlBody,omitempty" xml:"HtmlBody,omitempty"`
 	HtmlBodyPlaceHoldersShrink *string `json:"HtmlBodyPlaceHolders,omitempty" xml:"HtmlBodyPlaceHolders,omitempty"`
 	OwnerId                    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ReplyAddress               *string `json:"ReplyAddress,omitempty" xml:"ReplyAddress,omitempty"`
-	ReplyAddressAlias          *string `json:"ReplyAddressAlias,omitempty" xml:"ReplyAddressAlias,omitempty"`
-	ReplyToAddress             *bool   `json:"ReplyToAddress,omitempty" xml:"ReplyToAddress,omitempty"`
-	ResourceOwnerAccount       *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId            *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	Subject                    *string `json:"Subject,omitempty" xml:"Subject,omitempty"`
-	TagName                    *string `json:"TagName,omitempty" xml:"TagName,omitempty"`
-	TextBody                   *string `json:"TextBody,omitempty" xml:"TextBody,omitempty"`
-	ToAddress                  *string `json:"ToAddress,omitempty" xml:"ToAddress,omitempty"`
+	// example:
+	//
+	// test2***@example.net
+	ReplyAddress      *string `json:"ReplyAddress,omitempty" xml:"ReplyAddress,omitempty"`
+	ReplyAddressAlias *string `json:"ReplyAddressAlias,omitempty" xml:"ReplyAddressAlias,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// true
+	ReplyToAddress       *bool   `json:"ReplyToAddress,omitempty" xml:"ReplyToAddress,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Subject
+	Subject *string `json:"Subject,omitempty" xml:"Subject,omitempty"`
+	// example:
+	//
+	// test
+	TagName *string `json:"TagName,omitempty" xml:"TagName,omitempty"`
+	// example:
+	//
+	// body
+	TextBody *string `json:"TextBody,omitempty" xml:"TextBody,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test1***@example.net
+	ToAddress *string `json:"ToAddress,omitempty" xml:"ToAddress,omitempty"`
 }
 
 func (s SingleSendMailV2ShrinkRequest) String() string {
@@ -5435,7 +5670,13 @@ func (s *SingleSendMailV2ShrinkRequest) SetToAddress(v string) *SingleSendMailV2
 }
 
 type SingleSendMailV2ResponseBody struct {
-	EnvId     *string `json:"EnvId,omitempty" xml:"EnvId,omitempty"`
+	// example:
+	//
+	// xxxxxx
+	EnvId *string `json:"EnvId,omitempty" xml:"EnvId,omitempty"`
+	// example:
+	//
+	// 2D086F6-8F31-4658-84C1-006DED011A85
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -5533,6 +5774,15 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
+// Summary:
+//
+// 添加IP白名单
+//
+// @param request - AddIpfilterRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AddIpfilterResponse
 func (client *Client) AddIpfilterWithOptions(request *AddIpfilterRequest, runtime *util.RuntimeOptions) (_result *AddIpfilterResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5578,6 +5828,13 @@ func (client *Client) AddIpfilterWithOptions(request *AddIpfilterRequest, runtim
 	return _result, _err
 }
 
+// Summary:
+//
+// 添加IP白名单
+//
+// @param request - AddIpfilterRequest
+//
+// @return AddIpfilterResponse
 func (client *Client) AddIpfilter(request *AddIpfilterRequest) (_result *AddIpfilterResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &AddIpfilterResponse{}
@@ -5589,6 +5846,11 @@ func (client *Client) AddIpfilter(request *AddIpfilterRequest) (_result *AddIpfi
 	return _result, _err
 }
 
+// @param request - BatchSendMailRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return BatchSendMailResponse
 func (client *Client) BatchSendMailWithOptions(request *BatchSendMailRequest, runtime *util.RuntimeOptions) (_result *BatchSendMailResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5670,6 +5932,9 @@ func (client *Client) BatchSendMailWithOptions(request *BatchSendMailRequest, ru
 	return _result, _err
 }
 
+// @param request - BatchSendMailRequest
+//
+// @return BatchSendMailResponse
 func (client *Client) BatchSendMail(request *BatchSendMailRequest) (_result *BatchSendMailResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &BatchSendMailResponse{}
@@ -5681,6 +5946,15 @@ func (client *Client) BatchSendMail(request *BatchSendMailRequest) (_result *Bat
 	return _result, _err
 }
 
+// Summary:
+//
+// 校验域名状态
+//
+// @param request - CheckDomainRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CheckDomainResponse
 func (client *Client) CheckDomainWithOptions(request *CheckDomainRequest, runtime *util.RuntimeOptions) (_result *CheckDomainResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5726,6 +6000,13 @@ func (client *Client) CheckDomainWithOptions(request *CheckDomainRequest, runtim
 	return _result, _err
 }
 
+// Summary:
+//
+// 校验域名状态
+//
+// @param request - CheckDomainRequest
+//
+// @return CheckDomainResponse
 func (client *Client) CheckDomain(request *CheckDomainRequest) (_result *CheckDomainResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CheckDomainResponse{}
@@ -5737,6 +6018,15 @@ func (client *Client) CheckDomain(request *CheckDomainRequest) (_result *CheckDo
 	return _result, _err
 }
 
+// Summary:
+//
+// 校验域名Dns状态
+//
+// @param request - CheckDomainDnsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CheckDomainDnsResponse
 func (client *Client) CheckDomainDnsWithOptions(request *CheckDomainDnsRequest, runtime *util.RuntimeOptions) (_result *CheckDomainDnsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5786,6 +6076,13 @@ func (client *Client) CheckDomainDnsWithOptions(request *CheckDomainDnsRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// 校验域名Dns状态
+//
+// @param request - CheckDomainDnsRequest
+//
+// @return CheckDomainDnsResponse
 func (client *Client) CheckDomainDns(request *CheckDomainDnsRequest) (_result *CheckDomainDnsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CheckDomainDnsResponse{}
@@ -5797,6 +6094,11 @@ func (client *Client) CheckDomainDns(request *CheckDomainDnsRequest) (_result *C
 	return _result, _err
 }
 
+// @param request - CreateDomainRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateDomainResponse
 func (client *Client) CreateDomainWithOptions(request *CreateDomainRequest, runtime *util.RuntimeOptions) (_result *CreateDomainResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5842,6 +6144,9 @@ func (client *Client) CreateDomainWithOptions(request *CreateDomainRequest, runt
 	return _result, _err
 }
 
+// @param request - CreateDomainRequest
+//
+// @return CreateDomainResponse
 func (client *Client) CreateDomain(request *CreateDomainRequest) (_result *CreateDomainResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateDomainResponse{}
@@ -5853,6 +6158,11 @@ func (client *Client) CreateDomain(request *CreateDomainRequest) (_result *Creat
 	return _result, _err
 }
 
+// @param request - CreateMailAddressRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateMailAddressResponse
 func (client *Client) CreateMailAddressWithOptions(request *CreateMailAddressRequest, runtime *util.RuntimeOptions) (_result *CreateMailAddressResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5906,6 +6216,9 @@ func (client *Client) CreateMailAddressWithOptions(request *CreateMailAddressReq
 	return _result, _err
 }
 
+// @param request - CreateMailAddressRequest
+//
+// @return CreateMailAddressResponse
 func (client *Client) CreateMailAddress(request *CreateMailAddressRequest) (_result *CreateMailAddressResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateMailAddressResponse{}
@@ -5917,6 +6230,11 @@ func (client *Client) CreateMailAddress(request *CreateMailAddressRequest) (_res
 	return _result, _err
 }
 
+// @param request - CreateReceiverRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateReceiverResponse
 func (client *Client) CreateReceiverWithOptions(request *CreateReceiverRequest, runtime *util.RuntimeOptions) (_result *CreateReceiverResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5970,6 +6288,9 @@ func (client *Client) CreateReceiverWithOptions(request *CreateReceiverRequest, 
 	return _result, _err
 }
 
+// @param request - CreateReceiverRequest
+//
+// @return CreateReceiverResponse
 func (client *Client) CreateReceiver(request *CreateReceiverRequest) (_result *CreateReceiverResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateReceiverResponse{}
@@ -5981,6 +6302,11 @@ func (client *Client) CreateReceiver(request *CreateReceiverRequest) (_result *C
 	return _result, _err
 }
 
+// @param request - CreateTagRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateTagResponse
 func (client *Client) CreateTagWithOptions(request *CreateTagRequest, runtime *util.RuntimeOptions) (_result *CreateTagResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6030,6 +6356,9 @@ func (client *Client) CreateTagWithOptions(request *CreateTagRequest, runtime *u
 	return _result, _err
 }
 
+// @param request - CreateTagRequest
+//
+// @return CreateTagResponse
 func (client *Client) CreateTag(request *CreateTagRequest) (_result *CreateTagResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateTagResponse{}
@@ -6041,6 +6370,11 @@ func (client *Client) CreateTag(request *CreateTagRequest) (_result *CreateTagRe
 	return _result, _err
 }
 
+// @param request - CreateTemplateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateTemplateResponse
 func (client *Client) CreateTemplateWithOptions(request *CreateTemplateRequest, runtime *util.RuntimeOptions) (_result *CreateTemplateResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6118,6 +6452,9 @@ func (client *Client) CreateTemplateWithOptions(request *CreateTemplateRequest, 
 	return _result, _err
 }
 
+// @param request - CreateTemplateRequest
+//
+// @return CreateTemplateResponse
 func (client *Client) CreateTemplate(request *CreateTemplateRequest) (_result *CreateTemplateResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateTemplateResponse{}
@@ -6129,6 +6466,11 @@ func (client *Client) CreateTemplate(request *CreateTemplateRequest) (_result *C
 	return _result, _err
 }
 
+// @param request - DeleteDomainRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteDomainResponse
 func (client *Client) DeleteDomainWithOptions(request *DeleteDomainRequest, runtime *util.RuntimeOptions) (_result *DeleteDomainResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6174,6 +6516,9 @@ func (client *Client) DeleteDomainWithOptions(request *DeleteDomainRequest, runt
 	return _result, _err
 }
 
+// @param request - DeleteDomainRequest
+//
+// @return DeleteDomainResponse
 func (client *Client) DeleteDomain(request *DeleteDomainRequest) (_result *DeleteDomainResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteDomainResponse{}
@@ -6185,6 +6530,11 @@ func (client *Client) DeleteDomain(request *DeleteDomainRequest) (_result *Delet
 	return _result, _err
 }
 
+// @param request - DeleteMailAddressRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteMailAddressResponse
 func (client *Client) DeleteMailAddressWithOptions(request *DeleteMailAddressRequest, runtime *util.RuntimeOptions) (_result *DeleteMailAddressResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6230,6 +6580,9 @@ func (client *Client) DeleteMailAddressWithOptions(request *DeleteMailAddressReq
 	return _result, _err
 }
 
+// @param request - DeleteMailAddressRequest
+//
+// @return DeleteMailAddressResponse
 func (client *Client) DeleteMailAddress(request *DeleteMailAddressRequest) (_result *DeleteMailAddressResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteMailAddressResponse{}
@@ -6241,6 +6594,11 @@ func (client *Client) DeleteMailAddress(request *DeleteMailAddressRequest) (_res
 	return _result, _err
 }
 
+// @param request - DeleteReceiverRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteReceiverResponse
 func (client *Client) DeleteReceiverWithOptions(request *DeleteReceiverRequest, runtime *util.RuntimeOptions) (_result *DeleteReceiverResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6286,6 +6644,9 @@ func (client *Client) DeleteReceiverWithOptions(request *DeleteReceiverRequest, 
 	return _result, _err
 }
 
+// @param request - DeleteReceiverRequest
+//
+// @return DeleteReceiverResponse
 func (client *Client) DeleteReceiver(request *DeleteReceiverRequest) (_result *DeleteReceiverResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteReceiverResponse{}
@@ -6297,6 +6658,11 @@ func (client *Client) DeleteReceiver(request *DeleteReceiverRequest) (_result *D
 	return _result, _err
 }
 
+// @param request - DeleteReceiverDetailRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteReceiverDetailResponse
 func (client *Client) DeleteReceiverDetailWithOptions(request *DeleteReceiverDetailRequest, runtime *util.RuntimeOptions) (_result *DeleteReceiverDetailResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6346,6 +6712,9 @@ func (client *Client) DeleteReceiverDetailWithOptions(request *DeleteReceiverDet
 	return _result, _err
 }
 
+// @param request - DeleteReceiverDetailRequest
+//
+// @return DeleteReceiverDetailResponse
 func (client *Client) DeleteReceiverDetail(request *DeleteReceiverDetailRequest) (_result *DeleteReceiverDetailResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteReceiverDetailResponse{}
@@ -6357,6 +6726,11 @@ func (client *Client) DeleteReceiverDetail(request *DeleteReceiverDetailRequest)
 	return _result, _err
 }
 
+// @param request - DeleteTagRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteTagResponse
 func (client *Client) DeleteTagWithOptions(request *DeleteTagRequest, runtime *util.RuntimeOptions) (_result *DeleteTagResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6402,6 +6776,9 @@ func (client *Client) DeleteTagWithOptions(request *DeleteTagRequest, runtime *u
 	return _result, _err
 }
 
+// @param request - DeleteTagRequest
+//
+// @return DeleteTagResponse
 func (client *Client) DeleteTag(request *DeleteTagRequest) (_result *DeleteTagResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteTagResponse{}
@@ -6413,6 +6790,11 @@ func (client *Client) DeleteTag(request *DeleteTagRequest) (_result *DeleteTagRe
 	return _result, _err
 }
 
+// @param request - DeleteTemplateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteTemplateResponse
 func (client *Client) DeleteTemplateWithOptions(request *DeleteTemplateRequest, runtime *util.RuntimeOptions) (_result *DeleteTemplateResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6462,6 +6844,9 @@ func (client *Client) DeleteTemplateWithOptions(request *DeleteTemplateRequest, 
 	return _result, _err
 }
 
+// @param request - DeleteTemplateRequest
+//
+// @return DeleteTemplateResponse
 func (client *Client) DeleteTemplate(request *DeleteTemplateRequest) (_result *DeleteTemplateResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteTemplateResponse{}
@@ -6473,6 +6858,11 @@ func (client *Client) DeleteTemplate(request *DeleteTemplateRequest) (_result *D
 	return _result, _err
 }
 
+// @param request - DescAccountSummaryRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescAccountSummaryResponse
 func (client *Client) DescAccountSummaryWithOptions(request *DescAccountSummaryRequest, runtime *util.RuntimeOptions) (_result *DescAccountSummaryResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6514,6 +6904,9 @@ func (client *Client) DescAccountSummaryWithOptions(request *DescAccountSummaryR
 	return _result, _err
 }
 
+// @param request - DescAccountSummaryRequest
+//
+// @return DescAccountSummaryResponse
 func (client *Client) DescAccountSummary(request *DescAccountSummaryRequest) (_result *DescAccountSummaryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescAccountSummaryResponse{}
@@ -6525,6 +6918,11 @@ func (client *Client) DescAccountSummary(request *DescAccountSummaryRequest) (_r
 	return _result, _err
 }
 
+// @param request - DescDomainRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescDomainResponse
 func (client *Client) DescDomainWithOptions(request *DescDomainRequest, runtime *util.RuntimeOptions) (_result *DescDomainResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6574,6 +6972,9 @@ func (client *Client) DescDomainWithOptions(request *DescDomainRequest, runtime 
 	return _result, _err
 }
 
+// @param request - DescDomainRequest
+//
+// @return DescDomainResponse
 func (client *Client) DescDomain(request *DescDomainRequest) (_result *DescDomainResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescDomainResponse{}
@@ -6585,6 +6986,11 @@ func (client *Client) DescDomain(request *DescDomainRequest) (_result *DescDomai
 	return _result, _err
 }
 
+// @param request - DescTemplateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescTemplateResponse
 func (client *Client) DescTemplateWithOptions(request *DescTemplateRequest, runtime *util.RuntimeOptions) (_result *DescTemplateResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6634,6 +7040,9 @@ func (client *Client) DescTemplateWithOptions(request *DescTemplateRequest, runt
 	return _result, _err
 }
 
+// @param request - DescTemplateRequest
+//
+// @return DescTemplateResponse
 func (client *Client) DescTemplate(request *DescTemplateRequest) (_result *DescTemplateResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescTemplateResponse{}
@@ -6645,6 +7054,11 @@ func (client *Client) DescTemplate(request *DescTemplateRequest) (_result *DescT
 	return _result, _err
 }
 
+// @param request - GetAccountListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAccountListResponse
 func (client *Client) GetAccountListWithOptions(request *GetAccountListRequest, runtime *util.RuntimeOptions) (_result *GetAccountListResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6710,6 +7124,9 @@ func (client *Client) GetAccountListWithOptions(request *GetAccountListRequest, 
 	return _result, _err
 }
 
+// @param request - GetAccountListRequest
+//
+// @return GetAccountListResponse
 func (client *Client) GetAccountList(request *GetAccountListRequest) (_result *GetAccountListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetAccountListResponse{}
@@ -6721,13 +7138,17 @@ func (client *Client) GetAccountList(request *GetAccountListRequest) (_result *G
 	return _result, _err
 }
 
-/**
- * @deprecated
- *
- * @param request GetMailAddressMsgCallBackUrlRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return GetMailAddressMsgCallBackUrlResponse
- */
+// Deprecated: OpenAPI GetMailAddressMsgCallBackUrl is deprecated
+//
+// Summary:
+//
+// 查询发信地址消息回调地址信息
+//
+// @param request - GetMailAddressMsgCallBackUrlRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetMailAddressMsgCallBackUrlResponse
 // Deprecated
 func (client *Client) GetMailAddressMsgCallBackUrlWithOptions(request *GetMailAddressMsgCallBackUrlRequest, runtime *util.RuntimeOptions) (_result *GetMailAddressMsgCallBackUrlResponse, _err error) {
 	_err = util.ValidateModel(request)
@@ -6774,12 +7195,15 @@ func (client *Client) GetMailAddressMsgCallBackUrlWithOptions(request *GetMailAd
 	return _result, _err
 }
 
-/**
- * @deprecated
- *
- * @param request GetMailAddressMsgCallBackUrlRequest
- * @return GetMailAddressMsgCallBackUrlResponse
- */
+// Deprecated: OpenAPI GetMailAddressMsgCallBackUrl is deprecated
+//
+// Summary:
+//
+// 查询发信地址消息回调地址信息
+//
+// @param request - GetMailAddressMsgCallBackUrlRequest
+//
+// @return GetMailAddressMsgCallBackUrlResponse
 // Deprecated
 func (client *Client) GetMailAddressMsgCallBackUrl(request *GetMailAddressMsgCallBackUrlRequest) (_result *GetMailAddressMsgCallBackUrlResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
@@ -6792,12 +7216,25 @@ func (client *Client) GetMailAddressMsgCallBackUrl(request *GetMailAddressMsgCal
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取打开、点击等跟踪行为的统计结果
+//
+// @param request - GetTrackListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetTrackListResponse
 func (client *Client) GetTrackListWithOptions(request *GetTrackListRequest, runtime *util.RuntimeOptions) (_result *GetTrackListResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AccountName)) {
+		query["AccountName"] = request.AccountName
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
 		query["EndTime"] = request.EndTime
 	}
@@ -6838,6 +7275,10 @@ func (client *Client) GetTrackListWithOptions(request *GetTrackListRequest, runt
 		query["StartTime"] = request.StartTime
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.TagName)) {
+		query["TagName"] = request.TagName
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Total)) {
 		query["Total"] = request.Total
 	}
@@ -6865,6 +7306,13 @@ func (client *Client) GetTrackListWithOptions(request *GetTrackListRequest, runt
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取打开、点击等跟踪行为的统计结果
+//
+// @param request - GetTrackListRequest
+//
+// @return GetTrackListResponse
 func (client *Client) GetTrackList(request *GetTrackListRequest) (_result *GetTrackListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetTrackListResponse{}
@@ -6876,6 +7324,11 @@ func (client *Client) GetTrackList(request *GetTrackListRequest) (_result *GetTr
 	return _result, _err
 }
 
+// @param request - ModifyMailAddressRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyMailAddressResponse
 func (client *Client) ModifyMailAddressWithOptions(request *ModifyMailAddressRequest, runtime *util.RuntimeOptions) (_result *ModifyMailAddressResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6929,6 +7382,9 @@ func (client *Client) ModifyMailAddressWithOptions(request *ModifyMailAddressReq
 	return _result, _err
 }
 
+// @param request - ModifyMailAddressRequest
+//
+// @return ModifyMailAddressResponse
 func (client *Client) ModifyMailAddress(request *ModifyMailAddressRequest) (_result *ModifyMailAddressResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyMailAddressResponse{}
@@ -6940,6 +7396,11 @@ func (client *Client) ModifyMailAddress(request *ModifyMailAddressRequest) (_res
 	return _result, _err
 }
 
+// @param request - ModifyPWByDomainRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyPWByDomainResponse
 func (client *Client) ModifyPWByDomainWithOptions(request *ModifyPWByDomainRequest, runtime *util.RuntimeOptions) (_result *ModifyPWByDomainResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6981,6 +7442,9 @@ func (client *Client) ModifyPWByDomainWithOptions(request *ModifyPWByDomainReque
 	return _result, _err
 }
 
+// @param request - ModifyPWByDomainRequest
+//
+// @return ModifyPWByDomainResponse
 func (client *Client) ModifyPWByDomain(request *ModifyPWByDomainRequest) (_result *ModifyPWByDomainResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyPWByDomainResponse{}
@@ -6992,6 +7456,11 @@ func (client *Client) ModifyPWByDomain(request *ModifyPWByDomainRequest) (_resul
 	return _result, _err
 }
 
+// @param request - ModifyTagRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyTagResponse
 func (client *Client) ModifyTagWithOptions(request *ModifyTagRequest, runtime *util.RuntimeOptions) (_result *ModifyTagResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7045,6 +7514,9 @@ func (client *Client) ModifyTagWithOptions(request *ModifyTagRequest, runtime *u
 	return _result, _err
 }
 
+// @param request - ModifyTagRequest
+//
+// @return ModifyTagResponse
 func (client *Client) ModifyTag(request *ModifyTagRequest) (_result *ModifyTagResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyTagResponse{}
@@ -7056,6 +7528,15 @@ func (client *Client) ModifyTag(request *ModifyTagRequest) (_result *ModifyTagRe
 	return _result, _err
 }
 
+// Summary:
+//
+// 修改模板信息
+//
+// @param request - ModifyTemplateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyTemplateResponse
 func (client *Client) ModifyTemplateWithOptions(request *ModifyTemplateRequest, runtime *util.RuntimeOptions) (_result *ModifyTemplateResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7133,6 +7614,13 @@ func (client *Client) ModifyTemplateWithOptions(request *ModifyTemplateRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// 修改模板信息
+//
+// @param request - ModifyTemplateRequest
+//
+// @return ModifyTemplateResponse
 func (client *Client) ModifyTemplate(request *ModifyTemplateRequest) (_result *ModifyTemplateResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyTemplateResponse{}
@@ -7144,6 +7632,11 @@ func (client *Client) ModifyTemplate(request *ModifyTemplateRequest) (_result *M
 	return _result, _err
 }
 
+// @param request - QueryDomainByParamRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryDomainByParamResponse
 func (client *Client) QueryDomainByParamWithOptions(request *QueryDomainByParamRequest, runtime *util.RuntimeOptions) (_result *QueryDomainByParamResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7201,6 +7694,9 @@ func (client *Client) QueryDomainByParamWithOptions(request *QueryDomainByParamR
 	return _result, _err
 }
 
+// @param request - QueryDomainByParamRequest
+//
+// @return QueryDomainByParamResponse
 func (client *Client) QueryDomainByParam(request *QueryDomainByParamRequest) (_result *QueryDomainByParamResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryDomainByParamResponse{}
@@ -7212,6 +7708,11 @@ func (client *Client) QueryDomainByParam(request *QueryDomainByParamRequest) (_r
 	return _result, _err
 }
 
+// @param request - QueryInvalidAddressRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryInvalidAddressResponse
 func (client *Client) QueryInvalidAddressWithOptions(request *QueryInvalidAddressRequest, runtime *util.RuntimeOptions) (_result *QueryInvalidAddressResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7273,6 +7774,9 @@ func (client *Client) QueryInvalidAddressWithOptions(request *QueryInvalidAddres
 	return _result, _err
 }
 
+// @param request - QueryInvalidAddressRequest
+//
+// @return QueryInvalidAddressResponse
 func (client *Client) QueryInvalidAddress(request *QueryInvalidAddressRequest) (_result *QueryInvalidAddressResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryInvalidAddressResponse{}
@@ -7284,6 +7788,11 @@ func (client *Client) QueryInvalidAddress(request *QueryInvalidAddressRequest) (
 	return _result, _err
 }
 
+// @param request - QueryMailAddressByParamRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryMailAddressByParamResponse
 func (client *Client) QueryMailAddressByParamWithOptions(request *QueryMailAddressByParamRequest, runtime *util.RuntimeOptions) (_result *QueryMailAddressByParamResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7341,6 +7850,9 @@ func (client *Client) QueryMailAddressByParamWithOptions(request *QueryMailAddre
 	return _result, _err
 }
 
+// @param request - QueryMailAddressByParamRequest
+//
+// @return QueryMailAddressByParamResponse
 func (client *Client) QueryMailAddressByParam(request *QueryMailAddressByParamRequest) (_result *QueryMailAddressByParamResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryMailAddressByParamResponse{}
@@ -7352,6 +7864,11 @@ func (client *Client) QueryMailAddressByParam(request *QueryMailAddressByParamRe
 	return _result, _err
 }
 
+// @param request - QueryReceiverByParamRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryReceiverByParamResponse
 func (client *Client) QueryReceiverByParamWithOptions(request *QueryReceiverByParamRequest, runtime *util.RuntimeOptions) (_result *QueryReceiverByParamResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7409,6 +7926,9 @@ func (client *Client) QueryReceiverByParamWithOptions(request *QueryReceiverByPa
 	return _result, _err
 }
 
+// @param request - QueryReceiverByParamRequest
+//
+// @return QueryReceiverByParamResponse
 func (client *Client) QueryReceiverByParam(request *QueryReceiverByParamRequest) (_result *QueryReceiverByParamResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryReceiverByParamResponse{}
@@ -7420,6 +7940,11 @@ func (client *Client) QueryReceiverByParam(request *QueryReceiverByParamRequest)
 	return _result, _err
 }
 
+// @param request - QueryReceiverDetailRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryReceiverDetailResponse
 func (client *Client) QueryReceiverDetailWithOptions(request *QueryReceiverDetailRequest, runtime *util.RuntimeOptions) (_result *QueryReceiverDetailResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7477,6 +8002,9 @@ func (client *Client) QueryReceiverDetailWithOptions(request *QueryReceiverDetai
 	return _result, _err
 }
 
+// @param request - QueryReceiverDetailRequest
+//
+// @return QueryReceiverDetailResponse
 func (client *Client) QueryReceiverDetail(request *QueryReceiverDetailRequest) (_result *QueryReceiverDetailResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryReceiverDetailResponse{}
@@ -7488,6 +8016,11 @@ func (client *Client) QueryReceiverDetail(request *QueryReceiverDetailRequest) (
 	return _result, _err
 }
 
+// @param request - QueryTagByParamRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryTagByParamResponse
 func (client *Client) QueryTagByParamWithOptions(request *QueryTagByParamRequest, runtime *util.RuntimeOptions) (_result *QueryTagByParamResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7541,6 +8074,9 @@ func (client *Client) QueryTagByParamWithOptions(request *QueryTagByParamRequest
 	return _result, _err
 }
 
+// @param request - QueryTagByParamRequest
+//
+// @return QueryTagByParamResponse
 func (client *Client) QueryTagByParam(request *QueryTagByParamRequest) (_result *QueryTagByParamResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryTagByParamResponse{}
@@ -7552,6 +8088,11 @@ func (client *Client) QueryTagByParam(request *QueryTagByParamRequest) (_result 
 	return _result, _err
 }
 
+// @param request - QueryTaskByParamRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryTaskByParamResponse
 func (client *Client) QueryTaskByParamWithOptions(request *QueryTaskByParamRequest, runtime *util.RuntimeOptions) (_result *QueryTaskByParamResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7609,6 +8150,9 @@ func (client *Client) QueryTaskByParamWithOptions(request *QueryTaskByParamReque
 	return _result, _err
 }
 
+// @param request - QueryTaskByParamRequest
+//
+// @return QueryTaskByParamResponse
 func (client *Client) QueryTaskByParam(request *QueryTaskByParamRequest) (_result *QueryTaskByParamResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryTaskByParamResponse{}
@@ -7620,6 +8164,11 @@ func (client *Client) QueryTaskByParam(request *QueryTaskByParamRequest) (_resul
 	return _result, _err
 }
 
+// @param request - QueryTemplateByParamRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryTemplateByParamResponse
 func (client *Client) QueryTemplateByParamWithOptions(request *QueryTemplateByParamRequest, runtime *util.RuntimeOptions) (_result *QueryTemplateByParamResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7681,6 +8230,9 @@ func (client *Client) QueryTemplateByParamWithOptions(request *QueryTemplateByPa
 	return _result, _err
 }
 
+// @param request - QueryTemplateByParamRequest
+//
+// @return QueryTemplateByParamResponse
 func (client *Client) QueryTemplateByParam(request *QueryTemplateByParamRequest) (_result *QueryTemplateByParamResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryTemplateByParamResponse{}
@@ -7692,6 +8244,11 @@ func (client *Client) QueryTemplateByParam(request *QueryTemplateByParamRequest)
 	return _result, _err
 }
 
+// @param request - SaveReceiverDetailRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SaveReceiverDetailResponse
 func (client *Client) SaveReceiverDetailWithOptions(request *SaveReceiverDetailRequest, runtime *util.RuntimeOptions) (_result *SaveReceiverDetailResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7741,6 +8298,9 @@ func (client *Client) SaveReceiverDetailWithOptions(request *SaveReceiverDetailR
 	return _result, _err
 }
 
+// @param request - SaveReceiverDetailRequest
+//
+// @return SaveReceiverDetailResponse
 func (client *Client) SaveReceiverDetail(request *SaveReceiverDetailRequest) (_result *SaveReceiverDetailResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SaveReceiverDetailResponse{}
@@ -7752,6 +8312,11 @@ func (client *Client) SaveReceiverDetail(request *SaveReceiverDetailRequest) (_r
 	return _result, _err
 }
 
+// @param request - SenderStatisticsByTagNameAndBatchIDRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SenderStatisticsByTagNameAndBatchIDResponse
 func (client *Client) SenderStatisticsByTagNameAndBatchIDWithOptions(request *SenderStatisticsByTagNameAndBatchIDRequest, runtime *util.RuntimeOptions) (_result *SenderStatisticsByTagNameAndBatchIDResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7809,6 +8374,9 @@ func (client *Client) SenderStatisticsByTagNameAndBatchIDWithOptions(request *Se
 	return _result, _err
 }
 
+// @param request - SenderStatisticsByTagNameAndBatchIDRequest
+//
+// @return SenderStatisticsByTagNameAndBatchIDResponse
 func (client *Client) SenderStatisticsByTagNameAndBatchID(request *SenderStatisticsByTagNameAndBatchIDRequest) (_result *SenderStatisticsByTagNameAndBatchIDResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SenderStatisticsByTagNameAndBatchIDResponse{}
@@ -7820,6 +8388,11 @@ func (client *Client) SenderStatisticsByTagNameAndBatchID(request *SenderStatist
 	return _result, _err
 }
 
+// @param request - SenderStatisticsDetailByParamRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SenderStatisticsDetailByParamResponse
 func (client *Client) SenderStatisticsDetailByParamWithOptions(request *SenderStatisticsDetailByParamRequest, runtime *util.RuntimeOptions) (_result *SenderStatisticsDetailByParamResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7893,6 +8466,9 @@ func (client *Client) SenderStatisticsDetailByParamWithOptions(request *SenderSt
 	return _result, _err
 }
 
+// @param request - SenderStatisticsDetailByParamRequest
+//
+// @return SenderStatisticsDetailByParamResponse
 func (client *Client) SenderStatisticsDetailByParam(request *SenderStatisticsDetailByParamRequest) (_result *SenderStatisticsDetailByParamResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SenderStatisticsDetailByParamResponse{}
@@ -7904,6 +8480,11 @@ func (client *Client) SenderStatisticsDetailByParam(request *SenderStatisticsDet
 	return _result, _err
 }
 
+// @param request - SingleSendMailRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SingleSendMailResponse
 func (client *Client) SingleSendMailWithOptions(request *SingleSendMailRequest, runtime *util.RuntimeOptions) (_result *SingleSendMailResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8001,6 +8582,9 @@ func (client *Client) SingleSendMailWithOptions(request *SingleSendMailRequest, 
 	return _result, _err
 }
 
+// @param request - SingleSendMailRequest
+//
+// @return SingleSendMailResponse
 func (client *Client) SingleSendMail(request *SingleSendMailRequest) (_result *SingleSendMailResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SingleSendMailResponse{}
@@ -8012,6 +8596,15 @@ func (client *Client) SingleSendMail(request *SingleSendMailRequest) (_result *S
 	return _result, _err
 }
 
+// Summary:
+//
+// 极高发信专用API
+//
+// @param tmpReq - SingleSendMailV2Request
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SingleSendMailV2Response
 func (client *Client) SingleSendMailV2WithOptions(tmpReq *SingleSendMailV2Request, runtime *util.RuntimeOptions) (_result *SingleSendMailV2Response, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -8111,6 +8704,13 @@ func (client *Client) SingleSendMailV2WithOptions(tmpReq *SingleSendMailV2Reques
 	return _result, _err
 }
 
+// Summary:
+//
+// 极高发信专用API
+//
+// @param request - SingleSendMailV2Request
+//
+// @return SingleSendMailV2Response
 func (client *Client) SingleSendMailV2(request *SingleSendMailV2Request) (_result *SingleSendMailV2Response, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SingleSendMailV2Response{}
