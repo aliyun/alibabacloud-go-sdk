@@ -8240,6 +8240,7 @@ func (s *GetTrafficControlTargetResponseBody) SetValue(v float32) *GetTrafficCon
 }
 
 type GetTrafficControlTargetResponseBodySplitParts struct {
+	SetPoints  []*int64 `json:"SetPoints,omitempty" xml:"SetPoints,omitempty" type:"Repeated"`
 	SetValues  []*int64 `json:"SetValues,omitempty" xml:"SetValues,omitempty" type:"Repeated"`
 	TimePoints []*int64 `json:"TimePoints,omitempty" xml:"TimePoints,omitempty" type:"Repeated"`
 }
@@ -8250,6 +8251,11 @@ func (s GetTrafficControlTargetResponseBodySplitParts) String() string {
 
 func (s GetTrafficControlTargetResponseBodySplitParts) GoString() string {
 	return s.String()
+}
+
+func (s *GetTrafficControlTargetResponseBodySplitParts) SetSetPoints(v []*int64) *GetTrafficControlTargetResponseBodySplitParts {
+	s.SetPoints = v
+	return s
 }
 
 func (s *GetTrafficControlTargetResponseBodySplitParts) SetSetValues(v []*int64) *GetTrafficControlTargetResponseBodySplitParts {
@@ -8638,6 +8644,7 @@ func (s *GetTrafficControlTaskResponseBodyTrafficControlTargets) SetValue(v floa
 
 type GetTrafficControlTaskResponseBodyTrafficControlTargetsSplitParts struct {
 	SetPoints  []*int32 `json:"SetPoints,omitempty" xml:"SetPoints,omitempty" type:"Repeated"`
+	SetValues  []*int64 `json:"SetValues,omitempty" xml:"SetValues,omitempty" type:"Repeated"`
 	TimePoints []*int32 `json:"TimePoints,omitempty" xml:"TimePoints,omitempty" type:"Repeated"`
 }
 
@@ -8651,6 +8658,11 @@ func (s GetTrafficControlTaskResponseBodyTrafficControlTargetsSplitParts) GoStri
 
 func (s *GetTrafficControlTaskResponseBodyTrafficControlTargetsSplitParts) SetSetPoints(v []*int32) *GetTrafficControlTaskResponseBodyTrafficControlTargetsSplitParts {
 	s.SetPoints = v
+	return s
+}
+
+func (s *GetTrafficControlTaskResponseBodyTrafficControlTargetsSplitParts) SetSetValues(v []*int64) *GetTrafficControlTaskResponseBodyTrafficControlTargetsSplitParts {
+	s.SetValues = v
 	return s
 }
 
@@ -15003,6 +15015,7 @@ func (s *ReportABMetricGroupResponse) SetBody(v *ReportABMetricGroupResponseBody
 type SplitTrafficControlTargetRequest struct {
 	Environment *string  `json:"Environment,omitempty" xml:"Environment,omitempty"`
 	InstanceId  *string  `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	SetPoints   []*int64 `json:"SetPoints,omitempty" xml:"SetPoints,omitempty" type:"Repeated"`
 	SetValues   []*int64 `json:"SetValues,omitempty" xml:"SetValues,omitempty" type:"Repeated"`
 	TimePoints  []*int64 `json:"TimePoints,omitempty" xml:"TimePoints,omitempty" type:"Repeated"`
 }
@@ -15022,6 +15035,11 @@ func (s *SplitTrafficControlTargetRequest) SetEnvironment(v string) *SplitTraffi
 
 func (s *SplitTrafficControlTargetRequest) SetInstanceId(v string) *SplitTrafficControlTargetRequest {
 	s.InstanceId = &v
+	return s
+}
+
+func (s *SplitTrafficControlTargetRequest) SetSetPoints(v []*int64) *SplitTrafficControlTargetRequest {
+	s.SetPoints = v
 	return s
 }
 
@@ -25580,6 +25598,10 @@ func (client *Client) SplitTrafficControlTargetWithOptions(TrafficControlTargetI
 
 	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
 		body["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SetPoints)) {
+		body["SetPoints"] = request.SetPoints
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SetValues)) {
