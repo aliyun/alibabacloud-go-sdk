@@ -1,7 +1,4 @@
 // This file is auto-generated, don't edit it. Thanks.
-/**
- *
- */
 package client
 
 import (
@@ -42,14 +39,19 @@ func (s *AccessRequest) SetPrivilegeResources(v []*PrivilegeResource) *AccessReq
 }
 
 type Catalog struct {
-	CatalogId   *string `json:"CatalogId,omitempty" xml:"CatalogId,omitempty"`
-	CreateTime  *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	CreatedBy   *string `json:"CreatedBy,omitempty" xml:"CreatedBy,omitempty"`
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	LocationUri *string `json:"LocationUri,omitempty" xml:"LocationUri,omitempty"`
-	Owner       *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
-	Status      *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	UpdateTime  *int64  `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	CatalogId           *string `json:"CatalogId,omitempty" xml:"CatalogId,omitempty"`
+	CatalogType         *string `json:"CatalogType,omitempty" xml:"CatalogType,omitempty"`
+	CreateTime          *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CreatedBy           *string `json:"CreatedBy,omitempty" xml:"CreatedBy,omitempty"`
+	DefaultCatalog      *bool   `json:"DefaultCatalog,omitempty" xml:"DefaultCatalog,omitempty"`
+	Description         *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	JdbcEnabled         *bool   `json:"JdbcEnabled,omitempty" xml:"JdbcEnabled,omitempty"`
+	LocationUri         *string `json:"LocationUri,omitempty" xml:"LocationUri,omitempty"`
+	Owner               *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	Status              *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	StorageAccessConfig *string `json:"StorageAccessConfig,omitempty" xml:"StorageAccessConfig,omitempty"`
+	ThriftEnabled       *bool   `json:"ThriftEnabled,omitempty" xml:"ThriftEnabled,omitempty"`
+	UpdateTime          *int64  `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
 func (s Catalog) String() string {
@@ -65,6 +67,11 @@ func (s *Catalog) SetCatalogId(v string) *Catalog {
 	return s
 }
 
+func (s *Catalog) SetCatalogType(v string) *Catalog {
+	s.CatalogType = &v
+	return s
+}
+
 func (s *Catalog) SetCreateTime(v int64) *Catalog {
 	s.CreateTime = &v
 	return s
@@ -75,8 +82,18 @@ func (s *Catalog) SetCreatedBy(v string) *Catalog {
 	return s
 }
 
+func (s *Catalog) SetDefaultCatalog(v bool) *Catalog {
+	s.DefaultCatalog = &v
+	return s
+}
+
 func (s *Catalog) SetDescription(v string) *Catalog {
 	s.Description = &v
+	return s
+}
+
+func (s *Catalog) SetJdbcEnabled(v bool) *Catalog {
+	s.JdbcEnabled = &v
 	return s
 }
 
@@ -95,16 +112,75 @@ func (s *Catalog) SetStatus(v string) *Catalog {
 	return s
 }
 
+func (s *Catalog) SetStorageAccessConfig(v string) *Catalog {
+	s.StorageAccessConfig = &v
+	return s
+}
+
+func (s *Catalog) SetThriftEnabled(v bool) *Catalog {
+	s.ThriftEnabled = &v
+	return s
+}
+
 func (s *Catalog) SetUpdateTime(v int64) *Catalog {
 	s.UpdateTime = &v
 	return s
 }
 
+type CatalogConnection struct {
+	JdbcPassword *string `json:"JdbcPassword,omitempty" xml:"JdbcPassword,omitempty"`
+	JdbcUri      *string `json:"JdbcUri,omitempty" xml:"JdbcUri,omitempty"`
+	JdbcUserName *string `json:"JdbcUserName,omitempty" xml:"JdbcUserName,omitempty"`
+	ThriftUri    *string `json:"ThriftUri,omitempty" xml:"ThriftUri,omitempty"`
+	// example:
+	//
+	// CONN-607A0053D874****
+	VpcConnectionId *string `json:"VpcConnectionId,omitempty" xml:"VpcConnectionId,omitempty"`
+}
+
+func (s CatalogConnection) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CatalogConnection) GoString() string {
+	return s.String()
+}
+
+func (s *CatalogConnection) SetJdbcPassword(v string) *CatalogConnection {
+	s.JdbcPassword = &v
+	return s
+}
+
+func (s *CatalogConnection) SetJdbcUri(v string) *CatalogConnection {
+	s.JdbcUri = &v
+	return s
+}
+
+func (s *CatalogConnection) SetJdbcUserName(v string) *CatalogConnection {
+	s.JdbcUserName = &v
+	return s
+}
+
+func (s *CatalogConnection) SetThriftUri(v string) *CatalogConnection {
+	s.ThriftUri = &v
+	return s
+}
+
+func (s *CatalogConnection) SetVpcConnectionId(v string) *CatalogConnection {
+	s.VpcConnectionId = &v
+	return s
+}
+
 type CatalogInput struct {
-	CatalogId   *string `json:"CatalogId,omitempty" xml:"CatalogId,omitempty"`
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	LocationUri *string `json:"LocationUri,omitempty" xml:"LocationUri,omitempty"`
-	Owner       *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// This parameter is required.
+	CatalogId           *string `json:"CatalogId,omitempty" xml:"CatalogId,omitempty"`
+	CatalogType         *string `json:"CatalogType,omitempty" xml:"CatalogType,omitempty"`
+	Description         *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	JdbcEnabled         *bool   `json:"JdbcEnabled,omitempty" xml:"JdbcEnabled,omitempty"`
+	LocationUri         *string `json:"LocationUri,omitempty" xml:"LocationUri,omitempty"`
+	Owner               *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	StorageAccessConfig *string `json:"StorageAccessConfig,omitempty" xml:"StorageAccessConfig,omitempty"`
+	ThriftEnabled       *bool   `json:"ThriftEnabled,omitempty" xml:"ThriftEnabled,omitempty"`
 }
 
 func (s CatalogInput) String() string {
@@ -120,8 +196,18 @@ func (s *CatalogInput) SetCatalogId(v string) *CatalogInput {
 	return s
 }
 
+func (s *CatalogInput) SetCatalogType(v string) *CatalogInput {
+	s.CatalogType = &v
+	return s
+}
+
 func (s *CatalogInput) SetDescription(v string) *CatalogInput {
 	s.Description = &v
+	return s
+}
+
+func (s *CatalogInput) SetJdbcEnabled(v bool) *CatalogInput {
+	s.JdbcEnabled = &v
 	return s
 }
 
@@ -132,6 +218,16 @@ func (s *CatalogInput) SetLocationUri(v string) *CatalogInput {
 
 func (s *CatalogInput) SetOwner(v string) *CatalogInput {
 	s.Owner = &v
+	return s
+}
+
+func (s *CatalogInput) SetStorageAccessConfig(v string) *CatalogInput {
+	s.StorageAccessConfig = &v
+	return s
+}
+
+func (s *CatalogInput) SetThriftEnabled(v bool) *CatalogInput {
+	s.ThriftEnabled = &v
 	return s
 }
 
@@ -169,10 +265,267 @@ func (s *CatalogSettings) SetConfig(v map[string]*string) *CatalogSettings {
 	return s
 }
 
+type CatalogVpcConnection struct {
+	// example:
+	//
+	// catalog_test
+	CatalogId      *string `json:"CatalogId,omitempty" xml:"CatalogId,omitempty"`
+	ConnectionName *string `json:"ConnectionName,omitempty" xml:"ConnectionName,omitempty"`
+	// example:
+	//
+	// CONNECTED
+	ConnectionStatus *string `json:"ConnectionStatus,omitempty" xml:"ConnectionStatus,omitempty"`
+	// example:
+	//
+	// 120215474170****
+	Creator      *int64  `json:"Creator,omitempty" xml:"Creator,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// example:
+	//
+	// 2023-07-12 15:26:12
+	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// example:
+	//
+	// 2023-07-17 17:51:04
+	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	JdbcUri     *string `json:"JdbcUri,omitempty" xml:"JdbcUri,omitempty"`
+	// example:
+	//
+	// 120215474170****
+	Modifier *int64 `json:"Modifier,omitempty" xml:"Modifier,omitempty"`
+	// example:
+	//
+	// 120215474170****
+	Owner *int64 `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId         *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	SecurityGroupIds []*string `json:"SecurityGroupIds,omitempty" xml:"SecurityGroupIds,omitempty" type:"Repeated"`
+	ThriftUri        *string   `json:"ThriftUri,omitempty" xml:"ThriftUri,omitempty"`
+	// example:
+	//
+	// CONN-607A0053D874****
+	VpcConnectionId *string `json:"VpcConnectionId,omitempty" xml:"VpcConnectionId,omitempty"`
+	// example:
+	//
+	// vpc-2ze0c41hvmesel7pu****
+	VpcId *string                      `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	Zones []*CatalogVpcConnectionZones `json:"Zones,omitempty" xml:"Zones,omitempty" type:"Repeated"`
+}
+
+func (s CatalogVpcConnection) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CatalogVpcConnection) GoString() string {
+	return s.String()
+}
+
+func (s *CatalogVpcConnection) SetCatalogId(v string) *CatalogVpcConnection {
+	s.CatalogId = &v
+	return s
+}
+
+func (s *CatalogVpcConnection) SetConnectionName(v string) *CatalogVpcConnection {
+	s.ConnectionName = &v
+	return s
+}
+
+func (s *CatalogVpcConnection) SetConnectionStatus(v string) *CatalogVpcConnection {
+	s.ConnectionStatus = &v
+	return s
+}
+
+func (s *CatalogVpcConnection) SetCreator(v int64) *CatalogVpcConnection {
+	s.Creator = &v
+	return s
+}
+
+func (s *CatalogVpcConnection) SetErrorMessage(v string) *CatalogVpcConnection {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *CatalogVpcConnection) SetGmtCreate(v string) *CatalogVpcConnection {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *CatalogVpcConnection) SetGmtModified(v string) *CatalogVpcConnection {
+	s.GmtModified = &v
+	return s
+}
+
+func (s *CatalogVpcConnection) SetJdbcUri(v string) *CatalogVpcConnection {
+	s.JdbcUri = &v
+	return s
+}
+
+func (s *CatalogVpcConnection) SetModifier(v int64) *CatalogVpcConnection {
+	s.Modifier = &v
+	return s
+}
+
+func (s *CatalogVpcConnection) SetOwner(v int64) *CatalogVpcConnection {
+	s.Owner = &v
+	return s
+}
+
+func (s *CatalogVpcConnection) SetRegionId(v string) *CatalogVpcConnection {
+	s.RegionId = &v
+	return s
+}
+
+func (s *CatalogVpcConnection) SetSecurityGroupIds(v []*string) *CatalogVpcConnection {
+	s.SecurityGroupIds = v
+	return s
+}
+
+func (s *CatalogVpcConnection) SetThriftUri(v string) *CatalogVpcConnection {
+	s.ThriftUri = &v
+	return s
+}
+
+func (s *CatalogVpcConnection) SetVpcConnectionId(v string) *CatalogVpcConnection {
+	s.VpcConnectionId = &v
+	return s
+}
+
+func (s *CatalogVpcConnection) SetVpcId(v string) *CatalogVpcConnection {
+	s.VpcId = &v
+	return s
+}
+
+func (s *CatalogVpcConnection) SetZones(v []*CatalogVpcConnectionZones) *CatalogVpcConnection {
+	s.Zones = v
+	return s
+}
+
+type CatalogVpcConnectionZones struct {
+	// example:
+	//
+	// 192.168.XX.XX
+	IP *string `json:"IP,omitempty" xml:"IP,omitempty"`
+	// example:
+	//
+	// vsw-hp3uf6045ljdhd5zr****
+	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	// example:
+	//
+	// cn-hangzhou-g
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+}
+
+func (s CatalogVpcConnectionZones) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CatalogVpcConnectionZones) GoString() string {
+	return s.String()
+}
+
+func (s *CatalogVpcConnectionZones) SetIP(v string) *CatalogVpcConnectionZones {
+	s.IP = &v
+	return s
+}
+
+func (s *CatalogVpcConnectionZones) SetVSwitchId(v string) *CatalogVpcConnectionZones {
+	s.VSwitchId = &v
+	return s
+}
+
+func (s *CatalogVpcConnectionZones) SetZoneId(v string) *CatalogVpcConnectionZones {
+	s.ZoneId = &v
+	return s
+}
+
+type CatalogVpcConnectionInput struct {
+	ConnectionName   *string   `json:"ConnectionName,omitempty" xml:"ConnectionName,omitempty"`
+	SecurityGroupIds []*string `json:"SecurityGroupIds,omitempty" xml:"SecurityGroupIds,omitempty" type:"Repeated"`
+	// example:
+	//
+	// vpc-hp356stwkxg3fn2xe****
+	VpcId *string                           `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	Zones []*CatalogVpcConnectionInputZones `json:"Zones,omitempty" xml:"Zones,omitempty" type:"Repeated"`
+}
+
+func (s CatalogVpcConnectionInput) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CatalogVpcConnectionInput) GoString() string {
+	return s.String()
+}
+
+func (s *CatalogVpcConnectionInput) SetConnectionName(v string) *CatalogVpcConnectionInput {
+	s.ConnectionName = &v
+	return s
+}
+
+func (s *CatalogVpcConnectionInput) SetSecurityGroupIds(v []*string) *CatalogVpcConnectionInput {
+	s.SecurityGroupIds = v
+	return s
+}
+
+func (s *CatalogVpcConnectionInput) SetVpcId(v string) *CatalogVpcConnectionInput {
+	s.VpcId = &v
+	return s
+}
+
+func (s *CatalogVpcConnectionInput) SetZones(v []*CatalogVpcConnectionInputZones) *CatalogVpcConnectionInput {
+	s.Zones = v
+	return s
+}
+
+type CatalogVpcConnectionInputZones struct {
+	// example:
+	//
+	// 192.168.XX.XX
+	IP *string `json:"IP,omitempty" xml:"IP,omitempty"`
+	// example:
+	//
+	// vsw-hp3uf6045ljdhd5zr****
+	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	// example:
+	//
+	// cn-hangzhou-g
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+}
+
+func (s CatalogVpcConnectionInputZones) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CatalogVpcConnectionInputZones) GoString() string {
+	return s.String()
+}
+
+func (s *CatalogVpcConnectionInputZones) SetIP(v string) *CatalogVpcConnectionInputZones {
+	s.IP = &v
+	return s
+}
+
+func (s *CatalogVpcConnectionInputZones) SetVSwitchId(v string) *CatalogVpcConnectionInputZones {
+	s.VSwitchId = &v
+	return s
+}
+
+func (s *CatalogVpcConnectionInputZones) SetZoneId(v string) *CatalogVpcConnectionInputZones {
+	s.ZoneId = &v
+	return s
+}
+
 type ColumnResource struct {
-	ColumnNames  []*string `json:"ColumnNames,omitempty" xml:"ColumnNames,omitempty" type:"Repeated"`
-	DatabaseName *string   `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
-	TableName    *string   `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	ColumnNames []*string `json:"ColumnNames,omitempty" xml:"ColumnNames,omitempty" type:"Repeated"`
+	// example:
+	//
+	// default
+	DatabaseName *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
+	// example:
+	//
+	// test
+	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
 }
 
 func (s ColumnResource) String() string {
@@ -309,9 +662,12 @@ func (s *ColumnStatisticsObjColumnStatisticsData) SetStatisticsType(v string) *C
 }
 
 type Database struct {
-	CreateTime  *int32                 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	CreatedBy   *string                `json:"CreatedBy,omitempty" xml:"CreatedBy,omitempty"`
-	Description *string                `json:"Description,omitempty" xml:"Description,omitempty"`
+	CreateTime  *int32  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CreatedBy   *string `json:"CreatedBy,omitempty" xml:"CreatedBy,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// oss://examplebuket/exampledb
 	LocationUri *string                `json:"LocationUri,omitempty" xml:"LocationUri,omitempty"`
 	Name        *string                `json:"Name,omitempty" xml:"Name,omitempty"`
 	OwnerName   *string                `json:"OwnerName,omitempty" xml:"OwnerName,omitempty"`
@@ -380,8 +736,11 @@ func (s *Database) SetUpdateTime(v int32) *Database {
 }
 
 type DatabaseInput struct {
-	CreateTime  *int32                 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Description *string                `json:"Description,omitempty" xml:"Description,omitempty"`
+	CreateTime  *int32  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// oss://examplebuket/exampledb
 	LocationUri *string                `json:"LocationUri,omitempty" xml:"LocationUri,omitempty"`
 	Name        *string                `json:"Name,omitempty" xml:"Name,omitempty"`
 	OwnerName   *string                `json:"OwnerName,omitempty" xml:"OwnerName,omitempty"`
@@ -498,6 +857,9 @@ func (s *DatabaseProfile) SetObjectSize(v int64) *DatabaseProfile {
 }
 
 type DatabaseResource struct {
+	// example:
+	//
+	// default
 	DatabaseName     *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
 	DatabaseWildcard *string `json:"DatabaseWildcard,omitempty" xml:"DatabaseWildcard,omitempty"`
 }
@@ -637,9 +999,12 @@ func (s *FileCnt) SetTiny(v int64) *FileCnt {
 }
 
 type Function struct {
-	CatalogId    *string        `json:"CatalogId,omitempty" xml:"CatalogId,omitempty"`
-	ClassName    *string        `json:"ClassName,omitempty" xml:"ClassName,omitempty"`
-	CreateTime   *int32         `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CatalogId  *string `json:"CatalogId,omitempty" xml:"CatalogId,omitempty"`
+	ClassName  *string `json:"ClassName,omitempty" xml:"ClassName,omitempty"`
+	CreateTime *int32  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// CreatedBy
 	CreatedBy    *string        `json:"CreatedBy,omitempty" xml:"CreatedBy,omitempty"`
 	DatabaseName *string        `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
 	FunctionName *string        `json:"FunctionName,omitempty" xml:"FunctionName,omitempty"`
@@ -767,7 +1132,13 @@ func (s *FunctionInput) SetResourceUri(v []*ResourceUri) *FunctionInput {
 }
 
 type FunctionResource struct {
+	// example:
+	//
+	// default
 	DatabaseName *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
+	// example:
+	//
+	// default
 	FunctionName *string `json:"FunctionName,omitempty" xml:"FunctionName,omitempty"`
 }
 
@@ -854,7 +1225,13 @@ func (s *GrantRevokeFailureEntry) SetGrantRevokeEntry(v *GrantRevokeEntry) *Gran
 }
 
 type HighLight struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// name
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// <em>tab</em>2
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -1433,8 +1810,11 @@ type MetaResource struct {
 	ColumnResource   *ColumnResource   `json:"ColumnResource,omitempty" xml:"ColumnResource,omitempty"`
 	DatabaseResource *DatabaseResource `json:"DatabaseResource,omitempty" xml:"DatabaseResource,omitempty"`
 	FunctionResource *FunctionResource `json:"FunctionResource,omitempty" xml:"FunctionResource,omitempty"`
-	ResourceType     *string           `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	TableResource    *TableResource    `json:"TableResource,omitempty" xml:"TableResource,omitempty"`
+	// example:
+	//
+	// TABLE
+	ResourceType  *string        `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	TableResource *TableResource `json:"TableResource,omitempty" xml:"TableResource,omitempty"`
 }
 
 func (s MetaResource) String() string {
@@ -1652,26 +2032,83 @@ func (s *PartitionInput) SetValues(v []*string) *PartitionInput {
 }
 
 type PartitionProfile struct {
-	AccessNum              *int64  `json:"AccessNum,omitempty" xml:"AccessNum,omitempty"`
-	AccessNumMonthly       *int64  `json:"AccessNumMonthly,omitempty" xml:"AccessNumMonthly,omitempty"`
-	AccessNumWeekly        *int64  `json:"AccessNumWeekly,omitempty" xml:"AccessNumWeekly,omitempty"`
-	ArchiveStatus          *string `json:"ArchiveStatus,omitempty" xml:"ArchiveStatus,omitempty"`
-	CreateTime             *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	DataSourceType         *string `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
-	DatabaseName           *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
-	FileCnt                *int64  `json:"FileCnt,omitempty" xml:"FileCnt,omitempty"`
-	FileSize               *int64  `json:"FileSize,omitempty" xml:"FileSize,omitempty"`
-	LastAccessNumTime      *string `json:"LastAccessNumTime,omitempty" xml:"LastAccessNumTime,omitempty"`
-	LastAccessTime         *string `json:"LastAccessTime,omitempty" xml:"LastAccessTime,omitempty"`
-	LastModifyTime         *string `json:"LastModifyTime,omitempty" xml:"LastModifyTime,omitempty"`
-	Location               *string `json:"Location,omitempty" xml:"Location,omitempty"`
-	ObjectAccessNum        *int64  `json:"ObjectAccessNum,omitempty" xml:"ObjectAccessNum,omitempty"`
-	ObjectAccessNumMonthly *int64  `json:"ObjectAccessNumMonthly,omitempty" xml:"ObjectAccessNumMonthly,omitempty"`
-	ObjectAccessNumWeekly  *int64  `json:"ObjectAccessNumWeekly,omitempty" xml:"ObjectAccessNumWeekly,omitempty"`
-	ObjectCnt              *int64  `json:"ObjectCnt,omitempty" xml:"ObjectCnt,omitempty"`
-	ObjectSize             *int64  `json:"ObjectSize,omitempty" xml:"ObjectSize,omitempty"`
-	PartitionName          *string `json:"PartitionName,omitempty" xml:"PartitionName,omitempty"`
-	TableName              *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	// example:
+	//
+	// 0
+	AccessNum *int64 `json:"AccessNum,omitempty" xml:"AccessNum,omitempty"`
+	// example:
+	//
+	// 0
+	AccessNumMonthly *int64 `json:"AccessNumMonthly,omitempty" xml:"AccessNumMonthly,omitempty"`
+	// example:
+	//
+	// 0
+	AccessNumWeekly *int64 `json:"AccessNumWeekly,omitempty" xml:"AccessNumWeekly,omitempty"`
+	// example:
+	//
+	// STANDARD
+	ArchiveStatus *string `json:"ArchiveStatus,omitempty" xml:"ArchiveStatus,omitempty"`
+	// example:
+	//
+	// 2023-08-16 18:02:22
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// OSS_HDFS
+	DataSourceType *string `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
+	// example:
+	//
+	// test_db
+	DatabaseName *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
+	// example:
+	//
+	// 1
+	FileCnt *int64 `json:"FileCnt,omitempty" xml:"FileCnt,omitempty"`
+	// example:
+	//
+	// 13
+	FileSize          *int64  `json:"FileSize,omitempty" xml:"FileSize,omitempty"`
+	LastAccessNumTime *string `json:"LastAccessNumTime,omitempty" xml:"LastAccessNumTime,omitempty"`
+	// example:
+	//
+	// 2023-08-22 12:14:42
+	LastAccessTime *string `json:"LastAccessTime,omitempty" xml:"LastAccessTime,omitempty"`
+	// example:
+	//
+	// 2023-08-16 18:02:25
+	LastModifyTime *string `json:"LastModifyTime,omitempty" xml:"LastModifyTime,omitempty"`
+	// example:
+	//
+	// oss://mybucket.cn-hangzhou.oss-dls.aliyuncs.com/test_tb/test_tbl/year=2023/month=1
+	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
+	// example:
+	//
+	// 0
+	ObjectAccessNum *int64 `json:"ObjectAccessNum,omitempty" xml:"ObjectAccessNum,omitempty"`
+	// example:
+	//
+	// 4
+	ObjectAccessNumMonthly *int64 `json:"ObjectAccessNumMonthly,omitempty" xml:"ObjectAccessNumMonthly,omitempty"`
+	// example:
+	//
+	// 4
+	ObjectAccessNumWeekly *int64 `json:"ObjectAccessNumWeekly,omitempty" xml:"ObjectAccessNumWeekly,omitempty"`
+	// example:
+	//
+	// 1
+	ObjectCnt *int64 `json:"ObjectCnt,omitempty" xml:"ObjectCnt,omitempty"`
+	// example:
+	//
+	// 13
+	ObjectSize *int64 `json:"ObjectSize,omitempty" xml:"ObjectSize,omitempty"`
+	// example:
+	//
+	// year=2023/month=1
+	PartitionName *string `json:"PartitionName,omitempty" xml:"PartitionName,omitempty"`
+	// example:
+	//
+	// test_tbl
+	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
 }
 
 func (s PartitionProfile) String() string {
@@ -1806,8 +2243,11 @@ func (s *PartitionSpec) SetSharedStorageDescriptor(v *PartitionSpecSharedStorage
 }
 
 type PartitionSpecSharedStorageDescriptor struct {
-	Cols     []*FieldSchema `json:"Cols,omitempty" xml:"Cols,omitempty" type:"Repeated"`
-	Location *string        `json:"Location,omitempty" xml:"Location,omitempty"`
+	Cols []*FieldSchema `json:"Cols,omitempty" xml:"Cols,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 相对路径
+	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
 }
 
 func (s PartitionSpecSharedStorageDescriptor) String() string {
@@ -1829,6 +2269,9 @@ func (s *PartitionSpecSharedStorageDescriptor) SetLocation(v string) *PartitionS
 }
 
 type Principal struct {
+	// example:
+	//
+	// acs:ram::[AliyunAccountId]:user/username_abc
 	PrincipalArn *string `json:"PrincipalArn,omitempty" xml:"PrincipalArn,omitempty"`
 }
 
@@ -1875,10 +2318,12 @@ func (s *PrincipalPrivilegeSet) SetUserPrivileges(v map[string][]*PrivilegeGrant
 }
 
 type PrincipalResourcePermissions struct {
-	Accesses         []*string     `json:"Accesses,omitempty" xml:"Accesses,omitempty" type:"Repeated"`
-	DelegateAccesses []*string     `json:"DelegateAccesses,omitempty" xml:"DelegateAccesses,omitempty" type:"Repeated"`
-	MetaResource     *MetaResource `json:"MetaResource,omitempty" xml:"MetaResource,omitempty"`
-	Principal        *Principal    `json:"Principal,omitempty" xml:"Principal,omitempty"`
+	Accesses         []*string `json:"Accesses,omitempty" xml:"Accesses,omitempty" type:"Repeated"`
+	DelegateAccesses []*string `json:"DelegateAccesses,omitempty" xml:"DelegateAccesses,omitempty" type:"Repeated"`
+	// This parameter is required.
+	MetaResource *MetaResource `json:"MetaResource,omitempty" xml:"MetaResource,omitempty"`
+	// This parameter is required.
+	Principal *Principal `json:"Principal,omitempty" xml:"Principal,omitempty"`
 }
 
 func (s PrincipalResourcePermissions) String() string {
@@ -1997,8 +2442,11 @@ func (s *ResourceUri) SetUri(v string) *ResourceUri {
 }
 
 type Role struct {
-	CreateTime   *int64       `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Description  *string      `json:"Description,omitempty" xml:"Description,omitempty"`
+	CreateTime  *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// 显示名称，允许中文
 	DisplayName  *string      `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
 	IsPredefined *int32       `json:"IsPredefined,omitempty" xml:"IsPredefined,omitempty"`
 	Name         *string      `json:"Name,omitempty" xml:"Name,omitempty"`
@@ -2057,6 +2505,9 @@ func (s *Role) SetUsers(v []*Principal) *Role {
 
 type RoleInput struct {
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// 显示名称，允许中文
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
 	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
@@ -2219,8 +2670,14 @@ func (s *SmallFileCntRank) SetTableName(v string) *SmallFileCntRank {
 }
 
 type SortCriterion struct {
+	// example:
+	//
+	// name
 	FieldName *string `json:"FieldName,omitempty" xml:"FieldName,omitempty"`
-	Sort      *string `json:"Sort,omitempty" xml:"Sort,omitempty"`
+	// example:
+	//
+	// asc/desc
+	Sort *string `json:"Sort,omitempty" xml:"Sort,omitempty"`
 }
 
 func (s SortCriterion) String() string {
@@ -2621,14 +3078,17 @@ type Table struct {
 	Retention        *int32                 `json:"Retention,omitempty" xml:"Retention,omitempty"`
 	RewriteEnabled   *bool                  `json:"RewriteEnabled,omitempty" xml:"RewriteEnabled,omitempty"`
 	Sd               *StorageDescriptor     `json:"Sd,omitempty" xml:"Sd,omitempty"`
-	TableId          *string                `json:"TableId,omitempty" xml:"TableId,omitempty"`
-	TableName        *string                `json:"TableName,omitempty" xml:"TableName,omitempty"`
-	TableType        *string                `json:"TableType,omitempty" xml:"TableType,omitempty"`
-	TableVersion     *TableVersion          `json:"TableVersion,omitempty" xml:"TableVersion,omitempty"`
-	Temporary        *bool                  `json:"Temporary,omitempty" xml:"Temporary,omitempty"`
-	UpdateTime       *int32                 `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	ViewExpandedText *string                `json:"ViewExpandedText,omitempty" xml:"ViewExpandedText,omitempty"`
-	ViewOriginalText *string                `json:"ViewOriginalText,omitempty" xml:"ViewOriginalText,omitempty"`
+	// example:
+	//
+	// 59c6c8fefeaa46d8b599c1f790c59a19
+	TableId          *string       `json:"TableId,omitempty" xml:"TableId,omitempty"`
+	TableName        *string       `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	TableType        *string       `json:"TableType,omitempty" xml:"TableType,omitempty"`
+	TableVersion     *TableVersion `json:"TableVersion,omitempty" xml:"TableVersion,omitempty"`
+	Temporary        *bool         `json:"Temporary,omitempty" xml:"Temporary,omitempty"`
+	UpdateTime       *int32        `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	ViewExpandedText *string       `json:"ViewExpandedText,omitempty" xml:"ViewExpandedText,omitempty"`
+	ViewOriginalText *string       `json:"ViewOriginalText,omitempty" xml:"ViewOriginalText,omitempty"`
 }
 
 func (s Table) String() string {
@@ -3205,30 +3665,93 @@ func (s *TableInput) SetViewOriginalText(v string) *TableInput {
 }
 
 type TableProfile struct {
-	AccessNum              *int64  `json:"AccessNum,omitempty" xml:"AccessNum,omitempty"`
-	AccessNumMonthly       *int64  `json:"AccessNumMonthly,omitempty" xml:"AccessNumMonthly,omitempty"`
-	AccessNumWeekly        *int64  `json:"AccessNumWeekly,omitempty" xml:"AccessNumWeekly,omitempty"`
-	CreateTime             *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	DataSourceType         *string `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
-	DatabaseName           *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
-	FileCnt                *int64  `json:"FileCnt,omitempty" xml:"FileCnt,omitempty"`
-	FileSize               *int64  `json:"FileSize,omitempty" xml:"FileSize,omitempty"`
-	IsPartitioned          *bool   `json:"IsPartitioned,omitempty" xml:"IsPartitioned,omitempty"`
-	LastAccessNumTime      *string `json:"LastAccessNumTime,omitempty" xml:"LastAccessNumTime,omitempty"`
-	LastAccessTime         *string `json:"LastAccessTime,omitempty" xml:"LastAccessTime,omitempty"`
-	LastDdlTime            *string `json:"LastDdlTime,omitempty" xml:"LastDdlTime,omitempty"`
-	LastModifyTime         *string `json:"LastModifyTime,omitempty" xml:"LastModifyTime,omitempty"`
-	LatestAccessNumDate    *string `json:"LatestAccessNumDate,omitempty" xml:"LatestAccessNumDate,omitempty"`
-	LatestDate             *string `json:"LatestDate,omitempty" xml:"LatestDate,omitempty"`
-	Location               *string `json:"Location,omitempty" xml:"Location,omitempty"`
-	ObjectAccessNum        *int64  `json:"ObjectAccessNum,omitempty" xml:"ObjectAccessNum,omitempty"`
-	ObjectAccessNumMonthly *int64  `json:"ObjectAccessNumMonthly,omitempty" xml:"ObjectAccessNumMonthly,omitempty"`
-	ObjectAccessNumWeekly  *int64  `json:"ObjectAccessNumWeekly,omitempty" xml:"ObjectAccessNumWeekly,omitempty"`
-	ObjectCnt              *int64  `json:"ObjectCnt,omitempty" xml:"ObjectCnt,omitempty"`
-	ObjectSize             *int64  `json:"ObjectSize,omitempty" xml:"ObjectSize,omitempty"`
-	PartitionCnt           *int64  `json:"PartitionCnt,omitempty" xml:"PartitionCnt,omitempty"`
-	RecordCnt              *int64  `json:"RecordCnt,omitempty" xml:"RecordCnt,omitempty"`
-	TableName              *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	// example:
+	//
+	// 0
+	AccessNum *int64 `json:"AccessNum,omitempty" xml:"AccessNum,omitempty"`
+	// example:
+	//
+	// 0
+	AccessNumMonthly *int64 `json:"AccessNumMonthly,omitempty" xml:"AccessNumMonthly,omitempty"`
+	// example:
+	//
+	// 0
+	AccessNumWeekly *int64 `json:"AccessNumWeekly,omitempty" xml:"AccessNumWeekly,omitempty"`
+	// example:
+	//
+	// 2023-08-14 10:44:13
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// OSS_HDFS
+	DataSourceType *string `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
+	// example:
+	//
+	// test_db
+	DatabaseName *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
+	// example:
+	//
+	// 5
+	FileCnt *int64 `json:"FileCnt,omitempty" xml:"FileCnt,omitempty"`
+	// example:
+	//
+	// 31
+	FileSize *int64 `json:"FileSize,omitempty" xml:"FileSize,omitempty"`
+	// example:
+	//
+	// true
+	IsPartitioned     *bool   `json:"IsPartitioned,omitempty" xml:"IsPartitioned,omitempty"`
+	LastAccessNumTime *string `json:"LastAccessNumTime,omitempty" xml:"LastAccessNumTime,omitempty"`
+	// example:
+	//
+	// 2023-08-22 12:14:42
+	LastAccessTime *string `json:"LastAccessTime,omitempty" xml:"LastAccessTime,omitempty"`
+	// example:
+	//
+	// 2023-08-16 18:02:24
+	LastDdlTime *string `json:"LastDdlTime,omitempty" xml:"LastDdlTime,omitempty"`
+	// example:
+	//
+	// 2023-08-16 18:02:25
+	LastModifyTime      *string `json:"LastModifyTime,omitempty" xml:"LastModifyTime,omitempty"`
+	LatestAccessNumDate *string `json:"LatestAccessNumDate,omitempty" xml:"LatestAccessNumDate,omitempty"`
+	// example:
+	//
+	// 2023-08-30 19:16:10
+	LatestDate *string `json:"LatestDate,omitempty" xml:"LatestDate,omitempty"`
+	// example:
+	//
+	// oss://mybucket.cn-hangzhou.oss-dls.aliyuncs.com/test_db/test_tbl/
+	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
+	// example:
+	//
+	// 0
+	ObjectAccessNum *int64 `json:"ObjectAccessNum,omitempty" xml:"ObjectAccessNum,omitempty"`
+	// example:
+	//
+	// 18
+	ObjectAccessNumMonthly *int64 `json:"ObjectAccessNumMonthly,omitempty" xml:"ObjectAccessNumMonthly,omitempty"`
+	// example:
+	//
+	// 18
+	ObjectAccessNumWeekly *int64 `json:"ObjectAccessNumWeekly,omitempty" xml:"ObjectAccessNumWeekly,omitempty"`
+	// example:
+	//
+	// 5
+	ObjectCnt *int64 `json:"ObjectCnt,omitempty" xml:"ObjectCnt,omitempty"`
+	// example:
+	//
+	// 31
+	ObjectSize *int64 `json:"ObjectSize,omitempty" xml:"ObjectSize,omitempty"`
+	// example:
+	//
+	// 3
+	PartitionCnt *int64 `json:"PartitionCnt,omitempty" xml:"PartitionCnt,omitempty"`
+	RecordCnt    *int64 `json:"RecordCnt,omitempty" xml:"RecordCnt,omitempty"`
+	// example:
+	//
+	// test_tbl
+	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
 }
 
 func (s TableProfile) String() string {
@@ -3799,6 +4322,10 @@ func (s *TableExtendedPrivilegesGroupPrivilegesValue) SetPrivilege(v string) *Ta
 
 type AbortLockRequest struct {
 	// LockId
+	//
+	// example:
+	//
+	// 16530
 	LockId *int64 `json:"LockId,omitempty" xml:"LockId,omitempty"`
 }
 
@@ -3817,12 +4344,28 @@ func (s *AbortLockRequest) SetLockId(v int64) *AbortLockRequest {
 
 type AbortLockResponseBody struct {
 	// Code
+	//
+	// example:
+	//
+	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// Message
+	//
+	// example:
+	//
+	// .
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// RequestId
+	//
+	// example:
+	//
+	// 01D8DD6B-4929-5999-9BB3-950AA30E3BD0
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Success
+	//
+	// example:
+	//
+	// True
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -3855,9 +4398,9 @@ func (s *AbortLockResponseBody) SetSuccess(v bool) *AbortLockResponseBody {
 }
 
 type AbortLockResponse struct {
-	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *AbortLockResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AbortLockResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s AbortLockResponse) String() string {
@@ -3884,12 +4427,27 @@ func (s *AbortLockResponse) SetBody(v *AbortLockResponseBody) *AbortLockResponse
 }
 
 type BatchCreatePartitionsRequest struct {
-	CatalogId       *string           `json:"CatalogId,omitempty" xml:"CatalogId,omitempty"`
-	DatabaseName    *string           `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
-	IfNotExists     *bool             `json:"IfNotExists,omitempty" xml:"IfNotExists,omitempty"`
+	// example:
+	//
+	// 1344371
+	CatalogId *string `json:"CatalogId,omitempty" xml:"CatalogId,omitempty"`
+	// example:
+	//
+	// database_test
+	DatabaseName *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
+	// example:
+	//
+	// true
+	IfNotExists *bool `json:"IfNotExists,omitempty" xml:"IfNotExists,omitempty"`
+	// example:
+	//
+	// true
 	NeedResult      *bool             `json:"NeedResult,omitempty" xml:"NeedResult,omitempty"`
 	PartitionInputs []*PartitionInput `json:"PartitionInputs,omitempty" xml:"PartitionInputs,omitempty" type:"Repeated"`
-	TableName       *string           `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	// example:
+	//
+	// test_table_20201223
+	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
 }
 
 func (s BatchCreatePartitionsRequest) String() string {
@@ -3931,12 +4489,24 @@ func (s *BatchCreatePartitionsRequest) SetTableName(v string) *BatchCreatePartit
 }
 
 type BatchCreatePartitionsResponseBody struct {
-	Code            *string           `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// .
 	Message         *string           `json:"Message,omitempty" xml:"Message,omitempty"`
 	PartitionErrors []*PartitionError `json:"PartitionErrors,omitempty" xml:"PartitionErrors,omitempty" type:"Repeated"`
 	Partitions      []*Partition      `json:"Partitions,omitempty" xml:"Partitions,omitempty" type:"Repeated"`
-	RequestId       *string           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success         *bool             `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// B7F4B621-E41E-4C84-B97F-42B5380A32BB
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s BatchCreatePartitionsResponseBody) String() string {
@@ -3978,9 +4548,9 @@ func (s *BatchCreatePartitionsResponseBody) SetSuccess(v bool) *BatchCreateParti
 }
 
 type BatchCreatePartitionsResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *BatchCreatePartitionsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *BatchCreatePartitionsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s BatchCreatePartitionsResponse) String() string {
@@ -4007,10 +4577,19 @@ func (s *BatchCreatePartitionsResponse) SetBody(v *BatchCreatePartitionsResponse
 }
 
 type BatchCreateTablesRequest struct {
-	CatalogId    *string       `json:"CatalogId,omitempty" xml:"CatalogId,omitempty"`
-	DatabaseName *string       `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
-	IfNotExists  *bool         `json:"IfNotExists,omitempty" xml:"IfNotExists,omitempty"`
-	TableInputs  []*TableInput `json:"TableInputs,omitempty" xml:"TableInputs,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1344371
+	CatalogId *string `json:"CatalogId,omitempty" xml:"CatalogId,omitempty"`
+	// example:
+	//
+	// database_test
+	DatabaseName *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
+	// example:
+	//
+	// true
+	IfNotExists *bool         `json:"IfNotExists,omitempty" xml:"IfNotExists,omitempty"`
+	TableInputs []*TableInput `json:"TableInputs,omitempty" xml:"TableInputs,omitempty" type:"Repeated"`
 }
 
 func (s BatchCreateTablesRequest) String() string {
@@ -4042,9 +4621,21 @@ func (s *BatchCreateTablesRequest) SetTableInputs(v []*TableInput) *BatchCreateT
 }
 
 type BatchCreateTablesResponseBody struct {
-	Code        *string       `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message     *string       `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId   *string       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// .
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// B7F4B621-E41E-4C84-B97F-42B5380A32BB
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
 	Success     *bool         `json:"Success,omitempty" xml:"Success,omitempty"`
 	TableErrors []*TableError `json:"TableErrors,omitempty" xml:"TableErrors,omitempty" type:"Repeated"`
 }
@@ -4083,9 +4674,9 @@ func (s *BatchCreateTablesResponseBody) SetTableErrors(v []*TableError) *BatchCr
 }
 
 type BatchCreateTablesResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *BatchCreateTablesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *BatchCreateTablesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s BatchCreateTablesResponse) String() string {
@@ -4112,11 +4703,23 @@ func (s *BatchCreateTablesResponse) SetBody(v *BatchCreateTablesResponseBody) *B
 }
 
 type BatchDeletePartitionsRequest struct {
-	CatalogId          *string                                           `json:"CatalogId,omitempty" xml:"CatalogId,omitempty"`
-	DatabaseName       *string                                           `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
+	// example:
+	//
+	// 1344371
+	CatalogId *string `json:"CatalogId,omitempty" xml:"CatalogId,omitempty"`
+	// example:
+	//
+	// database_test
+	DatabaseName *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
+	// example:
+	//
+	// true
 	IfExists           *bool                                             `json:"IfExists,omitempty" xml:"IfExists,omitempty"`
 	PartitionValueList []*BatchDeletePartitionsRequestPartitionValueList `json:"PartitionValueList,omitempty" xml:"PartitionValueList,omitempty" type:"Repeated"`
-	TableName          *string                                           `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	// example:
+	//
+	// test_table_20201225
+	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
 }
 
 func (s BatchDeletePartitionsRequest) String() string {
@@ -4170,11 +4773,23 @@ func (s *BatchDeletePartitionsRequestPartitionValueList) SetValues(v []*string) 
 }
 
 type BatchDeletePartitionsResponseBody struct {
-	Code            *string           `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// .
 	Message         *string           `json:"Message,omitempty" xml:"Message,omitempty"`
 	PartitionErrors []*PartitionError `json:"PartitionErrors,omitempty" xml:"PartitionErrors,omitempty" type:"Repeated"`
-	RequestId       *string           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success         *bool             `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// B7F4B621-E41E-4C84-B97F-42B5380A32BB
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s BatchDeletePartitionsResponseBody) String() string {
@@ -4211,9 +4826,9 @@ func (s *BatchDeletePartitionsResponseBody) SetSuccess(v bool) *BatchDeleteParti
 }
 
 type BatchDeletePartitionsResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *BatchDeletePartitionsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *BatchDeletePartitionsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s BatchDeletePartitionsResponse) String() string {
@@ -4240,10 +4855,19 @@ func (s *BatchDeletePartitionsResponse) SetBody(v *BatchDeletePartitionsResponse
 }
 
 type BatchDeleteTableVersionsRequest struct {
-	CatalogId    *string  `json:"CatalogId,omitempty" xml:"CatalogId,omitempty"`
-	DatabaseName *string  `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
-	TableName    *string  `json:"TableName,omitempty" xml:"TableName,omitempty"`
-	VersionIds   []*int32 `json:"VersionIds,omitempty" xml:"VersionIds,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1344371
+	CatalogId *string `json:"CatalogId,omitempty" xml:"CatalogId,omitempty"`
+	// example:
+	//
+	// database_test
+	DatabaseName *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
+	// example:
+	//
+	// test_table_20200715162543389
+	TableName  *string  `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	VersionIds []*int32 `json:"VersionIds,omitempty" xml:"VersionIds,omitempty" type:"Repeated"`
 }
 
 func (s BatchDeleteTableVersionsRequest) String() string {
@@ -4275,10 +4899,22 @@ func (s *BatchDeleteTableVersionsRequest) SetVersionIds(v []*int32) *BatchDelete
 }
 
 type BatchDeleteTableVersionsResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// .
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// B7F4B621-E41E-4C84-B97F-42B5380A32BB
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s BatchDeleteTableVersionsResponseBody) String() string {
@@ -4310,9 +4946,9 @@ func (s *BatchDeleteTableVersionsResponseBody) SetSuccess(v bool) *BatchDeleteTa
 }
 
 type BatchDeleteTableVersionsResponse struct {
-	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *BatchDeleteTableVersionsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *BatchDeleteTableVersionsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s BatchDeleteTableVersionsResponse) String() string {
@@ -4339,9 +4975,19 @@ func (s *BatchDeleteTableVersionsResponse) SetBody(v *BatchDeleteTableVersionsRe
 }
 
 type BatchDeleteTablesRequest struct {
-	CatalogId    *string `json:"CatalogId,omitempty" xml:"CatalogId,omitempty"`
+	// example:
+	//
+	// 1344371
+	CatalogId *string `json:"CatalogId,omitempty" xml:"CatalogId,omitempty"`
+	// example:
+	//
+	// database_test
 	DatabaseName *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
 	// IfExists
+	//
+	// example:
+	//
+	// true
 	IfExists   *bool     `json:"IfExists,omitempty" xml:"IfExists,omitempty"`
 	TableNames []*string `json:"TableNames,omitempty" xml:"TableNames,omitempty" type:"Repeated"`
 }
@@ -4375,9 +5021,21 @@ func (s *BatchDeleteTablesRequest) SetTableNames(v []*string) *BatchDeleteTables
 }
 
 type BatchDeleteTablesResponseBody struct {
-	Code        *string       `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message     *string       `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId   *string       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// .
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// B7F4B621-E41E-4C84-B97F-42B5380A32BB
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
 	Success     *bool         `json:"Success,omitempty" xml:"Success,omitempty"`
 	TableErrors []*TableError `json:"TableErrors,omitempty" xml:"TableErrors,omitempty" type:"Repeated"`
 }
@@ -4416,9 +5074,9 @@ func (s *BatchDeleteTablesResponseBody) SetTableErrors(v []*TableError) *BatchDe
 }
 
 type BatchDeleteTablesResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *BatchDeleteTablesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *BatchDeleteTablesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s BatchDeleteTablesResponse) String() string {
@@ -4445,11 +5103,20 @@ func (s *BatchDeleteTablesResponse) SetBody(v *BatchDeleteTablesResponseBody) *B
 }
 
 type BatchGetPartitionColumnStatisticsRequest struct {
-	CatalogId      *string   `json:"CatalogId,omitempty" xml:"CatalogId,omitempty"`
-	ColumnNames    []*string `json:"ColumnNames,omitempty" xml:"ColumnNames,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1344371
+	CatalogId   *string   `json:"CatalogId,omitempty" xml:"CatalogId,omitempty"`
+	ColumnNames []*string `json:"ColumnNames,omitempty" xml:"ColumnNames,omitempty" type:"Repeated"`
+	// example:
+	//
+	// database_test
 	DatabaseName   *string   `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
 	PartitionNames []*string `json:"PartitionNames,omitempty" xml:"PartitionNames,omitempty" type:"Repeated"`
-	TableName      *string   `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	// example:
+	//
+	// test_table_20201223
+	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
 }
 
 func (s BatchGetPartitionColumnStatisticsRequest) String() string {
@@ -4486,11 +5153,23 @@ func (s *BatchGetPartitionColumnStatisticsRequest) SetTableName(v string) *Batch
 }
 
 type BatchGetPartitionColumnStatisticsResponseBody struct {
-	Code                   *string                           `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// .
 	Message                *string                           `json:"Message,omitempty" xml:"Message,omitempty"`
 	PartitionStatisticsMap map[string][]*ColumnStatisticsObj `json:"PartitionStatisticsMap,omitempty" xml:"PartitionStatisticsMap,omitempty"`
-	RequestId              *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success                *bool                             `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// B7F4B621-E41E-4C84-B97F-42B5380A32BB
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s BatchGetPartitionColumnStatisticsResponseBody) String() string {
@@ -4527,9 +5206,9 @@ func (s *BatchGetPartitionColumnStatisticsResponseBody) SetSuccess(v bool) *Batc
 }
 
 type BatchGetPartitionColumnStatisticsResponse struct {
-	Headers    map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *BatchGetPartitionColumnStatisticsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *BatchGetPartitionColumnStatisticsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s BatchGetPartitionColumnStatisticsResponse) String() string {
@@ -4556,11 +5235,23 @@ func (s *BatchGetPartitionColumnStatisticsResponse) SetBody(v *BatchGetPartition
 }
 
 type BatchGetPartitionsRequest struct {
-	CatalogId          *string                                        `json:"CatalogId,omitempty" xml:"CatalogId,omitempty"`
-	DatabaseName       *string                                        `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
+	// example:
+	//
+	// 1344371
+	CatalogId *string `json:"CatalogId,omitempty" xml:"CatalogId,omitempty"`
+	// example:
+	//
+	// database_test
+	DatabaseName *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
+	// example:
+	//
+	// true
 	IsShareSd          *bool                                          `json:"IsShareSd,omitempty" xml:"IsShareSd,omitempty"`
 	PartitionValueList []*BatchGetPartitionsRequestPartitionValueList `json:"PartitionValueList,omitempty" xml:"PartitionValueList,omitempty" type:"Repeated"`
-	TableName          *string                                        `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	// example:
+	//
+	// test_table_20200715162543389
+	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
 }
 
 func (s BatchGetPartitionsRequest) String() string {
@@ -4614,13 +5305,25 @@ func (s *BatchGetPartitionsRequestPartitionValueList) SetValues(v []*string) *Ba
 }
 
 type BatchGetPartitionsResponseBody struct {
-	Code            *string           `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// .
 	Message         *string           `json:"Message,omitempty" xml:"Message,omitempty"`
 	PartitionErrors []*PartitionError `json:"PartitionErrors,omitempty" xml:"PartitionErrors,omitempty" type:"Repeated"`
 	PartitionSpecs  []*PartitionSpec  `json:"PartitionSpecs,omitempty" xml:"PartitionSpecs,omitempty" type:"Repeated"`
 	Partitions      []*Partition      `json:"Partitions,omitempty" xml:"Partitions,omitempty" type:"Repeated"`
-	RequestId       *string           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success         *bool             `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// B7F4B621-E41E-4C84-B97F-42B5380A32BB
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s BatchGetPartitionsResponseBody) String() string {
@@ -4667,9 +5370,9 @@ func (s *BatchGetPartitionsResponseBody) SetSuccess(v bool) *BatchGetPartitionsR
 }
 
 type BatchGetPartitionsResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *BatchGetPartitionsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *BatchGetPartitionsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s BatchGetPartitionsResponse) String() string {
@@ -4696,7 +5399,13 @@ func (s *BatchGetPartitionsResponse) SetBody(v *BatchGetPartitionsResponseBody) 
 }
 
 type BatchGetTablesRequest struct {
-	CatalogId    *string   `json:"CatalogId,omitempty" xml:"CatalogId,omitempty"`
+	// example:
+	//
+	// 1344371
+	CatalogId *string `json:"CatalogId,omitempty" xml:"CatalogId,omitempty"`
+	// example:
+	//
+	// database_test
 	DatabaseName *string   `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
 	TableNames   []*string `json:"TableNames,omitempty" xml:"TableNames,omitempty" type:"Repeated"`
 }
@@ -4725,9 +5434,21 @@ func (s *BatchGetTablesRequest) SetTableNames(v []*string) *BatchGetTablesReques
 }
 
 type BatchGetTablesResponseBody struct {
-	Code        *string       `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message     *string       `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId   *string       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// .
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// B7F4B621-E41E-4C84-B97F-42B5380A32BB
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
 	Success     *bool         `json:"Success,omitempty" xml:"Success,omitempty"`
 	TableErrors []*TableError `json:"TableErrors,omitempty" xml:"TableErrors,omitempty" type:"Repeated"`
 	Tables      []*Table      `json:"Tables,omitempty" xml:"Tables,omitempty" type:"Repeated"`
@@ -4772,9 +5493,9 @@ func (s *BatchGetTablesResponseBody) SetTables(v []*Table) *BatchGetTablesRespon
 }
 
 type BatchGetTablesResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *BatchGetTablesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *BatchGetTablesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s BatchGetTablesResponse) String() string {
@@ -4802,9 +5523,18 @@ func (s *BatchGetTablesResponse) SetBody(v *BatchGetTablesResponseBody) *BatchGe
 
 type BatchGrantPermissionsRequest struct {
 	// catalogId
+	//
+	// example:
+	//
+	// 1344371
 	CatalogId          *string             `json:"CatalogId,omitempty" xml:"CatalogId,omitempty"`
 	GrantRevokeEntries []*GrantRevokeEntry `json:"GrantRevokeEntries,omitempty" xml:"GrantRevokeEntries,omitempty" type:"Repeated"`
-	Type               *string             `json:"Type,omitempty" xml:"Type,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Hive
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s BatchGrantPermissionsRequest) String() string {
@@ -4834,12 +5564,28 @@ type BatchGrantPermissionsResponseBody struct {
 	// result
 	BatchGrantRevokeFailureResult []*GrantRevokeFailureEntry `json:"BatchGrantRevokeFailureResult,omitempty" xml:"BatchGrantRevokeFailureResult,omitempty" type:"Repeated"`
 	// Response Code
+	//
+	// example:
+	//
+	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// Message
+	//
+	// example:
+	//
+	// .
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// RequestId
+	//
+	// example:
+	//
+	// B7F4B621-E41E-4C84-B97F-42B5380A32BB
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Success
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -4877,9 +5623,9 @@ func (s *BatchGrantPermissionsResponseBody) SetSuccess(v bool) *BatchGrantPermis
 }
 
 type BatchGrantPermissionsResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *BatchGrantPermissionsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *BatchGrantPermissionsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s BatchGrantPermissionsResponse) String() string {
@@ -4907,9 +5653,18 @@ func (s *BatchGrantPermissionsResponse) SetBody(v *BatchGrantPermissionsResponse
 
 type BatchRevokePermissionsRequest struct {
 	// catalogId
+	//
+	// example:
+	//
+	// 1344371
 	CatalogId          *string             `json:"CatalogId,omitempty" xml:"CatalogId,omitempty"`
 	GrantRevokeEntries []*GrantRevokeEntry `json:"GrantRevokeEntries,omitempty" xml:"GrantRevokeEntries,omitempty" type:"Repeated"`
-	Type               *string             `json:"Type,omitempty" xml:"Type,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Hive
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s BatchRevokePermissionsRequest) String() string {
@@ -4939,12 +5694,28 @@ type BatchRevokePermissionsResponseBody struct {
 	// result
 	BatchGrantRevokeFailureResult []*GrantRevokeFailureEntry `json:"BatchGrantRevokeFailureResult,omitempty" xml:"BatchGrantRevokeFailureResult,omitempty" type:"Repeated"`
 	// Response Code
+	//
+	// example:
+	//
+	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// Message Code
+	//
+	// example:
+	//
+	// .
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// RequestId
+	//
+	// example:
+	//
+	// C9E535E1-F040-56F4-B4EE-592B555DAE19
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Success
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -4982,9 +5753,9 @@ func (s *BatchRevokePermissionsResponseBody) SetSuccess(v bool) *BatchRevokePerm
 }
 
 type BatchRevokePermissionsResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *BatchRevokePermissionsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *BatchRevokePermissionsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s BatchRevokePermissionsResponse) String() string {
@@ -5011,10 +5782,19 @@ func (s *BatchRevokePermissionsResponse) SetBody(v *BatchRevokePermissionsRespon
 }
 
 type BatchUpdatePartitionsRequest struct {
-	CatalogId       *string           `json:"CatalogId,omitempty" xml:"CatalogId,omitempty"`
+	// example:
+	//
+	// 1344371
+	CatalogId *string `json:"CatalogId,omitempty" xml:"CatalogId,omitempty"`
+	// example:
+	//
+	// database_test
 	DatabaseName    *string           `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
 	PartitionInputs []*PartitionInput `json:"PartitionInputs,omitempty" xml:"PartitionInputs,omitempty" type:"Repeated"`
-	TableName       *string           `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	// example:
+	//
+	// test_table_20201223
+	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
 }
 
 func (s BatchUpdatePartitionsRequest) String() string {
@@ -5046,11 +5826,23 @@ func (s *BatchUpdatePartitionsRequest) SetTableName(v string) *BatchUpdatePartit
 }
 
 type BatchUpdatePartitionsResponseBody struct {
-	Code            *string           `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// .
 	Message         *string           `json:"Message,omitempty" xml:"Message,omitempty"`
 	PartitionErrors []*PartitionError `json:"PartitionErrors,omitempty" xml:"PartitionErrors,omitempty" type:"Repeated"`
-	RequestId       *string           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success         *bool             `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// B7F4B621-E41E-4C84-B97F-42B5380A32BB
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s BatchUpdatePartitionsResponseBody) String() string {
@@ -5087,9 +5879,9 @@ func (s *BatchUpdatePartitionsResponseBody) SetSuccess(v bool) *BatchUpdateParti
 }
 
 type BatchUpdatePartitionsResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *BatchUpdatePartitionsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *BatchUpdatePartitionsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s BatchUpdatePartitionsResponse) String() string {
@@ -5116,10 +5908,19 @@ func (s *BatchUpdatePartitionsResponse) SetBody(v *BatchUpdatePartitionsResponse
 }
 
 type BatchUpdateTablesRequest struct {
-	CatalogId    *string       `json:"CatalogId,omitempty" xml:"CatalogId,omitempty"`
-	DatabaseName *string       `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
-	IsAsync      *bool         `json:"IsAsync,omitempty" xml:"IsAsync,omitempty"`
-	TableInputs  []*TableInput `json:"TableInputs,omitempty" xml:"TableInputs,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1344371
+	CatalogId *string `json:"CatalogId,omitempty" xml:"CatalogId,omitempty"`
+	// example:
+	//
+	// database_test
+	DatabaseName *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
+	// example:
+	//
+	// true
+	IsAsync     *bool         `json:"IsAsync,omitempty" xml:"IsAsync,omitempty"`
+	TableInputs []*TableInput `json:"TableInputs,omitempty" xml:"TableInputs,omitempty" type:"Repeated"`
 }
 
 func (s BatchUpdateTablesRequest) String() string {
@@ -5151,12 +5952,30 @@ func (s *BatchUpdateTablesRequest) SetTableInputs(v []*TableInput) *BatchUpdateT
 }
 
 type BatchUpdateTablesResponseBody struct {
-	Code        *string       `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message     *string       `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId   *string       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success     *bool         `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// .
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// B7F4B621-E41E-4C84-B97F-42B5380A32BB
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// {"ErrorDetails":{},"TableName":"test"}
 	TableErrors []*TableError `json:"TableErrors,omitempty" xml:"TableErrors,omitempty" type:"Repeated"`
-	TaskId      *string       `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// example:
+	//
+	// f8deec55f54ac566e7ec8944fbe01588
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s BatchUpdateTablesResponseBody) String() string {
@@ -5198,9 +6017,9 @@ func (s *BatchUpdateTablesResponseBody) SetTaskId(v string) *BatchUpdateTablesRe
 }
 
 type BatchUpdateTablesResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *BatchUpdateTablesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *BatchUpdateTablesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s BatchUpdateTablesResponse) String() string {
@@ -5227,6 +6046,9 @@ func (s *BatchUpdateTablesResponse) SetBody(v *BatchUpdateTablesResponseBody) *B
 }
 
 type CancelQueryRequest struct {
+	// example:
+	//
+	// Q-BCA5E96CB84BB8B8
 	QueryId *string `json:"QueryId,omitempty" xml:"QueryId,omitempty"`
 }
 
@@ -5244,9 +6066,18 @@ func (s *CancelQueryRequest) SetQueryId(v string) *CancelQueryRequest {
 }
 
 type CancelQueryResponseBody struct {
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// Q-BCA5E96CB84BB8B8
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// DB07AAE9-4B88-5DEA-8F1D-4D1A9A864A85
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s CancelQueryResponseBody) String() string {
@@ -5273,9 +6104,9 @@ func (s *CancelQueryResponseBody) SetSuccess(v bool) *CancelQueryResponseBody {
 }
 
 type CancelQueryResponse struct {
-	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CancelQueryResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CancelQueryResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CancelQueryResponse) String() string {
@@ -5320,12 +6151,28 @@ func (s *CheckPermissionsRequest) SetBody(v *AccessRequest) *CheckPermissionsReq
 
 type CheckPermissionsResponseBody struct {
 	// Response Code
+	//
+	// example:
+	//
+	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// Message Code
+	//
+	// example:
+	//
+	// .
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// RequestId
+	//
+	// example:
+	//
+	// 81B90E1B-7514-5817-9D59-0EA9E2215876
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Success
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -5358,9 +6205,9 @@ func (s *CheckPermissionsResponseBody) SetSuccess(v bool) *CheckPermissionsRespo
 }
 
 type CheckPermissionsResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CheckPermissionsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CheckPermissionsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CheckPermissionsResponse) String() string {
@@ -5406,12 +6253,28 @@ func (s *CreateCatalogRequest) SetCatalogInput(v *CatalogInput) *CreateCatalogRe
 
 type CreateCatalogResponseBody struct {
 	// Response Code
+	//
+	// example:
+	//
+	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// Response Message
+	//
+	// example:
+	//
+	// .
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// RequestId
+	//
+	// example:
+	//
+	// BA84F8D4-5160-5544-BE76-3A306CD3A7B0
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Success
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -5444,9 +6307,9 @@ func (s *CreateCatalogResponseBody) SetSuccess(v bool) *CreateCatalogResponseBod
 }
 
 type CreateCatalogResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateCatalogResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateCatalogResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateCatalogResponse) String() string {
@@ -5473,6 +6336,9 @@ func (s *CreateCatalogResponse) SetBody(v *CreateCatalogResponseBody) *CreateCat
 }
 
 type CreateDatabaseRequest struct {
+	// example:
+	//
+	// 1344371
 	CatalogId     *string        `json:"CatalogId,omitempty" xml:"CatalogId,omitempty"`
 	DatabaseInput *DatabaseInput `json:"DatabaseInput,omitempty" xml:"DatabaseInput,omitempty"`
 }
@@ -5496,10 +6362,22 @@ func (s *CreateDatabaseRequest) SetDatabaseInput(v *DatabaseInput) *CreateDataba
 }
 
 type CreateDatabaseResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// .
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// B7F4B621-E41E-4C84-B97F-42B5380A32BB
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s CreateDatabaseResponseBody) String() string {
@@ -5531,9 +6409,9 @@ func (s *CreateDatabaseResponseBody) SetSuccess(v bool) *CreateDatabaseResponseB
 }
 
 type CreateDatabaseResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateDatabaseResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateDatabaseResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateDatabaseResponse) String() string {
@@ -5560,7 +6438,13 @@ func (s *CreateDatabaseResponse) SetBody(v *CreateDatabaseResponseBody) *CreateD
 }
 
 type CreateFunctionRequest struct {
-	CatalogId     *string        `json:"CatalogId,omitempty" xml:"CatalogId,omitempty"`
+	// example:
+	//
+	// 1344371
+	CatalogId *string `json:"CatalogId,omitempty" xml:"CatalogId,omitempty"`
+	// example:
+	//
+	// database_test
 	DatabaseName  *string        `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
 	FunctionInput *FunctionInput `json:"FunctionInput,omitempty" xml:"FunctionInput,omitempty"`
 }
@@ -5589,10 +6473,22 @@ func (s *CreateFunctionRequest) SetFunctionInput(v *FunctionInput) *CreateFuncti
 }
 
 type CreateFunctionResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// .
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// B7F4B621-E41E-4C84-B97F-42B5380A32BB
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s CreateFunctionResponseBody) String() string {
@@ -5624,9 +6520,9 @@ func (s *CreateFunctionResponseBody) SetSuccess(v bool) *CreateFunctionResponseB
 }
 
 type CreateFunctionResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateFunctionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateFunctionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateFunctionResponse) String() string {
@@ -5654,6 +6550,10 @@ func (s *CreateFunctionResponse) SetBody(v *CreateFunctionResponseBody) *CreateF
 
 type CreateLockRequest struct {
 	// LockObjList
+	//
+	// example:
+	//
+	// {"databaseName":"db","tableName":"test"}
 	LockObjList []*LockObj `json:"LockObjList,omitempty" xml:"LockObjList,omitempty" type:"Repeated"`
 }
 
@@ -5672,13 +6572,32 @@ func (s *CreateLockRequest) SetLockObjList(v []*LockObj) *CreateLockRequest {
 
 type CreateLockResponseBody struct {
 	// Code
-	Code       *string     `json:"Code,omitempty" xml:"Code,omitempty"`
+	//
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// {"lockId":12323,"lockStatus":"ACQUIRED"}
 	LockStatus *LockStatus `json:"LockStatus,omitempty" xml:"LockStatus,omitempty"`
 	// Message
+	//
+	// example:
+	//
+	// .
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// RequestId
+	//
+	// example:
+	//
+	// 73201200-4C1A-4FEF-BD6B-C0DA7994FFA2
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Success
+	//
+	// example:
+	//
+	// True
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -5716,9 +6635,9 @@ func (s *CreateLockResponseBody) SetSuccess(v bool) *CreateLockResponseBody {
 }
 
 type CreateLockResponse struct {
-	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateLockResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateLockResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateLockResponse) String() string {
@@ -5745,12 +6664,27 @@ func (s *CreateLockResponse) SetBody(v *CreateLockResponseBody) *CreateLockRespo
 }
 
 type CreatePartitionRequest struct {
-	CatalogId      *string         `json:"CatalogId,omitempty" xml:"CatalogId,omitempty"`
-	DatabaseName   *string         `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
-	IfNotExists    *bool           `json:"IfNotExists,omitempty" xml:"IfNotExists,omitempty"`
+	// example:
+	//
+	// 1344371
+	CatalogId *string `json:"CatalogId,omitempty" xml:"CatalogId,omitempty"`
+	// example:
+	//
+	// database_test
+	DatabaseName *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
+	// example:
+	//
+	// true
+	IfNotExists *bool `json:"IfNotExists,omitempty" xml:"IfNotExists,omitempty"`
+	// example:
+	//
+	// true
 	NeedResult     *bool           `json:"NeedResult,omitempty" xml:"NeedResult,omitempty"`
 	PartitionInput *PartitionInput `json:"PartitionInput,omitempty" xml:"PartitionInput,omitempty"`
-	TableName      *string         `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	// example:
+	//
+	// test_table_20201223
+	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
 }
 
 func (s CreatePartitionRequest) String() string {
@@ -5792,11 +6726,23 @@ func (s *CreatePartitionRequest) SetTableName(v string) *CreatePartitionRequest 
 }
 
 type CreatePartitionResponseBody struct {
-	Code      *string    `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// .
 	Message   *string    `json:"Message,omitempty" xml:"Message,omitempty"`
 	Partition *Partition `json:"Partition,omitempty" xml:"Partition,omitempty"`
-	RequestId *string    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool      `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// B7F4B621-E41E-4C84-B97F-42B5380A32BB
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s CreatePartitionResponseBody) String() string {
@@ -5833,9 +6779,9 @@ func (s *CreatePartitionResponseBody) SetSuccess(v bool) *CreatePartitionRespons
 }
 
 type CreatePartitionResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreatePartitionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreatePartitionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreatePartitionResponse) String() string {
@@ -5880,12 +6826,28 @@ func (s *CreateRoleRequest) SetBody(v *RoleInput) *CreateRoleRequest {
 
 type CreateRoleResponseBody struct {
 	// code
+	//
+	// example:
+	//
+	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// message
+	//
+	// example:
+	//
+	// .
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// RequestId
+	//
+	// example:
+	//
+	// 77BC2016-BA80-570F-BD15-2FB80281FED6
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// success
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -5918,9 +6880,9 @@ func (s *CreateRoleResponseBody) SetSuccess(v bool) *CreateRoleResponseBody {
 }
 
 type CreateRoleResponse struct {
-	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateRoleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateRoleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateRoleResponse) String() string {
@@ -5947,7 +6909,13 @@ func (s *CreateRoleResponse) SetBody(v *CreateRoleResponseBody) *CreateRoleRespo
 }
 
 type CreateTableRequest struct {
-	CatalogId    *string     `json:"CatalogId,omitempty" xml:"CatalogId,omitempty"`
+	// example:
+	//
+	// 1344371
+	CatalogId *string `json:"CatalogId,omitempty" xml:"CatalogId,omitempty"`
+	// example:
+	//
+	// database_test
 	DatabaseName *string     `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
 	TableInput   *TableInput `json:"TableInput,omitempty" xml:"TableInput,omitempty"`
 }
@@ -5976,10 +6944,22 @@ func (s *CreateTableRequest) SetTableInput(v *TableInput) *CreateTableRequest {
 }
 
 type CreateTableResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// .
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// B7F4B621-E41E-4C84-B97F-42B5380A32BB
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s CreateTableResponseBody) String() string {
@@ -6011,9 +6991,9 @@ func (s *CreateTableResponseBody) SetSuccess(v bool) *CreateTableResponseBody {
 }
 
 type CreateTableResponse struct {
-	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateTableResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateTableResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateTableResponse) String() string {
@@ -6041,8 +7021,17 @@ func (s *CreateTableResponse) SetBody(v *CreateTableResponseBody) *CreateTableRe
 
 type DeleteCatalogRequest struct {
 	// CatalogId
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// catalog_test
 	CatalogId *string `json:"CatalogId,omitempty" xml:"CatalogId,omitempty"`
-	IsAsync   *bool   `json:"IsAsync,omitempty" xml:"IsAsync,omitempty"`
+	// example:
+	//
+	// true
+	IsAsync *bool `json:"IsAsync,omitempty" xml:"IsAsync,omitempty"`
 }
 
 func (s DeleteCatalogRequest) String() string {
@@ -6065,14 +7054,33 @@ func (s *DeleteCatalogRequest) SetIsAsync(v bool) *DeleteCatalogRequest {
 
 type DeleteCatalogResponseBody struct {
 	// Response Code
+	//
+	// example:
+	//
+	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// Response Message
+	//
+	// example:
+	//
+	// .
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// RequestId
+	//
+	// example:
+	//
+	// B7F4B621-E41E-4C84-B97F-42B5380A32BB
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Request is success or not
-	Success *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
-	TaskId  *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	//
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// c38206c3aca0c41332ffe49294243009
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s DeleteCatalogResponseBody) String() string {
@@ -6109,9 +7117,9 @@ func (s *DeleteCatalogResponseBody) SetTaskId(v string) *DeleteCatalogResponseBo
 }
 
 type DeleteCatalogResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteCatalogResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteCatalogResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteCatalogResponse) String() string {
@@ -6138,10 +7146,19 @@ func (s *DeleteCatalogResponse) SetBody(v *DeleteCatalogResponseBody) *DeleteCat
 }
 
 type DeleteDatabaseRequest struct {
-	Async     *bool   `json:"Async,omitempty" xml:"Async,omitempty"`
-	Cascade   *bool   `json:"Cascade,omitempty" xml:"Cascade,omitempty"`
+	Async *bool `json:"Async,omitempty" xml:"Async,omitempty"`
+	// example:
+	//
+	// false
+	Cascade *bool `json:"Cascade,omitempty" xml:"Cascade,omitempty"`
+	// example:
+	//
+	// 1344371
 	CatalogId *string `json:"CatalogId,omitempty" xml:"CatalogId,omitempty"`
-	Name      *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// database_test
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
 func (s DeleteDatabaseRequest) String() string {
@@ -6173,11 +7190,23 @@ func (s *DeleteDatabaseRequest) SetName(v string) *DeleteDatabaseRequest {
 }
 
 type DeleteDatabaseResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// .
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 73201200-4C1A-4FEF-BD6B-C0DA7994FFA2
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
-	TaskId    *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	TaskId  *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s DeleteDatabaseResponseBody) String() string {
@@ -6214,9 +7243,9 @@ func (s *DeleteDatabaseResponseBody) SetTaskId(v string) *DeleteDatabaseResponse
 }
 
 type DeleteDatabaseResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteDatabaseResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteDatabaseResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteDatabaseResponse) String() string {
@@ -6243,8 +7272,17 @@ func (s *DeleteDatabaseResponse) SetBody(v *DeleteDatabaseResponseBody) *DeleteD
 }
 
 type DeleteFunctionRequest struct {
-	CatalogId    *string `json:"CatalogId,omitempty" xml:"CatalogId,omitempty"`
+	// example:
+	//
+	// 1344371
+	CatalogId *string `json:"CatalogId,omitempty" xml:"CatalogId,omitempty"`
+	// example:
+	//
+	// database_test
 	DatabaseName *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
+	// example:
+	//
+	// func2
 	FunctionName *string `json:"FunctionName,omitempty" xml:"FunctionName,omitempty"`
 }
 
@@ -6272,10 +7310,22 @@ func (s *DeleteFunctionRequest) SetFunctionName(v string) *DeleteFunctionRequest
 }
 
 type DeleteFunctionResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// .
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// B7F4B621-E41E-4C84-B97F-42B5380A32BB
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DeleteFunctionResponseBody) String() string {
@@ -6307,9 +7357,9 @@ func (s *DeleteFunctionResponseBody) SetSuccess(v bool) *DeleteFunctionResponseB
 }
 
 type DeleteFunctionResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteFunctionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteFunctionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteFunctionResponse) String() string {
@@ -6336,11 +7386,23 @@ func (s *DeleteFunctionResponse) SetBody(v *DeleteFunctionResponseBody) *DeleteF
 }
 
 type DeletePartitionRequest struct {
-	CatalogId       *string   `json:"CatalogId,omitempty" xml:"CatalogId,omitempty"`
-	DatabaseName    *string   `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
+	// example:
+	//
+	// 1344371
+	CatalogId *string `json:"CatalogId,omitempty" xml:"CatalogId,omitempty"`
+	// example:
+	//
+	// database_test
+	DatabaseName *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
+	// example:
+	//
+	// true
 	IfExists        *bool     `json:"IfExists,omitempty" xml:"IfExists,omitempty"`
 	PartitionValues []*string `json:"PartitionValues,omitempty" xml:"PartitionValues,omitempty" type:"Repeated"`
-	TableName       *string   `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	// example:
+	//
+	// test_table_20201225
+	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
 }
 
 func (s DeletePartitionRequest) String() string {
@@ -6377,10 +7439,22 @@ func (s *DeletePartitionRequest) SetTableName(v string) *DeletePartitionRequest 
 }
 
 type DeletePartitionResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// .
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// B7F4B621-E41E-4C84-B97F-42B5380A32BB
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DeletePartitionResponseBody) String() string {
@@ -6412,9 +7486,9 @@ func (s *DeletePartitionResponseBody) SetSuccess(v bool) *DeletePartitionRespons
 }
 
 type DeletePartitionResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeletePartitionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeletePartitionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeletePartitionResponse) String() string {
@@ -6441,11 +7515,20 @@ func (s *DeletePartitionResponse) SetBody(v *DeletePartitionResponseBody) *Delet
 }
 
 type DeletePartitionColumnStatisticsRequest struct {
-	CatalogId      *string   `json:"CatalogId,omitempty" xml:"CatalogId,omitempty"`
-	ColumnNames    []*string `json:"ColumnNames,omitempty" xml:"ColumnNames,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1344371
+	CatalogId   *string   `json:"CatalogId,omitempty" xml:"CatalogId,omitempty"`
+	ColumnNames []*string `json:"ColumnNames,omitempty" xml:"ColumnNames,omitempty" type:"Repeated"`
+	// example:
+	//
+	// database_test
 	DatabaseName   *string   `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
 	PartitionNames []*string `json:"PartitionNames,omitempty" xml:"PartitionNames,omitempty" type:"Repeated"`
-	TableName      *string   `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	// example:
+	//
+	// test_table_20201223
+	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
 }
 
 func (s DeletePartitionColumnStatisticsRequest) String() string {
@@ -6482,11 +7565,20 @@ func (s *DeletePartitionColumnStatisticsRequest) SetTableName(v string) *DeleteP
 }
 
 type DeletePartitionColumnStatisticsShrinkRequest struct {
-	CatalogId            *string `json:"CatalogId,omitempty" xml:"CatalogId,omitempty"`
-	ColumnNamesShrink    *string `json:"ColumnNames,omitempty" xml:"ColumnNames,omitempty"`
+	// example:
+	//
+	// 1344371
+	CatalogId         *string `json:"CatalogId,omitempty" xml:"CatalogId,omitempty"`
+	ColumnNamesShrink *string `json:"ColumnNames,omitempty" xml:"ColumnNames,omitempty"`
+	// example:
+	//
+	// database_test
 	DatabaseName         *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
 	PartitionNamesShrink *string `json:"PartitionNames,omitempty" xml:"PartitionNames,omitempty"`
-	TableName            *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	// example:
+	//
+	// test_table_20201223
+	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
 }
 
 func (s DeletePartitionColumnStatisticsShrinkRequest) String() string {
@@ -6523,10 +7615,22 @@ func (s *DeletePartitionColumnStatisticsShrinkRequest) SetTableName(v string) *D
 }
 
 type DeletePartitionColumnStatisticsResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// .
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// B7F4B621-E41E-4C84-B97F-42B5380A32BB
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DeletePartitionColumnStatisticsResponseBody) String() string {
@@ -6558,9 +7662,9 @@ func (s *DeletePartitionColumnStatisticsResponseBody) SetSuccess(v bool) *Delete
 }
 
 type DeletePartitionColumnStatisticsResponse struct {
-	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeletePartitionColumnStatisticsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeletePartitionColumnStatisticsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeletePartitionColumnStatisticsResponse) String() string {
@@ -6587,6 +7691,9 @@ func (s *DeletePartitionColumnStatisticsResponse) SetBody(v *DeletePartitionColu
 }
 
 type DeleteRoleRequest struct {
+	// example:
+	//
+	// roleId/roleName至少有一个是非空
 	RoleName *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
 }
 
@@ -6605,12 +7712,28 @@ func (s *DeleteRoleRequest) SetRoleName(v string) *DeleteRoleRequest {
 
 type DeleteRoleResponseBody struct {
 	// code
+	//
+	// example:
+	//
+	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// message
+	//
+	// example:
+	//
+	// .
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// requestId
+	//
+	// example:
+	//
+	// B7F4B621-E41E-4C84-B97F-42B5380A32BB
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// success
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -6643,9 +7766,9 @@ func (s *DeleteRoleResponseBody) SetSuccess(v bool) *DeleteRoleResponseBody {
 }
 
 type DeleteRoleResponse struct {
-	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteRoleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteRoleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteRoleResponse) String() string {
@@ -6672,9 +7795,18 @@ func (s *DeleteRoleResponse) SetBody(v *DeleteRoleResponseBody) *DeleteRoleRespo
 }
 
 type DeleteTableRequest struct {
-	CatalogId    *string `json:"CatalogId,omitempty" xml:"CatalogId,omitempty"`
+	// example:
+	//
+	// 1344371
+	CatalogId *string `json:"CatalogId,omitempty" xml:"CatalogId,omitempty"`
+	// example:
+	//
+	// database_test
 	DatabaseName *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
-	TableName    *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	// example:
+	//
+	// test_table_20201223
+	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
 }
 
 func (s DeleteTableRequest) String() string {
@@ -6701,10 +7833,22 @@ func (s *DeleteTableRequest) SetTableName(v string) *DeleteTableRequest {
 }
 
 type DeleteTableResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// .
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// B7F4B621-E41E-4C84-B97F-42B5380A32BB
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DeleteTableResponseBody) String() string {
@@ -6736,9 +7880,9 @@ func (s *DeleteTableResponseBody) SetSuccess(v bool) *DeleteTableResponseBody {
 }
 
 type DeleteTableResponse struct {
-	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteTableResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteTableResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteTableResponse) String() string {
@@ -6765,10 +7909,19 @@ func (s *DeleteTableResponse) SetBody(v *DeleteTableResponseBody) *DeleteTableRe
 }
 
 type DeleteTableColumnStatisticsRequest struct {
-	CatalogId    *string   `json:"CatalogId,omitempty" xml:"CatalogId,omitempty"`
-	ColumnNames  []*string `json:"ColumnNames,omitempty" xml:"ColumnNames,omitempty" type:"Repeated"`
-	DatabaseName *string   `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
-	TableName    *string   `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	// example:
+	//
+	// 1344371
+	CatalogId   *string   `json:"CatalogId,omitempty" xml:"CatalogId,omitempty"`
+	ColumnNames []*string `json:"ColumnNames,omitempty" xml:"ColumnNames,omitempty" type:"Repeated"`
+	// example:
+	//
+	// database_test
+	DatabaseName *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
+	// example:
+	//
+	// test_table_20201223
+	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
 }
 
 func (s DeleteTableColumnStatisticsRequest) String() string {
@@ -6800,10 +7953,19 @@ func (s *DeleteTableColumnStatisticsRequest) SetTableName(v string) *DeleteTable
 }
 
 type DeleteTableColumnStatisticsShrinkRequest struct {
+	// example:
+	//
+	// 1344371
 	CatalogId         *string `json:"CatalogId,omitempty" xml:"CatalogId,omitempty"`
 	ColumnNamesShrink *string `json:"ColumnNames,omitempty" xml:"ColumnNames,omitempty"`
-	DatabaseName      *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
-	TableName         *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	// example:
+	//
+	// database_test
+	DatabaseName *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
+	// example:
+	//
+	// test_table_20201223
+	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
 }
 
 func (s DeleteTableColumnStatisticsShrinkRequest) String() string {
@@ -6835,10 +7997,22 @@ func (s *DeleteTableColumnStatisticsShrinkRequest) SetTableName(v string) *Delet
 }
 
 type DeleteTableColumnStatisticsResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// .
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// B7F4B621-E41E-4C84-B97F-42B5380A32BB
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DeleteTableColumnStatisticsResponseBody) String() string {
@@ -6870,9 +8044,9 @@ func (s *DeleteTableColumnStatisticsResponseBody) SetSuccess(v bool) *DeleteTabl
 }
 
 type DeleteTableColumnStatisticsResponse struct {
-	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteTableColumnStatisticsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteTableColumnStatisticsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteTableColumnStatisticsResponse) String() string {
@@ -6899,10 +8073,22 @@ func (s *DeleteTableColumnStatisticsResponse) SetBody(v *DeleteTableColumnStatis
 }
 
 type DeleteTableVersionRequest struct {
-	CatalogId    *string `json:"CatalogId,omitempty" xml:"CatalogId,omitempty"`
+	// example:
+	//
+	// 1344371
+	CatalogId *string `json:"CatalogId,omitempty" xml:"CatalogId,omitempty"`
+	// example:
+	//
+	// database_test
 	DatabaseName *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
-	TableName    *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
-	VersionId    *int32  `json:"VersionId,omitempty" xml:"VersionId,omitempty"`
+	// example:
+	//
+	// test_table_20200715162543389
+	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	// example:
+	//
+	// 1
+	VersionId *int32 `json:"VersionId,omitempty" xml:"VersionId,omitempty"`
 }
 
 func (s DeleteTableVersionRequest) String() string {
@@ -6934,10 +8120,22 @@ func (s *DeleteTableVersionRequest) SetVersionId(v int32) *DeleteTableVersionReq
 }
 
 type DeleteTableVersionResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// .
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// B7F4B621-E41E-4C84-B97F-42B5380A32BB
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DeleteTableVersionResponseBody) String() string {
@@ -6969,9 +8167,9 @@ func (s *DeleteTableVersionResponseBody) SetSuccess(v bool) *DeleteTableVersionR
 }
 
 type DeleteTableVersionResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteTableVersionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteTableVersionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteTableVersionResponse) String() string {
@@ -6998,6 +8196,11 @@ func (s *DeleteTableVersionResponse) SetBody(v *DeleteTableVersionResponseBody) 
 }
 
 type DeregisterLocationRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// LOC-AB8FBC17F95A4AF5
 	LocationId *string `json:"LocationId,omitempty" xml:"LocationId,omitempty"`
 }
 
@@ -7015,9 +8218,15 @@ func (s *DeregisterLocationRequest) SetLocationId(v string) *DeregisterLocationR
 }
 
 type DeregisterLocationResponseBody struct {
-	Data      *DeregisterLocationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	RequestId *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                               `json:"Success,omitempty" xml:"Success,omitempty"`
+	Data *DeregisterLocationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// E47920CD-BAE6-1305-88DF-FBDD3D300845
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DeregisterLocationResponseBody) String() string {
@@ -7045,6 +8254,10 @@ func (s *DeregisterLocationResponseBody) SetSuccess(v bool) *DeregisterLocationR
 
 type DeregisterLocationResponseBodyData struct {
 	// Location ID
+	//
+	// example:
+	//
+	// LOC-AB8FBC17F95A4AF5
 	LocationId                            *string                              `json:"LocationId,omitempty" xml:"LocationId,omitempty"`
 	StorageCollectTaskOperationResultList []*StorageCollectTaskOperationResult `json:"StorageCollectTaskOperationResultList,omitempty" xml:"StorageCollectTaskOperationResultList,omitempty" type:"Repeated"`
 }
@@ -7068,9 +8281,9 @@ func (s *DeregisterLocationResponseBodyData) SetStorageCollectTaskOperationResul
 }
 
 type DeregisterLocationResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeregisterLocationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeregisterLocationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeregisterLocationResponse) String() string {
@@ -7097,9 +8310,15 @@ func (s *DeregisterLocationResponse) SetBody(v *DeregisterLocationResponseBody) 
 }
 
 type DescribeRegionsResponseBody struct {
-	Regions   []*DescribeRegionsResponseBodyRegions `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Repeated"`
-	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                                 `json:"Success,omitempty" xml:"Success,omitempty"`
+	Regions []*DescribeRegionsResponseBodyRegions `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Repeated"`
+	// example:
+	//
+	// B7F4B621-E41E-4C84-B97F-42B5380A32BB
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeRegionsResponseBody) String() string {
@@ -7127,9 +8346,15 @@ func (s *DescribeRegionsResponseBody) SetSuccess(v bool) *DescribeRegionsRespons
 
 type DescribeRegionsResponseBodyRegions struct {
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	ShowName    *string `json:"ShowName,omitempty" xml:"ShowName,omitempty"`
-	Type        *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	Name     *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	ShowName *string `json:"ShowName,omitempty" xml:"ShowName,omitempty"`
+	// example:
+	//
+	// region
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s DescribeRegionsResponseBodyRegions) String() string {
@@ -7161,9 +8386,9 @@ func (s *DescribeRegionsResponseBodyRegions) SetType(v string) *DescribeRegionsR
 }
 
 type DescribeRegionsResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeRegionsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeRegionsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeRegionsResponse) String() string {
@@ -7190,8 +8415,14 @@ func (s *DescribeRegionsResponse) SetBody(v *DescribeRegionsResponseBody) *Descr
 }
 
 type GetAsyncTaskStatusRequest struct {
+	// example:
+	//
+	// 1344371
 	CatalogId *string `json:"CatalogId,omitempty" xml:"CatalogId,omitempty"`
-	TaskId    *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// example:
+	//
+	// f546c761570e5efc8146a1986f7890d2
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s GetAsyncTaskStatusRequest) String() string {
@@ -7214,13 +8445,32 @@ func (s *GetAsyncTaskStatusRequest) SetTaskId(v string) *GetAsyncTaskStatusReque
 
 type GetAsyncTaskStatusResponseBody struct {
 	// Code
+	//
+	// example:
+	//
+	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// Message
+	//
+	// example:
+	//
+	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// RequestId
+	//
+	// example:
+	//
+	// B7F4B621-E41E-4C84-B97F-42B5380A32BB
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Success
-	Success    *bool       `json:"Success,omitempty" xml:"Success,omitempty"`
+	//
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// Success
 	TaskStatus *TaskStatus `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
 }
 
@@ -7258,9 +8508,9 @@ func (s *GetAsyncTaskStatusResponseBody) SetTaskStatus(v *TaskStatus) *GetAsyncT
 }
 
 type GetAsyncTaskStatusResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetAsyncTaskStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetAsyncTaskStatusResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetAsyncTaskStatusResponse) String() string {
@@ -7288,6 +8538,10 @@ func (s *GetAsyncTaskStatusResponse) SetBody(v *GetAsyncTaskStatusResponseBody) 
 
 type GetCatalogRequest struct {
 	// catalogId
+	//
+	// example:
+	//
+	// catalog_test
 	CatalogId *string `json:"CatalogId,omitempty" xml:"CatalogId,omitempty"`
 }
 
@@ -7307,12 +8561,28 @@ func (s *GetCatalogRequest) SetCatalogId(v string) *GetCatalogRequest {
 type GetCatalogResponseBody struct {
 	Catalog *Catalog `json:"Catalog,omitempty" xml:"Catalog,omitempty"`
 	// Code
+	//
+	// example:
+	//
+	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// Message
+	//
+	// example:
+	//
+	// .
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// RequestId
+	//
+	// example:
+	//
+	// DB07AAE9-4B88-5DEA-8F1D-4D1A9A864A85
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Success
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -7350,9 +8620,9 @@ func (s *GetCatalogResponseBody) SetSuccess(v bool) *GetCatalogResponseBody {
 }
 
 type GetCatalogResponse struct {
-	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetCatalogResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetCatalogResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetCatalogResponse) String() string {
@@ -7379,6 +8649,9 @@ func (s *GetCatalogResponse) SetBody(v *GetCatalogResponseBody) *GetCatalogRespo
 }
 
 type GetCatalogSettingsRequest struct {
+	// example:
+	//
+	// 1344371
 	CatalogId *string `json:"CatalogId,omitempty" xml:"CatalogId,omitempty"`
 }
 
@@ -7398,12 +8671,28 @@ func (s *GetCatalogSettingsRequest) SetCatalogId(v string) *GetCatalogSettingsRe
 type GetCatalogSettingsResponseBody struct {
 	CatalogSettings *CatalogSettings `json:"CatalogSettings,omitempty" xml:"CatalogSettings,omitempty"`
 	// Code
+	//
+	// example:
+	//
+	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// Message
+	//
+	// example:
+	//
+	// .
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// RequestId
+	//
+	// example:
+	//
+	// B7F4B621-E41E-4C84-B97F-42B5380A32BB
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Success
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -7441,9 +8730,9 @@ func (s *GetCatalogSettingsResponseBody) SetSuccess(v bool) *GetCatalogSettingsR
 }
 
 type GetCatalogSettingsResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetCatalogSettingsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetCatalogSettingsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetCatalogSettingsResponse) String() string {
@@ -7470,8 +8759,14 @@ func (s *GetCatalogSettingsResponse) SetBody(v *GetCatalogSettingsResponseBody) 
 }
 
 type GetDatabaseRequest struct {
+	// example:
+	//
+	// 1344371
 	CatalogId *string `json:"CatalogId,omitempty" xml:"CatalogId,omitempty"`
-	Name      *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// database_test
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
 func (s GetDatabaseRequest) String() string {
@@ -7493,11 +8788,23 @@ func (s *GetDatabaseRequest) SetName(v string) *GetDatabaseRequest {
 }
 
 type GetDatabaseResponseBody struct {
-	Code      *string   `json:"Code,omitempty" xml:"Code,omitempty"`
-	Database  *Database `json:"Database,omitempty" xml:"Database,omitempty"`
-	Message   *string   `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool     `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// OK
+	Code     *string   `json:"Code,omitempty" xml:"Code,omitempty"`
+	Database *Database `json:"Database,omitempty" xml:"Database,omitempty"`
+	// example:
+	//
+	// .
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// D659761F-29C3-409D-805A-0CF33A320128
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetDatabaseResponseBody) String() string {
@@ -7534,9 +8841,9 @@ func (s *GetDatabaseResponseBody) SetSuccess(v bool) *GetDatabaseResponseBody {
 }
 
 type GetDatabaseResponse struct {
-	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetDatabaseResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetDatabaseResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetDatabaseResponse) String() string {
@@ -7562,9 +8869,148 @@ func (s *GetDatabaseResponse) SetBody(v *GetDatabaseResponseBody) *GetDatabaseRe
 	return s
 }
 
-type GetFunctionRequest struct {
-	CatalogId    *string `json:"CatalogId,omitempty" xml:"CatalogId,omitempty"`
+type GetDatabaseProfileRequest struct {
+	// CatalogId
+	//
+	// example:
+	//
+	// 可不填
+	CatalogId *string `json:"CatalogId,omitempty" xml:"CatalogId,omitempty"`
+	// DatabaseName
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 530_db
 	DatabaseName *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
+}
+
+func (s GetDatabaseProfileRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDatabaseProfileRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetDatabaseProfileRequest) SetCatalogId(v string) *GetDatabaseProfileRequest {
+	s.CatalogId = &v
+	return s
+}
+
+func (s *GetDatabaseProfileRequest) SetDatabaseName(v string) *GetDatabaseProfileRequest {
+	s.DatabaseName = &v
+	return s
+}
+
+type GetDatabaseProfileResponseBody struct {
+	// Code
+	//
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// {
+	//
+	// 	"FileCnt": 213,
+	//
+	// 	"FileSize": 34324
+	//
+	// }
+	DatabaseProfile *DatabaseProfile `json:"DatabaseProfile,omitempty" xml:"DatabaseProfile,omitempty"`
+	// Message
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// RequestId
+	//
+	// example:
+	//
+	// AEA7DCC8-DBF5-561B-A7FD-0747D7D51FEB
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Success
+	//
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetDatabaseProfileResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDatabaseProfileResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetDatabaseProfileResponseBody) SetCode(v string) *GetDatabaseProfileResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetDatabaseProfileResponseBody) SetDatabaseProfile(v *DatabaseProfile) *GetDatabaseProfileResponseBody {
+	s.DatabaseProfile = v
+	return s
+}
+
+func (s *GetDatabaseProfileResponseBody) SetMessage(v string) *GetDatabaseProfileResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetDatabaseProfileResponseBody) SetRequestId(v string) *GetDatabaseProfileResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetDatabaseProfileResponseBody) SetSuccess(v bool) *GetDatabaseProfileResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetDatabaseProfileResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetDatabaseProfileResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetDatabaseProfileResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDatabaseProfileResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetDatabaseProfileResponse) SetHeaders(v map[string]*string) *GetDatabaseProfileResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetDatabaseProfileResponse) SetStatusCode(v int32) *GetDatabaseProfileResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetDatabaseProfileResponse) SetBody(v *GetDatabaseProfileResponseBody) *GetDatabaseProfileResponse {
+	s.Body = v
+	return s
+}
+
+type GetFunctionRequest struct {
+	// example:
+	//
+	// 1344371
+	CatalogId *string `json:"CatalogId,omitempty" xml:"CatalogId,omitempty"`
+	// example:
+	//
+	// database_test
+	DatabaseName *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
+	// example:
+	//
+	// func2
 	FunctionName *string `json:"FunctionName,omitempty" xml:"FunctionName,omitempty"`
 }
 
@@ -7592,11 +9038,23 @@ func (s *GetFunctionRequest) SetFunctionName(v string) *GetFunctionRequest {
 }
 
 type GetFunctionResponseBody struct {
-	Code      *string   `json:"Code,omitempty" xml:"Code,omitempty"`
-	Function  *Function `json:"Function,omitempty" xml:"Function,omitempty"`
-	Message   *string   `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool     `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// OK
+	Code     *string   `json:"Code,omitempty" xml:"Code,omitempty"`
+	Function *Function `json:"Function,omitempty" xml:"Function,omitempty"`
+	// example:
+	//
+	// .
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// B7F4B621-E41E-4C84-B97F-42B5380A32BB
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetFunctionResponseBody) String() string {
@@ -7633,9 +9091,9 @@ func (s *GetFunctionResponseBody) SetSuccess(v bool) *GetFunctionResponseBody {
 }
 
 type GetFunctionResponse struct {
-	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetFunctionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetFunctionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetFunctionResponse) String() string {
@@ -7662,7 +9120,13 @@ func (s *GetFunctionResponse) SetBody(v *GetFunctionResponseBody) *GetFunctionRe
 }
 
 type GetLifecycleRuleRequest struct {
-	BizId        *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	// example:
+	//
+	// LCRU-17E7192705C365C0
+	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	// example:
+	//
+	// demo_catalog_id.demo_db_name.demo_table_name
 	ResourceName *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
 }
 
@@ -7687,8 +9151,16 @@ func (s *GetLifecycleRuleRequest) SetResourceName(v string) *GetLifecycleRuleReq
 type GetLifecycleRuleResponseBody struct {
 	Data *LifecycleRule `json:"Data,omitempty" xml:"Data,omitempty"`
 	// RequestId
+	//
+	// example:
+	//
+	// EDBC848F-7CC7-52E3-9FBF-924D09B5C27A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Success
+	//
+	// example:
+	//
+	// True
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -7716,9 +9188,9 @@ func (s *GetLifecycleRuleResponseBody) SetSuccess(v bool) *GetLifecycleRuleRespo
 }
 
 type GetLifecycleRuleResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetLifecycleRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetLifecycleRuleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetLifecycleRuleResponse) String() string {
@@ -7746,6 +9218,10 @@ func (s *GetLifecycleRuleResponse) SetBody(v *GetLifecycleRuleResponseBody) *Get
 
 type GetLockRequest struct {
 	// LockId
+	//
+	// example:
+	//
+	// 16533
 	LockId *int64 `json:"LockId,omitempty" xml:"LockId,omitempty"`
 }
 
@@ -7764,13 +9240,32 @@ func (s *GetLockRequest) SetLockId(v int64) *GetLockRequest {
 
 type GetLockResponseBody struct {
 	// Code
-	Code       *string     `json:"Code,omitempty" xml:"Code,omitempty"`
+	//
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// {"lockId":123,"lockStatus":"Acquired"}
 	LockStatus *LockStatus `json:"LockStatus,omitempty" xml:"LockStatus,omitempty"`
 	// Message
+	//
+	// example:
+	//
+	// .
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// RequestId
+	//
+	// example:
+	//
+	// 558D764F-8C55-49CA-BF38-80EA532FC08F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Success
+	//
+	// example:
+	//
+	// True
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -7808,9 +9303,9 @@ func (s *GetLockResponseBody) SetSuccess(v bool) *GetLockResponseBody {
 }
 
 type GetLockResponse struct {
-	Headers    map[string]*string   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetLockResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetLockResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetLockResponse) String() string {
@@ -7837,10 +9332,19 @@ func (s *GetLockResponse) SetBody(v *GetLockResponseBody) *GetLockResponse {
 }
 
 type GetPartitionRequest struct {
-	CatalogId       *string   `json:"CatalogId,omitempty" xml:"CatalogId,omitempty"`
+	// example:
+	//
+	// 1344371
+	CatalogId *string `json:"CatalogId,omitempty" xml:"CatalogId,omitempty"`
+	// example:
+	//
+	// database_test
 	DatabaseName    *string   `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
 	PartitionValues []*string `json:"PartitionValues,omitempty" xml:"PartitionValues,omitempty" type:"Repeated"`
-	TableName       *string   `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	// example:
+	//
+	// test_table_20200715162543389
+	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
 }
 
 func (s GetPartitionRequest) String() string {
@@ -7872,11 +9376,23 @@ func (s *GetPartitionRequest) SetTableName(v string) *GetPartitionRequest {
 }
 
 type GetPartitionResponseBody struct {
-	Code      *string    `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// .
 	Message   *string    `json:"Message,omitempty" xml:"Message,omitempty"`
 	Partition *Partition `json:"Partition,omitempty" xml:"Partition,omitempty"`
-	RequestId *string    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool      `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// B7F4B621-E41E-4C84-B97F-42B5380A32BB
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetPartitionResponseBody) String() string {
@@ -7913,9 +9429,9 @@ func (s *GetPartitionResponseBody) SetSuccess(v bool) *GetPartitionResponseBody 
 }
 
 type GetPartitionResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetPartitionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetPartitionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetPartitionResponse) String() string {
@@ -7942,11 +9458,20 @@ func (s *GetPartitionResponse) SetBody(v *GetPartitionResponseBody) *GetPartitio
 }
 
 type GetPartitionColumnStatisticsRequest struct {
-	CatalogId      *string   `json:"CatalogId,omitempty" xml:"CatalogId,omitempty"`
-	ColumnNames    []*string `json:"ColumnNames,omitempty" xml:"ColumnNames,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1344371
+	CatalogId   *string   `json:"CatalogId,omitempty" xml:"CatalogId,omitempty"`
+	ColumnNames []*string `json:"ColumnNames,omitempty" xml:"ColumnNames,omitempty" type:"Repeated"`
+	// example:
+	//
+	// database_test
 	DatabaseName   *string   `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
 	PartitionNames []*string `json:"PartitionNames,omitempty" xml:"PartitionNames,omitempty" type:"Repeated"`
-	TableName      *string   `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	// example:
+	//
+	// test_table_20201223
+	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
 }
 
 func (s GetPartitionColumnStatisticsRequest) String() string {
@@ -7983,11 +9508,20 @@ func (s *GetPartitionColumnStatisticsRequest) SetTableName(v string) *GetPartiti
 }
 
 type GetPartitionColumnStatisticsShrinkRequest struct {
-	CatalogId            *string `json:"CatalogId,omitempty" xml:"CatalogId,omitempty"`
-	ColumnNamesShrink    *string `json:"ColumnNames,omitempty" xml:"ColumnNames,omitempty"`
+	// example:
+	//
+	// 1344371
+	CatalogId         *string `json:"CatalogId,omitempty" xml:"CatalogId,omitempty"`
+	ColumnNamesShrink *string `json:"ColumnNames,omitempty" xml:"ColumnNames,omitempty"`
+	// example:
+	//
+	// database_test
 	DatabaseName         *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
 	PartitionNamesShrink *string `json:"PartitionNames,omitempty" xml:"PartitionNames,omitempty"`
-	TableName            *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	// example:
+	//
+	// test_table_20201223
+	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
 }
 
 func (s GetPartitionColumnStatisticsShrinkRequest) String() string {
@@ -8024,11 +9558,23 @@ func (s *GetPartitionColumnStatisticsShrinkRequest) SetTableName(v string) *GetP
 }
 
 type GetPartitionColumnStatisticsResponseBody struct {
-	Code                   *string                           `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// .
 	Message                *string                           `json:"Message,omitempty" xml:"Message,omitempty"`
 	PartitionStatisticsMap map[string][]*ColumnStatisticsObj `json:"PartitionStatisticsMap,omitempty" xml:"PartitionStatisticsMap,omitempty"`
-	RequestId              *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success                *bool                             `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// B7F4B621-E41E-4C84-B97F-42B5380A32BB
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetPartitionColumnStatisticsResponseBody) String() string {
@@ -8065,9 +9611,9 @@ func (s *GetPartitionColumnStatisticsResponseBody) SetSuccess(v bool) *GetPartit
 }
 
 type GetPartitionColumnStatisticsResponse struct {
-	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetPartitionColumnStatisticsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetPartitionColumnStatisticsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetPartitionColumnStatisticsResponse) String() string {
@@ -8094,9 +9640,18 @@ func (s *GetPartitionColumnStatisticsResponse) SetBody(v *GetPartitionColumnStat
 }
 
 type GetQueryResultRequest struct {
-	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	QueryId    *string `json:"QueryId,omitempty" xml:"QueryId,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 100
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// Q-41676378709440CE
+	QueryId *string `json:"QueryId,omitempty" xml:"QueryId,omitempty"`
 }
 
 func (s GetQueryResultRequest) String() string {
@@ -8123,29 +9678,98 @@ func (s *GetQueryResultRequest) SetQueryId(v string) *GetQueryResultRequest {
 }
 
 type GetQueryResultResponseBody struct {
-	Duration            *int64  `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	EndTime             *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	ErrorMessage        *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	GmtCreate           *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	GmtModified         *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	Id                  *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	JobCompleted        *bool   `json:"JobCompleted,omitempty" xml:"JobCompleted,omitempty"`
-	Logs                *string `json:"Logs,omitempty" xml:"Logs,omitempty"`
-	Owner               *int64  `json:"Owner,omitempty" xml:"Owner,omitempty"`
-	Progress            *int32  `json:"Progress,omitempty" xml:"Progress,omitempty"`
-	RegionId            *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RequestId           *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ResultTmpDb         *string `json:"ResultTmpDb,omitempty" xml:"ResultTmpDb,omitempty"`
-	ResultTmpTable      *string `json:"ResultTmpTable,omitempty" xml:"ResultTmpTable,omitempty"`
-	RowCount            *int32  `json:"RowCount,omitempty" xml:"RowCount,omitempty"`
-	RowCountOverLimit   *bool   `json:"RowCountOverLimit,omitempty" xml:"RowCountOverLimit,omitempty"`
-	Rows                *string `json:"Rows,omitempty" xml:"Rows,omitempty"`
-	Schema              *string `json:"Schema,omitempty" xml:"Schema,omitempty"`
-	Sql                 *string `json:"Sql,omitempty" xml:"Sql,omitempty"`
-	StartTime           *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	Status              *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	Success             *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
-	TotalBytesProcessed *int64  `json:"TotalBytesProcessed,omitempty" xml:"TotalBytesProcessed,omitempty"`
+	// example:
+	//
+	// 8000
+	Duration *int64 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// example:
+	//
+	// 2022-05-09 16:19:09
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// example:
+	//
+	// Table or view not found:
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// example:
+	//
+	// 2022-05-09 16:18:09
+	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// example:
+	//
+	// 2022-05-09 16:19:09
+	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// example:
+	//
+	// Q-41676378709440CE
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// true
+	JobCompleted *bool `json:"JobCompleted,omitempty" xml:"JobCompleted,omitempty"`
+	// example:
+	//
+	// ["this is log"]
+	Logs *string `json:"Logs,omitempty" xml:"Logs,omitempty"`
+	// example:
+	//
+	// 229167306180609***
+	Owner *int64 `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// example:
+	//
+	// 99
+	Progress *int32 `json:"Progress,omitempty" xml:"Progress,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// 1D2BCFBA-7639-59A9-817B-944EC1339279
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// db
+	ResultTmpDb *string `json:"ResultTmpDb,omitempty" xml:"ResultTmpDb,omitempty"`
+	// example:
+	//
+	// table
+	ResultTmpTable *string `json:"ResultTmpTable,omitempty" xml:"ResultTmpTable,omitempty"`
+	// example:
+	//
+	// 100
+	RowCount *int32 `json:"RowCount,omitempty" xml:"RowCount,omitempty"`
+	// example:
+	//
+	// false
+	RowCountOverLimit *bool `json:"RowCountOverLimit,omitempty" xml:"RowCountOverLimit,omitempty"`
+	// example:
+	//
+	// [[10,"Tom"],[11,"Jerry"]]
+	Rows *string `json:"Rows,omitempty" xml:"Rows,omitempty"`
+	// example:
+	//
+	// [{"name":"id","type":"INT"},{"name":"student_name","type":"VARCHAR"}]
+	Schema *string `json:"Schema,omitempty" xml:"Schema,omitempty"`
+	// example:
+	//
+	// select 	- from db.student
+	Sql *string `json:"Sql,omitempty" xml:"Sql,omitempty"`
+	// example:
+	//
+	// 2022-05-09 16:18:09
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// example:
+	//
+	// AVAILABLE
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 1024
+	TotalBytesProcessed *int64 `json:"TotalBytesProcessed,omitempty" xml:"TotalBytesProcessed,omitempty"`
 }
 
 func (s GetQueryResultResponseBody) String() string {
@@ -8272,9 +9896,9 @@ func (s *GetQueryResultResponseBody) SetTotalBytesProcessed(v int64) *GetQueryRe
 }
 
 type GetQueryResultResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetQueryResultResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetQueryResultResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetQueryResultResponse) String() string {
@@ -8301,6 +9925,11 @@ func (s *GetQueryResultResponse) SetBody(v *GetQueryResultResponseBody) *GetQuer
 }
 
 type GetRegionStatusRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -8318,9 +9947,18 @@ func (s *GetRegionStatusRequest) SetRegionId(v string) *GetRegionStatusRequest {
 }
 
 type GetRegionStatusResponseBody struct {
-	Data      *GetRegionStatusResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	RequestId *string                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *string                          `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// {\\"RegionId\\": \\"cn-shanghai\\", \\"RegionStatus\\": \\"SERVICE_INVALID\\", \\"AccountStatus\\": \\"\\", \\"IsDlfServiceOpen\\": False}
+	Data *GetRegionStatusResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// CC58A776-0662-5C6D-B467-FFD4CF7F4C40
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetRegionStatusResponseBody) String() string {
@@ -8347,11 +9985,26 @@ func (s *GetRegionStatusResponseBody) SetSuccess(v string) *GetRegionStatusRespo
 }
 
 type GetRegionStatusResponseBodyData struct {
-	AccountStatus     *string `json:"AccountStatus,omitempty" xml:"AccountStatus,omitempty"`
-	IsDependencyReady *bool   `json:"IsDependencyReady,omitempty" xml:"IsDependencyReady,omitempty"`
-	IsDlfServiceOpen  *bool   `json:"IsDlfServiceOpen,omitempty" xml:"IsDlfServiceOpen,omitempty"`
-	RegionId          *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RegionStatus      *string `json:"RegionStatus,omitempty" xml:"RegionStatus,omitempty"`
+	// example:
+	//
+	// enabled
+	AccountStatus *string `json:"AccountStatus,omitempty" xml:"AccountStatus,omitempty"`
+	// example:
+	//
+	// true
+	IsDependencyReady *bool `json:"IsDependencyReady,omitempty" xml:"IsDependencyReady,omitempty"`
+	// example:
+	//
+	// True
+	IsDlfServiceOpen *bool `json:"IsDlfServiceOpen,omitempty" xml:"IsDlfServiceOpen,omitempty"`
+	// example:
+	//
+	// cn_hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// READY
+	RegionStatus *string `json:"RegionStatus,omitempty" xml:"RegionStatus,omitempty"`
 }
 
 func (s GetRegionStatusResponseBodyData) String() string {
@@ -8388,9 +10041,9 @@ func (s *GetRegionStatusResponseBodyData) SetRegionStatus(v string) *GetRegionSt
 }
 
 type GetRegionStatusResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetRegionStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetRegionStatusResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetRegionStatusResponse) String() string {
@@ -8418,6 +10071,10 @@ func (s *GetRegionStatusResponse) SetBody(v *GetRegionStatusResponseBody) *GetRe
 
 type GetRoleRequest struct {
 	// roleName
+	//
+	// example:
+	//
+	// role_name
 	RoleName *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
 }
 
@@ -8436,14 +10093,30 @@ func (s *GetRoleRequest) SetRoleName(v string) *GetRoleRequest {
 
 type GetRoleResponseBody struct {
 	// code
+	//
+	// example:
+	//
+	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// message
+	//
+	// example:
+	//
+	// .
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// requestId
+	//
+	// example:
+	//
+	// 4316D7DA-9816-596D-A3D7-12676FA59BDA
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// role
 	Role *Role `json:"Role,omitempty" xml:"Role,omitempty"`
 	// success
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -8481,9 +10154,9 @@ func (s *GetRoleResponseBody) SetSuccess(v bool) *GetRoleResponseBody {
 }
 
 type GetRoleResponse struct {
-	Headers    map[string]*string   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetRoleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetRoleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetRoleResponse) String() string {
@@ -8510,6 +10183,11 @@ func (s *GetRoleResponse) SetBody(v *GetRoleResponseBody) *GetRoleResponse {
 }
 
 type GetServiceStatusRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -8527,9 +10205,18 @@ func (s *GetServiceStatusRequest) SetRegionId(v string) *GetServiceStatusRequest
 }
 
 type GetServiceStatusResponseBody struct {
-	Data      *GetServiceStatusResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	RequestId *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                             `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// { 			"AccountStatus":"", 			"RegionStatus":"READY", 			"RegionId":"cn-shanghai", 			"IsDependencyReady":true, 			"IsDlfServiceOpen":true 		}
+	Data *GetServiceStatusResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// B7F4B621-E41E-4C84-B97F-42B5380A32BB
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetServiceStatusResponseBody) String() string {
@@ -8556,9 +10243,18 @@ func (s *GetServiceStatusResponseBody) SetSuccess(v bool) *GetServiceStatusRespo
 }
 
 type GetServiceStatusResponseBodyData struct {
+	// example:
+	//
+	// true
 	HasRamPermissions *bool `json:"HasRamPermissions,omitempty" xml:"HasRamPermissions,omitempty"`
-	IsDlfServiceOpen  *bool `json:"IsDlfServiceOpen,omitempty" xml:"IsDlfServiceOpen,omitempty"`
-	IsOssOpen         *bool `json:"IsOssOpen,omitempty" xml:"IsOssOpen,omitempty"`
+	// example:
+	//
+	// true
+	IsDlfServiceOpen *bool `json:"IsDlfServiceOpen,omitempty" xml:"IsDlfServiceOpen,omitempty"`
+	// example:
+	//
+	// true
+	IsOssOpen *bool `json:"IsOssOpen,omitempty" xml:"IsOssOpen,omitempty"`
 }
 
 func (s GetServiceStatusResponseBodyData) String() string {
@@ -8585,9 +10281,9 @@ func (s *GetServiceStatusResponseBodyData) SetIsOssOpen(v bool) *GetServiceStatu
 }
 
 type GetServiceStatusResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetServiceStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetServiceStatusResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetServiceStatusResponse) String() string {
@@ -8614,9 +10310,18 @@ func (s *GetServiceStatusResponse) SetBody(v *GetServiceStatusResponseBody) *Get
 }
 
 type GetTableRequest struct {
-	CatalogId    *string `json:"CatalogId,omitempty" xml:"CatalogId,omitempty"`
+	// example:
+	//
+	// 1344371
+	CatalogId *string `json:"CatalogId,omitempty" xml:"CatalogId,omitempty"`
+	// example:
+	//
+	// database_test
 	DatabaseName *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
-	TableName    *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	// example:
+	//
+	// test_table_20200715162543389
+	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
 }
 
 func (s GetTableRequest) String() string {
@@ -8643,11 +10348,23 @@ func (s *GetTableRequest) SetTableName(v string) *GetTableRequest {
 }
 
 type GetTableResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// .
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// B7F4B621-E41E-4C84-B97F-42B5380A32BB
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
-	Table     *Table  `json:"Table,omitempty" xml:"Table,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool  `json:"Success,omitempty" xml:"Success,omitempty"`
+	Table   *Table `json:"Table,omitempty" xml:"Table,omitempty"`
 }
 
 func (s GetTableResponseBody) String() string {
@@ -8684,9 +10401,9 @@ func (s *GetTableResponseBody) SetTable(v *Table) *GetTableResponseBody {
 }
 
 type GetTableResponse struct {
-	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetTableResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetTableResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetTableResponse) String() string {
@@ -8713,10 +10430,19 @@ func (s *GetTableResponse) SetBody(v *GetTableResponseBody) *GetTableResponse {
 }
 
 type GetTableColumnStatisticsRequest struct {
-	CatalogId    *string   `json:"CatalogId,omitempty" xml:"CatalogId,omitempty"`
-	ColumnNames  []*string `json:"ColumnNames,omitempty" xml:"ColumnNames,omitempty" type:"Repeated"`
-	DatabaseName *string   `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
-	TableName    *string   `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	// example:
+	//
+	// 1344371
+	CatalogId   *string   `json:"CatalogId,omitempty" xml:"CatalogId,omitempty"`
+	ColumnNames []*string `json:"ColumnNames,omitempty" xml:"ColumnNames,omitempty" type:"Repeated"`
+	// example:
+	//
+	// database_test
+	DatabaseName *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
+	// example:
+	//
+	// test_table_20201223
+	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
 }
 
 func (s GetTableColumnStatisticsRequest) String() string {
@@ -8748,10 +10474,19 @@ func (s *GetTableColumnStatisticsRequest) SetTableName(v string) *GetTableColumn
 }
 
 type GetTableColumnStatisticsShrinkRequest struct {
+	// example:
+	//
+	// 1344371
 	CatalogId         *string `json:"CatalogId,omitempty" xml:"CatalogId,omitempty"`
 	ColumnNamesShrink *string `json:"ColumnNames,omitempty" xml:"ColumnNames,omitempty"`
-	DatabaseName      *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
-	TableName         *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	// example:
+	//
+	// database_test
+	DatabaseName *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
+	// example:
+	//
+	// test_table_20201223
+	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
 }
 
 func (s GetTableColumnStatisticsShrinkRequest) String() string {
@@ -8783,11 +10518,23 @@ func (s *GetTableColumnStatisticsShrinkRequest) SetTableName(v string) *GetTable
 }
 
 type GetTableColumnStatisticsResponseBody struct {
+	// example:
+	//
+	// OK
 	Code                    *string                `json:"Code,omitempty" xml:"Code,omitempty"`
 	ColumnStatisticsObjList []*ColumnStatisticsObj `json:"ColumnStatisticsObjList,omitempty" xml:"ColumnStatisticsObjList,omitempty" type:"Repeated"`
-	Message                 *string                `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId               *string                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success                 *bool                  `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// .
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// B7F4B621-E41E-4C84-B97F-42B5380A32BB
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetTableColumnStatisticsResponseBody) String() string {
@@ -8824,9 +10571,9 @@ func (s *GetTableColumnStatisticsResponseBody) SetSuccess(v bool) *GetTableColum
 }
 
 type GetTableColumnStatisticsResponse struct {
-	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetTableColumnStatisticsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetTableColumnStatisticsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetTableColumnStatisticsResponse) String() string {
@@ -8854,10 +10601,26 @@ func (s *GetTableColumnStatisticsResponse) SetBody(v *GetTableColumnStatisticsRe
 
 type GetTableProfileRequest struct {
 	// CatalogId
+	//
+	// example:
+	//
+	// 可不填
 	CatalogId *string `json:"CatalogId,omitempty" xml:"CatalogId,omitempty"`
 	// DatabaseName
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// exp_table
 	DatabaseName *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
 	// TableName
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// admin_user
 	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
 }
 
@@ -8886,10 +10649,24 @@ func (s *GetTableProfileRequest) SetTableName(v string) *GetTableProfileRequest 
 
 type GetTableProfileResponseBody struct {
 	// Code
+	//
+	// example:
+	//
+	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// Message
-	Message      *string       `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId    *string       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	//
+	// example:
+	//
+	// None
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// C742A04F-F304-5440-9ED8-AD58C36D1915
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
 	Success      *bool         `json:"Success,omitempty" xml:"Success,omitempty"`
 	TableProfile *TableProfile `json:"TableProfile,omitempty" xml:"TableProfile,omitempty"`
 }
@@ -8928,9 +10705,9 @@ func (s *GetTableProfileResponseBody) SetTableProfile(v *TableProfile) *GetTable
 }
 
 type GetTableProfileResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetTableProfileResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetTableProfileResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetTableProfileResponse) String() string {
@@ -8957,10 +10734,22 @@ func (s *GetTableProfileResponse) SetBody(v *GetTableProfileResponseBody) *GetTa
 }
 
 type GetTableVersionRequest struct {
-	CatalogId    *string `json:"CatalogId,omitempty" xml:"CatalogId,omitempty"`
+	// example:
+	//
+	// 1344371
+	CatalogId *string `json:"CatalogId,omitempty" xml:"CatalogId,omitempty"`
+	// example:
+	//
+	// database_test
 	DatabaseName *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
-	TableName    *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
-	VersionId    *int32  `json:"VersionId,omitempty" xml:"VersionId,omitempty"`
+	// example:
+	//
+	// test_table_20200715162543389
+	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	// example:
+	//
+	// 1
+	VersionId *int32 `json:"VersionId,omitempty" xml:"VersionId,omitempty"`
 }
 
 func (s GetTableVersionRequest) String() string {
@@ -8992,9 +10781,21 @@ func (s *GetTableVersionRequest) SetVersionId(v int32) *GetTableVersionRequest {
 }
 
 type GetTableVersionResponseBody struct {
-	Code         *string       `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message      *string       `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId    *string       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// .
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// B7F4B621-E41E-4C84-B97F-42B5380A32BB
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
 	Success      *bool         `json:"Success,omitempty" xml:"Success,omitempty"`
 	TableVersion *TableVersion `json:"TableVersion,omitempty" xml:"TableVersion,omitempty"`
 }
@@ -9033,9 +10834,9 @@ func (s *GetTableVersionResponseBody) SetTableVersion(v *TableVersion) *GetTable
 }
 
 type GetTableVersionResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetTableVersionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetTableVersionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetTableVersionResponse) String() string {
@@ -9062,13 +10863,22 @@ func (s *GetTableVersionResponse) SetBody(v *GetTableVersionResponseBody) *GetTa
 }
 
 type GrantPermissionsRequest struct {
+	// This parameter is required.
 	Accesses []*string `json:"Accesses,omitempty" xml:"Accesses,omitempty" type:"Repeated"`
 	// CatalogId
-	CatalogId        *string       `json:"CatalogId,omitempty" xml:"CatalogId,omitempty"`
-	DelegateAccesses []*string     `json:"DelegateAccesses,omitempty" xml:"DelegateAccesses,omitempty" type:"Repeated"`
-	MetaResource     *MetaResource `json:"MetaResource,omitempty" xml:"MetaResource,omitempty"`
-	Principal        *Principal    `json:"Principal,omitempty" xml:"Principal,omitempty"`
-	Type             *string       `json:"Type,omitempty" xml:"Type,omitempty"`
+	CatalogId *string `json:"CatalogId,omitempty" xml:"CatalogId,omitempty"`
+	// This parameter is required.
+	DelegateAccesses []*string `json:"DelegateAccesses,omitempty" xml:"DelegateAccesses,omitempty" type:"Repeated"`
+	// This parameter is required.
+	MetaResource *MetaResource `json:"MetaResource,omitempty" xml:"MetaResource,omitempty"`
+	// This parameter is required.
+	Principal *Principal `json:"Principal,omitempty" xml:"Principal,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Hive
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s GrantPermissionsRequest) String() string {
@@ -9111,12 +10921,28 @@ func (s *GrantPermissionsRequest) SetType(v string) *GrantPermissionsRequest {
 
 type GrantPermissionsResponseBody struct {
 	// Response Code
+	//
+	// example:
+	//
+	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// Message Code
+	//
+	// example:
+	//
+	// .
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// RequestId
+	//
+	// example:
+	//
+	// 4912024D-2A06-5E9F-9667-35D9319917D7
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Success
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -9149,9 +10975,9 @@ func (s *GrantPermissionsResponseBody) SetSuccess(v bool) *GrantPermissionsRespo
 }
 
 type GrantPermissionsResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GrantPermissionsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GrantPermissionsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GrantPermissionsResponse) String() string {
@@ -9179,6 +11005,10 @@ func (s *GrantPermissionsResponse) SetBody(v *GrantPermissionsResponseBody) *Gra
 
 type GrantRoleToUsersRequest struct {
 	// RoleName
+	//
+	// example:
+	//
+	// test_role_8
 	RoleName *string      `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
 	Users    []*Principal `json:"Users,omitempty" xml:"Users,omitempty" type:"Repeated"`
 }
@@ -9203,12 +11033,28 @@ func (s *GrantRoleToUsersRequest) SetUsers(v []*Principal) *GrantRoleToUsersRequ
 
 type GrantRoleToUsersResponseBody struct {
 	// Code
+	//
+	// example:
+	//
+	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// Message
+	//
+	// example:
+	//
+	// .
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// RequestId
+	//
+	// example:
+	//
+	// 4316D7DA-9816-596D-A3D7-12676FA59BDA
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Success
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -9241,9 +11087,9 @@ func (s *GrantRoleToUsersResponseBody) SetSuccess(v bool) *GrantRoleToUsersRespo
 }
 
 type GrantRoleToUsersResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GrantRoleToUsersResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GrantRoleToUsersResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GrantRoleToUsersResponse) String() string {
@@ -9270,8 +11116,10 @@ func (s *GrantRoleToUsersResponse) SetBody(v *GrantRoleToUsersResponseBody) *Gra
 }
 
 type GrantRolesToUserRequest struct {
-	RoleNames []*string  `json:"RoleNames,omitempty" xml:"RoleNames,omitempty" type:"Repeated"`
-	User      *Principal `json:"User,omitempty" xml:"User,omitempty"`
+	// This parameter is required.
+	RoleNames []*string `json:"RoleNames,omitempty" xml:"RoleNames,omitempty" type:"Repeated"`
+	// This parameter is required.
+	User *Principal `json:"User,omitempty" xml:"User,omitempty"`
 }
 
 func (s GrantRolesToUserRequest) String() string {
@@ -9294,12 +11142,28 @@ func (s *GrantRolesToUserRequest) SetUser(v *Principal) *GrantRolesToUserRequest
 
 type GrantRolesToUserResponseBody struct {
 	// Code
+	//
+	// example:
+	//
+	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// Message
+	//
+	// example:
+	//
+	// .
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// RequestId
+	//
+	// example:
+	//
+	// 81B90E1B-7514-5817-9D59-0EA9E2215876
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Success
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -9332,9 +11196,9 @@ func (s *GrantRolesToUserResponseBody) SetSuccess(v bool) *GrantRolesToUserRespo
 }
 
 type GrantRolesToUserResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GrantRolesToUserResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GrantRolesToUserResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GrantRolesToUserResponse) String() string {
@@ -9361,9 +11225,18 @@ func (s *GrantRolesToUserResponse) SetBody(v *GrantRolesToUserResponseBody) *Gra
 }
 
 type ListCatalogsRequest struct {
-	IdPattern     *string `json:"IdPattern,omitempty" xml:"IdPattern,omitempty"`
+	// example:
+	//
+	// .*
+	IdPattern *string `json:"IdPattern,omitempty" xml:"IdPattern,omitempty"`
+	// example:
+	//
+	// ‘’
 	NextPageToken *string `json:"NextPageToken,omitempty" xml:"NextPageToken,omitempty"`
-	PageSize      *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
 func (s ListCatalogsRequest) String() string {
@@ -9390,12 +11263,30 @@ func (s *ListCatalogsRequest) SetPageSize(v int32) *ListCatalogsRequest {
 }
 
 type ListCatalogsResponseBody struct {
-	Catalogs      []*Catalog `json:"Catalogs,omitempty" xml:"Catalogs,omitempty" type:"Repeated"`
-	Code          *string    `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message       *string    `json:"Message,omitempty" xml:"Message,omitempty"`
-	NextPageToken *string    `json:"NextPageToken,omitempty" xml:"NextPageToken,omitempty"`
-	RequestId     *string    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success       *bool      `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// [{"CatalogId":"xx"}]
+	Catalogs []*Catalog `json:"Catalogs,omitempty" xml:"Catalogs,omitempty" type:"Repeated"`
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// .
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 2cb472ec1bf84f8d92f9c4baa0d21c19aa
+	NextPageToken *string `json:"NextPageToken,omitempty" xml:"NextPageToken,omitempty"`
+	// example:
+	//
+	// B7F4B621-E41E-4C84-B97F-42B5380A32BB
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ListCatalogsResponseBody) String() string {
@@ -9437,9 +11328,9 @@ func (s *ListCatalogsResponseBody) SetSuccess(v bool) *ListCatalogsResponseBody 
 }
 
 type ListCatalogsResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListCatalogsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListCatalogsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListCatalogsResponse) String() string {
@@ -9466,10 +11357,22 @@ func (s *ListCatalogsResponse) SetBody(v *ListCatalogsResponseBody) *ListCatalog
 }
 
 type ListDatabasesRequest struct {
-	CatalogId     *string `json:"CatalogId,omitempty" xml:"CatalogId,omitempty"`
-	NamePattern   *string `json:"NamePattern,omitempty" xml:"NamePattern,omitempty"`
+	// example:
+	//
+	// 1344371
+	CatalogId *string `json:"CatalogId,omitempty" xml:"CatalogId,omitempty"`
+	// example:
+	//
+	// .*
+	NamePattern *string `json:"NamePattern,omitempty" xml:"NamePattern,omitempty"`
+	// example:
+	//
+	// 2cb472ec1bf84f8d92f9c4baa0d21c19aa!
 	NextPageToken *string `json:"NextPageToken,omitempty" xml:"NextPageToken,omitempty"`
-	PageSize      *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
 func (s ListDatabasesRequest) String() string {
@@ -9501,12 +11404,30 @@ func (s *ListDatabasesRequest) SetPageSize(v int32) *ListDatabasesRequest {
 }
 
 type ListDatabasesResponseBody struct {
-	Code          *string     `json:"Code,omitempty" xml:"Code,omitempty"`
-	Databases     []*Database `json:"Databases,omitempty" xml:"Databases,omitempty" type:"Repeated"`
-	Message       *string     `json:"Message,omitempty" xml:"Message,omitempty"`
-	NextPageToken *string     `json:"NextPageToken,omitempty" xml:"NextPageToken,omitempty"`
-	RequestId     *string     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success       *bool       `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// [{"name":"test"}]
+	Databases []*Database `json:"Databases,omitempty" xml:"Databases,omitempty" type:"Repeated"`
+	// example:
+	//
+	// .
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 2cb472ec1bf84f8d92f9c4baa0d21c19aa
+	NextPageToken *string `json:"NextPageToken,omitempty" xml:"NextPageToken,omitempty"`
+	// example:
+	//
+	// 558D764F-8C55-49CA-BF38-80EA532FC08F
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ListDatabasesResponseBody) String() string {
@@ -9548,9 +11469,9 @@ func (s *ListDatabasesResponseBody) SetSuccess(v bool) *ListDatabasesResponseBod
 }
 
 type ListDatabasesResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListDatabasesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListDatabasesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListDatabasesResponse) String() string {
@@ -9577,11 +11498,26 @@ func (s *ListDatabasesResponse) SetBody(v *ListDatabasesResponseBody) *ListDatab
 }
 
 type ListFunctionNamesRequest struct {
-	CatalogId           *string `json:"CatalogId,omitempty" xml:"CatalogId,omitempty"`
-	DatabaseName        *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
+	// example:
+	//
+	// 1344371
+	CatalogId *string `json:"CatalogId,omitempty" xml:"CatalogId,omitempty"`
+	// example:
+	//
+	// database_test
+	DatabaseName *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
+	// example:
+	//
+	// .*
 	FunctionNamePattern *string `json:"FunctionNamePattern,omitempty" xml:"FunctionNamePattern,omitempty"`
-	NextPageToken       *string `json:"NextPageToken,omitempty" xml:"NextPageToken,omitempty"`
-	PageSize            *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// \\"\\"
+	NextPageToken *string `json:"NextPageToken,omitempty" xml:"NextPageToken,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
 func (s ListFunctionNamesRequest) String() string {
@@ -9618,12 +11554,27 @@ func (s *ListFunctionNamesRequest) SetPageSize(v int32) *ListFunctionNamesReques
 }
 
 type ListFunctionNamesResponseBody struct {
+	// example:
+	//
+	// OK
 	Code          *string   `json:"Code,omitempty" xml:"Code,omitempty"`
 	FunctionNames []*string `json:"FunctionNames,omitempty" xml:"FunctionNames,omitempty" type:"Repeated"`
-	Message       *string   `json:"Message,omitempty" xml:"Message,omitempty"`
-	NextPageToken *string   `json:"NextPageToken,omitempty" xml:"NextPageToken,omitempty"`
-	RequestId     *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success       *bool     `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// .
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 2cb472ec1bf84f8d92f9c4baa0d21c19aa
+	NextPageToken *string `json:"NextPageToken,omitempty" xml:"NextPageToken,omitempty"`
+	// example:
+	//
+	// B7F4B621-E41E-4C84-B97F-42B5380A32BB
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ListFunctionNamesResponseBody) String() string {
@@ -9665,9 +11616,9 @@ func (s *ListFunctionNamesResponseBody) SetSuccess(v bool) *ListFunctionNamesRes
 }
 
 type ListFunctionNamesResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListFunctionNamesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListFunctionNamesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListFunctionNamesResponse) String() string {
@@ -9694,11 +11645,26 @@ func (s *ListFunctionNamesResponse) SetBody(v *ListFunctionNamesResponseBody) *L
 }
 
 type ListFunctionsRequest struct {
-	CatalogId           *string `json:"CatalogId,omitempty" xml:"CatalogId,omitempty"`
-	DatabaseName        *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
+	// example:
+	//
+	// 1344371
+	CatalogId *string `json:"CatalogId,omitempty" xml:"CatalogId,omitempty"`
+	// example:
+	//
+	// database_test
+	DatabaseName *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
+	// example:
+	//
+	// .*
 	FunctionNamePattern *string `json:"FunctionNamePattern,omitempty" xml:"FunctionNamePattern,omitempty"`
-	NextPageToken       *string `json:"NextPageToken,omitempty" xml:"NextPageToken,omitempty"`
-	PageSize            *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 2cb472ec1bf84f8d92f9c4baa0d21c19aa
+	NextPageToken *string `json:"NextPageToken,omitempty" xml:"NextPageToken,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
 func (s ListFunctionsRequest) String() string {
@@ -9735,12 +11701,27 @@ func (s *ListFunctionsRequest) SetPageSize(v int32) *ListFunctionsRequest {
 }
 
 type ListFunctionsResponseBody struct {
-	Code          *string     `json:"Code,omitempty" xml:"Code,omitempty"`
-	Functions     []*Function `json:"Functions,omitempty" xml:"Functions,omitempty" type:"Repeated"`
-	Message       *string     `json:"Message,omitempty" xml:"Message,omitempty"`
-	NextPageToken *string     `json:"NextPageToken,omitempty" xml:"NextPageToken,omitempty"`
-	RequestId     *string     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success       *bool       `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// OK
+	Code      *string     `json:"Code,omitempty" xml:"Code,omitempty"`
+	Functions []*Function `json:"Functions,omitempty" xml:"Functions,omitempty" type:"Repeated"`
+	// example:
+	//
+	// .
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 2cb472ec1bf84f8d92f9c4baa0d21c19aa
+	NextPageToken *string `json:"NextPageToken,omitempty" xml:"NextPageToken,omitempty"`
+	// example:
+	//
+	// B7F4B621-E41E-4C84-B97F-42B5380A32BB
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ListFunctionsResponseBody) String() string {
@@ -9782,9 +11763,9 @@ func (s *ListFunctionsResponseBody) SetSuccess(v bool) *ListFunctionsResponseBod
 }
 
 type ListFunctionsResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListFunctionsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListFunctionsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListFunctionsResponse) String() string {
@@ -9811,12 +11792,27 @@ func (s *ListFunctionsResponse) SetBody(v *ListFunctionsResponseBody) *ListFunct
 }
 
 type ListPartitionNamesRequest struct {
-	CatalogId         *string   `json:"CatalogId,omitempty" xml:"CatalogId,omitempty"`
-	DatabaseName      *string   `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
-	NextPageToken     *string   `json:"NextPageToken,omitempty" xml:"NextPageToken,omitempty"`
+	// example:
+	//
+	// 1344371
+	CatalogId *string `json:"CatalogId,omitempty" xml:"CatalogId,omitempty"`
+	// example:
+	//
+	// database_test
+	DatabaseName *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
+	// example:
+	//
+	// 2cb472ec1bf84f8d92f9c4baa0d21c19aa
+	NextPageToken *string `json:"NextPageToken,omitempty" xml:"NextPageToken,omitempty"`
+	// example:
+	//
+	// 10
 	PageSize          *int32    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	PartialPartValues []*string `json:"PartialPartValues,omitempty" xml:"PartialPartValues,omitempty" type:"Repeated"`
-	TableName         *string   `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	// example:
+	//
+	// test_table_20200715162543389
+	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
 }
 
 func (s ListPartitionNamesRequest) String() string {
@@ -9858,12 +11854,27 @@ func (s *ListPartitionNamesRequest) SetTableName(v string) *ListPartitionNamesRe
 }
 
 type ListPartitionNamesResponseBody struct {
-	Code           *string   `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message        *string   `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// .
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 2cb472ec1bf84f8d92f9c4baa0d21c19aa
 	NextPageToken  *string   `json:"NextPageToken,omitempty" xml:"NextPageToken,omitempty"`
 	PartitionNames []*string `json:"PartitionNames,omitempty" xml:"PartitionNames,omitempty" type:"Repeated"`
-	RequestId      *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success        *bool     `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// B7F4B621-E41E-4C84-B97F-42B5380A32BB
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ListPartitionNamesResponseBody) String() string {
@@ -9905,9 +11916,9 @@ func (s *ListPartitionNamesResponseBody) SetSuccess(v bool) *ListPartitionNamesR
 }
 
 type ListPartitionNamesResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListPartitionNamesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListPartitionNamesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListPartitionNamesResponse) String() string {
@@ -9934,13 +11945,31 @@ func (s *ListPartitionNamesResponse) SetBody(v *ListPartitionNamesResponseBody) 
 }
 
 type ListPartitionsRequest struct {
-	CatalogId         *string   `json:"CatalogId,omitempty" xml:"CatalogId,omitempty"`
-	DatabaseName      *string   `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
-	IsShareSd         *bool     `json:"IsShareSd,omitempty" xml:"IsShareSd,omitempty"`
-	NextPageToken     *string   `json:"NextPageToken,omitempty" xml:"NextPageToken,omitempty"`
+	// example:
+	//
+	// 1344371
+	CatalogId *string `json:"CatalogId,omitempty" xml:"CatalogId,omitempty"`
+	// example:
+	//
+	// database_test
+	DatabaseName *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
+	// example:
+	//
+	// true
+	IsShareSd *bool `json:"IsShareSd,omitempty" xml:"IsShareSd,omitempty"`
+	// example:
+	//
+	// 2cb472ec1bf84f8d92f9c4baa0d21c19aa
+	NextPageToken *string `json:"NextPageToken,omitempty" xml:"NextPageToken,omitempty"`
+	// example:
+	//
+	// 10
 	PageSize          *int32    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	PartialPartValues []*string `json:"PartialPartValues,omitempty" xml:"PartialPartValues,omitempty" type:"Repeated"`
-	TableName         *string   `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	// example:
+	//
+	// test_table_20200715162543389
+	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
 }
 
 func (s ListPartitionsRequest) String() string {
@@ -9987,14 +12016,29 @@ func (s *ListPartitionsRequest) SetTableName(v string) *ListPartitionsRequest {
 }
 
 type ListPartitionsResponseBody struct {
-	Code          *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message       *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// .
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 2cb472ec1bf84f8d92f9c4baa0d21c19aa
 	NextPageToken *string `json:"NextPageToken,omitempty" xml:"NextPageToken,omitempty"`
 	// PartitionSpecs
 	PartitionSpecs []*PartitionSpec `json:"PartitionSpecs,omitempty" xml:"PartitionSpecs,omitempty" type:"Repeated"`
 	Partitions     []*Partition     `json:"Partitions,omitempty" xml:"Partitions,omitempty" type:"Repeated"`
-	RequestId      *string          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success        *bool            `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// B7F4B621-E41E-4C84-B97F-42B5380A32BB
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ListPartitionsResponseBody) String() string {
@@ -10041,9 +12085,9 @@ func (s *ListPartitionsResponseBody) SetSuccess(v bool) *ListPartitionsResponseB
 }
 
 type ListPartitionsResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListPartitionsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListPartitionsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListPartitionsResponse) String() string {
@@ -10070,8 +12114,8 @@ func (s *ListPartitionsResponse) SetBody(v *ListPartitionsResponseBody) *ListPar
 }
 
 type ListPartitionsByExprResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
 }
 
 func (s ListPartitionsByExprResponse) String() string {
@@ -10093,13 +12137,34 @@ func (s *ListPartitionsByExprResponse) SetStatusCode(v int32) *ListPartitionsByE
 }
 
 type ListPartitionsByFilterRequest struct {
-	CatalogId     *string `json:"CatalogId,omitempty" xml:"CatalogId,omitempty"`
-	DatabaseName  *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
-	Filter        *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
-	IsShareSd     *bool   `json:"IsShareSd,omitempty" xml:"IsShareSd,omitempty"`
+	// example:
+	//
+	// 1344371
+	CatalogId *string `json:"CatalogId,omitempty" xml:"CatalogId,omitempty"`
+	// example:
+	//
+	// database_test
+	DatabaseName *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
+	// example:
+	//
+	// ds>20201201
+	Filter *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
+	// example:
+	//
+	// true
+	IsShareSd *bool `json:"IsShareSd,omitempty" xml:"IsShareSd,omitempty"`
+	// example:
+	//
+	// \\"\\"
 	NextPageToken *string `json:"NextPageToken,omitempty" xml:"NextPageToken,omitempty"`
-	PageSize      *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	TableName     *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// test_table_20200715162543389
+	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
 }
 
 func (s ListPartitionsByFilterRequest) String() string {
@@ -10146,14 +12211,29 @@ func (s *ListPartitionsByFilterRequest) SetTableName(v string) *ListPartitionsBy
 }
 
 type ListPartitionsByFilterResponseBody struct {
-	Code          *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message       *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// .
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 2cb472ec1bf84f8d92f9c4baa0d21c19aa
 	NextPageToken *string `json:"NextPageToken,omitempty" xml:"NextPageToken,omitempty"`
 	// PartitionSpecs
 	PartitionSpecs []*PartitionSpec `json:"PartitionSpecs,omitempty" xml:"PartitionSpecs,omitempty" type:"Repeated"`
 	Partitions     []*Partition     `json:"Partitions,omitempty" xml:"Partitions,omitempty" type:"Repeated"`
-	RequestId      *string          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success        *bool            `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// B7F4B621-E41E-4C84-B97F-42B5380A32BB
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ListPartitionsByFilterResponseBody) String() string {
@@ -10200,9 +12280,9 @@ func (s *ListPartitionsByFilterResponseBody) SetSuccess(v bool) *ListPartitionsB
 }
 
 type ListPartitionsByFilterResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListPartitionsByFilterResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListPartitionsByFilterResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListPartitionsByFilterResponse) String() string {
@@ -10228,16 +12308,274 @@ func (s *ListPartitionsByFilterResponse) SetBody(v *ListPartitionsByFilterRespon
 	return s
 }
 
+type ListPartitionsProfileRequest struct {
+	// example:
+	//
+	// 1344371
+	CatalogId *string `json:"CatalogId,omitempty" xml:"CatalogId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test_db
+	DatabaseName *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 20
+	PageSize       *int32    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PartitionNames []*string `json:"PartitionNames,omitempty" xml:"PartitionNames,omitempty" type:"Repeated"`
+	// example:
+	//
+	// test_tbl
+	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
+}
+
+func (s ListPartitionsProfileRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPartitionsProfileRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListPartitionsProfileRequest) SetCatalogId(v string) *ListPartitionsProfileRequest {
+	s.CatalogId = &v
+	return s
+}
+
+func (s *ListPartitionsProfileRequest) SetDatabaseName(v string) *ListPartitionsProfileRequest {
+	s.DatabaseName = &v
+	return s
+}
+
+func (s *ListPartitionsProfileRequest) SetPageNumber(v int32) *ListPartitionsProfileRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListPartitionsProfileRequest) SetPageSize(v int32) *ListPartitionsProfileRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListPartitionsProfileRequest) SetPartitionNames(v []*string) *ListPartitionsProfileRequest {
+	s.PartitionNames = v
+	return s
+}
+
+func (s *ListPartitionsProfileRequest) SetTableName(v string) *ListPartitionsProfileRequest {
+	s.TableName = &v
+	return s
+}
+
+type ListPartitionsProfileShrinkRequest struct {
+	// example:
+	//
+	// 1344371
+	CatalogId *string `json:"CatalogId,omitempty" xml:"CatalogId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test_db
+	DatabaseName *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 20
+	PageSize             *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PartitionNamesShrink *string `json:"PartitionNames,omitempty" xml:"PartitionNames,omitempty"`
+	// example:
+	//
+	// test_tbl
+	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
+}
+
+func (s ListPartitionsProfileShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPartitionsProfileShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListPartitionsProfileShrinkRequest) SetCatalogId(v string) *ListPartitionsProfileShrinkRequest {
+	s.CatalogId = &v
+	return s
+}
+
+func (s *ListPartitionsProfileShrinkRequest) SetDatabaseName(v string) *ListPartitionsProfileShrinkRequest {
+	s.DatabaseName = &v
+	return s
+}
+
+func (s *ListPartitionsProfileShrinkRequest) SetPageNumber(v int32) *ListPartitionsProfileShrinkRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListPartitionsProfileShrinkRequest) SetPageSize(v int32) *ListPartitionsProfileShrinkRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListPartitionsProfileShrinkRequest) SetPartitionNamesShrink(v string) *ListPartitionsProfileShrinkRequest {
+	s.PartitionNamesShrink = &v
+	return s
+}
+
+func (s *ListPartitionsProfileShrinkRequest) SetTableName(v string) *ListPartitionsProfileShrinkRequest {
+	s.TableName = &v
+	return s
+}
+
+type ListPartitionsProfileResponseBody struct {
+	// example:
+	//
+	// -
+	Code *string             `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data []*PartitionProfile `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// example:
+	//
+	// -
+	LatestAccessNumDate *string `json:"LatestAccessNumDate,omitempty" xml:"LatestAccessNumDate,omitempty"`
+	// example:
+	//
+	// 2023-08-30 19:16:10
+	LatestDate *string `json:"LatestDate,omitempty" xml:"LatestDate,omitempty"`
+	// example:
+	//
+	// -
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 97434FA4-A6B2-1AE4-A174-76964F29C759
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 10
+	Total *int32 `json:"Total,omitempty" xml:"Total,omitempty"`
+}
+
+func (s ListPartitionsProfileResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPartitionsProfileResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListPartitionsProfileResponseBody) SetCode(v string) *ListPartitionsProfileResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListPartitionsProfileResponseBody) SetData(v []*PartitionProfile) *ListPartitionsProfileResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListPartitionsProfileResponseBody) SetLatestAccessNumDate(v string) *ListPartitionsProfileResponseBody {
+	s.LatestAccessNumDate = &v
+	return s
+}
+
+func (s *ListPartitionsProfileResponseBody) SetLatestDate(v string) *ListPartitionsProfileResponseBody {
+	s.LatestDate = &v
+	return s
+}
+
+func (s *ListPartitionsProfileResponseBody) SetMessage(v string) *ListPartitionsProfileResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListPartitionsProfileResponseBody) SetRequestId(v string) *ListPartitionsProfileResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListPartitionsProfileResponseBody) SetSuccess(v bool) *ListPartitionsProfileResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *ListPartitionsProfileResponseBody) SetTotal(v int32) *ListPartitionsProfileResponseBody {
+	s.Total = &v
+	return s
+}
+
+type ListPartitionsProfileResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListPartitionsProfileResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListPartitionsProfileResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPartitionsProfileResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListPartitionsProfileResponse) SetHeaders(v map[string]*string) *ListPartitionsProfileResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListPartitionsProfileResponse) SetStatusCode(v int32) *ListPartitionsProfileResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListPartitionsProfileResponse) SetBody(v *ListPartitionsProfileResponseBody) *ListPartitionsProfileResponse {
+	s.Body = v
+	return s
+}
+
 type ListPermissionsRequest struct {
 	// CatalogId
-	CatalogId                 *string       `json:"CatalogId,omitempty" xml:"CatalogId,omitempty"`
+	//
+	// example:
+	//
+	// 1344371
+	CatalogId *string `json:"CatalogId,omitempty" xml:"CatalogId,omitempty"`
+	// example:
+	//
+	// false
 	IsListUserRolePermissions *bool         `json:"IsListUserRolePermissions,omitempty" xml:"IsListUserRolePermissions,omitempty"`
 	MetaResource              *MetaResource `json:"MetaResource,omitempty" xml:"MetaResource,omitempty"`
-	MetaResourceType          *string       `json:"MetaResourceType,omitempty" xml:"MetaResourceType,omitempty"`
-	NextPageToken             *string       `json:"NextPageToken,omitempty" xml:"NextPageToken,omitempty"`
-	PageSize                  *int32        `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Principal                 *Principal    `json:"Principal,omitempty" xml:"Principal,omitempty"`
-	Type                      *string       `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// DATABASE
+	MetaResourceType *string `json:"MetaResourceType,omitempty" xml:"MetaResourceType,omitempty"`
+	// example:
+	//
+	// token!
+	NextPageToken *string `json:"NextPageToken,omitempty" xml:"NextPageToken,omitempty"`
+	// example:
+	//
+	// 100
+	PageSize  *int32     `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Principal *Principal `json:"Principal,omitempty" xml:"Principal,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Hive
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s ListPermissionsRequest) String() string {
@@ -10290,15 +12628,38 @@ func (s *ListPermissionsRequest) SetType(v string) *ListPermissionsRequest {
 
 type ListPermissionsResponseBody struct {
 	// Response Code
+	//
+	// example:
+	//
+	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// Message Code
+	//
+	// example:
+	//
+	// .
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// NextPageToken
-	NextPageToken                    *string                         `json:"NextPageToken,omitempty" xml:"NextPageToken,omitempty"`
+	//
+	// example:
+	//
+	// token!
+	NextPageToken *string `json:"NextPageToken,omitempty" xml:"NextPageToken,omitempty"`
+	// example:
+	//
+	// []
 	PrincipalResourcePermissionsList []*PrincipalResourcePermissions `json:"PrincipalResourcePermissionsList,omitempty" xml:"PrincipalResourcePermissionsList,omitempty" type:"Repeated"`
 	// RequestId
+	//
+	// example:
+	//
+	// 745EAAE2-5010-5C9F-A95C-B8FC5C1B03BF
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Success
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 	// TotalCount
 	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
@@ -10348,9 +12709,9 @@ func (s *ListPermissionsResponseBody) SetTotalCount(v int64) *ListPermissionsRes
 }
 
 type ListPermissionsResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListPermissionsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListPermissionsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListPermissionsResponse) String() string {
@@ -10378,11 +12739,26 @@ func (s *ListPermissionsResponse) SetBody(v *ListPermissionsResponseBody) *ListP
 
 type ListRoleUsersRequest struct {
 	// NextPageToken
+	//
+	// example:
+	//
+	// token!
 	NextPageToken *string `json:"NextPageToken,omitempty" xml:"NextPageToken,omitempty"`
 	// PageSize
-	PageSize *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	//
+	// example:
+	//
+	// -1/100
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// admin
 	RoleName *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
 	// use name pattern filter
+	//
+	// example:
+	//
+	// .*user.*
 	UserNamePattern *string `json:"UserNamePattern,omitempty" xml:"UserNamePattern,omitempty"`
 }
 
@@ -10415,13 +12791,30 @@ func (s *ListRoleUsersRequest) SetUserNamePattern(v string) *ListRoleUsersReques
 }
 
 type ListRoleUsersResponseBody struct {
-	Code    *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// .
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// NextPageToken
+	//
+	// example:
+	//
+	// token!
 	NextPageToken *string `json:"NextPageToken,omitempty" xml:"NextPageToken,omitempty"`
 	// RequestId
+	//
+	// example:
+	//
+	// 558D764F-8C55-49CA-BF38-80EA532FC08F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 	// user roles
 	UserRoles []*UserRole `json:"UserRoles,omitempty" xml:"UserRoles,omitempty" type:"Repeated"`
 }
@@ -10465,9 +12858,9 @@ func (s *ListRoleUsersResponseBody) SetUserRoles(v []*UserRole) *ListRoleUsersRe
 }
 
 type ListRoleUsersResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListRoleUsersResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListRoleUsersResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListRoleUsersResponse) String() string {
@@ -10495,8 +12888,18 @@ func (s *ListRoleUsersResponse) SetBody(v *ListRoleUsersResponseBody) *ListRoleU
 
 type ListRolesRequest struct {
 	// Next PageToken
-	NextPageToken   *string `json:"NextPageToken,omitempty" xml:"NextPageToken,omitempty"`
-	PageSize        *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	//
+	// example:
+	//
+	// token!
+	NextPageToken *string `json:"NextPageToken,omitempty" xml:"NextPageToken,omitempty"`
+	// example:
+	//
+	// -1/100
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// .*test.*
 	RoleNamePattern *string `json:"RoleNamePattern,omitempty" xml:"RoleNamePattern,omitempty"`
 }
 
@@ -10525,16 +12928,56 @@ func (s *ListRolesRequest) SetRoleNamePattern(v string) *ListRolesRequest {
 
 type ListRolesResponseBody struct {
 	// code
+	//
+	// example:
+	//
+	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// message
+	//
+	// example:
+	//
+	// .
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// data
+	//
+	// example:
+	//
+	// 2cb472ec1bf84f8d92f9c4baa0d21c19aa
 	NextPageToken *string `json:"NextPageToken,omitempty" xml:"NextPageToken,omitempty"`
 	// requestId
+	//
+	// example:
+	//
+	// B7F4B621-E41E-4C84-B97F-42B5380A32BB
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// role list data
+	//
+	// example:
+	//
+	// [
+	//
+	// 	{
+	//
+	// 		"Description":"reserved by the system",
+	//
+	// 		"DisplayName":"admin",
+	//
+	// 		"UpdateTime":0,
+	//
+	// 		"IsPredefined":1,
+	//
+	// 		"Name":"admin"
+	//
+	// 	}
+	//
+	// ]
 	Roles []*Role `json:"Roles,omitempty" xml:"Roles,omitempty" type:"Repeated"`
 	// success
+	//
+	// example:
+	//
+	// True
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -10577,9 +13020,9 @@ func (s *ListRolesResponseBody) SetSuccess(v bool) *ListRolesResponseBody {
 }
 
 type ListRolesResponse struct {
-	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListRolesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListRolesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListRolesResponse) String() string {
@@ -10606,12 +13049,30 @@ func (s *ListRolesResponse) SetBody(v *ListRolesResponseBody) *ListRolesResponse
 }
 
 type ListTableNamesRequest struct {
-	CatalogId        *string `json:"CatalogId,omitempty" xml:"CatalogId,omitempty"`
-	DatabaseName     *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
-	NextPageToken    *string `json:"NextPageToken,omitempty" xml:"NextPageToken,omitempty"`
-	PageSize         *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 1344371
+	CatalogId *string `json:"CatalogId,omitempty" xml:"CatalogId,omitempty"`
+	// example:
+	//
+	// database_test
+	DatabaseName *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
+	// example:
+	//
+	// \\"\\"
+	NextPageToken *string `json:"NextPageToken,omitempty" xml:"NextPageToken,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// .*
 	TableNamePattern *string `json:"TableNamePattern,omitempty" xml:"TableNamePattern,omitempty"`
-	TableType        *string `json:"TableType,omitempty" xml:"TableType,omitempty"`
+	// example:
+	//
+	// MANAGED_TABLE
+	TableType *string `json:"TableType,omitempty" xml:"TableType,omitempty"`
 }
 
 func (s ListTableNamesRequest) String() string {
@@ -10653,12 +13114,27 @@ func (s *ListTableNamesRequest) SetTableType(v string) *ListTableNamesRequest {
 }
 
 type ListTableNamesResponseBody struct {
-	Code          *string   `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message       *string   `json:"Message,omitempty" xml:"Message,omitempty"`
-	NextPageToken *string   `json:"NextPageToken,omitempty" xml:"NextPageToken,omitempty"`
-	RequestId     *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success       *bool     `json:"Success,omitempty" xml:"Success,omitempty"`
-	TableNames    []*string `json:"TableNames,omitempty" xml:"TableNames,omitempty" type:"Repeated"`
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// .
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 2cb472ec1bf84f8d92f9c4baa0d21c19aa
+	NextPageToken *string `json:"NextPageToken,omitempty" xml:"NextPageToken,omitempty"`
+	// example:
+	//
+	// B7F4B621-E41E-4C84-B97F-42B5380A32BB
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success    *bool     `json:"Success,omitempty" xml:"Success,omitempty"`
+	TableNames []*string `json:"TableNames,omitempty" xml:"TableNames,omitempty" type:"Repeated"`
 }
 
 func (s ListTableNamesResponseBody) String() string {
@@ -10700,9 +13176,9 @@ func (s *ListTableNamesResponseBody) SetTableNames(v []*string) *ListTableNamesR
 }
 
 type ListTableNamesResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListTableNamesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListTableNamesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListTableNamesResponse) String() string {
@@ -10729,11 +13205,26 @@ func (s *ListTableNamesResponse) SetBody(v *ListTableNamesResponseBody) *ListTab
 }
 
 type ListTableVersionsRequest struct {
-	CatalogId     *string `json:"CatalogId,omitempty" xml:"CatalogId,omitempty"`
-	DatabaseName  *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
+	// example:
+	//
+	// 1344371
+	CatalogId *string `json:"CatalogId,omitempty" xml:"CatalogId,omitempty"`
+	// example:
+	//
+	// database_test
+	DatabaseName *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
+	// example:
+	//
+	// \\"\\"
 	NextPageToken *string `json:"NextPageToken,omitempty" xml:"NextPageToken,omitempty"`
-	PageSize      *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	TableName     *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// test_table_20200715162543389
+	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
 }
 
 func (s ListTableVersionsRequest) String() string {
@@ -10770,10 +13261,25 @@ func (s *ListTableVersionsRequest) SetTableName(v string) *ListTableVersionsRequ
 }
 
 type ListTableVersionsResponseBody struct {
-	Code          *string         `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message       *string         `json:"Message,omitempty" xml:"Message,omitempty"`
-	NextPageToken *string         `json:"NextPageToken,omitempty" xml:"NextPageToken,omitempty"`
-	RequestId     *string         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// .
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 2cb472ec1bf84f8d92f9c4baa0d21c19aa
+	NextPageToken *string `json:"NextPageToken,omitempty" xml:"NextPageToken,omitempty"`
+	// example:
+	//
+	// B7F4B621-E41E-4C84-B97F-42B5380A32BB
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
 	Success       *bool           `json:"Success,omitempty" xml:"Success,omitempty"`
 	TableVersions []*TableVersion `json:"TableVersions,omitempty" xml:"TableVersions,omitempty" type:"Repeated"`
 }
@@ -10817,9 +13323,9 @@ func (s *ListTableVersionsResponseBody) SetTableVersions(v []*TableVersion) *Lis
 }
 
 type ListTableVersionsResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListTableVersionsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListTableVersionsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListTableVersionsResponse) String() string {
@@ -10846,12 +13352,30 @@ func (s *ListTableVersionsResponse) SetBody(v *ListTableVersionsResponseBody) *L
 }
 
 type ListTablesRequest struct {
-	CatalogId        *string `json:"CatalogId,omitempty" xml:"CatalogId,omitempty"`
-	DatabaseName     *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
-	NextPageToken    *string `json:"NextPageToken,omitempty" xml:"NextPageToken,omitempty"`
-	PageSize         *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 1344371
+	CatalogId *string `json:"CatalogId,omitempty" xml:"CatalogId,omitempty"`
+	// example:
+	//
+	// database_test
+	DatabaseName *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
+	// example:
+	//
+	// \\"\\"
+	NextPageToken *string `json:"NextPageToken,omitempty" xml:"NextPageToken,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// .*
 	TableNamePattern *string `json:"TableNamePattern,omitempty" xml:"TableNamePattern,omitempty"`
-	TableType        *string `json:"TableType,omitempty" xml:"TableType,omitempty"`
+	// example:
+	//
+	// MANAGED_TABLE
+	TableType *string `json:"TableType,omitempty" xml:"TableType,omitempty"`
 }
 
 func (s ListTablesRequest) String() string {
@@ -10893,12 +13417,27 @@ func (s *ListTablesRequest) SetTableType(v string) *ListTablesRequest {
 }
 
 type ListTablesResponseBody struct {
-	Code          *string  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message       *string  `json:"Message,omitempty" xml:"Message,omitempty"`
-	NextPageToken *string  `json:"NextPageToken,omitempty" xml:"NextPageToken,omitempty"`
-	RequestId     *string  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success       *bool    `json:"Success,omitempty" xml:"Success,omitempty"`
-	Tables        []*Table `json:"Tables,omitempty" xml:"Tables,omitempty" type:"Repeated"`
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// .
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 2cb472ec1bf84f8d92f9c4baa0d21c19aa
+	NextPageToken *string `json:"NextPageToken,omitempty" xml:"NextPageToken,omitempty"`
+	// example:
+	//
+	// B7F4B621-E41E-4C84-B97F-42B5380A32BB
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool    `json:"Success,omitempty" xml:"Success,omitempty"`
+	Tables  []*Table `json:"Tables,omitempty" xml:"Tables,omitempty" type:"Repeated"`
 }
 
 func (s ListTablesResponseBody) String() string {
@@ -10940,9 +13479,9 @@ func (s *ListTablesResponseBody) SetTables(v []*Table) *ListTablesResponseBody {
 }
 
 type ListTablesResponse struct {
-	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListTablesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListTablesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListTablesResponse) String() string {
@@ -10969,11 +13508,25 @@ func (s *ListTablesResponse) SetBody(v *ListTablesResponseBody) *ListTablesRespo
 }
 
 type ListUserRolesRequest struct {
+	// example:
+	//
+	// token!
 	NextPageToken *string `json:"NextPageToken,omitempty" xml:"NextPageToken,omitempty"`
 	// PageSize
-	PageSize     *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	//
+	// example:
+	//
+	// -1/100
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// acs:ram::1111:user/userName
 	PrincipalArn *string `json:"PrincipalArn,omitempty" xml:"PrincipalArn,omitempty"`
 	// role name pattern filter
+	//
+	// example:
+	//
+	// .*test.*
 	RoleNamePattern *string `json:"RoleNamePattern,omitempty" xml:"RoleNamePattern,omitempty"`
 }
 
@@ -11007,14 +13560,34 @@ func (s *ListUserRolesRequest) SetRoleNamePattern(v string) *ListUserRolesReques
 
 type ListUserRolesResponseBody struct {
 	// Code
+	//
+	// example:
+	//
+	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// Message
+	//
+	// example:
+	//
+	// .
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// NextPageToken
+	//
+	// example:
+	//
+	// 2cb472ec1bf84f8d92f9c4baa0d21c19aa
 	NextPageToken *string `json:"NextPageToken,omitempty" xml:"NextPageToken,omitempty"`
 	// RequestId
+	//
+	// example:
+	//
+	// B7F4B621-E41E-4C84-B97F-42B5380A32BB
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// success
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 	// UserRoles
 	UserRoles []*UserRole `json:"UserRoles,omitempty" xml:"UserRoles,omitempty" type:"Repeated"`
@@ -11059,9 +13632,9 @@ func (s *ListUserRolesResponseBody) SetUserRoles(v []*UserRole) *ListUserRolesRe
 }
 
 type ListUserRolesResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListUserRolesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListUserRolesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListUserRolesResponse) String() string {
@@ -11089,6 +13662,10 @@ func (s *ListUserRolesResponse) SetBody(v *ListUserRolesResponseBody) *ListUserR
 
 type RefreshLockRequest struct {
 	// LockId
+	//
+	// example:
+	//
+	// 12324
 	LockId *int64 `json:"LockId,omitempty" xml:"LockId,omitempty"`
 }
 
@@ -11107,12 +13684,28 @@ func (s *RefreshLockRequest) SetLockId(v int64) *RefreshLockRequest {
 
 type RefreshLockResponseBody struct {
 	// Code
+	//
+	// example:
+	//
+	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// Message
+	//
+	// example:
+	//
+	// .
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// RequestId
+	//
+	// example:
+	//
+	// 81B90E1B-7514-5817-9D59-0EA9E2215876
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Success
+	//
+	// example:
+	//
+	// True
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -11145,9 +13738,9 @@ func (s *RefreshLockResponseBody) SetSuccess(v bool) *RefreshLockResponseBody {
 }
 
 type RefreshLockResponse struct {
-	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *RefreshLockResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RefreshLockResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RefreshLockResponse) String() string {
@@ -11174,10 +13767,26 @@ func (s *RefreshLockResponse) SetBody(v *RefreshLockResponseBody) *RefreshLockRe
 }
 
 type RegisterLocationRequest struct {
-	InventoryCollectEnabled *bool   `json:"InventoryCollectEnabled,omitempty" xml:"InventoryCollectEnabled,omitempty"`
-	Location                *string `json:"Location,omitempty" xml:"Location,omitempty"`
-	OssLogCollectEnabled    *bool   `json:"OssLogCollectEnabled,omitempty" xml:"OssLogCollectEnabled,omitempty"`
-	RoleName                *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
+	// example:
+	//
+	// true
+	InventoryCollectEnabled *bool `json:"InventoryCollectEnabled,omitempty" xml:"InventoryCollectEnabled,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// oss://mybucket/
+	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
+	// example:
+	//
+	// true
+	OssLogCollectEnabled *bool `json:"OssLogCollectEnabled,omitempty" xml:"OssLogCollectEnabled,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// AliyunDLFWorkFlowDefaultRole
+	RoleName *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
 }
 
 func (s RegisterLocationRequest) String() string {
@@ -11209,9 +13818,15 @@ func (s *RegisterLocationRequest) SetRoleName(v string) *RegisterLocationRequest
 }
 
 type RegisterLocationResponseBody struct {
-	Data      *RegisterLocationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	RequestId *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                             `json:"Success,omitempty" xml:"Success,omitempty"`
+	Data *RegisterLocationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// 3C2678BA-3451-14C3-90E2-D4EF5B4E7A84
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s RegisterLocationResponseBody) String() string {
@@ -11239,6 +13854,10 @@ func (s *RegisterLocationResponseBody) SetSuccess(v bool) *RegisterLocationRespo
 
 type RegisterLocationResponseBodyData struct {
 	// Location ID
+	//
+	// example:
+	//
+	// LOC-AB8FBC17F95A4AF5
 	LocationId                            *string                              `json:"LocationId,omitempty" xml:"LocationId,omitempty"`
 	StorageCollectTaskOperationResultList []*StorageCollectTaskOperationResult `json:"StorageCollectTaskOperationResultList,omitempty" xml:"StorageCollectTaskOperationResultList,omitempty" type:"Repeated"`
 }
@@ -11262,9 +13881,9 @@ func (s *RegisterLocationResponseBodyData) SetStorageCollectTaskOperationResultL
 }
 
 type RegisterLocationResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *RegisterLocationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RegisterLocationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RegisterLocationResponse) String() string {
@@ -11291,11 +13910,20 @@ func (s *RegisterLocationResponse) SetBody(v *RegisterLocationResponseBody) *Reg
 }
 
 type RenamePartitionRequest struct {
-	CatalogId       *string         `json:"CatalogId,omitempty" xml:"CatalogId,omitempty"`
+	// example:
+	//
+	// 1344371
+	CatalogId *string `json:"CatalogId,omitempty" xml:"CatalogId,omitempty"`
+	// example:
+	//
+	// database_test
 	DatabaseName    *string         `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
 	PartitionInput  *PartitionInput `json:"PartitionInput,omitempty" xml:"PartitionInput,omitempty"`
 	PartitionValues []*string       `json:"PartitionValues,omitempty" xml:"PartitionValues,omitempty" type:"Repeated"`
-	TableName       *string         `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	// example:
+	//
+	// test_table_20200715162543389
+	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
 }
 
 func (s RenamePartitionRequest) String() string {
@@ -11332,10 +13960,22 @@ func (s *RenamePartitionRequest) SetTableName(v string) *RenamePartitionRequest 
 }
 
 type RenamePartitionResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// .
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// B7F4B621-E41E-4C84-B97F-42B5380A32BB
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s RenamePartitionResponseBody) String() string {
@@ -11367,9 +14007,9 @@ func (s *RenamePartitionResponseBody) SetSuccess(v bool) *RenamePartitionRespons
 }
 
 type RenamePartitionResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *RenamePartitionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RenamePartitionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RenamePartitionResponse) String() string {
@@ -11396,11 +14036,23 @@ func (s *RenamePartitionResponse) SetBody(v *RenamePartitionResponseBody) *Renam
 }
 
 type RenameTableRequest struct {
-	CatalogId    *string     `json:"CatalogId,omitempty" xml:"CatalogId,omitempty"`
-	DatabaseName *string     `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
-	IsAsync      *bool       `json:"IsAsync,omitempty" xml:"IsAsync,omitempty"`
-	TableInput   *TableInput `json:"TableInput,omitempty" xml:"TableInput,omitempty"`
-	TableName    *string     `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	// example:
+	//
+	// 1344371
+	CatalogId *string `json:"CatalogId,omitempty" xml:"CatalogId,omitempty"`
+	// example:
+	//
+	// database_test
+	DatabaseName *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
+	// example:
+	//
+	// false
+	IsAsync    *bool       `json:"IsAsync,omitempty" xml:"IsAsync,omitempty"`
+	TableInput *TableInput `json:"TableInput,omitempty" xml:"TableInput,omitempty"`
+	// example:
+	//
+	// test_table_20201223
+	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
 }
 
 func (s RenameTableRequest) String() string {
@@ -11437,11 +14089,27 @@ func (s *RenameTableRequest) SetTableName(v string) *RenameTableRequest {
 }
 
 type RenameTableResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// .
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// B7F4B621-E41E-4C84-B97F-42B5380A32BB
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 	// Async task Id
+	//
+	// example:
+	//
+	// c38206c3aca0c41332ffe49294243009
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
@@ -11479,9 +14147,9 @@ func (s *RenameTableResponseBody) SetTaskId(v string) *RenameTableResponseBody {
 }
 
 type RenameTableResponse struct {
-	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *RenameTableResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RenameTableResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RenameTableResponse) String() string {
@@ -11508,13 +14176,25 @@ func (s *RenameTableResponse) SetBody(v *RenameTableResponseBody) *RenameTableRe
 }
 
 type RevokePermissionsRequest struct {
+	// This parameter is required.
 	Accesses []*string `json:"Accesses,omitempty" xml:"Accesses,omitempty" type:"Repeated"`
 	// CatalogId
-	CatalogId        *string       `json:"CatalogId,omitempty" xml:"CatalogId,omitempty"`
-	DelegateAccesses []*string     `json:"DelegateAccesses,omitempty" xml:"DelegateAccesses,omitempty" type:"Repeated"`
-	MetaResource     *MetaResource `json:"MetaResource,omitempty" xml:"MetaResource,omitempty"`
-	Principal        *Principal    `json:"Principal,omitempty" xml:"Principal,omitempty"`
-	Type             *string       `json:"Type,omitempty" xml:"Type,omitempty"`
+	//
+	// example:
+	//
+	// 1344371
+	CatalogId        *string   `json:"CatalogId,omitempty" xml:"CatalogId,omitempty"`
+	DelegateAccesses []*string `json:"DelegateAccesses,omitempty" xml:"DelegateAccesses,omitempty" type:"Repeated"`
+	// This parameter is required.
+	MetaResource *MetaResource `json:"MetaResource,omitempty" xml:"MetaResource,omitempty"`
+	// This parameter is required.
+	Principal *Principal `json:"Principal,omitempty" xml:"Principal,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Hive
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s RevokePermissionsRequest) String() string {
@@ -11557,12 +14237,28 @@ func (s *RevokePermissionsRequest) SetType(v string) *RevokePermissionsRequest {
 
 type RevokePermissionsResponseBody struct {
 	// Response Code
+	//
+	// example:
+	//
+	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// Message Code
+	//
+	// example:
+	//
+	// .
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// RequestId
+	//
+	// example:
+	//
+	// 7CB5765C-F209-5B10-8792-D2BE9156ABE8
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Success
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -11595,9 +14291,9 @@ func (s *RevokePermissionsResponseBody) SetSuccess(v bool) *RevokePermissionsRes
 }
 
 type RevokePermissionsResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *RevokePermissionsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RevokePermissionsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RevokePermissionsResponse) String() string {
@@ -11624,6 +14320,9 @@ func (s *RevokePermissionsResponse) SetBody(v *RevokePermissionsResponseBody) *R
 }
 
 type RevokeRoleFromUsersRequest struct {
+	// example:
+	//
+	// test_role_3
 	RoleName *string      `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
 	Users    []*Principal `json:"Users,omitempty" xml:"Users,omitempty" type:"Repeated"`
 }
@@ -11648,12 +14347,28 @@ func (s *RevokeRoleFromUsersRequest) SetUsers(v []*Principal) *RevokeRoleFromUse
 
 type RevokeRoleFromUsersResponseBody struct {
 	// Code
+	//
+	// example:
+	//
+	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// Message
+	//
+	// example:
+	//
+	// .
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// RequestId
+	//
+	// example:
+	//
+	// B7F4B621-E41E-4C84-B97F-42B5380A32BB
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Success
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -11686,9 +14401,9 @@ func (s *RevokeRoleFromUsersResponseBody) SetSuccess(v bool) *RevokeRoleFromUser
 }
 
 type RevokeRoleFromUsersResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *RevokeRoleFromUsersResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RevokeRoleFromUsersResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RevokeRoleFromUsersResponse) String() string {
@@ -11715,8 +14430,10 @@ func (s *RevokeRoleFromUsersResponse) SetBody(v *RevokeRoleFromUsersResponseBody
 }
 
 type RevokeRolesFromUserRequest struct {
-	RoleNames []*string  `json:"RoleNames,omitempty" xml:"RoleNames,omitempty" type:"Repeated"`
-	User      *Principal `json:"User,omitempty" xml:"User,omitempty"`
+	// This parameter is required.
+	RoleNames []*string `json:"RoleNames,omitempty" xml:"RoleNames,omitempty" type:"Repeated"`
+	// This parameter is required.
+	User *Principal `json:"User,omitempty" xml:"User,omitempty"`
 }
 
 func (s RevokeRolesFromUserRequest) String() string {
@@ -11739,12 +14456,28 @@ func (s *RevokeRolesFromUserRequest) SetUser(v *Principal) *RevokeRolesFromUserR
 
 type RevokeRolesFromUserResponseBody struct {
 	// code
+	//
+	// example:
+	//
+	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// message
+	//
+	// example:
+	//
+	// .
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// RequestId
+	//
+	// example:
+	//
+	// B7F4B621-E41E-4C84-B97F-42B5380A32BB
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// success
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -11777,9 +14510,9 @@ func (s *RevokeRolesFromUserResponseBody) SetSuccess(v bool) *RevokeRolesFromUse
 }
 
 type RevokeRolesFromUserResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *RevokeRolesFromUserResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RevokeRolesFromUserResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RevokeRolesFromUserResponse) String() string {
@@ -11806,6 +14539,11 @@ func (s *RevokeRolesFromUserResponse) SetBody(v *RevokeRolesFromUserResponseBody
 }
 
 type RunMigrationWorkflowRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// M-EDD8BF959BB97345
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -11823,9 +14561,18 @@ func (s *RunMigrationWorkflowRequest) SetInstanceId(v string) *RunMigrationWorkf
 }
 
 type RunMigrationWorkflowResponseBody struct {
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// FI-7193B85809CAD95C
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// A048EA8E-3519-5B18-B81E-EE3E0B6DBE0C
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s RunMigrationWorkflowResponseBody) String() string {
@@ -11852,9 +14599,9 @@ func (s *RunMigrationWorkflowResponseBody) SetSuccess(v bool) *RunMigrationWorkf
 }
 
 type RunMigrationWorkflowResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *RunMigrationWorkflowResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RunMigrationWorkflowResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RunMigrationWorkflowResponse) String() string {
@@ -11882,10 +14629,26 @@ func (s *RunMigrationWorkflowResponse) SetBody(v *RunMigrationWorkflowResponseBo
 
 type SearchRequest struct {
 	// catalogid
-	CatalogId    *string          `json:"CatalogId,omitempty" xml:"CatalogId,omitempty"`
-	PageNumber   *int64           `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize     *int64           `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	SearchText   *string          `json:"SearchText,omitempty" xml:"SearchText,omitempty"`
+	//
+	// example:
+	//
+	// 默认是空，在多catalogid下填写对应的id
+	CatalogId *string `json:"CatalogId,omitempty" xml:"CatalogId,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 1000
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// tags:tag1 or comment:^iso and name=aliyun and (createTime > "20211111" and createTime < "20211117") and has category
+	SearchText *string `json:"SearchText,omitempty" xml:"SearchText,omitempty"`
+	// example:
+	//
+	// TABLE/DATABASE/CATALOG
 	SearchType   *string          `json:"SearchType,omitempty" xml:"SearchType,omitempty"`
 	SortCriteria []*SortCriterion `json:"SortCriteria,omitempty" xml:"SortCriteria,omitempty" type:"Repeated"`
 }
@@ -11929,12 +14692,24 @@ func (s *SearchRequest) SetSortCriteria(v []*SortCriterion) *SearchRequest {
 }
 
 type SearchResponseBody struct {
+	// example:
+	//
+	// OK
 	Code           *string                           `json:"Code,omitempty" xml:"Code,omitempty"`
 	DatabaseResult *SearchResponseBodyDatabaseResult `json:"DatabaseResult,omitempty" xml:"DatabaseResult,omitempty" type:"Struct"`
-	Message        *string                           `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId      *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success        *bool                             `json:"Success,omitempty" xml:"Success,omitempty"`
-	TableResult    *SearchResponseBodyTableResult    `json:"TableResult,omitempty" xml:"TableResult,omitempty" type:"Struct"`
+	// example:
+	//
+	// ""
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 460C862F-BB91-5C04-BC3F-946EEF467862
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// True
+	Success     *bool                          `json:"Success,omitempty" xml:"Success,omitempty"`
+	TableResult *SearchResponseBodyTableResult `json:"TableResult,omitempty" xml:"TableResult,omitempty" type:"Struct"`
 }
 
 func (s SearchResponseBody) String() string {
@@ -11976,8 +14751,11 @@ func (s *SearchResponseBody) SetTableResult(v *SearchResponseBodyTableResult) *S
 }
 
 type SearchResponseBodyDatabaseResult struct {
-	Databases  []*SearchResponseBodyDatabaseResultDatabases `json:"Databases,omitempty" xml:"Databases,omitempty" type:"Repeated"`
-	TotalCount *int64                                       `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	Databases []*SearchResponseBodyDatabaseResultDatabases `json:"Databases,omitempty" xml:"Databases,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 11000
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s SearchResponseBodyDatabaseResult) String() string {
@@ -12022,8 +14800,11 @@ func (s *SearchResponseBodyDatabaseResultDatabases) SetHighLightList(v []*HighLi
 }
 
 type SearchResponseBodyTableResult struct {
-	Tables     []*SearchResponseBodyTableResultTables `json:"Tables,omitempty" xml:"Tables,omitempty" type:"Repeated"`
-	TotalCount *int64                                 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	Tables []*SearchResponseBodyTableResultTables `json:"Tables,omitempty" xml:"Tables,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1100
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s SearchResponseBodyTableResult) String() string {
@@ -12068,9 +14849,9 @@ func (s *SearchResponseBodyTableResultTables) SetTable(v *Table) *SearchResponse
 }
 
 type SearchResponse struct {
-	Headers    map[string]*string  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SearchResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SearchResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SearchResponse) String() string {
@@ -12097,9 +14878,18 @@ func (s *SearchResponse) SetBody(v *SearchResponseBody) *SearchResponse {
 }
 
 type SearchAcrossCatalogRequest struct {
-	CatalogIds   []*string        `json:"CatalogIds,omitempty" xml:"CatalogIds,omitempty" type:"Repeated"`
-	PageNumber   *int64           `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize     *int64           `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	CatalogIds []*string `json:"CatalogIds,omitempty" xml:"CatalogIds,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 1000
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// tags:tag1 or comment:^iso and name=aliyun and (createTime > "20211111" and createTime < "20211117") and has category
 	SearchText   *string          `json:"SearchText,omitempty" xml:"SearchText,omitempty"`
 	SearchTypes  []*string        `json:"SearchTypes,omitempty" xml:"SearchTypes,omitempty" type:"Repeated"`
 	SortCriteria []*SortCriterion `json:"SortCriteria,omitempty" xml:"SortCriteria,omitempty" type:"Repeated"`
@@ -12144,13 +14934,25 @@ func (s *SearchAcrossCatalogRequest) SetSortCriteria(v []*SortCriterion) *Search
 }
 
 type SearchAcrossCatalogResponseBody struct {
-	CatalogResult  *SearchAcrossCatalogResponseBodyCatalogResult  `json:"CatalogResult,omitempty" xml:"CatalogResult,omitempty" type:"Struct"`
+	CatalogResult *SearchAcrossCatalogResponseBodyCatalogResult `json:"CatalogResult,omitempty" xml:"CatalogResult,omitempty" type:"Struct"`
+	// example:
+	//
+	// OK
 	Code           *string                                        `json:"Code,omitempty" xml:"Code,omitempty"`
 	DatabaseResult *SearchAcrossCatalogResponseBodyDatabaseResult `json:"DatabaseResult,omitempty" xml:"DatabaseResult,omitempty" type:"Struct"`
-	Message        *string                                        `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId      *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success        *bool                                          `json:"Success,omitempty" xml:"Success,omitempty"`
-	TableResult    *SearchAcrossCatalogResponseBodyTableResult    `json:"TableResult,omitempty" xml:"TableResult,omitempty" type:"Struct"`
+	// example:
+	//
+	// ""
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 460C862F-BB91-5C04-BC3F-946EEF467862
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// True
+	Success     *bool                                       `json:"Success,omitempty" xml:"Success,omitempty"`
+	TableResult *SearchAcrossCatalogResponseBodyTableResult `json:"TableResult,omitempty" xml:"TableResult,omitempty" type:"Struct"`
 }
 
 func (s SearchAcrossCatalogResponseBody) String() string {
@@ -12197,8 +14999,11 @@ func (s *SearchAcrossCatalogResponseBody) SetTableResult(v *SearchAcrossCatalogR
 }
 
 type SearchAcrossCatalogResponseBodyCatalogResult struct {
-	Catalogs   []*SearchAcrossCatalogResponseBodyCatalogResultCatalogs `json:"Catalogs,omitempty" xml:"Catalogs,omitempty" type:"Repeated"`
-	TotalCount *int64                                                  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	Catalogs []*SearchAcrossCatalogResponseBodyCatalogResultCatalogs `json:"Catalogs,omitempty" xml:"Catalogs,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 100
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s SearchAcrossCatalogResponseBodyCatalogResult) String() string {
@@ -12243,8 +15048,11 @@ func (s *SearchAcrossCatalogResponseBodyCatalogResultCatalogs) SetHighLightList(
 }
 
 type SearchAcrossCatalogResponseBodyDatabaseResult struct {
-	Databases  []*SearchAcrossCatalogResponseBodyDatabaseResultDatabases `json:"Databases,omitempty" xml:"Databases,omitempty" type:"Repeated"`
-	TotalCount *int64                                                    `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	Databases []*SearchAcrossCatalogResponseBodyDatabaseResultDatabases `json:"Databases,omitempty" xml:"Databases,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 11000
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s SearchAcrossCatalogResponseBodyDatabaseResult) String() string {
@@ -12289,8 +15097,11 @@ func (s *SearchAcrossCatalogResponseBodyDatabaseResultDatabases) SetHighLightLis
 }
 
 type SearchAcrossCatalogResponseBodyTableResult struct {
-	Tables     []*SearchAcrossCatalogResponseBodyTableResultTables `json:"Tables,omitempty" xml:"Tables,omitempty" type:"Repeated"`
-	TotalCount *int64                                              `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	Tables []*SearchAcrossCatalogResponseBodyTableResultTables `json:"Tables,omitempty" xml:"Tables,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1100
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s SearchAcrossCatalogResponseBodyTableResult) String() string {
@@ -12335,9 +15146,9 @@ func (s *SearchAcrossCatalogResponseBodyTableResultTables) SetTable(v *Table) *S
 }
 
 type SearchAcrossCatalogResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SearchAcrossCatalogResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SearchAcrossCatalogResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SearchAcrossCatalogResponse) String() string {
@@ -12364,6 +15175,11 @@ func (s *SearchAcrossCatalogResponse) SetBody(v *SearchAcrossCatalogResponseBody
 }
 
 type StopMigrationWorkflowRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// M-6DCF5D8EF92E2195
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -12381,8 +15197,14 @@ func (s *StopMigrationWorkflowRequest) SetInstanceId(v string) *StopMigrationWor
 }
 
 type StopMigrationWorkflowResponseBody struct {
+	// example:
+	//
+	// B7F4B621-E41E-4C84-B97F-42B5380A32BB
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s StopMigrationWorkflowResponseBody) String() string {
@@ -12404,9 +15226,9 @@ func (s *StopMigrationWorkflowResponseBody) SetSuccess(v bool) *StopMigrationWor
 }
 
 type StopMigrationWorkflowResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *StopMigrationWorkflowResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *StopMigrationWorkflowResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s StopMigrationWorkflowResponse) String() string {
@@ -12433,8 +15255,14 @@ func (s *StopMigrationWorkflowResponse) SetBody(v *StopMigrationWorkflowResponse
 }
 
 type SubmitQueryRequest struct {
-	CatalogId   *string `json:"catalogId,omitempty" xml:"catalogId,omitempty"`
-	Sql         *string `json:"sql,omitempty" xml:"sql,omitempty"`
+	CatalogId *string `json:"catalogId,omitempty" xml:"catalogId,omitempty"`
+	// example:
+	//
+	// show databases
+	Sql *string `json:"sql,omitempty" xml:"sql,omitempty"`
+	// example:
+	//
+	// WS-A129E61C4892D2B4
 	WorkspaceId *string `json:"workspaceId,omitempty" xml:"workspaceId,omitempty"`
 }
 
@@ -12462,9 +15290,18 @@ func (s *SubmitQueryRequest) SetWorkspaceId(v string) *SubmitQueryRequest {
 }
 
 type SubmitQueryResponseBody struct {
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// Q-14475CF9B51FCE5E
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// 279AA630-A8ED-5EA9-80A3-2E213D63548C
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s SubmitQueryResponseBody) String() string {
@@ -12491,9 +15328,9 @@ func (s *SubmitQueryResponseBody) SetSuccess(v bool) *SubmitQueryResponseBody {
 }
 
 type SubmitQueryResponse struct {
-	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SubmitQueryResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SubmitQueryResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SubmitQueryResponse) String() string {
@@ -12521,6 +15358,10 @@ func (s *SubmitQueryResponse) SetBody(v *SubmitQueryResponseBody) *SubmitQueryRe
 
 type UnLockRequest struct {
 	// LockId
+	//
+	// example:
+	//
+	// 11709
 	LockId *int64 `json:"LockId,omitempty" xml:"LockId,omitempty"`
 }
 
@@ -12539,12 +15380,28 @@ func (s *UnLockRequest) SetLockId(v int64) *UnLockRequest {
 
 type UnLockResponseBody struct {
 	// Code
+	//
+	// example:
+	//
+	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// Message
+	//
+	// example:
+	//
+	// .
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// RequestId
+	//
+	// example:
+	//
+	// 37C8470A-5E6D-5E4E-AEF0-EA3EBE9C89EE
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Success
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -12577,9 +15434,9 @@ func (s *UnLockResponseBody) SetSuccess(v bool) *UnLockResponseBody {
 }
 
 type UnLockResponse struct {
-	Headers    map[string]*string  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UnLockResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UnLockResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UnLockResponse) String() string {
@@ -12607,6 +15464,8 @@ func (s *UnLockResponse) SetBody(v *UnLockResponseBody) *UnLockResponse {
 
 type UpdateCatalogRequest struct {
 	// cataloginput
+	//
+	// This parameter is required.
 	CatalogInput *CatalogInput `json:"CatalogInput,omitempty" xml:"CatalogInput,omitempty"`
 }
 
@@ -12624,10 +15483,22 @@ func (s *UpdateCatalogRequest) SetCatalogInput(v *CatalogInput) *UpdateCatalogRe
 }
 
 type UpdateCatalogResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// .
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 64E46067-49EA-5A91-A7B1-E812E18FC243
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s UpdateCatalogResponseBody) String() string {
@@ -12659,9 +15530,9 @@ func (s *UpdateCatalogResponseBody) SetSuccess(v bool) *UpdateCatalogResponseBod
 }
 
 type UpdateCatalogResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateCatalogResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateCatalogResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateCatalogResponse) String() string {
@@ -12713,12 +15584,28 @@ func (s *UpdateCatalogSettingsRequest) SetCatalogSettings(v *CatalogSettings) *U
 
 type UpdateCatalogSettingsResponseBody struct {
 	// Code
+	//
+	// example:
+	//
+	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// Message
+	//
+	// example:
+	//
+	// .
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// RequestId
+	//
+	// example:
+	//
+	// 01D8DD6B-4929-5999-9BB3-950AA30E3BD0
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Success
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -12751,9 +15638,9 @@ func (s *UpdateCatalogSettingsResponseBody) SetSuccess(v bool) *UpdateCatalogSet
 }
 
 type UpdateCatalogSettingsResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateCatalogSettingsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateCatalogSettingsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateCatalogSettingsResponse) String() string {
@@ -12780,9 +15667,15 @@ func (s *UpdateCatalogSettingsResponse) SetBody(v *UpdateCatalogSettingsResponse
 }
 
 type UpdateDatabaseRequest struct {
+	// example:
+	//
+	// 1344371
 	CatalogId     *string        `json:"CatalogId,omitempty" xml:"CatalogId,omitempty"`
 	DatabaseInput *DatabaseInput `json:"DatabaseInput,omitempty" xml:"DatabaseInput,omitempty"`
-	Name          *string        `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// database_test
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
 func (s UpdateDatabaseRequest) String() string {
@@ -12809,10 +15702,22 @@ func (s *UpdateDatabaseRequest) SetName(v string) *UpdateDatabaseRequest {
 }
 
 type UpdateDatabaseResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// .
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 161F5EFC-E97E-43C0-AACF-FF18FAC912F0
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s UpdateDatabaseResponseBody) String() string {
@@ -12844,9 +15749,9 @@ func (s *UpdateDatabaseResponseBody) SetSuccess(v bool) *UpdateDatabaseResponseB
 }
 
 type UpdateDatabaseResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateDatabaseResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateDatabaseResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateDatabaseResponse) String() string {
@@ -12873,10 +15778,19 @@ func (s *UpdateDatabaseResponse) SetBody(v *UpdateDatabaseResponseBody) *UpdateD
 }
 
 type UpdateFunctionRequest struct {
-	CatalogId     *string        `json:"CatalogId,omitempty" xml:"CatalogId,omitempty"`
+	// example:
+	//
+	// 1344371
+	CatalogId *string `json:"CatalogId,omitempty" xml:"CatalogId,omitempty"`
+	// example:
+	//
+	// database_test
 	DatabaseName  *string        `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
 	FunctionInput *FunctionInput `json:"FunctionInput,omitempty" xml:"FunctionInput,omitempty"`
-	FunctionName  *string        `json:"FunctionName,omitempty" xml:"FunctionName,omitempty"`
+	// example:
+	//
+	// func2
+	FunctionName *string `json:"FunctionName,omitempty" xml:"FunctionName,omitempty"`
 }
 
 func (s UpdateFunctionRequest) String() string {
@@ -12908,10 +15822,22 @@ func (s *UpdateFunctionRequest) SetFunctionName(v string) *UpdateFunctionRequest
 }
 
 type UpdateFunctionResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// .
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// B7F4B621-E41E-4C84-B97F-42B5380A32BB
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s UpdateFunctionResponseBody) String() string {
@@ -12943,9 +15869,9 @@ func (s *UpdateFunctionResponseBody) SetSuccess(v bool) *UpdateFunctionResponseB
 }
 
 type UpdateFunctionResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateFunctionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateFunctionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateFunctionResponse) String() string {
@@ -12989,10 +15915,22 @@ func (s *UpdatePartitionColumnStatisticsRequest) SetUpdateTablePartitionColumnSt
 }
 
 type UpdatePartitionColumnStatisticsResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// .
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// B7F4B621-E41E-4C84-B97F-42B5380A32BB
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s UpdatePartitionColumnStatisticsResponseBody) String() string {
@@ -13024,9 +15962,9 @@ func (s *UpdatePartitionColumnStatisticsResponseBody) SetSuccess(v bool) *Update
 }
 
 type UpdatePartitionColumnStatisticsResponse struct {
-	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdatePartitionColumnStatisticsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdatePartitionColumnStatisticsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdatePartitionColumnStatisticsResponse) String() string {
@@ -13053,13 +15991,26 @@ func (s *UpdatePartitionColumnStatisticsResponse) SetBody(v *UpdatePartitionColu
 }
 
 type UpdatePermissionsRequest struct {
+	// This parameter is required.
 	Accesses []*string `json:"Accesses,omitempty" xml:"Accesses,omitempty" type:"Repeated"`
 	// CatalogId
-	CatalogId        *string       `json:"CatalogId,omitempty" xml:"CatalogId,omitempty"`
-	DelegateAccesses []*string     `json:"DelegateAccesses,omitempty" xml:"DelegateAccesses,omitempty" type:"Repeated"`
-	MetaResource     *MetaResource `json:"MetaResource,omitempty" xml:"MetaResource,omitempty"`
-	Principal        *Principal    `json:"Principal,omitempty" xml:"Principal,omitempty"`
-	Type             *string       `json:"Type,omitempty" xml:"Type,omitempty"`
+	//
+	// example:
+	//
+	// 1344371
+	CatalogId *string `json:"CatalogId,omitempty" xml:"CatalogId,omitempty"`
+	// This parameter is required.
+	DelegateAccesses []*string `json:"DelegateAccesses,omitempty" xml:"DelegateAccesses,omitempty" type:"Repeated"`
+	// This parameter is required.
+	MetaResource *MetaResource `json:"MetaResource,omitempty" xml:"MetaResource,omitempty"`
+	// This parameter is required.
+	Principal *Principal `json:"Principal,omitempty" xml:"Principal,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Hive
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s UpdatePermissionsRequest) String() string {
@@ -13102,12 +16053,28 @@ func (s *UpdatePermissionsRequest) SetType(v string) *UpdatePermissionsRequest {
 
 type UpdatePermissionsResponseBody struct {
 	// Response Code
+	//
+	// example:
+	//
+	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// Message Code
+	//
+	// example:
+	//
+	// .
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// RequestId
+	//
+	// example:
+	//
+	// B7F4B621-E41E-4C84-B97F-42B5380A32BB
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Success
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -13140,9 +16107,9 @@ func (s *UpdatePermissionsResponseBody) SetSuccess(v bool) *UpdatePermissionsRes
 }
 
 type UpdatePermissionsResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdatePermissionsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdatePermissionsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdatePermissionsResponse) String() string {
@@ -13169,9 +16136,20 @@ func (s *UpdatePermissionsResponse) SetBody(v *UpdatePermissionsResponseBody) *U
 }
 
 type UpdateRegisteredLocationRequest struct {
-	InventoryCollectEnabled *bool   `json:"InventoryCollectEnabled,omitempty" xml:"InventoryCollectEnabled,omitempty"`
-	LocationId              *string `json:"LocationId,omitempty" xml:"LocationId,omitempty"`
-	OssLogCollectEnabled    *bool   `json:"OssLogCollectEnabled,omitempty" xml:"OssLogCollectEnabled,omitempty"`
+	// example:
+	//
+	// true
+	InventoryCollectEnabled *bool `json:"InventoryCollectEnabled,omitempty" xml:"InventoryCollectEnabled,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// LOC-AB8FBC17F95A4AF5
+	LocationId *string `json:"LocationId,omitempty" xml:"LocationId,omitempty"`
+	// example:
+	//
+	// true
+	OssLogCollectEnabled *bool `json:"OssLogCollectEnabled,omitempty" xml:"OssLogCollectEnabled,omitempty"`
 }
 
 func (s UpdateRegisteredLocationRequest) String() string {
@@ -13198,9 +16176,15 @@ func (s *UpdateRegisteredLocationRequest) SetOssLogCollectEnabled(v bool) *Updat
 }
 
 type UpdateRegisteredLocationResponseBody struct {
-	Data      *UpdateRegisteredLocationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	RequestId *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                                     `json:"Success,omitempty" xml:"Success,omitempty"`
+	Data *UpdateRegisteredLocationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// 8030C902-C25B-1839-867D-E6F70A5B9810
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s UpdateRegisteredLocationResponseBody) String() string {
@@ -13228,6 +16212,10 @@ func (s *UpdateRegisteredLocationResponseBody) SetSuccess(v bool) *UpdateRegiste
 
 type UpdateRegisteredLocationResponseBodyData struct {
 	// Location ID
+	//
+	// example:
+	//
+	// LOC-AB8FBC17F95A4AF5
 	LocationId                            *string                              `json:"LocationId,omitempty" xml:"LocationId,omitempty"`
 	StorageCollectTaskOperationResultList []*StorageCollectTaskOperationResult `json:"StorageCollectTaskOperationResultList,omitempty" xml:"StorageCollectTaskOperationResultList,omitempty" type:"Repeated"`
 }
@@ -13251,9 +16239,9 @@ func (s *UpdateRegisteredLocationResponseBodyData) SetStorageCollectTaskOperatio
 }
 
 type UpdateRegisteredLocationResponse struct {
-	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateRegisteredLocationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateRegisteredLocationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateRegisteredLocationResponse) String() string {
@@ -13282,6 +16270,10 @@ func (s *UpdateRegisteredLocationResponse) SetBody(v *UpdateRegisteredLocationRe
 type UpdateRoleRequest struct {
 	RoleInput *RoleInput `json:"RoleInput,omitempty" xml:"RoleInput,omitempty"`
 	// RoleName
+	//
+	// example:
+	//
+	// 原始名称
 	RoleName *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
 }
 
@@ -13305,12 +16297,28 @@ func (s *UpdateRoleRequest) SetRoleName(v string) *UpdateRoleRequest {
 
 type UpdateRoleResponseBody struct {
 	// code
+	//
+	// example:
+	//
+	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// message
+	//
+	// example:
+	//
+	// .
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// requestId
+	//
+	// example:
+	//
+	// 604E5919-C6FF-54CE-9C23-C5350E6F5415
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// success
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -13343,9 +16351,9 @@ func (s *UpdateRoleResponseBody) SetSuccess(v bool) *UpdateRoleResponseBody {
 }
 
 type UpdateRoleResponse struct {
-	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateRoleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateRoleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateRoleResponse) String() string {
@@ -13372,6 +16380,9 @@ func (s *UpdateRoleResponse) SetBody(v *UpdateRoleResponseBody) *UpdateRoleRespo
 }
 
 type UpdateRoleUsersRequest struct {
+	// example:
+	//
+	// test_role_8
 	RoleName *string      `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
 	Users    []*Principal `json:"Users,omitempty" xml:"Users,omitempty" type:"Repeated"`
 }
@@ -13396,12 +16407,28 @@ func (s *UpdateRoleUsersRequest) SetUsers(v []*Principal) *UpdateRoleUsersReques
 
 type UpdateRoleUsersResponseBody struct {
 	// code
+	//
+	// example:
+	//
+	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// message
+	//
+	// example:
+	//
+	// .
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// requestId
+	//
+	// example:
+	//
+	// B7F4B621-E41E-4C84-B97F-42B5380A32BB
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// success
+	//
+	// example:
+	//
+	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -13434,9 +16461,9 @@ func (s *UpdateRoleUsersResponseBody) SetSuccess(v bool) *UpdateRoleUsersRespons
 }
 
 type UpdateRoleUsersResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateRoleUsersResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateRoleUsersResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateRoleUsersResponse) String() string {
@@ -13463,13 +16490,31 @@ func (s *UpdateRoleUsersResponse) SetBody(v *UpdateRoleUsersResponseBody) *Updat
 }
 
 type UpdateTableRequest struct {
-	AllowPartitionKeyChange *bool       `json:"AllowPartitionKeyChange,omitempty" xml:"AllowPartitionKeyChange,omitempty"`
-	CatalogId               *string     `json:"CatalogId,omitempty" xml:"CatalogId,omitempty"`
-	DatabaseName            *string     `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
-	IsAsync                 *bool       `json:"IsAsync,omitempty" xml:"IsAsync,omitempty"`
-	SkipArchive             *bool       `json:"SkipArchive,omitempty" xml:"SkipArchive,omitempty"`
-	TableInput              *TableInput `json:"TableInput,omitempty" xml:"TableInput,omitempty"`
-	TableName               *string     `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	// example:
+	//
+	// false
+	AllowPartitionKeyChange *bool `json:"AllowPartitionKeyChange,omitempty" xml:"AllowPartitionKeyChange,omitempty"`
+	// example:
+	//
+	// 1344371
+	CatalogId *string `json:"CatalogId,omitempty" xml:"CatalogId,omitempty"`
+	// example:
+	//
+	// database_test
+	DatabaseName *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
+	// example:
+	//
+	// true
+	IsAsync *bool `json:"IsAsync,omitempty" xml:"IsAsync,omitempty"`
+	// example:
+	//
+	// false
+	SkipArchive *bool       `json:"SkipArchive,omitempty" xml:"SkipArchive,omitempty"`
+	TableInput  *TableInput `json:"TableInput,omitempty" xml:"TableInput,omitempty"`
+	// example:
+	//
+	// test_table_20201223
+	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
 }
 
 func (s UpdateTableRequest) String() string {
@@ -13516,11 +16561,27 @@ func (s *UpdateTableRequest) SetTableName(v string) *UpdateTableRequest {
 }
 
 type UpdateTableResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// .
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// B7F4B621-E41E-4C84-B97F-42B5380A32BB
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 	// Async task Id
+	//
+	// example:
+	//
+	// aa689782deb97265701f57324fc4ae42
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
@@ -13558,9 +16619,9 @@ func (s *UpdateTableResponseBody) SetTaskId(v string) *UpdateTableResponseBody {
 }
 
 type UpdateTableResponse struct {
-	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateTableResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateTableResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateTableResponse) String() string {
@@ -13604,10 +16665,22 @@ func (s *UpdateTableColumnStatisticsRequest) SetUpdateTablePartitionColumnStatis
 }
 
 type UpdateTableColumnStatisticsResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// .
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// B7F4B621-E41E-4C84-B97F-42B5380A32BB
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s UpdateTableColumnStatisticsResponseBody) String() string {
@@ -13639,9 +16712,9 @@ func (s *UpdateTableColumnStatisticsResponseBody) SetSuccess(v bool) *UpdateTabl
 }
 
 type UpdateTableColumnStatisticsResponse struct {
-	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateTableColumnStatisticsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateTableColumnStatisticsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateTableColumnStatisticsResponse) String() string {
@@ -13773,6 +16846,17 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
+// Summary:
+//
+// abort lock context with the lockid
+//
+// @param request - AbortLockRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AbortLockResponse
 func (client *Client) AbortLockWithOptions(request *AbortLockRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *AbortLockResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -13807,6 +16891,13 @@ func (client *Client) AbortLockWithOptions(request *AbortLockRequest, headers ma
 	return _result, _err
 }
 
+// Summary:
+//
+// abort lock context with the lockid
+//
+// @param request - AbortLockRequest
+//
+// @return AbortLockResponse
 func (client *Client) AbortLock(request *AbortLockRequest) (_result *AbortLockResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -13819,6 +16910,17 @@ func (client *Client) AbortLock(request *AbortLockRequest) (_result *AbortLockRe
 	return _result, _err
 }
 
+// Summary:
+//
+// 批量创建分区
+//
+// @param request - BatchCreatePartitionsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return BatchCreatePartitionsResponse
 func (client *Client) BatchCreatePartitionsWithOptions(request *BatchCreatePartitionsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *BatchCreatePartitionsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -13873,6 +16975,13 @@ func (client *Client) BatchCreatePartitionsWithOptions(request *BatchCreateParti
 	return _result, _err
 }
 
+// Summary:
+//
+// 批量创建分区
+//
+// @param request - BatchCreatePartitionsRequest
+//
+// @return BatchCreatePartitionsResponse
 func (client *Client) BatchCreatePartitions(request *BatchCreatePartitionsRequest) (_result *BatchCreatePartitionsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -13885,6 +16994,17 @@ func (client *Client) BatchCreatePartitions(request *BatchCreatePartitionsReques
 	return _result, _err
 }
 
+// Summary:
+//
+// 批量创建表
+//
+// @param request - BatchCreateTablesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return BatchCreateTablesResponse
 func (client *Client) BatchCreateTablesWithOptions(request *BatchCreateTablesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *BatchCreateTablesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -13931,6 +17051,13 @@ func (client *Client) BatchCreateTablesWithOptions(request *BatchCreateTablesReq
 	return _result, _err
 }
 
+// Summary:
+//
+// 批量创建表
+//
+// @param request - BatchCreateTablesRequest
+//
+// @return BatchCreateTablesResponse
 func (client *Client) BatchCreateTables(request *BatchCreateTablesRequest) (_result *BatchCreateTablesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -13943,6 +17070,17 @@ func (client *Client) BatchCreateTables(request *BatchCreateTablesRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// batch delete partitions
+//
+// @param request - BatchDeletePartitionsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return BatchDeletePartitionsResponse
 func (client *Client) BatchDeletePartitionsWithOptions(request *BatchDeletePartitionsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *BatchDeletePartitionsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -13993,6 +17131,13 @@ func (client *Client) BatchDeletePartitionsWithOptions(request *BatchDeleteParti
 	return _result, _err
 }
 
+// Summary:
+//
+// batch delete partitions
+//
+// @param request - BatchDeletePartitionsRequest
+//
+// @return BatchDeletePartitionsResponse
 func (client *Client) BatchDeletePartitions(request *BatchDeletePartitionsRequest) (_result *BatchDeletePartitionsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -14005,6 +17150,17 @@ func (client *Client) BatchDeletePartitions(request *BatchDeletePartitionsReques
 	return _result, _err
 }
 
+// Summary:
+//
+// BatchDeleteTableVersions
+//
+// @param request - BatchDeleteTableVersionsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return BatchDeleteTableVersionsResponse
 func (client *Client) BatchDeleteTableVersionsWithOptions(request *BatchDeleteTableVersionsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *BatchDeleteTableVersionsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14051,6 +17207,13 @@ func (client *Client) BatchDeleteTableVersionsWithOptions(request *BatchDeleteTa
 	return _result, _err
 }
 
+// Summary:
+//
+// BatchDeleteTableVersions
+//
+// @param request - BatchDeleteTableVersionsRequest
+//
+// @return BatchDeleteTableVersionsResponse
 func (client *Client) BatchDeleteTableVersions(request *BatchDeleteTableVersionsRequest) (_result *BatchDeleteTableVersionsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -14063,6 +17226,17 @@ func (client *Client) BatchDeleteTableVersions(request *BatchDeleteTableVersions
 	return _result, _err
 }
 
+// Summary:
+//
+// BatchDeleteTables
+//
+// @param request - BatchDeleteTablesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return BatchDeleteTablesResponse
 func (client *Client) BatchDeleteTablesWithOptions(request *BatchDeleteTablesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *BatchDeleteTablesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14109,6 +17283,13 @@ func (client *Client) BatchDeleteTablesWithOptions(request *BatchDeleteTablesReq
 	return _result, _err
 }
 
+// Summary:
+//
+// BatchDeleteTables
+//
+// @param request - BatchDeleteTablesRequest
+//
+// @return BatchDeleteTablesResponse
 func (client *Client) BatchDeleteTables(request *BatchDeleteTablesRequest) (_result *BatchDeleteTablesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -14121,6 +17302,17 @@ func (client *Client) BatchDeleteTables(request *BatchDeleteTablesRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// Batch Get Partition Column Statistics
+//
+// @param request - BatchGetPartitionColumnStatisticsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return BatchGetPartitionColumnStatisticsResponse
 func (client *Client) BatchGetPartitionColumnStatisticsWithOptions(request *BatchGetPartitionColumnStatisticsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *BatchGetPartitionColumnStatisticsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14171,6 +17363,13 @@ func (client *Client) BatchGetPartitionColumnStatisticsWithOptions(request *Batc
 	return _result, _err
 }
 
+// Summary:
+//
+// Batch Get Partition Column Statistics
+//
+// @param request - BatchGetPartitionColumnStatisticsRequest
+//
+// @return BatchGetPartitionColumnStatisticsResponse
 func (client *Client) BatchGetPartitionColumnStatistics(request *BatchGetPartitionColumnStatisticsRequest) (_result *BatchGetPartitionColumnStatisticsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -14183,6 +17382,17 @@ func (client *Client) BatchGetPartitionColumnStatistics(request *BatchGetPartiti
 	return _result, _err
 }
 
+// Summary:
+//
+// batch get partitions
+//
+// @param request - BatchGetPartitionsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return BatchGetPartitionsResponse
 func (client *Client) BatchGetPartitionsWithOptions(request *BatchGetPartitionsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *BatchGetPartitionsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14233,6 +17443,13 @@ func (client *Client) BatchGetPartitionsWithOptions(request *BatchGetPartitionsR
 	return _result, _err
 }
 
+// Summary:
+//
+// batch get partitions
+//
+// @param request - BatchGetPartitionsRequest
+//
+// @return BatchGetPartitionsResponse
 func (client *Client) BatchGetPartitions(request *BatchGetPartitionsRequest) (_result *BatchGetPartitionsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -14245,6 +17462,17 @@ func (client *Client) BatchGetPartitions(request *BatchGetPartitionsRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// batch get tables
+//
+// @param request - BatchGetTablesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return BatchGetTablesResponse
 func (client *Client) BatchGetTablesWithOptions(request *BatchGetTablesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *BatchGetTablesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14287,6 +17515,13 @@ func (client *Client) BatchGetTablesWithOptions(request *BatchGetTablesRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// batch get tables
+//
+// @param request - BatchGetTablesRequest
+//
+// @return BatchGetTablesResponse
 func (client *Client) BatchGetTables(request *BatchGetTablesRequest) (_result *BatchGetTablesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -14299,6 +17534,17 @@ func (client *Client) BatchGetTables(request *BatchGetTablesRequest) (_result *B
 	return _result, _err
 }
 
+// Summary:
+//
+// 批量授权
+//
+// @param request - BatchGrantPermissionsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return BatchGrantPermissionsResponse
 func (client *Client) BatchGrantPermissionsWithOptions(request *BatchGrantPermissionsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *BatchGrantPermissionsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14341,6 +17587,13 @@ func (client *Client) BatchGrantPermissionsWithOptions(request *BatchGrantPermis
 	return _result, _err
 }
 
+// Summary:
+//
+// 批量授权
+//
+// @param request - BatchGrantPermissionsRequest
+//
+// @return BatchGrantPermissionsResponse
 func (client *Client) BatchGrantPermissions(request *BatchGrantPermissionsRequest) (_result *BatchGrantPermissionsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -14353,6 +17606,17 @@ func (client *Client) BatchGrantPermissions(request *BatchGrantPermissionsReques
 	return _result, _err
 }
 
+// Summary:
+//
+// 批量取消授权
+//
+// @param request - BatchRevokePermissionsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return BatchRevokePermissionsResponse
 func (client *Client) BatchRevokePermissionsWithOptions(request *BatchRevokePermissionsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *BatchRevokePermissionsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14395,6 +17659,13 @@ func (client *Client) BatchRevokePermissionsWithOptions(request *BatchRevokePerm
 	return _result, _err
 }
 
+// Summary:
+//
+// 批量取消授权
+//
+// @param request - BatchRevokePermissionsRequest
+//
+// @return BatchRevokePermissionsResponse
 func (client *Client) BatchRevokePermissions(request *BatchRevokePermissionsRequest) (_result *BatchRevokePermissionsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -14407,6 +17678,17 @@ func (client *Client) BatchRevokePermissions(request *BatchRevokePermissionsRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// batch update partitions
+//
+// @param request - BatchUpdatePartitionsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return BatchUpdatePartitionsResponse
 func (client *Client) BatchUpdatePartitionsWithOptions(request *BatchUpdatePartitionsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *BatchUpdatePartitionsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14453,6 +17735,13 @@ func (client *Client) BatchUpdatePartitionsWithOptions(request *BatchUpdateParti
 	return _result, _err
 }
 
+// Summary:
+//
+// batch update partitions
+//
+// @param request - BatchUpdatePartitionsRequest
+//
+// @return BatchUpdatePartitionsResponse
 func (client *Client) BatchUpdatePartitions(request *BatchUpdatePartitionsRequest) (_result *BatchUpdatePartitionsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -14465,6 +17754,17 @@ func (client *Client) BatchUpdatePartitions(request *BatchUpdatePartitionsReques
 	return _result, _err
 }
 
+// Summary:
+//
+// 批量更新表
+//
+// @param request - BatchUpdateTablesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return BatchUpdateTablesResponse
 func (client *Client) BatchUpdateTablesWithOptions(request *BatchUpdateTablesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *BatchUpdateTablesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14511,6 +17811,13 @@ func (client *Client) BatchUpdateTablesWithOptions(request *BatchUpdateTablesReq
 	return _result, _err
 }
 
+// Summary:
+//
+// 批量更新表
+//
+// @param request - BatchUpdateTablesRequest
+//
+// @return BatchUpdateTablesResponse
 func (client *Client) BatchUpdateTables(request *BatchUpdateTablesRequest) (_result *BatchUpdateTablesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -14523,6 +17830,17 @@ func (client *Client) BatchUpdateTables(request *BatchUpdateTablesRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// 取消查询任务
+//
+// @param request - CancelQueryRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CancelQueryResponse
 func (client *Client) CancelQueryWithOptions(request *CancelQueryRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CancelQueryResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14557,6 +17875,13 @@ func (client *Client) CancelQueryWithOptions(request *CancelQueryRequest, header
 	return _result, _err
 }
 
+// Summary:
+//
+// 取消查询任务
+//
+// @param request - CancelQueryRequest
+//
+// @return CancelQueryResponse
 func (client *Client) CancelQuery(request *CancelQueryRequest) (_result *CancelQueryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -14569,6 +17894,17 @@ func (client *Client) CancelQuery(request *CancelQueryRequest) (_result *CancelQ
 	return _result, _err
 }
 
+// Summary:
+//
+// Check permissions
+//
+// @param request - CheckPermissionsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CheckPermissionsResponse
 func (client *Client) CheckPermissionsWithOptions(request *CheckPermissionsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CheckPermissionsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14598,6 +17934,13 @@ func (client *Client) CheckPermissionsWithOptions(request *CheckPermissionsReque
 	return _result, _err
 }
 
+// Summary:
+//
+// Check permissions
+//
+// @param request - CheckPermissionsRequest
+//
+// @return CheckPermissionsResponse
 func (client *Client) CheckPermissions(request *CheckPermissionsRequest) (_result *CheckPermissionsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -14610,6 +17953,17 @@ func (client *Client) CheckPermissions(request *CheckPermissionsRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建数据湖Catalog
+//
+// @param request - CreateCatalogRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateCatalogResponse
 func (client *Client) CreateCatalogWithOptions(request *CreateCatalogRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateCatalogResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14644,6 +17998,13 @@ func (client *Client) CreateCatalogWithOptions(request *CreateCatalogRequest, he
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建数据湖Catalog
+//
+// @param request - CreateCatalogRequest
+//
+// @return CreateCatalogResponse
 func (client *Client) CreateCatalog(request *CreateCatalogRequest) (_result *CreateCatalogResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -14656,6 +18017,17 @@ func (client *Client) CreateCatalog(request *CreateCatalogRequest) (_result *Cre
 	return _result, _err
 }
 
+// Summary:
+//
+// create database
+//
+// @param request - CreateDatabaseRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateDatabaseResponse
 func (client *Client) CreateDatabaseWithOptions(request *CreateDatabaseRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateDatabaseResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14694,6 +18066,13 @@ func (client *Client) CreateDatabaseWithOptions(request *CreateDatabaseRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// create database
+//
+// @param request - CreateDatabaseRequest
+//
+// @return CreateDatabaseResponse
 func (client *Client) CreateDatabase(request *CreateDatabaseRequest) (_result *CreateDatabaseResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -14706,6 +18085,17 @@ func (client *Client) CreateDatabase(request *CreateDatabaseRequest) (_result *C
 	return _result, _err
 }
 
+// Summary:
+//
+// Create function
+//
+// @param request - CreateFunctionRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateFunctionResponse
 func (client *Client) CreateFunctionWithOptions(request *CreateFunctionRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateFunctionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14748,6 +18138,13 @@ func (client *Client) CreateFunctionWithOptions(request *CreateFunctionRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// Create function
+//
+// @param request - CreateFunctionRequest
+//
+// @return CreateFunctionResponse
 func (client *Client) CreateFunction(request *CreateFunctionRequest) (_result *CreateFunctionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -14760,6 +18157,17 @@ func (client *Client) CreateFunction(request *CreateFunctionRequest) (_result *C
 	return _result, _err
 }
 
+// Summary:
+//
+// create lock
+//
+// @param request - CreateLockRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateLockResponse
 func (client *Client) CreateLockWithOptions(request *CreateLockRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateLockResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14794,6 +18202,13 @@ func (client *Client) CreateLockWithOptions(request *CreateLockRequest, headers 
 	return _result, _err
 }
 
+// Summary:
+//
+// create lock
+//
+// @param request - CreateLockRequest
+//
+// @return CreateLockResponse
 func (client *Client) CreateLock(request *CreateLockRequest) (_result *CreateLockResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -14806,6 +18221,17 @@ func (client *Client) CreateLock(request *CreateLockRequest) (_result *CreateLoc
 	return _result, _err
 }
 
+// Summary:
+//
+// Create Partition
+//
+// @param request - CreatePartitionRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreatePartitionResponse
 func (client *Client) CreatePartitionWithOptions(request *CreatePartitionRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreatePartitionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14860,6 +18286,13 @@ func (client *Client) CreatePartitionWithOptions(request *CreatePartitionRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// Create Partition
+//
+// @param request - CreatePartitionRequest
+//
+// @return CreatePartitionResponse
 func (client *Client) CreatePartition(request *CreatePartitionRequest) (_result *CreatePartitionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -14872,6 +18305,17 @@ func (client *Client) CreatePartition(request *CreatePartitionRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建数据糊角色
+//
+// @param request - CreateRoleRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateRoleResponse
 func (client *Client) CreateRoleWithOptions(request *CreateRoleRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateRoleResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14901,6 +18345,13 @@ func (client *Client) CreateRoleWithOptions(request *CreateRoleRequest, headers 
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建数据糊角色
+//
+// @param request - CreateRoleRequest
+//
+// @return CreateRoleResponse
 func (client *Client) CreateRole(request *CreateRoleRequest) (_result *CreateRoleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -14913,6 +18364,17 @@ func (client *Client) CreateRole(request *CreateRoleRequest) (_result *CreateRol
 	return _result, _err
 }
 
+// Summary:
+//
+// Create tables
+//
+// @param request - CreateTableRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateTableResponse
 func (client *Client) CreateTableWithOptions(request *CreateTableRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateTableResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14955,6 +18417,13 @@ func (client *Client) CreateTableWithOptions(request *CreateTableRequest, header
 	return _result, _err
 }
 
+// Summary:
+//
+// Create tables
+//
+// @param request - CreateTableRequest
+//
+// @return CreateTableResponse
 func (client *Client) CreateTable(request *CreateTableRequest) (_result *CreateTableResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -14967,6 +18436,17 @@ func (client *Client) CreateTable(request *CreateTableRequest) (_result *CreateT
 	return _result, _err
 }
 
+// Summary:
+//
+// Delete Catalog by catalogId
+//
+// @param request - DeleteCatalogRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteCatalogResponse
 func (client *Client) DeleteCatalogWithOptions(request *DeleteCatalogRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteCatalogResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15005,6 +18485,13 @@ func (client *Client) DeleteCatalogWithOptions(request *DeleteCatalogRequest, he
 	return _result, _err
 }
 
+// Summary:
+//
+// Delete Catalog by catalogId
+//
+// @param request - DeleteCatalogRequest
+//
+// @return DeleteCatalogResponse
 func (client *Client) DeleteCatalog(request *DeleteCatalogRequest) (_result *DeleteCatalogResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -15017,6 +18504,17 @@ func (client *Client) DeleteCatalog(request *DeleteCatalogRequest) (_result *Del
 	return _result, _err
 }
 
+// Summary:
+//
+// Delete database by catalogId and database name
+//
+// @param request - DeleteDatabaseRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteDatabaseResponse
 func (client *Client) DeleteDatabaseWithOptions(request *DeleteDatabaseRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteDatabaseResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15063,6 +18561,13 @@ func (client *Client) DeleteDatabaseWithOptions(request *DeleteDatabaseRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// Delete database by catalogId and database name
+//
+// @param request - DeleteDatabaseRequest
+//
+// @return DeleteDatabaseResponse
 func (client *Client) DeleteDatabase(request *DeleteDatabaseRequest) (_result *DeleteDatabaseResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -15075,6 +18580,17 @@ func (client *Client) DeleteDatabase(request *DeleteDatabaseRequest) (_result *D
 	return _result, _err
 }
 
+// Summary:
+//
+// Delete function
+//
+// @param request - DeleteFunctionRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteFunctionResponse
 func (client *Client) DeleteFunctionWithOptions(request *DeleteFunctionRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteFunctionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15117,6 +18633,13 @@ func (client *Client) DeleteFunctionWithOptions(request *DeleteFunctionRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// Delete function
+//
+// @param request - DeleteFunctionRequest
+//
+// @return DeleteFunctionResponse
 func (client *Client) DeleteFunction(request *DeleteFunctionRequest) (_result *DeleteFunctionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -15129,6 +18652,17 @@ func (client *Client) DeleteFunction(request *DeleteFunctionRequest) (_result *D
 	return _result, _err
 }
 
+// Summary:
+//
+// delete partition
+//
+// @param request - DeletePartitionRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeletePartitionResponse
 func (client *Client) DeletePartitionWithOptions(request *DeletePartitionRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeletePartitionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15179,6 +18713,13 @@ func (client *Client) DeletePartitionWithOptions(request *DeletePartitionRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// delete partition
+//
+// @param request - DeletePartitionRequest
+//
+// @return DeletePartitionResponse
 func (client *Client) DeletePartition(request *DeletePartitionRequest) (_result *DeletePartitionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -15191,6 +18732,17 @@ func (client *Client) DeletePartition(request *DeletePartitionRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// DeletePartitionColumnStatistics
+//
+// @param tmpReq - DeletePartitionColumnStatisticsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeletePartitionColumnStatisticsResponse
 func (client *Client) DeletePartitionColumnStatisticsWithOptions(tmpReq *DeletePartitionColumnStatisticsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeletePartitionColumnStatisticsResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -15251,6 +18803,13 @@ func (client *Client) DeletePartitionColumnStatisticsWithOptions(tmpReq *DeleteP
 	return _result, _err
 }
 
+// Summary:
+//
+// DeletePartitionColumnStatistics
+//
+// @param request - DeletePartitionColumnStatisticsRequest
+//
+// @return DeletePartitionColumnStatisticsResponse
 func (client *Client) DeletePartitionColumnStatistics(request *DeletePartitionColumnStatisticsRequest) (_result *DeletePartitionColumnStatisticsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -15263,6 +18822,17 @@ func (client *Client) DeletePartitionColumnStatistics(request *DeletePartitionCo
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除角色
+//
+// @param request - DeleteRoleRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteRoleResponse
 func (client *Client) DeleteRoleWithOptions(request *DeleteRoleRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteRoleResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15297,6 +18867,13 @@ func (client *Client) DeleteRoleWithOptions(request *DeleteRoleRequest, headers 
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除角色
+//
+// @param request - DeleteRoleRequest
+//
+// @return DeleteRoleResponse
 func (client *Client) DeleteRole(request *DeleteRoleRequest) (_result *DeleteRoleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -15309,6 +18886,17 @@ func (client *Client) DeleteRole(request *DeleteRoleRequest) (_result *DeleteRol
 	return _result, _err
 }
 
+// Summary:
+//
+// delete table
+//
+// @param request - DeleteTableRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteTableResponse
 func (client *Client) DeleteTableWithOptions(request *DeleteTableRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteTableResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15351,6 +18939,13 @@ func (client *Client) DeleteTableWithOptions(request *DeleteTableRequest, header
 	return _result, _err
 }
 
+// Summary:
+//
+// delete table
+//
+// @param request - DeleteTableRequest
+//
+// @return DeleteTableResponse
 func (client *Client) DeleteTable(request *DeleteTableRequest) (_result *DeleteTableResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -15363,6 +18958,17 @@ func (client *Client) DeleteTable(request *DeleteTableRequest) (_result *DeleteT
 	return _result, _err
 }
 
+// Summary:
+//
+// DeleteTableColumnStatistics
+//
+// @param tmpReq - DeleteTableColumnStatisticsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteTableColumnStatisticsResponse
 func (client *Client) DeleteTableColumnStatisticsWithOptions(tmpReq *DeleteTableColumnStatisticsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteTableColumnStatisticsResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -15415,6 +19021,13 @@ func (client *Client) DeleteTableColumnStatisticsWithOptions(tmpReq *DeleteTable
 	return _result, _err
 }
 
+// Summary:
+//
+// DeleteTableColumnStatistics
+//
+// @param request - DeleteTableColumnStatisticsRequest
+//
+// @return DeleteTableColumnStatisticsResponse
 func (client *Client) DeleteTableColumnStatistics(request *DeleteTableColumnStatisticsRequest) (_result *DeleteTableColumnStatisticsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -15427,6 +19040,17 @@ func (client *Client) DeleteTableColumnStatistics(request *DeleteTableColumnStat
 	return _result, _err
 }
 
+// Summary:
+//
+// delete table version
+//
+// @param request - DeleteTableVersionRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteTableVersionResponse
 func (client *Client) DeleteTableVersionWithOptions(request *DeleteTableVersionRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteTableVersionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15473,6 +19097,13 @@ func (client *Client) DeleteTableVersionWithOptions(request *DeleteTableVersionR
 	return _result, _err
 }
 
+// Summary:
+//
+// delete table version
+//
+// @param request - DeleteTableVersionRequest
+//
+// @return DeleteTableVersionResponse
 func (client *Client) DeleteTableVersion(request *DeleteTableVersionRequest) (_result *DeleteTableVersionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -15485,6 +19116,17 @@ func (client *Client) DeleteTableVersion(request *DeleteTableVersionRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// 取消注册Location
+//
+// @param request - DeregisterLocationRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeregisterLocationResponse
 func (client *Client) DeregisterLocationWithOptions(request *DeregisterLocationRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeregisterLocationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15519,6 +19161,13 @@ func (client *Client) DeregisterLocationWithOptions(request *DeregisterLocationR
 	return _result, _err
 }
 
+// Summary:
+//
+// 取消注册Location
+//
+// @param request - DeregisterLocationRequest
+//
+// @return DeregisterLocationResponse
 func (client *Client) DeregisterLocation(request *DeregisterLocationRequest) (_result *DeregisterLocationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -15531,6 +19180,11 @@ func (client *Client) DeregisterLocation(request *DeregisterLocationRequest) (_r
 	return _result, _err
 }
 
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeRegionsResponse
 func (client *Client) DescribeRegionsWithOptions(headers map[string]*string, runtime *util.RuntimeOptions) (_result *DescribeRegionsResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -15555,6 +19209,7 @@ func (client *Client) DescribeRegionsWithOptions(headers map[string]*string, run
 	return _result, _err
 }
 
+// @return DescribeRegionsResponse
 func (client *Client) DescribeRegions() (_result *DescribeRegionsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -15567,6 +19222,17 @@ func (client *Client) DescribeRegions() (_result *DescribeRegionsResponse, _err 
 	return _result, _err
 }
 
+// Summary:
+//
+// GetAsyncTaskStatus
+//
+// @param request - GetAsyncTaskStatusRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAsyncTaskStatusResponse
 func (client *Client) GetAsyncTaskStatusWithOptions(request *GetAsyncTaskStatusRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetAsyncTaskStatusResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15605,6 +19271,13 @@ func (client *Client) GetAsyncTaskStatusWithOptions(request *GetAsyncTaskStatusR
 	return _result, _err
 }
 
+// Summary:
+//
+// GetAsyncTaskStatus
+//
+// @param request - GetAsyncTaskStatusRequest
+//
+// @return GetAsyncTaskStatusResponse
 func (client *Client) GetAsyncTaskStatus(request *GetAsyncTaskStatusRequest) (_result *GetAsyncTaskStatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -15617,6 +19290,17 @@ func (client *Client) GetAsyncTaskStatus(request *GetAsyncTaskStatusRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取Catalog
+//
+// @param request - GetCatalogRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetCatalogResponse
 func (client *Client) GetCatalogWithOptions(request *GetCatalogRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetCatalogResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15651,6 +19335,13 @@ func (client *Client) GetCatalogWithOptions(request *GetCatalogRequest, headers 
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取Catalog
+//
+// @param request - GetCatalogRequest
+//
+// @return GetCatalogResponse
 func (client *Client) GetCatalog(request *GetCatalogRequest) (_result *GetCatalogResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -15663,6 +19354,17 @@ func (client *Client) GetCatalog(request *GetCatalogRequest) (_result *GetCatalo
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取数据湖配置
+//
+// @param request - GetCatalogSettingsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetCatalogSettingsResponse
 func (client *Client) GetCatalogSettingsWithOptions(request *GetCatalogSettingsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetCatalogSettingsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15697,6 +19399,13 @@ func (client *Client) GetCatalogSettingsWithOptions(request *GetCatalogSettingsR
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取数据湖配置
+//
+// @param request - GetCatalogSettingsRequest
+//
+// @return GetCatalogSettingsResponse
 func (client *Client) GetCatalogSettings(request *GetCatalogSettingsRequest) (_result *GetCatalogSettingsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -15709,6 +19418,17 @@ func (client *Client) GetCatalogSettings(request *GetCatalogSettingsRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// Get Database
+//
+// @param request - GetDatabaseRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetDatabaseResponse
 func (client *Client) GetDatabaseWithOptions(request *GetDatabaseRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetDatabaseResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15747,6 +19467,13 @@ func (client *Client) GetDatabaseWithOptions(request *GetDatabaseRequest, header
 	return _result, _err
 }
 
+// Summary:
+//
+// Get Database
+//
+// @param request - GetDatabaseRequest
+//
+// @return GetDatabaseResponse
 func (client *Client) GetDatabase(request *GetDatabaseRequest) (_result *GetDatabaseResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -15759,6 +19486,85 @@ func (client *Client) GetDatabase(request *GetDatabaseRequest) (_result *GetData
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取库数据概览信息
+//
+// @param request - GetDatabaseProfileRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetDatabaseProfileResponse
+func (client *Client) GetDatabaseProfileWithOptions(request *GetDatabaseProfileRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetDatabaseProfileResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CatalogId)) {
+		query["CatalogId"] = request.CatalogId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DatabaseName)) {
+		query["DatabaseName"] = request.DatabaseName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetDatabaseProfile"),
+		Version:     tea.String("2020-07-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/webapi/metastorehouse/catalog/database/databaseprofile"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetDatabaseProfileResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取库数据概览信息
+//
+// @param request - GetDatabaseProfileRequest
+//
+// @return GetDatabaseProfileResponse
+func (client *Client) GetDatabaseProfile(request *GetDatabaseProfileRequest) (_result *GetDatabaseProfileResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetDatabaseProfileResponse{}
+	_body, _err := client.GetDatabaseProfileWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Get Function
+//
+// @param request - GetFunctionRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetFunctionResponse
 func (client *Client) GetFunctionWithOptions(request *GetFunctionRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetFunctionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15801,6 +19607,13 @@ func (client *Client) GetFunctionWithOptions(request *GetFunctionRequest, header
 	return _result, _err
 }
 
+// Summary:
+//
+// Get Function
+//
+// @param request - GetFunctionRequest
+//
+// @return GetFunctionResponse
 func (client *Client) GetFunction(request *GetFunctionRequest) (_result *GetFunctionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -15813,6 +19626,17 @@ func (client *Client) GetFunction(request *GetFunctionRequest) (_result *GetFunc
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取生命周期规则
+//
+// @param request - GetLifecycleRuleRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetLifecycleRuleResponse
 func (client *Client) GetLifecycleRuleWithOptions(request *GetLifecycleRuleRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetLifecycleRuleResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15851,6 +19675,13 @@ func (client *Client) GetLifecycleRuleWithOptions(request *GetLifecycleRuleReque
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取生命周期规则
+//
+// @param request - GetLifecycleRuleRequest
+//
+// @return GetLifecycleRuleResponse
 func (client *Client) GetLifecycleRule(request *GetLifecycleRuleRequest) (_result *GetLifecycleRuleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -15863,6 +19694,17 @@ func (client *Client) GetLifecycleRule(request *GetLifecycleRuleRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// get lock status
+//
+// @param request - GetLockRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetLockResponse
 func (client *Client) GetLockWithOptions(request *GetLockRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetLockResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15897,6 +19739,13 @@ func (client *Client) GetLockWithOptions(request *GetLockRequest, headers map[st
 	return _result, _err
 }
 
+// Summary:
+//
+// get lock status
+//
+// @param request - GetLockRequest
+//
+// @return GetLockResponse
 func (client *Client) GetLock(request *GetLockRequest) (_result *GetLockResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -15909,6 +19758,17 @@ func (client *Client) GetLock(request *GetLockRequest) (_result *GetLockResponse
 	return _result, _err
 }
 
+// Summary:
+//
+// get partition
+//
+// @param request - GetPartitionRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetPartitionResponse
 func (client *Client) GetPartitionWithOptions(request *GetPartitionRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetPartitionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15955,6 +19815,13 @@ func (client *Client) GetPartitionWithOptions(request *GetPartitionRequest, head
 	return _result, _err
 }
 
+// Summary:
+//
+// get partition
+//
+// @param request - GetPartitionRequest
+//
+// @return GetPartitionResponse
 func (client *Client) GetPartition(request *GetPartitionRequest) (_result *GetPartitionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -15967,6 +19834,17 @@ func (client *Client) GetPartition(request *GetPartitionRequest) (_result *GetPa
 	return _result, _err
 }
 
+// Summary:
+//
+// Batch Get Partition Column Statistics
+//
+// @param tmpReq - GetPartitionColumnStatisticsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetPartitionColumnStatisticsResponse
 func (client *Client) GetPartitionColumnStatisticsWithOptions(tmpReq *GetPartitionColumnStatisticsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetPartitionColumnStatisticsResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -16027,6 +19905,13 @@ func (client *Client) GetPartitionColumnStatisticsWithOptions(tmpReq *GetPartiti
 	return _result, _err
 }
 
+// Summary:
+//
+// Batch Get Partition Column Statistics
+//
+// @param request - GetPartitionColumnStatisticsRequest
+//
+// @return GetPartitionColumnStatisticsResponse
 func (client *Client) GetPartitionColumnStatistics(request *GetPartitionColumnStatisticsRequest) (_result *GetPartitionColumnStatisticsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -16039,6 +19924,17 @@ func (client *Client) GetPartitionColumnStatistics(request *GetPartitionColumnSt
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取查询结果
+//
+// @param request - GetQueryResultRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetQueryResultResponse
 func (client *Client) GetQueryResultWithOptions(request *GetQueryResultRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetQueryResultResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16081,6 +19977,13 @@ func (client *Client) GetQueryResultWithOptions(request *GetQueryResultRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取查询结果
+//
+// @param request - GetQueryResultRequest
+//
+// @return GetQueryResultResponse
 func (client *Client) GetQueryResult(request *GetQueryResultRequest) (_result *GetQueryResultResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -16093,6 +19996,13 @@ func (client *Client) GetQueryResult(request *GetQueryResultRequest) (_result *G
 	return _result, _err
 }
 
+// @param request - GetRegionStatusRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetRegionStatusResponse
 func (client *Client) GetRegionStatusWithOptions(request *GetRegionStatusRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetRegionStatusResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16127,6 +20037,9 @@ func (client *Client) GetRegionStatusWithOptions(request *GetRegionStatusRequest
 	return _result, _err
 }
 
+// @param request - GetRegionStatusRequest
+//
+// @return GetRegionStatusResponse
 func (client *Client) GetRegionStatus(request *GetRegionStatusRequest) (_result *GetRegionStatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -16139,6 +20052,17 @@ func (client *Client) GetRegionStatus(request *GetRegionStatusRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// GetRole
+//
+// @param request - GetRoleRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetRoleResponse
 func (client *Client) GetRoleWithOptions(request *GetRoleRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetRoleResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16173,6 +20097,13 @@ func (client *Client) GetRoleWithOptions(request *GetRoleRequest, headers map[st
 	return _result, _err
 }
 
+// Summary:
+//
+// GetRole
+//
+// @param request - GetRoleRequest
+//
+// @return GetRoleResponse
 func (client *Client) GetRole(request *GetRoleRequest) (_result *GetRoleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -16185,6 +20116,13 @@ func (client *Client) GetRole(request *GetRoleRequest) (_result *GetRoleResponse
 	return _result, _err
 }
 
+// @param request - GetServiceStatusRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetServiceStatusResponse
 func (client *Client) GetServiceStatusWithOptions(request *GetServiceStatusRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetServiceStatusResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16219,6 +20157,9 @@ func (client *Client) GetServiceStatusWithOptions(request *GetServiceStatusReque
 	return _result, _err
 }
 
+// @param request - GetServiceStatusRequest
+//
+// @return GetServiceStatusResponse
 func (client *Client) GetServiceStatus(request *GetServiceStatusRequest) (_result *GetServiceStatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -16231,6 +20172,17 @@ func (client *Client) GetServiceStatus(request *GetServiceStatusRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// Get table
+//
+// @param request - GetTableRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetTableResponse
 func (client *Client) GetTableWithOptions(request *GetTableRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetTableResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16273,6 +20225,13 @@ func (client *Client) GetTableWithOptions(request *GetTableRequest, headers map[
 	return _result, _err
 }
 
+// Summary:
+//
+// Get table
+//
+// @param request - GetTableRequest
+//
+// @return GetTableResponse
 func (client *Client) GetTable(request *GetTableRequest) (_result *GetTableResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -16285,6 +20244,17 @@ func (client *Client) GetTable(request *GetTableRequest) (_result *GetTableRespo
 	return _result, _err
 }
 
+// Summary:
+//
+// An example of API
+//
+// @param tmpReq - GetTableColumnStatisticsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetTableColumnStatisticsResponse
 func (client *Client) GetTableColumnStatisticsWithOptions(tmpReq *GetTableColumnStatisticsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetTableColumnStatisticsResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -16337,6 +20307,13 @@ func (client *Client) GetTableColumnStatisticsWithOptions(tmpReq *GetTableColumn
 	return _result, _err
 }
 
+// Summary:
+//
+// An example of API
+//
+// @param request - GetTableColumnStatisticsRequest
+//
+// @return GetTableColumnStatisticsResponse
 func (client *Client) GetTableColumnStatistics(request *GetTableColumnStatisticsRequest) (_result *GetTableColumnStatisticsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -16349,6 +20326,17 @@ func (client *Client) GetTableColumnStatistics(request *GetTableColumnStatistics
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取表数据概况信息
+//
+// @param request - GetTableProfileRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetTableProfileResponse
 func (client *Client) GetTableProfileWithOptions(request *GetTableProfileRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetTableProfileResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16391,6 +20379,13 @@ func (client *Client) GetTableProfileWithOptions(request *GetTableProfileRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取表数据概况信息
+//
+// @param request - GetTableProfileRequest
+//
+// @return GetTableProfileResponse
 func (client *Client) GetTableProfile(request *GetTableProfileRequest) (_result *GetTableProfileResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -16403,6 +20398,17 @@ func (client *Client) GetTableProfile(request *GetTableProfileRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// Get table version
+//
+// @param request - GetTableVersionRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetTableVersionResponse
 func (client *Client) GetTableVersionWithOptions(request *GetTableVersionRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetTableVersionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16449,6 +20455,13 @@ func (client *Client) GetTableVersionWithOptions(request *GetTableVersionRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// Get table version
+//
+// @param request - GetTableVersionRequest
+//
+// @return GetTableVersionResponse
 func (client *Client) GetTableVersion(request *GetTableVersionRequest) (_result *GetTableVersionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -16461,6 +20474,17 @@ func (client *Client) GetTableVersion(request *GetTableVersionRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// 赋予Principal资源的权限
+//
+// @param request - GrantPermissionsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GrantPermissionsResponse
 func (client *Client) GrantPermissionsWithOptions(request *GrantPermissionsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GrantPermissionsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16515,6 +20539,13 @@ func (client *Client) GrantPermissionsWithOptions(request *GrantPermissionsReque
 	return _result, _err
 }
 
+// Summary:
+//
+// 赋予Principal资源的权限
+//
+// @param request - GrantPermissionsRequest
+//
+// @return GrantPermissionsResponse
 func (client *Client) GrantPermissions(request *GrantPermissionsRequest) (_result *GrantPermissionsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -16527,6 +20558,17 @@ func (client *Client) GrantPermissions(request *GrantPermissionsRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// Grant 单个角色给一个或多个用户
+//
+// @param request - GrantRoleToUsersRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GrantRoleToUsersResponse
 func (client *Client) GrantRoleToUsersWithOptions(request *GrantRoleToUsersRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GrantRoleToUsersResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16565,6 +20607,13 @@ func (client *Client) GrantRoleToUsersWithOptions(request *GrantRoleToUsersReque
 	return _result, _err
 }
 
+// Summary:
+//
+// Grant 单个角色给一个或多个用户
+//
+// @param request - GrantRoleToUsersRequest
+//
+// @return GrantRoleToUsersResponse
 func (client *Client) GrantRoleToUsers(request *GrantRoleToUsersRequest) (_result *GrantRoleToUsersResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -16577,6 +20626,17 @@ func (client *Client) GrantRoleToUsers(request *GrantRoleToUsersRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// Grant 一个或多个角色给一个用户
+//
+// @param request - GrantRolesToUserRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GrantRolesToUserResponse
 func (client *Client) GrantRolesToUserWithOptions(request *GrantRolesToUserRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GrantRolesToUserResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16615,6 +20675,13 @@ func (client *Client) GrantRolesToUserWithOptions(request *GrantRolesToUserReque
 	return _result, _err
 }
 
+// Summary:
+//
+// Grant 一个或多个角色给一个用户
+//
+// @param request - GrantRolesToUserRequest
+//
+// @return GrantRolesToUserResponse
 func (client *Client) GrantRolesToUser(request *GrantRolesToUserRequest) (_result *GrantRolesToUserResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -16627,6 +20694,17 @@ func (client *Client) GrantRolesToUser(request *GrantRolesToUserRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// ListCatalogs
+//
+// @param request - ListCatalogsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListCatalogsResponse
 func (client *Client) ListCatalogsWithOptions(request *ListCatalogsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListCatalogsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16669,6 +20747,13 @@ func (client *Client) ListCatalogsWithOptions(request *ListCatalogsRequest, head
 	return _result, _err
 }
 
+// Summary:
+//
+// ListCatalogs
+//
+// @param request - ListCatalogsRequest
+//
+// @return ListCatalogsResponse
 func (client *Client) ListCatalogs(request *ListCatalogsRequest) (_result *ListCatalogsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -16681,6 +20766,17 @@ func (client *Client) ListCatalogs(request *ListCatalogsRequest) (_result *ListC
 	return _result, _err
 }
 
+// Summary:
+//
+// Get Databases List
+//
+// @param request - ListDatabasesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListDatabasesResponse
 func (client *Client) ListDatabasesWithOptions(request *ListDatabasesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListDatabasesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16727,6 +20823,13 @@ func (client *Client) ListDatabasesWithOptions(request *ListDatabasesRequest, he
 	return _result, _err
 }
 
+// Summary:
+//
+// Get Databases List
+//
+// @param request - ListDatabasesRequest
+//
+// @return ListDatabasesResponse
 func (client *Client) ListDatabases(request *ListDatabasesRequest) (_result *ListDatabasesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -16739,6 +20842,17 @@ func (client *Client) ListDatabases(request *ListDatabasesRequest) (_result *Lis
 	return _result, _err
 }
 
+// Summary:
+//
+// list function names
+//
+// @param request - ListFunctionNamesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListFunctionNamesResponse
 func (client *Client) ListFunctionNamesWithOptions(request *ListFunctionNamesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListFunctionNamesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16789,6 +20903,13 @@ func (client *Client) ListFunctionNamesWithOptions(request *ListFunctionNamesReq
 	return _result, _err
 }
 
+// Summary:
+//
+// list function names
+//
+// @param request - ListFunctionNamesRequest
+//
+// @return ListFunctionNamesResponse
 func (client *Client) ListFunctionNames(request *ListFunctionNamesRequest) (_result *ListFunctionNamesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -16801,6 +20922,17 @@ func (client *Client) ListFunctionNames(request *ListFunctionNamesRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// list functions
+//
+// @param request - ListFunctionsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListFunctionsResponse
 func (client *Client) ListFunctionsWithOptions(request *ListFunctionsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListFunctionsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16851,6 +20983,13 @@ func (client *Client) ListFunctionsWithOptions(request *ListFunctionsRequest, he
 	return _result, _err
 }
 
+// Summary:
+//
+// list functions
+//
+// @param request - ListFunctionsRequest
+//
+// @return ListFunctionsResponse
 func (client *Client) ListFunctions(request *ListFunctionsRequest) (_result *ListFunctionsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -16863,6 +21002,17 @@ func (client *Client) ListFunctions(request *ListFunctionsRequest) (_result *Lis
 	return _result, _err
 }
 
+// Summary:
+//
+// partition names
+//
+// @param request - ListPartitionNamesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListPartitionNamesResponse
 func (client *Client) ListPartitionNamesWithOptions(request *ListPartitionNamesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListPartitionNamesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16917,6 +21067,13 @@ func (client *Client) ListPartitionNamesWithOptions(request *ListPartitionNamesR
 	return _result, _err
 }
 
+// Summary:
+//
+// partition names
+//
+// @param request - ListPartitionNamesRequest
+//
+// @return ListPartitionNamesResponse
 func (client *Client) ListPartitionNames(request *ListPartitionNamesRequest) (_result *ListPartitionNamesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -16929,6 +21086,17 @@ func (client *Client) ListPartitionNames(request *ListPartitionNamesRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// list partitions
+//
+// @param request - ListPartitionsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListPartitionsResponse
 func (client *Client) ListPartitionsWithOptions(request *ListPartitionsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListPartitionsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16987,6 +21155,13 @@ func (client *Client) ListPartitionsWithOptions(request *ListPartitionsRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// list partitions
+//
+// @param request - ListPartitionsRequest
+//
+// @return ListPartitionsResponse
 func (client *Client) ListPartitions(request *ListPartitionsRequest) (_result *ListPartitionsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -16999,6 +21174,11 @@ func (client *Client) ListPartitions(request *ListPartitionsRequest) (_result *L
 	return _result, _err
 }
 
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListPartitionsByExprResponse
 func (client *Client) ListPartitionsByExprWithOptions(headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListPartitionsByExprResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -17023,6 +21203,7 @@ func (client *Client) ListPartitionsByExprWithOptions(headers map[string]*string
 	return _result, _err
 }
 
+// @return ListPartitionsByExprResponse
 func (client *Client) ListPartitionsByExpr() (_result *ListPartitionsByExprResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -17035,6 +21216,17 @@ func (client *Client) ListPartitionsByExpr() (_result *ListPartitionsByExprRespo
 	return _result, _err
 }
 
+// Summary:
+//
+// list partitions by filter
+//
+// @param request - ListPartitionsByFilterRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListPartitionsByFilterResponse
 func (client *Client) ListPartitionsByFilterWithOptions(request *ListPartitionsByFilterRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListPartitionsByFilterResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -17093,6 +21285,13 @@ func (client *Client) ListPartitionsByFilterWithOptions(request *ListPartitionsB
 	return _result, _err
 }
 
+// Summary:
+//
+// list partitions by filter
+//
+// @param request - ListPartitionsByFilterRequest
+//
+// @return ListPartitionsByFilterResponse
 func (client *Client) ListPartitionsByFilter(request *ListPartitionsByFilterRequest) (_result *ListPartitionsByFilterResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -17105,6 +21304,107 @@ func (client *Client) ListPartitionsByFilter(request *ListPartitionsByFilterRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取分区数据概况信息
+//
+// @param tmpReq - ListPartitionsProfileRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListPartitionsProfileResponse
+func (client *Client) ListPartitionsProfileWithOptions(tmpReq *ListPartitionsProfileRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListPartitionsProfileResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &ListPartitionsProfileShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.PartitionNames)) {
+		request.PartitionNamesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.PartitionNames, tea.String("PartitionNames"), tea.String("simple"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CatalogId)) {
+		query["CatalogId"] = request.CatalogId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DatabaseName)) {
+		query["DatabaseName"] = request.DatabaseName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PartitionNamesShrink)) {
+		query["PartitionNames"] = request.PartitionNamesShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TableName)) {
+		query["TableName"] = request.TableName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListPartitionsProfile"),
+		Version:     tea.String("2020-07-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/webapi/metastorehouse/catalog/database/tableprofile/partitionprofile/listPartitionsProfile"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListPartitionsProfileResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取分区数据概况信息
+//
+// @param request - ListPartitionsProfileRequest
+//
+// @return ListPartitionsProfileResponse
+func (client *Client) ListPartitionsProfile(request *ListPartitionsProfileRequest) (_result *ListPartitionsProfileResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListPartitionsProfileResponse{}
+	_body, _err := client.ListPartitionsProfileWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取指定资源或指定Principal的权限信息
+//
+// @param request - ListPermissionsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListPermissionsResponse
 func (client *Client) ListPermissionsWithOptions(request *ListPermissionsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListPermissionsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -17167,6 +21467,13 @@ func (client *Client) ListPermissionsWithOptions(request *ListPermissionsRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取指定资源或指定Principal的权限信息
+//
+// @param request - ListPermissionsRequest
+//
+// @return ListPermissionsResponse
 func (client *Client) ListPermissions(request *ListPermissionsRequest) (_result *ListPermissionsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -17179,6 +21486,17 @@ func (client *Client) ListPermissions(request *ListPermissionsRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询用户角色列表
+//
+// @param request - ListRoleUsersRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListRoleUsersResponse
 func (client *Client) ListRoleUsersWithOptions(request *ListRoleUsersRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListRoleUsersResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -17225,6 +21543,13 @@ func (client *Client) ListRoleUsersWithOptions(request *ListRoleUsersRequest, he
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询用户角色列表
+//
+// @param request - ListRoleUsersRequest
+//
+// @return ListRoleUsersResponse
 func (client *Client) ListRoleUsers(request *ListRoleUsersRequest) (_result *ListRoleUsersResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -17237,6 +21562,17 @@ func (client *Client) ListRoleUsers(request *ListRoleUsersRequest) (_result *Lis
 	return _result, _err
 }
 
+// Summary:
+//
+// ListRoles
+//
+// @param request - ListRolesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListRolesResponse
 func (client *Client) ListRolesWithOptions(request *ListRolesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListRolesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -17279,6 +21615,13 @@ func (client *Client) ListRolesWithOptions(request *ListRolesRequest, headers ma
 	return _result, _err
 }
 
+// Summary:
+//
+// ListRoles
+//
+// @param request - ListRolesRequest
+//
+// @return ListRolesResponse
 func (client *Client) ListRoles(request *ListRolesRequest) (_result *ListRolesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -17291,6 +21634,17 @@ func (client *Client) ListRoles(request *ListRolesRequest) (_result *ListRolesRe
 	return _result, _err
 }
 
+// Summary:
+//
+// list table names
+//
+// @param request - ListTableNamesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListTableNamesResponse
 func (client *Client) ListTableNamesWithOptions(request *ListTableNamesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListTableNamesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -17345,6 +21699,13 @@ func (client *Client) ListTableNamesWithOptions(request *ListTableNamesRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// list table names
+//
+// @param request - ListTableNamesRequest
+//
+// @return ListTableNamesResponse
 func (client *Client) ListTableNames(request *ListTableNamesRequest) (_result *ListTableNamesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -17357,6 +21718,17 @@ func (client *Client) ListTableNames(request *ListTableNamesRequest) (_result *L
 	return _result, _err
 }
 
+// Summary:
+//
+// List table versions
+//
+// @param request - ListTableVersionsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListTableVersionsResponse
 func (client *Client) ListTableVersionsWithOptions(request *ListTableVersionsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListTableVersionsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -17407,6 +21779,13 @@ func (client *Client) ListTableVersionsWithOptions(request *ListTableVersionsReq
 	return _result, _err
 }
 
+// Summary:
+//
+// List table versions
+//
+// @param request - ListTableVersionsRequest
+//
+// @return ListTableVersionsResponse
 func (client *Client) ListTableVersions(request *ListTableVersionsRequest) (_result *ListTableVersionsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -17419,6 +21798,17 @@ func (client *Client) ListTableVersions(request *ListTableVersionsRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// list tables
+//
+// @param request - ListTablesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListTablesResponse
 func (client *Client) ListTablesWithOptions(request *ListTablesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListTablesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -17473,6 +21863,13 @@ func (client *Client) ListTablesWithOptions(request *ListTablesRequest, headers 
 	return _result, _err
 }
 
+// Summary:
+//
+// list tables
+//
+// @param request - ListTablesRequest
+//
+// @return ListTablesResponse
 func (client *Client) ListTables(request *ListTablesRequest) (_result *ListTablesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -17485,6 +21882,17 @@ func (client *Client) ListTables(request *ListTablesRequest) (_result *ListTable
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询用户角色列表
+//
+// @param request - ListUserRolesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListUserRolesResponse
 func (client *Client) ListUserRolesWithOptions(request *ListUserRolesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListUserRolesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -17531,6 +21939,13 @@ func (client *Client) ListUserRolesWithOptions(request *ListUserRolesRequest, he
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询用户角色列表
+//
+// @param request - ListUserRolesRequest
+//
+// @return ListUserRolesResponse
 func (client *Client) ListUserRoles(request *ListUserRolesRequest) (_result *ListUserRolesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -17543,6 +21958,17 @@ func (client *Client) ListUserRoles(request *ListUserRolesRequest) (_result *Lis
 	return _result, _err
 }
 
+// Summary:
+//
+// refresh to keep the lock alive
+//
+// @param request - RefreshLockRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RefreshLockResponse
 func (client *Client) RefreshLockWithOptions(request *RefreshLockRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *RefreshLockResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -17577,6 +22003,13 @@ func (client *Client) RefreshLockWithOptions(request *RefreshLockRequest, header
 	return _result, _err
 }
 
+// Summary:
+//
+// refresh to keep the lock alive
+//
+// @param request - RefreshLockRequest
+//
+// @return RefreshLockResponse
 func (client *Client) RefreshLock(request *RefreshLockRequest) (_result *RefreshLockResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -17589,6 +22022,17 @@ func (client *Client) RefreshLock(request *RefreshLockRequest) (_result *Refresh
 	return _result, _err
 }
 
+// Summary:
+//
+// 注册Location
+//
+// @param request - RegisterLocationRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RegisterLocationResponse
 func (client *Client) RegisterLocationWithOptions(request *RegisterLocationRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *RegisterLocationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -17635,6 +22079,13 @@ func (client *Client) RegisterLocationWithOptions(request *RegisterLocationReque
 	return _result, _err
 }
 
+// Summary:
+//
+// 注册Location
+//
+// @param request - RegisterLocationRequest
+//
+// @return RegisterLocationResponse
 func (client *Client) RegisterLocation(request *RegisterLocationRequest) (_result *RegisterLocationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -17647,6 +22098,17 @@ func (client *Client) RegisterLocation(request *RegisterLocationRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// rename partition
+//
+// @param request - RenamePartitionRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RenamePartitionResponse
 func (client *Client) RenamePartitionWithOptions(request *RenamePartitionRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *RenamePartitionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -17697,6 +22159,13 @@ func (client *Client) RenamePartitionWithOptions(request *RenamePartitionRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// rename partition
+//
+// @param request - RenamePartitionRequest
+//
+// @return RenamePartitionResponse
 func (client *Client) RenamePartition(request *RenamePartitionRequest) (_result *RenamePartitionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -17709,6 +22178,17 @@ func (client *Client) RenamePartition(request *RenamePartitionRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// rename table
+//
+// @param request - RenameTableRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RenameTableResponse
 func (client *Client) RenameTableWithOptions(request *RenameTableRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *RenameTableResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -17759,6 +22239,13 @@ func (client *Client) RenameTableWithOptions(request *RenameTableRequest, header
 	return _result, _err
 }
 
+// Summary:
+//
+// rename table
+//
+// @param request - RenameTableRequest
+//
+// @return RenameTableResponse
 func (client *Client) RenameTable(request *RenameTableRequest) (_result *RenameTableResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -17771,6 +22258,17 @@ func (client *Client) RenameTable(request *RenameTableRequest) (_result *RenameT
 	return _result, _err
 }
 
+// Summary:
+//
+// 取消Principal资源的权限
+//
+// @param request - RevokePermissionsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RevokePermissionsResponse
 func (client *Client) RevokePermissionsWithOptions(request *RevokePermissionsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *RevokePermissionsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -17825,6 +22323,13 @@ func (client *Client) RevokePermissionsWithOptions(request *RevokePermissionsReq
 	return _result, _err
 }
 
+// Summary:
+//
+// 取消Principal资源的权限
+//
+// @param request - RevokePermissionsRequest
+//
+// @return RevokePermissionsResponse
 func (client *Client) RevokePermissions(request *RevokePermissionsRequest) (_result *RevokePermissionsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -17837,6 +22342,17 @@ func (client *Client) RevokePermissions(request *RevokePermissionsRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// 批量将该角色从这些用户中revoke
+//
+// @param request - RevokeRoleFromUsersRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RevokeRoleFromUsersResponse
 func (client *Client) RevokeRoleFromUsersWithOptions(request *RevokeRoleFromUsersRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *RevokeRoleFromUsersResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -17875,6 +22391,13 @@ func (client *Client) RevokeRoleFromUsersWithOptions(request *RevokeRoleFromUser
 	return _result, _err
 }
 
+// Summary:
+//
+// 批量将该角色从这些用户中revoke
+//
+// @param request - RevokeRoleFromUsersRequest
+//
+// @return RevokeRoleFromUsersResponse
 func (client *Client) RevokeRoleFromUsers(request *RevokeRoleFromUsersRequest) (_result *RevokeRoleFromUsersResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -17887,6 +22410,17 @@ func (client *Client) RevokeRoleFromUsers(request *RevokeRoleFromUsersRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// 批量Revoke该用户的角色
+//
+// @param request - RevokeRolesFromUserRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RevokeRolesFromUserResponse
 func (client *Client) RevokeRolesFromUserWithOptions(request *RevokeRolesFromUserRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *RevokeRolesFromUserResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -17925,6 +22459,13 @@ func (client *Client) RevokeRolesFromUserWithOptions(request *RevokeRolesFromUse
 	return _result, _err
 }
 
+// Summary:
+//
+// 批量Revoke该用户的角色
+//
+// @param request - RevokeRolesFromUserRequest
+//
+// @return RevokeRolesFromUserResponse
 func (client *Client) RevokeRolesFromUser(request *RevokeRolesFromUserRequest) (_result *RevokeRolesFromUserResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -17937,6 +22478,17 @@ func (client *Client) RevokeRolesFromUser(request *RevokeRolesFromUserRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// 运行元数据迁移任务
+//
+// @param request - RunMigrationWorkflowRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RunMigrationWorkflowResponse
 func (client *Client) RunMigrationWorkflowWithOptions(request *RunMigrationWorkflowRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *RunMigrationWorkflowResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -17971,6 +22523,13 @@ func (client *Client) RunMigrationWorkflowWithOptions(request *RunMigrationWorkf
 	return _result, _err
 }
 
+// Summary:
+//
+// 运行元数据迁移任务
+//
+// @param request - RunMigrationWorkflowRequest
+//
+// @return RunMigrationWorkflowResponse
 func (client *Client) RunMigrationWorkflow(request *RunMigrationWorkflowRequest) (_result *RunMigrationWorkflowResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -17983,6 +22542,17 @@ func (client *Client) RunMigrationWorkflow(request *RunMigrationWorkflowRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// DLF 元数据search
+//
+// @param request - SearchRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SearchResponse
 func (client *Client) SearchWithOptions(request *SearchRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *SearchResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -18037,6 +22607,13 @@ func (client *Client) SearchWithOptions(request *SearchRequest, headers map[stri
 	return _result, _err
 }
 
+// Summary:
+//
+// DLF 元数据search
+//
+// @param request - SearchRequest
+//
+// @return SearchResponse
 func (client *Client) Search(request *SearchRequest) (_result *SearchResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -18049,6 +22626,17 @@ func (client *Client) Search(request *SearchRequest) (_result *SearchResponse, _
 	return _result, _err
 }
 
+// Summary:
+//
+// DLF 跨Catalog检索元数据
+//
+// @param request - SearchAcrossCatalogRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SearchAcrossCatalogResponse
 func (client *Client) SearchAcrossCatalogWithOptions(request *SearchAcrossCatalogRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *SearchAcrossCatalogResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -18103,6 +22691,13 @@ func (client *Client) SearchAcrossCatalogWithOptions(request *SearchAcrossCatalo
 	return _result, _err
 }
 
+// Summary:
+//
+// DLF 跨Catalog检索元数据
+//
+// @param request - SearchAcrossCatalogRequest
+//
+// @return SearchAcrossCatalogResponse
 func (client *Client) SearchAcrossCatalog(request *SearchAcrossCatalogRequest) (_result *SearchAcrossCatalogResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -18115,6 +22710,17 @@ func (client *Client) SearchAcrossCatalog(request *SearchAcrossCatalogRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// 停止元数据迁移任务
+//
+// @param request - StopMigrationWorkflowRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return StopMigrationWorkflowResponse
 func (client *Client) StopMigrationWorkflowWithOptions(request *StopMigrationWorkflowRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *StopMigrationWorkflowResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -18149,6 +22755,13 @@ func (client *Client) StopMigrationWorkflowWithOptions(request *StopMigrationWor
 	return _result, _err
 }
 
+// Summary:
+//
+// 停止元数据迁移任务
+//
+// @param request - StopMigrationWorkflowRequest
+//
+// @return StopMigrationWorkflowResponse
 func (client *Client) StopMigrationWorkflow(request *StopMigrationWorkflowRequest) (_result *StopMigrationWorkflowResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -18161,6 +22774,13 @@ func (client *Client) StopMigrationWorkflow(request *StopMigrationWorkflowReques
 	return _result, _err
 }
 
+// @param request - SubmitQueryRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SubmitQueryResponse
 func (client *Client) SubmitQueryWithOptions(request *SubmitQueryRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *SubmitQueryResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -18203,6 +22823,9 @@ func (client *Client) SubmitQueryWithOptions(request *SubmitQueryRequest, header
 	return _result, _err
 }
 
+// @param request - SubmitQueryRequest
+//
+// @return SubmitQueryResponse
 func (client *Client) SubmitQuery(request *SubmitQueryRequest) (_result *SubmitQueryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -18215,6 +22838,17 @@ func (client *Client) SubmitQuery(request *SubmitQueryRequest) (_result *SubmitQ
 	return _result, _err
 }
 
+// Summary:
+//
+// unlock
+//
+// @param request - UnLockRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UnLockResponse
 func (client *Client) UnLockWithOptions(request *UnLockRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UnLockResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -18249,6 +22883,13 @@ func (client *Client) UnLockWithOptions(request *UnLockRequest, headers map[stri
 	return _result, _err
 }
 
+// Summary:
+//
+// unlock
+//
+// @param request - UnLockRequest
+//
+// @return UnLockResponse
 func (client *Client) UnLock(request *UnLockRequest) (_result *UnLockResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -18261,6 +22902,17 @@ func (client *Client) UnLock(request *UnLockRequest) (_result *UnLockResponse, _
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新数据湖Catalog
+//
+// @param request - UpdateCatalogRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateCatalogResponse
 func (client *Client) UpdateCatalogWithOptions(request *UpdateCatalogRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateCatalogResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -18295,6 +22947,13 @@ func (client *Client) UpdateCatalogWithOptions(request *UpdateCatalogRequest, he
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新数据湖Catalog
+//
+// @param request - UpdateCatalogRequest
+//
+// @return UpdateCatalogResponse
 func (client *Client) UpdateCatalog(request *UpdateCatalogRequest) (_result *UpdateCatalogResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -18307,6 +22966,17 @@ func (client *Client) UpdateCatalog(request *UpdateCatalogRequest) (_result *Upd
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取数据湖配置
+//
+// @param request - UpdateCatalogSettingsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateCatalogSettingsResponse
 func (client *Client) UpdateCatalogSettingsWithOptions(request *UpdateCatalogSettingsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateCatalogSettingsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -18345,6 +23015,13 @@ func (client *Client) UpdateCatalogSettingsWithOptions(request *UpdateCatalogSet
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取数据湖配置
+//
+// @param request - UpdateCatalogSettingsRequest
+//
+// @return UpdateCatalogSettingsResponse
 func (client *Client) UpdateCatalogSettings(request *UpdateCatalogSettingsRequest) (_result *UpdateCatalogSettingsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -18357,6 +23034,17 @@ func (client *Client) UpdateCatalogSettings(request *UpdateCatalogSettingsReques
 	return _result, _err
 }
 
+// Summary:
+//
+// Update database
+//
+// @param request - UpdateDatabaseRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateDatabaseResponse
 func (client *Client) UpdateDatabaseWithOptions(request *UpdateDatabaseRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateDatabaseResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -18399,6 +23087,13 @@ func (client *Client) UpdateDatabaseWithOptions(request *UpdateDatabaseRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// Update database
+//
+// @param request - UpdateDatabaseRequest
+//
+// @return UpdateDatabaseResponse
 func (client *Client) UpdateDatabase(request *UpdateDatabaseRequest) (_result *UpdateDatabaseResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -18411,6 +23106,17 @@ func (client *Client) UpdateDatabase(request *UpdateDatabaseRequest) (_result *U
 	return _result, _err
 }
 
+// Summary:
+//
+// update function
+//
+// @param request - UpdateFunctionRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateFunctionResponse
 func (client *Client) UpdateFunctionWithOptions(request *UpdateFunctionRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateFunctionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -18457,6 +23163,13 @@ func (client *Client) UpdateFunctionWithOptions(request *UpdateFunctionRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// update function
+//
+// @param request - UpdateFunctionRequest
+//
+// @return UpdateFunctionResponse
 func (client *Client) UpdateFunction(request *UpdateFunctionRequest) (_result *UpdateFunctionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -18469,6 +23182,17 @@ func (client *Client) UpdateFunction(request *UpdateFunctionRequest) (_result *U
 	return _result, _err
 }
 
+// Summary:
+//
+// update partition columnstatistics
+//
+// @param request - UpdatePartitionColumnStatisticsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdatePartitionColumnStatisticsResponse
 func (client *Client) UpdatePartitionColumnStatisticsWithOptions(request *UpdatePartitionColumnStatisticsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdatePartitionColumnStatisticsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -18498,6 +23222,13 @@ func (client *Client) UpdatePartitionColumnStatisticsWithOptions(request *Update
 	return _result, _err
 }
 
+// Summary:
+//
+// update partition columnstatistics
+//
+// @param request - UpdatePartitionColumnStatisticsRequest
+//
+// @return UpdatePartitionColumnStatisticsResponse
 func (client *Client) UpdatePartitionColumnStatistics(request *UpdatePartitionColumnStatisticsRequest) (_result *UpdatePartitionColumnStatisticsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -18510,6 +23241,17 @@ func (client *Client) UpdatePartitionColumnStatistics(request *UpdatePartitionCo
 	return _result, _err
 }
 
+// Summary:
+//
+// 赋予Principal资源的权限
+//
+// @param request - UpdatePermissionsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdatePermissionsResponse
 func (client *Client) UpdatePermissionsWithOptions(request *UpdatePermissionsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdatePermissionsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -18564,6 +23306,13 @@ func (client *Client) UpdatePermissionsWithOptions(request *UpdatePermissionsReq
 	return _result, _err
 }
 
+// Summary:
+//
+// 赋予Principal资源的权限
+//
+// @param request - UpdatePermissionsRequest
+//
+// @return UpdatePermissionsResponse
 func (client *Client) UpdatePermissions(request *UpdatePermissionsRequest) (_result *UpdatePermissionsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -18576,6 +23325,17 @@ func (client *Client) UpdatePermissions(request *UpdatePermissionsRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// 修改Location
+//
+// @param request - UpdateRegisteredLocationRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateRegisteredLocationResponse
 func (client *Client) UpdateRegisteredLocationWithOptions(request *UpdateRegisteredLocationRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateRegisteredLocationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -18618,6 +23378,13 @@ func (client *Client) UpdateRegisteredLocationWithOptions(request *UpdateRegiste
 	return _result, _err
 }
 
+// Summary:
+//
+// 修改Location
+//
+// @param request - UpdateRegisteredLocationRequest
+//
+// @return UpdateRegisteredLocationResponse
 func (client *Client) UpdateRegisteredLocation(request *UpdateRegisteredLocationRequest) (_result *UpdateRegisteredLocationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -18630,6 +23397,17 @@ func (client *Client) UpdateRegisteredLocation(request *UpdateRegisteredLocation
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新角色
+//
+// @param request - UpdateRoleRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateRoleResponse
 func (client *Client) UpdateRoleWithOptions(request *UpdateRoleRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateRoleResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -18668,6 +23446,13 @@ func (client *Client) UpdateRoleWithOptions(request *UpdateRoleRequest, headers 
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新角色
+//
+// @param request - UpdateRoleRequest
+//
+// @return UpdateRoleResponse
 func (client *Client) UpdateRole(request *UpdateRoleRequest) (_result *UpdateRoleResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -18680,6 +23465,17 @@ func (client *Client) UpdateRole(request *UpdateRoleRequest) (_result *UpdateRol
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新Role中的Users
+//
+// @param request - UpdateRoleUsersRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateRoleUsersResponse
 func (client *Client) UpdateRoleUsersWithOptions(request *UpdateRoleUsersRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateRoleUsersResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -18718,6 +23514,13 @@ func (client *Client) UpdateRoleUsersWithOptions(request *UpdateRoleUsersRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新Role中的Users
+//
+// @param request - UpdateRoleUsersRequest
+//
+// @return UpdateRoleUsersResponse
 func (client *Client) UpdateRoleUsers(request *UpdateRoleUsersRequest) (_result *UpdateRoleUsersResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -18730,6 +23533,17 @@ func (client *Client) UpdateRoleUsers(request *UpdateRoleUsersRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// update table
+//
+// @param request - UpdateTableRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateTableResponse
 func (client *Client) UpdateTableWithOptions(request *UpdateTableRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateTableResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -18788,6 +23602,13 @@ func (client *Client) UpdateTableWithOptions(request *UpdateTableRequest, header
 	return _result, _err
 }
 
+// Summary:
+//
+// update table
+//
+// @param request - UpdateTableRequest
+//
+// @return UpdateTableResponse
 func (client *Client) UpdateTable(request *UpdateTableRequest) (_result *UpdateTableResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -18800,6 +23621,17 @@ func (client *Client) UpdateTable(request *UpdateTableRequest) (_result *UpdateT
 	return _result, _err
 }
 
+// Summary:
+//
+// update table columnstatistics
+//
+// @param request - UpdateTableColumnStatisticsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateTableColumnStatisticsResponse
 func (client *Client) UpdateTableColumnStatisticsWithOptions(request *UpdateTableColumnStatisticsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateTableColumnStatisticsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -18829,6 +23661,13 @@ func (client *Client) UpdateTableColumnStatisticsWithOptions(request *UpdateTabl
 	return _result, _err
 }
 
+// Summary:
+//
+// update table columnstatistics
+//
+// @param request - UpdateTableColumnStatisticsRequest
+//
+// @return UpdateTableColumnStatisticsResponse
 func (client *Client) UpdateTableColumnStatistics(request *UpdateTableColumnStatisticsRequest) (_result *UpdateTableColumnStatisticsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
