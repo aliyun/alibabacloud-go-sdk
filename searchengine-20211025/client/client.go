@@ -48,7 +48,17 @@ func (s *ErrorResponse) SetRequestId(v string) *ErrorResponse {
 }
 
 type ResultClusterValue struct {
+	// The maximum number of full indexes that can be concurrently built.
+	//
+	// example:
+	//
+	// 2
 	BuildParallelNum *int32 `json:"buildParallelNum,omitempty" xml:"buildParallelNum,omitempty"`
+	// The maximum number of full indexes that can be concurrently merged.
+	//
+	// example:
+	//
+	// 2
 	MergeParallelNum *int32 `json:"mergeParallelNum,omitempty" xml:"mergeParallelNum,omitempty"`
 }
 
@@ -100,22 +110,32 @@ func (s *ResultDatabasesFunctionsValue) SetSignatures(v string) *ResultDatabases
 }
 
 type ResultValue struct {
+	// Indicates whether all pushes are suspended.
+	//
 	// example:
 	//
 	// true
 	PauseAll *bool `json:"pauseAll,omitempty" xml:"pauseAll,omitempty"`
+	// Indicates whether the push is suspended for the new full index version.
+	//
 	// example:
 	//
 	// true
 	PauseIndex *bool `json:"pauseIndex,omitempty" xml:"pauseIndex,omitempty"`
+	// Indicates whether the push is suspended for the incremental indexes.
+	//
 	// example:
 	//
 	// true
 	PauseIndexBatch *bool `json:"pauseIndexBatch,omitempty" xml:"pauseIndexBatch,omitempty"`
+	// Indicates whether the push is suspended for the configuration.
+	//
 	// example:
 	//
 	// true
 	PauseBiz *bool `json:"pauseBiz,omitempty" xml:"pauseBiz,omitempty"`
+	// Indicates whether the push is suspended for the real-time incremental indexes.
+	//
 	// example:
 	//
 	// true
@@ -156,7 +176,7 @@ func (s *ResultValue) SetPauseRuntime(v bool) *ResultValue {
 }
 
 type VariablesValue struct {
-	// Specifies whether the variable cannot be modified.
+	// Specifies whether the variable is not allowed to be modified.
 	//
 	// example:
 	//
@@ -168,35 +188,35 @@ type VariablesValue struct {
 	//
 	// false
 	IsModify *bool `json:"isModify,omitempty" xml:"isModify,omitempty"`
-	// The value of the variable.
+	// The variable value.
 	//
 	// example:
 	//
 	// ""
 	Value *string `json:"value,omitempty" xml:"value,omitempty"`
-	// The description about the variable.
+	// The description of the variable.
 	//
 	// example:
 	//
 	// ""
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The value of the template.
+	// The template value of the variable.
 	//
 	// example:
 	//
 	// ""
 	TemplateValue *string `json:"templateValue,omitempty" xml:"templateValue,omitempty"`
-	// The type of the variable. Valid values:
+	// The variable type. Valid values:
 	//
-	// 	- NORMAL: a normal variable
+	// 	- NORMAL: common variable
 	//
-	// 	- FUNCTION: a function variable
+	// 	- FUNCTION: function variable
 	//
 	// example:
 	//
 	// NORMAL
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
-	// The function variable.
+	// The function variables.
 	FuncValue *VariablesValueFuncValue `json:"funcValue,omitempty" xml:"funcValue,omitempty" type:"Struct"`
 }
 
@@ -244,13 +264,13 @@ func (s *VariablesValue) SetFuncValue(v *VariablesValueFuncValue) *VariablesValu
 }
 
 type VariablesValueFuncValue struct {
-	// The class name.
+	// The class name of the function variable.
 	//
 	// example:
 	//
 	// ""
 	FuncClassName *string `json:"funcClassName,omitempty" xml:"funcClassName,omitempty"`
-	// The template of the variable.
+	// The template of the function variable.
 	//
 	// example:
 	//
@@ -277,7 +297,13 @@ func (s *VariablesValueFuncValue) SetTemplate(v string) *VariablesValueFuncValue
 }
 
 type ConfigValue struct {
-	Desc  *string             `json:"desc,omitempty" xml:"desc,omitempty"`
+	// The description of the offline configuration.
+	//
+	// example:
+	//
+	// test
+	Desc *string `json:"desc,omitempty" xml:"desc,omitempty"`
+	// The files to be modified.
 	Files []*ConfigValueFiles `json:"files,omitempty" xml:"files,omitempty" type:"Repeated"`
 }
 
@@ -300,16 +326,28 @@ func (s *ConfigValue) SetFiles(v []*ConfigValueFiles) *ConfigValue {
 }
 
 type ConfigValueFiles struct {
+	// The operation type. Valid values: UPDATE and DELETE. Default value: UPDATE.
+	//
 	// example:
 	//
 	// UPDATE
 	OperateType *string `json:"operateType,omitempty" xml:"operateType,omitempty"`
+	// The path of the parent directory.
+	//
 	// example:
 	//
 	// /
-	ParentFullPath *string                 `json:"parentFullPath,omitempty" xml:"parentFullPath,omitempty"`
-	FileName       *string                 `json:"fileName,omitempty" xml:"fileName,omitempty"`
-	Config         *ConfigValueFilesConfig `json:"config,omitempty" xml:"config,omitempty" type:"Struct"`
+	ParentFullPath *string `json:"parentFullPath,omitempty" xml:"parentFullPath,omitempty"`
+	// The file name.
+	//
+	// example:
+	//
+	// /intervene_dict/中文-通用分析器.dict
+	FileName *string `json:"fileName,omitempty" xml:"fileName,omitempty"`
+	// The configuration to be modified.
+	Config *ConfigValueFilesConfig `json:"config,omitempty" xml:"config,omitempty" type:"Struct"`
+	// The directory name.
+	//
 	// example:
 	//
 	// /test
@@ -350,10 +388,13 @@ func (s *ConfigValueFiles) SetDirName(v string) *ConfigValueFiles {
 }
 
 type ConfigValueFilesConfig struct {
+	// The file content.
+	//
 	// example:
 	//
 	// $dictContent
-	Content   *string                                          `json:"content,omitempty" xml:"content,omitempty"`
+	Content *string `json:"content,omitempty" xml:"content,omitempty"`
+	// The variables.
 	Variables map[string]*ConfigValueFilesConfigVariablesValue `json:"variables,omitempty" xml:"variables,omitempty"`
 }
 
@@ -376,22 +417,32 @@ func (s *ConfigValueFilesConfig) SetVariables(v map[string]*ConfigValueFilesConf
 }
 
 type BodyValue struct {
+	// Specifies whether to suspend all pushes.
+	//
 	// example:
 	//
 	// true
 	PauseAll *bool `json:"pauseAll,omitempty" xml:"pauseAll,omitempty"`
+	// Specifies whether to suspend the push for the new full index version.
+	//
 	// example:
 	//
 	// true
 	PauseIndex *bool `json:"pauseIndex,omitempty" xml:"pauseIndex,omitempty"`
+	// Specifies whether to suspend the push for the incremental indexes.
+	//
 	// example:
 	//
 	// true
 	PauseIndexBatch *bool `json:"pauseIndexBatch,omitempty" xml:"pauseIndexBatch,omitempty"`
+	// Specifies whether to suspend the push for the configuration.
+	//
 	// example:
 	//
 	// true
 	PauseBiz *bool `json:"pauseBiz,omitempty" xml:"pauseBiz,omitempty"`
+	// Specifies whether to suspend the push for the real-time incremental indexes.
+	//
 	// example:
 	//
 	// true
@@ -432,11 +483,36 @@ func (s *BodyValue) SetPauseRuntime(v bool) *BodyValue {
 }
 
 type FilesConfigVariablesValue struct {
-	Description   *string `json:"description,omitempty" xml:"description,omitempty"`
-	DisableModify *bool   `json:"disableModify,omitempty" xml:"disableModify,omitempty"`
-	IsModify      *bool   `json:"isModify,omitempty" xml:"isModify,omitempty"`
-	Type          *string `json:"type,omitempty" xml:"type,omitempty"`
-	Value         *string `json:"value,omitempty" xml:"value,omitempty"`
+	// The description of the variable.
+	//
+	// example:
+	//
+	// Custom variable
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// Specifies whether the variable is not allowed to be modified.
+	//
+	// example:
+	//
+	// true
+	DisableModify *bool `json:"disableModify,omitempty" xml:"disableModify,omitempty"`
+	// Specifies whether the variable is modified.
+	//
+	// example:
+	//
+	// true
+	IsModify *bool `json:"isModify,omitempty" xml:"isModify,omitempty"`
+	// The variable type. Valid values: NORMAL: common variable. FUNCTION: function variable.
+	//
+	// example:
+	//
+	// NORMAL
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	// The variable value.
+	//
+	// example:
+	//
+	// test
+	Value *string `json:"value,omitempty" xml:"value,omitempty"`
 }
 
 func (s FilesConfigVariablesValue) String() string {
@@ -473,19 +549,32 @@ func (s *FilesConfigVariablesValue) SetValue(v string) *FilesConfigVariablesValu
 }
 
 type ConfigValueFilesConfigVariablesValue struct {
+	// The description of the variable.
+	//
+	// example:
+	//
+	// test
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// Specifies whether the variable is not allowed to be modified.
+	//
 	// example:
 	//
 	// true
 	DisableModify *bool `json:"disableModify,omitempty" xml:"disableModify,omitempty"`
+	// Specifies whether the variable is modified.
+	//
 	// example:
 	//
 	// false
 	IsModify *bool `json:"isModify,omitempty" xml:"isModify,omitempty"`
+	// The variable type. Valid values: NORMAL: common variable. FUNCTION: function variable.
+	//
 	// example:
 	//
 	// NORMAL
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	// The variable value.
+	//
 	// example:
 	//
 	// test
@@ -526,7 +615,7 @@ func (s *ConfigValueFilesConfigVariablesValue) SetValue(v string) *ConfigValueFi
 }
 
 type BuildIndexRequest struct {
-	// The reindexing mode.
+	// The reindexing method. Valid values: api: API data source. indexRecover: data recovery by using indexing.
 	//
 	// example:
 	//
@@ -550,7 +639,7 @@ type BuildIndexRequest struct {
 	//
 	// 1640867288
 	DataTimeSec *int32 `json:"dataTimeSec,omitempty" xml:"dataTimeSec,omitempty"`
-	// The data center in which the data source resides.
+	// The data center in which the data source is deployed.
 	//
 	// example:
 	//
@@ -562,7 +651,7 @@ type BuildIndexRequest struct {
 	//
 	// 160131146
 	Generation *int64 `json:"generation,omitempty" xml:"generation,omitempty"`
-	// The data partition. This parameter is required if dataSourceType is set to odps.
+	// The partition in the MaxCompute table. This parameter is required if type is set to odps.
 	//
 	// example:
 	//
@@ -676,10 +765,14 @@ func (s *BuildIndexResponse) SetBody(v *BuildIndexResponseBody) *BuildIndexRespo
 }
 
 type ChangeResourceGroupRequest struct {
+	// new resource group id
+	//
 	// example:
 	//
 	// rg-acfmxr3gs*****
 	NewResourceGroupId *string `json:"newResourceGroupId,omitempty" xml:"newResourceGroupId,omitempty"`
+	// The resource type.
+	//
 	// example:
 	//
 	// instance
@@ -941,14 +1034,20 @@ func (s *CloneSqlInstanceResponse) SetBody(v *CloneSqlInstanceResponseBody) *Clo
 }
 
 type CreateAliasRequest struct {
+	// alias name
+	//
 	// example:
 	//
 	// test
 	Alias *string `json:"alias,omitempty" xml:"alias,omitempty"`
+	// index name
+	//
 	// example:
 	//
 	// index
 	Index *string `json:"index,omitempty" xml:"index,omitempty"`
+	// Specifies whether the OpenSearch Vector Search Edition instance is of the new version.
+	//
 	// example:
 	//
 	// true
@@ -1041,27 +1140,27 @@ func (s *CreateAliasResponse) SetBody(v *CreateAliasResponseBody) *CreateAliasRe
 }
 
 type CreateClusterRequest struct {
-	// The remarks of the query node
+	// Specifies whether to enable automatic connection.
 	//
 	// example:
 	//
 	// true
 	AutoLoad *bool `json:"autoLoad,omitempty" xml:"autoLoad,omitempty"`
-	// The description of the data node
+	// The details of the Searcher workers.
 	DataNode *CreateClusterRequestDataNode `json:"dataNode,omitempty" xml:"dataNode,omitempty" type:"Struct"`
-	// The description of the cluster
+	// The description of the cluster.
 	//
 	// example:
 	//
 	// "ha-tets"
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The name of the node
+	// The cluster name.
 	//
 	// example:
 	//
 	// ha-cn-zvp2qr1sk01_qrs
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The description of the query node
+	// The details of the Query Result Searcher (QRS) workers.
 	QueryNode *CreateClusterRequestQueryNode `json:"queryNode,omitempty" xml:"queryNode,omitempty" type:"Struct"`
 }
 
@@ -1099,12 +1198,17 @@ func (s *CreateClusterRequest) SetQueryNode(v *CreateClusterRequestQueryNode) *C
 }
 
 type CreateClusterRequestDataNode struct {
-	// The number of data nodes
+	// The number of Searcher workers.
 	//
 	// example:
 	//
 	// 2
-	Number    *int32  `json:"number,omitempty" xml:"number,omitempty"`
+	Number *int32 `json:"number,omitempty" xml:"number,omitempty"`
+	// The number of shards.
+	//
+	// example:
+	//
+	// 2
 	Partition *string `json:"partition,omitempty" xml:"partition,omitempty"`
 }
 
@@ -1127,7 +1231,7 @@ func (s *CreateClusterRequestDataNode) SetPartition(v string) *CreateClusterRequ
 }
 
 type CreateClusterRequestQueryNode struct {
-	// The number of nodes to query
+	// The number of QRS workers.
 	//
 	// example:
 	//
@@ -1149,13 +1253,13 @@ func (s *CreateClusterRequestQueryNode) SetNumber(v int32) *CreateClusterRequest
 }
 
 type CreateClusterResponseBody struct {
-	// id of request
+	// The request ID.
 	//
 	// example:
 	//
 	// 10D5E615-69F7-5F49-B850-00169ADE513C
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The result returned
+	// The result.
 	//
 	// example:
 	//
@@ -1211,13 +1315,13 @@ func (s *CreateClusterResponse) SetBody(v *CreateClusterResponseBody) *CreateClu
 }
 
 type CreateConfigDirRequest struct {
-	// The name of the directory
+	// The directory name.
 	//
 	// example:
 	//
 	// /clusters
 	DirName *string `json:"dirName,omitempty" xml:"dirName,omitempty"`
-	// Parent file path
+	// The path of the parent directory.
 	//
 	// example:
 	//
@@ -1244,13 +1348,13 @@ func (s *CreateConfigDirRequest) SetParentFullPath(v string) *CreateConfigDirReq
 }
 
 type CreateConfigDirResponseBody struct {
-	// id of request
+	// The request ID.
 	//
 	// example:
 	//
 	// E7B7D598-B080-5C8E-AA35-D43EC0D5F886
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Map
+	// The result.
 	//
 	// example:
 	//
@@ -1306,14 +1410,20 @@ func (s *CreateConfigDirResponse) SetBody(v *CreateConfigDirResponseBody) *Creat
 }
 
 type CreateConfigFileRequest struct {
+	// The name of the directory.
+	//
 	// example:
 	//
 	// /schemas/device_event_xt_schema.json
 	FileName *string `json:"fileName,omitempty" xml:"fileName,omitempty"`
+	// The Object Storage Service (OSS) URL of the file.
+	//
 	// example:
 	//
 	// oss://xxx/xxxx/xxx
 	OssPath *string `json:"ossPath,omitempty" xml:"ossPath,omitempty"`
+	// The path of the parent directory.
+	//
 	// example:
 	//
 	// /
@@ -1344,13 +1454,13 @@ func (s *CreateConfigFileRequest) SetParentFullPath(v string) *CreateConfigFileR
 }
 
 type CreateConfigFileResponseBody struct {
-	// id of request
+	// The request ID.
 	//
 	// example:
 	//
 	// FE03180A-0E29-5474-8A86-33F0683294A4
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Map
+	// The result.
 	//
 	// example:
 	//
@@ -1406,12 +1516,34 @@ func (s *CreateConfigFileResponse) SetBody(v *CreateConfigFileResponseBody) *Cre
 }
 
 type CreateDataSourceRequest struct {
-	AutoBuildIndex *bool                              `json:"autoBuildIndex,omitempty" xml:"autoBuildIndex,omitempty"`
-	Config         *CreateDataSourceRequestConfig     `json:"config,omitempty" xml:"config,omitempty" type:"Struct"`
-	Domain         *string                            `json:"domain,omitempty" xml:"domain,omitempty"`
-	Name           *string                            `json:"name,omitempty" xml:"name,omitempty"`
-	SaroConfig     *CreateDataSourceRequestSaroConfig `json:"saroConfig,omitempty" xml:"saroConfig,omitempty" type:"Struct"`
-	Type           *string                            `json:"type,omitempty" xml:"type,omitempty"`
+	// Specifies whether to automatically rebuild the index.
+	//
+	// example:
+	//
+	// true
+	AutoBuildIndex *bool `json:"autoBuildIndex,omitempty" xml:"autoBuildIndex,omitempty"`
+	// The configuration information.
+	Config *CreateDataSourceRequestConfig `json:"config,omitempty" xml:"config,omitempty" type:"Struct"`
+	// The data center in which the data source is deployed.
+	//
+	// example:
+	//
+	// vpc_hz_domain_1
+	Domain *string `json:"domain,omitempty" xml:"domain,omitempty"`
+	// The name of the data source.
+	//
+	// example:
+	//
+	// ha-cn-pl32rf0****_test_api
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The configurations of the SARO data source.
+	SaroConfig *CreateDataSourceRequestSaroConfig `json:"saroConfig,omitempty" xml:"saroConfig,omitempty" type:"Struct"`
+	// The type of the data source. Valid values: odps, oss, and swift.
+	//
+	// example:
+	//
+	// odps
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 	// Specifies whether to perform a dry run. This parameter is only used to check whether the data source is valid. Valid values: true and false.
 	//
 	// example:
@@ -1464,16 +1596,66 @@ func (s *CreateDataSourceRequest) SetDryRun(v bool) *CreateDataSourceRequest {
 }
 
 type CreateDataSourceRequestConfig struct {
-	AccessKey    *string `json:"accessKey,omitempty" xml:"accessKey,omitempty"`
+	// The AccessKey ID of the MaxCompute data source.
+	//
+	// example:
+	//
+	// L***p
+	AccessKey *string `json:"accessKey,omitempty" xml:"accessKey,omitempty"`
+	// The AccessKey secret of the MaxCompute data source.
+	//
+	// example:
+	//
+	// 5**9a6
 	AccessSecret *string `json:"accessSecret,omitempty" xml:"accessSecret,omitempty"`
-	Bucket       *string `json:"bucket,omitempty" xml:"bucket,omitempty"`
-	Endpoint     *string `json:"endpoint,omitempty" xml:"endpoint,omitempty"`
-	Namespace    *string `json:"namespace,omitempty" xml:"namespace,omitempty"`
-	OssPath      *string `json:"ossPath,omitempty" xml:"ossPath,omitempty"`
-	Partition    *string `json:"partition,omitempty" xml:"partition,omitempty"`
-	Path         *string `json:"path,omitempty" xml:"path,omitempty"`
-	Project      *string `json:"project,omitempty" xml:"project,omitempty"`
-	Table        *string `json:"table,omitempty" xml:"table,omitempty"`
+	// The name of the OSS bucket.
+	//
+	// example:
+	//
+	// opensearch
+	Bucket *string `json:"bucket,omitempty" xml:"bucket,omitempty"`
+	// The endpoint of the MaxCompute or Object Storage Service (OSS) data source.
+	//
+	// example:
+	//
+	// http://service.cn-hangzhou.maxcompute.aliyun-inc.com/api
+	Endpoint *string `json:"endpoint,omitempty" xml:"endpoint,omitempty"`
+	// The namespace.
+	//
+	// example:
+	//
+	// aegis-ops
+	Namespace *string `json:"namespace,omitempty" xml:"namespace,omitempty"`
+	// The path of the OSS object.
+	//
+	// example:
+	//
+	// /opensearch/search
+	OssPath *string `json:"ossPath,omitempty" xml:"ossPath,omitempty"`
+	// The partition in the MaxCompute table.
+	//
+	// example:
+	//
+	// ds=20220713
+	Partition *string `json:"partition,omitempty" xml:"partition,omitempty"`
+	// The file path in the Apsara File Storage for HDFS file system.
+	//
+	// example:
+	//
+	// test-hdfs-path
+	Path *string `json:"path,omitempty" xml:"path,omitempty"`
+	// The name of the MaxCompute project that is used as the data source.
+	//
+	// example:
+	//
+	// kubenest
+	Project *string `json:"project,omitempty" xml:"project,omitempty"`
+	// The name of the MaxCompute table that is used as the data source.
+	//
+	// example:
+	//
+	// item
+	Table *string `json:"table,omitempty" xml:"table,omitempty"`
 }
 
 func (s CreateDataSourceRequestConfig) String() string {
@@ -1535,7 +1717,17 @@ func (s *CreateDataSourceRequestConfig) SetTable(v string) *CreateDataSourceRequ
 }
 
 type CreateDataSourceRequestSaroConfig struct {
+	// The namespace of the SARO data source.
+	//
+	// example:
+	//
+	// igraph-cn-x0r3e3abe02
 	Namespace *string `json:"namespace,omitempty" xml:"namespace,omitempty"`
+	// The name of the SARO table.
+	//
+	// example:
+	//
+	// index_hdfs
 	TableName *string `json:"tableName,omitempty" xml:"tableName,omitempty"`
 }
 
@@ -1818,28 +2010,33 @@ func (s *CreateFolderResponse) SetBody(v *CreateFolderResponseBody) *CreateFolde
 }
 
 type CreateIndexRequest struct {
+	// The maximum number of full indexes that can be concurrently built.
+	//
+	// example:
+	//
+	// 2
 	BuildParallelNum *int32 `json:"buildParallelNum,omitempty" xml:"buildParallelNum,omitempty"`
-	// The content of the index.
+	// The index schema.
 	//
 	// example:
 	//
 	// {\\"summarys\\":{\\"summary_fields\\":[\\"id\\"]},\\"indexs\\":[{\\"index_name\\":\\"index_id\\",\\"index_type\\":\\"PRIMARYKEY64\\",\\"index_fields\\":\\"id\\",\\"has_primary_key_attribute\\":true,\\"is_primary_key_sorted\\":false}],\\"attributes\\":[\\"id\\"],\\"fields\\":[{\\"field_name\\":\\"id\\",\\"field_type\\":\\"UINT16\\"}],\\"table_name\\":\\"index_2\\"}
 	Content *string `json:"content,omitempty" xml:"content,omitempty"`
-	// Optional. The data source, which can be MaxCompute, Message Service (MNS), Realtime Compute for Apache Flink, or StreamCompute.
+	// The name of the data source.
 	//
 	// example:
 	//
 	// test1
 	DataSource *string `json:"dataSource,omitempty" xml:"dataSource,omitempty"`
-	// The information about the data source, which is required for the new version of OpenSearch Vector Search Edition.
+	// The information about the data source. This parameter is required for an OpenSearch Vector Search Edition instance of the new version.
 	DataSourceInfo *CreateIndexRequestDataSourceInfo `json:"dataSourceInfo,omitempty" xml:"dataSourceInfo,omitempty" type:"Struct"`
-	// The data center in which the data source resides.
+	// The data center in which the data source is deployed.
 	//
 	// example:
 	//
 	// vpc_hz_domain_1
 	Domain *string `json:"domain,omitempty" xml:"domain,omitempty"`
-	// The extended configurations of the field. Keys such as vector and embedding are included. Vector indicates the vector field. Embedding indicates the field that requires embedding.
+	// The extended content of the field configuration. key specifies the vector field and the field that requires embedding.
 	//
 	// example:
 	//
@@ -1866,20 +2063,31 @@ type CreateIndexRequest struct {
 	//         []
 	//
 	//     }
-	Extend           map[string]interface{} `json:"extend,omitempty" xml:"extend,omitempty"`
-	MergeParallelNum *int32                 `json:"mergeParallelNum,omitempty" xml:"mergeParallelNum,omitempty"`
-	// The name of the index.
+	Extend map[string]interface{} `json:"extend,omitempty" xml:"extend,omitempty"`
+	// The maximum number of full indexes that can be concurrently merged.
+	//
+	// example:
+	//
+	// 2
+	MergeParallelNum *int32 `json:"mergeParallelNum,omitempty" xml:"mergeParallelNum,omitempty"`
+	// The index name.
 	//
 	// example:
 	//
 	// ha-cn-zvp2qr1sk01_qrs
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The data partition.
+	// The number of data shards.
 	//
 	// example:
 	//
 	// 20211202
 	Partition *int32 `json:"partition,omitempty" xml:"partition,omitempty"`
+	// Specifies whether to perform only a dry run, without performing the actual request. The system only checks the validity of the data source. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
 	// example:
 	//
 	// true
@@ -1945,7 +2153,7 @@ func (s *CreateIndexRequest) SetDryRun(v bool) *CreateIndexRequest {
 }
 
 type CreateIndexRequestDataSourceInfo struct {
-	// Specifies whether to enable the automatic full indexing feature.
+	// Specifies whether to enable automatic full indexing.
 	//
 	// example:
 	//
@@ -1953,31 +2161,47 @@ type CreateIndexRequestDataSourceInfo struct {
 	AutoBuildIndex *bool `json:"autoBuildIndex,omitempty" xml:"autoBuildIndex,omitempty"`
 	// The information about the MaxCompute data source.
 	Config *CreateIndexRequestDataSourceInfoConfig `json:"config,omitempty" xml:"config,omitempty" type:"Struct"`
+	// The start timestamp from which incremental data is retrieved.
+	//
 	// example:
 	//
 	// 1709715164
 	DataTimeSec *int32 `json:"dataTimeSec,omitempty" xml:"dataTimeSec,omitempty"`
-	// The data center where the data source is deployed.
+	// The data center in which the data source is deployed.
 	//
 	// example:
 	//
 	// vpc_hz_domain_1
 	Domain *string `json:"domain,omitempty" xml:"domain,omitempty"`
-	// The name of the index.
+	// The name of the data source.
 	//
 	// example:
 	//
 	// ha-cn-35t3n1yuj0d_index_1
-	Name               *string `json:"name,omitempty" xml:"name,omitempty"`
-	ProcessParallelNum *int32  `json:"processParallelNum,omitempty" xml:"processParallelNum,omitempty"`
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The maximum number of full indexes that can be concurrently processed.
+	//
+	// example:
+	//
+	// 2
+	ProcessParallelNum *int32 `json:"processParallelNum,omitempty" xml:"processParallelNum,omitempty"`
 	// The number of resources used for data update.
 	//
 	// example:
 	//
 	// 4
-	ProcessPartitionCount *int32                                      `json:"processPartitionCount,omitempty" xml:"processPartitionCount,omitempty"`
-	SaroConfig            *CreateIndexRequestDataSourceInfoSaroConfig `json:"saroConfig,omitempty" xml:"saroConfig,omitempty" type:"Struct"`
-	// The type of the data source. Valid values: odps, swift, saro, and oss.
+	ProcessPartitionCount *int32 `json:"processPartitionCount,omitempty" xml:"processPartitionCount,omitempty"`
+	// The configurations of the SARO data source.
+	SaroConfig *CreateIndexRequestDataSourceInfoSaroConfig `json:"saroConfig,omitempty" xml:"saroConfig,omitempty" type:"Struct"`
+	// The type of the data source. Valid values:
+	//
+	// 	- odps
+	//
+	// 	- swift
+	//
+	// 	- saro
+	//
+	// 	- oss
 	//
 	// example:
 	//
@@ -2051,7 +2275,7 @@ type CreateIndexRequestDataSourceInfoConfig struct {
 	//
 	// 5**9a6
 	AccessSecret *string `json:"accessSecret,omitempty" xml:"accessSecret,omitempty"`
-	// oss bucket
+	// The name of the OSS bucket.
 	//
 	// example:
 	//
@@ -2063,20 +2287,26 @@ type CreateIndexRequestDataSourceInfoConfig struct {
 	//
 	// https://oss-cn-hangzhou.aliyuncs.com
 	Endpoint *string `json:"endpoint,omitempty" xml:"endpoint,omitempty"`
+	// The namespace name.
+	//
 	// example:
 	//
 	// test-namespace
 	Namespace *string `json:"namespace,omitempty" xml:"namespace,omitempty"`
+	// The path of the OSS object.
+	//
 	// example:
 	//
 	// /opensearch/oss.json
 	OssPath *string `json:"ossPath,omitempty" xml:"ossPath,omitempty"`
-	// The data partition. This parameter is required if type is set to odps.
+	// The partition in the MaxCompute table. This parameter is required if type is set to odps.
 	//
 	// example:
 	//
 	// ds=20230114
 	Partition *string `json:"partition,omitempty" xml:"partition,omitempty"`
+	// The path of the Apsara File Storage for HDFS data source.
+	//
 	// example:
 	//
 	// test-hdfs-path
@@ -2087,7 +2317,7 @@ type CreateIndexRequestDataSourceInfoConfig struct {
 	//
 	// bbt_algo_pai
 	Project *string `json:"project,omitempty" xml:"project,omitempty"`
-	// The name of the table.
+	// The table name.
 	//
 	// example:
 	//
@@ -2154,7 +2384,17 @@ func (s *CreateIndexRequestDataSourceInfoConfig) SetTable(v string) *CreateIndex
 }
 
 type CreateIndexRequestDataSourceInfoSaroConfig struct {
+	// The namespace of the SARO data source.
+	//
+	// example:
+	//
+	// flink-test-fjx-default
 	Namespace *string `json:"namespace,omitempty" xml:"namespace,omitempty"`
+	// The name of the SARO table.
+	//
+	// example:
+	//
+	// device_event_shy_summary_
 	TableName *string `json:"tableName,omitempty" xml:"tableName,omitempty"`
 }
 
@@ -2177,13 +2417,13 @@ func (s *CreateIndexRequestDataSourceInfoSaroConfig) SetTableName(v string) *Cre
 }
 
 type CreateIndexResponseBody struct {
-	// id of request
+	// The request ID.
 	//
 	// example:
 	//
 	// 407BFD91-DE7D-50BA-8F88-CDE52A3B5E46
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The information about the index
+	// The results returned.
 	//
 	// example:
 	//
@@ -2239,13 +2479,13 @@ func (s *CreateIndexResponse) SetBody(v *CreateIndexResponseBody) *CreateIndexRe
 }
 
 type CreateInstanceRequest struct {
-	// The billing method of the instance. Valid values: PREPAY and POSTPAY. PREPAY indicates the instance is a subscription instance. When you set this parameter to PREPAY, make sure that your Alibaba Cloud account supports balance payment or credit card payment. Otherwise, the system returns the InvalidPayMethod error message. If you set this parameter to PREPAY, you must also specify the paymentInfo parameter. POSTPAY indicates that the instance is a pay-as-you-go instance. This billing method is not supported.
+	// The billing method of the instance. Valid values: PREPAY: subscription. If you set this parameter to PREPAY, make sure that your Alibaba Cloud account supports balance payment or credit card payment. Otherwise, the system returns the InvalidPayMethod error message. If you set this parameter to PREPAY, you must also specify paymentInfo. POSTPAY: pay-as-you-go. This billing method is not supported.
 	//
 	// example:
 	//
 	// ""
 	ChargeType *string `json:"chargeType,omitempty" xml:"chargeType,omitempty"`
-	// A list of instance-related specifications.
+	// The information about the instance specification.
 	Components []*CreateInstanceRequestComponents `json:"components,omitempty" xml:"components,omitempty" type:"Repeated"`
 	// The billing information.
 	Order *CreateInstanceRequestOrder `json:"order,omitempty" xml:"order,omitempty" type:"Struct"`
@@ -2275,13 +2515,13 @@ func (s *CreateInstanceRequest) SetOrder(v *CreateInstanceRequestOrder) *CreateI
 }
 
 type CreateInstanceRequestComponents struct {
-	// The specification code, which must be consistent with values of the corresponding module parameters.
+	// The code of the specification, which must be consistent with the value that you specify on the buy page.
 	//
 	// example:
 	//
 	// ""
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// Values that you specify for the corresponding module components on the buy page.
+	// The value of the specification.
 	//
 	// example:
 	//
@@ -2358,7 +2598,7 @@ type CreateInstanceResponseBody struct {
 	//
 	// D39EE0F1-D7EF-5F46-B781-6BF4185308B0
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The result returned
+	// The results returned.
 	Result *CreateInstanceResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
 }
 
@@ -2381,7 +2621,7 @@ func (s *CreateInstanceResponseBody) SetResult(v *CreateInstanceResponseBodyResu
 }
 
 type CreateInstanceResponseBodyResult struct {
-	// The ID of the instance
+	// The instance ID.
 	//
 	// example:
 	//
@@ -2432,13 +2672,13 @@ func (s *CreateInstanceResponse) SetBody(v *CreateInstanceResponseBody) *CreateI
 }
 
 type CreatePublicUrlResponseBody struct {
-	// id of request
+	// The request ID.
 	//
 	// example:
 	//
 	// 022F36C7-9FB4-5D67-BEBC-3D14B0984463
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Map
+	// The result.
 	//
 	// example:
 	//
@@ -2679,30 +2919,50 @@ func (s *CreateSqlInstanceResponse) SetBody(v *CreateSqlInstanceResponseBody) *C
 }
 
 type CreateTableRequest struct {
+	// The configurations about field processing.
 	DataProcessConfig []*CreateTableRequestDataProcessConfig `json:"dataProcessConfig,omitempty" xml:"dataProcessConfig,omitempty" type:"Repeated"`
+	// The number of resources used for data update.
+	//
 	// example:
 	//
 	// 1
-	DataProcessorCount *int32                        `json:"dataProcessorCount,omitempty" xml:"dataProcessorCount,omitempty"`
-	DataSource         *CreateTableRequestDataSource `json:"dataSource,omitempty" xml:"dataSource,omitempty" type:"Struct"`
-	FieldSchema        map[string]*string            `json:"fieldSchema,omitempty" xml:"fieldSchema,omitempty"`
+	DataProcessorCount *int32 `json:"dataProcessorCount,omitempty" xml:"dataProcessorCount,omitempty"`
+	// The configurations of the data source.
+	DataSource *CreateTableRequestDataSource `json:"dataSource,omitempty" xml:"dataSource,omitempty" type:"Struct"`
+	// The fields.
+	FieldSchema map[string]*string `json:"fieldSchema,omitempty" xml:"fieldSchema,omitempty"`
+	// The index name.
+	//
 	// example:
 	//
 	// index_1
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The number of data shards.
+	//
 	// example:
 	//
 	// 1
 	PartitionCount *int32 `json:"partitionCount,omitempty" xml:"partitionCount,omitempty"`
+	// The primary key field.
+	//
 	// example:
 	//
 	// id
 	PrimaryKey *string `json:"primaryKey,omitempty" xml:"primaryKey,omitempty"`
+	// The instance schema. If this parameter is specified, the parameters about the index are not required.
+	//
 	// example:
 	//
 	// {}
-	RawSchema   *string                          `json:"rawSchema,omitempty" xml:"rawSchema,omitempty"`
+	RawSchema *string `json:"rawSchema,omitempty" xml:"rawSchema,omitempty"`
+	// The index schema.
 	VectorIndex []*CreateTableRequestVectorIndex `json:"vectorIndex,omitempty" xml:"vectorIndex,omitempty" type:"Repeated"`
+	// Specifies whether to perform only a dry run, without performing the actual request. The system only checks the validity of the data source. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
 	// example:
 	//
 	// true
@@ -2768,15 +3028,22 @@ func (s *CreateTableRequest) SetDryRun(v bool) *CreateTableRequest {
 }
 
 type CreateTableRequestDataProcessConfig struct {
+	// The destination field.
+	//
 	// example:
 	//
 	// source_image_vector
 	DstField *string `json:"dstField,omitempty" xml:"dstField,omitempty"`
+	// The method used to process the field. Valid values: copy and vectorize. A value of copy specifies that the value of the source field is copied to the destination field. A value of vectorize specifies that the value of the source field is vectorized by a vectorization model and the output vector is stored in the destination field.
+	//
 	// example:
 	//
 	// vectorize
-	Operator *string                                    `json:"operator,omitempty" xml:"operator,omitempty"`
-	Params   *CreateTableRequestDataProcessConfigParams `json:"params,omitempty" xml:"params,omitempty" type:"Struct"`
+	Operator *string `json:"operator,omitempty" xml:"operator,omitempty"`
+	// The information about the model.
+	Params *CreateTableRequestDataProcessConfigParams `json:"params,omitempty" xml:"params,omitempty" type:"Struct"`
+	// The source field.
+	//
 	// example:
 	//
 	// source_image
@@ -2812,11 +3079,16 @@ func (s *CreateTableRequestDataProcessConfig) SetSrcField(v string) *CreateTable
 }
 
 type CreateTableRequestDataProcessConfigParams struct {
+	// The source of the data to be vectorized.
 	SrcFieldConfig *CreateTableRequestDataProcessConfigParamsSrcFieldConfig `json:"srcFieldConfig,omitempty" xml:"srcFieldConfig,omitempty" type:"Struct"`
+	// The data type.
+	//
 	// example:
 	//
 	// image
 	VectorModal *string `json:"vectorModal,omitempty" xml:"vectorModal,omitempty"`
+	// The vectorization model.
+	//
 	// example:
 	//
 	// clip
@@ -2847,16 +3119,20 @@ func (s *CreateTableRequestDataProcessConfigParams) SetVectorModel(v string) *Cr
 }
 
 type CreateTableRequestDataProcessConfigParamsSrcFieldConfig struct {
-	// OSSBucket
+	// The OSS bucket.
 	//
 	// example:
 	//
 	// test
 	OssBucket *string `json:"ossBucket,omitempty" xml:"ossBucket,omitempty"`
+	// The OSS endpoint.
+	//
 	// example:
 	//
 	// oss-cn-hangzhou-internal.aliyuncs.com
 	OssEndpoint *string `json:"ossEndpoint,omitempty" xml:"ossEndpoint,omitempty"`
+	// The ID of the Alibaba Cloud account.
+	//
 	// example:
 	//
 	// uid
@@ -2887,15 +3163,22 @@ func (s *CreateTableRequestDataProcessConfigParamsSrcFieldConfig) SetUid(v strin
 }
 
 type CreateTableRequestDataSource struct {
+	// Specifies whether to automatically rebuild the index.
+	//
 	// example:
 	//
 	// true
-	AutoBuildIndex *bool                               `json:"autoBuildIndex,omitempty" xml:"autoBuildIndex,omitempty"`
-	Config         *CreateTableRequestDataSourceConfig `json:"config,omitempty" xml:"config,omitempty" type:"Struct"`
+	AutoBuildIndex *bool `json:"autoBuildIndex,omitempty" xml:"autoBuildIndex,omitempty"`
+	// The configurations of the data source.
+	Config *CreateTableRequestDataSourceConfig `json:"config,omitempty" xml:"config,omitempty" type:"Struct"`
+	// The start timestamp from which incremental data is retrieved.
+	//
 	// example:
 	//
 	// 1715160176
 	DataTimeSec *int32 `json:"dataTimeSec,omitempty" xml:"dataTimeSec,omitempty"`
+	// The data source type. Valid values: odps, swift, and oss.
+	//
 	// example:
 	//
 	// odps
@@ -2931,36 +3214,50 @@ func (s *CreateTableRequestDataSource) SetType(v string) *CreateTableRequestData
 }
 
 type CreateTableRequestDataSourceConfig struct {
+	// The AccessKey ID of the MaxCompute data source.
+	//
 	// example:
 	//
 	// ak
 	AccessKey *string `json:"accessKey,omitempty" xml:"accessKey,omitempty"`
+	// The AccessKey secret of the MaxCompute data source.
+	//
 	// example:
 	//
 	// as
 	AccessSecret *string `json:"accessSecret,omitempty" xml:"accessSecret,omitempty"`
-	// oss bucket
+	// The OSS bucket.
 	//
 	// example:
 	//
 	// antsys-flytest-ci
 	Bucket *string `json:"bucket,omitempty" xml:"bucket,omitempty"`
+	// The endpoint of the MaxCompute data source.
+	//
 	// example:
 	//
 	// http://service.cn-hangzhou.maxcompute.aliyun-inc.com/api
 	Endpoint *string `json:"endpoint,omitempty" xml:"endpoint,omitempty"`
+	// The Object Storage Service (OSS) path.
+	//
 	// example:
 	//
 	// oss://opensearch
 	OssPath *string `json:"ossPath,omitempty" xml:"ossPath,omitempty"`
+	// The partition in the MaxCompute table. This parameter is required if type is set to odps.
+	//
 	// example:
 	//
 	// ds=20220713
 	Partition *string `json:"partition,omitempty" xml:"partition,omitempty"`
+	// The name of the MaxCompute project that is used as the data source.
+	//
 	// example:
 	//
 	// project_20210220122847_3218
 	Project *string `json:"project,omitempty" xml:"project,omitempty"`
+	// The name of the MaxCompute table that is used as the data source.
+	//
 	// example:
 	//
 	// test56
@@ -3016,35 +3313,52 @@ func (s *CreateTableRequestDataSourceConfig) SetTable(v string) *CreateTableRequ
 }
 
 type CreateTableRequestVectorIndex struct {
+	// The configurations of the index schema.
 	AdvanceParams *CreateTableRequestVectorIndexAdvanceParams `json:"advanceParams,omitempty" xml:"advanceParams,omitempty" type:"Struct"`
+	// The dimension of the vector.
+	//
 	// example:
 	//
 	// 128
 	Dimension *string `json:"dimension,omitempty" xml:"dimension,omitempty"`
+	// The distance type.
+	//
 	// example:
 	//
 	// SquaredEuclidean
 	DistanceType *string `json:"distanceType,omitempty" xml:"distanceType,omitempty"`
+	// The name of the index schema.
+	//
 	// example:
 	//
 	// case_index
 	IndexName *string `json:"indexName,omitempty" xml:"indexName,omitempty"`
+	// The namespace field.
+	//
 	// example:
 	//
 	// namespace
 	Namespace *string `json:"namespace,omitempty" xml:"namespace,omitempty"`
+	// The field that stores the indexes of the elements in sparse vectors.
+	//
 	// example:
 	//
 	// sparse_indices
 	SparseIndexField *string `json:"sparseIndexField,omitempty" xml:"sparseIndexField,omitempty"`
+	// The field that stores the elements in sparse vectors.
+	//
 	// example:
 	//
 	// sparse_values
 	SparseValueField *string `json:"sparseValueField,omitempty" xml:"sparseValueField,omitempty"`
+	// The vector field.
+	//
 	// example:
 	//
 	// source_image_vector
 	VectorField *string `json:"vectorField,omitempty" xml:"vectorField,omitempty"`
+	// The vector retrieval algorithm.
+	//
 	// example:
 	//
 	// Qc
@@ -3105,18 +3419,26 @@ func (s *CreateTableRequestVectorIndex) SetVectorIndexType(v string) *CreateTabl
 }
 
 type CreateTableRequestVectorIndexAdvanceParams struct {
+	// The index building parameters.
+	//
 	// example:
 	//
 	// {}
 	BuildIndexParams *string `json:"buildIndexParams,omitempty" xml:"buildIndexParams,omitempty"`
+	// The threshold for linear building.
+	//
 	// example:
 	//
 	// 5000
 	LinearBuildThreshold *string `json:"linearBuildThreshold,omitempty" xml:"linearBuildThreshold,omitempty"`
+	// The minimum number of retrieved candidate sets.
+	//
 	// example:
 	//
 	// 20000
 	MinScanDocCnt *string `json:"minScanDocCnt,omitempty" xml:"minScanDocCnt,omitempty"`
+	// The index retrieval parameters.
+	//
 	// example:
 	//
 	// {}
@@ -3338,12 +3660,16 @@ func (s *DeleteAliasResponse) SetBody(v *DeleteAliasResponseBody) *DeleteAliasRe
 }
 
 type DeleteConfigDirRequest struct {
+	// The directory name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// /clusters
 	DirName *string `json:"dirName,omitempty" xml:"dirName,omitempty"`
+	// The path of the parent directory.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -3371,13 +3697,13 @@ func (s *DeleteConfigDirRequest) SetParentFullPath(v string) *DeleteConfigDirReq
 }
 
 type DeleteConfigDirResponseBody struct {
-	// id of request
+	// The request ID.
 	//
 	// example:
 	//
 	// F43E8AB4-419C-5F4C-90D6-615590DFAA3C
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Map
+	// The result.
 	//
 	// example:
 	//
@@ -3433,12 +3759,16 @@ func (s *DeleteConfigDirResponse) SetBody(v *DeleteConfigDirResponseBody) *Delet
 }
 
 type DeleteConfigFileRequest struct {
+	// The file name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// /schemas/automobile_vector_schema.json
 	FileName *string `json:"fileName,omitempty" xml:"fileName,omitempty"`
+	// The path of the parent directory.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -3466,13 +3796,13 @@ func (s *DeleteConfigFileRequest) SetParentFullPath(v string) *DeleteConfigFileR
 }
 
 type DeleteConfigFileResponseBody struct {
-	// id of request
+	// The request ID.
 	//
 	// example:
 	//
 	// 10D5E615-69F7-5F49-B850-00169ADE513C
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Map
+	// The result.
 	//
 	// example:
 	//
@@ -3619,11 +3949,14 @@ func (s *DeleteFolderResponseBody) SetResult(v *DeleteFolderResponseBodyResult) 
 }
 
 type DeleteFolderResponseBodyResult struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 022F36C7-9FB4-5D67-BEBC-3D14B0984463
-	RequestId *string            `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Result    map[string]*string `json:"result,omitempty" xml:"result,omitempty"`
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// The result
+	Result map[string]*string `json:"result,omitempty" xml:"result,omitempty"`
 }
 
 func (s DeleteFolderResponseBodyResult) String() string {
@@ -3674,15 +4007,20 @@ func (s *DeleteFolderResponse) SetBody(v *DeleteFolderResponseBody) *DeleteFolde
 }
 
 type DeleteIndexRequest struct {
-	// The data source
+	// The data source.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ha-cn-pl32rf0js04_test
-	DataSource       *string `json:"dataSource,omitempty" xml:"dataSource,omitempty"`
-	DeleteDataSource *bool   `json:"deleteDataSource,omitempty" xml:"deleteDataSource,omitempty"`
+	DataSource *string `json:"dataSource,omitempty" xml:"dataSource,omitempty"`
+	// Specifies whether to delete the data source.
+	//
+	// example:
+	//
+	// true
+	DeleteDataSource *bool `json:"deleteDataSource,omitempty" xml:"deleteDataSource,omitempty"`
 }
 
 func (s DeleteIndexRequest) String() string {
@@ -3890,13 +4228,13 @@ func (s *DeleteInstanceResponse) SetBody(v *DeleteInstanceResponseBody) *DeleteI
 }
 
 type DeletePublicUrlResponseBody struct {
-	// id of request
+	// The request ID.
 	//
 	// example:
 	//
 	// F43E8AB4-419C-5F4C-90D6-615590DFAA3C
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Map
+	// The result.
 	//
 	// example:
 	//
@@ -3981,11 +4319,14 @@ func (s *DeleteSqlInstanceResponseBody) SetResult(v *DeleteSqlInstanceResponseBo
 }
 
 type DeleteSqlInstanceResponseBodyResult struct {
+	// id of request
+	//
 	// example:
 	//
 	// 2AE63638-5420-56DC-BF59-37D8174039A0
-	RequestId *string            `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Result    map[string]*string `json:"result,omitempty" xml:"result,omitempty"`
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// The result.
+	Result map[string]*string `json:"result,omitempty" xml:"result,omitempty"`
 }
 
 func (s DeleteSqlInstanceResponseBodyResult) String() string {
@@ -4098,6 +4439,8 @@ func (s *DeleteTableResponse) SetBody(v *DeleteTableResponseBody) *DeleteTableRe
 }
 
 type DescribeRegionsRequest struct {
+	// The language of the response. Default value: zh-cn.
+	//
 	// example:
 	//
 	// zh-cn
@@ -4118,11 +4461,14 @@ func (s *DescribeRegionsRequest) SetAcceptLanguage(v string) *DescribeRegionsReq
 }
 
 type DescribeRegionsResponseBody struct {
+	// id of request
+	//
 	// example:
 	//
 	// E7B7D598-B080-5C8E-AA35-D43EC0D5F886
-	RequestId *string                              `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Result    []*DescribeRegionsResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Repeated"`
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// The result.
+	Result []*DescribeRegionsResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Repeated"`
 }
 
 func (s DescribeRegionsResponseBody) String() string {
@@ -4144,14 +4490,48 @@ func (s *DescribeRegionsResponseBody) SetResult(v []*DescribeRegionsResponseBody
 }
 
 type DescribeRegionsResponseBodyResult struct {
+	// The endpoint of the region.
+	//
 	// example:
 	//
 	// endpoint
 	Endpoint *string `json:"endpoint,omitempty" xml:"endpoint,omitempty"`
+	// The name of the region.
+	//
 	// example:
 	//
 	// China (Hangzhou)
 	LocalName *string `json:"localName,omitempty" xml:"localName,omitempty"`
+	// The ID of the region. Valid values:
+	//
+	// cn-hangzhou: China (Hangzhou)
+	//
+	// cn-shanghai: China (Shanghai)
+	//
+	// cn-qingdao: China (Qingdao)
+	//
+	// cn-beijing: China (Beijing)
+	//
+	// cn-zhangjiakou: China (Zhangjiakou)
+	//
+	// cn-shenzhen: China (Shenzhen)
+	//
+	// ap-southeast-1: Singapore (Singapore)
+	//
+	// cn-internal: Internal Center
+	//
+	// cn-zhangbei-in: Internal Center (Zhangjiakou)
+	//
+	// us-west-1-in: Internal Center (US)
+	//
+	// rus-west-1-in: Internal Center (Russia)
+	//
+	// cn-daily: Daily Environment
+	//
+	// cn-test: Joint Debugging
+	//
+	// pre-hangzhou: China (Hangzhou)-Staging
+	//
 	// example:
 	//
 	// cn-hangzhou
@@ -4486,6 +4866,27 @@ func (s *ForceSwitchResponse) SetBody(v *ForceSwitchResponseBody) *ForceSwitchRe
 }
 
 type GetAdvanceConfigRequest struct {
+	// 	- The type of the advanced configuration. Valid values: -ONLINE: online configuration
+	//
+	// 	- \\-ONLINE_CAVA: online Cava configuration
+	//
+	// 	- \\-ONLINE_PLUGIN: online plug-in configuration
+	//
+	// 	- \\-ONLINE_QUERY: query configuration
+	//
+	// 	- \\-OFFLINE_DICT: offline dictionary configuration
+	//
+	// 	- \\-OFFLINE_TABLE: offline table configuration
+	//
+	// 	- \\-OFFLINE_COMMON: offline configuration
+	//
+	// 	- \\-OFFLINE_PLUGIN: offline plug-in configuration
+	//
+	// 	- \\-OFFLINE_INDEX: index configuration
+	//
+	// example:
+	//
+	// ONLINE
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 
@@ -4509,7 +4910,7 @@ type GetAdvanceConfigResponseBody struct {
 	//
 	// E45380E8-994A-5402-9806-F114B3295FCF
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The returned results.
+	// The result.
 	Result *GetAdvanceConfigResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
 }
 
@@ -4532,31 +4933,39 @@ func (s *GetAdvanceConfigResponseBody) SetResult(v *GetAdvanceConfigResponseBody
 }
 
 type GetAdvanceConfigResponseBodyResult struct {
-	// The content of the configuration that is returned.
+	// The content of the advanced configuration that is returned.
+	//
+	// example:
+	//
+	// {\\"url\\":\\"http://xxxxxx.aliyuncs.com/outnet_hz/packages/xxxxx/opensearch_offline_plugins_xxxxx.tar\\"}
 	Content *string `json:"content,omitempty" xml:"content,omitempty"`
 	// The type of the configuration content. Valid values: FILE, GIT, HTTP, and ODPS.
+	//
+	// example:
+	//
+	// FILE
 	ContentType *string `json:"contentType,omitempty" xml:"contentType,omitempty"`
-	// The description.
+	// The description of the advanced configuration.
 	//
 	// example:
 	//
 	// close alarm, chiji id 37080
 	Desc *string `json:"desc,omitempty" xml:"desc,omitempty"`
-	// The information about files.
+	// The files.
 	Files []*GetAdvanceConfigResponseBodyResultFiles `json:"files,omitempty" xml:"files,omitempty" type:"Repeated"`
-	// The name.
+	// The name of the advanced configuration.
 	//
 	// example:
 	//
 	// ha-cn-0ju2s170b03_qrs
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The status.
+	// The status of the advanced configuration. Valid values: drafting: The advanced configuration is in the draft state. used: The advanced configuration is being used. unused: The advanced configuration is not used. trash: The advanced configuration is being deleted.
 	//
 	// example:
 	//
 	// 0,1,3,6,8
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The update time.
+	// The time when the advanced configuration was updated.
 	//
 	// example:
 	//
@@ -4608,25 +5017,25 @@ func (s *GetAdvanceConfigResponseBodyResult) SetUpdateTime(v int64) *GetAdvanceC
 }
 
 type GetAdvanceConfigResponseBodyResultFiles struct {
-	// The name of the file path.
+	// The file path.
 	//
 	// example:
 	//
 	// ""
 	FullPathName *string `json:"fullPathName,omitempty" xml:"fullPathName,omitempty"`
-	// Indicates whether it is a directory.
+	// Indicates whether the file is a directory.
 	//
 	// example:
 	//
 	// True
 	IsDir *bool `json:"isDir,omitempty" xml:"isDir,omitempty"`
-	// Indicates whether it is a template.
+	// Indicates whether the file is a container.
 	//
 	// example:
 	//
 	// True
 	IsTemplate *bool `json:"isTemplate,omitempty" xml:"isTemplate,omitempty"`
-	// The name.
+	// The file name.
 	//
 	// example:
 	//
@@ -4722,7 +5131,7 @@ type GetAdvanceConfigFileResponseBody struct {
 	//
 	// 10D5E615-69F7-5F49-B850-00169ADE513C
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The result
+	// The result.
 	Result *GetAdvanceConfigFileResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
 }
 
@@ -4745,7 +5154,7 @@ func (s *GetAdvanceConfigFileResponseBody) SetResult(v *GetAdvanceConfigFileResp
 }
 
 type GetAdvanceConfigFileResponseBodyResult struct {
-	// The content of the file
+	// The file content.
 	//
 	// example:
 	//
@@ -4802,7 +5211,7 @@ type GetClusterResponseBody struct {
 	//
 	// E7B7D598-B080-5C8E-AA35-D43EC0D5F886
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The list of the cluster details.
+	// The clusters.
 	Result *GetClusterResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
 }
 
@@ -4825,6 +5234,7 @@ func (s *GetClusterResponseBody) SetResult(v *GetClusterResponseBodyResult) *Get
 }
 
 type GetClusterResponseBodyResult struct {
+	// The configuration information.
 	Config map[string]map[string]interface{} `json:"config,omitempty" xml:"config,omitempty"`
 	// The time when the cluster was updated.
 	//
@@ -4832,7 +5242,12 @@ type GetClusterResponseBodyResult struct {
 	//
 	// 2021-08-09 00:01:02
 	ConfigUpdateTime *string `json:"configUpdateTime,omitempty" xml:"configUpdateTime,omitempty"`
-	CreateTime       *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// The time when the cluster was created.
+	//
+	// example:
+	//
+	// 2024-05-21 16:05:26
+	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
 	// The effective advanced configuration version.
 	//
 	// example:
@@ -4845,7 +5260,7 @@ type GetClusterResponseBodyResult struct {
 	//
 	// test_yyds_data1
 	CurrentOnlineConfigVersion *string `json:"currentOnlineConfigVersion,omitempty" xml:"currentOnlineConfigVersion,omitempty"`
-	// The specifications of the data node.
+	// The specifications of Searcher workers.
 	DataNode *GetClusterResponseBodyResultDataNode `json:"dataNode,omitempty" xml:"dataNode,omitempty" type:"Struct"`
 	// The description of the cluster.
 	//
@@ -4865,13 +5280,13 @@ type GetClusterResponseBodyResult struct {
 	//
 	// test_yyds_data1
 	LatestOnlineConfigVersion *string `json:"latestOnlineConfigVersion,omitempty" xml:"latestOnlineConfigVersion,omitempty"`
-	// The name of the cluster.
+	// The cluster name.
 	//
 	// example:
 	//
 	// general
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The specifications of the query node.
+	// The specifications of Query Result Searcher (QRS) workers.
 	QueryNode *GetClusterResponseBodyResultQueryNode `json:"queryNode,omitempty" xml:"queryNode,omitempty" type:"Struct"`
 	// The creation status of the cluster. Valid values: NEW and PUBLISH. NEW indicates that the cluster is being created. PUBLISH indicates that the cluster is created.
 	//
@@ -4950,7 +5365,7 @@ func (s *GetClusterResponseBodyResult) SetStatus(v string) *GetClusterResponseBo
 }
 
 type GetClusterResponseBodyResultDataNode struct {
-	// The name of the node.
+	// The name of the Searcher worker.
 	//
 	// example:
 	//
@@ -4994,7 +5409,7 @@ func (s *GetClusterResponseBodyResultDataNode) SetPartition(v int32) *GetCluster
 }
 
 type GetClusterResponseBodyResultQueryNode struct {
-	// The name of the node.
+	// The name of the QRS worker.
 	//
 	// example:
 	//
@@ -5067,13 +5482,13 @@ func (s *GetClusterResponse) SetBody(v *GetClusterResponseBody) *GetClusterRespo
 }
 
 type GetClusterRunTimeInfoResponseBody struct {
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
 	// E45380E8-994A-5402-9806-F114B3295FCF
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The result set.
+	// The result.
 	Result []*GetClusterRunTimeInfoResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Repeated"`
 }
 
@@ -5096,15 +5511,15 @@ func (s *GetClusterRunTimeInfoResponseBody) SetResult(v []*GetClusterRunTimeInfo
 }
 
 type GetClusterRunTimeInfoResponseBodyResult struct {
-	// The name of the cluster.
+	// The cluster name.
 	//
 	// example:
 	//
 	// vpc_hz_domain_1
 	ClusterName *string `json:"clusterName,omitempty" xml:"clusterName,omitempty"`
-	// The information about the data node.
+	// The information about the Searcher workers.
 	DataNodes []*GetClusterRunTimeInfoResponseBodyResultDataNodes `json:"dataNodes,omitempty" xml:"dataNodes,omitempty" type:"Repeated"`
-	// The information about the query node.
+	// The information about the Query Result Searcher (QRS) workers.
 	QueryNode *GetClusterRunTimeInfoResponseBodyResultQueryNode `json:"queryNode,omitempty" xml:"queryNode,omitempty" type:"Struct"`
 }
 
@@ -5132,11 +5547,11 @@ func (s *GetClusterRunTimeInfoResponseBodyResult) SetQueryNode(v *GetClusterRunT
 }
 
 type GetClusterRunTimeInfoResponseBodyResultDataNodes struct {
-	// The configuration status list.
+	// The configuration status.
 	ConfigStatusList []*GetClusterRunTimeInfoResponseBodyResultDataNodesConfigStatusList `json:"configStatusList,omitempty" xml:"configStatusList,omitempty" type:"Repeated"`
-	// The dataStatusList.
+	// The data of the Searcher worker.
 	DataStatusList []*GetClusterRunTimeInfoResponseBodyResultDataNodesDataStatusList `json:"dataStatusList,omitempty" xml:"dataStatusList,omitempty" type:"Repeated"`
-	// The service status.
+	// The service status of the QRS worker.
 	ServiceStatus *GetClusterRunTimeInfoResponseBodyResultDataNodesServiceStatus `json:"serviceStatus,omitempty" xml:"serviceStatus,omitempty" type:"Struct"`
 }
 
@@ -5164,31 +5579,31 @@ func (s *GetClusterRunTimeInfoResponseBodyResultDataNodes) SetServiceStatus(v *G
 }
 
 type GetClusterRunTimeInfoResponseBodyResultDataNodesConfigStatusList struct {
-	// The time when the cluster was updated.
+	// The time when the configuration was last updated.
 	//
 	// example:
 	//
 	// ""
 	ConfigUpdateTime *string `json:"configUpdateTime,omitempty" xml:"configUpdateTime,omitempty"`
-	// The overall progress.
+	// The configuration progress. Unit: percentage.
 	//
 	// example:
 	//
 	// 100
 	DonePercent *int32 `json:"donePercent,omitempty" xml:"donePercent,omitempty"`
-	// The number of nodes that are configured.
+	// The number of processed Searcher workers in the cluster.
 	//
 	// example:
 	//
 	// 1
 	DoneSize *int32 `json:"doneSize,omitempty" xml:"doneSize,omitempty"`
-	// The name of the cluster.
+	// The cluster name.
 	//
 	// example:
 	//
 	// test_0704
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The total number of nodes that you specify when you create the cluster.
+	// The total number of Searcher workers in the cluster.
 	//
 	// example:
 	//
@@ -5230,9 +5645,9 @@ func (s *GetClusterRunTimeInfoResponseBodyResultDataNodesConfigStatusList) SetTo
 }
 
 type GetClusterRunTimeInfoResponseBodyResultDataNodesDataStatusList struct {
-	// The information about advanced configurations.
+	// The information about the advanced configuration.
 	AdvanceConfigInfo *GetClusterRunTimeInfoResponseBodyResultDataNodesDataStatusListAdvanceConfigInfo `json:"advanceConfigInfo,omitempty" xml:"advanceConfigInfo,omitempty" type:"Struct"`
-	// The name of the worker that failed because of a deployment failure.
+	// The name of the worker that failed due to a deployment failure.
 	DeployFailedWorker []*string `json:"deployFailedWorker,omitempty" xml:"deployFailedWorker,omitempty" type:"Repeated"`
 	// The storage capacity. Unit: GB.
 	//
@@ -5240,13 +5655,13 @@ type GetClusterRunTimeInfoResponseBodyResultDataNodesDataStatusList struct {
 	//
 	// 2
 	DocSize *int32 `json:"docSize,omitempty" xml:"docSize,omitempty"`
-	// The overall progress.
+	// The configuration progress. Unit: percentage.
 	//
 	// example:
 	//
 	// 100
 	DonePercent *int32 `json:"donePercent,omitempty" xml:"donePercent,omitempty"`
-	// The number of nodes that are configured.
+	// The number of processed QRS workers in the cluster.
 	//
 	// example:
 	//
@@ -5258,49 +5673,49 @@ type GetClusterRunTimeInfoResponseBodyResultDataNodesDataStatusList struct {
 	//
 	// 0A3B1C48006A6C0905F6375F4821EB50
 	ErrorMsg *string `json:"errorMsg,omitempty" xml:"errorMsg,omitempty"`
-	// The time when the full data was updated.
+	// The time when full data in the index was last updated.
 	//
 	// example:
 	//
 	// " "
 	FullUpdateTime *string `json:"fullUpdateTime,omitempty" xml:"fullUpdateTime,omitempty"`
-	// The full version.
+	// The time when the full index version was generated.
 	//
 	// example:
 	//
 	// 123423
 	FullVersion *int64 `json:"fullVersion,omitempty" xml:"fullVersion,omitempty"`
-	// The time when the incremental data was updated.
+	// The time when incremental data in the index was last updated.
 	//
 	// example:
 	//
 	// ""
 	IncUpdateTime *string `json:"incUpdateTime,omitempty" xml:"incUpdateTime,omitempty"`
-	// The incremental version.
+	// The time when the incremental index version was generated.
 	//
 	// example:
 	//
 	// 123423
 	IncVersion *int64 `json:"incVersion,omitempty" xml:"incVersion,omitempty"`
-	// The configuration information of the index.
+	// The information about the index configuration.
 	IndexConfigInfo *GetClusterRunTimeInfoResponseBodyResultDataNodesDataStatusListIndexConfigInfo `json:"indexConfigInfo,omitempty" xml:"indexConfigInfo,omitempty" type:"Struct"`
-	// The size of the index.
+	// The index size.
 	//
 	// example:
 	//
 	// 100
 	IndexSize *int64 `json:"indexSize,omitempty" xml:"indexSize,omitempty"`
-	// The name of the worker that failed because of insufficient disk space.
+	// The name of the worker that failed due to insufficient disks.
 	LackDiskWorker []*string `json:"lackDiskWorker,omitempty" xml:"lackDiskWorker,omitempty" type:"Repeated"`
-	// The name of the worker that failed because of insufficient memory.
+	// The name of the worker that failed due to insufficient memory.
 	LackMemWorker []*string `json:"lackMemWorker,omitempty" xml:"lackMemWorker,omitempty" type:"Repeated"`
-	// The name of the node.
+	// The name of the QRS worker.
 	//
 	// example:
 	//
 	// ha-cn-c4d2rq7nt04_qrs
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The total number of nodes that you specify when you create the cluster.
+	// The total number of QRS workers in the cluster.
 	//
 	// example:
 	//
@@ -5463,25 +5878,25 @@ func (s *GetClusterRunTimeInfoResponseBodyResultDataNodesDataStatusListIndexConf
 }
 
 type GetClusterRunTimeInfoResponseBodyResultDataNodesServiceStatus struct {
-	// The overall progress.
+	// The process progress of QRS workers in the cluster. Unit: percentage.
 	//
 	// example:
 	//
 	// 100
 	DonePercent *int32 `json:"donePercent,omitempty" xml:"donePercent,omitempty"`
-	// The number of nodes being processed in the cluster.
+	// The number of processed QRS workers in the cluster.
 	//
 	// example:
 	//
 	// 100
 	DoneSize *int32 `json:"doneSize,omitempty" xml:"doneSize,omitempty"`
-	// The name.
+	// The name of the QRS worker.
 	//
 	// example:
 	//
 	// ha-cn-0ju2s170b03_qrs
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The total number of nodes in the cluster.
+	// The total number of QRS workers in the cluster.
 	//
 	// example:
 	//
@@ -5518,9 +5933,9 @@ func (s *GetClusterRunTimeInfoResponseBodyResultDataNodesServiceStatus) SetTotal
 }
 
 type GetClusterRunTimeInfoResponseBodyResultQueryNode struct {
-	// The dataStatusList.
+	// The configuration status.
 	ConfigStatusList []*GetClusterRunTimeInfoResponseBodyResultQueryNodeConfigStatusList `json:"configStatusList,omitempty" xml:"configStatusList,omitempty" type:"Repeated"`
-	// The service status.
+	// The service status of the QRS worker.
 	ServiceStatus *GetClusterRunTimeInfoResponseBodyResultQueryNodeServiceStatus `json:"serviceStatus,omitempty" xml:"serviceStatus,omitempty" type:"Struct"`
 }
 
@@ -5543,31 +5958,31 @@ func (s *GetClusterRunTimeInfoResponseBodyResultQueryNode) SetServiceStatus(v *G
 }
 
 type GetClusterRunTimeInfoResponseBodyResultQueryNodeConfigStatusList struct {
-	// The time when the cluster was updated.
+	// The time when the configuration was last updated.
 	//
 	// example:
 	//
 	// " "
 	ConfigUpdateTime *string `json:"configUpdateTime,omitempty" xml:"configUpdateTime,omitempty"`
-	// The progress.
+	// The process progress of QRS workers in the cluster. Unit: percentage.
 	//
 	// example:
 	//
 	// 100
 	DonePercent *int32 `json:"donePercent,omitempty" xml:"donePercent,omitempty"`
-	// The number of nodes that are configured.
+	// The number of processed QRS workers in the cluster.
 	//
 	// example:
 	//
 	// 100
 	DoneSize *int32 `json:"doneSize,omitempty" xml:"doneSize,omitempty"`
-	// The name of the cluster.
+	// The cluster name.
 	//
 	// example:
 	//
 	// ha-cn-zvp2qr1sk01_qrs
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The total number of nodes that you specify when you create the cluster.
+	// The total number of QRS workers in the cluster.
 	//
 	// example:
 	//
@@ -5609,25 +6024,25 @@ func (s *GetClusterRunTimeInfoResponseBodyResultQueryNodeConfigStatusList) SetTo
 }
 
 type GetClusterRunTimeInfoResponseBodyResultQueryNodeServiceStatus struct {
-	// The progress.
+	// The process progress of QRS workers in the cluster. Unit: percentage.
 	//
 	// example:
 	//
 	// 100
 	DonePercent *int32 `json:"donePercent,omitempty" xml:"donePercent,omitempty"`
-	// The number of nodes that are configured.
+	// The number of processed QRS workers in the cluster.
 	//
 	// example:
 	//
 	// 100
 	DoneSize *int32 `json:"doneSize,omitempty" xml:"doneSize,omitempty"`
-	// The name of the cluster.
+	// The cluster name.
 	//
 	// example:
 	//
 	// ha-cn-c4d2rq7nt04_qrs
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The total number of nodes that you specify when you create the cluster.
+	// The total number of QRS workers in the cluster.
 	//
 	// example:
 	//
@@ -5699,7 +6114,7 @@ type GetDataSourceResponseBody struct {
 	//
 	// FE03180A-0E29-5474-8A86-33F0683294A4
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The list of information about the data source
+	// The information about the data source.
 	Result *GetDataSourceResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
 }
 
@@ -5730,15 +6145,19 @@ type GetDataSourceResponseBodyResult struct {
 	Domain *string `json:"domain,omitempty" xml:"domain,omitempty"`
 	// The list of index information
 	Indexes []*string `json:"indexes,omitempty" xml:"indexes,omitempty" type:"Repeated"`
-	// The time when an index for full data was last built
+	// The time when the full data of the data source was last queried.
+	//
+	// example:
+	//
+	// 1718787219
 	LastFulTime *int64 `json:"lastFulTime,omitempty" xml:"lastFulTime,omitempty"`
-	// The name of the data source
+	// The name of the data source.
 	//
 	// example:
 	//
 	// my_index
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The state of the data source
+	// The status of the data source. Valid values: new: The data source is being created. publish: The data source is in the normal state. trash: The data source is being deleted.
 	//
 	// example:
 	//
@@ -5826,7 +6245,7 @@ type GetDataSourceDeployResponseBody struct {
 	//
 	// 2AE63638-5420-56DC-BF59-37D8174039A0
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Deploy
+	// The result.
 	Result *GetDataSourceDeployResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
 }
 
@@ -5852,11 +6271,14 @@ type GetDataSourceDeployResponseBodyResult struct {
 	// example:
 	//
 	// true
-	AutoBuildIndex *bool                                           `json:"autoBuildIndex,omitempty" xml:"autoBuildIndex,omitempty"`
-	Extend         *GetDataSourceDeployResponseBodyResultExtend    `json:"extend,omitempty" xml:"extend,omitempty" type:"Struct"`
-	Processor      *GetDataSourceDeployResponseBodyResultProcessor `json:"processor,omitempty" xml:"processor,omitempty" type:"Struct"`
-	Storage        *GetDataSourceDeployResponseBodyResultStorage   `json:"storage,omitempty" xml:"storage,omitempty" type:"Struct"`
-	Swift          *GetDataSourceDeployResponseBodyResultSwift     `json:"swift,omitempty" xml:"swift,omitempty" type:"Struct"`
+	AutoBuildIndex *bool                                        `json:"autoBuildIndex,omitempty" xml:"autoBuildIndex,omitempty"`
+	Extend         *GetDataSourceDeployResponseBodyResultExtend `json:"extend,omitempty" xml:"extend,omitempty" type:"Struct"`
+	// The parameters of the process.
+	Processor *GetDataSourceDeployResponseBodyResultProcessor `json:"processor,omitempty" xml:"processor,omitempty" type:"Struct"`
+	// The information about the data source.
+	Storage *GetDataSourceDeployResponseBodyResultStorage `json:"storage,omitempty" xml:"storage,omitempty" type:"Struct"`
+	// The information about the incremental data source Swift.
+	Swift *GetDataSourceDeployResponseBodyResultSwift `json:"swift,omitempty" xml:"swift,omitempty" type:"Struct"`
 }
 
 func (s GetDataSourceDeployResponseBodyResult) String() string {
@@ -6014,10 +6436,14 @@ func (s *GetDataSourceDeployResponseBodyResultExtendSaro) SetVersion(v string) *
 }
 
 type GetDataSourceDeployResponseBodyResultProcessor struct {
+	// The startup parameters of the process.
+	//
 	// example:
 	//
 	// {}
 	Args *string `json:"args,omitempty" xml:"args,omitempty"`
+	// The resource information.
+	//
 	// example:
 	//
 	// {}
@@ -6043,25 +6469,25 @@ func (s *GetDataSourceDeployResponseBodyResultProcessor) SetResource(v string) *
 }
 
 type GetDataSourceDeployResponseBodyResultStorage struct {
-	// AK
+	// The AccessKey ID of the MaxCompute data source.
 	//
 	// example:
 	//
 	// ak
 	AccessKey *string `json:"accessKey,omitempty" xml:"accessKey,omitempty"`
-	// AS
+	// The AccessKey secret of the MaxCompute data source.
 	//
 	// example:
 	//
 	// as
 	AccessSecret *string `json:"accessSecret,omitempty" xml:"accessSecret,omitempty"`
-	// oss bucket
+	// The name of the OSS bucket.
 	//
 	// example:
 	//
 	// antsys-miniapp-chongwen-static
 	Bucket *string `json:"bucket,omitempty" xml:"bucket,omitempty"`
-	// odps endpoint
+	// The endpoint of the MaxCompute data source.
 	//
 	// example:
 	//
@@ -6071,10 +6497,14 @@ type GetDataSourceDeployResponseBodyResultStorage struct {
 	//
 	// lazada-campaign-flink
 	Namespace *string `json:"namespace,omitempty" xml:"namespace,omitempty"`
+	// The Object Storage Service (OSS) path.
+	//
 	// example:
 	//
 	// oss://opensearch
 	OssPath *string `json:"ossPath,omitempty" xml:"ossPath,omitempty"`
+	// The partition in the MaxCompute table. Example: ds=20180102.
+	//
 	// example:
 	//
 	// ds=20220926
@@ -6152,7 +6582,7 @@ func (s *GetDataSourceDeployResponseBodyResultStorage) SetTable(v string) *GetDa
 }
 
 type GetDataSourceDeployResponseBodyResultSwift struct {
-	// topic
+	// The topic.
 	//
 	// example:
 	//
@@ -6334,7 +6764,7 @@ type GetDeployGraphResponseBody struct {
 	//
 	// E7B7D598-B080-5C8E-AA35-D43EC0D5F886
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The result returned
+	// The results returned.
 	//
 	// example:
 	//
@@ -6361,6 +6791,7 @@ func (s *GetDeployGraphResponseBody) SetResult(v *GetDeployGraphResponseBodyResu
 }
 
 type GetDeployGraphResponseBodyResult struct {
+	// The deployment information.
 	Graph *GetDeployGraphResponseBodyResultGraph `json:"graph,omitempty" xml:"graph,omitempty" type:"Struct"`
 }
 
@@ -6378,17 +6809,17 @@ func (s *GetDeployGraphResponseBodyResult) SetGraph(v *GetDeployGraphResponseBod
 }
 
 type GetDeployGraphResponseBodyResultGraph struct {
-	// 索引元信息
+	// The index metadata.
 	IndexMetas []*GetDeployGraphResponseBodyResultGraphIndexMetas `json:"indexMetas,omitempty" xml:"indexMetas,omitempty" type:"Repeated"`
-	// 在线集群元信息
+	// The metadata of online clusters.
 	OnlineMaster []*GetDeployGraphResponseBodyResultGraphOnlineMaster `json:"onlineMaster,omitempty" xml:"onlineMaster,omitempty" type:"Repeated"`
-	// 数据源和索引关联关系
+	// The association relationships between data sources and indexes.
 	TableIndexRelation map[string][]*string `json:"tableIndexRelation,omitempty" xml:"tableIndexRelation,omitempty"`
-	// 数据源元信息
+	// The metadata of data sources.
 	TableMetas []*GetDeployGraphResponseBodyResultGraphTableMetas `json:"tableMetas,omitempty" xml:"tableMetas,omitempty" type:"Repeated"`
-	// zone和索引关联关系
+	// The association relationships between zones and indexes.
 	ZoneIndexRelation map[string][]*string `json:"zoneIndexRelation,omitempty" xml:"zoneIndexRelation,omitempty"`
-	// zone元信息
+	// The zone metadata.
 	ZoneMetas []*GetDeployGraphResponseBodyResultGraphZoneMetas `json:"zoneMetas,omitempty" xml:"zoneMetas,omitempty" type:"Repeated"`
 }
 
@@ -6431,12 +6862,42 @@ func (s *GetDeployGraphResponseBodyResultGraph) SetZoneMetas(v []*GetDeployGraph
 }
 
 type GetDeployGraphResponseBodyResultGraphIndexMetas struct {
-	DomainName    *string `json:"domainName,omitempty" xml:"domainName,omitempty"`
-	Name          *string `json:"name,omitempty" xml:"name,omitempty"`
-	TableDeployId *int64  `json:"tableDeployId,omitempty" xml:"tableDeployId,omitempty"`
-	TableName     *string `json:"tableName,omitempty" xml:"tableName,omitempty"`
-	Tag           *string `json:"tag,omitempty" xml:"tag,omitempty"`
-	ZoneName      *string `json:"zoneName,omitempty" xml:"zoneName,omitempty"`
+	// The name of the data center.
+	//
+	// example:
+	//
+	// hz_pre_vpc_domain_1
+	DomainName *string `json:"domainName,omitempty" xml:"domainName,omitempty"`
+	// The index name.
+	//
+	// example:
+	//
+	// test_api
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The deployment ID of the table.
+	//
+	// example:
+	//
+	// 2409
+	TableDeployId *int64 `json:"tableDeployId,omitempty" xml:"tableDeployId,omitempty"`
+	// The name of the data source.
+	//
+	// example:
+	//
+	// ha-cn-pl32rf0****_test_api
+	TableName *string `json:"tableName,omitempty" xml:"tableName,omitempty"`
+	// The tag.
+	//
+	// example:
+	//
+	// test_api_hz_pre_vpc_domain_1
+	Tag *string `json:"tag,omitempty" xml:"tag,omitempty"`
+	// The name of the QRS worker.
+	//
+	// example:
+	//
+	// ha-cn-pl32rf0****_qrs
+	ZoneName *string `json:"zoneName,omitempty" xml:"zoneName,omitempty"`
 }
 
 func (s GetDeployGraphResponseBodyResultGraphIndexMetas) String() string {
@@ -6478,10 +6939,30 @@ func (s *GetDeployGraphResponseBodyResultGraphIndexMetas) SetZoneName(v string) 
 }
 
 type GetDeployGraphResponseBodyResultGraphOnlineMaster struct {
+	// The name of the data center.
+	//
+	// example:
+	//
+	// hz_pre_vpc_domain_1
 	DomainName *string `json:"domainName,omitempty" xml:"domainName,omitempty"`
-	HippoId    *string `json:"hippoId,omitempty" xml:"hippoId,omitempty"`
-	Id         *int64  `json:"id,omitempty" xml:"id,omitempty"`
-	Name       *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The resource ID.
+	//
+	// example:
+	//
+	// 5377
+	HippoId *string `json:"hippoId,omitempty" xml:"hippoId,omitempty"`
+	// The ID of the data center.
+	//
+	// example:
+	//
+	// 1
+	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
+	// The name of the online cluster.
+	//
+	// example:
+	//
+	// ha-cn-pl32rf0****_hz_pre_vpc_domain_1
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 }
 
 func (s GetDeployGraphResponseBodyResultGraphOnlineMaster) String() string {
@@ -6513,12 +6994,42 @@ func (s *GetDeployGraphResponseBodyResultGraphOnlineMaster) SetName(v string) *G
 }
 
 type GetDeployGraphResponseBodyResultGraphTableMetas struct {
-	BuildDeployId *int64  `json:"buildDeployId,omitempty" xml:"buildDeployId,omitempty"`
-	DomainName    *string `json:"domainName,omitempty" xml:"domainName,omitempty"`
-	Name          *string `json:"name,omitempty" xml:"name,omitempty"`
-	TableDeployId *int64  `json:"tableDeployId,omitempty" xml:"tableDeployId,omitempty"`
-	Tag           *string `json:"tag,omitempty" xml:"tag,omitempty"`
-	Type          *string `json:"type,omitempty" xml:"type,omitempty"`
+	// The ID of the offline deployment.
+	//
+	// example:
+	//
+	// 1
+	BuildDeployId *int64 `json:"buildDeployId,omitempty" xml:"buildDeployId,omitempty"`
+	// The name of the data center.
+	//
+	// example:
+	//
+	// hz_pre_vpc_domain_1
+	DomainName *string `json:"domainName,omitempty" xml:"domainName,omitempty"`
+	// The name of the data source.
+	//
+	// example:
+	//
+	// ha-cn-pl32rf0****_test_api
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The deployment ID of the table.
+	//
+	// example:
+	//
+	// 2177
+	TableDeployId *int64 `json:"tableDeployId,omitempty" xml:"tableDeployId,omitempty"`
+	// The tag.
+	//
+	// example:
+	//
+	// ha-cn-pl32rf0****_test_api_hz_pre_vpc_domain_1
+	Tag *string `json:"tag,omitempty" xml:"tag,omitempty"`
+	// The type of the data source.
+	//
+	// example:
+	//
+	// odps
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 
 func (s GetDeployGraphResponseBodyResultGraphTableMetas) String() string {
@@ -6560,11 +7071,36 @@ func (s *GetDeployGraphResponseBodyResultGraphTableMetas) SetType(v string) *Get
 }
 
 type GetDeployGraphResponseBodyResultGraphZoneMetas struct {
-	DomainInfo    *string `json:"domainInfo,omitempty" xml:"domainInfo,omitempty"`
-	Name          *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The name of the data center.
+	//
+	// example:
+	//
+	// hz_pre_vpc_domain_1
+	DomainInfo *string `json:"domainInfo,omitempty" xml:"domainInfo,omitempty"`
+	// The name of the Query Result Searcher (QRS) worker.
+	//
+	// example:
+	//
+	// ha-cn-pl32rf0****_qrs
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The name of the service that is used to manage the relationships between online clusters and indexes.
+	//
+	// example:
+	//
+	// ha-cn-pl32rf0****_hz_pre_vpc_domain_1
 	SuezAdminName *string `json:"suezAdminName,omitempty" xml:"suezAdminName,omitempty"`
-	Tag           *string `json:"tag,omitempty" xml:"tag,omitempty"`
-	Type          *string `json:"type,omitempty" xml:"type,omitempty"`
+	// The tag.
+	//
+	// example:
+	//
+	// ha-cn-pl32rf0****_qrs_hz_pre_vpc_domain_1
+	Tag *string `json:"tag,omitempty" xml:"tag,omitempty"`
+	// The node type.
+	//
+	// example:
+	//
+	// qrs
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 
 func (s GetDeployGraphResponseBodyResultGraphZoneMetas) String() string {
@@ -6660,7 +7196,7 @@ type GetFileResponseBody struct {
 	//
 	// 2AE63638-5420-56DC-BF59-37D8174039A0
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The information about the index.
+	// The index information.
 	Result *GetFileResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
 }
 
@@ -6683,7 +7219,7 @@ func (s *GetFileResponseBody) SetResult(v *GetFileResponseBodyResult) *GetFileRe
 }
 
 type GetFileResponseBodyResult struct {
-	// The content of the file.
+	// The file content.
 	//
 	// example:
 	//
@@ -6695,19 +7231,19 @@ type GetFileResponseBodyResult struct {
 	//
 	// ha-cn-2r42p5oi202_xijie_test
 	DataSource *string `json:"dataSource,omitempty" xml:"dataSource,omitempty"`
-	// The name of the full path.
+	// The full path of the file.
 	//
 	// example:
 	//
 	// ""
 	FullPathName *string `json:"fullPathName,omitempty" xml:"fullPathName,omitempty"`
-	// Indicates whether it is a directory.
+	// Indicates whether the file is a directory.
 	//
 	// example:
 	//
 	// True
 	IsDir *bool `json:"isDir,omitempty" xml:"isDir,omitempty"`
-	// The name of the file.
+	// The file name.
 	//
 	// example:
 	//
@@ -6795,7 +7331,7 @@ type GetIndexResponseBody struct {
 	//
 	// 4FB0325E-8C37-5525-96AC-0333523170A3
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The information about the index.
+	// The index information.
 	Result *GetIndexResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
 }
 
@@ -6818,35 +7354,93 @@ func (s *GetIndexResponseBody) SetResult(v *GetIndexResponseBodyResult) *GetInde
 }
 
 type GetIndexResponseBodyResult struct {
-	Cluster         map[string]*ResultClusterValue    `json:"cluster,omitempty" xml:"cluster,omitempty"`
-	Config          map[string]map[string]interface{} `json:"config,omitempty" xml:"config,omitempty"`
+	// The cluster information.
+	Cluster map[string]*ResultClusterValue `json:"cluster,omitempty" xml:"cluster,omitempty"`
+	// The configuration information.
+	Config map[string]map[string]interface{} `json:"config,omitempty" xml:"config,omitempty"`
+	// The configuration that takes effect next time.
 	ConfigWhenBuild map[string]map[string]interface{} `json:"configWhenBuild,omitempty" xml:"configWhenBuild,omitempty"`
-	// The content of the index.
+	// The file content.
+	//
+	// example:
+	//
+	// {"summarys":{"parameter":{"file_compressor":"zstd"},"summary_fields":["id"]},"file_compress":[{"name":"file_compressor","type":"zstd"},{"name":"no_compressor","type":""}],"indexs":[{"index_fields":"name","index_name":"ids","index_type":"STRING"},{"has_primary_key_attribute":true,"index_fields":"id","is_primary_key_sorted":false,"index_name":"id","index_type":"PRIMARYKEY64"}],"attributes":[{"file_compress":"no_compressor","field_name":"id"}],"fields":[{"user_defined_param":{},"compress_type":"uniq","field_type":"STRING","field_name":"id"},{"compress_type":"uniq","field_type":"STRING","field_name":"name"}],"table_name":"api"}
 	Content *string `json:"content,omitempty" xml:"content,omitempty"`
+	// The name of the data source.
+	//
 	// example:
 	//
 	// ha-cn-tl32nd2nq01_00
 	DataSource *string `json:"dataSource,omitempty" xml:"dataSource,omitempty"`
 	// The information about the data source.
 	DataSourceInfo *GetIndexResponseBodyResultDataSourceInfo `json:"dataSourceInfo,omitempty" xml:"dataSourceInfo,omitempty" type:"Struct"`
-	// The remarks.
+	// The description of the index version.
+	//
+	// example:
+	//
+	// test index
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	Domain      *string `json:"domain,omitempty" xml:"domain,omitempty"`
-	// The last time when full data in the index was updated.
+	// The deployment name of the index.
+	//
+	// example:
+	//
+	// sz_vpc_domain_1
+	Domain *string `json:"domain,omitempty" xml:"domain,omitempty"`
+	// The time when full data in the index was last updated.
+	//
+	// example:
+	//
+	// 2024-06-20 08:52:54
 	FullUpdateTime *string `json:"fullUpdateTime,omitempty" xml:"fullUpdateTime,omitempty"`
-	// The version of the data.
+	// The data version.
+	//
+	// example:
+	//
+	// 1688523414
 	FullVersion *int64 `json:"fullVersion,omitempty" xml:"fullVersion,omitempty"`
-	// The last time when incremental data in the index was updated.
+	// The time when incremental data in the index was last updated.
+	//
+	// example:
+	//
+	// 2024-06-20 08:52:54
 	IncUpdateTime *string `json:"incUpdateTime,omitempty" xml:"incUpdateTime,omitempty"`
 	// The index size.
+	//
+	// example:
+	//
+	// 4689
 	IndexSize *int64 `json:"indexSize,omitempty" xml:"indexSize,omitempty"`
-	// The status of the index. Valid values: NEW, PUBLISH, IN_USE, NOT_USE, STOP_USE, and RESTORE_USE. After a Retrieval Engine Edition instance is created, it enters the IN_USE state.
+	// The status of the index version. Valid values:
+	//
+	// 	- NEW: The index version is created.
+	//
+	// 	- PUBLISH: The index version is normal.
+	//
+	// 	- IN_USE: The index version is in use.
+	//
+	// 	- NOT_USE: The index version is not used.
+	//
+	// 	- STOP_USE: The index version is being stopped.
+	//
+	// 	- RESTORE_USE: The index version is being restored.
+	//
+	// 	- FAIL: The index version failed to be created.
+	//
+	// example:
+	//
+	// IN_USE
 	IndexStatus *string `json:"indexStatus,omitempty" xml:"indexStatus,omitempty"`
+	// The index name.
+	//
 	// example:
 	//
 	// general
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// The number of shards.
+	//
+	// example:
+	//
+	// 2
 	Partition *int32 `json:"partition,omitempty" xml:"partition,omitempty"`
 	// The information about the versions.
 	Versions []*GetIndexResponseBodyResultVersions `json:"versions,omitempty" xml:"versions,omitempty" type:"Repeated"`
@@ -6942,19 +7536,44 @@ func (s *GetIndexResponseBodyResult) SetVersions(v []*GetIndexResponseBodyResult
 
 type GetIndexResponseBodyResultDataSourceInfo struct {
 	// Indicates whether the automatic full indexing feature is enabled.
+	//
+	// example:
+	//
+	// true
 	AutoBuildIndex *bool `json:"autoBuildIndex,omitempty" xml:"autoBuildIndex,omitempty"`
 	// The configuration of MaxCompute data sources.
 	Config *GetIndexResponseBodyResultDataSourceInfoConfig `json:"config,omitempty" xml:"config,omitempty" type:"Struct"`
-	// The offline deployment name of the data source.
+	// The data center in which the data source is deployed.
+	//
+	// example:
+	//
+	// vpc_hz_domain_1
 	Domain *string `json:"domain,omitempty" xml:"domain,omitempty"`
 	// The name of the data source.
-	Name               *string `json:"name,omitempty" xml:"name,omitempty"`
-	ProcessParallelNum *int32  `json:"processParallelNum,omitempty" xml:"processParallelNum,omitempty"`
+	//
+	// example:
+	//
+	// ha-cn-pl32rf0****_test_api
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The maximum number of full indexes that can be concurrently processed.
+	//
+	// example:
+	//
+	// 2
+	ProcessParallelNum *int32 `json:"processParallelNum,omitempty" xml:"processParallelNum,omitempty"`
 	// The number of resources used for data update.
+	//
+	// example:
+	//
+	// 2
 	ProcessPartitionCount *int32 `json:"processPartitionCount,omitempty" xml:"processPartitionCount,omitempty"`
-	// The configuration of SARO data sources.
+	// The configurations of the SARO data source.
 	SaroConfig *GetIndexResponseBodyResultDataSourceInfoSaroConfig `json:"saroConfig,omitempty" xml:"saroConfig,omitempty" type:"Struct"`
 	// The type of the data source. Valid values: odps, swift, saro, oss, and unKnow.
+	//
+	// example:
+	//
+	// odps
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 
@@ -7007,20 +7626,65 @@ func (s *GetIndexResponseBodyResultDataSourceInfo) SetType(v string) *GetIndexRe
 }
 
 type GetIndexResponseBodyResultDataSourceInfoConfig struct {
-	AccessKey    *string `json:"accessKey,omitempty" xml:"accessKey,omitempty"`
+	// The AccessKey ID of the MaxCompute data source.
+	//
+	// example:
+	//
+	// L***p
+	AccessKey *string `json:"accessKey,omitempty" xml:"accessKey,omitempty"`
+	// The AccessKey secret of the MaxCompute data source.
+	//
+	// example:
+	//
+	// 5**9a6
 	AccessSecret *string `json:"accessSecret,omitempty" xml:"accessSecret,omitempty"`
-	Bucket       *string `json:"bucket,omitempty" xml:"bucket,omitempty"`
-	// A parameter related to MaxCompute.
+	// The name of the OSS bucket.
+	//
+	// example:
+	//
+	// ha3test-oss
+	Bucket *string `json:"bucket,omitempty" xml:"bucket,omitempty"`
+	// The endpoint of the MaxCompute data source.
+	//
+	// example:
+	//
+	// http://service.cn-hangzhou.maxcompute.aliyun-inc.com/api
 	Endpoint *string `json:"endpoint,omitempty" xml:"endpoint,omitempty"`
-	// A parameter related to SARO.
+	// The namespace. This parameter is applicable to the SARO data source used in the intranet of Alibaba Group.
+	//
+	// example:
+	//
+	// TEST_dump_demo_sj_na61hunbu2_share_holo
 	Namespace *string `json:"namespace,omitempty" xml:"namespace,omitempty"`
-	// A parameter related to OSS.
-	OssPath   *string `json:"ossPath,omitempty" xml:"ossPath,omitempty"`
+	// The Object Storage Service (OSS) path.
+	//
+	// example:
+	//
+	// /test_opensearch/sift_oss_test.data
+	OssPath *string `json:"ossPath,omitempty" xml:"ossPath,omitempty"`
+	// The partition in the MaxCompute table. Example: ds=20180102.
+	//
+	// example:
+	//
+	// ds=20220713
 	Partition *string `json:"partition,omitempty" xml:"partition,omitempty"`
-	// A parameter related to Apsara File Storage for HDFS.
-	Path    *string `json:"path,omitempty" xml:"path,omitempty"`
+	// The file path in the Apsara File Storage for HDFS file system.
+	//
+	// example:
+	//
+	// http://test_opensearch/sift_oss_test.data
+	Path *string `json:"path,omitempty" xml:"path,omitempty"`
+	// The name of the MaxCompute project that is used as the data source.
+	//
+	// example:
+	//
+	// tisplus_dev
 	Project *string `json:"project,omitempty" xml:"project,omitempty"`
-	// A parameter related to SARO and MaxCompute.
+	// The name of the MaxCompute table that is used as the data source.
+	//
+	// example:
+	//
+	// dump_odps_demo
 	Table *string `json:"table,omitempty" xml:"table,omitempty"`
 }
 
@@ -7083,7 +7747,17 @@ func (s *GetIndexResponseBodyResultDataSourceInfoConfig) SetTable(v string) *Get
 }
 
 type GetIndexResponseBodyResultDataSourceInfoSaroConfig struct {
+	// The namespace of the SARO data source.
+	//
+	// example:
+	//
+	// TEST_dump_demo_sj_na61hunbu2_share_holo
 	Namespace *string `json:"namespace,omitempty" xml:"namespace,omitempty"`
+	// The name of the SARO table.
+	//
+	// example:
+	//
+	// llm
 	TableName *string `json:"tableName,omitempty" xml:"tableName,omitempty"`
 }
 
@@ -7114,25 +7788,39 @@ type GetIndexResponseBodyResultVersions struct {
 	Desc *string `json:"desc,omitempty" xml:"desc,omitempty"`
 	// The information about the files.
 	Files []*GetIndexResponseBodyResultVersionsFiles `json:"files,omitempty" xml:"files,omitempty" type:"Repeated"`
-	// The name of the version.
+	// The version name.
 	//
 	// example:
 	//
 	// ha-cn-7pp2ngv4s02_qrs
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The status of the version.
+	// The status of the index version. Valid values:
+	//
+	// 	- NEW: The index version is created.
+	//
+	// 	- PUBLISH: The index version is normal.
+	//
+	// 	- IN_USE: The index version is in use.
+	//
+	// 	- NOT_USE: The index version is not used.
+	//
+	// 	- STOP_USE: The index version is being stopped.
+	//
+	// 	- RESTORE_USE: The index version is being restored.
+	//
+	// 	- FAIL: The index version failed to be created.
 	//
 	// example:
 	//
 	// 2
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The last time when the version was updated.
+	// The time when the index version was updated.
 	//
 	// example:
 	//
 	// " "
 	UpdateTime *int64 `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
-	// The ID of the version.
+	// The version ID.
 	//
 	// example:
 	//
@@ -7196,8 +7884,13 @@ type GetIndexResponseBodyResultVersionsFiles struct {
 	// example:
 	//
 	// True
-	IsTemplate *bool   `json:"isTemplate,omitempty" xml:"isTemplate,omitempty"`
-	Name       *string `json:"name,omitempty" xml:"name,omitempty"`
+	IsTemplate *bool `json:"isTemplate,omitempty" xml:"isTemplate,omitempty"`
+	// The file name.
+	//
+	// example:
+	//
+	// qrs.json
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 }
 
 func (s GetIndexResponseBodyResultVersionsFiles) String() string {
@@ -7258,13 +7951,13 @@ func (s *GetIndexResponse) SetBody(v *GetIndexResponseBody) *GetIndexResponse {
 }
 
 type GetIndexOnlineStrategyResponseBody struct {
-	// id of request
+	// The request ID.
 	//
 	// example:
 	//
 	// FE03180A-0E29-5474-8A86-33F0683294A4
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// IndexOnlineStrategy
+	// The result.
 	Result *GetIndexOnlineStrategyResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
 }
 
@@ -7287,6 +7980,8 @@ func (s *GetIndexOnlineStrategyResponseBody) SetResult(v *GetIndexOnlineStrategy
 }
 
 type GetIndexOnlineStrategyResponseBodyResult struct {
+	// The index change rate.
+	//
 	// example:
 	//
 	// 20
@@ -7342,7 +8037,7 @@ type GetIndexVersionResponseBody struct {
 	//
 	// E7B7D598-B080-5C8E-AA35-D43EC0D5F886
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The list of cluster details
+	// The clusters.
 	Result *GetIndexVersionResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
 }
 
@@ -7365,13 +8060,13 @@ func (s *GetIndexVersionResponseBody) SetResult(v *GetIndexVersionResponseBodyRe
 }
 
 type GetIndexVersionResponseBodyResult struct {
-	// The name of the cluster
+	// The cluster name.
 	//
 	// example:
 	//
 	// ayoss-cn-zhangjiakou-b
 	Cluster *string `json:"cluster,omitempty" xml:"cluster,omitempty"`
-	// The time when the cluster was updated
+	// The index versions.
 	IndexVersions []*GetIndexVersionResponseBodyResultIndexVersions `json:"indexVersions,omitempty" xml:"indexVersions,omitempty" type:"Repeated"`
 }
 
@@ -7394,20 +8089,25 @@ func (s *GetIndexVersionResponseBodyResult) SetIndexVersions(v []*GetIndexVersio
 }
 
 type GetIndexVersionResponseBodyResultIndexVersions struct {
-	// The ID of the index deployed in offline mode
+	// The ID of the offline deployment.
 	//
 	// example:
 	//
 	// " "
-	BuildDeployId  *string `json:"buildDeployId,omitempty" xml:"buildDeployId,omitempty"`
-	CurrentVersion *int64  `json:"currentVersion,omitempty" xml:"currentVersion,omitempty"`
-	// The name of the index table
+	BuildDeployId *string `json:"buildDeployId,omitempty" xml:"buildDeployId,omitempty"`
+	// The current online version number.
+	//
+	// example:
+	//
+	// 1
+	CurrentVersion *int64 `json:"currentVersion,omitempty" xml:"currentVersion,omitempty"`
+	// The name of the index table.
 	//
 	// example:
 	//
 	// table4
 	IndexName *string `json:"indexName,omitempty" xml:"indexName,omitempty"`
-	// The version of the index
+	// The index versions.
 	Versions []*int64 `json:"versions,omitempty" xml:"versions,omitempty" type:"Repeated"`
 }
 
@@ -7475,7 +8175,7 @@ type GetInstanceResponseBody struct {
 	//
 	// E7B7D598-B080-5C8E-AA35-D43EC0D5F886
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The result returned.
+	// The results returned.
 	Result *GetInstanceResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
 }
 
@@ -7504,7 +8204,7 @@ type GetInstanceResponseBodyResult struct {
 	//
 	// POSYPAY
 	ChargeType *string `json:"chargeType,omitempty" xml:"chargeType,omitempty"`
-	// The product code.
+	// The commodity code of the instance.
 	//
 	// example:
 	//
@@ -7522,7 +8222,8 @@ type GetInstanceResponseBodyResult struct {
 	//
 	// ha3_test
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The expiration time.
+	Edition     *string `json:"edition,omitempty" xml:"edition,omitempty"`
+	// The time when the instance expires.
 	//
 	// example:
 	//
@@ -7534,7 +8235,7 @@ type GetInstanceResponseBodyResult struct {
 	//
 	// false
 	InDebt *bool `json:"inDebt,omitempty" xml:"inDebt,omitempty"`
-	// The ID of the resource.
+	// The instance ID.
 	//
 	// example:
 	//
@@ -7545,13 +8246,17 @@ type GetInstanceResponseBodyResult struct {
 	// example:
 	//
 	// Unlock
-	LockMode *string `json:"lockMode,omitempty" xml:"lockMode,omitempty"`
+	LockMode *string                               `json:"lockMode,omitempty" xml:"lockMode,omitempty"`
+	Network  *GetInstanceResponseBodyResultNetwork `json:"network,omitempty" xml:"network,omitempty" type:"Struct"`
+	NewMode  *bool                                 `json:"newMode,omitempty" xml:"newMode,omitempty"`
+	NoQrs    *bool                                 `json:"noQrs,omitempty" xml:"noQrs,omitempty"`
 	// The ID of the resource group.
 	//
 	// example:
 	//
 	// rg-aekzjvw24el5lma
-	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
+	ResourceGroupId *string                            `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
+	Spec            *GetInstanceResponseBodyResultSpec `json:"spec,omitempty" xml:"spec,omitempty" type:"Struct"`
 	// The status of the instance. Valid values:
 	//
 	// 	- INIT: being initialized
@@ -7566,14 +8271,16 @@ type GetInstanceResponseBodyResult struct {
 	//
 	// INIT
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// 标签。
+	// The tags of the instance.
 	Tags []*GetInstanceResponseBodyResultTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
-	// The time when the instance was last updated.
+	// The time when the instance was updated.
 	//
 	// example:
 	//
 	// 1634609702
 	UpdateTime *string `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
+	UserName   *string `json:"userName,omitempty" xml:"userName,omitempty"`
+	Version    *string `json:"version,omitempty" xml:"version,omitempty"`
 }
 
 func (s GetInstanceResponseBodyResult) String() string {
@@ -7604,6 +8311,11 @@ func (s *GetInstanceResponseBodyResult) SetDescription(v string) *GetInstanceRes
 	return s
 }
 
+func (s *GetInstanceResponseBodyResult) SetEdition(v string) *GetInstanceResponseBodyResult {
+	s.Edition = &v
+	return s
+}
+
 func (s *GetInstanceResponseBodyResult) SetExpiredTime(v string) *GetInstanceResponseBodyResult {
 	s.ExpiredTime = &v
 	return s
@@ -7624,8 +8336,28 @@ func (s *GetInstanceResponseBodyResult) SetLockMode(v string) *GetInstanceRespon
 	return s
 }
 
+func (s *GetInstanceResponseBodyResult) SetNetwork(v *GetInstanceResponseBodyResultNetwork) *GetInstanceResponseBodyResult {
+	s.Network = v
+	return s
+}
+
+func (s *GetInstanceResponseBodyResult) SetNewMode(v bool) *GetInstanceResponseBodyResult {
+	s.NewMode = &v
+	return s
+}
+
+func (s *GetInstanceResponseBodyResult) SetNoQrs(v bool) *GetInstanceResponseBodyResult {
+	s.NoQrs = &v
+	return s
+}
+
 func (s *GetInstanceResponseBodyResult) SetResourceGroupId(v string) *GetInstanceResponseBodyResult {
 	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *GetInstanceResponseBodyResult) SetSpec(v *GetInstanceResponseBodyResultSpec) *GetInstanceResponseBodyResult {
+	s.Spec = v
 	return s
 }
 
@@ -7644,14 +8376,170 @@ func (s *GetInstanceResponseBodyResult) SetUpdateTime(v string) *GetInstanceResp
 	return s
 }
 
+func (s *GetInstanceResponseBodyResult) SetUserName(v string) *GetInstanceResponseBodyResult {
+	s.UserName = &v
+	return s
+}
+
+func (s *GetInstanceResponseBodyResult) SetVersion(v string) *GetInstanceResponseBodyResult {
+	s.Version = &v
+	return s
+}
+
+type GetInstanceResponseBodyResultNetwork struct {
+	Allow          *string `json:"allow,omitempty" xml:"allow,omitempty"`
+	Endpoint       *string `json:"endpoint,omitempty" xml:"endpoint,omitempty"`
+	PublicEndpoint *string `json:"publicEndpoint,omitempty" xml:"publicEndpoint,omitempty"`
+	VSwitchId      *string `json:"vSwitchId,omitempty" xml:"vSwitchId,omitempty"`
+	VpcId          *string `json:"vpcId,omitempty" xml:"vpcId,omitempty"`
+}
+
+func (s GetInstanceResponseBodyResultNetwork) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetInstanceResponseBodyResultNetwork) GoString() string {
+	return s.String()
+}
+
+func (s *GetInstanceResponseBodyResultNetwork) SetAllow(v string) *GetInstanceResponseBodyResultNetwork {
+	s.Allow = &v
+	return s
+}
+
+func (s *GetInstanceResponseBodyResultNetwork) SetEndpoint(v string) *GetInstanceResponseBodyResultNetwork {
+	s.Endpoint = &v
+	return s
+}
+
+func (s *GetInstanceResponseBodyResultNetwork) SetPublicEndpoint(v string) *GetInstanceResponseBodyResultNetwork {
+	s.PublicEndpoint = &v
+	return s
+}
+
+func (s *GetInstanceResponseBodyResultNetwork) SetVSwitchId(v string) *GetInstanceResponseBodyResultNetwork {
+	s.VSwitchId = &v
+	return s
+}
+
+func (s *GetInstanceResponseBodyResultNetwork) SetVpcId(v string) *GetInstanceResponseBodyResultNetwork {
+	s.VpcId = &v
+	return s
+}
+
+type GetInstanceResponseBodyResultSpec struct {
+	QrsResource    *GetInstanceResponseBodyResultSpecQrsResource    `json:"qrsResource,omitempty" xml:"qrsResource,omitempty" type:"Struct"`
+	SearchResource *GetInstanceResponseBodyResultSpecSearchResource `json:"searchResource,omitempty" xml:"searchResource,omitempty" type:"Struct"`
+}
+
+func (s GetInstanceResponseBodyResultSpec) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetInstanceResponseBodyResultSpec) GoString() string {
+	return s.String()
+}
+
+func (s *GetInstanceResponseBodyResultSpec) SetQrsResource(v *GetInstanceResponseBodyResultSpecQrsResource) *GetInstanceResponseBodyResultSpec {
+	s.QrsResource = v
+	return s
+}
+
+func (s *GetInstanceResponseBodyResultSpec) SetSearchResource(v *GetInstanceResponseBodyResultSpecSearchResource) *GetInstanceResponseBodyResultSpec {
+	s.SearchResource = v
+	return s
+}
+
+type GetInstanceResponseBodyResultSpecQrsResource struct {
+	Category  *string `json:"category,omitempty" xml:"category,omitempty"`
+	Cpu       *int32  `json:"cpu,omitempty" xml:"cpu,omitempty"`
+	Disk      *int32  `json:"disk,omitempty" xml:"disk,omitempty"`
+	Mem       *int32  `json:"mem,omitempty" xml:"mem,omitempty"`
+	NodeCount *int32  `json:"nodeCount,omitempty" xml:"nodeCount,omitempty"`
+}
+
+func (s GetInstanceResponseBodyResultSpecQrsResource) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetInstanceResponseBodyResultSpecQrsResource) GoString() string {
+	return s.String()
+}
+
+func (s *GetInstanceResponseBodyResultSpecQrsResource) SetCategory(v string) *GetInstanceResponseBodyResultSpecQrsResource {
+	s.Category = &v
+	return s
+}
+
+func (s *GetInstanceResponseBodyResultSpecQrsResource) SetCpu(v int32) *GetInstanceResponseBodyResultSpecQrsResource {
+	s.Cpu = &v
+	return s
+}
+
+func (s *GetInstanceResponseBodyResultSpecQrsResource) SetDisk(v int32) *GetInstanceResponseBodyResultSpecQrsResource {
+	s.Disk = &v
+	return s
+}
+
+func (s *GetInstanceResponseBodyResultSpecQrsResource) SetMem(v int32) *GetInstanceResponseBodyResultSpecQrsResource {
+	s.Mem = &v
+	return s
+}
+
+func (s *GetInstanceResponseBodyResultSpecQrsResource) SetNodeCount(v int32) *GetInstanceResponseBodyResultSpecQrsResource {
+	s.NodeCount = &v
+	return s
+}
+
+type GetInstanceResponseBodyResultSpecSearchResource struct {
+	Category  *string `json:"category,omitempty" xml:"category,omitempty"`
+	Cpu       *int32  `json:"cpu,omitempty" xml:"cpu,omitempty"`
+	Disk      *int32  `json:"disk,omitempty" xml:"disk,omitempty"`
+	Mem       *int32  `json:"mem,omitempty" xml:"mem,omitempty"`
+	NodeCount *int32  `json:"nodeCount,omitempty" xml:"nodeCount,omitempty"`
+}
+
+func (s GetInstanceResponseBodyResultSpecSearchResource) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetInstanceResponseBodyResultSpecSearchResource) GoString() string {
+	return s.String()
+}
+
+func (s *GetInstanceResponseBodyResultSpecSearchResource) SetCategory(v string) *GetInstanceResponseBodyResultSpecSearchResource {
+	s.Category = &v
+	return s
+}
+
+func (s *GetInstanceResponseBodyResultSpecSearchResource) SetCpu(v int32) *GetInstanceResponseBodyResultSpecSearchResource {
+	s.Cpu = &v
+	return s
+}
+
+func (s *GetInstanceResponseBodyResultSpecSearchResource) SetDisk(v int32) *GetInstanceResponseBodyResultSpecSearchResource {
+	s.Disk = &v
+	return s
+}
+
+func (s *GetInstanceResponseBodyResultSpecSearchResource) SetMem(v int32) *GetInstanceResponseBodyResultSpecSearchResource {
+	s.Mem = &v
+	return s
+}
+
+func (s *GetInstanceResponseBodyResultSpecSearchResource) SetNodeCount(v int32) *GetInstanceResponseBodyResultSpecSearchResource {
+	s.NodeCount = &v
+	return s
+}
+
 type GetInstanceResponseBodyResultTags struct {
-	// 标签键
+	// The tag key.
 	//
 	// example:
 	//
 	// env
 	Key *string `json:"key,omitempty" xml:"key,omitempty"`
-	// 标签值
+	// The tag value.
 	//
 	// example:
 	//
@@ -7713,13 +8601,21 @@ type GetNodeConfigRequest struct {
 	//
 	// vpc_sh_domain_2
 	ClusterName *string `json:"clusterName,omitempty" xml:"clusterName,omitempty"`
-	// The name of the cluster.
+	// The node name.
 	//
 	// example:
 	//
 	// ha-cn-30174dhoz53_qrs
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The type of the node. Valid values: qrs, search, index, and cluster. qrs indicates a query node, search indicates a data node, index indicates an index node, and cluster indicates a cluster node.
+	// The node type. Valid values:
+	//
+	// 	- qrs: Query Result Searcher (QRS) worker
+	//
+	// 	- search: Search worker
+	//
+	// 	- index: index
+	//
+	// 	- cluster: cluster
 	//
 	// example:
 	//
@@ -7757,7 +8653,7 @@ type GetNodeConfigResponseBody struct {
 	//
 	// 2AE63638-5420-56DC-BF59-37D8174039A0
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The configurations of the node.
+	// The result set.
 	Result *GetNodeConfigResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
 }
 
@@ -7780,7 +8676,7 @@ func (s *GetNodeConfigResponseBody) SetResult(v *GetNodeConfigResponseBodyResult
 }
 
 type GetNodeConfigResponseBodyResult struct {
-	// Indicates whether the expression is the default one.
+	// Indicates whether the index is effective online.
 	//
 	// example:
 	//
@@ -7810,7 +8706,7 @@ type GetNodeConfigResponseBodyResult struct {
 	//
 	// 100
 	MinServicePercent *int32 `json:"minServicePercent,omitempty" xml:"minServicePercent,omitempty"`
-	// Indicates whether the node is associated with the cluster.
+	// Indicates whether the cluster is mounted.
 	//
 	// example:
 	//
@@ -8088,8 +8984,9 @@ type GetTableResponseBody struct {
 	// example:
 	//
 	// 2AE63638-5420-56DC-BF59-37D8174039A0
-	RequestId *string                     `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Result    *GetTableResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// The results returned.
+	Result *GetTableResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
 }
 
 func (s GetTableResponseBody) String() string {
@@ -8111,13 +9008,15 @@ func (s *GetTableResponseBody) SetResult(v *GetTableResponseBodyResult) *GetTabl
 }
 
 type GetTableResponseBodyResult struct {
+	// The configurations about field processing.
 	DataProcessConfig []*GetTableResponseBodyResultDataProcessConfig `json:"dataProcessConfig,omitempty" xml:"dataProcessConfig,omitempty" type:"Repeated"`
 	// example:
 	//
 	// 1
 	DataProcessorCount *int32                                `json:"dataProcessorCount,omitempty" xml:"dataProcessorCount,omitempty"`
 	DataSource         *GetTableResponseBodyResultDataSource `json:"dataSource,omitempty" xml:"dataSource,omitempty" type:"Struct"`
-	FieldSchema        map[string]*string                    `json:"fieldSchema,omitempty" xml:"fieldSchema,omitempty"`
+	// The field. The value is a key-value pair in which the key indicates the field name and value indicates the field type.
+	FieldSchema map[string]*string `json:"fieldSchema,omitempty" xml:"fieldSchema,omitempty"`
 	// example:
 	//
 	// test_oss
@@ -8133,8 +9032,14 @@ type GetTableResponseBodyResult struct {
 	// example:
 	//
 	// {}
-	RawSchema   *string                                  `json:"rawSchema,omitempty" xml:"rawSchema,omitempty"`
-	Status      *string                                  `json:"status,omitempty" xml:"status,omitempty"`
+	RawSchema *string `json:"rawSchema,omitempty" xml:"rawSchema,omitempty"`
+	// The state of the index table. Valid values: NEW, PUBLISH, IN_USE, NOT_USE, STOP_USE, RESTORE_USE, and FAIL. After an index is created in an OpenSearch Retrieval Engine Edition instance, the index enters the IN_USE state. If the first full index fails to be created in an OpenSearch Vector Search Edition instance of the new version, the index is in the FAIL state.
+	//
+	// example:
+	//
+	// IN_USE
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// The index schema.
 	VectorIndex []*GetTableResponseBodyResultVectorIndex `json:"vectorIndex,omitempty" xml:"vectorIndex,omitempty" type:"Repeated"`
 }
 
@@ -8197,15 +9102,22 @@ func (s *GetTableResponseBodyResult) SetVectorIndex(v []*GetTableResponseBodyRes
 }
 
 type GetTableResponseBodyResultDataProcessConfig struct {
+	// The destination field.
+	//
 	// example:
 	//
 	// source_image_vector
 	DstField *string `json:"dstField,omitempty" xml:"dstField,omitempty"`
+	// The method used to process the field. Valid values: copy and vectorize. A value of copy indicates that the value of the source field is copied to the destination field. A value of vectorize indicates that the value of the source field is vectorized by a vectorization model and the output vector is stored in the destination field.
+	//
 	// example:
 	//
 	// vectorize
-	Operator *string                                            `json:"operator,omitempty" xml:"operator,omitempty"`
-	Params   *GetTableResponseBodyResultDataProcessConfigParams `json:"params,omitempty" xml:"params,omitempty" type:"Struct"`
+	Operator *string `json:"operator,omitempty" xml:"operator,omitempty"`
+	// The information about the model.
+	Params *GetTableResponseBodyResultDataProcessConfigParams `json:"params,omitempty" xml:"params,omitempty" type:"Struct"`
+	// The source field.
+	//
 	// example:
 	//
 	// source_image
@@ -8241,11 +9153,16 @@ func (s *GetTableResponseBodyResultDataProcessConfig) SetSrcField(v string) *Get
 }
 
 type GetTableResponseBodyResultDataProcessConfigParams struct {
+	// The source of the data to be vectorized.
 	SrcFieldConfig *GetTableResponseBodyResultDataProcessConfigParamsSrcFieldConfig `json:"srcFieldConfig,omitempty" xml:"srcFieldConfig,omitempty" type:"Struct"`
+	// The data type.
+	//
 	// example:
 	//
 	// image
 	VectorModal *string `json:"vectorModal,omitempty" xml:"vectorModal,omitempty"`
+	// The vectorization model.
+	//
 	// example:
 	//
 	// clip
@@ -8282,10 +9199,14 @@ type GetTableResponseBodyResultDataProcessConfigParamsSrcFieldConfig struct {
 	//
 	// test
 	OssBucket *string `json:"ossBucket,omitempty" xml:"ossBucket,omitempty"`
+	// The Object Storage Service (OSS) endpoint.
+	//
 	// example:
 	//
 	// oss-cn-hangzhou-internal.aliyuncs.com
 	OssEndpoint *string `json:"ossEndpoint,omitempty" xml:"ossEndpoint,omitempty"`
+	// The ID of the Alibaba Cloud account.
+	//
 	// example:
 	//
 	// uid
@@ -8465,35 +9386,52 @@ func (s *GetTableResponseBodyResultDataSourceConfig) SetTable(v string) *GetTabl
 }
 
 type GetTableResponseBodyResultVectorIndex struct {
+	// The configurations of the index schema.
 	AdvanceParams *GetTableResponseBodyResultVectorIndexAdvanceParams `json:"advanceParams,omitempty" xml:"advanceParams,omitempty" type:"Struct"`
+	// The dimension of the vector.
+	//
 	// example:
 	//
 	// 128
 	Dimension *string `json:"dimension,omitempty" xml:"dimension,omitempty"`
+	// The distance type.
+	//
 	// example:
 	//
 	// SquaredEuclidean
 	DistanceType *string `json:"distanceType,omitempty" xml:"distanceType,omitempty"`
+	// The name of the index schema.
+	//
 	// example:
 	//
 	// test_odps
 	IndexName *string `json:"indexName,omitempty" xml:"indexName,omitempty"`
+	// The namespace field.
+	//
 	// example:
 	//
 	// namespace
 	Namespace *string `json:"namespace,omitempty" xml:"namespace,omitempty"`
+	// The field that stores the indexes of the elements in sparse vectors.
+	//
 	// example:
 	//
 	// sparse_indices
 	SparseIndexField *string `json:"sparseIndexField,omitempty" xml:"sparseIndexField,omitempty"`
+	// The field that stores the elements in sparse vectors.
+	//
 	// example:
 	//
 	// sparse_values
 	SparseValueField *string `json:"sparseValueField,omitempty" xml:"sparseValueField,omitempty"`
+	// The vector field.
+	//
 	// example:
 	//
 	// source_image_vector
 	VectorField *string `json:"vectorField,omitempty" xml:"vectorField,omitempty"`
+	// The vector retrieval algorithm.
+	//
 	// example:
 	//
 	// Qc
@@ -8554,18 +9492,26 @@ func (s *GetTableResponseBodyResultVectorIndex) SetVectorIndexType(v string) *Ge
 }
 
 type GetTableResponseBodyResultVectorIndexAdvanceParams struct {
+	// The index building parameters.
+	//
 	// example:
 	//
 	// {}
 	BuildIndexParams *string `json:"buildIndexParams,omitempty" xml:"buildIndexParams,omitempty"`
+	// The threshold for linear building.
+	//
 	// example:
 	//
 	// 5000
 	LinearBuildThreshold *string `json:"linearBuildThreshold,omitempty" xml:"linearBuildThreshold,omitempty"`
+	// The minimum number of retrieved candidate sets.
+	//
 	// example:
 	//
 	// 20000
 	MinScanDocCnt *string `json:"minScanDocCnt,omitempty" xml:"minScanDocCnt,omitempty"`
+	// The index retrieval parameters.
+	//
 	// example:
 	//
 	// {}
@@ -8635,8 +9581,9 @@ type GetTableGenerationResponseBody struct {
 	// example:
 	//
 	// E7B7D598-B080-5C8E-AA35-D43EC0D5F886
-	RequestId *string                               `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Result    *GetTableGenerationResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// The result returned.
+	Result *GetTableGenerationResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
 }
 
 func (s GetTableGenerationResponseBody) String() string {
@@ -8750,7 +9697,7 @@ type ListAdvanceConfigDirResponseBody struct {
 	//
 	// 2AE63638-5420-56DC-BF59-37D8174039A0
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The file list in the advanced configuration directory.
+	// The advanced configuration files.
 	Result []*ListAdvanceConfigDirResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Repeated"`
 }
 
@@ -8773,25 +9720,25 @@ func (s *ListAdvanceConfigDirResponseBody) SetResult(v []*ListAdvanceConfigDirRe
 }
 
 type ListAdvanceConfigDirResponseBodyResult struct {
-	// The name of the absolute path.
+	// The absolute path in which the file is stored.
 	//
 	// example:
 	//
 	// "/path/wpd/nae"
 	FullPathName *string `json:"fullPathName,omitempty" xml:"fullPathName,omitempty"`
-	// Indicates whether it is a directory. Valid values: true and false. true indicates that it is a directory, and false indicates that it is not a directory.
+	// Indicates whether the file is a directory. Valid values: true and false.
 	//
 	// example:
 	//
 	// true
 	IsDir *bool `json:"isDir,omitempty" xml:"isDir,omitempty"`
-	// Indicates whether it is a template. Valid values: **true*	- and **false**. true indicates that it is a template, and false indicates that it is not a template.
+	// Indicates whether the file is a template. Valid values: **true*	- and **false**.
 	//
 	// example:
 	//
 	// true
 	IsTemplate *bool `json:"isTemplate,omitempty" xml:"isTemplate,omitempty"`
-	// The name of the cluster.
+	// The cluster name.
 	//
 	// example:
 	//
@@ -8857,10 +9804,25 @@ func (s *ListAdvanceConfigDirResponse) SetBody(v *ListAdvanceConfigDirResponseBo
 }
 
 type ListAdvanceConfigsRequest struct {
+	// The name of the data source.
+	//
+	// example:
+	//
+	// ha-cn-pl32rf0****_test_api
 	DataSourceName *string `json:"dataSourceName,omitempty" xml:"dataSourceName,omitempty"`
-	IndexName      *string `json:"indexName,omitempty" xml:"indexName,omitempty"`
-	NewMode        *bool   `json:"newMode,omitempty" xml:"newMode,omitempty"`
-	// The type of the advanced configurations. Valid values: online and offline. - online The default value is offline.
+	// The index name.
+	//
+	// example:
+	//
+	// test_api
+	IndexName *string `json:"indexName,omitempty" xml:"indexName,omitempty"`
+	// Specifies whether the OpenSearch Vector Search Edition instance is of the new version.
+	//
+	// example:
+	//
+	// true
+	NewMode *bool `json:"newMode,omitempty" xml:"newMode,omitempty"`
+	// The type of advanced configurations that you want to query. Valid values: - online -offline (default)
 	//
 	// example:
 	//
@@ -8903,7 +9865,7 @@ type ListAdvanceConfigsResponseBody struct {
 	//
 	// 4FB0325E-8C37-5525-96AC-0333523170A3
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The list of advanced configurations.
+	// The advanced configurations.
 	Result []*ListAdvanceConfigsResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Repeated"`
 }
 
@@ -8926,17 +9888,53 @@ func (s *ListAdvanceConfigsResponseBody) SetResult(v []*ListAdvanceConfigsRespon
 }
 
 type ListAdvanceConfigsResponseBodyResult struct {
+	// 	- The type of the advanced configuration. Valid values: -ONLINE: online configuration
+	//
+	// 	- \\-ONLINE_CAVA: online Cava configuration
+	//
+	// 	- \\-ONLINE_PLUGIN: online plug-in configuration
+	//
+	// 	- \\-ONLINE_QUERY: query configuration
+	//
+	// 	- \\-OFFLINE_DICT: offline dictionary configuration
+	//
+	// 	- \\-OFFLINE_TABLE: offline table configuration
+	//
+	// 	- \\-OFFLINE_COMMON: offline configuration
+	//
+	// 	- \\-OFFLINE_PLUGIN: offline plug-in configuration
+	//
+	// 	- \\-OFFLINE_INDEX: index configuration
+	//
+	// example:
+	//
+	// ONLINE
 	AdvanceConfigType *string `json:"advanceConfigType,omitempty" xml:"advanceConfigType,omitempty"`
-	Content           *string `json:"content,omitempty" xml:"content,omitempty"`
-	ContentType       *string `json:"contentType,omitempty" xml:"contentType,omitempty"`
-	Creator           *string `json:"creator,omitempty" xml:"creator,omitempty"`
-	// The description.
+	// The content of the advanced configuration that is returned.
+	//
+	// example:
+	//
+	// {\\"url\\":\\"http://xxxxxx.aliyuncs.com/outnet_hz/packages/xxxxx/opensearch_offline_plugins_xxxxx.tar\\"}
+	Content *string `json:"content,omitempty" xml:"content,omitempty"`
+	// The type of the configuration content. Valid values: FILE, GIT, HTTP, and ODPS.
+	//
+	// example:
+	//
+	// FILE
+	ContentType *string `json:"contentType,omitempty" xml:"contentType,omitempty"`
+	// The Alibaba Cloud account ID of the user who created the advanced configuration.
+	//
+	// example:
+	//
+	// 123456
+	Creator *string `json:"creator,omitempty" xml:"creator,omitempty"`
+	// The description of the advanced configuration.
 	//
 	// example:
 	//
 	// test
 	Desc *string `json:"desc,omitempty" xml:"desc,omitempty"`
-	// The list of file names.
+	// The files.
 	Files []*ListAdvanceConfigsResponseBodyResultFiles `json:"files,omitempty" xml:"files,omitempty" type:"Repeated"`
 	// The name of the advanced configuration.
 	//
@@ -8944,13 +9942,13 @@ type ListAdvanceConfigsResponseBodyResult struct {
 	//
 	// my_index
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The state of the advanced configuration. Valid values: drafting, used, unused, and trash. drafting indicates that the advanced configuration is a draft. used indicates that the advanced configuration is in use. unused indicates that the advanced configuration is unused. trash indicates that the advanced configuration is being deleted.
+	// The status of the advanced configuration. Valid values: drafting: The advanced configuration is in the draft state. used: The advanced configuration is being used. unused: The advanced configuration is not used. trash: The advanced configuration is being deleted.
 	//
 	// example:
 	//
 	// drafting
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The update time.
+	// The time when the advanced configuration was updated.
 	//
 	// example:
 	//
@@ -9012,25 +10010,25 @@ func (s *ListAdvanceConfigsResponseBodyResult) SetUpdateTime(v int64) *ListAdvan
 }
 
 type ListAdvanceConfigsResponseBodyResultFiles struct {
-	// The name of the absolute path.
+	// The absolute path in which the file is stored.
 	//
 	// example:
 	//
 	// /path/wpd/nae
 	FullPathName *string `json:"fullPathName,omitempty" xml:"fullPathName,omitempty"`
-	// Indicates whether it is a directory. Valid values: true and false. true indicates that it is a directory, and false indicates that it is not a directory.
+	// Indicates whether the file is a directory. Valid values: true and false.
 	//
 	// example:
 	//
 	// true
 	IsDir *bool `json:"isDir,omitempty" xml:"isDir,omitempty"`
-	// Indicates whether it is a template. Valid values: true and false. true indicates that it is a directory, and false indicates that it is not a directory.
+	// Indicates whether the file is a template. Valid values: true and false.
 	//
 	// example:
 	//
 	// true
 	IsTemplate *bool `json:"isTemplate,omitempty" xml:"isTemplate,omitempty"`
-	// The name of the file.
+	// The file name.
 	//
 	// example:
 	//
@@ -9125,10 +10123,14 @@ func (s *ListAliasesResponseBody) SetResult(v []*ListAliasesResponseBodyResult) 
 }
 
 type ListAliasesResponseBodyResult struct {
+	// alias name
+	//
 	// example:
 	//
 	// test
 	Alias *string `json:"alias,omitempty" xml:"alias,omitempty"`
+	// index name
+	//
 	// example:
 	//
 	// index
@@ -9189,7 +10191,7 @@ type ListClusterNamesResponseBody struct {
 	//
 	// F6E3D968-529C-5C40-AFDD-133A8B8FD930
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The result set
+	// The result set.
 	Result *ListClusterNamesResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
 }
 
@@ -9212,19 +10214,19 @@ func (s *ListClusterNamesResponseBody) SetResult(v *ListClusterNamesResponseBody
 }
 
 type ListClusterNamesResponseBodyResult struct {
-	// The description of the cluster
+	// The description of the cluster.
 	//
 	// example:
 	//
 	// ha3_test
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The ID of the cluster
+	// The cluster ID.
 	//
 	// example:
 	//
 	// 25030
 	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
-	// The name of the cluster
+	// The cluster name.
 	//
 	// example:
 	//
@@ -9291,7 +10293,7 @@ type ListClusterTasksResponseBody struct {
 	//
 	// CC5EC8FA-5C0D-56AF-BEF4-6FCCEABD0511
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The information about the index.
+	// The index information.
 	Result []*ListClusterTasksResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Repeated"`
 }
 
@@ -9320,53 +10322,53 @@ type ListClusterTasksResponseBodyResult struct {
 	//
 	// " "
 	ExtraAttribute *string `json:"extraAttribute,omitempty" xml:"extraAttribute,omitempty"`
-	// The field3 field that is passed through when you create a state machine.
+	// The field3 field that was passed when the FSM was created.
 	//
 	// example:
 	//
 	// " "
 	Field3 *string `json:"field3,omitempty" xml:"field3,omitempty"`
-	// fsmId
+	// The ID of the finite state machine (FSM).
 	//
 	// example:
 	//
 	// tisplus_opensearch@datasource_flow_fsm@1865410598556969-ha-cn-zvp2ljiwe01_api2@bj_vpc_domain_1@null@MANUAL-ha-cn-zvp2ljiwe01_api2@1649729867698@028315
 	FsmId *string `json:"fsmId,omitempty" xml:"fsmId,omitempty"`
-	// Indicates whether the change is a data source task change or a cluster task change.
+	// The change group type.
 	//
 	// example:
 	//
 	// " "
 	GroupType *string `json:"groupType,omitempty" xml:"groupType,omitempty"`
-	// The task name on the card.
+	// The card name.
 	//
 	// example:
 	//
 	// ha-cn-pl32rf0js04_qrs
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The overall status of FSM.
+	// The FSM status.
 	//
 	// example:
 	//
 	// onlyPublished
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The status tag of the progress bar chart.
+	// The tags of the progress bar.
 	Tags []*ListClusterTasksResponseBodyResultTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
-	// The information about the task.
+	// The task information.
 	TaskNodes []*ListClusterTasksResponseBodyResultTaskNodes `json:"taskNodes,omitempty" xml:"taskNodes,omitempty" type:"Repeated"`
-	// The timestamp of the task on the card.
+	// The timestamp of the card.
 	//
 	// example:
 	//
 	// 1657610520
 	Time *string `json:"time,omitempty" xml:"time,omitempty"`
-	// The type of the task on the card.
+	// The card type.
 	//
 	// example:
 	//
 	// qrs
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
-	// The user who triggered the FSM process.
+	// The user who triggered the generation of the FSM process.
 	//
 	// example:
 	//
@@ -9438,13 +10440,13 @@ func (s *ListClusterTasksResponseBodyResult) SetUser(v string) *ListClusterTasks
 }
 
 type ListClusterTasksResponseBodyResultTags struct {
-	// The content of the tag.
+	// The tag content.
 	//
 	// example:
 	//
 	// succeed in handling request
 	Msg *string `json:"msg,omitempty" xml:"msg,omitempty"`
-	// The level of the tag.
+	// The tag level.
 	//
 	// example:
 	//
@@ -9471,25 +10473,25 @@ func (s *ListClusterTasksResponseBodyResultTags) SetTagLevel(v string) *ListClus
 }
 
 type ListClusterTasksResponseBodyResultTaskNodes struct {
-	// The date when the task was completed.
+	// The time when the task was complete.
 	//
 	// example:
 	//
 	// " "
 	FinishDate *string `json:"finishDate,omitempty" xml:"finishDate,omitempty"`
-	// The sequence number of the task.
+	// The ordinal number of the task.
 	//
 	// example:
 	//
 	// 100
 	Index *int64 `json:"index,omitempty" xml:"index,omitempty"`
-	// The name of the task.
+	// The task name.
 	//
 	// example:
 	//
 	// general
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The status of the task.
+	// The task status.
 	//
 	// example:
 	//
@@ -9584,6 +10586,7 @@ func (s *ListClustersResponseBody) SetResult(v []*ListClustersResponseBodyResult
 }
 
 type ListClustersResponseBodyResult struct {
+	// The configuration information.
 	Config map[string]map[string]interface{} `json:"config,omitempty" xml:"config,omitempty"`
 	// The time when the configuration was updated.
 	//
@@ -9591,7 +10594,12 @@ type ListClustersResponseBodyResult struct {
 	//
 	// " "
 	ConfigUpdateTime *string `json:"configUpdateTime,omitempty" xml:"configUpdateTime,omitempty"`
-	CreateTime       *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// The time when the cluster was created.
+	//
+	// example:
+	//
+	// 2024-05-21 16:05:26
+	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
 	// The effective advanced configuration version.
 	//
 	// example:
@@ -9599,6 +10607,10 @@ type ListClustersResponseBodyResult struct {
 	// " "
 	CurrentAdvanceConfigVersion *string `json:"currentAdvanceConfigVersion,omitempty" xml:"currentAdvanceConfigVersion,omitempty"`
 	// The effective dictionary configuration version.
+	//
+	// example:
+	//
+	// ha-cn-pl32rf0****_offline_adv_v1
 	CurrentOfflineDictConfigVersion *string `json:"currentOfflineDictConfigVersion,omitempty" xml:"currentOfflineDictConfigVersion,omitempty"`
 	// The effective online configuration version.
 	//
@@ -9607,6 +10619,10 @@ type ListClustersResponseBodyResult struct {
 	// " "
 	CurrentOnlineConfigVersion *string `json:"currentOnlineConfigVersion,omitempty" xml:"currentOnlineConfigVersion,omitempty"`
 	// The effective query configuration version.
+	//
+	// example:
+	//
+	// ha-cn-pl32rf0****_offline_adv_v1
 	CurrentOnlineQueryConfigVersion *string `json:"currentOnlineQueryConfigVersion,omitempty" xml:"currentOnlineQueryConfigVersion,omitempty"`
 	// The information about Searcher workers.
 	DataNode *ListClustersResponseBodyResultDataNode `json:"dataNode,omitempty" xml:"dataNode,omitempty" type:"Struct"`
@@ -9623,6 +10639,10 @@ type ListClustersResponseBodyResult struct {
 	// " "
 	LatestAdvanceConfigVersion *string `json:"latestAdvanceConfigVersion,omitempty" xml:"latestAdvanceConfigVersion,omitempty"`
 	// The latest dictionary configuration version.
+	//
+	// example:
+	//
+	// ha-cn-pl32rf0****_offline_adv_v1
 	LatestOfflineDictConfigVersion *string `json:"latestOfflineDictConfigVersion,omitempty" xml:"latestOfflineDictConfigVersion,omitempty"`
 	// The latest online configuration version.
 	//
@@ -9631,6 +10651,10 @@ type ListClustersResponseBodyResult struct {
 	// " "
 	LatestOnlineConfigVersion *string `json:"latestOnlineConfigVersion,omitempty" xml:"latestOnlineConfigVersion,omitempty"`
 	// The latest query configuration version.
+	//
+	// example:
+	//
+	// ha-cn-pl32rf0****_offline_adv_v1
 	LatestOnlineQueryConfigVersion *string `json:"latestOnlineQueryConfigVersion,omitempty" xml:"latestOnlineQueryConfigVersion,omitempty"`
 	// The cluster name.
 	//
@@ -9640,7 +10664,7 @@ type ListClustersResponseBodyResult struct {
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// The information about Query Result Searcher (QRS) workers.
 	QueryNode *ListClustersResponseBodyResultQueryNode `json:"queryNode,omitempty" xml:"queryNode,omitempty" type:"Struct"`
-	// The status of the cluster. Valid values: running: The cluster is running. starting: The cluster is being started. stopping: The cluster is being stopped. stopped: The cluster is stopped.
+	// The cluster status. Valid values: running: The cluster is running. starting: The cluster is being started. stopping: The cluster is being stopped. stopped: The cluster is stopped.
 	//
 	// example:
 	//
@@ -9860,7 +10884,7 @@ type ListDataSourceSchemasResponseBody struct {
 	//
 	// 022F36C7-9FB4-5D67-BEBC-3D14B0984463
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The result returned.
+	// The results returned.
 	Result []*ListDataSourceSchemasResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Repeated"`
 }
 
@@ -9883,39 +10907,39 @@ func (s *ListDataSourceSchemasResponseBody) SetResult(v []*ListDataSourceSchemas
 }
 
 type ListDataSourceSchemasResponseBodyResult struct {
-	// Indicates whether the index properties are added. Valid values: true and false. **true*	- indicates that the index properties are added, and **false*	- indicates that the index properties are not added.
+	// Indicates whether the field has the index attribute. Valid values: **true*	- and **false**.
 	//
 	// example:
 	//
 	// false
 	AddIndex *bool `json:"addIndex,omitempty" xml:"addIndex,omitempty"`
-	// Indicates whether it is an attribute field. Valid values: true and false. **true*	- indicates that it is an attribute field, and **false*	- indicates that it is not an attribute field.
+	// Indicates whether the field is an attribute field. Valid values: **true*	- and **false**.
 	//
 	// example:
 	//
 	// false
 	Attribute *bool `json:"attribute,omitempty" xml:"attribute,omitempty"`
-	// Indicates whether it is a custom field. Valid values: true and false. **true*	- indicates that it is a custom field, and **false*	- indicates that it is not a custom field.
+	// Indicates whether the field is a custom field. Valid values: **true*	- and **false**.
 	//
 	// example:
 	//
 	// false
 	Custom *bool `json:"custom,omitempty" xml:"custom,omitempty"`
-	// The name of the field.
+	// The field name.
 	//
 	// example:
 	//
 	// test
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The primary key.
+	// The primary key field.
 	PrimaryKey *ListDataSourceSchemasResponseBodyResultPrimaryKey `json:"primaryKey,omitempty" xml:"primaryKey,omitempty" type:"Struct"`
-	// Indicates whether the information can be displayed. Valid values: true and false. **true*	- indicates that the information can be displayed, and **false*	- indicates that the information cannot be displayed.
+	// Indicates whether the field can be displayed. Valid values: **true*	- and **false**.
 	//
 	// example:
 	//
 	// false
 	Summary *bool `json:"summary,omitempty" xml:"summary,omitempty"`
-	// The type of the field.
+	// The field type.
 	//
 	// example:
 	//
@@ -9967,19 +10991,19 @@ func (s *ListDataSourceSchemasResponseBodyResult) SetType(v string) *ListDataSou
 }
 
 type ListDataSourceSchemasResponseBodyResultPrimaryKey struct {
-	// Indicates whether it has the primary key property. **true*	- indicates that it has the primary key property, and **false*	- indicates that it does not have the primary key property.
+	// Indicates whether the field has the primary key attribute. Valid values: **true*	- and **false**.
 	//
 	// example:
 	//
 	// false
 	HasPrimaryKeyAttribute *bool `json:"hasPrimaryKeyAttribute,omitempty" xml:"hasPrimaryKeyAttribute,omitempty"`
-	// Indicates whether it is the primary key. Valid values: true and false. **true*	- indicates that it is the primary key, and **false*	- indicates that it is not the primary key.
+	// Indicates whether the field is the primary key. Valid values: **true*	- and **false**.
 	//
 	// example:
 	//
 	// false
 	IsPrimaryKey *bool `json:"isPrimaryKey,omitempty" xml:"isPrimaryKey,omitempty"`
-	// Indicates whether data is sorted based on the primary key. Valid values: true and false. **true*	- indicates that data is sorted based on the primary key, and **false*	- indicates that data is not sorted based on the primary key.
+	// Indicates whether the field can be sorted. Valid values: **true*	- and **false**.
 	//
 	// example:
 	//
@@ -10046,7 +11070,7 @@ type ListDataSourceTasksResponseBody struct {
 	//
 	// CC5EC8FA-5C0D-56AF-BEF4-6FCCEABD0511
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The information about the index.
+	// The index information.
 	Result []*ListDataSourceTasksResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Repeated"`
 }
 
@@ -10075,53 +11099,53 @@ type ListDataSourceTasksResponseBodyResult struct {
 	//
 	// ""
 	ExtraAttribute *string `json:"extraAttribute,omitempty" xml:"extraAttribute,omitempty"`
-	// The field3 field that is passed through when you create a state machine.
+	// The field3 field that was passed when the FSM was created.
 	//
 	// example:
 	//
 	// ""
 	Field3 *string `json:"field3,omitempty" xml:"field3,omitempty"`
-	// fsmId
+	// The ID of the finite state machine (FSM).
 	//
 	// example:
 	//
 	// tisplus_opensearch@datasource_flow_fsm@1062017779051424-ha-cn-2r42ostoc01_ecom_table@vpc_hz_domain_1@null@MANUAL-ha-cn-2r42ostoc01_ecom_table@1655974525756@006754
 	FsmId *string `json:"fsmId,omitempty" xml:"fsmId,omitempty"`
-	// Indicates whether the change is a data source task change or a cluster task change.
+	// The change group type.
 	//
 	// example:
 	//
 	// " "
 	GroupType *string `json:"groupType,omitempty" xml:"groupType,omitempty"`
-	// The task name on the card.
+	// The card name.
 	//
 	// example:
 	//
 	// general
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The overall status of FSM.
+	// The FSM status.
 	//
 	// example:
 	//
 	// 2
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The status tag of the progress bar chart.
+	// The tags of the progress bar.
 	Tags []*ListDataSourceTasksResponseBodyResultTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
-	// The information about the task.
+	// The task information.
 	TaskNodes []*ListDataSourceTasksResponseBodyResultTaskNodes `json:"taskNodes,omitempty" xml:"taskNodes,omitempty" type:"Repeated"`
-	// The timestamp of the task on the card.
+	// The timestamp of the card.
 	//
 	// example:
 	//
 	// 1646279473
 	Time *string `json:"time,omitempty" xml:"time,omitempty"`
-	// The type of the task on the card.
+	// The card type.
 	//
 	// example:
 	//
 	// search
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
-	// The user who triggered the finite-state machine (FSM) process.
+	// The user who triggered the generation of the FSM process.
 	//
 	// example:
 	//
@@ -10193,13 +11217,13 @@ func (s *ListDataSourceTasksResponseBodyResult) SetUser(v string) *ListDataSourc
 }
 
 type ListDataSourceTasksResponseBodyResultTags struct {
-	// The content of the tag.
+	// The tag content.
 	//
 	// example:
 	//
 	// succeed in handling request
 	Msg *string `json:"msg,omitempty" xml:"msg,omitempty"`
-	// The level of the tag.
+	// The tag level.
 	//
 	// example:
 	//
@@ -10226,25 +11250,25 @@ func (s *ListDataSourceTasksResponseBodyResultTags) SetTagLevel(v string) *ListD
 }
 
 type ListDataSourceTasksResponseBodyResultTaskNodes struct {
-	// The date when the task was completed.
+	// The time when the task was complete.
 	//
 	// example:
 	//
 	// ""
 	FinishDate *string `json:"finishDate,omitempty" xml:"finishDate,omitempty"`
-	// The sequence number of the task.
+	// The ordinal number of the task.
 	//
 	// example:
 	//
 	// 100
 	Index *int64 `json:"index,omitempty" xml:"index,omitempty"`
-	// The name of the task.
+	// The task name.
 	//
 	// example:
 	//
 	// ha-cn-7pp2ngv4s02_qrs
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The status of the task.
+	// The task status.
 	//
 	// example:
 	//
@@ -10316,7 +11340,7 @@ type ListDataSourcesResponseBody struct {
 	//
 	// 93A9E542-8CF8-5BA6-99AB-94C0FE520429
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The result returned.
+	// The results returned.
 	Result []*ListDataSourcesResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Repeated"`
 }
 
@@ -10339,15 +11363,19 @@ func (s *ListDataSourcesResponseBody) SetResult(v []*ListDataSourcesResponseBody
 }
 
 type ListDataSourcesResponseBodyResult struct {
-	// The data center where the data source is deployed in offline mode.
+	// The data center in which the data source is deployed.
 	//
 	// example:
 	//
 	// test
 	Domain *string `json:"domain,omitempty" xml:"domain,omitempty"`
-	// The information about indexes.
+	// The indexes.
 	Indexes []*string `json:"indexes,omitempty" xml:"indexes,omitempty" type:"Repeated"`
-	// The time when an index for full data was last built.
+	// The time when the full data of the data source was last queried.
+	//
+	// example:
+	//
+	// 1718787785
 	LastFulTime *int64 `json:"lastFulTime,omitempty" xml:"lastFulTime,omitempty"`
 	// The name of the data source.
 	//
@@ -10355,7 +11383,7 @@ type ListDataSourcesResponseBodyResult struct {
 	//
 	// data_source_name
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The state of the data source.
+	// The status of the data source. Valid values: new: The data source is being created. publish: The data source is in the normal state. trash: The data source is being deleted.
 	//
 	// example:
 	//
@@ -10810,11 +11838,11 @@ type ListDateSourceGenerationsRequest struct {
 	//
 	// bj_vpc_domain_1
 	DomainName *string `json:"domainName,omitempty" xml:"domainName,omitempty"`
-	// The valid state of the data source. Valid values: true and false. The default value of this parameter is true.
+	// Specifies the index versions to be returned. Valid values:
 	//
-	// 1.  true indicates that the generations that have not expired and of which the tasks have been executed are returned.
+	// 1.  true (default): returns the index versions that are complete and not expired.
 	//
-	// 2.  false indicates that all generations are returned.
+	// 2.  false: returns all index versions.
 	//
 	// example:
 	//
@@ -10870,39 +11898,39 @@ func (s *ListDateSourceGenerationsResponseBody) SetResult(v []*ListDateSourceGen
 }
 
 type ListDateSourceGenerationsResponseBodyResult struct {
-	// buildDeployId
+	// The ID of the offline deployment.
 	//
 	// example:
 	//
 	// 122
 	BuildDeployId *int32 `json:"buildDeployId,omitempty" xml:"buildDeployId,omitempty"`
-	// The time to start index building.
+	// The timestamp that was generated when the index building was started.
 	//
 	// example:
 	//
 	// 1626143673
 	CreateTime *int64 `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	// The directory where the index file created by using the dump table is saved.
+	// The path of the dumped index in the Apsara File Storage for HDFS file system.
 	//
 	// example:
 	//
 	// ""
 	DataDumpRoot *string `json:"dataDumpRoot,omitempty" xml:"dataDumpRoot,omitempty"`
-	// The primary key of the generation.
+	// The ID of the full index version.
 	//
 	// example:
 	//
 	// 1626143930
 	Generation *int64 `json:"generation,omitempty" xml:"generation,omitempty"`
-	// Key indicates the name of the index. value indicates the number of shards.
+	// The shards of the index version. The value is a key-value pair in which the key indicates the index name and the value indicates the number of shards. The number of value shards.
 	Partition map[string]*int32 `json:"partition,omitempty" xml:"partition,omitempty"`
-	// The status.
+	// The status of the index version.
 	//
 	// example:
 	//
 	// STOPPED
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The timestamp when the offline indexing was initiated.
+	// The start timestamp from which incremental data is retrieved.
 	//
 	// example:
 	//
@@ -10983,12 +12011,19 @@ func (s *ListDateSourceGenerationsResponse) SetBody(v *ListDateSourceGenerations
 }
 
 type ListIndexRecoverRecordsResponseBody struct {
+	// The description.
+	//
+	// example:
+	//
+	// test
 	Desc *string `json:"desc,omitempty" xml:"desc,omitempty"`
+	// The time when the index version was published.
+	//
 	// example:
 	//
 	// 2024-06-07 16:43:00
 	FinishedTime *string `json:"finishedTime,omitempty" xml:"finishedTime,omitempty"`
-	// generationId
+	// The ID of the full index version.
 	//
 	// example:
 	//
@@ -11049,7 +12084,7 @@ func (s *ListIndexRecoverRecordsResponse) SetBody(v *ListIndexRecoverRecordsResp
 }
 
 type ListIndexesRequest struct {
-	// 是否为新版本控制台页面
+	// Specifies whether the OpenSearch Vector Search Edition instance is of the new version.
 	//
 	// example:
 	//
@@ -11071,13 +12106,13 @@ func (s *ListIndexesRequest) SetNewMode(v bool) *ListIndexesRequest {
 }
 
 type ListIndexesResponseBody struct {
-	// id of request
+	// The request ID.
 	//
 	// example:
 	//
 	// 4FB0325E-8C37-5525-96AC-0333523170A3
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The index list.
+	// The details of indexes.
 	Result []*ListIndexesResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Repeated"`
 }
 
@@ -11100,75 +12135,75 @@ func (s *ListIndexesResponseBody) SetResult(v []*ListIndexesResponseBodyResult) 
 }
 
 type ListIndexesResponseBodyResult struct {
-	// schema JSON
+	// The index schema, which is a JSON string.
 	//
 	// example:
 	//
 	// {"summarys":{"parameter":{"file_compressor":"zstd"},"summary_fields":["id"]},"file_compress":[{"name":"file_compressor","type":"zstd"},{"name":"no_compressor","type":""}],"indexs":[{"index_fields":"name","index_name":"ids","index_type":"STRING"},{"has_primary_key_attribute":true,"index_fields":"id","is_primary_key_sorted":false,"index_name":"id","index_type":"PRIMARYKEY64"}],"attributes":[{"file_compress":"no_compressor","field_name":"id"}],"fields":[{"user_defined_param":{},"compress_type":"uniq","field_type":"STRING","field_name":"id"},{"compress_type":"uniq","field_type":"STRING","field_name":"name"}],"table_name":"api"}
 	Content *string `json:"content,omitempty" xml:"content,omitempty"`
-	// The data source.
+	// The name of the data source.
 	//
 	// example:
 	//
 	// ha-cn-7mz2kvu2c01_table4
 	DataSource *string `json:"dataSource,omitempty" xml:"dataSource,omitempty"`
-	// 数据源相关信息
+	// The information about the data source.
 	DataSourceInfo *ListIndexesResponseBodyResultDataSourceInfo `json:"dataSourceInfo,omitempty" xml:"dataSourceInfo,omitempty" type:"Struct"`
-	// 备注
+	// The description.
 	//
 	// example:
 	//
-	// 备注
+	// Description
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The name of the data center where the data source is deployed.
+	// The deployment name of the index.
 	//
 	// example:
 	//
 	// test
 	Domain *string `json:"domain,omitempty" xml:"domain,omitempty"`
-	// 全量切换时间
+	// The time when full data in the index was last updated.
 	//
 	// example:
 	//
 	// 2023-07-05 10:40:38
 	FullUpdateTime *string `json:"fullUpdateTime,omitempty" xml:"fullUpdateTime,omitempty"`
-	// 全量版本  即：索引版本
+	// The full version of the index.
 	//
 	// example:
 	//
 	// 1688523414
 	FullVersion *int64 `json:"fullVersion,omitempty" xml:"fullVersion,omitempty"`
-	// 增量更新时间
+	// The time when incremental data in the index was last updated.
 	//
 	// example:
 	//
 	// 2023-07-05 10:58:33
 	IncUpdateTime *string `json:"incUpdateTime,omitempty" xml:"incUpdateTime,omitempty"`
-	// 索引大小
+	// The index size.
 	//
 	// example:
 	//
 	// 4689
 	IndexSize *int64 `json:"indexSize,omitempty" xml:"indexSize,omitempty"`
-	// NEW, PUBLISH
+	// The index ststus. Valid values: NEW and PUBLISH.
 	//
 	// example:
 	//
 	// " "
 	IndexStatus *string `json:"indexStatus,omitempty" xml:"indexStatus,omitempty"`
-	// The name of the index.
+	// The index name.
 	//
 	// example:
 	//
 	// general
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// 数据分片
+	// The number of shards.
 	//
 	// example:
 	//
 	// 2
 	Partition *int32 `json:"partition,omitempty" xml:"partition,omitempty"`
-	// The list of version information.
+	// The index versions.
 	Versions []*ListIndexesResponseBodyResultVersions `json:"versions,omitempty" xml:"versions,omitempty" type:"Repeated"`
 }
 
@@ -11246,35 +12281,35 @@ func (s *ListIndexesResponseBodyResult) SetVersions(v []*ListIndexesResponseBody
 }
 
 type ListIndexesResponseBodyResultDataSourceInfo struct {
-	// 是否开启自动全量
+	// Indicates whether the automatic full indexing feature is enabled.
 	//
 	// example:
 	//
 	// true
 	AutoBuildIndex *bool `json:"autoBuildIndex,omitempty" xml:"autoBuildIndex,omitempty"`
-	// odps 数据源配置
+	// The configuration of MaxCompute data sources.
 	Config *ListIndexesResponseBodyResultDataSourceInfoConfig `json:"config,omitempty" xml:"config,omitempty" type:"Struct"`
-	// 离线部署
+	// The data center in which the data source is deployed.
 	//
 	// example:
 	//
 	// test
 	Domain *string `json:"domain,omitempty" xml:"domain,omitempty"`
-	// 数据源名
+	// The name of the data source.
 	//
 	// example:
 	//
 	// index1
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// 数据更新资源数
+	// The number of resources used for data update.
 	//
 	// example:
 	//
 	// 2
 	ProcessPartitionCount *int32 `json:"processPartitionCount,omitempty" xml:"processPartitionCount,omitempty"`
-	// saro数据源配置
+	// The configurations of the SARO data source.
 	SaroConfig *ListIndexesResponseBodyResultDataSourceInfoSaroConfig `json:"saroConfig,omitempty" xml:"saroConfig,omitempty" type:"Struct"`
-	// 数据源类型 (odps, swift, saro, oss, unKnow)
+	// The type of the data source. Valid values: odps, swift, saro, oss, and unKnow.
 	//
 	// example:
 	//
@@ -11326,61 +12361,61 @@ func (s *ListIndexesResponseBodyResultDataSourceInfo) SetType(v string) *ListInd
 }
 
 type ListIndexesResponseBodyResultDataSourceInfoConfig struct {
-	// odps数据源ak
+	// The AccessKey ID of the MaxCompute data source.
 	//
 	// example:
 	//
 	// root
 	AccessKey *string `json:"accessKey,omitempty" xml:"accessKey,omitempty"`
-	// odps数据源ak secret
+	// The AccessKey secret of the MaxCompute data source.
 	//
 	// example:
 	//
 	// root123
 	AccessSecret *string `json:"accessSecret,omitempty" xml:"accessSecret,omitempty"`
-	// oss命名空间
+	// The OSS bucket.
 	//
 	// example:
 	//
 	// ha3test-oss
 	Bucket *string `json:"bucket,omitempty" xml:"bucket,omitempty"`
-	// odps相关
+	// The endpoint of the MaxCompute data source.
 	//
 	// example:
 	//
 	// http://service.cn-hangzhou.maxcompute.aliyun-inc.com/api
 	Endpoint *string `json:"endpoint,omitempty" xml:"endpoint,omitempty"`
-	// saro相关
+	// The namespace. This parameter is applicable to the SARO data source used in the intranet of Alibaba Group.
 	//
 	// example:
 	//
 	// TEST_dump_demo_sj_na61hunbu2_share_holo
 	Namespace *string `json:"namespace,omitempty" xml:"namespace,omitempty"`
-	// oss数据源相关
+	// The Object Storage Service (OSS) path.
 	//
 	// example:
 	//
 	// /test_opensearch/sift_oss_test.data
 	OssPath *string `json:"ossPath,omitempty" xml:"ossPath,omitempty"`
-	// 数据分片
+	// The shard name.
 	//
 	// example:
 	//
 	// ds=12345
 	Partition *string `json:"partition,omitempty" xml:"partition,omitempty"`
-	// hdfs相关
+	// The file path in the Apsara File Storage for HDFS file system.
 	//
 	// example:
 	//
 	// http://test_opensearch/sift_oss_test.data
 	Path *string `json:"path,omitempty" xml:"path,omitempty"`
-	// odps数据源项目名称
+	// The name of the MaxCompute project that is used as the data source.
 	//
 	// example:
 	//
 	// tisplus_dev
 	Project *string `json:"project,omitempty" xml:"project,omitempty"`
-	// saro、odps相关
+	// The name of the MaxCompute table that is used as the data source.
 	//
 	// example:
 	//
@@ -11447,13 +12482,13 @@ func (s *ListIndexesResponseBodyResultDataSourceInfoConfig) SetTable(v string) *
 }
 
 type ListIndexesResponseBodyResultDataSourceInfoSaroConfig struct {
-	// saro数据源的namespace
+	// The namespace of the SARO data source.
 	//
 	// example:
 	//
 	// TEST_dump_demo_sj_na61hunbu2_share_holo
 	Namespace *string `json:"namespace,omitempty" xml:"namespace,omitempty"`
-	// saro数据表名称
+	// The name of the SARO table.
 	//
 	// example:
 	//
@@ -11480,33 +12515,47 @@ func (s *ListIndexesResponseBodyResultDataSourceInfoSaroConfig) SetTableName(v s
 }
 
 type ListIndexesResponseBodyResultVersions struct {
-	// The description.
+	// The description of the index version.
 	//
 	// example:
 	//
 	// close alarm, by 3.9.2 hotfix workflow
 	Desc *string `json:"desc,omitempty" xml:"desc,omitempty"`
-	// The list of file names.
+	// The files.
 	Files []*ListIndexesResponseBodyResultVersionsFiles `json:"files,omitempty" xml:"files,omitempty" type:"Repeated"`
-	// The name of the version.
+	// The name of the index version.
 	//
 	// example:
 	//
 	// ha-cn-7pp2ngv4s02_qrs
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The state of the version. Valid values: drafting, used, unused and trash. drafting indicates that the version is a draft, used indicates that the version is used online, unused indicates that the version is not used, and trash indicates that the version is being deleted.
+	// The status of the index version. Valid values:
+	//
+	// 	- NEW: The index version is created.
+	//
+	// 	- PUBLISH: The index version is normal.
+	//
+	// 	- IN_USE: The index version is in use.
+	//
+	// 	- NOT_USE: The index version is not used.
+	//
+	// 	- STOP_USE: The index version is being stopped.
+	//
+	// 	- RESTORE_USE: The index version is being restored.
+	//
+	// 	- FAIL: The index version failed to be created.
 	//
 	// example:
 	//
 	// 2
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The time when the version was updated.
+	// The time when the index version was updated.
 	//
 	// example:
 	//
 	// " "
 	UpdateTime *int64 `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
-	// The ID of the version. The value of this parameter is null for the edit version.
+	// The ID of the index version. If the index version is modified, the returned value is null.
 	//
 	// example:
 	//
@@ -11553,25 +12602,25 @@ func (s *ListIndexesResponseBodyResultVersions) SetVersionId(v int32) *ListIndex
 }
 
 type ListIndexesResponseBodyResultVersionsFiles struct {
-	// The name of the directory for the index.
+	// The full path of the file.
 	//
 	// example:
 	//
 	// " "
 	FullPathName *string `json:"fullPathName,omitempty" xml:"fullPathName,omitempty"`
-	// Indicates whether a directory exists.
+	// Indicates whether the file is a directory.
 	//
 	// example:
 	//
 	// True
 	IsDir *bool `json:"isDir,omitempty" xml:"isDir,omitempty"`
-	// Indicates whether it is a template.
+	// Indicates whether the file is a template.
 	//
 	// example:
 	//
 	// True
 	IsTemplate *bool `json:"isTemplate,omitempty" xml:"isTemplate,omitempty"`
-	// The name of the file.
+	// The file name.
 	//
 	// example:
 	//
@@ -11667,7 +12716,7 @@ type ListInstanceSpecsResponseBody struct {
 	//
 	// 10D5E615-69F7-5F49-B850-00169ADE513C
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// List
+	// The result.
 	Result []*ListInstanceSpecsResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Repeated"`
 }
 
@@ -11690,21 +12739,29 @@ func (s *ListInstanceSpecsResponseBody) SetResult(v []*ListInstanceSpecsResponse
 }
 
 type ListInstanceSpecsResponseBodyResult struct {
-	// None
+	// The number of CPU cores.
 	//
 	// example:
 	//
 	// 1
 	Cpu *int32 `json:"cpu,omitempty" xml:"cpu,omitempty"`
-	// 单数据节点存储空间最大值
+	// The maximum storage space of a Searcher worker.
+	//
+	// example:
+	//
+	// 600
 	MaxDisk *int32 `json:"maxDisk,omitempty" xml:"maxDisk,omitempty"`
-	// Unit: GB
+	// The memory. Unit: GB.
 	//
 	// example:
 	//
 	// 4
 	Mem *int32 `json:"mem,omitempty" xml:"mem,omitempty"`
-	// 单数据节点存储空间最小值
+	// The minimum storage space of a Searcher worker.
+	//
+	// example:
+	//
+	// 100
 	MinDisk *int32 `json:"minDisk,omitempty" xml:"minDisk,omitempty"`
 }
 
@@ -11772,13 +12829,13 @@ type ListInstancesRequest struct {
 	//
 	// Havenask instance
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The Instance type, vector (vector index version),engine (recall engine version)
+	// The instance type. Valid values: vector: OpenSearch Vector Search Edition instance. engine: OpenSearch Retrieval Engine Edition instance.
 	//
 	// example:
 	//
 	// vector
 	Edition *string `json:"edition,omitempty" xml:"edition,omitempty"`
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// example:
 	//
@@ -11802,7 +12859,7 @@ type ListInstancesRequest struct {
 	//
 	// rg-aekzgpiswzbksdi
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
-	// The tag dictionary.
+	// The tags of the instance.
 	Tags []*ListInstancesRequestTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
 }
 
@@ -11850,13 +12907,13 @@ func (s *ListInstancesRequest) SetTags(v []*ListInstancesRequestTags) *ListInsta
 }
 
 type ListInstancesRequestTags struct {
-	// The key of the tag.
+	// The tag key.
 	//
 	// example:
 	//
 	// backup
 	Key *string `json:"key,omitempty" xml:"key,omitempty"`
-	// The value of the tag.
+	// The tag value.
 	//
 	// example:
 	//
@@ -11889,13 +12946,13 @@ type ListInstancesShrinkRequest struct {
 	//
 	// Havenask instance
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The Instance type, vector (vector index version),engine (recall engine version)
+	// The instance type. Valid values: vector: OpenSearch Vector Search Edition instance. engine: OpenSearch Retrieval Engine Edition instance.
 	//
 	// example:
 	//
 	// vector
 	Edition *string `json:"edition,omitempty" xml:"edition,omitempty"`
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// example:
 	//
@@ -11919,7 +12976,7 @@ type ListInstancesShrinkRequest struct {
 	//
 	// rg-aekzgpiswzbksdi
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
-	// The tag dictionary.
+	// The tags of the instance.
 	TagsShrink *string `json:"tags,omitempty" xml:"tags,omitempty"`
 }
 
@@ -11973,7 +13030,7 @@ type ListInstancesResponseBody struct {
 	//
 	// 89B968E6-1E41-58DF-BB25-5F98ECC759CE
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The result returned
+	// The results returned.
 	Result []*ListInstancesResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Repeated"`
 	// The total number of entries returned
 	//
@@ -12007,76 +13064,81 @@ func (s *ListInstancesResponseBody) SetTotalCount(v int32) *ListInstancesRespons
 }
 
 type ListInstancesResponseBodyResult struct {
-	// The billing method
+	// The billing method.
 	//
 	// example:
 	//
 	// PrePaid
 	ChargeType *string `json:"chargeType,omitempty" xml:"chargeType,omitempty"`
-	// The product code
+	// The commodity code of the instance.
 	//
 	// example:
 	//
 	// ""
 	CommodityCode *string `json:"commodityCode,omitempty" xml:"commodityCode,omitempty"`
-	// The time when the instance was created
+	// The time when the instance was created.
 	//
 	// example:
 	//
 	// 2022-06-04T02:03:21Z
 	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	// The description of the instance
+	// The description of the instance.
 	//
 	// example:
 	//
 	// Emergency test
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The expiration time
+	Edition     *string `json:"edition,omitempty" xml:"edition,omitempty"`
+	// The time when the instance expires.
 	//
 	// example:
 	//
 	// 1634885083
 	ExpiredTime *string `json:"expiredTime,omitempty" xml:"expiredTime,omitempty"`
-	// Indicates whether an overdue payment is involved
+	// Indicates whether an overdue payment is involved.
 	//
 	// example:
 	//
 	// false
 	InDebt *bool `json:"inDebt,omitempty" xml:"inDebt,omitempty"`
-	// The ID of the resource
+	// The instance ID.
 	//
 	// example:
 	//
 	// ha-cn-2r42n8oh001
 	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
-	// The lock status
+	// The lock state of the instance.
 	//
 	// example:
 	//
 	// Unlock
 	LockMode *string `json:"lockMode,omitempty" xml:"lockMode,omitempty"`
-	// Information about the instance of the network search engine
+	// The network information of the instance.
 	Network *ListInstancesResponseBodyResultNetwork `json:"network,omitempty" xml:"network,omitempty" type:"Struct"`
-	// The ID of the resource group
+	NoQrs   *bool                                   `json:"noQrs,omitempty" xml:"noQrs,omitempty"`
+	// The ID of the resource group.
 	//
 	// example:
 	//
 	// rg-aekzgpiswzbksdi
-	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
-	// The status of the instance
+	ResourceGroupId *string                              `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
+	Spec            *ListInstancesResponseBodyResultSpec `json:"spec,omitempty" xml:"spec,omitempty" type:"Struct"`
+	// The instance status.
 	//
 	// example:
 	//
 	// 2
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The result returned.
+	// The tags of the instance.
 	Tags []*ListInstancesResponseBodyResultTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
-	// The time when the instance was last updated
+	// The time when the instance was updated.
 	//
 	// example:
 	//
 	// 2018-12-06T11:17:49.0
 	UpdateTime *string `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
+	UserName   *string `json:"userName,omitempty" xml:"userName,omitempty"`
+	Version    *string `json:"version,omitempty" xml:"version,omitempty"`
 }
 
 func (s ListInstancesResponseBodyResult) String() string {
@@ -12107,6 +13169,11 @@ func (s *ListInstancesResponseBodyResult) SetDescription(v string) *ListInstance
 	return s
 }
 
+func (s *ListInstancesResponseBodyResult) SetEdition(v string) *ListInstancesResponseBodyResult {
+	s.Edition = &v
+	return s
+}
+
 func (s *ListInstancesResponseBodyResult) SetExpiredTime(v string) *ListInstancesResponseBodyResult {
 	s.ExpiredTime = &v
 	return s
@@ -12132,8 +13199,18 @@ func (s *ListInstancesResponseBodyResult) SetNetwork(v *ListInstancesResponseBod
 	return s
 }
 
+func (s *ListInstancesResponseBodyResult) SetNoQrs(v bool) *ListInstancesResponseBodyResult {
+	s.NoQrs = &v
+	return s
+}
+
 func (s *ListInstancesResponseBodyResult) SetResourceGroupId(v string) *ListInstancesResponseBodyResult {
 	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *ListInstancesResponseBodyResult) SetSpec(v *ListInstancesResponseBodyResultSpec) *ListInstancesResponseBodyResult {
+	s.Spec = v
 	return s
 }
 
@@ -12152,20 +13229,32 @@ func (s *ListInstancesResponseBodyResult) SetUpdateTime(v string) *ListInstances
 	return s
 }
 
+func (s *ListInstancesResponseBodyResult) SetUserName(v string) *ListInstancesResponseBodyResult {
+	s.UserName = &v
+	return s
+}
+
+func (s *ListInstancesResponseBodyResult) SetVersion(v string) *ListInstancesResponseBodyResult {
+	s.Version = &v
+	return s
+}
+
 type ListInstancesResponseBodyResultNetwork struct {
-	// The access point of the gateway
+	Allow *string `json:"allow,omitempty" xml:"allow,omitempty"`
+	// The instance endpoint.
 	//
 	// example:
 	//
 	// ""
-	Endpoint *string `json:"endpoint,omitempty" xml:"endpoint,omitempty"`
-	// The ID of the virtual switch
+	Endpoint       *string `json:"endpoint,omitempty" xml:"endpoint,omitempty"`
+	PublicEndpoint *string `json:"publicEndpoint,omitempty" xml:"publicEndpoint,omitempty"`
+	// The vSwitch ID.
 	//
 	// example:
 	//
 	// vsw-bp11ldcf59q2nbwkqgj6z
 	VSwitchId *string `json:"vSwitchId,omitempty" xml:"vSwitchId,omitempty"`
-	// The ID of the Virtual Private Cloud (VPC) network
+	// The ID of the virtual private cloud (VPC) in which the instance is deployed.
 	//
 	// example:
 	//
@@ -12181,8 +13270,18 @@ func (s ListInstancesResponseBodyResultNetwork) GoString() string {
 	return s.String()
 }
 
+func (s *ListInstancesResponseBodyResultNetwork) SetAllow(v string) *ListInstancesResponseBodyResultNetwork {
+	s.Allow = &v
+	return s
+}
+
 func (s *ListInstancesResponseBodyResultNetwork) SetEndpoint(v string) *ListInstancesResponseBodyResultNetwork {
 	s.Endpoint = &v
+	return s
+}
+
+func (s *ListInstancesResponseBodyResultNetwork) SetPublicEndpoint(v string) *ListInstancesResponseBodyResultNetwork {
+	s.PublicEndpoint = &v
 	return s
 }
 
@@ -12196,14 +13295,119 @@ func (s *ListInstancesResponseBodyResultNetwork) SetVpcId(v string) *ListInstanc
 	return s
 }
 
+type ListInstancesResponseBodyResultSpec struct {
+	QrsResource    *ListInstancesResponseBodyResultSpecQrsResource    `json:"qrsResource,omitempty" xml:"qrsResource,omitempty" type:"Struct"`
+	SearchResource *ListInstancesResponseBodyResultSpecSearchResource `json:"searchResource,omitempty" xml:"searchResource,omitempty" type:"Struct"`
+}
+
+func (s ListInstancesResponseBodyResultSpec) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListInstancesResponseBodyResultSpec) GoString() string {
+	return s.String()
+}
+
+func (s *ListInstancesResponseBodyResultSpec) SetQrsResource(v *ListInstancesResponseBodyResultSpecQrsResource) *ListInstancesResponseBodyResultSpec {
+	s.QrsResource = v
+	return s
+}
+
+func (s *ListInstancesResponseBodyResultSpec) SetSearchResource(v *ListInstancesResponseBodyResultSpecSearchResource) *ListInstancesResponseBodyResultSpec {
+	s.SearchResource = v
+	return s
+}
+
+type ListInstancesResponseBodyResultSpecQrsResource struct {
+	Category  *string `json:"category,omitempty" xml:"category,omitempty"`
+	Cpu       *int32  `json:"cpu,omitempty" xml:"cpu,omitempty"`
+	Disk      *int32  `json:"disk,omitempty" xml:"disk,omitempty"`
+	Mem       *int32  `json:"mem,omitempty" xml:"mem,omitempty"`
+	NodeCount *int32  `json:"nodeCount,omitempty" xml:"nodeCount,omitempty"`
+}
+
+func (s ListInstancesResponseBodyResultSpecQrsResource) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListInstancesResponseBodyResultSpecQrsResource) GoString() string {
+	return s.String()
+}
+
+func (s *ListInstancesResponseBodyResultSpecQrsResource) SetCategory(v string) *ListInstancesResponseBodyResultSpecQrsResource {
+	s.Category = &v
+	return s
+}
+
+func (s *ListInstancesResponseBodyResultSpecQrsResource) SetCpu(v int32) *ListInstancesResponseBodyResultSpecQrsResource {
+	s.Cpu = &v
+	return s
+}
+
+func (s *ListInstancesResponseBodyResultSpecQrsResource) SetDisk(v int32) *ListInstancesResponseBodyResultSpecQrsResource {
+	s.Disk = &v
+	return s
+}
+
+func (s *ListInstancesResponseBodyResultSpecQrsResource) SetMem(v int32) *ListInstancesResponseBodyResultSpecQrsResource {
+	s.Mem = &v
+	return s
+}
+
+func (s *ListInstancesResponseBodyResultSpecQrsResource) SetNodeCount(v int32) *ListInstancesResponseBodyResultSpecQrsResource {
+	s.NodeCount = &v
+	return s
+}
+
+type ListInstancesResponseBodyResultSpecSearchResource struct {
+	Category  *string `json:"category,omitempty" xml:"category,omitempty"`
+	Cpu       *int32  `json:"cpu,omitempty" xml:"cpu,omitempty"`
+	Disk      *int32  `json:"disk,omitempty" xml:"disk,omitempty"`
+	Mem       *int32  `json:"mem,omitempty" xml:"mem,omitempty"`
+	NodeCount *int32  `json:"nodeCount,omitempty" xml:"nodeCount,omitempty"`
+}
+
+func (s ListInstancesResponseBodyResultSpecSearchResource) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListInstancesResponseBodyResultSpecSearchResource) GoString() string {
+	return s.String()
+}
+
+func (s *ListInstancesResponseBodyResultSpecSearchResource) SetCategory(v string) *ListInstancesResponseBodyResultSpecSearchResource {
+	s.Category = &v
+	return s
+}
+
+func (s *ListInstancesResponseBodyResultSpecSearchResource) SetCpu(v int32) *ListInstancesResponseBodyResultSpecSearchResource {
+	s.Cpu = &v
+	return s
+}
+
+func (s *ListInstancesResponseBodyResultSpecSearchResource) SetDisk(v int32) *ListInstancesResponseBodyResultSpecSearchResource {
+	s.Disk = &v
+	return s
+}
+
+func (s *ListInstancesResponseBodyResultSpecSearchResource) SetMem(v int32) *ListInstancesResponseBodyResultSpecSearchResource {
+	s.Mem = &v
+	return s
+}
+
+func (s *ListInstancesResponseBodyResultSpecSearchResource) SetNodeCount(v int32) *ListInstancesResponseBodyResultSpecSearchResource {
+	s.NodeCount = &v
+	return s
+}
+
 type ListInstancesResponseBodyResultTags struct {
-	// The key of the tag.
+	// The tag key.
 	//
 	// example:
 	//
 	// env
 	Key *string `json:"key,omitempty" xml:"key,omitempty"`
-	// The value of the tag.
+	// The tag value.
 	//
 	// example:
 	//
@@ -12259,26 +13463,38 @@ func (s *ListInstancesResponse) SetBody(v *ListInstancesResponseBody) *ListInsta
 }
 
 type ListLogsRequest struct {
+	// The end tim. The value is a timestamp in seconds.
+	//
 	// example:
 	//
 	// 1710432000
 	EndTime *string `json:"endTime,omitempty" xml:"endTime,omitempty"`
+	// The number of entries per num. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNum *string `json:"pageNum,omitempty" xml:"pageNum,omitempty"`
+	// The number of entries per page. Default value: 10.
+	//
 	// example:
 	//
 	// 10
 	PageSize *string `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// The query statement
+	//
 	// example:
 	//
 	// status: 200 AND totalTime > 0.01
 	Query *string `json:"query,omitempty" xml:"query,omitempty"`
+	// The start time. The value is a timestamp in seconds.
+	//
 	// example:
 	//
 	// 1706340600
 	StartTime *string `json:"startTime,omitempty" xml:"startTime,omitempty"`
+	// -push   -select
+	//
 	// example:
 	//
 	// push
@@ -12353,7 +13569,10 @@ func (s *ListLogsResponseBody) SetResult(v *ListLogsResponseBodyResult) *ListLog
 }
 
 type ListLogsResponseBodyResult struct {
+	// The result.
 	Result []interface{} `json:"result,omitempty" xml:"result,omitempty" type:"Repeated"`
+	// The total number of entries returned
+	//
 	// example:
 	//
 	// 5
@@ -12523,13 +13742,13 @@ func (s *ListOnlineConfigsResponse) SetBody(v *ListOnlineConfigsResponseBody) *L
 }
 
 type ListPausePolicysResponseBody struct {
-	// id of request
+	// The request ID.
 	//
 	// example:
 	//
 	// 2AE63638-5420-56DC-BF59-37D8174039A0
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Map
+	// The result.
 	Result map[string]*ResultValue `json:"result,omitempty" xml:"result,omitempty"`
 }
 
@@ -12581,14 +13800,20 @@ func (s *ListPausePolicysResponse) SetBody(v *ListPausePolicysResponseBody) *Lis
 }
 
 type ListPostQueryResultRequest struct {
+	// The instance endpoint.
+	//
 	// example:
 	//
 	// 127.0.0.1
 	Address *string `json:"address,omitempty" xml:"address,omitempty"`
+	// The request body.
+	//
 	// example:
 	//
 	// {}
 	Body map[string]interface{} `json:"body,omitempty" xml:"body,omitempty"`
+	// The query type. Valid values: sql: SQL query. ha3: Havenask query.
+	//
 	// example:
 	//
 	// ha3
@@ -12619,13 +13844,13 @@ func (s *ListPostQueryResultRequest) SetType(v string) *ListPostQueryResultReque
 }
 
 type ListPostQueryResultResponseBody struct {
-	// id of request
+	// The request ID.
 	//
 	// example:
 	//
 	// 022F36C7-9FB4-5D67-BEBC-3D14B0984463
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Object
+	// The result.
 	//
 	// example:
 	//
@@ -12765,14 +13990,20 @@ func (s *ListQueryResultResponse) SetBody(v *ListQueryResultResponseBody) *ListQ
 }
 
 type ListRestQueryResultRequest struct {
+	// The instance endpoint.
+	//
 	// example:
 	//
 	// 127.0.0.1
 	Address *string `json:"address,omitempty" xml:"address,omitempty"`
+	// The name of the index table.
+	//
 	// example:
 	//
 	// main_index
 	IndexName *string `json:"indexName,omitempty" xml:"indexName,omitempty"`
+	// The rest query statement.
+	//
 	// example:
 	//
 	// query%3Drelation_id%3A%221151274675_2%22%26%26cluster%3Dgeneral%26%26config%3Dstart%3A0%2Chit%3A10%2Cformat%3Ajson
@@ -12803,13 +14034,13 @@ func (s *ListRestQueryResultRequest) SetQuery(v map[string]interface{}) *ListRes
 }
 
 type ListRestQueryResultResponseBody struct {
-	// id of request
+	// The request ID.
 	//
 	// example:
 	//
 	// F43E8AB4-419C-5F4C-90D6-615590DFAA3C
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Object
+	// The result.
 	//
 	// example:
 	//
@@ -12865,41 +14096,49 @@ func (s *ListRestQueryResultResponse) SetBody(v *ListRestQueryResultResponseBody
 }
 
 type ListSchemasRequest struct {
-	// AK
+	// The AccessKey ID of the MaxCompute data source.
 	//
 	// example:
 	//
 	// ak
 	AccessKey *string `json:"accessKey,omitempty" xml:"accessKey,omitempty"`
-	// AS
+	// The AccessKey secret of the MaxCompute data source.
 	//
 	// example:
 	//
 	// as
 	AccessSecret *string `json:"accessSecret,omitempty" xml:"accessSecret,omitempty"`
-	// odps endpoint
+	// The endpoint of the MaxCompute data source.
 	//
 	// example:
 	//
 	// http://service.cn-hangzhou.maxcompute.aliyun-inc.com/api
 	Endpoint *string `json:"endpoint,omitempty" xml:"endpoint,omitempty"`
+	// The namespace of the SARO data source.
+	//
 	// example:
 	//
 	// igraph-cn-tl32wnrhi04
 	Namespace *string `json:"namespace,omitempty" xml:"namespace,omitempty"`
+	// The shard name.
+	//
 	// example:
 	//
 	// dt=20230520
 	Partition *string `json:"partition,omitempty" xml:"partition,omitempty"`
+	// The name of the MaxCompute project that is used as the data source.
+	//
 	// example:
 	//
 	// start-flask-v3-obcc
 	Project *string `json:"project,omitempty" xml:"project,omitempty"`
+	// The name of the MaxCompute table that is used as the data source.
+	//
 	// example:
 	//
 	// item
 	Table *string `json:"table,omitempty" xml:"table,omitempty"`
-	// odps, swift, saro, oss, unKnow
+	// The type of the data source. Valid values: odps, swift, saro, oss, and unKnow.
 	//
 	// This parameter is required.
 	//
@@ -12958,13 +14197,13 @@ func (s *ListSchemasRequest) SetType(v string) *ListSchemasRequest {
 }
 
 type ListSchemasResponseBody struct {
-	// id of request
+	// The request ID.
 	//
 	// example:
 	//
 	// FE03180A-0E29-5474-8A86-33F0683294A4
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Object
+	// The result.
 	//
 	// example:
 	//
@@ -13026,7 +14265,7 @@ type ListTableGenerationsResponseBody struct {
 	//
 	// F6E3D968-529C-5C40-AFDD-133A8B8FD930
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// List
+	// The result.
 	Result []*ListTableGenerationsResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Repeated"`
 }
 
@@ -13049,7 +14288,7 @@ func (s *ListTableGenerationsResponseBody) SetResult(v []*ListTableGenerationsRe
 }
 
 type ListTableGenerationsResponseBodyResult struct {
-	// generationId
+	// The ID of the full index version.
 	//
 	// example:
 	//
@@ -13100,6 +14339,8 @@ func (s *ListTableGenerationsResponse) SetBody(v *ListTableGenerationsResponseBo
 }
 
 type ListTablesRequest struct {
+	// Specifies whether the OpenSearch Vector Search Edition instance is of the new version.
+	//
 	// example:
 	//
 	// true
@@ -13126,7 +14367,7 @@ type ListTablesResponseBody struct {
 	//
 	// 10D5E615-69F7-5F49-B850-00169ADE513C
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// List
+	// The result.
 	Result []*ListTablesResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Repeated"`
 }
 
@@ -13149,14 +14390,23 @@ func (s *ListTablesResponseBody) SetResult(v []*ListTablesResponseBodyResult) *L
 }
 
 type ListTablesResponseBodyResult struct {
+	// The state of the index table. Valid values: NEW, PUBLISH, IN_USE, NOT_USE, STOP_USE, RESTORE_USE, and FAIL. After an index is created in an OpenSearch Retrieval Engine Edition instance, the index enters the IN_USE state. If the first full index fails to be created in an OpenSearch Vector Search Edition instance of the new version, the index is in the FAIL state.
+	//
 	// example:
 	//
 	// IN_USE
 	IndexStatus *string `json:"indexStatus,omitempty" xml:"indexStatus,omitempty"`
+	// The index name.
+	//
 	// example:
 	//
 	// es_test_1b
-	Name   *string `json:"name,omitempty" xml:"name,omitempty"`
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The state of the index table. Valid values: NEW, PUBLISH, IN_USE, NOT_USE, STOP_USE, RESTORE_USE, and FAIL. After an index is created in an OpenSearch Retrieval Engine Edition instance, the index enters the IN_USE state. If the first full index fails to be created in an OpenSearch Vector Search Edition instance of the new version, the index is in the FAIL state.
+	//
+	// example:
+	//
+	// IN_USE
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
 }
 
@@ -13439,10 +14689,14 @@ func (s *ListTagResourcesResponse) SetBody(v *ListTagResourcesResponseBody) *Lis
 }
 
 type ListTasksRequest struct {
+	// The timestamp that indicates the end of the time range to query.
+	//
 	// example:
 	//
 	// 1690423741577
 	End *int64 `json:"end,omitempty" xml:"end,omitempty"`
+	// The timestamp that indicates the beginning of the time range to query.
+	//
 	// example:
 	//
 	// 1687238865434
@@ -13468,13 +14722,13 @@ func (s *ListTasksRequest) SetStart(v int64) *ListTasksRequest {
 }
 
 type ListTasksResponseBody struct {
-	// id of request
+	// The request ID.
 	//
 	// example:
 	//
 	// D39EE0F1-D7EF-5F46-B781-6BF4185308B0
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Object
+	// The result.
 	//
 	// example:
 	//
@@ -13530,18 +14784,26 @@ func (s *ListTasksResponse) SetBody(v *ListTasksResponseBody) *ListTasksResponse
 }
 
 type ListVectorQueryResultRequest struct {
+	// The instance endpoint.
+	//
 	// example:
 	//
 	// 127.0.0.1
 	Address *string `json:"address,omitempty" xml:"address,omitempty"`
+	// The request body.
+	//
 	// example:
 	//
 	// {}
 	Body map[string]interface{} `json:"body,omitempty" xml:"body,omitempty"`
+	// The query type. Valid values: vector, primary_key, and vector_text.
+	//
 	// example:
 	//
 	// primary_key
 	QueryType *string `json:"queryType,omitempty" xml:"queryType,omitempty"`
+	// The vector query type. Valid values: vector, image, and text.
+	//
 	// example:
 	//
 	// image
@@ -13577,13 +14839,13 @@ func (s *ListVectorQueryResultRequest) SetVectorQueryType(v string) *ListVectorQ
 }
 
 type ListVectorQueryResultResponseBody struct {
-	// id of request
+	// The request ID.
 	//
 	// example:
 	//
 	// 022F36C7-9FB4-5D67-BEBC-3D14B0984463
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Object
+	// The result.
 	//
 	// example:
 	//
@@ -13639,24 +14901,40 @@ func (s *ListVectorQueryResultResponse) SetBody(v *ListVectorQueryResultResponse
 }
 
 type ModifyAdvanceConfigRequest struct {
+	// The content of the advanced configuration that is returned.
+	//
 	// example:
 	//
 	// ""
 	Content *string `json:"content,omitempty" xml:"content,omitempty"`
+	// The type of the configuration content. Valid values: FILE, GIT, HTTP, and ODPS.
+	//
 	// example:
 	//
 	// FILE
-	ContentType *string                            `json:"contentType,omitempty" xml:"contentType,omitempty"`
-	Desc        *string                            `json:"desc,omitempty" xml:"desc,omitempty"`
-	Files       []*ModifyAdvanceConfigRequestFiles `json:"files,omitempty" xml:"files,omitempty" type:"Repeated"`
+	ContentType *string `json:"contentType,omitempty" xml:"contentType,omitempty"`
+	// The description of the advanced configuration.
+	//
+	// example:
+	//
+	// test
+	Desc *string `json:"desc,omitempty" xml:"desc,omitempty"`
+	// The files.
+	Files []*ModifyAdvanceConfigRequestFiles `json:"files,omitempty" xml:"files,omitempty" type:"Repeated"`
+	// The name of the advanced configuration.
+	//
 	// example:
 	//
 	// ha-cn-zvp2qr1sk01_qrs
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The status of the advanced configuration. Valid values: drafting: The advanced configuration is in the draft state. used: The advanced configuration is being used. unused: The advanced configuration is not used. trash: The advanced configuration is being deleted.
+	//
 	// example:
 	//
 	// used
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// The time when the advanced configuration was updated.
+	//
 	// example:
 	//
 	// 2024-02-27T07:50:55Z
@@ -13707,18 +14985,26 @@ func (s *ModifyAdvanceConfigRequest) SetUpdateTime(v int64) *ModifyAdvanceConfig
 }
 
 type ModifyAdvanceConfigRequestFiles struct {
+	// The full path of the file.
+	//
 	// example:
 	//
 	// /cluster.json
 	FullPathName *string `json:"fullPathName,omitempty" xml:"fullPathName,omitempty"`
+	// Specifies whether the file is a directory.
+	//
 	// example:
 	//
 	// true
 	IsDir *bool `json:"isDir,omitempty" xml:"isDir,omitempty"`
+	// Specifies whether the file is a template.
+	//
 	// example:
 	//
 	// true
 	IsTemplate *bool `json:"isTemplate,omitempty" xml:"isTemplate,omitempty"`
+	// The node name.
+	//
 	// example:
 	//
 	// general
@@ -13754,13 +15040,13 @@ func (s *ModifyAdvanceConfigRequestFiles) SetName(v string) *ModifyAdvanceConfig
 }
 
 type ModifyAdvanceConfigResponseBody struct {
-	// id of request
+	// The request ID.
 	//
 	// example:
 	//
 	// 2AE63638-5420-56DC-BF59-37D8174039A0
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Map
+	// The result.
 	//
 	// example:
 	//
@@ -13816,13 +15102,13 @@ func (s *ModifyAdvanceConfigResponse) SetBody(v *ModifyAdvanceConfigResponseBody
 }
 
 type ModifyAdvanceConfigFileRequest struct {
-	// The content of the file.
+	// The file content.
 	//
 	// example:
 	//
 	// "ha3"
 	Content *string `json:"content,omitempty" xml:"content,omitempty"`
-	// The variable.
+	// The variables.
 	Variables map[string]*VariablesValue `json:"variables,omitempty" xml:"variables,omitempty"`
 	// The name of the file.
 	//
@@ -13920,10 +15206,14 @@ func (s *ModifyAdvanceConfigFileResponse) SetBody(v *ModifyAdvanceConfigFileResp
 }
 
 type ModifyAliasRequest struct {
+	// alias name
+	//
 	// example:
 	//
 	// test
 	Alias *string `json:"alias,omitempty" xml:"alias,omitempty"`
+	// index name
+	//
 	// example:
 	//
 	// index
@@ -14011,7 +15301,7 @@ func (s *ModifyAliasResponse) SetBody(v *ModifyAliasResponseBody) *ModifyAliasRe
 }
 
 type ModifyClusterDescRequest struct {
-	// The parameters in the request body
+	// The request body.
 	//
 	// example:
 	//
@@ -14039,7 +15329,7 @@ type ModifyClusterDescResponseBody struct {
 	//
 	// D39EE0F1-D7EF-5F46-B781-6BF4185308B0
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Map
+	// The result.
 	//
 	// example:
 	//
@@ -14095,7 +15385,7 @@ func (s *ModifyClusterDescResponse) SetBody(v *ModifyClusterDescResponseBody) *M
 }
 
 type ModifyClusterOfflineConfigRequest struct {
-	// The mode of reindexing. Valid values: api and indexRecover. api indicates to push incremental data to a data source by calling the API operations. indexRecover indicates that the data source is restored from the index.
+	// The reindexing method. Valid values: api: API data source. indexRecover: data recovery by using indexing.
 	//
 	// example:
 	//
@@ -14109,7 +15399,7 @@ type ModifyClusterOfflineConfigRequest struct {
 	//
 	// test1
 	DataSourceName *string `json:"dataSourceName,omitempty" xml:"dataSourceName,omitempty"`
-	// The type of the data source. Valid values: odps, swift, saro, and unKnow.
+	// The type of the data source. Valid values: odps: MaxCompute. swift: Swift. unKnow: unknown type.
 	//
 	// example:
 	//
@@ -14121,13 +15411,13 @@ type ModifyClusterOfflineConfigRequest struct {
 	//
 	// 1640867288
 	DataTimeSec *int32 `json:"dataTimeSec,omitempty" xml:"dataTimeSec,omitempty"`
-	// The domain where the data source is deployed.
+	// The data center in which the data source is deployed.
 	//
 	// example:
 	//
 	// vpc_hz_domain_1
 	Domain *string `json:"domain,omitempty" xml:"domain,omitempty"`
-	// The data restoration version.
+	// The ID of the full index version.
 	//
 	// example:
 	//
@@ -14139,7 +15429,12 @@ type ModifyClusterOfflineConfigRequest struct {
 	//
 	// 20211202
 	Partition *string `json:"partition,omitempty" xml:"partition,omitempty"`
-	PushMode  *string `json:"pushMode,omitempty" xml:"pushMode,omitempty"`
+	// The push mode of the configuration. By default, only the configuration is pushed.
+	//
+	// example:
+	//
+	// PUSH_ONLY
+	PushMode *string `json:"pushMode,omitempty" xml:"pushMode,omitempty"`
 }
 
 func (s ModifyClusterOfflineConfigRequest) String() string {
@@ -14258,9 +15553,9 @@ func (s *ModifyClusterOfflineConfigResponse) SetBody(v *ModifyClusterOfflineConf
 }
 
 type ModifyClusterOnlineConfigRequest struct {
-	// The information about the cluster
+	// The cluster information.
 	Clusters []*string `json:"clusters,omitempty" xml:"clusters,omitempty" type:"Repeated"`
-	// 配置信息
+	// The configuration information.
 	Config map[string]*int32 `json:"config,omitempty" xml:"config,omitempty"`
 }
 
@@ -14345,19 +15640,27 @@ func (s *ModifyClusterOnlineConfigResponse) SetBody(v *ModifyClusterOnlineConfig
 }
 
 type ModifyDataSourceDeployRequest struct {
+	// Specifies whether to enable the automatic full indexing feature.
+	//
 	// example:
 	//
 	// true
-	AutoBuildIndex *bool                                   `json:"autoBuildIndex,omitempty" xml:"autoBuildIndex,omitempty"`
-	Extend         *ModifyDataSourceDeployRequestExtend    `json:"extend,omitempty" xml:"extend,omitempty" type:"Struct"`
-	Processor      *ModifyDataSourceDeployRequestProcessor `json:"processor,omitempty" xml:"processor,omitempty" type:"Struct"`
-	Storage        *ModifyDataSourceDeployRequestStorage   `json:"storage,omitempty" xml:"storage,omitempty" type:"Struct"`
-	Swift          *ModifyDataSourceDeployRequestSwift     `json:"swift,omitempty" xml:"swift,omitempty" type:"Struct"`
+	AutoBuildIndex *bool `json:"autoBuildIndex,omitempty" xml:"autoBuildIndex,omitempty"`
+	// The extended information.
+	Extend *ModifyDataSourceDeployRequestExtend `json:"extend,omitempty" xml:"extend,omitempty" type:"Struct"`
+	// The parameters of the process.
+	Processor *ModifyDataSourceDeployRequestProcessor `json:"processor,omitempty" xml:"processor,omitempty" type:"Struct"`
+	// The information about the data source.
+	Storage *ModifyDataSourceDeployRequestStorage `json:"storage,omitempty" xml:"storage,omitempty" type:"Struct"`
+	// The information about the incremental data source Swift.
+	Swift *ModifyDataSourceDeployRequestSwift `json:"swift,omitempty" xml:"swift,omitempty" type:"Struct"`
+	// Specifies whether to perform only a dry run, without performing the actual request. The system only checks the validity of the data source. Valid values: true and false.
+	//
 	// example:
 	//
 	// true
 	DryRun *bool `json:"dryRun,omitempty" xml:"dryRun,omitempty"`
-	// generationId
+	// The ID of the full index version.
 	//
 	// example:
 	//
@@ -14409,9 +15712,13 @@ func (s *ModifyDataSourceDeployRequest) SetGenerationId(v int64) *ModifyDataSour
 }
 
 type ModifyDataSourceDeployRequestExtend struct {
+	// The information about the Apsara File Storage for HDFS data source.
 	Hdfs *ModifyDataSourceDeployRequestExtendHdfs `json:"hdfs,omitempty" xml:"hdfs,omitempty" type:"Struct"`
+	// The information about the MaxCompute data source.
 	Odps *ModifyDataSourceDeployRequestExtendOdps `json:"odps,omitempty" xml:"odps,omitempty" type:"Struct"`
-	Oss  *ModifyDataSourceDeployRequestExtendOss  `json:"oss,omitempty" xml:"oss,omitempty" type:"Struct"`
+	// The information about the OSS data source.
+	Oss *ModifyDataSourceDeployRequestExtendOss `json:"oss,omitempty" xml:"oss,omitempty" type:"Struct"`
+	// The information about the SARO data source. This parameter is applicable to the SARO data source used in the intranet of Alibaba Group.
 	Saro *ModifyDataSourceDeployRequestExtendSaro `json:"saro,omitempty" xml:"saro,omitempty" type:"Struct"`
 }
 
@@ -14444,6 +15751,8 @@ func (s *ModifyDataSourceDeployRequestExtend) SetSaro(v *ModifyDataSourceDeployR
 }
 
 type ModifyDataSourceDeployRequestExtendHdfs struct {
+	// The path of the Apsara File Storage for HDFS data source.
+	//
 	// example:
 	//
 	// ymsh-service/src/main/java/cn/ymsh/util/jd
@@ -14464,6 +15773,7 @@ func (s *ModifyDataSourceDeployRequestExtendHdfs) SetPath(v string) *ModifyDataS
 }
 
 type ModifyDataSourceDeployRequestExtendOdps struct {
+	// The partitions in the MaxCompute table.
 	Partitions map[string]*string `json:"partitions,omitempty" xml:"partitions,omitempty"`
 }
 
@@ -14481,6 +15791,8 @@ func (s *ModifyDataSourceDeployRequestExtendOdps) SetPartitions(v map[string]*st
 }
 
 type ModifyDataSourceDeployRequestExtendOss struct {
+	// The path of the OSS data source.
+	//
 	// example:
 	//
 	// oss://test
@@ -14501,10 +15813,14 @@ func (s *ModifyDataSourceDeployRequestExtendOss) SetPath(v string) *ModifyDataSo
 }
 
 type ModifyDataSourceDeployRequestExtendSaro struct {
+	// The path of the SARO data source.
+	//
 	// example:
 	//
 	// /
 	Path *string `json:"path,omitempty" xml:"path,omitempty"`
+	// The version number of the SARO data source.
+	//
 	// example:
 	//
 	// 1
@@ -14530,10 +15846,14 @@ func (s *ModifyDataSourceDeployRequestExtendSaro) SetVersion(v string) *ModifyDa
 }
 
 type ModifyDataSourceDeployRequestProcessor struct {
+	// The startup parameters of the process.
+	//
 	// example:
 	//
 	// {}
 	Args *string `json:"args,omitempty" xml:"args,omitempty"`
+	// The resource information.
+	//
 	// example:
 	//
 	// {}
@@ -14559,46 +15879,62 @@ func (s *ModifyDataSourceDeployRequestProcessor) SetResource(v string) *ModifyDa
 }
 
 type ModifyDataSourceDeployRequestStorage struct {
-	// AK
+	// The AccessKey ID of the MaxCompute data source.
 	//
 	// example:
 	//
 	// ak
 	AccessKey *string `json:"accessKey,omitempty" xml:"accessKey,omitempty"`
-	// AS
+	// The AccessKey secret of the MaxCompute data source.
 	//
 	// example:
 	//
 	// as
 	AccessSecret *string `json:"accessSecret,omitempty" xml:"accessSecret,omitempty"`
+	// The name of the OSS bucket.
+	//
 	// example:
 	//
 	// test-bucket
 	Bucket *string `json:"bucket,omitempty" xml:"bucket,omitempty"`
+	// The endpoint of the MaxCompute data source.
+	//
 	// example:
 	//
 	// http://service.cn-hangzhou.maxcompute.aliyun-inc.com/api
 	Endpoint *string `json:"endpoint,omitempty" xml:"endpoint,omitempty"`
+	// The namespace. This parameter is applicable to the SARO data source used in the intranet of Alibaba Group.
+	//
 	// example:
 	//
 	// dp-dev
 	Namespace *string `json:"namespace,omitempty" xml:"namespace,omitempty"`
+	// The Object Storage Service (OSS) path.
+	//
 	// example:
 	//
 	// /opensearch
 	OssPath *string `json:"ossPath,omitempty" xml:"ossPath,omitempty"`
+	// The partition in the MaxCompute table.
+	//
 	// example:
 	//
 	// ds=20220713
 	Partition *string `json:"partition,omitempty" xml:"partition,omitempty"`
+	// The file path in the Apsara File Storage for HDFS file system.
+	//
 	// example:
 	//
 	// /ude_jobs/iflow_offline_data_access
 	Path *string `json:"path,omitempty" xml:"path,omitempty"`
+	// The name of the MaxCompute project that is used as the data source.
+	//
 	// example:
 	//
 	// kubenest
 	Project *string `json:"project,omitempty" xml:"project,omitempty"`
+	// The name of the MaxCompute table that is used as the data source.
+	//
 	// example:
 	//
 	// item
@@ -14664,7 +16000,7 @@ func (s *ModifyDataSourceDeployRequestStorage) SetTable(v string) *ModifyDataSou
 }
 
 type ModifyDataSourceDeployRequestSwift struct {
-	// topic
+	// The topic.
 	//
 	// example:
 	//
@@ -14697,13 +16033,13 @@ func (s *ModifyDataSourceDeployRequestSwift) SetZk(v string) *ModifyDataSourceDe
 }
 
 type ModifyDataSourceDeployResponseBody struct {
-	// id of request
+	// The request ID.
 	//
 	// example:
 	//
 	// 93A9E542-8CF8-5BA6-99AB-94C0FE520429
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Map
+	// The result.
 	//
 	// example:
 	//
@@ -14759,13 +16095,13 @@ func (s *ModifyDataSourceDeployResponse) SetBody(v *ModifyDataSourceDeployRespon
 }
 
 type ModifyFileRequest struct {
-	// The content of the file.
+	// The file content.
 	//
 	// example:
 	//
 	// ""
 	Content *string `json:"content,omitempty" xml:"content,omitempty"`
-	// This parameter is required when index building for full data in a MaxCompute data source is triggered.
+	// The number of shards.
 	//
 	// example:
 	//
@@ -14867,42 +16203,74 @@ func (s *ModifyFileResponse) SetBody(v *ModifyFileResponseBody) *ModifyFileRespo
 }
 
 type ModifyIndexRequest struct {
+	// The maximum number of full indexes that can be concurrently built.
+	//
 	// example:
 	//
 	// 2
-	BuildParallelNum *int32                            `json:"buildParallelNum,omitempty" xml:"buildParallelNum,omitempty"`
-	Cluster          map[string]map[string]interface{} `json:"cluster,omitempty" xml:"cluster,omitempty"`
+	BuildParallelNum *int32 `json:"buildParallelNum,omitempty" xml:"buildParallelNum,omitempty"`
+	// The cluster information.
+	Cluster map[string]map[string]interface{} `json:"cluster,omitempty" xml:"cluster,omitempty"`
+	// The name of the configuration file.
+	//
 	// example:
 	//
 	// ha-cn-35t3r02iq03@ha-cn-35t3r02iq03_test_api@hz_pre_vpc_domain_1@test_api@index_config_v1
-	ClusterConfigName *string                 `json:"clusterConfigName,omitempty" xml:"clusterConfigName,omitempty"`
-	Config            map[string]*ConfigValue `json:"config,omitempty" xml:"config,omitempty"`
+	ClusterConfigName *string `json:"clusterConfigName,omitempty" xml:"clusterConfigName,omitempty"`
+	// The information about the offline configuration.
+	Config map[string]*ConfigValue `json:"config,omitempty" xml:"config,omitempty"`
+	// The file content.
+	//
 	// example:
 	//
 	// {\\"summarys\\":{\\"summary_fields\\":[\\"id\\"]},\\"indexs\\":[{\\"index_name\\":\\"index_id\\",\\"index_type\\":\\"PRIMARYKEY64\\",\\"index_fields\\":\\"id\\",\\"has_primary_key_attribute\\":true,\\"is_primary_key_sorted\\":false}],\\"attributes\\":[\\"id\\"],\\"fields\\":[{\\"field_name\\":\\"id\\",\\"field_type\\":\\"UINT16\\"}],\\"table_name\\":\\"index_2\\"}
 	Content *string `json:"content,omitempty" xml:"content,omitempty"`
+	// The name of the data source.
+	//
 	// example:
 	//
 	// ha-cn-35t3n1yuj0d_index_1
-	DataSource     *string                           `json:"dataSource,omitempty" xml:"dataSource,omitempty"`
+	DataSource *string `json:"dataSource,omitempty" xml:"dataSource,omitempty"`
+	// The information about the data source, which is required for the new version of OpenSearch Vector Search Edition.
 	DataSourceInfo *ModifyIndexRequestDataSourceInfo `json:"dataSourceInfo,omitempty" xml:"dataSourceInfo,omitempty" type:"Struct"`
-	Description    *string                           `json:"description,omitempty" xml:"description,omitempty"`
+	// The description of the data source.
+	//
+	// example:
+	//
+	// test
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The name of the data center in which the data source is deployed.
+	//
 	// example:
 	//
 	// vpc_hz_domain_1
 	Domain *string `json:"domain,omitempty" xml:"domain,omitempty"`
+	// The maximum number of full indexes that can be concurrently merged.
+	//
 	// example:
 	//
 	// 2
 	MergeParallelNum *int32 `json:"mergeParallelNum,omitempty" xml:"mergeParallelNum,omitempty"`
+	// The number of shards.
+	//
 	// example:
 	//
 	// 2
 	Partition *int32 `json:"partition,omitempty" xml:"partition,omitempty"`
+	// The push mode of the configuration. By default, only the configuration is pushed.
+	//
 	// example:
 	//
 	// PUSH_ONLY
 	PushMode *string `json:"pushMode,omitempty" xml:"pushMode,omitempty"`
+	// Specifies whether to check the validity of input parameters. Default value: false.
+	//
+	// Valid values:
+	//
+	// 	- **true**: checks only the validity of input parameters.
+	//
+	// 	- **false**: checks the validity of input parameters and creates an attribution configuration.
+	//
 	// example:
 	//
 	// true
@@ -14983,40 +16351,60 @@ func (s *ModifyIndexRequest) SetDryRun(v bool) *ModifyIndexRequest {
 }
 
 type ModifyIndexRequestDataSourceInfo struct {
+	// Specifies whether to enable the automatic full indexing feature.
+	//
 	// example:
 	//
 	// true
 	AutoBuildIndex *bool `json:"autoBuildIndex,omitempty" xml:"autoBuildIndex,omitempty"`
+	// The reindexing method. Valid values: api: API data source. indexRecover: data recovery by using indexing.
+	//
 	// example:
 	//
 	// api
-	BuildMode *string                                 `json:"buildMode,omitempty" xml:"buildMode,omitempty"`
-	Config    *ModifyIndexRequestDataSourceInfoConfig `json:"config,omitempty" xml:"config,omitempty" type:"Struct"`
+	BuildMode *string `json:"buildMode,omitempty" xml:"buildMode,omitempty"`
+	// The configurations of the MaxCompute data source.
+	Config *ModifyIndexRequestDataSourceInfoConfig `json:"config,omitempty" xml:"config,omitempty" type:"Struct"`
+	// The start timestamp from which incremental data is retrieved.
+	//
 	// example:
 	//
 	// 1709715164
 	DataTimeSec *int32 `json:"dataTimeSec,omitempty" xml:"dataTimeSec,omitempty"`
+	// The offline deployment name of the data source.
+	//
 	// example:
 	//
 	// vpc_hz_domain_1
 	Domain *string `json:"domain,omitempty" xml:"domain,omitempty"`
+	// The ID of the index version from which data is restored.
+	//
 	// example:
 	//
 	// 4
 	Generation *int64 `json:"generation,omitempty" xml:"generation,omitempty"`
+	// The name of the data source.
+	//
 	// example:
 	//
 	// ha-cn-35t3n1yuj0d_index_1
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The maximum number of full indexes that can be concurrently processed.
+	//
 	// example:
 	//
 	// 2
 	ProcessParallelNum *int32 `json:"processParallelNum,omitempty" xml:"processParallelNum,omitempty"`
+	// The number of resources used for data update.
+	//
 	// example:
 	//
 	// 4
-	ProcessPartitionCount *int32                                      `json:"processPartitionCount,omitempty" xml:"processPartitionCount,omitempty"`
-	SaroConfig            *ModifyIndexRequestDataSourceInfoSaroConfig `json:"saroConfig,omitempty" xml:"saroConfig,omitempty" type:"Struct"`
+	ProcessPartitionCount *int32 `json:"processPartitionCount,omitempty" xml:"processPartitionCount,omitempty"`
+	// The configurations of the SARO data source.
+	SaroConfig *ModifyIndexRequestDataSourceInfoSaroConfig `json:"saroConfig,omitempty" xml:"saroConfig,omitempty" type:"Struct"`
+	// The type of the data source. Valid values: odps, swift, saro, oss, and unKnow.
+	//
 	// example:
 	//
 	// odps
@@ -15087,42 +16475,62 @@ func (s *ModifyIndexRequestDataSourceInfo) SetType(v string) *ModifyIndexRequest
 }
 
 type ModifyIndexRequestDataSourceInfoConfig struct {
+	// The AccessKey ID of the MaxCompute data source.
+	//
 	// example:
 	//
 	// L***p
 	AccessKey *string `json:"accessKey,omitempty" xml:"accessKey,omitempty"`
+	// The AccessKey secret of the MaxCompute data source.
+	//
 	// example:
 	//
 	// 5**9a6
 	AccessSecret *string `json:"accessSecret,omitempty" xml:"accessSecret,omitempty"`
+	// The name of the OSS bucket.
+	//
 	// example:
 	//
 	// test-bucket
 	Bucket *string `json:"bucket,omitempty" xml:"bucket,omitempty"`
+	// The endpoint of the MaxCompute data source.
+	//
 	// example:
 	//
 	// http://service.cn-hangzhou.maxcompute.aliyun-inc.com/api
 	Endpoint *string `json:"endpoint,omitempty" xml:"endpoint,omitempty"`
+	// The namespace. This parameter is applicable to the SARO data source used in the intranet of Alibaba Group.
+	//
 	// example:
 	//
 	// test-namespace
 	Namespace *string `json:"namespace,omitempty" xml:"namespace,omitempty"`
+	// The Object Storage Service (OSS) path.
+	//
 	// example:
 	//
 	// /opensearch/oss.json
 	OssPath *string `json:"ossPath,omitempty" xml:"ossPath,omitempty"`
+	// The partition in the MaxCompute table. Example: ds=20180102.
+	//
 	// example:
 	//
 	// ds=20230114
 	Partition *string `json:"partition,omitempty" xml:"partition,omitempty"`
+	// The file path in the Apsara File Storage for HDFS file system.
+	//
 	// example:
 	//
 	// test-hdfs-path
 	Path *string `json:"path,omitempty" xml:"path,omitempty"`
+	// The name of the MaxCompute project that is used as the data source.
+	//
 	// example:
 	//
 	// bbt_algo_pai
 	Project *string `json:"project,omitempty" xml:"project,omitempty"`
+	// The name of the MaxCompute table that is used as the data source.
+	//
 	// example:
 	//
 	// item
@@ -15188,10 +16596,14 @@ func (s *ModifyIndexRequestDataSourceInfoConfig) SetTable(v string) *ModifyIndex
 }
 
 type ModifyIndexRequestDataSourceInfoSaroConfig struct {
+	// The namespace to which the SARO data source belongs.
+	//
 	// example:
 	//
 	// flink-test-fjx-default
 	Namespace *string `json:"namespace,omitempty" xml:"namespace,omitempty"`
+	// The name of the SARO table.
+	//
 	// example:
 	//
 	// device_event_shy_summary_
@@ -15217,13 +16629,13 @@ func (s *ModifyIndexRequestDataSourceInfoSaroConfig) SetTableName(v string) *Mod
 }
 
 type ModifyIndexResponseBody struct {
-	// id of request
+	// The request ID.
 	//
 	// example:
 	//
 	// 93A9E542-8CF8-5BA6-99AB-94C0FE520429
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Object
+	// The result.
 	//
 	// example:
 	//
@@ -15279,6 +16691,8 @@ func (s *ModifyIndexResponse) SetBody(v *ModifyIndexResponseBody) *ModifyIndexRe
 }
 
 type ModifyIndexOnlineStrategyRequest struct {
+	// The index change rate.
+	//
 	// example:
 	//
 	// 20
@@ -15299,13 +16713,13 @@ func (s *ModifyIndexOnlineStrategyRequest) SetChangeRate(v int32) *ModifyIndexOn
 }
 
 type ModifyIndexOnlineStrategyResponseBody struct {
-	// id of request
+	// The request ID.
 	//
 	// example:
 	//
 	// 10D5E615-69F7-5F49-B850-00169ADE513C
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Map
+	// The result.
 	//
 	// example:
 	//
@@ -15367,19 +16781,19 @@ type ModifyIndexPartitionRequest struct {
 	//
 	// test1
 	DataSourceName *string `json:"dataSourceName,omitempty" xml:"dataSourceName,omitempty"`
-	// The name of the data center.
+	// The data center.
 	//
 	// example:
 	//
 	// pre_domain_1
 	DomainName *string `json:"domainName,omitempty" xml:"domainName,omitempty"`
-	// The primary key of generation.
+	// The primary key.
 	//
 	// example:
 	//
 	// 1633293829
 	Generation *int64 `json:"generation,omitempty" xml:"generation,omitempty"`
-	// The information about shards of the index.
+	// The index information.
 	IndexInfos []*ModifyIndexPartitionRequestIndexInfos `json:"indexInfos,omitempty" xml:"indexInfos,omitempty" type:"Repeated"`
 }
 
@@ -15412,19 +16826,19 @@ func (s *ModifyIndexPartitionRequest) SetIndexInfos(v []*ModifyIndexPartitionReq
 }
 
 type ModifyIndexPartitionRequestIndexInfos struct {
-	// The name of the index.
+	// The index name.
 	//
 	// example:
 	//
 	// atest2
 	IndexName *string `json:"indexName,omitempty" xml:"indexName,omitempty"`
-	// The number of concurrency. The default value is 1.
+	// The concurrency. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	ParallelNum *int32 `json:"parallelNum,omitempty" xml:"parallelNum,omitempty"`
-	// The number of shards of the index.
+	// The number of shards.
 	//
 	// example:
 	//
@@ -15518,7 +16932,7 @@ func (s *ModifyIndexPartitionResponse) SetBody(v *ModifyIndexPartitionResponseBo
 }
 
 type ModifyIndexVersionRequest struct {
-	// The keyword used to search for a version. Fuzzy match is supported.
+	// The request body.
 	//
 	// example:
 	//
@@ -15540,19 +16954,19 @@ func (s *ModifyIndexVersionRequest) SetBody(v []*ModifyIndexVersionRequestBody) 
 }
 
 type ModifyIndexVersionRequestBody struct {
-	// The ID of the index deployed in offline mode.
+	// The deployment ID of the data source.
 	//
 	// example:
 	//
 	// 277
 	BuildDeployId *string `json:"buildDeployId,omitempty" xml:"buildDeployId,omitempty"`
-	// The name of the index.
+	// The index name.
 	//
 	// example:
 	//
 	// main_index
 	IndexName *string `json:"indexName,omitempty" xml:"indexName,omitempty"`
-	// The version of the index.
+	// The index version.
 	//
 	// example:
 	//
@@ -15688,13 +17102,13 @@ type ModifyNodeConfigRequest struct {
 	//
 	// vpc_sh_domain_2
 	ClusterName *string `json:"clusterName,omitempty" xml:"clusterName,omitempty"`
-	// The name of the data source. Valid values: search and not_search. search indicates to search data. not_search indicates not to search data.
+	// The name of the data source. Valid values: -search: search for data. -not_search: do not search for data.
 	//
 	// example:
 	//
 	// ha-cn-2r42ostoc01_0704
 	DataSourceName *string `json:"dataSourceName,omitempty" xml:"dataSourceName,omitempty"`
-	// The original name of the node.
+	// The name of the configuration before the modification.
 	//
 	// This parameter is required.
 	//
@@ -15702,17 +17116,17 @@ type ModifyNodeConfigRequest struct {
 	//
 	// ha-cn-zvp2iv9a401_qrs
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The type of the algorithm. Valid values: pop, cp, hot, hint, and suggest.
+	// The type of the algorithm. Valid values:
 	//
-	// 	- pop indicates the popularity model.
+	// 	- pop: a popularity model.
 	//
-	// 	- cp indicates the category prediction model.
+	// 	- cp: a category prediction model.
 	//
-	// 	- hot indicates the top search model.
+	// 	- hot: a top search model.
 	//
-	// 	- hint indicates the hint model.
+	// 	- hint: a hint model.
 	//
-	// 	- suggest indicates the drop-down suggestion model.
+	// 	- suggest: a drop-down suggestions model.
 	//
 	// This parameter is required.
 	//
@@ -15843,7 +17257,7 @@ func (s *ModifyNodeConfigResponse) SetBody(v *ModifyNodeConfigResponseBody) *Mod
 }
 
 type ModifyOnlineConfigRequest struct {
-	// ashortdescriptionofstruct
+	// The request body.
 	Body map[string]*string `json:"body,omitempty" xml:"body,omitempty"`
 }
 
@@ -15923,13 +17337,13 @@ func (s *ModifyOnlineConfigResponse) SetBody(v *ModifyOnlineConfigResponseBody) 
 }
 
 type ModifyPasswordRequest struct {
-	// The password
+	// The password.
 	//
 	// example:
 	//
 	// ******************************
 	Password *string `json:"password,omitempty" xml:"password,omitempty"`
-	// The username
+	// The username.
 	//
 	// example:
 	//
@@ -16018,6 +17432,7 @@ func (s *ModifyPasswordResponse) SetBody(v *ModifyPasswordResponseBody) *ModifyP
 }
 
 type ModifyPausePolicyRequest struct {
+	// The request body.
 	Body map[string]*BodyValue `json:"body,omitempty" xml:"body,omitempty"`
 }
 
@@ -16035,13 +17450,13 @@ func (s *ModifyPausePolicyRequest) SetBody(v map[string]*BodyValue) *ModifyPause
 }
 
 type ModifyPausePolicyResponseBody struct {
-	// id of request
+	// The request ID.
 	//
 	// example:
 	//
 	// 0B1FF998-BB8D-5182-BFC0-E471AA77095A
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Map
+	// The result.
 	//
 	// example:
 	//
@@ -16097,7 +17512,7 @@ func (s *ModifyPausePolicyResponse) SetBody(v *ModifyPausePolicyResponseBody) *M
 }
 
 type ModifyPublicUrlIpListRequest struct {
-	// body
+	// The request parameters.
 	Body map[string]*string `json:"body,omitempty" xml:"body,omitempty"`
 }
 
@@ -16115,13 +17530,13 @@ func (s *ModifyPublicUrlIpListRequest) SetBody(v map[string]*string) *ModifyPubl
 }
 
 type ModifyPublicUrlIpListResponseBody struct {
-	// id of request
+	// The request ID.
 	//
 	// example:
 	//
 	// E45380E8-994A-5402-9806-F114B3295FCF
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Map
+	// The result.
 	//
 	// example:
 	//
@@ -16177,22 +17592,38 @@ func (s *ModifyPublicUrlIpListResponse) SetBody(v *ModifyPublicUrlIpListResponse
 }
 
 type ModifyTableRequest struct {
+	// The configurations about field processing.
 	DataProcessConfig []*ModifyTableRequestDataProcessConfig `json:"dataProcessConfig,omitempty" xml:"dataProcessConfig,omitempty" type:"Repeated"`
-	DataSource        *ModifyTableRequestDataSource          `json:"dataSource,omitempty" xml:"dataSource,omitempty" type:"Struct"`
-	FieldSchema       map[string]*string                     `json:"fieldSchema,omitempty" xml:"fieldSchema,omitempty"`
+	// The configurations of the data source.
+	DataSource *ModifyTableRequestDataSource `json:"dataSource,omitempty" xml:"dataSource,omitempty" type:"Struct"`
+	// The fields.
+	FieldSchema map[string]*string `json:"fieldSchema,omitempty" xml:"fieldSchema,omitempty"`
+	// The number of data shards.
+	//
 	// example:
 	//
 	// 1
 	PartitionCount *int32 `json:"partitionCount,omitempty" xml:"partitionCount,omitempty"`
+	// The primary key field.
+	//
 	// example:
 	//
 	// id
 	PrimaryKey *string `json:"primaryKey,omitempty" xml:"primaryKey,omitempty"`
+	// The instance schema. If this parameter is specified, the parameters about the index are not required.
+	//
 	// example:
 	//
 	// {}
-	RawSchema   *string                          `json:"rawSchema,omitempty" xml:"rawSchema,omitempty"`
+	RawSchema *string `json:"rawSchema,omitempty" xml:"rawSchema,omitempty"`
+	// The index schema.
 	VectorIndex []*ModifyTableRequestVectorIndex `json:"vectorIndex,omitempty" xml:"vectorIndex,omitempty" type:"Repeated"`
+	// Specifies whether to perform only a dry run, without performing the actual request. The system only checks the validity of the data source. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
 	// example:
 	//
 	// true
@@ -16248,15 +17679,22 @@ func (s *ModifyTableRequest) SetDryRun(v bool) *ModifyTableRequest {
 }
 
 type ModifyTableRequestDataProcessConfig struct {
+	// The destination field.
+	//
 	// example:
 	//
 	// source_image_vector
 	DstField *string `json:"dstField,omitempty" xml:"dstField,omitempty"`
+	// The method used to process the field. Valid values: copy and vectorize. A value of copy specifies that the value of the source field is copied to the destination field. A value of vectorize specifies that the value of the source field is vectorized by a vectorization model and the output vector is stored in the destination field.
+	//
 	// example:
 	//
 	// vectorize
-	Operator *string                                    `json:"operator,omitempty" xml:"operator,omitempty"`
-	Params   *ModifyTableRequestDataProcessConfigParams `json:"params,omitempty" xml:"params,omitempty" type:"Struct"`
+	Operator *string `json:"operator,omitempty" xml:"operator,omitempty"`
+	// The information about the model.
+	Params *ModifyTableRequestDataProcessConfigParams `json:"params,omitempty" xml:"params,omitempty" type:"Struct"`
+	// The source field.
+	//
 	// example:
 	//
 	// source_image
@@ -16292,11 +17730,16 @@ func (s *ModifyTableRequestDataProcessConfig) SetSrcField(v string) *ModifyTable
 }
 
 type ModifyTableRequestDataProcessConfigParams struct {
+	// The source of the data to be vectorized.
 	SrcFieldConfig *ModifyTableRequestDataProcessConfigParamsSrcFieldConfig `json:"srcFieldConfig,omitempty" xml:"srcFieldConfig,omitempty" type:"Struct"`
+	// The data type.
+	//
 	// example:
 	//
 	// image
 	VectorModal *string `json:"vectorModal,omitempty" xml:"vectorModal,omitempty"`
+	// The vectorization model.
+	//
 	// example:
 	//
 	// clip
@@ -16327,14 +17770,20 @@ func (s *ModifyTableRequestDataProcessConfigParams) SetVectorModel(v string) *Mo
 }
 
 type ModifyTableRequestDataProcessConfigParamsSrcFieldConfig struct {
+	// The name of the OSS bucket.
+	//
 	// example:
 	//
 	// test
 	OssBucket *string `json:"ossBucket,omitempty" xml:"ossBucket,omitempty"`
+	// The OSS endpoint.
+	//
 	// example:
 	//
 	// oss-cn-hangzhou-internal.aliyuncs.com
 	OssEndpoint *string `json:"ossEndpoint,omitempty" xml:"ossEndpoint,omitempty"`
+	// The ID of the Alibaba Cloud account.
+	//
 	// example:
 	//
 	// uid
@@ -16365,11 +17814,16 @@ func (s *ModifyTableRequestDataProcessConfigParamsSrcFieldConfig) SetUid(v strin
 }
 
 type ModifyTableRequestDataSource struct {
+	// Specifies whether to automatically rebuild the index.
+	//
 	// example:
 	//
 	// true
-	AutoBuildIndex *bool                               `json:"autoBuildIndex,omitempty" xml:"autoBuildIndex,omitempty"`
-	Config         *ModifyTableRequestDataSourceConfig `json:"config,omitempty" xml:"config,omitempty" type:"Struct"`
+	AutoBuildIndex *bool `json:"autoBuildIndex,omitempty" xml:"autoBuildIndex,omitempty"`
+	// The configurations of the data source.
+	Config *ModifyTableRequestDataSourceConfig `json:"config,omitempty" xml:"config,omitempty" type:"Struct"`
+	// The start timestamp from which incremental data is retrieved.
+	//
 	// example:
 	//
 	// 1715160176
@@ -16400,40 +17854,50 @@ func (s *ModifyTableRequestDataSource) SetDataTimeSec(v int32) *ModifyTableReque
 }
 
 type ModifyTableRequestDataSourceConfig struct {
-	// AK
+	// The AccessKey ID of the MaxCompute data source.
 	//
 	// example:
 	//
 	// AK
 	AccessKey *string `json:"accessKey,omitempty" xml:"accessKey,omitempty"`
-	// AS
+	// The AccessKey secret of the MaxCompute data source.
 	//
 	// example:
 	//
 	// AS
 	AccessSecret *string `json:"accessSecret,omitempty" xml:"accessSecret,omitempty"`
-	// oss bucket
+	// The name of the OSS bucket.
 	//
 	// example:
 	//
 	// antsys-shujiang-osstest
 	Bucket *string `json:"bucket,omitempty" xml:"bucket,omitempty"`
+	// The endpoint of the MaxCompute data source.
+	//
 	// example:
 	//
 	// http://service.cn-hangzhou.maxcompute.aliyun-inc.com/api
 	Endpoint *string `json:"endpoint,omitempty" xml:"endpoint,omitempty"`
+	// The path of the Object Storage Service (OSS) object.
+	//
 	// example:
 	//
 	// oss://opensearch
 	OssPath *string `json:"ossPath,omitempty" xml:"ossPath,omitempty"`
+	// The partition in the MaxCompute table.
+	//
 	// example:
 	//
 	// ds=20231220
 	Partition *string `json:"partition,omitempty" xml:"partition,omitempty"`
+	// The name of the MaxCompute project that is used as the data source.
+	//
 	// example:
 	//
 	// yw_dw_rpt
 	Project *string `json:"project,omitempty" xml:"project,omitempty"`
+	// The name of the MaxCompute table that is used as the data source.
+	//
 	// example:
 	//
 	// behavior
@@ -16489,35 +17953,52 @@ func (s *ModifyTableRequestDataSourceConfig) SetTable(v string) *ModifyTableRequ
 }
 
 type ModifyTableRequestVectorIndex struct {
+	// The configurations of the index schema.
 	AdvanceParams *ModifyTableRequestVectorIndexAdvanceParams `json:"advanceParams,omitempty" xml:"advanceParams,omitempty" type:"Struct"`
+	// The dimension of the vector.
+	//
 	// example:
 	//
 	// 128
 	Dimension *string `json:"dimension,omitempty" xml:"dimension,omitempty"`
+	// The distance type.
+	//
 	// example:
 	//
 	// SquaredEuclidean
 	DistanceType *string `json:"distanceType,omitempty" xml:"distanceType,omitempty"`
+	// The name of the index schema.
+	//
 	// example:
 	//
 	// test_api
 	IndexName *string `json:"indexName,omitempty" xml:"indexName,omitempty"`
+	// The namespace field.
+	//
 	// example:
 	//
 	// namespace
 	Namespace *string `json:"namespace,omitempty" xml:"namespace,omitempty"`
+	// The field that stores the indexes of the elements in sparse vectors.
+	//
 	// example:
 	//
 	// sparse_indices
 	SparseIndexField *string `json:"sparseIndexField,omitempty" xml:"sparseIndexField,omitempty"`
+	// The field that stores the elements in sparse vectors.
+	//
 	// example:
 	//
 	// sparse_values
 	SparseValueField *string `json:"sparseValueField,omitempty" xml:"sparseValueField,omitempty"`
+	// The vector field.
+	//
 	// example:
 	//
 	// source_image_vector
 	VectorField *string `json:"vectorField,omitempty" xml:"vectorField,omitempty"`
+	// The vector retrieval algorithm.
+	//
 	// example:
 	//
 	// Qc
@@ -16578,18 +18059,26 @@ func (s *ModifyTableRequestVectorIndex) SetVectorIndexType(v string) *ModifyTabl
 }
 
 type ModifyTableRequestVectorIndexAdvanceParams struct {
+	// The index building parameters.
+	//
 	// example:
 	//
 	// {}
 	BuildIndexParams *string `json:"buildIndexParams,omitempty" xml:"buildIndexParams,omitempty"`
+	// The threshold for linear building.
+	//
 	// example:
 	//
 	// 5000
 	LinearBuildThreshold *string `json:"linearBuildThreshold,omitempty" xml:"linearBuildThreshold,omitempty"`
+	// The minimum number of retrieved candidate sets.
+	//
 	// example:
 	//
 	// 20000
 	MinScanDocCnt *string `json:"minScanDocCnt,omitempty" xml:"minScanDocCnt,omitempty"`
+	// The index retrieval parameters.
+	//
 	// example:
 	//
 	// {}
@@ -16687,7 +18176,13 @@ func (s *ModifyTableResponse) SetBody(v *ModifyTableResponseBody) *ModifyTableRe
 }
 
 type PublishAdvanceConfigRequest struct {
-	Desc  *string                             `json:"desc,omitempty" xml:"desc,omitempty"`
+	// The description of the advanced configuration.
+	//
+	// example:
+	//
+	// Custom configuration
+	Desc *string `json:"desc,omitempty" xml:"desc,omitempty"`
+	// The files.
 	Files []*PublishAdvanceConfigRequestFiles `json:"files,omitempty" xml:"files,omitempty" type:"Repeated"`
 }
 
@@ -16710,12 +18205,38 @@ func (s *PublishAdvanceConfigRequest) SetFiles(v []*PublishAdvanceConfigRequestF
 }
 
 type PublishAdvanceConfigRequestFiles struct {
-	Config         *PublishAdvanceConfigRequestFilesConfig `json:"config,omitempty" xml:"config,omitempty" type:"Struct"`
-	DirName        *string                                 `json:"dirName,omitempty" xml:"dirName,omitempty"`
-	FileName       *string                                 `json:"fileName,omitempty" xml:"fileName,omitempty"`
-	OperateType    *string                                 `json:"operateType,omitempty" xml:"operateType,omitempty"`
-	OssPath        *string                                 `json:"ossPath,omitempty" xml:"ossPath,omitempty"`
-	ParentFullPath *string                                 `json:"parentFullPath,omitempty" xml:"parentFullPath,omitempty"`
+	// The information about the advanced configuration.
+	Config *PublishAdvanceConfigRequestFilesConfig `json:"config,omitempty" xml:"config,omitempty" type:"Struct"`
+	// The directory name.
+	//
+	// example:
+	//
+	// /clusters
+	DirName *string `json:"dirName,omitempty" xml:"dirName,omitempty"`
+	// The file name.
+	//
+	// example:
+	//
+	// vector_question_schema.json
+	FileName *string `json:"fileName,omitempty" xml:"fileName,omitempty"`
+	// The operation type. Valid values: UPDATE and DELETE. Default value: UPDATE.
+	//
+	// example:
+	//
+	// UPDATE
+	OperateType *string `json:"operateType,omitempty" xml:"operateType,omitempty"`
+	// The path of the Object Storage Service (OSS) object.
+	//
+	// example:
+	//
+	// oss://opensearch/test.json
+	OssPath *string `json:"ossPath,omitempty" xml:"ossPath,omitempty"`
+	// The path of the parent directory.
+	//
+	// example:
+	//
+	// /
+	ParentFullPath *string `json:"parentFullPath,omitempty" xml:"parentFullPath,omitempty"`
 }
 
 func (s PublishAdvanceConfigRequestFiles) String() string {
@@ -16757,7 +18278,13 @@ func (s *PublishAdvanceConfigRequestFiles) SetParentFullPath(v string) *PublishA
 }
 
 type PublishAdvanceConfigRequestFilesConfig struct {
-	Content   *string                               `json:"content,omitempty" xml:"content,omitempty"`
+	// The file content.
+	//
+	// example:
+	//
+	// {\\"url\\":\\"http://xxxxxx.aliyuncs.com/outnet_hz/packages/xxxxx/opensearch_offline_plugins_xxxxx.tar\\"}
+	Content *string `json:"content,omitempty" xml:"content,omitempty"`
+	// The variables.
 	Variables map[string]*FilesConfigVariablesValue `json:"variables,omitempty" xml:"variables,omitempty"`
 }
 
@@ -16842,7 +18369,7 @@ func (s *PublishAdvanceConfigResponse) SetBody(v *PublishAdvanceConfigResponseBo
 }
 
 type PublishIndexVersionRequest struct {
-	// The query result
+	// The request body.
 	//
 	// example:
 	//
@@ -16926,7 +18453,10 @@ func (s *PublishIndexVersionResponse) SetBody(v *PublishIndexVersionResponseBody
 }
 
 type PushDocumentsRequest struct {
+	// The request body.
 	Body []interface{} `json:"body,omitempty" xml:"body,omitempty" type:"Repeated"`
+	// The primary key field.
+	//
 	// example:
 	//
 	// id
@@ -16952,13 +18482,13 @@ func (s *PushDocumentsRequest) SetPkField(v string) *PushDocumentsRequest {
 }
 
 type PushDocumentsResponseBody struct {
-	// id of request
+	// The request ID.
 	//
 	// example:
 	//
 	// 2AE63638-5420-56DC-BF59-37D8174039A0
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Map
+	// The result.
 	//
 	// example:
 	//
@@ -17014,25 +18544,25 @@ func (s *PushDocumentsResponse) SetBody(v *PushDocumentsResponseBody) *PushDocum
 }
 
 type RecoverIndexRequest struct {
-	// The ID of the index deployed in offline mode.
+	// The deployment ID of the data source.
 	//
 	// example:
 	//
 	// 277
 	BuildDeployId *int32 `json:"buildDeployId,omitempty" xml:"buildDeployId,omitempty"`
-	// The name of the data source
+	// The name of the data source.
 	//
 	// example:
 	//
 	// ha-cn-pl32rf0js04_odps_first
 	DataSourceName *string `json:"dataSourceName,omitempty" xml:"dataSourceName,omitempty"`
-	// The primary key of generation.
+	// The ID of the full index version.
 	//
 	// example:
 	//
 	// 1653018575
 	Generation *string `json:"generation,omitempty" xml:"generation,omitempty"`
-	// The name of the index
+	// The index name.
 	//
 	// example:
 	//
@@ -17131,14 +18661,20 @@ func (s *RecoverIndexResponse) SetBody(v *RecoverIndexResponseBody) *RecoverInde
 }
 
 type ReindexRequest struct {
+	// The timestamp in seconds. The value must be of the INTEGER type. This parameter is required if you specify an API data source.
+	//
 	// example:
 	//
 	// 1640867288
 	DataTimeSec *int32 `json:"dataTimeSec,omitempty" xml:"dataTimeSec,omitempty"`
+	// oss data path
+	//
 	// example:
 	//
 	// oss://opensearch
 	OssDataPath *string `json:"ossDataPath,omitempty" xml:"ossDataPath,omitempty"`
+	// The partition in the MaxCompute table. This parameter is required if type is set to odps.
+	//
 	// example:
 	//
 	// ds=20220713
@@ -17467,13 +19003,13 @@ func (s *RenameFolderResponse) SetBody(v *RenameFolderResponseBody) *RenameFolde
 }
 
 type StartIndexResponseBody struct {
-	// id of request
+	// The request ID.
 	//
 	// example:
 	//
 	// D39EE0F1-D7EF-5F46-B781-6BF4185308B0
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Map
+	// The result.
 	//
 	// example:
 	//
@@ -17529,13 +19065,13 @@ func (s *StartIndexResponse) SetBody(v *StartIndexResponseBody) *StartIndexRespo
 }
 
 type StopIndexResponseBody struct {
-	// id of request
+	// The request ID.
 	//
 	// example:
 	//
 	// E7B7D598-B080-5C8E-AA35-D43EC0D5F886
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Map
+	// The result.
 	//
 	// example:
 	//
@@ -17904,7 +19440,7 @@ func (s *UntagResourcesResponse) SetBody(v *UntagResourcesResponseBody) *UntagRe
 }
 
 type UpdateInstanceRequest struct {
-	// A list of instance-related specifications.
+	// The information about the instance specification.
 	Components []*UpdateInstanceRequestComponents `json:"components,omitempty" xml:"components,omitempty" type:"Repeated"`
 	// The description of the instance.
 	//
@@ -17912,7 +19448,7 @@ type UpdateInstanceRequest struct {
 	//
 	// ""
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// Valid values: UPGRADE and DOWNGRADE. UPGRADE indicates to upgrade the instance specifications. DOWNGRADE indicates to downgrade the instance specifications.
+	// The type of the order. Valid values: UPGRADE and DOWNGRADE. UPGRADE upgrades the instance specifications. DOWNGRADE: downgrades the instance specifications.
 	//
 	// example:
 	//
@@ -17944,12 +19480,14 @@ func (s *UpdateInstanceRequest) SetOrderType(v string) *UpdateInstanceRequest {
 }
 
 type UpdateInstanceRequestComponents struct {
-	// The specification code, which must be consistent with the values of the corresponding module parameters.
+	// The code of the specification, which must be consistent with the value that you specify on the buy page.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The value of the specification.
+	//
 	// example:
 	//
 	// ""
@@ -17981,7 +19519,7 @@ type UpdateInstanceResponseBody struct {
 	//
 	// 90D6B8F5-FE97-4509-9AAB-367836C51818
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The result returned
+	// The results returned.
 	Result *UpdateInstanceResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
 }
 
@@ -18004,13 +19542,13 @@ func (s *UpdateInstanceResponseBody) SetResult(v *UpdateInstanceResponseBodyResu
 }
 
 type UpdateInstanceResponseBodyResult struct {
-	// The billing method
+	// The billing method.
 	//
 	// example:
 	//
 	// PrePaid
 	ChargeType *string `json:"chargeType,omitempty" xml:"chargeType,omitempty"`
-	// The product code
+	// The commodity code of the instance.
 	//
 	// example:
 	//
@@ -18040,7 +19578,7 @@ type UpdateInstanceResponseBodyResult struct {
 	//
 	// false
 	InDebt *bool `json:"inDebt,omitempty" xml:"inDebt,omitempty"`
-	// The ID of the resource
+	// The instance ID.
 	//
 	// example:
 	//
@@ -18052,13 +19590,13 @@ type UpdateInstanceResponseBodyResult struct {
 	//
 	// Unlock
 	LockMode *string `json:"lockMode,omitempty" xml:"lockMode,omitempty"`
-	// The ID of the resource group
+	// The ID of the resource group.
 	//
 	// example:
 	//
 	// rg-aeky6hthboewpuy
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
-	// The status of the instance
+	// The instance status.
 	//
 	// example:
 	//
@@ -19104,11 +20642,11 @@ func (client *Client) CreateAlias(instanceId *string, request *CreateAliasReques
 //
 // Description:
 //
-// ### Method
+// ### [](#method)Method
 //
 // `POST`
 //
-// ### URI
+// ### [](#uri)URI
 //
 // `/openapi/ha3/instances/{instanceId}/clusters`
 //
@@ -19175,11 +20713,11 @@ func (client *Client) CreateClusterWithOptions(instanceId *string, request *Crea
 //
 // Description:
 //
-// ### Method
+// ### [](#method)Method
 //
 // `POST`
 //
-// ### URI
+// ### [](#uri)URI
 //
 // `/openapi/ha3/instances/{instanceId}/clusters`
 //
@@ -19620,11 +21158,11 @@ func (client *Client) CreateIndex(instanceId *string, request *CreateIndexReques
 //
 // Description:
 //
-// ### Method
+// ### [](#)Method
 //
 // `POST`
 //
-// ### URI
+// ### [](#uri)URI
 //
 // `/api/instances?dryRun=false`
 //
@@ -19683,11 +21221,11 @@ func (client *Client) CreateInstanceWithOptions(request *CreateInstanceRequest, 
 //
 // Description:
 //
-// ### Method
+// ### [](#)Method
 //
 // `POST`
 //
-// ### URI
+// ### [](#uri)URI
 //
 // `/api/instances?dryRun=false`
 //
@@ -19708,7 +21246,7 @@ func (client *Client) CreateInstance(request *CreateInstanceRequest) (_result *C
 
 // Summary:
 //
-// 开通公网域名
+// Creates a public endpoint.
 //
 // @param headers - map
 //
@@ -19741,7 +21279,7 @@ func (client *Client) CreatePublicUrlWithOptions(instanceId *string, headers map
 
 // Summary:
 //
-// 开通公网域名
+// Creates a public endpoint.
 //
 // @return CreatePublicUrlResponse
 func (client *Client) CreatePublicUrl(instanceId *string) (_result *CreatePublicUrlResponse, _err error) {
@@ -19818,7 +21356,7 @@ func (client *Client) CreateSqlInstance(instanceId *string, database *string, re
 
 // Summary:
 //
-// 创建索引V2
+// Creates an index table.
 //
 // @param request - CreateTableRequest
 //
@@ -19901,7 +21439,7 @@ func (client *Client) CreateTableWithOptions(instanceId *string, request *Create
 
 // Summary:
 //
-// 创建索引V2
+// Creates an index table.
 //
 // @param request - CreateTableRequest
 //
@@ -20492,7 +22030,7 @@ func (client *Client) DeleteInstance(instanceId *string) (_result *DeleteInstanc
 
 // Summary:
 //
-// 删除公网域名
+// Deletes a public endpoint.
 //
 // @param headers - map
 //
@@ -20525,7 +22063,7 @@ func (client *Client) DeletePublicUrlWithOptions(instanceId *string, headers map
 
 // Summary:
 //
-// 删除公网域名
+// Deletes a public endpoint.
 //
 // @return DeletePublicUrlResponse
 func (client *Client) DeletePublicUrl(instanceId *string) (_result *DeletePublicUrlResponse, _err error) {
@@ -20584,7 +22122,7 @@ func (client *Client) DeleteSqlInstance(instanceId *string, database *string, sq
 
 // Summary:
 //
-// 删除索引表V2
+// Deletes an index table.
 //
 // @param headers - map
 //
@@ -20617,7 +22155,7 @@ func (client *Client) DeleteTableWithOptions(instanceId *string, tableName *stri
 
 // Summary:
 //
-// 删除索引表V2
+// Deletes an index table.
 //
 // @return DeleteTableResponse
 func (client *Client) DeleteTable(instanceId *string, tableName *string) (_result *DeleteTableResponse, _err error) {
@@ -20632,6 +22170,10 @@ func (client *Client) DeleteTable(instanceId *string, tableName *string) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries available regions.
+//
 // @param request - DescribeRegionsRequest
 //
 // @param headers - map
@@ -20673,6 +22215,10 @@ func (client *Client) DescribeRegionsWithOptions(request *DescribeRegionsRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries available regions.
+//
 // @param request - DescribeRegionsRequest
 //
 // @return DescribeRegionsResponse
@@ -20856,7 +22402,7 @@ func (client *Client) ForceSwitch(instanceId *string, fsmId *string) (_result *F
 
 // Summary:
 //
-// Queries the information about a dictionary.
+// Queries the information about an advanced configuration.
 //
 // Description:
 //
@@ -20911,7 +22457,7 @@ func (client *Client) GetAdvanceConfigWithOptions(instanceId *string, configName
 
 // Summary:
 //
-// Queries the information about a dictionary.
+// Queries the information about an advanced configuration.
 //
 // Description:
 //
@@ -20940,7 +22486,7 @@ func (client *Client) GetAdvanceConfig(instanceId *string, configName *string, r
 
 // Summary:
 //
-// Obtains the information in a specified advanced configuration file.
+// Queries the information about an advanced configuration file.
 //
 // Description:
 //
@@ -20995,7 +22541,7 @@ func (client *Client) GetAdvanceConfigFileWithOptions(instanceId *string, config
 
 // Summary:
 //
-// Obtains the information in a specified advanced configuration file.
+// Queries the information about an advanced configuration file.
 //
 // Description:
 //
@@ -21404,7 +22950,7 @@ func (client *Client) GetDeployGraph(instanceId *string) (_result *GetDeployGrap
 
 // Summary:
 //
-// Queries details about the version information of an index table.
+// Queries the details of an index table version.
 //
 // Description:
 //
@@ -21459,7 +23005,7 @@ func (client *Client) GetFileWithOptions(instanceId *string, indexName *string, 
 
 // Summary:
 //
-// Queries details about the version information of an index table.
+// Queries the details of an index table version.
 //
 // Description:
 //
@@ -21538,7 +23084,7 @@ func (client *Client) GetIndex(instanceId *string, indexName *string) (_result *
 
 // Summary:
 //
-// 获取索引在线生效策略
+// Queries the online effective policy of an index.
 //
 // @param headers - map
 //
@@ -21571,7 +23117,7 @@ func (client *Client) GetIndexOnlineStrategyWithOptions(instanceId *string, data
 
 // Summary:
 //
-// 获取索引在线生效策略
+// Queries the online effective policy of an index.
 //
 // @return GetIndexOnlineStrategyResponse
 func (client *Client) GetIndexOnlineStrategy(instanceId *string, dataSourceName *string, deployName *string, indexName *string) (_result *GetIndexOnlineStrategyResponse, _err error) {
@@ -21588,7 +23134,7 @@ func (client *Client) GetIndexOnlineStrategy(instanceId *string, dataSourceName 
 
 // Summary:
 //
-// Obtains the information about index versions that the current index version can be rolled back to.
+// Queries the information about index versions that the current index version can be rolled back to.
 //
 // Description:
 //
@@ -21631,7 +23177,7 @@ func (client *Client) GetIndexVersionWithOptions(instanceId *string, clusterName
 
 // Summary:
 //
-// Obtains the information about index versions that the current index version can be rolled back to.
+// Queries the information about index versions that the current index version can be rolled back to.
 //
 // Description:
 //
@@ -21658,7 +23204,7 @@ func (client *Client) GetIndexVersion(instanceId *string, clusterName *string) (
 
 // Summary:
 //
-// Queries the details of an instance based on a specified instance ID.
+// Queries the details of an instance based on the instance ID.
 //
 // Description:
 //
@@ -21701,7 +23247,7 @@ func (client *Client) GetInstanceWithOptions(instanceId *string, headers map[str
 
 // Summary:
 //
-// Queries the details of an instance based on a specified instance ID.
+// Queries the details of an instance based on the instance ID.
 //
 // Description:
 //
@@ -21856,7 +23402,7 @@ func (client *Client) GetSqlInstance(instanceId *string, database *string, sqlIn
 
 // Summary:
 //
-// 获取索引表信息V2
+// Queries the information about an index table.
 //
 // @param headers - map
 //
@@ -21889,7 +23435,7 @@ func (client *Client) GetTableWithOptions(instanceId *string, tableName *string,
 
 // Summary:
 //
-// 获取索引表信息V2
+// Queries the information about an index table.
 //
 // @return GetTableResponse
 func (client *Client) GetTable(instanceId *string, tableName *string) (_result *GetTableResponse, _err error) {
@@ -21906,7 +23452,7 @@ func (client *Client) GetTable(instanceId *string, tableName *string) (_result *
 
 // Summary:
 //
-// 根据generationId获取某个索引版本状态V2
+// Queries the status of an index version based on the ID of the full index version.
 //
 // @param headers - map
 //
@@ -21939,7 +23485,7 @@ func (client *Client) GetTableGenerationWithOptions(instanceId *string, tableNam
 
 // Summary:
 //
-// 根据generationId获取某个索引版本状态V2
+// Queries the status of an index version based on the ID of the full index version.
 //
 // @return GetTableGenerationResponse
 func (client *Client) GetTableGeneration(instanceId *string, tableName *string, generationId *string) (_result *GetTableGenerationResponse, _err error) {
@@ -21956,7 +23502,7 @@ func (client *Client) GetTableGeneration(instanceId *string, tableName *string, 
 
 // Summary:
 //
-// Obtains the file list in an advanced configuration directory.
+// Queries the files in an advanced configuration directory.
 //
 // Description:
 //
@@ -22011,7 +23557,7 @@ func (client *Client) ListAdvanceConfigDirWithOptions(instanceId *string, config
 
 // Summary:
 //
-// Obtains the file list in an advanced configuration directory.
+// Queries the files in an advanced configuration directory.
 //
 // Description:
 //
@@ -22240,7 +23786,7 @@ func (client *Client) ListClusterNames() (_result *ListClusterNamesResponse, _er
 
 // Summary:
 //
-// Displays cluster tasks .
+// Queries cluster tasks.
 //
 // Description:
 //
@@ -22291,7 +23837,7 @@ func (client *Client) ListClusterTasksWithOptions(instanceId *string, headers ma
 
 // Summary:
 //
-// Displays cluster tasks .
+// Queries cluster tasks.
 //
 // Description:
 //
@@ -22412,7 +23958,7 @@ func (client *Client) ListClusters(instanceId *string) (_result *ListClustersRes
 
 // Summary:
 //
-// Obtains the schema information of a specified data source.
+// Queries the schema information about a data source.
 //
 // Description:
 //
@@ -22455,7 +24001,7 @@ func (client *Client) ListDataSourceSchemasWithOptions(instanceId *string, dataS
 
 // Summary:
 //
-// Obtains the schema information of a specified data source.
+// Queries the schema information about a data source.
 //
 // Description:
 //
@@ -22486,7 +24032,7 @@ func (client *Client) ListDataSourceSchemas(instanceId *string, dataSourceName *
 //
 // Description:
 //
-// ### Method
+// ### [](#)Method
 //
 // ```java
 //
@@ -22494,7 +24040,7 @@ func (client *Client) ListDataSourceSchemas(instanceId *string, dataSourceName *
 //
 // ```
 //
-// ### URI
+// ### [](#uri)URI
 //
 // ```java
 //
@@ -22537,7 +24083,7 @@ func (client *Client) ListDataSourceTasksWithOptions(instanceId *string, headers
 //
 // Description:
 //
-// ### Method
+// ### [](#)Method
 //
 // ```java
 //
@@ -22545,7 +24091,7 @@ func (client *Client) ListDataSourceTasksWithOptions(instanceId *string, headers
 //
 // ```
 //
-// ### URI
+// ### [](#uri)URI
 //
 // ```java
 //
@@ -22680,7 +24226,7 @@ func (client *Client) ListDatabases(instanceId *string) (_result *ListDatabasesR
 
 // Summary:
 //
-// Obtains the data restoration version of a data source.
+// Queries the historical index versions of a data source.
 //
 // Description:
 //
@@ -22739,7 +24285,7 @@ func (client *Client) ListDateSourceGenerationsWithOptions(instanceId *string, d
 
 // Summary:
 //
-// Obtains the data restoration version of a data source.
+// Queries the historical index versions of a data source.
 //
 // Description:
 //
@@ -22894,7 +24440,7 @@ func (client *Client) ListIndexes(instanceId *string, request *ListIndexesReques
 
 // Summary:
 //
-// Queries instances.
+// Queries the specifications of an instance.
 //
 // Description:
 //
@@ -22949,7 +24495,7 @@ func (client *Client) ListInstanceSpecsWithOptions(instanceId *string, request *
 
 // Summary:
 //
-// Queries instances.
+// Queries the specifications of an instance.
 //
 // Description:
 //
@@ -22978,17 +24524,17 @@ func (client *Client) ListInstanceSpecs(instanceId *string, request *ListInstanc
 
 // Summary:
 //
-// Queries instances.
+// Queries a list of instances.
 //
 // Description:
 //
-// ### Method
+// ### [](#)Method
 //
 // `GET`
 //
-// ### URI
+// ### [](#uri)URI
 //
-// `/openapi/[code]/instances`
+// `/openapi/ha3/instances`
 //
 // @param tmpReq - ListInstancesRequest
 //
@@ -23063,17 +24609,17 @@ func (client *Client) ListInstancesWithOptions(tmpReq *ListInstancesRequest, hea
 
 // Summary:
 //
-// Queries instances.
+// Queries a list of instances.
 //
 // Description:
 //
-// ### Method
+// ### [](#)Method
 //
 // `GET`
 //
-// ### URI
+// ### [](#uri)URI
 //
-// `/openapi/[code]/instances`
+// `/openapi/ha3/instances`
 //
 // @param request - ListInstancesRequest
 //
@@ -23168,7 +24714,7 @@ func (client *Client) ListLogs(instanceId *string, request *ListLogsRequest) (_r
 
 // Summary:
 //
-// Obtains the details of online configurations.
+// Queries the details of an online configuration.
 //
 // Description:
 //
@@ -23231,7 +24777,7 @@ func (client *Client) ListOnlineConfigsWithOptions(instanceId *string, nodeName 
 
 // Summary:
 //
-// Obtains the details of online configurations.
+// Queries the details of an online configuration.
 //
 // Description:
 //
@@ -23380,11 +24926,11 @@ func (client *Client) ListPostQueryResult(instanceId *string, request *ListPostQ
 //
 // Description:
 //
-// ### Method
+// ### [](#)Method
 //
 // `GET`
 //
-// ### URI
+// ### [](#uri)URI
 //
 // `/openapi/ha3/instances/{instanceId}/query?query=xxxx`
 //
@@ -23439,11 +24985,11 @@ func (client *Client) ListQueryResultWithOptions(instanceId *string, request *Li
 //
 // Description:
 //
-// ### Method
+// ### [](#)Method
 //
 // `GET`
 //
-// ### URI
+// ### [](#uri)URI
 //
 // `/openapi/ha3/instances/{instanceId}/query?query=xxxx`
 //
@@ -23622,7 +25168,7 @@ func (client *Client) ListSchemas(instanceId *string, request *ListSchemasReques
 
 // Summary:
 //
-// 获取索引generation列表V2
+// Queries a list of index versions.
 //
 // @param headers - map
 //
@@ -23655,7 +25201,7 @@ func (client *Client) ListTableGenerationsWithOptions(instanceId *string, tableN
 
 // Summary:
 //
-// 获取索引generation列表V2
+// Queries a list of index versions.
 //
 // @return ListTableGenerationsResponse
 func (client *Client) ListTableGenerations(instanceId *string, tableName *string) (_result *ListTableGenerationsResponse, _err error) {
@@ -23672,7 +25218,7 @@ func (client *Client) ListTableGenerations(instanceId *string, tableName *string
 
 // Summary:
 //
-// 获取索引列表V2
+// Queries a list of index tables.
 //
 // @param request - ListTablesRequest
 //
@@ -23717,7 +25263,7 @@ func (client *Client) ListTablesWithOptions(instanceId *string, request *ListTab
 
 // Summary:
 //
-// 获取索引列表V2
+// Queries a list of index tables.
 //
 // @param request - ListTablesRequest
 //
@@ -24198,11 +25744,11 @@ func (client *Client) ModifyAlias(instanceId *string, alias *string, request *Mo
 //
 // Description:
 //
-// ### Method
+// ### [](#)Method
 //
 // `PUT`
 //
-// ### URI
+// ### [](#uri)URI
 //
 // `/openapi/ha3/instances/{instanceId}/clusters/{clusterName}/desc`
 //
@@ -24253,11 +25799,11 @@ func (client *Client) ModifyClusterDescWithOptions(instanceId *string, clusterNa
 //
 // Description:
 //
-// ### Method
+// ### [](#)Method
 //
 // `PUT`
 //
-// ### URI
+// ### [](#uri)URI
 //
 // `/openapi/ha3/instances/{instanceId}/clusters/{clusterName}/desc`
 //
@@ -24386,7 +25932,7 @@ func (client *Client) ModifyClusterOfflineConfig(instanceId *string, request *Mo
 
 // Summary:
 //
-// Modifies the online configurations of a cluster.
+// Modifies the online configuration of a cluster.
 //
 // Description:
 //
@@ -24445,7 +25991,7 @@ func (client *Client) ModifyClusterOnlineConfigWithOptions(instanceId *string, r
 
 // Summary:
 //
-// Modifies the online configurations of a cluster.
+// Modifies the online configuration of a cluster.
 //
 // Description:
 //
@@ -24764,7 +26310,7 @@ func (client *Client) ModifyIndex(instanceId *string, indexName *string, request
 
 // Summary:
 //
-// 修改索引在线策略
+// Modifies an online policy of an index.
 //
 // @param request - ModifyIndexOnlineStrategyRequest
 //
@@ -24809,7 +26355,7 @@ func (client *Client) ModifyIndexOnlineStrategyWithOptions(instanceId *string, d
 
 // Summary:
 //
-// 修改索引在线策略
+// Modifies an online policy of an index.
 //
 // @param request - ModifyIndexOnlineStrategyRequest
 //
@@ -24928,11 +26474,11 @@ func (client *Client) ModifyIndexPartition(instanceId *string, request *ModifyIn
 //
 // Description:
 //
-// ## Method
+// ## [](#)Method
 //
 //     PUT
 //
-// ## URI
+// ## [](#uri)URI
 //
 //     /openapi/ha3/instances/{instanceId}/clusters/{clusterName}/index-version
 //
@@ -24978,11 +26524,11 @@ func (client *Client) ModifyIndexVersionWithOptions(instanceId *string, clusterN
 //
 // Description:
 //
-// ## Method
+// ## [](#)Method
 //
 //     PUT
 //
-// ## URI
+// ## [](#uri)URI
 //
 //     /openapi/ha3/instances/{instanceId}/clusters/{clusterName}/index-version
 //
@@ -25449,7 +26995,7 @@ func (client *Client) ModifyPublicUrlIpList(instanceId *string, request *ModifyP
 
 // Summary:
 //
-// 修改索引V2
+// Modifies an index table.
 //
 // @param request - ModifyTableRequest
 //
@@ -25524,7 +27070,7 @@ func (client *Client) ModifyTableWithOptions(instanceId *string, tableName *stri
 
 // Summary:
 //
-// 修改索引V2
+// Modifies an index table.
 //
 // @param request - ModifyTableRequest
 //
@@ -25884,7 +27430,7 @@ func (client *Client) RecoverIndex(instanceId *string, request *RecoverIndexRequ
 
 // Summary:
 //
-// 索引重建V2
+// Rebuilds an index.
 //
 // @param request - ReindexRequest
 //
@@ -25937,7 +27483,7 @@ func (client *Client) ReindexWithOptions(instanceId *string, tableName *string, 
 
 // Summary:
 //
-// 索引重建V2
+// Rebuilds an index.
 //
 // @param request - ReindexRequest
 //
@@ -26186,7 +27732,7 @@ func (client *Client) StopIndex(instanceId *string, indexName *string) (_result 
 //
 // Description:
 //
-// ### Method
+// ### [](#)Method
 //
 // ```java
 //
@@ -26194,7 +27740,7 @@ func (client *Client) StopIndex(instanceId *string, indexName *string) (_result 
 //
 // ```
 //
-// ### URI
+// ### [](#uri)URI
 //
 // ```java
 //
@@ -26237,7 +27783,7 @@ func (client *Client) StopTaskWithOptions(instanceId *string, fsmId *string, hea
 //
 // Description:
 //
-// ### Method
+// ### [](#)Method
 //
 // ```java
 //
@@ -26245,7 +27791,7 @@ func (client *Client) StopTaskWithOptions(instanceId *string, fsmId *string, hea
 //
 // ```
 //
-// ### URI
+// ### [](#uri)URI
 //
 // ```java
 //
