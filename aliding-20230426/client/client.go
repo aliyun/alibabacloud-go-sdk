@@ -3858,6 +3858,220 @@ func (s *CancelScheduleConferenceResponse) SetBody(v *CancelScheduleConferenceRe
 	return s
 }
 
+type CheckAlibabaStaffHeaders struct {
+	CommonHeaders  map[string]*string                      `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContext *CheckAlibabaStaffHeadersAccountContext `json:"AccountContext,omitempty" xml:"AccountContext,omitempty" type:"Struct"`
+}
+
+func (s CheckAlibabaStaffHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CheckAlibabaStaffHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *CheckAlibabaStaffHeaders) SetCommonHeaders(v map[string]*string) *CheckAlibabaStaffHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *CheckAlibabaStaffHeaders) SetAccountContext(v *CheckAlibabaStaffHeadersAccountContext) *CheckAlibabaStaffHeaders {
+	s.AccountContext = v
+	return s
+}
+
+type CheckAlibabaStaffHeadersAccountContext struct {
+	// example:
+	//
+	// 012345
+	AccountId *string `json:"accountId,omitempty" xml:"accountId,omitempty"`
+}
+
+func (s CheckAlibabaStaffHeadersAccountContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CheckAlibabaStaffHeadersAccountContext) GoString() string {
+	return s.String()
+}
+
+func (s *CheckAlibabaStaffHeadersAccountContext) SetAccountId(v string) *CheckAlibabaStaffHeadersAccountContext {
+	s.AccountId = &v
+	return s
+}
+
+type CheckAlibabaStaffShrinkHeaders struct {
+	CommonHeaders        map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContextShrink *string            `json:"AccountContext,omitempty" xml:"AccountContext,omitempty"`
+}
+
+func (s CheckAlibabaStaffShrinkHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CheckAlibabaStaffShrinkHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *CheckAlibabaStaffShrinkHeaders) SetCommonHeaders(v map[string]*string) *CheckAlibabaStaffShrinkHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *CheckAlibabaStaffShrinkHeaders) SetAccountContextShrink(v string) *CheckAlibabaStaffShrinkHeaders {
+	s.AccountContextShrink = &v
+	return s
+}
+
+type CheckAlibabaStaffRequest struct {
+	// example:
+	//
+	// 156****9665
+	Mobile        *string                                `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
+	TenantContext *CheckAlibabaStaffRequestTenantContext `json:"TenantContext,omitempty" xml:"TenantContext,omitempty" type:"Struct"`
+}
+
+func (s CheckAlibabaStaffRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CheckAlibabaStaffRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CheckAlibabaStaffRequest) SetMobile(v string) *CheckAlibabaStaffRequest {
+	s.Mobile = &v
+	return s
+}
+
+func (s *CheckAlibabaStaffRequest) SetTenantContext(v *CheckAlibabaStaffRequestTenantContext) *CheckAlibabaStaffRequest {
+	s.TenantContext = v
+	return s
+}
+
+type CheckAlibabaStaffRequestTenantContext struct {
+	// example:
+	//
+	// xxxxxx
+	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
+}
+
+func (s CheckAlibabaStaffRequestTenantContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CheckAlibabaStaffRequestTenantContext) GoString() string {
+	return s.String()
+}
+
+func (s *CheckAlibabaStaffRequestTenantContext) SetTenantId(v string) *CheckAlibabaStaffRequestTenantContext {
+	s.TenantId = &v
+	return s
+}
+
+type CheckAlibabaStaffShrinkRequest struct {
+	// example:
+	//
+	// 156****9665
+	Mobile              *string `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
+	TenantContextShrink *string `json:"TenantContext,omitempty" xml:"TenantContext,omitempty"`
+}
+
+func (s CheckAlibabaStaffShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CheckAlibabaStaffShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CheckAlibabaStaffShrinkRequest) SetMobile(v string) *CheckAlibabaStaffShrinkRequest {
+	s.Mobile = &v
+	return s
+}
+
+func (s *CheckAlibabaStaffShrinkRequest) SetTenantContextShrink(v string) *CheckAlibabaStaffShrinkRequest {
+	s.TenantContextShrink = &v
+	return s
+}
+
+type CheckAlibabaStaffResponseBody struct {
+	// example:
+	//
+	// true
+	IsAlibabaStaff *bool `json:"isAlibabaStaff,omitempty" xml:"isAlibabaStaff,omitempty"`
+	// example:
+	//
+	// 0FAAEC9C-C6C8-5C87-AF8E-1195889BBXXX
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// 0FAAEC9C-C6C8-5C87-AF8E-1195889BBXXX
+	VendorRequestId *string `json:"vendorRequestId,omitempty" xml:"vendorRequestId,omitempty"`
+	// example:
+	//
+	// dingtalk
+	VendorType *string `json:"vendorType,omitempty" xml:"vendorType,omitempty"`
+}
+
+func (s CheckAlibabaStaffResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CheckAlibabaStaffResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CheckAlibabaStaffResponseBody) SetIsAlibabaStaff(v bool) *CheckAlibabaStaffResponseBody {
+	s.IsAlibabaStaff = &v
+	return s
+}
+
+func (s *CheckAlibabaStaffResponseBody) SetRequestId(v string) *CheckAlibabaStaffResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CheckAlibabaStaffResponseBody) SetVendorRequestId(v string) *CheckAlibabaStaffResponseBody {
+	s.VendorRequestId = &v
+	return s
+}
+
+func (s *CheckAlibabaStaffResponseBody) SetVendorType(v string) *CheckAlibabaStaffResponseBody {
+	s.VendorType = &v
+	return s
+}
+
+type CheckAlibabaStaffResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CheckAlibabaStaffResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CheckAlibabaStaffResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CheckAlibabaStaffResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CheckAlibabaStaffResponse) SetHeaders(v map[string]*string) *CheckAlibabaStaffResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CheckAlibabaStaffResponse) SetStatusCode(v int32) *CheckAlibabaStaffResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CheckAlibabaStaffResponse) SetBody(v *CheckAlibabaStaffResponseBody) *CheckAlibabaStaffResponse {
+	s.Body = v
+	return s
+}
+
 type CheckUserIsGroupMemberHeaders struct {
 	CommonHeaders  map[string]*string                           `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
 	AccountContext *CheckUserIsGroupMemberHeadersAccountContext `json:"AccountContext,omitempty" xml:"AccountContext,omitempty" type:"Struct"`
@@ -61403,6 +61617,341 @@ func (s *UpdateUserAvatarResponse) SetBody(v *UpdateUserAvatarResponseBody) *Upd
 	return s
 }
 
+type UpdateVideoConferenceSettingHeaders struct {
+	CommonHeaders  map[string]*string                                 `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContext *UpdateVideoConferenceSettingHeadersAccountContext `json:"AccountContext,omitempty" xml:"AccountContext,omitempty" type:"Struct"`
+}
+
+func (s UpdateVideoConferenceSettingHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateVideoConferenceSettingHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateVideoConferenceSettingHeaders) SetCommonHeaders(v map[string]*string) *UpdateVideoConferenceSettingHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *UpdateVideoConferenceSettingHeaders) SetAccountContext(v *UpdateVideoConferenceSettingHeadersAccountContext) *UpdateVideoConferenceSettingHeaders {
+	s.AccountContext = v
+	return s
+}
+
+type UpdateVideoConferenceSettingHeadersAccountContext struct {
+	// example:
+	//
+	// 012345
+	AccountId *string `json:"accountId,omitempty" xml:"accountId,omitempty"`
+}
+
+func (s UpdateVideoConferenceSettingHeadersAccountContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateVideoConferenceSettingHeadersAccountContext) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateVideoConferenceSettingHeadersAccountContext) SetAccountId(v string) *UpdateVideoConferenceSettingHeadersAccountContext {
+	s.AccountId = &v
+	return s
+}
+
+type UpdateVideoConferenceSettingShrinkHeaders struct {
+	CommonHeaders        map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContextShrink *string            `json:"AccountContext,omitempty" xml:"AccountContext,omitempty"`
+}
+
+func (s UpdateVideoConferenceSettingShrinkHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateVideoConferenceSettingShrinkHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateVideoConferenceSettingShrinkHeaders) SetCommonHeaders(v map[string]*string) *UpdateVideoConferenceSettingShrinkHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *UpdateVideoConferenceSettingShrinkHeaders) SetAccountContextShrink(v string) *UpdateVideoConferenceSettingShrinkHeaders {
+	s.AccountContextShrink = &v
+	return s
+}
+
+type UpdateVideoConferenceSettingRequest struct {
+	// example:
+	//
+	// true
+	AllowUnmuteSelf *bool `json:"AllowUnmuteSelf,omitempty" xml:"AllowUnmuteSelf,omitempty"`
+	// example:
+	//
+	// true
+	AutoTransferHost *bool `json:"AutoTransferHost,omitempty" xml:"AutoTransferHost,omitempty"`
+	// example:
+	//
+	// true
+	ForbiddenShareScreen *bool `json:"ForbiddenShareScreen,omitempty" xml:"ForbiddenShareScreen,omitempty"`
+	// example:
+	//
+	// true
+	LockConference *bool `json:"LockConference,omitempty" xml:"LockConference,omitempty"`
+	// example:
+	//
+	// true
+	MuteAll *bool `json:"MuteAll,omitempty" xml:"MuteAll,omitempty"`
+	// example:
+	//
+	// true
+	OnlyInternalEmployeesJoin *bool                                             `json:"OnlyInternalEmployeesJoin,omitempty" xml:"OnlyInternalEmployeesJoin,omitempty"`
+	TenantContext             *UpdateVideoConferenceSettingRequestTenantContext `json:"TenantContext,omitempty" xml:"TenantContext,omitempty" type:"Struct"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 61289fxxx
+	ConferenceId *string `json:"conferenceId,omitempty" xml:"conferenceId,omitempty"`
+}
+
+func (s UpdateVideoConferenceSettingRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateVideoConferenceSettingRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateVideoConferenceSettingRequest) SetAllowUnmuteSelf(v bool) *UpdateVideoConferenceSettingRequest {
+	s.AllowUnmuteSelf = &v
+	return s
+}
+
+func (s *UpdateVideoConferenceSettingRequest) SetAutoTransferHost(v bool) *UpdateVideoConferenceSettingRequest {
+	s.AutoTransferHost = &v
+	return s
+}
+
+func (s *UpdateVideoConferenceSettingRequest) SetForbiddenShareScreen(v bool) *UpdateVideoConferenceSettingRequest {
+	s.ForbiddenShareScreen = &v
+	return s
+}
+
+func (s *UpdateVideoConferenceSettingRequest) SetLockConference(v bool) *UpdateVideoConferenceSettingRequest {
+	s.LockConference = &v
+	return s
+}
+
+func (s *UpdateVideoConferenceSettingRequest) SetMuteAll(v bool) *UpdateVideoConferenceSettingRequest {
+	s.MuteAll = &v
+	return s
+}
+
+func (s *UpdateVideoConferenceSettingRequest) SetOnlyInternalEmployeesJoin(v bool) *UpdateVideoConferenceSettingRequest {
+	s.OnlyInternalEmployeesJoin = &v
+	return s
+}
+
+func (s *UpdateVideoConferenceSettingRequest) SetTenantContext(v *UpdateVideoConferenceSettingRequestTenantContext) *UpdateVideoConferenceSettingRequest {
+	s.TenantContext = v
+	return s
+}
+
+func (s *UpdateVideoConferenceSettingRequest) SetConferenceId(v string) *UpdateVideoConferenceSettingRequest {
+	s.ConferenceId = &v
+	return s
+}
+
+type UpdateVideoConferenceSettingRequestTenantContext struct {
+	// example:
+	//
+	// xxxxxx
+	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
+}
+
+func (s UpdateVideoConferenceSettingRequestTenantContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateVideoConferenceSettingRequestTenantContext) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateVideoConferenceSettingRequestTenantContext) SetTenantId(v string) *UpdateVideoConferenceSettingRequestTenantContext {
+	s.TenantId = &v
+	return s
+}
+
+type UpdateVideoConferenceSettingShrinkRequest struct {
+	// example:
+	//
+	// true
+	AllowUnmuteSelf *bool `json:"AllowUnmuteSelf,omitempty" xml:"AllowUnmuteSelf,omitempty"`
+	// example:
+	//
+	// true
+	AutoTransferHost *bool `json:"AutoTransferHost,omitempty" xml:"AutoTransferHost,omitempty"`
+	// example:
+	//
+	// true
+	ForbiddenShareScreen *bool `json:"ForbiddenShareScreen,omitempty" xml:"ForbiddenShareScreen,omitempty"`
+	// example:
+	//
+	// true
+	LockConference *bool `json:"LockConference,omitempty" xml:"LockConference,omitempty"`
+	// example:
+	//
+	// true
+	MuteAll *bool `json:"MuteAll,omitempty" xml:"MuteAll,omitempty"`
+	// example:
+	//
+	// true
+	OnlyInternalEmployeesJoin *bool   `json:"OnlyInternalEmployeesJoin,omitempty" xml:"OnlyInternalEmployeesJoin,omitempty"`
+	TenantContextShrink       *string `json:"TenantContext,omitempty" xml:"TenantContext,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 61289fxxx
+	ConferenceId *string `json:"conferenceId,omitempty" xml:"conferenceId,omitempty"`
+}
+
+func (s UpdateVideoConferenceSettingShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateVideoConferenceSettingShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateVideoConferenceSettingShrinkRequest) SetAllowUnmuteSelf(v bool) *UpdateVideoConferenceSettingShrinkRequest {
+	s.AllowUnmuteSelf = &v
+	return s
+}
+
+func (s *UpdateVideoConferenceSettingShrinkRequest) SetAutoTransferHost(v bool) *UpdateVideoConferenceSettingShrinkRequest {
+	s.AutoTransferHost = &v
+	return s
+}
+
+func (s *UpdateVideoConferenceSettingShrinkRequest) SetForbiddenShareScreen(v bool) *UpdateVideoConferenceSettingShrinkRequest {
+	s.ForbiddenShareScreen = &v
+	return s
+}
+
+func (s *UpdateVideoConferenceSettingShrinkRequest) SetLockConference(v bool) *UpdateVideoConferenceSettingShrinkRequest {
+	s.LockConference = &v
+	return s
+}
+
+func (s *UpdateVideoConferenceSettingShrinkRequest) SetMuteAll(v bool) *UpdateVideoConferenceSettingShrinkRequest {
+	s.MuteAll = &v
+	return s
+}
+
+func (s *UpdateVideoConferenceSettingShrinkRequest) SetOnlyInternalEmployeesJoin(v bool) *UpdateVideoConferenceSettingShrinkRequest {
+	s.OnlyInternalEmployeesJoin = &v
+	return s
+}
+
+func (s *UpdateVideoConferenceSettingShrinkRequest) SetTenantContextShrink(v string) *UpdateVideoConferenceSettingShrinkRequest {
+	s.TenantContextShrink = &v
+	return s
+}
+
+func (s *UpdateVideoConferenceSettingShrinkRequest) SetConferenceId(v string) *UpdateVideoConferenceSettingShrinkRequest {
+	s.ConferenceId = &v
+	return s
+}
+
+type UpdateVideoConferenceSettingResponseBody struct {
+	// example:
+	//
+	// success
+	CaseResult *string `json:"caseResult,omitempty" xml:"caseResult,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// example:
+	//
+	// 0FAAEC9C-C6C8-5C87-AF8E-1195889BBXXX
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// 0FAAEC9C-C6C8-5C87-AF8E-1195889BBXXX
+	VendorRequestId *string `json:"vendorRequestId,omitempty" xml:"vendorRequestId,omitempty"`
+	// example:
+	//
+	// dingtalk
+	VendorType *string `json:"vendorType,omitempty" xml:"vendorType,omitempty"`
+}
+
+func (s UpdateVideoConferenceSettingResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateVideoConferenceSettingResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateVideoConferenceSettingResponseBody) SetCaseResult(v string) *UpdateVideoConferenceSettingResponseBody {
+	s.CaseResult = &v
+	return s
+}
+
+func (s *UpdateVideoConferenceSettingResponseBody) SetCode(v string) *UpdateVideoConferenceSettingResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *UpdateVideoConferenceSettingResponseBody) SetRequestId(v string) *UpdateVideoConferenceSettingResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateVideoConferenceSettingResponseBody) SetVendorRequestId(v string) *UpdateVideoConferenceSettingResponseBody {
+	s.VendorRequestId = &v
+	return s
+}
+
+func (s *UpdateVideoConferenceSettingResponseBody) SetVendorType(v string) *UpdateVideoConferenceSettingResponseBody {
+	s.VendorType = &v
+	return s
+}
+
+type UpdateVideoConferenceSettingResponse struct {
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateVideoConferenceSettingResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateVideoConferenceSettingResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateVideoConferenceSettingResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateVideoConferenceSettingResponse) SetHeaders(v map[string]*string) *UpdateVideoConferenceSettingResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateVideoConferenceSettingResponse) SetStatusCode(v int32) *UpdateVideoConferenceSettingResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateVideoConferenceSettingResponse) SetBody(v *UpdateVideoConferenceSettingResponseBody) *UpdateVideoConferenceSettingResponse {
+	s.Body = v
+	return s
+}
+
 type UpdateWorkspaceDocMembersHeaders struct {
 	CommonHeaders  map[string]*string                              `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
 	AccountContext *UpdateWorkspaceDocMembersHeadersAccountContext `json:"AccountContext,omitempty" xml:"AccountContext,omitempty" type:"Struct"`
@@ -63841,6 +64390,95 @@ func (client *Client) CancelScheduleConference(request *CancelScheduleConference
 	headers := &CancelScheduleConferenceHeaders{}
 	_result = &CancelScheduleConferenceResponse{}
 	_body, _err := client.CancelScheduleConferenceWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 校验阿里员工
+//
+// @param tmpReq - CheckAlibabaStaffRequest
+//
+// @param tmpHeader - CheckAlibabaStaffHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CheckAlibabaStaffResponse
+func (client *Client) CheckAlibabaStaffWithOptions(tmpReq *CheckAlibabaStaffRequest, tmpHeader *CheckAlibabaStaffHeaders, runtime *util.RuntimeOptions) (_result *CheckAlibabaStaffResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &CheckAlibabaStaffShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	headers := &CheckAlibabaStaffShrinkHeaders{}
+	openapiutil.Convert(tmpHeader, headers)
+	if !tea.BoolValue(util.IsUnset(tmpHeader.AccountContext)) {
+		headers.AccountContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpHeader.AccountContext, tea.String("AccountContext"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.TenantContext)) {
+		request.TenantContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TenantContext, tea.String("TenantContext"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Mobile)) {
+		body["Mobile"] = request.Mobile
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TenantContextShrink)) {
+		body["TenantContext"] = request.TenantContextShrink
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.AccountContextShrink)) {
+		realHeaders["AccountContext"] = util.ToJSONString(headers.AccountContextShrink)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CheckAlibabaStaff"),
+		Version:     tea.String("2023-04-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/dingtalk/v1/im/checkAlibabaStaff"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CheckAlibabaStaffResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 校验阿里员工
+//
+// @param request - CheckAlibabaStaffRequest
+//
+// @return CheckAlibabaStaffResponse
+func (client *Client) CheckAlibabaStaff(request *CheckAlibabaStaffRequest) (_result *CheckAlibabaStaffResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &CheckAlibabaStaffHeaders{}
+	_result = &CheckAlibabaStaffResponse{}
+	_body, _err := client.CheckAlibabaStaffWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -81133,6 +81771,119 @@ func (client *Client) UpdateUserAvatar(request *UpdateUserAvatarRequest) (_resul
 	headers := &UpdateUserAvatarHeaders{}
 	_result = &UpdateUserAvatarResponse{}
 	_body, _err := client.UpdateUserAvatarWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 设置正在进行中的视频会议属性
+//
+// @param tmpReq - UpdateVideoConferenceSettingRequest
+//
+// @param tmpHeader - UpdateVideoConferenceSettingHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateVideoConferenceSettingResponse
+func (client *Client) UpdateVideoConferenceSettingWithOptions(tmpReq *UpdateVideoConferenceSettingRequest, tmpHeader *UpdateVideoConferenceSettingHeaders, runtime *util.RuntimeOptions) (_result *UpdateVideoConferenceSettingResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &UpdateVideoConferenceSettingShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	headers := &UpdateVideoConferenceSettingShrinkHeaders{}
+	openapiutil.Convert(tmpHeader, headers)
+	if !tea.BoolValue(util.IsUnset(tmpHeader.AccountContext)) {
+		headers.AccountContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpHeader.AccountContext, tea.String("AccountContext"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.TenantContext)) {
+		request.TenantContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TenantContext, tea.String("TenantContext"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AllowUnmuteSelf)) {
+		body["AllowUnmuteSelf"] = request.AllowUnmuteSelf
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AutoTransferHost)) {
+		body["AutoTransferHost"] = request.AutoTransferHost
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ForbiddenShareScreen)) {
+		body["ForbiddenShareScreen"] = request.ForbiddenShareScreen
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LockConference)) {
+		body["LockConference"] = request.LockConference
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MuteAll)) {
+		body["MuteAll"] = request.MuteAll
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OnlyInternalEmployeesJoin)) {
+		body["OnlyInternalEmployeesJoin"] = request.OnlyInternalEmployeesJoin
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TenantContextShrink)) {
+		body["TenantContext"] = request.TenantContextShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ConferenceId)) {
+		body["conferenceId"] = request.ConferenceId
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.AccountContextShrink)) {
+		realHeaders["AccountContext"] = util.ToJSONString(headers.AccountContextShrink)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateVideoConferenceSetting"),
+		Version:     tea.String("2023-04-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/dingtalk/v1/ysp/updateVideoConferenceSetting"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateVideoConferenceSettingResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 设置正在进行中的视频会议属性
+//
+// @param request - UpdateVideoConferenceSettingRequest
+//
+// @return UpdateVideoConferenceSettingResponse
+func (client *Client) UpdateVideoConferenceSetting(request *UpdateVideoConferenceSettingRequest) (_result *UpdateVideoConferenceSettingResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &UpdateVideoConferenceSettingHeaders{}
+	_result = &UpdateVideoConferenceSettingResponse{}
+	_body, _err := client.UpdateVideoConferenceSettingWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
