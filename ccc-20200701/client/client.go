@@ -26323,6 +26323,814 @@ func (s *ListCallDetailRecordsResponse) SetBody(v *ListCallDetailRecordsResponse
 	return s
 }
 
+type ListCallDetailRecordsV2Request struct {
+	// example:
+	//
+	// ["Web","AliMe"]
+	AccessChannelTypeList *string `json:"AccessChannelTypeList,omitempty" xml:"AccessChannelTypeList,omitempty"`
+	// example:
+	//
+	// agent@ccc-test
+	AgentId *string `json:"AgentId,omitempty" xml:"AgentId,omitempty"`
+	// example:
+	//
+	// 021****4972
+	Broker *string `json:"Broker,omitempty" xml:"Broker,omitempty"`
+	// example:
+	//
+	// 191***9993
+	CalledNumber *string `json:"CalledNumber,omitempty" xml:"CalledNumber,omitempty"`
+	// example:
+	//
+	// 191***9993
+	CallingNumber *string `json:"CallingNumber,omitempty" xml:"CallingNumber,omitempty"`
+	// example:
+	//
+	// ["Success","NoAnswer"]
+	ContactDispositionList *string `json:"ContactDispositionList,omitempty" xml:"ContactDispositionList,omitempty"`
+	// example:
+	//
+	// ["job-123456789","job-234567891"]
+	ContactIdList *string `json:"ContactIdList,omitempty" xml:"ContactIdList,omitempty"`
+	// example:
+	//
+	// ["INBOUND","OUTBOUND"]
+	ContactTypeList *string `json:"ContactTypeList,omitempty" xml:"ContactTypeList,omitempty"`
+	// example:
+	//
+	// ["NotConnected","NoAnswer"]
+	EarlyMediaStateList *string `json:"EarlyMediaStateList,omitempty" xml:"EarlyMediaStateList,omitempty"`
+	// example:
+	//
+	// 1657879880010
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// example:
+	//
+	// agent@ccc-test
+	FirstAgentId *string `json:"FirstAgentId,omitempty" xml:"FirstAgentId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ccc-test
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// AUDIO
+	MediaType *string `json:"MediaType,omitempty" xml:"MediaType,omitempty"`
+	// example:
+	//
+	// 191***9993
+	Number *string `json:"Number,omitempty" xml:"Number,omitempty"`
+	// example:
+	//
+	// startTime
+	OrderByField *string `json:"OrderByField,omitempty" xml:"OrderByField,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 100
+	PageSize                    *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	SatisfactionDescriptionList *string `json:"SatisfactionDescriptionList,omitempty" xml:"SatisfactionDescriptionList,omitempty"`
+	// example:
+	//
+	// ["1","3"]
+	SatisfactionRateList *string `json:"SatisfactionRateList,omitempty" xml:"SatisfactionRateList,omitempty"`
+	// example:
+	//
+	// IVR
+	SatisfactionSurveyChannel *string `json:"SatisfactionSurveyChannel,omitempty" xml:"SatisfactionSurveyChannel,omitempty"`
+	SearchPattern             *string `json:"SearchPattern,omitempty" xml:"SearchPattern,omitempty"`
+	// example:
+	//
+	// [
+	//
+	//       "skg1@ccc-test",
+	//
+	//       "skg2@ccc-test"
+	//
+	// ]
+	SkillGroupIdList *string `json:"SkillGroupIdList,omitempty" xml:"SkillGroupIdList,omitempty"`
+	// example:
+	//
+	// DESC
+	SortOrder *string `json:"SortOrder,omitempty" xml:"SortOrder,omitempty"`
+	// example:
+	//
+	// 1657853640015
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s ListCallDetailRecordsV2Request) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCallDetailRecordsV2Request) GoString() string {
+	return s.String()
+}
+
+func (s *ListCallDetailRecordsV2Request) SetAccessChannelTypeList(v string) *ListCallDetailRecordsV2Request {
+	s.AccessChannelTypeList = &v
+	return s
+}
+
+func (s *ListCallDetailRecordsV2Request) SetAgentId(v string) *ListCallDetailRecordsV2Request {
+	s.AgentId = &v
+	return s
+}
+
+func (s *ListCallDetailRecordsV2Request) SetBroker(v string) *ListCallDetailRecordsV2Request {
+	s.Broker = &v
+	return s
+}
+
+func (s *ListCallDetailRecordsV2Request) SetCalledNumber(v string) *ListCallDetailRecordsV2Request {
+	s.CalledNumber = &v
+	return s
+}
+
+func (s *ListCallDetailRecordsV2Request) SetCallingNumber(v string) *ListCallDetailRecordsV2Request {
+	s.CallingNumber = &v
+	return s
+}
+
+func (s *ListCallDetailRecordsV2Request) SetContactDispositionList(v string) *ListCallDetailRecordsV2Request {
+	s.ContactDispositionList = &v
+	return s
+}
+
+func (s *ListCallDetailRecordsV2Request) SetContactIdList(v string) *ListCallDetailRecordsV2Request {
+	s.ContactIdList = &v
+	return s
+}
+
+func (s *ListCallDetailRecordsV2Request) SetContactTypeList(v string) *ListCallDetailRecordsV2Request {
+	s.ContactTypeList = &v
+	return s
+}
+
+func (s *ListCallDetailRecordsV2Request) SetEarlyMediaStateList(v string) *ListCallDetailRecordsV2Request {
+	s.EarlyMediaStateList = &v
+	return s
+}
+
+func (s *ListCallDetailRecordsV2Request) SetEndTime(v int64) *ListCallDetailRecordsV2Request {
+	s.EndTime = &v
+	return s
+}
+
+func (s *ListCallDetailRecordsV2Request) SetFirstAgentId(v string) *ListCallDetailRecordsV2Request {
+	s.FirstAgentId = &v
+	return s
+}
+
+func (s *ListCallDetailRecordsV2Request) SetInstanceId(v string) *ListCallDetailRecordsV2Request {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ListCallDetailRecordsV2Request) SetMediaType(v string) *ListCallDetailRecordsV2Request {
+	s.MediaType = &v
+	return s
+}
+
+func (s *ListCallDetailRecordsV2Request) SetNumber(v string) *ListCallDetailRecordsV2Request {
+	s.Number = &v
+	return s
+}
+
+func (s *ListCallDetailRecordsV2Request) SetOrderByField(v string) *ListCallDetailRecordsV2Request {
+	s.OrderByField = &v
+	return s
+}
+
+func (s *ListCallDetailRecordsV2Request) SetPageNumber(v int32) *ListCallDetailRecordsV2Request {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListCallDetailRecordsV2Request) SetPageSize(v int32) *ListCallDetailRecordsV2Request {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListCallDetailRecordsV2Request) SetSatisfactionDescriptionList(v string) *ListCallDetailRecordsV2Request {
+	s.SatisfactionDescriptionList = &v
+	return s
+}
+
+func (s *ListCallDetailRecordsV2Request) SetSatisfactionRateList(v string) *ListCallDetailRecordsV2Request {
+	s.SatisfactionRateList = &v
+	return s
+}
+
+func (s *ListCallDetailRecordsV2Request) SetSatisfactionSurveyChannel(v string) *ListCallDetailRecordsV2Request {
+	s.SatisfactionSurveyChannel = &v
+	return s
+}
+
+func (s *ListCallDetailRecordsV2Request) SetSearchPattern(v string) *ListCallDetailRecordsV2Request {
+	s.SearchPattern = &v
+	return s
+}
+
+func (s *ListCallDetailRecordsV2Request) SetSkillGroupIdList(v string) *ListCallDetailRecordsV2Request {
+	s.SkillGroupIdList = &v
+	return s
+}
+
+func (s *ListCallDetailRecordsV2Request) SetSortOrder(v string) *ListCallDetailRecordsV2Request {
+	s.SortOrder = &v
+	return s
+}
+
+func (s *ListCallDetailRecordsV2Request) SetStartTime(v int64) *ListCallDetailRecordsV2Request {
+	s.StartTime = &v
+	return s
+}
+
+type ListCallDetailRecordsV2ResponseBody struct {
+	// example:
+	//
+	// OK
+	Code *string                                  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *ListCallDetailRecordsV2ResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 01B12EE4-6AF2-4730-8B78-EC15F4E5C025
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListCallDetailRecordsV2ResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCallDetailRecordsV2ResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListCallDetailRecordsV2ResponseBody) SetCode(v string) *ListCallDetailRecordsV2ResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListCallDetailRecordsV2ResponseBody) SetData(v *ListCallDetailRecordsV2ResponseBodyData) *ListCallDetailRecordsV2ResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListCallDetailRecordsV2ResponseBody) SetHttpStatusCode(v int32) *ListCallDetailRecordsV2ResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *ListCallDetailRecordsV2ResponseBody) SetMessage(v string) *ListCallDetailRecordsV2ResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListCallDetailRecordsV2ResponseBody) SetRequestId(v string) *ListCallDetailRecordsV2ResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListCallDetailRecordsV2ResponseBodyData struct {
+	List []*ListCallDetailRecordsV2ResponseBodyDataList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 100
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 10
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListCallDetailRecordsV2ResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCallDetailRecordsV2ResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListCallDetailRecordsV2ResponseBodyData) SetList(v []*ListCallDetailRecordsV2ResponseBodyDataList) *ListCallDetailRecordsV2ResponseBodyData {
+	s.List = v
+	return s
+}
+
+func (s *ListCallDetailRecordsV2ResponseBodyData) SetPageNumber(v int32) *ListCallDetailRecordsV2ResponseBodyData {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListCallDetailRecordsV2ResponseBodyData) SetPageSize(v int32) *ListCallDetailRecordsV2ResponseBodyData {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListCallDetailRecordsV2ResponseBodyData) SetTotalCount(v int32) *ListCallDetailRecordsV2ResponseBodyData {
+	s.TotalCount = &v
+	return s
+}
+
+type ListCallDetailRecordsV2ResponseBodyDataList struct {
+	AccessChannelName *string `json:"AccessChannelName,omitempty" xml:"AccessChannelName,omitempty"`
+	// example:
+	//
+	// Web
+	AccessChannelType *string `json:"AccessChannelType,omitempty" xml:"AccessChannelType,omitempty"`
+	// example:
+	//
+	// test-user-id
+	AccessChannelUserId   *string `json:"AccessChannelUserId,omitempty" xml:"AccessChannelUserId,omitempty"`
+	AccessChannelUserName *string `json:"AccessChannelUserName,omitempty" xml:"AccessChannelUserName,omitempty"`
+	// example:
+	//
+	// 0533128****
+	AdditionalBroker *string `json:"AdditionalBroker,omitempty" xml:"AdditionalBroker,omitempty"`
+	// example:
+	//
+	// agent@ccc-test
+	AgentIds   *string `json:"AgentIds,omitempty" xml:"AgentIds,omitempty"`
+	AgentNames *string `json:"AgentNames,omitempty" xml:"AgentNames,omitempty"`
+	// example:
+	//
+	// 053xxxx3127
+	Broker *string `json:"Broker,omitempty" xml:"Broker,omitempty"`
+	// example:
+	//
+	// 16
+	CallDuration *string `json:"CallDuration,omitempty" xml:"CallDuration,omitempty"`
+	// example:
+	//
+	// 1332315****
+	CalledNumber   *string `json:"CalledNumber,omitempty" xml:"CalledNumber,omitempty"`
+	CalleeLocation *string `json:"CalleeLocation,omitempty" xml:"CalleeLocation,omitempty"`
+	CallerLocation *string `json:"CallerLocation,omitempty" xml:"CallerLocation,omitempty"`
+	// example:
+	//
+	// 0533128****
+	CallingNumber *string `json:"CallingNumber,omitempty" xml:"CallingNumber,omitempty"`
+	ClientAppName *string `json:"ClientAppName,omitempty" xml:"ClientAppName,omitempty"`
+	// example:
+	//
+	// 10.100.2.1
+	ClientIpAddress *string `json:"ClientIpAddress,omitempty" xml:"ClientIpAddress,omitempty"`
+	// example:
+	//
+	// ---
+	ClientLocation *string `json:"ClientLocation,omitempty" xml:"ClientLocation,omitempty"`
+	// example:
+	//
+	// Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36
+	ClientUserAgent *string `json:"ClientUserAgent,omitempty" xml:"ClientUserAgent,omitempty"`
+	// example:
+	//
+	// Success
+	ContactDisposition *string `json:"ContactDisposition,omitempty" xml:"ContactDisposition,omitempty"`
+	// example:
+	//
+	// job-2255019651513856
+	ContactId *string `json:"ContactId,omitempty" xml:"ContactId,omitempty"`
+	// example:
+	//
+	// OUTBOUND
+	ContactType *string `json:"ContactType,omitempty" xml:"ContactType,omitempty"`
+	// example:
+	//
+	// 0
+	DialingTime *int64 `json:"DialingTime,omitempty" xml:"DialingTime,omitempty"`
+	// example:
+	//
+	// NotConnected
+	EarlyMediaState *string `json:"EarlyMediaState,omitempty" xml:"EarlyMediaState,omitempty"`
+	EarlyMediaText  *string `json:"EarlyMediaText,omitempty" xml:"EarlyMediaText,omitempty"`
+	// example:
+	//
+	// 1532448000000
+	EstablishedTime *int64 `json:"EstablishedTime,omitempty" xml:"EstablishedTime,omitempty"`
+	// example:
+	//
+	// 10
+	FirstResponseTime *int64 `json:"FirstResponseTime,omitempty" xml:"FirstResponseTime,omitempty"`
+	// example:
+	//
+	// 12
+	HeldTime *int64 `json:"HeldTime,omitempty" xml:"HeldTime,omitempty"`
+	// example:
+	//
+	// ccc-test
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// 8
+	IvrTime *int64 `json:"IvrTime,omitempty" xml:"IvrTime,omitempty"`
+	// example:
+	//
+	// CHAT
+	MediaType *string `json:"MediaType,omitempty" xml:"MediaType,omitempty"`
+	// example:
+	//
+	// 10
+	MessagesSent *int64 `json:"MessagesSent,omitempty" xml:"MessagesSent,omitempty"`
+	// example:
+	//
+	// 5
+	MessagesSentByAgent *int64 `json:"MessagesSentByAgent,omitempty" xml:"MessagesSentByAgent,omitempty"`
+	// example:
+	//
+	// 5
+	MessagesSentByCustomer *int64 `json:"MessagesSentByCustomer,omitempty" xml:"MessagesSentByCustomer,omitempty"`
+	// example:
+	//
+	// skg-default@ccc-test
+	OffSiteAgentIds *string `json:"OffSiteAgentIds,omitempty" xml:"OffSiteAgentIds,omitempty"`
+	// example:
+	//
+	// 80312348
+	OffsiteAgentDestinationNumbers *string `json:"OffsiteAgentDestinationNumbers,omitempty" xml:"OffsiteAgentDestinationNumbers,omitempty"`
+	// example:
+	//
+	// 0101257****
+	OffsiteAgentOriginatorNumbers *string `json:"OffsiteAgentOriginatorNumbers,omitempty" xml:"OffsiteAgentOriginatorNumbers,omitempty"`
+	// example:
+	//
+	// 0
+	QueueTime *int64 `json:"QueueTime,omitempty" xml:"QueueTime,omitempty"`
+	// example:
+	//
+	// 10
+	RecordingDuration *int64 `json:"RecordingDuration,omitempty" xml:"RecordingDuration,omitempty"`
+	// example:
+	//
+	// true
+	RecordingReady *bool `json:"RecordingReady,omitempty" xml:"RecordingReady,omitempty"`
+	// example:
+	//
+	// customer
+	ReleaseInitiator *string `json:"ReleaseInitiator,omitempty" xml:"ReleaseInitiator,omitempty"`
+	// example:
+	//
+	// 486:USER_BUSY
+	ReleaseReason *string `json:"ReleaseReason,omitempty" xml:"ReleaseReason,omitempty"`
+	// example:
+	//
+	// 1532707199000
+	ReleaseTime *int64 `json:"ReleaseTime,omitempty" xml:"ReleaseTime,omitempty"`
+	// example:
+	//
+	// 5
+	RingTime                *int64  `json:"RingTime,omitempty" xml:"RingTime,omitempty"`
+	SatisfactionDescription *string `json:"SatisfactionDescription,omitempty" xml:"SatisfactionDescription,omitempty"`
+	// example:
+	//
+	// 1
+	SatisfactionIndex *int32 `json:"SatisfactionIndex,omitempty" xml:"SatisfactionIndex,omitempty"`
+	// example:
+	//
+	// IVR
+	SatisfactionSurveyChannel *string `json:"SatisfactionSurveyChannel,omitempty" xml:"SatisfactionSurveyChannel,omitempty"`
+	// example:
+	//
+	// true
+	SatisfactionSurveyOffered *bool `json:"SatisfactionSurveyOffered,omitempty" xml:"SatisfactionSurveyOffered,omitempty"`
+	// example:
+	//
+	// skg-default@ccc-test
+	SkillGroupIds   *string `json:"SkillGroupIds,omitempty" xml:"SkillGroupIds,omitempty"`
+	SkillGroupNames *string `json:"SkillGroupNames,omitempty" xml:"SkillGroupNames,omitempty"`
+	// example:
+	//
+	// 1631440860000
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// example:
+	//
+	// 0
+	TalkTime *int64 `json:"TalkTime,omitempty" xml:"TalkTime,omitempty"`
+	// example:
+	//
+	// 1
+	TransferCount *int64 `json:"TransferCount,omitempty" xml:"TransferCount,omitempty"`
+	// example:
+	//
+	// 5
+	WaitTime *int64 `json:"WaitTime,omitempty" xml:"WaitTime,omitempty"`
+}
+
+func (s ListCallDetailRecordsV2ResponseBodyDataList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCallDetailRecordsV2ResponseBodyDataList) GoString() string {
+	return s.String()
+}
+
+func (s *ListCallDetailRecordsV2ResponseBodyDataList) SetAccessChannelName(v string) *ListCallDetailRecordsV2ResponseBodyDataList {
+	s.AccessChannelName = &v
+	return s
+}
+
+func (s *ListCallDetailRecordsV2ResponseBodyDataList) SetAccessChannelType(v string) *ListCallDetailRecordsV2ResponseBodyDataList {
+	s.AccessChannelType = &v
+	return s
+}
+
+func (s *ListCallDetailRecordsV2ResponseBodyDataList) SetAccessChannelUserId(v string) *ListCallDetailRecordsV2ResponseBodyDataList {
+	s.AccessChannelUserId = &v
+	return s
+}
+
+func (s *ListCallDetailRecordsV2ResponseBodyDataList) SetAccessChannelUserName(v string) *ListCallDetailRecordsV2ResponseBodyDataList {
+	s.AccessChannelUserName = &v
+	return s
+}
+
+func (s *ListCallDetailRecordsV2ResponseBodyDataList) SetAdditionalBroker(v string) *ListCallDetailRecordsV2ResponseBodyDataList {
+	s.AdditionalBroker = &v
+	return s
+}
+
+func (s *ListCallDetailRecordsV2ResponseBodyDataList) SetAgentIds(v string) *ListCallDetailRecordsV2ResponseBodyDataList {
+	s.AgentIds = &v
+	return s
+}
+
+func (s *ListCallDetailRecordsV2ResponseBodyDataList) SetAgentNames(v string) *ListCallDetailRecordsV2ResponseBodyDataList {
+	s.AgentNames = &v
+	return s
+}
+
+func (s *ListCallDetailRecordsV2ResponseBodyDataList) SetBroker(v string) *ListCallDetailRecordsV2ResponseBodyDataList {
+	s.Broker = &v
+	return s
+}
+
+func (s *ListCallDetailRecordsV2ResponseBodyDataList) SetCallDuration(v string) *ListCallDetailRecordsV2ResponseBodyDataList {
+	s.CallDuration = &v
+	return s
+}
+
+func (s *ListCallDetailRecordsV2ResponseBodyDataList) SetCalledNumber(v string) *ListCallDetailRecordsV2ResponseBodyDataList {
+	s.CalledNumber = &v
+	return s
+}
+
+func (s *ListCallDetailRecordsV2ResponseBodyDataList) SetCalleeLocation(v string) *ListCallDetailRecordsV2ResponseBodyDataList {
+	s.CalleeLocation = &v
+	return s
+}
+
+func (s *ListCallDetailRecordsV2ResponseBodyDataList) SetCallerLocation(v string) *ListCallDetailRecordsV2ResponseBodyDataList {
+	s.CallerLocation = &v
+	return s
+}
+
+func (s *ListCallDetailRecordsV2ResponseBodyDataList) SetCallingNumber(v string) *ListCallDetailRecordsV2ResponseBodyDataList {
+	s.CallingNumber = &v
+	return s
+}
+
+func (s *ListCallDetailRecordsV2ResponseBodyDataList) SetClientAppName(v string) *ListCallDetailRecordsV2ResponseBodyDataList {
+	s.ClientAppName = &v
+	return s
+}
+
+func (s *ListCallDetailRecordsV2ResponseBodyDataList) SetClientIpAddress(v string) *ListCallDetailRecordsV2ResponseBodyDataList {
+	s.ClientIpAddress = &v
+	return s
+}
+
+func (s *ListCallDetailRecordsV2ResponseBodyDataList) SetClientLocation(v string) *ListCallDetailRecordsV2ResponseBodyDataList {
+	s.ClientLocation = &v
+	return s
+}
+
+func (s *ListCallDetailRecordsV2ResponseBodyDataList) SetClientUserAgent(v string) *ListCallDetailRecordsV2ResponseBodyDataList {
+	s.ClientUserAgent = &v
+	return s
+}
+
+func (s *ListCallDetailRecordsV2ResponseBodyDataList) SetContactDisposition(v string) *ListCallDetailRecordsV2ResponseBodyDataList {
+	s.ContactDisposition = &v
+	return s
+}
+
+func (s *ListCallDetailRecordsV2ResponseBodyDataList) SetContactId(v string) *ListCallDetailRecordsV2ResponseBodyDataList {
+	s.ContactId = &v
+	return s
+}
+
+func (s *ListCallDetailRecordsV2ResponseBodyDataList) SetContactType(v string) *ListCallDetailRecordsV2ResponseBodyDataList {
+	s.ContactType = &v
+	return s
+}
+
+func (s *ListCallDetailRecordsV2ResponseBodyDataList) SetDialingTime(v int64) *ListCallDetailRecordsV2ResponseBodyDataList {
+	s.DialingTime = &v
+	return s
+}
+
+func (s *ListCallDetailRecordsV2ResponseBodyDataList) SetEarlyMediaState(v string) *ListCallDetailRecordsV2ResponseBodyDataList {
+	s.EarlyMediaState = &v
+	return s
+}
+
+func (s *ListCallDetailRecordsV2ResponseBodyDataList) SetEarlyMediaText(v string) *ListCallDetailRecordsV2ResponseBodyDataList {
+	s.EarlyMediaText = &v
+	return s
+}
+
+func (s *ListCallDetailRecordsV2ResponseBodyDataList) SetEstablishedTime(v int64) *ListCallDetailRecordsV2ResponseBodyDataList {
+	s.EstablishedTime = &v
+	return s
+}
+
+func (s *ListCallDetailRecordsV2ResponseBodyDataList) SetFirstResponseTime(v int64) *ListCallDetailRecordsV2ResponseBodyDataList {
+	s.FirstResponseTime = &v
+	return s
+}
+
+func (s *ListCallDetailRecordsV2ResponseBodyDataList) SetHeldTime(v int64) *ListCallDetailRecordsV2ResponseBodyDataList {
+	s.HeldTime = &v
+	return s
+}
+
+func (s *ListCallDetailRecordsV2ResponseBodyDataList) SetInstanceId(v string) *ListCallDetailRecordsV2ResponseBodyDataList {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ListCallDetailRecordsV2ResponseBodyDataList) SetIvrTime(v int64) *ListCallDetailRecordsV2ResponseBodyDataList {
+	s.IvrTime = &v
+	return s
+}
+
+func (s *ListCallDetailRecordsV2ResponseBodyDataList) SetMediaType(v string) *ListCallDetailRecordsV2ResponseBodyDataList {
+	s.MediaType = &v
+	return s
+}
+
+func (s *ListCallDetailRecordsV2ResponseBodyDataList) SetMessagesSent(v int64) *ListCallDetailRecordsV2ResponseBodyDataList {
+	s.MessagesSent = &v
+	return s
+}
+
+func (s *ListCallDetailRecordsV2ResponseBodyDataList) SetMessagesSentByAgent(v int64) *ListCallDetailRecordsV2ResponseBodyDataList {
+	s.MessagesSentByAgent = &v
+	return s
+}
+
+func (s *ListCallDetailRecordsV2ResponseBodyDataList) SetMessagesSentByCustomer(v int64) *ListCallDetailRecordsV2ResponseBodyDataList {
+	s.MessagesSentByCustomer = &v
+	return s
+}
+
+func (s *ListCallDetailRecordsV2ResponseBodyDataList) SetOffSiteAgentIds(v string) *ListCallDetailRecordsV2ResponseBodyDataList {
+	s.OffSiteAgentIds = &v
+	return s
+}
+
+func (s *ListCallDetailRecordsV2ResponseBodyDataList) SetOffsiteAgentDestinationNumbers(v string) *ListCallDetailRecordsV2ResponseBodyDataList {
+	s.OffsiteAgentDestinationNumbers = &v
+	return s
+}
+
+func (s *ListCallDetailRecordsV2ResponseBodyDataList) SetOffsiteAgentOriginatorNumbers(v string) *ListCallDetailRecordsV2ResponseBodyDataList {
+	s.OffsiteAgentOriginatorNumbers = &v
+	return s
+}
+
+func (s *ListCallDetailRecordsV2ResponseBodyDataList) SetQueueTime(v int64) *ListCallDetailRecordsV2ResponseBodyDataList {
+	s.QueueTime = &v
+	return s
+}
+
+func (s *ListCallDetailRecordsV2ResponseBodyDataList) SetRecordingDuration(v int64) *ListCallDetailRecordsV2ResponseBodyDataList {
+	s.RecordingDuration = &v
+	return s
+}
+
+func (s *ListCallDetailRecordsV2ResponseBodyDataList) SetRecordingReady(v bool) *ListCallDetailRecordsV2ResponseBodyDataList {
+	s.RecordingReady = &v
+	return s
+}
+
+func (s *ListCallDetailRecordsV2ResponseBodyDataList) SetReleaseInitiator(v string) *ListCallDetailRecordsV2ResponseBodyDataList {
+	s.ReleaseInitiator = &v
+	return s
+}
+
+func (s *ListCallDetailRecordsV2ResponseBodyDataList) SetReleaseReason(v string) *ListCallDetailRecordsV2ResponseBodyDataList {
+	s.ReleaseReason = &v
+	return s
+}
+
+func (s *ListCallDetailRecordsV2ResponseBodyDataList) SetReleaseTime(v int64) *ListCallDetailRecordsV2ResponseBodyDataList {
+	s.ReleaseTime = &v
+	return s
+}
+
+func (s *ListCallDetailRecordsV2ResponseBodyDataList) SetRingTime(v int64) *ListCallDetailRecordsV2ResponseBodyDataList {
+	s.RingTime = &v
+	return s
+}
+
+func (s *ListCallDetailRecordsV2ResponseBodyDataList) SetSatisfactionDescription(v string) *ListCallDetailRecordsV2ResponseBodyDataList {
+	s.SatisfactionDescription = &v
+	return s
+}
+
+func (s *ListCallDetailRecordsV2ResponseBodyDataList) SetSatisfactionIndex(v int32) *ListCallDetailRecordsV2ResponseBodyDataList {
+	s.SatisfactionIndex = &v
+	return s
+}
+
+func (s *ListCallDetailRecordsV2ResponseBodyDataList) SetSatisfactionSurveyChannel(v string) *ListCallDetailRecordsV2ResponseBodyDataList {
+	s.SatisfactionSurveyChannel = &v
+	return s
+}
+
+func (s *ListCallDetailRecordsV2ResponseBodyDataList) SetSatisfactionSurveyOffered(v bool) *ListCallDetailRecordsV2ResponseBodyDataList {
+	s.SatisfactionSurveyOffered = &v
+	return s
+}
+
+func (s *ListCallDetailRecordsV2ResponseBodyDataList) SetSkillGroupIds(v string) *ListCallDetailRecordsV2ResponseBodyDataList {
+	s.SkillGroupIds = &v
+	return s
+}
+
+func (s *ListCallDetailRecordsV2ResponseBodyDataList) SetSkillGroupNames(v string) *ListCallDetailRecordsV2ResponseBodyDataList {
+	s.SkillGroupNames = &v
+	return s
+}
+
+func (s *ListCallDetailRecordsV2ResponseBodyDataList) SetStartTime(v int64) *ListCallDetailRecordsV2ResponseBodyDataList {
+	s.StartTime = &v
+	return s
+}
+
+func (s *ListCallDetailRecordsV2ResponseBodyDataList) SetTalkTime(v int64) *ListCallDetailRecordsV2ResponseBodyDataList {
+	s.TalkTime = &v
+	return s
+}
+
+func (s *ListCallDetailRecordsV2ResponseBodyDataList) SetTransferCount(v int64) *ListCallDetailRecordsV2ResponseBodyDataList {
+	s.TransferCount = &v
+	return s
+}
+
+func (s *ListCallDetailRecordsV2ResponseBodyDataList) SetWaitTime(v int64) *ListCallDetailRecordsV2ResponseBodyDataList {
+	s.WaitTime = &v
+	return s
+}
+
+type ListCallDetailRecordsV2Response struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListCallDetailRecordsV2ResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListCallDetailRecordsV2Response) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCallDetailRecordsV2Response) GoString() string {
+	return s.String()
+}
+
+func (s *ListCallDetailRecordsV2Response) SetHeaders(v map[string]*string) *ListCallDetailRecordsV2Response {
+	s.Headers = v
+	return s
+}
+
+func (s *ListCallDetailRecordsV2Response) SetStatusCode(v int32) *ListCallDetailRecordsV2Response {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListCallDetailRecordsV2Response) SetBody(v *ListCallDetailRecordsV2ResponseBody) *ListCallDetailRecordsV2Response {
+	s.Body = v
+	return s
+}
+
 type ListCallTagsRequest struct {
 	// This parameter is required.
 	//
@@ -69570,6 +70378,150 @@ func (client *Client) ListCallDetailRecords(request *ListCallDetailRecordsReques
 	runtime := &util.RuntimeOptions{}
 	_result = &ListCallDetailRecordsResponse{}
 	_body, _err := client.ListCallDetailRecordsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param request - ListCallDetailRecordsV2Request
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListCallDetailRecordsV2Response
+func (client *Client) ListCallDetailRecordsV2WithOptions(request *ListCallDetailRecordsV2Request, runtime *util.RuntimeOptions) (_result *ListCallDetailRecordsV2Response, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AccessChannelTypeList)) {
+		query["AccessChannelTypeList"] = request.AccessChannelTypeList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AgentId)) {
+		query["AgentId"] = request.AgentId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Broker)) {
+		query["Broker"] = request.Broker
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CalledNumber)) {
+		query["CalledNumber"] = request.CalledNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CallingNumber)) {
+		query["CallingNumber"] = request.CallingNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ContactDispositionList)) {
+		query["ContactDispositionList"] = request.ContactDispositionList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ContactIdList)) {
+		query["ContactIdList"] = request.ContactIdList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ContactTypeList)) {
+		query["ContactTypeList"] = request.ContactTypeList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EarlyMediaStateList)) {
+		query["EarlyMediaStateList"] = request.EarlyMediaStateList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FirstAgentId)) {
+		query["FirstAgentId"] = request.FirstAgentId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MediaType)) {
+		query["MediaType"] = request.MediaType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Number)) {
+		query["Number"] = request.Number
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrderByField)) {
+		query["OrderByField"] = request.OrderByField
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SatisfactionDescriptionList)) {
+		query["SatisfactionDescriptionList"] = request.SatisfactionDescriptionList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SatisfactionRateList)) {
+		query["SatisfactionRateList"] = request.SatisfactionRateList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SatisfactionSurveyChannel)) {
+		query["SatisfactionSurveyChannel"] = request.SatisfactionSurveyChannel
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SearchPattern)) {
+		query["SearchPattern"] = request.SearchPattern
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SkillGroupIdList)) {
+		query["SkillGroupIdList"] = request.SkillGroupIdList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SortOrder)) {
+		query["SortOrder"] = request.SortOrder
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListCallDetailRecordsV2"),
+		Version:     tea.String("2020-07-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListCallDetailRecordsV2Response{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - ListCallDetailRecordsV2Request
+//
+// @return ListCallDetailRecordsV2Response
+func (client *Client) ListCallDetailRecordsV2(request *ListCallDetailRecordsV2Request) (_result *ListCallDetailRecordsV2Response, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListCallDetailRecordsV2Response{}
+	_body, _err := client.ListCallDetailRecordsV2WithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
