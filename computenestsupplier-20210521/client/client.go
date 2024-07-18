@@ -5110,7 +5110,8 @@ type GetServiceInstanceResponseBody struct {
 	// example:
 	//
 	// 2022-01-28T06:48:56Z
-	OperationEndTime *string `json:"OperationEndTime,omitempty" xml:"OperationEndTime,omitempty"`
+	OperationEndTime   *string `json:"OperationEndTime,omitempty" xml:"OperationEndTime,omitempty"`
+	OperationExtraInfo *string `json:"OperationExtraInfo,omitempty" xml:"OperationExtraInfo,omitempty"`
 	// The beginning of the time range during which hosted O\\&M is implemented.
 	//
 	// example:
@@ -5358,6 +5359,11 @@ func (s *GetServiceInstanceResponseBody) SetOperatedServiceInstanceId(v string) 
 
 func (s *GetServiceInstanceResponseBody) SetOperationEndTime(v string) *GetServiceInstanceResponseBody {
 	s.OperationEndTime = &v
+	return s
+}
+
+func (s *GetServiceInstanceResponseBody) SetOperationExtraInfo(v string) *GetServiceInstanceResponseBody {
+	s.OperationExtraInfo = &v
 	return s
 }
 
@@ -11994,7 +12000,8 @@ type UpdateServiceInstanceAttributeRequest struct {
 	// example:
 	//
 	// 2023-12-25T02:28:40Z
-	EndTime     *string                                           `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The License Data
 	LicenseData *UpdateServiceInstanceAttributeRequestLicenseData `json:"LicenseData,omitempty" xml:"LicenseData,omitempty" type:"Struct"`
 	// The region ID.
 	//
@@ -12043,6 +12050,11 @@ func (s *UpdateServiceInstanceAttributeRequest) SetServiceInstanceId(v string) *
 }
 
 type UpdateServiceInstanceAttributeRequestLicenseData struct {
+	// The Custom Data
+	//
+	// example:
+	//
+	// {"Test"}
 	CustomData *string `json:"CustomData,omitempty" xml:"CustomData,omitempty"`
 }
 
@@ -12067,7 +12079,8 @@ type UpdateServiceInstanceAttributeShrinkRequest struct {
 	// example:
 	//
 	// 2023-12-25T02:28:40Z
-	EndTime           *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The License Data
 	LicenseDataShrink *string `json:"LicenseData,omitempty" xml:"LicenseData,omitempty"`
 	// The region ID.
 	//
