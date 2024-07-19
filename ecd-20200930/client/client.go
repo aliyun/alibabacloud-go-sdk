@@ -8516,7 +8516,9 @@ type CreatePolicyGroupRequest struct {
 	// example:
 	//
 	// off
-	Clipboard *string `json:"Clipboard,omitempty" xml:"Clipboard,omitempty"`
+	Clipboard       *string                                    `json:"Clipboard,omitempty" xml:"Clipboard,omitempty"`
+	DeviceRedirects []*CreatePolicyGroupRequestDeviceRedirects `json:"DeviceRedirects,omitempty" xml:"DeviceRedirects,omitempty" type:"Repeated"`
+	DeviceRules     []*CreatePolicyGroupRequestDeviceRules     `json:"DeviceRules,omitempty" xml:"DeviceRules,omitempty" type:"Repeated"`
 	// Access control for domain names. The wildcard character (\\*) is supported for domain names. Separate multiple domain names with commas (,). Valid values:
 	//
 	// 	- off
@@ -9201,6 +9203,16 @@ func (s *CreatePolicyGroupRequest) SetClipboard(v string) *CreatePolicyGroupRequ
 	return s
 }
 
+func (s *CreatePolicyGroupRequest) SetDeviceRedirects(v []*CreatePolicyGroupRequestDeviceRedirects) *CreatePolicyGroupRequest {
+	s.DeviceRedirects = v
+	return s
+}
+
+func (s *CreatePolicyGroupRequest) SetDeviceRules(v []*CreatePolicyGroupRequestDeviceRules) *CreatePolicyGroupRequest {
+	s.DeviceRules = v
+	return s
+}
+
 func (s *CreatePolicyGroupRequest) SetDomainList(v string) *CreatePolicyGroupRequest {
 	s.DomainList = &v
 	return s
@@ -9755,6 +9767,76 @@ func (s *CreatePolicyGroupRequestClientType) SetClientType(v string) *CreatePoli
 
 func (s *CreatePolicyGroupRequestClientType) SetStatus(v string) *CreatePolicyGroupRequestClientType {
 	s.Status = &v
+	return s
+}
+
+type CreatePolicyGroupRequestDeviceRedirects struct {
+	DeviceType   *string `json:"DeviceType,omitempty" xml:"DeviceType,omitempty"`
+	RedirectType *string `json:"RedirectType,omitempty" xml:"RedirectType,omitempty"`
+}
+
+func (s CreatePolicyGroupRequestDeviceRedirects) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreatePolicyGroupRequestDeviceRedirects) GoString() string {
+	return s.String()
+}
+
+func (s *CreatePolicyGroupRequestDeviceRedirects) SetDeviceType(v string) *CreatePolicyGroupRequestDeviceRedirects {
+	s.DeviceType = &v
+	return s
+}
+
+func (s *CreatePolicyGroupRequestDeviceRedirects) SetRedirectType(v string) *CreatePolicyGroupRequestDeviceRedirects {
+	s.RedirectType = &v
+	return s
+}
+
+type CreatePolicyGroupRequestDeviceRules struct {
+	DeviceName   *string `json:"DeviceName,omitempty" xml:"DeviceName,omitempty"`
+	DevicePid    *string `json:"DevicePid,omitempty" xml:"DevicePid,omitempty"`
+	DeviceType   *string `json:"DeviceType,omitempty" xml:"DeviceType,omitempty"`
+	DeviceVid    *string `json:"DeviceVid,omitempty" xml:"DeviceVid,omitempty"`
+	OptCommand   *string `json:"OptCommand,omitempty" xml:"OptCommand,omitempty"`
+	RedirectType *string `json:"RedirectType,omitempty" xml:"RedirectType,omitempty"`
+}
+
+func (s CreatePolicyGroupRequestDeviceRules) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreatePolicyGroupRequestDeviceRules) GoString() string {
+	return s.String()
+}
+
+func (s *CreatePolicyGroupRequestDeviceRules) SetDeviceName(v string) *CreatePolicyGroupRequestDeviceRules {
+	s.DeviceName = &v
+	return s
+}
+
+func (s *CreatePolicyGroupRequestDeviceRules) SetDevicePid(v string) *CreatePolicyGroupRequestDeviceRules {
+	s.DevicePid = &v
+	return s
+}
+
+func (s *CreatePolicyGroupRequestDeviceRules) SetDeviceType(v string) *CreatePolicyGroupRequestDeviceRules {
+	s.DeviceType = &v
+	return s
+}
+
+func (s *CreatePolicyGroupRequestDeviceRules) SetDeviceVid(v string) *CreatePolicyGroupRequestDeviceRules {
+	s.DeviceVid = &v
+	return s
+}
+
+func (s *CreatePolicyGroupRequestDeviceRules) SetOptCommand(v string) *CreatePolicyGroupRequestDeviceRules {
+	s.OptCommand = &v
+	return s
+}
+
+func (s *CreatePolicyGroupRequestDeviceRules) SetRedirectType(v string) *CreatePolicyGroupRequestDeviceRules {
+	s.RedirectType = &v
 	return s
 }
 
@@ -12883,7 +12965,8 @@ type DescribeBundlesRequest struct {
 	// example:
 	//
 	// 1
-	GpuCount *float32 `json:"GpuCount,omitempty" xml:"GpuCount,omitempty"`
+	GpuCount      *float32 `json:"GpuCount,omitempty" xml:"GpuCount,omitempty"`
+	GpuDriverType *string  `json:"GpuDriverType,omitempty" xml:"GpuDriverType,omitempty"`
 	// The image ID.
 	ImageId []*string `json:"ImageId,omitempty" xml:"ImageId,omitempty" type:"Repeated"`
 	// The number of entries to return on each page.
@@ -13035,6 +13118,11 @@ func (s *DescribeBundlesRequest) SetFromDesktopGroup(v bool) *DescribeBundlesReq
 
 func (s *DescribeBundlesRequest) SetGpuCount(v float32) *DescribeBundlesRequest {
 	s.GpuCount = &v
+	return s
+}
+
+func (s *DescribeBundlesRequest) SetGpuDriverType(v string) *DescribeBundlesRequest {
+	s.GpuDriverType = &v
 	return s
 }
 
@@ -18535,7 +18623,8 @@ type DescribeDesktopTypesRequest struct {
 	// example:
 	//
 	// 1
-	GpuCount *float32 `json:"GpuCount,omitempty" xml:"GpuCount,omitempty"`
+	GpuCount      *float32 `json:"GpuCount,omitempty" xml:"GpuCount,omitempty"`
+	GpuDriverType *string  `json:"GpuDriverType,omitempty" xml:"GpuDriverType,omitempty"`
 	// The name of the instance family.
 	//
 	// >  If the values of the `InstanceTypeFamily` and `DesktopTypeId` parameters are empty, all instance families of cloud computers are queried.
@@ -18659,6 +18748,11 @@ func (s *DescribeDesktopTypesRequest) SetDesktopTypeId(v string) *DescribeDeskto
 
 func (s *DescribeDesktopTypesRequest) SetGpuCount(v float32) *DescribeDesktopTypesRequest {
 	s.GpuCount = &v
+	return s
+}
+
+func (s *DescribeDesktopTypesRequest) SetGpuDriverType(v string) *DescribeDesktopTypesRequest {
+	s.GpuDriverType = &v
 	return s
 }
 
@@ -27567,8 +27661,10 @@ type DescribePolicyGroupsResponseBodyDescribePolicyGroups struct {
 	// example:
 	//
 	// 70
-	CpuSingleRateLimit *int32  `json:"CpuSingleRateLimit,omitempty" xml:"CpuSingleRateLimit,omitempty"`
-	DisplayMode        *string `json:"DisplayMode,omitempty" xml:"DisplayMode,omitempty"`
+	CpuSingleRateLimit *int32                                                                 `json:"CpuSingleRateLimit,omitempty" xml:"CpuSingleRateLimit,omitempty"`
+	DeviceRedirects    []*DescribePolicyGroupsResponseBodyDescribePolicyGroupsDeviceRedirects `json:"DeviceRedirects,omitempty" xml:"DeviceRedirects,omitempty" type:"Repeated"`
+	DeviceRules        []*DescribePolicyGroupsResponseBodyDescribePolicyGroupsDeviceRules     `json:"DeviceRules,omitempty" xml:"DeviceRules,omitempty" type:"Repeated"`
+	DisplayMode        *string                                                                `json:"DisplayMode,omitempty" xml:"DisplayMode,omitempty"`
 	// Indicates whether the access control for domain names is enabled. The domain names can contain wildcard characters (\\*). Multiple domain names are separated by commas (,). Valid values:
 	//
 	// 	- off
@@ -28133,6 +28229,16 @@ func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) SetCpuSingleRateL
 	return s
 }
 
+func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) SetDeviceRedirects(v []*DescribePolicyGroupsResponseBodyDescribePolicyGroupsDeviceRedirects) *DescribePolicyGroupsResponseBodyDescribePolicyGroups {
+	s.DeviceRedirects = v
+	return s
+}
+
+func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) SetDeviceRules(v []*DescribePolicyGroupsResponseBodyDescribePolicyGroupsDeviceRules) *DescribePolicyGroupsResponseBodyDescribePolicyGroups {
+	s.DeviceRules = v
+	return s
+}
+
 func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) SetDisplayMode(v string) *DescribePolicyGroupsResponseBodyDescribePolicyGroups {
 	s.DisplayMode = &v
 	return s
@@ -28668,6 +28774,76 @@ func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroupsClientTypes) SetCli
 
 func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroupsClientTypes) SetStatus(v string) *DescribePolicyGroupsResponseBodyDescribePolicyGroupsClientTypes {
 	s.Status = &v
+	return s
+}
+
+type DescribePolicyGroupsResponseBodyDescribePolicyGroupsDeviceRedirects struct {
+	DeviceType   *string `json:"DeviceType,omitempty" xml:"DeviceType,omitempty"`
+	RedirectType *string `json:"RedirectType,omitempty" xml:"RedirectType,omitempty"`
+}
+
+func (s DescribePolicyGroupsResponseBodyDescribePolicyGroupsDeviceRedirects) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribePolicyGroupsResponseBodyDescribePolicyGroupsDeviceRedirects) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroupsDeviceRedirects) SetDeviceType(v string) *DescribePolicyGroupsResponseBodyDescribePolicyGroupsDeviceRedirects {
+	s.DeviceType = &v
+	return s
+}
+
+func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroupsDeviceRedirects) SetRedirectType(v string) *DescribePolicyGroupsResponseBodyDescribePolicyGroupsDeviceRedirects {
+	s.RedirectType = &v
+	return s
+}
+
+type DescribePolicyGroupsResponseBodyDescribePolicyGroupsDeviceRules struct {
+	DeviceName   *string `json:"DeviceName,omitempty" xml:"DeviceName,omitempty"`
+	DevicePid    *string `json:"DevicePid,omitempty" xml:"DevicePid,omitempty"`
+	DeviceType   *string `json:"DeviceType,omitempty" xml:"DeviceType,omitempty"`
+	DeviceVid    *string `json:"DeviceVid,omitempty" xml:"DeviceVid,omitempty"`
+	OptCommand   *string `json:"OptCommand,omitempty" xml:"OptCommand,omitempty"`
+	RedirectType *string `json:"RedirectType,omitempty" xml:"RedirectType,omitempty"`
+}
+
+func (s DescribePolicyGroupsResponseBodyDescribePolicyGroupsDeviceRules) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribePolicyGroupsResponseBodyDescribePolicyGroupsDeviceRules) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroupsDeviceRules) SetDeviceName(v string) *DescribePolicyGroupsResponseBodyDescribePolicyGroupsDeviceRules {
+	s.DeviceName = &v
+	return s
+}
+
+func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroupsDeviceRules) SetDevicePid(v string) *DescribePolicyGroupsResponseBodyDescribePolicyGroupsDeviceRules {
+	s.DevicePid = &v
+	return s
+}
+
+func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroupsDeviceRules) SetDeviceType(v string) *DescribePolicyGroupsResponseBodyDescribePolicyGroupsDeviceRules {
+	s.DeviceType = &v
+	return s
+}
+
+func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroupsDeviceRules) SetDeviceVid(v string) *DescribePolicyGroupsResponseBodyDescribePolicyGroupsDeviceRules {
+	s.DeviceVid = &v
+	return s
+}
+
+func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroupsDeviceRules) SetOptCommand(v string) *DescribePolicyGroupsResponseBodyDescribePolicyGroupsDeviceRules {
+	s.OptCommand = &v
+	return s
+}
+
+func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroupsDeviceRules) SetRedirectType(v string) *DescribePolicyGroupsResponseBodyDescribePolicyGroupsDeviceRules {
+	s.RedirectType = &v
 	return s
 }
 
@@ -44131,7 +44307,11 @@ type ModifyPolicyGroupRequest struct {
 	// example:
 	//
 	// off
-	Clipboard *string `json:"Clipboard,omitempty" xml:"Clipboard,omitempty"`
+	Clipboard       *string                                    `json:"Clipboard,omitempty" xml:"Clipboard,omitempty"`
+	DeviceRedirects []*ModifyPolicyGroupRequestDeviceRedirects `json:"DeviceRedirects,omitempty" xml:"DeviceRedirects,omitempty" type:"Repeated"`
+	// if can be null:
+	// false
+	DeviceRules []*ModifyPolicyGroupRequestDeviceRules `json:"DeviceRules,omitempty" xml:"DeviceRules,omitempty" type:"Repeated"`
 	// The domain blacklist or whitelist. Wildcard domains are supported. Separate domain names with commas (,). Valid values:
 	//
 	// 	- [black:],example1.com,example2.com: the domain name blacklist.
@@ -44569,6 +44749,16 @@ func (s *ModifyPolicyGroupRequest) SetClientType(v []*ModifyPolicyGroupRequestCl
 
 func (s *ModifyPolicyGroupRequest) SetClipboard(v string) *ModifyPolicyGroupRequest {
 	s.Clipboard = &v
+	return s
+}
+
+func (s *ModifyPolicyGroupRequest) SetDeviceRedirects(v []*ModifyPolicyGroupRequestDeviceRedirects) *ModifyPolicyGroupRequest {
+	s.DeviceRedirects = v
+	return s
+}
+
+func (s *ModifyPolicyGroupRequest) SetDeviceRules(v []*ModifyPolicyGroupRequestDeviceRules) *ModifyPolicyGroupRequest {
+	s.DeviceRules = v
 	return s
 }
 
@@ -45027,6 +45217,76 @@ func (s *ModifyPolicyGroupRequestClientType) SetClientType(v string) *ModifyPoli
 
 func (s *ModifyPolicyGroupRequestClientType) SetStatus(v string) *ModifyPolicyGroupRequestClientType {
 	s.Status = &v
+	return s
+}
+
+type ModifyPolicyGroupRequestDeviceRedirects struct {
+	DeviceType   *string `json:"DeviceType,omitempty" xml:"DeviceType,omitempty"`
+	RedirectType *string `json:"RedirectType,omitempty" xml:"RedirectType,omitempty"`
+}
+
+func (s ModifyPolicyGroupRequestDeviceRedirects) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyPolicyGroupRequestDeviceRedirects) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyPolicyGroupRequestDeviceRedirects) SetDeviceType(v string) *ModifyPolicyGroupRequestDeviceRedirects {
+	s.DeviceType = &v
+	return s
+}
+
+func (s *ModifyPolicyGroupRequestDeviceRedirects) SetRedirectType(v string) *ModifyPolicyGroupRequestDeviceRedirects {
+	s.RedirectType = &v
+	return s
+}
+
+type ModifyPolicyGroupRequestDeviceRules struct {
+	DeviceName   *string `json:"DeviceName,omitempty" xml:"DeviceName,omitempty"`
+	DevicePid    *string `json:"DevicePid,omitempty" xml:"DevicePid,omitempty"`
+	DeviceType   *string `json:"DeviceType,omitempty" xml:"DeviceType,omitempty"`
+	DeviceVid    *string `json:"DeviceVid,omitempty" xml:"DeviceVid,omitempty"`
+	OptCommand   *string `json:"OptCommand,omitempty" xml:"OptCommand,omitempty"`
+	RedirectType *string `json:"RedirectType,omitempty" xml:"RedirectType,omitempty"`
+}
+
+func (s ModifyPolicyGroupRequestDeviceRules) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyPolicyGroupRequestDeviceRules) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyPolicyGroupRequestDeviceRules) SetDeviceName(v string) *ModifyPolicyGroupRequestDeviceRules {
+	s.DeviceName = &v
+	return s
+}
+
+func (s *ModifyPolicyGroupRequestDeviceRules) SetDevicePid(v string) *ModifyPolicyGroupRequestDeviceRules {
+	s.DevicePid = &v
+	return s
+}
+
+func (s *ModifyPolicyGroupRequestDeviceRules) SetDeviceType(v string) *ModifyPolicyGroupRequestDeviceRules {
+	s.DeviceType = &v
+	return s
+}
+
+func (s *ModifyPolicyGroupRequestDeviceRules) SetDeviceVid(v string) *ModifyPolicyGroupRequestDeviceRules {
+	s.DeviceVid = &v
+	return s
+}
+
+func (s *ModifyPolicyGroupRequestDeviceRules) SetOptCommand(v string) *ModifyPolicyGroupRequestDeviceRules {
+	s.OptCommand = &v
+	return s
+}
+
+func (s *ModifyPolicyGroupRequestDeviceRules) SetRedirectType(v string) *ModifyPolicyGroupRequestDeviceRules {
+	s.RedirectType = &v
 	return s
 }
 
@@ -54432,6 +54692,14 @@ func (client *Client) CreatePolicyGroupWithOptions(request *CreatePolicyGroupReq
 		query["Clipboard"] = request.Clipboard
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.DeviceRedirects)) {
+		query["DeviceRedirects"] = request.DeviceRedirects
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DeviceRules)) {
+		query["DeviceRules"] = request.DeviceRules
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.DomainList)) {
 		query["DomainList"] = request.DomainList
 	}
@@ -56368,6 +56636,10 @@ func (client *Client) DescribeBundlesWithOptions(request *DescribeBundlesRequest
 		query["GpuCount"] = request.GpuCount
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.GpuDriverType)) {
+		query["GpuDriverType"] = request.GpuDriverType
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ImageId)) {
 		query["ImageId"] = request.ImageId
 	}
@@ -57686,6 +57958,10 @@ func (client *Client) DescribeDesktopTypesWithOptions(request *DescribeDesktopTy
 
 	if !tea.BoolValue(util.IsUnset(request.GpuCount)) {
 		query["GpuCount"] = request.GpuCount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GpuDriverType)) {
+		query["GpuDriverType"] = request.GpuDriverType
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.InstanceTypeFamily)) {
@@ -65536,6 +65812,14 @@ func (client *Client) ModifyPolicyGroupWithOptions(request *ModifyPolicyGroupReq
 
 	if !tea.BoolValue(util.IsUnset(request.Clipboard)) {
 		query["Clipboard"] = request.Clipboard
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DeviceRedirects)) {
+		query["DeviceRedirects"] = request.DeviceRedirects
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DeviceRules)) {
+		query["DeviceRules"] = request.DeviceRules
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.DomainList)) {
