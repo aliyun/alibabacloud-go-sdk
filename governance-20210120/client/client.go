@@ -1,7 +1,4 @@
 // This file is auto-generated, don't edit it. Thanks.
-/**
- *
- */
 package client
 
 import (
@@ -15,17 +12,31 @@ import (
 type EnrollAccountRequest struct {
 	// The prefix for the account name of the member.
 	//
-	// *   If the account baseline is applied to an account that is newly created, you must configure this parameter.
-	// *   If the account baseline is applied to an existing account, you do not need to configure this parameter.
+	// 	- If the account baseline is applied to an account that is newly created, you must configure this parameter.
+	//
+	// 	- If the account baseline is applied to an existing account, you do not need to configure this parameter.
+	//
+	// example:
+	//
+	// test-account
 	AccountNamePrefix *string `json:"AccountNamePrefix,omitempty" xml:"AccountNamePrefix,omitempty"`
 	// The account ID.
 	//
-	// *   If the account baseline is applied to an account that is newly created, you do not need to configure this parameter.
-	// *   If the account baseline is applied to an existing account, you must configure this parameter.
+	// 	- If the account baseline is applied to an account that is newly created, you do not need to configure this parameter.
+	//
+	// 	- If the account baseline is applied to an existing account, you must configure this parameter.
+	//
+	// example:
+	//
+	// 12868156179****
 	AccountUid *int64 `json:"AccountUid,omitempty" xml:"AccountUid,omitempty"`
 	// The baseline ID.
 	//
 	// If this parameter is left empty, the default baseline is used.
+	//
+	// example:
+	//
+	// afb-bp1durvn3lgqe28v****
 	BaselineId *string `json:"BaselineId,omitempty" xml:"BaselineId,omitempty"`
 	// An array that contains baseline items.
 	//
@@ -33,27 +44,51 @@ type EnrollAccountRequest struct {
 	BaselineItems []*EnrollAccountRequestBaselineItems `json:"BaselineItems,omitempty" xml:"BaselineItems,omitempty" type:"Repeated"`
 	// The display name of the account.
 	//
-	// *   If the account baseline is applied to an account that is newly created, you must configure this parameter.
-	// *   If the account baseline is applied to an existing account, you do not need to configure this parameter.
+	// 	- If the account baseline is applied to an account that is newly created, you must configure this parameter.
+	//
+	// 	- If the account baseline is applied to an existing account, you do not need to configure this parameter.
+	//
+	// example:
+	//
+	// test-account
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
 	// The ID of the parent folder.
 	//
-	// *   If the account baseline is applied to an account that is newly created, you need to specify a parent folder. If you do not configure this parameter, the account is created in the Root folder.
-	// *   If the account baseline is applied to an existing account, you do not need to configure this parameter.
+	// 	- If the account baseline is applied to an account that is newly created, you need to specify a parent folder. If you do not configure this parameter, the account is created in the Root folder.
+	//
+	// 	- If the account baseline is applied to an existing account, you do not need to configure this parameter.
+	//
+	// example:
+	//
+	// fd-5ESoku****
 	FolderId *string `json:"FolderId,omitempty" xml:"FolderId,omitempty"`
 	// The ID of the billing account.
 	//
-	// *   If the account baseline is applied to an account that is newly created, you need to specify a billing account. If you do not configure this parameter, the self-pay settlement method is used for the account.
-	// *   If the account baseline is applied to an existing account, you do not need to configure this parameter.
+	// 	- If the account baseline is applied to an account that is newly created, you need to specify a billing account. If you do not configure this parameter, the self-pay settlement method is used for the account.
+	//
+	// 	- If the account baseline is applied to an existing account, you do not need to configure this parameter.
+	//
+	// example:
+	//
+	// 19534534552****
 	PayerAccountUid *int64 `json:"PayerAccountUid,omitempty" xml:"PayerAccountUid,omitempty"`
 	// The region ID.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The identity type of the member. Valid values:
 	//
-	// *   resell (default): The member is an account for a reseller. A relationship is automatically established between the member and the reseller. The management account of the resource directory must be used as the billing account of the member.
-	// *   non_resell: The member is not an account for a reseller. The member is an account that is not associated with a reseller. You can directly use the account to purchase Alibaba Cloud resources. The member is used as its own billing account.
+	// 	- resell (default): The member is an account for a reseller. A relationship is automatically established between the member and the reseller. The management account of the resource directory must be used as the billing account of the member.
+	//
+	// 	- non_resell: The member is not an account for a reseller. The member is an account that is not associated with a reseller. You can directly use the account to purchase Alibaba Cloud resources. The member is used as its own billing account.
 	//
 	// > This parameter is available only for resellers at the international site (alibabacloud.com).
+	//
+	// example:
+	//
+	// resell
 	ResellAccountType *string `json:"ResellAccountType,omitempty" xml:"ResellAccountType,omitempty"`
 }
 
@@ -112,15 +147,32 @@ func (s *EnrollAccountRequest) SetResellAccountType(v string) *EnrollAccountRequ
 
 type EnrollAccountRequestBaselineItems struct {
 	// The configurations of the baseline item.
+	//
+	// example:
+	//
+	// {\\"Notifications\\":[{\\"GroupKey\\":\\"account_msg\\",\\"Contacts\\":[{\\"Name\\":\\"aa\\"}],\\"PmsgStatus\\":1,\\"EmailStatus\\":1,\\"SmsStatus\\":1}]}
 	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
 	// The name of the baseline item.
+	//
+	// example:
+	//
+	// ACS-BP_ACCOUNT_FACTORY_VPC
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// Specifies whether to skip the baseline item. Valid values:
 	//
-	// *   false: The baseline item is not skipped.
-	// *   true: The baseline item is skipped.
+	// 	- false: The baseline item is not skipped.
+	//
+	// 	- true: The baseline item is skipped.
+	//
+	// example:
+	//
+	// false
 	Skip *bool `json:"Skip,omitempty" xml:"Skip,omitempty"`
 	// The version of the baseline item.
+	//
+	// example:
+	//
+	// 1.0
 	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
@@ -154,8 +206,16 @@ func (s *EnrollAccountRequestBaselineItems) SetVersion(v string) *EnrollAccountR
 
 type EnrollAccountResponseBody struct {
 	// The account ID.
+	//
+	// example:
+	//
+	// 143165363236****
 	AccountUid *int64 `json:"AccountUid,omitempty" xml:"AccountUid,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 7071E5FA-515E-5F53-B335-B87D619C6A66
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -208,8 +268,16 @@ func (s *EnrollAccountResponse) SetBody(v *EnrollAccountResponseBody) *EnrollAcc
 
 type GetAccountFactoryBaselineRequest struct {
 	// The baseline ID.
+	//
+	// example:
+	//
+	// afb-bp1nf0enuzb89az*****
 	BaselineId *string `json:"BaselineId,omitempty" xml:"BaselineId,omitempty"`
 	// The region ID.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -233,23 +301,52 @@ func (s *GetAccountFactoryBaselineRequest) SetRegionId(v string) *GetAccountFact
 
 type GetAccountFactoryBaselineResponseBody struct {
 	// The baseline ID.
+	//
+	// example:
+	//
+	// afb-bp16ae2k8a3yo3d*****
 	BaselineId *string `json:"BaselineId,omitempty" xml:"BaselineId,omitempty"`
 	// The baseline items.
 	BaselineItems []*GetAccountFactoryBaselineResponseBodyBaselineItems `json:"BaselineItems,omitempty" xml:"BaselineItems,omitempty" type:"Repeated"`
 	// The name of the baseline.
+	//
+	// example:
+	//
+	// Default
 	BaselineName *string `json:"BaselineName,omitempty" xml:"BaselineName,omitempty"`
 	// The time when the baseline was created.
+	//
+	// example:
+	//
+	// 2022-11-28T00:46:34Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The description of the baseline.
+	//
+	// example:
+	//
+	// Default baseline
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 60D54503-F1F6-51B6-B6FA-A70CBDA2A68C
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The type of the baseline. Valid values:
 	//
-	// *   System: default baseline.
-	// *   Custom: custom baseline.
+	// 	- System: default baseline.
+	//
+	// 	- Custom: custom baseline.
+	//
+	// example:
+	//
+	// Custom
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 	// The time when the baseline was updated.
+	//
+	// example:
+	//
+	// 2022-11-02T01:00:07Z
 	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
@@ -305,10 +402,22 @@ type GetAccountFactoryBaselineResponseBodyBaselineItems struct {
 	// The configuration of the baseline item.
 	//
 	// The value is a JSON string.
+	//
+	// example:
+	//
+	// {\\"Notifications\\":[{\\"GroupKey\\":\\"account_msg\\",\\"Contacts\\":[{\\"Name\\":\\"aa\\"}],\\"PmsgStatus\\":1,\\"EmailStatus\\":1,\\"SmsStatus\\":1}]}
 	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
 	// The name of the baseline item.
+	//
+	// example:
+	//
+	// 1097526274671790
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The version of the baseline item.
+	//
+	// example:
+	//
+	// 1.0
 	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
@@ -366,8 +475,18 @@ func (s *GetAccountFactoryBaselineResponse) SetBody(v *GetAccountFactoryBaseline
 
 type GetEnrolledAccountRequest struct {
 	// The account ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 19534534552****
 	AccountUid *int64 `json:"AccountUid,omitempty" xml:"AccountUid,omitempty"`
 	// The region ID.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -391,40 +510,96 @@ func (s *GetEnrolledAccountRequest) SetRegionId(v string) *GetEnrolledAccountReq
 
 type GetEnrolledAccountResponseBody struct {
 	// The account ID.
+	//
+	// example:
+	//
+	// 12868156179*****
 	AccountUid *int64 `json:"AccountUid,omitempty" xml:"AccountUid,omitempty"`
-	// The ID of the baseline that was applied to the account.
-	BaselineId    *string                                        `json:"BaselineId,omitempty" xml:"BaselineId,omitempty"`
+	// The ID of the baseline that is implemented.
+	//
+	// example:
+	//
+	// afb-bp1adadfadsf***
+	BaselineId *string `json:"BaselineId,omitempty" xml:"BaselineId,omitempty"`
+	// An array that contains baseline items.
 	BaselineItems []*GetEnrolledAccountResponseBodyBaselineItems `json:"BaselineItems,omitempty" xml:"BaselineItems,omitempty" type:"Repeated"`
-	// The time at which the account was created.
+	// The time when the account was created.
+	//
+	// example:
+	//
+	// 2021-11-01T02:38:27Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The display name of the account.
+	//
+	// example:
+	//
+	// test-account
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	// The error message returned.
+	// The error message.
+	//
+	// >  This parameter is returned if the value of `Status` is `Failed` or `ScheduleFailed`.
 	ErrorInfo *GetEnrolledAccountResponseBodyErrorInfo `json:"ErrorInfo,omitempty" xml:"ErrorInfo,omitempty" type:"Struct"`
 	// The ID of the parent folder.
+	//
+	// example:
+	//
+	// fd-5ESoku****
 	FolderId *string `json:"FolderId,omitempty" xml:"FolderId,omitempty"`
-	// Indicates whether the account was initialized.
+	// Indicates whether the initialization is complete. Valid values:
+	//
+	// 	- false
+	//
+	// 	- true
+	//
+	// example:
+	//
+	// true
 	Initialized *bool `json:"Initialized,omitempty" xml:"Initialized,omitempty"`
-	// The input parameters that are used when you enrolled the account.
+	// The input parameters that are used when the account was registered.
 	Inputs *GetEnrolledAccountResponseBodyInputs `json:"Inputs,omitempty" xml:"Inputs,omitempty" type:"Struct"`
-	// The ID of the master account to which the account belongs.
+	// The ID of the management account of the resource directory to which the account belongs.
+	//
+	// example:
+	//
+	// 19534534552*****
 	MasterAccountUid *int64 `json:"MasterAccountUid,omitempty" xml:"MasterAccountUid,omitempty"`
-	// The ID of the billing account.
+	// The ID of the settlement account.
+	//
+	// example:
+	//
+	// 19534534552*****
 	PayerAccountUid *int64 `json:"PayerAccountUid,omitempty" xml:"PayerAccountUid,omitempty"`
-	// The progress of applying the account baseline to the account.
+	// The progress of the applying the baseline to the account.
 	Progress []*GetEnrolledAccountResponseBodyProgress `json:"Progress,omitempty" xml:"Progress,omitempty" type:"Repeated"`
 	// The request ID.
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The creation status of the account. Valid values:
 	//
-	// *   Pending: The account is waiting to be created.
-	// *   Running: The account is being created.
-	// *   Finished: The account is created.
-	// *   Failed: The account failed to be created.
-	// *   Scheduling: The account is being scheduled.
-	// *   ScheduleFailed: The account failed to be scheduled.
+	// example:
+	//
+	// 768F908D-A66A-5A5D-816C-20C93CBBFEE3
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The status of the account. Valid values:
+	//
+	// 	- Pending: The account is pending to be created.
+	//
+	// 	- Running: The account is being created.
+	//
+	// 	- Finished: The account is created.
+	//
+	// 	- Failed: The account fails to be created.
+	//
+	// 	- Scheduling: The account is being scheduled.
+	//
+	// 	- ScheduleFailed: The account fails to be scheduled.
+	//
+	// example:
+	//
+	// Finished
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The time when the information about the account was updated.
+	//
+	// example:
+	//
+	// 2021-11-01T02:38:27Z
 	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
@@ -512,9 +687,33 @@ func (s *GetEnrolledAccountResponseBody) SetUpdateTime(v string) *GetEnrolledAcc
 }
 
 type GetEnrolledAccountResponseBodyBaselineItems struct {
-	Config  *string `json:"Config,omitempty" xml:"Config,omitempty"`
-	Name    *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Skip    *bool   `json:"Skip,omitempty" xml:"Skip,omitempty"`
+	// The configurations of the baseline item.
+	//
+	// example:
+	//
+	// {\\"Notifications\\":[{\\"GroupKey\\":\\"account_msg\\",\\"Contacts\\":[{\\"Name\\":\\"aa\\"}],\\"PmsgStatus\\":1,\\"EmailStatus\\":1,\\"SmsStatus\\":1}]}
+	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	// The name of the baseline item.
+	//
+	// example:
+	//
+	// ACS-BP_ACCOUNT_FACTORY_VPC
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Indicates whether baseline item is skipped. Valid values:
+	//
+	// 	- false
+	//
+	// 	- true
+	//
+	// example:
+	//
+	// false
+	Skip *bool `json:"Skip,omitempty" xml:"Skip,omitempty"`
+	// The version of the baseline item.
+	//
+	// example:
+	//
+	// 1.0
 	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
@@ -547,13 +746,29 @@ func (s *GetEnrolledAccountResponseBodyBaselineItems) SetVersion(v string) *GetE
 }
 
 type GetEnrolledAccountResponseBodyErrorInfo struct {
-	// The error code returned.
+	// The error code.
+	//
+	// example:
+	//
+	// CompliancePackExists
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The error message returned.
+	// The error message.
+	//
+	// example:
+	//
+	// The compliance pack already exists.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The suggestions that are used to resolve the issue.
+	// The recommended solution.
+	//
+	// example:
+	//
+	// https://next.api.aliyun.com/troubleshoot?q=CompliancePackExists\\\\u0026product=Config
 	Recommend *string `json:"Recommend,omitempty" xml:"Recommend,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 6D5EAA86-2D41-5CB7-8DA7-B60093ACAA4E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -586,17 +801,37 @@ func (s *GetEnrolledAccountResponseBodyErrorInfo) SetRequestId(v string) *GetEnr
 }
 
 type GetEnrolledAccountResponseBodyInputs struct {
-	// The prefix for the account name of the member.
+	// The prefix of the account name.
+	//
+	// example:
+	//
+	// test-account
 	AccountNamePrefix *string `json:"AccountNamePrefix,omitempty" xml:"AccountNamePrefix,omitempty"`
 	// The account ID.
+	//
+	// example:
+	//
+	// 12868156179*****
 	AccountUid *int64 `json:"AccountUid,omitempty" xml:"AccountUid,omitempty"`
-	// An array that contains baseline items.
+	// The baseline items.
 	BaselineItems []*GetEnrolledAccountResponseBodyInputsBaselineItems `json:"BaselineItems,omitempty" xml:"BaselineItems,omitempty" type:"Repeated"`
 	// The display name of the account.
+	//
+	// example:
+	//
+	// test-account
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
 	// The ID of the parent folder.
+	//
+	// example:
+	//
+	// fd-5ESoku****
 	FolderId *string `json:"FolderId,omitempty" xml:"FolderId,omitempty"`
-	// The ID of the billing account.
+	// The ID of the settlement account.
+	//
+	// example:
+	//
+	// 19534534552*****
 	PayerAccountUid *int64 `json:"PayerAccountUid,omitempty" xml:"PayerAccountUid,omitempty"`
 }
 
@@ -640,12 +875,32 @@ func (s *GetEnrolledAccountResponseBodyInputs) SetPayerAccountUid(v int64) *GetE
 
 type GetEnrolledAccountResponseBodyInputsBaselineItems struct {
 	// The configurations of the baseline item.
+	//
+	// example:
+	//
+	// {\\"Contacts\\":[{\\"Name\\":\\"governance\\",\\"Email\\":\\"wibud****@gmail.com\\",\\"Mobile\\":\\"1234\\",\\"Position\\":\\"Other\\"}]}
 	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
 	// The name of the baseline item.
+	//
+	// example:
+	//
+	// ACS-BP_ACCOUNT_FACTORY_VPC
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Indicates whether to skip the baseline item.
+	// Indicates whether baseline item is skipped. Valid values:
+	//
+	// 	- false
+	//
+	// 	- true
+	//
+	// example:
+	//
+	// false
 	Skip *bool `json:"Skip,omitempty" xml:"Skip,omitempty"`
 	// The version of the baseline item.
+	//
+	// example:
+	//
+	// 1.0
 	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
@@ -679,13 +934,24 @@ func (s *GetEnrolledAccountResponseBodyInputsBaselineItems) SetVersion(v string)
 
 type GetEnrolledAccountResponseBodyProgress struct {
 	// The name of the baseline item.
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The status of applying the account baseline to the account. Valid values:
 	//
-	// *   Pending: The account is waiting to be created.
-	// *   Running: The account baseline is being applied to the account.
-	// *   Finished: The account baseline is applied to the account.
-	// *   Failed: The account baseline failed to be applied to the account.
+	// example:
+	//
+	// ACS-BP_ACCOUNT_FACTORY_VPC
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The status of applying the baseline to the account. Valid values:
+	//
+	// 	- Pending: The baseline is pending to be applied to the account.
+	//
+	// 	- Running: The baseline is being applied to the account.
+	//
+	// 	- Finished: : The baseline is applied to the account.
+	//
+	// 	- Failed: : The baseline fails to be applied to the account.
+	//
+	// example:
+	//
+	// Running
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -740,10 +1006,22 @@ type ListAccountFactoryBaselinesRequest struct {
 	// The maximum number of entries to return on each page.
 	//
 	// Valid values: 1 to 100. Default value: 10.
+	//
+	// example:
+	//
+	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request.
+	//
+	// example:
+	//
+	// AAAAALHWGpGoYCcYMxiFfmlhvh62Xr2DzYbz/SAfc*****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// RegionId
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -774,8 +1052,16 @@ type ListAccountFactoryBaselinesResponseBody struct {
 	// An array that consists of baselines.
 	Baselines []*ListAccountFactoryBaselinesResponseBodyBaselines `json:"Baselines,omitempty" xml:"Baselines,omitempty" type:"Repeated"`
 	// The returned value of NextToken is a pagination token, which can be used in the next request to retrieve a new page of results.
+	//
+	// example:
+	//
+	// AAAAALHWGpGoYCcYMxiFfmlhvh62Xr2DzYbz/SAfc*****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 3245E413-7CDD-5287-8988-6A94DE8A8369
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -804,19 +1090,44 @@ func (s *ListAccountFactoryBaselinesResponseBody) SetRequestId(v string) *ListAc
 
 type ListAccountFactoryBaselinesResponseBodyBaselines struct {
 	// The baseline ID.
+	//
+	// example:
+	//
+	// afb-bp1durvn3lgqe28v****
 	BaselineId *string `json:"BaselineId,omitempty" xml:"BaselineId,omitempty"`
 	// The name of the baseline.
+	//
+	// example:
+	//
+	// Default
 	BaselineName *string `json:"BaselineName,omitempty" xml:"BaselineName,omitempty"`
 	// The time at which the baseline was created.
+	//
+	// example:
+	//
+	// 2021-11-30T09:09:28Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The description of the baseline.
+	//
+	// example:
+	//
+	// Default baseline
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The type of the baseline. Valid values:
 	//
-	// *   System: default baseline
-	// *   Custom: custom baseline
+	// 	- System: default baseline
+	//
+	// 	- Custom: custom baseline
+	//
+	// example:
+	//
+	// Custom
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 	// The time when the baseline was updated.
+	//
+	// example:
+	//
+	// 2022-12-29T07:08:40Z
 	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
@@ -891,10 +1202,22 @@ type ListEnrolledAccountsRequest struct {
 	// The maximum number of entries to return on each page.
 	//
 	// Valid values: 1 to 100. Default value: 10.
+	//
+	// example:
+	//
+	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request.
+	//
+	// example:
+	//
+	// AAAAALHWGpGoYCcYMxiFfmlhvh62Xr2DzYbz/SAfc*****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The region ID.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -925,8 +1248,16 @@ type ListEnrolledAccountsResponseBody struct {
 	// The accounts.
 	EnrolledAccounts []*ListEnrolledAccountsResponseBodyEnrolledAccounts `json:"EnrolledAccounts,omitempty" xml:"EnrolledAccounts,omitempty" type:"Repeated"`
 	// The returned value of NextToken is a pagination token, which can be used in the next request to retrieve a new page of results.
+	//
+	// example:
+	//
+	// AAAAALHWGpGoYCcYMxiFfmlhvh62Xr2DzYbz/SAfc*****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 768F908D-A66A-5A5D-816C-20C93CBBFEE3
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -955,27 +1286,64 @@ func (s *ListEnrolledAccountsResponseBody) SetRequestId(v string) *ListEnrolledA
 
 type ListEnrolledAccountsResponseBodyEnrolledAccounts struct {
 	// The account ID.
+	//
+	// example:
+	//
+	// 19534534552*****
 	AccountUid *int64 `json:"AccountUid,omitempty" xml:"AccountUid,omitempty"`
 	// The baseline ID.
+	//
+	// example:
+	//
+	// afb-bp1durvn3lgqe28v****
 	BaselineId *string `json:"BaselineId,omitempty" xml:"BaselineId,omitempty"`
 	// The time at which the account was created.
+	//
+	// example:
+	//
+	// 2021-11-01T02:38:27Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The display name of the account.
+	//
+	// example:
+	//
+	// TestAccount
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
 	// The ID of the parent folder.
+	//
+	// example:
+	//
+	// fd-5ESoku****
 	FolderId *string `json:"FolderId,omitempty" xml:"FolderId,omitempty"`
 	// The ID of the billing account.
+	//
+	// example:
+	//
+	// 13161210500*****
 	PayerAccountUid *int64 `json:"PayerAccountUid,omitempty" xml:"PayerAccountUid,omitempty"`
 	// The creation status of the account. Valid values:
 	//
-	// *   Pending: The account is waiting to be created.
-	// *   Running: The account is being created.
-	// *   Finished: The account is created.
-	// *   Failed: The account failed to be created.
-	// *   Scheduling: The account is being scheduled.
-	// *   ScheduleFailed: The account failed to be scheduled.
+	// 	- Pending: The account is waiting to be created.
+	//
+	// 	- Running: The account is being created.
+	//
+	// 	- Finished: The account is created.
+	//
+	// 	- Failed: The account failed to be created.
+	//
+	// 	- Scheduling: The account is being scheduled.
+	//
+	// 	- ScheduleFailed: The account failed to be scheduled.
+	//
+	// example:
+	//
+	// Running
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The time when the information about the account was updated.
+	//
+	// example:
+	//
+	// 2021-11-01T02:38:27Z
 	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
@@ -1103,14 +1471,21 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
-/**
- * You can call this API operation to create a new account or manage an existing account and apply the account baseline to the account.
- * Accounts are created in asynchronous mode. After you create an account, you can apply the account baseline to the account. You can call the [GetEnrolledAccount API](~~GetEnrolledAccount~~) operation to view the details about the account to obtain the result of applying the account baseline to the account.
- *
- * @param request EnrollAccountRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return EnrollAccountResponse
- */
+// Summary:
+//
+// Enrolls an account. You can create a new account or manage an existing account in the account factory.
+//
+// Description:
+//
+// You can call this API operation to create a new account or manage an existing account and apply the account baseline to the account.
+//
+// Accounts are created in asynchronous mode. After you create an account, you can apply the account baseline to the account. You can call the [GetEnrolledAccount API](~~GetEnrolledAccount~~) operation to view the details about the account to obtain the result of applying the account baseline to the account.
+//
+// @param request - EnrollAccountRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return EnrollAccountResponse
 func (client *Client) EnrollAccountWithOptions(request *EnrollAccountRequest, runtime *util.RuntimeOptions) (_result *EnrollAccountResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -1176,13 +1551,19 @@ func (client *Client) EnrollAccountWithOptions(request *EnrollAccountRequest, ru
 	return _result, _err
 }
 
-/**
- * You can call this API operation to create a new account or manage an existing account and apply the account baseline to the account.
- * Accounts are created in asynchronous mode. After you create an account, you can apply the account baseline to the account. You can call the [GetEnrolledAccount API](~~GetEnrolledAccount~~) operation to view the details about the account to obtain the result of applying the account baseline to the account.
- *
- * @param request EnrollAccountRequest
- * @return EnrollAccountResponse
- */
+// Summary:
+//
+// Enrolls an account. You can create a new account or manage an existing account in the account factory.
+//
+// Description:
+//
+// You can call this API operation to create a new account or manage an existing account and apply the account baseline to the account.
+//
+// Accounts are created in asynchronous mode. After you create an account, you can apply the account baseline to the account. You can call the [GetEnrolledAccount API](~~GetEnrolledAccount~~) operation to view the details about the account to obtain the result of applying the account baseline to the account.
+//
+// @param request - EnrollAccountRequest
+//
+// @return EnrollAccountResponse
 func (client *Client) EnrollAccount(request *EnrollAccountRequest) (_result *EnrollAccountResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &EnrollAccountResponse{}
@@ -1194,6 +1575,15 @@ func (client *Client) EnrollAccount(request *EnrollAccountRequest) (_result *Enr
 	return _result, _err
 }
 
+// Summary:
+//
+// Obtains the details of an account factory baseline.
+//
+// @param request - GetAccountFactoryBaselineRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAccountFactoryBaselineResponse
 func (client *Client) GetAccountFactoryBaselineWithOptions(request *GetAccountFactoryBaselineRequest, runtime *util.RuntimeOptions) (_result *GetAccountFactoryBaselineResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -1231,6 +1621,13 @@ func (client *Client) GetAccountFactoryBaselineWithOptions(request *GetAccountFa
 	return _result, _err
 }
 
+// Summary:
+//
+// Obtains the details of an account factory baseline.
+//
+// @param request - GetAccountFactoryBaselineRequest
+//
+// @return GetAccountFactoryBaselineResponse
 func (client *Client) GetAccountFactoryBaseline(request *GetAccountFactoryBaselineRequest) (_result *GetAccountFactoryBaselineResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetAccountFactoryBaselineResponse{}
@@ -1242,6 +1639,15 @@ func (client *Client) GetAccountFactoryBaseline(request *GetAccountFactoryBaseli
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the details about an account that is enrolled in the account factory.
+//
+// @param request - GetEnrolledAccountRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetEnrolledAccountResponse
 func (client *Client) GetEnrolledAccountWithOptions(request *GetEnrolledAccountRequest, runtime *util.RuntimeOptions) (_result *GetEnrolledAccountResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -1279,6 +1685,13 @@ func (client *Client) GetEnrolledAccountWithOptions(request *GetEnrolledAccountR
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the details about an account that is enrolled in the account factory.
+//
+// @param request - GetEnrolledAccountRequest
+//
+// @return GetEnrolledAccountResponse
 func (client *Client) GetEnrolledAccount(request *GetEnrolledAccountRequest) (_result *GetEnrolledAccountResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetEnrolledAccountResponse{}
@@ -1290,6 +1703,15 @@ func (client *Client) GetEnrolledAccount(request *GetEnrolledAccountRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// Obtains a list of baselines in the account factory.
+//
+// @param request - ListAccountFactoryBaselinesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListAccountFactoryBaselinesResponse
 func (client *Client) ListAccountFactoryBaselinesWithOptions(request *ListAccountFactoryBaselinesRequest, runtime *util.RuntimeOptions) (_result *ListAccountFactoryBaselinesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -1331,6 +1753,13 @@ func (client *Client) ListAccountFactoryBaselinesWithOptions(request *ListAccoun
 	return _result, _err
 }
 
+// Summary:
+//
+// Obtains a list of baselines in the account factory.
+//
+// @param request - ListAccountFactoryBaselinesRequest
+//
+// @return ListAccountFactoryBaselinesResponse
 func (client *Client) ListAccountFactoryBaselines(request *ListAccountFactoryBaselinesRequest) (_result *ListAccountFactoryBaselinesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListAccountFactoryBaselinesResponse{}
@@ -1342,6 +1771,15 @@ func (client *Client) ListAccountFactoryBaselines(request *ListAccountFactoryBas
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of accounts that are enrolled in the account factory.
+//
+// @param request - ListEnrolledAccountsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListEnrolledAccountsResponse
 func (client *Client) ListEnrolledAccountsWithOptions(request *ListEnrolledAccountsRequest, runtime *util.RuntimeOptions) (_result *ListEnrolledAccountsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -1383,6 +1821,13 @@ func (client *Client) ListEnrolledAccountsWithOptions(request *ListEnrolledAccou
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of accounts that are enrolled in the account factory.
+//
+// @param request - ListEnrolledAccountsRequest
+//
+// @return ListEnrolledAccountsResponse
 func (client *Client) ListEnrolledAccounts(request *ListEnrolledAccountsRequest) (_result *ListEnrolledAccountsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListEnrolledAccountsResponse{}
