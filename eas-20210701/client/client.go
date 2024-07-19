@@ -1,7 +1,4 @@
 // This file is auto-generated, don't edit it. Thanks.
-/**
- *
- */
 package client
 
 import (
@@ -149,27 +146,65 @@ func (s *Group) SetUpdateTime(v string) *Group {
 }
 
 type Instance struct {
-	CurrentAmount    *float32                 `json:"CurrentAmount,omitempty" xml:"CurrentAmount,omitempty"`
-	HostIP           *string                  `json:"HostIP,omitempty" xml:"HostIP,omitempty"`
-	HostName         *string                  `json:"HostName,omitempty" xml:"HostName,omitempty"`
-	InnerIP          *string                  `json:"InnerIP,omitempty" xml:"InnerIP,omitempty"`
-	InstanceName     *string                  `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	InstancePort     *int32                   `json:"InstancePort,omitempty" xml:"InstancePort,omitempty"`
-	IsSpot           *bool                    `json:"IsSpot,omitempty" xml:"IsSpot,omitempty"`
-	Isolated         *bool                    `json:"Isolated,omitempty" xml:"Isolated,omitempty"`
-	LastState        []map[string]interface{} `json:"LastState,omitempty" xml:"LastState,omitempty" type:"Repeated"`
-	Namespace        *string                  `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	OriginalAmount   *float32                 `json:"OriginalAmount,omitempty" xml:"OriginalAmount,omitempty"`
-	ReadyProcesses   *int32                   `json:"ReadyProcesses,omitempty" xml:"ReadyProcesses,omitempty"`
-	Reason           *string                  `json:"Reason,omitempty" xml:"Reason,omitempty"`
-	ResourceType     *string                  `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	RestartCount     *int32                   `json:"RestartCount,omitempty" xml:"RestartCount,omitempty"`
-	Role             *string                  `json:"Role,omitempty" xml:"Role,omitempty"`
-	StartAt          *string                  `json:"StartAt,omitempty" xml:"StartAt,omitempty"`
-	Status           *string                  `json:"Status,omitempty" xml:"Status,omitempty"`
-	TenantHostIP     *string                  `json:"TenantHostIP,omitempty" xml:"TenantHostIP,omitempty"`
-	TenantInstanceIP *string                  `json:"TenantInstanceIP,omitempty" xml:"TenantInstanceIP,omitempty"`
-	TotalProcesses   *int32                   `json:"TotalProcesses,omitempty" xml:"TotalProcesses,omitempty"`
+	// example:
+	//
+	// 0.444
+	CurrentAmount *float32 `json:"CurrentAmount,omitempty" xml:"CurrentAmount,omitempty"`
+	// example:
+	//
+	// 192.168.1.100
+	ExternalIP *string `json:"ExternalIP,omitempty" xml:"ExternalIP,omitempty"`
+	// example:
+	//
+	// 8080
+	ExternalInstancePort *int32  `json:"ExternalInstancePort,omitempty" xml:"ExternalInstancePort,omitempty"`
+	HostIP               *string `json:"HostIP,omitempty" xml:"HostIP,omitempty"`
+	HostName             *string `json:"HostName,omitempty" xml:"HostName,omitempty"`
+	InnerIP              *string `json:"InnerIP,omitempty" xml:"InnerIP,omitempty"`
+	InstanceName         *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	InstancePort         *int32  `json:"InstancePort,omitempty" xml:"InstancePort,omitempty"`
+	// example:
+	//
+	// false
+	IsSpot *bool `json:"IsSpot,omitempty" xml:"IsSpot,omitempty"`
+	// example:
+	//
+	// false
+	Isolated  *bool                    `json:"Isolated,omitempty" xml:"Isolated,omitempty"`
+	LastState []map[string]interface{} `json:"LastState,omitempty" xml:"LastState,omitempty" type:"Repeated"`
+	Namespace *string                  `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// example:
+	//
+	// 2.2
+	OriginalAmount *float32 `json:"OriginalAmount,omitempty" xml:"OriginalAmount,omitempty"`
+	ReadyProcesses *int32   `json:"ReadyProcesses,omitempty" xml:"ReadyProcesses,omitempty"`
+	Reason         *string  `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	// example:
+	//
+	// PublicResource
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	RestartCount *int32  `json:"RestartCount,omitempty" xml:"RestartCount,omitempty"`
+	// example:
+	//
+	// Standard
+	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
+	// Deprecated
+	StartAt   *string `json:"StartAt,omitempty" xml:"StartAt,omitempty"`
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Status    *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// 192.168.0.39
+	TenantHostIP *string `json:"TenantHostIP,omitempty" xml:"TenantHostIP,omitempty"`
+	// example:
+	//
+	// 192.168.0.39
+	TenantInstanceIP *string `json:"TenantInstanceIP,omitempty" xml:"TenantInstanceIP,omitempty"`
+	TotalProcesses   *int32  `json:"TotalProcesses,omitempty" xml:"TotalProcesses,omitempty"`
+	// example:
+	//
+	// cn-shanghai-a
+	Zone *string `json:"Zone,omitempty" xml:"Zone,omitempty"`
 }
 
 func (s Instance) String() string {
@@ -182,6 +217,16 @@ func (s Instance) GoString() string {
 
 func (s *Instance) SetCurrentAmount(v float32) *Instance {
 	s.CurrentAmount = &v
+	return s
+}
+
+func (s *Instance) SetExternalIP(v string) *Instance {
+	s.ExternalIP = &v
+	return s
+}
+
+func (s *Instance) SetExternalInstancePort(v int32) *Instance {
+	s.ExternalInstancePort = &v
 	return s
 }
 
@@ -265,6 +310,11 @@ func (s *Instance) SetStartAt(v string) *Instance {
 	return s
 }
 
+func (s *Instance) SetStartTime(v string) *Instance {
+	s.StartTime = &v
+	return s
+}
+
 func (s *Instance) SetStatus(v string) *Instance {
 	s.Status = &v
 	return s
@@ -285,6 +335,11 @@ func (s *Instance) SetTotalProcesses(v int32) *Instance {
 	return s
 }
 
+func (s *Instance) SetZone(v string) *Instance {
+	s.Zone = &v
+	return s
+}
+
 type Resource struct {
 	ClusterId             *string                `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	CpuCount              *int32                 `json:"CpuCount,omitempty" xml:"CpuCount,omitempty"`
@@ -300,6 +355,7 @@ type Resource struct {
 	ResourceType          *string                `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	Status                *string                `json:"Status,omitempty" xml:"Status,omitempty"`
 	UpdateTime            *string                `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	Vendor                *string                `json:"Vendor,omitempty" xml:"Vendor,omitempty"`
 }
 
 func (s Resource) String() string {
@@ -377,6 +433,11 @@ func (s *Resource) SetStatus(v string) *Resource {
 
 func (s *Resource) SetUpdateTime(v string) *Resource {
 	s.UpdateTime = &v
+	return s
+}
+
+func (s *Resource) SetVendor(v string) *Resource {
+	s.Vendor = &v
 	return s
 }
 
@@ -905,6 +966,11 @@ func (s *ServiceLabels) SetLabelValue(v string) *ServiceLabels {
 }
 
 type CloneServiceRequest struct {
+	// The request body. For more information, see [CreateService](https://help.aliyun.com/document_detail/412086.html).
+	//
+	// example:
+	//
+	// {   "name": "foo",   "model_path": "http://path/to/model.tar.gz",   "processor": "tensorflow_cpu",   "metadata": {     "instance": 2,     "memory": 7000,     "cpu": 4   } }
 	Body *string `json:"body,omitempty" xml:"body,omitempty"`
 }
 
@@ -922,13 +988,42 @@ func (s *CloneServiceRequest) SetBody(v string) *CloneServiceRequest {
 }
 
 type CloneServiceResponseBody struct {
+	// The public endpoint of the service.
+	//
+	// example:
+	//
+	// http://10123*****.cn-shanghai.aliyuncs.com/api/predict/echo
 	InternetEndpoint *string `json:"InternetEndpoint,omitempty" xml:"InternetEndpoint,omitempty"`
+	// The private endpoint of the service.
+	//
+	// example:
+	//
+	// http://10123*****.vpc.cn-shanghai.aliyuncs.com/api/predict/echo
 	IntranetEndpoint *string `json:"IntranetEndpoint,omitempty" xml:"IntranetEndpoint,omitempty"`
 	// Id of the request
-	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ServiceId   *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	//
+	// example:
+	//
+	// 40325405-579C-4D82****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The service ID.
+	//
+	// example:
+	//
+	// eas-m-r9knx7n9guf2p*****
+	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	// The service name.
+	//
+	// example:
+	//
+	// foo
 	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
-	Status      *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The service status.
+	//
+	// example:
+	//
+	// Creating
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s CloneServiceResponseBody) String() string {
@@ -999,7 +1094,17 @@ func (s *CloneServiceResponse) SetBody(v *CloneServiceResponseBody) *CloneServic
 }
 
 type CommitServiceResponseBody struct {
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The returned message.
+	//
+	// example:
+	//
+	// Success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 40325405-579C-4D82****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1052,41 +1157,86 @@ func (s *CommitServiceResponse) SetBody(v *CommitServiceResponseBody) *CommitSer
 
 type CreateAppServiceRequest struct {
 	// The quota ID.
+	//
+	// example:
+	//
+	// abcdef
 	QuotaId *string `json:"QuotaId,omitempty" xml:"QuotaId,omitempty"`
 	// The workspace ID.
+	//
+	// example:
+	//
+	// 123456
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 	// The application service type.
 	//
 	// Valid values:
 	//
-	// *   LLM
+	// 	- LLM
 	//
 	//     <!-- -->
 	//
 	//     <!-- -->
 	//
 	//     <!-- -->
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// LLM
 	AppType *string `json:"AppType,omitempty" xml:"AppType,omitempty"`
 	// The application version.
+	//
+	// example:
+	//
+	// v1
 	AppVersion *string `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
 	// The additional configurations that are required for service deployment.
 	Config map[string]interface{} `json:"Config,omitempty" xml:"Config,omitempty"`
 	// The number of instances.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
 	Replicas *int32 `json:"Replicas,omitempty" xml:"Replicas,omitempty"`
 	// The service name.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// foo
 	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
 	// The service specifications. Valid values:
 	//
-	// *   llama\_7b_fp16
-	// *   llama\_7b_int8
-	// *   llama\_13b_fp16
-	// *   llama\_7b_int8
-	// *   chatglm\_6b_fp16
-	// *   chatglm\_6b_int8
-	// *   chatglm2\_6b_fp16
-	// *   baichuan\_7b_int8
-	// *   baichuan\_13b_fp16
-	// *   baichuan\_7b_fp16
+	// 	- llama_7b_fp16
+	//
+	// 	- llama_7b_int8
+	//
+	// 	- llama_13b_fp16
+	//
+	// 	- llama_7b_int8
+	//
+	// 	- chatglm_6b_fp16
+	//
+	// 	- chatglm_6b_int8
+	//
+	// 	- chatglm2_6b_fp16
+	//
+	// 	- baichuan_7b_int8
+	//
+	// 	- baichuan_13b_fp16
+	//
+	// 	- baichuan_7b_fp16
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// llama_7b_fp16
 	ServiceSpec *string `json:"ServiceSpec,omitempty" xml:"ServiceSpec,omitempty"`
 }
 
@@ -1140,18 +1290,46 @@ func (s *CreateAppServiceRequest) SetServiceSpec(v string) *CreateAppServiceRequ
 
 type CreateAppServiceResponseBody struct {
 	// The public endpoint of the service.
+	//
+	// example:
+	//
+	// http://pai-eas.cn-shanghai.****
 	InternetEndpoint *string `json:"InternetEndpoint,omitempty" xml:"InternetEndpoint,omitempty"`
 	// The internal endpoint of the service.
+	//
+	// example:
+	//
+	// http://pai-eas-vpc.cn-shanghai.****
 	IntranetEndpoint *string `json:"IntranetEndpoint,omitempty" xml:"IntranetEndpoint,omitempty"`
 	// The region ID of the service.
+	//
+	// example:
+	//
+	// cn-shanghai
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 40325405-579C-4D82****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The service ID.
+	//
+	// example:
+	//
+	// eas-m-aaxxxddf
 	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
 	// The service name.
+	//
+	// example:
+	//
+	// foo
 	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
 	// The service state.
+	//
+	// example:
+	//
+	// Creating
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -1229,6 +1407,40 @@ func (s *CreateAppServiceResponse) SetBody(v *CreateAppServiceResponseBody) *Cre
 
 type CreateBenchmarkTaskRequest struct {
 	// The request body. The body includes the parameters that are set to create a stress testing task.
+	//
+	// example:
+	//
+	// {
+	//
+	//     "base": {
+	//
+	//         "duration": 600
+	//
+	//     },
+	//
+	//     "service": {
+	//
+	//         "serviceName": "test_service",
+	//
+	//         "requestToken": "test_token"
+	//
+	//     },
+	//
+	//     "data": {
+	//
+	//         "path": "https://larec-benchmark-cd.oss-cn-chengdu.aliyuncs.com/youbei/sv_dbmtl/data/youbei.warmup.tf.bin",
+	//
+	//         "dataType": "binary"
+	//
+	//     },
+	//
+	//     "optional": {
+	//
+	//        "maxRt": 100
+	//
+	//     }
+	//
+	// }
 	Body *string `json:"body,omitempty" xml:"body,omitempty"`
 }
 
@@ -1247,12 +1459,28 @@ func (s *CreateBenchmarkTaskRequest) SetBody(v string) *CreateBenchmarkTaskReque
 
 type CreateBenchmarkTaskResponseBody struct {
 	// The returned message.
+	//
+	// example:
+	//
+	// Benchmark  task [foo] is Creating
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The ID of the region where the stress testing task is performed.
+	//
+	// example:
+	//
+	// cn-shanghai
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 40325405-579C-4D82********
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The name of the stress testing task.
+	//
+	// example:
+	//
+	// benchmark-larec-test-1076
 	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
 }
 
@@ -1315,12 +1543,16 @@ func (s *CreateBenchmarkTaskResponse) SetBody(v *CreateBenchmarkTaskResponseBody
 
 type CreateGatewayRequest struct {
 	// The name of the resource group.
+	//
+	// example:
+	//
+	// eas-r-4gt8twzwllfo******
 	ResourceName *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
 	// Specifies whether to enable Internet access. Default value: false.
 	//
 	// Valid values:
 	//
-	// *   true
+	// 	- true
 	//
 	//     <!-- -->
 	//
@@ -1328,19 +1560,37 @@ type CreateGatewayRequest struct {
 	//
 	//     <!-- -->
 	//
-	// *   false
+	// 	- false
 	//
 	//     <!-- -->
 	//
 	//     <!-- -->
 	//
 	//     <!-- -->
+	//
+	// example:
+	//
+	// false
 	EnableInternet *bool `json:"EnableInternet,omitempty" xml:"EnableInternet,omitempty"`
 	// Specifies whether to enable internal network access. Default value: true.
+	//
+	// example:
+	//
+	// true
 	EnableIntranet *bool `json:"EnableIntranet,omitempty" xml:"EnableIntranet,omitempty"`
 	// The instance type used for the private gateway.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ecs.c6.4xlarge
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
 	// The private gateway alias.
+	//
+	// example:
+	//
+	// mygateway1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
@@ -1379,12 +1629,28 @@ func (s *CreateGatewayRequest) SetName(v string) *CreateGatewayRequest {
 
 type CreateGatewayResponseBody struct {
 	// The region ID of the private gateway.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	// The private gateway ID.
+	//
+	// example:
+	//
+	// gw-1uhcqmsc7x22******
 	GatewayId *string `json:"GatewayId,omitempty" xml:"GatewayId,omitempty"`
 	// The returned message.
+	//
+	// example:
+	//
+	// Successfully create gateway.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 40325405-579C-4D82****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1447,8 +1713,16 @@ func (s *CreateGatewayResponse) SetBody(v *CreateGatewayResponseBody) *CreateGat
 
 type CreateGatewayIntranetLinkedVpcRequest struct {
 	// The vSwitch ID.
+	//
+	// example:
+	//
+	// vsw-8vbqn2at0kljjxxxx****
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
 	// The virtual private cloud (VPC) ID.
+	//
+	// example:
+	//
+	// vpc-uf66uio7md****
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
@@ -1472,10 +1746,22 @@ func (s *CreateGatewayIntranetLinkedVpcRequest) SetVpcId(v string) *CreateGatewa
 
 type CreateGatewayIntranetLinkedVpcResponseBody struct {
 	// The private gateway ID.
+	//
+	// example:
+	//
+	// gw-1uhcqmsc7x22******
 	GatewayId *string `json:"GatewayId,omitempty" xml:"GatewayId,omitempty"`
 	// The returned message.
+	//
+	// example:
+	//
+	// Successfully add intranet linked vpc for gateway
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 40325405-579C-4D82****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1532,24 +1818,69 @@ func (s *CreateGatewayIntranetLinkedVpcResponse) SetBody(v *CreateGatewayIntrane
 }
 
 type CreateResourceRequest struct {
-	// Specifies whether to enable auto-renewal. Valid values: false (default)
+	// Specifies whether to enable auto-renewal. Valid values:
 	//
-	// *   true
+	// 	- false (default)
+	//
+	// 	- true
+	//
+	// example:
+	//
+	// false
 	AutoRenewal *bool `json:"AutoRenewal,omitempty" xml:"AutoRenewal,omitempty"`
-	// The billing method of the instance. Valid values:
+	// The billing method. Valid values:
 	//
-	// *   PrePaid: the subscription billing method.
-	// *   PostPaid: the pay-as-you-go billing method.
+	// 	- PrePaid: the subscription billing method.
+	//
+	// 	- PostPaid: the pay-as-you-go billing method.
+	//
+	// >  This parameter is required when the ResourceType parameter is set to Dedicated.
+	//
+	// example:
+	//
+	// PostPaid
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
 	// The number of ECS instances.
+	//
+	// >  This parameter is required when the ResourceType parameter is set to Dedicated.
+	//
+	// example:
+	//
+	// 5
 	EcsInstanceCount *int32 `json:"EcsInstanceCount,omitempty" xml:"EcsInstanceCount,omitempty"`
 	// The type of the Elastic Compute Service (ECS) instance.
-	EcsInstanceType            *string                                          `json:"EcsInstanceType,omitempty" xml:"EcsInstanceType,omitempty"`
-	ResourceType               *string                                          `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	//
+	// >  This parameter is required when the ResourceType parameter is set to Dedicated.
+	//
+	// example:
+	//
+	// ecs.c6.8xlarge
+	EcsInstanceType *string `json:"EcsInstanceType,omitempty" xml:"EcsInstanceType,omitempty"`
+	// The type of the resource group. Valid values:
+	//
+	// 	- Dedicated: the dedicated resource group.
+	//
+	// 	- SelfManaged: the self-managed resource group.
+	//
+	// >  If you use a self-managed resource group, you must configure a whitelist.
+	//
+	// example:
+	//
+	// Dedicated
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The configurations of the self-managed resource group.
 	SelfManagedResourceOptions *CreateResourceRequestSelfManagedResourceOptions `json:"SelfManagedResourceOptions,omitempty" xml:"SelfManagedResourceOptions,omitempty" type:"Struct"`
 	// The size of the system disk. Unit: GiB. Valid values: 200 to 2000. Default value: 200.
+	//
+	// example:
+	//
+	// 200
 	SystemDiskSize *int32 `json:"SystemDiskSize,omitempty" xml:"SystemDiskSize,omitempty"`
-	// The zone to which the instance belongs.
+	// The ID of the zone in which the instance resides.
+	//
+	// example:
+	//
+	// cn-shanghai-f
 	Zone *string `json:"Zone,omitempty" xml:"Zone,omitempty"`
 }
 
@@ -1602,10 +1933,22 @@ func (s *CreateResourceRequest) SetZone(v string) *CreateResourceRequest {
 }
 
 type CreateResourceRequestSelfManagedResourceOptions struct {
-	ExternalClusterId *string                                                           `json:"ExternalClusterId,omitempty" xml:"ExternalClusterId,omitempty"`
-	NodeMatchLabels   map[string]*string                                                `json:"NodeMatchLabels,omitempty" xml:"NodeMatchLabels,omitempty"`
-	NodeTolerations   []*CreateResourceRequestSelfManagedResourceOptionsNodeTolerations `json:"NodeTolerations,omitempty" xml:"NodeTolerations,omitempty" type:"Repeated"`
-	RoleName          *string                                                           `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
+	// The ID of the self-managed cluster.
+	//
+	// example:
+	//
+	// cf0386f250f2545689ca7fdd1cd******
+	ExternalClusterId *string `json:"ExternalClusterId,omitempty" xml:"ExternalClusterId,omitempty"`
+	// The tag key-value pairs for nodes.
+	NodeMatchLabels map[string]*string `json:"NodeMatchLabels,omitempty" xml:"NodeMatchLabels,omitempty"`
+	// Tolerations for nodes.
+	NodeTolerations []*CreateResourceRequestSelfManagedResourceOptionsNodeTolerations `json:"NodeTolerations,omitempty" xml:"NodeTolerations,omitempty" type:"Repeated"`
+	// The name of the RAM user to which the permissions on Elastic Algorithm Service of Platform for AI (PAI-EAS) are granted.
+	//
+	// example:
+	//
+	// clusterrole
+	RoleName *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
 }
 
 func (s CreateResourceRequestSelfManagedResourceOptions) String() string {
@@ -1637,10 +1980,44 @@ func (s *CreateResourceRequestSelfManagedResourceOptions) SetRoleName(v string) 
 }
 
 type CreateResourceRequestSelfManagedResourceOptionsNodeTolerations struct {
-	Effect   *string `json:"effect,omitempty" xml:"effect,omitempty"`
-	Key      *string `json:"key,omitempty" xml:"key,omitempty"`
+	// The result.
+	//
+	// Valid values:
+	//
+	// 	- PreferNoSchedule
+	//
+	// 	- NoSchedule
+	//
+	// 	- NoExecute
+	//
+	// example:
+	//
+	// NoSchedule
+	Effect *string `json:"effect,omitempty" xml:"effect,omitempty"`
+	// The key name.
+	//
+	// example:
+	//
+	// key1
+	Key *string `json:"key,omitempty" xml:"key,omitempty"`
+	// The relationship between key names and key values.
+	//
+	// Valid values:
+	//
+	// 	- Equal
+	//
+	// 	- Exists
+	//
+	// example:
+	//
+	// Equal
 	Operator *string `json:"operator,omitempty" xml:"operator,omitempty"`
-	Value    *string `json:"value,omitempty" xml:"value,omitempty"`
+	// The key value.
+	//
+	// example:
+	//
+	// value1
+	Value *string `json:"value,omitempty" xml:"value,omitempty"`
 }
 
 func (s CreateResourceRequestSelfManagedResourceOptionsNodeTolerations) String() string {
@@ -1672,12 +2049,38 @@ func (s *CreateResourceRequestSelfManagedResourceOptionsNodeTolerations) SetValu
 }
 
 type CreateResourceResponseBody struct {
-	ClusterId    *string   `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	InstanceIds  []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
-	OwnerUid     *string   `json:"OwnerUid,omitempty" xml:"OwnerUid,omitempty"`
-	RequestId    *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ResourceId   *string   `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	ResourceName *string   `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
+	// The ID of the cluster to which the resource group belongs.
+	//
+	// example:
+	//
+	// cn-shanghai
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The instance IDs.
+	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
+	// The user ID (UID) of the resource group owner.
+	//
+	// example:
+	//
+	// 14401087478****
+	OwnerUid *string `json:"OwnerUid,omitempty" xml:"OwnerUid,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 40325405-579C-4D82****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the resource group.
+	//
+	// example:
+	//
+	// eas-r-h7lcw24dyqztwxxxxxx
+	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The name of the resource group.
+	//
+	// example:
+	//
+	// MyResource
+	ResourceName *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
 }
 
 func (s CreateResourceResponseBody) String() string {
@@ -1748,13 +2151,62 @@ func (s *CreateResourceResponse) SetBody(v *CreateResourceResponseBody) *CreateR
 }
 
 type CreateResourceInstancesRequest struct {
-	AutoRenewal      *bool   `json:"AutoRenewal,omitempty" xml:"AutoRenewal,omitempty"`
-	ChargeType       *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	EcsInstanceCount *int32  `json:"EcsInstanceCount,omitempty" xml:"EcsInstanceCount,omitempty"`
-	EcsInstanceType  *string `json:"EcsInstanceType,omitempty" xml:"EcsInstanceType,omitempty"`
-	SystemDiskSize   *int32  `json:"SystemDiskSize,omitempty" xml:"SystemDiskSize,omitempty"`
-	UserData         *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
-	Zone             *string `json:"Zone,omitempty" xml:"Zone,omitempty"`
+	// Specifies whether to enable auto-renewal. Valid values:
+	//
+	// 	- false (default)
+	//
+	// 	- true
+	//
+	// example:
+	//
+	// false
+	AutoRenewal *bool `json:"AutoRenewal,omitempty" xml:"AutoRenewal,omitempty"`
+	// The billing method of the instance. Valid values:
+	//
+	// 	- PrePaid: subscription.
+	//
+	// 	- PostPaid: pay-as-you-go.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// PrePaid
+	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	// The number of instances that you want to create. Valid values: 1 to 100.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 5
+	EcsInstanceCount *int32 `json:"EcsInstanceCount,omitempty" xml:"EcsInstanceCount,omitempty"`
+	// The type of the Elastic Compute Service (ECS) instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ecs.s6-c1m2.xlarge
+	EcsInstanceType *string `json:"EcsInstanceType,omitempty" xml:"EcsInstanceType,omitempty"`
+	// The size of the system disk. Unit: GiB. Valid values: 200 to 2000. Default value: 200.
+	//
+	// example:
+	//
+	// 200
+	SystemDiskSize *int32 `json:"SystemDiskSize,omitempty" xml:"SystemDiskSize,omitempty"`
+	// The user-defined information. This parameter is not in use.
+	//
+	// example:
+	//
+	// x112223333
+	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	// The zone to which the instance belongs.
+	//
+	// example:
+	//
+	// cn-shanghai-f
+	Zone *string `json:"Zone,omitempty" xml:"Zone,omitempty"`
 }
 
 func (s CreateResourceInstancesRequest) String() string {
@@ -1801,9 +2253,20 @@ func (s *CreateResourceInstancesRequest) SetZone(v string) *CreateResourceInstan
 }
 
 type CreateResourceInstancesResponseBody struct {
+	// The instance IDs.
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
-	Message     *string   `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId   *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The returned message.
+	//
+	// example:
+	//
+	// Create 5 new ecs instance(s) in resource [eas-r-asdasdasd] successfully
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 40325405-579C-4D82****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateResourceInstancesResponseBody) String() string {
@@ -1859,7 +2322,21 @@ func (s *CreateResourceInstancesResponse) SetBody(v *CreateResourceInstancesResp
 }
 
 type CreateResourceLogRequest struct {
-	LogStore    *string `json:"LogStore,omitempty" xml:"LogStore,omitempty"`
+	// The Logstore of Log Service. For more information about how to query a Logstore, see [ListLogStores](https://help.aliyun.com/document_detail/426970.html).
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// access_log
+	LogStore *string `json:"LogStore,omitempty" xml:"LogStore,omitempty"`
+	// The Log Service project that is associated with the resource group. For more information about how to query the project, see [ListProject](https://help.aliyun.com/document_detail/74955.html).
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// eas-r-asdasdasd-sls
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
 }
 
@@ -1882,7 +2359,17 @@ func (s *CreateResourceLogRequest) SetProjectName(v string) *CreateResourceLogRe
 }
 
 type CreateResourceLogResponseBody struct {
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The returned message.
+	//
+	// example:
+	//
+	// Resource [eas-r-asdasdasd] is deleted.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 40325405-579C-4D82****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1938,7 +2425,7 @@ type CreateServiceRequest struct {
 	//
 	// Valid values:
 	//
-	// *   true
+	// 	- true
 	//
 	//     <!-- -->
 	//
@@ -1946,17 +2433,172 @@ type CreateServiceRequest struct {
 	//
 	//     <!-- -->
 	//
-	// *   false
+	// 	- false
 	//
 	//     <!-- -->
 	//
 	//     <!-- -->
 	//
 	//     <!-- -->
-	Develop     *string            `json:"Develop,omitempty" xml:"Develop,omitempty"`
-	Labels      map[string]*string `json:"Labels,omitempty" xml:"Labels,omitempty"`
-	WorkspaceId *string            `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
-	Body        *string            `json:"body,omitempty" xml:"body,omitempty"`
+	//
+	// example:
+	//
+	// true
+	Develop *string `json:"Develop,omitempty" xml:"Develop,omitempty"`
+	// The custom label.
+	Labels map[string]*string `json:"Labels,omitempty" xml:"Labels,omitempty"`
+	// The workspace ID.
+	//
+	// example:
+	//
+	// 123456
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	// The request body. For more information about the key request parameters, see **Table 1. Request body parameters*	- and **Table 2. Metadata parameters**. For more information about all related parameters, see [Parameters of model services](https://help.aliyun.com/document_detail/450525.html).
+	//
+	// example:
+	//
+	// Service deployment by using an image:
+	//
+	// {
+	//
+	//   "name": "foo",
+	//
+	//   "metadata": {
+	//
+	//     "instance": 2,
+	//
+	//     "memory": 7000,
+	//
+	//     "cpu": 4
+	//
+	//     },
+	//
+	//   "containers": [
+	//
+	//     {
+	//
+	//       "image": "****",
+	//
+	//       "script": "***	- --listen=0.0.0.0 --server_port=8000 --headless",
+	//
+	//       "port": 8000
+	//
+	//     }
+	//
+	//   ],
+	//
+	//   "storage": [
+	//
+	//     {
+	//
+	//       "oss": {
+	//
+	//         "path": "oss://examplebuket/data111/",
+	//
+	//         "readOnly": false
+	//
+	//       },
+	//
+	//       "properties": {
+	//
+	//         "resource_type": "model"
+	//
+	//       },
+	//
+	//       "mount_path": "/data"
+	//
+	//     }
+	//
+	//   ]
+	//
+	// }
+	//
+	// AI-Web application deployment by using an image:
+	//
+	// {
+	//
+	//   "name": "foo",
+	//
+	//   "metadata": {
+	//
+	//     "instance": 1,
+	//
+	//     "memory": 7000,
+	//
+	//     "cpu": 4,
+	//
+	//     "enable_webservice": true
+	//
+	//   },
+	//
+	//   "containers": [
+	//
+	//     {
+	//
+	//       "image": "****",
+	//
+	//       "script": "***	- --listen=0.0.0.0 --server_port=8000 --headless",
+	//
+	//       "port": 8000
+	//
+	//     }
+	//
+	//   ],
+	//
+	//   "storage": [
+	//
+	//     {
+	//
+	//       "oss": {
+	//
+	//         "path": "oss://examplebucket/data111/",
+	//
+	//         "readOnly": false
+	//
+	//       },
+	//
+	//       "properties": {
+	//
+	//       "resource_type": "model"
+	//
+	//       },
+	//
+	//       "mount_path": "/data"
+	//
+	//     }
+	//
+	//   ]
+	//
+	// }
+	//
+	// Service deployment by using models and processors:
+	//
+	// {
+	//
+	//   "metadata": {
+	//
+	//     "instance": 1,
+	//
+	//     "memory": 7000,
+	//
+	//     "cpu": 4
+	//
+	//   },
+	//
+	//   "name": "foo",
+	//
+	//   "model_config": {},
+	//
+	//   "processor_type": "python",
+	//
+	//   "processor_path": "oss://****",
+	//
+	//   "processor_entry": "a.py",
+	//
+	//   "model_path": "oss://****"
+	//
+	// }
+	Body *string `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateServiceRequest) String() string {
@@ -1992,7 +2634,7 @@ type CreateServiceShrinkRequest struct {
 	//
 	// Valid values:
 	//
-	// *   true
+	// 	- true
 	//
 	//     <!-- -->
 	//
@@ -2000,17 +2642,172 @@ type CreateServiceShrinkRequest struct {
 	//
 	//     <!-- -->
 	//
-	// *   false
+	// 	- false
 	//
 	//     <!-- -->
 	//
 	//     <!-- -->
 	//
 	//     <!-- -->
-	Develop      *string `json:"Develop,omitempty" xml:"Develop,omitempty"`
+	//
+	// example:
+	//
+	// true
+	Develop *string `json:"Develop,omitempty" xml:"Develop,omitempty"`
+	// The custom label.
 	LabelsShrink *string `json:"Labels,omitempty" xml:"Labels,omitempty"`
-	WorkspaceId  *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
-	Body         *string `json:"body,omitempty" xml:"body,omitempty"`
+	// The workspace ID.
+	//
+	// example:
+	//
+	// 123456
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	// The request body. For more information about the key request parameters, see **Table 1. Request body parameters*	- and **Table 2. Metadata parameters**. For more information about all related parameters, see [Parameters of model services](https://help.aliyun.com/document_detail/450525.html).
+	//
+	// example:
+	//
+	// Service deployment by using an image:
+	//
+	// {
+	//
+	//   "name": "foo",
+	//
+	//   "metadata": {
+	//
+	//     "instance": 2,
+	//
+	//     "memory": 7000,
+	//
+	//     "cpu": 4
+	//
+	//     },
+	//
+	//   "containers": [
+	//
+	//     {
+	//
+	//       "image": "****",
+	//
+	//       "script": "***	- --listen=0.0.0.0 --server_port=8000 --headless",
+	//
+	//       "port": 8000
+	//
+	//     }
+	//
+	//   ],
+	//
+	//   "storage": [
+	//
+	//     {
+	//
+	//       "oss": {
+	//
+	//         "path": "oss://examplebuket/data111/",
+	//
+	//         "readOnly": false
+	//
+	//       },
+	//
+	//       "properties": {
+	//
+	//         "resource_type": "model"
+	//
+	//       },
+	//
+	//       "mount_path": "/data"
+	//
+	//     }
+	//
+	//   ]
+	//
+	// }
+	//
+	// AI-Web application deployment by using an image:
+	//
+	// {
+	//
+	//   "name": "foo",
+	//
+	//   "metadata": {
+	//
+	//     "instance": 1,
+	//
+	//     "memory": 7000,
+	//
+	//     "cpu": 4,
+	//
+	//     "enable_webservice": true
+	//
+	//   },
+	//
+	//   "containers": [
+	//
+	//     {
+	//
+	//       "image": "****",
+	//
+	//       "script": "***	- --listen=0.0.0.0 --server_port=8000 --headless",
+	//
+	//       "port": 8000
+	//
+	//     }
+	//
+	//   ],
+	//
+	//   "storage": [
+	//
+	//     {
+	//
+	//       "oss": {
+	//
+	//         "path": "oss://examplebucket/data111/",
+	//
+	//         "readOnly": false
+	//
+	//       },
+	//
+	//       "properties": {
+	//
+	//       "resource_type": "model"
+	//
+	//       },
+	//
+	//       "mount_path": "/data"
+	//
+	//     }
+	//
+	//   ]
+	//
+	// }
+	//
+	// Service deployment by using models and processors:
+	//
+	// {
+	//
+	//   "metadata": {
+	//
+	//     "instance": 1,
+	//
+	//     "memory": 7000,
+	//
+	//     "cpu": 4
+	//
+	//   },
+	//
+	//   "name": "foo",
+	//
+	//   "model_config": {},
+	//
+	//   "processor_type": "python",
+	//
+	//   "processor_path": "oss://****",
+	//
+	//   "processor_entry": "a.py",
+	//
+	//   "model_path": "oss://****"
+	//
+	// }
+	Body *string `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateServiceShrinkRequest) String() string {
@@ -2042,13 +2839,48 @@ func (s *CreateServiceShrinkRequest) SetBody(v string) *CreateServiceShrinkReque
 }
 
 type CreateServiceResponseBody struct {
+	// The public endpoint of the created service.
+	//
+	// example:
+	//
+	// http://pai-eas.vpc.cn-shanghai.****
 	InternetEndpoint *string `json:"InternetEndpoint,omitempty" xml:"InternetEndpoint,omitempty"`
+	// The internal endpoint of the created service.
+	//
+	// example:
+	//
+	// http://pai-eas.cn-shanghai.****
 	IntranetEndpoint *string `json:"IntranetEndpoint,omitempty" xml:"IntranetEndpoint,omitempty"`
-	Region           *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	RequestId        *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ServiceId        *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
-	ServiceName      *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
-	Status           *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The region ID of the created service.
+	//
+	// example:
+	//
+	// cn-shanghai
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 40325405-579C-4D82****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the created service.
+	//
+	// example:
+	//
+	// eas-m-aaxxxddf
+	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	// The name of the created service.
+	//
+	// example:
+	//
+	// yourname
+	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
+	// The service state.
+	//
+	// example:
+	//
+	// Creating
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s CreateServiceResponseBody) String() string {
@@ -2126,11 +2958,25 @@ func (s *CreateServiceResponse) SetBody(v *CreateServiceResponseBody) *CreateSer
 type CreateServiceAutoScalerRequest struct {
 	// The Autoscaler operation.
 	Behavior *CreateServiceAutoScalerRequestBehavior `json:"behavior,omitempty" xml:"behavior,omitempty" type:"Struct"`
-	// The maximum number of instances. The value must be greater than that of the min parameter.
+	// The maximum number of instances in the service. The value of max must be greater than the value of min.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 8
 	Max *int32 `json:"max,omitempty" xml:"max,omitempty"`
-	// The minimum number of instances. The value must be greater than 0.
+	// The minimum number of instances in the service.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2
 	Min *int32 `json:"min,omitempty" xml:"min,omitempty"`
-	// The Autoscaler strategies.
+	// The service for which the metric is specified. If you do not set this parameter, the current service is specified by default.
+	//
+	// This parameter is required.
 	ScaleStrategies []*CreateServiceAutoScalerRequestScaleStrategies `json:"scaleStrategies,omitempty" xml:"scaleStrategies,omitempty" type:"Repeated"`
 }
 
@@ -2196,8 +3042,16 @@ func (s *CreateServiceAutoScalerRequestBehavior) SetScaleUp(v *CreateServiceAuto
 
 type CreateServiceAutoScalerRequestBehaviorOnZero struct {
 	// The time window that is required before the number of instances is reduced to 0. The number of instances can be reduced to 0 only if no request is available or no traffic exists in the specified time window. Default value: 600.
+	//
+	// example:
+	//
+	// 600
 	ScaleDownGracePeriodSeconds *int32 `json:"scaleDownGracePeriodSeconds,omitempty" xml:"scaleDownGracePeriodSeconds,omitempty"`
-	// The number of instances that you want to create at a time if the number of instances is scaled out from 0. Default value: 1.
+	// The number of instances that you want to create at a time if the number of instances is 0. Default value: 1.
+	//
+	// example:
+	//
+	// 1
 	ScaleUpActivationReplicas *int32 `json:"scaleUpActivationReplicas,omitempty" xml:"scaleUpActivationReplicas,omitempty"`
 }
 
@@ -2221,6 +3075,10 @@ func (s *CreateServiceAutoScalerRequestBehaviorOnZero) SetScaleUpActivationRepli
 
 type CreateServiceAutoScalerRequestBehaviorScaleDown struct {
 	// The time window that is required before the scale-in operation is performed. The scale-in operation can be performed only if the specified metric drops below the specified threshold in the specified time window. Default value: 300.
+	//
+	// example:
+	//
+	// 300
 	StabilizationWindowSeconds *int32 `json:"stabilizationWindowSeconds,omitempty" xml:"stabilizationWindowSeconds,omitempty"`
 }
 
@@ -2239,6 +3097,10 @@ func (s *CreateServiceAutoScalerRequestBehaviorScaleDown) SetStabilizationWindow
 
 type CreateServiceAutoScalerRequestBehaviorScaleUp struct {
 	// The time window that is required before the scale-out operation is performed. The scale-out operation can be performed only if the specified metric exceeds the specified threshold in the specified time window. Default value: 0.
+	//
+	// example:
+	//
+	// 0
 	StabilizationWindowSeconds *int32 `json:"stabilizationWindowSeconds,omitempty" xml:"stabilizationWindowSeconds,omitempty"`
 }
 
@@ -2258,15 +3120,37 @@ func (s *CreateServiceAutoScalerRequestBehaviorScaleUp) SetStabilizationWindowSe
 type CreateServiceAutoScalerRequestScaleStrategies struct {
 	// The name of the metric for triggering auto scaling. Valid values:
 	//
-	// *   QPS: the queries per second (QPS) for an individual instance.
-	// *   CPU: the CPU utilization.
+	// 	- qps: the queries per second (qps) for an individual instance.
+	//
+	// 	- cpu: the cpu utilization.
+	//
+	// 	- gpu[util]: gpu utilization.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// qps
 	MetricName *string `json:"metricName,omitempty" xml:"metricName,omitempty"`
 	// The service for which the metric is specified. If you do not set this parameter, the current service is specified by default.
+	//
+	// example:
+	//
+	// demo_svc
 	Service *string `json:"service,omitempty" xml:"service,omitempty"`
 	// The threshold of the metric that triggers auto scaling.
 	//
-	// *   If you set metricName to QPS, scale-out is triggered when the average QPS for a single instance is greater than this threshold.
-	// *   If you set metricName to CPU, scale-out is triggered when the average CPU utilization for a single instance is greater than this threshold.
+	// 	- If you set metricName to qps, scale-out is triggered when the average qps for a single instance is greater than this threshold.
+	//
+	// 	- If you set metricName to cpu, scale-out is triggered when the average cpu utilization for a single instance is greater than this threshold.
+	//
+	// 	- If you set metricName to gpu, scale-out is triggered when the average cpu utilization for a single instance is greater than this threshold.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10
 	Threshold *float32 `json:"threshold,omitempty" xml:"threshold,omitempty"`
 }
 
@@ -2294,7 +3178,17 @@ func (s *CreateServiceAutoScalerRequestScaleStrategies) SetThreshold(v float32) 
 }
 
 type CreateServiceAutoScalerResponseBody struct {
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The returned message.
+	//
+	// example:
+	//
+	// Succeed to auto scale service [foo]
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 40325405-579C-4D82****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2346,8 +3240,12 @@ func (s *CreateServiceAutoScalerResponse) SetBody(v *CreateServiceAutoScalerResp
 }
 
 type CreateServiceCronScalerRequest struct {
-	ExcludeDates []*string                                  `json:"ExcludeDates,omitempty" xml:"ExcludeDates,omitempty" type:"Repeated"`
-	ScaleJobs    []*CreateServiceCronScalerRequestScaleJobs `json:"ScaleJobs,omitempty" xml:"ScaleJobs,omitempty" type:"Repeated"`
+	// The points in time that are excluded when you schedule a CronHPA job. The points in time must be specified by using a cron expression.
+	ExcludeDates []*string `json:"ExcludeDates,omitempty" xml:"ExcludeDates,omitempty" type:"Repeated"`
+	// The description of the CronHPA job.
+	//
+	// This parameter is required.
+	ScaleJobs []*CreateServiceCronScalerRequestScaleJobs `json:"ScaleJobs,omitempty" xml:"ScaleJobs,omitempty" type:"Repeated"`
 }
 
 func (s CreateServiceCronScalerRequest) String() string {
@@ -2369,9 +3267,28 @@ func (s *CreateServiceCronScalerRequest) SetScaleJobs(v []*CreateServiceCronScal
 }
 
 type CreateServiceCronScalerRequestScaleJobs struct {
-	Name       *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Schedule   *string `json:"Schedule,omitempty" xml:"Schedule,omitempty"`
-	TargetSize *int32  `json:"TargetSize,omitempty" xml:"TargetSize,omitempty"`
+	// The name of the CronHPA job.
+	//
+	// example:
+	//
+	// scale-job-1
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The cron expression that is used to configure the execution time of the CronHPA job. For more information about how to configure cron expressions, see **Description of special characters*	- in this topic.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0 18 	- 	- 	- *
+	Schedule *string `json:"Schedule,omitempty" xml:"Schedule,omitempty"`
+	// The number of instances that you want to configure for the CronHPA job.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	TargetSize *int32 `json:"TargetSize,omitempty" xml:"TargetSize,omitempty"`
 }
 
 func (s CreateServiceCronScalerRequestScaleJobs) String() string {
@@ -2398,7 +3315,17 @@ func (s *CreateServiceCronScalerRequestScaleJobs) SetTargetSize(v int32) *Create
 }
 
 type CreateServiceCronScalerResponseBody struct {
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The returned message.
+	//
+	// example:
+	//
+	// Create cron scaler for service [foo] successfully
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 40325405-579C-4D82****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2450,7 +3377,13 @@ func (s *CreateServiceCronScalerResponse) SetBody(v *CreateServiceCronScalerResp
 }
 
 type CreateServiceMirrorRequest struct {
-	Ratio  *int32    `json:"Ratio,omitempty" xml:"Ratio,omitempty"`
+	// The percentage of the traffic that is mirrored to the destination service. Valid values: 0 to 100.
+	//
+	// example:
+	//
+	// 30
+	Ratio *int32 `json:"Ratio,omitempty" xml:"Ratio,omitempty"`
+	// The instances.
 	Target []*string `json:"Target,omitempty" xml:"Target,omitempty" type:"Repeated"`
 }
 
@@ -2473,7 +3406,17 @@ func (s *CreateServiceMirrorRequest) SetTarget(v []*string) *CreateServiceMirror
 }
 
 type CreateServiceMirrorResponseBody struct {
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The returned message.
+	//
+	// example:
+	//
+	// Traffic mirroring is ON for service [foo] in region [cn-shanghia], ratio [70%]
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 40325405-579C-4D82***
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2526,8 +3469,16 @@ func (s *CreateServiceMirrorResponse) SetBody(v *CreateServiceMirrorResponseBody
 
 type DeleteBenchmarkTaskResponseBody struct {
 	// The returned message.
+	//
+	// example:
+	//
+	// Benchmark task [benchmark-test-service-234c] is Deleting
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 40325405-579C-4D82****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2580,10 +3531,22 @@ func (s *DeleteBenchmarkTaskResponse) SetBody(v *DeleteBenchmarkTaskResponseBody
 
 type DeleteGatewayResponseBody struct {
 	// The private gateway ID.
+	//
+	// example:
+	//
+	// gw-1uhcqmsc7x22******
 	GatewayId *string `json:"GatewayId,omitempty" xml:"GatewayId,omitempty"`
 	// The returned message.
+	//
+	// example:
+	//
+	// Gateway is deleted.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 40325405-579C-4D82****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2641,8 +3604,16 @@ func (s *DeleteGatewayResponse) SetBody(v *DeleteGatewayResponseBody) *DeleteGat
 
 type DeleteGatewayIntranetLinkedVpcRequest struct {
 	// The ID of the vSwitch.
+	//
+	// example:
+	//
+	// vsw-8vbqn2at0kljjxxxx****
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
 	// The virtual private cloud (VPC) ID.
+	//
+	// example:
+	//
+	// vpc-uf66uio7md****
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
@@ -2666,10 +3637,22 @@ func (s *DeleteGatewayIntranetLinkedVpcRequest) SetVpcId(v string) *DeleteGatewa
 
 type DeleteGatewayIntranetLinkedVpcResponseBody struct {
 	// The private gateway ID.
+	//
+	// example:
+	//
+	// gw-1uhcqmsc7x22******
 	GatewayId *string `json:"GatewayId,omitempty" xml:"GatewayId,omitempty"`
 	// The returned message.
+	//
+	// example:
+	//
+	// Successfully delete intranet linked vpc for gateway
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 40325405-579C-4D82****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2726,7 +3709,17 @@ func (s *DeleteGatewayIntranetLinkedVpcResponse) SetBody(v *DeleteGatewayIntrane
 }
 
 type DeleteResourceResponseBody struct {
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The returned message.
+	//
+	// example:
+	//
+	// Resource [eas-r-asdasdasd] is deleted.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 40325405-579C-4D82-9624-EC2B1779848E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2778,7 +3771,17 @@ func (s *DeleteResourceResponse) SetBody(v *DeleteResourceResponseBody) *DeleteR
 }
 
 type DeleteResourceDLinkResponseBody struct {
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The returned message.
+	//
+	// example:
+	//
+	// Network interfaces are deleting
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 40325405-579C-4D82****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2830,7 +3833,21 @@ func (s *DeleteResourceDLinkResponse) SetBody(v *DeleteResourceDLinkResponseBody
 }
 
 type DeleteResourceInstancesRequest struct {
-	AllFailed    *bool   `json:"AllFailed,omitempty" xml:"AllFailed,omitempty"`
+	// Specifies whether to delete all the instances that fail to be created. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// true
+	AllFailed *bool `json:"AllFailed,omitempty" xml:"AllFailed,omitempty"`
+	// The instances. Separate multiple instances with commas (,), such as `instanceId1,instanceId2`. For more information about how to query the instances, see [ListResourceInstances](https://help.aliyun.com/document_detail/412129.html).
+	//
+	// example:
+	//
+	// eas-i-xxxxxxx,eas-i-xxxxxxx
 	InstanceList *string `json:"InstanceList,omitempty" xml:"InstanceList,omitempty"`
 }
 
@@ -2853,7 +3870,17 @@ func (s *DeleteResourceInstancesRequest) SetInstanceList(v string) *DeleteResour
 }
 
 type DeleteResourceInstancesResponseBody struct {
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The returned message.
+	//
+	// example:
+	//
+	// Instances eas-i-011227132046,eas-i-011227132046 are deleting
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 40325405-579C-4D82****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2906,8 +3933,16 @@ func (s *DeleteResourceInstancesResponse) SetBody(v *DeleteResourceInstancesResp
 
 type DeleteResourceLogResponseBody struct {
 	// The returned message.
+	//
+	// example:
+	//
+	// Log service for resource [eas-r-asdasdasd] is deleting
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 40325405-579C-4D82****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2959,7 +3994,17 @@ func (s *DeleteResourceLogResponse) SetBody(v *DeleteResourceLogResponseBody) *D
 }
 
 type DeleteServiceResponseBody struct {
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The returned message.
+	//
+	// example:
+	//
+	// Service [foo] in region [cn-shanghai] is terminating
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 40325405-579C-4D82****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3011,7 +4056,17 @@ func (s *DeleteServiceResponse) SetBody(v *DeleteServiceResponseBody) *DeleteSer
 }
 
 type DeleteServiceAutoScalerResponseBody struct {
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The returned message.
+	//
+	// example:
+	//
+	// Autoscaler for service [foo] deleted successfully
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 40325405-579C-4D82****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3063,7 +4118,17 @@ func (s *DeleteServiceAutoScalerResponse) SetBody(v *DeleteServiceAutoScalerResp
 }
 
 type DeleteServiceCronScalerResponseBody struct {
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The returned message.
+	//
+	// example:
+	//
+	// Cronscaler for service [foo] deleted successfully
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 40325405-579C-4D82****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3116,9 +4181,24 @@ func (s *DeleteServiceCronScalerResponse) SetBody(v *DeleteServiceCronScalerResp
 
 type DeleteServiceInstancesRequest struct {
 	// The name of the container whose process needs to be restarted. This parameter takes effect only if the SoftRestart parameter is set to true.
-	Container    *string `json:"Container,omitempty" xml:"Container,omitempty"`
+	//
+	// example:
+	//
+	// worker0
+	Container *string `json:"Container,omitempty" xml:"Container,omitempty"`
+	// The instances that you want to restart. Separate multiple instance names with commas (,). For more information about how to query the instance name, see [ListServiceInstances](https://help.aliyun.com/document_detail/412108.html).
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// foo-rdsbxxxx,foo-rdsaxxxx
 	InstanceList *string `json:"InstanceList,omitempty" xml:"InstanceList,omitempty"`
 	// Specifies whether to restart only the container process without recreating the instance. Default value: false. Valid values: true and false.
+	//
+	// example:
+	//
+	// true
 	SoftRestart *bool `json:"SoftRestart,omitempty" xml:"SoftRestart,omitempty"`
 }
 
@@ -3146,7 +4226,17 @@ func (s *DeleteServiceInstancesRequest) SetSoftRestart(v bool) *DeleteServiceIns
 }
 
 type DeleteServiceInstancesResponseBody struct {
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The returned message.
+	//
+	// example:
+	//
+	// Instance(s) [foo-rdsb,foo-rdsa]  for service [foo] in region [cn-shanghai] was deleted successfully
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 40325405-579C-4D82****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3199,6 +4289,8 @@ func (s *DeleteServiceInstancesResponse) SetBody(v *DeleteServiceInstancesRespon
 
 type DeleteServiceLabelRequest struct {
 	// The service tags that you want to delete.
+	//
+	// This parameter is required.
 	Keys []*string `json:"Keys,omitempty" xml:"Keys,omitempty" type:"Repeated"`
 }
 
@@ -3217,6 +4309,8 @@ func (s *DeleteServiceLabelRequest) SetKeys(v []*string) *DeleteServiceLabelRequ
 
 type DeleteServiceLabelShrinkRequest struct {
 	// The service tags that you want to delete.
+	//
+	// This parameter is required.
 	KeysShrink *string `json:"Keys,omitempty" xml:"Keys,omitempty"`
 }
 
@@ -3235,8 +4329,16 @@ func (s *DeleteServiceLabelShrinkRequest) SetKeysShrink(v string) *DeleteService
 
 type DeleteServiceLabelResponseBody struct {
 	// The returned message.
+	//
+	// example:
+	//
+	// Succeed to delete service [service_from_zxxx] labels.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 40325405-579C-4D82****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3288,7 +4390,17 @@ func (s *DeleteServiceLabelResponse) SetBody(v *DeleteServiceLabelResponseBody) 
 }
 
 type DeleteServiceMirrorResponseBody struct {
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The returned message.
+	//
+	// example:
+	//
+	// Traffic mirroring is OFF for service [foo] in region [cn-shanghia], ratio [70%]
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 40325405-579C-4D82***
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3341,28 +4453,64 @@ func (s *DeleteServiceMirrorResponse) SetBody(v *DeleteServiceMirrorResponseBody
 
 type DescribeBenchmarkTaskResponseBody struct {
 	// The number of instances that you can test.
+	//
+	// example:
+	//
+	// 4
 	AvailableAgent *int64 `json:"AvailableAgent,omitempty" xml:"AvailableAgent,omitempty"`
 	// The ID of the operation caller.
+	//
+	// example:
+	//
+	// 1640133467****
 	CallerUid *string `json:"CallerUid,omitempty" xml:"CallerUid,omitempty"`
 	// The number of instances that you want to test.
+	//
+	// example:
+	//
+	// 4
 	DesiredAgent *int64 `json:"DesiredAgent,omitempty" xml:"DesiredAgent,omitempty"`
 	// The endpoint of the service gateway.
+	//
+	// example:
+	//
+	// 192342311234.pai-eas.cn-chengdu.aliyuncs.com
 	Endpoint *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
 	// The returned message.
+	//
+	// example:
+	//
+	// Benchmar task is Running
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The ID of the Alibaba Cloud account that is used to call the operation.
+	//
+	// example:
+	//
+	// 1029728669****
 	ParentUid *string `json:"ParentUid,omitempty" xml:"ParentUid,omitempty"`
 	// The event or reason that causes the current state of the stress testing task.
+	//
+	// example:
+	//
+	// RUNNING
 	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 40325405-579C-4D82****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The name of the service that you want to test.
+	//
+	// example:
+	//
+	// foo
 	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
 	// The state of the stress testing task.
 	//
 	// Valid values:
 	//
-	// *   Creating
+	// 	- Creating
 	//
 	//     <!-- -->
 	//
@@ -3370,7 +4518,7 @@ type DescribeBenchmarkTaskResponseBody struct {
 	//
 	//     <!-- -->
 	//
-	// *   Starting
+	// 	- Starting
 	//
 	//     <!-- -->
 	//
@@ -3378,7 +4526,7 @@ type DescribeBenchmarkTaskResponseBody struct {
 	//
 	//     <!-- -->
 	//
-	// *   DeleteFailed
+	// 	- DeleteFailed
 	//
 	//     <!-- -->
 	//
@@ -3386,7 +4534,7 @@ type DescribeBenchmarkTaskResponseBody struct {
 	//
 	//     <!-- -->
 	//
-	// *   Running
+	// 	- Running
 	//
 	//     <!-- -->
 	//
@@ -3394,7 +4542,7 @@ type DescribeBenchmarkTaskResponseBody struct {
 	//
 	//     <!-- -->
 	//
-	// *   Stopping
+	// 	- Stopping
 	//
 	//     <!-- -->
 	//
@@ -3402,7 +4550,7 @@ type DescribeBenchmarkTaskResponseBody struct {
 	//
 	//     <!-- -->
 	//
-	// *   Error
+	// 	- Error
 	//
 	//     <!-- -->
 	//
@@ -3410,7 +4558,7 @@ type DescribeBenchmarkTaskResponseBody struct {
 	//
 	//     <!-- -->
 	//
-	// *   Updating
+	// 	- Updating
 	//
 	//     <!-- -->
 	//
@@ -3418,7 +4566,7 @@ type DescribeBenchmarkTaskResponseBody struct {
 	//
 	//     <!-- -->
 	//
-	// *   Deleting
+	// 	- Deleting
 	//
 	//     <!-- -->
 	//
@@ -3426,19 +4574,35 @@ type DescribeBenchmarkTaskResponseBody struct {
 	//
 	//     <!-- -->
 	//
-	// *   CreateFailed
+	// 	- CreateFailed
 	//
 	//     <!-- -->
 	//
 	//     <!-- -->
 	//
 	//     <!-- -->
+	//
+	// example:
+	//
+	// Running
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The ID of the stress testing task.
+	//
+	// example:
+	//
+	// eas-b-gv4y86u****
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 	// The name of the stress testing task.
+	//
+	// example:
+	//
+	// benchmark-larec-test-ae70
 	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
 	// The token for authentication when a stress testing task is created.
+	//
+	// example:
+	//
+	// 6062787a-9301****
 	Token *string `json:"Token,omitempty" xml:"Token,omitempty"`
 }
 
@@ -3545,6 +4709,11 @@ func (s *DescribeBenchmarkTaskResponse) SetBody(v *DescribeBenchmarkTaskResponse
 }
 
 type DescribeBenchmarkTaskReportRequest struct {
+	// The report type of the stress testing task. Valid values: RAW and Report.
+	//
+	// example:
+	//
+	// report
 	ReportType *string `json:"ReportType,omitempty" xml:"ReportType,omitempty"`
 }
 
@@ -3562,9 +4731,114 @@ func (s *DescribeBenchmarkTaskReportRequest) SetReportType(v string) *DescribeBe
 }
 
 type DescribeBenchmarkTaskReportResponseBody struct {
-	Data      interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
-	ReportUrl *string     `json:"ReportUrl,omitempty" xml:"ReportUrl,omitempty"`
-	RequestId *string     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// If the value of ReportType is set to RAW, the details about the stress testing report are returned.
+	//
+	// example:
+	//
+	// {
+	//
+	//     "TimestampList": ["int64"],
+	//
+	//     "QPSList": ["float32"],
+	//
+	//     "RTList": [
+	//
+	//       {
+	//
+	//         "AVG": "float32",
+	//
+	//         "TP100": "float32",
+	//
+	//         "TP99": "float32",
+	//
+	//         "TP90": "float32",
+	//
+	//         "TP50": "float32",
+	//
+	//         "TP10": "float32"
+	//
+	//       }
+	//
+	//     ],
+	//
+	//     "TrafficList": [
+	//
+	//       {
+	//
+	//         "Send": "float64",
+	//
+	//         "Receive": "float64"
+	//
+	//       }
+	//
+	//     ],
+	//
+	//     "StatusCode": {
+	//
+	//       "200": "uint64",
+	//
+	//       "450": "uint64",
+	//
+	//       "500": "uint64"
+	//
+	//     },
+	//
+	//     "Count": "uint64",
+	//
+	//     "Total": "float64",
+	//
+	//     "MinRT": "float32",
+	//
+	//     "AvgRT": "float32",
+	//
+	//     "MaxRT": "float32",
+	//
+	//     "QPS": "float32",
+	//
+	//     "TotalSend": "float64",
+	//
+	//     "TotalReceive": "float64",
+	//
+	//     "RTDistribution": [
+	//
+	//       {
+	//
+	//         "Latency": "float32",
+	//
+	//         "Percentage": "int"
+	//
+	//       }
+	//
+	//     ],
+	//
+	//     "RTHistogram": [
+	//
+	//       {
+	//
+	//         "Count": "int",
+	//
+	//         "Mark": "float32",
+	//
+	//         "Frequency": "float32"
+	//
+	//       }
+	//
+	//     ]
+	//
+	//   }
+	Data interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
+	// If the value of ReportType is set to Report, the URL of the stress testing report is returned.
+	//
+	// example:
+	//
+	// http://eas-benchmark.oss-cn-chengdu.aliyuncs.com/summary/benchmark-larec-test-015d-10007.html
+	ReportUrl *string `json:"ReportUrl,omitempty" xml:"ReportUrl,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 40325405-579C-4D82********
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeBenchmarkTaskReportResponseBody) String() string {
@@ -3620,32 +4894,101 @@ func (s *DescribeBenchmarkTaskReportResponse) SetBody(v *DescribeBenchmarkTaskRe
 }
 
 type DescribeGatewayResponseBody struct {
+	// The UID of the account that is used to create the private gateway.
+	//
+	// example:
+	//
+	// 20123*******
 	CallerUid *string `json:"CallerUid,omitempty" xml:"CallerUid,omitempty"`
-	// 网关创建时间
-	CreateTime        *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The time when the private gateway was created. The time is displayed in UTC.
+	//
+	// example:
+	//
+	// 2020-05-19T14:19:42Z
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The ID of the self-managed cluster.
+	//
+	// example:
+	//
+	// c935eadf284c14c2da57a2a13ad6******
 	ExternalClusterId *string `json:"ExternalClusterId,omitempty" xml:"ExternalClusterId,omitempty"`
-	// 网关ID
-	GatewayId   *string `json:"GatewayId,omitempty" xml:"GatewayId,omitempty"`
+	// The ID of the private gateway.
+	//
+	// example:
+	//
+	// gw-1uhcqmsc7x22******
+	GatewayId *string `json:"GatewayId,omitempty" xml:"GatewayId,omitempty"`
+	// The private gateway alias.
+	//
+	// example:
+	//
+	// mygateway1
 	GatewayName *string `json:"GatewayName,omitempty" xml:"GatewayName,omitempty"`
-	// 网关创建的实例种类
+	// The instance type used for the private gateway.
+	//
+	// example:
+	//
+	// ecs.c6.4xlarge
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
 	// The Internet access control policies.
 	InternetAclPolicyList []*DescribeGatewayResponseBodyInternetAclPolicyList `json:"InternetAclPolicyList,omitempty" xml:"InternetAclPolicyList,omitempty" type:"Repeated"`
-	// 网关内部域名
-	InternetDomain  *string `json:"InternetDomain,omitempty" xml:"InternetDomain,omitempty"`
-	InternetEnabled *bool   `json:"InternetEnabled,omitempty" xml:"InternetEnabled,omitempty"`
-	// 网关外部域名
-	IntranetDomain        *string                                             `json:"IntranetDomain,omitempty" xml:"IntranetDomain,omitempty"`
-	IntranetEnabled       *bool                                               `json:"IntranetEnabled,omitempty" xml:"IntranetEnabled,omitempty"`
+	// The public endpoint.
+	//
+	// example:
+	//
+	// gw-1uhcqmsc7x22******-1801786532******.cn-hangzhou.pai-eas.aliyuncs.com
+	InternetDomain *string `json:"InternetDomain,omitempty" xml:"InternetDomain,omitempty"`
+	// Indicates whether Internet access is enabled.
+	//
+	// example:
+	//
+	// true
+	InternetEnabled *bool `json:"InternetEnabled,omitempty" xml:"InternetEnabled,omitempty"`
+	// The internal endpoint.
+	//
+	// example:
+	//
+	// gw-1uhcqmsc7x22******-1801786532******-vpc.cn-hangzhou.pai-eas.aliyuncs.com
+	IntranetDomain *string `json:"IntranetDomain,omitempty" xml:"IntranetDomain,omitempty"`
+	// Indicates whether internal network access is enabled.
+	//
+	// example:
+	//
+	// true
+	IntranetEnabled *bool `json:"IntranetEnabled,omitempty" xml:"IntranetEnabled,omitempty"`
+	// The internal endpoints.
 	IntranetLinkedVpcList []*DescribeGatewayResponseBodyIntranetLinkedVpcList `json:"IntranetLinkedVpcList,omitempty" xml:"IntranetLinkedVpcList,omitempty" type:"Repeated"`
-	// 创建网关的用户ID
+	// The user ID (UID) of the Alibaba Cloud account that is used to create the private gateway.
+	//
+	// example:
+	//
+	// 11234*******
 	ParentUid *string `json:"ParentUid,omitempty" xml:"ParentUid,omitempty"`
-	// 网关所在地域
-	Region    *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// The region ID of the private gateway.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 40325405-579C-4D82****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 网关现在的状态
+	// The state of the private gateway.
+	//
+	// example:
+	//
+	// PrivateGatewayRunning
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// 网关最后一次的更新时间
+	// The time when the private gateway was updated. The time is displayed in UTC.
+	//
+	// example:
+	//
+	// 2021-02-24T11:52:17Z
 	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
@@ -3744,14 +5087,22 @@ func (s *DescribeGatewayResponseBody) SetUpdateTime(v string) *DescribeGatewayRe
 
 type DescribeGatewayResponseBodyInternetAclPolicyList struct {
 	// The description.
+	//
+	// example:
+	//
+	// test
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	// The accessible CIDR block.
+	// The Classless Inter-Domain Routing (CIDR) block that is allowed to access the private gateway.
+	//
+	// example:
+	//
+	// 192.168.1.1/32
 	Entry *string `json:"Entry,omitempty" xml:"Entry,omitempty"`
 	// The state of the private gateway.
 	//
 	// Valid values:
 	//
-	// *   Creating
+	// 	- Creating
 	//
 	//     <!-- -->
 	//
@@ -3759,13 +5110,17 @@ type DescribeGatewayResponseBodyInternetAclPolicyList struct {
 	//
 	//     <!-- -->
 	//
-	// *   Running
+	// 	- Running
 	//
 	//     <!-- -->
 	//
 	//     <!-- -->
 	//
 	//     <!-- -->
+	//
+	// example:
+	//
+	// Running
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -3794,32 +5149,38 @@ func (s *DescribeGatewayResponseBodyInternetAclPolicyList) SetStatus(v string) *
 
 type DescribeGatewayResponseBodyIntranetLinkedVpcList struct {
 	// The IP address.
+	//
+	// example:
+	//
+	// 192.168.10.11
 	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
-	// The ID of the security group.
+	// The security group ID.
+	//
+	// example:
+	//
+	// sg-2ze4pgstgszvgq******
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	// The state of the private gateway.
+	// The state of the private gateway. Valid values:
 	//
-	// Valid values:
+	// 	- Creating
 	//
-	// *   Creating
+	// 	- Running
 	//
-	//     <!-- -->
+	// example:
 	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// *   Running
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
+	// Running
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The vSwitch ID.
+	//
+	// example:
+	//
+	// vsw-bp1txzxsdck43pp******
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
 	// The ID of the virtual private cloud (VPC).
+	//
+	// example:
+	//
+	// vpc-bp1g11zvka6zr3i******
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
@@ -3916,39 +5277,104 @@ func (s *DescribeGroupResponse) SetBody(v *Group) *DescribeGroupResponse {
 
 type DescribeResourceResponseBody struct {
 	// The ID of the cluster to which the resource group belongs.
+	//
+	// example:
+	//
+	// cn-beijing
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	// The total number of CPU cores.
+	//
+	// example:
+	//
+	// 16
 	CpuCount *int32 `json:"CpuCount,omitempty" xml:"CpuCount,omitempty"`
 	// The time when the resource group was created.
+	//
+	// example:
+	//
+	// 2020-05-19T14:19:42Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The additional information, such as the connection status of a virtual private cloud (VPC) and the log status of Log Service.
+	//
+	// example:
+	//
+	// {"vswitch_id":"vsw-bp17uo6xebcusy****","gpu_share":true,"aux_vswitch_id_list":["vsw-bp13b3pvjap3vxn****","vsw-bp1nls8o5hk8mt8*****"],"security_group_id":"sg-bp1j1z7297hcink*****","vpc_id":"vpc-bp1kjr3rfyhx01*****","destination_cidr":"172.16.0.12/28","role_arn":"acs:ram::1157703270*****:role/AliyunServiceRoleForPaiEas","sls_project":"","sls_logstore":"","sls_status":"ResourceReady","sls_message":"","update_time":""}
 	ExtraData *string `json:"ExtraData,omitempty" xml:"ExtraData,omitempty"`
 	// The total number of GPUs.
+	//
+	// example:
+	//
+	// 1
 	GpuCount *int32 `json:"GpuCount,omitempty" xml:"GpuCount,omitempty"`
 	// The total number of instances in the resource group.
+	//
+	// example:
+	//
+	// 4
 	InstanceCount *int32 `json:"InstanceCount,omitempty" xml:"InstanceCount,omitempty"`
 	// The returned message.
+	//
+	// example:
+	//
+	// Resource is ready
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The ID of the resource group owner.
+	//
+	// example:
+	//
+	// 14401087478****
 	OwnerUid *string `json:"OwnerUid,omitempty" xml:"OwnerUid,omitempty"`
 	// The total number of pay-as-you-go instances in the resource group.
+	//
+	// example:
+	//
+	// 3
 	PostPaidInstanceCount *int32 `json:"PostPaidInstanceCount,omitempty" xml:"PostPaidInstanceCount,omitempty"`
 	// The total number of subscription instances in the resource group.
+	//
+	// example:
+	//
+	// 1
 	PrePaidInstanceCount *int32 `json:"PrePaidInstanceCount,omitempty" xml:"PrePaidInstanceCount,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 902976F2-6FAF-5404-8A4D-6CC223***
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The ID of the Elastic Algorithm Service (EAS) resource.
+	//
+	// example:
+	//
+	// eas-r-glkfpsxuw57x1h*****
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 	// The name of the EAS resource.
-	ResourceName *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
-	// The type of the resource. Valid values:
 	//
-	// - Dedicated
-	// - SelfManaged
+	// example:
+	//
+	// my-resouce****
+	ResourceName *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
+	// The type of the resource group. Valid values:
+	//
+	// 	- Dedicated: the dedicated resource group.
+	//
+	// 	- SelfManaged: the self-managed resource group.
+	//
+	// example:
+	//
+	// Dedicated
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	// The state of the resource group.
+	//
+	// example:
+	//
+	// ResourceReady
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The time when the resource group was last updated.
+	//
+	// example:
+	//
+	// 2021-02-24T11:52:17Z
 	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
@@ -4070,13 +5496,38 @@ func (s *DescribeResourceResponse) SetBody(v *DescribeResourceResponseBody) *Des
 }
 
 type DescribeResourceDLinkResponseBody struct {
+	// The IDs of the secondary vSwitches that are directly connected.
 	AuxVSwitchList []*string `json:"AuxVSwitchList,omitempty" xml:"AuxVSwitchList,omitempty" type:"Repeated"`
-	// The CIDR blocks of the clients that you want to connect to. The CIDR blocks are added to the back-to-origin route of the server.
+	// The CIDR blocks of the clients that you want to connect to. After this parameter is specified, the CIDR blocks are added to the back-to-origin route of the server. Either this parameter or the VSwitchIdList parameter can be used to determine CIDR blocks.
+	//
+	// example:
+	//
+	// 72.16.0.0/16
 	DestinationCIDRs *string `json:"DestinationCIDRs,omitempty" xml:"DestinationCIDRs,omitempty"`
-	RequestId        *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	SecurityGroupId  *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	VSwitchId        *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	VpcId            *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 40325405-579C-4D82****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the security group that is directly connected.
+	//
+	// example:
+	//
+	// sg-bp1j1z7297hcink9d****
+	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	// The ID of the primary vSwitch that is directly connected.
+	//
+	// example:
+	//
+	// vsw-8vbqn2at0kljjxxxx****
+	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	// The ID of the VPC that is directly connected.
+	//
+	// example:
+	//
+	// vpc-uf66uio7md****
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s DescribeResourceDLinkResponseBody) String() string {
@@ -4147,11 +5598,36 @@ func (s *DescribeResourceDLinkResponse) SetBody(v *DescribeResourceDLinkResponse
 }
 
 type DescribeResourceLogResponseBody struct {
-	LogStore    *string `json:"LogStore,omitempty" xml:"LogStore,omitempty"`
-	Message     *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The Logstore of Log Service.
+	//
+	// example:
+	//
+	// access_log
+	LogStore *string `json:"LogStore,omitempty" xml:"LogStore,omitempty"`
+	// The returned message.
+	//
+	// example:
+	//
+	// Network interfaces are updating
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The Log Service project that is associated with the resource group.
+	//
+	// example:
+	//
+	// eas-r-asdasdasd-sls
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Status      *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 40325405-579C-4D82****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The state of the resource group.
+	//
+	// example:
+	//
+	// ResourceReady
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DescribeResourceLogResponseBody) String() string {
@@ -4246,13 +5722,52 @@ func (s *DescribeServiceResponse) SetBody(v *Service) *DescribeServiceResponse {
 }
 
 type DescribeServiceAutoScalerResponseBody struct {
-	Behavior        map[string]interface{}                                  `json:"Behavior,omitempty" xml:"Behavior,omitempty"`
-	CurrentMetrics  []*DescribeServiceAutoScalerResponseBodyCurrentMetrics  `json:"CurrentMetrics,omitempty" xml:"CurrentMetrics,omitempty" type:"Repeated"`
-	MaxReplica      *int32                                                  `json:"MaxReplica,omitempty" xml:"MaxReplica,omitempty"`
-	MinReplica      *int32                                                  `json:"MinReplica,omitempty" xml:"MinReplica,omitempty"`
-	RequestId       *string                                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The additional information about the Autoscaler policy, such as the interval of triggering Autoscaler.
+	//
+	// example:
+	//
+	// {
+	//
+	//   "behavior": {
+	//
+	//     "scaleDown": {
+	//
+	//       "stabilizationWindowSeconds": 150
+	//
+	//     }
+	//
+	//   }
+	//
+	// }
+	Behavior map[string]interface{} `json:"Behavior,omitempty" xml:"Behavior,omitempty"`
+	// The metrics.
+	CurrentMetrics []*DescribeServiceAutoScalerResponseBodyCurrentMetrics `json:"CurrentMetrics,omitempty" xml:"CurrentMetrics,omitempty" type:"Repeated"`
+	// The maximum number of instances in the service.
+	//
+	// example:
+	//
+	// 8
+	MaxReplica *int32 `json:"MaxReplica,omitempty" xml:"MaxReplica,omitempty"`
+	// The minimum number of instances in the service.
+	//
+	// example:
+	//
+	// 3
+	MinReplica *int32 `json:"MinReplica,omitempty" xml:"MinReplica,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 40325405-579C-4D82****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The auto scaling policies.
 	ScaleStrategies []*DescribeServiceAutoScalerResponseBodyScaleStrategies `json:"ScaleStrategies,omitempty" xml:"ScaleStrategies,omitempty" type:"Repeated"`
-	ServiceName     *string                                                 `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
+	// The service name.
+	//
+	// example:
+	//
+	// foo
+	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
 }
 
 func (s DescribeServiceAutoScalerResponseBody) String() string {
@@ -4299,9 +5814,28 @@ func (s *DescribeServiceAutoScalerResponseBody) SetServiceName(v string) *Descri
 }
 
 type DescribeServiceAutoScalerResponseBodyCurrentMetrics struct {
-	MetricName *string  `json:"metricName,omitempty" xml:"metricName,omitempty"`
-	Service    *string  `json:"service,omitempty" xml:"service,omitempty"`
-	Value      *float32 `json:"value,omitempty" xml:"value,omitempty"`
+	// The metric name. Valid values:
+	//
+	// 	- QPS
+	//
+	// 	- CPU
+	//
+	// example:
+	//
+	// qps
+	MetricName *string `json:"metricName,omitempty" xml:"metricName,omitempty"`
+	// The service for which the metric is specified.
+	//
+	// example:
+	//
+	// demo_svc
+	Service *string `json:"service,omitempty" xml:"service,omitempty"`
+	// The metric value.
+	//
+	// example:
+	//
+	// 10
+	Value *float32 `json:"value,omitempty" xml:"value,omitempty"`
 }
 
 func (s DescribeServiceAutoScalerResponseBodyCurrentMetrics) String() string {
@@ -4328,9 +5862,32 @@ func (s *DescribeServiceAutoScalerResponseBodyCurrentMetrics) SetValue(v float32
 }
 
 type DescribeServiceAutoScalerResponseBodyScaleStrategies struct {
-	MetricName *string  `json:"metricName,omitempty" xml:"metricName,omitempty"`
-	Service    *string  `json:"service,omitempty" xml:"service,omitempty"`
-	Threshold  *float32 `json:"threshold,omitempty" xml:"threshold,omitempty"`
+	// The metric name. Valid values:
+	//
+	// 	- QPS: the queries per second (QPS) for an individual instance.
+	//
+	// 	- CPU: the CPU utilization.
+	//
+	// example:
+	//
+	// QPS
+	MetricName *string `json:"metricName,omitempty" xml:"metricName,omitempty"`
+	// The service for which the metric is specified. If you do not set this parameter, the current service is specified by default.
+	//
+	// example:
+	//
+	// demo_svc
+	Service *string `json:"service,omitempty" xml:"service,omitempty"`
+	// The threshold of the metric that triggers auto scaling.
+	//
+	// 	- If you set metricName to QPS, scale-out is triggered when the average QPS for a single instance is greater than this threshold.
+	//
+	// 	- If you set metricName to CPU, scale-out is triggered when the average CPU utilization for a single instance is greater than this threshold.
+	//
+	// example:
+	//
+	// 10
+	Threshold *float32 `json:"threshold,omitempty" xml:"threshold,omitempty"`
 }
 
 func (s DescribeServiceAutoScalerResponseBodyScaleStrategies) String() string {
@@ -4386,10 +5943,22 @@ func (s *DescribeServiceAutoScalerResponse) SetBody(v *DescribeServiceAutoScaler
 }
 
 type DescribeServiceCronScalerResponseBody struct {
-	ExcludeDates []*string                                         `json:"ExcludeDates,omitempty" xml:"ExcludeDates,omitempty" type:"Repeated"`
-	RequestId    *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ScaleJobs    []*DescribeServiceCronScalerResponseBodyScaleJobs `json:"ScaleJobs,omitempty" xml:"ScaleJobs,omitempty" type:"Repeated"`
-	ServiceName  *string                                           `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
+	// The points in time that are excluded when you schedule a CronHPA job. The points in time must be specified by using a cron expression.
+	ExcludeDates []*string `json:"ExcludeDates,omitempty" xml:"ExcludeDates,omitempty" type:"Repeated"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 40325405-579C-4D82****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The CronHPA jobs.
+	ScaleJobs []*DescribeServiceCronScalerResponseBodyScaleJobs `json:"ScaleJobs,omitempty" xml:"ScaleJobs,omitempty" type:"Repeated"`
+	// The service name.
+	//
+	// example:
+	//
+	// foo
+	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
 }
 
 func (s DescribeServiceCronScalerResponseBody) String() string {
@@ -4421,13 +5990,48 @@ func (s *DescribeServiceCronScalerResponseBody) SetServiceName(v string) *Descri
 }
 
 type DescribeServiceCronScalerResponseBodyScaleJobs struct {
-	CreateTime    *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The time when the most recent CronHPA job was created. The time is displayed in UTC.
+	//
+	// example:
+	//
+	// 2020-06-24T02:11:30Z
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The time when the most recent CronHPA job ran. The time is displayed in UTC.
+	//
+	// example:
+	//
+	// 2022-02-24T06:31:00Z
 	LastProbeTime *string `json:"LastProbeTime,omitempty" xml:"LastProbeTime,omitempty"`
-	Message       *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	Name          *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Schedule      *string `json:"Schedule,omitempty" xml:"Schedule,omitempty"`
-	State         *string `json:"State,omitempty" xml:"State,omitempty"`
-	TargetSize    *int32  `json:"TargetSize,omitempty" xml:"TargetSize,omitempty"`
+	// The returned message.
+	//
+	// example:
+	//
+	// "cron hpa job scale-jobs-0 executed successfully. current replicas:3, desired replicas:2."
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The name of the CronHPA job.
+	//
+	// example:
+	//
+	// scale-job-1
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The cron expression that is used to configure the execution time of the CronHPA job.
+	//
+	// example:
+	//
+	// 0 18 	- 	- 	- *
+	Schedule *string `json:"Schedule,omitempty" xml:"Schedule,omitempty"`
+	// The status of the most recent CronHPA job.
+	//
+	// example:
+	//
+	// Succeed
+	State *string `json:"State,omitempty" xml:"State,omitempty"`
+	// The number of instances that you expect to configure for the CronHPA job.
+	//
+	// example:
+	//
+	// 1
+	TargetSize *int32 `json:"TargetSize,omitempty" xml:"TargetSize,omitempty"`
 }
 
 func (s DescribeServiceCronScalerResponseBodyScaleJobs) String() string {
@@ -4503,8 +6107,14 @@ func (s *DescribeServiceCronScalerResponse) SetBody(v *DescribeServiceCronScaler
 }
 
 type DescribeServiceDiagnosisResponseBody struct {
+	// The diagnostics list.
 	DiagnosisList []*DescribeServiceDiagnosisResponseBodyDiagnosisList `json:"DiagnosisList,omitempty" xml:"DiagnosisList,omitempty" type:"Repeated"`
-	RequestId     *string                                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 40325405-579C-4D82****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeServiceDiagnosisResponseBody) String() string {
@@ -4526,9 +6136,16 @@ func (s *DescribeServiceDiagnosisResponseBody) SetRequestId(v string) *DescribeS
 }
 
 type DescribeServiceDiagnosisResponseBodyDiagnosisList struct {
+	// The suggestions about how to handle the errors.
 	Advices []*string `json:"Advices,omitempty" xml:"Advices,omitempty" type:"Repeated"`
-	Causes  []*string `json:"Causes,omitempty" xml:"Causes,omitempty" type:"Repeated"`
-	Error   *string   `json:"Error,omitempty" xml:"Error,omitempty"`
+	// The causes of the errors.
+	Causes []*string `json:"Causes,omitempty" xml:"Causes,omitempty" type:"Repeated"`
+	// The error message.
+	//
+	// example:
+	//
+	// Container worker0 failed to pull image.
+	Error *string `json:"Error,omitempty" xml:"Error,omitempty"`
 }
 
 func (s DescribeServiceDiagnosisResponseBodyDiagnosisList) String() string {
@@ -4584,12 +6201,46 @@ func (s *DescribeServiceDiagnosisResponse) SetBody(v *DescribeServiceDiagnosisRe
 }
 
 type DescribeServiceEventRequest struct {
-	EndTime      *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	EventType    *string `json:"EventType,omitempty" xml:"EventType,omitempty"`
+	// The end of the time range to query. By default, the current point in time is the end of the time range to query.
+	//
+	// example:
+	//
+	// 2006-01-02 15:04:05
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The event type. Valid values:
+	//
+	// 	- Normal
+	//
+	// 	- Warning
+	//
+	// example:
+	//
+	// Normal
+	EventType *string `json:"EventType,omitempty" xml:"EventType,omitempty"`
+	// The instance name. For more information about how to obtain the instance name, see [ListServiceInstances](https://help.aliyun.com/document_detail/412108.html).
+	//
+	// example:
+	//
+	// echo-test-784xxxx85d-hhnd8
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	PageNum      *string `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	PageSize     *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	StartTime    *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The page number. Default value: 1.
+	//
+	// example:
+	//
+	// 1
+	PageNum *string `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// The number of entries per page. Default value: 100.
+	//
+	// example:
+	//
+	// 20
+	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The beginning of the time range to query. The time must be in UTC. The default value is seven days ago.
+	//
+	// example:
+	//
+	// 2006-01-02 15:04:05
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s DescribeServiceEventRequest) String() string {
@@ -4631,11 +6282,32 @@ func (s *DescribeServiceEventRequest) SetStartTime(v string) *DescribeServiceEve
 }
 
 type DescribeServiceEventResponseBody struct {
-	Events       []*DescribeServiceEventResponseBodyEvents `json:"Events,omitempty" xml:"Events,omitempty" type:"Repeated"`
-	PageNum      *int64                                    `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	RequestId    *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount   *int64                                    `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	TotalPageNum *int64                                    `json:"TotalPageNum,omitempty" xml:"TotalPageNum,omitempty"`
+	// The events.
+	Events []*DescribeServiceEventResponseBodyEvents `json:"Events,omitempty" xml:"Events,omitempty" type:"Repeated"`
+	// The page number.
+	//
+	// example:
+	//
+	// 1
+	PageNum *int64 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 3D491C94-6239-5318-B4B4-799D859***
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 29
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The total number of pages returned.
+	//
+	// example:
+	//
+	// 12
+	TotalPageNum *int64 `json:"TotalPageNum,omitempty" xml:"TotalPageNum,omitempty"`
 }
 
 func (s DescribeServiceEventResponseBody) String() string {
@@ -4672,10 +6344,34 @@ func (s *DescribeServiceEventResponseBody) SetTotalPageNum(v int64) *DescribeSer
 }
 
 type DescribeServiceEventResponseBodyEvents struct {
+	// The returned message. The message is formatted and returned in the JSON format.
+	//
+	// example:
+	//
+	// {\\"versionId\\":1,\\"message\\":\\"Stage scale complete\\",\\"availableInstance\\":1,\\"unavailableInstance\\":0}
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	Reason  *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
-	Time    *string `json:"Time,omitempty" xml:"Time,omitempty"`
-	Type    *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The cause of the event. The information about the change in the service status is returned.
+	//
+	// example:
+	//
+	// Updating
+	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	// The time when the event occurred. The time must be in UTC.
+	//
+	// example:
+	//
+	// 2022-04-09 06:30:00
+	Time *string `json:"Time,omitempty" xml:"Time,omitempty"`
+	// The event type. Valid values:
+	//
+	// 	- Normal
+	//
+	// 	- Warning
+	//
+	// example:
+	//
+	// Normal
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s DescribeServiceEventResponseBodyEvents) String() string {
@@ -4736,8 +6432,14 @@ func (s *DescribeServiceEventResponse) SetBody(v *DescribeServiceEventResponseBo
 }
 
 type DescribeServiceInstanceDiagnosisResponseBody struct {
+	// The diagnostics information.
 	Diagnosis *DescribeServiceInstanceDiagnosisResponseBodyDiagnosis `json:"Diagnosis,omitempty" xml:"Diagnosis,omitempty" type:"Struct"`
-	RequestId *string                                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 40325405-579C-4D82***
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeServiceInstanceDiagnosisResponseBody) String() string {
@@ -4759,9 +6461,16 @@ func (s *DescribeServiceInstanceDiagnosisResponseBody) SetRequestId(v string) *D
 }
 
 type DescribeServiceInstanceDiagnosisResponseBodyDiagnosis struct {
+	// The solutions to the errors.
 	Advices []*string `json:"Advices,omitempty" xml:"Advices,omitempty" type:"Repeated"`
-	Causes  []*string `json:"Causes,omitempty" xml:"Causes,omitempty" type:"Repeated"`
-	Error   *string   `json:"Error,omitempty" xml:"Error,omitempty"`
+	// The causes of the errors.
+	Causes []*string `json:"Causes,omitempty" xml:"Causes,omitempty" type:"Repeated"`
+	// The error message.
+	//
+	// example:
+	//
+	// Container worker0 failed to pull image.
+	Error *string `json:"Error,omitempty" xml:"Error,omitempty"`
 }
 
 func (s DescribeServiceInstanceDiagnosisResponseBodyDiagnosis) String() string {
@@ -4817,15 +6526,78 @@ func (s *DescribeServiceInstanceDiagnosisResponse) SetBody(v *DescribeServiceIns
 }
 
 type DescribeServiceLogRequest struct {
+	// The name of the container that runs the service.
+	//
+	// example:
+	//
+	// worker0
 	ContainerName *string `json:"ContainerName,omitempty" xml:"ContainerName,omitempty"`
-	EndTime       *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	InstanceName  *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	Ip            *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
-	Keyword       *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
-	PageNum       *int64  `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	PageSize      *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Previous      *bool   `json:"Previous,omitempty" xml:"Previous,omitempty"`
-	StartTime     *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The end of the time range to query. The time must be in UTC.
+	//
+	// example:
+	//
+	// 2006-01-02 15:04:05
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The name of the instance that runs the service. For more information about how to query the instance name, see [ListServiceInstances](https://help.aliyun.com/document_detail/412108.html).
+	//
+	// example:
+	//
+	// echo-da290ac8-7fckm
+	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// The IP address of the instance whose logs you want to query. For more information about how to query the IP address of an instance, see [ListServiceInstances](https://help.aliyun.com/document_detail/412108.html).
+	//
+	// example:
+	//
+	// 10.0.0.1
+	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	// The keyword that you use to query the logs of the service.
+	//
+	// example:
+	//
+	// key
+	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	// The page number. Default value: 1.
+	//
+	// example:
+	//
+	// 1
+	PageNum *int64 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// The number of entries per page. Default value: 500.
+	//
+	// example:
+	//
+	// 500
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Specifies whether to query the logs that are generated before the instance last restarts. This parameter is available only if the instance restarts.
+	//
+	// Valid values:
+	//
+	// 	- true
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// 	- false
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// example:
+	//
+	// true
+	Previous *bool `json:"Previous,omitempty" xml:"Previous,omitempty"`
+	// The beginning of the time range to query. The time must be in Coordinated Universal Time (UTC).
+	//
+	// example:
+	//
+	// 2006-01-02 15:04:05
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s DescribeServiceLogRequest) String() string {
@@ -4882,11 +6654,32 @@ func (s *DescribeServiceLogRequest) SetStartTime(v string) *DescribeServiceLogRe
 }
 
 type DescribeServiceLogResponseBody struct {
-	Logs         []*string `json:"Logs,omitempty" xml:"Logs,omitempty" type:"Repeated"`
-	PageNum      *int64    `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	RequestId    *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount   *int64    `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	TotalPageNum *int64    `json:"TotalPageNum,omitempty" xml:"TotalPageNum,omitempty"`
+	// The returned logs.
+	Logs []*string `json:"Logs,omitempty" xml:"Logs,omitempty" type:"Repeated"`
+	// The page number.
+	//
+	// example:
+	//
+	// 1
+	PageNum *int64 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 40325405-579C-4D82********
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 1
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The total number of pages returned.
+	//
+	// example:
+	//
+	// 500
+	TotalPageNum *int64 `json:"TotalPageNum,omitempty" xml:"TotalPageNum,omitempty"`
 }
 
 func (s DescribeServiceLogResponseBody) String() string {
@@ -4952,10 +6745,30 @@ func (s *DescribeServiceLogResponse) SetBody(v *DescribeServiceLogResponseBody) 
 }
 
 type DescribeServiceMirrorResponseBody struct {
-	Ratio       *string `json:"Ratio,omitempty" xml:"Ratio,omitempty"`
-	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The percentage of traffic that you want to mirror. Valid values: 0 to 100.
+	//
+	// example:
+	//
+	// 50
+	Ratio *string `json:"Ratio,omitempty" xml:"Ratio,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 40325405-579C-4D82****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The service name.
+	//
+	// example:
+	//
+	// foo
 	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
-	Target      *string `json:"Target,omitempty" xml:"Target,omitempty"`
+	// The destination services to which you want to mirror traffic.
+	//
+	// example:
+	//
+	// foo2,foo3
+	Target *string `json:"Target,omitempty" xml:"Target,omitempty"`
 }
 
 func (s DescribeServiceMirrorResponseBody) String() string {
@@ -5016,8 +6829,20 @@ func (s *DescribeServiceMirrorResponse) SetBody(v *DescribeServiceMirrorResponse
 }
 
 type DescribeSpotDiscountHistoryRequest struct {
+	// The type of the Elastic Compute Service (ECS) instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ecs.c6.4xlarge
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	IsProtect    *bool   `json:"IsProtect,omitempty" xml:"IsProtect,omitempty"`
+	// Specifies whether the preemptible instance has a protection period. During the 1-hour protection period of the preemptible instance, the preemptible instance will not be released.
+	//
+	// example:
+	//
+	// false
+	IsProtect *bool `json:"IsProtect,omitempty" xml:"IsProtect,omitempty"`
 }
 
 func (s DescribeSpotDiscountHistoryRequest) String() string {
@@ -5039,7 +6864,13 @@ func (s *DescribeSpotDiscountHistoryRequest) SetIsProtect(v bool) *DescribeSpotD
 }
 
 type DescribeSpotDiscountHistoryResponseBody struct {
-	RequestId     *string                                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 40325405-579C-4D82***
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The discount for the preemptible instance.
 	SpotDiscounts []*DescribeSpotDiscountHistoryResponseBodySpotDiscounts `json:"SpotDiscounts,omitempty" xml:"SpotDiscounts,omitempty" type:"Repeated"`
 }
 
@@ -5062,10 +6893,30 @@ func (s *DescribeSpotDiscountHistoryResponseBody) SetSpotDiscounts(v []*Describe
 }
 
 type DescribeSpotDiscountHistoryResponseBodySpotDiscounts struct {
+	// The type of the ECS instance.
+	//
+	// example:
+	//
+	// ecs.c7.large
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	// The discount for the preemptible instance. For example, 0.1 represents a 90% discount.
+	//
+	// example:
+	//
+	// 0.1
 	SpotDiscount *string `json:"SpotDiscount,omitempty" xml:"SpotDiscount,omitempty"`
-	Timestamp    *string `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
-	ZoneId       *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	// The time when the discount is available. The time must be in UTC.
+	//
+	// example:
+	//
+	// 2024-04-10T10:00:00Z
+	Timestamp *string `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
+	// The zone ID.
+	//
+	// example:
+	//
+	// cn-hangzhou-i
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s DescribeSpotDiscountHistoryResponseBodySpotDiscounts) String() string {
@@ -5128,8 +6979,13 @@ func (s *DescribeSpotDiscountHistoryResponse) SetBody(v *DescribeSpotDiscountHis
 type DevelopServiceRequest struct {
 	// Specifies whether to exit development mode. Valid values:
 	//
-	// *   true
-	// *   false (default)
+	// 	- true: exits development mode.
+	//
+	// 	- false (default): enters development mode.
+	//
+	// example:
+	//
+	// true
 	Exit *string `json:"Exit,omitempty" xml:"Exit,omitempty"`
 }
 
@@ -5147,7 +7003,17 @@ func (s *DevelopServiceRequest) SetExit(v string) *DevelopServiceRequest {
 }
 
 type DevelopServiceResponseBody struct {
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The returned message.
+	//
+	// example:
+	//
+	// Success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 40325405-579C-4D82****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -5199,13 +7065,29 @@ func (s *DevelopServiceResponse) SetBody(v *DevelopServiceResponseBody) *Develop
 }
 
 type ListBenchmarkTaskRequest struct {
-	// The keyword used to query required stress testing tasks. If this parameter is specified, the system returns stress testing tasks based on the names of the stress testing tasks in the matched Elastic Algorithm service (EAS).
+	// The keyword used to query required stress testing tasks. If this parameter is specified, the system returns stress testing tasks based on the names of the stress testing tasks in the matched Elastic Algorithm Service (EAS).
+	//
+	// example:
+	//
+	// test_bench
 	Filter *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
 	// The page number. Pages start from page 1. Default value: 1.
+	//
+	// example:
+	//
+	// 1
 	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries per page. Default value: 100.
+	//
+	// example:
+	//
+	// 10
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The name of the EAS service that corresponds to the stress testing task. For more information about how to query the service name, see [ListServices](~~412109~~).
+	// The name of the EAS service that corresponds to the stress testing task. For more information about how to query the service name, see [ListServices](https://help.aliyun.com/document_detail/412109.html).
+	//
+	// example:
+	//
+	// test_bench_srv
 	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
 }
 
@@ -5239,14 +7121,30 @@ func (s *ListBenchmarkTaskRequest) SetServiceName(v string) *ListBenchmarkTaskRe
 
 type ListBenchmarkTaskResponseBody struct {
 	// The page number.
+	//
+	// example:
+	//
+	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries per page.
+	//
+	// example:
+	//
+	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 40325405-579C-4D82****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The time when the stress testing task was updated.
+	// The stress testing tasks.
 	Tasks []*ListBenchmarkTaskResponseBodyTasks `json:"Tasks,omitempty" xml:"Tasks,omitempty" type:"Repeated"`
 	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 2
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -5284,15 +7182,134 @@ func (s *ListBenchmarkTaskResponseBody) SetTotalCount(v int32) *ListBenchmarkTas
 }
 
 type ListBenchmarkTaskResponseBodyTasks struct {
-	AvailableAgent *int64  `json:"AvailableAgent,omitempty" xml:"AvailableAgent,omitempty"`
-	CreateTime     *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	Region         *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	ServiceName    *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
-	Status         *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	TaskId         *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	TaskName       *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
-	UpdateTime     *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// The number of instances that are available for stress testing.
+	//
+	// example:
+	//
+	// 2
+	AvailableAgent *int64 `json:"AvailableAgent,omitempty" xml:"AvailableAgent,omitempty"`
+	// The time when the stress testing task was created.
+	//
+	// example:
+	//
+	// 2020-12-04T02:43:15Z
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The returned message.
+	//
+	// example:
+	//
+	// Benchmark task [benchmark-larec-test-1076] is Running
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The region ID of the stress testing task.
+	//
+	// example:
+	//
+	// cn-shanghai
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// The name of the service on which you want to perform a stress testing.
+	//
+	// example:
+	//
+	// test_quota
+	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
+	// The state of the stress testing task.
+	//
+	// Valid values:
+	//
+	// 	- Creating
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// 	- Starting
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// 	- DeleteFailed
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// 	- Running
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// 	- Stopping
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// 	- Error
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// 	- Updating
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// 	- Deleting
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// 	- CreateFailed
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// example:
+	//
+	// Running
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The ID of the stress testing task.
+	//
+	// example:
+	//
+	// eas-b-gv4y86uvgt****i
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The name of the stress testing task.
+	//
+	// example:
+	//
+	// benchmark-larec-test-1076
+	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+	// The time when the stress testing task was updated.
+	//
+	// example:
+	//
+	// 2020-06-24T03:11:30Z
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
 func (s ListBenchmarkTaskResponseBodyTasks) String() string {
@@ -5379,10 +7396,18 @@ func (s *ListBenchmarkTaskResponse) SetBody(v *ListBenchmarkTaskResponseBody) *L
 
 type ListGatewayIntranetLinkedVpcResponseBody struct {
 	// The private gateway ID.
+	//
+	// example:
+	//
+	// gw-1uhcqmsc7x22******
 	GatewayId *string `json:"GatewayId,omitempty" xml:"GatewayId,omitempty"`
 	// The internal endpoints.
 	IntranetLinkedVpcList []*ListGatewayIntranetLinkedVpcResponseBodyIntranetLinkedVpcList `json:"IntranetLinkedVpcList,omitempty" xml:"IntranetLinkedVpcList,omitempty" type:"Repeated"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 40325405-579C-4D82****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -5411,14 +7436,22 @@ func (s *ListGatewayIntranetLinkedVpcResponseBody) SetRequestId(v string) *ListG
 
 type ListGatewayIntranetLinkedVpcResponseBodyIntranetLinkedVpcList struct {
 	// The IP address.
+	//
+	// example:
+	//
+	// 192.168.10.11
 	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
 	// The security group ID.
+	//
+	// example:
+	//
+	// sg-2ze4pgstgszvgq******
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
 	// The state of the private gateway.
 	//
 	// Valid values:
 	//
-	// *   Creating
+	// 	- Creating
 	//
 	//     <!-- -->
 	//
@@ -5430,7 +7463,7 @@ type ListGatewayIntranetLinkedVpcResponseBodyIntranetLinkedVpcList struct {
 	//
 	//     <!-- -->
 	//
-	// *   Running
+	// 	- Running
 	//
 	//     <!-- -->
 	//
@@ -5441,10 +7474,22 @@ type ListGatewayIntranetLinkedVpcResponseBodyIntranetLinkedVpcList struct {
 	//     The private gateway is running.
 	//
 	//     <!-- -->
+	//
+	// example:
+	//
+	// Running
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The vSwitch ID.
+	//
+	// example:
+	//
+	// vsw-8vb2qjoiio6m9pg******
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
 	// The virtual private cloud (VPC) ID.
+	//
+	// example:
+	//
+	// vpc-2zetuli9ws0qgjd******
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
@@ -5511,9 +7556,29 @@ func (s *ListGatewayIntranetLinkedVpcResponse) SetBody(v *ListGatewayIntranetLin
 }
 
 type ListGroupsRequest struct {
-	Filter      *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
-	PageNumber  *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize    *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The name of the filter that is used to filter out unwanted service groups. Fuzzy match is supported.
+	//
+	// example:
+	//
+	// foo
+	Filter *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
+	// The page number. Default value: 1.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Default value: 100.
+	//
+	// example:
+	//
+	// 20
+	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The workspace ID.
+	//
+	// example:
+	//
+	// 123***
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
@@ -5546,11 +7611,32 @@ func (s *ListGroupsRequest) SetWorkspaceId(v string) *ListGroupsRequest {
 }
 
 type ListGroupsResponseBody struct {
-	Groups     []*Group `json:"Groups,omitempty" xml:"Groups,omitempty" type:"Repeated"`
-	PageNumber *int64   `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int64   `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId  *string  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount *int64   `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The service groups.
+	Groups []*Group `json:"Groups,omitempty" xml:"Groups,omitempty" type:"Repeated"`
+	// The page number.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
+	// example:
+	//
+	// 20
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 40325405-579C-4D82****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 5
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListGroupsResponseBody) String() string {
@@ -5617,8 +7703,16 @@ func (s *ListGroupsResponse) SetBody(v *ListGroupsResponseBody) *ListGroupsRespo
 
 type ListResourceInstanceWorkerRequest struct {
 	// The page number. Pages start from page 1. Default value: 1.
+	//
+	// example:
+	//
+	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries per page. Default value: 100.
+	//
+	// example:
+	//
+	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
@@ -5642,14 +7736,30 @@ func (s *ListResourceInstanceWorkerRequest) SetPageSize(v int32) *ListResourceIn
 
 type ListResourceInstanceWorkerResponseBody struct {
 	// The page number.
+	//
+	// example:
+	//
+	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries per page.
+	//
+	// example:
+	//
+	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The workers.
 	Pods []*ResourceInstanceWorker `json:"Pods,omitempty" xml:"Pods,omitempty" type:"Repeated"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 40325405-579C-4D82****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 1
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -5716,16 +7826,244 @@ func (s *ListResourceInstanceWorkerResponse) SetBody(v *ListResourceInstanceWork
 }
 
 type ListResourceInstancesRequest struct {
-	ChargeType     *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	Filter         *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
-	InstanceIP     *string `json:"InstanceIP,omitempty" xml:"InstanceIP,omitempty"`
-	InstanceId     *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	InstanceName   *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// The billing method of the instance. Valid values:
+	//
+	// 	- PrePaid: subscription.
+	//
+	// 	- PostPaid: pay-as-you-go.
+	//
+	// example:
+	//
+	// PrePaid
+	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	// The keyword used to query instances. Instances can be queried by instance ID or instance IP address.
+	//
+	// example:
+	//
+	// 10.224.xx.xx
+	Filter *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
+	// The IP address of the instance.
+	//
+	// example:
+	//
+	// 10.224.xx.xx
+	InstanceIP *string `json:"InstanceIP,omitempty" xml:"InstanceIP,omitempty"`
+	// The instance ID. For more information about how to query the instance ID, see [ListResourceInstances](https://help.aliyun.com/document_detail/412129.html).
+	//
+	// example:
+	//
+	// i-bp1jd6x3uotsv****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The instance name.
+	//
+	// example:
+	//
+	// e-xxxx***
+	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// The instance state.
+	//
+	// Valid values:
+	//
+	// 	- Ready-SchedulingDisabled
+	//
+	//     <!-- -->
+	//
+	//     :
+	//
+	//     <!-- -->
+	//
+	//     The instance is available but unschedulable
+	//
+	//     <!-- -->
+	//
+	//     .
+	//
+	// 	- Ready
+	//
+	//     <!-- -->
+	//
+	//     : The instance
+	//
+	//     <!-- -->
+	//
+	//     is running
+	//
+	//     <!-- -->
+	//
+	//     .
+	//
+	// 	- NotReady
+	//
+	//     <!-- -->
+	//
+	//     : The instance is unready.
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// 	- Stopped
+	//
+	//     <!-- -->
+	//
+	//     : The instance has stopped.
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// 	- NotReady-SchedulingDisabled
+	//
+	//     <!-- -->
+	//
+	//     :
+	//
+	//     <!-- -->
+	//
+	//     The instance is unavailable and unschedulable
+	//
+	//     <!-- -->
+	//
+	//     .
+	//
+	// 	- Attaching
+	//
+	//     <!-- -->
+	//
+	//     : The instance
+	//
+	//     <!-- -->
+	//
+	//     is starting
+	//
+	//     <!-- -->
+	//
+	//     .
+	//
+	// 	- Deleting
+	//
+	//     <!-- -->
+	//
+	//     : The instance is being deleted.
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// 	- CreateFailed: The instance failed to be created.
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// example:
+	//
+	// Ready
 	InstanceStatus *string `json:"InstanceStatus,omitempty" xml:"InstanceStatus,omitempty"`
-	Order          *string `json:"Order,omitempty" xml:"Order,omitempty"`
-	PageNumber     *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize       *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Sort           *string `json:"Sort,omitempty" xml:"Sort,omitempty"`
+	// The sorting order.
+	//
+	// Valid values:
+	//
+	// 	- asc: The instances are sorted in ascending order.
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// 	- desc
+	//
+	//     <!-- -->
+	//
+	//     : The instances are sorted in descending order.
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// example:
+	//
+	// desc
+	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// The page number. Pages start from page 1. Default value: 1.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Default value: 100.
+	//
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The field that you use to sort the query results.
+	//
+	// Valid values:
+	//
+	// 	- CreateTime
+	//
+	//     <!-- -->
+	//
+	//     : The instances are sorted based on the time when the instances were created.
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// 	- MemoryUsed
+	//
+	//     <!-- -->
+	//
+	//     :
+	//
+	//     <!-- -->
+	//
+	//     The instances are sorted based on the memory usage of the instances
+	//
+	//     <!-- -->
+	//
+	//     .
+	//
+	// 	- GpuUsed
+	//
+	//     <!-- -->
+	//
+	//     : The instances are sorted based on the
+	//
+	//     <!-- -->
+	//
+	//     GPU usage of the instances.
+	//
+	//     <!-- -->
+	//
+	// 	- ExpireTime: The instances are sorted based on the time when the instances expired.
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// 	- CpuUsed
+	//
+	//     <!-- -->
+	//
+	//     :
+	//
+	//     <!-- -->
+	//
+	//     The instances are sorted based on the CPU utilization of the instances.
+	//
+	//     <!-- -->
+	//
+	// example:
+	//
+	// CreateTime
+	Sort *string `json:"Sort,omitempty" xml:"Sort,omitempty"`
 }
 
 func (s ListResourceInstancesRequest) String() string {
@@ -5787,11 +8125,32 @@ func (s *ListResourceInstancesRequest) SetSort(v string) *ListResourceInstancesR
 }
 
 type ListResourceInstancesResponseBody struct {
-	Instances  []*ResourceInstance `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Repeated"`
-	PageNumber *int32              `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32              `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId  *string             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount *int32              `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The instances.
+	Instances []*ResourceInstance `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Repeated"`
+	// The page number.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 40325405-579C-4D82****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 2
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListResourceInstancesResponseBody) String() string {
@@ -5858,8 +8217,16 @@ func (s *ListResourceInstancesResponse) SetBody(v *ListResourceInstancesResponse
 
 type ListResourceServicesRequest struct {
 	// The page number. Pages start from page 1. Default value: 1.
+	//
+	// example:
+	//
+	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries per page. Default value: 100.
+	//
+	// example:
+	//
+	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
@@ -5883,14 +8250,30 @@ func (s *ListResourceServicesRequest) SetPageSize(v int32) *ListResourceServices
 
 type ListResourceServicesResponseBody struct {
 	// The page number.
+	//
+	// example:
+	//
+	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries per page.
+	//
+	// example:
+	//
+	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 40325405-579C-4D82****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The services.
 	Services []*Service `json:"Services,omitempty" xml:"Services,omitempty" type:"Repeated"`
 	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 2
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -5958,13 +8341,38 @@ func (s *ListResourceServicesResponse) SetBody(v *ListResourceServicesResponseBo
 
 type ListResourcesRequest struct {
 	// The page number. Pages start from page 1. Default value: 1.
+	//
+	// example:
+	//
+	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries per page. Default value: 100.
+	//
+	// example:
+	//
+	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the resource group. You can call the [CreateResource](~~412111~~) operation to query the ID of the resource group.
+	// The ID of the resource group. You can call the [CreateResource](https://help.aliyun.com/document_detail/412111.html) operation to query the ID of the resource group.
+	//
+	// example:
+	//
+	// eas-r-h7lcw24dyqztwxxxxxx
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	// The name of the resource group. You can call the [CreateResource](~~412111~~) operation to query the name of the resource group.
+	// The name of the resource group. You can call the [CreateResource](https://help.aliyun.com/document_detail/412111.html) operation to query the name of the resource group.
+	//
+	// example:
+	//
+	// MyResource
 	ResourceName *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
+	// The type of the resource group. Valid values:
+	//
+	// 	- Dedicated: the dedicated resource group.
+	//
+	// 	- SelfManaged: the self-managed resource group.
+	//
+	// example:
+	//
+	// Dedicated
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 }
 
@@ -6003,14 +8411,30 @@ func (s *ListResourcesRequest) SetResourceType(v string) *ListResourcesRequest {
 
 type ListResourcesResponseBody struct {
 	// The page number.
+	//
+	// example:
+	//
+	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries per page.
+	//
+	// example:
+	//
+	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 40325405-579C-4D82****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The resource groups.
 	Resources []*Resource `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Repeated"`
 	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 1
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -6078,9 +8502,19 @@ func (s *ListResourcesResponse) SetBody(v *ListResourcesResponseBody) *ListResou
 
 type ListServiceContainersResponseBody struct {
 	// The containers of the service.
-	Containers  []*ContainerInfo `json:"Containers,omitempty" xml:"Containers,omitempty" type:"Repeated"`
-	RequestId   *string          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ServiceName *string          `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
+	Containers []*ContainerInfo `json:"Containers,omitempty" xml:"Containers,omitempty" type:"Repeated"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 40325405-579C-4D82****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The service name.
+	//
+	// example:
+	//
+	// foo
+	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
 }
 
 func (s ListServiceContainersResponseBody) String() string {
@@ -6136,18 +8570,97 @@ func (s *ListServiceContainersResponse) SetBody(v *ListServiceContainersResponse
 }
 
 type ListServiceInstancesRequest struct {
-	Filter         *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
-	HostIP         *string `json:"HostIP,omitempty" xml:"HostIP,omitempty"`
-	InstanceIP     *string `json:"InstanceIP,omitempty" xml:"InstanceIP,omitempty"`
-	InstanceName   *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// The keyword used to query instances. Instances can be queried based on instance name, instance IP address, IP address of the server where the instance resides, and instance type.
+	//
+	// example:
+	//
+	// 10.118.xx.xx
+	Filter *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
+	// The IP address of the server where the instance resides.
+	//
+	// example:
+	//
+	// 10.224.xx.xx
+	HostIP *string `json:"HostIP,omitempty" xml:"HostIP,omitempty"`
+	// The IP address of the instance.
+	//
+	// example:
+	//
+	// 10.224.xx.xx
+	InstanceIP *string `json:"InstanceIP,omitempty" xml:"InstanceIP,omitempty"`
+	// The instance name.
+	//
+	// example:
+	//
+	// foo-bdc5xxxx-8l7rk
+	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// The instance state.
+	//
+	// example:
+	//
+	// Running
 	InstanceStatus *string `json:"InstanceStatus,omitempty" xml:"InstanceStatus,omitempty"`
-	InstanceType   *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	IsSpot         *bool   `json:"IsSpot,omitempty" xml:"IsSpot,omitempty"`
+	// The instance type.
+	//
+	// example:
+	//
+	// ecs.c7.large
+	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	// Specifies whether the instance is a preemptible instance.
+	//
+	// example:
+	//
+	// false
+	IsSpot *bool `json:"IsSpot,omitempty" xml:"IsSpot,omitempty"`
 	// The sorting order.
 	//
 	// Valid values:
 	//
-	// *   asc: The instances are sorted in ascending order.
+	// 	- asc
+	//
+	//     <!-- -->
+	//
+	//     :
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     The instances are sorted in ascending order.
+	//
+	// 	- desc
+	//
+	//     <!-- -->
+	//
+	//     :
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     The instances are sorted in descending order.
+	//
+	// example:
+	//
+	// desc
+	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// The page number. Default value: 1.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Default value: 100.
+	//
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The type of the resource group to which the instance belongs.
+	//
+	// Valid values:
+	//
+	// 	- PublicResource
 	//
 	//     <!-- -->
 	//
@@ -6155,21 +8668,100 @@ type ListServiceInstancesRequest struct {
 	//
 	//     <!-- -->
 	//
-	// *   desc
-	//
-	//     <!-- -->
-	//
-	//     : The instances are sorted in descending order.
+	// 	- DedicatedResource
 	//
 	//     <!-- -->
 	//
 	//     <!-- -->
-	Order        *string `json:"Order,omitempty" xml:"Order,omitempty"`
-	PageNumber   *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize     *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	//
+	//     <!-- -->
+	//
+	// example:
+	//
+	// PublicResource
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	Role         *string `json:"Role,omitempty" xml:"Role,omitempty"`
-	Sort         *string `json:"Sort,omitempty" xml:"Sort,omitempty"`
+	// The service role.
+	//
+	// Valid values:
+	//
+	// 	- DataSet
+	//
+	//     <!-- -->
+	//
+	//     :
+	//
+	//     <!-- -->
+	//
+	//     dataset service
+	//
+	//     <!-- -->
+	//
+	//     .
+	//
+	// 	- SDProxy
+	//
+	//     <!-- -->
+	//
+	//     :
+	//
+	//     <!-- -->
+	//
+	//     Stable-Diffusion proxy service
+	//
+	//     <!-- -->
+	//
+	//     .
+	//
+	// 	- Standard
+	//
+	//     <!-- -->
+	//
+	//     :
+	//
+	//     <!-- -->
+	//
+	//     standard service
+	//
+	//     <!-- -->
+	//
+	//     .
+	//
+	// 	- Queue
+	//
+	//     <!-- -->
+	//
+	//     :
+	//
+	//     <!-- -->
+	//
+	//     queue service
+	//
+	//     <!-- -->
+	//
+	//     .
+	//
+	// example:
+	//
+	// Queue
+	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
+	// The field that you use to sort the query results.
+	//
+	// 	- Set the value to StartTime.
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     The value specifies that the query results are sorted based on the time when the instances were created
+	//
+	//     <!-- -->
+	//
+	//     .
+	//
+	// example:
+	//
+	// StartTime
+	Sort *string `json:"Sort,omitempty" xml:"Sort,omitempty"`
 }
 
 func (s ListServiceInstancesRequest) String() string {
@@ -6246,11 +8838,32 @@ func (s *ListServiceInstancesRequest) SetSort(v string) *ListServiceInstancesReq
 }
 
 type ListServiceInstancesResponseBody struct {
-	Instances  []*Instance `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Repeated"`
-	PageNumber *int32      `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32      `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId  *string     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount *int32      `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The instances.
+	Instances []*Instance `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Repeated"`
+	// The page number.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 40325405-579C-4D82****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 1
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListServiceInstancesResponseBody) String() string {
@@ -6316,8 +8929,18 @@ func (s *ListServiceInstancesResponse) SetBody(v *ListServiceInstancesResponseBo
 }
 
 type ListServiceVersionsRequest struct {
+	// The page number. Default value: 1.
+	//
+	// example:
+	//
+	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The number of entries per page. Default value: 100.
+	//
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
 func (s ListServiceVersionsRequest) String() string {
@@ -6339,11 +8962,31 @@ func (s *ListServiceVersionsRequest) SetPageSize(v int32) *ListServiceVersionsRe
 }
 
 type ListServiceVersionsResponseBody struct {
-	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount *int64  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// The versions of the service.
+	// The page number.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// E089D584-B6F4-50C4-9902-DA2295B7****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 166
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The historical versions of the service.
 	Versions []*ListServiceVersionsResponseBodyVersions `json:"Versions,omitempty" xml:"Versions,omitempty" type:"Repeated"`
 }
 
@@ -6382,24 +9025,66 @@ func (s *ListServiceVersionsResponseBody) SetVersions(v []*ListServiceVersionsRe
 
 type ListServiceVersionsResponseBodyVersions struct {
 	// The time when the service version was created. The time is displayed in UTC.
+	//
+	// example:
+	//
+	// 2022-08-29T22:02:14Z
 	BuildTime *string `json:"BuildTime,omitempty" xml:"BuildTime,omitempty"`
 	// Indicates whether the image is available. Valid values:
 	//
-	// *   true: The image is available.
-	// *   false: The image is unavailable.
-	// *   unknown: The availability of the image is unknown.
+	// 	- true: The image is available.
+	//
+	// 	- false: The image is unavailable.
+	//
+	// 	- unknown: The availability of the image is unknown.
+	//
+	// example:
+	//
+	// true
 	ImageAvailable *string `json:"ImageAvailable,omitempty" xml:"ImageAvailable,omitempty"`
-	// The ID of the image.
+	// The image ID.
+	//
+	// example:
+	//
+	// 4
 	ImageId *int32 `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
 	// The returned message.
+	//
+	// example:
+	//
+	// Service is Running
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The service deployment configurations. This parameter is returned only if the service is deployed by using a custom image.
-	ServiceConfig *string `json:"ServiceConfig,omitempty" xml:"ServiceConfig,omitempty"`
-	// Indicates whether EAS is enabled. Valid values:
 	//
-	// *   true: EAS is enabled.
-	// *   false: EAS is not enabled.
-	// *   unknown: The enabling status of EAS is unknown.
+	// example:
+	//
+	// {
+	//
+	//     "metadata": {
+	//
+	//         "cpu": 1,
+	//
+	//         "instance": 1,
+	//
+	//         "memory": 1024
+	//
+	//     },
+	//
+	//     "name": "echo"
+	//
+	// }
+	ServiceConfig *string `json:"ServiceConfig,omitempty" xml:"ServiceConfig,omitempty"`
+	// Indicates whether Elastic Algorithm service (EAS) is activated. Valid values:
+	//
+	// 	- true: EAS is activated.
+	//
+	// 	- false: EAS is not activated.
+	//
+	// 	- unknown: The activation of EAS is unknown.
+	//
+	// example:
+	//
+	// true
 	ServiceRunnable *string `json:"ServiceRunnable,omitempty" xml:"ServiceRunnable,omitempty"`
 }
 
@@ -6471,77 +9156,284 @@ func (s *ListServiceVersionsResponse) SetBody(v *ListServiceVersionsResponseBody
 }
 
 type ListServicesRequest struct {
-	// {
-	//   "RequestId": "40325405-579C-4D82-9624-EC2B1779848E",
-	//   "Services": [
-	//     {
-	//       "ServiceId": "200516454695942578",
-	//       "ServiceName": "vipserver",
-	//       "ParentUid": "1628454689805075",
-	//       "CallerUid": "eas",
-	//       "CurrentVersion": 1,
-	//       "Cpu": 1,
-	//       "Gpu": 0,
-	//       "Memory": 900,
-	//       "Image": "registry.cn-zhangjiakou.aliyuncs.com/eas/ndisearch_v1_inner_zhangbei:v0.0.3-20200302145109",
-	//       "Resource": "seccontent_inner_2080ti_5",
-	//       "Namespace": "vipserver",
-	//       "CreateTime": "2019-10-25T10:37:53Z",
-	//       "UpdateTime": "2019-10-30T16:50:59Z",
-	//       "TotalInstance": 1,
-	//       "RunningInstance": 1,
-	//       "PendingInstance": 0,
-	//       "LatestVersion": 1,
-	//       "Status": "Running",
-	//       "Reason": "RUNNING",
-	//       "Message": "Service is now scaling",
-	//       "AccessToken": "",
-	//       "Weight": 0
-	//     },
-	//     {
-	//       "ServiceId": 97097,
-	//       "ServiceName": "a1",
-	//       "CallerUid": "eas",
-	//       "CurrentVersion": 1,
-	//       "Cpu": 1,
-	//       "Gpu": 0,
-	//       "Memory": 900,
-	//       "Image": "registry.cn-hangzhou.aliyuncs.com/eas/pi_imemb_tb:v0.0.1-20191023130701",
-	//       "Resource": "seccontent_inner_b",
-	//       "Namespace": "a1",
-	//       "CreateTime": "2020-05-26T18:03:11Z",
-	//       "UpdateTime": "2020-05-26T18:03:11Z",
-	//       "TotalInstance": 1,
-	//       "RunningInstance": 0,
-	//       "PendingInstance": 1,
-	//       "LatestVersion": 1,
-	//       "Status": "Failed",
-	//       "Reason": "FAILED",
-	//       "Message": "the server could not find the requested resource (post services.meta.k8s.io)",
-	//       "AccessToken": "regression_test_token",
-	//       "Weight": 0
-	//     }
-	//   ],
-	//   "PageNumber": 1,
-	//   "PageSize": 2,
-	//   "TotalCount": 2
-	// }
-	Filter    *string            `json:"Filter,omitempty" xml:"Filter,omitempty"`
-	GroupName *string            `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	Label     map[string]*string `json:"Label,omitempty" xml:"Label,omitempty"`
-	Order     *string            `json:"Order,omitempty" xml:"Order,omitempty"`
-	// 376577
-	PageNumber       *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize         *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The field that is used for fuzzy matches. The system performs fuzzy matches only by service name.
+	//
+	// example:
+	//
+	// foo
+	Filter *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
+	// The name of the service group. For more information about how to query the name of a service group, see [ListServices](https://help.aliyun.com/document_detail/412109.html).
+	//
+	// example:
+	//
+	// foo
+	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// The tag that is used to filter services.
+	Label map[string]*string `json:"Label,omitempty" xml:"Label,omitempty"`
+	// The sorting order. Valid values:
+	//
+	// 	- desc (default): The query results are sorted in descending order.
+	//
+	// 	- asc: The query results are sorted in ascending order.
+	//
+	// example:
+	//
+	// asc
+	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// The page number. Default value: 1.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Default value: 100.
+	//
+	// example:
+	//
+	// 100
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the primary service that corresponds to the Band member service.
+	//
+	// example:
+	//
+	// eas-m-ijafy3c8cxxxx
 	ParentServiceUid *string `json:"ParentServiceUid,omitempty" xml:"ParentServiceUid,omitempty"`
-	QuotaId          *string `json:"QuotaId,omitempty" xml:"QuotaId,omitempty"`
-	ResourceName     *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
-	ServiceName      *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
-	ServiceStatus    *string `json:"ServiceStatus,omitempty" xml:"ServiceStatus,omitempty"`
-	ServiceType      *string `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
-	ServiceUid       *string `json:"ServiceUid,omitempty" xml:"ServiceUid,omitempty"`
-	Sort             *string `json:"Sort,omitempty" xml:"Sort,omitempty"`
-	WorkspaceId      *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	// The quota ID.
+	//
+	// example:
+	//
+	// quota12345
+	QuotaId *string `json:"QuotaId,omitempty" xml:"QuotaId,omitempty"`
+	// The name or ID of the resource group to which the service belongs.
+	//
+	// example:
+	//
+	// eas-r-hd0qwy8cxxxx
+	ResourceName *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
+	// The service name.
+	//
+	// example:
+	//
+	// echo_test
+	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
+	// The service state.
+	//
+	// Valid values:
+	//
+	// 	- Creating
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// 	- Stopped
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// 	- Failed
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// 	- Complete
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// 	- Cloning
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// 	- Stopping
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// 	- Updating
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// 	- Waiting
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// 	- HotUpdate
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// 	- Committing
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// 	- Starting
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// 	- DeleteFailed
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// 	- Running
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// 	- Developing
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// 	- Scaling
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// 	- Deleted
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// 	- Pending
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// 	- Deleting
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// example:
+	//
+	// Running
+	ServiceStatus *string `json:"ServiceStatus,omitempty" xml:"ServiceStatus,omitempty"`
+	// The service type. Valid values:
+	//
+	// 	- Async
+	//
+	// 	- Standard
+	//
+	// 	- Offline Task
+	//
+	// 	- Proxima
+	//
+	// Valid values:
+	//
+	// 	- Async
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// 	- Standard
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// 	- OfflineTask
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// 	- Proxima
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// example:
+	//
+	// Standard
+	ServiceType *string `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
+	// The user ID (UID) of the service.
+	//
+	// example:
+	//
+	// eas-m-c9iw3yitxxxx
+	ServiceUid *string `json:"ServiceUid,omitempty" xml:"ServiceUid,omitempty"`
+	// The sort field. By default, the query results are sorted by the timestamp type in descending order.
+	//
+	// example:
+	//
+	// CreateTime
+	Sort *string `json:"Sort,omitempty" xml:"Sort,omitempty"`
+	// The workspace ID.
+	//
+	// example:
+	//
+	// 123456
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s ListServicesRequest) String() string {
@@ -6628,77 +9520,284 @@ func (s *ListServicesRequest) SetWorkspaceId(v string) *ListServicesRequest {
 }
 
 type ListServicesShrinkRequest struct {
-	// {
-	//   "RequestId": "40325405-579C-4D82-9624-EC2B1779848E",
-	//   "Services": [
-	//     {
-	//       "ServiceId": "200516454695942578",
-	//       "ServiceName": "vipserver",
-	//       "ParentUid": "1628454689805075",
-	//       "CallerUid": "eas",
-	//       "CurrentVersion": 1,
-	//       "Cpu": 1,
-	//       "Gpu": 0,
-	//       "Memory": 900,
-	//       "Image": "registry.cn-zhangjiakou.aliyuncs.com/eas/ndisearch_v1_inner_zhangbei:v0.0.3-20200302145109",
-	//       "Resource": "seccontent_inner_2080ti_5",
-	//       "Namespace": "vipserver",
-	//       "CreateTime": "2019-10-25T10:37:53Z",
-	//       "UpdateTime": "2019-10-30T16:50:59Z",
-	//       "TotalInstance": 1,
-	//       "RunningInstance": 1,
-	//       "PendingInstance": 0,
-	//       "LatestVersion": 1,
-	//       "Status": "Running",
-	//       "Reason": "RUNNING",
-	//       "Message": "Service is now scaling",
-	//       "AccessToken": "",
-	//       "Weight": 0
-	//     },
-	//     {
-	//       "ServiceId": 97097,
-	//       "ServiceName": "a1",
-	//       "CallerUid": "eas",
-	//       "CurrentVersion": 1,
-	//       "Cpu": 1,
-	//       "Gpu": 0,
-	//       "Memory": 900,
-	//       "Image": "registry.cn-hangzhou.aliyuncs.com/eas/pi_imemb_tb:v0.0.1-20191023130701",
-	//       "Resource": "seccontent_inner_b",
-	//       "Namespace": "a1",
-	//       "CreateTime": "2020-05-26T18:03:11Z",
-	//       "UpdateTime": "2020-05-26T18:03:11Z",
-	//       "TotalInstance": 1,
-	//       "RunningInstance": 0,
-	//       "PendingInstance": 1,
-	//       "LatestVersion": 1,
-	//       "Status": "Failed",
-	//       "Reason": "FAILED",
-	//       "Message": "the server could not find the requested resource (post services.meta.k8s.io)",
-	//       "AccessToken": "regression_test_token",
-	//       "Weight": 0
-	//     }
-	//   ],
-	//   "PageNumber": 1,
-	//   "PageSize": 2,
-	//   "TotalCount": 2
-	// }
-	Filter      *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
-	GroupName   *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// The field that is used for fuzzy matches. The system performs fuzzy matches only by service name.
+	//
+	// example:
+	//
+	// foo
+	Filter *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
+	// The name of the service group. For more information about how to query the name of a service group, see [ListServices](https://help.aliyun.com/document_detail/412109.html).
+	//
+	// example:
+	//
+	// foo
+	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// The tag that is used to filter services.
 	LabelShrink *string `json:"Label,omitempty" xml:"Label,omitempty"`
-	Order       *string `json:"Order,omitempty" xml:"Order,omitempty"`
-	// 376577
-	PageNumber       *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize         *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The sorting order. Valid values:
+	//
+	// 	- desc (default): The query results are sorted in descending order.
+	//
+	// 	- asc: The query results are sorted in ascending order.
+	//
+	// example:
+	//
+	// asc
+	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// The page number. Default value: 1.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Default value: 100.
+	//
+	// example:
+	//
+	// 100
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the primary service that corresponds to the Band member service.
+	//
+	// example:
+	//
+	// eas-m-ijafy3c8cxxxx
 	ParentServiceUid *string `json:"ParentServiceUid,omitempty" xml:"ParentServiceUid,omitempty"`
-	QuotaId          *string `json:"QuotaId,omitempty" xml:"QuotaId,omitempty"`
-	ResourceName     *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
-	ServiceName      *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
-	ServiceStatus    *string `json:"ServiceStatus,omitempty" xml:"ServiceStatus,omitempty"`
-	ServiceType      *string `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
-	ServiceUid       *string `json:"ServiceUid,omitempty" xml:"ServiceUid,omitempty"`
-	Sort             *string `json:"Sort,omitempty" xml:"Sort,omitempty"`
-	WorkspaceId      *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	// The quota ID.
+	//
+	// example:
+	//
+	// quota12345
+	QuotaId *string `json:"QuotaId,omitempty" xml:"QuotaId,omitempty"`
+	// The name or ID of the resource group to which the service belongs.
+	//
+	// example:
+	//
+	// eas-r-hd0qwy8cxxxx
+	ResourceName *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
+	// The service name.
+	//
+	// example:
+	//
+	// echo_test
+	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
+	// The service state.
+	//
+	// Valid values:
+	//
+	// 	- Creating
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// 	- Stopped
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// 	- Failed
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// 	- Complete
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// 	- Cloning
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// 	- Stopping
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// 	- Updating
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// 	- Waiting
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// 	- HotUpdate
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// 	- Committing
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// 	- Starting
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// 	- DeleteFailed
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// 	- Running
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// 	- Developing
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// 	- Scaling
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// 	- Deleted
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// 	- Pending
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// 	- Deleting
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// example:
+	//
+	// Running
+	ServiceStatus *string `json:"ServiceStatus,omitempty" xml:"ServiceStatus,omitempty"`
+	// The service type. Valid values:
+	//
+	// 	- Async
+	//
+	// 	- Standard
+	//
+	// 	- Offline Task
+	//
+	// 	- Proxima
+	//
+	// Valid values:
+	//
+	// 	- Async
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// 	- Standard
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// 	- OfflineTask
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// 	- Proxima
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	//     <!-- -->
+	//
+	// example:
+	//
+	// Standard
+	ServiceType *string `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
+	// The user ID (UID) of the service.
+	//
+	// example:
+	//
+	// eas-m-c9iw3yitxxxx
+	ServiceUid *string `json:"ServiceUid,omitempty" xml:"ServiceUid,omitempty"`
+	// The sort field. By default, the query results are sorted by the timestamp type in descending order.
+	//
+	// example:
+	//
+	// CreateTime
+	Sort *string `json:"Sort,omitempty" xml:"Sort,omitempty"`
+	// The workspace ID.
+	//
+	// example:
+	//
+	// 123456
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s ListServicesShrinkRequest) String() string {
@@ -6785,11 +9884,32 @@ func (s *ListServicesShrinkRequest) SetWorkspaceId(v string) *ListServicesShrink
 }
 
 type ListServicesResponseBody struct {
-	PageNumber *int32     `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32     `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId  *string    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Services   []*Service `json:"Services,omitempty" xml:"Services,omitempty" type:"Repeated"`
-	TotalCount *int32     `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The page number.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
+	// example:
+	//
+	// 100
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 40325405-579C-4D82****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The services.
+	Services []*Service `json:"Services,omitempty" xml:"Services,omitempty" type:"Repeated"`
+	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 2
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListServicesResponseBody) String() string {
@@ -6855,8 +9975,22 @@ func (s *ListServicesResponse) SetBody(v *ListServicesResponseBody) *ListService
 }
 
 type ReleaseServiceRequest struct {
+	// The traffic state. Valid values:
+	//
+	// 	- standalone: independent traffic.
+	//
+	// 	- grouping: grouped traffic.
+	//
+	// example:
+	//
+	// grouping
 	TrafficState *string `json:"TrafficState,omitempty" xml:"TrafficState,omitempty"`
-	Weight       *int32  `json:"Weight,omitempty" xml:"Weight,omitempty"`
+	// The weight of the canary release. Valid values: 0 to 100.
+	//
+	// example:
+	//
+	// 100
+	Weight *int32 `json:"Weight,omitempty" xml:"Weight,omitempty"`
 }
 
 func (s ReleaseServiceRequest) String() string {
@@ -6878,7 +10012,17 @@ func (s *ReleaseServiceRequest) SetWeight(v int32) *ReleaseServiceRequest {
 }
 
 type ReleaseServiceResponseBody struct {
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The returned message.
+	//
+	// example:
+	//
+	// Releasing service [foo] in region [cn-shanghai] with weight [40], service status: [Running]
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 40325405-579C-4D82****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -6931,8 +10075,16 @@ func (s *ReleaseServiceResponse) SetBody(v *ReleaseServiceResponseBody) *Release
 
 type RestartServiceResponseBody struct {
 	// The returned message.
+	//
+	// example:
+	//
+	// Service is restarting
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 40325405-579C-4D82****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -6985,8 +10137,16 @@ func (s *RestartServiceResponse) SetBody(v *RestartServiceResponseBody) *Restart
 
 type StartBenchmarkTaskResponseBody struct {
 	// The returned message.
+	//
+	// example:
+	//
+	// Benchmark task [benchmark-larec-test-1076] is Starting
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 40325405-579C-4D82****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -7038,7 +10198,17 @@ func (s *StartBenchmarkTaskResponse) SetBody(v *StartBenchmarkTaskResponseBody) 
 }
 
 type StartServiceResponseBody struct {
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The returned message.
+	//
+	// example:
+	//
+	// Service [foo] in region [cn-shanghai] is starting
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 40325405-579C-4D82****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -7091,8 +10261,16 @@ func (s *StartServiceResponse) SetBody(v *StartServiceResponseBody) *StartServic
 
 type StopBenchmarkTaskResponseBody struct {
 	// The returned message.
+	//
+	// example:
+	//
+	// Benchmark task [benchmark-larec-test-1076] is Stopping
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 40325405-579C-4D82****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -7144,7 +10322,17 @@ func (s *StopBenchmarkTaskResponse) SetBody(v *StopBenchmarkTaskResponseBody) *S
 }
 
 type StopServiceResponseBody struct {
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The returned message.
+	//
+	// example:
+	//
+	// Succeed to auto scale service [foo]
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 40325405-579C-4D82****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -7197,39 +10385,72 @@ func (s *StopServiceResponse) SetBody(v *StopServiceResponseBody) *StopServiceRe
 
 type UpdateAppServiceRequest struct {
 	// The quota ID.
+	//
+	// example:
+	//
+	// abcdef
 	QuotaId *string `json:"QuotaId,omitempty" xml:"QuotaId,omitempty"`
 	// The workspace ID.
+	//
+	// example:
+	//
+	// 123456
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 	// The application type.
 	//
 	// Valid values:
 	//
-	// *   LLM: the large language model (LLM) application
+	// 	- LLM: the large language model (LLM) application
 	//
 	//     <!-- -->
 	//
 	//     <!-- -->
 	//
 	//     <!-- -->
+	//
+	// example:
+	//
+	// LLM
 	AppType *string `json:"AppType,omitempty" xml:"AppType,omitempty"`
 	// The application version.
+	//
+	// example:
+	//
+	// v1
 	AppVersion *string `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
 	// The additional configurations that are required for service deployment.
 	Config map[string]interface{} `json:"Config,omitempty" xml:"Config,omitempty"`
 	// The number of instances. This value must be greater than 0.
+	//
+	// example:
+	//
+	// 1
 	Replicas *int32 `json:"Replicas,omitempty" xml:"Replicas,omitempty"`
 	// The service specifications. Valid values:
 	//
-	// *   llama\_7b_fp16
-	// *   llama\_7b_int8
-	// *   llama\_13b_fp16
-	// *   llama\_7b_int8
-	// *   chatglm\_6b_fp16
-	// *   chatglm\_6b_int8
-	// *   chatglm2\_6b_fp16
-	// *   baichuan\_7b_int8
-	// *   baichuan\_13b_fp16
-	// *   baichuan\_7b_fp16
+	// 	- llama_7b_fp16
+	//
+	// 	- llama_7b_int8
+	//
+	// 	- llama_13b_fp16
+	//
+	// 	- llama_7b_int8
+	//
+	// 	- chatglm_6b_fp16
+	//
+	// 	- chatglm_6b_int8
+	//
+	// 	- chatglm2_6b_fp16
+	//
+	// 	- baichuan_7b_int8
+	//
+	// 	- baichuan_13b_fp16
+	//
+	// 	- baichuan_7b_fp16
+	//
+	// example:
+	//
+	// llama_7b_fp16
 	ServiceSpec *string `json:"ServiceSpec,omitempty" xml:"ServiceSpec,omitempty"`
 }
 
@@ -7278,7 +10499,16 @@ func (s *UpdateAppServiceRequest) SetServiceSpec(v string) *UpdateAppServiceRequ
 
 type UpdateAppServiceResponseBody struct {
 	// The returned message.
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	//
+	// example:
+	//
+	// Succee
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 40325405-579C-4D82****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -7330,7 +10560,19 @@ func (s *UpdateAppServiceResponse) SetBody(v *UpdateAppServiceResponseBody) *Upd
 }
 
 type UpdateBenchmarkTaskRequest struct {
-	// The request body. The body includes the parameters that are set to create a stress testing task.
+	// The request body. The body includes the parameters that are set to create a stress testing task. For more information, see **Table 1. Fields in the base parameter**.
+	//
+	// example:
+	//
+	// {
+	//
+	//     "base":  {
+	//
+	//          "qps": 200
+	//
+	//     }
+	//
+	// }
 	Body *string `json:"body,omitempty" xml:"body,omitempty"`
 }
 
@@ -7349,8 +10591,16 @@ func (s *UpdateBenchmarkTaskRequest) SetBody(v string) *UpdateBenchmarkTaskReque
 
 type UpdateBenchmarkTaskResponseBody struct {
 	// The returned message.
+	//
+	// example:
+	//
+	// Benchmark task [benchmark-larec-test-1076] is Updating
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 40325405-579C-4D82***
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -7406,7 +10656,7 @@ type UpdateGatewayRequest struct {
 	//
 	// Valid values:
 	//
-	// *   true
+	// 	- true
 	//
 	//     <!-- -->
 	//
@@ -7414,19 +10664,35 @@ type UpdateGatewayRequest struct {
 	//
 	//     <!-- -->
 	//
-	// *   false
+	// 	- false
 	//
 	//     <!-- -->
 	//
 	//     <!-- -->
 	//
 	//     <!-- -->
+	//
+	// example:
+	//
+	// false
 	EnableInternet *bool `json:"EnableInternet,omitempty" xml:"EnableInternet,omitempty"`
 	// Specifies whether to enable internal network access. Default value: true.
+	//
+	// example:
+	//
+	// true
 	EnableIntranet *bool `json:"EnableIntranet,omitempty" xml:"EnableIntranet,omitempty"`
 	// The instance type used for the private gateway.
+	//
+	// example:
+	//
+	// ecs.c6.4xlarge
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
 	// The private gateway alias.
+	//
+	// example:
+	//
+	// mygateway1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
@@ -7460,10 +10726,22 @@ func (s *UpdateGatewayRequest) SetName(v string) *UpdateGatewayRequest {
 
 type UpdateGatewayResponseBody struct {
 	// The ID of the gateway.
+	//
+	// example:
+	//
+	// gw-1uhcqmsc7x22******
 	GatewayId *string `json:"GatewayId,omitempty" xml:"GatewayId,omitempty"`
 	// The returned message.
+	//
+	// example:
+	//
+	// Gateway is updated
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 40325405-579C-4D82***
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -7521,8 +10799,12 @@ func (s *UpdateGatewayResponse) SetBody(v *UpdateGatewayResponseBody) *UpdateGat
 
 type UpdateResourceRequest struct {
 	// The new name of the resource group after the update. The name can be up to 27 characters in length.
+	//
+	// example:
+	//
+	// iot
 	ResourceName *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
-	// The configurable options for self managed resource group.
+	// The configuration items of the self-managed resource group.
 	SelfManagedResourceOptions *UpdateResourceRequestSelfManagedResourceOptions `json:"SelfManagedResourceOptions,omitempty" xml:"SelfManagedResourceOptions,omitempty" type:"Struct"`
 }
 
@@ -7545,7 +10827,7 @@ func (s *UpdateResourceRequest) SetSelfManagedResourceOptions(v *UpdateResourceR
 }
 
 type UpdateResourceRequestSelfManagedResourceOptions struct {
-	// The key-value pairs for matched nodes.
+	// Tag tag key-value pairs for nodes.
 	NodeMatchLabels map[string]*string `json:"NodeMatchLabels,omitempty" xml:"NodeMatchLabels,omitempty"`
 	// Tolerations for nodes.
 	NodeTolerations []*UpdateResourceRequestSelfManagedResourceOptionsNodeTolerations `json:"NodeTolerations,omitempty" xml:"NodeTolerations,omitempty" type:"Repeated"`
@@ -7573,18 +10855,40 @@ type UpdateResourceRequestSelfManagedResourceOptionsNodeTolerations struct {
 	// The effect.
 	//
 	// Valid values:
+	//
 	// - PreferNoSchedule
+	//
 	// - NoSchedule
+	//
 	// - NoExecute
+	//
+	// example:
+	//
+	// NoSchedule
 	Effect *string `json:"effect,omitempty" xml:"effect,omitempty"`
-	// The name of the key.
+	// The key name.
+	//
+	// example:
+	//
+	// key1
 	Key *string `json:"key,omitempty" xml:"key,omitempty"`
 	// Relationship between key names and key values.
+	//
 	// Valid values:
+	//
 	// - Equal
+	//
 	// - Exists
+	//
+	// example:
+	//
+	// Equal
 	Operator *string `json:"operator,omitempty" xml:"operator,omitempty"`
-	// The name of the value.
+	// The key value.
+	//
+	// example:
+	//
+	// value1
 	Value *string `json:"value,omitempty" xml:"value,omitempty"`
 }
 
@@ -7618,10 +10922,22 @@ func (s *UpdateResourceRequestSelfManagedResourceOptionsNodeTolerations) SetValu
 
 type UpdateResourceResponseBody struct {
 	// The request ID.
+	//
+	// example:
+	//
+	// 40325405-579C-4D82****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The ID of the resource group.
+	//
+	// example:
+	//
+	// eas-r-asdasdasd
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 	// The name of the resource group.
+	//
+	// example:
+	//
+	// iot
 	ResourceName *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
 }
 
@@ -7679,10 +10995,26 @@ func (s *UpdateResourceResponse) SetBody(v *UpdateResourceResponseBody) *UpdateR
 
 type UpdateResourceDLinkRequest struct {
 	// The CIDR blocks of the clients that you want to connect to. After this parameter is specified, the CIDR blocks are added to the back-to-origin route of the server. Either this parameter or the VSwitchIdList parameter can be used to determine CIDR blocks.
+	//
+	// example:
+	//
+	// 72.16.0.0/16
 	DestinationCIDRs *string `json:"DestinationCIDRs,omitempty" xml:"DestinationCIDRs,omitempty"`
 	// The ID of the security group to which the Elastic Compute Service (ECS) instance belongs.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// sg-bp149cedsfx2rfspd2d
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
 	// The ID of the peer primary vSwitch. After this parameter is specified, an elastic network interface (ENI) is created in the VSwitch.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// vpc-uf66uio7md****
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
 	// The vSwitches of the clients that you want to connect to. After this parameter is specified, the CIDR blocks of these vSwitches are added to the back-to-origin route of the server.
 	VSwitchIdList []*string `json:"VSwitchIdList,omitempty" xml:"VSwitchIdList,omitempty" type:"Repeated"`
@@ -7718,8 +11050,16 @@ func (s *UpdateResourceDLinkRequest) SetVSwitchIdList(v []*string) *UpdateResour
 
 type UpdateResourceDLinkResponseBody struct {
 	// The returned message.
+	//
+	// example:
+	//
+	// Network interfaces are updating
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 40325405-579C-4D82****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -7771,6 +11111,19 @@ func (s *UpdateResourceDLinkResponse) SetBody(v *UpdateResourceDLinkResponseBody
 }
 
 type UpdateResourceInstanceRequest struct {
+	// The operation that updates the scheduling state of the instance in a dedicated resource group. Valid values:
+	//
+	// 	- Uncordon: allows scheduling the service to this instance.
+	//
+	// 	- Cordon: prohibits scheduling the service to this instance.
+	//
+	// 	- Drain: evicts the service that has been scheduled to this instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Cordon
 	Action *string `json:"Action,omitempty" xml:"Action,omitempty"`
 }
 
@@ -7788,8 +11141,23 @@ func (s *UpdateResourceInstanceRequest) SetAction(v string) *UpdateResourceInsta
 }
 
 type UpdateResourceInstanceResponseBody struct {
+	// The instance ID.
+	//
+	// example:
+	//
+	// eas-i-asdasdasd
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 40325405-579C-4D82****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the resource group.
+	//
+	// example:
+	//
+	// eas-r-asdasdasd
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 }
 
@@ -7848,10 +11216,20 @@ func (s *UpdateResourceInstanceResponse) SetBody(v *UpdateResourceInstanceRespon
 type UpdateServiceRequest struct {
 	// The type of the service update. Valid values: merge and replace. By default, merge is used if you do not specify this parameter.
 	//
-	// *   merge: If the JSON string configured for the existing service is `{"a":"b"}` and the JSON string specified in the body parameter is `{"c":"d"}`, the JSON string is `{"a":"b","c":"d"}` after the service update.
-	// *   replace: If the JSON string configured for the existing service is `{"a":"b"}` and the JSON string specified in the body parameter is `{"c":"d"}`, the JSON string is `{"c":"d"}` after the service update.
+	// 	- merge: If the JSON string configured for the existing service is `{"a":"b"}` and the JSON string specified in the body parameter is `{"c":"d"}`, the JSON string is `{"a":"b","c":"d"}` after the service update.
+	//
+	// 	- replace: If the JSON string configured for the existing service is `{"a":"b"}` and the JSON string specified in the body parameter is `{"c":"d"}`, the JSON string is `{"c":"d"}` after the service update.
+	//
+	// example:
+	//
+	// merge
 	UpdateType *string `json:"UpdateType,omitempty" xml:"UpdateType,omitempty"`
-	Body       *string `json:"body,omitempty" xml:"body,omitempty"`
+	// The request body. The body includes the request parameters that you want to update. For more information about the request parameters, see [CreateService](https://help.aliyun.com/document_detail/412086.html).
+	//
+	// example:
+	//
+	// {   "name": "foo",   "model_path": "http://path/to/model.tar.gz",   "processor": "tensorflow_cpu",   "metadata": {     "instance": 2,     "memory": 7000,     "cpu": 4   } }
+	Body *string `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateServiceRequest) String() string {
@@ -7873,7 +11251,17 @@ func (s *UpdateServiceRequest) SetBody(v string) *UpdateServiceRequest {
 }
 
 type UpdateServiceResponseBody struct {
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The returned message.
+	//
+	// example:
+	//
+	// Succeed to update service [foo] in region [cn-shanghai]
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 40325405-579C-4D82****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -7925,9 +11313,27 @@ func (s *UpdateServiceResponse) SetBody(v *UpdateServiceResponseBody) *UpdateSer
 }
 
 type UpdateServiceAutoScalerRequest struct {
-	Behavior        *UpdateServiceAutoScalerRequestBehavior          `json:"behavior,omitempty" xml:"behavior,omitempty" type:"Struct"`
-	Max             *int32                                           `json:"max,omitempty" xml:"max,omitempty"`
-	Min             *int32                                           `json:"min,omitempty" xml:"min,omitempty"`
+	// The Autoscaler operation.
+	Behavior *UpdateServiceAutoScalerRequestBehavior `json:"behavior,omitempty" xml:"behavior,omitempty" type:"Struct"`
+	// The maximum number of instances. The value must be greater than that of the min parameter.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 8
+	Max *int32 `json:"max,omitempty" xml:"max,omitempty"`
+	// The minimum number of instances. The value must be greater than 0.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2
+	Min *int32 `json:"min,omitempty" xml:"min,omitempty"`
+	// The auto scaling policies.
+	//
+	// This parameter is required.
 	ScaleStrategies []*UpdateServiceAutoScalerRequestScaleStrategies `json:"scaleStrategies,omitempty" xml:"scaleStrategies,omitempty" type:"Repeated"`
 }
 
@@ -7960,9 +11366,12 @@ func (s *UpdateServiceAutoScalerRequest) SetScaleStrategies(v []*UpdateServiceAu
 }
 
 type UpdateServiceAutoScalerRequestBehavior struct {
-	OnZero    *UpdateServiceAutoScalerRequestBehaviorOnZero    `json:"onZero,omitempty" xml:"onZero,omitempty" type:"Struct"`
+	// The operation that reduces the number of instances to 0.
+	OnZero *UpdateServiceAutoScalerRequestBehaviorOnZero `json:"onZero,omitempty" xml:"onZero,omitempty" type:"Struct"`
+	// The scale-in operation.
 	ScaleDown *UpdateServiceAutoScalerRequestBehaviorScaleDown `json:"scaleDown,omitempty" xml:"scaleDown,omitempty" type:"Struct"`
-	ScaleUp   *UpdateServiceAutoScalerRequestBehaviorScaleUp   `json:"scaleUp,omitempty" xml:"scaleUp,omitempty" type:"Struct"`
+	// The scale-out operation.
+	ScaleUp *UpdateServiceAutoScalerRequestBehaviorScaleUp `json:"scaleUp,omitempty" xml:"scaleUp,omitempty" type:"Struct"`
 }
 
 func (s UpdateServiceAutoScalerRequestBehavior) String() string {
@@ -7989,8 +11398,18 @@ func (s *UpdateServiceAutoScalerRequestBehavior) SetScaleUp(v *UpdateServiceAuto
 }
 
 type UpdateServiceAutoScalerRequestBehaviorOnZero struct {
+	// The time window that is required before the number of instances is reduced to 0. Default value: 600. The number of instances can be reduced to 0 only if no request is available or no traffic exists in the specified time window.
+	//
+	// example:
+	//
+	// 600
 	ScaleDownGracePeriodSeconds *int32 `json:"scaleDownGracePeriodSeconds,omitempty" xml:"scaleDownGracePeriodSeconds,omitempty"`
-	ScaleUpActivationReplicas   *int32 `json:"scaleUpActivationReplicas,omitempty" xml:"scaleUpActivationReplicas,omitempty"`
+	// The number of instances that you want to create at a time if the number of instances is scaled out from 0. Default value: 1.
+	//
+	// example:
+	//
+	// 1
+	ScaleUpActivationReplicas *int32 `json:"scaleUpActivationReplicas,omitempty" xml:"scaleUpActivationReplicas,omitempty"`
 }
 
 func (s UpdateServiceAutoScalerRequestBehaviorOnZero) String() string {
@@ -8012,6 +11431,11 @@ func (s *UpdateServiceAutoScalerRequestBehaviorOnZero) SetScaleUpActivationRepli
 }
 
 type UpdateServiceAutoScalerRequestBehaviorScaleDown struct {
+	// The time window that is required before the scale-in operation is performed. Default value: 300. The scale-in operation can be performed only if the specified metric drops below the threshold in the specified time window.
+	//
+	// example:
+	//
+	// 300
 	StabilizationWindowSeconds *int32 `json:"stabilizationWindowSeconds,omitempty" xml:"stabilizationWindowSeconds,omitempty"`
 }
 
@@ -8029,6 +11453,11 @@ func (s *UpdateServiceAutoScalerRequestBehaviorScaleDown) SetStabilizationWindow
 }
 
 type UpdateServiceAutoScalerRequestBehaviorScaleUp struct {
+	// The time window that is required before the scale-out operation is performed. Default value: 0. The scale-out operation can be performed only if the specified metric exceeds the specified threshold in the specified time window.
+	//
+	// example:
+	//
+	// 0
 	StabilizationWindowSeconds *int32 `json:"stabilizationWindowSeconds,omitempty" xml:"stabilizationWindowSeconds,omitempty"`
 }
 
@@ -8046,9 +11475,36 @@ func (s *UpdateServiceAutoScalerRequestBehaviorScaleUp) SetStabilizationWindowSe
 }
 
 type UpdateServiceAutoScalerRequestScaleStrategies struct {
-	MetricName *string  `json:"metricName,omitempty" xml:"metricName,omitempty"`
-	Service    *string  `json:"service,omitempty" xml:"service,omitempty"`
-	Threshold  *float32 `json:"threshold,omitempty" xml:"threshold,omitempty"`
+	// The name of the metric for triggering auto scaling. Valid values:
+	//
+	// 	- qps: the queries per second (QPS) for an individual instance.
+	//
+	// 	- cpu: the CPU utilization.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// qps
+	MetricName *string `json:"metricName,omitempty" xml:"metricName,omitempty"`
+	// The service for which the metric is specified. If you do not set this parameter, the current service is specified by default.
+	//
+	// example:
+	//
+	// demo_svc
+	Service *string `json:"service,omitempty" xml:"service,omitempty"`
+	// The threshold of the metric that triggers auto scaling.
+	//
+	// 	- If you set metricName to QPS, scale-out is triggered when the average QPS for a single instance is greater than this threshold.
+	//
+	// 	- If you set metricName to CPU, scale-out is triggered when the average CPU utilization for a single instance is greater than this threshold.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 100
+	Threshold *float32 `json:"threshold,omitempty" xml:"threshold,omitempty"`
 }
 
 func (s UpdateServiceAutoScalerRequestScaleStrategies) String() string {
@@ -8075,7 +11531,17 @@ func (s *UpdateServiceAutoScalerRequestScaleStrategies) SetThreshold(v float32) 
 }
 
 type UpdateServiceAutoScalerResponseBody struct {
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The returned message.
+	//
+	// example:
+	//
+	// Update auto scale for service [foo] successfully
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 40325405-579C-4D82****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -8127,8 +11593,12 @@ func (s *UpdateServiceAutoScalerResponse) SetBody(v *UpdateServiceAutoScalerResp
 }
 
 type UpdateServiceCronScalerRequest struct {
-	ExcludeDates []*string                                  `json:"ExcludeDates,omitempty" xml:"ExcludeDates,omitempty" type:"Repeated"`
-	ScaleJobs    []*UpdateServiceCronScalerRequestScaleJobs `json:"ScaleJobs,omitempty" xml:"ScaleJobs,omitempty" type:"Repeated"`
+	// The points in time that are excluded when you schedule a CronHPA job. The points in time must be specified by using a cron expression.
+	ExcludeDates []*string `json:"ExcludeDates,omitempty" xml:"ExcludeDates,omitempty" type:"Repeated"`
+	// The description of the CronHPA job.
+	//
+	// This parameter is required.
+	ScaleJobs []*UpdateServiceCronScalerRequestScaleJobs `json:"ScaleJobs,omitempty" xml:"ScaleJobs,omitempty" type:"Repeated"`
 }
 
 func (s UpdateServiceCronScalerRequest) String() string {
@@ -8150,9 +11620,28 @@ func (s *UpdateServiceCronScalerRequest) SetScaleJobs(v []*UpdateServiceCronScal
 }
 
 type UpdateServiceCronScalerRequestScaleJobs struct {
-	Name       *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Schedule   *string `json:"Schedule,omitempty" xml:"Schedule,omitempty"`
-	TargetSize *int32  `json:"TargetSize,omitempty" xml:"TargetSize,omitempty"`
+	// The name of the CronHPA job.
+	//
+	// example:
+	//
+	// scale-job-1
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The cron expression that is used to configure the execution time of the CronHPA job. For more information about how to configure cron expressions, see **Description of special characters*	- in this topic.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0 18 	- 	- 	- *
+	Schedule *string `json:"Schedule,omitempty" xml:"Schedule,omitempty"`
+	// The number of instances that you want to configure for the CronHPA job.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2
+	TargetSize *int32 `json:"TargetSize,omitempty" xml:"TargetSize,omitempty"`
 }
 
 func (s UpdateServiceCronScalerRequestScaleJobs) String() string {
@@ -8179,7 +11668,17 @@ func (s *UpdateServiceCronScalerRequestScaleJobs) SetTargetSize(v int32) *Update
 }
 
 type UpdateServiceCronScalerResponseBody struct {
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The returned message.
+	//
+	// example:
+	//
+	// Update cron scaler for service [foo] successfully
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 40325405-579C-4D82****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -8233,8 +11732,13 @@ func (s *UpdateServiceCronScalerResponse) SetBody(v *UpdateServiceCronScalerResp
 type UpdateServiceInstanceRequest struct {
 	// Specifies whether to isolate the service instance. Valid values:
 	//
-	// *   true
-	// *   false
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// true
 	Isolate *bool `json:"Isolate,omitempty" xml:"Isolate,omitempty"`
 }
 
@@ -8253,8 +11757,16 @@ func (s *UpdateServiceInstanceRequest) SetIsolate(v bool) *UpdateServiceInstance
 
 type UpdateServiceInstanceResponseBody struct {
 	// The returned message.
+	//
+	// example:
+	//
+	// Success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 40325405-579C-4D82****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -8307,6 +11819,8 @@ func (s *UpdateServiceInstanceResponse) SetBody(v *UpdateServiceInstanceResponse
 
 type UpdateServiceLabelRequest struct {
 	// The custom service tags.
+	//
+	// This parameter is required.
 	Labels map[string]*string `json:"Labels,omitempty" xml:"Labels,omitempty"`
 }
 
@@ -8325,8 +11839,16 @@ func (s *UpdateServiceLabelRequest) SetLabels(v map[string]*string) *UpdateServi
 
 type UpdateServiceLabelResponseBody struct {
 	// The returned message.
+	//
+	// example:
+	//
+	// Succeed to update service [service_from_XXXX] labels.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 40325405-579C-4D82****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -8378,7 +11900,13 @@ func (s *UpdateServiceLabelResponse) SetBody(v *UpdateServiceLabelResponseBody) 
 }
 
 type UpdateServiceMirrorRequest struct {
-	Ratio  *int32    `json:"Ratio,omitempty" xml:"Ratio,omitempty"`
+	// The percentage of traffic that you want to mirror. Valid values: 0 to 100.
+	//
+	// example:
+	//
+	// 30
+	Ratio *int32 `json:"Ratio,omitempty" xml:"Ratio,omitempty"`
+	// The service instances.
 	Target []*string `json:"Target,omitempty" xml:"Target,omitempty" type:"Repeated"`
 }
 
@@ -8401,7 +11929,17 @@ func (s *UpdateServiceMirrorRequest) SetTarget(v []*string) *UpdateServiceMirror
 }
 
 type UpdateServiceMirrorResponseBody struct {
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The returned message.
+	//
+	// example:
+	//
+	// Traffic mirroring is updating for service [foo] in region [cn-shanghia], ratio [70%]
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 40325405-579C-4D82***
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -8455,35 +11993,17 @@ func (s *UpdateServiceMirrorResponse) SetBody(v *UpdateServiceMirrorResponseBody
 type UpdateServiceSafetyLockRequest struct {
 	// The lock scope. Valid values:
 	//
-	// *   all: locks all operations.
-	// *   dangerous: locks high-risk operations such as delete and stop operations.
-	// *   none: locks no operations.
+	// 	- all: locks all operations.
 	//
-	// Enumerated values:
+	// 	- dangerous: locks dangerous operations such as delete and stop operations.
 	//
-	// *   all
+	// 	- none: locks no operations.
 	//
-	//     <!-- -->
+	// This parameter is required.
 	//
-	//     <!-- -->
+	// example:
 	//
-	//     <!-- -->
-	//
-	// *   dangerous
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// *   none
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
+	// dangerous
 	Lock *string `json:"Lock,omitempty" xml:"Lock,omitempty"`
 }
 
@@ -8501,7 +12021,17 @@ func (s *UpdateServiceSafetyLockRequest) SetLock(v string) *UpdateServiceSafetyL
 }
 
 type UpdateServiceSafetyLockResponseBody struct {
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The returned message.
+	//
+	// example:
+	//
+	// service safety lock updated to dangerous
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// E089D584-B6F4-50C4-9902-DA2295B7****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -8553,6 +12083,13 @@ func (s *UpdateServiceSafetyLockResponse) SetBody(v *UpdateServiceSafetyLockResp
 }
 
 type UpdateServiceVersionRequest struct {
+	// The destination version of the service. The value must be of the INT type. The value must be greater than 0 and smaller than the current version of the service.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
 	Version *int32 `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
@@ -8570,7 +12107,17 @@ func (s *UpdateServiceVersionRequest) SetVersion(v int32) *UpdateServiceVersionR
 }
 
 type UpdateServiceVersionResponseBody struct {
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The returned message.
+	//
+	// example:
+	//
+	// Service [foo] in region [cn-shanghai] is starting
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 40325405-579C-4D82****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -8685,6 +12232,17 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
+// Summary:
+//
+// Clones a service.
+//
+// @param request - CloneServiceRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CloneServiceResponse
 func (client *Client) CloneServiceWithOptions(ClusterId *string, ServiceName *string, request *CloneServiceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CloneServiceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8714,6 +12272,13 @@ func (client *Client) CloneServiceWithOptions(ClusterId *string, ServiceName *st
 	return _result, _err
 }
 
+// Summary:
+//
+// Clones a service.
+//
+// @param request - CloneServiceRequest
+//
+// @return CloneServiceResponse
 func (client *Client) CloneService(ClusterId *string, ServiceName *string, request *CloneServiceRequest) (_result *CloneServiceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -8726,6 +12291,15 @@ func (client *Client) CloneService(ClusterId *string, ServiceName *string, reque
 	return _result, _err
 }
 
+// Summary:
+//
+// Commits the Worker0 container in the custom container service and deploys the container as a new image.
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CommitServiceResponse
 func (client *Client) CommitServiceWithOptions(ClusterId *string, ServiceName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CommitServiceResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -8750,6 +12324,11 @@ func (client *Client) CommitServiceWithOptions(ClusterId *string, ServiceName *s
 	return _result, _err
 }
 
+// Summary:
+//
+// Commits the Worker0 container in the custom container service and deploys the container as a new image.
+//
+// @return CommitServiceResponse
 func (client *Client) CommitService(ClusterId *string, ServiceName *string) (_result *CommitServiceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -8762,6 +12341,17 @@ func (client *Client) CommitService(ClusterId *string, ServiceName *string) (_re
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates an application service.
+//
+// @param request - CreateAppServiceRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateAppServiceResponse
 func (client *Client) CreateAppServiceWithOptions(request *CreateAppServiceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateAppServiceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8826,6 +12416,13 @@ func (client *Client) CreateAppServiceWithOptions(request *CreateAppServiceReque
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates an application service.
+//
+// @param request - CreateAppServiceRequest
+//
+// @return CreateAppServiceResponse
 func (client *Client) CreateAppService(request *CreateAppServiceRequest) (_result *CreateAppServiceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -8838,6 +12435,17 @@ func (client *Client) CreateAppService(request *CreateAppServiceRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a stress testing task.
+//
+// @param request - CreateBenchmarkTaskRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateBenchmarkTaskResponse
 func (client *Client) CreateBenchmarkTaskWithOptions(request *CreateBenchmarkTaskRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateBenchmarkTaskResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8867,6 +12475,13 @@ func (client *Client) CreateBenchmarkTaskWithOptions(request *CreateBenchmarkTas
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a stress testing task.
+//
+// @param request - CreateBenchmarkTaskRequest
+//
+// @return CreateBenchmarkTaskResponse
 func (client *Client) CreateBenchmarkTask(request *CreateBenchmarkTaskRequest) (_result *CreateBenchmarkTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -8879,6 +12494,17 @@ func (client *Client) CreateBenchmarkTask(request *CreateBenchmarkTaskRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a private gateway. You can create a private gateway only in a self-managed resource group.
+//
+// @param request - CreateGatewayRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateGatewayResponse
 func (client *Client) CreateGatewayWithOptions(request *CreateGatewayRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateGatewayResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8931,6 +12557,13 @@ func (client *Client) CreateGatewayWithOptions(request *CreateGatewayRequest, he
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a private gateway. You can create a private gateway only in a self-managed resource group.
+//
+// @param request - CreateGatewayRequest
+//
+// @return CreateGatewayResponse
 func (client *Client) CreateGateway(request *CreateGatewayRequest) (_result *CreateGatewayResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -8943,6 +12576,17 @@ func (client *Client) CreateGateway(request *CreateGatewayRequest) (_result *Cre
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates an internal endpoint of a private gateway.
+//
+// @param request - CreateGatewayIntranetLinkedVpcRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateGatewayIntranetLinkedVpcResponse
 func (client *Client) CreateGatewayIntranetLinkedVpcWithOptions(ClusterId *string, GatewayId *string, request *CreateGatewayIntranetLinkedVpcRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateGatewayIntranetLinkedVpcResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8981,6 +12625,13 @@ func (client *Client) CreateGatewayIntranetLinkedVpcWithOptions(ClusterId *strin
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates an internal endpoint of a private gateway.
+//
+// @param request - CreateGatewayIntranetLinkedVpcRequest
+//
+// @return CreateGatewayIntranetLinkedVpcResponse
 func (client *Client) CreateGatewayIntranetLinkedVpc(ClusterId *string, GatewayId *string, request *CreateGatewayIntranetLinkedVpcRequest) (_result *CreateGatewayIntranetLinkedVpcResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -8993,14 +12644,21 @@ func (client *Client) CreateGatewayIntranetLinkedVpc(ClusterId *string, GatewayI
 	return _result, _err
 }
 
-/**
- * **Before you call this operation, make sure that you are familiar with the [billing](~~144261~~) of Elastic Algorithm Service (EAS).
- *
- * @param request CreateResourceRequest
- * @param headers map
- * @param runtime runtime options for this request RuntimeOptions
- * @return CreateResourceResponse
- */
+// Summary:
+//
+// Creates a resource group.
+//
+// Description:
+//
+// *Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/144261.html) of Elastic Algorithm Service (EAS).
+//
+// @param request - CreateResourceRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateResourceResponse
 func (client *Client) CreateResourceWithOptions(request *CreateResourceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateResourceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9063,12 +12721,17 @@ func (client *Client) CreateResourceWithOptions(request *CreateResourceRequest, 
 	return _result, _err
 }
 
-/**
- * **Before you call this operation, make sure that you are familiar with the [billing](~~144261~~) of Elastic Algorithm Service (EAS).
- *
- * @param request CreateResourceRequest
- * @return CreateResourceResponse
- */
+// Summary:
+//
+// Creates a resource group.
+//
+// Description:
+//
+// *Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/144261.html) of Elastic Algorithm Service (EAS).
+//
+// @param request - CreateResourceRequest
+//
+// @return CreateResourceResponse
 func (client *Client) CreateResource(request *CreateResourceRequest) (_result *CreateResourceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -9081,6 +12744,17 @@ func (client *Client) CreateResource(request *CreateResourceRequest) (_result *C
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates instances in a dedicated resource group.
+//
+// @param request - CreateResourceInstancesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateResourceInstancesResponse
 func (client *Client) CreateResourceInstancesWithOptions(ClusterId *string, ResourceId *string, request *CreateResourceInstancesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateResourceInstancesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9139,6 +12813,13 @@ func (client *Client) CreateResourceInstancesWithOptions(ClusterId *string, Reso
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates instances in a dedicated resource group.
+//
+// @param request - CreateResourceInstancesRequest
+//
+// @return CreateResourceInstancesResponse
 func (client *Client) CreateResourceInstances(ClusterId *string, ResourceId *string, request *CreateResourceInstancesRequest) (_result *CreateResourceInstancesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -9151,6 +12832,17 @@ func (client *Client) CreateResourceInstances(ClusterId *string, ResourceId *str
 	return _result, _err
 }
 
+// Summary:
+//
+// Enables the LogShipper feature of Log Service for a resource group.
+//
+// @param request - CreateResourceLogRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateResourceLogResponse
 func (client *Client) CreateResourceLogWithOptions(ClusterId *string, ResourceId *string, request *CreateResourceLogRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateResourceLogResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9189,6 +12881,13 @@ func (client *Client) CreateResourceLogWithOptions(ClusterId *string, ResourceId
 	return _result, _err
 }
 
+// Summary:
+//
+// Enables the LogShipper feature of Log Service for a resource group.
+//
+// @param request - CreateResourceLogRequest
+//
+// @return CreateResourceLogResponse
 func (client *Client) CreateResourceLog(ClusterId *string, ResourceId *string, request *CreateResourceLogRequest) (_result *CreateResourceLogResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -9201,6 +12900,21 @@ func (client *Client) CreateResourceLog(ClusterId *string, ResourceId *string, r
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a model service in Elastic Algorithm Service (EAS).
+//
+// Description:
+//
+// *Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/144261.html) of Elastic Algorithm Service (EAS).
+//
+// @param tmpReq - CreateServiceRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateServiceResponse
 func (client *Client) CreateServiceWithOptions(tmpReq *CreateServiceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateServiceResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -9250,6 +12964,17 @@ func (client *Client) CreateServiceWithOptions(tmpReq *CreateServiceRequest, hea
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a model service in Elastic Algorithm Service (EAS).
+//
+// Description:
+//
+// *Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/144261.html) of Elastic Algorithm Service (EAS).
+//
+// @param request - CreateServiceRequest
+//
+// @return CreateServiceResponse
 func (client *Client) CreateService(request *CreateServiceRequest) (_result *CreateServiceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -9262,6 +12987,17 @@ func (client *Client) CreateService(request *CreateServiceRequest) (_result *Cre
 	return _result, _err
 }
 
+// Summary:
+//
+// Enables the Autoscaler feature and creates an Autoscaler controller for a service.
+//
+// @param request - CreateServiceAutoScalerRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateServiceAutoScalerResponse
 func (client *Client) CreateServiceAutoScalerWithOptions(ClusterId *string, ServiceName *string, request *CreateServiceAutoScalerRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateServiceAutoScalerResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9308,6 +13044,13 @@ func (client *Client) CreateServiceAutoScalerWithOptions(ClusterId *string, Serv
 	return _result, _err
 }
 
+// Summary:
+//
+// Enables the Autoscaler feature and creates an Autoscaler controller for a service.
+//
+// @param request - CreateServiceAutoScalerRequest
+//
+// @return CreateServiceAutoScalerResponse
 func (client *Client) CreateServiceAutoScaler(ClusterId *string, ServiceName *string, request *CreateServiceAutoScalerRequest) (_result *CreateServiceAutoScalerResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -9320,6 +13063,17 @@ func (client *Client) CreateServiceAutoScaler(ClusterId *string, ServiceName *st
 	return _result, _err
 }
 
+// Summary:
+//
+// Enables the Cron Horizontal Pod Autoscaler (CronHPA) feature for a service.
+//
+// @param request - CreateServiceCronScalerRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateServiceCronScalerResponse
 func (client *Client) CreateServiceCronScalerWithOptions(ClusterId *string, ServiceName *string, request *CreateServiceCronScalerRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateServiceCronScalerResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9358,6 +13112,13 @@ func (client *Client) CreateServiceCronScalerWithOptions(ClusterId *string, Serv
 	return _result, _err
 }
 
+// Summary:
+//
+// Enables the Cron Horizontal Pod Autoscaler (CronHPA) feature for a service.
+//
+// @param request - CreateServiceCronScalerRequest
+//
+// @return CreateServiceCronScalerResponse
 func (client *Client) CreateServiceCronScaler(ClusterId *string, ServiceName *string, request *CreateServiceCronScalerRequest) (_result *CreateServiceCronScalerResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -9370,6 +13131,17 @@ func (client *Client) CreateServiceCronScaler(ClusterId *string, ServiceName *st
 	return _result, _err
 }
 
+// Summary:
+//
+// Enables the traffic mirroring feature for a service. After the feature is enabled, requests received by the service can be mirrored to another service.
+//
+// @param request - CreateServiceMirrorRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateServiceMirrorResponse
 func (client *Client) CreateServiceMirrorWithOptions(ClusterId *string, ServiceName *string, request *CreateServiceMirrorRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateServiceMirrorResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9408,6 +13180,13 @@ func (client *Client) CreateServiceMirrorWithOptions(ClusterId *string, ServiceN
 	return _result, _err
 }
 
+// Summary:
+//
+// Enables the traffic mirroring feature for a service. After the feature is enabled, requests received by the service can be mirrored to another service.
+//
+// @param request - CreateServiceMirrorRequest
+//
+// @return CreateServiceMirrorResponse
 func (client *Client) CreateServiceMirror(ClusterId *string, ServiceName *string, request *CreateServiceMirrorRequest) (_result *CreateServiceMirrorResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -9420,6 +13199,15 @@ func (client *Client) CreateServiceMirror(ClusterId *string, ServiceName *string
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a stress testing task.
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteBenchmarkTaskResponse
 func (client *Client) DeleteBenchmarkTaskWithOptions(ClusterId *string, TaskName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteBenchmarkTaskResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -9444,6 +13232,11 @@ func (client *Client) DeleteBenchmarkTaskWithOptions(ClusterId *string, TaskName
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a stress testing task.
+//
+// @return DeleteBenchmarkTaskResponse
 func (client *Client) DeleteBenchmarkTask(ClusterId *string, TaskName *string) (_result *DeleteBenchmarkTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -9456,6 +13249,15 @@ func (client *Client) DeleteBenchmarkTask(ClusterId *string, TaskName *string) (
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a private gateway.
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteGatewayResponse
 func (client *Client) DeleteGatewayWithOptions(ClusterId *string, GatewayId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteGatewayResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -9480,6 +13282,11 @@ func (client *Client) DeleteGatewayWithOptions(ClusterId *string, GatewayId *str
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a private gateway.
+//
+// @return DeleteGatewayResponse
 func (client *Client) DeleteGateway(ClusterId *string, GatewayId *string) (_result *DeleteGatewayResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -9492,6 +13299,17 @@ func (client *Client) DeleteGateway(ClusterId *string, GatewayId *string) (_resu
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除网关内网访问端点
+//
+// @param request - DeleteGatewayIntranetLinkedVpcRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteGatewayIntranetLinkedVpcResponse
 func (client *Client) DeleteGatewayIntranetLinkedVpcWithOptions(ClusterId *string, GatewayId *string, request *DeleteGatewayIntranetLinkedVpcRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteGatewayIntranetLinkedVpcResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9530,6 +13348,13 @@ func (client *Client) DeleteGatewayIntranetLinkedVpcWithOptions(ClusterId *strin
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除网关内网访问端点
+//
+// @param request - DeleteGatewayIntranetLinkedVpcRequest
+//
+// @return DeleteGatewayIntranetLinkedVpcResponse
 func (client *Client) DeleteGatewayIntranetLinkedVpc(ClusterId *string, GatewayId *string, request *DeleteGatewayIntranetLinkedVpcRequest) (_result *DeleteGatewayIntranetLinkedVpcResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -9542,6 +13367,15 @@ func (client *Client) DeleteGatewayIntranetLinkedVpc(ClusterId *string, GatewayI
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a resource group that contains no resources or instances.
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteResourceResponse
 func (client *Client) DeleteResourceWithOptions(ClusterId *string, ResourceId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteResourceResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -9566,6 +13400,11 @@ func (client *Client) DeleteResourceWithOptions(ClusterId *string, ResourceId *s
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a resource group that contains no resources or instances.
+//
+// @return DeleteResourceResponse
 func (client *Client) DeleteResource(ClusterId *string, ResourceId *string) (_result *DeleteResourceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -9578,6 +13417,15 @@ func (client *Client) DeleteResource(ClusterId *string, ResourceId *string) (_re
 	return _result, _err
 }
 
+// Summary:
+//
+// Disables the virtual private cloud (VPC) direct connection feature for a dedicated resource group.
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteResourceDLinkResponse
 func (client *Client) DeleteResourceDLinkWithOptions(ClusterId *string, ResourceId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteResourceDLinkResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -9602,6 +13450,11 @@ func (client *Client) DeleteResourceDLinkWithOptions(ClusterId *string, Resource
 	return _result, _err
 }
 
+// Summary:
+//
+// Disables the virtual private cloud (VPC) direct connection feature for a dedicated resource group.
+//
+// @return DeleteResourceDLinkResponse
 func (client *Client) DeleteResourceDLink(ClusterId *string, ResourceId *string) (_result *DeleteResourceDLinkResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -9614,6 +13467,17 @@ func (client *Client) DeleteResourceDLink(ClusterId *string, ResourceId *string)
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes instances in a dedicated resource group. You can delete only pay-as-you-go instances as a regular user.
+//
+// @param request - DeleteResourceInstancesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteResourceInstancesResponse
 func (client *Client) DeleteResourceInstancesWithOptions(ClusterId *string, ResourceId *string, request *DeleteResourceInstancesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteResourceInstancesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9652,6 +13516,13 @@ func (client *Client) DeleteResourceInstancesWithOptions(ClusterId *string, Reso
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes instances in a dedicated resource group. You can delete only pay-as-you-go instances as a regular user.
+//
+// @param request - DeleteResourceInstancesRequest
+//
+// @return DeleteResourceInstancesResponse
 func (client *Client) DeleteResourceInstances(ClusterId *string, ResourceId *string, request *DeleteResourceInstancesRequest) (_result *DeleteResourceInstancesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -9664,6 +13535,15 @@ func (client *Client) DeleteResourceInstances(ClusterId *string, ResourceId *str
 	return _result, _err
 }
 
+// Summary:
+//
+// Disables the LogShipper feature of Log Service for a dedicated resource group.
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteResourceLogResponse
 func (client *Client) DeleteResourceLogWithOptions(ClusterId *string, ResourceId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteResourceLogResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -9688,6 +13568,11 @@ func (client *Client) DeleteResourceLogWithOptions(ClusterId *string, ResourceId
 	return _result, _err
 }
 
+// Summary:
+//
+// Disables the LogShipper feature of Log Service for a dedicated resource group.
+//
+// @return DeleteResourceLogResponse
 func (client *Client) DeleteResourceLog(ClusterId *string, ResourceId *string) (_result *DeleteResourceLogResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -9700,6 +13585,15 @@ func (client *Client) DeleteResourceLog(ClusterId *string, ResourceId *string) (
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a service.
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteServiceResponse
 func (client *Client) DeleteServiceWithOptions(ClusterId *string, ServiceName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteServiceResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -9724,6 +13618,11 @@ func (client *Client) DeleteServiceWithOptions(ClusterId *string, ServiceName *s
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a service.
+//
+// @return DeleteServiceResponse
 func (client *Client) DeleteService(ClusterId *string, ServiceName *string) (_result *DeleteServiceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -9736,6 +13635,15 @@ func (client *Client) DeleteService(ClusterId *string, ServiceName *string) (_re
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes the existing Autoscaler controller and disables the Autoscaler feature for a service.
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteServiceAutoScalerResponse
 func (client *Client) DeleteServiceAutoScalerWithOptions(ClusterId *string, ServiceName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteServiceAutoScalerResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -9760,6 +13668,11 @@ func (client *Client) DeleteServiceAutoScalerWithOptions(ClusterId *string, Serv
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes the existing Autoscaler controller and disables the Autoscaler feature for a service.
+//
+// @return DeleteServiceAutoScalerResponse
 func (client *Client) DeleteServiceAutoScaler(ClusterId *string, ServiceName *string) (_result *DeleteServiceAutoScalerResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -9772,6 +13685,15 @@ func (client *Client) DeleteServiceAutoScaler(ClusterId *string, ServiceName *st
 	return _result, _err
 }
 
+// Summary:
+//
+// Disables the Cronscaler feature for a service.
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteServiceCronScalerResponse
 func (client *Client) DeleteServiceCronScalerWithOptions(ClusterId *string, ServiceName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteServiceCronScalerResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -9796,6 +13718,11 @@ func (client *Client) DeleteServiceCronScalerWithOptions(ClusterId *string, Serv
 	return _result, _err
 }
 
+// Summary:
+//
+// Disables the Cronscaler feature for a service.
+//
+// @return DeleteServiceCronScalerResponse
 func (client *Client) DeleteServiceCronScaler(ClusterId *string, ServiceName *string) (_result *DeleteServiceCronScalerResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -9808,6 +13735,17 @@ func (client *Client) DeleteServiceCronScaler(ClusterId *string, ServiceName *st
 	return _result, _err
 }
 
+// Summary:
+//
+// Restarts the instances of a service.
+//
+// @param request - DeleteServiceInstancesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteServiceInstancesResponse
 func (client *Client) DeleteServiceInstancesWithOptions(ClusterId *string, ServiceName *string, request *DeleteServiceInstancesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteServiceInstancesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9850,6 +13788,13 @@ func (client *Client) DeleteServiceInstancesWithOptions(ClusterId *string, Servi
 	return _result, _err
 }
 
+// Summary:
+//
+// Restarts the instances of a service.
+//
+// @param request - DeleteServiceInstancesRequest
+//
+// @return DeleteServiceInstancesResponse
 func (client *Client) DeleteServiceInstances(ClusterId *string, ServiceName *string, request *DeleteServiceInstancesRequest) (_result *DeleteServiceInstancesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -9862,6 +13807,17 @@ func (client *Client) DeleteServiceInstances(ClusterId *string, ServiceName *str
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes existing service tags.
+//
+// @param tmpReq - DeleteServiceLabelRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteServiceLabelResponse
 func (client *Client) DeleteServiceLabelWithOptions(ClusterId *string, ServiceName *string, tmpReq *DeleteServiceLabelRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteServiceLabelResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -9902,6 +13858,13 @@ func (client *Client) DeleteServiceLabelWithOptions(ClusterId *string, ServiceNa
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes existing service tags.
+//
+// @param request - DeleteServiceLabelRequest
+//
+// @return DeleteServiceLabelResponse
 func (client *Client) DeleteServiceLabel(ClusterId *string, ServiceName *string, request *DeleteServiceLabelRequest) (_result *DeleteServiceLabelResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -9914,6 +13877,15 @@ func (client *Client) DeleteServiceLabel(ClusterId *string, ServiceName *string,
 	return _result, _err
 }
 
+// Summary:
+//
+// Disables the traffic mirroring feature for a service.
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteServiceMirrorResponse
 func (client *Client) DeleteServiceMirrorWithOptions(ClusterId *string, ServiceName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteServiceMirrorResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -9938,6 +13910,11 @@ func (client *Client) DeleteServiceMirrorWithOptions(ClusterId *string, ServiceN
 	return _result, _err
 }
 
+// Summary:
+//
+// Disables the traffic mirroring feature for a service.
+//
+// @return DeleteServiceMirrorResponse
 func (client *Client) DeleteServiceMirror(ClusterId *string, ServiceName *string) (_result *DeleteServiceMirrorResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -9950,6 +13927,15 @@ func (client *Client) DeleteServiceMirror(ClusterId *string, ServiceName *string
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries details about the configurations of a stress testing task.
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeBenchmarkTaskResponse
 func (client *Client) DescribeBenchmarkTaskWithOptions(ClusterId *string, TaskName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DescribeBenchmarkTaskResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -9974,6 +13960,11 @@ func (client *Client) DescribeBenchmarkTaskWithOptions(ClusterId *string, TaskNa
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries details about the configurations of a stress testing task.
+//
+// @return DescribeBenchmarkTaskResponse
 func (client *Client) DescribeBenchmarkTask(ClusterId *string, TaskName *string) (_result *DescribeBenchmarkTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -9986,6 +13977,17 @@ func (client *Client) DescribeBenchmarkTask(ClusterId *string, TaskName *string)
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the report of a stress testing task.
+//
+// @param request - DescribeBenchmarkTaskReportRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeBenchmarkTaskReportResponse
 func (client *Client) DescribeBenchmarkTaskReportWithOptions(ClusterId *string, TaskName *string, request *DescribeBenchmarkTaskReportRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DescribeBenchmarkTaskReportResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -10020,6 +14022,13 @@ func (client *Client) DescribeBenchmarkTaskReportWithOptions(ClusterId *string, 
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the report of a stress testing task.
+//
+// @param request - DescribeBenchmarkTaskReportRequest
+//
+// @return DescribeBenchmarkTaskReportResponse
 func (client *Client) DescribeBenchmarkTaskReport(ClusterId *string, TaskName *string, request *DescribeBenchmarkTaskReportRequest) (_result *DescribeBenchmarkTaskReportResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -10032,6 +14041,15 @@ func (client *Client) DescribeBenchmarkTaskReport(ClusterId *string, TaskName *s
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the details of a private gateway.
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeGatewayResponse
 func (client *Client) DescribeGatewayWithOptions(ClusterId *string, GatewayId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DescribeGatewayResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -10056,6 +14074,11 @@ func (client *Client) DescribeGatewayWithOptions(ClusterId *string, GatewayId *s
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the details of a private gateway.
+//
+// @return DescribeGatewayResponse
 func (client *Client) DescribeGateway(ClusterId *string, GatewayId *string) (_result *DescribeGatewayResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -10068,6 +14091,15 @@ func (client *Client) DescribeGateway(ClusterId *string, GatewayId *string) (_re
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about a service group.
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeGroupResponse
 func (client *Client) DescribeGroupWithOptions(ClusterId *string, GroupName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DescribeGroupResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -10092,6 +14124,11 @@ func (client *Client) DescribeGroupWithOptions(ClusterId *string, GroupName *str
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about a service group.
+//
+// @return DescribeGroupResponse
 func (client *Client) DescribeGroup(ClusterId *string, GroupName *string) (_result *DescribeGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -10104,6 +14141,15 @@ func (client *Client) DescribeGroup(ClusterId *string, GroupName *string) (_resu
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about a resource group.
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeResourceResponse
 func (client *Client) DescribeResourceWithOptions(ClusterId *string, ResourceId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DescribeResourceResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -10128,6 +14174,11 @@ func (client *Client) DescribeResourceWithOptions(ClusterId *string, ResourceId 
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about a resource group.
+//
+// @return DescribeResourceResponse
 func (client *Client) DescribeResource(ClusterId *string, ResourceId *string) (_result *DescribeResourceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -10140,6 +14191,15 @@ func (client *Client) DescribeResource(ClusterId *string, ResourceId *string) (_
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries detailed configurations about a virtual private cloud (VPC) direct connection of a dedicated resource group.
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeResourceDLinkResponse
 func (client *Client) DescribeResourceDLinkWithOptions(ClusterId *string, ResourceId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DescribeResourceDLinkResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -10164,6 +14224,11 @@ func (client *Client) DescribeResourceDLinkWithOptions(ClusterId *string, Resour
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries detailed configurations about a virtual private cloud (VPC) direct connection of a dedicated resource group.
+//
+// @return DescribeResourceDLinkResponse
 func (client *Client) DescribeResourceDLink(ClusterId *string, ResourceId *string) (_result *DescribeResourceDLinkResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -10176,6 +14241,15 @@ func (client *Client) DescribeResourceDLink(ClusterId *string, ResourceId *strin
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the details about the LogShipper configurations of Log Service for a dedicated resource group.
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeResourceLogResponse
 func (client *Client) DescribeResourceLogWithOptions(ClusterId *string, ResourceId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DescribeResourceLogResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -10200,6 +14274,11 @@ func (client *Client) DescribeResourceLogWithOptions(ClusterId *string, Resource
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the details about the LogShipper configurations of Log Service for a dedicated resource group.
+//
+// @return DescribeResourceLogResponse
 func (client *Client) DescribeResourceLog(ClusterId *string, ResourceId *string) (_result *DescribeResourceLogResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -10212,6 +14291,15 @@ func (client *Client) DescribeResourceLog(ClusterId *string, ResourceId *string)
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the details about a service.
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeServiceResponse
 func (client *Client) DescribeServiceWithOptions(ClusterId *string, ServiceName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DescribeServiceResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -10236,6 +14324,11 @@ func (client *Client) DescribeServiceWithOptions(ClusterId *string, ServiceName 
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the details about a service.
+//
+// @return DescribeServiceResponse
 func (client *Client) DescribeService(ClusterId *string, ServiceName *string) (_result *DescribeServiceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -10248,6 +14341,15 @@ func (client *Client) DescribeService(ClusterId *string, ServiceName *string) (_
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries information about the Autoscaler configurations of a service.
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeServiceAutoScalerResponse
 func (client *Client) DescribeServiceAutoScalerWithOptions(ClusterId *string, ServiceName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DescribeServiceAutoScalerResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -10272,6 +14374,11 @@ func (client *Client) DescribeServiceAutoScalerWithOptions(ClusterId *string, Se
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries information about the Autoscaler configurations of a service.
+//
+// @return DescribeServiceAutoScalerResponse
 func (client *Client) DescribeServiceAutoScaler(ClusterId *string, ServiceName *string) (_result *DescribeServiceAutoScalerResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -10284,6 +14391,15 @@ func (client *Client) DescribeServiceAutoScaler(ClusterId *string, ServiceName *
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the Cron Horizontal Pod Autoscaler (CronHPA) configurations of a service.
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeServiceCronScalerResponse
 func (client *Client) DescribeServiceCronScalerWithOptions(ClusterId *string, ServiceName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DescribeServiceCronScalerResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -10308,6 +14424,11 @@ func (client *Client) DescribeServiceCronScalerWithOptions(ClusterId *string, Se
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the Cron Horizontal Pod Autoscaler (CronHPA) configurations of a service.
+//
+// @return DescribeServiceCronScalerResponse
 func (client *Client) DescribeServiceCronScaler(ClusterId *string, ServiceName *string) (_result *DescribeServiceCronScalerResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -10320,6 +14441,15 @@ func (client *Client) DescribeServiceCronScaler(ClusterId *string, ServiceName *
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the diagnostics details of a service.
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeServiceDiagnosisResponse
 func (client *Client) DescribeServiceDiagnosisWithOptions(ClusterId *string, ServiceName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DescribeServiceDiagnosisResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -10344,6 +14474,11 @@ func (client *Client) DescribeServiceDiagnosisWithOptions(ClusterId *string, Ser
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the diagnostics details of a service.
+//
+// @return DescribeServiceDiagnosisResponse
 func (client *Client) DescribeServiceDiagnosis(ClusterId *string, ServiceName *string) (_result *DescribeServiceDiagnosisResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -10356,6 +14491,17 @@ func (client *Client) DescribeServiceDiagnosis(ClusterId *string, ServiceName *s
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries information about recent service deployment events.
+//
+// @param request - DescribeServiceEventRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeServiceEventResponse
 func (client *Client) DescribeServiceEventWithOptions(ClusterId *string, ServiceName *string, request *DescribeServiceEventRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DescribeServiceEventResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -10410,6 +14556,13 @@ func (client *Client) DescribeServiceEventWithOptions(ClusterId *string, Service
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries information about recent service deployment events.
+//
+// @param request - DescribeServiceEventRequest
+//
+// @return DescribeServiceEventResponse
 func (client *Client) DescribeServiceEvent(ClusterId *string, ServiceName *string, request *DescribeServiceEventRequest) (_result *DescribeServiceEventResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -10422,6 +14575,15 @@ func (client *Client) DescribeServiceEvent(ClusterId *string, ServiceName *strin
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the diagnostics details of an instance that runs Elastic Algorithm Service (EAS).
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeServiceInstanceDiagnosisResponse
 func (client *Client) DescribeServiceInstanceDiagnosisWithOptions(ClusterId *string, ServiceName *string, InstanceName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DescribeServiceInstanceDiagnosisResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -10446,6 +14608,11 @@ func (client *Client) DescribeServiceInstanceDiagnosisWithOptions(ClusterId *str
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the diagnostics details of an instance that runs Elastic Algorithm Service (EAS).
+//
+// @return DescribeServiceInstanceDiagnosisResponse
 func (client *Client) DescribeServiceInstanceDiagnosis(ClusterId *string, ServiceName *string, InstanceName *string) (_result *DescribeServiceInstanceDiagnosisResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -10458,6 +14625,17 @@ func (client *Client) DescribeServiceInstanceDiagnosis(ClusterId *string, Servic
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about the logs of a service.
+//
+// @param request - DescribeServiceLogRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeServiceLogResponse
 func (client *Client) DescribeServiceLogWithOptions(ClusterId *string, ServiceName *string, request *DescribeServiceLogRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DescribeServiceLogResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -10524,6 +14702,13 @@ func (client *Client) DescribeServiceLogWithOptions(ClusterId *string, ServiceNa
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about the logs of a service.
+//
+// @param request - DescribeServiceLogRequest
+//
+// @return DescribeServiceLogResponse
 func (client *Client) DescribeServiceLog(ClusterId *string, ServiceName *string, request *DescribeServiceLogRequest) (_result *DescribeServiceLogResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -10536,6 +14721,15 @@ func (client *Client) DescribeServiceLog(ClusterId *string, ServiceName *string,
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries details about the traffic mirroring settings of a service.
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeServiceMirrorResponse
 func (client *Client) DescribeServiceMirrorWithOptions(ClusterId *string, ServiceName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DescribeServiceMirrorResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -10560,6 +14754,11 @@ func (client *Client) DescribeServiceMirrorWithOptions(ClusterId *string, Servic
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries details about the traffic mirroring settings of a service.
+//
+// @return DescribeServiceMirrorResponse
 func (client *Client) DescribeServiceMirror(ClusterId *string, ServiceName *string) (_result *DescribeServiceMirrorResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -10572,6 +14771,17 @@ func (client *Client) DescribeServiceMirror(ClusterId *string, ServiceName *stri
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the historical prices of preemptible instances. For more information about preemptible instances, see Create and use preemptible instances.
+//
+// @param request - DescribeSpotDiscountHistoryRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeSpotDiscountHistoryResponse
 func (client *Client) DescribeSpotDiscountHistoryWithOptions(request *DescribeSpotDiscountHistoryRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DescribeSpotDiscountHistoryResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -10610,6 +14820,13 @@ func (client *Client) DescribeSpotDiscountHistoryWithOptions(request *DescribeSp
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the historical prices of preemptible instances. For more information about preemptible instances, see Create and use preemptible instances.
+//
+// @param request - DescribeSpotDiscountHistoryRequest
+//
+// @return DescribeSpotDiscountHistoryResponse
 func (client *Client) DescribeSpotDiscountHistory(request *DescribeSpotDiscountHistoryRequest) (_result *DescribeSpotDiscountHistoryResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -10622,6 +14839,17 @@ func (client *Client) DescribeSpotDiscountHistory(request *DescribeSpotDiscountH
 	return _result, _err
 }
 
+// Summary:
+//
+// Switches a container service to development mode or exits development mode.
+//
+// @param request - DevelopServiceRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DevelopServiceResponse
 func (client *Client) DevelopServiceWithOptions(ClusterId *string, ServiceName *string, request *DevelopServiceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DevelopServiceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -10656,6 +14884,13 @@ func (client *Client) DevelopServiceWithOptions(ClusterId *string, ServiceName *
 	return _result, _err
 }
 
+// Summary:
+//
+// Switches a container service to development mode or exits development mode.
+//
+// @param request - DevelopServiceRequest
+//
+// @return DevelopServiceResponse
 func (client *Client) DevelopService(ClusterId *string, ServiceName *string, request *DevelopServiceRequest) (_result *DevelopServiceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -10668,6 +14903,17 @@ func (client *Client) DevelopService(ClusterId *string, ServiceName *string, req
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of stress testing tasks that are created by the current user.
+//
+// @param request - ListBenchmarkTaskRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListBenchmarkTaskResponse
 func (client *Client) ListBenchmarkTaskWithOptions(request *ListBenchmarkTaskRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListBenchmarkTaskResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -10714,6 +14960,13 @@ func (client *Client) ListBenchmarkTaskWithOptions(request *ListBenchmarkTaskReq
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of stress testing tasks that are created by the current user.
+//
+// @param request - ListBenchmarkTaskRequest
+//
+// @return ListBenchmarkTaskResponse
 func (client *Client) ListBenchmarkTask(request *ListBenchmarkTaskRequest) (_result *ListBenchmarkTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -10726,6 +14979,15 @@ func (client *Client) ListBenchmarkTask(request *ListBenchmarkTaskRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of the internal endpoints of a private gateway.
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListGatewayIntranetLinkedVpcResponse
 func (client *Client) ListGatewayIntranetLinkedVpcWithOptions(ClusterId *string, GatewayId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListGatewayIntranetLinkedVpcResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -10750,6 +15012,11 @@ func (client *Client) ListGatewayIntranetLinkedVpcWithOptions(ClusterId *string,
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of the internal endpoints of a private gateway.
+//
+// @return ListGatewayIntranetLinkedVpcResponse
 func (client *Client) ListGatewayIntranetLinkedVpc(ClusterId *string, GatewayId *string) (_result *ListGatewayIntranetLinkedVpcResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -10762,6 +15029,17 @@ func (client *Client) ListGatewayIntranetLinkedVpc(ClusterId *string, GatewayId 
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries created service groups.
+//
+// @param request - ListGroupsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListGroupsResponse
 func (client *Client) ListGroupsWithOptions(request *ListGroupsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListGroupsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -10808,6 +15086,13 @@ func (client *Client) ListGroupsWithOptions(request *ListGroupsRequest, headers 
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries created service groups.
+//
+// @param request - ListGroupsRequest
+//
+// @return ListGroupsResponse
 func (client *Client) ListGroups(request *ListGroupsRequest) (_result *ListGroupsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -10820,6 +15105,17 @@ func (client *Client) ListGroups(request *ListGroupsRequest) (_result *ListGroup
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of workers in a resource group.
+//
+// @param request - ListResourceInstanceWorkerRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListResourceInstanceWorkerResponse
 func (client *Client) ListResourceInstanceWorkerWithOptions(ClusterId *string, ResourceId *string, InstanceName *string, request *ListResourceInstanceWorkerRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListResourceInstanceWorkerResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -10858,6 +15154,13 @@ func (client *Client) ListResourceInstanceWorkerWithOptions(ClusterId *string, R
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of workers in a resource group.
+//
+// @param request - ListResourceInstanceWorkerRequest
+//
+// @return ListResourceInstanceWorkerResponse
 func (client *Client) ListResourceInstanceWorker(ClusterId *string, ResourceId *string, InstanceName *string, request *ListResourceInstanceWorkerRequest) (_result *ListResourceInstanceWorkerResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -10870,6 +15173,17 @@ func (client *Client) ListResourceInstanceWorker(ClusterId *string, ResourceId *
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of instances in a dedicated resource group.
+//
+// @param request - ListResourceInstancesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListResourceInstancesResponse
 func (client *Client) ListResourceInstancesWithOptions(ClusterId *string, ResourceId *string, request *ListResourceInstancesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListResourceInstancesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -10940,6 +15254,13 @@ func (client *Client) ListResourceInstancesWithOptions(ClusterId *string, Resour
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of instances in a dedicated resource group.
+//
+// @param request - ListResourceInstancesRequest
+//
+// @return ListResourceInstancesResponse
 func (client *Client) ListResourceInstances(ClusterId *string, ResourceId *string, request *ListResourceInstancesRequest) (_result *ListResourceInstancesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -10952,6 +15273,17 @@ func (client *Client) ListResourceInstances(ClusterId *string, ResourceId *strin
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of services that are deployed in the dedicated resource group.
+//
+// @param request - ListResourceServicesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListResourceServicesResponse
 func (client *Client) ListResourceServicesWithOptions(ClusterId *string, ResourceId *string, request *ListResourceServicesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListResourceServicesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -10990,6 +15322,13 @@ func (client *Client) ListResourceServicesWithOptions(ClusterId *string, Resourc
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of services that are deployed in the dedicated resource group.
+//
+// @param request - ListResourceServicesRequest
+//
+// @return ListResourceServicesResponse
 func (client *Client) ListResourceServices(ClusterId *string, ResourceId *string, request *ListResourceServicesRequest) (_result *ListResourceServicesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -11002,6 +15341,17 @@ func (client *Client) ListResourceServices(ClusterId *string, ResourceId *string
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of dedicated resource groups for the current user.
+//
+// @param request - ListResourcesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListResourcesResponse
 func (client *Client) ListResourcesWithOptions(request *ListResourcesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListResourcesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -11052,6 +15402,13 @@ func (client *Client) ListResourcesWithOptions(request *ListResourcesRequest, he
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of dedicated resource groups for the current user.
+//
+// @param request - ListResourcesRequest
+//
+// @return ListResourcesResponse
 func (client *Client) ListResources(request *ListResourcesRequest) (_result *ListResourcesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -11064,6 +15421,15 @@ func (client *Client) ListResources(request *ListResourcesRequest) (_result *Lis
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the containers of a service.
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListServiceContainersResponse
 func (client *Client) ListServiceContainersWithOptions(ClusterId *string, ServiceName *string, InstanceName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListServiceContainersResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -11088,6 +15454,11 @@ func (client *Client) ListServiceContainersWithOptions(ClusterId *string, Servic
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the containers of a service.
+//
+// @return ListServiceContainersResponse
 func (client *Client) ListServiceContainers(ClusterId *string, ServiceName *string, InstanceName *string) (_result *ListServiceContainersResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -11100,6 +15471,17 @@ func (client *Client) ListServiceContainers(ClusterId *string, ServiceName *stri
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries instances of a service.
+//
+// @param request - ListServiceInstancesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListServiceInstancesResponse
 func (client *Client) ListServiceInstancesWithOptions(ClusterId *string, ServiceName *string, request *ListServiceInstancesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListServiceInstancesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -11182,6 +15564,13 @@ func (client *Client) ListServiceInstancesWithOptions(ClusterId *string, Service
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries instances of a service.
+//
+// @param request - ListServiceInstancesRequest
+//
+// @return ListServiceInstancesResponse
 func (client *Client) ListServiceInstances(ClusterId *string, ServiceName *string, request *ListServiceInstancesRequest) (_result *ListServiceInstancesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -11194,6 +15583,17 @@ func (client *Client) ListServiceInstances(ClusterId *string, ServiceName *strin
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about the historical versions of a service.
+//
+// @param request - ListServiceVersionsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListServiceVersionsResponse
 func (client *Client) ListServiceVersionsWithOptions(ClusterId *string, ServiceName *string, request *ListServiceVersionsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListServiceVersionsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -11232,6 +15632,13 @@ func (client *Client) ListServiceVersionsWithOptions(ClusterId *string, ServiceN
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about the historical versions of a service.
+//
+// @param request - ListServiceVersionsRequest
+//
+// @return ListServiceVersionsResponse
 func (client *Client) ListServiceVersions(ClusterId *string, ServiceName *string, request *ListServiceVersionsRequest) (_result *ListServiceVersionsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -11244,6 +15651,17 @@ func (client *Client) ListServiceVersions(ClusterId *string, ServiceName *string
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of services that are created by the current user.
+//
+// @param tmpReq - ListServicesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListServicesResponse
 func (client *Client) ListServicesWithOptions(tmpReq *ListServicesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListServicesResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -11340,6 +15758,13 @@ func (client *Client) ListServicesWithOptions(tmpReq *ListServicesRequest, heade
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of services that are created by the current user.
+//
+// @param request - ListServicesRequest
+//
+// @return ListServicesResponse
 func (client *Client) ListServices(request *ListServicesRequest) (_result *ListServicesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -11352,6 +15777,17 @@ func (client *Client) ListServices(request *ListServicesRequest) (_result *ListS
 	return _result, _err
 }
 
+// Summary:
+//
+// Performs canary release or blue-green release of a service.
+//
+// @param request - ReleaseServiceRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ReleaseServiceResponse
 func (client *Client) ReleaseServiceWithOptions(ClusterId *string, ServiceName *string, request *ReleaseServiceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ReleaseServiceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -11390,6 +15826,13 @@ func (client *Client) ReleaseServiceWithOptions(ClusterId *string, ServiceName *
 	return _result, _err
 }
 
+// Summary:
+//
+// Performs canary release or blue-green release of a service.
+//
+// @param request - ReleaseServiceRequest
+//
+// @return ReleaseServiceResponse
 func (client *Client) ReleaseService(ClusterId *string, ServiceName *string, request *ReleaseServiceRequest) (_result *ReleaseServiceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -11402,6 +15845,15 @@ func (client *Client) ReleaseService(ClusterId *string, ServiceName *string, req
 	return _result, _err
 }
 
+// Summary:
+//
+// Restarts a service.
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RestartServiceResponse
 func (client *Client) RestartServiceWithOptions(ClusterId *string, ServiceName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *RestartServiceResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -11426,6 +15878,11 @@ func (client *Client) RestartServiceWithOptions(ClusterId *string, ServiceName *
 	return _result, _err
 }
 
+// Summary:
+//
+// Restarts a service.
+//
+// @return RestartServiceResponse
 func (client *Client) RestartService(ClusterId *string, ServiceName *string) (_result *RestartServiceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -11438,6 +15895,15 @@ func (client *Client) RestartService(ClusterId *string, ServiceName *string) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// Starts a stress testing task.
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return StartBenchmarkTaskResponse
 func (client *Client) StartBenchmarkTaskWithOptions(ClusterId *string, TaskName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *StartBenchmarkTaskResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -11462,6 +15928,11 @@ func (client *Client) StartBenchmarkTaskWithOptions(ClusterId *string, TaskName 
 	return _result, _err
 }
 
+// Summary:
+//
+// Starts a stress testing task.
+//
+// @return StartBenchmarkTaskResponse
 func (client *Client) StartBenchmarkTask(ClusterId *string, TaskName *string) (_result *StartBenchmarkTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -11474,6 +15945,15 @@ func (client *Client) StartBenchmarkTask(ClusterId *string, TaskName *string) (_
 	return _result, _err
 }
 
+// Summary:
+//
+// Starts a service.
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return StartServiceResponse
 func (client *Client) StartServiceWithOptions(ClusterId *string, ServiceName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *StartServiceResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -11498,6 +15978,11 @@ func (client *Client) StartServiceWithOptions(ClusterId *string, ServiceName *st
 	return _result, _err
 }
 
+// Summary:
+//
+// Starts a service.
+//
+// @return StartServiceResponse
 func (client *Client) StartService(ClusterId *string, ServiceName *string) (_result *StartServiceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -11510,6 +15995,15 @@ func (client *Client) StartService(ClusterId *string, ServiceName *string) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// Stops a stress testing task.
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return StopBenchmarkTaskResponse
 func (client *Client) StopBenchmarkTaskWithOptions(ClusterId *string, TaskName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *StopBenchmarkTaskResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -11534,6 +16028,11 @@ func (client *Client) StopBenchmarkTaskWithOptions(ClusterId *string, TaskName *
 	return _result, _err
 }
 
+// Summary:
+//
+// Stops a stress testing task.
+//
+// @return StopBenchmarkTaskResponse
 func (client *Client) StopBenchmarkTask(ClusterId *string, TaskName *string) (_result *StopBenchmarkTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -11546,6 +16045,15 @@ func (client *Client) StopBenchmarkTask(ClusterId *string, TaskName *string) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// Stops a running service.
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return StopServiceResponse
 func (client *Client) StopServiceWithOptions(ClusterId *string, ServiceName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *StopServiceResponse, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
@@ -11570,6 +16078,11 @@ func (client *Client) StopServiceWithOptions(ClusterId *string, ServiceName *str
 	return _result, _err
 }
 
+// Summary:
+//
+// Stops a running service.
+//
+// @return StopServiceResponse
 func (client *Client) StopService(ClusterId *string, ServiceName *string) (_result *StopServiceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -11582,6 +16095,17 @@ func (client *Client) StopService(ClusterId *string, ServiceName *string) (_resu
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates an application service.
+//
+// @param request - UpdateAppServiceRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateAppServiceResponse
 func (client *Client) UpdateAppServiceWithOptions(ClusterId *string, ServiceName *string, request *UpdateAppServiceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateAppServiceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -11642,6 +16166,13 @@ func (client *Client) UpdateAppServiceWithOptions(ClusterId *string, ServiceName
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates an application service.
+//
+// @param request - UpdateAppServiceRequest
+//
+// @return UpdateAppServiceResponse
 func (client *Client) UpdateAppService(ClusterId *string, ServiceName *string, request *UpdateAppServiceRequest) (_result *UpdateAppServiceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -11654,6 +16185,17 @@ func (client *Client) UpdateAppService(ClusterId *string, ServiceName *string, r
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates a stress testing task.
+//
+// @param request - UpdateBenchmarkTaskRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateBenchmarkTaskResponse
 func (client *Client) UpdateBenchmarkTaskWithOptions(ClusterId *string, TaskName *string, request *UpdateBenchmarkTaskRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateBenchmarkTaskResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -11683,6 +16225,13 @@ func (client *Client) UpdateBenchmarkTaskWithOptions(ClusterId *string, TaskName
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates a stress testing task.
+//
+// @param request - UpdateBenchmarkTaskRequest
+//
+// @return UpdateBenchmarkTaskResponse
 func (client *Client) UpdateBenchmarkTask(ClusterId *string, TaskName *string, request *UpdateBenchmarkTaskRequest) (_result *UpdateBenchmarkTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -11695,6 +16244,17 @@ func (client *Client) UpdateBenchmarkTask(ClusterId *string, TaskName *string, r
 	return _result, _err
 }
 
+// Summary:
+//
+// Update a private gateway.
+//
+// @param request - UpdateGatewayRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateGatewayResponse
 func (client *Client) UpdateGatewayWithOptions(GatewayId *string, ClusterId *string, request *UpdateGatewayRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateGatewayResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -11741,6 +16301,13 @@ func (client *Client) UpdateGatewayWithOptions(GatewayId *string, ClusterId *str
 	return _result, _err
 }
 
+// Summary:
+//
+// Update a private gateway.
+//
+// @param request - UpdateGatewayRequest
+//
+// @return UpdateGatewayResponse
 func (client *Client) UpdateGateway(GatewayId *string, ClusterId *string, request *UpdateGatewayRequest) (_result *UpdateGatewayResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -11753,6 +16320,17 @@ func (client *Client) UpdateGateway(GatewayId *string, ClusterId *string, reques
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates the information about a dedicated resource group. Only the name of a dedicated resource group can be updated.
+//
+// @param request - UpdateResourceRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateResourceResponse
 func (client *Client) UpdateResourceWithOptions(ClusterId *string, ResourceId *string, request *UpdateResourceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateResourceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -11791,6 +16369,13 @@ func (client *Client) UpdateResourceWithOptions(ClusterId *string, ResourceId *s
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates the information about a dedicated resource group. Only the name of a dedicated resource group can be updated.
+//
+// @param request - UpdateResourceRequest
+//
+// @return UpdateResourceResponse
 func (client *Client) UpdateResource(ClusterId *string, ResourceId *string, request *UpdateResourceRequest) (_result *UpdateResourceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -11803,6 +16388,17 @@ func (client *Client) UpdateResource(ClusterId *string, ResourceId *string, requ
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates the configurations of a virtual private cloud (VPC) direct connection for a dedicated resource group.
+//
+// @param request - UpdateResourceDLinkRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateResourceDLinkResponse
 func (client *Client) UpdateResourceDLinkWithOptions(ClusterId *string, ResourceId *string, request *UpdateResourceDLinkRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateResourceDLinkResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -11849,6 +16445,13 @@ func (client *Client) UpdateResourceDLinkWithOptions(ClusterId *string, Resource
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates the configurations of a virtual private cloud (VPC) direct connection for a dedicated resource group.
+//
+// @param request - UpdateResourceDLinkRequest
+//
+// @return UpdateResourceDLinkResponse
 func (client *Client) UpdateResourceDLink(ClusterId *string, ResourceId *string, request *UpdateResourceDLinkRequest) (_result *UpdateResourceDLinkResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -11861,6 +16464,17 @@ func (client *Client) UpdateResourceDLink(ClusterId *string, ResourceId *string,
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates the service scheduling status of an instance in a dedicated resource group.
+//
+// @param request - UpdateResourceInstanceRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateResourceInstanceResponse
 func (client *Client) UpdateResourceInstanceWithOptions(ClusterId *string, ResourceId *string, InstanceId *string, request *UpdateResourceInstanceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateResourceInstanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -11895,6 +16509,13 @@ func (client *Client) UpdateResourceInstanceWithOptions(ClusterId *string, Resou
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates the service scheduling status of an instance in a dedicated resource group.
+//
+// @param request - UpdateResourceInstanceRequest
+//
+// @return UpdateResourceInstanceResponse
 func (client *Client) UpdateResourceInstance(ClusterId *string, ResourceId *string, InstanceId *string, request *UpdateResourceInstanceRequest) (_result *UpdateResourceInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -11907,6 +16528,17 @@ func (client *Client) UpdateResourceInstance(ClusterId *string, ResourceId *stri
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates a model or processor of a service. If only the metadata.instance field is updated, manual scaling can be performed.
+//
+// @param request - UpdateServiceRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateServiceResponse
 func (client *Client) UpdateServiceWithOptions(ClusterId *string, ServiceName *string, request *UpdateServiceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateServiceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -11942,6 +16574,13 @@ func (client *Client) UpdateServiceWithOptions(ClusterId *string, ServiceName *s
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates a model or processor of a service. If only the metadata.instance field is updated, manual scaling can be performed.
+//
+// @param request - UpdateServiceRequest
+//
+// @return UpdateServiceResponse
 func (client *Client) UpdateService(ClusterId *string, ServiceName *string, request *UpdateServiceRequest) (_result *UpdateServiceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -11954,6 +16593,17 @@ func (client *Client) UpdateService(ClusterId *string, ServiceName *string, requ
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates the Autoscaler configurations of a service.
+//
+// @param request - UpdateServiceAutoScalerRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateServiceAutoScalerResponse
 func (client *Client) UpdateServiceAutoScalerWithOptions(ClusterId *string, ServiceName *string, request *UpdateServiceAutoScalerRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateServiceAutoScalerResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -12000,6 +16650,13 @@ func (client *Client) UpdateServiceAutoScalerWithOptions(ClusterId *string, Serv
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates the Autoscaler configurations of a service.
+//
+// @param request - UpdateServiceAutoScalerRequest
+//
+// @return UpdateServiceAutoScalerResponse
 func (client *Client) UpdateServiceAutoScaler(ClusterId *string, ServiceName *string, request *UpdateServiceAutoScalerRequest) (_result *UpdateServiceAutoScalerResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -12012,6 +16669,17 @@ func (client *Client) UpdateServiceAutoScaler(ClusterId *string, ServiceName *st
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates the Cron Horizontal Pod Autoscaler (CronHPA) settings of a service.
+//
+// @param request - UpdateServiceCronScalerRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateServiceCronScalerResponse
 func (client *Client) UpdateServiceCronScalerWithOptions(ClusterId *string, ServiceName *string, request *UpdateServiceCronScalerRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateServiceCronScalerResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -12050,6 +16718,13 @@ func (client *Client) UpdateServiceCronScalerWithOptions(ClusterId *string, Serv
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates the Cron Horizontal Pod Autoscaler (CronHPA) settings of a service.
+//
+// @param request - UpdateServiceCronScalerRequest
+//
+// @return UpdateServiceCronScalerResponse
 func (client *Client) UpdateServiceCronScaler(ClusterId *string, ServiceName *string, request *UpdateServiceCronScalerRequest) (_result *UpdateServiceCronScalerResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -12062,6 +16737,17 @@ func (client *Client) UpdateServiceCronScaler(ClusterId *string, ServiceName *st
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates attributes of service instances. Only isolation can be performed for service instances.
+//
+// @param request - UpdateServiceInstanceRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateServiceInstanceResponse
 func (client *Client) UpdateServiceInstanceWithOptions(ClusterId *string, ServiceName *string, InstanceName *string, request *UpdateServiceInstanceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateServiceInstanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -12096,6 +16782,13 @@ func (client *Client) UpdateServiceInstanceWithOptions(ClusterId *string, Servic
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates attributes of service instances. Only isolation can be performed for service instances.
+//
+// @param request - UpdateServiceInstanceRequest
+//
+// @return UpdateServiceInstanceResponse
 func (client *Client) UpdateServiceInstance(ClusterId *string, ServiceName *string, InstanceName *string, request *UpdateServiceInstanceRequest) (_result *UpdateServiceInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -12108,6 +16801,17 @@ func (client *Client) UpdateServiceInstance(ClusterId *string, ServiceName *stri
 	return _result, _err
 }
 
+// Summary:
+//
+// Adds service tags or updates existing service tags.
+//
+// @param request - UpdateServiceLabelRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateServiceLabelResponse
 func (client *Client) UpdateServiceLabelWithOptions(ClusterId *string, ServiceName *string, request *UpdateServiceLabelRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateServiceLabelResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -12142,6 +16846,13 @@ func (client *Client) UpdateServiceLabelWithOptions(ClusterId *string, ServiceNa
 	return _result, _err
 }
 
+// Summary:
+//
+// Adds service tags or updates existing service tags.
+//
+// @param request - UpdateServiceLabelRequest
+//
+// @return UpdateServiceLabelResponse
 func (client *Client) UpdateServiceLabel(ClusterId *string, ServiceName *string, request *UpdateServiceLabelRequest) (_result *UpdateServiceLabelResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -12154,6 +16865,17 @@ func (client *Client) UpdateServiceLabel(ClusterId *string, ServiceName *string,
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates the traffic mirroring configurations of a service.
+//
+// @param request - UpdateServiceMirrorRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateServiceMirrorResponse
 func (client *Client) UpdateServiceMirrorWithOptions(ClusterId *string, ServiceName *string, request *UpdateServiceMirrorRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateServiceMirrorResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -12192,6 +16914,13 @@ func (client *Client) UpdateServiceMirrorWithOptions(ClusterId *string, ServiceN
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates the traffic mirroring configurations of a service.
+//
+// @param request - UpdateServiceMirrorRequest
+//
+// @return UpdateServiceMirrorResponse
 func (client *Client) UpdateServiceMirror(ClusterId *string, ServiceName *string, request *UpdateServiceMirrorRequest) (_result *UpdateServiceMirrorResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -12204,6 +16933,17 @@ func (client *Client) UpdateServiceMirror(ClusterId *string, ServiceName *string
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates the safety lock of a service to minimize misoperations on the service.
+//
+// @param request - UpdateServiceSafetyLockRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateServiceSafetyLockResponse
 func (client *Client) UpdateServiceSafetyLockWithOptions(ClusterId *string, ServiceName *string, request *UpdateServiceSafetyLockRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateServiceSafetyLockResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -12238,6 +16978,13 @@ func (client *Client) UpdateServiceSafetyLockWithOptions(ClusterId *string, Serv
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates the safety lock of a service to minimize misoperations on the service.
+//
+// @param request - UpdateServiceSafetyLockRequest
+//
+// @return UpdateServiceSafetyLockResponse
 func (client *Client) UpdateServiceSafetyLock(ClusterId *string, ServiceName *string, request *UpdateServiceSafetyLockRequest) (_result *UpdateServiceSafetyLockResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -12250,6 +16997,17 @@ func (client *Client) UpdateServiceSafetyLock(ClusterId *string, ServiceName *st
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates the version of a service or rolls back the service to a specific version.
+//
+// @param request - UpdateServiceVersionRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateServiceVersionResponse
 func (client *Client) UpdateServiceVersionWithOptions(ClusterId *string, ServiceName *string, request *UpdateServiceVersionRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateServiceVersionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -12284,6 +17042,13 @@ func (client *Client) UpdateServiceVersionWithOptions(ClusterId *string, Service
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates the version of a service or rolls back the service to a specific version.
+//
+// @param request - UpdateServiceVersionRequest
+//
+// @return UpdateServiceVersionResponse
 func (client *Client) UpdateServiceVersion(ClusterId *string, ServiceName *string, request *UpdateServiceVersionRequest) (_result *UpdateServiceVersionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
