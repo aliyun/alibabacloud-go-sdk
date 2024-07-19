@@ -1127,7 +1127,11 @@ type NodepoolScalingGroup struct {
 	// AliyunLinux
 	Platform           *string                                 `json:"platform,omitempty" xml:"platform,omitempty"`
 	PrivatePoolOptions *NodepoolScalingGroupPrivatePoolOptions `json:"private_pool_options,omitempty" xml:"private_pool_options,omitempty" type:"Struct"`
-	RdsInstances       []*string                               `json:"rds_instances,omitempty" xml:"rds_instances,omitempty" type:"Repeated"`
+	// example:
+	//
+	// example-role
+	RamRoleName  *string   `json:"ram_role_name,omitempty" xml:"ram_role_name,omitempty"`
+	RdsInstances []*string `json:"rds_instances,omitempty" xml:"rds_instances,omitempty" type:"Repeated"`
 	// example:
 	//
 	// release
@@ -1300,6 +1304,11 @@ func (s *NodepoolScalingGroup) SetPlatform(v string) *NodepoolScalingGroup {
 
 func (s *NodepoolScalingGroup) SetPrivatePoolOptions(v *NodepoolScalingGroupPrivatePoolOptions) *NodepoolScalingGroup {
 	s.PrivatePoolOptions = v
+	return s
+}
+
+func (s *NodepoolScalingGroup) SetRamRoleName(v string) *NodepoolScalingGroup {
+	s.RamRoleName = &v
 	return s
 }
 
