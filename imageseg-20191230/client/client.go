@@ -1,7 +1,4 @@
 // This file is auto-generated, don't edit it. Thanks.
-/**
- *
- */
 package client
 
 import (
@@ -18,7 +15,17 @@ import (
 )
 
 type ChangeSkyRequest struct {
-	ImageURL        *string `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// http://viapi-test.oss-cn-shanghai.aliyuncs.com/viapi-3.0domepic/imageseg/ChangeSky/ChangeSky2.jpg
+	ImageURL *string `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// http://viapi-test.oss-cn-shanghai.aliyuncs.com/viapi-3.0domepic/imageseg/ChangeSky/ChangeSky6.jpg
 	ReplaceImageURL *string `json:"ReplaceImageURL,omitempty" xml:"ReplaceImageURL,omitempty"`
 }
 
@@ -41,7 +48,17 @@ func (s *ChangeSkyRequest) SetReplaceImageURL(v string) *ChangeSkyRequest {
 }
 
 type ChangeSkyAdvanceRequest struct {
-	ImageURLObject        io.Reader `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// http://viapi-test.oss-cn-shanghai.aliyuncs.com/viapi-3.0domepic/imageseg/ChangeSky/ChangeSky2.jpg
+	ImageURLObject io.Reader `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// http://viapi-test.oss-cn-shanghai.aliyuncs.com/viapi-3.0domepic/imageseg/ChangeSky/ChangeSky6.jpg
 	ReplaceImageURLObject io.Reader `json:"ReplaceImageURL,omitempty" xml:"ReplaceImageURL,omitempty"`
 }
 
@@ -64,8 +81,11 @@ func (s *ChangeSkyAdvanceRequest) SetReplaceImageURLObject(v io.Reader) *ChangeS
 }
 
 type ChangeSkyResponseBody struct {
-	Data      *ChangeSkyResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	RequestId *string                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data *ChangeSkyResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// F9D60817-EC5A-4BAC-9092-4AD42220CFA8
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ChangeSkyResponseBody) String() string {
@@ -87,6 +107,9 @@ func (s *ChangeSkyResponseBody) SetRequestId(v string) *ChangeSkyResponseBody {
 }
 
 type ChangeSkyResponseBodyData struct {
+	// example:
+	//
+	// http://viapi-cn-shanghai-dha-segmenter.oss-cn-shanghai.aliyuncs.com/upload/result_skySegmentator/2020-7-24/invi_skySegmentator_015955791588111000000_5pn2QM.jpg?Expires=1595580958&OSSAccessKeyId=LTAI4FoLmvQ9urWXgSRp****&Signature=Sq4po8h3WAj%2BBFrCgTP3ghlXn4****
 	ImageURL *string `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
 }
 
@@ -104,9 +127,9 @@ func (s *ChangeSkyResponseBodyData) SetImageURL(v string) *ChangeSkyResponseBody
 }
 
 type ChangeSkyResponse struct {
-	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ChangeSkyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ChangeSkyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ChangeSkyResponse) String() string {
@@ -133,6 +156,11 @@ func (s *ChangeSkyResponse) SetBody(v *ChangeSkyResponseBody) *ChangeSkyResponse
 }
 
 type GetAsyncJobResultRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// E75FE679-0303-4DD1-8252-1143B4FA8A27
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 }
 
@@ -150,8 +178,11 @@ func (s *GetAsyncJobResultRequest) SetJobId(v string) *GetAsyncJobResultRequest 
 }
 
 type GetAsyncJobResultResponseBody struct {
-	Data      *GetAsyncJobResultResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	RequestId *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data *GetAsyncJobResultResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// 43A0AEB6-45F4-4138-8E89-E1A5D63200E3
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetAsyncJobResultResponseBody) String() string {
@@ -173,11 +204,26 @@ func (s *GetAsyncJobResultResponseBody) SetRequestId(v string) *GetAsyncJobResul
 }
 
 type GetAsyncJobResultResponseBodyData struct {
-	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// InvalidParameter
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// paramsIllegal
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	JobId        *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	Result       *string `json:"Result,omitempty" xml:"Result,omitempty"`
-	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// 49E2CC28-ED1D-4CC5-854D-7D0AE2B20976
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// example:
+	//
+	// {"ImageUrl":"http://viapi-cn-shanghai-dha-segmenter.oss-cn-shanghai.aliyuncs.com/upload/result_/2020-4-2/invi__015858226731531000018_UE7B9p.png?Expires=1585824473&OSSAccessKeyId=LTAI4FoLmvQ9urWXgSR****&Signature=etyeYQQ%2BWAyQTqQKd8Xq0GiOW****"}
+	Result *string `json:"Result,omitempty" xml:"Result,omitempty"`
+	// example:
+	//
+	// PROCESS_SUCCESS
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s GetAsyncJobResultResponseBodyData) String() string {
@@ -214,9 +260,9 @@ func (s *GetAsyncJobResultResponseBodyData) SetStatus(v string) *GetAsyncJobResu
 }
 
 type GetAsyncJobResultResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetAsyncJobResultResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetAsyncJobResultResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetAsyncJobResultResponse) String() string {
@@ -243,6 +289,11 @@ func (s *GetAsyncJobResultResponse) SetBody(v *GetAsyncJobResultResponseBody) *G
 }
 
 type ParseFaceRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// http://viapi-test.oss-cn-shanghai.aliyuncs.com/viapi-3.0domepic/imageseg/ParseFace/ParseFace1.jpg
 	ImageURL *string `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
 }
 
@@ -260,6 +311,11 @@ func (s *ParseFaceRequest) SetImageURL(v string) *ParseFaceRequest {
 }
 
 type ParseFaceAdvanceRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// http://viapi-test.oss-cn-shanghai.aliyuncs.com/viapi-3.0domepic/imageseg/ParseFace/ParseFace1.jpg
 	ImageURLObject io.Reader `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
 }
 
@@ -277,8 +333,11 @@ func (s *ParseFaceAdvanceRequest) SetImageURLObject(v io.Reader) *ParseFaceAdvan
 }
 
 type ParseFaceResponseBody struct {
-	Data      *ParseFaceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	RequestId *string                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data *ParseFaceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// D6C24839-91A7-41DA-B31F-98F08EF80CC0
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ParseFaceResponseBody) String() string {
@@ -300,8 +359,11 @@ func (s *ParseFaceResponseBody) SetRequestId(v string) *ParseFaceResponseBody {
 }
 
 type ParseFaceResponseBodyData struct {
-	Elements       []*ParseFaceResponseBodyDataElements `json:"Elements,omitempty" xml:"Elements,omitempty" type:"Repeated"`
-	OriginImageURL *string                              `json:"OriginImageURL,omitempty" xml:"OriginImageURL,omitempty"`
+	Elements []*ParseFaceResponseBodyDataElements `json:"Elements,omitempty" xml:"Elements,omitempty" type:"Repeated"`
+	// example:
+	//
+	// http://viapi-test.oss-cn-shanghai.aliyuncs.com/viapi-3.0domepic/imageseg/ParseFace/ParseFace1.jpg
+	OriginImageURL *string `json:"OriginImageURL,omitempty" xml:"OriginImageURL,omitempty"`
 }
 
 func (s ParseFaceResponseBodyData) String() string {
@@ -323,8 +385,14 @@ func (s *ParseFaceResponseBodyData) SetOriginImageURL(v string) *ParseFaceRespon
 }
 
 type ParseFaceResponseBodyDataElements struct {
+	// example:
+	//
+	// http://vibktprfx-prod-prod-aic-gd-cn-shanghai.oss-cn-shanghai.aliyuncs.com/fivesensesegmenter/prod/560FA2E7-FDC6-59A5-ABDD-D62A05146734/skin/_18dd_20211231-040658.png?Expires=1640925418&OSSAccessKeyId=LTAI4FoLmvQ9urWXgSRp****&Signature=2g0M88wZl%2Bn4t4gzQX%2BTIskpWB****
 	ImageURL *string `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
-	Name     *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// skin
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
 func (s ParseFaceResponseBodyDataElements) String() string {
@@ -346,9 +414,9 @@ func (s *ParseFaceResponseBodyDataElements) SetName(v string) *ParseFaceResponse
 }
 
 type ParseFaceResponse struct {
-	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ParseFaceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ParseFaceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ParseFaceResponse) String() string {
@@ -375,7 +443,17 @@ func (s *ParseFaceResponse) SetBody(v *ParseFaceResponseBody) *ParseFaceResponse
 }
 
 type RefineMaskRequest struct {
-	ImageURL     *string `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// http://viapi-test.oss-cn-shanghai.aliyuncs.com/viapi-3.0domepic/imageseg/RefineMask/RefineMask1.jpg
+	ImageURL *string `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// http://viapi-test.oss-cn-shanghai.aliyuncs.com/viapi-3.0domepic/imageseg/RefineMask/RefineMask6.jpg
 	MaskImageURL *string `json:"MaskImageURL,omitempty" xml:"MaskImageURL,omitempty"`
 }
 
@@ -398,7 +476,17 @@ func (s *RefineMaskRequest) SetMaskImageURL(v string) *RefineMaskRequest {
 }
 
 type RefineMaskAdvanceRequest struct {
-	ImageURLObject     io.Reader `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// http://viapi-test.oss-cn-shanghai.aliyuncs.com/viapi-3.0domepic/imageseg/RefineMask/RefineMask1.jpg
+	ImageURLObject io.Reader `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// http://viapi-test.oss-cn-shanghai.aliyuncs.com/viapi-3.0domepic/imageseg/RefineMask/RefineMask6.jpg
 	MaskImageURLObject io.Reader `json:"MaskImageURL,omitempty" xml:"MaskImageURL,omitempty"`
 }
 
@@ -421,8 +509,11 @@ func (s *RefineMaskAdvanceRequest) SetMaskImageURLObject(v io.Reader) *RefineMas
 }
 
 type RefineMaskResponseBody struct {
-	Data      *RefineMaskResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	RequestId *string                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data *RefineMaskResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// E948F80B-86D9-54E0-9FF9-ACF3B1DA83C4
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s RefineMaskResponseBody) String() string {
@@ -461,6 +552,9 @@ func (s *RefineMaskResponseBodyData) SetElements(v []*RefineMaskResponseBodyData
 }
 
 type RefineMaskResponseBodyDataElements struct {
+	// example:
+	//
+	// http://algo-app-taobao-mm-cn-shanghai-prod.oss-cn-shanghai.aliyuncs.com/pixelai-portrait-beauty%2F2020_03_04%2F61f544a1a5004c88a2bf29452db494e9.jpeg?OSSAccessKeyId=LTAI4Fmdm1gQonFLrghJ****&Expires=1583406122&Signature=Heet1ivG0xFP3YlO6usvd0pmrH****
 	ImageURL *string `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
 }
 
@@ -478,9 +572,9 @@ func (s *RefineMaskResponseBodyDataElements) SetImageURL(v string) *RefineMaskRe
 }
 
 type RefineMaskResponse struct {
-	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *RefineMaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RefineMaskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RefineMaskResponse) String() string {
@@ -507,7 +601,15 @@ func (s *RefineMaskResponse) SetBody(v *RefineMaskResponseBody) *RefineMaskRespo
 }
 
 type SegmentBodyRequest struct {
-	ImageURL   *string `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// http://viapi-test.oss-cn-shanghai.aliyuncs.com/viapi-3.0domepic/imageseg/SegmentBody/SegmentBody1.png
+	ImageURL *string `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
+	// example:
+	//
+	// mask
 	ReturnForm *string `json:"ReturnForm,omitempty" xml:"ReturnForm,omitempty"`
 }
 
@@ -530,8 +632,16 @@ func (s *SegmentBodyRequest) SetReturnForm(v string) *SegmentBodyRequest {
 }
 
 type SegmentBodyAdvanceRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// http://viapi-test.oss-cn-shanghai.aliyuncs.com/viapi-3.0domepic/imageseg/SegmentBody/SegmentBody1.png
 	ImageURLObject io.Reader `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
-	ReturnForm     *string   `json:"ReturnForm,omitempty" xml:"ReturnForm,omitempty"`
+	// example:
+	//
+	// mask
+	ReturnForm *string `json:"ReturnForm,omitempty" xml:"ReturnForm,omitempty"`
 }
 
 func (s SegmentBodyAdvanceRequest) String() string {
@@ -553,8 +663,11 @@ func (s *SegmentBodyAdvanceRequest) SetReturnForm(v string) *SegmentBodyAdvanceR
 }
 
 type SegmentBodyResponseBody struct {
-	Data      *SegmentBodyResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	RequestId *string                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data *SegmentBodyResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// 30EDCEEA-2806-44C6-AF0B-0988849106FE
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s SegmentBodyResponseBody) String() string {
@@ -576,6 +689,9 @@ func (s *SegmentBodyResponseBody) SetRequestId(v string) *SegmentBodyResponseBod
 }
 
 type SegmentBodyResponseBodyData struct {
+	// example:
+	//
+	// http://viapi-cn-shanghai-dha-segmenter.oss-cn-shanghai.aliyuncs.com/upload/result_humansegmenter/2021-3-31/invi_humansegmenter_016171823500001081370_Ej0WwO.jpg?Expires=1617184150&OSSAccessKeyId=LTAI4FoLmvQ9urWXgSRp****&Signature=ZwaWXpAOMzHar%2B1wVO7zeSD83r****
 	ImageURL *string `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
 }
 
@@ -593,9 +709,9 @@ func (s *SegmentBodyResponseBodyData) SetImageURL(v string) *SegmentBodyResponse
 }
 
 type SegmentBodyResponse struct {
-	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SegmentBodyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SegmentBodyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SegmentBodyResponse) String() string {
@@ -623,8 +739,14 @@ func (s *SegmentBodyResponse) SetBody(v *SegmentBodyResponseBody) *SegmentBodyRe
 
 type SegmentClothRequest struct {
 	ClothClass []*string `json:"ClothClass,omitempty" xml:"ClothClass,omitempty" type:"Repeated"`
-	ImageURL   *string   `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
-	ReturnForm *string   `json:"ReturnForm,omitempty" xml:"ReturnForm,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// http://viapi-test.oss-cn-shanghai.aliyuncs.com/viapi-3.0domepic/imageseg/SegmentCloth/SegmentCloth1.jpg
+	ImageURL   *string `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
+	OutMode    *int64  `json:"OutMode,omitempty" xml:"OutMode,omitempty"`
+	ReturnForm *string `json:"ReturnForm,omitempty" xml:"ReturnForm,omitempty"`
 }
 
 func (s SegmentClothRequest) String() string {
@@ -645,14 +767,25 @@ func (s *SegmentClothRequest) SetImageURL(v string) *SegmentClothRequest {
 	return s
 }
 
+func (s *SegmentClothRequest) SetOutMode(v int64) *SegmentClothRequest {
+	s.OutMode = &v
+	return s
+}
+
 func (s *SegmentClothRequest) SetReturnForm(v string) *SegmentClothRequest {
 	s.ReturnForm = &v
 	return s
 }
 
 type SegmentClothAdvanceRequest struct {
-	ClothClass     []*string `json:"ClothClass,omitempty" xml:"ClothClass,omitempty" type:"Repeated"`
+	ClothClass []*string `json:"ClothClass,omitempty" xml:"ClothClass,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// http://viapi-test.oss-cn-shanghai.aliyuncs.com/viapi-3.0domepic/imageseg/SegmentCloth/SegmentCloth1.jpg
 	ImageURLObject io.Reader `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
+	OutMode        *int64    `json:"OutMode,omitempty" xml:"OutMode,omitempty"`
 	ReturnForm     *string   `json:"ReturnForm,omitempty" xml:"ReturnForm,omitempty"`
 }
 
@@ -674,14 +807,22 @@ func (s *SegmentClothAdvanceRequest) SetImageURLObject(v io.Reader) *SegmentClot
 	return s
 }
 
+func (s *SegmentClothAdvanceRequest) SetOutMode(v int64) *SegmentClothAdvanceRequest {
+	s.OutMode = &v
+	return s
+}
+
 func (s *SegmentClothAdvanceRequest) SetReturnForm(v string) *SegmentClothAdvanceRequest {
 	s.ReturnForm = &v
 	return s
 }
 
 type SegmentClothResponseBody struct {
-	Data      *SegmentClothResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	RequestId *string                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data *SegmentClothResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// BCE049A3-FE69-41CF-A870-5970156388A7
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s SegmentClothResponseBody) String() string {
@@ -721,7 +862,10 @@ func (s *SegmentClothResponseBodyData) SetElements(v []*SegmentClothResponseBody
 
 type SegmentClothResponseBodyDataElements struct {
 	ClassUrl map[string]*string `json:"ClassUrl,omitempty" xml:"ClassUrl,omitempty"`
-	ImageURL *string            `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
+	// example:
+	//
+	// http://viapi-cn-shanghai-dha-segmenter.oss-cn-shanghai.aliyuncs.com/upload/clothingsegmentation-2020-06-17-16-54-40-688c84cbbd-hnqfq/2020-6-18/invi__015924459307821000041_IIVHoM.png?Expires=1592447730&OSSAccessKeyId=LTAI4FoLmvQ9urWXgSRp****&Signature=Hy8pn3IQj8nuKN0LEaC57cee9L****
+	ImageURL *string `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
 }
 
 func (s SegmentClothResponseBodyDataElements) String() string {
@@ -743,9 +887,9 @@ func (s *SegmentClothResponseBodyDataElements) SetImageURL(v string) *SegmentClo
 }
 
 type SegmentClothResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SegmentClothResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SegmentClothResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SegmentClothResponse) String() string {
@@ -772,7 +916,15 @@ func (s *SegmentClothResponse) SetBody(v *SegmentClothResponseBody) *SegmentClot
 }
 
 type SegmentCommodityRequest struct {
-	ImageURL   *string `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// http://viapi-test.oss-cn-shanghai.aliyuncs.com/viapi-3.0domepic/imageseg/SegmentCommodity/SegmentCommodity1.jpg
+	ImageURL *string `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
+	// example:
+	//
+	// mask
 	ReturnForm *string `json:"ReturnForm,omitempty" xml:"ReturnForm,omitempty"`
 }
 
@@ -795,8 +947,16 @@ func (s *SegmentCommodityRequest) SetReturnForm(v string) *SegmentCommodityReque
 }
 
 type SegmentCommodityAdvanceRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// http://viapi-test.oss-cn-shanghai.aliyuncs.com/viapi-3.0domepic/imageseg/SegmentCommodity/SegmentCommodity1.jpg
 	ImageURLObject io.Reader `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
-	ReturnForm     *string   `json:"ReturnForm,omitempty" xml:"ReturnForm,omitempty"`
+	// example:
+	//
+	// mask
+	ReturnForm *string `json:"ReturnForm,omitempty" xml:"ReturnForm,omitempty"`
 }
 
 func (s SegmentCommodityAdvanceRequest) String() string {
@@ -818,8 +978,11 @@ func (s *SegmentCommodityAdvanceRequest) SetReturnForm(v string) *SegmentCommodi
 }
 
 type SegmentCommodityResponseBody struct {
-	Data      *SegmentCommodityResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	RequestId *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data *SegmentCommodityResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// D6C24839-91A7-41DA-B31F-98F08EF80CC0
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s SegmentCommodityResponseBody) String() string {
@@ -841,6 +1004,9 @@ func (s *SegmentCommodityResponseBody) SetRequestId(v string) *SegmentCommodityR
 }
 
 type SegmentCommodityResponseBodyData struct {
+	// example:
+	//
+	// http://luban-vgd-invi.oss-cn-hangzhou.aliyuncs.com/upload/result_segmenter/2019-12-20/invi_segmenter_015768355410261076021_Z3t0fc.png?Expires=1577094741&OSSAccessKeyId=LTAI4Fc5SVvzUQ19K1Cz****&Signature=pkaKK3VlfsTR2r%2BYycJzTVEEos****
 	ImageURL *string `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
 }
 
@@ -858,9 +1024,9 @@ func (s *SegmentCommodityResponseBodyData) SetImageURL(v string) *SegmentCommodi
 }
 
 type SegmentCommodityResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SegmentCommodityResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SegmentCommodityResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SegmentCommodityResponse) String() string {
@@ -887,7 +1053,15 @@ func (s *SegmentCommodityResponse) SetBody(v *SegmentCommodityResponseBody) *Seg
 }
 
 type SegmentCommonImageRequest struct {
-	ImageURL   *string `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// http://viapi-test.oss-cn-shanghai.aliyuncs.com/viapi-3.0domepic/imageseg/SegmentCommonImage/SegmentCommonImage1.jpg
+	ImageURL *string `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
+	// example:
+	//
+	// mask
 	ReturnForm *string `json:"ReturnForm,omitempty" xml:"ReturnForm,omitempty"`
 }
 
@@ -910,8 +1084,16 @@ func (s *SegmentCommonImageRequest) SetReturnForm(v string) *SegmentCommonImageR
 }
 
 type SegmentCommonImageAdvanceRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// http://viapi-test.oss-cn-shanghai.aliyuncs.com/viapi-3.0domepic/imageseg/SegmentCommonImage/SegmentCommonImage1.jpg
 	ImageURLObject io.Reader `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
-	ReturnForm     *string   `json:"ReturnForm,omitempty" xml:"ReturnForm,omitempty"`
+	// example:
+	//
+	// mask
+	ReturnForm *string `json:"ReturnForm,omitempty" xml:"ReturnForm,omitempty"`
 }
 
 func (s SegmentCommonImageAdvanceRequest) String() string {
@@ -933,8 +1115,11 @@ func (s *SegmentCommonImageAdvanceRequest) SetReturnForm(v string) *SegmentCommo
 }
 
 type SegmentCommonImageResponseBody struct {
-	Data      *SegmentCommonImageResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	RequestId *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data *SegmentCommonImageResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// 1B8BEF02-0672-44CA-A974-4D6FAC392497
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s SegmentCommonImageResponseBody) String() string {
@@ -956,6 +1141,9 @@ func (s *SegmentCommonImageResponseBody) SetRequestId(v string) *SegmentCommonIm
 }
 
 type SegmentCommonImageResponseBodyData struct {
+	// example:
+	//
+	// http://luban-vgd-invi.oss-cn-hangzhou.aliyuncs.com/upload/result_segmenter/2019-12-20/invi_segmenter_015768355410261076021_Z3t0fc.png?Expires=1577094741&OSSAccessKeyId=LTAI4Fc5SVvzUQ19K1Cz****&Signature=pkaKK3VlfsTR2r%2BYycJzTVEEos****
 	ImageURL *string `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
 }
 
@@ -973,9 +1161,9 @@ func (s *SegmentCommonImageResponseBodyData) SetImageURL(v string) *SegmentCommo
 }
 
 type SegmentCommonImageResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SegmentCommonImageResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SegmentCommonImageResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SegmentCommonImageResponse) String() string {
@@ -1002,7 +1190,15 @@ func (s *SegmentCommonImageResponse) SetBody(v *SegmentCommonImageResponseBody) 
 }
 
 type SegmentFoodRequest struct {
-	ImageURL   *string `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// http://viapi-test.oss-cn-shanghai.aliyuncs.com/viapi-3.0domepic/imageseg/SegmentFood/SegmentFood5.jpg
+	ImageURL *string `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
+	// example:
+	//
+	// mask
 	ReturnForm *string `json:"ReturnForm,omitempty" xml:"ReturnForm,omitempty"`
 }
 
@@ -1025,8 +1221,16 @@ func (s *SegmentFoodRequest) SetReturnForm(v string) *SegmentFoodRequest {
 }
 
 type SegmentFoodAdvanceRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// http://viapi-test.oss-cn-shanghai.aliyuncs.com/viapi-3.0domepic/imageseg/SegmentFood/SegmentFood5.jpg
 	ImageURLObject io.Reader `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
-	ReturnForm     *string   `json:"ReturnForm,omitempty" xml:"ReturnForm,omitempty"`
+	// example:
+	//
+	// mask
+	ReturnForm *string `json:"ReturnForm,omitempty" xml:"ReturnForm,omitempty"`
 }
 
 func (s SegmentFoodAdvanceRequest) String() string {
@@ -1048,8 +1252,11 @@ func (s *SegmentFoodAdvanceRequest) SetReturnForm(v string) *SegmentFoodAdvanceR
 }
 
 type SegmentFoodResponseBody struct {
-	Data      *SegmentFoodResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	RequestId *string                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data *SegmentFoodResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// 38265D08-AD0F-4752-8E96-D1D9FB96C3D9
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s SegmentFoodResponseBody) String() string {
@@ -1071,6 +1278,9 @@ func (s *SegmentFoodResponseBody) SetRequestId(v string) *SegmentFoodResponseBod
 }
 
 type SegmentFoodResponseBodyData struct {
+	// example:
+	//
+	// http://viapi-cn-shanghai-dha-segmenter.oss-cn-shanghai.aliyuncs.com/upload/foodsegmenter-2020-06-17-15-24-00-8658fc85b8-8ds8k/2020-6-18/invi__015924442076191000002_WqJ99N.png?Expires=1592446007&OSSAccessKeyId=LTAI4FoLmvQ9urWXgSRp****&Signature=5ITSd6ndSuP7pUfoDFpgLPUOGg****
 	ImageURL *string `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
 }
 
@@ -1088,9 +1298,9 @@ func (s *SegmentFoodResponseBodyData) SetImageURL(v string) *SegmentFoodResponse
 }
 
 type SegmentFoodResponse struct {
-	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SegmentFoodResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SegmentFoodResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SegmentFoodResponse) String() string {
@@ -1117,6 +1327,11 @@ func (s *SegmentFoodResponse) SetBody(v *SegmentFoodResponseBody) *SegmentFoodRe
 }
 
 type SegmentHDBodyRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// http://viapi-test.oss-cn-shanghai.aliyuncs.com/viapi-3.0domepic/imageseg/SegmentHDBody/SegmentHDBody1.jpg
 	ImageURL *string `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
 }
 
@@ -1134,6 +1349,11 @@ func (s *SegmentHDBodyRequest) SetImageURL(v string) *SegmentHDBodyRequest {
 }
 
 type SegmentHDBodyAdvanceRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// http://viapi-test.oss-cn-shanghai.aliyuncs.com/viapi-3.0domepic/imageseg/SegmentHDBody/SegmentHDBody1.jpg
 	ImageURLObject io.Reader `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
 }
 
@@ -1151,8 +1371,11 @@ func (s *SegmentHDBodyAdvanceRequest) SetImageURLObject(v io.Reader) *SegmentHDB
 }
 
 type SegmentHDBodyResponseBody struct {
-	Data      *SegmentHDBodyResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	RequestId *string                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data *SegmentHDBodyResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// A8D3F5C3-E414-4981-8D84-E2CADF0B7CBC
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s SegmentHDBodyResponseBody) String() string {
@@ -1174,6 +1397,9 @@ func (s *SegmentHDBodyResponseBody) SetRequestId(v string) *SegmentHDBodyRespons
 }
 
 type SegmentHDBodyResponseBodyData struct {
+	// example:
+	//
+	// http://viapi-cn-shanghai-dha-segmenter.oss-cn-shanghai.aliyuncs.com/upload/segmenthdbody-2020-05-18-16-27-45-675d9884d7-kd9dz/2020-5-18/invi_humansegmenter_015897914589851000001_wQbLq9.png?Expires=1589793259&OSSAccessKeyId=LTAI4FoLmvQ9urWXgSRp****&Signature=Lx6xSS0t7lqEvy5Qd1keccIAjL****
 	ImageURL *string `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
 }
 
@@ -1191,9 +1417,9 @@ func (s *SegmentHDBodyResponseBodyData) SetImageURL(v string) *SegmentHDBodyResp
 }
 
 type SegmentHDBodyResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SegmentHDBodyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SegmentHDBodyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SegmentHDBodyResponse) String() string {
@@ -1220,6 +1446,11 @@ func (s *SegmentHDBodyResponse) SetBody(v *SegmentHDBodyResponseBody) *SegmentHD
 }
 
 type SegmentHDCommonImageRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// http://viapi-test.oss-cn-shanghai.aliyuncs.com/viapi-3.0domepic/imageseg/SegmentHDCommonImage/SegmentHDCommonImage1.jpg
 	ImageUrl *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
 }
 
@@ -1237,6 +1468,11 @@ func (s *SegmentHDCommonImageRequest) SetImageUrl(v string) *SegmentHDCommonImag
 }
 
 type SegmentHDCommonImageAdvanceRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// http://viapi-test.oss-cn-shanghai.aliyuncs.com/viapi-3.0domepic/imageseg/SegmentHDCommonImage/SegmentHDCommonImage1.jpg
 	ImageUrlObject io.Reader `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
 }
 
@@ -1254,9 +1490,12 @@ func (s *SegmentHDCommonImageAdvanceRequest) SetImageUrlObject(v io.Reader) *Seg
 }
 
 type SegmentHDCommonImageResponseBody struct {
-	Data      *SegmentHDCommonImageResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                               `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data    *SegmentHDCommonImageResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message *string                               `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// EC994171-7964-44B3-85AF-A715CB56747D
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s SegmentHDCommonImageResponseBody) String() string {
@@ -1283,6 +1522,9 @@ func (s *SegmentHDCommonImageResponseBody) SetRequestId(v string) *SegmentHDComm
 }
 
 type SegmentHDCommonImageResponseBodyData struct {
+	// example:
+	//
+	// http://viapi-cn-shanghai-dha-segmenter.oss-cn-shanghai.aliyuncs.com/upload/result_commoditysegmenter/2020-10-27/invi_commoditysegmenter_016037842193171000000_5pn2QM.png?Expires=1603786019&OSSAccessKeyId=LTAI4FoLmvQ9urWXgSRp****&Signature=HwUztguGBYXmXGEmuTh%2FL3ztoh****
 	ImageUrl *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
 }
 
@@ -1300,9 +1542,9 @@ func (s *SegmentHDCommonImageResponseBodyData) SetImageUrl(v string) *SegmentHDC
 }
 
 type SegmentHDCommonImageResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SegmentHDCommonImageResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SegmentHDCommonImageResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SegmentHDCommonImageResponse) String() string {
@@ -1329,6 +1571,11 @@ func (s *SegmentHDCommonImageResponse) SetBody(v *SegmentHDCommonImageResponseBo
 }
 
 type SegmentHDSkyRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// http://viapi-test.oss-cn-shanghai.aliyuncs.com/viapi-3.0domepic/imageseg/SegmentHDSky/SegmentHDSky4.jpg
 	ImageURL *string `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
 }
 
@@ -1346,6 +1593,11 @@ func (s *SegmentHDSkyRequest) SetImageURL(v string) *SegmentHDSkyRequest {
 }
 
 type SegmentHDSkyAdvanceRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// http://viapi-test.oss-cn-shanghai.aliyuncs.com/viapi-3.0domepic/imageseg/SegmentHDSky/SegmentHDSky4.jpg
 	ImageURLObject io.Reader `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
 }
 
@@ -1363,8 +1615,11 @@ func (s *SegmentHDSkyAdvanceRequest) SetImageURLObject(v io.Reader) *SegmentHDSk
 }
 
 type SegmentHDSkyResponseBody struct {
-	Data      *SegmentHDSkyResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	RequestId *string                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data *SegmentHDSkyResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// 1173F38F-B4F4-4A07-AB2E-D490C01347E5
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s SegmentHDSkyResponseBody) String() string {
@@ -1386,6 +1641,9 @@ func (s *SegmentHDSkyResponseBody) SetRequestId(v string) *SegmentHDSkyResponseB
 }
 
 type SegmentHDSkyResponseBodyData struct {
+	// example:
+	//
+	// http://vibktprfx-prod-prod-aic-gd-cn-shanghai.oss-cn-shanghai.aliyuncs.com/sky-segmentation-hd/res/1173F38F-B4F4-4A07-AB2E-D490C01347E5_0d56_20201027-061858.jpg?Expires=1603781339&OSSAccessKeyId=LTAI4FoLmvQ9urWXgSRp****&Signature=2F8%2Bj%2FWruWOMqDezwpnJOkcNJD****
 	ImageURL *string `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
 }
 
@@ -1403,9 +1661,9 @@ func (s *SegmentHDSkyResponseBodyData) SetImageURL(v string) *SegmentHDSkyRespon
 }
 
 type SegmentHDSkyResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SegmentHDSkyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SegmentHDSkyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SegmentHDSkyResponse) String() string {
@@ -1432,6 +1690,11 @@ func (s *SegmentHDSkyResponse) SetBody(v *SegmentHDSkyResponseBody) *SegmentHDSk
 }
 
 type SegmentHairRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// http://viapi-test.oss-cn-shanghai.aliyuncs.com/viapi-3.0domepic/imageseg/SegmentHair/SegmentHair1.jpg
 	ImageURL *string `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
 }
 
@@ -1449,6 +1712,11 @@ func (s *SegmentHairRequest) SetImageURL(v string) *SegmentHairRequest {
 }
 
 type SegmentHairAdvanceRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// http://viapi-test.oss-cn-shanghai.aliyuncs.com/viapi-3.0domepic/imageseg/SegmentHair/SegmentHair1.jpg
 	ImageURLObject io.Reader `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
 }
 
@@ -1466,8 +1734,11 @@ func (s *SegmentHairAdvanceRequest) SetImageURLObject(v io.Reader) *SegmentHairA
 }
 
 type SegmentHairResponseBody struct {
-	Data      *SegmentHairResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	RequestId *string                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data *SegmentHairResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// D6C24839-91A7-41DA-B31F-98F08EF80CC0
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s SegmentHairResponseBody) String() string {
@@ -1506,11 +1777,26 @@ func (s *SegmentHairResponseBodyData) SetElements(v []*SegmentHairResponseBodyDa
 }
 
 type SegmentHairResponseBodyDataElements struct {
-	Height   *int32  `json:"Height,omitempty" xml:"Height,omitempty"`
+	// example:
+	//
+	// 180
+	Height *int32 `json:"Height,omitempty" xml:"Height,omitempty"`
+	// example:
+	//
+	// http://viapi-cn-shanghai-dha-segmenter.oss-cn-shanghai.aliyuncs.com/upload/result_HeadSegmenter/2021-12-31/invi_HeadSegmenter_016409228383064285967296_iPLUXA.png?Expires=1640924638&OSSAccessKeyId=LTAI4FoLmvQ9urWXgSRp****&Signature=wpKOqSar1bYvGmlTMryfEH2Q9I****
 	ImageURL *string `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
-	Width    *int32  `json:"Width,omitempty" xml:"Width,omitempty"`
-	X        *int32  `json:"X,omitempty" xml:"X,omitempty"`
-	Y        *int32  `json:"Y,omitempty" xml:"Y,omitempty"`
+	// example:
+	//
+	// 113
+	Width *int32 `json:"Width,omitempty" xml:"Width,omitempty"`
+	// example:
+	//
+	// 446
+	X *int32 `json:"X,omitempty" xml:"X,omitempty"`
+	// example:
+	//
+	// 102
+	Y *int32 `json:"Y,omitempty" xml:"Y,omitempty"`
 }
 
 func (s SegmentHairResponseBodyDataElements) String() string {
@@ -1547,9 +1833,9 @@ func (s *SegmentHairResponseBodyDataElements) SetY(v int32) *SegmentHairResponse
 }
 
 type SegmentHairResponse struct {
-	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SegmentHairResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SegmentHairResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SegmentHairResponse) String() string {
@@ -1576,7 +1862,15 @@ func (s *SegmentHairResponse) SetBody(v *SegmentHairResponseBody) *SegmentHairRe
 }
 
 type SegmentHeadRequest struct {
-	ImageURL   *string `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// http://viapi-test.oss-cn-shanghai.aliyuncs.com/viapi-3.0domepic/imageseg/SegmentHead/SegmentHead1.jpg
+	ImageURL *string `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
+	// example:
+	//
+	// mask
 	ReturnForm *string `json:"ReturnForm,omitempty" xml:"ReturnForm,omitempty"`
 }
 
@@ -1599,8 +1893,16 @@ func (s *SegmentHeadRequest) SetReturnForm(v string) *SegmentHeadRequest {
 }
 
 type SegmentHeadAdvanceRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// http://viapi-test.oss-cn-shanghai.aliyuncs.com/viapi-3.0domepic/imageseg/SegmentHead/SegmentHead1.jpg
 	ImageURLObject io.Reader `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
-	ReturnForm     *string   `json:"ReturnForm,omitempty" xml:"ReturnForm,omitempty"`
+	// example:
+	//
+	// mask
+	ReturnForm *string `json:"ReturnForm,omitempty" xml:"ReturnForm,omitempty"`
 }
 
 func (s SegmentHeadAdvanceRequest) String() string {
@@ -1622,8 +1924,11 @@ func (s *SegmentHeadAdvanceRequest) SetReturnForm(v string) *SegmentHeadAdvanceR
 }
 
 type SegmentHeadResponseBody struct {
-	Data      *SegmentHeadResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	RequestId *string                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data *SegmentHeadResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// 89BBDA42-E1CA-426E-9A46-C703D8DBB1E2
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s SegmentHeadResponseBody) String() string {
@@ -1662,11 +1967,26 @@ func (s *SegmentHeadResponseBodyData) SetElements(v []*SegmentHeadResponseBodyDa
 }
 
 type SegmentHeadResponseBodyDataElements struct {
-	Height   *int32  `json:"Height,omitempty" xml:"Height,omitempty"`
+	// example:
+	//
+	// 180
+	Height *int32 `json:"Height,omitempty" xml:"Height,omitempty"`
+	// example:
+	//
+	// http://viapi-cn-shanghai-dha-segmenter.oss-cn-shanghai.aliyuncs.com/upload/result_headsegmenter/2020-6-2/invi_headsegmenter_015910809094981099086_TAamhR.png?Expires=1591082709&OSSAccessKeyId=LTAI4FoLmvQ9urWXgSRp****&Signature=xuUE%2FbYeB9LpR18VXawOVeutQU****
 	ImageURL *string `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
-	Width    *int32  `json:"Width,omitempty" xml:"Width,omitempty"`
-	X        *int32  `json:"X,omitempty" xml:"X,omitempty"`
-	Y        *int32  `json:"Y,omitempty" xml:"Y,omitempty"`
+	// example:
+	//
+	// 116
+	Width *int32 `json:"Width,omitempty" xml:"Width,omitempty"`
+	// example:
+	//
+	// 445
+	X *int32 `json:"X,omitempty" xml:"X,omitempty"`
+	// example:
+	//
+	// 102
+	Y *int32 `json:"Y,omitempty" xml:"Y,omitempty"`
 }
 
 func (s SegmentHeadResponseBodyDataElements) String() string {
@@ -1703,9 +2023,9 @@ func (s *SegmentHeadResponseBodyDataElements) SetY(v int32) *SegmentHeadResponse
 }
 
 type SegmentHeadResponse struct {
-	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SegmentHeadResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SegmentHeadResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SegmentHeadResponse) String() string {
@@ -1732,6 +2052,11 @@ func (s *SegmentHeadResponse) SetBody(v *SegmentHeadResponseBody) *SegmentHeadRe
 }
 
 type SegmentSceneRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// http://viapi-test.oss-cn-shanghai.aliyuncs.com/viapi-3.0domepic/imageseg/SegmentScene/SegmentScene1.jpg
 	ImageURL *string `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
 }
 
@@ -1749,6 +2074,11 @@ func (s *SegmentSceneRequest) SetImageURL(v string) *SegmentSceneRequest {
 }
 
 type SegmentSceneAdvanceRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// http://viapi-test.oss-cn-shanghai.aliyuncs.com/viapi-3.0domepic/imageseg/SegmentScene/SegmentScene1.jpg
 	ImageURLObject io.Reader `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
 }
 
@@ -1766,8 +2096,11 @@ func (s *SegmentSceneAdvanceRequest) SetImageURLObject(v io.Reader) *SegmentScen
 }
 
 type SegmentSceneResponseBody struct {
-	Data      *SegmentSceneResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	RequestId *string                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data *SegmentSceneResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// 78EC13BB-74C5-4FBE-916E-C98BD721ED61
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s SegmentSceneResponseBody) String() string {
@@ -1789,6 +2122,9 @@ func (s *SegmentSceneResponseBody) SetRequestId(v string) *SegmentSceneResponseB
 }
 
 type SegmentSceneResponseBodyData struct {
+	// example:
+	//
+	// http://viapi-cn-shanghai-dha-segmenter.oss-cn-shanghai.aliyuncs.com/upload/result_skySegmentator/2020-7-24/invi_skySegmentator_015955807385661000002_WqJ99N.jpg?Expires=1595582538&OSSAccessKeyId=LTAI4FoLmvQ9urWXgSRp****&Signature=sBP5bQCErDolM4QQG5%2B0HozNoO****
 	ImageURL *string `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
 }
 
@@ -1806,9 +2142,9 @@ func (s *SegmentSceneResponseBodyData) SetImageURL(v string) *SegmentSceneRespon
 }
 
 type SegmentSceneResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SegmentSceneResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SegmentSceneResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SegmentSceneResponse) String() string {
@@ -1835,6 +2171,11 @@ func (s *SegmentSceneResponse) SetBody(v *SegmentSceneResponseBody) *SegmentScen
 }
 
 type SegmentSkinRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// http://viapi-test.oss-cn-shanghai.aliyuncs.com/viapi-3.0domepic/imageseg/SegmentSkin/SegmentSkin2.jpg
 	URL *string `json:"URL,omitempty" xml:"URL,omitempty"`
 }
 
@@ -1852,6 +2193,11 @@ func (s *SegmentSkinRequest) SetURL(v string) *SegmentSkinRequest {
 }
 
 type SegmentSkinAdvanceRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// http://viapi-test.oss-cn-shanghai.aliyuncs.com/viapi-3.0domepic/imageseg/SegmentSkin/SegmentSkin2.jpg
 	URLObject io.Reader `json:"URL,omitempty" xml:"URL,omitempty"`
 }
 
@@ -1869,8 +2215,11 @@ func (s *SegmentSkinAdvanceRequest) SetURLObject(v io.Reader) *SegmentSkinAdvanc
 }
 
 type SegmentSkinResponseBody struct {
-	Data      *SegmentSkinResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	RequestId *string                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data *SegmentSkinResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// DA007354-6CF5-45BE-8333-E06318D848C0
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s SegmentSkinResponseBody) String() string {
@@ -1892,6 +2241,9 @@ func (s *SegmentSkinResponseBody) SetRequestId(v string) *SegmentSkinResponseBod
 }
 
 type SegmentSkinResponseBodyData struct {
+	// example:
+	//
+	// http://viapi-cn-shanghai-dha-segmenter.oss-cn-shanghai.aliyuncs.com/upload/result_skinsegmenter/2020-9-27/invi_skinsegmenter_016011971641871000001_wQbLq9.jpg?Expires=1601198964&OSSAccessKeyId=LTAI4FoLmvQ9urWXgSRp****&Signature=xjKc%2BScprmB86cxtI%2B1T0R6TlE****
 	URL *string `json:"URL,omitempty" xml:"URL,omitempty"`
 }
 
@@ -1909,9 +2261,9 @@ func (s *SegmentSkinResponseBodyData) SetURL(v string) *SegmentSkinResponseBodyD
 }
 
 type SegmentSkinResponse struct {
-	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SegmentSkinResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SegmentSkinResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SegmentSkinResponse) String() string {
@@ -1938,6 +2290,11 @@ func (s *SegmentSkinResponse) SetBody(v *SegmentSkinResponseBody) *SegmentSkinRe
 }
 
 type SegmentSkyRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// http://viapi-test.oss-cn-shanghai.aliyuncs.com/viapi-3.0domepic/imageseg/SegmentSky/SegmentSky5.jpg
 	ImageURL *string `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
 }
 
@@ -1955,6 +2312,11 @@ func (s *SegmentSkyRequest) SetImageURL(v string) *SegmentSkyRequest {
 }
 
 type SegmentSkyAdvanceRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// http://viapi-test.oss-cn-shanghai.aliyuncs.com/viapi-3.0domepic/imageseg/SegmentSky/SegmentSky5.jpg
 	ImageURLObject io.Reader `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
 }
 
@@ -1972,8 +2334,11 @@ func (s *SegmentSkyAdvanceRequest) SetImageURLObject(v io.Reader) *SegmentSkyAdv
 }
 
 type SegmentSkyResponseBody struct {
-	Data      *SegmentSkyResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	RequestId *string                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data *SegmentSkyResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// 80E9D0A0-0330-4210-9986-CAC50C922FF0
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s SegmentSkyResponseBody) String() string {
@@ -1995,6 +2360,9 @@ func (s *SegmentSkyResponseBody) SetRequestId(v string) *SegmentSkyResponseBody 
 }
 
 type SegmentSkyResponseBodyData struct {
+	// example:
+	//
+	// http://viapi-cn-shanghai-dha-segmenter.oss-cn-shanghai.aliyuncs.com/upload/skysegmentation-2020-05-18-10-44-16-5bc8dc79f9-92b7z/2020-5-18/invi_skySegmentator_015897703560961000003_SqZLDv.png?Expires=1589772156&OSSAccessKeyId=LTAI4FoLmvQ9urWXgSRp****&Signature=gXrzAUl%2BvIdYbQ9XKdho54MlkX****
 	ImageURL *string `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
 }
 
@@ -2012,9 +2380,9 @@ func (s *SegmentSkyResponseBodyData) SetImageURL(v string) *SegmentSkyResponseBo
 }
 
 type SegmentSkyResponse struct {
-	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SegmentSkyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SegmentSkyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SegmentSkyResponse) String() string {
@@ -2087,6 +2455,11 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
+// @param request - ChangeSkyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ChangeSkyResponse
 func (client *Client) ChangeSkyWithOptions(request *ChangeSkyRequest, runtime *util.RuntimeOptions) (_result *ChangeSkyResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -2124,6 +2497,9 @@ func (client *Client) ChangeSkyWithOptions(request *ChangeSkyRequest, runtime *u
 	return _result, _err
 }
 
+// @param request - ChangeSkyRequest
+//
+// @return ChangeSkyResponse
 func (client *Client) ChangeSky(request *ChangeSkyRequest) (_result *ChangeSkyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ChangeSkyResponse{}
@@ -2154,7 +2530,7 @@ func (client *Client) ChangeSkyAdvance(request *ChangeSkyAdvanceRequest, runtime
 
 	credentialType := client.Credential.GetType()
 	openPlatformEndpoint := client.OpenPlatformEndpoint
-	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
+	if tea.BoolValue(util.Empty(openPlatformEndpoint)) {
 		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
 	}
 
@@ -2182,12 +2558,17 @@ func (client *Client) ChangeSkyAdvance(request *ChangeSkyAdvanceRequest, runtime
 	}
 	authResponse := &openplatform.AuthorizeFileUploadResponse{}
 	ossConfig := &oss.Config{
+		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
 		Type:            tea.String("access_key"),
 		Protocol:        client.Protocol,
 		RegionId:        client.RegionId,
 	}
-	var ossClient *oss.Client
+	ossClient, _err := oss.NewClient(ossConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
 	fileObj := &fileform.FileField{}
 	ossHeader := &oss.PostObjectRequestHeader{}
 	uploadRequest := &oss.PostObjectRequest{}
@@ -2278,6 +2659,11 @@ func (client *Client) ChangeSkyAdvance(request *ChangeSkyAdvanceRequest, runtime
 	return _result, _err
 }
 
+// @param request - GetAsyncJobResultRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAsyncJobResultResponse
 func (client *Client) GetAsyncJobResultWithOptions(request *GetAsyncJobResultRequest, runtime *util.RuntimeOptions) (_result *GetAsyncJobResultResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -2311,6 +2697,9 @@ func (client *Client) GetAsyncJobResultWithOptions(request *GetAsyncJobResultReq
 	return _result, _err
 }
 
+// @param request - GetAsyncJobResultRequest
+//
+// @return GetAsyncJobResultResponse
 func (client *Client) GetAsyncJobResult(request *GetAsyncJobResultRequest) (_result *GetAsyncJobResultResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetAsyncJobResultResponse{}
@@ -2322,6 +2711,11 @@ func (client *Client) GetAsyncJobResult(request *GetAsyncJobResultRequest) (_res
 	return _result, _err
 }
 
+// @param request - ParseFaceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ParseFaceResponse
 func (client *Client) ParseFaceWithOptions(request *ParseFaceRequest, runtime *util.RuntimeOptions) (_result *ParseFaceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -2355,6 +2749,9 @@ func (client *Client) ParseFaceWithOptions(request *ParseFaceRequest, runtime *u
 	return _result, _err
 }
 
+// @param request - ParseFaceRequest
+//
+// @return ParseFaceResponse
 func (client *Client) ParseFace(request *ParseFaceRequest) (_result *ParseFaceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ParseFaceResponse{}
@@ -2385,7 +2782,7 @@ func (client *Client) ParseFaceAdvance(request *ParseFaceAdvanceRequest, runtime
 
 	credentialType := client.Credential.GetType()
 	openPlatformEndpoint := client.OpenPlatformEndpoint
-	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
+	if tea.BoolValue(util.Empty(openPlatformEndpoint)) {
 		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
 	}
 
@@ -2413,12 +2810,17 @@ func (client *Client) ParseFaceAdvance(request *ParseFaceAdvanceRequest, runtime
 	}
 	authResponse := &openplatform.AuthorizeFileUploadResponse{}
 	ossConfig := &oss.Config{
+		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
 		Type:            tea.String("access_key"),
 		Protocol:        client.Protocol,
 		RegionId:        client.RegionId,
 	}
-	var ossClient *oss.Client
+	ossClient, _err := oss.NewClient(ossConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
 	fileObj := &fileform.FileField{}
 	ossHeader := &oss.PostObjectRequestHeader{}
 	uploadRequest := &oss.PostObjectRequest{}
@@ -2472,6 +2874,11 @@ func (client *Client) ParseFaceAdvance(request *ParseFaceAdvanceRequest, runtime
 	return _result, _err
 }
 
+// @param request - RefineMaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RefineMaskResponse
 func (client *Client) RefineMaskWithOptions(request *RefineMaskRequest, runtime *util.RuntimeOptions) (_result *RefineMaskResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -2509,6 +2916,9 @@ func (client *Client) RefineMaskWithOptions(request *RefineMaskRequest, runtime 
 	return _result, _err
 }
 
+// @param request - RefineMaskRequest
+//
+// @return RefineMaskResponse
 func (client *Client) RefineMask(request *RefineMaskRequest) (_result *RefineMaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RefineMaskResponse{}
@@ -2539,7 +2949,7 @@ func (client *Client) RefineMaskAdvance(request *RefineMaskAdvanceRequest, runti
 
 	credentialType := client.Credential.GetType()
 	openPlatformEndpoint := client.OpenPlatformEndpoint
-	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
+	if tea.BoolValue(util.Empty(openPlatformEndpoint)) {
 		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
 	}
 
@@ -2567,12 +2977,17 @@ func (client *Client) RefineMaskAdvance(request *RefineMaskAdvanceRequest, runti
 	}
 	authResponse := &openplatform.AuthorizeFileUploadResponse{}
 	ossConfig := &oss.Config{
+		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
 		Type:            tea.String("access_key"),
 		Protocol:        client.Protocol,
 		RegionId:        client.RegionId,
 	}
-	var ossClient *oss.Client
+	ossClient, _err := oss.NewClient(ossConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
 	fileObj := &fileform.FileField{}
 	ossHeader := &oss.PostObjectRequestHeader{}
 	uploadRequest := &oss.PostObjectRequest{}
@@ -2663,6 +3078,11 @@ func (client *Client) RefineMaskAdvance(request *RefineMaskAdvanceRequest, runti
 	return _result, _err
 }
 
+// @param request - SegmentBodyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SegmentBodyResponse
 func (client *Client) SegmentBodyWithOptions(request *SegmentBodyRequest, runtime *util.RuntimeOptions) (_result *SegmentBodyResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -2700,6 +3120,9 @@ func (client *Client) SegmentBodyWithOptions(request *SegmentBodyRequest, runtim
 	return _result, _err
 }
 
+// @param request - SegmentBodyRequest
+//
+// @return SegmentBodyResponse
 func (client *Client) SegmentBody(request *SegmentBodyRequest) (_result *SegmentBodyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SegmentBodyResponse{}
@@ -2730,7 +3153,7 @@ func (client *Client) SegmentBodyAdvance(request *SegmentBodyAdvanceRequest, run
 
 	credentialType := client.Credential.GetType()
 	openPlatformEndpoint := client.OpenPlatformEndpoint
-	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
+	if tea.BoolValue(util.Empty(openPlatformEndpoint)) {
 		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
 	}
 
@@ -2758,12 +3181,17 @@ func (client *Client) SegmentBodyAdvance(request *SegmentBodyAdvanceRequest, run
 	}
 	authResponse := &openplatform.AuthorizeFileUploadResponse{}
 	ossConfig := &oss.Config{
+		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
 		Type:            tea.String("access_key"),
 		Protocol:        client.Protocol,
 		RegionId:        client.RegionId,
 	}
-	var ossClient *oss.Client
+	ossClient, _err := oss.NewClient(ossConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
 	fileObj := &fileform.FileField{}
 	ossHeader := &oss.PostObjectRequestHeader{}
 	uploadRequest := &oss.PostObjectRequest{}
@@ -2817,6 +3245,11 @@ func (client *Client) SegmentBodyAdvance(request *SegmentBodyAdvanceRequest, run
 	return _result, _err
 }
 
+// @param request - SegmentClothRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SegmentClothResponse
 func (client *Client) SegmentClothWithOptions(request *SegmentClothRequest, runtime *util.RuntimeOptions) (_result *SegmentClothResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -2829,6 +3262,10 @@ func (client *Client) SegmentClothWithOptions(request *SegmentClothRequest, runt
 
 	if !tea.BoolValue(util.IsUnset(request.ImageURL)) {
 		query["ImageURL"] = request.ImageURL
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OutMode)) {
+		query["OutMode"] = request.OutMode
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ReturnForm)) {
@@ -2858,6 +3295,9 @@ func (client *Client) SegmentClothWithOptions(request *SegmentClothRequest, runt
 	return _result, _err
 }
 
+// @param request - SegmentClothRequest
+//
+// @return SegmentClothResponse
 func (client *Client) SegmentCloth(request *SegmentClothRequest) (_result *SegmentClothResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SegmentClothResponse{}
@@ -2888,7 +3328,7 @@ func (client *Client) SegmentClothAdvance(request *SegmentClothAdvanceRequest, r
 
 	credentialType := client.Credential.GetType()
 	openPlatformEndpoint := client.OpenPlatformEndpoint
-	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
+	if tea.BoolValue(util.Empty(openPlatformEndpoint)) {
 		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
 	}
 
@@ -2916,12 +3356,17 @@ func (client *Client) SegmentClothAdvance(request *SegmentClothAdvanceRequest, r
 	}
 	authResponse := &openplatform.AuthorizeFileUploadResponse{}
 	ossConfig := &oss.Config{
+		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
 		Type:            tea.String("access_key"),
 		Protocol:        client.Protocol,
 		RegionId:        client.RegionId,
 	}
-	var ossClient *oss.Client
+	ossClient, _err := oss.NewClient(ossConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
 	fileObj := &fileform.FileField{}
 	ossHeader := &oss.PostObjectRequestHeader{}
 	uploadRequest := &oss.PostObjectRequest{}
@@ -2975,6 +3420,11 @@ func (client *Client) SegmentClothAdvance(request *SegmentClothAdvanceRequest, r
 	return _result, _err
 }
 
+// @param request - SegmentCommodityRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SegmentCommodityResponse
 func (client *Client) SegmentCommodityWithOptions(request *SegmentCommodityRequest, runtime *util.RuntimeOptions) (_result *SegmentCommodityResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3012,6 +3462,9 @@ func (client *Client) SegmentCommodityWithOptions(request *SegmentCommodityReque
 	return _result, _err
 }
 
+// @param request - SegmentCommodityRequest
+//
+// @return SegmentCommodityResponse
 func (client *Client) SegmentCommodity(request *SegmentCommodityRequest) (_result *SegmentCommodityResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SegmentCommodityResponse{}
@@ -3042,7 +3495,7 @@ func (client *Client) SegmentCommodityAdvance(request *SegmentCommodityAdvanceRe
 
 	credentialType := client.Credential.GetType()
 	openPlatformEndpoint := client.OpenPlatformEndpoint
-	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
+	if tea.BoolValue(util.Empty(openPlatformEndpoint)) {
 		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
 	}
 
@@ -3070,12 +3523,17 @@ func (client *Client) SegmentCommodityAdvance(request *SegmentCommodityAdvanceRe
 	}
 	authResponse := &openplatform.AuthorizeFileUploadResponse{}
 	ossConfig := &oss.Config{
+		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
 		Type:            tea.String("access_key"),
 		Protocol:        client.Protocol,
 		RegionId:        client.RegionId,
 	}
-	var ossClient *oss.Client
+	ossClient, _err := oss.NewClient(ossConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
 	fileObj := &fileform.FileField{}
 	ossHeader := &oss.PostObjectRequestHeader{}
 	uploadRequest := &oss.PostObjectRequest{}
@@ -3129,6 +3587,11 @@ func (client *Client) SegmentCommodityAdvance(request *SegmentCommodityAdvanceRe
 	return _result, _err
 }
 
+// @param request - SegmentCommonImageRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SegmentCommonImageResponse
 func (client *Client) SegmentCommonImageWithOptions(request *SegmentCommonImageRequest, runtime *util.RuntimeOptions) (_result *SegmentCommonImageResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3166,6 +3629,9 @@ func (client *Client) SegmentCommonImageWithOptions(request *SegmentCommonImageR
 	return _result, _err
 }
 
+// @param request - SegmentCommonImageRequest
+//
+// @return SegmentCommonImageResponse
 func (client *Client) SegmentCommonImage(request *SegmentCommonImageRequest) (_result *SegmentCommonImageResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SegmentCommonImageResponse{}
@@ -3196,7 +3662,7 @@ func (client *Client) SegmentCommonImageAdvance(request *SegmentCommonImageAdvan
 
 	credentialType := client.Credential.GetType()
 	openPlatformEndpoint := client.OpenPlatformEndpoint
-	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
+	if tea.BoolValue(util.Empty(openPlatformEndpoint)) {
 		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
 	}
 
@@ -3224,12 +3690,17 @@ func (client *Client) SegmentCommonImageAdvance(request *SegmentCommonImageAdvan
 	}
 	authResponse := &openplatform.AuthorizeFileUploadResponse{}
 	ossConfig := &oss.Config{
+		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
 		Type:            tea.String("access_key"),
 		Protocol:        client.Protocol,
 		RegionId:        client.RegionId,
 	}
-	var ossClient *oss.Client
+	ossClient, _err := oss.NewClient(ossConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
 	fileObj := &fileform.FileField{}
 	ossHeader := &oss.PostObjectRequestHeader{}
 	uploadRequest := &oss.PostObjectRequest{}
@@ -3283,6 +3754,11 @@ func (client *Client) SegmentCommonImageAdvance(request *SegmentCommonImageAdvan
 	return _result, _err
 }
 
+// @param request - SegmentFoodRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SegmentFoodResponse
 func (client *Client) SegmentFoodWithOptions(request *SegmentFoodRequest, runtime *util.RuntimeOptions) (_result *SegmentFoodResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3320,6 +3796,9 @@ func (client *Client) SegmentFoodWithOptions(request *SegmentFoodRequest, runtim
 	return _result, _err
 }
 
+// @param request - SegmentFoodRequest
+//
+// @return SegmentFoodResponse
 func (client *Client) SegmentFood(request *SegmentFoodRequest) (_result *SegmentFoodResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SegmentFoodResponse{}
@@ -3350,7 +3829,7 @@ func (client *Client) SegmentFoodAdvance(request *SegmentFoodAdvanceRequest, run
 
 	credentialType := client.Credential.GetType()
 	openPlatformEndpoint := client.OpenPlatformEndpoint
-	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
+	if tea.BoolValue(util.Empty(openPlatformEndpoint)) {
 		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
 	}
 
@@ -3378,12 +3857,17 @@ func (client *Client) SegmentFoodAdvance(request *SegmentFoodAdvanceRequest, run
 	}
 	authResponse := &openplatform.AuthorizeFileUploadResponse{}
 	ossConfig := &oss.Config{
+		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
 		Type:            tea.String("access_key"),
 		Protocol:        client.Protocol,
 		RegionId:        client.RegionId,
 	}
-	var ossClient *oss.Client
+	ossClient, _err := oss.NewClient(ossConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
 	fileObj := &fileform.FileField{}
 	ossHeader := &oss.PostObjectRequestHeader{}
 	uploadRequest := &oss.PostObjectRequest{}
@@ -3437,6 +3921,11 @@ func (client *Client) SegmentFoodAdvance(request *SegmentFoodAdvanceRequest, run
 	return _result, _err
 }
 
+// @param request - SegmentHDBodyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SegmentHDBodyResponse
 func (client *Client) SegmentHDBodyWithOptions(request *SegmentHDBodyRequest, runtime *util.RuntimeOptions) (_result *SegmentHDBodyResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3470,6 +3959,9 @@ func (client *Client) SegmentHDBodyWithOptions(request *SegmentHDBodyRequest, ru
 	return _result, _err
 }
 
+// @param request - SegmentHDBodyRequest
+//
+// @return SegmentHDBodyResponse
 func (client *Client) SegmentHDBody(request *SegmentHDBodyRequest) (_result *SegmentHDBodyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SegmentHDBodyResponse{}
@@ -3500,7 +3992,7 @@ func (client *Client) SegmentHDBodyAdvance(request *SegmentHDBodyAdvanceRequest,
 
 	credentialType := client.Credential.GetType()
 	openPlatformEndpoint := client.OpenPlatformEndpoint
-	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
+	if tea.BoolValue(util.Empty(openPlatformEndpoint)) {
 		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
 	}
 
@@ -3528,12 +4020,17 @@ func (client *Client) SegmentHDBodyAdvance(request *SegmentHDBodyAdvanceRequest,
 	}
 	authResponse := &openplatform.AuthorizeFileUploadResponse{}
 	ossConfig := &oss.Config{
+		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
 		Type:            tea.String("access_key"),
 		Protocol:        client.Protocol,
 		RegionId:        client.RegionId,
 	}
-	var ossClient *oss.Client
+	ossClient, _err := oss.NewClient(ossConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
 	fileObj := &fileform.FileField{}
 	ossHeader := &oss.PostObjectRequestHeader{}
 	uploadRequest := &oss.PostObjectRequest{}
@@ -3587,6 +4084,11 @@ func (client *Client) SegmentHDBodyAdvance(request *SegmentHDBodyAdvanceRequest,
 	return _result, _err
 }
 
+// @param request - SegmentHDCommonImageRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SegmentHDCommonImageResponse
 func (client *Client) SegmentHDCommonImageWithOptions(request *SegmentHDCommonImageRequest, runtime *util.RuntimeOptions) (_result *SegmentHDCommonImageResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3620,6 +4122,9 @@ func (client *Client) SegmentHDCommonImageWithOptions(request *SegmentHDCommonIm
 	return _result, _err
 }
 
+// @param request - SegmentHDCommonImageRequest
+//
+// @return SegmentHDCommonImageResponse
 func (client *Client) SegmentHDCommonImage(request *SegmentHDCommonImageRequest) (_result *SegmentHDCommonImageResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SegmentHDCommonImageResponse{}
@@ -3650,7 +4155,7 @@ func (client *Client) SegmentHDCommonImageAdvance(request *SegmentHDCommonImageA
 
 	credentialType := client.Credential.GetType()
 	openPlatformEndpoint := client.OpenPlatformEndpoint
-	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
+	if tea.BoolValue(util.Empty(openPlatformEndpoint)) {
 		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
 	}
 
@@ -3678,12 +4183,17 @@ func (client *Client) SegmentHDCommonImageAdvance(request *SegmentHDCommonImageA
 	}
 	authResponse := &openplatform.AuthorizeFileUploadResponse{}
 	ossConfig := &oss.Config{
+		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
 		Type:            tea.String("access_key"),
 		Protocol:        client.Protocol,
 		RegionId:        client.RegionId,
 	}
-	var ossClient *oss.Client
+	ossClient, _err := oss.NewClient(ossConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
 	fileObj := &fileform.FileField{}
 	ossHeader := &oss.PostObjectRequestHeader{}
 	uploadRequest := &oss.PostObjectRequest{}
@@ -3737,6 +4247,11 @@ func (client *Client) SegmentHDCommonImageAdvance(request *SegmentHDCommonImageA
 	return _result, _err
 }
 
+// @param request - SegmentHDSkyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SegmentHDSkyResponse
 func (client *Client) SegmentHDSkyWithOptions(request *SegmentHDSkyRequest, runtime *util.RuntimeOptions) (_result *SegmentHDSkyResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3770,6 +4285,9 @@ func (client *Client) SegmentHDSkyWithOptions(request *SegmentHDSkyRequest, runt
 	return _result, _err
 }
 
+// @param request - SegmentHDSkyRequest
+//
+// @return SegmentHDSkyResponse
 func (client *Client) SegmentHDSky(request *SegmentHDSkyRequest) (_result *SegmentHDSkyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SegmentHDSkyResponse{}
@@ -3800,7 +4318,7 @@ func (client *Client) SegmentHDSkyAdvance(request *SegmentHDSkyAdvanceRequest, r
 
 	credentialType := client.Credential.GetType()
 	openPlatformEndpoint := client.OpenPlatformEndpoint
-	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
+	if tea.BoolValue(util.Empty(openPlatformEndpoint)) {
 		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
 	}
 
@@ -3828,12 +4346,17 @@ func (client *Client) SegmentHDSkyAdvance(request *SegmentHDSkyAdvanceRequest, r
 	}
 	authResponse := &openplatform.AuthorizeFileUploadResponse{}
 	ossConfig := &oss.Config{
+		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
 		Type:            tea.String("access_key"),
 		Protocol:        client.Protocol,
 		RegionId:        client.RegionId,
 	}
-	var ossClient *oss.Client
+	ossClient, _err := oss.NewClient(ossConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
 	fileObj := &fileform.FileField{}
 	ossHeader := &oss.PostObjectRequestHeader{}
 	uploadRequest := &oss.PostObjectRequest{}
@@ -3887,6 +4410,11 @@ func (client *Client) SegmentHDSkyAdvance(request *SegmentHDSkyAdvanceRequest, r
 	return _result, _err
 }
 
+// @param request - SegmentHairRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SegmentHairResponse
 func (client *Client) SegmentHairWithOptions(request *SegmentHairRequest, runtime *util.RuntimeOptions) (_result *SegmentHairResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3920,6 +4448,9 @@ func (client *Client) SegmentHairWithOptions(request *SegmentHairRequest, runtim
 	return _result, _err
 }
 
+// @param request - SegmentHairRequest
+//
+// @return SegmentHairResponse
 func (client *Client) SegmentHair(request *SegmentHairRequest) (_result *SegmentHairResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SegmentHairResponse{}
@@ -3950,7 +4481,7 @@ func (client *Client) SegmentHairAdvance(request *SegmentHairAdvanceRequest, run
 
 	credentialType := client.Credential.GetType()
 	openPlatformEndpoint := client.OpenPlatformEndpoint
-	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
+	if tea.BoolValue(util.Empty(openPlatformEndpoint)) {
 		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
 	}
 
@@ -3978,12 +4509,17 @@ func (client *Client) SegmentHairAdvance(request *SegmentHairAdvanceRequest, run
 	}
 	authResponse := &openplatform.AuthorizeFileUploadResponse{}
 	ossConfig := &oss.Config{
+		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
 		Type:            tea.String("access_key"),
 		Protocol:        client.Protocol,
 		RegionId:        client.RegionId,
 	}
-	var ossClient *oss.Client
+	ossClient, _err := oss.NewClient(ossConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
 	fileObj := &fileform.FileField{}
 	ossHeader := &oss.PostObjectRequestHeader{}
 	uploadRequest := &oss.PostObjectRequest{}
@@ -4037,6 +4573,11 @@ func (client *Client) SegmentHairAdvance(request *SegmentHairAdvanceRequest, run
 	return _result, _err
 }
 
+// @param request - SegmentHeadRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SegmentHeadResponse
 func (client *Client) SegmentHeadWithOptions(request *SegmentHeadRequest, runtime *util.RuntimeOptions) (_result *SegmentHeadResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4074,6 +4615,9 @@ func (client *Client) SegmentHeadWithOptions(request *SegmentHeadRequest, runtim
 	return _result, _err
 }
 
+// @param request - SegmentHeadRequest
+//
+// @return SegmentHeadResponse
 func (client *Client) SegmentHead(request *SegmentHeadRequest) (_result *SegmentHeadResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SegmentHeadResponse{}
@@ -4104,7 +4648,7 @@ func (client *Client) SegmentHeadAdvance(request *SegmentHeadAdvanceRequest, run
 
 	credentialType := client.Credential.GetType()
 	openPlatformEndpoint := client.OpenPlatformEndpoint
-	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
+	if tea.BoolValue(util.Empty(openPlatformEndpoint)) {
 		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
 	}
 
@@ -4132,12 +4676,17 @@ func (client *Client) SegmentHeadAdvance(request *SegmentHeadAdvanceRequest, run
 	}
 	authResponse := &openplatform.AuthorizeFileUploadResponse{}
 	ossConfig := &oss.Config{
+		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
 		Type:            tea.String("access_key"),
 		Protocol:        client.Protocol,
 		RegionId:        client.RegionId,
 	}
-	var ossClient *oss.Client
+	ossClient, _err := oss.NewClient(ossConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
 	fileObj := &fileform.FileField{}
 	ossHeader := &oss.PostObjectRequestHeader{}
 	uploadRequest := &oss.PostObjectRequest{}
@@ -4191,6 +4740,11 @@ func (client *Client) SegmentHeadAdvance(request *SegmentHeadAdvanceRequest, run
 	return _result, _err
 }
 
+// @param request - SegmentSceneRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SegmentSceneResponse
 func (client *Client) SegmentSceneWithOptions(request *SegmentSceneRequest, runtime *util.RuntimeOptions) (_result *SegmentSceneResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4224,6 +4778,9 @@ func (client *Client) SegmentSceneWithOptions(request *SegmentSceneRequest, runt
 	return _result, _err
 }
 
+// @param request - SegmentSceneRequest
+//
+// @return SegmentSceneResponse
 func (client *Client) SegmentScene(request *SegmentSceneRequest) (_result *SegmentSceneResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SegmentSceneResponse{}
@@ -4254,7 +4811,7 @@ func (client *Client) SegmentSceneAdvance(request *SegmentSceneAdvanceRequest, r
 
 	credentialType := client.Credential.GetType()
 	openPlatformEndpoint := client.OpenPlatformEndpoint
-	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
+	if tea.BoolValue(util.Empty(openPlatformEndpoint)) {
 		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
 	}
 
@@ -4282,12 +4839,17 @@ func (client *Client) SegmentSceneAdvance(request *SegmentSceneAdvanceRequest, r
 	}
 	authResponse := &openplatform.AuthorizeFileUploadResponse{}
 	ossConfig := &oss.Config{
+		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
 		Type:            tea.String("access_key"),
 		Protocol:        client.Protocol,
 		RegionId:        client.RegionId,
 	}
-	var ossClient *oss.Client
+	ossClient, _err := oss.NewClient(ossConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
 	fileObj := &fileform.FileField{}
 	ossHeader := &oss.PostObjectRequestHeader{}
 	uploadRequest := &oss.PostObjectRequest{}
@@ -4341,6 +4903,11 @@ func (client *Client) SegmentSceneAdvance(request *SegmentSceneAdvanceRequest, r
 	return _result, _err
 }
 
+// @param request - SegmentSkinRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SegmentSkinResponse
 func (client *Client) SegmentSkinWithOptions(request *SegmentSkinRequest, runtime *util.RuntimeOptions) (_result *SegmentSkinResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4374,6 +4941,9 @@ func (client *Client) SegmentSkinWithOptions(request *SegmentSkinRequest, runtim
 	return _result, _err
 }
 
+// @param request - SegmentSkinRequest
+//
+// @return SegmentSkinResponse
 func (client *Client) SegmentSkin(request *SegmentSkinRequest) (_result *SegmentSkinResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SegmentSkinResponse{}
@@ -4404,7 +4974,7 @@ func (client *Client) SegmentSkinAdvance(request *SegmentSkinAdvanceRequest, run
 
 	credentialType := client.Credential.GetType()
 	openPlatformEndpoint := client.OpenPlatformEndpoint
-	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
+	if tea.BoolValue(util.Empty(openPlatformEndpoint)) {
 		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
 	}
 
@@ -4432,12 +5002,17 @@ func (client *Client) SegmentSkinAdvance(request *SegmentSkinAdvanceRequest, run
 	}
 	authResponse := &openplatform.AuthorizeFileUploadResponse{}
 	ossConfig := &oss.Config{
+		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
 		Type:            tea.String("access_key"),
 		Protocol:        client.Protocol,
 		RegionId:        client.RegionId,
 	}
-	var ossClient *oss.Client
+	ossClient, _err := oss.NewClient(ossConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
 	fileObj := &fileform.FileField{}
 	ossHeader := &oss.PostObjectRequestHeader{}
 	uploadRequest := &oss.PostObjectRequest{}
@@ -4491,6 +5066,11 @@ func (client *Client) SegmentSkinAdvance(request *SegmentSkinAdvanceRequest, run
 	return _result, _err
 }
 
+// @param request - SegmentSkyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SegmentSkyResponse
 func (client *Client) SegmentSkyWithOptions(request *SegmentSkyRequest, runtime *util.RuntimeOptions) (_result *SegmentSkyResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4524,6 +5104,9 @@ func (client *Client) SegmentSkyWithOptions(request *SegmentSkyRequest, runtime 
 	return _result, _err
 }
 
+// @param request - SegmentSkyRequest
+//
+// @return SegmentSkyResponse
 func (client *Client) SegmentSky(request *SegmentSkyRequest) (_result *SegmentSkyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SegmentSkyResponse{}
@@ -4554,7 +5137,7 @@ func (client *Client) SegmentSkyAdvance(request *SegmentSkyAdvanceRequest, runti
 
 	credentialType := client.Credential.GetType()
 	openPlatformEndpoint := client.OpenPlatformEndpoint
-	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
+	if tea.BoolValue(util.Empty(openPlatformEndpoint)) {
 		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
 	}
 
@@ -4582,12 +5165,17 @@ func (client *Client) SegmentSkyAdvance(request *SegmentSkyAdvanceRequest, runti
 	}
 	authResponse := &openplatform.AuthorizeFileUploadResponse{}
 	ossConfig := &oss.Config{
+		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
 		Type:            tea.String("access_key"),
 		Protocol:        client.Protocol,
 		RegionId:        client.RegionId,
 	}
-	var ossClient *oss.Client
+	ossClient, _err := oss.NewClient(ossConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
 	fileObj := &fileform.FileField{}
 	ossHeader := &oss.PostObjectRequestHeader{}
 	uploadRequest := &oss.PostObjectRequest{}
