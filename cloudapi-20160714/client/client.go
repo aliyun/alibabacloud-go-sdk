@@ -2311,26 +2311,43 @@ func (s *CreateAppKeyResponse) SetBody(v *CreateAppKeyResponseBody) *CreateAppKe
 }
 
 type CreateBackendRequest struct {
+	// The name of the backend service.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// testBackendService
 	BackendName *string `json:"BackendName,omitempty" xml:"BackendName,omitempty"`
+	// The type of the backend service.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// HTTP
 	BackendType *string `json:"BackendType,omitempty" xml:"BackendType,omitempty"`
+	// Specifies to create a EventBridge service-linked role.
+	//
 	// example:
 	//
 	// true
-	CreateEventBridgeServiceLinkedRole *bool                      `json:"CreateEventBridgeServiceLinkedRole,omitempty" xml:"CreateEventBridgeServiceLinkedRole,omitempty"`
-	CreateSlr                          *bool                      `json:"CreateSlr,omitempty" xml:"CreateSlr,omitempty"`
-	Description                        *string                    `json:"Description,omitempty" xml:"Description,omitempty"`
-	SecurityToken                      *string                    `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	Tag                                []*CreateBackendRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	CreateEventBridgeServiceLinkedRole *bool `json:"CreateEventBridgeServiceLinkedRole,omitempty" xml:"CreateEventBridgeServiceLinkedRole,omitempty"`
+	// Specifies to create a service-linked role.
+	//
+	// example:
+	//
+	// true
+	CreateSlr *bool `json:"CreateSlr,omitempty" xml:"CreateSlr,omitempty"`
+	// The description.
+	//
+	// example:
+	//
+	// release data api 411055691504981
+	Description   *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	// The tag of objects that match the rule. You can specify multiple tags.
+	Tag []*CreateBackendRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s CreateBackendRequest) String() string {
@@ -2377,7 +2394,17 @@ func (s *CreateBackendRequest) SetTag(v []*CreateBackendRequestTag) *CreateBacke
 }
 
 type CreateBackendRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The key of the tag.
+	//
+	// example:
+	//
+	// key
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The value of the tag.
+	//
+	// example:
+	//
+	// 123
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -2400,10 +2427,14 @@ func (s *CreateBackendRequestTag) SetValue(v string) *CreateBackendRequestTag {
 }
 
 type CreateBackendResponseBody struct {
+	// The ID of the backend service.
+	//
 	// example:
 	//
 	// 0d105f80a8f340408bd34954d4e4ff22
 	BackendId *string `json:"BackendId,omitempty" xml:"BackendId,omitempty"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 66D84355-164D-53ED-81FF-03DCF181DE24
@@ -10258,7 +10289,7 @@ type DescribeApiGroupResponseBody struct {
 	//
 	// 2016-08-01T06:53:02Z
 	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
-	// The custom domain name information.
+	// The details about the custom domain name.
 	CustomDomains *DescribeApiGroupResponseBodyCustomDomains `json:"CustomDomains,omitempty" xml:"CustomDomains,omitempty" type:"Struct"`
 	// The custom trace configuration.
 	//
@@ -10272,6 +10303,12 @@ type DescribeApiGroupResponseBody struct {
 	//
 	// removeResponseServerHeader
 	CustomerConfigs *string `json:"CustomerConfigs,omitempty" xml:"CustomerConfigs,omitempty"`
+	// The type of exclusive instance where the group is located
+	//
+	// - VPC fusion type exclusive instance: vpc_connect
+	//
+	// - Traditional type exclusive instance: normal
+	//
 	// example:
 	//
 	// normal
@@ -10350,10 +10387,20 @@ type DescribeApiGroupResponseBody struct {
 	//
 	// UNBIND
 	Ipv6Status *string `json:"Ipv6Status,omitempty" xml:"Ipv6Status,omitempty"`
+	// The reason for the failure of the group migration instance task. When the value of the MigrationStatus parameter is Failed, it is not empty.
+	//
 	// example:
 	//
 	// The current instance conflicts with the target instance.
 	MigrationError *string `json:"MigrationError,omitempty" xml:"MigrationError,omitempty"`
+	// Group migration instance task status
+	//
+	// - Running
+	//
+	// - Success
+	//
+	// - Failed
+	//
 	// example:
 	//
 	// Fail
@@ -10617,6 +10664,11 @@ func (s *DescribeApiGroupResponseBodyCustomDomains) SetDomainItem(v []*DescribeA
 }
 
 type DescribeApiGroupResponseBodyCustomDomainsDomainItem struct {
+	// Bind runtime environment alias
+	//
+	// example:
+	//
+	// TEST1
 	BindStageAlias *string `json:"BindStageAlias,omitempty" xml:"BindStageAlias,omitempty"`
 	// The environment in which the associated API group runs.
 	//
@@ -10624,13 +10676,13 @@ type DescribeApiGroupResponseBodyCustomDomainsDomainItem struct {
 	//
 	// TEST
 	BindStageName *string `json:"BindStageName,omitempty" xml:"BindStageName,omitempty"`
-	// The unique ID of the SSL certificate, which is automatically generated by the system.
+	// The SSL certificate ID, which is automatically generated by the system.
 	//
 	// example:
 	//
 	// 6EF60BEC-0242-43AF-BB20-270359FB54A7
 	CertificateId *string `json:"CertificateId,omitempty" xml:"CertificateId,omitempty"`
-	// The SSL certificate name.
+	// The name of the SSL certificate.
 	//
 	// example:
 	//
@@ -10678,7 +10730,7 @@ type DescribeApiGroupResponseBodyCustomDomainsDomainItem struct {
 	//
 	// 	- **NORMAL**: The domain name is valid.
 	//
-	// 	- **ABNORMAL**: The domain name is invalid. This status affects API calls and must be resolved as soon as possible.
+	// 	- **ABNORMAL**: The domain name is invalid. This status affects API calls and needs to be rectified as soon as possible.
 	//
 	// example:
 	//
@@ -10696,13 +10748,13 @@ type DescribeApiGroupResponseBodyCustomDomainsDomainItem struct {
 	//
 	// Indicates that the domain name does not have an ICP filing.
 	DomainRemark *string `json:"DomainRemark,omitempty" xml:"DomainRemark,omitempty"`
-	// The status of the domain name that uses the WebSocket feature.
+	// The status of the domain that uses the WebSocket feature.
 	//
 	// example:
 	//
 	// CLOSE
 	DomainWebSocketStatus *string `json:"DomainWebSocketStatus,omitempty" xml:"DomainWebSocketStatus,omitempty"`
-	// Indicates whether to redirect HTTP requests as HTTPS requests.
+	// Indicates whether to redirect HTTP requests to HTTPS.
 	//
 	// example:
 	//
@@ -21527,9 +21579,10 @@ type DescribeBackendListRequest struct {
 	// example:
 	//
 	// 10
-	PageSize      *int32                           `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	SecurityToken *string                          `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	Tag           []*DescribeBackendListRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	PageSize      *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	// The list of the tag.
+	Tag []*DescribeBackendListRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s DescribeBackendListRequest) String() string {
@@ -21571,7 +21624,17 @@ func (s *DescribeBackendListRequest) SetTag(v []*DescribeBackendListRequestTag) 
 }
 
 type DescribeBackendListRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The key of the tag.
+	//
+	// example:
+	//
+	// test1
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The value of the tag.
+	//
+	// example:
+	//
+	// value
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -21691,8 +21754,9 @@ type DescribeBackendListResponseBodyBackendInfoList struct {
 	// example:
 	//
 	// 2022-01-25T11:22:29Z
-	ModifiedTime *string                                               `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
-	Tags         []*DescribeBackendListResponseBodyBackendInfoListTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
+	// The list of tags.
+	Tags []*DescribeBackendListResponseBodyBackendInfoListTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
 func (s DescribeBackendListResponseBodyBackendInfoList) String() string {
@@ -21739,7 +21803,17 @@ func (s *DescribeBackendListResponseBodyBackendInfoList) SetTags(v []*DescribeBa
 }
 
 type DescribeBackendListResponseBodyBackendInfoListTags struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The name of the tag.
+	//
+	// example:
+	//
+	// groupName
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The value of the tag.
+	//
+	// example:
+	//
+	// e3b881d0-e2d0-4dfb-b1fb-a2a3d1e534b7
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -26267,31 +26341,60 @@ func (s *DescribeImportOASTaskResponseBodyApiResults) SetApiResult(v []*Describe
 }
 
 type DescribeImportOASTaskResponseBodyApiResultsApiResult struct {
+	// The API ID.
+	//
 	// example:
 	//
 	// c5a0c2900ff746b789c007545be22fb8
 	ApiId *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
+	// The API name.
+	//
 	// example:
 	//
 	// GetByCreatorIdUsingGET
-	ApiName     *string `json:"ApiName,omitempty" xml:"ApiName,omitempty"`
+	ApiName *string `json:"ApiName,omitempty" xml:"ApiName,omitempty"`
+	// The API description.
+	//
+	// example:
+	//
+	// release data api 411055691505041
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The cause of the failure if the API fails to be imported.
+	//
 	// example:
 	//
 	// Internal Error
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The API group ID.
+	//
 	// example:
 	//
 	// 736508d885074167ba8fbce3bc95ea0b
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The HTTP request HTTP method of the API.
+	//
 	// example:
 	//
 	// GET
 	Method *string `json:"Method,omitempty" xml:"Method,omitempty"`
+	// The request path of the API.
+	//
 	// example:
 	//
 	// /creator/getByCreatorId
 	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	// The execution status of the subtask. Valid values:
+	//
+	// 	- RUNNING
+	//
+	// 	- WAIT
+	//
+	// 	- OVER
+	//
+	// 	- FAIL
+	//
+	// 	- CANCEL
+	//
 	// example:
 	//
 	// WAIT
@@ -26364,22 +26467,42 @@ func (s *DescribeImportOASTaskResponseBodyModelResults) SetModelResult(v []*Desc
 }
 
 type DescribeImportOASTaskResponseBodyModelResultsModelResult struct {
+	// The cause of the failure if the model fails to be imported.
+	//
 	// example:
 	//
 	// Internal Error
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// The API group ID.
+	//
 	// example:
 	//
 	// 736508d885074167ba8fbce3bc95ea0b
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The ID of the imported model.
+	//
 	// example:
 	//
 	// 6b48d724c921415486e190c494dd6bf8
 	ModelId *string `json:"ModelId,omitempty" xml:"ModelId,omitempty"`
+	// The model name.
+	//
 	// example:
 	//
 	// Pet
 	ModelName *string `json:"ModelName,omitempty" xml:"ModelName,omitempty"`
+	// The execution status of the subtask. Valid values:
+	//
+	// 	- RUNNING
+	//
+	// 	- WAIT
+	//
+	// 	- OVER
+	//
+	// 	- FAIL
+	//
+	// 	- CANCEL
+	//
 	// example:
 	//
 	// FAIL
@@ -28828,20 +28951,33 @@ func (s *DescribeInstanceTrafficResponse) SetBody(v *DescribeInstanceTrafficResp
 }
 
 type DescribeInstancesRequest struct {
+	// Specifies whether tag authorization is enabled.
+	//
 	// example:
 	//
 	// false
 	EnableTagAuthorization *bool `json:"EnableTagAuthorization,omitempty" xml:"EnableTagAuthorization,omitempty"`
+	// The instance ID. If you do not specify this parameter, all instances are returned.
+	//
 	// example:
 	//
 	// api-shared-vpc-001
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The language in which you want the description of the system policy to be returned. Valid values:
+	//
+	// 	- en: English
+	//
+	// 	- zh: Chinese
+	//
+	// 	- ja: Japanese
+	//
 	// example:
 	//
 	// zh
-	Language      *string                        `json:"Language,omitempty" xml:"Language,omitempty"`
-	SecurityToken *string                        `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	Tag           []*DescribeInstancesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	Language      *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	// The tag that is bound to the instance.
+	Tag []*DescribeInstancesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s DescribeInstancesRequest) String() string {
@@ -28878,10 +29014,14 @@ func (s *DescribeInstancesRequest) SetTag(v []*DescribeInstancesRequestTag) *Des
 }
 
 type DescribeInstancesRequestTag struct {
+	// The tag key.
+	//
 	// example:
 	//
 	// key1
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value.
+	//
 	// example:
 	//
 	// value
@@ -28907,19 +29047,28 @@ func (s *DescribeInstancesRequestTag) SetValue(v string) *DescribeInstancesReque
 }
 
 type DescribeInstancesResponseBody struct {
+	// The information about the instances.
 	Instances *DescribeInstancesResponseBodyInstances `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Struct"`
+	// The page number of the returned page.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// CEB6EC62-B6C7-5082-A45A-45A204724AC2
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 1
@@ -28977,159 +29126,273 @@ func (s *DescribeInstancesResponseBodyInstances) SetInstanceAttribute(v []*Descr
 }
 
 type DescribeInstancesResponseBodyInstancesInstanceAttribute struct {
+	// The ACL ID.
+	//
 	// example:
 	//
 	// acl-uf6f9zfxfxtp5j9ng3yv4
 	AclId *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
+	// The name of the access control list (ACL).
+	//
 	// example:
 	//
 	// test
 	AclName *string `json:"AclName,omitempty" xml:"AclName,omitempty"`
+	// Indicates whether the ACL is enabled. Valid values:
+	//
+	// 	- **on**
+	//
+	// 	- **off**
+	//
 	// example:
 	//
 	// on
 	AclStatus *string `json:"AclStatus,omitempty" xml:"AclStatus,omitempty"`
+	// The ACL type. Valid values:
+	//
+	// 	- black: blacklist
+	//
+	// 	- white: whitelist
+	//
 	// example:
 	//
 	// white
 	AclType *string `json:"AclType,omitempty" xml:"AclType,omitempty"`
+	// The egress IP address.
+	//
 	// example:
 	//
 	// 10.0.0.1
 	ClassicEgressAddress *string `json:"ClassicEgressAddress,omitempty" xml:"ClassicEgressAddress,omitempty"`
-	ConnectCidrBlocks    *string `json:"ConnectCidrBlocks,omitempty" xml:"ConnectCidrBlocks,omitempty"`
-	// VPC融合类型专享实例联通的用户VPC ID
+	// The internal CIDR block of the user\\"s VPC that can be accessed if the instance is a VPC integration instance.
+	//
+	// example:
+	//
+	// [\\"172.16.0.0/24\\",\\"172.16.1.0/24\\"]
+	ConnectCidrBlocks *string `json:"ConnectCidrBlocks,omitempty" xml:"ConnectCidrBlocks,omitempty"`
+	// The ID of the user\\"s VPC if the instance is a VPC integration instance.
 	//
 	// example:
 	//
 	// vpc-m5eo7khlb4h4f8y9egsdg
 	ConnectVpcId *string `json:"ConnectVpcId,omitempty" xml:"ConnectVpcId,omitempty"`
+	// The time when the instance was created.
+	//
 	// example:
 	//
 	// 2021-10-22 15:36:53.0
 	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
-	// 专享实例类型
+	// The type of the dedicated instance. Valid values:
 	//
-	// - vpc_connect：VPC融合类型专享实例
+	// 	- vpc_connect: VPC integration instance
 	//
-	// - normal：传统类型专享实例
+	// 	- normal: conventional dedicated instance
 	//
 	// example:
 	//
 	// vpc_connect
 	DedicatedInstanceType *string `json:"DedicatedInstanceType,omitempty" xml:"DedicatedInstanceType,omitempty"`
+	// Indicates whether outbound IPv6 traffic is supported.
+	//
 	// example:
 	//
 	// true
 	EgressIpv6Enable *bool `json:"EgressIpv6Enable,omitempty" xml:"EgressIpv6Enable,omitempty"`
+	// The time when the instance expires.
+	//
 	// example:
 	//
 	// 1659801600000
 	ExpiredTime *string `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
+	// The HTTPS security policy.
+	//
 	// example:
 	//
 	// HTTPS2_TLS1_2
 	HttpsPolicies *string `json:"HttpsPolicies,omitempty" xml:"HttpsPolicies,omitempty"`
+	// The ID of the IPv6 ACL.
+	//
 	// example:
 	//
 	// acl-124resFfs235
 	IPV6AclId *string `json:"IPV6AclId,omitempty" xml:"IPV6AclId,omitempty"`
+	// The name of the IPv6 ACL.
+	//
 	// example:
 	//
 	// testIPV6
 	IPV6AclName *string `json:"IPV6AclName,omitempty" xml:"IPV6AclName,omitempty"`
+	// Indicates whether the IPv6 ACL is enabled. Valid values:
+	//
+	// 	- **on**
+	//
+	// 	- **off**
+	//
 	// example:
 	//
 	// on
 	IPV6AclStatus *string `json:"IPV6AclStatus,omitempty" xml:"IPV6AclStatus,omitempty"`
+	// The type of the IPv6 ACL. Valid values:
+	//
+	// 	- black: blacklist
+	//
+	// 	- white: whitelist
+	//
 	// example:
 	//
 	// black
 	IPV6AclType *string `json:"IPV6AclType,omitempty" xml:"IPV6AclType,omitempty"`
+	// The billing method of the instance. Valid values:
+	//
+	// 	- PrePaid: subscription
+	//
+	// 	- PayAsYouGo: pay-as-you-go
+	//
 	// example:
 	//
 	// PrePaid
 	InstanceChargeType *string `json:"InstanceChargeType,omitempty" xml:"InstanceChargeType,omitempty"`
-	// 专享实例所在网段
+	// The CIDR block of the dedicated instance.
 	//
-	// - 172.16.0.0/12
+	// 	- 172.16.0.0/12
 	//
-	// - 192.168.0.0/16
+	// 	- 192.168.0.0/16
 	//
 	// example:
 	//
 	// 192.168.0.0/16
 	InstanceCidrBlock *string `json:"InstanceCidrBlock,omitempty" xml:"InstanceCidrBlock,omitempty"`
+	// The ID of the cluster to which the dedicated instance cluster belongs.
+	//
+	// example:
+	//
+	// apigateway-cluster-sh-1523cafbgffd
 	InstanceClusterId *string `json:"InstanceClusterId,omitempty" xml:"InstanceClusterId,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// api-shared-vpc-020
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The instance name.
+	//
 	// example:
 	//
 	// test
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// The requests per second (RPS) limit on the instance.
+	//
 	// example:
 	//
 	// 500
 	InstanceRpsLimit *int32 `json:"InstanceRpsLimit,omitempty" xml:"InstanceRpsLimit,omitempty"`
+	// The instance specification.
+	//
 	// example:
 	//
 	// api.s1.small
-	InstanceSpec           *string                                                                        `json:"InstanceSpec,omitempty" xml:"InstanceSpec,omitempty"`
+	InstanceSpec *string `json:"InstanceSpec,omitempty" xml:"InstanceSpec,omitempty"`
+	// The instance specification details.
 	InstanceSpecAttributes *DescribeInstancesResponseBodyInstancesInstanceAttributeInstanceSpecAttributes `json:"InstanceSpecAttributes,omitempty" xml:"InstanceSpecAttributes,omitempty" type:"Struct"`
+	// The instance type. Valid values:
+	//
+	// 	- VPC_SHARED: shared instance (VPC)
+	//
+	// 	- VPC_DEDICATED: dedicated instance (VPC)
+	//
 	// example:
 	//
 	// VPC_SHARED
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	// The outbound public IP address.
+	//
 	// example:
 	//
 	// 47.241.89.244
 	InternetEgressAddress *string `json:"InternetEgressAddress,omitempty" xml:"InternetEgressAddress,omitempty"`
-	IntranetSegments      *string `json:"IntranetSegments,omitempty" xml:"IntranetSegments,omitempty"`
-	MaintainEndTime       *string `json:"MaintainEndTime,omitempty" xml:"MaintainEndTime,omitempty"`
-	MaintainStartTime     *string `json:"MaintainStartTime,omitempty" xml:"MaintainStartTime,omitempty"`
-	// VPC融合类型专享实例连通的用户VPC内的网络信息
+	// The internal CIDR block that is allowed to access the API Gateway instance.
+	//
+	// example:
+	//
+	// [\\"172.36.0.0/16\\",\\"172.31.16.0/20\\"]
+	IntranetSegments *string `json:"IntranetSegments,omitempty" xml:"IntranetSegments,omitempty"`
+	// The end time of the maintenance window. The time is in the *HH:mm*Z format. The time is displayed in UTC.
+	//
+	// example:
+	//
+	// 01:00Z
+	MaintainEndTime *string `json:"MaintainEndTime,omitempty" xml:"MaintainEndTime,omitempty"`
+	// The start time of the maintenance window. The time is in the *HH:mm*Z format. The time is displayed in UTC.
+	//
+	// example:
+	//
+	// 22:00Z
+	MaintainStartTime *string `json:"MaintainStartTime,omitempty" xml:"MaintainStartTime,omitempty"`
+	// The network information of the user\\"s VPC if the instance is a VPC integration instance.
 	NetworkInterfaceAttributes *DescribeInstancesResponseBodyInstancesInstanceAttributeNetworkInterfaceAttributes `json:"NetworkInterfaceAttributes,omitempty" xml:"NetworkInterfaceAttributes,omitempty" type:"Struct"`
 	PrivateDnsList             *DescribeInstancesResponseBodyInstancesInstanceAttributePrivateDnsList             `json:"PrivateDnsList,omitempty" xml:"PrivateDnsList,omitempty" type:"Struct"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The instance status.
+	//
 	// example:
 	//
 	// RUNNING
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Indicates whether IPv6 traffic is supported.
+	//
 	// example:
 	//
 	// true
 	SupportIpv6 *bool                                                        `json:"SupportIpv6,omitempty" xml:"SupportIpv6,omitempty"`
 	Tags        *DescribeInstancesResponseBodyInstancesInstanceAttributeTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
+	// The user VPC ID.
+	//
 	// example:
 	//
 	// vpc-t***hx****yu9****t0g4
 	UserVpcId *string `json:"UserVpcId,omitempty" xml:"UserVpcId,omitempty"`
+	// The user vSwitch ID.
+	//
 	// example:
 	//
 	// vsw-t4***eh****d7q****i2f
 	UserVswitchId *string `json:"UserVswitchId,omitempty" xml:"UserVswitchId,omitempty"`
+	// The VPC egress CIDR block.
+	//
 	// example:
 	//
 	// 100.104.254.0/26
 	VpcEgressAddress *string `json:"VpcEgressAddress,omitempty" xml:"VpcEgressAddress,omitempty"`
+	// Indicates whether VPC access is enabled.
+	//
 	// example:
 	//
 	// true
-	VpcIntranetEnable *bool  `json:"VpcIntranetEnable,omitempty" xml:"VpcIntranetEnable,omitempty"`
-	VpcOwnerId        *int64 `json:"VpcOwnerId,omitempty" xml:"VpcOwnerId,omitempty"`
+	VpcIntranetEnable *bool `json:"VpcIntranetEnable,omitempty" xml:"VpcIntranetEnable,omitempty"`
+	// The ID of the account to which the VPC-based instance belongs.
+	//
+	// example:
+	//
+	// 1408453217640291****
+	VpcOwnerId *int64 `json:"VpcOwnerId,omitempty" xml:"VpcOwnerId,omitempty"`
+	// Indicates whether virtual private cloud (VPC) Server Load Balancer (SLB) is enabled.
+	//
 	// example:
 	//
 	// true
 	VpcSlbIntranetEnable *bool `json:"VpcSlbIntranetEnable,omitempty" xml:"VpcSlbIntranetEnable,omitempty"`
+	// The zone ID.
+	//
 	// example:
 	//
 	// cn-hangzhou-MAZ5(g,h)
-	ZoneId        *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	// The zone.
 	ZoneLocalName *string `json:"ZoneLocalName,omitempty" xml:"ZoneLocalName,omitempty"`
 }
 
@@ -29374,7 +29637,10 @@ func (s *DescribeInstancesResponseBodyInstancesInstanceAttributeInstanceSpecAttr
 }
 
 type DescribeInstancesResponseBodyInstancesInstanceAttributeInstanceSpecAttributesSpecAttribute struct {
+	// The variable name.
 	LocalName *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
+	// The variable value.
+	//
 	// example:
 	//
 	// 2500
@@ -29417,25 +29683,25 @@ func (s *DescribeInstancesResponseBodyInstancesInstanceAttributeNetworkInterface
 }
 
 type DescribeInstancesResponseBodyInstancesInstanceAttributeNetworkInterfaceAttributesNetworkInterfaceAttribute struct {
-	// vSwitch的网段。
+	// The CIDR block of the vSwitch.
 	//
 	// example:
 	//
 	// 192.168.17.0/24
 	CidrBlock *string `json:"CidrBlock,omitempty" xml:"CidrBlock,omitempty"`
-	// 安全组的ID，同一个安全组内的服务可以互相访问。
+	// The security group ID. Services in the same security group can access each other.
 	//
 	// example:
 	//
 	// sg-2zeehz13zcyj1kfk3o85
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	// 虚拟交换机ID
+	// The vSwitch ID.
 	//
 	// example:
 	//
 	// vsw-2zeqals6rbj51bhjn8b89
 	VswitchId *string `json:"VswitchId,omitempty" xml:"VswitchId,omitempty"`
-	// 可用区ID
+	// The zone ID.
 	//
 	// example:
 	//
@@ -36250,6 +36516,218 @@ func (s *EnableInstanceAccessControlResponse) SetStatusCode(v int32) *EnableInst
 }
 
 func (s *EnableInstanceAccessControlResponse) SetBody(v *EnableInstanceAccessControlResponseBody) *EnableInstanceAccessControlResponse {
+	s.Body = v
+	return s
+}
+
+type ExportOASRequest struct {
+	ApiIdList []*string `json:"ApiIdList,omitempty" xml:"ApiIdList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// yaml
+	DataFormat *string `json:"DataFormat,omitempty" xml:"DataFormat,omitempty"`
+	// example:
+	//
+	// 42925e7f5209438186d5560239af5xxx
+	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// example:
+	//
+	// oas2
+	OasVersion *string `json:"OasVersion,omitempty" xml:"OasVersion,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber    *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	// example:
+	//
+	// RELEASE
+	StageName *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
+	// example:
+	//
+	// true
+	WithXExtensions *bool `json:"WithXExtensions,omitempty" xml:"WithXExtensions,omitempty"`
+}
+
+func (s ExportOASRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExportOASRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ExportOASRequest) SetApiIdList(v []*string) *ExportOASRequest {
+	s.ApiIdList = v
+	return s
+}
+
+func (s *ExportOASRequest) SetDataFormat(v string) *ExportOASRequest {
+	s.DataFormat = &v
+	return s
+}
+
+func (s *ExportOASRequest) SetGroupId(v string) *ExportOASRequest {
+	s.GroupId = &v
+	return s
+}
+
+func (s *ExportOASRequest) SetOasVersion(v string) *ExportOASRequest {
+	s.OasVersion = &v
+	return s
+}
+
+func (s *ExportOASRequest) SetPageNumber(v int32) *ExportOASRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ExportOASRequest) SetSecurityToken(v string) *ExportOASRequest {
+	s.SecurityToken = &v
+	return s
+}
+
+func (s *ExportOASRequest) SetStageName(v string) *ExportOASRequest {
+	s.StageName = &v
+	return s
+}
+
+func (s *ExportOASRequest) SetWithXExtensions(v bool) *ExportOASRequest {
+	s.WithXExtensions = &v
+	return s
+}
+
+type ExportOASShrinkRequest struct {
+	ApiIdListShrink *string `json:"ApiIdList,omitempty" xml:"ApiIdList,omitempty"`
+	// example:
+	//
+	// yaml
+	DataFormat *string `json:"DataFormat,omitempty" xml:"DataFormat,omitempty"`
+	// example:
+	//
+	// 42925e7f5209438186d5560239af5xxx
+	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// example:
+	//
+	// oas2
+	OasVersion *string `json:"OasVersion,omitempty" xml:"OasVersion,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber    *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	// example:
+	//
+	// RELEASE
+	StageName *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
+	// example:
+	//
+	// true
+	WithXExtensions *bool `json:"WithXExtensions,omitempty" xml:"WithXExtensions,omitempty"`
+}
+
+func (s ExportOASShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExportOASShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ExportOASShrinkRequest) SetApiIdListShrink(v string) *ExportOASShrinkRequest {
+	s.ApiIdListShrink = &v
+	return s
+}
+
+func (s *ExportOASShrinkRequest) SetDataFormat(v string) *ExportOASShrinkRequest {
+	s.DataFormat = &v
+	return s
+}
+
+func (s *ExportOASShrinkRequest) SetGroupId(v string) *ExportOASShrinkRequest {
+	s.GroupId = &v
+	return s
+}
+
+func (s *ExportOASShrinkRequest) SetOasVersion(v string) *ExportOASShrinkRequest {
+	s.OasVersion = &v
+	return s
+}
+
+func (s *ExportOASShrinkRequest) SetPageNumber(v int32) *ExportOASShrinkRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ExportOASShrinkRequest) SetSecurityToken(v string) *ExportOASShrinkRequest {
+	s.SecurityToken = &v
+	return s
+}
+
+func (s *ExportOASShrinkRequest) SetStageName(v string) *ExportOASShrinkRequest {
+	s.StageName = &v
+	return s
+}
+
+func (s *ExportOASShrinkRequest) SetWithXExtensions(v bool) *ExportOASShrinkRequest {
+	s.WithXExtensions = &v
+	return s
+}
+
+type ExportOASResponseBody struct {
+	// example:
+	//
+	// UEsDBBQACAAIAABc8FgAAAAAAAAAAAAAAAA...
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// CEF72CEB-54B6-4AE8-B225-F876xxxxxxxx
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ExportOASResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExportOASResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ExportOASResponseBody) SetData(v string) *ExportOASResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *ExportOASResponseBody) SetRequestId(v string) *ExportOASResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ExportOASResponse struct {
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ExportOASResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ExportOASResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExportOASResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ExportOASResponse) SetHeaders(v map[string]*string) *ExportOASResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ExportOASResponse) SetStatusCode(v int32) *ExportOASResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ExportOASResponse) SetBody(v *ExportOASResponseBody) *ExportOASResponse {
 	s.Body = v
 	return s
 }
@@ -47877,7 +48355,7 @@ func (client *Client) CreateAppKey(request *CreateAppKeyRequest) (_result *Creat
 
 // Summary:
 //
-// 创建后端服务
+// Creates a backend service in API Gateway.
 //
 // @param request - CreateBackendRequest
 //
@@ -47943,7 +48421,7 @@ func (client *Client) CreateBackendWithOptions(request *CreateBackendRequest, ru
 
 // Summary:
 //
-// 创建后端服务
+// Creates a backend service in API Gateway.
 //
 // @param request - CreateBackendRequest
 //
@@ -55705,7 +56183,7 @@ func (client *Client) DescribeInstanceTraffic(request *DescribeInstanceTrafficRe
 
 // Summary:
 //
-// 查询实例信息
+// Queries the details of instances in a region. The instances include shared instances and dedicated instances.
 //
 // @param request - DescribeInstancesRequest
 //
@@ -55763,7 +56241,7 @@ func (client *Client) DescribeInstancesWithOptions(request *DescribeInstancesReq
 
 // Summary:
 //
-// 查询实例信息
+// Queries the details of instances in a region. The instances include shared instances and dedicated instances.
 //
 // @param request - DescribeInstancesRequest
 //
@@ -58016,6 +58494,100 @@ func (client *Client) EnableInstanceAccessControl(request *EnableInstanceAccessC
 	runtime := &util.RuntimeOptions{}
 	_result = &EnableInstanceAccessControlResponse{}
 	_body, _err := client.EnableInstanceAccessControlWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 导出OAS
+//
+// @param tmpReq - ExportOASRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ExportOASResponse
+func (client *Client) ExportOASWithOptions(tmpReq *ExportOASRequest, runtime *util.RuntimeOptions) (_result *ExportOASResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &ExportOASShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.ApiIdList)) {
+		request.ApiIdListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ApiIdList, tea.String("ApiIdList"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ApiIdListShrink)) {
+		query["ApiIdList"] = request.ApiIdListShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DataFormat)) {
+		query["DataFormat"] = request.DataFormat
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
+		query["GroupId"] = request.GroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OasVersion)) {
+		query["OasVersion"] = request.OasVersion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StageName)) {
+		query["StageName"] = request.StageName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WithXExtensions)) {
+		query["WithXExtensions"] = request.WithXExtensions
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ExportOAS"),
+		Version:     tea.String("2016-07-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ExportOASResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 导出OAS
+//
+// @param request - ExportOASRequest
+//
+// @return ExportOASResponse
+func (client *Client) ExportOAS(request *ExportOASRequest) (_result *ExportOASResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ExportOASResponse{}
+	_body, _err := client.ExportOASWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
