@@ -30130,6 +30130,247 @@ func (s *ListDocumentsResponse) SetBody(v *ListDocumentsResponseBody) *ListDocum
 	return s
 }
 
+type ListGroupChatMessagesRequest struct {
+	// example:
+	//
+	// ccc-test
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// chat-65382141036853491
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// example:
+	//
+	// b2ad450b116e4f8396e58108acf5c020
+	NextPageToken *string `json:"NextPageToken,omitempty" xml:"NextPageToken,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// DESC
+	SortOrder *string `json:"SortOrder,omitempty" xml:"SortOrder,omitempty"`
+}
+
+func (s ListGroupChatMessagesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListGroupChatMessagesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListGroupChatMessagesRequest) SetInstanceId(v string) *ListGroupChatMessagesRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ListGroupChatMessagesRequest) SetJobId(v string) *ListGroupChatMessagesRequest {
+	s.JobId = &v
+	return s
+}
+
+func (s *ListGroupChatMessagesRequest) SetNextPageToken(v string) *ListGroupChatMessagesRequest {
+	s.NextPageToken = &v
+	return s
+}
+
+func (s *ListGroupChatMessagesRequest) SetPageSize(v int32) *ListGroupChatMessagesRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListGroupChatMessagesRequest) SetSortOrder(v string) *ListGroupChatMessagesRequest {
+	s.SortOrder = &v
+	return s
+}
+
+type ListGroupChatMessagesResponseBody struct {
+	// example:
+	//
+	// OK
+	Code *string                                `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *ListGroupChatMessagesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 2263B273-AC1B-44EB-BA98-87F2322C6780
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListGroupChatMessagesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListGroupChatMessagesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListGroupChatMessagesResponseBody) SetCode(v string) *ListGroupChatMessagesResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListGroupChatMessagesResponseBody) SetData(v *ListGroupChatMessagesResponseBodyData) *ListGroupChatMessagesResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListGroupChatMessagesResponseBody) SetHttpStatusCode(v int32) *ListGroupChatMessagesResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *ListGroupChatMessagesResponseBody) SetMessage(v string) *ListGroupChatMessagesResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListGroupChatMessagesResponseBody) SetRequestId(v string) *ListGroupChatMessagesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListGroupChatMessagesResponseBodyData struct {
+	Messages []*ListGroupChatMessagesResponseBodyDataMessages `json:"Messages,omitempty" xml:"Messages,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 54d1a616d95a4a01ba58967a9115b649
+	NextPageToken *string `json:"NextPageToken,omitempty" xml:"NextPageToken,omitempty"`
+}
+
+func (s ListGroupChatMessagesResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListGroupChatMessagesResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListGroupChatMessagesResponseBodyData) SetMessages(v []*ListGroupChatMessagesResponseBodyDataMessages) *ListGroupChatMessagesResponseBodyData {
+	s.Messages = v
+	return s
+}
+
+func (s *ListGroupChatMessagesResponseBodyData) SetNextPageToken(v string) *ListGroupChatMessagesResponseBodyData {
+	s.NextPageToken = &v
+	return s
+}
+
+type ListGroupChatMessagesResponseBodyDataMessages struct {
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// example:
+	//
+	// chat-65382141036853491
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// example:
+	//
+	// false
+	Recalled *bool `json:"Recalled,omitempty" xml:"Recalled,omitempty"`
+	// example:
+	//
+	// http://xxxxx.com
+	SenderAvatarUrl *string `json:"SenderAvatarUrl,omitempty" xml:"SenderAvatarUrl,omitempty"`
+	// example:
+	//
+	// 64bb4ececc34fc5ec1ca1153
+	SenderId *string `json:"SenderId,omitempty" xml:"SenderId,omitempty"`
+	// example:
+	//
+	// test-agent@test-instanceId
+	SenderName *string `json:"SenderName,omitempty" xml:"SenderName,omitempty"`
+	// example:
+	//
+	// CUSTOMER
+	SenderType *string `json:"SenderType,omitempty" xml:"SenderType,omitempty"`
+	// example:
+	//
+	// 1696126980371
+	Timestamp *int64 `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
+}
+
+func (s ListGroupChatMessagesResponseBodyDataMessages) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListGroupChatMessagesResponseBodyDataMessages) GoString() string {
+	return s.String()
+}
+
+func (s *ListGroupChatMessagesResponseBodyDataMessages) SetContent(v string) *ListGroupChatMessagesResponseBodyDataMessages {
+	s.Content = &v
+	return s
+}
+
+func (s *ListGroupChatMessagesResponseBodyDataMessages) SetJobId(v string) *ListGroupChatMessagesResponseBodyDataMessages {
+	s.JobId = &v
+	return s
+}
+
+func (s *ListGroupChatMessagesResponseBodyDataMessages) SetRecalled(v bool) *ListGroupChatMessagesResponseBodyDataMessages {
+	s.Recalled = &v
+	return s
+}
+
+func (s *ListGroupChatMessagesResponseBodyDataMessages) SetSenderAvatarUrl(v string) *ListGroupChatMessagesResponseBodyDataMessages {
+	s.SenderAvatarUrl = &v
+	return s
+}
+
+func (s *ListGroupChatMessagesResponseBodyDataMessages) SetSenderId(v string) *ListGroupChatMessagesResponseBodyDataMessages {
+	s.SenderId = &v
+	return s
+}
+
+func (s *ListGroupChatMessagesResponseBodyDataMessages) SetSenderName(v string) *ListGroupChatMessagesResponseBodyDataMessages {
+	s.SenderName = &v
+	return s
+}
+
+func (s *ListGroupChatMessagesResponseBodyDataMessages) SetSenderType(v string) *ListGroupChatMessagesResponseBodyDataMessages {
+	s.SenderType = &v
+	return s
+}
+
+func (s *ListGroupChatMessagesResponseBodyDataMessages) SetTimestamp(v int64) *ListGroupChatMessagesResponseBodyDataMessages {
+	s.Timestamp = &v
+	return s
+}
+
+type ListGroupChatMessagesResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListGroupChatMessagesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListGroupChatMessagesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListGroupChatMessagesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListGroupChatMessagesResponse) SetHeaders(v map[string]*string) *ListGroupChatMessagesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListGroupChatMessagesResponse) SetStatusCode(v int32) *ListGroupChatMessagesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListGroupChatMessagesResponse) SetBody(v *ListGroupChatMessagesResponseBody) *ListGroupChatMessagesResponse {
+	s.Body = v
+	return s
+}
+
 type ListHistoricalAgentReportRequest struct {
 	// example:
 	//
@@ -71362,6 +71603,82 @@ func (client *Client) ListDocuments(request *ListDocumentsRequest) (_result *Lis
 	runtime := &util.RuntimeOptions{}
 	_result = &ListDocumentsResponse{}
 	_body, _err := client.ListDocumentsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// ListGroupChatMessages
+//
+// @param request - ListGroupChatMessagesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListGroupChatMessagesResponse
+func (client *Client) ListGroupChatMessagesWithOptions(request *ListGroupChatMessagesRequest, runtime *util.RuntimeOptions) (_result *ListGroupChatMessagesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.JobId)) {
+		query["JobId"] = request.JobId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextPageToken)) {
+		query["NextPageToken"] = request.NextPageToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SortOrder)) {
+		query["SortOrder"] = request.SortOrder
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListGroupChatMessages"),
+		Version:     tea.String("2020-07-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListGroupChatMessagesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// ListGroupChatMessages
+//
+// @param request - ListGroupChatMessagesRequest
+//
+// @return ListGroupChatMessagesResponse
+func (client *Client) ListGroupChatMessages(request *ListGroupChatMessagesRequest) (_result *ListGroupChatMessagesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListGroupChatMessagesResponse{}
+	_body, _err := client.ListGroupChatMessagesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
