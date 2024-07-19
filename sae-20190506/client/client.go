@@ -444,7 +444,6 @@ func (s *AppStackTaskSteps) SetStatus(v string) *AppStackTaskSteps {
 
 type Application struct {
 	RequestId               *string                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ApplicationID           *string                  `json:"applicationID,omitempty" xml:"applicationID,omitempty"`
 	ApplicationId           *string                  `json:"applicationId,omitempty" xml:"applicationId,omitempty"`
 	ApplicationName         *string                  `json:"applicationName,omitempty" xml:"applicationName,omitempty"`
 	Args                    *string                  `json:"args,omitempty" xml:"args,omitempty"`
@@ -507,11 +506,6 @@ func (s Application) GoString() string {
 
 func (s *Application) SetRequestId(v string) *Application {
 	s.RequestId = &v
-	return s
-}
-
-func (s *Application) SetApplicationID(v string) *Application {
-	s.ApplicationID = &v
 	return s
 }
 
@@ -24855,7 +24849,7 @@ func (s *DescribeJobStatusResponse) SetBody(v *DescribeJobStatusResponseBody) *D
 }
 
 type DescribeNamespaceRequest struct {
-	// The short ID of the namespace. You do not need to specify a region ID. We recommend that you configure this parameter. The value of this parameter can be up to 20 characters in length and can contain only lowercase letters and digits.
+	// The short ID of the namespace. You do not need to specify a region ID. The value of this parameter can be up to 20 characters in length and can contain only lowercase letters and digits.
 	//
 	// example:
 	//
@@ -24902,7 +24896,7 @@ type DescribeNamespaceResponseBody struct {
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The information of the namespace.
+	// The information about the namespace.
 	Data *DescribeNamespaceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The error code returned. Take note of the following rules:
 	//
@@ -24992,13 +24986,11 @@ func (s *DescribeNamespaceResponseBody) SetTraceId(v string) *DescribeNamespaceR
 }
 
 type DescribeNamespaceResponseBodyData struct {
-	// Indicates whether the SAE built-in registry is enabled.
+	// Indicates whether the SAE built-in registry is enabled. Valid values:
 	//
-	// Valid values:
+	// 	- **true**
 	//
-	// 	- true
-	//
-	// 	- false
+	// 	- **false**
 	//
 	// example:
 	//
