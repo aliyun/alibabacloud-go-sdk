@@ -18878,6 +18878,10 @@ func (client *Client) DeleteAnnotationLabel(labelId *string) (_result *DeleteAnn
 //
 // 通过调用DeleteCollectionPolicy删除配置的日志采集规则
 //
+// Description:
+//
+// You must use the Simple Log Service endpoint for the China (Shanghai) or Singapore region to call the operation.
+//
 // @param request - DeleteCollectionPolicyRequest
 //
 // @param headers - map
@@ -18926,6 +18930,10 @@ func (client *Client) DeleteCollectionPolicyWithOptions(policyName *string, requ
 // Summary:
 //
 // 通过调用DeleteCollectionPolicy删除配置的日志采集规则
+//
+// Description:
+//
+// You must use the Simple Log Service endpoint for the China (Shanghai) or Singapore region to call the operation.
 //
 // @param request - DeleteCollectionPolicyRequest
 //
@@ -20464,7 +20472,7 @@ func (client *Client) GetAnnotationDataSet(datasetId *string) (_result *GetAnnot
 
 // Summary:
 //
-// Queries a tag table by using a label id.
+// Queries a tag table by using a label ID.
 //
 // @param headers - map
 //
@@ -20497,7 +20505,7 @@ func (client *Client) GetAnnotationLabelWithOptions(labelId *string, headers map
 
 // Summary:
 //
-// Queries a tag table by using a label id.
+// Queries a tag table by using a label ID.
 //
 // @return GetAnnotationLabelResponse
 func (client *Client) GetAnnotationLabel(labelId *string) (_result *GetAnnotationLabelResponse, _err error) {
@@ -23004,7 +23012,7 @@ func (client *Client) ListAlerts(project *string, request *ListAlertsRequest) (_
 
 // Summary:
 //
-// Queries data in a dataset.
+// Queries data in datasets.
 //
 // @param request - ListAnnotationDataRequest
 //
@@ -23053,7 +23061,7 @@ func (client *Client) ListAnnotationDataWithOptions(datasetId *string, request *
 
 // Summary:
 //
-// Queries data in a dataset.
+// Queries data in datasets.
 //
 // @param request - ListAnnotationDataRequest
 //
@@ -25314,7 +25322,7 @@ func (client *Client) QueryMLServiceResultsWithOptions(serviceName *string, requ
 		Action:      tea.String("QueryMLServiceResults"),
 		Version:     tea.String("2020-12-30"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/ml/v2/service/" + tea.StringValue(serviceName) + "/analysis"),
+		Pathname:    tea.String("/ml/service/" + tea.StringValue(serviceName) + "/analysis"),
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
