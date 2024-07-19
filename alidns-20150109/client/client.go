@@ -29090,11 +29090,12 @@ func (s *DescribePdnsUserInfoResponseBody) SetUserInfo(v *DescribePdnsUserInfoRe
 }
 
 type DescribePdnsUserInfoResponseBodyUserInfo struct {
-	AvailableService *string `json:"AvailableService,omitempty" xml:"AvailableService,omitempty"`
-	PdnsId           *int64  `json:"PdnsId,omitempty" xml:"PdnsId,omitempty"`
-	ServiceType      *string `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
-	State            *string `json:"State,omitempty" xml:"State,omitempty"`
-	StoppedService   *string `json:"StoppedService,omitempty" xml:"StoppedService,omitempty"`
+	AvailableService      *string `json:"AvailableService,omitempty" xml:"AvailableService,omitempty"`
+	PdnsId                *int64  `json:"PdnsId,omitempty" xml:"PdnsId,omitempty"`
+	ServiceType           *string `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
+	State                 *string `json:"State,omitempty" xml:"State,omitempty"`
+	StatisticSwitchStatus *string `json:"StatisticSwitchStatus,omitempty" xml:"StatisticSwitchStatus,omitempty"`
+	StoppedService        *string `json:"StoppedService,omitempty" xml:"StoppedService,omitempty"`
 }
 
 func (s DescribePdnsUserInfoResponseBodyUserInfo) String() string {
@@ -29122,6 +29123,11 @@ func (s *DescribePdnsUserInfoResponseBodyUserInfo) SetServiceType(v string) *Des
 
 func (s *DescribePdnsUserInfoResponseBodyUserInfo) SetState(v string) *DescribePdnsUserInfoResponseBodyUserInfo {
 	s.State = &v
+	return s
+}
+
+func (s *DescribePdnsUserInfoResponseBodyUserInfo) SetStatisticSwitchStatus(v string) *DescribePdnsUserInfoResponseBodyUserInfo {
+	s.StatisticSwitchStatus = &v
 	return s
 }
 
@@ -31484,7 +31490,8 @@ type GetTxtRecordForVerifyResponseBody struct {
 	// example:
 	//
 	// example.com
-	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	DomainName       *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	ParentDomainName *string `json:"ParentDomainName,omitempty" xml:"ParentDomainName,omitempty"`
 	// The hostname.
 	//
 	// example:
@@ -31517,6 +31524,11 @@ func (s GetTxtRecordForVerifyResponseBody) GoString() string {
 
 func (s *GetTxtRecordForVerifyResponseBody) SetDomainName(v string) *GetTxtRecordForVerifyResponseBody {
 	s.DomainName = &v
+	return s
+}
+
+func (s *GetTxtRecordForVerifyResponseBody) SetParentDomainName(v string) *GetTxtRecordForVerifyResponseBody {
+	s.ParentDomainName = &v
 	return s
 }
 
@@ -44347,7 +44359,7 @@ func (s *UpdateDnsGtmInstanceGlobalConfigRequestAlertConfig) SetSmsNotice(v bool
 }
 
 type UpdateDnsGtmInstanceGlobalConfigResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
