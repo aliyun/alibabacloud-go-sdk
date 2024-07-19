@@ -9,6 +9,64 @@ import (
 	"github.com/alibabacloud-go/tea/tea"
 )
 
+type CancelSpecReviewTaskResponseBody struct {
+	// example:
+	//
+	// 1B64F3E0-25D5-5043-B5C8-4FF22BB12CCD
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Result *bool `json:"result,omitempty" xml:"result,omitempty"`
+}
+
+func (s CancelSpecReviewTaskResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CancelSpecReviewTaskResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CancelSpecReviewTaskResponseBody) SetRequestId(v string) *CancelSpecReviewTaskResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CancelSpecReviewTaskResponseBody) SetResult(v bool) *CancelSpecReviewTaskResponseBody {
+	s.Result = &v
+	return s
+}
+
+type CancelSpecReviewTaskResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CancelSpecReviewTaskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CancelSpecReviewTaskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CancelSpecReviewTaskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CancelSpecReviewTaskResponse) SetHeaders(v map[string]*string) *CancelSpecReviewTaskResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CancelSpecReviewTaskResponse) SetStatusCode(v int32) *CancelSpecReviewTaskResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CancelSpecReviewTaskResponse) SetBody(v *CancelSpecReviewTaskResponseBody) *CancelSpecReviewTaskResponse {
+	s.Body = v
+	return s
+}
+
 type CreateAppRequest struct {
 	// 应用名
 	//
@@ -517,6 +575,106 @@ func (s *CreateEndpointResponse) SetBody(v *CreateEndpointResponseBody) *CreateE
 	return s
 }
 
+type CreateSnapshotRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// product_info
+	Indices *string `json:"indices,omitempty" xml:"indices,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// qingning
+	Snapshot *string `json:"snapshot,omitempty" xml:"snapshot,omitempty"`
+	// example:
+	//
+	// false
+	DryRun *bool `json:"dryRun,omitempty" xml:"dryRun,omitempty"`
+}
+
+func (s CreateSnapshotRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSnapshotRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSnapshotRequest) SetIndices(v string) *CreateSnapshotRequest {
+	s.Indices = &v
+	return s
+}
+
+func (s *CreateSnapshotRequest) SetSnapshot(v string) *CreateSnapshotRequest {
+	s.Snapshot = &v
+	return s
+}
+
+func (s *CreateSnapshotRequest) SetDryRun(v bool) *CreateSnapshotRequest {
+	s.DryRun = &v
+	return s
+}
+
+type CreateSnapshotResponseBody struct {
+	// example:
+	//
+	// 03761BE5-D12F-55B4-9C93-0255C11DE44A
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Result *bool `json:"result,omitempty" xml:"result,omitempty"`
+}
+
+func (s CreateSnapshotResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSnapshotResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSnapshotResponseBody) SetRequestId(v string) *CreateSnapshotResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateSnapshotResponseBody) SetResult(v bool) *CreateSnapshotResponseBody {
+	s.Result = &v
+	return s
+}
+
+type CreateSnapshotResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateSnapshotResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateSnapshotResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSnapshotResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSnapshotResponse) SetHeaders(v map[string]*string) *CreateSnapshotResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateSnapshotResponse) SetStatusCode(v int32) *CreateSnapshotResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateSnapshotResponse) SetBody(v *CreateSnapshotResponseBody) *CreateSnapshotResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteAppResponseBody struct {
 	// example:
 	//
@@ -589,6 +747,213 @@ func (s *DeleteAppResponse) SetBody(v *DeleteAppResponseBody) *DeleteAppResponse
 	return s
 }
 
+type DeleteDictRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// a.dic
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// MAIN
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+}
+
+func (s DeleteDictRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDictRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDictRequest) SetName(v string) *DeleteDictRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *DeleteDictRequest) SetType(v string) *DeleteDictRequest {
+	s.Type = &v
+	return s
+}
+
+type DeleteDictResponseBody struct {
+	// example:
+	//
+	// 2BF6B57E-5AAD-5389-80CD-E200BBF91FF9
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Result *bool `json:"result,omitempty" xml:"result,omitempty"`
+}
+
+func (s DeleteDictResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDictResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDictResponseBody) SetRequestId(v string) *DeleteDictResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteDictResponseBody) SetResult(v bool) *DeleteDictResponseBody {
+	s.Result = &v
+	return s
+}
+
+type DeleteDictResponse struct {
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteDictResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteDictResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDictResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDictResponse) SetHeaders(v map[string]*string) *DeleteDictResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteDictResponse) SetStatusCode(v int32) *DeleteDictResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteDictResponse) SetBody(v *DeleteDictResponseBody) *DeleteDictResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteEndpointResponseBody struct {
+	// example:
+	//
+	// 1305A3E0-A291-54BA-A3B2-7D1C12EC4112
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Result *bool `json:"result,omitempty" xml:"result,omitempty"`
+}
+
+func (s DeleteEndpointResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteEndpointResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteEndpointResponseBody) SetRequestId(v string) *DeleteEndpointResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteEndpointResponseBody) SetResult(v bool) *DeleteEndpointResponseBody {
+	s.Result = &v
+	return s
+}
+
+type DeleteEndpointResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteEndpointResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteEndpointResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteEndpointResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteEndpointResponse) SetHeaders(v map[string]*string) *DeleteEndpointResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteEndpointResponse) SetStatusCode(v int32) *DeleteEndpointResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteEndpointResponse) SetBody(v *DeleteEndpointResponseBody) *DeleteEndpointResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteSnapshotResponseBody struct {
+	// example:
+	//
+	// 16484F36-A2A3-5A05-B242-0BF2BF6AA326
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Result *bool `json:"result,omitempty" xml:"result,omitempty"`
+}
+
+func (s DeleteSnapshotResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteSnapshotResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteSnapshotResponseBody) SetRequestId(v string) *DeleteSnapshotResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteSnapshotResponseBody) SetResult(v bool) *DeleteSnapshotResponseBody {
+	s.Result = &v
+	return s
+}
+
+type DeleteSnapshotResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteSnapshotResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteSnapshotResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteSnapshotResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteSnapshotResponse) SetHeaders(v map[string]*string) *DeleteSnapshotResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteSnapshotResponse) SetStatusCode(v int32) *DeleteSnapshotResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteSnapshotResponse) SetBody(v *DeleteSnapshotResponseBody) *DeleteSnapshotResponse {
+	s.Body = v
+	return s
+}
+
 type GetAppRequest struct {
 	// example:
 	//
@@ -644,6 +1009,7 @@ type GetAppResponseBodyResult struct {
 	//
 	// es-severless-test-app
 	AppName *string `json:"appName,omitempty" xml:"appName,omitempty"`
+	AppType *string `json:"appType,omitempty" xml:"appType,omitempty"`
 	// example:
 	//
 	// 2022-08-15T11:20:52.370Z
@@ -689,6 +1055,11 @@ func (s *GetAppResponseBodyResult) SetAppId(v string) *GetAppResponseBodyResult 
 
 func (s *GetAppResponseBodyResult) SetAppName(v string) *GetAppResponseBodyResult {
 	s.AppName = &v
+	return s
+}
+
+func (s *GetAppResponseBodyResult) SetAppType(v string) *GetAppResponseBodyResult {
+	s.AppType = &v
 	return s
 }
 
@@ -1228,6 +1599,353 @@ func (s *GetMonitorDataResponse) SetBody(v *GetMonitorDataResponseBody) *GetMoni
 	return s
 }
 
+type GetSnapshotSettingResponseBody struct {
+	// example:
+	//
+	// 7B6CE6E1-5BA0-56DA-BFFD-8D90692F1EFC
+	RequestId *string                               `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Result    *GetSnapshotSettingResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
+}
+
+func (s GetSnapshotSettingResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSnapshotSettingResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetSnapshotSettingResponseBody) SetRequestId(v string) *GetSnapshotSettingResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetSnapshotSettingResponseBody) SetResult(v *GetSnapshotSettingResponseBodyResult) *GetSnapshotSettingResponseBody {
+	s.Result = v
+	return s
+}
+
+type GetSnapshotSettingResponseBodyResult struct {
+	// example:
+	//
+	// true
+	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
+	// example:
+	//
+	// 0 0 01 ? 	- 	- *
+	QuartzRegex *string `json:"quartzRegex,omitempty" xml:"quartzRegex,omitempty"`
+}
+
+func (s GetSnapshotSettingResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSnapshotSettingResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *GetSnapshotSettingResponseBodyResult) SetEnable(v bool) *GetSnapshotSettingResponseBodyResult {
+	s.Enable = &v
+	return s
+}
+
+func (s *GetSnapshotSettingResponseBodyResult) SetQuartzRegex(v string) *GetSnapshotSettingResponseBodyResult {
+	s.QuartzRegex = &v
+	return s
+}
+
+type GetSnapshotSettingResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetSnapshotSettingResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetSnapshotSettingResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSnapshotSettingResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetSnapshotSettingResponse) SetHeaders(v map[string]*string) *GetSnapshotSettingResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetSnapshotSettingResponse) SetStatusCode(v int32) *GetSnapshotSettingResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetSnapshotSettingResponse) SetBody(v *GetSnapshotSettingResponseBody) *GetSnapshotSettingResponse {
+	s.Body = v
+	return s
+}
+
+type GetSpecReviewTaskResponseBody struct {
+	// example:
+	//
+	// E310AC54-957A-5FD5-B85B-E972B2BDA8DE
+	RequestId *string                              `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Result    *GetSpecReviewTaskResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
+}
+
+func (s GetSpecReviewTaskResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSpecReviewTaskResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetSpecReviewTaskResponseBody) SetRequestId(v string) *GetSpecReviewTaskResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetSpecReviewTaskResponseBody) SetResult(v *GetSpecReviewTaskResponseBodyResult) *GetSpecReviewTaskResponseBody {
+	s.Result = v
+	return s
+}
+
+type GetSpecReviewTaskResponseBodyResult struct {
+	// 代表资源一级ID的资源属性字段
+	//
+	// example:
+	//
+	// 339
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// test
+	AppName *string `json:"appName,omitempty" xml:"appName,omitempty"`
+	// example:
+	//
+	// {
+	//
+	//                "limiters": [
+	//
+	//                     {
+	//
+	//                          "type": "INDEX_QUOTA",
+	//
+	//                          "maxValue": 500,
+	//
+	//                          "immutable": false
+	//
+	//                     }
+	//
+	//                ]
+	//
+	//           }
+	ApplyLimiter map[string]interface{} `json:"applyLimiter,omitempty" xml:"applyLimiter,omitempty"`
+	// example:
+	//
+	// {
+	//
+	//                "appType": "TRIAL",
+	//
+	//                "cu": 4,
+	//
+	//                "storage": 100
+	//
+	//           }
+	ApplyQuota  map[string]interface{} `json:"applyQuota,omitempty" xml:"applyQuota,omitempty"`
+	ApplyReason *string                `json:"applyReason,omitempty" xml:"applyReason,omitempty"`
+	// example:
+	//
+	// {
+	//
+	//                "limiters": [
+	//
+	//                     {
+	//
+	//                          "type": "INDEX_QUOTA",
+	//
+	//                          "maxValue": 500,
+	//
+	//                          "immutable": false
+	//
+	//                     }
+	//
+	//                ]
+	//
+	//           }
+	EffectiveLimiter map[string]interface{} `json:"effectiveLimiter,omitempty" xml:"effectiveLimiter,omitempty"`
+	// example:
+	//
+	// {
+	//
+	//                "appType": "TRIAL",
+	//
+	//                "cu": 4,
+	//
+	//                "storage": 100
+	//
+	//           }
+	EffectiveQuota map[string]interface{} `json:"effectiveQuota,omitempty" xml:"effectiveQuota,omitempty"`
+	// example:
+	//
+	// 2024-05-30T06:28:07.000Z
+	GmtCreate *string `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
+	// example:
+	//
+	// 2024-05-30T06:28:07.000Z
+	GmtModified *string `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
+	// example:
+	//
+	// {
+	//
+	//                "limiters": [
+	//
+	//                     {
+	//
+	//                          "type": "INDEX_QUOTA",
+	//
+	//                          "maxValue": 500,
+	//
+	//                          "immutable": false
+	//
+	//                     }
+	//
+	//                ]
+	//
+	//           }
+	OldLimiter map[string]interface{} `json:"oldLimiter,omitempty" xml:"oldLimiter,omitempty"`
+	// example:
+	//
+	// {
+	//
+	//                "appType": "TRIAL",
+	//
+	//                "cu": 2,
+	//
+	//                "storage": 1
+	//
+	//           }
+	OldQuota map[string]interface{} `json:"oldQuota,omitempty" xml:"oldQuota,omitempty"`
+	// example:
+	//
+	// USER
+	Source *string `json:"source,omitempty" xml:"source,omitempty"`
+	// example:
+	//
+	// Pending
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// example:
+	//
+	// QUOTA
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+}
+
+func (s GetSpecReviewTaskResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSpecReviewTaskResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *GetSpecReviewTaskResponseBodyResult) SetId(v string) *GetSpecReviewTaskResponseBodyResult {
+	s.Id = &v
+	return s
+}
+
+func (s *GetSpecReviewTaskResponseBodyResult) SetAppName(v string) *GetSpecReviewTaskResponseBodyResult {
+	s.AppName = &v
+	return s
+}
+
+func (s *GetSpecReviewTaskResponseBodyResult) SetApplyLimiter(v map[string]interface{}) *GetSpecReviewTaskResponseBodyResult {
+	s.ApplyLimiter = v
+	return s
+}
+
+func (s *GetSpecReviewTaskResponseBodyResult) SetApplyQuota(v map[string]interface{}) *GetSpecReviewTaskResponseBodyResult {
+	s.ApplyQuota = v
+	return s
+}
+
+func (s *GetSpecReviewTaskResponseBodyResult) SetApplyReason(v string) *GetSpecReviewTaskResponseBodyResult {
+	s.ApplyReason = &v
+	return s
+}
+
+func (s *GetSpecReviewTaskResponseBodyResult) SetEffectiveLimiter(v map[string]interface{}) *GetSpecReviewTaskResponseBodyResult {
+	s.EffectiveLimiter = v
+	return s
+}
+
+func (s *GetSpecReviewTaskResponseBodyResult) SetEffectiveQuota(v map[string]interface{}) *GetSpecReviewTaskResponseBodyResult {
+	s.EffectiveQuota = v
+	return s
+}
+
+func (s *GetSpecReviewTaskResponseBodyResult) SetGmtCreate(v string) *GetSpecReviewTaskResponseBodyResult {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *GetSpecReviewTaskResponseBodyResult) SetGmtModified(v string) *GetSpecReviewTaskResponseBodyResult {
+	s.GmtModified = &v
+	return s
+}
+
+func (s *GetSpecReviewTaskResponseBodyResult) SetOldLimiter(v map[string]interface{}) *GetSpecReviewTaskResponseBodyResult {
+	s.OldLimiter = v
+	return s
+}
+
+func (s *GetSpecReviewTaskResponseBodyResult) SetOldQuota(v map[string]interface{}) *GetSpecReviewTaskResponseBodyResult {
+	s.OldQuota = v
+	return s
+}
+
+func (s *GetSpecReviewTaskResponseBodyResult) SetSource(v string) *GetSpecReviewTaskResponseBodyResult {
+	s.Source = &v
+	return s
+}
+
+func (s *GetSpecReviewTaskResponseBodyResult) SetStatus(v string) *GetSpecReviewTaskResponseBodyResult {
+	s.Status = &v
+	return s
+}
+
+func (s *GetSpecReviewTaskResponseBodyResult) SetType(v string) *GetSpecReviewTaskResponseBodyResult {
+	s.Type = &v
+	return s
+}
+
+type GetSpecReviewTaskResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetSpecReviewTaskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetSpecReviewTaskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSpecReviewTaskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetSpecReviewTaskResponse) SetHeaders(v map[string]*string) *GetSpecReviewTaskResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetSpecReviewTaskResponse) SetStatusCode(v int32) *GetSpecReviewTaskResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetSpecReviewTaskResponse) SetBody(v *GetSpecReviewTaskResponseBody) *GetSpecReviewTaskResponse {
+	s.Body = v
+	return s
+}
+
 type ListAppsRequest struct {
 	// example:
 	//
@@ -1350,6 +2068,7 @@ type ListAppsResponseBodyResult struct {
 	//
 	// es-severless-test-app
 	AppName *string `json:"appName,omitempty" xml:"appName,omitempty"`
+	AppType *string `json:"appType,omitempty" xml:"appType,omitempty"`
 	// 代表创建时间的资源属性字段
 	//
 	// example:
@@ -1402,6 +2121,11 @@ func (s *ListAppsResponseBodyResult) SetAppId(v string) *ListAppsResponseBodyRes
 
 func (s *ListAppsResponseBodyResult) SetAppName(v string) *ListAppsResponseBodyResult {
 	s.AppName = &v
+	return s
+}
+
+func (s *ListAppsResponseBodyResult) SetAppType(v string) *ListAppsResponseBodyResult {
+	s.AppType = &v
 	return s
 }
 
@@ -1470,6 +2194,819 @@ func (s *ListAppsResponse) SetStatusCode(v int32) *ListAppsResponse {
 }
 
 func (s *ListAppsResponse) SetBody(v *ListAppsResponseBody) *ListAppsResponse {
+	s.Body = v
+	return s
+}
+
+type ListDictsRequest struct {
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+}
+
+func (s ListDictsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDictsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListDictsRequest) SetPageNumber(v int32) *ListDictsRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListDictsRequest) SetPageSize(v int32) *ListDictsRequest {
+	s.PageSize = &v
+	return s
+}
+
+type ListDictsResponseBody struct {
+	// example:
+	//
+	// E92BCBB9-3CFE-58DD-8D8C-56DF46AB3BF3
+	RequestId *string                        `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Result    []*ListDictsResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	TotalCount *int32 `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
+}
+
+func (s ListDictsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDictsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListDictsResponseBody) SetRequestId(v string) *ListDictsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListDictsResponseBody) SetResult(v []*ListDictsResponseBodyResult) *ListDictsResponseBody {
+	s.Result = v
+	return s
+}
+
+func (s *ListDictsResponseBody) SetTotalCount(v int32) *ListDictsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListDictsResponseBodyResult struct {
+	// example:
+	//
+	// http://es-serverless-****.oss-cn-hangzhou.aliyuncs.com/app/es7**190/0/config/analysis-ik/stopword.dic?Expires=1705923089&OSSAccessKeyId=STS.NV18q****UkVp6LNj&Signat
+	DownloadUrl *string `json:"downloadUrl,omitempty" xml:"downloadUrl,omitempty"`
+	// example:
+	//
+	// a.dic
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// example:
+	//
+	// OSS
+	SourceType *string `json:"sourceType,omitempty" xml:"sourceType,omitempty"`
+	// example:
+	//
+	// MAIN
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+}
+
+func (s ListDictsResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDictsResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *ListDictsResponseBodyResult) SetDownloadUrl(v string) *ListDictsResponseBodyResult {
+	s.DownloadUrl = &v
+	return s
+}
+
+func (s *ListDictsResponseBodyResult) SetName(v string) *ListDictsResponseBodyResult {
+	s.Name = &v
+	return s
+}
+
+func (s *ListDictsResponseBodyResult) SetSourceType(v string) *ListDictsResponseBodyResult {
+	s.SourceType = &v
+	return s
+}
+
+func (s *ListDictsResponseBodyResult) SetType(v string) *ListDictsResponseBodyResult {
+	s.Type = &v
+	return s
+}
+
+type ListDictsResponse struct {
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListDictsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListDictsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDictsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListDictsResponse) SetHeaders(v map[string]*string) *ListDictsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListDictsResponse) SetStatusCode(v int32) *ListDictsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListDictsResponse) SetBody(v *ListDictsResponseBody) *ListDictsResponse {
+	s.Body = v
+	return s
+}
+
+type ListEndpointsRequest struct {
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// example:
+	//
+	// ep-bp1id41dd116e52e****
+	ResourceId *string `json:"resourceId,omitempty" xml:"resourceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// VPC
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	// example:
+	//
+	// vpc-bp1212sb7cj2j4e6x****
+	VpcId *string `json:"vpcId,omitempty" xml:"vpcId,omitempty"`
+}
+
+func (s ListEndpointsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEndpointsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListEndpointsRequest) SetPageNumber(v int32) *ListEndpointsRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListEndpointsRequest) SetPageSize(v int32) *ListEndpointsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListEndpointsRequest) SetResourceId(v string) *ListEndpointsRequest {
+	s.ResourceId = &v
+	return s
+}
+
+func (s *ListEndpointsRequest) SetType(v string) *ListEndpointsRequest {
+	s.Type = &v
+	return s
+}
+
+func (s *ListEndpointsRequest) SetVpcId(v string) *ListEndpointsRequest {
+	s.VpcId = &v
+	return s
+}
+
+type ListEndpointsResponseBody struct {
+	// example:
+	//
+	// D6030CE6-9FEB-5B2F-84AC-3ADE3CBA89E5
+	RequestId *string                            `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Result    []*ListEndpointsResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 10
+	TotalCount *int32 `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
+}
+
+func (s ListEndpointsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEndpointsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListEndpointsResponseBody) SetRequestId(v string) *ListEndpointsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListEndpointsResponseBody) SetResult(v []*ListEndpointsResponseBodyResult) *ListEndpointsResponseBody {
+	s.Result = v
+	return s
+}
+
+func (s *ListEndpointsResponseBody) SetTotalCount(v int32) *ListEndpointsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListEndpointsResponseBodyResult struct {
+	// example:
+	//
+	// Pending
+	ConnectionStatus *string `json:"connectionStatus,omitempty" xml:"connectionStatus,omitempty"`
+	// example:
+	//
+	// 1701259721
+	Created *int32 `json:"created,omitempty" xml:"created,omitempty"`
+	// example:
+	//
+	// ep-bp1i522d****a3.epsrv-bp1f****gei.cn-hangzhou.privatelink.aliyuncs.com
+	Domain *string `json:"domain,omitempty" xml:"domain,omitempty"`
+	// example:
+	//
+	// essep-2f46b743f60****
+	EndpointId    *string                                         `json:"endpointId,omitempty" xml:"endpointId,omitempty"`
+	EndpointZones []*ListEndpointsResponseBodyResultEndpointZones `json:"endpointZones,omitempty" xml:"endpointZones,omitempty" type:"Repeated"`
+	// example:
+	//
+	// test
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// example:
+	//
+	// ep-bp1id41dd116e52e****
+	ResourceId       *string   `json:"resourceId,omitempty" xml:"resourceId,omitempty"`
+	SecurityGroupIds []*string `json:"securityGroupIds,omitempty" xml:"securityGroupIds,omitempty" type:"Repeated"`
+	// example:
+	//
+	// Active
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// example:
+	//
+	// VPC
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	// example:
+	//
+	// 1701259721
+	Updated *int32 `json:"updated,omitempty" xml:"updated,omitempty"`
+	// example:
+	//
+	// vpc-uf6gykvwcirp886ef****
+	VpcId *string `json:"vpcId,omitempty" xml:"vpcId,omitempty"`
+}
+
+func (s ListEndpointsResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEndpointsResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *ListEndpointsResponseBodyResult) SetConnectionStatus(v string) *ListEndpointsResponseBodyResult {
+	s.ConnectionStatus = &v
+	return s
+}
+
+func (s *ListEndpointsResponseBodyResult) SetCreated(v int32) *ListEndpointsResponseBodyResult {
+	s.Created = &v
+	return s
+}
+
+func (s *ListEndpointsResponseBodyResult) SetDomain(v string) *ListEndpointsResponseBodyResult {
+	s.Domain = &v
+	return s
+}
+
+func (s *ListEndpointsResponseBodyResult) SetEndpointId(v string) *ListEndpointsResponseBodyResult {
+	s.EndpointId = &v
+	return s
+}
+
+func (s *ListEndpointsResponseBodyResult) SetEndpointZones(v []*ListEndpointsResponseBodyResultEndpointZones) *ListEndpointsResponseBodyResult {
+	s.EndpointZones = v
+	return s
+}
+
+func (s *ListEndpointsResponseBodyResult) SetName(v string) *ListEndpointsResponseBodyResult {
+	s.Name = &v
+	return s
+}
+
+func (s *ListEndpointsResponseBodyResult) SetResourceId(v string) *ListEndpointsResponseBodyResult {
+	s.ResourceId = &v
+	return s
+}
+
+func (s *ListEndpointsResponseBodyResult) SetSecurityGroupIds(v []*string) *ListEndpointsResponseBodyResult {
+	s.SecurityGroupIds = v
+	return s
+}
+
+func (s *ListEndpointsResponseBodyResult) SetStatus(v string) *ListEndpointsResponseBodyResult {
+	s.Status = &v
+	return s
+}
+
+func (s *ListEndpointsResponseBodyResult) SetType(v string) *ListEndpointsResponseBodyResult {
+	s.Type = &v
+	return s
+}
+
+func (s *ListEndpointsResponseBodyResult) SetUpdated(v int32) *ListEndpointsResponseBodyResult {
+	s.Updated = &v
+	return s
+}
+
+func (s *ListEndpointsResponseBodyResult) SetVpcId(v string) *ListEndpointsResponseBodyResult {
+	s.VpcId = &v
+	return s
+}
+
+type ListEndpointsResponseBodyResultEndpointZones struct {
+	// example:
+	//
+	// vsw-bp194pz9iez****
+	VSwitchId *string `json:"vSwitchId,omitempty" xml:"vSwitchId,omitempty"`
+	// example:
+	//
+	// cn-hangzhou-k
+	ZoneId *string `json:"zoneId,omitempty" xml:"zoneId,omitempty"`
+}
+
+func (s ListEndpointsResponseBodyResultEndpointZones) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEndpointsResponseBodyResultEndpointZones) GoString() string {
+	return s.String()
+}
+
+func (s *ListEndpointsResponseBodyResultEndpointZones) SetVSwitchId(v string) *ListEndpointsResponseBodyResultEndpointZones {
+	s.VSwitchId = &v
+	return s
+}
+
+func (s *ListEndpointsResponseBodyResultEndpointZones) SetZoneId(v string) *ListEndpointsResponseBodyResultEndpointZones {
+	s.ZoneId = &v
+	return s
+}
+
+type ListEndpointsResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListEndpointsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListEndpointsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEndpointsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListEndpointsResponse) SetHeaders(v map[string]*string) *ListEndpointsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListEndpointsResponse) SetStatusCode(v int32) *ListEndpointsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListEndpointsResponse) SetBody(v *ListEndpointsResponseBody) *ListEndpointsResponse {
+	s.Body = v
+	return s
+}
+
+type ListIndicesResponseBody struct {
+	// Id of the request
+	//
+	// example:
+	//
+	// 8C85CCB3-C0C9-521C-B599-F903E14A8793
+	RequestId *string       `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Result    []interface{} `json:"result,omitempty" xml:"result,omitempty" type:"Repeated"`
+}
+
+func (s ListIndicesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListIndicesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListIndicesResponseBody) SetRequestId(v string) *ListIndicesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListIndicesResponseBody) SetResult(v []interface{}) *ListIndicesResponseBody {
+	s.Result = v
+	return s
+}
+
+type ListIndicesResponse struct {
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListIndicesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListIndicesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListIndicesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListIndicesResponse) SetHeaders(v map[string]*string) *ListIndicesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListIndicesResponse) SetStatusCode(v int32) *ListIndicesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListIndicesResponse) SetBody(v *ListIndicesResponseBody) *ListIndicesResponse {
+	s.Body = v
+	return s
+}
+
+type ListSnapshotRepositoriesResponseBody struct {
+	// example:
+	//
+	// 56E0591D-7D62-56A2-993E-952FB2026C69
+	RequestId *string                  `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Result    []map[string]interface{} `json:"result,omitempty" xml:"result,omitempty" type:"Repeated"`
+}
+
+func (s ListSnapshotRepositoriesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSnapshotRepositoriesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListSnapshotRepositoriesResponseBody) SetRequestId(v string) *ListSnapshotRepositoriesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListSnapshotRepositoriesResponseBody) SetResult(v []map[string]interface{}) *ListSnapshotRepositoriesResponseBody {
+	s.Result = v
+	return s
+}
+
+type ListSnapshotRepositoriesResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListSnapshotRepositoriesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListSnapshotRepositoriesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSnapshotRepositoriesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListSnapshotRepositoriesResponse) SetHeaders(v map[string]*string) *ListSnapshotRepositoriesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListSnapshotRepositoriesResponse) SetStatusCode(v int32) *ListSnapshotRepositoriesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListSnapshotRepositoriesResponse) SetBody(v *ListSnapshotRepositoriesResponseBody) *ListSnapshotRepositoriesResponse {
+	s.Body = v
+	return s
+}
+
+type ListSnapshotsRequest struct {
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// example:
+	//
+	// aliyun_auto_snapshot
+	Repository *string `json:"repository,omitempty" xml:"repository,omitempty"`
+	// example:
+	//
+	// qingning
+	Snapshot *string `json:"snapshot,omitempty" xml:"snapshot,omitempty"`
+}
+
+func (s ListSnapshotsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSnapshotsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListSnapshotsRequest) SetPageNumber(v int32) *ListSnapshotsRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListSnapshotsRequest) SetPageSize(v int32) *ListSnapshotsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListSnapshotsRequest) SetRepository(v string) *ListSnapshotsRequest {
+	s.Repository = &v
+	return s
+}
+
+func (s *ListSnapshotsRequest) SetSnapshot(v string) *ListSnapshotsRequest {
+	s.Snapshot = &v
+	return s
+}
+
+type ListSnapshotsResponseBody struct {
+	// example:
+	//
+	// ODgyObrnP3
+	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// example:
+	//
+	// 22E9EE78-F567-550A-8F7C-20E9CD3DE489
+	RequestId *string                  `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Result    []map[string]interface{} `json:"result,omitempty" xml:"result,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	TotalCount *int32 `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
+}
+
+func (s ListSnapshotsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSnapshotsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListSnapshotsResponseBody) SetNextToken(v string) *ListSnapshotsResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListSnapshotsResponseBody) SetRequestId(v string) *ListSnapshotsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListSnapshotsResponseBody) SetResult(v []map[string]interface{}) *ListSnapshotsResponseBody {
+	s.Result = v
+	return s
+}
+
+func (s *ListSnapshotsResponseBody) SetTotalCount(v int32) *ListSnapshotsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListSnapshotsResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListSnapshotsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListSnapshotsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSnapshotsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListSnapshotsResponse) SetHeaders(v map[string]*string) *ListSnapshotsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListSnapshotsResponse) SetStatusCode(v int32) *ListSnapshotsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListSnapshotsResponse) SetBody(v *ListSnapshotsResponseBody) *ListSnapshotsResponse {
+	s.Body = v
+	return s
+}
+
+type ListSpecReviewTasksRequest struct {
+	// example:
+	//
+	// 1
+	Page *int32 `json:"page,omitempty" xml:"page,omitempty"`
+	// example:
+	//
+	// 10
+	Size *int32 `json:"size,omitempty" xml:"size,omitempty"`
+	// example:
+	//
+	// QUOTA
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+}
+
+func (s ListSpecReviewTasksRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSpecReviewTasksRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListSpecReviewTasksRequest) SetPage(v int32) *ListSpecReviewTasksRequest {
+	s.Page = &v
+	return s
+}
+
+func (s *ListSpecReviewTasksRequest) SetSize(v int32) *ListSpecReviewTasksRequest {
+	s.Size = &v
+	return s
+}
+
+func (s *ListSpecReviewTasksRequest) SetType(v string) *ListSpecReviewTasksRequest {
+	s.Type = &v
+	return s
+}
+
+type ListSpecReviewTasksResponseBody struct {
+	// Id of the request
+	//
+	// example:
+	//
+	// 55F7B3FE-05D8-5F0F-BD55-A18967D447DC
+	RequestId *string                                  `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Result    []*ListSpecReviewTasksResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	TotalCount *int32 `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
+}
+
+func (s ListSpecReviewTasksResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSpecReviewTasksResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListSpecReviewTasksResponseBody) SetRequestId(v string) *ListSpecReviewTasksResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListSpecReviewTasksResponseBody) SetResult(v []*ListSpecReviewTasksResponseBodyResult) *ListSpecReviewTasksResponseBody {
+	s.Result = v
+	return s
+}
+
+func (s *ListSpecReviewTasksResponseBody) SetTotalCount(v int32) *ListSpecReviewTasksResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListSpecReviewTasksResponseBodyResult struct {
+	// 代表资源一级ID的资源属性字段
+	//
+	// example:
+	//
+	// 339
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// test
+	AppName     *string `json:"appName,omitempty" xml:"appName,omitempty"`
+	ApplyReason *string `json:"applyReason,omitempty" xml:"applyReason,omitempty"`
+	// example:
+	//
+	// 2024-05-27T10:13:22.000Z
+	GmtCreate *string `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
+	// example:
+	//
+	// USER
+	Source *string `json:"source,omitempty" xml:"source,omitempty"`
+	// example:
+	//
+	// Pending
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// example:
+	//
+	// QUOTA
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+}
+
+func (s ListSpecReviewTasksResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSpecReviewTasksResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *ListSpecReviewTasksResponseBodyResult) SetId(v string) *ListSpecReviewTasksResponseBodyResult {
+	s.Id = &v
+	return s
+}
+
+func (s *ListSpecReviewTasksResponseBodyResult) SetAppName(v string) *ListSpecReviewTasksResponseBodyResult {
+	s.AppName = &v
+	return s
+}
+
+func (s *ListSpecReviewTasksResponseBodyResult) SetApplyReason(v string) *ListSpecReviewTasksResponseBodyResult {
+	s.ApplyReason = &v
+	return s
+}
+
+func (s *ListSpecReviewTasksResponseBodyResult) SetGmtCreate(v string) *ListSpecReviewTasksResponseBodyResult {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *ListSpecReviewTasksResponseBodyResult) SetSource(v string) *ListSpecReviewTasksResponseBodyResult {
+	s.Source = &v
+	return s
+}
+
+func (s *ListSpecReviewTasksResponseBodyResult) SetStatus(v string) *ListSpecReviewTasksResponseBodyResult {
+	s.Status = &v
+	return s
+}
+
+func (s *ListSpecReviewTasksResponseBodyResult) SetType(v string) *ListSpecReviewTasksResponseBodyResult {
+	s.Type = &v
+	return s
+}
+
+type ListSpecReviewTasksResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListSpecReviewTasksResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListSpecReviewTasksResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSpecReviewTasksResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListSpecReviewTasksResponse) SetHeaders(v map[string]*string) *ListSpecReviewTasksResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListSpecReviewTasksResponse) SetStatusCode(v int32) *ListSpecReviewTasksResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListSpecReviewTasksResponse) SetBody(v *ListSpecReviewTasksResponseBody) *ListSpecReviewTasksResponse {
 	s.Body = v
 	return s
 }
@@ -1820,6 +3357,401 @@ func (s *UpdateAppResponse) SetBody(v *UpdateAppResponseBody) *UpdateAppResponse
 	return s
 }
 
+type UpdateDictRequest struct {
+	// example:
+	//
+	// true
+	AllowCover *bool `json:"allowCover,omitempty" xml:"allowCover,omitempty"`
+	// This parameter is required.
+	Files []*UpdateDictRequestFiles `json:"files,omitempty" xml:"files,omitempty" type:"Repeated"`
+	// example:
+	//
+	// OSS
+	SourceType *string `json:"sourceType,omitempty" xml:"sourceType,omitempty"`
+	// example:
+	//
+	// MAIN
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	// example:
+	//
+	// true
+	DryRun *bool `json:"dryRun,omitempty" xml:"dryRun,omitempty"`
+}
+
+func (s UpdateDictRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateDictRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateDictRequest) SetAllowCover(v bool) *UpdateDictRequest {
+	s.AllowCover = &v
+	return s
+}
+
+func (s *UpdateDictRequest) SetFiles(v []*UpdateDictRequestFiles) *UpdateDictRequest {
+	s.Files = v
+	return s
+}
+
+func (s *UpdateDictRequest) SetSourceType(v string) *UpdateDictRequest {
+	s.SourceType = &v
+	return s
+}
+
+func (s *UpdateDictRequest) SetType(v string) *UpdateDictRequest {
+	s.Type = &v
+	return s
+}
+
+func (s *UpdateDictRequest) SetDryRun(v bool) *UpdateDictRequest {
+	s.DryRun = &v
+	return s
+}
+
+type UpdateDictRequestFiles struct {
+	// example:
+	//
+	// dic_0.dic
+	Name      *string                          `json:"name,omitempty" xml:"name,omitempty"`
+	OssObject *UpdateDictRequestFilesOssObject `json:"ossObject,omitempty" xml:"ossObject,omitempty" type:"Struct"`
+}
+
+func (s UpdateDictRequestFiles) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateDictRequestFiles) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateDictRequestFiles) SetName(v string) *UpdateDictRequestFiles {
+	s.Name = &v
+	return s
+}
+
+func (s *UpdateDictRequestFiles) SetOssObject(v *UpdateDictRequestFilesOssObject) *UpdateDictRequestFiles {
+	s.OssObject = v
+	return s
+}
+
+type UpdateDictRequestFilesOssObject struct {
+	// example:
+	//
+	// bucket1
+	BucketName *string `json:"bucketName,omitempty" xml:"bucketName,omitempty"`
+	// example:
+	//
+	// oss/dic_0.dic
+	Key *string `json:"key,omitempty" xml:"key,omitempty"`
+}
+
+func (s UpdateDictRequestFilesOssObject) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateDictRequestFilesOssObject) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateDictRequestFilesOssObject) SetBucketName(v string) *UpdateDictRequestFilesOssObject {
+	s.BucketName = &v
+	return s
+}
+
+func (s *UpdateDictRequestFilesOssObject) SetKey(v string) *UpdateDictRequestFilesOssObject {
+	s.Key = &v
+	return s
+}
+
+type UpdateDictResponseBody struct {
+	// example:
+	//
+	// 12797BCC-E0B5-5A47-B4B9-A14DDF0B0200
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Result *bool `json:"result,omitempty" xml:"result,omitempty"`
+}
+
+func (s UpdateDictResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateDictResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateDictResponseBody) SetRequestId(v string) *UpdateDictResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateDictResponseBody) SetResult(v bool) *UpdateDictResponseBody {
+	s.Result = &v
+	return s
+}
+
+type UpdateDictResponse struct {
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateDictResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateDictResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateDictResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateDictResponse) SetHeaders(v map[string]*string) *UpdateDictResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateDictResponse) SetStatusCode(v int32) *UpdateDictResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateDictResponse) SetBody(v *UpdateDictResponseBody) *UpdateDictResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateEndpointRequest struct {
+	// This parameter is required.
+	EndpointZones []*UpdateEndpointRequestEndpointZones `json:"endpointZones,omitempty" xml:"endpointZones,omitempty" type:"Repeated"`
+	// example:
+	//
+	// test
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+}
+
+func (s UpdateEndpointRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateEndpointRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateEndpointRequest) SetEndpointZones(v []*UpdateEndpointRequestEndpointZones) *UpdateEndpointRequest {
+	s.EndpointZones = v
+	return s
+}
+
+func (s *UpdateEndpointRequest) SetName(v string) *UpdateEndpointRequest {
+	s.Name = &v
+	return s
+}
+
+type UpdateEndpointRequestEndpointZones struct {
+	// example:
+	//
+	// vsw-bp18r8uwnukv3rvi9****
+	VSwitchId *string `json:"vSwitchId,omitempty" xml:"vSwitchId,omitempty"`
+	// example:
+	//
+	// cn-hangzhou-h
+	ZoneId *string `json:"zoneId,omitempty" xml:"zoneId,omitempty"`
+}
+
+func (s UpdateEndpointRequestEndpointZones) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateEndpointRequestEndpointZones) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateEndpointRequestEndpointZones) SetVSwitchId(v string) *UpdateEndpointRequestEndpointZones {
+	s.VSwitchId = &v
+	return s
+}
+
+func (s *UpdateEndpointRequestEndpointZones) SetZoneId(v string) *UpdateEndpointRequestEndpointZones {
+	s.ZoneId = &v
+	return s
+}
+
+type UpdateEndpointResponseBody struct {
+	// example:
+	//
+	// FBAD8493-87FA-583E-8A4C-D487F2DE90FC
+	RequestId *string                           `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Result    *UpdateEndpointResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
+}
+
+func (s UpdateEndpointResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateEndpointResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateEndpointResponseBody) SetRequestId(v string) *UpdateEndpointResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateEndpointResponseBody) SetResult(v *UpdateEndpointResponseBodyResult) *UpdateEndpointResponseBody {
+	s.Result = v
+	return s
+}
+
+type UpdateEndpointResponseBodyResult struct {
+	// example:
+	//
+	// ep-bp1i98bcbb1540d0****
+	EndpointId *string `json:"endpointId,omitempty" xml:"endpointId,omitempty"`
+}
+
+func (s UpdateEndpointResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateEndpointResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateEndpointResponseBodyResult) SetEndpointId(v string) *UpdateEndpointResponseBodyResult {
+	s.EndpointId = &v
+	return s
+}
+
+type UpdateEndpointResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateEndpointResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateEndpointResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateEndpointResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateEndpointResponse) SetHeaders(v map[string]*string) *UpdateEndpointResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateEndpointResponse) SetStatusCode(v int32) *UpdateEndpointResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateEndpointResponse) SetBody(v *UpdateEndpointResponseBody) *UpdateEndpointResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateSnapshotSettingRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// true
+	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0 0 01 ? 	- 	- *
+	QuartzRegex *string `json:"quartzRegex,omitempty" xml:"quartzRegex,omitempty"`
+}
+
+func (s UpdateSnapshotSettingRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateSnapshotSettingRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateSnapshotSettingRequest) SetEnable(v bool) *UpdateSnapshotSettingRequest {
+	s.Enable = &v
+	return s
+}
+
+func (s *UpdateSnapshotSettingRequest) SetQuartzRegex(v string) *UpdateSnapshotSettingRequest {
+	s.QuartzRegex = &v
+	return s
+}
+
+type UpdateSnapshotSettingResponseBody struct {
+	// example:
+	//
+	// A7B03723-AA73-5A5F-B71C-270792614DD8
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// {
+	//
+	//     "quartzRegex": "0 0 01 ? 	- 	- *",
+	//
+	//     "enable": true
+	//
+	//   }
+	Result map[string]interface{} `json:"result,omitempty" xml:"result,omitempty"`
+}
+
+func (s UpdateSnapshotSettingResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateSnapshotSettingResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateSnapshotSettingResponseBody) SetRequestId(v string) *UpdateSnapshotSettingResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateSnapshotSettingResponseBody) SetResult(v map[string]interface{}) *UpdateSnapshotSettingResponseBody {
+	s.Result = v
+	return s
+}
+
+type UpdateSnapshotSettingResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateSnapshotSettingResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateSnapshotSettingResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateSnapshotSettingResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateSnapshotSettingResponse) SetHeaders(v map[string]*string) *UpdateSnapshotSettingResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateSnapshotSettingResponse) SetStatusCode(v int32) *UpdateSnapshotSettingResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateSnapshotSettingResponse) SetBody(v *UpdateSnapshotSettingResponseBody) *UpdateSnapshotSettingResponse {
+	s.Body = v
+	return s
+}
+
 type Client struct {
 	openapi.Client
 }
@@ -1860,6 +3792,56 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	}
 
 	_body, _err := endpointutil.GetEndpointRules(productId, regionId, endpointRule, network, suffix)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 撤销规格审批
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CancelSpecReviewTaskResponse
+func (client *Client) CancelSpecReviewTaskWithOptions(appName *string, taskId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CancelSpecReviewTaskResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CancelSpecReviewTask"),
+		Version:     tea.String("2023-06-27"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/es-serverless/instances/" + tea.StringValue(openapiutil.GetEncodeParam(appName)) + "/spec-review-tasks/" + tea.StringValue(openapiutil.GetEncodeParam(taskId))),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CancelSpecReviewTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 撤销规格审批
+//
+// @return CancelSpecReviewTaskResponse
+func (client *Client) CancelSpecReviewTask(appName *string, taskId *string) (_result *CancelSpecReviewTaskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CancelSpecReviewTaskResponse{}
+	_body, _err := client.CancelSpecReviewTaskWithOptions(appName, taskId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2053,6 +4035,80 @@ func (client *Client) CreateEndpoint(request *CreateEndpointRequest) (_result *C
 
 // Summary:
 //
+// 创建快照
+//
+// @param request - CreateSnapshotRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateSnapshotResponse
+func (client *Client) CreateSnapshotWithOptions(appName *string, repository *string, request *CreateSnapshotRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateSnapshotResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["dryRun"] = request.DryRun
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Indices)) {
+		body["indices"] = request.Indices
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Snapshot)) {
+		body["snapshot"] = request.Snapshot
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateSnapshot"),
+		Version:     tea.String("2023-06-27"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/es-serverless/instances/" + tea.StringValue(openapiutil.GetEncodeParam(appName)) + "/snapshot-repositories/" + tea.StringValue(openapiutil.GetEncodeParam(repository)) + "/snapshots"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateSnapshotResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建快照
+//
+// @param request - CreateSnapshotRequest
+//
+// @return CreateSnapshotResponse
+func (client *Client) CreateSnapshot(appName *string, repository *string, request *CreateSnapshotRequest) (_result *CreateSnapshotResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateSnapshotResponse{}
+	_body, _err := client.CreateSnapshotWithOptions(appName, repository, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 删除Serverless应用。
 //
 // @param headers - map
@@ -2094,6 +4150,174 @@ func (client *Client) DeleteApp(appName *string) (_result *DeleteAppResponse, _e
 	headers := make(map[string]*string)
 	_result = &DeleteAppResponse{}
 	_body, _err := client.DeleteAppWithOptions(appName, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除词典
+//
+// @param request - DeleteDictRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteDictResponse
+func (client *Client) DeleteDictWithOptions(appName *string, request *DeleteDictRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteDictResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		body["type"] = request.Type
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteDict"),
+		Version:     tea.String("2023-06-27"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/es-serverless/instances/" + tea.StringValue(openapiutil.GetEncodeParam(appName)) + "/dicts/actions/remove"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteDictResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除词典
+//
+// @param request - DeleteDictRequest
+//
+// @return DeleteDictResponse
+func (client *Client) DeleteDict(appName *string, request *DeleteDictRequest) (_result *DeleteDictResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteDictResponse{}
+	_body, _err := client.DeleteDictWithOptions(appName, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除端点
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteEndpointResponse
+func (client *Client) DeleteEndpointWithOptions(endpointId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteEndpointResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteEndpoint"),
+		Version:     tea.String("2023-06-27"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/es-serverless/endpoints/" + tea.StringValue(openapiutil.GetEncodeParam(endpointId))),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteEndpointResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除端点
+//
+// @return DeleteEndpointResponse
+func (client *Client) DeleteEndpoint(endpointId *string) (_result *DeleteEndpointResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteEndpointResponse{}
+	_body, _err := client.DeleteEndpointWithOptions(endpointId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除快照
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteSnapshotResponse
+func (client *Client) DeleteSnapshotWithOptions(appName *string, repository *string, snapshot *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteSnapshotResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteSnapshot"),
+		Version:     tea.String("2023-06-27"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/es-serverless/instances/" + tea.StringValue(openapiutil.GetEncodeParam(appName)) + "/snapshot-repositories/" + tea.StringValue(openapiutil.GetEncodeParam(repository)) + "/snapshots/" + tea.StringValue(openapiutil.GetEncodeParam(snapshot))),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteSnapshotResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除快照
+//
+// @return DeleteSnapshotResponse
+func (client *Client) DeleteSnapshot(appName *string, repository *string, snapshot *string) (_result *DeleteSnapshotResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteSnapshotResponse{}
+	_body, _err := client.DeleteSnapshotWithOptions(appName, repository, snapshot, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2276,6 +4500,106 @@ func (client *Client) GetMonitorData(request *GetMonitorDataRequest) (_result *G
 
 // Summary:
 //
+// 获取自动备份配置
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetSnapshotSettingResponse
+func (client *Client) GetSnapshotSettingWithOptions(appName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetSnapshotSettingResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetSnapshotSetting"),
+		Version:     tea.String("2023-06-27"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/es-serverless/instances/" + tea.StringValue(openapiutil.GetEncodeParam(appName)) + "/auto-snapshot-setting"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetSnapshotSettingResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取自动备份配置
+//
+// @return GetSnapshotSettingResponse
+func (client *Client) GetSnapshotSetting(appName *string) (_result *GetSnapshotSettingResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetSnapshotSettingResponse{}
+	_body, _err := client.GetSnapshotSettingWithOptions(appName, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取配额审批详情
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetSpecReviewTaskResponse
+func (client *Client) GetSpecReviewTaskWithOptions(appName *string, taskId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetSpecReviewTaskResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetSpecReviewTask"),
+		Version:     tea.String("2023-06-27"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/es-serverless/instances/" + tea.StringValue(openapiutil.GetEncodeParam(appName)) + "/spec-review-tasks/" + tea.StringValue(openapiutil.GetEncodeParam(taskId))),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetSpecReviewTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取配额审批详情
+//
+// @return GetSpecReviewTaskResponse
+func (client *Client) GetSpecReviewTask(appName *string, taskId *string) (_result *GetSpecReviewTaskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetSpecReviewTaskResponse{}
+	_body, _err := client.GetSpecReviewTaskWithOptions(appName, taskId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 查看Serverless应用列表
 //
 // @param request - ListAppsRequest
@@ -2364,6 +4688,402 @@ func (client *Client) ListApps(request *ListAppsRequest) (_result *ListAppsRespo
 
 // Summary:
 //
+// 获取词典列表
+//
+// @param request - ListDictsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListDictsResponse
+func (client *Client) ListDictsWithOptions(appName *string, request *ListDictsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListDictsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["pageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["pageSize"] = request.PageSize
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListDicts"),
+		Version:     tea.String("2023-06-27"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/es-serverless/instances/" + tea.StringValue(openapiutil.GetEncodeParam(appName)) + "/dicts"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListDictsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取词典列表
+//
+// @param request - ListDictsRequest
+//
+// @return ListDictsResponse
+func (client *Client) ListDicts(appName *string, request *ListDictsRequest) (_result *ListDictsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListDictsResponse{}
+	_body, _err := client.ListDictsWithOptions(appName, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取端点信息列表
+//
+// @param request - ListEndpointsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListEndpointsResponse
+func (client *Client) ListEndpointsWithOptions(request *ListEndpointsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListEndpointsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["pageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["pageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceId)) {
+		query["resourceId"] = request.ResourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		query["type"] = request.Type
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VpcId)) {
+		query["vpcId"] = request.VpcId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListEndpoints"),
+		Version:     tea.String("2023-06-27"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/es-serverless/endpoints"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListEndpointsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取端点信息列表
+//
+// @param request - ListEndpointsRequest
+//
+// @return ListEndpointsResponse
+func (client *Client) ListEndpoints(request *ListEndpointsRequest) (_result *ListEndpointsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListEndpointsResponse{}
+	_body, _err := client.ListEndpointsWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查看索引列表
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListIndicesResponse
+func (client *Client) ListIndicesWithOptions(appName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListIndicesResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListIndices"),
+		Version:     tea.String("2023-06-27"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/es-serverless/instances/" + tea.StringValue(openapiutil.GetEncodeParam(appName)) + "/indices"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListIndicesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查看索引列表
+//
+// @return ListIndicesResponse
+func (client *Client) ListIndices(appName *string) (_result *ListIndicesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListIndicesResponse{}
+	_body, _err := client.ListIndicesWithOptions(appName, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取快照仓库列表
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListSnapshotRepositoriesResponse
+func (client *Client) ListSnapshotRepositoriesWithOptions(appName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListSnapshotRepositoriesResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListSnapshotRepositories"),
+		Version:     tea.String("2023-06-27"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/es-serverless/instances/" + tea.StringValue(openapiutil.GetEncodeParam(appName)) + "/snapshot-repositories"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListSnapshotRepositoriesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取快照仓库列表
+//
+// @return ListSnapshotRepositoriesResponse
+func (client *Client) ListSnapshotRepositories(appName *string) (_result *ListSnapshotRepositoriesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListSnapshotRepositoriesResponse{}
+	_body, _err := client.ListSnapshotRepositoriesWithOptions(appName, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取仓库的快照列表
+//
+// @param request - ListSnapshotsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListSnapshotsResponse
+func (client *Client) ListSnapshotsWithOptions(appName *string, request *ListSnapshotsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListSnapshotsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["pageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["pageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Repository)) {
+		query["repository"] = request.Repository
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Snapshot)) {
+		query["snapshot"] = request.Snapshot
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListSnapshots"),
+		Version:     tea.String("2023-06-27"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/es-serverless/instances/" + tea.StringValue(openapiutil.GetEncodeParam(appName)) + "/snapshots"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListSnapshotsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取仓库的快照列表
+//
+// @param request - ListSnapshotsRequest
+//
+// @return ListSnapshotsResponse
+func (client *Client) ListSnapshots(appName *string, request *ListSnapshotsRequest) (_result *ListSnapshotsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListSnapshotsResponse{}
+	_body, _err := client.ListSnapshotsWithOptions(appName, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取规格审批列表
+//
+// @param request - ListSpecReviewTasksRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListSpecReviewTasksResponse
+func (client *Client) ListSpecReviewTasksWithOptions(appName *string, request *ListSpecReviewTasksRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListSpecReviewTasksResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Page)) {
+		query["page"] = request.Page
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Size)) {
+		query["size"] = request.Size
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		query["type"] = request.Type
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListSpecReviewTasks"),
+		Version:     tea.String("2023-06-27"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/es-serverless/instances/" + tea.StringValue(openapiutil.GetEncodeParam(appName)) + "/spec-review-tasks"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListSpecReviewTasksResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取规格审批列表
+//
+// @param request - ListSpecReviewTasksRequest
+//
+// @return ListSpecReviewTasksResponse
+func (client *Client) ListSpecReviewTasks(appName *string, request *ListSpecReviewTasksRequest) (_result *ListSpecReviewTasksResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListSpecReviewTasksResponse{}
+	_body, _err := client.ListSpecReviewTasksWithOptions(appName, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 编辑Serverless应用
 //
 // @param request - UpdateAppRequest
@@ -2443,6 +5163,224 @@ func (client *Client) UpdateApp(appName *string, request *UpdateAppRequest) (_re
 	headers := make(map[string]*string)
 	_result = &UpdateAppResponse{}
 	_body, _err := client.UpdateAppWithOptions(appName, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建或更新词典
+//
+// @param request - UpdateDictRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateDictResponse
+func (client *Client) UpdateDictWithOptions(appName *string, request *UpdateDictRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateDictResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AllowCover)) {
+		query["allowCover"] = request.AllowCover
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["dryRun"] = request.DryRun
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Files)) {
+		body["files"] = request.Files
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceType)) {
+		body["sourceType"] = request.SourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		body["type"] = request.Type
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateDict"),
+		Version:     tea.String("2023-06-27"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/es-serverless/instances/" + tea.StringValue(openapiutil.GetEncodeParam(appName)) + "/dicts"),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateDictResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建或更新词典
+//
+// @param request - UpdateDictRequest
+//
+// @return UpdateDictResponse
+func (client *Client) UpdateDict(appName *string, request *UpdateDictRequest) (_result *UpdateDictResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateDictResponse{}
+	_body, _err := client.UpdateDictWithOptions(appName, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改端点信息
+//
+// @param request - UpdateEndpointRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateEndpointResponse
+func (client *Client) UpdateEndpointWithOptions(endpointId *string, request *UpdateEndpointRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateEndpointResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EndpointZones)) {
+		body["endpointZones"] = request.EndpointZones
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["name"] = request.Name
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateEndpoint"),
+		Version:     tea.String("2023-06-27"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/es-serverless/endpoints/" + tea.StringValue(openapiutil.GetEncodeParam(endpointId))),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateEndpointResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改端点信息
+//
+// @param request - UpdateEndpointRequest
+//
+// @return UpdateEndpointResponse
+func (client *Client) UpdateEndpoint(endpointId *string, request *UpdateEndpointRequest) (_result *UpdateEndpointResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateEndpointResponse{}
+	_body, _err := client.UpdateEndpointWithOptions(endpointId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改自动备份配置
+//
+// @param request - UpdateSnapshotSettingRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateSnapshotSettingResponse
+func (client *Client) UpdateSnapshotSettingWithOptions(appName *string, request *UpdateSnapshotSettingRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateSnapshotSettingResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Enable)) {
+		body["enable"] = request.Enable
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.QuartzRegex)) {
+		body["quartzRegex"] = request.QuartzRegex
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateSnapshotSetting"),
+		Version:     tea.String("2023-06-27"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/es-serverless/instances/" + tea.StringValue(openapiutil.GetEncodeParam(appName)) + "/auto-snapshot-setting"),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateSnapshotSettingResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改自动备份配置
+//
+// @param request - UpdateSnapshotSettingRequest
+//
+// @return UpdateSnapshotSettingResponse
+func (client *Client) UpdateSnapshotSetting(appName *string, request *UpdateSnapshotSettingRequest) (_result *UpdateSnapshotSettingResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateSnapshotSettingResponse{}
+	_body, _err := client.UpdateSnapshotSettingWithOptions(appName, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
