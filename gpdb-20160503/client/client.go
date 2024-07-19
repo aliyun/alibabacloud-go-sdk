@@ -4104,6 +4104,179 @@ func (s *CreateSampleDataResponse) SetBody(v *CreateSampleDataResponseBody) *Cre
 	return s
 }
 
+type CreateSecretRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// gp-xxxxxxxxx
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// example:
+	//
+	// test
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	OwnerId     *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pwd123
+	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-beijing
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// testsecret
+	SecretName *string `json:"SecretName,omitempty" xml:"SecretName,omitempty"`
+	// example:
+	//
+	// true
+	TestConnection *bool `json:"TestConnection,omitempty" xml:"TestConnection,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// testacc
+	Username *string `json:"Username,omitempty" xml:"Username,omitempty"`
+}
+
+func (s CreateSecretRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSecretRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSecretRequest) SetDBInstanceId(v string) *CreateSecretRequest {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *CreateSecretRequest) SetDescription(v string) *CreateSecretRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateSecretRequest) SetOwnerId(v int64) *CreateSecretRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *CreateSecretRequest) SetPassword(v string) *CreateSecretRequest {
+	s.Password = &v
+	return s
+}
+
+func (s *CreateSecretRequest) SetRegionId(v string) *CreateSecretRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *CreateSecretRequest) SetSecretName(v string) *CreateSecretRequest {
+	s.SecretName = &v
+	return s
+}
+
+func (s *CreateSecretRequest) SetTestConnection(v bool) *CreateSecretRequest {
+	s.TestConnection = &v
+	return s
+}
+
+func (s *CreateSecretRequest) SetUsername(v string) *CreateSecretRequest {
+	s.Username = &v
+	return s
+}
+
+type CreateSecretResponseBody struct {
+	// example:
+	//
+	// Successful
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// ABB39CC3-4488-4857-905D-2E4A051D0521
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// acs:gpdb:cn-beijing:1033**:secret/testsecret-eG2AQGRIwQ0zFp4VA7mYL3uiCXTfDQbQ
+	SecretArn *string `json:"SecretArn,omitempty" xml:"SecretArn,omitempty"`
+	// example:
+	//
+	// testsecret
+	SecretName *string `json:"SecretName,omitempty" xml:"SecretName,omitempty"`
+	// example:
+	//
+	// success
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s CreateSecretResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSecretResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSecretResponseBody) SetMessage(v string) *CreateSecretResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CreateSecretResponseBody) SetRequestId(v string) *CreateSecretResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateSecretResponseBody) SetSecretArn(v string) *CreateSecretResponseBody {
+	s.SecretArn = &v
+	return s
+}
+
+func (s *CreateSecretResponseBody) SetSecretName(v string) *CreateSecretResponseBody {
+	s.SecretName = &v
+	return s
+}
+
+func (s *CreateSecretResponseBody) SetStatus(v string) *CreateSecretResponseBody {
+	s.Status = &v
+	return s
+}
+
+type CreateSecretResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateSecretResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateSecretResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSecretResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSecretResponse) SetHeaders(v map[string]*string) *CreateSecretResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateSecretResponse) SetStatusCode(v int32) *CreateSecretResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateSecretResponse) SetBody(v *CreateSecretResponseBody) *CreateSecretResponse {
+	s.Body = v
+	return s
+}
+
 type CreateServiceLinkedRoleRequest struct {
 	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The ID of the region.
@@ -7323,6 +7496,139 @@ func (s *DeleteNamespaceResponse) SetStatusCode(v int32) *DeleteNamespaceRespons
 }
 
 func (s *DeleteNamespaceResponse) SetBody(v *DeleteNamespaceResponseBody) *DeleteNamespaceResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteSecretRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// gp-xxxxxxxxx
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-beijing
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// acs:gpdb:cn-beijing:1033**:secret/testsecret-eG2AQGRIwQ0zFp4VA7mYL3uiCXTfDQbQ
+	SecretArn *string `json:"SecretArn,omitempty" xml:"SecretArn,omitempty"`
+	// example:
+	//
+	// testsecret
+	SecretName *string `json:"SecretName,omitempty" xml:"SecretName,omitempty"`
+}
+
+func (s DeleteSecretRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteSecretRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteSecretRequest) SetDBInstanceId(v string) *DeleteSecretRequest {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *DeleteSecretRequest) SetOwnerId(v int64) *DeleteSecretRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DeleteSecretRequest) SetRegionId(v string) *DeleteSecretRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DeleteSecretRequest) SetSecretArn(v string) *DeleteSecretRequest {
+	s.SecretArn = &v
+	return s
+}
+
+func (s *DeleteSecretRequest) SetSecretName(v string) *DeleteSecretRequest {
+	s.SecretName = &v
+	return s
+}
+
+type DeleteSecretResponseBody struct {
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// ABB39CC3-4488-4857-905D-2E4A051D0521
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// acs:gpdb:cn-beijing:1033**:secret/testsecret-eG2AQGRIwQ0zFp4VA7mYL3uiCXTfDQbQ
+	SecretArn *string `json:"SecretArn,omitempty" xml:"SecretArn,omitempty"`
+	// example:
+	//
+	// success
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s DeleteSecretResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteSecretResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteSecretResponseBody) SetMessage(v string) *DeleteSecretResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DeleteSecretResponseBody) SetRequestId(v string) *DeleteSecretResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteSecretResponseBody) SetSecretArn(v string) *DeleteSecretResponseBody {
+	s.SecretArn = &v
+	return s
+}
+
+func (s *DeleteSecretResponseBody) SetStatus(v string) *DeleteSecretResponseBody {
+	s.Status = &v
+	return s
+}
+
+type DeleteSecretResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteSecretResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteSecretResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteSecretResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteSecretResponse) SetHeaders(v map[string]*string) *DeleteSecretResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteSecretResponse) SetStatusCode(v int32) *DeleteSecretResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteSecretResponse) SetBody(v *DeleteSecretResponseBody) *DeleteSecretResponse {
 	s.Body = v
 	return s
 }
@@ -23658,6 +23964,179 @@ func (s *DescribeSupportFeaturesResponse) SetBody(v *DescribeSupportFeaturesResp
 	return s
 }
 
+type DescribeTableRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// gp-xxxxxxxxx
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// adbtest
+	Database *string `json:"Database,omitempty" xml:"Database,omitempty"`
+	OwnerId  *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-beijing
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// public
+	Schema *string `json:"Schema,omitempty" xml:"Schema,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// acs:gpdb:cn-beijing:1033**:secret/testsecret-eG2AQGRIwQ0zFp4VA7mYL3uiCXTfDQbQ
+	SecretArn *string `json:"SecretArn,omitempty" xml:"SecretArn,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// mytable
+	Table *string `json:"Table,omitempty" xml:"Table,omitempty"`
+}
+
+func (s DescribeTableRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeTableRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeTableRequest) SetDBInstanceId(v string) *DescribeTableRequest {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *DescribeTableRequest) SetDatabase(v string) *DescribeTableRequest {
+	s.Database = &v
+	return s
+}
+
+func (s *DescribeTableRequest) SetOwnerId(v int64) *DescribeTableRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DescribeTableRequest) SetRegionId(v string) *DescribeTableRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeTableRequest) SetSchema(v string) *DescribeTableRequest {
+	s.Schema = &v
+	return s
+}
+
+func (s *DescribeTableRequest) SetSecretArn(v string) *DescribeTableRequest {
+	s.SecretArn = &v
+	return s
+}
+
+func (s *DescribeTableRequest) SetTable(v string) *DescribeTableRequest {
+	s.Table = &v
+	return s
+}
+
+type DescribeTableResponseBody struct {
+	ColumnList *DescribeTableResponseBodyColumnList `json:"ColumnList,omitempty" xml:"ColumnList,omitempty" type:"Struct"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// ABB39CC3-4488-4857-905D-2E4A051D0521
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// success
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s DescribeTableResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeTableResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeTableResponseBody) SetColumnList(v *DescribeTableResponseBodyColumnList) *DescribeTableResponseBody {
+	s.ColumnList = v
+	return s
+}
+
+func (s *DescribeTableResponseBody) SetMessage(v string) *DescribeTableResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DescribeTableResponseBody) SetRequestId(v string) *DescribeTableResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeTableResponseBody) SetStatus(v string) *DescribeTableResponseBody {
+	s.Status = &v
+	return s
+}
+
+type DescribeTableResponseBodyColumnList struct {
+	ColumnList []*ColumnMetadata `json:"ColumnList,omitempty" xml:"ColumnList,omitempty" type:"Repeated"`
+}
+
+func (s DescribeTableResponseBodyColumnList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeTableResponseBodyColumnList) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeTableResponseBodyColumnList) SetColumnList(v []*ColumnMetadata) *DescribeTableResponseBodyColumnList {
+	s.ColumnList = v
+	return s
+}
+
+type DescribeTableResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeTableResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeTableResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeTableResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeTableResponse) SetHeaders(v map[string]*string) *DescribeTableResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeTableResponse) SetStatusCode(v int32) *DescribeTableResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeTableResponse) SetBody(v *DescribeTableResponseBody) *DescribeTableResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeTagsRequest struct {
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -25168,6 +25647,594 @@ func (s *EnableDBResourceGroupResponse) SetBody(v *EnableDBResourceGroupResponse
 	return s
 }
 
+type ExecuteStatementRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// gp-xxxxxxxxx
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// adbtest
+	Database   *string       `json:"Database,omitempty" xml:"Database,omitempty"`
+	OwnerId    *int64        `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	Parameters []interface{} `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-beijing
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// synchronous
+	RunType *string `json:"RunType,omitempty" xml:"RunType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// acs:gpdb:cn-beijing:1033**:secret/testsecret-eG2AQGRIwQ0zFp4VA7mYL3uiCXTfDQbQ
+	SecretArn *string `json:"SecretArn,omitempty" xml:"SecretArn,omitempty"`
+	// example:
+	//
+	// select 	- from table1
+	Sql  *string   `json:"Sql,omitempty" xml:"Sql,omitempty"`
+	Sqls []*string `json:"Sqls,omitempty" xml:"Sqls,omitempty" type:"Repeated"`
+	// example:
+	//
+	// test
+	StatementName *string `json:"StatementName,omitempty" xml:"StatementName,omitempty"`
+}
+
+func (s ExecuteStatementRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExecuteStatementRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ExecuteStatementRequest) SetDBInstanceId(v string) *ExecuteStatementRequest {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *ExecuteStatementRequest) SetDatabase(v string) *ExecuteStatementRequest {
+	s.Database = &v
+	return s
+}
+
+func (s *ExecuteStatementRequest) SetOwnerId(v int64) *ExecuteStatementRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *ExecuteStatementRequest) SetParameters(v []interface{}) *ExecuteStatementRequest {
+	s.Parameters = v
+	return s
+}
+
+func (s *ExecuteStatementRequest) SetRegionId(v string) *ExecuteStatementRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ExecuteStatementRequest) SetRunType(v string) *ExecuteStatementRequest {
+	s.RunType = &v
+	return s
+}
+
+func (s *ExecuteStatementRequest) SetSecretArn(v string) *ExecuteStatementRequest {
+	s.SecretArn = &v
+	return s
+}
+
+func (s *ExecuteStatementRequest) SetSql(v string) *ExecuteStatementRequest {
+	s.Sql = &v
+	return s
+}
+
+func (s *ExecuteStatementRequest) SetSqls(v []*string) *ExecuteStatementRequest {
+	s.Sqls = v
+	return s
+}
+
+func (s *ExecuteStatementRequest) SetStatementName(v string) *ExecuteStatementRequest {
+	s.StatementName = &v
+	return s
+}
+
+type ExecuteStatementShrinkRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// gp-xxxxxxxxx
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// adbtest
+	Database         *string `json:"Database,omitempty" xml:"Database,omitempty"`
+	OwnerId          *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ParametersShrink *string `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-beijing
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// synchronous
+	RunType *string `json:"RunType,omitempty" xml:"RunType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// acs:gpdb:cn-beijing:1033**:secret/testsecret-eG2AQGRIwQ0zFp4VA7mYL3uiCXTfDQbQ
+	SecretArn *string `json:"SecretArn,omitempty" xml:"SecretArn,omitempty"`
+	// example:
+	//
+	// select 	- from table1
+	Sql        *string `json:"Sql,omitempty" xml:"Sql,omitempty"`
+	SqlsShrink *string `json:"Sqls,omitempty" xml:"Sqls,omitempty"`
+	// example:
+	//
+	// test
+	StatementName *string `json:"StatementName,omitempty" xml:"StatementName,omitempty"`
+}
+
+func (s ExecuteStatementShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExecuteStatementShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ExecuteStatementShrinkRequest) SetDBInstanceId(v string) *ExecuteStatementShrinkRequest {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *ExecuteStatementShrinkRequest) SetDatabase(v string) *ExecuteStatementShrinkRequest {
+	s.Database = &v
+	return s
+}
+
+func (s *ExecuteStatementShrinkRequest) SetOwnerId(v int64) *ExecuteStatementShrinkRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *ExecuteStatementShrinkRequest) SetParametersShrink(v string) *ExecuteStatementShrinkRequest {
+	s.ParametersShrink = &v
+	return s
+}
+
+func (s *ExecuteStatementShrinkRequest) SetRegionId(v string) *ExecuteStatementShrinkRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ExecuteStatementShrinkRequest) SetRunType(v string) *ExecuteStatementShrinkRequest {
+	s.RunType = &v
+	return s
+}
+
+func (s *ExecuteStatementShrinkRequest) SetSecretArn(v string) *ExecuteStatementShrinkRequest {
+	s.SecretArn = &v
+	return s
+}
+
+func (s *ExecuteStatementShrinkRequest) SetSql(v string) *ExecuteStatementShrinkRequest {
+	s.Sql = &v
+	return s
+}
+
+func (s *ExecuteStatementShrinkRequest) SetSqlsShrink(v string) *ExecuteStatementShrinkRequest {
+	s.SqlsShrink = &v
+	return s
+}
+
+func (s *ExecuteStatementShrinkRequest) SetStatementName(v string) *ExecuteStatementShrinkRequest {
+	s.StatementName = &v
+	return s
+}
+
+type ExecuteStatementResponseBody struct {
+	// example:
+	//
+	// 2023-12-04T10:08:47+0800
+	CreatedAt *string `json:"CreatedAt,omitempty" xml:"CreatedAt,omitempty"`
+	// example:
+	//
+	// gp-xxxxxxxxx
+	DBInstanceId *string                           `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	Data         *ExecuteStatementResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// adbtest
+	Database *string `json:"Database,omitempty" xml:"Database,omitempty"`
+	// example:
+	//
+	// ABB39CC3
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// ABB39CC3-4488-4857-905D-2E4A051D0521
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// acs:gpdb:cn-beijing:1033**:secret/testsecret-eG2AQGRIwQ0zFp4VA7mYL3uiCXTfDQbQ
+	SecretArn *string `json:"SecretArn,omitempty" xml:"SecretArn,omitempty"`
+	// example:
+	//
+	// success
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s ExecuteStatementResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExecuteStatementResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ExecuteStatementResponseBody) SetCreatedAt(v string) *ExecuteStatementResponseBody {
+	s.CreatedAt = &v
+	return s
+}
+
+func (s *ExecuteStatementResponseBody) SetDBInstanceId(v string) *ExecuteStatementResponseBody {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *ExecuteStatementResponseBody) SetData(v *ExecuteStatementResponseBodyData) *ExecuteStatementResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ExecuteStatementResponseBody) SetDatabase(v string) *ExecuteStatementResponseBody {
+	s.Database = &v
+	return s
+}
+
+func (s *ExecuteStatementResponseBody) SetId(v string) *ExecuteStatementResponseBody {
+	s.Id = &v
+	return s
+}
+
+func (s *ExecuteStatementResponseBody) SetMessage(v string) *ExecuteStatementResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ExecuteStatementResponseBody) SetRequestId(v string) *ExecuteStatementResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ExecuteStatementResponseBody) SetSecretArn(v string) *ExecuteStatementResponseBody {
+	s.SecretArn = &v
+	return s
+}
+
+func (s *ExecuteStatementResponseBody) SetStatus(v string) *ExecuteStatementResponseBody {
+	s.Status = &v
+	return s
+}
+
+type ExecuteStatementResponseBodyData struct {
+	ColumnMetadata *ExecuteStatementResponseBodyDataColumnMetadata `json:"ColumnMetadata,omitempty" xml:"ColumnMetadata,omitempty" type:"Struct"`
+	Records        *ExecuteStatementResponseBodyDataRecords        `json:"Records,omitempty" xml:"Records,omitempty" type:"Struct"`
+	// example:
+	//
+	// 10
+	TotalNumRows *int64 `json:"TotalNumRows,omitempty" xml:"TotalNumRows,omitempty"`
+}
+
+func (s ExecuteStatementResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExecuteStatementResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ExecuteStatementResponseBodyData) SetColumnMetadata(v *ExecuteStatementResponseBodyDataColumnMetadata) *ExecuteStatementResponseBodyData {
+	s.ColumnMetadata = v
+	return s
+}
+
+func (s *ExecuteStatementResponseBodyData) SetRecords(v *ExecuteStatementResponseBodyDataRecords) *ExecuteStatementResponseBodyData {
+	s.Records = v
+	return s
+}
+
+func (s *ExecuteStatementResponseBodyData) SetTotalNumRows(v int64) *ExecuteStatementResponseBodyData {
+	s.TotalNumRows = &v
+	return s
+}
+
+type ExecuteStatementResponseBodyDataColumnMetadata struct {
+	ColumnMetadata []*ColumnMetadata `json:"ColumnMetadata,omitempty" xml:"ColumnMetadata,omitempty" type:"Repeated"`
+}
+
+func (s ExecuteStatementResponseBodyDataColumnMetadata) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExecuteStatementResponseBodyDataColumnMetadata) GoString() string {
+	return s.String()
+}
+
+func (s *ExecuteStatementResponseBodyDataColumnMetadata) SetColumnMetadata(v []*ColumnMetadata) *ExecuteStatementResponseBodyDataColumnMetadata {
+	s.ColumnMetadata = v
+	return s
+}
+
+type ExecuteStatementResponseBodyDataRecords struct {
+	Records []*ExecuteStatementResponseBodyDataRecordsRecords `json:"Records,omitempty" xml:"Records,omitempty" type:"Repeated"`
+}
+
+func (s ExecuteStatementResponseBodyDataRecords) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExecuteStatementResponseBodyDataRecords) GoString() string {
+	return s.String()
+}
+
+func (s *ExecuteStatementResponseBodyDataRecords) SetRecords(v []*ExecuteStatementResponseBodyDataRecordsRecords) *ExecuteStatementResponseBodyDataRecords {
+	s.Records = v
+	return s
+}
+
+type ExecuteStatementResponseBodyDataRecordsRecords struct {
+	Record []*Field `json:"Record,omitempty" xml:"Record,omitempty" type:"Repeated"`
+}
+
+func (s ExecuteStatementResponseBodyDataRecordsRecords) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExecuteStatementResponseBodyDataRecordsRecords) GoString() string {
+	return s.String()
+}
+
+func (s *ExecuteStatementResponseBodyDataRecordsRecords) SetRecord(v []*Field) *ExecuteStatementResponseBodyDataRecordsRecords {
+	s.Record = v
+	return s
+}
+
+type ExecuteStatementResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ExecuteStatementResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ExecuteStatementResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExecuteStatementResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ExecuteStatementResponse) SetHeaders(v map[string]*string) *ExecuteStatementResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ExecuteStatementResponse) SetStatusCode(v int32) *ExecuteStatementResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ExecuteStatementResponse) SetBody(v *ExecuteStatementResponseBody) *ExecuteStatementResponse {
+	s.Body = v
+	return s
+}
+
+type GetSecretValueRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// gp-xxxxxxxxx
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-beijing
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// acs:gpdb:cn-beijing:1033**:secret/testsecret-eG2AQGRIwQ0zFp4VA7mYL3uiCXTfDQbQ
+	SecretArn *string `json:"SecretArn,omitempty" xml:"SecretArn,omitempty"`
+	// example:
+	//
+	// testsecret
+	SecretName *string `json:"SecretName,omitempty" xml:"SecretName,omitempty"`
+}
+
+func (s GetSecretValueRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSecretValueRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetSecretValueRequest) SetDBInstanceId(v string) *GetSecretValueRequest {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *GetSecretValueRequest) SetOwnerId(v int64) *GetSecretValueRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *GetSecretValueRequest) SetRegionId(v string) *GetSecretValueRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *GetSecretValueRequest) SetSecretArn(v string) *GetSecretValueRequest {
+	s.SecretArn = &v
+	return s
+}
+
+func (s *GetSecretValueRequest) SetSecretName(v string) *GetSecretValueRequest {
+	s.SecretName = &v
+	return s
+}
+
+type GetSecretValueResponseBody struct {
+	// example:
+	//
+	// Secret.NotFound
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// gp-xxxxxxxxx
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// example:
+	//
+	// test secret
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// pwd123
+	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	// example:
+	//
+	// ABB39CC3-4488-4857-905D-2E4A051D0521
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// acs:gpdb:cn-beijing:1033**:secret/testsecret-eG2AQGRIwQ0zFp4VA7mYL3uiCXTfDQbQ
+	SecretArn *string `json:"SecretArn,omitempty" xml:"SecretArn,omitempty"`
+	// example:
+	//
+	// testsecret
+	SecretName *string `json:"SecretName,omitempty" xml:"SecretName,omitempty"`
+	// example:
+	//
+	// success
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// testacc
+	Username *string `json:"Username,omitempty" xml:"Username,omitempty"`
+}
+
+func (s GetSecretValueResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSecretValueResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetSecretValueResponseBody) SetCode(v string) *GetSecretValueResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetSecretValueResponseBody) SetDBInstanceId(v string) *GetSecretValueResponseBody {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *GetSecretValueResponseBody) SetDescription(v string) *GetSecretValueResponseBody {
+	s.Description = &v
+	return s
+}
+
+func (s *GetSecretValueResponseBody) SetMessage(v string) *GetSecretValueResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetSecretValueResponseBody) SetPassword(v string) *GetSecretValueResponseBody {
+	s.Password = &v
+	return s
+}
+
+func (s *GetSecretValueResponseBody) SetRequestId(v string) *GetSecretValueResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetSecretValueResponseBody) SetSecretArn(v string) *GetSecretValueResponseBody {
+	s.SecretArn = &v
+	return s
+}
+
+func (s *GetSecretValueResponseBody) SetSecretName(v string) *GetSecretValueResponseBody {
+	s.SecretName = &v
+	return s
+}
+
+func (s *GetSecretValueResponseBody) SetStatus(v string) *GetSecretValueResponseBody {
+	s.Status = &v
+	return s
+}
+
+func (s *GetSecretValueResponseBody) SetUsername(v string) *GetSecretValueResponseBody {
+	s.Username = &v
+	return s
+}
+
+type GetSecretValueResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetSecretValueResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetSecretValueResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSecretValueResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetSecretValueResponse) SetHeaders(v map[string]*string) *GetSecretValueResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetSecretValueResponse) SetStatusCode(v int32) *GetSecretValueResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetSecretValueResponse) SetBody(v *GetSecretValueResponseBody) *GetSecretValueResponse {
+	s.Body = v
+	return s
+}
+
 type GetUploadDocumentJobRequest struct {
 	// The name of the document collection.
 	//
@@ -26568,6 +27635,184 @@ func (s *ListCollectionsResponse) SetStatusCode(v int32) *ListCollectionsRespons
 }
 
 func (s *ListCollectionsResponse) SetBody(v *ListCollectionsResponseBody) *ListCollectionsResponse {
+	s.Body = v
+	return s
+}
+
+type ListDatabasesRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// gp-xxxxxxxxx
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// testdb
+	Database *string `json:"Database,omitempty" xml:"Database,omitempty"`
+	// example:
+	//
+	// 50
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// example:
+	//
+	// caeba0bbb2be03f84eb48b699f0a4883
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	OwnerId   *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-beijing
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// acs:gpdb:cn-beijing:1033**:secret/testsecret-eG2AQGRIwQ0zFp4VA7mYL3uiCXTfDQbQ
+	SecretArn *string `json:"SecretArn,omitempty" xml:"SecretArn,omitempty"`
+}
+
+func (s ListDatabasesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDatabasesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListDatabasesRequest) SetDBInstanceId(v string) *ListDatabasesRequest {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *ListDatabasesRequest) SetDatabase(v string) *ListDatabasesRequest {
+	s.Database = &v
+	return s
+}
+
+func (s *ListDatabasesRequest) SetMaxResults(v int32) *ListDatabasesRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListDatabasesRequest) SetNextToken(v string) *ListDatabasesRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListDatabasesRequest) SetOwnerId(v int64) *ListDatabasesRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *ListDatabasesRequest) SetRegionId(v string) *ListDatabasesRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ListDatabasesRequest) SetSecretArn(v string) *ListDatabasesRequest {
+	s.SecretArn = &v
+	return s
+}
+
+type ListDatabasesResponseBody struct {
+	Databases *ListDatabasesResponseBodyDatabases `json:"Databases,omitempty" xml:"Databases,omitempty" type:"Struct"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// caeba0bbb2be03f84eb48b699f0a4883
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// example:
+	//
+	// ABB39CC3-4488-4857-905D-2E4A051D0521
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// success
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s ListDatabasesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDatabasesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListDatabasesResponseBody) SetDatabases(v *ListDatabasesResponseBodyDatabases) *ListDatabasesResponseBody {
+	s.Databases = v
+	return s
+}
+
+func (s *ListDatabasesResponseBody) SetMessage(v string) *ListDatabasesResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListDatabasesResponseBody) SetNextToken(v string) *ListDatabasesResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListDatabasesResponseBody) SetRequestId(v string) *ListDatabasesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListDatabasesResponseBody) SetStatus(v string) *ListDatabasesResponseBody {
+	s.Status = &v
+	return s
+}
+
+type ListDatabasesResponseBodyDatabases struct {
+	Databases []*string `json:"Databases,omitempty" xml:"Databases,omitempty" type:"Repeated"`
+}
+
+func (s ListDatabasesResponseBodyDatabases) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDatabasesResponseBodyDatabases) GoString() string {
+	return s.String()
+}
+
+func (s *ListDatabasesResponseBodyDatabases) SetDatabases(v []*string) *ListDatabasesResponseBodyDatabases {
+	s.Databases = v
+	return s
+}
+
+type ListDatabasesResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListDatabasesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListDatabasesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDatabasesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListDatabasesResponse) SetHeaders(v map[string]*string) *ListDatabasesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListDatabasesResponse) SetStatusCode(v int32) *ListDatabasesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListDatabasesResponse) SetBody(v *ListDatabasesResponseBody) *ListDatabasesResponse {
 	s.Body = v
 	return s
 }
@@ -28075,6 +29320,405 @@ func (s *ListNamespacesResponse) SetBody(v *ListNamespacesResponseBody) *ListNam
 	return s
 }
 
+type ListSchemasRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// gp-xxxxxxxxx
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// adbtest
+	Database *string `json:"Database,omitempty" xml:"Database,omitempty"`
+	// example:
+	//
+	// 20
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// example:
+	//
+	// caeba0bbb2be03f84eb48b699f0a4883
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	OwnerId   *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-beijing
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// aaa%
+	SchemaPattern *string `json:"SchemaPattern,omitempty" xml:"SchemaPattern,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// acs:gpdb:cn-beijing:1033**:secret/testsecret-eG2AQGRIwQ0zFp4VA7mYL3uiCXTfDQbQ
+	SecretArn *string `json:"SecretArn,omitempty" xml:"SecretArn,omitempty"`
+}
+
+func (s ListSchemasRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSchemasRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListSchemasRequest) SetDBInstanceId(v string) *ListSchemasRequest {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *ListSchemasRequest) SetDatabase(v string) *ListSchemasRequest {
+	s.Database = &v
+	return s
+}
+
+func (s *ListSchemasRequest) SetMaxResults(v int32) *ListSchemasRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListSchemasRequest) SetNextToken(v string) *ListSchemasRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListSchemasRequest) SetOwnerId(v int64) *ListSchemasRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *ListSchemasRequest) SetRegionId(v string) *ListSchemasRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ListSchemasRequest) SetSchemaPattern(v string) *ListSchemasRequest {
+	s.SchemaPattern = &v
+	return s
+}
+
+func (s *ListSchemasRequest) SetSecretArn(v string) *ListSchemasRequest {
+	s.SecretArn = &v
+	return s
+}
+
+type ListSchemasResponseBody struct {
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// caeba0bbb2be03f84eb48b699f0a4883
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// example:
+	//
+	// ABB39CC3-4488-4857-905D-2E4A051D0521
+	RequestId *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Schemas   *ListSchemasResponseBodySchemas `json:"Schemas,omitempty" xml:"Schemas,omitempty" type:"Struct"`
+	// example:
+	//
+	// success
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s ListSchemasResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSchemasResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListSchemasResponseBody) SetMessage(v string) *ListSchemasResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListSchemasResponseBody) SetNextToken(v string) *ListSchemasResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListSchemasResponseBody) SetRequestId(v string) *ListSchemasResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListSchemasResponseBody) SetSchemas(v *ListSchemasResponseBodySchemas) *ListSchemasResponseBody {
+	s.Schemas = v
+	return s
+}
+
+func (s *ListSchemasResponseBody) SetStatus(v string) *ListSchemasResponseBody {
+	s.Status = &v
+	return s
+}
+
+type ListSchemasResponseBodySchemas struct {
+	Schemas []*string `json:"Schemas,omitempty" xml:"Schemas,omitempty" type:"Repeated"`
+}
+
+func (s ListSchemasResponseBodySchemas) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSchemasResponseBodySchemas) GoString() string {
+	return s.String()
+}
+
+func (s *ListSchemasResponseBodySchemas) SetSchemas(v []*string) *ListSchemasResponseBodySchemas {
+	s.Schemas = v
+	return s
+}
+
+type ListSchemasResponse struct {
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListSchemasResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListSchemasResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSchemasResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListSchemasResponse) SetHeaders(v map[string]*string) *ListSchemasResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListSchemasResponse) SetStatusCode(v int32) *ListSchemasResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListSchemasResponse) SetBody(v *ListSchemasResponseBody) *ListSchemasResponse {
+	s.Body = v
+	return s
+}
+
+type ListSecretsRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// gp-xxxxxxxxx
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-beijing
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s ListSecretsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSecretsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListSecretsRequest) SetDBInstanceId(v string) *ListSecretsRequest {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *ListSecretsRequest) SetOwnerId(v int64) *ListSecretsRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *ListSecretsRequest) SetRegionId(v string) *ListSecretsRequest {
+	s.RegionId = &v
+	return s
+}
+
+type ListSecretsResponseBody struct {
+	// example:
+	//
+	// 4
+	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
+	// example:
+	//
+	// Successful
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// ABB39CC3-4488-4857-905D-2E4A051D0521
+	RequestId *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Secrets   *ListSecretsResponseBodySecrets `json:"Secrets,omitempty" xml:"Secrets,omitempty" type:"Struct"`
+	// example:
+	//
+	// success
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s ListSecretsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSecretsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListSecretsResponseBody) SetCount(v int64) *ListSecretsResponseBody {
+	s.Count = &v
+	return s
+}
+
+func (s *ListSecretsResponseBody) SetMessage(v string) *ListSecretsResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListSecretsResponseBody) SetRequestId(v string) *ListSecretsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListSecretsResponseBody) SetSecrets(v *ListSecretsResponseBodySecrets) *ListSecretsResponseBody {
+	s.Secrets = v
+	return s
+}
+
+func (s *ListSecretsResponseBody) SetStatus(v string) *ListSecretsResponseBody {
+	s.Status = &v
+	return s
+}
+
+type ListSecretsResponseBodySecrets struct {
+	Secrets []*ListSecretsResponseBodySecretsSecrets `json:"Secrets,omitempty" xml:"Secrets,omitempty" type:"Repeated"`
+}
+
+func (s ListSecretsResponseBodySecrets) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSecretsResponseBodySecrets) GoString() string {
+	return s.String()
+}
+
+func (s *ListSecretsResponseBodySecrets) SetSecrets(v []*ListSecretsResponseBodySecretsSecrets) *ListSecretsResponseBodySecrets {
+	s.Secrets = v
+	return s
+}
+
+type ListSecretsResponseBodySecretsSecrets struct {
+	// example:
+	//
+	// 1033***
+	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	// example:
+	//
+	// gp-bp14****
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// example:
+	//
+	// test description
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// cn-beijing
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// acs:gpdb:cn-beijing:1033**:secret/testsecret-eG2AQGRIwQ0zFp4VA7mYL3uiCXTfDQbQ
+	SecretArn *string `json:"SecretArn,omitempty" xml:"SecretArn,omitempty"`
+	// example:
+	//
+	// testsecret
+	SecretName *string `json:"SecretName,omitempty" xml:"SecretName,omitempty"`
+	// example:
+	//
+	// testacc
+	Username *string `json:"Username,omitempty" xml:"Username,omitempty"`
+}
+
+func (s ListSecretsResponseBodySecretsSecrets) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSecretsResponseBodySecretsSecrets) GoString() string {
+	return s.String()
+}
+
+func (s *ListSecretsResponseBodySecretsSecrets) SetAccountId(v string) *ListSecretsResponseBodySecretsSecrets {
+	s.AccountId = &v
+	return s
+}
+
+func (s *ListSecretsResponseBodySecretsSecrets) SetDBInstanceId(v string) *ListSecretsResponseBodySecretsSecrets {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *ListSecretsResponseBodySecretsSecrets) SetDescription(v string) *ListSecretsResponseBodySecretsSecrets {
+	s.Description = &v
+	return s
+}
+
+func (s *ListSecretsResponseBodySecretsSecrets) SetRegionId(v string) *ListSecretsResponseBodySecretsSecrets {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ListSecretsResponseBodySecretsSecrets) SetSecretArn(v string) *ListSecretsResponseBodySecretsSecrets {
+	s.SecretArn = &v
+	return s
+}
+
+func (s *ListSecretsResponseBodySecretsSecrets) SetSecretName(v string) *ListSecretsResponseBodySecretsSecrets {
+	s.SecretName = &v
+	return s
+}
+
+func (s *ListSecretsResponseBodySecretsSecrets) SetUsername(v string) *ListSecretsResponseBodySecretsSecrets {
+	s.Username = &v
+	return s
+}
+
+type ListSecretsResponse struct {
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListSecretsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListSecretsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSecretsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListSecretsResponse) SetHeaders(v map[string]*string) *ListSecretsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListSecretsResponse) SetStatusCode(v int32) *ListSecretsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListSecretsResponse) SetBody(v *ListSecretsResponseBody) *ListSecretsResponse {
+	s.Body = v
+	return s
+}
+
 type ListStreamingDataServicesRequest struct {
 	// This parameter is required.
 	//
@@ -28964,6 +30608,204 @@ func (s *ListStreamingJobsResponse) SetStatusCode(v int32) *ListStreamingJobsRes
 }
 
 func (s *ListStreamingJobsResponse) SetBody(v *ListStreamingJobsResponseBody) *ListStreamingJobsResponse {
+	s.Body = v
+	return s
+}
+
+type ListTablesRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// gp-xxxxxxxxx
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// adbtest
+	Database *string `json:"Database,omitempty" xml:"Database,omitempty"`
+	// example:
+	//
+	// 100
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// example:
+	//
+	// caeba0bbb2be03f84eb48b699f0a4883
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	OwnerId   *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-beijing
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// public
+	Schema *string `json:"Schema,omitempty" xml:"Schema,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// acs:gpdb:cn-beijing:1033**:secret/testsecret-eG2AQGRIwQ0zFp4VA7mYL3uiCXTfDQbQ
+	SecretArn *string `json:"SecretArn,omitempty" xml:"SecretArn,omitempty"`
+	// example:
+	//
+	// ab%
+	TablePattern *string `json:"TablePattern,omitempty" xml:"TablePattern,omitempty"`
+}
+
+func (s ListTablesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTablesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListTablesRequest) SetDBInstanceId(v string) *ListTablesRequest {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *ListTablesRequest) SetDatabase(v string) *ListTablesRequest {
+	s.Database = &v
+	return s
+}
+
+func (s *ListTablesRequest) SetMaxResults(v int32) *ListTablesRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListTablesRequest) SetNextToken(v string) *ListTablesRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListTablesRequest) SetOwnerId(v int64) *ListTablesRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *ListTablesRequest) SetRegionId(v string) *ListTablesRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ListTablesRequest) SetSchema(v string) *ListTablesRequest {
+	s.Schema = &v
+	return s
+}
+
+func (s *ListTablesRequest) SetSecretArn(v string) *ListTablesRequest {
+	s.SecretArn = &v
+	return s
+}
+
+func (s *ListTablesRequest) SetTablePattern(v string) *ListTablesRequest {
+	s.TablePattern = &v
+	return s
+}
+
+type ListTablesResponseBody struct {
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// caeba0bbb2be03f84eb48b699f0a4883
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// example:
+	//
+	// ABB39CC3-4488-4857-905D-2E4A051D0521
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// success
+	Status *string                       `json:"Status,omitempty" xml:"Status,omitempty"`
+	Tables *ListTablesResponseBodyTables `json:"Tables,omitempty" xml:"Tables,omitempty" type:"Struct"`
+}
+
+func (s ListTablesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTablesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListTablesResponseBody) SetMessage(v string) *ListTablesResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListTablesResponseBody) SetNextToken(v string) *ListTablesResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListTablesResponseBody) SetRequestId(v string) *ListTablesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListTablesResponseBody) SetStatus(v string) *ListTablesResponseBody {
+	s.Status = &v
+	return s
+}
+
+func (s *ListTablesResponseBody) SetTables(v *ListTablesResponseBodyTables) *ListTablesResponseBody {
+	s.Tables = v
+	return s
+}
+
+type ListTablesResponseBodyTables struct {
+	Tables []*string `json:"Tables,omitempty" xml:"Tables,omitempty" type:"Repeated"`
+}
+
+func (s ListTablesResponseBodyTables) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTablesResponseBodyTables) GoString() string {
+	return s.String()
+}
+
+func (s *ListTablesResponseBodyTables) SetTables(v []*string) *ListTablesResponseBodyTables {
+	s.Tables = v
+	return s
+}
+
+type ListTablesResponse struct {
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListTablesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListTablesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTablesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListTablesResponse) SetHeaders(v map[string]*string) *ListTablesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListTablesResponse) SetStatusCode(v int32) *ListTablesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListTablesResponse) SetBody(v *ListTablesResponseBody) *ListTablesResponse {
 	s.Body = v
 	return s
 }
@@ -41199,6 +43041,94 @@ func (client *Client) CreateSampleData(request *CreateSampleDataRequest) (_resul
 
 // Summary:
 //
+// 创建实例的用户凭证
+//
+// @param request - CreateSecretRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateSecretResponse
+func (client *Client) CreateSecretWithOptions(request *CreateSecretRequest, runtime *util.RuntimeOptions) (_result *CreateSecretResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Password)) {
+		query["Password"] = request.Password
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecretName)) {
+		query["SecretName"] = request.SecretName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TestConnection)) {
+		query["TestConnection"] = request.TestConnection
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Username)) {
+		query["Username"] = request.Username
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateSecret"),
+		Version:     tea.String("2016-05-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateSecretResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建实例的用户凭证
+//
+// @param request - CreateSecretRequest
+//
+// @return CreateSecretResponse
+func (client *Client) CreateSecret(request *CreateSecretRequest) (_result *CreateSecretResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateSecretResponse{}
+	_body, _err := client.CreateSecretWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Creates a service-linked role.
 //
 // @param request - CreateServiceLinkedRoleRequest
@@ -42612,6 +44542,82 @@ func (client *Client) DeleteNamespace(request *DeleteNamespaceRequest) (_result 
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteNamespaceResponse{}
 	_body, _err := client.DeleteNamespaceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除实例的用户凭证
+//
+// @param request - DeleteSecretRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteSecretResponse
+func (client *Client) DeleteSecretWithOptions(request *DeleteSecretRequest, runtime *util.RuntimeOptions) (_result *DeleteSecretResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecretArn)) {
+		query["SecretArn"] = request.SecretArn
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecretName)) {
+		query["SecretName"] = request.SecretName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteSecret"),
+		Version:     tea.String("2016-05-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteSecretResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除实例的用户凭证
+//
+// @param request - DeleteSecretRequest
+//
+// @return DeleteSecretResponse
+func (client *Client) DeleteSecret(request *DeleteSecretRequest) (_result *DeleteSecretResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteSecretResponse{}
+	_body, _err := client.DeleteSecretWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -47611,6 +49617,90 @@ func (client *Client) DescribeSupportFeatures(request *DescribeSupportFeaturesRe
 
 // Summary:
 //
+// 查看所有的schema
+//
+// @param request - DescribeTableRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeTableResponse
+func (client *Client) DescribeTableWithOptions(request *DescribeTableRequest, runtime *util.RuntimeOptions) (_result *DescribeTableResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Database)) {
+		query["Database"] = request.Database
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Schema)) {
+		query["Schema"] = request.Schema
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecretArn)) {
+		query["SecretArn"] = request.SecretArn
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Table)) {
+		query["Table"] = request.Table
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeTable"),
+		Version:     tea.String("2016-05-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeTableResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查看所有的schema
+//
+// @param request - DescribeTableRequest
+//
+// @return DescribeTableResponse
+func (client *Client) DescribeTable(request *DescribeTableRequest) (_result *DescribeTableResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeTableResponse{}
+	_body, _err := client.DescribeTableWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries a list of tags for AnalyticDB for PostgreSQL instances.
 //
 // @param request - DescribeTagsRequest
@@ -48347,6 +50437,190 @@ func (client *Client) EnableDBResourceGroup(request *EnableDBResourceGroupReques
 
 // Summary:
 //
+// 运行SQL语句
+//
+// @param tmpReq - ExecuteStatementRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ExecuteStatementResponse
+func (client *Client) ExecuteStatementWithOptions(tmpReq *ExecuteStatementRequest, runtime *util.RuntimeOptions) (_result *ExecuteStatementResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &ExecuteStatementShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Parameters)) {
+		request.ParametersShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Parameters, tea.String("Parameters"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.Sqls)) {
+		request.SqlsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Sqls, tea.String("Sqls"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Database)) {
+		query["Database"] = request.Database
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RunType)) {
+		query["RunType"] = request.RunType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecretArn)) {
+		query["SecretArn"] = request.SecretArn
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StatementName)) {
+		query["StatementName"] = request.StatementName
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ParametersShrink)) {
+		body["Parameters"] = request.ParametersShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Sql)) {
+		body["Sql"] = request.Sql
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SqlsShrink)) {
+		body["Sqls"] = request.SqlsShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ExecuteStatement"),
+		Version:     tea.String("2016-05-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ExecuteStatementResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 运行SQL语句
+//
+// @param request - ExecuteStatementRequest
+//
+// @return ExecuteStatementResponse
+func (client *Client) ExecuteStatement(request *ExecuteStatementRequest) (_result *ExecuteStatementResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ExecuteStatementResponse{}
+	_body, _err := client.ExecuteStatementWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查看实例的用户凭证里数据
+//
+// @param request - GetSecretValueRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetSecretValueResponse
+func (client *Client) GetSecretValueWithOptions(request *GetSecretValueRequest, runtime *util.RuntimeOptions) (_result *GetSecretValueResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecretArn)) {
+		query["SecretArn"] = request.SecretArn
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecretName)) {
+		query["SecretName"] = request.SecretName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetSecretValue"),
+		Version:     tea.String("2016-05-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetSecretValueResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查看实例的用户凭证里数据
+//
+// @param request - GetSecretValueRequest
+//
+// @return GetSecretValueResponse
+func (client *Client) GetSecretValue(request *GetSecretValueRequest) (_result *GetSecretValueResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetSecretValueResponse{}
+	_body, _err := client.GetSecretValueWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the progress and result of an asynchronous document upload job based on the job ID.
 //
 // Description:
@@ -48859,6 +51133,90 @@ func (client *Client) ListCollections(request *ListCollectionsRequest) (_result 
 
 // Summary:
 //
+// 查看所有库
+//
+// @param request - ListDatabasesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListDatabasesResponse
+func (client *Client) ListDatabasesWithOptions(request *ListDatabasesRequest, runtime *util.RuntimeOptions) (_result *ListDatabasesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Database)) {
+		query["Database"] = request.Database
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecretArn)) {
+		query["SecretArn"] = request.SecretArn
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListDatabases"),
+		Version:     tea.String("2016-05-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListDatabasesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查看所有库
+//
+// @param request - ListDatabasesRequest
+//
+// @return ListDatabasesResponse
+func (client *Client) ListDatabases(request *ListDatabasesRequest) (_result *ListDatabasesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListDatabasesResponse{}
+	_body, _err := client.ListDatabasesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries a list of document collections.
 //
 // @param request - ListDocumentCollectionsRequest
@@ -49323,6 +51681,162 @@ func (client *Client) ListNamespaces(request *ListNamespacesRequest) (_result *L
 
 // Summary:
 //
+// 查看所有的schema
+//
+// @param request - ListSchemasRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListSchemasResponse
+func (client *Client) ListSchemasWithOptions(request *ListSchemasRequest, runtime *util.RuntimeOptions) (_result *ListSchemasResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Database)) {
+		query["Database"] = request.Database
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SchemaPattern)) {
+		query["SchemaPattern"] = request.SchemaPattern
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecretArn)) {
+		query["SecretArn"] = request.SecretArn
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListSchemas"),
+		Version:     tea.String("2016-05-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListSchemasResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查看所有的schema
+//
+// @param request - ListSchemasRequest
+//
+// @return ListSchemasResponse
+func (client *Client) ListSchemas(request *ListSchemasRequest) (_result *ListSchemasResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListSchemasResponse{}
+	_body, _err := client.ListSchemasWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询实例的用户凭证列表
+//
+// @param request - ListSecretsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListSecretsResponse
+func (client *Client) ListSecretsWithOptions(request *ListSecretsRequest, runtime *util.RuntimeOptions) (_result *ListSecretsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListSecrets"),
+		Version:     tea.String("2016-05-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListSecretsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询实例的用户凭证列表
+//
+// @param request - ListSecretsRequest
+//
+// @return ListSecretsResponse
+func (client *Client) ListSecrets(request *ListSecretsRequest) (_result *ListSecretsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListSecretsResponse{}
+	_body, _err := client.ListSecretsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the information about real-time data services.
 //
 // @param request - ListStreamingDataServicesRequest
@@ -49530,6 +52044,98 @@ func (client *Client) ListStreamingJobs(request *ListStreamingJobsRequest) (_res
 	runtime := &util.RuntimeOptions{}
 	_result = &ListStreamingJobsResponse{}
 	_body, _err := client.ListStreamingJobsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查看所有表
+//
+// @param request - ListTablesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListTablesResponse
+func (client *Client) ListTablesWithOptions(request *ListTablesRequest, runtime *util.RuntimeOptions) (_result *ListTablesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Database)) {
+		query["Database"] = request.Database
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Schema)) {
+		query["Schema"] = request.Schema
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecretArn)) {
+		query["SecretArn"] = request.SecretArn
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TablePattern)) {
+		query["TablePattern"] = request.TablePattern
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListTables"),
+		Version:     tea.String("2016-05-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListTablesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查看所有表
+//
+// @param request - ListTablesRequest
+//
+// @return ListTablesResponse
+func (client *Client) ListTables(request *ListTablesRequest) (_result *ListTablesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListTablesResponse{}
+	_body, _err := client.ListTablesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
