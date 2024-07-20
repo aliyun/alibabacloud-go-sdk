@@ -1,3 +1,7 @@
+2024-07-20 Version: v1.4.0
+- Support API DeleteFile.
+
+
 2024-07-16 Version: v1.3.0
 - Support API DeleteIndex.
 - Support API DeleteIndexDocument.

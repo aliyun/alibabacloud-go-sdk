@@ -833,6 +833,119 @@ func (s *CreateIndexResponse) SetBody(v *CreateIndexResponseBody) *CreateIndexRe
 	return s
 }
 
+type DeleteFileResponseBody struct {
+	// example:
+	//
+	// InvalidParameter
+	Code *string                     `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *DeleteFileResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// Current file status does not support delete.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 17204B98-xxxx-4F9A-8464-2446A84821CA
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 200
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DeleteFileResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteFileResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteFileResponseBody) SetCode(v string) *DeleteFileResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DeleteFileResponseBody) SetData(v *DeleteFileResponseBodyData) *DeleteFileResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DeleteFileResponseBody) SetMessage(v string) *DeleteFileResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DeleteFileResponseBody) SetRequestId(v string) *DeleteFileResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteFileResponseBody) SetStatus(v string) *DeleteFileResponseBody {
+	s.Status = &v
+	return s
+}
+
+func (s *DeleteFileResponseBody) SetSuccess(v bool) *DeleteFileResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DeleteFileResponseBodyData struct {
+	// example:
+	//
+	// file_9a65732555b54d5ea10796ca5742ba22_XXXXXXXX
+	FileId *string `json:"FileId,omitempty" xml:"FileId,omitempty"`
+}
+
+func (s DeleteFileResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteFileResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteFileResponseBodyData) SetFileId(v string) *DeleteFileResponseBodyData {
+	s.FileId = &v
+	return s
+}
+
+type DeleteFileResponse struct {
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteFileResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteFileResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteFileResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteFileResponse) SetHeaders(v map[string]*string) *DeleteFileResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteFileResponse) SetStatusCode(v int32) *DeleteFileResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteFileResponse) SetBody(v *DeleteFileResponseBody) *DeleteFileResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteIndexRequest struct {
 	// This parameter is required.
 	//
@@ -3355,6 +3468,56 @@ func (client *Client) CreateIndex(WorkspaceId *string, request *CreateIndexReque
 	headers := make(map[string]*string)
 	_result = &CreateIndexResponse{}
 	_body, _err := client.CreateIndexWithOptions(WorkspaceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除文档
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteFileResponse
+func (client *Client) DeleteFileWithOptions(FileId *string, WorkspaceId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteFileResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteFile"),
+		Version:     tea.String("2023-12-29"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/" + tea.StringValue(openapiutil.GetEncodeParam(WorkspaceId)) + "/datacenter/file/" + tea.StringValue(openapiutil.GetEncodeParam(FileId)) + "/"),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteFileResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除文档
+//
+// @return DeleteFileResponse
+func (client *Client) DeleteFile(FileId *string, WorkspaceId *string) (_result *DeleteFileResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteFileResponse{}
+	_body, _err := client.DeleteFileWithOptions(FileId, WorkspaceId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
