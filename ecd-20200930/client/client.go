@@ -33674,6 +33674,202 @@ func (s *DissociateNetworkPackageResponse) SetBody(v *DissociateNetworkPackageRe
 	return s
 }
 
+type DownloadCdsFileRequest struct {
+	// example:
+	//
+	// cn-hangzhou+cds-643267****
+	CdsId *string `json:"CdsId,omitempty" xml:"CdsId,omitempty"`
+	// example:
+	//
+	// user****
+	EndUserId *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
+	// example:
+	//
+	// 63f3257b68b018170b194d87b875512d108f****
+	FileId *string `json:"FileId,omitempty" xml:"FileId,omitempty"`
+	// example:
+	//
+	// cg-i1ruuudp92qpj****
+	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s DownloadCdsFileRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DownloadCdsFileRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DownloadCdsFileRequest) SetCdsId(v string) *DownloadCdsFileRequest {
+	s.CdsId = &v
+	return s
+}
+
+func (s *DownloadCdsFileRequest) SetEndUserId(v string) *DownloadCdsFileRequest {
+	s.EndUserId = &v
+	return s
+}
+
+func (s *DownloadCdsFileRequest) SetFileId(v string) *DownloadCdsFileRequest {
+	s.FileId = &v
+	return s
+}
+
+func (s *DownloadCdsFileRequest) SetGroupId(v string) *DownloadCdsFileRequest {
+	s.GroupId = &v
+	return s
+}
+
+func (s *DownloadCdsFileRequest) SetRegionId(v string) *DownloadCdsFileRequest {
+	s.RegionId = &v
+	return s
+}
+
+type DownloadCdsFileResponseBody struct {
+	DownloadFileModel *DownloadCdsFileResponseBodyDownloadFileModel `json:"DownloadFileModel,omitempty" xml:"DownloadFileModel,omitempty" type:"Struct"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// E3ED9519-DD73-5C86-9C0A-43C9281C****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DownloadCdsFileResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DownloadCdsFileResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DownloadCdsFileResponseBody) SetDownloadFileModel(v *DownloadCdsFileResponseBodyDownloadFileModel) *DownloadCdsFileResponseBody {
+	s.DownloadFileModel = v
+	return s
+}
+
+func (s *DownloadCdsFileResponseBody) SetMessage(v string) *DownloadCdsFileResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DownloadCdsFileResponseBody) SetRequestId(v string) *DownloadCdsFileResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DownloadCdsFileResponseBody) SetSuccess(v bool) *DownloadCdsFileResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DownloadCdsFileResponseBodyDownloadFileModel struct {
+	DownloadType *string `json:"DownloadType,omitempty" xml:"DownloadType,omitempty"`
+	// example:
+	//
+	// https://pds-XXXX-bj-1693807057.oss-cn-beijing.aliyuncs.com/A0SKfLOp%2F2%2F6662612e0570fb2bdd5549759716d433439f0572%2F6662612ee3804e4901794928b14f9a7477640ee7?di=XXXX&dr=1030&f=667d5a322ebf7409e91c485d808fb3bd8a73efbb&response-content-disposition=attachment%3B%20
+	DownloadUrl      *string `json:"DownloadUrl,omitempty" xml:"DownloadUrl,omitempty"`
+	ExpirationSecond *string `json:"ExpirationSecond,omitempty" xml:"ExpirationSecond,omitempty"`
+	// example:
+	//
+	// 2024-07-18T02:55:49.795Z
+	ExpirationTime *string `json:"ExpirationTime,omitempty" xml:"ExpirationTime,omitempty"`
+	// example:
+	//
+	// 667d5a322ebf7409e91c485d808fb3bd8a73efbb
+	FileId *string `json:"FileId,omitempty" xml:"FileId,omitempty"`
+	// example:
+	//
+	// 1594642
+	Size      *int64  `json:"Size,omitempty" xml:"Size,omitempty"`
+	StreamUrl *string `json:"StreamUrl,omitempty" xml:"StreamUrl,omitempty"`
+}
+
+func (s DownloadCdsFileResponseBodyDownloadFileModel) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DownloadCdsFileResponseBodyDownloadFileModel) GoString() string {
+	return s.String()
+}
+
+func (s *DownloadCdsFileResponseBodyDownloadFileModel) SetDownloadType(v string) *DownloadCdsFileResponseBodyDownloadFileModel {
+	s.DownloadType = &v
+	return s
+}
+
+func (s *DownloadCdsFileResponseBodyDownloadFileModel) SetDownloadUrl(v string) *DownloadCdsFileResponseBodyDownloadFileModel {
+	s.DownloadUrl = &v
+	return s
+}
+
+func (s *DownloadCdsFileResponseBodyDownloadFileModel) SetExpirationSecond(v string) *DownloadCdsFileResponseBodyDownloadFileModel {
+	s.ExpirationSecond = &v
+	return s
+}
+
+func (s *DownloadCdsFileResponseBodyDownloadFileModel) SetExpirationTime(v string) *DownloadCdsFileResponseBodyDownloadFileModel {
+	s.ExpirationTime = &v
+	return s
+}
+
+func (s *DownloadCdsFileResponseBodyDownloadFileModel) SetFileId(v string) *DownloadCdsFileResponseBodyDownloadFileModel {
+	s.FileId = &v
+	return s
+}
+
+func (s *DownloadCdsFileResponseBodyDownloadFileModel) SetSize(v int64) *DownloadCdsFileResponseBodyDownloadFileModel {
+	s.Size = &v
+	return s
+}
+
+func (s *DownloadCdsFileResponseBodyDownloadFileModel) SetStreamUrl(v string) *DownloadCdsFileResponseBodyDownloadFileModel {
+	s.StreamUrl = &v
+	return s
+}
+
+type DownloadCdsFileResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DownloadCdsFileResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DownloadCdsFileResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DownloadCdsFileResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DownloadCdsFileResponse) SetHeaders(v map[string]*string) *DownloadCdsFileResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DownloadCdsFileResponse) SetStatusCode(v int32) *DownloadCdsFileResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DownloadCdsFileResponse) SetBody(v *DownloadCdsFileResponseBody) *DownloadCdsFileResponse {
+	s.Body = v
+	return s
+}
+
 type ExportClientEventsRequest struct {
 	// The ID of the cloud desktop.
 	//
@@ -61258,6 +61454,82 @@ func (client *Client) DissociateNetworkPackage(request *DissociateNetworkPackage
 	runtime := &util.RuntimeOptions{}
 	_result = &DissociateNetworkPackageResponse{}
 	_body, _err := client.DissociateNetworkPackageWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// CDS文件下载
+//
+// @param request - DownloadCdsFileRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DownloadCdsFileResponse
+func (client *Client) DownloadCdsFileWithOptions(request *DownloadCdsFileRequest, runtime *util.RuntimeOptions) (_result *DownloadCdsFileResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CdsId)) {
+		query["CdsId"] = request.CdsId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndUserId)) {
+		query["EndUserId"] = request.EndUserId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FileId)) {
+		query["FileId"] = request.FileId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
+		query["GroupId"] = request.GroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DownloadCdsFile"),
+		Version:     tea.String("2020-09-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DownloadCdsFileResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// CDS文件下载
+//
+// @param request - DownloadCdsFileRequest
+//
+// @return DownloadCdsFileResponse
+func (client *Client) DownloadCdsFile(request *DownloadCdsFileRequest) (_result *DownloadCdsFileResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DownloadCdsFileResponse{}
+	_body, _err := client.DownloadCdsFileWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
