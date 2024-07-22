@@ -1,7 +1,4 @@
 // This file is auto-generated, don't edit it. Thanks.
-/**
- *
- */
 package client
 
 import (
@@ -13,8 +10,16 @@ import (
 )
 
 type AssociateChatbotInstanceRequest struct {
-	ChatbotInstanceId    *string `json:"ChatbotInstanceId,omitempty" xml:"ChatbotInstanceId,omitempty"`
-	ChatbotName          *string `json:"ChatbotName,omitempty" xml:"ChatbotName,omitempty"`
+	// example:
+	//
+	// chatbot-720edd02b66a
+	ChatbotInstanceId *string `json:"ChatbotInstanceId,omitempty" xml:"ChatbotInstanceId,omitempty"`
+	ChatbotName       *string `json:"ChatbotName,omitempty" xml:"ChatbotName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// af81a389-91f0-4157-8d82-720edd02b66a
 	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	NluServiceParamsJson *string `json:"NluServiceParamsJson,omitempty" xml:"NluServiceParamsJson,omitempty"`
 	NluServiceType       *string `json:"NluServiceType,omitempty" xml:"NluServiceType,omitempty"`
@@ -60,6 +65,9 @@ func (s *AssociateChatbotInstanceRequest) SetUnionSource(v string) *AssociateCha
 }
 
 type AssociateChatbotInstanceResponseBody struct {
+	// example:
+	//
+	// 254EB995-DEDF-48A4-9101-9CA5B72FFBCC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -106,16 +114,37 @@ func (s *AssociateChatbotInstanceResponse) SetBody(v *AssociateChatbotInstanceRe
 }
 
 type AuditTTSVoiceRequest struct {
-	AccessKey  *string `json:"AccessKey,omitempty" xml:"AccessKey,omitempty"`
-	AppKey     *string `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
-	Engine     *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	AccessKey *string `json:"AccessKey,omitempty" xml:"AccessKey,omitempty"`
+	AppKey    *string `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
+	Engine    *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// af81a389-91f0-4157-8d82-720edd02b66a
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	PitchRate  *string `json:"PitchRate,omitempty" xml:"PitchRate,omitempty"`
 	SecretKey  *string `json:"SecretKey,omitempty" xml:"SecretKey,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 100
 	SpeechRate *string `json:"SpeechRate,omitempty" xml:"SpeechRate,omitempty"`
-	Text       *string `json:"Text,omitempty" xml:"Text,omitempty"`
-	Voice      *string `json:"Voice,omitempty" xml:"Voice,omitempty"`
-	Volume     *string `json:"Volume,omitempty" xml:"Volume,omitempty"`
+	// This parameter is required.
+	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// aixia
+	Voice *string `json:"Voice,omitempty" xml:"Voice,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10
+	Volume *string `json:"Volume,omitempty" xml:"Volume,omitempty"`
 }
 
 func (s AuditTTSVoiceRequest) String() string {
@@ -177,8 +206,14 @@ func (s *AuditTTSVoiceRequest) SetVolume(v string) *AuditTTSVoiceRequest {
 }
 
 type AuditTTSVoiceResponseBody struct {
+	// example:
+	//
+	// http://voicenavigator-cn-shanghai.oss-cn-shanghai.aliyuncs.com/exported_files/2020-02-20/ttsConfig-1582188148528-abd8e407de0a49b381bb591bd91fc073.wav?Expires=1582188208&OSSAccessKeyId=LTAIppQY5rofntVJ&Signature=FaBassElzqGEB0H2TvTKPJsOJHs%3D
 	AuditionUrl *string `json:"AuditionUrl,omitempty" xml:"AuditionUrl,omitempty"`
-	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 254EB995-DEDF-48A4-9101-9CA5B72FFBCC
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s AuditTTSVoiceResponseBody) String() string {
@@ -229,12 +264,36 @@ func (s *AuditTTSVoiceResponse) SetBody(v *AuditTTSVoiceResponseBody) *AuditTTSV
 }
 
 type BeginDialogueRequest struct {
-	CalledNumber    *string `json:"CalledNumber,omitempty" xml:"CalledNumber,omitempty"`
-	CallingNumber   *string `json:"CallingNumber,omitempty" xml:"CallingNumber,omitempty"`
-	ConversationId  *string `json:"ConversationId,omitempty" xml:"ConversationId,omitempty"`
-	InitialContext  *string `json:"InitialContext,omitempty" xml:"InitialContext,omitempty"`
-	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	InstanceOwnerId *int64  `json:"InstanceOwnerId,omitempty" xml:"InstanceOwnerId,omitempty"`
+	// example:
+	//
+	// 10086
+	CalledNumber *string `json:"CalledNumber,omitempty" xml:"CalledNumber,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1358158****
+	CallingNumber *string `json:"CallingNumber,omitempty" xml:"CallingNumber,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// c28fc549-d88f-4f6e-85ad-a0806e5e39c0
+	ConversationId *string `json:"ConversationId,omitempty" xml:"ConversationId,omitempty"`
+	// example:
+	//
+	// {\\"channelId\\":\\"fe2559d3-5fc9-4fa5-8314-32b9f762791d\\"}
+	InitialContext *string `json:"InitialContext,omitempty" xml:"InitialContext,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 4d7db6670b8e41b5adb1f21560ea9272
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// 1231639035307976
+	InstanceOwnerId *int64 `json:"InstanceOwnerId,omitempty" xml:"InstanceOwnerId,omitempty"`
 }
 
 func (s BeginDialogueRequest) String() string {
@@ -276,11 +335,23 @@ func (s *BeginDialogueRequest) SetInstanceOwnerId(v int64) *BeginDialogueRequest
 }
 
 type BeginDialogueResponseBody struct {
-	Action        *string `json:"Action,omitempty" xml:"Action,omitempty"`
-	ActionParams  *string `json:"ActionParams,omitempty" xml:"ActionParams,omitempty"`
-	Interruptible *bool   `json:"Interruptible,omitempty" xml:"Interruptible,omitempty"`
-	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TextResponse  *string `json:"TextResponse,omitempty" xml:"TextResponse,omitempty"`
+	// example:
+	//
+	// Broadcast
+	Action *string `json:"Action,omitempty" xml:"Action,omitempty"`
+	// example:
+	//
+	// {\\"duration\\":31340,\\"endTime\\":1638243934786,\\"hangUpDirection\\":\\"ivr\\",\\"startTime\\":1638243903446}
+	ActionParams *string `json:"ActionParams,omitempty" xml:"ActionParams,omitempty"`
+	// example:
+	//
+	// true
+	Interruptible *bool `json:"Interruptible,omitempty" xml:"Interruptible,omitempty"`
+	// example:
+	//
+	// 14C39896-AE6D-4643-9C9A-E0566B2C2DDD
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TextResponse *string `json:"TextResponse,omitempty" xml:"TextResponse,omitempty"`
 }
 
 func (s BeginDialogueResponseBody) String() string {
@@ -347,10 +418,26 @@ func (s *BeginDialogueResponse) SetBody(v *BeginDialogueResponseBody) *BeginDial
 
 type CollectedNumberRequest struct {
 	AdditionalContext *string `json:"AdditionalContext,omitempty" xml:"AdditionalContext,omitempty"`
-	ConversationId    *string `json:"ConversationId,omitempty" xml:"ConversationId,omitempty"`
-	InstanceId        *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	InstanceOwnerId   *int64  `json:"InstanceOwnerId,omitempty" xml:"InstanceOwnerId,omitempty"`
-	Number            *string `json:"Number,omitempty" xml:"Number,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0099b75d-60fd-4c63-8541-7fbba0ae6bb0
+	ConversationId *string `json:"ConversationId,omitempty" xml:"ConversationId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0099b75d-60fd-4c63-8541-7fbba0ae6bb0
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// 1426738157626835
+	InstanceOwnerId *int64 `json:"InstanceOwnerId,omitempty" xml:"InstanceOwnerId,omitempty"`
+	// example:
+	//
+	// 1500060224
+	Number *string `json:"Number,omitempty" xml:"Number,omitempty"`
 }
 
 func (s CollectedNumberRequest) String() string {
@@ -387,11 +474,23 @@ func (s *CollectedNumberRequest) SetNumber(v string) *CollectedNumberRequest {
 }
 
 type CollectedNumberResponseBody struct {
-	Action        *string `json:"Action,omitempty" xml:"Action,omitempty"`
-	ActionParams  *string `json:"ActionParams,omitempty" xml:"ActionParams,omitempty"`
-	Interruptible *bool   `json:"Interruptible,omitempty" xml:"Interruptible,omitempty"`
-	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TextResponse  *string `json:"TextResponse,omitempty" xml:"TextResponse,omitempty"`
+	// example:
+	//
+	// Broadcast
+	Action *string `json:"Action,omitempty" xml:"Action,omitempty"`
+	// example:
+	//
+	// {\\"duration\\":31340,\\"endTime\\":1638243934786,\\"hangUpDirection\\":\\"ivr\\",\\"startTime\\":1638243903446}
+	ActionParams *string `json:"ActionParams,omitempty" xml:"ActionParams,omitempty"`
+	// example:
+	//
+	// false
+	Interruptible *bool `json:"Interruptible,omitempty" xml:"Interruptible,omitempty"`
+	// example:
+	//
+	// da37319b-6c83-4268-9f19-814aed62e401
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TextResponse *string `json:"TextResponse,omitempty" xml:"TextResponse,omitempty"`
 }
 
 func (s CollectedNumberResponseBody) String() string {
@@ -457,8 +556,18 @@ func (s *CollectedNumberResponse) SetBody(v *CollectedNumberResponseBody) *Colle
 }
 
 type CreateDownloadUrlRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 073f092da0a847b9bf76eb88b5931c7a
 	DownloadTaskId *string `json:"DownloadTaskId,omitempty" xml:"DownloadTaskId,omitempty"`
-	FileId         *string `json:"FileId,omitempty" xml:"FileId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 22626c39603744f5a08d4d715315561a
+	FileId *string `json:"FileId,omitempty" xml:"FileId,omitempty"`
 }
 
 func (s CreateDownloadUrlRequest) String() string {
@@ -480,12 +589,30 @@ func (s *CreateDownloadUrlRequest) SetFileId(v string) *CreateDownloadUrlRequest
 }
 
 type CreateDownloadUrlResponseBody struct {
-	Code           *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	FileHttpUrl    *string `json:"FileHttpUrl,omitempty" xml:"FileHttpUrl,omitempty"`
-	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success        *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// http://ssml-test.oss-cn-shanghai.aliyuncs.com/key
+	FileHttpUrl *string `json:"FileHttpUrl,omitempty" xml:"FileHttpUrl,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// get upload tool url success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 7401D698-0AAC-5909-B68E-88C68805FFB8
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// True
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s CreateDownloadUrlResponseBody) String() string {
@@ -556,8 +683,14 @@ func (s *CreateDownloadUrlResponse) SetBody(v *CreateDownloadUrlResponseBody) *C
 }
 
 type CreateInstanceRequest struct {
-	Concurrency          *int64  `json:"Concurrency,omitempty" xml:"Concurrency,omitempty"`
-	Description          *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10
+	Concurrency *int64  `json:"Concurrency,omitempty" xml:"Concurrency,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// This parameter is required.
 	Name                 *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	NluServiceParamsJson *string `json:"NluServiceParamsJson,omitempty" xml:"NluServiceParamsJson,omitempty"`
 	UnionInstanceId      *string `json:"UnionInstanceId,omitempty" xml:"UnionInstanceId,omitempty"`
@@ -603,8 +736,14 @@ func (s *CreateInstanceRequest) SetUnionSource(v string) *CreateInstanceRequest 
 }
 
 type CreateInstanceResponseBody struct {
+	// example:
+	//
+	// c28fc549-d88f-4f6e-85ad-a0806e5e39c0
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 9ab43460-c0b9-40e2-8447-48d82c97fc67
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateInstanceResponseBody) String() string {
@@ -655,11 +794,32 @@ func (s *CreateInstanceResponse) SetBody(v *CreateInstanceResponseBody) *CreateI
 }
 
 type DebugBeginDialogueRequest struct {
-	CalledNumber   *string `json:"CalledNumber,omitempty" xml:"CalledNumber,omitempty"`
-	CallingNumber  *string `json:"CallingNumber,omitempty" xml:"CallingNumber,omitempty"`
+	// example:
+	//
+	// 10086
+	CalledNumber *string `json:"CalledNumber,omitempty" xml:"CalledNumber,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 135815*****
+	CallingNumber *string `json:"CallingNumber,omitempty" xml:"CallingNumber,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 8a503680-815d-473e-a9b0-e010f47a64d2
 	ConversationId *string `json:"ConversationId,omitempty" xml:"ConversationId,omitempty"`
+	// example:
+	//
+	// {}
 	InitialContext *string `json:"InitialContext,omitempty" xml:"InitialContext,omitempty"`
-	InstanceId     *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 8a503680-815d-473e-a9b0-e010f47a64d2
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
 func (s DebugBeginDialogueRequest) String() string {
@@ -696,11 +856,23 @@ func (s *DebugBeginDialogueRequest) SetInstanceId(v string) *DebugBeginDialogueR
 }
 
 type DebugBeginDialogueResponseBody struct {
-	Action        *string `json:"Action,omitempty" xml:"Action,omitempty"`
-	ActionParams  *string `json:"ActionParams,omitempty" xml:"ActionParams,omitempty"`
-	Interruptible *bool   `json:"Interruptible,omitempty" xml:"Interruptible,omitempty"`
-	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TextResponse  *string `json:"TextResponse,omitempty" xml:"TextResponse,omitempty"`
+	// example:
+	//
+	// Broadcast
+	Action *string `json:"Action,omitempty" xml:"Action,omitempty"`
+	// example:
+	//
+	// {}
+	ActionParams *string `json:"ActionParams,omitempty" xml:"ActionParams,omitempty"`
+	// example:
+	//
+	// true
+	Interruptible *bool `json:"Interruptible,omitempty" xml:"Interruptible,omitempty"`
+	// example:
+	//
+	// 14C39896-AE6D-4643-9C9A-E0566B2C2DDD
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TextResponse *string `json:"TextResponse,omitempty" xml:"TextResponse,omitempty"`
 }
 
 func (s DebugBeginDialogueResponseBody) String() string {
@@ -766,9 +938,22 @@ func (s *DebugBeginDialogueResponse) SetBody(v *DebugBeginDialogueResponseBody) 
 }
 
 type DebugCollectedNumberRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 7cefbff0-8d50-4d6f-b93c-73cee23c1555
 	ConversationId *string `json:"ConversationId,omitempty" xml:"ConversationId,omitempty"`
-	InstanceId     *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Number         *string `json:"Number,omitempty" xml:"Number,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 7cefbff0-8d50-4d6f-b93c-73cee23c1555
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// 123
+	Number *string `json:"Number,omitempty" xml:"Number,omitempty"`
 }
 
 func (s DebugCollectedNumberRequest) String() string {
@@ -795,11 +980,23 @@ func (s *DebugCollectedNumberRequest) SetNumber(v string) *DebugCollectedNumberR
 }
 
 type DebugCollectedNumberResponseBody struct {
-	Action        *string `json:"Action,omitempty" xml:"Action,omitempty"`
-	ActionParams  *string `json:"ActionParams,omitempty" xml:"ActionParams,omitempty"`
-	Interruptible *bool   `json:"Interruptible,omitempty" xml:"Interruptible,omitempty"`
-	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TextResponse  *string `json:"TextResponse,omitempty" xml:"TextResponse,omitempty"`
+	// example:
+	//
+	// Broadcast
+	Action *string `json:"Action,omitempty" xml:"Action,omitempty"`
+	// example:
+	//
+	// {}
+	ActionParams *string `json:"ActionParams,omitempty" xml:"ActionParams,omitempty"`
+	// example:
+	//
+	// true
+	Interruptible *bool `json:"Interruptible,omitempty" xml:"Interruptible,omitempty"`
+	// example:
+	//
+	// abb4aa26-3a8e-43dd-82f8-0c3898c9c67f
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TextResponse *string `json:"TextResponse,omitempty" xml:"TextResponse,omitempty"`
 }
 
 func (s DebugCollectedNumberResponseBody) String() string {
@@ -865,10 +1062,24 @@ func (s *DebugCollectedNumberResponse) SetBody(v *DebugCollectedNumberResponseBo
 }
 
 type DebugDialogueRequest struct {
+	// example:
+	//
+	// {}
 	AdditionalContext *string `json:"AdditionalContext,omitempty" xml:"AdditionalContext,omitempty"`
-	ConversationId    *string `json:"ConversationId,omitempty" xml:"ConversationId,omitempty"`
-	InstanceId        *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Utterance         *string `json:"Utterance,omitempty" xml:"Utterance,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 7cefbff0-8d50-4d6f-b93c-73cee23c1555
+	ConversationId *string `json:"ConversationId,omitempty" xml:"ConversationId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// abb4aa26-3a8e-43dd-82f8-0c3898c9c67f
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	Utterance *string `json:"Utterance,omitempty" xml:"Utterance,omitempty"`
 }
 
 func (s DebugDialogueRequest) String() string {
@@ -900,11 +1111,26 @@ func (s *DebugDialogueRequest) SetUtterance(v string) *DebugDialogueRequest {
 }
 
 type DebugDialogueResponseBody struct {
-	Action        *string `json:"Action,omitempty" xml:"Action,omitempty"`
-	ActionParams  *string `json:"ActionParams,omitempty" xml:"ActionParams,omitempty"`
-	Interruptible *bool   `json:"Interruptible,omitempty" xml:"Interruptible,omitempty"`
-	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TextResponse  *string `json:"TextResponse,omitempty" xml:"TextResponse,omitempty"`
+	// example:
+	//
+	// Broadcast
+	Action *string `json:"Action,omitempty" xml:"Action,omitempty"`
+	// example:
+	//
+	// {}
+	ActionParams *string `json:"ActionParams,omitempty" xml:"ActionParams,omitempty"`
+	// example:
+	//
+	// true
+	Interruptible *bool `json:"Interruptible,omitempty" xml:"Interruptible,omitempty"`
+	// example:
+	//
+	// d74d6290-7cbe-4436-b5d7-014ebb0f4060
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 80d11be3-faad-4101-b4b0-59dbea28aaf0
+	TextResponse *string `json:"TextResponse,omitempty" xml:"TextResponse,omitempty"`
 }
 
 func (s DebugDialogueResponseBody) String() string {
@@ -970,6 +1196,11 @@ func (s *DebugDialogueResponse) SetBody(v *DebugDialogueResponseBody) *DebugDial
 }
 
 type DeleteInstanceRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// d74d6290-7cbe-4436-b5d7-014ebb0f4060
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -987,6 +1218,9 @@ func (s *DeleteInstanceRequest) SetInstanceId(v string) *DeleteInstanceRequest {
 }
 
 type DeleteInstanceResponseBody struct {
+	// example:
+	//
+	// d74d6290-7cbe-4436-b5d7-014ebb0f4060
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1033,8 +1267,18 @@ func (s *DeleteInstanceResponse) SetBody(v *DeleteInstanceResponseBody) *DeleteI
 }
 
 type DescribeConversationRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 15608cce-36be-43d5-9361-178cbe64127b
 	ConversationId *string `json:"ConversationId,omitempty" xml:"ConversationId,omitempty"`
-	InstanceId     *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 5daac920-d6c1-429f-a95f-2a798f5255b5
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
 func (s DescribeConversationRequest) String() string {
@@ -1056,15 +1300,42 @@ func (s *DescribeConversationRequest) SetInstanceId(v string) *DescribeConversat
 }
 
 type DescribeConversationResponseBody struct {
-	BeginTime            *int64  `json:"BeginTime,omitempty" xml:"BeginTime,omitempty"`
-	CallingNumber        *string `json:"CallingNumber,omitempty" xml:"CallingNumber,omitempty"`
-	ConversationId       *string `json:"ConversationId,omitempty" xml:"ConversationId,omitempty"`
-	EffectiveAnswerCount *int32  `json:"EffectiveAnswerCount,omitempty" xml:"EffectiveAnswerCount,omitempty"`
-	EndTime              *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	RequestId            *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	SkillGroupId         *string `json:"SkillGroupId,omitempty" xml:"SkillGroupId,omitempty"`
-	TransferredToAgent   *bool   `json:"TransferredToAgent,omitempty" xml:"TransferredToAgent,omitempty"`
-	UserUtteranceCount   *int32  `json:"UserUtteranceCount,omitempty" xml:"UserUtteranceCount,omitempty"`
+	// example:
+	//
+	// 1582103260434
+	BeginTime *int64 `json:"BeginTime,omitempty" xml:"BeginTime,omitempty"`
+	// example:
+	//
+	// 138106*****
+	CallingNumber *string `json:"CallingNumber,omitempty" xml:"CallingNumber,omitempty"`
+	// example:
+	//
+	// 2d5aa451-661f-4f08-b0c4-28eec78decc4
+	ConversationId *string `json:"ConversationId,omitempty" xml:"ConversationId,omitempty"`
+	// example:
+	//
+	// 8
+	EffectiveAnswerCount *int32 `json:"EffectiveAnswerCount,omitempty" xml:"EffectiveAnswerCount,omitempty"`
+	// example:
+	//
+	// 1582103299434
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// example:
+	//
+	// 14C39896-AE6D-4643-9C9A-E0566B2C2DDD
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// ABABCBAC
+	SkillGroupId *string `json:"SkillGroupId,omitempty" xml:"SkillGroupId,omitempty"`
+	// example:
+	//
+	// true
+	TransferredToAgent *bool `json:"TransferredToAgent,omitempty" xml:"TransferredToAgent,omitempty"`
+	// example:
+	//
+	// 10
+	UserUtteranceCount *int32 `json:"UserUtteranceCount,omitempty" xml:"UserUtteranceCount,omitempty"`
 }
 
 func (s DescribeConversationResponseBody) String() string {
@@ -1150,8 +1421,18 @@ func (s *DescribeConversationResponse) SetBody(v *DescribeConversationResponseBo
 }
 
 type DescribeConversationContextRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 361c8a53-0e29-42f3-8aa7-c7752d010399
 	ConversationId *string `json:"ConversationId,omitempty" xml:"ConversationId,omitempty"`
-	InstanceId     *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 026ca0f4-483b-4252-ae1d-1f15f056f8b9
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
 func (s DescribeConversationContextRequest) String() string {
@@ -1173,8 +1454,14 @@ func (s *DescribeConversationContextRequest) SetInstanceId(v string) *DescribeCo
 }
 
 type DescribeConversationContextResponseBody struct {
+	// example:
+	//
+	// {         "CallingNumber": "135815***",         "AdditionalContext": "",         "ConversationId": "361c8a53-0e29-42f3-8aa7-c7752d010399"     }
 	ConversationContext *string `json:"ConversationContext,omitempty" xml:"ConversationContext,omitempty"`
-	RequestId           *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// b19af5ce5314ac08108d1b33fe20e15
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeConversationContextResponseBody) String() string {
@@ -1225,8 +1512,18 @@ func (s *DescribeConversationContextResponse) SetBody(v *DescribeConversationCon
 }
 
 type DescribeExportProgressRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0de8e5ccc2b645039ae6fbda443da73f
 	ExportTaskId *string `json:"ExportTaskId,omitempty" xml:"ExportTaskId,omitempty"`
-	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 868eef14-7515-4856-8a50-5c9a22abdbcc
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
 func (s DescribeExportProgressRequest) String() string {
@@ -1248,9 +1545,18 @@ func (s *DescribeExportProgressRequest) SetInstanceId(v string) *DescribeExportP
 }
 
 type DescribeExportProgressResponseBody struct {
+	// example:
+	//
+	// http://ssml-test.oss-cn-shanghai.aliyuncs.com/key
 	FileHttpUrl *string `json:"FileHttpUrl,omitempty" xml:"FileHttpUrl,omitempty"`
-	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Status      *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// b19af5ce5314ac08108d1b33fe20e15
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// FINISHED
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DescribeExportProgressResponseBody) String() string {
@@ -1306,6 +1612,11 @@ func (s *DescribeExportProgressResponse) SetBody(v *DescribeExportProgressRespon
 }
 
 type DescribeInstanceRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ecbfa5e3-1838-4e8a-aa08-fa8b713b82df
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -1325,17 +1636,32 @@ func (s *DescribeInstanceRequest) SetInstanceId(v string) *DescribeInstanceReque
 type DescribeInstanceResponseBody struct {
 	AbilityType          *string   `json:"AbilityType,omitempty" xml:"AbilityType,omitempty"`
 	ApplicableOperations []*string `json:"ApplicableOperations,omitempty" xml:"ApplicableOperations,omitempty" type:"Repeated"`
-	Concurrency          *int64    `json:"Concurrency,omitempty" xml:"Concurrency,omitempty"`
-	Description          *string   `json:"Description,omitempty" xml:"Description,omitempty"`
-	InstanceId           *string   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	ModifyTime           *int64    `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
-	ModifyUserName       *string   `json:"ModifyUserName,omitempty" xml:"ModifyUserName,omitempty"`
-	Name                 *string   `json:"Name,omitempty" xml:"Name,omitempty"`
-	NluServiceParamsJson *string   `json:"NluServiceParamsJson,omitempty" xml:"NluServiceParamsJson,omitempty"`
-	RequestId            *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Status               *string   `json:"Status,omitempty" xml:"Status,omitempty"`
-	UnionInstanceId      *string   `json:"UnionInstanceId,omitempty" xml:"UnionInstanceId,omitempty"`
-	UnionSource          *string   `json:"UnionSource,omitempty" xml:"UnionSource,omitempty"`
+	// example:
+	//
+	// 10
+	Concurrency *int64  `json:"Concurrency,omitempty" xml:"Concurrency,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// test1_instanceId
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// 1532436395329
+	ModifyTime           *int64  `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	ModifyUserName       *string `json:"ModifyUserName,omitempty" xml:"ModifyUserName,omitempty"`
+	Name                 *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	NluServiceParamsJson *string `json:"NluServiceParamsJson,omitempty" xml:"NluServiceParamsJson,omitempty"`
+	// example:
+	//
+	// 14C39896-AE6D-4643-9C9A-E0566B2C2DDD
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// Drafted
+	Status          *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	UnionInstanceId *string `json:"UnionInstanceId,omitempty" xml:"UnionInstanceId,omitempty"`
+	UnionSource     *string `json:"UnionSource,omitempty" xml:"UnionSource,omitempty"`
 }
 
 func (s DescribeInstanceResponseBody) String() string {
@@ -1441,6 +1767,11 @@ func (s *DescribeInstanceResponse) SetBody(v *DescribeInstanceResponseBody) *Des
 }
 
 type DescribeNavigationConfigRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 287289b6-1510-4e64-9224-39b53ad89dd2
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -1458,7 +1789,10 @@ func (s *DescribeNavigationConfigRequest) SetInstanceId(v string) *DescribeNavig
 }
 
 type DescribeNavigationConfigResponseBody struct {
-	GreetingConfig       *DescribeNavigationConfigResponseBodyGreetingConfig       `json:"GreetingConfig,omitempty" xml:"GreetingConfig,omitempty" type:"Struct"`
+	GreetingConfig *DescribeNavigationConfigResponseBodyGreetingConfig `json:"GreetingConfig,omitempty" xml:"GreetingConfig,omitempty" type:"Struct"`
+	// example:
+	//
+	// 14C39896-AE6D-4643-9C9A-E0566B2C2DDD
 	RequestId            *string                                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	SilenceTimeoutConfig *DescribeNavigationConfigResponseBodySilenceTimeoutConfig `json:"SilenceTimeoutConfig,omitempty" xml:"SilenceTimeoutConfig,omitempty" type:"Struct"`
 	UnrecognizingConfig  *DescribeNavigationConfigResponseBodyUnrecognizingConfig  `json:"UnrecognizingConfig,omitempty" xml:"UnrecognizingConfig,omitempty" type:"Struct"`
@@ -1495,7 +1829,10 @@ func (s *DescribeNavigationConfigResponseBody) SetUnrecognizingConfig(v *Describ
 type DescribeNavigationConfigResponseBodyGreetingConfig struct {
 	GreetingWords *string `json:"GreetingWords,omitempty" xml:"GreetingWords,omitempty"`
 	IntentTrigger *string `json:"IntentTrigger,omitempty" xml:"IntentTrigger,omitempty"`
-	SourceType    *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	// example:
+	//
+	// chatbotIntent
+	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
 }
 
 func (s DescribeNavigationConfigResponseBodyGreetingConfig) String() string {
@@ -1522,15 +1859,34 @@ func (s *DescribeNavigationConfigResponseBodyGreetingConfig) SetSourceType(v str
 }
 
 type DescribeNavigationConfigResponseBodySilenceTimeoutConfig struct {
-	FinalAction       *string `json:"FinalAction,omitempty" xml:"FinalAction,omitempty"`
+	// example:
+	//
+	// HangUp
+	FinalAction *string `json:"FinalAction,omitempty" xml:"FinalAction,omitempty"`
+	// example:
+	//
+	// {}
 	FinalActionParams *string `json:"FinalActionParams,omitempty" xml:"FinalActionParams,omitempty"`
 	FinalPrompt       *string `json:"FinalPrompt,omitempty" xml:"FinalPrompt,omitempty"`
 	// ""
+	//
+	// example:
+	//
+	// ""
 	IntentTrigger *string `json:"IntentTrigger,omitempty" xml:"IntentTrigger,omitempty"`
 	Prompt        *string `json:"Prompt,omitempty" xml:"Prompt,omitempty"`
-	SourceType    *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	Threshold     *int32  `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
-	Timeout       *int64  `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
+	// example:
+	//
+	// chatbotIntent
+	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	// example:
+	//
+	// 3
+	Threshold *int32 `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
+	// example:
+	//
+	// 10
+	Timeout *int64 `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
 }
 
 func (s DescribeNavigationConfigResponseBodySilenceTimeoutConfig) String() string {
@@ -1582,11 +1938,20 @@ func (s *DescribeNavigationConfigResponseBodySilenceTimeoutConfig) SetTimeout(v 
 }
 
 type DescribeNavigationConfigResponseBodyUnrecognizingConfig struct {
-	FinalAction       *string `json:"FinalAction,omitempty" xml:"FinalAction,omitempty"`
+	// example:
+	//
+	// TransferToAgent
+	FinalAction *string `json:"FinalAction,omitempty" xml:"FinalAction,omitempty"`
+	// example:
+	//
+	// { \\"skillGroupId\\": \\"fallbackSkillGroup\\" }
 	FinalActionParams *string `json:"FinalActionParams,omitempty" xml:"FinalActionParams,omitempty"`
 	FinalPrompt       *string `json:"FinalPrompt,omitempty" xml:"FinalPrompt,omitempty"`
 	Prompt            *string `json:"Prompt,omitempty" xml:"Prompt,omitempty"`
-	Threshold         *int32  `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
+	// example:
+	//
+	// 3
+	Threshold *int32 `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
 }
 
 func (s DescribeNavigationConfigResponseBodyUnrecognizingConfig) String() string {
@@ -1652,7 +2017,17 @@ func (s *DescribeNavigationConfigResponse) SetBody(v *DescribeNavigationConfigRe
 }
 
 type DescribeRecordingRequest struct {
-	ConversationId          *string `json:"ConversationId,omitempty" xml:"ConversationId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// abb4aa26-3a8e-43dd-82f8-0c3898c9c67f
+	ConversationId *string `json:"ConversationId,omitempty" xml:"ConversationId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 7cefbff0-8d50-4d6f-b93c-73cee23c1555
 	InstanceId              *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	NeedVoiceSliceRecording *bool   `json:"NeedVoiceSliceRecording,omitempty" xml:"NeedVoiceSliceRecording,omitempty"`
 }
@@ -1681,8 +2056,17 @@ func (s *DescribeRecordingRequest) SetNeedVoiceSliceRecording(v bool) *DescribeR
 }
 
 type DescribeRecordingResponseBody struct {
-	FileName                    *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
-	FilePath                    *string `json:"FilePath,omitempty" xml:"FilePath,omitempty"`
+	// example:
+	//
+	// 2019080913202222.wav
+	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	// example:
+	//
+	// url
+	FilePath *string `json:"FilePath,omitempty" xml:"FilePath,omitempty"`
+	// example:
+	//
+	// 14C39896-AE6D-4643-9C9A-E0566B2C2DDD
 	RequestId                   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	VoiceSliceRecordingListJson *string `json:"VoiceSliceRecordingListJson,omitempty" xml:"VoiceSliceRecordingListJson,omitempty"`
 }
@@ -1745,10 +2129,26 @@ func (s *DescribeRecordingResponse) SetBody(v *DescribeRecordingResponseBody) *D
 }
 
 type DescribeStatisticalDataRequest struct {
-	BeginTimeLeftRange  *int64  `json:"BeginTimeLeftRange,omitempty" xml:"BeginTimeLeftRange,omitempty"`
-	BeginTimeRightRange *int64  `json:"BeginTimeRightRange,omitempty" xml:"BeginTimeRightRange,omitempty"`
-	InstanceId          *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	TimeUnit            *string `json:"TimeUnit,omitempty" xml:"TimeUnit,omitempty"`
+	// example:
+	//
+	// 1582283640000
+	BeginTimeLeftRange *int64 `json:"BeginTimeLeftRange,omitempty" xml:"BeginTimeLeftRange,omitempty"`
+	// example:
+	//
+	// 1582298040000
+	BeginTimeRightRange *int64 `json:"BeginTimeRightRange,omitempty" xml:"BeginTimeRightRange,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// c28fc549-d88f-4f6e-85ad-a0806e5e39c0
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Day/Hour
+	TimeUnit *string `json:"TimeUnit,omitempty" xml:"TimeUnit,omitempty"`
 }
 
 func (s DescribeStatisticalDataRequest) String() string {
@@ -1780,14 +2180,35 @@ func (s *DescribeStatisticalDataRequest) SetTimeUnit(v string) *DescribeStatisti
 }
 
 type DescribeStatisticalDataResponseBody struct {
-	ConversationTotalNum     *int64                                                       `json:"ConversationTotalNum,omitempty" xml:"ConversationTotalNum,omitempty"`
-	RequestId                *string                                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 100
+	ConversationTotalNum *int64 `json:"ConversationTotalNum,omitempty" xml:"ConversationTotalNum,omitempty"`
+	// example:
+	//
+	// 14C39896-AE6D-4643-9C9A-E0566B2C2DDD
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 80
 	ResolvedQuestionTotalNum *int64                                                       `json:"ResolvedQuestionTotalNum,omitempty" xml:"ResolvedQuestionTotalNum,omitempty"`
 	StatisticalDataReports   []*DescribeStatisticalDataResponseBodyStatisticalDataReports `json:"StatisticalDataReports,omitempty" xml:"StatisticalDataReports,omitempty" type:"Repeated"`
-	TotalDialoguePassRate    *string                                                      `json:"TotalDialoguePassRate,omitempty" xml:"TotalDialoguePassRate,omitempty"`
-	TotalKnowledgeHitRate    *string                                                      `json:"TotalKnowledgeHitRate,omitempty" xml:"TotalKnowledgeHitRate,omitempty"`
-	TotalResolutionRate      *string                                                      `json:"TotalResolutionRate,omitempty" xml:"TotalResolutionRate,omitempty"`
-	TotalValidAnswerRate     *string                                                      `json:"TotalValidAnswerRate,omitempty" xml:"TotalValidAnswerRate,omitempty"`
+	// example:
+	//
+	// 80.00%
+	TotalDialoguePassRate *string `json:"TotalDialoguePassRate,omitempty" xml:"TotalDialoguePassRate,omitempty"`
+	// example:
+	//
+	// 80.00%
+	TotalKnowledgeHitRate *string `json:"TotalKnowledgeHitRate,omitempty" xml:"TotalKnowledgeHitRate,omitempty"`
+	// example:
+	//
+	// 80.00%
+	TotalResolutionRate *string `json:"TotalResolutionRate,omitempty" xml:"TotalResolutionRate,omitempty"`
+	// example:
+	//
+	// 80.00%
+	TotalValidAnswerRate *string `json:"TotalValidAnswerRate,omitempty" xml:"TotalValidAnswerRate,omitempty"`
 }
 
 func (s DescribeStatisticalDataResponseBody) String() string {
@@ -1839,13 +2260,34 @@ func (s *DescribeStatisticalDataResponseBody) SetTotalValidAnswerRate(v string) 
 }
 
 type DescribeStatisticalDataResponseBodyStatisticalDataReports struct {
-	DialoguePassRate     *string `json:"DialoguePassRate,omitempty" xml:"DialoguePassRate,omitempty"`
-	KnowledgeHitRate     *string `json:"KnowledgeHitRate,omitempty" xml:"KnowledgeHitRate,omitempty"`
-	ResolutionRate       *string `json:"ResolutionRate,omitempty" xml:"ResolutionRate,omitempty"`
-	ResolvedQuestionNum  *int32  `json:"ResolvedQuestionNum,omitempty" xml:"ResolvedQuestionNum,omitempty"`
-	StatisticalDate      *string `json:"StatisticalDate,omitempty" xml:"StatisticalDate,omitempty"`
-	TotalConversationNum *int32  `json:"TotalConversationNum,omitempty" xml:"TotalConversationNum,omitempty"`
-	ValidAnswerRate      *string `json:"ValidAnswerRate,omitempty" xml:"ValidAnswerRate,omitempty"`
+	// example:
+	//
+	// 80.00%
+	DialoguePassRate *string `json:"DialoguePassRate,omitempty" xml:"DialoguePassRate,omitempty"`
+	// example:
+	//
+	// 80.00%
+	KnowledgeHitRate *string `json:"KnowledgeHitRate,omitempty" xml:"KnowledgeHitRate,omitempty"`
+	// example:
+	//
+	// 80.00%
+	ResolutionRate *string `json:"ResolutionRate,omitempty" xml:"ResolutionRate,omitempty"`
+	// example:
+	//
+	// 80
+	ResolvedQuestionNum *int32 `json:"ResolvedQuestionNum,omitempty" xml:"ResolvedQuestionNum,omitempty"`
+	// example:
+	//
+	// 19:00:00
+	StatisticalDate *string `json:"StatisticalDate,omitempty" xml:"StatisticalDate,omitempty"`
+	// example:
+	//
+	// 100
+	TotalConversationNum *int32 `json:"TotalConversationNum,omitempty" xml:"TotalConversationNum,omitempty"`
+	// example:
+	//
+	// 80.0
+	ValidAnswerRate *string `json:"ValidAnswerRate,omitempty" xml:"ValidAnswerRate,omitempty"`
 }
 
 func (s DescribeStatisticalDataResponseBodyStatisticalDataReports) String() string {
@@ -1921,8 +2363,16 @@ func (s *DescribeStatisticalDataResponse) SetBody(v *DescribeStatisticalDataResp
 }
 
 type DescribeTTSConfigRequest struct {
-	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	InstanceOwnerId *int64  `json:"InstanceOwnerId,omitempty" xml:"InstanceOwnerId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// dc437bba-5a25-4bbc-b4c2-f268864bebb5
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// 1971226538081821
+	InstanceOwnerId *int64 `json:"InstanceOwnerId,omitempty" xml:"InstanceOwnerId,omitempty"`
 }
 
 func (s DescribeTTSConfigRequest) String() string {
@@ -1944,15 +2394,28 @@ func (s *DescribeTTSConfigRequest) SetInstanceOwnerId(v int64) *DescribeTTSConfi
 }
 
 type DescribeTTSConfigResponseBody struct {
-	AppKey         *string `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
-	Engine         *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	EngineXunfei   *string `json:"EngineXunfei,omitempty" xml:"EngineXunfei,omitempty"`
-	NlsServiceType *string `json:"NlsServiceType,omitempty" xml:"NlsServiceType,omitempty"`
-	PitchRate      *int32  `json:"PitchRate,omitempty" xml:"PitchRate,omitempty"`
-	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	SpeechRate     *int32  `json:"SpeechRate,omitempty" xml:"SpeechRate,omitempty"`
-	Voice          *string `json:"Voice,omitempty" xml:"Voice,omitempty"`
-	Volume         *int32  `json:"Volume,omitempty" xml:"Volume,omitempty"`
+	AliCustomizedVoice *string `json:"AliCustomizedVoice,omitempty" xml:"AliCustomizedVoice,omitempty"`
+	AppKey             *string `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
+	Engine             *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	EngineXunfei       *string `json:"EngineXunfei,omitempty" xml:"EngineXunfei,omitempty"`
+	NlsServiceType     *string `json:"NlsServiceType,omitempty" xml:"NlsServiceType,omitempty"`
+	PitchRate          *int32  `json:"PitchRate,omitempty" xml:"PitchRate,omitempty"`
+	// example:
+	//
+	// F132DDBA-66C4-5BD3-BF7E-9642FE877158
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// -150
+	SpeechRate *int32 `json:"SpeechRate,omitempty" xml:"SpeechRate,omitempty"`
+	// example:
+	//
+	// aixia
+	Voice *string `json:"Voice,omitempty" xml:"Voice,omitempty"`
+	// example:
+	//
+	// 50
+	Volume *int32 `json:"Volume,omitempty" xml:"Volume,omitempty"`
 }
 
 func (s DescribeTTSConfigResponseBody) String() string {
@@ -1961,6 +2424,11 @@ func (s DescribeTTSConfigResponseBody) String() string {
 
 func (s DescribeTTSConfigResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeTTSConfigResponseBody) SetAliCustomizedVoice(v string) *DescribeTTSConfigResponseBody {
+	s.AliCustomizedVoice = &v
+	return s
 }
 
 func (s *DescribeTTSConfigResponseBody) SetAppKey(v string) *DescribeTTSConfigResponseBody {
@@ -2038,14 +2506,37 @@ func (s *DescribeTTSConfigResponse) SetBody(v *DescribeTTSConfigResponseBody) *D
 }
 
 type DialogueRequest struct {
+	// example:
+	//
+	// {}
 	AdditionalContext *string `json:"AdditionalContext,omitempty" xml:"AdditionalContext,omitempty"`
-	CalledNumber      *string `json:"CalledNumber,omitempty" xml:"CalledNumber,omitempty"`
-	CallingNumber     *string `json:"CallingNumber,omitempty" xml:"CallingNumber,omitempty"`
-	ConversationId    *string `json:"ConversationId,omitempty" xml:"ConversationId,omitempty"`
-	Emotion           *string `json:"Emotion,omitempty" xml:"Emotion,omitempty"`
-	InstanceId        *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	InstanceOwnerId   *int64  `json:"InstanceOwnerId,omitempty" xml:"InstanceOwnerId,omitempty"`
-	Utterance         *string `json:"Utterance,omitempty" xml:"Utterance,omitempty"`
+	// example:
+	//
+	// 10086
+	CalledNumber *string `json:"CalledNumber,omitempty" xml:"CalledNumber,omitempty"`
+	// example:
+	//
+	// 18851708605
+	CallingNumber *string `json:"CallingNumber,omitempty" xml:"CallingNumber,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// da37319b-6c83-4268-9f19-814aed62e401
+	ConversationId *string `json:"ConversationId,omitempty" xml:"ConversationId,omitempty"`
+	Emotion        *string `json:"Emotion,omitempty" xml:"Emotion,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 21e0b2a3-168d-4ba7-9009-afc42666eb54
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// 1426738157626835
+	InstanceOwnerId *int64 `json:"InstanceOwnerId,omitempty" xml:"InstanceOwnerId,omitempty"`
+	// This parameter is required.
+	Utterance *string `json:"Utterance,omitempty" xml:"Utterance,omitempty"`
 }
 
 func (s DialogueRequest) String() string {
@@ -2097,11 +2588,23 @@ func (s *DialogueRequest) SetUtterance(v string) *DialogueRequest {
 }
 
 type DialogueResponseBody struct {
-	Action        *string `json:"Action,omitempty" xml:"Action,omitempty"`
-	ActionParams  *string `json:"ActionParams,omitempty" xml:"ActionParams,omitempty"`
-	Interruptible *bool   `json:"Interruptible,omitempty" xml:"Interruptible,omitempty"`
-	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TextResponse  *string `json:"TextResponse,omitempty" xml:"TextResponse,omitempty"`
+	// example:
+	//
+	// Broadcast
+	Action *string `json:"Action,omitempty" xml:"Action,omitempty"`
+	// example:
+	//
+	// {\\"duration\\":2420,\\"endTime\\":1651717326805,\\"hangUpDirection\\":\\"client\\",\\"hasLastPlaybackCompleted\\":true,\\"startTime\\":1651717324385}
+	ActionParams *string `json:"ActionParams,omitempty" xml:"ActionParams,omitempty"`
+	// example:
+	//
+	// true
+	Interruptible *bool `json:"Interruptible,omitempty" xml:"Interruptible,omitempty"`
+	// example:
+	//
+	// 9DB8BA95-4513-54B9-9C67-A28909CFB4AD
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TextResponse *string `json:"TextResponse,omitempty" xml:"TextResponse,omitempty"`
 }
 
 func (s DialogueResponseBody) String() string {
@@ -2167,6 +2670,11 @@ func (s *DialogueResponse) SetBody(v *DialogueResponseBody) *DialogueResponse {
 }
 
 type DisableInstanceRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// da37319b-6c83-4268-9f19-814aed62e401
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -2184,8 +2692,14 @@ func (s *DisableInstanceRequest) SetInstanceId(v string) *DisableInstanceRequest
 }
 
 type DisableInstanceResponseBody struct {
+	// example:
+	//
+	// 14C39896-AE6D-4643-9C9A-E0566B2C2DDD
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Status    *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// true
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DisableInstanceResponseBody) String() string {
@@ -2236,6 +2750,11 @@ func (s *DisableInstanceResponse) SetBody(v *DisableInstanceResponseBody) *Disab
 }
 
 type EnableInstanceRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// da37319b-6c83-4268-9f19-814aed62e401
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -2253,8 +2772,14 @@ func (s *EnableInstanceRequest) SetInstanceId(v string) *EnableInstanceRequest {
 }
 
 type EnableInstanceResponseBody struct {
+	// example:
+	//
+	// 3a530dc0-7cfa-48f6-9539-bf9001e77b16
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Status    *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// true
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s EnableInstanceResponseBody) String() string {
@@ -2305,10 +2830,26 @@ func (s *EnableInstanceResponse) SetBody(v *EnableInstanceResponseBody) *EnableI
 }
 
 type EndDialogueRequest struct {
-	ConversationId  *string `json:"ConversationId,omitempty" xml:"ConversationId,omitempty"`
-	HangUpParams    *string `json:"HangUpParams,omitempty" xml:"HangUpParams,omitempty"`
-	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	InstanceOwnerId *int64  `json:"InstanceOwnerId,omitempty" xml:"InstanceOwnerId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 8fb819b5-d032-48a9-ae5e-cff041b83596
+	ConversationId *string `json:"ConversationId,omitempty" xml:"ConversationId,omitempty"`
+	// example:
+	//
+	// {\\"duration\\":40,\\"endTime\\":1645082505345,\\"hangUpDirection\\":\\"ivr\\",\\"hasLastPlaybackCompleted\\":true,\\"startTime\\":1645082505305}
+	HangUpParams *string `json:"HangUpParams,omitempty" xml:"HangUpParams,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// e48e45dd-e47a-4744-a063-f08cbebb1c5a
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// 1399572315967217
+	InstanceOwnerId *int64 `json:"InstanceOwnerId,omitempty" xml:"InstanceOwnerId,omitempty"`
 }
 
 func (s EndDialogueRequest) String() string {
@@ -2340,6 +2881,9 @@ func (s *EndDialogueRequest) SetInstanceOwnerId(v int64) *EndDialogueRequest {
 }
 
 type EndDialogueResponseBody struct {
+	// example:
+	//
+	// e48e45dd-e47a-4744-a063-f08cbebb1c5a
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2386,14 +2930,28 @@ func (s *EndDialogueResponse) SetBody(v *EndDialogueResponseBody) *EndDialogueRe
 }
 
 type ExportConversationDetailsRequest struct {
-	BeginTimeLeftRange  *int64    `json:"BeginTimeLeftRange,omitempty" xml:"BeginTimeLeftRange,omitempty"`
-	BeginTimeRightRange *int64    `json:"BeginTimeRightRange,omitempty" xml:"BeginTimeRightRange,omitempty"`
-	CallingNumber       *string   `json:"CallingNumber,omitempty" xml:"CallingNumber,omitempty"`
-	InstanceId          *string   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Options             []*string `json:"Options,omitempty" xml:"Options,omitempty" type:"Repeated"`
-	Result              *int32    `json:"Result,omitempty" xml:"Result,omitempty"`
-	RoundsLeftRange     *int32    `json:"RoundsLeftRange,omitempty" xml:"RoundsLeftRange,omitempty"`
-	RoundsRightRange    *int32    `json:"RoundsRightRange,omitempty" xml:"RoundsRightRange,omitempty"`
+	// example:
+	//
+	// 1582266750353
+	BeginTimeLeftRange *int64 `json:"BeginTimeLeftRange,omitempty" xml:"BeginTimeLeftRange,omitempty"`
+	// example:
+	//
+	// 1640793599000
+	BeginTimeRightRange *int64 `json:"BeginTimeRightRange,omitempty" xml:"BeginTimeRightRange,omitempty"`
+	// example:
+	//
+	// 13581588**
+	CallingNumber *string `json:"CallingNumber,omitempty" xml:"CallingNumber,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 6c01a99f-1b72-4f75-a8bd-3875766bd19d
+	InstanceId       *string   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Options          []*string `json:"Options,omitempty" xml:"Options,omitempty" type:"Repeated"`
+	Result           *int32    `json:"Result,omitempty" xml:"Result,omitempty"`
+	RoundsLeftRange  *int32    `json:"RoundsLeftRange,omitempty" xml:"RoundsLeftRange,omitempty"`
+	RoundsRightRange *int32    `json:"RoundsRightRange,omitempty" xml:"RoundsRightRange,omitempty"`
 }
 
 func (s ExportConversationDetailsRequest) String() string {
@@ -2445,8 +3003,14 @@ func (s *ExportConversationDetailsRequest) SetRoundsRightRange(v int32) *ExportC
 }
 
 type ExportConversationDetailsResponseBody struct {
+	// example:
+	//
+	// 6203fc87271a420c98eab6c2bbc2d856
 	ExportTaskId *string `json:"ExportTaskId,omitempty" xml:"ExportTaskId,omitempty"`
-	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 75BAAB9B-40B2-5FF5-A59A-7BCF8154C6EE
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ExportConversationDetailsResponseBody) String() string {
@@ -2497,11 +3061,32 @@ func (s *ExportConversationDetailsResponse) SetBody(v *ExportConversationDetails
 }
 
 type ExportStatisticalDataRequest struct {
-	BeginTimeLeftRange  *int64  `json:"BeginTimeLeftRange,omitempty" xml:"BeginTimeLeftRange,omitempty"`
-	BeginTimeRightRange *int64  `json:"BeginTimeRightRange,omitempty" xml:"BeginTimeRightRange,omitempty"`
-	ExportType          *string `json:"ExportType,omitempty" xml:"ExportType,omitempty"`
-	InstanceId          *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	TimeUnit            *string `json:"TimeUnit,omitempty" xml:"TimeUnit,omitempty"`
+	// example:
+	//
+	// 1582266750353
+	BeginTimeLeftRange *int64 `json:"BeginTimeLeftRange,omitempty" xml:"BeginTimeLeftRange,omitempty"`
+	// example:
+	//
+	// 1582266750353
+	BeginTimeRightRange *int64 `json:"BeginTimeRightRange,omitempty" xml:"BeginTimeRightRange,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// statistical
+	ExportType *string `json:"ExportType,omitempty" xml:"ExportType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 29b52d70-d9fe-4fe0-8476-8aaacbcfdc84
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Hour
+	TimeUnit *string `json:"TimeUnit,omitempty" xml:"TimeUnit,omitempty"`
 }
 
 func (s ExportStatisticalDataRequest) String() string {
@@ -2538,8 +3123,14 @@ func (s *ExportStatisticalDataRequest) SetTimeUnit(v string) *ExportStatisticalD
 }
 
 type ExportStatisticalDataResponseBody struct {
+	// example:
+	//
+	// 6be5a9f1-406e-424e-a17b-b6fb86ee3cc9
 	ExportTaskId *string `json:"ExportTaskId,omitempty" xml:"ExportTaskId,omitempty"`
-	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// c62e6789-28a8-41db-941e-171a01d3b3b9
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ExportStatisticalDataResponseBody) String() string {
@@ -2880,8 +3471,14 @@ func (s *GenerateUploadUrlResponse) SetBody(v *GenerateUploadUrlResponseBody) *G
 }
 
 type GetAsrConfigRequest struct {
-	ConfigLevel *int32  `json:"ConfigLevel,omitempty" xml:"ConfigLevel,omitempty"`
-	EntryId     *string `json:"EntryId,omitempty" xml:"EntryId,omitempty"`
+	// example:
+	//
+	// 1
+	ConfigLevel *int32 `json:"ConfigLevel,omitempty" xml:"ConfigLevel,omitempty"`
+	// example:
+	//
+	// 3b1d3031-8b6e-460a-8640-d330f2ca50b8
+	EntryId *string `json:"EntryId,omitempty" xml:"EntryId,omitempty"`
 }
 
 func (s GetAsrConfigRequest) String() string {
@@ -2903,12 +3500,27 @@ func (s *GetAsrConfigRequest) SetEntryId(v string) *GetAsrConfigRequest {
 }
 
 type GetAsrConfigResponseBody struct {
-	Code           *string                       `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data           *GetAsrConfigResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	ErrorMsg       *string                       `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
-	HttpStatusCode *int32                        `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	RequestId      *string                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success        *bool                         `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// OK
+	Code *string                       `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *GetAsrConfigResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// Not Found
+	ErrorMsg *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// 14C39896-AE6D-4643-9C9A-E0566B2C2DDD
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// True
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetAsrConfigResponseBody) String() string {
@@ -2950,10 +3562,22 @@ func (s *GetAsrConfigResponseBody) SetSuccess(v bool) *GetAsrConfigResponseBody 
 }
 
 type GetAsrConfigResponseBodyData struct {
-	AsrAcousticModelId   *string `json:"AsrAcousticModelId,omitempty" xml:"AsrAcousticModelId,omitempty"`
+	// example:
+	//
+	// 3b1d3031-8b6e-460a-8640-d330f2ca50b8
+	AsrAcousticModelId *string `json:"AsrAcousticModelId,omitempty" xml:"AsrAcousticModelId,omitempty"`
+	// example:
+	//
+	// 3b1d3031-8b6e-460a-8640-d330f2ca50b8
 	AsrClassVocabularyId *string `json:"AsrClassVocabularyId,omitempty" xml:"AsrClassVocabularyId,omitempty"`
-	AsrCustomizationId   *string `json:"AsrCustomizationId,omitempty" xml:"AsrCustomizationId,omitempty"`
-	AsrVocabularyId      *string `json:"AsrVocabularyId,omitempty" xml:"AsrVocabularyId,omitempty"`
+	// example:
+	//
+	// 3b1d3031-8b6e-460a-8640-d330f2ca50b8
+	AsrCustomizationId *string `json:"AsrCustomizationId,omitempty" xml:"AsrCustomizationId,omitempty"`
+	// example:
+	//
+	// 3b1d3031-8b6e-460a-8640-d330f2ca50b8
+	AsrVocabularyId *string `json:"AsrVocabularyId,omitempty" xml:"AsrVocabularyId,omitempty"`
 }
 
 func (s GetAsrConfigResponseBodyData) String() string {
@@ -3014,6 +3638,11 @@ func (s *GetAsrConfigResponse) SetBody(v *GetAsrConfigResponseBody) *GetAsrConfi
 }
 
 type GetRealTimeConcurrencyRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// c112c168ed664c0a851f9ca72d2f7999
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -3031,10 +3660,22 @@ func (s *GetRealTimeConcurrencyRequest) SetInstanceId(v string) *GetRealTimeConc
 }
 
 type GetRealTimeConcurrencyResponseBody struct {
-	MaxConcurrency      *int64  `json:"MaxConcurrency,omitempty" xml:"MaxConcurrency,omitempty"`
-	RealTimeConcurrency *int64  `json:"RealTimeConcurrency,omitempty" xml:"RealTimeConcurrency,omitempty"`
-	RequestId           *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Timestamp           *int64  `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
+	// example:
+	//
+	// 2
+	MaxConcurrency *int64 `json:"MaxConcurrency,omitempty" xml:"MaxConcurrency,omitempty"`
+	// example:
+	//
+	// 1
+	RealTimeConcurrency *int64 `json:"RealTimeConcurrency,omitempty" xml:"RealTimeConcurrency,omitempty"`
+	// example:
+	//
+	// E6E61E1A-D2DC-5ACF-AED4-A115B6691F98
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 1661584255029
+	Timestamp *int64 `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
 }
 
 func (s GetRealTimeConcurrencyResponseBody) String() string {
@@ -3095,12 +3736,23 @@ func (s *GetRealTimeConcurrencyResponse) SetBody(v *GetRealTimeConcurrencyRespon
 }
 
 type ListChatbotInstancesRequest struct {
+	// example:
+	//
+	// af81a389-91f0-4157-8d82-720edd02b66a
 	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	NluServiceParamsJson *string `json:"NluServiceParamsJson,omitempty" xml:"NluServiceParamsJson,omitempty"`
 	NluServiceType       *string `json:"NluServiceType,omitempty" xml:"NluServiceType,omitempty"`
-	PageNumber           *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize             *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	UnionSource          *string `json:"UnionSource,omitempty" xml:"UnionSource,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize    *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	UnionSource *string `json:"UnionSource,omitempty" xml:"UnionSource,omitempty"`
 }
 
 func (s ListChatbotInstancesRequest) String() string {
@@ -3142,11 +3794,23 @@ func (s *ListChatbotInstancesRequest) SetUnionSource(v string) *ListChatbotInsta
 }
 
 type ListChatbotInstancesResponseBody struct {
-	Bots       []*ListChatbotInstancesResponseBodyBots `json:"Bots,omitempty" xml:"Bots,omitempty" type:"Repeated"`
-	PageNumber *int32                                  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int64                                  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId  *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount *int64                                  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	Bots []*ListChatbotInstancesResponseBodyBots `json:"Bots,omitempty" xml:"Bots,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// da37319b-6c83-4268-9f19-814aed62e401
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 10
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListChatbotInstancesResponseBody) String() string {
@@ -3183,13 +3847,31 @@ func (s *ListChatbotInstancesResponseBody) SetTotalCount(v int64) *ListChatbotIn
 }
 
 type ListChatbotInstancesResponseBodyBots struct {
-	Avatar       *string `json:"Avatar,omitempty" xml:"Avatar,omitempty"`
-	CreateTime   *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// https://dss0.ali.com/70cFuHS.jpg
+	Avatar *string `json:"Avatar,omitempty" xml:"Avatar,omitempty"`
+	// example:
+	//
+	// 1582266750353
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// af81a389-91f0-4157-8d82-720edd02b66a
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// ‘’
 	Introduction *string `json:"Introduction,omitempty" xml:"Introduction,omitempty"`
+	// example:
+	//
+	// zh-cn
 	LanguageCode *string `json:"LanguageCode,omitempty" xml:"LanguageCode,omitempty"`
 	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	TimeZone     *string `json:"TimeZone,omitempty" xml:"TimeZone,omitempty"`
+	// example:
+	//
+	// UTC+8
+	TimeZone *string `json:"TimeZone,omitempty" xml:"TimeZone,omitempty"`
 }
 
 func (s ListChatbotInstancesResponseBodyBots) String() string {
@@ -3265,8 +3947,18 @@ func (s *ListChatbotInstancesResponse) SetBody(v *ListChatbotInstancesResponseBo
 }
 
 type ListConversationDetailsRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// a2c26e67-5984-4935-984e-bcee52971993
 	ConversationId *string `json:"ConversationId,omitempty" xml:"ConversationId,omitempty"`
-	InstanceId     *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 82b2eaae-ce5c-45f8-8231-f15b6b27e55c
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
 func (s ListConversationDetailsRequest) String() string {
@@ -3289,7 +3981,10 @@ func (s *ListConversationDetailsRequest) SetInstanceId(v string) *ListConversati
 
 type ListConversationDetailsResponseBody struct {
 	ConversationDetails []*ListConversationDetailsResponseBodyConversationDetails `json:"ConversationDetails,omitempty" xml:"ConversationDetails,omitempty" type:"Repeated"`
-	RequestId           *string                                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 14C39896-AE6D-4643-9C9A-E0566B2C2DDD
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ListConversationDetailsResponseBody) String() string {
@@ -3311,13 +4006,31 @@ func (s *ListConversationDetailsResponseBody) SetRequestId(v string) *ListConver
 }
 
 type ListConversationDetailsResponseBodyConversationDetails struct {
-	Action         *string `json:"Action,omitempty" xml:"Action,omitempty"`
-	ActionParams   *string `json:"ActionParams,omitempty" xml:"ActionParams,omitempty"`
+	// example:
+	//
+	// Dialogue
+	Action *string `json:"Action,omitempty" xml:"Action,omitempty"`
+	// example:
+	//
+	// {}
+	ActionParams *string `json:"ActionParams,omitempty" xml:"ActionParams,omitempty"`
+	// example:
+	//
+	// af81a389-91f0-4157-8d82-720edd02b66a
 	ConversationId *string `json:"ConversationId,omitempty" xml:"ConversationId,omitempty"`
-	CreateTime     *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	SequenceId     *string `json:"SequenceId,omitempty" xml:"SequenceId,omitempty"`
-	Speaker        *string `json:"Speaker,omitempty" xml:"Speaker,omitempty"`
-	Utterance      *string `json:"Utterance,omitempty" xml:"Utterance,omitempty"`
+	// example:
+	//
+	// 1582266750353
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// af81a389-91f0-4157-8d82-720edd02b66a
+	SequenceId *string `json:"SequenceId,omitempty" xml:"SequenceId,omitempty"`
+	// example:
+	//
+	// Chatbot
+	Speaker   *string `json:"Speaker,omitempty" xml:"Speaker,omitempty"`
+	Utterance *string `json:"Utterance,omitempty" xml:"Utterance,omitempty"`
 }
 
 func (s ListConversationDetailsResponseBodyConversationDetails) String() string {
@@ -3393,17 +4106,50 @@ func (s *ListConversationDetailsResponse) SetBody(v *ListConversationDetailsResp
 }
 
 type ListConversationsRequest struct {
-	BeginTimeLeftRange  *int64  `json:"BeginTimeLeftRange,omitempty" xml:"BeginTimeLeftRange,omitempty"`
-	BeginTimeRightRange *int64  `json:"BeginTimeRightRange,omitempty" xml:"BeginTimeRightRange,omitempty"`
-	CallingNumber       *string `json:"CallingNumber,omitempty" xml:"CallingNumber,omitempty"`
-	InstanceId          *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	IsSandBox           *string `json:"IsSandBox,omitempty" xml:"IsSandBox,omitempty"`
-	PageNumber          *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize            *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Query               *string `json:"Query,omitempty" xml:"Query,omitempty"`
-	Result              *int64  `json:"Result,omitempty" xml:"Result,omitempty"`
-	RoundsLeftRange     *int32  `json:"RoundsLeftRange,omitempty" xml:"RoundsLeftRange,omitempty"`
-	RoundsRightRange    *int32  `json:"RoundsRightRange,omitempty" xml:"RoundsRightRange,omitempty"`
+	// example:
+	//
+	// 1638288000000
+	BeginTimeLeftRange *int64 `json:"BeginTimeLeftRange,omitempty" xml:"BeginTimeLeftRange,omitempty"`
+	// example:
+	//
+	// 1637547875311
+	BeginTimeRightRange *int64 `json:"BeginTimeRightRange,omitempty" xml:"BeginTimeRightRange,omitempty"`
+	// example:
+	//
+	// 138106*****
+	CallingNumber *string `json:"CallingNumber,omitempty" xml:"CallingNumber,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// da37319b-6c83-4268-9f19-814aed62e401
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// false
+	IsSandBox *string `json:"IsSandBox,omitempty" xml:"IsSandBox,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 13788914724
+	Query *string `json:"Query,omitempty" xml:"Query,omitempty"`
+	// example:
+	//
+	// 0
+	Result           *int64 `json:"Result,omitempty" xml:"Result,omitempty"`
+	RoundsLeftRange  *int32 `json:"RoundsLeftRange,omitempty" xml:"RoundsLeftRange,omitempty"`
+	RoundsRightRange *int32 `json:"RoundsRightRange,omitempty" xml:"RoundsRightRange,omitempty"`
 }
 
 func (s ListConversationsRequest) String() string {
@@ -3471,10 +4217,22 @@ func (s *ListConversationsRequest) SetRoundsRightRange(v int32) *ListConversatio
 
 type ListConversationsResponseBody struct {
 	Conversations []*ListConversationsResponseBodyConversations `json:"Conversations,omitempty" xml:"Conversations,omitempty" type:"Repeated"`
-	PageNumber    *int32                                        `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize      *int32                                        `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId     *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount    *int64                                        `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// a2c26e67-5984-4935-984e-bcee52971993
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 1
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListConversationsResponseBody) String() string {
@@ -3511,19 +4269,43 @@ func (s *ListConversationsResponseBody) SetTotalCount(v int64) *ListConversation
 }
 
 type ListConversationsResponseBodyConversations struct {
-	CalledNumber             *string   `json:"CalledNumber,omitempty" xml:"CalledNumber,omitempty"`
-	CallingNumber            *string   `json:"CallingNumber,omitempty" xml:"CallingNumber,omitempty"`
-	ConversationId           *string   `json:"ConversationId,omitempty" xml:"ConversationId,omitempty"`
-	DsReport                 *string   `json:"DsReport,omitempty" xml:"DsReport,omitempty"`
-	DsReportTitles           []*string `json:"DsReportTitles,omitempty" xml:"DsReportTitles,omitempty" type:"Repeated"`
-	EndReason                *int32    `json:"EndReason,omitempty" xml:"EndReason,omitempty"`
-	EndTime                  *int64    `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	HasLastPlaybackCompleted *bool     `json:"HasLastPlaybackCompleted,omitempty" xml:"HasLastPlaybackCompleted,omitempty"`
-	HasToAgent               *bool     `json:"HasToAgent,omitempty" xml:"HasToAgent,omitempty"`
-	Rounds                   *int32    `json:"Rounds,omitempty" xml:"Rounds,omitempty"`
-	SandBox                  *bool     `json:"SandBox,omitempty" xml:"SandBox,omitempty"`
-	SkillGroup               *string   `json:"SkillGroup,omitempty" xml:"SkillGroup,omitempty"`
-	StartTime                *int64    `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	CalledNumber *string `json:"CalledNumber,omitempty" xml:"CalledNumber,omitempty"`
+	// example:
+	//
+	// 135815884***
+	CallingNumber *string `json:"CallingNumber,omitempty" xml:"CallingNumber,omitempty"`
+	// example:
+	//
+	// 82b2eaae-ce5c-45f8-8231-f15b6b27e55c
+	ConversationId *string   `json:"ConversationId,omitempty" xml:"ConversationId,omitempty"`
+	DsReport       *string   `json:"DsReport,omitempty" xml:"DsReport,omitempty"`
+	DsReportTitles []*string `json:"DsReportTitles,omitempty" xml:"DsReportTitles,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	EndReason *int32 `json:"EndReason,omitempty" xml:"EndReason,omitempty"`
+	// example:
+	//
+	// 1582266750353
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// example:
+	//
+	// true
+	HasLastPlaybackCompleted *bool `json:"HasLastPlaybackCompleted,omitempty" xml:"HasLastPlaybackCompleted,omitempty"`
+	HasToAgent               *bool `json:"HasToAgent,omitempty" xml:"HasToAgent,omitempty"`
+	// example:
+	//
+	// 2
+	Rounds *int32 `json:"Rounds,omitempty" xml:"Rounds,omitempty"`
+	// example:
+	//
+	// true
+	SandBox    *bool   `json:"SandBox,omitempty" xml:"SandBox,omitempty"`
+	SkillGroup *string `json:"SkillGroup,omitempty" xml:"SkillGroup,omitempty"`
+	// example:
+	//
+	// 1641625694286
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s ListConversationsResponseBodyConversations) String() string {
@@ -3629,8 +4411,18 @@ func (s *ListConversationsResponse) SetBody(v *ListConversationsResponseBody) *L
 }
 
 type ListDownloadTasksRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 5
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
 func (s ListDownloadTasksRequest) String() string {
@@ -3652,12 +4444,27 @@ func (s *ListDownloadTasksRequest) SetPageSize(v int32) *ListDownloadTasksReques
 }
 
 type ListDownloadTasksResponseBody struct {
-	Code           *string                                     `json:"Code,omitempty" xml:"Code,omitempty"`
-	DownloadTasks  *ListDownloadTasksResponseBodyDownloadTasks `json:"DownloadTasks,omitempty" xml:"DownloadTasks,omitempty" type:"Struct"`
-	HttpStatusCode *int32                                      `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string                                     `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId      *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success        *bool                                       `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// OK
+	Code          *string                                     `json:"Code,omitempty" xml:"Code,omitempty"`
+	DownloadTasks *ListDownloadTasksResponseBodyDownloadTasks `json:"DownloadTasks,omitempty" xml:"DownloadTasks,omitempty" type:"Struct"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// successful
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// D24E0148-6D40-550E-9471-B2C5A34C3D12
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// True
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ListDownloadTasksResponseBody) String() string {
@@ -3699,10 +4506,19 @@ func (s *ListDownloadTasksResponseBody) SetSuccess(v bool) *ListDownloadTasksRes
 }
 
 type ListDownloadTasksResponseBodyDownloadTasks struct {
-	List       []*ListDownloadTasksResponseBodyDownloadTasksList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
-	PageNumber *int32                                            `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32                                            `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	TotalCount *int32                                            `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	List []*ListDownloadTasksResponseBodyDownloadTasksList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 2
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListDownloadTasksResponseBodyDownloadTasks) String() string {
@@ -3735,10 +4551,19 @@ func (s *ListDownloadTasksResponseBodyDownloadTasks) SetTotalCount(v int32) *Lis
 
 type ListDownloadTasksResponseBodyDownloadTasksList struct {
 	DownloadTaskFiles []*ListDownloadTasksResponseBodyDownloadTasksListDownloadTaskFiles `json:"DownloadTaskFiles,omitempty" xml:"DownloadTaskFiles,omitempty" type:"Repeated"`
-	ExpireTime        *int64                                                             `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	Status            *string                                                            `json:"Status,omitempty" xml:"Status,omitempty"`
-	TaskId            *string                                                            `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	Title             *string                                                            `json:"Title,omitempty" xml:"Title,omitempty"`
+	// example:
+	//
+	// 1637119221702
+	ExpireTime *int64 `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	// example:
+	//
+	// Expired
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// cb9aba69-f578-42b2-aa2f-3e5a41947db8
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	Title  *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 
 func (s ListDownloadTasksResponseBodyDownloadTasksList) String() string {
@@ -3775,10 +4600,19 @@ func (s *ListDownloadTasksResponseBodyDownloadTasksList) SetTitle(v string) *Lis
 }
 
 type ListDownloadTasksResponseBodyDownloadTasksListDownloadTaskFiles struct {
-	FileId   *string `json:"FileId,omitempty" xml:"FileId,omitempty"`
-	Progress *int32  `json:"Progress,omitempty" xml:"Progress,omitempty"`
-	Status   *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	Title    *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// example:
+	//
+	// c32bf5675b704dc5b19200a89d2e85f1
+	FileId *string `json:"FileId,omitempty" xml:"FileId,omitempty"`
+	// example:
+	//
+	// 70
+	Progress *int32 `json:"Progress,omitempty" xml:"Progress,omitempty"`
+	// example:
+	//
+	// Published
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Title  *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 
 func (s ListDownloadTasksResponseBodyDownloadTasksListDownloadTaskFiles) String() string {
@@ -3839,15 +4673,28 @@ func (s *ListDownloadTasksResponse) SetBody(v *ListDownloadTasksResponseBody) *L
 }
 
 type ListInstancesRequest struct {
-	InstanceIdListJsonString     *string `json:"InstanceIdListJsonString,omitempty" xml:"InstanceIdListJsonString,omitempty"`
-	Name                         *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	InstanceIdListJsonString *string `json:"InstanceIdListJsonString,omitempty" xml:"InstanceIdListJsonString,omitempty"`
+	Name                     *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// [Managed]
 	NluServiceTypeListJsonString *string `json:"NluServiceTypeListJsonString,omitempty" xml:"NluServiceTypeListJsonString,omitempty"`
 	Number                       *string `json:"Number,omitempty" xml:"Number,omitempty"`
-	PageNumber                   *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize                     *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Status                       *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	UnionInstanceId              *string `json:"UnionInstanceId,omitempty" xml:"UnionInstanceId,omitempty"`
-	UnionSource                  *string `json:"UnionSource,omitempty" xml:"UnionSource,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10
+	PageSize        *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Status          *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	UnionInstanceId *string `json:"UnionInstanceId,omitempty" xml:"UnionInstanceId,omitempty"`
+	UnionSource     *string `json:"UnionSource,omitempty" xml:"UnionSource,omitempty"`
 }
 
 func (s ListInstancesRequest) String() string {
@@ -3904,11 +4751,23 @@ func (s *ListInstancesRequest) SetUnionSource(v string) *ListInstancesRequest {
 }
 
 type ListInstancesResponseBody struct {
-	Instances  []*ListInstancesResponseBodyInstances `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Repeated"`
-	PageNumber *int32                                `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32                                `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId  *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount *int32                                `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	Instances []*ListInstancesResponseBodyInstances `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 2
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// A8AED3C8-F57B-5D71-9A34-4A170287533F
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 1
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListInstancesResponseBody) String() string {
@@ -3946,18 +4805,33 @@ func (s *ListInstancesResponseBody) SetTotalCount(v int32) *ListInstancesRespons
 
 type ListInstancesResponseBodyInstances struct {
 	ApplicableOperations []*string `json:"ApplicableOperations,omitempty" xml:"ApplicableOperations,omitempty" type:"Repeated"`
-	Concurrency          *int64    `json:"Concurrency,omitempty" xml:"Concurrency,omitempty"`
-	CreateTime           *int64    `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Description          *string   `json:"Description,omitempty" xml:"Description,omitempty"`
-	InstanceId           *string   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	ModifyTime           *int64    `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	// example:
+	//
+	// 10
+	Concurrency *int64  `json:"Concurrency,omitempty" xml:"Concurrency,omitempty"`
+	CreateTime  *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// dc437bba-5a25-4bbc-b4c2-f268864bebb5
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// 1582266750353
+	ModifyTime *int64 `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	// example:
+	//
+	// xxx
 	ModifyUserName       *string   `json:"ModifyUserName,omitempty" xml:"ModifyUserName,omitempty"`
 	Name                 *string   `json:"Name,omitempty" xml:"Name,omitempty"`
 	NluServiceParamsJson *string   `json:"NluServiceParamsJson,omitempty" xml:"NluServiceParamsJson,omitempty"`
 	Numbers              []*string `json:"Numbers,omitempty" xml:"Numbers,omitempty" type:"Repeated"`
-	Status               *string   `json:"Status,omitempty" xml:"Status,omitempty"`
-	UnionInstanceId      *string   `json:"UnionInstanceId,omitempty" xml:"UnionInstanceId,omitempty"`
-	UnionSource          *string   `json:"UnionSource,omitempty" xml:"UnionSource,omitempty"`
+	// example:
+	//
+	// Published
+	Status          *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	UnionInstanceId *string `json:"UnionInstanceId,omitempty" xml:"UnionInstanceId,omitempty"`
+	UnionSource     *string `json:"UnionSource,omitempty" xml:"UnionSource,omitempty"`
 }
 
 func (s ListInstancesResponseBodyInstances) String() string {
@@ -4063,12 +4937,30 @@ func (s *ListInstancesResponse) SetBody(v *ListInstancesResponseBody) *ListInsta
 }
 
 type ModifyAsrConfigRequest struct {
-	AsrAcousticModelId   *string `json:"AsrAcousticModelId,omitempty" xml:"AsrAcousticModelId,omitempty"`
+	// example:
+	//
+	// 6cc9f5ca-2cb6-4cc7-a46b-2bbfd3e61b22
+	AsrAcousticModelId *string `json:"AsrAcousticModelId,omitempty" xml:"AsrAcousticModelId,omitempty"`
+	// example:
+	//
+	// 6cc9f5ca-2cb6-4cc7-a46b-2bbfd3e61b22
 	AsrClassVocabularyId *string `json:"AsrClassVocabularyId,omitempty" xml:"AsrClassVocabularyId,omitempty"`
-	AsrCustomizationId   *string `json:"AsrCustomizationId,omitempty" xml:"AsrCustomizationId,omitempty"`
-	AsrVocabularyId      *string `json:"AsrVocabularyId,omitempty" xml:"AsrVocabularyId,omitempty"`
-	ConfigLevel          *int32  `json:"ConfigLevel,omitempty" xml:"ConfigLevel,omitempty"`
-	EntryId              *string `json:"EntryId,omitempty" xml:"EntryId,omitempty"`
+	// example:
+	//
+	// 6cc9f5ca-2cb6-4cc7-a46b-2bbfd3e61b22
+	AsrCustomizationId *string `json:"AsrCustomizationId,omitempty" xml:"AsrCustomizationId,omitempty"`
+	// example:
+	//
+	// 6cc9f5ca-2cb6-4cc7-a46b-2bbfd3e61b22
+	AsrVocabularyId *string `json:"AsrVocabularyId,omitempty" xml:"AsrVocabularyId,omitempty"`
+	// example:
+	//
+	// 0
+	ConfigLevel *int32 `json:"ConfigLevel,omitempty" xml:"ConfigLevel,omitempty"`
+	// example:
+	//
+	// 6cc9f5ca-2cb6-4cc7-a46b-2bbfd3e61b22
+	EntryId *string `json:"EntryId,omitempty" xml:"EntryId,omitempty"`
 }
 
 func (s ModifyAsrConfigRequest) String() string {
@@ -4110,12 +5002,27 @@ func (s *ModifyAsrConfigRequest) SetEntryId(v string) *ModifyAsrConfigRequest {
 }
 
 type ModifyAsrConfigResponseBody struct {
-	Code           *string                          `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data           *ModifyAsrConfigResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	ErrorMsg       *string                          `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
-	HttpStatusCode *int32                           `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	RequestId      *string                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success        *bool                            `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// OK
+	Code *string                          `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *ModifyAsrConfigResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// Not Found
+	ErrorMsg *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// da37319b-6c83-4268-9f19-814aed62e401
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// True
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ModifyAsrConfigResponseBody) String() string {
@@ -4203,10 +5110,21 @@ func (s *ModifyAsrConfigResponse) SetBody(v *ModifyAsrConfigResponseBody) *Modif
 }
 
 type ModifyGreetingConfigRequest struct {
+	// This parameter is required.
 	GreetingWords *string `json:"GreetingWords,omitempty" xml:"GreetingWords,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 12f407b22cbe4890ac595f09985848d5
 	InstanceId    *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	IntentTrigger *string `json:"IntentTrigger,omitempty" xml:"IntentTrigger,omitempty"`
-	SourceType    *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// chatbotIntent
+	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
 }
 
 func (s ModifyGreetingConfigRequest) String() string {
@@ -4238,6 +5156,9 @@ func (s *ModifyGreetingConfigRequest) SetSourceType(v string) *ModifyGreetingCon
 }
 
 type ModifyGreetingConfigResponseBody struct {
+	// example:
+	//
+	// 14C39896-AE6D-4643-9C9A-E0566B2C2DDD
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4284,10 +5205,20 @@ func (s *ModifyGreetingConfigResponse) SetBody(v *ModifyGreetingConfigResponseBo
 }
 
 type ModifyInstanceRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10
 	Concurrency *int64  `json:"Concurrency,omitempty" xml:"Concurrency,omitempty"`
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 12f407b22cbe4890ac595f09985848d5
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Name       *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
 func (s ModifyInstanceRequest) String() string {
@@ -4319,6 +5250,9 @@ func (s *ModifyInstanceRequest) SetName(v string) *ModifyInstanceRequest {
 }
 
 type ModifyInstanceResponseBody struct {
+	// example:
+	//
+	// 14C39896-AE6D-4643-9C9A-E0566B2C2DDD
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4365,15 +5299,48 @@ func (s *ModifyInstanceResponse) SetBody(v *ModifyInstanceResponseBody) *ModifyI
 }
 
 type ModifySilenceTimeoutConfigRequest struct {
-	FinalAction       *string `json:"FinalAction,omitempty" xml:"FinalAction,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// TransferToAgent
+	FinalAction *string `json:"FinalAction,omitempty" xml:"FinalAction,omitempty"`
+	// example:
+	//
+	// {}
 	FinalActionParams *string `json:"FinalActionParams,omitempty" xml:"FinalActionParams,omitempty"`
-	FinalPrompt       *string `json:"FinalPrompt,omitempty" xml:"FinalPrompt,omitempty"`
-	InstanceId        *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	IntentTrigger     *string `json:"IntentTrigger,omitempty" xml:"IntentTrigger,omitempty"`
-	Prompt            *string `json:"Prompt,omitempty" xml:"Prompt,omitempty"`
-	SourceType        *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	Threshold         *int32  `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
-	Timeout           *int64  `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
+	// This parameter is required.
+	FinalPrompt *string `json:"FinalPrompt,omitempty" xml:"FinalPrompt,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 12f407b22cbe4890ac595f09985848d5
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// Timeout
+	IntentTrigger *string `json:"IntentTrigger,omitempty" xml:"IntentTrigger,omitempty"`
+	// This parameter is required.
+	Prompt *string `json:"Prompt,omitempty" xml:"Prompt,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// chatbotIntent
+	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 3
+	Threshold *int32 `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 20
+	Timeout *int64 `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
 }
 
 func (s ModifySilenceTimeoutConfigRequest) String() string {
@@ -4430,6 +5397,9 @@ func (s *ModifySilenceTimeoutConfigRequest) SetTimeout(v int64) *ModifySilenceTi
 }
 
 type ModifySilenceTimeoutConfigResponseBody struct {
+	// example:
+	//
+	// 14C39896-AE6D-4643-9C9A-E0566B2C2DDD
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4476,14 +5446,29 @@ func (s *ModifySilenceTimeoutConfigResponse) SetBody(v *ModifySilenceTimeoutConf
 }
 
 type ModifyTTSConfigRequest struct {
-	AppKey         *string `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
-	Engine         *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	EngineXunfei   *string `json:"EngineXunfei,omitempty" xml:"EngineXunfei,omitempty"`
+	AliCustomizedVoice *string `json:"AliCustomizedVoice,omitempty" xml:"AliCustomizedVoice,omitempty"`
+	AppKey             *string `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
+	Engine             *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	EngineXunfei       *string `json:"EngineXunfei,omitempty" xml:"EngineXunfei,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 12f407b22cbe4890ac595f09985848d5
 	InstanceId     *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	NlsServiceType *string `json:"NlsServiceType,omitempty" xml:"NlsServiceType,omitempty"`
-	SpeechRate     *string `json:"SpeechRate,omitempty" xml:"SpeechRate,omitempty"`
-	Voice          *string `json:"Voice,omitempty" xml:"Voice,omitempty"`
-	Volume         *string `json:"Volume,omitempty" xml:"Volume,omitempty"`
+	// example:
+	//
+	// 100
+	SpeechRate *string `json:"SpeechRate,omitempty" xml:"SpeechRate,omitempty"`
+	// example:
+	//
+	// aixia
+	Voice *string `json:"Voice,omitempty" xml:"Voice,omitempty"`
+	// example:
+	//
+	// 10
+	Volume *string `json:"Volume,omitempty" xml:"Volume,omitempty"`
 }
 
 func (s ModifyTTSConfigRequest) String() string {
@@ -4492,6 +5477,11 @@ func (s ModifyTTSConfigRequest) String() string {
 
 func (s ModifyTTSConfigRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ModifyTTSConfigRequest) SetAliCustomizedVoice(v string) *ModifyTTSConfigRequest {
+	s.AliCustomizedVoice = &v
+	return s
 }
 
 func (s *ModifyTTSConfigRequest) SetAppKey(v string) *ModifyTTSConfigRequest {
@@ -4535,6 +5525,9 @@ func (s *ModifyTTSConfigRequest) SetVolume(v string) *ModifyTTSConfigRequest {
 }
 
 type ModifyTTSConfigResponseBody struct {
+	// example:
+	//
+	// 14C39896-AE6D-4643-9C9A-E0566B2C2DDD
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4581,12 +5574,32 @@ func (s *ModifyTTSConfigResponse) SetBody(v *ModifyTTSConfigResponseBody) *Modif
 }
 
 type ModifyUnrecognizingConfigRequest struct {
-	FinalAction       *string `json:"FinalAction,omitempty" xml:"FinalAction,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// TransferToAgent
+	FinalAction *string `json:"FinalAction,omitempty" xml:"FinalAction,omitempty"`
+	// example:
+	//
+	// {}
 	FinalActionParams *string `json:"FinalActionParams,omitempty" xml:"FinalActionParams,omitempty"`
-	FinalPrompt       *string `json:"FinalPrompt,omitempty" xml:"FinalPrompt,omitempty"`
-	InstanceId        *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Prompt            *string `json:"Prompt,omitempty" xml:"Prompt,omitempty"`
-	Threshold         *int32  `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
+	// This parameter is required.
+	FinalPrompt *string `json:"FinalPrompt,omitempty" xml:"FinalPrompt,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 12f407b22cbe4890ac595f09985848d5
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	Prompt *string `json:"Prompt,omitempty" xml:"Prompt,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 3
+	Threshold *int32 `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
 }
 
 func (s ModifyUnrecognizingConfigRequest) String() string {
@@ -4628,6 +5641,9 @@ func (s *ModifyUnrecognizingConfigRequest) SetThreshold(v int32) *ModifyUnrecogn
 }
 
 type ModifyUnrecognizingConfigResponseBody struct {
+	// example:
+	//
+	// 14C39896-AE6D-4643-9C9A-E0566B2C2DDD
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4674,12 +5690,36 @@ func (s *ModifyUnrecognizingConfigResponse) SetBody(v *ModifyUnrecognizingConfig
 }
 
 type QueryConversationsRequest struct {
-	BeginTimeLeftRange  *int64  `json:"BeginTimeLeftRange,omitempty" xml:"BeginTimeLeftRange,omitempty"`
-	BeginTimeRightRange *int64  `json:"BeginTimeRightRange,omitempty" xml:"BeginTimeRightRange,omitempty"`
-	CallingNumber       *string `json:"CallingNumber,omitempty" xml:"CallingNumber,omitempty"`
-	InstanceId          *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	PageNumber          *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize            *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 1582183381000
+	BeginTimeLeftRange *int64 `json:"BeginTimeLeftRange,omitempty" xml:"BeginTimeLeftRange,omitempty"`
+	// example:
+	//
+	// 1582356181000
+	BeginTimeRightRange *int64 `json:"BeginTimeRightRange,omitempty" xml:"BeginTimeRightRange,omitempty"`
+	// example:
+	//
+	// 02811111111
+	CallingNumber *string `json:"CallingNumber,omitempty" xml:"CallingNumber,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 12f407b22cbe4890ac595f09985848d5
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
 func (s QueryConversationsRequest) String() string {
@@ -4722,10 +5762,22 @@ func (s *QueryConversationsRequest) SetPageSize(v int32) *QueryConversationsRequ
 
 type QueryConversationsResponseBody struct {
 	Conversations []*QueryConversationsResponseBodyConversations `json:"Conversations,omitempty" xml:"Conversations,omitempty" type:"Repeated"`
-	PageNumber    *int32                                         `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize      *int32                                         `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId     *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount    *int64                                         `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 14C39896-AE6D-4643-9C9A-E0566B2C2DDD
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 100
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s QueryConversationsResponseBody) String() string {
@@ -4762,14 +5814,38 @@ func (s *QueryConversationsResponseBody) SetTotalCount(v int64) *QueryConversati
 }
 
 type QueryConversationsResponseBodyConversations struct {
-	BeginTime            *int64  `json:"BeginTime,omitempty" xml:"BeginTime,omitempty"`
-	CallingNumber        *string `json:"CallingNumber,omitempty" xml:"CallingNumber,omitempty"`
-	ConversationId       *string `json:"ConversationId,omitempty" xml:"ConversationId,omitempty"`
-	EffectiveAnswerCount *int32  `json:"EffectiveAnswerCount,omitempty" xml:"EffectiveAnswerCount,omitempty"`
-	EndTime              *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	SkillGroupId         *string `json:"SkillGroupId,omitempty" xml:"SkillGroupId,omitempty"`
-	TransferredToAgent   *bool   `json:"TransferredToAgent,omitempty" xml:"TransferredToAgent,omitempty"`
-	UserUtteranceCount   *int32  `json:"UserUtteranceCount,omitempty" xml:"UserUtteranceCount,omitempty"`
+	// example:
+	//
+	// 1582183381000
+	BeginTime *int64 `json:"BeginTime,omitempty" xml:"BeginTime,omitempty"`
+	// example:
+	//
+	// 02811111111
+	CallingNumber *string `json:"CallingNumber,omitempty" xml:"CallingNumber,omitempty"`
+	// example:
+	//
+	// af81a389-91f0-4157-8d82-720edd02b66a
+	ConversationId *string `json:"ConversationId,omitempty" xml:"ConversationId,omitempty"`
+	// example:
+	//
+	// 8
+	EffectiveAnswerCount *int32 `json:"EffectiveAnswerCount,omitempty" xml:"EffectiveAnswerCount,omitempty"`
+	// example:
+	//
+	// 1582183481000
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// example:
+	//
+	// AAA
+	SkillGroupId *string `json:"SkillGroupId,omitempty" xml:"SkillGroupId,omitempty"`
+	// example:
+	//
+	// true
+	TransferredToAgent *bool `json:"TransferredToAgent,omitempty" xml:"TransferredToAgent,omitempty"`
+	// example:
+	//
+	// 10
+	UserUtteranceCount *int32 `json:"UserUtteranceCount,omitempty" xml:"UserUtteranceCount,omitempty"`
 }
 
 func (s QueryConversationsResponseBodyConversations) String() string {
@@ -4850,13 +5926,51 @@ func (s *QueryConversationsResponse) SetBody(v *QueryConversationsResponseBody) 
 }
 
 type SaveRecordingRequest struct {
-	ConversationId          *string `json:"ConversationId,omitempty" xml:"ConversationId,omitempty"`
-	Duration                *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	FileName                *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
-	FilePath                *string `json:"FilePath,omitempty" xml:"FilePath,omitempty"`
-	InstanceId              *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	InstanceOwnerId         *int64  `json:"InstanceOwnerId,omitempty" xml:"InstanceOwnerId,omitempty"`
-	StartTime               *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 390515b5-6115-4ccf-83e2-52d5bfaf2ddf
+	ConversationId *string `json:"ConversationId,omitempty" xml:"ConversationId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10
+	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// e6bef0db439d4048bfcf45322491becf.wav
+	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// oss://test/record/
+	FilePath *string `json:"FilePath,omitempty" xml:"FilePath,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// af81a389-91f0-4157-8d82-720edd02b66a
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// 1971226538081821
+	InstanceOwnerId *int64 `json:"InstanceOwnerId,omitempty" xml:"InstanceOwnerId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1582267398628
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Source
 	Type                    *string `json:"Type,omitempty" xml:"Type,omitempty"`
 	VoiceSliceRecordingList *string `json:"VoiceSliceRecordingList,omitempty" xml:"VoiceSliceRecordingList,omitempty"`
 }
@@ -4915,6 +6029,9 @@ func (s *SaveRecordingRequest) SetVoiceSliceRecordingList(v string) *SaveRecordi
 }
 
 type SaveRecordingResponseBody struct {
+	// example:
+	//
+	// 254EB995-DEDF-48A4-9101-9CA5B72FFBCC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -4961,10 +6078,26 @@ func (s *SaveRecordingResponse) SetBody(v *SaveRecordingResponseBody) *SaveRecor
 }
 
 type SilenceTimeoutRequest struct {
-	ConversationId  *string `json:"ConversationId,omitempty" xml:"ConversationId,omitempty"`
-	InitialContext  *string `json:"InitialContext,omitempty" xml:"InitialContext,omitempty"`
-	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	InstanceOwnerId *int64  `json:"InstanceOwnerId,omitempty" xml:"InstanceOwnerId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0099b75d-60fd-4c63-8541-7fbba0ae6bb0
+	ConversationId *string `json:"ConversationId,omitempty" xml:"ConversationId,omitempty"`
+	// example:
+	//
+	// {}
+	InitialContext *string `json:"InitialContext,omitempty" xml:"InitialContext,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0099b75d-60fd-4c63-8541-7fbba0ae6bb0
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// 1231639035307976
+	InstanceOwnerId *int64 `json:"InstanceOwnerId,omitempty" xml:"InstanceOwnerId,omitempty"`
 }
 
 func (s SilenceTimeoutRequest) String() string {
@@ -4996,11 +6129,23 @@ func (s *SilenceTimeoutRequest) SetInstanceOwnerId(v int64) *SilenceTimeoutReque
 }
 
 type SilenceTimeoutResponseBody struct {
-	Action        *string `json:"Action,omitempty" xml:"Action,omitempty"`
-	ActionParams  *string `json:"ActionParams,omitempty" xml:"ActionParams,omitempty"`
-	Interruptible *bool   `json:"Interruptible,omitempty" xml:"Interruptible,omitempty"`
-	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TextResponse  *string `json:"TextResponse,omitempty" xml:"TextResponse,omitempty"`
+	// example:
+	//
+	// TransferToAgent
+	Action *string `json:"Action,omitempty" xml:"Action,omitempty"`
+	// example:
+	//
+	// { "skillGroupId": "ABC"}
+	ActionParams *string `json:"ActionParams,omitempty" xml:"ActionParams,omitempty"`
+	// example:
+	//
+	// false
+	Interruptible *bool `json:"Interruptible,omitempty" xml:"Interruptible,omitempty"`
+	// example:
+	//
+	// 254EB995-DEDF-48A4-9101-9CA5B72FFBCC
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TextResponse *string `json:"TextResponse,omitempty" xml:"TextResponse,omitempty"`
 }
 
 func (s SilenceTimeoutResponseBody) String() string {
@@ -5112,6 +6257,11 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
+// @param request - AssociateChatbotInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AssociateChatbotInstanceResponse
 func (client *Client) AssociateChatbotInstanceWithOptions(request *AssociateChatbotInstanceRequest, runtime *util.RuntimeOptions) (_result *AssociateChatbotInstanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5165,6 +6315,9 @@ func (client *Client) AssociateChatbotInstanceWithOptions(request *AssociateChat
 	return _result, _err
 }
 
+// @param request - AssociateChatbotInstanceRequest
+//
+// @return AssociateChatbotInstanceResponse
 func (client *Client) AssociateChatbotInstance(request *AssociateChatbotInstanceRequest) (_result *AssociateChatbotInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &AssociateChatbotInstanceResponse{}
@@ -5176,6 +6329,11 @@ func (client *Client) AssociateChatbotInstance(request *AssociateChatbotInstance
 	return _result, _err
 }
 
+// @param request - AuditTTSVoiceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AuditTTSVoiceResponse
 func (client *Client) AuditTTSVoiceWithOptions(request *AuditTTSVoiceRequest, runtime *util.RuntimeOptions) (_result *AuditTTSVoiceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5245,6 +6403,9 @@ func (client *Client) AuditTTSVoiceWithOptions(request *AuditTTSVoiceRequest, ru
 	return _result, _err
 }
 
+// @param request - AuditTTSVoiceRequest
+//
+// @return AuditTTSVoiceResponse
 func (client *Client) AuditTTSVoice(request *AuditTTSVoiceRequest) (_result *AuditTTSVoiceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &AuditTTSVoiceResponse{}
@@ -5256,6 +6417,11 @@ func (client *Client) AuditTTSVoice(request *AuditTTSVoiceRequest) (_result *Aud
 	return _result, _err
 }
 
+// @param request - BeginDialogueRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return BeginDialogueResponse
 func (client *Client) BeginDialogueWithOptions(request *BeginDialogueRequest, runtime *util.RuntimeOptions) (_result *BeginDialogueResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5309,6 +6475,9 @@ func (client *Client) BeginDialogueWithOptions(request *BeginDialogueRequest, ru
 	return _result, _err
 }
 
+// @param request - BeginDialogueRequest
+//
+// @return BeginDialogueResponse
 func (client *Client) BeginDialogue(request *BeginDialogueRequest) (_result *BeginDialogueResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &BeginDialogueResponse{}
@@ -5320,6 +6489,11 @@ func (client *Client) BeginDialogue(request *BeginDialogueRequest) (_result *Beg
 	return _result, _err
 }
 
+// @param request - CollectedNumberRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CollectedNumberResponse
 func (client *Client) CollectedNumberWithOptions(request *CollectedNumberRequest, runtime *util.RuntimeOptions) (_result *CollectedNumberResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5369,6 +6543,9 @@ func (client *Client) CollectedNumberWithOptions(request *CollectedNumberRequest
 	return _result, _err
 }
 
+// @param request - CollectedNumberRequest
+//
+// @return CollectedNumberResponse
 func (client *Client) CollectedNumber(request *CollectedNumberRequest) (_result *CollectedNumberResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CollectedNumberResponse{}
@@ -5380,6 +6557,11 @@ func (client *Client) CollectedNumber(request *CollectedNumberRequest) (_result 
 	return _result, _err
 }
 
+// @param request - CreateDownloadUrlRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateDownloadUrlResponse
 func (client *Client) CreateDownloadUrlWithOptions(request *CreateDownloadUrlRequest, runtime *util.RuntimeOptions) (_result *CreateDownloadUrlResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5409,6 +6591,9 @@ func (client *Client) CreateDownloadUrlWithOptions(request *CreateDownloadUrlReq
 	return _result, _err
 }
 
+// @param request - CreateDownloadUrlRequest
+//
+// @return CreateDownloadUrlResponse
 func (client *Client) CreateDownloadUrl(request *CreateDownloadUrlRequest) (_result *CreateDownloadUrlResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateDownloadUrlResponse{}
@@ -5420,6 +6605,11 @@ func (client *Client) CreateDownloadUrl(request *CreateDownloadUrlRequest) (_res
 	return _result, _err
 }
 
+// @param request - CreateInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateInstanceResponse
 func (client *Client) CreateInstanceWithOptions(request *CreateInstanceRequest, runtime *util.RuntimeOptions) (_result *CreateInstanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5473,6 +6663,9 @@ func (client *Client) CreateInstanceWithOptions(request *CreateInstanceRequest, 
 	return _result, _err
 }
 
+// @param request - CreateInstanceRequest
+//
+// @return CreateInstanceResponse
 func (client *Client) CreateInstance(request *CreateInstanceRequest) (_result *CreateInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateInstanceResponse{}
@@ -5484,6 +6677,11 @@ func (client *Client) CreateInstance(request *CreateInstanceRequest) (_result *C
 	return _result, _err
 }
 
+// @param request - DebugBeginDialogueRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DebugBeginDialogueResponse
 func (client *Client) DebugBeginDialogueWithOptions(request *DebugBeginDialogueRequest, runtime *util.RuntimeOptions) (_result *DebugBeginDialogueResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5533,6 +6731,9 @@ func (client *Client) DebugBeginDialogueWithOptions(request *DebugBeginDialogueR
 	return _result, _err
 }
 
+// @param request - DebugBeginDialogueRequest
+//
+// @return DebugBeginDialogueResponse
 func (client *Client) DebugBeginDialogue(request *DebugBeginDialogueRequest) (_result *DebugBeginDialogueResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DebugBeginDialogueResponse{}
@@ -5544,6 +6745,11 @@ func (client *Client) DebugBeginDialogue(request *DebugBeginDialogueRequest) (_r
 	return _result, _err
 }
 
+// @param request - DebugCollectedNumberRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DebugCollectedNumberResponse
 func (client *Client) DebugCollectedNumberWithOptions(request *DebugCollectedNumberRequest, runtime *util.RuntimeOptions) (_result *DebugCollectedNumberResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5585,6 +6791,9 @@ func (client *Client) DebugCollectedNumberWithOptions(request *DebugCollectedNum
 	return _result, _err
 }
 
+// @param request - DebugCollectedNumberRequest
+//
+// @return DebugCollectedNumberResponse
 func (client *Client) DebugCollectedNumber(request *DebugCollectedNumberRequest) (_result *DebugCollectedNumberResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DebugCollectedNumberResponse{}
@@ -5596,6 +6805,11 @@ func (client *Client) DebugCollectedNumber(request *DebugCollectedNumberRequest)
 	return _result, _err
 }
 
+// @param request - DebugDialogueRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DebugDialogueResponse
 func (client *Client) DebugDialogueWithOptions(request *DebugDialogueRequest, runtime *util.RuntimeOptions) (_result *DebugDialogueResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5641,6 +6855,9 @@ func (client *Client) DebugDialogueWithOptions(request *DebugDialogueRequest, ru
 	return _result, _err
 }
 
+// @param request - DebugDialogueRequest
+//
+// @return DebugDialogueResponse
 func (client *Client) DebugDialogue(request *DebugDialogueRequest) (_result *DebugDialogueResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DebugDialogueResponse{}
@@ -5652,6 +6869,11 @@ func (client *Client) DebugDialogue(request *DebugDialogueRequest) (_result *Deb
 	return _result, _err
 }
 
+// @param request - DeleteInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteInstanceResponse
 func (client *Client) DeleteInstanceWithOptions(request *DeleteInstanceRequest, runtime *util.RuntimeOptions) (_result *DeleteInstanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5685,6 +6907,9 @@ func (client *Client) DeleteInstanceWithOptions(request *DeleteInstanceRequest, 
 	return _result, _err
 }
 
+// @param request - DeleteInstanceRequest
+//
+// @return DeleteInstanceResponse
 func (client *Client) DeleteInstance(request *DeleteInstanceRequest) (_result *DeleteInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteInstanceResponse{}
@@ -5696,6 +6921,11 @@ func (client *Client) DeleteInstance(request *DeleteInstanceRequest) (_result *D
 	return _result, _err
 }
 
+// @param request - DescribeConversationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeConversationResponse
 func (client *Client) DescribeConversationWithOptions(request *DescribeConversationRequest, runtime *util.RuntimeOptions) (_result *DescribeConversationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5725,6 +6955,9 @@ func (client *Client) DescribeConversationWithOptions(request *DescribeConversat
 	return _result, _err
 }
 
+// @param request - DescribeConversationRequest
+//
+// @return DescribeConversationResponse
 func (client *Client) DescribeConversation(request *DescribeConversationRequest) (_result *DescribeConversationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeConversationResponse{}
@@ -5736,6 +6969,11 @@ func (client *Client) DescribeConversation(request *DescribeConversationRequest)
 	return _result, _err
 }
 
+// @param request - DescribeConversationContextRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeConversationContextResponse
 func (client *Client) DescribeConversationContextWithOptions(request *DescribeConversationContextRequest, runtime *util.RuntimeOptions) (_result *DescribeConversationContextResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5765,6 +7003,9 @@ func (client *Client) DescribeConversationContextWithOptions(request *DescribeCo
 	return _result, _err
 }
 
+// @param request - DescribeConversationContextRequest
+//
+// @return DescribeConversationContextResponse
 func (client *Client) DescribeConversationContext(request *DescribeConversationContextRequest) (_result *DescribeConversationContextResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeConversationContextResponse{}
@@ -5776,6 +7017,11 @@ func (client *Client) DescribeConversationContext(request *DescribeConversationC
 	return _result, _err
 }
 
+// @param request - DescribeExportProgressRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeExportProgressResponse
 func (client *Client) DescribeExportProgressWithOptions(request *DescribeExportProgressRequest, runtime *util.RuntimeOptions) (_result *DescribeExportProgressResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5805,6 +7051,9 @@ func (client *Client) DescribeExportProgressWithOptions(request *DescribeExportP
 	return _result, _err
 }
 
+// @param request - DescribeExportProgressRequest
+//
+// @return DescribeExportProgressResponse
 func (client *Client) DescribeExportProgress(request *DescribeExportProgressRequest) (_result *DescribeExportProgressResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeExportProgressResponse{}
@@ -5816,6 +7065,11 @@ func (client *Client) DescribeExportProgress(request *DescribeExportProgressRequ
 	return _result, _err
 }
 
+// @param request - DescribeInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeInstanceResponse
 func (client *Client) DescribeInstanceWithOptions(request *DescribeInstanceRequest, runtime *util.RuntimeOptions) (_result *DescribeInstanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5845,6 +7099,9 @@ func (client *Client) DescribeInstanceWithOptions(request *DescribeInstanceReque
 	return _result, _err
 }
 
+// @param request - DescribeInstanceRequest
+//
+// @return DescribeInstanceResponse
 func (client *Client) DescribeInstance(request *DescribeInstanceRequest) (_result *DescribeInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeInstanceResponse{}
@@ -5856,6 +7113,11 @@ func (client *Client) DescribeInstance(request *DescribeInstanceRequest) (_resul
 	return _result, _err
 }
 
+// @param request - DescribeNavigationConfigRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeNavigationConfigResponse
 func (client *Client) DescribeNavigationConfigWithOptions(request *DescribeNavigationConfigRequest, runtime *util.RuntimeOptions) (_result *DescribeNavigationConfigResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5885,6 +7147,9 @@ func (client *Client) DescribeNavigationConfigWithOptions(request *DescribeNavig
 	return _result, _err
 }
 
+// @param request - DescribeNavigationConfigRequest
+//
+// @return DescribeNavigationConfigResponse
 func (client *Client) DescribeNavigationConfig(request *DescribeNavigationConfigRequest) (_result *DescribeNavigationConfigResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeNavigationConfigResponse{}
@@ -5896,6 +7161,11 @@ func (client *Client) DescribeNavigationConfig(request *DescribeNavigationConfig
 	return _result, _err
 }
 
+// @param request - DescribeRecordingRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeRecordingResponse
 func (client *Client) DescribeRecordingWithOptions(request *DescribeRecordingRequest, runtime *util.RuntimeOptions) (_result *DescribeRecordingResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5925,6 +7195,9 @@ func (client *Client) DescribeRecordingWithOptions(request *DescribeRecordingReq
 	return _result, _err
 }
 
+// @param request - DescribeRecordingRequest
+//
+// @return DescribeRecordingResponse
 func (client *Client) DescribeRecording(request *DescribeRecordingRequest) (_result *DescribeRecordingResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeRecordingResponse{}
@@ -5936,6 +7209,11 @@ func (client *Client) DescribeRecording(request *DescribeRecordingRequest) (_res
 	return _result, _err
 }
 
+// @param request - DescribeStatisticalDataRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeStatisticalDataResponse
 func (client *Client) DescribeStatisticalDataWithOptions(request *DescribeStatisticalDataRequest, runtime *util.RuntimeOptions) (_result *DescribeStatisticalDataResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5965,6 +7243,9 @@ func (client *Client) DescribeStatisticalDataWithOptions(request *DescribeStatis
 	return _result, _err
 }
 
+// @param request - DescribeStatisticalDataRequest
+//
+// @return DescribeStatisticalDataResponse
 func (client *Client) DescribeStatisticalData(request *DescribeStatisticalDataRequest) (_result *DescribeStatisticalDataResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeStatisticalDataResponse{}
@@ -5976,6 +7257,11 @@ func (client *Client) DescribeStatisticalData(request *DescribeStatisticalDataRe
 	return _result, _err
 }
 
+// @param request - DescribeTTSConfigRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeTTSConfigResponse
 func (client *Client) DescribeTTSConfigWithOptions(request *DescribeTTSConfigRequest, runtime *util.RuntimeOptions) (_result *DescribeTTSConfigResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6005,6 +7291,9 @@ func (client *Client) DescribeTTSConfigWithOptions(request *DescribeTTSConfigReq
 	return _result, _err
 }
 
+// @param request - DescribeTTSConfigRequest
+//
+// @return DescribeTTSConfigResponse
 func (client *Client) DescribeTTSConfig(request *DescribeTTSConfigRequest) (_result *DescribeTTSConfigResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeTTSConfigResponse{}
@@ -6016,6 +7305,11 @@ func (client *Client) DescribeTTSConfig(request *DescribeTTSConfigRequest) (_res
 	return _result, _err
 }
 
+// @param request - DialogueRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DialogueResponse
 func (client *Client) DialogueWithOptions(request *DialogueRequest, runtime *util.RuntimeOptions) (_result *DialogueResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6077,6 +7371,9 @@ func (client *Client) DialogueWithOptions(request *DialogueRequest, runtime *uti
 	return _result, _err
 }
 
+// @param request - DialogueRequest
+//
+// @return DialogueResponse
 func (client *Client) Dialogue(request *DialogueRequest) (_result *DialogueResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DialogueResponse{}
@@ -6088,6 +7385,11 @@ func (client *Client) Dialogue(request *DialogueRequest) (_result *DialogueRespo
 	return _result, _err
 }
 
+// @param request - DisableInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DisableInstanceResponse
 func (client *Client) DisableInstanceWithOptions(request *DisableInstanceRequest, runtime *util.RuntimeOptions) (_result *DisableInstanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6121,6 +7423,9 @@ func (client *Client) DisableInstanceWithOptions(request *DisableInstanceRequest
 	return _result, _err
 }
 
+// @param request - DisableInstanceRequest
+//
+// @return DisableInstanceResponse
 func (client *Client) DisableInstance(request *DisableInstanceRequest) (_result *DisableInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DisableInstanceResponse{}
@@ -6132,6 +7437,11 @@ func (client *Client) DisableInstance(request *DisableInstanceRequest) (_result 
 	return _result, _err
 }
 
+// @param request - EnableInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return EnableInstanceResponse
 func (client *Client) EnableInstanceWithOptions(request *EnableInstanceRequest, runtime *util.RuntimeOptions) (_result *EnableInstanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6165,6 +7475,9 @@ func (client *Client) EnableInstanceWithOptions(request *EnableInstanceRequest, 
 	return _result, _err
 }
 
+// @param request - EnableInstanceRequest
+//
+// @return EnableInstanceResponse
 func (client *Client) EnableInstance(request *EnableInstanceRequest) (_result *EnableInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &EnableInstanceResponse{}
@@ -6176,6 +7489,11 @@ func (client *Client) EnableInstance(request *EnableInstanceRequest) (_result *E
 	return _result, _err
 }
 
+// @param request - EndDialogueRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return EndDialogueResponse
 func (client *Client) EndDialogueWithOptions(request *EndDialogueRequest, runtime *util.RuntimeOptions) (_result *EndDialogueResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6221,6 +7539,9 @@ func (client *Client) EndDialogueWithOptions(request *EndDialogueRequest, runtim
 	return _result, _err
 }
 
+// @param request - EndDialogueRequest
+//
+// @return EndDialogueResponse
 func (client *Client) EndDialogue(request *EndDialogueRequest) (_result *EndDialogueResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &EndDialogueResponse{}
@@ -6232,6 +7553,11 @@ func (client *Client) EndDialogue(request *EndDialogueRequest) (_result *EndDial
 	return _result, _err
 }
 
+// @param request - ExportConversationDetailsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ExportConversationDetailsResponse
 func (client *Client) ExportConversationDetailsWithOptions(request *ExportConversationDetailsRequest, runtime *util.RuntimeOptions) (_result *ExportConversationDetailsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6293,6 +7619,9 @@ func (client *Client) ExportConversationDetailsWithOptions(request *ExportConver
 	return _result, _err
 }
 
+// @param request - ExportConversationDetailsRequest
+//
+// @return ExportConversationDetailsResponse
 func (client *Client) ExportConversationDetails(request *ExportConversationDetailsRequest) (_result *ExportConversationDetailsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ExportConversationDetailsResponse{}
@@ -6304,6 +7633,11 @@ func (client *Client) ExportConversationDetails(request *ExportConversationDetai
 	return _result, _err
 }
 
+// @param request - ExportStatisticalDataRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ExportStatisticalDataResponse
 func (client *Client) ExportStatisticalDataWithOptions(request *ExportStatisticalDataRequest, runtime *util.RuntimeOptions) (_result *ExportStatisticalDataResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6353,6 +7687,9 @@ func (client *Client) ExportStatisticalDataWithOptions(request *ExportStatistica
 	return _result, _err
 }
 
+// @param request - ExportStatisticalDataRequest
+//
+// @return ExportStatisticalDataResponse
 func (client *Client) ExportStatisticalData(request *ExportStatisticalDataRequest) (_result *ExportStatisticalDataResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ExportStatisticalDataResponse{}
@@ -6364,6 +7701,11 @@ func (client *Client) ExportStatisticalData(request *ExportStatisticalDataReques
 	return _result, _err
 }
 
+// @param request - GenerateUploadUrlRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GenerateUploadUrlResponse
 func (client *Client) GenerateUploadUrlWithOptions(request *GenerateUploadUrlRequest, runtime *util.RuntimeOptions) (_result *GenerateUploadUrlResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6489,6 +7831,9 @@ func (client *Client) GenerateUploadUrlWithOptions(request *GenerateUploadUrlReq
 	return _result, _err
 }
 
+// @param request - GenerateUploadUrlRequest
+//
+// @return GenerateUploadUrlResponse
 func (client *Client) GenerateUploadUrl(request *GenerateUploadUrlRequest) (_result *GenerateUploadUrlResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GenerateUploadUrlResponse{}
@@ -6500,6 +7845,11 @@ func (client *Client) GenerateUploadUrl(request *GenerateUploadUrlRequest) (_res
 	return _result, _err
 }
 
+// @param request - GetAsrConfigRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAsrConfigResponse
 func (client *Client) GetAsrConfigWithOptions(request *GetAsrConfigRequest, runtime *util.RuntimeOptions) (_result *GetAsrConfigResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6537,6 +7887,9 @@ func (client *Client) GetAsrConfigWithOptions(request *GetAsrConfigRequest, runt
 	return _result, _err
 }
 
+// @param request - GetAsrConfigRequest
+//
+// @return GetAsrConfigResponse
 func (client *Client) GetAsrConfig(request *GetAsrConfigRequest) (_result *GetAsrConfigResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetAsrConfigResponse{}
@@ -6548,6 +7901,11 @@ func (client *Client) GetAsrConfig(request *GetAsrConfigRequest) (_result *GetAs
 	return _result, _err
 }
 
+// @param request - GetRealTimeConcurrencyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetRealTimeConcurrencyResponse
 func (client *Client) GetRealTimeConcurrencyWithOptions(request *GetRealTimeConcurrencyRequest, runtime *util.RuntimeOptions) (_result *GetRealTimeConcurrencyResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6577,6 +7935,9 @@ func (client *Client) GetRealTimeConcurrencyWithOptions(request *GetRealTimeConc
 	return _result, _err
 }
 
+// @param request - GetRealTimeConcurrencyRequest
+//
+// @return GetRealTimeConcurrencyResponse
 func (client *Client) GetRealTimeConcurrency(request *GetRealTimeConcurrencyRequest) (_result *GetRealTimeConcurrencyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetRealTimeConcurrencyResponse{}
@@ -6588,6 +7949,11 @@ func (client *Client) GetRealTimeConcurrency(request *GetRealTimeConcurrencyRequ
 	return _result, _err
 }
 
+// @param request - ListChatbotInstancesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListChatbotInstancesResponse
 func (client *Client) ListChatbotInstancesWithOptions(request *ListChatbotInstancesRequest, runtime *util.RuntimeOptions) (_result *ListChatbotInstancesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6617,6 +7983,9 @@ func (client *Client) ListChatbotInstancesWithOptions(request *ListChatbotInstan
 	return _result, _err
 }
 
+// @param request - ListChatbotInstancesRequest
+//
+// @return ListChatbotInstancesResponse
 func (client *Client) ListChatbotInstances(request *ListChatbotInstancesRequest) (_result *ListChatbotInstancesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListChatbotInstancesResponse{}
@@ -6628,6 +7997,11 @@ func (client *Client) ListChatbotInstances(request *ListChatbotInstancesRequest)
 	return _result, _err
 }
 
+// @param request - ListConversationDetailsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListConversationDetailsResponse
 func (client *Client) ListConversationDetailsWithOptions(request *ListConversationDetailsRequest, runtime *util.RuntimeOptions) (_result *ListConversationDetailsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6657,6 +8031,9 @@ func (client *Client) ListConversationDetailsWithOptions(request *ListConversati
 	return _result, _err
 }
 
+// @param request - ListConversationDetailsRequest
+//
+// @return ListConversationDetailsResponse
 func (client *Client) ListConversationDetails(request *ListConversationDetailsRequest) (_result *ListConversationDetailsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListConversationDetailsResponse{}
@@ -6668,6 +8045,11 @@ func (client *Client) ListConversationDetails(request *ListConversationDetailsRe
 	return _result, _err
 }
 
+// @param request - ListConversationsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListConversationsResponse
 func (client *Client) ListConversationsWithOptions(request *ListConversationsRequest, runtime *util.RuntimeOptions) (_result *ListConversationsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6697,6 +8079,9 @@ func (client *Client) ListConversationsWithOptions(request *ListConversationsReq
 	return _result, _err
 }
 
+// @param request - ListConversationsRequest
+//
+// @return ListConversationsResponse
 func (client *Client) ListConversations(request *ListConversationsRequest) (_result *ListConversationsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListConversationsResponse{}
@@ -6708,6 +8093,11 @@ func (client *Client) ListConversations(request *ListConversationsRequest) (_res
 	return _result, _err
 }
 
+// @param request - ListDownloadTasksRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListDownloadTasksResponse
 func (client *Client) ListDownloadTasksWithOptions(request *ListDownloadTasksRequest, runtime *util.RuntimeOptions) (_result *ListDownloadTasksResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6737,6 +8127,9 @@ func (client *Client) ListDownloadTasksWithOptions(request *ListDownloadTasksReq
 	return _result, _err
 }
 
+// @param request - ListDownloadTasksRequest
+//
+// @return ListDownloadTasksResponse
 func (client *Client) ListDownloadTasks(request *ListDownloadTasksRequest) (_result *ListDownloadTasksResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListDownloadTasksResponse{}
@@ -6748,6 +8141,11 @@ func (client *Client) ListDownloadTasks(request *ListDownloadTasksRequest) (_res
 	return _result, _err
 }
 
+// @param request - ListInstancesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListInstancesResponse
 func (client *Client) ListInstancesWithOptions(request *ListInstancesRequest, runtime *util.RuntimeOptions) (_result *ListInstancesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6777,6 +8175,9 @@ func (client *Client) ListInstancesWithOptions(request *ListInstancesRequest, ru
 	return _result, _err
 }
 
+// @param request - ListInstancesRequest
+//
+// @return ListInstancesResponse
 func (client *Client) ListInstances(request *ListInstancesRequest) (_result *ListInstancesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListInstancesResponse{}
@@ -6788,6 +8189,11 @@ func (client *Client) ListInstances(request *ListInstancesRequest) (_result *Lis
 	return _result, _err
 }
 
+// @param request - ModifyAsrConfigRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyAsrConfigResponse
 func (client *Client) ModifyAsrConfigWithOptions(request *ModifyAsrConfigRequest, runtime *util.RuntimeOptions) (_result *ModifyAsrConfigResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6841,6 +8247,9 @@ func (client *Client) ModifyAsrConfigWithOptions(request *ModifyAsrConfigRequest
 	return _result, _err
 }
 
+// @param request - ModifyAsrConfigRequest
+//
+// @return ModifyAsrConfigResponse
 func (client *Client) ModifyAsrConfig(request *ModifyAsrConfigRequest) (_result *ModifyAsrConfigResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyAsrConfigResponse{}
@@ -6852,6 +8261,11 @@ func (client *Client) ModifyAsrConfig(request *ModifyAsrConfigRequest) (_result 
 	return _result, _err
 }
 
+// @param request - ModifyGreetingConfigRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyGreetingConfigResponse
 func (client *Client) ModifyGreetingConfigWithOptions(request *ModifyGreetingConfigRequest, runtime *util.RuntimeOptions) (_result *ModifyGreetingConfigResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6897,6 +8311,9 @@ func (client *Client) ModifyGreetingConfigWithOptions(request *ModifyGreetingCon
 	return _result, _err
 }
 
+// @param request - ModifyGreetingConfigRequest
+//
+// @return ModifyGreetingConfigResponse
 func (client *Client) ModifyGreetingConfig(request *ModifyGreetingConfigRequest) (_result *ModifyGreetingConfigResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyGreetingConfigResponse{}
@@ -6908,6 +8325,11 @@ func (client *Client) ModifyGreetingConfig(request *ModifyGreetingConfigRequest)
 	return _result, _err
 }
 
+// @param request - ModifyInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyInstanceResponse
 func (client *Client) ModifyInstanceWithOptions(request *ModifyInstanceRequest, runtime *util.RuntimeOptions) (_result *ModifyInstanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6953,6 +8375,9 @@ func (client *Client) ModifyInstanceWithOptions(request *ModifyInstanceRequest, 
 	return _result, _err
 }
 
+// @param request - ModifyInstanceRequest
+//
+// @return ModifyInstanceResponse
 func (client *Client) ModifyInstance(request *ModifyInstanceRequest) (_result *ModifyInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyInstanceResponse{}
@@ -6964,6 +8389,11 @@ func (client *Client) ModifyInstance(request *ModifyInstanceRequest) (_result *M
 	return _result, _err
 }
 
+// @param request - ModifySilenceTimeoutConfigRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifySilenceTimeoutConfigResponse
 func (client *Client) ModifySilenceTimeoutConfigWithOptions(request *ModifySilenceTimeoutConfigRequest, runtime *util.RuntimeOptions) (_result *ModifySilenceTimeoutConfigResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7029,6 +8459,9 @@ func (client *Client) ModifySilenceTimeoutConfigWithOptions(request *ModifySilen
 	return _result, _err
 }
 
+// @param request - ModifySilenceTimeoutConfigRequest
+//
+// @return ModifySilenceTimeoutConfigResponse
 func (client *Client) ModifySilenceTimeoutConfig(request *ModifySilenceTimeoutConfigRequest) (_result *ModifySilenceTimeoutConfigResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifySilenceTimeoutConfigResponse{}
@@ -7040,12 +8473,21 @@ func (client *Client) ModifySilenceTimeoutConfig(request *ModifySilenceTimeoutCo
 	return _result, _err
 }
 
+// @param request - ModifyTTSConfigRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyTTSConfigResponse
 func (client *Client) ModifyTTSConfigWithOptions(request *ModifyTTSConfigRequest, runtime *util.RuntimeOptions) (_result *ModifyTTSConfigResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AliCustomizedVoice)) {
+		query["AliCustomizedVoice"] = request.AliCustomizedVoice
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.AppKey)) {
 		query["AppKey"] = request.AppKey
 	}
@@ -7101,6 +8543,9 @@ func (client *Client) ModifyTTSConfigWithOptions(request *ModifyTTSConfigRequest
 	return _result, _err
 }
 
+// @param request - ModifyTTSConfigRequest
+//
+// @return ModifyTTSConfigResponse
 func (client *Client) ModifyTTSConfig(request *ModifyTTSConfigRequest) (_result *ModifyTTSConfigResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyTTSConfigResponse{}
@@ -7112,6 +8557,11 @@ func (client *Client) ModifyTTSConfig(request *ModifyTTSConfigRequest) (_result 
 	return _result, _err
 }
 
+// @param request - ModifyUnrecognizingConfigRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyUnrecognizingConfigResponse
 func (client *Client) ModifyUnrecognizingConfigWithOptions(request *ModifyUnrecognizingConfigRequest, runtime *util.RuntimeOptions) (_result *ModifyUnrecognizingConfigResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7165,6 +8615,9 @@ func (client *Client) ModifyUnrecognizingConfigWithOptions(request *ModifyUnreco
 	return _result, _err
 }
 
+// @param request - ModifyUnrecognizingConfigRequest
+//
+// @return ModifyUnrecognizingConfigResponse
 func (client *Client) ModifyUnrecognizingConfig(request *ModifyUnrecognizingConfigRequest) (_result *ModifyUnrecognizingConfigResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyUnrecognizingConfigResponse{}
@@ -7176,6 +8629,11 @@ func (client *Client) ModifyUnrecognizingConfig(request *ModifyUnrecognizingConf
 	return _result, _err
 }
 
+// @param request - QueryConversationsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryConversationsResponse
 func (client *Client) QueryConversationsWithOptions(request *QueryConversationsRequest, runtime *util.RuntimeOptions) (_result *QueryConversationsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7205,6 +8663,9 @@ func (client *Client) QueryConversationsWithOptions(request *QueryConversationsR
 	return _result, _err
 }
 
+// @param request - QueryConversationsRequest
+//
+// @return QueryConversationsResponse
 func (client *Client) QueryConversations(request *QueryConversationsRequest) (_result *QueryConversationsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryConversationsResponse{}
@@ -7216,6 +8677,11 @@ func (client *Client) QueryConversations(request *QueryConversationsRequest) (_r
 	return _result, _err
 }
 
+// @param request - SaveRecordingRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SaveRecordingResponse
 func (client *Client) SaveRecordingWithOptions(request *SaveRecordingRequest, runtime *util.RuntimeOptions) (_result *SaveRecordingResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7281,6 +8747,9 @@ func (client *Client) SaveRecordingWithOptions(request *SaveRecordingRequest, ru
 	return _result, _err
 }
 
+// @param request - SaveRecordingRequest
+//
+// @return SaveRecordingResponse
 func (client *Client) SaveRecording(request *SaveRecordingRequest) (_result *SaveRecordingResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SaveRecordingResponse{}
@@ -7292,6 +8761,11 @@ func (client *Client) SaveRecording(request *SaveRecordingRequest) (_result *Sav
 	return _result, _err
 }
 
+// @param request - SilenceTimeoutRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SilenceTimeoutResponse
 func (client *Client) SilenceTimeoutWithOptions(request *SilenceTimeoutRequest, runtime *util.RuntimeOptions) (_result *SilenceTimeoutResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7337,6 +8811,9 @@ func (client *Client) SilenceTimeoutWithOptions(request *SilenceTimeoutRequest, 
 	return _result, _err
 }
 
+// @param request - SilenceTimeoutRequest
+//
+// @return SilenceTimeoutResponse
 func (client *Client) SilenceTimeout(request *SilenceTimeoutRequest) (_result *SilenceTimeoutResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SilenceTimeoutResponse{}
