@@ -1,3 +1,25 @@
+2024-07-22 Version: v4.19.0
+- Support API CreateChangeRequest.
+- Support API ExportInsightCustomValue.
+- Support API ExportInsightExpectedWorkTime.
+- Support API ExportInsightField.
+- Support API ExportInsightSpace.
+- Support API ExportInsightSpaceRef.
+- Support API ExportInsightSprint.
+- Support API ExportInsightTagRef.
+- Support API ExportInsightWorkTime.
+- Support API ExportInsightWorkitemStatus.
+- Support API ExportInsightWorkitemStatusJoinWorkitemDefectExtra.
+- Support API ExportInsightWorkitemVersion.
+- Support API ExportWorkitemActivity.
+- Support API ListAllReleaseWorkflows.
+- Support API ListAppReleaseStageExecutionIntegratedMetadata.
+- Support API ListAppReleaseStageExecutions.
+- Support API ListChangeRequestWorkflowExecutions.
+- Support API ListChangeRequests.
+- Support API UpdateOrganizationMember.
+
+
 2024-04-25 Version: v4.18.5
 - Update API CreateWorkitem: update response param.
 - Update API GetApplication: update response param.
