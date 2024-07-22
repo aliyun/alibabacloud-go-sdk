@@ -8766,6 +8766,252 @@ func (s *ListServiceInstancesResponse) SetBody(v *ListServiceInstancesResponseBo
 	return s
 }
 
+type ListServiceSharedAccountsRequest struct {
+	Filter []*ListServiceSharedAccountsRequestFilter `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 20
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// example:
+	//
+	// AAAAAR130adlM4fHHVSWpTca/t4=
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// example:
+	//
+	// Accessible
+	Permission *string `json:"Permission,omitempty" xml:"Permission,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// service-e10349089de34exxxxxx
+	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+}
+
+func (s ListServiceSharedAccountsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListServiceSharedAccountsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListServiceSharedAccountsRequest) SetFilter(v []*ListServiceSharedAccountsRequestFilter) *ListServiceSharedAccountsRequest {
+	s.Filter = v
+	return s
+}
+
+func (s *ListServiceSharedAccountsRequest) SetMaxResults(v int32) *ListServiceSharedAccountsRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListServiceSharedAccountsRequest) SetNextToken(v string) *ListServiceSharedAccountsRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListServiceSharedAccountsRequest) SetPermission(v string) *ListServiceSharedAccountsRequest {
+	s.Permission = &v
+	return s
+}
+
+func (s *ListServiceSharedAccountsRequest) SetRegionId(v string) *ListServiceSharedAccountsRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ListServiceSharedAccountsRequest) SetServiceId(v string) *ListServiceSharedAccountsRequest {
+	s.ServiceId = &v
+	return s
+}
+
+type ListServiceSharedAccountsRequestFilter struct {
+	// example:
+	//
+	// UserAliUid
+	Name  *string   `json:"Name,omitempty" xml:"Name,omitempty"`
+	Value []*string `json:"Value,omitempty" xml:"Value,omitempty" type:"Repeated"`
+}
+
+func (s ListServiceSharedAccountsRequestFilter) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListServiceSharedAccountsRequestFilter) GoString() string {
+	return s.String()
+}
+
+func (s *ListServiceSharedAccountsRequestFilter) SetName(v string) *ListServiceSharedAccountsRequestFilter {
+	s.Name = &v
+	return s
+}
+
+func (s *ListServiceSharedAccountsRequestFilter) SetValue(v []*string) *ListServiceSharedAccountsRequestFilter {
+	s.Value = v
+	return s
+}
+
+type ListServiceSharedAccountsResponseBody struct {
+	// example:
+	//
+	// 20
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// example:
+	//
+	// AAAAAWns8w4MmhzeptXVRG0PUEU=
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// example:
+	//
+	// CA3AE512-6D30-549A-B52D-B9042CA8D515
+	RequestId    *string                                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ShareAccount []*ListServiceSharedAccountsResponseBodyShareAccount `json:"ShareAccount,omitempty" xml:"ShareAccount,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListServiceSharedAccountsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListServiceSharedAccountsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListServiceSharedAccountsResponseBody) SetMaxResults(v int32) *ListServiceSharedAccountsResponseBody {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListServiceSharedAccountsResponseBody) SetNextToken(v string) *ListServiceSharedAccountsResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListServiceSharedAccountsResponseBody) SetRequestId(v string) *ListServiceSharedAccountsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListServiceSharedAccountsResponseBody) SetShareAccount(v []*ListServiceSharedAccountsResponseBodyShareAccount) *ListServiceSharedAccountsResponseBody {
+	s.ShareAccount = v
+	return s
+}
+
+func (s *ListServiceSharedAccountsResponseBody) SetTotalCount(v int32) *ListServiceSharedAccountsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListServiceSharedAccountsResponseBodyShareAccount struct {
+	// example:
+	//
+	// 2021-12-28T02:47:46.000
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// logo
+	Logo *string `json:"Logo,omitempty" xml:"Logo,omitempty"`
+	// example:
+	//
+	// name
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// Deployable
+	Permission *string `json:"Permission,omitempty" xml:"Permission,omitempty"`
+	// example:
+	//
+	// service-e10349089de34exxxxxx
+	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	// example:
+	//
+	// 2023-02-13T02:16:03.756Z
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// example:
+	//
+	// 127383705xxxxxx
+	UserAliUid *string `json:"UserAliUid,omitempty" xml:"UserAliUid,omitempty"`
+}
+
+func (s ListServiceSharedAccountsResponseBodyShareAccount) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListServiceSharedAccountsResponseBodyShareAccount) GoString() string {
+	return s.String()
+}
+
+func (s *ListServiceSharedAccountsResponseBodyShareAccount) SetCreateTime(v string) *ListServiceSharedAccountsResponseBodyShareAccount {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ListServiceSharedAccountsResponseBodyShareAccount) SetLogo(v string) *ListServiceSharedAccountsResponseBodyShareAccount {
+	s.Logo = &v
+	return s
+}
+
+func (s *ListServiceSharedAccountsResponseBodyShareAccount) SetName(v string) *ListServiceSharedAccountsResponseBodyShareAccount {
+	s.Name = &v
+	return s
+}
+
+func (s *ListServiceSharedAccountsResponseBodyShareAccount) SetPermission(v string) *ListServiceSharedAccountsResponseBodyShareAccount {
+	s.Permission = &v
+	return s
+}
+
+func (s *ListServiceSharedAccountsResponseBodyShareAccount) SetServiceId(v string) *ListServiceSharedAccountsResponseBodyShareAccount {
+	s.ServiceId = &v
+	return s
+}
+
+func (s *ListServiceSharedAccountsResponseBodyShareAccount) SetUpdateTime(v string) *ListServiceSharedAccountsResponseBodyShareAccount {
+	s.UpdateTime = &v
+	return s
+}
+
+func (s *ListServiceSharedAccountsResponseBodyShareAccount) SetUserAliUid(v string) *ListServiceSharedAccountsResponseBodyShareAccount {
+	s.UserAliUid = &v
+	return s
+}
+
+type ListServiceSharedAccountsResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListServiceSharedAccountsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListServiceSharedAccountsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListServiceSharedAccountsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListServiceSharedAccountsResponse) SetHeaders(v map[string]*string) *ListServiceSharedAccountsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListServiceSharedAccountsResponse) SetStatusCode(v int32) *ListServiceSharedAccountsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListServiceSharedAccountsResponse) SetBody(v *ListServiceSharedAccountsResponseBody) *ListServiceSharedAccountsResponse {
+	s.Body = v
+	return s
+}
+
 type ListServiceUsagesRequest struct {
 	// The filter.
 	Filter []*ListServiceUsagesRequestFilter `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Repeated"`
@@ -10564,6 +10810,113 @@ func (s *ReleaseArtifactResponse) SetStatusCode(v int32) *ReleaseArtifactRespons
 }
 
 func (s *ReleaseArtifactResponse) SetBody(v *ReleaseArtifactResponseBody) *ReleaseArtifactResponse {
+	s.Body = v
+	return s
+}
+
+type RemoveServiceSharedAccountsRequest struct {
+	// example:
+	//
+	// 10CM943JP0EN9D51H
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// service-0e6fca6a51a54420****
+	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	// example:
+	//
+	// SharedAccount
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// This parameter is required.
+	UserAliUids []*int64 `json:"UserAliUids,omitempty" xml:"UserAliUids,omitempty" type:"Repeated"`
+}
+
+func (s RemoveServiceSharedAccountsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RemoveServiceSharedAccountsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RemoveServiceSharedAccountsRequest) SetClientToken(v string) *RemoveServiceSharedAccountsRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *RemoveServiceSharedAccountsRequest) SetRegionId(v string) *RemoveServiceSharedAccountsRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *RemoveServiceSharedAccountsRequest) SetServiceId(v string) *RemoveServiceSharedAccountsRequest {
+	s.ServiceId = &v
+	return s
+}
+
+func (s *RemoveServiceSharedAccountsRequest) SetType(v string) *RemoveServiceSharedAccountsRequest {
+	s.Type = &v
+	return s
+}
+
+func (s *RemoveServiceSharedAccountsRequest) SetUserAliUids(v []*int64) *RemoveServiceSharedAccountsRequest {
+	s.UserAliUids = v
+	return s
+}
+
+type RemoveServiceSharedAccountsResponseBody struct {
+	// example:
+	//
+	// 4DB0F536-B3BE-4F0D-BD29-E83FB56D550C
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s RemoveServiceSharedAccountsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RemoveServiceSharedAccountsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RemoveServiceSharedAccountsResponseBody) SetRequestId(v string) *RemoveServiceSharedAccountsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type RemoveServiceSharedAccountsResponse struct {
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RemoveServiceSharedAccountsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s RemoveServiceSharedAccountsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RemoveServiceSharedAccountsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RemoveServiceSharedAccountsResponse) SetHeaders(v map[string]*string) *RemoveServiceSharedAccountsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RemoveServiceSharedAccountsResponse) SetStatusCode(v int32) *RemoveServiceSharedAccountsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *RemoveServiceSharedAccountsResponse) SetBody(v *RemoveServiceSharedAccountsResponseBody) *RemoveServiceSharedAccountsResponse {
 	s.Body = v
 	return s
 }
@@ -15054,6 +15407,78 @@ func (client *Client) ListServiceInstances(request *ListServiceInstancesRequest)
 	return _result, _err
 }
 
+// @param request - ListServiceSharedAccountsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListServiceSharedAccountsResponse
+func (client *Client) ListServiceSharedAccountsWithOptions(request *ListServiceSharedAccountsRequest, runtime *util.RuntimeOptions) (_result *ListServiceSharedAccountsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Filter)) {
+		query["Filter"] = request.Filter
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Permission)) {
+		query["Permission"] = request.Permission
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceId)) {
+		query["ServiceId"] = request.ServiceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListServiceSharedAccounts"),
+		Version:     tea.String("2021-05-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListServiceSharedAccountsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - ListServiceSharedAccountsRequest
+//
+// @return ListServiceSharedAccountsResponse
+func (client *Client) ListServiceSharedAccounts(request *ListServiceSharedAccountsRequest) (_result *ListServiceSharedAccountsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListServiceSharedAccountsResponse{}
+	_body, _err := client.ListServiceSharedAccountsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 // Summary:
 //
 // Queries the applications for using a service.
@@ -15539,6 +15964,74 @@ func (client *Client) ReleaseArtifact(request *ReleaseArtifactRequest) (_result 
 	runtime := &util.RuntimeOptions{}
 	_result = &ReleaseArtifactResponse{}
 	_body, _err := client.ReleaseArtifactWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param request - RemoveServiceSharedAccountsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RemoveServiceSharedAccountsResponse
+func (client *Client) RemoveServiceSharedAccountsWithOptions(request *RemoveServiceSharedAccountsRequest, runtime *util.RuntimeOptions) (_result *RemoveServiceSharedAccountsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceId)) {
+		query["ServiceId"] = request.ServiceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		query["Type"] = request.Type
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserAliUids)) {
+		query["UserAliUids"] = request.UserAliUids
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RemoveServiceSharedAccounts"),
+		Version:     tea.String("2021-05-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &RemoveServiceSharedAccountsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - RemoveServiceSharedAccountsRequest
+//
+// @return RemoveServiceSharedAccountsResponse
+func (client *Client) RemoveServiceSharedAccounts(request *RemoveServiceSharedAccountsRequest) (_result *RemoveServiceSharedAccountsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &RemoveServiceSharedAccountsResponse{}
+	_body, _err := client.RemoveServiceSharedAccountsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
