@@ -18378,10 +18378,6 @@ func (s *ListExtendfilesResponseBody) SetResult(v []*ListExtendfilesResponseBody
 
 type ListExtendfilesResponseBodyResult struct {
 	// The path of the driver file.
-	//
-	// example:
-	//
-	// /ssd/1/share/ls-cn-oew1qbgl****/logstash/current/config/custom/mysql-connector-java-5.1.35.jar
 	FilePath *string `json:"filePath,omitempty" xml:"filePath,omitempty"`
 	// The size of the driver file.
 	//
@@ -21452,10 +21448,6 @@ func (s *ListLogstashLogResponseBody) SetResult(v []*ListLogstashLogResponseBody
 
 type ListLogstashLogResponseBodyResult struct {
 	// The IP address of the node that generates the log.
-	//
-	// example:
-	//
-	// [logstash.outputs.fileextend] Opening file {:path=>\\"/ssd/1/ls-cn-v0h1kzca****/logstash/logs/debug/test\\"}
 	Content *string `json:"content,omitempty" xml:"content,omitempty"`
 	// example:
 	//
