@@ -7119,7 +7119,8 @@ type DescribeDataObjectsResponseBodyItems struct {
 	// example:
 	//
 	// 5
-	ProductId *int64 `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
+	ProductId *int64  `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
+	RegionId  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// example:
 	//
 	// cn-hangzhou
@@ -7210,6 +7211,11 @@ func (s *DescribeDataObjectsResponseBodyItems) SetProductCode(v string) *Describ
 
 func (s *DescribeDataObjectsResponseBodyItems) SetProductId(v int64) *DescribeDataObjectsResponseBodyItems {
 	s.ProductId = &v
+	return s
+}
+
+func (s *DescribeDataObjectsResponseBodyItems) SetRegionId(v string) *DescribeDataObjectsResponseBodyItems {
+	s.RegionId = &v
 	return s
 }
 
