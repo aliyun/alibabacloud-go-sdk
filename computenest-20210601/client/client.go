@@ -9,6 +9,95 @@ import (
 	"github.com/alibabacloud-go/tea/tea"
 )
 
+type CancelServiceUsageRequest struct {
+	// example:
+	//
+	// 123e4567-e89b-12d3-a456-426655440000
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// example:
+	//
+	// true
+	NeedDelete *bool `json:"NeedDelete,omitempty" xml:"NeedDelete,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// service-d6fc5f949a9246xxxxxx
+	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+}
+
+func (s CancelServiceUsageRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CancelServiceUsageRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CancelServiceUsageRequest) SetClientToken(v string) *CancelServiceUsageRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *CancelServiceUsageRequest) SetNeedDelete(v bool) *CancelServiceUsageRequest {
+	s.NeedDelete = &v
+	return s
+}
+
+func (s *CancelServiceUsageRequest) SetServiceId(v string) *CancelServiceUsageRequest {
+	s.ServiceId = &v
+	return s
+}
+
+type CancelServiceUsageResponseBody struct {
+	// example:
+	//
+	// 4DB0F536-B3BE-4F0D-BD29-E83FB56D550C
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CancelServiceUsageResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CancelServiceUsageResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CancelServiceUsageResponseBody) SetRequestId(v string) *CancelServiceUsageResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CancelServiceUsageResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CancelServiceUsageResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CancelServiceUsageResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CancelServiceUsageResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CancelServiceUsageResponse) SetHeaders(v map[string]*string) *CancelServiceUsageResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CancelServiceUsageResponse) SetStatusCode(v int32) *CancelServiceUsageResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CancelServiceUsageResponse) SetBody(v *CancelServiceUsageResponseBody) *CancelServiceUsageResponse {
+	s.Body = v
+	return s
+}
+
 type ChangeResourceGroupRequest struct {
 	// The ID of the new resource group.
 	//
@@ -1250,6 +1339,129 @@ func (s *CreateServiceInstanceResponse) SetStatusCode(v int32) *CreateServiceIns
 }
 
 func (s *CreateServiceInstanceResponse) SetBody(v *CreateServiceInstanceResponseBody) *CreateServiceInstanceResponse {
+	s.Body = v
+	return s
+}
+
+type CreateServiceUsageRequest struct {
+	// example:
+	//
+	// 123e4567-e89b-12d3-a456-426655440000
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// service-d6fc5f949a9246xxxxxx
+	ServiceId       *string            `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	UserInformation map[string]*string `json:"UserInformation,omitempty" xml:"UserInformation,omitempty"`
+}
+
+func (s CreateServiceUsageRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateServiceUsageRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateServiceUsageRequest) SetClientToken(v string) *CreateServiceUsageRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *CreateServiceUsageRequest) SetServiceId(v string) *CreateServiceUsageRequest {
+	s.ServiceId = &v
+	return s
+}
+
+func (s *CreateServiceUsageRequest) SetUserInformation(v map[string]*string) *CreateServiceUsageRequest {
+	s.UserInformation = v
+	return s
+}
+
+type CreateServiceUsageShrinkRequest struct {
+	// example:
+	//
+	// 123e4567-e89b-12d3-a456-426655440000
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// service-d6fc5f949a9246xxxxxx
+	ServiceId             *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	UserInformationShrink *string `json:"UserInformation,omitempty" xml:"UserInformation,omitempty"`
+}
+
+func (s CreateServiceUsageShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateServiceUsageShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateServiceUsageShrinkRequest) SetClientToken(v string) *CreateServiceUsageShrinkRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *CreateServiceUsageShrinkRequest) SetServiceId(v string) *CreateServiceUsageShrinkRequest {
+	s.ServiceId = &v
+	return s
+}
+
+func (s *CreateServiceUsageShrinkRequest) SetUserInformationShrink(v string) *CreateServiceUsageShrinkRequest {
+	s.UserInformationShrink = &v
+	return s
+}
+
+type CreateServiceUsageResponseBody struct {
+	// example:
+	//
+	// 4DB0F536-B3BE-4F0D-BD29-E83FB56D550C
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateServiceUsageResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateServiceUsageResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateServiceUsageResponseBody) SetRequestId(v string) *CreateServiceUsageResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateServiceUsageResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateServiceUsageResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateServiceUsageResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateServiceUsageResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateServiceUsageResponse) SetHeaders(v map[string]*string) *CreateServiceUsageResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateServiceUsageResponse) SetStatusCode(v int32) *CreateServiceUsageResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateServiceUsageResponse) SetBody(v *CreateServiceUsageResponseBody) *CreateServiceUsageResponse {
 	s.Body = v
 	return s
 }
@@ -4000,6 +4212,64 @@ func (s *GetServiceTemplateParameterConstraintsResponse) SetBody(v *GetServiceTe
 	return s
 }
 
+type ListServiceCategoriesResponseBody struct {
+	// The category list of the service.
+	Categories []*string `json:"Categories,omitempty" xml:"Categories,omitempty" type:"Repeated"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 13FE89A5-C036-56BF-A0FF-A31C59819FD7
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListServiceCategoriesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListServiceCategoriesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListServiceCategoriesResponseBody) SetCategories(v []*string) *ListServiceCategoriesResponseBody {
+	s.Categories = v
+	return s
+}
+
+func (s *ListServiceCategoriesResponseBody) SetRequestId(v string) *ListServiceCategoriesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListServiceCategoriesResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListServiceCategoriesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListServiceCategoriesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListServiceCategoriesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListServiceCategoriesResponse) SetHeaders(v map[string]*string) *ListServiceCategoriesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListServiceCategoriesResponse) SetStatusCode(v int32) *ListServiceCategoriesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListServiceCategoriesResponse) SetBody(v *ListServiceCategoriesResponseBody) *ListServiceCategoriesResponse {
+	s.Body = v
+	return s
+}
+
 type ListServiceInstanceLogsRequest struct {
 	// The log source. Valid values:
 	//
@@ -5499,6 +5769,220 @@ func (s *ListServiceInstancesResponse) SetBody(v *ListServiceInstancesResponseBo
 	return s
 }
 
+type ListServiceUsagesRequest struct {
+	Filter []*ListServiceUsagesRequestFilter `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 20
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// example:
+	//
+	// AAAAAWns8w4MmhzeptXVRG0PUEU=
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+}
+
+func (s ListServiceUsagesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListServiceUsagesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListServiceUsagesRequest) SetFilter(v []*ListServiceUsagesRequestFilter) *ListServiceUsagesRequest {
+	s.Filter = v
+	return s
+}
+
+func (s *ListServiceUsagesRequest) SetMaxResults(v int32) *ListServiceUsagesRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListServiceUsagesRequest) SetNextToken(v string) *ListServiceUsagesRequest {
+	s.NextToken = &v
+	return s
+}
+
+type ListServiceUsagesRequestFilter struct {
+	// example:
+	//
+	// ServiceId
+	Name  *string   `json:"Name,omitempty" xml:"Name,omitempty"`
+	Value []*string `json:"Value,omitempty" xml:"Value,omitempty" type:"Repeated"`
+}
+
+func (s ListServiceUsagesRequestFilter) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListServiceUsagesRequestFilter) GoString() string {
+	return s.String()
+}
+
+func (s *ListServiceUsagesRequestFilter) SetName(v string) *ListServiceUsagesRequestFilter {
+	s.Name = &v
+	return s
+}
+
+func (s *ListServiceUsagesRequestFilter) SetValue(v []*string) *ListServiceUsagesRequestFilter {
+	s.Value = v
+	return s
+}
+
+type ListServiceUsagesResponseBody struct {
+	// example:
+	//
+	// 20
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// example:
+	//
+	// AAAAAYChudnQUoBH+mGWFpb6oP0=
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// example:
+	//
+	// 18AD0960-A9FE-1AC8-ADF8-22131Fxxxxxx
+	RequestId     *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ServiceUsages []*ListServiceUsagesResponseBodyServiceUsages `json:"ServiceUsages,omitempty" xml:"ServiceUsages,omitempty" type:"Repeated"`
+}
+
+func (s ListServiceUsagesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListServiceUsagesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListServiceUsagesResponseBody) SetMaxResults(v int32) *ListServiceUsagesResponseBody {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListServiceUsagesResponseBody) SetNextToken(v string) *ListServiceUsagesResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListServiceUsagesResponseBody) SetRequestId(v string) *ListServiceUsagesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListServiceUsagesResponseBody) SetServiceUsages(v []*ListServiceUsagesResponseBodyServiceUsages) *ListServiceUsagesResponseBody {
+	s.ServiceUsages = v
+	return s
+}
+
+type ListServiceUsagesResponseBodyServiceUsages struct {
+	Comments *string `json:"Comments,omitempty" xml:"Comments,omitempty"`
+	// example:
+	//
+	// 2022-05-25T02:02:02Z
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// service-c9f36ec6d19b4exxxxxx
+	ServiceId   *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
+	// example:
+	//
+	// Submitted
+	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	SupplierName *string `json:"SupplierName,omitempty" xml:"SupplierName,omitempty"`
+	// example:
+	//
+	// 2022-05-25T02:02:02Z
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// example:
+	//
+	// 127383705958xxxx
+	UserAliUid      *int64             `json:"UserAliUid,omitempty" xml:"UserAliUid,omitempty"`
+	UserInformation map[string]*string `json:"UserInformation,omitempty" xml:"UserInformation,omitempty"`
+}
+
+func (s ListServiceUsagesResponseBodyServiceUsages) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListServiceUsagesResponseBodyServiceUsages) GoString() string {
+	return s.String()
+}
+
+func (s *ListServiceUsagesResponseBodyServiceUsages) SetComments(v string) *ListServiceUsagesResponseBodyServiceUsages {
+	s.Comments = &v
+	return s
+}
+
+func (s *ListServiceUsagesResponseBodyServiceUsages) SetCreateTime(v string) *ListServiceUsagesResponseBodyServiceUsages {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ListServiceUsagesResponseBodyServiceUsages) SetServiceId(v string) *ListServiceUsagesResponseBodyServiceUsages {
+	s.ServiceId = &v
+	return s
+}
+
+func (s *ListServiceUsagesResponseBodyServiceUsages) SetServiceName(v string) *ListServiceUsagesResponseBodyServiceUsages {
+	s.ServiceName = &v
+	return s
+}
+
+func (s *ListServiceUsagesResponseBodyServiceUsages) SetStatus(v string) *ListServiceUsagesResponseBodyServiceUsages {
+	s.Status = &v
+	return s
+}
+
+func (s *ListServiceUsagesResponseBodyServiceUsages) SetSupplierName(v string) *ListServiceUsagesResponseBodyServiceUsages {
+	s.SupplierName = &v
+	return s
+}
+
+func (s *ListServiceUsagesResponseBodyServiceUsages) SetUpdateTime(v string) *ListServiceUsagesResponseBodyServiceUsages {
+	s.UpdateTime = &v
+	return s
+}
+
+func (s *ListServiceUsagesResponseBodyServiceUsages) SetUserAliUid(v int64) *ListServiceUsagesResponseBodyServiceUsages {
+	s.UserAliUid = &v
+	return s
+}
+
+func (s *ListServiceUsagesResponseBodyServiceUsages) SetUserInformation(v map[string]*string) *ListServiceUsagesResponseBodyServiceUsages {
+	s.UserInformation = v
+	return s
+}
+
+type ListServiceUsagesResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListServiceUsagesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListServiceUsagesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListServiceUsagesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListServiceUsagesResponse) SetHeaders(v map[string]*string) *ListServiceUsagesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListServiceUsagesResponse) SetStatusCode(v int32) *ListServiceUsagesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListServiceUsagesResponse) SetBody(v *ListServiceUsagesResponseBody) *ListServiceUsagesResponse {
+	s.Body = v
+	return s
+}
+
 type ListTagKeysRequest struct {
 	// example:
 	//
@@ -6585,6 +7069,129 @@ func (s *UpdateServiceInstanceSpecResponse) SetBody(v *UpdateServiceInstanceSpec
 	return s
 }
 
+type UpdateServiceUsageRequest struct {
+	// example:
+	//
+	// AAAAAYChudnQUoBH+mGWFpb6oP0=
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// service-39f4f251e94843xxxxxx
+	ServiceId       *string            `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	UserInformation map[string]*string `json:"UserInformation,omitempty" xml:"UserInformation,omitempty"`
+}
+
+func (s UpdateServiceUsageRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateServiceUsageRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateServiceUsageRequest) SetClientToken(v string) *UpdateServiceUsageRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *UpdateServiceUsageRequest) SetServiceId(v string) *UpdateServiceUsageRequest {
+	s.ServiceId = &v
+	return s
+}
+
+func (s *UpdateServiceUsageRequest) SetUserInformation(v map[string]*string) *UpdateServiceUsageRequest {
+	s.UserInformation = v
+	return s
+}
+
+type UpdateServiceUsageShrinkRequest struct {
+	// example:
+	//
+	// AAAAAYChudnQUoBH+mGWFpb6oP0=
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// service-39f4f251e94843xxxxxx
+	ServiceId             *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	UserInformationShrink *string `json:"UserInformation,omitempty" xml:"UserInformation,omitempty"`
+}
+
+func (s UpdateServiceUsageShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateServiceUsageShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateServiceUsageShrinkRequest) SetClientToken(v string) *UpdateServiceUsageShrinkRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *UpdateServiceUsageShrinkRequest) SetServiceId(v string) *UpdateServiceUsageShrinkRequest {
+	s.ServiceId = &v
+	return s
+}
+
+func (s *UpdateServiceUsageShrinkRequest) SetUserInformationShrink(v string) *UpdateServiceUsageShrinkRequest {
+	s.UserInformationShrink = &v
+	return s
+}
+
+type UpdateServiceUsageResponseBody struct {
+	// example:
+	//
+	// 4DB0F536-B3BE-4F0D-BD29-E83FB56D550C
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateServiceUsageResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateServiceUsageResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateServiceUsageResponseBody) SetRequestId(v string) *UpdateServiceUsageResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateServiceUsageResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateServiceUsageResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateServiceUsageResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateServiceUsageResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateServiceUsageResponse) SetHeaders(v map[string]*string) *UpdateServiceUsageResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateServiceUsageResponse) SetStatusCode(v int32) *UpdateServiceUsageResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateServiceUsageResponse) SetBody(v *UpdateServiceUsageResponseBody) *UpdateServiceUsageResponse {
+	s.Body = v
+	return s
+}
+
 type Client struct {
 	openapi.Client
 }
@@ -6625,6 +7232,74 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	}
 
 	_body, _err := endpointutil.GetEndpointRules(productId, regionId, endpointRule, network, suffix)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 用户取消服务使用请求
+//
+// @param request - CancelServiceUsageRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CancelServiceUsageResponse
+func (client *Client) CancelServiceUsageWithOptions(request *CancelServiceUsageRequest, runtime *util.RuntimeOptions) (_result *CancelServiceUsageResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NeedDelete)) {
+		query["NeedDelete"] = request.NeedDelete
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceId)) {
+		query["ServiceId"] = request.ServiceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CancelServiceUsage"),
+		Version:     tea.String("2021-06-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CancelServiceUsageResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 用户取消服务使用请求
+//
+// @param request - CancelServiceUsageRequest
+//
+// @return CancelServiceUsageResponse
+func (client *Client) CancelServiceUsage(request *CancelServiceUsageRequest) (_result *CancelServiceUsageResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CancelServiceUsageResponse{}
+	_body, _err := client.CancelServiceUsageWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6923,6 +7598,80 @@ func (client *Client) CreateServiceInstance(request *CreateServiceInstanceReques
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateServiceInstanceResponse{}
 	_body, _err := client.CreateServiceInstanceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 用户创建服务使用请求
+//
+// @param tmpReq - CreateServiceUsageRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateServiceUsageResponse
+func (client *Client) CreateServiceUsageWithOptions(tmpReq *CreateServiceUsageRequest, runtime *util.RuntimeOptions) (_result *CreateServiceUsageResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &CreateServiceUsageShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.UserInformation)) {
+		request.UserInformationShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.UserInformation, tea.String("UserInformation"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceId)) {
+		query["ServiceId"] = request.ServiceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserInformationShrink)) {
+		query["UserInformation"] = request.UserInformationShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateServiceUsage"),
+		Version:     tea.String("2021-06-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateServiceUsageResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 用户创建服务使用请求
+//
+// @param request - CreateServiceUsageRequest
+//
+// @return CreateServiceUsageResponse
+func (client *Client) CreateServiceUsage(request *CreateServiceUsageRequest) (_result *CreateServiceUsageResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateServiceUsageResponse{}
+	_body, _err := client.CreateServiceUsageWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7444,6 +8193,53 @@ func (client *Client) GetServiceTemplateParameterConstraints(request *GetService
 
 // Summary:
 //
+// 查询服务类别
+//
+// @param request - ListServiceCategoriesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListServiceCategoriesResponse
+func (client *Client) ListServiceCategoriesWithOptions(runtime *util.RuntimeOptions) (_result *ListServiceCategoriesResponse, _err error) {
+	req := &openapi.OpenApiRequest{}
+	params := &openapi.Params{
+		Action:      tea.String("ListServiceCategories"),
+		Version:     tea.String("2021-06-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListServiceCategoriesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询服务类别
+//
+// @return ListServiceCategoriesResponse
+func (client *Client) ListServiceCategories() (_result *ListServiceCategoriesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListServiceCategoriesResponse{}
+	_body, _err := client.ListServiceCategoriesWithOptions(runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the deployment and upgrade logs of a service instance.
 //
 // @param request - ListServiceInstanceLogsRequest
@@ -7691,6 +8487,74 @@ func (client *Client) ListServiceInstances(request *ListServiceInstancesRequest)
 	runtime := &util.RuntimeOptions{}
 	_result = &ListServiceInstancesResponse{}
 	_body, _err := client.ListServiceInstancesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 用户查询服务使用申请接口
+//
+// @param request - ListServiceUsagesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListServiceUsagesResponse
+func (client *Client) ListServiceUsagesWithOptions(request *ListServiceUsagesRequest, runtime *util.RuntimeOptions) (_result *ListServiceUsagesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Filter)) {
+		query["Filter"] = request.Filter
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListServiceUsages"),
+		Version:     tea.String("2021-06-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListServiceUsagesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 用户查询服务使用申请接口
+//
+// @param request - ListServiceUsagesRequest
+//
+// @return ListServiceUsagesResponse
+func (client *Client) ListServiceUsages(request *ListServiceUsagesRequest) (_result *ListServiceUsagesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListServiceUsagesResponse{}
+	_body, _err := client.ListServiceUsagesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8237,6 +9101,80 @@ func (client *Client) UpdateServiceInstanceSpec(request *UpdateServiceInstanceSp
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateServiceInstanceSpecResponse{}
 	_body, _err := client.UpdateServiceInstanceSpecWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 用户更新服务使用请求
+//
+// @param tmpReq - UpdateServiceUsageRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateServiceUsageResponse
+func (client *Client) UpdateServiceUsageWithOptions(tmpReq *UpdateServiceUsageRequest, runtime *util.RuntimeOptions) (_result *UpdateServiceUsageResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &UpdateServiceUsageShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.UserInformation)) {
+		request.UserInformationShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.UserInformation, tea.String("UserInformation"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceId)) {
+		query["ServiceId"] = request.ServiceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserInformationShrink)) {
+		query["UserInformation"] = request.UserInformationShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateServiceUsage"),
+		Version:     tea.String("2021-06-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateServiceUsageResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 用户更新服务使用请求
+//
+// @param request - UpdateServiceUsageRequest
+//
+// @return UpdateServiceUsageResponse
+func (client *Client) UpdateServiceUsage(request *UpdateServiceUsageRequest) (_result *UpdateServiceUsageResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateServiceUsageResponse{}
+	_body, _err := client.UpdateServiceUsageWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
