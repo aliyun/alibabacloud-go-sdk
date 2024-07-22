@@ -2278,8 +2278,6 @@ type CancelAutoSnapshotPolicyRequest struct {
 	DesktopId []*string `json:"DesktopId,omitempty" xml:"DesktopId,omitempty" type:"Repeated"`
 	// The ID of the automatic snapshot policy.
 	//
-	// This parameter is required.
-	//
 	// example:
 	//
 	// sp-78lhzpe7kjfnd****
@@ -7002,7 +7000,8 @@ type CreateDesktopsRequest struct {
 	// example:
 	//
 	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId         *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	SnapshotPolicyId *string `json:"SnapshotPolicyId,omitempty" xml:"SnapshotPolicyId,omitempty"`
 	// The tags that you want to add to the cloud desktop.
 	Tag []*CreateDesktopsRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 	// How the cloud computers are assigned.
@@ -7171,6 +7170,11 @@ func (s *CreateDesktopsRequest) SetPromotionId(v string) *CreateDesktopsRequest 
 
 func (s *CreateDesktopsRequest) SetRegionId(v string) *CreateDesktopsRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *CreateDesktopsRequest) SetSnapshotPolicyId(v string) *CreateDesktopsRequest {
+	s.SnapshotPolicyId = &v
 	return s
 }
 
@@ -54434,6 +54438,10 @@ func (client *Client) CreateDesktopsWithOptions(request *CreateDesktopsRequest, 
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SnapshotPolicyId)) {
+		query["SnapshotPolicyId"] = request.SnapshotPolicyId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Tag)) {
