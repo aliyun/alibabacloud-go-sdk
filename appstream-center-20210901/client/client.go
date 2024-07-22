@@ -1,7 +1,4 @@
 // This file is auto-generated, don't edit it. Thanks.
-/**
- *
- */
 package client
 
 import (
@@ -13,6 +10,9 @@ import (
 )
 
 type AccessPageGetAclRequest struct {
+	// example:
+	//
+	// a-075nu7bcqim2wvxli
 	AccessPageId *string `json:"AccessPageId,omitempty" xml:"AccessPageId,omitempty"`
 }
 
@@ -30,12 +30,25 @@ func (s *AccessPageGetAclRequest) SetAccessPageId(v string) *AccessPageGetAclReq
 }
 
 type AccessPageGetAclResponseBody struct {
-	Code    *string                             `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data    []*AccessPageGetAclResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	Message *string                             `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string                             `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data []*AccessPageGetAclResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// example:
+	//
+	// The parameter ProductType is invalid.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// Id of the request
+	//
+	// example:
+	//
+	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *string `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s AccessPageGetAclResponseBody) String() string {
@@ -72,10 +85,25 @@ func (s *AccessPageGetAclResponseBody) SetSuccess(v string) *AccessPageGetAclRes
 }
 
 type AccessPageGetAclResponseBodyData struct {
-	AccessMode    *string `json:"AccessMode,omitempty" xml:"AccessMode,omitempty"`
-	AccessUrl     *string `json:"AccessUrl,omitempty" xml:"AccessUrl,omitempty"`
-	EffectTime    *int32  `json:"EffectTime,omitempty" xml:"EffectTime,omitempty"`
-	Unit          *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// example:
+	//
+	// FREE_ACCESS
+	AccessMode *string `json:"AccessMode,omitempty" xml:"AccessMode,omitempty"`
+	// example:
+	//
+	// https://wuying.aliyun.com/native-solution/cloud-flow/view?id=a-075nu7bcqim2wvxli&token=8141B1A674D48ACB8E5D2D6CE53FDB2F3CF8710A5F8F78578D5254BC6F******
+	AccessUrl *string `json:"AccessUrl,omitempty" xml:"AccessUrl,omitempty"`
+	// example:
+	//
+	// 2023-02-08T03:52Z
+	EffectTime *int32 `json:"EffectTime,omitempty" xml:"EffectTime,omitempty"`
+	// example:
+	//
+	// hour
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// example:
+	//
+	// 2023-12-05 14:28:20
 	UrlExpireTime *string `json:"UrlExpireTime,omitempty" xml:"UrlExpireTime,omitempty"`
 }
 
@@ -113,9 +141,9 @@ func (s *AccessPageGetAclResponseBodyData) SetUrlExpireTime(v string) *AccessPag
 }
 
 type AccessPageGetAclResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *AccessPageGetAclResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AccessPageGetAclResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s AccessPageGetAclResponse) String() string {
@@ -142,11 +170,32 @@ func (s *AccessPageGetAclResponse) SetBody(v *AccessPageGetAclResponseBody) *Acc
 }
 
 type AccessPageSetAclRequest struct {
-	AccessMode     *string `json:"AccessMode,omitempty" xml:"AccessMode,omitempty"`
-	AccessPageId   *string `json:"AccessPageId,omitempty" xml:"AccessPageId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// FREE_ACCESS
+	AccessMode *string `json:"AccessMode,omitempty" xml:"AccessMode,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// a-062wec3cwmayw****
+	AccessPageId *string `json:"AccessPageId,omitempty" xml:"AccessPageId,omitempty"`
+	// example:
+	//
+	// notepad_test
 	AccessPageName *string `json:"AccessPageName,omitempty" xml:"AccessPageName,omitempty"`
-	EffectTime     *int32  `json:"EffectTime,omitempty" xml:"EffectTime,omitempty"`
-	Unit           *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 7
+	EffectTime *int32 `json:"EffectTime,omitempty" xml:"EffectTime,omitempty"`
+	// example:
+	//
+	// Day
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
 }
 
 func (s AccessPageSetAclRequest) String() string {
@@ -183,10 +232,22 @@ func (s *AccessPageSetAclRequest) SetUnit(v string) *AccessPageSetAclRequest {
 }
 
 type AccessPageSetAclResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// InternalError
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// E25FC620-6B6F-12D2-A992-AD8727DC****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *string `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s AccessPageSetAclResponseBody) String() string {
@@ -218,9 +279,9 @@ func (s *AccessPageSetAclResponseBody) SetSuccess(v string) *AccessPageSetAclRes
 }
 
 type AccessPageSetAclResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *AccessPageSetAclResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AccessPageSetAclResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s AccessPageSetAclResponse) String() string {
@@ -247,11 +308,38 @@ func (s *AccessPageSetAclResponse) SetBody(v *AccessPageSetAclResponseBody) *Acc
 }
 
 type ApproveOtaTaskRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// aig-9ciijz60n4xsv****
 	AppInstanceGroupId *string `json:"AppInstanceGroupId,omitempty" xml:"AppInstanceGroupId,omitempty"`
-	BizRegionId        *string `json:"BizRegionId,omitempty" xml:"BizRegionId,omitempty"`
-	OtaType            *string `json:"OtaType,omitempty" xml:"OtaType,omitempty"`
-	StartTime          *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	TaskId             *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	BizRegionId *string `json:"BizRegionId,omitempty" xml:"BizRegionId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Fota
+	OtaType *string `json:"OtaType,omitempty" xml:"OtaType,omitempty"`
+	// This parameter is required.
+	//
+	// Use the UTC time format: yyyy-MM-ddTHH:mmZ
+	//
+	// example:
+	//
+	// 2022-08-04T14:36:00+08:00
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ota-be7jzm29wrrz5****
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s ApproveOtaTaskRequest) String() string {
@@ -288,8 +376,17 @@ func (s *ApproveOtaTaskRequest) SetTaskId(v string) *ApproveOtaTaskRequest {
 }
 
 type ApproveOtaTaskResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// OtaTask.Running
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// The task is running and cannot be sumitted.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -317,9 +414,9 @@ func (s *ApproveOtaTaskResponseBody) SetRequestId(v string) *ApproveOtaTaskRespo
 }
 
 type ApproveOtaTaskResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ApproveOtaTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ApproveOtaTaskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ApproveOtaTaskResponse) String() string {
@@ -346,14 +443,32 @@ func (s *ApproveOtaTaskResponse) SetBody(v *ApproveOtaTaskResponseBody) *Approve
 }
 
 type AskSessionPackagePriceRequest struct {
-	ChargeType         *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	MaxSessions        *int32  `json:"MaxSessions,omitempty" xml:"MaxSessions,omitempty"`
-	Period             *int32  `json:"Period,omitempty" xml:"Period,omitempty"`
-	PeriodUnit         *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
-	Region             *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	ChargeType  *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	MaxSessions *int32  `json:"MaxSessions,omitempty" xml:"MaxSessions,omitempty"`
+	Period      *int32  `json:"Period,omitempty" xml:"Period,omitempty"`
+	PeriodUnit  *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// example:
+	//
+	// 0
 	SessionPackageType *string `json:"SessionPackageType,omitempty" xml:"SessionPackageType,omitempty"`
-	SessionSpec        *string `json:"SessionSpec,omitempty" xml:"SessionSpec,omitempty"`
-	SessionType        *string `json:"SessionType,omitempty" xml:"SessionType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// appstreaming.general.entry
+	SessionSpec *string `json:"SessionSpec,omitempty" xml:"SessionSpec,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Windows
+	SessionType *string `json:"SessionType,omitempty" xml:"SessionType,omitempty"`
 }
 
 func (s AskSessionPackagePriceRequest) String() string {
@@ -405,8 +520,11 @@ func (s *AskSessionPackagePriceRequest) SetSessionType(v string) *AskSessionPack
 }
 
 type AskSessionPackagePriceResponseBody struct {
-	Data      []*AskSessionPackagePriceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	RequestId *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data []*AskSessionPackagePriceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 2C64D9E5-DFCD-10A5-A911-xxxxxxx
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s AskSessionPackagePriceResponseBody) String() string {
@@ -445,10 +563,22 @@ func (s *AskSessionPackagePriceResponseBodyData) SetPrice(v *AskSessionPackagePr
 }
 
 type AskSessionPackagePriceResponseBodyDataPrice struct {
-	Currency      *string  `json:"Currency,omitempty" xml:"Currency,omitempty"`
+	// example:
+	//
+	// CNY
+	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
+	// example:
+	//
+	// 0.0
 	DiscountPrice *float32 `json:"DiscountPrice,omitempty" xml:"DiscountPrice,omitempty"`
+	// example:
+	//
+	// 2000.0
 	OriginalPrice *float32 `json:"OriginalPrice,omitempty" xml:"OriginalPrice,omitempty"`
-	TradePrice    *float32 `json:"TradePrice,omitempty" xml:"TradePrice,omitempty"`
+	// example:
+	//
+	// 2000.0
+	TradePrice *float32 `json:"TradePrice,omitempty" xml:"TradePrice,omitempty"`
 }
 
 func (s AskSessionPackagePriceResponseBodyDataPrice) String() string {
@@ -480,9 +610,9 @@ func (s *AskSessionPackagePriceResponseBodyDataPrice) SetTradePrice(v float32) *
 }
 
 type AskSessionPackagePriceResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *AskSessionPackagePriceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AskSessionPackagePriceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s AskSessionPackagePriceResponse) String() string {
@@ -509,8 +639,23 @@ func (s *AskSessionPackagePriceResponse) SetBody(v *AskSessionPackagePriceRespon
 }
 
 type AskSessionPackageRenewPriceRequest struct {
-	Period           *int32  `json:"Period,omitempty" xml:"Period,omitempty"`
-	PeriodUnit       *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Month
+	PeriodUnit *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// tp-***********
 	SessionPackageId *string `json:"SessionPackageId,omitempty" xml:"SessionPackageId,omitempty"`
 }
 
@@ -538,8 +683,11 @@ func (s *AskSessionPackageRenewPriceRequest) SetSessionPackageId(v string) *AskS
 }
 
 type AskSessionPackageRenewPriceResponseBody struct {
-	Data      []*AskSessionPackageRenewPriceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	RequestId *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data []*AskSessionPackageRenewPriceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 50158E8B-992E-1286-B174-**********
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s AskSessionPackageRenewPriceResponseBody) String() string {
@@ -578,10 +726,22 @@ func (s *AskSessionPackageRenewPriceResponseBodyData) SetPrice(v *AskSessionPack
 }
 
 type AskSessionPackageRenewPriceResponseBodyDataPrice struct {
-	Currency      *string  `json:"Currency,omitempty" xml:"Currency,omitempty"`
+	// example:
+	//
+	// CNY
+	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
+	// example:
+	//
+	// 0.0
 	DiscountPrice *float32 `json:"DiscountPrice,omitempty" xml:"DiscountPrice,omitempty"`
+	// example:
+	//
+	// 2000.0
 	OriginalPrice *float32 `json:"OriginalPrice,omitempty" xml:"OriginalPrice,omitempty"`
-	TradePrice    *float32 `json:"TradePrice,omitempty" xml:"TradePrice,omitempty"`
+	// example:
+	//
+	// 2000.0
+	TradePrice *float32 `json:"TradePrice,omitempty" xml:"TradePrice,omitempty"`
 }
 
 func (s AskSessionPackageRenewPriceResponseBodyDataPrice) String() string {
@@ -613,9 +773,9 @@ func (s *AskSessionPackageRenewPriceResponseBodyDataPrice) SetTradePrice(v float
 }
 
 type AskSessionPackageRenewPriceResponse struct {
-	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *AskSessionPackageRenewPriceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AskSessionPackageRenewPriceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s AskSessionPackageRenewPriceResponse) String() string {
@@ -642,8 +802,18 @@ func (s *AskSessionPackageRenewPriceResponse) SetBody(v *AskSessionPackageRenewP
 }
 
 type AuthorizeInstanceGroupRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// aig-9ciijz60n4xsv****
 	AppInstanceGroupId *string   `json:"AppInstanceGroupId,omitempty" xml:"AppInstanceGroupId,omitempty"`
 	AuthorizeUserIds   []*string `json:"AuthorizeUserIds,omitempty" xml:"AuthorizeUserIds,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// CloudApp
 	ProductType        *string   `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
 	UnAuthorizeUserIds []*string `json:"UnAuthorizeUserIds,omitempty" xml:"UnAuthorizeUserIds,omitempty" type:"Repeated"`
 }
@@ -677,6 +847,9 @@ func (s *AuthorizeInstanceGroupRequest) SetUnAuthorizeUserIds(v []*string) *Auth
 }
 
 type AuthorizeInstanceGroupResponseBody struct {
+	// example:
+	//
+	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -694,9 +867,9 @@ func (s *AuthorizeInstanceGroupResponseBody) SetRequestId(v string) *AuthorizeIn
 }
 
 type AuthorizeInstanceGroupResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *AuthorizeInstanceGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AuthorizeInstanceGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s AuthorizeInstanceGroupResponse) String() string {
@@ -723,16 +896,38 @@ func (s *AuthorizeInstanceGroupResponse) SetBody(v *AuthorizeInstanceGroupRespon
 }
 
 type BuySessionPackageRequest struct {
-	ChargeType         *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	MaxSessions        *int32  `json:"MaxSessions,omitempty" xml:"MaxSessions,omitempty"`
-	Period             *int32  `json:"Period,omitempty" xml:"Period,omitempty"`
-	PeriodUnit         *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
-	ProjectId          *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	AutoPay     *bool   `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
+	ChargeType  *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	MaxSessions *int32  `json:"MaxSessions,omitempty" xml:"MaxSessions,omitempty"`
+	Period      *int32  `json:"Period,omitempty" xml:"Period,omitempty"`
+	PeriodUnit  *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
+	// example:
+	//
+	// p-xxxxxxxxxxxxx
+	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	Region             *string `json:"Region,omitempty" xml:"Region,omitempty"`
 	SessionPackageName *string `json:"SessionPackageName,omitempty" xml:"SessionPackageName,omitempty"`
+	// example:
+	//
+	// 0
 	SessionPackageType *string `json:"SessionPackageType,omitempty" xml:"SessionPackageType,omitempty"`
-	SessionSpec        *string `json:"SessionSpec,omitempty" xml:"SessionSpec,omitempty"`
-	SessionType        *string `json:"SessionType,omitempty" xml:"SessionType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// appstreaming.general.entry
+	SessionSpec *string `json:"SessionSpec,omitempty" xml:"SessionSpec,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Windows
+	SessionType *string `json:"SessionType,omitempty" xml:"SessionType,omitempty"`
 }
 
 func (s BuySessionPackageRequest) String() string {
@@ -741,6 +936,11 @@ func (s BuySessionPackageRequest) String() string {
 
 func (s BuySessionPackageRequest) GoString() string {
 	return s.String()
+}
+
+func (s *BuySessionPackageRequest) SetAutoPay(v bool) *BuySessionPackageRequest {
+	s.AutoPay = &v
+	return s
 }
 
 func (s *BuySessionPackageRequest) SetChargeType(v string) *BuySessionPackageRequest {
@@ -794,11 +994,26 @@ func (s *BuySessionPackageRequest) SetSessionType(v string) *BuySessionPackageRe
 }
 
 type BuySessionPackageResponseBody struct {
-	Code             *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message          *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId        *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	SessionPackageId *int64  `json:"SessionPackageId,omitempty" xml:"SessionPackageId,omitempty"`
-	Success          *string `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// There is a missing parameter.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 1CBAFFAB-B697-4049-A9B1-67E1FC5Fxxxxxxxx
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// tp-xxxxxxxxxx
+	SessionPackageId *int64 `json:"SessionPackageId,omitempty" xml:"SessionPackageId,omitempty"`
+	// example:
+	//
+	// false
+	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s BuySessionPackageResponseBody) String() string {
@@ -835,9 +1050,9 @@ func (s *BuySessionPackageResponseBody) SetSuccess(v string) *BuySessionPackageR
 }
 
 type BuySessionPackageResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *BuySessionPackageResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *BuySessionPackageResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s BuySessionPackageResponse) String() string {
@@ -864,8 +1079,18 @@ func (s *BuySessionPackageResponse) SetBody(v *BuySessionPackageResponseBody) *B
 }
 
 type CancelOtaTaskRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// aig-53fvrq1oanz6c****
 	AppInstanceGroupId *string `json:"AppInstanceGroupId,omitempty" xml:"AppInstanceGroupId,omitempty"`
-	TaskId             *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ota-be7jzm29wrrz5****
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s CancelOtaTaskRequest) String() string {
@@ -887,8 +1112,17 @@ func (s *CancelOtaTaskRequest) SetTaskId(v string) *CancelOtaTaskRequest {
 }
 
 type CancelOtaTaskResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// OtaTask.Running
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// The task is running and cannot be sumitted.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -916,9 +1150,9 @@ func (s *CancelOtaTaskResponseBody) SetRequestId(v string) *CancelOtaTaskRespons
 }
 
 type CancelOtaTaskResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CancelOtaTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CancelOtaTaskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CancelOtaTaskResponse) String() string {
@@ -945,12 +1179,27 @@ func (s *CancelOtaTaskResponse) SetBody(v *CancelOtaTaskResponseBody) *CancelOta
 }
 
 type CreateAccessPageRequest struct {
+	// This parameter is required.
 	AccessPageName *string `json:"AccessPageName,omitempty" xml:"AccessPageName,omitempty"`
-	CloudEnvId     *string `json:"CloudEnvId,omitempty" xml:"CloudEnvId,omitempty"`
-	EffectTime     *int32  `json:"EffectTime,omitempty" xml:"EffectTime,omitempty"`
-	ProjectId      *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	ProjectName    *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	Unit           *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// example:
+	//
+	// c-e-06gdesdaxez****
+	CloudEnvId *string `json:"CloudEnvId,omitempty" xml:"CloudEnvId,omitempty"`
+	// example:
+	//
+	// 7
+	EffectTime *int32 `json:"EffectTime,omitempty" xml:"EffectTime,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// p-065zdecaer07h****
+	ProjectId   *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// example:
+	//
+	// Day
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
 }
 
 func (s CreateAccessPageRequest) String() string {
@@ -992,11 +1241,23 @@ func (s *CreateAccessPageRequest) SetUnit(v string) *CreateAccessPageRequest {
 }
 
 type CreateAccessPageResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// a-06xnr5lyp77e7****
+	Data    *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *string `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s CreateAccessPageResponseBody) String() string {
@@ -1033,9 +1294,9 @@ func (s *CreateAccessPageResponseBody) SetSuccess(v string) *CreateAccessPageRes
 }
 
 type CreateAccessPageResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateAccessPageResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateAccessPageResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateAccessPageResponse) String() string {
@@ -1062,26 +1323,77 @@ func (s *CreateAccessPageResponse) SetBody(v *CreateAccessPageResponseBody) *Cre
 }
 
 type CreateAppInstanceGroupRequest struct {
-	AppCenterImageId     *string                                      `json:"AppCenterImageId,omitempty" xml:"AppCenterImageId,omitempty"`
-	AppInstanceGroupName *string                                      `json:"AppInstanceGroupName,omitempty" xml:"AppInstanceGroupName,omitempty"`
-	AutoPay              *bool                                        `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
-	AutoRenew            *bool                                        `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
-	BizRegionId          *string                                      `json:"BizRegionId,omitempty" xml:"BizRegionId,omitempty"`
-	ChargeResourceMode   *string                                      `json:"ChargeResourceMode,omitempty" xml:"ChargeResourceMode,omitempty"`
-	ChargeType           *string                                      `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	Network              *CreateAppInstanceGroupRequestNetwork        `json:"Network,omitempty" xml:"Network,omitempty" type:"Struct"`
-	NodePool             *CreateAppInstanceGroupRequestNodePool       `json:"NodePool,omitempty" xml:"NodePool,omitempty" type:"Struct"`
-	Period               *int32                                       `json:"Period,omitempty" xml:"Period,omitempty"`
-	PeriodUnit           *string                                      `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
-	PreOpenAppId         *string                                      `json:"PreOpenAppId,omitempty" xml:"PreOpenAppId,omitempty"`
-	ProductType          *string                                      `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
-	PromotionId          *string                                      `json:"PromotionId,omitempty" xml:"PromotionId,omitempty"`
-	RuntimePolicy        *CreateAppInstanceGroupRequestRuntimePolicy  `json:"RuntimePolicy,omitempty" xml:"RuntimePolicy,omitempty" type:"Struct"`
-	SecurityPolicy       *CreateAppInstanceGroupRequestSecurityPolicy `json:"SecurityPolicy,omitempty" xml:"SecurityPolicy,omitempty" type:"Struct"`
-	SessionTimeout       *int32                                       `json:"SessionTimeout,omitempty" xml:"SessionTimeout,omitempty"`
-	StoragePolicy        *CreateAppInstanceGroupRequestStoragePolicy  `json:"StoragePolicy,omitempty" xml:"StoragePolicy,omitempty" type:"Struct"`
-	UserInfo             *CreateAppInstanceGroupRequestUserInfo       `json:"UserInfo,omitempty" xml:"UserInfo,omitempty" type:"Struct"`
-	Users                []*string                                    `json:"Users,omitempty" xml:"Users,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// img-8z4nztpaqvay4****
+	AppCenterImageId *string `json:"AppCenterImageId,omitempty" xml:"AppCenterImageId,omitempty"`
+	// This parameter is required.
+	AppInstanceGroupName *string `json:"AppInstanceGroupName,omitempty" xml:"AppInstanceGroupName,omitempty"`
+	// example:
+	//
+	// false
+	AutoPay *bool `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
+	// example:
+	//
+	// false
+	AutoRenew *bool `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	BizRegionId *string `json:"BizRegionId,omitempty" xml:"BizRegionId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Node
+	ChargeResourceMode *string `json:"ChargeResourceMode,omitempty" xml:"ChargeResourceMode,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// PrePaid
+	ChargeType *string                                `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	Network    *CreateAppInstanceGroupRequestNetwork  `json:"Network,omitempty" xml:"Network,omitempty" type:"Struct"`
+	NodePool   *CreateAppInstanceGroupRequestNodePool `json:"NodePool,omitempty" xml:"NodePool,omitempty" type:"Struct"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
+	// This parameter is required.
+	PeriodUnit *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
+	// example:
+	//
+	// cag-b2ron*******
+	PreOpenAppId *string `json:"PreOpenAppId,omitempty" xml:"PreOpenAppId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// CloudApp
+	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
+	// example:
+	//
+	// 17440009****
+	PromotionId    *string                                      `json:"PromotionId,omitempty" xml:"PromotionId,omitempty"`
+	RuntimePolicy  *CreateAppInstanceGroupRequestRuntimePolicy  `json:"RuntimePolicy,omitempty" xml:"RuntimePolicy,omitempty" type:"Struct"`
+	SecurityPolicy *CreateAppInstanceGroupRequestSecurityPolicy `json:"SecurityPolicy,omitempty" xml:"SecurityPolicy,omitempty" type:"Struct"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 15
+	SessionTimeout   *int32                                         `json:"SessionTimeout,omitempty" xml:"SessionTimeout,omitempty"`
+	StoragePolicy    *CreateAppInstanceGroupRequestStoragePolicy    `json:"StoragePolicy,omitempty" xml:"StoragePolicy,omitempty" type:"Struct"`
+	UserDefinePolicy *CreateAppInstanceGroupRequestUserDefinePolicy `json:"UserDefinePolicy,omitempty" xml:"UserDefinePolicy,omitempty" type:"Struct"`
+	UserInfo         *CreateAppInstanceGroupRequestUserInfo         `json:"UserInfo,omitempty" xml:"UserInfo,omitempty" type:"Struct"`
+	Users            []*string                                      `json:"Users,omitempty" xml:"Users,omitempty" type:"Repeated"`
+	VideoPolicy      *CreateAppInstanceGroupRequestVideoPolicy      `json:"VideoPolicy,omitempty" xml:"VideoPolicy,omitempty" type:"Struct"`
 }
 
 func (s CreateAppInstanceGroupRequest) String() string {
@@ -1182,6 +1494,11 @@ func (s *CreateAppInstanceGroupRequest) SetStoragePolicy(v *CreateAppInstanceGro
 	return s
 }
 
+func (s *CreateAppInstanceGroupRequest) SetUserDefinePolicy(v *CreateAppInstanceGroupRequestUserDefinePolicy) *CreateAppInstanceGroupRequest {
+	s.UserDefinePolicy = v
+	return s
+}
+
 func (s *CreateAppInstanceGroupRequest) SetUserInfo(v *CreateAppInstanceGroupRequestUserInfo) *CreateAppInstanceGroupRequest {
 	s.UserInfo = v
 	return s
@@ -1192,11 +1509,22 @@ func (s *CreateAppInstanceGroupRequest) SetUsers(v []*string) *CreateAppInstance
 	return s
 }
 
+func (s *CreateAppInstanceGroupRequest) SetVideoPolicy(v *CreateAppInstanceGroupRequestVideoPolicy) *CreateAppInstanceGroupRequest {
+	s.VideoPolicy = v
+	return s
+}
+
 type CreateAppInstanceGroupRequestNetwork struct {
-	DomainRules     []*CreateAppInstanceGroupRequestNetworkDomainRules `json:"DomainRules,omitempty" xml:"DomainRules,omitempty" type:"Repeated"`
-	IpExpireMinutes *int32                                             `json:"IpExpireMinutes,omitempty" xml:"IpExpireMinutes,omitempty"`
-	Routes          []*CreateAppInstanceGroupRequestNetworkRoutes      `json:"Routes,omitempty" xml:"Routes,omitempty" type:"Repeated"`
-	StrategyType    *string                                            `json:"StrategyType,omitempty" xml:"StrategyType,omitempty"`
+	DomainRules []*CreateAppInstanceGroupRequestNetworkDomainRules `json:"DomainRules,omitempty" xml:"DomainRules,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 60
+	IpExpireMinutes *int32                                        `json:"IpExpireMinutes,omitempty" xml:"IpExpireMinutes,omitempty"`
+	Routes          []*CreateAppInstanceGroupRequestNetworkRoutes `json:"Routes,omitempty" xml:"Routes,omitempty" type:"Repeated"`
+	// example:
+	//
+	// Shared
+	StrategyType *string `json:"StrategyType,omitempty" xml:"StrategyType,omitempty"`
 }
 
 func (s CreateAppInstanceGroupRequestNetwork) String() string {
@@ -1251,8 +1579,14 @@ func (s *CreateAppInstanceGroupRequestNetworkDomainRules) SetPolicy(v string) *C
 }
 
 type CreateAppInstanceGroupRequestNetworkRoutes struct {
+	// example:
+	//
+	// 139.196.XX.XX/32
 	Destination *string `json:"Destination,omitempty" xml:"Destination,omitempty"`
-	Mode        *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	// example:
+	//
+	// Shared
+	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
 }
 
 func (s CreateAppInstanceGroupRequestNetworkRoutes) String() string {
@@ -1274,18 +1608,48 @@ func (s *CreateAppInstanceGroupRequestNetworkRoutes) SetMode(v string) *CreateAp
 }
 
 type CreateAppInstanceGroupRequestNodePool struct {
-	MaxScalingAmount            *int32                                                      `json:"MaxScalingAmount,omitempty" xml:"MaxScalingAmount,omitempty"`
-	NodeAmount                  *int32                                                      `json:"NodeAmount,omitempty" xml:"NodeAmount,omitempty"`
-	NodeCapacity                *int32                                                      `json:"NodeCapacity,omitempty" xml:"NodeCapacity,omitempty"`
-	NodeInstanceType            *string                                                     `json:"NodeInstanceType,omitempty" xml:"NodeInstanceType,omitempty"`
-	RecurrenceSchedules         []*CreateAppInstanceGroupRequestNodePoolRecurrenceSchedules `json:"RecurrenceSchedules,omitempty" xml:"RecurrenceSchedules,omitempty" type:"Repeated"`
-	ScalingDownAfterIdleMinutes *int32                                                      `json:"ScalingDownAfterIdleMinutes,omitempty" xml:"ScalingDownAfterIdleMinutes,omitempty"`
-	ScalingStep                 *int32                                                      `json:"ScalingStep,omitempty" xml:"ScalingStep,omitempty"`
-	ScalingUsageThreshold       *string                                                     `json:"ScalingUsageThreshold,omitempty" xml:"ScalingUsageThreshold,omitempty"`
-	StrategyDisableDate         *string                                                     `json:"StrategyDisableDate,omitempty" xml:"StrategyDisableDate,omitempty"`
-	StrategyEnableDate          *string                                                     `json:"StrategyEnableDate,omitempty" xml:"StrategyEnableDate,omitempty"`
-	StrategyType                *string                                                     `json:"StrategyType,omitempty" xml:"StrategyType,omitempty"`
-	WarmUp                      *bool                                                       `json:"WarmUp,omitempty" xml:"WarmUp,omitempty"`
+	// example:
+	//
+	// 10
+	MaxScalingAmount *int32 `json:"MaxScalingAmount,omitempty" xml:"MaxScalingAmount,omitempty"`
+	// example:
+	//
+	// 1
+	NodeAmount *int32 `json:"NodeAmount,omitempty" xml:"NodeAmount,omitempty"`
+	// example:
+	//
+	// 2
+	NodeCapacity        *int32                                                      `json:"NodeCapacity,omitempty" xml:"NodeCapacity,omitempty"`
+	NodeInstanceType    *string                                                     `json:"NodeInstanceType,omitempty" xml:"NodeInstanceType,omitempty"`
+	RecurrenceSchedules []*CreateAppInstanceGroupRequestNodePoolRecurrenceSchedules `json:"RecurrenceSchedules,omitempty" xml:"RecurrenceSchedules,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 5
+	ScalingDownAfterIdleMinutes *int32 `json:"ScalingDownAfterIdleMinutes,omitempty" xml:"ScalingDownAfterIdleMinutes,omitempty"`
+	// example:
+	//
+	// 2
+	ScalingStep *int32 `json:"ScalingStep,omitempty" xml:"ScalingStep,omitempty"`
+	// example:
+	//
+	// 85
+	ScalingUsageThreshold *string `json:"ScalingUsageThreshold,omitempty" xml:"ScalingUsageThreshold,omitempty"`
+	// example:
+	//
+	// 2022-09-08
+	StrategyDisableDate *string `json:"StrategyDisableDate,omitempty" xml:"StrategyDisableDate,omitempty"`
+	// example:
+	//
+	// 2022-08-01
+	StrategyEnableDate *string `json:"StrategyEnableDate,omitempty" xml:"StrategyEnableDate,omitempty"`
+	// example:
+	//
+	// NODE_FIXED
+	StrategyType *string `json:"StrategyType,omitempty" xml:"StrategyType,omitempty"`
+	// example:
+	//
+	// false
+	WarmUp *bool `json:"WarmUp,omitempty" xml:"WarmUp,omitempty"`
 }
 
 func (s CreateAppInstanceGroupRequestNodePool) String() string {
@@ -1357,6 +1721,9 @@ func (s *CreateAppInstanceGroupRequestNodePool) SetWarmUp(v bool) *CreateAppInst
 }
 
 type CreateAppInstanceGroupRequestNodePoolRecurrenceSchedules struct {
+	// example:
+	//
+	// weekly
 	RecurrenceType   *string                                                                 `json:"RecurrenceType,omitempty" xml:"RecurrenceType,omitempty"`
 	RecurrenceValues []*int32                                                                `json:"RecurrenceValues,omitempty" xml:"RecurrenceValues,omitempty" type:"Repeated"`
 	TimerPeriods     []*CreateAppInstanceGroupRequestNodePoolRecurrenceSchedulesTimerPeriods `json:"TimerPeriods,omitempty" xml:"TimerPeriods,omitempty" type:"Repeated"`
@@ -1386,8 +1753,17 @@ func (s *CreateAppInstanceGroupRequestNodePoolRecurrenceSchedules) SetTimerPerio
 }
 
 type CreateAppInstanceGroupRequestNodePoolRecurrenceSchedulesTimerPeriods struct {
-	Amount    *int32  `json:"Amount,omitempty" xml:"Amount,omitempty"`
-	EndTime   *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// example:
+	//
+	// 2
+	Amount *int32 `json:"Amount,omitempty" xml:"Amount,omitempty"`
+	// example:
+	//
+	// 15:00
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// example:
+	//
+	// 12:00
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
@@ -1417,6 +1793,10 @@ func (s *CreateAppInstanceGroupRequestNodePoolRecurrenceSchedulesTimerPeriods) S
 type CreateAppInstanceGroupRequestRuntimePolicy struct {
 	DebugMode *string `json:"DebugMode,omitempty" xml:"DebugMode,omitempty"`
 	// 会话类型。
+	//
+	// example:
+	//
+	// NORMAL
 	SessionType *string `json:"SessionType,omitempty" xml:"SessionType,omitempty"`
 }
 
@@ -1439,7 +1819,13 @@ func (s *CreateAppInstanceGroupRequestRuntimePolicy) SetSessionType(v string) *C
 }
 
 type CreateAppInstanceGroupRequestSecurityPolicy struct {
-	ResetAfterUnbind  *bool `json:"ResetAfterUnbind,omitempty" xml:"ResetAfterUnbind,omitempty"`
+	// example:
+	//
+	// true
+	ResetAfterUnbind *bool `json:"ResetAfterUnbind,omitempty" xml:"ResetAfterUnbind,omitempty"`
+	// example:
+	//
+	// false
 	SkipUserAuthCheck *bool `json:"SkipUserAuthCheck,omitempty" xml:"SkipUserAuthCheck,omitempty"`
 }
 
@@ -1478,7 +1864,27 @@ func (s *CreateAppInstanceGroupRequestStoragePolicy) SetStorageTypeList(v []*str
 	return s
 }
 
+type CreateAppInstanceGroupRequestUserDefinePolicy struct {
+	CustomConfig *string `json:"CustomConfig,omitempty" xml:"CustomConfig,omitempty"`
+}
+
+func (s CreateAppInstanceGroupRequestUserDefinePolicy) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAppInstanceGroupRequestUserDefinePolicy) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAppInstanceGroupRequestUserDefinePolicy) SetCustomConfig(v string) *CreateAppInstanceGroupRequestUserDefinePolicy {
+	s.CustomConfig = &v
+	return s
+}
+
 type CreateAppInstanceGroupRequestUserInfo struct {
+	// example:
+	//
+	// Simple
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
@@ -1495,27 +1901,125 @@ func (s *CreateAppInstanceGroupRequestUserInfo) SetType(v string) *CreateAppInst
 	return s
 }
 
+type CreateAppInstanceGroupRequestVideoPolicy struct {
+	FrameRate                  *int32  `json:"FrameRate,omitempty" xml:"FrameRate,omitempty"`
+	SessionResolutionHeight    *int32  `json:"SessionResolutionHeight,omitempty" xml:"SessionResolutionHeight,omitempty"`
+	SessionResolutionWidth     *int32  `json:"SessionResolutionWidth,omitempty" xml:"SessionResolutionWidth,omitempty"`
+	StreamingMode              *string `json:"StreamingMode,omitempty" xml:"StreamingMode,omitempty"`
+	TerminalResolutionAdaptive *bool   `json:"TerminalResolutionAdaptive,omitempty" xml:"TerminalResolutionAdaptive,omitempty"`
+	Webrtc                     *bool   `json:"Webrtc,omitempty" xml:"Webrtc,omitempty"`
+}
+
+func (s CreateAppInstanceGroupRequestVideoPolicy) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAppInstanceGroupRequestVideoPolicy) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAppInstanceGroupRequestVideoPolicy) SetFrameRate(v int32) *CreateAppInstanceGroupRequestVideoPolicy {
+	s.FrameRate = &v
+	return s
+}
+
+func (s *CreateAppInstanceGroupRequestVideoPolicy) SetSessionResolutionHeight(v int32) *CreateAppInstanceGroupRequestVideoPolicy {
+	s.SessionResolutionHeight = &v
+	return s
+}
+
+func (s *CreateAppInstanceGroupRequestVideoPolicy) SetSessionResolutionWidth(v int32) *CreateAppInstanceGroupRequestVideoPolicy {
+	s.SessionResolutionWidth = &v
+	return s
+}
+
+func (s *CreateAppInstanceGroupRequestVideoPolicy) SetStreamingMode(v string) *CreateAppInstanceGroupRequestVideoPolicy {
+	s.StreamingMode = &v
+	return s
+}
+
+func (s *CreateAppInstanceGroupRequestVideoPolicy) SetTerminalResolutionAdaptive(v bool) *CreateAppInstanceGroupRequestVideoPolicy {
+	s.TerminalResolutionAdaptive = &v
+	return s
+}
+
+func (s *CreateAppInstanceGroupRequestVideoPolicy) SetWebrtc(v bool) *CreateAppInstanceGroupRequestVideoPolicy {
+	s.Webrtc = &v
+	return s
+}
+
 type CreateAppInstanceGroupShrinkRequest struct {
-	AppCenterImageId     *string   `json:"AppCenterImageId,omitempty" xml:"AppCenterImageId,omitempty"`
-	AppInstanceGroupName *string   `json:"AppInstanceGroupName,omitempty" xml:"AppInstanceGroupName,omitempty"`
-	AutoPay              *bool     `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
-	AutoRenew            *bool     `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
-	BizRegionId          *string   `json:"BizRegionId,omitempty" xml:"BizRegionId,omitempty"`
-	ChargeResourceMode   *string   `json:"ChargeResourceMode,omitempty" xml:"ChargeResourceMode,omitempty"`
-	ChargeType           *string   `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	NetworkShrink        *string   `json:"Network,omitempty" xml:"Network,omitempty"`
-	NodePoolShrink       *string   `json:"NodePool,omitempty" xml:"NodePool,omitempty"`
-	Period               *int32    `json:"Period,omitempty" xml:"Period,omitempty"`
-	PeriodUnit           *string   `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
-	PreOpenAppId         *string   `json:"PreOpenAppId,omitempty" xml:"PreOpenAppId,omitempty"`
-	ProductType          *string   `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
-	PromotionId          *string   `json:"PromotionId,omitempty" xml:"PromotionId,omitempty"`
-	RuntimePolicyShrink  *string   `json:"RuntimePolicy,omitempty" xml:"RuntimePolicy,omitempty"`
-	SecurityPolicyShrink *string   `json:"SecurityPolicy,omitempty" xml:"SecurityPolicy,omitempty"`
-	SessionTimeout       *int32    `json:"SessionTimeout,omitempty" xml:"SessionTimeout,omitempty"`
-	StoragePolicyShrink  *string   `json:"StoragePolicy,omitempty" xml:"StoragePolicy,omitempty"`
-	UserInfoShrink       *string   `json:"UserInfo,omitempty" xml:"UserInfo,omitempty"`
-	Users                []*string `json:"Users,omitempty" xml:"Users,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// img-8z4nztpaqvay4****
+	AppCenterImageId *string `json:"AppCenterImageId,omitempty" xml:"AppCenterImageId,omitempty"`
+	// This parameter is required.
+	AppInstanceGroupName *string `json:"AppInstanceGroupName,omitempty" xml:"AppInstanceGroupName,omitempty"`
+	// example:
+	//
+	// false
+	AutoPay *bool `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
+	// example:
+	//
+	// false
+	AutoRenew *bool `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	BizRegionId *string `json:"BizRegionId,omitempty" xml:"BizRegionId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Node
+	ChargeResourceMode *string `json:"ChargeResourceMode,omitempty" xml:"ChargeResourceMode,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// PrePaid
+	ChargeType     *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	NetworkShrink  *string `json:"Network,omitempty" xml:"Network,omitempty"`
+	NodePoolShrink *string `json:"NodePool,omitempty" xml:"NodePool,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
+	// This parameter is required.
+	PeriodUnit *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
+	// example:
+	//
+	// cag-b2ron*******
+	PreOpenAppId *string `json:"PreOpenAppId,omitempty" xml:"PreOpenAppId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// CloudApp
+	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
+	// example:
+	//
+	// 17440009****
+	PromotionId          *string `json:"PromotionId,omitempty" xml:"PromotionId,omitempty"`
+	RuntimePolicyShrink  *string `json:"RuntimePolicy,omitempty" xml:"RuntimePolicy,omitempty"`
+	SecurityPolicyShrink *string `json:"SecurityPolicy,omitempty" xml:"SecurityPolicy,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 15
+	SessionTimeout         *int32    `json:"SessionTimeout,omitempty" xml:"SessionTimeout,omitempty"`
+	StoragePolicyShrink    *string   `json:"StoragePolicy,omitempty" xml:"StoragePolicy,omitempty"`
+	UserDefinePolicyShrink *string   `json:"UserDefinePolicy,omitempty" xml:"UserDefinePolicy,omitempty"`
+	UserInfoShrink         *string   `json:"UserInfo,omitempty" xml:"UserInfo,omitempty"`
+	Users                  []*string `json:"Users,omitempty" xml:"Users,omitempty" type:"Repeated"`
+	VideoPolicyShrink      *string   `json:"VideoPolicy,omitempty" xml:"VideoPolicy,omitempty"`
 }
 
 func (s CreateAppInstanceGroupShrinkRequest) String() string {
@@ -1616,6 +2120,11 @@ func (s *CreateAppInstanceGroupShrinkRequest) SetStoragePolicyShrink(v string) *
 	return s
 }
 
+func (s *CreateAppInstanceGroupShrinkRequest) SetUserDefinePolicyShrink(v string) *CreateAppInstanceGroupShrinkRequest {
+	s.UserDefinePolicyShrink = &v
+	return s
+}
+
 func (s *CreateAppInstanceGroupShrinkRequest) SetUserInfoShrink(v string) *CreateAppInstanceGroupShrinkRequest {
 	s.UserInfoShrink = &v
 	return s
@@ -1623,6 +2132,11 @@ func (s *CreateAppInstanceGroupShrinkRequest) SetUserInfoShrink(v string) *Creat
 
 func (s *CreateAppInstanceGroupShrinkRequest) SetUsers(v []*string) *CreateAppInstanceGroupShrinkRequest {
 	s.Users = v
+	return s
+}
+
+func (s *CreateAppInstanceGroupShrinkRequest) SetVideoPolicyShrink(v string) *CreateAppInstanceGroupShrinkRequest {
+	s.VideoPolicyShrink = &v
 	return s
 }
 
@@ -1650,9 +2164,18 @@ func (s *CreateAppInstanceGroupResponseBody) SetRequestId(v string) *CreateAppIn
 }
 
 type CreateAppInstanceGroupResponseBodyAppInstanceGroupModel struct {
+	// example:
+	//
+	// aig-9ciijz60n4xsv****
 	AppInstanceGroupId *string `json:"AppInstanceGroupId,omitempty" xml:"AppInstanceGroupId,omitempty"`
-	NodePoolId         *string `json:"NodePoolId,omitempty" xml:"NodePoolId,omitempty"`
-	OrderId            *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// example:
+	//
+	// rg-ew7va2g1wl3vm****
+	NodePoolId *string `json:"NodePoolId,omitempty" xml:"NodePoolId,omitempty"`
+	// example:
+	//
+	// 12345****
+	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
 }
 
 func (s CreateAppInstanceGroupResponseBodyAppInstanceGroupModel) String() string {
@@ -1679,9 +2202,9 @@ func (s *CreateAppInstanceGroupResponseBodyAppInstanceGroupModel) SetOrderId(v s
 }
 
 type CreateAppInstanceGroupResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateAppInstanceGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateAppInstanceGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateAppInstanceGroupResponse) String() string {
@@ -1708,9 +2231,24 @@ func (s *CreateAppInstanceGroupResponse) SetBody(v *CreateAppInstanceGroupRespon
 }
 
 type CreateImageFromAppInstanceGroupRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test_name
 	AppCenterImageName *string `json:"AppCenterImageName,omitempty" xml:"AppCenterImageName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// aig-9ciijz60n4xsv****
 	AppInstanceGroupId *string `json:"AppInstanceGroupId,omitempty" xml:"AppInstanceGroupId,omitempty"`
-	ProductType        *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// CloudApp
+	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
 }
 
 func (s CreateImageFromAppInstanceGroupRequest) String() string {
@@ -1737,7 +2275,13 @@ func (s *CreateImageFromAppInstanceGroupRequest) SetProductType(v string) *Creat
 }
 
 type CreateImageFromAppInstanceGroupResponseBody struct {
-	ImageId   *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// example:
+	//
+	// img-bp13mu****
+	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// example:
+	//
+	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1760,9 +2304,9 @@ func (s *CreateImageFromAppInstanceGroupResponseBody) SetRequestId(v string) *Cr
 }
 
 type CreateImageFromAppInstanceGroupResponse struct {
-	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateImageFromAppInstanceGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateImageFromAppInstanceGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateImageFromAppInstanceGroupResponse) String() string {
@@ -1789,19 +2333,55 @@ func (s *CreateImageFromAppInstanceGroupResponse) SetBody(v *CreateImageFromAppI
 }
 
 type CreateProjectRequest struct {
-	Clipboard                    *int32  `json:"Clipboard,omitempty" xml:"Clipboard,omitempty"`
-	CloudEnvId                   *string `json:"CloudEnvId,omitempty" xml:"CloudEnvId,omitempty"`
-	ContentId                    *string `json:"ContentId,omitempty" xml:"ContentId,omitempty"`
-	Description                  *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	FileTransfer                 *int32  `json:"FileTransfer,omitempty" xml:"FileTransfer,omitempty"`
-	FrameRate                    *int32  `json:"FrameRate,omitempty" xml:"FrameRate,omitempty"`
-	KeepAliveDuration            *int32  `json:"KeepAliveDuration,omitempty" xml:"KeepAliveDuration,omitempty"`
-	ProjectName                  *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	SessionResolutionHeight      *int32  `json:"SessionResolutionHeight,omitempty" xml:"SessionResolutionHeight,omitempty"`
-	SessionResolutionWidth       *int32  `json:"SessionResolutionWidth,omitempty" xml:"SessionResolutionWidth,omitempty"`
-	SessionSpec                  *string `json:"SessionSpec,omitempty" xml:"SessionSpec,omitempty"`
-	StreamingMode                *string `json:"StreamingMode,omitempty" xml:"StreamingMode,omitempty"`
-	TerminalResolutionAdaptation *bool   `json:"TerminalResolutionAdaptation,omitempty" xml:"TerminalResolutionAdaptation,omitempty"`
+	// example:
+	//
+	// 0
+	Clipboard *int32 `json:"Clipboard,omitempty" xml:"Clipboard,omitempty"`
+	// example:
+	//
+	// c-xxxxxxx
+	CloudEnvId *string `json:"CloudEnvId,omitempty" xml:"CloudEnvId,omitempty"`
+	// example:
+	//
+	// c-06vcpamarryyq****
+	ContentId *string `json:"ContentId,omitempty" xml:"ContentId,omitempty"`
+	// example:
+	//
+	// xxx
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// 0
+	FileTransfer *int32 `json:"FileTransfer,omitempty" xml:"FileTransfer,omitempty"`
+	// example:
+	//
+	// 30
+	FrameRate *int32 `json:"FrameRate,omitempty" xml:"FrameRate,omitempty"`
+	// example:
+	//
+	// 15
+	KeepAliveDuration *int32 `json:"KeepAliveDuration,omitempty" xml:"KeepAliveDuration,omitempty"`
+	// example:
+	//
+	// notepad++xxxxx
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// example:
+	//
+	// 4096
+	SessionResolutionHeight *int32 `json:"SessionResolutionHeight,omitempty" xml:"SessionResolutionHeight,omitempty"`
+	// example:
+	//
+	// 4096
+	SessionResolutionWidth *int32  `json:"SessionResolutionWidth,omitempty" xml:"SessionResolutionWidth,omitempty"`
+	SessionSpec            *string `json:"SessionSpec,omitempty" xml:"SessionSpec,omitempty"`
+	// example:
+	//
+	// mix
+	StreamingMode *string `json:"StreamingMode,omitempty" xml:"StreamingMode,omitempty"`
+	// example:
+	//
+	// true
+	TerminalResolutionAdaptation *bool `json:"TerminalResolutionAdaptation,omitempty" xml:"TerminalResolutionAdaptation,omitempty"`
 }
 
 func (s CreateProjectRequest) String() string {
@@ -1878,13 +2458,34 @@ func (s *CreateProjectRequest) SetTerminalResolutionAdaptation(v bool) *CreatePr
 }
 
 type CreateProjectResponseBody struct {
-	Code       *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data       *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message    *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success    *string `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// p-xxxxxxxxxxx
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// There is a missing parameter.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 50158E8B-992E-1286-B174-XXXXXXXXXXXX
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s CreateProjectResponseBody) String() string {
@@ -1931,9 +2532,9 @@ func (s *CreateProjectResponseBody) SetSuccess(v string) *CreateProjectResponseB
 }
 
 type CreateProjectResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateProjectResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateProjectResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateProjectResponse) String() string {
@@ -1960,6 +2561,9 @@ func (s *CreateProjectResponse) SetBody(v *CreateProjectResponseBody) *CreatePro
 }
 
 type DeleteAccessPageRequest struct {
+	// example:
+	//
+	// a-075nu7bcqim2wvxli
 	AccessPageId *string `json:"AccessPageId,omitempty" xml:"AccessPageId,omitempty"`
 }
 
@@ -1977,11 +2581,21 @@ func (s *DeleteAccessPageRequest) SetAccessPageId(v string) *DeleteAccessPageReq
 }
 
 type DeleteAccessPageResponseBody struct {
+	// example:
+	//
+	// 200
 	Code    *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// Id of the request
+	//
+	// example:
+	//
+	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *string `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DeleteAccessPageResponseBody) String() string {
@@ -2013,9 +2627,9 @@ func (s *DeleteAccessPageResponseBody) SetSuccess(v string) *DeleteAccessPageRes
 }
 
 type DeleteAccessPageResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteAccessPageResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteAccessPageResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteAccessPageResponse) String() string {
@@ -2042,8 +2656,18 @@ func (s *DeleteAccessPageResponse) SetBody(v *DeleteAccessPageResponseBody) *Del
 }
 
 type DeleteAppInstanceGroupRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// aig-9ciijz60n4xsv****
 	AppInstanceGroupId *string `json:"AppInstanceGroupId,omitempty" xml:"AppInstanceGroupId,omitempty"`
-	ProductType        *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// CloudApp
+	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
 }
 
 func (s DeleteAppInstanceGroupRequest) String() string {
@@ -2065,6 +2689,9 @@ func (s *DeleteAppInstanceGroupRequest) SetProductType(v string) *DeleteAppInsta
 }
 
 type DeleteAppInstanceGroupResponseBody struct {
+	// example:
+	//
+	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2082,9 +2709,9 @@ func (s *DeleteAppInstanceGroupResponseBody) SetRequestId(v string) *DeleteAppIn
 }
 
 type DeleteAppInstanceGroupResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteAppInstanceGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteAppInstanceGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteAppInstanceGroupResponse) String() string {
@@ -2111,9 +2738,23 @@ func (s *DeleteAppInstanceGroupResponse) SetBody(v *DeleteAppInstanceGroupRespon
 }
 
 type DeleteAppInstancesRequest struct {
-	AppInstanceGroupId *string   `json:"AppInstanceGroupId,omitempty" xml:"AppInstanceGroupId,omitempty"`
-	AppInstanceIds     []*string `json:"AppInstanceIds,omitempty" xml:"AppInstanceIds,omitempty" type:"Repeated"`
-	ProductType        *string   `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// aig-9ciijz60n4xsv****
+	AppInstanceGroupId *string `json:"AppInstanceGroupId,omitempty" xml:"AppInstanceGroupId,omitempty"`
+	// This parameter is required.
+	//
+	// if can be null:
+	// false
+	AppInstanceIds []*string `json:"AppInstanceIds,omitempty" xml:"AppInstanceIds,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// CloudApp
+	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
 }
 
 func (s DeleteAppInstancesRequest) String() string {
@@ -2141,7 +2782,10 @@ func (s *DeleteAppInstancesRequest) SetProductType(v string) *DeleteAppInstances
 
 type DeleteAppInstancesResponseBody struct {
 	DeleteAppInstanceModels []*DeleteAppInstancesResponseBodyDeleteAppInstanceModels `json:"DeleteAppInstanceModels,omitempty" xml:"DeleteAppInstanceModels,omitempty" type:"Repeated"`
-	RequestId               *string                                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DeleteAppInstancesResponseBody) String() string {
@@ -2163,10 +2807,22 @@ func (s *DeleteAppInstancesResponseBody) SetRequestId(v string) *DeleteAppInstan
 }
 
 type DeleteAppInstancesResponseBodyDeleteAppInstanceModels struct {
+	// example:
+	//
+	// ai-gbuea*****
 	AppInstanceId *string `json:"AppInstanceId,omitempty" xml:"AppInstanceId,omitempty"`
-	Code          *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message       *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	Success       *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// InvalidParameter.ProductType
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// The parameter ProductType is invalid.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DeleteAppInstancesResponseBodyDeleteAppInstanceModels) String() string {
@@ -2198,9 +2854,9 @@ func (s *DeleteAppInstancesResponseBodyDeleteAppInstanceModels) SetSuccess(v boo
 }
 
 type DeleteAppInstancesResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteAppInstancesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteAppInstancesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteAppInstancesResponse) String() string {
@@ -2227,6 +2883,9 @@ func (s *DeleteAppInstancesResponse) SetBody(v *DeleteAppInstancesResponseBody) 
 }
 
 type DeleteProjectRequest struct {
+	// example:
+	//
+	// p-065z4tu9ak07h****
 	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 }
 
@@ -2244,11 +2903,26 @@ func (s *DeleteProjectRequest) SetProjectId(v string) *DeleteProjectRequest {
 }
 
 type DeleteProjectResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// None
+	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// The parameter PoolId is invalid.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *string `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DeleteProjectResponseBody) String() string {
@@ -2285,9 +2959,9 @@ func (s *DeleteProjectResponseBody) SetSuccess(v string) *DeleteProjectResponseB
 }
 
 type DeleteProjectResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteProjectResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteProjectResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DeleteProjectResponse) String() string {
@@ -2314,9 +2988,22 @@ func (s *DeleteProjectResponse) SetBody(v *DeleteProjectResponseBody) *DeletePro
 }
 
 type GetAccessPageSessionRequest struct {
-	AccessPageId    *string `json:"AccessPageId,omitempty" xml:"AccessPageId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// a-062wec3cwmayw****
+	AccessPageId *string `json:"AccessPageId,omitempty" xml:"AccessPageId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 8141B1A674D48ACB8E5D2D6CE53FDB2F3CF8710A5F8F78578D5254BC6F******
 	AccessPageToken *string `json:"AccessPageToken,omitempty" xml:"AccessPageToken,omitempty"`
-	ExternalUserId  *string `json:"ExternalUserId,omitempty" xml:"ExternalUserId,omitempty"`
+	// example:
+	//
+	// Banca******
+	ExternalUserId *string `json:"ExternalUserId,omitempty" xml:"ExternalUserId,omitempty"`
 }
 
 func (s GetAccessPageSessionRequest) String() string {
@@ -2343,12 +3030,22 @@ func (s *GetAccessPageSessionRequest) SetExternalUserId(v string) *GetAccessPage
 }
 
 type GetAccessPageSessionResponseBody struct {
+	// example:
+	//
+	// 200
 	Code    *string                               `json:"Code,omitempty" xml:"Code,omitempty"`
 	Data    *GetAccessPageSessionResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	Message *string                               `json:"Message,omitempty" xml:"Message,omitempty"`
 	// Id of the request
+	//
+	// example:
+	//
+	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *string `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetAccessPageSessionResponseBody) String() string {
@@ -2385,8 +3082,15 @@ func (s *GetAccessPageSessionResponseBody) SetSuccess(v string) *GetAccessPageSe
 }
 
 type GetAccessPageSessionResponseBodyData struct {
+	// example:
+	//
+	// DQpbRGVza3RvcF0NCkZvcmNlVGxzVHlwZT0xDQpHV1Rva2VuUGFydDE9MDBzQU5DTGVsZ0RqMnAyMGpZdUNkRDMrNTlLekpzUTRXNElPWVdjWGIwZ2QrUkNyais0ZGM3WUJGM1NBdVFJWWl2ejhaWDlvakh1cDJ4c0Vpc3lrQ1I4RVEzeDhIYXdCb2pRRDJReklaQTZIbU52VjdrRlNlWkxQTXV3Y0hNTEZTTkxKaDNOY1BtU0tVYTNqWVVUMFUyKzNqWDBRMXdLM29ZQnJaOFVoL2RWY0xpem5tWEhHTmE0THVGRCtrajloSWlFT0w3b2w4OHY1cjBPelpHZnh4aXlVbk1yQURnRHhoK1F6K3UvdXYxaFYyQ3UwVlduTHJ3cDNRM3hYWWtORW81N00xYWZ4cTJBdWplVmx3aGVxOHd4dDl2Y3NGVGMxNFpPL2hudWdoeGJkaz0NCkdXVG9rZW5QYXJ0Mj0NCkFzcEF1dGhUb2tlbj0wME5LTnlLZXE3UGpzNzNzeURrdEs2NUlaenpYb05WNWxnY3BjVTJMd2NKUEoyMk53WmlrSGNaaDdNVGk2azlLazNyeHFCd2FHZTlmc2NUbFljUDJ0MEVldXRha2paUklMM0x3a0RsT1BZZTZxYmtsay9STHFrajg4dWg0ZFZNTHE2QkF0WVRSeW9ZTC9WUHhaVWxyZEZOQT09DQpBZXNLZXlWZXJzaW9uPTE3MDEyMzk1ODc4NzcNCkdhdGV3YXlEb21haW5BZGRyZXNzPWd3LWFwcC1jbi1oYW5nemhvdS1pLWFwcC10ZXN0MC13aW4ud3V5aW5nLmFsaXl1bmNzLmNvbQ0KR2F0ZXdheUFkZHJlc3M9NDcuOTkuMjIzLjE0OQ0KR2F0ZXdheVBvcnQ9NTkxMg0KR2F0ZXdheVdzc1BvcnQ9ODAwOA0KU3RyZWFtVHlwZT0wDQpSdGNHd1Rva2VuPVAwMFJkc013dVdQVkt4MGtRYUNkSlY3MUc2OC9iaWFhSEJwVn******
 	ConnectTicket *string `json:"ConnectTicket,omitempty" xml:"ConnectTicket,omitempty"`
 	// flow ID
+	//
+	// example:
+	//
+	// e4fa0b4c18c5437a8b1746e7c228172e
 	FlowId *string `json:"FlowId,omitempty" xml:"FlowId,omitempty"`
 }
 
@@ -2409,9 +3113,9 @@ func (s *GetAccessPageSessionResponseBodyData) SetFlowId(v string) *GetAccessPag
 }
 
 type GetAccessPageSessionResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetAccessPageSessionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetAccessPageSessionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetAccessPageSessionResponse) String() string {
@@ -2438,8 +3142,18 @@ func (s *GetAccessPageSessionResponse) SetBody(v *GetAccessPageSessionResponseBo
 }
 
 type GetAppInstanceGroupRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// aig-9ciijz60n4xsv****
 	AppInstanceGroupId *string `json:"AppInstanceGroupId,omitempty" xml:"AppInstanceGroupId,omitempty"`
-	ProductType        *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// CloudApp
+	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
 }
 
 func (s GetAppInstanceGroupRequest) String() string {
@@ -2463,7 +3177,10 @@ func (s *GetAppInstanceGroupRequest) SetProductType(v string) *GetAppInstanceGro
 type GetAppInstanceGroupResponseBody struct {
 	// AppInstanceGroupModels
 	AppInstanceGroupModels *GetAppInstanceGroupResponseBodyAppInstanceGroupModels `json:"AppInstanceGroupModels,omitempty" xml:"AppInstanceGroupModels,omitempty" type:"Struct"`
-	RequestId              *string                                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetAppInstanceGroupResponseBody) String() string {
@@ -2485,37 +3202,115 @@ func (s *GetAppInstanceGroupResponseBody) SetRequestId(v string) *GetAppInstance
 }
 
 type GetAppInstanceGroupResponseBodyAppInstanceGroupModels struct {
-	Amount                      *int32                                                           `json:"Amount,omitempty" xml:"Amount,omitempty"`
-	AppCenterImageId            *string                                                          `json:"AppCenterImageId,omitempty" xml:"AppCenterImageId,omitempty"`
-	AppCenterImageName          *string                                                          `json:"AppCenterImageName,omitempty" xml:"AppCenterImageName,omitempty"`
-	AppInstanceGroupId          *string                                                          `json:"AppInstanceGroupId,omitempty" xml:"AppInstanceGroupId,omitempty"`
-	AppInstanceGroupName        *string                                                          `json:"AppInstanceGroupName,omitempty" xml:"AppInstanceGroupName,omitempty"`
-	AppInstanceType             *string                                                          `json:"AppInstanceType,omitempty" xml:"AppInstanceType,omitempty"`
-	AppInstanceTypeName         *string                                                          `json:"AppInstanceTypeName,omitempty" xml:"AppInstanceTypeName,omitempty"`
-	AppPolicyId                 *string                                                          `json:"AppPolicyId,omitempty" xml:"AppPolicyId,omitempty"`
-	Apps                        []*GetAppInstanceGroupResponseBodyAppInstanceGroupModelsApps     `json:"Apps,omitempty" xml:"Apps,omitempty" type:"Repeated"`
-	ChargeResourceMode          *string                                                          `json:"ChargeResourceMode,omitempty" xml:"ChargeResourceMode,omitempty"`
-	ChargeType                  *string                                                          `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	ExpiredTime                 *string                                                          `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
-	GmtCreate                   *string                                                          `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	MaxAmount                   *int32                                                           `json:"MaxAmount,omitempty" xml:"MaxAmount,omitempty"`
-	MinAmount                   *int32                                                           `json:"MinAmount,omitempty" xml:"MinAmount,omitempty"`
-	NodePool                    []*GetAppInstanceGroupResponseBodyAppInstanceGroupModelsNodePool `json:"NodePool,omitempty" xml:"NodePool,omitempty" type:"Repeated"`
-	OsType                      *string                                                          `json:"OsType,omitempty" xml:"OsType,omitempty"`
-	OtaInfo                     *GetAppInstanceGroupResponseBodyAppInstanceGroupModelsOtaInfo    `json:"OtaInfo,omitempty" xml:"OtaInfo,omitempty" type:"Struct"`
-	ProductType                 *string                                                          `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
-	RegionId                    *string                                                          `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ReserveAmountRatio          *string                                                          `json:"ReserveAmountRatio,omitempty" xml:"ReserveAmountRatio,omitempty"`
-	ReserveMaxAmount            *int32                                                           `json:"ReserveMaxAmount,omitempty" xml:"ReserveMaxAmount,omitempty"`
-	ReserveMinAmount            *int32                                                           `json:"ReserveMinAmount,omitempty" xml:"ReserveMinAmount,omitempty"`
-	ResourceStatus              *string                                                          `json:"ResourceStatus,omitempty" xml:"ResourceStatus,omitempty"`
-	ScalingDownAfterIdleMinutes *int32                                                           `json:"ScalingDownAfterIdleMinutes,omitempty" xml:"ScalingDownAfterIdleMinutes,omitempty"`
-	ScalingStep                 *int32                                                           `json:"ScalingStep,omitempty" xml:"ScalingStep,omitempty"`
-	ScalingUsageThreshold       *string                                                          `json:"ScalingUsageThreshold,omitempty" xml:"ScalingUsageThreshold,omitempty"`
-	SessionTimeout              *string                                                          `json:"SessionTimeout,omitempty" xml:"SessionTimeout,omitempty"`
-	SkipUserAuthCheck           *bool                                                            `json:"SkipUserAuthCheck,omitempty" xml:"SkipUserAuthCheck,omitempty"`
-	SpecId                      *string                                                          `json:"SpecId,omitempty" xml:"SpecId,omitempty"`
-	Status                      *string                                                          `json:"Status,omitempty" xml:"Status,omitempty"`
+	Amount *int32 `json:"Amount,omitempty" xml:"Amount,omitempty"`
+	// example:
+	//
+	// img-8z4nztpaqvay4****
+	AppCenterImageId *string `json:"AppCenterImageId,omitempty" xml:"AppCenterImageId,omitempty"`
+	// example:
+	//
+	// OfficeApps
+	AppCenterImageName *string `json:"AppCenterImageName,omitempty" xml:"AppCenterImageName,omitempty"`
+	// example:
+	//
+	// aig-9ciijz60n4xsv****
+	AppInstanceGroupId   *string `json:"AppInstanceGroupId,omitempty" xml:"AppInstanceGroupId,omitempty"`
+	AppInstanceGroupName *string `json:"AppInstanceGroupName,omitempty" xml:"AppInstanceGroupName,omitempty"`
+	// example:
+	//
+	// __dynamic__
+	AppInstanceType *string `json:"AppInstanceType,omitempty" xml:"AppInstanceType,omitempty"`
+	// example:
+	//
+	// test001
+	AppInstanceTypeName *string `json:"AppInstanceTypeName,omitempty" xml:"AppInstanceTypeName,omitempty"`
+	// example:
+	//
+	// pg-g3k5wa2ms2****
+	AppPolicyId *string                                                      `json:"AppPolicyId,omitempty" xml:"AppPolicyId,omitempty"`
+	Apps        []*GetAppInstanceGroupResponseBodyAppInstanceGroupModelsApps `json:"Apps,omitempty" xml:"Apps,omitempty" type:"Repeated"`
+	// example:
+	//
+	// Node
+	ChargeResourceMode *string `json:"ChargeResourceMode,omitempty" xml:"ChargeResourceMode,omitempty"`
+	// example:
+	//
+	// PrePaid
+	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	// example:
+	//
+	// 2022-04-27T16:00:00.000+00:00
+	ExpiredTime *string `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
+	// example:
+	//
+	// 2022-04-26T15:06:16.000+00:00
+	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// example:
+	//
+	// 10
+	MaxAmount *int32 `json:"MaxAmount,omitempty" xml:"MaxAmount,omitempty"`
+	// example:
+	//
+	// 1
+	MinAmount *int32                                                           `json:"MinAmount,omitempty" xml:"MinAmount,omitempty"`
+	NodePool  []*GetAppInstanceGroupResponseBodyAppInstanceGroupModelsNodePool `json:"NodePool,omitempty" xml:"NodePool,omitempty" type:"Repeated"`
+	// example:
+	//
+	// Windows
+	OsType  *string                                                       `json:"OsType,omitempty" xml:"OsType,omitempty"`
+	OtaInfo *GetAppInstanceGroupResponseBodyAppInstanceGroupModelsOtaInfo `json:"OtaInfo,omitempty" xml:"OtaInfo,omitempty" type:"Struct"`
+	// example:
+	//
+	// CloudApp
+	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// 20
+	ReserveAmountRatio *string `json:"ReserveAmountRatio,omitempty" xml:"ReserveAmountRatio,omitempty"`
+	// example:
+	//
+	// 5
+	ReserveMaxAmount *int32 `json:"ReserveMaxAmount,omitempty" xml:"ReserveMaxAmount,omitempty"`
+	// example:
+	//
+	// 1
+	ReserveMinAmount *int32 `json:"ReserveMinAmount,omitempty" xml:"ReserveMinAmount,omitempty"`
+	// example:
+	//
+	// AVAILABLE
+	ResourceStatus *string `json:"ResourceStatus,omitempty" xml:"ResourceStatus,omitempty"`
+	// example:
+	//
+	// 5
+	ScalingDownAfterIdleMinutes *int32 `json:"ScalingDownAfterIdleMinutes,omitempty" xml:"ScalingDownAfterIdleMinutes,omitempty"`
+	// example:
+	//
+	// 10
+	ScalingStep *int32 `json:"ScalingStep,omitempty" xml:"ScalingStep,omitempty"`
+	// example:
+	//
+	// 85
+	ScalingUsageThreshold *string `json:"ScalingUsageThreshold,omitempty" xml:"ScalingUsageThreshold,omitempty"`
+	// example:
+	//
+	// 15
+	SessionTimeout *string `json:"SessionTimeout,omitempty" xml:"SessionTimeout,omitempty"`
+	// example:
+	//
+	// false
+	SkipUserAuthCheck *bool `json:"SkipUserAuthCheck,omitempty" xml:"SkipUserAuthCheck,omitempty"`
+	// example:
+	//
+	// spec-8o18t8uc31qib0****
+	SpecId *string `json:"SpecId,omitempty" xml:"SpecId,omitempty"`
+	// example:
+	//
+	// PUBLISHED
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s GetAppInstanceGroupResponseBodyAppInstanceGroupModels) String() string {
@@ -2682,7 +3477,10 @@ func (s *GetAppInstanceGroupResponseBodyAppInstanceGroupModels) SetStatus(v stri
 }
 
 type GetAppInstanceGroupResponseBodyAppInstanceGroupModelsApps struct {
-	AppIcon        *string `json:"AppIcon,omitempty" xml:"AppIcon,omitempty"`
+	AppIcon *string `json:"AppIcon,omitempty" xml:"AppIcon,omitempty"`
+	// example:
+	//
+	// ca-i87mycyn419nu****
 	AppId          *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	AppName        *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
 	AppVersion     *string `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
@@ -2723,24 +3521,72 @@ func (s *GetAppInstanceGroupResponseBodyAppInstanceGroupModelsApps) SetAppVersio
 }
 
 type GetAppInstanceGroupResponseBodyAppInstanceGroupModelsNodePool struct {
-	Amount                      *int32                                                                              `json:"Amount,omitempty" xml:"Amount,omitempty"`
-	MaxScalingAmount            *int32                                                                              `json:"MaxScalingAmount,omitempty" xml:"MaxScalingAmount,omitempty"`
-	NodeAmount                  *int32                                                                              `json:"NodeAmount,omitempty" xml:"NodeAmount,omitempty"`
-	NodeCapacity                *int32                                                                              `json:"NodeCapacity,omitempty" xml:"NodeCapacity,omitempty"`
-	NodeInstanceType            *string                                                                             `json:"NodeInstanceType,omitempty" xml:"NodeInstanceType,omitempty"`
-	NodePoolId                  *string                                                                             `json:"NodePoolId,omitempty" xml:"NodePoolId,omitempty"`
-	NodeTypeName                *string                                                                             `json:"NodeTypeName,omitempty" xml:"NodeTypeName,omitempty"`
-	NodeUsed                    *int32                                                                              `json:"NodeUsed,omitempty" xml:"NodeUsed,omitempty"`
-	RecurrenceSchedules         []*GetAppInstanceGroupResponseBodyAppInstanceGroupModelsNodePoolRecurrenceSchedules `json:"RecurrenceSchedules,omitempty" xml:"RecurrenceSchedules,omitempty" type:"Repeated"`
-	ScalingDownAfterIdleMinutes *int32                                                                              `json:"ScalingDownAfterIdleMinutes,omitempty" xml:"ScalingDownAfterIdleMinutes,omitempty"`
-	ScalingNodeAmount           *int32                                                                              `json:"ScalingNodeAmount,omitempty" xml:"ScalingNodeAmount,omitempty"`
-	ScalingNodeUsed             *int32                                                                              `json:"ScalingNodeUsed,omitempty" xml:"ScalingNodeUsed,omitempty"`
-	ScalingStep                 *int32                                                                              `json:"ScalingStep,omitempty" xml:"ScalingStep,omitempty"`
-	ScalingUsageThreshold       *string                                                                             `json:"ScalingUsageThreshold,omitempty" xml:"ScalingUsageThreshold,omitempty"`
-	StrategyDisableDate         *string                                                                             `json:"StrategyDisableDate,omitempty" xml:"StrategyDisableDate,omitempty"`
-	StrategyEnableDate          *string                                                                             `json:"StrategyEnableDate,omitempty" xml:"StrategyEnableDate,omitempty"`
-	StrategyType                *string                                                                             `json:"StrategyType,omitempty" xml:"StrategyType,omitempty"`
-	WarmUp                      *bool                                                                               `json:"WarmUp,omitempty" xml:"WarmUp,omitempty"`
+	// example:
+	//
+	// 2
+	Amount *int32 `json:"Amount,omitempty" xml:"Amount,omitempty"`
+	// example:
+	//
+	// 8
+	MaxScalingAmount *int32 `json:"MaxScalingAmount,omitempty" xml:"MaxScalingAmount,omitempty"`
+	// example:
+	//
+	// 1
+	NodeAmount *int32 `json:"NodeAmount,omitempty" xml:"NodeAmount,omitempty"`
+	// example:
+	//
+	// 2
+	NodeCapacity *int32 `json:"NodeCapacity,omitempty" xml:"NodeCapacity,omitempty"`
+	// example:
+	//
+	// appstreaming.vgpu.4c8g.2g
+	NodeInstanceType *string `json:"NodeInstanceType,omitempty" xml:"NodeInstanceType,omitempty"`
+	// example:
+	//
+	// rg-g6922kced36hx****
+	NodePoolId   *string `json:"NodePoolId,omitempty" xml:"NodePoolId,omitempty"`
+	NodeTypeName *string `json:"NodeTypeName,omitempty" xml:"NodeTypeName,omitempty"`
+	// example:
+	//
+	// 1
+	NodeUsed            *int32                                                                              `json:"NodeUsed,omitempty" xml:"NodeUsed,omitempty"`
+	RecurrenceSchedules []*GetAppInstanceGroupResponseBodyAppInstanceGroupModelsNodePoolRecurrenceSchedules `json:"RecurrenceSchedules,omitempty" xml:"RecurrenceSchedules,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 5
+	ScalingDownAfterIdleMinutes *int32 `json:"ScalingDownAfterIdleMinutes,omitempty" xml:"ScalingDownAfterIdleMinutes,omitempty"`
+	// example:
+	//
+	// 8
+	ScalingNodeAmount *int32 `json:"ScalingNodeAmount,omitempty" xml:"ScalingNodeAmount,omitempty"`
+	// example:
+	//
+	// 4
+	ScalingNodeUsed *int32 `json:"ScalingNodeUsed,omitempty" xml:"ScalingNodeUsed,omitempty"`
+	// example:
+	//
+	// 2
+	ScalingStep *int32 `json:"ScalingStep,omitempty" xml:"ScalingStep,omitempty"`
+	// example:
+	//
+	// 85
+	ScalingUsageThreshold *string `json:"ScalingUsageThreshold,omitempty" xml:"ScalingUsageThreshold,omitempty"`
+	// example:
+	//
+	// 2022-09-08
+	StrategyDisableDate *string `json:"StrategyDisableDate,omitempty" xml:"StrategyDisableDate,omitempty"`
+	// example:
+	//
+	// 2022-08-01
+	StrategyEnableDate *string `json:"StrategyEnableDate,omitempty" xml:"StrategyEnableDate,omitempty"`
+	// example:
+	//
+	// NODE_FIXED
+	StrategyType *string `json:"StrategyType,omitempty" xml:"StrategyType,omitempty"`
+	// example:
+	//
+	// false
+	WarmUp *bool `json:"WarmUp,omitempty" xml:"WarmUp,omitempty"`
 }
 
 func (s GetAppInstanceGroupResponseBodyAppInstanceGroupModelsNodePool) String() string {
@@ -2842,6 +3688,9 @@ func (s *GetAppInstanceGroupResponseBodyAppInstanceGroupModelsNodePool) SetWarmU
 }
 
 type GetAppInstanceGroupResponseBodyAppInstanceGroupModelsNodePoolRecurrenceSchedules struct {
+	// example:
+	//
+	// Weekly
 	RecurrenceType   *string                                                                                         `json:"RecurrenceType,omitempty" xml:"RecurrenceType,omitempty"`
 	RecurrenceValues []*int32                                                                                        `json:"RecurrenceValues,omitempty" xml:"RecurrenceValues,omitempty" type:"Repeated"`
 	TimerPeriods     []*GetAppInstanceGroupResponseBodyAppInstanceGroupModelsNodePoolRecurrenceSchedulesTimerPeriods `json:"TimerPeriods,omitempty" xml:"TimerPeriods,omitempty" type:"Repeated"`
@@ -2871,8 +3720,17 @@ func (s *GetAppInstanceGroupResponseBodyAppInstanceGroupModelsNodePoolRecurrence
 }
 
 type GetAppInstanceGroupResponseBodyAppInstanceGroupModelsNodePoolRecurrenceSchedulesTimerPeriods struct {
-	Amount    *int32  `json:"Amount,omitempty" xml:"Amount,omitempty"`
-	EndTime   *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// example:
+	//
+	// 5
+	Amount *int32 `json:"Amount,omitempty" xml:"Amount,omitempty"`
+	// example:
+	//
+	// 11:00
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// example:
+	//
+	// 09:30
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
@@ -2900,9 +3758,18 @@ func (s *GetAppInstanceGroupResponseBodyAppInstanceGroupModelsNodePoolRecurrence
 }
 
 type GetAppInstanceGroupResponseBodyAppInstanceGroupModelsOtaInfo struct {
+	// example:
+	//
+	// 0.0.1-D-20220630.11****
 	NewOtaVersion *string `json:"NewOtaVersion,omitempty" xml:"NewOtaVersion,omitempty"`
-	OtaVersion    *string `json:"OtaVersion,omitempty" xml:"OtaVersion,omitempty"`
-	TaskId        *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// example:
+	//
+	// 0.0.1-D-20220615.11****
+	OtaVersion *string `json:"OtaVersion,omitempty" xml:"OtaVersion,omitempty"`
+	// example:
+	//
+	// ota-e49929gv8acz5****
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s GetAppInstanceGroupResponseBodyAppInstanceGroupModelsOtaInfo) String() string {
@@ -2929,9 +3796,9 @@ func (s *GetAppInstanceGroupResponseBodyAppInstanceGroupModelsOtaInfo) SetTaskId
 }
 
 type GetAppInstanceGroupResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetAppInstanceGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetAppInstanceGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetAppInstanceGroupResponse) String() string {
@@ -2958,16 +3825,44 @@ func (s *GetAppInstanceGroupResponse) SetBody(v *GetAppInstanceGroupResponseBody
 }
 
 type GetConnectionTicketRequest struct {
-	AppId                   *string   `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	AppInstanceGroupIdList  []*string `json:"AppInstanceGroupIdList,omitempty" xml:"AppInstanceGroupIdList,omitempty" type:"Repeated"`
-	AppInstanceId           *string   `json:"AppInstanceId,omitempty" xml:"AppInstanceId,omitempty"`
-	AppInstancePersistentId *string   `json:"AppInstancePersistentId,omitempty" xml:"AppInstancePersistentId,omitempty"`
-	AppStartParam           *string   `json:"AppStartParam,omitempty" xml:"AppStartParam,omitempty"`
-	AppVersion              *string   `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
-	BizRegionId             *string   `json:"BizRegionId,omitempty" xml:"BizRegionId,omitempty"`
-	EndUserId               *string   `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
-	ProductType             *string   `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
-	TaskId                  *string   `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// example:
+	//
+	// ca-e4s0puhmwi7v****
+	AppId                  *string   `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AppInstanceGroupIdList []*string `json:"AppInstanceGroupIdList,omitempty" xml:"AppInstanceGroupIdList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// ai-1rznfnrvsa99d****
+	AppInstanceId           *string `json:"AppInstanceId,omitempty" xml:"AppInstanceId,omitempty"`
+	AppInstancePersistentId *string `json:"AppInstancePersistentId,omitempty" xml:"AppInstancePersistentId,omitempty"`
+	// example:
+	//
+	// /q /n
+	AppStartParam *string `json:"AppStartParam,omitempty" xml:"AppStartParam,omitempty"`
+	// example:
+	//
+	// 1.0.0
+	AppVersion *string `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	BizRegionId *string `json:"BizRegionId,omitempty" xml:"BizRegionId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// alice
+	EndUserId *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// CloudApp
+	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
+	// example:
+	//
+	// 28778acb-a469-4bc0-8e0f****
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s GetConnectionTicketRequest) String() string {
@@ -3029,16 +3924,40 @@ func (s *GetConnectionTicketRequest) SetTaskId(v string) *GetConnectionTicketReq
 }
 
 type GetConnectionTicketResponseBody struct {
-	AppInstanceGroupId      *string `json:"AppInstanceGroupId,omitempty" xml:"AppInstanceGroupId,omitempty"`
+	// example:
+	//
+	// aig-53fvrq1oan****
+	AppInstanceGroupId *string `json:"AppInstanceGroupId,omitempty" xml:"AppInstanceGroupId,omitempty"`
+	// example:
+	//
+	// ai-7ybdeiyoeh5e****
 	AppInstanceId           *string `json:"AppInstanceId,omitempty" xml:"AppInstanceId,omitempty"`
 	AppInstancePersistentId *string `json:"AppInstancePersistentId,omitempty" xml:"AppInstancePersistentId,omitempty"`
-	BizRegionId             *string `json:"BizRegionId,omitempty" xml:"BizRegionId,omitempty"`
-	OsType                  *string `json:"OsType,omitempty" xml:"OsType,omitempty"`
-	RequestId               *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TaskId                  *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	TaskStatus              *string `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
-	TenantId                *int64  `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
-	Ticket                  *string `json:"Ticket,omitempty" xml:"Ticket,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	BizRegionId *string `json:"BizRegionId,omitempty" xml:"BizRegionId,omitempty"`
+	// example:
+	//
+	// Windows
+	OsType *string `json:"OsType,omitempty" xml:"OsType,omitempty"`
+	// example:
+	//
+	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// f3d1b31c-605e-4d04-a896****
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// example:
+	//
+	// Running
+	TaskStatus *string `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
+	TenantId   *int64  `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// example:
+	//
+	// DQpbRGVza3RvcF0NCkZvcmNlVGxzVHlwZT0xDQpHV1Rva2VuUGFydDE9MDAva09ROW1FUTU3dU****
+	Ticket *string `json:"Ticket,omitempty" xml:"Ticket,omitempty"`
 }
 
 func (s GetConnectionTicketResponseBody) String() string {
@@ -3100,9 +4019,9 @@ func (s *GetConnectionTicketResponseBody) SetTicket(v string) *GetConnectionTick
 }
 
 type GetConnectionTicketResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetConnectionTicketResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetConnectionTicketResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetConnectionTicketResponse) String() string {
@@ -3129,8 +4048,18 @@ func (s *GetConnectionTicketResponse) SetBody(v *GetConnectionTicketResponseBody
 }
 
 type GetDebugAppInstanceRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// aig-9ciijz60n4xsv****
 	AppInstanceGroupId *string `json:"AppInstanceGroupId,omitempty" xml:"AppInstanceGroupId,omitempty"`
-	ProductType        *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// CloudApp
+	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
 }
 
 func (s GetDebugAppInstanceRequest) String() string {
@@ -3152,13 +4081,28 @@ func (s *GetDebugAppInstanceRequest) SetProductType(v string) *GetDebugAppInstan
 }
 
 type GetDebugAppInstanceResponseBody struct {
-	AppId              *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// example:
+	//
+	// aig-9ciijz60n4xsv****
 	AppInstanceGroupId *string `json:"AppInstanceGroupId,omitempty" xml:"AppInstanceGroupId,omitempty"`
-	AppInstanceId      *string `json:"AppInstanceId,omitempty" xml:"AppInstanceId,omitempty"`
-	AppVersion         *string `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
-	AuthCode           *string `json:"AuthCode,omitempty" xml:"AuthCode,omitempty"`
-	RequestId          *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	UserId             *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// example:
+	//
+	// ai-7ybdeiyoeh5e****
+	AppInstanceId *string `json:"AppInstanceId,omitempty" xml:"AppInstanceId,omitempty"`
+	// example:
+	//
+	// 1.1
+	AppVersion *string `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
+	// example:
+	//
+	// e4e169bea1cc48e8afac53**********
+	AuthCode *string `json:"AuthCode,omitempty" xml:"AuthCode,omitempty"`
+	// example:
+	//
+	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	UserId    *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s GetDebugAppInstanceResponseBody) String() string {
@@ -3205,9 +4149,9 @@ func (s *GetDebugAppInstanceResponseBody) SetUserId(v string) *GetDebugAppInstan
 }
 
 type GetDebugAppInstanceResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetDebugAppInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetDebugAppInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetDebugAppInstanceResponse) String() string {
@@ -3234,6 +4178,11 @@ func (s *GetDebugAppInstanceResponse) SetBody(v *GetDebugAppInstanceResponseBody
 }
 
 type GetOtaTaskByTaskIdRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ota-be7jzm29wrrz5****
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
@@ -3251,11 +4200,28 @@ func (s *GetOtaTaskByTaskIdRequest) SetTaskId(v string) *GetOtaTaskByTaskIdReque
 }
 
 type GetOtaTaskByTaskIdResponseBody struct {
-	Code          *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message       *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	OtaVersion    *string `json:"OtaVersion,omitempty" xml:"OtaVersion,omitempty"`
-	ReleaseNote   *string `json:"ReleaseNote,omitempty" xml:"ReleaseNote,omitempty"`
-	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// OtaTask.Running
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// The task is running and cannot be sumitted.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 0.0.1-R-20220708.110604
+	OtaVersion  *string `json:"OtaVersion,omitempty" xml:"OtaVersion,omitempty"`
+	ReleaseNote *string `json:"ReleaseNote,omitempty" xml:"ReleaseNote,omitempty"`
+	// example:
+	//
+	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Use the UTC time format: yyyy-MM-ddTHH:mmZ
+	//
+	// example:
+	//
+	// 2022-08-04T14:36:00+08:00
 	TaskStartTime *string `json:"TaskStartTime,omitempty" xml:"TaskStartTime,omitempty"`
 }
 
@@ -3298,9 +4264,9 @@ func (s *GetOtaTaskByTaskIdResponseBody) SetTaskStartTime(v string) *GetOtaTaskB
 }
 
 type GetOtaTaskByTaskIdResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetOtaTaskByTaskIdResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetOtaTaskByTaskIdResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetOtaTaskByTaskIdResponse) String() string {
@@ -3327,6 +4293,9 @@ func (s *GetOtaTaskByTaskIdResponse) SetBody(v *GetOtaTaskByTaskIdResponseBody) 
 }
 
 type GetProjectPoliciesRequest struct {
+	// example:
+	//
+	// p-xxxxxxxxxxxxxxx
 	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 }
 
@@ -3344,11 +4313,23 @@ func (s *GetProjectPoliciesRequest) SetProjectId(v string) *GetProjectPoliciesRe
 }
 
 type GetProjectPoliciesResponseBody struct {
-	Code      *string                             `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *GetProjectPoliciesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                             `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *string                             `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string                             `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *GetProjectPoliciesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// The parameter ProductType is invalid.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetProjectPoliciesResponseBody) String() string {
@@ -3385,18 +4366,51 @@ func (s *GetProjectPoliciesResponseBody) SetSuccess(v string) *GetProjectPolicie
 }
 
 type GetProjectPoliciesResponseBodyData struct {
-	Clipboard                    *int32  `json:"Clipboard,omitempty" xml:"Clipboard,omitempty"`
-	FileTransfer                 *int32  `json:"FileTransfer,omitempty" xml:"FileTransfer,omitempty"`
-	FrameRate                    *string `json:"FrameRate,omitempty" xml:"FrameRate,omitempty"`
-	KeepAliveDuration            *int32  `json:"KeepAliveDuration,omitempty" xml:"KeepAliveDuration,omitempty"`
-	MaxHours                     *int32  `json:"MaxHours,omitempty" xml:"MaxHours,omitempty"`
-	MaxSessions                  *int32  `json:"MaxSessions,omitempty" xml:"MaxSessions,omitempty"`
-	ProjectId                    *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	SessionResolutionHeight      *int32  `json:"SessionResolutionHeight,omitempty" xml:"SessionResolutionHeight,omitempty"`
-	SessionResolutionWidth       *int32  `json:"SessionResolutionWidth,omitempty" xml:"SessionResolutionWidth,omitempty"`
-	SessionSpec                  *string `json:"SessionSpec,omitempty" xml:"SessionSpec,omitempty"`
-	StreamingMode                *string `json:"StreamingMode,omitempty" xml:"StreamingMode,omitempty"`
-	TerminalResolutionAdaptation *bool   `json:"TerminalResolutionAdaptation,omitempty" xml:"TerminalResolutionAdaptation,omitempty"`
+	// example:
+	//
+	// 0
+	Clipboard *int32 `json:"Clipboard,omitempty" xml:"Clipboard,omitempty"`
+	// example:
+	//
+	// 0
+	FileTransfer *int32 `json:"FileTransfer,omitempty" xml:"FileTransfer,omitempty"`
+	// example:
+	//
+	// 30
+	FrameRate *string `json:"FrameRate,omitempty" xml:"FrameRate,omitempty"`
+	// example:
+	//
+	// 15
+	KeepAliveDuration *int32 `json:"KeepAliveDuration,omitempty" xml:"KeepAliveDuration,omitempty"`
+	// example:
+	//
+	// 1000
+	MaxHours *int32 `json:"MaxHours,omitempty" xml:"MaxHours,omitempty"`
+	// example:
+	//
+	// 60
+	MaxSessions *int32 `json:"MaxSessions,omitempty" xml:"MaxSessions,omitempty"`
+	// example:
+	//
+	// p-xxxxxxxxxxx
+	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// example:
+	//
+	// 1080
+	SessionResolutionHeight *int32 `json:"SessionResolutionHeight,omitempty" xml:"SessionResolutionHeight,omitempty"`
+	// example:
+	//
+	// 1920
+	SessionResolutionWidth *int32  `json:"SessionResolutionWidth,omitempty" xml:"SessionResolutionWidth,omitempty"`
+	SessionSpec            *string `json:"SessionSpec,omitempty" xml:"SessionSpec,omitempty"`
+	// example:
+	//
+	// mix
+	StreamingMode *string `json:"StreamingMode,omitempty" xml:"StreamingMode,omitempty"`
+	// example:
+	//
+	// true
+	TerminalResolutionAdaptation *bool `json:"TerminalResolutionAdaptation,omitempty" xml:"TerminalResolutionAdaptation,omitempty"`
 }
 
 func (s GetProjectPoliciesResponseBodyData) String() string {
@@ -3468,9 +4482,9 @@ func (s *GetProjectPoliciesResponseBodyData) SetTerminalResolutionAdaptation(v b
 }
 
 type GetProjectPoliciesResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetProjectPoliciesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetProjectPoliciesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetProjectPoliciesResponse) String() string {
@@ -3497,14 +4511,46 @@ func (s *GetProjectPoliciesResponse) SetBody(v *GetProjectPoliciesResponseBody) 
 }
 
 type GetResourcePriceRequest struct {
-	Amount           *int64  `json:"Amount,omitempty" xml:"Amount,omitempty"`
-	AppInstanceType  *string `json:"AppInstanceType,omitempty" xml:"AppInstanceType,omitempty"`
-	BizRegionId      *string `json:"BizRegionId,omitempty" xml:"BizRegionId,omitempty"`
-	ChargeType       *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	Amount *int64 `json:"Amount,omitempty" xml:"Amount,omitempty"`
+	// example:
+	//
+	// appstreaming.general
+	AppInstanceType *string `json:"AppInstanceType,omitempty" xml:"AppInstanceType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	BizRegionId *string `json:"BizRegionId,omitempty" xml:"BizRegionId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// PrePaid
+	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	// example:
+	//
+	// appstreaming.vgpu.4c8g.2g
 	NodeInstanceType *string `json:"NodeInstanceType,omitempty" xml:"NodeInstanceType,omitempty"`
-	Period           *int64  `json:"Period,omitempty" xml:"Period,omitempty"`
-	PeriodUnit       *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
-	ProductType      *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	Period *int64 `json:"Period,omitempty" xml:"Period,omitempty"`
+	// This parameter is required.
+	PeriodUnit *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// CloudApp
+	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
 }
 
 func (s GetResourcePriceRequest) String() string {
@@ -3556,11 +4602,20 @@ func (s *GetResourcePriceRequest) SetProductType(v string) *GetResourcePriceRequ
 }
 
 type GetResourcePriceResponseBody struct {
-	Code       *string                                  `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// InvalidParameter.ProductType
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// The parameter ProductType is invalid.
 	Message    *string                                  `json:"Message,omitempty" xml:"Message,omitempty"`
 	PriceList  []*GetResourcePriceResponseBodyPriceList `json:"PriceList,omitempty" xml:"PriceList,omitempty" type:"Repeated"`
 	PriceModel *GetResourcePriceResponseBodyPriceModel  `json:"PriceModel,omitempty" xml:"PriceModel,omitempty" type:"Struct"`
-	RequestId  *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetResourcePriceResponseBody) String() string {
@@ -3597,7 +4652,10 @@ func (s *GetResourcePriceResponseBody) SetRequestId(v string) *GetResourcePriceR
 }
 
 type GetResourcePriceResponseBodyPriceList struct {
-	Price     *GetResourcePriceResponseBodyPriceListPrice   `json:"Price,omitempty" xml:"Price,omitempty" type:"Struct"`
+	Price *GetResourcePriceResponseBodyPriceListPrice `json:"Price,omitempty" xml:"Price,omitempty" type:"Struct"`
+	// example:
+	//
+	// Standby
 	PriceType *string                                       `json:"PriceType,omitempty" xml:"PriceType,omitempty"`
 	Rules     []*GetResourcePriceResponseBodyPriceListRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
 }
@@ -3626,11 +4684,23 @@ func (s *GetResourcePriceResponseBodyPriceList) SetRules(v []*GetResourcePriceRe
 }
 
 type GetResourcePriceResponseBodyPriceListPrice struct {
-	Currency      *string                                                 `json:"Currency,omitempty" xml:"Currency,omitempty"`
-	DiscountPrice *string                                                 `json:"DiscountPrice,omitempty" xml:"DiscountPrice,omitempty"`
+	// example:
+	//
+	// CNY
+	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
+	// example:
+	//
+	// 999.0
+	DiscountPrice *string `json:"DiscountPrice,omitempty" xml:"DiscountPrice,omitempty"`
+	// example:
+	//
+	// 6700
 	OriginalPrice *string                                                 `json:"OriginalPrice,omitempty" xml:"OriginalPrice,omitempty"`
 	Promotions    []*GetResourcePriceResponseBodyPriceListPricePromotions `json:"Promotions,omitempty" xml:"Promotions,omitempty" type:"Repeated"`
-	TradePrice    *string                                                 `json:"TradePrice,omitempty" xml:"TradePrice,omitempty"`
+	// example:
+	//
+	// 5278.0
+	TradePrice *string `json:"TradePrice,omitempty" xml:"TradePrice,omitempty"`
 }
 
 func (s GetResourcePriceResponseBodyPriceListPrice) String() string {
@@ -3667,11 +4737,20 @@ func (s *GetResourcePriceResponseBodyPriceListPrice) SetTradePrice(v string) *Ge
 }
 
 type GetResourcePriceResponseBodyPriceListPricePromotions struct {
+	// example:
+	//
+	// coupon****
 	OptionCode    *string `json:"OptionCode,omitempty" xml:"OptionCode,omitempty"`
 	PromotionDesc *string `json:"PromotionDesc,omitempty" xml:"PromotionDesc,omitempty"`
+	// example:
+	//
+	// 1847709****
 	PromotionId   *string `json:"PromotionId,omitempty" xml:"PromotionId,omitempty"`
 	PromotionName *string `json:"PromotionName,omitempty" xml:"PromotionName,omitempty"`
-	Selected      *bool   `json:"Selected,omitempty" xml:"Selected,omitempty"`
+	// example:
+	//
+	// true
+	Selected *bool `json:"Selected,omitempty" xml:"Selected,omitempty"`
 }
 
 func (s GetResourcePriceResponseBodyPriceListPricePromotions) String() string {
@@ -3709,7 +4788,10 @@ func (s *GetResourcePriceResponseBodyPriceListPricePromotions) SetSelected(v boo
 
 type GetResourcePriceResponseBodyPriceListRules struct {
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	RuleId      *int64  `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	// example:
+	//
+	// 260904273633****
+	RuleId *int64 `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
 }
 
 func (s GetResourcePriceResponseBodyPriceListRules) String() string {
@@ -3754,11 +4836,23 @@ func (s *GetResourcePriceResponseBodyPriceModel) SetRules(v []*GetResourcePriceR
 }
 
 type GetResourcePriceResponseBodyPriceModelPrice struct {
-	Currency      *string                                                  `json:"Currency,omitempty" xml:"Currency,omitempty"`
-	DiscountPrice *string                                                  `json:"DiscountPrice,omitempty" xml:"DiscountPrice,omitempty"`
+	// example:
+	//
+	// CNY
+	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
+	// example:
+	//
+	// 1.00
+	DiscountPrice *string `json:"DiscountPrice,omitempty" xml:"DiscountPrice,omitempty"`
+	// example:
+	//
+	// 11.00
 	OriginalPrice *string                                                  `json:"OriginalPrice,omitempty" xml:"OriginalPrice,omitempty"`
 	Promotions    []*GetResourcePriceResponseBodyPriceModelPricePromotions `json:"Promotions,omitempty" xml:"Promotions,omitempty" type:"Repeated"`
-	TradePrice    *string                                                  `json:"TradePrice,omitempty" xml:"TradePrice,omitempty"`
+	// example:
+	//
+	// 10.00
+	TradePrice *string `json:"TradePrice,omitempty" xml:"TradePrice,omitempty"`
 }
 
 func (s GetResourcePriceResponseBodyPriceModelPrice) String() string {
@@ -3795,11 +4889,20 @@ func (s *GetResourcePriceResponseBodyPriceModelPrice) SetTradePrice(v string) *G
 }
 
 type GetResourcePriceResponseBodyPriceModelPricePromotions struct {
+	// example:
+	//
+	// coupon****
 	OptionCode    *string `json:"OptionCode,omitempty" xml:"OptionCode,omitempty"`
 	PromotionDesc *string `json:"PromotionDesc,omitempty" xml:"PromotionDesc,omitempty"`
+	// example:
+	//
+	// 17440009****
 	PromotionId   *string `json:"PromotionId,omitempty" xml:"PromotionId,omitempty"`
 	PromotionName *string `json:"PromotionName,omitempty" xml:"PromotionName,omitempty"`
-	Selected      *bool   `json:"Selected,omitempty" xml:"Selected,omitempty"`
+	// example:
+	//
+	// true
+	Selected *bool `json:"Selected,omitempty" xml:"Selected,omitempty"`
 }
 
 func (s GetResourcePriceResponseBodyPriceModelPricePromotions) String() string {
@@ -3837,7 +4940,10 @@ func (s *GetResourcePriceResponseBodyPriceModelPricePromotions) SetSelected(v bo
 
 type GetResourcePriceResponseBodyPriceModelRules struct {
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	RuleId      *int64  `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	// example:
+	//
+	// 102002100393****
+	RuleId *int64 `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
 }
 
 func (s GetResourcePriceResponseBodyPriceModelRules) String() string {
@@ -3859,9 +4965,9 @@ func (s *GetResourcePriceResponseBodyPriceModelRules) SetRuleId(v int64) *GetRes
 }
 
 type GetResourcePriceResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetResourcePriceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetResourcePriceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetResourcePriceResponse) String() string {
@@ -3888,10 +4994,30 @@ func (s *GetResourcePriceResponse) SetBody(v *GetResourcePriceResponseBody) *Get
 }
 
 type GetResourceRenewPriceRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// aig-9ciijz60n4xsv****
 	AppInstanceGroupId *string `json:"AppInstanceGroupId,omitempty" xml:"AppInstanceGroupId,omitempty"`
-	Period             *int64  `json:"Period,omitempty" xml:"Period,omitempty"`
-	PeriodUnit         *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
-	ProductType        *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	Period *int64 `json:"Period,omitempty" xml:"Period,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Week
+	PeriodUnit *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// CloudApp
+	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
 }
 
 func (s GetResourceRenewPriceRequest) String() string {
@@ -3923,8 +5049,11 @@ func (s *GetResourceRenewPriceRequest) SetProductType(v string) *GetResourceRene
 }
 
 type GetResourceRenewPriceResponseBody struct {
-	Data      *GetResourceRenewPriceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	RequestId *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data *GetResourceRenewPriceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetResourceRenewPriceResponseBody) String() string {
@@ -3969,11 +5098,23 @@ func (s *GetResourceRenewPriceResponseBodyData) SetRules(v []*GetResourceRenewPr
 }
 
 type GetResourceRenewPriceResponseBodyDataPrice struct {
-	Currency      *string                                                 `json:"Currency,omitempty" xml:"Currency,omitempty"`
-	DiscountPrice *string                                                 `json:"DiscountPrice,omitempty" xml:"DiscountPrice,omitempty"`
+	// example:
+	//
+	// CNY
+	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
+	// example:
+	//
+	// 1
+	DiscountPrice *string `json:"DiscountPrice,omitempty" xml:"DiscountPrice,omitempty"`
+	// example:
+	//
+	// 11
 	OriginalPrice *string                                                 `json:"OriginalPrice,omitempty" xml:"OriginalPrice,omitempty"`
 	Promotions    []*GetResourceRenewPriceResponseBodyDataPricePromotions `json:"Promotions,omitempty" xml:"Promotions,omitempty" type:"Repeated"`
-	TradePrice    *string                                                 `json:"TradePrice,omitempty" xml:"TradePrice,omitempty"`
+	// example:
+	//
+	// 10
+	TradePrice *string `json:"TradePrice,omitempty" xml:"TradePrice,omitempty"`
 }
 
 func (s GetResourceRenewPriceResponseBodyDataPrice) String() string {
@@ -4010,11 +5151,20 @@ func (s *GetResourceRenewPriceResponseBodyDataPrice) SetTradePrice(v string) *Ge
 }
 
 type GetResourceRenewPriceResponseBodyDataPricePromotions struct {
+	// example:
+	//
+	// coupon****
 	OptionCode    *string `json:"OptionCode,omitempty" xml:"OptionCode,omitempty"`
 	PromotionDesc *string `json:"PromotionDesc,omitempty" xml:"PromotionDesc,omitempty"`
+	// example:
+	//
+	// 139965*****
 	PromotionId   *string `json:"PromotionId,omitempty" xml:"PromotionId,omitempty"`
 	PromotionName *string `json:"PromotionName,omitempty" xml:"PromotionName,omitempty"`
-	Selected      *bool   `json:"Selected,omitempty" xml:"Selected,omitempty"`
+	// example:
+	//
+	// true
+	Selected *bool `json:"Selected,omitempty" xml:"Selected,omitempty"`
 }
 
 func (s GetResourceRenewPriceResponseBodyDataPricePromotions) String() string {
@@ -4052,7 +5202,10 @@ func (s *GetResourceRenewPriceResponseBodyDataPricePromotions) SetSelected(v boo
 
 type GetResourceRenewPriceResponseBodyDataRules struct {
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	RuleId      *int64  `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	// example:
+	//
+	// 20002****
+	RuleId *int64 `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
 }
 
 func (s GetResourceRenewPriceResponseBodyDataRules) String() string {
@@ -4074,9 +5227,9 @@ func (s *GetResourceRenewPriceResponseBodyDataRules) SetRuleId(v int64) *GetReso
 }
 
 type GetResourceRenewPriceResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetResourceRenewPriceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetResourceRenewPriceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetResourceRenewPriceResponse) String() string {
@@ -4103,12 +5256,27 @@ func (s *GetResourceRenewPriceResponse) SetBody(v *GetResourceRenewPriceResponse
 }
 
 type ListAccessPagesRequest struct {
+	// example:
+	//
+	// a-062wec3cwmayw****
 	AccessPageId   *string `json:"AccessPageId,omitempty" xml:"AccessPageId,omitempty"`
 	AccessPageName *string `json:"AccessPageName,omitempty" xml:"AccessPageName,omitempty"`
-	PageNumber     *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize       *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	ProjectId      *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	SortType       *string `json:"SortType,omitempty" xml:"SortType,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 100
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// p-065zdecaer07h****
+	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// example:
+	//
+	// ASC
+	SortType *string `json:"SortType,omitempty" xml:"SortType,omitempty"`
 }
 
 func (s ListAccessPagesRequest) String() string {
@@ -4150,14 +5318,35 @@ func (s *ListAccessPagesRequest) SetSortType(v string) *ListAccessPagesRequest {
 }
 
 type ListAccessPagesResponseBody struct {
-	Code       *string                            `json:"Code,omitempty" xml:"Code,omitempty"`
-	Count      *string                            `json:"Count,omitempty" xml:"Count,omitempty"`
-	Data       []*ListAccessPagesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	Message    *string                            `json:"Message,omitempty" xml:"Message,omitempty"`
-	PageNumber *string                            `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *string                            `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId  *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success    *string                            `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// 22
+	Count *string                            `json:"Count,omitempty" xml:"Count,omitempty"`
+	Data  []*ListAccessPagesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// example:
+	//
+	// InternalError
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 20
+	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// AF8361BD-5ECB-139A-B019-2E0350CC****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ListAccessPagesResponseBody) String() string {
@@ -4209,19 +5398,52 @@ func (s *ListAccessPagesResponseBody) SetSuccess(v string) *ListAccessPagesRespo
 }
 
 type ListAccessPagesResponseBodyData struct {
-	AccessMode      *string `json:"AccessMode,omitempty" xml:"AccessMode,omitempty"`
-	AccessPageId    *string `json:"AccessPageId,omitempty" xml:"AccessPageId,omitempty"`
-	AccessPageName  *string `json:"AccessPageName,omitempty" xml:"AccessPageName,omitempty"`
+	AccessMode *string `json:"AccessMode,omitempty" xml:"AccessMode,omitempty"`
+	// example:
+	//
+	// a-062wec3cwmayw****
+	AccessPageId *string `json:"AccessPageId,omitempty" xml:"AccessPageId,omitempty"`
+	// example:
+	//
+	// notepad_test
+	AccessPageName *string `json:"AccessPageName,omitempty" xml:"AccessPageName,omitempty"`
+	// example:
+	//
+	// 1
 	AccessPageState *string `json:"AccessPageState,omitempty" xml:"AccessPageState,omitempty"`
-	AccessUrl       *string `json:"AccessUrl,omitempty" xml:"AccessUrl,omitempty"`
-	ContentId       *string `json:"ContentId,omitempty" xml:"ContentId,omitempty"`
-	ContentName     *string `json:"ContentName,omitempty" xml:"ContentName,omitempty"`
-	EffectTime      *int32  `json:"EffectTime,omitempty" xml:"EffectTime,omitempty"`
-	GmtCreate       *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	ProjectId       *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	ProjectName     *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	Unit            *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
-	UrlExpireTime   *string `json:"UrlExpireTime,omitempty" xml:"UrlExpireTime,omitempty"`
+	// example:
+	//
+	// id=a-062wec3cwmayw****&token=9E9A62937B0E41F4AEFE5EC9B238156CCDFB682954003AEE940A05FB2568****
+	AccessUrl *string `json:"AccessUrl,omitempty" xml:"AccessUrl,omitempty"`
+	// example:
+	//
+	// c-05to6wm3w5d53****
+	ContentId   *string `json:"ContentId,omitempty" xml:"ContentId,omitempty"`
+	ContentName *string `json:"ContentName,omitempty" xml:"ContentName,omitempty"`
+	// example:
+	//
+	// 168
+	EffectTime *int32 `json:"EffectTime,omitempty" xml:"EffectTime,omitempty"`
+	// example:
+	//
+	// 2023-11-16T08:48:15.000+00:00
+	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// example:
+	//
+	// p-062wec3cwmayu****
+	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// example:
+	//
+	// notepad_demo
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// example:
+	//
+	// Hour
+	Unit *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// example:
+	//
+	// 2023-11-23T08:48:15.000+00:00
+	UrlExpireTime *string `json:"UrlExpireTime,omitempty" xml:"UrlExpireTime,omitempty"`
 }
 
 func (s ListAccessPagesResponseBodyData) String() string {
@@ -4298,9 +5520,9 @@ func (s *ListAccessPagesResponseBodyData) SetUrlExpireTime(v string) *ListAccess
 }
 
 type ListAccessPagesResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListAccessPagesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListAccessPagesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListAccessPagesResponse) String() string {
@@ -4327,15 +5549,41 @@ func (s *ListAccessPagesResponse) SetBody(v *ListAccessPagesResponseBody) *ListA
 }
 
 type ListAppInstanceGroupRequest struct {
-	AppCenterImageId     *string   `json:"AppCenterImageId,omitempty" xml:"AppCenterImageId,omitempty"`
-	AppInstanceGroupId   *string   `json:"AppInstanceGroupId,omitempty" xml:"AppInstanceGroupId,omitempty"`
-	AppInstanceGroupName *string   `json:"AppInstanceGroupName,omitempty" xml:"AppInstanceGroupName,omitempty"`
-	BizRegionId          *string   `json:"BizRegionId,omitempty" xml:"BizRegionId,omitempty"`
-	NodeInstanceType     *string   `json:"NodeInstanceType,omitempty" xml:"NodeInstanceType,omitempty"`
-	PageNumber           *int32    `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize             *int32    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	ProductType          *string   `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
-	Status               []*string `json:"Status,omitempty" xml:"Status,omitempty" type:"Repeated"`
+	// example:
+	//
+	// img-8z4nztpaqvay4****
+	AppCenterImageId *string `json:"AppCenterImageId,omitempty" xml:"AppCenterImageId,omitempty"`
+	// example:
+	//
+	// aig-9ciijz60n4xsv****
+	AppInstanceGroupId   *string `json:"AppInstanceGroupId,omitempty" xml:"AppInstanceGroupId,omitempty"`
+	AppInstanceGroupName *string `json:"AppInstanceGroupName,omitempty" xml:"AppInstanceGroupName,omitempty"`
+	BizRegionId          *string `json:"BizRegionId,omitempty" xml:"BizRegionId,omitempty"`
+	// example:
+	//
+	// appstreaming.vgpu.4c8g.2g
+	NodeInstanceType *string `json:"NodeInstanceType,omitempty" xml:"NodeInstanceType,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// CloudApp
+	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
+	// Deprecated
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Status   []*string `json:"Status,omitempty" xml:"Status,omitempty" type:"Repeated"`
 }
 
 func (s ListAppInstanceGroupRequest) String() string {
@@ -4386,6 +5634,11 @@ func (s *ListAppInstanceGroupRequest) SetProductType(v string) *ListAppInstanceG
 	return s
 }
 
+func (s *ListAppInstanceGroupRequest) SetRegionId(v string) *ListAppInstanceGroupRequest {
+	s.RegionId = &v
+	return s
+}
+
 func (s *ListAppInstanceGroupRequest) SetStatus(v []*string) *ListAppInstanceGroupRequest {
 	s.Status = v
 	return s
@@ -4393,10 +5646,22 @@ func (s *ListAppInstanceGroupRequest) SetStatus(v []*string) *ListAppInstanceGro
 
 type ListAppInstanceGroupResponseBody struct {
 	AppInstanceGroupModels []*ListAppInstanceGroupResponseBodyAppInstanceGroupModels `json:"AppInstanceGroupModels,omitempty" xml:"AppInstanceGroupModels,omitempty" type:"Repeated"`
-	PageNumber             *int32                                                    `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize               *int32                                                    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId              *string                                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount             *int32                                                    `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 15
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListAppInstanceGroupResponseBody) String() string {
@@ -4433,37 +5698,114 @@ func (s *ListAppInstanceGroupResponseBody) SetTotalCount(v int32) *ListAppInstan
 }
 
 type ListAppInstanceGroupResponseBodyAppInstanceGroupModels struct {
-	Amount               *int32  `json:"Amount,omitempty" xml:"Amount,omitempty"`
-	AppCenterImageId     *string `json:"AppCenterImageId,omitempty" xml:"AppCenterImageId,omitempty"`
+	// example:
+	//
+	// 1
+	Amount *int32 `json:"Amount,omitempty" xml:"Amount,omitempty"`
+	// example:
+	//
+	// img-8z4nztpaqvay4****
+	AppCenterImageId *string `json:"AppCenterImageId,omitempty" xml:"AppCenterImageId,omitempty"`
+	// example:
+	//
+	// aig-9ciijz60n4xsv****
 	AppInstanceGroupId   *string `json:"AppInstanceGroupId,omitempty" xml:"AppInstanceGroupId,omitempty"`
 	AppInstanceGroupName *string `json:"AppInstanceGroupName,omitempty" xml:"AppInstanceGroupName,omitempty"`
-	AppInstanceType      *string `json:"AppInstanceType,omitempty" xml:"AppInstanceType,omitempty"`
+	// example:
+	//
+	// __dynamic__
+	AppInstanceType *string `json:"AppInstanceType,omitempty" xml:"AppInstanceType,omitempty"`
 	// 策略ID。
+	//
+	// example:
+	//
+	// pg-g3k5wa2ms2****
 	AppPolicyId *string                                                       `json:"AppPolicyId,omitempty" xml:"AppPolicyId,omitempty"`
 	Apps        []*ListAppInstanceGroupResponseBodyAppInstanceGroupModelsApps `json:"Apps,omitempty" xml:"Apps,omitempty" type:"Repeated"`
 	// 售卖模式。
-	ChargeResourceMode          *string                                                           `json:"ChargeResourceMode,omitempty" xml:"ChargeResourceMode,omitempty"`
-	ChargeType                  *string                                                           `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	ExpiredTime                 *string                                                           `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
-	GmtCreate                   *string                                                           `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	MaxAmount                   *int32                                                            `json:"MaxAmount,omitempty" xml:"MaxAmount,omitempty"`
-	MinAmount                   *int32                                                            `json:"MinAmount,omitempty" xml:"MinAmount,omitempty"`
-	NodePool                    []*ListAppInstanceGroupResponseBodyAppInstanceGroupModelsNodePool `json:"NodePool,omitempty" xml:"NodePool,omitempty" type:"Repeated"`
-	OsType                      *string                                                           `json:"OsType,omitempty" xml:"OsType,omitempty"`
-	OtaInfo                     *ListAppInstanceGroupResponseBodyAppInstanceGroupModelsOtaInfo    `json:"OtaInfo,omitempty" xml:"OtaInfo,omitempty" type:"Struct"`
-	ProductType                 *string                                                           `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
-	RegionId                    *string                                                           `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ReserveAmountRatio          *string                                                           `json:"ReserveAmountRatio,omitempty" xml:"ReserveAmountRatio,omitempty"`
-	ReserveMaxAmount            *int32                                                            `json:"ReserveMaxAmount,omitempty" xml:"ReserveMaxAmount,omitempty"`
-	ReserveMinAmount            *int32                                                            `json:"ReserveMinAmount,omitempty" xml:"ReserveMinAmount,omitempty"`
-	ResourceStatus              *string                                                           `json:"ResourceStatus,omitempty" xml:"ResourceStatus,omitempty"`
-	ScalingDownAfterIdleMinutes *int32                                                            `json:"ScalingDownAfterIdleMinutes,omitempty" xml:"ScalingDownAfterIdleMinutes,omitempty"`
-	ScalingStep                 *int32                                                            `json:"ScalingStep,omitempty" xml:"ScalingStep,omitempty"`
-	ScalingUsageThreshold       *string                                                           `json:"ScalingUsageThreshold,omitempty" xml:"ScalingUsageThreshold,omitempty"`
-	SessionTimeout              *string                                                           `json:"SessionTimeout,omitempty" xml:"SessionTimeout,omitempty"`
-	SkipUserAuthCheck           *bool                                                             `json:"SkipUserAuthCheck,omitempty" xml:"SkipUserAuthCheck,omitempty"`
-	SpecId                      *string                                                           `json:"SpecId,omitempty" xml:"SpecId,omitempty"`
-	Status                      *string                                                           `json:"Status,omitempty" xml:"Status,omitempty"`
+	//
+	// example:
+	//
+	// Node
+	ChargeResourceMode *string `json:"ChargeResourceMode,omitempty" xml:"ChargeResourceMode,omitempty"`
+	// example:
+	//
+	// PrePaid
+	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	// example:
+	//
+	// 2022-04-27T16:00:00.000+00:00
+	ExpiredTime *string `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
+	// example:
+	//
+	// 2022-04-26T15:06:16.000+00:00
+	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// example:
+	//
+	// 10
+	MaxAmount *int32 `json:"MaxAmount,omitempty" xml:"MaxAmount,omitempty"`
+	// example:
+	//
+	// 1
+	MinAmount *int32                                                            `json:"MinAmount,omitempty" xml:"MinAmount,omitempty"`
+	NodePool  []*ListAppInstanceGroupResponseBodyAppInstanceGroupModelsNodePool `json:"NodePool,omitempty" xml:"NodePool,omitempty" type:"Repeated"`
+	// example:
+	//
+	// Windows
+	OsType  *string                                                        `json:"OsType,omitempty" xml:"OsType,omitempty"`
+	OtaInfo *ListAppInstanceGroupResponseBodyAppInstanceGroupModelsOtaInfo `json:"OtaInfo,omitempty" xml:"OtaInfo,omitempty" type:"Struct"`
+	// example:
+	//
+	// CloudApp
+	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// 20
+	ReserveAmountRatio *string `json:"ReserveAmountRatio,omitempty" xml:"ReserveAmountRatio,omitempty"`
+	// example:
+	//
+	// 5
+	ReserveMaxAmount *int32 `json:"ReserveMaxAmount,omitempty" xml:"ReserveMaxAmount,omitempty"`
+	// example:
+	//
+	// 1
+	ReserveMinAmount *int32 `json:"ReserveMinAmount,omitempty" xml:"ReserveMinAmount,omitempty"`
+	// example:
+	//
+	// AVAILABLE
+	ResourceStatus *string `json:"ResourceStatus,omitempty" xml:"ResourceStatus,omitempty"`
+	// example:
+	//
+	// 5
+	ScalingDownAfterIdleMinutes *int32 `json:"ScalingDownAfterIdleMinutes,omitempty" xml:"ScalingDownAfterIdleMinutes,omitempty"`
+	// example:
+	//
+	// 10
+	ScalingStep *int32 `json:"ScalingStep,omitempty" xml:"ScalingStep,omitempty"`
+	// example:
+	//
+	// 85
+	ScalingUsageThreshold *string `json:"ScalingUsageThreshold,omitempty" xml:"ScalingUsageThreshold,omitempty"`
+	// example:
+	//
+	// 15
+	SessionTimeout *string `json:"SessionTimeout,omitempty" xml:"SessionTimeout,omitempty"`
+	// example:
+	//
+	// false
+	SkipUserAuthCheck *bool `json:"SkipUserAuthCheck,omitempty" xml:"SkipUserAuthCheck,omitempty"`
+	// example:
+	//
+	// spec-8o18t8uc31qib0****
+	SpecId *string `json:"SpecId,omitempty" xml:"SpecId,omitempty"`
+	// example:
+	//
+	// PUBLISHED
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s ListAppInstanceGroupResponseBodyAppInstanceGroupModels) String() string {
@@ -4621,12 +5963,27 @@ func (s *ListAppInstanceGroupResponseBodyAppInstanceGroupModels) SetStatus(v str
 
 type ListAppInstanceGroupResponseBodyAppInstanceGroupModelsApps struct {
 	// 应用图标。
+	//
+	// example:
+	//
+	// https://app-center-icon-****.png
 	AppIcon *string `json:"AppIcon,omitempty" xml:"AppIcon,omitempty"`
+	// example:
+	//
+	// ca-i87mycyn419nu****
 	AppId   *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
 	// 应用版本。
+	//
+	// example:
+	//
+	// 1.0.0
 	AppVersion *string `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
 	// 应用版本名称。
+	//
+	// example:
+	//
+	// 初始版本
 	AppVersionName *string `json:"AppVersionName,omitempty" xml:"AppVersionName,omitempty"`
 }
 
@@ -4664,24 +6021,72 @@ func (s *ListAppInstanceGroupResponseBodyAppInstanceGroupModelsApps) SetAppVersi
 }
 
 type ListAppInstanceGroupResponseBodyAppInstanceGroupModelsNodePool struct {
-	Amount                      *int32                                                                               `json:"Amount,omitempty" xml:"Amount,omitempty"`
-	MaxScalingAmount            *int32                                                                               `json:"MaxScalingAmount,omitempty" xml:"MaxScalingAmount,omitempty"`
-	NodeAmount                  *int32                                                                               `json:"NodeAmount,omitempty" xml:"NodeAmount,omitempty"`
-	NodeCapacity                *int32                                                                               `json:"NodeCapacity,omitempty" xml:"NodeCapacity,omitempty"`
-	NodeInstanceType            *string                                                                              `json:"NodeInstanceType,omitempty" xml:"NodeInstanceType,omitempty"`
-	NodePoolId                  *string                                                                              `json:"NodePoolId,omitempty" xml:"NodePoolId,omitempty"`
-	NodeTypeName                *string                                                                              `json:"NodeTypeName,omitempty" xml:"NodeTypeName,omitempty"`
-	NodeUsed                    *int32                                                                               `json:"NodeUsed,omitempty" xml:"NodeUsed,omitempty"`
-	RecurrenceSchedules         []*ListAppInstanceGroupResponseBodyAppInstanceGroupModelsNodePoolRecurrenceSchedules `json:"RecurrenceSchedules,omitempty" xml:"RecurrenceSchedules,omitempty" type:"Repeated"`
-	ScalingDownAfterIdleMinutes *int32                                                                               `json:"ScalingDownAfterIdleMinutes,omitempty" xml:"ScalingDownAfterIdleMinutes,omitempty"`
-	ScalingNodeAmount           *int32                                                                               `json:"ScalingNodeAmount,omitempty" xml:"ScalingNodeAmount,omitempty"`
-	ScalingNodeUsed             *int32                                                                               `json:"ScalingNodeUsed,omitempty" xml:"ScalingNodeUsed,omitempty"`
-	ScalingStep                 *int32                                                                               `json:"ScalingStep,omitempty" xml:"ScalingStep,omitempty"`
-	ScalingUsageThreshold       *string                                                                              `json:"ScalingUsageThreshold,omitempty" xml:"ScalingUsageThreshold,omitempty"`
-	StrategyDisableDate         *string                                                                              `json:"StrategyDisableDate,omitempty" xml:"StrategyDisableDate,omitempty"`
-	StrategyEnableDate          *string                                                                              `json:"StrategyEnableDate,omitempty" xml:"StrategyEnableDate,omitempty"`
-	StrategyType                *string                                                                              `json:"StrategyType,omitempty" xml:"StrategyType,omitempty"`
-	WarmUp                      *bool                                                                                `json:"WarmUp,omitempty" xml:"WarmUp,omitempty"`
+	// example:
+	//
+	// 2
+	Amount *int32 `json:"Amount,omitempty" xml:"Amount,omitempty"`
+	// example:
+	//
+	// 8
+	MaxScalingAmount *int32 `json:"MaxScalingAmount,omitempty" xml:"MaxScalingAmount,omitempty"`
+	// example:
+	//
+	// 1
+	NodeAmount *int32 `json:"NodeAmount,omitempty" xml:"NodeAmount,omitempty"`
+	// example:
+	//
+	// 2
+	NodeCapacity *int32 `json:"NodeCapacity,omitempty" xml:"NodeCapacity,omitempty"`
+	// example:
+	//
+	// appstreaming.vgpu.4c8g.2g
+	NodeInstanceType *string `json:"NodeInstanceType,omitempty" xml:"NodeInstanceType,omitempty"`
+	// example:
+	//
+	// rg-g6922kced36hx****
+	NodePoolId   *string `json:"NodePoolId,omitempty" xml:"NodePoolId,omitempty"`
+	NodeTypeName *string `json:"NodeTypeName,omitempty" xml:"NodeTypeName,omitempty"`
+	// example:
+	//
+	// 1
+	NodeUsed            *int32                                                                               `json:"NodeUsed,omitempty" xml:"NodeUsed,omitempty"`
+	RecurrenceSchedules []*ListAppInstanceGroupResponseBodyAppInstanceGroupModelsNodePoolRecurrenceSchedules `json:"RecurrenceSchedules,omitempty" xml:"RecurrenceSchedules,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 5
+	ScalingDownAfterIdleMinutes *int32 `json:"ScalingDownAfterIdleMinutes,omitempty" xml:"ScalingDownAfterIdleMinutes,omitempty"`
+	// example:
+	//
+	// 8
+	ScalingNodeAmount *int32 `json:"ScalingNodeAmount,omitempty" xml:"ScalingNodeAmount,omitempty"`
+	// example:
+	//
+	// 4
+	ScalingNodeUsed *int32 `json:"ScalingNodeUsed,omitempty" xml:"ScalingNodeUsed,omitempty"`
+	// example:
+	//
+	// 2
+	ScalingStep *int32 `json:"ScalingStep,omitempty" xml:"ScalingStep,omitempty"`
+	// example:
+	//
+	// 85
+	ScalingUsageThreshold *string `json:"ScalingUsageThreshold,omitempty" xml:"ScalingUsageThreshold,omitempty"`
+	// example:
+	//
+	// 2022-09-08
+	StrategyDisableDate *string `json:"StrategyDisableDate,omitempty" xml:"StrategyDisableDate,omitempty"`
+	// example:
+	//
+	// 2022-08-01
+	StrategyEnableDate *string `json:"StrategyEnableDate,omitempty" xml:"StrategyEnableDate,omitempty"`
+	// example:
+	//
+	// NODE_FIXED
+	StrategyType *string `json:"StrategyType,omitempty" xml:"StrategyType,omitempty"`
+	// example:
+	//
+	// false
+	WarmUp *bool `json:"WarmUp,omitempty" xml:"WarmUp,omitempty"`
 }
 
 func (s ListAppInstanceGroupResponseBodyAppInstanceGroupModelsNodePool) String() string {
@@ -4783,6 +6188,9 @@ func (s *ListAppInstanceGroupResponseBodyAppInstanceGroupModelsNodePool) SetWarm
 }
 
 type ListAppInstanceGroupResponseBodyAppInstanceGroupModelsNodePoolRecurrenceSchedules struct {
+	// example:
+	//
+	// Weekly
 	RecurrenceType   *string                                                                                          `json:"RecurrenceType,omitempty" xml:"RecurrenceType,omitempty"`
 	RecurrenceValues []*int32                                                                                         `json:"RecurrenceValues,omitempty" xml:"RecurrenceValues,omitempty" type:"Repeated"`
 	TimerPeriods     []*ListAppInstanceGroupResponseBodyAppInstanceGroupModelsNodePoolRecurrenceSchedulesTimerPeriods `json:"TimerPeriods,omitempty" xml:"TimerPeriods,omitempty" type:"Repeated"`
@@ -4812,8 +6220,17 @@ func (s *ListAppInstanceGroupResponseBodyAppInstanceGroupModelsNodePoolRecurrenc
 }
 
 type ListAppInstanceGroupResponseBodyAppInstanceGroupModelsNodePoolRecurrenceSchedulesTimerPeriods struct {
-	Amount    *int32  `json:"Amount,omitempty" xml:"Amount,omitempty"`
-	EndTime   *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// example:
+	//
+	// 5
+	Amount *int32 `json:"Amount,omitempty" xml:"Amount,omitempty"`
+	// example:
+	//
+	// 11:00
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// example:
+	//
+	// 09:30
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
@@ -4841,9 +6258,18 @@ func (s *ListAppInstanceGroupResponseBodyAppInstanceGroupModelsNodePoolRecurrenc
 }
 
 type ListAppInstanceGroupResponseBodyAppInstanceGroupModelsOtaInfo struct {
+	// example:
+	//
+	// 0.0.1-D-20220630.11****
 	NewOtaVersion *string `json:"NewOtaVersion,omitempty" xml:"NewOtaVersion,omitempty"`
-	OtaVersion    *string `json:"OtaVersion,omitempty" xml:"OtaVersion,omitempty"`
-	TaskId        *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// example:
+	//
+	// 0.0.1-D-20220615.11****
+	OtaVersion *string `json:"OtaVersion,omitempty" xml:"OtaVersion,omitempty"`
+	// example:
+	//
+	// ota-e49929gv8acz5****
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s ListAppInstanceGroupResponseBodyAppInstanceGroupModelsOtaInfo) String() string {
@@ -4870,9 +6296,9 @@ func (s *ListAppInstanceGroupResponseBodyAppInstanceGroupModelsOtaInfo) SetTaskI
 }
 
 type ListAppInstanceGroupResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListAppInstanceGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListAppInstanceGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListAppInstanceGroupResponse) String() string {
@@ -4899,13 +6325,34 @@ func (s *ListAppInstanceGroupResponse) SetBody(v *ListAppInstanceGroupResponseBo
 }
 
 type ListAppInstancesRequest struct {
-	AppInstanceGroupId *string   `json:"AppInstanceGroupId,omitempty" xml:"AppInstanceGroupId,omitempty"`
-	AppInstanceId      *string   `json:"AppInstanceId,omitempty" xml:"AppInstanceId,omitempty"`
-	AppInstanceIdList  []*string `json:"AppInstanceIdList,omitempty" xml:"AppInstanceIdList,omitempty" type:"Repeated"`
-	IncludeDeleted     *bool     `json:"IncludeDeleted,omitempty" xml:"IncludeDeleted,omitempty"`
-	PageNumber         *int32    `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize           *int32    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Status             []*string `json:"Status,omitempty" xml:"Status,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// aig-4p5f8tj16yb8b****
+	AppInstanceGroupId *string `json:"AppInstanceGroupId,omitempty" xml:"AppInstanceGroupId,omitempty"`
+	// example:
+	//
+	// ai-azn3kmwruh1vl****
+	AppInstanceId *string `json:"AppInstanceId,omitempty" xml:"AppInstanceId,omitempty"`
+	// if can be null:
+	// false
+	AppInstanceIdList []*string `json:"AppInstanceIdList,omitempty" xml:"AppInstanceIdList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// true
+	IncludeDeleted *bool `json:"IncludeDeleted,omitempty" xml:"IncludeDeleted,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// if can be null:
+	// false
+	Status []*string `json:"Status,omitempty" xml:"Status,omitempty" type:"Repeated"`
 }
 
 func (s ListAppInstancesRequest) String() string {
@@ -4953,10 +6400,22 @@ func (s *ListAppInstancesRequest) SetStatus(v []*string) *ListAppInstancesReques
 
 type ListAppInstancesResponseBody struct {
 	AppInstanceModels []*ListAppInstancesResponseBodyAppInstanceModels `json:"AppInstanceModels,omitempty" xml:"AppInstanceModels,omitempty" type:"Repeated"`
-	PageNumber        *int32                                           `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize          *int32                                           `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId         *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount        *int32                                           `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 18
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListAppInstancesResponseBody) String() string {
@@ -4993,14 +6452,35 @@ func (s *ListAppInstancesResponseBody) SetTotalCount(v int32) *ListAppInstancesR
 }
 
 type ListAppInstancesResponseBodyAppInstanceModels struct {
-	AppInstanceGroupId *string                                                `json:"AppInstanceGroupId,omitempty" xml:"AppInstanceGroupId,omitempty"`
-	AppInstanceId      *string                                                `json:"AppInstanceId,omitempty" xml:"AppInstanceId,omitempty"`
-	BindInfo           *ListAppInstancesResponseBodyAppInstanceModelsBindInfo `json:"BindInfo,omitempty" xml:"BindInfo,omitempty" type:"Struct"`
-	GmtCreate          *string                                                `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	GmtModified        *string                                                `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	MainEthPublicIp    *string                                                `json:"MainEthPublicIp,omitempty" xml:"MainEthPublicIp,omitempty"`
-	SessionStatus      *string                                                `json:"SessionStatus,omitempty" xml:"SessionStatus,omitempty"`
-	Status             *string                                                `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// aig-dk8p95irqfst9****
+	AppInstanceGroupId *string `json:"AppInstanceGroupId,omitempty" xml:"AppInstanceGroupId,omitempty"`
+	// example:
+	//
+	// ai-8dl7dzchklmka****
+	AppInstanceId *string                                                `json:"AppInstanceId,omitempty" xml:"AppInstanceId,omitempty"`
+	BindInfo      *ListAppInstancesResponseBodyAppInstanceModelsBindInfo `json:"BindInfo,omitempty" xml:"BindInfo,omitempty" type:"Struct"`
+	// example:
+	//
+	// 2023-03-07T20:29:19.000+08:00
+	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// example:
+	//
+	// 2023-03-07T20:29:19.000+08:00
+	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// example:
+	//
+	// 10.13.13.211
+	MainEthPublicIp *string `json:"MainEthPublicIp,omitempty" xml:"MainEthPublicIp,omitempty"`
+	// example:
+	//
+	// connect
+	SessionStatus *string `json:"SessionStatus,omitempty" xml:"SessionStatus,omitempty"`
+	// example:
+	//
+	// BOUND
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s ListAppInstancesResponseBodyAppInstanceModels) String() string {
@@ -5052,8 +6532,14 @@ func (s *ListAppInstancesResponseBodyAppInstanceModels) SetStatus(v string) *Lis
 }
 
 type ListAppInstancesResponseBodyAppInstanceModelsBindInfo struct {
-	EndUserId     *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
-	UsageDuration *int64  `json:"UsageDuration,omitempty" xml:"UsageDuration,omitempty"`
+	// example:
+	//
+	// app.test
+	EndUserId *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
+	// example:
+	//
+	// 2000
+	UsageDuration *int64 `json:"UsageDuration,omitempty" xml:"UsageDuration,omitempty"`
 }
 
 func (s ListAppInstancesResponseBodyAppInstanceModelsBindInfo) String() string {
@@ -5075,9 +6561,9 @@ func (s *ListAppInstancesResponseBodyAppInstanceModelsBindInfo) SetUsageDuration
 }
 
 type ListAppInstancesResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListAppInstancesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListAppInstancesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListAppInstancesResponse) String() string {
@@ -5104,15 +6590,45 @@ func (s *ListAppInstancesResponse) SetBody(v *ListAppInstancesResponseBody) *Lis
 }
 
 type ListNodeInstanceTypeRequest struct {
-	// 资源所属的地域ID。关于支持的地域详情，请参见[使用限制](~~426036~~)。
+	// 资源所属的地域ID。关于支持的地域详情，请参见[使用限制](https://help.aliyun.com/document_detail/426036.html)。
+	//
+	// example:
+	//
+	// cn-hangzhou
 	BizRegionId *string `json:"BizRegionId,omitempty" xml:"BizRegionId,omitempty"`
 	// 语言类型。
-	Language         *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	//
+	// example:
+	//
+	// zh-CN
+	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	// example:
+	//
+	// appstreaming.vgpu.4c8g.2g
 	NodeInstanceType *string `json:"NodeInstanceType,omitempty" xml:"NodeInstanceType,omitempty"`
 	// 支持的操作系统类型。
-	OsType      *string `json:"OsType,omitempty" xml:"OsType,omitempty"`
-	PageNumber  *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize    *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	//
+	// example:
+	//
+	// Windows
+	OsType *string `json:"OsType,omitempty" xml:"OsType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// CloudApp
 	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
 }
 
@@ -5161,10 +6677,19 @@ func (s *ListNodeInstanceTypeRequest) SetProductType(v string) *ListNodeInstance
 
 type ListNodeInstanceTypeResponseBody struct {
 	NodeInstanceTypeModels []*ListNodeInstanceTypeResponseBodyNodeInstanceTypeModels `json:"NodeInstanceTypeModels,omitempty" xml:"NodeInstanceTypeModels,omitempty" type:"Repeated"`
-	PageNumber             *int32                                                    `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize               *int32                                                    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId              *string                                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount             *int32                                                    `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize  *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 6
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListNodeInstanceTypeResponseBody) String() string {
@@ -5201,22 +6726,53 @@ func (s *ListNodeInstanceTypeResponseBody) SetTotalCount(v int32) *ListNodeInsta
 }
 
 type ListNodeInstanceTypeResponseBodyNodeInstanceTypeModels struct {
+	// example:
+	//
+	// 4
 	Cpu *string `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	// example:
+	//
+	// 2
 	Gpu *string `json:"Gpu,omitempty" xml:"Gpu,omitempty"`
 	// 显卡内存大小，单位为MB。
+	//
+	// example:
+	//
+	// 8192
 	GpuMemory *int64 `json:"GpuMemory,omitempty" xml:"GpuMemory,omitempty"`
 	// 最大并发会话数，即单个资源可同时连接的会话数。如果同时连接的会话数过多，可能导致应用的使用体验下降。取值范围因资源规格不同而不同。各资源规格对应的取值范围分别是：
 	//
-	// - appstreaming.general.4c8g：1\~2；
-	// - appstreaming.general.8c16g：1\~4；
-	// - appstreaming.vgpu.8c16g.4g：1\~4；
-	// - appstreaming.vgpu.8c31g.16g：1\~4；
-	// - appstreaming.vgpu.14c93g.12g：1\~6；
-	MaxCapacity            *int32  `json:"MaxCapacity,omitempty" xml:"MaxCapacity,omitempty"`
-	Memory                 *int64  `json:"Memory,omitempty" xml:"Memory,omitempty"`
-	NodeInstanceType       *string `json:"NodeInstanceType,omitempty" xml:"NodeInstanceType,omitempty"`
+	// - appstreaming.general.4c8g：1\\~2；
+	//
+	// - appstreaming.general.8c16g：1\\~4；
+	//
+	// - appstreaming.vgpu.8c16g.4g：1\\~4；
+	//
+	// - appstreaming.vgpu.8c31g.16g：1\\~4；
+	//
+	// - appstreaming.vgpu.14c93g.12g：1\\~6；
+	//
+	// example:
+	//
+	// 4
+	MaxCapacity *int32 `json:"MaxCapacity,omitempty" xml:"MaxCapacity,omitempty"`
+	// example:
+	//
+	// 8192
+	Memory *int64 `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	// example:
+	//
+	// appstreaming.vgpu.4c8g.2g
+	NodeInstanceType *string `json:"NodeInstanceType,omitempty" xml:"NodeInstanceType,omitempty"`
+	// example:
+	//
+	// appstreaming.vgpu
 	NodeInstanceTypeFamily *string `json:"NodeInstanceTypeFamily,omitempty" xml:"NodeInstanceTypeFamily,omitempty"`
 	// 资源规格名称。
+	//
+	// example:
+	//
+	// 无影-通用型_4核8G
 	NodeTypeName *string `json:"NodeTypeName,omitempty" xml:"NodeTypeName,omitempty"`
 }
 
@@ -5269,9 +6825,9 @@ func (s *ListNodeInstanceTypeResponseBodyNodeInstanceTypeModels) SetNodeTypeName
 }
 
 type ListNodeInstanceTypeResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListNodeInstanceTypeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListNodeInstanceTypeResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListNodeInstanceTypeResponse) String() string {
@@ -5298,10 +6854,30 @@ func (s *ListNodeInstanceTypeResponse) SetBody(v *ListNodeInstanceTypeResponseBo
 }
 
 type ListOtaTaskRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// aig-53fvrq1oanz6c****
 	AppInstanceGroupId *string `json:"AppInstanceGroupId,omitempty" xml:"AppInstanceGroupId,omitempty"`
-	OtaType            *string `json:"OtaType,omitempty" xml:"OtaType,omitempty"`
-	PageNumber         *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize           *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Fota
+	OtaType *string `json:"OtaType,omitempty" xml:"OtaType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
 func (s ListOtaTaskRequest) String() string {
@@ -5333,11 +6909,23 @@ func (s *ListOtaTaskRequest) SetPageSize(v int32) *ListOtaTaskRequest {
 }
 
 type ListOtaTaskResponseBody struct {
-	PageNumber *int32                             `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32                             `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId  *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TaskList   []*ListOtaTaskResponseBodyTaskList `json:"TaskList,omitempty" xml:"TaskList,omitempty" type:"Repeated"`
-	TotalCount *int32                             `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
+	RequestId *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TaskList  []*ListOtaTaskResponseBodyTaskList `json:"TaskList,omitempty" xml:"TaskList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 6
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListOtaTaskResponseBody) String() string {
@@ -5374,10 +6962,24 @@ func (s *ListOtaTaskResponseBody) SetTotalCount(v int32) *ListOtaTaskResponseBod
 }
 
 type ListOtaTaskResponseBodyTaskList struct {
-	OtaVersion        *string `json:"OtaVersion,omitempty" xml:"OtaVersion,omitempty"`
+	// example:
+	//
+	// 0.0.1-R-20220708.110604
+	OtaVersion *string `json:"OtaVersion,omitempty" xml:"OtaVersion,omitempty"`
+	// example:
+	//
+	// RUNNING
 	TaskDisplayStatus *string `json:"TaskDisplayStatus,omitempty" xml:"TaskDisplayStatus,omitempty"`
-	TaskId            *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	TaskStartTime     *string `json:"TaskStartTime,omitempty" xml:"TaskStartTime,omitempty"`
+	// example:
+	//
+	// ota-be7jzm29wrrz5****
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// Use the UTC time format: yyyy-MM-ddTHH:mmZ
+	//
+	// example:
+	//
+	// 2022-08-04T14:36:00+08:00
+	TaskStartTime *string `json:"TaskStartTime,omitempty" xml:"TaskStartTime,omitempty"`
 }
 
 func (s ListOtaTaskResponseBodyTaskList) String() string {
@@ -5409,9 +7011,9 @@ func (s *ListOtaTaskResponseBodyTaskList) SetTaskStartTime(v string) *ListOtaTas
 }
 
 type ListOtaTaskResponse struct {
-	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListOtaTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListOtaTaskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListOtaTaskResponse) String() string {
@@ -5438,12 +7040,27 @@ func (s *ListOtaTaskResponse) SetBody(v *ListOtaTaskResponseBody) *ListOtaTaskRe
 }
 
 type ListProjectsRequest struct {
-	PageNumber  *int32   `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize    *int32   `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	ProjectId   *string  `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	ProjectName *string  `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	SortType    *string  `json:"SortType,omitempty" xml:"SortType,omitempty"`
-	StateList   []*int32 `json:"StateList,omitempty" xml:"StateList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// p-065z4tu9ak07h****
+	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// example:
+	//
+	// notepad++***
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// example:
+	//
+	// ASC
+	SortType  *string  `json:"SortType,omitempty" xml:"SortType,omitempty"`
+	StateList []*int32 `json:"StateList,omitempty" xml:"StateList,omitempty" type:"Repeated"`
 }
 
 func (s ListProjectsRequest) String() string {
@@ -5485,14 +7102,35 @@ func (s *ListProjectsRequest) SetStateList(v []*int32) *ListProjectsRequest {
 }
 
 type ListProjectsResponseBody struct {
-	Code       *string                         `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data       []*ListProjectsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	Message    *string                         `json:"Message,omitempty" xml:"Message,omitempty"`
-	PageNumber *int32                          `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32                          `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId  *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success    *string                         `json:"Success,omitempty" xml:"Success,omitempty"`
-	TotalCount *int32                          `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string                         `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data []*ListProjectsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// example:
+	//
+	// There is a missing parameter.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 6
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListProjectsResponseBody) String() string {
@@ -5544,19 +7182,52 @@ func (s *ListProjectsResponseBody) SetTotalCount(v int32) *ListProjectsResponseB
 }
 
 type ListProjectsResponseBodyData struct {
-	AccessPageId   []*int64 `json:"AccessPageId,omitempty" xml:"AccessPageId,omitempty" type:"Repeated"`
-	AvailableHours *int32   `json:"AvailableHours,omitempty" xml:"AvailableHours,omitempty"`
-	ContentId      *string  `json:"ContentId,omitempty" xml:"ContentId,omitempty"`
-	ContentName    *string  `json:"ContentName,omitempty" xml:"ContentName,omitempty"`
-	CreateTime     *string  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Description    *string  `json:"Description,omitempty" xml:"Description,omitempty"`
-	InUseSessions  *int64   `json:"InUseSessions,omitempty" xml:"InUseSessions,omitempty"`
-	MaxHours       *int64   `json:"MaxHours,omitempty" xml:"MaxHours,omitempty"`
-	MaxSessions    *int64   `json:"MaxSessions,omitempty" xml:"MaxSessions,omitempty"`
-	ProjectId      *string  `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	ProjectName    *string  `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	ProjectState   *string  `json:"ProjectState,omitempty" xml:"ProjectState,omitempty"`
-	SessionSpec    *string  `json:"SessionSpec,omitempty" xml:"SessionSpec,omitempty"`
+	AccessPageId []*int64 `json:"AccessPageId,omitempty" xml:"AccessPageId,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 3174301
+	AvailableHours *int32 `json:"AvailableHours,omitempty" xml:"AvailableHours,omitempty"`
+	// example:
+	//
+	// c-06vcpamarryyq****
+	ContentId *string `json:"ContentId,omitempty" xml:"ContentId,omitempty"`
+	// example:
+	//
+	// notepad++***
+	ContentName *string `json:"ContentName,omitempty" xml:"ContentName,omitempty"`
+	// example:
+	//
+	// 1701141509000
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// xxx
+	Description   *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	InUseSessions *int64  `json:"InUseSessions,omitempty" xml:"InUseSessions,omitempty"`
+	// example:
+	//
+	// 1000
+	MaxHours *int64 `json:"MaxHours,omitempty" xml:"MaxHours,omitempty"`
+	// example:
+	//
+	// 100
+	MaxSessions *int64 `json:"MaxSessions,omitempty" xml:"MaxSessions,omitempty"`
+	// example:
+	//
+	// p-065z4tu9ak07h****
+	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// example:
+	//
+	// notepad++***
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// example:
+	//
+	// 0
+	ProjectState *string `json:"ProjectState,omitempty" xml:"ProjectState,omitempty"`
+	// example:
+	//
+	// appstreaming.general.basic
+	SessionSpec *string `json:"SessionSpec,omitempty" xml:"SessionSpec,omitempty"`
 }
 
 func (s ListProjectsResponseBodyData) String() string {
@@ -5633,9 +7304,9 @@ func (s *ListProjectsResponseBodyData) SetSessionSpec(v string) *ListProjectsRes
 }
 
 type ListProjectsResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListProjectsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListProjectsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListProjectsResponse) String() string {
@@ -5658,6 +7329,23 @@ func (s *ListProjectsResponse) SetStatusCode(v int32) *ListProjectsResponse {
 
 func (s *ListProjectsResponse) SetBody(v *ListProjectsResponseBody) *ListProjectsResponse {
 	s.Body = v
+	return s
+}
+
+type ListRegionsRequest struct {
+	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
+}
+
+func (s ListRegionsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRegionsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListRegionsRequest) SetProductType(v string) *ListRegionsRequest {
+	s.ProductType = &v
 	return s
 }
 
@@ -5702,9 +7390,9 @@ func (s *ListRegionsResponseBodyRegionModels) SetRegionId(v string) *ListRegions
 }
 
 type ListRegionsResponse struct {
-	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListRegionsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListRegionsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListRegionsResponse) String() string {
@@ -5731,13 +7419,28 @@ func (s *ListRegionsResponse) SetBody(v *ListRegionsResponseBody) *ListRegionsRe
 }
 
 type ListSessionPackagesRequest struct {
-	PageNumber         *int32   `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize           *int32   `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	ProjectId          *string  `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	SessionPackageId   *string  `json:"SessionPackageId,omitempty" xml:"SessionPackageId,omitempty"`
-	SessionPackageName *string  `json:"SessionPackageName,omitempty" xml:"SessionPackageName,omitempty"`
-	SortType           *string  `json:"SortType,omitempty" xml:"SortType,omitempty"`
-	StateList          []*int32 `json:"StateList,omitempty" xml:"StateList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 100
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// p-xxxxxxxxxxxx
+	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// example:
+	//
+	// tp-xxxxxxxx
+	SessionPackageId   *string `json:"SessionPackageId,omitempty" xml:"SessionPackageId,omitempty"`
+	SessionPackageName *string `json:"SessionPackageName,omitempty" xml:"SessionPackageName,omitempty"`
+	// example:
+	//
+	// ASC
+	SortType  *string  `json:"SortType,omitempty" xml:"SortType,omitempty"`
+	StateList []*int32 `json:"StateList,omitempty" xml:"StateList,omitempty" type:"Repeated"`
 }
 
 func (s ListSessionPackagesRequest) String() string {
@@ -5784,11 +7487,23 @@ func (s *ListSessionPackagesRequest) SetStateList(v []*int32) *ListSessionPackag
 }
 
 type ListSessionPackagesResponseBody struct {
-	Data       []*ListSessionPackagesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	PageNumber *int32                                 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32                                 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId  *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount *int64                                 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	Data []*ListSessionPackagesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 100
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 1CBAFFAB-B697-4049-A9B1-67E1FC5Fxxxxxxxx
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 1
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListSessionPackagesResponseBody) String() string {
@@ -5825,24 +7540,66 @@ func (s *ListSessionPackagesResponseBody) SetTotalCount(v int64) *ListSessionPac
 }
 
 type ListSessionPackagesResponseBodyData struct {
-	AvailableHours       *int64                                             `json:"AvailableHours,omitempty" xml:"AvailableHours,omitempty"`
-	ChargeType           *string                                            `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	DeleteStatus         *int32                                             `json:"DeleteStatus,omitempty" xml:"DeleteStatus,omitempty"`
-	GmtCreate            *string                                            `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	GmtModifiedTime      *string                                            `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
-	InstanceObject       *ListSessionPackagesResponseBodyDataInstanceObject `json:"InstanceObject,omitempty" xml:"InstanceObject,omitempty" type:"Struct"`
-	MaxHours             *int64                                             `json:"MaxHours,omitempty" xml:"MaxHours,omitempty"`
-	MaxSessions          *int64                                             `json:"MaxSessions,omitempty" xml:"MaxSessions,omitempty"`
-	ProjectId            *string                                            `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	ProjectName          *string                                            `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	Region               *string                                            `json:"Region,omitempty" xml:"Region,omitempty"`
-	SessionPackageId     *string                                            `json:"SessionPackageId,omitempty" xml:"SessionPackageId,omitempty"`
-	SessionPackageName   *string                                            `json:"SessionPackageName,omitempty" xml:"SessionPackageName,omitempty"`
-	SessionPackageTypeId *string                                            `json:"SessionPackageTypeId,omitempty" xml:"SessionPackageTypeId,omitempty"`
-	SessionSpec          *string                                            `json:"SessionSpec,omitempty" xml:"SessionSpec,omitempty"`
-	SessionUsageRate     *int64                                             `json:"SessionUsageRate,omitempty" xml:"SessionUsageRate,omitempty"`
-	State                *int32                                             `json:"State,omitempty" xml:"State,omitempty"`
-	UserIdentification   *int64                                             `json:"UserIdentification,omitempty" xml:"UserIdentification,omitempty"`
+	// example:
+	//
+	// 500
+	AvailableHours *int64  `json:"AvailableHours,omitempty" xml:"AvailableHours,omitempty"`
+	ChargeType     *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	// example:
+	//
+	// 0
+	DeleteStatus *int32 `json:"DeleteStatus,omitempty" xml:"DeleteStatus,omitempty"`
+	// example:
+	//
+	// 1701170196000
+	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// example:
+	//
+	// 1701170203000
+	GmtModifiedTime *string                                            `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
+	InstanceObject  *ListSessionPackagesResponseBodyDataInstanceObject `json:"InstanceObject,omitempty" xml:"InstanceObject,omitempty" type:"Struct"`
+	// example:
+	//
+	// 1000
+	MaxHours *int64 `json:"MaxHours,omitempty" xml:"MaxHours,omitempty"`
+	// example:
+	//
+	// 100
+	MaxSessions *int64 `json:"MaxSessions,omitempty" xml:"MaxSessions,omitempty"`
+	// example:
+	//
+	// p-xxxxxxxxxxxx
+	ProjectId   *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// example:
+	//
+	// tp-xxxxxxxxx
+	SessionPackageId   *string `json:"SessionPackageId,omitempty" xml:"SessionPackageId,omitempty"`
+	SessionPackageName *string `json:"SessionPackageName,omitempty" xml:"SessionPackageName,omitempty"`
+	// example:
+	//
+	// 0
+	SessionPackageTypeId *string `json:"SessionPackageTypeId,omitempty" xml:"SessionPackageTypeId,omitempty"`
+	// example:
+	//
+	// appstreaming.general.entry
+	SessionSpec *string `json:"SessionSpec,omitempty" xml:"SessionSpec,omitempty"`
+	// example:
+	//
+	// 60
+	SessionUsageRate *int64 `json:"SessionUsageRate,omitempty" xml:"SessionUsageRate,omitempty"`
+	// example:
+	//
+	// 4
+	State *int32 `json:"State,omitempty" xml:"State,omitempty"`
+	// example:
+	//
+	// 156xxxxxxxxxx
+	UserIdentification *int64 `json:"UserIdentification,omitempty" xml:"UserIdentification,omitempty"`
 }
 
 func (s ListSessionPackagesResponseBodyData) String() string {
@@ -5944,14 +7701,38 @@ func (s *ListSessionPackagesResponseBodyData) SetUserIdentification(v int64) *Li
 }
 
 type ListSessionPackagesResponseBodyDataInstanceObject struct {
-	ExpiredTime  *string `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
-	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// 2024-05-28T16:00:00Z
+	ExpiredTime *string `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
+	// example:
+	//
+	// tp-xxxxxxxxxxx
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// appstreaming.general.entry
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	ResourceId   *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// example:
+	//
+	// p-xxxxxxxxxx
+	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// example:
+	//
+	// AppSessionPackage
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	StartTime    *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	TotalTime    *int64  `json:"TotalTime,omitempty" xml:"TotalTime,omitempty"`
-	UsedTime     *int64  `json:"UsedTime,omitempty" xml:"UsedTime,omitempty"`
+	// example:
+	//
+	// 2023-11-28T04:14:07Z
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// example:
+	//
+	// 3600000
+	TotalTime *int64 `json:"TotalTime,omitempty" xml:"TotalTime,omitempty"`
+	// example:
+	//
+	// 1021
+	UsedTime *int64 `json:"UsedTime,omitempty" xml:"UsedTime,omitempty"`
 }
 
 func (s ListSessionPackagesResponseBodyDataInstanceObject) String() string {
@@ -6003,9 +7784,9 @@ func (s *ListSessionPackagesResponseBodyDataInstanceObject) SetUsedTime(v int64)
 }
 
 type ListSessionPackagesResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListSessionPackagesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListSessionPackagesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListSessionPackagesResponse) String() string {
@@ -6032,6 +7813,9 @@ func (s *ListSessionPackagesResponse) SetBody(v *ListSessionPackagesResponseBody
 }
 
 type ListTenantConfigResponseBody struct {
+	// example:
+	//
+	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
 	RequestId         *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	TenantConfigModel *ListTenantConfigResponseBodyTenantConfigModel `json:"TenantConfigModel,omitempty" xml:"TenantConfigModel,omitempty" type:"Struct"`
 }
@@ -6055,6 +7839,9 @@ func (s *ListTenantConfigResponseBody) SetTenantConfigModel(v *ListTenantConfigR
 }
 
 type ListTenantConfigResponseBodyTenantConfigModel struct {
+	// example:
+	//
+	// true
 	AppInstanceGroupExpireRemind *bool `json:"AppInstanceGroupExpireRemind,omitempty" xml:"AppInstanceGroupExpireRemind,omitempty"`
 }
 
@@ -6072,9 +7859,9 @@ func (s *ListTenantConfigResponseBodyTenantConfigModel) SetAppInstanceGroupExpir
 }
 
 type ListTenantConfigResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListTenantConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListTenantConfigResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ListTenantConfigResponse) String() string {
@@ -6101,8 +7888,18 @@ func (s *ListTenantConfigResponse) SetBody(v *ListTenantConfigResponseBody) *Lis
 }
 
 type LogOffAllSessionsInAppInstanceGroupRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// aig-9ciijz60n4xsv****
 	AppInstanceGroupId *string `json:"AppInstanceGroupId,omitempty" xml:"AppInstanceGroupId,omitempty"`
-	ProductType        *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// CloudApp
+	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
 }
 
 func (s LogOffAllSessionsInAppInstanceGroupRequest) String() string {
@@ -6124,8 +7921,17 @@ func (s *LogOffAllSessionsInAppInstanceGroupRequest) SetProductType(v string) *L
 }
 
 type LogOffAllSessionsInAppInstanceGroupResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// InvalidParameter.ProductType
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// The parameter ProductType is invalid.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -6153,9 +7959,9 @@ func (s *LogOffAllSessionsInAppInstanceGroupResponseBody) SetRequestId(v string)
 }
 
 type LogOffAllSessionsInAppInstanceGroupResponse struct {
-	Headers    map[string]*string                               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *LogOffAllSessionsInAppInstanceGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *LogOffAllSessionsInAppInstanceGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s LogOffAllSessionsInAppInstanceGroupResponse) String() string {
@@ -6182,9 +7988,20 @@ func (s *LogOffAllSessionsInAppInstanceGroupResponse) SetBody(v *LogOffAllSessio
 }
 
 type MigrateSessionPackageRequest struct {
-	DestProjectId    *string `json:"DestProjectId,omitempty" xml:"DestProjectId,omitempty"`
+	// example:
+	//
+	// p-xxxxxx123x4312367
+	DestProjectId *string `json:"DestProjectId,omitempty" xml:"DestProjectId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// tp-xxxxxxxxxxxxxxxxx
 	SessionPackageId *string `json:"SessionPackageId,omitempty" xml:"SessionPackageId,omitempty"`
-	SourceProjectId  *string `json:"SourceProjectId,omitempty" xml:"SourceProjectId,omitempty"`
+	// example:
+	//
+	// p-xxxxxx123x4312345
+	SourceProjectId *string `json:"SourceProjectId,omitempty" xml:"SourceProjectId,omitempty"`
 }
 
 func (s MigrateSessionPackageRequest) String() string {
@@ -6211,10 +8028,19 @@ func (s *MigrateSessionPackageRequest) SetSourceProjectId(v string) *MigrateSess
 }
 
 type MigrateSessionPackageResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// NO_DATA
+	Code    *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// E25FC620-6B6F-12D2-A992-AD8727DC****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s MigrateSessionPackageResponseBody) String() string {
@@ -6246,9 +8072,9 @@ func (s *MigrateSessionPackageResponseBody) SetSuccess(v bool) *MigrateSessionPa
 }
 
 type MigrateSessionPackageResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *MigrateSessionPackageResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *MigrateSessionPackageResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s MigrateSessionPackageResponse) String() string {
@@ -6275,16 +8101,29 @@ func (s *MigrateSessionPackageResponse) SetBody(v *MigrateSessionPackageResponse
 }
 
 type ModifyAppInstanceGroupAttributeRequest struct {
-	AppInstanceGroupId   *string                                               `json:"AppInstanceGroupId,omitempty" xml:"AppInstanceGroupId,omitempty"`
-	AppInstanceGroupName *string                                               `json:"AppInstanceGroupName,omitempty" xml:"AppInstanceGroupName,omitempty"`
-	Network              *ModifyAppInstanceGroupAttributeRequestNetwork        `json:"Network,omitempty" xml:"Network,omitempty" type:"Struct"`
-	NodePool             *ModifyAppInstanceGroupAttributeRequestNodePool       `json:"NodePool,omitempty" xml:"NodePool,omitempty" type:"Struct"`
-	PreOpenAppId         *string                                               `json:"PreOpenAppId,omitempty" xml:"PreOpenAppId,omitempty"`
-	PreOpenMode          *string                                               `json:"PreOpenMode,omitempty" xml:"PreOpenMode,omitempty"`
-	ProductType          *string                                               `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
-	SecurityPolicy       *ModifyAppInstanceGroupAttributeRequestSecurityPolicy `json:"SecurityPolicy,omitempty" xml:"SecurityPolicy,omitempty" type:"Struct"`
-	SessionTimeout       *int32                                                `json:"SessionTimeout,omitempty" xml:"SessionTimeout,omitempty"`
-	StoragePolicy        *ModifyAppInstanceGroupAttributeRequestStoragePolicy  `json:"StoragePolicy,omitempty" xml:"StoragePolicy,omitempty" type:"Struct"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// aig-9ciijz60n4xsv****
+	AppInstanceGroupId   *string                                         `json:"AppInstanceGroupId,omitempty" xml:"AppInstanceGroupId,omitempty"`
+	AppInstanceGroupName *string                                         `json:"AppInstanceGroupName,omitempty" xml:"AppInstanceGroupName,omitempty"`
+	Network              *ModifyAppInstanceGroupAttributeRequestNetwork  `json:"Network,omitempty" xml:"Network,omitempty" type:"Struct"`
+	NodePool             *ModifyAppInstanceGroupAttributeRequestNodePool `json:"NodePool,omitempty" xml:"NodePool,omitempty" type:"Struct"`
+	PreOpenAppId         *string                                         `json:"PreOpenAppId,omitempty" xml:"PreOpenAppId,omitempty"`
+	PreOpenMode          *string                                         `json:"PreOpenMode,omitempty" xml:"PreOpenMode,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// CloudApp
+	ProductType    *string                                               `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
+	SecurityPolicy *ModifyAppInstanceGroupAttributeRequestSecurityPolicy `json:"SecurityPolicy,omitempty" xml:"SecurityPolicy,omitempty" type:"Struct"`
+	// example:
+	//
+	// 15
+	SessionTimeout *int32                                               `json:"SessionTimeout,omitempty" xml:"SessionTimeout,omitempty"`
+	StoragePolicy  *ModifyAppInstanceGroupAttributeRequestStoragePolicy `json:"StoragePolicy,omitempty" xml:"StoragePolicy,omitempty" type:"Struct"`
 }
 
 func (s ModifyAppInstanceGroupAttributeRequest) String() string {
@@ -6386,8 +8225,14 @@ func (s *ModifyAppInstanceGroupAttributeRequestNetworkDomainRules) SetPolicy(v s
 }
 
 type ModifyAppInstanceGroupAttributeRequestNodePool struct {
-	NodeCapacity *int32  `json:"NodeCapacity,omitempty" xml:"NodeCapacity,omitempty"`
-	NodePoolId   *string `json:"NodePoolId,omitempty" xml:"NodePoolId,omitempty"`
+	// example:
+	//
+	// 2
+	NodeCapacity *int32 `json:"NodeCapacity,omitempty" xml:"NodeCapacity,omitempty"`
+	// example:
+	//
+	// rg-ew7va2g1wl3vm****
+	NodePoolId *string `json:"NodePoolId,omitempty" xml:"NodePoolId,omitempty"`
 }
 
 func (s ModifyAppInstanceGroupAttributeRequestNodePool) String() string {
@@ -6409,7 +8254,13 @@ func (s *ModifyAppInstanceGroupAttributeRequestNodePool) SetNodePoolId(v string)
 }
 
 type ModifyAppInstanceGroupAttributeRequestSecurityPolicy struct {
-	ResetAfterUnbind  *bool `json:"ResetAfterUnbind,omitempty" xml:"ResetAfterUnbind,omitempty"`
+	// example:
+	//
+	// true
+	ResetAfterUnbind *bool `json:"ResetAfterUnbind,omitempty" xml:"ResetAfterUnbind,omitempty"`
+	// example:
+	//
+	// false
 	SkipUserAuthCheck *bool `json:"SkipUserAuthCheck,omitempty" xml:"SkipUserAuthCheck,omitempty"`
 }
 
@@ -6449,16 +8300,29 @@ func (s *ModifyAppInstanceGroupAttributeRequestStoragePolicy) SetStorageTypeList
 }
 
 type ModifyAppInstanceGroupAttributeShrinkRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// aig-9ciijz60n4xsv****
 	AppInstanceGroupId   *string `json:"AppInstanceGroupId,omitempty" xml:"AppInstanceGroupId,omitempty"`
 	AppInstanceGroupName *string `json:"AppInstanceGroupName,omitempty" xml:"AppInstanceGroupName,omitempty"`
 	NetworkShrink        *string `json:"Network,omitempty" xml:"Network,omitempty"`
 	NodePoolShrink       *string `json:"NodePool,omitempty" xml:"NodePool,omitempty"`
 	PreOpenAppId         *string `json:"PreOpenAppId,omitempty" xml:"PreOpenAppId,omitempty"`
 	PreOpenMode          *string `json:"PreOpenMode,omitempty" xml:"PreOpenMode,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// CloudApp
 	ProductType          *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
 	SecurityPolicyShrink *string `json:"SecurityPolicy,omitempty" xml:"SecurityPolicy,omitempty"`
-	SessionTimeout       *int32  `json:"SessionTimeout,omitempty" xml:"SessionTimeout,omitempty"`
-	StoragePolicyShrink  *string `json:"StoragePolicy,omitempty" xml:"StoragePolicy,omitempty"`
+	// example:
+	//
+	// 15
+	SessionTimeout      *int32  `json:"SessionTimeout,omitempty" xml:"SessionTimeout,omitempty"`
+	StoragePolicyShrink *string `json:"StoragePolicy,omitempty" xml:"StoragePolicy,omitempty"`
 }
 
 func (s ModifyAppInstanceGroupAttributeShrinkRequest) String() string {
@@ -6520,8 +8384,17 @@ func (s *ModifyAppInstanceGroupAttributeShrinkRequest) SetStoragePolicyShrink(v 
 }
 
 type ModifyAppInstanceGroupAttributeResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// InvalidParameter.ProductType
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// The parameter ProductType is invalid.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -6549,9 +8422,9 @@ func (s *ModifyAppInstanceGroupAttributeResponseBody) SetRequestId(v string) *Mo
 }
 
 type ModifyAppInstanceGroupAttributeResponse struct {
-	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ModifyAppInstanceGroupAttributeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyAppInstanceGroupAttributeResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ModifyAppInstanceGroupAttributeResponse) String() string {
@@ -6577,12 +8450,223 @@ func (s *ModifyAppInstanceGroupAttributeResponse) SetBody(v *ModifyAppInstanceGr
 	return s
 }
 
+type ModifyAppPolicyRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pg-ee2znjktwgxu2****
+	AppPolicyId *string `json:"AppPolicyId,omitempty" xml:"AppPolicyId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// CloudApp
+	ProductType *string                            `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
+	VideoPolicy *ModifyAppPolicyRequestVideoPolicy `json:"VideoPolicy,omitempty" xml:"VideoPolicy,omitempty" type:"Struct"`
+}
+
+func (s ModifyAppPolicyRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyAppPolicyRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyAppPolicyRequest) SetAppPolicyId(v string) *ModifyAppPolicyRequest {
+	s.AppPolicyId = &v
+	return s
+}
+
+func (s *ModifyAppPolicyRequest) SetProductType(v string) *ModifyAppPolicyRequest {
+	s.ProductType = &v
+	return s
+}
+
+func (s *ModifyAppPolicyRequest) SetVideoPolicy(v *ModifyAppPolicyRequestVideoPolicy) *ModifyAppPolicyRequest {
+	s.VideoPolicy = v
+	return s
+}
+
+type ModifyAppPolicyRequestVideoPolicy struct {
+	// example:
+	//
+	// 60
+	FrameRate *int32 `json:"FrameRate,omitempty" xml:"FrameRate,omitempty"`
+	// example:
+	//
+	// 1080
+	SessionResolutionHeight *int32 `json:"SessionResolutionHeight,omitempty" xml:"SessionResolutionHeight,omitempty"`
+	// example:
+	//
+	// 1920
+	SessionResolutionWidth *int32 `json:"SessionResolutionWidth,omitempty" xml:"SessionResolutionWidth,omitempty"`
+	// example:
+	//
+	// video
+	StreamingMode *string `json:"StreamingMode,omitempty" xml:"StreamingMode,omitempty"`
+	// example:
+	//
+	// false
+	TerminalResolutionAdaptive *bool   `json:"TerminalResolutionAdaptive,omitempty" xml:"TerminalResolutionAdaptive,omitempty"`
+	VisualQualityStrategy      *string `json:"VisualQualityStrategy,omitempty" xml:"VisualQualityStrategy,omitempty"`
+	// example:
+	//
+	// true
+	Webrtc *bool `json:"Webrtc,omitempty" xml:"Webrtc,omitempty"`
+}
+
+func (s ModifyAppPolicyRequestVideoPolicy) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyAppPolicyRequestVideoPolicy) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyAppPolicyRequestVideoPolicy) SetFrameRate(v int32) *ModifyAppPolicyRequestVideoPolicy {
+	s.FrameRate = &v
+	return s
+}
+
+func (s *ModifyAppPolicyRequestVideoPolicy) SetSessionResolutionHeight(v int32) *ModifyAppPolicyRequestVideoPolicy {
+	s.SessionResolutionHeight = &v
+	return s
+}
+
+func (s *ModifyAppPolicyRequestVideoPolicy) SetSessionResolutionWidth(v int32) *ModifyAppPolicyRequestVideoPolicy {
+	s.SessionResolutionWidth = &v
+	return s
+}
+
+func (s *ModifyAppPolicyRequestVideoPolicy) SetStreamingMode(v string) *ModifyAppPolicyRequestVideoPolicy {
+	s.StreamingMode = &v
+	return s
+}
+
+func (s *ModifyAppPolicyRequestVideoPolicy) SetTerminalResolutionAdaptive(v bool) *ModifyAppPolicyRequestVideoPolicy {
+	s.TerminalResolutionAdaptive = &v
+	return s
+}
+
+func (s *ModifyAppPolicyRequestVideoPolicy) SetVisualQualityStrategy(v string) *ModifyAppPolicyRequestVideoPolicy {
+	s.VisualQualityStrategy = &v
+	return s
+}
+
+func (s *ModifyAppPolicyRequestVideoPolicy) SetWebrtc(v bool) *ModifyAppPolicyRequestVideoPolicy {
+	s.Webrtc = &v
+	return s
+}
+
+type ModifyAppPolicyShrinkRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pg-ee2znjktwgxu2****
+	AppPolicyId *string `json:"AppPolicyId,omitempty" xml:"AppPolicyId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// CloudApp
+	ProductType       *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
+	VideoPolicyShrink *string `json:"VideoPolicy,omitempty" xml:"VideoPolicy,omitempty"`
+}
+
+func (s ModifyAppPolicyShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyAppPolicyShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyAppPolicyShrinkRequest) SetAppPolicyId(v string) *ModifyAppPolicyShrinkRequest {
+	s.AppPolicyId = &v
+	return s
+}
+
+func (s *ModifyAppPolicyShrinkRequest) SetProductType(v string) *ModifyAppPolicyShrinkRequest {
+	s.ProductType = &v
+	return s
+}
+
+func (s *ModifyAppPolicyShrinkRequest) SetVideoPolicyShrink(v string) *ModifyAppPolicyShrinkRequest {
+	s.VideoPolicyShrink = &v
+	return s
+}
+
+type ModifyAppPolicyResponseBody struct {
+	// example:
+	//
+	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ModifyAppPolicyResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyAppPolicyResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyAppPolicyResponseBody) SetRequestId(v string) *ModifyAppPolicyResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ModifyAppPolicyResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyAppPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ModifyAppPolicyResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyAppPolicyResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyAppPolicyResponse) SetHeaders(v map[string]*string) *ModifyAppPolicyResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyAppPolicyResponse) SetStatusCode(v int32) *ModifyAppPolicyResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ModifyAppPolicyResponse) SetBody(v *ModifyAppPolicyResponseBody) *ModifyAppPolicyResponse {
+	s.Body = v
+	return s
+}
+
 type ModifyNodePoolAttributeRequest struct {
-	BizRegionId      *string                                         `json:"BizRegionId,omitempty" xml:"BizRegionId,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	BizRegionId *string `json:"BizRegionId,omitempty" xml:"BizRegionId,omitempty"`
+	// example:
+	//
+	// 2
 	NodeCapacity     *int32                                          `json:"NodeCapacity,omitempty" xml:"NodeCapacity,omitempty"`
 	NodePoolStrategy *ModifyNodePoolAttributeRequestNodePoolStrategy `json:"NodePoolStrategy,omitempty" xml:"NodePoolStrategy,omitempty" type:"Struct"`
-	PoolId           *string                                         `json:"PoolId,omitempty" xml:"PoolId,omitempty"`
+	// example:
+	//
+	// rg-ew7va2g1wl3vm****
+	PoolId *string `json:"PoolId,omitempty" xml:"PoolId,omitempty"`
 	// 产品类型。
+	//
+	// example:
+	//
+	// CloudApp
 	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
 }
 
@@ -6620,24 +8704,54 @@ func (s *ModifyNodePoolAttributeRequest) SetProductType(v string) *ModifyNodePoo
 }
 
 type ModifyNodePoolAttributeRequestNodePoolStrategy struct {
+	// example:
+	//
+	// 10
 	MaxScalingAmount *int32 `json:"MaxScalingAmount,omitempty" xml:"MaxScalingAmount,omitempty"`
 	// 购买资源的数量。取值范围：1~100。
 	//
 	// >
+	//
 	// - 若为包年包月资源，则该参数不可修改。
+	//
 	// - 若为按量付费资源，则当弹性模式（`StrategyType`）为固定数量（`NODE_FIXED`）或自动扩缩容（`NODE_SCALING_BY_USAGE`）时该参数可修改。
+	//
+	// example:
+	//
+	// 1
 	NodeAmount *int32 `json:"NodeAmount,omitempty" xml:"NodeAmount,omitempty"`
 	// 策略执行周期列表。`StrategyType`（弹性模式）设为`NODE_SCALING_BY_SCHEDULE`（定时扩缩容）时，该字段必填。
-	RecurrenceSchedules         []*ModifyNodePoolAttributeRequestNodePoolStrategyRecurrenceSchedules `json:"RecurrenceSchedules,omitempty" xml:"RecurrenceSchedules,omitempty" type:"Repeated"`
-	ScalingDownAfterIdleMinutes *int32                                                               `json:"ScalingDownAfterIdleMinutes,omitempty" xml:"ScalingDownAfterIdleMinutes,omitempty"`
-	ScalingStep                 *int32                                                               `json:"ScalingStep,omitempty" xml:"ScalingStep,omitempty"`
-	ScalingUsageThreshold       *string                                                              `json:"ScalingUsageThreshold,omitempty" xml:"ScalingUsageThreshold,omitempty"`
+	RecurrenceSchedules []*ModifyNodePoolAttributeRequestNodePoolStrategyRecurrenceSchedules `json:"RecurrenceSchedules,omitempty" xml:"RecurrenceSchedules,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 5
+	ScalingDownAfterIdleMinutes *int32 `json:"ScalingDownAfterIdleMinutes,omitempty" xml:"ScalingDownAfterIdleMinutes,omitempty"`
+	// example:
+	//
+	// 2
+	ScalingStep *int32 `json:"ScalingStep,omitempty" xml:"ScalingStep,omitempty"`
+	// example:
+	//
+	// 85
+	ScalingUsageThreshold *string `json:"ScalingUsageThreshold,omitempty" xml:"ScalingUsageThreshold,omitempty"`
 	// 策略失效日期。格式为：yyyy-MM-dd。失效日期与生效日期的间隔必须介于7天到1年之间（含7天和1年）。`StrategyType`（弹性模式）设为`NODE_SCALING_BY_SCHEDULE`（定时扩缩容）时，该字段必填。
+	//
+	// example:
+	//
+	// 2023-01-19
 	StrategyDisableDate *string `json:"StrategyDisableDate,omitempty" xml:"StrategyDisableDate,omitempty"`
 	// 策略生效日期。格式为：yyyy-MM-dd。该日期必须大于或等于当前日期。`StrategyType`（弹性模式）设为`NODE_SCALING_BY_SCHEDULE`（定时扩缩容）时，该字段必填。
+	//
+	// example:
+	//
+	// 2023-01-05
 	StrategyEnableDate *string `json:"StrategyEnableDate,omitempty" xml:"StrategyEnableDate,omitempty"`
 	StrategyType       *string `json:"StrategyType,omitempty" xml:"StrategyType,omitempty"`
 	// 是否开启资源预热策略。`StrategyType`（弹性模式）设为`NODE_SCALING_BY_SCHEDULE`（定时扩缩容）时，该字段必填。
+	//
+	// example:
+	//
+	// false
 	WarmUp *bool `json:"WarmUp,omitempty" xml:"WarmUp,omitempty"`
 }
 
@@ -6701,15 +8815,23 @@ func (s *ModifyNodePoolAttributeRequestNodePoolStrategy) SetWarmUp(v bool) *Modi
 
 type ModifyNodePoolAttributeRequestNodePoolStrategyRecurrenceSchedules struct {
 	// 策略执行周期的类型。必须同时指定`RecurrenceType`和`RecurrenceValues`。
+	//
+	// example:
+	//
+	// weekly
 	RecurrenceType *string `json:"RecurrenceType,omitempty" xml:"RecurrenceType,omitempty"`
 	// 策略执行周期的数值列表。
 	RecurrenceValues []*int32 `json:"RecurrenceValues,omitempty" xml:"RecurrenceValues,omitempty" type:"Repeated"`
 	// 策略执行周期的时间段列表。时间段设置要求：
 	//
 	// - 最多可添加3个时间段。
+	//
 	// - 时间段之间不重叠。
+	//
 	// - 时间段之间的间隔大于或等于5分钟。
+	//
 	// - 单个时间段的时长大于或等于15分钟。
+	//
 	// - 所有时间段累计不跨天。
 	TimerPeriods []*ModifyNodePoolAttributeRequestNodePoolStrategyRecurrenceSchedulesTimerPeriods `json:"TimerPeriods,omitempty" xml:"TimerPeriods,omitempty" type:"Repeated"`
 }
@@ -6739,10 +8861,22 @@ func (s *ModifyNodePoolAttributeRequestNodePoolStrategyRecurrenceSchedules) SetT
 
 type ModifyNodePoolAttributeRequestNodePoolStrategyRecurrenceSchedulesTimerPeriods struct {
 	// 资源数量。
+	//
+	// example:
+	//
+	// 2
 	Amount *int32 `json:"Amount,omitempty" xml:"Amount,omitempty"`
 	// 结束时间。格式为HH:mm。
+	//
+	// example:
+	//
+	// 15:00
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// 开始时间。格式为HH:mm。
+	//
+	// example:
+	//
+	// 12:00
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
@@ -6770,11 +8904,24 @@ func (s *ModifyNodePoolAttributeRequestNodePoolStrategyRecurrenceSchedulesTimerP
 }
 
 type ModifyNodePoolAttributeShrinkRequest struct {
-	BizRegionId            *string `json:"BizRegionId,omitempty" xml:"BizRegionId,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	BizRegionId *string `json:"BizRegionId,omitempty" xml:"BizRegionId,omitempty"`
+	// example:
+	//
+	// 2
 	NodeCapacity           *int32  `json:"NodeCapacity,omitempty" xml:"NodeCapacity,omitempty"`
 	NodePoolStrategyShrink *string `json:"NodePoolStrategy,omitempty" xml:"NodePoolStrategy,omitempty"`
-	PoolId                 *string `json:"PoolId,omitempty" xml:"PoolId,omitempty"`
+	// example:
+	//
+	// rg-ew7va2g1wl3vm****
+	PoolId *string `json:"PoolId,omitempty" xml:"PoolId,omitempty"`
 	// 产品类型。
+	//
+	// example:
+	//
+	// CloudApp
 	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
 }
 
@@ -6812,8 +8959,17 @@ func (s *ModifyNodePoolAttributeShrinkRequest) SetProductType(v string) *ModifyN
 }
 
 type ModifyNodePoolAttributeResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// InvalidParameter.PoolId
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// The parameter PoolId is invalid.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -6841,9 +8997,9 @@ func (s *ModifyNodePoolAttributeResponseBody) SetRequestId(v string) *ModifyNode
 }
 
 type ModifyNodePoolAttributeResponse struct {
-	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ModifyNodePoolAttributeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyNodePoolAttributeResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ModifyNodePoolAttributeResponse) String() string {
@@ -6870,15 +9026,42 @@ func (s *ModifyNodePoolAttributeResponse) SetBody(v *ModifyNodePoolAttributeResp
 }
 
 type ModifyProjectPolicyRequest struct {
-	Clipboard                    *int32  `json:"Clipboard,omitempty" xml:"Clipboard,omitempty"`
-	FileTransfer                 *int32  `json:"FileTransfer,omitempty" xml:"FileTransfer,omitempty"`
-	FrameRate                    *int32  `json:"FrameRate,omitempty" xml:"FrameRate,omitempty"`
-	KeepAliveDuration            *int32  `json:"KeepAliveDuration,omitempty" xml:"KeepAliveDuration,omitempty"`
-	ProjectId                    *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	SessionResolutionHeight      *int32  `json:"SessionResolutionHeight,omitempty" xml:"SessionResolutionHeight,omitempty"`
-	SessionResolutionWidth       *int32  `json:"SessionResolutionWidth,omitempty" xml:"SessionResolutionWidth,omitempty"`
-	StreamingMode                *string `json:"StreamingMode,omitempty" xml:"StreamingMode,omitempty"`
-	TerminalResolutionAdaptation *bool   `json:"TerminalResolutionAdaptation,omitempty" xml:"TerminalResolutionAdaptation,omitempty"`
+	// example:
+	//
+	// 0
+	Clipboard *int32 `json:"Clipboard,omitempty" xml:"Clipboard,omitempty"`
+	// example:
+	//
+	// 0
+	FileTransfer *int32 `json:"FileTransfer,omitempty" xml:"FileTransfer,omitempty"`
+	// example:
+	//
+	// 30
+	FrameRate *int32 `json:"FrameRate,omitempty" xml:"FrameRate,omitempty"`
+	// example:
+	//
+	// 15
+	KeepAliveDuration *int32 `json:"KeepAliveDuration,omitempty" xml:"KeepAliveDuration,omitempty"`
+	// example:
+	//
+	// p-065z4tu9ak07h****
+	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// example:
+	//
+	// 4096
+	SessionResolutionHeight *int32 `json:"SessionResolutionHeight,omitempty" xml:"SessionResolutionHeight,omitempty"`
+	// example:
+	//
+	// 4096
+	SessionResolutionWidth *int32 `json:"SessionResolutionWidth,omitempty" xml:"SessionResolutionWidth,omitempty"`
+	// example:
+	//
+	// video
+	StreamingMode *string `json:"StreamingMode,omitempty" xml:"StreamingMode,omitempty"`
+	// example:
+	//
+	// true
+	TerminalResolutionAdaptation *bool `json:"TerminalResolutionAdaptation,omitempty" xml:"TerminalResolutionAdaptation,omitempty"`
 }
 
 func (s ModifyProjectPolicyRequest) String() string {
@@ -6935,11 +9118,26 @@ func (s *ModifyProjectPolicyRequest) SetTerminalResolutionAdaptation(v bool) *Mo
 }
 
 type ModifyProjectPolicyResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// None
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// There is a missing parameter.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *string `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ModifyProjectPolicyResponseBody) String() string {
@@ -6976,9 +9174,9 @@ func (s *ModifyProjectPolicyResponseBody) SetSuccess(v string) *ModifyProjectPol
 }
 
 type ModifyProjectPolicyResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ModifyProjectPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyProjectPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ModifyProjectPolicyResponse) String() string {
@@ -7005,6 +9203,9 @@ func (s *ModifyProjectPolicyResponse) SetBody(v *ModifyProjectPolicyResponseBody
 }
 
 type ModifyTenantConfigRequest struct {
+	// example:
+	//
+	// true
 	AppInstanceGroupExpireRemind *bool `json:"AppInstanceGroupExpireRemind,omitempty" xml:"AppInstanceGroupExpireRemind,omitempty"`
 }
 
@@ -7022,6 +9223,9 @@ func (s *ModifyTenantConfigRequest) SetAppInstanceGroupExpireRemind(v bool) *Mod
 }
 
 type ModifyTenantConfigResponseBody struct {
+	// example:
+	//
+	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -7039,9 +9243,9 @@ func (s *ModifyTenantConfigResponseBody) SetRequestId(v string) *ModifyTenantCon
 }
 
 type ModifyTenantConfigResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ModifyTenantConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyTenantConfigResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ModifyTenantConfigResponse) String() string {
@@ -7068,10 +9272,26 @@ func (s *ModifyTenantConfigResponse) SetBody(v *ModifyTenantConfigResponseBody) 
 }
 
 type PageListAppInstanceGroupUserRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// aig-9ciijz60n4xsv****
 	AppInstanceGroupId *string `json:"AppInstanceGroupId,omitempty" xml:"AppInstanceGroupId,omitempty"`
-	PageNumber         *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize           *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	ProductType        *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// CloudApp
+	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
 }
 
 func (s PageListAppInstanceGroupUserRequest) String() string {
@@ -7103,6 +9323,9 @@ func (s *PageListAppInstanceGroupUserRequest) SetProductType(v string) *PageList
 }
 
 type PageListAppInstanceGroupUserResponseBody struct {
+	// example:
+	//
+	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
 	RequestId *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Users     []*string `json:"Users,omitempty" xml:"Users,omitempty" type:"Repeated"`
 }
@@ -7126,9 +9349,9 @@ func (s *PageListAppInstanceGroupUserResponseBody) SetUsers(v []*string) *PageLi
 }
 
 type PageListAppInstanceGroupUserResponse struct {
-	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *PageListAppInstanceGroupUserResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *PageListAppInstanceGroupUserResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s PageListAppInstanceGroupUserResponse) String() string {
@@ -7155,6 +9378,9 @@ func (s *PageListAppInstanceGroupUserResponse) SetBody(v *PageListAppInstanceGro
 }
 
 type RefreshAccessUrlRequest struct {
+	// example:
+	//
+	// a-062wec3cwmayw****
 	AccessPageId *string `json:"AccessPageId,omitempty" xml:"AccessPageId,omitempty"`
 }
 
@@ -7172,12 +9398,25 @@ func (s *RefreshAccessUrlRequest) SetAccessPageId(v string) *RefreshAccessUrlReq
 }
 
 type RefreshAccessUrlResponseBody struct {
+	// example:
+	//
+	// https://wuying.aliyun.com/native-solution/cloud-flow/view?id=a-075nu7b9ynrpugvbm&token=67C7557D25540A9130B1ED81E806D4772A7DE693E6F377E3594179772B******
 	AccessUrl *string `json:"AccessUrl,omitempty" xml:"AccessUrl,omitempty"`
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 200
+	Code    *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// Id of the request
+	//
+	// example:
+	//
+	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *string `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s RefreshAccessUrlResponseBody) String() string {
@@ -7214,9 +9453,9 @@ func (s *RefreshAccessUrlResponseBody) SetSuccess(v string) *RefreshAccessUrlRes
 }
 
 type RefreshAccessUrlResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *RefreshAccessUrlResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RefreshAccessUrlResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RefreshAccessUrlResponse) String() string {
@@ -7243,12 +9482,34 @@ func (s *RefreshAccessUrlResponse) SetBody(v *RefreshAccessUrlResponseBody) *Ref
 }
 
 type RenewAppInstanceGroupRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// aig-9ciijz60n4xsv****
 	AppInstanceGroupId *string `json:"AppInstanceGroupId,omitempty" xml:"AppInstanceGroupId,omitempty"`
-	AutoPay            *bool   `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
-	Period             *int32  `json:"Period,omitempty" xml:"Period,omitempty"`
-	PeriodUnit         *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
-	ProductType        *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
-	PromotionId        *string `json:"PromotionId,omitempty" xml:"PromotionId,omitempty"`
+	// example:
+	//
+	// false
+	AutoPay *bool `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
+	// This parameter is required.
+	PeriodUnit *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// CloudApp
+	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
+	// example:
+	//
+	// 17440009****
+	PromotionId *string `json:"PromotionId,omitempty" xml:"PromotionId,omitempty"`
 }
 
 func (s RenewAppInstanceGroupRequest) String() string {
@@ -7290,9 +9551,21 @@ func (s *RenewAppInstanceGroupRequest) SetPromotionId(v string) *RenewAppInstanc
 }
 
 type RenewAppInstanceGroupResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	OrderId   *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// example:
+	//
+	// InvalidParameter.ProductType
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// The parameter ProductType is invalid.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 123456****
+	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// example:
+	//
+	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -7325,9 +9598,9 @@ func (s *RenewAppInstanceGroupResponseBody) SetRequestId(v string) *RenewAppInst
 }
 
 type RenewAppInstanceGroupResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *RenewAppInstanceGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RenewAppInstanceGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RenewAppInstanceGroupResponse) String() string {
@@ -7354,8 +9627,23 @@ func (s *RenewAppInstanceGroupResponse) SetBody(v *RenewAppInstanceGroupResponse
 }
 
 type RenewSessionPackageRequest struct {
-	Period           *int32  `json:"Period,omitempty" xml:"Period,omitempty"`
-	PeriodUnit       *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Month
+	PeriodUnit *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// tp-****
 	SessionPackageId *string `json:"SessionPackageId,omitempty" xml:"SessionPackageId,omitempty"`
 }
 
@@ -7383,11 +9671,26 @@ func (s *RenewSessionPackageRequest) SetSessionPackageId(v string) *RenewSession
 }
 
 type RenewSessionPackageResponseBody struct {
-	Code             *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message          *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId        *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	SessionPackageId *int64  `json:"SessionPackageId,omitempty" xml:"SessionPackageId,omitempty"`
-	Success          *string `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// There is a missing parameter.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 50158E8B-992E-1286-B174-**********
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 22983172******
+	SessionPackageId *int64 `json:"SessionPackageId,omitempty" xml:"SessionPackageId,omitempty"`
+	// example:
+	//
+	// success
+	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s RenewSessionPackageResponseBody) String() string {
@@ -7424,9 +9727,9 @@ func (s *RenewSessionPackageResponseBody) SetSuccess(v string) *RenewSessionPack
 }
 
 type RenewSessionPackageResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *RenewSessionPackageResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RenewSessionPackageResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RenewSessionPackageResponse) String() string {
@@ -7453,11 +9756,29 @@ func (s *RenewSessionPackageResponse) SetBody(v *RenewSessionPackageResponseBody
 }
 
 type UnbindRequest struct {
-	AppInstanceGroupId      *string `json:"AppInstanceGroupId,omitempty" xml:"AppInstanceGroupId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// aig-9ciijz60n4xsv****
+	AppInstanceGroupId *string `json:"AppInstanceGroupId,omitempty" xml:"AppInstanceGroupId,omitempty"`
+	// example:
+	//
+	// ai-d297eyf83g5ni****
 	AppInstanceId           *string `json:"AppInstanceId,omitempty" xml:"AppInstanceId,omitempty"`
 	AppInstancePersistentId *string `json:"AppInstancePersistentId,omitempty" xml:"AppInstancePersistentId,omitempty"`
-	EndUserId               *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
-	ProductType             *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// alice
+	EndUserId *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// CloudApp
+	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
 }
 
 func (s UnbindRequest) String() string {
@@ -7494,6 +9815,9 @@ func (s *UnbindRequest) SetProductType(v string) *UnbindRequest {
 }
 
 type UnbindResponseBody struct {
+	// example:
+	//
+	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -7511,9 +9835,9 @@ func (s *UnbindResponseBody) SetRequestId(v string) *UnbindResponseBody {
 }
 
 type UnbindResponse struct {
-	Headers    map[string]*string  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UnbindResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UnbindResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UnbindResponse) String() string {
@@ -7540,8 +9864,14 @@ func (s *UnbindResponse) SetBody(v *UnbindResponseBody) *UnbindResponse {
 }
 
 type UpdateAccessPageStateRequest struct {
-	AccessPageId    *string `json:"AccessPageId,omitempty" xml:"AccessPageId,omitempty"`
-	AccessPageState *int32  `json:"AccessPageState,omitempty" xml:"AccessPageState,omitempty"`
+	// example:
+	//
+	// a-06xnr5lyp77e7****
+	AccessPageId *string `json:"AccessPageId,omitempty" xml:"AccessPageId,omitempty"`
+	// example:
+	//
+	// 1
+	AccessPageState *int32 `json:"AccessPageState,omitempty" xml:"AccessPageState,omitempty"`
 }
 
 func (s UpdateAccessPageStateRequest) String() string {
@@ -7563,10 +9893,22 @@ func (s *UpdateAccessPageStateRequest) SetAccessPageState(v int32) *UpdateAccess
 }
 
 type UpdateAccessPageStateResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// InternalError
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *string `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s UpdateAccessPageStateResponseBody) String() string {
@@ -7598,9 +9940,9 @@ func (s *UpdateAccessPageStateResponseBody) SetSuccess(v string) *UpdateAccessPa
 }
 
 type UpdateAccessPageStateResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateAccessPageStateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateAccessPageStateResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateAccessPageStateResponse) String() string {
@@ -7627,10 +9969,30 @@ func (s *UpdateAccessPageStateResponse) SetBody(v *UpdateAccessPageStateResponse
 }
 
 type UpdateAppInstanceGroupImageRequest struct {
-	AppCenterImageId   *string `json:"AppCenterImageId,omitempty" xml:"AppCenterImageId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// img-8z4nztpaqvay4****
+	AppCenterImageId *string `json:"AppCenterImageId,omitempty" xml:"AppCenterImageId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// aig-9ciijz60n4xsv****
 	AppInstanceGroupId *string `json:"AppInstanceGroupId,omitempty" xml:"AppInstanceGroupId,omitempty"`
-	BizRegionId        *string `json:"BizRegionId,omitempty" xml:"BizRegionId,omitempty"`
-	ProductType        *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	BizRegionId *string `json:"BizRegionId,omitempty" xml:"BizRegionId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// CloudApp
+	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
 }
 
 func (s UpdateAppInstanceGroupImageRequest) String() string {
@@ -7662,8 +10024,17 @@ func (s *UpdateAppInstanceGroupImageRequest) SetProductType(v string) *UpdateApp
 }
 
 type UpdateAppInstanceGroupImageResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// InvalidParameter.ProductType
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// The parameter ProductType is invalid.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -7691,9 +10062,9 @@ func (s *UpdateAppInstanceGroupImageResponseBody) SetRequestId(v string) *Update
 }
 
 type UpdateAppInstanceGroupImageResponse struct {
-	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UpdateAppInstanceGroupImageResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateAppInstanceGroupImageResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateAppInstanceGroupImageResponse) String() string {
@@ -7767,6 +10138,15 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取访问管理页配置
+//
+// @param request - AccessPageGetAclRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AccessPageGetAclResponse
 func (client *Client) AccessPageGetAclWithOptions(request *AccessPageGetAclRequest, runtime *util.RuntimeOptions) (_result *AccessPageGetAclResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7800,6 +10180,13 @@ func (client *Client) AccessPageGetAclWithOptions(request *AccessPageGetAclReque
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取访问管理页配置
+//
+// @param request - AccessPageGetAclRequest
+//
+// @return AccessPageGetAclResponse
 func (client *Client) AccessPageGetAcl(request *AccessPageGetAclRequest) (_result *AccessPageGetAclResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &AccessPageGetAclResponse{}
@@ -7811,6 +10198,15 @@ func (client *Client) AccessPageGetAcl(request *AccessPageGetAclRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新访问管理
+//
+// @param request - AccessPageSetAclRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AccessPageSetAclResponse
 func (client *Client) AccessPageSetAclWithOptions(request *AccessPageSetAclRequest, runtime *util.RuntimeOptions) (_result *AccessPageSetAclResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7860,6 +10256,13 @@ func (client *Client) AccessPageSetAclWithOptions(request *AccessPageSetAclReque
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新访问管理
+//
+// @param request - AccessPageSetAclRequest
+//
+// @return AccessPageSetAclResponse
 func (client *Client) AccessPageSetAcl(request *AccessPageSetAclRequest) (_result *AccessPageSetAclResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &AccessPageSetAclResponse{}
@@ -7871,6 +10274,15 @@ func (client *Client) AccessPageSetAcl(request *AccessPageSetAclRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// 同意Ota升级
+//
+// @param request - ApproveOtaTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ApproveOtaTaskResponse
 func (client *Client) ApproveOtaTaskWithOptions(request *ApproveOtaTaskRequest, runtime *util.RuntimeOptions) (_result *ApproveOtaTaskResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7920,6 +10332,13 @@ func (client *Client) ApproveOtaTaskWithOptions(request *ApproveOtaTaskRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// 同意Ota升级
+//
+// @param request - ApproveOtaTaskRequest
+//
+// @return ApproveOtaTaskResponse
 func (client *Client) ApproveOtaTask(request *ApproveOtaTaskRequest) (_result *ApproveOtaTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ApproveOtaTaskResponse{}
@@ -7931,6 +10350,15 @@ func (client *Client) ApproveOtaTask(request *ApproveOtaTaskRequest) (_result *A
 	return _result, _err
 }
 
+// Summary:
+//
+// 会话包收费查询
+//
+// @param request - AskSessionPackagePriceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AskSessionPackagePriceResponse
 func (client *Client) AskSessionPackagePriceWithOptions(request *AskSessionPackagePriceRequest, runtime *util.RuntimeOptions) (_result *AskSessionPackagePriceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7992,6 +10420,13 @@ func (client *Client) AskSessionPackagePriceWithOptions(request *AskSessionPacka
 	return _result, _err
 }
 
+// Summary:
+//
+// 会话包收费查询
+//
+// @param request - AskSessionPackagePriceRequest
+//
+// @return AskSessionPackagePriceResponse
 func (client *Client) AskSessionPackagePrice(request *AskSessionPackagePriceRequest) (_result *AskSessionPackagePriceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &AskSessionPackagePriceResponse{}
@@ -8003,6 +10438,15 @@ func (client *Client) AskSessionPackagePrice(request *AskSessionPackagePriceRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// 会话包续费询价
+//
+// @param request - AskSessionPackageRenewPriceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AskSessionPackageRenewPriceResponse
 func (client *Client) AskSessionPackageRenewPriceWithOptions(request *AskSessionPackageRenewPriceRequest, runtime *util.RuntimeOptions) (_result *AskSessionPackageRenewPriceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8044,6 +10488,13 @@ func (client *Client) AskSessionPackageRenewPriceWithOptions(request *AskSession
 	return _result, _err
 }
 
+// Summary:
+//
+// 会话包续费询价
+//
+// @param request - AskSessionPackageRenewPriceRequest
+//
+// @return AskSessionPackageRenewPriceResponse
 func (client *Client) AskSessionPackageRenewPrice(request *AskSessionPackageRenewPriceRequest) (_result *AskSessionPackageRenewPriceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &AskSessionPackageRenewPriceResponse{}
@@ -8055,6 +10506,15 @@ func (client *Client) AskSessionPackageRenewPrice(request *AskSessionPackageRene
 	return _result, _err
 }
 
+// Summary:
+//
+// 授权用户
+//
+// @param request - AuthorizeInstanceGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AuthorizeInstanceGroupResponse
 func (client *Client) AuthorizeInstanceGroupWithOptions(request *AuthorizeInstanceGroupRequest, runtime *util.RuntimeOptions) (_result *AuthorizeInstanceGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8100,6 +10560,13 @@ func (client *Client) AuthorizeInstanceGroupWithOptions(request *AuthorizeInstan
 	return _result, _err
 }
 
+// Summary:
+//
+// 授权用户
+//
+// @param request - AuthorizeInstanceGroupRequest
+//
+// @return AuthorizeInstanceGroupResponse
 func (client *Client) AuthorizeInstanceGroup(request *AuthorizeInstanceGroupRequest) (_result *AuthorizeInstanceGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &AuthorizeInstanceGroupResponse{}
@@ -8111,12 +10578,25 @@ func (client *Client) AuthorizeInstanceGroup(request *AuthorizeInstanceGroupRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// 配置会话包
+//
+// @param request - BuySessionPackageRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return BuySessionPackageResponse
 func (client *Client) BuySessionPackageWithOptions(request *BuySessionPackageRequest, runtime *util.RuntimeOptions) (_result *BuySessionPackageResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AutoPay)) {
+		query["AutoPay"] = request.AutoPay
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ChargeType)) {
 		query["ChargeType"] = request.ChargeType
 	}
@@ -8180,6 +10660,13 @@ func (client *Client) BuySessionPackageWithOptions(request *BuySessionPackageReq
 	return _result, _err
 }
 
+// Summary:
+//
+// 配置会话包
+//
+// @param request - BuySessionPackageRequest
+//
+// @return BuySessionPackageResponse
 func (client *Client) BuySessionPackage(request *BuySessionPackageRequest) (_result *BuySessionPackageResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &BuySessionPackageResponse{}
@@ -8191,6 +10678,15 @@ func (client *Client) BuySessionPackage(request *BuySessionPackageRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// 取消Ota升级
+//
+// @param request - CancelOtaTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CancelOtaTaskResponse
 func (client *Client) CancelOtaTaskWithOptions(request *CancelOtaTaskRequest, runtime *util.RuntimeOptions) (_result *CancelOtaTaskResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8228,6 +10724,13 @@ func (client *Client) CancelOtaTaskWithOptions(request *CancelOtaTaskRequest, ru
 	return _result, _err
 }
 
+// Summary:
+//
+// 取消Ota升级
+//
+// @param request - CancelOtaTaskRequest
+//
+// @return CancelOtaTaskResponse
 func (client *Client) CancelOtaTask(request *CancelOtaTaskRequest) (_result *CancelOtaTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CancelOtaTaskResponse{}
@@ -8239,6 +10742,15 @@ func (client *Client) CancelOtaTask(request *CancelOtaTaskRequest) (_result *Can
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建访问页面
+//
+// @param request - CreateAccessPageRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateAccessPageResponse
 func (client *Client) CreateAccessPageWithOptions(request *CreateAccessPageRequest, runtime *util.RuntimeOptions) (_result *CreateAccessPageResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8292,6 +10804,13 @@ func (client *Client) CreateAccessPageWithOptions(request *CreateAccessPageReque
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建访问页面
+//
+// @param request - CreateAccessPageRequest
+//
+// @return CreateAccessPageResponse
 func (client *Client) CreateAccessPage(request *CreateAccessPageRequest) (_result *CreateAccessPageResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateAccessPageResponse{}
@@ -8303,6 +10822,15 @@ func (client *Client) CreateAccessPage(request *CreateAccessPageRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建云应用交付组
+//
+// @param tmpReq - CreateAppInstanceGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateAppInstanceGroupResponse
 func (client *Client) CreateAppInstanceGroupWithOptions(tmpReq *CreateAppInstanceGroupRequest, runtime *util.RuntimeOptions) (_result *CreateAppInstanceGroupResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -8330,8 +10858,21 @@ func (client *Client) CreateAppInstanceGroupWithOptions(tmpReq *CreateAppInstanc
 		request.StoragePolicyShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.StoragePolicy, tea.String("StoragePolicy"), tea.String("json"))
 	}
 
+	if !tea.BoolValue(util.IsUnset(tmpReq.UserDefinePolicy)) {
+		request.UserDefinePolicyShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.UserDefinePolicy, tea.String("UserDefinePolicy"), tea.String("json"))
+	}
+
 	if !tea.BoolValue(util.IsUnset(tmpReq.UserInfo)) {
 		request.UserInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.UserInfo, tea.String("UserInfo"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.VideoPolicy)) {
+		request.VideoPolicyShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.VideoPolicy, tea.String("VideoPolicy"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.UserDefinePolicyShrink)) {
+		query["UserDefinePolicy"] = request.UserDefinePolicyShrink
 	}
 
 	body := map[string]interface{}{}
@@ -8415,8 +10956,13 @@ func (client *Client) CreateAppInstanceGroupWithOptions(tmpReq *CreateAppInstanc
 		body["Users"] = request.Users
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.VideoPolicyShrink)) {
+		body["VideoPolicy"] = request.VideoPolicyShrink
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: openapiutil.ParseToMap(body),
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateAppInstanceGroup"),
@@ -8438,6 +10984,13 @@ func (client *Client) CreateAppInstanceGroupWithOptions(tmpReq *CreateAppInstanc
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建云应用交付组
+//
+// @param request - CreateAppInstanceGroupRequest
+//
+// @return CreateAppInstanceGroupResponse
 func (client *Client) CreateAppInstanceGroup(request *CreateAppInstanceGroupRequest) (_result *CreateAppInstanceGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateAppInstanceGroupResponse{}
@@ -8449,6 +11002,15 @@ func (client *Client) CreateAppInstanceGroup(request *CreateAppInstanceGroupRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// CreateImageFromAppInstanceGroup
+//
+// @param request - CreateImageFromAppInstanceGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateImageFromAppInstanceGroupResponse
 func (client *Client) CreateImageFromAppInstanceGroupWithOptions(request *CreateImageFromAppInstanceGroupRequest, runtime *util.RuntimeOptions) (_result *CreateImageFromAppInstanceGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8490,6 +11052,13 @@ func (client *Client) CreateImageFromAppInstanceGroupWithOptions(request *Create
 	return _result, _err
 }
 
+// Summary:
+//
+// CreateImageFromAppInstanceGroup
+//
+// @param request - CreateImageFromAppInstanceGroupRequest
+//
+// @return CreateImageFromAppInstanceGroupResponse
 func (client *Client) CreateImageFromAppInstanceGroup(request *CreateImageFromAppInstanceGroupRequest) (_result *CreateImageFromAppInstanceGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateImageFromAppInstanceGroupResponse{}
@@ -8501,6 +11070,15 @@ func (client *Client) CreateImageFromAppInstanceGroup(request *CreateImageFromAp
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建项目
+//
+// @param request - CreateProjectRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateProjectResponse
 func (client *Client) CreateProjectWithOptions(request *CreateProjectRequest, runtime *util.RuntimeOptions) (_result *CreateProjectResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8582,6 +11160,13 @@ func (client *Client) CreateProjectWithOptions(request *CreateProjectRequest, ru
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建项目
+//
+// @param request - CreateProjectRequest
+//
+// @return CreateProjectResponse
 func (client *Client) CreateProject(request *CreateProjectRequest) (_result *CreateProjectResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateProjectResponse{}
@@ -8593,6 +11178,15 @@ func (client *Client) CreateProject(request *CreateProjectRequest) (_result *Cre
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除访问页面
+//
+// @param request - DeleteAccessPageRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteAccessPageResponse
 func (client *Client) DeleteAccessPageWithOptions(request *DeleteAccessPageRequest, runtime *util.RuntimeOptions) (_result *DeleteAccessPageResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8626,6 +11220,13 @@ func (client *Client) DeleteAccessPageWithOptions(request *DeleteAccessPageReque
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除访问页面
+//
+// @param request - DeleteAccessPageRequest
+//
+// @return DeleteAccessPageResponse
 func (client *Client) DeleteAccessPage(request *DeleteAccessPageRequest) (_result *DeleteAccessPageResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteAccessPageResponse{}
@@ -8637,6 +11238,15 @@ func (client *Client) DeleteAccessPage(request *DeleteAccessPageRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// 实例组释放接口
+//
+// @param request - DeleteAppInstanceGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteAppInstanceGroupResponse
 func (client *Client) DeleteAppInstanceGroupWithOptions(request *DeleteAppInstanceGroupRequest, runtime *util.RuntimeOptions) (_result *DeleteAppInstanceGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8674,6 +11284,13 @@ func (client *Client) DeleteAppInstanceGroupWithOptions(request *DeleteAppInstan
 	return _result, _err
 }
 
+// Summary:
+//
+// 实例组释放接口
+//
+// @param request - DeleteAppInstanceGroupRequest
+//
+// @return DeleteAppInstanceGroupResponse
 func (client *Client) DeleteAppInstanceGroup(request *DeleteAppInstanceGroupRequest) (_result *DeleteAppInstanceGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteAppInstanceGroupResponse{}
@@ -8685,6 +11302,15 @@ func (client *Client) DeleteAppInstanceGroup(request *DeleteAppInstanceGroupRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除实例
+//
+// @param request - DeleteAppInstancesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteAppInstancesResponse
 func (client *Client) DeleteAppInstancesWithOptions(request *DeleteAppInstancesRequest, runtime *util.RuntimeOptions) (_result *DeleteAppInstancesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8726,6 +11352,13 @@ func (client *Client) DeleteAppInstancesWithOptions(request *DeleteAppInstancesR
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除实例
+//
+// @param request - DeleteAppInstancesRequest
+//
+// @return DeleteAppInstancesResponse
 func (client *Client) DeleteAppInstances(request *DeleteAppInstancesRequest) (_result *DeleteAppInstancesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteAppInstancesResponse{}
@@ -8737,6 +11370,15 @@ func (client *Client) DeleteAppInstances(request *DeleteAppInstancesRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除项目
+//
+// @param request - DeleteProjectRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteProjectResponse
 func (client *Client) DeleteProjectWithOptions(request *DeleteProjectRequest, runtime *util.RuntimeOptions) (_result *DeleteProjectResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8770,6 +11412,13 @@ func (client *Client) DeleteProjectWithOptions(request *DeleteProjectRequest, ru
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除项目
+//
+// @param request - DeleteProjectRequest
+//
+// @return DeleteProjectResponse
 func (client *Client) DeleteProject(request *DeleteProjectRequest) (_result *DeleteProjectResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteProjectResponse{}
@@ -8781,6 +11430,15 @@ func (client *Client) DeleteProject(request *DeleteProjectRequest) (_result *Del
 	return _result, _err
 }
 
+// Summary:
+//
+// 访客进入访问页面的匿名api
+//
+// @param request - GetAccessPageSessionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAccessPageSessionResponse
 func (client *Client) GetAccessPageSessionWithOptions(request *GetAccessPageSessionRequest, runtime *util.RuntimeOptions) (_result *GetAccessPageSessionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8822,6 +11480,13 @@ func (client *Client) GetAccessPageSessionWithOptions(request *GetAccessPageSess
 	return _result, _err
 }
 
+// Summary:
+//
+// 访客进入访问页面的匿名api
+//
+// @param request - GetAccessPageSessionRequest
+//
+// @return GetAccessPageSessionResponse
 func (client *Client) GetAccessPageSession(request *GetAccessPageSessionRequest) (_result *GetAccessPageSessionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetAccessPageSessionResponse{}
@@ -8833,6 +11498,15 @@ func (client *Client) GetAccessPageSession(request *GetAccessPageSessionRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取交付组详情
+//
+// @param request - GetAppInstanceGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAppInstanceGroupResponse
 func (client *Client) GetAppInstanceGroupWithOptions(request *GetAppInstanceGroupRequest, runtime *util.RuntimeOptions) (_result *GetAppInstanceGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8870,6 +11544,13 @@ func (client *Client) GetAppInstanceGroupWithOptions(request *GetAppInstanceGrou
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取交付组详情
+//
+// @param request - GetAppInstanceGroupRequest
+//
+// @return GetAppInstanceGroupResponse
 func (client *Client) GetAppInstanceGroup(request *GetAppInstanceGroupRequest) (_result *GetAppInstanceGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetAppInstanceGroupResponse{}
@@ -8881,6 +11562,15 @@ func (client *Client) GetAppInstanceGroup(request *GetAppInstanceGroupRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取连接ticket，Open API
+//
+// @param request - GetConnectionTicketRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetConnectionTicketResponse
 func (client *Client) GetConnectionTicketWithOptions(request *GetConnectionTicketRequest, runtime *util.RuntimeOptions) (_result *GetConnectionTicketResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8950,6 +11640,13 @@ func (client *Client) GetConnectionTicketWithOptions(request *GetConnectionTicke
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取连接ticket，Open API
+//
+// @param request - GetConnectionTicketRequest
+//
+// @return GetConnectionTicketResponse
 func (client *Client) GetConnectionTicket(request *GetConnectionTicketRequest) (_result *GetConnectionTicketResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetConnectionTicketResponse{}
@@ -8961,6 +11658,15 @@ func (client *Client) GetConnectionTicket(request *GetConnectionTicketRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// GetDebugAppInstance
+//
+// @param request - GetDebugAppInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetDebugAppInstanceResponse
 func (client *Client) GetDebugAppInstanceWithOptions(request *GetDebugAppInstanceRequest, runtime *util.RuntimeOptions) (_result *GetDebugAppInstanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8998,6 +11704,13 @@ func (client *Client) GetDebugAppInstanceWithOptions(request *GetDebugAppInstanc
 	return _result, _err
 }
 
+// Summary:
+//
+// GetDebugAppInstance
+//
+// @param request - GetDebugAppInstanceRequest
+//
+// @return GetDebugAppInstanceResponse
 func (client *Client) GetDebugAppInstance(request *GetDebugAppInstanceRequest) (_result *GetDebugAppInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetDebugAppInstanceResponse{}
@@ -9009,6 +11722,15 @@ func (client *Client) GetDebugAppInstance(request *GetDebugAppInstanceRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取ota任务明细
+//
+// @param request - GetOtaTaskByTaskIdRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetOtaTaskByTaskIdResponse
 func (client *Client) GetOtaTaskByTaskIdWithOptions(request *GetOtaTaskByTaskIdRequest, runtime *util.RuntimeOptions) (_result *GetOtaTaskByTaskIdResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9042,6 +11764,13 @@ func (client *Client) GetOtaTaskByTaskIdWithOptions(request *GetOtaTaskByTaskIdR
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取ota任务明细
+//
+// @param request - GetOtaTaskByTaskIdRequest
+//
+// @return GetOtaTaskByTaskIdResponse
 func (client *Client) GetOtaTaskByTaskId(request *GetOtaTaskByTaskIdRequest) (_result *GetOtaTaskByTaskIdResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetOtaTaskByTaskIdResponse{}
@@ -9053,6 +11782,15 @@ func (client *Client) GetOtaTaskByTaskId(request *GetOtaTaskByTaskIdRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取策略配置
+//
+// @param request - GetProjectPoliciesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetProjectPoliciesResponse
 func (client *Client) GetProjectPoliciesWithOptions(request *GetProjectPoliciesRequest, runtime *util.RuntimeOptions) (_result *GetProjectPoliciesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9086,6 +11824,13 @@ func (client *Client) GetProjectPoliciesWithOptions(request *GetProjectPoliciesR
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取策略配置
+//
+// @param request - GetProjectPoliciesRequest
+//
+// @return GetProjectPoliciesResponse
 func (client *Client) GetProjectPolicies(request *GetProjectPoliciesRequest) (_result *GetProjectPoliciesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetProjectPoliciesResponse{}
@@ -9097,6 +11842,15 @@ func (client *Client) GetProjectPolicies(request *GetProjectPoliciesRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// 云应用资源询价接口
+//
+// @param request - GetResourcePriceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetResourcePriceResponse
 func (client *Client) GetResourcePriceWithOptions(request *GetResourcePriceRequest, runtime *util.RuntimeOptions) (_result *GetResourcePriceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9158,6 +11912,13 @@ func (client *Client) GetResourcePriceWithOptions(request *GetResourcePriceReque
 	return _result, _err
 }
 
+// Summary:
+//
+// 云应用资源询价接口
+//
+// @param request - GetResourcePriceRequest
+//
+// @return GetResourcePriceResponse
 func (client *Client) GetResourcePrice(request *GetResourcePriceRequest) (_result *GetResourcePriceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetResourcePriceResponse{}
@@ -9169,6 +11930,15 @@ func (client *Client) GetResourcePrice(request *GetResourcePriceRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// 云应用资源询价接口
+//
+// @param request - GetResourceRenewPriceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetResourceRenewPriceResponse
 func (client *Client) GetResourceRenewPriceWithOptions(request *GetResourceRenewPriceRequest, runtime *util.RuntimeOptions) (_result *GetResourceRenewPriceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9214,6 +11984,13 @@ func (client *Client) GetResourceRenewPriceWithOptions(request *GetResourceRenew
 	return _result, _err
 }
 
+// Summary:
+//
+// 云应用资源询价接口
+//
+// @param request - GetResourceRenewPriceRequest
+//
+// @return GetResourceRenewPriceResponse
 func (client *Client) GetResourceRenewPrice(request *GetResourceRenewPriceRequest) (_result *GetResourceRenewPriceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetResourceRenewPriceResponse{}
@@ -9225,6 +12002,15 @@ func (client *Client) GetResourceRenewPrice(request *GetResourceRenewPriceReques
 	return _result, _err
 }
 
+// Summary:
+//
+// 访问页面分页查询
+//
+// @param request - ListAccessPagesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListAccessPagesResponse
 func (client *Client) ListAccessPagesWithOptions(request *ListAccessPagesRequest, runtime *util.RuntimeOptions) (_result *ListAccessPagesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9278,6 +12064,13 @@ func (client *Client) ListAccessPagesWithOptions(request *ListAccessPagesRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// 访问页面分页查询
+//
+// @param request - ListAccessPagesRequest
+//
+// @return ListAccessPagesResponse
 func (client *Client) ListAccessPages(request *ListAccessPagesRequest) (_result *ListAccessPagesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListAccessPagesResponse{}
@@ -9289,6 +12082,15 @@ func (client *Client) ListAccessPages(request *ListAccessPagesRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// 列表展示云应用交付组
+//
+// @param request - ListAppInstanceGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListAppInstanceGroupResponse
 func (client *Client) ListAppInstanceGroupWithOptions(request *ListAppInstanceGroupRequest, runtime *util.RuntimeOptions) (_result *ListAppInstanceGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9327,6 +12129,10 @@ func (client *Client) ListAppInstanceGroupWithOptions(request *ListAppInstanceGr
 		query["ProductType"] = request.ProductType
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Status)) {
 		body["Status"] = request.Status
@@ -9356,6 +12162,13 @@ func (client *Client) ListAppInstanceGroupWithOptions(request *ListAppInstanceGr
 	return _result, _err
 }
 
+// Summary:
+//
+// 列表展示云应用交付组
+//
+// @param request - ListAppInstanceGroupRequest
+//
+// @return ListAppInstanceGroupResponse
 func (client *Client) ListAppInstanceGroup(request *ListAppInstanceGroupRequest) (_result *ListAppInstanceGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListAppInstanceGroupResponse{}
@@ -9367,6 +12180,15 @@ func (client *Client) ListAppInstanceGroup(request *ListAppInstanceGroupRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询交付组内实例列表
+//
+// @param request - ListAppInstancesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListAppInstancesResponse
 func (client *Client) ListAppInstancesWithOptions(request *ListAppInstancesRequest, runtime *util.RuntimeOptions) (_result *ListAppInstancesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9426,6 +12248,13 @@ func (client *Client) ListAppInstancesWithOptions(request *ListAppInstancesReque
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询交付组内实例列表
+//
+// @param request - ListAppInstancesRequest
+//
+// @return ListAppInstancesResponse
 func (client *Client) ListAppInstances(request *ListAppInstancesRequest) (_result *ListAppInstancesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListAppInstancesResponse{}
@@ -9437,6 +12266,15 @@ func (client *Client) ListAppInstances(request *ListAppInstancesRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取资源规格
+//
+// @param request - ListNodeInstanceTypeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListNodeInstanceTypeResponse
 func (client *Client) ListNodeInstanceTypeWithOptions(request *ListNodeInstanceTypeRequest, runtime *util.RuntimeOptions) (_result *ListNodeInstanceTypeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9494,6 +12332,13 @@ func (client *Client) ListNodeInstanceTypeWithOptions(request *ListNodeInstanceT
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取资源规格
+//
+// @param request - ListNodeInstanceTypeRequest
+//
+// @return ListNodeInstanceTypeResponse
 func (client *Client) ListNodeInstanceType(request *ListNodeInstanceTypeRequest) (_result *ListNodeInstanceTypeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListNodeInstanceTypeResponse{}
@@ -9505,6 +12350,15 @@ func (client *Client) ListNodeInstanceType(request *ListNodeInstanceTypeRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// 升级历史记录
+//
+// @param request - ListOtaTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListOtaTaskResponse
 func (client *Client) ListOtaTaskWithOptions(request *ListOtaTaskRequest, runtime *util.RuntimeOptions) (_result *ListOtaTaskResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9550,6 +12404,13 @@ func (client *Client) ListOtaTaskWithOptions(request *ListOtaTaskRequest, runtim
 	return _result, _err
 }
 
+// Summary:
+//
+// 升级历史记录
+//
+// @param request - ListOtaTaskRequest
+//
+// @return ListOtaTaskResponse
 func (client *Client) ListOtaTask(request *ListOtaTaskRequest) (_result *ListOtaTaskResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListOtaTaskResponse{}
@@ -9561,6 +12422,15 @@ func (client *Client) ListOtaTask(request *ListOtaTaskRequest) (_result *ListOta
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取项目列表
+//
+// @param request - ListProjectsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListProjectsResponse
 func (client *Client) ListProjectsWithOptions(request *ListProjectsRequest, runtime *util.RuntimeOptions) (_result *ListProjectsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9614,6 +12484,13 @@ func (client *Client) ListProjectsWithOptions(request *ListProjectsRequest, runt
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取项目列表
+//
+// @param request - ListProjectsRequest
+//
+// @return ListProjectsResponse
 func (client *Client) ListProjects(request *ListProjectsRequest) (_result *ListProjectsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListProjectsResponse{}
@@ -9625,8 +12502,28 @@ func (client *Client) ListProjects(request *ListProjectsRequest) (_result *ListP
 	return _result, _err
 }
 
-func (client *Client) ListRegionsWithOptions(runtime *util.RuntimeOptions) (_result *ListRegionsResponse, _err error) {
-	req := &openapi.OpenApiRequest{}
+// Summary:
+//
+// 云应用支持的地域列表
+//
+// @param request - ListRegionsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListRegionsResponse
+func (client *Client) ListRegionsWithOptions(request *ListRegionsRequest, runtime *util.RuntimeOptions) (_result *ListRegionsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ProductType)) {
+		query["ProductType"] = request.ProductType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
 	params := &openapi.Params{
 		Action:      tea.String("ListRegions"),
 		Version:     tea.String("2021-09-01"),
@@ -9647,10 +12544,17 @@ func (client *Client) ListRegionsWithOptions(runtime *util.RuntimeOptions) (_res
 	return _result, _err
 }
 
-func (client *Client) ListRegions() (_result *ListRegionsResponse, _err error) {
+// Summary:
+//
+// 云应用支持的地域列表
+//
+// @param request - ListRegionsRequest
+//
+// @return ListRegionsResponse
+func (client *Client) ListRegions(request *ListRegionsRequest) (_result *ListRegionsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListRegionsResponse{}
-	_body, _err := client.ListRegionsWithOptions(runtime)
+	_body, _err := client.ListRegionsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9658,6 +12562,15 @@ func (client *Client) ListRegions() (_result *ListRegionsResponse, _err error) {
 	return _result, _err
 }
 
+// Summary:
+//
+// 项目的会话包列表
+//
+// @param request - ListSessionPackagesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListSessionPackagesResponse
 func (client *Client) ListSessionPackagesWithOptions(request *ListSessionPackagesRequest, runtime *util.RuntimeOptions) (_result *ListSessionPackagesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9715,6 +12628,13 @@ func (client *Client) ListSessionPackagesWithOptions(request *ListSessionPackage
 	return _result, _err
 }
 
+// Summary:
+//
+// 项目的会话包列表
+//
+// @param request - ListSessionPackagesRequest
+//
+// @return ListSessionPackagesResponse
 func (client *Client) ListSessionPackages(request *ListSessionPackagesRequest) (_result *ListSessionPackagesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListSessionPackagesResponse{}
@@ -9726,6 +12646,11 @@ func (client *Client) ListSessionPackages(request *ListSessionPackagesRequest) (
 	return _result, _err
 }
 
+// @param request - ListTenantConfigRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListTenantConfigResponse
 func (client *Client) ListTenantConfigWithOptions(runtime *util.RuntimeOptions) (_result *ListTenantConfigResponse, _err error) {
 	req := &openapi.OpenApiRequest{}
 	params := &openapi.Params{
@@ -9748,6 +12673,7 @@ func (client *Client) ListTenantConfigWithOptions(runtime *util.RuntimeOptions) 
 	return _result, _err
 }
 
+// @return ListTenantConfigResponse
 func (client *Client) ListTenantConfig() (_result *ListTenantConfigResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListTenantConfigResponse{}
@@ -9759,6 +12685,15 @@ func (client *Client) ListTenantConfig() (_result *ListTenantConfigResponse, _er
 	return _result, _err
 }
 
+// Summary:
+//
+// 注销交付下所有会话
+//
+// @param request - LogOffAllSessionsInAppInstanceGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return LogOffAllSessionsInAppInstanceGroupResponse
 func (client *Client) LogOffAllSessionsInAppInstanceGroupWithOptions(request *LogOffAllSessionsInAppInstanceGroupRequest, runtime *util.RuntimeOptions) (_result *LogOffAllSessionsInAppInstanceGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9796,6 +12731,13 @@ func (client *Client) LogOffAllSessionsInAppInstanceGroupWithOptions(request *Lo
 	return _result, _err
 }
 
+// Summary:
+//
+// 注销交付下所有会话
+//
+// @param request - LogOffAllSessionsInAppInstanceGroupRequest
+//
+// @return LogOffAllSessionsInAppInstanceGroupResponse
 func (client *Client) LogOffAllSessionsInAppInstanceGroup(request *LogOffAllSessionsInAppInstanceGroupRequest) (_result *LogOffAllSessionsInAppInstanceGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &LogOffAllSessionsInAppInstanceGroupResponse{}
@@ -9807,6 +12749,15 @@ func (client *Client) LogOffAllSessionsInAppInstanceGroup(request *LogOffAllSess
 	return _result, _err
 }
 
+// Summary:
+//
+// 会话包 迁移/分配
+//
+// @param request - MigrateSessionPackageRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return MigrateSessionPackageResponse
 func (client *Client) MigrateSessionPackageWithOptions(request *MigrateSessionPackageRequest, runtime *util.RuntimeOptions) (_result *MigrateSessionPackageResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9848,6 +12799,13 @@ func (client *Client) MigrateSessionPackageWithOptions(request *MigrateSessionPa
 	return _result, _err
 }
 
+// Summary:
+//
+// 会话包 迁移/分配
+//
+// @param request - MigrateSessionPackageRequest
+//
+// @return MigrateSessionPackageResponse
 func (client *Client) MigrateSessionPackage(request *MigrateSessionPackageRequest) (_result *MigrateSessionPackageResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &MigrateSessionPackageResponse{}
@@ -9859,6 +12817,15 @@ func (client *Client) MigrateSessionPackage(request *MigrateSessionPackageReques
 	return _result, _err
 }
 
+// Summary:
+//
+// 修改云应用交付组
+//
+// @param tmpReq - ModifyAppInstanceGroupAttributeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyAppInstanceGroupAttributeResponse
 func (client *Client) ModifyAppInstanceGroupAttributeWithOptions(tmpReq *ModifyAppInstanceGroupAttributeRequest, runtime *util.RuntimeOptions) (_result *ModifyAppInstanceGroupAttributeResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -9948,6 +12915,13 @@ func (client *Client) ModifyAppInstanceGroupAttributeWithOptions(tmpReq *ModifyA
 	return _result, _err
 }
 
+// Summary:
+//
+// 修改云应用交付组
+//
+// @param request - ModifyAppInstanceGroupAttributeRequest
+//
+// @return ModifyAppInstanceGroupAttributeResponse
 func (client *Client) ModifyAppInstanceGroupAttribute(request *ModifyAppInstanceGroupAttributeRequest) (_result *ModifyAppInstanceGroupAttributeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyAppInstanceGroupAttributeResponse{}
@@ -9959,6 +12933,85 @@ func (client *Client) ModifyAppInstanceGroupAttribute(request *ModifyAppInstance
 	return _result, _err
 }
 
+// Summary:
+//
+// 修改策略信息
+//
+// @param tmpReq - ModifyAppPolicyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyAppPolicyResponse
+func (client *Client) ModifyAppPolicyWithOptions(tmpReq *ModifyAppPolicyRequest, runtime *util.RuntimeOptions) (_result *ModifyAppPolicyResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &ModifyAppPolicyShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.VideoPolicy)) {
+		request.VideoPolicyShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.VideoPolicy, tea.String("VideoPolicy"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppPolicyId)) {
+		query["AppPolicyId"] = request.AppPolicyId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductType)) {
+		query["ProductType"] = request.ProductType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VideoPolicyShrink)) {
+		query["VideoPolicy"] = request.VideoPolicyShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyAppPolicy"),
+		Version:     tea.String("2021-09-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ModifyAppPolicyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改策略信息
+//
+// @param request - ModifyAppPolicyRequest
+//
+// @return ModifyAppPolicyResponse
+func (client *Client) ModifyAppPolicy(request *ModifyAppPolicyRequest) (_result *ModifyAppPolicyResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyAppPolicyResponse{}
+	_body, _err := client.ModifyAppPolicyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param tmpReq - ModifyNodePoolAttributeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyNodePoolAttributeResponse
 func (client *Client) ModifyNodePoolAttributeWithOptions(tmpReq *ModifyNodePoolAttributeRequest, runtime *util.RuntimeOptions) (_result *ModifyNodePoolAttributeResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -10014,6 +13067,9 @@ func (client *Client) ModifyNodePoolAttributeWithOptions(tmpReq *ModifyNodePoolA
 	return _result, _err
 }
 
+// @param request - ModifyNodePoolAttributeRequest
+//
+// @return ModifyNodePoolAttributeResponse
 func (client *Client) ModifyNodePoolAttribute(request *ModifyNodePoolAttributeRequest) (_result *ModifyNodePoolAttributeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyNodePoolAttributeResponse{}
@@ -10025,6 +13081,15 @@ func (client *Client) ModifyNodePoolAttribute(request *ModifyNodePoolAttributeRe
 	return _result, _err
 }
 
+// Summary:
+//
+// 修改项目策略
+//
+// @param request - ModifyProjectPolicyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyProjectPolicyResponse
 func (client *Client) ModifyProjectPolicyWithOptions(request *ModifyProjectPolicyRequest, runtime *util.RuntimeOptions) (_result *ModifyProjectPolicyResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -10090,6 +13155,13 @@ func (client *Client) ModifyProjectPolicyWithOptions(request *ModifyProjectPolic
 	return _result, _err
 }
 
+// Summary:
+//
+// 修改项目策略
+//
+// @param request - ModifyProjectPolicyRequest
+//
+// @return ModifyProjectPolicyResponse
 func (client *Client) ModifyProjectPolicy(request *ModifyProjectPolicyRequest) (_result *ModifyProjectPolicyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyProjectPolicyResponse{}
@@ -10101,6 +13173,11 @@ func (client *Client) ModifyProjectPolicy(request *ModifyProjectPolicyRequest) (
 	return _result, _err
 }
 
+// @param request - ModifyTenantConfigRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyTenantConfigResponse
 func (client *Client) ModifyTenantConfigWithOptions(request *ModifyTenantConfigRequest, runtime *util.RuntimeOptions) (_result *ModifyTenantConfigResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -10134,6 +13211,9 @@ func (client *Client) ModifyTenantConfigWithOptions(request *ModifyTenantConfigR
 	return _result, _err
 }
 
+// @param request - ModifyTenantConfigRequest
+//
+// @return ModifyTenantConfigResponse
 func (client *Client) ModifyTenantConfig(request *ModifyTenantConfigRequest) (_result *ModifyTenantConfigResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyTenantConfigResponse{}
@@ -10145,6 +13225,15 @@ func (client *Client) ModifyTenantConfig(request *ModifyTenantConfigRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取授权用户列表
+//
+// @param request - PageListAppInstanceGroupUserRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return PageListAppInstanceGroupUserResponse
 func (client *Client) PageListAppInstanceGroupUserWithOptions(request *PageListAppInstanceGroupUserRequest, runtime *util.RuntimeOptions) (_result *PageListAppInstanceGroupUserResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -10190,6 +13279,13 @@ func (client *Client) PageListAppInstanceGroupUserWithOptions(request *PageListA
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取授权用户列表
+//
+// @param request - PageListAppInstanceGroupUserRequest
+//
+// @return PageListAppInstanceGroupUserResponse
 func (client *Client) PageListAppInstanceGroupUser(request *PageListAppInstanceGroupUserRequest) (_result *PageListAppInstanceGroupUserResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &PageListAppInstanceGroupUserResponse{}
@@ -10201,6 +13297,15 @@ func (client *Client) PageListAppInstanceGroupUser(request *PageListAppInstanceG
 	return _result, _err
 }
 
+// Summary:
+//
+// 刷新访问url
+//
+// @param request - RefreshAccessUrlRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RefreshAccessUrlResponse
 func (client *Client) RefreshAccessUrlWithOptions(request *RefreshAccessUrlRequest, runtime *util.RuntimeOptions) (_result *RefreshAccessUrlResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -10234,6 +13339,13 @@ func (client *Client) RefreshAccessUrlWithOptions(request *RefreshAccessUrlReque
 	return _result, _err
 }
 
+// Summary:
+//
+// 刷新访问url
+//
+// @param request - RefreshAccessUrlRequest
+//
+// @return RefreshAccessUrlResponse
 func (client *Client) RefreshAccessUrl(request *RefreshAccessUrlRequest) (_result *RefreshAccessUrlResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RefreshAccessUrlResponse{}
@@ -10245,6 +13357,15 @@ func (client *Client) RefreshAccessUrl(request *RefreshAccessUrlRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// 资源续费接口
+//
+// @param request - RenewAppInstanceGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RenewAppInstanceGroupResponse
 func (client *Client) RenewAppInstanceGroupWithOptions(request *RenewAppInstanceGroupRequest, runtime *util.RuntimeOptions) (_result *RenewAppInstanceGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -10298,6 +13419,13 @@ func (client *Client) RenewAppInstanceGroupWithOptions(request *RenewAppInstance
 	return _result, _err
 }
 
+// Summary:
+//
+// 资源续费接口
+//
+// @param request - RenewAppInstanceGroupRequest
+//
+// @return RenewAppInstanceGroupResponse
 func (client *Client) RenewAppInstanceGroup(request *RenewAppInstanceGroupRequest) (_result *RenewAppInstanceGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RenewAppInstanceGroupResponse{}
@@ -10309,6 +13437,15 @@ func (client *Client) RenewAppInstanceGroup(request *RenewAppInstanceGroupReques
 	return _result, _err
 }
 
+// Summary:
+//
+// 会话包续费
+//
+// @param request - RenewSessionPackageRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RenewSessionPackageResponse
 func (client *Client) RenewSessionPackageWithOptions(request *RenewSessionPackageRequest, runtime *util.RuntimeOptions) (_result *RenewSessionPackageResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -10350,6 +13487,13 @@ func (client *Client) RenewSessionPackageWithOptions(request *RenewSessionPackag
 	return _result, _err
 }
 
+// Summary:
+//
+// 会话包续费
+//
+// @param request - RenewSessionPackageRequest
+//
+// @return RenewSessionPackageResponse
 func (client *Client) RenewSessionPackage(request *RenewSessionPackageRequest) (_result *RenewSessionPackageResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RenewSessionPackageResponse{}
@@ -10361,6 +13505,15 @@ func (client *Client) RenewSessionPackage(request *RenewSessionPackageRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// 解除用户绑定
+//
+// @param request - UnbindRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UnbindResponse
 func (client *Client) UnbindWithOptions(request *UnbindRequest, runtime *util.RuntimeOptions) (_result *UnbindResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -10410,6 +13563,13 @@ func (client *Client) UnbindWithOptions(request *UnbindRequest, runtime *util.Ru
 	return _result, _err
 }
 
+// Summary:
+//
+// 解除用户绑定
+//
+// @param request - UnbindRequest
+//
+// @return UnbindResponse
 func (client *Client) Unbind(request *UnbindRequest) (_result *UnbindResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UnbindResponse{}
@@ -10421,6 +13581,15 @@ func (client *Client) Unbind(request *UnbindRequest) (_result *UnbindResponse, _
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新访问页面状态
+//
+// @param request - UpdateAccessPageStateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateAccessPageStateResponse
 func (client *Client) UpdateAccessPageStateWithOptions(request *UpdateAccessPageStateRequest, runtime *util.RuntimeOptions) (_result *UpdateAccessPageStateResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -10458,6 +13627,13 @@ func (client *Client) UpdateAccessPageStateWithOptions(request *UpdateAccessPage
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新访问页面状态
+//
+// @param request - UpdateAccessPageStateRequest
+//
+// @return UpdateAccessPageStateResponse
 func (client *Client) UpdateAccessPageState(request *UpdateAccessPageStateRequest) (_result *UpdateAccessPageStateResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateAccessPageStateResponse{}
@@ -10469,6 +13645,15 @@ func (client *Client) UpdateAccessPageState(request *UpdateAccessPageStateReques
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新镜像
+//
+// @param request - UpdateAppInstanceGroupImageRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateAppInstanceGroupImageResponse
 func (client *Client) UpdateAppInstanceGroupImageWithOptions(request *UpdateAppInstanceGroupImageRequest, runtime *util.RuntimeOptions) (_result *UpdateAppInstanceGroupImageResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -10514,6 +13699,13 @@ func (client *Client) UpdateAppInstanceGroupImageWithOptions(request *UpdateAppI
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新镜像
+//
+// @param request - UpdateAppInstanceGroupImageRequest
+//
+// @return UpdateAppInstanceGroupImageResponse
 func (client *Client) UpdateAppInstanceGroupImage(request *UpdateAppInstanceGroupImageRequest) (_result *UpdateAppInstanceGroupImageResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateAppInstanceGroupImageResponse{}
