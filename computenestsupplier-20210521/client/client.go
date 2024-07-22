@@ -173,6 +173,115 @@ func (s *AddServiceSharedAccountsResponse) SetBody(v *AddServiceSharedAccountsRe
 	return s
 }
 
+type ApproveServiceUsageRequest struct {
+	// example:
+	//
+	// 10CM943JP0EN9D51H
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	Comments    *string `json:"Comments,omitempty" xml:"Comments,omitempty"`
+	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// service-39f4f251e94843xxxxxx
+	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	Type      *int32  `json:"Type,omitempty" xml:"Type,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 127383705958xxxx
+	UserAliUid *int64 `json:"UserAliUid,omitempty" xml:"UserAliUid,omitempty"`
+}
+
+func (s ApproveServiceUsageRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ApproveServiceUsageRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ApproveServiceUsageRequest) SetClientToken(v string) *ApproveServiceUsageRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *ApproveServiceUsageRequest) SetComments(v string) *ApproveServiceUsageRequest {
+	s.Comments = &v
+	return s
+}
+
+func (s *ApproveServiceUsageRequest) SetRegionId(v string) *ApproveServiceUsageRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ApproveServiceUsageRequest) SetServiceId(v string) *ApproveServiceUsageRequest {
+	s.ServiceId = &v
+	return s
+}
+
+func (s *ApproveServiceUsageRequest) SetType(v int32) *ApproveServiceUsageRequest {
+	s.Type = &v
+	return s
+}
+
+func (s *ApproveServiceUsageRequest) SetUserAliUid(v int64) *ApproveServiceUsageRequest {
+	s.UserAliUid = &v
+	return s
+}
+
+type ApproveServiceUsageResponseBody struct {
+	// example:
+	//
+	// 4DB0F536-B3BE-4F0D-BD29-E83FB56D550C
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ApproveServiceUsageResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ApproveServiceUsageResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ApproveServiceUsageResponseBody) SetRequestId(v string) *ApproveServiceUsageResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ApproveServiceUsageResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ApproveServiceUsageResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ApproveServiceUsageResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ApproveServiceUsageResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ApproveServiceUsageResponse) SetHeaders(v map[string]*string) *ApproveServiceUsageResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ApproveServiceUsageResponse) SetStatusCode(v int32) *ApproveServiceUsageResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ApproveServiceUsageResponse) SetBody(v *ApproveServiceUsageResponseBody) *ApproveServiceUsageResponse {
+	s.Body = v
+	return s
+}
+
 type ContinueDeployServiceInstanceRequest struct {
 	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
 	//
@@ -2056,6 +2165,99 @@ func (s *CreateServiceInstanceResponse) SetStatusCode(v int32) *CreateServiceIns
 }
 
 func (s *CreateServiceInstanceResponse) SetBody(v *CreateServiceInstanceResponseBody) *CreateServiceInstanceResponse {
+	s.Body = v
+	return s
+}
+
+type CreateServiceUsageRequest struct {
+	// example:
+	//
+	// mRdxWuW2ts
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// service-c2d118c9193e49xxxxxx
+	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+}
+
+func (s CreateServiceUsageRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateServiceUsageRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateServiceUsageRequest) SetClientToken(v string) *CreateServiceUsageRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *CreateServiceUsageRequest) SetRegionId(v string) *CreateServiceUsageRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *CreateServiceUsageRequest) SetServiceId(v string) *CreateServiceUsageRequest {
+	s.ServiceId = &v
+	return s
+}
+
+type CreateServiceUsageResponseBody struct {
+	// Id of the request
+	//
+	// example:
+	//
+	// E73F09DC-6C13-5CB1-A10F-7A4E125ABD2C
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateServiceUsageResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateServiceUsageResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateServiceUsageResponseBody) SetRequestId(v string) *CreateServiceUsageResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateServiceUsageResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateServiceUsageResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateServiceUsageResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateServiceUsageResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateServiceUsageResponse) SetHeaders(v map[string]*string) *CreateServiceUsageResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateServiceUsageResponse) SetStatusCode(v int32) *CreateServiceUsageResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateServiceUsageResponse) SetBody(v *CreateServiceUsageResponseBody) *CreateServiceUsageResponse {
 	s.Body = v
 	return s
 }
@@ -7681,6 +7883,64 @@ func (s *ListArtifactsResponse) SetBody(v *ListArtifactsResponseBody) *ListArtif
 	return s
 }
 
+type ListServiceCategoriesResponseBody struct {
+	// The category list of the service.
+	Categories []*string `json:"Categories,omitempty" xml:"Categories,omitempty" type:"Repeated"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 9AC8E73E-88DE-52C2-A29B-531FC130000
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListServiceCategoriesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListServiceCategoriesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListServiceCategoriesResponseBody) SetCategories(v []*string) *ListServiceCategoriesResponseBody {
+	s.Categories = v
+	return s
+}
+
+func (s *ListServiceCategoriesResponseBody) SetRequestId(v string) *ListServiceCategoriesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListServiceCategoriesResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListServiceCategoriesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListServiceCategoriesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListServiceCategoriesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListServiceCategoriesResponse) SetHeaders(v map[string]*string) *ListServiceCategoriesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListServiceCategoriesResponse) SetStatusCode(v int32) *ListServiceCategoriesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListServiceCategoriesResponse) SetBody(v *ListServiceCategoriesResponseBody) *ListServiceCategoriesResponse {
+	s.Body = v
+	return s
+}
+
 type ListServiceInstancesRequest struct {
 	// The filter.
 	Filter []*ListServiceInstancesRequestFilter `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Repeated"`
@@ -10027,6 +10287,112 @@ func (s *RegisterServiceResponse) SetBody(v *RegisterServiceResponseBody) *Regis
 	return s
 }
 
+type RejectServiceUsageRequest struct {
+	// example:
+	//
+	// 10CM943JP0EN9D51H
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	Comments    *string `json:"Comments,omitempty" xml:"Comments,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// service-2117508c874c41xxxxxx
+	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	// example:
+	//
+	// SharedAccount
+	Type *int32 `json:"Type,omitempty" xml:"Type,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1563457855xxxxxx
+	UserAliUid *int64 `json:"UserAliUid,omitempty" xml:"UserAliUid,omitempty"`
+}
+
+func (s RejectServiceUsageRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RejectServiceUsageRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RejectServiceUsageRequest) SetClientToken(v string) *RejectServiceUsageRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *RejectServiceUsageRequest) SetComments(v string) *RejectServiceUsageRequest {
+	s.Comments = &v
+	return s
+}
+
+func (s *RejectServiceUsageRequest) SetServiceId(v string) *RejectServiceUsageRequest {
+	s.ServiceId = &v
+	return s
+}
+
+func (s *RejectServiceUsageRequest) SetType(v int32) *RejectServiceUsageRequest {
+	s.Type = &v
+	return s
+}
+
+func (s *RejectServiceUsageRequest) SetUserAliUid(v int64) *RejectServiceUsageRequest {
+	s.UserAliUid = &v
+	return s
+}
+
+type RejectServiceUsageResponseBody struct {
+	// example:
+	//
+	// 4DB0F536-B3BE-4F0D-BD29-E83FB56D550C
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s RejectServiceUsageResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RejectServiceUsageResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RejectServiceUsageResponseBody) SetRequestId(v string) *RejectServiceUsageResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type RejectServiceUsageResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RejectServiceUsageResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s RejectServiceUsageResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RejectServiceUsageResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RejectServiceUsageResponse) SetHeaders(v map[string]*string) *RejectServiceUsageResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RejectServiceUsageResponse) SetStatusCode(v int32) *RejectServiceUsageResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *RejectServiceUsageResponse) SetBody(v *RejectServiceUsageResponseBody) *RejectServiceUsageResponse {
+	s.Body = v
+	return s
+}
+
 type ReleaseArtifactRequest struct {
 	// The ID of the artifact.
 	//
@@ -10930,8 +11296,9 @@ type UpdateServiceRequest struct {
 	// example:
 	//
 	// 788E7CP0EN9D51P
-	ClientToken *string                        `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	Commodity   *UpdateServiceRequestCommodity `json:"Commodity,omitempty" xml:"Commodity,omitempty" type:"Struct"`
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// Bind Commodity Information
+	Commodity *UpdateServiceRequestCommodity `json:"Commodity,omitempty" xml:"Commodity,omitempty" type:"Struct"`
 	// The storage configurations of the service. The format in which the deployment information of a service is stored varies based on the deployment type of the service. In this case, the deployment information is stored in the JSON string format.
 	//
 	// example:
@@ -11223,11 +11590,20 @@ func (s *UpdateServiceRequest) SetVersionName(v string) *UpdateServiceRequest {
 }
 
 type UpdateServiceRequestCommodity struct {
-	ComponentsMappings       []*UpdateServiceRequestCommodityComponentsMappings       `json:"ComponentsMappings,omitempty" xml:"ComponentsMappings,omitempty" type:"Repeated"`
+	// This parameter is not publicly accessible.
+	ComponentsMappings []*UpdateServiceRequestCommodityComponentsMappings `json:"ComponentsMappings,omitempty" xml:"ComponentsMappings,omitempty" type:"Repeated"`
+	// Metering Item Configuration Information (Cloud Marketplace - Pay-As-You-Go Use)
 	MeteringEntityExtraInfos []*UpdateServiceRequestCommodityMeteringEntityExtraInfos `json:"MeteringEntityExtraInfos,omitempty" xml:"MeteringEntityExtraInfos,omitempty" type:"Repeated"`
-	MeteringEntityMappings   []*UpdateServiceRequestCommodityMeteringEntityMappings   `json:"MeteringEntityMappings,omitempty" xml:"MeteringEntityMappings,omitempty" type:"Repeated"`
-	SaasBoostConfig          *string                                                  `json:"SaasBoostConfig,omitempty" xml:"SaasBoostConfig,omitempty"`
-	SpecificationMappings    []*UpdateServiceRequestCommoditySpecificationMappings    `json:"SpecificationMappings,omitempty" xml:"SpecificationMappings,omitempty" type:"Repeated"`
+	// Product Specifications and Template/specification mapping Relationships (Cloud Marketplace - Pay-As-You-Go Use)
+	MeteringEntityMappings []*UpdateServiceRequestCommodityMeteringEntityMappings `json:"MeteringEntityMappings,omitempty" xml:"MeteringEntityMappings,omitempty" type:"Repeated"`
+	// Saas boost config information
+	//
+	// example:
+	//
+	// {}
+	SaasBoostConfig *string `json:"SaasBoostConfig,omitempty" xml:"SaasBoostConfig,omitempty"`
+	// Product Specifications and Template/specification mapping Relationships (Cloud Marketplace - Subscription/Permanent Use)
+	SpecificationMappings []*UpdateServiceRequestCommoditySpecificationMappings `json:"SpecificationMappings,omitempty" xml:"SpecificationMappings,omitempty" type:"Repeated"`
 }
 
 func (s UpdateServiceRequestCommodity) String() string {
@@ -11264,7 +11640,17 @@ func (s *UpdateServiceRequestCommodity) SetSpecificationMappings(v []*UpdateServ
 }
 
 type UpdateServiceRequestCommodityComponentsMappings struct {
-	Mappings     *string `json:"Mappings,omitempty" xml:"Mappings,omitempty"`
+	// This parameter is not publicly accessible.
+	//
+	// example:
+	//
+	// This parameter is not publicly accessible.
+	Mappings *string `json:"Mappings,omitempty" xml:"Mappings,omitempty"`
+	// This parameter is not publicly accessible.
+	//
+	// example:
+	//
+	// This parameter is not publicly accessible.
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
 }
 
@@ -11287,10 +11673,38 @@ func (s *UpdateServiceRequestCommodityComponentsMappings) SetTemplateName(v stri
 }
 
 type UpdateServiceRequestCommodityMeteringEntityExtraInfos struct {
-	EntityId   *string `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
+	// The ID of the entity.
+	//
+	// example:
+	//
+	// cmgj0006xxxx-Memory-1
+	EntityId *string `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
+	// Metric Name, filled in when Type is ComputeNestBill or ComputeNestPrometheus
+	//
+	// example:
+	//
+	// VirtualCpu/ecs.InstanceType
 	MetricName *string `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
-	Promql     *string `json:"Promql,omitempty" xml:"Promql,omitempty"`
-	Type       *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// Custom prometheus query
+	//
+	// example:
+	//
+	// avg_over_time(sum(rate(container_cpu_usage_seconds_total{namespace=~"ALIYUN::StackName"}[2m]))[1h:10s])
+	Promql *string `json:"Promql,omitempty" xml:"Promql,omitempty"`
+	// Type, value：
+	//
+	// 	- **Custom**
+	//
+	// 	- **ComputeNestBill**
+	//
+	// 	- **ComputeNestPrometheus**
+	//
+	// 	- **ComputeNestTime**
+	//
+	// example:
+	//
+	// Custom
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s UpdateServiceRequestCommodityMeteringEntityExtraInfos) String() string {
@@ -11322,9 +11736,20 @@ func (s *UpdateServiceRequestCommodityMeteringEntityExtraInfos) SetType(v string
 }
 
 type UpdateServiceRequestCommodityMeteringEntityMappings struct {
-	EntityIds         []*string `json:"EntityIds,omitempty" xml:"EntityIds,omitempty" type:"Repeated"`
-	SpecificationName *string   `json:"SpecificationName,omitempty" xml:"SpecificationName,omitempty"`
-	TemplateName      *string   `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+	// The ID of the entity.
+	EntityIds []*string `json:"EntityIds,omitempty" xml:"EntityIds,omitempty" type:"Repeated"`
+	// The package name.
+	//
+	// example:
+	//
+	// packageOne
+	SpecificationName *string `json:"SpecificationName,omitempty" xml:"SpecificationName,omitempty"`
+	// The template name.
+	//
+	// example:
+	//
+	// TemplaceName
+	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
 }
 
 func (s UpdateServiceRequestCommodityMeteringEntityMappings) String() string {
@@ -11351,9 +11776,24 @@ func (s *UpdateServiceRequestCommodityMeteringEntityMappings) SetTemplateName(v 
 }
 
 type UpdateServiceRequestCommoditySpecificationMappings struct {
+	// Specification code.
+	//
+	// example:
+	//
+	// yuncode5767800001
 	SpecificationCode *string `json:"SpecificationCode,omitempty" xml:"SpecificationCode,omitempty"`
+	// The package name.
+	//
+	// example:
+	//
+	// packageOne
 	SpecificationName *string `json:"SpecificationName,omitempty" xml:"SpecificationName,omitempty"`
-	TemplateName      *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+	// The template name.
+	//
+	// example:
+	//
+	// TemplaceName
+	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
 }
 
 func (s UpdateServiceRequestCommoditySpecificationMappings) String() string {
@@ -11539,7 +11979,8 @@ type UpdateServiceShrinkRequest struct {
 	// example:
 	//
 	// 788E7CP0EN9D51P
-	ClientToken     *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// Bind Commodity Information
 	CommodityShrink *string `json:"Commodity,omitempty" xml:"Commodity,omitempty"`
 	// The storage configurations of the service. The format in which the deployment information of a service is stored varies based on the deployment type of the service. In this case, the deployment information is stored in the JSON string format.
 	//
@@ -12794,6 +13235,86 @@ func (client *Client) AddServiceSharedAccounts(request *AddServiceSharedAccounts
 
 // Summary:
 //
+// 商家通过服务使用请求
+//
+// @param request - ApproveServiceUsageRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ApproveServiceUsageResponse
+func (client *Client) ApproveServiceUsageWithOptions(request *ApproveServiceUsageRequest, runtime *util.RuntimeOptions) (_result *ApproveServiceUsageResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Comments)) {
+		query["Comments"] = request.Comments
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceId)) {
+		query["ServiceId"] = request.ServiceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		query["Type"] = request.Type
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserAliUid)) {
+		query["UserAliUid"] = request.UserAliUid
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ApproveServiceUsage"),
+		Version:     tea.String("2021-05-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ApproveServiceUsageResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 商家通过服务使用请求
+//
+// @param request - ApproveServiceUsageRequest
+//
+// @return ApproveServiceUsageResponse
+func (client *Client) ApproveServiceUsage(request *ApproveServiceUsageRequest) (_result *ApproveServiceUsageResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ApproveServiceUsageResponse{}
+	_body, _err := client.ApproveServiceUsageWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Redeploys a service instance after the service instance failed to be deployed.
 //
 // @param request - ContinueDeployServiceInstanceRequest
@@ -13233,6 +13754,74 @@ func (client *Client) CreateServiceInstance(request *CreateServiceInstanceReques
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateServiceInstanceResponse{}
 	_body, _err := client.CreateServiceInstanceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建代销申请
+//
+// @param request - CreateServiceUsageRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateServiceUsageResponse
+func (client *Client) CreateServiceUsageWithOptions(request *CreateServiceUsageRequest, runtime *util.RuntimeOptions) (_result *CreateServiceUsageResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceId)) {
+		query["ServiceId"] = request.ServiceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateServiceUsage"),
+		Version:     tea.String("2021-05-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateServiceUsageResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建代销申请
+//
+// @param request - CreateServiceUsageRequest
+//
+// @return CreateServiceUsageResponse
+func (client *Client) CreateServiceUsage(request *CreateServiceUsageRequest) (_result *CreateServiceUsageResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateServiceUsageResponse{}
+	_body, _err := client.CreateServiceUsageWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -14336,6 +14925,53 @@ func (client *Client) ListArtifacts(request *ListArtifactsRequest) (_result *Lis
 
 // Summary:
 //
+// 查询服务分类
+//
+// @param request - ListServiceCategoriesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListServiceCategoriesResponse
+func (client *Client) ListServiceCategoriesWithOptions(runtime *util.RuntimeOptions) (_result *ListServiceCategoriesResponse, _err error) {
+	req := &openapi.OpenApiRequest{}
+	params := &openapi.Params{
+		Action:      tea.String("ListServiceCategories"),
+		Version:     tea.String("2021-05-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListServiceCategoriesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询服务分类
+//
+// @return ListServiceCategoriesResponse
+func (client *Client) ListServiceCategories() (_result *ListServiceCategoriesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListServiceCategoriesResponse{}
+	_body, _err := client.ListServiceCategoriesWithOptions(runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries a list of service instances.
 //
 // @param request - ListServiceInstancesRequest
@@ -14767,6 +15403,82 @@ func (client *Client) RegisterService(request *RegisterServiceRequest) (_result 
 	runtime := &util.RuntimeOptions{}
 	_result = &RegisterServiceResponse{}
 	_body, _err := client.RegisterServiceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 商家拒绝服务使用请求
+//
+// @param request - RejectServiceUsageRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RejectServiceUsageResponse
+func (client *Client) RejectServiceUsageWithOptions(request *RejectServiceUsageRequest, runtime *util.RuntimeOptions) (_result *RejectServiceUsageResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Comments)) {
+		query["Comments"] = request.Comments
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceId)) {
+		query["ServiceId"] = request.ServiceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		query["Type"] = request.Type
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserAliUid)) {
+		query["UserAliUid"] = request.UserAliUid
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RejectServiceUsage"),
+		Version:     tea.String("2021-05-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &RejectServiceUsageResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 商家拒绝服务使用请求
+//
+// @param request - RejectServiceUsageRequest
+//
+// @return RejectServiceUsageResponse
+func (client *Client) RejectServiceUsage(request *RejectServiceUsageRequest) (_result *RejectServiceUsageResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &RejectServiceUsageResponse{}
+	_body, _err := client.RejectServiceUsageWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
