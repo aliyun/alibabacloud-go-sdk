@@ -752,7 +752,7 @@ type AttachWhitelistTemplateToInstanceRequest struct {
 	//
 	// rm-bp191w771kd3****
 	InsName *string `json:"InsName,omitempty" xml:"InsName,omitempty"`
-	// The region ID.
+	// The region ID. You can call the DescribeRegions operation to query the most recent region list.
 	//
 	// example:
 	//
@@ -4644,7 +4644,7 @@ type CreateDBInstanceRequest struct {
 	//
 	// Atomicity
 	CreateStrategy *string `json:"CreateStrategy,omitempty" xml:"CreateStrategy,omitempty"`
-	// The instance type of the instance. You can specify a standard instance type or an economy instance type. For more information, see [Primary ApsaraDB RDS instance types](https://help.aliyun.com/document_detail/26312.html).
+	// The instance type of the instance. You can specify an instance type of the standard or YiTian product type. For more information, see [Primary ApsaraDB RDS instance types](https://help.aliyun.com/document_detail/26312.html).
 	//
 	// To create a serverless instance, set this parameter to one of the following values:
 	//
@@ -5723,7 +5723,7 @@ type CreateDBInstanceShrinkRequest struct {
 	//
 	// Atomicity
 	CreateStrategy *string `json:"CreateStrategy,omitempty" xml:"CreateStrategy,omitempty"`
-	// The instance type of the instance. You can specify a standard instance type or an economy instance type. For more information, see [Primary ApsaraDB RDS instance types](https://help.aliyun.com/document_detail/26312.html).
+	// The instance type of the instance. You can specify an instance type of the standard or YiTian product type. For more information, see [Primary ApsaraDB RDS instance types](https://help.aliyun.com/document_detail/26312.html).
 	//
 	// To create a serverless instance, set this parameter to one of the following values:
 	//
@@ -7787,22 +7787,36 @@ func (s *CreateDBInstanceForRebuildResponse) SetBody(v *CreateDBInstanceForRebui
 }
 
 type CreateDBInstanceSecurityGroupRuleRequest struct {
+	// The ID of the instance. You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/2628785.html) operation to query the IDs of instances.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// rm-bp15i4hn07r******
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// The description of the security group rule.
+	//
 	// example:
 	//
 	// zht_test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The type of the transport layer protocol. Valid values:
+	//
+	// 	- TCP
+	//
+	// 	- UDP
+	//
 	// example:
 	//
 	// TCP
 	IpProtocol   *string `json:"IpProtocol,omitempty" xml:"IpProtocol,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The range of destination ports over which TCP and UDP traffic is allowed in the security group rule.
+	//
+	// Valid values: 1 to 65535. Separate the start port number and the end port number with a forward slash (/). Example: 1/200.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -7811,6 +7825,8 @@ type CreateDBInstanceSecurityGroupRuleRequest struct {
 	PortRange            *string `json:"PortRange,omitempty" xml:"PortRange,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The range of source IP addresses. CIDR blocks and IPv4 addresses are supported.
+	//
 	// example:
 	//
 	// 192.XX.XX.100
@@ -7871,14 +7887,20 @@ func (s *CreateDBInstanceSecurityGroupRuleRequest) SetSourceCidrIp(v string) *Cr
 }
 
 type CreateDBInstanceSecurityGroupRuleResponseBody struct {
+	// The status code returned.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The information about the status code.
+	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 07F6177E-6DE4-408A-BB4F-0723301340F4
@@ -13838,10 +13860,14 @@ func (s *DeleteDBInstanceEndpointAddressResponse) SetBody(v *DeleteDBInstanceEnd
 }
 
 type DeleteDBInstanceSecurityGroupRuleRequest struct {
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	//
 	// example:
 	//
 	// ETnLKlblzczshOTUbOC******
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The ID of the instance. You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/2628785.html) operation to query the IDs of instances.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -13850,12 +13876,16 @@ type DeleteDBInstanceSecurityGroupRuleRequest struct {
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The ID of the resource group.
+	//
 	// example:
 	//
 	// rg-acfmy****
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The ID of the security group rule. You can call the [DescribeDBInstanceSecurityGroupRule](https://help.aliyun.com/document_detail/2834044.html) to obtain the ID of the security group rule.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -13913,14 +13943,20 @@ func (s *DeleteDBInstanceSecurityGroupRuleRequest) SetSecurityGroupRuleIds(v str
 }
 
 type DeleteDBInstanceSecurityGroupRuleResponseBody struct {
+	// The status code returned.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The information about the status code.
+	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 07F6177E-6DE4-408A-BB4F-0723301340F8
@@ -16960,6 +16996,10 @@ type DescribeActiveOperationTasksResponseBodyItems struct {
 	// System maintenance
 	ChangeLevelEn *string `json:"ChangeLevelEn,omitempty" xml:"ChangeLevelEn,omitempty"`
 	// The level of the task in Chinese.
+	//
+	// example:
+	//
+	// 系统运维
 	ChangeLevelZh *string `json:"ChangeLevelZh,omitempty" xml:"ChangeLevelZh,omitempty"`
 	// The time when the task was created. The time follows the ISO 8601 standard in the yyyy-MM-ddThh:mm:ssZ format. The time is displayed in UTC.
 	//
@@ -17010,6 +17050,10 @@ type DescribeActiveOperationTasksResponseBodyItems struct {
 	// Transient instance disconnection
 	ImpactEn *string `json:"ImpactEn,omitempty" xml:"ImpactEn,omitempty"`
 	// The impact of the task in Chinese.
+	//
+	// example:
+	//
+	// 实例闪断
 	ImpactZh *string `json:"ImpactZh,omitempty" xml:"ImpactZh,omitempty"`
 	// The alias and description of the instance.
 	//
@@ -17108,6 +17152,10 @@ type DescribeActiveOperationTasksResponseBodyItems struct {
 	// Minor version update
 	TaskTypeEn *string `json:"TaskTypeEn,omitempty" xml:"TaskTypeEn,omitempty"`
 	// The reason for the task in Chinese.
+	//
+	// example:
+	//
+	// 小版本升级
 	TaskTypeZh *string `json:"TaskTypeZh,omitempty" xml:"TaskTypeZh,omitempty"`
 }
 
@@ -20105,7 +20153,7 @@ type DescribeBackupsRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page. Valid values:
+	// The number of entries per page. Valid values:
 	//
 	// 	- **30**
 	//
@@ -20198,7 +20246,7 @@ func (s *DescribeBackupsRequest) SetStartTime(v string) *DescribeBackupsRequest 
 }
 
 type DescribeBackupsResponseBody struct {
-	// The queried backup sets.
+	// The returned backup sets.
 	Items *DescribeBackupsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
 	// The page number of the returned page.
 	//
@@ -20415,8 +20463,26 @@ type DescribeBackupsResponseBodyItemsBackup struct {
 	// example:
 	//
 	// {}
-	Encryption    *string `json:"Encryption,omitempty" xml:"Encryption,omitempty"`
-	Engine        *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	Encryption *string `json:"Encryption,omitempty" xml:"Encryption,omitempty"`
+	// The type of the database engine. Valid values:
+	//
+	// 	- MySQL
+	//
+	// 	- SQLServer
+	//
+	// 	- PostgreSQL
+	//
+	// 	- MariaDB
+	//
+	// example:
+	//
+	// MySQL
+	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	// The version of the database engine.
+	//
+	// example:
+	//
+	// 8.0
 	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
 	// The ID of the instance that generates the backup set. This parameter is used to indicate whether the instance that generates the backup set is a primary instance or a secondary instance.
 	//
@@ -20700,7 +20766,7 @@ func (s *DescribeBackupsResponse) SetBody(v *DescribeBackupsResponseBody) *Descr
 }
 
 type DescribeBinlogFilesRequest struct {
-	// The instance ID. You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/610396.html) operation to query the ID of the instance.
+	// The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
 	//
 	// This parameter is required.
 	//
@@ -20720,7 +20786,7 @@ type DescribeBinlogFilesRequest struct {
 	EndTime      *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The page number. Valid values: any non-zero positive integer.
+	// The page number. Pages start from 1.
 	//
 	// Default value: **1**.
 	//
@@ -20728,7 +20794,7 @@ type DescribeBinlogFilesRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page.
+	// The number of entries per page.
 	//
 	// Valid values: **30*	- to **100**.
 	//
@@ -24757,7 +24823,7 @@ func (s *DescribeDBInstanceAttributeRequest) SetResourceOwnerId(v int64) *Descri
 }
 
 type DescribeDBInstanceAttributeResponseBody struct {
-	// The details of the instance.
+	// The details of instances.
 	Items *DescribeDBInstanceAttributeResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
 	// The ID of the request.
 	//
@@ -25946,7 +26012,12 @@ func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeDBCluste
 type DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeExtra struct {
 	// The instance IDs.
 	DBInstanceIds *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeExtraDBInstanceIds `json:"DBInstanceIds,omitempty" xml:"DBInstanceIds,omitempty" type:"Struct"`
-	RecoveryModel *string                                                                            `json:"RecoveryModel,omitempty" xml:"RecoveryModel,omitempty"`
+	// The recovery model. Valid values: Simple and Full.
+	//
+	// example:
+	//
+	// Simple
+	RecoveryModel *string `json:"RecoveryModel,omitempty" xml:"RecoveryModel,omitempty"`
 }
 
 func (s DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeExtra) String() string {
@@ -30591,6 +30662,8 @@ func (s *DescribeDBInstanceSSLResponse) SetBody(v *DescribeDBInstanceSSLResponse
 }
 
 type DescribeDBInstanceSecurityGroupRuleRequest struct {
+	// The ID of the instance. You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/2628785.html) operation to query the IDs of instances.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -30637,15 +30710,22 @@ func (s *DescribeDBInstanceSecurityGroupRuleRequest) SetResourceOwnerId(v int64)
 }
 
 type DescribeDBInstanceSecurityGroupRuleResponseBody struct {
+	// The status code returned.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The details of the security group rule.
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The information about the status code.
+	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 6BFF4136-10B9-130B-BF8E-D3504BCE4F43
@@ -47640,7 +47720,7 @@ type DescribeParametersResponseBody struct {
 	//
 	// 1AD222E9-E606-4A42-BF6D-8A4442913CEF
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The list of parameters that are in use.
+	// The parameters that are in use.
 	RunningParameters *DescribeParametersResponseBodyRunningParameters `json:"RunningParameters,omitempty" xml:"RunningParameters,omitempty" type:"Struct"`
 }
 
@@ -47816,6 +47896,11 @@ func (s *DescribeParametersResponseBodyRunningParameters) SetDBInstanceParameter
 }
 
 type DescribeParametersResponseBodyRunningParametersDBInstanceParameter struct {
+	// The default value of the parameter.
+	//
+	// example:
+	//
+	// 100
 	ParameterDefaultValue *string `json:"ParameterDefaultValue,omitempty" xml:"ParameterDefaultValue,omitempty"`
 	// The description of the parameter.
 	//
@@ -47834,7 +47919,12 @@ type DescribeParametersResponseBodyRunningParametersDBInstanceParameter struct {
 	// example:
 	//
 	// 0
-	ParameterValue      *string `json:"ParameterValue,omitempty" xml:"ParameterValue,omitempty"`
+	ParameterValue *string `json:"ParameterValue,omitempty" xml:"ParameterValue,omitempty"`
+	// The valid values of the parameter.
+	//
+	// example:
+	//
+	// 1~100
 	ParameterValueRange *string `json:"ParameterValueRange,omitempty" xml:"ParameterValueRange,omitempty"`
 }
 
@@ -49096,7 +49186,7 @@ type DescribePriceResponseBodyPriceInfo struct {
 	// example:
 	//
 	// Order Information
-	OrderLines *string `json:"OrderLines,omitempty" xml:"OrderLines,omitempty"`
+	OrderLines interface{} `json:"OrderLines,omitempty" xml:"OrderLines,omitempty"`
 	// The original price.
 	//
 	// example:
@@ -49153,8 +49243,8 @@ func (s *DescribePriceResponseBodyPriceInfo) SetDiscountPrice(v float32) *Descri
 	return s
 }
 
-func (s *DescribePriceResponseBodyPriceInfo) SetOrderLines(v string) *DescribePriceResponseBodyPriceInfo {
-	s.OrderLines = &v
+func (s *DescribePriceResponseBodyPriceInfo) SetOrderLines(v interface{}) *DescribePriceResponseBodyPriceInfo {
+	s.OrderLines = v
 	return s
 }
 
@@ -54172,7 +54262,7 @@ type DescribeSlowLogsRequest struct {
 	EndTime      *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The page number. Valid values: any non-zero positive integer.
+	// The page number. Pages start from 1.
 	//
 	// Default value: **1**.
 	//
@@ -54180,7 +54270,7 @@ type DescribeSlowLogsRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page. Valid values: **30*	- to **100**. Default value: **30**.
+	// The number of entries per page. Valid values: **30*	- to **100**. Default value: **30**.
 	//
 	// example:
 	//
@@ -65360,18 +65450,28 @@ func (s *ModifyDBInstanceSSLResponse) SetBody(v *ModifyDBInstanceSSLResponseBody
 }
 
 type ModifyDBInstanceSecurityGroupRuleRequest struct {
+	// The ID of the instance. You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/2628785.html) operation to query the IDs of instances.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// rm-bp15i4hn07r******
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// The description of the security group rule.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// zht_test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The type of the transport layer protocol. Valid values:
+	//
+	// 	- TCP
+	//
+	// 	- UDP
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -65380,6 +65480,10 @@ type ModifyDBInstanceSecurityGroupRuleRequest struct {
 	IpProtocol   *string `json:"IpProtocol,omitempty" xml:"IpProtocol,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The range of destination ports over which TCP and UDP traffic is allowed in the security group rule.
+	//
+	// Valid values: 1 to 65535. Separate the start port number and the end port number with a forward slash (/). Example: 1/200.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -65388,12 +65492,16 @@ type ModifyDBInstanceSecurityGroupRuleRequest struct {
 	PortRange            *string `json:"PortRange,omitempty" xml:"PortRange,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The ID of the security group rule. You can call the [DescribeDBInstanceSecurityGroupRule](https://help.aliyun.com/document_detail/2834044.html) to obtain the ID of the security group rule.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// sgr-2ze17u******
 	SecurityGroupRuleId *string `json:"SecurityGroupRuleId,omitempty" xml:"SecurityGroupRuleId,omitempty"`
+	// The range of source IP addresses. CIDR blocks and IPv4 addresses are supported.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -65461,14 +65569,20 @@ func (s *ModifyDBInstanceSecurityGroupRuleRequest) SetSourceCidrIp(v string) *Mo
 }
 
 type ModifyDBInstanceSecurityGroupRuleResponseBody struct {
+	// The status code returned.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The information about the status code.
+	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 07F6177E-6DE4-408A-BB4F-0723301340F7
@@ -65653,6 +65767,10 @@ type ModifyDBInstanceSpecRequest struct {
 	// 	- **Immediate*	- (default)
 	//
 	// 	- **MaintainTime**: The effective time is within the maintenance window. For more information, see ModifyDBInstanceMaintainTime.
+	//
+	// <!---->
+	//
+	// 	- ScheduleTime: The schedule time must be a specific point in time that is 12 hours later than the current time. In this case, EffectiveTime is calculated by using the following formula: EffectiveTime = ScheduleTime + SwitchTime.
 	//
 	// example:
 	//
@@ -66119,6 +66237,10 @@ type ModifyDBInstanceSpecShrinkRequest struct {
 	// 	- **Immediate*	- (default)
 	//
 	// 	- **MaintainTime**: The effective time is within the maintenance window. For more information, see ModifyDBInstanceMaintainTime.
+	//
+	// <!---->
+	//
+	// 	- ScheduleTime: The schedule time must be a specific point in time that is 12 hours later than the current time. In this case, EffectiveTime is calculated by using the following formula: EffectiveTime = ScheduleTime + SwitchTime.
 	//
 	// example:
 	//
@@ -70006,11 +70128,9 @@ type ModifyParameterRequest struct {
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The parameter template ID.
 	//
-	// >
+	// > 	- If you specify this parameter, you do not need to specify **Parameters**.
 	//
-	// 	- If you specify this parameter, you do not need to specify **Parameters**.
-	//
-	// 	- If the parameter template can be applied only after the instance is restarted, you must specify **Forcerestart**.
+	// > 	- If the parameter template can be applied only after the instance is restarted, you must specify **Forcerestart**.
 	//
 	// example:
 	//
@@ -70208,13 +70328,11 @@ type ModifyParameterGroupRequest struct {
 	ParameterGroupName *string `json:"ParameterGroupName,omitempty" xml:"ParameterGroupName,omitempty"`
 	// A JSON string that consists of parameters and their values in the parameter template. Format: {"Parameter 1":"Value of Parameter 1","Parameter 2":"Value of Parameter 2"...}. For more information about the parameters that can be modified, see [Modify the parameters of an ApsaraDB RDS for MySQL instance](https://help.aliyun.com/document_detail/96063.html) or [Modify the parameters of an ApsaraDB RDS for PostgreSQL instance](https://help.aliyun.com/document_detail/96751.html).
 	//
-	// >
+	// > 	- If **ModifyMode*	- is set to **Individual*	- and this parameter is specified, the new parameters overwrite the parameters in the original parameter template.
 	//
-	// 	- If **ModifyMode*	- is set to **Individual*	- and this parameter is specified, the new parameters overwrite the parameters in the original parameter template.
+	// > 	- If you set **ModifyMode*	- to **Collectivity*	- and specify this parameter, the new parameters are added to the original parameter template, or the parameters in the original parameter template are modified.
 	//
-	// 	- If you set **ModifyMode*	- to **Collectivity*	- and specify this parameter, the new parameters are added to the original parameter template, or the parameters in the original parameter template are modified.
-	//
-	// 	- If you do not specify this parameter, the parameters in the original parameter template remain unchanged.
+	// > 	- If you do not specify this parameter, the parameters in the original parameter template remain unchanged.
 	//
 	// example:
 	//
@@ -72517,7 +72635,7 @@ type QueryNotifyRequest struct {
 	//
 	// 2022-05-02T08:38:37Z
 	From *string `json:"From,omitempty" xml:"From,omitempty"`
-	// The number of the page to return. Valid values: any **non-zero*	- positive integer.
+	// The page number. Pages start from page 1. Default value: 1.****
 	//
 	// Default value: **1**.
 	//
@@ -72525,7 +72643,7 @@ type QueryNotifyRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page. Valid values:
+	// The number of entries per page. Valid values:
 	//
 	// 	- **30**
 	//
@@ -74161,7 +74279,7 @@ type RenewInstanceRequest struct {
 	//
 	// 	- **False*	- (default): disables automatic payment. You have to manually pay the order in the console.
 	//
-	// >  For more information about how to manually renew an instance in the console, see the following topic:
+	// >  For more information about how to manually pay the order in the console, see the following topics:
 	//
 	// 	- [Manually renew an ApsaraDB RDS for MySQL instance](https://help.aliyun.com/document_detail/96050.html)
 	//
@@ -81945,7 +82063,17 @@ func (client *Client) CreateDBInstanceForRebuild(request *CreateDBInstanceForReb
 
 // Summary:
 //
-// 创建实例主机安全组规则
+// Adds a security group rule to an ApsaraDB RDS for SQL Server instance.
+//
+// Description:
+//
+// ### [](#)Supported database engine
+//
+// SQL Server
+//
+// ### [](#)References
+//
+// [Configure security group settings for an ApsaraDB RDS for SQL Server instance](https://help.aliyun.com/document_detail/2392322.html)
 //
 // @param request - CreateDBInstanceSecurityGroupRuleRequest
 //
@@ -82019,7 +82147,17 @@ func (client *Client) CreateDBInstanceSecurityGroupRuleWithOptions(request *Crea
 
 // Summary:
 //
-// 创建实例主机安全组规则
+// Adds a security group rule to an ApsaraDB RDS for SQL Server instance.
+//
+// Description:
+//
+// ### [](#)Supported database engine
+//
+// SQL Server
+//
+// ### [](#)References
+//
+// [Configure security group settings for an ApsaraDB RDS for SQL Server instance](https://help.aliyun.com/document_detail/2392322.html)
 //
 // @param request - CreateDBInstanceSecurityGroupRuleRequest
 //
@@ -85153,7 +85291,17 @@ func (client *Client) DeleteDBInstanceEndpointAddress(request *DeleteDBInstanceE
 
 // Summary:
 //
-// 删除实例主机安全组规则
+// Deletes a security group rule that is configured for an ApsaraDB RDS for SQL Server instance.
+//
+// Description:
+//
+// ### [](#)Supported database engine
+//
+// SQL Server
+//
+// ### [](#)References
+//
+// [Configure security group settings for an ApsaraDB RDS for SQL Server instance](https://help.aliyun.com/document_detail/2392322.html)
 //
 // @param request - DeleteDBInstanceSecurityGroupRuleRequest
 //
@@ -85223,7 +85371,17 @@ func (client *Client) DeleteDBInstanceSecurityGroupRuleWithOptions(request *Dele
 
 // Summary:
 //
-// 删除实例主机安全组规则
+// Deletes a security group rule that is configured for an ApsaraDB RDS for SQL Server instance.
+//
+// Description:
+//
+// ### [](#)Supported database engine
+//
+// SQL Server
+//
+// ### [](#)References
+//
+// [Configure security group settings for an ApsaraDB RDS for SQL Server instance](https://help.aliyun.com/document_detail/2392322.html)
 //
 // @param request - DeleteDBInstanceSecurityGroupRuleRequest
 //
@@ -86791,7 +86949,7 @@ func (client *Client) DescribeActionEventPolicy(request *DescribeActionEventPoli
 
 // Summary:
 //
-// Queries the details about scheduled O\\\\\\&M tasks for an instance.
+// Queries the details about scheduled O\\\\\\\\\\\\&M tasks for an instance.
 //
 // Description:
 //
@@ -86905,7 +87063,7 @@ func (client *Client) DescribeActiveOperationTasksWithOptions(request *DescribeA
 
 // Summary:
 //
-// Queries the details about scheduled O\\\\\\&M tasks for an instance.
+// Queries the details about scheduled O\\\\\\\\\\\\&M tasks for an instance.
 //
 // Description:
 //
@@ -91157,7 +91315,17 @@ func (client *Client) DescribeDBInstanceSSL(request *DescribeDBInstanceSSLReques
 
 // Summary:
 //
-// 描述实例主机安全组规则
+// Queries the security group rules that are configured for an ApsaraDB RDS for SQL Server instance.
+//
+// Description:
+//
+// ### [](#)Supported database engine
+//
+// SQL Server
+//
+// ### [](#)References
+//
+// [Configure security group settings for an ApsaraDB RDS for SQL Server instance](https://help.aliyun.com/document_detail/2392322.html)
 //
 // @param request - DescribeDBInstanceSecurityGroupRuleRequest
 //
@@ -91215,7 +91383,17 @@ func (client *Client) DescribeDBInstanceSecurityGroupRuleWithOptions(request *De
 
 // Summary:
 //
-// 描述实例主机安全组规则
+// Queries the security group rules that are configured for an ApsaraDB RDS for SQL Server instance.
+//
+// Description:
+//
+// ### [](#)Supported database engine
+//
+// SQL Server
+//
+// ### [](#)References
+//
+// [Configure security group settings for an ApsaraDB RDS for SQL Server instance](https://help.aliyun.com/document_detail/2392322.html)
 //
 // @param request - DescribeDBInstanceSecurityGroupRuleRequest
 //
@@ -98647,19 +98825,15 @@ func (client *Client) DescribeSlowLogRecords(request *DescribeSlowLogRecordsRequ
 //
 // ### [](#)Supported database engines
 //
-// 	- RDS MySQL
+// 	- MySQL
 //
-//     **
+// > This operation is not supported for RDS instances that run MySQL 5.7 on RDS Basic Edition.
 //
-//     **Note*	- This operation is not supported for RDS instances that run MySQL 5.7 on RDS Basic Edition.
+// 	- SQL Server
 //
-// 	- RDS SQL Server
+// > This operation is supported only for RDS instances that run SQL Server 2008 R2.
 //
-//     **
-//
-//     **Note*	- This operation is supported only for RDS instances that run SQL Server 2008 R2.
-//
-// 	- RDS MariaDB
+// 	- MariaDB
 //
 // ### [](#)Precautions
 //
@@ -98755,19 +98929,15 @@ func (client *Client) DescribeSlowLogsWithOptions(request *DescribeSlowLogsReque
 //
 // ### [](#)Supported database engines
 //
-// 	- RDS MySQL
+// 	- MySQL
 //
-//     **
+// > This operation is not supported for RDS instances that run MySQL 5.7 on RDS Basic Edition.
 //
-//     **Note*	- This operation is not supported for RDS instances that run MySQL 5.7 on RDS Basic Edition.
+// 	- SQL Server
 //
-// 	- RDS SQL Server
+// > This operation is supported only for RDS instances that run SQL Server 2008 R2.
 //
-//     **
-//
-//     **Note*	- This operation is supported only for RDS instances that run SQL Server 2008 R2.
-//
-// 	- RDS MariaDB
+// 	- MariaDB
 //
 // ### [](#)Precautions
 //
@@ -104649,7 +104819,17 @@ func (client *Client) ModifyDBInstanceSSL(request *ModifyDBInstanceSSLRequest) (
 
 // Summary:
 //
-// 修改实例主机安全组规则
+// Modifies a security group rule that is configured for an ApsaraDB RDS for SQL Server instance.
+//
+// Description:
+//
+// ### [](#)Supported database engine
+//
+// SQL Server
+//
+// ### [](#)References
+//
+// [Configure security group settings for an ApsaraDB RDS for SQL Server instance](https://help.aliyun.com/document_detail/2392322.html)
 //
 // @param request - ModifyDBInstanceSecurityGroupRuleRequest
 //
@@ -104727,7 +104907,17 @@ func (client *Client) ModifyDBInstanceSecurityGroupRuleWithOptions(request *Modi
 
 // Summary:
 //
-// 修改实例主机安全组规则
+// Modifies a security group rule that is configured for an ApsaraDB RDS for SQL Server instance.
+//
+// Description:
+//
+// ### [](#)Supported database engine
+//
+// SQL Server
+//
+// ### [](#)References
+//
+// [Configure security group settings for an ApsaraDB RDS for SQL Server instance](https://help.aliyun.com/document_detail/2392322.html)
 //
 // @param request - ModifyDBInstanceSecurityGroupRuleRequest
 //

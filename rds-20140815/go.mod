@@ -1,6 +1,6 @@
-module github.com/alibabacloud-go/rds-20140815/v6
+module github.com/alibabacloud-go/rds-20140815/v7
 
-go 1.15
+go 1.14
 
 require (
 	github.com/alibabacloud-go/darabonba-openapi/v2 v2.0.8
