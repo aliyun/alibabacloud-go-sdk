@@ -1592,8 +1592,6 @@ type SqlStatementWithContext struct {
 	AdditionalDependencies []*string `json:"additionalDependencies,omitempty" xml:"additionalDependencies,omitempty" type:"Repeated"`
 	// This parameter is required.
 	BatchMode          *bool                  `json:"batchMode,omitempty" xml:"batchMode,omitempty"`
-	Catalog            *string                `json:"catalog,omitempty" xml:"catalog,omitempty"`
-	Database           *string                `json:"database,omitempty" xml:"database,omitempty"`
 	FlinkConfiguration map[string]interface{} `json:"flinkConfiguration,omitempty" xml:"flinkConfiguration,omitempty"`
 	// This parameter is required.
 	Statement   *string `json:"statement,omitempty" xml:"statement,omitempty"`
@@ -1615,16 +1613,6 @@ func (s *SqlStatementWithContext) SetAdditionalDependencies(v []*string) *SqlSta
 
 func (s *SqlStatementWithContext) SetBatchMode(v bool) *SqlStatementWithContext {
 	s.BatchMode = &v
-	return s
-}
-
-func (s *SqlStatementWithContext) SetCatalog(v string) *SqlStatementWithContext {
-	s.Catalog = &v
-	return s
-}
-
-func (s *SqlStatementWithContext) SetDatabase(v string) *SqlStatementWithContext {
-	s.Database = &v
 	return s
 }
 
@@ -1784,6 +1772,8 @@ func (s *Variable) SetValue(v string) *Variable {
 
 type CreateDeploymentHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	// The workspace ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -1811,6 +1801,8 @@ func (s *CreateDeploymentHeaders) SetWorkspace(v string) *CreateDeploymentHeader
 }
 
 type CreateDeploymentRequest struct {
+	// The content of the deployment.
+	//
 	// This parameter is required.
 	Body *Deployment `json:"body,omitempty" xml:"body,omitempty"`
 }
@@ -1829,23 +1821,40 @@ func (s *CreateDeploymentRequest) SetBody(v *Deployment) *CreateDeploymentReques
 }
 
 type CreateDeploymentResponseBody struct {
+	// 	- If the value of success was true, the deployment that you created was returned.
+	//
+	// 	- If the value of success was false, a null value was returned.
 	Data *Deployment `json:"data,omitempty" xml:"data,omitempty"`
+	// 	- If the value of success was false, an error code was returned.
+	//
+	// 	- If the value of success was true, a null value was returned.
+	//
 	// example:
 	//
 	// ""
 	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// 	- If the value of success was false, an error message was returned.
+	//
+	// 	- If the value of success was true, a null value was returned.
+	//
 	// example:
 	//
 	// ""
 	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	// The value was fixed to 200.
+	//
 	// example:
 	//
 	// 200
 	HttpCode *int32 `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// CBC799F0-AS7S-1D30-8A4F-882ED4DD****
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -1921,6 +1930,8 @@ func (s *CreateDeploymentResponse) SetBody(v *CreateDeploymentResponseBody) *Cre
 
 type CreateMemberHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	// The workspace ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -1948,6 +1959,7 @@ func (s *CreateMemberHeaders) SetWorkspace(v string) *CreateMemberHeaders {
 }
 
 type CreateMemberRequest struct {
+	// The mappings between the ID and permissions of the member.
 	Body *Member `json:"body,omitempty" xml:"body,omitempty"`
 }
 
@@ -1965,23 +1977,40 @@ func (s *CreateMemberRequest) SetBody(v *Member) *CreateMemberRequest {
 }
 
 type CreateMemberResponseBody struct {
+	// 	- If the value of success was false, a null value was returned.
+	//
+	// 	- If the value of success was true, the authorization information was returned.
 	Data *Member `json:"data,omitempty" xml:"data,omitempty"`
+	// 	- If the value of success was false, an error code was returned.
+	//
+	// 	- If the value of success was true, a null value was returned.
+	//
 	// example:
 	//
 	// ""
 	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// 	- If the value of success was false, an error message was returned.
+	//
+	// 	- If the value of success was true, a null value was returned.
+	//
 	// example:
 	//
 	// ""
 	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	// The status code returned. The value was fixed to 200. The status code 200 indicates that the request was successful.
+	//
 	// example:
 	//
 	// 200
 	HttpCode *int32 `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// F989CA70-2925-5A94-92B7-20F5762B71C8
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// True
@@ -2057,6 +2086,8 @@ func (s *CreateMemberResponse) SetBody(v *CreateMemberResponseBody) *CreateMembe
 
 type CreateSavepointHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	// The workspace ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -2084,13 +2115,22 @@ func (s *CreateSavepointHeaders) SetWorkspace(v string) *CreateSavepointHeaders 
 }
 
 type CreateSavepointRequest struct {
+	// The deployment ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 58718c99-3b29-4c5e-93bb-c9fc4ec6****
 	DeploymentId *string `json:"deploymentId,omitempty" xml:"deploymentId,omitempty"`
-	Description  *string `json:"description,omitempty" xml:"description,omitempty"`
+	// The description of the savepoint.
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// Specifies whether to use the native format mode. Valid values:
+	//
+	// 	- true: The native format mode is used.
+	//
+	// 	- false: The native format mode is not used.
+	//
 	// example:
 	//
 	// true
@@ -2121,23 +2161,40 @@ func (s *CreateSavepointRequest) SetNativeFormat(v bool) *CreateSavepointRequest
 }
 
 type CreateSavepointResponseBody struct {
+	// 	- If the value of success was true, the savepoint that was created was returned.
+	//
+	// 	- If the value of success was false, a null value was returned.
 	Data *Savepoint `json:"data,omitempty" xml:"data,omitempty"`
+	// 	- If the value of success was false, an error code was returned.
+	//
+	// 	- If the value of success was true, a null value was returned.
+	//
 	// example:
 	//
 	// ""
 	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// 	- If the value of success was false, an error message was returned.
+	//
+	// 	- If the value of success was true, a null value was returned.
+	//
 	// example:
 	//
 	// ""
 	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	// The value was fixed to 200.
+	//
 	// example:
 	//
 	// 200
 	HttpCode *int32 `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// CBC799F0-AS7S-1D30-8A4F-882ED4DD****
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -2213,6 +2270,8 @@ func (s *CreateSavepointResponse) SetBody(v *CreateSavepointResponseBody) *Creat
 
 type CreateVariableHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	// The workspace ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -2240,6 +2299,8 @@ func (s *CreateVariableHeaders) SetWorkspace(v string) *CreateVariableHeaders {
 }
 
 type CreateVariableRequest struct {
+	// The parameter that is used to create the variable.
+	//
 	// This parameter is required.
 	Body *Variable `json:"body,omitempty" xml:"body,omitempty"`
 }
@@ -2258,23 +2319,40 @@ func (s *CreateVariableRequest) SetBody(v *Variable) *CreateVariableRequest {
 }
 
 type CreateVariableResponseBody struct {
+	// 	- If the value of success was true, the variable that you created was returned.
+	//
+	// 	- If the value of success was false, a null value was returned.
 	Data *Variable `json:"data,omitempty" xml:"data,omitempty"`
+	// 	- If the value of success was false, an error code was returned.
+	//
+	// 	- If the value of success was true, a null value was returned.
+	//
 	// example:
 	//
 	// ""
 	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// 	- If the value of success was false, an error message was returned.
+	//
+	// 	- If the value of success was true, a null value was returned.
+	//
 	// example:
 	//
 	// ""
 	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	// The value was fixed to 200.
+	//
 	// example:
 	//
 	// 200
 	HttpCode *int32 `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// CBC799F0-ABCD-1D30-8A4F-882ED4DD****
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -2350,6 +2428,8 @@ func (s *CreateVariableResponse) SetBody(v *CreateVariableResponseBody) *CreateV
 
 type DeleteDeploymentHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	// The workspace ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -2377,22 +2457,36 @@ func (s *DeleteDeploymentHeaders) SetWorkspace(v string) *DeleteDeploymentHeader
 }
 
 type DeleteDeploymentResponseBody struct {
+	// 	- If the value of success was false, an error code was returned.
+	//
+	// 	- If the value of success was true, a null value was returned.
+	//
 	// example:
 	//
 	// ""
 	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// 	- If the value of success was false, an error message was returned.
+	//
+	// 	- If the value of success was true, a null value was returned.
+	//
 	// example:
 	//
 	// ""
 	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	// The value was fixed to 200.
+	//
 	// example:
 	//
 	// 200
 	HttpCode *int32 `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// CBC799F0-AS7S-1D30-8A4F-882ED4DD****
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -2463,6 +2557,8 @@ func (s *DeleteDeploymentResponse) SetBody(v *DeleteDeploymentResponseBody) *Del
 
 type DeleteJobHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	// The workspace ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -2490,22 +2586,36 @@ func (s *DeleteJobHeaders) SetWorkspace(v string) *DeleteJobHeaders {
 }
 
 type DeleteJobResponseBody struct {
+	// 	- If the value of success was false, an error code was returned.
+	//
+	// 	- If the value of success was true, a null value was returned.
+	//
 	// example:
 	//
 	// ""
 	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// 	- If the value of success was false, an error message was returned.
+	//
+	// 	- If the value of success was true, a null value was returned.
+	//
 	// example:
 	//
 	// ""
 	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	// The value was fixed to 200.
+	//
 	// example:
 	//
 	// 200
 	HttpCode *int32 `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// CBC799F0-AS7S-1D30-8A4F-882ED4DD****
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -2576,6 +2686,8 @@ func (s *DeleteJobResponse) SetBody(v *DeleteJobResponseBody) *DeleteJobResponse
 
 type DeleteMemberHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	// The workspace ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -2603,22 +2715,36 @@ func (s *DeleteMemberHeaders) SetWorkspace(v string) *DeleteMemberHeaders {
 }
 
 type DeleteMemberResponseBody struct {
+	// 	- If the value of success was false, an error code was returned.
+	//
+	// 	- If the value of success was true, a null value was returned.
+	//
 	// example:
 	//
 	// ""
 	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// 	- If the value of success was false, an error message was returned.
+	//
+	// 	- If the value of success was true, a null value was returned.
+	//
 	// example:
 	//
 	// ""
 	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	// The status code returned. The value was fixed to 200. The status code 200 indicates that the request was successful.
+	//
 	// example:
 	//
 	// 200
 	HttpCode *int32 `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// CBC799F0-AS7S-1D30-8A4F-882ED4DD****
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -2689,6 +2815,8 @@ func (s *DeleteMemberResponse) SetBody(v *DeleteMemberResponseBody) *DeleteMembe
 
 type DeleteSavepointHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	// The workspace ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -2716,22 +2844,36 @@ func (s *DeleteSavepointHeaders) SetWorkspace(v string) *DeleteSavepointHeaders 
 }
 
 type DeleteSavepointResponseBody struct {
+	// 	- If the value of success was false, an error code was returned.
+	//
+	// 	- If the value of success was true, a null value was returned.
+	//
 	// example:
 	//
 	// ""
 	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// 	- If the value of success was false, an error message was returned.
+	//
+	// 	- If the value of success was true, a null value was returned.
+	//
 	// example:
 	//
 	// ""
 	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	// The value was fixed to 200.
+	//
 	// example:
 	//
 	// 200
 	HttpCode *int32 `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// CBC799F0-AS7S-1D30-8A4F-882ED4DD****
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -2802,6 +2944,8 @@ func (s *DeleteSavepointResponse) SetBody(v *DeleteSavepointResponseBody) *Delet
 
 type DeleteVariableHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	// The workspace ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -2829,22 +2973,36 @@ func (s *DeleteVariableHeaders) SetWorkspace(v string) *DeleteVariableHeaders {
 }
 
 type DeleteVariableResponseBody struct {
+	// 	- If the value of success was false, an error code was returned.
+	//
+	// 	- If the value of success was true, a null value was returned.
+	//
 	// example:
 	//
 	// ""
 	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// 	- If the value of success was false, an error message was returned.
+	//
+	// 	- If the value of success was true, a null value was returned.
+	//
 	// example:
 	//
 	// ""
 	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	// The value was fixed to 200.
+	//
 	// example:
 	//
 	// 200
 	HttpCode *int32 `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// CBC799F0-AS7S-1D30-8A4F-882ED4DD****
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -2915,6 +3073,8 @@ func (s *DeleteVariableResponse) SetBody(v *DeleteVariableResponseBody) *DeleteV
 
 type FlinkApiProxyHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	// The workspace ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -2942,24 +3102,36 @@ func (s *FlinkApiProxyHeaders) SetWorkspace(v string) *FlinkApiProxyHeaders {
 }
 
 type FlinkApiProxyRequest struct {
+	// The path of the Flink UI.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// /jobs/4df35f8e54554b23bf7dcd38a151****
 	FlinkApiPath *string `json:"flinkApiPath,omitempty" xml:"flinkApiPath,omitempty"`
+	// The name of the namespace.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// default-namespace
 	Namespace *string `json:"namespace,omitempty" xml:"namespace,omitempty"`
+	// The resource ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 5a27a3aa-c5b9-4dc1-8c86-be57d2d6****
 	ResourceId *string `json:"resourceId,omitempty" xml:"resourceId,omitempty"`
+	// The type of the resource. Valid values:
+	//
+	// 	- jobs
+	//
+	// 	- sessionclusters
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -2997,26 +3169,44 @@ func (s *FlinkApiProxyRequest) SetResourceType(v string) *FlinkApiProxyRequest {
 }
 
 type FlinkApiProxyResponseBody struct {
+	// 	- If the value of success was true, the result of the proxy request was returned.
+	//
+	// 	- If the value of success was false, a null value was returned.
+	//
 	// example:
 	//
 	// { "jobs": [ { "jid": "4df35f8e54554b23bf7dcd38a151****", "name": "69d001d5-419a-4bfc-9c2e-849cacd3****", "state": "RUNNING", "start-time": 1659154942068, "end-time": -1, "duration": 188161756, "last-modification": 1659154968305, "tasks": { "total": 2, "created": 0, "scheduled": 0, "deploying": 0, "running": 2, "finished": 0, "canceling": 0, "canceled": 0, "failed": 0, "reconciling": 0, "initializing": 0 } } ] }
 	Data *string `json:"data,omitempty" xml:"data,omitempty"`
+	// 	- If the value of success was false, an error code was returned.
+	//
+	// 	- If the value of success was true, a null value was returned.
+	//
 	// example:
 	//
 	// ""
 	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// 	- If the value of success was false, an error message was returned.
+	//
+	// 	- If the value of success was true, a null value was returned.
+	//
 	// example:
 	//
 	// ""
 	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	// The value was fixed to 200.
+	//
 	// example:
 	//
 	// 200
 	HttpCode *int32 `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// CBC799F0-AS7S-1D30-8A4F-882ED4DD****
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -3092,6 +3282,8 @@ func (s *FlinkApiProxyResponse) SetBody(v *FlinkApiProxyResponseBody) *FlinkApiP
 
 type GenerateResourcePlanWithFlinkConfAsyncHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	// The workspace ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -3119,6 +3311,7 @@ func (s *GenerateResourcePlanWithFlinkConfAsyncHeaders) SetWorkspace(v string) *
 }
 
 type GenerateResourcePlanWithFlinkConfAsyncRequest struct {
+	// The Flink configuration that is used to generate a resource plan.
 	Body map[string]interface{} `json:"body,omitempty" xml:"body,omitempty"`
 }
 
@@ -3136,23 +3329,40 @@ func (s *GenerateResourcePlanWithFlinkConfAsyncRequest) SetBody(v map[string]int
 }
 
 type GenerateResourcePlanWithFlinkConfAsyncResponseBody struct {
+	// 	- If the value of success was true, the asynchronous generation result was returned.
+	//
+	// 	- If the value of success was false, a null value was returned.
 	Data *GenerateResourcePlanWithFlinkConfAsyncResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// 	- If the value of success was false, an error code was returned.
+	//
+	// 	- If the value of success was true, a null value was returned.
+	//
 	// example:
 	//
 	// ""
 	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// 	- If the value of success was false, an error message was returned.
+	//
+	// 	- If the value of success was true, a null value was returned.
+	//
 	// example:
 	//
 	// ""
 	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	// The value was fixed to 200.
+	//
 	// example:
 	//
 	// 200
 	HttpCode *int32 `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// CBC799F0-AS7S-1D30-8A4F-882ED4DD****
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -3198,6 +3408,8 @@ func (s *GenerateResourcePlanWithFlinkConfAsyncResponseBody) SetSuccess(v bool) 
 }
 
 type GenerateResourcePlanWithFlinkConfAsyncResponseBodyData struct {
+	// The ID of the ticket for you to query the asynchronous generation result.
+	//
 	// example:
 	//
 	// b3dcdb25-bf36-457d-92ba-a36077e8****
@@ -3248,6 +3460,8 @@ func (s *GenerateResourcePlanWithFlinkConfAsyncResponse) SetBody(v *GenerateReso
 
 type GetDeploymentHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	// The workspace ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -3275,23 +3489,40 @@ func (s *GetDeploymentHeaders) SetWorkspace(v string) *GetDeploymentHeaders {
 }
 
 type GetDeploymentResponseBody struct {
+	// 	- If the value of success was true, the details of the deployment were returned.
+	//
+	// 	- If the value of success was false, a null value was returned.
 	Data *Deployment `json:"data,omitempty" xml:"data,omitempty"`
+	// 	- If the value of success was false, an error code was returned.
+	//
+	// 	- If the value of success was true, a null value was returned.
+	//
 	// example:
 	//
 	// ""
 	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// 	- If the value of success was false, an error message was returned.
+	//
+	// 	- If the value of success was true, a null value was returned.
+	//
 	// example:
 	//
 	// ""
 	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	// The value was fixed to 200.
+	//
 	// example:
 	//
 	// 200
 	HttpCode *int32 `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// CBC799F0-AS7S-1D30-8A4F-882ED4DD****
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -3367,6 +3598,8 @@ func (s *GetDeploymentResponse) SetBody(v *GetDeploymentResponseBody) *GetDeploy
 
 type GetGenerateResourcePlanResultHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	// The workspace ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -3394,23 +3627,40 @@ func (s *GetGenerateResourcePlanResultHeaders) SetWorkspace(v string) *GetGenera
 }
 
 type GetGenerateResourcePlanResultResponseBody struct {
+	// 	- If the value of success was true, the asynchronous generation result was returned.
+	//
+	// 	- If the value of success was false, a null value was returned.
 	Data *AsyncResourcePlanOperationResult `json:"data,omitempty" xml:"data,omitempty"`
+	// 	- If the value of success was false, an error code was returned.
+	//
+	// 	- If the value of success was true, a null value was returned.
+	//
 	// example:
 	//
 	// ""
 	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// 	- If the value of success was false, an error message was returned.
+	//
+	// 	- If the value of success was true, a null value was returned.
+	//
 	// example:
 	//
 	// ""
 	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	// The value was fixed to 200.
+	//
 	// example:
 	//
 	// 200
 	HttpCode *int32 `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// CBC799F0-AS7S-1D30-8A4F-882ED4DD****
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -3486,6 +3736,8 @@ func (s *GetGenerateResourcePlanResultResponse) SetBody(v *GetGenerateResourcePl
 
 type GetJobHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	// The workspace ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -3513,23 +3765,40 @@ func (s *GetJobHeaders) SetWorkspace(v string) *GetJobHeaders {
 }
 
 type GetJobResponseBody struct {
+	// 	- If the value of success was true, the details of the job was returned.
+	//
+	// 	- If the value of success was false, a null value was returned.
 	Data *Job `json:"data,omitempty" xml:"data,omitempty"`
+	// 	- If the value of success was false, an error code was returned.
+	//
+	// 	- If the value of success was true, a null value was returned.
+	//
 	// example:
 	//
 	// ""
 	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// 	- If the value of success was false, an error message was returned.
+	//
+	// 	- If the value of success was true, a null value was returned.
+	//
 	// example:
 	//
 	// ""
 	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	// The value was fixed to 200.
+	//
 	// example:
 	//
 	// 200
 	HttpCode *int32 `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// CBC799F0-AS7S-1D30-8A4F-882ED4DD****
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -3603,8 +3872,146 @@ func (s *GetJobResponse) SetBody(v *GetJobResponseBody) *GetJobResponse {
 	return s
 }
 
+type GetLatestJobStartLogHeaders struct {
+	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	// The workspace ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// a14bd5d90a****
+	Workspace *string `json:"workspace,omitempty" xml:"workspace,omitempty"`
+}
+
+func (s GetLatestJobStartLogHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetLatestJobStartLogHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *GetLatestJobStartLogHeaders) SetCommonHeaders(v map[string]*string) *GetLatestJobStartLogHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *GetLatestJobStartLogHeaders) SetWorkspace(v string) *GetLatestJobStartLogHeaders {
+	s.Workspace = &v
+	return s
+}
+
+type GetLatestJobStartLogResponseBody struct {
+	// If the value of success was false, the latest logs of the deployment were returned. If the value of success was true, a null value was returned.
+	//
+	// example:
+	//
+	// "[main] INFO  org.apache.flink.runtime.entrypoint.ClusterEntrypoint        [] - --------------------------------------------------------------------------------\\n2024-05-22 11:46:39,871 [main] INFO  org.apache.flink.runtime.entrypoint.ClusterEntrypoint"
+	Data *string `json:"data,omitempty" xml:"data,omitempty"`
+	// If the value of success was false, an error code was returned. If the value of success was true, a null value was returned.
+	//
+	// example:
+	//
+	// ""
+	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// If the value of success was false, an error message was returned. If the value of success was true, a null value was returned.
+	//
+	// example:
+	//
+	// ""
+	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	// The status code returned. The value was fixed to 200.
+	//
+	// example:
+	//
+	// 200
+	HttpCode *int32 `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// CBC799F0-AS7S-1D30-8A4F-882ED4DD****
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s GetLatestJobStartLogResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetLatestJobStartLogResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetLatestJobStartLogResponseBody) SetData(v string) *GetLatestJobStartLogResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *GetLatestJobStartLogResponseBody) SetErrorCode(v string) *GetLatestJobStartLogResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *GetLatestJobStartLogResponseBody) SetErrorMessage(v string) *GetLatestJobStartLogResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *GetLatestJobStartLogResponseBody) SetHttpCode(v int32) *GetLatestJobStartLogResponseBody {
+	s.HttpCode = &v
+	return s
+}
+
+func (s *GetLatestJobStartLogResponseBody) SetRequestId(v string) *GetLatestJobStartLogResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetLatestJobStartLogResponseBody) SetSuccess(v bool) *GetLatestJobStartLogResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetLatestJobStartLogResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetLatestJobStartLogResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetLatestJobStartLogResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetLatestJobStartLogResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetLatestJobStartLogResponse) SetHeaders(v map[string]*string) *GetLatestJobStartLogResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetLatestJobStartLogResponse) SetStatusCode(v int32) *GetLatestJobStartLogResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetLatestJobStartLogResponse) SetBody(v *GetLatestJobStartLogResponseBody) *GetLatestJobStartLogResponse {
+	s.Body = v
+	return s
+}
+
 type GetMemberHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	// The workspace ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -3632,23 +4039,40 @@ func (s *GetMemberHeaders) SetWorkspace(v string) *GetMemberHeaders {
 }
 
 type GetMemberResponseBody struct {
+	// 	- If the value of success was false, a null value was returned.
+	//
+	// 	- If the value of success was true, the authorization information was returned.
 	Data *Member `json:"data,omitempty" xml:"data,omitempty"`
+	// 	- If the value of success was false, an error code was returned.
+	//
+	// 	- If the value of success was true, a null value was returned.
+	//
 	// example:
 	//
 	// ""
 	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// 	- If the value of success was false, an error message was returned.
+	//
+	// 	- If the value of success was true, a null value was returned.
+	//
 	// example:
 	//
 	// ""
 	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	// The status code returned. The value was fixed to 200. The status code 200 indicates that the request was successful.
+	//
 	// example:
 	//
 	// 200
 	HttpCode *int32 `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// CBC799F0-AS7S-1D30-8A4F-882ED4DD****
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -3724,6 +4148,8 @@ func (s *GetMemberResponse) SetBody(v *GetMemberResponseBody) *GetMemberResponse
 
 type GetSavepointHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	// The workspace ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -3751,23 +4177,40 @@ func (s *GetSavepointHeaders) SetWorkspace(v string) *GetSavepointHeaders {
 }
 
 type GetSavepointResponseBody struct {
+	// 	- If the value of success was true, the savepoint information was returned.
+	//
+	// 	- If the value of success was false, a null value was returned.
 	Data *Savepoint `json:"data,omitempty" xml:"data,omitempty"`
+	// 	- If the value of success was false, an error code was returned.
+	//
+	// 	- If the value of success was true, a null value was returned.
+	//
 	// example:
 	//
 	// ""
 	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// 	- If the value of success was false, an error message was returned.
+	//
+	// 	- If the value of success was true, a null value was returned.
+	//
 	// example:
 	//
 	// ""
 	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	// The value was fixed to 200.
+	//
 	// example:
 	//
 	// 200
 	HttpCode *int32 `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// CBC799F0-AS7S-1D30-8A4F-882ED4DD****
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -3843,6 +4286,8 @@ func (s *GetSavepointResponse) SetBody(v *GetSavepointResponseBody) *GetSavepoin
 
 type ListDeploymentTargetsHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	// The workspace ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -3870,10 +4315,14 @@ func (s *ListDeploymentTargetsHeaders) SetWorkspace(v string) *ListDeploymentTar
 }
 
 type ListDeploymentTargetsRequest struct {
+	// The page number. Minimum value: 1. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageIndex *int32 `json:"pageIndex,omitempty" xml:"pageIndex,omitempty"`
+	// The number of entries per page. Valid values: 1 to 100. Default value: 10.
+	//
 	// example:
 	//
 	// 10
@@ -3899,35 +4348,58 @@ func (s *ListDeploymentTargetsRequest) SetPageSize(v int32) *ListDeploymentTarge
 }
 
 type ListDeploymentTargetsResponseBody struct {
+	// 	- If the value of success was true, a list of clusters in which the deployment is deployed was returned.
+	//
+	// 	- If the value of success was false, a null value was returned.
 	Data []*DeploymentTarget `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	// 	- If the value of success was false, an error code was returned.
+	//
+	// 	- If the value of success was true, a null value was returned.
+	//
 	// example:
 	//
 	// ""
 	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// 	- If the value of success was false, an error message was returned.
+	//
+	// 	- If the value of success was true, a null value was returned.
+	//
 	// example:
 	//
 	// ""
 	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	// The value was fixed to 200.
+	//
 	// example:
 	//
 	// 200
 	HttpCode *int32 `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageIndex *int32 `json:"pageIndex,omitempty" xml:"pageIndex,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// CBC799F0-AS7S-1D30-8A4F-882ED4DD****
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
 	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// The total number of entries returned.
+	//
 	// example:
 	//
 	// 1
@@ -4018,6 +4490,8 @@ func (s *ListDeploymentTargetsResponse) SetBody(v *ListDeploymentTargetsResponse
 
 type ListDeploymentsHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	// The workspace ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -4045,21 +4519,78 @@ func (s *ListDeploymentsHeaders) SetWorkspace(v string) *ListDeploymentsHeaders 
 }
 
 type ListDeploymentsRequest struct {
-	Creator         *string `json:"creator,omitempty" xml:"creator,omitempty"`
-	ExecutionMode   *string `json:"executionMode,omitempty" xml:"executionMode,omitempty"`
-	LabelKey        *string `json:"labelKey,omitempty" xml:"labelKey,omitempty"`
+	// The ID of the user who creates the deployment.
+	//
+	// example:
+	//
+	// 183899668*******
+	Creator *string `json:"creator,omitempty" xml:"creator,omitempty"`
+	// The execution mode of the deployment.
+	//
+	// Valid values:
+	//
+	// 	- BATCH
+	//
+	// 	- STREAMING
+	//
+	// example:
+	//
+	// STREAMING
+	ExecutionMode *string `json:"executionMode,omitempty" xml:"executionMode,omitempty"`
+	// The tag key.
+	//
+	// example:
+	//
+	// key
+	LabelKey *string `json:"labelKey,omitempty" xml:"labelKey,omitempty"`
+	// The tag value. Separate multiple values with semicolon (;).
+	//
+	// example:
+	//
+	// value1,value2
 	LabelValueArray *string `json:"labelValueArray,omitempty" xml:"labelValueArray,omitempty"`
-	Modifier        *string `json:"modifier,omitempty" xml:"modifier,omitempty"`
-	Name            *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The ID of the user who modifies the deployment.
+	//
+	// example:
+	//
+	// 183899668*******
+	Modifier *string `json:"modifier,omitempty" xml:"modifier,omitempty"`
+	// The name of the deployment.
+	//
+	// example:
+	//
+	// vvp_ds_0522
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The page number. Minimum value: 1. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageIndex *int32 `json:"pageIndex,omitempty" xml:"pageIndex,omitempty"`
+	// The number of entries per page. Valid values: 1 to 100. Default value: 10.
+	//
 	// example:
 	//
 	// 10
-	PageSize *int32  `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	Status   *string `json:"status,omitempty" xml:"status,omitempty"`
+	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// The latest status of the deployment.
+	//
+	// Valid values:
+	//
+	// 	- CANCELLED
+	//
+	// 	- FAILED
+	//
+	// 	- RUNNING
+	//
+	// 	- TRANSITIONING
+	//
+	// 	- FINISHED
+	//
+	// example:
+	//
+	// RUNNING
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
 }
 
 func (s ListDeploymentsRequest) String() string {
@@ -4116,35 +4647,58 @@ func (s *ListDeploymentsRequest) SetStatus(v string) *ListDeploymentsRequest {
 }
 
 type ListDeploymentsResponseBody struct {
+	// 	- If the value of success was true, the list of all deployments was returned.
+	//
+	// 	- If the value of success was false, a null value was returned.
 	Data []*Deployment `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	// 	- If the value of success was false, an error code was returned.
+	//
+	// 	- If the value of success was true, a null value was returned.
+	//
 	// example:
 	//
 	// ""
 	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// 	- If the value of success was false, an error message was returned.
+	//
+	// 	- If the value of success was true, a null value was returned.
+	//
 	// example:
 	//
 	// ""
 	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	// The value was fixed to 200.
+	//
 	// example:
 	//
 	// 200
 	HttpCode *int32 `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageIndex *int32 `json:"pageIndex,omitempty" xml:"pageIndex,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// CBC799F0-AS7S-1D30-8A4F-882ED4DD****
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
 	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// The total number of entries returned.
+	//
 	// example:
 	//
 	// 1
@@ -4388,6 +4942,8 @@ func (s *ListEditableNamespaceResponse) SetBody(v *ListEditableNamespaceResponse
 
 type ListEngineVersionMetadataHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	// The workspace ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -4415,23 +4971,40 @@ func (s *ListEngineVersionMetadataHeaders) SetWorkspace(v string) *ListEngineVer
 }
 
 type ListEngineVersionMetadataResponseBody struct {
+	// 	- If the value of success was true, the engine versions that are supported by Realtime Compute for Apache Flink were returned.
+	//
+	// 	- If the value of success was false, a null value was returned.
 	Data *EngineVersionMetadataIndex `json:"data,omitempty" xml:"data,omitempty"`
+	// 	- If the value of success was false, an error code was returned.
+	//
+	// 	- If the value of success was true, a null value was returned.
+	//
 	// example:
 	//
 	// ""
 	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// 	- If the value of success was false, an error message was returned.
+	//
+	// 	- If the value of success was true, a null value was returned.
+	//
 	// example:
 	//
 	// ""
 	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	// The value was fixed to 200.
+	//
 	// example:
 	//
 	// 200
 	HttpCode *int32 `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// CBC799F0-AS7S-1D30-8A4F-882ED4DD****
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -4507,6 +5080,8 @@ func (s *ListEngineVersionMetadataResponse) SetBody(v *ListEngineVersionMetadata
 
 type ListJobsHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	// The workspace ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -4534,20 +5109,39 @@ func (s *ListJobsHeaders) SetWorkspace(v string) *ListJobsHeaders {
 }
 
 type ListJobsRequest struct {
+	// The deployment ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 58718c99-3b29-4c5e-93bb-c9fc4ec6****
 	DeploymentId *string `json:"deploymentId,omitempty" xml:"deploymentId,omitempty"`
+	// The page number. Minimum value: 1. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageIndex *int32 `json:"pageIndex,omitempty" xml:"pageIndex,omitempty"`
+	// The number of entries per page. Valid values: 1 to 100. Default value: 10.
+	//
 	// example:
 	//
 	// 10
-	PageSize *int32  `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// The collation.
+	//
+	// Valid values:
+	//
+	// 	- gmt_create
+	//
+	// 	- job_id
+	//
+	// 	- status
+	//
+	// example:
+	//
+	// gmt_create
 	SortName *string `json:"sortName,omitempty" xml:"sortName,omitempty"`
 }
 
@@ -4580,35 +5174,58 @@ func (s *ListJobsRequest) SetSortName(v string) *ListJobsRequest {
 }
 
 type ListJobsResponseBody struct {
+	// 	- If the value of success was true, all jobs that meet the condition were returned.
+	//
+	// 	- If the value of success was false, a null value was returned.
 	Data []*Job `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	// 	- If the value of success was false, an error code was returned.
+	//
+	// 	- If the value of success was true, a null value was returned.
+	//
 	// example:
 	//
 	// ""
 	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// 	- If the value of success was false, an error message was returned.
+	//
+	// 	- If the value of success was true, a null value was returned.
+	//
 	// example:
 	//
 	// ""
 	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	// The value was fixed to 200.
+	//
 	// example:
 	//
 	// 200
 	HttpCode *int32 `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageIndex *int32 `json:"pageIndex,omitempty" xml:"pageIndex,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// CBC799F0-AS7S-1D30-8A4F-882ED4DD****
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
 	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// The total number of entries returned.
+	//
 	// example:
 	//
 	// 1
@@ -4699,6 +5316,8 @@ func (s *ListJobsResponse) SetBody(v *ListJobsResponseBody) *ListJobsResponse {
 
 type ListMembersHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	// The workspace ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -4726,10 +5345,14 @@ func (s *ListMembersHeaders) SetWorkspace(v string) *ListMembersHeaders {
 }
 
 type ListMembersRequest struct {
+	// The page number. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageIndex *int32 `json:"pageIndex,omitempty" xml:"pageIndex,omitempty"`
+	// The number of entries per page. Default value: 10. Maximum value: 100.
+	//
 	// example:
 	//
 	// 10
@@ -4755,35 +5378,58 @@ func (s *ListMembersRequest) SetPageSize(v int32) *ListMembersRequest {
 }
 
 type ListMembersResponseBody struct {
+	// 	- If the value of success was false, a null value was returned.
+	//
+	// 	- If the value of success was true, the authorization information was returned.
 	Data []*Member `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	// 	- If the value of success was false, an error code was returned.
+	//
+	// 	- If the value of success was true, a null value was returned.
+	//
 	// example:
 	//
 	// ""
 	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// 	- If the value of success was false, an error message was returned.
+	//
+	// 	- If the value of success was true, a null value was returned.
+	//
 	// example:
 	//
 	// ""
 	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	// The status code returned. The value was fixed to 200. The status code 200 indicates that the request was successful.
+	//
 	// example:
 	//
 	// 200
 	HttpCode *int32 `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageIndex *int32 `json:"pageIndex,omitempty" xml:"pageIndex,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// CBC799F0-AS7S-1D30-8A4F-882ED4DD****
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
 	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// The total number of entries returned.
+	//
 	// example:
 	//
 	// 50
@@ -4874,6 +5520,8 @@ func (s *ListMembersResponse) SetBody(v *ListMembersResponseBody) *ListMembersRe
 
 type ListSavepointsHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	// The workspace ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -4901,18 +5549,26 @@ func (s *ListSavepointsHeaders) SetWorkspace(v string) *ListSavepointsHeaders {
 }
 
 type ListSavepointsRequest struct {
+	// The deployment ID. This parameter is optional.
+	//
 	// example:
 	//
 	// 88a8fc49-e090-430a-85d8-3ee8c79c****
 	DeploymentId *string `json:"deploymentId,omitempty" xml:"deploymentId,omitempty"`
+	// The job ID. This parameter is optional.
+	//
 	// example:
 	//
 	// 99a8fc49-e090-430a-85d8-3ee8c79c****
 	JobId *string `json:"jobId,omitempty" xml:"jobId,omitempty"`
+	// The page number. Minimum value: 1. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageIndex *int32 `json:"pageIndex,omitempty" xml:"pageIndex,omitempty"`
+	// The number of entries per page. Valid values: 1 to 100. Default value: 10.
+	//
 	// example:
 	//
 	// 10
@@ -4948,35 +5604,58 @@ func (s *ListSavepointsRequest) SetPageSize(v int32) *ListSavepointsRequest {
 }
 
 type ListSavepointsResponseBody struct {
+	// 	- If the value of success was true, a list of savepoints was returned.
+	//
+	// 	- If the value of success was false, a null value was returned.
 	Data []*Savepoint `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	// 	- If the value of success was false, an error code was returned.
+	//
+	// 	- If the value of success was true, a null value was returned.
+	//
 	// example:
 	//
 	// ""
 	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// 	- If the value of success was false, an error message was returned.
+	//
+	// 	- If the value of success was true, a null value was returned.
+	//
 	// example:
 	//
 	// ""
 	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	// The value was fixed to 200.
+	//
 	// example:
 	//
 	// 200
 	HttpCode *int32 `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageIndex *int32 `json:"pageIndex,omitempty" xml:"pageIndex,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// CBC799F0-AS7S-1D30-8A4F-882ED4DD****
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
 	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// The total number of entries returned.
+	//
 	// example:
 	//
 	// 1
@@ -5067,6 +5746,8 @@ func (s *ListSavepointsResponse) SetBody(v *ListSavepointsResponseBody) *ListSav
 
 type ListVariablesHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	// The workspace ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -5094,10 +5775,14 @@ func (s *ListVariablesHeaders) SetWorkspace(v string) *ListVariablesHeaders {
 }
 
 type ListVariablesRequest struct {
+	// The page number. Minimum value: 1. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageIndex *int32 `json:"pageIndex,omitempty" xml:"pageIndex,omitempty"`
+	// The number of entries per page. Valid values: 1 to 100. Default value: 10.
+	//
 	// example:
 	//
 	// 10
@@ -5123,35 +5808,58 @@ func (s *ListVariablesRequest) SetPageSize(v int32) *ListVariablesRequest {
 }
 
 type ListVariablesResponseBody struct {
+	// 	- If the value of success was true, a list of variables was returned.
+	//
+	// 	- If the value of success was false, a null value was returned.
 	Data []*Variable `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	// 	- If the value of success was false, an error code was returned.
+	//
+	// 	- If the value of success was true, a null value was returned.
+	//
 	// example:
 	//
 	// ""
 	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// 	- If the value of success was false, an error message was returned.
+	//
+	// 	- If the value of success was true, a null value was returned.
+	//
 	// example:
 	//
 	// ""
 	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	// The value was fixed to 200.
+	//
 	// example:
 	//
 	// 200
 	HttpCode *int32 `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageIndex *int32 `json:"pageIndex,omitempty" xml:"pageIndex,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// CBC799F0-ABCF-1D30-8A4F-882ED4DD****
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
 	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// The total number of entries returned.
+	//
 	// example:
 	//
 	// 1
@@ -5379,6 +6087,8 @@ func (s *StartJobResponse) SetBody(v *StartJobResponseBody) *StartJobResponse {
 
 type StartJobWithParamsHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	// The workspace ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -5406,6 +6116,7 @@ func (s *StartJobWithParamsHeaders) SetWorkspace(v string) *StartJobWithParamsHe
 }
 
 type StartJobWithParamsRequest struct {
+	// The parameter that is used to start the job.
 	Body *JobStartParameters `json:"body,omitempty" xml:"body,omitempty"`
 }
 
@@ -5423,23 +6134,34 @@ func (s *StartJobWithParamsRequest) SetBody(v *JobStartParameters) *StartJobWith
 }
 
 type StartJobWithParamsResponseBody struct {
+	// The details of the job of the deployment returned.
 	Data *Job `json:"data,omitempty" xml:"data,omitempty"`
+	// If the value of success was false, an error code was returned. If the value of success was true, a null value was returned.
+	//
 	// example:
 	//
 	// ""
 	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// If the value of success was false, an error message was returned. If the value of success was true, a null value was returned.
+	//
 	// example:
 	//
 	// ""
 	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	// The status code returned. The value was fixed to 200. The status code 200 indicates that the request was successful.
+	//
 	// example:
 	//
 	// 200
 	HttpCode *int32 `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// CBC799F0-AS7S-1D30-8A4F-882ED4DD****
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -5515,6 +6237,8 @@ func (s *StartJobWithParamsResponse) SetBody(v *StartJobWithParamsResponseBody) 
 
 type StopJobHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	// The workspace ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -5542,6 +6266,8 @@ func (s *StopJobHeaders) SetWorkspace(v string) *StopJobHeaders {
 }
 
 type StopJobRequest struct {
+	// The parameter that is used to stop the job.
+	//
 	// This parameter is required.
 	Body *StopJobRequestBody `json:"body,omitempty" xml:"body,omitempty"`
 }
@@ -5560,23 +6286,40 @@ func (s *StopJobRequest) SetBody(v *StopJobRequestBody) *StopJobRequest {
 }
 
 type StopJobResponseBody struct {
+	// 	- If the value of success was true, the job that you stopped was returned.
+	//
+	// 	- If the value of success was false, a null value was returned.
 	Data *Job `json:"data,omitempty" xml:"data,omitempty"`
+	// 	- If the value of success was false, an error code was returned.
+	//
+	// 	- If the value of success was true, a null value was returned.
+	//
 	// example:
 	//
 	// ""
 	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// 	- If the value of success was false, an error message was returned.
+	//
+	// 	- If the value of success was true, a null value was returned.
+	//
 	// example:
 	//
 	// ""
 	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	// The value was fixed to 200.
+	//
 	// example:
 	//
 	// 200
 	HttpCode *int32 `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// CBC799F0-AS7S-1D30-8A4F-882ED4DD****
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -5652,6 +6395,8 @@ func (s *StopJobResponse) SetBody(v *StopJobResponseBody) *StopJobResponse {
 
 type UpdateDeploymentHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	// The workspace ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -5679,6 +6424,8 @@ func (s *UpdateDeploymentHeaders) SetWorkspace(v string) *UpdateDeploymentHeader
 }
 
 type UpdateDeploymentRequest struct {
+	// The information about the deployment that you want to update.
+	//
 	// This parameter is required.
 	Body *Deployment `json:"body,omitempty" xml:"body,omitempty"`
 }
@@ -5697,23 +6444,40 @@ func (s *UpdateDeploymentRequest) SetBody(v *Deployment) *UpdateDeploymentReques
 }
 
 type UpdateDeploymentResponseBody struct {
+	// 	- If the value of success was true, the information about the deployment after the update was returned.
+	//
+	// 	- If the value of success was false, a null value was returned.
 	Data *Deployment `json:"data,omitempty" xml:"data,omitempty"`
+	// 	- If the value of success was false, an error code was returned.
+	//
+	// 	- If the value of success was true, a null value was returned.
+	//
 	// example:
 	//
 	// ""
 	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// 	- If the value of success was false, an error message was returned.
+	//
+	// 	- If the value of success was true, a null value was returned.
+	//
 	// example:
 	//
 	// ""
 	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	// The value was fixed to 200.
+	//
 	// example:
 	//
 	// 200
 	HttpCode *int32 `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// CBC799F0-AS7S-1D30-8A4F-882ED4DD****
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -5789,6 +6553,8 @@ func (s *UpdateDeploymentResponse) SetBody(v *UpdateDeploymentResponseBody) *Upd
 
 type UpdateMemberHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	// The workspace ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -5816,6 +6582,7 @@ func (s *UpdateMemberHeaders) SetWorkspace(v string) *UpdateMemberHeaders {
 }
 
 type UpdateMemberRequest struct {
+	// The permission information about the member.
 	Body *Member `json:"body,omitempty" xml:"body,omitempty"`
 }
 
@@ -5833,23 +6600,38 @@ func (s *UpdateMemberRequest) SetBody(v *Member) *UpdateMemberRequest {
 }
 
 type UpdateMemberResponseBody struct {
+	// If the value of success was true, the member that was created was returned. If the value of success was false, a null value was returned.
 	Data *Member `json:"data,omitempty" xml:"data,omitempty"`
+	// 	- If the value of success was false, an error code was returned.
+	//
+	// 	- If the value of success was true, a null value was returned.
+	//
 	// example:
 	//
 	// ""
 	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// 	- If the value of success was false, an error message was returned.
+	//
+	// 	- If the value of success was true, a null value was returned.
+	//
 	// example:
 	//
 	// ""
 	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	// The status code returned. The value was fixed to 200. The status code 200 indicates that the request was successful.
+	//
 	// example:
 	//
 	// 200
 	HttpCode *int32 `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// CBC799F0-AS7S-1D30-8A4F-882ED4DD****
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -5923,6 +6705,158 @@ func (s *UpdateMemberResponse) SetBody(v *UpdateMemberResponseBody) *UpdateMembe
 	return s
 }
 
+type ValidateSqlStatementHeaders struct {
+	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	// The workspace ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// a14bd5d90a****
+	Workspace *string `json:"workspace,omitempty" xml:"workspace,omitempty"`
+}
+
+func (s ValidateSqlStatementHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ValidateSqlStatementHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *ValidateSqlStatementHeaders) SetCommonHeaders(v map[string]*string) *ValidateSqlStatementHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *ValidateSqlStatementHeaders) SetWorkspace(v string) *ValidateSqlStatementHeaders {
+	s.Workspace = &v
+	return s
+}
+
+type ValidateSqlStatementRequest struct {
+	// The content of the code that you want to verify.
+	//
+	// This parameter is required.
+	Body *SqlStatementWithContext `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ValidateSqlStatementRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ValidateSqlStatementRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ValidateSqlStatementRequest) SetBody(v *SqlStatementWithContext) *ValidateSqlStatementRequest {
+	s.Body = v
+	return s
+}
+
+type ValidateSqlStatementResponseBody struct {
+	// The returned data, which represents the details of SQL validation results.
+	Data *SqlStatementValidationResult `json:"data,omitempty" xml:"data,omitempty"`
+	// If the value of success was false, an error code was returned. If the value of success was true, a null value was returned.
+	//
+	// example:
+	//
+	// ""
+	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// If the value of success was false, an error message was returned. If the value of success was true, a null value was returned.
+	//
+	// example:
+	//
+	// ""
+	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	// The status code returned. The value was fixed to 200.
+	//
+	// example:
+	//
+	// 200
+	HttpCode *int32 `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// CBC799F0-****-1D30-8A4F-882ED4DD5E02
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s ValidateSqlStatementResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ValidateSqlStatementResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ValidateSqlStatementResponseBody) SetData(v *SqlStatementValidationResult) *ValidateSqlStatementResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ValidateSqlStatementResponseBody) SetErrorCode(v string) *ValidateSqlStatementResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *ValidateSqlStatementResponseBody) SetErrorMessage(v string) *ValidateSqlStatementResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *ValidateSqlStatementResponseBody) SetHttpCode(v int32) *ValidateSqlStatementResponseBody {
+	s.HttpCode = &v
+	return s
+}
+
+func (s *ValidateSqlStatementResponseBody) SetRequestId(v string) *ValidateSqlStatementResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ValidateSqlStatementResponseBody) SetSuccess(v bool) *ValidateSqlStatementResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ValidateSqlStatementResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ValidateSqlStatementResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ValidateSqlStatementResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ValidateSqlStatementResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ValidateSqlStatementResponse) SetHeaders(v map[string]*string) *ValidateSqlStatementResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ValidateSqlStatementResponse) SetStatusCode(v int32) *ValidateSqlStatementResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ValidateSqlStatementResponse) SetBody(v *ValidateSqlStatementResponseBody) *ValidateSqlStatementResponse {
+	s.Body = v
+	return s
+}
+
 type Client struct {
 	openapi.Client
 }
@@ -5972,7 +6906,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
-// create a deployment
+// Creates a deployment.
 //
 // @param request - CreateDeploymentRequest
 //
@@ -6021,7 +6955,7 @@ func (client *Client) CreateDeploymentWithOptions(namespace *string, request *Cr
 
 // Summary:
 //
-// create a deployment
+// Creates a deployment.
 //
 // @param request - CreateDeploymentRequest
 //
@@ -6040,7 +6974,7 @@ func (client *Client) CreateDeployment(namespace *string, request *CreateDeploym
 
 // Summary:
 //
-// 调用CreateMember创建成员。
+// Adds a user to a namespace as a member and grants permissions to the user.
 //
 // @param request - CreateMemberRequest
 //
@@ -6089,7 +7023,7 @@ func (client *Client) CreateMemberWithOptions(namespace *string, request *Create
 
 // Summary:
 //
-// 调用CreateMember创建成员。
+// Adds a user to a namespace as a member and grants permissions to the user.
 //
 // @param request - CreateMemberRequest
 //
@@ -6108,7 +7042,7 @@ func (client *Client) CreateMember(namespace *string, request *CreateMemberReque
 
 // Summary:
 //
-// 调用CreateSavepoint触发一次savepoint。
+// Creates a savepoint.
 //
 // @param request - CreateSavepointRequest
 //
@@ -6170,7 +7104,7 @@ func (client *Client) CreateSavepointWithOptions(namespace *string, request *Cre
 
 // Summary:
 //
-// 调用CreateSavepoint触发一次savepoint。
+// Creates a savepoint.
 //
 // @param request - CreateSavepointRequest
 //
@@ -6189,7 +7123,7 @@ func (client *Client) CreateSavepoint(namespace *string, request *CreateSavepoin
 
 // Summary:
 //
-// 调用CreateVariable创建变量。
+// Creates a variable.
 //
 // @param request - CreateVariableRequest
 //
@@ -6238,7 +7172,7 @@ func (client *Client) CreateVariableWithOptions(namespace *string, request *Crea
 
 // Summary:
 //
-// 调用CreateVariable创建变量。
+// Creates a variable.
 //
 // @param request - CreateVariableRequest
 //
@@ -6257,7 +7191,7 @@ func (client *Client) CreateVariable(namespace *string, request *CreateVariableR
 
 // Summary:
 //
-// delete deployment
+// Deletes a deployment based on the deployment ID.
 //
 // @param headers - DeleteDeploymentHeaders
 //
@@ -6299,7 +7233,7 @@ func (client *Client) DeleteDeploymentWithOptions(namespace *string, deploymentI
 
 // Summary:
 //
-// delete deployment
+// Deletes a deployment based on the deployment ID.
 //
 // @return DeleteDeploymentResponse
 func (client *Client) DeleteDeployment(namespace *string, deploymentId *string) (_result *DeleteDeploymentResponse, _err error) {
@@ -6316,7 +7250,7 @@ func (client *Client) DeleteDeployment(namespace *string, deploymentId *string) 
 
 // Summary:
 //
-// delete job
+// Deletes the information about a job that is not in the running state in a deployment.
 //
 // @param headers - DeleteJobHeaders
 //
@@ -6358,7 +7292,7 @@ func (client *Client) DeleteJobWithOptions(namespace *string, jobId *string, hea
 
 // Summary:
 //
-// delete job
+// Deletes the information about a job that is not in the running state in a deployment.
 //
 // @return DeleteJobResponse
 func (client *Client) DeleteJob(namespace *string, jobId *string) (_result *DeleteJobResponse, _err error) {
@@ -6375,7 +7309,7 @@ func (client *Client) DeleteJob(namespace *string, jobId *string) (_result *Dele
 
 // Summary:
 //
-// 调用DeleteMember删除成员。
+// Revokes the permissions from a member.
 //
 // @param headers - DeleteMemberHeaders
 //
@@ -6417,7 +7351,7 @@ func (client *Client) DeleteMemberWithOptions(namespace *string, member *string,
 
 // Summary:
 //
-// 调用DeleteMember删除成员。
+// Revokes the permissions from a member.
 //
 // @return DeleteMemberResponse
 func (client *Client) DeleteMember(namespace *string, member *string) (_result *DeleteMemberResponse, _err error) {
@@ -6434,7 +7368,7 @@ func (client *Client) DeleteMember(namespace *string, member *string) (_result *
 
 // Summary:
 //
-// 调用DeleteSavepoint删除savepoint。
+// Deletes a savepoint.
 //
 // @param headers - DeleteSavepointHeaders
 //
@@ -6476,7 +7410,7 @@ func (client *Client) DeleteSavepointWithOptions(namespace *string, savepointId 
 
 // Summary:
 //
-// 调用DeleteSavepoint删除savepoint。
+// Deletes a savepoint.
 //
 // @return DeleteSavepointResponse
 func (client *Client) DeleteSavepoint(namespace *string, savepointId *string) (_result *DeleteSavepointResponse, _err error) {
@@ -6493,7 +7427,7 @@ func (client *Client) DeleteSavepoint(namespace *string, savepointId *string) (_
 
 // Summary:
 //
-// deleta variable
+// Deletes a variable.
 //
 // @param headers - DeleteVariableHeaders
 //
@@ -6535,7 +7469,7 @@ func (client *Client) DeleteVariableWithOptions(namespace *string, name *string,
 
 // Summary:
 //
-// deleta variable
+// Deletes a variable.
 //
 // @return DeleteVariableResponse
 func (client *Client) DeleteVariable(namespace *string, name *string) (_result *DeleteVariableResponse, _err error) {
@@ -6552,7 +7486,7 @@ func (client *Client) DeleteVariable(namespace *string, name *string) (_result *
 
 // Summary:
 //
-// 调用FlinkApiProxy代理Flink请求。
+// Provides a Flink request proxy.
 //
 // @param request - FlinkApiProxyRequest
 //
@@ -6618,7 +7552,7 @@ func (client *Client) FlinkApiProxyWithOptions(request *FlinkApiProxyRequest, he
 
 // Summary:
 //
-// 调用FlinkApiProxy代理Flink请求。
+// Provides a Flink request proxy.
 //
 // @param request - FlinkApiProxyRequest
 //
@@ -6637,7 +7571,7 @@ func (client *Client) FlinkApiProxy(request *FlinkApiProxyRequest) (_result *Fli
 
 // Summary:
 //
-// generate resource plan with flink conf async.
+// Submits a ticket that applies for asynchronous generation of the fine-grained resources. This operation returns the ID of the ticket for you to query the asynchronous generation result.
 //
 // @param request - GenerateResourcePlanWithFlinkConfAsyncRequest
 //
@@ -6686,7 +7620,7 @@ func (client *Client) GenerateResourcePlanWithFlinkConfAsyncWithOptions(namespac
 
 // Summary:
 //
-// generate resource plan with flink conf async.
+// Submits a ticket that applies for asynchronous generation of the fine-grained resources. This operation returns the ID of the ticket for you to query the asynchronous generation result.
 //
 // @param request - GenerateResourcePlanWithFlinkConfAsyncRequest
 //
@@ -6705,7 +7639,7 @@ func (client *Client) GenerateResourcePlanWithFlinkConfAsync(namespace *string, 
 
 // Summary:
 //
-// get a deployment
+// Obtains the details of a deployment.
 //
 // @param headers - GetDeploymentHeaders
 //
@@ -6747,7 +7681,7 @@ func (client *Client) GetDeploymentWithOptions(namespace *string, deploymentId *
 
 // Summary:
 //
-// get a deployment
+// Obtains the details of a deployment.
 //
 // @return GetDeploymentResponse
 func (client *Client) GetDeployment(namespace *string, deploymentId *string) (_result *GetDeploymentResponse, _err error) {
@@ -6764,7 +7698,7 @@ func (client *Client) GetDeployment(namespace *string, deploymentId *string) (_r
 
 // Summary:
 //
-// 获取生成ResourcePlan异步操作的结果。
+// Obtains the asynchronous generation result of fine-grained resources based on the ID of the ticket that applies for an asynchronous generation.
 //
 // @param headers - GetGenerateResourcePlanResultHeaders
 //
@@ -6806,7 +7740,7 @@ func (client *Client) GetGenerateResourcePlanResultWithOptions(namespace *string
 
 // Summary:
 //
-// 获取生成ResourcePlan异步操作的结果。
+// Obtains the asynchronous generation result of fine-grained resources based on the ID of the ticket that applies for an asynchronous generation.
 //
 // @return GetGenerateResourcePlanResultResponse
 func (client *Client) GetGenerateResourcePlanResult(namespace *string, ticketId *string) (_result *GetGenerateResourcePlanResultResponse, _err error) {
@@ -6823,7 +7757,7 @@ func (client *Client) GetGenerateResourcePlanResult(namespace *string, ticketId 
 
 // Summary:
 //
-// get job
+// Obtains the details of a job.
 //
 // @param headers - GetJobHeaders
 //
@@ -6865,7 +7799,7 @@ func (client *Client) GetJobWithOptions(namespace *string, jobId *string, header
 
 // Summary:
 //
-// get job
+// Obtains the details of a job.
 //
 // @return GetJobResponse
 func (client *Client) GetJob(namespace *string, jobId *string) (_result *GetJobResponse, _err error) {
@@ -6882,7 +7816,66 @@ func (client *Client) GetJob(namespace *string, jobId *string) (_result *GetJobR
 
 // Summary:
 //
-// 调用GetMember获取成员。
+// Obtains the latest startup logs of a job.
+//
+// @param headers - GetLatestJobStartLogHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetLatestJobStartLogResponse
+func (client *Client) GetLatestJobStartLogWithOptions(namespace *string, deploymentId *string, headers *GetLatestJobStartLogHeaders, runtime *util.RuntimeOptions) (_result *GetLatestJobStartLogResponse, _err error) {
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.Workspace)) {
+		realHeaders["workspace"] = util.ToJSONString(headers.Workspace)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetLatestJobStartLog"),
+		Version:     tea.String("2022-07-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v2/namespaces/" + tea.StringValue(openapiutil.GetEncodeParam(namespace)) + "/deployments/" + tea.StringValue(openapiutil.GetEncodeParam(deploymentId)) + "/latest_jobmanager_start_log"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetLatestJobStartLogResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Obtains the latest startup logs of a job.
+//
+// @return GetLatestJobStartLogResponse
+func (client *Client) GetLatestJobStartLog(namespace *string, deploymentId *string) (_result *GetLatestJobStartLogResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &GetLatestJobStartLogHeaders{}
+	_result = &GetLatestJobStartLogResponse{}
+	_body, _err := client.GetLatestJobStartLogWithOptions(namespace, deploymentId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the permissions of a member.
 //
 // @param headers - GetMemberHeaders
 //
@@ -6924,7 +7917,7 @@ func (client *Client) GetMemberWithOptions(namespace *string, member *string, he
 
 // Summary:
 //
-// 调用GetMember获取成员。
+// Queries the permissions of a member.
 //
 // @return GetMemberResponse
 func (client *Client) GetMember(namespace *string, member *string) (_result *GetMemberResponse, _err error) {
@@ -6941,7 +7934,7 @@ func (client *Client) GetMember(namespace *string, member *string) (_result *Get
 
 // Summary:
 //
-// 调用GetSavepoint获取savepoint信息。
+// Queries details of a savepoint and checkpoint.
 //
 // @param headers - GetSavepointHeaders
 //
@@ -6983,7 +7976,7 @@ func (client *Client) GetSavepointWithOptions(namespace *string, savepointId *st
 
 // Summary:
 //
-// 调用GetSavepoint获取savepoint信息。
+// Queries details of a savepoint and checkpoint.
 //
 // @return GetSavepointResponse
 func (client *Client) GetSavepoint(namespace *string, savepointId *string) (_result *GetSavepointResponse, _err error) {
@@ -7000,7 +7993,7 @@ func (client *Client) GetSavepoint(namespace *string, savepointId *string) (_res
 
 // Summary:
 //
-// list deployment targets
+// Obtains a list of clusters in which deployments can be deployed. The cluster can be a session cluster or a per-job cluster.
 //
 // @param request - ListDeploymentTargetsRequest
 //
@@ -7058,7 +8051,7 @@ func (client *Client) ListDeploymentTargetsWithOptions(namespace *string, reques
 
 // Summary:
 //
-// list deployment targets
+// Obtains a list of clusters in which deployments can be deployed. The cluster can be a session cluster or a per-job cluster.
 //
 // @param request - ListDeploymentTargetsRequest
 //
@@ -7077,7 +8070,7 @@ func (client *Client) ListDeploymentTargets(namespace *string, request *ListDepl
 
 // Summary:
 //
-// list deployments
+// Obtains information about all deployments.
 //
 // @param request - ListDeploymentsRequest
 //
@@ -7163,7 +8156,7 @@ func (client *Client) ListDeploymentsWithOptions(namespace *string, request *Lis
 
 // Summary:
 //
-// list deployments
+// Obtains information about all deployments.
 //
 // @param request - ListDeploymentsRequest
 //
@@ -7262,7 +8255,7 @@ func (client *Client) ListEditableNamespace(request *ListEditableNamespaceReques
 
 // Summary:
 //
-// 获取系统支持的引擎版本信息。
+// Obtains a list of engine versions that are supported by Realtime Compute for Apache Flink.
 //
 // @param headers - ListEngineVersionMetadataHeaders
 //
@@ -7304,7 +8297,7 @@ func (client *Client) ListEngineVersionMetadataWithOptions(headers *ListEngineVe
 
 // Summary:
 //
-// 获取系统支持的引擎版本信息。
+// Obtains a list of engine versions that are supported by Realtime Compute for Apache Flink.
 //
 // @return ListEngineVersionMetadataResponse
 func (client *Client) ListEngineVersionMetadata() (_result *ListEngineVersionMetadataResponse, _err error) {
@@ -7321,7 +8314,7 @@ func (client *Client) ListEngineVersionMetadata() (_result *ListEngineVersionMet
 
 // Summary:
 //
-// list jobs
+// Queries the information about all jobs in a deployment.
 //
 // @param request - ListJobsRequest
 //
@@ -7387,7 +8380,7 @@ func (client *Client) ListJobsWithOptions(namespace *string, request *ListJobsRe
 
 // Summary:
 //
-// list jobs
+// Queries the information about all jobs in a deployment.
 //
 // @param request - ListJobsRequest
 //
@@ -7406,7 +8399,7 @@ func (client *Client) ListJobs(namespace *string, request *ListJobsRequest) (_re
 
 // Summary:
 //
-// 调用ListMembers接口获取成员列表。
+// Queries the mappings between the ID and permissions of a member in a specific namespace.
 //
 // @param request - ListMembersRequest
 //
@@ -7464,7 +8457,7 @@ func (client *Client) ListMembersWithOptions(namespace *string, request *ListMem
 
 // Summary:
 //
-// 调用ListMembers接口获取成员列表。
+// Queries the mappings between the ID and permissions of a member in a specific namespace.
 //
 // @param request - ListMembersRequest
 //
@@ -7483,7 +8476,7 @@ func (client *Client) ListMembers(namespace *string, request *ListMembersRequest
 
 // Summary:
 //
-// 调用ListSavepoints获取满足查询条件的savepoint列表。
+// Obtains a list of savepoints or checkpoints.
 //
 // @param request - ListSavepointsRequest
 //
@@ -7549,7 +8542,7 @@ func (client *Client) ListSavepointsWithOptions(namespace *string, request *List
 
 // Summary:
 //
-// 调用ListSavepoints获取满足查询条件的savepoint列表。
+// Obtains a list of savepoints or checkpoints.
 //
 // @param request - ListSavepointsRequest
 //
@@ -7568,7 +8561,7 @@ func (client *Client) ListSavepoints(namespace *string, request *ListSavepointsR
 
 // Summary:
 //
-// list variables
+// Obtains a list of variables.
 //
 // @param request - ListVariablesRequest
 //
@@ -7626,7 +8619,7 @@ func (client *Client) ListVariablesWithOptions(namespace *string, request *ListV
 
 // Summary:
 //
-// list variables
+// Obtains a list of variables.
 //
 // @param request - ListVariablesRequest
 //
@@ -7719,7 +8712,7 @@ func (client *Client) StartJob(namespace *string, request *StartJobRequest) (_re
 
 // Summary:
 //
-// 启动作业实例。
+// Starts a job.
 //
 // @param request - StartJobWithParamsRequest
 //
@@ -7768,7 +8761,7 @@ func (client *Client) StartJobWithParamsWithOptions(namespace *string, request *
 
 // Summary:
 //
-// 启动作业实例。
+// Starts a job.
 //
 // @param request - StartJobWithParamsRequest
 //
@@ -7787,7 +8780,7 @@ func (client *Client) StartJobWithParams(namespace *string, request *StartJobWit
 
 // Summary:
 //
-// 调用StopJob停止实例。
+// Stops a job.
 //
 // @param request - StopJobRequest
 //
@@ -7836,7 +8829,7 @@ func (client *Client) StopJobWithOptions(namespace *string, jobId *string, reque
 
 // Summary:
 //
-// 调用StopJob停止实例。
+// Stops a job.
 //
 // @param request - StopJobRequest
 //
@@ -7855,7 +8848,7 @@ func (client *Client) StopJob(namespace *string, jobId *string, request *StopJob
 
 // Summary:
 //
-// update a deployment using patch
+// Updates information about a deployment.
 //
 // @param request - UpdateDeploymentRequest
 //
@@ -7904,7 +8897,7 @@ func (client *Client) UpdateDeploymentWithOptions(namespace *string, deploymentI
 
 // Summary:
 //
-// update a deployment using patch
+// Updates information about a deployment.
 //
 // @param request - UpdateDeploymentRequest
 //
@@ -7923,7 +8916,7 @@ func (client *Client) UpdateDeployment(namespace *string, deploymentId *string, 
 
 // Summary:
 //
-// 调用UpdateMember更新成员。
+// Updates the permissions of one or more members in a specific namespace.
 //
 // @param request - UpdateMemberRequest
 //
@@ -7972,7 +8965,7 @@ func (client *Client) UpdateMemberWithOptions(namespace *string, request *Update
 
 // Summary:
 //
-// 调用UpdateMember更新成员。
+// Updates the permissions of one or more members in a specific namespace.
 //
 // @param request - UpdateMemberRequest
 //
@@ -7982,6 +8975,74 @@ func (client *Client) UpdateMember(namespace *string, request *UpdateMemberReque
 	headers := &UpdateMemberHeaders{}
 	_result = &UpdateMemberResponse{}
 	_body, _err := client.UpdateMemberWithOptions(namespace, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Verifies the code of an SQL deployment.
+//
+// @param request - ValidateSqlStatementRequest
+//
+// @param headers - ValidateSqlStatementHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ValidateSqlStatementResponse
+func (client *Client) ValidateSqlStatementWithOptions(namespace *string, request *ValidateSqlStatementRequest, headers *ValidateSqlStatementHeaders, runtime *util.RuntimeOptions) (_result *ValidateSqlStatementResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.Workspace)) {
+		realHeaders["workspace"] = util.ToJSONString(headers.Workspace)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(request.Body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ValidateSqlStatement"),
+		Version:     tea.String("2022-07-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v2/namespaces/" + tea.StringValue(openapiutil.GetEncodeParam(namespace)) + "/sql-statement/validate"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ValidateSqlStatementResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Verifies the code of an SQL deployment.
+//
+// @param request - ValidateSqlStatementRequest
+//
+// @return ValidateSqlStatementResponse
+func (client *Client) ValidateSqlStatement(namespace *string, request *ValidateSqlStatementRequest) (_result *ValidateSqlStatementResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &ValidateSqlStatementHeaders{}
+	_result = &ValidateSqlStatementResponse{}
+	_body, _err := client.ValidateSqlStatementWithOptions(namespace, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
