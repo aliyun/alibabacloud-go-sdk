@@ -2447,7 +2447,8 @@ type RetrieveRequest struct {
 	// example:
 	//
 	// false
-	SaveRetrieverHistory *bool `json:"SaveRetrieverHistory,omitempty" xml:"SaveRetrieverHistory,omitempty"`
+	SaveRetrieverHistory *bool                `json:"SaveRetrieverHistory,omitempty" xml:"SaveRetrieverHistory,omitempty"`
+	SearchFilters        []map[string]*string `json:"SearchFilters,omitempty" xml:"SearchFilters,omitempty" type:"Repeated"`
 	// example:
 	//
 	// 100
@@ -2509,6 +2510,11 @@ func (s *RetrieveRequest) SetRewrite(v []*RetrieveRequestRewrite) *RetrieveReque
 
 func (s *RetrieveRequest) SetSaveRetrieverHistory(v bool) *RetrieveRequest {
 	s.SaveRetrieverHistory = &v
+	return s
+}
+
+func (s *RetrieveRequest) SetSearchFilters(v []map[string]*string) *RetrieveRequest {
+	s.SearchFilters = v
 	return s
 }
 
@@ -2587,7 +2593,8 @@ type RetrieveShrinkRequest struct {
 	// example:
 	//
 	// false
-	SaveRetrieverHistory *bool `json:"SaveRetrieverHistory,omitempty" xml:"SaveRetrieverHistory,omitempty"`
+	SaveRetrieverHistory *bool   `json:"SaveRetrieverHistory,omitempty" xml:"SaveRetrieverHistory,omitempty"`
+	SearchFiltersShrink  *string `json:"SearchFilters,omitempty" xml:"SearchFilters,omitempty"`
 	// example:
 	//
 	// 100
@@ -2649,6 +2656,11 @@ func (s *RetrieveShrinkRequest) SetRewriteShrink(v string) *RetrieveShrinkReques
 
 func (s *RetrieveShrinkRequest) SetSaveRetrieverHistory(v bool) *RetrieveShrinkRequest {
 	s.SaveRetrieverHistory = &v
+	return s
+}
+
+func (s *RetrieveShrinkRequest) SetSearchFiltersShrink(v string) *RetrieveShrinkRequest {
+	s.SearchFiltersShrink = &v
 	return s
 }
 
@@ -4039,6 +4051,10 @@ func (client *Client) RetrieveWithOptions(WorkspaceId *string, tmpReq *RetrieveR
 		request.RewriteShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Rewrite, tea.String("Rewrite"), tea.String("json"))
 	}
 
+	if !tea.BoolValue(util.IsUnset(tmpReq.SearchFilters)) {
+		request.SearchFiltersShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SearchFilters, tea.String("SearchFilters"), tea.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.DenseSimilarityTopK)) {
 		query["DenseSimilarityTopK"] = request.DenseSimilarityTopK
@@ -4078,6 +4094,10 @@ func (client *Client) RetrieveWithOptions(WorkspaceId *string, tmpReq *RetrieveR
 
 	if !tea.BoolValue(util.IsUnset(request.SaveRetrieverHistory)) {
 		query["SaveRetrieverHistory"] = request.SaveRetrieverHistory
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SearchFiltersShrink)) {
+		query["SearchFilters"] = request.SearchFiltersShrink
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SparseSimilarityTopK)) {
