@@ -35,6 +35,75 @@ func (s *ExperimentReportValue) SetMetricResults(v map[string]map[string]interfa
 	return s
 }
 
+type ApplyEngineConfigRequest struct {
+	// example:
+	//
+	// pairec-cn-***test
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+}
+
+func (s ApplyEngineConfigRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ApplyEngineConfigRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ApplyEngineConfigRequest) SetInstanceId(v string) *ApplyEngineConfigRequest {
+	s.InstanceId = &v
+	return s
+}
+
+type ApplyEngineConfigResponseBody struct {
+	// example:
+	//
+	// F8F613A9-DF1C-551A-88E1-397A3981A785
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ApplyEngineConfigResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ApplyEngineConfigResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ApplyEngineConfigResponseBody) SetRequestId(v string) *ApplyEngineConfigResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ApplyEngineConfigResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ApplyEngineConfigResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ApplyEngineConfigResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ApplyEngineConfigResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ApplyEngineConfigResponse) SetHeaders(v map[string]*string) *ApplyEngineConfigResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ApplyEngineConfigResponse) SetStatusCode(v int32) *ApplyEngineConfigResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ApplyEngineConfigResponse) SetBody(v *ApplyEngineConfigResponseBody) *ApplyEngineConfigResponse {
+	s.Body = v
+	return s
+}
+
 type BackflowFeatureConsistencyCheckJobDataRequest struct {
 	// This parameter is required.
 	//
@@ -325,6 +394,102 @@ func (s *CheckInstanceResourcesResponse) SetStatusCode(v int32) *CheckInstanceRe
 }
 
 func (s *CheckInstanceResourcesResponse) SetBody(v *CheckInstanceResourcesResponseBody) *CheckInstanceResourcesResponse {
+	s.Body = v
+	return s
+}
+
+type CloneEngineConfigRequest struct {
+	// example:
+	//
+	// {}
+	ConfigValue *string `json:"ConfigValue,omitempty" xml:"ConfigValue,omitempty"`
+	// example:
+	//
+	// Pre
+	Environment *string `json:"Environment,omitempty" xml:"Environment,omitempty"`
+	// example:
+	//
+	// pairec-cn-********
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+}
+
+func (s CloneEngineConfigRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CloneEngineConfigRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CloneEngineConfigRequest) SetConfigValue(v string) *CloneEngineConfigRequest {
+	s.ConfigValue = &v
+	return s
+}
+
+func (s *CloneEngineConfigRequest) SetEnvironment(v string) *CloneEngineConfigRequest {
+	s.Environment = &v
+	return s
+}
+
+func (s *CloneEngineConfigRequest) SetInstanceId(v string) *CloneEngineConfigRequest {
+	s.InstanceId = &v
+	return s
+}
+
+type CloneEngineConfigResponseBody struct {
+	// example:
+	//
+	// 2
+	EngineConfigId *string `json:"EngineConfigId,omitempty" xml:"EngineConfigId,omitempty"`
+	// example:
+	//
+	// A04CB8C0-E74A-5E83-BC61-64D153574EC7
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CloneEngineConfigResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CloneEngineConfigResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CloneEngineConfigResponseBody) SetEngineConfigId(v string) *CloneEngineConfigResponseBody {
+	s.EngineConfigId = &v
+	return s
+}
+
+func (s *CloneEngineConfigResponseBody) SetRequestId(v string) *CloneEngineConfigResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CloneEngineConfigResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CloneEngineConfigResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CloneEngineConfigResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CloneEngineConfigResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CloneEngineConfigResponse) SetHeaders(v map[string]*string) *CloneEngineConfigResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CloneEngineConfigResponse) SetStatusCode(v int32) *CloneEngineConfigResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CloneEngineConfigResponse) SetBody(v *CloneEngineConfigResponseBody) *CloneEngineConfigResponse {
 	s.Body = v
 	return s
 }
@@ -1334,6 +1499,111 @@ func (s *CreateCrowdResponse) SetStatusCode(v int32) *CreateCrowdResponse {
 }
 
 func (s *CreateCrowdResponse) SetBody(v *CreateCrowdResponseBody) *CreateCrowdResponse {
+	s.Body = v
+	return s
+}
+
+type CreateEngineConfigRequest struct {
+	// example:
+	//
+	// {}
+	ConfigValue *string `json:"ConfigValue,omitempty" xml:"ConfigValue,omitempty"`
+	// example:
+	//
+	// Pre
+	Environment *string `json:"Environment,omitempty" xml:"Environment,omitempty"`
+	// example:
+	//
+	// pairec-cn-***test
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// engine_config_v1
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s CreateEngineConfigRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateEngineConfigRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateEngineConfigRequest) SetConfigValue(v string) *CreateEngineConfigRequest {
+	s.ConfigValue = &v
+	return s
+}
+
+func (s *CreateEngineConfigRequest) SetEnvironment(v string) *CreateEngineConfigRequest {
+	s.Environment = &v
+	return s
+}
+
+func (s *CreateEngineConfigRequest) SetInstanceId(v string) *CreateEngineConfigRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *CreateEngineConfigRequest) SetName(v string) *CreateEngineConfigRequest {
+	s.Name = &v
+	return s
+}
+
+type CreateEngineConfigResponseBody struct {
+	// example:
+	//
+	// 1
+	EngineConfigId *string `json:"EngineConfigId,omitempty" xml:"EngineConfigId,omitempty"`
+	// example:
+	//
+	// E15A1443-7917-5BE0-AE70-25538ECF398D
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateEngineConfigResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateEngineConfigResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateEngineConfigResponseBody) SetEngineConfigId(v string) *CreateEngineConfigResponseBody {
+	s.EngineConfigId = &v
+	return s
+}
+
+func (s *CreateEngineConfigResponseBody) SetRequestId(v string) *CreateEngineConfigResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateEngineConfigResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateEngineConfigResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateEngineConfigResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateEngineConfigResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateEngineConfigResponse) SetHeaders(v map[string]*string) *CreateEngineConfigResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateEngineConfigResponse) SetStatusCode(v int32) *CreateEngineConfigResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateEngineConfigResponse) SetBody(v *CreateEngineConfigResponseBody) *CreateEngineConfigResponse {
 	s.Body = v
 	return s
 }
@@ -4197,6 +4467,75 @@ func (s *DeleteCrowdResponse) SetBody(v *DeleteCrowdResponseBody) *DeleteCrowdRe
 	return s
 }
 
+type DeleteEngineConfigRequest struct {
+	// example:
+	//
+	// pairec-cn-***test1
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+}
+
+func (s DeleteEngineConfigRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteEngineConfigRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteEngineConfigRequest) SetInstanceId(v string) *DeleteEngineConfigRequest {
+	s.InstanceId = &v
+	return s
+}
+
+type DeleteEngineConfigResponseBody struct {
+	// example:
+	//
+	// F7AC05FF-EDE7-5C2B-B9AE-33D6DF4178BA
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteEngineConfigResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteEngineConfigResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteEngineConfigResponseBody) SetRequestId(v string) *DeleteEngineConfigResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteEngineConfigResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteEngineConfigResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteEngineConfigResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteEngineConfigResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteEngineConfigResponse) SetHeaders(v map[string]*string) *DeleteEngineConfigResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteEngineConfigResponse) SetStatusCode(v int32) *DeleteEngineConfigResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteEngineConfigResponse) SetBody(v *DeleteEngineConfigResponseBody) *DeleteEngineConfigResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteExperimentRequest struct {
 	// This parameter is required.
 	//
@@ -5671,6 +6010,138 @@ func (s *GetCalculationJobResponse) SetStatusCode(v int32) *GetCalculationJobRes
 }
 
 func (s *GetCalculationJobResponse) SetBody(v *GetCalculationJobResponseBody) *GetCalculationJobResponse {
+	s.Body = v
+	return s
+}
+
+type GetEngineConfigRequest struct {
+	// example:
+	//
+	// pairec-cn-***test
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+}
+
+func (s GetEngineConfigRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetEngineConfigRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetEngineConfigRequest) SetInstanceId(v string) *GetEngineConfigRequest {
+	s.InstanceId = &v
+	return s
+}
+
+type GetEngineConfigResponseBody struct {
+	// example:
+	//
+	// {}
+	ConfigValue *string `json:"ConfigValue,omitempty" xml:"ConfigValue,omitempty"`
+	// example:
+	//
+	// Pre
+	Environment *string `json:"Environment,omitempty" xml:"Environment,omitempty"`
+	// example:
+	//
+	// 2024-01-03T02:28:00.000Z
+	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// example:
+	//
+	// 2024-08-27T12:00:00Z
+	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
+	// example:
+	//
+	// 2024-01-03 02:28:00
+	GmtReleasedTime *string `json:"GmtReleasedTime,omitempty" xml:"GmtReleasedTime,omitempty"`
+	// example:
+	//
+	// engine_config_v1
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 59CE7EC6-F268-5D71-9215-32922CC50D72
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// Released
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s GetEngineConfigResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetEngineConfigResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetEngineConfigResponseBody) SetConfigValue(v string) *GetEngineConfigResponseBody {
+	s.ConfigValue = &v
+	return s
+}
+
+func (s *GetEngineConfigResponseBody) SetEnvironment(v string) *GetEngineConfigResponseBody {
+	s.Environment = &v
+	return s
+}
+
+func (s *GetEngineConfigResponseBody) SetGmtCreateTime(v string) *GetEngineConfigResponseBody {
+	s.GmtCreateTime = &v
+	return s
+}
+
+func (s *GetEngineConfigResponseBody) SetGmtModifiedTime(v string) *GetEngineConfigResponseBody {
+	s.GmtModifiedTime = &v
+	return s
+}
+
+func (s *GetEngineConfigResponseBody) SetGmtReleasedTime(v string) *GetEngineConfigResponseBody {
+	s.GmtReleasedTime = &v
+	return s
+}
+
+func (s *GetEngineConfigResponseBody) SetName(v string) *GetEngineConfigResponseBody {
+	s.Name = &v
+	return s
+}
+
+func (s *GetEngineConfigResponseBody) SetRequestId(v string) *GetEngineConfigResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetEngineConfigResponseBody) SetStatus(v string) *GetEngineConfigResponseBody {
+	s.Status = &v
+	return s
+}
+
+type GetEngineConfigResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetEngineConfigResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetEngineConfigResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetEngineConfigResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetEngineConfigResponse) SetHeaders(v map[string]*string) *GetEngineConfigResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetEngineConfigResponse) SetStatusCode(v int32) *GetEngineConfigResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetEngineConfigResponse) SetBody(v *GetEngineConfigResponseBody) *GetEngineConfigResponse {
 	s.Body = v
 	return s
 }
@@ -9786,6 +10257,238 @@ func (s *ListCrowdsResponse) SetStatusCode(v int32) *ListCrowdsResponse {
 }
 
 func (s *ListCrowdsResponse) SetBody(v *ListCrowdsResponseBody) *ListCrowdsResponse {
+	s.Body = v
+	return s
+}
+
+type ListEngineConfigsRequest struct {
+	// example:
+	//
+	// Pre
+	Environment *string `json:"Environment,omitempty" xml:"Environment,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pairec-cn-***test
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// engine_config_v1
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// Released
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// latest
+	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
+}
+
+func (s ListEngineConfigsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEngineConfigsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListEngineConfigsRequest) SetEnvironment(v string) *ListEngineConfigsRequest {
+	s.Environment = &v
+	return s
+}
+
+func (s *ListEngineConfigsRequest) SetInstanceId(v string) *ListEngineConfigsRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ListEngineConfigsRequest) SetName(v string) *ListEngineConfigsRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *ListEngineConfigsRequest) SetPageNumber(v int32) *ListEngineConfigsRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListEngineConfigsRequest) SetPageSize(v int32) *ListEngineConfigsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListEngineConfigsRequest) SetStatus(v string) *ListEngineConfigsRequest {
+	s.Status = &v
+	return s
+}
+
+func (s *ListEngineConfigsRequest) SetVersion(v string) *ListEngineConfigsRequest {
+	s.Version = &v
+	return s
+}
+
+type ListEngineConfigsResponseBody struct {
+	EngineConfigs []*ListEngineConfigsResponseBodyEngineConfigs `json:"EngineConfigs,omitempty" xml:"EngineConfigs,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 74D958EF-3598-56FA-8296-FF1575CE43DF
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 10
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListEngineConfigsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEngineConfigsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListEngineConfigsResponseBody) SetEngineConfigs(v []*ListEngineConfigsResponseBodyEngineConfigs) *ListEngineConfigsResponseBody {
+	s.EngineConfigs = v
+	return s
+}
+
+func (s *ListEngineConfigsResponseBody) SetRequestId(v string) *ListEngineConfigsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListEngineConfigsResponseBody) SetTotalCount(v int64) *ListEngineConfigsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListEngineConfigsResponseBodyEngineConfigs struct {
+	// example:
+	//
+	// {}
+	ConfigValue *string `json:"ConfigValue,omitempty" xml:"ConfigValue,omitempty"`
+	// example:
+	//
+	// 2
+	EngineConfigId *string `json:"EngineConfigId,omitempty" xml:"EngineConfigId,omitempty"`
+	// example:
+	//
+	// Pre
+	Environment *string `json:"Environment,omitempty" xml:"Environment,omitempty"`
+	// example:
+	//
+	// 2023-08-07T01:43:42Z
+	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// example:
+	//
+	// 2023-08-27T12:00:00Z
+	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
+	// example:
+	//
+	// 2023-08-29 12:00:00
+	GmtReleasedTime *string `json:"GmtReleasedTime,omitempty" xml:"GmtReleasedTime,omitempty"`
+	// example:
+	//
+	// engine_config_v1
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// Released
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// 20230509161300
+	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
+}
+
+func (s ListEngineConfigsResponseBodyEngineConfigs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEngineConfigsResponseBodyEngineConfigs) GoString() string {
+	return s.String()
+}
+
+func (s *ListEngineConfigsResponseBodyEngineConfigs) SetConfigValue(v string) *ListEngineConfigsResponseBodyEngineConfigs {
+	s.ConfigValue = &v
+	return s
+}
+
+func (s *ListEngineConfigsResponseBodyEngineConfigs) SetEngineConfigId(v string) *ListEngineConfigsResponseBodyEngineConfigs {
+	s.EngineConfigId = &v
+	return s
+}
+
+func (s *ListEngineConfigsResponseBodyEngineConfigs) SetEnvironment(v string) *ListEngineConfigsResponseBodyEngineConfigs {
+	s.Environment = &v
+	return s
+}
+
+func (s *ListEngineConfigsResponseBodyEngineConfigs) SetGmtCreateTime(v string) *ListEngineConfigsResponseBodyEngineConfigs {
+	s.GmtCreateTime = &v
+	return s
+}
+
+func (s *ListEngineConfigsResponseBodyEngineConfigs) SetGmtModifiedTime(v string) *ListEngineConfigsResponseBodyEngineConfigs {
+	s.GmtModifiedTime = &v
+	return s
+}
+
+func (s *ListEngineConfigsResponseBodyEngineConfigs) SetGmtReleasedTime(v string) *ListEngineConfigsResponseBodyEngineConfigs {
+	s.GmtReleasedTime = &v
+	return s
+}
+
+func (s *ListEngineConfigsResponseBodyEngineConfigs) SetName(v string) *ListEngineConfigsResponseBodyEngineConfigs {
+	s.Name = &v
+	return s
+}
+
+func (s *ListEngineConfigsResponseBodyEngineConfigs) SetStatus(v string) *ListEngineConfigsResponseBodyEngineConfigs {
+	s.Status = &v
+	return s
+}
+
+func (s *ListEngineConfigsResponseBodyEngineConfigs) SetVersion(v string) *ListEngineConfigsResponseBodyEngineConfigs {
+	s.Version = &v
+	return s
+}
+
+type ListEngineConfigsResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListEngineConfigsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListEngineConfigsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEngineConfigsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListEngineConfigsResponse) SetHeaders(v map[string]*string) *ListEngineConfigsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListEngineConfigsResponse) SetStatusCode(v int32) *ListEngineConfigsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListEngineConfigsResponse) SetBody(v *ListEngineConfigsResponseBody) *ListEngineConfigsResponse {
 	s.Body = v
 	return s
 }
@@ -16012,6 +16715,112 @@ func (s *UpdateCrowdResponse) SetBody(v *UpdateCrowdResponseBody) *UpdateCrowdRe
 	return s
 }
 
+type UpdateEngineConfigRequest struct {
+	// example:
+	//
+	// {
+	//
+	// 	"ListenConf": {
+	//
+	// 		"HttpAddr": "",
+	//
+	// 		"HttpPort": 8000
+	//
+	// 	}
+	//
+	// }
+	ConfigValue *string `json:"ConfigValue,omitempty" xml:"ConfigValue,omitempty"`
+	// example:
+	//
+	// Pre
+	Environment *string `json:"Environment,omitempty" xml:"Environment,omitempty"`
+	// example:
+	//
+	// pairec-cn-***test
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// engine_config_v1
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s UpdateEngineConfigRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateEngineConfigRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateEngineConfigRequest) SetConfigValue(v string) *UpdateEngineConfigRequest {
+	s.ConfigValue = &v
+	return s
+}
+
+func (s *UpdateEngineConfigRequest) SetEnvironment(v string) *UpdateEngineConfigRequest {
+	s.Environment = &v
+	return s
+}
+
+func (s *UpdateEngineConfigRequest) SetInstanceId(v string) *UpdateEngineConfigRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *UpdateEngineConfigRequest) SetName(v string) *UpdateEngineConfigRequest {
+	s.Name = &v
+	return s
+}
+
+type UpdateEngineConfigResponseBody struct {
+	// example:
+	//
+	// F8F613A9-DF1C-551A-88E1-397A3981A785
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateEngineConfigResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateEngineConfigResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateEngineConfigResponseBody) SetRequestId(v string) *UpdateEngineConfigResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateEngineConfigResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateEngineConfigResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateEngineConfigResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateEngineConfigResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateEngineConfigResponse) SetHeaders(v map[string]*string) *UpdateEngineConfigResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateEngineConfigResponse) SetStatusCode(v int32) *UpdateEngineConfigResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateEngineConfigResponse) SetBody(v *UpdateEngineConfigResponseBody) *UpdateEngineConfigResponse {
+	s.Body = v
+	return s
+}
+
 type UpdateExperimentRequest struct {
 	// example:
 	//
@@ -18359,6 +19168,70 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
+// 应用/发布指定的推荐引擎配置
+//
+// @param request - ApplyEngineConfigRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ApplyEngineConfigResponse
+func (client *Client) ApplyEngineConfigWithOptions(EngineConfigId *string, request *ApplyEngineConfigRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ApplyEngineConfigResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ApplyEngineConfig"),
+		Version:     tea.String("2022-12-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/engineconfigs/" + tea.StringValue(openapiutil.GetEncodeParam(EngineConfigId)) + "/action/apply"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ApplyEngineConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 应用/发布指定的推荐引擎配置
+//
+// @param request - ApplyEngineConfigRequest
+//
+// @return ApplyEngineConfigResponse
+func (client *Client) ApplyEngineConfig(EngineConfigId *string, request *ApplyEngineConfigRequest) (_result *ApplyEngineConfigResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ApplyEngineConfigResponse{}
+	_body, _err := client.ApplyEngineConfigWithOptions(EngineConfigId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 特征一致性检查数据回流。
 //
 // @param request - BackflowFeatureConsistencyCheckJobDataRequest
@@ -18518,6 +19391,78 @@ func (client *Client) CheckInstanceResources(InstanceId *string, request *CheckI
 	headers := make(map[string]*string)
 	_result = &CheckInstanceResourcesResponse{}
 	_body, _err := client.CheckInstanceResourcesWithOptions(InstanceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 克隆指定的推荐引擎配置
+//
+// @param request - CloneEngineConfigRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CloneEngineConfigResponse
+func (client *Client) CloneEngineConfigWithOptions(EngineConfigId *string, request *CloneEngineConfigRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CloneEngineConfigResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ConfigValue)) {
+		body["ConfigValue"] = request.ConfigValue
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Environment)) {
+		body["Environment"] = request.Environment
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CloneEngineConfig"),
+		Version:     tea.String("2022-12-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/engineconfigs/" + tea.StringValue(openapiutil.GetEncodeParam(EngineConfigId)) + "/action/clone"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CloneEngineConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 克隆指定的推荐引擎配置
+//
+// @param request - CloneEngineConfigRequest
+//
+// @return CloneEngineConfigResponse
+func (client *Client) CloneEngineConfig(EngineConfigId *string, request *CloneEngineConfigRequest) (_result *CloneEngineConfigResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CloneEngineConfigResponse{}
+	_body, _err := client.CloneEngineConfigWithOptions(EngineConfigId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19210,6 +20155,82 @@ func (client *Client) CreateCrowd(request *CreateCrowdRequest) (_result *CreateC
 	headers := make(map[string]*string)
 	_result = &CreateCrowdResponse{}
 	_body, _err := client.CreateCrowdWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建引擎配置
+//
+// @param request - CreateEngineConfigRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateEngineConfigResponse
+func (client *Client) CreateEngineConfigWithOptions(request *CreateEngineConfigRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateEngineConfigResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ConfigValue)) {
+		body["ConfigValue"] = request.ConfigValue
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Environment)) {
+		body["Environment"] = request.Environment
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["Name"] = request.Name
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateEngineConfig"),
+		Version:     tea.String("2022-12-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/engineconfigs"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateEngineConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建引擎配置
+//
+// @param request - CreateEngineConfigRequest
+//
+// @return CreateEngineConfigResponse
+func (client *Client) CreateEngineConfig(request *CreateEngineConfigRequest) (_result *CreateEngineConfigResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateEngineConfigResponse{}
+	_body, _err := client.CreateEngineConfigWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20989,6 +22010,70 @@ func (client *Client) DeleteCrowd(CrowdId *string, request *DeleteCrowdRequest) 
 
 // Summary:
 //
+// 删除指定推荐引擎配置。
+//
+// @param request - DeleteEngineConfigRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteEngineConfigResponse
+func (client *Client) DeleteEngineConfigWithOptions(EngineConfigId *string, request *DeleteEngineConfigRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteEngineConfigResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteEngineConfig"),
+		Version:     tea.String("2022-12-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/engineconfigs/" + tea.StringValue(openapiutil.GetEncodeParam(EngineConfigId))),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteEngineConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除指定推荐引擎配置。
+//
+// @param request - DeleteEngineConfigRequest
+//
+// @return DeleteEngineConfigResponse
+func (client *Client) DeleteEngineConfig(EngineConfigId *string, request *DeleteEngineConfigRequest) (_result *DeleteEngineConfigResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteEngineConfigResponse{}
+	_body, _err := client.DeleteEngineConfigWithOptions(EngineConfigId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 删除实验。
 //
 // @param request - DeleteExperimentRequest
@@ -22118,6 +23203,70 @@ func (client *Client) GetCalculationJob(CalculationJobId *string, request *GetCa
 	headers := make(map[string]*string)
 	_result = &GetCalculationJobResponse{}
 	_body, _err := client.GetCalculationJobWithOptions(CalculationJobId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取引擎配置详细信息。
+//
+// @param request - GetEngineConfigRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetEngineConfigResponse
+func (client *Client) GetEngineConfigWithOptions(EngineConfigId *string, request *GetEngineConfigRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetEngineConfigResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetEngineConfig"),
+		Version:     tea.String("2022-12-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/engineconfigs/" + tea.StringValue(openapiutil.GetEncodeParam(EngineConfigId))),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetEngineConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取引擎配置详细信息。
+//
+// @param request - GetEngineConfigRequest
+//
+// @return GetEngineConfigResponse
+func (client *Client) GetEngineConfig(EngineConfigId *string, request *GetEngineConfigRequest) (_result *GetEngineConfigResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetEngineConfigResponse{}
+	_body, _err := client.GetEngineConfigWithOptions(EngineConfigId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -23508,6 +24657,94 @@ func (client *Client) ListCrowds(request *ListCrowdsRequest) (_result *ListCrowd
 	headers := make(map[string]*string)
 	_result = &ListCrowdsResponse{}
 	_body, _err := client.ListCrowdsWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取引擎配置列表。
+//
+// @param request - ListEngineConfigsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListEngineConfigsResponse
+func (client *Client) ListEngineConfigsWithOptions(request *ListEngineConfigsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListEngineConfigsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Environment)) {
+		query["Environment"] = request.Environment
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		query["Status"] = request.Status
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Version)) {
+		query["Version"] = request.Version
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListEngineConfigs"),
+		Version:     tea.String("2022-12-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/engineconfigs"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListEngineConfigsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取引擎配置列表。
+//
+// @param request - ListEngineConfigsRequest
+//
+// @return ListEngineConfigsResponse
+func (client *Client) ListEngineConfigs(request *ListEngineConfigsRequest) (_result *ListEngineConfigsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListEngineConfigsResponse{}
+	_body, _err := client.ListEngineConfigsWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -26350,6 +27587,82 @@ func (client *Client) UpdateCrowd(CrowdId *string, request *UpdateCrowdRequest) 
 	headers := make(map[string]*string)
 	_result = &UpdateCrowdResponse{}
 	_body, _err := client.UpdateCrowdWithOptions(CrowdId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新引擎配置。
+//
+// @param request - UpdateEngineConfigRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateEngineConfigResponse
+func (client *Client) UpdateEngineConfigWithOptions(EngineConfigId *string, request *UpdateEngineConfigRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateEngineConfigResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ConfigValue)) {
+		body["ConfigValue"] = request.ConfigValue
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Environment)) {
+		body["Environment"] = request.Environment
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["Name"] = request.Name
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateEngineConfig"),
+		Version:     tea.String("2022-12-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/engineconfigs/" + tea.StringValue(openapiutil.GetEncodeParam(EngineConfigId))),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateEngineConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新引擎配置。
+//
+// @param request - UpdateEngineConfigRequest
+//
+// @return UpdateEngineConfigResponse
+func (client *Client) UpdateEngineConfig(EngineConfigId *string, request *UpdateEngineConfigRequest) (_result *UpdateEngineConfigResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateEngineConfigResponse{}
+	_body, _err := client.UpdateEngineConfigWithOptions(EngineConfigId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
