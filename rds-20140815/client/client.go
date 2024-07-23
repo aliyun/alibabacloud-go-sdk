@@ -4507,7 +4507,8 @@ type CreateDBInstanceRequest struct {
 	// example:
 	//
 	// 2
-	Amount *int32 `json:"Amount,omitempty" xml:"Amount,omitempty"`
+	Amount          *int32 `json:"Amount,omitempty" xml:"Amount,omitempty"`
+	AutoCreateProxy *bool  `json:"AutoCreateProxy,omitempty" xml:"AutoCreateProxy,omitempty"`
 	// Specifies whether to enable the automatic payment feature. Valid values:
 	//
 	// 	- **true**: automatically completes the payment. You must make sure that your account balance is sufficient.
@@ -5163,6 +5164,11 @@ func (s *CreateDBInstanceRequest) SetAmount(v int32) *CreateDBInstanceRequest {
 	return s
 }
 
+func (s *CreateDBInstanceRequest) SetAutoCreateProxy(v bool) *CreateDBInstanceRequest {
+	s.AutoCreateProxy = &v
+	return s
+}
+
 func (s *CreateDBInstanceRequest) SetAutoPay(v bool) *CreateDBInstanceRequest {
 	s.AutoPay = &v
 	return s
@@ -5586,7 +5592,8 @@ type CreateDBInstanceShrinkRequest struct {
 	// example:
 	//
 	// 2
-	Amount *int32 `json:"Amount,omitempty" xml:"Amount,omitempty"`
+	Amount          *int32 `json:"Amount,omitempty" xml:"Amount,omitempty"`
+	AutoCreateProxy *bool  `json:"AutoCreateProxy,omitempty" xml:"AutoCreateProxy,omitempty"`
 	// Specifies whether to enable the automatic payment feature. Valid values:
 	//
 	// 	- **true**: automatically completes the payment. You must make sure that your account balance is sufficient.
@@ -6239,6 +6246,11 @@ func (s CreateDBInstanceShrinkRequest) GoString() string {
 
 func (s *CreateDBInstanceShrinkRequest) SetAmount(v int32) *CreateDBInstanceShrinkRequest {
 	s.Amount = &v
+	return s
+}
+
+func (s *CreateDBInstanceShrinkRequest) SetAutoCreateProxy(v bool) *CreateDBInstanceShrinkRequest {
+	s.AutoCreateProxy = &v
 	return s
 }
 
@@ -11712,6 +11724,7 @@ func (s *CreatePostgresExtensionsResponse) SetBody(v *CreatePostgresExtensionsRe
 }
 
 type CreateReadOnlyDBInstanceRequest struct {
+	AutoCreateProxy *bool `json:"AutoCreateProxy,omitempty" xml:"AutoCreateProxy,omitempty"`
 	// Specifies whether to enable the automatic payment feature. Valid values:
 	//
 	// 1.  **true**: enables the feature. Make sure that your account balance is sufficient.
@@ -12002,6 +12015,11 @@ func (s CreateReadOnlyDBInstanceRequest) String() string {
 
 func (s CreateReadOnlyDBInstanceRequest) GoString() string {
 	return s.String()
+}
+
+func (s *CreateReadOnlyDBInstanceRequest) SetAutoCreateProxy(v bool) *CreateReadOnlyDBInstanceRequest {
+	s.AutoCreateProxy = &v
+	return s
 }
 
 func (s *CreateReadOnlyDBInstanceRequest) SetAutoPay(v bool) *CreateReadOnlyDBInstanceRequest {
@@ -81334,6 +81352,10 @@ func (client *Client) CreateDBInstanceWithOptions(tmpReq *CreateDBInstanceReques
 		query["Amount"] = request.Amount
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.AutoCreateProxy)) {
+		query["AutoCreateProxy"] = request.AutoCreateProxy
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.AutoPay)) {
 		query["AutoPay"] = request.AutoPay
 	}
@@ -83902,6 +83924,10 @@ func (client *Client) CreateReadOnlyDBInstanceWithOptions(request *CreateReadOnl
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AutoCreateProxy)) {
+		query["AutoCreateProxy"] = request.AutoCreateProxy
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.AutoPay)) {
 		query["AutoPay"] = request.AutoPay
 	}
