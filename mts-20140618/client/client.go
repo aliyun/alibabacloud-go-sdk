@@ -35310,7 +35310,7 @@ type SubmitCopyrightJobRequest struct {
 	// example:
 	//
 	// 2
-	Level *string `json:"Level,omitempty" xml:"Level,omitempty"`
+	Level *int64 `json:"Level,omitempty" xml:"Level,omitempty"`
 	// This parameter is required.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// This parameter is required.
@@ -35364,7 +35364,7 @@ func (s *SubmitCopyrightJobRequest) SetInput(v string) *SubmitCopyrightJobReques
 	return s
 }
 
-func (s *SubmitCopyrightJobRequest) SetLevel(v string) *SubmitCopyrightJobRequest {
+func (s *SubmitCopyrightJobRequest) SetLevel(v int64) *SubmitCopyrightJobRequest {
 	s.Level = &v
 	return s
 }
@@ -42445,7 +42445,7 @@ type SubmitTraceAbJobRequest struct {
 	// example:
 	//
 	// 2
-	Level *string `json:"Level,omitempty" xml:"Level,omitempty"`
+	Level *int64 `json:"Level,omitempty" xml:"Level,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -42493,7 +42493,7 @@ func (s *SubmitTraceAbJobRequest) SetInput(v string) *SubmitTraceAbJobRequest {
 	return s
 }
 
-func (s *SubmitTraceAbJobRequest) SetLevel(v string) *SubmitTraceAbJobRequest {
+func (s *SubmitTraceAbJobRequest) SetLevel(v int64) *SubmitTraceAbJobRequest {
 	s.Level = &v
 	return s
 }
