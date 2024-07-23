@@ -4396,7 +4396,7 @@ type DescribeCacheAnalysisJobResponseBody struct {
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The details of the task.
+	// The details of the cache analysis task.
 	Data *DescribeCacheAnalysisJobResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The message that is returned for the request.
 	//
@@ -4461,7 +4461,8 @@ type DescribeCacheAnalysisJobResponseBodyData struct {
 	// The details of the large keys. The returned large keys are sorted in descending order based on the number of bytes occupied by the keys.
 	BigKeys *DescribeCacheAnalysisJobResponseBodyDataBigKeys `json:"BigKeys,omitempty" xml:"BigKeys,omitempty" type:"Struct"`
 	// The details of the large keys. The returned large keys are sorted in descending order based on the number of keys.
-	BigKeysOfNum         *DescribeCacheAnalysisJobResponseBodyDataBigKeysOfNum         `json:"BigKeysOfNum,omitempty" xml:"BigKeysOfNum,omitempty" type:"Struct"`
+	BigKeysOfNum *DescribeCacheAnalysisJobResponseBodyDataBigKeysOfNum `json:"BigKeysOfNum,omitempty" xml:"BigKeysOfNum,omitempty" type:"Struct"`
+	// The statistics of the keys that have expired.
 	ExpiryKeysLevelCount *DescribeCacheAnalysisJobResponseBodyDataExpiryKeysLevelCount `json:"ExpiryKeysLevelCount,omitempty" xml:"ExpiryKeysLevelCount,omitempty" type:"Struct"`
 	// The instance ID.
 	//
@@ -4604,7 +4605,7 @@ type DescribeCacheAnalysisJobResponseBodyDataBigKeysKeyInfo struct {
 	//
 	// 127
 	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The name of the database.
+	// The database name.
 	//
 	// example:
 	//
@@ -4616,13 +4617,13 @@ type DescribeCacheAnalysisJobResponseBodyDataBigKeysKeyInfo struct {
 	//
 	// hashtable
 	Encoding *string `json:"Encoding,omitempty" xml:"Encoding,omitempty"`
-	// The expiration period of the key. Unit: milliseconds. A value of 0 indicates that the key does not expire.
+	// The time when the key expires. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC. A value of 0 indicates that the key never expires.
 	//
 	// example:
 	//
 	// 1596256542547
 	ExpirationTimeMillis *int64 `json:"ExpirationTimeMillis,omitempty" xml:"ExpirationTimeMillis,omitempty"`
-	// The name of the key.
+	// The key name.
 	//
 	// example:
 	//
@@ -4720,7 +4721,7 @@ type DescribeCacheAnalysisJobResponseBodyDataBigKeysOfNumKeyInfo struct {
 	//
 	// 127
 	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The name of the database.
+	// The database name.
 	//
 	// example:
 	//
@@ -4732,13 +4733,13 @@ type DescribeCacheAnalysisJobResponseBodyDataBigKeysOfNumKeyInfo struct {
 	//
 	// hashtable
 	Encoding *string `json:"Encoding,omitempty" xml:"Encoding,omitempty"`
-	// The expiration period of the key. Unit: milliseconds. A value of 0 indicates that the key does not expire.
+	// The time when the key expires. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC. A value of 0 indicates that the key never expires.
 	//
 	// example:
 	//
 	// 1596256542547
 	ExpirationTimeMillis *int64 `json:"ExpirationTimeMillis,omitempty" xml:"ExpirationTimeMillis,omitempty"`
-	// The name of the key.
+	// The key name.
 	//
 	// example:
 	//
@@ -4824,10 +4825,48 @@ func (s *DescribeCacheAnalysisJobResponseBodyDataExpiryKeysLevelCount) SetExpiry
 }
 
 type DescribeCacheAnalysisJobResponseBodyDataExpiryKeysLevelCountExpiryLevel struct {
+	// The time when the cache analysis task was complete. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	//
+	// example:
+	//
+	// 1717469347000
 	AnalysisTs *int64 `json:"AnalysisTs,omitempty" xml:"AnalysisTs,omitempty"`
-	Level      *int32 `json:"Level,omitempty" xml:"Level,omitempty"`
+	// The expiration level. Valid values:
+	//
+	// 	- **0**: The key never expires.
+	//
+	// 	- **1**: The key has expired.
+	//
+	// 	- **2**: The key has expired for 0 to 1 hour.
+	//
+	// 	- **3**: The key has expired for 1 to 3 hours.
+	//
+	// 	- **4**: The key has expired for 3 to 12 hours.
+	//
+	// 	- **5**: The key has expired for 12 to 24 hours.
+	//
+	// 	- **6**: The key has expired for one to two days.
+	//
+	// 	- **7**: The key has expired for three to seven days.
+	//
+	// 	- **8**: The key has expired for more than seven days.
+	//
+	// example:
+	//
+	// 0
+	Level *int32 `json:"Level,omitempty" xml:"Level,omitempty"`
+	// The number of bytes occupied by the keys that have expired.
+	//
+	// example:
+	//
+	// 8064
 	TotalBytes *int64 `json:"TotalBytes,omitempty" xml:"TotalBytes,omitempty"`
-	TotalKeys  *int64 `json:"TotalKeys,omitempty" xml:"TotalKeys,omitempty"`
+	// The total number of the keys that have expired.
+	//
+	// example:
+	//
+	// 62
+	TotalKeys *int64 `json:"TotalKeys,omitempty" xml:"TotalKeys,omitempty"`
 }
 
 func (s DescribeCacheAnalysisJobResponseBodyDataExpiryKeysLevelCountExpiryLevel) String() string {
@@ -4971,7 +5010,7 @@ type DescribeCacheAnalysisJobResponseBodyDataUnexBigKeysOfBytesKeyInfo struct {
 	//
 	// 127
 	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The name of the database.
+	// The database name.
 	//
 	// example:
 	//
@@ -4983,13 +5022,13 @@ type DescribeCacheAnalysisJobResponseBodyDataUnexBigKeysOfBytesKeyInfo struct {
 	//
 	// hashtable
 	Encoding *string `json:"Encoding,omitempty" xml:"Encoding,omitempty"`
-	// The expiration period of the key. Unit: milliseconds. A value of 0 indicates that the key does not expire.
+	// The time when the key expires. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC. A value of 0 indicates that the key never expires.
 	//
 	// example:
 	//
 	// 1596256542547
 	ExpirationTimeMillis *int64 `json:"ExpirationTimeMillis,omitempty" xml:"ExpirationTimeMillis,omitempty"`
-	// The name of the key.
+	// The key name.
 	//
 	// example:
 	//
@@ -5087,7 +5126,7 @@ type DescribeCacheAnalysisJobResponseBodyDataUnexBigKeysOfNumKeyInfo struct {
 	//
 	// 127
 	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The name of the database.
+	// The database name.
 	//
 	// example:
 	//
@@ -5099,13 +5138,13 @@ type DescribeCacheAnalysisJobResponseBodyDataUnexBigKeysOfNumKeyInfo struct {
 	//
 	// hashtable
 	Encoding *string `json:"Encoding,omitempty" xml:"Encoding,omitempty"`
-	// The expiration period of the key. Unit: milliseconds. A value of 0 indicates that the key does not expire.
+	// The time when the key expires. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC. A value of 0 indicates that the key never expires.
 	//
 	// example:
 	//
 	// 1596256542547
 	ExpirationTimeMillis *int64 `json:"ExpirationTimeMillis,omitempty" xml:"ExpirationTimeMillis,omitempty"`
-	// The name of the key.
+	// The key name.
 	//
 	// example:
 	//
@@ -8703,7 +8742,8 @@ type DescribeSqlLogConfigResponseBodyData struct {
 	// example:
 	//
 	// true
-	SqlLogEnable *bool `json:"SqlLogEnable,omitempty" xml:"SqlLogEnable,omitempty"`
+	SqlLogEnable *bool   `json:"SqlLogEnable,omitempty" xml:"SqlLogEnable,omitempty"`
+	SqlLogSource *string `json:"SqlLogSource,omitempty" xml:"SqlLogSource,omitempty"`
 	// The state of data migration. Valid values:
 	//
 	// 	- **FINISH**: The historical data is migrated.
@@ -8722,6 +8762,7 @@ type DescribeSqlLogConfigResponseBodyData struct {
 	//
 	// 1683712800000
 	SqlLogVisibleTime *int64 `json:"SqlLogVisibleTime,omitempty" xml:"SqlLogVisibleTime,omitempty"`
+	SupportMigration  *bool  `json:"SupportMigration,omitempty" xml:"SupportMigration,omitempty"`
 	// The latest version of DAS Enterprise Edition that supports the database instance. Valid values:
 	//
 	// 	- **SQL_LOG_V0**: DAS Enterprise Edition V0.
@@ -8833,6 +8874,11 @@ func (s *DescribeSqlLogConfigResponseBodyData) SetSqlLogEnable(v bool) *Describe
 	return s
 }
 
+func (s *DescribeSqlLogConfigResponseBodyData) SetSqlLogSource(v string) *DescribeSqlLogConfigResponseBodyData {
+	s.SqlLogSource = &v
+	return s
+}
+
 func (s *DescribeSqlLogConfigResponseBodyData) SetSqlLogState(v string) *DescribeSqlLogConfigResponseBodyData {
 	s.SqlLogState = &v
 	return s
@@ -8840,6 +8886,11 @@ func (s *DescribeSqlLogConfigResponseBodyData) SetSqlLogState(v string) *Describ
 
 func (s *DescribeSqlLogConfigResponseBodyData) SetSqlLogVisibleTime(v int64) *DescribeSqlLogConfigResponseBodyData {
 	s.SqlLogVisibleTime = &v
+	return s
+}
+
+func (s *DescribeSqlLogConfigResponseBodyData) SetSupportMigration(v bool) *DescribeSqlLogConfigResponseBodyData {
+	s.SupportMigration = &v
 	return s
 }
 
@@ -37814,9 +37865,11 @@ func (client *Client) DescribeAutoScalingHistory(request *DescribeAutoScalingHis
 //
 // 	- If you use an Alibaba Cloud SDK or a Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
 //
-// 	- If you use an SDK to call operations of DAS, you must set the region to cn-shanghai.
+// 	- If you use an SDK to call the API operations of DAS, you must set the region ID to cn-shanghai.
 //
 // 	- This operation is applicable only to ApsaraDB for Redis.
+//
+// >  You can call this operation to query the top 500 keys in a cache analysis task.
 //
 // @param request - DescribeCacheAnalysisJobRequest
 //
@@ -37870,9 +37923,11 @@ func (client *Client) DescribeCacheAnalysisJobWithOptions(request *DescribeCache
 //
 // 	- If you use an Alibaba Cloud SDK or a Database Autonomy Service (DAS) SDK to call this operation, we recommend that you use the latest version of the SDK.
 //
-// 	- If you use an SDK to call operations of DAS, you must set the region to cn-shanghai.
+// 	- If you use an SDK to call the API operations of DAS, you must set the region ID to cn-shanghai.
 //
 // 	- This operation is applicable only to ApsaraDB for Redis.
+//
+// >  You can call this operation to query the top 500 keys in a cache analysis task.
 //
 // @param request - DescribeCacheAnalysisJobRequest
 //
