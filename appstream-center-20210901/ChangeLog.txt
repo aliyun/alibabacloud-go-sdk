@@ -1,3 +1,6 @@
+2024-07-23 Version: v2.0.1
+- Generated golang 2021-09-01 for appstream-center.
+
 2024-07-22 Version: v2.0.0
 - Support API ModifyAppPolicy.
 - Update API BuySessionPackage: add param AutoPay.
