@@ -15202,8 +15202,13 @@ func (s *DescribeCloudDriveGroupsResponseBodyCloudDriveGroups) SetUsedSize(v str
 }
 
 type DescribeCloudDriveGroupsResponseBodyCloudDriveGroupsAdminUserInfos struct {
-	EndUserId *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
-	NickName  *string `json:"NickName,omitempty" xml:"NickName,omitempty"`
+	Email        *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	EndUserId    *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
+	JobNumber    *string `json:"JobNumber,omitempty" xml:"JobNumber,omitempty"`
+	NickName     *string `json:"NickName,omitempty" xml:"NickName,omitempty"`
+	Phone        *string `json:"Phone,omitempty" xml:"Phone,omitempty"`
+	RealNickName *string `json:"RealNickName,omitempty" xml:"RealNickName,omitempty"`
+	Remark       *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
 }
 
 func (s DescribeCloudDriveGroupsResponseBodyCloudDriveGroupsAdminUserInfos) String() string {
@@ -15214,13 +15219,38 @@ func (s DescribeCloudDriveGroupsResponseBodyCloudDriveGroupsAdminUserInfos) GoSt
 	return s.String()
 }
 
+func (s *DescribeCloudDriveGroupsResponseBodyCloudDriveGroupsAdminUserInfos) SetEmail(v string) *DescribeCloudDriveGroupsResponseBodyCloudDriveGroupsAdminUserInfos {
+	s.Email = &v
+	return s
+}
+
 func (s *DescribeCloudDriveGroupsResponseBodyCloudDriveGroupsAdminUserInfos) SetEndUserId(v string) *DescribeCloudDriveGroupsResponseBodyCloudDriveGroupsAdminUserInfos {
 	s.EndUserId = &v
 	return s
 }
 
+func (s *DescribeCloudDriveGroupsResponseBodyCloudDriveGroupsAdminUserInfos) SetJobNumber(v string) *DescribeCloudDriveGroupsResponseBodyCloudDriveGroupsAdminUserInfos {
+	s.JobNumber = &v
+	return s
+}
+
 func (s *DescribeCloudDriveGroupsResponseBodyCloudDriveGroupsAdminUserInfos) SetNickName(v string) *DescribeCloudDriveGroupsResponseBodyCloudDriveGroupsAdminUserInfos {
 	s.NickName = &v
+	return s
+}
+
+func (s *DescribeCloudDriveGroupsResponseBodyCloudDriveGroupsAdminUserInfos) SetPhone(v string) *DescribeCloudDriveGroupsResponseBodyCloudDriveGroupsAdminUserInfos {
+	s.Phone = &v
+	return s
+}
+
+func (s *DescribeCloudDriveGroupsResponseBodyCloudDriveGroupsAdminUserInfos) SetRealNickName(v string) *DescribeCloudDriveGroupsResponseBodyCloudDriveGroupsAdminUserInfos {
+	s.RealNickName = &v
+	return s
+}
+
+func (s *DescribeCloudDriveGroupsResponseBodyCloudDriveGroupsAdminUserInfos) SetRemark(v string) *DescribeCloudDriveGroupsResponseBodyCloudDriveGroupsAdminUserInfos {
+	s.Remark = &v
 	return s
 }
 
