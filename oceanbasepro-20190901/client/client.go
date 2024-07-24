@@ -514,18 +514,26 @@ func (s *BatchKillProcessListResponse) SetBody(v *BatchKillProcessListResponseBo
 }
 
 type BatchKillSessionListRequest struct {
+	// The ID of the OceanBase cluster.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ob317v4uif****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The list of sessions, which is concatenated with commas.
+	//
+	// >The session information is obtained from the result returned by the DescribeSessionList API.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 342,354,343
 	SessionList *string `json:"SessionList,omitempty" xml:"SessionList,omitempty"`
+	// The ID of the tenant.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -558,6 +566,8 @@ func (s *BatchKillSessionListRequest) SetTenantId(v string) *BatchKillSessionLis
 }
 
 type BatchKillSessionListResponseBody struct {
+	// The ID of the request.
+	//
 	// example:
 	//
 	// EE205C00-30E4-****-****-87E3A8A2AA0C
@@ -30920,6 +30930,569 @@ func (s *DescribeSQLSamplesResponse) SetBody(v *DescribeSQLSamplesResponseBody) 
 	return s
 }
 
+type DescribeSQLTuningAdvicesRequest struct {
+	// example:
+	//
+	// zh-CN
+	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// testdb
+	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2023-04-12T05:38:38Z
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// obsdf43****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// SqlId
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123456
+	SqlId *string `json:"SqlId,omitempty" xml:"SqlId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2023-04-12T04:38:38Z
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// tsdc2s2****
+	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+}
+
+func (s DescribeSQLTuningAdvicesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSQLTuningAdvicesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSQLTuningAdvicesRequest) SetAcceptLanguage(v string) *DescribeSQLTuningAdvicesRequest {
+	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *DescribeSQLTuningAdvicesRequest) SetDbName(v string) *DescribeSQLTuningAdvicesRequest {
+	s.DbName = &v
+	return s
+}
+
+func (s *DescribeSQLTuningAdvicesRequest) SetEndTime(v string) *DescribeSQLTuningAdvicesRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeSQLTuningAdvicesRequest) SetInstanceId(v string) *DescribeSQLTuningAdvicesRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeSQLTuningAdvicesRequest) SetSqlId(v string) *DescribeSQLTuningAdvicesRequest {
+	s.SqlId = &v
+	return s
+}
+
+func (s *DescribeSQLTuningAdvicesRequest) SetStartTime(v string) *DescribeSQLTuningAdvicesRequest {
+	s.StartTime = &v
+	return s
+}
+
+func (s *DescribeSQLTuningAdvicesRequest) SetTenantId(v string) *DescribeSQLTuningAdvicesRequest {
+	s.TenantId = &v
+	return s
+}
+
+type DescribeSQLTuningAdvicesResponseBody struct {
+	Data []*DescribeSQLTuningAdvicesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeSQLTuningAdvicesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSQLTuningAdvicesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSQLTuningAdvicesResponseBody) SetData(v []*DescribeSQLTuningAdvicesResponseBodyData) *DescribeSQLTuningAdvicesResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DescribeSQLTuningAdvicesResponseBody) SetRequestId(v string) *DescribeSQLTuningAdvicesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeSQLTuningAdvicesResponseBodyData struct {
+	// example:
+	//
+	// c1;c2;c3
+	ColumnNames *string                                            `json:"ColumnNames,omitempty" xml:"ColumnNames,omitempty"`
+	Columns     []*DescribeSQLTuningAdvicesResponseBodyDataColumns `json:"Columns,omitempty" xml:"Columns,omitempty" type:"Repeated"`
+	// example:
+	//
+	// test_db
+	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// example:
+	//
+	// Local/Global
+	LocalityType *string                                       `json:"LocalityType,omitempty" xml:"LocalityType,omitempty"`
+	Plan         *DescribeSQLTuningAdvicesResponseBodyDataPlan `json:"Plan,omitempty" xml:"Plan,omitempty" type:"Struct"`
+	// example:
+	//
+	// test_table
+	Table *string `json:"Table,omitempty" xml:"Table,omitempty"`
+	// example:
+	//
+	// PLAN_BINDING/INDEX_CREATION
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s DescribeSQLTuningAdvicesResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSQLTuningAdvicesResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSQLTuningAdvicesResponseBodyData) SetColumnNames(v string) *DescribeSQLTuningAdvicesResponseBodyData {
+	s.ColumnNames = &v
+	return s
+}
+
+func (s *DescribeSQLTuningAdvicesResponseBodyData) SetColumns(v []*DescribeSQLTuningAdvicesResponseBodyDataColumns) *DescribeSQLTuningAdvicesResponseBodyData {
+	s.Columns = v
+	return s
+}
+
+func (s *DescribeSQLTuningAdvicesResponseBodyData) SetDbName(v string) *DescribeSQLTuningAdvicesResponseBodyData {
+	s.DbName = &v
+	return s
+}
+
+func (s *DescribeSQLTuningAdvicesResponseBodyData) SetLocalityType(v string) *DescribeSQLTuningAdvicesResponseBodyData {
+	s.LocalityType = &v
+	return s
+}
+
+func (s *DescribeSQLTuningAdvicesResponseBodyData) SetPlan(v *DescribeSQLTuningAdvicesResponseBodyDataPlan) *DescribeSQLTuningAdvicesResponseBodyData {
+	s.Plan = v
+	return s
+}
+
+func (s *DescribeSQLTuningAdvicesResponseBodyData) SetTable(v string) *DescribeSQLTuningAdvicesResponseBodyData {
+	s.Table = &v
+	return s
+}
+
+func (s *DescribeSQLTuningAdvicesResponseBodyData) SetType(v string) *DescribeSQLTuningAdvicesResponseBodyData {
+	s.Type = &v
+	return s
+}
+
+type DescribeSQLTuningAdvicesResponseBodyDataColumns struct {
+	// example:
+	//
+	// xxxx
+	ColumnName *string `json:"ColumnName,omitempty" xml:"ColumnName,omitempty"`
+	// example:
+	//
+	// 100
+	MaxValue *string `json:"MaxValue,omitempty" xml:"MaxValue,omitempty"`
+	// example:
+	//
+	// 1
+	MinValue *string `json:"MinValue,omitempty" xml:"MinValue,omitempty"`
+	// NDV
+	//
+	// example:
+	//
+	// 100
+	Ndv *float32 `json:"Ndv,omitempty" xml:"Ndv,omitempty"`
+}
+
+func (s DescribeSQLTuningAdvicesResponseBodyDataColumns) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSQLTuningAdvicesResponseBodyDataColumns) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSQLTuningAdvicesResponseBodyDataColumns) SetColumnName(v string) *DescribeSQLTuningAdvicesResponseBodyDataColumns {
+	s.ColumnName = &v
+	return s
+}
+
+func (s *DescribeSQLTuningAdvicesResponseBodyDataColumns) SetMaxValue(v string) *DescribeSQLTuningAdvicesResponseBodyDataColumns {
+	s.MaxValue = &v
+	return s
+}
+
+func (s *DescribeSQLTuningAdvicesResponseBodyDataColumns) SetMinValue(v string) *DescribeSQLTuningAdvicesResponseBodyDataColumns {
+	s.MinValue = &v
+	return s
+}
+
+func (s *DescribeSQLTuningAdvicesResponseBodyDataColumns) SetNdv(v float32) *DescribeSQLTuningAdvicesResponseBodyDataColumns {
+	s.Ndv = &v
+	return s
+}
+
+type DescribeSQLTuningAdvicesResponseBodyDataPlan struct {
+	// example:
+	//
+	// 0
+	AvgApplicationWaitTime *float32 `json:"AvgApplicationWaitTime,omitempty" xml:"AvgApplicationWaitTime,omitempty"`
+	// example:
+	//
+	// 0
+	AvgBufferGets *float32 `json:"AvgBufferGets,omitempty" xml:"AvgBufferGets,omitempty"`
+	// example:
+	//
+	// 0
+	AvgConcurrencyWaitTime *float32 `json:"AvgConcurrencyWaitTime,omitempty" xml:"AvgConcurrencyWaitTime,omitempty"`
+	// example:
+	//
+	// 100.36
+	AvgCpuTime *float32 `json:"AvgCpuTime,omitempty" xml:"AvgCpuTime,omitempty"`
+	// example:
+	//
+	// 0
+	AvgDiskReads *float32 `json:"AvgDiskReads,omitempty" xml:"AvgDiskReads,omitempty"`
+	// example:
+	//
+	// 0
+	AvgDiskWrites *float32 `json:"AvgDiskWrites,omitempty" xml:"AvgDiskWrites,omitempty"`
+	// example:
+	//
+	// 713.62
+	AvgElapsedTime *float32 `json:"AvgElapsedTime,omitempty" xml:"AvgElapsedTime,omitempty"`
+	// example:
+	//
+	// 1
+	AvgRowProcessed *float32 `json:"AvgRowProcessed,omitempty" xml:"AvgRowProcessed,omitempty"`
+	// example:
+	//
+	// 0
+	AvgUserIoWaitTime *float32 `json:"AvgUserIoWaitTime,omitempty" xml:"AvgUserIoWaitTime,omitempty"`
+	// example:
+	//
+	// 1672358400000000
+	CollectTimeUs *int64 `json:"CollectTimeUs,omitempty" xml:"CollectTimeUs,omitempty"`
+	// example:
+	//
+	// 0
+	DelayedLargeQueryPercentage *float32 `json:"DelayedLargeQueryPercentage,omitempty" xml:"DelayedLargeQueryPercentage,omitempty"`
+	// example:
+	//
+	// 1.45
+	ExecPs *float32 `json:"ExecPs,omitempty" xml:"ExecPs,omitempty"`
+	// example:
+	//
+	// 2062
+	Executions *int64 `json:"Executions,omitempty" xml:"Executions,omitempty"`
+	// example:
+	//
+	// 2022-12-30T02:25:30.576Z
+	FirstLoadTime *string `json:"FirstLoadTime,omitempty" xml:"FirstLoadTime,omitempty"`
+	// example:
+	//
+	// 1672367130576163
+	FirstLoadTimeUs *int64 `json:"FirstLoadTimeUs,omitempty" xml:"FirstLoadTimeUs,omitempty"`
+	// example:
+	//
+	// false
+	HitDiagnosis *bool `json:"HitDiagnosis,omitempty" xml:"HitDiagnosis,omitempty"`
+	// example:
+	//
+	// 66.8
+	HitPercentage *float32 `json:"HitPercentage,omitempty" xml:"HitPercentage,omitempty"`
+	// example:
+	//
+	// 0
+	LargeQueryPercentage *float32 `json:"LargeQueryPercentage,omitempty" xml:"LargeQueryPercentage,omitempty"`
+	// example:
+	//
+	// 3
+	MergedVersion *int64 `json:"MergedVersion,omitempty" xml:"MergedVersion,omitempty"`
+	// example:
+	//
+	// 1108307720799259
+	ObDbId *int64 `json:"ObDbId,omitempty" xml:"ObDbId,omitempty"`
+	// server  ID。
+	//
+	// example:
+	//
+	// 1
+	ObServerId *int64 `json:"ObServerId,omitempty" xml:"ObServerId,omitempty"`
+	// example:
+	//
+	// xxxxx
+	OutlineData *string `json:"OutlineData,omitempty" xml:"OutlineData,omitempty"`
+	// Outline ID。
+	//
+	// example:
+	//
+	// 1
+	OutlineId *int64 `json:"OutlineId,omitempty" xml:"OutlineId,omitempty"`
+	// example:
+	//
+	// -86290582****886880
+	PlanHash *string `json:"PlanHash,omitempty" xml:"PlanHash,omitempty"`
+	// example:
+	//
+	// 818
+	PlanId *int64 `json:"PlanId,omitempty" xml:"PlanId,omitempty"`
+	// example:
+	//
+	// 49216
+	PlanSize *int64 `json:"PlanSize,omitempty" xml:"PlanSize,omitempty"`
+	// example:
+	//
+	// LOCAL
+	PlanType *string `json:"PlanType,omitempty" xml:"PlanType,omitempty"`
+	// example:
+	//
+	// 1672367130529680
+	SchemaVersion *int64 `json:"SchemaVersion,omitempty" xml:"SchemaVersion,omitempty"`
+	// example:
+	//
+	// i-bp1*****sw64dhb*****
+	ServerSn *string `json:"ServerSn,omitempty" xml:"ServerSn,omitempty"`
+	// example:
+	//
+	// false
+	TableScan *bool `json:"TableScan,omitempty" xml:"TableScan,omitempty"`
+	// example:
+	//
+	// 0
+	TimeoutPercentage *float32 `json:"TimeoutPercentage,omitempty" xml:"TimeoutPercentage,omitempty"`
+	// example:
+	//
+	// AAAAAAAAAAEAAAAAAAADMgAF8QJQwIUj
+	Uid *string `json:"Uid,omitempty" xml:"Uid,omitempty"`
+}
+
+func (s DescribeSQLTuningAdvicesResponseBodyDataPlan) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSQLTuningAdvicesResponseBodyDataPlan) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSQLTuningAdvicesResponseBodyDataPlan) SetAvgApplicationWaitTime(v float32) *DescribeSQLTuningAdvicesResponseBodyDataPlan {
+	s.AvgApplicationWaitTime = &v
+	return s
+}
+
+func (s *DescribeSQLTuningAdvicesResponseBodyDataPlan) SetAvgBufferGets(v float32) *DescribeSQLTuningAdvicesResponseBodyDataPlan {
+	s.AvgBufferGets = &v
+	return s
+}
+
+func (s *DescribeSQLTuningAdvicesResponseBodyDataPlan) SetAvgConcurrencyWaitTime(v float32) *DescribeSQLTuningAdvicesResponseBodyDataPlan {
+	s.AvgConcurrencyWaitTime = &v
+	return s
+}
+
+func (s *DescribeSQLTuningAdvicesResponseBodyDataPlan) SetAvgCpuTime(v float32) *DescribeSQLTuningAdvicesResponseBodyDataPlan {
+	s.AvgCpuTime = &v
+	return s
+}
+
+func (s *DescribeSQLTuningAdvicesResponseBodyDataPlan) SetAvgDiskReads(v float32) *DescribeSQLTuningAdvicesResponseBodyDataPlan {
+	s.AvgDiskReads = &v
+	return s
+}
+
+func (s *DescribeSQLTuningAdvicesResponseBodyDataPlan) SetAvgDiskWrites(v float32) *DescribeSQLTuningAdvicesResponseBodyDataPlan {
+	s.AvgDiskWrites = &v
+	return s
+}
+
+func (s *DescribeSQLTuningAdvicesResponseBodyDataPlan) SetAvgElapsedTime(v float32) *DescribeSQLTuningAdvicesResponseBodyDataPlan {
+	s.AvgElapsedTime = &v
+	return s
+}
+
+func (s *DescribeSQLTuningAdvicesResponseBodyDataPlan) SetAvgRowProcessed(v float32) *DescribeSQLTuningAdvicesResponseBodyDataPlan {
+	s.AvgRowProcessed = &v
+	return s
+}
+
+func (s *DescribeSQLTuningAdvicesResponseBodyDataPlan) SetAvgUserIoWaitTime(v float32) *DescribeSQLTuningAdvicesResponseBodyDataPlan {
+	s.AvgUserIoWaitTime = &v
+	return s
+}
+
+func (s *DescribeSQLTuningAdvicesResponseBodyDataPlan) SetCollectTimeUs(v int64) *DescribeSQLTuningAdvicesResponseBodyDataPlan {
+	s.CollectTimeUs = &v
+	return s
+}
+
+func (s *DescribeSQLTuningAdvicesResponseBodyDataPlan) SetDelayedLargeQueryPercentage(v float32) *DescribeSQLTuningAdvicesResponseBodyDataPlan {
+	s.DelayedLargeQueryPercentage = &v
+	return s
+}
+
+func (s *DescribeSQLTuningAdvicesResponseBodyDataPlan) SetExecPs(v float32) *DescribeSQLTuningAdvicesResponseBodyDataPlan {
+	s.ExecPs = &v
+	return s
+}
+
+func (s *DescribeSQLTuningAdvicesResponseBodyDataPlan) SetExecutions(v int64) *DescribeSQLTuningAdvicesResponseBodyDataPlan {
+	s.Executions = &v
+	return s
+}
+
+func (s *DescribeSQLTuningAdvicesResponseBodyDataPlan) SetFirstLoadTime(v string) *DescribeSQLTuningAdvicesResponseBodyDataPlan {
+	s.FirstLoadTime = &v
+	return s
+}
+
+func (s *DescribeSQLTuningAdvicesResponseBodyDataPlan) SetFirstLoadTimeUs(v int64) *DescribeSQLTuningAdvicesResponseBodyDataPlan {
+	s.FirstLoadTimeUs = &v
+	return s
+}
+
+func (s *DescribeSQLTuningAdvicesResponseBodyDataPlan) SetHitDiagnosis(v bool) *DescribeSQLTuningAdvicesResponseBodyDataPlan {
+	s.HitDiagnosis = &v
+	return s
+}
+
+func (s *DescribeSQLTuningAdvicesResponseBodyDataPlan) SetHitPercentage(v float32) *DescribeSQLTuningAdvicesResponseBodyDataPlan {
+	s.HitPercentage = &v
+	return s
+}
+
+func (s *DescribeSQLTuningAdvicesResponseBodyDataPlan) SetLargeQueryPercentage(v float32) *DescribeSQLTuningAdvicesResponseBodyDataPlan {
+	s.LargeQueryPercentage = &v
+	return s
+}
+
+func (s *DescribeSQLTuningAdvicesResponseBodyDataPlan) SetMergedVersion(v int64) *DescribeSQLTuningAdvicesResponseBodyDataPlan {
+	s.MergedVersion = &v
+	return s
+}
+
+func (s *DescribeSQLTuningAdvicesResponseBodyDataPlan) SetObDbId(v int64) *DescribeSQLTuningAdvicesResponseBodyDataPlan {
+	s.ObDbId = &v
+	return s
+}
+
+func (s *DescribeSQLTuningAdvicesResponseBodyDataPlan) SetObServerId(v int64) *DescribeSQLTuningAdvicesResponseBodyDataPlan {
+	s.ObServerId = &v
+	return s
+}
+
+func (s *DescribeSQLTuningAdvicesResponseBodyDataPlan) SetOutlineData(v string) *DescribeSQLTuningAdvicesResponseBodyDataPlan {
+	s.OutlineData = &v
+	return s
+}
+
+func (s *DescribeSQLTuningAdvicesResponseBodyDataPlan) SetOutlineId(v int64) *DescribeSQLTuningAdvicesResponseBodyDataPlan {
+	s.OutlineId = &v
+	return s
+}
+
+func (s *DescribeSQLTuningAdvicesResponseBodyDataPlan) SetPlanHash(v string) *DescribeSQLTuningAdvicesResponseBodyDataPlan {
+	s.PlanHash = &v
+	return s
+}
+
+func (s *DescribeSQLTuningAdvicesResponseBodyDataPlan) SetPlanId(v int64) *DescribeSQLTuningAdvicesResponseBodyDataPlan {
+	s.PlanId = &v
+	return s
+}
+
+func (s *DescribeSQLTuningAdvicesResponseBodyDataPlan) SetPlanSize(v int64) *DescribeSQLTuningAdvicesResponseBodyDataPlan {
+	s.PlanSize = &v
+	return s
+}
+
+func (s *DescribeSQLTuningAdvicesResponseBodyDataPlan) SetPlanType(v string) *DescribeSQLTuningAdvicesResponseBodyDataPlan {
+	s.PlanType = &v
+	return s
+}
+
+func (s *DescribeSQLTuningAdvicesResponseBodyDataPlan) SetSchemaVersion(v int64) *DescribeSQLTuningAdvicesResponseBodyDataPlan {
+	s.SchemaVersion = &v
+	return s
+}
+
+func (s *DescribeSQLTuningAdvicesResponseBodyDataPlan) SetServerSn(v string) *DescribeSQLTuningAdvicesResponseBodyDataPlan {
+	s.ServerSn = &v
+	return s
+}
+
+func (s *DescribeSQLTuningAdvicesResponseBodyDataPlan) SetTableScan(v bool) *DescribeSQLTuningAdvicesResponseBodyDataPlan {
+	s.TableScan = &v
+	return s
+}
+
+func (s *DescribeSQLTuningAdvicesResponseBodyDataPlan) SetTimeoutPercentage(v float32) *DescribeSQLTuningAdvicesResponseBodyDataPlan {
+	s.TimeoutPercentage = &v
+	return s
+}
+
+func (s *DescribeSQLTuningAdvicesResponseBodyDataPlan) SetUid(v string) *DescribeSQLTuningAdvicesResponseBodyDataPlan {
+	s.Uid = &v
+	return s
+}
+
+type DescribeSQLTuningAdvicesResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeSQLTuningAdvicesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeSQLTuningAdvicesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSQLTuningAdvicesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSQLTuningAdvicesResponse) SetHeaders(v map[string]*string) *DescribeSQLTuningAdvicesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeSQLTuningAdvicesResponse) SetStatusCode(v int32) *DescribeSQLTuningAdvicesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeSQLTuningAdvicesResponse) SetBody(v *DescribeSQLTuningAdvicesResponseBody) *DescribeSQLTuningAdvicesResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeSampleSqlRawTextsRequest struct {
 	// This parameter is required.
 	//
@@ -31207,12 +31780,16 @@ func (s *DescribeSecurityIpGroupsResponse) SetBody(v *DescribeSecurityIpGroupsRe
 }
 
 type DescribeSessionListRequest struct {
+	// The ID of the OceanBase cluster.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ob317v4uif****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The ID of the tenant.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -31240,7 +31817,10 @@ func (s *DescribeSessionListRequest) SetTenantId(v string) *DescribeSessionListR
 }
 
 type DescribeSessionListResponseBody struct {
+	// The object information.
 	Data []*DescribeSessionListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// EE205C00-30E4-XXXX-XXXX-87E3A8A2AA0C
@@ -31266,10 +31846,14 @@ func (s *DescribeSessionListResponseBody) SetRequestId(v string) *DescribeSessio
 }
 
 type DescribeSessionListResponseBodyData struct {
+	// The address of the client, with the format ip:port.
+	//
 	// example:
 	//
-	// 192.168.1.100:80
+	// 192.***.**.100:80
 	Host *string `json:"Host,omitempty" xml:"Host,omitempty"`
+	// The session ID of the proxy service.
+	//
 	// example:
 	//
 	// d2c90ad0-bc54-410f-bb89-2dcf14aa3c6d
@@ -50612,7 +51196,7 @@ func (client *Client) BatchKillProcessList(request *BatchKillProcessListRequest)
 
 // Summary:
 //
-// 异步关闭集群租户的会话信息；关闭oceanbase云服务和业务之间的会话信息
+// You can call this operation to close sessions between the ApsaraDB for OceanBase and the application in batches. Please note that this operation is executed asynchronously. After calling this operation, you need to verify it by calling DescribeSessionList.
 //
 // @param request - BatchKillSessionListRequest
 //
@@ -50662,7 +51246,7 @@ func (client *Client) BatchKillSessionListWithOptions(request *BatchKillSessionL
 
 // Summary:
 //
-// 异步关闭集群租户的会话信息；关闭oceanbase云服务和业务之间的会话信息
+// You can call this operation to close sessions between the ApsaraDB for OceanBase and the application in batches. Please note that this operation is executed asynchronously. After calling this operation, you need to verify it by calling DescribeSessionList.
 //
 // @param request - BatchKillSessionListRequest
 //
@@ -56026,6 +56610,90 @@ func (client *Client) DescribeSQLSamples(request *DescribeSQLSamplesRequest) (_r
 
 // Summary:
 //
+// 获取单个 SQL 的调优建议，包括计划推荐和索引推荐
+//
+// @param request - DescribeSQLTuningAdvicesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeSQLTuningAdvicesResponse
+func (client *Client) DescribeSQLTuningAdvicesWithOptions(request *DescribeSQLTuningAdvicesRequest, runtime *util.RuntimeOptions) (_result *DescribeSQLTuningAdvicesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
+		body["AcceptLanguage"] = request.AcceptLanguage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DbName)) {
+		body["DbName"] = request.DbName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		body["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SqlId)) {
+		body["SqlId"] = request.SqlId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		body["StartTime"] = request.StartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TenantId)) {
+		body["TenantId"] = request.TenantId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeSQLTuningAdvices"),
+		Version:     tea.String("2019-09-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeSQLTuningAdvicesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取单个 SQL 的调优建议，包括计划推荐和索引推荐
+//
+// @param request - DescribeSQLTuningAdvicesRequest
+//
+// @return DescribeSQLTuningAdvicesResponse
+func (client *Client) DescribeSQLTuningAdvices(request *DescribeSQLTuningAdvicesRequest) (_result *DescribeSQLTuningAdvicesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeSQLTuningAdvicesResponse{}
+	_body, _err := client.DescribeSQLTuningAdvicesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 查询采样SQL的原始文本
 //
 // @param request - DescribeSampleSqlRawTextsRequest
@@ -56174,7 +56842,7 @@ func (client *Client) DescribeSecurityIpGroups(request *DescribeSecurityIpGroups
 
 // Summary:
 //
-// 查询集群租户的会话信息；展示oceanbase云服务和业务之间的会话信息
+// You can call this operation to query sessions between the ApsaraDB for OceanBase and the application.
 //
 // @param request - DescribeSessionListRequest
 //
@@ -56220,7 +56888,7 @@ func (client *Client) DescribeSessionListWithOptions(request *DescribeSessionLis
 
 // Summary:
 //
-// 查询集群租户的会话信息；展示oceanbase云服务和业务之间的会话信息
+// You can call this operation to query sessions between the ApsaraDB for OceanBase and the application.
 //
 // @param request - DescribeSessionListRequest
 //
