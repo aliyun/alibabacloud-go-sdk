@@ -11170,12 +11170,21 @@ type DescribeDBClusterMigrationResponseBodyDBClusterEndpointList struct {
 	//
 	// 	- **Primary**: the primary endpoint
 	//
-	// 	- **Custom**: the custom cluster endpoint
+	// 	- **Custom**: the custom endpoint
 	//
 	// example:
 	//
 	// Cluster
-	EndpointType  *string `json:"EndpointType,omitempty" xml:"EndpointType,omitempty"`
+	EndpointType *string `json:"EndpointType,omitempty" xml:"EndpointType,omitempty"`
+	// The read/write mode. Valid values:
+	//
+	// 	- ReadWrite: receives and forwards read and write requests (automatic read-write splitting).
+	//
+	// 	- ReadOnly (default): receives and forwards read requests only.
+	//
+	// example:
+	//
+	// ReadOnly
 	ReadWriteMode *string `json:"ReadWriteMode,omitempty" xml:"ReadWriteMode,omitempty"`
 }
 
@@ -11208,7 +11217,7 @@ func (s *DescribeDBClusterMigrationResponseBodyDBClusterEndpointList) SetReadWri
 }
 
 type DescribeDBClusterMigrationResponseBodyDBClusterEndpointListAddressItems struct {
-	// The connection string.
+	// The endpoint.
 	//
 	// example:
 	//
@@ -11308,7 +11317,8 @@ func (s *DescribeDBClusterMigrationResponseBodyDBClusterEndpointListAddressItems
 type DescribeDBClusterMigrationResponseBodyRdsEndpointList struct {
 	// Details about the endpoints.
 	AddressItems []*DescribeDBClusterMigrationResponseBodyRdsEndpointListAddressItems `json:"AddressItems,omitempty" xml:"AddressItems,omitempty" type:"Repeated"`
-	CustinsType  *string                                                              `json:"CustinsType,omitempty" xml:"CustinsType,omitempty"`
+	// The type of the source database.
+	CustinsType *string `json:"CustinsType,omitempty" xml:"CustinsType,omitempty"`
 	// The ID of the endpoint.
 	//
 	// example:
@@ -11356,7 +11366,7 @@ func (s *DescribeDBClusterMigrationResponseBodyRdsEndpointList) SetEndpointType(
 }
 
 type DescribeDBClusterMigrationResponseBodyRdsEndpointListAddressItems struct {
-	// The connection string.
+	// The endpoint.
 	//
 	// example:
 	//
@@ -11601,11 +11611,11 @@ type DescribeDBClusterParametersRequest struct {
 	//
 	// pc-**********
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The kernel parameter. Valid values:
+	// The type of the parameter information to query. Valid values:
 	//
-	// 	- **Normal**: the kernel parameters.
+	// 	- **Normal**: the information about the cluster parameters
 	//
-	// 	- **MigrationFromRDS**: compares the current parameters with the parameters of the source RDS instance.
+	// 	- **MigrationFromRDS**: a comparison of parameters between the source RDS instance and the destination PolarDB cluster
 	//
 	// example:
 	//
@@ -11662,7 +11672,7 @@ type DescribeDBClusterParametersResponseBody struct {
 	//
 	// pc-bp1s826a1up******
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The database engine that the cluster runs. Valid values:
+	// The database engine that the clusters runs. Valid values:
 	//
 	// 	- **MySQL**
 	//
@@ -11676,17 +11686,21 @@ type DescribeDBClusterParametersResponseBody struct {
 	DBType *string `json:"DBType,omitempty" xml:"DBType,omitempty"`
 	// The version of the database engine.
 	//
-	// - Valid values for the MySQL database engine:    - **5.6**
+	// - Valid values for the MySQL database engine:
+	//
+	//   - **5.6**
 	//
 	//   - **5.7**
 	//
 	//   - **8.0**
 	//
-	// - Valid value for the PostgreSQL database engine:    - **11**
+	// - Valid value for the PostgreSQL database engine:
+	//
+	//   - **11**
 	//
 	//   - **14**
 	//
-	// - Valid value for the Oracle database engine: **11**
+	// - Valid value for the Oracle database engine:  **11**
 	//
 	// example:
 	//
@@ -11704,7 +11718,7 @@ type DescribeDBClusterParametersResponseBody struct {
 	//
 	// 1
 	ParameterNumbers *string `json:"ParameterNumbers,omitempty" xml:"ParameterNumbers,omitempty"`
-	// A comparison between the current parameters of the PolarDB cluster and the parameters of the source RDS instance before migration.
+	// A comparison of parameters between the source RDS instance and the destination PolarDB cluster.
 	Parameters *DescribeDBClusterParametersResponseBodyParameters `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Struct"`
 	// The ID of the request.
 	//
@@ -11712,7 +11726,7 @@ type DescribeDBClusterParametersResponseBody struct {
 	//
 	// EBEAA83D-1734-42E3-85E3-E25F6E******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The parameters that are in use.
+	// The parameters of the PolarDB cluster.
 	RunningParameters *DescribeDBClusterParametersResponseBodyRunningParameters `json:"RunningParameters,omitempty" xml:"RunningParameters,omitempty" type:"Struct"`
 }
 
@@ -11782,29 +11796,65 @@ func (s *DescribeDBClusterParametersResponseBodyParameters) SetParameters(v []*D
 }
 
 type DescribeDBClusterParametersResponseBodyParametersParameters struct {
-	// Indicates whether the source parameters and current parameters have the same value.
+	// Indicates whether the source and current parameters have the same value.
 	//
 	// example:
 	//
 	// true
-	IsEqual              *string `json:"IsEqual,omitempty" xml:"IsEqual,omitempty"`
+	IsEqual *string `json:"IsEqual,omitempty" xml:"IsEqual,omitempty"`
+	// Indicate whether the parameter is a primary parameter of the destination cluster. Valid values:
+	//
+	// 	- **1**: The parameter is a primary parameter of the destination cluster.
+	//
+	// 	- **0**: The parameter is not a primary parameter of the destination cluster.
+	//
+	// example:
+	//
+	// 1
 	IsInstancePolarDBKey *string `json:"IsInstancePolarDBKey,omitempty" xml:"IsInstancePolarDBKey,omitempty"`
-	IsInstanceRdsKey     *string `json:"IsInstanceRdsKey,omitempty" xml:"IsInstanceRdsKey,omitempty"`
-	IsPolarDBKey         *string `json:"IsPolarDBKey,omitempty" xml:"IsPolarDBKey,omitempty"`
-	IsRdsKey             *string `json:"IsRdsKey,omitempty" xml:"IsRdsKey,omitempty"`
-	// The description of the parameter of the current cluster.
+	// Indicate whether the parameter is a primary parameter of the source instance. Valid values:
+	//
+	// 	- **1**: The parameter is a primary parameter of the source instance.
+	//
+	// 	- **0**: The parameter is not a primary parameter of the source instance.
+	//
+	// example:
+	//
+	// 0
+	IsInstanceRdsKey *string `json:"IsInstanceRdsKey,omitempty" xml:"IsInstanceRdsKey,omitempty"`
+	// Indicate whether the parameter is a primary parameter of the destination cluster. Valid values:
+	//
+	// 	- **1**: The parameter is a primary parameter of the destination cluster.
+	//
+	// 	- **0**: The parameter is not a primary parameter of the destination cluster.
+	//
+	// example:
+	//
+	// 0
+	IsPolarDBKey *string `json:"IsPolarDBKey,omitempty" xml:"IsPolarDBKey,omitempty"`
+	// Indicate whether the parameter is a primary parameter of the source instance. Valid values:
+	//
+	// 	- **1**: The parameter is a primary parameter of the source instance.
+	//
+	// 	- **0**: The parameter is not a primary parameter of the source instance.
+	//
+	// example:
+	//
+	// 1
+	IsRdsKey *string `json:"IsRdsKey,omitempty" xml:"IsRdsKey,omitempty"`
+	// The description of the parameter of the destination cluster.
 	//
 	// example:
 	//
 	// The server\\"s default character set.
 	DistParameterDescription *string `json:"distParameterDescription,omitempty" xml:"distParameterDescription,omitempty"`
-	// The name of the parameter of the current cluster.
+	// The name of the parameter of the destination cluster.
 	//
 	// example:
 	//
 	// character_set_server
 	DistParameterName *string `json:"distParameterName,omitempty" xml:"distParameterName,omitempty"`
-	// The valid values of the parameter of the current cluster.
+	// The valid values of the parameter of the destination cluster.
 	//
 	// example:
 	//
@@ -11812,7 +11862,7 @@ type DescribeDBClusterParametersResponseBodyParametersParameters struct {
 	//
 	// - gbk
 	DistParameterOptional *string `json:"distParameterOptional,omitempty" xml:"distParameterOptional,omitempty"`
-	// The value of the parameter of the current cluster.
+	// The value of the parameter of the destination cluster.
 	//
 	// example:
 	//
@@ -11967,7 +12017,7 @@ type DescribeDBClusterParametersResponseBodyRunningParametersParameter struct {
 	//
 	// 20
 	Factor *string `json:"Factor,omitempty" xml:"Factor,omitempty"`
-	// Indicates whether a cluster restart is required to allow the parameter modification to take effect. Valid values:
+	// Indicates whether a cluster restart is required for the parameter modification to take effect. Valid values:
 	//
 	// 	- **false**
 	//
@@ -11989,9 +12039,9 @@ type DescribeDBClusterParametersResponseBodyRunningParametersParameter struct {
 	IsModifiable *bool `json:"IsModifiable,omitempty" xml:"IsModifiable,omitempty"`
 	// Indicates whether the parameter is a global parameter. Valid values:
 	//
-	// 	- **0**: yes. The modified parameter value is synchronized to other nodes.
+	// 	- **0**: The parameter is a global parameter. The modified parameter value is synchronized to other nodes.
 	//
-	// 	- **1**: no. You can customize the nodes to which the modified parameter value can be synchronized.
+	// 	- **1**: The parameter is not a global parameter. You can specify the nodes to which the modified parameter value can be synchronized.
 	//
 	// example:
 	//
@@ -12146,7 +12196,12 @@ type DescribeDBClusterPerformanceRequest struct {
 	// example:
 	//
 	// 2020-09-23T01:00Z
-	EndTime  *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The interval at which performance data is collected. Valid values: 5, 30, 60, 600, 1800, 3600, 86400, in seconds.
+	//
+	// example:
+	//
+	// 60
 	Interval *string `json:"Interval,omitempty" xml:"Interval,omitempty"`
 	// The performance metrics that you want to query. Separate multiple metrics with commas (,). For more information, see [Performance parameters](https://help.aliyun.com/document_detail/141787.html).
 	//
@@ -13011,11 +13066,11 @@ type DescribeDBClusterVersionRequest struct {
 	//
 	// pc-****************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// Specify to return the latest version information or a list of upgradeable versions.Valid values:
+	// Specifies whether to query the information about the latest versions or the versions to which the cluster can be updated. Valid values:
 	//
-	// - AVAILABLE_VERSION
+	// 	- LATEST_VERSION: the information about the latest versions.
 	//
-	// - LATEST_VERSION
+	// 	- AVAILABLE_VERSION: the information about the versions to which the cluster can be updated.
 	//
 	// example:
 	//
@@ -13160,7 +13215,16 @@ type DescribeDBClusterVersionResponseBody struct {
 	// example:
 	//
 	// 2.4.15
-	ProxyRevisionVersion     *string                                                         `json:"ProxyRevisionVersion,omitempty" xml:"ProxyRevisionVersion,omitempty"`
+	ProxyRevisionVersion *string `json:"ProxyRevisionVersion,omitempty" xml:"ProxyRevisionVersion,omitempty"`
+	// The release status of the PolarProxy version. Valid values:
+	//
+	// 	- **Stable**: The PolarProxy revision version is stable.
+	//
+	// 	- **Old**: The PolarProxy revision version is outdated. We recommend that you do not update the PolarProxy to this revision version.
+	//
+	// 	- **HighRisk**: The PolarProxy revision version has critical defects. We recommend that you do not update the PolarProxy to this revision version.
+	//
+	// 	- **Beta**: The PolarProxy revision version is a Beta version.
 	ProxyRevisionVersionList []*DescribeDBClusterVersionResponseBodyProxyRevisionVersionList `json:"ProxyRevisionVersionList,omitempty" xml:"ProxyRevisionVersionList,omitempty" type:"Repeated"`
 	// The status of PolarProxy. Valid values:
 	//
@@ -13263,31 +13327,33 @@ func (s *DescribeDBClusterVersionResponseBody) SetRequestId(v string) *DescribeD
 }
 
 type DescribeDBClusterVersionResponseBodyDBRevisionVersionList struct {
-	// The release notes for the revision version.
+	// The release notes for the database engine revision version.
 	//
 	// example:
 	//
 	// ReleaseNote
 	ReleaseNote *string `json:"ReleaseNote,omitempty" xml:"ReleaseNote,omitempty"`
-	// The release status of the revision version. Valid values:
+	// The release status of the database engine revision version. Valid values:
 	//
-	// 	- **Stable**: The revision version is stable.
+	// 	- **Stable**: The database engine revision version is stable.
 	//
-	// 	- **Old**: The revision version is outdated. We recommend that you do not update the cluster to this version.
+	// 	- **Old**: The database engine revision version is outdated. We recommend that you do not update the database engine to this revision version.
 	//
-	// 	- **HighRisk**: The revision version has critical defects. We recommend that you do not update the cluster to this version.
+	// 	- **HighRisk**: The database engine revision version has critical defects. We recommend that you do not update the database engine to this revision version.
+	//
+	// 	- **Beta**: The database engine revision version is a Beta version.
 	//
 	// example:
 	//
 	// Stable
 	ReleaseType *string `json:"ReleaseType,omitempty" xml:"ReleaseType,omitempty"`
-	// The code of the revision version of the database engine to which the cluster can be upgraded.
+	// The code of the database engine revision version. You can use the code to specify the database engine revision version.
 	//
 	// example:
 	//
 	// 20230707
 	RevisionVersionCode *string `json:"RevisionVersionCode,omitempty" xml:"RevisionVersionCode,omitempty"`
-	// The revision version of the database engine.
+	// The database engine revision version number.
 	//
 	// example:
 	//
@@ -13324,9 +13390,33 @@ func (s *DescribeDBClusterVersionResponseBodyDBRevisionVersionList) SetRevisionV
 }
 
 type DescribeDBClusterVersionResponseBodyProxyRevisionVersionList struct {
-	ReleaseNote         *string `json:"ReleaseNote,omitempty" xml:"ReleaseNote,omitempty"`
-	ReleaseType         *string `json:"ReleaseType,omitempty" xml:"ReleaseType,omitempty"`
+	// The release notes for the PolarProxy revision version.
+	//
+	// example:
+	//
+	// ReleaseNote
+	ReleaseNote *string `json:"ReleaseNote,omitempty" xml:"ReleaseNote,omitempty"`
+	// The release type. Valid values:
+	//
+	// 	- **LTS**: a long-term version
+	//
+	// 	- **BETA**: a preview version
+	//
+	// example:
+	//
+	// Stable
+	ReleaseType *string `json:"ReleaseType,omitempty" xml:"ReleaseType,omitempty"`
+	// The PolarProxy revision version code. You can use this code to specify the PolarProxy revision version.
+	//
+	// example:
+	//
+	// 20230707
 	RevisionVersionCode *string `json:"RevisionVersionCode,omitempty" xml:"RevisionVersionCode,omitempty"`
+	// The PolarProxy revision version number.
+	//
+	// example:
+	//
+	// 2.8.24
 	RevisionVersionName *string `json:"RevisionVersionName,omitempty" xml:"RevisionVersionName,omitempty"`
 }
 
@@ -13812,7 +13902,7 @@ type DescribeDBClustersResponseBodyItemsDBCluster struct {
 	//
 	// Running
 	DBClusterStatus *string `json:"DBClusterStatus,omitempty" xml:"DBClusterStatus,omitempty"`
-	// The node specifications.
+	// The specifications of the node.
 	//
 	// example:
 	//
@@ -13875,7 +13965,8 @@ type DescribeDBClustersResponseBodyItemsDBCluster struct {
 	// example:
 	//
 	// false
-	Expired *string `json:"Expired,omitempty" xml:"Expired,omitempty"`
+	Expired           *string `json:"Expired,omitempty" xml:"Expired,omitempty"`
+	HotStandbyCluster *string `json:"HotStandbyCluster,omitempty" xml:"HotStandbyCluster,omitempty"`
 	// The lock state of the cluster. Valid values:
 	//
 	// 	- **Unlock**: The cluster is unlocked.
@@ -13916,13 +14007,13 @@ type DescribeDBClustersResponseBodyItemsDBCluster struct {
 	//
 	// 3612
 	RemoteMemorySize *string `json:"RemoteMemorySize,omitempty" xml:"RemoteMemorySize,omitempty"`
-	// The resource group ID.
+	// The ID of the resource group.
 	//
 	// example:
 	//
 	// rg-************
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// Indicates whether the cluster is a serverless cluster. **AgileServerless*	- indicates a serverless cluster. No value is returned for a common cluster.
+	// Indicates whether the cluster is a serverless cluster. **AgileServerless*	- indicates the cluster is a serverless cluster. No value is returned for a common cluster.
 	//
 	// example:
 	//
@@ -13943,8 +14034,13 @@ type DescribeDBClustersResponseBodyItemsDBCluster struct {
 	// example:
 	//
 	// 50
-	StorageSpace *int64  `json:"StorageSpace,omitempty" xml:"StorageSpace,omitempty"`
-	StorageType  *string `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
+	StorageSpace *int64 `json:"StorageSpace,omitempty" xml:"StorageSpace,omitempty"`
+	// The storage type.
+	//
+	// example:
+	//
+	// essdautopl
+	StorageType *string `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
 	// The used storage. Unit: bytes.
 	//
 	// example:
@@ -14083,6 +14179,11 @@ func (s *DescribeDBClustersResponseBodyItemsDBCluster) SetExpireTime(v string) *
 
 func (s *DescribeDBClustersResponseBodyItemsDBCluster) SetExpired(v string) *DescribeDBClustersResponseBodyItemsDBCluster {
 	s.Expired = &v
+	return s
+}
+
+func (s *DescribeDBClustersResponseBodyItemsDBCluster) SetHotStandbyCluster(v string) *DescribeDBClustersResponseBodyItemsDBCluster {
+	s.HotStandbyCluster = &v
 	return s
 }
 
@@ -14235,7 +14336,7 @@ type DescribeDBClustersResponseBodyItemsDBClusterDBNodesDBNode struct {
 	//
 	// OFF
 	ImciSwitch *string `json:"ImciSwitch,omitempty" xml:"ImciSwitch,omitempty"`
-	// The region ID of the node.
+	// The region ID of the cluster.
 	//
 	// example:
 	//
@@ -14251,7 +14352,7 @@ type DescribeDBClustersResponseBodyItemsDBClusterDBNodesDBNode struct {
 	//
 	// ON
 	Serverless *string `json:"Serverless,omitempty" xml:"Serverless,omitempty"`
-	// The zone ID of node.
+	// The zone ID of the cluster.
 	//
 	// example:
 	//
@@ -15378,7 +15479,26 @@ type DescribeDBNodePerformanceRequest struct {
 	// example:
 	//
 	// 2020-09-23T01:01Z
-	EndTime  *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The interval at which performance data is collected. Valid values:
+	//
+	// 	- 5
+	//
+	// 	- 30
+	//
+	// 	- 60
+	//
+	// 	- 600
+	//
+	// 	- 1800
+	//
+	// 	- 3600
+	//
+	// 	- 86400
+	//
+	// example:
+	//
+	// 60
 	Interval *string `json:"Interval,omitempty" xml:"Interval,omitempty"`
 	// The performance metrics that you want to query. Separate multiple metrics with commas (,). For more information, see [Performance parameters](https://help.aliyun.com/document_detail/141787.html).
 	//
@@ -15398,7 +15518,12 @@ type DescribeDBNodePerformanceRequest struct {
 	//
 	// 2020-09-23T01:00Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	Type      *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The special metric. Set the value to tair, which indicates the PolarTair architecture.
+	//
+	// example:
+	//
+	// tair
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s DescribeDBNodePerformanceRequest) String() string {
@@ -16038,7 +16163,12 @@ type DescribeDBProxyPerformanceRequest struct {
 	// example:
 	//
 	// 2020-09-24T02:08Z
-	EndTime  *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The interval at which performance data is collected. Valid values: 5, 30, 60, 600, 1800, 3600, 86400, in seconds.
+	//
+	// example:
+	//
+	// 60
 	Interval *string `json:"Interval,omitempty" xml:"Interval,omitempty"`
 	// The performance metrics that you want to query. Separate multiple indicators with commas (,). For more information, see [Performance parameters](https://help.aliyun.com/document_detail/141787.html).
 	//
@@ -16056,7 +16186,12 @@ type DescribeDBProxyPerformanceRequest struct {
 	//
 	// 2020-09-23T01:01Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	Type      *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// Special metric. Set the value to tair, which indicates the PolarTair architecture.
+	//
+	// example:
+	//
+	// tair
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s DescribeDBProxyPerformanceRequest) String() string {
@@ -17352,7 +17487,7 @@ type DescribeGlobalDatabaseNetworkResponseBody struct {
 	//
 	// pc-bp1s826a1up******
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The clusters that are included in the GDN.
+	// The clusters in the GDN.
 	DBClusters []*DescribeGlobalDatabaseNetworkResponseBodyDBClusters `json:"DBClusters,omitempty" xml:"DBClusters,omitempty" type:"Repeated"`
 	// The type of the database engine. Only MySQL is supported.
 	//
@@ -17480,19 +17615,19 @@ func (s *DescribeGlobalDatabaseNetworkResponseBody) SetResourceGroupId(v string)
 }
 
 type DescribeGlobalDatabaseNetworkResponseBodyConnections struct {
-	// The URL of the endpoint.
+	// The endpoint URL of the database service.
 	//
 	// example:
 	//
 	// abc.polardb.rds.aliyuncs.com
 	ConnectionString *string `json:"ConnectionString,omitempty" xml:"ConnectionString,omitempty"`
-	// The network type of the endpoint.
+	// The network type for the database connection.
 	//
 	// example:
 	//
 	// Private
 	NetType *string `json:"NetType,omitempty" xml:"NetType,omitempty"`
-	// The port number of the endpoint.
+	// The port number for the database connection.
 	//
 	// example:
 	//
@@ -17530,27 +17665,27 @@ type DescribeGlobalDatabaseNetworkResponseBodyDBClusters struct {
 	//
 	// test
 	DBClusterDescription *string `json:"DBClusterDescription,omitempty" xml:"DBClusterDescription,omitempty"`
-	// The ID of the cluster in the GDN.
+	// The ID of the cluster.
 	//
 	// example:
 	//
 	// pc-wz9fb5nn44u1d****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The status of the cluster in the GDN. For more information, see [Cluster status table](https://help.aliyun.com/document_detail/99286.html).
+	// The status of the cluster. For more information, see [Cluster status table](https://help.aliyun.com/document_detail/99286.html).
 	//
 	// example:
 	//
 	// Running
 	DBClusterStatus *string `json:"DBClusterStatus,omitempty" xml:"DBClusterStatus,omitempty"`
-	// The specifications of the node in the cluster.
+	// The node specifications of the cluster.
 	//
 	// example:
 	//
 	// polar.mysql.x4.large
 	DBNodeClass *string `json:"DBNodeClass,omitempty" xml:"DBNodeClass,omitempty"`
-	// The details of the node.
+	// The nodes of the cluster.
 	DBNodes []*DescribeGlobalDatabaseNetworkResponseBodyDBClustersDBNodes `json:"DBNodes,omitempty" xml:"DBNodes,omitempty" type:"Repeated"`
-	// The type of the database engine. Only MySQL is supported.
+	// The database engine type of the cluster. Only MySQL is supported.
 	//
 	// example:
 	//
@@ -17564,19 +17699,19 @@ type DescribeGlobalDatabaseNetworkResponseBodyDBClusters struct {
 	DBVersion *string `json:"DBVersion,omitempty" xml:"DBVersion,omitempty"`
 	// The expiration time of the cluster.
 	//
-	// > A specific value is returned only for subscription (**Prepaid**) clusters. For pay-as-you-go (**Postpaid**) clusters, an empty string is returned.
+	// >  A specific value is returned only for subscription (**Prepaid**) clusters. No value is returned for pay-as-you-go (**Postpaid**) clusters.
 	//
 	// example:
 	//
 	// 2020-11-14T16:00:00Z
 	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	// Indicates whether the cluster is expired. Valid values:
+	// Indicates whether the cluster has expired. Valid values:
 	//
-	// 	- **true**
+	// 	- **true*	- (default)
 	//
 	// 	- **false**
 	//
-	// > This parameter is returned only for subscription (**Prepaid**) clusters.
+	// >  This parameter is returned only for subscription (**Prepaid**) clusters.
 	//
 	// example:
 	//
@@ -17584,21 +17719,21 @@ type DescribeGlobalDatabaseNetworkResponseBodyDBClusters struct {
 	Expired *string `json:"Expired,omitempty" xml:"Expired,omitempty"`
 	// The billing method of the cluster. Valid values:
 	//
-	// 	- **Postpaid**: pay-as-you-go.
+	// 	- **Postpaid**: pay-as-you-go
 	//
-	// 	- **Prepaid**: subscription.
+	// 	- **Prepaid**: subscription
 	//
 	// example:
 	//
 	// Prepaid
 	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	// The ID of the region in which the cluster resides.
+	// The region ID of the cluster.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The latency of cross-region data replication between the primary cluster and secondary clusters. Unit: seconds.
+	// The cross-region data replication latency between the primary cluster and secondary clusters. Unit: seconds.
 	//
 	// example:
 	//
@@ -17608,16 +17743,23 @@ type DescribeGlobalDatabaseNetworkResponseBodyDBClusters struct {
 	//
 	// 	- **Primary**: the primary cluster
 	//
-	// 	- **standby**: the secondary cluster
+	// 	- **standby**: a secondary cluster
 	//
-	// > A GDN consists of one primary cluster and up to four secondary clusters.
+	// >  A GDN consists of one primary cluster and up to four secondary clusters.
 	//
 	// example:
 	//
 	// primary
-	Role           *string `json:"Role,omitempty" xml:"Role,omitempty"`
+	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
+	// Indicates whether the cluster is a serverless cluster. The value is fixed at AgileServerless.
+	//
+	// >  This parameter is returned only for serverless clusters.
+	//
+	// example:
+	//
+	// AgileServerless
 	ServerlessType *string `json:"ServerlessType,omitempty" xml:"ServerlessType,omitempty"`
-	// The storage space that is occupied by the cluster. Unit: bytes.
+	// The storage usage of the cluster. Unit: bytes.
 	//
 	// example:
 	//
@@ -17715,13 +17857,13 @@ type DescribeGlobalDatabaseNetworkResponseBodyDBClustersDBNodes struct {
 	//
 	// 2020-03-23T21:35:43Z
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// The specifications of the node in the cluster.
+	// The specifications of the node.
 	//
 	// example:
 	//
 	// polar.mysql.x4.large
 	DBNodeClass *string `json:"DBNodeClass,omitempty" xml:"DBNodeClass,omitempty"`
-	// The ID of the node.
+	// The node ID.
 	//
 	// example:
 	//
@@ -17729,9 +17871,9 @@ type DescribeGlobalDatabaseNetworkResponseBodyDBClustersDBNodes struct {
 	DBNodeId *string `json:"DBNodeId,omitempty" xml:"DBNodeId,omitempty"`
 	// The role of the node. Valid values:
 	//
-	// 	- **Writer**: The node is the primary node.
+	// 	- **Writer**: the primary node
 	//
-	// 	- **Reader**: The node is a read-only node.
+	// 	- **Reader**: a read-only node
 	//
 	// example:
 	//
@@ -17739,19 +17881,15 @@ type DescribeGlobalDatabaseNetworkResponseBodyDBClustersDBNodes struct {
 	DBNodeRole *string `json:"DBNodeRole,omitempty" xml:"DBNodeRole,omitempty"`
 	// The status of the node. Valid values:
 	//
-	// 	- **Creating**: The cluster is being created.
+	// 	- **Creating**: The node is being created.
 	//
-	// 	- **Running**: The cluster is running.
+	// 	- **Running**: The node is running.
 	//
-	// 	- **Deleting**: The cluster is being deleted.
+	// 	- **Deleting**: The node is being deleted.
 	//
-	// 	- **Rebooting**: The cluster is restarting.
+	// 	- **Rebooting**: The node is restarting.
 	//
-	// 	- **DBNodeCreating**: PolarProxy is being added.
-	//
-	// 	- **DBNodeDeleting**: PolarProxy is being deleted.
-	//
-	// 	- **ClassChanging**: The specifications of PolarProxy are being changed.
+	// 	- **ClassChanging**: The specifications of the node are being changed.
 	//
 	// 	- **NetAddressCreating**: The network connection is being created.
 	//
@@ -17759,9 +17897,9 @@ type DescribeGlobalDatabaseNetworkResponseBodyDBClustersDBNodes struct {
 	//
 	// 	- **NetAddressModifying**: The network connection is being modified.
 	//
-	// 	- **MinorVersionUpgrading**: The minor version is being updated.
+	// 	- **MinorVersionUpgrading**: The minor version of the node is being updated.
 	//
-	// 	- **Maintaining**: The cluster is being maintained.
+	// 	- **Maintaining**: The node is being maintained.
 	//
 	// 	- **Switching**: A failover is being performed.
 	//
@@ -17769,13 +17907,13 @@ type DescribeGlobalDatabaseNetworkResponseBodyDBClustersDBNodes struct {
 	//
 	// Running
 	DBNodeStatus *string `json:"DBNodeStatus,omitempty" xml:"DBNodeStatus,omitempty"`
-	// The priority of failover. Each node is assigned a failover priority. If a failover occurs, a node can be selected as the primary node based on the priority. A larger value indicates a higher priority. Valid values: 1 to 15.
+	// The failover priority. Each node is assigned a failover priority. The failover priority determines which node is selected as the primary node when a failover occurs. A larger value indicates a higher priority. Valid values: 1 to 15.
 	//
 	// example:
 	//
 	// 1
 	FailoverPriority *int32 `json:"FailoverPriority,omitempty" xml:"FailoverPriority,omitempty"`
-	// The maximum number of concurrent connections to the cluster.
+	// The maximum number of concurrent connections.
 	//
 	// example:
 	//
@@ -17787,7 +17925,7 @@ type DescribeGlobalDatabaseNetworkResponseBodyDBClustersDBNodes struct {
 	//
 	// 32000
 	MaxIOPS *int32 `json:"MaxIOPS,omitempty" xml:"MaxIOPS,omitempty"`
-	// The zone ID of the cluster.
+	// The zone ID of the node.
 	//
 	// example:
 	//
@@ -24087,7 +24225,16 @@ type FailoverDBClusterRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	RollBackForDisaster  *bool   `json:"RollBackForDisaster,omitempty" xml:"RollBackForDisaster,omitempty"`
+	// Specifies whether to fail back to the original primary zone after a failover. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// false
+	RollBackForDisaster *bool `json:"RollBackForDisaster,omitempty" xml:"RollBackForDisaster,omitempty"`
 	// The ID of the read-only node that you want to promote to the primary node. You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to query node information, such as node IDs.
 	//
 	// > 	- If you leave this parameter empty, the system selects one or more available read-only nodes that have the highest failover priority as candidate primary nodes. If the failover to the first read-only node fails due to network issues, abnormal replication status, or other reasons, the system attempts to fail over your applications to the next read-only node until the failover is successful.
@@ -24896,9 +25043,14 @@ type ModifyAccountPasswordRequest struct {
 	// example:
 	//
 	// Pw123456
-	NewAccountPassword   *string `json:"NewAccountPassword,omitempty" xml:"NewAccountPassword,omitempty"`
-	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	NewAccountPassword *string `json:"NewAccountPassword,omitempty" xml:"NewAccountPassword,omitempty"`
+	OwnerAccount       *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId            *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The password type.
+	//
+	// example:
+	//
+	// Tair
 	PasswordType         *string `json:"PasswordType,omitempty" xml:"PasswordType,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
