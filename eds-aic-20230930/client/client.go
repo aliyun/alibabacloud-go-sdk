@@ -515,7 +515,8 @@ type CreateAndroidInstanceGroupRequest struct {
 	// example:
 	//
 	// PostPaid
-	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	ChargeType      *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	GpuAcceleration *bool   `json:"GpuAcceleration,omitempty" xml:"GpuAcceleration,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -587,6 +588,11 @@ func (s *CreateAndroidInstanceGroupRequest) SetBizRegionId(v string) *CreateAndr
 
 func (s *CreateAndroidInstanceGroupRequest) SetChargeType(v string) *CreateAndroidInstanceGroupRequest {
 	s.ChargeType = &v
+	return s
+}
+
+func (s *CreateAndroidInstanceGroupRequest) SetGpuAcceleration(v bool) *CreateAndroidInstanceGroupRequest {
+	s.GpuAcceleration = &v
 	return s
 }
 
@@ -1763,7 +1769,8 @@ type DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModel struct {
 	// example:
 	//
 	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RenderingType *string `json:"RenderingType,omitempty" xml:"RenderingType,omitempty"`
 	// example:
 	//
 	// 1280
@@ -1896,6 +1903,11 @@ func (s *DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModel) SetPolicyG
 
 func (s *DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModel) SetRegionId(v string) *DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModel {
 	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModel) SetRenderingType(v string) *DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModel {
+	s.RenderingType = &v
 	return s
 }
 
@@ -2170,7 +2182,8 @@ type DescribeAndroidInstancesResponseBodyInstanceModel struct {
 	// example:
 	//
 	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RenderingType *string `json:"RenderingType,omitempty" xml:"RenderingType,omitempty"`
 }
 
 func (s DescribeAndroidInstancesResponseBodyInstanceModel) String() string {
@@ -2258,6 +2271,11 @@ func (s *DescribeAndroidInstancesResponseBodyInstanceModel) SetRate(v int32) *De
 
 func (s *DescribeAndroidInstancesResponseBodyInstanceModel) SetRegionId(v string) *DescribeAndroidInstancesResponseBodyInstanceModel {
 	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeAndroidInstancesResponseBodyInstanceModel) SetRenderingType(v string) *DescribeAndroidInstancesResponseBodyInstanceModel {
+	s.RenderingType = &v
 	return s
 }
 
@@ -2997,7 +3015,9 @@ type DescribeImageListResponseBodyData struct {
 	// example:
 	//
 	// zh
-	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	Language      *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	ReleaseTime   *string `json:"ReleaseTime,omitempty" xml:"ReleaseTime,omitempty"`
+	RenderingType *string `json:"RenderingType,omitempty" xml:"RenderingType,omitempty"`
 	// example:
 	//
 	// AVAILABLE
@@ -3063,6 +3083,16 @@ func (s *DescribeImageListResponseBodyData) SetImageType(v string) *DescribeImag
 
 func (s *DescribeImageListResponseBodyData) SetLanguage(v string) *DescribeImageListResponseBodyData {
 	s.Language = &v
+	return s
+}
+
+func (s *DescribeImageListResponseBodyData) SetReleaseTime(v string) *DescribeImageListResponseBodyData {
+	s.ReleaseTime = &v
+	return s
+}
+
+func (s *DescribeImageListResponseBodyData) SetRenderingType(v string) *DescribeImageListResponseBodyData {
+	s.RenderingType = &v
 	return s
 }
 
@@ -6393,6 +6423,7 @@ func (s *UpgradeAndroidInstanceGroupRequest) SetInstanceGroupId(v string) *Upgra
 }
 
 type UpgradeAndroidInstanceGroupResponseBody struct {
+	InstanceIds *string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
 	// example:
 	//
 	// 223684716098****
@@ -6409,6 +6440,11 @@ func (s UpgradeAndroidInstanceGroupResponseBody) String() string {
 
 func (s UpgradeAndroidInstanceGroupResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *UpgradeAndroidInstanceGroupResponseBody) SetInstanceIds(v string) *UpgradeAndroidInstanceGroupResponseBody {
+	s.InstanceIds = &v
+	return s
 }
 
 func (s *UpgradeAndroidInstanceGroupResponseBody) SetOrderId(v string) *UpgradeAndroidInstanceGroupResponseBody {
@@ -6803,6 +6839,10 @@ func (client *Client) CreateAndroidInstanceGroupWithOptions(request *CreateAndro
 
 	if !tea.BoolValue(util.IsUnset(request.ChargeType)) {
 		query["ChargeType"] = request.ChargeType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GpuAcceleration)) {
+		query["GpuAcceleration"] = request.GpuAcceleration
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ImageId)) {
