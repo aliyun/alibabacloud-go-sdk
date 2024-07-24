@@ -12932,6 +12932,176 @@ func (s *DescribeDtsEtlJobVersionInfoResponse) SetBody(v *DescribeDtsEtlJobVersi
 	return s
 }
 
+type DescribeDtsJobConfigRequest struct {
+	DtsJobId        *string `json:"DtsJobId,omitempty" xml:"DtsJobId,omitempty"`
+	ForAcceleration *string `json:"ForAcceleration,omitempty" xml:"ForAcceleration,omitempty"`
+	Module          *string `json:"Module,omitempty" xml:"Module,omitempty"`
+	OwnerId         *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+}
+
+func (s DescribeDtsJobConfigRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDtsJobConfigRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDtsJobConfigRequest) SetDtsJobId(v string) *DescribeDtsJobConfigRequest {
+	s.DtsJobId = &v
+	return s
+}
+
+func (s *DescribeDtsJobConfigRequest) SetForAcceleration(v string) *DescribeDtsJobConfigRequest {
+	s.ForAcceleration = &v
+	return s
+}
+
+func (s *DescribeDtsJobConfigRequest) SetModule(v string) *DescribeDtsJobConfigRequest {
+	s.Module = &v
+	return s
+}
+
+func (s *DescribeDtsJobConfigRequest) SetOwnerId(v string) *DescribeDtsJobConfigRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DescribeDtsJobConfigRequest) SetRegionId(v string) *DescribeDtsJobConfigRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeDtsJobConfigRequest) SetResourceGroupId(v string) *DescribeDtsJobConfigRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
+type DescribeDtsJobConfigResponseBody struct {
+	Parameters []*DescribeDtsJobConfigResponseBodyParameters `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Repeated"`
+	RequestId  *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeDtsJobConfigResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDtsJobConfigResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDtsJobConfigResponseBody) SetParameters(v []*DescribeDtsJobConfigResponseBodyParameters) *DescribeDtsJobConfigResponseBody {
+	s.Parameters = v
+	return s
+}
+
+func (s *DescribeDtsJobConfigResponseBody) SetRequestId(v string) *DescribeDtsJobConfigResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeDtsJobConfigResponseBodyParameters struct {
+	CheckingCode   *string `json:"CheckingCode,omitempty" xml:"CheckingCode,omitempty"`
+	DefaultValue   *string `json:"DefaultValue,omitempty" xml:"DefaultValue,omitempty"`
+	Description    *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	ForceRestart   *string `json:"ForceRestart,omitempty" xml:"ForceRestart,omitempty"`
+	Modifiable     *string `json:"Modifiable,omitempty" xml:"Modifiable,omitempty"`
+	Module         *string `json:"Module,omitempty" xml:"Module,omitempty"`
+	Name           *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	RecommendValue *string `json:"RecommendValue,omitempty" xml:"RecommendValue,omitempty"`
+	RunningValue   *string `json:"RunningValue,omitempty" xml:"RunningValue,omitempty"`
+	ValueType      *int32  `json:"ValueType,omitempty" xml:"ValueType,omitempty"`
+}
+
+func (s DescribeDtsJobConfigResponseBodyParameters) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDtsJobConfigResponseBodyParameters) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDtsJobConfigResponseBodyParameters) SetCheckingCode(v string) *DescribeDtsJobConfigResponseBodyParameters {
+	s.CheckingCode = &v
+	return s
+}
+
+func (s *DescribeDtsJobConfigResponseBodyParameters) SetDefaultValue(v string) *DescribeDtsJobConfigResponseBodyParameters {
+	s.DefaultValue = &v
+	return s
+}
+
+func (s *DescribeDtsJobConfigResponseBodyParameters) SetDescription(v string) *DescribeDtsJobConfigResponseBodyParameters {
+	s.Description = &v
+	return s
+}
+
+func (s *DescribeDtsJobConfigResponseBodyParameters) SetForceRestart(v string) *DescribeDtsJobConfigResponseBodyParameters {
+	s.ForceRestart = &v
+	return s
+}
+
+func (s *DescribeDtsJobConfigResponseBodyParameters) SetModifiable(v string) *DescribeDtsJobConfigResponseBodyParameters {
+	s.Modifiable = &v
+	return s
+}
+
+func (s *DescribeDtsJobConfigResponseBodyParameters) SetModule(v string) *DescribeDtsJobConfigResponseBodyParameters {
+	s.Module = &v
+	return s
+}
+
+func (s *DescribeDtsJobConfigResponseBodyParameters) SetName(v string) *DescribeDtsJobConfigResponseBodyParameters {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeDtsJobConfigResponseBodyParameters) SetRecommendValue(v string) *DescribeDtsJobConfigResponseBodyParameters {
+	s.RecommendValue = &v
+	return s
+}
+
+func (s *DescribeDtsJobConfigResponseBodyParameters) SetRunningValue(v string) *DescribeDtsJobConfigResponseBodyParameters {
+	s.RunningValue = &v
+	return s
+}
+
+func (s *DescribeDtsJobConfigResponseBodyParameters) SetValueType(v int32) *DescribeDtsJobConfigResponseBodyParameters {
+	s.ValueType = &v
+	return s
+}
+
+type DescribeDtsJobConfigResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeDtsJobConfigResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeDtsJobConfigResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDtsJobConfigResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDtsJobConfigResponse) SetHeaders(v map[string]*string) *DescribeDtsJobConfigResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeDtsJobConfigResponse) SetStatusCode(v int32) *DescribeDtsJobConfigResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeDtsJobConfigResponse) SetBody(v *DescribeDtsJobConfigResponseBody) *DescribeDtsJobConfigResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeDtsJobDetailRequest struct {
 	// DescribeDtsJobDetail
 	//
@@ -50255,6 +50425,86 @@ func (client *Client) DescribeDtsEtlJobVersionInfo(request *DescribeDtsEtlJobVer
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDtsEtlJobVersionInfoResponse{}
 	_body, _err := client.DescribeDtsEtlJobVersionInfoWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询DTS任务配置
+//
+// @param request - DescribeDtsJobConfigRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDtsJobConfigResponse
+func (client *Client) DescribeDtsJobConfigWithOptions(request *DescribeDtsJobConfigRequest, runtime *util.RuntimeOptions) (_result *DescribeDtsJobConfigResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DtsJobId)) {
+		query["DtsJobId"] = request.DtsJobId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ForAcceleration)) {
+		query["ForAcceleration"] = request.ForAcceleration
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Module)) {
+		query["Module"] = request.Module
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeDtsJobConfig"),
+		Version:     tea.String("2020-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeDtsJobConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询DTS任务配置
+//
+// @param request - DescribeDtsJobConfigRequest
+//
+// @return DescribeDtsJobConfigResponse
+func (client *Client) DescribeDtsJobConfig(request *DescribeDtsJobConfigRequest) (_result *DescribeDtsJobConfigResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeDtsJobConfigResponse{}
+	_body, _err := client.DescribeDtsJobConfigWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
