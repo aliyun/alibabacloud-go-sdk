@@ -1809,7 +1809,16 @@ type AllocateClusterPublicConnectionRequest struct {
 	//
 	// amv-bp1z5d2q71is2****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	Engine      *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	// The database engine of the cluster. Valid values:
+	//
+	// 	- **AnalyticDB*	- (default): the AnalyticDB for MySQL engine.
+	//
+	// 	- **Clickhouse**: the wide table engine.
+	//
+	// example:
+	//
+	// Clickhouse
+	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
 }
 
 func (s AllocateClusterPublicConnectionRequest) String() string {
@@ -2366,6 +2375,10 @@ type CreateAccountRequest struct {
 	// 	- The description cannot start with `http://` or `https://`.
 	//
 	// 	- The description can be up to 256 characters in length.
+	//
+	// example:
+	//
+	// test
 	AccountDescription *string `json:"AccountDescription,omitempty" xml:"AccountDescription,omitempty"`
 	// The name of the database account.
 	//
@@ -2417,7 +2430,16 @@ type CreateAccountRequest struct {
 	//
 	// amv-bp11q28kvl688****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	Engine      *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	// The database engine of the cluster. Valid values:
+	//
+	// 	- **AnalyticDB*	- (default): the AnalyticDB for MySQL engine.
+	//
+	// 	- **Clickhouse**: the wide table engine.
+	//
+	// example:
+	//
+	// Clickhouse
+	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
 }
 
 func (s CreateAccountRequest) String() string {
@@ -4313,7 +4335,16 @@ type DeleteAccountRequest struct {
 	//
 	// amv-bp11q28kvl688****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	Engine      *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	// The database engine of the cluster. Valid values:
+	//
+	// 	- **AnalyticDB*	- (default): the AnalyticDB for MySQL engine.
+	//
+	// 	- **Clickhouse**: the wide table engine.
+	//
+	// example:
+	//
+	// Clickhouse
+	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
 }
 
 func (s DeleteAccountRequest) String() string {
@@ -6045,8 +6076,17 @@ type DescribeAccountsRequest struct {
 	//
 	// amv-bp11q28kvl688****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	Engine      *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	OwnerId     *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The database engine of the cluster. Valid values:
+	//
+	// 	- **AnalyticDB*	- (default): the AnalyticDB for MySQL engine.
+	//
+	// 	- **Clickhouse**: the wide table engine.
+	//
+	// example:
+	//
+	// Clickhouse
+	Engine  *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	OwnerId *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 }
 
 func (s DescribeAccountsRequest) String() string {
@@ -6158,7 +6198,16 @@ type DescribeAccountsResponseBodyAccountListDBAccount struct {
 	//
 	// Normal
 	AccountType *string `json:"AccountType,omitempty" xml:"AccountType,omitempty"`
-	Engine      *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	// The database engine of the cluster. Valid values:
+	//
+	// 	- **AnalyticDB**: the AnalyticDB for MySQL engine.
+	//
+	// 	- **Clickhouse**: the wide table engine.
+	//
+	// example:
+	//
+	// Clickhouse
+	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
 	// The ID of the Resource Access Management (RAM) user.
 	//
 	// example:
@@ -8929,7 +8978,16 @@ type DescribeClusterNetInfoRequest struct {
 	//
 	// amv-wz9dqvn0o7****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	Engine      *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	// The database engine of the cluster. Valid values:
+	//
+	// 	- **AnalyticDB*	- (default): the AnalyticDB for MySQL engine.
+	//
+	// 	- **Clickhouse**: the wide table engine.
+	//
+	// example:
+	//
+	// Clickhouse
+	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
 }
 
 func (s DescribeClusterNetInfoRequest) String() string {
@@ -8957,7 +9015,7 @@ type DescribeClusterNetInfoResponseBody struct {
 	//
 	// VPC
 	ClusterNetworkType *string `json:"ClusterNetworkType,omitempty" xml:"ClusterNetworkType,omitempty"`
-	// The network information about the cluster.
+	// The queried network information about the cluster.
 	Items *DescribeClusterNetInfoResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -9010,9 +9068,9 @@ func (s *DescribeClusterNetInfoResponseBodyItems) SetAddress(v []*DescribeCluste
 type DescribeClusterNetInfoResponseBodyItemsAddress struct {
 	// The endpoint of the cluster.
 	//
-	// 	- If the network type of the cluster is VPC, the VPC endpoint of the cluster is returned.
+	// 	- If NetType is set to VPC, the VPC endpoint of the cluster is returned.
 	//
-	// 	- If the network type of the cluster is Public, the public endpoint of the cluster is returned.
+	// 	- If NetType is set to Public, the public endpoint of the cluster is returned.
 	//
 	// example:
 	//
@@ -9020,9 +9078,9 @@ type DescribeClusterNetInfoResponseBodyItemsAddress struct {
 	ConnectionString *string `json:"ConnectionString,omitempty" xml:"ConnectionString,omitempty"`
 	// The prefix of the endpoint.
 	//
-	// 	- If the network type of the cluster is VPC, the prefix of the private endpoint is returned.
+	// 	- If NetType is set to VPC, the prefix of the VPC endpoint is returned.
 	//
-	// 	- If the network type of the cluster is Public, the prefix of the public endpoint is returned.
+	// 	- If NetType is set to Public, the prefix of the public endpoint is returned.
 	//
 	// example:
 	//
@@ -9030,9 +9088,9 @@ type DescribeClusterNetInfoResponseBodyItemsAddress struct {
 	ConnectionStringPrefix *string `json:"ConnectionStringPrefix,omitempty" xml:"ConnectionStringPrefix,omitempty"`
 	// The IP address of the endpoint.
 	//
-	// 	- If the network type of the cluster is VPC, the IP address of the private endpoint is returned.
+	// 	- If NetType is set to VPC, the private IP address of the cluster is returned.
 	//
-	// 	- If the network type of the cluster is Public, the IP address of the public endpoint is returned.
+	// 	- If NetType is set to Public, the public IP address of the cluster is returned.
 	//
 	// example:
 	//
@@ -9053,11 +9111,12 @@ type DescribeClusterNetInfoResponseBodyItemsAddress struct {
 	// example:
 	//
 	// 3306
-	Port  *string                                              `json:"Port,omitempty" xml:"Port,omitempty"`
+	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
+	// The ports.
 	Ports *DescribeClusterNetInfoResponseBodyItemsAddressPorts `json:"Ports,omitempty" xml:"Ports,omitempty" type:"Struct"`
 	// The VPC ID.
 	//
-	// > If NetType is set to Public, an empty string is returned for this parameter.
+	// >  If NetType is set to Public, an empty string is returned.
 	//
 	// example:
 	//
@@ -9065,7 +9124,7 @@ type DescribeClusterNetInfoResponseBodyItemsAddress struct {
 	VPCId *string `json:"VPCId,omitempty" xml:"VPCId,omitempty"`
 	// The vSwitch ID of the cluster.
 	//
-	// > If NetType is set to Public, an empty string is returned for this parameter.
+	// >  If NetType is set to Public, an empty string is returned.
 	//
 	// example:
 	//
@@ -9139,7 +9198,25 @@ func (s *DescribeClusterNetInfoResponseBodyItemsAddressPorts) SetPorts(v []*Desc
 }
 
 type DescribeClusterNetInfoResponseBodyItemsAddressPortsPorts struct {
-	Port     *string `json:"Port,omitempty" xml:"Port,omitempty"`
+	// The port.
+	//
+	// example:
+	//
+	// 3306
+	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
+	// The type of the protocol. Valid values:
+	//
+	// 	- **tcp**
+	//
+	// 	- **http**
+	//
+	// 	- **https**
+	//
+	// 	- **mysql**
+	//
+	// example:
+	//
+	// mysql
 	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
 }
 
@@ -10267,8 +10344,22 @@ func (s *DescribeDBClusterAttributeResponseBodyItems) SetDBCluster(v []*Describe
 }
 
 type DescribeDBClusterAttributeResponseBodyItemsDBCluster struct {
+	// The cache size of the ClickHouse wide table engine. Unit: GB. If a value of -1 is returned, the ClickHouse wide table engine is disabled. If a value other than -1 is returned, this parameter indicates the disk cache size.
+	//
+	// example:
+	//
+	// 100
 	ClickhouseEngineCacheSize *int32 `json:"ClickhouseEngineCacheSize,omitempty" xml:"ClickhouseEngineCacheSize,omitempty"`
-	ClickhouseEngineEnabled   *bool  `json:"ClickhouseEngineEnabled,omitempty" xml:"ClickhouseEngineEnabled,omitempty"`
+	// Indicates whether the ClickHouse wide table engine is enabled. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
+	ClickhouseEngineEnabled *bool `json:"ClickhouseEngineEnabled,omitempty" xml:"ClickhouseEngineEnabled,omitempty"`
 	// The billing method of the cluster. Valid values:
 	//
 	// 	- **ads**: pay-as-you-go.
@@ -10395,7 +10486,14 @@ type DescribeDBClusterAttributeResponseBodyItemsDBCluster struct {
 	//
 	// false
 	Expired *string `json:"Expired,omitempty" xml:"Expired,omitempty"`
-	KmsId   *string `json:"KmsId,omitempty" xml:"KmsId,omitempty"`
+	// The ID of the key that is used to encrypt disk data.
+	//
+	// >  This parameter is returned only when disk encryption is enabled.
+	//
+	// example:
+	//
+	// e1935511-cf88-1123-a0f8-1be8d251****
+	KmsId *string `json:"KmsId,omitempty" xml:"KmsId,omitempty"`
 	// The lock mode of the cluster. Valid values:
 	//
 	// 	- **Unlock**: The cluster is not locked.
@@ -10445,8 +10543,22 @@ type DescribeDBClusterAttributeResponseBodyItemsDBCluster struct {
 	// example:
 	//
 	// 3306
-	Port           *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
-	ProductForm    *string `json:"ProductForm,omitempty" xml:"ProductForm,omitempty"`
+	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
+	// A reserved parameter.
+	//
+	// example:
+	//
+	// N/A
+	ProductForm *string `json:"ProductForm,omitempty" xml:"ProductForm,omitempty"`
+	// The edition of the cluster. Valid values:
+	//
+	// 	- **BasicVersion**: Basic Edition.
+	//
+	// 	- **EnterpriseVersion**: Enterprise Edition.
+	//
+	// example:
+	//
+	// BasicVersion
 	ProductVersion *string `json:"ProductVersion,omitempty" xml:"ProductVersion,omitempty"`
 	// The region ID of the cluster.
 	//
@@ -10459,9 +10571,19 @@ type DescribeDBClusterAttributeResponseBodyItemsDBCluster struct {
 	// example:
 	//
 	// 24ACU
-	ReservedACU       *string `json:"ReservedACU,omitempty" xml:"ReservedACU,omitempty"`
-	ReservedNodeCount *int32  `json:"ReservedNodeCount,omitempty" xml:"ReservedNodeCount,omitempty"`
-	ReservedNodeSize  *string `json:"ReservedNodeSize,omitempty" xml:"ReservedNodeSize,omitempty"`
+	ReservedACU *string `json:"ReservedACU,omitempty" xml:"ReservedACU,omitempty"`
+	// A reserved parameter.
+	//
+	// example:
+	//
+	// N/A
+	ReservedNodeCount *int32 `json:"ReservedNodeCount,omitempty" xml:"ReservedNodeCount,omitempty"`
+	// A reserved parameter.
+	//
+	// example:
+	//
+	// N/A
+	ReservedNodeSize *string `json:"ReservedNodeSize,omitempty" xml:"ReservedNodeSize,omitempty"`
 	// The resource group ID.
 	//
 	// example:
@@ -10480,7 +10602,7 @@ type DescribeDBClusterAttributeResponseBodyItemsDBCluster struct {
 	//
 	// 24ACU
 	StorageResourceTotal *string `json:"StorageResourceTotal,omitempty" xml:"StorageResourceTotal,omitempty"`
-	// A reserved parameter.
+	// Reserved parameters.
 	SupportedFeatures map[string]*string `json:"SupportedFeatures,omitempty" xml:"SupportedFeatures,omitempty"`
 	// The tags that are added to the cluster.
 	Tags *DescribeDBClusterAttributeResponseBodyItemsDBClusterTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
@@ -16606,7 +16728,13 @@ type DescribeJobResourceUsageResponseBodyDataJobAcuUsageAcuUsageDetail struct {
 	//
 	// 16ACU
 	ReservedAcuNumber *float32 `json:"ReservedAcuNumber,omitempty" xml:"ReservedAcuNumber,omitempty"`
-	SpotAcuNumber     *float32 `json:"SpotAcuNumber,omitempty" xml:"SpotAcuNumber,omitempty"`
+	// example:
+	//
+	// 16ACU
+	SpotAcuNumber *float32 `json:"SpotAcuNumber,omitempty" xml:"SpotAcuNumber,omitempty"`
+	// example:
+	//
+	// 0.9
 	SpotAcuPercentage *float32 `json:"SpotAcuPercentage,omitempty" xml:"SpotAcuPercentage,omitempty"`
 	// The total number of ACUs.
 	//
@@ -17407,6 +17535,7 @@ type DescribeRegionsRequest struct {
 	AcceptLanguage       *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 }
@@ -17431,6 +17560,11 @@ func (s *DescribeRegionsRequest) SetOwnerAccount(v string) *DescribeRegionsReque
 
 func (s *DescribeRegionsRequest) SetOwnerId(v int64) *DescribeRegionsRequest {
 	s.OwnerId = &v
+	return s
+}
+
+func (s *DescribeRegionsRequest) SetRegionId(v string) *DescribeRegionsRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -25268,7 +25402,16 @@ type ModifyAccountDescriptionRequest struct {
 	//
 	// amv-bp11q28kvl688****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	Engine      *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	// The database engine of the cluster. Valid values:
+	//
+	// 	- **AnalyticDB*	- (default): the AnalyticDB for MySQL engine.
+	//
+	// 	- **Clickhouse**: the wide table engine.
+	//
+	// example:
+	//
+	// Clickhouse
+	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
 }
 
 func (s ModifyAccountDescriptionRequest) String() string {
@@ -27668,7 +27811,16 @@ type ReleaseClusterPublicConnectionRequest struct {
 	//
 	// amv-bp11q28kvl688****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	Engine      *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	// The database engine of the cluster. Valid values:
+	//
+	// 	- **AnalyticDB*	- (default): the AnalyticDB for MySQL engine.
+	//
+	// 	- **Clickhouse**: the wide table engine.
+	//
+	// example:
+	//
+	// Clickhouse
+	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
 }
 
 func (s ReleaseClusterPublicConnectionRequest) String() string {
@@ -27690,7 +27842,7 @@ func (s *ReleaseClusterPublicConnectionRequest) SetEngine(v string) *ReleaseClus
 }
 
 type ReleaseClusterPublicConnectionResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -27917,7 +28069,16 @@ type ResetAccountPasswordRequest struct {
 	//
 	// amv-bp11q28kvl688****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	Engine      *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	// The database engine of the cluster. Valid values:
+	//
+	// 	- **AnalyticDB*	- (default): the AnalyticDB for MySQL engine.
+	//
+	// 	- **Clickhouse**: the wide table engine.
+	//
+	// example:
+	//
+	// Clickhouse
+	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
 }
 
 func (s ResetAccountPasswordRequest) String() string {
@@ -34314,6 +34475,10 @@ func (client *Client) DescribeRegionsWithOptions(request *DescribeRegionsRequest
 		query["OwnerId"] = request.OwnerId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
 		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
 	}
@@ -39097,6 +39262,14 @@ func (client *Client) PreloadSparkAppMetrics(request *PreloadSparkAppMetricsRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// Releases the public endpoint of an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+//
+// Description:
+//
+// For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
+//
 // @param request - ReleaseClusterPublicConnectionRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -39139,6 +39312,14 @@ func (client *Client) ReleaseClusterPublicConnectionWithOptions(request *Release
 	return _result, _err
 }
 
+// Summary:
+//
+// Releases the public endpoint of an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+//
+// Description:
+//
+// For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
+//
 // @param request - ReleaseClusterPublicConnectionRequest
 //
 // @return ReleaseClusterPublicConnectionResponse
