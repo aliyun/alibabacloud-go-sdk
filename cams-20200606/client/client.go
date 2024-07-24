@@ -10,38 +10,31 @@ import (
 )
 
 type AddChatappPhoneNumberRequest struct {
-	// The country code.
-	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 86
 	Cc *string `json:"Cc,omitempty" xml:"Cc,omitempty"`
-	// The space ID of the user within the independent software vendor (ISV) account.
-	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 939283893939
 	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
-	// The phone number without a country code.
-	//
+	OwnerId     *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 13800000000
 	PhoneNumber *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
-	// The ID of the pre-registered phone number.
-	//
 	// example:
 	//
 	// 10202020
-	PreValidateId *string `json:"PreValidateId,omitempty" xml:"PreValidateId,omitempty"`
-	// The display name of the phone number.
-	//
+	PreValidateId        *string `json:"PreValidateId,omitempty" xml:"PreValidateId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -68,6 +61,11 @@ func (s *AddChatappPhoneNumberRequest) SetCustSpaceId(v string) *AddChatappPhone
 	return s
 }
 
+func (s *AddChatappPhoneNumberRequest) SetOwnerId(v int64) *AddChatappPhoneNumberRequest {
+	s.OwnerId = &v
+	return s
+}
+
 func (s *AddChatappPhoneNumberRequest) SetPhoneNumber(v string) *AddChatappPhoneNumberRequest {
 	s.PhoneNumber = &v
 	return s
@@ -75,6 +73,16 @@ func (s *AddChatappPhoneNumberRequest) SetPhoneNumber(v string) *AddChatappPhone
 
 func (s *AddChatappPhoneNumberRequest) SetPreValidateId(v string) *AddChatappPhoneNumberRequest {
 	s.PreValidateId = &v
+	return s
+}
+
+func (s *AddChatappPhoneNumberRequest) SetResourceOwnerAccount(v string) *AddChatappPhoneNumberRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *AddChatappPhoneNumberRequest) SetResourceOwnerId(v int64) *AddChatappPhoneNumberRequest {
+	s.ResourceOwnerId = &v
 	return s
 }
 
@@ -108,6 +116,10 @@ type AddChatappPhoneNumberResponseBody struct {
 	//
 	// 90E63D28-E31D-1EB2-8939-A9486641****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// false
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s AddChatappPhoneNumberResponseBody) String() string {
@@ -135,6 +147,11 @@ func (s *AddChatappPhoneNumberResponseBody) SetMessage(v string) *AddChatappPhon
 
 func (s *AddChatappPhoneNumberResponseBody) SetRequestId(v string) *AddChatappPhoneNumberResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *AddChatappPhoneNumberResponseBody) SetSuccess(v bool) *AddChatappPhoneNumberResponseBody {
+	s.Success = &v
 	return s
 }
 
@@ -1243,13 +1260,14 @@ func (s *BeeBotChatResponse) SetBody(v *BeeBotChatResponseBody) *BeeBotChatRespo
 }
 
 type ChatappBindWabaRequest struct {
-	// The ID of the WhatsApp Business account.
-	//
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 2293938222343****
+	// 33993***
 	WabaId *string `json:"WabaId,omitempty" xml:"WabaId,omitempty"`
 }
 
@@ -1259,6 +1277,21 @@ func (s ChatappBindWabaRequest) String() string {
 
 func (s ChatappBindWabaRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ChatappBindWabaRequest) SetOwnerId(v int64) *ChatappBindWabaRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *ChatappBindWabaRequest) SetResourceOwnerAccount(v string) *ChatappBindWabaRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *ChatappBindWabaRequest) SetResourceOwnerId(v int64) *ChatappBindWabaRequest {
+	s.ResourceOwnerId = &v
+	return s
 }
 
 func (s *ChatappBindWabaRequest) SetWabaId(v string) *ChatappBindWabaRequest {
@@ -1292,6 +1325,10 @@ type ChatappBindWabaResponseBody struct {
 	//
 	// 90E63D28-E31D-1EB2-8939-A94866411B2O
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ChatappBindWabaResponseBody) String() string {
@@ -1324,6 +1361,11 @@ func (s *ChatappBindWabaResponseBody) SetMessage(v string) *ChatappBindWabaRespo
 
 func (s *ChatappBindWabaResponseBody) SetRequestId(v string) *ChatappBindWabaResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *ChatappBindWabaResponseBody) SetSuccess(v bool) *ChatappBindWabaResponseBody {
+	s.Success = &v
 	return s
 }
 
@@ -1985,22 +2027,21 @@ func (s *ChatappPhoneNumberDeregisterResponse) SetBody(v *ChatappPhoneNumberDere
 }
 
 type ChatappPhoneNumberRegisterRequest struct {
-	// The space ID of the user under the independent software vendor (ISV) account.
-	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 939283893939***
+	// 939283893939
 	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
-	// The phone number.
-	//
+	OwnerId     *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 8613800001234
-	PhoneNumber *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
+	// 8613800000000
+	PhoneNumber          *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 }
 
 func (s ChatappPhoneNumberRegisterRequest) String() string {
@@ -2016,8 +2057,23 @@ func (s *ChatappPhoneNumberRegisterRequest) SetCustSpaceId(v string) *ChatappPho
 	return s
 }
 
+func (s *ChatappPhoneNumberRegisterRequest) SetOwnerId(v int64) *ChatappPhoneNumberRegisterRequest {
+	s.OwnerId = &v
+	return s
+}
+
 func (s *ChatappPhoneNumberRegisterRequest) SetPhoneNumber(v string) *ChatappPhoneNumberRegisterRequest {
 	s.PhoneNumber = &v
+	return s
+}
+
+func (s *ChatappPhoneNumberRegisterRequest) SetResourceOwnerAccount(v string) *ChatappPhoneNumberRegisterRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *ChatappPhoneNumberRegisterRequest) SetResourceOwnerId(v int64) *ChatappPhoneNumberRegisterRequest {
+	s.ResourceOwnerId = &v
 	return s
 }
 
@@ -2045,6 +2101,10 @@ type ChatappPhoneNumberRegisterResponseBody struct {
 	//
 	// 90E63D28-E31D-1EB2-8939-A9486641****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ChatappPhoneNumberRegisterResponseBody) String() string {
@@ -2072,6 +2132,11 @@ func (s *ChatappPhoneNumberRegisterResponseBody) SetMessage(v string) *ChatappPh
 
 func (s *ChatappPhoneNumberRegisterResponseBody) SetRequestId(v string) *ChatappPhoneNumberRegisterResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *ChatappPhoneNumberRegisterResponseBody) SetSuccess(v bool) *ChatappPhoneNumberRegisterResponseBody {
+	s.Success = &v
 	return s
 }
 
@@ -2112,7 +2177,10 @@ type ChatappSyncPhoneNumberRequest struct {
 	// example:
 	//
 	// 293483938849493****
-	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
+	CustSpaceId          *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 }
 
 func (s ChatappSyncPhoneNumberRequest) String() string {
@@ -2125,6 +2193,21 @@ func (s ChatappSyncPhoneNumberRequest) GoString() string {
 
 func (s *ChatappSyncPhoneNumberRequest) SetCustSpaceId(v string) *ChatappSyncPhoneNumberRequest {
 	s.CustSpaceId = &v
+	return s
+}
+
+func (s *ChatappSyncPhoneNumberRequest) SetOwnerId(v int64) *ChatappSyncPhoneNumberRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *ChatappSyncPhoneNumberRequest) SetResourceOwnerAccount(v string) *ChatappSyncPhoneNumberRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *ChatappSyncPhoneNumberRequest) SetResourceOwnerId(v int64) *ChatappSyncPhoneNumberRequest {
+	s.ResourceOwnerId = &v
 	return s
 }
 
@@ -2154,6 +2237,10 @@ type ChatappSyncPhoneNumberResponseBody struct {
 	//
 	// 90E63D28-E31D-1EB2-8939-A94866411B2O
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ChatappSyncPhoneNumberResponseBody) String() string {
@@ -2186,6 +2273,11 @@ func (s *ChatappSyncPhoneNumberResponseBody) SetPhoneNumbers(v []*ChatappSyncPho
 
 func (s *ChatappSyncPhoneNumberResponseBody) SetRequestId(v string) *ChatappSyncPhoneNumberResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *ChatappSyncPhoneNumberResponseBody) SetSuccess(v bool) *ChatappSyncPhoneNumberResponseBody {
+	s.Success = &v
 	return s
 }
 
@@ -2362,29 +2454,26 @@ func (s *ChatappSyncPhoneNumberResponse) SetBody(v *ChatappSyncPhoneNumberRespon
 }
 
 type ChatappVerifyAndRegisterRequest struct {
-	// The space ID of the user under the independent software vendor (ISV) account.
-	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 29389299388383
 	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
-	// The phone number.
-	//
+	OwnerId     *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 8613800001234
-	PhoneNumber *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
-	// The verification code.
-	//
+	// 86138000000
+	PhoneNumber          *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 223222
+	// 123466
 	VerifyCode *string `json:"VerifyCode,omitempty" xml:"VerifyCode,omitempty"`
 }
 
@@ -2401,8 +2490,23 @@ func (s *ChatappVerifyAndRegisterRequest) SetCustSpaceId(v string) *ChatappVerif
 	return s
 }
 
+func (s *ChatappVerifyAndRegisterRequest) SetOwnerId(v int64) *ChatappVerifyAndRegisterRequest {
+	s.OwnerId = &v
+	return s
+}
+
 func (s *ChatappVerifyAndRegisterRequest) SetPhoneNumber(v string) *ChatappVerifyAndRegisterRequest {
 	s.PhoneNumber = &v
+	return s
+}
+
+func (s *ChatappVerifyAndRegisterRequest) SetResourceOwnerAccount(v string) *ChatappVerifyAndRegisterRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *ChatappVerifyAndRegisterRequest) SetResourceOwnerId(v int64) *ChatappVerifyAndRegisterRequest {
+	s.ResourceOwnerId = &v
 	return s
 }
 
@@ -2435,6 +2539,10 @@ type ChatappVerifyAndRegisterResponseBody struct {
 	//
 	// 90E63D28-E31D-1EB2-8939-A9486641****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ChatappVerifyAndRegisterResponseBody) String() string {
@@ -2462,6 +2570,11 @@ func (s *ChatappVerifyAndRegisterResponseBody) SetMessage(v string) *ChatappVeri
 
 func (s *ChatappVerifyAndRegisterResponseBody) SetRequestId(v string) *ChatappVerifyAndRegisterResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *ChatappVerifyAndRegisterResponseBody) SetSuccess(v bool) *ChatappVerifyAndRegisterResponseBody {
+	s.Success = &v
 	return s
 }
 
@@ -4070,8 +4183,6 @@ type DeleteChatappTemplateRequest struct {
 	//
 	// 28251486512358****
 	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
-	// Deprecated
-	//
 	// The WhatsApp Business account (WABA) ID of the user within the independent software vendor (ISV) account.
 	//
 	// >  CustWabaId is an obsolete parameter. Use CustSpaceId instead.
@@ -4089,7 +4200,10 @@ type DeleteChatappTemplateRequest struct {
 	// example:
 	//
 	// zh_CN
-	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	Language             *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The code of the message template.
 	//
 	// example:
@@ -4098,7 +4212,7 @@ type DeleteChatappTemplateRequest struct {
 	TemplateCode *string `json:"TemplateCode,omitempty" xml:"TemplateCode,omitempty"`
 	// example:
 	//
-	// test_name
+	// test
 	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
 	// example:
 	//
@@ -4131,6 +4245,21 @@ func (s *DeleteChatappTemplateRequest) SetIsvCode(v string) *DeleteChatappTempla
 
 func (s *DeleteChatappTemplateRequest) SetLanguage(v string) *DeleteChatappTemplateRequest {
 	s.Language = &v
+	return s
+}
+
+func (s *DeleteChatappTemplateRequest) SetOwnerId(v int64) *DeleteChatappTemplateRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DeleteChatappTemplateRequest) SetResourceOwnerAccount(v string) *DeleteChatappTemplateRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *DeleteChatappTemplateRequest) SetResourceOwnerId(v int64) *DeleteChatappTemplateRequest {
+	s.ResourceOwnerId = &v
 	return s
 }
 
@@ -4173,6 +4302,10 @@ type DeleteChatappTemplateResponseBody struct {
 	//
 	// 90E63D28-E31D-1EB2-8939-A9486641****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DeleteChatappTemplateResponseBody) String() string {
@@ -4200,6 +4333,11 @@ func (s *DeleteChatappTemplateResponseBody) SetMessage(v string) *DeleteChatappT
 
 func (s *DeleteChatappTemplateResponseBody) SetRequestId(v string) *DeleteChatappTemplateResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteChatappTemplateResponseBody) SetSuccess(v bool) *DeleteChatappTemplateResponseBody {
+	s.Success = &v
 	return s
 }
 
@@ -6478,38 +6616,33 @@ func (s *GetChatappUploadAuthorizationResponse) SetBody(v *GetChatappUploadAutho
 }
 
 type GetChatappVerifyCodeRequest struct {
-	// The space ID of the user under the independent software vendor (ISV) account.
-	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 229393838*****
+	// cams-kei****
 	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
-	// The language.
-	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// zh_CN
 	Locale *string `json:"Locale,omitempty" xml:"Locale,omitempty"`
-	// The method to obtain the verification code. Valid values: SMS and VOICE.
-	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// SMS
-	Method *string `json:"Method,omitempty" xml:"Method,omitempty"`
-	// The phone number.
-	//
+	// sms
+	Method  *string `json:"Method,omitempty" xml:"Method,omitempty"`
+	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 8613800001234
-	PhoneNumber *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
+	// 8613800000000
+	PhoneNumber          *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 }
 
 func (s GetChatappVerifyCodeRequest) String() string {
@@ -6535,8 +6668,23 @@ func (s *GetChatappVerifyCodeRequest) SetMethod(v string) *GetChatappVerifyCodeR
 	return s
 }
 
+func (s *GetChatappVerifyCodeRequest) SetOwnerId(v int64) *GetChatappVerifyCodeRequest {
+	s.OwnerId = &v
+	return s
+}
+
 func (s *GetChatappVerifyCodeRequest) SetPhoneNumber(v string) *GetChatappVerifyCodeRequest {
 	s.PhoneNumber = &v
+	return s
+}
+
+func (s *GetChatappVerifyCodeRequest) SetResourceOwnerAccount(v string) *GetChatappVerifyCodeRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *GetChatappVerifyCodeRequest) SetResourceOwnerId(v int64) *GetChatappVerifyCodeRequest {
+	s.ResourceOwnerId = &v
 	return s
 }
 
@@ -6564,6 +6712,10 @@ type GetChatappVerifyCodeResponseBody struct {
 	//
 	// 1612C226-E271-4CFE-9F18-4066D550F91B
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetChatappVerifyCodeResponseBody) String() string {
@@ -6591,6 +6743,11 @@ func (s *GetChatappVerifyCodeResponseBody) SetMessage(v string) *GetChatappVerif
 
 func (s *GetChatappVerifyCodeResponseBody) SetRequestId(v string) *GetChatappVerifyCodeResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *GetChatappVerifyCodeResponseBody) SetSuccess(v bool) *GetChatappVerifyCodeResponseBody {
+	s.Success = &v
 	return s
 }
 
@@ -6632,6 +6789,7 @@ type GetCommerceSettingRequest struct {
 	//
 	// 293483938849493
 	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
+	OwnerId     *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The phone number.
 	//
 	// This parameter is required.
@@ -6639,7 +6797,9 @@ type GetCommerceSettingRequest struct {
 	// example:
 	//
 	// 1380000****
-	PhoneNumber *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
+	PhoneNumber          *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 }
 
 func (s GetCommerceSettingRequest) String() string {
@@ -6655,12 +6815,28 @@ func (s *GetCommerceSettingRequest) SetCustSpaceId(v string) *GetCommerceSetting
 	return s
 }
 
+func (s *GetCommerceSettingRequest) SetOwnerId(v int64) *GetCommerceSettingRequest {
+	s.OwnerId = &v
+	return s
+}
+
 func (s *GetCommerceSettingRequest) SetPhoneNumber(v string) *GetCommerceSettingRequest {
 	s.PhoneNumber = &v
 	return s
 }
 
+func (s *GetCommerceSettingRequest) SetResourceOwnerAccount(v string) *GetCommerceSettingRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *GetCommerceSettingRequest) SetResourceOwnerId(v int64) *GetCommerceSettingRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
 type GetCommerceSettingResponseBody struct {
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The response code.
 	//
 	// 	- The value OK indicates that the request was successful.
@@ -6674,6 +6850,10 @@ type GetCommerceSettingResponseBody struct {
 	// The returned data.
 	Data *GetCommerceSettingResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The error message.
+	//
+	// example:
+	//
+	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
 	//
@@ -6681,6 +6861,10 @@ type GetCommerceSettingResponseBody struct {
 	//
 	// 90E63D28-E31D-1EB2-8939-A9486641****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetCommerceSettingResponseBody) String() string {
@@ -6689,6 +6873,11 @@ func (s GetCommerceSettingResponseBody) String() string {
 
 func (s GetCommerceSettingResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *GetCommerceSettingResponseBody) SetAccessDeniedDetail(v string) *GetCommerceSettingResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
 }
 
 func (s *GetCommerceSettingResponseBody) SetCode(v string) *GetCommerceSettingResponseBody {
@@ -6708,6 +6897,11 @@ func (s *GetCommerceSettingResponseBody) SetMessage(v string) *GetCommerceSettin
 
 func (s *GetCommerceSettingResponseBody) SetRequestId(v string) *GetCommerceSettingResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *GetCommerceSettingResponseBody) SetSuccess(v bool) *GetCommerceSettingResponseBody {
+	s.Success = &v
 	return s
 }
 
@@ -8786,6 +8980,10 @@ type ListChatappTemplateResponseBodyListTemplate struct {
 	//
 	// en
 	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	// example:
+	//
+	// 1711006633000
+	LastUpdateTime *int64 `json:"LastUpdateTime,omitempty" xml:"LastUpdateTime,omitempty"`
 	// The reason for the review failure.
 	//
 	// example:
@@ -8832,6 +9030,11 @@ func (s *ListChatappTemplateResponseBodyListTemplate) SetCategory(v string) *Lis
 
 func (s *ListChatappTemplateResponseBodyListTemplate) SetLanguage(v string) *ListChatappTemplateResponseBodyListTemplate {
 	s.Language = &v
+	return s
+}
+
+func (s *ListChatappTemplateResponseBodyListTemplate) SetLastUpdateTime(v int64) *ListChatappTemplateResponseBodyListTemplate {
+	s.LastUpdateTime = &v
 	return s
 }
 
@@ -11083,7 +11286,7 @@ func (s *ModifyFlowResponse) SetBody(v *ModifyFlowResponseBody) *ModifyFlowRespo
 type ModifyPhoneBusinessProfileRequest struct {
 	// example:
 	//
-	// business profile
+	// 关于
 	About *string `json:"About,omitempty" xml:"About,omitempty"`
 	// The space ID of the user under the independent software vendor (ISV) account.
 	//
@@ -11110,7 +11313,8 @@ type ModifyPhoneBusinessProfileRequest struct {
 	// example:
 	//
 	// aa@aliyun.com
-	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	Email   *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
 	//
 	// This parameter is required.
@@ -11126,7 +11330,9 @@ type ModifyPhoneBusinessProfileRequest struct {
 	// example:
 	//
 	// http://a.img
-	ProfilePictureUrl *string `json:"ProfilePictureUrl,omitempty" xml:"ProfilePictureUrl,omitempty"`
+	ProfilePictureUrl    *string `json:"ProfilePictureUrl,omitempty" xml:"ProfilePictureUrl,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// Sichuan
 	//
 	// example:
@@ -11170,6 +11376,11 @@ func (s *ModifyPhoneBusinessProfileRequest) SetEmail(v string) *ModifyPhoneBusin
 	return s
 }
 
+func (s *ModifyPhoneBusinessProfileRequest) SetOwnerId(v int64) *ModifyPhoneBusinessProfileRequest {
+	s.OwnerId = &v
+	return s
+}
+
 func (s *ModifyPhoneBusinessProfileRequest) SetPhoneNumber(v string) *ModifyPhoneBusinessProfileRequest {
 	s.PhoneNumber = &v
 	return s
@@ -11177,6 +11388,16 @@ func (s *ModifyPhoneBusinessProfileRequest) SetPhoneNumber(v string) *ModifyPhon
 
 func (s *ModifyPhoneBusinessProfileRequest) SetProfilePictureUrl(v string) *ModifyPhoneBusinessProfileRequest {
 	s.ProfilePictureUrl = &v
+	return s
+}
+
+func (s *ModifyPhoneBusinessProfileRequest) SetResourceOwnerAccount(v string) *ModifyPhoneBusinessProfileRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *ModifyPhoneBusinessProfileRequest) SetResourceOwnerId(v int64) *ModifyPhoneBusinessProfileRequest {
+	s.ResourceOwnerId = &v
 	return s
 }
 
@@ -11193,7 +11414,7 @@ func (s *ModifyPhoneBusinessProfileRequest) SetWebsites(v []*string) *ModifyPhon
 type ModifyPhoneBusinessProfileShrinkRequest struct {
 	// example:
 	//
-	// business profile
+	// 关于
 	About *string `json:"About,omitempty" xml:"About,omitempty"`
 	// The space ID of the user under the independent software vendor (ISV) account.
 	//
@@ -11220,7 +11441,8 @@ type ModifyPhoneBusinessProfileShrinkRequest struct {
 	// example:
 	//
 	// aa@aliyun.com
-	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	Email   *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// You can call this operation up to 10 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
 	//
 	// This parameter is required.
@@ -11236,7 +11458,9 @@ type ModifyPhoneBusinessProfileShrinkRequest struct {
 	// example:
 	//
 	// http://a.img
-	ProfilePictureUrl *string `json:"ProfilePictureUrl,omitempty" xml:"ProfilePictureUrl,omitempty"`
+	ProfilePictureUrl    *string `json:"ProfilePictureUrl,omitempty" xml:"ProfilePictureUrl,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// Sichuan
 	//
 	// example:
@@ -11280,6 +11504,11 @@ func (s *ModifyPhoneBusinessProfileShrinkRequest) SetEmail(v string) *ModifyPhon
 	return s
 }
 
+func (s *ModifyPhoneBusinessProfileShrinkRequest) SetOwnerId(v int64) *ModifyPhoneBusinessProfileShrinkRequest {
+	s.OwnerId = &v
+	return s
+}
+
 func (s *ModifyPhoneBusinessProfileShrinkRequest) SetPhoneNumber(v string) *ModifyPhoneBusinessProfileShrinkRequest {
 	s.PhoneNumber = &v
 	return s
@@ -11287,6 +11516,16 @@ func (s *ModifyPhoneBusinessProfileShrinkRequest) SetPhoneNumber(v string) *Modi
 
 func (s *ModifyPhoneBusinessProfileShrinkRequest) SetProfilePictureUrl(v string) *ModifyPhoneBusinessProfileShrinkRequest {
 	s.ProfilePictureUrl = &v
+	return s
+}
+
+func (s *ModifyPhoneBusinessProfileShrinkRequest) SetResourceOwnerAccount(v string) *ModifyPhoneBusinessProfileShrinkRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *ModifyPhoneBusinessProfileShrinkRequest) SetResourceOwnerId(v int64) *ModifyPhoneBusinessProfileShrinkRequest {
+	s.ResourceOwnerId = &v
 	return s
 }
 
@@ -11320,6 +11559,10 @@ type ModifyPhoneBusinessProfileResponseBody struct {
 	//
 	// 90E63D28-E31D-1EB2-8939-A94866411B2O
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ModifyPhoneBusinessProfileResponseBody) String() string {
@@ -11347,6 +11590,11 @@ func (s *ModifyPhoneBusinessProfileResponseBody) SetMessage(v string) *ModifyPho
 
 func (s *ModifyPhoneBusinessProfileResponseBody) SetRequestId(v string) *ModifyPhoneBusinessProfileResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *ModifyPhoneBusinessProfileResponseBody) SetSuccess(v bool) *ModifyPhoneBusinessProfileResponseBody {
+	s.Success = &v
 	return s
 }
 
@@ -12043,6 +12291,7 @@ type QueryPhoneBusinessProfileRequest struct {
 	//
 	// 2934839388494***
 	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
+	OwnerId     *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The phone number.
 	//
 	// This parameter is required.
@@ -12050,7 +12299,9 @@ type QueryPhoneBusinessProfileRequest struct {
 	// example:
 	//
 	// 8613800001234
-	PhoneNumber *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
+	PhoneNumber          *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 }
 
 func (s QueryPhoneBusinessProfileRequest) String() string {
@@ -12066,8 +12317,23 @@ func (s *QueryPhoneBusinessProfileRequest) SetCustSpaceId(v string) *QueryPhoneB
 	return s
 }
 
+func (s *QueryPhoneBusinessProfileRequest) SetOwnerId(v int64) *QueryPhoneBusinessProfileRequest {
+	s.OwnerId = &v
+	return s
+}
+
 func (s *QueryPhoneBusinessProfileRequest) SetPhoneNumber(v string) *QueryPhoneBusinessProfileRequest {
 	s.PhoneNumber = &v
+	return s
+}
+
+func (s *QueryPhoneBusinessProfileRequest) SetResourceOwnerAccount(v string) *QueryPhoneBusinessProfileRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *QueryPhoneBusinessProfileRequest) SetResourceOwnerId(v int64) *QueryPhoneBusinessProfileRequest {
+	s.ResourceOwnerId = &v
 	return s
 }
 
@@ -12097,6 +12363,10 @@ type QueryPhoneBusinessProfileResponseBody struct {
 	//
 	// 90E63D28-E31D-1EB2-8939-A94866411B2O
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s QueryPhoneBusinessProfileResponseBody) String() string {
@@ -12132,7 +12402,15 @@ func (s *QueryPhoneBusinessProfileResponseBody) SetRequestId(v string) *QueryPho
 	return s
 }
 
+func (s *QueryPhoneBusinessProfileResponseBody) SetSuccess(v bool) *QueryPhoneBusinessProfileResponseBody {
+	s.Success = &v
+	return s
+}
+
 type QueryPhoneBusinessProfileResponseBodyData struct {
+	// example:
+	//
+	// 关于
 	About *string `json:"About,omitempty" xml:"About,omitempty"`
 	// The address.
 	//
@@ -12248,7 +12526,10 @@ type QueryWabaBusinessInfoRequest struct {
 	// example:
 	//
 	// 293483938849493****
-	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
+	CustSpaceId          *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The ID of the WABA.
 	//
 	// This parameter is required.
@@ -12269,6 +12550,21 @@ func (s QueryWabaBusinessInfoRequest) GoString() string {
 
 func (s *QueryWabaBusinessInfoRequest) SetCustSpaceId(v string) *QueryWabaBusinessInfoRequest {
 	s.CustSpaceId = &v
+	return s
+}
+
+func (s *QueryWabaBusinessInfoRequest) SetOwnerId(v int64) *QueryWabaBusinessInfoRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *QueryWabaBusinessInfoRequest) SetResourceOwnerAccount(v string) *QueryWabaBusinessInfoRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *QueryWabaBusinessInfoRequest) SetResourceOwnerId(v int64) *QueryWabaBusinessInfoRequest {
+	s.ResourceOwnerId = &v
 	return s
 }
 
@@ -12303,6 +12599,10 @@ type QueryWabaBusinessInfoResponseBody struct {
 	//
 	// 90E63D28-E31D-1EB2-8939-A94866411B2O
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// false
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s QueryWabaBusinessInfoResponseBody) String() string {
@@ -12335,6 +12635,11 @@ func (s *QueryWabaBusinessInfoResponseBody) SetMessage(v string) *QueryWabaBusin
 
 func (s *QueryWabaBusinessInfoResponseBody) SetRequestId(v string) *QueryWabaBusinessInfoResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *QueryWabaBusinessInfoResponseBody) SetSuccess(v bool) *QueryWabaBusinessInfoResponseBody {
+	s.Success = &v
 	return s
 }
 
@@ -14442,6 +14747,7 @@ type UpdateCommerceSettingRequest struct {
 	//
 	// 293483938849493
 	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
+	OwnerId     *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The phone number.
 	//
 	// This parameter is required.
@@ -14449,7 +14755,9 @@ type UpdateCommerceSettingRequest struct {
 	// example:
 	//
 	// 1380000****
-	PhoneNumber *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
+	PhoneNumber          *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 }
 
 func (s UpdateCommerceSettingRequest) String() string {
@@ -14475,12 +14783,28 @@ func (s *UpdateCommerceSettingRequest) SetCustSpaceId(v string) *UpdateCommerceS
 	return s
 }
 
+func (s *UpdateCommerceSettingRequest) SetOwnerId(v int64) *UpdateCommerceSettingRequest {
+	s.OwnerId = &v
+	return s
+}
+
 func (s *UpdateCommerceSettingRequest) SetPhoneNumber(v string) *UpdateCommerceSettingRequest {
 	s.PhoneNumber = &v
 	return s
 }
 
+func (s *UpdateCommerceSettingRequest) SetResourceOwnerAccount(v string) *UpdateCommerceSettingRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *UpdateCommerceSettingRequest) SetResourceOwnerId(v int64) *UpdateCommerceSettingRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
 type UpdateCommerceSettingResponseBody struct {
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The response code.
 	//
 	// 	- The value OK indicates that the request was successful.
@@ -14503,6 +14827,10 @@ type UpdateCommerceSettingResponseBody struct {
 	//
 	// 90E63D28-E31D-1EB2-8939-A94866411B2O
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s UpdateCommerceSettingResponseBody) String() string {
@@ -14511,6 +14839,11 @@ func (s UpdateCommerceSettingResponseBody) String() string {
 
 func (s UpdateCommerceSettingResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *UpdateCommerceSettingResponseBody) SetAccessDeniedDetail(v string) *UpdateCommerceSettingResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
 }
 
 func (s *UpdateCommerceSettingResponseBody) SetCode(v string) *UpdateCommerceSettingResponseBody {
@@ -14525,6 +14858,11 @@ func (s *UpdateCommerceSettingResponseBody) SetMessage(v string) *UpdateCommerce
 
 func (s *UpdateCommerceSettingResponseBody) SetRequestId(v string) *UpdateCommerceSettingResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateCommerceSettingResponseBody) SetSuccess(v bool) *UpdateCommerceSettingResponseBody {
+	s.Success = &v
 	return s
 }
 
@@ -15227,29 +15565,41 @@ func (client *Client) AddChatappPhoneNumberWithOptions(request *AddChatappPhoneN
 	if _err != nil {
 		return _result, _err
 	}
-	body := map[string]interface{}{}
+	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Cc)) {
-		body["Cc"] = request.Cc
+		query["Cc"] = request.Cc
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.CustSpaceId)) {
-		body["CustSpaceId"] = request.CustSpaceId
+		query["CustSpaceId"] = request.CustSpaceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.PhoneNumber)) {
-		body["PhoneNumber"] = request.PhoneNumber
+		query["PhoneNumber"] = request.PhoneNumber
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.PreValidateId)) {
-		body["PreValidateId"] = request.PreValidateId
+		query["PreValidateId"] = request.PreValidateId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.VerifiedName)) {
-		body["VerifiedName"] = request.VerifiedName
+		query["VerifiedName"] = request.VerifiedName
 	}
 
 	req := &openapi.OpenApiRequest{
-		Body: openapiutil.ParseToMap(body),
+		Query: openapiutil.Query(query),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("AddChatappPhoneNumber"),
@@ -15527,13 +15877,25 @@ func (client *Client) ChatappBindWabaWithOptions(request *ChatappBindWabaRequest
 	if _err != nil {
 		return _result, _err
 	}
-	body := map[string]interface{}{}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.WabaId)) {
-		body["WabaId"] = request.WabaId
+		query["WabaId"] = request.WabaId
 	}
 
 	req := &openapi.OpenApiRequest{
-		Body: openapiutil.ParseToMap(body),
+		Query: openapiutil.Query(query),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ChatappBindWaba"),
@@ -15883,17 +16245,29 @@ func (client *Client) ChatappPhoneNumberRegisterWithOptions(request *ChatappPhon
 	if _err != nil {
 		return _result, _err
 	}
-	body := map[string]interface{}{}
+	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.CustSpaceId)) {
-		body["CustSpaceId"] = request.CustSpaceId
+		query["CustSpaceId"] = request.CustSpaceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.PhoneNumber)) {
-		body["PhoneNumber"] = request.PhoneNumber
+		query["PhoneNumber"] = request.PhoneNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
 	}
 
 	req := &openapi.OpenApiRequest{
-		Body: openapiutil.ParseToMap(body),
+		Query: openapiutil.Query(query),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ChatappPhoneNumberRegister"),
@@ -15960,6 +16334,18 @@ func (client *Client) ChatappSyncPhoneNumberWithOptions(request *ChatappSyncPhon
 		query["CustSpaceId"] = request.CustSpaceId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -16023,21 +16409,33 @@ func (client *Client) ChatappVerifyAndRegisterWithOptions(request *ChatappVerify
 	if _err != nil {
 		return _result, _err
 	}
-	body := map[string]interface{}{}
+	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.CustSpaceId)) {
-		body["CustSpaceId"] = request.CustSpaceId
+		query["CustSpaceId"] = request.CustSpaceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.PhoneNumber)) {
-		body["PhoneNumber"] = request.PhoneNumber
+		query["PhoneNumber"] = request.PhoneNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.VerifyCode)) {
-		body["VerifyCode"] = request.VerifyCode
+		query["VerifyCode"] = request.VerifyCode
 	}
 
 	req := &openapi.OpenApiRequest{
-		Body: openapiutil.ParseToMap(body),
+		Query: openapiutil.Query(query),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ChatappVerifyAndRegister"),
@@ -16472,6 +16870,18 @@ func (client *Client) DeleteChatappTemplateWithOptions(request *DeleteChatappTem
 
 	if !tea.BoolValue(util.IsUnset(request.Language)) {
 		query["Language"] = request.Language
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.TemplateCode)) {
@@ -17175,25 +17585,37 @@ func (client *Client) GetChatappVerifyCodeWithOptions(request *GetChatappVerifyC
 	if _err != nil {
 		return _result, _err
 	}
-	body := map[string]interface{}{}
+	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.CustSpaceId)) {
-		body["CustSpaceId"] = request.CustSpaceId
+		query["CustSpaceId"] = request.CustSpaceId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Locale)) {
-		body["Locale"] = request.Locale
+		query["Locale"] = request.Locale
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Method)) {
-		body["Method"] = request.Method
+		query["Method"] = request.Method
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.PhoneNumber)) {
-		body["PhoneNumber"] = request.PhoneNumber
+		query["PhoneNumber"] = request.PhoneNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
 	}
 
 	req := &openapi.OpenApiRequest{
-		Body: openapiutil.ParseToMap(body),
+		Query: openapiutil.Query(query),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetChatappVerifyCode"),
@@ -17260,8 +17682,20 @@ func (client *Client) GetCommerceSettingWithOptions(request *GetCommerceSettingR
 		query["CustSpaceId"] = request.CustSpaceId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.PhoneNumber)) {
 		query["PhoneNumber"] = request.PhoneNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -18744,12 +19178,24 @@ func (client *Client) ModifyPhoneBusinessProfileWithOptions(tmpReq *ModifyPhoneB
 		query["Email"] = request.Email
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.PhoneNumber)) {
 		query["PhoneNumber"] = request.PhoneNumber
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ProfilePictureUrl)) {
 		query["ProfilePictureUrl"] = request.ProfilePictureUrl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Vertical)) {
@@ -19060,8 +19506,20 @@ func (client *Client) QueryPhoneBusinessProfileWithOptions(request *QueryPhoneBu
 		query["CustSpaceId"] = request.CustSpaceId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.PhoneNumber)) {
 		query["PhoneNumber"] = request.PhoneNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -19130,6 +19588,18 @@ func (client *Client) QueryWabaBusinessInfoWithOptions(request *QueryWabaBusines
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.CustSpaceId)) {
 		query["CustSpaceId"] = request.CustSpaceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.WabaId)) {
@@ -19714,8 +20184,20 @@ func (client *Client) UpdateCommerceSettingWithOptions(request *UpdateCommerceSe
 		query["CustSpaceId"] = request.CustSpaceId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.PhoneNumber)) {
 		query["PhoneNumber"] = request.PhoneNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
 	}
 
 	req := &openapi.OpenApiRequest{
