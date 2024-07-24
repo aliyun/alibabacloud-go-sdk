@@ -19611,6 +19611,55 @@ func (s *GetClusterAddonInstanceResponse) SetBody(v *GetClusterAddonInstanceResp
 	return s
 }
 
+type GetClusterAuditProjectResponseBody struct {
+	// example:
+	//
+	// k8s-log-cad1230511cbb4db4a488e58518******
+	SlsProjectName *string `json:"sls_project_name,omitempty" xml:"sls_project_name,omitempty"`
+}
+
+func (s GetClusterAuditProjectResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetClusterAuditProjectResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetClusterAuditProjectResponseBody) SetSlsProjectName(v string) *GetClusterAuditProjectResponseBody {
+	s.SlsProjectName = &v
+	return s
+}
+
+type GetClusterAuditProjectResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetClusterAuditProjectResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetClusterAuditProjectResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetClusterAuditProjectResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetClusterAuditProjectResponse) SetHeaders(v map[string]*string) *GetClusterAuditProjectResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetClusterAuditProjectResponse) SetStatusCode(v int32) *GetClusterAuditProjectResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetClusterAuditProjectResponse) SetBody(v *GetClusterAuditProjectResponseBody) *GetClusterAuditProjectResponse {
+	s.Body = v
+	return s
+}
+
 type GetClusterCheckResponseBody struct {
 	// Id of the request
 	//
@@ -33524,6 +33573,48 @@ func (client *Client) GetClusterAddonInstance(clusterId *string, instanceName *s
 	headers := make(map[string]*string)
 	_result = &GetClusterAddonInstanceResponse{}
 	_body, _err := client.GetClusterAddonInstanceWithOptions(clusterId, instanceName, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetClusterAuditProjectResponse
+func (client *Client) GetClusterAuditProjectWithOptions(clusterid *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetClusterAuditProjectResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetClusterAuditProject"),
+		Version:     tea.String("2015-12-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/clusters/" + tea.StringValue(openapiutil.GetEncodeParam(clusterid)) + "/audit"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetClusterAuditProjectResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @return GetClusterAuditProjectResponse
+func (client *Client) GetClusterAuditProject(clusterid *string) (_result *GetClusterAuditProjectResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetClusterAuditProjectResponse{}
+	_body, _err := client.GetClusterAuditProjectWithOptions(clusterid, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
