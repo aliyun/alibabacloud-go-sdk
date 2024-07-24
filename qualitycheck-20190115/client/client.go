@@ -9062,8 +9062,7 @@ func (s *GetResultResponseBodyDataResultInfoReviewHistoryListReviewHistory) SetT
 }
 
 type GetResultResponseBodyDataResultInfoReviewHistoryListReviewHistoryReviewRightRule struct {
-	Rid      *int64  `json:"Rid,omitempty" xml:"Rid,omitempty"`
-	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	ReviewRightRule []*GetResultResponseBodyDataResultInfoReviewHistoryListReviewHistoryReviewRightRuleReviewRightRule `json:"ReviewRightRule,omitempty" xml:"ReviewRightRule,omitempty" type:"Repeated"`
 }
 
 func (s GetResultResponseBodyDataResultInfoReviewHistoryListReviewHistoryReviewRightRule) String() string {
@@ -9074,12 +9073,30 @@ func (s GetResultResponseBodyDataResultInfoReviewHistoryListReviewHistoryReviewR
 	return s.String()
 }
 
-func (s *GetResultResponseBodyDataResultInfoReviewHistoryListReviewHistoryReviewRightRule) SetRid(v int64) *GetResultResponseBodyDataResultInfoReviewHistoryListReviewHistoryReviewRightRule {
+func (s *GetResultResponseBodyDataResultInfoReviewHistoryListReviewHistoryReviewRightRule) SetReviewRightRule(v []*GetResultResponseBodyDataResultInfoReviewHistoryListReviewHistoryReviewRightRuleReviewRightRule) *GetResultResponseBodyDataResultInfoReviewHistoryListReviewHistoryReviewRightRule {
+	s.ReviewRightRule = v
+	return s
+}
+
+type GetResultResponseBodyDataResultInfoReviewHistoryListReviewHistoryReviewRightRuleReviewRightRule struct {
+	Rid      *int64  `json:"rid,omitempty" xml:"rid,omitempty"`
+	RuleName *string `json:"ruleName,omitempty" xml:"ruleName,omitempty"`
+}
+
+func (s GetResultResponseBodyDataResultInfoReviewHistoryListReviewHistoryReviewRightRuleReviewRightRule) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetResultResponseBodyDataResultInfoReviewHistoryListReviewHistoryReviewRightRuleReviewRightRule) GoString() string {
+	return s.String()
+}
+
+func (s *GetResultResponseBodyDataResultInfoReviewHistoryListReviewHistoryReviewRightRuleReviewRightRule) SetRid(v int64) *GetResultResponseBodyDataResultInfoReviewHistoryListReviewHistoryReviewRightRuleReviewRightRule {
 	s.Rid = &v
 	return s
 }
 
-func (s *GetResultResponseBodyDataResultInfoReviewHistoryListReviewHistoryReviewRightRule) SetRuleName(v string) *GetResultResponseBodyDataResultInfoReviewHistoryListReviewHistoryReviewRightRule {
+func (s *GetResultResponseBodyDataResultInfoReviewHistoryListReviewHistoryReviewRightRuleReviewRightRule) SetRuleName(v string) *GetResultResponseBodyDataResultInfoReviewHistoryListReviewHistoryReviewRightRuleReviewRightRule {
 	s.RuleName = &v
 	return s
 }
@@ -10220,8 +10237,7 @@ func (s *GetResultToReviewResponseBodyDataReviewHistoryListReviewHistory) SetTyp
 }
 
 type GetResultToReviewResponseBodyDataReviewHistoryListReviewHistoryReviewRightRule struct {
-	Rid      *int64  `json:"Rid,omitempty" xml:"Rid,omitempty"`
-	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	ReviewRightRule []*GetResultToReviewResponseBodyDataReviewHistoryListReviewHistoryReviewRightRuleReviewRightRule `json:"ReviewRightRule,omitempty" xml:"ReviewRightRule,omitempty" type:"Repeated"`
 }
 
 func (s GetResultToReviewResponseBodyDataReviewHistoryListReviewHistoryReviewRightRule) String() string {
@@ -10232,12 +10248,30 @@ func (s GetResultToReviewResponseBodyDataReviewHistoryListReviewHistoryReviewRig
 	return s.String()
 }
 
-func (s *GetResultToReviewResponseBodyDataReviewHistoryListReviewHistoryReviewRightRule) SetRid(v int64) *GetResultToReviewResponseBodyDataReviewHistoryListReviewHistoryReviewRightRule {
+func (s *GetResultToReviewResponseBodyDataReviewHistoryListReviewHistoryReviewRightRule) SetReviewRightRule(v []*GetResultToReviewResponseBodyDataReviewHistoryListReviewHistoryReviewRightRuleReviewRightRule) *GetResultToReviewResponseBodyDataReviewHistoryListReviewHistoryReviewRightRule {
+	s.ReviewRightRule = v
+	return s
+}
+
+type GetResultToReviewResponseBodyDataReviewHistoryListReviewHistoryReviewRightRuleReviewRightRule struct {
+	Rid      *int64  `json:"rid,omitempty" xml:"rid,omitempty"`
+	RuleName *string `json:"ruleName,omitempty" xml:"ruleName,omitempty"`
+}
+
+func (s GetResultToReviewResponseBodyDataReviewHistoryListReviewHistoryReviewRightRuleReviewRightRule) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetResultToReviewResponseBodyDataReviewHistoryListReviewHistoryReviewRightRuleReviewRightRule) GoString() string {
+	return s.String()
+}
+
+func (s *GetResultToReviewResponseBodyDataReviewHistoryListReviewHistoryReviewRightRuleReviewRightRule) SetRid(v int64) *GetResultToReviewResponseBodyDataReviewHistoryListReviewHistoryReviewRightRuleReviewRightRule {
 	s.Rid = &v
 	return s
 }
 
-func (s *GetResultToReviewResponseBodyDataReviewHistoryListReviewHistoryReviewRightRule) SetRuleName(v string) *GetResultToReviewResponseBodyDataReviewHistoryListReviewHistoryReviewRightRule {
+func (s *GetResultToReviewResponseBodyDataReviewHistoryListReviewHistoryReviewRightRuleReviewRightRule) SetRuleName(v string) *GetResultToReviewResponseBodyDataReviewHistoryListReviewHistoryReviewRightRuleReviewRightRule {
 	s.RuleName = &v
 	return s
 }

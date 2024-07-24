@@ -10,7 +10,7 @@
 ## 安装
 你可以使用 `go mod` 来管理你的依赖，
 ```sh
-  go get github.com/alibabacloud-go/qualitycheck-20190115/v7
+  go get github.com/alibabacloud-go/qualitycheck-20190115/v8
 ```
 
 ## 问题
