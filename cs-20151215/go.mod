@@ -1,6 +1,6 @@
 module github.com/alibabacloud-go/cs-20151215/v5
 
-go 1.15
+go 1.14
 
 require (
 	github.com/alibabacloud-go/darabonba-openapi/v2 v2.0.8

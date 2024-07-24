@@ -2544,6 +2544,12 @@ func (s *CheckServiceRoleResponse) SetBody(v *CheckServiceRoleResponseBody) *Che
 }
 
 type CleanClusterUserPermissionsRequest struct {
+	// Specifies whether to forcefully delete the specified kubeconfig files. Valid values:
+	//
+	// 	- **false*	- (default): checks the cluster access records within the previous seven days before deleting the kubeconfig files. The kubeconfig files are not deleted if cluster access records are found or fail to be retrieved.
+	//
+	// 	- **true**: forcefully deletes the kubeconfig files without checking cluster access records.
+	//
 	// example:
 	//
 	// false
@@ -2587,7 +2593,16 @@ func (s *CleanClusterUserPermissionsResponse) SetStatusCode(v int32) *CleanClust
 }
 
 type CleanUserPermissionsRequest struct {
+	// The cluster IDs.
+	//
+	// 	- If cluster IDs are specified, only the kubeconfig files of the specified clusters and the relevant RBAC permissions are deleted and revoked.
 	ClusterIds []*string `json:"ClusterIds,omitempty" xml:"ClusterIds,omitempty" type:"Repeated"`
+	// Specifies whether to forcefully delete the specified kubeconfig files. Valid values:
+	//
+	// 	- **false*	- (default): checks the cluster access records within the previous seven days before deleting the kubeconfig files. The kubeconfig files are not deleted if cluster access records are found or fail to be retrieved.
+	//
+	// 	- **true**: forcefully deletes the kubeconfig files without checking cluster access records.
+	//
 	// example:
 	//
 	// false
@@ -2613,7 +2628,16 @@ func (s *CleanUserPermissionsRequest) SetForce(v bool) *CleanUserPermissionsRequ
 }
 
 type CleanUserPermissionsShrinkRequest struct {
+	// The cluster IDs.
+	//
+	// 	- If cluster IDs are specified, only the kubeconfig files of the specified clusters and the relevant RBAC permissions are deleted and revoked.
 	ClusterIdsShrink *string `json:"ClusterIds,omitempty" xml:"ClusterIds,omitempty"`
+	// Specifies whether to forcefully delete the specified kubeconfig files. Valid values:
+	//
+	// 	- **false*	- (default): checks the cluster access records within the previous seven days before deleting the kubeconfig files. The kubeconfig files are not deleted if cluster access records are found or fail to be retrieved.
+	//
+	// 	- **true**: forcefully deletes the kubeconfig files without checking cluster access records.
+	//
 	// example:
 	//
 	// false
@@ -2639,8 +2663,18 @@ func (s *CleanUserPermissionsShrinkRequest) SetForce(v bool) *CleanUserPermissio
 }
 
 type CleanUserPermissionsResponseBody struct {
+	// 请求ID。
+	//
+	// example:
+	//
+	// 687C5BAA-D103-4993-884B-C35E4314****
 	RequestId *string `json:"request_id,omitempty" xml:"request_id,omitempty"`
-	TaskId    *string `json:"task_id,omitempty" xml:"task_id,omitempty"`
+	// 任务ID
+	//
+	// example:
+	//
+	// clean-user-permissions-2085266204********-6694c16e6ae07***********
+	TaskId *string `json:"task_id,omitempty" xml:"task_id,omitempty"`
 }
 
 func (s CleanUserPermissionsResponseBody) String() string {
@@ -9510,12 +9544,11 @@ type DescribeClusterNodePoolDetailResponseBody struct {
 	// example:
 	//
 	// 10
-	MaxNodes *int64 `json:"max_nodes,omitempty" xml:"max_nodes,omitempty"`
-	// 节点配置
+	MaxNodes   *int64                                               `json:"max_nodes,omitempty" xml:"max_nodes,omitempty"`
 	NodeConfig *DescribeClusterNodePoolDetailResponseBodyNodeConfig `json:"node_config,omitempty" xml:"node_config,omitempty" type:"Struct"`
 	// The configuration of the node pool.
 	NodepoolInfo *DescribeClusterNodePoolDetailResponseBodyNodepoolInfo `json:"nodepool_info,omitempty" xml:"nodepool_info,omitempty" type:"Struct"`
-	// The configuration of the scaling group.
+	// The configurations of the scaling group.
 	ScalingGroup *DescribeClusterNodePoolDetailResponseBodyScalingGroup `json:"scaling_group,omitempty" xml:"scaling_group,omitempty" type:"Struct"`
 	// The status details about the node pool.
 	Status *DescribeClusterNodePoolDetailResponseBodyStatus `json:"status,omitempty" xml:"status,omitempty" type:"Struct"`
@@ -9813,8 +9846,6 @@ type DescribeClusterNodePoolDetailResponseBodyKubernetesConfig struct {
 	RuntimeVersion *string `json:"runtime_version,omitempty" xml:"runtime_version,omitempty"`
 	// The taints of the nodes in the node pool. Taints are added to nodes to prevent pods from being scheduled to inappropriate nodes. However, tolerations allow pods to be scheduled to nodes with matching taints. For more information, see [taint-and-toleration](https://kubernetes.io/zh/docs/concepts/scheduling-eviction/taint-and-toleration/).
 	Taints []*Taint `json:"taints,omitempty" xml:"taints,omitempty" type:"Repeated"`
-	// 扩容后的节点是否可调度。
-	//
 	// example:
 	//
 	// true
@@ -9890,24 +9921,17 @@ type DescribeClusterNodePoolDetailResponseBodyManagement struct {
 	// example:
 	//
 	// true
-	AutoRepair *bool `json:"auto_repair,omitempty" xml:"auto_repair,omitempty"`
-	// 自动修复节点策略。
+	AutoRepair       *bool                                                                `json:"auto_repair,omitempty" xml:"auto_repair,omitempty"`
 	AutoRepairPolicy *DescribeClusterNodePoolDetailResponseBodyManagementAutoRepairPolicy `json:"auto_repair_policy,omitempty" xml:"auto_repair_policy,omitempty" type:"Struct"`
-	// 是否自动升级。
-	//
 	// example:
 	//
 	// true
-	AutoUpgrade *bool `json:"auto_upgrade,omitempty" xml:"auto_upgrade,omitempty"`
-	// 自动升级策略。
+	AutoUpgrade       *bool                                                                 `json:"auto_upgrade,omitempty" xml:"auto_upgrade,omitempty"`
 	AutoUpgradePolicy *DescribeClusterNodePoolDetailResponseBodyManagementAutoUpgradePolicy `json:"auto_upgrade_policy,omitempty" xml:"auto_upgrade_policy,omitempty" type:"Struct"`
-	// 是否自动修复CVE。
-	//
 	// example:
 	//
 	// true
-	AutoVulFix *bool `json:"auto_vul_fix,omitempty" xml:"auto_vul_fix,omitempty"`
-	// 自动修复CVE策略。
+	AutoVulFix       *bool                                                                `json:"auto_vul_fix,omitempty" xml:"auto_vul_fix,omitempty"`
 	AutoVulFixPolicy *DescribeClusterNodePoolDetailResponseBodyManagementAutoVulFixPolicy `json:"auto_vul_fix_policy,omitempty" xml:"auto_vul_fix_policy,omitempty" type:"Struct"`
 	// Indicates whether the managed node pool feature is enabled. Valid values:
 	//
@@ -9972,8 +9996,6 @@ func (s *DescribeClusterNodePoolDetailResponseBodyManagement) SetUpgradeConfig(v
 }
 
 type DescribeClusterNodePoolDetailResponseBodyManagementAutoRepairPolicy struct {
-	// 是否允许重启节点。
-	//
 	// example:
 	//
 	// true
@@ -9994,8 +10016,6 @@ func (s *DescribeClusterNodePoolDetailResponseBodyManagementAutoRepairPolicy) Se
 }
 
 type DescribeClusterNodePoolDetailResponseBodyManagementAutoUpgradePolicy struct {
-	// 是否允许自动升级kubelet。
-	//
 	// example:
 	//
 	// true
@@ -10016,14 +10036,10 @@ func (s *DescribeClusterNodePoolDetailResponseBodyManagementAutoUpgradePolicy) S
 }
 
 type DescribeClusterNodePoolDetailResponseBodyManagementAutoVulFixPolicy struct {
-	// 是否允许重启节点。
-	//
 	// example:
 	//
 	// true
 	RestartNode *bool `json:"restart_node,omitempty" xml:"restart_node,omitempty"`
-	// 允许自动修复的漏洞级别，以逗号分隔。
-	//
 	// example:
 	//
 	// asap,nntf
@@ -10110,7 +10126,6 @@ func (s *DescribeClusterNodePoolDetailResponseBodyManagementUpgradeConfig) SetSu
 }
 
 type DescribeClusterNodePoolDetailResponseBodyNodeConfig struct {
-	// Kubelet参数配置。
 	KubeletConfiguration *KubeletConfig `json:"kubelet_configuration,omitempty" xml:"kubelet_configuration,omitempty"`
 }
 
@@ -10249,8 +10264,6 @@ type DescribeClusterNodePoolDetailResponseBodyScalingGroup struct {
 	AutoRenewPeriod *int64 `json:"auto_renew_period,omitempty" xml:"auto_renew_period,omitempty"`
 	// Deprecated
 	//
-	// 【已废弃】请使用参数security_hardening_os替代。
-	//
 	// example:
 	//
 	// false
@@ -10285,8 +10298,6 @@ type DescribeClusterNodePoolDetailResponseBodyScalingGroup struct {
 	//
 	// aliyun_2_1903_x64_20G_alibase_20200529.vhd
 	ImageId *string `json:"image_id,omitempty" xml:"image_id,omitempty"`
-	// 操作系统镜像类型。
-	//
 	// example:
 	//
 	// AliyunLinux
@@ -10300,8 +10311,9 @@ type DescribeClusterNodePoolDetailResponseBodyScalingGroup struct {
 	// example:
 	//
 	// PostPaid
-	InstanceChargeType *string             `json:"instance_charge_type,omitempty" xml:"instance_charge_type,omitempty"`
-	InstancePatterns   []*InstancePatterns `json:"instance_patterns,omitempty" xml:"instance_patterns,omitempty" type:"Repeated"`
+	InstanceChargeType *string `json:"instance_charge_type,omitempty" xml:"instance_charge_type,omitempty"`
+	// 实例属性
+	InstancePatterns []*InstancePatterns `json:"instance_patterns,omitempty" xml:"instance_patterns,omitempty" type:"Repeated"`
 	// A list of instance types. You can select multiple instance types. When the system needs to create a node, it starts from the first instance type until the node is created. The instance type that is used to create the node varies based on the actual instance stock.
 	InstanceTypes []*string `json:"instance_types,omitempty" xml:"instance_types,omitempty" type:"Repeated"`
 	// The billing method of the public IP address of the node.
@@ -10322,8 +10334,6 @@ type DescribeClusterNodePoolDetailResponseBodyScalingGroup struct {
 	//
 	// pro-nodepool
 	KeyPair *string `json:"key_pair,omitempty" xml:"key_pair,omitempty"`
-	// 弹出的ECS实例是否使用以非root用户登录。
-	//
 	// example:
 	//
 	// true
@@ -10404,6 +10414,8 @@ type DescribeClusterNodePoolDetailResponseBodyScalingGroup struct {
 	//
 	// KubernetesWorkerRole-021dc54f-929b-437a-8ae0-34c24d3e****
 	RamPolicy *string `json:"ram_policy,omitempty" xml:"ram_policy,omitempty"`
+	// Worker RAM角色名称。
+	//
 	// example:
 	//
 	// KubernetesWorkerRole-4a4fa089-80c1-48a5-b3c6-9349311f****
@@ -10434,20 +10446,10 @@ type DescribeClusterNodePoolDetailResponseBodyScalingGroup struct {
 	SecurityGroupId *string `json:"security_group_id,omitempty" xml:"security_group_id,omitempty"`
 	// The IDs of the security groups to which the node pool is added.
 	SecurityGroupIds []*string `json:"security_group_ids,omitempty" xml:"security_group_ids,omitempty" type:"Repeated"`
-	// 阿里云OS安全加固。取值：
-	//
-	// - `true`：开启阿里云OS安全加固。
-	//
-	// - `false`：不开启阿里云OS安全加固。
-	//
-	// 默认值：`false`。
-	//
 	// example:
 	//
 	// false
 	SecurityHardeningOs *bool `json:"security_hardening_os,omitempty" xml:"security_hardening_os,omitempty"`
-	// 是否开启等保加固，仅当系统镜像选择Alibaba Cloud Linux 2或Alibaba Cloud Linux 3时，可为节点开启等保加固。阿里云为Alibaba Cloud Linux 2和Alibaba Cloud Linux 3等保2.0三级版镜像提供等保合规的基线检查标准和扫描程序。
-	//
 	// example:
 	//
 	// false
@@ -10484,56 +10486,60 @@ type DescribeClusterNodePoolDetailResponseBodyScalingGroup struct {
 	//
 	// NoSpot
 	SpotStrategy *string `json:"spot_strategy,omitempty" xml:"spot_strategy,omitempty"`
-	// 节点系统盘是否开启Burst（性能突发），磁盘类型为cloud_auto时配置。
-	//
 	// example:
 	//
 	// true
 	SystemDiskBurstingEnabled *bool `json:"system_disk_bursting_enabled,omitempty" xml:"system_disk_bursting_enabled,omitempty"`
-	// 系统盘的多磁盘类型。当无法使用高优先级的磁盘类型时，自动尝试下一优先级的磁盘类型创建系统盘。取值：
+	// The system disk types. The system attempts to create system disks from a disk type with a lower priority when the disk type with a higher priority is unavailable. Valid values: Valid values:
 	//
-	// - `cloud`：普通云盘。
+	// 	- `cloud`: basic disk
 	//
-	// - `cloud_efficiency`：高效云盘。
+	// 	- `cloud_efficiency`: ultra disk
 	//
-	// - `cloud_ssd`：SSD云盘。
+	// 	- `cloud_ssd`: standard SSD
 	//
-	// - `cloud_essd`：ESSD云盘。
+	// 	- `cloud_essd`: ESSD
 	//
-	// - `cloud_auto`：ESSD AutoPL 云盘。
+	// 	- `cloud_auto`: ESSD AutoPL disk
 	//
-	// - `cloud_essd_entry`：ESSD Entry 云盘。
+	// 	- `cloud_essd_entry`: ESSD Entry disk
 	//
-	// 默认值：`cloud_efficiency`
+	// Default value: `cloud_efficiency`.
 	SystemDiskCategories []*string `json:"system_disk_categories,omitempty" xml:"system_disk_categories,omitempty" type:"Repeated"`
-	// The type of system disk. Valid values:
+	// The system disk type. Valid values:
 	//
-	// 	- `cloud_efficiency`: ultra disk.
+	// 	- `cloud`: basic disk
 	//
-	// 	- `cloud_ssd`: standard SSD.
+	// 	- `cloud_efficiency`: ultra disk
+	//
+	// 	- `cloud_ssd`: standard SSD
+	//
+	// 	- `cloud_essd`: Enterprise SSD (ESSD)
+	//
+	// 	- `cloud_auto`: ESSD AutoPL disk
+	//
+	// 	- `cloud_essd_entry`: ESSD Entry disk
+	//
+	// Default value: `cloud_efficiency`.
 	//
 	// example:
 	//
 	// cloud_efficiency
 	SystemDiskCategory *string `json:"system_disk_category,omitempty" xml:"system_disk_category,omitempty"`
-	// 系统盘采用的加密算法。取值范围：aes-256。
-	//
 	// example:
 	//
 	// aes-256
 	SystemDiskEncryptAlgorithm *string `json:"system_disk_encrypt_algorithm,omitempty" xml:"system_disk_encrypt_algorithm,omitempty"`
-	// 是否加密系统盘。取值：
+	// Specifies whether to encrypt the system disk. Valid values: Valid values:
 	//
-	// - `true`：加密。
+	// 	- `true`: encrypts the system disk.
 	//
-	// - `false`：不加密。
+	// 	- `false`: does not encrypt the system disk.
 	//
 	// example:
 	//
 	// false
 	SystemDiskEncrypted *bool `json:"system_disk_encrypted,omitempty" xml:"system_disk_encrypted,omitempty"`
-	// 系统盘使用的KMS密钥ID。
-	//
 	// example:
 	//
 	// 0e478b7a-4262-4802-b8cb-00d3fb40****
@@ -10544,8 +10550,6 @@ type DescribeClusterNodePoolDetailResponseBodyScalingGroup struct {
 	//
 	// PL1
 	SystemDiskPerformanceLevel *string `json:"system_disk_performance_level,omitempty" xml:"system_disk_performance_level,omitempty"`
-	// 节点系统盘预配置的读写IOPS，磁盘类型为cloud_auto时配置。
-	//
 	// example:
 	//
 	// 1000
@@ -10856,13 +10860,13 @@ func (s *DescribeClusterNodePoolDetailResponseBodyScalingGroupPrivatePoolOptions
 }
 
 type DescribeClusterNodePoolDetailResponseBodyScalingGroupSpotPriceLimit struct {
-	// The instance type of preemptible instances.
+	// The instance type of the preemptible instances.
 	//
 	// example:
 	//
 	// ecs.c6.large
 	InstanceType *string `json:"instance_type,omitempty" xml:"instance_type,omitempty"`
-	// The price limit of a preemptible instance.
+	// The price cap of a preemptible instance of the type.
 	//
 	// Unit: USD/hour.
 	//
@@ -13110,6 +13114,7 @@ func (s *DescribeClusterNodesResponse) SetBody(v *DescribeClusterNodesResponseBo
 }
 
 type DescribeClusterResourcesRequest struct {
+	// Specifies whether to query the resources created by cluster components at the same time.
 	WithAddonResources *bool `json:"with_addon_resources,omitempty" xml:"with_addon_resources,omitempty"`
 }
 
@@ -13174,7 +13179,7 @@ type DescribeClusterResourcesResponseBody struct {
 	//
 	// lb-wz9poz4r0ymh8u0uf****
 	InstanceId *string `json:"instance_id,omitempty" xml:"instance_id,omitempty"`
-	// The information about the resource. For more information about how to query the source information about a resource, see [ListStackResources](https://help.aliyun.com/document_detail/133836.html).
+	// The resource information. For more information about how to query the source information about the resource, see [ListStackResources](https://help.aliyun.com/document_detail/133836.html).
 	//
 	// example:
 	//
@@ -13188,41 +13193,60 @@ type DescribeClusterResourcesResponseBody struct {
 	ResourceType *string `json:"resource_type,omitempty" xml:"resource_type,omitempty"`
 	// The resource status. Valid values:
 	//
-	// 	- `CREATE_COMPLETE`: The resource is created.
+	// 	- `CREATE_COMPLETE`: the resource is created.
 	//
-	// 	- `CREATE_FAILED`: The resource failed to be created.
+	// 	- `CREATE_FAILED`: the resource failed to be created.
 	//
-	// 	- `CREATE_IN_PROGRESS`: The resource is being created.
+	// 	- `CREATE_IN_PROGRESS`: the resource is being created.
 	//
-	// 	- `DELETE_FAILED`: The resource failed to be deleted.
+	// 	- `DELETE_FAILED`: the resource failed to be deleted.
 	//
-	// 	- `DELETE_IN_PROGRESS`: The resource is being deleted.
+	// 	- `DELETE_IN_PROGRESS`: the resource is being deleted.
 	//
-	// 	- `ROLLBACK_COMPLETE`: The resource is rolled back.
+	// 	- `ROLLBACK_COMPLETE`: the resource is rolled back.
 	//
-	// 	- `ROLLBACK_FAILED`: The resource failed to be rolled back.
+	// 	- `ROLLBACK_FAILED`: the resource failed to be rolled back.
 	//
-	// 	- `ROLLBACK_IN_PROGRESS`: The resource is being rolled back.
+	// 	- `ROLLBACK_IN_PROGRESS`: the resource is being rolled back.
 	//
 	// example:
 	//
 	// CREATE_COMPLETE
 	State *string `json:"state,omitempty" xml:"state,omitempty"`
-	// Indicates whether the resource is created by Container Service for Kubernetes (ACK). Valid values:
+	// Specifies whether the resource is created by Container Service for Kubernetes (ACK). Valid values:
 	//
-	// 	- 1: The resource is created by ACK.
+	// 	- 1: the resource is created by ACK.
 	//
-	// 	- 0: The resource is an existing resource.
+	// 	- 0: the resource is an existing resource.
 	//
 	// example:
 	//
 	// 1
-	AutoCreate       *int64                                                `json:"auto_create,omitempty" xml:"auto_create,omitempty"`
-	Dependencies     []*DescribeClusterResourcesResponseBodyDependencies   `json:"dependencies,omitempty" xml:"dependencies,omitempty" type:"Repeated"`
+	AutoCreate *int64 `json:"auto_create,omitempty" xml:"auto_create,omitempty"`
+	// The dependent resources.
+	Dependencies []*DescribeClusterResourcesResponseBodyDependencies `json:"dependencies,omitempty" xml:"dependencies,omitempty" type:"Repeated"`
+	// The Kubernetes object with which the resource is associated.
 	AssociatedObject *DescribeClusterResourcesResponseBodyAssociatedObject `json:"associated_object,omitempty" xml:"associated_object,omitempty" type:"Struct"`
-	DeleteBehavior   *DescribeClusterResourcesResponseBodyDeleteBehavior   `json:"delete_behavior,omitempty" xml:"delete_behavior,omitempty" type:"Struct"`
-	CreatorType      *string                                               `json:"creator_type,omitempty" xml:"creator_type,omitempty"`
-	ExtraInfo        map[string]interface{}                                `json:"extra_info,omitempty" xml:"extra_info,omitempty"`
+	// The deletion behavior of the resource when the cluster is deleted.
+	DeleteBehavior *DescribeClusterResourcesResponseBodyDeleteBehavior `json:"delete_behavior,omitempty" xml:"delete_behavior,omitempty" type:"Struct"`
+	// The type of the resource creator. Valid values:
+	//
+	// 	- user: the resource is created by the user.
+	//
+	// 	- system: the resource is created by the ACK management system.
+	//
+	// 	- addon: the resource is created by a cluster component.
+	//
+	// example:
+	//
+	// addon
+	CreatorType *string `json:"creator_type,omitempty" xml:"creator_type,omitempty"`
+	// The additional information about the resource.
+	//
+	// example:
+	//
+	// {"IP": "xx.xx.xx.xx"}
+	ExtraInfo map[string]interface{} `json:"extra_info,omitempty" xml:"extra_info,omitempty"`
 }
 
 func (s DescribeClusterResourcesResponseBody) String() string {
@@ -13323,9 +13347,24 @@ func (s *DescribeClusterResourcesResponseBodyDependencies) SetInstanceId(v strin
 }
 
 type DescribeClusterResourcesResponseBodyAssociatedObject struct {
-	Kind      *string `json:"kind,omitempty" xml:"kind,omitempty"`
+	// The Kubernetes object type.
+	//
+	// example:
+	//
+	// Service
+	Kind *string `json:"kind,omitempty" xml:"kind,omitempty"`
+	// The namespace in which the Kubernetes object resides.
+	//
+	// example:
+	//
+	// kube-system
 	Namespace *string `json:"namespace,omitempty" xml:"namespace,omitempty"`
-	Name      *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The Kubernetes object name.
+	//
+	// example:
+	//
+	// nginx-ingress-lb
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 }
 
 func (s DescribeClusterResourcesResponseBodyAssociatedObject) String() string {
@@ -13352,8 +13391,18 @@ func (s *DescribeClusterResourcesResponseBodyAssociatedObject) SetName(v string)
 }
 
 type DescribeClusterResourcesResponseBodyDeleteBehavior struct {
+	// Specifies whether to delete the resource by default when the cluster is deleted.
+	//
+	// example:
+	//
+	// false
 	DeleteByDefault *bool `json:"delete_by_default,omitempty" xml:"delete_by_default,omitempty"`
-	Changeable      *bool `json:"changeable,omitempty" xml:"changeable,omitempty"`
+	// Specifies whether the default behavior returned in delete_by_default can be changed.
+	//
+	// example:
+	//
+	// false
+	Changeable *bool `json:"changeable,omitempty" xml:"changeable,omitempty"`
 }
 
 func (s DescribeClusterResourcesResponseBodyDeleteBehavior) String() string {
@@ -21017,10 +21066,22 @@ func (s *ListClusterChecksResponse) SetBody(v *ListClusterChecksResponseBody) *L
 }
 
 type ListClusterKubeconfigStatesRequest struct {
+	// The page number.
+	//
+	// 	- Valid values: ≥ 1.
+	//
+	// 	- Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// The number of entries per page.
+	//
+	// 	- Valid values: 10 to 50.
+	//
+	// 	- Default value: 10.
+	//
 	// example:
 	//
 	// 10
@@ -21046,7 +21107,9 @@ func (s *ListClusterKubeconfigStatesRequest) SetPageSize(v int32) *ListClusterKu
 }
 
 type ListClusterKubeconfigStatesResponseBody struct {
-	Page   *ListClusterKubeconfigStatesResponseBodyPage     `json:"page,omitempty" xml:"page,omitempty" type:"Struct"`
+	// The pagination information.
+	Page *ListClusterKubeconfigStatesResponseBodyPage `json:"page,omitempty" xml:"page,omitempty" type:"Struct"`
+	// The status of the kubeconfig files associated with the cluster.
 	States []*ListClusterKubeconfigStatesResponseBodyStates `json:"states,omitempty" xml:"states,omitempty" type:"Repeated"`
 }
 
@@ -21069,14 +21132,20 @@ func (s *ListClusterKubeconfigStatesResponseBody) SetStates(v []*ListClusterKube
 }
 
 type ListClusterKubeconfigStatesResponseBodyPage struct {
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"page_number,omitempty" xml:"page_number,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"page_size,omitempty" xml:"page_size,omitempty"`
+	// The total number of entries returned.
+	//
 	// example:
 	//
 	// 5
@@ -21107,34 +21176,68 @@ func (s *ListClusterKubeconfigStatesResponseBodyPage) SetTotalCount(v int32) *Li
 }
 
 type ListClusterKubeconfigStatesResponseBodyStates struct {
+	// The display name of the account.
+	//
 	// example:
 	//
 	// tom
 	AccountDisplayName *string `json:"account_display_name,omitempty" xml:"account_display_name,omitempty"`
+	// The ID of an Alibaba Cloud account, RAM user, or RAM role.
+	//
 	// example:
 	//
 	// 22855*****************
 	AccountId *string `json:"account_id,omitempty" xml:"account_id,omitempty"`
+	// The name of the account.
+	//
 	// example:
 	//
 	// tom
 	AccountName *string `json:"account_name,omitempty" xml:"account_name,omitempty"`
+	// The status of the account. Valid values:
+	//
+	// 	- Active: The account is active.
+	//
+	// 	- InActive: The account is locked.
+	//
+	// 	- Deleted: The account is deleted.
+	//
 	// example:
 	//
 	// Active
 	AccountState *string `json:"account_state,omitempty" xml:"account_state,omitempty"`
+	// The type of the account. Valid values:
+	//
+	// 	- RootAccount: Alibaba Cloud account.
+	//
+	// 	- RamUser: RAM user.
+	//
+	// 	- RamRole: RAM role.
+	//
 	// example:
 	//
 	// RamUser
 	AccountType *string `json:"account_type,omitempty" xml:"account_type,omitempty"`
+	// Expiration time of the certificate.
+	//
 	// example:
 	//
 	// 2027-07-15T01:32:20Z
 	CertExpireTime *string `json:"cert_expire_time,omitempty" xml:"cert_expire_time,omitempty"`
+	// The status of the certificate.
+	//
+	// 	- Unexpired: The certificate is not expired.
+	//
+	// 	- Expired: The certificate is expired.
+	//
+	// 	- Unknown: The status of the certificate is unknown.
+	//
 	// example:
 	//
 	// Expired
 	CertState *string `json:"cert_state,omitempty" xml:"cert_state,omitempty"`
+	// Indicates whether the certificate can be revoked.
+	//
 	// example:
 	//
 	// true
@@ -21701,10 +21804,22 @@ func (s *ListTagResourcesResponse) SetBody(v *ListTagResourcesResponseBody) *Lis
 }
 
 type ListUserKubeConfigStatesRequest struct {
+	// The page number.
+	//
+	// 	- Valid values: ≥ 1.
+	//
+	// 	- Default value: 1.
+	//
 	// example:
 	//
 	// 2
 	PageNumber *int32 `json:"page_number,omitempty" xml:"page_number,omitempty"`
+	// The number of entries per page.
+	//
+	// 	- Value values: 1 to 100.
+	//
+	// 	- Default value: 50.
+	//
 	// example:
 	//
 	// 10
@@ -21730,7 +21845,9 @@ func (s *ListUserKubeConfigStatesRequest) SetPageSize(v int32) *ListUserKubeConf
 }
 
 type ListUserKubeConfigStatesResponseBody struct {
-	Page   *ListUserKubeConfigStatesResponseBodyPage     `json:"page,omitempty" xml:"page,omitempty" type:"Struct"`
+	// The pagination information.
+	Page *ListUserKubeConfigStatesResponseBodyPage `json:"page,omitempty" xml:"page,omitempty" type:"Struct"`
+	// The status of the kubeconfig files.
 	States []*ListUserKubeConfigStatesResponseBodyStates `json:"states,omitempty" xml:"states,omitempty" type:"Repeated"`
 }
 
@@ -21753,14 +21870,20 @@ func (s *ListUserKubeConfigStatesResponseBody) SetStates(v []*ListUserKubeConfig
 }
 
 type ListUserKubeConfigStatesResponseBodyPage struct {
+	// The page number of the returned page.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"page_number,omitempty" xml:"page_number,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"page_size,omitempty" xml:"page_size,omitempty"`
+	// The total number of entries returned.
+	//
 	// example:
 	//
 	// 100
@@ -21791,22 +21914,68 @@ func (s *ListUserKubeConfigStatesResponseBodyPage) SetTotalCount(v int32) *ListU
 }
 
 type ListUserKubeConfigStatesResponseBodyStates struct {
+	// The expiration date of the certificate used in a kubeconfig file. Format: the UTC time in the RFC3339 format.
+	//
 	// example:
 	//
 	// 2026-11-30T07:41:50Z
 	CertExpireTime *string `json:"cert_expire_time,omitempty" xml:"cert_expire_time,omitempty"`
+	// The current status of the certificate used in a kubeconfig file. Valid values:
+	//
+	// 	- Expired: The certificate is expired.
+	//
+	// 	- Unexpired: The certificate is not expired.
+	//
+	// 	- Unissued: The certificate is not issued.
+	//
+	// 	- Unknown: The status of the certificate is unknown.
+	//
+	// 	- Removed: The certificate is removed. An issue record is found for the certificate.
+	//
 	// example:
 	//
 	// Unissued
 	CertState *string `json:"cert_state,omitempty" xml:"cert_state,omitempty"`
+	// The cluster ID.
+	//
 	// example:
 	//
 	// c5b5e80b0b64a4bf6939d2d8fbbc5****
 	ClusterId *string `json:"cluster_id,omitempty" xml:"cluster_id,omitempty"`
+	// The cluster name.
+	//
+	// The name must be 1 to 63 characters in length, and can contain digits, letters, and hyphens (-). The name cannot start with a hyphen (-).
+	//
 	// example:
 	//
 	// cluster-demo
 	ClusterName *string `json:"cluster_name,omitempty" xml:"cluster_name,omitempty"`
+	// The status of the cluster. Valid values:
+	//
+	// 	- `initial`: The cluster is being created.
+	//
+	// 	- `failed`: The cluster failed to be created.
+	//
+	// 	- `running`: The cluster is running.
+	//
+	// 	- `updating`: The cluster is being upgraded.
+	//
+	// 	- `updating_failed`: The cluster failed to be updated.
+	//
+	// 	- `scaling`: The cluster is being scaled.
+	//
+	// 	- `waiting`: The cluster is waiting for connection requests.
+	//
+	// 	- `disconnected`: The cluster is disconnected.
+	//
+	// 	- `stopped`: The cluster is stopped.
+	//
+	// 	- `deleting`: The cluster is being deleted.
+	//
+	// 	- `deleted`: The cluster is deleted.
+	//
+	// 	- `delete_failed`: The cluster failed to be deleted.
+	//
 	// example:
 	//
 	// running
@@ -26460,10 +26629,24 @@ func (s *UntagResourcesResponse) SetBody(v *UntagResourcesResponseBody) *UntagRe
 }
 
 type UpdateClusterAuditLogConfigRequest struct {
+	// Enable or disable the audit log feature.
+	//
+	// 	- false: enables the audit log feature or updates the audit log configuration.
+	//
+	// 	- true: disables the audit log feature.
+	//
 	// example:
 	//
 	// false
 	Disable *bool `json:"disable,omitempty" xml:"disable,omitempty"`
+	// The [SLS project](https://help.aliyun.com/zh/sls/product-overview/project?spm=a2c4g.11186623.0.i3) to which the [Logstore](https://help.aliyun.com/zh/sls/product-overview/logstore?spm=a2c4g.11186623.0.0.48287ce0jAUWWM) belongs.
+	//
+	// 	- Default value: k8s-log-{clusterid}.
+	//
+	// 	- After the cluster audit log feature is enabled, a Logstore is created in the specified SLS project to store the cluster audit logs.
+	//
+	// 	- If you want to change the project after the cluster audit log feature is enabled, you can use this parameter to specify another SLS project. You can perform this operation only in ACK managed clusters.
+	//
 	// example:
 	//
 	// k8s-log-c82e6987e2961451182edacd74faf****
@@ -26489,14 +26672,20 @@ func (s *UpdateClusterAuditLogConfigRequest) SetSlsProjectName(v string) *Update
 }
 
 type UpdateClusterAuditLogConfigResponseBody struct {
+	// The cluster ID.
+	//
 	// example:
 	//
 	// c93095129fc41463aa455d89444fd****
 	ClusterId *string `json:"cluster_id,omitempty" xml:"cluster_id,omitempty"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 48BD70F6-A7E6-543D-9F23-08DEB764C92E
 	RequestId *string `json:"request_id,omitempty" xml:"request_id,omitempty"`
+	// The ID of the task.
+	//
 	// example:
 	//
 	// T-5faa48fb31b6b8078d00****
@@ -27390,9 +27579,39 @@ func (s *UpgradeClusterAddonsRequestBody) SetVersion(v string) *UpgradeClusterAd
 	return s
 }
 
+type UpgradeClusterAddonsResponseBody struct {
+	ClusterId *string `json:"cluster_id,omitempty" xml:"cluster_id,omitempty"`
+	RequestId *string `json:"request_id,omitempty" xml:"request_id,omitempty"`
+	TaskId    *string `json:"task_id,omitempty" xml:"task_id,omitempty"`
+}
+
+func (s UpgradeClusterAddonsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpgradeClusterAddonsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpgradeClusterAddonsResponseBody) SetClusterId(v string) *UpgradeClusterAddonsResponseBody {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *UpgradeClusterAddonsResponseBody) SetRequestId(v string) *UpgradeClusterAddonsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpgradeClusterAddonsResponseBody) SetTaskId(v string) *UpgradeClusterAddonsResponseBody {
+	s.TaskId = &v
+	return s
+}
+
 type UpgradeClusterAddonsResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpgradeClusterAddonsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpgradeClusterAddonsResponse) String() string {
@@ -27410,6 +27629,11 @@ func (s *UpgradeClusterAddonsResponse) SetHeaders(v map[string]*string) *Upgrade
 
 func (s *UpgradeClusterAddonsResponse) SetStatusCode(v int32) *UpgradeClusterAddonsResponse {
 	s.StatusCode = &v
+	return s
+}
+
+func (s *UpgradeClusterAddonsResponse) SetBody(v *UpgradeClusterAddonsResponseBody) *UpgradeClusterAddonsResponse {
+	s.Body = v
 	return s
 }
 
@@ -28243,7 +28467,17 @@ func (client *Client) CheckServiceRole(request *CheckServiceRoleRequest) (_resul
 
 // Summary:
 //
-// 清理某个用户在某个集群的证书以及权限
+// You can call the CleanClusterUserPermissions operation to delete kubeconfig files that may pose potential risks from a user and revoke Role-Based Access Control (RBAC) permissions on a cluster.
+//
+// Description:
+//
+// >
+//
+// 	- To call this operation, make sure that you have the AliyunCSFullAccess permissions.
+//
+// 	- You cannot revoke the permissions of an Alibaba Cloud account.
+//
+// 	- You cannot revoke the permissions of the account that you use to call this operation.
 //
 // @param request - CleanClusterUserPermissionsRequest
 //
@@ -28288,7 +28522,17 @@ func (client *Client) CleanClusterUserPermissionsWithOptions(ClusterId *string, 
 
 // Summary:
 //
-// 清理某个用户在某个集群的证书以及权限
+// You can call the CleanClusterUserPermissions operation to delete kubeconfig files that may pose potential risks from a user and revoke Role-Based Access Control (RBAC) permissions on a cluster.
+//
+// Description:
+//
+// >
+//
+// 	- To call this operation, make sure that you have the AliyunCSFullAccess permissions.
+//
+// 	- You cannot revoke the permissions of an Alibaba Cloud account.
+//
+// 	- You cannot revoke the permissions of the account that you use to call this operation.
 //
 // @param request - CleanClusterUserPermissionsRequest
 //
@@ -28307,7 +28551,15 @@ func (client *Client) CleanClusterUserPermissions(ClusterId *string, Uid *string
 
 // Summary:
 //
-// 清除某个用户的证书以及相关RBAC权限
+// You can call the CleanUserPermissions operation to delete the kubeconfig files of the specified users and revoke the relevant Role-Based Access Control (RBAC) permissions. This API operation is suitable for scenarios where employees have resigned or the accounts of employees are locked.
+//
+// Description:
+//
+// >- To call this operation, make sure that you have the AliyunCSFullAccess permissions.
+//
+// >- You cannot revoke the permissions of an Alibaba Cloud account.
+//
+// >- You cannot revoke the permissions of the account that you use to call this operation.
 //
 // @param tmpReq - CleanUserPermissionsRequest
 //
@@ -28362,7 +28614,15 @@ func (client *Client) CleanUserPermissionsWithOptions(Uid *string, tmpReq *Clean
 
 // Summary:
 //
-// 清除某个用户的证书以及相关RBAC权限
+// You can call the CleanUserPermissions operation to delete the kubeconfig files of the specified users and revoke the relevant Role-Based Access Control (RBAC) permissions. This API operation is suitable for scenarios where employees have resigned or the accounts of employees are locked.
+//
+// Description:
+//
+// >- To call this operation, make sure that you have the AliyunCSFullAccess permissions.
+//
+// >- You cannot revoke the permissions of an Alibaba Cloud account.
+//
+// >- You cannot revoke the permissions of the account that you use to call this operation.
 //
 // @param request - CleanUserPermissionsRequest
 //
@@ -33895,7 +34155,15 @@ func (client *Client) ListClusterChecks(clusterId *string, request *ListClusterC
 
 // Summary:
 //
-// 获取当前集群已下发的用户Kubeconfig的状态列表
+// You can call the ListClusterKubeconfigStates operation to query the kubeconfig files that are issued to users for the current cluster and the status of the kubeconfig files.
+//
+// Description:
+//
+// >
+//
+// 	- To call this operation, make sure that you have ram:ListUsers and ram:ListRoles permissions.
+//
+// 	- To call this operation, make sure that you have the AliyunCSFullAccess permissions.
 //
 // @param request - ListClusterKubeconfigStatesRequest
 //
@@ -33944,7 +34212,15 @@ func (client *Client) ListClusterKubeconfigStatesWithOptions(ClusterId *string, 
 
 // Summary:
 //
-// 获取当前集群已下发的用户Kubeconfig的状态列表
+// You can call the ListClusterKubeconfigStates operation to query the kubeconfig files that are issued to users for the current cluster and the status of the kubeconfig files.
+//
+// Description:
+//
+// >
+//
+// 	- To call this operation, make sure that you have ram:ListUsers and ram:ListRoles permissions.
+//
+// 	- To call this operation, make sure that you have the AliyunCSFullAccess permissions.
 //
 // @param request - ListClusterKubeconfigStatesRequest
 //
@@ -34121,7 +34397,11 @@ func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_resul
 
 // Summary:
 //
-// 查询单用户所有集群的证书状态
+// You can call the ListUserKubeConfigStates operation to query the status of the kubeconfig files of all clusters managed by the current user.
+//
+// Description:
+//
+// >  To call this operation, make sure that you have the AliyunCSFullAccess permissions.
 //
 // @param request - ListUserKubeConfigStatesRequest
 //
@@ -34170,7 +34450,11 @@ func (client *Client) ListUserKubeConfigStatesWithOptions(Uid *string, request *
 
 // Summary:
 //
-// 查询单用户所有集群的证书状态
+// You can call the ListUserKubeConfigStates operation to query the status of the kubeconfig files of all clusters managed by the current user.
+//
+// Description:
+//
+// >  To call this operation, make sure that you have the AliyunCSFullAccess permissions.
 //
 // @param request - ListUserKubeConfigStatesRequest
 //
@@ -36593,7 +36877,11 @@ func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *U
 
 // Summary:
 //
-// 更新集群审计日志配置
+// You can call the UpdateClusterAuditLogConfig operation to enable or disable the audit log feature in a Container Service for Kubernetes (ACK) cluster and update the audit log configuration. This operation also allows you to record requests to the Kubernetes API and the responses, which can be used to trace cluster operation history and troubleshoot cluster issues.
+//
+// Description:
+//
+// Before you call this operation, ensure that you understand the billing methods and pricing of [Simple Log Service](https://www.aliyun.com/price/product#/sls/detail/sls) (SLS).
 //
 // @param request - UpdateClusterAuditLogConfigRequest
 //
@@ -36642,7 +36930,11 @@ func (client *Client) UpdateClusterAuditLogConfigWithOptions(clusterid *string, 
 
 // Summary:
 //
-// 更新集群审计日志配置
+// You can call the UpdateClusterAuditLogConfig operation to enable or disable the audit log feature in a Container Service for Kubernetes (ACK) cluster and update the audit log configuration. This operation also allows you to record requests to the Kubernetes API and the responses, which can be used to trace cluster operation history and troubleshoot cluster issues.
+//
+// Description:
+//
+// Before you call this operation, ensure that you understand the billing methods and pricing of [Simple Log Service](https://www.aliyun.com/price/product#/sls/detail/sls) (SLS).
 //
 // @param request - UpdateClusterAuditLogConfigRequest
 //
@@ -37195,7 +37487,7 @@ func (client *Client) UpgradeClusterAddonsWithOptions(ClusterId *string, request
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
 		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("none"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &UpgradeClusterAddonsResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
