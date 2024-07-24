@@ -853,29 +853,6 @@ func (s *AppAccessStrategy) SetExceptAppIdList(v []*string) *AppAccessStrategy {
 	return s
 }
 
-type ArchiveFilesConfig struct {
-	Enable  *bool   `json:"enable,omitempty" xml:"enable,omitempty"`
-	Version *string `json:"version,omitempty" xml:"version,omitempty"`
-}
-
-func (s ArchiveFilesConfig) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ArchiveFilesConfig) GoString() string {
-	return s.String()
-}
-
-func (s *ArchiveFilesConfig) SetEnable(v bool) *ArchiveFilesConfig {
-	s.Enable = &v
-	return s
-}
-
-func (s *ArchiveFilesConfig) SetVersion(v string) *ArchiveFilesConfig {
-	s.Version = &v
-	return s
-}
-
 type ArchiveFilesConfigResponse struct {
 	Enabled *bool   `json:"enabled,omitempty" xml:"enabled,omitempty"`
 	Version *string `json:"version,omitempty" xml:"version,omitempty"`
@@ -896,158 +873,6 @@ func (s *ArchiveFilesConfigResponse) SetEnabled(v bool) *ArchiveFilesConfigRespo
 
 func (s *ArchiveFilesConfigResponse) SetVersion(v string) *ArchiveFilesConfigResponse {
 	s.Version = &v
-	return s
-}
-
-type AsyncTask struct {
-	AsyncTaskId     *string `json:"async_task_id,omitempty" xml:"async_task_id,omitempty"`
-	Category        *string `json:"category,omitempty" xml:"category,omitempty"`
-	ConsumedProcess *int64  `json:"consumed_process,omitempty" xml:"consumed_process,omitempty"`
-	CreatedAt       *string `json:"created_at,omitempty" xml:"created_at,omitempty"`
-	ErrorCode       *string `json:"error_code,omitempty" xml:"error_code,omitempty"`
-	ErrorMessage    *string `json:"error_message,omitempty" xml:"error_message,omitempty"`
-	FinishedAt      *string `json:"finished_at,omitempty" xml:"finished_at,omitempty"`
-	StartedAt       *string `json:"started_at,omitempty" xml:"started_at,omitempty"`
-	State           *string `json:"state,omitempty" xml:"state,omitempty"`
-	TaskType        *string `json:"task_type,omitempty" xml:"task_type,omitempty"`
-	TotalProcess    *int64  `json:"total_process,omitempty" xml:"total_process,omitempty"`
-	UserId          *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
-}
-
-func (s AsyncTask) String() string {
-	return tea.Prettify(s)
-}
-
-func (s AsyncTask) GoString() string {
-	return s.String()
-}
-
-func (s *AsyncTask) SetAsyncTaskId(v string) *AsyncTask {
-	s.AsyncTaskId = &v
-	return s
-}
-
-func (s *AsyncTask) SetCategory(v string) *AsyncTask {
-	s.Category = &v
-	return s
-}
-
-func (s *AsyncTask) SetConsumedProcess(v int64) *AsyncTask {
-	s.ConsumedProcess = &v
-	return s
-}
-
-func (s *AsyncTask) SetCreatedAt(v string) *AsyncTask {
-	s.CreatedAt = &v
-	return s
-}
-
-func (s *AsyncTask) SetErrorCode(v string) *AsyncTask {
-	s.ErrorCode = &v
-	return s
-}
-
-func (s *AsyncTask) SetErrorMessage(v string) *AsyncTask {
-	s.ErrorMessage = &v
-	return s
-}
-
-func (s *AsyncTask) SetFinishedAt(v string) *AsyncTask {
-	s.FinishedAt = &v
-	return s
-}
-
-func (s *AsyncTask) SetStartedAt(v string) *AsyncTask {
-	s.StartedAt = &v
-	return s
-}
-
-func (s *AsyncTask) SetState(v string) *AsyncTask {
-	s.State = &v
-	return s
-}
-
-func (s *AsyncTask) SetTaskType(v string) *AsyncTask {
-	s.TaskType = &v
-	return s
-}
-
-func (s *AsyncTask) SetTotalProcess(v int64) *AsyncTask {
-	s.TotalProcess = &v
-	return s
-}
-
-func (s *AsyncTask) SetUserId(v string) *AsyncTask {
-	s.UserId = &v
-	return s
-}
-
-type AudioPreviewPlayInfo struct {
-	Meta             *AudioPreviewPlayInfoMeta               `json:"meta,omitempty" xml:"meta,omitempty" type:"Struct"`
-	OfflineAudioList []*AudioPreviewPlayInfoOfflineAudioList `json:"offline_audio_list,omitempty" xml:"offline_audio_list,omitempty" type:"Repeated"`
-}
-
-func (s AudioPreviewPlayInfo) String() string {
-	return tea.Prettify(s)
-}
-
-func (s AudioPreviewPlayInfo) GoString() string {
-	return s.String()
-}
-
-func (s *AudioPreviewPlayInfo) SetMeta(v *AudioPreviewPlayInfoMeta) *AudioPreviewPlayInfo {
-	s.Meta = v
-	return s
-}
-
-func (s *AudioPreviewPlayInfo) SetOfflineAudioList(v []*AudioPreviewPlayInfoOfflineAudioList) *AudioPreviewPlayInfo {
-	s.OfflineAudioList = v
-	return s
-}
-
-type AudioPreviewPlayInfoMeta struct {
-	Duration *float64 `json:"duration,omitempty" xml:"duration,omitempty"`
-}
-
-func (s AudioPreviewPlayInfoMeta) String() string {
-	return tea.Prettify(s)
-}
-
-func (s AudioPreviewPlayInfoMeta) GoString() string {
-	return s.String()
-}
-
-func (s *AudioPreviewPlayInfoMeta) SetDuration(v float64) *AudioPreviewPlayInfoMeta {
-	s.Duration = &v
-	return s
-}
-
-type AudioPreviewPlayInfoOfflineAudioList struct {
-	Status     *string `json:"status,omitempty" xml:"status,omitempty"`
-	TemplateId *string `json:"template_id,omitempty" xml:"template_id,omitempty"`
-	Url        *string `json:"url,omitempty" xml:"url,omitempty"`
-}
-
-func (s AudioPreviewPlayInfoOfflineAudioList) String() string {
-	return tea.Prettify(s)
-}
-
-func (s AudioPreviewPlayInfoOfflineAudioList) GoString() string {
-	return s.String()
-}
-
-func (s *AudioPreviewPlayInfoOfflineAudioList) SetStatus(v string) *AudioPreviewPlayInfoOfflineAudioList {
-	s.Status = &v
-	return s
-}
-
-func (s *AudioPreviewPlayInfoOfflineAudioList) SetTemplateId(v string) *AudioPreviewPlayInfoOfflineAudioList {
-	s.TemplateId = &v
-	return s
-}
-
-func (s *AudioPreviewPlayInfoOfflineAudioList) SetUrl(v string) *AudioPreviewPlayInfoOfflineAudioList {
-	s.Url = &v
 	return s
 }
 
@@ -1178,41 +1003,6 @@ func (s *AuditLogDetail) SetFileLogDetail(v *FileLogDetail) *AuditLogDetail {
 
 func (s *AuditLogDetail) SetUserLogDetail(v *UserLogDetail) *AuditLogDetail {
 	s.UserLogDetail = v
-	return s
-}
-
-type AuthenticationInfo struct {
-	AuthenticationDisplayName *string `json:"authentication_display_name,omitempty" xml:"authentication_display_name,omitempty"`
-	AuthenticationType        *string `json:"authentication_type,omitempty" xml:"authentication_type,omitempty"`
-	Extra                     *string `json:"extra,omitempty" xml:"extra,omitempty"`
-	Identity                  *string `json:"identity,omitempty" xml:"identity,omitempty"`
-}
-
-func (s AuthenticationInfo) String() string {
-	return tea.Prettify(s)
-}
-
-func (s AuthenticationInfo) GoString() string {
-	return s.String()
-}
-
-func (s *AuthenticationInfo) SetAuthenticationDisplayName(v string) *AuthenticationInfo {
-	s.AuthenticationDisplayName = &v
-	return s
-}
-
-func (s *AuthenticationInfo) SetAuthenticationType(v string) *AuthenticationInfo {
-	s.AuthenticationType = &v
-	return s
-}
-
-func (s *AuthenticationInfo) SetExtra(v string) *AuthenticationInfo {
-	s.Extra = &v
-	return s
-}
-
-func (s *AuthenticationInfo) SetIdentity(v string) *AuthenticationInfo {
-	s.Identity = &v
 	return s
 }
 
@@ -1688,194 +1478,6 @@ func (s *BaseGroupResponse) SetUpdatedAt(v string) *BaseGroupResponse {
 	return s
 }
 
-type BasePunishLogResponse struct {
-	ErrorCode           *string                                `json:"error_code,omitempty" xml:"error_code,omitempty"`
-	ErrorMessage        *string                                `json:"error_message,omitempty" xml:"error_message,omitempty"`
-	PunishedAt          *string                                `json:"punished_at,omitempty" xml:"punished_at,omitempty"`
-	Punishee            *BasePunishLogResponsePunishee         `json:"punishee,omitempty" xml:"punishee,omitempty" type:"Struct"`
-	PunishmentDetail    *BasePunishLogResponsePunishmentDetail `json:"punishment_detail,omitempty" xml:"punishment_detail,omitempty" type:"Struct"`
-	PunishmentId        *string                                `json:"punishment_id,omitempty" xml:"punishment_id,omitempty"`
-	PunishmentOperation *string                                `json:"punishment_operation,omitempty" xml:"punishment_operation,omitempty"`
-	Status              *string                                `json:"status,omitempty" xml:"status,omitempty"`
-}
-
-func (s BasePunishLogResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s BasePunishLogResponse) GoString() string {
-	return s.String()
-}
-
-func (s *BasePunishLogResponse) SetErrorCode(v string) *BasePunishLogResponse {
-	s.ErrorCode = &v
-	return s
-}
-
-func (s *BasePunishLogResponse) SetErrorMessage(v string) *BasePunishLogResponse {
-	s.ErrorMessage = &v
-	return s
-}
-
-func (s *BasePunishLogResponse) SetPunishedAt(v string) *BasePunishLogResponse {
-	s.PunishedAt = &v
-	return s
-}
-
-func (s *BasePunishLogResponse) SetPunishee(v *BasePunishLogResponsePunishee) *BasePunishLogResponse {
-	s.Punishee = v
-	return s
-}
-
-func (s *BasePunishLogResponse) SetPunishmentDetail(v *BasePunishLogResponsePunishmentDetail) *BasePunishLogResponse {
-	s.PunishmentDetail = v
-	return s
-}
-
-func (s *BasePunishLogResponse) SetPunishmentId(v string) *BasePunishLogResponse {
-	s.PunishmentId = &v
-	return s
-}
-
-func (s *BasePunishLogResponse) SetPunishmentOperation(v string) *BasePunishLogResponse {
-	s.PunishmentOperation = &v
-	return s
-}
-
-func (s *BasePunishLogResponse) SetStatus(v string) *BasePunishLogResponse {
-	s.Status = &v
-	return s
-}
-
-type BasePunishLogResponsePunishee struct {
-	ContentHash *BasePunishLogResponsePunisheeContentHash `json:"content_hash,omitempty" xml:"content_hash,omitempty" type:"Struct"`
-	DriveId     *string                                   `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
-	FaceGroupId *string                                   `json:"face_group_id,omitempty" xml:"face_group_id,omitempty"`
-	FileId      *string                                   `json:"file_id,omitempty" xml:"file_id,omitempty"`
-	RevisionId  *string                                   `json:"revision_id,omitempty" xml:"revision_id,omitempty"`
-	ShareId     *string                                   `json:"share_id,omitempty" xml:"share_id,omitempty"`
-	UserId      *string                                   `json:"user_id,omitempty" xml:"user_id,omitempty"`
-}
-
-func (s BasePunishLogResponsePunishee) String() string {
-	return tea.Prettify(s)
-}
-
-func (s BasePunishLogResponsePunishee) GoString() string {
-	return s.String()
-}
-
-func (s *BasePunishLogResponsePunishee) SetContentHash(v *BasePunishLogResponsePunisheeContentHash) *BasePunishLogResponsePunishee {
-	s.ContentHash = v
-	return s
-}
-
-func (s *BasePunishLogResponsePunishee) SetDriveId(v string) *BasePunishLogResponsePunishee {
-	s.DriveId = &v
-	return s
-}
-
-func (s *BasePunishLogResponsePunishee) SetFaceGroupId(v string) *BasePunishLogResponsePunishee {
-	s.FaceGroupId = &v
-	return s
-}
-
-func (s *BasePunishLogResponsePunishee) SetFileId(v string) *BasePunishLogResponsePunishee {
-	s.FileId = &v
-	return s
-}
-
-func (s *BasePunishLogResponsePunishee) SetRevisionId(v string) *BasePunishLogResponsePunishee {
-	s.RevisionId = &v
-	return s
-}
-
-func (s *BasePunishLogResponsePunishee) SetShareId(v string) *BasePunishLogResponsePunishee {
-	s.ShareId = &v
-	return s
-}
-
-func (s *BasePunishLogResponsePunishee) SetUserId(v string) *BasePunishLogResponsePunishee {
-	s.UserId = &v
-	return s
-}
-
-type BasePunishLogResponsePunisheeContentHash struct {
-	HashHexStr *string `json:"hash_hex_str,omitempty" xml:"hash_hex_str,omitempty"`
-	HashName   *string `json:"hash_name,omitempty" xml:"hash_name,omitempty"`
-	Size       *int64  `json:"size,omitempty" xml:"size,omitempty"`
-}
-
-func (s BasePunishLogResponsePunisheeContentHash) String() string {
-	return tea.Prettify(s)
-}
-
-func (s BasePunishLogResponsePunisheeContentHash) GoString() string {
-	return s.String()
-}
-
-func (s *BasePunishLogResponsePunisheeContentHash) SetHashHexStr(v string) *BasePunishLogResponsePunisheeContentHash {
-	s.HashHexStr = &v
-	return s
-}
-
-func (s *BasePunishLogResponsePunisheeContentHash) SetHashName(v string) *BasePunishLogResponsePunisheeContentHash {
-	s.HashName = &v
-	return s
-}
-
-func (s *BasePunishLogResponsePunisheeContentHash) SetSize(v int64) *BasePunishLogResponsePunisheeContentHash {
-	s.Size = &v
-	return s
-}
-
-type BasePunishLogResponsePunishmentDetail struct {
-	ActionCode          *string       `json:"action_code,omitempty" xml:"action_code,omitempty"`
-	InvestigationStatus *int64        `json:"investigation_status,omitempty" xml:"investigation_status,omitempty"`
-	Method              *string       `json:"method,omitempty" xml:"method,omitempty"`
-	PunishReason        *string       `json:"punish_reason,omitempty" xml:"punish_reason,omitempty"`
-	Punishments         []*PunishRule `json:"punishments,omitempty" xml:"punishments,omitempty" type:"Repeated"`
-	Source              *string       `json:"source,omitempty" xml:"source,omitempty"`
-}
-
-func (s BasePunishLogResponsePunishmentDetail) String() string {
-	return tea.Prettify(s)
-}
-
-func (s BasePunishLogResponsePunishmentDetail) GoString() string {
-	return s.String()
-}
-
-func (s *BasePunishLogResponsePunishmentDetail) SetActionCode(v string) *BasePunishLogResponsePunishmentDetail {
-	s.ActionCode = &v
-	return s
-}
-
-func (s *BasePunishLogResponsePunishmentDetail) SetInvestigationStatus(v int64) *BasePunishLogResponsePunishmentDetail {
-	s.InvestigationStatus = &v
-	return s
-}
-
-func (s *BasePunishLogResponsePunishmentDetail) SetMethod(v string) *BasePunishLogResponsePunishmentDetail {
-	s.Method = &v
-	return s
-}
-
-func (s *BasePunishLogResponsePunishmentDetail) SetPunishReason(v string) *BasePunishLogResponsePunishmentDetail {
-	s.PunishReason = &v
-	return s
-}
-
-func (s *BasePunishLogResponsePunishmentDetail) SetPunishments(v []*PunishRule) *BasePunishLogResponsePunishmentDetail {
-	s.Punishments = v
-	return s
-}
-
-func (s *BasePunishLogResponsePunishmentDetail) SetSource(v string) *BasePunishLogResponsePunishmentDetail {
-	s.Source = &v
-	return s
-}
-
 type BaseRoleMemberResponse struct {
 	AssignmentList []*BaseAssignmentResponse `json:"assignment_list,omitempty" xml:"assignment_list,omitempty" type:"Repeated"`
 	CreatedAt      *string                   `json:"created_at,omitempty" xml:"created_at,omitempty"`
@@ -1932,46 +1534,6 @@ func (s *BaseRoleMemberResponse) SetIsAdmin(v bool) *BaseRoleMemberResponse {
 
 func (s *BaseRoleMemberResponse) SetSubdomainId(v string) *BaseRoleMemberResponse {
 	s.SubdomainId = &v
-	return s
-}
-
-type BaseUserPunishRuleResponse struct {
-	Results []*BaseUserPunishRuleResponseResults `json:"results,omitempty" xml:"results,omitempty" type:"Repeated"`
-}
-
-func (s BaseUserPunishRuleResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s BaseUserPunishRuleResponse) GoString() string {
-	return s.String()
-}
-
-func (s *BaseUserPunishRuleResponse) SetResults(v []*BaseUserPunishRuleResponseResults) *BaseUserPunishRuleResponse {
-	s.Results = v
-	return s
-}
-
-type BaseUserPunishRuleResponseResults struct {
-	Success *bool   `json:"success,omitempty" xml:"success,omitempty"`
-	UserId  *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
-}
-
-func (s BaseUserPunishRuleResponseResults) String() string {
-	return tea.Prettify(s)
-}
-
-func (s BaseUserPunishRuleResponseResults) GoString() string {
-	return s.String()
-}
-
-func (s *BaseUserPunishRuleResponseResults) SetSuccess(v bool) *BaseUserPunishRuleResponseResults {
-	s.Success = &v
-	return s
-}
-
-func (s *BaseUserPunishRuleResponseResults) SetUserId(v string) *BaseUserPunishRuleResponseResults {
-	s.UserId = &v
 	return s
 }
 
@@ -2172,35 +1734,6 @@ func (s *BaseUserResponse) SetUserId(v string) *BaseUserResponse {
 
 func (s *BaseUserResponse) SetUserName(v string) *BaseUserResponse {
 	s.UserName = &v
-	return s
-}
-
-type BenefitMeta struct {
-	Config  *string `json:"config,omitempty" xml:"config,omitempty"`
-	Enabled *bool   `json:"enabled,omitempty" xml:"enabled,omitempty"`
-	Quota   *int64  `json:"quota,omitempty" xml:"quota,omitempty"`
-}
-
-func (s BenefitMeta) String() string {
-	return tea.Prettify(s)
-}
-
-func (s BenefitMeta) GoString() string {
-	return s.String()
-}
-
-func (s *BenefitMeta) SetConfig(v string) *BenefitMeta {
-	s.Config = &v
-	return s
-}
-
-func (s *BenefitMeta) SetEnabled(v bool) *BenefitMeta {
-	s.Enabled = &v
-	return s
-}
-
-func (s *BenefitMeta) SetQuota(v int64) *BenefitMeta {
-	s.Quota = &v
 	return s
 }
 
@@ -2451,58 +1984,6 @@ func (s *CommonFileItem) SetFileId(v string) *CommonFileItem {
 
 func (s *CommonFileItem) SetRevisionId(v string) *CommonFileItem {
 	s.RevisionId = &v
-	return s
-}
-
-type Condition struct {
-	IntEquals       []*int64  `json:"int_equals,omitempty" xml:"int_equals,omitempty" type:"Repeated"`
-	IntNotEquals    []*int64  `json:"int_not_equals,omitempty" xml:"int_not_equals,omitempty" type:"Repeated"`
-	StringEquals    []*string `json:"string_equals,omitempty" xml:"string_equals,omitempty" type:"Repeated"`
-	StringNotEquals []*string `json:"string_not_equals,omitempty" xml:"string_not_equals,omitempty" type:"Repeated"`
-}
-
-func (s Condition) String() string {
-	return tea.Prettify(s)
-}
-
-func (s Condition) GoString() string {
-	return s.String()
-}
-
-func (s *Condition) SetIntEquals(v []*int64) *Condition {
-	s.IntEquals = v
-	return s
-}
-
-func (s *Condition) SetIntNotEquals(v []*int64) *Condition {
-	s.IntNotEquals = v
-	return s
-}
-
-func (s *Condition) SetStringEquals(v []*string) *Condition {
-	s.StringEquals = v
-	return s
-}
-
-func (s *Condition) SetStringNotEquals(v []*string) *Condition {
-	s.StringNotEquals = v
-	return s
-}
-
-type CsiCondition struct {
-	FileDataPunish *Condition `json:"file_data_punish,omitempty" xml:"file_data_punish,omitempty"`
-}
-
-func (s CsiCondition) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CsiCondition) GoString() string {
-	return s.String()
-}
-
-func (s *CsiCondition) SetFileDataPunish(v *Condition) *CsiCondition {
-	s.FileDataPunish = v
 	return s
 }
 
@@ -3096,6 +2577,35 @@ func (s *CustomSideLinkConfig) SetLink(v string) *CustomSideLinkConfig {
 
 func (s *CustomSideLinkConfig) SetText(v string) *CustomSideLinkConfig {
 	s.Text = &v
+	return s
+}
+
+type DataBoxPrivileges struct {
+	FeatureAttrId *string `json:"feature_attr_id,omitempty" xml:"feature_attr_id,omitempty"`
+	FeatureId     *string `json:"feature_id,omitempty" xml:"feature_id,omitempty"`
+	Quota         *int64  `json:"quota,omitempty" xml:"quota,omitempty"`
+}
+
+func (s DataBoxPrivileges) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DataBoxPrivileges) GoString() string {
+	return s.String()
+}
+
+func (s *DataBoxPrivileges) SetFeatureAttrId(v string) *DataBoxPrivileges {
+	s.FeatureAttrId = &v
+	return s
+}
+
+func (s *DataBoxPrivileges) SetFeatureId(v string) *DataBoxPrivileges {
+	s.FeatureId = &v
+	return s
+}
+
+func (s *DataBoxPrivileges) SetQuota(v int64) *DataBoxPrivileges {
+	s.Quota = &v
 	return s
 }
 
@@ -4454,29 +3964,6 @@ func (s *Identity) SetIdentityType(v string) *Identity {
 	return s
 }
 
-type IdentityBenefitPkg struct {
-	BenefitPkgId *string `json:"benefit_pkg_id,omitempty" xml:"benefit_pkg_id,omitempty"`
-	Name         *string `json:"name,omitempty" xml:"name,omitempty"`
-}
-
-func (s IdentityBenefitPkg) String() string {
-	return tea.Prettify(s)
-}
-
-func (s IdentityBenefitPkg) GoString() string {
-	return s.String()
-}
-
-func (s *IdentityBenefitPkg) SetBenefitPkgId(v string) *IdentityBenefitPkg {
-	s.BenefitPkgId = &v
-	return s
-}
-
-func (s *IdentityBenefitPkg) SetName(v string) *IdentityBenefitPkg {
-	s.Name = &v
-	return s
-}
-
 type IdentityToBenefitPkgMapping struct {
 	BenefitPkgComputationRule *string                   `json:"benefit_pkg_computation_rule,omitempty" xml:"benefit_pkg_computation_rule,omitempty"`
 	BenefitPkgId              *string                   `json:"benefit_pkg_id,omitempty" xml:"benefit_pkg_id,omitempty"`
@@ -4968,6 +4455,29 @@ func (s *JWTPayload) SetSubType(v string) *JWTPayload {
 	return s
 }
 
+type KnowledgeFileItem struct {
+	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
+	FileId  *string `json:"file_id,omitempty" xml:"file_id,omitempty"`
+}
+
+func (s KnowledgeFileItem) String() string {
+	return tea.Prettify(s)
+}
+
+func (s KnowledgeFileItem) GoString() string {
+	return s.String()
+}
+
+func (s *KnowledgeFileItem) SetDriveId(v string) *KnowledgeFileItem {
+	s.DriveId = &v
+	return s
+}
+
+func (s *KnowledgeFileItem) SetFileId(v string) *KnowledgeFileItem {
+	s.FileId = &v
+	return s
+}
+
 type LinkInfo struct {
 	Extra    *string `json:"extra,omitempty" xml:"extra,omitempty"`
 	Identity *string `json:"identity,omitempty" xml:"identity,omitempty"`
@@ -5393,38 +4903,91 @@ func (s *PermissionConditionStringNotLike) SetVpcId(v []*string) *PermissionCond
 	return s
 }
 
-type PunishRule struct {
-	ActionCode  *string `json:"action_code,omitempty" xml:"action_code,omitempty"`
-	EndsAt      *string `json:"ends_at,omitempty" xml:"ends_at,omitempty"`
-	Impermanent *bool   `json:"impermanent,omitempty" xml:"impermanent,omitempty"`
-	StartsAt    *string `json:"starts_at,omitempty" xml:"starts_at,omitempty"`
+type PersonalRightsInfoResponse struct {
+	ExpiresTime         *string                     `json:"expires_time,omitempty" xml:"expires_time,omitempty"`
+	HistoryLatestRights *PersonalRightsInfoResponse `json:"history_latest_rights,omitempty" xml:"history_latest_rights,omitempty"`
+	Icon                *string                     `json:"icon,omitempty" xml:"icon,omitempty"`
+	IsExpires           *bool                       `json:"is_expires,omitempty" xml:"is_expires,omitempty"`
+	Name                *string                     `json:"name,omitempty" xml:"name,omitempty"`
+	OtherRights         *PersonalRightsInfoResponse `json:"other_rights,omitempty" xml:"other_rights,omitempty"`
+	Privileges          *DataBoxPrivileges          `json:"privileges,omitempty" xml:"privileges,omitempty"`
+	SpuId               *string                     `json:"spu_id,omitempty" xml:"spu_id,omitempty"`
+	Title               *string                     `json:"title,omitempty" xml:"title,omitempty"`
 }
 
-func (s PunishRule) String() string {
+func (s PersonalRightsInfoResponse) String() string {
 	return tea.Prettify(s)
 }
 
-func (s PunishRule) GoString() string {
+func (s PersonalRightsInfoResponse) GoString() string {
 	return s.String()
 }
 
-func (s *PunishRule) SetActionCode(v string) *PunishRule {
-	s.ActionCode = &v
+func (s *PersonalRightsInfoResponse) SetExpiresTime(v string) *PersonalRightsInfoResponse {
+	s.ExpiresTime = &v
 	return s
 }
 
-func (s *PunishRule) SetEndsAt(v string) *PunishRule {
-	s.EndsAt = &v
+func (s *PersonalRightsInfoResponse) SetHistoryLatestRights(v *PersonalRightsInfoResponse) *PersonalRightsInfoResponse {
+	s.HistoryLatestRights = v
 	return s
 }
 
-func (s *PunishRule) SetImpermanent(v bool) *PunishRule {
-	s.Impermanent = &v
+func (s *PersonalRightsInfoResponse) SetIcon(v string) *PersonalRightsInfoResponse {
+	s.Icon = &v
 	return s
 }
 
-func (s *PunishRule) SetStartsAt(v string) *PunishRule {
-	s.StartsAt = &v
+func (s *PersonalRightsInfoResponse) SetIsExpires(v bool) *PersonalRightsInfoResponse {
+	s.IsExpires = &v
+	return s
+}
+
+func (s *PersonalRightsInfoResponse) SetName(v string) *PersonalRightsInfoResponse {
+	s.Name = &v
+	return s
+}
+
+func (s *PersonalRightsInfoResponse) SetOtherRights(v *PersonalRightsInfoResponse) *PersonalRightsInfoResponse {
+	s.OtherRights = v
+	return s
+}
+
+func (s *PersonalRightsInfoResponse) SetPrivileges(v *DataBoxPrivileges) *PersonalRightsInfoResponse {
+	s.Privileges = v
+	return s
+}
+
+func (s *PersonalRightsInfoResponse) SetSpuId(v string) *PersonalRightsInfoResponse {
+	s.SpuId = &v
+	return s
+}
+
+func (s *PersonalRightsInfoResponse) SetTitle(v string) *PersonalRightsInfoResponse {
+	s.Title = &v
+	return s
+}
+
+type PersonalSpaceInfo struct {
+	TotalSize *int64 `json:"total_size,omitempty" xml:"total_size,omitempty"`
+	UsedSize  *int64 `json:"used_size,omitempty" xml:"used_size,omitempty"`
+}
+
+func (s PersonalSpaceInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PersonalSpaceInfo) GoString() string {
+	return s.String()
+}
+
+func (s *PersonalSpaceInfo) SetTotalSize(v int64) *PersonalSpaceInfo {
+	s.TotalSize = &v
+	return s
+}
+
+func (s *PersonalSpaceInfo) SetUsedSize(v int64) *PersonalSpaceInfo {
+	s.UsedSize = &v
 	return s
 }
 
@@ -6042,65 +5605,6 @@ func (s *SimpleStreamInfo) SetUrl(v string) *SimpleStreamInfo {
 	return s
 }
 
-type Store struct {
-	BasePath  *string `json:"base_path,omitempty" xml:"base_path,omitempty"`
-	Bucket    *string `json:"bucket,omitempty" xml:"bucket,omitempty"`
-	Endpoint  *string `json:"endpoint,omitempty" xml:"endpoint,omitempty"`
-	Location  *string `json:"location,omitempty" xml:"location,omitempty"`
-	Ownership *string `json:"ownership,omitempty" xml:"ownership,omitempty"`
-	RoleArn   *string `json:"role_arn,omitempty" xml:"role_arn,omitempty"`
-	StoreId   *string `json:"store_id,omitempty" xml:"store_id,omitempty"`
-	Type      *string `json:"type,omitempty" xml:"type,omitempty"`
-}
-
-func (s Store) String() string {
-	return tea.Prettify(s)
-}
-
-func (s Store) GoString() string {
-	return s.String()
-}
-
-func (s *Store) SetBasePath(v string) *Store {
-	s.BasePath = &v
-	return s
-}
-
-func (s *Store) SetBucket(v string) *Store {
-	s.Bucket = &v
-	return s
-}
-
-func (s *Store) SetEndpoint(v string) *Store {
-	s.Endpoint = &v
-	return s
-}
-
-func (s *Store) SetLocation(v string) *Store {
-	s.Location = &v
-	return s
-}
-
-func (s *Store) SetOwnership(v string) *Store {
-	s.Ownership = &v
-	return s
-}
-
-func (s *Store) SetRoleArn(v string) *Store {
-	s.RoleArn = &v
-	return s
-}
-
-func (s *Store) SetStoreId(v string) *Store {
-	s.StoreId = &v
-	return s
-}
-
-func (s *Store) SetType(v string) *Store {
-	s.Type = &v
-	return s
-}
-
 type Story struct {
 	CoverFileId           *string                `json:"cover_file_id,omitempty" xml:"cover_file_id,omitempty"`
 	CoverFileThumbnailUrl *string                `json:"cover_file_thumbnail_url,omitempty" xml:"cover_file_thumbnail_url,omitempty"`
@@ -6187,59 +5691,6 @@ func (s *Story) SetStoryType(v string) *Story {
 
 func (s *Story) SetUpdatedAt(v string) *Story {
 	s.UpdatedAt = &v
-	return s
-}
-
-type StreamUploadInfo struct {
-	// example:
-	//
-	// cn-beijing
-	Location     *string           `json:"location,omitempty" xml:"location,omitempty"`
-	PartInfoList []*UploadPartInfo `json:"part_info_list,omitempty" xml:"part_info_list,omitempty" type:"Repeated"`
-	// example:
-	//
-	// false
-	PreRapidUpload *bool `json:"pre_rapid_upload,omitempty" xml:"pre_rapid_upload,omitempty"`
-	// example:
-	//
-	// false
-	RapidUpload *bool `json:"rapid_upload,omitempty" xml:"rapid_upload,omitempty"`
-	// example:
-	//
-	// abcd
-	UploadId *string `json:"upload_id,omitempty" xml:"upload_id,omitempty"`
-}
-
-func (s StreamUploadInfo) String() string {
-	return tea.Prettify(s)
-}
-
-func (s StreamUploadInfo) GoString() string {
-	return s.String()
-}
-
-func (s *StreamUploadInfo) SetLocation(v string) *StreamUploadInfo {
-	s.Location = &v
-	return s
-}
-
-func (s *StreamUploadInfo) SetPartInfoList(v []*UploadPartInfo) *StreamUploadInfo {
-	s.PartInfoList = v
-	return s
-}
-
-func (s *StreamUploadInfo) SetPreRapidUpload(v bool) *StreamUploadInfo {
-	s.PreRapidUpload = &v
-	return s
-}
-
-func (s *StreamUploadInfo) SetRapidUpload(v bool) *StreamUploadInfo {
-	s.RapidUpload = &v
-	return s
-}
-
-func (s *StreamUploadInfo) SetUploadId(v string) *StreamUploadInfo {
-	s.UploadId = &v
 	return s
 }
 
@@ -6426,105 +5877,6 @@ func (s *Token) SetUserId(v string) *Token {
 
 func (s *Token) SetUserName(v string) *Token {
 	s.UserName = &v
-	return s
-}
-
-type UCDataRefFileInfo struct {
-	DriveId    *string `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
-	FileId     *string `json:"file_id,omitempty" xml:"file_id,omitempty"`
-	RevisionId *string `json:"revision_id,omitempty" xml:"revision_id,omitempty"`
-}
-
-func (s UCDataRefFileInfo) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UCDataRefFileInfo) GoString() string {
-	return s.String()
-}
-
-func (s *UCDataRefFileInfo) SetDriveId(v string) *UCDataRefFileInfo {
-	s.DriveId = &v
-	return s
-}
-
-func (s *UCDataRefFileInfo) SetFileId(v string) *UCDataRefFileInfo {
-	s.FileId = &v
-	return s
-}
-
-func (s *UCDataRefFileInfo) SetRevisionId(v string) *UCDataRefFileInfo {
-	s.RevisionId = &v
-	return s
-}
-
-type UCObjectInfo struct {
-	Bucket    *string `json:"bucket,omitempty" xml:"bucket,omitempty"`
-	Md5       *string `json:"md5,omitempty" xml:"md5,omitempty"`
-	ObjectKey *string `json:"object_key,omitempty" xml:"object_key,omitempty"`
-	Region    *string `json:"region,omitempty" xml:"region,omitempty"`
-	Sha1      *string `json:"sha1,omitempty" xml:"sha1,omitempty"`
-	Size      *int64  `json:"size,omitempty" xml:"size,omitempty"`
-}
-
-func (s UCObjectInfo) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UCObjectInfo) GoString() string {
-	return s.String()
-}
-
-func (s *UCObjectInfo) SetBucket(v string) *UCObjectInfo {
-	s.Bucket = &v
-	return s
-}
-
-func (s *UCObjectInfo) SetMd5(v string) *UCObjectInfo {
-	s.Md5 = &v
-	return s
-}
-
-func (s *UCObjectInfo) SetObjectKey(v string) *UCObjectInfo {
-	s.ObjectKey = &v
-	return s
-}
-
-func (s *UCObjectInfo) SetRegion(v string) *UCObjectInfo {
-	s.Region = &v
-	return s
-}
-
-func (s *UCObjectInfo) SetSha1(v string) *UCObjectInfo {
-	s.Sha1 = &v
-	return s
-}
-
-func (s *UCObjectInfo) SetSize(v int64) *UCObjectInfo {
-	s.Size = &v
-	return s
-}
-
-type UncompressConfig struct {
-	Enable  *bool   `json:"enable,omitempty" xml:"enable,omitempty"`
-	Version *string `json:"version,omitempty" xml:"version,omitempty"`
-}
-
-func (s UncompressConfig) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UncompressConfig) GoString() string {
-	return s.String()
-}
-
-func (s *UncompressConfig) SetEnable(v bool) *UncompressConfig {
-	s.Enable = &v
-	return s
-}
-
-func (s *UncompressConfig) SetVersion(v string) *UncompressConfig {
-	s.Version = &v
 	return s
 }
 
@@ -7191,9 +6543,9 @@ func (s *UserLogDetailUpdateTo) SetRoleId(v string) *UserLogDetailUpdateTo {
 
 type UserTag struct {
 	// This parameter is required.
-	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
-	// This parameter is required.
 	Key *string `json:"key,omitempty" xml:"key,omitempty"`
+	// This parameter is required.
+	Value *string `json:"value,omitempty" xml:"value,omitempty"`
 }
 
 func (s UserTag) String() string {
@@ -7204,13 +6556,13 @@ func (s UserTag) GoString() string {
 	return s.String()
 }
 
-func (s *UserTag) SetValue(v string) *UserTag {
-	s.Value = &v
+func (s *UserTag) SetKey(v string) *UserTag {
+	s.Key = &v
 	return s
 }
 
-func (s *UserTag) SetKey(v string) *UserTag {
-	s.Key = &v
+func (s *UserTag) SetValue(v string) *UserTag {
+	s.Value = &v
 	return s
 }
 
@@ -7876,41 +7228,6 @@ func (s *ViewFileInvestigationInfo) SetSuggestion(v string) *ViewFileInvestigati
 	return s
 }
 
-type WatermarkConfig struct {
-	DisplayAccessUserName       *bool `json:"display_access_user_name,omitempty" xml:"display_access_user_name,omitempty"`
-	DisplayShareLinkCreatorName *bool `json:"display_shareLink_creator_name,omitempty" xml:"display_shareLink_creator_name,omitempty"`
-	EnableDocPreview            *bool `json:"enable_doc_preview,omitempty" xml:"enable_doc_preview,omitempty"`
-	EnableOnPreview             *bool `json:"enable_on_preview,omitempty" xml:"enable_on_preview,omitempty"`
-}
-
-func (s WatermarkConfig) String() string {
-	return tea.Prettify(s)
-}
-
-func (s WatermarkConfig) GoString() string {
-	return s.String()
-}
-
-func (s *WatermarkConfig) SetDisplayAccessUserName(v bool) *WatermarkConfig {
-	s.DisplayAccessUserName = &v
-	return s
-}
-
-func (s *WatermarkConfig) SetDisplayShareLinkCreatorName(v bool) *WatermarkConfig {
-	s.DisplayShareLinkCreatorName = &v
-	return s
-}
-
-func (s *WatermarkConfig) SetEnableDocPreview(v bool) *WatermarkConfig {
-	s.EnableDocPreview = &v
-	return s
-}
-
-func (s *WatermarkConfig) SetEnableOnPreview(v bool) *WatermarkConfig {
-	s.EnableOnPreview = &v
-	return s
-}
-
 type WatermarkEnableConfig struct {
 	DisplayAccessUserName       *bool   `json:"display_access_user_name,omitempty" xml:"display_access_user_name,omitempty"`
 	DisplayCustomText           *string `json:"display_custom_text,omitempty" xml:"display_custom_text,omitempty"`
@@ -8515,50 +7832,6 @@ type BatchRequest struct {
 	// 	- share_link: a share.
 	//
 	// 	- async_task: an asynchronous task.
-	//
-	// <!---->
-	//
-	// 	- <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
 	//
 	// This parameter is required.
 	//
@@ -13176,6 +12449,10 @@ type GetDownloadUrlRequest struct {
 	//
 	// 1.txt
 	FileName *string `json:"file_name,omitempty" xml:"file_name,omitempty"`
+	// example:
+	//
+	// video/mp4
+	ResponseContentType *string `json:"response_content_type,omitempty" xml:"response_content_type,omitempty"`
 	// The share ID. If you want to manage a file by using a sharing link, carry the `x-share-token` header in the request and specify share_id. In this case, `drive_id` is invalid. Otherwise, use an `AccessKey pair` or `access token` for authentication and specify `drive_id`. You must specify at least either `share_id` or `drive_id`.
 	//
 	// example:
@@ -13209,6 +12486,11 @@ func (s *GetDownloadUrlRequest) SetFileId(v string) *GetDownloadUrlRequest {
 
 func (s *GetDownloadUrlRequest) SetFileName(v string) *GetDownloadUrlRequest {
 	s.FileName = &v
+	return s
+}
+
+func (s *GetDownloadUrlRequest) SetResponseContentType(v string) *GetDownloadUrlRequest {
+	s.ResponseContentType = &v
 	return s
 }
 
@@ -19630,7 +18912,8 @@ type SearchFileRequest struct {
 	// example:
 	//
 	// not name=123
-	Query *string `json:"query,omitempty" xml:"query,omitempty"`
+	Query     *string `json:"query,omitempty" xml:"query,omitempty"`
+	Recursive *bool   `json:"recursive,omitempty" xml:"recursive,omitempty"`
 	// Specifies whether to return the total number of retrieved files.
 	//
 	// example:
@@ -19674,6 +18957,11 @@ func (s *SearchFileRequest) SetOrderBy(v string) *SearchFileRequest {
 
 func (s *SearchFileRequest) SetQuery(v string) *SearchFileRequest {
 	s.Query = &v
+	return s
+}
+
+func (s *SearchFileRequest) SetRecursive(v bool) *SearchFileRequest {
+	s.Recursive = &v
 	return s
 }
 
@@ -25428,6 +24716,10 @@ func (client *Client) GetDownloadUrlWithOptions(request *GetDownloadUrlRequest, 
 		body["file_name"] = request.FileName
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ResponseContentType)) {
+		body["response_content_type"] = request.ResponseContentType
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ShareId)) {
 		body["share_id"] = request.ShareId
 	}
@@ -29418,6 +28710,10 @@ func (client *Client) SearchFileWithOptions(request *SearchFileRequest, headers 
 
 	if !tea.BoolValue(util.IsUnset(request.Query)) {
 		body["query"] = request.Query
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Recursive)) {
+		body["recursive"] = request.Recursive
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ReturnTotalCount)) {
