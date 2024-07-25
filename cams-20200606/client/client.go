@@ -6967,6 +6967,215 @@ func (s *GetCommerceSettingResponse) SetBody(v *GetCommerceSettingResponseBody) 
 	return s
 }
 
+type GetConversationalAutomationRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cams-3ie***
+	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
+	OwnerId     *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 示例值示例值
+	PhoneNumber          *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+}
+
+func (s GetConversationalAutomationRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetConversationalAutomationRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetConversationalAutomationRequest) SetCustSpaceId(v string) *GetConversationalAutomationRequest {
+	s.CustSpaceId = &v
+	return s
+}
+
+func (s *GetConversationalAutomationRequest) SetOwnerId(v int64) *GetConversationalAutomationRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *GetConversationalAutomationRequest) SetPhoneNumber(v string) *GetConversationalAutomationRequest {
+	s.PhoneNumber = &v
+	return s
+}
+
+func (s *GetConversationalAutomationRequest) SetResourceOwnerAccount(v string) *GetConversationalAutomationRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *GetConversationalAutomationRequest) SetResourceOwnerId(v int64) *GetConversationalAutomationRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+type GetConversationalAutomationResponseBody struct {
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// example:
+	//
+	// 示例值
+	Code *string                                      `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *GetConversationalAutomationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// 示例值示例值示例值
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 示例值
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetConversationalAutomationResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetConversationalAutomationResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetConversationalAutomationResponseBody) SetAccessDeniedDetail(v string) *GetConversationalAutomationResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
+}
+
+func (s *GetConversationalAutomationResponseBody) SetCode(v string) *GetConversationalAutomationResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetConversationalAutomationResponseBody) SetData(v *GetConversationalAutomationResponseBodyData) *GetConversationalAutomationResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetConversationalAutomationResponseBody) SetMessage(v string) *GetConversationalAutomationResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetConversationalAutomationResponseBody) SetRequestId(v string) *GetConversationalAutomationResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetConversationalAutomationResponseBody) SetSuccess(v bool) *GetConversationalAutomationResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetConversationalAutomationResponseBodyData struct {
+	Commands []*GetConversationalAutomationResponseBodyDataCommands `json:"Commands,omitempty" xml:"Commands,omitempty" type:"Repeated"`
+	// example:
+	//
+	// true
+	EnableWelcomeMessage *bool `json:"EnableWelcomeMessage,omitempty" xml:"EnableWelcomeMessage,omitempty"`
+	// example:
+	//
+	// 86138****
+	PhoneNumber *string   `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
+	Prompts     []*string `json:"Prompts,omitempty" xml:"Prompts,omitempty" type:"Repeated"`
+}
+
+func (s GetConversationalAutomationResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetConversationalAutomationResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetConversationalAutomationResponseBodyData) SetCommands(v []*GetConversationalAutomationResponseBodyDataCommands) *GetConversationalAutomationResponseBodyData {
+	s.Commands = v
+	return s
+}
+
+func (s *GetConversationalAutomationResponseBodyData) SetEnableWelcomeMessage(v bool) *GetConversationalAutomationResponseBodyData {
+	s.EnableWelcomeMessage = &v
+	return s
+}
+
+func (s *GetConversationalAutomationResponseBodyData) SetPhoneNumber(v string) *GetConversationalAutomationResponseBodyData {
+	s.PhoneNumber = &v
+	return s
+}
+
+func (s *GetConversationalAutomationResponseBodyData) SetPrompts(v []*string) *GetConversationalAutomationResponseBodyData {
+	s.Prompts = v
+	return s
+}
+
+type GetConversationalAutomationResponseBodyDataCommands struct {
+	// example:
+	//
+	// description
+	CommandDescription *string `json:"CommandDescription,omitempty" xml:"CommandDescription,omitempty"`
+	// example:
+	//
+	// common1
+	CommandName *string `json:"CommandName,omitempty" xml:"CommandName,omitempty"`
+}
+
+func (s GetConversationalAutomationResponseBodyDataCommands) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetConversationalAutomationResponseBodyDataCommands) GoString() string {
+	return s.String()
+}
+
+func (s *GetConversationalAutomationResponseBodyDataCommands) SetCommandDescription(v string) *GetConversationalAutomationResponseBodyDataCommands {
+	s.CommandDescription = &v
+	return s
+}
+
+func (s *GetConversationalAutomationResponseBodyDataCommands) SetCommandName(v string) *GetConversationalAutomationResponseBodyDataCommands {
+	s.CommandName = &v
+	return s
+}
+
+type GetConversationalAutomationResponse struct {
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetConversationalAutomationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetConversationalAutomationResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetConversationalAutomationResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetConversationalAutomationResponse) SetHeaders(v map[string]*string) *GetConversationalAutomationResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetConversationalAutomationResponse) SetStatusCode(v int32) *GetConversationalAutomationResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetConversationalAutomationResponse) SetBody(v *GetConversationalAutomationResponseBody) *GetConversationalAutomationResponse {
+	s.Body = v
+	return s
+}
+
 type GetFlowRequest struct {
 	// The space ID of the user within the independent software vendor (ISV) account.
 	//
@@ -8431,6 +8640,327 @@ func (s *GetWhatsappConnectionCatalogResponse) SetStatusCode(v int32) *GetWhatsa
 }
 
 func (s *GetWhatsappConnectionCatalogResponse) SetBody(v *GetWhatsappConnectionCatalogResponseBody) *GetWhatsappConnectionCatalogResponse {
+	s.Body = v
+	return s
+}
+
+type GetWhatsappHealthStatusRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2993****
+	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
+	// example:
+	//
+	// en
+	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waba
+	NodeType *string `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
+	OwnerId  *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// example:
+	//
+	// 86138***
+	PhoneNumber          *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// example:
+	//
+	// 399299***
+	TemplateCode *string `json:"TemplateCode,omitempty" xml:"TemplateCode,omitempty"`
+	// WabaId
+	//
+	// example:
+	//
+	// 299399****
+	WabaId *string `json:"WabaId,omitempty" xml:"WabaId,omitempty"`
+}
+
+func (s GetWhatsappHealthStatusRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetWhatsappHealthStatusRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetWhatsappHealthStatusRequest) SetCustSpaceId(v string) *GetWhatsappHealthStatusRequest {
+	s.CustSpaceId = &v
+	return s
+}
+
+func (s *GetWhatsappHealthStatusRequest) SetLanguage(v string) *GetWhatsappHealthStatusRequest {
+	s.Language = &v
+	return s
+}
+
+func (s *GetWhatsappHealthStatusRequest) SetNodeType(v string) *GetWhatsappHealthStatusRequest {
+	s.NodeType = &v
+	return s
+}
+
+func (s *GetWhatsappHealthStatusRequest) SetOwnerId(v int64) *GetWhatsappHealthStatusRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *GetWhatsappHealthStatusRequest) SetPhoneNumber(v string) *GetWhatsappHealthStatusRequest {
+	s.PhoneNumber = &v
+	return s
+}
+
+func (s *GetWhatsappHealthStatusRequest) SetResourceOwnerAccount(v string) *GetWhatsappHealthStatusRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *GetWhatsappHealthStatusRequest) SetResourceOwnerId(v int64) *GetWhatsappHealthStatusRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *GetWhatsappHealthStatusRequest) SetTemplateCode(v string) *GetWhatsappHealthStatusRequest {
+	s.TemplateCode = &v
+	return s
+}
+
+func (s *GetWhatsappHealthStatusRequest) SetWabaId(v string) *GetWhatsappHealthStatusRequest {
+	s.WabaId = &v
+	return s
+}
+
+type GetWhatsappHealthStatusResponseBody struct {
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// example:
+	//
+	// OK
+	Code *string                                  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *GetWhatsappHealthStatusResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// 示例值
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 示例值示例值
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetWhatsappHealthStatusResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetWhatsappHealthStatusResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetWhatsappHealthStatusResponseBody) SetAccessDeniedDetail(v string) *GetWhatsappHealthStatusResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
+}
+
+func (s *GetWhatsappHealthStatusResponseBody) SetCode(v string) *GetWhatsappHealthStatusResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetWhatsappHealthStatusResponseBody) SetData(v *GetWhatsappHealthStatusResponseBodyData) *GetWhatsappHealthStatusResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetWhatsappHealthStatusResponseBody) SetMessage(v string) *GetWhatsappHealthStatusResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetWhatsappHealthStatusResponseBody) SetRequestId(v string) *GetWhatsappHealthStatusResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetWhatsappHealthStatusResponseBody) SetSuccess(v bool) *GetWhatsappHealthStatusResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetWhatsappHealthStatusResponseBodyData struct {
+	// example:
+	//
+	// AVAILABLE
+	CanSendMessage *string                                            `json:"CanSendMessage,omitempty" xml:"CanSendMessage,omitempty"`
+	Entities       []*GetWhatsappHealthStatusResponseBodyDataEntities `json:"Entities,omitempty" xml:"Entities,omitempty" type:"Repeated"`
+}
+
+func (s GetWhatsappHealthStatusResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetWhatsappHealthStatusResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetWhatsappHealthStatusResponseBodyData) SetCanSendMessage(v string) *GetWhatsappHealthStatusResponseBodyData {
+	s.CanSendMessage = &v
+	return s
+}
+
+func (s *GetWhatsappHealthStatusResponseBodyData) SetEntities(v []*GetWhatsappHealthStatusResponseBodyDataEntities) *GetWhatsappHealthStatusResponseBodyData {
+	s.Entities = v
+	return s
+}
+
+type GetWhatsappHealthStatusResponseBodyDataEntities struct {
+	// example:
+	//
+	// 3992****
+	BusinessId *string `json:"BusinessId,omitempty" xml:"BusinessId,omitempty"`
+	// example:
+	//
+	// AVAILABLE
+	CanSendMessage *string `json:"CanSendMessage,omitempty" xml:"CanSendMessage,omitempty"`
+	// example:
+	//
+	// PHONE_NUMBER
+	EntityType *string                                                  `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
+	Errors     []*GetWhatsappHealthStatusResponseBodyDataEntitiesErrors `json:"Errors,omitempty" xml:"Errors,omitempty" type:"Repeated"`
+	// example:
+	//
+	// en
+	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	// example:
+	//
+	// 86138****
+	PhoneNumber *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
+	// example:
+	//
+	// 939928****
+	TemplateCode *string `json:"TemplateCode,omitempty" xml:"TemplateCode,omitempty"`
+	// example:
+	//
+	// 39939***
+	WabaId *string `json:"WabaId,omitempty" xml:"WabaId,omitempty"`
+}
+
+func (s GetWhatsappHealthStatusResponseBodyDataEntities) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetWhatsappHealthStatusResponseBodyDataEntities) GoString() string {
+	return s.String()
+}
+
+func (s *GetWhatsappHealthStatusResponseBodyDataEntities) SetBusinessId(v string) *GetWhatsappHealthStatusResponseBodyDataEntities {
+	s.BusinessId = &v
+	return s
+}
+
+func (s *GetWhatsappHealthStatusResponseBodyDataEntities) SetCanSendMessage(v string) *GetWhatsappHealthStatusResponseBodyDataEntities {
+	s.CanSendMessage = &v
+	return s
+}
+
+func (s *GetWhatsappHealthStatusResponseBodyDataEntities) SetEntityType(v string) *GetWhatsappHealthStatusResponseBodyDataEntities {
+	s.EntityType = &v
+	return s
+}
+
+func (s *GetWhatsappHealthStatusResponseBodyDataEntities) SetErrors(v []*GetWhatsappHealthStatusResponseBodyDataEntitiesErrors) *GetWhatsappHealthStatusResponseBodyDataEntities {
+	s.Errors = v
+	return s
+}
+
+func (s *GetWhatsappHealthStatusResponseBodyDataEntities) SetLanguage(v string) *GetWhatsappHealthStatusResponseBodyDataEntities {
+	s.Language = &v
+	return s
+}
+
+func (s *GetWhatsappHealthStatusResponseBodyDataEntities) SetPhoneNumber(v string) *GetWhatsappHealthStatusResponseBodyDataEntities {
+	s.PhoneNumber = &v
+	return s
+}
+
+func (s *GetWhatsappHealthStatusResponseBodyDataEntities) SetTemplateCode(v string) *GetWhatsappHealthStatusResponseBodyDataEntities {
+	s.TemplateCode = &v
+	return s
+}
+
+func (s *GetWhatsappHealthStatusResponseBodyDataEntities) SetWabaId(v string) *GetWhatsappHealthStatusResponseBodyDataEntities {
+	s.WabaId = &v
+	return s
+}
+
+type GetWhatsappHealthStatusResponseBodyDataEntitiesErrors struct {
+	// example:
+	//
+	// 141006
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// There is an error with the payment method.
+	ErrorDescription *string `json:"ErrorDescription,omitempty" xml:"ErrorDescription,omitempty"`
+	// example:
+	//
+	// There was an error with your payment method. Please add a new payment method to the account.
+	PossibleSolution *string `json:"PossibleSolution,omitempty" xml:"PossibleSolution,omitempty"`
+}
+
+func (s GetWhatsappHealthStatusResponseBodyDataEntitiesErrors) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetWhatsappHealthStatusResponseBodyDataEntitiesErrors) GoString() string {
+	return s.String()
+}
+
+func (s *GetWhatsappHealthStatusResponseBodyDataEntitiesErrors) SetErrorCode(v string) *GetWhatsappHealthStatusResponseBodyDataEntitiesErrors {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *GetWhatsappHealthStatusResponseBodyDataEntitiesErrors) SetErrorDescription(v string) *GetWhatsappHealthStatusResponseBodyDataEntitiesErrors {
+	s.ErrorDescription = &v
+	return s
+}
+
+func (s *GetWhatsappHealthStatusResponseBodyDataEntitiesErrors) SetPossibleSolution(v string) *GetWhatsappHealthStatusResponseBodyDataEntitiesErrors {
+	s.PossibleSolution = &v
+	return s
+}
+
+type GetWhatsappHealthStatusResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetWhatsappHealthStatusResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetWhatsappHealthStatusResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetWhatsappHealthStatusResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetWhatsappHealthStatusResponse) SetHeaders(v map[string]*string) *GetWhatsappHealthStatusResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetWhatsappHealthStatusResponse) SetStatusCode(v int32) *GetWhatsappHealthStatusResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetWhatsappHealthStatusResponse) SetBody(v *GetWhatsappHealthStatusResponseBody) *GetWhatsappHealthStatusResponse {
 	s.Body = v
 	return s
 }
@@ -14895,6 +15425,261 @@ func (s *UpdateCommerceSettingResponse) SetBody(v *UpdateCommerceSettingResponse
 	return s
 }
 
+type UpdateConversationalAutomationRequest struct {
+	Commands []*UpdateConversationalAutomationRequestCommands `json:"Commands,omitempty" xml:"Commands,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 示例值
+	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
+	// example:
+	//
+	// true
+	EnableWelcomeMessage *bool  `json:"EnableWelcomeMessage,omitempty" xml:"EnableWelcomeMessage,omitempty"`
+	OwnerId              *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 86130000***
+	PhoneNumber          *string   `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
+	Prompts              []*string `json:"Prompts,omitempty" xml:"Prompts,omitempty" type:"Repeated"`
+	ResourceOwnerAccount *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+}
+
+func (s UpdateConversationalAutomationRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateConversationalAutomationRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateConversationalAutomationRequest) SetCommands(v []*UpdateConversationalAutomationRequestCommands) *UpdateConversationalAutomationRequest {
+	s.Commands = v
+	return s
+}
+
+func (s *UpdateConversationalAutomationRequest) SetCustSpaceId(v string) *UpdateConversationalAutomationRequest {
+	s.CustSpaceId = &v
+	return s
+}
+
+func (s *UpdateConversationalAutomationRequest) SetEnableWelcomeMessage(v bool) *UpdateConversationalAutomationRequest {
+	s.EnableWelcomeMessage = &v
+	return s
+}
+
+func (s *UpdateConversationalAutomationRequest) SetOwnerId(v int64) *UpdateConversationalAutomationRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *UpdateConversationalAutomationRequest) SetPhoneNumber(v string) *UpdateConversationalAutomationRequest {
+	s.PhoneNumber = &v
+	return s
+}
+
+func (s *UpdateConversationalAutomationRequest) SetPrompts(v []*string) *UpdateConversationalAutomationRequest {
+	s.Prompts = v
+	return s
+}
+
+func (s *UpdateConversationalAutomationRequest) SetResourceOwnerAccount(v string) *UpdateConversationalAutomationRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *UpdateConversationalAutomationRequest) SetResourceOwnerId(v int64) *UpdateConversationalAutomationRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+type UpdateConversationalAutomationRequestCommands struct {
+	// example:
+	//
+	// 命令1
+	CommandDescription *string `json:"CommandDescription,omitempty" xml:"CommandDescription,omitempty"`
+	// example:
+	//
+	// test
+	CommandName *string `json:"CommandName,omitempty" xml:"CommandName,omitempty"`
+}
+
+func (s UpdateConversationalAutomationRequestCommands) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateConversationalAutomationRequestCommands) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateConversationalAutomationRequestCommands) SetCommandDescription(v string) *UpdateConversationalAutomationRequestCommands {
+	s.CommandDescription = &v
+	return s
+}
+
+func (s *UpdateConversationalAutomationRequestCommands) SetCommandName(v string) *UpdateConversationalAutomationRequestCommands {
+	s.CommandName = &v
+	return s
+}
+
+type UpdateConversationalAutomationShrinkRequest struct {
+	CommandsShrink *string `json:"Commands,omitempty" xml:"Commands,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 示例值
+	CustSpaceId *string `json:"CustSpaceId,omitempty" xml:"CustSpaceId,omitempty"`
+	// example:
+	//
+	// true
+	EnableWelcomeMessage *bool  `json:"EnableWelcomeMessage,omitempty" xml:"EnableWelcomeMessage,omitempty"`
+	OwnerId              *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 86130000***
+	PhoneNumber          *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
+	PromptsShrink        *string `json:"Prompts,omitempty" xml:"Prompts,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+}
+
+func (s UpdateConversationalAutomationShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateConversationalAutomationShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateConversationalAutomationShrinkRequest) SetCommandsShrink(v string) *UpdateConversationalAutomationShrinkRequest {
+	s.CommandsShrink = &v
+	return s
+}
+
+func (s *UpdateConversationalAutomationShrinkRequest) SetCustSpaceId(v string) *UpdateConversationalAutomationShrinkRequest {
+	s.CustSpaceId = &v
+	return s
+}
+
+func (s *UpdateConversationalAutomationShrinkRequest) SetEnableWelcomeMessage(v bool) *UpdateConversationalAutomationShrinkRequest {
+	s.EnableWelcomeMessage = &v
+	return s
+}
+
+func (s *UpdateConversationalAutomationShrinkRequest) SetOwnerId(v int64) *UpdateConversationalAutomationShrinkRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *UpdateConversationalAutomationShrinkRequest) SetPhoneNumber(v string) *UpdateConversationalAutomationShrinkRequest {
+	s.PhoneNumber = &v
+	return s
+}
+
+func (s *UpdateConversationalAutomationShrinkRequest) SetPromptsShrink(v string) *UpdateConversationalAutomationShrinkRequest {
+	s.PromptsShrink = &v
+	return s
+}
+
+func (s *UpdateConversationalAutomationShrinkRequest) SetResourceOwnerAccount(v string) *UpdateConversationalAutomationShrinkRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *UpdateConversationalAutomationShrinkRequest) SetResourceOwnerId(v int64) *UpdateConversationalAutomationShrinkRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+type UpdateConversationalAutomationResponseBody struct {
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// 示例值示例值示例值
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 示例值示例值
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s UpdateConversationalAutomationResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateConversationalAutomationResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateConversationalAutomationResponseBody) SetAccessDeniedDetail(v string) *UpdateConversationalAutomationResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
+}
+
+func (s *UpdateConversationalAutomationResponseBody) SetCode(v string) *UpdateConversationalAutomationResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *UpdateConversationalAutomationResponseBody) SetMessage(v string) *UpdateConversationalAutomationResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *UpdateConversationalAutomationResponseBody) SetRequestId(v string) *UpdateConversationalAutomationResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateConversationalAutomationResponseBody) SetSuccess(v bool) *UpdateConversationalAutomationResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UpdateConversationalAutomationResponse struct {
+	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateConversationalAutomationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateConversationalAutomationResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateConversationalAutomationResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateConversationalAutomationResponse) SetHeaders(v map[string]*string) *UpdateConversationalAutomationResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateConversationalAutomationResponse) SetStatusCode(v int32) *UpdateConversationalAutomationResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateConversationalAutomationResponse) SetBody(v *UpdateConversationalAutomationResponseBody) *UpdateConversationalAutomationResponse {
+	s.Body = v
+	return s
+}
+
 type UpdateFlowJSONAssetRequest struct {
 	// example:
 	//
@@ -17745,6 +18530,82 @@ func (client *Client) GetCommerceSetting(request *GetCommerceSettingRequest) (_r
 
 // Summary:
 //
+// 获取号码欢迎消息设置信息
+//
+// @param request - GetConversationalAutomationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetConversationalAutomationResponse
+func (client *Client) GetConversationalAutomationWithOptions(request *GetConversationalAutomationRequest, runtime *util.RuntimeOptions) (_result *GetConversationalAutomationResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CustSpaceId)) {
+		query["CustSpaceId"] = request.CustSpaceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PhoneNumber)) {
+		query["PhoneNumber"] = request.PhoneNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetConversationalAutomation"),
+		Version:     tea.String("2020-06-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetConversationalAutomationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取号码欢迎消息设置信息
+//
+// @param request - GetConversationalAutomationRequest
+//
+// @return GetConversationalAutomationResponse
+func (client *Client) GetConversationalAutomation(request *GetConversationalAutomationRequest) (_result *GetConversationalAutomationResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetConversationalAutomationResponse{}
+	_body, _err := client.GetConversationalAutomationWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the information about a Flow.
 //
 // Description:
@@ -18390,6 +19251,98 @@ func (client *Client) GetWhatsappConnectionCatalog(request *GetWhatsappConnectio
 	runtime := &util.RuntimeOptions{}
 	_result = &GetWhatsappConnectionCatalogResponse{}
 	_body, _err := client.GetWhatsappConnectionCatalogWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取whatsapp节点信息发送消息健康度
+//
+// @param request - GetWhatsappHealthStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetWhatsappHealthStatusResponse
+func (client *Client) GetWhatsappHealthStatusWithOptions(request *GetWhatsappHealthStatusRequest, runtime *util.RuntimeOptions) (_result *GetWhatsappHealthStatusResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CustSpaceId)) {
+		query["CustSpaceId"] = request.CustSpaceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Language)) {
+		query["Language"] = request.Language
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NodeType)) {
+		query["NodeType"] = request.NodeType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PhoneNumber)) {
+		query["PhoneNumber"] = request.PhoneNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateCode)) {
+		query["TemplateCode"] = request.TemplateCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WabaId)) {
+		query["WabaId"] = request.WabaId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetWhatsappHealthStatus"),
+		Version:     tea.String("2020-06-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetWhatsappHealthStatusResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取whatsapp节点信息发送消息健康度
+//
+// @param request - GetWhatsappHealthStatusRequest
+//
+// @return GetWhatsappHealthStatusResponse
+func (client *Client) GetWhatsappHealthStatus(request *GetWhatsappHealthStatusRequest) (_result *GetWhatsappHealthStatusResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetWhatsappHealthStatusResponse{}
+	_body, _err := client.GetWhatsappHealthStatusWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20238,6 +21191,104 @@ func (client *Client) UpdateCommerceSetting(request *UpdateCommerceSettingReques
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateCommerceSettingResponse{}
 	_body, _err := client.UpdateCommerceSettingWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新号码欢迎消息、命令等属性
+//
+// @param tmpReq - UpdateConversationalAutomationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateConversationalAutomationResponse
+func (client *Client) UpdateConversationalAutomationWithOptions(tmpReq *UpdateConversationalAutomationRequest, runtime *util.RuntimeOptions) (_result *UpdateConversationalAutomationResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &UpdateConversationalAutomationShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Commands)) {
+		request.CommandsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Commands, tea.String("Commands"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.Prompts)) {
+		request.PromptsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Prompts, tea.String("Prompts"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CommandsShrink)) {
+		query["Commands"] = request.CommandsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CustSpaceId)) {
+		query["CustSpaceId"] = request.CustSpaceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnableWelcomeMessage)) {
+		query["EnableWelcomeMessage"] = request.EnableWelcomeMessage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PhoneNumber)) {
+		query["PhoneNumber"] = request.PhoneNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PromptsShrink)) {
+		query["Prompts"] = request.PromptsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateConversationalAutomation"),
+		Version:     tea.String("2020-06-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateConversationalAutomationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新号码欢迎消息、命令等属性
+//
+// @param request - UpdateConversationalAutomationRequest
+//
+// @return UpdateConversationalAutomationResponse
+func (client *Client) UpdateConversationalAutomation(request *UpdateConversationalAutomationRequest) (_result *UpdateConversationalAutomationResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateConversationalAutomationResponse{}
+	_body, _err := client.UpdateConversationalAutomationWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
