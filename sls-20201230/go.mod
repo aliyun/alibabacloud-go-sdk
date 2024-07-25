@@ -1,6 +1,6 @@
 module github.com/alibabacloud-go/sls-20201230/v6
 
-go 1.15
+go 1.14
 
 require (
 	github.com/alibabacloud-go/alibabacloud-gateway-sls v0.0.10
