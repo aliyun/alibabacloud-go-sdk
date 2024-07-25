@@ -1593,7 +1593,6 @@ type File struct {
 	FileCreateTime                        *string                `json:"FileCreateTime,omitempty" xml:"FileCreateTime,omitempty"`
 	FileHash                              *string                `json:"FileHash,omitempty" xml:"FileHash,omitempty"`
 	FileModifiedTime                      *string                `json:"FileModifiedTime,omitempty" xml:"FileModifiedTime,omitempty"`
-	FileStatus                            *string                `json:"FileStatus,omitempty" xml:"FileStatus,omitempty"`
 	Filename                              *string                `json:"Filename,omitempty" xml:"Filename,omitempty"`
 	FormatLongName                        *string                `json:"FormatLongName,omitempty" xml:"FormatLongName,omitempty"`
 	FormatName                            *string                `json:"FormatName,omitempty" xml:"FormatName,omitempty"`
@@ -1618,6 +1617,7 @@ type File struct {
 	OSSVersionId                          *string                `json:"OSSVersionId,omitempty" xml:"OSSVersionId,omitempty"`
 	ObjectACL                             *string                `json:"ObjectACL,omitempty" xml:"ObjectACL,omitempty"`
 	ObjectId                              *string                `json:"ObjectId,omitempty" xml:"ObjectId,omitempty"`
+	ObjectStatus                          *string                `json:"ObjectStatus,omitempty" xml:"ObjectStatus,omitempty"`
 	ObjectType                            *string                `json:"ObjectType,omitempty" xml:"ObjectType,omitempty"`
 	Orientation                           *int64                 `json:"Orientation,omitempty" xml:"Orientation,omitempty"`
 	OwnerId                               *string                `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -1810,11 +1810,6 @@ func (s *File) SetFileModifiedTime(v string) *File {
 	return s
 }
 
-func (s *File) SetFileStatus(v string) *File {
-	s.FileStatus = &v
-	return s
-}
-
 func (s *File) SetFilename(v string) *File {
 	s.Filename = &v
 	return s
@@ -1932,6 +1927,11 @@ func (s *File) SetObjectACL(v string) *File {
 
 func (s *File) SetObjectId(v string) *File {
 	s.ObjectId = &v
+	return s
+}
+
+func (s *File) SetObjectStatus(v string) *File {
+	s.ObjectStatus = &v
 	return s
 }
 
@@ -2959,31 +2959,6 @@ func (s *PointInt64) SetX(v int64) *PointInt64 {
 
 func (s *PointInt64) SetY(v int64) *PointInt64 {
 	s.Y = &v
-	return s
-}
-
-type PresetReference struct {
-	// This parameter is required.
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// This parameter is required.
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-}
-
-func (s PresetReference) String() string {
-	return tea.Prettify(s)
-}
-
-func (s PresetReference) GoString() string {
-	return s.String()
-}
-
-func (s *PresetReference) SetName(v string) *PresetReference {
-	s.Name = &v
-	return s
-}
-
-func (s *PresetReference) SetType(v string) *PresetReference {
-	s.Type = &v
 	return s
 }
 
