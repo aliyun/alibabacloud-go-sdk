@@ -3960,6 +3960,7 @@ type GetDatasetResponseBody struct {
 	//
 	// DIRECTORY
 	Property     *string `json:"Property,omitempty" xml:"Property,omitempty"`
+	Provider     *string `json:"Provider,omitempty" xml:"Provider,omitempty"`
 	ProviderType *string `json:"ProviderType,omitempty" xml:"ProviderType,omitempty"`
 	// example:
 	//
@@ -4052,6 +4053,11 @@ func (s *GetDatasetResponseBody) SetOwnerId(v string) *GetDatasetResponseBody {
 
 func (s *GetDatasetResponseBody) SetProperty(v string) *GetDatasetResponseBody {
 	s.Property = &v
+	return s
+}
+
+func (s *GetDatasetResponseBody) SetProvider(v string) *GetDatasetResponseBody {
+	s.Provider = &v
 	return s
 }
 
