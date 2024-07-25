@@ -42008,6 +42008,95 @@ func (s *SubmitLiveTranscodeJobResponse) SetBody(v *SubmitLiveTranscodeJobRespon
 	return s
 }
 
+type SubmitMediaAiAnalysisJobRequest struct {
+	// example:
+	//
+	// {"nlpParams":{"sourceLanguage":"cn","diarizationEnabled":true,"speakerCount":0,"summarizationEnabled":false,"translationEnabled":false}}
+	AnalysisParams *string `json:"AnalysisParams,omitempty" xml:"AnalysisParams,omitempty"`
+	// example:
+	//
+	// {"MediaType":"video","Media":"https://xxx.com/your_movie.mp4"}
+	Input *string `json:"Input,omitempty" xml:"Input,omitempty"`
+}
+
+func (s SubmitMediaAiAnalysisJobRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitMediaAiAnalysisJobRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitMediaAiAnalysisJobRequest) SetAnalysisParams(v string) *SubmitMediaAiAnalysisJobRequest {
+	s.AnalysisParams = &v
+	return s
+}
+
+func (s *SubmitMediaAiAnalysisJobRequest) SetInput(v string) *SubmitMediaAiAnalysisJobRequest {
+	s.Input = &v
+	return s
+}
+
+type SubmitMediaAiAnalysisJobResponseBody struct {
+	// example:
+	//
+	// ******b48fb04483915d4f2cd8******
+	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// ****63E8B7C7-4812-46AD-0FA56029AC86****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s SubmitMediaAiAnalysisJobResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitMediaAiAnalysisJobResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitMediaAiAnalysisJobResponseBody) SetMediaId(v string) *SubmitMediaAiAnalysisJobResponseBody {
+	s.MediaId = &v
+	return s
+}
+
+func (s *SubmitMediaAiAnalysisJobResponseBody) SetRequestId(v string) *SubmitMediaAiAnalysisJobResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type SubmitMediaAiAnalysisJobResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SubmitMediaAiAnalysisJobResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s SubmitMediaAiAnalysisJobResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitMediaAiAnalysisJobResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitMediaAiAnalysisJobResponse) SetHeaders(v map[string]*string) *SubmitMediaAiAnalysisJobResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SubmitMediaAiAnalysisJobResponse) SetStatusCode(v int32) *SubmitMediaAiAnalysisJobResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SubmitMediaAiAnalysisJobResponse) SetBody(v *SubmitMediaAiAnalysisJobResponseBody) *SubmitMediaAiAnalysisJobResponse {
+	s.Body = v
+	return s
+}
+
 type SubmitMediaCensorJobRequest struct {
 	// example:
 	//
@@ -64277,6 +64366,70 @@ func (client *Client) SubmitLiveTranscodeJob(request *SubmitLiveTranscodeJobRequ
 	runtime := &util.RuntimeOptions{}
 	_result = &SubmitLiveTranscodeJobResponse{}
 	_body, _err := client.SubmitLiveTranscodeJobWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 提交媒资结构化分析任务
+//
+// @param request - SubmitMediaAiAnalysisJobRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SubmitMediaAiAnalysisJobResponse
+func (client *Client) SubmitMediaAiAnalysisJobWithOptions(request *SubmitMediaAiAnalysisJobRequest, runtime *util.RuntimeOptions) (_result *SubmitMediaAiAnalysisJobResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AnalysisParams)) {
+		query["AnalysisParams"] = request.AnalysisParams
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Input)) {
+		query["Input"] = request.Input
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SubmitMediaAiAnalysisJob"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SubmitMediaAiAnalysisJobResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 提交媒资结构化分析任务
+//
+// @param request - SubmitMediaAiAnalysisJobRequest
+//
+// @return SubmitMediaAiAnalysisJobResponse
+func (client *Client) SubmitMediaAiAnalysisJob(request *SubmitMediaAiAnalysisJobRequest) (_result *SubmitMediaAiAnalysisJobResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SubmitMediaAiAnalysisJobResponse{}
+	_body, _err := client.SubmitMediaAiAnalysisJobWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
