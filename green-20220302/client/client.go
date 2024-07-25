@@ -10,10 +10,14 @@ import (
 )
 
 type DescribeFileModerationResultRequest struct {
+	// The type of the moderation service.
+	//
 	// example:
 	//
 	// document_detection
 	Service *string `json:"Service,omitempty" xml:"Service,omitempty"`
+	// The parameters required by the moderation service. The value is a JSON string.
+	//
 	// example:
 	//
 	// {\\"taskId\\":\\"vi_f_hPgx9PFIQISdlfA888hOFG-1yJq8v\\"}
@@ -39,16 +43,21 @@ func (s *DescribeFileModerationResultRequest) SetServiceParameters(v string) *De
 }
 
 type DescribeFileModerationResultResponseBody struct {
+	// The returned HTTP status code.
+	//
 	// example:
 	//
 	// 200
-	Code *int32                                        `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The data returned.
 	Data *DescribeFileModerationResultResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The message that is returned in response to the request.
+	//
 	// example:
 	//
 	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
@@ -85,15 +94,22 @@ func (s *DescribeFileModerationResultResponseBody) SetRequestId(v string) *Descr
 }
 
 type DescribeFileModerationResultResponseBodyData struct {
+	// The ID of the moderated object.
+	//
 	// example:
 	//
 	// 26769ada6e264e7ba9aa048241e12be9
 	DataId *string `json:"DataId,omitempty" xml:"DataId,omitempty"`
+	// Optional, document type.
+	//
 	// example:
 	//
 	// doc
-	DocType    *string                                                   `json:"DocType,omitempty" xml:"DocType,omitempty"`
+	DocType *string `json:"DocType,omitempty" xml:"DocType,omitempty"`
+	// The pagination information.
 	PageResult []*DescribeFileModerationResultResponseBodyDataPageResult `json:"PageResult,omitempty" xml:"PageResult,omitempty" type:"Repeated"`
+	// The URL of the moderation object.
+	//
 	// example:
 	//
 	// https://detect-obj.oss-cn-hangzhou.aliyuncs.com/sample/xxxx.pdf
@@ -129,16 +145,24 @@ func (s *DescribeFileModerationResultResponseBodyData) SetUrl(v string) *Describ
 }
 
 type DescribeFileModerationResultResponseBodyDataPageResult struct {
+	// Image detection results.
 	ImageResult []*DescribeFileModerationResultResponseBodyDataPageResultImageResult `json:"ImageResult,omitempty" xml:"ImageResult,omitempty" type:"Repeated"`
+	// The image url.
+	//
 	// example:
 	//
 	// https://detect-obj.oss-cn-hangzhou.aliyuncs.com/sample/xxxx.jpg
 	ImageUrl *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
-	PageNum    *int32                                                              `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// Text detection results.
 	TextResult []*DescribeFileModerationResultResponseBodyDataPageResultTextResult `json:"TextResult,omitempty" xml:"TextResult,omitempty" type:"Repeated"`
+	// the text url.
+	//
 	// example:
 	//
 	// https://detect-obj.oss-cn-hangzhou.aliyuncs.com/sample/xxxx.txt
@@ -179,9 +203,18 @@ func (s *DescribeFileModerationResultResponseBodyDataPageResult) SetTextUrl(v st
 }
 
 type DescribeFileModerationResultResponseBodyDataPageResultImageResult struct {
-	Description *string                                                                         `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Description.
+	//
+	// example:
+	//
+	// This is a title.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Label information.
 	LabelResult []*DescribeFileModerationResultResponseBodyDataPageResultImageResultLabelResult `json:"LabelResult,omitempty" xml:"LabelResult,omitempty" type:"Repeated"`
-	Location    *DescribeFileModerationResultResponseBodyDataPageResultImageResultLocation      `json:"Location,omitempty" xml:"Location,omitempty" type:"Struct"`
+	// Location information.
+	Location *DescribeFileModerationResultResponseBodyDataPageResultImageResultLocation `json:"Location,omitempty" xml:"Location,omitempty" type:"Struct"`
+	// The moderation service.
+	//
 	// example:
 	//
 	// baselineCheck
@@ -217,10 +250,14 @@ func (s *DescribeFileModerationResultResponseBodyDataPageResultImageResult) SetS
 }
 
 type DescribeFileModerationResultResponseBodyDataPageResultImageResultLabelResult struct {
+	// Confidence score, 0 to 100, reserved to 2 decimal places.
+	//
 	// example:
 	//
 	// 25.0
 	Confidence *float32 `json:"Confidence,omitempty" xml:"Confidence,omitempty"`
+	// The details of the labels.
+	//
 	// example:
 	//
 	// nonlabel
@@ -246,18 +283,26 @@ func (s *DescribeFileModerationResultResponseBodyDataPageResultImageResultLabelR
 }
 
 type DescribeFileModerationResultResponseBodyDataPageResultImageResultLocation struct {
+	// The H value of the coordinate point.
+	//
 	// example:
 	//
 	// 44
 	H *int32 `json:"H,omitempty" xml:"H,omitempty"`
+	// The W value of the coordinate point.
+	//
 	// example:
 	//
 	// 33
 	W *int32 `json:"W,omitempty" xml:"W,omitempty"`
+	// The X value of the coordinate point.
+	//
 	// example:
 	//
 	// 11
 	X *int32 `json:"X,omitempty" xml:"X,omitempty"`
+	// The Y value of the coordinate point.
+	//
 	// example:
 	//
 	// 22
@@ -293,24 +338,44 @@ func (s *DescribeFileModerationResultResponseBodyDataPageResultImageResultLocati
 }
 
 type DescribeFileModerationResultResponseBodyDataPageResultTextResult struct {
+	// Description
+	//
+	// example:
+	//
+	// This is a title.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The details of the labels.
+	//
 	// example:
 	//
 	// porn
 	Labels *string `json:"Labels,omitempty" xml:"Labels,omitempty"`
+	// The risk details that are hit.
+	//
 	// example:
 	//
 	// xxx
 	RiskTips *string `json:"RiskTips,omitempty" xml:"RiskTips,omitempty"`
+	// The risk words that are hit.
+	//
 	// example:
 	//
 	// xxx
 	RiskWords *string `json:"RiskWords,omitempty" xml:"RiskWords,omitempty"`
+	// The moderation service.
+	//
 	// example:
 	//
 	// chat_detection
 	Service *string `json:"Service,omitempty" xml:"Service,omitempty"`
-	Text    *string `json:"Text,omitempty" xml:"Text,omitempty"`
+	// Text content.
+	//
+	// example:
+	//
+	// This is a text.
+	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
+	// Text segmentation information.
+	//
 	// example:
 	//
 	// [0,999]
@@ -390,6 +455,8 @@ func (s *DescribeFileModerationResultResponse) SetBody(v *DescribeFileModeration
 }
 
 type DescribeImageModerationResultRequest struct {
+	// The reqId field returned by the Image Async Moderation API.
+	//
 	// example:
 	//
 	// B0963D30-BAB4-562F-9ED0-7A23AEC51C7C
@@ -410,15 +477,22 @@ func (s *DescribeImageModerationResultRequest) SetReqId(v string) *DescribeImage
 }
 
 type DescribeImageModerationResultResponseBody struct {
+	// The returned HTTP status code.
+	//
 	// example:
 	//
 	// 200
-	Code *int32                                         `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The data returned.
 	Data *DescribeImageModerationResultResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The message that is returned in response to the request.
+	//
 	// example:
 	//
 	// success
 	Msg *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 2881AD4F-638B-52A3-BA20-F74C5B1CEAE3
@@ -454,21 +528,38 @@ func (s *DescribeImageModerationResultResponseBody) SetRequestId(v string) *Desc
 }
 
 type DescribeImageModerationResultResponseBodyData struct {
+	// The ID of the moderated object.
+	//
 	// example:
 	//
 	// 2a5389eb-4ff8-4584-ac99-644e2a539aa1
 	DataId *string `json:"DataId,omitempty" xml:"DataId,omitempty"`
+	// Image frame information.
+	//
 	// example:
 	//
 	// [{"result":[{"confidence":81.22,"label":"violent_explosion"}]}]
 	Frame *string `json:"Frame,omitempty" xml:"Frame,omitempty"`
+	// Number of result frames
+	//
 	// example:
 	//
 	// 1
-	FrameNum  *int32                                                 `json:"FrameNum,omitempty" xml:"FrameNum,omitempty"`
-	ReqId     *string                                                `json:"ReqId,omitempty" xml:"ReqId,omitempty"`
-	Result    []*DescribeImageModerationResultResponseBodyDataResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
-	RiskLevel *string                                                `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	FrameNum *int32 `json:"FrameNum,omitempty" xml:"FrameNum,omitempty"`
+	// The reqId field returned by the Image Async Moderation API.
+	//
+	// example:
+	//
+	// B0963D30-BAB4-562F-9ED0-7A23AEC51C7C
+	ReqId *string `json:"ReqId,omitempty" xml:"ReqId,omitempty"`
+	// The results of image moderation parameters such as the label parameter and the confidence parameter.
+	Result []*DescribeImageModerationResultResponseBodyDataResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	// Risk Level.
+	//
+	// example:
+	//
+	// high
+	RiskLevel *string `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
 }
 
 func (s DescribeImageModerationResultResponseBodyData) String() string {
@@ -510,10 +601,14 @@ func (s *DescribeImageModerationResultResponseBodyData) SetRiskLevel(v string) *
 }
 
 type DescribeImageModerationResultResponseBodyDataResult struct {
+	// The score of the confidence level. Valid values: 0 to 100. The value is accurate to two decimal places. Some labels do not have scores of confidence levels.
+	//
 	// example:
 	//
 	// 81.22
 	Confidence *float32 `json:"Confidence,omitempty" xml:"Confidence,omitempty"`
+	// The labels returned after the image moderation.
+	//
 	// example:
 	//
 	// violent_explosion
@@ -568,10 +663,14 @@ func (s *DescribeImageModerationResultResponse) SetBody(v *DescribeImageModerati
 }
 
 type DescribeImageResultExtRequest struct {
+	// The content of the information to be obtained. Multiple values are separated by commas.
+	//
 	// example:
 	//
 	// customImage,textInImage
 	InfoType *string `json:"InfoType,omitempty" xml:"InfoType,omitempty"`
+	// The reqId field returned by the Url Async Moderation API.
+	//
 	// example:
 	//
 	// 638EDDC65C82AB39319A9F60
@@ -597,15 +696,22 @@ func (s *DescribeImageResultExtRequest) SetReqId(v string) *DescribeImageResultE
 }
 
 type DescribeImageResultExtResponseBody struct {
+	// The returned HTTP status code.
+	//
 	// example:
 	//
 	// 200
-	Code *int32                                  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The data returned.
 	Data *DescribeImageResultExtResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The message that is returned in response to the request.
+	//
 	// example:
 	//
 	// success
 	Msg *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 6CF2815C-C8C7-4A01-B52E-FF6E24F53492
@@ -641,9 +747,12 @@ func (s *DescribeImageResultExtResponseBody) SetRequestId(v string) *DescribeIma
 }
 
 type DescribeImageResultExtResponseBodyData struct {
-	CustomImage  []*DescribeImageResultExtResponseBodyDataCustomImage  `json:"CustomImage,omitempty" xml:"CustomImage,omitempty" type:"Repeated"`
+	// If a custom image library is hit, information about the hit custom image library is returned.
+	CustomImage []*DescribeImageResultExtResponseBodyDataCustomImage `json:"CustomImage,omitempty" xml:"CustomImage,omitempty" type:"Repeated"`
+	// Person information list.
 	PublicFigure []*DescribeImageResultExtResponseBodyDataPublicFigure `json:"PublicFigure,omitempty" xml:"PublicFigure,omitempty" type:"Repeated"`
-	TextInImage  *DescribeImageResultExtResponseBodyDataTextInImage    `json:"TextInImage,omitempty" xml:"TextInImage,omitempty" type:"Struct"`
+	// Returns the text information in the hit image.
+	TextInImage *DescribeImageResultExtResponseBodyDataTextInImage `json:"TextInImage,omitempty" xml:"TextInImage,omitempty" type:"Struct"`
 }
 
 func (s DescribeImageResultExtResponseBodyData) String() string {
@@ -670,19 +779,19 @@ func (s *DescribeImageResultExtResponseBodyData) SetTextInImage(v *DescribeImage
 }
 
 type DescribeImageResultExtResponseBodyDataCustomImage struct {
-	// 图片ID。
+	// The image ID.
 	//
 	// example:
 	//
 	// 123456
 	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	// 图库ID。
+	// The image library ID.
 	//
 	// example:
 	//
 	// 123456
 	LibId *string `json:"LibId,omitempty" xml:"LibId,omitempty"`
-	// 图库名。
+	// The image library name.
 	//
 	// example:
 	//
@@ -714,7 +823,7 @@ func (s *DescribeImageResultExtResponseBodyDataCustomImage) SetLibName(v string)
 }
 
 type DescribeImageResultExtResponseBodyDataPublicFigure struct {
-	// 人物ID。
+	// Identified person coding information.
 	//
 	// example:
 	//
@@ -736,9 +845,12 @@ func (s *DescribeImageResultExtResponseBodyDataPublicFigure) SetFigureId(v strin
 }
 
 type DescribeImageResultExtResponseBodyDataTextInImage struct {
+	// When a custom text library is hit, the custom library ID, custom library name, and custom word are returned.
 	CustomTexts []*DescribeImageResultExtResponseBodyDataTextInImageCustomTexts `json:"CustomTexts,omitempty" xml:"CustomTexts,omitempty" type:"Repeated"`
-	OcrDatas    []*string                                                       `json:"OcrDatas,omitempty" xml:"OcrDatas,omitempty" type:"Repeated"`
-	RiskWords   []*string                                                       `json:"RiskWords,omitempty" xml:"RiskWords,omitempty" type:"Repeated"`
+	// Returns the text information in the recognized image.
+	OcrDatas []*string `json:"OcrDatas,omitempty" xml:"OcrDatas,omitempty" type:"Repeated"`
+	// The risk words that are hit. Multiple words are separated by commas (,).
+	RiskWords []*string `json:"RiskWords,omitempty" xml:"RiskWords,omitempty" type:"Repeated"`
 }
 
 func (s DescribeImageResultExtResponseBodyDataTextInImage) String() string {
@@ -765,9 +877,24 @@ func (s *DescribeImageResultExtResponseBodyDataTextInImage) SetRiskWords(v []*st
 }
 
 type DescribeImageResultExtResponseBodyDataTextInImageCustomTexts struct {
+	// Custom words, multiple words separated by commas.
+	//
+	// example:
+	//
+	// aaa,bbb
 	KeyWords *string `json:"KeyWords,omitempty" xml:"KeyWords,omitempty"`
-	LibId    *string `json:"LibId,omitempty" xml:"LibId,omitempty"`
-	LibName  *string `json:"LibName,omitempty" xml:"LibName,omitempty"`
+	// Custom library ID.
+	//
+	// example:
+	//
+	// 123456
+	LibId *string `json:"LibId,omitempty" xml:"LibId,omitempty"`
+	// Custom library name.
+	//
+	// example:
+	//
+	// test
+	LibName *string `json:"LibName,omitempty" xml:"LibName,omitempty"`
 }
 
 func (s DescribeImageResultExtResponseBodyDataTextInImageCustomTexts) String() string {
@@ -823,15 +950,22 @@ func (s *DescribeImageResultExtResponse) SetBody(v *DescribeImageResultExtRespon
 }
 
 type DescribeUploadTokenResponseBody struct {
+	// The returned HTTP status code.
+	//
 	// example:
 	//
 	// 200
-	Code *int32                               `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The data returned.
 	Data *DescribeUploadTokenResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The message that is returned in response to the request.
+	//
 	// example:
 	//
 	// OK
 	Msg *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// AAAAAA-BBBB-CCCCC-DDDD-EEEEEEEE****
@@ -867,34 +1001,50 @@ func (s *DescribeUploadTokenResponseBody) SetRequestId(v string) *DescribeUpload
 }
 
 type DescribeUploadTokenResponseBodyData struct {
+	// The AccessKey ID.
+	//
 	// example:
 	//
 	// STS.NUEUjvDqMuvH6oQA1TXxxH4wVR
 	AccessKeyId *string `json:"AccessKeyId,omitempty" xml:"AccessKeyId,omitempty"`
+	// The AccessKey secret.
+	//
 	// example:
 	//
 	// xxxx
 	AccessKeySecret *string `json:"AccessKeySecret,omitempty" xml:"AccessKeySecret,omitempty"`
+	// The bucket name.
+	//
 	// example:
 	//
 	// oss-cip-shanghai
 	BucketName *string `json:"BucketName,omitempty" xml:"BucketName,omitempty"`
+	// The time when the file sharing link expires.
+	//
 	// example:
 	//
 	// 1720577200
 	Expiration *int32 `json:"Expiration,omitempty" xml:"Expiration,omitempty"`
+	// The file prefix.
+	//
 	// example:
 	//
 	// upload/1xxb89/
 	FileNamePrefix *string `json:"FileNamePrefix,omitempty" xml:"FileNamePrefix,omitempty"`
+	// the oss intranet point.
+	//
 	// example:
 	//
 	// https://oss-cn-shanghai-internal.aliyuncs.com
 	OssInternalEndPoint *string `json:"OssInternalEndPoint,omitempty" xml:"OssInternalEndPoint,omitempty"`
+	// the oss internet point.
+	//
 	// example:
 	//
 	// https://oss-cn-shanghai.aliyuncs.com
 	OssInternetEndPoint *string `json:"OssInternetEndPoint,omitempty" xml:"OssInternetEndPoint,omitempty"`
+	// The security token.
+	//
 	// example:
 	//
 	// xxxx
@@ -979,6 +1129,8 @@ func (s *DescribeUploadTokenResponse) SetBody(v *DescribeUploadTokenResponseBody
 }
 
 type DescribeUrlModerationResultRequest struct {
+	// The reqId field returned by the Url Async Moderation API.
+	//
 	// example:
 	//
 	// B0963D30-BAB4-562F-9ED0-7A23AEC51C7C
@@ -999,15 +1151,22 @@ func (s *DescribeUrlModerationResultRequest) SetReqId(v string) *DescribeUrlMode
 }
 
 type DescribeUrlModerationResultResponseBody struct {
+	// The returned HTTP status code.
+	//
 	// example:
 	//
 	// 200
-	Code *int32                                       `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The data returned.
 	Data *DescribeUrlModerationResultResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The message that is returned in response to the request.
+	//
 	// example:
 	//
 	// success
 	Msg *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 01F9144A-2088-5D87-935B-2DB865284B1A
@@ -1043,15 +1202,21 @@ func (s *DescribeUrlModerationResultResponseBody) SetRequestId(v string) *Descri
 }
 
 type DescribeUrlModerationResultResponseBodyData struct {
+	// The ID of the moderated object.
+	//
 	// example:
 	//
 	// 26769ada6e264e7ba9aa048241e12be9
-	DataId    *string                                               `json:"DataId,omitempty" xml:"DataId,omitempty"`
+	DataId *string `json:"DataId,omitempty" xml:"DataId,omitempty"`
+	// Supplementary information.
 	ExtraInfo *DescribeUrlModerationResultResponseBodyDataExtraInfo `json:"ExtraInfo,omitempty" xml:"ExtraInfo,omitempty" type:"Struct"`
+	// The reqId field returned by the Url Async Moderation API.
+	//
 	// example:
 	//
 	// B0963D30-BAB4-562F-9ED0-7A23AEC51C7C
-	ReqId  *string                                              `json:"ReqId,omitempty" xml:"ReqId,omitempty"`
+	ReqId *string `json:"ReqId,omitempty" xml:"ReqId,omitempty"`
+	// The results of url async moderation parameters such as the label parameter and the confidence parameter.
 	Result []*DescribeUrlModerationResultResponseBodyDataResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
 }
 
@@ -1084,8 +1249,19 @@ func (s *DescribeUrlModerationResultResponseBodyData) SetResult(v []*DescribeUrl
 }
 
 type DescribeUrlModerationResultResponseBodyDataExtraInfo struct {
-	IcpNo   *string `json:"IcpNo,omitempty" xml:"IcpNo,omitempty"`
-	IcpType *string `json:"IcpType,omitempty" xml:"IcpType,omitempty"`
+	// ICP record number.
+	//
+	// example:
+	//
+	// xx
+	IcpNo *string `json:"IcpNo,omitempty" xml:"IcpNo,omitempty"`
+	// ICP filing type.
+	//
+	// example:
+	//
+	// xx
+	IcpType  *string `json:"IcpType,omitempty" xml:"IcpType,omitempty"`
+	SiteType *string `json:"SiteType,omitempty" xml:"SiteType,omitempty"`
 }
 
 func (s DescribeUrlModerationResultResponseBodyDataExtraInfo) String() string {
@@ -1106,11 +1282,20 @@ func (s *DescribeUrlModerationResultResponseBodyDataExtraInfo) SetIcpType(v stri
 	return s
 }
 
+func (s *DescribeUrlModerationResultResponseBodyDataExtraInfo) SetSiteType(v string) *DescribeUrlModerationResultResponseBodyDataExtraInfo {
+	s.SiteType = &v
+	return s
+}
+
 type DescribeUrlModerationResultResponseBodyDataResult struct {
+	// The score of the confidence level. Valid values: 0 to 100. The value is accurate to two decimal places. Some labels do not have scores of confidence levels.
+	//
 	// example:
 	//
 	// 81.22
 	Confidence *float32 `json:"Confidence,omitempty" xml:"Confidence,omitempty"`
+	// The labels returned after the url async moderation.
+	//
 	// example:
 	//
 	// sexual_url
@@ -1165,10 +1350,14 @@ func (s *DescribeUrlModerationResultResponse) SetBody(v *DescribeUrlModerationRe
 }
 
 type FileModerationRequest struct {
+	// The type of the moderation service.
+	//
 	// example:
 	//
 	// document_detection
 	Service *string `json:"Service,omitempty" xml:"Service,omitempty"`
+	// The parameters required by the moderation service. The value is a JSON string.
+	//
 	// example:
 	//
 	// {"url":"https://detect-obj.oss-cn-hangzhou.aliyuncs.com/sample/xxxx.pdf"}
@@ -1194,16 +1383,21 @@ func (s *FileModerationRequest) SetServiceParameters(v string) *FileModerationRe
 }
 
 type FileModerationResponseBody struct {
+	// The returned HTTP status code.
+	//
 	// example:
 	//
 	// 200
-	Code *int32                          `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The data returned.
 	Data *FileModerationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The message that is returned in response to the request.
+	//
 	// example:
 	//
 	// SUCCESS
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
@@ -1240,6 +1434,8 @@ func (s *FileModerationResponseBody) SetRequestId(v string) *FileModerationRespo
 }
 
 type FileModerationResponseBodyData struct {
+	// The task ID.
+	//
 	// example:
 	//
 	// xxxxx-xxxxx
@@ -1289,10 +1485,14 @@ func (s *FileModerationResponse) SetBody(v *FileModerationResponseBody) *FileMod
 }
 
 type ImageAsyncModerationRequest struct {
+	// The type of the moderation service.
+	//
 	// example:
 	//
 	// baselineCheck
 	Service *string `json:"Service,omitempty" xml:"Service,omitempty"`
+	// The parameters required by the moderation service. The value is a JSON string.
+	//
 	// example:
 	//
 	// {"imageUrl":"https://img.alicdn.com/tfs/TB1U4r9AeH2gK0jSZJnXXaT1FXa-2880-480.png","dataId":"img123****"}
@@ -1318,15 +1518,22 @@ func (s *ImageAsyncModerationRequest) SetServiceParameters(v string) *ImageAsync
 }
 
 type ImageAsyncModerationResponseBody struct {
+	// The returned HTTP status code.
+	//
 	// example:
 	//
 	// 200
-	Code *int32                                `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The data returned.
 	Data *ImageAsyncModerationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The message that is returned in response to the request.
+	//
 	// example:
 	//
 	// success
 	Msg *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 4A926AE2-4C96-573F-824F-0532960799F8
@@ -1362,10 +1569,14 @@ func (s *ImageAsyncModerationResponseBody) SetRequestId(v string) *ImageAsyncMod
 }
 
 type ImageAsyncModerationResponseBodyData struct {
+	// The ID of the moderated object.
+	//
 	// example:
 	//
 	// fb5ffab1-993b-449f-b8d6-b97d5e3331f2
 	DataId *string `json:"DataId,omitempty" xml:"DataId,omitempty"`
+	// The reqId field returned by the Image Async Moderation API. You can use this field to query the detection results.
+	//
 	// example:
 	//
 	// A07B3DB9-D762-5C56-95B1-8EC55CF176D2
@@ -1420,10 +1631,14 @@ func (s *ImageAsyncModerationResponse) SetBody(v *ImageAsyncModerationResponseBo
 }
 
 type ImageModerationRequest struct {
+	// The type of the moderation service.
+	//
 	// example:
 	//
 	// baselineCheck
 	Service *string `json:"Service,omitempty" xml:"Service,omitempty"`
+	// The parameters required by the moderation service. The value is a JSON string.
+	//
 	// example:
 	//
 	// {"imageUrl":"https://www.aliyun.com/test.jpg","dataId":"img1234567"}
@@ -1449,15 +1664,22 @@ func (s *ImageModerationRequest) SetServiceParameters(v string) *ImageModeration
 }
 
 type ImageModerationResponseBody struct {
+	// The returned HTTP status code.
+	//
 	// example:
 	//
 	// 200
-	Code *int32                           `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The data returned.
 	Data *ImageModerationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The message that is returned in response to the request.
+	//
 	// example:
 	//
 	// OK
 	Msg *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 6CF2815C-C8C7-4A01-B52E-FF6E24F53492
@@ -1493,13 +1715,22 @@ func (s *ImageModerationResponseBody) SetRequestId(v string) *ImageModerationRes
 }
 
 type ImageModerationResponseBodyData struct {
+	// The ID of the moderated object.
+	//
 	// example:
 	//
 	// fb5ffab1-993b-449f-b8d6-b97d5e3331f2
-	DataId    *string                                  `json:"DataId,omitempty" xml:"DataId,omitempty"`
-	Ext       *ImageModerationResponseBodyDataExt      `json:"Ext,omitempty" xml:"Ext,omitempty" type:"Struct"`
-	Result    []*ImageModerationResponseBodyDataResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
-	RiskLevel *string                                  `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	DataId *string `json:"DataId,omitempty" xml:"DataId,omitempty"`
+	// Auxiliary reference information.
+	Ext *ImageModerationResponseBodyDataExt `json:"Ext,omitempty" xml:"Ext,omitempty" type:"Struct"`
+	// The results of image moderation parameters such as the label parameter and the confidence parameter.
+	Result []*ImageModerationResponseBodyDataResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	// Risk Level.
+	//
+	// example:
+	//
+	// high
+	RiskLevel *string `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
 }
 
 func (s ImageModerationResponseBodyData) String() string {
@@ -1531,12 +1762,18 @@ func (s *ImageModerationResponseBodyData) SetRiskLevel(v string) *ImageModeratio
 }
 
 type ImageModerationResponseBodyDataExt struct {
-	CustomImage  []*ImageModerationResponseBodyDataExtCustomImage  `json:"CustomImage,omitempty" xml:"CustomImage,omitempty" type:"Repeated"`
-	LogoData     []*ImageModerationResponseBodyDataExtLogoData     `json:"LogoData,omitempty" xml:"LogoData,omitempty" type:"Repeated"`
-	OcrResult    []*ImageModerationResponseBodyDataExtOcrResult    `json:"OcrResult,omitempty" xml:"OcrResult,omitempty" type:"Repeated"`
+	// If a custom image library is hit, information about the hit custom image library is returned.
+	CustomImage []*ImageModerationResponseBodyDataExtCustomImage `json:"CustomImage,omitempty" xml:"CustomImage,omitempty" type:"Repeated"`
+	// Logo information.
+	LogoData []*ImageModerationResponseBodyDataExtLogoData `json:"LogoData,omitempty" xml:"LogoData,omitempty" type:"Repeated"`
+	// Returns the text information in the recognized image.
+	OcrResult []*ImageModerationResponseBodyDataExtOcrResult `json:"OcrResult,omitempty" xml:"OcrResult,omitempty" type:"Repeated"`
+	// Person information list.
 	PublicFigure []*ImageModerationResponseBodyDataExtPublicFigure `json:"PublicFigure,omitempty" xml:"PublicFigure,omitempty" type:"Repeated"`
-	Recognition  []*ImageModerationResponseBodyDataExtRecognition  `json:"Recognition,omitempty" xml:"Recognition,omitempty" type:"Repeated"`
-	TextInImage  *ImageModerationResponseBodyDataExtTextInImage    `json:"TextInImage,omitempty" xml:"TextInImage,omitempty" type:"Struct"`
+	// The result of image recognition.
+	Recognition []*ImageModerationResponseBodyDataExtRecognition `json:"Recognition,omitempty" xml:"Recognition,omitempty" type:"Repeated"`
+	// Returns the text information in the hit image.
+	TextInImage *ImageModerationResponseBodyDataExtTextInImage `json:"TextInImage,omitempty" xml:"TextInImage,omitempty" type:"Struct"`
 }
 
 func (s ImageModerationResponseBodyDataExt) String() string {
@@ -1578,8 +1815,23 @@ func (s *ImageModerationResponseBodyDataExt) SetTextInImage(v *ImageModerationRe
 }
 
 type ImageModerationResponseBodyDataExtCustomImage struct {
+	// The image ID.
+	//
+	// example:
+	//
+	// 123456
 	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	LibId   *string `json:"LibId,omitempty" xml:"LibId,omitempty"`
+	// The image library ID.
+	//
+	// example:
+	//
+	// lib_123456
+	LibId *string `json:"LibId,omitempty" xml:"LibId,omitempty"`
+	// The image library name.
+	//
+	// example:
+	//
+	// xx
 	LibName *string `json:"LibName,omitempty" xml:"LibName,omitempty"`
 }
 
@@ -1607,8 +1859,10 @@ func (s *ImageModerationResponseBodyDataExtCustomImage) SetLibName(v string) *Im
 }
 
 type ImageModerationResponseBodyDataExtLogoData struct {
+	// Location information.
 	Location *ImageModerationResponseBodyDataExtLogoDataLocation `json:"Location,omitempty" xml:"Location,omitempty" type:"Struct"`
-	Logo     []*ImageModerationResponseBodyDataExtLogoDataLogo   `json:"Logo,omitempty" xml:"Logo,omitempty" type:"Repeated"`
+	// Logo information.
+	Logo []*ImageModerationResponseBodyDataExtLogoDataLogo `json:"Logo,omitempty" xml:"Logo,omitempty" type:"Repeated"`
 }
 
 func (s ImageModerationResponseBodyDataExtLogoData) String() string {
@@ -1630,9 +1884,29 @@ func (s *ImageModerationResponseBodyDataExtLogoData) SetLogo(v []*ImageModeratio
 }
 
 type ImageModerationResponseBodyDataExtLogoDataLocation struct {
+	// The height of the text area, in pixels.
+	//
+	// example:
+	//
+	// 44
 	H *int32 `json:"H,omitempty" xml:"H,omitempty"`
+	// The width of the text area, in pixels.
+	//
+	// example:
+	//
+	// 33
 	W *int32 `json:"W,omitempty" xml:"W,omitempty"`
+	// The distance between the upper-left corner of the text area and the y-axis, using the upper-left corner of the image as the coordinate origin, in pixels.
+	//
+	// example:
+	//
+	// 11
 	X *int32 `json:"X,omitempty" xml:"X,omitempty"`
+	// The distance between the upper left corner of the text area and the x-axis, with the upper left corner of the image as the coordinate origin, in pixels.
+	//
+	// example:
+	//
+	// 22
 	Y *int32 `json:"Y,omitempty" xml:"Y,omitempty"`
 }
 
@@ -1665,9 +1939,24 @@ func (s *ImageModerationResponseBodyDataExtLogoDataLocation) SetY(v int32) *Imag
 }
 
 type ImageModerationResponseBodyDataExtLogoDataLogo struct {
+	// The score of the confidence level. Valid values: 0 to 100. The value is accurate to two decimal places. Some labels do not have scores of confidence levels.
+	//
+	// example:
+	//
+	// 99.01
 	Confidence *float32 `json:"Confidence,omitempty" xml:"Confidence,omitempty"`
-	Label      *string  `json:"Label,omitempty" xml:"Label,omitempty"`
-	Name       *string  `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Logo category.
+	//
+	// example:
+	//
+	// xx
+	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
+	// Logo name.
+	//
+	// example:
+	//
+	// xx
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
 func (s ImageModerationResponseBodyDataExtLogoDataLogo) String() string {
@@ -1694,8 +1983,14 @@ func (s *ImageModerationResponseBodyDataExtLogoDataLogo) SetName(v string) *Imag
 }
 
 type ImageModerationResponseBodyDataExtOcrResult struct {
+	// Location information.
 	Location *ImageModerationResponseBodyDataExtOcrResultLocation `json:"Location,omitempty" xml:"Location,omitempty" type:"Struct"`
-	Text     *string                                              `json:"Text,omitempty" xml:"Text,omitempty"`
+	// The text information in the recognized image.
+	//
+	// example:
+	//
+	// xx
+	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
 }
 
 func (s ImageModerationResponseBodyDataExtOcrResult) String() string {
@@ -1717,9 +2012,29 @@ func (s *ImageModerationResponseBodyDataExtOcrResult) SetText(v string) *ImageMo
 }
 
 type ImageModerationResponseBodyDataExtOcrResultLocation struct {
+	// The height of the text area, in pixels.
+	//
+	// example:
+	//
+	// 44
 	H *int32 `json:"H,omitempty" xml:"H,omitempty"`
+	// The width of the text area, in pixels.
+	//
+	// example:
+	//
+	// 33
 	W *int32 `json:"W,omitempty" xml:"W,omitempty"`
+	// The distance between the upper-left corner of the text area and the y-axis, using the upper-left corner of the image as the coordinate origin, in pixels.
+	//
+	// example:
+	//
+	// 11
 	X *int32 `json:"X,omitempty" xml:"X,omitempty"`
+	// The distance between the upper left corner of the text area and the x-axis, with the upper left corner of the image as the coordinate origin, in pixels.
+	//
+	// example:
+	//
+	// 22
 	Y *int32 `json:"Y,omitempty" xml:"Y,omitempty"`
 }
 
@@ -1752,8 +2067,19 @@ func (s *ImageModerationResponseBodyDataExtOcrResultLocation) SetY(v int32) *Ima
 }
 
 type ImageModerationResponseBodyDataExtPublicFigure struct {
-	FigureId   *string `json:"FigureId,omitempty" xml:"FigureId,omitempty"`
-	FigureName *string `json:"FigureName,omitempty" xml:"FigureName,omitempty"`
+	// Identified person coding information.
+	//
+	// example:
+	//
+	// xx
+	FigureId *string `json:"FigureId,omitempty" xml:"FigureId,omitempty"`
+	// Identified person name information.
+	//
+	// example:
+	//
+	// xx
+	FigureName *string                                                   `json:"FigureName,omitempty" xml:"FigureName,omitempty"`
+	Location   []*ImageModerationResponseBodyDataExtPublicFigureLocation `json:"Location,omitempty" xml:"Location,omitempty" type:"Repeated"`
 }
 
 func (s ImageModerationResponseBodyDataExtPublicFigure) String() string {
@@ -1774,9 +2100,59 @@ func (s *ImageModerationResponseBodyDataExtPublicFigure) SetFigureName(v string)
 	return s
 }
 
+func (s *ImageModerationResponseBodyDataExtPublicFigure) SetLocation(v []*ImageModerationResponseBodyDataExtPublicFigureLocation) *ImageModerationResponseBodyDataExtPublicFigure {
+	s.Location = v
+	return s
+}
+
+type ImageModerationResponseBodyDataExtPublicFigureLocation struct {
+	H *int32 `json:"H,omitempty" xml:"H,omitempty"`
+	W *int32 `json:"W,omitempty" xml:"W,omitempty"`
+	X *int32 `json:"X,omitempty" xml:"X,omitempty"`
+	Y *int32 `json:"Y,omitempty" xml:"Y,omitempty"`
+}
+
+func (s ImageModerationResponseBodyDataExtPublicFigureLocation) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImageModerationResponseBodyDataExtPublicFigureLocation) GoString() string {
+	return s.String()
+}
+
+func (s *ImageModerationResponseBodyDataExtPublicFigureLocation) SetH(v int32) *ImageModerationResponseBodyDataExtPublicFigureLocation {
+	s.H = &v
+	return s
+}
+
+func (s *ImageModerationResponseBodyDataExtPublicFigureLocation) SetW(v int32) *ImageModerationResponseBodyDataExtPublicFigureLocation {
+	s.W = &v
+	return s
+}
+
+func (s *ImageModerationResponseBodyDataExtPublicFigureLocation) SetX(v int32) *ImageModerationResponseBodyDataExtPublicFigureLocation {
+	s.X = &v
+	return s
+}
+
+func (s *ImageModerationResponseBodyDataExtPublicFigureLocation) SetY(v int32) *ImageModerationResponseBodyDataExtPublicFigureLocation {
+	s.Y = &v
+	return s
+}
+
 type ImageModerationResponseBodyDataExtRecognition struct {
-	Classification *string  `json:"Classification,omitempty" xml:"Classification,omitempty"`
-	Confidence     *float32 `json:"Confidence,omitempty" xml:"Confidence,omitempty"`
+	// The category of image recognition.
+	//
+	// example:
+	//
+	// xx
+	Classification *string `json:"Classification,omitempty" xml:"Classification,omitempty"`
+	// The score of the confidence level. Valid values: 0 to 100. The value is accurate to two decimal places. Some labels do not have scores of confidence levels.
+	//
+	// example:
+	//
+	// 99.01
+	Confidence *float32 `json:"Confidence,omitempty" xml:"Confidence,omitempty"`
 }
 
 func (s ImageModerationResponseBodyDataExtRecognition) String() string {
@@ -1798,9 +2174,12 @@ func (s *ImageModerationResponseBodyDataExtRecognition) SetConfidence(v float32)
 }
 
 type ImageModerationResponseBodyDataExtTextInImage struct {
+	// When a custom text library is hit, the custom library ID, custom library name, and custom word are returned.
 	CustomText []*ImageModerationResponseBodyDataExtTextInImageCustomText `json:"CustomText,omitempty" xml:"CustomText,omitempty" type:"Repeated"`
-	OcrResult  []*ImageModerationResponseBodyDataExtTextInImageOcrResult  `json:"OcrResult,omitempty" xml:"OcrResult,omitempty" type:"Repeated"`
-	RiskWord   []*string                                                  `json:"RiskWord,omitempty" xml:"RiskWord,omitempty" type:"Repeated"`
+	// Returns the text information in the recognized image.
+	OcrResult []*ImageModerationResponseBodyDataExtTextInImageOcrResult `json:"OcrResult,omitempty" xml:"OcrResult,omitempty" type:"Repeated"`
+	// The risk words that are hit. Multiple words are separated by commas (,).
+	RiskWord []*string `json:"RiskWord,omitempty" xml:"RiskWord,omitempty" type:"Repeated"`
 }
 
 func (s ImageModerationResponseBodyDataExtTextInImage) String() string {
@@ -1827,9 +2206,24 @@ func (s *ImageModerationResponseBodyDataExtTextInImage) SetRiskWord(v []*string)
 }
 
 type ImageModerationResponseBodyDataExtTextInImageCustomText struct {
+	// Custom words, multiple words separated by commas.
+	//
+	// example:
+	//
+	// aaa,bbb
 	KeyWords *string `json:"KeyWords,omitempty" xml:"KeyWords,omitempty"`
-	LibId    *string `json:"LibId,omitempty" xml:"LibId,omitempty"`
-	LibName  *string `json:"LibName,omitempty" xml:"LibName,omitempty"`
+	// Custom library ID.
+	//
+	// example:
+	//
+	// 123456
+	LibId *string `json:"LibId,omitempty" xml:"LibId,omitempty"`
+	// Custom library name.
+	//
+	// example:
+	//
+	// xxxx
+	LibName *string `json:"LibName,omitempty" xml:"LibName,omitempty"`
 }
 
 func (s ImageModerationResponseBodyDataExtTextInImageCustomText) String() string {
@@ -1856,8 +2250,14 @@ func (s *ImageModerationResponseBodyDataExtTextInImageCustomText) SetLibName(v s
 }
 
 type ImageModerationResponseBodyDataExtTextInImageOcrResult struct {
+	// Location information.
 	Location *ImageModerationResponseBodyDataExtTextInImageOcrResultLocation `json:"Location,omitempty" xml:"Location,omitempty" type:"Struct"`
-	Text     *string                                                         `json:"Text,omitempty" xml:"Text,omitempty"`
+	// The text information in the recognized image.
+	//
+	// example:
+	//
+	// xx
+	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
 }
 
 func (s ImageModerationResponseBodyDataExtTextInImageOcrResult) String() string {
@@ -1879,9 +2279,29 @@ func (s *ImageModerationResponseBodyDataExtTextInImageOcrResult) SetText(v strin
 }
 
 type ImageModerationResponseBodyDataExtTextInImageOcrResultLocation struct {
+	// The height of the text area, in pixels.
+	//
+	// example:
+	//
+	// 33
 	H *int32 `json:"H,omitempty" xml:"H,omitempty"`
+	// The width of the text area, in pixels.
+	//
+	// example:
+	//
+	// 44
 	W *int32 `json:"W,omitempty" xml:"W,omitempty"`
+	// The distance between the upper-left corner of the text area and the y-axis, using the upper-left corner of the image as the coordinate origin, in pixels.
+	//
+	// example:
+	//
+	// 11
 	X *int32 `json:"X,omitempty" xml:"X,omitempty"`
+	// The distance between the upper left corner of the text area and the x-axis, with the upper left corner of the image as the coordinate origin, in pixels.
+	//
+	// example:
+	//
+	// 22
 	Y *int32 `json:"Y,omitempty" xml:"Y,omitempty"`
 }
 
@@ -1914,10 +2334,14 @@ func (s *ImageModerationResponseBodyDataExtTextInImageOcrResultLocation) SetY(v 
 }
 
 type ImageModerationResponseBodyDataResult struct {
+	// The score of the confidence level. Valid values: 0 to 100. The value is accurate to two decimal places. Some labels do not have scores of confidence levels.
+	//
 	// example:
 	//
 	// 81.22
 	Confidence *float32 `json:"Confidence,omitempty" xml:"Confidence,omitempty"`
+	// The labels returned after the image moderation.
+	//
 	// example:
 	//
 	// violent_explosion
@@ -1972,10 +2396,17 @@ func (s *ImageModerationResponse) SetBody(v *ImageModerationResponseBody) *Image
 }
 
 type TextModerationRequest struct {
+	// The type of the moderation service.
+	//
 	// example:
 	//
 	// nickname_detection
-	Service           *string `json:"Service,omitempty" xml:"Service,omitempty"`
+	Service *string `json:"Service,omitempty" xml:"Service,omitempty"`
+	// The parameters required by the moderation service. The value is a JSON string.
+	//
+	// example:
+	//
+	// {"content":"Content to be moderated"}
 	ServiceParameters *string `json:"ServiceParameters,omitempty" xml:"ServiceParameters,omitempty"`
 }
 
@@ -1998,15 +2429,22 @@ func (s *TextModerationRequest) SetServiceParameters(v string) *TextModerationRe
 }
 
 type TextModerationResponseBody struct {
+	// The returned HTTP status code.
+	//
 	// example:
 	//
 	// 200
-	Code *int32                          `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The moderation results.
 	Data *TextModerationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The message that is returned in response to the request.
+	//
 	// example:
 	//
 	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// AAAAAA-BBBB-CCCCC-DDDD-EEEEEEEE****
@@ -2042,12 +2480,29 @@ func (s *TextModerationResponseBody) SetRequestId(v string) *TextModerationRespo
 }
 
 type TextModerationResponseBodyData struct {
+	// The ID of the Alibaba Cloud account.
+	//
+	// example:
+	//
+	// 123456
 	AccountId *string `json:"accountId,omitempty" xml:"accountId,omitempty"`
-	DeviceId  *string `json:"deviceId,omitempty" xml:"deviceId,omitempty"`
+	// The device ID.
+	//
+	// example:
+	//
+	// xxxxxx
+	DeviceId *string `json:"deviceId,omitempty" xml:"deviceId,omitempty"`
+	// Labels.
+	//
 	// example:
 	//
 	// porn
 	Labels *string `json:"labels,omitempty" xml:"labels,omitempty"`
+	// The JSON string used to locate the cause.
+	//
+	// example:
+	//
+	// {\\"detectedLanguage\\":\\"ar\\",\\"riskTips\\":\\"sexuality_Suggestive\\",\\"riskWords\\":\\"pxxxxy\\",\\"translatedContent\\":\\"pxxxxy sxxxx\\"}
 	Reason *string `json:"reason,omitempty" xml:"reason,omitempty"`
 }
 
@@ -2109,10 +2564,17 @@ func (s *TextModerationResponse) SetBody(v *TextModerationResponseBody) *TextMod
 }
 
 type TextModerationPlusRequest struct {
+	// The type of the moderation service.
+	//
 	// example:
 	//
 	// llm_query_moderation
-	Service           *string `json:"Service,omitempty" xml:"Service,omitempty"`
+	Service *string `json:"Service,omitempty" xml:"Service,omitempty"`
+	// The parameters required by the moderation service. The value is a JSON string.
+	//
+	// example:
+	//
+	// {"content":"Content to be moderated"}
 	ServiceParameters *string `json:"ServiceParameters,omitempty" xml:"ServiceParameters,omitempty"`
 }
 
@@ -2135,16 +2597,21 @@ func (s *TextModerationPlusRequest) SetServiceParameters(v string) *TextModerati
 }
 
 type TextModerationPlusResponseBody struct {
+	// The returned HTTP status code.
+	//
 	// example:
 	//
 	// 200
-	Code *int32                              `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The data returned.
 	Data *TextModerationPlusResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The message that is returned in response to the request.
+	//
 	// example:
 	//
 	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
@@ -2181,9 +2648,18 @@ func (s *TextModerationPlusResponseBody) SetRequestId(v string) *TextModerationP
 }
 
 type TextModerationPlusResponseBodyData struct {
-	Advice    []*TextModerationPlusResponseBodyDataAdvice `json:"Advice,omitempty" xml:"Advice,omitempty" type:"Repeated"`
-	Result    []*TextModerationPlusResponseBodyDataResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
-	RiskLevel *string                                     `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	// Advice
+	Advice []*TextModerationPlusResponseBodyDataAdvice `json:"Advice,omitempty" xml:"Advice,omitempty" type:"Repeated"`
+	// The moderation results.
+	Result []*TextModerationPlusResponseBodyDataResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	// Risk Level
+	//
+	// example:
+	//
+	// high
+	RiskLevel *string `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	// Score.
+	//
 	// example:
 	//
 	// 1
@@ -2219,11 +2695,23 @@ func (s *TextModerationPlusResponseBodyData) SetScore(v float32) *TextModeration
 }
 
 type TextModerationPlusResponseBodyDataAdvice struct {
+	// Answer
+	//
 	// example:
 	//
 	// XXX
-	Answer     *string `json:"Answer,omitempty" xml:"Answer,omitempty"`
-	HitLabel   *string `json:"HitLabel,omitempty" xml:"HitLabel,omitempty"`
+	Answer *string `json:"Answer,omitempty" xml:"Answer,omitempty"`
+	// Hit Label
+	//
+	// example:
+	//
+	// xxx
+	HitLabel *string `json:"HitLabel,omitempty" xml:"HitLabel,omitempty"`
+	// Hit Library Name
+	//
+	// example:
+	//
+	// xxx
 	HitLibName *string `json:"HitLibName,omitempty" xml:"HitLibName,omitempty"`
 }
 
@@ -2251,15 +2739,22 @@ func (s *TextModerationPlusResponseBodyDataAdvice) SetHitLibName(v string) *Text
 }
 
 type TextModerationPlusResponseBodyDataResult struct {
+	// Confidence score, 0 to 100, reserved to 2 decimal places.
+	//
 	// example:
 	//
 	// 81.22
-	Confidence    *float32                                                 `json:"Confidence,omitempty" xml:"Confidence,omitempty"`
+	Confidence *float32 `json:"Confidence,omitempty" xml:"Confidence,omitempty"`
+	// Custom keyword hits
 	CustomizedHit []*TextModerationPlusResponseBodyDataResultCustomizedHit `json:"CustomizedHit,omitempty" xml:"CustomizedHit,omitempty" type:"Repeated"`
+	// Labels.
+	//
 	// example:
 	//
 	// porn
 	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
+	// Risk words
+	//
 	// example:
 	//
 	// XXX
@@ -2295,11 +2790,18 @@ func (s *TextModerationPlusResponseBodyDataResult) SetRiskWords(v string) *TextM
 }
 
 type TextModerationPlusResponseBodyDataResultCustomizedHit struct {
+	// Hit keywords, comma separated.
+	//
 	// example:
 	//
 	// xxx
 	KeyWords *string `json:"KeyWords,omitempty" xml:"KeyWords,omitempty"`
-	LibName  *string `json:"LibName,omitempty" xml:"LibName,omitempty"`
+	// Library Name
+	//
+	// example:
+	//
+	// test
+	LibName *string `json:"LibName,omitempty" xml:"LibName,omitempty"`
 }
 
 func (s TextModerationPlusResponseBodyDataResultCustomizedHit) String() string {
@@ -2350,7 +2852,14 @@ func (s *TextModerationPlusResponse) SetBody(v *TextModerationPlusResponseBody) 
 }
 
 type UrlAsyncModerationRequest struct {
+	// The type of the moderation service.
+	//
+	// example:
+	//
+	// url_detection
 	Service *string `json:"Service,omitempty" xml:"Service,omitempty"`
+	// The parameters required by the moderation service. The value is a JSON string.
+	//
 	// example:
 	//
 	// {
@@ -2382,11 +2891,16 @@ func (s *UrlAsyncModerationRequest) SetServiceParameters(v string) *UrlAsyncMode
 }
 
 type UrlAsyncModerationResponseBody struct {
+	// The returned HTTP status code.
+	//
 	// example:
 	//
 	// 200
-	Code *int32                              `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The data returned.
 	Data *UrlAsyncModerationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The message that is returned in response to the request.
+	//
 	// example:
 	//
 	// success
@@ -2428,10 +2942,14 @@ func (s *UrlAsyncModerationResponseBody) SetRequestId(v string) *UrlAsyncModerat
 }
 
 type UrlAsyncModerationResponseBodyData struct {
+	// The ID of the moderated object.
+	//
 	// example:
 	//
 	// 26769ada6e264e7ba9aa048241e12be9
 	DataId *string `json:"DataId,omitempty" xml:"DataId,omitempty"`
+	// The reqId field returned by the Url Async Moderation API.
+	//
 	// example:
 	//
 	// A07B3DB9-D762-5C56-95B1-8EC55CF176D2
@@ -2486,10 +3004,14 @@ func (s *UrlAsyncModerationResponse) SetBody(v *UrlAsyncModerationResponseBody) 
 }
 
 type VideoModerationRequest struct {
+	// The type of the moderation service.
+	//
 	// example:
 	//
 	// videoDetection
 	Service *string `json:"Service,omitempty" xml:"Service,omitempty"`
+	// The parameters required by the moderation service. The value is a JSON string.
+	//
 	// example:
 	//
 	// {\\"url\\": \\"https://talesofai.oss-cn-shanghai.aliyuncs.com/xxx.mp4\\", \\"dataId\\": \\"94db0b88-f521-11ed-806e-fae21c1f239c\\"}
@@ -2515,16 +3037,21 @@ func (s *VideoModerationRequest) SetServiceParameters(v string) *VideoModeration
 }
 
 type VideoModerationResponseBody struct {
+	// The returned HTTP status code.
+	//
 	// example:
 	//
 	// 200
-	Code *int32                           `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The data returned.
 	Data *VideoModerationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The message that is returned in response to the request.
+	//
 	// example:
 	//
 	// SUCCESS
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
@@ -2561,7 +3088,14 @@ func (s *VideoModerationResponseBody) SetRequestId(v string) *VideoModerationRes
 }
 
 type VideoModerationResponseBodyData struct {
+	// The ID of the moderated object.
+	//
+	// example:
+	//
+	// data1234
 	DataId *string `json:"DataId,omitempty" xml:"DataId,omitempty"`
+	// The task ID.
+	//
 	// example:
 	//
 	// xxxxx-xxxxx
@@ -2616,10 +3150,14 @@ func (s *VideoModerationResponse) SetBody(v *VideoModerationResponseBody) *Video
 }
 
 type VideoModerationCancelRequest struct {
+	// The type of the moderation service.
+	//
 	// example:
 	//
 	// videoDetection
 	Service *string `json:"Service,omitempty" xml:"Service,omitempty"`
+	// The parameters required by the moderation service. The value is a JSON string.
+	//
 	// example:
 	//
 	// {\\"taskId\\":\\"vi_s_4O9gp7GfNQdx9GOqdekFmk-1z2RJT\\"}
@@ -2645,15 +3183,19 @@ func (s *VideoModerationCancelRequest) SetServiceParameters(v string) *VideoMode
 }
 
 type VideoModerationCancelResponseBody struct {
+	// The returned HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The message that is returned in response to the request.
+	//
 	// example:
 	//
 	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
@@ -2714,10 +3256,14 @@ func (s *VideoModerationCancelResponse) SetBody(v *VideoModerationCancelResponse
 }
 
 type VideoModerationResultRequest struct {
+	// The type of the moderation service.
+	//
 	// example:
 	//
 	// videoDetection
 	Service *string `json:"Service,omitempty" xml:"Service,omitempty"`
+	// The parameters required by the moderation service. The value is a JSON string.
+	//
 	// example:
 	//
 	// {\\"taskId\\":\\"au_f_8PoWiZKoLbczp5HRn69VdT-1y8@U5\\"}
@@ -2743,16 +3289,21 @@ func (s *VideoModerationResultRequest) SetServiceParameters(v string) *VideoMode
 }
 
 type VideoModerationResultResponseBody struct {
+	// The returned HTTP status code.
+	//
 	// example:
 	//
 	// 200
-	Code *int32                                 `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The data returned.
 	Data *VideoModerationResultResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The message that is returned in response to the request.
+	//
 	// example:
 	//
 	// success finished
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
@@ -2789,16 +3340,27 @@ func (s *VideoModerationResultResponseBody) SetRequestId(v string) *VideoModerat
 }
 
 type VideoModerationResultResponseBodyData struct {
+	// The voice moderation results. The moderation results contain a structure.
 	AudioResult *VideoModerationResultResponseBodyDataAudioResult `json:"AudioResult,omitempty" xml:"AudioResult,omitempty" type:"Struct"`
+	// The ID of the moderated object.
+	//
 	// example:
 	//
 	// product_content-2055763
-	DataId      *string                                           `json:"DataId,omitempty" xml:"DataId,omitempty"`
+	DataId *string `json:"DataId,omitempty" xml:"DataId,omitempty"`
+	// The image moderation results. If the call is successful, the HTTP status code 200 and moderation results are returned. The moderation results contain a structure.
 	FrameResult *VideoModerationResultResponseBodyDataFrameResult `json:"FrameResult,omitempty" xml:"FrameResult,omitempty" type:"Struct"`
+	// The unique ID of the live stream.
+	//
 	// example:
 	//
 	// liveId
 	LiveId *string `json:"LiveId,omitempty" xml:"LiveId,omitempty"`
+	// The task ID.
+	//
+	// example:
+	//
+	// xxxxx-xxxxx
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
@@ -2836,8 +3398,10 @@ func (s *VideoModerationResultResponseBodyData) SetTaskId(v string) *VideoModera
 }
 
 type VideoModerationResultResponseBodyDataAudioResult struct {
+	// Summary of voice labels.
 	AudioSummarys []*VideoModerationResultResponseBodyDataAudioResultAudioSummarys `json:"AudioSummarys,omitempty" xml:"AudioSummarys,omitempty" type:"Repeated"`
-	SliceDetails  []*VideoModerationResultResponseBodyDataAudioResultSliceDetails  `json:"SliceDetails,omitempty" xml:"SliceDetails,omitempty" type:"Repeated"`
+	// The details about the text in the moderated voice. The value is a JSON array that contains one or more elements. Each element corresponds to a text entry.
+	SliceDetails []*VideoModerationResultResponseBodyDataAudioResultSliceDetails `json:"SliceDetails,omitempty" xml:"SliceDetails,omitempty" type:"Repeated"`
 }
 
 func (s VideoModerationResultResponseBodyDataAudioResult) String() string {
@@ -2859,8 +3423,18 @@ func (s *VideoModerationResultResponseBodyDataAudioResult) SetSliceDetails(v []*
 }
 
 type VideoModerationResultResponseBodyDataAudioResultAudioSummarys struct {
-	Label    *string `json:"Label,omitempty" xml:"Label,omitempty"`
-	LabelSum *int32  `json:"LabelSum,omitempty" xml:"LabelSum,omitempty"`
+	// Voice label.
+	//
+	// example:
+	//
+	// profanity
+	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
+	// The number of times that the label is matched.
+	//
+	// example:
+	//
+	// 8
+	LabelSum *int32 `json:"LabelSum,omitempty" xml:"LabelSum,omitempty"`
 }
 
 func (s VideoModerationResultResponseBodyDataAudioResultAudioSummarys) String() string {
@@ -2882,43 +3456,68 @@ func (s *VideoModerationResultResponseBodyDataAudioResultAudioSummarys) SetLabel
 }
 
 type VideoModerationResultResponseBodyDataAudioResultSliceDetails struct {
+	// The end time of the text after voice-to-text conversion. Unit: seconds.
+	//
 	// example:
 	//
 	// 30
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The end timestamp of the segment. Unit: milliseconds.
+	//
 	// example:
 	//
 	// 1685245261939
 	EndTimestamp *int64 `json:"EndTimestamp,omitempty" xml:"EndTimestamp,omitempty"`
+	// A reserved parameter.
+	//
 	// example:
 	//
 	// {\\"consoleProduct\\":\\"slbnext\\"}
 	Extend *string `json:"Extend,omitempty" xml:"Extend,omitempty"`
+	// The details of the labels.
+	//
 	// example:
 	//
 	// porn
 	Labels *string `json:"Labels,omitempty" xml:"Labels,omitempty"`
+	// Subcategory labels. Multiple labels are separated by commas (,).
+	//
 	// example:
 	//
 	// ""
 	RiskTips *string `json:"RiskTips,omitempty" xml:"RiskTips,omitempty"`
+	// The risk words that are hit. Multiple words are separated by commas (,).
+	//
 	// example:
 	//
 	// ""
 	RiskWords *string `json:"RiskWords,omitempty" xml:"RiskWords,omitempty"`
+	// Risk score, default range 0-99.
+	//
 	// example:
 	//
 	// 5
 	Score *float32 `json:"Score,omitempty" xml:"Score,omitempty"`
+	// The start time of the text after voice-to-text conversion. Unit: seconds.
+	//
 	// example:
 	//
 	// 0
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The start timestamp of the segment. Unit: milliseconds.
+	//
 	// example:
 	//
 	// 1659935002123
-	StartTimestamp *int64  `json:"StartTimestamp,omitempty" xml:"StartTimestamp,omitempty"`
-	Text           *string `json:"Text,omitempty" xml:"Text,omitempty"`
+	StartTimestamp *int64 `json:"StartTimestamp,omitempty" xml:"StartTimestamp,omitempty"`
+	// The text converted from voice.
+	//
+	// example:
+	//
+	// Disgusting
+	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
+	// If the moderation object is a voice stream, this parameter indicates the temporary access URL of the voice stream to which the text entry corresponds. The validity period of the URL is 30 minutes. You must prepare another URL to store the audio stream at the earliest opportunity.
+	//
 	// example:
 	//
 	// http://xxxx.abc.img
@@ -2989,12 +3588,16 @@ func (s *VideoModerationResultResponseBodyDataAudioResultSliceDetails) SetUrl(v 
 }
 
 type VideoModerationResultResponseBodyDataFrameResult struct {
+	// The number of captured frames that are returned for the video file.
+	//
 	// example:
 	//
 	// 10
-	FrameNum      *int32                                                           `json:"FrameNum,omitempty" xml:"FrameNum,omitempty"`
+	FrameNum *int32 `json:"FrameNum,omitempty" xml:"FrameNum,omitempty"`
+	// The summary of the labels against which captured frames are matched.
 	FrameSummarys []*VideoModerationResultResponseBodyDataFrameResultFrameSummarys `json:"FrameSummarys,omitempty" xml:"FrameSummarys,omitempty" type:"Repeated"`
-	Frames        []*VideoModerationResultResponseBodyDataFrameResultFrames        `json:"Frames,omitempty" xml:"Frames,omitempty" type:"Repeated"`
+	// The information about the frames that match the labels.
+	Frames []*VideoModerationResultResponseBodyDataFrameResultFrames `json:"Frames,omitempty" xml:"Frames,omitempty" type:"Repeated"`
 }
 
 func (s VideoModerationResultResponseBodyDataFrameResult) String() string {
@@ -3021,8 +3624,18 @@ func (s *VideoModerationResultResponseBodyDataFrameResult) SetFrames(v []*VideoM
 }
 
 type VideoModerationResultResponseBodyDataFrameResultFrameSummarys struct {
-	Label    *string `json:"Label,omitempty" xml:"Label,omitempty"`
-	LabelSum *int32  `json:"LabelSum,omitempty" xml:"LabelSum,omitempty"`
+	// The label against which a captured frame is matched.
+	//
+	// example:
+	//
+	// violent_armedForces
+	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
+	// The number of times that the label is matched.
+	//
+	// example:
+	//
+	// 8
+	LabelSum *int32 `json:"LabelSum,omitempty" xml:"LabelSum,omitempty"`
 }
 
 func (s VideoModerationResultResponseBodyDataFrameResultFrameSummarys) String() string {
@@ -3044,16 +3657,26 @@ func (s *VideoModerationResultResponseBodyDataFrameResultFrameSummarys) SetLabel
 }
 
 type VideoModerationResultResponseBodyDataFrameResultFrames struct {
+	// The interval between the start of the video file and the captured frame. Unit: seconds.
+	//
 	// example:
 	//
 	// 338
-	Offset  *float32                                                         `json:"Offset,omitempty" xml:"Offset,omitempty"`
+	Offset *float32 `json:"Offset,omitempty" xml:"Offset,omitempty"`
+	// The results of frame moderation parameters such as the label parameter and the confidence parameter.
 	Results []*VideoModerationResultResponseBodyDataFrameResultFramesResults `json:"Results,omitempty" xml:"Results,omitempty" type:"Repeated"`
+	// The temporary URL of a captured frame. This URL is valid for 30 minutes.
+	//
 	// example:
 	//
 	// http://xxxx.abc.jpg
-	TempUrl   *string `json:"TempUrl,omitempty" xml:"TempUrl,omitempty"`
-	Timestamp *int64  `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
+	TempUrl *string `json:"TempUrl,omitempty" xml:"TempUrl,omitempty"`
+	// The absolute timestamp. Unit: milliseconds.
+	//
+	// example:
+	//
+	// 1684559739000
+	Timestamp *int64 `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
 }
 
 func (s VideoModerationResultResponseBodyDataFrameResultFrames) String() string {
@@ -3085,13 +3708,19 @@ func (s *VideoModerationResultResponseBodyDataFrameResultFrames) SetTimestamp(v 
 }
 
 type VideoModerationResultResponseBodyDataFrameResultFramesResults struct {
-	CustomImage  []*VideoModerationResultResponseBodyDataFrameResultFramesResultsCustomImage  `json:"CustomImage,omitempty" xml:"CustomImage,omitempty" type:"Repeated"`
+	// If a custom image library is hit, information about the hit custom image library is returned.
+	CustomImage []*VideoModerationResultResponseBodyDataFrameResultFramesResultsCustomImage `json:"CustomImage,omitempty" xml:"CustomImage,omitempty" type:"Repeated"`
+	// If the video contains a specific person, the recognized person code is returned.
 	PublicFigure []*VideoModerationResultResponseBodyDataFrameResultFramesResultsPublicFigure `json:"PublicFigure,omitempty" xml:"PublicFigure,omitempty" type:"Repeated"`
-	Result       []*VideoModerationResultResponseBodyDataFrameResultFramesResultsResult       `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	// The results of frame moderation parameters such as the label parameter and the confidence parameter.
+	Result []*VideoModerationResultResponseBodyDataFrameResultFramesResultsResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	// The moderation service that is called.
+	//
 	// example:
 	//
 	// tonalityImprove
-	Service     *string                `json:"Service,omitempty" xml:"Service,omitempty"`
+	Service *string `json:"Service,omitempty" xml:"Service,omitempty"`
+	// Returns the text information in the hit image.
 	TextInImage map[string]interface{} `json:"TextInImage,omitempty" xml:"TextInImage,omitempty"`
 }
 
@@ -3129,8 +3758,18 @@ func (s *VideoModerationResultResponseBodyDataFrameResultFramesResults) SetTextI
 }
 
 type VideoModerationResultResponseBodyDataFrameResultFramesResultsCustomImage struct {
+	// The ID of the hit custom image.
+	//
+	// example:
+	//
+	// 1234
 	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	LibId   *string `json:"LibId,omitempty" xml:"LibId,omitempty"`
+	// The custom image library ID of the hit.
+	//
+	// example:
+	//
+	// 12345678
+	LibId *string `json:"LibId,omitempty" xml:"LibId,omitempty"`
 }
 
 func (s VideoModerationResultResponseBodyDataFrameResultFramesResultsCustomImage) String() string {
@@ -3152,6 +3791,11 @@ func (s *VideoModerationResultResponseBodyDataFrameResultFramesResultsCustomImag
 }
 
 type VideoModerationResultResponseBodyDataFrameResultFramesResultsPublicFigure struct {
+	// Identified person coding information.
+	//
+	// example:
+	//
+	// xxx001
 	FigureId *string `json:"FigureId,omitempty" xml:"FigureId,omitempty"`
 }
 
@@ -3169,10 +3813,14 @@ func (s *VideoModerationResultResponseBodyDataFrameResultFramesResultsPublicFigu
 }
 
 type VideoModerationResultResponseBodyDataFrameResultFramesResultsResult struct {
+	// The score of the confidence level. Valid values: 0 to 100. The value is accurate to two decimal places.
+	//
 	// example:
 	//
 	// 50
 	Confidence *float32 `json:"Confidence,omitempty" xml:"Confidence,omitempty"`
+	// The label returned after a frame is moderated. Multiple risk labels and the corresponding scores of confidence levels may be returned for a frame.
+	//
 	// example:
 	//
 	// bloody
@@ -3227,10 +3875,17 @@ func (s *VideoModerationResultResponse) SetBody(v *VideoModerationResultResponse
 }
 
 type VoiceModerationRequest struct {
+	// The type of the moderation service.
+	//
 	// example:
 	//
 	// nickname_detection
-	Service           *string `json:"Service,omitempty" xml:"Service,omitempty"`
+	Service *string `json:"Service,omitempty" xml:"Service,omitempty"`
+	// The parameters required by the moderation service. The value is a JSON string.
+	//
+	// example:
+	//
+	// {"url": "http://aliyundoc.com/test.flv", "dataId": "data1234"}
 	ServiceParameters *string `json:"ServiceParameters,omitempty" xml:"ServiceParameters,omitempty"`
 }
 
@@ -3253,16 +3908,21 @@ func (s *VoiceModerationRequest) SetServiceParameters(v string) *VoiceModeration
 }
 
 type VoiceModerationResponseBody struct {
+	// The returned HTTP status code.
+	//
 	// example:
 	//
 	// 200
-	Code *int32                           `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The data returned.
 	Data *VoiceModerationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The message that is returned in response to the request.
+	//
 	// example:
 	//
 	// SUCCESS
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
@@ -3299,7 +3959,14 @@ func (s *VoiceModerationResponseBody) SetRequestId(v string) *VoiceModerationRes
 }
 
 type VoiceModerationResponseBodyData struct {
+	// The ID of the moderated object.
+	//
+	// example:
+	//
+	// data1234
 	DataId *string `json:"DataId,omitempty" xml:"DataId,omitempty"`
+	// The task ID.
+	//
 	// example:
 	//
 	// xxxxx-xxxxx
@@ -3354,17 +4021,17 @@ func (s *VoiceModerationResponse) SetBody(v *VoiceModerationResponseBody) *Voice
 }
 
 type VoiceModerationCancelRequest struct {
+	// The type of the moderation service.
+	//
 	// example:
 	//
 	// nickname_detection
 	Service *string `json:"Service,omitempty" xml:"Service,omitempty"`
+	// The parameters required by the moderation service. The value is a JSON string.
+	//
 	// example:
 	//
-	// {
-	//
-	//         "taskId": "xxxxx-xxxx"
-	//
-	//     }
+	// {"taskId":"xxxxx-xxxx"}
 	ServiceParameters *string `json:"ServiceParameters,omitempty" xml:"ServiceParameters,omitempty"`
 }
 
@@ -3387,15 +4054,19 @@ func (s *VoiceModerationCancelRequest) SetServiceParameters(v string) *VoiceMode
 }
 
 type VoiceModerationCancelResponseBody struct {
+	// The returned HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The message that is returned in response to the request.
+	//
 	// example:
 	//
 	// SUCCESS
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
@@ -3456,10 +4127,17 @@ func (s *VoiceModerationCancelResponse) SetBody(v *VoiceModerationCancelResponse
 }
 
 type VoiceModerationResultRequest struct {
+	// The type of the moderation service.
+	//
 	// example:
 	//
 	// nickname_detection
-	Service           *string `json:"Service,omitempty" xml:"Service,omitempty"`
+	Service *string `json:"Service,omitempty" xml:"Service,omitempty"`
+	// The parameters required by the moderation service. The value is a JSON string.
+	//
+	// example:
+	//
+	// {"taskId":"xxxxx-xxxx"}
 	ServiceParameters *string `json:"ServiceParameters,omitempty" xml:"ServiceParameters,omitempty"`
 }
 
@@ -3482,16 +4160,21 @@ func (s *VoiceModerationResultRequest) SetServiceParameters(v string) *VoiceMode
 }
 
 type VoiceModerationResultResponseBody struct {
+	// The returned HTTP status code.
+	//
 	// example:
 	//
 	// 200
-	Code *int32                                 `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The data returned.
 	Data *VoiceModerationResultResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The message that is returned in response to the request.
+	//
 	// example:
 	//
 	// SUCCESS
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
@@ -3528,17 +4211,32 @@ func (s *VoiceModerationResultResponseBody) SetRequestId(v string) *VoiceModerat
 }
 
 type VoiceModerationResultResponseBodyData struct {
+	// The ID of the moderated object.
+	//
+	// example:
+	//
+	// 26769ada6e264e7ba9aa048241e12be9
 	DataId *string `json:"DataId,omitempty" xml:"DataId,omitempty"`
+	// The unique ID of the live stream.
+	//
 	// example:
 	//
 	// liveId
-	LiveId       *string                                              `json:"LiveId,omitempty" xml:"LiveId,omitempty"`
+	LiveId *string `json:"LiveId,omitempty" xml:"LiveId,omitempty"`
+	// The details about the audio segments.
 	SliceDetails []*VoiceModerationResultResponseBodyDataSliceDetails `json:"SliceDetails,omitempty" xml:"SliceDetails,omitempty" type:"Repeated"`
+	// The task ID.
+	//
 	// example:
 	//
 	// kw24ihd0WGkdi5nniVZM@qOj-1x5Ibb
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	Url    *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	// The URL of the moderation object.
+	//
+	// example:
+	//
+	// https://aliyundoc.com
+	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
 }
 
 func (s VoiceModerationResultResponseBodyData) String() string {
@@ -3575,30 +4273,78 @@ func (s *VoiceModerationResultResponseBodyData) SetUrl(v string) *VoiceModeratio
 }
 
 type VoiceModerationResultResponseBodyDataSliceDetails struct {
+	// The end time of the text after audio-to-text conversion. Unit: seconds.
+	//
 	// example:
 	//
 	// 10
-	EndTime      *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	EndTimestamp *int64  `json:"EndTimestamp,omitempty" xml:"EndTimestamp,omitempty"`
-	Extend       *string `json:"Extend,omitempty" xml:"Extend,omitempty"`
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The end timestamp of the segment. Unit: milliseconds.
+	//
+	// example:
+	//
+	// 1678854649720
+	EndTimestamp *int64 `json:"EndTimestamp,omitempty" xml:"EndTimestamp,omitempty"`
+	// A reserved parameter.
+	//
+	// example:
+	//
+	// {\\"riskTips\\":\\"sexuality_Suggestive\\",\\"riskWords\\":\\"pxxxxy\\"}
+	Extend *string `json:"Extend,omitempty" xml:"Extend,omitempty"`
+	// The details of the labels.
+	//
 	// example:
 	//
 	// sexual_sounds
-	Labels           *string                `json:"Labels,omitempty" xml:"Labels,omitempty"`
+	Labels *string `json:"Labels,omitempty" xml:"Labels,omitempty"`
+	// Reserved field.
+	//
+	// example:
+	//
+	// {}
 	OriginAlgoResult map[string]interface{} `json:"OriginAlgoResult,omitempty" xml:"OriginAlgoResult,omitempty"`
-	RiskTips         *string                `json:"RiskTips,omitempty" xml:"RiskTips,omitempty"`
-	RiskWords        *string                `json:"RiskWords,omitempty" xml:"RiskWords,omitempty"`
+	// The risk details that are hit.
+	//
+	// example:
+	//
+	// sexuality_Suggestive
+	RiskTips *string `json:"RiskTips,omitempty" xml:"RiskTips,omitempty"`
+	// The risk words that are hit.
+	//
+	// example:
+	//
+	// AAA,BBB,CCC
+	RiskWords *string `json:"RiskWords,omitempty" xml:"RiskWords,omitempty"`
+	// Risk score, default range 0-99.
+	//
 	// example:
 	//
 	// 87.01
 	Score *float32 `json:"Score,omitempty" xml:"Score,omitempty"`
+	// The start time of the text after audio-to-text conversion. Unit: seconds.
+	//
 	// example:
 	//
 	// 0
-	StartTime      *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	StartTimestamp *int64  `json:"StartTimestamp,omitempty" xml:"StartTimestamp,omitempty"`
-	Text           *string `json:"Text,omitempty" xml:"Text,omitempty"`
-	Url            *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The start timestamp of the segment. Unit: milliseconds.
+	//
+	// example:
+	//
+	// 1678854649720
+	StartTimestamp *int64 `json:"StartTimestamp,omitempty" xml:"StartTimestamp,omitempty"`
+	// The text converted from voice.
+	//
+	// example:
+	//
+	// Disgusting
+	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
+	// The temporary access address of the audio segment. The validity period of the URL is 30 minutes. You must prepare another URL to store the audio segment at the earliest opportunity.
+	//
+	// example:
+	//
+	// https://aliyundoc.com
+	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
 }
 
 func (s VoiceModerationResultResponseBodyDataSliceDetails) String() string {
