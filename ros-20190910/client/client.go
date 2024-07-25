@@ -596,6 +596,144 @@ func (s *ContinueCreateStackResponse) SetBody(v *ContinueCreateStackResponseBody
 	return s
 }
 
+type CreateAITaskRequest struct {
+	Prompt *string `json:"Prompt,omitempty" xml:"Prompt,omitempty"`
+	// example:
+	//
+	// GenerateTemplate
+	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+	// example:
+	//
+	// {"ROSTemplateFormatVersion": "2015-09-01"}
+	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
+	// example:
+	//
+	// ROS
+	TemplateType *string `json:"TemplateType,omitempty" xml:"TemplateType,omitempty"`
+}
+
+func (s CreateAITaskRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAITaskRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAITaskRequest) SetPrompt(v string) *CreateAITaskRequest {
+	s.Prompt = &v
+	return s
+}
+
+func (s *CreateAITaskRequest) SetTaskType(v string) *CreateAITaskRequest {
+	s.TaskType = &v
+	return s
+}
+
+func (s *CreateAITaskRequest) SetTemplate(v string) *CreateAITaskRequest {
+	s.Template = &v
+	return s
+}
+
+func (s *CreateAITaskRequest) SetTemplateType(v string) *CreateAITaskRequest {
+	s.TemplateType = &v
+	return s
+}
+
+type CreateAITaskResponseBody struct {
+	// example:
+	//
+	// Forbidden
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// You are not authorized to complete this action.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// B288A0BE-D927-4888-B0F7-B35EF84B6E6F
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// t-asas*****
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+}
+
+func (s CreateAITaskResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAITaskResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAITaskResponseBody) SetCode(v string) *CreateAITaskResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CreateAITaskResponseBody) SetHttpStatusCode(v int32) *CreateAITaskResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *CreateAITaskResponseBody) SetMessage(v string) *CreateAITaskResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CreateAITaskResponseBody) SetRequestId(v string) *CreateAITaskResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateAITaskResponseBody) SetSuccess(v string) *CreateAITaskResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *CreateAITaskResponseBody) SetTaskId(v string) *CreateAITaskResponseBody {
+	s.TaskId = &v
+	return s
+}
+
+type CreateAITaskResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateAITaskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateAITaskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAITaskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAITaskResponse) SetHeaders(v map[string]*string) *CreateAITaskResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateAITaskResponse) SetStatusCode(v int32) *CreateAITaskResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateAITaskResponse) SetBody(v *CreateAITaskResponseBody) *CreateAITaskResponse {
+	s.Body = v
+	return s
+}
+
 type CreateChangeSetRequest struct {
 	// The name of the change set.\\
 	//
@@ -6414,6 +6552,171 @@ func (s *GenerateTemplatePolicyResponse) SetStatusCode(v int32) *GenerateTemplat
 }
 
 func (s *GenerateTemplatePolicyResponse) SetBody(v *GenerateTemplatePolicyResponseBody) *GenerateTemplatePolicyResponse {
+	s.Body = v
+	return s
+}
+
+type GetAITaskRequest struct {
+	// example:
+	//
+	// Disabled
+	OutputOption *string `json:"OutputOption,omitempty" xml:"OutputOption,omitempty"`
+	// example:
+	//
+	// t-asasas*****
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+}
+
+func (s GetAITaskRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAITaskRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetAITaskRequest) SetOutputOption(v string) *GetAITaskRequest {
+	s.OutputOption = &v
+	return s
+}
+
+func (s *GetAITaskRequest) SetTaskId(v string) *GetAITaskRequest {
+	s.TaskId = &v
+	return s
+}
+
+type GetAITaskResponseBody struct {
+	// example:
+	//
+	// Forbidden
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// You are not authorized to complete this action.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 14A07460-EBE7-47CA-9757-12CC4761D47A
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// FAILURE
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// Handler execution unexpected failure
+	StatusReason *string `json:"StatusReason,omitempty" xml:"StatusReason,omitempty"`
+	// example:
+	//
+	// true
+	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// t-asasas*****
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// example:
+	//
+	// "Result": {
+	//
+	//     "ROSTemplateFormatVersion": "2015-09-01",
+	//
+	// }
+	TaskOutput map[string]interface{} `json:"TaskOutput,omitempty" xml:"TaskOutput,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// GenerateTemplate
+	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+}
+
+func (s GetAITaskResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAITaskResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetAITaskResponseBody) SetCode(v string) *GetAITaskResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetAITaskResponseBody) SetHttpStatusCode(v int32) *GetAITaskResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *GetAITaskResponseBody) SetMessage(v string) *GetAITaskResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetAITaskResponseBody) SetRequestId(v string) *GetAITaskResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetAITaskResponseBody) SetStatus(v string) *GetAITaskResponseBody {
+	s.Status = &v
+	return s
+}
+
+func (s *GetAITaskResponseBody) SetStatusReason(v string) *GetAITaskResponseBody {
+	s.StatusReason = &v
+	return s
+}
+
+func (s *GetAITaskResponseBody) SetSuccess(v string) *GetAITaskResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *GetAITaskResponseBody) SetTaskId(v string) *GetAITaskResponseBody {
+	s.TaskId = &v
+	return s
+}
+
+func (s *GetAITaskResponseBody) SetTaskOutput(v map[string]interface{}) *GetAITaskResponseBody {
+	s.TaskOutput = v
+	return s
+}
+
+func (s *GetAITaskResponseBody) SetTaskType(v string) *GetAITaskResponseBody {
+	s.TaskType = &v
+	return s
+}
+
+type GetAITaskResponse struct {
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetAITaskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetAITaskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAITaskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetAITaskResponse) SetHeaders(v map[string]*string) *GetAITaskResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetAITaskResponse) SetStatusCode(v int32) *GetAITaskResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetAITaskResponse) SetBody(v *GetAITaskResponseBody) *GetAITaskResponse {
 	s.Body = v
 	return s
 }
@@ -14131,6 +14434,440 @@ func (s *GetTemplateSummaryResponse) SetStatusCode(v int32) *GetTemplateSummaryR
 }
 
 func (s *GetTemplateSummaryResponse) SetBody(v *GetTemplateSummaryResponseBody) *GetTemplateSummaryResponse {
+	s.Body = v
+	return s
+}
+
+type ListAITaskEventsRequest struct {
+	// example:
+	//
+	// 50
+	MaxResults *string `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// example:
+	//
+	// AAAAAdDWBF2****w==
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// example:
+	//
+	// t-asasas*****
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+}
+
+func (s ListAITaskEventsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAITaskEventsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListAITaskEventsRequest) SetMaxResults(v string) *ListAITaskEventsRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListAITaskEventsRequest) SetNextToken(v string) *ListAITaskEventsRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListAITaskEventsRequest) SetTaskId(v string) *ListAITaskEventsRequest {
+	s.TaskId = &v
+	return s
+}
+
+type ListAITaskEventsResponseBody struct {
+	// example:
+	//
+	// Forbidden
+	Code   *string                               `json:"Code,omitempty" xml:"Code,omitempty"`
+	Events []*ListAITaskEventsResponseBodyEvents `json:"Events,omitempty" xml:"Events,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// AAAAAdDWBF2****w==
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// example:
+	//
+	// B288A0BE-D927-4888-B0F7-B35EF84B6E6F
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// t-asasas*****
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// example:
+	//
+	// RUNNING
+	TaskStatus *string `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
+	// example:
+	//
+	// GenerateTemplate
+	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+}
+
+func (s ListAITaskEventsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAITaskEventsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListAITaskEventsResponseBody) SetCode(v string) *ListAITaskEventsResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListAITaskEventsResponseBody) SetEvents(v []*ListAITaskEventsResponseBodyEvents) *ListAITaskEventsResponseBody {
+	s.Events = v
+	return s
+}
+
+func (s *ListAITaskEventsResponseBody) SetHttpStatusCode(v int32) *ListAITaskEventsResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *ListAITaskEventsResponseBody) SetNextToken(v string) *ListAITaskEventsResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListAITaskEventsResponseBody) SetRequestId(v string) *ListAITaskEventsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListAITaskEventsResponseBody) SetSuccess(v string) *ListAITaskEventsResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *ListAITaskEventsResponseBody) SetTaskId(v string) *ListAITaskEventsResponseBody {
+	s.TaskId = &v
+	return s
+}
+
+func (s *ListAITaskEventsResponseBody) SetTaskStatus(v string) *ListAITaskEventsResponseBody {
+	s.TaskStatus = &v
+	return s
+}
+
+func (s *ListAITaskEventsResponseBody) SetTaskType(v string) *ListAITaskEventsResponseBody {
+	s.TaskType = &v
+	return s
+}
+
+type ListAITaskEventsResponseBodyEvents struct {
+	// example:
+	//
+	// GenerateTemplateAgent
+	AgentType *string `json:"AgentType,omitempty" xml:"AgentType,omitempty"`
+	// example:
+	//
+	// 2019-08-01T04:07:39
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// 60
+	EstimatedProcessingTime *string `json:"EstimatedProcessingTime,omitempty" xml:"EstimatedProcessingTime,omitempty"`
+	// example:
+	//
+	// Document template generator started.
+	EventData *string `json:"EventData,omitempty" xml:"EventData,omitempty"`
+	// example:
+	//
+	// RUNNING
+	HandlerProcessStatus *string `json:"HandlerProcessStatus,omitempty" xml:"HandlerProcessStatus,omitempty"`
+	// example:
+	//
+	// ROSTemplateGenerator
+	HandlerType *string `json:"HandlerType,omitempty" xml:"HandlerType,omitempty"`
+}
+
+func (s ListAITaskEventsResponseBodyEvents) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAITaskEventsResponseBodyEvents) GoString() string {
+	return s.String()
+}
+
+func (s *ListAITaskEventsResponseBodyEvents) SetAgentType(v string) *ListAITaskEventsResponseBodyEvents {
+	s.AgentType = &v
+	return s
+}
+
+func (s *ListAITaskEventsResponseBodyEvents) SetCreateTime(v string) *ListAITaskEventsResponseBodyEvents {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ListAITaskEventsResponseBodyEvents) SetEstimatedProcessingTime(v string) *ListAITaskEventsResponseBodyEvents {
+	s.EstimatedProcessingTime = &v
+	return s
+}
+
+func (s *ListAITaskEventsResponseBodyEvents) SetEventData(v string) *ListAITaskEventsResponseBodyEvents {
+	s.EventData = &v
+	return s
+}
+
+func (s *ListAITaskEventsResponseBodyEvents) SetHandlerProcessStatus(v string) *ListAITaskEventsResponseBodyEvents {
+	s.HandlerProcessStatus = &v
+	return s
+}
+
+func (s *ListAITaskEventsResponseBodyEvents) SetHandlerType(v string) *ListAITaskEventsResponseBodyEvents {
+	s.HandlerType = &v
+	return s
+}
+
+type ListAITaskEventsResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListAITaskEventsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListAITaskEventsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAITaskEventsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListAITaskEventsResponse) SetHeaders(v map[string]*string) *ListAITaskEventsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListAITaskEventsResponse) SetStatusCode(v int32) *ListAITaskEventsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListAITaskEventsResponse) SetBody(v *ListAITaskEventsResponseBody) *ListAITaskEventsResponse {
+	s.Body = v
+	return s
+}
+
+type ListAITasksRequest struct {
+	// example:
+	//
+	// 50
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// example:
+	//
+	// U12WEI6Ro2ol3wA54rBNS3Cltv2VJyA+7hP4GqbIOhmWU5mWU9ZE3cXLgDaH4KSMRfIYcIVrvtHaAzCoyfo7VQ==
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// example:
+	//
+	// t-asasas*****
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// example:
+	//
+	// GenerateTemplate
+	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+}
+
+func (s ListAITasksRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAITasksRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListAITasksRequest) SetMaxResults(v int32) *ListAITasksRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListAITasksRequest) SetNextToken(v string) *ListAITasksRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListAITasksRequest) SetTaskId(v string) *ListAITasksRequest {
+	s.TaskId = &v
+	return s
+}
+
+func (s *ListAITasksRequest) SetTaskType(v string) *ListAITasksRequest {
+	s.TaskType = &v
+	return s
+}
+
+type ListAITasksResponseBody struct {
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// You are not authorized to complete this action.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// U12WEI6Ro2ol3wA54rBNS3Cltv2VJyA+7hP4GqbIOhmWU5mWU9ZE3cXLgDaH4KSMRfIYcIVrvtHaAzCoyfo7VQ==
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// example:
+	//
+	// B288A0BE-D927-4888-B0F7-B35EF84****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *string                         `json:"Success,omitempty" xml:"Success,omitempty"`
+	Tasks   []*ListAITasksResponseBodyTasks `json:"Tasks,omitempty" xml:"Tasks,omitempty" type:"Repeated"`
+}
+
+func (s ListAITasksResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAITasksResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListAITasksResponseBody) SetHttpStatusCode(v int32) *ListAITasksResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *ListAITasksResponseBody) SetMessage(v string) *ListAITasksResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListAITasksResponseBody) SetNextToken(v string) *ListAITasksResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListAITasksResponseBody) SetRequestId(v string) *ListAITasksResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListAITasksResponseBody) SetSuccess(v string) *ListAITasksResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *ListAITasksResponseBody) SetTasks(v []*ListAITasksResponseBodyTasks) *ListAITasksResponseBody {
+	s.Tasks = v
+	return s
+}
+
+type ListAITasksResponseBodyTasks struct {
+	// example:
+	//
+	// 2023-03-15T03:15:53
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Prompt     *string `json:"Prompt,omitempty" xml:"Prompt,omitempty"`
+	// example:
+	//
+	// RUNNING
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// Handler execution unexpected failure
+	StatusReason *string `json:"StatusReason,omitempty" xml:"StatusReason,omitempty"`
+	// example:
+	//
+	// t-asasas*****
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// example:
+	//
+	// GenerateTemplate
+	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+	// example:
+	//
+	// 2023-11-20T22:00:50
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+}
+
+func (s ListAITasksResponseBodyTasks) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAITasksResponseBodyTasks) GoString() string {
+	return s.String()
+}
+
+func (s *ListAITasksResponseBodyTasks) SetCreateTime(v string) *ListAITasksResponseBodyTasks {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ListAITasksResponseBodyTasks) SetPrompt(v string) *ListAITasksResponseBodyTasks {
+	s.Prompt = &v
+	return s
+}
+
+func (s *ListAITasksResponseBodyTasks) SetStatus(v string) *ListAITasksResponseBodyTasks {
+	s.Status = &v
+	return s
+}
+
+func (s *ListAITasksResponseBodyTasks) SetStatusReason(v string) *ListAITasksResponseBodyTasks {
+	s.StatusReason = &v
+	return s
+}
+
+func (s *ListAITasksResponseBodyTasks) SetTaskId(v string) *ListAITasksResponseBodyTasks {
+	s.TaskId = &v
+	return s
+}
+
+func (s *ListAITasksResponseBodyTasks) SetTaskType(v string) *ListAITasksResponseBodyTasks {
+	s.TaskType = &v
+	return s
+}
+
+func (s *ListAITasksResponseBodyTasks) SetUpdateTime(v string) *ListAITasksResponseBodyTasks {
+	s.UpdateTime = &v
+	return s
+}
+
+type ListAITasksResponse struct {
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListAITasksResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListAITasksResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAITasksResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListAITasksResponse) SetHeaders(v map[string]*string) *ListAITasksResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListAITasksResponse) SetStatusCode(v int32) *ListAITasksResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListAITasksResponse) SetBody(v *ListAITasksResponseBody) *ListAITasksResponse {
 	s.Body = v
 	return s
 }
@@ -25803,6 +26540,80 @@ func (client *Client) ContinueCreateStack(request *ContinueCreateStackRequest) (
 
 // Summary:
 //
+// 创建AI任务
+//
+// @param request - CreateAITaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateAITaskResponse
+func (client *Client) CreateAITaskWithOptions(request *CreateAITaskRequest, runtime *util.RuntimeOptions) (_result *CreateAITaskResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Prompt)) {
+		query["Prompt"] = request.Prompt
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskType)) {
+		query["TaskType"] = request.TaskType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateType)) {
+		query["TemplateType"] = request.TemplateType
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Template)) {
+		body["Template"] = request.Template
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateAITask"),
+		Version:     tea.String("2019-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateAITaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建AI任务
+//
+// @param request - CreateAITaskRequest
+//
+// @return CreateAITaskResponse
+func (client *Client) CreateAITask(request *CreateAITaskRequest) (_result *CreateAITaskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateAITaskResponse{}
+	_body, _err := client.CreateAITaskWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Creates a change set for a stack. You can view proposed changes before you execute the change set.
 //
 // Description:
@@ -28005,6 +28816,70 @@ func (client *Client) GenerateTemplatePolicy(request *GenerateTemplatePolicyRequ
 
 // Summary:
 //
+// 查询指定AI任务信息
+//
+// @param request - GetAITaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAITaskResponse
+func (client *Client) GetAITaskWithOptions(request *GetAITaskRequest, runtime *util.RuntimeOptions) (_result *GetAITaskResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.OutputOption)) {
+		query["OutputOption"] = request.OutputOption
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskId)) {
+		query["TaskId"] = request.TaskId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetAITask"),
+		Version:     tea.String("2019-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetAITaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询指定AI任务信息
+//
+// @param request - GetAITaskRequest
+//
+// @return GetAITaskResponse
+func (client *Client) GetAITask(request *GetAITaskRequest) (_result *GetAITaskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetAITaskResponse{}
+	_body, _err := client.GetAITaskWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries change sets. You can determine whether to query the templates of change sets.
 //
 // Description:
@@ -29792,6 +30667,146 @@ func (client *Client) GetTemplateSummary(request *GetTemplateSummaryRequest) (_r
 	runtime := &util.RuntimeOptions{}
 	_result = &GetTemplateSummaryResponse{}
 	_body, _err := client.GetTemplateSummaryWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取指定AITask事件列表
+//
+// @param request - ListAITaskEventsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListAITaskEventsResponse
+func (client *Client) ListAITaskEventsWithOptions(request *ListAITaskEventsRequest, runtime *util.RuntimeOptions) (_result *ListAITaskEventsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskId)) {
+		query["TaskId"] = request.TaskId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListAITaskEvents"),
+		Version:     tea.String("2019-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListAITaskEventsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取指定AITask事件列表
+//
+// @param request - ListAITaskEventsRequest
+//
+// @return ListAITaskEventsResponse
+func (client *Client) ListAITaskEvents(request *ListAITaskEventsRequest) (_result *ListAITaskEventsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListAITaskEventsResponse{}
+	_body, _err := client.ListAITaskEventsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询AI任务列表
+//
+// @param request - ListAITasksRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListAITasksResponse
+func (client *Client) ListAITasksWithOptions(request *ListAITasksRequest, runtime *util.RuntimeOptions) (_result *ListAITasksResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskId)) {
+		query["TaskId"] = request.TaskId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskType)) {
+		query["TaskType"] = request.TaskType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListAITasks"),
+		Version:     tea.String("2019-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListAITasksResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询AI任务列表
+//
+// @param request - ListAITasksRequest
+//
+// @return ListAITasksResponse
+func (client *Client) ListAITasks(request *ListAITasksRequest) (_result *ListAITasksResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListAITasksResponse{}
+	_body, _err := client.ListAITasksWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
