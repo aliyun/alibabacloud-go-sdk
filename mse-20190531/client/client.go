@@ -1753,38 +1753,29 @@ type AddGatewayRequest struct {
 	//
 	// zh
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	// The billing method.
+	// The billing method you specify when you purchase an ordinary instance.
 	//
 	// Valid values:
 	//
-	// 	- PREPAY
+	// 	- PREPAY: subscription
 	//
-	//     <!-- -->
-	//
-	//     :
-	//
-	//     <!-- -->
-	//
-	//     the subscription billing method
-	//
-	//     <!-- -->
-	//
-	// 	- POSTPAY
-	//
-	//     <!-- -->
-	//
-	//     :
-	//
-	//     <!-- -->
-	//
-	//     the pay-as-you-go billing method
-	//
-	//     <!-- -->
+	// 	- POSTPAY: pay-as-you-go
 	//
 	// example:
 	//
 	// POSTPAY
-	ChargeType     *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	// The network type of the purchased Classic Load Balancer (CLB) instance that is billed based on LCUs.
+	//
+	// 	- pubnet: Internet
+	//
+	// 	- privatenet: private network
+	//
+	// 	- privatepubnet: Internet and private network
+	//
+	// example:
+	//
+	// pubnet
 	ClbNetworkType *string `json:"ClbNetworkType,omitempty" xml:"ClbNetworkType,omitempty"`
 	// Specifies whether to activate Tracing Analysis.
 	//
@@ -1810,7 +1801,19 @@ type AddGatewayRequest struct {
 	//
 	// false
 	EnterpriseSecurityGroup *bool `json:"EnterpriseSecurityGroup,omitempty" xml:"EnterpriseSecurityGroup,omitempty"`
-	// The ID of the secondary vSwitch.
+	// The specifications of the Internet-facing Server Load Balancer (SLB) instance. Valid values:
+	//
+	// 	- slb.s1.small
+	//
+	// 	- slb.s2.smal
+	//
+	// 	- slb.s2.medium
+	//
+	// 	- slb.s3.small
+	//
+	// 	- slb.s3.medium
+	//
+	// 	- slb.s3.large
 	//
 	// example:
 	//
@@ -1818,9 +1821,9 @@ type AddGatewayRequest struct {
 	InternetSlbSpec *string `json:"InternetSlbSpec,omitempty" xml:"InternetSlbSpec,omitempty"`
 	// The MSE instance type. Valid values:
 	//
-	// 	- mse_pro: ordinary instance.
+	// 	- mse_pro: ordinary instance
 	//
-	// 	- mse_serverless: serverless instance.
+	// 	- mse_serverless: serverless instance
 	//
 	// example:
 	//
@@ -1832,13 +1835,13 @@ type AddGatewayRequest struct {
 	//
 	// test-ceshi
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The network type of the Network Load Balancer (NLB) instance when the serverless NLB instance is purchased. Valid values:
+	// The network type of the Network Load Balancer (NLB) instance you specify when you purchase a serverless instance.
 	//
-	// 	- pubnet
+	// 	- pubnet: Internet
 	//
-	// 	- privatenet
+	// 	- privatenet: private network
 	//
-	// 	- privatepubnet
+	// 	- privatepubnet: Internet and private network
 	//
 	// example:
 	//
@@ -1864,7 +1867,7 @@ type AddGatewayRequest struct {
 	//
 	// cn-hangzhou
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// The number of nodes.
+	// The number of nodes you specify when you purchase an ordinary instance.
 	//
 	// example:
 	//
@@ -1904,7 +1907,7 @@ type AddGatewayRequest struct {
 	//
 	// slb.s2.small
 	SlbSpec *string `json:"SlbSpec,omitempty" xml:"SlbSpec,omitempty"`
-	// The node specifications. Valid values:
+	// The node specifications you specify when you purchase an ordinary instance. Valid values:
 	//
 	// 	- MSE_GTW_16_32_200_c(16C32G)
 	//
@@ -2150,38 +2153,29 @@ type AddGatewayShrinkRequest struct {
 	//
 	// zh
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	// The billing method.
+	// The billing method you specify when you purchase an ordinary instance.
 	//
 	// Valid values:
 	//
-	// 	- PREPAY
+	// 	- PREPAY: subscription
 	//
-	//     <!-- -->
-	//
-	//     :
-	//
-	//     <!-- -->
-	//
-	//     the subscription billing method
-	//
-	//     <!-- -->
-	//
-	// 	- POSTPAY
-	//
-	//     <!-- -->
-	//
-	//     :
-	//
-	//     <!-- -->
-	//
-	//     the pay-as-you-go billing method
-	//
-	//     <!-- -->
+	// 	- POSTPAY: pay-as-you-go
 	//
 	// example:
 	//
 	// POSTPAY
-	ChargeType     *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	// The network type of the purchased Classic Load Balancer (CLB) instance that is billed based on LCUs.
+	//
+	// 	- pubnet: Internet
+	//
+	// 	- privatenet: private network
+	//
+	// 	- privatepubnet: Internet and private network
+	//
+	// example:
+	//
+	// pubnet
 	ClbNetworkType *string `json:"ClbNetworkType,omitempty" xml:"ClbNetworkType,omitempty"`
 	// Specifies whether to activate Tracing Analysis.
 	//
@@ -2207,7 +2201,19 @@ type AddGatewayShrinkRequest struct {
 	//
 	// false
 	EnterpriseSecurityGroup *bool `json:"EnterpriseSecurityGroup,omitempty" xml:"EnterpriseSecurityGroup,omitempty"`
-	// The ID of the secondary vSwitch.
+	// The specifications of the Internet-facing Server Load Balancer (SLB) instance. Valid values:
+	//
+	// 	- slb.s1.small
+	//
+	// 	- slb.s2.smal
+	//
+	// 	- slb.s2.medium
+	//
+	// 	- slb.s3.small
+	//
+	// 	- slb.s3.medium
+	//
+	// 	- slb.s3.large
 	//
 	// example:
 	//
@@ -2215,9 +2221,9 @@ type AddGatewayShrinkRequest struct {
 	InternetSlbSpec *string `json:"InternetSlbSpec,omitempty" xml:"InternetSlbSpec,omitempty"`
 	// The MSE instance type. Valid values:
 	//
-	// 	- mse_pro: ordinary instance.
+	// 	- mse_pro: ordinary instance
 	//
-	// 	- mse_serverless: serverless instance.
+	// 	- mse_serverless: serverless instance
 	//
 	// example:
 	//
@@ -2229,13 +2235,13 @@ type AddGatewayShrinkRequest struct {
 	//
 	// test-ceshi
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The network type of the Network Load Balancer (NLB) instance when the serverless NLB instance is purchased. Valid values:
+	// The network type of the Network Load Balancer (NLB) instance you specify when you purchase a serverless instance.
 	//
-	// 	- pubnet
+	// 	- pubnet: Internet
 	//
-	// 	- privatenet
+	// 	- privatenet: private network
 	//
-	// 	- privatepubnet
+	// 	- privatepubnet: Internet and private network
 	//
 	// example:
 	//
@@ -2261,7 +2267,7 @@ type AddGatewayShrinkRequest struct {
 	//
 	// cn-hangzhou
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// The number of nodes.
+	// The number of nodes you specify when you purchase an ordinary instance.
 	//
 	// example:
 	//
@@ -2301,7 +2307,7 @@ type AddGatewayShrinkRequest struct {
 	//
 	// slb.s2.small
 	SlbSpec *string `json:"SlbSpec,omitempty" xml:"SlbSpec,omitempty"`
-	// The node specifications. Valid values:
+	// The node specifications you specify when you purchase an ordinary instance. Valid values:
 	//
 	// 	- MSE_GTW_16_32_200_c(16C32G)
 	//
@@ -9083,8 +9089,25 @@ type CreateCircuitBreakerRuleRequest struct {
 	// example:
 	//
 	// /a
-	Resource     *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
-	ResourceType *int32  `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	Resource *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
+	// The resource type.
+	//
+	// Valid values:
+	//
+	// 	- 0: custom interface
+	//
+	// 	- 1: web
+	//
+	// 	- 2: RPC
+	//
+	// 	- 3: route
+	//
+	// 	- 4: SQL
+	//
+	// example:
+	//
+	// 0
+	ResourceType *int32 `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	// The period in which circuit breaking is implemented. Unit: milliseconds. If circuit breaking is implemented on the requests for the route, the calls to all the requests for the route fail in the configured circuit breaking period. The value must be an integral multiple of 1,000. Default value: 10000. This value indicates 10 seconds.
 	//
 	// example:
@@ -10374,29 +10397,9 @@ type CreateFlowRuleRequest struct {
 	//
 	// Valid values:
 	//
-	// 	- 0
+	// 	- 0: fast failure
 	//
-	//     <!-- -->
-	//
-	//     :
-	//
-	//     <!-- -->
-	//
-	//     fast failure
-	//
-	//     <!-- -->
-	//
-	// 	- 2
-	//
-	//     <!-- -->
-	//
-	//     :
-	//
-	//     <!-- -->
-	//
-	//     in queue
-	//
-	//     <!-- -->
+	// 	- 2: in queue
 	//
 	// example:
 	//
@@ -11043,60 +11046,96 @@ func (s *CreateGatewayCircuitBreakerRuleResponse) SetBody(v *CreateGatewayCircui
 }
 
 type CreateGatewayFlowRuleRequest struct {
+	// The language in which you want to display the results. Valid values: zh and en. zh indicates Chinese, which is the default value. en indicates English.
+	//
 	// example:
 	//
 	// zh
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// The type of the web fallback behavior.
+	//
+	// 0: returns the specified content.
+	//
+	// 1: redirects to the specified page.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 0
 	BehaviorType *int32 `json:"BehaviorType,omitempty" xml:"BehaviorType,omitempty"`
+	// The encoding format.
+	//
+	// 0: normal text
+	//
+	// 1: JSON
+	//
 	// example:
 	//
 	// 0
 	BodyEncoding *int32 `json:"BodyEncoding,omitempty" xml:"BodyEncoding,omitempty"`
+	// Specifies whether to enable the throttling rule.
+	//
+	// 0: disables the throttling rule.
+	//
+	// 1: enables the throttling rule.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 0
 	Enable *int32 `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// The ID of the gateway.
+	//
 	// example:
 	//
 	// 14407
 	GatewayId *int64 `json:"GatewayId,omitempty" xml:"GatewayId,omitempty"`
+	// The unique ID of the gateway.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// gw-e2d226bba4b2445c9e29fa7f8216****
 	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
+	// The HTTP text to be returned.
+	//
 	// example:
 	//
 	// text
 	ResponseContentBody *string `json:"ResponseContentBody,omitempty" xml:"ResponseContentBody,omitempty"`
+	// The address to be redirected to.
+	//
 	// example:
 	//
 	// www.******.com
 	ResponseRedirectUrl *string `json:"ResponseRedirectUrl,omitempty" xml:"ResponseRedirectUrl,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 429
 	ResponseStatusCode *int32 `json:"ResponseStatusCode,omitempty" xml:"ResponseStatusCode,omitempty"`
+	// The ID of the route.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 52853
 	RouteId *int64 `json:"RouteId,omitempty" xml:"RouteId,omitempty"`
+	// The name of the routing rule.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// routeName
 	RouteName *string `json:"RouteName,omitempty" xml:"RouteName,omitempty"`
+	// The overall queries per second (QPS) threshold.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -11174,10 +11213,14 @@ func (s *CreateGatewayFlowRuleRequest) SetThreshold(v int32) *CreateGatewayFlowR
 }
 
 type CreateGatewayFlowRuleResponseBody struct {
+	// The ID of the rule.
+	//
 	// example:
 	//
 	// 608
 	Data *int64 `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 72FC625E-9629-591B-9C01-3F0BFDAB****
@@ -14320,6 +14363,234 @@ func (s *CreateOrUpdateSwimmingLaneGroupResponse) SetStatusCode(v int32) *Create
 }
 
 func (s *CreateOrUpdateSwimmingLaneGroupResponse) SetBody(v *CreateOrUpdateSwimmingLaneGroupResponseBody) *CreateOrUpdateSwimmingLaneGroupResponse {
+	s.Body = v
+	return s
+}
+
+type CreatePluginConfigRequest struct {
+	// example:
+	//
+	// zh
+	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// example:
+	//
+	// status_code: 200
+	//
+	// headers:
+	//
+	// - Content-Type=application/json
+	//
+	// body: "{\\"rule\\": \\"global\\"}"
+	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	ConfigLevel *int32 `json:"ConfigLevel,omitempty" xml:"ConfigLevel,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// true
+	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// gw-ubuwqygbq4783gqb2y3f87q****
+	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 20
+	PluginId       *int64   `json:"PluginId,omitempty" xml:"PluginId,omitempty"`
+	ResourceIdList []*int64 `json:"ResourceIdList,omitempty" xml:"ResourceIdList,omitempty" type:"Repeated"`
+}
+
+func (s CreatePluginConfigRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreatePluginConfigRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreatePluginConfigRequest) SetAcceptLanguage(v string) *CreatePluginConfigRequest {
+	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *CreatePluginConfigRequest) SetConfig(v string) *CreatePluginConfigRequest {
+	s.Config = &v
+	return s
+}
+
+func (s *CreatePluginConfigRequest) SetConfigLevel(v int32) *CreatePluginConfigRequest {
+	s.ConfigLevel = &v
+	return s
+}
+
+func (s *CreatePluginConfigRequest) SetEnable(v bool) *CreatePluginConfigRequest {
+	s.Enable = &v
+	return s
+}
+
+func (s *CreatePluginConfigRequest) SetGatewayUniqueId(v string) *CreatePluginConfigRequest {
+	s.GatewayUniqueId = &v
+	return s
+}
+
+func (s *CreatePluginConfigRequest) SetPluginId(v int64) *CreatePluginConfigRequest {
+	s.PluginId = &v
+	return s
+}
+
+func (s *CreatePluginConfigRequest) SetResourceIdList(v []*int64) *CreatePluginConfigRequest {
+	s.ResourceIdList = v
+	return s
+}
+
+type CreatePluginConfigShrinkRequest struct {
+	// example:
+	//
+	// zh
+	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// example:
+	//
+	// status_code: 200
+	//
+	// headers:
+	//
+	// - Content-Type=application/json
+	//
+	// body: "{\\"rule\\": \\"global\\"}"
+	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	ConfigLevel *int32 `json:"ConfigLevel,omitempty" xml:"ConfigLevel,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// true
+	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// gw-ubuwqygbq4783gqb2y3f87q****
+	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 20
+	PluginId             *int64  `json:"PluginId,omitempty" xml:"PluginId,omitempty"`
+	ResourceIdListShrink *string `json:"ResourceIdList,omitempty" xml:"ResourceIdList,omitempty"`
+}
+
+func (s CreatePluginConfigShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreatePluginConfigShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreatePluginConfigShrinkRequest) SetAcceptLanguage(v string) *CreatePluginConfigShrinkRequest {
+	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *CreatePluginConfigShrinkRequest) SetConfig(v string) *CreatePluginConfigShrinkRequest {
+	s.Config = &v
+	return s
+}
+
+func (s *CreatePluginConfigShrinkRequest) SetConfigLevel(v int32) *CreatePluginConfigShrinkRequest {
+	s.ConfigLevel = &v
+	return s
+}
+
+func (s *CreatePluginConfigShrinkRequest) SetEnable(v bool) *CreatePluginConfigShrinkRequest {
+	s.Enable = &v
+	return s
+}
+
+func (s *CreatePluginConfigShrinkRequest) SetGatewayUniqueId(v string) *CreatePluginConfigShrinkRequest {
+	s.GatewayUniqueId = &v
+	return s
+}
+
+func (s *CreatePluginConfigShrinkRequest) SetPluginId(v int64) *CreatePluginConfigShrinkRequest {
+	s.PluginId = &v
+	return s
+}
+
+func (s *CreatePluginConfigShrinkRequest) SetResourceIdListShrink(v string) *CreatePluginConfigShrinkRequest {
+	s.ResourceIdListShrink = &v
+	return s
+}
+
+type CreatePluginConfigResponseBody struct {
+	// example:
+	//
+	// 10
+	PluginConfigID *int64 `json:"PluginConfigID,omitempty" xml:"PluginConfigID,omitempty"`
+	// example:
+	//
+	// 03A3E2F4-6804-5663-9D5D-2EC47A1*****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreatePluginConfigResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreatePluginConfigResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreatePluginConfigResponseBody) SetPluginConfigID(v int64) *CreatePluginConfigResponseBody {
+	s.PluginConfigID = &v
+	return s
+}
+
+func (s *CreatePluginConfigResponseBody) SetRequestId(v string) *CreatePluginConfigResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreatePluginConfigResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreatePluginConfigResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreatePluginConfigResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreatePluginConfigResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreatePluginConfigResponse) SetHeaders(v map[string]*string) *CreatePluginConfigResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreatePluginConfigResponse) SetStatusCode(v int32) *CreatePluginConfigResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreatePluginConfigResponse) SetBody(v *CreatePluginConfigResponseBody) *CreatePluginConfigResponse {
 	s.Body = v
 	return s
 }
@@ -19122,6 +19393,97 @@ func (s *DeleteNamespaceResponse) SetBody(v *DeleteNamespaceResponseBody) *Delet
 	return s
 }
 
+type DeletePluginConfigRequest struct {
+	// example:
+	//
+	// zh
+	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// gw-e2d226bba4b2445c9e29fa7f8216****
+	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 200
+	PluginConfigId *int64 `json:"PluginConfigId,omitempty" xml:"PluginConfigId,omitempty"`
+}
+
+func (s DeletePluginConfigRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeletePluginConfigRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeletePluginConfigRequest) SetAcceptLanguage(v string) *DeletePluginConfigRequest {
+	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *DeletePluginConfigRequest) SetGatewayUniqueId(v string) *DeletePluginConfigRequest {
+	s.GatewayUniqueId = &v
+	return s
+}
+
+func (s *DeletePluginConfigRequest) SetPluginConfigId(v int64) *DeletePluginConfigRequest {
+	s.PluginConfigId = &v
+	return s
+}
+
+type DeletePluginConfigResponseBody struct {
+	// example:
+	//
+	// DC34E4A3-5F1C-4E40-86EA-02EDF967****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeletePluginConfigResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeletePluginConfigResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeletePluginConfigResponseBody) SetRequestId(v string) *DeletePluginConfigResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeletePluginConfigResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeletePluginConfigResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeletePluginConfigResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeletePluginConfigResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeletePluginConfigResponse) SetHeaders(v map[string]*string) *DeletePluginConfigResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeletePluginConfigResponse) SetStatusCode(v int32) *DeletePluginConfigResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeletePluginConfigResponse) SetBody(v *DeletePluginConfigResponseBody) *DeletePluginConfigResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteSecurityGroupRuleRequest struct {
 	// The language of the response. Valid values:
 	//
@@ -20081,17 +20443,224 @@ func (s *DeleteZnodeResponse) SetBody(v *DeleteZnodeResponseBody) *DeleteZnodeRe
 	return s
 }
 
-type EnableProxyProtocolRequest struct {
+type EnableHttp2Request struct {
+	// The language in which you want to display the results. Valid values: zh and en. zh indicates Chinese, which is the default value. en indicates English.
+	//
 	// example:
 	//
 	// zh
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// Specifies whether to enable HTTP/2 for negotiation between the server and client. This parameter applies to requests. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// true
+	EnableHttp2 *bool `json:"EnableHttp2,omitempty" xml:"EnableHttp2,omitempty"`
+	// The unique ID of the gateway.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// gw-0adf3ad751284cc69fcf9669fba*****
+	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
+}
+
+func (s EnableHttp2Request) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EnableHttp2Request) GoString() string {
+	return s.String()
+}
+
+func (s *EnableHttp2Request) SetAcceptLanguage(v string) *EnableHttp2Request {
+	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *EnableHttp2Request) SetEnableHttp2(v bool) *EnableHttp2Request {
+	s.EnableHttp2 = &v
+	return s
+}
+
+func (s *EnableHttp2Request) SetGatewayUniqueId(v string) *EnableHttp2Request {
+	s.GatewayUniqueId = &v
+	return s
+}
+
+type EnableHttp2ResponseBody struct {
+	// The status code. A value of 200 is returned if the request is successful.
+	//
+	// example:
+	//
+	// 200
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Indicates whether HTTP/2 is enabled.
+	//
+	// example:
+	//
+	// true
+	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The dynamic part in the error message.
+	//
+	// example:
+	//
+	// code
+	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
+	// The dynamic part in the error message. This parameter is used to replace the \\*\\*%s\\*\\	- variable in the **ErrMessage*	- parameter.
+	//
+	// >  The request parameter **DtsJobId*	- is invalid if **The Value of Input Parameter %s is not valid*	- is returned for **ErrMessage*	- and **DtsJobId*	- is returned for **DynamicMessage**.
+	//
+	// example:
+	//
+	// The specified parameter is invalid.
+	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
+	// The status code.
+	//
+	// example:
+	//
+	// Success
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The HTTP status code.
+	//
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The message returned.
+	//
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 52BA6DA6-A702-4362-A32F-DFF79655****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- `true`
+	//
+	// 	- `false`
+	//
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s EnableHttp2ResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EnableHttp2ResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *EnableHttp2ResponseBody) SetCode(v int32) *EnableHttp2ResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *EnableHttp2ResponseBody) SetData(v bool) *EnableHttp2ResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *EnableHttp2ResponseBody) SetDynamicCode(v string) *EnableHttp2ResponseBody {
+	s.DynamicCode = &v
+	return s
+}
+
+func (s *EnableHttp2ResponseBody) SetDynamicMessage(v string) *EnableHttp2ResponseBody {
+	s.DynamicMessage = &v
+	return s
+}
+
+func (s *EnableHttp2ResponseBody) SetErrorCode(v string) *EnableHttp2ResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *EnableHttp2ResponseBody) SetHttpStatusCode(v int32) *EnableHttp2ResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *EnableHttp2ResponseBody) SetMessage(v string) *EnableHttp2ResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *EnableHttp2ResponseBody) SetRequestId(v string) *EnableHttp2ResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *EnableHttp2ResponseBody) SetSuccess(v bool) *EnableHttp2ResponseBody {
+	s.Success = &v
+	return s
+}
+
+type EnableHttp2Response struct {
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *EnableHttp2ResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s EnableHttp2Response) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EnableHttp2Response) GoString() string {
+	return s.String()
+}
+
+func (s *EnableHttp2Response) SetHeaders(v map[string]*string) *EnableHttp2Response {
+	s.Headers = v
+	return s
+}
+
+func (s *EnableHttp2Response) SetStatusCode(v int32) *EnableHttp2Response {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *EnableHttp2Response) SetBody(v *EnableHttp2ResponseBody) *EnableHttp2Response {
+	s.Body = v
+	return s
+}
+
+type EnableProxyProtocolRequest struct {
+	// The language in which you want to display the results. Valid values: zh and en. zh indicates Chinese, which is the default value. en indicates English.
+	//
+	// example:
+	//
+	// zh
+	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// Specifies whether to use the proxy protocol to preserve client IP addresses. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false*	- (default)
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// true
 	EnableProxyProtocol *bool `json:"EnableProxyProtocol,omitempty" xml:"EnableProxyProtocol,omitempty"`
+	// The unique ID of the gateway.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -20124,38 +20693,62 @@ func (s *EnableProxyProtocolRequest) SetGatewayUniqueId(v string) *EnableProxyPr
 }
 
 type EnableProxyProtocolResponseBody struct {
+	// The status code. A value of 200 is returned if the request is successful.
+	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
 	// example:
 	//
 	// true
 	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The dynamic part in the error message.
+	//
 	// example:
 	//
 	// code
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
+	// The dynamic part in the error message. This parameter is used to replace the **%s*	- variable in the **ErrMessage*	- parameter.
+	//
+	// >  For example, if the return value of the **ErrMessage*	- parameter is **The Value of Input Parameter %s is not valid*	- and the return value of the **DynamicMessage*	- parameter is **DtsJobId**, the **DtsJobId*	- parameter in the request is invalid.
+	//
 	// example:
 	//
 	// The specified parameter is invalid.
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
+	// The status code.
+	//
 	// example:
 	//
 	// Success
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The returned message.
+	//
 	// example:
 	//
 	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 316F5F64-F73D-42DC-8632-01E308B6****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- `true`: The request was successful.
+	//
+	// 	- `false`: The request failed.
+	//
 	// example:
 	//
 	// true
@@ -31333,7 +31926,7 @@ type GetServiceListenersRequest struct {
 	//
 	// The ID of the MSE instance to which the service belongs.
 	//
-	// > You must specify InstanceId or ClusterId.
+	// >  You must specify InstanceId or ClusterId.
 	//
 	// example:
 	//
@@ -33967,7 +34560,7 @@ type ListAnsServiceClustersRequest struct {
 	//
 	// The ID of the MSE cluster.
 	//
-	// > The MSE cluster is different from the cluster of the Nacos service.
+	// >  The MSE cluster is different from the cluster of the Nacos service.
 	//
 	// example:
 	//
@@ -48004,6 +48597,8 @@ func (s *ListGatewaySlbResponse) SetBody(v *ListGatewaySlbResponseBody) *ListGat
 }
 
 type ListGatewayZoneRequest struct {
+	// The language in which you want to display the results. Valid values: zh and en. zh indicates Chinese, which is the default value. en indicates English.
+	//
 	// example:
 	//
 	// zh
@@ -48024,35 +48619,56 @@ func (s *ListGatewayZoneRequest) SetAcceptLanguage(v string) *ListGatewayZoneReq
 }
 
 type ListGatewayZoneResponseBody struct {
+	// The response code. The status code 200 indicates that the request was successful.
+	//
 	// example:
 	//
 	// 200
-	Code *int32                             `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The queried zones.
 	Data []*ListGatewayZoneResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The dynamic part in the error message.
+	//
 	// example:
 	//
 	// code
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
+	// The dynamic part in the error message. This parameter is used to replace %s in **ErrMessage**.
+	//
 	// example:
 	//
 	// The specified parameter is invalid.
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
+	// The status code.
+	//
 	// example:
 	//
 	// NO_PERMISSION
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The message returned.
+	//
 	// example:
 	//
 	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// EE5C32A1-BC0E-4B79-817C-103E4EDF****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- `true`: The request was successful.
+	//
+	// 	- `false`: The request failed.
+	//
 	// example:
 	//
 	// true
@@ -48113,10 +48729,14 @@ func (s *ListGatewayZoneResponseBody) SetSuccess(v bool) *ListGatewayZoneRespons
 }
 
 type ListGatewayZoneResponseBodyData struct {
+	// The local name of the zone.
+	//
 	// example:
 	//
 	// I
 	LocalName *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
+	// The zone ID.
+	//
 	// example:
 	//
 	// cn-hangzhou-i
@@ -48912,7 +49532,8 @@ type ListListenersByConfigResponseBodyListeners struct {
 	// example:
 	//
 	// 1.1.1.1
-	Ip     *string            `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	// The label of the listener.
 	Labels map[string]*string `json:"Labels,omitempty" xml:"Labels,omitempty"`
 	// The verification string.
 	//
@@ -48925,7 +49546,12 @@ type ListListenersByConfigResponseBodyListeners struct {
 	// example:
 	//
 	// beta
-	Status  *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The current version of the listener. Valid values: gray and normal.
+	//
+	// example:
+	//
+	// gray
 	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
@@ -54015,6 +54641,203 @@ func (s *OrderClusterHealthCheckRiskNoticeResponse) SetBody(v *OrderClusterHealt
 	return s
 }
 
+type PreserveHeaderFormatRequest struct {
+	// The language in which you want to display the results. Valid values: zh and en. zh indicates Chinese, which is the default value. en indicates English.
+	//
+	// example:
+	//
+	// zh
+	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// The unique ID of the gateway.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// gw-3f97e2989c344f35ab3fd62b19f1****
+	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
+	// Specifies whether the request header is case-sensitive. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// true
+	PreserveHeaderFormat *bool `json:"PreserveHeaderFormat,omitempty" xml:"PreserveHeaderFormat,omitempty"`
+}
+
+func (s PreserveHeaderFormatRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PreserveHeaderFormatRequest) GoString() string {
+	return s.String()
+}
+
+func (s *PreserveHeaderFormatRequest) SetAcceptLanguage(v string) *PreserveHeaderFormatRequest {
+	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *PreserveHeaderFormatRequest) SetGatewayUniqueId(v string) *PreserveHeaderFormatRequest {
+	s.GatewayUniqueId = &v
+	return s
+}
+
+func (s *PreserveHeaderFormatRequest) SetPreserveHeaderFormat(v bool) *PreserveHeaderFormatRequest {
+	s.PreserveHeaderFormat = &v
+	return s
+}
+
+type PreserveHeaderFormatResponseBody struct {
+	// The status code. A value of 200 is returned if the request is successful.
+	//
+	// example:
+	//
+	// 200
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data.
+	//
+	// example:
+	//
+	// true
+	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The dynamic part in the error message.
+	//
+	// example:
+	//
+	// code
+	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
+	// The dynamic part in the error message. This parameter is used to replace the \\*\\*%s\\*\\	- variable in the **ErrMessage*	- parameter.
+	//
+	// >  The request parameter **DtsJobId*	- is invalid if **The Value of Input Parameter %s is not valid*	- is returned for **ErrMessage*	- and **DtsJobId*	- is returned for **DynamicMessage**.
+	//
+	// example:
+	//
+	// The specified parameter is invalid.
+	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
+	// The status code.
+	//
+	// example:
+	//
+	// Success
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The HTTP status code.
+	//
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The message returned.
+	//
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 69AD2AA7-DB47-449B-941B-B14409DF****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- `true`
+	//
+	// 	- `false`
+	//
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s PreserveHeaderFormatResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PreserveHeaderFormatResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *PreserveHeaderFormatResponseBody) SetCode(v int32) *PreserveHeaderFormatResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *PreserveHeaderFormatResponseBody) SetData(v bool) *PreserveHeaderFormatResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *PreserveHeaderFormatResponseBody) SetDynamicCode(v string) *PreserveHeaderFormatResponseBody {
+	s.DynamicCode = &v
+	return s
+}
+
+func (s *PreserveHeaderFormatResponseBody) SetDynamicMessage(v string) *PreserveHeaderFormatResponseBody {
+	s.DynamicMessage = &v
+	return s
+}
+
+func (s *PreserveHeaderFormatResponseBody) SetErrorCode(v string) *PreserveHeaderFormatResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *PreserveHeaderFormatResponseBody) SetHttpStatusCode(v int32) *PreserveHeaderFormatResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *PreserveHeaderFormatResponseBody) SetMessage(v string) *PreserveHeaderFormatResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *PreserveHeaderFormatResponseBody) SetRequestId(v string) *PreserveHeaderFormatResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *PreserveHeaderFormatResponseBody) SetSuccess(v bool) *PreserveHeaderFormatResponseBody {
+	s.Success = &v
+	return s
+}
+
+type PreserveHeaderFormatResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *PreserveHeaderFormatResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s PreserveHeaderFormatResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PreserveHeaderFormatResponse) GoString() string {
+	return s.String()
+}
+
+func (s *PreserveHeaderFormatResponse) SetHeaders(v map[string]*string) *PreserveHeaderFormatResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *PreserveHeaderFormatResponse) SetStatusCode(v int32) *PreserveHeaderFormatResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *PreserveHeaderFormatResponse) SetBody(v *PreserveHeaderFormatResponseBody) *PreserveHeaderFormatResponse {
+	s.Body = v
+	return s
+}
+
 type PullServicesRequest struct {
 	// The language of the response. Valid values:
 	//
@@ -57527,7 +58350,7 @@ type QueryConfigResponseBody struct {
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The details of the data.
+	// The data returned.
 	Data *QueryConfigResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The HTTP status code returned.
 	//
@@ -57598,6 +58421,7 @@ func (s *QueryConfigResponseBody) SetSuccess(v bool) *QueryConfigResponseBody {
 }
 
 type QueryConfigResponseBodyData struct {
+	// Indicates whether Simple Authentication and Security Layer (SASL) forced identity authentication is enabled for the ZooKeeper instance.
 	AuthEnabled *bool `json:"AuthEnabled,omitempty" xml:"AuthEnabled,omitempty"`
 	// A reserved parameter.
 	//
@@ -70469,11 +71293,11 @@ type UpdateGatewayRouteWafStatusResponseBodyDataRouteServices struct {
 	//
 	// b-service
 	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
-	// The source type.
+	// The source type of the service.
 	//
 	// example:
 	//
-	// K8S
+	// K8s
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
 	// The version of the service.
 	//
@@ -77721,7 +78545,7 @@ func (client *Client) CreateGatewayCircuitBreakerRule(request *CreateGatewayCirc
 
 // Summary:
 //
-// 创建网关路由流控规则
+// Creates a throttling rule for a gateway.
 //
 // @param request - CreateGatewayFlowRuleRequest
 //
@@ -77807,7 +78631,7 @@ func (client *Client) CreateGatewayFlowRuleWithOptions(request *CreateGatewayFlo
 
 // Summary:
 //
-// 创建网关路由流控规则
+// Creates a throttling rule for a gateway.
 //
 // @param request - CreateGatewayFlowRuleRequest
 //
@@ -78666,6 +79490,96 @@ func (client *Client) CreateOrUpdateSwimmingLaneGroup(request *CreateOrUpdateSwi
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateOrUpdateSwimmingLaneGroupResponse{}
 	_body, _err := client.CreateOrUpdateSwimmingLaneGroupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建插件配置
+//
+// @param tmpReq - CreatePluginConfigRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreatePluginConfigResponse
+func (client *Client) CreatePluginConfigWithOptions(tmpReq *CreatePluginConfigRequest, runtime *util.RuntimeOptions) (_result *CreatePluginConfigResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &CreatePluginConfigShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.ResourceIdList)) {
+		request.ResourceIdListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ResourceIdList, tea.String("ResourceIdList"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
+		query["AcceptLanguage"] = request.AcceptLanguage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Config)) {
+		query["Config"] = request.Config
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ConfigLevel)) {
+		query["ConfigLevel"] = request.ConfigLevel
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Enable)) {
+		query["Enable"] = request.Enable
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GatewayUniqueId)) {
+		query["GatewayUniqueId"] = request.GatewayUniqueId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PluginId)) {
+		query["PluginId"] = request.PluginId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceIdListShrink)) {
+		query["ResourceIdList"] = request.ResourceIdListShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreatePluginConfig"),
+		Version:     tea.String("2019-05-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreatePluginConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建插件配置
+//
+// @param request - CreatePluginConfigRequest
+//
+// @return CreatePluginConfigResponse
+func (client *Client) CreatePluginConfig(request *CreatePluginConfigRequest) (_result *CreatePluginConfigResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreatePluginConfigResponse{}
+	_body, _err := client.CreatePluginConfigWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -80445,6 +81359,74 @@ func (client *Client) DeleteNamespace(request *DeleteNamespaceRequest) (_result 
 
 // Summary:
 //
+// 删除插件配置
+//
+// @param request - DeletePluginConfigRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeletePluginConfigResponse
+func (client *Client) DeletePluginConfigWithOptions(request *DeletePluginConfigRequest, runtime *util.RuntimeOptions) (_result *DeletePluginConfigResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
+		query["AcceptLanguage"] = request.AcceptLanguage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GatewayUniqueId)) {
+		query["GatewayUniqueId"] = request.GatewayUniqueId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PluginConfigId)) {
+		query["PluginConfigId"] = request.PluginConfigId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeletePluginConfig"),
+		Version:     tea.String("2019-05-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeletePluginConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除插件配置
+//
+// @param request - DeletePluginConfigRequest
+//
+// @return DeletePluginConfigResponse
+func (client *Client) DeletePluginConfig(request *DeletePluginConfigRequest) (_result *DeletePluginConfigResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeletePluginConfigResponse{}
+	_body, _err := client.DeletePluginConfigWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Deletes a security group rule from a gateway.
 //
 // @param request - DeleteSecurityGroupRuleRequest
@@ -80797,7 +81779,75 @@ func (client *Client) DeleteZnode(request *DeleteZnodeRequest) (_result *DeleteZ
 
 // Summary:
 //
-// Proxy Protocol开关
+// Enables HTTP/2 for negotiation between the server and client. The modification takes effect in one to two minutes.
+//
+// @param request - EnableHttp2Request
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return EnableHttp2Response
+func (client *Client) EnableHttp2WithOptions(request *EnableHttp2Request, runtime *util.RuntimeOptions) (_result *EnableHttp2Response, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
+		query["AcceptLanguage"] = request.AcceptLanguage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnableHttp2)) {
+		query["EnableHttp2"] = request.EnableHttp2
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GatewayUniqueId)) {
+		query["GatewayUniqueId"] = request.GatewayUniqueId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("EnableHttp2"),
+		Version:     tea.String("2019-05-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &EnableHttp2Response{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Enables HTTP/2 for negotiation between the server and client. The modification takes effect in one to two minutes.
+//
+// @param request - EnableHttp2Request
+//
+// @return EnableHttp2Response
+func (client *Client) EnableHttp2(request *EnableHttp2Request) (_result *EnableHttp2Response, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &EnableHttp2Response{}
+	_body, _err := client.EnableHttp2WithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Enables the proxy protocol. When an NLB instance is used as an ingress, you cannot obtain the real IP address of the client if you do not enable the proxy protocol. After you enable the proxy protocol, non-proxy requests are not adversely affected.
 //
 // @param request - EnableProxyProtocolRequest
 //
@@ -80847,7 +81897,7 @@ func (client *Client) EnableProxyProtocolWithOptions(request *EnableProxyProtoco
 
 // Summary:
 //
-// Proxy Protocol开关
+// Enables the proxy protocol. When an NLB instance is used as an ingress, you cannot obtain the real IP address of the client if you do not enable the proxy protocol. After you enable the proxy protocol, non-proxy requests are not adversely affected.
 //
 // @param request - EnableProxyProtocolRequest
 //
@@ -86069,7 +87119,7 @@ func (client *Client) ListGatewaySlb(request *ListGatewaySlbRequest) (_result *L
 
 // Summary:
 //
-// 获取网关可用区列表
+// Obtains a list of zones where a gateway is available.
 //
 // @param request - ListGatewayZoneRequest
 //
@@ -86111,7 +87161,7 @@ func (client *Client) ListGatewayZoneWithOptions(request *ListGatewayZoneRequest
 
 // Summary:
 //
-// 获取网关可用区列表
+// Obtains a list of zones where a gateway is available.
 //
 // @param request - ListGatewayZoneRequest
 //
@@ -87722,6 +88772,74 @@ func (client *Client) OrderClusterHealthCheckRiskNotice(request *OrderClusterHea
 	runtime := &util.RuntimeOptions{}
 	_result = &OrderClusterHealthCheckRiskNoticeResponse{}
 	_body, _err := client.OrderClusterHealthCheckRiskNoticeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Specifies whether to convert all letters of a header into lowercase letters. For requests and responses, HTTP/1.1 headers are not case-sensitive. By default, all letters of headers are converted into lowercase letters.
+//
+// @param request - PreserveHeaderFormatRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return PreserveHeaderFormatResponse
+func (client *Client) PreserveHeaderFormatWithOptions(request *PreserveHeaderFormatRequest, runtime *util.RuntimeOptions) (_result *PreserveHeaderFormatResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
+		query["AcceptLanguage"] = request.AcceptLanguage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GatewayUniqueId)) {
+		query["GatewayUniqueId"] = request.GatewayUniqueId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PreserveHeaderFormat)) {
+		query["PreserveHeaderFormat"] = request.PreserveHeaderFormat
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("PreserveHeaderFormat"),
+		Version:     tea.String("2019-05-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &PreserveHeaderFormatResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Specifies whether to convert all letters of a header into lowercase letters. For requests and responses, HTTP/1.1 headers are not case-sensitive. By default, all letters of headers are converted into lowercase letters.
+//
+// @param request - PreserveHeaderFormatRequest
+//
+// @return PreserveHeaderFormatResponse
+func (client *Client) PreserveHeaderFormat(request *PreserveHeaderFormatRequest) (_result *PreserveHeaderFormatResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &PreserveHeaderFormatResponse{}
+	_body, _err := client.PreserveHeaderFormatWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -91947,7 +93065,7 @@ func (client *Client) UpdateGatewayRouteTimeout(request *UpdateGatewayRouteTimeo
 
 // Summary:
 //
-// 更新路由waf状态
+// Updates the WAF status of a route.
 //
 // @param request - UpdateGatewayRouteWafStatusRequest
 //
@@ -92001,7 +93119,7 @@ func (client *Client) UpdateGatewayRouteWafStatusWithOptions(request *UpdateGate
 
 // Summary:
 //
-// 更新路由waf状态
+// Updates the WAF status of a route.
 //
 // @param request - UpdateGatewayRouteWafStatusRequest
 //
