@@ -4371,7 +4371,8 @@ type ListInstancesRequest struct {
 	// example:
 	//
 	// rg-acfmx7caj******
-	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
+	ResourceGroupId *string   `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
+	SeriesCodes     []*string `json:"seriesCodes,omitempty" xml:"seriesCodes,omitempty" type:"Repeated"`
 	// The tags that are used to filter instances.
 	//
 	// example:
@@ -4408,7 +4409,92 @@ func (s *ListInstancesRequest) SetResourceGroupId(v string) *ListInstancesReques
 	return s
 }
 
+func (s *ListInstancesRequest) SetSeriesCodes(v []*string) *ListInstancesRequest {
+	s.SeriesCodes = v
+	return s
+}
+
 func (s *ListInstancesRequest) SetTags(v string) *ListInstancesRequest {
+	s.Tags = &v
+	return s
+}
+
+type ListInstancesShrinkRequest struct {
+	// The filter condition that is used to query instances. If you do not configure this parameter, all instances are queried.
+	//
+	// example:
+	//
+	// rmq-cn-7e22ody****
+	Filter *string `json:"filter,omitempty" xml:"filter,omitempty"`
+	// The number of the page to return.
+	//
+	// Valid values: 1 to 100000000.
+	//
+	// If the value that you specify for this parameter is less than 1, the system uses 1 as the value. If the value that you specify for this parameter is greater than 100000000, the system uses 100000000 as the value.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// The number of entries returned on each page.
+	//
+	// Valid values: 10 to 200.
+	//
+	// If the value that you specify for this parameter is less than 10, the system uses 10 as the value. If the value that you specify for this parameter is greater than 200, the system uses 200 as the value.
+	//
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// The ID of the resource group to which the instance belongs.
+	//
+	// example:
+	//
+	// rg-acfmx7caj******
+	ResourceGroupId   *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
+	SeriesCodesShrink *string `json:"seriesCodes,omitempty" xml:"seriesCodes,omitempty"`
+	// The tags that are used to filter instances.
+	//
+	// example:
+	//
+	// [{"key": "rmq-test", "value": "test"}]
+	Tags *string `json:"tags,omitempty" xml:"tags,omitempty"`
+}
+
+func (s ListInstancesShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListInstancesShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListInstancesShrinkRequest) SetFilter(v string) *ListInstancesShrinkRequest {
+	s.Filter = &v
+	return s
+}
+
+func (s *ListInstancesShrinkRequest) SetPageNumber(v int32) *ListInstancesShrinkRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListInstancesShrinkRequest) SetPageSize(v int32) *ListInstancesShrinkRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListInstancesShrinkRequest) SetResourceGroupId(v string) *ListInstancesShrinkRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *ListInstancesShrinkRequest) SetSeriesCodesShrink(v string) *ListInstancesShrinkRequest {
+	s.SeriesCodesShrink = &v
+	return s
+}
+
+func (s *ListInstancesShrinkRequest) SetTags(v string) *ListInstancesShrinkRequest {
 	s.Tags = &v
 	return s
 }
@@ -7606,18 +7692,24 @@ func (client *Client) ListConsumerGroups(instanceId *string, request *ListConsum
 //
 // > API operations provided by Alibaba Cloud are used to manage and query resources of Alibaba Cloud services. We recommend that you integrate these API operations only in management systems. Do not use these API operations in the core system of messaging services. Otherwise, system risks may occur.
 //
-// @param request - ListInstancesRequest
+// @param tmpReq - ListInstancesRequest
 //
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListInstancesResponse
-func (client *Client) ListInstancesWithOptions(request *ListInstancesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListInstancesResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) ListInstancesWithOptions(tmpReq *ListInstancesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListInstancesResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
 		return _result, _err
 	}
+	request := &ListInstancesShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.SeriesCodes)) {
+		request.SeriesCodesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SeriesCodes, tea.String("seriesCodes"), tea.String("simple"))
+	}
+
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Filter)) {
 		query["filter"] = request.Filter
@@ -7633,6 +7725,10 @@ func (client *Client) ListInstancesWithOptions(request *ListInstancesRequest, he
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
 		query["resourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SeriesCodesShrink)) {
+		query["seriesCodes"] = request.SeriesCodesShrink
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Tags)) {
