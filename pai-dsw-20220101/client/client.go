@@ -5152,6 +5152,7 @@ type ListInstancesRequest struct {
 	//
 	// PRIVATE
 	Accessibility *string `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
+	CreateUserId  *string `json:"CreateUserId,omitempty" xml:"CreateUserId,omitempty"`
 	// example:
 	//
 	// dsw-730xxxxxxxxxx
@@ -5210,6 +5211,11 @@ func (s *ListInstancesRequest) SetAcceleratorType(v string) *ListInstancesReques
 
 func (s *ListInstancesRequest) SetAccessibility(v string) *ListInstancesRequest {
 	s.Accessibility = &v
+	return s
+}
+
+func (s *ListInstancesRequest) SetCreateUserId(v string) *ListInstancesRequest {
+	s.CreateUserId = &v
 	return s
 }
 
@@ -5277,6 +5283,7 @@ type ListInstancesShrinkRequest struct {
 	//
 	// PRIVATE
 	Accessibility *string `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
+	CreateUserId  *string `json:"CreateUserId,omitempty" xml:"CreateUserId,omitempty"`
 	// example:
 	//
 	// dsw-730xxxxxxxxxx
@@ -5335,6 +5342,11 @@ func (s *ListInstancesShrinkRequest) SetAcceleratorType(v string) *ListInstances
 
 func (s *ListInstancesShrinkRequest) SetAccessibility(v string) *ListInstancesShrinkRequest {
 	s.Accessibility = &v
+	return s
+}
+
+func (s *ListInstancesShrinkRequest) SetCreateUserId(v string) *ListInstancesShrinkRequest {
+	s.CreateUserId = &v
 	return s
 }
 
@@ -8626,6 +8638,10 @@ func (client *Client) ListInstancesWithOptions(tmpReq *ListInstancesRequest, hea
 
 	if !tea.BoolValue(util.IsUnset(request.Accessibility)) {
 		query["Accessibility"] = request.Accessibility
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CreateUserId)) {
+		query["CreateUserId"] = request.CreateUserId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
