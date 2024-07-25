@@ -24885,6 +24885,46 @@ func (s *ResumeUpgradeClusterResponse) SetStatusCode(v int32) *ResumeUpgradeClus
 	return s
 }
 
+type RevokeK8sClusterKubeConfigResponseBody struct {
+}
+
+func (s RevokeK8sClusterKubeConfigResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RevokeK8sClusterKubeConfigResponseBody) GoString() string {
+	return s.String()
+}
+
+type RevokeK8sClusterKubeConfigResponse struct {
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RevokeK8sClusterKubeConfigResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s RevokeK8sClusterKubeConfigResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RevokeK8sClusterKubeConfigResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RevokeK8sClusterKubeConfigResponse) SetHeaders(v map[string]*string) *RevokeK8sClusterKubeConfigResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RevokeK8sClusterKubeConfigResponse) SetStatusCode(v int32) *RevokeK8sClusterKubeConfigResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *RevokeK8sClusterKubeConfigResponse) SetBody(v *RevokeK8sClusterKubeConfigResponseBody) *RevokeK8sClusterKubeConfigResponse {
+	s.Body = v
+	return s
+}
+
 type RunClusterCheckRequest struct {
 	// The cluster check items.
 	Options map[string]*string `json:"options,omitempty" xml:"options,omitempty"`
@@ -35930,6 +35970,56 @@ func (client *Client) ResumeUpgradeCluster(ClusterId *string) (_result *ResumeUp
 	headers := make(map[string]*string)
 	_result = &ResumeUpgradeClusterResponse{}
 	_body, _err := client.ResumeUpgradeClusterWithOptions(ClusterId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// You can call the RevokeK8sClusterKubeConfig operation to revoke the kubeconfig file that the current Resource Access Management (RAM) user uses to log on to a Kubernetes cluster. The kubeconfig file contains the identity information of the RAM user.
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RevokeK8sClusterKubeConfigResponse
+func (client *Client) RevokeK8sClusterKubeConfigWithOptions(ClusterId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *RevokeK8sClusterKubeConfigResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RevokeK8sClusterKubeConfig"),
+		Version:     tea.String("2015-12-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/k8s/" + tea.StringValue(openapiutil.GetEncodeParam(ClusterId)) + "/certs"),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &RevokeK8sClusterKubeConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// You can call the RevokeK8sClusterKubeConfig operation to revoke the kubeconfig file that the current Resource Access Management (RAM) user uses to log on to a Kubernetes cluster. The kubeconfig file contains the identity information of the RAM user.
+//
+// @return RevokeK8sClusterKubeConfigResponse
+func (client *Client) RevokeK8sClusterKubeConfig(ClusterId *string) (_result *RevokeK8sClusterKubeConfigResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &RevokeK8sClusterKubeConfigResponse{}
+	_body, _err := client.RevokeK8sClusterKubeConfigWithOptions(ClusterId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
