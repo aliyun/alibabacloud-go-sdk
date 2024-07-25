@@ -9,6 +9,286 @@ import (
 	"github.com/alibabacloud-go/tea/tea"
 )
 
+type CommodityValue struct {
+	Result *CommodityValueResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+}
+
+func (s CommodityValue) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CommodityValue) GoString() string {
+	return s.String()
+}
+
+func (s *CommodityValue) SetResult(v *CommodityValueResult) *CommodityValue {
+	s.Result = v
+	return s
+}
+
+type CommodityValueResult struct {
+	Order       *CommodityValueResultOrder     `json:"Order,omitempty" xml:"Order,omitempty" type:"Struct"`
+	InquiryType *string                        `json:"InquiryType,omitempty" xml:"InquiryType,omitempty"`
+	SubOrders   *CommodityValueResultSubOrders `json:"SubOrders,omitempty" xml:"SubOrders,omitempty" type:"Struct"`
+	Coupons     []*CommodityValueResultCoupons `json:"Coupons,omitempty" xml:"Coupons,omitempty" type:"Repeated"`
+}
+
+func (s CommodityValueResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CommodityValueResult) GoString() string {
+	return s.String()
+}
+
+func (s *CommodityValueResult) SetOrder(v *CommodityValueResultOrder) *CommodityValueResult {
+	s.Order = v
+	return s
+}
+
+func (s *CommodityValueResult) SetInquiryType(v string) *CommodityValueResult {
+	s.InquiryType = &v
+	return s
+}
+
+func (s *CommodityValueResult) SetSubOrders(v *CommodityValueResultSubOrders) *CommodityValueResult {
+	s.SubOrders = v
+	return s
+}
+
+func (s *CommodityValueResult) SetCoupons(v []*CommodityValueResultCoupons) *CommodityValueResult {
+	s.Coupons = v
+	return s
+}
+
+type CommodityValueResultOrder struct {
+	Currency       *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
+	TradeAmount    *string `json:"TradeAmount,omitempty" xml:"TradeAmount,omitempty"`
+	DiscountAmount *string `json:"DiscountAmount,omitempty" xml:"DiscountAmount,omitempty"`
+	OriginalAmount *string `json:"OriginalAmount,omitempty" xml:"OriginalAmount,omitempty"`
+}
+
+func (s CommodityValueResultOrder) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CommodityValueResultOrder) GoString() string {
+	return s.String()
+}
+
+func (s *CommodityValueResultOrder) SetCurrency(v string) *CommodityValueResultOrder {
+	s.Currency = &v
+	return s
+}
+
+func (s *CommodityValueResultOrder) SetTradeAmount(v string) *CommodityValueResultOrder {
+	s.TradeAmount = &v
+	return s
+}
+
+func (s *CommodityValueResultOrder) SetDiscountAmount(v string) *CommodityValueResultOrder {
+	s.DiscountAmount = &v
+	return s
+}
+
+func (s *CommodityValueResultOrder) SetOriginalAmount(v string) *CommodityValueResultOrder {
+	s.OriginalAmount = &v
+	return s
+}
+
+type CommodityValueResultSubOrders struct {
+	SubOrder []*CommodityValueResultSubOrdersSubOrder `json:"SubOrder,omitempty" xml:"SubOrder,omitempty" type:"Repeated"`
+}
+
+func (s CommodityValueResultSubOrders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CommodityValueResultSubOrders) GoString() string {
+	return s.String()
+}
+
+func (s *CommodityValueResultSubOrders) SetSubOrder(v []*CommodityValueResultSubOrdersSubOrder) *CommodityValueResultSubOrders {
+	s.SubOrder = v
+	return s
+}
+
+type CommodityValueResultSubOrdersSubOrder struct {
+	ModuleInstance []*CommodityValueResultSubOrdersSubOrderModuleInstance `json:"ModuleInstance,omitempty" xml:"ModuleInstance,omitempty" type:"Repeated"`
+}
+
+func (s CommodityValueResultSubOrdersSubOrder) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CommodityValueResultSubOrdersSubOrder) GoString() string {
+	return s.String()
+}
+
+func (s *CommodityValueResultSubOrdersSubOrder) SetModuleInstance(v []*CommodityValueResultSubOrdersSubOrderModuleInstance) *CommodityValueResultSubOrdersSubOrder {
+	s.ModuleInstance = v
+	return s
+}
+
+type CommodityValueResultSubOrdersSubOrderModuleInstance struct {
+	ModuleId        *int64                                                            `json:"ModuleId,omitempty" xml:"ModuleId,omitempty"`
+	ModuleName      *string                                                           `json:"ModuleName,omitempty" xml:"ModuleName,omitempty"`
+	ModuleCode      *string                                                           `json:"ModuleCode,omitempty" xml:"ModuleCode,omitempty"`
+	TotalProductFee *float64                                                          `json:"TotalProductFee,omitempty" xml:"TotalProductFee,omitempty"`
+	DiscountFee     *float64                                                          `json:"DiscountFee,omitempty" xml:"DiscountFee,omitempty"`
+	PayFee          *float64                                                          `json:"PayFee,omitempty" xml:"PayFee,omitempty"`
+	PriceUnit       *string                                                           `json:"PriceUnit,omitempty" xml:"PriceUnit,omitempty"`
+	IsPricingModule *bool                                                             `json:"IsPricingModule,omitempty" xml:"IsPricingModule,omitempty"`
+	NeedOrderPay    *bool                                                             `json:"NeedOrderPay,omitempty" xml:"NeedOrderPay,omitempty"`
+	PriceType       *string                                                           `json:"PriceType,omitempty" xml:"PriceType,omitempty"`
+	ModuleAttrs     []*CommodityValueResultSubOrdersSubOrderModuleInstanceModuleAttrs `json:"ModuleAttrs,omitempty" xml:"ModuleAttrs,omitempty" type:"Repeated"`
+}
+
+func (s CommodityValueResultSubOrdersSubOrderModuleInstance) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CommodityValueResultSubOrdersSubOrderModuleInstance) GoString() string {
+	return s.String()
+}
+
+func (s *CommodityValueResultSubOrdersSubOrderModuleInstance) SetModuleId(v int64) *CommodityValueResultSubOrdersSubOrderModuleInstance {
+	s.ModuleId = &v
+	return s
+}
+
+func (s *CommodityValueResultSubOrdersSubOrderModuleInstance) SetModuleName(v string) *CommodityValueResultSubOrdersSubOrderModuleInstance {
+	s.ModuleName = &v
+	return s
+}
+
+func (s *CommodityValueResultSubOrdersSubOrderModuleInstance) SetModuleCode(v string) *CommodityValueResultSubOrdersSubOrderModuleInstance {
+	s.ModuleCode = &v
+	return s
+}
+
+func (s *CommodityValueResultSubOrdersSubOrderModuleInstance) SetTotalProductFee(v float64) *CommodityValueResultSubOrdersSubOrderModuleInstance {
+	s.TotalProductFee = &v
+	return s
+}
+
+func (s *CommodityValueResultSubOrdersSubOrderModuleInstance) SetDiscountFee(v float64) *CommodityValueResultSubOrdersSubOrderModuleInstance {
+	s.DiscountFee = &v
+	return s
+}
+
+func (s *CommodityValueResultSubOrdersSubOrderModuleInstance) SetPayFee(v float64) *CommodityValueResultSubOrdersSubOrderModuleInstance {
+	s.PayFee = &v
+	return s
+}
+
+func (s *CommodityValueResultSubOrdersSubOrderModuleInstance) SetPriceUnit(v string) *CommodityValueResultSubOrdersSubOrderModuleInstance {
+	s.PriceUnit = &v
+	return s
+}
+
+func (s *CommodityValueResultSubOrdersSubOrderModuleInstance) SetIsPricingModule(v bool) *CommodityValueResultSubOrdersSubOrderModuleInstance {
+	s.IsPricingModule = &v
+	return s
+}
+
+func (s *CommodityValueResultSubOrdersSubOrderModuleInstance) SetNeedOrderPay(v bool) *CommodityValueResultSubOrdersSubOrderModuleInstance {
+	s.NeedOrderPay = &v
+	return s
+}
+
+func (s *CommodityValueResultSubOrdersSubOrderModuleInstance) SetPriceType(v string) *CommodityValueResultSubOrdersSubOrderModuleInstance {
+	s.PriceType = &v
+	return s
+}
+
+func (s *CommodityValueResultSubOrdersSubOrderModuleInstance) SetModuleAttrs(v []*CommodityValueResultSubOrdersSubOrderModuleInstanceModuleAttrs) *CommodityValueResultSubOrdersSubOrderModuleInstance {
+	s.ModuleAttrs = v
+	return s
+}
+
+type CommodityValueResultSubOrdersSubOrderModuleInstanceModuleAttrs struct {
+	Type  *int64  `json:"Type,omitempty" xml:"Type,omitempty"`
+	Name  *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Code  *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	Unit  *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+}
+
+func (s CommodityValueResultSubOrdersSubOrderModuleInstanceModuleAttrs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CommodityValueResultSubOrdersSubOrderModuleInstanceModuleAttrs) GoString() string {
+	return s.String()
+}
+
+func (s *CommodityValueResultSubOrdersSubOrderModuleInstanceModuleAttrs) SetType(v int64) *CommodityValueResultSubOrdersSubOrderModuleInstanceModuleAttrs {
+	s.Type = &v
+	return s
+}
+
+func (s *CommodityValueResultSubOrdersSubOrderModuleInstanceModuleAttrs) SetName(v string) *CommodityValueResultSubOrdersSubOrderModuleInstanceModuleAttrs {
+	s.Name = &v
+	return s
+}
+
+func (s *CommodityValueResultSubOrdersSubOrderModuleInstanceModuleAttrs) SetCode(v string) *CommodityValueResultSubOrdersSubOrderModuleInstanceModuleAttrs {
+	s.Code = &v
+	return s
+}
+
+func (s *CommodityValueResultSubOrdersSubOrderModuleInstanceModuleAttrs) SetValue(v string) *CommodityValueResultSubOrdersSubOrderModuleInstanceModuleAttrs {
+	s.Value = &v
+	return s
+}
+
+func (s *CommodityValueResultSubOrdersSubOrderModuleInstanceModuleAttrs) SetUnit(v string) *CommodityValueResultSubOrdersSubOrderModuleInstanceModuleAttrs {
+	s.Unit = &v
+	return s
+}
+
+type CommodityValueResultCoupons struct {
+	CanPromFee     *float64 `json:"CanPromFee,omitempty" xml:"CanPromFee,omitempty"`
+	CouponDesc     *string  `json:"CouponDesc,omitempty" xml:"CouponDesc,omitempty"`
+	CouponName     *string  `json:"CouponName,omitempty" xml:"CouponName,omitempty"`
+	CouponOptionNo *string  `json:"CouponOptionNo,omitempty" xml:"CouponOptionNo,omitempty"`
+	Selected       *bool    `json:"Selected,omitempty" xml:"Selected,omitempty"`
+}
+
+func (s CommodityValueResultCoupons) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CommodityValueResultCoupons) GoString() string {
+	return s.String()
+}
+
+func (s *CommodityValueResultCoupons) SetCanPromFee(v float64) *CommodityValueResultCoupons {
+	s.CanPromFee = &v
+	return s
+}
+
+func (s *CommodityValueResultCoupons) SetCouponDesc(v string) *CommodityValueResultCoupons {
+	s.CouponDesc = &v
+	return s
+}
+
+func (s *CommodityValueResultCoupons) SetCouponName(v string) *CommodityValueResultCoupons {
+	s.CouponName = &v
+	return s
+}
+
+func (s *CommodityValueResultCoupons) SetCouponOptionNo(v string) *CommodityValueResultCoupons {
+	s.CouponOptionNo = &v
+	return s
+}
+
+func (s *CommodityValueResultCoupons) SetSelected(v bool) *CommodityValueResultCoupons {
+	s.Selected = &v
+	return s
+}
+
 type CancelServiceUsageRequest struct {
 	// example:
 	//
@@ -650,7 +930,8 @@ type CreateServiceInstanceRequestCommodity struct {
 	// example:
 	//
 	// false
-	AutoRenew *bool `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
+	AutoRenew *bool   `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
+	CouponId  *string `json:"CouponId,omitempty" xml:"CouponId,omitempty"`
 	// The subscription duration.
 	//
 	// example:
@@ -686,6 +967,11 @@ func (s *CreateServiceInstanceRequestCommodity) SetAutoPay(v bool) *CreateServic
 
 func (s *CreateServiceInstanceRequestCommodity) SetAutoRenew(v bool) *CreateServiceInstanceRequestCommodity {
 	s.AutoRenew = &v
+	return s
+}
+
+func (s *CreateServiceInstanceRequestCommodity) SetCouponId(v string) *CreateServiceInstanceRequestCommodity {
+	s.CouponId = &v
 	return s
 }
 
@@ -1072,7 +1358,8 @@ type CreateServiceInstanceShrinkRequestCommodity struct {
 	// example:
 	//
 	// false
-	AutoRenew *bool `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
+	AutoRenew *bool   `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
+	CouponId  *string `json:"CouponId,omitempty" xml:"CouponId,omitempty"`
 	// The subscription duration.
 	//
 	// example:
@@ -1108,6 +1395,11 @@ func (s *CreateServiceInstanceShrinkRequestCommodity) SetAutoPay(v bool) *Create
 
 func (s *CreateServiceInstanceShrinkRequestCommodity) SetAutoRenew(v bool) *CreateServiceInstanceShrinkRequestCommodity {
 	s.AutoRenew = &v
+	return s
+}
+
+func (s *CreateServiceInstanceShrinkRequestCommodity) SetCouponId(v string) *CreateServiceInstanceShrinkRequestCommodity {
+	s.CouponId = &v
 	return s
 }
 
@@ -1902,6 +2194,7 @@ func (s *GetServiceEstimateCostRequest) SetTrialType(v string) *GetServiceEstima
 }
 
 type GetServiceEstimateCostRequestCommodity struct {
+	CouponId *string `json:"CouponId,omitempty" xml:"CouponId,omitempty"`
 	// The subscription duration.
 	//
 	// example:
@@ -1928,6 +2221,11 @@ func (s GetServiceEstimateCostRequestCommodity) String() string {
 
 func (s GetServiceEstimateCostRequestCommodity) GoString() string {
 	return s.String()
+}
+
+func (s *GetServiceEstimateCostRequestCommodity) SetCouponId(v string) *GetServiceEstimateCostRequestCommodity {
+	s.CouponId = &v
+	return s
 }
 
 func (s *GetServiceEstimateCostRequestCommodity) SetPayPeriod(v int32) *GetServiceEstimateCostRequestCommodity {
@@ -2086,7 +2384,7 @@ type GetServiceEstimateCostResponseBody struct {
 	// example:
 	//
 	// {\\"cmgj00059839\\": {\\"Result\\": {\\"InquiryType\\": \\"Buy\\", \\"Order\\": {\\"Currency\\": \\"CNY\\", \\"DiscountAmount\\": \\"0.0\\", \\"TradeAmount\\": \\"0.01\\", \\"OriginalAmount\\": \\"0.01\\"}}}}
-	Commodity map[string]interface{} `json:"Commodity,omitempty" xml:"Commodity,omitempty"`
+	Commodity map[string]*CommodityValue `json:"Commodity,omitempty" xml:"Commodity,omitempty"`
 	// The request ID.
 	//
 	// example:
@@ -2237,7 +2535,7 @@ func (s GetServiceEstimateCostResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *GetServiceEstimateCostResponseBody) SetCommodity(v map[string]interface{}) *GetServiceEstimateCostResponseBody {
+func (s *GetServiceEstimateCostResponseBody) SetCommodity(v map[string]*CommodityValue) *GetServiceEstimateCostResponseBody {
 	s.Commodity = v
 	return s
 }
@@ -4271,6 +4569,7 @@ func (s *ListServiceCategoriesResponse) SetBody(v *ListServiceCategoriesResponse
 }
 
 type ListServiceInstanceLogsRequest struct {
+	Filter []*ListServiceInstanceLogsRequestFilter `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Repeated"`
 	// The log source. Valid values:
 	//
 	// 	- computeNest (default): logs of the deployment and upgrade of the service instance.
@@ -4329,6 +4628,11 @@ func (s ListServiceInstanceLogsRequest) GoString() string {
 	return s.String()
 }
 
+func (s *ListServiceInstanceLogsRequest) SetFilter(v []*ListServiceInstanceLogsRequestFilter) *ListServiceInstanceLogsRequest {
+	s.Filter = v
+	return s
+}
+
 func (s *ListServiceInstanceLogsRequest) SetLogSource(v string) *ListServiceInstanceLogsRequest {
 	s.LogSource = &v
 	return s
@@ -4356,6 +4660,29 @@ func (s *ListServiceInstanceLogsRequest) SetRegionId(v string) *ListServiceInsta
 
 func (s *ListServiceInstanceLogsRequest) SetServiceInstanceId(v string) *ListServiceInstanceLogsRequest {
 	s.ServiceInstanceId = &v
+	return s
+}
+
+type ListServiceInstanceLogsRequestFilter struct {
+	Name  *string   `json:"Name,omitempty" xml:"Name,omitempty"`
+	Value []*string `json:"Value,omitempty" xml:"Value,omitempty" type:"Repeated"`
+}
+
+func (s ListServiceInstanceLogsRequestFilter) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListServiceInstanceLogsRequestFilter) GoString() string {
+	return s.String()
+}
+
+func (s *ListServiceInstanceLogsRequestFilter) SetName(v string) *ListServiceInstanceLogsRequestFilter {
+	s.Name = &v
+	return s
+}
+
+func (s *ListServiceInstanceLogsRequestFilter) SetValue(v []*string) *ListServiceInstanceLogsRequestFilter {
+	s.Value = v
 	return s
 }
 
@@ -5984,16 +6311,30 @@ func (s *ListServiceUsagesResponse) SetBody(v *ListServiceUsagesResponseBody) *L
 }
 
 type ListTagKeysRequest struct {
+	// A pagination token. It can be used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists.
+	//
 	// example:
 	//
 	// AAAAAfu+XtuBE55iRLHEYYuojI4=
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The resource type. Valid values:
+	//
+	// 	- service: service
+	//
+	// 	- serviceinstance: service instance
+	//
+	// 	- artifact: artifact
+	//
+	// 	- dataset: dataset
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -6026,11 +6367,16 @@ func (s *ListTagKeysRequest) SetResourceType(v string) *ListTagKeysRequest {
 }
 
 type ListTagKeysResponseBody struct {
+	// Details of the tag keys.
 	Keys []*string `json:"Keys,omitempty" xml:"Keys,omitempty" type:"Repeated"`
+	// A pagination token. It can be used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists.
+	//
 	// example:
 	//
 	// AAAAAZ9FmxgN6wKfeK/GOKRnnjU=
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 8872ACE6-0297-54A4-8AAD-3A8623EC6C5D
@@ -6090,22 +6436,40 @@ func (s *ListTagKeysResponse) SetBody(v *ListTagKeysResponseBody) *ListTagKeysRe
 }
 
 type ListTagValuesRequest struct {
+	// The tag key.
+	//
+	// >  This parameter is required.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ECS
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// A pagination token. It can be used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists.
+	//
 	// example:
 	//
 	// AAAAAfmTH5rcd4YFfob4P0uDAAc=
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The resource type. Valid values:
+	//
+	// 	- service: service
+	//
+	// 	- serviceinstance: service instance
+	//
+	// 	- artifact: artifact
+	//
+	// 	- dataset: dataset
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -6143,15 +6507,20 @@ func (s *ListTagValuesRequest) SetResourceType(v string) *ListTagValuesRequest {
 }
 
 type ListTagValuesResponseBody struct {
+	// A pagination token. It can be used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists.
+	//
 	// example:
 	//
 	// AAAAAVz7BQqj2xtiNSC3d3RAD38=
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 0631D623-D917-1C2D-ACD6-5B3B19XXXXXX
-	RequestId *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Values    []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The information of the tag values.
+	Values []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
 }
 
 func (s ListTagValuesResponseBody) String() string {
@@ -6510,21 +6879,36 @@ func (s *StopServiceInstanceResponse) SetBody(v *StopServiceInstanceResponseBody
 }
 
 type TagResourcesRequest struct {
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The resource IDs. You can specify up to 50 resource IDs.
+	//
 	// This parameter is required.
 	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
+	// The resource type. Valid values:
+	//
+	// 	- service: service
+	//
+	// 	- serviceinstance: service instance
+	//
+	// 	- artifact: artifact
+	//
+	// 	- dataset: dataset
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// service
-	ResourceType *string                   `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	Tag          []*TagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The tag key and value.
+	Tag []*TagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s TagResourcesRequest) String() string {
@@ -6556,10 +6940,14 @@ func (s *TagResourcesRequest) SetTag(v []*TagResourcesRequestTag) *TagResourcesR
 }
 
 type TagResourcesRequestTag struct {
+	// The tag key.
+	//
 	// example:
 	//
 	// Key1
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value.
+	//
 	// example:
 	//
 	// Value1
@@ -6585,6 +6973,8 @@ func (s *TagResourcesRequestTag) SetValue(v string) *TagResourcesRequestTag {
 }
 
 type TagResourcesResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 06BF8F22-02DC-4750-83DF-3FFC11C065EA
@@ -6634,25 +7024,52 @@ func (s *TagResourcesResponse) SetBody(v *TagResourcesResponseBody) *TagResource
 }
 
 type UnTagResourcesRequest struct {
+	// Specifies whether to remove all tags from the resource. Valid values:
+	//
+	// 	- true: All tags are removed from the resource.
+	//
+	// 	- false (default): The specified tags are removed from the resource.
+	//
 	// example:
 	//
 	// false
 	All *bool `json:"All,omitempty" xml:"All,omitempty"`
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The resource ID.
+	//
+	// You can remove tags from up to 50 resources at a time.
+	//
 	// This parameter is required.
 	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
+	// The resource type. Valid values:
+	//
+	// 	- service: service
+	//
+	// 	- serviceinstance: service instance
+	//
+	// 	- artifact: artifact
+	//
+	// 	- dataset: dataset
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// service
-	ResourceType *string   `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	TagKey       []*string `json:"TagKey,omitempty" xml:"TagKey,omitempty" type:"Repeated"`
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The tag keys.
+	//
+	// You can specify a maximum of 20 tag keys.
+	//
+	// > If you set the `All` parameter to `true`, you do not need to specify tag keys.
+	TagKey []*string `json:"TagKey,omitempty" xml:"TagKey,omitempty" type:"Repeated"`
 }
 
 func (s UnTagResourcesRequest) String() string {
@@ -6689,6 +7106,8 @@ func (s *UnTagResourcesRequest) SetTagKey(v []*string) *UnTagResourcesRequest {
 }
 
 type UnTagResourcesResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 06BF8F22-02DC-4750-83DF-3FFC11C065EA
@@ -8253,6 +8672,10 @@ func (client *Client) ListServiceInstanceLogsWithOptions(request *ListServiceIns
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Filter)) {
+		query["Filter"] = request.Filter
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.LogSource)) {
 		query["LogSource"] = request.LogSource
 	}
