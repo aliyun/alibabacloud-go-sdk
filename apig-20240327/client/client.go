@@ -7887,7 +7887,8 @@ type ListHttpApisRequest struct {
 	// example:
 	//
 	// 10
-	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	PageSize      *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	PublishedOnly *bool  `json:"publishedOnly,omitempty" xml:"publishedOnly,omitempty"`
 }
 
 func (s ListHttpApisRequest) String() string {
@@ -7910,6 +7911,11 @@ func (s *ListHttpApisRequest) SetPageNumber(v int32) *ListHttpApisRequest {
 
 func (s *ListHttpApisRequest) SetPageSize(v int32) *ListHttpApisRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *ListHttpApisRequest) SetPublishedOnly(v bool) *ListHttpApisRequest {
+	s.PublishedOnly = &v
 	return s
 }
 
@@ -11655,6 +11661,10 @@ func (client *Client) ListHttpApisWithOptions(request *ListHttpApisRequest, head
 
 	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
 		query["pageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PublishedOnly)) {
+		query["publishedOnly"] = request.PublishedOnly
 	}
 
 	req := &openapi.OpenApiRequest{
