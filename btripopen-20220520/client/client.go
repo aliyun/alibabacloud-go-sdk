@@ -7511,9 +7511,10 @@ type ApplyAddRequest struct {
 	// example:
 	//
 	// 1
-	BudgetMerge *int32                  `json:"budget_merge,omitempty" xml:"budget_merge,omitempty"`
-	CarRule     *ApplyAddRequestCarRule `json:"car_rule,omitempty" xml:"car_rule,omitempty" type:"Struct"`
-	CorpName    *string                 `json:"corp_name,omitempty" xml:"corp_name,omitempty"`
+	BudgetMerge     *int32                          `json:"budget_merge,omitempty" xml:"budget_merge,omitempty"`
+	CarRule         *ApplyAddRequestCarRule         `json:"car_rule,omitempty" xml:"car_rule,omitempty" type:"Struct"`
+	CorpName        *string                         `json:"corp_name,omitempty" xml:"corp_name,omitempty"`
+	DefaultStandard *ApplyAddRequestDefaultStandard `json:"default_standard,omitempty" xml:"default_standard,omitempty" type:"Struct"`
 	// example:
 	//
 	// departId01
@@ -7629,6 +7630,11 @@ func (s *ApplyAddRequest) SetCarRule(v *ApplyAddRequestCarRule) *ApplyAddRequest
 
 func (s *ApplyAddRequest) SetCorpName(v string) *ApplyAddRequest {
 	s.CorpName = &v
+	return s
+}
+
+func (s *ApplyAddRequest) SetDefaultStandard(v *ApplyAddRequestDefaultStandard) *ApplyAddRequest {
+	s.DefaultStandard = v
 	return s
 }
 
@@ -7812,6 +7818,168 @@ func (s *ApplyAddRequestCarRule) SetScenarioTemplateId(v string) *ApplyAddReques
 
 func (s *ApplyAddRequestCarRule) SetScenarioTemplateName(v string) *ApplyAddRequestCarRule {
 	s.ScenarioTemplateName = &v
+	return s
+}
+
+type ApplyAddRequestDefaultStandard struct {
+	BusinessDiscount   *int32                                          `json:"business_discount,omitempty" xml:"business_discount,omitempty"`
+	EconomyDiscount    *int32                                          `json:"economy_discount,omitempty" xml:"economy_discount,omitempty"`
+	FirstDiscount      *int32                                          `json:"first_discount,omitempty" xml:"first_discount,omitempty"`
+	FlightCabins       *string                                         `json:"flight_cabins,omitempty" xml:"flight_cabins,omitempty"`
+	FlightIntlRuleCode *int64                                          `json:"flight_intl_rule_code,omitempty" xml:"flight_intl_rule_code,omitempty"`
+	FlightRuleCode     *int64                                          `json:"flight_rule_code,omitempty" xml:"flight_rule_code,omitempty"`
+	HotelCitys         []*ApplyAddRequestDefaultStandardHotelCitys     `json:"hotel_citys,omitempty" xml:"hotel_citys,omitempty" type:"Repeated"`
+	HotelIntlCitys     []*ApplyAddRequestDefaultStandardHotelIntlCitys `json:"hotel_intl_citys,omitempty" xml:"hotel_intl_citys,omitempty" type:"Repeated"`
+	HotelIntlRuleCode  *int64                                          `json:"hotel_intl_rule_code,omitempty" xml:"hotel_intl_rule_code,omitempty"`
+	HotelRuleCode      *int64                                          `json:"hotel_rule_code,omitempty" xml:"hotel_rule_code,omitempty"`
+	// example:
+	//
+	// F
+	InternationalFlightCabins *string `json:"international_flight_cabins,omitempty" xml:"international_flight_cabins,omitempty"`
+	PremiumEconomyDiscount    *int32  `json:"premium_economy_discount,omitempty" xml:"premium_economy_discount,omitempty"`
+	ReserveType               *int32  `json:"reserve_type,omitempty" xml:"reserve_type,omitempty"`
+	TrainRuleCode             *int64  `json:"train_rule_code,omitempty" xml:"train_rule_code,omitempty"`
+	TrainSeats                *string `json:"train_seats,omitempty" xml:"train_seats,omitempty"`
+}
+
+func (s ApplyAddRequestDefaultStandard) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ApplyAddRequestDefaultStandard) GoString() string {
+	return s.String()
+}
+
+func (s *ApplyAddRequestDefaultStandard) SetBusinessDiscount(v int32) *ApplyAddRequestDefaultStandard {
+	s.BusinessDiscount = &v
+	return s
+}
+
+func (s *ApplyAddRequestDefaultStandard) SetEconomyDiscount(v int32) *ApplyAddRequestDefaultStandard {
+	s.EconomyDiscount = &v
+	return s
+}
+
+func (s *ApplyAddRequestDefaultStandard) SetFirstDiscount(v int32) *ApplyAddRequestDefaultStandard {
+	s.FirstDiscount = &v
+	return s
+}
+
+func (s *ApplyAddRequestDefaultStandard) SetFlightCabins(v string) *ApplyAddRequestDefaultStandard {
+	s.FlightCabins = &v
+	return s
+}
+
+func (s *ApplyAddRequestDefaultStandard) SetFlightIntlRuleCode(v int64) *ApplyAddRequestDefaultStandard {
+	s.FlightIntlRuleCode = &v
+	return s
+}
+
+func (s *ApplyAddRequestDefaultStandard) SetFlightRuleCode(v int64) *ApplyAddRequestDefaultStandard {
+	s.FlightRuleCode = &v
+	return s
+}
+
+func (s *ApplyAddRequestDefaultStandard) SetHotelCitys(v []*ApplyAddRequestDefaultStandardHotelCitys) *ApplyAddRequestDefaultStandard {
+	s.HotelCitys = v
+	return s
+}
+
+func (s *ApplyAddRequestDefaultStandard) SetHotelIntlCitys(v []*ApplyAddRequestDefaultStandardHotelIntlCitys) *ApplyAddRequestDefaultStandard {
+	s.HotelIntlCitys = v
+	return s
+}
+
+func (s *ApplyAddRequestDefaultStandard) SetHotelIntlRuleCode(v int64) *ApplyAddRequestDefaultStandard {
+	s.HotelIntlRuleCode = &v
+	return s
+}
+
+func (s *ApplyAddRequestDefaultStandard) SetHotelRuleCode(v int64) *ApplyAddRequestDefaultStandard {
+	s.HotelRuleCode = &v
+	return s
+}
+
+func (s *ApplyAddRequestDefaultStandard) SetInternationalFlightCabins(v string) *ApplyAddRequestDefaultStandard {
+	s.InternationalFlightCabins = &v
+	return s
+}
+
+func (s *ApplyAddRequestDefaultStandard) SetPremiumEconomyDiscount(v int32) *ApplyAddRequestDefaultStandard {
+	s.PremiumEconomyDiscount = &v
+	return s
+}
+
+func (s *ApplyAddRequestDefaultStandard) SetReserveType(v int32) *ApplyAddRequestDefaultStandard {
+	s.ReserveType = &v
+	return s
+}
+
+func (s *ApplyAddRequestDefaultStandard) SetTrainRuleCode(v int64) *ApplyAddRequestDefaultStandard {
+	s.TrainRuleCode = &v
+	return s
+}
+
+func (s *ApplyAddRequestDefaultStandard) SetTrainSeats(v string) *ApplyAddRequestDefaultStandard {
+	s.TrainSeats = &v
+	return s
+}
+
+type ApplyAddRequestDefaultStandardHotelCitys struct {
+	CityCode *string `json:"city_code,omitempty" xml:"city_code,omitempty"`
+	CityName *string `json:"city_name,omitempty" xml:"city_name,omitempty"`
+	Fee      *int64  `json:"fee,omitempty" xml:"fee,omitempty"`
+}
+
+func (s ApplyAddRequestDefaultStandardHotelCitys) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ApplyAddRequestDefaultStandardHotelCitys) GoString() string {
+	return s.String()
+}
+
+func (s *ApplyAddRequestDefaultStandardHotelCitys) SetCityCode(v string) *ApplyAddRequestDefaultStandardHotelCitys {
+	s.CityCode = &v
+	return s
+}
+
+func (s *ApplyAddRequestDefaultStandardHotelCitys) SetCityName(v string) *ApplyAddRequestDefaultStandardHotelCitys {
+	s.CityName = &v
+	return s
+}
+
+func (s *ApplyAddRequestDefaultStandardHotelCitys) SetFee(v int64) *ApplyAddRequestDefaultStandardHotelCitys {
+	s.Fee = &v
+	return s
+}
+
+type ApplyAddRequestDefaultStandardHotelIntlCitys struct {
+	CityCode *string `json:"city_code,omitempty" xml:"city_code,omitempty"`
+	CityName *string `json:"city_name,omitempty" xml:"city_name,omitempty"`
+	Fee      *int64  `json:"fee,omitempty" xml:"fee,omitempty"`
+}
+
+func (s ApplyAddRequestDefaultStandardHotelIntlCitys) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ApplyAddRequestDefaultStandardHotelIntlCitys) GoString() string {
+	return s.String()
+}
+
+func (s *ApplyAddRequestDefaultStandardHotelIntlCitys) SetCityCode(v string) *ApplyAddRequestDefaultStandardHotelIntlCitys {
+	s.CityCode = &v
+	return s
+}
+
+func (s *ApplyAddRequestDefaultStandardHotelIntlCitys) SetCityName(v string) *ApplyAddRequestDefaultStandardHotelIntlCitys {
+	s.CityName = &v
+	return s
+}
+
+func (s *ApplyAddRequestDefaultStandardHotelIntlCitys) SetFee(v int64) *ApplyAddRequestDefaultStandardHotelIntlCitys {
+	s.Fee = &v
 	return s
 }
 
@@ -8164,8 +8332,9 @@ type ApplyAddRequestItineraryList struct {
 	// example:
 	//
 	// projecttow
-	ProjectCode  *string `json:"project_code,omitempty" xml:"project_code,omitempty"`
-	ProjectTitle *string `json:"project_title,omitempty" xml:"project_title,omitempty"`
+	ProjectCode               *string   `json:"project_code,omitempty" xml:"project_code,omitempty"`
+	ProjectTitle              *string   `json:"project_title,omitempty" xml:"project_title,omitempty"`
+	ProvinceTravelCityAdcodes []*string `json:"province_travel_city_adcodes,omitempty" xml:"province_travel_city_adcodes,omitempty" type:"Repeated"`
 	// example:
 	//
 	// thirdpart34711
@@ -8271,6 +8440,11 @@ func (s *ApplyAddRequestItineraryList) SetProjectTitle(v string) *ApplyAddReques
 	return s
 }
 
+func (s *ApplyAddRequestItineraryList) SetProvinceTravelCityAdcodes(v []*string) *ApplyAddRequestItineraryList {
+	s.ProvinceTravelCityAdcodes = v
+	return s
+}
+
 func (s *ApplyAddRequestItineraryList) SetThirdPartInvoiceId(v string) *ApplyAddRequestItineraryList {
 	s.ThirdPartInvoiceId = &v
 	return s
@@ -8348,8 +8522,9 @@ type ApplyAddRequestItinerarySetList struct {
 	// example:
 	//
 	// projecttow
-	ProjectCode  *string `json:"project_code,omitempty" xml:"project_code,omitempty"`
-	ProjectTitle *string `json:"project_title,omitempty" xml:"project_title,omitempty"`
+	ProjectCode               *string   `json:"project_code,omitempty" xml:"project_code,omitempty"`
+	ProjectTitle              *string   `json:"project_title,omitempty" xml:"project_title,omitempty"`
+	ProvinceTravelCityAdcodes []*string `json:"province_travel_city_adcodes,omitempty" xml:"province_travel_city_adcodes,omitempty" type:"Repeated"`
 	// example:
 	//
 	// thridpart12138
@@ -8426,6 +8601,11 @@ func (s *ApplyAddRequestItinerarySetList) SetProjectCode(v string) *ApplyAddRequ
 
 func (s *ApplyAddRequestItinerarySetList) SetProjectTitle(v string) *ApplyAddRequestItinerarySetList {
 	s.ProjectTitle = &v
+	return s
+}
+
+func (s *ApplyAddRequestItinerarySetList) SetProvinceTravelCityAdcodes(v []*string) *ApplyAddRequestItinerarySetList {
+	s.ProvinceTravelCityAdcodes = v
 	return s
 }
 
@@ -8784,9 +8964,10 @@ type ApplyAddShrinkRequest struct {
 	// example:
 	//
 	// 1
-	BudgetMerge   *int32  `json:"budget_merge,omitempty" xml:"budget_merge,omitempty"`
-	CarRuleShrink *string `json:"car_rule,omitempty" xml:"car_rule,omitempty"`
-	CorpName      *string `json:"corp_name,omitempty" xml:"corp_name,omitempty"`
+	BudgetMerge           *int32  `json:"budget_merge,omitempty" xml:"budget_merge,omitempty"`
+	CarRuleShrink         *string `json:"car_rule,omitempty" xml:"car_rule,omitempty"`
+	CorpName              *string `json:"corp_name,omitempty" xml:"corp_name,omitempty"`
+	DefaultStandardShrink *string `json:"default_standard,omitempty" xml:"default_standard,omitempty"`
 	// example:
 	//
 	// departId01
@@ -8902,6 +9083,11 @@ func (s *ApplyAddShrinkRequest) SetCarRuleShrink(v string) *ApplyAddShrinkReques
 
 func (s *ApplyAddShrinkRequest) SetCorpName(v string) *ApplyAddShrinkRequest {
 	s.CorpName = &v
+	return s
+}
+
+func (s *ApplyAddShrinkRequest) SetDefaultStandardShrink(v string) *ApplyAddShrinkRequest {
+	s.DefaultStandardShrink = &v
 	return s
 }
 
@@ -10970,9 +11156,10 @@ type ApplyModifyRequest struct {
 	// example:
 	//
 	// 1
-	BudgetMerge *int32                     `json:"budget_merge,omitempty" xml:"budget_merge,omitempty"`
-	CarRule     *ApplyModifyRequestCarRule `json:"car_rule,omitempty" xml:"car_rule,omitempty" type:"Struct"`
-	CorpName    *string                    `json:"corp_name,omitempty" xml:"corp_name,omitempty"`
+	BudgetMerge     *int32                             `json:"budget_merge,omitempty" xml:"budget_merge,omitempty"`
+	CarRule         *ApplyModifyRequestCarRule         `json:"car_rule,omitempty" xml:"car_rule,omitempty" type:"Struct"`
+	CorpName        *string                            `json:"corp_name,omitempty" xml:"corp_name,omitempty"`
+	DefaultStandard *ApplyModifyRequestDefaultStandard `json:"default_standard,omitempty" xml:"default_standard,omitempty" type:"Struct"`
 	// example:
 	//
 	// 001
@@ -11091,6 +11278,11 @@ func (s *ApplyModifyRequest) SetCarRule(v *ApplyModifyRequestCarRule) *ApplyModi
 
 func (s *ApplyModifyRequest) SetCorpName(v string) *ApplyModifyRequest {
 	s.CorpName = &v
+	return s
+}
+
+func (s *ApplyModifyRequest) SetDefaultStandard(v *ApplyModifyRequestDefaultStandard) *ApplyModifyRequest {
+	s.DefaultStandard = v
 	return s
 }
 
@@ -11264,6 +11456,159 @@ func (s *ApplyModifyRequestCarRule) SetScenarioTemplateId(v string) *ApplyModify
 
 func (s *ApplyModifyRequestCarRule) SetScenarioTemplateName(v string) *ApplyModifyRequestCarRule {
 	s.ScenarioTemplateName = &v
+	return s
+}
+
+type ApplyModifyRequestDefaultStandard struct {
+	BusinessDiscount       *int32                                             `json:"business_discount,omitempty" xml:"business_discount,omitempty"`
+	EconomyDiscount        *int32                                             `json:"economy_discount,omitempty" xml:"economy_discount,omitempty"`
+	FirstDiscount          *int32                                             `json:"first_discount,omitempty" xml:"first_discount,omitempty"`
+	FlightCabins           *string                                            `json:"flight_cabins,omitempty" xml:"flight_cabins,omitempty"`
+	FlightIntlRuleCode     *int64                                             `json:"flight_intl_rule_code,omitempty" xml:"flight_intl_rule_code,omitempty"`
+	FlightRuleCode         *int64                                             `json:"flight_rule_code,omitempty" xml:"flight_rule_code,omitempty"`
+	HotelCitys             []*ApplyModifyRequestDefaultStandardHotelCitys     `json:"hotel_citys,omitempty" xml:"hotel_citys,omitempty" type:"Repeated"`
+	HotelIntlCitys         []*ApplyModifyRequestDefaultStandardHotelIntlCitys `json:"hotel_intl_citys,omitempty" xml:"hotel_intl_citys,omitempty" type:"Repeated"`
+	HotelIntlRuleCode      *int64                                             `json:"hotel_intl_rule_code,omitempty" xml:"hotel_intl_rule_code,omitempty"`
+	HotelRuleCode          *int64                                             `json:"hotel_rule_code,omitempty" xml:"hotel_rule_code,omitempty"`
+	PremiumEconomyDiscount *int32                                             `json:"premium_economy_discount,omitempty" xml:"premium_economy_discount,omitempty"`
+	ReserveType            *int32                                             `json:"reserve_type,omitempty" xml:"reserve_type,omitempty"`
+	TrainRuleCode          *int64                                             `json:"train_rule_code,omitempty" xml:"train_rule_code,omitempty"`
+	TrainSeats             *string                                            `json:"train_seats,omitempty" xml:"train_seats,omitempty"`
+}
+
+func (s ApplyModifyRequestDefaultStandard) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ApplyModifyRequestDefaultStandard) GoString() string {
+	return s.String()
+}
+
+func (s *ApplyModifyRequestDefaultStandard) SetBusinessDiscount(v int32) *ApplyModifyRequestDefaultStandard {
+	s.BusinessDiscount = &v
+	return s
+}
+
+func (s *ApplyModifyRequestDefaultStandard) SetEconomyDiscount(v int32) *ApplyModifyRequestDefaultStandard {
+	s.EconomyDiscount = &v
+	return s
+}
+
+func (s *ApplyModifyRequestDefaultStandard) SetFirstDiscount(v int32) *ApplyModifyRequestDefaultStandard {
+	s.FirstDiscount = &v
+	return s
+}
+
+func (s *ApplyModifyRequestDefaultStandard) SetFlightCabins(v string) *ApplyModifyRequestDefaultStandard {
+	s.FlightCabins = &v
+	return s
+}
+
+func (s *ApplyModifyRequestDefaultStandard) SetFlightIntlRuleCode(v int64) *ApplyModifyRequestDefaultStandard {
+	s.FlightIntlRuleCode = &v
+	return s
+}
+
+func (s *ApplyModifyRequestDefaultStandard) SetFlightRuleCode(v int64) *ApplyModifyRequestDefaultStandard {
+	s.FlightRuleCode = &v
+	return s
+}
+
+func (s *ApplyModifyRequestDefaultStandard) SetHotelCitys(v []*ApplyModifyRequestDefaultStandardHotelCitys) *ApplyModifyRequestDefaultStandard {
+	s.HotelCitys = v
+	return s
+}
+
+func (s *ApplyModifyRequestDefaultStandard) SetHotelIntlCitys(v []*ApplyModifyRequestDefaultStandardHotelIntlCitys) *ApplyModifyRequestDefaultStandard {
+	s.HotelIntlCitys = v
+	return s
+}
+
+func (s *ApplyModifyRequestDefaultStandard) SetHotelIntlRuleCode(v int64) *ApplyModifyRequestDefaultStandard {
+	s.HotelIntlRuleCode = &v
+	return s
+}
+
+func (s *ApplyModifyRequestDefaultStandard) SetHotelRuleCode(v int64) *ApplyModifyRequestDefaultStandard {
+	s.HotelRuleCode = &v
+	return s
+}
+
+func (s *ApplyModifyRequestDefaultStandard) SetPremiumEconomyDiscount(v int32) *ApplyModifyRequestDefaultStandard {
+	s.PremiumEconomyDiscount = &v
+	return s
+}
+
+func (s *ApplyModifyRequestDefaultStandard) SetReserveType(v int32) *ApplyModifyRequestDefaultStandard {
+	s.ReserveType = &v
+	return s
+}
+
+func (s *ApplyModifyRequestDefaultStandard) SetTrainRuleCode(v int64) *ApplyModifyRequestDefaultStandard {
+	s.TrainRuleCode = &v
+	return s
+}
+
+func (s *ApplyModifyRequestDefaultStandard) SetTrainSeats(v string) *ApplyModifyRequestDefaultStandard {
+	s.TrainSeats = &v
+	return s
+}
+
+type ApplyModifyRequestDefaultStandardHotelCitys struct {
+	CityCode *string `json:"city_code,omitempty" xml:"city_code,omitempty"`
+	CityName *string `json:"city_name,omitempty" xml:"city_name,omitempty"`
+	Fee      *int64  `json:"fee,omitempty" xml:"fee,omitempty"`
+}
+
+func (s ApplyModifyRequestDefaultStandardHotelCitys) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ApplyModifyRequestDefaultStandardHotelCitys) GoString() string {
+	return s.String()
+}
+
+func (s *ApplyModifyRequestDefaultStandardHotelCitys) SetCityCode(v string) *ApplyModifyRequestDefaultStandardHotelCitys {
+	s.CityCode = &v
+	return s
+}
+
+func (s *ApplyModifyRequestDefaultStandardHotelCitys) SetCityName(v string) *ApplyModifyRequestDefaultStandardHotelCitys {
+	s.CityName = &v
+	return s
+}
+
+func (s *ApplyModifyRequestDefaultStandardHotelCitys) SetFee(v int64) *ApplyModifyRequestDefaultStandardHotelCitys {
+	s.Fee = &v
+	return s
+}
+
+type ApplyModifyRequestDefaultStandardHotelIntlCitys struct {
+	CityCode *string `json:"city_code,omitempty" xml:"city_code,omitempty"`
+	CityName *string `json:"city_name,omitempty" xml:"city_name,omitempty"`
+	Fee      *int64  `json:"fee,omitempty" xml:"fee,omitempty"`
+}
+
+func (s ApplyModifyRequestDefaultStandardHotelIntlCitys) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ApplyModifyRequestDefaultStandardHotelIntlCitys) GoString() string {
+	return s.String()
+}
+
+func (s *ApplyModifyRequestDefaultStandardHotelIntlCitys) SetCityCode(v string) *ApplyModifyRequestDefaultStandardHotelIntlCitys {
+	s.CityCode = &v
+	return s
+}
+
+func (s *ApplyModifyRequestDefaultStandardHotelIntlCitys) SetCityName(v string) *ApplyModifyRequestDefaultStandardHotelIntlCitys {
+	s.CityName = &v
+	return s
+}
+
+func (s *ApplyModifyRequestDefaultStandardHotelIntlCitys) SetFee(v int64) *ApplyModifyRequestDefaultStandardHotelIntlCitys {
+	s.Fee = &v
 	return s
 }
 
@@ -11613,8 +11958,9 @@ type ApplyModifyRequestItineraryList struct {
 	// example:
 	//
 	// projectone
-	ProjectCode  *string `json:"project_code,omitempty" xml:"project_code,omitempty"`
-	ProjectTitle *string `json:"project_title,omitempty" xml:"project_title,omitempty"`
+	ProjectCode               *string   `json:"project_code,omitempty" xml:"project_code,omitempty"`
+	ProjectTitle              *string   `json:"project_title,omitempty" xml:"project_title,omitempty"`
+	ProvinceTravelCityAdcodes []*string `json:"province_travel_city_adcodes,omitempty" xml:"province_travel_city_adcodes,omitempty" type:"Repeated"`
 	// example:
 	//
 	// ZG14131
@@ -11720,6 +12066,11 @@ func (s *ApplyModifyRequestItineraryList) SetProjectTitle(v string) *ApplyModify
 	return s
 }
 
+func (s *ApplyModifyRequestItineraryList) SetProvinceTravelCityAdcodes(v []*string) *ApplyModifyRequestItineraryList {
+	s.ProvinceTravelCityAdcodes = v
+	return s
+}
+
 func (s *ApplyModifyRequestItineraryList) SetThirdPartInvoiceId(v string) *ApplyModifyRequestItineraryList {
 	s.ThirdPartInvoiceId = &v
 	return s
@@ -11788,8 +12139,9 @@ type ApplyModifyRequestItinerarySetList struct {
 	// example:
 	//
 	// projecttow
-	ProjectCode  *string `json:"project_code,omitempty" xml:"project_code,omitempty"`
-	ProjectTitle *string `json:"project_title,omitempty" xml:"project_title,omitempty"`
+	ProjectCode               *string   `json:"project_code,omitempty" xml:"project_code,omitempty"`
+	ProjectTitle              *string   `json:"project_title,omitempty" xml:"project_title,omitempty"`
+	ProvinceTravelCityAdcodes []*string `json:"province_travel_city_adcodes,omitempty" xml:"province_travel_city_adcodes,omitempty" type:"Repeated"`
 	// example:
 	//
 	// thridpart12138
@@ -11864,6 +12216,11 @@ func (s *ApplyModifyRequestItinerarySetList) SetProjectCode(v string) *ApplyModi
 
 func (s *ApplyModifyRequestItinerarySetList) SetProjectTitle(v string) *ApplyModifyRequestItinerarySetList {
 	s.ProjectTitle = &v
+	return s
+}
+
+func (s *ApplyModifyRequestItinerarySetList) SetProvinceTravelCityAdcodes(v []*string) *ApplyModifyRequestItinerarySetList {
+	s.ProvinceTravelCityAdcodes = v
 	return s
 }
 
@@ -12215,9 +12572,10 @@ type ApplyModifyShrinkRequest struct {
 	// example:
 	//
 	// 1
-	BudgetMerge   *int32  `json:"budget_merge,omitempty" xml:"budget_merge,omitempty"`
-	CarRuleShrink *string `json:"car_rule,omitempty" xml:"car_rule,omitempty"`
-	CorpName      *string `json:"corp_name,omitempty" xml:"corp_name,omitempty"`
+	BudgetMerge           *int32  `json:"budget_merge,omitempty" xml:"budget_merge,omitempty"`
+	CarRuleShrink         *string `json:"car_rule,omitempty" xml:"car_rule,omitempty"`
+	CorpName              *string `json:"corp_name,omitempty" xml:"corp_name,omitempty"`
+	DefaultStandardShrink *string `json:"default_standard,omitempty" xml:"default_standard,omitempty"`
 	// example:
 	//
 	// 001
@@ -12336,6 +12694,11 @@ func (s *ApplyModifyShrinkRequest) SetCarRuleShrink(v string) *ApplyModifyShrink
 
 func (s *ApplyModifyShrinkRequest) SetCorpName(v string) *ApplyModifyShrinkRequest {
 	s.CorpName = &v
+	return s
+}
+
+func (s *ApplyModifyShrinkRequest) SetDefaultStandardShrink(v string) *ApplyModifyShrinkRequest {
+	s.DefaultStandardShrink = &v
 	return s
 }
 
@@ -15448,8 +15811,10 @@ type CarApplyQueryResponseBodyApplyList struct {
 	// example:
 	//
 	// 2021-03-18T20:26Z
-	GmtModified   *string                                            `json:"gmt_modified,omitempty" xml:"gmt_modified,omitempty"`
-	ItineraryList []*CarApplyQueryResponseBodyApplyListItineraryList `json:"itinerary_list,omitempty" xml:"itinerary_list,omitempty" type:"Repeated"`
+	GmtModified         *string                                            `json:"gmt_modified,omitempty" xml:"gmt_modified,omitempty"`
+	ItineraryList       []*CarApplyQueryResponseBodyApplyListItineraryList `json:"itinerary_list,omitempty" xml:"itinerary_list,omitempty" type:"Repeated"`
+	OrderId             *int64                                             `json:"order_id,omitempty" xml:"order_id,omitempty"`
+	RelatedThirdApplyId *string                                            `json:"related_third_apply_id,omitempty" xml:"related_third_apply_id,omitempty"`
 	// example:
 	//
 	// 2
@@ -15509,6 +15874,16 @@ func (s *CarApplyQueryResponseBodyApplyList) SetGmtModified(v string) *CarApplyQ
 
 func (s *CarApplyQueryResponseBodyApplyList) SetItineraryList(v []*CarApplyQueryResponseBodyApplyListItineraryList) *CarApplyQueryResponseBodyApplyList {
 	s.ItineraryList = v
+	return s
+}
+
+func (s *CarApplyQueryResponseBodyApplyList) SetOrderId(v int64) *CarApplyQueryResponseBodyApplyList {
+	s.OrderId = &v
+	return s
+}
+
+func (s *CarApplyQueryResponseBodyApplyList) SetRelatedThirdApplyId(v string) *CarApplyQueryResponseBodyApplyList {
+	s.RelatedThirdApplyId = &v
 	return s
 }
 
@@ -18380,6 +18755,7 @@ type ChannelCorpCreateRequest struct {
 	//
 	// 00001
 	ThirdCorpId *string `json:"third_corp_id,omitempty" xml:"third_corp_id,omitempty"`
+	UserId      *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
 }
 
 func (s ChannelCorpCreateRequest) String() string {
@@ -18422,6 +18798,11 @@ func (s *ChannelCorpCreateRequest) SetScope(v int32) *ChannelCorpCreateRequest {
 
 func (s *ChannelCorpCreateRequest) SetThirdCorpId(v string) *ChannelCorpCreateRequest {
 	s.ThirdCorpId = &v
+	return s
+}
+
+func (s *ChannelCorpCreateRequest) SetUserId(v string) *ChannelCorpCreateRequest {
+	s.UserId = &v
 	return s
 }
 
@@ -18499,6 +18880,7 @@ type ChannelCorpCreateResponseBodyModule struct {
 	//
 	// open12mplkebufu8701012jq
 	OpenAgentId *string `json:"open_agent_id,omitempty" xml:"open_agent_id,omitempty"`
+	UserId      *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
 }
 
 func (s ChannelCorpCreateResponseBodyModule) String() string {
@@ -18531,6 +18913,11 @@ func (s *ChannelCorpCreateResponseBodyModule) SetCorpName(v string) *ChannelCorp
 
 func (s *ChannelCorpCreateResponseBodyModule) SetOpenAgentId(v string) *ChannelCorpCreateResponseBodyModule {
 	s.OpenAgentId = &v
+	return s
+}
+
+func (s *ChannelCorpCreateResponseBodyModule) SetUserId(v string) *ChannelCorpCreateResponseBodyModule {
+	s.UserId = &v
 	return s
 }
 
@@ -67144,6 +67531,8 @@ type IeFlightBillSettlementQueryResponseBodyModuleDataList struct {
 	ArrAirportCode *string `json:"arr_airport_code,omitempty" xml:"arr_airport_code,omitempty"`
 	ArrCity        *string `json:"arr_city,omitempty" xml:"arr_city,omitempty"`
 	ArrCityCode    *string `json:"arr_city_code,omitempty" xml:"arr_city_code,omitempty"`
+	ArrCountry     *string `json:"arr_country,omitempty" xml:"arr_country,omitempty"`
+	ArrCountryCode *string `json:"arr_country_code,omitempty" xml:"arr_country_code,omitempty"`
 	// example:
 	//
 	// 2021-10-02
@@ -67209,6 +67598,8 @@ type IeFlightBillSettlementQueryResponseBodyModuleDataList struct {
 	// KHN
 	DepAirportCode *string `json:"dep_airport_code,omitempty" xml:"dep_airport_code,omitempty"`
 	DepCityCode    *string `json:"dep_city_code,omitempty" xml:"dep_city_code,omitempty"`
+	DepCountry     *string `json:"dep_country,omitempty" xml:"dep_country,omitempty"`
+	DepCountryCode *string `json:"dep_country_code,omitempty" xml:"dep_country_code,omitempty"`
 	Department     *string `json:"department,omitempty" xml:"department,omitempty"`
 	// example:
 	//
@@ -67446,6 +67837,16 @@ func (s *IeFlightBillSettlementQueryResponseBodyModuleDataList) SetArrCityCode(v
 	return s
 }
 
+func (s *IeFlightBillSettlementQueryResponseBodyModuleDataList) SetArrCountry(v string) *IeFlightBillSettlementQueryResponseBodyModuleDataList {
+	s.ArrCountry = &v
+	return s
+}
+
+func (s *IeFlightBillSettlementQueryResponseBodyModuleDataList) SetArrCountryCode(v string) *IeFlightBillSettlementQueryResponseBodyModuleDataList {
+	s.ArrCountryCode = &v
+	return s
+}
+
 func (s *IeFlightBillSettlementQueryResponseBodyModuleDataList) SetArrDate(v string) *IeFlightBillSettlementQueryResponseBodyModuleDataList {
 	s.ArrDate = &v
 	return s
@@ -67558,6 +67959,16 @@ func (s *IeFlightBillSettlementQueryResponseBodyModuleDataList) SetDepAirportCod
 
 func (s *IeFlightBillSettlementQueryResponseBodyModuleDataList) SetDepCityCode(v string) *IeFlightBillSettlementQueryResponseBodyModuleDataList {
 	s.DepCityCode = &v
+	return s
+}
+
+func (s *IeFlightBillSettlementQueryResponseBodyModuleDataList) SetDepCountry(v string) *IeFlightBillSettlementQueryResponseBodyModuleDataList {
+	s.DepCountry = &v
+	return s
+}
+
+func (s *IeFlightBillSettlementQueryResponseBodyModuleDataList) SetDepCountryCode(v string) *IeFlightBillSettlementQueryResponseBodyModuleDataList {
+	s.DepCountryCode = &v
 	return s
 }
 
@@ -105456,6 +105867,10 @@ func (client *Client) ApplyAddWithOptions(tmpReq *ApplyAddRequest, headers *Appl
 		request.CarRuleShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CarRule, tea.String("car_rule"), tea.String("json"))
 	}
 
+	if !tea.BoolValue(util.IsUnset(tmpReq.DefaultStandard)) {
+		request.DefaultStandardShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DefaultStandard, tea.String("default_standard"), tea.String("json"))
+	}
+
 	if !tea.BoolValue(util.IsUnset(tmpReq.ExternalTravelerList)) {
 		request.ExternalTravelerListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ExternalTravelerList, tea.String("external_traveler_list"), tea.String("json"))
 	}
@@ -105499,6 +105914,10 @@ func (client *Client) ApplyAddWithOptions(tmpReq *ApplyAddRequest, headers *Appl
 
 	if !tea.BoolValue(util.IsUnset(request.CorpName)) {
 		body["corp_name"] = request.CorpName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DefaultStandardShrink)) {
+		body["default_standard"] = request.DefaultStandardShrink
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.DepartId)) {
@@ -106087,6 +106506,10 @@ func (client *Client) ApplyModifyWithOptions(tmpReq *ApplyModifyRequest, headers
 		request.CarRuleShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CarRule, tea.String("car_rule"), tea.String("json"))
 	}
 
+	if !tea.BoolValue(util.IsUnset(tmpReq.DefaultStandard)) {
+		request.DefaultStandardShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DefaultStandard, tea.String("default_standard"), tea.String("json"))
+	}
+
 	if !tea.BoolValue(util.IsUnset(tmpReq.ExternalTravelerList)) {
 		request.ExternalTravelerListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ExternalTravelerList, tea.String("external_traveler_list"), tea.String("json"))
 	}
@@ -106130,6 +106553,10 @@ func (client *Client) ApplyModifyWithOptions(tmpReq *ApplyModifyRequest, headers
 
 	if !tea.BoolValue(util.IsUnset(request.CorpName)) {
 		body["corp_name"] = request.CorpName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DefaultStandardShrink)) {
+		body["default_standard"] = request.DefaultStandardShrink
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.DepartId)) {
@@ -107358,6 +107785,10 @@ func (client *Client) ChannelCorpCreateWithOptions(request *ChannelCorpCreateReq
 
 	if !tea.BoolValue(util.IsUnset(request.ThirdCorpId)) {
 		body["third_corp_id"] = request.ThirdCorpId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		body["user_id"] = request.UserId
 	}
 
 	realHeaders := make(map[string]*string)
