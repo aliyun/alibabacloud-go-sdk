@@ -1475,6 +1475,77 @@ func (s *DeleteInstanceResponse) SetBody(v *DeleteInstanceResponseBody) *DeleteI
 	return s
 }
 
+type DeleteInstanceLabelsRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// labelKey1,labelKey2,labelKey3
+	LabelKeys *string `json:"LabelKeys,omitempty" xml:"LabelKeys,omitempty"`
+}
+
+func (s DeleteInstanceLabelsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteInstanceLabelsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteInstanceLabelsRequest) SetLabelKeys(v string) *DeleteInstanceLabelsRequest {
+	s.LabelKeys = &v
+	return s
+}
+
+type DeleteInstanceLabelsResponseBody struct {
+	// example:
+	//
+	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteInstanceLabelsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteInstanceLabelsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteInstanceLabelsResponseBody) SetRequestId(v string) *DeleteInstanceLabelsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteInstanceLabelsResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteInstanceLabelsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteInstanceLabelsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteInstanceLabelsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteInstanceLabelsResponse) SetHeaders(v map[string]*string) *DeleteInstanceLabelsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteInstanceLabelsResponse) SetStatusCode(v int32) *DeleteInstanceLabelsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteInstanceLabelsResponse) SetBody(v *DeleteInstanceLabelsResponseBody) *DeleteInstanceLabelsResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteInstanceShutdownTimerResponseBody struct {
 	// example:
 	//
@@ -7136,6 +7207,106 @@ func (s *UpdateInstanceResponse) SetBody(v *UpdateInstanceResponseBody) *UpdateI
 	return s
 }
 
+type UpdateInstanceLabelsRequest struct {
+	// This parameter is required.
+	Labels []*UpdateInstanceLabelsRequestLabels `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
+}
+
+func (s UpdateInstanceLabelsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateInstanceLabelsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateInstanceLabelsRequest) SetLabels(v []*UpdateInstanceLabelsRequestLabels) *UpdateInstanceLabelsRequest {
+	s.Labels = v
+	return s
+}
+
+type UpdateInstanceLabelsRequestLabels struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// customLabelKey
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// labelValue
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s UpdateInstanceLabelsRequestLabels) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateInstanceLabelsRequestLabels) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateInstanceLabelsRequestLabels) SetKey(v string) *UpdateInstanceLabelsRequestLabels {
+	s.Key = &v
+	return s
+}
+
+func (s *UpdateInstanceLabelsRequestLabels) SetValue(v string) *UpdateInstanceLabelsRequestLabels {
+	s.Value = &v
+	return s
+}
+
+type UpdateInstanceLabelsResponseBody struct {
+	// example:
+	//
+	// E7D55162-4489-1619-AAF5-3F97D5FCA948
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateInstanceLabelsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateInstanceLabelsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateInstanceLabelsResponseBody) SetRequestId(v string) *UpdateInstanceLabelsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateInstanceLabelsResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateInstanceLabelsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateInstanceLabelsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateInstanceLabelsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateInstanceLabelsResponse) SetHeaders(v map[string]*string) *UpdateInstanceLabelsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateInstanceLabelsResponse) SetStatusCode(v int32) *UpdateInstanceLabelsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateInstanceLabelsResponse) SetBody(v *UpdateInstanceLabelsResponseBody) *UpdateInstanceLabelsResponse {
+	s.Body = v
+	return s
+}
+
 type Client struct {
 	openapi.Client
 }
@@ -7620,6 +7791,70 @@ func (client *Client) DeleteInstance(InstanceId *string) (_result *DeleteInstanc
 	headers := make(map[string]*string)
 	_result = &DeleteInstanceResponse{}
 	_body, _err := client.DeleteInstanceWithOptions(InstanceId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除DSW实例的标签
+//
+// @param request - DeleteInstanceLabelsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteInstanceLabelsResponse
+func (client *Client) DeleteInstanceLabelsWithOptions(InstanceId *string, request *DeleteInstanceLabelsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteInstanceLabelsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.LabelKeys)) {
+		query["LabelKeys"] = request.LabelKeys
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteInstanceLabels"),
+		Version:     tea.String("2022-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v2/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/labels"),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteInstanceLabelsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除DSW实例的标签
+//
+// @param request - DeleteInstanceLabelsRequest
+//
+// @return DeleteInstanceLabelsResponse
+func (client *Client) DeleteInstanceLabels(InstanceId *string, request *DeleteInstanceLabelsRequest) (_result *DeleteInstanceLabelsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteInstanceLabelsResponse{}
+	_body, _err := client.DeleteInstanceLabelsWithOptions(InstanceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8970,6 +9205,70 @@ func (client *Client) UpdateInstance(InstanceId *string, request *UpdateInstance
 	headers := make(map[string]*string)
 	_result = &UpdateInstanceResponse{}
 	_body, _err := client.UpdateInstanceWithOptions(InstanceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改DSW实例的标签
+//
+// @param request - UpdateInstanceLabelsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateInstanceLabelsResponse
+func (client *Client) UpdateInstanceLabelsWithOptions(InstanceId *string, request *UpdateInstanceLabelsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateInstanceLabelsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Labels)) {
+		body["Labels"] = request.Labels
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateInstanceLabels"),
+		Version:     tea.String("2022-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v2/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/labels"),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateInstanceLabelsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改DSW实例的标签
+//
+// @param request - UpdateInstanceLabelsRequest
+//
+// @return UpdateInstanceLabelsResponse
+func (client *Client) UpdateInstanceLabels(InstanceId *string, request *UpdateInstanceLabelsRequest) (_result *UpdateInstanceLabelsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateInstanceLabelsResponse{}
+	_body, _err := client.UpdateInstanceLabelsWithOptions(InstanceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
