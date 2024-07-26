@@ -5267,6 +5267,222 @@ func (s *ListServiceInstanceResourcesResponse) SetBody(v *ListServiceInstanceRes
 	return s
 }
 
+type ListServiceInstanceUpgradeHistoryRequest struct {
+	// example:
+	//
+	// 20
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// example:
+	//
+	// BBBAAfu+XtuBE55iRLHEYYuojI4=
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// si-70a3b15bb62643xxxxxx
+	ServiceInstanceId *string `json:"ServiceInstanceId,omitempty" xml:"ServiceInstanceId,omitempty"`
+}
+
+func (s ListServiceInstanceUpgradeHistoryRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListServiceInstanceUpgradeHistoryRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListServiceInstanceUpgradeHistoryRequest) SetMaxResults(v int32) *ListServiceInstanceUpgradeHistoryRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListServiceInstanceUpgradeHistoryRequest) SetNextToken(v string) *ListServiceInstanceUpgradeHistoryRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListServiceInstanceUpgradeHistoryRequest) SetRegionId(v string) *ListServiceInstanceUpgradeHistoryRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ListServiceInstanceUpgradeHistoryRequest) SetServiceInstanceId(v string) *ListServiceInstanceUpgradeHistoryRequest {
+	s.ServiceInstanceId = &v
+	return s
+}
+
+type ListServiceInstanceUpgradeHistoryResponseBody struct {
+	// example:
+	//
+	// 20
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// example:
+	//
+	// AAAAAfu+XtuBE55iRLHEYYuojI41
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// example:
+	//
+	// EE3EDF4E-B3B1-19B6-BD01-30D4D00F6E5D
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 2
+	TotalCount     *int64                                                         `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	UpgradeHistory []*ListServiceInstanceUpgradeHistoryResponseBodyUpgradeHistory `json:"UpgradeHistory,omitempty" xml:"UpgradeHistory,omitempty" type:"Repeated"`
+}
+
+func (s ListServiceInstanceUpgradeHistoryResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListServiceInstanceUpgradeHistoryResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListServiceInstanceUpgradeHistoryResponseBody) SetMaxResults(v int32) *ListServiceInstanceUpgradeHistoryResponseBody {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListServiceInstanceUpgradeHistoryResponseBody) SetNextToken(v string) *ListServiceInstanceUpgradeHistoryResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListServiceInstanceUpgradeHistoryResponseBody) SetRequestId(v string) *ListServiceInstanceUpgradeHistoryResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListServiceInstanceUpgradeHistoryResponseBody) SetTotalCount(v int64) *ListServiceInstanceUpgradeHistoryResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *ListServiceInstanceUpgradeHistoryResponseBody) SetUpgradeHistory(v []*ListServiceInstanceUpgradeHistoryResponseBodyUpgradeHistory) *ListServiceInstanceUpgradeHistoryResponseBody {
+	s.UpgradeHistory = v
+	return s
+}
+
+type ListServiceInstanceUpgradeHistoryResponseBodyUpgradeHistory struct {
+	// example:
+	//
+	// 2022-04-26T09:09:51Z
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// example:
+	//
+	// 1
+	FromVersion *string `json:"FromVersion,omitempty" xml:"FromVersion,omitempty"`
+	// example:
+	//
+	// {\\"PreUpgradeExecutionId\\":\\"exec-123\\"}
+	Results *string `json:"Results,omitempty" xml:"Results,omitempty"`
+	// example:
+	//
+	// 2022-04-26T08:09:51Z
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// example:
+	//
+	// UpgradeFailed
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// 3
+	ToVersion *string `json:"ToVersion,omitempty" xml:"ToVersion,omitempty"`
+	// example:
+	//
+	// Upgrade
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// exec-123
+	UpgradeHistoryId *string `json:"UpgradeHistoryId,omitempty" xml:"UpgradeHistoryId,omitempty"`
+}
+
+func (s ListServiceInstanceUpgradeHistoryResponseBodyUpgradeHistory) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListServiceInstanceUpgradeHistoryResponseBodyUpgradeHistory) GoString() string {
+	return s.String()
+}
+
+func (s *ListServiceInstanceUpgradeHistoryResponseBodyUpgradeHistory) SetEndTime(v string) *ListServiceInstanceUpgradeHistoryResponseBodyUpgradeHistory {
+	s.EndTime = &v
+	return s
+}
+
+func (s *ListServiceInstanceUpgradeHistoryResponseBodyUpgradeHistory) SetFromVersion(v string) *ListServiceInstanceUpgradeHistoryResponseBodyUpgradeHistory {
+	s.FromVersion = &v
+	return s
+}
+
+func (s *ListServiceInstanceUpgradeHistoryResponseBodyUpgradeHistory) SetResults(v string) *ListServiceInstanceUpgradeHistoryResponseBodyUpgradeHistory {
+	s.Results = &v
+	return s
+}
+
+func (s *ListServiceInstanceUpgradeHistoryResponseBodyUpgradeHistory) SetStartTime(v string) *ListServiceInstanceUpgradeHistoryResponseBodyUpgradeHistory {
+	s.StartTime = &v
+	return s
+}
+
+func (s *ListServiceInstanceUpgradeHistoryResponseBodyUpgradeHistory) SetStatus(v string) *ListServiceInstanceUpgradeHistoryResponseBodyUpgradeHistory {
+	s.Status = &v
+	return s
+}
+
+func (s *ListServiceInstanceUpgradeHistoryResponseBodyUpgradeHistory) SetToVersion(v string) *ListServiceInstanceUpgradeHistoryResponseBodyUpgradeHistory {
+	s.ToVersion = &v
+	return s
+}
+
+func (s *ListServiceInstanceUpgradeHistoryResponseBodyUpgradeHistory) SetType(v string) *ListServiceInstanceUpgradeHistoryResponseBodyUpgradeHistory {
+	s.Type = &v
+	return s
+}
+
+func (s *ListServiceInstanceUpgradeHistoryResponseBodyUpgradeHistory) SetUpgradeHistoryId(v string) *ListServiceInstanceUpgradeHistoryResponseBodyUpgradeHistory {
+	s.UpgradeHistoryId = &v
+	return s
+}
+
+type ListServiceInstanceUpgradeHistoryResponse struct {
+	Headers    map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListServiceInstanceUpgradeHistoryResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListServiceInstanceUpgradeHistoryResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListServiceInstanceUpgradeHistoryResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListServiceInstanceUpgradeHistoryResponse) SetHeaders(v map[string]*string) *ListServiceInstanceUpgradeHistoryResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListServiceInstanceUpgradeHistoryResponse) SetStatusCode(v int32) *ListServiceInstanceUpgradeHistoryResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListServiceInstanceUpgradeHistoryResponse) SetBody(v *ListServiceInstanceUpgradeHistoryResponseBody) *ListServiceInstanceUpgradeHistoryResponse {
+	s.Body = v
+	return s
+}
+
 type ListServiceInstancesRequest struct {
 	// The filter.
 	Filter []*ListServiceInstancesRequestFilter `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Repeated"`
@@ -6676,6 +6892,93 @@ func (s *RestartServiceInstanceResponse) SetBody(v *RestartServiceInstanceRespon
 	return s
 }
 
+type RollbackServiceInstanceRequest struct {
+	// example:
+	//
+	// 123e4567-e89b-12d3-a456-426655440000
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// si-d6ab3a63ccbb4bxxxxxx
+	ServiceInstanceId *string `json:"ServiceInstanceId,omitempty" xml:"ServiceInstanceId,omitempty"`
+}
+
+func (s RollbackServiceInstanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RollbackServiceInstanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RollbackServiceInstanceRequest) SetClientToken(v string) *RollbackServiceInstanceRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *RollbackServiceInstanceRequest) SetRegionId(v string) *RollbackServiceInstanceRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *RollbackServiceInstanceRequest) SetServiceInstanceId(v string) *RollbackServiceInstanceRequest {
+	s.ServiceInstanceId = &v
+	return s
+}
+
+type RollbackServiceInstanceResponseBody struct {
+	// example:
+	//
+	// 4DB0F536-B3BE-4F0D-BD29-E83FB56D550C
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s RollbackServiceInstanceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RollbackServiceInstanceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RollbackServiceInstanceResponseBody) SetRequestId(v string) *RollbackServiceInstanceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type RollbackServiceInstanceResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RollbackServiceInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s RollbackServiceInstanceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RollbackServiceInstanceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RollbackServiceInstanceResponse) SetHeaders(v map[string]*string) *RollbackServiceInstanceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RollbackServiceInstanceResponse) SetStatusCode(v int32) *RollbackServiceInstanceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *RollbackServiceInstanceResponse) SetBody(v *RollbackServiceInstanceResponseBody) *RollbackServiceInstanceResponse {
+	s.Body = v
+	return s
+}
+
 type StartServiceInstanceRequest struct {
 	// The client token that is used to ensure the idempotence of the request.
 	//
@@ -7156,6 +7459,97 @@ func (s *UnTagResourcesResponse) SetBody(v *UnTagResourcesResponseBody) *UnTagRe
 	return s
 }
 
+type UpdateServiceInstanceAttributesRequest struct {
+	// example:
+	//
+	// true
+	EnableOperation *bool `json:"EnableOperation,omitempty" xml:"EnableOperation,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// si-d6ab3a63ccbb4b17xxxx
+	ServiceInstanceId *string `json:"ServiceInstanceId,omitempty" xml:"ServiceInstanceId,omitempty"`
+}
+
+func (s UpdateServiceInstanceAttributesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateServiceInstanceAttributesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateServiceInstanceAttributesRequest) SetEnableOperation(v bool) *UpdateServiceInstanceAttributesRequest {
+	s.EnableOperation = &v
+	return s
+}
+
+func (s *UpdateServiceInstanceAttributesRequest) SetRegionId(v string) *UpdateServiceInstanceAttributesRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *UpdateServiceInstanceAttributesRequest) SetServiceInstanceId(v string) *UpdateServiceInstanceAttributesRequest {
+	s.ServiceInstanceId = &v
+	return s
+}
+
+type UpdateServiceInstanceAttributesResponseBody struct {
+	// example:
+	//
+	// 06BF8F22-02DC-4750-83DF-3FFC11C065EA
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateServiceInstanceAttributesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateServiceInstanceAttributesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateServiceInstanceAttributesResponseBody) SetRequestId(v string) *UpdateServiceInstanceAttributesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateServiceInstanceAttributesResponse struct {
+	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateServiceInstanceAttributesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateServiceInstanceAttributesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateServiceInstanceAttributesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateServiceInstanceAttributesResponse) SetHeaders(v map[string]*string) *UpdateServiceInstanceAttributesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateServiceInstanceAttributesResponse) SetStatusCode(v int32) *UpdateServiceInstanceAttributesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateServiceInstanceAttributesResponse) SetBody(v *UpdateServiceInstanceAttributesResponseBody) *UpdateServiceInstanceAttributesResponse {
+	s.Body = v
+	return s
+}
+
 type UpdateServiceInstanceSpecRequest struct {
 	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
 	//
@@ -7607,6 +8001,191 @@ func (s *UpdateServiceUsageResponse) SetStatusCode(v int32) *UpdateServiceUsageR
 }
 
 func (s *UpdateServiceUsageResponse) SetBody(v *UpdateServiceUsageResponseBody) *UpdateServiceUsageResponse {
+	s.Body = v
+	return s
+}
+
+type UpgradeServiceInstanceRequest struct {
+	// example:
+	//
+	// 123e4567-e89b-12d3-a456-426655440000
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// example:
+	//
+	// true
+	DryRun *string `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// example:
+	//
+	// { \\"RegionId\\": \\"cn-hangzhou\\", \\"InstanceType\\": \\"ecs.g5.large\\"}
+	Parameters map[string]interface{} `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// si-d6ab3a63ccbb4bxxxxxx
+	ServiceInstanceId *string `json:"ServiceInstanceId,omitempty" xml:"ServiceInstanceId,omitempty"`
+	// example:
+	//
+	// 2
+	ServiceVersion *string `json:"ServiceVersion,omitempty" xml:"ServiceVersion,omitempty"`
+}
+
+func (s UpgradeServiceInstanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpgradeServiceInstanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpgradeServiceInstanceRequest) SetClientToken(v string) *UpgradeServiceInstanceRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *UpgradeServiceInstanceRequest) SetDryRun(v string) *UpgradeServiceInstanceRequest {
+	s.DryRun = &v
+	return s
+}
+
+func (s *UpgradeServiceInstanceRequest) SetParameters(v map[string]interface{}) *UpgradeServiceInstanceRequest {
+	s.Parameters = v
+	return s
+}
+
+func (s *UpgradeServiceInstanceRequest) SetRegionId(v string) *UpgradeServiceInstanceRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *UpgradeServiceInstanceRequest) SetServiceInstanceId(v string) *UpgradeServiceInstanceRequest {
+	s.ServiceInstanceId = &v
+	return s
+}
+
+func (s *UpgradeServiceInstanceRequest) SetServiceVersion(v string) *UpgradeServiceInstanceRequest {
+	s.ServiceVersion = &v
+	return s
+}
+
+type UpgradeServiceInstanceShrinkRequest struct {
+	// example:
+	//
+	// 123e4567-e89b-12d3-a456-426655440000
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// example:
+	//
+	// true
+	DryRun *string `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// example:
+	//
+	// { \\"RegionId\\": \\"cn-hangzhou\\", \\"InstanceType\\": \\"ecs.g5.large\\"}
+	ParametersShrink *string `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// si-d6ab3a63ccbb4bxxxxxx
+	ServiceInstanceId *string `json:"ServiceInstanceId,omitempty" xml:"ServiceInstanceId,omitempty"`
+	// example:
+	//
+	// 2
+	ServiceVersion *string `json:"ServiceVersion,omitempty" xml:"ServiceVersion,omitempty"`
+}
+
+func (s UpgradeServiceInstanceShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpgradeServiceInstanceShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpgradeServiceInstanceShrinkRequest) SetClientToken(v string) *UpgradeServiceInstanceShrinkRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *UpgradeServiceInstanceShrinkRequest) SetDryRun(v string) *UpgradeServiceInstanceShrinkRequest {
+	s.DryRun = &v
+	return s
+}
+
+func (s *UpgradeServiceInstanceShrinkRequest) SetParametersShrink(v string) *UpgradeServiceInstanceShrinkRequest {
+	s.ParametersShrink = &v
+	return s
+}
+
+func (s *UpgradeServiceInstanceShrinkRequest) SetRegionId(v string) *UpgradeServiceInstanceShrinkRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *UpgradeServiceInstanceShrinkRequest) SetServiceInstanceId(v string) *UpgradeServiceInstanceShrinkRequest {
+	s.ServiceInstanceId = &v
+	return s
+}
+
+func (s *UpgradeServiceInstanceShrinkRequest) SetServiceVersion(v string) *UpgradeServiceInstanceShrinkRequest {
+	s.ServiceVersion = &v
+	return s
+}
+
+type UpgradeServiceInstanceResponseBody struct {
+	// example:
+	//
+	// 4DB0F536-B3BE-4F0D-BD29-E83FB56D550C
+	RequestId                 *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	UpgradeRequiredParameters []*string `json:"UpgradeRequiredParameters,omitempty" xml:"UpgradeRequiredParameters,omitempty" type:"Repeated"`
+}
+
+func (s UpgradeServiceInstanceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpgradeServiceInstanceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpgradeServiceInstanceResponseBody) SetRequestId(v string) *UpgradeServiceInstanceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpgradeServiceInstanceResponseBody) SetUpgradeRequiredParameters(v []*string) *UpgradeServiceInstanceResponseBody {
+	s.UpgradeRequiredParameters = v
+	return s
+}
+
+type UpgradeServiceInstanceResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpgradeServiceInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpgradeServiceInstanceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpgradeServiceInstanceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpgradeServiceInstanceResponse) SetHeaders(v map[string]*string) *UpgradeServiceInstanceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpgradeServiceInstanceResponse) SetStatusCode(v int32) *UpgradeServiceInstanceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpgradeServiceInstanceResponse) SetBody(v *UpgradeServiceInstanceResponseBody) *UpgradeServiceInstanceResponse {
 	s.Body = v
 	return s
 }
@@ -8839,6 +9418,78 @@ func (client *Client) ListServiceInstanceResources(request *ListServiceInstanceR
 
 // Summary:
 //
+// 查看服务实例升级历史
+//
+// @param request - ListServiceInstanceUpgradeHistoryRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListServiceInstanceUpgradeHistoryResponse
+func (client *Client) ListServiceInstanceUpgradeHistoryWithOptions(request *ListServiceInstanceUpgradeHistoryRequest, runtime *util.RuntimeOptions) (_result *ListServiceInstanceUpgradeHistoryResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceInstanceId)) {
+		query["ServiceInstanceId"] = request.ServiceInstanceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListServiceInstanceUpgradeHistory"),
+		Version:     tea.String("2021-06-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListServiceInstanceUpgradeHistoryResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查看服务实例升级历史
+//
+// @param request - ListServiceInstanceUpgradeHistoryRequest
+//
+// @return ListServiceInstanceUpgradeHistoryResponse
+func (client *Client) ListServiceInstanceUpgradeHistory(request *ListServiceInstanceUpgradeHistoryRequest) (_result *ListServiceInstanceUpgradeHistoryResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListServiceInstanceUpgradeHistoryResponse{}
+	_body, _err := client.ListServiceInstanceUpgradeHistoryWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // {}
 //
 // @param request - ListServiceInstancesRequest
@@ -9179,6 +9830,74 @@ func (client *Client) RestartServiceInstance(request *RestartServiceInstanceRequ
 
 // Summary:
 //
+// 回滚服务实例
+//
+// @param request - RollbackServiceInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RollbackServiceInstanceResponse
+func (client *Client) RollbackServiceInstanceWithOptions(request *RollbackServiceInstanceRequest, runtime *util.RuntimeOptions) (_result *RollbackServiceInstanceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceInstanceId)) {
+		query["ServiceInstanceId"] = request.ServiceInstanceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RollbackServiceInstance"),
+		Version:     tea.String("2021-06-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &RollbackServiceInstanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 回滚服务实例
+//
+// @param request - RollbackServiceInstanceRequest
+//
+// @return RollbackServiceInstanceResponse
+func (client *Client) RollbackServiceInstance(request *RollbackServiceInstanceRequest) (_result *RollbackServiceInstanceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &RollbackServiceInstanceResponse{}
+	_body, _err := client.RollbackServiceInstanceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // When the service instance status is Stopped (Stopped) or StartFailed (Startup failed), the StartServiceInstance interface is invoked to start the service instance.
 //
 // @param request - StartServiceInstanceRequest
@@ -9445,6 +10164,74 @@ func (client *Client) UnTagResources(request *UnTagResourcesRequest) (_result *U
 	return _result, _err
 }
 
+// Summary:
+//
+// 更新服务实例属性
+//
+// @param request - UpdateServiceInstanceAttributesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateServiceInstanceAttributesResponse
+func (client *Client) UpdateServiceInstanceAttributesWithOptions(request *UpdateServiceInstanceAttributesRequest, runtime *util.RuntimeOptions) (_result *UpdateServiceInstanceAttributesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EnableOperation)) {
+		query["EnableOperation"] = request.EnableOperation
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceInstanceId)) {
+		query["ServiceInstanceId"] = request.ServiceInstanceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateServiceInstanceAttributes"),
+		Version:     tea.String("2021-06-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateServiceInstanceAttributesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新服务实例属性
+//
+// @param request - UpdateServiceInstanceAttributesRequest
+//
+// @return UpdateServiceInstanceAttributesResponse
+func (client *Client) UpdateServiceInstanceAttributes(request *UpdateServiceInstanceAttributesRequest) (_result *UpdateServiceInstanceAttributesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateServiceInstanceAttributesResponse{}
+	_body, _err := client.UpdateServiceInstanceAttributesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 // @param tmpReq - UpdateServiceInstanceSpecRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -9598,6 +10385,84 @@ func (client *Client) UpdateServiceUsage(request *UpdateServiceUsageRequest) (_r
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateServiceUsageResponse{}
 	_body, _err := client.UpdateServiceUsageWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param tmpReq - UpgradeServiceInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpgradeServiceInstanceResponse
+func (client *Client) UpgradeServiceInstanceWithOptions(tmpReq *UpgradeServiceInstanceRequest, runtime *util.RuntimeOptions) (_result *UpgradeServiceInstanceResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &UpgradeServiceInstanceShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Parameters)) {
+		request.ParametersShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Parameters, tea.String("Parameters"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ParametersShrink)) {
+		query["Parameters"] = request.ParametersShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceInstanceId)) {
+		query["ServiceInstanceId"] = request.ServiceInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceVersion)) {
+		query["ServiceVersion"] = request.ServiceVersion
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpgradeServiceInstance"),
+		Version:     tea.String("2021-06-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpgradeServiceInstanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - UpgradeServiceInstanceRequest
+//
+// @return UpgradeServiceInstanceResponse
+func (client *Client) UpgradeServiceInstance(request *UpgradeServiceInstanceRequest) (_result *UpgradeServiceInstanceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpgradeServiceInstanceResponse{}
+	_body, _err := client.UpgradeServiceInstanceWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
