@@ -827,6 +827,75 @@ func (s *AddWebhookResponse) SetBody(v *AddWebhookResponseBody) *AddWebhookRespo
 	return s
 }
 
+type CancelExecutionReleaseStageRequest struct {
+	// example:
+	//
+	// 66c0c9fffeb86b450c19****
+	OrganizationId *string `json:"organizationId,omitempty" xml:"organizationId,omitempty"`
+}
+
+func (s CancelExecutionReleaseStageRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CancelExecutionReleaseStageRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CancelExecutionReleaseStageRequest) SetOrganizationId(v string) *CancelExecutionReleaseStageRequest {
+	s.OrganizationId = &v
+	return s
+}
+
+type CancelExecutionReleaseStageResponseBody struct {
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s CancelExecutionReleaseStageResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CancelExecutionReleaseStageResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CancelExecutionReleaseStageResponseBody) SetSuccess(v bool) *CancelExecutionReleaseStageResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CancelExecutionReleaseStageResponse struct {
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CancelExecutionReleaseStageResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CancelExecutionReleaseStageResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CancelExecutionReleaseStageResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CancelExecutionReleaseStageResponse) SetHeaders(v map[string]*string) *CancelExecutionReleaseStageResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CancelExecutionReleaseStageResponse) SetStatusCode(v int32) *CancelExecutionReleaseStageResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CancelExecutionReleaseStageResponse) SetBody(v *CancelExecutionReleaseStageResponseBody) *CancelExecutionReleaseStageResponse {
+	s.Body = v
+	return s
+}
+
 type CloseMergeRequestRequest struct {
 	// example:
 	//
@@ -15253,6 +15322,99 @@ func (s *EnableDeployKeyResponse) SetBody(v *EnableDeployKeyResponseBody) *Enabl
 	return s
 }
 
+type ExecuteChangeRequestReleaseStageRequest struct {
+	Params map[string]interface{} `json:"params,omitempty" xml:"params,omitempty"`
+	// example:
+	//
+	// 66c0c9fffeb86b450c199fcd
+	OrganizationId *string `json:"organizationId,omitempty" xml:"organizationId,omitempty"`
+}
+
+func (s ExecuteChangeRequestReleaseStageRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExecuteChangeRequestReleaseStageRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ExecuteChangeRequestReleaseStageRequest) SetParams(v map[string]interface{}) *ExecuteChangeRequestReleaseStageRequest {
+	s.Params = v
+	return s
+}
+
+func (s *ExecuteChangeRequestReleaseStageRequest) SetOrganizationId(v string) *ExecuteChangeRequestReleaseStageRequest {
+	s.OrganizationId = &v
+	return s
+}
+
+type ExecuteChangeRequestReleaseStageResponseBody struct {
+	// example:
+	//
+	// 1
+	Object *int64 `json:"object,omitempty" xml:"object,omitempty"`
+	// example:
+	//
+	// 3259***
+	PipelineId *int64 `json:"pipelineId,omitempty" xml:"pipelineId,omitempty"`
+	// example:
+	//
+	// 1
+	PipelineRunId *int64 `json:"pipelineRunId,omitempty" xml:"pipelineRunId,omitempty"`
+}
+
+func (s ExecuteChangeRequestReleaseStageResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExecuteChangeRequestReleaseStageResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ExecuteChangeRequestReleaseStageResponseBody) SetObject(v int64) *ExecuteChangeRequestReleaseStageResponseBody {
+	s.Object = &v
+	return s
+}
+
+func (s *ExecuteChangeRequestReleaseStageResponseBody) SetPipelineId(v int64) *ExecuteChangeRequestReleaseStageResponseBody {
+	s.PipelineId = &v
+	return s
+}
+
+func (s *ExecuteChangeRequestReleaseStageResponseBody) SetPipelineRunId(v int64) *ExecuteChangeRequestReleaseStageResponseBody {
+	s.PipelineRunId = &v
+	return s
+}
+
+type ExecuteChangeRequestReleaseStageResponse struct {
+	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ExecuteChangeRequestReleaseStageResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ExecuteChangeRequestReleaseStageResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExecuteChangeRequestReleaseStageResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ExecuteChangeRequestReleaseStageResponse) SetHeaders(v map[string]*string) *ExecuteChangeRequestReleaseStageResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ExecuteChangeRequestReleaseStageResponse) SetStatusCode(v int32) *ExecuteChangeRequestReleaseStageResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ExecuteChangeRequestReleaseStageResponse) SetBody(v *ExecuteChangeRequestReleaseStageResponseBody) *ExecuteChangeRequestReleaseStageResponse {
+	s.Body = v
+	return s
+}
+
 type ExportInsightCustomValueRequest struct {
 	// This parameter is required.
 	//
@@ -25304,6 +25466,425 @@ func (s *GetPushRuleResponse) SetStatusCode(v int32) *GetPushRuleResponse {
 }
 
 func (s *GetPushRuleResponse) SetBody(v *GetPushRuleResponseBody) *GetPushRuleResponse {
+	s.Body = v
+	return s
+}
+
+type GetReleaseStagePipelineRunRequest struct {
+	// example:
+	//
+	// 66c0c9fffeb86b450c199fcd
+	OrganizationId *string `json:"organizationId,omitempty" xml:"organizationId,omitempty"`
+}
+
+func (s GetReleaseStagePipelineRunRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetReleaseStagePipelineRunRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetReleaseStagePipelineRunRequest) SetOrganizationId(v string) *GetReleaseStagePipelineRunRequest {
+	s.OrganizationId = &v
+	return s
+}
+
+type GetReleaseStagePipelineRunResponseBody struct {
+	PipelineRun *GetReleaseStagePipelineRunResponseBodyPipelineRun `json:"pipelineRun,omitempty" xml:"pipelineRun,omitempty" type:"Struct"`
+}
+
+func (s GetReleaseStagePipelineRunResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetReleaseStagePipelineRunResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetReleaseStagePipelineRunResponseBody) SetPipelineRun(v *GetReleaseStagePipelineRunResponseBodyPipelineRun) *GetReleaseStagePipelineRunResponseBody {
+	s.PipelineRun = v
+	return s
+}
+
+type GetReleaseStagePipelineRunResponseBodyPipelineRun struct {
+	// example:
+	//
+	// 1586863220000
+	CreateTime *int64 `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// example:
+	//
+	// 1111111111
+	CreatorAccountId *string `json:"creatorAccountId,omitempty" xml:"creatorAccountId,omitempty"`
+	// example:
+	//
+	// 11111111111
+	ModifierAccountId *string `json:"modifierAccountId,omitempty" xml:"modifierAccountId,omitempty"`
+	// example:
+	//
+	// 1234
+	PipelineId *int64 `json:"pipelineId,omitempty" xml:"pipelineId,omitempty"`
+	// example:
+	//
+	// 1
+	PipelineRunId *int64                                                      `json:"pipelineRunId,omitempty" xml:"pipelineRunId,omitempty"`
+	Sources       []*GetReleaseStagePipelineRunResponseBodyPipelineRunSources `json:"sources,omitempty" xml:"sources,omitempty" type:"Repeated"`
+	StageGroup    [][]*string                                                 `json:"stageGroup,omitempty" xml:"stageGroup,omitempty" type:"Repeated"`
+	Stages        []*GetReleaseStagePipelineRunResponseBodyPipelineRunStages  `json:"stages,omitempty" xml:"stages,omitempty" type:"Repeated"`
+	// example:
+	//
+	// SUCCESS
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// example:
+	//
+	// 1
+	TriggerMode *int32 `json:"triggerMode,omitempty" xml:"triggerMode,omitempty"`
+	// example:
+	//
+	// 1586863220000
+	UpdateTime *int64 `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
+}
+
+func (s GetReleaseStagePipelineRunResponseBodyPipelineRun) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetReleaseStagePipelineRunResponseBodyPipelineRun) GoString() string {
+	return s.String()
+}
+
+func (s *GetReleaseStagePipelineRunResponseBodyPipelineRun) SetCreateTime(v int64) *GetReleaseStagePipelineRunResponseBodyPipelineRun {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *GetReleaseStagePipelineRunResponseBodyPipelineRun) SetCreatorAccountId(v string) *GetReleaseStagePipelineRunResponseBodyPipelineRun {
+	s.CreatorAccountId = &v
+	return s
+}
+
+func (s *GetReleaseStagePipelineRunResponseBodyPipelineRun) SetModifierAccountId(v string) *GetReleaseStagePipelineRunResponseBodyPipelineRun {
+	s.ModifierAccountId = &v
+	return s
+}
+
+func (s *GetReleaseStagePipelineRunResponseBodyPipelineRun) SetPipelineId(v int64) *GetReleaseStagePipelineRunResponseBodyPipelineRun {
+	s.PipelineId = &v
+	return s
+}
+
+func (s *GetReleaseStagePipelineRunResponseBodyPipelineRun) SetPipelineRunId(v int64) *GetReleaseStagePipelineRunResponseBodyPipelineRun {
+	s.PipelineRunId = &v
+	return s
+}
+
+func (s *GetReleaseStagePipelineRunResponseBodyPipelineRun) SetSources(v []*GetReleaseStagePipelineRunResponseBodyPipelineRunSources) *GetReleaseStagePipelineRunResponseBodyPipelineRun {
+	s.Sources = v
+	return s
+}
+
+func (s *GetReleaseStagePipelineRunResponseBodyPipelineRun) SetStageGroup(v [][]*string) *GetReleaseStagePipelineRunResponseBodyPipelineRun {
+	s.StageGroup = v
+	return s
+}
+
+func (s *GetReleaseStagePipelineRunResponseBodyPipelineRun) SetStages(v []*GetReleaseStagePipelineRunResponseBodyPipelineRunStages) *GetReleaseStagePipelineRunResponseBodyPipelineRun {
+	s.Stages = v
+	return s
+}
+
+func (s *GetReleaseStagePipelineRunResponseBodyPipelineRun) SetStatus(v string) *GetReleaseStagePipelineRunResponseBodyPipelineRun {
+	s.Status = &v
+	return s
+}
+
+func (s *GetReleaseStagePipelineRunResponseBodyPipelineRun) SetTriggerMode(v int32) *GetReleaseStagePipelineRunResponseBodyPipelineRun {
+	s.TriggerMode = &v
+	return s
+}
+
+func (s *GetReleaseStagePipelineRunResponseBodyPipelineRun) SetUpdateTime(v int64) *GetReleaseStagePipelineRunResponseBodyPipelineRun {
+	s.UpdateTime = &v
+	return s
+}
+
+type GetReleaseStagePipelineRunResponseBodyPipelineRunSources struct {
+	Data *GetReleaseStagePipelineRunResponseBodyPipelineRunSourcesData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// example:
+	//
+	// assaaaaaasasasa
+	Sign *string `json:"sign,omitempty" xml:"sign,omitempty"`
+	// example:
+	//
+	// Codeup
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+}
+
+func (s GetReleaseStagePipelineRunResponseBodyPipelineRunSources) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetReleaseStagePipelineRunResponseBodyPipelineRunSources) GoString() string {
+	return s.String()
+}
+
+func (s *GetReleaseStagePipelineRunResponseBodyPipelineRunSources) SetData(v *GetReleaseStagePipelineRunResponseBodyPipelineRunSourcesData) *GetReleaseStagePipelineRunResponseBodyPipelineRunSources {
+	s.Data = v
+	return s
+}
+
+func (s *GetReleaseStagePipelineRunResponseBodyPipelineRunSources) SetSign(v string) *GetReleaseStagePipelineRunResponseBodyPipelineRunSources {
+	s.Sign = &v
+	return s
+}
+
+func (s *GetReleaseStagePipelineRunResponseBodyPipelineRunSources) SetType(v string) *GetReleaseStagePipelineRunResponseBodyPipelineRunSources {
+	s.Type = &v
+	return s
+}
+
+type GetReleaseStagePipelineRunResponseBodyPipelineRunSourcesData struct {
+	// example:
+	//
+	// master
+	Branch *string `json:"branch,omitempty" xml:"branch,omitempty"`
+	// example:
+	//
+	// {}
+	Commit *string `json:"commit,omitempty" xml:"commit,omitempty"`
+	// example:
+	//
+	// http://codeup.aliyun.com/a.git
+	Repo *string `json:"repo,omitempty" xml:"repo,omitempty"`
+}
+
+func (s GetReleaseStagePipelineRunResponseBodyPipelineRunSourcesData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetReleaseStagePipelineRunResponseBodyPipelineRunSourcesData) GoString() string {
+	return s.String()
+}
+
+func (s *GetReleaseStagePipelineRunResponseBodyPipelineRunSourcesData) SetBranch(v string) *GetReleaseStagePipelineRunResponseBodyPipelineRunSourcesData {
+	s.Branch = &v
+	return s
+}
+
+func (s *GetReleaseStagePipelineRunResponseBodyPipelineRunSourcesData) SetCommit(v string) *GetReleaseStagePipelineRunResponseBodyPipelineRunSourcesData {
+	s.Commit = &v
+	return s
+}
+
+func (s *GetReleaseStagePipelineRunResponseBodyPipelineRunSourcesData) SetRepo(v string) *GetReleaseStagePipelineRunResponseBodyPipelineRunSourcesData {
+	s.Repo = &v
+	return s
+}
+
+type GetReleaseStagePipelineRunResponseBodyPipelineRunStages struct {
+	Name      *string                                                           `json:"name,omitempty" xml:"name,omitempty"`
+	StageInfo *GetReleaseStagePipelineRunResponseBodyPipelineRunStagesStageInfo `json:"stageInfo,omitempty" xml:"stageInfo,omitempty" type:"Struct"`
+}
+
+func (s GetReleaseStagePipelineRunResponseBodyPipelineRunStages) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetReleaseStagePipelineRunResponseBodyPipelineRunStages) GoString() string {
+	return s.String()
+}
+
+func (s *GetReleaseStagePipelineRunResponseBodyPipelineRunStages) SetName(v string) *GetReleaseStagePipelineRunResponseBodyPipelineRunStages {
+	s.Name = &v
+	return s
+}
+
+func (s *GetReleaseStagePipelineRunResponseBodyPipelineRunStages) SetStageInfo(v *GetReleaseStagePipelineRunResponseBodyPipelineRunStagesStageInfo) *GetReleaseStagePipelineRunResponseBodyPipelineRunStages {
+	s.StageInfo = v
+	return s
+}
+
+type GetReleaseStagePipelineRunResponseBodyPipelineRunStagesStageInfo struct {
+	// example:
+	//
+	// 1586863220000
+	EndTime *int64                                                                  `json:"endTime,omitempty" xml:"endTime,omitempty"`
+	Jobs    []*GetReleaseStagePipelineRunResponseBodyPipelineRunStagesStageInfoJobs `json:"jobs,omitempty" xml:"jobs,omitempty" type:"Repeated"`
+	Name    *string                                                                 `json:"name,omitempty" xml:"name,omitempty"`
+	// example:
+	//
+	// 1586863220000
+	StartTime *int64 `json:"startTime,omitempty" xml:"startTime,omitempty"`
+	// example:
+	//
+	// RUNNING
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+}
+
+func (s GetReleaseStagePipelineRunResponseBodyPipelineRunStagesStageInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetReleaseStagePipelineRunResponseBodyPipelineRunStagesStageInfo) GoString() string {
+	return s.String()
+}
+
+func (s *GetReleaseStagePipelineRunResponseBodyPipelineRunStagesStageInfo) SetEndTime(v int64) *GetReleaseStagePipelineRunResponseBodyPipelineRunStagesStageInfo {
+	s.EndTime = &v
+	return s
+}
+
+func (s *GetReleaseStagePipelineRunResponseBodyPipelineRunStagesStageInfo) SetJobs(v []*GetReleaseStagePipelineRunResponseBodyPipelineRunStagesStageInfoJobs) *GetReleaseStagePipelineRunResponseBodyPipelineRunStagesStageInfo {
+	s.Jobs = v
+	return s
+}
+
+func (s *GetReleaseStagePipelineRunResponseBodyPipelineRunStagesStageInfo) SetName(v string) *GetReleaseStagePipelineRunResponseBodyPipelineRunStagesStageInfo {
+	s.Name = &v
+	return s
+}
+
+func (s *GetReleaseStagePipelineRunResponseBodyPipelineRunStagesStageInfo) SetStartTime(v int64) *GetReleaseStagePipelineRunResponseBodyPipelineRunStagesStageInfo {
+	s.StartTime = &v
+	return s
+}
+
+func (s *GetReleaseStagePipelineRunResponseBodyPipelineRunStagesStageInfo) SetStatus(v string) *GetReleaseStagePipelineRunResponseBodyPipelineRunStagesStageInfo {
+	s.Status = &v
+	return s
+}
+
+type GetReleaseStagePipelineRunResponseBodyPipelineRunStagesStageInfoJobs struct {
+	Actions []*GetReleaseStagePipelineRunResponseBodyPipelineRunStagesStageInfoJobsActions `json:"actions,omitempty" xml:"actions,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1586863220000
+	EndTime *int64 `json:"endTime,omitempty" xml:"endTime,omitempty"`
+	// example:
+	//
+	// 21212
+	Id   *int64  `json:"id,omitempty" xml:"id,omitempty"`
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// example:
+	//
+	// {}
+	Params *string `json:"params,omitempty" xml:"params,omitempty"`
+	// example:
+	//
+	// 1586863220000
+	StartTime *int64 `json:"startTime,omitempty" xml:"startTime,omitempty"`
+	// example:
+	//
+	// RUNNING
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+}
+
+func (s GetReleaseStagePipelineRunResponseBodyPipelineRunStagesStageInfoJobs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetReleaseStagePipelineRunResponseBodyPipelineRunStagesStageInfoJobs) GoString() string {
+	return s.String()
+}
+
+func (s *GetReleaseStagePipelineRunResponseBodyPipelineRunStagesStageInfoJobs) SetActions(v []*GetReleaseStagePipelineRunResponseBodyPipelineRunStagesStageInfoJobsActions) *GetReleaseStagePipelineRunResponseBodyPipelineRunStagesStageInfoJobs {
+	s.Actions = v
+	return s
+}
+
+func (s *GetReleaseStagePipelineRunResponseBodyPipelineRunStagesStageInfoJobs) SetEndTime(v int64) *GetReleaseStagePipelineRunResponseBodyPipelineRunStagesStageInfoJobs {
+	s.EndTime = &v
+	return s
+}
+
+func (s *GetReleaseStagePipelineRunResponseBodyPipelineRunStagesStageInfoJobs) SetId(v int64) *GetReleaseStagePipelineRunResponseBodyPipelineRunStagesStageInfoJobs {
+	s.Id = &v
+	return s
+}
+
+func (s *GetReleaseStagePipelineRunResponseBodyPipelineRunStagesStageInfoJobs) SetName(v string) *GetReleaseStagePipelineRunResponseBodyPipelineRunStagesStageInfoJobs {
+	s.Name = &v
+	return s
+}
+
+func (s *GetReleaseStagePipelineRunResponseBodyPipelineRunStagesStageInfoJobs) SetParams(v string) *GetReleaseStagePipelineRunResponseBodyPipelineRunStagesStageInfoJobs {
+	s.Params = &v
+	return s
+}
+
+func (s *GetReleaseStagePipelineRunResponseBodyPipelineRunStagesStageInfoJobs) SetStartTime(v int64) *GetReleaseStagePipelineRunResponseBodyPipelineRunStagesStageInfoJobs {
+	s.StartTime = &v
+	return s
+}
+
+func (s *GetReleaseStagePipelineRunResponseBodyPipelineRunStagesStageInfoJobs) SetStatus(v string) *GetReleaseStagePipelineRunResponseBodyPipelineRunStagesStageInfoJobs {
+	s.Status = &v
+	return s
+}
+
+type GetReleaseStagePipelineRunResponseBodyPipelineRunStagesStageInfoJobsActions struct {
+	// example:
+	//
+	// true
+	Disable *bool `json:"disable,omitempty" xml:"disable,omitempty"`
+	// example:
+	//
+	// {}
+	Params interface{} `json:"params,omitempty" xml:"params,omitempty"`
+	// example:
+	//
+	// PassPipelineValidate
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+}
+
+func (s GetReleaseStagePipelineRunResponseBodyPipelineRunStagesStageInfoJobsActions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetReleaseStagePipelineRunResponseBodyPipelineRunStagesStageInfoJobsActions) GoString() string {
+	return s.String()
+}
+
+func (s *GetReleaseStagePipelineRunResponseBodyPipelineRunStagesStageInfoJobsActions) SetDisable(v bool) *GetReleaseStagePipelineRunResponseBodyPipelineRunStagesStageInfoJobsActions {
+	s.Disable = &v
+	return s
+}
+
+func (s *GetReleaseStagePipelineRunResponseBodyPipelineRunStagesStageInfoJobsActions) SetParams(v interface{}) *GetReleaseStagePipelineRunResponseBodyPipelineRunStagesStageInfoJobsActions {
+	s.Params = v
+	return s
+}
+
+func (s *GetReleaseStagePipelineRunResponseBodyPipelineRunStagesStageInfoJobsActions) SetType(v string) *GetReleaseStagePipelineRunResponseBodyPipelineRunStagesStageInfoJobsActions {
+	s.Type = &v
+	return s
+}
+
+type GetReleaseStagePipelineRunResponse struct {
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetReleaseStagePipelineRunResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetReleaseStagePipelineRunResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetReleaseStagePipelineRunResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetReleaseStagePipelineRunResponse) SetHeaders(v map[string]*string) *GetReleaseStagePipelineRunResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetReleaseStagePipelineRunResponse) SetStatusCode(v int32) *GetReleaseStagePipelineRunResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetReleaseStagePipelineRunResponse) SetBody(v *GetReleaseStagePipelineRunResponseBody) *GetReleaseStagePipelineRunResponse {
 	s.Body = v
 	return s
 }
@@ -59365,6 +59946,70 @@ func (client *Client) AddWebhook(repositoryId *string, request *AddWebhookReques
 
 // Summary:
 //
+// 取消执行研发阶段流水线
+//
+// @param request - CancelExecutionReleaseStageRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CancelExecutionReleaseStageResponse
+func (client *Client) CancelExecutionReleaseStageWithOptions(appName *string, releaseWorkflowSn *string, releaseStageSn *string, executionNumber *string, request *CancelExecutionReleaseStageRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CancelExecutionReleaseStageResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.OrganizationId)) {
+		query["organizationId"] = request.OrganizationId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CancelExecutionReleaseStage"),
+		Version:     tea.String("2021-06-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/appstack/apps/" + tea.StringValue(openapiutil.GetEncodeParam(appName)) + "/releaseWorkflows/" + tea.StringValue(openapiutil.GetEncodeParam(releaseWorkflowSn)) + "/releaseStages/" + tea.StringValue(openapiutil.GetEncodeParam(releaseStageSn)) + "/executions/" + tea.StringValue(openapiutil.GetEncodeParam(executionNumber)) + "%3Acancel"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CancelExecutionReleaseStageResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 取消执行研发阶段流水线
+//
+// @param request - CancelExecutionReleaseStageRequest
+//
+// @return CancelExecutionReleaseStageResponse
+func (client *Client) CancelExecutionReleaseStage(appName *string, releaseWorkflowSn *string, releaseStageSn *string, executionNumber *string, request *CancelExecutionReleaseStageRequest) (_result *CancelExecutionReleaseStageResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CancelExecutionReleaseStageResponse{}
+	_body, _err := client.CancelExecutionReleaseStageWithOptions(appName, releaseWorkflowSn, releaseStageSn, executionNumber, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 关闭代码评审
 //
 // @param request - CloseMergeRequestRequest
@@ -64399,6 +65044,76 @@ func (client *Client) EnableDeployKey(repositoryId *string, keyId *string, reque
 
 // Summary:
 //
+// 执行研发阶段流水线
+//
+// @param request - ExecuteChangeRequestReleaseStageRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ExecuteChangeRequestReleaseStageResponse
+func (client *Client) ExecuteChangeRequestReleaseStageWithOptions(appName *string, releaseWorkflowSn *string, releaseStageSn *string, request *ExecuteChangeRequestReleaseStageRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ExecuteChangeRequestReleaseStageResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.OrganizationId)) {
+		query["organizationId"] = request.OrganizationId
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Params)) {
+		body["params"] = request.Params
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ExecuteChangeRequestReleaseStage"),
+		Version:     tea.String("2021-06-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/appstack/apps/" + tea.StringValue(openapiutil.GetEncodeParam(appName)) + "/releaseWorkflows/" + tea.StringValue(openapiutil.GetEncodeParam(releaseWorkflowSn)) + "/releaseStages/" + tea.StringValue(openapiutil.GetEncodeParam(releaseStageSn)) + "%3Aexecute"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ExecuteChangeRequestReleaseStageResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 执行研发阶段流水线
+//
+// @param request - ExecuteChangeRequestReleaseStageRequest
+//
+// @return ExecuteChangeRequestReleaseStageResponse
+func (client *Client) ExecuteChangeRequestReleaseStage(appName *string, releaseWorkflowSn *string, releaseStageSn *string, request *ExecuteChangeRequestReleaseStageRequest) (_result *ExecuteChangeRequestReleaseStageResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ExecuteChangeRequestReleaseStageResponse{}
+	_body, _err := client.ExecuteChangeRequestReleaseStageWithOptions(appName, releaseWorkflowSn, releaseStageSn, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 导出Insight custom_value表
 //
 // @param request - ExportInsightCustomValueRequest
@@ -66922,6 +67637,70 @@ func (client *Client) GetPushRule(repositoryId *string, pushRuleId *string, requ
 	headers := make(map[string]*string)
 	_result = &GetPushRuleResponse{}
 	_body, _err := client.GetPushRuleWithOptions(repositoryId, pushRuleId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取研发阶段流水线运行实例
+//
+// @param request - GetReleaseStagePipelineRunRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetReleaseStagePipelineRunResponse
+func (client *Client) GetReleaseStagePipelineRunWithOptions(appName *string, releaseWorkflowSn *string, releaseStageSn *string, executionNumber *string, request *GetReleaseStagePipelineRunRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetReleaseStagePipelineRunResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.OrganizationId)) {
+		query["organizationId"] = request.OrganizationId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetReleaseStagePipelineRun"),
+		Version:     tea.String("2021-06-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/appstack/apps/" + tea.StringValue(openapiutil.GetEncodeParam(appName)) + "/releaseWorkflows/" + tea.StringValue(openapiutil.GetEncodeParam(releaseWorkflowSn)) + "/releaseStages/" + tea.StringValue(openapiutil.GetEncodeParam(releaseStageSn)) + "/executions/" + tea.StringValue(openapiutil.GetEncodeParam(executionNumber)) + "%3AgetPipelineRun"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetReleaseStagePipelineRunResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取研发阶段流水线运行实例
+//
+// @param request - GetReleaseStagePipelineRunRequest
+//
+// @return GetReleaseStagePipelineRunResponse
+func (client *Client) GetReleaseStagePipelineRun(appName *string, releaseWorkflowSn *string, releaseStageSn *string, executionNumber *string, request *GetReleaseStagePipelineRunRequest) (_result *GetReleaseStagePipelineRunResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetReleaseStagePipelineRunResponse{}
+	_body, _err := client.GetReleaseStagePipelineRunWithOptions(appName, releaseWorkflowSn, releaseStageSn, executionNumber, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}

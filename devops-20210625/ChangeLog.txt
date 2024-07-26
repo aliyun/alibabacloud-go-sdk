@@ -1,3 +1,9 @@
+2024-07-26 Version: v4.20.0
+- Support API CancelExecutionReleaseStage.
+- Support API ExecuteChangeRequestReleaseStage.
+- Support API GetReleaseStagePipelineRun.
+
+
 2024-07-22 Version: v4.19.0
 - Support API CreateChangeRequest.
 - Support API ExportInsightCustomValue.
