@@ -1,7 +1,4 @@
 // This file is auto-generated, don't edit it. Thanks.
-/**
- *
- */
 package client
 
 import (
@@ -13,8 +10,16 @@ import (
 )
 
 type ActivateLicenseRequest struct {
+	// example:
+	//
+	// 129****1111
 	Identification *string `json:"Identification,omitempty" xml:"Identification,omitempty"`
-	LicenseCode    *string `json:"LicenseCode,omitempty" xml:"LicenseCode,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// APSEDH8TA5CSGK-********_6CNTACBH9EQPOATFXJQL4B2COE7M43VVQ7GUGKAA
+	LicenseCode *string `json:"LicenseCode,omitempty" xml:"LicenseCode,omitempty"`
 }
 
 func (s ActivateLicenseRequest) String() string {
@@ -36,8 +41,14 @@ func (s *ActivateLicenseRequest) SetLicenseCode(v string) *ActivateLicenseReques
 }
 
 type ActivateLicenseResponseBody struct {
+	// example:
+	//
+	// 6EF60BEC-0242-43AF-BB20-270359FB54A7
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ActivateLicenseResponseBody) String() string {
@@ -59,9 +70,9 @@ func (s *ActivateLicenseResponseBody) SetSuccess(v bool) *ActivateLicenseRespons
 }
 
 type ActivateLicenseResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ActivateLicenseResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ActivateLicenseResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ActivateLicenseResponse) String() string {
@@ -90,9 +101,11 @@ func (s *ActivateLicenseResponse) SetBody(v *ActivateLicenseResponseBody) *Activ
 type AutoRenewInstanceRequest struct {
 	AutoRenewCycle    *string `json:"AutoRenewCycle,omitempty" xml:"AutoRenewCycle,omitempty"`
 	AutoRenewDuration *int32  `json:"AutoRenewDuration,omitempty" xml:"AutoRenewDuration,omitempty"`
-	OrderBizId        *int64  `json:"OrderBizId,omitempty" xml:"OrderBizId,omitempty"`
-	OwnerId           *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	Type              *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// This parameter is required.
+	OrderBizId *int64 `json:"OrderBizId,omitempty" xml:"OrderBizId,omitempty"`
+	OwnerId    *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// This parameter is required.
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s AutoRenewInstanceRequest) String() string {
@@ -158,9 +171,9 @@ func (s *AutoRenewInstanceResponseBody) SetSuccess(v bool) *AutoRenewInstanceRes
 }
 
 type AutoRenewInstanceResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *AutoRenewInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AutoRenewInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s AutoRenewInstanceResponse) String() string {
@@ -187,11 +200,33 @@ func (s *AutoRenewInstanceResponse) SetBody(v *AutoRenewInstanceResponseBody) *A
 }
 
 type CreateOrderRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2709c68a-d569-4819-9c5d-1222ed2ee924
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	Commodity   *string `json:"Commodity,omitempty" xml:"Commodity,omitempty"`
-	OrderSouce  *string `json:"OrderSouce,omitempty" xml:"OrderSouce,omitempty"`
-	OrderType   *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
-	OwnerId     *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// This parameter is required.
+	Commodity *string `json:"Commodity,omitempty" xml:"Commodity,omitempty"`
+	// example:
+	//
+	// abc
+	OrderSouce *string `json:"OrderSouce,omitempty" xml:"OrderSouce,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// INSTANCE_BUY
+	OrderType *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
+	// example:
+	//
+	// 111********11
+	OwnerId *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// HAND
 	PaymentType *string `json:"PaymentType,omitempty" xml:"PaymentType,omitempty"`
 }
 
@@ -235,8 +270,14 @@ func (s *CreateOrderRequest) SetPaymentType(v string) *CreateOrderRequest {
 
 type CreateOrderResponseBody struct {
 	InstanceIds *CreateOrderResponseBodyInstanceIds `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Struct"`
-	OrderId     *string                             `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	RequestId   *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 202********0117
+	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// example:
+	//
+	// 4ca591b5-bc30-4fa7-aeaa-c4d0ec5d24ed
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateOrderResponseBody) String() string {
@@ -280,9 +321,9 @@ func (s *CreateOrderResponseBodyInstanceIds) SetInstanceId(v []*string) *CreateO
 }
 
 type CreateOrderResponse struct {
-	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateOrderResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateOrderResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CreateOrderResponse) String() string {
@@ -309,6 +350,9 @@ func (s *CreateOrderResponse) SetBody(v *CreateOrderResponseBody) *CreateOrderRe
 }
 
 type CrossAccountVerifyTokenRequest struct {
+	// example:
+	//
+	// C19D103FEA2D50A584410267CE9FBA56
 	Token *string `json:"Token,omitempty" xml:"Token,omitempty"`
 }
 
@@ -326,12 +370,25 @@ func (s *CrossAccountVerifyTokenRequest) SetToken(v string) *CrossAccountVerifyT
 }
 
 type CrossAccountVerifyTokenResponseBody struct {
-	Code    *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// RequestId
+	//
+	// example:
+	//
+	// C19D103F-EA2D-50A5-8441-0267CE9FBA56
 	RequestId *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Result    *CrossAccountVerifyTokenResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
-	Success   *bool                                      `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s CrossAccountVerifyTokenResponseBody) String() string {
@@ -369,9 +426,18 @@ func (s *CrossAccountVerifyTokenResponseBody) SetSuccess(v bool) *CrossAccountVe
 
 type CrossAccountVerifyTokenResponseBodyResult struct {
 	AuthRoles []*string `json:"AuthRoles,omitempty" xml:"AuthRoles,omitempty" type:"Repeated"`
-	AuthTime  *int64    `json:"AuthTime,omitempty" xml:"AuthTime,omitempty"`
-	Name      *string   `json:"Name,omitempty" xml:"Name,omitempty"`
-	Uid       *string   `json:"Uid,omitempty" xml:"Uid,omitempty"`
+	// example:
+	//
+	// 1676974108866
+	AuthTime *int64 `json:"AuthTime,omitempty" xml:"AuthTime,omitempty"`
+	// example:
+	//
+	// marketplace_wangxiao_test
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 1744526877246715
+	Uid *string `json:"Uid,omitempty" xml:"Uid,omitempty"`
 }
 
 func (s CrossAccountVerifyTokenResponseBodyResult) String() string {
@@ -403,9 +469,9 @@ func (s *CrossAccountVerifyTokenResponseBodyResult) SetUid(v string) *CrossAccou
 }
 
 type CrossAccountVerifyTokenResponse struct {
-	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CrossAccountVerifyTokenResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CrossAccountVerifyTokenResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s CrossAccountVerifyTokenResponse) String() string {
@@ -432,9 +498,20 @@ func (s *CrossAccountVerifyTokenResponse) SetBody(v *CrossAccountVerifyTokenResp
 }
 
 type DescribeApiMeteringRequest struct {
-	PageNum     *int32  `json:"pageNum,omitempty" xml:"pageNum,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	PageNum *int32 `json:"pageNum,omitempty" xml:"pageNum,omitempty"`
+	// example:
+	//
+	// cmapi0004****
 	ProductCode *string `json:"productCode,omitempty" xml:"productCode,omitempty"`
-	Type        *int32  `json:"type,omitempty" xml:"type,omitempty"`
+	// example:
+	//
+	// 1
+	Type *int32 `json:"type,omitempty" xml:"type,omitempty"`
 }
 
 func (s DescribeApiMeteringRequest) String() string {
@@ -461,17 +538,42 @@ func (s *DescribeApiMeteringRequest) SetType(v int32) *DescribeApiMeteringReques
 }
 
 type DescribeApiMeteringResponseBody struct {
-	Code  *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Count *int64  `json:"Count,omitempty" xml:"Count,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// 100
+	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
 	// fatal
-	Fatal      *bool                                    `json:"Fatal,omitempty" xml:"Fatal,omitempty"`
-	Message    *string                                  `json:"Message,omitempty" xml:"Message,omitempty"`
-	PageNumber *int64                                   `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int64                                   `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId  *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result     []*DescribeApiMeteringResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
-	Success    *bool                                    `json:"Success,omitempty" xml:"Success,omitempty"`
-	Version    *string                                  `json:"Version,omitempty" xml:"Version,omitempty"`
+	//
+	// example:
+	//
+	// false
+	Fatal   *bool   `json:"Fatal,omitempty" xml:"Fatal,omitempty"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 20
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 62FC432C55A1A63534A6CB34
+	RequestId *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    []*DescribeApiMeteringResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 1.0
+	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s DescribeApiMeteringResponseBody) String() string {
@@ -533,12 +635,25 @@ func (s *DescribeApiMeteringResponseBody) SetVersion(v string) *DescribeApiMeter
 }
 
 type DescribeApiMeteringResponseBodyResult struct {
-	AliyunPk    *int64  `json:"AliyunPk,omitempty" xml:"AliyunPk,omitempty"`
-	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	ProductName *string `json:"ProductName,omitempty" xml:"ProductName,omitempty"`
-	TotalQuota  *int64  `json:"TotalQuota,omitempty" xml:"TotalQuota,omitempty"`
-	TotalUsage  *int64  `json:"TotalUsage,omitempty" xml:"TotalUsage,omitempty"`
-	Unit        *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
+	// example:
+	//
+	// 102277855749****
+	AliyunPk *int64 `json:"AliyunPk,omitempty" xml:"AliyunPk,omitempty"`
+	// example:
+	//
+	// cmapi0004****
+	ProductCode   *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	ProductName   *string `json:"ProductName,omitempty" xml:"ProductName,omitempty"`
+	TotalCapacity *int64  `json:"TotalCapacity,omitempty" xml:"TotalCapacity,omitempty"`
+	// example:
+	//
+	// 98
+	TotalQuota *int64 `json:"TotalQuota,omitempty" xml:"TotalQuota,omitempty"`
+	// example:
+	//
+	// 220
+	TotalUsage *int64  `json:"TotalUsage,omitempty" xml:"TotalUsage,omitempty"`
+	Unit       *string `json:"Unit,omitempty" xml:"Unit,omitempty"`
 }
 
 func (s DescribeApiMeteringResponseBodyResult) String() string {
@@ -564,6 +679,11 @@ func (s *DescribeApiMeteringResponseBodyResult) SetProductName(v string) *Descri
 	return s
 }
 
+func (s *DescribeApiMeteringResponseBodyResult) SetTotalCapacity(v int64) *DescribeApiMeteringResponseBodyResult {
+	s.TotalCapacity = &v
+	return s
+}
+
 func (s *DescribeApiMeteringResponseBodyResult) SetTotalQuota(v int64) *DescribeApiMeteringResponseBodyResult {
 	s.TotalQuota = &v
 	return s
@@ -580,9 +700,9 @@ func (s *DescribeApiMeteringResponseBodyResult) SetUnit(v string) *DescribeApiMe
 }
 
 type DescribeApiMeteringResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeApiMeteringResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeApiMeteringResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeApiMeteringResponse) String() string {
@@ -609,6 +729,11 @@ func (s *DescribeApiMeteringResponse) SetBody(v *DescribeApiMeteringResponseBody
 }
 
 type DescribeCurrentNodeInfoRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 4****89
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -626,9 +751,15 @@ func (s *DescribeCurrentNodeInfoRequest) SetInstanceId(v string) *DescribeCurren
 }
 
 type DescribeCurrentNodeInfoResponseBody struct {
+	// example:
+	//
+	// 00eb4de1-6cff-4f56-833e-7b1e070e398d
 	RequestId *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Result    *DescribeCurrentNodeInfoResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
-	Success   *bool                                      `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeCurrentNodeInfoResponseBody) String() string {
@@ -655,22 +786,64 @@ func (s *DescribeCurrentNodeInfoResponseBody) SetSuccess(v bool) *DescribeCurren
 }
 
 type DescribeCurrentNodeInfoResponseBodyResult struct {
-	AllowRollbackNode *bool   `json:"AllowRollbackNode,omitempty" xml:"AllowRollbackNode,omitempty"`
-	AutoFinishNode    *bool   `json:"AutoFinishNode,omitempty" xml:"AutoFinishNode,omitempty"`
-	FinalStepNo       *int32  `json:"FinalStepNo,omitempty" xml:"FinalStepNo,omitempty"`
-	GmtExpired        *int64  `json:"GmtExpired,omitempty" xml:"GmtExpired,omitempty"`
-	GmtFinished       *int64  `json:"GmtFinished,omitempty" xml:"GmtFinished,omitempty"`
-	GmtStart          *int64  `json:"GmtStart,omitempty" xml:"GmtStart,omitempty"`
-	NeedAttachment    *bool   `json:"NeedAttachment,omitempty" xml:"NeedAttachment,omitempty"`
-	NextNodeId        *int64  `json:"NextNodeId,omitempty" xml:"NextNodeId,omitempty"`
-	NodeId            *int64  `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-	NodeName          *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
-	NodeStatus        *string `json:"NodeStatus,omitempty" xml:"NodeStatus,omitempty"`
-	OperatorRole      *string `json:"OperatorRole,omitempty" xml:"OperatorRole,omitempty"`
-	ParentNodeId      *int64  `json:"ParentNodeId,omitempty" xml:"ParentNodeId,omitempty"`
-	PreviousNodeId    *int64  `json:"PreviousNodeId,omitempty" xml:"PreviousNodeId,omitempty"`
-	StepNo            *int32  `json:"StepNo,omitempty" xml:"StepNo,omitempty"`
-	TemplateForm      *string `json:"TemplateForm,omitempty" xml:"TemplateForm,omitempty"`
+	// example:
+	//
+	// false
+	AllowRollbackNode *bool `json:"AllowRollbackNode,omitempty" xml:"AllowRollbackNode,omitempty"`
+	// example:
+	//
+	// false
+	AutoFinishNode *bool `json:"AutoFinishNode,omitempty" xml:"AutoFinishNode,omitempty"`
+	// example:
+	//
+	// 4
+	FinalStepNo *int32 `json:"FinalStepNo,omitempty" xml:"FinalStepNo,omitempty"`
+	// example:
+	//
+	// 1588920725000
+	GmtExpired *int64 `json:"GmtExpired,omitempty" xml:"GmtExpired,omitempty"`
+	// example:
+	//
+	// 1588920725000
+	GmtFinished *int64 `json:"GmtFinished,omitempty" xml:"GmtFinished,omitempty"`
+	// example:
+	//
+	// 1588834325000
+	GmtStart *int64 `json:"GmtStart,omitempty" xml:"GmtStart,omitempty"`
+	// example:
+	//
+	// false
+	NeedAttachment *bool `json:"NeedAttachment,omitempty" xml:"NeedAttachment,omitempty"`
+	// example:
+	//
+	// 8473
+	NextNodeId *int64 `json:"NextNodeId,omitempty" xml:"NextNodeId,omitempty"`
+	// example:
+	//
+	// 8472
+	NodeId   *int64  `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	NodeName *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
+	// example:
+	//
+	// Starting
+	NodeStatus *string `json:"NodeStatus,omitempty" xml:"NodeStatus,omitempty"`
+	// example:
+	//
+	// Provider
+	OperatorRole *string `json:"OperatorRole,omitempty" xml:"OperatorRole,omitempty"`
+	// example:
+	//
+	// 0
+	ParentNodeId *int64 `json:"ParentNodeId,omitempty" xml:"ParentNodeId,omitempty"`
+	// example:
+	//
+	// 8471
+	PreviousNodeId *int64 `json:"PreviousNodeId,omitempty" xml:"PreviousNodeId,omitempty"`
+	// example:
+	//
+	// 3
+	StepNo       *int32  `json:"StepNo,omitempty" xml:"StepNo,omitempty"`
+	TemplateForm *string `json:"TemplateForm,omitempty" xml:"TemplateForm,omitempty"`
 }
 
 func (s DescribeCurrentNodeInfoResponseBodyResult) String() string {
@@ -762,9 +935,9 @@ func (s *DescribeCurrentNodeInfoResponseBodyResult) SetTemplateForm(v string) *D
 }
 
 type DescribeCurrentNodeInfoResponse struct {
-	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeCurrentNodeInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeCurrentNodeInfoResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeCurrentNodeInfoResponse) String() string {
@@ -791,9 +964,19 @@ func (s *DescribeCurrentNodeInfoResponse) SetBody(v *DescribeCurrentNodeInfoResp
 }
 
 type DescribeDistributionProductsRequest struct {
-	Filter     []*DescribeDistributionProductsRequestFilter `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Repeated"`
-	PageNumber *int64                                       `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int64                                       `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Filter []*DescribeDistributionProductsRequestFilter `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
 func (s DescribeDistributionProductsRequest) String() string {
@@ -820,7 +1003,17 @@ func (s *DescribeDistributionProductsRequest) SetPageSize(v int64) *DescribeDist
 }
 
 type DescribeDistributionProductsRequestFilter struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// supplierName
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cmj0000000
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -843,11 +1036,23 @@ func (s *DescribeDistributionProductsRequestFilter) SetValue(v string) *Describe
 }
 
 type DescribeDistributionProductsResponseBody struct {
-	PageNumber *int32                                             `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32                                             `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId  *string                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Results    []*DescribeDistributionProductsResponseBodyResults `json:"Results,omitempty" xml:"Results,omitempty" type:"Repeated"`
-	TotalCount *int32                                             `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 5BD09171-MB74-18D8-890E-C70C067527BE
+	RequestId *string                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Results   []*DescribeDistributionProductsResponseBodyResults `json:"Results,omitempty" xml:"Results,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 50
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeDistributionProductsResponseBody) String() string {
@@ -884,20 +1089,44 @@ func (s *DescribeDistributionProductsResponseBody) SetTotalCount(v int32) *Descr
 }
 
 type DescribeDistributionProductsResponseBodyResults struct {
-	Code               *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	FirstCategoryName  *string `json:"FirstCategoryName,omitempty" xml:"FirstCategoryName,omitempty"`
-	ImageUrl           *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
-	Name               *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Price              *string `json:"Price,omitempty" xml:"Price,omitempty"`
+	// example:
+	//
+	// cmap*****
+	Code              *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	FirstCategoryName *string `json:"FirstCategoryName,omitempty" xml:"FirstCategoryName,omitempty"`
+	// example:
+	//
+	// //photogallery.oss-cn-hangzhou.aliyuncs.com/photo/1744526877246715/09605255-87fd-44d1-8143-96ebc8019d46.jpeg
+	ImageUrl *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
+	Name     *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 100
+	Price *string `json:"Price,omitempty" xml:"Price,omitempty"`
+	// example:
+	//
+	// 5
 	Score              *string `json:"Score,omitempty" xml:"Score,omitempty"`
 	SecondCategoryName *string `json:"SecondCategoryName,omitempty" xml:"SecondCategoryName,omitempty"`
 	ShortDescription   *string `json:"ShortDescription,omitempty" xml:"ShortDescription,omitempty"`
-	SubmissionRadio    *string `json:"SubmissionRadio,omitempty" xml:"SubmissionRadio,omitempty"`
-	SupplierName       *string `json:"SupplierName,omitempty" xml:"SupplierName,omitempty"`
-	SupplierUId        *string `json:"SupplierUId,omitempty" xml:"SupplierUId,omitempty"`
-	TradeCount         *string `json:"TradeCount,omitempty" xml:"TradeCount,omitempty"`
-	Type               *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	UserCommentCount   *string `json:"UserCommentCount,omitempty" xml:"UserCommentCount,omitempty"`
+	// example:
+	//
+	// 30
+	SubmissionRadio *string `json:"SubmissionRadio,omitempty" xml:"SubmissionRadio,omitempty"`
+	SupplierName    *string `json:"SupplierName,omitempty" xml:"SupplierName,omitempty"`
+	// example:
+	//
+	// 1911534921******
+	SupplierUId *string `json:"SupplierUId,omitempty" xml:"SupplierUId,omitempty"`
+	// example:
+	//
+	// 109
+	TradeCount *string `json:"TradeCount,omitempty" xml:"TradeCount,omitempty"`
+	Type       *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// 55
+	UserCommentCount *string `json:"UserCommentCount,omitempty" xml:"UserCommentCount,omitempty"`
 }
 
 func (s DescribeDistributionProductsResponseBodyResults) String() string {
@@ -979,9 +1208,9 @@ func (s *DescribeDistributionProductsResponseBodyResults) SetUserCommentCount(v 
 }
 
 type DescribeDistributionProductsResponse struct {
-	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeDistributionProductsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeDistributionProductsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeDistributionProductsResponse) String() string {
@@ -1008,6 +1237,7 @@ func (s *DescribeDistributionProductsResponse) SetBody(v *DescribeDistributionPr
 }
 
 type DescribeDistributionProductsLinkRequest struct {
+	// This parameter is required.
 	Codes []*string `json:"Codes,omitempty" xml:"Codes,omitempty" type:"Repeated"`
 }
 
@@ -1025,6 +1255,7 @@ func (s *DescribeDistributionProductsLinkRequest) SetCodes(v []*string) *Describ
 }
 
 type DescribeDistributionProductsLinkShrinkRequest struct {
+	// This parameter is required.
 	CodesShrink *string `json:"Codes,omitempty" xml:"Codes,omitempty"`
 }
 
@@ -1043,10 +1274,20 @@ func (s *DescribeDistributionProductsLinkShrinkRequest) SetCodesShrink(v string)
 
 type DescribeDistributionProductsLinkResponseBody struct {
 	// Id of the request
-	RequestId  *string                                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result     []*DescribeDistributionProductsLinkResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
-	Success    *bool                                                 `json:"Success,omitempty" xml:"Success,omitempty"`
-	TotalCount *int64                                                `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	//
+	// example:
+	//
+	// 5BD09171-BF4D-18D8-890E-C70C067527BE
+	RequestId *string                                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    []*DescribeDistributionProductsLinkResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 50
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeDistributionProductsLinkResponseBody) String() string {
@@ -1107,9 +1348,9 @@ func (s *DescribeDistributionProductsLinkResponseBodyResult) SetUrl(v string) *D
 }
 
 type DescribeDistributionProductsLinkResponse struct {
-	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeDistributionProductsLinkResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeDistributionProductsLinkResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeDistributionProductsLinkResponse) String() string {
@@ -1136,9 +1377,17 @@ func (s *DescribeDistributionProductsLinkResponse) SetBody(v *DescribeDistributi
 }
 
 type DescribeInstanceRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 155****11
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	OrderType  *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
-	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// example:
+	//
+	// NEW
+	OrderType *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
+	OwnerId   *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 }
 
 func (s DescribeInstanceRequest) String() string {
@@ -1165,26 +1414,70 @@ func (s *DescribeInstanceRequest) SetOwnerId(v int64) *DescribeInstanceRequest {
 }
 
 type DescribeInstanceResponseBody struct {
-	AppJson        *string                                     `json:"AppJson,omitempty" xml:"AppJson,omitempty"`
-	AutoRenewal    *string                                     `json:"AutoRenewal,omitempty" xml:"AutoRenewal,omitempty"`
-	BeganOn        *int64                                      `json:"BeganOn,omitempty" xml:"BeganOn,omitempty"`
-	ComponentJson  *string                                     `json:"ComponentJson,omitempty" xml:"ComponentJson,omitempty"`
-	Constraints    *string                                     `json:"Constraints,omitempty" xml:"Constraints,omitempty"`
-	CreatedOn      *int64                                      `json:"CreatedOn,omitempty" xml:"CreatedOn,omitempty"`
-	EndOn          *int64                                      `json:"EndOn,omitempty" xml:"EndOn,omitempty"`
-	ExtendJson     *string                                     `json:"ExtendJson,omitempty" xml:"ExtendJson,omitempty"`
-	HostJson       *string                                     `json:"HostJson,omitempty" xml:"HostJson,omitempty"`
-	InstanceId     *int64                                      `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	IsTrial        *bool                                       `json:"IsTrial,omitempty" xml:"IsTrial,omitempty"`
-	Modules        *DescribeInstanceResponseBodyModules        `json:"Modules,omitempty" xml:"Modules,omitempty" type:"Struct"`
-	OrderId        *int64                                      `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	ProductCode    *string                                     `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	ProductName    *string                                     `json:"ProductName,omitempty" xml:"ProductName,omitempty"`
-	ProductSkuCode *string                                     `json:"ProductSkuCode,omitempty" xml:"ProductSkuCode,omitempty"`
+	ActiveAddress *string `json:"ActiveAddress,omitempty" xml:"ActiveAddress,omitempty"`
+	// example:
+	//
+	// {"frontEndUrl":"https://****.aliyundoc.com","password":"Sjtv***","adminUrl":"https://****.aliyundoc.com","username":"aliyun***"}
+	AppJson     *string `json:"AppJson,omitempty" xml:"AppJson,omitempty"`
+	AutoRenewal *string `json:"AutoRenewal,omitempty" xml:"AutoRenewal,omitempty"`
+	// example:
+	//
+	// 1570634021000
+	BeganOn *int64 `json:"BeganOn,omitempty" xml:"BeganOn,omitempty"`
+	// example:
+	//
+	// {"package_version":"yuncode000111"}
+	ComponentJson *string `json:"ComponentJson,omitempty" xml:"ComponentJson,omitempty"`
+	// example:
+	//
+	// {}
+	Constraints *string `json:"Constraints,omitempty" xml:"Constraints,omitempty"`
+	// example:
+	//
+	// 1570634018000
+	CreatedOn *int64 `json:"CreatedOn,omitempty" xml:"CreatedOn,omitempty"`
+	// example:
+	//
+	// 1602259200000
+	EndOn      *int64  `json:"EndOn,omitempty" xml:"EndOn,omitempty"`
+	ExtendJson *string `json:"ExtendJson,omitempty" xml:"ExtendJson,omitempty"`
+	// example:
+	//
+	// {"password":"***","ip":"118.31.***.41","innerIp":"118.31.***.41","region":"","username":"***","beianInfo":""}
+	HostJson *string `json:"HostJson,omitempty" xml:"HostJson,omitempty"`
+	// example:
+	//
+	// 1551111111
+	InstanceId *int64 `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// true
+	IsTrial     *bool                                `json:"IsTrial,omitempty" xml:"IsTrial,omitempty"`
+	LicenseCode *string                              `json:"LicenseCode,omitempty" xml:"LicenseCode,omitempty"`
+	Modules     *DescribeInstanceResponseBodyModules `json:"Modules,omitempty" xml:"Modules,omitempty" type:"Struct"`
+	// example:
+	//
+	// 204211111111111
+	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// example:
+	//
+	// cmgj00**11
+	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	ProductName *string `json:"ProductName,omitempty" xml:"ProductName,omitempty"`
+	// example:
+	//
+	// cmgj00**11-prepay
+	ProductSkuCode *string `json:"ProductSkuCode,omitempty" xml:"ProductSkuCode,omitempty"`
+	// example:
+	//
+	// APP
 	ProductType    *string                                     `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
 	RelationalData *DescribeInstanceResponseBodyRelationalData `json:"RelationalData,omitempty" xml:"RelationalData,omitempty" type:"Struct"`
-	Status         *string                                     `json:"Status,omitempty" xml:"Status,omitempty"`
-	SupplierName   *string                                     `json:"SupplierName,omitempty" xml:"SupplierName,omitempty"`
+	// example:
+	//
+	// OPENED
+	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	SupplierName *string `json:"SupplierName,omitempty" xml:"SupplierName,omitempty"`
 }
 
 func (s DescribeInstanceResponseBody) String() string {
@@ -1193,6 +1486,11 @@ func (s DescribeInstanceResponseBody) String() string {
 
 func (s DescribeInstanceResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeInstanceResponseBody) SetActiveAddress(v string) *DescribeInstanceResponseBody {
+	s.ActiveAddress = &v
+	return s
 }
 
 func (s *DescribeInstanceResponseBody) SetAppJson(v string) *DescribeInstanceResponseBody {
@@ -1247,6 +1545,11 @@ func (s *DescribeInstanceResponseBody) SetInstanceId(v int64) *DescribeInstanceR
 
 func (s *DescribeInstanceResponseBody) SetIsTrial(v bool) *DescribeInstanceResponseBody {
 	s.IsTrial = &v
+	return s
+}
+
+func (s *DescribeInstanceResponseBody) SetLicenseCode(v string) *DescribeInstanceResponseBody {
+	s.LicenseCode = &v
 	return s
 }
 
@@ -1313,7 +1616,13 @@ func (s *DescribeInstanceResponseBodyModules) SetModule(v []*DescribeInstanceRes
 }
 
 type DescribeInstanceResponseBodyModulesModule struct {
-	Code       *string                                              `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// package_config
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// 101*********026
 	Id         *string                                              `json:"Id,omitempty" xml:"Id,omitempty"`
 	Name       *string                                              `json:"Name,omitempty" xml:"Name,omitempty"`
 	Properties *DescribeInstanceResponseBodyModulesModuleProperties `json:"Properties,omitempty" xml:"Properties,omitempty" type:"Struct"`
@@ -1365,11 +1674,23 @@ func (s *DescribeInstanceResponseBodyModulesModuleProperties) SetProperty(v []*D
 }
 
 type DescribeInstanceResponseBodyModulesModulePropertiesProperty struct {
-	DisplayUnit    *string                                                                    `json:"DisplayUnit,omitempty" xml:"DisplayUnit,omitempty"`
-	Key            *string                                                                    `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// 12
+	DisplayUnit *string `json:"DisplayUnit,omitempty" xml:"DisplayUnit,omitempty"`
+	// example:
+	//
+	// 12
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// 12
 	Name           *string                                                                    `json:"Name,omitempty" xml:"Name,omitempty"`
 	PropertyValues *DescribeInstanceResponseBodyModulesModulePropertiesPropertyPropertyValues `json:"PropertyValues,omitempty" xml:"PropertyValues,omitempty" type:"Struct"`
-	ShowType       *string                                                                    `json:"ShowType,omitempty" xml:"ShowType,omitempty"`
+	// example:
+	//
+	// 12
+	ShowType *string `json:"ShowType,omitempty" xml:"ShowType,omitempty"`
 }
 
 func (s DescribeInstanceResponseBodyModulesModulePropertiesProperty) String() string {
@@ -1423,13 +1744,34 @@ func (s *DescribeInstanceResponseBodyModulesModulePropertiesPropertyPropertyValu
 }
 
 type DescribeInstanceResponseBodyModulesModulePropertiesPropertyPropertyValuesPropertyValue struct {
+	// example:
+	//
+	// 12
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	Max         *string `json:"Max,omitempty" xml:"Max,omitempty"`
-	Min         *string `json:"Min,omitempty" xml:"Min,omitempty"`
-	Remark      *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	Step        *string `json:"Step,omitempty" xml:"Step,omitempty"`
-	Type        *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	Value       *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	// example:
+	//
+	// 12
+	Max *string `json:"Max,omitempty" xml:"Max,omitempty"`
+	// example:
+	//
+	// 12
+	Min *string `json:"Min,omitempty" xml:"Min,omitempty"`
+	// example:
+	//
+	// 12
+	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// example:
+	//
+	// 12
+	Step *string `json:"Step,omitempty" xml:"Step,omitempty"`
+	// example:
+	//
+	// 12
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// 12
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s DescribeInstanceResponseBodyModulesModulePropertiesPropertyPropertyValuesPropertyValue) String() string {
@@ -1476,6 +1818,9 @@ func (s *DescribeInstanceResponseBodyModulesModulePropertiesPropertyPropertyValu
 }
 
 type DescribeInstanceResponseBodyRelationalData struct {
+	// example:
+	//
+	// STARTED
 	ServiceStatus *string `json:"ServiceStatus,omitempty" xml:"ServiceStatus,omitempty"`
 }
 
@@ -1493,9 +1838,9 @@ func (s *DescribeInstanceResponseBodyRelationalData) SetServiceStatus(v string) 
 }
 
 type DescribeInstanceResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeInstanceResponse) String() string {
@@ -1522,10 +1867,29 @@ func (s *DescribeInstanceResponse) SetBody(v *DescribeInstanceResponseBody) *Des
 }
 
 type DescribeInstancesRequest struct {
-	Codes       *string `json:"Codes,omitempty" xml:"Codes,omitempty"`
+	// example:
+	//
+	// cmgj000112,cmgj000113
+	Codes *string `json:"Codes,omitempty" xml:"Codes,omitempty"`
+	// example:
+	//
+	// cmgj000114,cmgj000115
 	ExceptCodes *string `json:"ExceptCodes,omitempty" xml:"ExceptCodes,omitempty"`
-	PageNumber  *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize    *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 1
 	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
 }
 
@@ -1564,10 +1928,22 @@ func (s *DescribeInstancesRequest) SetProductType(v string) *DescribeInstancesRe
 
 type DescribeInstancesResponseBody struct {
 	InstanceItems *DescribeInstancesResponseBodyInstanceItems `json:"InstanceItems,omitempty" xml:"InstanceItems,omitempty" type:"Struct"`
-	PageNumber    *int32                                      `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize      *int32                                      `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId     *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount    *int32                                      `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 54C22FB9-0CB1-5629-97A8-653FC7990F00
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 55
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeInstancesResponseBody) String() string {
@@ -1621,23 +1997,65 @@ func (s *DescribeInstancesResponseBodyInstanceItems) SetInstanceItem(v []*Descri
 }
 
 type DescribeInstancesResponseBodyInstanceItemsInstanceItem struct {
-	ApiJson        *string `json:"ApiJson,omitempty" xml:"ApiJson,omitempty"`
-	AppJson        *string `json:"AppJson,omitempty" xml:"AppJson,omitempty"`
-	BeganOn        *int64  `json:"BeganOn,omitempty" xml:"BeganOn,omitempty"`
-	CreatedOn      *int64  `json:"CreatedOn,omitempty" xml:"CreatedOn,omitempty"`
-	EndOn          *int64  `json:"EndOn,omitempty" xml:"EndOn,omitempty"`
-	ExtendJson     *string `json:"ExtendJson,omitempty" xml:"ExtendJson,omitempty"`
-	HostJson       *string `json:"HostJson,omitempty" xml:"HostJson,omitempty"`
-	IdaasJson      *string `json:"IdaasJson,omitempty" xml:"IdaasJson,omitempty"`
-	ImageJson      *string `json:"ImageJson,omitempty" xml:"ImageJson,omitempty"`
-	InstanceId     *int64  `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	OrderId        *int64  `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	ProductCode    *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	ProductName    *string `json:"ProductName,omitempty" xml:"ProductName,omitempty"`
+	// example:
+	//
+	// {}
+	ApiJson *string `json:"ApiJson,omitempty" xml:"ApiJson,omitempty"`
+	// example:
+	//
+	// {"frontEndUrl":"https://***.aliyun.com","password":"Sjtv***","adminUrl":"https://***.aiiyun.com","username":"aliyun***"}
+	AppJson *string `json:"AppJson,omitempty" xml:"AppJson,omitempty"`
+	// example:
+	//
+	// 1570634021000
+	BeganOn *int64 `json:"BeganOn,omitempty" xml:"BeganOn,omitempty"`
+	// example:
+	//
+	// 1570634021000
+	CreatedOn *int64 `json:"CreatedOn,omitempty" xml:"CreatedOn,omitempty"`
+	// example:
+	//
+	// 1570644021000
+	EndOn      *int64  `json:"EndOn,omitempty" xml:"EndOn,omitempty"`
+	ExtendJson *string `json:"ExtendJson,omitempty" xml:"ExtendJson,omitempty"`
+	// example:
+	//
+	// {"password":"***","ip":"118.31.***.41","innerIp":"118.31.***.41","region":"","username":"***","beianInfo":""}
+	HostJson *string `json:"HostJson,omitempty" xml:"HostJson,omitempty"`
+	// example:
+	//
+	// {}
+	IdaasJson *string `json:"IdaasJson,omitempty" xml:"IdaasJson,omitempty"`
+	// example:
+	//
+	// {}
+	ImageJson *string `json:"ImageJson,omitempty" xml:"ImageJson,omitempty"`
+	// example:
+	//
+	// 1551111111
+	InstanceId *int64 `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// 204211111111111
+	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// example:
+	//
+	// cmgj00**11
+	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	ProductName *string `json:"ProductName,omitempty" xml:"ProductName,omitempty"`
+	// example:
+	//
+	// cmgj00**11-prepay
 	ProductSkuCode *string `json:"ProductSkuCode,omitempty" xml:"ProductSkuCode,omitempty"`
-	ProductType    *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
-	Status         *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	SupplierName   *string `json:"SupplierName,omitempty" xml:"SupplierName,omitempty"`
+	// example:
+	//
+	// APP
+	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
+	// example:
+	//
+	// OPENED
+	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	SupplierName *string `json:"SupplierName,omitempty" xml:"SupplierName,omitempty"`
 }
 
 func (s DescribeInstancesResponseBodyInstanceItemsInstanceItem) String() string {
@@ -1734,9 +2152,9 @@ func (s *DescribeInstancesResponseBodyInstanceItemsInstanceItem) SetSupplierName
 }
 
 type DescribeInstancesResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeInstancesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeInstancesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeInstancesResponse) String() string {
@@ -1763,6 +2181,11 @@ func (s *DescribeInstancesResponse) SetBody(v *DescribeInstancesResponseBody) *D
 }
 
 type DescribeLicenseRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// xxxxxx
 	LicenseCode *string `json:"LicenseCode,omitempty" xml:"LicenseCode,omitempty"`
 }
 
@@ -1780,8 +2203,11 @@ func (s *DescribeLicenseRequest) SetLicenseCode(v string) *DescribeLicenseReques
 }
 
 type DescribeLicenseResponseBody struct {
-	License   *DescribeLicenseResponseBodyLicense `json:"License,omitempty" xml:"License,omitempty" type:"Struct"`
-	RequestId *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	License *DescribeLicenseResponseBodyLicense `json:"License,omitempty" xml:"License,omitempty" type:"Struct"`
+	// example:
+	//
+	// 6EF60BEC-0242-43AF-BB20-270359FB54A7
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeLicenseResponseBody) String() string {
@@ -1803,18 +2229,42 @@ func (s *DescribeLicenseResponseBody) SetRequestId(v string) *DescribeLicenseRes
 }
 
 type DescribeLicenseResponseBodyLicense struct {
-	ActivateTime  *string                                        `json:"ActivateTime,omitempty" xml:"ActivateTime,omitempty"`
-	CreateTime    *string                                        `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	ExpiredTime   *string                                        `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
-	ExtendArray   *DescribeLicenseResponseBodyLicenseExtendArray `json:"ExtendArray,omitempty" xml:"ExtendArray,omitempty" type:"Struct"`
-	ExtendInfo    *DescribeLicenseResponseBodyLicenseExtendInfo  `json:"ExtendInfo,omitempty" xml:"ExtendInfo,omitempty" type:"Struct"`
-	InstanceId    *string                                        `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	LicenseCode   *string                                        `json:"LicenseCode,omitempty" xml:"LicenseCode,omitempty"`
-	LicenseStatus *string                                        `json:"LicenseStatus,omitempty" xml:"LicenseStatus,omitempty"`
-	ProductCode   *string                                        `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	ProductName   *string                                        `json:"ProductName,omitempty" xml:"ProductName,omitempty"`
-	ProductSkuId  *string                                        `json:"ProductSkuId,omitempty" xml:"ProductSkuId,omitempty"`
-	SupplierName  *string                                        `json:"SupplierName,omitempty" xml:"SupplierName,omitempty"`
+	// example:
+	//
+	// 2019-05-25 09:00:00
+	ActivateTime *string `json:"ActivateTime,omitempty" xml:"ActivateTime,omitempty"`
+	// example:
+	//
+	// 2019-05-25 09:00:00
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// 2019-06-25 09:00:00
+	ExpiredTime *string                                        `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
+	ExtendArray *DescribeLicenseResponseBodyLicenseExtendArray `json:"ExtendArray,omitempty" xml:"ExtendArray,omitempty" type:"Struct"`
+	ExtendInfo  *DescribeLicenseResponseBodyLicenseExtendInfo  `json:"ExtendInfo,omitempty" xml:"ExtendInfo,omitempty" type:"Struct"`
+	// example:
+	//
+	// 1551111111
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// -
+	LicenseCode *string `json:"LicenseCode,omitempty" xml:"LicenseCode,omitempty"`
+	// example:
+	//
+	// ACTIVATED
+	LicenseStatus *string `json:"LicenseStatus,omitempty" xml:"LicenseStatus,omitempty"`
+	// example:
+	//
+	// cmgj02****
+	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	ProductName *string `json:"ProductName,omitempty" xml:"ProductName,omitempty"`
+	// example:
+	//
+	// cmgj02****-prepay
+	ProductSkuId *string `json:"ProductSkuId,omitempty" xml:"ProductSkuId,omitempty"`
+	SupplierName *string `json:"SupplierName,omitempty" xml:"SupplierName,omitempty"`
 }
 
 func (s DescribeLicenseResponseBodyLicense) String() string {
@@ -1903,7 +2353,13 @@ func (s *DescribeLicenseResponseBodyLicenseExtendArray) SetLicenseAttribute(v []
 }
 
 type DescribeLicenseResponseBodyLicenseExtendArrayLicenseAttribute struct {
-	Code  *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// -
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// -
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -1926,10 +2382,22 @@ func (s *DescribeLicenseResponseBodyLicenseExtendArrayLicenseAttribute) SetValue
 }
 
 type DescribeLicenseResponseBodyLicenseExtendInfo struct {
-	AccountQuantity *int64  `json:"AccountQuantity,omitempty" xml:"AccountQuantity,omitempty"`
-	AliUid          *int64  `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
-	Email           *string `json:"Email,omitempty" xml:"Email,omitempty"`
-	Mobile          *string `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
+	// example:
+	//
+	// -
+	AccountQuantity *int64 `json:"AccountQuantity,omitempty" xml:"AccountQuantity,omitempty"`
+	// example:
+	//
+	// 190311111111****
+	AliUid *int64 `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
+	// example:
+	//
+	// id***@**.com
+	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	// example:
+	//
+	// 129****1111
+	Mobile *string `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
 }
 
 func (s DescribeLicenseResponseBodyLicenseExtendInfo) String() string {
@@ -1961,9 +2429,9 @@ func (s *DescribeLicenseResponseBodyLicenseExtendInfo) SetMobile(v string) *Desc
 }
 
 type DescribeLicenseResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeLicenseResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeLicenseResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeLicenseResponse) String() string {
@@ -1990,6 +2458,11 @@ func (s *DescribeLicenseResponse) SetBody(v *DescribeLicenseResponseBody) *Descr
 }
 
 type DescribeOrderRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 202*********415
 	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
 }
 
@@ -2007,28 +2480,79 @@ func (s *DescribeOrderRequest) SetOrderId(v string) *DescribeOrderRequest {
 }
 
 type DescribeOrderResponseBody struct {
-	AccountQuantity     *int64                                       `json:"AccountQuantity,omitempty" xml:"AccountQuantity,omitempty"`
-	AliUid              *int64                                       `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
-	Components          map[string]interface{}                       `json:"Components,omitempty" xml:"Components,omitempty"`
-	CouponPrice         *float32                                     `json:"CouponPrice,omitempty" xml:"CouponPrice,omitempty"`
-	CreatedOn           *int64                                       `json:"CreatedOn,omitempty" xml:"CreatedOn,omitempty"`
-	InstanceIds         *DescribeOrderResponseBodyInstanceIds        `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Struct"`
-	OrderId             *int64                                       `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	OrderStatus         *string                                      `json:"OrderStatus,omitempty" xml:"OrderStatus,omitempty"`
-	OrderType           *string                                      `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
-	OriginalPrice       *float32                                     `json:"OriginalPrice,omitempty" xml:"OriginalPrice,omitempty"`
-	PaidOn              *int64                                       `json:"PaidOn,omitempty" xml:"PaidOn,omitempty"`
-	PayStatus           *string                                      `json:"PayStatus,omitempty" xml:"PayStatus,omitempty"`
-	PaymentPrice        *float32                                     `json:"PaymentPrice,omitempty" xml:"PaymentPrice,omitempty"`
-	PeriodType          *string                                      `json:"PeriodType,omitempty" xml:"PeriodType,omitempty"`
-	ProductCode         *string                                      `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	ProductName         *string                                      `json:"ProductName,omitempty" xml:"ProductName,omitempty"`
-	ProductSkuCode      *string                                      `json:"ProductSkuCode,omitempty" xml:"ProductSkuCode,omitempty"`
-	Quantity            *int32                                       `json:"Quantity,omitempty" xml:"Quantity,omitempty"`
+	// example:
+	//
+	// 0
+	AccountQuantity *int64 `json:"AccountQuantity,omitempty" xml:"AccountQuantity,omitempty"`
+	// example:
+	//
+	// 190311111111****
+	AliUid     *int64                 `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
+	Components map[string]interface{} `json:"Components,omitempty" xml:"Components,omitempty"`
+	// example:
+	//
+	// 0.0
+	CouponPrice *float32 `json:"CouponPrice,omitempty" xml:"CouponPrice,omitempty"`
+	// example:
+	//
+	// 1531191564000
+	CreatedOn   *int64                                `json:"CreatedOn,omitempty" xml:"CreatedOn,omitempty"`
+	InstanceIds *DescribeOrderResponseBodyInstanceIds `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Struct"`
+	// example:
+	//
+	// 202211111111111
+	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// example:
+	//
+	// NORMAL
+	OrderStatus *string `json:"OrderStatus,omitempty" xml:"OrderStatus,omitempty"`
+	// example:
+	//
+	// NEW
+	OrderType *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
+	// example:
+	//
+	// 10.0
+	OriginalPrice *float32 `json:"OriginalPrice,omitempty" xml:"OriginalPrice,omitempty"`
+	// example:
+	//
+	// 1531191675000
+	PaidOn *int64 `json:"PaidOn,omitempty" xml:"PaidOn,omitempty"`
+	// example:
+	//
+	// PAID
+	PayStatus *string `json:"PayStatus,omitempty" xml:"PayStatus,omitempty"`
+	// example:
+	//
+	// 0.0
+	PaymentPrice *float32 `json:"PaymentPrice,omitempty" xml:"PaymentPrice,omitempty"`
+	// example:
+	//
+	// MONTH
+	PeriodType *string `json:"PeriodType,omitempty" xml:"PeriodType,omitempty"`
+	// example:
+	//
+	// cmgj02****
+	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	ProductName *string `json:"ProductName,omitempty" xml:"ProductName,omitempty"`
+	// example:
+	//
+	// cmgj02****-prepay
+	ProductSkuCode *string `json:"ProductSkuCode,omitempty" xml:"ProductSkuCode,omitempty"`
+	// example:
+	//
+	// 1
+	Quantity *int32 `json:"Quantity,omitempty" xml:"Quantity,omitempty"`
+	// example:
+	//
+	// 6EF60BEC-0242-43AF-BB20-270359FB54A7
 	RequestId           *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	SupplierCompanyName *string                                      `json:"SupplierCompanyName,omitempty" xml:"SupplierCompanyName,omitempty"`
 	SupplierTelephones  *DescribeOrderResponseBodySupplierTelephones `json:"SupplierTelephones,omitempty" xml:"SupplierTelephones,omitempty" type:"Struct"`
-	TotalPrice          *float32                                     `json:"TotalPrice,omitempty" xml:"TotalPrice,omitempty"`
+	// example:
+	//
+	// 0.0
+	TotalPrice *float32 `json:"TotalPrice,omitempty" xml:"TotalPrice,omitempty"`
 }
 
 func (s DescribeOrderResponseBody) String() string {
@@ -2184,9 +2708,9 @@ func (s *DescribeOrderResponseBodySupplierTelephones) SetTelephone(v []*string) 
 }
 
 type DescribeOrderResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeOrderResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeOrderResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeOrderResponse) String() string {
@@ -2213,7 +2737,17 @@ func (s *DescribeOrderResponse) SetBody(v *DescribeOrderResponseBody) *DescribeO
 }
 
 type DescribePriceRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// {"components":{"package_version":"yuncode12928000016"},"duration":1,"pricingCycle":"YEAR","productCode":"cmgj01**28","quantity":1,"skuCode":"prepay"}
 	Commodity *string `json:"Commodity,omitempty" xml:"Commodity,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// INSTANCE_BUY
 	OrderType *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
 }
 
@@ -2236,19 +2770,46 @@ func (s *DescribePriceRequest) SetOrderType(v string) *DescribePriceRequest {
 }
 
 type DescribePriceResponseBody struct {
-	Coupons           *DescribePriceResponseBodyCoupons        `json:"Coupons,omitempty" xml:"Coupons,omitempty" type:"Struct"`
-	Currency          *string                                  `json:"Currency,omitempty" xml:"Currency,omitempty"`
-	Cuxiao            *bool                                    `json:"Cuxiao,omitempty" xml:"Cuxiao,omitempty"`
-	Cycle             *string                                  `json:"Cycle,omitempty" xml:"Cycle,omitempty"`
-	DiscountPrice     *float32                                 `json:"DiscountPrice,omitempty" xml:"DiscountPrice,omitempty"`
-	Duration          *int32                                   `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	ExpressionCode    *string                                  `json:"ExpressionCode,omitempty" xml:"ExpressionCode,omitempty"`
-	ExpressionMessage *string                                  `json:"ExpressionMessage,omitempty" xml:"ExpressionMessage,omitempty"`
-	InfoTitle         *string                                  `json:"InfoTitle,omitempty" xml:"InfoTitle,omitempty"`
-	OriginalPrice     *float32                                 `json:"OriginalPrice,omitempty" xml:"OriginalPrice,omitempty"`
-	ProductCode       *string                                  `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	PromotionRules    *DescribePriceResponseBodyPromotionRules `json:"PromotionRules,omitempty" xml:"PromotionRules,omitempty" type:"Struct"`
-	TradePrice        *float32                                 `json:"TradePrice,omitempty" xml:"TradePrice,omitempty"`
+	Coupons *DescribePriceResponseBodyCoupons `json:"Coupons,omitempty" xml:"Coupons,omitempty" type:"Struct"`
+	// example:
+	//
+	// CNY
+	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
+	// example:
+	//
+	// true
+	Cuxiao *bool `json:"Cuxiao,omitempty" xml:"Cuxiao,omitempty"`
+	// example:
+	//
+	// MONTH
+	Cycle *string `json:"Cycle,omitempty" xml:"Cycle,omitempty"`
+	// example:
+	//
+	// 178.20
+	DiscountPrice *float32 `json:"DiscountPrice,omitempty" xml:"DiscountPrice,omitempty"`
+	// example:
+	//
+	// 1
+	Duration *int32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// example:
+	//
+	// ORDER.NO_REAL_NAME_AUTHENTICATION
+	ExpressionCode    *string `json:"ExpressionCode,omitempty" xml:"ExpressionCode,omitempty"`
+	ExpressionMessage *string `json:"ExpressionMessage,omitempty" xml:"ExpressionMessage,omitempty"`
+	InfoTitle         *string `json:"InfoTitle,omitempty" xml:"InfoTitle,omitempty"`
+	// example:
+	//
+	// 198.00
+	OriginalPrice *float32 `json:"OriginalPrice,omitempty" xml:"OriginalPrice,omitempty"`
+	// example:
+	//
+	// cmgj01****
+	ProductCode    *string                                  `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	PromotionRules *DescribePriceResponseBodyPromotionRules `json:"PromotionRules,omitempty" xml:"PromotionRules,omitempty" type:"Struct"`
+	// example:
+	//
+	// 19.80
+	TradePrice *float32 `json:"TradePrice,omitempty" xml:"TradePrice,omitempty"`
 }
 
 func (s DescribePriceResponseBody) String() string {
@@ -2342,12 +2903,24 @@ func (s *DescribePriceResponseBodyCoupons) SetCoupon(v []*DescribePriceResponseB
 }
 
 type DescribePriceResponseBodyCouponsCoupon struct {
-	CanPromFee       *float32 `json:"CanPromFee,omitempty" xml:"CanPromFee,omitempty"`
-	CouponDesc       *string  `json:"CouponDesc,omitempty" xml:"CouponDesc,omitempty"`
-	CouponName       *string  `json:"CouponName,omitempty" xml:"CouponName,omitempty"`
-	CouponOptionCode *string  `json:"CouponOptionCode,omitempty" xml:"CouponOptionCode,omitempty"`
-	CouponOptionNo   *string  `json:"CouponOptionNo,omitempty" xml:"CouponOptionNo,omitempty"`
-	IsSelected       *bool    `json:"IsSelected,omitempty" xml:"IsSelected,omitempty"`
+	// example:
+	//
+	// 100.00
+	CanPromFee *float32 `json:"CanPromFee,omitempty" xml:"CanPromFee,omitempty"`
+	CouponDesc *string  `json:"CouponDesc,omitempty" xml:"CouponDesc,omitempty"`
+	CouponName *string  `json:"CouponName,omitempty" xml:"CouponName,omitempty"`
+	// example:
+	//
+	// ActiveCoupon
+	CouponOptionCode *string `json:"CouponOptionCode,omitempty" xml:"CouponOptionCode,omitempty"`
+	// example:
+	//
+	// 3874923111
+	CouponOptionNo *string `json:"CouponOptionNo,omitempty" xml:"CouponOptionNo,omitempty"`
+	// example:
+	//
+	// false
+	IsSelected *bool `json:"IsSelected,omitempty" xml:"IsSelected,omitempty"`
 }
 
 func (s DescribePriceResponseBodyCouponsCoupon) String() string {
@@ -2406,7 +2979,10 @@ func (s *DescribePriceResponseBodyPromotionRules) SetPromotionRule(v []*Describe
 }
 
 type DescribePriceResponseBodyPromotionRulesPromotionRule struct {
-	Name   *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 102112
 	RuleId *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
 	Title  *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
@@ -2435,9 +3011,9 @@ func (s *DescribePriceResponseBodyPromotionRulesPromotionRule) SetTitle(v string
 }
 
 type DescribePriceResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribePriceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribePriceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribePriceResponse) String() string {
@@ -2465,9 +3041,21 @@ func (s *DescribePriceResponse) SetBody(v *DescribePriceResponseBody) *DescribeP
 
 type DescribeProductRequest struct {
 	// AliUid
-	AliUid     *string `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
-	Code       *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	QueryDraft *bool   `json:"QueryDraft,omitempty" xml:"QueryDraft,omitempty"`
+	//
+	// example:
+	//
+	// 190********569
+	AliUid *string `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cmjj01**45
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// false
+	QueryDraft *bool `json:"QueryDraft,omitempty" xml:"QueryDraft,omitempty"`
 }
 
 func (s DescribeProductRequest) String() string {
@@ -2494,26 +3082,65 @@ func (s *DescribeProductRequest) SetQueryDraft(v bool) *DescribeProductRequest {
 }
 
 type DescribeProductResponseBody struct {
-	AuditFailMsg     *string                                   `json:"AuditFailMsg,omitempty" xml:"AuditFailMsg,omitempty"`
-	AuditStatus      *string                                   `json:"AuditStatus,omitempty" xml:"AuditStatus,omitempty"`
-	AuditTime        *int64                                    `json:"AuditTime,omitempty" xml:"AuditTime,omitempty"`
-	Code             *string                                   `json:"Code,omitempty" xml:"Code,omitempty"`
-	Description      *string                                   `json:"Description,omitempty" xml:"Description,omitempty"`
-	FrontCategoryId  *int64                                    `json:"FrontCategoryId,omitempty" xml:"FrontCategoryId,omitempty"`
-	GmtCreated       *int64                                    `json:"GmtCreated,omitempty" xml:"GmtCreated,omitempty"`
-	GmtModified      *int64                                    `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	Name             *string                                   `json:"Name,omitempty" xml:"Name,omitempty"`
-	PicUrl           *string                                   `json:"PicUrl,omitempty" xml:"PicUrl,omitempty"`
-	ProductExtras    *DescribeProductResponseBodyProductExtras `json:"ProductExtras,omitempty" xml:"ProductExtras,omitempty" type:"Struct"`
-	ProductSkus      *DescribeProductResponseBodyProductSkus   `json:"ProductSkus,omitempty" xml:"ProductSkus,omitempty" type:"Struct"`
-	RequestId        *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Score            *float32                                  `json:"Score,omitempty" xml:"Score,omitempty"`
-	ShopInfo         *DescribeProductResponseBodyShopInfo      `json:"ShopInfo,omitempty" xml:"ShopInfo,omitempty" type:"Struct"`
-	ShortDescription *string                                   `json:"ShortDescription,omitempty" xml:"ShortDescription,omitempty"`
-	Status           *string                                   `json:"Status,omitempty" xml:"Status,omitempty"`
-	SupplierPk       *int64                                    `json:"SupplierPk,omitempty" xml:"SupplierPk,omitempty"`
-	Type             *string                                   `json:"Type,omitempty" xml:"Type,omitempty"`
-	UseCount         *int64                                    `json:"UseCount,omitempty" xml:"UseCount,omitempty"`
+	AuditFailMsg *string `json:"AuditFailMsg,omitempty" xml:"AuditFailMsg,omitempty"`
+	// example:
+	//
+	// function_fail
+	AuditStatus *string `json:"AuditStatus,omitempty" xml:"AuditStatus,omitempty"`
+	// example:
+	//
+	// 1581609600000
+	AuditTime *int64 `json:"AuditTime,omitempty" xml:"AuditTime,omitempty"`
+	// example:
+	//
+	// cmjj01**45
+	Code        *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// 523617212
+	FrontCategoryId *int64 `json:"FrontCategoryId,omitempty" xml:"FrontCategoryId,omitempty"`
+	// example:
+	//
+	// 1578931200000
+	GmtCreated *int64 `json:"GmtCreated,omitempty" xml:"GmtCreated,omitempty"`
+	// example:
+	//
+	// 1578931200000
+	GmtModified *int64  `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// https://oss.aliyuncs.com/photogallery/photo/1930532890589852/6245/495d5f19-03e4-4c2e-9c4e-bef9ab6af1e1.png
+	PicUrl        *string                                   `json:"PicUrl,omitempty" xml:"PicUrl,omitempty"`
+	ProductExtras *DescribeProductResponseBodyProductExtras `json:"ProductExtras,omitempty" xml:"ProductExtras,omitempty" type:"Struct"`
+	ProductSkus   *DescribeProductResponseBodyProductSkus   `json:"ProductSkus,omitempty" xml:"ProductSkus,omitempty" type:"Struct"`
+	// example:
+	//
+	// 6EF60BEC-0242-43AF-BB20-270359FB54A7
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 5.0
+	Score            *float32                             `json:"Score,omitempty" xml:"Score,omitempty"`
+	ShopInfo         *DescribeProductResponseBodyShopInfo `json:"ShopInfo,omitempty" xml:"ShopInfo,omitempty" type:"Struct"`
+	ShortDescription *string                              `json:"ShortDescription,omitempty" xml:"ShortDescription,omitempty"`
+	// example:
+	//
+	// 1
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// 1526111111****
+	SupplierPk *int64 `json:"SupplierPk,omitempty" xml:"SupplierPk,omitempty"`
+	// example:
+	//
+	// MIRROR
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// 10
+	UseCount *int64 `json:"UseCount,omitempty" xml:"UseCount,omitempty"`
 }
 
 func (s DescribeProductResponseBody) String() string {
@@ -2642,9 +3269,18 @@ func (s *DescribeProductResponseBodyProductExtras) SetProductExtra(v []*Describe
 }
 
 type DescribeProductResponseBodyProductExtrasProductExtra struct {
-	Key    *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	Label  *string `json:"Label,omitempty" xml:"Label,omitempty"`
-	Order  *int32  `json:"Order,omitempty" xml:"Order,omitempty"`
+	// example:
+	//
+	// product_advantage
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
+	// example:
+	//
+	// 0
+	Order *int32 `json:"Order,omitempty" xml:"Order,omitempty"`
+	// example:
+	//
+	// HTML
 	Type   *string `json:"Type,omitempty" xml:"Type,omitempty"`
 	Values *string `json:"Values,omitempty" xml:"Values,omitempty"`
 }
@@ -2700,11 +3336,26 @@ func (s *DescribeProductResponseBodyProductSkus) SetProductSku(v []*DescribeProd
 }
 
 type DescribeProductResponseBodyProductSkusProductSku struct {
-	ChargeType   *string                                                       `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	Code         *string                                                       `json:"Code,omitempty" xml:"Code,omitempty"`
-	Constraints  *string                                                       `json:"Constraints,omitempty" xml:"Constraints,omitempty"`
-	Hidden       *bool                                                         `json:"Hidden,omitempty" xml:"Hidden,omitempty"`
-	Modules      *DescribeProductResponseBodyProductSkusProductSkuModules      `json:"Modules,omitempty" xml:"Modules,omitempty" type:"Struct"`
+	// example:
+	//
+	// PREPAY
+	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	// example:
+	//
+	// cmjj01****-Package
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// {\\"img_id\\":{\\"img_version|img_region\\":{\\"V1.7|cn-shenzhen-st3-a01\\":[\\"m-wz9ho4hmos0lpxcldqoq\\"]}}
+	Constraints *string `json:"Constraints,omitempty" xml:"Constraints,omitempty"`
+	// example:
+	//
+	// true
+	Hidden  *bool                                                    `json:"Hidden,omitempty" xml:"Hidden,omitempty"`
+	Modules *DescribeProductResponseBodyProductSkusProductSkuModules `json:"Modules,omitempty" xml:"Modules,omitempty" type:"Struct"`
+	// example:
+	//
+	// 21
 	Name         *string                                                       `json:"Name,omitempty" xml:"Name,omitempty"`
 	OrderPeriods *DescribeProductResponseBodyProductSkusProductSkuOrderPeriods `json:"OrderPeriods,omitempty" xml:"OrderPeriods,omitempty" type:"Struct"`
 }
@@ -2770,7 +3421,13 @@ func (s *DescribeProductResponseBodyProductSkusProductSkuModules) SetModule(v []
 }
 
 type DescribeProductResponseBodyProductSkusProductSkuModulesModule struct {
-	Code       *string                                                                  `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// img_id
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// 248220
 	Id         *string                                                                  `json:"Id,omitempty" xml:"Id,omitempty"`
 	Name       *string                                                                  `json:"Name,omitempty" xml:"Name,omitempty"`
 	Properties *DescribeProductResponseBodyProductSkusProductSkuModulesModuleProperties `json:"Properties,omitempty" xml:"Properties,omitempty" type:"Struct"`
@@ -2822,11 +3479,20 @@ func (s *DescribeProductResponseBodyProductSkusProductSkuModulesModuleProperties
 }
 
 type DescribeProductResponseBodyProductSkusProductSkuModulesModulePropertiesProperty struct {
-	DisplayUnit    *string                                                                                        `json:"DisplayUnit,omitempty" xml:"DisplayUnit,omitempty"`
+	// example:
+	//
+	// 1
+	DisplayUnit *string `json:"DisplayUnit,omitempty" xml:"DisplayUnit,omitempty"`
+	// example:
+	//
+	// img_id
 	Key            *string                                                                                        `json:"Key,omitempty" xml:"Key,omitempty"`
 	Name           *string                                                                                        `json:"Name,omitempty" xml:"Name,omitempty"`
 	PropertyValues *DescribeProductResponseBodyProductSkusProductSkuModulesModulePropertiesPropertyPropertyValues `json:"PropertyValues,omitempty" xml:"PropertyValues,omitempty" type:"Struct"`
-	ShowType       *string                                                                                        `json:"ShowType,omitempty" xml:"ShowType,omitempty"`
+	// example:
+	//
+	// number
+	ShowType *string `json:"ShowType,omitempty" xml:"ShowType,omitempty"`
 }
 
 func (s DescribeProductResponseBodyProductSkusProductSkuModulesModulePropertiesProperty) String() string {
@@ -2881,12 +3547,30 @@ func (s *DescribeProductResponseBodyProductSkusProductSkuModulesModuleProperties
 
 type DescribeProductResponseBodyProductSkusProductSkuModulesModulePropertiesPropertyPropertyValuesPropertyValue struct {
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	Max         *string `json:"Max,omitempty" xml:"Max,omitempty"`
-	Min         *string `json:"Min,omitempty" xml:"Min,omitempty"`
-	Remark      *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	Step        *string `json:"Step,omitempty" xml:"Step,omitempty"`
-	Type        *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	Value       *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	// example:
+	//
+	// 123
+	Max *string `json:"Max,omitempty" xml:"Max,omitempty"`
+	// example:
+	//
+	// 11
+	Min *string `json:"Min,omitempty" xml:"Min,omitempty"`
+	// example:
+	//
+	// abc
+	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// example:
+	//
+	// 1
+	Step *string `json:"Step,omitempty" xml:"Step,omitempty"`
+	// example:
+	//
+	// single_string
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// m-28e213e7t
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s DescribeProductResponseBodyProductSkusProductSkuModulesModulePropertiesPropertyPropertyValuesPropertyValue) String() string {
@@ -2950,7 +3634,10 @@ func (s *DescribeProductResponseBodyProductSkusProductSkuOrderPeriods) SetOrderP
 }
 
 type DescribeProductResponseBodyProductSkusProductSkuOrderPeriodsOrderPeriod struct {
-	Name       *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// HOUR
 	PeriodType *string `json:"PeriodType,omitempty" xml:"PeriodType,omitempty"`
 }
 
@@ -2973,7 +3660,13 @@ func (s *DescribeProductResponseBodyProductSkusProductSkuOrderPeriodsOrderPeriod
 }
 
 type DescribeProductResponseBodyShopInfo struct {
-	Emails     *string                                        `json:"Emails,omitempty" xml:"Emails,omitempty"`
+	// example:
+	//
+	// 46**41@example.com
+	Emails *string `json:"Emails,omitempty" xml:"Emails,omitempty"`
+	// example:
+	//
+	// 123
 	Id         *int64                                         `json:"Id,omitempty" xml:"Id,omitempty"`
 	Name       *string                                        `json:"Name,omitempty" xml:"Name,omitempty"`
 	Telephones *DescribeProductResponseBodyShopInfoTelephones `json:"Telephones,omitempty" xml:"Telephones,omitempty" type:"Struct"`
@@ -3048,7 +3741,13 @@ func (s *DescribeProductResponseBodyShopInfoWangWangs) SetWangWang(v []*Describe
 }
 
 type DescribeProductResponseBodyShopInfoWangWangsWangWang struct {
-	Remark   *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// example:
+	//
+	// 123
+	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// example:
+	//
+	// ABC
 	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 }
 
@@ -3071,9 +3770,9 @@ func (s *DescribeProductResponseBodyShopInfoWangWangsWangWang) SetUserName(v str
 }
 
 type DescribeProductResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeProductResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeProductResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeProductResponse) String() string {
@@ -3100,10 +3799,16 @@ func (s *DescribeProductResponse) SetBody(v *DescribeProductResponseBody) *Descr
 }
 
 type DescribeProductsRequest struct {
-	Filter     []*DescribeProductsRequestFilter `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Repeated"`
-	PageNumber *int32                           `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32                           `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	SearchTerm *string                          `json:"SearchTerm,omitempty" xml:"SearchTerm,omitempty"`
+	Filter []*DescribeProductsRequestFilter `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	SearchTerm *string `json:"SearchTerm,omitempty" xml:"SearchTerm,omitempty"`
 }
 
 func (s DescribeProductsRequest) String() string {
@@ -3135,7 +3840,13 @@ func (s *DescribeProductsRequest) SetSearchTerm(v string) *DescribeProductsReque
 }
 
 type DescribeProductsRequestFilter struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// categoryId
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// 53366009
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -3158,11 +3869,23 @@ func (s *DescribeProductsRequestFilter) SetValue(v string) *DescribeProductsRequ
 }
 
 type DescribeProductsResponseBody struct {
-	PageNumber   *int32                                    `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
 	PageSize     *int32                                    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	ProductItems *DescribeProductsResponseBodyProductItems `json:"ProductItems,omitempty" xml:"ProductItems,omitempty" type:"Struct"`
-	RequestId    *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount   *int32                                    `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// example:
+	//
+	// A077D99E-0C4D-421E-A5D4-F533F6657817
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 75
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeProductsResponseBody) String() string {
@@ -3216,22 +3939,46 @@ func (s *DescribeProductsResponseBodyProductItems) SetProductItem(v []*DescribeP
 }
 
 type DescribeProductsResponseBodyProductItemsProductItem struct {
-	CategoryId       *int64  `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
-	Code             *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	DeliveryDate     *string `json:"DeliveryDate,omitempty" xml:"DeliveryDate,omitempty"`
-	DeliveryWay      *string `json:"DeliveryWay,omitempty" xml:"DeliveryWay,omitempty"`
-	ImageUrl         *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
-	Name             *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	OperationSystem  *string `json:"OperationSystem,omitempty" xml:"OperationSystem,omitempty"`
-	PriceInfo        *string `json:"PriceInfo,omitempty" xml:"PriceInfo,omitempty"`
+	// example:
+	//
+	// 53398003
+	CategoryId *int64 `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
+	// example:
+	//
+	// cmjj02****
+	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	DeliveryDate *string `json:"DeliveryDate,omitempty" xml:"DeliveryDate,omitempty"`
+	DeliveryWay  *string `json:"DeliveryWay,omitempty" xml:"DeliveryWay,omitempty"`
+	// example:
+	//
+	// https://oss.aliyuncs.com/photogallery/photo/1904996544835414/7549/767d6d07-8366-4822-b84e-61f6ea10d146.png
+	ImageUrl *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
+	Name     *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// windows
+	OperationSystem *string `json:"OperationSystem,omitempty" xml:"OperationSystem,omitempty"`
+	// example:
+	//
+	// {\\"DiscountPrice\\": 0.0, \\"TradePrice\\": 15750.0, \\"Currency\\": \\"CNY\\", \\"OriginalPrice\\": 15750.0, \\"RuleIds\\": {\\"RuleId\\": []}, \\"Coupons\\": {\\"Coupon\\": []}}
+	PriceInfo *string `json:"PriceInfo,omitempty" xml:"PriceInfo,omitempty"`
+	// example:
+	//
+	// 5.0
 	Score            *string `json:"Score,omitempty" xml:"Score,omitempty"`
 	ShortDescription *string `json:"ShortDescription,omitempty" xml:"ShortDescription,omitempty"`
 	SuggestedPrice   *string `json:"SuggestedPrice,omitempty" xml:"SuggestedPrice,omitempty"`
-	SupplierId       *int64  `json:"SupplierId,omitempty" xml:"SupplierId,omitempty"`
-	SupplierName     *string `json:"SupplierName,omitempty" xml:"SupplierName,omitempty"`
-	Tags             *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	TargetUrl        *string `json:"TargetUrl,omitempty" xml:"TargetUrl,omitempty"`
-	WarrantyDate     *string `json:"WarrantyDate,omitempty" xml:"WarrantyDate,omitempty"`
+	// example:
+	//
+	// 228399
+	SupplierId   *int64  `json:"SupplierId,omitempty" xml:"SupplierId,omitempty"`
+	SupplierName *string `json:"SupplierName,omitempty" xml:"SupplierName,omitempty"`
+	Tags         *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	// example:
+	//
+	// /products/53616009/cmjj02****.html
+	TargetUrl    *string `json:"TargetUrl,omitempty" xml:"TargetUrl,omitempty"`
+	WarrantyDate *string `json:"WarrantyDate,omitempty" xml:"WarrantyDate,omitempty"`
 }
 
 func (s DescribeProductsResponseBodyProductItemsProductItem) String() string {
@@ -3323,9 +4070,9 @@ func (s *DescribeProductsResponseBodyProductItemsProductItem) SetWarrantyDate(v 
 }
 
 type DescribeProductsResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeProductsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeProductsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeProductsResponse) String() string {
@@ -3352,6 +4099,11 @@ func (s *DescribeProductsResponse) SetBody(v *DescribeProductsResponseBody) *Des
 }
 
 type DescribeProjectAttachmentsRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 4****89
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -3369,9 +4121,15 @@ func (s *DescribeProjectAttachmentsRequest) SetInstanceId(v string) *DescribePro
 }
 
 type DescribeProjectAttachmentsResponseBody struct {
+	// example:
+	//
+	// e03a9f78-7b40-4fb3-a015-350913e37e3f
 	RequestId *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Result    []*DescribeProjectAttachmentsResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
-	Success   *bool                                           `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeProjectAttachmentsResponseBody) String() string {
@@ -3398,21 +4156,57 @@ func (s *DescribeProjectAttachmentsResponseBody) SetSuccess(v bool) *DescribePro
 }
 
 type DescribeProjectAttachmentsResponseBodyResult struct {
-	AttachmentToken    *string `json:"AttachmentToken,omitempty" xml:"AttachmentToken,omitempty"`
-	AttachmentType     *string `json:"AttachmentType,omitempty" xml:"AttachmentType,omitempty"`
-	Content            *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	FileLink           *string `json:"FileLink,omitempty" xml:"FileLink,omitempty"`
-	FileLinkGmtExpired *int64  `json:"FileLinkGmtExpired,omitempty" xml:"FileLinkGmtExpired,omitempty"`
-	FileName           *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
-	FileSize           *int64  `json:"FileSize,omitempty" xml:"FileSize,omitempty"`
-	FileSuffix         *string `json:"FileSuffix,omitempty" xml:"FileSuffix,omitempty"`
-	GmtCreate          *int64  `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	NodeId             *int64  `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-	NodeName           *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
-	Operator           *int64  `json:"Operator,omitempty" xml:"Operator,omitempty"`
-	OperatorName       *string `json:"OperatorName,omitempty" xml:"OperatorName,omitempty"`
-	OperatorRole       *string `json:"OperatorRole,omitempty" xml:"OperatorRole,omitempty"`
-	StepNo             *int32  `json:"StepNo,omitempty" xml:"StepNo,omitempty"`
+	// example:
+	//
+	// Mzc4NDAtODQ3MjY4MzI=
+	AttachmentToken *string `json:"AttachmentToken,omitempty" xml:"AttachmentToken,omitempty"`
+	// example:
+	//
+	// File
+	AttachmentType *string `json:"AttachmentType,omitempty" xml:"AttachmentType,omitempty"`
+	Content        *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// example:
+	//
+	// http://delivery-center.oss-cn-shanghai.aliyuncs.com/6a8****0e2/e0a***f3.jpg?Expires=1589334682&OSSAccessKeyId=wI2r*********&Signature=JWB39pUxs7RCqrcw58qXPEGu6M0%3D
+	FileLink *string `json:"FileLink,omitempty" xml:"FileLink,omitempty"`
+	// example:
+	//
+	// 1589334682404
+	FileLinkGmtExpired *int64 `json:"FileLinkGmtExpired,omitempty" xml:"FileLinkGmtExpired,omitempty"`
+	// example:
+	//
+	// f8-test-perview.jpeg
+	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	// example:
+	//
+	// 109124
+	FileSize *int64 `json:"FileSize,omitempty" xml:"FileSize,omitempty"`
+	// example:
+	//
+	// jpg
+	FileSuffix *string `json:"FileSuffix,omitempty" xml:"FileSuffix,omitempty"`
+	// example:
+	//
+	// 1587968858000
+	GmtCreate *int64 `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// example:
+	//
+	// 8472
+	NodeId   *int64  `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	NodeName *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
+	// example:
+	//
+	// 45261111****
+	Operator     *int64  `json:"Operator,omitempty" xml:"Operator,omitempty"`
+	OperatorName *string `json:"OperatorName,omitempty" xml:"OperatorName,omitempty"`
+	// example:
+	//
+	// Provider
+	OperatorRole *string `json:"OperatorRole,omitempty" xml:"OperatorRole,omitempty"`
+	// example:
+	//
+	// 3
+	StepNo *int32 `json:"StepNo,omitempty" xml:"StepNo,omitempty"`
 }
 
 func (s DescribeProjectAttachmentsResponseBodyResult) String() string {
@@ -3499,9 +4293,9 @@ func (s *DescribeProjectAttachmentsResponseBodyResult) SetStepNo(v int32) *Descr
 }
 
 type DescribeProjectAttachmentsResponse struct {
-	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeProjectAttachmentsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeProjectAttachmentsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeProjectAttachmentsResponse) String() string {
@@ -3528,6 +4322,11 @@ func (s *DescribeProjectAttachmentsResponse) SetBody(v *DescribeProjectAttachmen
 }
 
 type DescribeProjectInfoRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 4****89
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -3545,9 +4344,15 @@ func (s *DescribeProjectInfoRequest) SetInstanceId(v string) *DescribeProjectInf
 }
 
 type DescribeProjectInfoResponseBody struct {
+	// example:
+	//
+	// ee3e1b3b-6c38-4bcf-be40-5a946cfda761
 	RequestId *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Result    *DescribeProjectInfoResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
-	Success   *bool                                  `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeProjectInfoResponseBody) String() string {
@@ -3574,23 +4379,68 @@ func (s *DescribeProjectInfoResponseBody) SetSuccess(v bool) *DescribeProjectInf
 }
 
 type DescribeProjectInfoResponseBodyResult struct {
-	CurrentStepNo  *int32  `json:"CurrentStepNo,omitempty" xml:"CurrentStepNo,omitempty"`
-	CustomerAliUid *int64  `json:"CustomerAliUid,omitempty" xml:"CustomerAliUid,omitempty"`
-	FinalStepNo    *int32  `json:"FinalStepNo,omitempty" xml:"FinalStepNo,omitempty"`
-	FinishType     *string `json:"FinishType,omitempty" xml:"FinishType,omitempty"`
-	GmtCreate      *int64  `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	GmtExpired     *int64  `json:"GmtExpired,omitempty" xml:"GmtExpired,omitempty"`
-	GmtFinished    *int64  `json:"GmtFinished,omitempty" xml:"GmtFinished,omitempty"`
-	InstanceId     *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	OrderId        *int64  `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	ProductCode    *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	ProductName    *string `json:"ProductName,omitempty" xml:"ProductName,omitempty"`
+	// example:
+	//
+	// 3
+	CurrentStepNo *int32 `json:"CurrentStepNo,omitempty" xml:"CurrentStepNo,omitempty"`
+	// example:
+	//
+	// 27291111****
+	CustomerAliUid *int64 `json:"CustomerAliUid,omitempty" xml:"CustomerAliUid,omitempty"`
+	// example:
+	//
+	// 4
+	FinalStepNo *int32 `json:"FinalStepNo,omitempty" xml:"FinalStepNo,omitempty"`
+	// example:
+	//
+	// null
+	FinishType *string `json:"FinishType,omitempty" xml:"FinishType,omitempty"`
+	// example:
+	//
+	// 1588834324000
+	GmtCreate *int64 `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// example:
+	//
+	// 1620403200000
+	GmtExpired *int64 `json:"GmtExpired,omitempty" xml:"GmtExpired,omitempty"`
+	// example:
+	//
+	// 1620403200000
+	GmtFinished *int64 `json:"GmtFinished,omitempty" xml:"GmtFinished,omitempty"`
+	// example:
+	//
+	// 4****89
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// 2059111111111
+	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// example:
+	//
+	// cmgj***055
+	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	ProductName *string `json:"ProductName,omitempty" xml:"ProductName,omitempty"`
+	// example:
+	//
+	// yuncode****500001
 	ProductSkuCode *string `json:"ProductSkuCode,omitempty" xml:"ProductSkuCode,omitempty"`
 	ProductSkuName *string `json:"ProductSkuName,omitempty" xml:"ProductSkuName,omitempty"`
-	ProjectStatus  *string `json:"ProjectStatus,omitempty" xml:"ProjectStatus,omitempty"`
-	SupplierAliUid *int64  `json:"SupplierAliUid,omitempty" xml:"SupplierAliUid,omitempty"`
-	TemplateId     *int64  `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	TemplateType   *string `json:"TemplateType,omitempty" xml:"TemplateType,omitempty"`
+	// example:
+	//
+	// Starting
+	ProjectStatus *string `json:"ProjectStatus,omitempty" xml:"ProjectStatus,omitempty"`
+	// example:
+	//
+	// 45121111****
+	SupplierAliUid *int64 `json:"SupplierAliUid,omitempty" xml:"SupplierAliUid,omitempty"`
+	// example:
+	//
+	// 410
+	TemplateId *int64 `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// example:
+	//
+	// Public
+	TemplateType *string `json:"TemplateType,omitempty" xml:"TemplateType,omitempty"`
 }
 
 func (s DescribeProjectInfoResponseBodyResult) String() string {
@@ -3687,9 +4537,9 @@ func (s *DescribeProjectInfoResponseBodyResult) SetTemplateType(v string) *Descr
 }
 
 type DescribeProjectInfoResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeProjectInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeProjectInfoResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeProjectInfoResponse) String() string {
@@ -3716,8 +4566,16 @@ func (s *DescribeProjectInfoResponse) SetBody(v *DescribeProjectInfoResponseBody
 }
 
 type DescribeProjectMessagesRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 4****89
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	PageIndex  *int32  `json:"PageIndex,omitempty" xml:"PageIndex,omitempty"`
+	// example:
+	//
+	// 1
+	PageIndex *int32 `json:"PageIndex,omitempty" xml:"PageIndex,omitempty"`
 }
 
 func (s DescribeProjectMessagesRequest) String() string {
@@ -3739,10 +4597,19 @@ func (s *DescribeProjectMessagesRequest) SetPageIndex(v int32) *DescribeProjectM
 }
 
 type DescribeProjectMessagesResponseBody struct {
-	RequestId  *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result     []*DescribeProjectMessagesResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
-	Success    *bool                                        `json:"Success,omitempty" xml:"Success,omitempty"`
-	TotalCount *int64                                       `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// example:
+	//
+	// 00eb4de1-6cff-4f56-833e-7b1e070e398d
+	RequestId *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    []*DescribeProjectMessagesResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 28
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeProjectMessagesResponseBody) String() string {
@@ -3774,10 +4641,19 @@ func (s *DescribeProjectMessagesResponseBody) SetTotalCount(v int64) *DescribePr
 }
 
 type DescribeProjectMessagesResponseBodyResult struct {
-	Content      *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	GmtCreate    *int64  `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// example:
+	//
+	// 1589015560000
+	GmtCreate *int64 `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// example:
+	//
+	// 452611111****
 	Operator     *int64  `json:"Operator,omitempty" xml:"Operator,omitempty"`
 	OperatorName *string `json:"OperatorName,omitempty" xml:"OperatorName,omitempty"`
+	// example:
+	//
+	// Provider
 	OperatorRole *string `json:"OperatorRole,omitempty" xml:"OperatorRole,omitempty"`
 }
 
@@ -3815,9 +4691,9 @@ func (s *DescribeProjectMessagesResponseBodyResult) SetOperatorRole(v string) *D
 }
 
 type DescribeProjectMessagesResponse struct {
-	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeProjectMessagesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeProjectMessagesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeProjectMessagesResponse) String() string {
@@ -3844,6 +4720,11 @@ func (s *DescribeProjectMessagesResponse) SetBody(v *DescribeProjectMessagesResp
 }
 
 type DescribeProjectNodesRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 4****89
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -3861,9 +4742,15 @@ func (s *DescribeProjectNodesRequest) SetInstanceId(v string) *DescribeProjectNo
 }
 
 type DescribeProjectNodesResponseBody struct {
+	// example:
+	//
+	// 937fee1f-26bb-4b6e-8def-977a6bdaa1e5
 	RequestId *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Result    []*DescribeProjectNodesResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
-	Success   *bool                                     `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeProjectNodesResponseBody) String() string {
@@ -3890,22 +4777,64 @@ func (s *DescribeProjectNodesResponseBody) SetSuccess(v bool) *DescribeProjectNo
 }
 
 type DescribeProjectNodesResponseBodyResult struct {
-	AllowRollbackNode *bool   `json:"AllowRollbackNode,omitempty" xml:"AllowRollbackNode,omitempty"`
-	AutoFinishNode    *bool   `json:"AutoFinishNode,omitempty" xml:"AutoFinishNode,omitempty"`
-	FinalStepNo       *int32  `json:"FinalStepNo,omitempty" xml:"FinalStepNo,omitempty"`
-	GmtExpired        *int64  `json:"GmtExpired,omitempty" xml:"GmtExpired,omitempty"`
-	GmtFinished       *int64  `json:"GmtFinished,omitempty" xml:"GmtFinished,omitempty"`
-	GmtStart          *int64  `json:"GmtStart,omitempty" xml:"GmtStart,omitempty"`
-	NeedAttachment    *bool   `json:"NeedAttachment,omitempty" xml:"NeedAttachment,omitempty"`
-	NextNodeId        *int64  `json:"NextNodeId,omitempty" xml:"NextNodeId,omitempty"`
-	NodeId            *int64  `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-	NodeName          *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
-	NodeStatus        *string `json:"NodeStatus,omitempty" xml:"NodeStatus,omitempty"`
-	OperatorRole      *string `json:"OperatorRole,omitempty" xml:"OperatorRole,omitempty"`
-	ParentNodeId      *int64  `json:"ParentNodeId,omitempty" xml:"ParentNodeId,omitempty"`
-	PreviousNodeId    *int64  `json:"PreviousNodeId,omitempty" xml:"PreviousNodeId,omitempty"`
-	StepNo            *int32  `json:"StepNo,omitempty" xml:"StepNo,omitempty"`
-	TemplateForm      *string `json:"TemplateForm,omitempty" xml:"TemplateForm,omitempty"`
+	// example:
+	//
+	// false
+	AllowRollbackNode *bool `json:"AllowRollbackNode,omitempty" xml:"AllowRollbackNode,omitempty"`
+	// example:
+	//
+	// false
+	AutoFinishNode *bool `json:"AutoFinishNode,omitempty" xml:"AutoFinishNode,omitempty"`
+	// example:
+	//
+	// 4
+	FinalStepNo *int32 `json:"FinalStepNo,omitempty" xml:"FinalStepNo,omitempty"`
+	// example:
+	//
+	// 1588834325000
+	GmtExpired *int64 `json:"GmtExpired,omitempty" xml:"GmtExpired,omitempty"`
+	// example:
+	//
+	// 1588834325000
+	GmtFinished *int64 `json:"GmtFinished,omitempty" xml:"GmtFinished,omitempty"`
+	// example:
+	//
+	// 1588834325000
+	GmtStart *int64 `json:"GmtStart,omitempty" xml:"GmtStart,omitempty"`
+	// example:
+	//
+	// false
+	NeedAttachment *bool `json:"NeedAttachment,omitempty" xml:"NeedAttachment,omitempty"`
+	// example:
+	//
+	// 8472
+	NextNodeId *int64 `json:"NextNodeId,omitempty" xml:"NextNodeId,omitempty"`
+	// example:
+	//
+	// 8471
+	NodeId   *int64  `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	NodeName *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
+	// example:
+	//
+	// Finish
+	NodeStatus *string `json:"NodeStatus,omitempty" xml:"NodeStatus,omitempty"`
+	// example:
+	//
+	// System
+	OperatorRole *string `json:"OperatorRole,omitempty" xml:"OperatorRole,omitempty"`
+	// example:
+	//
+	// 0
+	ParentNodeId *int64 `json:"ParentNodeId,omitempty" xml:"ParentNodeId,omitempty"`
+	// example:
+	//
+	// 8470
+	PreviousNodeId *int64 `json:"PreviousNodeId,omitempty" xml:"PreviousNodeId,omitempty"`
+	// example:
+	//
+	// 2
+	StepNo       *int32  `json:"StepNo,omitempty" xml:"StepNo,omitempty"`
+	TemplateForm *string `json:"TemplateForm,omitempty" xml:"TemplateForm,omitempty"`
 }
 
 func (s DescribeProjectNodesResponseBodyResult) String() string {
@@ -3997,9 +4926,9 @@ func (s *DescribeProjectNodesResponseBodyResult) SetTemplateForm(v string) *Desc
 }
 
 type DescribeProjectNodesResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeProjectNodesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeProjectNodesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeProjectNodesResponse) String() string {
@@ -4026,6 +4955,11 @@ func (s *DescribeProjectNodesResponse) SetBody(v *DescribeProjectNodesResponseBo
 }
 
 type DescribeProjectOperateLogsRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 4****89
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -4043,9 +4977,15 @@ func (s *DescribeProjectOperateLogsRequest) SetInstanceId(v string) *DescribePro
 }
 
 type DescribeProjectOperateLogsResponseBody struct {
+	// example:
+	//
+	// e6037e86-657f-4194-bb6a-7b26973aec8d
 	RequestId *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Result    []*DescribeProjectOperateLogsResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
-	Success   *bool                                           `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeProjectOperateLogsResponseBody) String() string {
@@ -4072,10 +5012,19 @@ func (s *DescribeProjectOperateLogsResponseBody) SetSuccess(v bool) *DescribePro
 }
 
 type DescribeProjectOperateLogsResponseBodyResult struct {
-	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	GmtCreate    *int64  `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// 1587624497000
+	GmtCreate *int64 `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// example:
+	//
+	// 0
 	Operator     *int64  `json:"Operator,omitempty" xml:"Operator,omitempty"`
 	OperatorName *string `json:"OperatorName,omitempty" xml:"OperatorName,omitempty"`
+	// example:
+	//
+	// System
 	OperatorRole *string `json:"OperatorRole,omitempty" xml:"OperatorRole,omitempty"`
 }
 
@@ -4113,9 +5062,9 @@ func (s *DescribeProjectOperateLogsResponseBodyResult) SetOperatorRole(v string)
 }
 
 type DescribeProjectOperateLogsResponse struct {
-	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeProjectOperateLogsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeProjectOperateLogsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DescribeProjectOperateLogsResponse) String() string {
@@ -4142,7 +5091,17 @@ func (s *DescribeProjectOperateLogsResponse) SetBody(v *DescribeProjectOperateLo
 }
 
 type FinishCurrentProjectNodeRequest struct {
-	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 4****89
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1924
 	NodeId       *int64  `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
 	Remark       *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
 	TemplateForm *string `json:"TemplateForm,omitempty" xml:"TemplateForm,omitempty"`
@@ -4177,9 +5136,18 @@ func (s *FinishCurrentProjectNodeRequest) SetTemplateForm(v string) *FinishCurre
 }
 
 type FinishCurrentProjectNodeResponseBody struct {
+	// example:
+	//
+	// ee69a00f-189b-400f-9fd2-af89749fb50f
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s FinishCurrentProjectNodeResponseBody) String() string {
@@ -4206,9 +5174,9 @@ func (s *FinishCurrentProjectNodeResponseBody) SetSuccess(v bool) *FinishCurrent
 }
 
 type FinishCurrentProjectNodeResponse struct {
-	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *FinishCurrentProjectNodeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *FinishCurrentProjectNodeResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s FinishCurrentProjectNodeResponse) String() string {
@@ -4235,9 +5203,19 @@ func (s *FinishCurrentProjectNodeResponse) SetBody(v *FinishCurrentProjectNodeRe
 }
 
 type PauseProjectRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 4****89
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	NodeId     *int64  `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-	Remark     *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1922
+	NodeId *int64  `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
 }
 
 func (s PauseProjectRequest) String() string {
@@ -4264,9 +5242,18 @@ func (s *PauseProjectRequest) SetRemark(v string) *PauseProjectRequest {
 }
 
 type PauseProjectResponseBody struct {
+	// example:
+	//
+	// ee69a00f-189b-400f-9fd2-af89749fb50f
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s PauseProjectResponseBody) String() string {
@@ -4293,9 +5280,9 @@ func (s *PauseProjectResponseBody) SetSuccess(v bool) *PauseProjectResponseBody 
 }
 
 type PauseProjectResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *PauseProjectResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *PauseProjectResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s PauseProjectResponse) String() string {
@@ -4322,6 +5309,9 @@ func (s *PauseProjectResponse) SetBody(v *PauseProjectResponseBody) *PauseProjec
 }
 
 type PushMeteringDataRequest struct {
+	// example:
+	//
+	// [{"InstanceId":"1000001","StartTime":"100000000","EndTime":"100000010","Entities":[{"Key":"PeriodMin","Value":"96","meteringAssit":"cmapi00060317-PeriodMin-4"}]}]
 	Metering *string `json:"Metering,omitempty" xml:"Metering,omitempty"`
 }
 
@@ -4339,8 +5329,14 @@ func (s *PushMeteringDataRequest) SetMetering(v string) *PushMeteringDataRequest
 }
 
 type PushMeteringDataResponseBody struct {
+	// example:
+	//
+	// 6EF60BEC-0242-43AF-BB20-270359FB54A7
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s PushMeteringDataResponseBody) String() string {
@@ -4362,9 +5358,9 @@ func (s *PushMeteringDataResponseBody) SetSuccess(v bool) *PushMeteringDataRespo
 }
 
 type PushMeteringDataResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *PushMeteringDataResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *PushMeteringDataResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s PushMeteringDataResponse) String() string {
@@ -4391,9 +5387,19 @@ func (s *PushMeteringDataResponse) SetBody(v *PushMeteringDataResponseBody) *Pus
 }
 
 type ResumeProjectRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 4****89
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	NodeId     *int64  `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-	Remark     *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1922
+	NodeId *int64  `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
 }
 
 func (s ResumeProjectRequest) String() string {
@@ -4420,9 +5426,18 @@ func (s *ResumeProjectRequest) SetRemark(v string) *ResumeProjectRequest {
 }
 
 type ResumeProjectResponseBody struct {
+	// example:
+	//
+	// ee69a00f-189b-400f-9fd2-af89749fb50f
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ResumeProjectResponseBody) String() string {
@@ -4449,9 +5464,9 @@ func (s *ResumeProjectResponseBody) SetSuccess(v bool) *ResumeProjectResponseBod
 }
 
 type ResumeProjectResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ResumeProjectResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ResumeProjectResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s ResumeProjectResponse) String() string {
@@ -4478,9 +5493,19 @@ func (s *ResumeProjectResponse) SetBody(v *ResumeProjectResponseBody) *ResumePro
 }
 
 type RollbackCurrentProjectNodeRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 4****89
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	NodeId     *int64  `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-	Remark     *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1925
+	NodeId *int64  `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
 }
 
 func (s RollbackCurrentProjectNodeRequest) String() string {
@@ -4507,9 +5532,18 @@ func (s *RollbackCurrentProjectNodeRequest) SetRemark(v string) *RollbackCurrent
 }
 
 type RollbackCurrentProjectNodeResponseBody struct {
+	// example:
+	//
+	// ee69a00f-189b-400f-9fd2-af89749fb50f
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s RollbackCurrentProjectNodeResponseBody) String() string {
@@ -4536,9 +5570,9 @@ func (s *RollbackCurrentProjectNodeResponseBody) SetSuccess(v bool) *RollbackCur
 }
 
 type RollbackCurrentProjectNodeResponse struct {
-	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *RollbackCurrentProjectNodeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RollbackCurrentProjectNodeResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RollbackCurrentProjectNodeResponse) String() string {
@@ -4636,6 +5670,15 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
+// Summary:
+//
+// 增加STS支持
+//
+// @param request - ActivateLicenseRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ActivateLicenseResponse
 func (client *Client) ActivateLicenseWithOptions(request *ActivateLicenseRequest, runtime *util.RuntimeOptions) (_result *ActivateLicenseResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4673,6 +5716,13 @@ func (client *Client) ActivateLicenseWithOptions(request *ActivateLicenseRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// 增加STS支持
+//
+// @param request - ActivateLicenseRequest
+//
+// @return ActivateLicenseResponse
 func (client *Client) ActivateLicense(request *ActivateLicenseRequest) (_result *ActivateLicenseResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ActivateLicenseResponse{}
@@ -4684,6 +5734,11 @@ func (client *Client) ActivateLicense(request *ActivateLicenseRequest) (_result 
 	return _result, _err
 }
 
+// @param request - AutoRenewInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AutoRenewInstanceResponse
 func (client *Client) AutoRenewInstanceWithOptions(request *AutoRenewInstanceRequest, runtime *util.RuntimeOptions) (_result *AutoRenewInstanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4733,6 +5788,9 @@ func (client *Client) AutoRenewInstanceWithOptions(request *AutoRenewInstanceReq
 	return _result, _err
 }
 
+// @param request - AutoRenewInstanceRequest
+//
+// @return AutoRenewInstanceResponse
 func (client *Client) AutoRenewInstance(request *AutoRenewInstanceRequest) (_result *AutoRenewInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &AutoRenewInstanceResponse{}
@@ -4744,6 +5802,11 @@ func (client *Client) AutoRenewInstance(request *AutoRenewInstanceRequest) (_res
 	return _result, _err
 }
 
+// @param request - CreateOrderRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateOrderResponse
 func (client *Client) CreateOrderWithOptions(request *CreateOrderRequest, runtime *util.RuntimeOptions) (_result *CreateOrderResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4797,6 +5860,9 @@ func (client *Client) CreateOrderWithOptions(request *CreateOrderRequest, runtim
 	return _result, _err
 }
 
+// @param request - CreateOrderRequest
+//
+// @return CreateOrderResponse
 func (client *Client) CreateOrder(request *CreateOrderRequest) (_result *CreateOrderResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateOrderResponse{}
@@ -4808,6 +5874,11 @@ func (client *Client) CreateOrder(request *CreateOrderRequest) (_result *CreateO
 	return _result, _err
 }
 
+// @param request - CrossAccountVerifyTokenRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CrossAccountVerifyTokenResponse
 func (client *Client) CrossAccountVerifyTokenWithOptions(request *CrossAccountVerifyTokenRequest, runtime *util.RuntimeOptions) (_result *CrossAccountVerifyTokenResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4841,6 +5912,9 @@ func (client *Client) CrossAccountVerifyTokenWithOptions(request *CrossAccountVe
 	return _result, _err
 }
 
+// @param request - CrossAccountVerifyTokenRequest
+//
+// @return CrossAccountVerifyTokenResponse
 func (client *Client) CrossAccountVerifyToken(request *CrossAccountVerifyTokenRequest) (_result *CrossAccountVerifyTokenResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CrossAccountVerifyTokenResponse{}
@@ -4852,6 +5926,15 @@ func (client *Client) CrossAccountVerifyToken(request *CrossAccountVerifyTokenRe
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询API用量
+//
+// @param request - DescribeApiMeteringRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeApiMeteringResponse
 func (client *Client) DescribeApiMeteringWithOptions(request *DescribeApiMeteringRequest, runtime *util.RuntimeOptions) (_result *DescribeApiMeteringResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4881,6 +5964,13 @@ func (client *Client) DescribeApiMeteringWithOptions(request *DescribeApiMeterin
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询API用量
+//
+// @param request - DescribeApiMeteringRequest
+//
+// @return DescribeApiMeteringResponse
 func (client *Client) DescribeApiMetering(request *DescribeApiMeteringRequest) (_result *DescribeApiMeteringResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeApiMeteringResponse{}
@@ -4892,6 +5982,11 @@ func (client *Client) DescribeApiMetering(request *DescribeApiMeteringRequest) (
 	return _result, _err
 }
 
+// @param request - DescribeCurrentNodeInfoRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeCurrentNodeInfoResponse
 func (client *Client) DescribeCurrentNodeInfoWithOptions(request *DescribeCurrentNodeInfoRequest, runtime *util.RuntimeOptions) (_result *DescribeCurrentNodeInfoResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4925,6 +6020,9 @@ func (client *Client) DescribeCurrentNodeInfoWithOptions(request *DescribeCurren
 	return _result, _err
 }
 
+// @param request - DescribeCurrentNodeInfoRequest
+//
+// @return DescribeCurrentNodeInfoResponse
 func (client *Client) DescribeCurrentNodeInfo(request *DescribeCurrentNodeInfoRequest) (_result *DescribeCurrentNodeInfoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeCurrentNodeInfoResponse{}
@@ -4936,6 +6034,15 @@ func (client *Client) DescribeCurrentNodeInfo(request *DescribeCurrentNodeInfoRe
 	return _result, _err
 }
 
+// Summary:
+//
+// 分页获取推广商品
+//
+// @param request - DescribeDistributionProductsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDistributionProductsResponse
 func (client *Client) DescribeDistributionProductsWithOptions(request *DescribeDistributionProductsRequest, runtime *util.RuntimeOptions) (_result *DescribeDistributionProductsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4965,6 +6072,13 @@ func (client *Client) DescribeDistributionProductsWithOptions(request *DescribeD
 	return _result, _err
 }
 
+// Summary:
+//
+// 分页获取推广商品
+//
+// @param request - DescribeDistributionProductsRequest
+//
+// @return DescribeDistributionProductsResponse
 func (client *Client) DescribeDistributionProducts(request *DescribeDistributionProductsRequest) (_result *DescribeDistributionProductsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDistributionProductsResponse{}
@@ -4976,6 +6090,15 @@ func (client *Client) DescribeDistributionProducts(request *DescribeDistribution
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取并生成推广商品-链接
+//
+// @param tmpReq - DescribeDistributionProductsLinkRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDistributionProductsLinkResponse
 func (client *Client) DescribeDistributionProductsLinkWithOptions(tmpReq *DescribeDistributionProductsLinkRequest, runtime *util.RuntimeOptions) (_result *DescribeDistributionProductsLinkResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -5015,6 +6138,13 @@ func (client *Client) DescribeDistributionProductsLinkWithOptions(tmpReq *Descri
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取并生成推广商品-链接
+//
+// @param request - DescribeDistributionProductsLinkRequest
+//
+// @return DescribeDistributionProductsLinkResponse
 func (client *Client) DescribeDistributionProductsLink(request *DescribeDistributionProductsLinkRequest) (_result *DescribeDistributionProductsLinkResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDistributionProductsLinkResponse{}
@@ -5026,6 +6156,11 @@ func (client *Client) DescribeDistributionProductsLink(request *DescribeDistribu
 	return _result, _err
 }
 
+// @param request - DescribeInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeInstanceResponse
 func (client *Client) DescribeInstanceWithOptions(request *DescribeInstanceRequest, runtime *util.RuntimeOptions) (_result *DescribeInstanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5067,6 +6202,9 @@ func (client *Client) DescribeInstanceWithOptions(request *DescribeInstanceReque
 	return _result, _err
 }
 
+// @param request - DescribeInstanceRequest
+//
+// @return DescribeInstanceResponse
 func (client *Client) DescribeInstance(request *DescribeInstanceRequest) (_result *DescribeInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeInstanceResponse{}
@@ -5078,6 +6216,11 @@ func (client *Client) DescribeInstance(request *DescribeInstanceRequest) (_resul
 	return _result, _err
 }
 
+// @param request - DescribeInstancesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeInstancesResponse
 func (client *Client) DescribeInstancesWithOptions(request *DescribeInstancesRequest, runtime *util.RuntimeOptions) (_result *DescribeInstancesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5127,6 +6270,9 @@ func (client *Client) DescribeInstancesWithOptions(request *DescribeInstancesReq
 	return _result, _err
 }
 
+// @param request - DescribeInstancesRequest
+//
+// @return DescribeInstancesResponse
 func (client *Client) DescribeInstances(request *DescribeInstancesRequest) (_result *DescribeInstancesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeInstancesResponse{}
@@ -5138,6 +6284,15 @@ func (client *Client) DescribeInstances(request *DescribeInstancesRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取License
+//
+// @param request - DescribeLicenseRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeLicenseResponse
 func (client *Client) DescribeLicenseWithOptions(request *DescribeLicenseRequest, runtime *util.RuntimeOptions) (_result *DescribeLicenseResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5171,6 +6326,13 @@ func (client *Client) DescribeLicenseWithOptions(request *DescribeLicenseRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取License
+//
+// @param request - DescribeLicenseRequest
+//
+// @return DescribeLicenseResponse
 func (client *Client) DescribeLicense(request *DescribeLicenseRequest) (_result *DescribeLicenseResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeLicenseResponse{}
@@ -5182,6 +6344,11 @@ func (client *Client) DescribeLicense(request *DescribeLicenseRequest) (_result 
 	return _result, _err
 }
 
+// @param request - DescribeOrderRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeOrderResponse
 func (client *Client) DescribeOrderWithOptions(request *DescribeOrderRequest, runtime *util.RuntimeOptions) (_result *DescribeOrderResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5215,6 +6382,9 @@ func (client *Client) DescribeOrderWithOptions(request *DescribeOrderRequest, ru
 	return _result, _err
 }
 
+// @param request - DescribeOrderRequest
+//
+// @return DescribeOrderResponse
 func (client *Client) DescribeOrder(request *DescribeOrderRequest) (_result *DescribeOrderResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeOrderResponse{}
@@ -5226,6 +6396,11 @@ func (client *Client) DescribeOrder(request *DescribeOrderRequest) (_result *Des
 	return _result, _err
 }
 
+// @param request - DescribePriceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribePriceResponse
 func (client *Client) DescribePriceWithOptions(request *DescribePriceRequest, runtime *util.RuntimeOptions) (_result *DescribePriceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5263,6 +6438,9 @@ func (client *Client) DescribePriceWithOptions(request *DescribePriceRequest, ru
 	return _result, _err
 }
 
+// @param request - DescribePriceRequest
+//
+// @return DescribePriceResponse
 func (client *Client) DescribePrice(request *DescribePriceRequest) (_result *DescribePriceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribePriceResponse{}
@@ -5274,6 +6452,11 @@ func (client *Client) DescribePrice(request *DescribePriceRequest) (_result *Des
 	return _result, _err
 }
 
+// @param request - DescribeProductRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeProductResponse
 func (client *Client) DescribeProductWithOptions(request *DescribeProductRequest, runtime *util.RuntimeOptions) (_result *DescribeProductResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5315,6 +6498,9 @@ func (client *Client) DescribeProductWithOptions(request *DescribeProductRequest
 	return _result, _err
 }
 
+// @param request - DescribeProductRequest
+//
+// @return DescribeProductResponse
 func (client *Client) DescribeProduct(request *DescribeProductRequest) (_result *DescribeProductResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeProductResponse{}
@@ -5326,6 +6512,11 @@ func (client *Client) DescribeProduct(request *DescribeProductRequest) (_result 
 	return _result, _err
 }
 
+// @param request - DescribeProductsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeProductsResponse
 func (client *Client) DescribeProductsWithOptions(request *DescribeProductsRequest, runtime *util.RuntimeOptions) (_result *DescribeProductsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5371,6 +6562,9 @@ func (client *Client) DescribeProductsWithOptions(request *DescribeProductsReque
 	return _result, _err
 }
 
+// @param request - DescribeProductsRequest
+//
+// @return DescribeProductsResponse
 func (client *Client) DescribeProducts(request *DescribeProductsRequest) (_result *DescribeProductsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeProductsResponse{}
@@ -5382,6 +6576,11 @@ func (client *Client) DescribeProducts(request *DescribeProductsRequest) (_resul
 	return _result, _err
 }
 
+// @param request - DescribeProjectAttachmentsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeProjectAttachmentsResponse
 func (client *Client) DescribeProjectAttachmentsWithOptions(request *DescribeProjectAttachmentsRequest, runtime *util.RuntimeOptions) (_result *DescribeProjectAttachmentsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5415,6 +6614,9 @@ func (client *Client) DescribeProjectAttachmentsWithOptions(request *DescribePro
 	return _result, _err
 }
 
+// @param request - DescribeProjectAttachmentsRequest
+//
+// @return DescribeProjectAttachmentsResponse
 func (client *Client) DescribeProjectAttachments(request *DescribeProjectAttachmentsRequest) (_result *DescribeProjectAttachmentsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeProjectAttachmentsResponse{}
@@ -5426,6 +6628,11 @@ func (client *Client) DescribeProjectAttachments(request *DescribeProjectAttachm
 	return _result, _err
 }
 
+// @param request - DescribeProjectInfoRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeProjectInfoResponse
 func (client *Client) DescribeProjectInfoWithOptions(request *DescribeProjectInfoRequest, runtime *util.RuntimeOptions) (_result *DescribeProjectInfoResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5459,6 +6666,9 @@ func (client *Client) DescribeProjectInfoWithOptions(request *DescribeProjectInf
 	return _result, _err
 }
 
+// @param request - DescribeProjectInfoRequest
+//
+// @return DescribeProjectInfoResponse
 func (client *Client) DescribeProjectInfo(request *DescribeProjectInfoRequest) (_result *DescribeProjectInfoResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeProjectInfoResponse{}
@@ -5470,6 +6680,11 @@ func (client *Client) DescribeProjectInfo(request *DescribeProjectInfoRequest) (
 	return _result, _err
 }
 
+// @param request - DescribeProjectMessagesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeProjectMessagesResponse
 func (client *Client) DescribeProjectMessagesWithOptions(request *DescribeProjectMessagesRequest, runtime *util.RuntimeOptions) (_result *DescribeProjectMessagesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5507,6 +6722,9 @@ func (client *Client) DescribeProjectMessagesWithOptions(request *DescribeProjec
 	return _result, _err
 }
 
+// @param request - DescribeProjectMessagesRequest
+//
+// @return DescribeProjectMessagesResponse
 func (client *Client) DescribeProjectMessages(request *DescribeProjectMessagesRequest) (_result *DescribeProjectMessagesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeProjectMessagesResponse{}
@@ -5518,14 +6736,17 @@ func (client *Client) DescribeProjectMessages(request *DescribeProjectMessagesRe
 	return _result, _err
 }
 
-/**
- * **
- * **
- *
- * @param request DescribeProjectNodesRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DescribeProjectNodesResponse
- */
+// Description:
+//
+// *
+//
+// **
+//
+// @param request - DescribeProjectNodesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeProjectNodesResponse
 func (client *Client) DescribeProjectNodesWithOptions(request *DescribeProjectNodesRequest, runtime *util.RuntimeOptions) (_result *DescribeProjectNodesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5559,13 +6780,15 @@ func (client *Client) DescribeProjectNodesWithOptions(request *DescribeProjectNo
 	return _result, _err
 }
 
-/**
- * **
- * **
- *
- * @param request DescribeProjectNodesRequest
- * @return DescribeProjectNodesResponse
- */
+// Description:
+//
+// *
+//
+// **
+//
+// @param request - DescribeProjectNodesRequest
+//
+// @return DescribeProjectNodesResponse
 func (client *Client) DescribeProjectNodes(request *DescribeProjectNodesRequest) (_result *DescribeProjectNodesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeProjectNodesResponse{}
@@ -5577,6 +6800,11 @@ func (client *Client) DescribeProjectNodes(request *DescribeProjectNodesRequest)
 	return _result, _err
 }
 
+// @param request - DescribeProjectOperateLogsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeProjectOperateLogsResponse
 func (client *Client) DescribeProjectOperateLogsWithOptions(request *DescribeProjectOperateLogsRequest, runtime *util.RuntimeOptions) (_result *DescribeProjectOperateLogsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5610,6 +6838,9 @@ func (client *Client) DescribeProjectOperateLogsWithOptions(request *DescribePro
 	return _result, _err
 }
 
+// @param request - DescribeProjectOperateLogsRequest
+//
+// @return DescribeProjectOperateLogsResponse
 func (client *Client) DescribeProjectOperateLogs(request *DescribeProjectOperateLogsRequest) (_result *DescribeProjectOperateLogsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeProjectOperateLogsResponse{}
@@ -5621,6 +6852,11 @@ func (client *Client) DescribeProjectOperateLogs(request *DescribeProjectOperate
 	return _result, _err
 }
 
+// @param request - FinishCurrentProjectNodeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return FinishCurrentProjectNodeResponse
 func (client *Client) FinishCurrentProjectNodeWithOptions(request *FinishCurrentProjectNodeRequest, runtime *util.RuntimeOptions) (_result *FinishCurrentProjectNodeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5666,6 +6902,9 @@ func (client *Client) FinishCurrentProjectNodeWithOptions(request *FinishCurrent
 	return _result, _err
 }
 
+// @param request - FinishCurrentProjectNodeRequest
+//
+// @return FinishCurrentProjectNodeResponse
 func (client *Client) FinishCurrentProjectNode(request *FinishCurrentProjectNodeRequest) (_result *FinishCurrentProjectNodeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &FinishCurrentProjectNodeResponse{}
@@ -5677,6 +6916,11 @@ func (client *Client) FinishCurrentProjectNode(request *FinishCurrentProjectNode
 	return _result, _err
 }
 
+// @param request - PauseProjectRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return PauseProjectResponse
 func (client *Client) PauseProjectWithOptions(request *PauseProjectRequest, runtime *util.RuntimeOptions) (_result *PauseProjectResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5718,6 +6962,9 @@ func (client *Client) PauseProjectWithOptions(request *PauseProjectRequest, runt
 	return _result, _err
 }
 
+// @param request - PauseProjectRequest
+//
+// @return PauseProjectResponse
 func (client *Client) PauseProject(request *PauseProjectRequest) (_result *PauseProjectResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &PauseProjectResponse{}
@@ -5729,6 +6976,11 @@ func (client *Client) PauseProject(request *PauseProjectRequest) (_result *Pause
 	return _result, _err
 }
 
+// @param request - PushMeteringDataRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return PushMeteringDataResponse
 func (client *Client) PushMeteringDataWithOptions(request *PushMeteringDataRequest, runtime *util.RuntimeOptions) (_result *PushMeteringDataResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5762,6 +7014,9 @@ func (client *Client) PushMeteringDataWithOptions(request *PushMeteringDataReque
 	return _result, _err
 }
 
+// @param request - PushMeteringDataRequest
+//
+// @return PushMeteringDataResponse
 func (client *Client) PushMeteringData(request *PushMeteringDataRequest) (_result *PushMeteringDataResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &PushMeteringDataResponse{}
@@ -5773,6 +7028,11 @@ func (client *Client) PushMeteringData(request *PushMeteringDataRequest) (_resul
 	return _result, _err
 }
 
+// @param request - ResumeProjectRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ResumeProjectResponse
 func (client *Client) ResumeProjectWithOptions(request *ResumeProjectRequest, runtime *util.RuntimeOptions) (_result *ResumeProjectResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5814,6 +7074,9 @@ func (client *Client) ResumeProjectWithOptions(request *ResumeProjectRequest, ru
 	return _result, _err
 }
 
+// @param request - ResumeProjectRequest
+//
+// @return ResumeProjectResponse
 func (client *Client) ResumeProject(request *ResumeProjectRequest) (_result *ResumeProjectResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ResumeProjectResponse{}
@@ -5825,6 +7088,11 @@ func (client *Client) ResumeProject(request *ResumeProjectRequest) (_result *Res
 	return _result, _err
 }
 
+// @param request - RollbackCurrentProjectNodeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RollbackCurrentProjectNodeResponse
 func (client *Client) RollbackCurrentProjectNodeWithOptions(request *RollbackCurrentProjectNodeRequest, runtime *util.RuntimeOptions) (_result *RollbackCurrentProjectNodeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5866,6 +7134,9 @@ func (client *Client) RollbackCurrentProjectNodeWithOptions(request *RollbackCur
 	return _result, _err
 }
 
+// @param request - RollbackCurrentProjectNodeRequest
+//
+// @return RollbackCurrentProjectNodeResponse
 func (client *Client) RollbackCurrentProjectNode(request *RollbackCurrentProjectNodeRequest) (_result *RollbackCurrentProjectNodeResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RollbackCurrentProjectNodeResponse{}
