@@ -2967,6 +2967,237 @@ func (s *ResourceStatistic) SetResourceType(v string) *ResourceStatistic {
 	return s
 }
 
+type RouteRulesConflictInfo struct {
+	Conflicts  []*RouteRulesConflictInfoConflicts `json:"conflicts,omitempty" xml:"conflicts,omitempty" type:"Repeated"`
+	DomainInfo *RouteRulesConflictInfoDomainInfo  `json:"domainInfo,omitempty" xml:"domainInfo,omitempty" type:"Struct"`
+}
+
+func (s RouteRulesConflictInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RouteRulesConflictInfo) GoString() string {
+	return s.String()
+}
+
+func (s *RouteRulesConflictInfo) SetConflicts(v []*RouteRulesConflictInfoConflicts) *RouteRulesConflictInfo {
+	s.Conflicts = v
+	return s
+}
+
+func (s *RouteRulesConflictInfo) SetDomainInfo(v *RouteRulesConflictInfoDomainInfo) *RouteRulesConflictInfo {
+	s.DomainInfo = v
+	return s
+}
+
+type RouteRulesConflictInfoConflicts struct {
+	Details         []*RouteRulesConflictInfoConflictsDetails       `json:"details,omitempty" xml:"details,omitempty" type:"Repeated"`
+	EnvironmentInfo *RouteRulesConflictInfoConflictsEnvironmentInfo `json:"environmentInfo,omitempty" xml:"environmentInfo,omitempty" type:"Struct"`
+	ResourceId      *string                                         `json:"resourceId,omitempty" xml:"resourceId,omitempty"`
+	ResourceName    *string                                         `json:"resourceName,omitempty" xml:"resourceName,omitempty"`
+	ResourceType    *string                                         `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
+}
+
+func (s RouteRulesConflictInfoConflicts) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RouteRulesConflictInfoConflicts) GoString() string {
+	return s.String()
+}
+
+func (s *RouteRulesConflictInfoConflicts) SetDetails(v []*RouteRulesConflictInfoConflictsDetails) *RouteRulesConflictInfoConflicts {
+	s.Details = v
+	return s
+}
+
+func (s *RouteRulesConflictInfoConflicts) SetEnvironmentInfo(v *RouteRulesConflictInfoConflictsEnvironmentInfo) *RouteRulesConflictInfoConflicts {
+	s.EnvironmentInfo = v
+	return s
+}
+
+func (s *RouteRulesConflictInfoConflicts) SetResourceId(v string) *RouteRulesConflictInfoConflicts {
+	s.ResourceId = &v
+	return s
+}
+
+func (s *RouteRulesConflictInfoConflicts) SetResourceName(v string) *RouteRulesConflictInfoConflicts {
+	s.ResourceName = &v
+	return s
+}
+
+func (s *RouteRulesConflictInfoConflicts) SetResourceType(v string) *RouteRulesConflictInfoConflicts {
+	s.ResourceType = &v
+	return s
+}
+
+type RouteRulesConflictInfoConflictsDetails struct {
+	ConflictingMatch *RouteRulesConflictInfoConflictsDetailsConflictingMatch `json:"conflictingMatch,omitempty" xml:"conflictingMatch,omitempty" type:"Struct"`
+	DetectedMatch    *RouteRulesConflictInfoConflictsDetailsDetectedMatch    `json:"detectedMatch,omitempty" xml:"detectedMatch,omitempty" type:"Struct"`
+	Level            *string                                                 `json:"level,omitempty" xml:"level,omitempty"`
+}
+
+func (s RouteRulesConflictInfoConflictsDetails) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RouteRulesConflictInfoConflictsDetails) GoString() string {
+	return s.String()
+}
+
+func (s *RouteRulesConflictInfoConflictsDetails) SetConflictingMatch(v *RouteRulesConflictInfoConflictsDetailsConflictingMatch) *RouteRulesConflictInfoConflictsDetails {
+	s.ConflictingMatch = v
+	return s
+}
+
+func (s *RouteRulesConflictInfoConflictsDetails) SetDetectedMatch(v *RouteRulesConflictInfoConflictsDetailsDetectedMatch) *RouteRulesConflictInfoConflictsDetails {
+	s.DetectedMatch = v
+	return s
+}
+
+func (s *RouteRulesConflictInfoConflictsDetails) SetLevel(v string) *RouteRulesConflictInfoConflictsDetails {
+	s.Level = &v
+	return s
+}
+
+type RouteRulesConflictInfoConflictsDetailsConflictingMatch struct {
+	Match         *HttpRouteMatch                                                      `json:"match,omitempty" xml:"match,omitempty"`
+	OperationInfo *RouteRulesConflictInfoConflictsDetailsConflictingMatchOperationInfo `json:"operationInfo,omitempty" xml:"operationInfo,omitempty" type:"Struct"`
+}
+
+func (s RouteRulesConflictInfoConflictsDetailsConflictingMatch) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RouteRulesConflictInfoConflictsDetailsConflictingMatch) GoString() string {
+	return s.String()
+}
+
+func (s *RouteRulesConflictInfoConflictsDetailsConflictingMatch) SetMatch(v *HttpRouteMatch) *RouteRulesConflictInfoConflictsDetailsConflictingMatch {
+	s.Match = v
+	return s
+}
+
+func (s *RouteRulesConflictInfoConflictsDetailsConflictingMatch) SetOperationInfo(v *RouteRulesConflictInfoConflictsDetailsConflictingMatchOperationInfo) *RouteRulesConflictInfoConflictsDetailsConflictingMatch {
+	s.OperationInfo = v
+	return s
+}
+
+type RouteRulesConflictInfoConflictsDetailsConflictingMatchOperationInfo struct {
+	Name        *string `json:"name,omitempty" xml:"name,omitempty"`
+	OperationId *string `json:"operationId,omitempty" xml:"operationId,omitempty"`
+}
+
+func (s RouteRulesConflictInfoConflictsDetailsConflictingMatchOperationInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RouteRulesConflictInfoConflictsDetailsConflictingMatchOperationInfo) GoString() string {
+	return s.String()
+}
+
+func (s *RouteRulesConflictInfoConflictsDetailsConflictingMatchOperationInfo) SetName(v string) *RouteRulesConflictInfoConflictsDetailsConflictingMatchOperationInfo {
+	s.Name = &v
+	return s
+}
+
+func (s *RouteRulesConflictInfoConflictsDetailsConflictingMatchOperationInfo) SetOperationId(v string) *RouteRulesConflictInfoConflictsDetailsConflictingMatchOperationInfo {
+	s.OperationId = &v
+	return s
+}
+
+type RouteRulesConflictInfoConflictsDetailsDetectedMatch struct {
+	Match         *HttpRouteMatch                                                   `json:"match,omitempty" xml:"match,omitempty"`
+	OperationInfo *RouteRulesConflictInfoConflictsDetailsDetectedMatchOperationInfo `json:"operationInfo,omitempty" xml:"operationInfo,omitempty" type:"Struct"`
+}
+
+func (s RouteRulesConflictInfoConflictsDetailsDetectedMatch) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RouteRulesConflictInfoConflictsDetailsDetectedMatch) GoString() string {
+	return s.String()
+}
+
+func (s *RouteRulesConflictInfoConflictsDetailsDetectedMatch) SetMatch(v *HttpRouteMatch) *RouteRulesConflictInfoConflictsDetailsDetectedMatch {
+	s.Match = v
+	return s
+}
+
+func (s *RouteRulesConflictInfoConflictsDetailsDetectedMatch) SetOperationInfo(v *RouteRulesConflictInfoConflictsDetailsDetectedMatchOperationInfo) *RouteRulesConflictInfoConflictsDetailsDetectedMatch {
+	s.OperationInfo = v
+	return s
+}
+
+type RouteRulesConflictInfoConflictsDetailsDetectedMatchOperationInfo struct {
+	Name        *string `json:"name,omitempty" xml:"name,omitempty"`
+	OperationId *string `json:"operationId,omitempty" xml:"operationId,omitempty"`
+}
+
+func (s RouteRulesConflictInfoConflictsDetailsDetectedMatchOperationInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RouteRulesConflictInfoConflictsDetailsDetectedMatchOperationInfo) GoString() string {
+	return s.String()
+}
+
+func (s *RouteRulesConflictInfoConflictsDetailsDetectedMatchOperationInfo) SetName(v string) *RouteRulesConflictInfoConflictsDetailsDetectedMatchOperationInfo {
+	s.Name = &v
+	return s
+}
+
+func (s *RouteRulesConflictInfoConflictsDetailsDetectedMatchOperationInfo) SetOperationId(v string) *RouteRulesConflictInfoConflictsDetailsDetectedMatchOperationInfo {
+	s.OperationId = &v
+	return s
+}
+
+type RouteRulesConflictInfoConflictsEnvironmentInfo struct {
+	EnvironmentId *string `json:"environmentId,omitempty" xml:"environmentId,omitempty"`
+	Name          *string `json:"name,omitempty" xml:"name,omitempty"`
+}
+
+func (s RouteRulesConflictInfoConflictsEnvironmentInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RouteRulesConflictInfoConflictsEnvironmentInfo) GoString() string {
+	return s.String()
+}
+
+func (s *RouteRulesConflictInfoConflictsEnvironmentInfo) SetEnvironmentId(v string) *RouteRulesConflictInfoConflictsEnvironmentInfo {
+	s.EnvironmentId = &v
+	return s
+}
+
+func (s *RouteRulesConflictInfoConflictsEnvironmentInfo) SetName(v string) *RouteRulesConflictInfoConflictsEnvironmentInfo {
+	s.Name = &v
+	return s
+}
+
+type RouteRulesConflictInfoDomainInfo struct {
+	DomainId *string `json:"domainId,omitempty" xml:"domainId,omitempty"`
+	Name     *string `json:"name,omitempty" xml:"name,omitempty"`
+}
+
+func (s RouteRulesConflictInfoDomainInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RouteRulesConflictInfoDomainInfo) GoString() string {
+	return s.String()
+}
+
+func (s *RouteRulesConflictInfoDomainInfo) SetDomainId(v string) *RouteRulesConflictInfoDomainInfo {
+	s.DomainId = &v
+	return s
+}
+
+func (s *RouteRulesConflictInfoDomainInfo) SetName(v string) *RouteRulesConflictInfoDomainInfo {
+	s.Name = &v
+	return s
+}
+
 type ServiceHealthCheck struct {
 	// example:
 	//
@@ -6527,6 +6758,7 @@ func (s *GetHttpApiOperationResponse) SetBody(v *GetHttpApiOperationResponseBody
 }
 
 type ListDomainsRequest struct {
+	GatewayId *string `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
 	// example:
 	//
 	// test
@@ -6547,6 +6779,11 @@ func (s ListDomainsRequest) String() string {
 
 func (s ListDomainsRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ListDomainsRequest) SetGatewayId(v string) *ListDomainsRequest {
+	s.GatewayId = &v
+	return s
 }
 
 func (s *ListDomainsRequest) SetNameLike(v string) *ListDomainsRequest {
@@ -11175,6 +11412,10 @@ func (client *Client) ListDomainsWithOptions(request *ListDomainsRequest, header
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.GatewayId)) {
+		query["gatewayId"] = request.GatewayId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.NameLike)) {
 		query["nameLike"] = request.NameLike
 	}
