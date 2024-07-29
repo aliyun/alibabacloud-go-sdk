@@ -50215,6 +50215,86 @@ func (s *PassPipelineValidateResponse) SetBody(v *PassPipelineValidateResponseBo
 	return s
 }
 
+type PassReleaseStagePipelineValidateRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 226241***
+	JobId *string `json:"jobId,omitempty" xml:"jobId,omitempty"`
+	// example:
+	//
+	// 66c0c9fffeb86b450c199***
+	OrganizationId *string `json:"organizationId,omitempty" xml:"organizationId,omitempty"`
+}
+
+func (s PassReleaseStagePipelineValidateRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PassReleaseStagePipelineValidateRequest) GoString() string {
+	return s.String()
+}
+
+func (s *PassReleaseStagePipelineValidateRequest) SetJobId(v string) *PassReleaseStagePipelineValidateRequest {
+	s.JobId = &v
+	return s
+}
+
+func (s *PassReleaseStagePipelineValidateRequest) SetOrganizationId(v string) *PassReleaseStagePipelineValidateRequest {
+	s.OrganizationId = &v
+	return s
+}
+
+type PassReleaseStagePipelineValidateResponseBody struct {
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s PassReleaseStagePipelineValidateResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PassReleaseStagePipelineValidateResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *PassReleaseStagePipelineValidateResponseBody) SetSuccess(v bool) *PassReleaseStagePipelineValidateResponseBody {
+	s.Success = &v
+	return s
+}
+
+type PassReleaseStagePipelineValidateResponse struct {
+	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *PassReleaseStagePipelineValidateResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s PassReleaseStagePipelineValidateResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PassReleaseStagePipelineValidateResponse) GoString() string {
+	return s.String()
+}
+
+func (s *PassReleaseStagePipelineValidateResponse) SetHeaders(v map[string]*string) *PassReleaseStagePipelineValidateResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *PassReleaseStagePipelineValidateResponse) SetStatusCode(v int32) *PassReleaseStagePipelineValidateResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *PassReleaseStagePipelineValidateResponse) SetBody(v *PassReleaseStagePipelineValidateResponseBody) *PassReleaseStagePipelineValidateResponse {
+	s.Body = v
+	return s
+}
+
 type RefusePipelineValidateResponseBody struct {
 	// example:
 	//
@@ -50287,6 +50367,86 @@ func (s *RefusePipelineValidateResponse) SetStatusCode(v int32) *RefusePipelineV
 }
 
 func (s *RefusePipelineValidateResponse) SetBody(v *RefusePipelineValidateResponseBody) *RefusePipelineValidateResponse {
+	s.Body = v
+	return s
+}
+
+type RefuseReleaseStagePipelineValidateRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 226241***
+	JobId *string `json:"jobId,omitempty" xml:"jobId,omitempty"`
+	// example:
+	//
+	// 66c0c9fffeb86b450c19****
+	OrganizationId *string `json:"organizationId,omitempty" xml:"organizationId,omitempty"`
+}
+
+func (s RefuseReleaseStagePipelineValidateRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RefuseReleaseStagePipelineValidateRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RefuseReleaseStagePipelineValidateRequest) SetJobId(v string) *RefuseReleaseStagePipelineValidateRequest {
+	s.JobId = &v
+	return s
+}
+
+func (s *RefuseReleaseStagePipelineValidateRequest) SetOrganizationId(v string) *RefuseReleaseStagePipelineValidateRequest {
+	s.OrganizationId = &v
+	return s
+}
+
+type RefuseReleaseStagePipelineValidateResponseBody struct {
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s RefuseReleaseStagePipelineValidateResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RefuseReleaseStagePipelineValidateResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RefuseReleaseStagePipelineValidateResponseBody) SetSuccess(v bool) *RefuseReleaseStagePipelineValidateResponseBody {
+	s.Success = &v
+	return s
+}
+
+type RefuseReleaseStagePipelineValidateResponse struct {
+	Headers    map[string]*string                              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RefuseReleaseStagePipelineValidateResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s RefuseReleaseStagePipelineValidateResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RefuseReleaseStagePipelineValidateResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RefuseReleaseStagePipelineValidateResponse) SetHeaders(v map[string]*string) *RefuseReleaseStagePipelineValidateResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RefuseReleaseStagePipelineValidateResponse) SetStatusCode(v int32) *RefuseReleaseStagePipelineValidateResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *RefuseReleaseStagePipelineValidateResponse) SetBody(v *RefuseReleaseStagePipelineValidateResponseBody) *RefuseReleaseStagePipelineValidateResponse {
 	s.Body = v
 	return s
 }
@@ -74246,6 +74406,74 @@ func (client *Client) PassPipelineValidate(organizationId *string, pipelineId *s
 
 // Summary:
 //
+// 通过人工卡点
+//
+// @param request - PassReleaseStagePipelineValidateRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return PassReleaseStagePipelineValidateResponse
+func (client *Client) PassReleaseStagePipelineValidateWithOptions(appName *string, releaseWorkflowSn *string, releaseStageSn *string, executionNumber *string, request *PassReleaseStagePipelineValidateRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *PassReleaseStagePipelineValidateResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.JobId)) {
+		query["jobId"] = request.JobId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrganizationId)) {
+		query["organizationId"] = request.OrganizationId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("PassReleaseStagePipelineValidate"),
+		Version:     tea.String("2021-06-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/appstack/apps/" + tea.StringValue(openapiutil.GetEncodeParam(appName)) + "/releaseWorkflows/" + tea.StringValue(openapiutil.GetEncodeParam(releaseWorkflowSn)) + "/releaseStages/" + tea.StringValue(openapiutil.GetEncodeParam(releaseStageSn)) + "/executions/" + tea.StringValue(openapiutil.GetEncodeParam(executionNumber)) + "%3ApassPipelineValidate"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &PassReleaseStagePipelineValidateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 通过人工卡点
+//
+// @param request - PassReleaseStagePipelineValidateRequest
+//
+// @return PassReleaseStagePipelineValidateResponse
+func (client *Client) PassReleaseStagePipelineValidate(appName *string, releaseWorkflowSn *string, releaseStageSn *string, executionNumber *string, request *PassReleaseStagePipelineValidateRequest) (_result *PassReleaseStagePipelineValidateResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &PassReleaseStagePipelineValidateResponse{}
+	_body, _err := client.PassReleaseStagePipelineValidateWithOptions(appName, releaseWorkflowSn, releaseStageSn, executionNumber, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 拒绝人工卡点
 //
 // @param headers - map
@@ -74287,6 +74515,74 @@ func (client *Client) RefusePipelineValidate(organizationId *string, pipelineId 
 	headers := make(map[string]*string)
 	_result = &RefusePipelineValidateResponse{}
 	_body, _err := client.RefusePipelineValidateWithOptions(organizationId, pipelineId, pipelineRunId, jobId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 拒绝人工卡点
+//
+// @param request - RefuseReleaseStagePipelineValidateRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RefuseReleaseStagePipelineValidateResponse
+func (client *Client) RefuseReleaseStagePipelineValidateWithOptions(appName *string, releaseWorkflowSn *string, releaseStageSn *string, executionNumber *string, request *RefuseReleaseStagePipelineValidateRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *RefuseReleaseStagePipelineValidateResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.JobId)) {
+		query["jobId"] = request.JobId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrganizationId)) {
+		query["organizationId"] = request.OrganizationId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RefuseReleaseStagePipelineValidate"),
+		Version:     tea.String("2021-06-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/appstack/apps/" + tea.StringValue(openapiutil.GetEncodeParam(appName)) + "/releaseWorkflows/" + tea.StringValue(openapiutil.GetEncodeParam(releaseWorkflowSn)) + "/releaseStages/" + tea.StringValue(openapiutil.GetEncodeParam(releaseStageSn)) + "/executions/" + tea.StringValue(openapiutil.GetEncodeParam(executionNumber)) + "%3ArefusePipelineValidate"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &RefuseReleaseStagePipelineValidateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 拒绝人工卡点
+//
+// @param request - RefuseReleaseStagePipelineValidateRequest
+//
+// @return RefuseReleaseStagePipelineValidateResponse
+func (client *Client) RefuseReleaseStagePipelineValidate(appName *string, releaseWorkflowSn *string, releaseStageSn *string, executionNumber *string, request *RefuseReleaseStagePipelineValidateRequest) (_result *RefuseReleaseStagePipelineValidateResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &RefuseReleaseStagePipelineValidateResponse{}
+	_body, _err := client.RefuseReleaseStagePipelineValidateWithOptions(appName, releaseWorkflowSn, releaseStageSn, executionNumber, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
