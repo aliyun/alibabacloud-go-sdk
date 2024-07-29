@@ -373,7 +373,8 @@ type CheckResourceStockRequest struct {
 	// example:
 	//
 	// cn-hangzhou
-	BizRegionId *string `json:"BizRegionId,omitempty" xml:"BizRegionId,omitempty"`
+	BizRegionId     *string `json:"BizRegionId,omitempty" xml:"BizRegionId,omitempty"`
+	GpuAcceleration *bool   `json:"GpuAcceleration,omitempty" xml:"GpuAcceleration,omitempty"`
 	// example:
 	//
 	// cn-hangzhou-i
@@ -395,6 +396,11 @@ func (s *CheckResourceStockRequest) SetAcpSpecId(v string) *CheckResourceStockRe
 
 func (s *CheckResourceStockRequest) SetBizRegionId(v string) *CheckResourceStockRequest {
 	s.BizRegionId = &v
+	return s
+}
+
+func (s *CheckResourceStockRequest) SetGpuAcceleration(v bool) *CheckResourceStockRequest {
+	s.GpuAcceleration = &v
 	return s
 }
 
@@ -6759,6 +6765,10 @@ func (client *Client) CheckResourceStockWithOptions(request *CheckResourceStockR
 
 	if !tea.BoolValue(util.IsUnset(request.BizRegionId)) {
 		query["BizRegionId"] = request.BizRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GpuAcceleration)) {
+		query["GpuAcceleration"] = request.GpuAcceleration
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ZoneId)) {
