@@ -470,6 +470,219 @@ func (s *AddRecordTemplateResponse) SetBody(v *AddRecordTemplateResponseBody) *A
 	return s
 }
 
+type CreateAppRecordTemplateRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ac7N****
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// example:
+	//
+	// 123e4567-e89b-12d3-a456-42665544****
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// This parameter is required.
+	RecordTemplate *CreateAppRecordTemplateRequestRecordTemplate `json:"RecordTemplate,omitempty" xml:"RecordTemplate,omitempty" type:"Struct"`
+}
+
+func (s CreateAppRecordTemplateRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAppRecordTemplateRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAppRecordTemplateRequest) SetAppId(v string) *CreateAppRecordTemplateRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *CreateAppRecordTemplateRequest) SetClientToken(v string) *CreateAppRecordTemplateRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *CreateAppRecordTemplateRequest) SetRecordTemplate(v *CreateAppRecordTemplateRequestRecordTemplate) *CreateAppRecordTemplateRequest {
+	s.RecordTemplate = v
+	return s
+}
+
+type CreateAppRecordTemplateRequestRecordTemplate struct {
+	// example:
+	//
+	// 180
+	DelayStopTime *int32 `json:"DelayStopTime,omitempty" xml:"DelayStopTime,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// record/{AppId}/{ChannelId}_{TaskId}/{EscapedStartTime}_{EscapedEndTime}
+	FilePrefix *string `json:"FilePrefix,omitempty" xml:"FilePrefix,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1800
+	FileSplitInterval *int32 `json:"FileSplitInterval,omitempty" xml:"FileSplitInterval,omitempty"`
+	// This parameter is required.
+	Formats   []*string `json:"Formats,omitempty" xml:"Formats,omitempty" type:"Repeated"`
+	LayoutIds []*string `json:"LayoutIds,omitempty" xml:"LayoutIds,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	MediaEncode *int32 `json:"MediaEncode,omitempty" xml:"MediaEncode,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 模版
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s CreateAppRecordTemplateRequestRecordTemplate) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAppRecordTemplateRequestRecordTemplate) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAppRecordTemplateRequestRecordTemplate) SetDelayStopTime(v int32) *CreateAppRecordTemplateRequestRecordTemplate {
+	s.DelayStopTime = &v
+	return s
+}
+
+func (s *CreateAppRecordTemplateRequestRecordTemplate) SetFilePrefix(v string) *CreateAppRecordTemplateRequestRecordTemplate {
+	s.FilePrefix = &v
+	return s
+}
+
+func (s *CreateAppRecordTemplateRequestRecordTemplate) SetFileSplitInterval(v int32) *CreateAppRecordTemplateRequestRecordTemplate {
+	s.FileSplitInterval = &v
+	return s
+}
+
+func (s *CreateAppRecordTemplateRequestRecordTemplate) SetFormats(v []*string) *CreateAppRecordTemplateRequestRecordTemplate {
+	s.Formats = v
+	return s
+}
+
+func (s *CreateAppRecordTemplateRequestRecordTemplate) SetLayoutIds(v []*string) *CreateAppRecordTemplateRequestRecordTemplate {
+	s.LayoutIds = v
+	return s
+}
+
+func (s *CreateAppRecordTemplateRequestRecordTemplate) SetMediaEncode(v int32) *CreateAppRecordTemplateRequestRecordTemplate {
+	s.MediaEncode = &v
+	return s
+}
+
+func (s *CreateAppRecordTemplateRequestRecordTemplate) SetName(v string) *CreateAppRecordTemplateRequestRecordTemplate {
+	s.Name = &v
+	return s
+}
+
+type CreateAppRecordTemplateShrinkRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ac7N****
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// example:
+	//
+	// 123e4567-e89b-12d3-a456-42665544****
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// This parameter is required.
+	RecordTemplateShrink *string `json:"RecordTemplate,omitempty" xml:"RecordTemplate,omitempty"`
+}
+
+func (s CreateAppRecordTemplateShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAppRecordTemplateShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAppRecordTemplateShrinkRequest) SetAppId(v string) *CreateAppRecordTemplateShrinkRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *CreateAppRecordTemplateShrinkRequest) SetClientToken(v string) *CreateAppRecordTemplateShrinkRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *CreateAppRecordTemplateShrinkRequest) SetRecordTemplateShrink(v string) *CreateAppRecordTemplateShrinkRequest {
+	s.RecordTemplateShrink = &v
+	return s
+}
+
+type CreateAppRecordTemplateResponseBody struct {
+	// Id of the request
+	//
+	// example:
+	//
+	// 231470C1-ACFB-4C9F-844F-4CFE1E3804C5
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// lD7muaxx
+	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+}
+
+func (s CreateAppRecordTemplateResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAppRecordTemplateResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAppRecordTemplateResponseBody) SetRequestId(v string) *CreateAppRecordTemplateResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateAppRecordTemplateResponseBody) SetTemplateId(v string) *CreateAppRecordTemplateResponseBody {
+	s.TemplateId = &v
+	return s
+}
+
+type CreateAppRecordTemplateResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateAppRecordTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateAppRecordTemplateResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAppRecordTemplateResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAppRecordTemplateResponse) SetHeaders(v map[string]*string) *CreateAppRecordTemplateResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateAppRecordTemplateResponse) SetStatusCode(v int32) *CreateAppRecordTemplateResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateAppRecordTemplateResponse) SetBody(v *CreateAppRecordTemplateResponseBody) *CreateAppRecordTemplateResponse {
+	s.Body = v
+	return s
+}
+
 type CreateAppStreamingOutTemplateRequest struct {
 	// This parameter is required.
 	//
@@ -1106,6 +1319,155 @@ func (s *CreateMPULayoutResponse) SetBody(v *CreateMPULayoutResponseBody) *Creat
 	return s
 }
 
+type DeleteAppRecordTemplateRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ac7N****
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// example:
+	//
+	// 53200b81-b761-4c10-842a-a0726d97xxxx
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// This parameter is required.
+	Template *DeleteAppRecordTemplateRequestTemplate `json:"Template,omitempty" xml:"Template,omitempty" type:"Struct"`
+}
+
+func (s DeleteAppRecordTemplateRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteAppRecordTemplateRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteAppRecordTemplateRequest) SetAppId(v string) *DeleteAppRecordTemplateRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *DeleteAppRecordTemplateRequest) SetClientToken(v string) *DeleteAppRecordTemplateRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *DeleteAppRecordTemplateRequest) SetTemplate(v *DeleteAppRecordTemplateRequestTemplate) *DeleteAppRecordTemplateRequest {
+	s.Template = v
+	return s
+}
+
+type DeleteAppRecordTemplateRequestTemplate struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2xh6****
+	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+}
+
+func (s DeleteAppRecordTemplateRequestTemplate) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteAppRecordTemplateRequestTemplate) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteAppRecordTemplateRequestTemplate) SetTemplateId(v string) *DeleteAppRecordTemplateRequestTemplate {
+	s.TemplateId = &v
+	return s
+}
+
+type DeleteAppRecordTemplateShrinkRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ac7N****
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// example:
+	//
+	// 53200b81-b761-4c10-842a-a0726d97xxxx
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// This parameter is required.
+	TemplateShrink *string `json:"Template,omitempty" xml:"Template,omitempty"`
+}
+
+func (s DeleteAppRecordTemplateShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteAppRecordTemplateShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteAppRecordTemplateShrinkRequest) SetAppId(v string) *DeleteAppRecordTemplateShrinkRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *DeleteAppRecordTemplateShrinkRequest) SetClientToken(v string) *DeleteAppRecordTemplateShrinkRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *DeleteAppRecordTemplateShrinkRequest) SetTemplateShrink(v string) *DeleteAppRecordTemplateShrinkRequest {
+	s.TemplateShrink = &v
+	return s
+}
+
+type DeleteAppRecordTemplateResponseBody struct {
+	// Id of the request
+	//
+	// example:
+	//
+	// 16A96B9A-F203-4EC5-8E43-CB92E68F4CD8
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteAppRecordTemplateResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteAppRecordTemplateResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteAppRecordTemplateResponseBody) SetRequestId(v string) *DeleteAppRecordTemplateResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteAppRecordTemplateResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteAppRecordTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteAppRecordTemplateResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteAppRecordTemplateResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteAppRecordTemplateResponse) SetHeaders(v map[string]*string) *DeleteAppRecordTemplateResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteAppRecordTemplateResponse) SetStatusCode(v int32) *DeleteAppRecordTemplateResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteAppRecordTemplateResponse) SetBody(v *DeleteAppRecordTemplateResponseBody) *DeleteAppRecordTemplateResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteAppStreamingOutTemplateRequest struct {
 	// This parameter is required.
 	//
@@ -1678,6 +2040,300 @@ func (s *DeleteRecordTemplateResponse) SetBody(v *DeleteRecordTemplateResponseBo
 	return s
 }
 
+type DescribeAllCallbackResponseBody struct {
+	Callbacks []*DescribeAllCallbackResponseBodyCallbacks `json:"Callbacks,omitempty" xml:"Callbacks,omitempty" type:"Repeated"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 16A96B9A-F203-4EC5-8E43-CB92E68F4CD8
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeAllCallbackResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAllCallbackResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAllCallbackResponseBody) SetCallbacks(v []*DescribeAllCallbackResponseBodyCallbacks) *DescribeAllCallbackResponseBody {
+	s.Callbacks = v
+	return s
+}
+
+func (s *DescribeAllCallbackResponseBody) SetRequestId(v string) *DescribeAllCallbackResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeAllCallbackResponseBodyCallbacks struct {
+	// example:
+	//
+	// RecordEvent
+	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	// example:
+	//
+	// 录制回调
+	Name     *string                                             `json:"Name,omitempty" xml:"Name,omitempty"`
+	SubEvent []*DescribeAllCallbackResponseBodyCallbacksSubEvent `json:"SubEvent,omitempty" xml:"SubEvent,omitempty" type:"Repeated"`
+}
+
+func (s DescribeAllCallbackResponseBodyCallbacks) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAllCallbackResponseBodyCallbacks) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAllCallbackResponseBodyCallbacks) SetCategory(v string) *DescribeAllCallbackResponseBodyCallbacks {
+	s.Category = &v
+	return s
+}
+
+func (s *DescribeAllCallbackResponseBodyCallbacks) SetName(v string) *DescribeAllCallbackResponseBodyCallbacks {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeAllCallbackResponseBodyCallbacks) SetSubEvent(v []*DescribeAllCallbackResponseBodyCallbacksSubEvent) *DescribeAllCallbackResponseBodyCallbacks {
+	s.SubEvent = v
+	return s
+}
+
+type DescribeAllCallbackResponseBodyCallbacksSubEvent struct {
+	// example:
+	//
+	// 2000
+	Event *int32 `json:"Event,omitempty" xml:"Event,omitempty"`
+	// example:
+	//
+	// 录制开始
+	EventName *string `json:"EventName,omitempty" xml:"EventName,omitempty"`
+	// example:
+	//
+	// 0
+	Type *int32 `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s DescribeAllCallbackResponseBodyCallbacksSubEvent) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAllCallbackResponseBodyCallbacksSubEvent) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAllCallbackResponseBodyCallbacksSubEvent) SetEvent(v int32) *DescribeAllCallbackResponseBodyCallbacksSubEvent {
+	s.Event = &v
+	return s
+}
+
+func (s *DescribeAllCallbackResponseBodyCallbacksSubEvent) SetEventName(v string) *DescribeAllCallbackResponseBodyCallbacksSubEvent {
+	s.EventName = &v
+	return s
+}
+
+func (s *DescribeAllCallbackResponseBodyCallbacksSubEvent) SetType(v int32) *DescribeAllCallbackResponseBodyCallbacksSubEvent {
+	s.Type = &v
+	return s
+}
+
+type DescribeAllCallbackResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeAllCallbackResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeAllCallbackResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAllCallbackResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAllCallbackResponse) SetHeaders(v map[string]*string) *DescribeAllCallbackResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeAllCallbackResponse) SetStatusCode(v int32) *DescribeAllCallbackResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeAllCallbackResponse) SetBody(v *DescribeAllCallbackResponseBody) *DescribeAllCallbackResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeAppCallStatusRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 223***JQb
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+}
+
+func (s DescribeAppCallStatusRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAppCallStatusRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAppCallStatusRequest) SetAppId(v string) *DescribeAppCallStatusRequest {
+	s.AppId = &v
+	return s
+}
+
+type DescribeAppCallStatusResponseBody struct {
+	// Id of the request
+	//
+	// example:
+	//
+	// 20A6D1E3-1F5F-5440-A4F1-EC7831646FE4
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// enable
+	Result *string `json:"Result,omitempty" xml:"Result,omitempty"`
+}
+
+func (s DescribeAppCallStatusResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAppCallStatusResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAppCallStatusResponseBody) SetRequestId(v string) *DescribeAppCallStatusResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeAppCallStatusResponseBody) SetResult(v string) *DescribeAppCallStatusResponseBody {
+	s.Result = &v
+	return s
+}
+
+type DescribeAppCallStatusResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeAppCallStatusResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeAppCallStatusResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAppCallStatusResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAppCallStatusResponse) SetHeaders(v map[string]*string) *DescribeAppCallStatusResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeAppCallStatusResponse) SetStatusCode(v int32) *DescribeAppCallStatusResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeAppCallStatusResponse) SetBody(v *DescribeAppCallStatusResponseBody) *DescribeAppCallStatusResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeAppCallbackSecretKeyRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 9qb1****
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+}
+
+func (s DescribeAppCallbackSecretKeyRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAppCallbackSecretKeyRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAppCallbackSecretKeyRequest) SetAppId(v string) *DescribeAppCallbackSecretKeyRequest {
+	s.AppId = &v
+	return s
+}
+
+type DescribeAppCallbackSecretKeyResponseBody struct {
+	// example:
+	//
+	// a656b296a30xxxxxxxxxx1cd4
+	CallbackSecretKey *string `json:"CallbackSecretKey,omitempty" xml:"CallbackSecretKey,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 16A96B9A-F203-4EC5-8E43-CB92E68F4CD8
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeAppCallbackSecretKeyResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAppCallbackSecretKeyResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAppCallbackSecretKeyResponseBody) SetCallbackSecretKey(v string) *DescribeAppCallbackSecretKeyResponseBody {
+	s.CallbackSecretKey = &v
+	return s
+}
+
+func (s *DescribeAppCallbackSecretKeyResponseBody) SetRequestId(v string) *DescribeAppCallbackSecretKeyResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeAppCallbackSecretKeyResponse struct {
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeAppCallbackSecretKeyResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeAppCallbackSecretKeyResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAppCallbackSecretKeyResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAppCallbackSecretKeyResponse) SetHeaders(v map[string]*string) *DescribeAppCallbackSecretKeyResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeAppCallbackSecretKeyResponse) SetStatusCode(v int32) *DescribeAppCallbackSecretKeyResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeAppCallbackSecretKeyResponse) SetBody(v *DescribeAppCallbackSecretKeyResponseBody) *DescribeAppCallbackSecretKeyResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeAppKeyRequest struct {
 	// This parameter is required.
 	//
@@ -1762,6 +2418,782 @@ func (s *DescribeAppKeyResponse) SetStatusCode(v int32) *DescribeAppKeyResponse 
 }
 
 func (s *DescribeAppKeyResponse) SetBody(v *DescribeAppKeyResponseBody) *DescribeAppKeyResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeAppLayoutsRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ac7N****
+	AppId     *string                             `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	Condition *DescribeAppLayoutsRequestCondition `json:"Condition,omitempty" xml:"Condition,omitempty" type:"Struct"`
+	// example:
+	//
+	// 1
+	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+}
+
+func (s DescribeAppLayoutsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAppLayoutsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAppLayoutsRequest) SetAppId(v string) *DescribeAppLayoutsRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *DescribeAppLayoutsRequest) SetCondition(v *DescribeAppLayoutsRequestCondition) *DescribeAppLayoutsRequest {
+	s.Condition = v
+	return s
+}
+
+func (s *DescribeAppLayoutsRequest) SetPageNum(v int32) *DescribeAppLayoutsRequest {
+	s.PageNum = &v
+	return s
+}
+
+func (s *DescribeAppLayoutsRequest) SetPageSize(v int32) *DescribeAppLayoutsRequest {
+	s.PageSize = &v
+	return s
+}
+
+type DescribeAppLayoutsRequestCondition struct {
+	// example:
+	//
+	// 167466539798442****
+	LayoutId *string `json:"LayoutId,omitempty" xml:"LayoutId,omitempty"`
+	// example:
+	//
+	// 测试
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s DescribeAppLayoutsRequestCondition) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAppLayoutsRequestCondition) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAppLayoutsRequestCondition) SetLayoutId(v string) *DescribeAppLayoutsRequestCondition {
+	s.LayoutId = &v
+	return s
+}
+
+func (s *DescribeAppLayoutsRequestCondition) SetName(v string) *DescribeAppLayoutsRequestCondition {
+	s.Name = &v
+	return s
+}
+
+type DescribeAppLayoutsShrinkRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ac7N****
+	AppId           *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	ConditionShrink *string `json:"Condition,omitempty" xml:"Condition,omitempty"`
+	// example:
+	//
+	// 1
+	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+}
+
+func (s DescribeAppLayoutsShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAppLayoutsShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAppLayoutsShrinkRequest) SetAppId(v string) *DescribeAppLayoutsShrinkRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *DescribeAppLayoutsShrinkRequest) SetConditionShrink(v string) *DescribeAppLayoutsShrinkRequest {
+	s.ConditionShrink = &v
+	return s
+}
+
+func (s *DescribeAppLayoutsShrinkRequest) SetPageNum(v int32) *DescribeAppLayoutsShrinkRequest {
+	s.PageNum = &v
+	return s
+}
+
+func (s *DescribeAppLayoutsShrinkRequest) SetPageSize(v int32) *DescribeAppLayoutsShrinkRequest {
+	s.PageSize = &v
+	return s
+}
+
+type DescribeAppLayoutsResponseBody struct {
+	Layouts []*DescribeAppLayoutsResponseBodyLayouts `json:"Layouts,omitempty" xml:"Layouts,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 16A96B9A-F203-4EC5-8E43-CB92E68F4CD8
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 10
+	TotalNum *int64 `json:"TotalNum,omitempty" xml:"TotalNum,omitempty"`
+	// example:
+	//
+	// 1
+	TotalPage *int64 `json:"TotalPage,omitempty" xml:"TotalPage,omitempty"`
+}
+
+func (s DescribeAppLayoutsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAppLayoutsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAppLayoutsResponseBody) SetLayouts(v []*DescribeAppLayoutsResponseBodyLayouts) *DescribeAppLayoutsResponseBody {
+	s.Layouts = v
+	return s
+}
+
+func (s *DescribeAppLayoutsResponseBody) SetRequestId(v string) *DescribeAppLayoutsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeAppLayoutsResponseBody) SetTotalNum(v int64) *DescribeAppLayoutsResponseBody {
+	s.TotalNum = &v
+	return s
+}
+
+func (s *DescribeAppLayoutsResponseBody) SetTotalPage(v int64) *DescribeAppLayoutsResponseBody {
+	s.TotalPage = &v
+	return s
+}
+
+type DescribeAppLayoutsResponseBodyLayouts struct {
+	// example:
+	//
+	// 167466539798442****
+	LayoutId *string `json:"LayoutId,omitempty" xml:"LayoutId,omitempty"`
+	// example:
+	//
+	// 测试
+	Name  *string                                       `json:"Name,omitempty" xml:"Name,omitempty"`
+	Panes []*DescribeAppLayoutsResponseBodyLayoutsPanes `json:"Panes,omitempty" xml:"Panes,omitempty" type:"Repeated"`
+}
+
+func (s DescribeAppLayoutsResponseBodyLayouts) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAppLayoutsResponseBodyLayouts) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAppLayoutsResponseBodyLayouts) SetLayoutId(v string) *DescribeAppLayoutsResponseBodyLayouts {
+	s.LayoutId = &v
+	return s
+}
+
+func (s *DescribeAppLayoutsResponseBodyLayouts) SetName(v string) *DescribeAppLayoutsResponseBodyLayouts {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeAppLayoutsResponseBodyLayouts) SetPanes(v []*DescribeAppLayoutsResponseBodyLayoutsPanes) *DescribeAppLayoutsResponseBodyLayouts {
+	s.Panes = v
+	return s
+}
+
+type DescribeAppLayoutsResponseBodyLayoutsPanes struct {
+	// example:
+	//
+	// 0.25
+	Height *float32 `json:"Height,omitempty" xml:"Height,omitempty"`
+	// example:
+	//
+	// 0
+	PaneId *int32 `json:"PaneId,omitempty" xml:"PaneId,omitempty"`
+	// example:
+	//
+	// 0.25
+	Width *float32 `json:"Width,omitempty" xml:"Width,omitempty"`
+	// example:
+	//
+	// 0.25
+	X *float32 `json:"X,omitempty" xml:"X,omitempty"`
+	// example:
+	//
+	// 0.25
+	Y *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
+	// example:
+	//
+	// 0
+	ZOrder *int32 `json:"ZOrder,omitempty" xml:"ZOrder,omitempty"`
+}
+
+func (s DescribeAppLayoutsResponseBodyLayoutsPanes) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAppLayoutsResponseBodyLayoutsPanes) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAppLayoutsResponseBodyLayoutsPanes) SetHeight(v float32) *DescribeAppLayoutsResponseBodyLayoutsPanes {
+	s.Height = &v
+	return s
+}
+
+func (s *DescribeAppLayoutsResponseBodyLayoutsPanes) SetPaneId(v int32) *DescribeAppLayoutsResponseBodyLayoutsPanes {
+	s.PaneId = &v
+	return s
+}
+
+func (s *DescribeAppLayoutsResponseBodyLayoutsPanes) SetWidth(v float32) *DescribeAppLayoutsResponseBodyLayoutsPanes {
+	s.Width = &v
+	return s
+}
+
+func (s *DescribeAppLayoutsResponseBodyLayoutsPanes) SetX(v float32) *DescribeAppLayoutsResponseBodyLayoutsPanes {
+	s.X = &v
+	return s
+}
+
+func (s *DescribeAppLayoutsResponseBodyLayoutsPanes) SetY(v float32) *DescribeAppLayoutsResponseBodyLayoutsPanes {
+	s.Y = &v
+	return s
+}
+
+func (s *DescribeAppLayoutsResponseBodyLayoutsPanes) SetZOrder(v int32) *DescribeAppLayoutsResponseBodyLayoutsPanes {
+	s.ZOrder = &v
+	return s
+}
+
+type DescribeAppLayoutsResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeAppLayoutsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeAppLayoutsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAppLayoutsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAppLayoutsResponse) SetHeaders(v map[string]*string) *DescribeAppLayoutsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeAppLayoutsResponse) SetStatusCode(v int32) *DescribeAppLayoutsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeAppLayoutsResponse) SetBody(v *DescribeAppLayoutsResponseBody) *DescribeAppLayoutsResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeAppLiveStreamStatusRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ac7N****
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// example:
+	//
+	// 123e4567-e89b-12d3-a456-42665544****
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+}
+
+func (s DescribeAppLiveStreamStatusRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAppLiveStreamStatusRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAppLiveStreamStatusRequest) SetAppId(v string) *DescribeAppLiveStreamStatusRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *DescribeAppLiveStreamStatusRequest) SetClientToken(v string) *DescribeAppLiveStreamStatusRequest {
+	s.ClientToken = &v
+	return s
+}
+
+type DescribeAppLiveStreamStatusResponseBody struct {
+	// Id of the request
+	//
+	// example:
+	//
+	// 231470C1-ACFB-4C9F-844F-4CFE1E3804C5
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// disable
+	Result *string `json:"Result,omitempty" xml:"Result,omitempty"`
+}
+
+func (s DescribeAppLiveStreamStatusResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAppLiveStreamStatusResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAppLiveStreamStatusResponseBody) SetRequestId(v string) *DescribeAppLiveStreamStatusResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeAppLiveStreamStatusResponseBody) SetResult(v string) *DescribeAppLiveStreamStatusResponseBody {
+	s.Result = &v
+	return s
+}
+
+type DescribeAppLiveStreamStatusResponse struct {
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeAppLiveStreamStatusResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeAppLiveStreamStatusResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAppLiveStreamStatusResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAppLiveStreamStatusResponse) SetHeaders(v map[string]*string) *DescribeAppLiveStreamStatusResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeAppLiveStreamStatusResponse) SetStatusCode(v int32) *DescribeAppLiveStreamStatusResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeAppLiveStreamStatusResponse) SetBody(v *DescribeAppLiveStreamStatusResponseBody) *DescribeAppLiveStreamStatusResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeAppRecordStatusRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ac7N****
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// example:
+	//
+	// 123e4567-e89b-12d3-a456-42665544****
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+}
+
+func (s DescribeAppRecordStatusRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAppRecordStatusRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAppRecordStatusRequest) SetAppId(v string) *DescribeAppRecordStatusRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *DescribeAppRecordStatusRequest) SetClientToken(v string) *DescribeAppRecordStatusRequest {
+	s.ClientToken = &v
+	return s
+}
+
+type DescribeAppRecordStatusResponseBody struct {
+	// Id of the request
+	//
+	// example:
+	//
+	// 16A96B9A-F203-4EC5-8E43-CB92E68F4CD8
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// disable
+	Result *string `json:"Result,omitempty" xml:"Result,omitempty"`
+}
+
+func (s DescribeAppRecordStatusResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAppRecordStatusResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAppRecordStatusResponseBody) SetRequestId(v string) *DescribeAppRecordStatusResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeAppRecordStatusResponseBody) SetResult(v string) *DescribeAppRecordStatusResponseBody {
+	s.Result = &v
+	return s
+}
+
+type DescribeAppRecordStatusResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeAppRecordStatusResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeAppRecordStatusResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAppRecordStatusResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAppRecordStatusResponse) SetHeaders(v map[string]*string) *DescribeAppRecordStatusResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeAppRecordStatusResponse) SetStatusCode(v int32) *DescribeAppRecordStatusResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeAppRecordStatusResponse) SetBody(v *DescribeAppRecordStatusResponseBody) *DescribeAppRecordStatusResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeAppRecordTemplatesRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ac7N****
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// example:
+	//
+	// 123e4567-e89b-12d3-a456-42665544****
+	ClientToken *string                                     `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	Condition   *DescribeAppRecordTemplatesRequestCondition `json:"Condition,omitempty" xml:"Condition,omitempty" type:"Struct"`
+	// example:
+	//
+	// 1
+	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+}
+
+func (s DescribeAppRecordTemplatesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAppRecordTemplatesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAppRecordTemplatesRequest) SetAppId(v string) *DescribeAppRecordTemplatesRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *DescribeAppRecordTemplatesRequest) SetClientToken(v string) *DescribeAppRecordTemplatesRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *DescribeAppRecordTemplatesRequest) SetCondition(v *DescribeAppRecordTemplatesRequestCondition) *DescribeAppRecordTemplatesRequest {
+	s.Condition = v
+	return s
+}
+
+func (s *DescribeAppRecordTemplatesRequest) SetPageNum(v int32) *DescribeAppRecordTemplatesRequest {
+	s.PageNum = &v
+	return s
+}
+
+func (s *DescribeAppRecordTemplatesRequest) SetPageSize(v int32) *DescribeAppRecordTemplatesRequest {
+	s.PageSize = &v
+	return s
+}
+
+type DescribeAppRecordTemplatesRequestCondition struct {
+	// example:
+	//
+	// 测试
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// ac7N****
+	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+}
+
+func (s DescribeAppRecordTemplatesRequestCondition) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAppRecordTemplatesRequestCondition) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAppRecordTemplatesRequestCondition) SetName(v string) *DescribeAppRecordTemplatesRequestCondition {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeAppRecordTemplatesRequestCondition) SetTemplateId(v string) *DescribeAppRecordTemplatesRequestCondition {
+	s.TemplateId = &v
+	return s
+}
+
+type DescribeAppRecordTemplatesShrinkRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ac7N****
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// example:
+	//
+	// 123e4567-e89b-12d3-a456-42665544****
+	ClientToken     *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	ConditionShrink *string `json:"Condition,omitempty" xml:"Condition,omitempty"`
+	// example:
+	//
+	// 1
+	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+}
+
+func (s DescribeAppRecordTemplatesShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAppRecordTemplatesShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAppRecordTemplatesShrinkRequest) SetAppId(v string) *DescribeAppRecordTemplatesShrinkRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *DescribeAppRecordTemplatesShrinkRequest) SetClientToken(v string) *DescribeAppRecordTemplatesShrinkRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *DescribeAppRecordTemplatesShrinkRequest) SetConditionShrink(v string) *DescribeAppRecordTemplatesShrinkRequest {
+	s.ConditionShrink = &v
+	return s
+}
+
+func (s *DescribeAppRecordTemplatesShrinkRequest) SetPageNum(v int32) *DescribeAppRecordTemplatesShrinkRequest {
+	s.PageNum = &v
+	return s
+}
+
+func (s *DescribeAppRecordTemplatesShrinkRequest) SetPageSize(v int32) *DescribeAppRecordTemplatesShrinkRequest {
+	s.PageSize = &v
+	return s
+}
+
+type DescribeAppRecordTemplatesResponseBody struct {
+	// Id of the request
+	//
+	// example:
+	//
+	// 2A7497D0-BEAE-58E7-B13A-751BD8EAE4C6
+	RequestId *string                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Templates []*DescribeAppRecordTemplatesResponseBodyTemplates `json:"Templates,omitempty" xml:"Templates,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 10
+	TotalNum *int64 `json:"TotalNum,omitempty" xml:"TotalNum,omitempty"`
+	// example:
+	//
+	// 1
+	TotalPage *int64 `json:"TotalPage,omitempty" xml:"TotalPage,omitempty"`
+}
+
+func (s DescribeAppRecordTemplatesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAppRecordTemplatesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAppRecordTemplatesResponseBody) SetRequestId(v string) *DescribeAppRecordTemplatesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeAppRecordTemplatesResponseBody) SetTemplates(v []*DescribeAppRecordTemplatesResponseBodyTemplates) *DescribeAppRecordTemplatesResponseBody {
+	s.Templates = v
+	return s
+}
+
+func (s *DescribeAppRecordTemplatesResponseBody) SetTotalNum(v int64) *DescribeAppRecordTemplatesResponseBody {
+	s.TotalNum = &v
+	return s
+}
+
+func (s *DescribeAppRecordTemplatesResponseBody) SetTotalPage(v int64) *DescribeAppRecordTemplatesResponseBody {
+	s.TotalPage = &v
+	return s
+}
+
+type DescribeAppRecordTemplatesResponseBodyTemplates struct {
+	// example:
+	//
+	// 2020-09-04T06:22:15Z
+	CreateTime []byte `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// 180
+	DelayStopTime *int64 `json:"DelayStopTime,omitempty" xml:"DelayStopTime,omitempty"`
+	// example:
+	//
+	// record/{AppId}/{ChannelId_TaskId}/{EscapedStartTime}_{EscapedEndTime}
+	FilePrefix *string `json:"FilePrefix,omitempty" xml:"FilePrefix,omitempty"`
+	// example:
+	//
+	// 1800
+	FileSplitInterval *int64    `json:"FileSplitInterval,omitempty" xml:"FileSplitInterval,omitempty"`
+	Formats           []*string `json:"Formats,omitempty" xml:"Formats,omitempty" type:"Repeated"`
+	LayoutIds         []*int64  `json:"LayoutIds,omitempty" xml:"LayoutIds,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	MediaEncode *int32 `json:"MediaEncode,omitempty" xml:"MediaEncode,omitempty"`
+	// example:
+	//
+	// 测试
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// wv7N****
+	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+}
+
+func (s DescribeAppRecordTemplatesResponseBodyTemplates) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAppRecordTemplatesResponseBodyTemplates) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAppRecordTemplatesResponseBodyTemplates) SetCreateTime(v []byte) *DescribeAppRecordTemplatesResponseBodyTemplates {
+	s.CreateTime = v
+	return s
+}
+
+func (s *DescribeAppRecordTemplatesResponseBodyTemplates) SetDelayStopTime(v int64) *DescribeAppRecordTemplatesResponseBodyTemplates {
+	s.DelayStopTime = &v
+	return s
+}
+
+func (s *DescribeAppRecordTemplatesResponseBodyTemplates) SetFilePrefix(v string) *DescribeAppRecordTemplatesResponseBodyTemplates {
+	s.FilePrefix = &v
+	return s
+}
+
+func (s *DescribeAppRecordTemplatesResponseBodyTemplates) SetFileSplitInterval(v int64) *DescribeAppRecordTemplatesResponseBodyTemplates {
+	s.FileSplitInterval = &v
+	return s
+}
+
+func (s *DescribeAppRecordTemplatesResponseBodyTemplates) SetFormats(v []*string) *DescribeAppRecordTemplatesResponseBodyTemplates {
+	s.Formats = v
+	return s
+}
+
+func (s *DescribeAppRecordTemplatesResponseBodyTemplates) SetLayoutIds(v []*int64) *DescribeAppRecordTemplatesResponseBodyTemplates {
+	s.LayoutIds = v
+	return s
+}
+
+func (s *DescribeAppRecordTemplatesResponseBodyTemplates) SetMediaEncode(v int32) *DescribeAppRecordTemplatesResponseBodyTemplates {
+	s.MediaEncode = &v
+	return s
+}
+
+func (s *DescribeAppRecordTemplatesResponseBodyTemplates) SetName(v string) *DescribeAppRecordTemplatesResponseBodyTemplates {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeAppRecordTemplatesResponseBodyTemplates) SetTemplateId(v string) *DescribeAppRecordTemplatesResponseBodyTemplates {
+	s.TemplateId = &v
+	return s
+}
+
+type DescribeAppRecordTemplatesResponse struct {
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeAppRecordTemplatesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeAppRecordTemplatesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAppRecordTemplatesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAppRecordTemplatesResponse) SetHeaders(v map[string]*string) *DescribeAppRecordTemplatesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeAppRecordTemplatesResponse) SetStatusCode(v int32) *DescribeAppRecordTemplatesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeAppRecordTemplatesResponse) SetBody(v *DescribeAppRecordTemplatesResponseBody) *DescribeAppRecordTemplatesResponse {
 	s.Body = v
 	return s
 }
@@ -3518,6 +4950,156 @@ func (s *DescribeCallListResponse) SetStatusCode(v int32) *DescribeCallListRespo
 }
 
 func (s *DescribeCallListResponse) SetBody(v *DescribeCallListResponseBody) *DescribeCallListResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeCallbacksRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 223***JQb
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+}
+
+func (s DescribeCallbacksRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCallbacksRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCallbacksRequest) SetAppId(v string) *DescribeCallbacksRequest {
+	s.AppId = &v
+	return s
+}
+
+type DescribeCallbacksResponseBody struct {
+	Callbacks []*DescribeCallbacksResponseBodyCallbacks `json:"Callbacks,omitempty" xml:"Callbacks,omitempty" type:"Repeated"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 16A96B9A-F203-4EC5-8E43-CB92E68F4CD8
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeCallbacksResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCallbacksResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCallbacksResponseBody) SetCallbacks(v []*DescribeCallbacksResponseBodyCallbacks) *DescribeCallbacksResponseBody {
+	s.Callbacks = v
+	return s
+}
+
+func (s *DescribeCallbacksResponseBody) SetRequestId(v string) *DescribeCallbacksResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeCallbacksResponseBodyCallbacks struct {
+	// example:
+	//
+	// RecordEvent
+	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	// example:
+	//
+	// 1
+	CheckStatus *string `json:"CheckStatus,omitempty" xml:"CheckStatus,omitempty"`
+	// example:
+	//
+	// RESPONSE_INVALID
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// https://www.aliyun.com
+	Conf *string `json:"Conf,omitempty" xml:"Conf,omitempty"`
+	// example:
+	//
+	// Success
+	Msg *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
+	// example:
+	//
+	// 1
+	Status   *int32   `json:"Status,omitempty" xml:"Status,omitempty"`
+	SubEvent []*int32 `json:"SubEvent,omitempty" xml:"SubEvent,omitempty" type:"Repeated"`
+}
+
+func (s DescribeCallbacksResponseBodyCallbacks) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCallbacksResponseBodyCallbacks) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCallbacksResponseBodyCallbacks) SetCategory(v string) *DescribeCallbacksResponseBodyCallbacks {
+	s.Category = &v
+	return s
+}
+
+func (s *DescribeCallbacksResponseBodyCallbacks) SetCheckStatus(v string) *DescribeCallbacksResponseBodyCallbacks {
+	s.CheckStatus = &v
+	return s
+}
+
+func (s *DescribeCallbacksResponseBodyCallbacks) SetCode(v string) *DescribeCallbacksResponseBodyCallbacks {
+	s.Code = &v
+	return s
+}
+
+func (s *DescribeCallbacksResponseBodyCallbacks) SetConf(v string) *DescribeCallbacksResponseBodyCallbacks {
+	s.Conf = &v
+	return s
+}
+
+func (s *DescribeCallbacksResponseBodyCallbacks) SetMsg(v string) *DescribeCallbacksResponseBodyCallbacks {
+	s.Msg = &v
+	return s
+}
+
+func (s *DescribeCallbacksResponseBodyCallbacks) SetStatus(v int32) *DescribeCallbacksResponseBodyCallbacks {
+	s.Status = &v
+	return s
+}
+
+func (s *DescribeCallbacksResponseBodyCallbacks) SetSubEvent(v []*int32) *DescribeCallbacksResponseBodyCallbacks {
+	s.SubEvent = v
+	return s
+}
+
+type DescribeCallbacksResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeCallbacksResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeCallbacksResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCallbacksResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCallbacksResponse) SetHeaders(v map[string]*string) *DescribeCallbacksResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeCallbacksResponse) SetStatusCode(v int32) *DescribeCallbacksResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeCallbacksResponse) SetBody(v *DescribeCallbacksResponseBody) *DescribeCallbacksResponse {
 	s.Body = v
 	return s
 }
@@ -5308,6 +6890,128 @@ func (s *DescribeChannelUsersResponse) SetStatusCode(v int32) *DescribeChannelUs
 }
 
 func (s *DescribeChannelUsersResponse) SetBody(v *DescribeChannelUsersResponseBody) *DescribeChannelUsersResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeChannelsRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// eo85****
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// example:
+	//
+	// 1
+	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+}
+
+func (s DescribeChannelsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeChannelsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeChannelsRequest) SetAppId(v string) *DescribeChannelsRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *DescribeChannelsRequest) SetPageNo(v int32) *DescribeChannelsRequest {
+	s.PageNo = &v
+	return s
+}
+
+func (s *DescribeChannelsRequest) SetPageSize(v int32) *DescribeChannelsRequest {
+	s.PageSize = &v
+	return s
+}
+
+type DescribeChannelsResponseBody struct {
+	// example:
+	//
+	// 1
+	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Records  []*string `json:"Records,omitempty" xml:"Records,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 16A96B9A-F203-4EC5-8E43-CB92E68F4CF8
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 1
+	TotalCnt *int32 `json:"TotalCnt,omitempty" xml:"TotalCnt,omitempty"`
+}
+
+func (s DescribeChannelsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeChannelsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeChannelsResponseBody) SetPageNo(v int32) *DescribeChannelsResponseBody {
+	s.PageNo = &v
+	return s
+}
+
+func (s *DescribeChannelsResponseBody) SetPageSize(v int32) *DescribeChannelsResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeChannelsResponseBody) SetRecords(v []*string) *DescribeChannelsResponseBody {
+	s.Records = v
+	return s
+}
+
+func (s *DescribeChannelsResponseBody) SetRequestId(v string) *DescribeChannelsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeChannelsResponseBody) SetTotalCnt(v int32) *DescribeChannelsResponseBody {
+	s.TotalCnt = &v
+	return s
+}
+
+type DescribeChannelsResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeChannelsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeChannelsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeChannelsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeChannelsResponse) SetHeaders(v map[string]*string) *DescribeChannelsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeChannelsResponse) SetStatusCode(v int32) *DescribeChannelsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeChannelsResponse) SetBody(v *DescribeChannelsResponseBody) *DescribeChannelsResponse {
 	s.Body = v
 	return s
 }
@@ -10785,6 +12489,371 @@ func (s *DescribeRtcUserCntDataResponse) SetBody(v *DescribeRtcUserCntDataRespon
 	return s
 }
 
+type DescribeStreamingOutStatusRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1qaz***x
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// testChannel
+	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// taskId
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+}
+
+func (s DescribeStreamingOutStatusRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeStreamingOutStatusRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeStreamingOutStatusRequest) SetAppId(v string) *DescribeStreamingOutStatusRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *DescribeStreamingOutStatusRequest) SetChannelId(v string) *DescribeStreamingOutStatusRequest {
+	s.ChannelId = &v
+	return s
+}
+
+func (s *DescribeStreamingOutStatusRequest) SetTaskId(v string) *DescribeStreamingOutStatusRequest {
+	s.TaskId = &v
+	return s
+}
+
+type DescribeStreamingOutStatusResponseBody struct {
+	// Id of the request
+	//
+	// example:
+	//
+	// 231470C1-ACFB-4C9F-844F-4CFE1E3804C5
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 1
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s DescribeStreamingOutStatusResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeStreamingOutStatusResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeStreamingOutStatusResponseBody) SetRequestId(v string) *DescribeStreamingOutStatusResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeStreamingOutStatusResponseBody) SetStatus(v int32) *DescribeStreamingOutStatusResponseBody {
+	s.Status = &v
+	return s
+}
+
+type DescribeStreamingOutStatusResponse struct {
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeStreamingOutStatusResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeStreamingOutStatusResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeStreamingOutStatusResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeStreamingOutStatusResponse) SetHeaders(v map[string]*string) *DescribeStreamingOutStatusResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeStreamingOutStatusResponse) SetStatusCode(v int32) *DescribeStreamingOutStatusResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeStreamingOutStatusResponse) SetBody(v *DescribeStreamingOutStatusResponseBody) *DescribeStreamingOutStatusResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeSystemLayoutListRequest struct {
+	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// example:
+	//
+	// 1
+	PageNum *int64 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+}
+
+func (s DescribeSystemLayoutListRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSystemLayoutListRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSystemLayoutListRequest) SetOwnerId(v int64) *DescribeSystemLayoutListRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DescribeSystemLayoutListRequest) SetPageNum(v int64) *DescribeSystemLayoutListRequest {
+	s.PageNum = &v
+	return s
+}
+
+func (s *DescribeSystemLayoutListRequest) SetPageSize(v int64) *DescribeSystemLayoutListRequest {
+	s.PageSize = &v
+	return s
+}
+
+type DescribeSystemLayoutListResponseBody struct {
+	Layouts *DescribeSystemLayoutListResponseBodyLayouts `json:"Layouts,omitempty" xml:"Layouts,omitempty" type:"Struct"`
+	// example:
+	//
+	// 16A96B9A-F203-4EC5-8E43-CB92E68F4CD8
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 6
+	TotalNum *int64 `json:"TotalNum,omitempty" xml:"TotalNum,omitempty"`
+	// example:
+	//
+	// 2
+	TotalPage *int64 `json:"TotalPage,omitempty" xml:"TotalPage,omitempty"`
+}
+
+func (s DescribeSystemLayoutListResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSystemLayoutListResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSystemLayoutListResponseBody) SetLayouts(v *DescribeSystemLayoutListResponseBodyLayouts) *DescribeSystemLayoutListResponseBody {
+	s.Layouts = v
+	return s
+}
+
+func (s *DescribeSystemLayoutListResponseBody) SetRequestId(v string) *DescribeSystemLayoutListResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeSystemLayoutListResponseBody) SetTotalNum(v int64) *DescribeSystemLayoutListResponseBody {
+	s.TotalNum = &v
+	return s
+}
+
+func (s *DescribeSystemLayoutListResponseBody) SetTotalPage(v int64) *DescribeSystemLayoutListResponseBody {
+	s.TotalPage = &v
+	return s
+}
+
+type DescribeSystemLayoutListResponseBodyLayouts struct {
+	Layout []*DescribeSystemLayoutListResponseBodyLayoutsLayout `json:"Layout,omitempty" xml:"Layout,omitempty" type:"Repeated"`
+}
+
+func (s DescribeSystemLayoutListResponseBodyLayouts) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSystemLayoutListResponseBodyLayouts) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSystemLayoutListResponseBodyLayouts) SetLayout(v []*DescribeSystemLayoutListResponseBodyLayoutsLayout) *DescribeSystemLayoutListResponseBodyLayouts {
+	s.Layout = v
+	return s
+}
+
+type DescribeSystemLayoutListResponseBodyLayoutsLayout struct {
+	// AudioMixCount。
+	//
+	// example:
+	//
+	// 3
+	AudioMixCount *int32 `json:"AudioMixCount,omitempty" xml:"AudioMixCount,omitempty"`
+	// example:
+	//
+	// 22
+	LayoutId *int64                                                  `json:"LayoutId,omitempty" xml:"LayoutId,omitempty"`
+	Name     *string                                                 `json:"Name,omitempty" xml:"Name,omitempty"`
+	Panes    *DescribeSystemLayoutListResponseBodyLayoutsLayoutPanes `json:"Panes,omitempty" xml:"Panes,omitempty" type:"Struct"`
+}
+
+func (s DescribeSystemLayoutListResponseBodyLayoutsLayout) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSystemLayoutListResponseBodyLayoutsLayout) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSystemLayoutListResponseBodyLayoutsLayout) SetAudioMixCount(v int32) *DescribeSystemLayoutListResponseBodyLayoutsLayout {
+	s.AudioMixCount = &v
+	return s
+}
+
+func (s *DescribeSystemLayoutListResponseBodyLayoutsLayout) SetLayoutId(v int64) *DescribeSystemLayoutListResponseBodyLayoutsLayout {
+	s.LayoutId = &v
+	return s
+}
+
+func (s *DescribeSystemLayoutListResponseBodyLayoutsLayout) SetName(v string) *DescribeSystemLayoutListResponseBodyLayoutsLayout {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeSystemLayoutListResponseBodyLayoutsLayout) SetPanes(v *DescribeSystemLayoutListResponseBodyLayoutsLayoutPanes) *DescribeSystemLayoutListResponseBodyLayoutsLayout {
+	s.Panes = v
+	return s
+}
+
+type DescribeSystemLayoutListResponseBodyLayoutsLayoutPanes struct {
+	Panes []*DescribeSystemLayoutListResponseBodyLayoutsLayoutPanesPanes `json:"Panes,omitempty" xml:"Panes,omitempty" type:"Repeated"`
+}
+
+func (s DescribeSystemLayoutListResponseBodyLayoutsLayoutPanes) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSystemLayoutListResponseBodyLayoutsLayoutPanes) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSystemLayoutListResponseBodyLayoutsLayoutPanes) SetPanes(v []*DescribeSystemLayoutListResponseBodyLayoutsLayoutPanesPanes) *DescribeSystemLayoutListResponseBodyLayoutsLayoutPanes {
+	s.Panes = v
+	return s
+}
+
+type DescribeSystemLayoutListResponseBodyLayoutsLayoutPanesPanes struct {
+	// example:
+	//
+	// 0.25
+	Height *float32 `json:"Height,omitempty" xml:"Height,omitempty"`
+	// MajorPane。
+	//
+	// example:
+	//
+	// 0
+	MajorPane *int32 `json:"MajorPane,omitempty" xml:"MajorPane,omitempty"`
+	// example:
+	//
+	// 0
+	PaneId *int32 `json:"PaneId,omitempty" xml:"PaneId,omitempty"`
+	// example:
+	//
+	// 0.25
+	Width *float32 `json:"Width,omitempty" xml:"Width,omitempty"`
+	// example:
+	//
+	// 0.25
+	X *float32 `json:"X,omitempty" xml:"X,omitempty"`
+	// example:
+	//
+	// 0.25
+	Y *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
+	// example:
+	//
+	// 0
+	ZOrder *int32 `json:"ZOrder,omitempty" xml:"ZOrder,omitempty"`
+}
+
+func (s DescribeSystemLayoutListResponseBodyLayoutsLayoutPanesPanes) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSystemLayoutListResponseBodyLayoutsLayoutPanesPanes) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSystemLayoutListResponseBodyLayoutsLayoutPanesPanes) SetHeight(v float32) *DescribeSystemLayoutListResponseBodyLayoutsLayoutPanesPanes {
+	s.Height = &v
+	return s
+}
+
+func (s *DescribeSystemLayoutListResponseBodyLayoutsLayoutPanesPanes) SetMajorPane(v int32) *DescribeSystemLayoutListResponseBodyLayoutsLayoutPanesPanes {
+	s.MajorPane = &v
+	return s
+}
+
+func (s *DescribeSystemLayoutListResponseBodyLayoutsLayoutPanesPanes) SetPaneId(v int32) *DescribeSystemLayoutListResponseBodyLayoutsLayoutPanesPanes {
+	s.PaneId = &v
+	return s
+}
+
+func (s *DescribeSystemLayoutListResponseBodyLayoutsLayoutPanesPanes) SetWidth(v float32) *DescribeSystemLayoutListResponseBodyLayoutsLayoutPanesPanes {
+	s.Width = &v
+	return s
+}
+
+func (s *DescribeSystemLayoutListResponseBodyLayoutsLayoutPanesPanes) SetX(v float32) *DescribeSystemLayoutListResponseBodyLayoutsLayoutPanesPanes {
+	s.X = &v
+	return s
+}
+
+func (s *DescribeSystemLayoutListResponseBodyLayoutsLayoutPanesPanes) SetY(v float32) *DescribeSystemLayoutListResponseBodyLayoutsLayoutPanesPanes {
+	s.Y = &v
+	return s
+}
+
+func (s *DescribeSystemLayoutListResponseBodyLayoutsLayoutPanesPanes) SetZOrder(v int32) *DescribeSystemLayoutListResponseBodyLayoutsLayoutPanesPanes {
+	s.ZOrder = &v
+	return s
+}
+
+type DescribeSystemLayoutListResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeSystemLayoutListResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeSystemLayoutListResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSystemLayoutListResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSystemLayoutListResponse) SetHeaders(v map[string]*string) *DescribeSystemLayoutListResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeSystemLayoutListResponse) SetStatusCode(v int32) *DescribeSystemLayoutListResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeSystemLayoutListResponse) SetBody(v *DescribeSystemLayoutListResponseBody) *DescribeSystemLayoutListResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeUsageAreaDistributionStatDataRequest struct {
 	// APP ID
 	//
@@ -11967,6 +14036,459 @@ func (s *ModifyAppResponse) SetBody(v *ModifyAppResponseBody) *ModifyAppResponse
 	return s
 }
 
+type ModifyAppCallbackStatusRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 223***JQb
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+}
+
+func (s ModifyAppCallbackStatusRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyAppCallbackStatusRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyAppCallbackStatusRequest) SetAppId(v string) *ModifyAppCallbackStatusRequest {
+	s.AppId = &v
+	return s
+}
+
+type ModifyAppCallbackStatusResponseBody struct {
+	// Id of the request
+	//
+	// example:
+	//
+	// F80AAC02-87BD-5D9C-B925-8AB40171BA1A
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ModifyAppCallbackStatusResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyAppCallbackStatusResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyAppCallbackStatusResponseBody) SetRequestId(v string) *ModifyAppCallbackStatusResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ModifyAppCallbackStatusResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyAppCallbackStatusResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ModifyAppCallbackStatusResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyAppCallbackStatusResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyAppCallbackStatusResponse) SetHeaders(v map[string]*string) *ModifyAppCallbackStatusResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyAppCallbackStatusResponse) SetStatusCode(v int32) *ModifyAppCallbackStatusResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ModifyAppCallbackStatusResponse) SetBody(v *ModifyAppCallbackStatusResponseBody) *ModifyAppCallbackStatusResponse {
+	s.Body = v
+	return s
+}
+
+type ModifyAppLiveStreamStatusRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ac7N****
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// example:
+	//
+	// 53200b81-b761-4c10-842a-a0726xxxx
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+}
+
+func (s ModifyAppLiveStreamStatusRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyAppLiveStreamStatusRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyAppLiveStreamStatusRequest) SetAppId(v string) *ModifyAppLiveStreamStatusRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *ModifyAppLiveStreamStatusRequest) SetClientToken(v string) *ModifyAppLiveStreamStatusRequest {
+	s.ClientToken = &v
+	return s
+}
+
+type ModifyAppLiveStreamStatusResponseBody struct {
+	// Id of the request
+	//
+	// example:
+	//
+	// 16A96B9A-F203-4EC5-8E43-CB92E68F4CD8
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ModifyAppLiveStreamStatusResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyAppLiveStreamStatusResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyAppLiveStreamStatusResponseBody) SetRequestId(v string) *ModifyAppLiveStreamStatusResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ModifyAppLiveStreamStatusResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyAppLiveStreamStatusResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ModifyAppLiveStreamStatusResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyAppLiveStreamStatusResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyAppLiveStreamStatusResponse) SetHeaders(v map[string]*string) *ModifyAppLiveStreamStatusResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyAppLiveStreamStatusResponse) SetStatusCode(v int32) *ModifyAppLiveStreamStatusResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ModifyAppLiveStreamStatusResponse) SetBody(v *ModifyAppLiveStreamStatusResponseBody) *ModifyAppLiveStreamStatusResponse {
+	s.Body = v
+	return s
+}
+
+type ModifyAppRecordStatusRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ac7N****
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// example:
+	//
+	// 53200b81-b761-4c10-842a-a0726xxxx
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+}
+
+func (s ModifyAppRecordStatusRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyAppRecordStatusRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyAppRecordStatusRequest) SetAppId(v string) *ModifyAppRecordStatusRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *ModifyAppRecordStatusRequest) SetClientToken(v string) *ModifyAppRecordStatusRequest {
+	s.ClientToken = &v
+	return s
+}
+
+type ModifyAppRecordStatusResponseBody struct {
+	// Id of the request
+	//
+	// example:
+	//
+	// D53303DB-AA68-5D09-90C2-A345072DCC5A
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ModifyAppRecordStatusResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyAppRecordStatusResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyAppRecordStatusResponseBody) SetRequestId(v string) *ModifyAppRecordStatusResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ModifyAppRecordStatusResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyAppRecordStatusResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ModifyAppRecordStatusResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyAppRecordStatusResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyAppRecordStatusResponse) SetHeaders(v map[string]*string) *ModifyAppRecordStatusResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyAppRecordStatusResponse) SetStatusCode(v int32) *ModifyAppRecordStatusResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ModifyAppRecordStatusResponse) SetBody(v *ModifyAppRecordStatusResponseBody) *ModifyAppRecordStatusResponse {
+	s.Body = v
+	return s
+}
+
+type ModifyAppRecordTemplateRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ac7N****
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// example:
+	//
+	// 53200b81-b761-4c10-842a-a0726d97xxxx
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// This parameter is required.
+	RecordTemplate *ModifyAppRecordTemplateRequestRecordTemplate `json:"RecordTemplate,omitempty" xml:"RecordTemplate,omitempty" type:"Struct"`
+}
+
+func (s ModifyAppRecordTemplateRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyAppRecordTemplateRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyAppRecordTemplateRequest) SetAppId(v string) *ModifyAppRecordTemplateRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *ModifyAppRecordTemplateRequest) SetClientToken(v string) *ModifyAppRecordTemplateRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *ModifyAppRecordTemplateRequest) SetRecordTemplate(v *ModifyAppRecordTemplateRequestRecordTemplate) *ModifyAppRecordTemplateRequest {
+	s.RecordTemplate = v
+	return s
+}
+
+type ModifyAppRecordTemplateRequestRecordTemplate struct {
+	// example:
+	//
+	// 180
+	DelayStopTime *int32 `json:"DelayStopTime,omitempty" xml:"DelayStopTime,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// record/{AppId}/{ChannelId}_{TaskId}/{EscapedStartTime}_{EscapedEndTime}
+	FilePrefix *string `json:"FilePrefix,omitempty" xml:"FilePrefix,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1800
+	FileSplitInterval *int32 `json:"FileSplitInterval,omitempty" xml:"FileSplitInterval,omitempty"`
+	// This parameter is required.
+	Formats []*string `json:"Formats,omitempty" xml:"Formats,omitempty" type:"Repeated"`
+	// This parameter is required.
+	LayoutIds []*string `json:"LayoutIds,omitempty" xml:"LayoutIds,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	MediaEncode *int32 `json:"MediaEncode,omitempty" xml:"MediaEncode,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 模版
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2xh6****
+	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+}
+
+func (s ModifyAppRecordTemplateRequestRecordTemplate) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyAppRecordTemplateRequestRecordTemplate) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyAppRecordTemplateRequestRecordTemplate) SetDelayStopTime(v int32) *ModifyAppRecordTemplateRequestRecordTemplate {
+	s.DelayStopTime = &v
+	return s
+}
+
+func (s *ModifyAppRecordTemplateRequestRecordTemplate) SetFilePrefix(v string) *ModifyAppRecordTemplateRequestRecordTemplate {
+	s.FilePrefix = &v
+	return s
+}
+
+func (s *ModifyAppRecordTemplateRequestRecordTemplate) SetFileSplitInterval(v int32) *ModifyAppRecordTemplateRequestRecordTemplate {
+	s.FileSplitInterval = &v
+	return s
+}
+
+func (s *ModifyAppRecordTemplateRequestRecordTemplate) SetFormats(v []*string) *ModifyAppRecordTemplateRequestRecordTemplate {
+	s.Formats = v
+	return s
+}
+
+func (s *ModifyAppRecordTemplateRequestRecordTemplate) SetLayoutIds(v []*string) *ModifyAppRecordTemplateRequestRecordTemplate {
+	s.LayoutIds = v
+	return s
+}
+
+func (s *ModifyAppRecordTemplateRequestRecordTemplate) SetMediaEncode(v int32) *ModifyAppRecordTemplateRequestRecordTemplate {
+	s.MediaEncode = &v
+	return s
+}
+
+func (s *ModifyAppRecordTemplateRequestRecordTemplate) SetName(v string) *ModifyAppRecordTemplateRequestRecordTemplate {
+	s.Name = &v
+	return s
+}
+
+func (s *ModifyAppRecordTemplateRequestRecordTemplate) SetTemplateId(v string) *ModifyAppRecordTemplateRequestRecordTemplate {
+	s.TemplateId = &v
+	return s
+}
+
+type ModifyAppRecordTemplateShrinkRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ac7N****
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// example:
+	//
+	// 53200b81-b761-4c10-842a-a0726d97xxxx
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// This parameter is required.
+	RecordTemplateShrink *string `json:"RecordTemplate,omitempty" xml:"RecordTemplate,omitempty"`
+}
+
+func (s ModifyAppRecordTemplateShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyAppRecordTemplateShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyAppRecordTemplateShrinkRequest) SetAppId(v string) *ModifyAppRecordTemplateShrinkRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *ModifyAppRecordTemplateShrinkRequest) SetClientToken(v string) *ModifyAppRecordTemplateShrinkRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *ModifyAppRecordTemplateShrinkRequest) SetRecordTemplateShrink(v string) *ModifyAppRecordTemplateShrinkRequest {
+	s.RecordTemplateShrink = &v
+	return s
+}
+
+type ModifyAppRecordTemplateResponseBody struct {
+	// Id of the request
+	//
+	// example:
+	//
+	// 16A96B9A-F203-4EC5-8E43-CB92E68F4CD8
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ModifyAppRecordTemplateResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyAppRecordTemplateResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyAppRecordTemplateResponseBody) SetRequestId(v string) *ModifyAppRecordTemplateResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ModifyAppRecordTemplateResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyAppRecordTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ModifyAppRecordTemplateResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyAppRecordTemplateResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyAppRecordTemplateResponse) SetHeaders(v map[string]*string) *ModifyAppRecordTemplateResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyAppRecordTemplateResponse) SetStatusCode(v int32) *ModifyAppRecordTemplateResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ModifyAppRecordTemplateResponse) SetBody(v *ModifyAppRecordTemplateResponseBody) *ModifyAppRecordTemplateResponse {
+	s.Body = v
+	return s
+}
+
 type ModifyAppStreamingOutTemplateRequest struct {
 	// This parameter is required.
 	//
@@ -12132,6 +14654,210 @@ func (s *ModifyAppStreamingOutTemplateResponse) SetStatusCode(v int32) *ModifyAp
 }
 
 func (s *ModifyAppStreamingOutTemplateResponse) SetBody(v *ModifyAppStreamingOutTemplateResponseBody) *ModifyAppStreamingOutTemplateResponse {
+	s.Body = v
+	return s
+}
+
+type ModifyCallbackMetaRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 223***JQb
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// This parameter is required.
+	Callback *ModifyCallbackMetaRequestCallback `json:"Callback,omitempty" xml:"Callback,omitempty" type:"Struct"`
+	OwnerId  *int64                             `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+}
+
+func (s ModifyCallbackMetaRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyCallbackMetaRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyCallbackMetaRequest) SetAppId(v string) *ModifyCallbackMetaRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *ModifyCallbackMetaRequest) SetCallback(v *ModifyCallbackMetaRequestCallback) *ModifyCallbackMetaRequest {
+	s.Callback = v
+	return s
+}
+
+func (s *ModifyCallbackMetaRequest) SetOwnerId(v int64) *ModifyCallbackMetaRequest {
+	s.OwnerId = &v
+	return s
+}
+
+type ModifyCallbackMetaRequestCallback struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// RecordEvent
+	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// https://www.aliyun.com
+	Conf     *string  `json:"Conf,omitempty" xml:"Conf,omitempty"`
+	SubEvent []*int32 `json:"SubEvent,omitempty" xml:"SubEvent,omitempty" type:"Repeated"`
+}
+
+func (s ModifyCallbackMetaRequestCallback) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyCallbackMetaRequestCallback) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyCallbackMetaRequestCallback) SetCategory(v string) *ModifyCallbackMetaRequestCallback {
+	s.Category = &v
+	return s
+}
+
+func (s *ModifyCallbackMetaRequestCallback) SetConf(v string) *ModifyCallbackMetaRequestCallback {
+	s.Conf = &v
+	return s
+}
+
+func (s *ModifyCallbackMetaRequestCallback) SetSubEvent(v []*int32) *ModifyCallbackMetaRequestCallback {
+	s.SubEvent = v
+	return s
+}
+
+type ModifyCallbackMetaShrinkRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 223***JQb
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// This parameter is required.
+	CallbackShrink *string `json:"Callback,omitempty" xml:"Callback,omitempty"`
+	OwnerId        *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+}
+
+func (s ModifyCallbackMetaShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyCallbackMetaShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyCallbackMetaShrinkRequest) SetAppId(v string) *ModifyCallbackMetaShrinkRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *ModifyCallbackMetaShrinkRequest) SetCallbackShrink(v string) *ModifyCallbackMetaShrinkRequest {
+	s.CallbackShrink = &v
+	return s
+}
+
+func (s *ModifyCallbackMetaShrinkRequest) SetOwnerId(v int64) *ModifyCallbackMetaShrinkRequest {
+	s.OwnerId = &v
+	return s
+}
+
+type ModifyCallbackMetaResponseBody struct {
+	// code
+	//
+	// example:
+	//
+	// 0
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// httpStatusCode
+	//
+	// example:
+	//
+	// 0
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// message
+	//
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// requestId
+	//
+	// example:
+	//
+	// 16A96B9A-F203-4EC5-8E43-CB92E68F4CF8
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// success
+	//
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ModifyCallbackMetaResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyCallbackMetaResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyCallbackMetaResponseBody) SetCode(v string) *ModifyCallbackMetaResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ModifyCallbackMetaResponseBody) SetHttpStatusCode(v int32) *ModifyCallbackMetaResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *ModifyCallbackMetaResponseBody) SetMessage(v string) *ModifyCallbackMetaResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ModifyCallbackMetaResponseBody) SetRequestId(v string) *ModifyCallbackMetaResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ModifyCallbackMetaResponseBody) SetSuccess(v bool) *ModifyCallbackMetaResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ModifyCallbackMetaResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyCallbackMetaResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ModifyCallbackMetaResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyCallbackMetaResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyCallbackMetaResponse) SetHeaders(v map[string]*string) *ModifyCallbackMetaResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyCallbackMetaResponse) SetStatusCode(v int32) *ModifyCallbackMetaResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ModifyCallbackMetaResponse) SetBody(v *ModifyCallbackMetaResponseBody) *ModifyCallbackMetaResponse {
 	s.Body = v
 	return s
 }
@@ -12633,6 +15359,137 @@ func (s *RemoveUsersResponse) SetStatusCode(v int32) *RemoveUsersResponse {
 }
 
 func (s *RemoveUsersResponse) SetBody(v *RemoveUsersResponseBody) *RemoveUsersResponse {
+	s.Body = v
+	return s
+}
+
+type StartCategoryCallbackRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 223***JQb
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// This parameter is required.
+	Callback *StartCategoryCallbackRequestCallback `json:"Callback,omitempty" xml:"Callback,omitempty" type:"Struct"`
+}
+
+func (s StartCategoryCallbackRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartCategoryCallbackRequest) GoString() string {
+	return s.String()
+}
+
+func (s *StartCategoryCallbackRequest) SetAppId(v string) *StartCategoryCallbackRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *StartCategoryCallbackRequest) SetCallback(v *StartCategoryCallbackRequestCallback) *StartCategoryCallbackRequest {
+	s.Callback = v
+	return s
+}
+
+type StartCategoryCallbackRequestCallback struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// RecordEvent
+	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
+}
+
+func (s StartCategoryCallbackRequestCallback) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartCategoryCallbackRequestCallback) GoString() string {
+	return s.String()
+}
+
+func (s *StartCategoryCallbackRequestCallback) SetCategory(v string) *StartCategoryCallbackRequestCallback {
+	s.Category = &v
+	return s
+}
+
+type StartCategoryCallbackShrinkRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 223***JQb
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// This parameter is required.
+	CallbackShrink *string `json:"Callback,omitempty" xml:"Callback,omitempty"`
+}
+
+func (s StartCategoryCallbackShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartCategoryCallbackShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *StartCategoryCallbackShrinkRequest) SetAppId(v string) *StartCategoryCallbackShrinkRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *StartCategoryCallbackShrinkRequest) SetCallbackShrink(v string) *StartCategoryCallbackShrinkRequest {
+	s.CallbackShrink = &v
+	return s
+}
+
+type StartCategoryCallbackResponseBody struct {
+	// Id of the request
+	//
+	// example:
+	//
+	// 16A96B9A-F203-4EC5-8E43-CB92E68F4CF8
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s StartCategoryCallbackResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartCategoryCallbackResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *StartCategoryCallbackResponseBody) SetRequestId(v string) *StartCategoryCallbackResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type StartCategoryCallbackResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *StartCategoryCallbackResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s StartCategoryCallbackResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartCategoryCallbackResponse) GoString() string {
+	return s.String()
+}
+
+func (s *StartCategoryCallbackResponse) SetHeaders(v map[string]*string) *StartCategoryCallbackResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *StartCategoryCallbackResponse) SetStatusCode(v int32) *StartCategoryCallbackResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *StartCategoryCallbackResponse) SetBody(v *StartCategoryCallbackResponseBody) *StartCategoryCallbackResponse {
 	s.Body = v
 	return s
 }
@@ -15974,6 +18831,137 @@ func (s *StartStreamingOutResponse) SetStatusCode(v int32) *StartStreamingOutRes
 }
 
 func (s *StartStreamingOutResponse) SetBody(v *StartStreamingOutResponseBody) *StartStreamingOutResponse {
+	s.Body = v
+	return s
+}
+
+type StopCategoryCallbackRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 223***JQb
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// This parameter is required.
+	Callback *StopCategoryCallbackRequestCallback `json:"Callback,omitempty" xml:"Callback,omitempty" type:"Struct"`
+}
+
+func (s StopCategoryCallbackRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopCategoryCallbackRequest) GoString() string {
+	return s.String()
+}
+
+func (s *StopCategoryCallbackRequest) SetAppId(v string) *StopCategoryCallbackRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *StopCategoryCallbackRequest) SetCallback(v *StopCategoryCallbackRequestCallback) *StopCategoryCallbackRequest {
+	s.Callback = v
+	return s
+}
+
+type StopCategoryCallbackRequestCallback struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// RecordEvent
+	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
+}
+
+func (s StopCategoryCallbackRequestCallback) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopCategoryCallbackRequestCallback) GoString() string {
+	return s.String()
+}
+
+func (s *StopCategoryCallbackRequestCallback) SetCategory(v string) *StopCategoryCallbackRequestCallback {
+	s.Category = &v
+	return s
+}
+
+type StopCategoryCallbackShrinkRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 223***JQb
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// This parameter is required.
+	CallbackShrink *string `json:"Callback,omitempty" xml:"Callback,omitempty"`
+}
+
+func (s StopCategoryCallbackShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopCategoryCallbackShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *StopCategoryCallbackShrinkRequest) SetAppId(v string) *StopCategoryCallbackShrinkRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *StopCategoryCallbackShrinkRequest) SetCallbackShrink(v string) *StopCategoryCallbackShrinkRequest {
+	s.CallbackShrink = &v
+	return s
+}
+
+type StopCategoryCallbackResponseBody struct {
+	// Id of the request
+	//
+	// example:
+	//
+	// 2DCE8D7E-BE3B-54AB-8DAC-32F34BED0763
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s StopCategoryCallbackResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopCategoryCallbackResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *StopCategoryCallbackResponseBody) SetRequestId(v string) *StopCategoryCallbackResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type StopCategoryCallbackResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *StopCategoryCallbackResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s StopCategoryCallbackResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopCategoryCallbackResponse) GoString() string {
+	return s.String()
+}
+
+func (s *StopCategoryCallbackResponse) SetHeaders(v map[string]*string) *StopCategoryCallbackResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *StopCategoryCallbackResponse) SetStatusCode(v int32) *StopCategoryCallbackResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *StopCategoryCallbackResponse) SetBody(v *StopCategoryCallbackResponseBody) *StopCategoryCallbackResponse {
 	s.Body = v
 	return s
 }
@@ -20271,6 +23259,80 @@ func (client *Client) AddRecordTemplate(request *AddRecordTemplateRequest) (_res
 
 // Summary:
 //
+// 增加应用录制模版
+//
+// @param tmpReq - CreateAppRecordTemplateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateAppRecordTemplateResponse
+func (client *Client) CreateAppRecordTemplateWithOptions(tmpReq *CreateAppRecordTemplateRequest, runtime *util.RuntimeOptions) (_result *CreateAppRecordTemplateResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &CreateAppRecordTemplateShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.RecordTemplate)) {
+		request.RecordTemplateShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.RecordTemplate, tea.String("RecordTemplate"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RecordTemplateShrink)) {
+		query["RecordTemplate"] = request.RecordTemplateShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateAppRecordTemplate"),
+		Version:     tea.String("2018-01-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateAppRecordTemplateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 增加应用录制模版
+//
+// @param request - CreateAppRecordTemplateRequest
+//
+// @return CreateAppRecordTemplateResponse
+func (client *Client) CreateAppRecordTemplate(request *CreateAppRecordTemplateRequest) (_result *CreateAppRecordTemplateResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateAppRecordTemplateResponse{}
+	_body, _err := client.CreateAppRecordTemplateWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 创建应用推流模版
 //
 // @param tmpReq - CreateAppStreamingOutTemplateRequest
@@ -20564,6 +23626,80 @@ func (client *Client) CreateMPULayout(request *CreateMPULayoutRequest) (_result 
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateMPULayoutResponse{}
 	_body, _err := client.CreateMPULayoutWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除应用录制模版
+//
+// @param tmpReq - DeleteAppRecordTemplateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteAppRecordTemplateResponse
+func (client *Client) DeleteAppRecordTemplateWithOptions(tmpReq *DeleteAppRecordTemplateRequest, runtime *util.RuntimeOptions) (_result *DeleteAppRecordTemplateResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &DeleteAppRecordTemplateShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Template)) {
+		request.TemplateShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Template, tea.String("Template"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateShrink)) {
+		query["Template"] = request.TemplateShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteAppRecordTemplate"),
+		Version:     tea.String("2018-01-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteAppRecordTemplateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除应用录制模版
+//
+// @param request - DeleteAppRecordTemplateRequest
+//
+// @return DeleteAppRecordTemplateResponse
+func (client *Client) DeleteAppRecordTemplate(request *DeleteAppRecordTemplateRequest) (_result *DeleteAppRecordTemplateResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteAppRecordTemplateResponse{}
+	_body, _err := client.DeleteAppRecordTemplateWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20943,6 +24079,173 @@ func (client *Client) DeleteRecordTemplate(request *DeleteRecordTemplateRequest)
 
 // Summary:
 //
+// 列出系统支持的事件回调
+//
+// @param request - DescribeAllCallbackRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeAllCallbackResponse
+func (client *Client) DescribeAllCallbackWithOptions(runtime *util.RuntimeOptions) (_result *DescribeAllCallbackResponse, _err error) {
+	req := &openapi.OpenApiRequest{}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeAllCallback"),
+		Version:     tea.String("2018-01-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeAllCallbackResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 列出系统支持的事件回调
+//
+// @return DescribeAllCallbackResponse
+func (client *Client) DescribeAllCallback() (_result *DescribeAllCallbackResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeAllCallbackResponse{}
+	_body, _err := client.DescribeAllCallbackWithOptions(runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查看app回调开关
+//
+// @param request - DescribeAppCallStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeAppCallStatusResponse
+func (client *Client) DescribeAppCallStatusWithOptions(request *DescribeAppCallStatusRequest, runtime *util.RuntimeOptions) (_result *DescribeAppCallStatusResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeAppCallStatus"),
+		Version:     tea.String("2018-01-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeAppCallStatusResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查看app回调开关
+//
+// @param request - DescribeAppCallStatusRequest
+//
+// @return DescribeAppCallStatusResponse
+func (client *Client) DescribeAppCallStatus(request *DescribeAppCallStatusRequest) (_result *DescribeAppCallStatusResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeAppCallStatusResponse{}
+	_body, _err := client.DescribeAppCallStatusWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取app回调密钥
+//
+// @param request - DescribeAppCallbackSecretKeyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeAppCallbackSecretKeyResponse
+func (client *Client) DescribeAppCallbackSecretKeyWithOptions(request *DescribeAppCallbackSecretKeyRequest, runtime *util.RuntimeOptions) (_result *DescribeAppCallbackSecretKeyResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeAppCallbackSecretKey"),
+		Version:     tea.String("2018-01-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeAppCallbackSecretKeyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取app回调密钥
+//
+// @param request - DescribeAppCallbackSecretKeyRequest
+//
+// @return DescribeAppCallbackSecretKeyResponse
+func (client *Client) DescribeAppCallbackSecretKey(request *DescribeAppCallbackSecretKeyRequest) (_result *DescribeAppCallbackSecretKeyResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeAppCallbackSecretKeyResponse{}
+	_body, _err := client.DescribeAppCallbackSecretKeyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 查看AppKey
 //
 // @param request - DescribeAppKeyRequest
@@ -20998,6 +24301,242 @@ func (client *Client) DescribeAppKey(request *DescribeAppKeyRequest) (_result *D
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeAppKeyResponse{}
 	_body, _err := client.DescribeAppKeyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询app自定义布局
+//
+// @param tmpReq - DescribeAppLayoutsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeAppLayoutsResponse
+func (client *Client) DescribeAppLayoutsWithOptions(tmpReq *DescribeAppLayoutsRequest, runtime *util.RuntimeOptions) (_result *DescribeAppLayoutsResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &DescribeAppLayoutsShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Condition)) {
+		request.ConditionShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Condition, tea.String("Condition"), tea.String("json"))
+	}
+
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeAppLayouts"),
+		Version:     tea.String("2018-01-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeAppLayoutsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询app自定义布局
+//
+// @param request - DescribeAppLayoutsRequest
+//
+// @return DescribeAppLayoutsResponse
+func (client *Client) DescribeAppLayouts(request *DescribeAppLayoutsRequest) (_result *DescribeAppLayoutsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeAppLayoutsResponse{}
+	_body, _err := client.DescribeAppLayoutsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查看应用旁路开关
+//
+// @param request - DescribeAppLiveStreamStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeAppLiveStreamStatusResponse
+func (client *Client) DescribeAppLiveStreamStatusWithOptions(request *DescribeAppLiveStreamStatusRequest, runtime *util.RuntimeOptions) (_result *DescribeAppLiveStreamStatusResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeAppLiveStreamStatus"),
+		Version:     tea.String("2018-01-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeAppLiveStreamStatusResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查看应用旁路开关
+//
+// @param request - DescribeAppLiveStreamStatusRequest
+//
+// @return DescribeAppLiveStreamStatusResponse
+func (client *Client) DescribeAppLiveStreamStatus(request *DescribeAppLiveStreamStatusRequest) (_result *DescribeAppLiveStreamStatusResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeAppLiveStreamStatusResponse{}
+	_body, _err := client.DescribeAppLiveStreamStatusWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询应用录制开关
+//
+// @param request - DescribeAppRecordStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeAppRecordStatusResponse
+func (client *Client) DescribeAppRecordStatusWithOptions(request *DescribeAppRecordStatusRequest, runtime *util.RuntimeOptions) (_result *DescribeAppRecordStatusResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeAppRecordStatus"),
+		Version:     tea.String("2018-01-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeAppRecordStatusResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询应用录制开关
+//
+// @param request - DescribeAppRecordStatusRequest
+//
+// @return DescribeAppRecordStatusResponse
+func (client *Client) DescribeAppRecordStatus(request *DescribeAppRecordStatusRequest) (_result *DescribeAppRecordStatusResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeAppRecordStatusResponse{}
+	_body, _err := client.DescribeAppRecordStatusWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 应用录制模版列表
+//
+// @param tmpReq - DescribeAppRecordTemplatesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeAppRecordTemplatesResponse
+func (client *Client) DescribeAppRecordTemplatesWithOptions(tmpReq *DescribeAppRecordTemplatesRequest, runtime *util.RuntimeOptions) (_result *DescribeAppRecordTemplatesResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &DescribeAppRecordTemplatesShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Condition)) {
+		request.ConditionShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Condition, tea.String("Condition"), tea.String("json"))
+	}
+
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeAppRecordTemplates"),
+		Version:     tea.String("2018-01-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeAppRecordTemplatesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 应用录制模版列表
+//
+// @param request - DescribeAppRecordTemplatesRequest
+//
+// @return DescribeAppRecordTemplatesResponse
+func (client *Client) DescribeAppRecordTemplates(request *DescribeAppRecordTemplatesRequest) (_result *DescribeAppRecordTemplatesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeAppRecordTemplatesResponse{}
+	_body, _err := client.DescribeAppRecordTemplatesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -21454,6 +24993,66 @@ func (client *Client) DescribeCallList(request *DescribeCallListRequest) (_resul
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeCallListResponse{}
 	_body, _err := client.DescribeCallListWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// app事件回调列表
+//
+// @param request - DescribeCallbacksRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeCallbacksResponse
+func (client *Client) DescribeCallbacksWithOptions(request *DescribeCallbacksRequest, runtime *util.RuntimeOptions) (_result *DescribeCallbacksResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeCallbacks"),
+		Version:     tea.String("2018-01-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeCallbacksResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// app事件回调列表
+//
+// @param request - DescribeCallbacksRequest
+//
+// @return DescribeCallbacksResponse
+func (client *Client) DescribeCallbacks(request *DescribeCallbacksRequest) (_result *DescribeCallbacksResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeCallbacksResponse{}
+	_body, _err := client.DescribeCallbacksWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -22150,6 +25749,62 @@ func (client *Client) DescribeChannelUsers(request *DescribeChannelUsersRequest)
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeChannelUsersResponse{}
 	_body, _err := client.DescribeChannelUsersWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询在线频道列表
+//
+// @param request - DescribeChannelsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeChannelsResponse
+func (client *Client) DescribeChannelsWithOptions(request *DescribeChannelsRequest, runtime *util.RuntimeOptions) (_result *DescribeChannelsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeChannels"),
+		Version:     tea.String("2018-01-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeChannelsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询在线频道列表
+//
+// @param request - DescribeChannelsRequest
+//
+// @return DescribeChannelsResponse
+func (client *Client) DescribeChannels(request *DescribeChannelsRequest) (_result *DescribeChannelsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeChannelsResponse{}
+	_body, _err := client.DescribeChannelsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -23651,6 +27306,142 @@ func (client *Client) DescribeRtcUserCntData(request *DescribeRtcUserCntDataRequ
 
 // Summary:
 //
+// 查询旁路推流状态
+//
+// @param request - DescribeStreamingOutStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeStreamingOutStatusResponse
+func (client *Client) DescribeStreamingOutStatusWithOptions(request *DescribeStreamingOutStatusRequest, runtime *util.RuntimeOptions) (_result *DescribeStreamingOutStatusResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ChannelId)) {
+		query["ChannelId"] = request.ChannelId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskId)) {
+		query["TaskId"] = request.TaskId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeStreamingOutStatus"),
+		Version:     tea.String("2018-01-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeStreamingOutStatusResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询旁路推流状态
+//
+// @param request - DescribeStreamingOutStatusRequest
+//
+// @return DescribeStreamingOutStatusResponse
+func (client *Client) DescribeStreamingOutStatus(request *DescribeStreamingOutStatusRequest) (_result *DescribeStreamingOutStatusResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeStreamingOutStatusResponse{}
+	_body, _err := client.DescribeStreamingOutStatusWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 系统内置布局
+//
+// @param request - DescribeSystemLayoutListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeSystemLayoutListResponse
+func (client *Client) DescribeSystemLayoutListWithOptions(request *DescribeSystemLayoutListRequest, runtime *util.RuntimeOptions) (_result *DescribeSystemLayoutListResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNum)) {
+		query["PageNum"] = request.PageNum
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeSystemLayoutList"),
+		Version:     tea.String("2018-01-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeSystemLayoutListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 系统内置布局
+//
+// @param request - DescribeSystemLayoutListRequest
+//
+// @return DescribeSystemLayoutListResponse
+func (client *Client) DescribeSystemLayoutList(request *DescribeSystemLayoutListRequest) (_result *DescribeSystemLayoutListResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeSystemLayoutListResponse{}
+	_body, _err := client.DescribeSystemLayoutListWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 获取用量统计地域分布数据
 //
 // @param request - DescribeUsageAreaDistributionStatDataRequest
@@ -24247,6 +28038,268 @@ func (client *Client) ModifyApp(request *ModifyAppRequest) (_result *ModifyAppRe
 
 // Summary:
 //
+// 更新app回调事件开关
+//
+// @param request - ModifyAppCallbackStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyAppCallbackStatusResponse
+func (client *Client) ModifyAppCallbackStatusWithOptions(request *ModifyAppCallbackStatusRequest, runtime *util.RuntimeOptions) (_result *ModifyAppCallbackStatusResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyAppCallbackStatus"),
+		Version:     tea.String("2018-01-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ModifyAppCallbackStatusResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新app回调事件开关
+//
+// @param request - ModifyAppCallbackStatusRequest
+//
+// @return ModifyAppCallbackStatusResponse
+func (client *Client) ModifyAppCallbackStatus(request *ModifyAppCallbackStatusRequest) (_result *ModifyAppCallbackStatusResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyAppCallbackStatusResponse{}
+	_body, _err := client.ModifyAppCallbackStatusWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改应用旁路开关
+//
+// @param request - ModifyAppLiveStreamStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyAppLiveStreamStatusResponse
+func (client *Client) ModifyAppLiveStreamStatusWithOptions(request *ModifyAppLiveStreamStatusRequest, runtime *util.RuntimeOptions) (_result *ModifyAppLiveStreamStatusResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyAppLiveStreamStatus"),
+		Version:     tea.String("2018-01-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ModifyAppLiveStreamStatusResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改应用旁路开关
+//
+// @param request - ModifyAppLiveStreamStatusRequest
+//
+// @return ModifyAppLiveStreamStatusResponse
+func (client *Client) ModifyAppLiveStreamStatus(request *ModifyAppLiveStreamStatusRequest) (_result *ModifyAppLiveStreamStatusResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyAppLiveStreamStatusResponse{}
+	_body, _err := client.ModifyAppLiveStreamStatusWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改应用录制开关
+//
+// @param request - ModifyAppRecordStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyAppRecordStatusResponse
+func (client *Client) ModifyAppRecordStatusWithOptions(request *ModifyAppRecordStatusRequest, runtime *util.RuntimeOptions) (_result *ModifyAppRecordStatusResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyAppRecordStatus"),
+		Version:     tea.String("2018-01-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ModifyAppRecordStatusResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改应用录制开关
+//
+// @param request - ModifyAppRecordStatusRequest
+//
+// @return ModifyAppRecordStatusResponse
+func (client *Client) ModifyAppRecordStatus(request *ModifyAppRecordStatusRequest) (_result *ModifyAppRecordStatusResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyAppRecordStatusResponse{}
+	_body, _err := client.ModifyAppRecordStatusWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改应用录制模版
+//
+// @param tmpReq - ModifyAppRecordTemplateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyAppRecordTemplateResponse
+func (client *Client) ModifyAppRecordTemplateWithOptions(tmpReq *ModifyAppRecordTemplateRequest, runtime *util.RuntimeOptions) (_result *ModifyAppRecordTemplateResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &ModifyAppRecordTemplateShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.RecordTemplate)) {
+		request.RecordTemplateShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.RecordTemplate, tea.String("RecordTemplate"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RecordTemplateShrink)) {
+		query["RecordTemplate"] = request.RecordTemplateShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyAppRecordTemplate"),
+		Version:     tea.String("2018-01-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ModifyAppRecordTemplateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改应用录制模版
+//
+// @param request - ModifyAppRecordTemplateRequest
+//
+// @return ModifyAppRecordTemplateResponse
+func (client *Client) ModifyAppRecordTemplate(request *ModifyAppRecordTemplateRequest) (_result *ModifyAppRecordTemplateResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyAppRecordTemplateResponse{}
+	_body, _err := client.ModifyAppRecordTemplateWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 更新应用推流模版
 //
 // @param tmpReq - ModifyAppStreamingOutTemplateRequest
@@ -24308,6 +28361,80 @@ func (client *Client) ModifyAppStreamingOutTemplate(request *ModifyAppStreamingO
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyAppStreamingOutTemplateResponse{}
 	_body, _err := client.ModifyAppStreamingOutTemplateWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新app回调
+//
+// @param tmpReq - ModifyCallbackMetaRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyCallbackMetaResponse
+func (client *Client) ModifyCallbackMetaWithOptions(tmpReq *ModifyCallbackMetaRequest, runtime *util.RuntimeOptions) (_result *ModifyCallbackMetaResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &ModifyCallbackMetaShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Callback)) {
+		request.CallbackShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Callback, tea.String("Callback"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CallbackShrink)) {
+		query["Callback"] = request.CallbackShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyCallbackMeta"),
+		Version:     tea.String("2018-01-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ModifyCallbackMetaResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新app回调
+//
+// @param request - ModifyCallbackMetaRequest
+//
+// @return ModifyCallbackMetaResponse
+func (client *Client) ModifyCallbackMeta(request *ModifyCallbackMetaRequest) (_result *ModifyCallbackMetaResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyCallbackMetaResponse{}
+	_body, _err := client.ModifyCallbackMetaWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -24512,6 +28639,76 @@ func (client *Client) RemoveUsers(request *RemoveUsersRequest) (_result *RemoveU
 	runtime := &util.RuntimeOptions{}
 	_result = &RemoveUsersResponse{}
 	_body, _err := client.RemoveUsersWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 开启某个事件回调
+//
+// @param tmpReq - StartCategoryCallbackRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return StartCategoryCallbackResponse
+func (client *Client) StartCategoryCallbackWithOptions(tmpReq *StartCategoryCallbackRequest, runtime *util.RuntimeOptions) (_result *StartCategoryCallbackResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &StartCategoryCallbackShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Callback)) {
+		request.CallbackShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Callback, tea.String("Callback"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CallbackShrink)) {
+		query["Callback"] = request.CallbackShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("StartCategoryCallback"),
+		Version:     tea.String("2018-01-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &StartCategoryCallbackResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 开启某个事件回调
+//
+// @param request - StartCategoryCallbackRequest
+//
+// @return StartCategoryCallbackResponse
+func (client *Client) StartCategoryCallback(request *StartCategoryCallbackRequest) (_result *StartCategoryCallbackResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &StartCategoryCallbackResponse{}
+	_body, _err := client.StartCategoryCallbackWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -25005,6 +29202,76 @@ func (client *Client) StartStreamingOut(request *StartStreamingOutRequest) (_res
 	runtime := &util.RuntimeOptions{}
 	_result = &StartStreamingOutResponse{}
 	_body, _err := client.StartStreamingOutWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 关闭某个事件回调
+//
+// @param tmpReq - StopCategoryCallbackRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return StopCategoryCallbackResponse
+func (client *Client) StopCategoryCallbackWithOptions(tmpReq *StopCategoryCallbackRequest, runtime *util.RuntimeOptions) (_result *StopCategoryCallbackResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &StopCategoryCallbackShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Callback)) {
+		request.CallbackShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Callback, tea.String("Callback"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CallbackShrink)) {
+		query["Callback"] = request.CallbackShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("StopCategoryCallback"),
+		Version:     tea.String("2018-01-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &StopCategoryCallbackResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 关闭某个事件回调
+//
+// @param request - StopCategoryCallbackRequest
+//
+// @return StopCategoryCallbackResponse
+func (client *Client) StopCategoryCallback(request *StopCategoryCallbackRequest) (_result *StopCategoryCallbackResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &StopCategoryCallbackResponse{}
+	_body, _err := client.StopCategoryCallbackWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
