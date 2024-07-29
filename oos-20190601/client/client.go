@@ -12259,6 +12259,231 @@ func (s *ListGitRepositoriesResponse) SetBody(v *ListGitRepositoriesResponseBody
 	return s
 }
 
+type ListInstancePackageStatesRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// i-bp1cpoxxxwxxxxxxxxxx
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// 50
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// example:
+	//
+	// MTRBMDc0NjAtRUJFNy00N0NBLTk3NTctzxxxxxxx
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// ["template1","template2"]
+	TemplateNames *string `json:"TemplateNames,omitempty" xml:"TemplateNames,omitempty"`
+}
+
+func (s ListInstancePackageStatesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListInstancePackageStatesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListInstancePackageStatesRequest) SetInstanceId(v string) *ListInstancePackageStatesRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ListInstancePackageStatesRequest) SetMaxResults(v int32) *ListInstancePackageStatesRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListInstancePackageStatesRequest) SetNextToken(v string) *ListInstancePackageStatesRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListInstancePackageStatesRequest) SetRegionId(v string) *ListInstancePackageStatesRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ListInstancePackageStatesRequest) SetTemplateNames(v string) *ListInstancePackageStatesRequest {
+	s.TemplateNames = &v
+	return s
+}
+
+type ListInstancePackageStatesResponseBody struct {
+	// example:
+	//
+	// 50
+	MaxResults *string `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// example:
+	//
+	// MTRBMDc0NjAtRUJFNy00N0NBLTk3NTctzxxxxxxx
+	NextToken     *string                                               `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	PackageStates []*ListInstancePackageStatesResponseBodyPackageStates `json:"PackageStates,omitempty" xml:"PackageStates,omitempty" type:"Repeated"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 1306108F-610C-40FD-AAD5-XXXXXX
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListInstancePackageStatesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListInstancePackageStatesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListInstancePackageStatesResponseBody) SetMaxResults(v string) *ListInstancePackageStatesResponseBody {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListInstancePackageStatesResponseBody) SetNextToken(v string) *ListInstancePackageStatesResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListInstancePackageStatesResponseBody) SetPackageStates(v []*ListInstancePackageStatesResponseBodyPackageStates) *ListInstancePackageStatesResponseBody {
+	s.PackageStates = v
+	return s
+}
+
+func (s *ListInstancePackageStatesResponseBody) SetRequestId(v string) *ListInstancePackageStatesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListInstancePackageStatesResponseBodyPackageStates struct {
+	// example:
+	//
+	// template description
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// {}
+	Parameters *string `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
+	// example:
+	//
+	// Alibaba Cloud
+	Publisher *string `json:"Publisher,omitempty" xml:"Publisher,omitempty"`
+	// example:
+	//
+	// Package
+	TemplateCategory *string `json:"TemplateCategory,omitempty" xml:"TemplateCategory,omitempty"`
+	// example:
+	//
+	// 087b1e11072a40259f6fxxxxxxxxx
+	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// example:
+	//
+	// ACS-ECS-Docker
+	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+	// example:
+	//
+	// v3
+	TemplateVersion *string `json:"TemplateVersion,omitempty" xml:"TemplateVersion,omitempty"`
+	// example:
+	//
+	// fix bug
+	TemplateVersionName *string `json:"TemplateVersionName,omitempty" xml:"TemplateVersionName,omitempty"`
+	// example:
+	//
+	// 2024-05-04T11:17:28
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+}
+
+func (s ListInstancePackageStatesResponseBodyPackageStates) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListInstancePackageStatesResponseBodyPackageStates) GoString() string {
+	return s.String()
+}
+
+func (s *ListInstancePackageStatesResponseBodyPackageStates) SetDescription(v string) *ListInstancePackageStatesResponseBodyPackageStates {
+	s.Description = &v
+	return s
+}
+
+func (s *ListInstancePackageStatesResponseBodyPackageStates) SetParameters(v string) *ListInstancePackageStatesResponseBodyPackageStates {
+	s.Parameters = &v
+	return s
+}
+
+func (s *ListInstancePackageStatesResponseBodyPackageStates) SetPublisher(v string) *ListInstancePackageStatesResponseBodyPackageStates {
+	s.Publisher = &v
+	return s
+}
+
+func (s *ListInstancePackageStatesResponseBodyPackageStates) SetTemplateCategory(v string) *ListInstancePackageStatesResponseBodyPackageStates {
+	s.TemplateCategory = &v
+	return s
+}
+
+func (s *ListInstancePackageStatesResponseBodyPackageStates) SetTemplateId(v string) *ListInstancePackageStatesResponseBodyPackageStates {
+	s.TemplateId = &v
+	return s
+}
+
+func (s *ListInstancePackageStatesResponseBodyPackageStates) SetTemplateName(v string) *ListInstancePackageStatesResponseBodyPackageStates {
+	s.TemplateName = &v
+	return s
+}
+
+func (s *ListInstancePackageStatesResponseBodyPackageStates) SetTemplateVersion(v string) *ListInstancePackageStatesResponseBodyPackageStates {
+	s.TemplateVersion = &v
+	return s
+}
+
+func (s *ListInstancePackageStatesResponseBodyPackageStates) SetTemplateVersionName(v string) *ListInstancePackageStatesResponseBodyPackageStates {
+	s.TemplateVersionName = &v
+	return s
+}
+
+func (s *ListInstancePackageStatesResponseBodyPackageStates) SetUpdateTime(v string) *ListInstancePackageStatesResponseBodyPackageStates {
+	s.UpdateTime = &v
+	return s
+}
+
+type ListInstancePackageStatesResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListInstancePackageStatesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListInstancePackageStatesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListInstancePackageStatesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListInstancePackageStatesResponse) SetHeaders(v map[string]*string) *ListInstancePackageStatesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListInstancePackageStatesResponse) SetStatusCode(v int32) *ListInstancePackageStatesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListInstancePackageStatesResponse) SetBody(v *ListInstancePackageStatesResponseBody) *ListInstancePackageStatesResponse {
+	s.Body = v
+	return s
+}
+
 type ListInstancePatchStatesRequest struct {
 	// The ID of the Elastic Compute Service (ECS) instance. The value can be a JSON array that consists of up to 100 instance IDs. Separate the instance IDs with commas (,).
 	//
@@ -17658,14 +17883,19 @@ type ListTemplatesRequest struct {
 	//
 	// true
 	HasTrigger *bool `json:"HasTrigger,omitempty" xml:"HasTrigger,omitempty"`
-	IsExample  *bool `json:"IsExample,omitempty" xml:"IsExample,omitempty"`
-	// The template is favorite or not.
+	// Specifies whether the template is an example template
+	//
+	// example:
+	//
+	// false
+	IsExample *bool `json:"IsExample,omitempty" xml:"IsExample,omitempty"`
+	// Specifies whether the template is added to favorites.
 	//
 	// example:
 	//
 	// true
 	IsFavorite *bool `json:"IsFavorite,omitempty" xml:"IsFavorite,omitempty"`
-	// The number of entries to return on each page. Valid values: 10 to 100. Default value: 50.
+	// The number of entries per page. Valid values: 10 to 100. Default value: 50.
 	//
 	// example:
 	//
@@ -17898,14 +18128,19 @@ type ListTemplatesShrinkRequest struct {
 	//
 	// true
 	HasTrigger *bool `json:"HasTrigger,omitempty" xml:"HasTrigger,omitempty"`
-	IsExample  *bool `json:"IsExample,omitempty" xml:"IsExample,omitempty"`
-	// The template is favorite or not.
+	// Specifies whether the template is an example template
+	//
+	// example:
+	//
+	// false
+	IsExample *bool `json:"IsExample,omitempty" xml:"IsExample,omitempty"`
+	// Specifies whether the template is added to favorites.
 	//
 	// example:
 	//
 	// true
 	IsFavorite *bool `json:"IsFavorite,omitempty" xml:"IsFavorite,omitempty"`
-	// The number of entries to return on each page. Valid values: 10 to 100. Default value: 50.
+	// The number of entries per page. Valid values: 10 to 100. Default value: 50.
 	//
 	// example:
 	//
@@ -18157,7 +18392,7 @@ type ListTemplatesResponseBodyTemplates struct {
 	//
 	// TimerTrigger
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	// The constraints of template
+	// The template constraints.
 	//
 	// example:
 	//
@@ -18179,7 +18414,7 @@ type ListTemplatesResponseBodyTemplates struct {
 	//
 	// root(1309200)
 	CreatedBy *string `json:"CreatedBy,omitempty" xml:"CreatedBy,omitempty"`
-	// The time when the template was created.
+	// The creation time of the template.
 	//
 	// example:
 	//
@@ -18197,13 +18432,13 @@ type ListTemplatesResponseBodyTemplates struct {
 	//
 	// true
 	HasTrigger *bool `json:"HasTrigger,omitempty" xml:"HasTrigger,omitempty"`
-	// The SHA-256 value of the template content.
+	// The SHA256 value of the template content.
 	//
 	// example:
 	//
 	// 4bc7d7a21b3e003434b9c223f6e6d2578b5ebfeb5be28c1fcf8a8a1b11907bb4
 	Hash *string `json:"Hash,omitempty" xml:"Hash,omitempty"`
-	// The template is favorite or not.
+	// Indicates whether the template is added to favorites.
 	//
 	// example:
 	//
@@ -18211,19 +18446,19 @@ type ListTemplatesResponseBodyTemplates struct {
 	IsFavorite *bool `json:"IsFavorite,omitempty" xml:"IsFavorite,omitempty"`
 	// The popularity of the public template. Valid values: **1-10**. A greater value indicates higher popularity. If **ShareType*	- is set to **Private**, the value of this parameter is `-1`.
 	//
-	// >  This parameter is valid only if the value of **ShareType*	- is set to **Public**.
+	// >  This parameter is valid only if **ShareType*	- is set to **Public**.
 	//
 	// example:
 	//
 	// 8
 	Popularity *int32 `json:"Popularity,omitempty" xml:"Popularity,omitempty"`
-	// The publisher of template.
+	// The user who published the template.
 	//
 	// example:
 	//
 	// aliyun
 	Publisher *string `json:"Publisher,omitempty" xml:"Publisher,omitempty"`
-	// The resource group ID.
+	// The ID of the resource group.
 	//
 	// example:
 	//
@@ -18245,7 +18480,7 @@ type ListTemplatesResponseBodyTemplates struct {
 	//
 	// {"k1":"v1","k2":"v2"}
 	Tags map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	// The template format. The system automatically determines whether the format is JSON or YAML.
+	// The template format. The system automatically determines whether the format of the template is JSON or YAML.
 	//
 	// example:
 	//
@@ -18269,7 +18504,7 @@ type ListTemplatesResponseBodyTemplates struct {
 	//
 	// private
 	TemplateType *string `json:"TemplateType,omitempty" xml:"TemplateType,omitempty"`
-	// The template version. The name of the version consists of the letter v and a number. The number starts from 1.
+	// The template version. The version contains the letter v and a number. The number starts from 1.
 	//
 	// example:
 	//
@@ -18277,7 +18512,7 @@ type ListTemplatesResponseBodyTemplates struct {
 	TemplateVersion *string `json:"TemplateVersion,omitempty" xml:"TemplateVersion,omitempty"`
 	// The number of times for which the private template is executed. If **ShareType*	- is set to **Public**, the value of this parameter is `-1`.
 	//
-	// >  This parameter is valid only if the value of **ShareType*	- is **Private**.
+	// >  This parameter is valid only if **ShareType*	- is set to **Private**.
 	//
 	// example:
 	//
@@ -21266,6 +21501,199 @@ func (s *UpdateExecutionResponse) SetStatusCode(v int32) *UpdateExecutionRespons
 }
 
 func (s *UpdateExecutionResponse) SetBody(v *UpdateExecutionResponseBody) *UpdateExecutionResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateInstancePackageStateRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// install
+	ConfigureAction *string `json:"ConfigureAction,omitempty" xml:"ConfigureAction,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// i-bp1jaxa2bs4bps7*****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// {"username": "xx"}
+	Parameters map[string]interface{} `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ACS-ECS-InventoryDataCollection
+	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+	// example:
+	//
+	// v1
+	TemplateVersion *string `json:"TemplateVersion,omitempty" xml:"TemplateVersion,omitempty"`
+}
+
+func (s UpdateInstancePackageStateRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateInstancePackageStateRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateInstancePackageStateRequest) SetConfigureAction(v string) *UpdateInstancePackageStateRequest {
+	s.ConfigureAction = &v
+	return s
+}
+
+func (s *UpdateInstancePackageStateRequest) SetInstanceId(v string) *UpdateInstancePackageStateRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *UpdateInstancePackageStateRequest) SetParameters(v map[string]interface{}) *UpdateInstancePackageStateRequest {
+	s.Parameters = v
+	return s
+}
+
+func (s *UpdateInstancePackageStateRequest) SetRegionId(v string) *UpdateInstancePackageStateRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *UpdateInstancePackageStateRequest) SetTemplateName(v string) *UpdateInstancePackageStateRequest {
+	s.TemplateName = &v
+	return s
+}
+
+func (s *UpdateInstancePackageStateRequest) SetTemplateVersion(v string) *UpdateInstancePackageStateRequest {
+	s.TemplateVersion = &v
+	return s
+}
+
+type UpdateInstancePackageStateShrinkRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// install
+	ConfigureAction *string `json:"ConfigureAction,omitempty" xml:"ConfigureAction,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// i-bp1jaxa2bs4bps7*****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// {"username": "xx"}
+	ParametersShrink *string `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ACS-ECS-InventoryDataCollection
+	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+	// example:
+	//
+	// v1
+	TemplateVersion *string `json:"TemplateVersion,omitempty" xml:"TemplateVersion,omitempty"`
+}
+
+func (s UpdateInstancePackageStateShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateInstancePackageStateShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateInstancePackageStateShrinkRequest) SetConfigureAction(v string) *UpdateInstancePackageStateShrinkRequest {
+	s.ConfigureAction = &v
+	return s
+}
+
+func (s *UpdateInstancePackageStateShrinkRequest) SetInstanceId(v string) *UpdateInstancePackageStateShrinkRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *UpdateInstancePackageStateShrinkRequest) SetParametersShrink(v string) *UpdateInstancePackageStateShrinkRequest {
+	s.ParametersShrink = &v
+	return s
+}
+
+func (s *UpdateInstancePackageStateShrinkRequest) SetRegionId(v string) *UpdateInstancePackageStateShrinkRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *UpdateInstancePackageStateShrinkRequest) SetTemplateName(v string) *UpdateInstancePackageStateShrinkRequest {
+	s.TemplateName = &v
+	return s
+}
+
+func (s *UpdateInstancePackageStateShrinkRequest) SetTemplateVersion(v string) *UpdateInstancePackageStateShrinkRequest {
+	s.TemplateVersion = &v
+	return s
+}
+
+type UpdateInstancePackageStateResponseBody struct {
+	// Id of the request
+	//
+	// example:
+	//
+	// 2597E94B-5346-42D1-BB58-XXXXXXXXXXX
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateInstancePackageStateResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateInstancePackageStateResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateInstancePackageStateResponseBody) SetRequestId(v string) *UpdateInstancePackageStateResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateInstancePackageStateResponse struct {
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateInstancePackageStateResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateInstancePackageStateResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateInstancePackageStateResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateInstancePackageStateResponse) SetHeaders(v map[string]*string) *UpdateInstancePackageStateResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateInstancePackageStateResponse) SetStatusCode(v int32) *UpdateInstancePackageStateResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateInstancePackageStateResponse) SetBody(v *UpdateInstancePackageStateResponseBody) *UpdateInstancePackageStateResponse {
 	s.Body = v
 	return s
 }
@@ -27802,6 +28230,82 @@ func (client *Client) ListGitRepositories(request *ListGitRepositoriesRequest) (
 
 // Summary:
 //
+// 列出实例软件包状态
+//
+// @param request - ListInstancePackageStatesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListInstancePackageStatesResponse
+func (client *Client) ListInstancePackageStatesWithOptions(request *ListInstancePackageStatesRequest, runtime *util.RuntimeOptions) (_result *ListInstancePackageStatesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateNames)) {
+		query["TemplateNames"] = request.TemplateNames
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListInstancePackageStates"),
+		Version:     tea.String("2019-06-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListInstancePackageStatesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 列出实例软件包状态
+//
+// @param request - ListInstancePackageStatesRequest
+//
+// @return ListInstancePackageStatesResponse
+func (client *Client) ListInstancePackageStates(request *ListInstancePackageStatesRequest) (_result *ListInstancePackageStatesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListInstancePackageStatesResponse{}
+	_body, _err := client.ListInstancePackageStatesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the information about the patches of an instance.
 //
 // @param request - ListInstancePatchStatesRequest
@@ -30279,6 +30783,92 @@ func (client *Client) UpdateExecution(request *UpdateExecutionRequest) (_result 
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateExecutionResponse{}
 	_body, _err := client.UpdateExecutionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新实例软件包状态
+//
+// @param tmpReq - UpdateInstancePackageStateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateInstancePackageStateResponse
+func (client *Client) UpdateInstancePackageStateWithOptions(tmpReq *UpdateInstancePackageStateRequest, runtime *util.RuntimeOptions) (_result *UpdateInstancePackageStateResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &UpdateInstancePackageStateShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Parameters)) {
+		request.ParametersShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Parameters, tea.String("Parameters"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ConfigureAction)) {
+		query["ConfigureAction"] = request.ConfigureAction
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ParametersShrink)) {
+		query["Parameters"] = request.ParametersShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateName)) {
+		query["TemplateName"] = request.TemplateName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateVersion)) {
+		query["TemplateVersion"] = request.TemplateVersion
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateInstancePackageState"),
+		Version:     tea.String("2019-06-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateInstancePackageStateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新实例软件包状态
+//
+// @param request - UpdateInstancePackageStateRequest
+//
+// @return UpdateInstancePackageStateResponse
+func (client *Client) UpdateInstancePackageState(request *UpdateInstancePackageStateRequest) (_result *UpdateInstancePackageStateResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateInstancePackageStateResponse{}
+	_body, _err := client.UpdateInstancePackageStateWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
