@@ -1,7 +1,4 @@
 // This file is auto-generated, don't edit it. Thanks.
-/**
- *
- */
 package client
 
 import (
@@ -13,6 +10,9 @@ import (
 )
 
 type AppFailBackRequest struct {
+	// example:
+	//
+	// 61ZW1DY5Y3FSAOO2
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
 }
 
@@ -30,9 +30,21 @@ func (s *AppFailBackRequest) SetApplicationId(v string) *AppFailBackRequest {
 }
 
 type AppFailBackResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *int32  `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// 3309
+	Data *int32 `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// OKITHEVRQCN6ULQG
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 7036DDBE-0ABA-52D7-A39D-75E511970F07
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -94,8 +106,14 @@ func (s *AppFailBackResponse) SetBody(v *AppFailBackResponseBody) *AppFailBackRe
 }
 
 type AppFailOverRequest struct {
+	// example:
+	//
+	// BE68D71ZY5YYIU9R
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	FailZone      *string `json:"FailZone,omitempty" xml:"FailZone,omitempty"`
+	// example:
+	//
+	// cn-hangzhou-g
+	FailZone *string `json:"FailZone,omitempty" xml:"FailZone,omitempty"`
 }
 
 func (s AppFailOverRequest) String() string {
@@ -117,9 +135,18 @@ func (s *AppFailOverRequest) SetFailZone(v string) *AppFailOverRequest {
 }
 
 type AppFailOverResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *int32  `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// 7441
+	Data    *int32  `json:"Data,omitempty" xml:"Data,omitempty"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 9656C816-1E9A-58D2-86D5-710678D61AF1
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -182,10 +209,28 @@ func (s *AppFailOverResponse) SetBody(v *AppFailOverResponseBody) *AppFailOverRe
 
 type ChangeResourceGroupRequest struct {
 	// The ID of the new resource group.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// rg-aek2ajbjoloa23q
 	NewResourceGroupId *string `json:"NewResourceGroupId,omitempty" xml:"NewResourceGroupId,omitempty"`
 	// The ID of the resource.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// P7RMVSVM9LOVYQOM
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 	// The type of the resource for which you want to change the resource group. Valid values: APPLICATION and TEMPLATE.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// APPLICATION
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 }
 
@@ -214,12 +259,28 @@ func (s *ChangeResourceGroupRequest) SetResourceType(v string) *ChangeResourceGr
 
 type ChangeResourceGroupResponseBody struct {
 	// The HTTP status code. A value of 200 indicates that the request is successful. Other values indicate that the request failed.
+	//
+	// example:
+	//
+	// 200
 	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// No business data is returned for this parameter.
+	//
+	// example:
+	//
 	// No business data is returned for this parameter.
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
 	// The error message returned if the request failed.
+	//
+	// example:
+	//
+	// Success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// A3488F1D-C444-17D0-BA4F-5374BA0F3562
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -282,23 +343,56 @@ func (s *ChangeResourceGroupResponse) SetBody(v *ChangeResourceGroupResponseBody
 
 type CreateApplicationRequest struct {
 	// The ID of the region.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	AreaId *string `json:"AreaId,omitempty" xml:"AreaId,omitempty"`
 	// The client token that is used to ensure the idempotence of the request.
+	//
+	// example:
+	//
+	// 1600765710019
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The parameters that are used to configure the application you want to create. For example, enableMonitor specifies whether to automatically create a CloudMonitor task for the application, and enableReport specifies whether to generate reports.
+	//
+	// example:
+	//
+	// {"enableMonitor":"0", "enableReport":"1"}
 	Configuration map[string]*string `json:"Configuration,omitempty" xml:"Configuration,omitempty"`
 	// The instances in which you want to create the application. You can create applications in an existing virtual private cloud (VPC).
 	Instances []*CreateApplicationRequestInstances `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Repeated"`
 	// The name of the application.
 	//
-	// *   The application name must be unique. You can call the [ListApplication](https://www.alibabacloud.com/help/en/bp-studio/latest/api-bpstudio-2021-09-31-listapplication) operation to query the existing applications.
-	// *   The application name must be 2 to 128 characters in length. The name must start with a letter and cannot start with `http:// or https://`. The name can contain letters, digits, underscores (\_), and hyphens (-).
+	// 	- The application name must be unique. You can call the [ListApplication](https://www.alibabacloud.com/help/en/bp-studio/latest/api-bpstudio-2021-09-31-listapplication) operation to query the existing applications.
+	//
+	// 	- The application name must be 2 to 128 characters in length. The name must start with a letter and cannot start with `http:// or https://`. The name can contain letters, digits, underscores (_), and hyphens (-).
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cadt-application
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The ID of the resource group to which the application you want to create belongs.
+	//
+	// example:
+	//
+	// rg-acfmyjt3c5om3hi
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The ID of the template.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0KSHPM6SJU03TNZP
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 	// The parameter values that are contained in the template. If the template contains no parameter values, the default values are used.
+	//
+	// example:
+	//
+	// {"variable1":"1"}
 	Variables map[string]*string `json:"Variables,omitempty" xml:"Variables,omitempty"`
 }
 
@@ -352,10 +446,22 @@ func (s *CreateApplicationRequest) SetVariables(v map[string]*string) *CreateApp
 
 type CreateApplicationRequestInstances struct {
 	// The ID of the instance.
+	//
+	// example:
+	//
+	// vpc-bp1q56trhtaq40vlq5ojm
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The name of the instance.
+	//
+	// example:
+	//
+	// vpc
 	NodeName *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
 	// The type of the instance.
+	//
+	// example:
+	//
+	// vpc
 	NodeType *string `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
 }
 
@@ -384,23 +490,56 @@ func (s *CreateApplicationRequestInstances) SetNodeType(v string) *CreateApplica
 
 type CreateApplicationShrinkRequest struct {
 	// The ID of the region.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	AreaId *string `json:"AreaId,omitempty" xml:"AreaId,omitempty"`
 	// The client token that is used to ensure the idempotence of the request.
+	//
+	// example:
+	//
+	// 1600765710019
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The parameters that are used to configure the application you want to create. For example, enableMonitor specifies whether to automatically create a CloudMonitor task for the application, and enableReport specifies whether to generate reports.
+	//
+	// example:
+	//
+	// {"enableMonitor":"0", "enableReport":"1"}
 	ConfigurationShrink *string `json:"Configuration,omitempty" xml:"Configuration,omitempty"`
 	// The instances in which you want to create the application. You can create applications in an existing virtual private cloud (VPC).
 	InstancesShrink *string `json:"Instances,omitempty" xml:"Instances,omitempty"`
 	// The name of the application.
 	//
-	// *   The application name must be unique. You can call the [ListApplication](https://www.alibabacloud.com/help/en/bp-studio/latest/api-bpstudio-2021-09-31-listapplication) operation to query the existing applications.
-	// *   The application name must be 2 to 128 characters in length. The name must start with a letter and cannot start with `http:// or https://`. The name can contain letters, digits, underscores (\_), and hyphens (-).
+	// 	- The application name must be unique. You can call the [ListApplication](https://www.alibabacloud.com/help/en/bp-studio/latest/api-bpstudio-2021-09-31-listapplication) operation to query the existing applications.
+	//
+	// 	- The application name must be 2 to 128 characters in length. The name must start with a letter and cannot start with `http:// or https://`. The name can contain letters, digits, underscores (_), and hyphens (-).
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cadt-application
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The ID of the resource group to which the application you want to create belongs.
+	//
+	// example:
+	//
+	// rg-acfmyjt3c5om3hi
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The ID of the template.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0KSHPM6SJU03TNZP
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 	// The parameter values that are contained in the template. If the template contains no parameter values, the default values are used.
+	//
+	// example:
+	//
+	// {"variable1":"1"}
 	VariablesShrink *string `json:"Variables,omitempty" xml:"Variables,omitempty"`
 }
 
@@ -454,12 +593,28 @@ func (s *CreateApplicationShrinkRequest) SetVariablesShrink(v string) *CreateApp
 
 type CreateApplicationResponseBody struct {
 	// The HTTP status code.
+	//
+	// example:
+	//
+	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The ID of the application.
+	//
+	// example:
+	//
+	// 002XWH7MXB8MJRU0
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
 	// The error message.
+	//
+	// example:
+	//
+	// Success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// A07FFDF2-78FA-1B48-9E38-88E833A93187
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -522,8 +677,18 @@ func (s *CreateApplicationResponse) SetBody(v *CreateApplicationResponseBody) *C
 
 type DeleteApplicationRequest struct {
 	// The ID of the application.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 002XWH7MXB8MJRU0
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
 	// The ID of the resource group.
+	//
+	// example:
+	//
+	// rg-acfmyjt3c5om3hi
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
@@ -547,10 +712,22 @@ func (s *DeleteApplicationRequest) SetResourceGroupId(v string) *DeleteApplicati
 
 type DeleteApplicationResponseBody struct {
 	// The HTTP status code.
+	//
+	// example:
+	//
+	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The error message.
+	//
+	// example:
+	//
+	// Success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// A07FFDF2-78FA-1B48-9E38-88E833A93187
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -608,10 +785,24 @@ func (s *DeleteApplicationResponse) SetBody(v *DeleteApplicationResponseBody) *D
 
 type DeployApplicationRequest struct {
 	// The ID of the application.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// VVK605ZH00OA4MRT
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
 	// The client token that is used to ensure the idempotence of the request.
+	//
+	// example:
+	//
+	// 1600765710019
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The ID of the resource group.
+	//
+	// example:
+	//
+	// rg-acfmyjt3c5om3hi
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
@@ -640,12 +831,28 @@ func (s *DeployApplicationRequest) SetResourceGroupId(v string) *DeployApplicati
 
 type DeployApplicationResponseBody struct {
 	// The HTTP status code.
+	//
+	// example:
+	//
+	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The data of the application.
+	//
+	// example:
+	//
+	// 123
 	Data *int64 `json:"Data,omitempty" xml:"Data,omitempty"`
 	// The error message.
+	//
+	// example:
+	//
+	// Success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// A07FFDF2-78FA-1B48-9E38-88E833A93187
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -708,18 +915,26 @@ func (s *DeployApplicationResponse) SetBody(v *DeployApplicationResponseBody) *D
 
 type ExecuteOperationASyncRequest struct {
 	// The ID of the Cloud Architect Design Tools (CADT) application.
+	//
+	// example:
+	//
+	// BG**********UQ
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
 	// The parameters related to the action. Specify the parameters based on the value of Operation. The parameters are passed in the map format. The following examples show how to specify the parameters if you want to change the specifications of an Elastic Compute Service (ECS) instance:
 	//
-	// *   The following common parameters are required: change_type, regionId, instanceId, appId
-	// *   Example values for changing the instance type of the ECS instance: { "ServiceType": "ecs", "Operation": "modifyInstanceType", "Attributes": "{"change_type":"modify_instance_type","instance_type":"ecs.hfr7.2xlarge","instanceId":"i-xxxxxxxxx","regionId":"cn-beijing","appId":"xxxxxxxxxxxxx"}" }
-	// *   Example values for stopping the ECS instance: { "ServiceType": "ecs", "Operation": "modifyInstanceType", "Attributes": "{"change_type":"modify_status","status":"Stopped","instanceId":"i-xxxxxxxxx","regionId":"cn-beijing","appId":"xxxxxxxxxxxxx"}" }
-	// *   Example values for starting the ECS instance: { "ServiceType": "ecs", "Operation": "modifyInstanceType", "Attributes": "{"change_type":"modify_status","status":"Running","instanceId":"i-xxxxxxxxx","regionId":"cn-beijing","appId":"xxxxxxxxxxxxx"}" }
-	// *   Example values for restarting the ECS instance: { "ServiceType": "ecs", "Operation": "modifyInstanceType", "Attributes": "{"change_type":"modify_status","status":"Restart","instanceId":"i-xxxxxxxxx","regionId":"cn-beijing","appId":"xxxxxxxxxxxxx"}" }
+	// 	- The following common parameters are required: change_type, regionId, instanceId, appId
+	//
+	// 	- Example values for changing the instance type of the ECS instance: { "ServiceType": "ecs", "Operation": "modifyInstanceType", "Attributes": "{"change_type":"modify_instance_type","instance_type":"ecs.hfr7.2xlarge","instanceId":"i-xxxxxxxxx","regionId":"cn-beijing","appId":"xxxxxxxxxxxxx"}" }
+	//
+	// 	- Example values for stopping the ECS instance: { "ServiceType": "ecs", "Operation": "modifyInstanceType", "Attributes": "{"change_type":"modify_status","status":"Stopped","instanceId":"i-xxxxxxxxx","regionId":"cn-beijing","appId":"xxxxxxxxxxxxx"}" }
+	//
+	// 	- Example values for starting the ECS instance: { "ServiceType": "ecs", "Operation": "modifyInstanceType", "Attributes": "{"change_type":"modify_status","status":"Running","instanceId":"i-xxxxxxxxx","regionId":"cn-beijing","appId":"xxxxxxxxxxxxx"}" }
+	//
+	// 	- Example values for restarting the ECS instance: { "ServiceType": "ecs", "Operation": "modifyInstanceType", "Attributes": "{"change_type":"modify_status","status":"Restart","instanceId":"i-xxxxxxxxx","regionId":"cn-beijing","appId":"xxxxxxxxxxxxx"}" }
 	//
 	// Example of enumerating more than one set of parameters:
 	//
-	// *   { "ServiceType": "ecs", "Operation": "modifyInstanceType", "Attributes": "{\\"change_type\\":\\"modify_instance_type\\",\\"instance_type\\":\\"ecs.hfr7.2xlarge\\",\\"instanceId\\":\\"i-xxxxxxxxx\\",\\"regionId\\":\\"cn-beijing\\",\\"appId\\":\\"xxxxxxxxxxxxx\\"}" }
+	// 	- { "ServiceType": "ecs", "Operation": "modifyInstanceType", "Attributes": "{\\\\"change_type\\\\":\\\\"modify_instance_type\\\\",\\\\"instance_type\\\\":\\\\"ecs.hfr7.2xlarge\\\\",\\\\"instanceId\\\\":\\\\"i-xxxxxxxxx\\\\",\\\\"regionId\\\\":\\\\"cn-beijing\\\\",\\\\"appId\\\\":\\\\"xxxxxxxxxxxxx\\\\"}" }
 	//
 	//     <!-- -->
 	//
@@ -727,25 +942,53 @@ type ExecuteOperationASyncRequest struct {
 	//
 	//     <!-- -->
 	//
-	//     { "ServiceType": "ecs", "Operation": "modifyInstanceType", "Attributes": "{\\"change_type\\":\\"modify_instance_type\\",\\"instance_type\\":\\"ecs.hfr7.2xlarge\\",\\"instanceId\\":\\"i-xxxxxxxxx\\",\\"regionId\\":\\"cn-beijing\\",\\"appId\\":\\"xxxxxxxxxxxxx\\"}" }
+	//     { "ServiceType": "ecs", "Operation": "modifyInstanceType", "Attributes": "{\\\\"change_type\\\\":\\\\"modify_instance_type\\\\",\\\\"instance_type\\\\":\\\\"ecs.hfr7.2xlarge\\\\",\\\\"instanceId\\\\":\\\\"i-xxxxxxxxx\\\\",\\\\"regionId\\\\":\\\\"cn-beijing\\\\",\\\\"appId\\\\":\\\\"xxxxxxxxxxxxx\\\\"}" }
 	//
 	//     <!-- -->
 	Attributes map[string]interface{} `json:"Attributes,omitempty" xml:"Attributes,omitempty"`
 	// The client token that is used to ensure the idempotence of the request.
+	//
+	// example:
+	//
+	// 1600765710019
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// This operation type is the operation type of modifying the product, some operation types are generic, and some are used alone. The following is an example of ECS deployment:
+	//
 	// - The name of the ECS: rename
+	//
 	// - Specificationof ecs: modifyInstanceType
+	//
 	// - Startup of ecs: modifyInstanceType
+	//
 	// - Stop of ecs: modifyInstanceType
+	//
 	// - Restart of ecs: modifyInstanceType
+	//
 	// - Ecs Tag: addTags
+	//
 	// - Deletion of ecs: ecsDelete
+	//
 	// - Paid type for ecs: modifyPayType
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// queryTopo
 	Operation *string `json:"Operation,omitempty" xml:"Operation,omitempty"`
 	// Resource group ID, which is used to verify the permissions of the resource group
+	//
+	// example:
+	//
+	// ceshi
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The type of the service. If you want to perform operations on an Elastic Compute Service (ECS) instance, set ServiceType to ecs.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ACK
 	ServiceType *string `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
 }
 
@@ -789,18 +1032,26 @@ func (s *ExecuteOperationASyncRequest) SetServiceType(v string) *ExecuteOperatio
 
 type ExecuteOperationASyncShrinkRequest struct {
 	// The ID of the Cloud Architect Design Tools (CADT) application.
+	//
+	// example:
+	//
+	// BG**********UQ
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
 	// The parameters related to the action. Specify the parameters based on the value of Operation. The parameters are passed in the map format. The following examples show how to specify the parameters if you want to change the specifications of an Elastic Compute Service (ECS) instance:
 	//
-	// *   The following common parameters are required: change_type, regionId, instanceId, appId
-	// *   Example values for changing the instance type of the ECS instance: { "ServiceType": "ecs", "Operation": "modifyInstanceType", "Attributes": "{"change_type":"modify_instance_type","instance_type":"ecs.hfr7.2xlarge","instanceId":"i-xxxxxxxxx","regionId":"cn-beijing","appId":"xxxxxxxxxxxxx"}" }
-	// *   Example values for stopping the ECS instance: { "ServiceType": "ecs", "Operation": "modifyInstanceType", "Attributes": "{"change_type":"modify_status","status":"Stopped","instanceId":"i-xxxxxxxxx","regionId":"cn-beijing","appId":"xxxxxxxxxxxxx"}" }
-	// *   Example values for starting the ECS instance: { "ServiceType": "ecs", "Operation": "modifyInstanceType", "Attributes": "{"change_type":"modify_status","status":"Running","instanceId":"i-xxxxxxxxx","regionId":"cn-beijing","appId":"xxxxxxxxxxxxx"}" }
-	// *   Example values for restarting the ECS instance: { "ServiceType": "ecs", "Operation": "modifyInstanceType", "Attributes": "{"change_type":"modify_status","status":"Restart","instanceId":"i-xxxxxxxxx","regionId":"cn-beijing","appId":"xxxxxxxxxxxxx"}" }
+	// 	- The following common parameters are required: change_type, regionId, instanceId, appId
+	//
+	// 	- Example values for changing the instance type of the ECS instance: { "ServiceType": "ecs", "Operation": "modifyInstanceType", "Attributes": "{"change_type":"modify_instance_type","instance_type":"ecs.hfr7.2xlarge","instanceId":"i-xxxxxxxxx","regionId":"cn-beijing","appId":"xxxxxxxxxxxxx"}" }
+	//
+	// 	- Example values for stopping the ECS instance: { "ServiceType": "ecs", "Operation": "modifyInstanceType", "Attributes": "{"change_type":"modify_status","status":"Stopped","instanceId":"i-xxxxxxxxx","regionId":"cn-beijing","appId":"xxxxxxxxxxxxx"}" }
+	//
+	// 	- Example values for starting the ECS instance: { "ServiceType": "ecs", "Operation": "modifyInstanceType", "Attributes": "{"change_type":"modify_status","status":"Running","instanceId":"i-xxxxxxxxx","regionId":"cn-beijing","appId":"xxxxxxxxxxxxx"}" }
+	//
+	// 	- Example values for restarting the ECS instance: { "ServiceType": "ecs", "Operation": "modifyInstanceType", "Attributes": "{"change_type":"modify_status","status":"Restart","instanceId":"i-xxxxxxxxx","regionId":"cn-beijing","appId":"xxxxxxxxxxxxx"}" }
 	//
 	// Example of enumerating more than one set of parameters:
 	//
-	// *   { "ServiceType": "ecs", "Operation": "modifyInstanceType", "Attributes": "{\\"change_type\\":\\"modify_instance_type\\",\\"instance_type\\":\\"ecs.hfr7.2xlarge\\",\\"instanceId\\":\\"i-xxxxxxxxx\\",\\"regionId\\":\\"cn-beijing\\",\\"appId\\":\\"xxxxxxxxxxxxx\\"}" }
+	// 	- { "ServiceType": "ecs", "Operation": "modifyInstanceType", "Attributes": "{\\\\"change_type\\\\":\\\\"modify_instance_type\\\\",\\\\"instance_type\\\\":\\\\"ecs.hfr7.2xlarge\\\\",\\\\"instanceId\\\\":\\\\"i-xxxxxxxxx\\\\",\\\\"regionId\\\\":\\\\"cn-beijing\\\\",\\\\"appId\\\\":\\\\"xxxxxxxxxxxxx\\\\"}" }
 	//
 	//     <!-- -->
 	//
@@ -808,25 +1059,53 @@ type ExecuteOperationASyncShrinkRequest struct {
 	//
 	//     <!-- -->
 	//
-	//     { "ServiceType": "ecs", "Operation": "modifyInstanceType", "Attributes": "{\\"change_type\\":\\"modify_instance_type\\",\\"instance_type\\":\\"ecs.hfr7.2xlarge\\",\\"instanceId\\":\\"i-xxxxxxxxx\\",\\"regionId\\":\\"cn-beijing\\",\\"appId\\":\\"xxxxxxxxxxxxx\\"}" }
+	//     { "ServiceType": "ecs", "Operation": "modifyInstanceType", "Attributes": "{\\\\"change_type\\\\":\\\\"modify_instance_type\\\\",\\\\"instance_type\\\\":\\\\"ecs.hfr7.2xlarge\\\\",\\\\"instanceId\\\\":\\\\"i-xxxxxxxxx\\\\",\\\\"regionId\\\\":\\\\"cn-beijing\\\\",\\\\"appId\\\\":\\\\"xxxxxxxxxxxxx\\\\"}" }
 	//
 	//     <!-- -->
 	AttributesShrink *string `json:"Attributes,omitempty" xml:"Attributes,omitempty"`
 	// The client token that is used to ensure the idempotence of the request.
+	//
+	// example:
+	//
+	// 1600765710019
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// This operation type is the operation type of modifying the product, some operation types are generic, and some are used alone. The following is an example of ECS deployment:
+	//
 	// - The name of the ECS: rename
+	//
 	// - Specificationof ecs: modifyInstanceType
+	//
 	// - Startup of ecs: modifyInstanceType
+	//
 	// - Stop of ecs: modifyInstanceType
+	//
 	// - Restart of ecs: modifyInstanceType
+	//
 	// - Ecs Tag: addTags
+	//
 	// - Deletion of ecs: ecsDelete
+	//
 	// - Paid type for ecs: modifyPayType
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// queryTopo
 	Operation *string `json:"Operation,omitempty" xml:"Operation,omitempty"`
 	// Resource group ID, which is used to verify the permissions of the resource group
+	//
+	// example:
+	//
+	// ceshi
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The type of the service. If you want to perform operations on an Elastic Compute Service (ECS) instance, set ServiceType to ecs.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ACK
 	ServiceType *string `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
 }
 
@@ -870,12 +1149,28 @@ func (s *ExecuteOperationASyncShrinkRequest) SetServiceType(v string) *ExecuteOp
 
 type ExecuteOperationASyncResponseBody struct {
 	// Result code, 200 for success; Other representatives fail.
+	//
+	// example:
+	//
+	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The ID of the operation.
+	//
+	// example:
+	//
+	// op_xxxxxxxxxxxxxxxxxx_ecs_modifyInstanceType_BYSOQGWUV6PME412_ERMEZLXNN3K9N3OL
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
 	// Error message
+	//
+	// example:
+	//
+	// " "
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// Request ID
+	//
+	// example:
+	//
+	// SD-WEF-DSW-32ED-323DDSD-2332D
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -937,12 +1232,31 @@ func (s *ExecuteOperationASyncResponse) SetBody(v *ExecuteOperationASyncResponse
 }
 
 type ExecuteOperationSyncRequest struct {
-	ApplicationId   *string                `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	Attributes      map[string]interface{} `json:"Attributes,omitempty" xml:"Attributes,omitempty"`
-	ClientToken     *string                `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	Operation       *string                `json:"Operation,omitempty" xml:"Operation,omitempty"`
-	ResourceGroupId *string                `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	ServiceType     *string                `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
+	// example:
+	//
+	// BE68D71ZY5YYIU9R
+	ApplicationId *string                `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+	Attributes    map[string]interface{} `json:"Attributes,omitempty" xml:"Attributes,omitempty"`
+	// example:
+	//
+	// 1600765710019
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// rename
+	Operation *string `json:"Operation,omitempty" xml:"Operation,omitempty"`
+	// example:
+	//
+	// rg-acfmyjt3c5om3hi
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// dds
+	ServiceType *string `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
 }
 
 func (s ExecuteOperationSyncRequest) String() string {
@@ -984,12 +1298,31 @@ func (s *ExecuteOperationSyncRequest) SetServiceType(v string) *ExecuteOperation
 }
 
 type ExecuteOperationSyncShrinkRequest struct {
+	// example:
+	//
+	// BE68D71ZY5YYIU9R
 	ApplicationId    *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
 	AttributesShrink *string `json:"Attributes,omitempty" xml:"Attributes,omitempty"`
-	ClientToken      *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	Operation        *string `json:"Operation,omitempty" xml:"Operation,omitempty"`
-	ResourceGroupId  *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	ServiceType      *string `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
+	// example:
+	//
+	// 1600765710019
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// rename
+	Operation *string `json:"Operation,omitempty" xml:"Operation,omitempty"`
+	// example:
+	//
+	// rg-acfmyjt3c5om3hi
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// dds
+	ServiceType *string `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
 }
 
 func (s ExecuteOperationSyncShrinkRequest) String() string {
@@ -1031,9 +1364,21 @@ func (s *ExecuteOperationSyncShrinkRequest) SetServiceType(v string) *ExecuteOpe
 }
 
 type ExecuteOperationSyncResponseBody struct {
-	Code      *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 200
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// op_xxxxxxxxxxxxxxxxxx_dds_modifyInstanceType_BYSOQGWUV6PME412_ERMEZLXNN3K9N3OL
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// Access key ID cannot be null.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// FDC73B05-5331-57AA-BA93-4C9882792FF5
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1096,8 +1441,18 @@ func (s *ExecuteOperationSyncResponse) SetBody(v *ExecuteOperationSyncResponseBo
 
 type GetApplicationRequest struct {
 	// The ID of the request.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// VVK605ZH00OA4MRT
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
 	// Queries the basic information, verification results, billing results, and deployment results of an application.
+	//
+	// example:
+	//
+	// rg-acfmyjt3c5om3hi
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
@@ -1121,12 +1476,24 @@ func (s *GetApplicationRequest) SetResourceGroupId(v string) *GetApplicationRequ
 
 type GetApplicationResponseBody struct {
 	// The response code.
+	//
+	// example:
+	//
+	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The details of the application.
 	Data *GetApplicationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// Reason for the request failure
+	//
+	// example:
+	//
+	// Success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// Request ID
+	//
+	// example:
+	//
+	// A07FFDF2-78FA-1B48-9E38-88E833A93187
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1160,28 +1527,64 @@ func (s *GetApplicationResponseBody) SetRequestId(v string) *GetApplicationRespo
 
 type GetApplicationResponseBodyData struct {
 	// App ID
+	//
+	// example:
+	//
+	// VVK605ZH00OA4MRT
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
 	// The resource tag.
 	Checklist []*GetApplicationResponseBodyDataChecklist `json:"Checklist,omitempty" xml:"Checklist,omitempty" type:"Repeated"`
 	// The time when the app was created
+	//
+	// example:
+	//
+	// 2021-08-09 14:37:16
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// Application description
+	//
+	// example:
+	//
+	// remark
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The resource type.
+	//
+	// example:
+	//
+	// Success
 	Error *string `json:"Error,omitempty" xml:"Error,omitempty"`
 	// The URL of the image in the database.
+	//
+	// example:
+	//
+	// The details of the application.
 	ImageURL *string `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
 	// App name
+	//
+	// example:
+	//
+	// 1411182597819805/sr-8DWU4RUS49NIDII0.png
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The billing results.
 	PriceList []*GetApplicationResponseBodyDataPriceList `json:"PriceList,omitempty" xml:"PriceList,omitempty" type:"Repeated"`
 	// The ID of the resource group to which the app belongs
+	//
+	// example:
+	//
+	// rg-aekzhfgmw4e6fwq
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The resource specification.
 	ResourceList []*GetApplicationResponseBodyDataResourceList `json:"ResourceList,omitempty" xml:"ResourceList,omitempty" type:"Repeated"`
 	// Verification passed
+	//
+	// example:
+	//
+	// Deployed_Success
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The ID of the template associated with the application
+	//
+	// example:
+	//
+	// FYS9VZ535U20V7HT
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 }
 
@@ -1255,18 +1658,46 @@ func (s *GetApplicationResponseBodyData) SetTemplateId(v string) *GetApplication
 
 type GetApplicationResponseBodyDataChecklist struct {
 	// The resource tag.
+	//
+	// example:
+	//
+	// Create
 	Lifecycle *string `json:"Lifecycle,omitempty" xml:"Lifecycle,omitempty"`
 	// The region in which the instance resides.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
 	// The message returned for verification.
+	//
+	// example:
+	//
+	// The ID of the region.
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
 	// The service code.
+	//
+	// example:
+	//
+	// vpc
 	ResourceCode *string `json:"ResourceCode,omitempty" xml:"ResourceCode,omitempty"`
 	// The name of the instance.
+	//
+	// example:
+	//
+	// vpc
 	ResourceName *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
 	// The verification result.
+	//
+	// example:
+	//
+	// Finish
 	Result *string `json:"Result,omitempty" xml:"Result,omitempty"`
 	// The resource specifications.
+	//
+	// example:
+	//
+	// 192.168.0.0/16
 	Specification *string `json:"Specification,omitempty" xml:"Specification,omitempty"`
 }
 
@@ -1315,34 +1746,92 @@ func (s *GetApplicationResponseBodyDataChecklist) SetSpecification(v string) *Ge
 
 type GetApplicationResponseBodyDataPriceList struct {
 	// The billing method.
+	//
+	// example:
+	//
+	// PayAsYouGo
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
 	// The quantity.
+	//
+	// example:
+	//
+	// 1
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
 	// The name of the instance.
+	//
+	// example:
+	//
+	// ecs
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
 	// Resource Fill Labels.
+	//
+	// example:
+	//
+	// Create
 	Lifecycle *string `json:"Lifecycle,omitempty" xml:"Lifecycle,omitempty"`
 	// The unit price of the instance.
+	//
+	// example:
+	//
+	// 0.01
 	OnePrice *float64 `json:"OnePrice,omitempty" xml:"OnePrice,omitempty"`
 	// The original price of the instance.
+	//
+	// example:
+	//
+	// 3.570
 	OriginalPrice *float64 `json:"OriginalPrice,omitempty" xml:"OriginalPrice,omitempty"`
 	// The service duration.
+	//
+	// example:
+	//
+	// 1
 	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
 	// The total price.
+	//
+	// example:
+	//
+	// 0.01
 	Price *float64 `json:"Price,omitempty" xml:"Price,omitempty"`
 	// Unit: USD per hour
+	//
+	// example:
+	//
+	// The service duration.
 	PriceUnit *string `json:"PriceUnit,omitempty" xml:"PriceUnit,omitempty"`
 	// The region in which the instance resides.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
 	// The error message that is returned when a price query fails.
+	//
+	// example:
+	//
+	// ecs.e3.large
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
 	// Product code
+	//
+	// example:
+	//
+	// ecs
 	ResourceCode *string `json:"ResourceCode,omitempty" xml:"ResourceCode,omitempty"`
 	// The instance type. This parameter indicates the information about the instance type. For example, 192.168.0.0/16 may be returned for a Virtual Private Cloud (VPC) instance, ecs.g5.large may be returned for an Elastic Compute Service (ECS) instance, and slb.s1.small may be returned for a Server Load Balancer (SLB) instance. If the resource does not have a specific type, an empty value is returned.
+	//
+	// example:
+	//
+	// The billing method.
 	Specification *string `json:"Specification,omitempty" xml:"Specification,omitempty"`
-	// The creation mode. Valid values:\
-	// 1: creates a new instance.\
+	// The creation mode. Valid values:\\
+	//
+	// 1: creates a new instance.\\
+	//
 	// 2: imports an instance.
+	//
+	// example:
+	//
+	// 1
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 
@@ -1426,20 +1915,52 @@ func (s *GetApplicationResponseBodyDataPriceList) SetType(v string) *GetApplicat
 
 type GetApplicationResponseBodyDataResourceList struct {
 	// The billing method.
+	//
+	// example:
+	//
+	// PayAsYouGo
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
 	// The resource tag.
+	//
+	// example:
+	//
+	// Create
 	Lifecycle *string `json:"Lifecycle,omitempty" xml:"Lifecycle,omitempty"`
 	// The deployment result.
+	//
+	// example:
+	//
+	// {"hostName":"iZ2zehnzxqixu1pywsfbx1Z","memory":32768.0,"creationTime":"2021-09-28T11:23:46Z","instanceName":"ecs","internetMaxBandwidthOut":0.0,"description":"","clusterId":"","private_ip":"192.168.0.247","instanceId":"i-2zehnzxqixu1pywsfbx1","requestId":"F1C64344-3723-51A0-855B-5F08B5634323","zoneId":"cn-beijing-b","ioOptimized":"optimized","id":"i-2zehnzxqixu1pywsfbx1","instanceNetworkType":"vpc","instanceChargeType":"PostPaid","imageId":"centos_8_4_x64_20G_alibase_20210824.vhd","serialNumber":"cee246c4-38f3-4bf3-950b-c17e88ff6527","vlanId":"","instanceType":"ecs.e3.large","cpu":4.0,"creditSpecification":"","internetMaxBandwidthIn":-1.0,"expiredTime":"2099-12-31T15:59Z","internetChargeType":"PayByTraffic","regionId":"cn-beijing","refId":"79224644_0","stoppedMode":"Not-applicable","status":"Running"}
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
 	// The service code.
+	//
+	// example:
+	//
+	// ecs
 	ResourceCode *string `json:"ResourceCode,omitempty" xml:"ResourceCode,omitempty"`
 	// The instance ID.
+	//
+	// example:
+	//
+	// i-2zehnzxqixu1pywsfbx1
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 	// The name of the instance.
+	//
+	// example:
+	//
+	// ecs
 	ResourceName *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
 	// The type of the resource.
+	//
+	// example:
+	//
+	// ecs
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	// The resource deployment result.
+	//
+	// example:
+	//
+	// Finish
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -1522,8 +2043,18 @@ func (s *GetApplicationResponse) SetBody(v *GetApplicationResponseBody) *GetAppl
 
 type GetExecuteOperationResultRequest struct {
 	// The ID of the operation.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// op_xxxxxxxxxxxxxxxxxxxxxx
 	OperationId *string `json:"OperationId,omitempty" xml:"OperationId,omitempty"`
 	// The ID of the resource group. This parameter is specified to verify the permissions on the resource group.
+	//
+	// example:
+	//
+	// testResourceId
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
@@ -1547,12 +2078,24 @@ func (s *GetExecuteOperationResultRequest) SetResourceGroupId(v string) *GetExec
 
 type GetExecuteOperationResultResponseBody struct {
 	// The HTTP status code. A value of 200 indicates that the request is successful.
+	//
+	// example:
+	//
+	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The detailed result of the queried operation.
 	Data *GetExecuteOperationResultResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The error message.
+	//
+	// example:
+	//
+	// " "
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1586,12 +2129,28 @@ func (s *GetExecuteOperationResultResponseBody) SetRequestId(v string) *GetExecu
 
 type GetExecuteOperationResultResponseBodyData struct {
 	// The output of the operation.
+	//
+	// example:
+	//
+	// " "
 	Arguments *string `json:"Arguments,omitempty" xml:"Arguments,omitempty"`
 	// The returned message.
+	//
+	// example:
+	//
+	// “ ”
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The ID of the operation.
+	//
+	// example:
+	//
+	// op_xxxxxxxx
 	OperationId *string `json:"OperationId,omitempty" xml:"OperationId,omitempty"`
 	// The status of the operation.
+	//
+	// example:
+	//
+	// success
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -1653,6 +2212,9 @@ func (s *GetExecuteOperationResultResponse) SetBody(v *GetExecuteOperationResult
 }
 
 type GetFoTaskStatusRequest struct {
+	// example:
+	//
+	// 2615
 	TaskId *int32 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
@@ -1670,9 +2232,21 @@ func (s *GetFoTaskStatusRequest) SetTaskId(v int32) *GetFoTaskStatusRequest {
 }
 
 type GetFoTaskStatusResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// Running
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// OKITHEVRQCN6ULQG
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 923692F0-A15B-58B4-BAF4-2AFA4AF46240
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1734,7 +2308,13 @@ func (s *GetFoTaskStatusResponse) SetBody(v *GetFoTaskStatusResponseBody) *GetFo
 }
 
 type GetPotentialFailZonesRequest struct {
-	IsPlanId *bool   `json:"IsPlanId,omitempty" xml:"IsPlanId,omitempty"`
+	// example:
+	//
+	// true
+	IsPlanId *bool `json:"IsPlanId,omitempty" xml:"IsPlanId,omitempty"`
+	// example:
+	//
+	// FS3ATPTOSC4SE1GG
 	ObjectId *string `json:"ObjectId,omitempty" xml:"ObjectId,omitempty"`
 }
 
@@ -1757,10 +2337,19 @@ func (s *GetPotentialFailZonesRequest) SetObjectId(v string) *GetPotentialFailZo
 }
 
 type GetPotentialFailZonesResponseBody struct {
-	Code      *string   `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      []*string `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	Message   *string   `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string   `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data []*string `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// example:
+	//
+	// The specified ResourceIds are not found in our records.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// BFB7F5C8-FE7A-06CA-9F87-ABBF6B848F0C
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetPotentialFailZonesResponseBody) String() string {
@@ -1822,10 +2411,24 @@ func (s *GetPotentialFailZonesResponse) SetBody(v *GetPotentialFailZonesResponse
 
 type GetTemplateRequest struct {
 	// Template Area
+	//
+	// example:
+	//
+	// cn-hangzhou
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
 	// ResourceGroup ID
+	//
+	// example:
+	//
+	// rg-aekzhfgmw4e6fwq
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// Template ID
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// XFKR6WYRVS24S07R
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 }
 
@@ -1854,12 +2457,24 @@ func (s *GetTemplateRequest) SetTemplateId(v string) *GetTemplateRequest {
 
 type GetTemplateResponseBody struct {
 	// The HTTP status code.
+	//
+	// example:
+	//
+	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The details of the template.
 	Data *GetTemplateResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The interface returns information
+	//
+	// example:
+	//
+	// Success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// Request ID
+	//
+	// example:
+	//
+	// A07FFDF2-78FA-1B48-9E38-88E833A93187
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1893,16 +2508,40 @@ func (s *GetTemplateResponseBody) SetRequestId(v string) *GetTemplateResponseBod
 
 type GetTemplateResponseBodyData struct {
 	// The time when the template was created.
+	//
+	// example:
+	//
+	// 2020-09-22 17:08:31
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// Template DescriptionD
+	//
+	// example:
+	//
+	// 无
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The path to the template schema image file
+	//
+	// example:
+	//
+	// bp-studio-template/sr-U37UD2YQCRJ75X5V.png
 	ImageURL *string `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
 	// The name of the template
+	//
+	// example:
+	//
+	// cadt-template
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The ID of the resource group.
+	//
+	// example:
+	//
+	// rg-aekzhfgmw4e6fwq
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// Template ID
+	//
+	// example:
+	//
+	// XFKR6WYRVS24S07R
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 	// The details of the template variables.
 	Variables []*GetTemplateResponseBodyDataVariables `json:"Variables,omitempty" xml:"Variables,omitempty" type:"Repeated"`
@@ -1953,12 +2592,28 @@ func (s *GetTemplateResponseBodyData) SetVariables(v []*GetTemplateResponseBodyD
 
 type GetTemplateResponseBodyDataVariables struct {
 	// The name of the variable.
+	//
+	// example:
+	//
+	// instance_name
 	Attribute *string `json:"Attribute,omitempty" xml:"Attribute,omitempty"`
 	// The type of the variable.
+	//
+	// example:
+	//
+	// String
 	DataType *string `json:"DataType,omitempty" xml:"DataType,omitempty"`
 	// The default value of the variable.
+	//
+	// example:
+	//
+	// cadt-app-01
 	DefaultValue *string `json:"DefaultValue,omitempty" xml:"DefaultValue,omitempty"`
 	// The value of the variable.
+	//
+	// example:
+	//
+	// ${name}
 	Variable *string `json:"Variable,omitempty" xml:"Variable,omitempty"`
 }
 
@@ -2021,6 +2676,10 @@ func (s *GetTemplateResponse) SetBody(v *GetTemplateResponseBody) *GetTemplateRe
 
 type GetTokenRequest struct {
 	// The ID of the resource group.
+	//
+	// example:
+	//
+	// rg-aekzhfgmw4e6fwq
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
@@ -2039,12 +2698,24 @@ func (s *GetTokenRequest) SetResourceGroupId(v string) *GetTokenRequest {
 
 type GetTokenResponseBody struct {
 	// The HTTP status code.
+	//
+	// example:
+	//
+	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The information about the token.
 	Data *GetTokenResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The returned message.
+	//
+	// example:
+	//
+	// Success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// A07FFDF2-78FA-1B48-9E38-88E833A93187
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2078,16 +2749,40 @@ func (s *GetTokenResponseBody) SetRequestId(v string) *GetTokenResponseBody {
 
 type GetTokenResponseBodyData struct {
 	// The AccessKey ID that is used to access OSS.
+	//
+	// example:
+	//
+	// STS.NTm*****8tu
 	AccessKeyId *string `json:"AccessKeyId,omitempty" xml:"AccessKeyId,omitempty"`
 	// The AccessKey secret used to access OSS.
+	//
+	// example:
+	//
+	// 9NG*****K4X
 	AccessKeySecret *string `json:"AccessKeySecret,omitempty" xml:"AccessKeySecret,omitempty"`
 	// The OSS bucket that is used to store the architecture image.
+	//
+	// example:
+	//
+	// bucket-1
 	Bucket *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
 	// The OSS endpoint.
+	//
+	// example:
+	//
+	// https://oss-cn-beijing.aliyuncs.com
 	Endpoint *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
 	// The token that is used to access the Object Storage Service (OSS) bucket that stores the architecture image.
+	//
+	// example:
+	//
+	// ABCD
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 	// The OSS bucket that is used to save data snapshots.
+	//
+	// example:
+	//
+	// bucket-2
 	SnapshotBucket *string `json:"SnapshotBucket,omitempty" xml:"SnapshotBucket,omitempty"`
 }
 
@@ -2159,6 +2854,9 @@ func (s *GetTokenResponse) SetBody(v *GetTokenResponseBody) *GetTokenResponse {
 }
 
 type InitAppFailOverRequest struct {
+	// example:
+	//
+	// 002XWH7MXB8MJRU0
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
 }
 
@@ -2176,9 +2874,21 @@ func (s *InitAppFailOverRequest) SetApplicationId(v string) *InitAppFailOverRequ
 }
 
 type InitAppFailOverResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *int32  `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// 7250
+	Data *int32 `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// Unsupported Operation PrepareEvent->FailOverPrepareSuccess FoApp_DDLJK2WM8ETU9JAC
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// A07FFDF2-78FA-1B48-9E38-88E833A93187
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2241,20 +2951,62 @@ func (s *InitAppFailOverResponse) SetBody(v *InitAppFailOverResponseBody) *InitA
 
 type ListApplicationRequest struct {
 	// Keywords in the app name
+	//
+	// example:
+	//
+	// test
 	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
 	// The pagination size of the resulting value cannot be less than the minimum value of 1 and cannot be greater than the maximum value of 50.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The pagination page number of the resulting value cannot be less than the minimum value of 1 and cannot be greater than the maximum value of 10000.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
 	NextToken *int32 `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// 1 update time,<br>2 creation time
+	//
+	// example:
+	//
+	// 1
 	OrderType *int64 `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
 	// The ID of the resource group.
+	//
+	// example:
+	//
+	// default
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// Resource Id
+	//
+	// example:
+	//
+	// vsw-xxxxxxxxxxxx
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 	// The status of the applications to be returned.
+	//
+	// example:
+	//
+	// The following values are "success" and "release".
+	//
+	// If the input value is "success", the returned application list includes all applications in the Deployed_Success state of successful deployment.
+	//
+	// If the input value is release, the returned application list includes all applications in the release success (Destroyed_Success) and release failure (Destroyed_Failure) status.
+	//
+	// If this parameter is left blank, the returned app list includes apps in all states.
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// Template Id
+	//
+	// example:
+	//
+	// 0KSXXX6SJU03TXXX
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 }
 
@@ -2308,16 +3060,36 @@ func (s *ListApplicationRequest) SetTemplateId(v string) *ListApplicationRequest
 
 type ListApplicationResponseBody struct {
 	// The HTTP status code.
+	//
+	// example:
+	//
+	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
 	// App listing information
 	Data []*ListApplicationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// The interface returns information
+	//
+	// example:
+	//
+	// Success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The query token returned in this call.
+	//
+	// example:
+	//
+	// 2
 	NextToken *int32 `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The ID of the application.
+	//
+	// example:
+	//
+	// BFB7F5C8-FE7A-06CA-9F87-ABBF6B848F0C
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The total number of returned entries.
+	//
+	// example:
+	//
+	// 123
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -2361,16 +3133,40 @@ func (s *ListApplicationResponseBody) SetTotalCount(v int32) *ListApplicationRes
 
 type ListApplicationResponseBodyData struct {
 	// The application ID.
+	//
+	// example:
+	//
+	// JIX9NEZUALGS46UI
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
 	// The time when the application was created.
+	//
+	// example:
+	//
+	// 2021-09-15  08:30:00
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The URL of the application architecture image.
+	//
+	// example:
+	//
+	// https://bp-studio-daily.oss-cn-beijing.aliyuncs.com/1411182597819805/sr-Y3KR7ZSQZR2F0YX3.png
 	ImageURL *string `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
 	// The name of the application.
+	//
+	// example:
+	//
+	// cadt-appName
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The ID of the resource group to which the application belongs.
+	//
+	// example:
+	//
+	// default
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The status of the application.
+	//
+	// example:
+	//
+	// Deployed_Success
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -2442,10 +3238,20 @@ func (s *ListApplicationResponse) SetBody(v *ListApplicationResponseBody) *ListA
 }
 
 type ListFoCreatedAppsResponseBody struct {
-	Code    *string                              `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data    []*ListFoCreatedAppsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	Message *string                              `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string                              `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data []*ListFoCreatedAppsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// example:
+	//
+	// Cannot find region according to your domain.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// Id of the request
+	//
+	// example:
+	//
+	// 40F63F07-3AB6-53B3-8825-0580C130E3EA
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2479,9 +3285,17 @@ func (s *ListFoCreatedAppsResponseBody) SetRequestId(v string) *ListFoCreatedApp
 
 type ListFoCreatedAppsResponseBodyData struct {
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	ReportUrl     *string `json:"ReportUrl,omitempty" xml:"ReportUrl,omitempty"`
-	Status        *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	Title         *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// example:
+	//
+	// https://api.aliyun.com/troubleshoot?q=ServiceUnavailable&product=BPStudio&requestId=4CDA03A3-C652-1408-8ABD-7E652A7CBFB6
+	ReportUrl *string `json:"ReportUrl,omitempty" xml:"ReportUrl,omitempty"`
+	// example:
+	//
+	// Deployed_Success
+	//
+	// Destroyed_Success
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Title  *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 
 func (s ListFoCreatedAppsResponseBodyData) String() string {
@@ -2543,14 +3357,36 @@ func (s *ListFoCreatedAppsResponse) SetBody(v *ListFoCreatedAppsResponseBody) *L
 
 type ListTagResourcesRequest struct {
 	// The client token that is used to ensure the idempotence of the request.
+	//
+	// example:
+	//
+	// 1600765710019
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The pagination token that is used in the next request to retrieve a new page of results.
+	//
+	// example:
+	//
+	// 1
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The ID of the region.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The resource IDs. You can specify a maximum number of 50 IDs.
+	//
+	// This parameter is required.
 	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
 	// The resource type.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Application
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	// The tags. A maximum of 20 tags are supported.
 	Tag []*ListTagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
@@ -2596,8 +3432,16 @@ func (s *ListTagResourcesRequest) SetTag(v []*ListTagResourcesRequestTag) *ListT
 
 type ListTagResourcesRequestTag struct {
 	// The key of the tag.
+	//
+	// example:
+	//
+	// Label 1
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The value of the tag.
+	//
+	// example:
+	//
+	// Label value 1
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -2621,12 +3465,28 @@ func (s *ListTagResourcesRequestTag) SetValue(v string) *ListTagResourcesRequest
 
 type ListTagResourcesResponseBody struct {
 	// The HTTP status code. A value of 200 indicates that the request is successful.
+	//
+	// example:
+	//
+	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The error message returned if the request failed.
+	//
+	// example:
+	//
+	// bp.java.nopowerContact
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The returned value of NextToken is a pagination token, which can be used in the next request to retrieve a new page of results. If the NextToken parameter is empty, no next page exists.
+	//
+	// example:
+	//
+	// 1
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 847C9D0A-BABD-589C-8A9C-6464409EDED9
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The tags that are added to the resources.
 	TagResources []*ListTagResourcesResponseBodyTagResources `json:"TagResources,omitempty" xml:"TagResources,omitempty" type:"Repeated"`
@@ -2667,12 +3527,28 @@ func (s *ListTagResourcesResponseBody) SetTagResources(v []*ListTagResourcesResp
 
 type ListTagResourcesResponseBodyTagResources struct {
 	// The ID of the resource.
+	//
+	// example:
+	//
+	// MW7T1820ACJX9BI7
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 	// The resource type. Valid values: application and template.
+	//
+	// example:
+	//
+	// application
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	// The key of the tag.
+	//
+	// example:
+	//
+	// Key
 	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
 	// The value of the tag.
+	//
+	// example:
+	//
+	// Value
 	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 
@@ -2735,24 +3611,62 @@ func (s *ListTagResourcesResponse) SetBody(v *ListTagResourcesResponseBody) *Lis
 
 type ListTemplateRequest struct {
 	// The keyword that is used to search for templates.
+	//
+	// example:
+	//
+	// cadt
 	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
 	// The number of entries to return on each page.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The number of the page to return.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
 	NextToken *int32 `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The criterion by which the returned templates are sorted. Valid values:
 	//
-	// *   1: The templates are sorted by the time when they are updated.
-	// *   2: The templates are sorted by the time when they are created.
-	// *   3: The templates are sorted by the system.
-	// *   4: The templates are sorted by the number of times that they are used.
-	// *   If you specify an integer other than 1, 2, 3, and 4 or do not specify any value, the templates are sorted by the system.
+	// 	- 1: The templates are sorted by the time when they are updated.
+	//
+	// 	- 2: The templates are sorted by the time when they are created.
+	//
+	// 	- 3: The templates are sorted by the system.
+	//
+	// 	- 4: The templates are sorted by the number of times that they are used.
+	//
+	// 	- If you specify an integer other than 1, 2, 3, and 4 or do not specify any value, the templates are sorted by the system.
+	//
+	// example:
+	//
+	// 1
 	OrderType *int64 `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
 	// The ID of the resource group.
+	//
+	// example:
+	//
+	// rg-acfmyjt3c5om3hi
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The tag that you want to use to query templates.
+	//
+	// example:
+	//
+	// 1
 	TagList *int32 `json:"TagList,omitempty" xml:"TagList,omitempty"`
 	// The type of the templates to be returned. Valid values: public and private
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// public
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
@@ -2801,16 +3715,36 @@ func (s *ListTemplateRequest) SetType(v string) *ListTemplateRequest {
 
 type ListTemplateResponseBody struct {
 	// The HTTP status code.
+	//
+	// example:
+	//
+	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The details about templates.
 	Data []*ListTemplateResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// The returned message.
+	//
+	// example:
+	//
+	// Success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The page number of the returned page.
+	//
+	// example:
+	//
+	// 1
 	NextToken *int32 `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// A07FFDF2-78FA-1B48-9E38-88E833A93187
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The total number of returned entries.
+	//
+	// example:
+	//
+	// 100
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -2854,18 +3788,46 @@ func (s *ListTemplateResponseBody) SetTotalCount(v int32) *ListTemplateResponseB
 
 type ListTemplateResponseBodyData struct {
 	// The time when the template was created.
+	//
+	// example:
+	//
+	// 2021-03-18 16:41:31
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The URL of the architecture image.
+	//
+	// example:
+	//
+	// bp-studio-template/sr-U37UD2YQCRJ75X5V.png
 	ImageURL *string `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
 	// The name of the template.
+	//
+	// example:
+	//
+	// cadt-name
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The ID of the resource group.
+	//
+	// example:
+	//
+	// rg-acfmyjt3c5om3hi
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The ID of the tag that is added to the template.
+	//
+	// example:
+	//
+	// 1
 	TagId *int32 `json:"TagId,omitempty" xml:"TagId,omitempty"`
 	// The name of the tag that is added to the template.
+	//
+	// example:
+	//
+	// Official template
 	TagName *string `json:"TagName,omitempty" xml:"TagName,omitempty"`
 	// The ID of the template.
+	//
+	// example:
+	//
+	// CJQ6H0XUEQ20IYJQ
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 }
 
@@ -2943,10 +3905,24 @@ func (s *ListTemplateResponse) SetBody(v *ListTemplateResponseBody) *ListTemplat
 
 type ReleaseApplicationRequest struct {
 	// The ID of the application.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 7QSXFQW46ZNGOUDM
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
 	// The client token that is used to ensure the idempotence of the request.
+	//
+	// example:
+	//
+	// 1600765710019
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The ID of the resource.
+	//
+	// example:
+	//
+	// default
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
@@ -2975,12 +3951,28 @@ func (s *ReleaseApplicationRequest) SetResourceGroupId(v string) *ReleaseApplica
 
 type ReleaseApplicationResponseBody struct {
 	// The HTTP status code.
+	//
+	// example:
+	//
+	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The return value.
+	//
+	// example:
+	//
+	// 1
 	Data *int64 `json:"Data,omitempty" xml:"Data,omitempty"`
 	// The error message.
+	//
+	// example:
+	//
+	// The resource does not exist.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// BFB7F5C8-FE7A-06CA-9F87-ABBF6B848F0C
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3043,10 +4035,24 @@ func (s *ReleaseApplicationResponse) SetBody(v *ReleaseApplicationResponseBody) 
 
 type ValidateApplicationRequest struct {
 	// The ID of the application.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 02S7UU41WKJL7ERR
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
 	// The client token that is used to ensure the idempotence of the request.
+	//
+	// example:
+	//
+	// 1600765710019
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The ID of the resource group.
+	//
+	// example:
+	//
+	// rg-acfmyjt3c5om3hi
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
@@ -3075,12 +4081,28 @@ func (s *ValidateApplicationRequest) SetResourceGroupId(v string) *ValidateAppli
 
 type ValidateApplicationResponseBody struct {
 	// The HTTP status code.
+	//
+	// example:
+	//
+	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The data of the application.
+	//
+	// example:
+	//
+	// 123
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
 	// The error message.
+	//
+	// example:
+	//
+	// Success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// A07FFDF2-78FA-1B48-9E38-88E833A93187
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3143,10 +4165,24 @@ func (s *ValidateApplicationResponse) SetBody(v *ValidateApplicationResponseBody
 
 type ValuateApplicationRequest struct {
 	// The operation that you want to perform. Set the value to ValuateApplication.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 02S7UU41WKJL7ERR
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
 	// The ID of the resource group to which the application you want to query belongs.
+	//
+	// example:
+	//
+	// 1600765710019
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The ID of the application.
+	//
+	// example:
+	//
+	// rg-acfmyjt3c5om3hi
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
@@ -3175,12 +4211,28 @@ func (s *ValuateApplicationRequest) SetResourceGroupId(v string) *ValuateApplica
 
 type ValuateApplicationResponseBody struct {
 	// The code of the query task.
+	//
+	// example:
+	//
+	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The ID of the request.
+	//
+	// example:
+	//
+	// 123
 	Data *int64 `json:"Data,omitempty" xml:"Data,omitempty"`
 	// Idempotent notation
+	//
+	// example:
+	//
+	// Success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The returned message.
+	//
+	// example:
+	//
+	// A07FFDF2-78FA-1B48-9E38-88E833A93187
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3243,14 +4295,34 @@ func (s *ValuateApplicationResponse) SetBody(v *ValuateApplicationResponseBody) 
 
 type ValuateTemplateRequest struct {
 	// The region ID.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	AreaId *string `json:"AreaId,omitempty" xml:"AreaId,omitempty"`
 	// The client token that is used to ensure the idempotence of the request.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1600765710019
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The instances to be replaced.
 	Instances []*ValuateTemplateRequestInstances `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Repeated"`
 	// The ID of the resource group to which the application belongs.
+	//
+	// example:
+	//
+	// rg-acfmyjt3c5om3fi
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The template ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0KSHPM6SJU03TNZP
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 	// The parameter values that are contained in the template. If the template contains no parameter values, the default values are used.
 	Variables map[string]*string `json:"Variables,omitempty" xml:"Variables,omitempty"`
@@ -3296,10 +4368,22 @@ func (s *ValuateTemplateRequest) SetVariables(v map[string]*string) *ValuateTemp
 
 type ValuateTemplateRequestInstances struct {
 	// The instance ID.
+	//
+	// example:
+	//
+	// vpc-bp1q56trhtaq40vlq5oj
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The name of the application instance that is displayed on the diagram.
+	//
+	// example:
+	//
+	// ecs
 	NodeName *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
 	// The instance type.
+	//
+	// example:
+	//
+	// ecs
 	NodeType *string `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
 }
 
@@ -3328,14 +4412,34 @@ func (s *ValuateTemplateRequestInstances) SetNodeType(v string) *ValuateTemplate
 
 type ValuateTemplateShrinkRequest struct {
 	// The region ID.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	AreaId *string `json:"AreaId,omitempty" xml:"AreaId,omitempty"`
 	// The client token that is used to ensure the idempotence of the request.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1600765710019
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The instances to be replaced.
 	InstancesShrink *string `json:"Instances,omitempty" xml:"Instances,omitempty"`
 	// The ID of the resource group to which the application belongs.
+	//
+	// example:
+	//
+	// rg-acfmyjt3c5om3fi
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The template ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0KSHPM6SJU03TNZP
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 	// The parameter values that are contained in the template. If the template contains no parameter values, the default values are used.
 	VariablesShrink *string `json:"Variables,omitempty" xml:"Variables,omitempty"`
@@ -3381,12 +4485,24 @@ func (s *ValuateTemplateShrinkRequest) SetVariablesShrink(v string) *ValuateTemp
 
 type ValuateTemplateResponseBody struct {
 	// The HTTP status code.
+	//
+	// example:
+	//
+	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The result of the inquiry.
 	Data *ValuateTemplateResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The error message returned if the request failed.
+	//
+	// example:
+	//
+	// Success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 847C9D0A-BABD-589C-8A9C-6464409EDED9
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3438,20 +4554,48 @@ func (s *ValuateTemplateResponseBodyData) SetResourceList(v []*ValuateTemplateRe
 
 type ValuateTemplateResponseBodyDataResourceList struct {
 	// The discount amount.
+	//
+	// example:
+	//
+	// 73
 	DiscountAmount *float64 `json:"DiscountAmount,omitempty" xml:"DiscountAmount,omitempty"`
 	// The error message that is returned.
+	//
+	// example:
+	//
+	// InvalidSaleComponentFault : The request not refer to the correct order sale component.
 	Error *string `json:"Error,omitempty" xml:"Error,omitempty"`
 	// The resource type.
+	//
+	// example:
+	//
+	// ecs
 	NodeType *string `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
 	// The original price.
+	//
+	// example:
+	//
+	// 83.0
 	OriginalPrice *float64 `json:"OriginalPrice,omitempty" xml:"OriginalPrice,omitempty"`
 	// The information about the price.
 	PriceList []*ValuateTemplateResponseBodyDataResourceListPriceList `json:"PriceList,omitempty" xml:"PriceList,omitempty" type:"Repeated"`
 	// The pricing unit.
+	//
+	// example:
+	//
+	// USD
 	PriceUnit *string `json:"PriceUnit,omitempty" xml:"PriceUnit,omitempty"`
+	// The discount information.
+	//
+	// example:
+	//
 	// The discount information.
 	PromotionName *string `json:"PromotionName,omitempty" xml:"PromotionName,omitempty"`
 	// The price at which the transaction is made.
+	//
+	// example:
+	//
+	// 10.0
 	TradePrice *float64 `json:"TradePrice,omitempty" xml:"TradePrice,omitempty"`
 }
 
@@ -3505,25 +4649,64 @@ func (s *ValuateTemplateResponseBodyDataResourceList) SetTradePrice(v float64) *
 
 type ValuateTemplateResponseBodyDataResourceListPriceList struct {
 	// The discount amount.
+	//
+	// example:
+	//
+	// 82.99
 	DiscountAmount *float32 `json:"DiscountAmount,omitempty" xml:"DiscountAmount,omitempty"`
 	// The error message that is returned.
+	//
+	// example:
+	//
+	// ServiceUnavailable : The request has failed due to a temporary failure of the server.\\r\\nRequestId : 4AA302DB-3286-5589-8637-FF6D8507B7A9.
 	Error *string `json:"Error,omitempty" xml:"Error,omitempty"`
 	// The resource type.
+	//
+	// example:
+	//
+	// eip
 	NodeType *string `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
 	// The original price.
+	//
+	// example:
+	//
+	// 83.0
 	OriginalPrice *float32 `json:"OriginalPrice,omitempty" xml:"OriginalPrice,omitempty"`
 	// The pricing unit.
+	//
+	// example:
+	//
+	// USD
 	PriceUnit *string `json:"PriceUnit,omitempty" xml:"PriceUnit,omitempty"`
+	// The discount information.
+	//
+	// example:
+	//
 	// The discount information.
 	PromotionName *string `json:"PromotionName,omitempty" xml:"PromotionName,omitempty"`
 	// The resource ID.
+	//
+	// example:
+	//
+	// 1687225092
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 	// The price at which the transaction is made.
+	//
+	// example:
+	//
+	// 0.01
 	TradePrice *float32 `json:"TradePrice,omitempty" xml:"TradePrice,omitempty"`
-	// Indicates whether the instance is newly created. Valid values:\
-	// 1: The instance is newly created.\
-	// 2: The instance already exists.\
+	// Indicates whether the instance is newly created. Valid values:\\
+	//
+	// 1: The instance is newly created.\\
+	//
+	// 2: The instance already exists.\\
+	//
 	// 0: The price of the instance is not included.
+	//
+	// example:
+	//
+	// "1"
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
@@ -3656,6 +4839,15 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
+// Summary:
+//
+// 容灾应用切回
+//
+// @param request - AppFailBackRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AppFailBackResponse
 func (client *Client) AppFailBackWithOptions(request *AppFailBackRequest, runtime *util.RuntimeOptions) (_result *AppFailBackResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3689,6 +4881,13 @@ func (client *Client) AppFailBackWithOptions(request *AppFailBackRequest, runtim
 	return _result, _err
 }
 
+// Summary:
+//
+// 容灾应用切回
+//
+// @param request - AppFailBackRequest
+//
+// @return AppFailBackResponse
 func (client *Client) AppFailBack(request *AppFailBackRequest) (_result *AppFailBackResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &AppFailBackResponse{}
@@ -3700,6 +4899,15 @@ func (client *Client) AppFailBack(request *AppFailBackRequest) (_result *AppFail
 	return _result, _err
 }
 
+// Summary:
+//
+// 容灾应用切换
+//
+// @param request - AppFailOverRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AppFailOverResponse
 func (client *Client) AppFailOverWithOptions(request *AppFailOverRequest, runtime *util.RuntimeOptions) (_result *AppFailOverResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3737,6 +4945,13 @@ func (client *Client) AppFailOverWithOptions(request *AppFailOverRequest, runtim
 	return _result, _err
 }
 
+// Summary:
+//
+// 容灾应用切换
+//
+// @param request - AppFailOverRequest
+//
+// @return AppFailOverResponse
 func (client *Client) AppFailOver(request *AppFailOverRequest) (_result *AppFailOverResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &AppFailOverResponse{}
@@ -3748,6 +4963,15 @@ func (client *Client) AppFailOver(request *AppFailOverRequest) (_result *AppFail
 	return _result, _err
 }
 
+// Summary:
+//
+// Changes the resource group to which an application or template belongs.
+//
+// @param request - ChangeResourceGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ChangeResourceGroupResponse
 func (client *Client) ChangeResourceGroupWithOptions(request *ChangeResourceGroupRequest, runtime *util.RuntimeOptions) (_result *ChangeResourceGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3789,6 +5013,13 @@ func (client *Client) ChangeResourceGroupWithOptions(request *ChangeResourceGrou
 	return _result, _err
 }
 
+// Summary:
+//
+// Changes the resource group to which an application or template belongs.
+//
+// @param request - ChangeResourceGroupRequest
+//
+// @return ChangeResourceGroupResponse
 func (client *Client) ChangeResourceGroup(request *ChangeResourceGroupRequest) (_result *ChangeResourceGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ChangeResourceGroupResponse{}
@@ -3800,6 +5031,15 @@ func (client *Client) ChangeResourceGroup(request *ChangeResourceGroupRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates an application based on an official template or private template in Cloud Architect Design Tool (CADT). Before you call this operation, make sure that you understand the billing methods and prices of Alibaba Cloud services to be used in the application.
+//
+// @param tmpReq - CreateApplicationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateApplicationResponse
 func (client *Client) CreateApplicationWithOptions(tmpReq *CreateApplicationRequest, runtime *util.RuntimeOptions) (_result *CreateApplicationResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -3875,6 +5115,13 @@ func (client *Client) CreateApplicationWithOptions(tmpReq *CreateApplicationRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates an application based on an official template or private template in Cloud Architect Design Tool (CADT). Before you call this operation, make sure that you understand the billing methods and prices of Alibaba Cloud services to be used in the application.
+//
+// @param request - CreateApplicationRequest
+//
+// @return CreateApplicationResponse
 func (client *Client) CreateApplication(request *CreateApplicationRequest) (_result *CreateApplicationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateApplicationResponse{}
@@ -3886,13 +5133,19 @@ func (client *Client) CreateApplication(request *CreateApplicationRequest) (_res
 	return _result, _err
 }
 
-/**
- * Before you call this operation to delete an application, make sure that the application is in the `Destroyed_Success` state. Otherwise, the application fails to be deleted.`` You can call the [GetApplication](https://www.alibabacloud.com/help/en/bp-studio/latest/api-bpstudio-2021-09-31-getapplication) operation to query the status of an application.
- *
- * @param request DeleteApplicationRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return DeleteApplicationResponse
- */
+// Summary:
+//
+// Deletes an application.
+//
+// Description:
+//
+// Before you call this operation to delete an application, make sure that the application is in the `Destroyed_Success` state. Otherwise, the application fails to be deleted.`` You can call the [GetApplication](https://www.alibabacloud.com/help/en/bp-studio/latest/api-bpstudio-2021-09-31-getapplication) operation to query the status of an application.
+//
+// @param request - DeleteApplicationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteApplicationResponse
 func (client *Client) DeleteApplicationWithOptions(request *DeleteApplicationRequest, runtime *util.RuntimeOptions) (_result *DeleteApplicationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3930,12 +5183,17 @@ func (client *Client) DeleteApplicationWithOptions(request *DeleteApplicationReq
 	return _result, _err
 }
 
-/**
- * Before you call this operation to delete an application, make sure that the application is in the `Destroyed_Success` state. Otherwise, the application fails to be deleted.`` You can call the [GetApplication](https://www.alibabacloud.com/help/en/bp-studio/latest/api-bpstudio-2021-09-31-getapplication) operation to query the status of an application.
- *
- * @param request DeleteApplicationRequest
- * @return DeleteApplicationResponse
- */
+// Summary:
+//
+// Deletes an application.
+//
+// Description:
+//
+// Before you call this operation to delete an application, make sure that the application is in the `Destroyed_Success` state. Otherwise, the application fails to be deleted.`` You can call the [GetApplication](https://www.alibabacloud.com/help/en/bp-studio/latest/api-bpstudio-2021-09-31-getapplication) operation to query the status of an application.
+//
+// @param request - DeleteApplicationRequest
+//
+// @return DeleteApplicationResponse
 func (client *Client) DeleteApplication(request *DeleteApplicationRequest) (_result *DeleteApplicationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteApplicationResponse{}
@@ -3947,6 +5205,15 @@ func (client *Client) DeleteApplication(request *DeleteApplicationRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// Deploys an application after the payment.
+//
+// @param request - DeployApplicationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeployApplicationResponse
 func (client *Client) DeployApplicationWithOptions(request *DeployApplicationRequest, runtime *util.RuntimeOptions) (_result *DeployApplicationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3990,6 +5257,13 @@ func (client *Client) DeployApplicationWithOptions(request *DeployApplicationReq
 	return _result, _err
 }
 
+// Summary:
+//
+// Deploys an application after the payment.
+//
+// @param request - DeployApplicationRequest
+//
+// @return DeployApplicationResponse
 func (client *Client) DeployApplication(request *DeployApplicationRequest) (_result *DeployApplicationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeployApplicationResponse{}
@@ -4001,6 +5275,15 @@ func (client *Client) DeployApplication(request *DeployApplicationRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// Asynchronous execution of product operation functions.
+//
+// @param tmpReq - ExecuteOperationASyncRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ExecuteOperationASyncResponse
 func (client *Client) ExecuteOperationASyncWithOptions(tmpReq *ExecuteOperationASyncRequest, runtime *util.RuntimeOptions) (_result *ExecuteOperationASyncResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -4060,6 +5343,13 @@ func (client *Client) ExecuteOperationASyncWithOptions(tmpReq *ExecuteOperationA
 	return _result, _err
 }
 
+// Summary:
+//
+// Asynchronous execution of product operation functions.
+//
+// @param request - ExecuteOperationASyncRequest
+//
+// @return ExecuteOperationASyncResponse
 func (client *Client) ExecuteOperationASync(request *ExecuteOperationASyncRequest) (_result *ExecuteOperationASyncResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ExecuteOperationASyncResponse{}
@@ -4071,6 +5361,15 @@ func (client *Client) ExecuteOperationASync(request *ExecuteOperationASyncReques
 	return _result, _err
 }
 
+// Summary:
+//
+// 维护应用下资源API（同步操作）
+//
+// @param tmpReq - ExecuteOperationSyncRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ExecuteOperationSyncResponse
 func (client *Client) ExecuteOperationSyncWithOptions(tmpReq *ExecuteOperationSyncRequest, runtime *util.RuntimeOptions) (_result *ExecuteOperationSyncResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -4130,6 +5429,13 @@ func (client *Client) ExecuteOperationSyncWithOptions(tmpReq *ExecuteOperationSy
 	return _result, _err
 }
 
+// Summary:
+//
+// 维护应用下资源API（同步操作）
+//
+// @param request - ExecuteOperationSyncRequest
+//
+// @return ExecuteOperationSyncResponse
 func (client *Client) ExecuteOperationSync(request *ExecuteOperationSyncRequest) (_result *ExecuteOperationSyncResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ExecuteOperationSyncResponse{}
@@ -4141,6 +5447,15 @@ func (client *Client) ExecuteOperationSync(request *ExecuteOperationSyncRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// The URL of the application topology image.
+//
+// @param request - GetApplicationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetApplicationResponse
 func (client *Client) GetApplicationWithOptions(request *GetApplicationRequest, runtime *util.RuntimeOptions) (_result *GetApplicationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4178,6 +5493,13 @@ func (client *Client) GetApplicationWithOptions(request *GetApplicationRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// The URL of the application topology image.
+//
+// @param request - GetApplicationRequest
+//
+// @return GetApplicationResponse
 func (client *Client) GetApplication(request *GetApplicationRequest) (_result *GetApplicationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetApplicationResponse{}
@@ -4189,6 +5511,15 @@ func (client *Client) GetApplication(request *GetApplicationRequest) (_result *G
 	return _result, _err
 }
 
+// Summary:
+//
+// Asynchronously queries the result of an operation that is performed on a service instance.
+//
+// @param request - GetExecuteOperationResultRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetExecuteOperationResultResponse
 func (client *Client) GetExecuteOperationResultWithOptions(request *GetExecuteOperationResultRequest, runtime *util.RuntimeOptions) (_result *GetExecuteOperationResultResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4226,6 +5557,13 @@ func (client *Client) GetExecuteOperationResultWithOptions(request *GetExecuteOp
 	return _result, _err
 }
 
+// Summary:
+//
+// Asynchronously queries the result of an operation that is performed on a service instance.
+//
+// @param request - GetExecuteOperationResultRequest
+//
+// @return GetExecuteOperationResultResponse
 func (client *Client) GetExecuteOperationResult(request *GetExecuteOperationResultRequest) (_result *GetExecuteOperationResultResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetExecuteOperationResultResponse{}
@@ -4237,6 +5575,15 @@ func (client *Client) GetExecuteOperationResult(request *GetExecuteOperationResu
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取容灾切换任务状态
+//
+// @param request - GetFoTaskStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetFoTaskStatusResponse
 func (client *Client) GetFoTaskStatusWithOptions(request *GetFoTaskStatusRequest, runtime *util.RuntimeOptions) (_result *GetFoTaskStatusResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4270,6 +5617,13 @@ func (client *Client) GetFoTaskStatusWithOptions(request *GetFoTaskStatusRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取容灾切换任务状态
+//
+// @param request - GetFoTaskStatusRequest
+//
+// @return GetFoTaskStatusResponse
 func (client *Client) GetFoTaskStatus(request *GetFoTaskStatusRequest) (_result *GetFoTaskStatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetFoTaskStatusResponse{}
@@ -4281,6 +5635,15 @@ func (client *Client) GetFoTaskStatus(request *GetFoTaskStatusRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取容灾服务可切换的可用区列表
+//
+// @param request - GetPotentialFailZonesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetPotentialFailZonesResponse
 func (client *Client) GetPotentialFailZonesWithOptions(request *GetPotentialFailZonesRequest, runtime *util.RuntimeOptions) (_result *GetPotentialFailZonesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4318,6 +5681,13 @@ func (client *Client) GetPotentialFailZonesWithOptions(request *GetPotentialFail
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取容灾服务可切换的可用区列表
+//
+// @param request - GetPotentialFailZonesRequest
+//
+// @return GetPotentialFailZonesResponse
 func (client *Client) GetPotentialFailZones(request *GetPotentialFailZonesRequest) (_result *GetPotentialFailZonesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetPotentialFailZonesResponse{}
@@ -4329,6 +5699,15 @@ func (client *Client) GetPotentialFailZones(request *GetPotentialFailZonesReques
 	return _result, _err
 }
 
+// Summary:
+//
+// Get template images and information about architecture diagrams.
+//
+// @param request - GetTemplateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetTemplateResponse
 func (client *Client) GetTemplateWithOptions(request *GetTemplateRequest, runtime *util.RuntimeOptions) (_result *GetTemplateResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4370,6 +5749,13 @@ func (client *Client) GetTemplateWithOptions(request *GetTemplateRequest, runtim
 	return _result, _err
 }
 
+// Summary:
+//
+// Get template images and information about architecture diagrams.
+//
+// @param request - GetTemplateRequest
+//
+// @return GetTemplateResponse
 func (client *Client) GetTemplate(request *GetTemplateRequest) (_result *GetTemplateResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetTemplateResponse{}
@@ -4381,14 +5767,21 @@ func (client *Client) GetTemplate(request *GetTemplateRequest) (_result *GetTemp
 	return _result, _err
 }
 
-/**
- * @deprecated : GetToken is deprecated, please use BPStudio::2021-09-31::GetApplication instead.
- * ><danger> This API is no longer recommended, and the image related to the Application has included access authorization in the GetApplication property.></danger>
- *
- * @param request GetTokenRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return GetTokenResponse
- */
+// Deprecated: OpenAPI GetToken is deprecated, please use BPStudio::2021-09-31::GetApplication instead.
+//
+// Summary:
+//
+// Obtains a temporary token that is used to read the architecture diagram. The validity period of the token is 30 minutes.
+//
+// Description:
+//
+// 	Danger:  This API is no longer recommended, and the image related to the Application has included access authorization in the GetApplication property.
+//
+// @param request - GetTokenRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetTokenResponse
 // Deprecated
 func (client *Client) GetTokenWithOptions(request *GetTokenRequest, runtime *util.RuntimeOptions) (_result *GetTokenResponse, _err error) {
 	_err = util.ValidateModel(request)
@@ -4423,13 +5816,19 @@ func (client *Client) GetTokenWithOptions(request *GetTokenRequest, runtime *uti
 	return _result, _err
 }
 
-/**
- * @deprecated : GetToken is deprecated, please use BPStudio::2021-09-31::GetApplication instead.
- * ><danger> This API is no longer recommended, and the image related to the Application has included access authorization in the GetApplication property.></danger>
- *
- * @param request GetTokenRequest
- * @return GetTokenResponse
- */
+// Deprecated: OpenAPI GetToken is deprecated, please use BPStudio::2021-09-31::GetApplication instead.
+//
+// Summary:
+//
+// Obtains a temporary token that is used to read the architecture diagram. The validity period of the token is 30 minutes.
+//
+// Description:
+//
+// 	Danger:  This API is no longer recommended, and the image related to the Application has included access authorization in the GetApplication property.
+//
+// @param request - GetTokenRequest
+//
+// @return GetTokenResponse
 // Deprecated
 func (client *Client) GetToken(request *GetTokenRequest) (_result *GetTokenResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
@@ -4442,6 +5841,15 @@ func (client *Client) GetToken(request *GetTokenRequest) (_result *GetTokenRespo
 	return _result, _err
 }
 
+// Summary:
+//
+// 准备应用切换
+//
+// @param request - InitAppFailOverRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return InitAppFailOverResponse
 func (client *Client) InitAppFailOverWithOptions(request *InitAppFailOverRequest, runtime *util.RuntimeOptions) (_result *InitAppFailOverResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4475,6 +5883,13 @@ func (client *Client) InitAppFailOverWithOptions(request *InitAppFailOverRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// 准备应用切换
+//
+// @param request - InitAppFailOverRequest
+//
+// @return InitAppFailOverResponse
 func (client *Client) InitAppFailOver(request *InitAppFailOverRequest) (_result *InitAppFailOverResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &InitAppFailOverResponse{}
@@ -4486,6 +5901,15 @@ func (client *Client) InitAppFailOver(request *InitAppFailOverRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// This API provides a list of all applications under the current user. The optional keyword parameter defines the keywords contained in the application name.
+//
+// @param request - ListApplicationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListApplicationResponse
 func (client *Client) ListApplicationWithOptions(request *ListApplicationRequest, runtime *util.RuntimeOptions) (_result *ListApplicationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4547,6 +5971,13 @@ func (client *Client) ListApplicationWithOptions(request *ListApplicationRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// This API provides a list of all applications under the current user. The optional keyword parameter defines the keywords contained in the application name.
+//
+// @param request - ListApplicationRequest
+//
+// @return ListApplicationResponse
 func (client *Client) ListApplication(request *ListApplicationRequest) (_result *ListApplicationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListApplicationResponse{}
@@ -4558,6 +5989,15 @@ func (client *Client) ListApplication(request *ListApplicationRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取已经创建的APP
+//
+// @param request - ListFoCreatedAppsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListFoCreatedAppsResponse
 func (client *Client) ListFoCreatedAppsWithOptions(runtime *util.RuntimeOptions) (_result *ListFoCreatedAppsResponse, _err error) {
 	req := &openapi.OpenApiRequest{}
 	params := &openapi.Params{
@@ -4580,6 +6020,11 @@ func (client *Client) ListFoCreatedAppsWithOptions(runtime *util.RuntimeOptions)
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取已经创建的APP
+//
+// @return ListFoCreatedAppsResponse
 func (client *Client) ListFoCreatedApps() (_result *ListFoCreatedAppsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListFoCreatedAppsResponse{}
@@ -4591,6 +6036,15 @@ func (client *Client) ListFoCreatedApps() (_result *ListFoCreatedAppsResponse, _
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the tags of one or more applications or templates.
+//
+// @param request - ListTagResourcesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListTagResourcesResponse
 func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesRequest, runtime *util.RuntimeOptions) (_result *ListTagResourcesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4647,6 +6101,13 @@ func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesReque
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the tags of one or more applications or templates.
+//
+// @param request - ListTagResourcesRequest
+//
+// @return ListTagResourcesResponse
 func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_result *ListTagResourcesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListTagResourcesResponse{}
@@ -4658,6 +6119,15 @@ func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries templates, including information such as the template name, architecture image URL, and URL of the serialized architecture image file.
+//
+// @param request - ListTemplateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListTemplateResponse
 func (client *Client) ListTemplateWithOptions(request *ListTemplateRequest, runtime *util.RuntimeOptions) (_result *ListTemplateResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4715,6 +6185,13 @@ func (client *Client) ListTemplateWithOptions(request *ListTemplateRequest, runt
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries templates, including information such as the template name, architecture image URL, and URL of the serialized architecture image file.
+//
+// @param request - ListTemplateRequest
+//
+// @return ListTemplateResponse
 func (client *Client) ListTemplate(request *ListTemplateRequest) (_result *ListTemplateResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListTemplateResponse{}
@@ -4726,6 +6203,15 @@ func (client *Client) ListTemplate(request *ListTemplateRequest) (_result *ListT
 	return _result, _err
 }
 
+// Summary:
+//
+// Releases the resources of an application.
+//
+// @param request - ReleaseApplicationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ReleaseApplicationResponse
 func (client *Client) ReleaseApplicationWithOptions(request *ReleaseApplicationRequest, runtime *util.RuntimeOptions) (_result *ReleaseApplicationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4767,6 +6253,13 @@ func (client *Client) ReleaseApplicationWithOptions(request *ReleaseApplicationR
 	return _result, _err
 }
 
+// Summary:
+//
+// Releases the resources of an application.
+//
+// @param request - ReleaseApplicationRequest
+//
+// @return ReleaseApplicationResponse
 func (client *Client) ReleaseApplication(request *ReleaseApplicationRequest) (_result *ReleaseApplicationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ReleaseApplicationResponse{}
@@ -4778,6 +6271,15 @@ func (client *Client) ReleaseApplication(request *ReleaseApplicationRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// Verifies the resources of an application. ValidateApplication is an asynchronous operation. You can call the GetApplication operation to query the verification result.
+//
+// @param request - ValidateApplicationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ValidateApplicationResponse
 func (client *Client) ValidateApplicationWithOptions(request *ValidateApplicationRequest, runtime *util.RuntimeOptions) (_result *ValidateApplicationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4821,6 +6323,13 @@ func (client *Client) ValidateApplicationWithOptions(request *ValidateApplicatio
 	return _result, _err
 }
 
+// Summary:
+//
+// Verifies the resources of an application. ValidateApplication is an asynchronous operation. You can call the GetApplication operation to query the verification result.
+//
+// @param request - ValidateApplicationRequest
+//
+// @return ValidateApplicationResponse
 func (client *Client) ValidateApplication(request *ValidateApplicationRequest) (_result *ValidateApplicationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ValidateApplicationResponse{}
@@ -4832,6 +6341,15 @@ func (client *Client) ValidateApplication(request *ValidateApplicationRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the prices of resources of an application. You can call the GetApplication operation to obtain the query results.
+//
+// @param request - ValuateApplicationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ValuateApplicationResponse
 func (client *Client) ValuateApplicationWithOptions(request *ValuateApplicationRequest, runtime *util.RuntimeOptions) (_result *ValuateApplicationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4873,6 +6391,13 @@ func (client *Client) ValuateApplicationWithOptions(request *ValuateApplicationR
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the prices of resources of an application. You can call the GetApplication operation to obtain the query results.
+//
+// @param request - ValuateApplicationRequest
+//
+// @return ValuateApplicationResponse
 func (client *Client) ValuateApplication(request *ValuateApplicationRequest) (_result *ValuateApplicationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ValuateApplicationResponse{}
@@ -4884,6 +6409,15 @@ func (client *Client) ValuateApplication(request *ValuateApplicationRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the price of a template.
+//
+// @param tmpReq - ValuateTemplateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ValuateTemplateResponse
 func (client *Client) ValuateTemplateWithOptions(tmpReq *ValuateTemplateRequest, runtime *util.RuntimeOptions) (_result *ValuateTemplateResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -4947,6 +6481,13 @@ func (client *Client) ValuateTemplateWithOptions(tmpReq *ValuateTemplateRequest,
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the price of a template.
+//
+// @param request - ValuateTemplateRequest
+//
+// @return ValuateTemplateResponse
 func (client *Client) ValuateTemplate(request *ValuateTemplateRequest) (_result *ValuateTemplateResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ValuateTemplateResponse{}
