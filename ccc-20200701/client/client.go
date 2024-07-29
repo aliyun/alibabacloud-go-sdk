@@ -26022,6 +26022,7 @@ type ListCallDetailRecordsResponseBodyDataList struct {
 	//
 	// 30
 	CallDuration *string `json:"CallDuration,omitempty" xml:"CallDuration,omitempty"`
+	CallIds      *string `json:"CallIds,omitempty" xml:"CallIds,omitempty"`
 	// example:
 	//
 	// 1332315****
@@ -26146,6 +26147,11 @@ func (s *ListCallDetailRecordsResponseBodyDataList) SetBroker(v string) *ListCal
 
 func (s *ListCallDetailRecordsResponseBodyDataList) SetCallDuration(v string) *ListCallDetailRecordsResponseBodyDataList {
 	s.CallDuration = &v
+	return s
+}
+
+func (s *ListCallDetailRecordsResponseBodyDataList) SetCallIds(v string) *ListCallDetailRecordsResponseBodyDataList {
+	s.CallIds = &v
 	return s
 }
 
