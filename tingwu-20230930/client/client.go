@@ -155,9 +155,11 @@ type CreateTaskRequestParameters struct {
 	// example:
 	//
 	// false
-	MeetingAssistanceEnabled *bool                                     `json:"MeetingAssistanceEnabled,omitempty" xml:"MeetingAssistanceEnabled,omitempty"`
-	PptExtractionEnabled     *bool                                     `json:"PptExtractionEnabled,omitempty" xml:"PptExtractionEnabled,omitempty"`
-	Summarization            *CreateTaskRequestParametersSummarization `json:"Summarization,omitempty" xml:"Summarization,omitempty" type:"Struct"`
+	MeetingAssistanceEnabled *bool                                         `json:"MeetingAssistanceEnabled,omitempty" xml:"MeetingAssistanceEnabled,omitempty"`
+	PptExtractionEnabled     *bool                                         `json:"PptExtractionEnabled,omitempty" xml:"PptExtractionEnabled,omitempty"`
+	ServiceInspection        *CreateTaskRequestParametersServiceInspection `json:"ServiceInspection,omitempty" xml:"ServiceInspection,omitempty" type:"Struct"`
+	ServiceInspectionEnabled *bool                                         `json:"ServiceInspectionEnabled,omitempty" xml:"ServiceInspectionEnabled,omitempty"`
+	Summarization            *CreateTaskRequestParametersSummarization     `json:"Summarization,omitempty" xml:"Summarization,omitempty" type:"Struct"`
 	// example:
 	//
 	// false
@@ -212,6 +214,16 @@ func (s *CreateTaskRequestParameters) SetMeetingAssistanceEnabled(v bool) *Creat
 
 func (s *CreateTaskRequestParameters) SetPptExtractionEnabled(v bool) *CreateTaskRequestParameters {
 	s.PptExtractionEnabled = &v
+	return s
+}
+
+func (s *CreateTaskRequestParameters) SetServiceInspection(v *CreateTaskRequestParametersServiceInspection) *CreateTaskRequestParameters {
+	s.ServiceInspection = v
+	return s
+}
+
+func (s *CreateTaskRequestParameters) SetServiceInspectionEnabled(v bool) *CreateTaskRequestParameters {
+	s.ServiceInspectionEnabled = &v
 	return s
 }
 
@@ -359,6 +371,64 @@ func (s CreateTaskRequestParametersMeetingAssistance) GoString() string {
 
 func (s *CreateTaskRequestParametersMeetingAssistance) SetTypes(v []*string) *CreateTaskRequestParametersMeetingAssistance {
 	s.Types = v
+	return s
+}
+
+type CreateTaskRequestParametersServiceInspection struct {
+	InspectionContents     []*CreateTaskRequestParametersServiceInspectionInspectionContents `json:"InspectionContents,omitempty" xml:"InspectionContents,omitempty" type:"Repeated"`
+	InspectionIntroduction *string                                                           `json:"InspectionIntroduction,omitempty" xml:"InspectionIntroduction,omitempty"`
+	SceneIntroduction      *string                                                           `json:"SceneIntroduction,omitempty" xml:"SceneIntroduction,omitempty"`
+	SpeakerMap             map[string]interface{}                                            `json:"SpeakerMap,omitempty" xml:"SpeakerMap,omitempty"`
+}
+
+func (s CreateTaskRequestParametersServiceInspection) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTaskRequestParametersServiceInspection) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTaskRequestParametersServiceInspection) SetInspectionContents(v []*CreateTaskRequestParametersServiceInspectionInspectionContents) *CreateTaskRequestParametersServiceInspection {
+	s.InspectionContents = v
+	return s
+}
+
+func (s *CreateTaskRequestParametersServiceInspection) SetInspectionIntroduction(v string) *CreateTaskRequestParametersServiceInspection {
+	s.InspectionIntroduction = &v
+	return s
+}
+
+func (s *CreateTaskRequestParametersServiceInspection) SetSceneIntroduction(v string) *CreateTaskRequestParametersServiceInspection {
+	s.SceneIntroduction = &v
+	return s
+}
+
+func (s *CreateTaskRequestParametersServiceInspection) SetSpeakerMap(v map[string]interface{}) *CreateTaskRequestParametersServiceInspection {
+	s.SpeakerMap = v
+	return s
+}
+
+type CreateTaskRequestParametersServiceInspectionInspectionContents struct {
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	Title   *string `json:"Title,omitempty" xml:"Title,omitempty"`
+}
+
+func (s CreateTaskRequestParametersServiceInspectionInspectionContents) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTaskRequestParametersServiceInspectionInspectionContents) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTaskRequestParametersServiceInspectionInspectionContents) SetContent(v string) *CreateTaskRequestParametersServiceInspectionInspectionContents {
+	s.Content = &v
+	return s
+}
+
+func (s *CreateTaskRequestParametersServiceInspectionInspectionContents) SetTitle(v string) *CreateTaskRequestParametersServiceInspectionInspectionContents {
+	s.Title = &v
 	return s
 }
 
