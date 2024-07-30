@@ -8070,30 +8070,50 @@ func (s *DescribeDefenseRecordsResponse) SetBody(v *DescribeDefenseRecordsRespon
 }
 
 type DescribeDestinationPortEventRequest struct {
+	// The type of the attack event that you want to query. Valid values:
+	//
+	// 	- **defense**: attack events that trigger traffic scrubbing.
+	//
+	// 	- **blackhole**: attack events that trigger blackhole filtering.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// defense
 	EventType *string `json:"EventType,omitempty" xml:"EventType,omitempty"`
+	// The IP address of the attacker.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 203.107.XX.XX
 	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	// The number of destination ports to return. The ports are sorted in descending order of the number of received request packets. By default, the first **10*	- ports are returned.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 2
 	Range *int64 `json:"Range,omitempty" xml:"Range,omitempty"`
+	// The region in which your service is deployed. Valid values:
+	//
+	// 	- **cn**: a region in the Chinese mainland.
+	//
+	// 	- **cn-hongkong**: a region outside the Chinese mainland.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// The beginning of the time range to query. The value is a UNIX timestamp. Unit: seconds.
+	//
+	// >  This UNIX timestamp must indicate a point in time that is accurate to the minute.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -8136,7 +8156,10 @@ func (s *DescribeDestinationPortEventRequest) SetStartTime(v int64) *DescribeDes
 }
 
 type DescribeDestinationPortEventResponseBody struct {
+	// The ports.
 	PortList []*DescribeDestinationPortEventResponseBodyPortList `json:"PortList,omitempty" xml:"PortList,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 9E7F6B2C-03F2-462F-9076-B782CF0DD502
@@ -8162,10 +8185,14 @@ func (s *DescribeDestinationPortEventResponseBody) SetRequestId(v string) *Descr
 }
 
 type DescribeDestinationPortEventResponseBodyPortList struct {
+	// The destination port.
+	//
 	// example:
 	//
 	// 80
 	DstPort *string `json:"DstPort,omitempty" xml:"DstPort,omitempty"`
+	// The number of request packets received by the destination port.
+	//
 	// example:
 	//
 	// 8760950
@@ -21522,7 +21549,8 @@ type DescribeWebCCRulesV2ResponseBodyWebCCRulesRuleDetailCondition struct {
 	// example:
 	//
 	// 192.0.XX.XX
-	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	Content     *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	ContentList *string `json:"ContentList,omitempty" xml:"ContentList,omitempty"`
 	// The match field.
 	//
 	// example:
@@ -21555,6 +21583,11 @@ func (s DescribeWebCCRulesV2ResponseBodyWebCCRulesRuleDetailCondition) GoString(
 
 func (s *DescribeWebCCRulesV2ResponseBodyWebCCRulesRuleDetailCondition) SetContent(v string) *DescribeWebCCRulesV2ResponseBodyWebCCRulesRuleDetailCondition {
 	s.Content = &v
+	return s
+}
+
+func (s *DescribeWebCCRulesV2ResponseBodyWebCCRulesRuleDetailCondition) SetContentList(v string) *DescribeWebCCRulesV2ResponseBodyWebCCRulesRuleDetailCondition {
+	s.ContentList = &v
 	return s
 }
 
@@ -25563,15 +25596,15 @@ func (s *ModifyFullLogTtlResponse) SetBody(v *ModifyFullLogTtlResponseBody) *Mod
 }
 
 type ModifyHeadersRequest struct {
-	// The key-value pair of the custom header. Key indicates the header name and Value indicates the header value. You can specify up to five key-value pairs. The key-value pairs can be up to 200 characters in length.
+	// The key-value pair of the custom header. The key specifies the header name, and the value specifies the header value. You can specify up to five key-value pairs. The key-value pairs can be up to 200 characters in length.
 	//
 	// Take note of the following items:
 	//
 	// 	- Do not use X-Forwarded-ClientSrcPort as a custom header.
 	//
-	// 	- Do not use a standard HTTP header such as User-Agent. If you use a standard HTTP header, the original header may be overwritten.
+	// 	- Do not use a standard HTTP header such as User-Agent. Otherwise, the original header may be overwritten.
 	//
-	// > If you set Key to X-Forwarded-ClientSrcPort, the actual source port of the client that accesses Anti-DDoS Pro or Anti-DDoS Premium (a Layer 7 proxy) is obtained. In this case, the Value is "".
+	// >  If you specify a key of X-Forwarded-ClientSrcPort, the system obtains the originating port of the client that accesses Anti-DDoS Proxy (a Layer 7 proxy). In this case, the value is an empty string.
 	//
 	// This parameter is required.
 	//
@@ -33166,7 +33199,7 @@ func (client *Client) DescribeDefenseRecords(request *DescribeDefenseRecordsRequ
 
 // Summary:
 //
-// 查询目的端口事件
+// Queries the number of request packets received by the destination ports of the attacked IP address that is protected by Anti-DDoS Proxy.
 //
 // @param request - DescribeDestinationPortEventRequest
 //
@@ -33224,7 +33257,7 @@ func (client *Client) DescribeDestinationPortEventWithOptions(request *DescribeD
 
 // Summary:
 //
-// 查询目的端口事件
+// Queries the number of request packets received by the destination ports of the attacked IP address that is protected by Anti-DDoS Proxy.
 //
 // @param request - DescribeDestinationPortEventRequest
 //
