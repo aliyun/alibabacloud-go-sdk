@@ -9460,6 +9460,12 @@ func (s *DescribeCloudGtmMonitorTemplateResponse) SetBody(v *DescribeCloudGtmMon
 }
 
 type DescribeCloudGtmSummaryRequest struct {
+	// The language of the response. Valid values:
+	//
+	// 	- zh-CN: Chinese
+	//
+	// 	- en-US: English
+	//
 	// example:
 	//
 	// en-US
@@ -9480,18 +9486,26 @@ func (s *DescribeCloudGtmSummaryRequest) SetAcceptLanguage(v string) *DescribeCl
 }
 
 type DescribeCloudGtmSummaryResponseBody struct {
+	// The total number of instances within the current account.
+	//
 	// example:
 	//
 	// 10
 	InstanceTotalCount *int32 `json:"InstanceTotalCount,omitempty" xml:"InstanceTotalCount,omitempty"`
-	// example:
+	// The total number of configured health check tasks.
 	//
-	// 101
-	MonitorTaskTotalCount *int32 `json:"MonitorTaskTotalCount,omitempty" xml:"MonitorTaskTotalCount,omitempty"`
 	// example:
 	//
 	// 20
+	MonitorTaskTotalCount *int32 `json:"MonitorTaskTotalCount,omitempty" xml:"MonitorTaskTotalCount,omitempty"`
+	// The quota on the number of health check tasks.
+	//
+	// example:
+	//
+	// 101
 	MonitorTaskTotalQuota *int32 `json:"MonitorTaskTotalQuota,omitempty" xml:"MonitorTaskTotalQuota,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 199C3699-9A7B-41A1-BB5A-F1E862D3CB38
@@ -28938,6 +28952,7 @@ type DescribePdnsUdpIpSegmentsResponseBody struct {
 	PageSize   *int64                                             `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	RequestId  *string                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	TotalCount *int64                                             `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	TotalPages *string                                            `json:"TotalPages,omitempty" xml:"TotalPages,omitempty"`
 }
 
 func (s DescribePdnsUdpIpSegmentsResponseBody) String() string {
@@ -28970,6 +28985,11 @@ func (s *DescribePdnsUdpIpSegmentsResponseBody) SetRequestId(v string) *Describe
 
 func (s *DescribePdnsUdpIpSegmentsResponseBody) SetTotalCount(v int64) *DescribePdnsUdpIpSegmentsResponseBody {
 	s.TotalCount = &v
+	return s
+}
+
+func (s *DescribePdnsUdpIpSegmentsResponseBody) SetTotalPages(v string) *DescribePdnsUdpIpSegmentsResponseBody {
+	s.TotalPages = &v
 	return s
 }
 
@@ -41824,24 +41844,44 @@ func (s *UpdateCloudGtmGlobalAlertResponse) SetBody(v *UpdateCloudGtmGlobalAlert
 }
 
 type UpdateCloudGtmInstanceConfigAlertRequest struct {
+	// The language of the response. Valid values:
+	//
+	// 	- zh-CN: Chinese
+	//
+	// 	- en-US: English
+	//
 	// example:
 	//
 	// zh-CN
-	AcceptLanguage *string                                                `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	AlertConfig    []*UpdateCloudGtmInstanceConfigAlertRequestAlertConfig `json:"AlertConfig,omitempty" xml:"AlertConfig,omitempty" type:"Repeated"`
-	AlertGroup     []*string                                              `json:"AlertGroup,omitempty" xml:"AlertGroup,omitempty" type:"Repeated"`
+	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// The alert configurations.
+	AlertConfig []*UpdateCloudGtmInstanceConfigAlertRequestAlertConfig `json:"AlertConfig,omitempty" xml:"AlertConfig,omitempty" type:"Repeated"`
+	// The alert contact groups.
+	AlertGroup []*string `json:"AlertGroup,omitempty" xml:"AlertGroup,omitempty" type:"Repeated"`
+	// The alert configuration mode of the instance. Valid values:
+	//
+	// 	- global: global alert configuration
+	//
+	// 	- instance_config: custom alert configuration
+	//
 	// example:
 	//
 	// global
 	AlertMode *string `json:"AlertMode,omitempty" xml:"AlertMode,omitempty"`
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	//
 	// example:
 	//
 	// 1ae05db4-10e7-11ef-b126-00163e24**22
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The configuration ID of the access domain name. Two configuration IDs exist when an A record and an AAAA record are configured for the access domain name that is bound to the GTM instance. This ID uniquely identifies a configuration.
+	//
 	// example:
 	//
 	// Config-000**11
 	ConfigId *string `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// The ID of the Global Traffic Manager (GTM) 3.0 instance.
+	//
 	// example:
 	//
 	// gtm-cn-zz11t58**0s
@@ -41892,18 +41932,48 @@ func (s *UpdateCloudGtmInstanceConfigAlertRequest) SetInstanceId(v string) *Upda
 }
 
 type UpdateCloudGtmInstanceConfigAlertRequestAlertConfig struct {
+	// Specifies whether to configure DingTalk notifications. Valid values:
+	//
+	// 	- true: DingTalk notifications are configured. DingTalk notifications are sent when alerts are triggered.
+	//
+	// 	- false: DingTalk notifications are not configured.
+	//
 	// example:
 	//
 	// true
 	DingtalkNotice *bool `json:"DingtalkNotice,omitempty" xml:"DingtalkNotice,omitempty"`
+	// Specifies whether to configure email notifications. Valid values:
+	//
+	// 	- true: Email notifications are configured. Emails are sent when alerts are triggered.
+	//
+	// 	- false: Email notifications are not configured.
+	//
 	// example:
 	//
 	// true
 	EmailNotice *bool `json:"EmailNotice,omitempty" xml:"EmailNotice,omitempty"`
+	// The type of the alert event. Valid values:
+	//
+	// 	- addr_alert: The address is unavailable.
+	//
+	// 	- addr_resume: The address becomes available.
+	//
+	// 	- addr_pool_unavailable: The address pool is unavailable.
+	//
+	// 	- addr_pool_available: The address pool becomes available.
+	//
 	// example:
 	//
 	// addr_alert
 	NoticeType *string `json:"NoticeType,omitempty" xml:"NoticeType,omitempty"`
+	// Specifies whether to configure text message notifications. Valid values:
+	//
+	// 	- true: Text message notifications are configured. Text messages are sent when alerts are triggered.
+	//
+	// 	- false: Text message notifications are not configured.
+	//
+	// Only the China site (aliyun.com) supports text message notifications.
+	//
 	// example:
 	//
 	// true
@@ -41939,24 +42009,44 @@ func (s *UpdateCloudGtmInstanceConfigAlertRequestAlertConfig) SetSmsNotice(v boo
 }
 
 type UpdateCloudGtmInstanceConfigAlertShrinkRequest struct {
+	// The language of the response. Valid values:
+	//
+	// 	- zh-CN: Chinese
+	//
+	// 	- en-US: English
+	//
 	// example:
 	//
 	// zh-CN
-	AcceptLanguage    *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// The alert configurations.
 	AlertConfigShrink *string `json:"AlertConfig,omitempty" xml:"AlertConfig,omitempty"`
-	AlertGroupShrink  *string `json:"AlertGroup,omitempty" xml:"AlertGroup,omitempty"`
+	// The alert contact groups.
+	AlertGroupShrink *string `json:"AlertGroup,omitempty" xml:"AlertGroup,omitempty"`
+	// The alert configuration mode of the instance. Valid values:
+	//
+	// 	- global: global alert configuration
+	//
+	// 	- instance_config: custom alert configuration
+	//
 	// example:
 	//
 	// global
 	AlertMode *string `json:"AlertMode,omitempty" xml:"AlertMode,omitempty"`
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	//
 	// example:
 	//
 	// 1ae05db4-10e7-11ef-b126-00163e24**22
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The configuration ID of the access domain name. Two configuration IDs exist when an A record and an AAAA record are configured for the access domain name that is bound to the GTM instance. This ID uniquely identifies a configuration.
+	//
 	// example:
 	//
 	// Config-000**11
 	ConfigId *string `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// The ID of the Global Traffic Manager (GTM) 3.0 instance.
+	//
 	// example:
 	//
 	// gtm-cn-zz11t58**0s
@@ -42007,10 +42097,18 @@ func (s *UpdateCloudGtmInstanceConfigAlertShrinkRequest) SetInstanceId(v string)
 }
 
 type UpdateCloudGtmInstanceConfigAlertResponseBody struct {
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 536E9CAD-DB30-4647-AC87-AA5CC38C5382
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false**
+	//
 	// example:
 	//
 	// true
@@ -44518,7 +44616,7 @@ type UpdateDnsGtmMonitorRequest struct {
 	//
 	// example:
 	//
-	// 30000
+	// 3000
 	Timeout *int32 `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
 }
 
