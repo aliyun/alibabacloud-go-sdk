@@ -2976,8 +2976,6 @@ type ListExchangesRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The maximum number of entries to return. Valid values: **1 to 100**
 	//
-	// This parameter is required.
-	//
 	// example:
 	//
 	// 1
