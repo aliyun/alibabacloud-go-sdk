@@ -2386,9 +2386,11 @@ type CreateDBClusterEndpointRequest struct {
 	// example:
 	//
 	// pi-**********,pi-*********
-	Nodes        *string `json:"Nodes,omitempty" xml:"Nodes,omitempty"`
-	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	Nodes                 *string `json:"Nodes,omitempty" xml:"Nodes,omitempty"`
+	OwnerAccount          *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId               *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	PolarSccTimeoutAction *string `json:"PolarSccTimeoutAction,omitempty" xml:"PolarSccTimeoutAction,omitempty"`
+	PolarSccWaitTimeout   *string `json:"PolarSccWaitTimeout,omitempty" xml:"PolarSccWaitTimeout,omitempty"`
 	// The read/write mode. Valid values:
 	//
 	// 	- **ReadWrite**: receives and forwards read and write requests. Automatic read/write splitting is enabled.
@@ -2403,6 +2405,7 @@ type CreateDBClusterEndpointRequest struct {
 	ReadWriteMode        *string `json:"ReadWriteMode,omitempty" xml:"ReadWriteMode,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	SccMode              *string `json:"SccMode,omitempty" xml:"SccMode,omitempty"`
 }
 
 func (s CreateDBClusterEndpointRequest) String() string {
@@ -2458,6 +2461,16 @@ func (s *CreateDBClusterEndpointRequest) SetOwnerId(v int64) *CreateDBClusterEnd
 	return s
 }
 
+func (s *CreateDBClusterEndpointRequest) SetPolarSccTimeoutAction(v string) *CreateDBClusterEndpointRequest {
+	s.PolarSccTimeoutAction = &v
+	return s
+}
+
+func (s *CreateDBClusterEndpointRequest) SetPolarSccWaitTimeout(v string) *CreateDBClusterEndpointRequest {
+	s.PolarSccWaitTimeout = &v
+	return s
+}
+
 func (s *CreateDBClusterEndpointRequest) SetReadWriteMode(v string) *CreateDBClusterEndpointRequest {
 	s.ReadWriteMode = &v
 	return s
@@ -2470,6 +2483,11 @@ func (s *CreateDBClusterEndpointRequest) SetResourceOwnerAccount(v string) *Crea
 
 func (s *CreateDBClusterEndpointRequest) SetResourceOwnerId(v int64) *CreateDBClusterEndpointRequest {
 	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *CreateDBClusterEndpointRequest) SetSccMode(v string) *CreateDBClusterEndpointRequest {
+	s.SccMode = &v
 	return s
 }
 
@@ -9718,6 +9736,7 @@ type DescribeDBClusterAttributeResponseBodyDBNodes struct {
 	// 32000
 	MaxIOPS          *int32  `json:"MaxIOPS,omitempty" xml:"MaxIOPS,omitempty"`
 	MemorySize       *string `json:"MemorySize,omitempty" xml:"MemorySize,omitempty"`
+	MirrorInsName    *string `json:"MirrorInsName,omitempty" xml:"MirrorInsName,omitempty"`
 	Orca             *string `json:"Orca,omitempty" xml:"Orca,omitempty"`
 	RemoteMemorySize *string `json:"RemoteMemorySize,omitempty" xml:"RemoteMemorySize,omitempty"`
 	// Indicates whether the global consistency (high-performance mode) feature is enabled for the node. Valid values:
@@ -9830,6 +9849,11 @@ func (s *DescribeDBClusterAttributeResponseBodyDBNodes) SetMaxIOPS(v int32) *Des
 
 func (s *DescribeDBClusterAttributeResponseBodyDBNodes) SetMemorySize(v string) *DescribeDBClusterAttributeResponseBodyDBNodes {
 	s.MemorySize = &v
+	return s
+}
+
+func (s *DescribeDBClusterAttributeResponseBodyDBNodes) SetMirrorInsName(v string) *DescribeDBClusterAttributeResponseBodyDBNodes {
+	s.MirrorInsName = &v
 	return s
 }
 
@@ -10715,7 +10739,9 @@ type DescribeDBClusterEndpointsResponseBodyItems struct {
 	// example:
 	//
 	// pi-***************,pi-***************
-	Nodes *string `json:"Nodes,omitempty" xml:"Nodes,omitempty"`
+	Nodes                 *string `json:"Nodes,omitempty" xml:"Nodes,omitempty"`
+	PolarSccTimeoutAction *string `json:"PolarSccTimeoutAction,omitempty" xml:"PolarSccTimeoutAction,omitempty"`
+	PolarSccWaitTimeout   *string `json:"PolarSccWaitTimeout,omitempty" xml:"PolarSccWaitTimeout,omitempty"`
 	// The read/write mode. Valid values:
 	//
 	// 	- **ReadWrite**: handles read and write requests. Automatic read/write splitting is enabled.
@@ -10726,6 +10752,7 @@ type DescribeDBClusterEndpointsResponseBodyItems struct {
 	//
 	// ReadOnly
 	ReadWriteMode *string `json:"ReadWriteMode,omitempty" xml:"ReadWriteMode,omitempty"`
+	SccMode       *string `json:"SccMode,omitempty" xml:"SccMode,omitempty"`
 }
 
 func (s DescribeDBClusterEndpointsResponseBodyItems) String() string {
@@ -10781,8 +10808,23 @@ func (s *DescribeDBClusterEndpointsResponseBodyItems) SetNodes(v string) *Descri
 	return s
 }
 
+func (s *DescribeDBClusterEndpointsResponseBodyItems) SetPolarSccTimeoutAction(v string) *DescribeDBClusterEndpointsResponseBodyItems {
+	s.PolarSccTimeoutAction = &v
+	return s
+}
+
+func (s *DescribeDBClusterEndpointsResponseBodyItems) SetPolarSccWaitTimeout(v string) *DescribeDBClusterEndpointsResponseBodyItems {
+	s.PolarSccWaitTimeout = &v
+	return s
+}
+
 func (s *DescribeDBClusterEndpointsResponseBodyItems) SetReadWriteMode(v string) *DescribeDBClusterEndpointsResponseBodyItems {
 	s.ReadWriteMode = &v
+	return s
+}
+
+func (s *DescribeDBClusterEndpointsResponseBodyItems) SetSccMode(v string) *DescribeDBClusterEndpointsResponseBodyItems {
+	s.SccMode = &v
 	return s
 }
 
@@ -12728,6 +12770,7 @@ func (s *DescribeDBClusterServerlessConfRequest) SetResourceOwnerId(v int64) *De
 }
 
 type DescribeDBClusterServerlessConfResponseBody struct {
+	AgileScaleMax *string `json:"AgileScaleMax,omitempty" xml:"AgileScaleMax,omitempty"`
 	// Indicates whether the no-activity suspension feature is enabled. Default value: false. Valid values:
 	//
 	// 	- **true**
@@ -12786,6 +12829,7 @@ type DescribeDBClusterServerlessConfResponseBody struct {
 	ServerlessRuleCpuShrinkThreshold  *string `json:"ServerlessRuleCpuShrinkThreshold,omitempty" xml:"ServerlessRuleCpuShrinkThreshold,omitempty"`
 	ServerlessRuleMode                *string `json:"ServerlessRuleMode,omitempty" xml:"ServerlessRuleMode,omitempty"`
 	Switchs                           *string `json:"Switchs,omitempty" xml:"Switchs,omitempty"`
+	TraditionalScaleMaxThreshold      *string `json:"TraditionalScaleMaxThreshold,omitempty" xml:"TraditionalScaleMaxThreshold,omitempty"`
 }
 
 func (s DescribeDBClusterServerlessConfResponseBody) String() string {
@@ -12794,6 +12838,11 @@ func (s DescribeDBClusterServerlessConfResponseBody) String() string {
 
 func (s DescribeDBClusterServerlessConfResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeDBClusterServerlessConfResponseBody) SetAgileScaleMax(v string) *DescribeDBClusterServerlessConfResponseBody {
+	s.AgileScaleMax = &v
+	return s
 }
 
 func (s *DescribeDBClusterServerlessConfResponseBody) SetAllowShutDown(v string) *DescribeDBClusterServerlessConfResponseBody {
@@ -12863,6 +12912,11 @@ func (s *DescribeDBClusterServerlessConfResponseBody) SetServerlessRuleMode(v st
 
 func (s *DescribeDBClusterServerlessConfResponseBody) SetSwitchs(v string) *DescribeDBClusterServerlessConfResponseBody {
 	s.Switchs = &v
+	return s
+}
+
+func (s *DescribeDBClusterServerlessConfResponseBody) SetTraditionalScaleMaxThreshold(v string) *DescribeDBClusterServerlessConfResponseBody {
+	s.TraditionalScaleMaxThreshold = &v
 	return s
 }
 
@@ -26767,9 +26821,11 @@ type ModifyDBClusterEndpointRequest struct {
 	// example:
 	//
 	// pi-**************,pi-*************
-	Nodes        *string `json:"Nodes,omitempty" xml:"Nodes,omitempty"`
-	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	Nodes                 *string `json:"Nodes,omitempty" xml:"Nodes,omitempty"`
+	OwnerAccount          *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId               *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	PolarSccTimeoutAction *string `json:"PolarSccTimeoutAction,omitempty" xml:"PolarSccTimeoutAction,omitempty"`
+	PolarSccWaitTimeout   *string `json:"PolarSccWaitTimeout,omitempty" xml:"PolarSccWaitTimeout,omitempty"`
 	// The read/write mode. Valid values:
 	//
 	// 	- **ReadWrite**: The cluster endpoint handles read and write requests. Automatic read/write splitting is enabled.
@@ -26782,6 +26838,7 @@ type ModifyDBClusterEndpointRequest struct {
 	ReadWriteMode        *string `json:"ReadWriteMode,omitempty" xml:"ReadWriteMode,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	SccMode              *string `json:"SccMode,omitempty" xml:"SccMode,omitempty"`
 }
 
 func (s ModifyDBClusterEndpointRequest) String() string {
@@ -26832,6 +26889,16 @@ func (s *ModifyDBClusterEndpointRequest) SetOwnerId(v int64) *ModifyDBClusterEnd
 	return s
 }
 
+func (s *ModifyDBClusterEndpointRequest) SetPolarSccTimeoutAction(v string) *ModifyDBClusterEndpointRequest {
+	s.PolarSccTimeoutAction = &v
+	return s
+}
+
+func (s *ModifyDBClusterEndpointRequest) SetPolarSccWaitTimeout(v string) *ModifyDBClusterEndpointRequest {
+	s.PolarSccWaitTimeout = &v
+	return s
+}
+
 func (s *ModifyDBClusterEndpointRequest) SetReadWriteMode(v string) *ModifyDBClusterEndpointRequest {
 	s.ReadWriteMode = &v
 	return s
@@ -26844,6 +26911,11 @@ func (s *ModifyDBClusterEndpointRequest) SetResourceOwnerAccount(v string) *Modi
 
 func (s *ModifyDBClusterEndpointRequest) SetResourceOwnerId(v int64) *ModifyDBClusterEndpointRequest {
 	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *ModifyDBClusterEndpointRequest) SetSccMode(v string) *ModifyDBClusterEndpointRequest {
+	s.SccMode = &v
 	return s
 }
 
@@ -34614,6 +34686,14 @@ func (client *Client) CreateDBClusterEndpointWithOptions(request *CreateDBCluste
 		query["OwnerId"] = request.OwnerId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.PolarSccTimeoutAction)) {
+		query["PolarSccTimeoutAction"] = request.PolarSccTimeoutAction
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PolarSccWaitTimeout)) {
+		query["PolarSccWaitTimeout"] = request.PolarSccWaitTimeout
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ReadWriteMode)) {
 		query["ReadWriteMode"] = request.ReadWriteMode
 	}
@@ -34624,6 +34704,10 @@ func (client *Client) CreateDBClusterEndpointWithOptions(request *CreateDBCluste
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
 		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SccMode)) {
+		query["SccMode"] = request.SccMode
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -43210,6 +43294,14 @@ func (client *Client) ModifyDBClusterEndpointWithOptions(request *ModifyDBCluste
 		query["OwnerId"] = request.OwnerId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.PolarSccTimeoutAction)) {
+		query["PolarSccTimeoutAction"] = request.PolarSccTimeoutAction
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PolarSccWaitTimeout)) {
+		query["PolarSccWaitTimeout"] = request.PolarSccWaitTimeout
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ReadWriteMode)) {
 		query["ReadWriteMode"] = request.ReadWriteMode
 	}
@@ -43220,6 +43312,10 @@ func (client *Client) ModifyDBClusterEndpointWithOptions(request *ModifyDBCluste
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
 		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SccMode)) {
+		query["SccMode"] = request.SccMode
 	}
 
 	req := &openapi.OpenApiRequest{
