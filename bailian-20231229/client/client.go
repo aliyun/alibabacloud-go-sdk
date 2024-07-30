@@ -9,6 +9,163 @@ import (
 	"github.com/alibabacloud-go/tea/tea"
 )
 
+type AddCategoryRequest struct {
+	// This parameter is required.
+	CategoryName *string `json:"CategoryName,omitempty" xml:"CategoryName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// UNSTRUCTURED
+	CategoryType *string `json:"CategoryType,omitempty" xml:"CategoryType,omitempty"`
+	// example:
+	//
+	// cate_cdd11b1b79a74e8bbd675c356a91ee3XXXXXXXX
+	ParentCategoryId *string `json:"ParentCategoryId,omitempty" xml:"ParentCategoryId,omitempty"`
+}
+
+func (s AddCategoryRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddCategoryRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AddCategoryRequest) SetCategoryName(v string) *AddCategoryRequest {
+	s.CategoryName = &v
+	return s
+}
+
+func (s *AddCategoryRequest) SetCategoryType(v string) *AddCategoryRequest {
+	s.CategoryType = &v
+	return s
+}
+
+func (s *AddCategoryRequest) SetParentCategoryId(v string) *AddCategoryRequest {
+	s.ParentCategoryId = &v
+	return s
+}
+
+type AddCategoryResponseBody struct {
+	// example:
+	//
+	// success
+	Code *string                      `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *AddCategoryResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// Requests throttling triggered.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 778C0B3B-03C1-5FC1-A947-36EDD13606AB
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 200
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s AddCategoryResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddCategoryResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *AddCategoryResponseBody) SetCode(v string) *AddCategoryResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *AddCategoryResponseBody) SetData(v *AddCategoryResponseBodyData) *AddCategoryResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *AddCategoryResponseBody) SetMessage(v string) *AddCategoryResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *AddCategoryResponseBody) SetRequestId(v string) *AddCategoryResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *AddCategoryResponseBody) SetStatus(v string) *AddCategoryResponseBody {
+	s.Status = &v
+	return s
+}
+
+func (s *AddCategoryResponseBody) SetSuccess(v bool) *AddCategoryResponseBody {
+	s.Success = &v
+	return s
+}
+
+type AddCategoryResponseBodyData struct {
+	// example:
+	//
+	// cate_cdd11b1b79a74e8bbd675c356a91ee3XXXXXXXX
+	CategoryId   *string `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
+	CategoryName *string `json:"CategoryName,omitempty" xml:"CategoryName,omitempty"`
+}
+
+func (s AddCategoryResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddCategoryResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *AddCategoryResponseBodyData) SetCategoryId(v string) *AddCategoryResponseBodyData {
+	s.CategoryId = &v
+	return s
+}
+
+func (s *AddCategoryResponseBodyData) SetCategoryName(v string) *AddCategoryResponseBodyData {
+	s.CategoryName = &v
+	return s
+}
+
+type AddCategoryResponse struct {
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AddCategoryResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s AddCategoryResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddCategoryResponse) GoString() string {
+	return s.String()
+}
+
+func (s *AddCategoryResponse) SetHeaders(v map[string]*string) *AddCategoryResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *AddCategoryResponse) SetStatusCode(v int32) *AddCategoryResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *AddCategoryResponse) SetBody(v *AddCategoryResponseBody) *AddCategoryResponse {
+	s.Body = v
+	return s
+}
+
 type AddFileRequest struct {
 	// This parameter is required.
 	//
@@ -833,6 +990,120 @@ func (s *CreateIndexResponse) SetBody(v *CreateIndexResponseBody) *CreateIndexRe
 	return s
 }
 
+type DeleteCategoryResponseBody struct {
+	// example:
+	//
+	// success
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// data
+	Data *DeleteCategoryResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// workspace id is null or invalid.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 17204B98-xxxx-4F9A-8464-2446A84821CA
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 200
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DeleteCategoryResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteCategoryResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteCategoryResponseBody) SetCode(v string) *DeleteCategoryResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DeleteCategoryResponseBody) SetData(v *DeleteCategoryResponseBodyData) *DeleteCategoryResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DeleteCategoryResponseBody) SetMessage(v string) *DeleteCategoryResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DeleteCategoryResponseBody) SetRequestId(v string) *DeleteCategoryResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteCategoryResponseBody) SetStatus(v string) *DeleteCategoryResponseBody {
+	s.Status = &v
+	return s
+}
+
+func (s *DeleteCategoryResponseBody) SetSuccess(v bool) *DeleteCategoryResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DeleteCategoryResponseBodyData struct {
+	// example:
+	//
+	// cate_cdd11b1b79a74e8bbd675c356a91ee3XXXXXXXX
+	CategoryId *string `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
+}
+
+func (s DeleteCategoryResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteCategoryResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteCategoryResponseBodyData) SetCategoryId(v string) *DeleteCategoryResponseBodyData {
+	s.CategoryId = &v
+	return s
+}
+
+type DeleteCategoryResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteCategoryResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteCategoryResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteCategoryResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteCategoryResponse) SetHeaders(v map[string]*string) *DeleteCategoryResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteCategoryResponse) SetStatusCode(v int32) *DeleteCategoryResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteCategoryResponse) SetBody(v *DeleteCategoryResponseBody) *DeleteCategoryResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteFileResponseBody struct {
 	// example:
 	//
@@ -1605,6 +1876,254 @@ func (s *GetIndexJobStatusResponse) SetStatusCode(v int32) *GetIndexJobStatusRes
 }
 
 func (s *GetIndexJobStatusResponse) SetBody(v *GetIndexJobStatusResponseBody) *GetIndexJobStatusResponse {
+	s.Body = v
+	return s
+}
+
+type ListCategoryRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// UNSTRUCTURED
+	CategoryType *string `json:"CategoryType,omitempty" xml:"CategoryType,omitempty"`
+	// example:
+	//
+	// 20
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// example:
+	//
+	// AAAAAdH70eOCSCKtacdomNzak4U=
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// example:
+	//
+	// cate_cdd11b1b79a74e8bbd675c356a91ee3XXXXXXXX
+	ParentCategoryId *string `json:"ParentCategoryId,omitempty" xml:"ParentCategoryId,omitempty"`
+}
+
+func (s ListCategoryRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCategoryRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListCategoryRequest) SetCategoryType(v string) *ListCategoryRequest {
+	s.CategoryType = &v
+	return s
+}
+
+func (s *ListCategoryRequest) SetMaxResults(v int32) *ListCategoryRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListCategoryRequest) SetNextToken(v string) *ListCategoryRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListCategoryRequest) SetParentCategoryId(v string) *ListCategoryRequest {
+	s.ParentCategoryId = &v
+	return s
+}
+
+type ListCategoryResponseBody struct {
+	// example:
+	//
+	// success
+	Code *string                       `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *ListCategoryResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// workspace id is null or invalid.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 17204B98-xxxx-4F9A-8464-2446A84821CA
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 200
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ListCategoryResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCategoryResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListCategoryResponseBody) SetCode(v string) *ListCategoryResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListCategoryResponseBody) SetData(v *ListCategoryResponseBodyData) *ListCategoryResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListCategoryResponseBody) SetMessage(v string) *ListCategoryResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListCategoryResponseBody) SetRequestId(v string) *ListCategoryResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListCategoryResponseBody) SetStatus(v string) *ListCategoryResponseBody {
+	s.Status = &v
+	return s
+}
+
+func (s *ListCategoryResponseBody) SetSuccess(v bool) *ListCategoryResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ListCategoryResponseBodyData struct {
+	CategoryList []*ListCategoryResponseBodyDataCategoryList `json:"CategoryList,omitempty" xml:"CategoryList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// true
+	HasNext *bool `json:"HasNext,omitempty" xml:"HasNext,omitempty"`
+	// example:
+	//
+	// 20
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// example:
+	//
+	// AAAAALHWGpGoYCcYMxiFfmlhvh7Z4G8jiXR6IjHYd+M9WQVJ
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// example:
+	//
+	// 20
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListCategoryResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCategoryResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListCategoryResponseBodyData) SetCategoryList(v []*ListCategoryResponseBodyDataCategoryList) *ListCategoryResponseBodyData {
+	s.CategoryList = v
+	return s
+}
+
+func (s *ListCategoryResponseBodyData) SetHasNext(v bool) *ListCategoryResponseBodyData {
+	s.HasNext = &v
+	return s
+}
+
+func (s *ListCategoryResponseBodyData) SetMaxResults(v int32) *ListCategoryResponseBodyData {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListCategoryResponseBodyData) SetNextToken(v string) *ListCategoryResponseBodyData {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListCategoryResponseBodyData) SetTotalCount(v int32) *ListCategoryResponseBodyData {
+	s.TotalCount = &v
+	return s
+}
+
+type ListCategoryResponseBodyDataCategoryList struct {
+	// example:
+	//
+	// cate_cdd11b1b79a74e8bbd675c356a91ee3XXXXXXXX
+	CategoryId   *string `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
+	CategoryName *string `json:"CategoryName,omitempty" xml:"CategoryName,omitempty"`
+	// example:
+	//
+	// UNSTRUCTURED
+	CategoryType *string `json:"CategoryType,omitempty" xml:"CategoryType,omitempty"`
+	// example:
+	//
+	// true
+	IsDefault *bool `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
+	// example:
+	//
+	// cate_addd11b1b79a74e8bbd675c356a91ee3XXXXXXXX
+	ParentCategoryId *string `json:"ParentCategoryId,omitempty" xml:"ParentCategoryId,omitempty"`
+}
+
+func (s ListCategoryResponseBodyDataCategoryList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCategoryResponseBodyDataCategoryList) GoString() string {
+	return s.String()
+}
+
+func (s *ListCategoryResponseBodyDataCategoryList) SetCategoryId(v string) *ListCategoryResponseBodyDataCategoryList {
+	s.CategoryId = &v
+	return s
+}
+
+func (s *ListCategoryResponseBodyDataCategoryList) SetCategoryName(v string) *ListCategoryResponseBodyDataCategoryList {
+	s.CategoryName = &v
+	return s
+}
+
+func (s *ListCategoryResponseBodyDataCategoryList) SetCategoryType(v string) *ListCategoryResponseBodyDataCategoryList {
+	s.CategoryType = &v
+	return s
+}
+
+func (s *ListCategoryResponseBodyDataCategoryList) SetIsDefault(v bool) *ListCategoryResponseBodyDataCategoryList {
+	s.IsDefault = &v
+	return s
+}
+
+func (s *ListCategoryResponseBodyDataCategoryList) SetParentCategoryId(v string) *ListCategoryResponseBodyDataCategoryList {
+	s.ParentCategoryId = &v
+	return s
+}
+
+type ListCategoryResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListCategoryResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListCategoryResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCategoryResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListCategoryResponse) SetHeaders(v map[string]*string) *ListCategoryResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListCategoryResponse) SetStatusCode(v int32) *ListCategoryResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListCategoryResponse) SetBody(v *ListCategoryResponseBody) *ListCategoryResponse {
 	s.Body = v
 	return s
 }
@@ -3205,6 +3724,70 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
+// @param request - AddCategoryRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AddCategoryResponse
+func (client *Client) AddCategoryWithOptions(WorkspaceId *string, request *AddCategoryRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *AddCategoryResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CategoryName)) {
+		body["CategoryName"] = request.CategoryName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CategoryType)) {
+		body["CategoryType"] = request.CategoryType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ParentCategoryId)) {
+		body["ParentCategoryId"] = request.ParentCategoryId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AddCategory"),
+		Version:     tea.String("2023-12-29"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/" + tea.StringValue(openapiutil.GetEncodeParam(WorkspaceId)) + "/datacenter/category/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &AddCategoryResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - AddCategoryRequest
+//
+// @return AddCategoryResponse
+func (client *Client) AddCategory(WorkspaceId *string, request *AddCategoryRequest) (_result *AddCategoryResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &AddCategoryResponse{}
+	_body, _err := client.AddCategoryWithOptions(WorkspaceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 // Summary:
 //
 // 将临时上传的文档导入百炼数据中心，导入成功之后会自动触发文档解析。
@@ -3480,6 +4063,48 @@ func (client *Client) CreateIndex(WorkspaceId *string, request *CreateIndexReque
 	headers := make(map[string]*string)
 	_result = &CreateIndexResponse{}
 	_body, _err := client.CreateIndexWithOptions(WorkspaceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteCategoryResponse
+func (client *Client) DeleteCategoryWithOptions(CategoryId *string, WorkspaceId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteCategoryResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteCategory"),
+		Version:     tea.String("2023-12-29"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/" + tea.StringValue(openapiutil.GetEncodeParam(WorkspaceId)) + "/datacenter/category/" + tea.StringValue(openapiutil.GetEncodeParam(CategoryId)) + "/"),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteCategoryResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @return DeleteCategoryResponse
+func (client *Client) DeleteCategory(CategoryId *string, WorkspaceId *string) (_result *DeleteCategoryResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteCategoryResponse{}
+	_body, _err := client.DeleteCategoryWithOptions(CategoryId, WorkspaceId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3786,6 +4411,82 @@ func (client *Client) GetIndexJobStatus(WorkspaceId *string, request *GetIndexJo
 	headers := make(map[string]*string)
 	_result = &GetIndexJobStatusResponse{}
 	_body, _err := client.GetIndexJobStatusWithOptions(WorkspaceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// ListCategory
+//
+// @param request - ListCategoryRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListCategoryResponse
+func (client *Client) ListCategoryWithOptions(WorkspaceId *string, request *ListCategoryRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListCategoryResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CategoryType)) {
+		body["CategoryType"] = request.CategoryType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		body["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		body["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ParentCategoryId)) {
+		body["ParentCategoryId"] = request.ParentCategoryId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListCategory"),
+		Version:     tea.String("2023-12-29"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/" + tea.StringValue(openapiutil.GetEncodeParam(WorkspaceId)) + "/datacenter/categories"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListCategoryResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// ListCategory
+//
+// @param request - ListCategoryRequest
+//
+// @return ListCategoryResponse
+func (client *Client) ListCategory(WorkspaceId *string, request *ListCategoryRequest) (_result *ListCategoryResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListCategoryResponse{}
+	_body, _err := client.ListCategoryWithOptions(WorkspaceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
