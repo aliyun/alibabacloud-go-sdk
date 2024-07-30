@@ -174,19 +174,40 @@ func (s *AddServiceSharedAccountsResponse) SetBody(v *AddServiceSharedAccountsRe
 }
 
 type ApproveServiceUsageRequest struct {
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+	//
 	// example:
 	//
 	// 10CM943JP0EN9D51H
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	Comments    *string `json:"Comments,omitempty" xml:"Comments,omitempty"`
-	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Approval comments.
+	//
+	// example:
+	//
+	// Welcome to TuGraph. Your application has been approved. Should you have any questions, please feel free to email us at tugraph@service.alipay.com or call our contact number 400-903-0809. Contact person: Yuansu.
+	Comments *string `json:"Comments,omitempty" xml:"Comments,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The service ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// service-39f4f251e94843xxxxxx
 	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
-	Type      *int32  `json:"Type,omitempty" xml:"Type,omitempty"`
+	// ServiceSharedAccountType，
+	//
+	// example:
+	//
+	// SharedAccount
+	Type *int32 `json:"Type,omitempty" xml:"Type,omitempty"`
+	// User ali uid.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -234,6 +255,8 @@ func (s *ApproveServiceUsageRequest) SetUserAliUid(v int64) *ApproveServiceUsage
 }
 
 type ApproveServiceUsageResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 4DB0F536-B3BE-4F0D-BD29-E83FB56D550C
@@ -2170,6 +2193,8 @@ func (s *CreateServiceInstanceResponse) SetBody(v *CreateServiceInstanceResponse
 }
 
 type CreateServiceUsageRequest struct {
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	//
 	// example:
 	//
 	// mRdxWuW2ts
@@ -2180,6 +2205,8 @@ type CreateServiceUsageRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The service ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -8767,25 +8794,40 @@ func (s *ListServiceInstancesResponse) SetBody(v *ListServiceInstancesResponseBo
 }
 
 type ListServiceSharedAccountsRequest struct {
+	// The filters.
 	Filter []*ListServiceSharedAccountsRequestFilter `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Repeated"`
+	// The number of entries per page. Valid values: 1 to 100. Default value: 20.
+	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of NextToken.
+	//
 	// example:
 	//
 	// AAAAAR130adlM4fHHVSWpTca/t4=
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The permissions on the service. Valid values:
+	//
+	// 	- Deployable: Permissions to deploy the service.
+	//
+	// 	- Accessible: Permissions to access the service.
+	//
 	// example:
 	//
 	// Accessible
 	Permission *string `json:"Permission,omitempty" xml:"Permission,omitempty"`
+	// The region ID where the service instance resides.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The service ID.
+	//
 	// example:
 	//
 	// service-e10349089de34exxxxxx
@@ -8831,10 +8873,15 @@ func (s *ListServiceSharedAccountsRequest) SetServiceId(v string) *ListServiceSh
 }
 
 type ListServiceSharedAccountsRequestFilter struct {
+	// The parameter name of the filter. You can specify one or more parameter names to query services. Valid values:
+	//
+	// 	- Name: the name of the service.
+	//
 	// example:
 	//
 	// UserAliUid
-	Name  *string   `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The parameter value N of the filter. Valid values of N: 1 to 10.
 	Value []*string `json:"Value,omitempty" xml:"Value,omitempty" type:"Repeated"`
 }
 
@@ -8857,19 +8904,27 @@ func (s *ListServiceSharedAccountsRequestFilter) SetValue(v []*string) *ListServ
 }
 
 type ListServiceSharedAccountsResponseBody struct {
+	// The number of entries per page. Valid values: 1 to 100. Default value: 20.
+	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// A pagination token.
+	//
 	// example:
 	//
 	// AAAAAWns8w4MmhzeptXVRG0PUEU=
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// CA3AE512-6D30-549A-B52D-B9042CA8D515
 	RequestId    *string                                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	ShareAccount []*ListServiceSharedAccountsResponseBodyShareAccount `json:"ShareAccount,omitempty" xml:"ShareAccount,omitempty" type:"Repeated"`
+	// The total number of entries returned.
+	//
 	// example:
 	//
 	// 1
@@ -8910,26 +8965,46 @@ func (s *ListServiceSharedAccountsResponseBody) SetTotalCount(v int32) *ListServ
 }
 
 type ListServiceSharedAccountsResponseBodyShareAccount struct {
+	// The time when the service was created.
+	//
 	// example:
 	//
 	// 2021-12-28T02:47:46.000
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// Service logo.
+	//
 	// example:
 	//
 	// logo
 	Logo *string `json:"Logo,omitempty" xml:"Logo,omitempty"`
+	// The name of the service instance. The value must meet the following requirements:
+	//
+	// 	- The name cannot exceed 64 characters in length.
+	//
+	// 	- It can contain digits, letters, hyphens (-), and underscores (_). It must start with a digit or a letter.
+	//
 	// example:
 	//
 	// name
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The permissions on the service. Valid values:
+	//
+	// 	- Deployable: Permissions to deploy the service.
+	//
+	// 	- Accessible: Permissions to access the service.
+	//
 	// example:
 	//
 	// Deployable
 	Permission *string `json:"Permission,omitempty" xml:"Permission,omitempty"`
+	// The service ID.
+	//
 	// example:
 	//
 	// service-e10349089de34exxxxxx
 	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	// The time when the service was updated.
+	//
 	// example:
 	//
 	// 2023-02-13T02:16:03.756Z
@@ -10815,22 +10890,36 @@ func (s *ReleaseArtifactResponse) SetBody(v *ReleaseArtifactResponseBody) *Relea
 }
 
 type RemoveServiceSharedAccountsRequest struct {
+	// The client token that is used to ensure the idempotence of the request.
+	//
+	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+	//
 	// example:
 	//
 	// 10CM943JP0EN9D51H
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The service ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// service-0e6fca6a51a54420****
 	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	// The share type of the service. Default value: SharedAccount. Valid values:
+	//
+	// 	- SharedAccount: The service is shared by multiple accounts.
+	//
+	// 	- Reseller: The service is distributed.
+	//
 	// example:
 	//
 	// SharedAccount
@@ -10873,6 +10962,8 @@ func (s *RemoveServiceSharedAccountsRequest) SetUserAliUids(v []*int64) *RemoveS
 }
 
 type RemoveServiceSharedAccountsResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 4DB0F536-B3BE-4F0D-BD29-E83FB56D550C
@@ -12283,6 +12374,7 @@ func (s *UpdateServiceRequestServiceInfoAgreements) SetUrl(v string) *UpdateServ
 }
 
 type UpdateServiceRequestUpdateOption struct {
+	UpdateArtifact *bool `json:"UpdateArtifact,omitempty" xml:"UpdateArtifact,omitempty"`
 	// The options for update the service. Valid values:
 	//
 	// - CODE
@@ -12301,6 +12393,11 @@ func (s UpdateServiceRequestUpdateOption) String() string {
 
 func (s UpdateServiceRequestUpdateOption) GoString() string {
 	return s.String()
+}
+
+func (s *UpdateServiceRequestUpdateOption) SetUpdateArtifact(v bool) *UpdateServiceRequestUpdateOption {
+	s.UpdateArtifact = &v
+	return s
 }
 
 func (s *UpdateServiceRequestUpdateOption) SetUpdateFrom(v string) *UpdateServiceRequestUpdateOption {
@@ -14116,7 +14213,7 @@ func (client *Client) CreateServiceInstance(request *CreateServiceInstanceReques
 
 // Summary:
 //
-// 创建代销申请
+// Create  Service resell application.
 //
 // @param request - CreateServiceUsageRequest
 //
@@ -14166,7 +14263,7 @@ func (client *Client) CreateServiceUsageWithOptions(request *CreateServiceUsageR
 
 // Summary:
 //
-// 创建代销申请
+// Create  Service resell application.
 //
 // @param request - CreateServiceUsageRequest
 //
@@ -15971,6 +16068,10 @@ func (client *Client) ReleaseArtifact(request *ReleaseArtifactRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// Remove  service shared account.
+//
 // @param request - RemoveServiceSharedAccountsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -16025,6 +16126,10 @@ func (client *Client) RemoveServiceSharedAccountsWithOptions(request *RemoveServ
 	return _result, _err
 }
 
+// Summary:
+//
+// Remove  service shared account.
+//
 // @param request - RemoveServiceSharedAccountsRequest
 //
 // @return RemoveServiceSharedAccountsResponse
