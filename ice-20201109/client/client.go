@@ -29677,10 +29677,11 @@ func (s *ListSmartVoiceGroupsResponseBodyVoiceGroups) SetVoiceList(v []*ListSmar
 }
 
 type ListSmartVoiceGroupsResponseBodyVoiceGroupsVoiceList struct {
-	Desc   *string `json:"Desc,omitempty" xml:"Desc,omitempty"`
-	Name   *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	Tag    *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	Desc              *string `json:"Desc,omitempty" xml:"Desc,omitempty"`
+	Name              *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Remark            *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	SupportSampleRate *string `json:"SupportSampleRate,omitempty" xml:"SupportSampleRate,omitempty"`
+	Tag               *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
 	// example:
 	//
 	// zhitian
@@ -29715,6 +29716,11 @@ func (s *ListSmartVoiceGroupsResponseBodyVoiceGroupsVoiceList) SetName(v string)
 
 func (s *ListSmartVoiceGroupsResponseBodyVoiceGroupsVoiceList) SetRemark(v string) *ListSmartVoiceGroupsResponseBodyVoiceGroupsVoiceList {
 	s.Remark = &v
+	return s
+}
+
+func (s *ListSmartVoiceGroupsResponseBodyVoiceGroupsVoiceList) SetSupportSampleRate(v string) *ListSmartVoiceGroupsResponseBodyVoiceGroupsVoiceList {
+	s.SupportSampleRate = &v
 	return s
 }
 
