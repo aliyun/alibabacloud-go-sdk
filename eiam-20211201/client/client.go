@@ -4512,7 +4512,7 @@ type GetApplicationProvisioningConfigRequest struct {
 	//
 	// app_mkv7rgt4d7i4u7zqtzev2mxxxx
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
@@ -4543,7 +4543,7 @@ func (s *GetApplicationProvisioningConfigRequest) SetInstanceId(v string) *GetAp
 type GetApplicationProvisioningConfigResponseBody struct {
 	// The configuration of the account synchronization feature for the application.
 	ApplicationProvisioningConfig *GetApplicationProvisioningConfigResponseBodyApplicationProvisioningConfig `json:"ApplicationProvisioningConfig,omitempty" xml:"ApplicationProvisioningConfig,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -4578,11 +4578,11 @@ type GetApplicationProvisioningConfigResponseBodyApplicationProvisioningConfig s
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
 	// The configuration of the custom event callback protocol of IDaaS.
 	CallbackProvisioningConfig *GetApplicationProvisioningConfigResponseBodyApplicationProvisioningConfigCallbackProvisioningConfig `json:"CallbackProvisioningConfig,omitempty" xml:"CallbackProvisioningConfig,omitempty" type:"Struct"`
-	// Client-side rendering, Valid values:
+	// The rendering mode of the account synchronization page. Valid values:
 	//
-	// - standard：standard mode.
+	// 	- standard: standard mode
 	//
-	// - template：template mode.
+	// 	- template: template mode
 	//
 	// example:
 	//
@@ -6306,7 +6306,7 @@ type GetGroupResponseBodyGroup struct {
 	GroupSourceId *string `json:"GroupSourceId,omitempty" xml:"GroupSourceId,omitempty"`
 	// The source type of the group. Only build_in may be returned, which indicates that the group was created in IDaaS.
 	//
-	// *build_in：Create By Self。
+	// *build_in:Create By Self.
 	//
 	// example:
 	//
@@ -7894,6 +7894,1793 @@ func (s *GetRootOrganizationalUnitResponse) SetStatusCode(v int32) *GetRootOrgan
 }
 
 func (s *GetRootOrganizationalUnitResponse) SetBody(v *GetRootOrganizationalUnitResponseBody) *GetRootOrganizationalUnitResponse {
+	s.Body = v
+	return s
+}
+
+type GetSynchronizationJobRequest struct {
+	// IDaaS EIAM实例的ID。
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// idaas_ue2jvisn35ea5lmthk267xxxxx
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// 同步任务ID
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// sync_0000347vjovtcf41li0fgsd98gn24q9njxxxxx
+	SynchronizationJobId *string `json:"SynchronizationJobId,omitempty" xml:"SynchronizationJobId,omitempty"`
+}
+
+func (s GetSynchronizationJobRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSynchronizationJobRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetSynchronizationJobRequest) SetInstanceId(v string) *GetSynchronizationJobRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *GetSynchronizationJobRequest) SetSynchronizationJobId(v string) *GetSynchronizationJobRequest {
+	s.SynchronizationJobId = &v
+	return s
+}
+
+type GetSynchronizationJobResponseBody struct {
+	// example:
+	//
+	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
+	RequestId          *string                                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SynchronizationJob *GetSynchronizationJobResponseBodySynchronizationJob `json:"SynchronizationJob,omitempty" xml:"SynchronizationJob,omitempty" type:"Struct"`
+}
+
+func (s GetSynchronizationJobResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSynchronizationJobResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetSynchronizationJobResponseBody) SetRequestId(v string) *GetSynchronizationJobResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetSynchronizationJobResponseBody) SetSynchronizationJob(v *GetSynchronizationJobResponseBodySynchronizationJob) *GetSynchronizationJobResponseBody {
+	s.SynchronizationJob = v
+	return s
+}
+
+type GetSynchronizationJobResponseBodySynchronizationJob struct {
+	// 同步任务方向
+	//
+	// example:
+	//
+	// ingress
+	Direction *string `json:"Direction,omitempty" xml:"Direction,omitempty"`
+	// 同步结束时间
+	//
+	// example:
+	//
+	// 1649830226000
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// 同步任务结果
+	Result *GetSynchronizationJobResponseBodySynchronizationJobResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	// 同步开始时间
+	//
+	// example:
+	//
+	// 1649830226000
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// 同步任务状态
+	//
+	// example:
+	//
+	// running
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// 同步任务ID
+	//
+	// example:
+	//
+	// sync_0000347vjovtcf41li0fgsd98gn24q9nj9xxxxx
+	SynchronizationJobId *string `json:"SynchronizationJobId,omitempty" xml:"SynchronizationJobId,omitempty"`
+	// 同步目标ID
+	//
+	// example:
+	//
+	// idp_my664lwkhpicbyzirog3nxxxxx
+	TargetId *string `json:"TargetId,omitempty" xml:"TargetId,omitempty"`
+	// 同步目标类型
+	//
+	// example:
+	//
+	// identity_provider
+	TargetType *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
+	// 同步触发类型
+	//
+	// example:
+	//
+	// auto
+	TriggerType *string `json:"TriggerType,omitempty" xml:"TriggerType,omitempty"`
+}
+
+func (s GetSynchronizationJobResponseBodySynchronizationJob) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSynchronizationJobResponseBodySynchronizationJob) GoString() string {
+	return s.String()
+}
+
+func (s *GetSynchronizationJobResponseBodySynchronizationJob) SetDirection(v string) *GetSynchronizationJobResponseBodySynchronizationJob {
+	s.Direction = &v
+	return s
+}
+
+func (s *GetSynchronizationJobResponseBodySynchronizationJob) SetEndTime(v int64) *GetSynchronizationJobResponseBodySynchronizationJob {
+	s.EndTime = &v
+	return s
+}
+
+func (s *GetSynchronizationJobResponseBodySynchronizationJob) SetResult(v *GetSynchronizationJobResponseBodySynchronizationJobResult) *GetSynchronizationJobResponseBodySynchronizationJob {
+	s.Result = v
+	return s
+}
+
+func (s *GetSynchronizationJobResponseBodySynchronizationJob) SetStartTime(v int64) *GetSynchronizationJobResponseBodySynchronizationJob {
+	s.StartTime = &v
+	return s
+}
+
+func (s *GetSynchronizationJobResponseBodySynchronizationJob) SetStatus(v string) *GetSynchronizationJobResponseBodySynchronizationJob {
+	s.Status = &v
+	return s
+}
+
+func (s *GetSynchronizationJobResponseBodySynchronizationJob) SetSynchronizationJobId(v string) *GetSynchronizationJobResponseBodySynchronizationJob {
+	s.SynchronizationJobId = &v
+	return s
+}
+
+func (s *GetSynchronizationJobResponseBodySynchronizationJob) SetTargetId(v string) *GetSynchronizationJobResponseBodySynchronizationJob {
+	s.TargetId = &v
+	return s
+}
+
+func (s *GetSynchronizationJobResponseBodySynchronizationJob) SetTargetType(v string) *GetSynchronizationJobResponseBodySynchronizationJob {
+	s.TargetType = &v
+	return s
+}
+
+func (s *GetSynchronizationJobResponseBodySynchronizationJob) SetTriggerType(v string) *GetSynchronizationJobResponseBodySynchronizationJob {
+	s.TriggerType = &v
+	return s
+}
+
+type GetSynchronizationJobResponseBodySynchronizationJobResult struct {
+	// 同步结果错误码
+	//
+	// example:
+	//
+	// ErrorCodeNotFound
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// 同步结果错误信息描述
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// 组成员同步结果统计
+	GroupMemberStatistics *GetSynchronizationJobResponseBodySynchronizationJobResultGroupMemberStatistics `json:"GroupMemberStatistics,omitempty" xml:"GroupMemberStatistics,omitempty" type:"Struct"`
+	// 组同步结果统计
+	GroupStatistics *GetSynchronizationJobResponseBodySynchronizationJobResultGroupStatistics `json:"GroupStatistics,omitempty" xml:"GroupStatistics,omitempty" type:"Struct"`
+	// 组织同步结果统计
+	OrganizationalUnitStatistics *GetSynchronizationJobResponseBodySynchronizationJobResultOrganizationalUnitStatistics `json:"OrganizationalUnitStatistics,omitempty" xml:"OrganizationalUnitStatistics,omitempty" type:"Struct"`
+	// 用户同步结果统计
+	UserStatistics *GetSynchronizationJobResponseBodySynchronizationJobResultUserStatistics `json:"UserStatistics,omitempty" xml:"UserStatistics,omitempty" type:"Struct"`
+}
+
+func (s GetSynchronizationJobResponseBodySynchronizationJobResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSynchronizationJobResponseBodySynchronizationJobResult) GoString() string {
+	return s.String()
+}
+
+func (s *GetSynchronizationJobResponseBodySynchronizationJobResult) SetErrorCode(v string) *GetSynchronizationJobResponseBodySynchronizationJobResult {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *GetSynchronizationJobResponseBodySynchronizationJobResult) SetErrorMessage(v string) *GetSynchronizationJobResponseBodySynchronizationJobResult {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *GetSynchronizationJobResponseBodySynchronizationJobResult) SetGroupMemberStatistics(v *GetSynchronizationJobResponseBodySynchronizationJobResultGroupMemberStatistics) *GetSynchronizationJobResponseBodySynchronizationJobResult {
+	s.GroupMemberStatistics = v
+	return s
+}
+
+func (s *GetSynchronizationJobResponseBodySynchronizationJobResult) SetGroupStatistics(v *GetSynchronizationJobResponseBodySynchronizationJobResultGroupStatistics) *GetSynchronizationJobResponseBodySynchronizationJobResult {
+	s.GroupStatistics = v
+	return s
+}
+
+func (s *GetSynchronizationJobResponseBodySynchronizationJobResult) SetOrganizationalUnitStatistics(v *GetSynchronizationJobResponseBodySynchronizationJobResultOrganizationalUnitStatistics) *GetSynchronizationJobResponseBodySynchronizationJobResult {
+	s.OrganizationalUnitStatistics = v
+	return s
+}
+
+func (s *GetSynchronizationJobResponseBodySynchronizationJobResult) SetUserStatistics(v *GetSynchronizationJobResponseBodySynchronizationJobResultUserStatistics) *GetSynchronizationJobResponseBodySynchronizationJobResult {
+	s.UserStatistics = v
+	return s
+}
+
+type GetSynchronizationJobResponseBodySynchronizationJobResultGroupMemberStatistics struct {
+	// 绑定结果统计
+	Binded *GetSynchronizationJobResponseBodySynchronizationJobResultGroupMemberStatisticsBinded `json:"Binded,omitempty" xml:"Binded,omitempty" type:"Struct"`
+	// 创建结果统计
+	Created *GetSynchronizationJobResponseBodySynchronizationJobResultGroupMemberStatisticsCreated `json:"Created,omitempty" xml:"Created,omitempty" type:"Struct"`
+	// 删除结果统计
+	Deleted *GetSynchronizationJobResponseBodySynchronizationJobResultGroupMemberStatisticsDeleted `json:"Deleted,omitempty" xml:"Deleted,omitempty" type:"Struct"`
+	// 推送结果统计
+	Pushed *GetSynchronizationJobResponseBodySynchronizationJobResultGroupMemberStatisticsPushed `json:"Pushed,omitempty" xml:"Pushed,omitempty" type:"Struct"`
+	// 相同结果统计
+	Same *GetSynchronizationJobResponseBodySynchronizationJobResultGroupMemberStatisticsSame `json:"Same,omitempty" xml:"Same,omitempty" type:"Struct"`
+	// 更新结果统计
+	Updated *GetSynchronizationJobResponseBodySynchronizationJobResultGroupMemberStatisticsUpdated `json:"Updated,omitempty" xml:"Updated,omitempty" type:"Struct"`
+}
+
+func (s GetSynchronizationJobResponseBodySynchronizationJobResultGroupMemberStatistics) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSynchronizationJobResponseBodySynchronizationJobResultGroupMemberStatistics) GoString() string {
+	return s.String()
+}
+
+func (s *GetSynchronizationJobResponseBodySynchronizationJobResultGroupMemberStatistics) SetBinded(v *GetSynchronizationJobResponseBodySynchronizationJobResultGroupMemberStatisticsBinded) *GetSynchronizationJobResponseBodySynchronizationJobResultGroupMemberStatistics {
+	s.Binded = v
+	return s
+}
+
+func (s *GetSynchronizationJobResponseBodySynchronizationJobResultGroupMemberStatistics) SetCreated(v *GetSynchronizationJobResponseBodySynchronizationJobResultGroupMemberStatisticsCreated) *GetSynchronizationJobResponseBodySynchronizationJobResultGroupMemberStatistics {
+	s.Created = v
+	return s
+}
+
+func (s *GetSynchronizationJobResponseBodySynchronizationJobResultGroupMemberStatistics) SetDeleted(v *GetSynchronizationJobResponseBodySynchronizationJobResultGroupMemberStatisticsDeleted) *GetSynchronizationJobResponseBodySynchronizationJobResultGroupMemberStatistics {
+	s.Deleted = v
+	return s
+}
+
+func (s *GetSynchronizationJobResponseBodySynchronizationJobResultGroupMemberStatistics) SetPushed(v *GetSynchronizationJobResponseBodySynchronizationJobResultGroupMemberStatisticsPushed) *GetSynchronizationJobResponseBodySynchronizationJobResultGroupMemberStatistics {
+	s.Pushed = v
+	return s
+}
+
+func (s *GetSynchronizationJobResponseBodySynchronizationJobResultGroupMemberStatistics) SetSame(v *GetSynchronizationJobResponseBodySynchronizationJobResultGroupMemberStatisticsSame) *GetSynchronizationJobResponseBodySynchronizationJobResultGroupMemberStatistics {
+	s.Same = v
+	return s
+}
+
+func (s *GetSynchronizationJobResponseBodySynchronizationJobResultGroupMemberStatistics) SetUpdated(v *GetSynchronizationJobResponseBodySynchronizationJobResultGroupMemberStatisticsUpdated) *GetSynchronizationJobResponseBodySynchronizationJobResultGroupMemberStatistics {
+	s.Updated = v
+	return s
+}
+
+type GetSynchronizationJobResponseBodySynchronizationJobResultGroupMemberStatisticsBinded struct {
+	// 失败数目
+	//
+	// example:
+	//
+	// 10
+	Failed *int64 `json:"Failed,omitempty" xml:"Failed,omitempty"`
+	// 跳过数目
+	//
+	// example:
+	//
+	// 10
+	Skipped *int64 `json:"Skipped,omitempty" xml:"Skipped,omitempty"`
+	// 成功数目
+	//
+	// example:
+	//
+	// 10
+	Success *int64 `json:"Success,omitempty" xml:"Success,omitempty"`
+	// 总共数目
+	//
+	// example:
+	//
+	// 30
+	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
+}
+
+func (s GetSynchronizationJobResponseBodySynchronizationJobResultGroupMemberStatisticsBinded) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSynchronizationJobResponseBodySynchronizationJobResultGroupMemberStatisticsBinded) GoString() string {
+	return s.String()
+}
+
+func (s *GetSynchronizationJobResponseBodySynchronizationJobResultGroupMemberStatisticsBinded) SetFailed(v int64) *GetSynchronizationJobResponseBodySynchronizationJobResultGroupMemberStatisticsBinded {
+	s.Failed = &v
+	return s
+}
+
+func (s *GetSynchronizationJobResponseBodySynchronizationJobResultGroupMemberStatisticsBinded) SetSkipped(v int64) *GetSynchronizationJobResponseBodySynchronizationJobResultGroupMemberStatisticsBinded {
+	s.Skipped = &v
+	return s
+}
+
+func (s *GetSynchronizationJobResponseBodySynchronizationJobResultGroupMemberStatisticsBinded) SetSuccess(v int64) *GetSynchronizationJobResponseBodySynchronizationJobResultGroupMemberStatisticsBinded {
+	s.Success = &v
+	return s
+}
+
+func (s *GetSynchronizationJobResponseBodySynchronizationJobResultGroupMemberStatisticsBinded) SetTotal(v int64) *GetSynchronizationJobResponseBodySynchronizationJobResultGroupMemberStatisticsBinded {
+	s.Total = &v
+	return s
+}
+
+type GetSynchronizationJobResponseBodySynchronizationJobResultGroupMemberStatisticsCreated struct {
+	// 失败数目
+	//
+	// example:
+	//
+	// 10
+	Failed *int64 `json:"Failed,omitempty" xml:"Failed,omitempty"`
+	// 跳过数目
+	//
+	// example:
+	//
+	// 10
+	Skipped *int64 `json:"Skipped,omitempty" xml:"Skipped,omitempty"`
+	// 成功数目
+	//
+	// example:
+	//
+	// 10
+	Success *int64 `json:"Success,omitempty" xml:"Success,omitempty"`
+	// 总共数目
+	//
+	// example:
+	//
+	// 30
+	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
+}
+
+func (s GetSynchronizationJobResponseBodySynchronizationJobResultGroupMemberStatisticsCreated) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSynchronizationJobResponseBodySynchronizationJobResultGroupMemberStatisticsCreated) GoString() string {
+	return s.String()
+}
+
+func (s *GetSynchronizationJobResponseBodySynchronizationJobResultGroupMemberStatisticsCreated) SetFailed(v int64) *GetSynchronizationJobResponseBodySynchronizationJobResultGroupMemberStatisticsCreated {
+	s.Failed = &v
+	return s
+}
+
+func (s *GetSynchronizationJobResponseBodySynchronizationJobResultGroupMemberStatisticsCreated) SetSkipped(v int64) *GetSynchronizationJobResponseBodySynchronizationJobResultGroupMemberStatisticsCreated {
+	s.Skipped = &v
+	return s
+}
+
+func (s *GetSynchronizationJobResponseBodySynchronizationJobResultGroupMemberStatisticsCreated) SetSuccess(v int64) *GetSynchronizationJobResponseBodySynchronizationJobResultGroupMemberStatisticsCreated {
+	s.Success = &v
+	return s
+}
+
+func (s *GetSynchronizationJobResponseBodySynchronizationJobResultGroupMemberStatisticsCreated) SetTotal(v int64) *GetSynchronizationJobResponseBodySynchronizationJobResultGroupMemberStatisticsCreated {
+	s.Total = &v
+	return s
+}
+
+type GetSynchronizationJobResponseBodySynchronizationJobResultGroupMemberStatisticsDeleted struct {
+	// 失败数目
+	//
+	// example:
+	//
+	// 10
+	Failed *int64 `json:"Failed,omitempty" xml:"Failed,omitempty"`
+	// 跳过数目
+	//
+	// example:
+	//
+	// 10
+	Skipped *int64 `json:"Skipped,omitempty" xml:"Skipped,omitempty"`
+	// 成功数目
+	//
+	// example:
+	//
+	// 10
+	Success *int64 `json:"Success,omitempty" xml:"Success,omitempty"`
+	// 总共数目
+	//
+	// example:
+	//
+	// 30
+	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
+}
+
+func (s GetSynchronizationJobResponseBodySynchronizationJobResultGroupMemberStatisticsDeleted) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSynchronizationJobResponseBodySynchronizationJobResultGroupMemberStatisticsDeleted) GoString() string {
+	return s.String()
+}
+
+func (s *GetSynchronizationJobResponseBodySynchronizationJobResultGroupMemberStatisticsDeleted) SetFailed(v int64) *GetSynchronizationJobResponseBodySynchronizationJobResultGroupMemberStatisticsDeleted {
+	s.Failed = &v
+	return s
+}
+
+func (s *GetSynchronizationJobResponseBodySynchronizationJobResultGroupMemberStatisticsDeleted) SetSkipped(v int64) *GetSynchronizationJobResponseBodySynchronizationJobResultGroupMemberStatisticsDeleted {
+	s.Skipped = &v
+	return s
+}
+
+func (s *GetSynchronizationJobResponseBodySynchronizationJobResultGroupMemberStatisticsDeleted) SetSuccess(v int64) *GetSynchronizationJobResponseBodySynchronizationJobResultGroupMemberStatisticsDeleted {
+	s.Success = &v
+	return s
+}
+
+func (s *GetSynchronizationJobResponseBodySynchronizationJobResultGroupMemberStatisticsDeleted) SetTotal(v int64) *GetSynchronizationJobResponseBodySynchronizationJobResultGroupMemberStatisticsDeleted {
+	s.Total = &v
+	return s
+}
+
+type GetSynchronizationJobResponseBodySynchronizationJobResultGroupMemberStatisticsPushed struct {
+	// 失败数目
+	//
+	// example:
+	//
+	// 10
+	Failed *int64 `json:"Failed,omitempty" xml:"Failed,omitempty"`
+	// 跳过数目
+	//
+	// example:
+	//
+	// 10
+	Skipped *int64 `json:"Skipped,omitempty" xml:"Skipped,omitempty"`
+	// 成功数目
+	//
+	// example:
+	//
+	// 10
+	Success *int64 `json:"Success,omitempty" xml:"Success,omitempty"`
+	// 总共数目
+	//
+	// example:
+	//
+	// 30
+	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
+}
+
+func (s GetSynchronizationJobResponseBodySynchronizationJobResultGroupMemberStatisticsPushed) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSynchronizationJobResponseBodySynchronizationJobResultGroupMemberStatisticsPushed) GoString() string {
+	return s.String()
+}
+
+func (s *GetSynchronizationJobResponseBodySynchronizationJobResultGroupMemberStatisticsPushed) SetFailed(v int64) *GetSynchronizationJobResponseBodySynchronizationJobResultGroupMemberStatisticsPushed {
+	s.Failed = &v
+	return s
+}
+
+func (s *GetSynchronizationJobResponseBodySynchronizationJobResultGroupMemberStatisticsPushed) SetSkipped(v int64) *GetSynchronizationJobResponseBodySynchronizationJobResultGroupMemberStatisticsPushed {
+	s.Skipped = &v
+	return s
+}
+
+func (s *GetSynchronizationJobResponseBodySynchronizationJobResultGroupMemberStatisticsPushed) SetSuccess(v int64) *GetSynchronizationJobResponseBodySynchronizationJobResultGroupMemberStatisticsPushed {
+	s.Success = &v
+	return s
+}
+
+func (s *GetSynchronizationJobResponseBodySynchronizationJobResultGroupMemberStatisticsPushed) SetTotal(v int64) *GetSynchronizationJobResponseBodySynchronizationJobResultGroupMemberStatisticsPushed {
+	s.Total = &v
+	return s
+}
+
+type GetSynchronizationJobResponseBodySynchronizationJobResultGroupMemberStatisticsSame struct {
+	// 失败数目
+	//
+	// example:
+	//
+	// 10
+	Failed *int64 `json:"Failed,omitempty" xml:"Failed,omitempty"`
+	// 跳过数目
+	//
+	// example:
+	//
+	// 10
+	Skipped *int64 `json:"Skipped,omitempty" xml:"Skipped,omitempty"`
+	// 成功数目
+	//
+	// example:
+	//
+	// 10
+	Success *int64 `json:"Success,omitempty" xml:"Success,omitempty"`
+	// 总共数目
+	//
+	// example:
+	//
+	// 30
+	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
+}
+
+func (s GetSynchronizationJobResponseBodySynchronizationJobResultGroupMemberStatisticsSame) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSynchronizationJobResponseBodySynchronizationJobResultGroupMemberStatisticsSame) GoString() string {
+	return s.String()
+}
+
+func (s *GetSynchronizationJobResponseBodySynchronizationJobResultGroupMemberStatisticsSame) SetFailed(v int64) *GetSynchronizationJobResponseBodySynchronizationJobResultGroupMemberStatisticsSame {
+	s.Failed = &v
+	return s
+}
+
+func (s *GetSynchronizationJobResponseBodySynchronizationJobResultGroupMemberStatisticsSame) SetSkipped(v int64) *GetSynchronizationJobResponseBodySynchronizationJobResultGroupMemberStatisticsSame {
+	s.Skipped = &v
+	return s
+}
+
+func (s *GetSynchronizationJobResponseBodySynchronizationJobResultGroupMemberStatisticsSame) SetSuccess(v int64) *GetSynchronizationJobResponseBodySynchronizationJobResultGroupMemberStatisticsSame {
+	s.Success = &v
+	return s
+}
+
+func (s *GetSynchronizationJobResponseBodySynchronizationJobResultGroupMemberStatisticsSame) SetTotal(v int64) *GetSynchronizationJobResponseBodySynchronizationJobResultGroupMemberStatisticsSame {
+	s.Total = &v
+	return s
+}
+
+type GetSynchronizationJobResponseBodySynchronizationJobResultGroupMemberStatisticsUpdated struct {
+	// 失败数目
+	//
+	// example:
+	//
+	// 10
+	Failed *int64 `json:"Failed,omitempty" xml:"Failed,omitempty"`
+	// 跳过数目
+	//
+	// example:
+	//
+	// 10
+	Skipped *int64 `json:"Skipped,omitempty" xml:"Skipped,omitempty"`
+	// 成功数目
+	//
+	// example:
+	//
+	// 10
+	Success *int64 `json:"Success,omitempty" xml:"Success,omitempty"`
+	// 总共数目
+	//
+	// example:
+	//
+	// 30
+	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
+}
+
+func (s GetSynchronizationJobResponseBodySynchronizationJobResultGroupMemberStatisticsUpdated) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSynchronizationJobResponseBodySynchronizationJobResultGroupMemberStatisticsUpdated) GoString() string {
+	return s.String()
+}
+
+func (s *GetSynchronizationJobResponseBodySynchronizationJobResultGroupMemberStatisticsUpdated) SetFailed(v int64) *GetSynchronizationJobResponseBodySynchronizationJobResultGroupMemberStatisticsUpdated {
+	s.Failed = &v
+	return s
+}
+
+func (s *GetSynchronizationJobResponseBodySynchronizationJobResultGroupMemberStatisticsUpdated) SetSkipped(v int64) *GetSynchronizationJobResponseBodySynchronizationJobResultGroupMemberStatisticsUpdated {
+	s.Skipped = &v
+	return s
+}
+
+func (s *GetSynchronizationJobResponseBodySynchronizationJobResultGroupMemberStatisticsUpdated) SetSuccess(v int64) *GetSynchronizationJobResponseBodySynchronizationJobResultGroupMemberStatisticsUpdated {
+	s.Success = &v
+	return s
+}
+
+func (s *GetSynchronizationJobResponseBodySynchronizationJobResultGroupMemberStatisticsUpdated) SetTotal(v int64) *GetSynchronizationJobResponseBodySynchronizationJobResultGroupMemberStatisticsUpdated {
+	s.Total = &v
+	return s
+}
+
+type GetSynchronizationJobResponseBodySynchronizationJobResultGroupStatistics struct {
+	// 绑定结果统计
+	Binded *GetSynchronizationJobResponseBodySynchronizationJobResultGroupStatisticsBinded `json:"Binded,omitempty" xml:"Binded,omitempty" type:"Struct"`
+	// 创建结果统计
+	Created *GetSynchronizationJobResponseBodySynchronizationJobResultGroupStatisticsCreated `json:"Created,omitempty" xml:"Created,omitempty" type:"Struct"`
+	// 删除结果统计
+	Deleted *GetSynchronizationJobResponseBodySynchronizationJobResultGroupStatisticsDeleted `json:"Deleted,omitempty" xml:"Deleted,omitempty" type:"Struct"`
+	// 推送结果统计
+	Pushed *GetSynchronizationJobResponseBodySynchronizationJobResultGroupStatisticsPushed `json:"Pushed,omitempty" xml:"Pushed,omitempty" type:"Struct"`
+	// 相同结果统计
+	Same *GetSynchronizationJobResponseBodySynchronizationJobResultGroupStatisticsSame `json:"Same,omitempty" xml:"Same,omitempty" type:"Struct"`
+	// 更新结果统计
+	Updated *GetSynchronizationJobResponseBodySynchronizationJobResultGroupStatisticsUpdated `json:"Updated,omitempty" xml:"Updated,omitempty" type:"Struct"`
+}
+
+func (s GetSynchronizationJobResponseBodySynchronizationJobResultGroupStatistics) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSynchronizationJobResponseBodySynchronizationJobResultGroupStatistics) GoString() string {
+	return s.String()
+}
+
+func (s *GetSynchronizationJobResponseBodySynchronizationJobResultGroupStatistics) SetBinded(v *GetSynchronizationJobResponseBodySynchronizationJobResultGroupStatisticsBinded) *GetSynchronizationJobResponseBodySynchronizationJobResultGroupStatistics {
+	s.Binded = v
+	return s
+}
+
+func (s *GetSynchronizationJobResponseBodySynchronizationJobResultGroupStatistics) SetCreated(v *GetSynchronizationJobResponseBodySynchronizationJobResultGroupStatisticsCreated) *GetSynchronizationJobResponseBodySynchronizationJobResultGroupStatistics {
+	s.Created = v
+	return s
+}
+
+func (s *GetSynchronizationJobResponseBodySynchronizationJobResultGroupStatistics) SetDeleted(v *GetSynchronizationJobResponseBodySynchronizationJobResultGroupStatisticsDeleted) *GetSynchronizationJobResponseBodySynchronizationJobResultGroupStatistics {
+	s.Deleted = v
+	return s
+}
+
+func (s *GetSynchronizationJobResponseBodySynchronizationJobResultGroupStatistics) SetPushed(v *GetSynchronizationJobResponseBodySynchronizationJobResultGroupStatisticsPushed) *GetSynchronizationJobResponseBodySynchronizationJobResultGroupStatistics {
+	s.Pushed = v
+	return s
+}
+
+func (s *GetSynchronizationJobResponseBodySynchronizationJobResultGroupStatistics) SetSame(v *GetSynchronizationJobResponseBodySynchronizationJobResultGroupStatisticsSame) *GetSynchronizationJobResponseBodySynchronizationJobResultGroupStatistics {
+	s.Same = v
+	return s
+}
+
+func (s *GetSynchronizationJobResponseBodySynchronizationJobResultGroupStatistics) SetUpdated(v *GetSynchronizationJobResponseBodySynchronizationJobResultGroupStatisticsUpdated) *GetSynchronizationJobResponseBodySynchronizationJobResultGroupStatistics {
+	s.Updated = v
+	return s
+}
+
+type GetSynchronizationJobResponseBodySynchronizationJobResultGroupStatisticsBinded struct {
+	// 失败数目
+	//
+	// example:
+	//
+	// 10
+	Failed *int64 `json:"Failed,omitempty" xml:"Failed,omitempty"`
+	// 跳过数目
+	//
+	// example:
+	//
+	// 10
+	Skipped *int64 `json:"Skipped,omitempty" xml:"Skipped,omitempty"`
+	// 成功数目
+	//
+	// example:
+	//
+	// 10
+	Success *int64 `json:"Success,omitempty" xml:"Success,omitempty"`
+	// 总共数目
+	//
+	// example:
+	//
+	// 30
+	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
+}
+
+func (s GetSynchronizationJobResponseBodySynchronizationJobResultGroupStatisticsBinded) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSynchronizationJobResponseBodySynchronizationJobResultGroupStatisticsBinded) GoString() string {
+	return s.String()
+}
+
+func (s *GetSynchronizationJobResponseBodySynchronizationJobResultGroupStatisticsBinded) SetFailed(v int64) *GetSynchronizationJobResponseBodySynchronizationJobResultGroupStatisticsBinded {
+	s.Failed = &v
+	return s
+}
+
+func (s *GetSynchronizationJobResponseBodySynchronizationJobResultGroupStatisticsBinded) SetSkipped(v int64) *GetSynchronizationJobResponseBodySynchronizationJobResultGroupStatisticsBinded {
+	s.Skipped = &v
+	return s
+}
+
+func (s *GetSynchronizationJobResponseBodySynchronizationJobResultGroupStatisticsBinded) SetSuccess(v int64) *GetSynchronizationJobResponseBodySynchronizationJobResultGroupStatisticsBinded {
+	s.Success = &v
+	return s
+}
+
+func (s *GetSynchronizationJobResponseBodySynchronizationJobResultGroupStatisticsBinded) SetTotal(v int64) *GetSynchronizationJobResponseBodySynchronizationJobResultGroupStatisticsBinded {
+	s.Total = &v
+	return s
+}
+
+type GetSynchronizationJobResponseBodySynchronizationJobResultGroupStatisticsCreated struct {
+	// 失败数目
+	//
+	// example:
+	//
+	// 10
+	Failed *int64 `json:"Failed,omitempty" xml:"Failed,omitempty"`
+	// 跳过数目
+	//
+	// example:
+	//
+	// 10
+	Skipped *int64 `json:"Skipped,omitempty" xml:"Skipped,omitempty"`
+	// 成功数目
+	//
+	// example:
+	//
+	// 10
+	Success *int64 `json:"Success,omitempty" xml:"Success,omitempty"`
+	// 总共数目
+	//
+	// example:
+	//
+	// 30
+	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
+}
+
+func (s GetSynchronizationJobResponseBodySynchronizationJobResultGroupStatisticsCreated) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSynchronizationJobResponseBodySynchronizationJobResultGroupStatisticsCreated) GoString() string {
+	return s.String()
+}
+
+func (s *GetSynchronizationJobResponseBodySynchronizationJobResultGroupStatisticsCreated) SetFailed(v int64) *GetSynchronizationJobResponseBodySynchronizationJobResultGroupStatisticsCreated {
+	s.Failed = &v
+	return s
+}
+
+func (s *GetSynchronizationJobResponseBodySynchronizationJobResultGroupStatisticsCreated) SetSkipped(v int64) *GetSynchronizationJobResponseBodySynchronizationJobResultGroupStatisticsCreated {
+	s.Skipped = &v
+	return s
+}
+
+func (s *GetSynchronizationJobResponseBodySynchronizationJobResultGroupStatisticsCreated) SetSuccess(v int64) *GetSynchronizationJobResponseBodySynchronizationJobResultGroupStatisticsCreated {
+	s.Success = &v
+	return s
+}
+
+func (s *GetSynchronizationJobResponseBodySynchronizationJobResultGroupStatisticsCreated) SetTotal(v int64) *GetSynchronizationJobResponseBodySynchronizationJobResultGroupStatisticsCreated {
+	s.Total = &v
+	return s
+}
+
+type GetSynchronizationJobResponseBodySynchronizationJobResultGroupStatisticsDeleted struct {
+	// 失败数目
+	//
+	// example:
+	//
+	// 10
+	Failed *int64 `json:"Failed,omitempty" xml:"Failed,omitempty"`
+	// 跳过数目
+	//
+	// example:
+	//
+	// 10
+	Skipped *int64 `json:"Skipped,omitempty" xml:"Skipped,omitempty"`
+	// 成功数目
+	//
+	// example:
+	//
+	// 10
+	Success *int64 `json:"Success,omitempty" xml:"Success,omitempty"`
+	// 总共数目
+	//
+	// example:
+	//
+	// 30
+	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
+}
+
+func (s GetSynchronizationJobResponseBodySynchronizationJobResultGroupStatisticsDeleted) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSynchronizationJobResponseBodySynchronizationJobResultGroupStatisticsDeleted) GoString() string {
+	return s.String()
+}
+
+func (s *GetSynchronizationJobResponseBodySynchronizationJobResultGroupStatisticsDeleted) SetFailed(v int64) *GetSynchronizationJobResponseBodySynchronizationJobResultGroupStatisticsDeleted {
+	s.Failed = &v
+	return s
+}
+
+func (s *GetSynchronizationJobResponseBodySynchronizationJobResultGroupStatisticsDeleted) SetSkipped(v int64) *GetSynchronizationJobResponseBodySynchronizationJobResultGroupStatisticsDeleted {
+	s.Skipped = &v
+	return s
+}
+
+func (s *GetSynchronizationJobResponseBodySynchronizationJobResultGroupStatisticsDeleted) SetSuccess(v int64) *GetSynchronizationJobResponseBodySynchronizationJobResultGroupStatisticsDeleted {
+	s.Success = &v
+	return s
+}
+
+func (s *GetSynchronizationJobResponseBodySynchronizationJobResultGroupStatisticsDeleted) SetTotal(v int64) *GetSynchronizationJobResponseBodySynchronizationJobResultGroupStatisticsDeleted {
+	s.Total = &v
+	return s
+}
+
+type GetSynchronizationJobResponseBodySynchronizationJobResultGroupStatisticsPushed struct {
+	// 失败数目
+	//
+	// example:
+	//
+	// 10
+	Failed *int64 `json:"Failed,omitempty" xml:"Failed,omitempty"`
+	// 跳过数目
+	//
+	// example:
+	//
+	// 10
+	Skipped *int64 `json:"Skipped,omitempty" xml:"Skipped,omitempty"`
+	// 成功数目
+	//
+	// example:
+	//
+	// 10
+	Success *int64 `json:"Success,omitempty" xml:"Success,omitempty"`
+	// 总共数目
+	//
+	// example:
+	//
+	// 30
+	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
+}
+
+func (s GetSynchronizationJobResponseBodySynchronizationJobResultGroupStatisticsPushed) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSynchronizationJobResponseBodySynchronizationJobResultGroupStatisticsPushed) GoString() string {
+	return s.String()
+}
+
+func (s *GetSynchronizationJobResponseBodySynchronizationJobResultGroupStatisticsPushed) SetFailed(v int64) *GetSynchronizationJobResponseBodySynchronizationJobResultGroupStatisticsPushed {
+	s.Failed = &v
+	return s
+}
+
+func (s *GetSynchronizationJobResponseBodySynchronizationJobResultGroupStatisticsPushed) SetSkipped(v int64) *GetSynchronizationJobResponseBodySynchronizationJobResultGroupStatisticsPushed {
+	s.Skipped = &v
+	return s
+}
+
+func (s *GetSynchronizationJobResponseBodySynchronizationJobResultGroupStatisticsPushed) SetSuccess(v int64) *GetSynchronizationJobResponseBodySynchronizationJobResultGroupStatisticsPushed {
+	s.Success = &v
+	return s
+}
+
+func (s *GetSynchronizationJobResponseBodySynchronizationJobResultGroupStatisticsPushed) SetTotal(v int64) *GetSynchronizationJobResponseBodySynchronizationJobResultGroupStatisticsPushed {
+	s.Total = &v
+	return s
+}
+
+type GetSynchronizationJobResponseBodySynchronizationJobResultGroupStatisticsSame struct {
+	// 失败数目
+	//
+	// example:
+	//
+	// 10
+	Failed *int64 `json:"Failed,omitempty" xml:"Failed,omitempty"`
+	// 跳过数目
+	//
+	// example:
+	//
+	// 10
+	Skipped *int64 `json:"Skipped,omitempty" xml:"Skipped,omitempty"`
+	// 成功数目
+	//
+	// example:
+	//
+	// 10
+	Success *int64 `json:"Success,omitempty" xml:"Success,omitempty"`
+	// 总共数目
+	//
+	// example:
+	//
+	// 30
+	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
+}
+
+func (s GetSynchronizationJobResponseBodySynchronizationJobResultGroupStatisticsSame) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSynchronizationJobResponseBodySynchronizationJobResultGroupStatisticsSame) GoString() string {
+	return s.String()
+}
+
+func (s *GetSynchronizationJobResponseBodySynchronizationJobResultGroupStatisticsSame) SetFailed(v int64) *GetSynchronizationJobResponseBodySynchronizationJobResultGroupStatisticsSame {
+	s.Failed = &v
+	return s
+}
+
+func (s *GetSynchronizationJobResponseBodySynchronizationJobResultGroupStatisticsSame) SetSkipped(v int64) *GetSynchronizationJobResponseBodySynchronizationJobResultGroupStatisticsSame {
+	s.Skipped = &v
+	return s
+}
+
+func (s *GetSynchronizationJobResponseBodySynchronizationJobResultGroupStatisticsSame) SetSuccess(v int64) *GetSynchronizationJobResponseBodySynchronizationJobResultGroupStatisticsSame {
+	s.Success = &v
+	return s
+}
+
+func (s *GetSynchronizationJobResponseBodySynchronizationJobResultGroupStatisticsSame) SetTotal(v int64) *GetSynchronizationJobResponseBodySynchronizationJobResultGroupStatisticsSame {
+	s.Total = &v
+	return s
+}
+
+type GetSynchronizationJobResponseBodySynchronizationJobResultGroupStatisticsUpdated struct {
+	// 失败数目
+	//
+	// example:
+	//
+	// 10
+	Failed *int64 `json:"Failed,omitempty" xml:"Failed,omitempty"`
+	// 跳过数目
+	//
+	// example:
+	//
+	// 10
+	Skipped *int64 `json:"Skipped,omitempty" xml:"Skipped,omitempty"`
+	// 成功数目
+	//
+	// example:
+	//
+	// 10
+	Success *int64 `json:"Success,omitempty" xml:"Success,omitempty"`
+	// 总共数目
+	//
+	// example:
+	//
+	// 30
+	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
+}
+
+func (s GetSynchronizationJobResponseBodySynchronizationJobResultGroupStatisticsUpdated) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSynchronizationJobResponseBodySynchronizationJobResultGroupStatisticsUpdated) GoString() string {
+	return s.String()
+}
+
+func (s *GetSynchronizationJobResponseBodySynchronizationJobResultGroupStatisticsUpdated) SetFailed(v int64) *GetSynchronizationJobResponseBodySynchronizationJobResultGroupStatisticsUpdated {
+	s.Failed = &v
+	return s
+}
+
+func (s *GetSynchronizationJobResponseBodySynchronizationJobResultGroupStatisticsUpdated) SetSkipped(v int64) *GetSynchronizationJobResponseBodySynchronizationJobResultGroupStatisticsUpdated {
+	s.Skipped = &v
+	return s
+}
+
+func (s *GetSynchronizationJobResponseBodySynchronizationJobResultGroupStatisticsUpdated) SetSuccess(v int64) *GetSynchronizationJobResponseBodySynchronizationJobResultGroupStatisticsUpdated {
+	s.Success = &v
+	return s
+}
+
+func (s *GetSynchronizationJobResponseBodySynchronizationJobResultGroupStatisticsUpdated) SetTotal(v int64) *GetSynchronizationJobResponseBodySynchronizationJobResultGroupStatisticsUpdated {
+	s.Total = &v
+	return s
+}
+
+type GetSynchronizationJobResponseBodySynchronizationJobResultOrganizationalUnitStatistics struct {
+	// 绑定结果统计
+	Binded *GetSynchronizationJobResponseBodySynchronizationJobResultOrganizationalUnitStatisticsBinded `json:"Binded,omitempty" xml:"Binded,omitempty" type:"Struct"`
+	// 创建结果统计
+	Created *GetSynchronizationJobResponseBodySynchronizationJobResultOrganizationalUnitStatisticsCreated `json:"Created,omitempty" xml:"Created,omitempty" type:"Struct"`
+	// 删除结果统计
+	Deleted *GetSynchronizationJobResponseBodySynchronizationJobResultOrganizationalUnitStatisticsDeleted `json:"Deleted,omitempty" xml:"Deleted,omitempty" type:"Struct"`
+	// 推送结果统计
+	Pushed *GetSynchronizationJobResponseBodySynchronizationJobResultOrganizationalUnitStatisticsPushed `json:"Pushed,omitempty" xml:"Pushed,omitempty" type:"Struct"`
+	// 相同结果统计
+	Same *GetSynchronizationJobResponseBodySynchronizationJobResultOrganizationalUnitStatisticsSame `json:"Same,omitempty" xml:"Same,omitempty" type:"Struct"`
+	// 更新结果统计
+	Updated *GetSynchronizationJobResponseBodySynchronizationJobResultOrganizationalUnitStatisticsUpdated `json:"Updated,omitempty" xml:"Updated,omitempty" type:"Struct"`
+}
+
+func (s GetSynchronizationJobResponseBodySynchronizationJobResultOrganizationalUnitStatistics) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSynchronizationJobResponseBodySynchronizationJobResultOrganizationalUnitStatistics) GoString() string {
+	return s.String()
+}
+
+func (s *GetSynchronizationJobResponseBodySynchronizationJobResultOrganizationalUnitStatistics) SetBinded(v *GetSynchronizationJobResponseBodySynchronizationJobResultOrganizationalUnitStatisticsBinded) *GetSynchronizationJobResponseBodySynchronizationJobResultOrganizationalUnitStatistics {
+	s.Binded = v
+	return s
+}
+
+func (s *GetSynchronizationJobResponseBodySynchronizationJobResultOrganizationalUnitStatistics) SetCreated(v *GetSynchronizationJobResponseBodySynchronizationJobResultOrganizationalUnitStatisticsCreated) *GetSynchronizationJobResponseBodySynchronizationJobResultOrganizationalUnitStatistics {
+	s.Created = v
+	return s
+}
+
+func (s *GetSynchronizationJobResponseBodySynchronizationJobResultOrganizationalUnitStatistics) SetDeleted(v *GetSynchronizationJobResponseBodySynchronizationJobResultOrganizationalUnitStatisticsDeleted) *GetSynchronizationJobResponseBodySynchronizationJobResultOrganizationalUnitStatistics {
+	s.Deleted = v
+	return s
+}
+
+func (s *GetSynchronizationJobResponseBodySynchronizationJobResultOrganizationalUnitStatistics) SetPushed(v *GetSynchronizationJobResponseBodySynchronizationJobResultOrganizationalUnitStatisticsPushed) *GetSynchronizationJobResponseBodySynchronizationJobResultOrganizationalUnitStatistics {
+	s.Pushed = v
+	return s
+}
+
+func (s *GetSynchronizationJobResponseBodySynchronizationJobResultOrganizationalUnitStatistics) SetSame(v *GetSynchronizationJobResponseBodySynchronizationJobResultOrganizationalUnitStatisticsSame) *GetSynchronizationJobResponseBodySynchronizationJobResultOrganizationalUnitStatistics {
+	s.Same = v
+	return s
+}
+
+func (s *GetSynchronizationJobResponseBodySynchronizationJobResultOrganizationalUnitStatistics) SetUpdated(v *GetSynchronizationJobResponseBodySynchronizationJobResultOrganizationalUnitStatisticsUpdated) *GetSynchronizationJobResponseBodySynchronizationJobResultOrganizationalUnitStatistics {
+	s.Updated = v
+	return s
+}
+
+type GetSynchronizationJobResponseBodySynchronizationJobResultOrganizationalUnitStatisticsBinded struct {
+	// 失败数目
+	//
+	// example:
+	//
+	// 10
+	Failed *int64 `json:"Failed,omitempty" xml:"Failed,omitempty"`
+	// 跳过数目
+	//
+	// example:
+	//
+	// 10
+	Skipped *int64 `json:"Skipped,omitempty" xml:"Skipped,omitempty"`
+	// 成功数目
+	//
+	// example:
+	//
+	// 10
+	Success *int64 `json:"Success,omitempty" xml:"Success,omitempty"`
+	// 总共数目
+	//
+	// example:
+	//
+	// 30
+	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
+}
+
+func (s GetSynchronizationJobResponseBodySynchronizationJobResultOrganizationalUnitStatisticsBinded) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSynchronizationJobResponseBodySynchronizationJobResultOrganizationalUnitStatisticsBinded) GoString() string {
+	return s.String()
+}
+
+func (s *GetSynchronizationJobResponseBodySynchronizationJobResultOrganizationalUnitStatisticsBinded) SetFailed(v int64) *GetSynchronizationJobResponseBodySynchronizationJobResultOrganizationalUnitStatisticsBinded {
+	s.Failed = &v
+	return s
+}
+
+func (s *GetSynchronizationJobResponseBodySynchronizationJobResultOrganizationalUnitStatisticsBinded) SetSkipped(v int64) *GetSynchronizationJobResponseBodySynchronizationJobResultOrganizationalUnitStatisticsBinded {
+	s.Skipped = &v
+	return s
+}
+
+func (s *GetSynchronizationJobResponseBodySynchronizationJobResultOrganizationalUnitStatisticsBinded) SetSuccess(v int64) *GetSynchronizationJobResponseBodySynchronizationJobResultOrganizationalUnitStatisticsBinded {
+	s.Success = &v
+	return s
+}
+
+func (s *GetSynchronizationJobResponseBodySynchronizationJobResultOrganizationalUnitStatisticsBinded) SetTotal(v int64) *GetSynchronizationJobResponseBodySynchronizationJobResultOrganizationalUnitStatisticsBinded {
+	s.Total = &v
+	return s
+}
+
+type GetSynchronizationJobResponseBodySynchronizationJobResultOrganizationalUnitStatisticsCreated struct {
+	// 失败数目
+	//
+	// example:
+	//
+	// 10
+	Failed *int64 `json:"Failed,omitempty" xml:"Failed,omitempty"`
+	// 跳过数目
+	//
+	// example:
+	//
+	// 10
+	Skipped *int64 `json:"Skipped,omitempty" xml:"Skipped,omitempty"`
+	// 成功数目
+	//
+	// example:
+	//
+	// 10
+	Success *int64 `json:"Success,omitempty" xml:"Success,omitempty"`
+	// 总共数目
+	//
+	// example:
+	//
+	// 30
+	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
+}
+
+func (s GetSynchronizationJobResponseBodySynchronizationJobResultOrganizationalUnitStatisticsCreated) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSynchronizationJobResponseBodySynchronizationJobResultOrganizationalUnitStatisticsCreated) GoString() string {
+	return s.String()
+}
+
+func (s *GetSynchronizationJobResponseBodySynchronizationJobResultOrganizationalUnitStatisticsCreated) SetFailed(v int64) *GetSynchronizationJobResponseBodySynchronizationJobResultOrganizationalUnitStatisticsCreated {
+	s.Failed = &v
+	return s
+}
+
+func (s *GetSynchronizationJobResponseBodySynchronizationJobResultOrganizationalUnitStatisticsCreated) SetSkipped(v int64) *GetSynchronizationJobResponseBodySynchronizationJobResultOrganizationalUnitStatisticsCreated {
+	s.Skipped = &v
+	return s
+}
+
+func (s *GetSynchronizationJobResponseBodySynchronizationJobResultOrganizationalUnitStatisticsCreated) SetSuccess(v int64) *GetSynchronizationJobResponseBodySynchronizationJobResultOrganizationalUnitStatisticsCreated {
+	s.Success = &v
+	return s
+}
+
+func (s *GetSynchronizationJobResponseBodySynchronizationJobResultOrganizationalUnitStatisticsCreated) SetTotal(v int64) *GetSynchronizationJobResponseBodySynchronizationJobResultOrganizationalUnitStatisticsCreated {
+	s.Total = &v
+	return s
+}
+
+type GetSynchronizationJobResponseBodySynchronizationJobResultOrganizationalUnitStatisticsDeleted struct {
+	// 失败数目
+	//
+	// example:
+	//
+	// 10
+	Failed *int64 `json:"Failed,omitempty" xml:"Failed,omitempty"`
+	// 跳过数目
+	//
+	// example:
+	//
+	// 10
+	Skipped *int64 `json:"Skipped,omitempty" xml:"Skipped,omitempty"`
+	// 成功数目
+	//
+	// example:
+	//
+	// 10
+	Success *int64 `json:"Success,omitempty" xml:"Success,omitempty"`
+	// 总共数目
+	//
+	// example:
+	//
+	// 30
+	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
+}
+
+func (s GetSynchronizationJobResponseBodySynchronizationJobResultOrganizationalUnitStatisticsDeleted) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSynchronizationJobResponseBodySynchronizationJobResultOrganizationalUnitStatisticsDeleted) GoString() string {
+	return s.String()
+}
+
+func (s *GetSynchronizationJobResponseBodySynchronizationJobResultOrganizationalUnitStatisticsDeleted) SetFailed(v int64) *GetSynchronizationJobResponseBodySynchronizationJobResultOrganizationalUnitStatisticsDeleted {
+	s.Failed = &v
+	return s
+}
+
+func (s *GetSynchronizationJobResponseBodySynchronizationJobResultOrganizationalUnitStatisticsDeleted) SetSkipped(v int64) *GetSynchronizationJobResponseBodySynchronizationJobResultOrganizationalUnitStatisticsDeleted {
+	s.Skipped = &v
+	return s
+}
+
+func (s *GetSynchronizationJobResponseBodySynchronizationJobResultOrganizationalUnitStatisticsDeleted) SetSuccess(v int64) *GetSynchronizationJobResponseBodySynchronizationJobResultOrganizationalUnitStatisticsDeleted {
+	s.Success = &v
+	return s
+}
+
+func (s *GetSynchronizationJobResponseBodySynchronizationJobResultOrganizationalUnitStatisticsDeleted) SetTotal(v int64) *GetSynchronizationJobResponseBodySynchronizationJobResultOrganizationalUnitStatisticsDeleted {
+	s.Total = &v
+	return s
+}
+
+type GetSynchronizationJobResponseBodySynchronizationJobResultOrganizationalUnitStatisticsPushed struct {
+	// 失败数目
+	//
+	// example:
+	//
+	// 10
+	Failed *int64 `json:"Failed,omitempty" xml:"Failed,omitempty"`
+	// 跳过数目
+	//
+	// example:
+	//
+	// 10
+	Skipped *int64 `json:"Skipped,omitempty" xml:"Skipped,omitempty"`
+	// 成功数目
+	//
+	// example:
+	//
+	// 10
+	Success *int64 `json:"Success,omitempty" xml:"Success,omitempty"`
+	// 总共数目
+	//
+	// example:
+	//
+	// 30
+	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
+}
+
+func (s GetSynchronizationJobResponseBodySynchronizationJobResultOrganizationalUnitStatisticsPushed) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSynchronizationJobResponseBodySynchronizationJobResultOrganizationalUnitStatisticsPushed) GoString() string {
+	return s.String()
+}
+
+func (s *GetSynchronizationJobResponseBodySynchronizationJobResultOrganizationalUnitStatisticsPushed) SetFailed(v int64) *GetSynchronizationJobResponseBodySynchronizationJobResultOrganizationalUnitStatisticsPushed {
+	s.Failed = &v
+	return s
+}
+
+func (s *GetSynchronizationJobResponseBodySynchronizationJobResultOrganizationalUnitStatisticsPushed) SetSkipped(v int64) *GetSynchronizationJobResponseBodySynchronizationJobResultOrganizationalUnitStatisticsPushed {
+	s.Skipped = &v
+	return s
+}
+
+func (s *GetSynchronizationJobResponseBodySynchronizationJobResultOrganizationalUnitStatisticsPushed) SetSuccess(v int64) *GetSynchronizationJobResponseBodySynchronizationJobResultOrganizationalUnitStatisticsPushed {
+	s.Success = &v
+	return s
+}
+
+func (s *GetSynchronizationJobResponseBodySynchronizationJobResultOrganizationalUnitStatisticsPushed) SetTotal(v int64) *GetSynchronizationJobResponseBodySynchronizationJobResultOrganizationalUnitStatisticsPushed {
+	s.Total = &v
+	return s
+}
+
+type GetSynchronizationJobResponseBodySynchronizationJobResultOrganizationalUnitStatisticsSame struct {
+	// 失败数目
+	//
+	// example:
+	//
+	// 10
+	Failed *int64 `json:"Failed,omitempty" xml:"Failed,omitempty"`
+	// 跳过数目
+	//
+	// example:
+	//
+	// 10
+	Skipped *int64 `json:"Skipped,omitempty" xml:"Skipped,omitempty"`
+	// 成功数目
+	//
+	// example:
+	//
+	// 10
+	Success *int64 `json:"Success,omitempty" xml:"Success,omitempty"`
+	// 总共数目
+	//
+	// example:
+	//
+	// 30
+	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
+}
+
+func (s GetSynchronizationJobResponseBodySynchronizationJobResultOrganizationalUnitStatisticsSame) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSynchronizationJobResponseBodySynchronizationJobResultOrganizationalUnitStatisticsSame) GoString() string {
+	return s.String()
+}
+
+func (s *GetSynchronizationJobResponseBodySynchronizationJobResultOrganizationalUnitStatisticsSame) SetFailed(v int64) *GetSynchronizationJobResponseBodySynchronizationJobResultOrganizationalUnitStatisticsSame {
+	s.Failed = &v
+	return s
+}
+
+func (s *GetSynchronizationJobResponseBodySynchronizationJobResultOrganizationalUnitStatisticsSame) SetSkipped(v int64) *GetSynchronizationJobResponseBodySynchronizationJobResultOrganizationalUnitStatisticsSame {
+	s.Skipped = &v
+	return s
+}
+
+func (s *GetSynchronizationJobResponseBodySynchronizationJobResultOrganizationalUnitStatisticsSame) SetSuccess(v int64) *GetSynchronizationJobResponseBodySynchronizationJobResultOrganizationalUnitStatisticsSame {
+	s.Success = &v
+	return s
+}
+
+func (s *GetSynchronizationJobResponseBodySynchronizationJobResultOrganizationalUnitStatisticsSame) SetTotal(v int64) *GetSynchronizationJobResponseBodySynchronizationJobResultOrganizationalUnitStatisticsSame {
+	s.Total = &v
+	return s
+}
+
+type GetSynchronizationJobResponseBodySynchronizationJobResultOrganizationalUnitStatisticsUpdated struct {
+	// 失败数目
+	//
+	// example:
+	//
+	// 10
+	Failed *int64 `json:"Failed,omitempty" xml:"Failed,omitempty"`
+	// 跳过数目
+	//
+	// example:
+	//
+	// 10
+	Skipped *int64 `json:"Skipped,omitempty" xml:"Skipped,omitempty"`
+	// 成功数目
+	//
+	// example:
+	//
+	// 10
+	Success *int64 `json:"Success,omitempty" xml:"Success,omitempty"`
+	// 总共数目
+	//
+	// example:
+	//
+	// 30
+	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
+}
+
+func (s GetSynchronizationJobResponseBodySynchronizationJobResultOrganizationalUnitStatisticsUpdated) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSynchronizationJobResponseBodySynchronizationJobResultOrganizationalUnitStatisticsUpdated) GoString() string {
+	return s.String()
+}
+
+func (s *GetSynchronizationJobResponseBodySynchronizationJobResultOrganizationalUnitStatisticsUpdated) SetFailed(v int64) *GetSynchronizationJobResponseBodySynchronizationJobResultOrganizationalUnitStatisticsUpdated {
+	s.Failed = &v
+	return s
+}
+
+func (s *GetSynchronizationJobResponseBodySynchronizationJobResultOrganizationalUnitStatisticsUpdated) SetSkipped(v int64) *GetSynchronizationJobResponseBodySynchronizationJobResultOrganizationalUnitStatisticsUpdated {
+	s.Skipped = &v
+	return s
+}
+
+func (s *GetSynchronizationJobResponseBodySynchronizationJobResultOrganizationalUnitStatisticsUpdated) SetSuccess(v int64) *GetSynchronizationJobResponseBodySynchronizationJobResultOrganizationalUnitStatisticsUpdated {
+	s.Success = &v
+	return s
+}
+
+func (s *GetSynchronizationJobResponseBodySynchronizationJobResultOrganizationalUnitStatisticsUpdated) SetTotal(v int64) *GetSynchronizationJobResponseBodySynchronizationJobResultOrganizationalUnitStatisticsUpdated {
+	s.Total = &v
+	return s
+}
+
+type GetSynchronizationJobResponseBodySynchronizationJobResultUserStatistics struct {
+	// 绑定结果统计
+	Binded *GetSynchronizationJobResponseBodySynchronizationJobResultUserStatisticsBinded `json:"Binded,omitempty" xml:"Binded,omitempty" type:"Struct"`
+	// 创建结果统计
+	Created *GetSynchronizationJobResponseBodySynchronizationJobResultUserStatisticsCreated `json:"Created,omitempty" xml:"Created,omitempty" type:"Struct"`
+	// 删除结果统计
+	Deleted *GetSynchronizationJobResponseBodySynchronizationJobResultUserStatisticsDeleted `json:"Deleted,omitempty" xml:"Deleted,omitempty" type:"Struct"`
+	// 推送结果统计
+	Pushed *GetSynchronizationJobResponseBodySynchronizationJobResultUserStatisticsPushed `json:"Pushed,omitempty" xml:"Pushed,omitempty" type:"Struct"`
+	// 相同结果统计
+	Same *GetSynchronizationJobResponseBodySynchronizationJobResultUserStatisticsSame `json:"Same,omitempty" xml:"Same,omitempty" type:"Struct"`
+	// 更新结果统计
+	Updated *GetSynchronizationJobResponseBodySynchronizationJobResultUserStatisticsUpdated `json:"Updated,omitempty" xml:"Updated,omitempty" type:"Struct"`
+}
+
+func (s GetSynchronizationJobResponseBodySynchronizationJobResultUserStatistics) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSynchronizationJobResponseBodySynchronizationJobResultUserStatistics) GoString() string {
+	return s.String()
+}
+
+func (s *GetSynchronizationJobResponseBodySynchronizationJobResultUserStatistics) SetBinded(v *GetSynchronizationJobResponseBodySynchronizationJobResultUserStatisticsBinded) *GetSynchronizationJobResponseBodySynchronizationJobResultUserStatistics {
+	s.Binded = v
+	return s
+}
+
+func (s *GetSynchronizationJobResponseBodySynchronizationJobResultUserStatistics) SetCreated(v *GetSynchronizationJobResponseBodySynchronizationJobResultUserStatisticsCreated) *GetSynchronizationJobResponseBodySynchronizationJobResultUserStatistics {
+	s.Created = v
+	return s
+}
+
+func (s *GetSynchronizationJobResponseBodySynchronizationJobResultUserStatistics) SetDeleted(v *GetSynchronizationJobResponseBodySynchronizationJobResultUserStatisticsDeleted) *GetSynchronizationJobResponseBodySynchronizationJobResultUserStatistics {
+	s.Deleted = v
+	return s
+}
+
+func (s *GetSynchronizationJobResponseBodySynchronizationJobResultUserStatistics) SetPushed(v *GetSynchronizationJobResponseBodySynchronizationJobResultUserStatisticsPushed) *GetSynchronizationJobResponseBodySynchronizationJobResultUserStatistics {
+	s.Pushed = v
+	return s
+}
+
+func (s *GetSynchronizationJobResponseBodySynchronizationJobResultUserStatistics) SetSame(v *GetSynchronizationJobResponseBodySynchronizationJobResultUserStatisticsSame) *GetSynchronizationJobResponseBodySynchronizationJobResultUserStatistics {
+	s.Same = v
+	return s
+}
+
+func (s *GetSynchronizationJobResponseBodySynchronizationJobResultUserStatistics) SetUpdated(v *GetSynchronizationJobResponseBodySynchronizationJobResultUserStatisticsUpdated) *GetSynchronizationJobResponseBodySynchronizationJobResultUserStatistics {
+	s.Updated = v
+	return s
+}
+
+type GetSynchronizationJobResponseBodySynchronizationJobResultUserStatisticsBinded struct {
+	// 失败数目
+	//
+	// example:
+	//
+	// 10
+	Failed *int64 `json:"Failed,omitempty" xml:"Failed,omitempty"`
+	// 跳过数目
+	//
+	// example:
+	//
+	// 10
+	Skipped *int64 `json:"Skipped,omitempty" xml:"Skipped,omitempty"`
+	// 成功数目
+	//
+	// example:
+	//
+	// 10
+	Success *int64 `json:"Success,omitempty" xml:"Success,omitempty"`
+	// 总共数目
+	//
+	// example:
+	//
+	// 10
+	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
+}
+
+func (s GetSynchronizationJobResponseBodySynchronizationJobResultUserStatisticsBinded) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSynchronizationJobResponseBodySynchronizationJobResultUserStatisticsBinded) GoString() string {
+	return s.String()
+}
+
+func (s *GetSynchronizationJobResponseBodySynchronizationJobResultUserStatisticsBinded) SetFailed(v int64) *GetSynchronizationJobResponseBodySynchronizationJobResultUserStatisticsBinded {
+	s.Failed = &v
+	return s
+}
+
+func (s *GetSynchronizationJobResponseBodySynchronizationJobResultUserStatisticsBinded) SetSkipped(v int64) *GetSynchronizationJobResponseBodySynchronizationJobResultUserStatisticsBinded {
+	s.Skipped = &v
+	return s
+}
+
+func (s *GetSynchronizationJobResponseBodySynchronizationJobResultUserStatisticsBinded) SetSuccess(v int64) *GetSynchronizationJobResponseBodySynchronizationJobResultUserStatisticsBinded {
+	s.Success = &v
+	return s
+}
+
+func (s *GetSynchronizationJobResponseBodySynchronizationJobResultUserStatisticsBinded) SetTotal(v int64) *GetSynchronizationJobResponseBodySynchronizationJobResultUserStatisticsBinded {
+	s.Total = &v
+	return s
+}
+
+type GetSynchronizationJobResponseBodySynchronizationJobResultUserStatisticsCreated struct {
+	// 失败数目
+	//
+	// example:
+	//
+	// 10
+	Failed *int64 `json:"Failed,omitempty" xml:"Failed,omitempty"`
+	// 跳过数目
+	//
+	// example:
+	//
+	// 10
+	Skipped *int64 `json:"Skipped,omitempty" xml:"Skipped,omitempty"`
+	// 成功数目
+	//
+	// example:
+	//
+	// 10
+	Success *int64 `json:"Success,omitempty" xml:"Success,omitempty"`
+	// 总共数目
+	//
+	// example:
+	//
+	// 10
+	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
+}
+
+func (s GetSynchronizationJobResponseBodySynchronizationJobResultUserStatisticsCreated) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSynchronizationJobResponseBodySynchronizationJobResultUserStatisticsCreated) GoString() string {
+	return s.String()
+}
+
+func (s *GetSynchronizationJobResponseBodySynchronizationJobResultUserStatisticsCreated) SetFailed(v int64) *GetSynchronizationJobResponseBodySynchronizationJobResultUserStatisticsCreated {
+	s.Failed = &v
+	return s
+}
+
+func (s *GetSynchronizationJobResponseBodySynchronizationJobResultUserStatisticsCreated) SetSkipped(v int64) *GetSynchronizationJobResponseBodySynchronizationJobResultUserStatisticsCreated {
+	s.Skipped = &v
+	return s
+}
+
+func (s *GetSynchronizationJobResponseBodySynchronizationJobResultUserStatisticsCreated) SetSuccess(v int64) *GetSynchronizationJobResponseBodySynchronizationJobResultUserStatisticsCreated {
+	s.Success = &v
+	return s
+}
+
+func (s *GetSynchronizationJobResponseBodySynchronizationJobResultUserStatisticsCreated) SetTotal(v int64) *GetSynchronizationJobResponseBodySynchronizationJobResultUserStatisticsCreated {
+	s.Total = &v
+	return s
+}
+
+type GetSynchronizationJobResponseBodySynchronizationJobResultUserStatisticsDeleted struct {
+	// 失败数目
+	//
+	// example:
+	//
+	// 10
+	Failed *int64 `json:"Failed,omitempty" xml:"Failed,omitempty"`
+	// 跳过数目
+	//
+	// example:
+	//
+	// 10
+	Skipped *int64 `json:"Skipped,omitempty" xml:"Skipped,omitempty"`
+	// 成功数目
+	//
+	// example:
+	//
+	// 10
+	Success *int64 `json:"Success,omitempty" xml:"Success,omitempty"`
+	// 总共数目
+	//
+	// example:
+	//
+	// 10
+	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
+}
+
+func (s GetSynchronizationJobResponseBodySynchronizationJobResultUserStatisticsDeleted) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSynchronizationJobResponseBodySynchronizationJobResultUserStatisticsDeleted) GoString() string {
+	return s.String()
+}
+
+func (s *GetSynchronizationJobResponseBodySynchronizationJobResultUserStatisticsDeleted) SetFailed(v int64) *GetSynchronizationJobResponseBodySynchronizationJobResultUserStatisticsDeleted {
+	s.Failed = &v
+	return s
+}
+
+func (s *GetSynchronizationJobResponseBodySynchronizationJobResultUserStatisticsDeleted) SetSkipped(v int64) *GetSynchronizationJobResponseBodySynchronizationJobResultUserStatisticsDeleted {
+	s.Skipped = &v
+	return s
+}
+
+func (s *GetSynchronizationJobResponseBodySynchronizationJobResultUserStatisticsDeleted) SetSuccess(v int64) *GetSynchronizationJobResponseBodySynchronizationJobResultUserStatisticsDeleted {
+	s.Success = &v
+	return s
+}
+
+func (s *GetSynchronizationJobResponseBodySynchronizationJobResultUserStatisticsDeleted) SetTotal(v int64) *GetSynchronizationJobResponseBodySynchronizationJobResultUserStatisticsDeleted {
+	s.Total = &v
+	return s
+}
+
+type GetSynchronizationJobResponseBodySynchronizationJobResultUserStatisticsPushed struct {
+	// 失败数目
+	//
+	// example:
+	//
+	// 10
+	Failed *int64 `json:"Failed,omitempty" xml:"Failed,omitempty"`
+	// 跳过数目
+	//
+	// example:
+	//
+	// 10
+	Skipped *int64 `json:"Skipped,omitempty" xml:"Skipped,omitempty"`
+	// 成功数目
+	//
+	// example:
+	//
+	// 10
+	Success *int64 `json:"Success,omitempty" xml:"Success,omitempty"`
+	// 总共数目
+	//
+	// example:
+	//
+	// 10
+	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
+}
+
+func (s GetSynchronizationJobResponseBodySynchronizationJobResultUserStatisticsPushed) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSynchronizationJobResponseBodySynchronizationJobResultUserStatisticsPushed) GoString() string {
+	return s.String()
+}
+
+func (s *GetSynchronizationJobResponseBodySynchronizationJobResultUserStatisticsPushed) SetFailed(v int64) *GetSynchronizationJobResponseBodySynchronizationJobResultUserStatisticsPushed {
+	s.Failed = &v
+	return s
+}
+
+func (s *GetSynchronizationJobResponseBodySynchronizationJobResultUserStatisticsPushed) SetSkipped(v int64) *GetSynchronizationJobResponseBodySynchronizationJobResultUserStatisticsPushed {
+	s.Skipped = &v
+	return s
+}
+
+func (s *GetSynchronizationJobResponseBodySynchronizationJobResultUserStatisticsPushed) SetSuccess(v int64) *GetSynchronizationJobResponseBodySynchronizationJobResultUserStatisticsPushed {
+	s.Success = &v
+	return s
+}
+
+func (s *GetSynchronizationJobResponseBodySynchronizationJobResultUserStatisticsPushed) SetTotal(v int64) *GetSynchronizationJobResponseBodySynchronizationJobResultUserStatisticsPushed {
+	s.Total = &v
+	return s
+}
+
+type GetSynchronizationJobResponseBodySynchronizationJobResultUserStatisticsSame struct {
+	// 失败数目
+	//
+	// example:
+	//
+	// 10
+	Failed *int64 `json:"Failed,omitempty" xml:"Failed,omitempty"`
+	// 跳过数目
+	//
+	// example:
+	//
+	// 10
+	Skipped *int64 `json:"Skipped,omitempty" xml:"Skipped,omitempty"`
+	// 成功数目
+	//
+	// example:
+	//
+	// 10
+	Success *int64 `json:"Success,omitempty" xml:"Success,omitempty"`
+	// 总共数目
+	//
+	// example:
+	//
+	// 10
+	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
+}
+
+func (s GetSynchronizationJobResponseBodySynchronizationJobResultUserStatisticsSame) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSynchronizationJobResponseBodySynchronizationJobResultUserStatisticsSame) GoString() string {
+	return s.String()
+}
+
+func (s *GetSynchronizationJobResponseBodySynchronizationJobResultUserStatisticsSame) SetFailed(v int64) *GetSynchronizationJobResponseBodySynchronizationJobResultUserStatisticsSame {
+	s.Failed = &v
+	return s
+}
+
+func (s *GetSynchronizationJobResponseBodySynchronizationJobResultUserStatisticsSame) SetSkipped(v int64) *GetSynchronizationJobResponseBodySynchronizationJobResultUserStatisticsSame {
+	s.Skipped = &v
+	return s
+}
+
+func (s *GetSynchronizationJobResponseBodySynchronizationJobResultUserStatisticsSame) SetSuccess(v int64) *GetSynchronizationJobResponseBodySynchronizationJobResultUserStatisticsSame {
+	s.Success = &v
+	return s
+}
+
+func (s *GetSynchronizationJobResponseBodySynchronizationJobResultUserStatisticsSame) SetTotal(v int64) *GetSynchronizationJobResponseBodySynchronizationJobResultUserStatisticsSame {
+	s.Total = &v
+	return s
+}
+
+type GetSynchronizationJobResponseBodySynchronizationJobResultUserStatisticsUpdated struct {
+	// 失败数目
+	//
+	// example:
+	//
+	// 10
+	Failed *int64 `json:"Failed,omitempty" xml:"Failed,omitempty"`
+	// 跳过数目
+	//
+	// example:
+	//
+	// 10
+	Skipped *int64 `json:"Skipped,omitempty" xml:"Skipped,omitempty"`
+	// 成功数目
+	//
+	// example:
+	//
+	// 10
+	Success *int64 `json:"Success,omitempty" xml:"Success,omitempty"`
+	// 总共数目
+	//
+	// example:
+	//
+	// 10
+	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
+}
+
+func (s GetSynchronizationJobResponseBodySynchronizationJobResultUserStatisticsUpdated) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSynchronizationJobResponseBodySynchronizationJobResultUserStatisticsUpdated) GoString() string {
+	return s.String()
+}
+
+func (s *GetSynchronizationJobResponseBodySynchronizationJobResultUserStatisticsUpdated) SetFailed(v int64) *GetSynchronizationJobResponseBodySynchronizationJobResultUserStatisticsUpdated {
+	s.Failed = &v
+	return s
+}
+
+func (s *GetSynchronizationJobResponseBodySynchronizationJobResultUserStatisticsUpdated) SetSkipped(v int64) *GetSynchronizationJobResponseBodySynchronizationJobResultUserStatisticsUpdated {
+	s.Skipped = &v
+	return s
+}
+
+func (s *GetSynchronizationJobResponseBodySynchronizationJobResultUserStatisticsUpdated) SetSuccess(v int64) *GetSynchronizationJobResponseBodySynchronizationJobResultUserStatisticsUpdated {
+	s.Success = &v
+	return s
+}
+
+func (s *GetSynchronizationJobResponseBodySynchronizationJobResultUserStatisticsUpdated) SetTotal(v int64) *GetSynchronizationJobResponseBodySynchronizationJobResultUserStatisticsUpdated {
+	s.Total = &v
+	return s
+}
+
+type GetSynchronizationJobResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetSynchronizationJobResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetSynchronizationJobResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSynchronizationJobResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetSynchronizationJobResponse) SetHeaders(v map[string]*string) *GetSynchronizationJobResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetSynchronizationJobResponse) SetStatusCode(v int32) *GetSynchronizationJobResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetSynchronizationJobResponse) SetBody(v *GetSynchronizationJobResponseBody) *GetSynchronizationJobResponse {
 	s.Body = v
 	return s
 }
@@ -10189,8 +11976,6 @@ type ListGroupsResponseBodyGroups struct {
 	GroupSourceId *string `json:"GroupSourceId,omitempty" xml:"GroupSourceId,omitempty"`
 	// The source type of the group. Only build_in may be returned, which indicates that the group was created in IDaaS.
 	//
-	// *
-	//
 	// example:
 	//
 	// build_in
@@ -12225,6 +14010,1910 @@ func (s *ListRegionsResponse) SetBody(v *ListRegionsResponseBody) *ListRegionsRe
 	return s
 }
 
+type ListSynchronizationJobsRequest struct {
+	// 同步方向[ingress,egress]
+	//
+	// example:
+	//
+	// ingress
+	Direction *string `json:"Direction,omitempty" xml:"Direction,omitempty"`
+	// 同步结束时间
+	//
+	// example:
+	//
+	// 1649830226000
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// IDaaS EIAM实例的ID。
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// idaas_ue2jvisn35ea5lmthk267xxxxx
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// 分页查询时每页行数。默认值为20，最大值为100。
+	//
+	// example:
+	//
+	// 20
+	MaxResults *int64 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// 查询凭证（Token），取值为上一次API调用返回的NextToken参数值。
+	//
+	// example:
+	//
+	// NTxxxxxexample
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// 当前查询的列表页码，默认为1。
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// 当前查询的列表页码，默认为20。
+	//
+	// example:
+	//
+	// 10
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// 同步开始时间
+	//
+	// example:
+	//
+	// 1649830226000
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// 同步状态[pending,running,suspending,failed,partial_success,success]
+	//
+	// example:
+	//
+	// running
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// 同步目标ID
+	//
+	// example:
+	//
+	// target_001
+	TargetIds []*string `json:"TargetIds,omitempty" xml:"TargetIds,omitempty" type:"Repeated"`
+	// 同步目标类型[identity_provider,organizational_unit,application,user]
+	//
+	// example:
+	//
+	// identity_provider
+	TargetType *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
+}
+
+func (s ListSynchronizationJobsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSynchronizationJobsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListSynchronizationJobsRequest) SetDirection(v string) *ListSynchronizationJobsRequest {
+	s.Direction = &v
+	return s
+}
+
+func (s *ListSynchronizationJobsRequest) SetEndTime(v int64) *ListSynchronizationJobsRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *ListSynchronizationJobsRequest) SetInstanceId(v string) *ListSynchronizationJobsRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ListSynchronizationJobsRequest) SetMaxResults(v int64) *ListSynchronizationJobsRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListSynchronizationJobsRequest) SetNextToken(v string) *ListSynchronizationJobsRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListSynchronizationJobsRequest) SetPageNumber(v int64) *ListSynchronizationJobsRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListSynchronizationJobsRequest) SetPageSize(v int64) *ListSynchronizationJobsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListSynchronizationJobsRequest) SetStartTime(v int64) *ListSynchronizationJobsRequest {
+	s.StartTime = &v
+	return s
+}
+
+func (s *ListSynchronizationJobsRequest) SetStatus(v string) *ListSynchronizationJobsRequest {
+	s.Status = &v
+	return s
+}
+
+func (s *ListSynchronizationJobsRequest) SetTargetIds(v []*string) *ListSynchronizationJobsRequest {
+	s.TargetIds = v
+	return s
+}
+
+func (s *ListSynchronizationJobsRequest) SetTargetType(v string) *ListSynchronizationJobsRequest {
+	s.TargetType = &v
+	return s
+}
+
+type ListSynchronizationJobsResponseBody struct {
+	// 本次调用返回的查询凭证（Token）值，用于下一次翻页查询。
+	//
+	// example:
+	//
+	// NTxxxexample
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// example:
+	//
+	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
+	RequestId           *string                                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SynchronizationJobs []*ListSynchronizationJobsResponseBodySynchronizationJobs `json:"SynchronizationJobs,omitempty" xml:"SynchronizationJobs,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 100
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListSynchronizationJobsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSynchronizationJobsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListSynchronizationJobsResponseBody) SetNextToken(v string) *ListSynchronizationJobsResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListSynchronizationJobsResponseBody) SetRequestId(v string) *ListSynchronizationJobsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListSynchronizationJobsResponseBody) SetSynchronizationJobs(v []*ListSynchronizationJobsResponseBodySynchronizationJobs) *ListSynchronizationJobsResponseBody {
+	s.SynchronizationJobs = v
+	return s
+}
+
+func (s *ListSynchronizationJobsResponseBody) SetTotalCount(v int64) *ListSynchronizationJobsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListSynchronizationJobsResponseBodySynchronizationJobs struct {
+	// 同步任务方向
+	//
+	// example:
+	//
+	// ingress
+	Direction *string `json:"Direction,omitempty" xml:"Direction,omitempty"`
+	// 同步结束时间
+	//
+	// example:
+	//
+	// 1649830226000
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// 同步任务结果
+	Result *ListSynchronizationJobsResponseBodySynchronizationJobsResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	// 同步开始时间
+	//
+	// example:
+	//
+	// 1649830226000
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// 同步任务状态
+	//
+	// example:
+	//
+	// success
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// 同步任务ID
+	//
+	// example:
+	//
+	// sync_0000347vjovtcf41li0fgsd98gn24q9njxxxxx
+	SynchronizationJobId *string `json:"SynchronizationJobId,omitempty" xml:"SynchronizationJobId,omitempty"`
+	// 同步目标ID
+	//
+	// example:
+	//
+	// idp_my664lwkhpicbyzirog3xxxxx
+	TargetId *string `json:"TargetId,omitempty" xml:"TargetId,omitempty"`
+	// 同步目标类型
+	//
+	// example:
+	//
+	// identity_provider
+	TargetType *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
+	// 同步触发类型
+	//
+	// example:
+	//
+	// auto
+	TriggerType *string `json:"TriggerType,omitempty" xml:"TriggerType,omitempty"`
+}
+
+func (s ListSynchronizationJobsResponseBodySynchronizationJobs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSynchronizationJobsResponseBodySynchronizationJobs) GoString() string {
+	return s.String()
+}
+
+func (s *ListSynchronizationJobsResponseBodySynchronizationJobs) SetDirection(v string) *ListSynchronizationJobsResponseBodySynchronizationJobs {
+	s.Direction = &v
+	return s
+}
+
+func (s *ListSynchronizationJobsResponseBodySynchronizationJobs) SetEndTime(v int64) *ListSynchronizationJobsResponseBodySynchronizationJobs {
+	s.EndTime = &v
+	return s
+}
+
+func (s *ListSynchronizationJobsResponseBodySynchronizationJobs) SetResult(v *ListSynchronizationJobsResponseBodySynchronizationJobsResult) *ListSynchronizationJobsResponseBodySynchronizationJobs {
+	s.Result = v
+	return s
+}
+
+func (s *ListSynchronizationJobsResponseBodySynchronizationJobs) SetStartTime(v int64) *ListSynchronizationJobsResponseBodySynchronizationJobs {
+	s.StartTime = &v
+	return s
+}
+
+func (s *ListSynchronizationJobsResponseBodySynchronizationJobs) SetStatus(v string) *ListSynchronizationJobsResponseBodySynchronizationJobs {
+	s.Status = &v
+	return s
+}
+
+func (s *ListSynchronizationJobsResponseBodySynchronizationJobs) SetSynchronizationJobId(v string) *ListSynchronizationJobsResponseBodySynchronizationJobs {
+	s.SynchronizationJobId = &v
+	return s
+}
+
+func (s *ListSynchronizationJobsResponseBodySynchronizationJobs) SetTargetId(v string) *ListSynchronizationJobsResponseBodySynchronizationJobs {
+	s.TargetId = &v
+	return s
+}
+
+func (s *ListSynchronizationJobsResponseBodySynchronizationJobs) SetTargetType(v string) *ListSynchronizationJobsResponseBodySynchronizationJobs {
+	s.TargetType = &v
+	return s
+}
+
+func (s *ListSynchronizationJobsResponseBodySynchronizationJobs) SetTriggerType(v string) *ListSynchronizationJobsResponseBodySynchronizationJobs {
+	s.TriggerType = &v
+	return s
+}
+
+type ListSynchronizationJobsResponseBodySynchronizationJobsResult struct {
+	// 同步结果错误码
+	//
+	// example:
+	//
+	// ErrorCodeNotFound
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// 同步结果错误信息描述
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// 组成员同步结果统计
+	GroupMemberStatistics *ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupMemberStatistics `json:"GroupMemberStatistics,omitempty" xml:"GroupMemberStatistics,omitempty" type:"Struct"`
+	// 组同步结果统计
+	GroupStatistics *ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupStatistics `json:"GroupStatistics,omitempty" xml:"GroupStatistics,omitempty" type:"Struct"`
+	// 组织同步结果统计
+	OrganizationalUnitStatistics *ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizationalUnitStatistics `json:"OrganizationalUnitStatistics,omitempty" xml:"OrganizationalUnitStatistics,omitempty" type:"Struct"`
+	// 用户同步结果统计
+	UserStatistics *ListSynchronizationJobsResponseBodySynchronizationJobsResultUserStatistics `json:"UserStatistics,omitempty" xml:"UserStatistics,omitempty" type:"Struct"`
+}
+
+func (s ListSynchronizationJobsResponseBodySynchronizationJobsResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSynchronizationJobsResponseBodySynchronizationJobsResult) GoString() string {
+	return s.String()
+}
+
+func (s *ListSynchronizationJobsResponseBodySynchronizationJobsResult) SetErrorCode(v string) *ListSynchronizationJobsResponseBodySynchronizationJobsResult {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *ListSynchronizationJobsResponseBodySynchronizationJobsResult) SetErrorMessage(v string) *ListSynchronizationJobsResponseBodySynchronizationJobsResult {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *ListSynchronizationJobsResponseBodySynchronizationJobsResult) SetGroupMemberStatistics(v *ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupMemberStatistics) *ListSynchronizationJobsResponseBodySynchronizationJobsResult {
+	s.GroupMemberStatistics = v
+	return s
+}
+
+func (s *ListSynchronizationJobsResponseBodySynchronizationJobsResult) SetGroupStatistics(v *ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupStatistics) *ListSynchronizationJobsResponseBodySynchronizationJobsResult {
+	s.GroupStatistics = v
+	return s
+}
+
+func (s *ListSynchronizationJobsResponseBodySynchronizationJobsResult) SetOrganizationalUnitStatistics(v *ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizationalUnitStatistics) *ListSynchronizationJobsResponseBodySynchronizationJobsResult {
+	s.OrganizationalUnitStatistics = v
+	return s
+}
+
+func (s *ListSynchronizationJobsResponseBodySynchronizationJobsResult) SetUserStatistics(v *ListSynchronizationJobsResponseBodySynchronizationJobsResultUserStatistics) *ListSynchronizationJobsResponseBodySynchronizationJobsResult {
+	s.UserStatistics = v
+	return s
+}
+
+type ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupMemberStatistics struct {
+	// 绑定结果统计
+	Binded *ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupMemberStatisticsBinded `json:"Binded,omitempty" xml:"Binded,omitempty" type:"Struct"`
+	// 创建结果统计
+	Created *ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupMemberStatisticsCreated `json:"Created,omitempty" xml:"Created,omitempty" type:"Struct"`
+	// 删除结果统计
+	Deleted *ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupMemberStatisticsDeleted `json:"Deleted,omitempty" xml:"Deleted,omitempty" type:"Struct"`
+	// 推送结果统计
+	Pushed *ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupMemberStatisticsPushed `json:"Pushed,omitempty" xml:"Pushed,omitempty" type:"Struct"`
+	// 相同结果统计
+	Same *ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupMemberStatisticsSame `json:"Same,omitempty" xml:"Same,omitempty" type:"Struct"`
+	// 更新结果统计
+	Updated *ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupMemberStatisticsUpdated `json:"Updated,omitempty" xml:"Updated,omitempty" type:"Struct"`
+}
+
+func (s ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupMemberStatistics) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupMemberStatistics) GoString() string {
+	return s.String()
+}
+
+func (s *ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupMemberStatistics) SetBinded(v *ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupMemberStatisticsBinded) *ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupMemberStatistics {
+	s.Binded = v
+	return s
+}
+
+func (s *ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupMemberStatistics) SetCreated(v *ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupMemberStatisticsCreated) *ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupMemberStatistics {
+	s.Created = v
+	return s
+}
+
+func (s *ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupMemberStatistics) SetDeleted(v *ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupMemberStatisticsDeleted) *ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupMemberStatistics {
+	s.Deleted = v
+	return s
+}
+
+func (s *ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupMemberStatistics) SetPushed(v *ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupMemberStatisticsPushed) *ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupMemberStatistics {
+	s.Pushed = v
+	return s
+}
+
+func (s *ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupMemberStatistics) SetSame(v *ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupMemberStatisticsSame) *ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupMemberStatistics {
+	s.Same = v
+	return s
+}
+
+func (s *ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupMemberStatistics) SetUpdated(v *ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupMemberStatisticsUpdated) *ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupMemberStatistics {
+	s.Updated = v
+	return s
+}
+
+type ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupMemberStatisticsBinded struct {
+	// 失败数目
+	//
+	// example:
+	//
+	// 1
+	Failed *int64 `json:"Failed,omitempty" xml:"Failed,omitempty"`
+	// 跳过数目
+	//
+	// example:
+	//
+	// 1
+	Skipped *int64 `json:"Skipped,omitempty" xml:"Skipped,omitempty"`
+	// 成功数目
+	//
+	// example:
+	//
+	// 1
+	Success *int64 `json:"Success,omitempty" xml:"Success,omitempty"`
+	// 总共数目
+	//
+	// example:
+	//
+	// 3
+	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
+}
+
+func (s ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupMemberStatisticsBinded) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupMemberStatisticsBinded) GoString() string {
+	return s.String()
+}
+
+func (s *ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupMemberStatisticsBinded) SetFailed(v int64) *ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupMemberStatisticsBinded {
+	s.Failed = &v
+	return s
+}
+
+func (s *ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupMemberStatisticsBinded) SetSkipped(v int64) *ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupMemberStatisticsBinded {
+	s.Skipped = &v
+	return s
+}
+
+func (s *ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupMemberStatisticsBinded) SetSuccess(v int64) *ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupMemberStatisticsBinded {
+	s.Success = &v
+	return s
+}
+
+func (s *ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupMemberStatisticsBinded) SetTotal(v int64) *ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupMemberStatisticsBinded {
+	s.Total = &v
+	return s
+}
+
+type ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupMemberStatisticsCreated struct {
+	// 失败数目
+	//
+	// example:
+	//
+	// 1
+	Failed *int64 `json:"Failed,omitempty" xml:"Failed,omitempty"`
+	// 跳过数目
+	//
+	// example:
+	//
+	// 1
+	Skipped *int64 `json:"Skipped,omitempty" xml:"Skipped,omitempty"`
+	// 成功数目
+	//
+	// example:
+	//
+	// 1
+	Success *int64 `json:"Success,omitempty" xml:"Success,omitempty"`
+	// 总共数目
+	//
+	// example:
+	//
+	// 3
+	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
+}
+
+func (s ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupMemberStatisticsCreated) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupMemberStatisticsCreated) GoString() string {
+	return s.String()
+}
+
+func (s *ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupMemberStatisticsCreated) SetFailed(v int64) *ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupMemberStatisticsCreated {
+	s.Failed = &v
+	return s
+}
+
+func (s *ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupMemberStatisticsCreated) SetSkipped(v int64) *ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupMemberStatisticsCreated {
+	s.Skipped = &v
+	return s
+}
+
+func (s *ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupMemberStatisticsCreated) SetSuccess(v int64) *ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupMemberStatisticsCreated {
+	s.Success = &v
+	return s
+}
+
+func (s *ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupMemberStatisticsCreated) SetTotal(v int64) *ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupMemberStatisticsCreated {
+	s.Total = &v
+	return s
+}
+
+type ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupMemberStatisticsDeleted struct {
+	// 失败数目
+	//
+	// example:
+	//
+	// 1
+	Failed *int64 `json:"Failed,omitempty" xml:"Failed,omitempty"`
+	// 跳过数目
+	//
+	// example:
+	//
+	// 1
+	Skipped *int64 `json:"Skipped,omitempty" xml:"Skipped,omitempty"`
+	// 成功数目
+	//
+	// example:
+	//
+	// 1
+	Success *int64 `json:"Success,omitempty" xml:"Success,omitempty"`
+	// 总共数目
+	//
+	// example:
+	//
+	// 3
+	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
+}
+
+func (s ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupMemberStatisticsDeleted) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupMemberStatisticsDeleted) GoString() string {
+	return s.String()
+}
+
+func (s *ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupMemberStatisticsDeleted) SetFailed(v int64) *ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupMemberStatisticsDeleted {
+	s.Failed = &v
+	return s
+}
+
+func (s *ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupMemberStatisticsDeleted) SetSkipped(v int64) *ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupMemberStatisticsDeleted {
+	s.Skipped = &v
+	return s
+}
+
+func (s *ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupMemberStatisticsDeleted) SetSuccess(v int64) *ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupMemberStatisticsDeleted {
+	s.Success = &v
+	return s
+}
+
+func (s *ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupMemberStatisticsDeleted) SetTotal(v int64) *ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupMemberStatisticsDeleted {
+	s.Total = &v
+	return s
+}
+
+type ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupMemberStatisticsPushed struct {
+	// 失败数目
+	//
+	// example:
+	//
+	// 1
+	Failed *int64 `json:"Failed,omitempty" xml:"Failed,omitempty"`
+	// 跳过数目
+	//
+	// example:
+	//
+	// 1
+	Skipped *int64 `json:"Skipped,omitempty" xml:"Skipped,omitempty"`
+	// 成功数目
+	//
+	// example:
+	//
+	// 1
+	Success *int64 `json:"Success,omitempty" xml:"Success,omitempty"`
+	// 总共数目
+	//
+	// example:
+	//
+	// 3
+	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
+}
+
+func (s ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupMemberStatisticsPushed) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupMemberStatisticsPushed) GoString() string {
+	return s.String()
+}
+
+func (s *ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupMemberStatisticsPushed) SetFailed(v int64) *ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupMemberStatisticsPushed {
+	s.Failed = &v
+	return s
+}
+
+func (s *ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupMemberStatisticsPushed) SetSkipped(v int64) *ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupMemberStatisticsPushed {
+	s.Skipped = &v
+	return s
+}
+
+func (s *ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupMemberStatisticsPushed) SetSuccess(v int64) *ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupMemberStatisticsPushed {
+	s.Success = &v
+	return s
+}
+
+func (s *ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupMemberStatisticsPushed) SetTotal(v int64) *ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupMemberStatisticsPushed {
+	s.Total = &v
+	return s
+}
+
+type ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupMemberStatisticsSame struct {
+	// 失败数目
+	//
+	// example:
+	//
+	// 1
+	Failed *int64 `json:"Failed,omitempty" xml:"Failed,omitempty"`
+	// 跳过数目
+	//
+	// example:
+	//
+	// 1
+	Skipped *int64 `json:"Skipped,omitempty" xml:"Skipped,omitempty"`
+	// 成功数目
+	//
+	// example:
+	//
+	// 1
+	Success *int64 `json:"Success,omitempty" xml:"Success,omitempty"`
+	// 总共数目
+	//
+	// example:
+	//
+	// 3
+	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
+}
+
+func (s ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupMemberStatisticsSame) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupMemberStatisticsSame) GoString() string {
+	return s.String()
+}
+
+func (s *ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupMemberStatisticsSame) SetFailed(v int64) *ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupMemberStatisticsSame {
+	s.Failed = &v
+	return s
+}
+
+func (s *ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupMemberStatisticsSame) SetSkipped(v int64) *ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupMemberStatisticsSame {
+	s.Skipped = &v
+	return s
+}
+
+func (s *ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupMemberStatisticsSame) SetSuccess(v int64) *ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupMemberStatisticsSame {
+	s.Success = &v
+	return s
+}
+
+func (s *ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupMemberStatisticsSame) SetTotal(v int64) *ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupMemberStatisticsSame {
+	s.Total = &v
+	return s
+}
+
+type ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupMemberStatisticsUpdated struct {
+	// 失败数目
+	//
+	// example:
+	//
+	// 1
+	Failed *int64 `json:"Failed,omitempty" xml:"Failed,omitempty"`
+	// 跳过数目
+	//
+	// example:
+	//
+	// 1
+	Skipped *int64 `json:"Skipped,omitempty" xml:"Skipped,omitempty"`
+	// 成功数目
+	//
+	// example:
+	//
+	// 1
+	Success *int64 `json:"Success,omitempty" xml:"Success,omitempty"`
+	// 总共数目
+	//
+	// example:
+	//
+	// 3
+	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
+}
+
+func (s ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupMemberStatisticsUpdated) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupMemberStatisticsUpdated) GoString() string {
+	return s.String()
+}
+
+func (s *ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupMemberStatisticsUpdated) SetFailed(v int64) *ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupMemberStatisticsUpdated {
+	s.Failed = &v
+	return s
+}
+
+func (s *ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupMemberStatisticsUpdated) SetSkipped(v int64) *ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupMemberStatisticsUpdated {
+	s.Skipped = &v
+	return s
+}
+
+func (s *ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupMemberStatisticsUpdated) SetSuccess(v int64) *ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupMemberStatisticsUpdated {
+	s.Success = &v
+	return s
+}
+
+func (s *ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupMemberStatisticsUpdated) SetTotal(v int64) *ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupMemberStatisticsUpdated {
+	s.Total = &v
+	return s
+}
+
+type ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupStatistics struct {
+	// 绑定结果统计
+	Binded *ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupStatisticsBinded `json:"Binded,omitempty" xml:"Binded,omitempty" type:"Struct"`
+	// 创建结果统计
+	Created *ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupStatisticsCreated `json:"Created,omitempty" xml:"Created,omitempty" type:"Struct"`
+	// 删除结果统计
+	Deleted *ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupStatisticsDeleted `json:"Deleted,omitempty" xml:"Deleted,omitempty" type:"Struct"`
+	// 推送结果统计
+	Pushed *ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupStatisticsPushed `json:"Pushed,omitempty" xml:"Pushed,omitempty" type:"Struct"`
+	// 相同结果统计
+	Same *ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupStatisticsSame `json:"Same,omitempty" xml:"Same,omitempty" type:"Struct"`
+	// 更新结果统计
+	Updated *ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupStatisticsUpdated `json:"Updated,omitempty" xml:"Updated,omitempty" type:"Struct"`
+}
+
+func (s ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupStatistics) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupStatistics) GoString() string {
+	return s.String()
+}
+
+func (s *ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupStatistics) SetBinded(v *ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupStatisticsBinded) *ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupStatistics {
+	s.Binded = v
+	return s
+}
+
+func (s *ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupStatistics) SetCreated(v *ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupStatisticsCreated) *ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupStatistics {
+	s.Created = v
+	return s
+}
+
+func (s *ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupStatistics) SetDeleted(v *ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupStatisticsDeleted) *ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupStatistics {
+	s.Deleted = v
+	return s
+}
+
+func (s *ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupStatistics) SetPushed(v *ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupStatisticsPushed) *ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupStatistics {
+	s.Pushed = v
+	return s
+}
+
+func (s *ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupStatistics) SetSame(v *ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupStatisticsSame) *ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupStatistics {
+	s.Same = v
+	return s
+}
+
+func (s *ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupStatistics) SetUpdated(v *ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupStatisticsUpdated) *ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupStatistics {
+	s.Updated = v
+	return s
+}
+
+type ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupStatisticsBinded struct {
+	// 失败数目
+	//
+	// example:
+	//
+	// 1
+	Failed *int64 `json:"Failed,omitempty" xml:"Failed,omitempty"`
+	// 跳过数目
+	//
+	// example:
+	//
+	// 1
+	Skipped *int64 `json:"Skipped,omitempty" xml:"Skipped,omitempty"`
+	// 成功数目
+	//
+	// example:
+	//
+	// 1
+	Success *int64 `json:"Success,omitempty" xml:"Success,omitempty"`
+	// 总共数目
+	//
+	// example:
+	//
+	// 3
+	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
+}
+
+func (s ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupStatisticsBinded) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupStatisticsBinded) GoString() string {
+	return s.String()
+}
+
+func (s *ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupStatisticsBinded) SetFailed(v int64) *ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupStatisticsBinded {
+	s.Failed = &v
+	return s
+}
+
+func (s *ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupStatisticsBinded) SetSkipped(v int64) *ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupStatisticsBinded {
+	s.Skipped = &v
+	return s
+}
+
+func (s *ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupStatisticsBinded) SetSuccess(v int64) *ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupStatisticsBinded {
+	s.Success = &v
+	return s
+}
+
+func (s *ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupStatisticsBinded) SetTotal(v int64) *ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupStatisticsBinded {
+	s.Total = &v
+	return s
+}
+
+type ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupStatisticsCreated struct {
+	// 失败数目
+	//
+	// example:
+	//
+	// 1
+	Failed *int64 `json:"Failed,omitempty" xml:"Failed,omitempty"`
+	// 跳过数目
+	//
+	// example:
+	//
+	// 1
+	Skipped *int64 `json:"Skipped,omitempty" xml:"Skipped,omitempty"`
+	// 成功数目
+	//
+	// example:
+	//
+	// 1
+	Success *int64 `json:"Success,omitempty" xml:"Success,omitempty"`
+	// 总共数目
+	//
+	// example:
+	//
+	// 3
+	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
+}
+
+func (s ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupStatisticsCreated) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupStatisticsCreated) GoString() string {
+	return s.String()
+}
+
+func (s *ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupStatisticsCreated) SetFailed(v int64) *ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupStatisticsCreated {
+	s.Failed = &v
+	return s
+}
+
+func (s *ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupStatisticsCreated) SetSkipped(v int64) *ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupStatisticsCreated {
+	s.Skipped = &v
+	return s
+}
+
+func (s *ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupStatisticsCreated) SetSuccess(v int64) *ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupStatisticsCreated {
+	s.Success = &v
+	return s
+}
+
+func (s *ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupStatisticsCreated) SetTotal(v int64) *ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupStatisticsCreated {
+	s.Total = &v
+	return s
+}
+
+type ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupStatisticsDeleted struct {
+	// 失败数目
+	//
+	// example:
+	//
+	// 1
+	Failed *int64 `json:"Failed,omitempty" xml:"Failed,omitempty"`
+	// 跳过数目
+	//
+	// example:
+	//
+	// 1
+	Skipped *int64 `json:"Skipped,omitempty" xml:"Skipped,omitempty"`
+	// 成功数目
+	//
+	// example:
+	//
+	// 1
+	Success *int64 `json:"Success,omitempty" xml:"Success,omitempty"`
+	// 总共数目
+	//
+	// example:
+	//
+	// 3
+	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
+}
+
+func (s ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupStatisticsDeleted) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupStatisticsDeleted) GoString() string {
+	return s.String()
+}
+
+func (s *ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupStatisticsDeleted) SetFailed(v int64) *ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupStatisticsDeleted {
+	s.Failed = &v
+	return s
+}
+
+func (s *ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupStatisticsDeleted) SetSkipped(v int64) *ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupStatisticsDeleted {
+	s.Skipped = &v
+	return s
+}
+
+func (s *ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupStatisticsDeleted) SetSuccess(v int64) *ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupStatisticsDeleted {
+	s.Success = &v
+	return s
+}
+
+func (s *ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupStatisticsDeleted) SetTotal(v int64) *ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupStatisticsDeleted {
+	s.Total = &v
+	return s
+}
+
+type ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupStatisticsPushed struct {
+	// 失败数目
+	//
+	// example:
+	//
+	// 1
+	Failed *int64 `json:"Failed,omitempty" xml:"Failed,omitempty"`
+	// 跳过数目
+	//
+	// example:
+	//
+	// 1
+	Skipped *int64 `json:"Skipped,omitempty" xml:"Skipped,omitempty"`
+	// 成功数目
+	//
+	// example:
+	//
+	// 1
+	Success *int64 `json:"Success,omitempty" xml:"Success,omitempty"`
+	// 总共数目
+	//
+	// example:
+	//
+	// 3
+	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
+}
+
+func (s ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupStatisticsPushed) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupStatisticsPushed) GoString() string {
+	return s.String()
+}
+
+func (s *ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupStatisticsPushed) SetFailed(v int64) *ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupStatisticsPushed {
+	s.Failed = &v
+	return s
+}
+
+func (s *ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupStatisticsPushed) SetSkipped(v int64) *ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupStatisticsPushed {
+	s.Skipped = &v
+	return s
+}
+
+func (s *ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupStatisticsPushed) SetSuccess(v int64) *ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupStatisticsPushed {
+	s.Success = &v
+	return s
+}
+
+func (s *ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupStatisticsPushed) SetTotal(v int64) *ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupStatisticsPushed {
+	s.Total = &v
+	return s
+}
+
+type ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupStatisticsSame struct {
+	// 失败数目
+	//
+	// example:
+	//
+	// 1
+	Failed *int64 `json:"Failed,omitempty" xml:"Failed,omitempty"`
+	// 跳过数目
+	//
+	// example:
+	//
+	// 1
+	Skipped *int64 `json:"Skipped,omitempty" xml:"Skipped,omitempty"`
+	// 成功数目
+	//
+	// example:
+	//
+	// 1
+	Success *int64 `json:"Success,omitempty" xml:"Success,omitempty"`
+	// 总共数目
+	//
+	// example:
+	//
+	// 3
+	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
+}
+
+func (s ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupStatisticsSame) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupStatisticsSame) GoString() string {
+	return s.String()
+}
+
+func (s *ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupStatisticsSame) SetFailed(v int64) *ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupStatisticsSame {
+	s.Failed = &v
+	return s
+}
+
+func (s *ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupStatisticsSame) SetSkipped(v int64) *ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupStatisticsSame {
+	s.Skipped = &v
+	return s
+}
+
+func (s *ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupStatisticsSame) SetSuccess(v int64) *ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupStatisticsSame {
+	s.Success = &v
+	return s
+}
+
+func (s *ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupStatisticsSame) SetTotal(v int64) *ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupStatisticsSame {
+	s.Total = &v
+	return s
+}
+
+type ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupStatisticsUpdated struct {
+	// 失败数目
+	//
+	// example:
+	//
+	// 1
+	Failed *int64 `json:"Failed,omitempty" xml:"Failed,omitempty"`
+	// 跳过数目
+	//
+	// example:
+	//
+	// 1
+	Skipped *int64 `json:"Skipped,omitempty" xml:"Skipped,omitempty"`
+	// 成功数目
+	//
+	// example:
+	//
+	// 1
+	Success *int64 `json:"Success,omitempty" xml:"Success,omitempty"`
+	// 总共数目
+	//
+	// example:
+	//
+	// 3
+	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
+}
+
+func (s ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupStatisticsUpdated) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupStatisticsUpdated) GoString() string {
+	return s.String()
+}
+
+func (s *ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupStatisticsUpdated) SetFailed(v int64) *ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupStatisticsUpdated {
+	s.Failed = &v
+	return s
+}
+
+func (s *ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupStatisticsUpdated) SetSkipped(v int64) *ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupStatisticsUpdated {
+	s.Skipped = &v
+	return s
+}
+
+func (s *ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupStatisticsUpdated) SetSuccess(v int64) *ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupStatisticsUpdated {
+	s.Success = &v
+	return s
+}
+
+func (s *ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupStatisticsUpdated) SetTotal(v int64) *ListSynchronizationJobsResponseBodySynchronizationJobsResultGroupStatisticsUpdated {
+	s.Total = &v
+	return s
+}
+
+type ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizationalUnitStatistics struct {
+	// 绑定结果统计
+	Binded *ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizationalUnitStatisticsBinded `json:"Binded,omitempty" xml:"Binded,omitempty" type:"Struct"`
+	// 创建结果统计
+	Created *ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizationalUnitStatisticsCreated `json:"Created,omitempty" xml:"Created,omitempty" type:"Struct"`
+	// 删除结果统计
+	Deleted *ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizationalUnitStatisticsDeleted `json:"Deleted,omitempty" xml:"Deleted,omitempty" type:"Struct"`
+	// 推送结果统计
+	Pushed *ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizationalUnitStatisticsPushed `json:"Pushed,omitempty" xml:"Pushed,omitempty" type:"Struct"`
+	// 相同结果统计
+	Same *ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizationalUnitStatisticsSame `json:"Same,omitempty" xml:"Same,omitempty" type:"Struct"`
+	// 更新结果统计
+	Updated *ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizationalUnitStatisticsUpdated `json:"Updated,omitempty" xml:"Updated,omitempty" type:"Struct"`
+}
+
+func (s ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizationalUnitStatistics) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizationalUnitStatistics) GoString() string {
+	return s.String()
+}
+
+func (s *ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizationalUnitStatistics) SetBinded(v *ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizationalUnitStatisticsBinded) *ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizationalUnitStatistics {
+	s.Binded = v
+	return s
+}
+
+func (s *ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizationalUnitStatistics) SetCreated(v *ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizationalUnitStatisticsCreated) *ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizationalUnitStatistics {
+	s.Created = v
+	return s
+}
+
+func (s *ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizationalUnitStatistics) SetDeleted(v *ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizationalUnitStatisticsDeleted) *ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizationalUnitStatistics {
+	s.Deleted = v
+	return s
+}
+
+func (s *ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizationalUnitStatistics) SetPushed(v *ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizationalUnitStatisticsPushed) *ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizationalUnitStatistics {
+	s.Pushed = v
+	return s
+}
+
+func (s *ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizationalUnitStatistics) SetSame(v *ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizationalUnitStatisticsSame) *ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizationalUnitStatistics {
+	s.Same = v
+	return s
+}
+
+func (s *ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizationalUnitStatistics) SetUpdated(v *ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizationalUnitStatisticsUpdated) *ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizationalUnitStatistics {
+	s.Updated = v
+	return s
+}
+
+type ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizationalUnitStatisticsBinded struct {
+	// 失败数目
+	//
+	// example:
+	//
+	// 1
+	Failed *int64 `json:"Failed,omitempty" xml:"Failed,omitempty"`
+	// 跳过数目
+	//
+	// example:
+	//
+	// 1
+	Skipped *int64 `json:"Skipped,omitempty" xml:"Skipped,omitempty"`
+	// 成功数目
+	//
+	// example:
+	//
+	// 1
+	Success *int64 `json:"Success,omitempty" xml:"Success,omitempty"`
+	// 总共数目
+	//
+	// example:
+	//
+	// 3
+	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
+}
+
+func (s ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizationalUnitStatisticsBinded) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizationalUnitStatisticsBinded) GoString() string {
+	return s.String()
+}
+
+func (s *ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizationalUnitStatisticsBinded) SetFailed(v int64) *ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizationalUnitStatisticsBinded {
+	s.Failed = &v
+	return s
+}
+
+func (s *ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizationalUnitStatisticsBinded) SetSkipped(v int64) *ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizationalUnitStatisticsBinded {
+	s.Skipped = &v
+	return s
+}
+
+func (s *ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizationalUnitStatisticsBinded) SetSuccess(v int64) *ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizationalUnitStatisticsBinded {
+	s.Success = &v
+	return s
+}
+
+func (s *ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizationalUnitStatisticsBinded) SetTotal(v int64) *ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizationalUnitStatisticsBinded {
+	s.Total = &v
+	return s
+}
+
+type ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizationalUnitStatisticsCreated struct {
+	// 失败数目
+	//
+	// example:
+	//
+	// 1
+	Failed *int64 `json:"Failed,omitempty" xml:"Failed,omitempty"`
+	// 跳过数目
+	//
+	// example:
+	//
+	// 1
+	Skipped *int64 `json:"Skipped,omitempty" xml:"Skipped,omitempty"`
+	// 成功数目
+	//
+	// example:
+	//
+	// 1
+	Success *int64 `json:"Success,omitempty" xml:"Success,omitempty"`
+	// 总共数目
+	//
+	// example:
+	//
+	// 3
+	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
+}
+
+func (s ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizationalUnitStatisticsCreated) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizationalUnitStatisticsCreated) GoString() string {
+	return s.String()
+}
+
+func (s *ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizationalUnitStatisticsCreated) SetFailed(v int64) *ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizationalUnitStatisticsCreated {
+	s.Failed = &v
+	return s
+}
+
+func (s *ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizationalUnitStatisticsCreated) SetSkipped(v int64) *ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizationalUnitStatisticsCreated {
+	s.Skipped = &v
+	return s
+}
+
+func (s *ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizationalUnitStatisticsCreated) SetSuccess(v int64) *ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizationalUnitStatisticsCreated {
+	s.Success = &v
+	return s
+}
+
+func (s *ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizationalUnitStatisticsCreated) SetTotal(v int64) *ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizationalUnitStatisticsCreated {
+	s.Total = &v
+	return s
+}
+
+type ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizationalUnitStatisticsDeleted struct {
+	// 失败数目
+	//
+	// example:
+	//
+	// 1
+	Failed *int64 `json:"Failed,omitempty" xml:"Failed,omitempty"`
+	// 跳过数目
+	//
+	// example:
+	//
+	// 1
+	Skipped *int64 `json:"Skipped,omitempty" xml:"Skipped,omitempty"`
+	// 成功数目
+	//
+	// example:
+	//
+	// 1
+	Success *int64 `json:"Success,omitempty" xml:"Success,omitempty"`
+	// 总共数目
+	//
+	// example:
+	//
+	// 3
+	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
+}
+
+func (s ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizationalUnitStatisticsDeleted) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizationalUnitStatisticsDeleted) GoString() string {
+	return s.String()
+}
+
+func (s *ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizationalUnitStatisticsDeleted) SetFailed(v int64) *ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizationalUnitStatisticsDeleted {
+	s.Failed = &v
+	return s
+}
+
+func (s *ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizationalUnitStatisticsDeleted) SetSkipped(v int64) *ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizationalUnitStatisticsDeleted {
+	s.Skipped = &v
+	return s
+}
+
+func (s *ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizationalUnitStatisticsDeleted) SetSuccess(v int64) *ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizationalUnitStatisticsDeleted {
+	s.Success = &v
+	return s
+}
+
+func (s *ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizationalUnitStatisticsDeleted) SetTotal(v int64) *ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizationalUnitStatisticsDeleted {
+	s.Total = &v
+	return s
+}
+
+type ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizationalUnitStatisticsPushed struct {
+	// 失败数目
+	//
+	// example:
+	//
+	// 1
+	Failed *int64 `json:"Failed,omitempty" xml:"Failed,omitempty"`
+	// 跳过数目
+	//
+	// example:
+	//
+	// 1
+	Skipped *int64 `json:"Skipped,omitempty" xml:"Skipped,omitempty"`
+	// 成功数目
+	//
+	// example:
+	//
+	// 1
+	Success *int64 `json:"Success,omitempty" xml:"Success,omitempty"`
+	// 总共数目
+	//
+	// example:
+	//
+	// 3
+	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
+}
+
+func (s ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizationalUnitStatisticsPushed) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizationalUnitStatisticsPushed) GoString() string {
+	return s.String()
+}
+
+func (s *ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizationalUnitStatisticsPushed) SetFailed(v int64) *ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizationalUnitStatisticsPushed {
+	s.Failed = &v
+	return s
+}
+
+func (s *ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizationalUnitStatisticsPushed) SetSkipped(v int64) *ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizationalUnitStatisticsPushed {
+	s.Skipped = &v
+	return s
+}
+
+func (s *ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizationalUnitStatisticsPushed) SetSuccess(v int64) *ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizationalUnitStatisticsPushed {
+	s.Success = &v
+	return s
+}
+
+func (s *ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizationalUnitStatisticsPushed) SetTotal(v int64) *ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizationalUnitStatisticsPushed {
+	s.Total = &v
+	return s
+}
+
+type ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizationalUnitStatisticsSame struct {
+	// 失败数目
+	//
+	// example:
+	//
+	// 1
+	Failed *int64 `json:"Failed,omitempty" xml:"Failed,omitempty"`
+	// 跳过数目
+	//
+	// example:
+	//
+	// 1
+	Skipped *int64 `json:"Skipped,omitempty" xml:"Skipped,omitempty"`
+	// 成功数目
+	//
+	// example:
+	//
+	// 1
+	Success *int64 `json:"Success,omitempty" xml:"Success,omitempty"`
+	// 总共数目
+	//
+	// example:
+	//
+	// 3
+	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
+}
+
+func (s ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizationalUnitStatisticsSame) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizationalUnitStatisticsSame) GoString() string {
+	return s.String()
+}
+
+func (s *ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizationalUnitStatisticsSame) SetFailed(v int64) *ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizationalUnitStatisticsSame {
+	s.Failed = &v
+	return s
+}
+
+func (s *ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizationalUnitStatisticsSame) SetSkipped(v int64) *ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizationalUnitStatisticsSame {
+	s.Skipped = &v
+	return s
+}
+
+func (s *ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizationalUnitStatisticsSame) SetSuccess(v int64) *ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizationalUnitStatisticsSame {
+	s.Success = &v
+	return s
+}
+
+func (s *ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizationalUnitStatisticsSame) SetTotal(v int64) *ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizationalUnitStatisticsSame {
+	s.Total = &v
+	return s
+}
+
+type ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizationalUnitStatisticsUpdated struct {
+	// 失败数目
+	//
+	// example:
+	//
+	// 1
+	Failed *int64 `json:"Failed,omitempty" xml:"Failed,omitempty"`
+	// 跳过数目
+	//
+	// example:
+	//
+	// 1
+	Skipped *int64 `json:"Skipped,omitempty" xml:"Skipped,omitempty"`
+	// 成功数目
+	//
+	// example:
+	//
+	// 1
+	Success *int64 `json:"Success,omitempty" xml:"Success,omitempty"`
+	// 总共数目
+	//
+	// example:
+	//
+	// 3
+	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
+}
+
+func (s ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizationalUnitStatisticsUpdated) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizationalUnitStatisticsUpdated) GoString() string {
+	return s.String()
+}
+
+func (s *ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizationalUnitStatisticsUpdated) SetFailed(v int64) *ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizationalUnitStatisticsUpdated {
+	s.Failed = &v
+	return s
+}
+
+func (s *ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizationalUnitStatisticsUpdated) SetSkipped(v int64) *ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizationalUnitStatisticsUpdated {
+	s.Skipped = &v
+	return s
+}
+
+func (s *ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizationalUnitStatisticsUpdated) SetSuccess(v int64) *ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizationalUnitStatisticsUpdated {
+	s.Success = &v
+	return s
+}
+
+func (s *ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizationalUnitStatisticsUpdated) SetTotal(v int64) *ListSynchronizationJobsResponseBodySynchronizationJobsResultOrganizationalUnitStatisticsUpdated {
+	s.Total = &v
+	return s
+}
+
+type ListSynchronizationJobsResponseBodySynchronizationJobsResultUserStatistics struct {
+	// 绑定结果统计
+	Binded *ListSynchronizationJobsResponseBodySynchronizationJobsResultUserStatisticsBinded `json:"Binded,omitempty" xml:"Binded,omitempty" type:"Struct"`
+	// 创建结果统计
+	Created *ListSynchronizationJobsResponseBodySynchronizationJobsResultUserStatisticsCreated `json:"Created,omitempty" xml:"Created,omitempty" type:"Struct"`
+	// 删除结果统计
+	Deleted *ListSynchronizationJobsResponseBodySynchronizationJobsResultUserStatisticsDeleted `json:"Deleted,omitempty" xml:"Deleted,omitempty" type:"Struct"`
+	// 推送结果统计
+	Pushed *ListSynchronizationJobsResponseBodySynchronizationJobsResultUserStatisticsPushed `json:"Pushed,omitempty" xml:"Pushed,omitempty" type:"Struct"`
+	// 相同结果统计
+	Same *ListSynchronizationJobsResponseBodySynchronizationJobsResultUserStatisticsSame `json:"Same,omitempty" xml:"Same,omitempty" type:"Struct"`
+	// 更新结果统计
+	Updated *ListSynchronizationJobsResponseBodySynchronizationJobsResultUserStatisticsUpdated `json:"Updated,omitempty" xml:"Updated,omitempty" type:"Struct"`
+}
+
+func (s ListSynchronizationJobsResponseBodySynchronizationJobsResultUserStatistics) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSynchronizationJobsResponseBodySynchronizationJobsResultUserStatistics) GoString() string {
+	return s.String()
+}
+
+func (s *ListSynchronizationJobsResponseBodySynchronizationJobsResultUserStatistics) SetBinded(v *ListSynchronizationJobsResponseBodySynchronizationJobsResultUserStatisticsBinded) *ListSynchronizationJobsResponseBodySynchronizationJobsResultUserStatistics {
+	s.Binded = v
+	return s
+}
+
+func (s *ListSynchronizationJobsResponseBodySynchronizationJobsResultUserStatistics) SetCreated(v *ListSynchronizationJobsResponseBodySynchronizationJobsResultUserStatisticsCreated) *ListSynchronizationJobsResponseBodySynchronizationJobsResultUserStatistics {
+	s.Created = v
+	return s
+}
+
+func (s *ListSynchronizationJobsResponseBodySynchronizationJobsResultUserStatistics) SetDeleted(v *ListSynchronizationJobsResponseBodySynchronizationJobsResultUserStatisticsDeleted) *ListSynchronizationJobsResponseBodySynchronizationJobsResultUserStatistics {
+	s.Deleted = v
+	return s
+}
+
+func (s *ListSynchronizationJobsResponseBodySynchronizationJobsResultUserStatistics) SetPushed(v *ListSynchronizationJobsResponseBodySynchronizationJobsResultUserStatisticsPushed) *ListSynchronizationJobsResponseBodySynchronizationJobsResultUserStatistics {
+	s.Pushed = v
+	return s
+}
+
+func (s *ListSynchronizationJobsResponseBodySynchronizationJobsResultUserStatistics) SetSame(v *ListSynchronizationJobsResponseBodySynchronizationJobsResultUserStatisticsSame) *ListSynchronizationJobsResponseBodySynchronizationJobsResultUserStatistics {
+	s.Same = v
+	return s
+}
+
+func (s *ListSynchronizationJobsResponseBodySynchronizationJobsResultUserStatistics) SetUpdated(v *ListSynchronizationJobsResponseBodySynchronizationJobsResultUserStatisticsUpdated) *ListSynchronizationJobsResponseBodySynchronizationJobsResultUserStatistics {
+	s.Updated = v
+	return s
+}
+
+type ListSynchronizationJobsResponseBodySynchronizationJobsResultUserStatisticsBinded struct {
+	// 失败数目
+	//
+	// example:
+	//
+	// 1
+	Failed *int64 `json:"Failed,omitempty" xml:"Failed,omitempty"`
+	// 跳过数目
+	//
+	// example:
+	//
+	// 1
+	Skipped *int64 `json:"Skipped,omitempty" xml:"Skipped,omitempty"`
+	// 成功数目
+	//
+	// example:
+	//
+	// 1
+	Success *int64 `json:"Success,omitempty" xml:"Success,omitempty"`
+	// 总共数目
+	//
+	// example:
+	//
+	// 3
+	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
+}
+
+func (s ListSynchronizationJobsResponseBodySynchronizationJobsResultUserStatisticsBinded) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSynchronizationJobsResponseBodySynchronizationJobsResultUserStatisticsBinded) GoString() string {
+	return s.String()
+}
+
+func (s *ListSynchronizationJobsResponseBodySynchronizationJobsResultUserStatisticsBinded) SetFailed(v int64) *ListSynchronizationJobsResponseBodySynchronizationJobsResultUserStatisticsBinded {
+	s.Failed = &v
+	return s
+}
+
+func (s *ListSynchronizationJobsResponseBodySynchronizationJobsResultUserStatisticsBinded) SetSkipped(v int64) *ListSynchronizationJobsResponseBodySynchronizationJobsResultUserStatisticsBinded {
+	s.Skipped = &v
+	return s
+}
+
+func (s *ListSynchronizationJobsResponseBodySynchronizationJobsResultUserStatisticsBinded) SetSuccess(v int64) *ListSynchronizationJobsResponseBodySynchronizationJobsResultUserStatisticsBinded {
+	s.Success = &v
+	return s
+}
+
+func (s *ListSynchronizationJobsResponseBodySynchronizationJobsResultUserStatisticsBinded) SetTotal(v int64) *ListSynchronizationJobsResponseBodySynchronizationJobsResultUserStatisticsBinded {
+	s.Total = &v
+	return s
+}
+
+type ListSynchronizationJobsResponseBodySynchronizationJobsResultUserStatisticsCreated struct {
+	// 失败数目
+	//
+	// example:
+	//
+	// 1
+	Failed *int64 `json:"Failed,omitempty" xml:"Failed,omitempty"`
+	// 跳过数目
+	//
+	// example:
+	//
+	// 1
+	Skipped *int64 `json:"Skipped,omitempty" xml:"Skipped,omitempty"`
+	// 成功数目
+	//
+	// example:
+	//
+	// 1
+	Success *int64 `json:"Success,omitempty" xml:"Success,omitempty"`
+	// 总共数目
+	//
+	// example:
+	//
+	// 3
+	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
+}
+
+func (s ListSynchronizationJobsResponseBodySynchronizationJobsResultUserStatisticsCreated) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSynchronizationJobsResponseBodySynchronizationJobsResultUserStatisticsCreated) GoString() string {
+	return s.String()
+}
+
+func (s *ListSynchronizationJobsResponseBodySynchronizationJobsResultUserStatisticsCreated) SetFailed(v int64) *ListSynchronizationJobsResponseBodySynchronizationJobsResultUserStatisticsCreated {
+	s.Failed = &v
+	return s
+}
+
+func (s *ListSynchronizationJobsResponseBodySynchronizationJobsResultUserStatisticsCreated) SetSkipped(v int64) *ListSynchronizationJobsResponseBodySynchronizationJobsResultUserStatisticsCreated {
+	s.Skipped = &v
+	return s
+}
+
+func (s *ListSynchronizationJobsResponseBodySynchronizationJobsResultUserStatisticsCreated) SetSuccess(v int64) *ListSynchronizationJobsResponseBodySynchronizationJobsResultUserStatisticsCreated {
+	s.Success = &v
+	return s
+}
+
+func (s *ListSynchronizationJobsResponseBodySynchronizationJobsResultUserStatisticsCreated) SetTotal(v int64) *ListSynchronizationJobsResponseBodySynchronizationJobsResultUserStatisticsCreated {
+	s.Total = &v
+	return s
+}
+
+type ListSynchronizationJobsResponseBodySynchronizationJobsResultUserStatisticsDeleted struct {
+	// 失败数目
+	//
+	// example:
+	//
+	// 1
+	Failed *int64 `json:"Failed,omitempty" xml:"Failed,omitempty"`
+	// 跳过数目
+	//
+	// example:
+	//
+	// 1
+	Skipped *int64 `json:"Skipped,omitempty" xml:"Skipped,omitempty"`
+	// 成功数目
+	//
+	// example:
+	//
+	// 1
+	Success *int64 `json:"Success,omitempty" xml:"Success,omitempty"`
+	// 总共数目
+	//
+	// example:
+	//
+	// 3
+	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
+}
+
+func (s ListSynchronizationJobsResponseBodySynchronizationJobsResultUserStatisticsDeleted) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSynchronizationJobsResponseBodySynchronizationJobsResultUserStatisticsDeleted) GoString() string {
+	return s.String()
+}
+
+func (s *ListSynchronizationJobsResponseBodySynchronizationJobsResultUserStatisticsDeleted) SetFailed(v int64) *ListSynchronizationJobsResponseBodySynchronizationJobsResultUserStatisticsDeleted {
+	s.Failed = &v
+	return s
+}
+
+func (s *ListSynchronizationJobsResponseBodySynchronizationJobsResultUserStatisticsDeleted) SetSkipped(v int64) *ListSynchronizationJobsResponseBodySynchronizationJobsResultUserStatisticsDeleted {
+	s.Skipped = &v
+	return s
+}
+
+func (s *ListSynchronizationJobsResponseBodySynchronizationJobsResultUserStatisticsDeleted) SetSuccess(v int64) *ListSynchronizationJobsResponseBodySynchronizationJobsResultUserStatisticsDeleted {
+	s.Success = &v
+	return s
+}
+
+func (s *ListSynchronizationJobsResponseBodySynchronizationJobsResultUserStatisticsDeleted) SetTotal(v int64) *ListSynchronizationJobsResponseBodySynchronizationJobsResultUserStatisticsDeleted {
+	s.Total = &v
+	return s
+}
+
+type ListSynchronizationJobsResponseBodySynchronizationJobsResultUserStatisticsPushed struct {
+	// 失败数目
+	//
+	// example:
+	//
+	// 1
+	Failed *int64 `json:"Failed,omitempty" xml:"Failed,omitempty"`
+	// 跳过数目
+	//
+	// example:
+	//
+	// 1
+	Skipped *int64 `json:"Skipped,omitempty" xml:"Skipped,omitempty"`
+	// 成功数目
+	//
+	// example:
+	//
+	// 1
+	Success *int64 `json:"Success,omitempty" xml:"Success,omitempty"`
+	// 总共数目
+	//
+	// example:
+	//
+	// 3
+	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
+}
+
+func (s ListSynchronizationJobsResponseBodySynchronizationJobsResultUserStatisticsPushed) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSynchronizationJobsResponseBodySynchronizationJobsResultUserStatisticsPushed) GoString() string {
+	return s.String()
+}
+
+func (s *ListSynchronizationJobsResponseBodySynchronizationJobsResultUserStatisticsPushed) SetFailed(v int64) *ListSynchronizationJobsResponseBodySynchronizationJobsResultUserStatisticsPushed {
+	s.Failed = &v
+	return s
+}
+
+func (s *ListSynchronizationJobsResponseBodySynchronizationJobsResultUserStatisticsPushed) SetSkipped(v int64) *ListSynchronizationJobsResponseBodySynchronizationJobsResultUserStatisticsPushed {
+	s.Skipped = &v
+	return s
+}
+
+func (s *ListSynchronizationJobsResponseBodySynchronizationJobsResultUserStatisticsPushed) SetSuccess(v int64) *ListSynchronizationJobsResponseBodySynchronizationJobsResultUserStatisticsPushed {
+	s.Success = &v
+	return s
+}
+
+func (s *ListSynchronizationJobsResponseBodySynchronizationJobsResultUserStatisticsPushed) SetTotal(v int64) *ListSynchronizationJobsResponseBodySynchronizationJobsResultUserStatisticsPushed {
+	s.Total = &v
+	return s
+}
+
+type ListSynchronizationJobsResponseBodySynchronizationJobsResultUserStatisticsSame struct {
+	// 失败数目
+	//
+	// example:
+	//
+	// 1
+	Failed *int64 `json:"Failed,omitempty" xml:"Failed,omitempty"`
+	// 跳过数目
+	//
+	// example:
+	//
+	// 1
+	Skipped *int64 `json:"Skipped,omitempty" xml:"Skipped,omitempty"`
+	// 成功数目
+	//
+	// example:
+	//
+	// 1
+	Success *int64 `json:"Success,omitempty" xml:"Success,omitempty"`
+	// 总共数目
+	//
+	// example:
+	//
+	// 3
+	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
+}
+
+func (s ListSynchronizationJobsResponseBodySynchronizationJobsResultUserStatisticsSame) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSynchronizationJobsResponseBodySynchronizationJobsResultUserStatisticsSame) GoString() string {
+	return s.String()
+}
+
+func (s *ListSynchronizationJobsResponseBodySynchronizationJobsResultUserStatisticsSame) SetFailed(v int64) *ListSynchronizationJobsResponseBodySynchronizationJobsResultUserStatisticsSame {
+	s.Failed = &v
+	return s
+}
+
+func (s *ListSynchronizationJobsResponseBodySynchronizationJobsResultUserStatisticsSame) SetSkipped(v int64) *ListSynchronizationJobsResponseBodySynchronizationJobsResultUserStatisticsSame {
+	s.Skipped = &v
+	return s
+}
+
+func (s *ListSynchronizationJobsResponseBodySynchronizationJobsResultUserStatisticsSame) SetSuccess(v int64) *ListSynchronizationJobsResponseBodySynchronizationJobsResultUserStatisticsSame {
+	s.Success = &v
+	return s
+}
+
+func (s *ListSynchronizationJobsResponseBodySynchronizationJobsResultUserStatisticsSame) SetTotal(v int64) *ListSynchronizationJobsResponseBodySynchronizationJobsResultUserStatisticsSame {
+	s.Total = &v
+	return s
+}
+
+type ListSynchronizationJobsResponseBodySynchronizationJobsResultUserStatisticsUpdated struct {
+	// 失败数目
+	//
+	// example:
+	//
+	// 1
+	Failed *int64 `json:"Failed,omitempty" xml:"Failed,omitempty"`
+	// 跳过数目
+	//
+	// example:
+	//
+	// 1
+	Skipped *int64 `json:"Skipped,omitempty" xml:"Skipped,omitempty"`
+	// 成功数目
+	//
+	// example:
+	//
+	// 1
+	Success *int64 `json:"Success,omitempty" xml:"Success,omitempty"`
+	// 总共数目
+	//
+	// example:
+	//
+	// 3
+	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
+}
+
+func (s ListSynchronizationJobsResponseBodySynchronizationJobsResultUserStatisticsUpdated) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSynchronizationJobsResponseBodySynchronizationJobsResultUserStatisticsUpdated) GoString() string {
+	return s.String()
+}
+
+func (s *ListSynchronizationJobsResponseBodySynchronizationJobsResultUserStatisticsUpdated) SetFailed(v int64) *ListSynchronizationJobsResponseBodySynchronizationJobsResultUserStatisticsUpdated {
+	s.Failed = &v
+	return s
+}
+
+func (s *ListSynchronizationJobsResponseBodySynchronizationJobsResultUserStatisticsUpdated) SetSkipped(v int64) *ListSynchronizationJobsResponseBodySynchronizationJobsResultUserStatisticsUpdated {
+	s.Skipped = &v
+	return s
+}
+
+func (s *ListSynchronizationJobsResponseBodySynchronizationJobsResultUserStatisticsUpdated) SetSuccess(v int64) *ListSynchronizationJobsResponseBodySynchronizationJobsResultUserStatisticsUpdated {
+	s.Success = &v
+	return s
+}
+
+func (s *ListSynchronizationJobsResponseBodySynchronizationJobsResultUserStatisticsUpdated) SetTotal(v int64) *ListSynchronizationJobsResponseBodySynchronizationJobsResultUserStatisticsUpdated {
+	s.Total = &v
+	return s
+}
+
+type ListSynchronizationJobsResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListSynchronizationJobsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListSynchronizationJobsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSynchronizationJobsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListSynchronizationJobsResponse) SetHeaders(v map[string]*string) *ListSynchronizationJobsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListSynchronizationJobsResponse) SetStatusCode(v int32) *ListSynchronizationJobsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListSynchronizationJobsResponse) SetBody(v *ListSynchronizationJobsResponseBody) *ListSynchronizationJobsResponse {
+	s.Body = v
+	return s
+}
+
 type ListUsersRequest struct {
 	// 账户展示名，模糊匹配
 	//
@@ -13966,6 +17655,114 @@ func (s *RevokeApplicationFromUsersResponse) SetStatusCode(v int32) *RevokeAppli
 }
 
 func (s *RevokeApplicationFromUsersResponse) SetBody(v *RevokeApplicationFromUsersResponseBody) *RevokeApplicationFromUsersResponse {
+	s.Body = v
+	return s
+}
+
+type RunSynchronizationJobRequest struct {
+	// IDaaS EIAM实例的ID。
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// idaas_ue2jvisn35ea5lmthk267xxxxx
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// 同步目标ID
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// idp_my664lwkhpicbyzirog3ngxxxxx
+	TargetId *string `json:"TargetId,omitempty" xml:"TargetId,omitempty"`
+	// 同步目标类型
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// identity_provider
+	TargetType *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
+}
+
+func (s RunSynchronizationJobRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunSynchronizationJobRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RunSynchronizationJobRequest) SetInstanceId(v string) *RunSynchronizationJobRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *RunSynchronizationJobRequest) SetTargetId(v string) *RunSynchronizationJobRequest {
+	s.TargetId = &v
+	return s
+}
+
+func (s *RunSynchronizationJobRequest) SetTargetType(v string) *RunSynchronizationJobRequest {
+	s.TargetType = &v
+	return s
+}
+
+type RunSynchronizationJobResponseBody struct {
+	// example:
+	//
+	// 0441BD79-92F3-53AA-8657-F8CE4A2B912A
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// sync_0000347vjovtcf41li0fgsd98gn24q9nj9xxxxx
+	SynchronizationJobId *string `json:"SynchronizationJobId,omitempty" xml:"SynchronizationJobId,omitempty"`
+}
+
+func (s RunSynchronizationJobResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunSynchronizationJobResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RunSynchronizationJobResponseBody) SetRequestId(v string) *RunSynchronizationJobResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *RunSynchronizationJobResponseBody) SetSynchronizationJobId(v string) *RunSynchronizationJobResponseBody {
+	s.SynchronizationJobId = &v
+	return s
+}
+
+type RunSynchronizationJobResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RunSynchronizationJobResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s RunSynchronizationJobResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunSynchronizationJobResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RunSynchronizationJobResponse) SetHeaders(v map[string]*string) *RunSynchronizationJobResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RunSynchronizationJobResponse) SetStatusCode(v int32) *RunSynchronizationJobResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *RunSynchronizationJobResponse) SetBody(v *RunSynchronizationJobResponseBody) *RunSynchronizationJobResponse {
 	s.Body = v
 	return s
 }
@@ -20098,7 +23895,7 @@ func (client *Client) GetApplicationGrantScope(request *GetApplicationGrantScope
 
 // Summary:
 //
-// Queries the configuration of the account synchronization feature for an application in Identity as a Service (IDaaS) Employee IAM (EIAM).
+// Queries the configuration of the account synchronization feature for an application in Identity as a Service (IDaaS) Employee Identity and Access Management (EIAM).
 //
 // @param request - GetApplicationProvisioningConfigRequest
 //
@@ -20144,7 +23941,7 @@ func (client *Client) GetApplicationProvisioningConfigWithOptions(request *GetAp
 
 // Summary:
 //
-// Queries the configuration of the account synchronization feature for an application in Identity as a Service (IDaaS) Employee IAM (EIAM).
+// Queries the configuration of the account synchronization feature for an application in Identity as a Service (IDaaS) Employee Identity and Access Management (EIAM).
 //
 // @param request - GetApplicationProvisioningConfigRequest
 //
@@ -21021,6 +24818,70 @@ func (client *Client) GetRootOrganizationalUnit(request *GetRootOrganizationalUn
 	runtime := &util.RuntimeOptions{}
 	_result = &GetRootOrganizationalUnitResponse{}
 	_body, _err := client.GetRootOrganizationalUnitWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询同步任务
+//
+// @param request - GetSynchronizationJobRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetSynchronizationJobResponse
+func (client *Client) GetSynchronizationJobWithOptions(request *GetSynchronizationJobRequest, runtime *util.RuntimeOptions) (_result *GetSynchronizationJobResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SynchronizationJobId)) {
+		query["SynchronizationJobId"] = request.SynchronizationJobId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetSynchronizationJob"),
+		Version:     tea.String("2021-12-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetSynchronizationJobResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询同步任务
+//
+// @param request - GetSynchronizationJobRequest
+//
+// @return GetSynchronizationJobResponse
+func (client *Client) GetSynchronizationJob(request *GetSynchronizationJobRequest) (_result *GetSynchronizationJobResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetSynchronizationJobResponse{}
+	_body, _err := client.GetSynchronizationJobWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -22471,6 +26332,106 @@ func (client *Client) ListRegions() (_result *ListRegionsResponse, _err error) {
 
 // Summary:
 //
+// 查询同步任务
+//
+// @param request - ListSynchronizationJobsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListSynchronizationJobsResponse
+func (client *Client) ListSynchronizationJobsWithOptions(request *ListSynchronizationJobsRequest, runtime *util.RuntimeOptions) (_result *ListSynchronizationJobsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Direction)) {
+		query["Direction"] = request.Direction
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		query["Status"] = request.Status
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TargetIds)) {
+		query["TargetIds"] = request.TargetIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TargetType)) {
+		query["TargetType"] = request.TargetType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListSynchronizationJobs"),
+		Version:     tea.String("2021-12-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListSynchronizationJobsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询同步任务
+//
+// @param request - ListSynchronizationJobsRequest
+//
+// @return ListSynchronizationJobsResponse
+func (client *Client) ListSynchronizationJobs(request *ListSynchronizationJobsRequest) (_result *ListSynchronizationJobsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListSynchronizationJobsResponse{}
+	_body, _err := client.ListSynchronizationJobsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the details of accounts in Identity as a Service (IDaaS) Employee IAM (EIAM) by page.
 //
 // @param request - ListUsersRequest
@@ -23211,6 +27172,74 @@ func (client *Client) RevokeApplicationFromUsers(request *RevokeApplicationFromU
 
 // Summary:
 //
+// 运行同步任务
+//
+// @param request - RunSynchronizationJobRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RunSynchronizationJobResponse
+func (client *Client) RunSynchronizationJobWithOptions(request *RunSynchronizationJobRequest, runtime *util.RuntimeOptions) (_result *RunSynchronizationJobResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TargetId)) {
+		query["TargetId"] = request.TargetId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TargetType)) {
+		query["TargetType"] = request.TargetType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RunSynchronizationJob"),
+		Version:     tea.String("2021-12-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &RunSynchronizationJobResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 运行同步任务
+//
+// @param request - RunSynchronizationJobRequest
+//
+// @return RunSynchronizationJobResponse
+func (client *Client) RunSynchronizationJob(request *RunSynchronizationJobRequest) (_result *RunSynchronizationJobResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &RunSynchronizationJobResponse{}
+	_body, _err := client.RunSynchronizationJobWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Configures the permissions of the Developer API feature of an Employee Identity and Access Management (EIAM) application.
 //
 // @param request - SetApplicationGrantScopeRequest
@@ -23279,7 +27308,7 @@ func (client *Client) SetApplicationGrantScope(request *SetApplicationGrantScope
 
 // Summary:
 //
-// Configures the account synchronization feature for an application in Identity as a Service (IDaaS) Employee IAM (EIAM).
+// Configures the account synchronization feature for an application in Identity as a Service (IDaaS) Employee Identity and Access Management (EIAM).
 //
 // @param request - SetApplicationProvisioningConfigRequest
 //
@@ -23341,7 +27370,7 @@ func (client *Client) SetApplicationProvisioningConfigWithOptions(request *SetAp
 
 // Summary:
 //
-// Configures the account synchronization feature for an application in Identity as a Service (IDaaS) Employee IAM (EIAM).
+// Configures the account synchronization feature for an application in Identity as a Service (IDaaS) Employee Identity and Access Management (EIAM).
 //
 // @param request - SetApplicationProvisioningConfigRequest
 //
