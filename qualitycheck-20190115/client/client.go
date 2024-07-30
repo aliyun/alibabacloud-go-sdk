@@ -7702,8 +7702,9 @@ type GetResultResponseBodyDataResultInfoAsrResultAsrResult struct {
 	// example:
 	//
 	// 0
-	End  *int64  `json:"End,omitempty" xml:"End,omitempty"`
-	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
+	End      *int64  `json:"End,omitempty" xml:"End,omitempty"`
+	Identity *string `json:"Identity,omitempty" xml:"Identity,omitempty"`
+	Role     *string `json:"Role,omitempty" xml:"Role,omitempty"`
 	// example:
 	//
 	// 50
@@ -7734,6 +7735,11 @@ func (s *GetResultResponseBodyDataResultInfoAsrResultAsrResult) SetEmotionValue(
 
 func (s *GetResultResponseBodyDataResultInfoAsrResultAsrResult) SetEnd(v int64) *GetResultResponseBodyDataResultInfoAsrResultAsrResult {
 	s.End = &v
+	return s
+}
+
+func (s *GetResultResponseBodyDataResultInfoAsrResultAsrResult) SetIdentity(v string) *GetResultResponseBodyDataResultInfoAsrResultAsrResult {
+	s.Identity = &v
 	return s
 }
 
