@@ -1424,6 +1424,139 @@ func (s *ListEnrolledAccountsResponse) SetBody(v *ListEnrolledAccountsResponseBo
 	return s
 }
 
+type UpdateAccountFactoryBaselineRequest struct {
+	BaselineId    *string                                             `json:"BaselineId,omitempty" xml:"BaselineId,omitempty"`
+	BaselineItems []*UpdateAccountFactoryBaselineRequestBaselineItems `json:"BaselineItems,omitempty" xml:"BaselineItems,omitempty" type:"Repeated"`
+	BaselineName  *string                                             `json:"BaselineName,omitempty" xml:"BaselineName,omitempty"`
+	Description   *string                                             `json:"Description,omitempty" xml:"Description,omitempty"`
+	// RegionId
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s UpdateAccountFactoryBaselineRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAccountFactoryBaselineRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAccountFactoryBaselineRequest) SetBaselineId(v string) *UpdateAccountFactoryBaselineRequest {
+	s.BaselineId = &v
+	return s
+}
+
+func (s *UpdateAccountFactoryBaselineRequest) SetBaselineItems(v []*UpdateAccountFactoryBaselineRequestBaselineItems) *UpdateAccountFactoryBaselineRequest {
+	s.BaselineItems = v
+	return s
+}
+
+func (s *UpdateAccountFactoryBaselineRequest) SetBaselineName(v string) *UpdateAccountFactoryBaselineRequest {
+	s.BaselineName = &v
+	return s
+}
+
+func (s *UpdateAccountFactoryBaselineRequest) SetDescription(v string) *UpdateAccountFactoryBaselineRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *UpdateAccountFactoryBaselineRequest) SetRegionId(v string) *UpdateAccountFactoryBaselineRequest {
+	s.RegionId = &v
+	return s
+}
+
+type UpdateAccountFactoryBaselineRequestBaselineItems struct {
+	// example:
+	//
+	// {\\"EnabledServices\\":[\\"CEN_TR\\",\\"CDT\\",\\"CMS\\",\\"KMS\\"]}
+	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	// example:
+	//
+	// ACS-BP_ACCOUNT_FACTORY_VPC
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 1.0
+	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
+}
+
+func (s UpdateAccountFactoryBaselineRequestBaselineItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAccountFactoryBaselineRequestBaselineItems) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAccountFactoryBaselineRequestBaselineItems) SetConfig(v string) *UpdateAccountFactoryBaselineRequestBaselineItems {
+	s.Config = &v
+	return s
+}
+
+func (s *UpdateAccountFactoryBaselineRequestBaselineItems) SetName(v string) *UpdateAccountFactoryBaselineRequestBaselineItems {
+	s.Name = &v
+	return s
+}
+
+func (s *UpdateAccountFactoryBaselineRequestBaselineItems) SetVersion(v string) *UpdateAccountFactoryBaselineRequestBaselineItems {
+	s.Version = &v
+	return s
+}
+
+type UpdateAccountFactoryBaselineResponseBody struct {
+	// example:
+	//
+	// C18A891D-7B04-51A1-AAC6-201727A361CE
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateAccountFactoryBaselineResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAccountFactoryBaselineResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAccountFactoryBaselineResponseBody) SetRequestId(v string) *UpdateAccountFactoryBaselineResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateAccountFactoryBaselineResponse struct {
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateAccountFactoryBaselineResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateAccountFactoryBaselineResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAccountFactoryBaselineResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAccountFactoryBaselineResponse) SetHeaders(v map[string]*string) *UpdateAccountFactoryBaselineResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateAccountFactoryBaselineResponse) SetStatusCode(v int32) *UpdateAccountFactoryBaselineResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateAccountFactoryBaselineResponse) SetBody(v *UpdateAccountFactoryBaselineResponseBody) *UpdateAccountFactoryBaselineResponse {
+	s.Body = v
+	return s
+}
+
 type Client struct {
 	openapi.Client
 }
@@ -1832,6 +1965,82 @@ func (client *Client) ListEnrolledAccounts(request *ListEnrolledAccountsRequest)
 	runtime := &util.RuntimeOptions{}
 	_result = &ListEnrolledAccountsResponse{}
 	_body, _err := client.ListEnrolledAccountsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新账号工厂基线
+//
+// @param request - UpdateAccountFactoryBaselineRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateAccountFactoryBaselineResponse
+func (client *Client) UpdateAccountFactoryBaselineWithOptions(request *UpdateAccountFactoryBaselineRequest, runtime *util.RuntimeOptions) (_result *UpdateAccountFactoryBaselineResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BaselineId)) {
+		query["BaselineId"] = request.BaselineId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BaselineItems)) {
+		query["BaselineItems"] = request.BaselineItems
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BaselineName)) {
+		query["BaselineName"] = request.BaselineName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateAccountFactoryBaseline"),
+		Version:     tea.String("2021-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateAccountFactoryBaselineResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新账号工厂基线
+//
+// @param request - UpdateAccountFactoryBaselineRequest
+//
+// @return UpdateAccountFactoryBaselineResponse
+func (client *Client) UpdateAccountFactoryBaseline(request *UpdateAccountFactoryBaselineRequest) (_result *UpdateAccountFactoryBaselineResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateAccountFactoryBaselineResponse{}
+	_body, _err := client.UpdateAccountFactoryBaselineWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
