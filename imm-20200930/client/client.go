@@ -5887,7 +5887,8 @@ type BatchGetFileMetaRequest struct {
 	// This parameter is required.
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
 	// This parameter is required.
-	URIs []*string `json:"URIs,omitempty" xml:"URIs,omitempty" type:"Repeated"`
+	URIs       []*string `json:"URIs,omitempty" xml:"URIs,omitempty" type:"Repeated"`
+	WithFields []*string `json:"WithFields,omitempty" xml:"WithFields,omitempty" type:"Repeated"`
 }
 
 func (s BatchGetFileMetaRequest) String() string {
@@ -5913,13 +5914,19 @@ func (s *BatchGetFileMetaRequest) SetURIs(v []*string) *BatchGetFileMetaRequest 
 	return s
 }
 
+func (s *BatchGetFileMetaRequest) SetWithFields(v []*string) *BatchGetFileMetaRequest {
+	s.WithFields = v
+	return s
+}
+
 type BatchGetFileMetaShrinkRequest struct {
 	// This parameter is required.
 	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
 	// This parameter is required.
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
 	// This parameter is required.
-	URIsShrink *string `json:"URIs,omitempty" xml:"URIs,omitempty"`
+	URIsShrink       *string `json:"URIs,omitempty" xml:"URIs,omitempty"`
+	WithFieldsShrink *string `json:"WithFields,omitempty" xml:"WithFields,omitempty"`
 }
 
 func (s BatchGetFileMetaShrinkRequest) String() string {
@@ -5942,6 +5949,11 @@ func (s *BatchGetFileMetaShrinkRequest) SetProjectName(v string) *BatchGetFileMe
 
 func (s *BatchGetFileMetaShrinkRequest) SetURIsShrink(v string) *BatchGetFileMetaShrinkRequest {
 	s.URIsShrink = &v
+	return s
+}
+
+func (s *BatchGetFileMetaShrinkRequest) SetWithFieldsShrink(v string) *BatchGetFileMetaShrinkRequest {
+	s.WithFieldsShrink = &v
 	return s
 }
 
@@ -17083,7 +17095,8 @@ type GetFileMetaRequest struct {
 	// This parameter is required.
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
 	// This parameter is required.
-	URI *string `json:"URI,omitempty" xml:"URI,omitempty"`
+	URI        *string   `json:"URI,omitempty" xml:"URI,omitempty"`
+	WithFields []*string `json:"WithFields,omitempty" xml:"WithFields,omitempty" type:"Repeated"`
 }
 
 func (s GetFileMetaRequest) String() string {
@@ -17106,6 +17119,49 @@ func (s *GetFileMetaRequest) SetProjectName(v string) *GetFileMetaRequest {
 
 func (s *GetFileMetaRequest) SetURI(v string) *GetFileMetaRequest {
 	s.URI = &v
+	return s
+}
+
+func (s *GetFileMetaRequest) SetWithFields(v []*string) *GetFileMetaRequest {
+	s.WithFields = v
+	return s
+}
+
+type GetFileMetaShrinkRequest struct {
+	// This parameter is required.
+	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	// This parameter is required.
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// This parameter is required.
+	URI              *string `json:"URI,omitempty" xml:"URI,omitempty"`
+	WithFieldsShrink *string `json:"WithFields,omitempty" xml:"WithFields,omitempty"`
+}
+
+func (s GetFileMetaShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFileMetaShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetFileMetaShrinkRequest) SetDatasetName(v string) *GetFileMetaShrinkRequest {
+	s.DatasetName = &v
+	return s
+}
+
+func (s *GetFileMetaShrinkRequest) SetProjectName(v string) *GetFileMetaShrinkRequest {
+	s.ProjectName = &v
+	return s
+}
+
+func (s *GetFileMetaShrinkRequest) SetURI(v string) *GetFileMetaShrinkRequest {
+	s.URI = &v
+	return s
+}
+
+func (s *GetFileMetaShrinkRequest) SetWithFieldsShrink(v string) *GetFileMetaShrinkRequest {
+	s.WithFieldsShrink = &v
 	return s
 }
 
@@ -24035,6 +24091,10 @@ func (client *Client) BatchGetFileMetaWithOptions(tmpReq *BatchGetFileMetaReques
 		request.URIsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.URIs, tea.String("URIs"), tea.String("json"))
 	}
 
+	if !tea.BoolValue(util.IsUnset(tmpReq.WithFields)) {
+		request.WithFieldsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.WithFields, tea.String("WithFields"), tea.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.DatasetName)) {
 		query["DatasetName"] = request.DatasetName
@@ -24046,6 +24106,10 @@ func (client *Client) BatchGetFileMetaWithOptions(tmpReq *BatchGetFileMetaReques
 
 	if !tea.BoolValue(util.IsUnset(request.URIsShrink)) {
 		query["URIs"] = request.URIsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WithFieldsShrink)) {
+		query["WithFields"] = request.WithFieldsShrink
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -29151,16 +29215,22 @@ func (client *Client) GetFigureCluster(request *GetFigureClusterRequest) (_resul
 //
 // 获取文件元信息
 //
-// @param request - GetFileMetaRequest
+// @param tmpReq - GetFileMetaRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetFileMetaResponse
-func (client *Client) GetFileMetaWithOptions(request *GetFileMetaRequest, runtime *util.RuntimeOptions) (_result *GetFileMetaResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) GetFileMetaWithOptions(tmpReq *GetFileMetaRequest, runtime *util.RuntimeOptions) (_result *GetFileMetaResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
 		return _result, _err
 	}
+	request := &GetFileMetaShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.WithFields)) {
+		request.WithFieldsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.WithFields, tea.String("WithFields"), tea.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.DatasetName)) {
 		query["DatasetName"] = request.DatasetName
@@ -29172,6 +29242,10 @@ func (client *Client) GetFileMetaWithOptions(request *GetFileMetaRequest, runtim
 
 	if !tea.BoolValue(util.IsUnset(request.URI)) {
 		query["URI"] = request.URI
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WithFieldsShrink)) {
+		query["WithFields"] = request.WithFieldsShrink
 	}
 
 	req := &openapi.OpenApiRequest{
