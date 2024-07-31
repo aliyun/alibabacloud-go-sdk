@@ -1,7 +1,4 @@
 // This file is auto-generated, don't edit it. Thanks.
-/**
- *
- */
 package client
 
 import (
@@ -13,12 +10,38 @@ import (
 )
 
 type ConvertInstanceRequest struct {
-	Duration               *int32                                          `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	InstanceId             *string                                         `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	IsAutoRenew            *bool                                           `json:"IsAutoRenew,omitempty" xml:"IsAutoRenew,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	Duration *int32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// f-cn-wwo36qj4g06
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// true
+	IsAutoRenew *bool `json:"IsAutoRenew,omitempty" xml:"IsAutoRenew,omitempty"`
+	// This parameter is required.
 	NamespaceResourceSpecs []*ConvertInstanceRequestNamespaceResourceSpecs `json:"NamespaceResourceSpecs,omitempty" xml:"NamespaceResourceSpecs,omitempty" type:"Repeated"`
-	PricingCycle           *string                                         `json:"PricingCycle,omitempty" xml:"PricingCycle,omitempty"`
-	Region                 *string                                         `json:"Region,omitempty" xml:"Region,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Month
+	PricingCycle *string `json:"PricingCycle,omitempty" xml:"PricingCycle,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-beijing
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
 }
 
 func (s ConvertInstanceRequest) String() string {
@@ -60,7 +83,13 @@ func (s *ConvertInstanceRequest) SetRegion(v string) *ConvertInstanceRequest {
 }
 
 type ConvertInstanceRequestNamespaceResourceSpecs struct {
-	Namespace    *string                                                   `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ns-1
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// This parameter is required.
 	ResourceSpec *ConvertInstanceRequestNamespaceResourceSpecsResourceSpec `json:"ResourceSpec,omitempty" xml:"ResourceSpec,omitempty" type:"Struct"`
 }
 
@@ -83,7 +112,17 @@ func (s *ConvertInstanceRequestNamespaceResourceSpecs) SetResourceSpec(v *Conver
 }
 
 type ConvertInstanceRequestNamespaceResourceSpecsResourceSpec struct {
-	Cpu      *int32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	Cpu *int32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 4
 	MemoryGB *int32 `json:"MemoryGB,omitempty" xml:"MemoryGB,omitempty"`
 }
 
@@ -106,12 +145,38 @@ func (s *ConvertInstanceRequestNamespaceResourceSpecsResourceSpec) SetMemoryGB(v
 }
 
 type ConvertInstanceShrinkRequest struct {
-	Duration                     *int32  `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	InstanceId                   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	IsAutoRenew                  *bool   `json:"IsAutoRenew,omitempty" xml:"IsAutoRenew,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	Duration *int32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// f-cn-wwo36qj4g06
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// true
+	IsAutoRenew *bool `json:"IsAutoRenew,omitempty" xml:"IsAutoRenew,omitempty"`
+	// This parameter is required.
 	NamespaceResourceSpecsShrink *string `json:"NamespaceResourceSpecs,omitempty" xml:"NamespaceResourceSpecs,omitempty"`
-	PricingCycle                 *string `json:"PricingCycle,omitempty" xml:"PricingCycle,omitempty"`
-	Region                       *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Month
+	PricingCycle *string `json:"PricingCycle,omitempty" xml:"PricingCycle,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-beijing
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
 }
 
 func (s ConvertInstanceShrinkRequest) String() string {
@@ -153,9 +218,18 @@ func (s *ConvertInstanceShrinkRequest) SetRegion(v string) *ConvertInstanceShrin
 }
 
 type ConvertInstanceResponseBody struct {
-	OrderId   *int64  `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// example:
+	//
+	// 211473228320700
+	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// example:
+	//
+	// 67F33190-946B-1105-B6A1-E2DF0426DD51
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ConvertInstanceResponseBody) String() string {
@@ -211,28 +285,75 @@ func (s *ConvertInstanceResponse) SetBody(v *ConvertInstanceResponseBody) *Conve
 }
 
 type CreateInstanceRequest struct {
-	ArchitectureType *string                              `json:"ArchitectureType,omitempty" xml:"ArchitectureType,omitempty"`
-	AutoRenew        *bool                                `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
-	ChargeType       *string                              `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	Duration         *int32                               `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	Extra            *string                              `json:"Extra,omitempty" xml:"Extra,omitempty"`
-	Ha               *bool                                `json:"Ha,omitempty" xml:"Ha,omitempty"`
-	HaResourceSpec   *CreateInstanceRequestHaResourceSpec `json:"HaResourceSpec,omitempty" xml:"HaResourceSpec,omitempty" type:"Struct"`
-	HaVSwitchIds     []*string                            `json:"HaVSwitchIds,omitempty" xml:"HaVSwitchIds,omitempty" type:"Repeated"`
-	HaZoneId         *string                              `json:"HaZoneId,omitempty" xml:"HaZoneId,omitempty"`
-	InstanceName     *string                              `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	MonitorType      *string                              `json:"MonitorType,omitempty" xml:"MonitorType,omitempty"`
-	PricingCycle     *string                              `json:"PricingCycle,omitempty" xml:"PricingCycle,omitempty"`
-	PromotionCode    *string                              `json:"PromotionCode,omitempty" xml:"PromotionCode,omitempty"`
-	Region           *string                              `json:"Region,omitempty" xml:"Region,omitempty"`
-	ResourceGroupId  *string                              `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	ResourceSpec     *CreateInstanceRequestResourceSpec   `json:"ResourceSpec,omitempty" xml:"ResourceSpec,omitempty" type:"Struct"`
-	Storage          *CreateInstanceRequestStorage        `json:"Storage,omitempty" xml:"Storage,omitempty" type:"Struct"`
-	Tag              []*CreateInstanceRequestTag          `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	UsePromotionCode *bool                                `json:"UsePromotionCode,omitempty" xml:"UsePromotionCode,omitempty"`
-	VSwitchIds       []*string                            `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty" type:"Repeated"`
-	VpcId            *string                              `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	ZoneId           *string                              `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	ArchitectureType *string `json:"ArchitectureType,omitempty" xml:"ArchitectureType,omitempty"`
+	// example:
+	//
+	// true
+	AutoRenew *bool `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// PRE
+	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	// example:
+	//
+	// 1
+	Duration *int32  `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	Extra    *string `json:"Extra,omitempty" xml:"Extra,omitempty"`
+	// if can be null:
+	// true
+	Ha *bool `json:"Ha,omitempty" xml:"Ha,omitempty"`
+	// if can be null:
+	// true
+	HaResourceSpec *CreateInstanceRequestHaResourceSpec `json:"HaResourceSpec,omitempty" xml:"HaResourceSpec,omitempty" type:"Struct"`
+	// if can be null:
+	// true
+	HaVSwitchIds []*string `json:"HaVSwitchIds,omitempty" xml:"HaVSwitchIds,omitempty" type:"Repeated"`
+	// if can be null:
+	// true
+	HaZoneId *string `json:"HaZoneId,omitempty" xml:"HaZoneId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// rtc-e2e-test-pre
+	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	MonitorType  *string `json:"MonitorType,omitempty" xml:"MonitorType,omitempty"`
+	// example:
+	//
+	// Month
+	PricingCycle *string `json:"PricingCycle,omitempty" xml:"PricingCycle,omitempty"`
+	// example:
+	//
+	// 500043499350689
+	PromotionCode *string `json:"PromotionCode,omitempty" xml:"PromotionCode,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-beijing
+	Region          *string                            `json:"Region,omitempty" xml:"Region,omitempty"`
+	ResourceGroupId *string                            `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ResourceSpec    *CreateInstanceRequestResourceSpec `json:"ResourceSpec,omitempty" xml:"ResourceSpec,omitempty" type:"Struct"`
+	// This parameter is required.
+	Storage          *CreateInstanceRequestStorage `json:"Storage,omitempty" xml:"Storage,omitempty" type:"Struct"`
+	Tag              []*CreateInstanceRequestTag   `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	UsePromotionCode *bool                         `json:"UsePromotionCode,omitempty" xml:"UsePromotionCode,omitempty"`
+	// This parameter is required.
+	VSwitchIds []*string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// vpc-2ze9xoh8qyt1rnxfmfcdi
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-beijing-g
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s CreateInstanceRequest) String() string {
@@ -377,7 +498,13 @@ func (s *CreateInstanceRequestHaResourceSpec) SetMemoryGB(v int32) *CreateInstan
 }
 
 type CreateInstanceRequestResourceSpec struct {
-	Cpu      *int32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	// example:
+	//
+	// 30
+	Cpu *int32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	// example:
+	//
+	// 120
 	MemoryGB *int32 `json:"MemoryGB,omitempty" xml:"MemoryGB,omitempty"`
 }
 
@@ -400,7 +527,8 @@ func (s *CreateInstanceRequestResourceSpec) SetMemoryGB(v int32) *CreateInstance
 }
 
 type CreateInstanceRequestStorage struct {
-	Oss *CreateInstanceRequestStorageOss `json:"Oss,omitempty" xml:"Oss,omitempty" type:"Struct"`
+	FullyManaged *bool                            `json:"FullyManaged,omitempty" xml:"FullyManaged,omitempty"`
+	Oss          *CreateInstanceRequestStorageOss `json:"Oss,omitempty" xml:"Oss,omitempty" type:"Struct"`
 }
 
 func (s CreateInstanceRequestStorage) String() string {
@@ -411,12 +539,20 @@ func (s CreateInstanceRequestStorage) GoString() string {
 	return s.String()
 }
 
+func (s *CreateInstanceRequestStorage) SetFullyManaged(v bool) *CreateInstanceRequestStorage {
+	s.FullyManaged = &v
+	return s
+}
+
 func (s *CreateInstanceRequestStorage) SetOss(v *CreateInstanceRequestStorageOss) *CreateInstanceRequestStorage {
 	s.Oss = v
 	return s
 }
 
 type CreateInstanceRequestStorageOss struct {
+	// example:
+	//
+	// oss-flink-cn-shanghai-260343971602724445
 	Bucket *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
 }
 
@@ -457,28 +593,75 @@ func (s *CreateInstanceRequestTag) SetValue(v string) *CreateInstanceRequestTag 
 }
 
 type CreateInstanceShrinkRequest struct {
-	ArchitectureType     *string `json:"ArchitectureType,omitempty" xml:"ArchitectureType,omitempty"`
-	AutoRenew            *bool   `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
-	ChargeType           *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	Duration             *int32  `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	Extra                *string `json:"Extra,omitempty" xml:"Extra,omitempty"`
-	Ha                   *bool   `json:"Ha,omitempty" xml:"Ha,omitempty"`
+	ArchitectureType *string `json:"ArchitectureType,omitempty" xml:"ArchitectureType,omitempty"`
+	// example:
+	//
+	// true
+	AutoRenew *bool `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// PRE
+	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	// example:
+	//
+	// 1
+	Duration *int32  `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	Extra    *string `json:"Extra,omitempty" xml:"Extra,omitempty"`
+	// if can be null:
+	// true
+	Ha *bool `json:"Ha,omitempty" xml:"Ha,omitempty"`
+	// if can be null:
+	// true
 	HaResourceSpecShrink *string `json:"HaResourceSpec,omitempty" xml:"HaResourceSpec,omitempty"`
-	HaVSwitchIdsShrink   *string `json:"HaVSwitchIds,omitempty" xml:"HaVSwitchIds,omitempty"`
-	HaZoneId             *string `json:"HaZoneId,omitempty" xml:"HaZoneId,omitempty"`
-	InstanceName         *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	MonitorType          *string `json:"MonitorType,omitempty" xml:"MonitorType,omitempty"`
-	PricingCycle         *string `json:"PricingCycle,omitempty" xml:"PricingCycle,omitempty"`
-	PromotionCode        *string `json:"PromotionCode,omitempty" xml:"PromotionCode,omitempty"`
-	Region               *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	ResourceSpecShrink   *string `json:"ResourceSpec,omitempty" xml:"ResourceSpec,omitempty"`
-	StorageShrink        *string `json:"Storage,omitempty" xml:"Storage,omitempty"`
-	TagShrink            *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
-	UsePromotionCode     *bool   `json:"UsePromotionCode,omitempty" xml:"UsePromotionCode,omitempty"`
-	VSwitchIdsShrink     *string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty"`
-	VpcId                *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	ZoneId               *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	// if can be null:
+	// true
+	HaVSwitchIdsShrink *string `json:"HaVSwitchIds,omitempty" xml:"HaVSwitchIds,omitempty"`
+	// if can be null:
+	// true
+	HaZoneId *string `json:"HaZoneId,omitempty" xml:"HaZoneId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// rtc-e2e-test-pre
+	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	MonitorType  *string `json:"MonitorType,omitempty" xml:"MonitorType,omitempty"`
+	// example:
+	//
+	// Month
+	PricingCycle *string `json:"PricingCycle,omitempty" xml:"PricingCycle,omitempty"`
+	// example:
+	//
+	// 500043499350689
+	PromotionCode *string `json:"PromotionCode,omitempty" xml:"PromotionCode,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-beijing
+	Region             *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	ResourceGroupId    *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ResourceSpecShrink *string `json:"ResourceSpec,omitempty" xml:"ResourceSpec,omitempty"`
+	// This parameter is required.
+	StorageShrink    *string `json:"Storage,omitempty" xml:"Storage,omitempty"`
+	TagShrink        *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	UsePromotionCode *bool   `json:"UsePromotionCode,omitempty" xml:"UsePromotionCode,omitempty"`
+	// This parameter is required.
+	VSwitchIdsShrink *string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// vpc-2ze9xoh8qyt1rnxfmfcdi
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-beijing-g
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s CreateInstanceShrinkRequest) String() string {
@@ -601,8 +784,14 @@ func (s *CreateInstanceShrinkRequest) SetZoneId(v string) *CreateInstanceShrinkR
 
 type CreateInstanceResponseBody struct {
 	OrderInfo *CreateInstanceResponseBodyOrderInfo `json:"OrderInfo,omitempty" xml:"OrderInfo,omitempty" type:"Struct"`
-	RequestId *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                                `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 67F33190-946B-1105-B6A1-E2DF0426DD51
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s CreateInstanceResponseBody) String() string {
@@ -629,8 +818,16 @@ func (s *CreateInstanceResponseBody) SetSuccess(v bool) *CreateInstanceResponseB
 }
 
 type CreateInstanceResponseBodyOrderInfo struct {
+	// example:
+	//
+	// f-cn-zvp2q0zik06
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	OrderId    *int64  `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// example:
+	//
+	// 210406354694567
+	OrderId           *int64  `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	StorageInstanceId *string `json:"StorageInstanceId,omitempty" xml:"StorageInstanceId,omitempty"`
+	StorageOrderId    *int64  `json:"StorageOrderId,omitempty" xml:"StorageOrderId,omitempty"`
 }
 
 func (s CreateInstanceResponseBodyOrderInfo) String() string {
@@ -648,6 +845,16 @@ func (s *CreateInstanceResponseBodyOrderInfo) SetInstanceId(v string) *CreateIns
 
 func (s *CreateInstanceResponseBodyOrderInfo) SetOrderId(v int64) *CreateInstanceResponseBodyOrderInfo {
 	s.OrderId = &v
+	return s
+}
+
+func (s *CreateInstanceResponseBodyOrderInfo) SetStorageInstanceId(v string) *CreateInstanceResponseBodyOrderInfo {
+	s.StorageInstanceId = &v
+	return s
+}
+
+func (s *CreateInstanceResponseBodyOrderInfo) SetStorageOrderId(v int64) *CreateInstanceResponseBodyOrderInfo {
+	s.StorageOrderId = &v
 	return s
 }
 
@@ -681,9 +888,26 @@ func (s *CreateInstanceResponse) SetBody(v *CreateInstanceResponseBody) *CreateI
 }
 
 type CreateNamespaceRequest struct {
-	Ha           *bool                               `json:"Ha,omitempty" xml:"Ha,omitempty"`
-	InstanceId   *string                             `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Namespace    *string                             `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// if can be null:
+	// true
+	Ha *bool `json:"Ha,omitempty" xml:"Ha,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// f-cn-wwo36qj4g06
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// di-593440390152545
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-shenzhen
 	Region       *string                             `json:"Region,omitempty" xml:"Region,omitempty"`
 	ResourceSpec *CreateNamespaceRequestResourceSpec `json:"ResourceSpec,omitempty" xml:"ResourceSpec,omitempty" type:"Struct"`
 }
@@ -722,7 +946,13 @@ func (s *CreateNamespaceRequest) SetResourceSpec(v *CreateNamespaceRequestResour
 }
 
 type CreateNamespaceRequestResourceSpec struct {
-	Cpu      *int32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	// example:
+	//
+	// 30
+	Cpu *int32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	// example:
+	//
+	// 120
 	MemoryGB *int32 `json:"MemoryGB,omitempty" xml:"MemoryGB,omitempty"`
 }
 
@@ -745,9 +975,26 @@ func (s *CreateNamespaceRequestResourceSpec) SetMemoryGB(v int32) *CreateNamespa
 }
 
 type CreateNamespaceShrinkRequest struct {
-	Ha                 *bool   `json:"Ha,omitempty" xml:"Ha,omitempty"`
-	InstanceId         *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Namespace          *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// if can be null:
+	// true
+	Ha *bool `json:"Ha,omitempty" xml:"Ha,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// f-cn-wwo36qj4g06
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// di-593440390152545
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-shenzhen
 	Region             *string `json:"Region,omitempty" xml:"Region,omitempty"`
 	ResourceSpecShrink *string `json:"ResourceSpec,omitempty" xml:"ResourceSpec,omitempty"`
 }
@@ -786,8 +1033,14 @@ func (s *CreateNamespaceShrinkRequest) SetResourceSpecShrink(v string) *CreateNa
 }
 
 type CreateNamespaceResponseBody struct {
+	// example:
+	//
+	// 67F33190-946B-1105-B6A1-E2DF0426DD51
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 是否成功
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s CreateNamespaceResponseBody) String() string {
@@ -838,8 +1091,18 @@ func (s *CreateNamespaceResponse) SetBody(v *CreateNamespaceResponseBody) *Creat
 }
 
 type DeleteInstanceRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// f-cn-wwo36qj4g06
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Region     *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-beijing
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
 }
 
 func (s DeleteInstanceRequest) String() string {
@@ -861,8 +1124,14 @@ func (s *DeleteInstanceRequest) SetRegion(v string) *DeleteInstanceRequest {
 }
 
 type DeleteInstanceResponseBody struct {
+	// example:
+	//
+	// 67F33190-946B-1105-B6A1-E2DF0426DD51
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// True
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DeleteInstanceResponseBody) String() string {
@@ -913,9 +1182,24 @@ func (s *DeleteInstanceResponse) SetBody(v *DeleteInstanceResponseBody) *DeleteI
 }
 
 type DeleteNamespaceRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// f-cn-wwo36qj4g06
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Namespace  *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	Region     *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// di-593439443804417
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-beijing
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
 }
 
 func (s DeleteNamespaceRequest) String() string {
@@ -942,8 +1226,14 @@ func (s *DeleteNamespaceRequest) SetRegion(v string) *DeleteNamespaceRequest {
 }
 
 type DeleteNamespaceResponseBody struct {
+	// example:
+	//
+	// 67F33190-946B-1105-B6A1-E2DF0426DD51
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 是否成功
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DeleteNamespaceResponseBody) String() string {
@@ -994,14 +1284,31 @@ func (s *DeleteNamespaceResponse) SetBody(v *DeleteNamespaceResponseBody) *Delet
 }
 
 type DescribeInstancesRequest struct {
-	ArchitectureType *string                         `json:"ArchitectureType,omitempty" xml:"ArchitectureType,omitempty"`
-	ChargeType       *string                         `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	InstanceId       *string                         `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	PageIndex        *int32                          `json:"PageIndex,omitempty" xml:"PageIndex,omitempty"`
-	PageSize         *int32                          `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Region           *string                         `json:"Region,omitempty" xml:"Region,omitempty"`
-	ResourceGroupId  *string                         `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	Tags             []*DescribeInstancesRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	ArchitectureType *string `json:"ArchitectureType,omitempty" xml:"ArchitectureType,omitempty"`
+	// example:
+	//
+	// PRE
+	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	// example:
+	//
+	// f-cn-wwo36qj4g06
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// 2
+	PageIndex *int32 `json:"PageIndex,omitempty" xml:"PageIndex,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-shenzhen
+	Region          *string                         `json:"Region,omitempty" xml:"Region,omitempty"`
+	ResourceGroupId *string                         `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	Tags            []*DescribeInstancesRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
 func (s DescribeInstancesRequest) String() string {
@@ -1053,7 +1360,13 @@ func (s *DescribeInstancesRequest) SetTags(v []*DescribeInstancesRequestTags) *D
 }
 
 type DescribeInstancesRequestTags struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// test
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// ys
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -1077,13 +1390,30 @@ func (s *DescribeInstancesRequestTags) SetValue(v string) *DescribeInstancesRequ
 
 type DescribeInstancesShrinkRequest struct {
 	ArchitectureType *string `json:"ArchitectureType,omitempty" xml:"ArchitectureType,omitempty"`
-	ChargeType       *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	InstanceId       *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	PageIndex        *int32  `json:"PageIndex,omitempty" xml:"PageIndex,omitempty"`
-	PageSize         *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Region           *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	ResourceGroupId  *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	TagsShrink       *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	// example:
+	//
+	// PRE
+	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	// example:
+	//
+	// f-cn-wwo36qj4g06
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// 2
+	PageIndex *int32 `json:"PageIndex,omitempty" xml:"PageIndex,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-shenzhen
+	Region          *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	TagsShrink      *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 }
 
 func (s DescribeInstancesShrinkRequest) String() string {
@@ -1135,13 +1465,31 @@ func (s *DescribeInstancesShrinkRequest) SetTagsShrink(v string) *DescribeInstan
 }
 
 type DescribeInstancesResponseBody struct {
-	Instances  []*DescribeInstancesResponseBodyInstances `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Repeated"`
-	PageIndex  *int32                                    `json:"PageIndex,omitempty" xml:"PageIndex,omitempty"`
-	PageSize   *int32                                    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId  *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success    *bool                                     `json:"Success,omitempty" xml:"Success,omitempty"`
-	TotalCount *int64                                    `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	TotalPage  *int32                                    `json:"TotalPage,omitempty" xml:"TotalPage,omitempty"`
+	Instances []*DescribeInstancesResponseBodyInstances `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	PageIndex *int32 `json:"PageIndex,omitempty" xml:"PageIndex,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// C8DF2A5B-6FBA-5651-A3D4-960F36640E6B
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 15
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// example:
+	//
+	// 2
+	TotalPage *int32 `json:"TotalPage,omitempty" xml:"TotalPage,omitempty"`
 }
 
 func (s DescribeInstancesResponseBody) String() string {
@@ -1188,31 +1536,69 @@ func (s *DescribeInstancesResponseBody) SetTotalPage(v int32) *DescribeInstances
 }
 
 type DescribeInstancesResponseBodyInstances struct {
-	ArchitectureType    *string                                               `json:"ArchitectureType,omitempty" xml:"ArchitectureType,omitempty"`
-	AskClusterId        *string                                               `json:"AskClusterId,omitempty" xml:"AskClusterId,omitempty"`
-	ChargeType          *string                                               `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	ClusterStatus       *string                                               `json:"ClusterStatus,omitempty" xml:"ClusterStatus,omitempty"`
-	Ha                  *bool                                                 `json:"Ha,omitempty" xml:"Ha,omitempty"`
-	HaResourceSpec      *DescribeInstancesResponseBodyInstancesHaResourceSpec `json:"HaResourceSpec,omitempty" xml:"HaResourceSpec,omitempty" type:"Struct"`
-	HaVSwitchIds        []*string                                             `json:"HaVSwitchIds,omitempty" xml:"HaVSwitchIds,omitempty" type:"Repeated"`
-	HaZoneId            *string                                               `json:"HaZoneId,omitempty" xml:"HaZoneId,omitempty"`
-	HostAliases         []*DescribeInstancesResponseBodyInstancesHostAliases  `json:"HostAliases,omitempty" xml:"HostAliases,omitempty" type:"Repeated"`
-	InstanceId          *string                                               `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	InstanceName        *string                                               `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	MonitorType         *string                                               `json:"MonitorType,omitempty" xml:"MonitorType,omitempty"`
-	OrderState          *string                                               `json:"OrderState,omitempty" xml:"OrderState,omitempty"`
-	Region              *string                                               `json:"Region,omitempty" xml:"Region,omitempty"`
-	ResourceCreateTime  *int64                                                `json:"ResourceCreateTime,omitempty" xml:"ResourceCreateTime,omitempty"`
-	ResourceExpiredTime *int64                                                `json:"ResourceExpiredTime,omitempty" xml:"ResourceExpiredTime,omitempty"`
-	ResourceGroupId     *string                                               `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	ResourceId          *string                                               `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	ResourceSpec        *DescribeInstancesResponseBodyInstancesResourceSpec   `json:"ResourceSpec,omitempty" xml:"ResourceSpec,omitempty" type:"Struct"`
-	Storage             *DescribeInstancesResponseBodyInstancesStorage        `json:"Storage,omitempty" xml:"Storage,omitempty" type:"Struct"`
-	Tags                []*DescribeInstancesResponseBodyInstancesTags         `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	Uid                 *string                                               `json:"Uid,omitempty" xml:"Uid,omitempty"`
-	VSwitchIds          []*string                                             `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty" type:"Repeated"`
-	VpcId               *string                                               `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	ZoneId              *string                                               `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	ArchitectureType *string `json:"ArchitectureType,omitempty" xml:"ArchitectureType,omitempty"`
+	AskClusterId     *string `json:"AskClusterId,omitempty" xml:"AskClusterId,omitempty"`
+	// example:
+	//
+	// PRE
+	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	// example:
+	//
+	// RUNNING
+	ClusterStatus      *string                                                   `json:"ClusterStatus,omitempty" xml:"ClusterStatus,omitempty"`
+	ClusterUsedStorage *DescribeInstancesResponseBodyInstancesClusterUsedStorage `json:"ClusterUsedStorage,omitempty" xml:"ClusterUsedStorage,omitempty" type:"Struct"`
+	Ha                 *bool                                                     `json:"Ha,omitempty" xml:"Ha,omitempty"`
+	HaResourceSpec     *DescribeInstancesResponseBodyInstancesHaResourceSpec     `json:"HaResourceSpec,omitempty" xml:"HaResourceSpec,omitempty" type:"Struct"`
+	HaVSwitchIds       []*string                                                 `json:"HaVSwitchIds,omitempty" xml:"HaVSwitchIds,omitempty" type:"Repeated"`
+	HaZoneId           *string                                                   `json:"HaZoneId,omitempty" xml:"HaZoneId,omitempty"`
+	// This parameter is required.
+	HostAliases []*DescribeInstancesResponseBodyInstancesHostAliases `json:"HostAliases,omitempty" xml:"HostAliases,omitempty" type:"Repeated"`
+	// example:
+	//
+	// f-cn-zvp2q0zik06
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// vvp1
+	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	MonitorType  *string `json:"MonitorType,omitempty" xml:"MonitorType,omitempty"`
+	// example:
+	//
+	// NORMAL
+	OrderState *string `json:"OrderState,omitempty" xml:"OrderState,omitempty"`
+	// example:
+	//
+	// cn-beijing
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// example:
+	//
+	// 1629879567394
+	ResourceCreateTime *int64 `json:"ResourceCreateTime,omitempty" xml:"ResourceCreateTime,omitempty"`
+	// example:
+	//
+	// 1637337600000
+	ResourceExpiredTime *int64  `json:"ResourceExpiredTime,omitempty" xml:"ResourceExpiredTime,omitempty"`
+	ResourceGroupId     *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// example:
+	//
+	// b3690a1655da47
+	ResourceId   *string                                             `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	ResourceSpec *DescribeInstancesResponseBodyInstancesResourceSpec `json:"ResourceSpec,omitempty" xml:"ResourceSpec,omitempty" type:"Struct"`
+	Storage      *DescribeInstancesResponseBodyInstancesStorage      `json:"Storage,omitempty" xml:"Storage,omitempty" type:"Struct"`
+	Tags         []*DescribeInstancesResponseBodyInstancesTags       `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1838996687368452
+	Uid        *string   `json:"Uid,omitempty" xml:"Uid,omitempty"`
+	VSwitchIds []*string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty" type:"Repeated"`
+	// example:
+	//
+	// vpc-2ze9*******nxfmfcdi
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// example:
+	//
+	// cn-beijing-g
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s DescribeInstancesResponseBodyInstances) String() string {
@@ -1240,6 +1626,11 @@ func (s *DescribeInstancesResponseBodyInstances) SetChargeType(v string) *Descri
 
 func (s *DescribeInstancesResponseBodyInstances) SetClusterStatus(v string) *DescribeInstancesResponseBodyInstances {
 	s.ClusterStatus = &v
+	return s
+}
+
+func (s *DescribeInstancesResponseBodyInstances) SetClusterUsedStorage(v *DescribeInstancesResponseBodyInstancesClusterUsedStorage) *DescribeInstancesResponseBodyInstances {
+	s.ClusterUsedStorage = v
 	return s
 }
 
@@ -1348,6 +1739,29 @@ func (s *DescribeInstancesResponseBodyInstances) SetZoneId(v string) *DescribeIn
 	return s
 }
 
+type DescribeInstancesResponseBodyInstancesClusterUsedStorage struct {
+	ClusterId   *string  `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	UsedStorage *float32 `json:"UsedStorage,omitempty" xml:"UsedStorage,omitempty"`
+}
+
+func (s DescribeInstancesResponseBodyInstancesClusterUsedStorage) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInstancesResponseBodyInstancesClusterUsedStorage) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstancesResponseBodyInstancesClusterUsedStorage) SetClusterId(v string) *DescribeInstancesResponseBodyInstancesClusterUsedStorage {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *DescribeInstancesResponseBodyInstancesClusterUsedStorage) SetUsedStorage(v float32) *DescribeInstancesResponseBodyInstancesClusterUsedStorage {
+	s.UsedStorage = &v
+	return s
+}
+
 type DescribeInstancesResponseBodyInstancesHaResourceSpec struct {
 	Cpu      *int32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
 	MemoryGB *int32 `json:"MemoryGB,omitempty" xml:"MemoryGB,omitempty"`
@@ -1372,8 +1786,10 @@ func (s *DescribeInstancesResponseBodyInstancesHaResourceSpec) SetMemoryGB(v int
 }
 
 type DescribeInstancesResponseBodyInstancesHostAliases struct {
+	// This parameter is required.
 	HostNames []*string `json:"HostNames,omitempty" xml:"HostNames,omitempty" type:"Repeated"`
-	Ip        *string   `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	// This parameter is required.
+	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
 }
 
 func (s DescribeInstancesResponseBodyInstancesHostAliases) String() string {
@@ -1395,7 +1811,13 @@ func (s *DescribeInstancesResponseBodyInstancesHostAliases) SetIp(v string) *Des
 }
 
 type DescribeInstancesResponseBodyInstancesResourceSpec struct {
-	Cpu      *int32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	// example:
+	//
+	// 10
+	Cpu *int32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	// example:
+	//
+	// 40
 	MemoryGB *int32 `json:"MemoryGB,omitempty" xml:"MemoryGB,omitempty"`
 }
 
@@ -1418,7 +1840,9 @@ func (s *DescribeInstancesResponseBodyInstancesResourceSpec) SetMemoryGB(v int32
 }
 
 type DescribeInstancesResponseBodyInstancesStorage struct {
-	Oss *DescribeInstancesResponseBodyInstancesStorageOss `json:"Oss,omitempty" xml:"Oss,omitempty" type:"Struct"`
+	FullyManaged *bool                                             `json:"FullyManaged,omitempty" xml:"FullyManaged,omitempty"`
+	OrderState   *string                                           `json:"OrderState,omitempty" xml:"OrderState,omitempty"`
+	Oss          *DescribeInstancesResponseBodyInstancesStorageOss `json:"Oss,omitempty" xml:"Oss,omitempty" type:"Struct"`
 }
 
 func (s DescribeInstancesResponseBodyInstancesStorage) String() string {
@@ -1429,12 +1853,25 @@ func (s DescribeInstancesResponseBodyInstancesStorage) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeInstancesResponseBodyInstancesStorage) SetFullyManaged(v bool) *DescribeInstancesResponseBodyInstancesStorage {
+	s.FullyManaged = &v
+	return s
+}
+
+func (s *DescribeInstancesResponseBodyInstancesStorage) SetOrderState(v string) *DescribeInstancesResponseBodyInstancesStorage {
+	s.OrderState = &v
+	return s
+}
+
 func (s *DescribeInstancesResponseBodyInstancesStorage) SetOss(v *DescribeInstancesResponseBodyInstancesStorageOss) *DescribeInstancesResponseBodyInstancesStorage {
 	s.Oss = v
 	return s
 }
 
 type DescribeInstancesResponseBodyInstancesStorageOss struct {
+	// example:
+	//
+	// oss_flink
 	Bucket *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
 }
 
@@ -1452,7 +1889,13 @@ func (s *DescribeInstancesResponseBodyInstancesStorageOss) SetBucket(v string) *
 }
 
 type DescribeInstancesResponseBodyInstancesTags struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// flink
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// test
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -1504,13 +1947,34 @@ func (s *DescribeInstancesResponse) SetBody(v *DescribeInstancesResponseBody) *D
 }
 
 type DescribeNamespacesRequest struct {
-	Ha         *bool                            `json:"Ha,omitempty" xml:"Ha,omitempty"`
-	InstanceId *string                          `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Namespace  *string                          `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	PageIndex  *int32                           `json:"PageIndex,omitempty" xml:"PageIndex,omitempty"`
-	PageSize   *int32                           `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Region     *string                          `json:"Region,omitempty" xml:"Region,omitempty"`
-	Tags       []*DescribeNamespacesRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// if can be null:
+	// true
+	Ha *bool `json:"Ha,omitempty" xml:"Ha,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// f-cn-wwo36qj4g06
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// di-590843445844225
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// example:
+	//
+	// 1
+	PageIndex *int32 `json:"PageIndex,omitempty" xml:"PageIndex,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-beijing
+	Region *string                          `json:"Region,omitempty" xml:"Region,omitempty"`
+	Tags   []*DescribeNamespacesRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
 func (s DescribeNamespacesRequest) String() string {
@@ -1557,7 +2021,13 @@ func (s *DescribeNamespacesRequest) SetTags(v []*DescribeNamespacesRequestTags) 
 }
 
 type DescribeNamespacesRequestTags struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// FLink
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// test
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -1580,11 +2050,32 @@ func (s *DescribeNamespacesRequestTags) SetValue(v string) *DescribeNamespacesRe
 }
 
 type DescribeNamespacesShrinkRequest struct {
-	Ha         *bool   `json:"Ha,omitempty" xml:"Ha,omitempty"`
+	// if can be null:
+	// true
+	Ha *bool `json:"Ha,omitempty" xml:"Ha,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// f-cn-wwo36qj4g06
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Namespace  *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	PageIndex  *int32  `json:"PageIndex,omitempty" xml:"PageIndex,omitempty"`
-	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// di-590843445844225
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// example:
+	//
+	// 1
+	PageIndex *int32 `json:"PageIndex,omitempty" xml:"PageIndex,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-beijing
 	Region     *string `json:"Region,omitempty" xml:"Region,omitempty"`
 	TagsShrink *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 }
@@ -1634,12 +2125,30 @@ func (s *DescribeNamespacesShrinkRequest) SetTagsShrink(v string) *DescribeNames
 
 type DescribeNamespacesResponseBody struct {
 	Namespaces []*DescribeNamespacesResponseBodyNamespaces `json:"Namespaces,omitempty" xml:"Namespaces,omitempty" type:"Repeated"`
-	PageIndex  *int32                                      `json:"PageIndex,omitempty" xml:"PageIndex,omitempty"`
-	PageSize   *int32                                      `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId  *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success    *bool                                       `json:"Success,omitempty" xml:"Success,omitempty"`
-	TotalCount *int64                                      `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	TotalPage  *int32                                      `json:"TotalPage,omitempty" xml:"TotalPage,omitempty"`
+	// example:
+	//
+	// 1
+	PageIndex *int32 `json:"PageIndex,omitempty" xml:"PageIndex,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 67F33190-946B-1105-B6A1-E2DF0426DD51
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 5
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// example:
+	//
+	// 2
+	TotalPage *int32 `json:"TotalPage,omitempty" xml:"TotalPage,omitempty"`
 }
 
 func (s DescribeNamespacesResponseBody) String() string {
@@ -1686,14 +2195,26 @@ func (s *DescribeNamespacesResponseBody) SetTotalPage(v int32) *DescribeNamespac
 }
 
 type DescribeNamespacesResponseBodyNamespaces struct {
-	GmtCreate    *int64                                                `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	GmtModified  *int64                                                `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	Ha           *bool                                                 `json:"Ha,omitempty" xml:"Ha,omitempty"`
+	// example:
+	//
+	// 1629879567394
+	GmtCreate *int64 `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// example:
+	//
+	// 1629879567394
+	GmtModified *int64 `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	Ha          *bool  `json:"Ha,omitempty" xml:"Ha,omitempty"`
+	// example:
+	//
+	// ns-1
 	Namespace    *string                                               `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 	ResourceSpec *DescribeNamespacesResponseBodyNamespacesResourceSpec `json:"ResourceSpec,omitempty" xml:"ResourceSpec,omitempty" type:"Struct"`
 	ResourceUsed *DescribeNamespacesResponseBodyNamespacesResourceUsed `json:"ResourceUsed,omitempty" xml:"ResourceUsed,omitempty" type:"Struct"`
-	Status       *string                                               `json:"Status,omitempty" xml:"Status,omitempty"`
-	Tags         []*DescribeNamespacesResponseBodyNamespacesTags       `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// example:
+	//
+	// SUCCESS
+	Status *string                                         `json:"Status,omitempty" xml:"Status,omitempty"`
+	Tags   []*DescribeNamespacesResponseBodyNamespacesTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
 func (s DescribeNamespacesResponseBodyNamespaces) String() string {
@@ -1745,7 +2266,13 @@ func (s *DescribeNamespacesResponseBodyNamespaces) SetTags(v []*DescribeNamespac
 }
 
 type DescribeNamespacesResponseBodyNamespacesResourceSpec struct {
-	Cpu      *int32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	// example:
+	//
+	// 10
+	Cpu *int32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	// example:
+	//
+	// 40
 	MemoryGB *int32 `json:"MemoryGB,omitempty" xml:"MemoryGB,omitempty"`
 }
 
@@ -1768,8 +2295,14 @@ func (s *DescribeNamespacesResponseBodyNamespacesResourceSpec) SetMemoryGB(v int
 }
 
 type DescribeNamespacesResponseBodyNamespacesResourceUsed struct {
-	Cpu      *float32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
-	Cu       *float32 `json:"Cu,omitempty" xml:"Cu,omitempty"`
+	// example:
+	//
+	// 2
+	Cpu *float32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	Cu  *float32 `json:"Cu,omitempty" xml:"Cu,omitempty"`
+	// example:
+	//
+	// 4
 	MemoryGB *float32 `json:"MemoryGB,omitempty" xml:"MemoryGB,omitempty"`
 }
 
@@ -1797,7 +2330,13 @@ func (s *DescribeNamespacesResponseBodyNamespacesResourceUsed) SetMemoryGB(v flo
 }
 
 type DescribeNamespacesResponseBodyNamespacesTags struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// flink
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// test
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -1849,13 +2388,31 @@ func (s *DescribeNamespacesResponse) SetBody(v *DescribeNamespacesResponseBody) 
 }
 
 type DescribeSupportedRegionsResponseBody struct {
-	PageIndex  *int32                                         `json:"PageIndex,omitempty" xml:"PageIndex,omitempty"`
-	PageSize   *int32                                         `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Regions    []*DescribeSupportedRegionsResponseBodyRegions `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Repeated"`
-	RequestId  *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success    *bool                                          `json:"Success,omitempty" xml:"Success,omitempty"`
-	TotalCount *int64                                         `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	TotalPage  *int32                                         `json:"TotalPage,omitempty" xml:"TotalPage,omitempty"`
+	// example:
+	//
+	// 1
+	PageIndex *int32 `json:"PageIndex,omitempty" xml:"PageIndex,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32                                         `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Regions  []*DescribeSupportedRegionsResponseBodyRegions `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Repeated"`
+	// example:
+	//
+	// B21DC47E-8928-199A-9F32-36D45E4693B4
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 10
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// example:
+	//
+	// 2
+	TotalPage *int32 `json:"TotalPage,omitempty" xml:"TotalPage,omitempty"`
 }
 
 func (s DescribeSupportedRegionsResponseBody) String() string {
@@ -1902,7 +2459,13 @@ func (s *DescribeSupportedRegionsResponseBody) SetTotalPage(v int32) *DescribeSu
 }
 
 type DescribeSupportedRegionsResponseBodyRegions struct {
-	Region     *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// example:
+	//
+	// cn-beijing
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// example:
+	//
+	// 华北2 (北京)
 	RegionName *string `json:"RegionName,omitempty" xml:"RegionName,omitempty"`
 }
 
@@ -1955,7 +2518,10 @@ func (s *DescribeSupportedRegionsResponse) SetBody(v *DescribeSupportedRegionsRe
 
 type DescribeSupportedZonesRequest struct {
 	ArchitectureType *string `json:"ArchitectureType,omitempty" xml:"ArchitectureType,omitempty"`
-	Region           *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// example:
+	//
+	// cn-beijing
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
 }
 
 func (s DescribeSupportedZonesRequest) String() string {
@@ -1977,13 +2543,31 @@ func (s *DescribeSupportedZonesRequest) SetRegion(v string) *DescribeSupportedZo
 }
 
 type DescribeSupportedZonesResponseBody struct {
-	PageIndex  *int32    `json:"PageIndex,omitempty" xml:"PageIndex,omitempty"`
-	PageSize   *int32    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId  *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success    *bool     `json:"Success,omitempty" xml:"Success,omitempty"`
-	TotalCount *int64    `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	TotalPage  *int32    `json:"TotalPage,omitempty" xml:"TotalPage,omitempty"`
-	ZoneIds    []*string `json:"ZoneIds,omitempty" xml:"ZoneIds,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	PageIndex *int32 `json:"PageIndex,omitempty" xml:"PageIndex,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 23A9C718-DDAB-1696-B025-18FBC830F7C5
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 8
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// example:
+	//
+	// 1
+	TotalPage *int32    `json:"TotalPage,omitempty" xml:"TotalPage,omitempty"`
+	ZoneIds   []*string `json:"ZoneIds,omitempty" xml:"ZoneIds,omitempty" type:"Repeated"`
 }
 
 func (s DescribeSupportedZonesResponseBody) String() string {
@@ -2059,9 +2643,22 @@ func (s *DescribeSupportedZonesResponse) SetBody(v *DescribeSupportedZonesRespon
 }
 
 type ListTagResourcesRequest struct {
-	NextToken    *string                       `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	RegionId     *string                       `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceId   []*string                     `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 27AE00
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-beijing
+	RegionId   *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// vvpinstance
 	ResourceType *string                       `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	Tag          []*ListTagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
@@ -2100,7 +2697,13 @@ func (s *ListTagResourcesRequest) SetTag(v []*ListTagResourcesRequestTag) *ListT
 }
 
 type ListTagResourcesRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// test
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// tag
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -2123,9 +2726,21 @@ func (s *ListTagResourcesRequestTag) SetValue(v string) *ListTagResourcesRequest
 }
 
 type ListTagResourcesResponseBody struct {
-	NextToken    *string                                     `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	RequestId    *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success      *bool                                       `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 27AE00
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// example:
+	//
+	// 0E5D17CE-BD83-5DC9-8CD2-3C40C2F7A135
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 87AE00
 	TagReponseId *string                                     `json:"TagReponseId,omitempty" xml:"TagReponseId,omitempty"`
 	TagResources []*ListTagResourcesResponseBodyTagResources `json:"TagResources,omitempty" xml:"TagResources,omitempty" type:"Repeated"`
 }
@@ -2164,10 +2779,22 @@ func (s *ListTagResourcesResponseBody) SetTagResources(v []*ListTagResourcesResp
 }
 
 type ListTagResourcesResponseBodyTagResources struct {
-	ResourceId   *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// example:
+	//
+	// f-cn-tyts
+	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// example:
+	//
+	// vvpinstance
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	TagKey       *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
-	TagValue     *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
+	// example:
+	//
+	// test
+	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// example:
+	//
+	// tag
+	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 
 func (s ListTagResourcesResponseBodyTagResources) String() string {
@@ -2228,13 +2855,32 @@ func (s *ListTagResourcesResponse) SetBody(v *ListTagResourcesResponseBody) *Lis
 }
 
 type ModifyPrepayInstanceSpecRequest struct {
-	Ha             *bool                                          `json:"Ha,omitempty" xml:"Ha,omitempty"`
+	// if can be null:
+	// true
+	Ha *bool `json:"Ha,omitempty" xml:"Ha,omitempty"`
+	// if can be null:
+	// true
 	HaResourceSpec *ModifyPrepayInstanceSpecRequestHaResourceSpec `json:"HaResourceSpec,omitempty" xml:"HaResourceSpec,omitempty" type:"Struct"`
-	HaVSwitchIds   []*string                                      `json:"HaVSwitchIds,omitempty" xml:"HaVSwitchIds,omitempty" type:"Repeated"`
-	HaZoneId       *string                                        `json:"HaZoneId,omitempty" xml:"HaZoneId,omitempty"`
-	InstanceId     *string                                        `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Region         *string                                        `json:"Region,omitempty" xml:"Region,omitempty"`
-	ResourceSpec   *ModifyPrepayInstanceSpecRequestResourceSpec   `json:"ResourceSpec,omitempty" xml:"ResourceSpec,omitempty" type:"Struct"`
+	// if can be null:
+	// true
+	HaVSwitchIds []*string `json:"HaVSwitchIds,omitempty" xml:"HaVSwitchIds,omitempty" type:"Repeated"`
+	// if can be null:
+	// true
+	HaZoneId *string `json:"HaZoneId,omitempty" xml:"HaZoneId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// f-cn-wwo36qj4g06
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-beijing
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// This parameter is required.
+	ResourceSpec *ModifyPrepayInstanceSpecRequestResourceSpec `json:"ResourceSpec,omitempty" xml:"ResourceSpec,omitempty" type:"Struct"`
 }
 
 func (s ModifyPrepayInstanceSpecRequest) String() string {
@@ -2304,7 +2950,17 @@ func (s *ModifyPrepayInstanceSpecRequestHaResourceSpec) SetMemoryGB(v int32) *Mo
 }
 
 type ModifyPrepayInstanceSpecRequestResourceSpec struct {
-	Cpu      *int32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	Cpu *int32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 4
 	MemoryGB *int32 `json:"MemoryGB,omitempty" xml:"MemoryGB,omitempty"`
 }
 
@@ -2327,13 +2983,32 @@ func (s *ModifyPrepayInstanceSpecRequestResourceSpec) SetMemoryGB(v int32) *Modi
 }
 
 type ModifyPrepayInstanceSpecShrinkRequest struct {
-	Ha                   *bool   `json:"Ha,omitempty" xml:"Ha,omitempty"`
+	// if can be null:
+	// true
+	Ha *bool `json:"Ha,omitempty" xml:"Ha,omitempty"`
+	// if can be null:
+	// true
 	HaResourceSpecShrink *string `json:"HaResourceSpec,omitempty" xml:"HaResourceSpec,omitempty"`
-	HaVSwitchIdsShrink   *string `json:"HaVSwitchIds,omitempty" xml:"HaVSwitchIds,omitempty"`
-	HaZoneId             *string `json:"HaZoneId,omitempty" xml:"HaZoneId,omitempty"`
-	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Region               *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	ResourceSpecShrink   *string `json:"ResourceSpec,omitempty" xml:"ResourceSpec,omitempty"`
+	// if can be null:
+	// true
+	HaVSwitchIdsShrink *string `json:"HaVSwitchIds,omitempty" xml:"HaVSwitchIds,omitempty"`
+	// if can be null:
+	// true
+	HaZoneId *string `json:"HaZoneId,omitempty" xml:"HaZoneId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// f-cn-wwo36qj4g06
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-beijing
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// This parameter is required.
+	ResourceSpecShrink *string `json:"ResourceSpec,omitempty" xml:"ResourceSpec,omitempty"`
 }
 
 func (s ModifyPrepayInstanceSpecShrinkRequest) String() string {
@@ -2380,9 +3055,18 @@ func (s *ModifyPrepayInstanceSpecShrinkRequest) SetResourceSpecShrink(v string) 
 }
 
 type ModifyPrepayInstanceSpecResponseBody struct {
-	OrderId   *int64  `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// example:
+	//
+	// 210406354690749
+	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// example:
+	//
+	// 67F33190-946B-1105-B6A1-E2DF0426DD51
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ModifyPrepayInstanceSpecResponseBody) String() string {
@@ -2438,9 +3122,25 @@ func (s *ModifyPrepayInstanceSpecResponse) SetBody(v *ModifyPrepayInstanceSpecRe
 }
 
 type ModifyPrepayNamespaceSpecRequest struct {
-	InstanceId   *string                                       `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Namespace    *string                                       `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	Region       *string                                       `json:"Region,omitempty" xml:"Region,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// f-cn-wwo36qj4g06
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// di-593440219799842
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-shenzhen
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// This parameter is required.
 	ResourceSpec *ModifyPrepayNamespaceSpecRequestResourceSpec `json:"ResourceSpec,omitempty" xml:"ResourceSpec,omitempty" type:"Struct"`
 }
 
@@ -2473,7 +3173,17 @@ func (s *ModifyPrepayNamespaceSpecRequest) SetResourceSpec(v *ModifyPrepayNamesp
 }
 
 type ModifyPrepayNamespaceSpecRequestResourceSpec struct {
-	Cpu      *int32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	Cpu *int32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 4
 	MemoryGB *int32 `json:"MemoryGB,omitempty" xml:"MemoryGB,omitempty"`
 }
 
@@ -2496,9 +3206,25 @@ func (s *ModifyPrepayNamespaceSpecRequestResourceSpec) SetMemoryGB(v int32) *Mod
 }
 
 type ModifyPrepayNamespaceSpecShrinkRequest struct {
-	InstanceId         *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Namespace          *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	Region             *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// f-cn-wwo36qj4g06
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// di-593440219799842
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-shenzhen
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// This parameter is required.
 	ResourceSpecShrink *string `json:"ResourceSpec,omitempty" xml:"ResourceSpec,omitempty"`
 }
 
@@ -2531,8 +3257,14 @@ func (s *ModifyPrepayNamespaceSpecShrinkRequest) SetResourceSpecShrink(v string)
 }
 
 type ModifyPrepayNamespaceSpecResponseBody struct {
+	// example:
+	//
+	// 67F33190-946B-1105-B6A1-E2DF0426DD51
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ModifyPrepayNamespaceSpecResponseBody) String() string {
@@ -2583,12 +3315,38 @@ func (s *ModifyPrepayNamespaceSpecResponse) SetBody(v *ModifyPrepayNamespaceSpec
 }
 
 type QueryConvertInstancePriceRequest struct {
-	Duration               *int32                                                    `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	InstanceId             *string                                                   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	IsAutoRenew            *bool                                                     `json:"IsAutoRenew,omitempty" xml:"IsAutoRenew,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	Duration *int32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// f-cn-wwo36qj4g06
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// true
+	IsAutoRenew *bool `json:"IsAutoRenew,omitempty" xml:"IsAutoRenew,omitempty"`
+	// This parameter is required.
 	NamespaceResourceSpecs []*QueryConvertInstancePriceRequestNamespaceResourceSpecs `json:"NamespaceResourceSpecs,omitempty" xml:"NamespaceResourceSpecs,omitempty" type:"Repeated"`
-	PricingCycle           *string                                                   `json:"PricingCycle,omitempty" xml:"PricingCycle,omitempty"`
-	Region                 *string                                                   `json:"Region,omitempty" xml:"Region,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Month
+	PricingCycle *string `json:"PricingCycle,omitempty" xml:"PricingCycle,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-beijing
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
 }
 
 func (s QueryConvertInstancePriceRequest) String() string {
@@ -2630,7 +3388,13 @@ func (s *QueryConvertInstancePriceRequest) SetRegion(v string) *QueryConvertInst
 }
 
 type QueryConvertInstancePriceRequestNamespaceResourceSpecs struct {
-	Namespace    *string                                                             `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// lm-test-default
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// This parameter is required.
 	ResourceSpec *QueryConvertInstancePriceRequestNamespaceResourceSpecsResourceSpec `json:"ResourceSpec,omitempty" xml:"ResourceSpec,omitempty" type:"Struct"`
 }
 
@@ -2653,7 +3417,17 @@ func (s *QueryConvertInstancePriceRequestNamespaceResourceSpecs) SetResourceSpec
 }
 
 type QueryConvertInstancePriceRequestNamespaceResourceSpecsResourceSpec struct {
-	Cpu      *int32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 6
+	Cpu *int32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 24
 	MemoryGB *int32 `json:"MemoryGB,omitempty" xml:"MemoryGB,omitempty"`
 }
 
@@ -2676,12 +3450,38 @@ func (s *QueryConvertInstancePriceRequestNamespaceResourceSpecsResourceSpec) Set
 }
 
 type QueryConvertInstancePriceShrinkRequest struct {
-	Duration                     *int32  `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	InstanceId                   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	IsAutoRenew                  *bool   `json:"IsAutoRenew,omitempty" xml:"IsAutoRenew,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	Duration *int32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// f-cn-wwo36qj4g06
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// true
+	IsAutoRenew *bool `json:"IsAutoRenew,omitempty" xml:"IsAutoRenew,omitempty"`
+	// This parameter is required.
 	NamespaceResourceSpecsShrink *string `json:"NamespaceResourceSpecs,omitempty" xml:"NamespaceResourceSpecs,omitempty"`
-	PricingCycle                 *string `json:"PricingCycle,omitempty" xml:"PricingCycle,omitempty"`
-	Region                       *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Month
+	PricingCycle *string `json:"PricingCycle,omitempty" xml:"PricingCycle,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-beijing
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
 }
 
 func (s QueryConvertInstancePriceShrinkRequest) String() string {
@@ -2724,8 +3524,14 @@ func (s *QueryConvertInstancePriceShrinkRequest) SetRegion(v string) *QueryConve
 
 type QueryConvertInstancePriceResponseBody struct {
 	PriceInfo *QueryConvertInstancePriceResponseBodyPriceInfo `json:"PriceInfo,omitempty" xml:"PriceInfo,omitempty" type:"Struct"`
-	RequestId *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                                           `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 67F33190-946B-1105-B6A1-E2DF0426DD51
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s QueryConvertInstancePriceResponseBody) String() string {
@@ -2752,18 +3558,36 @@ func (s *QueryConvertInstancePriceResponseBody) SetSuccess(v bool) *QueryConvert
 }
 
 type QueryConvertInstancePriceResponseBodyPriceInfo struct {
-	Code               *string                                                             `json:"Code,omitempty" xml:"Code,omitempty"`
-	Currency           *string                                                             `json:"Currency,omitempty" xml:"Currency,omitempty"`
-	DepreciateInfo     *QueryConvertInstancePriceResponseBodyPriceInfoDepreciateInfo       `json:"DepreciateInfo,omitempty" xml:"DepreciateInfo,omitempty" type:"Struct"`
-	DiscountAmount     *float32                                                            `json:"DiscountAmount,omitempty" xml:"DiscountAmount,omitempty"`
-	IsContractActivity *bool                                                               `json:"IsContractActivity,omitempty" xml:"IsContractActivity,omitempty"`
+	// example:
+	//
+	// ORDER.INST_HAS_UNPAID_ORDER
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// CNY
+	Currency       *string                                                       `json:"Currency,omitempty" xml:"Currency,omitempty"`
+	DepreciateInfo *QueryConvertInstancePriceResponseBodyPriceInfoDepreciateInfo `json:"DepreciateInfo,omitempty" xml:"DepreciateInfo,omitempty" type:"Struct"`
+	// example:
+	//
+	// 655.2
+	DiscountAmount     *float32 `json:"DiscountAmount,omitempty" xml:"DiscountAmount,omitempty"`
+	IsContractActivity *bool    `json:"IsContractActivity,omitempty" xml:"IsContractActivity,omitempty"`
+	// example:
+	//
+	// 存在未支付订单，请先支付或取消原有订单
 	Message            *string                                                             `json:"Message,omitempty" xml:"Message,omitempty"`
 	OptionalPromotions []*QueryConvertInstancePriceResponseBodyPriceInfoOptionalPromotions `json:"OptionalPromotions,omitempty" xml:"OptionalPromotions,omitempty" type:"Repeated"`
-	OriginalAmount     *float32                                                            `json:"OriginalAmount,omitempty" xml:"OriginalAmount,omitempty"`
-	Rules              []*QueryConvertInstancePriceResponseBodyPriceInfoRules              `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
-	StandDiscountPrice *string                                                             `json:"StandDiscountPrice,omitempty" xml:"StandDiscountPrice,omitempty"`
-	StandPrice         *string                                                             `json:"StandPrice,omitempty" xml:"StandPrice,omitempty"`
-	TradeAmount        *float32                                                            `json:"TradeAmount,omitempty" xml:"TradeAmount,omitempty"`
+	// example:
+	//
+	// 4368
+	OriginalAmount     *float32                                               `json:"OriginalAmount,omitempty" xml:"OriginalAmount,omitempty"`
+	Rules              []*QueryConvertInstancePriceResponseBodyPriceInfoRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
+	StandDiscountPrice *string                                                `json:"StandDiscountPrice,omitempty" xml:"StandDiscountPrice,omitempty"`
+	StandPrice         *string                                                `json:"StandPrice,omitempty" xml:"StandPrice,omitempty"`
+	// example:
+	//
+	// 3712.8
+	TradeAmount *float32 `json:"TradeAmount,omitempty" xml:"TradeAmount,omitempty"`
 }
 
 func (s QueryConvertInstancePriceResponseBodyPriceInfo) String() string {
@@ -2882,10 +3706,22 @@ func (s *QueryConvertInstancePriceResponseBodyPriceInfoDepreciateInfo) SetStartT
 }
 
 type QueryConvertInstancePriceResponseBodyPriceInfoOptionalPromotions struct {
-	PromotionDesc     *string `json:"PromotionDesc,omitempty" xml:"PromotionDesc,omitempty"`
-	PromotionName     *string `json:"PromotionName,omitempty" xml:"PromotionName,omitempty"`
+	// example:
+	//
+	// ￥1,391.5 优惠券 (有效期至 03/23/2022)
+	PromotionDesc *string `json:"PromotionDesc,omitempty" xml:"PromotionDesc,omitempty"`
+	// example:
+	//
+	// ￥1,391.5 优惠券
+	PromotionName *string `json:"PromotionName,omitempty" xml:"PromotionName,omitempty"`
+	// example:
+	//
+	// 500011220010099
 	PromotionOptionNo *string `json:"PromotionOptionNo,omitempty" xml:"PromotionOptionNo,omitempty"`
-	Selected          *bool   `json:"Selected,omitempty" xml:"Selected,omitempty"`
+	// example:
+	//
+	// true
+	Selected *bool `json:"Selected,omitempty" xml:"Selected,omitempty"`
 }
 
 func (s QueryConvertInstancePriceResponseBodyPriceInfoOptionalPromotions) String() string {
@@ -2917,8 +3753,14 @@ func (s *QueryConvertInstancePriceResponseBodyPriceInfoOptionalPromotions) SetSe
 }
 
 type QueryConvertInstancePriceResponseBodyPriceInfoRules struct {
+	// example:
+	//
+	// 买满1年，立享官网价格8.5折优惠。
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	RuleId      *int64  `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	// example:
+	//
+	// 587
+	RuleId *int64 `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
 }
 
 func (s QueryConvertInstancePriceResponseBodyPriceInfoRules) String() string {
@@ -2969,23 +3811,56 @@ func (s *QueryConvertInstancePriceResponse) SetBody(v *QueryConvertInstancePrice
 }
 
 type QueryCreateInstancePriceRequest struct {
-	ArchitectureType *string                                        `json:"ArchitectureType,omitempty" xml:"ArchitectureType,omitempty"`
-	AutoRenew        *bool                                          `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
-	ChargeType       *string                                        `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	Duration         *int32                                         `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	Extra            *string                                        `json:"Extra,omitempty" xml:"Extra,omitempty"`
-	Ha               *bool                                          `json:"Ha,omitempty" xml:"Ha,omitempty"`
-	HaResourceSpec   *QueryCreateInstancePriceRequestHaResourceSpec `json:"HaResourceSpec,omitempty" xml:"HaResourceSpec,omitempty" type:"Struct"`
-	InstanceName     *string                                        `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	PricingCycle     *string                                        `json:"PricingCycle,omitempty" xml:"PricingCycle,omitempty"`
-	PromotionCode    *string                                        `json:"PromotionCode,omitempty" xml:"PromotionCode,omitempty"`
-	Region           *string                                        `json:"Region,omitempty" xml:"Region,omitempty"`
-	ResourceSpec     *QueryCreateInstancePriceRequestResourceSpec   `json:"ResourceSpec,omitempty" xml:"ResourceSpec,omitempty" type:"Struct"`
-	Storage          *QueryCreateInstancePriceRequestStorage        `json:"Storage,omitempty" xml:"Storage,omitempty" type:"Struct"`
-	UsePromotionCode *bool                                          `json:"UsePromotionCode,omitempty" xml:"UsePromotionCode,omitempty"`
-	VSwitchIds       []*string                                      `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty" type:"Repeated"`
-	VpcId            *string                                        `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	ZoneId           *string                                        `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	ArchitectureType *string `json:"ArchitectureType,omitempty" xml:"ArchitectureType,omitempty"`
+	// example:
+	//
+	// true
+	AutoRenew *bool `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// PRE
+	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	// example:
+	//
+	// 1
+	Duration *int32  `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	Extra    *string `json:"Extra,omitempty" xml:"Extra,omitempty"`
+	Ha       *bool   `json:"Ha,omitempty" xml:"Ha,omitempty"`
+	// if can be null:
+	// true
+	HaResourceSpec *QueryCreateInstancePriceRequestHaResourceSpec `json:"HaResourceSpec,omitempty" xml:"HaResourceSpec,omitempty" type:"Struct"`
+	// example:
+	//
+	// rtc-e2e-test-post
+	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// example:
+	//
+	// Month
+	PricingCycle *string `json:"PricingCycle,omitempty" xml:"PricingCycle,omitempty"`
+	// example:
+	//
+	// 500041860100636
+	PromotionCode *string `json:"PromotionCode,omitempty" xml:"PromotionCode,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-beijing
+	Region           *string                                      `json:"Region,omitempty" xml:"Region,omitempty"`
+	ResourceSpec     *QueryCreateInstancePriceRequestResourceSpec `json:"ResourceSpec,omitempty" xml:"ResourceSpec,omitempty" type:"Struct"`
+	Storage          *QueryCreateInstancePriceRequestStorage      `json:"Storage,omitempty" xml:"Storage,omitempty" type:"Struct"`
+	UsePromotionCode *bool                                        `json:"UsePromotionCode,omitempty" xml:"UsePromotionCode,omitempty"`
+	VSwitchIds       []*string                                    `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty" type:"Repeated"`
+	// example:
+	//
+	// vpc-2ze9xoh8qyt1rnxfmfcdi
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// example:
+	//
+	// cn-hangzhou-i
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s QueryCreateInstancePriceRequest) String() string {
@@ -3082,7 +3957,11 @@ func (s *QueryCreateInstancePriceRequest) SetZoneId(v string) *QueryCreateInstan
 }
 
 type QueryCreateInstancePriceRequestHaResourceSpec struct {
-	Cpu      *int32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	// if can be null:
+	// false
+	Cpu *int32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	// if can be null:
+	// false
 	MemoryGB *int32 `json:"MemoryGB,omitempty" xml:"MemoryGB,omitempty"`
 }
 
@@ -3105,7 +3984,13 @@ func (s *QueryCreateInstancePriceRequestHaResourceSpec) SetMemoryGB(v int32) *Qu
 }
 
 type QueryCreateInstancePriceRequestResourceSpec struct {
-	Cpu      *int32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	// example:
+	//
+	// 4
+	Cpu *int32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	// example:
+	//
+	// 16
 	MemoryGB *int32 `json:"MemoryGB,omitempty" xml:"MemoryGB,omitempty"`
 }
 
@@ -3145,6 +4030,9 @@ func (s *QueryCreateInstancePriceRequestStorage) SetOss(v *QueryCreateInstancePr
 }
 
 type QueryCreateInstancePriceRequestStorageOss struct {
+	// example:
+	//
+	// quicktracing
 	Bucket *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
 }
 
@@ -3162,23 +4050,56 @@ func (s *QueryCreateInstancePriceRequestStorageOss) SetBucket(v string) *QueryCr
 }
 
 type QueryCreateInstancePriceShrinkRequest struct {
-	ArchitectureType     *string `json:"ArchitectureType,omitempty" xml:"ArchitectureType,omitempty"`
-	AutoRenew            *bool   `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
-	ChargeType           *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	Duration             *int32  `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	Extra                *string `json:"Extra,omitempty" xml:"Extra,omitempty"`
-	Ha                   *bool   `json:"Ha,omitempty" xml:"Ha,omitempty"`
+	ArchitectureType *string `json:"ArchitectureType,omitempty" xml:"ArchitectureType,omitempty"`
+	// example:
+	//
+	// true
+	AutoRenew *bool `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// PRE
+	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	// example:
+	//
+	// 1
+	Duration *int32  `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	Extra    *string `json:"Extra,omitempty" xml:"Extra,omitempty"`
+	Ha       *bool   `json:"Ha,omitempty" xml:"Ha,omitempty"`
+	// if can be null:
+	// true
 	HaResourceSpecShrink *string `json:"HaResourceSpec,omitempty" xml:"HaResourceSpec,omitempty"`
-	InstanceName         *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	PricingCycle         *string `json:"PricingCycle,omitempty" xml:"PricingCycle,omitempty"`
-	PromotionCode        *string `json:"PromotionCode,omitempty" xml:"PromotionCode,omitempty"`
-	Region               *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	ResourceSpecShrink   *string `json:"ResourceSpec,omitempty" xml:"ResourceSpec,omitempty"`
-	StorageShrink        *string `json:"Storage,omitempty" xml:"Storage,omitempty"`
-	UsePromotionCode     *bool   `json:"UsePromotionCode,omitempty" xml:"UsePromotionCode,omitempty"`
-	VSwitchIdsShrink     *string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty"`
-	VpcId                *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	ZoneId               *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	// example:
+	//
+	// rtc-e2e-test-post
+	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// example:
+	//
+	// Month
+	PricingCycle *string `json:"PricingCycle,omitempty" xml:"PricingCycle,omitempty"`
+	// example:
+	//
+	// 500041860100636
+	PromotionCode *string `json:"PromotionCode,omitempty" xml:"PromotionCode,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-beijing
+	Region             *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	ResourceSpecShrink *string `json:"ResourceSpec,omitempty" xml:"ResourceSpec,omitempty"`
+	StorageShrink      *string `json:"Storage,omitempty" xml:"Storage,omitempty"`
+	UsePromotionCode   *bool   `json:"UsePromotionCode,omitempty" xml:"UsePromotionCode,omitempty"`
+	VSwitchIdsShrink   *string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty"`
+	// example:
+	//
+	// vpc-2ze9xoh8qyt1rnxfmfcdi
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// example:
+	//
+	// cn-hangzhou-i
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s QueryCreateInstancePriceShrinkRequest) String() string {
@@ -3276,8 +4197,11 @@ func (s *QueryCreateInstancePriceShrinkRequest) SetZoneId(v string) *QueryCreate
 
 type QueryCreateInstancePriceResponseBody struct {
 	PriceInfo *QueryCreateInstancePriceResponseBodyPriceInfo `json:"PriceInfo,omitempty" xml:"PriceInfo,omitempty" type:"Struct"`
-	RequestId *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                                          `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 67F33190-946B-1105-B6A1-E2DF0426DD51
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s QueryCreateInstancePriceResponseBody) String() string {
@@ -3304,18 +4228,36 @@ func (s *QueryCreateInstancePriceResponseBody) SetSuccess(v bool) *QueryCreateIn
 }
 
 type QueryCreateInstancePriceResponseBodyPriceInfo struct {
-	Code               *string                                                            `json:"Code,omitempty" xml:"Code,omitempty"`
-	Currency           *string                                                            `json:"Currency,omitempty" xml:"Currency,omitempty"`
-	DepreciateInfo     *QueryCreateInstancePriceResponseBodyPriceInfoDepreciateInfo       `json:"DepreciateInfo,omitempty" xml:"DepreciateInfo,omitempty" type:"Struct"`
-	DiscountAmount     *float32                                                           `json:"DiscountAmount,omitempty" xml:"DiscountAmount,omitempty"`
-	IsContractActivity *bool                                                              `json:"IsContractActivity,omitempty" xml:"IsContractActivity,omitempty"`
+	// example:
+	//
+	// ORDER.INST_HAS_UNPAID_ORDER
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// CNY
+	Currency       *string                                                      `json:"Currency,omitempty" xml:"Currency,omitempty"`
+	DepreciateInfo *QueryCreateInstancePriceResponseBodyPriceInfoDepreciateInfo `json:"DepreciateInfo,omitempty" xml:"DepreciateInfo,omitempty" type:"Struct"`
+	// example:
+	//
+	// 655.2
+	DiscountAmount     *float32 `json:"DiscountAmount,omitempty" xml:"DiscountAmount,omitempty"`
+	IsContractActivity *bool    `json:"IsContractActivity,omitempty" xml:"IsContractActivity,omitempty"`
+	// example:
+	//
+	// 存在未支付订单，请先支付或取消原有订单
 	Message            *string                                                            `json:"Message,omitempty" xml:"Message,omitempty"`
 	OptionalPromotions []*QueryCreateInstancePriceResponseBodyPriceInfoOptionalPromotions `json:"OptionalPromotions,omitempty" xml:"OptionalPromotions,omitempty" type:"Repeated"`
-	OriginalAmount     *float32                                                           `json:"OriginalAmount,omitempty" xml:"OriginalAmount,omitempty"`
-	Rules              []*QueryCreateInstancePriceResponseBodyPriceInfoRules              `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
-	StandDiscountPrice *string                                                            `json:"StandDiscountPrice,omitempty" xml:"StandDiscountPrice,omitempty"`
-	StandPrice         *string                                                            `json:"StandPrice,omitempty" xml:"StandPrice,omitempty"`
-	TradeAmount        *float32                                                           `json:"TradeAmount,omitempty" xml:"TradeAmount,omitempty"`
+	// example:
+	//
+	// 4368
+	OriginalAmount     *float32                                              `json:"OriginalAmount,omitempty" xml:"OriginalAmount,omitempty"`
+	Rules              []*QueryCreateInstancePriceResponseBodyPriceInfoRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
+	StandDiscountPrice *string                                               `json:"StandDiscountPrice,omitempty" xml:"StandDiscountPrice,omitempty"`
+	StandPrice         *string                                               `json:"StandPrice,omitempty" xml:"StandPrice,omitempty"`
+	// example:
+	//
+	// 3712.8
+	TradeAmount *float32 `json:"TradeAmount,omitempty" xml:"TradeAmount,omitempty"`
 }
 
 func (s QueryCreateInstancePriceResponseBodyPriceInfo) String() string {
@@ -3434,10 +4376,22 @@ func (s *QueryCreateInstancePriceResponseBodyPriceInfoDepreciateInfo) SetStartTi
 }
 
 type QueryCreateInstancePriceResponseBodyPriceInfoOptionalPromotions struct {
-	PromotionDesc     *string `json:"PromotionDesc,omitempty" xml:"PromotionDesc,omitempty"`
-	PromotionName     *string `json:"PromotionName,omitempty" xml:"PromotionName,omitempty"`
+	// example:
+	//
+	// ￥1,391.5 优惠券 (有效期至 03/23/2022)
+	PromotionDesc *string `json:"PromotionDesc,omitempty" xml:"PromotionDesc,omitempty"`
+	// example:
+	//
+	// ￥1,391.5 优惠券
+	PromotionName *string `json:"PromotionName,omitempty" xml:"PromotionName,omitempty"`
+	// example:
+	//
+	// 500011220010099
 	PromotionOptionNo *string `json:"PromotionOptionNo,omitempty" xml:"PromotionOptionNo,omitempty"`
-	Selected          *bool   `json:"Selected,omitempty" xml:"Selected,omitempty"`
+	// example:
+	//
+	// true
+	Selected *bool `json:"Selected,omitempty" xml:"Selected,omitempty"`
 }
 
 func (s QueryCreateInstancePriceResponseBodyPriceInfoOptionalPromotions) String() string {
@@ -3469,8 +4423,14 @@ func (s *QueryCreateInstancePriceResponseBodyPriceInfoOptionalPromotions) SetSel
 }
 
 type QueryCreateInstancePriceResponseBodyPriceInfoRules struct {
+	// example:
+	//
+	// 买满1年，立享官网价格8.5折优惠。
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	RuleId      *int64  `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	// example:
+	//
+	// 587
+	RuleId *int64 `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
 }
 
 func (s QueryCreateInstancePriceResponseBodyPriceInfoRules) String() string {
@@ -3521,13 +4481,30 @@ func (s *QueryCreateInstancePriceResponse) SetBody(v *QueryCreateInstancePriceRe
 }
 
 type QueryModifyInstancePriceRequest struct {
-	Ha             *bool                                          `json:"Ha,omitempty" xml:"Ha,omitempty"`
+	Ha *bool `json:"Ha,omitempty" xml:"Ha,omitempty"`
+	// if can be null:
+	// true
 	HaResourceSpec *QueryModifyInstancePriceRequestHaResourceSpec `json:"HaResourceSpec,omitempty" xml:"HaResourceSpec,omitempty" type:"Struct"`
-	HaVSwitchIds   []*string                                      `json:"HaVSwitchIds,omitempty" xml:"HaVSwitchIds,omitempty" type:"Repeated"`
-	HaZoneId       *string                                        `json:"HaZoneId,omitempty" xml:"HaZoneId,omitempty"`
-	InstanceId     *string                                        `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Region         *string                                        `json:"Region,omitempty" xml:"Region,omitempty"`
-	ResourceSpec   *QueryModifyInstancePriceRequestResourceSpec   `json:"ResourceSpec,omitempty" xml:"ResourceSpec,omitempty" type:"Struct"`
+	// if can be null:
+	// true
+	HaVSwitchIds []*string `json:"HaVSwitchIds,omitempty" xml:"HaVSwitchIds,omitempty" type:"Repeated"`
+	// if can be null:
+	// true
+	HaZoneId *string `json:"HaZoneId,omitempty" xml:"HaZoneId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// f-cn-wwo36qj4g06
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-beijing
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// This parameter is required.
+	ResourceSpec *QueryModifyInstancePriceRequestResourceSpec `json:"ResourceSpec,omitempty" xml:"ResourceSpec,omitempty" type:"Struct"`
 }
 
 func (s QueryModifyInstancePriceRequest) String() string {
@@ -3597,7 +4574,17 @@ func (s *QueryModifyInstancePriceRequestHaResourceSpec) SetMemoryGB(v int32) *Qu
 }
 
 type QueryModifyInstancePriceRequestResourceSpec struct {
-	Cpu      *int32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10
+	Cpu *int32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 40
 	MemoryGB *int32 `json:"MemoryGB,omitempty" xml:"MemoryGB,omitempty"`
 }
 
@@ -3620,13 +4607,30 @@ func (s *QueryModifyInstancePriceRequestResourceSpec) SetMemoryGB(v int32) *Quer
 }
 
 type QueryModifyInstancePriceShrinkRequest struct {
-	Ha                   *bool   `json:"Ha,omitempty" xml:"Ha,omitempty"`
+	Ha *bool `json:"Ha,omitempty" xml:"Ha,omitempty"`
+	// if can be null:
+	// true
 	HaResourceSpecShrink *string `json:"HaResourceSpec,omitempty" xml:"HaResourceSpec,omitempty"`
-	HaVSwitchIdsShrink   *string `json:"HaVSwitchIds,omitempty" xml:"HaVSwitchIds,omitempty"`
-	HaZoneId             *string `json:"HaZoneId,omitempty" xml:"HaZoneId,omitempty"`
-	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Region               *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	ResourceSpecShrink   *string `json:"ResourceSpec,omitempty" xml:"ResourceSpec,omitempty"`
+	// if can be null:
+	// true
+	HaVSwitchIdsShrink *string `json:"HaVSwitchIds,omitempty" xml:"HaVSwitchIds,omitempty"`
+	// if can be null:
+	// true
+	HaZoneId *string `json:"HaZoneId,omitempty" xml:"HaZoneId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// f-cn-wwo36qj4g06
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-beijing
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// This parameter is required.
+	ResourceSpecShrink *string `json:"ResourceSpec,omitempty" xml:"ResourceSpec,omitempty"`
 }
 
 func (s QueryModifyInstancePriceShrinkRequest) String() string {
@@ -3674,8 +4678,14 @@ func (s *QueryModifyInstancePriceShrinkRequest) SetResourceSpecShrink(v string) 
 
 type QueryModifyInstancePriceResponseBody struct {
 	PriceInfo *QueryModifyInstancePriceResponseBodyPriceInfo `json:"PriceInfo,omitempty" xml:"PriceInfo,omitempty" type:"Struct"`
-	RequestId *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                                          `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 67F33190-946B-1105-B6A1-E2DF0426DD51
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s QueryModifyInstancePriceResponseBody) String() string {
@@ -3702,18 +4712,36 @@ func (s *QueryModifyInstancePriceResponseBody) SetSuccess(v bool) *QueryModifyIn
 }
 
 type QueryModifyInstancePriceResponseBodyPriceInfo struct {
-	Code               *string                                                            `json:"Code,omitempty" xml:"Code,omitempty"`
-	Currency           *string                                                            `json:"Currency,omitempty" xml:"Currency,omitempty"`
-	DepreciateInfo     *QueryModifyInstancePriceResponseBodyPriceInfoDepreciateInfo       `json:"DepreciateInfo,omitempty" xml:"DepreciateInfo,omitempty" type:"Struct"`
-	DiscountAmount     *float32                                                           `json:"DiscountAmount,omitempty" xml:"DiscountAmount,omitempty"`
-	IsContractActivity *bool                                                              `json:"IsContractActivity,omitempty" xml:"IsContractActivity,omitempty"`
+	// example:
+	//
+	// ORDER.INST_HAS_UNPAID_ORDER
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// CNY
+	Currency       *string                                                      `json:"Currency,omitempty" xml:"Currency,omitempty"`
+	DepreciateInfo *QueryModifyInstancePriceResponseBodyPriceInfoDepreciateInfo `json:"DepreciateInfo,omitempty" xml:"DepreciateInfo,omitempty" type:"Struct"`
+	// example:
+	//
+	// 655.2
+	DiscountAmount     *float32 `json:"DiscountAmount,omitempty" xml:"DiscountAmount,omitempty"`
+	IsContractActivity *bool    `json:"IsContractActivity,omitempty" xml:"IsContractActivity,omitempty"`
+	// example:
+	//
+	// 存在未支付订单，请先支付或取消原有订单
 	Message            *string                                                            `json:"Message,omitempty" xml:"Message,omitempty"`
 	OptionalPromotions []*QueryModifyInstancePriceResponseBodyPriceInfoOptionalPromotions `json:"OptionalPromotions,omitempty" xml:"OptionalPromotions,omitempty" type:"Repeated"`
-	OriginalAmount     *float32                                                           `json:"OriginalAmount,omitempty" xml:"OriginalAmount,omitempty"`
-	Rules              []*QueryModifyInstancePriceResponseBodyPriceInfoRules              `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
-	StandDiscountPrice *string                                                            `json:"StandDiscountPrice,omitempty" xml:"StandDiscountPrice,omitempty"`
-	StandPrice         *string                                                            `json:"StandPrice,omitempty" xml:"StandPrice,omitempty"`
-	TradeAmount        *float32                                                           `json:"TradeAmount,omitempty" xml:"TradeAmount,omitempty"`
+	// example:
+	//
+	// 4368
+	OriginalAmount     *float32                                              `json:"OriginalAmount,omitempty" xml:"OriginalAmount,omitempty"`
+	Rules              []*QueryModifyInstancePriceResponseBodyPriceInfoRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
+	StandDiscountPrice *string                                               `json:"StandDiscountPrice,omitempty" xml:"StandDiscountPrice,omitempty"`
+	StandPrice         *string                                               `json:"StandPrice,omitempty" xml:"StandPrice,omitempty"`
+	// example:
+	//
+	// 3712.8
+	TradeAmount *float32 `json:"TradeAmount,omitempty" xml:"TradeAmount,omitempty"`
 }
 
 func (s QueryModifyInstancePriceResponseBodyPriceInfo) String() string {
@@ -3832,10 +4860,22 @@ func (s *QueryModifyInstancePriceResponseBodyPriceInfoDepreciateInfo) SetStartTi
 }
 
 type QueryModifyInstancePriceResponseBodyPriceInfoOptionalPromotions struct {
-	PromotionDesc     *string `json:"PromotionDesc,omitempty" xml:"PromotionDesc,omitempty"`
-	PromotionName     *string `json:"PromotionName,omitempty" xml:"PromotionName,omitempty"`
+	// example:
+	//
+	// ￥1,391.5 优惠券 (有效期至 03/23/2022)
+	PromotionDesc *string `json:"PromotionDesc,omitempty" xml:"PromotionDesc,omitempty"`
+	// example:
+	//
+	// ￥1,391.5 优惠券
+	PromotionName *string `json:"PromotionName,omitempty" xml:"PromotionName,omitempty"`
+	// example:
+	//
+	// 500011220010099
 	PromotionOptionNo *string `json:"PromotionOptionNo,omitempty" xml:"PromotionOptionNo,omitempty"`
-	Selected          *bool   `json:"Selected,omitempty" xml:"Selected,omitempty"`
+	// example:
+	//
+	// true
+	Selected *bool `json:"Selected,omitempty" xml:"Selected,omitempty"`
 }
 
 func (s QueryModifyInstancePriceResponseBodyPriceInfoOptionalPromotions) String() string {
@@ -3867,8 +4907,14 @@ func (s *QueryModifyInstancePriceResponseBodyPriceInfoOptionalPromotions) SetSel
 }
 
 type QueryModifyInstancePriceResponseBodyPriceInfoRules struct {
+	// example:
+	//
+	// 买满1年，立享官网价格8.5折优惠。
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	RuleId      *int64  `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	// example:
+	//
+	// 587
+	RuleId *int64 `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
 }
 
 func (s QueryModifyInstancePriceResponseBodyPriceInfoRules) String() string {
@@ -3919,10 +4965,30 @@ func (s *QueryModifyInstancePriceResponse) SetBody(v *QueryModifyInstancePriceRe
 }
 
 type QueryRenewInstancePriceRequest struct {
-	Duration     *int32  `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	Duration *int32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// sc_flinkserverless_public_cn-7e22ae5sess
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Month
 	PricingCycle *string `json:"PricingCycle,omitempty" xml:"PricingCycle,omitempty"`
-	Region       *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-beijing
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
 }
 
 func (s QueryRenewInstancePriceRequest) String() string {
@@ -3955,8 +5021,14 @@ func (s *QueryRenewInstancePriceRequest) SetRegion(v string) *QueryRenewInstance
 
 type QueryRenewInstancePriceResponseBody struct {
 	PriceInfo *QueryRenewInstancePriceResponseBodyPriceInfo `json:"PriceInfo,omitempty" xml:"PriceInfo,omitempty" type:"Struct"`
-	RequestId *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                                         `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 67F33190-946B-1105-B6A1-E2DF0426DD51
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s QueryRenewInstancePriceResponseBody) String() string {
@@ -3983,18 +5055,36 @@ func (s *QueryRenewInstancePriceResponseBody) SetSuccess(v bool) *QueryRenewInst
 }
 
 type QueryRenewInstancePriceResponseBodyPriceInfo struct {
-	Code               *string                                                           `json:"Code,omitempty" xml:"Code,omitempty"`
-	Currency           *string                                                           `json:"Currency,omitempty" xml:"Currency,omitempty"`
-	DepreciateInfo     *QueryRenewInstancePriceResponseBodyPriceInfoDepreciateInfo       `json:"DepreciateInfo,omitempty" xml:"DepreciateInfo,omitempty" type:"Struct"`
-	DiscountAmount     *float32                                                          `json:"DiscountAmount,omitempty" xml:"DiscountAmount,omitempty"`
-	IsContractActivity *bool                                                             `json:"IsContractActivity,omitempty" xml:"IsContractActivity,omitempty"`
+	// example:
+	//
+	// ORDER.INST_HAS_UNPAID_ORDER
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// CNY
+	Currency       *string                                                     `json:"Currency,omitempty" xml:"Currency,omitempty"`
+	DepreciateInfo *QueryRenewInstancePriceResponseBodyPriceInfoDepreciateInfo `json:"DepreciateInfo,omitempty" xml:"DepreciateInfo,omitempty" type:"Struct"`
+	// example:
+	//
+	// 655.2
+	DiscountAmount     *float32 `json:"DiscountAmount,omitempty" xml:"DiscountAmount,omitempty"`
+	IsContractActivity *bool    `json:"IsContractActivity,omitempty" xml:"IsContractActivity,omitempty"`
+	// example:
+	//
+	// 存在未支付订单，请先支付或取消原有订单
 	Message            *string                                                           `json:"Message,omitempty" xml:"Message,omitempty"`
 	OptionalPromotions []*QueryRenewInstancePriceResponseBodyPriceInfoOptionalPromotions `json:"OptionalPromotions,omitempty" xml:"OptionalPromotions,omitempty" type:"Repeated"`
-	OriginalAmount     *float32                                                          `json:"OriginalAmount,omitempty" xml:"OriginalAmount,omitempty"`
-	Rules              []*QueryRenewInstancePriceResponseBodyPriceInfoRules              `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
-	StandDiscountPrice *string                                                           `json:"StandDiscountPrice,omitempty" xml:"StandDiscountPrice,omitempty"`
-	StandPrice         *string                                                           `json:"StandPrice,omitempty" xml:"StandPrice,omitempty"`
-	TradeAmount        *float32                                                          `json:"TradeAmount,omitempty" xml:"TradeAmount,omitempty"`
+	// example:
+	//
+	// 4368
+	OriginalAmount     *float32                                             `json:"OriginalAmount,omitempty" xml:"OriginalAmount,omitempty"`
+	Rules              []*QueryRenewInstancePriceResponseBodyPriceInfoRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
+	StandDiscountPrice *string                                              `json:"StandDiscountPrice,omitempty" xml:"StandDiscountPrice,omitempty"`
+	StandPrice         *string                                              `json:"StandPrice,omitempty" xml:"StandPrice,omitempty"`
+	// example:
+	//
+	// 3712.8
+	TradeAmount *float32 `json:"TradeAmount,omitempty" xml:"TradeAmount,omitempty"`
 }
 
 func (s QueryRenewInstancePriceResponseBodyPriceInfo) String() string {
@@ -4113,10 +5203,22 @@ func (s *QueryRenewInstancePriceResponseBodyPriceInfoDepreciateInfo) SetStartTim
 }
 
 type QueryRenewInstancePriceResponseBodyPriceInfoOptionalPromotions struct {
-	PromotionDesc     *string `json:"PromotionDesc,omitempty" xml:"PromotionDesc,omitempty"`
-	PromotionName     *string `json:"PromotionName,omitempty" xml:"PromotionName,omitempty"`
+	// example:
+	//
+	// ￥1,391.5 优惠券 (有效期至 03/23/2022)
+	PromotionDesc *string `json:"PromotionDesc,omitempty" xml:"PromotionDesc,omitempty"`
+	// example:
+	//
+	// ￥1,391.5 优惠券
+	PromotionName *string `json:"PromotionName,omitempty" xml:"PromotionName,omitempty"`
+	// example:
+	//
+	// 500011220010099
 	PromotionOptionNo *string `json:"PromotionOptionNo,omitempty" xml:"PromotionOptionNo,omitempty"`
-	Selected          *bool   `json:"Selected,omitempty" xml:"Selected,omitempty"`
+	// example:
+	//
+	// true
+	Selected *bool `json:"Selected,omitempty" xml:"Selected,omitempty"`
 }
 
 func (s QueryRenewInstancePriceResponseBodyPriceInfoOptionalPromotions) String() string {
@@ -4148,8 +5250,14 @@ func (s *QueryRenewInstancePriceResponseBodyPriceInfoOptionalPromotions) SetSele
 }
 
 type QueryRenewInstancePriceResponseBodyPriceInfoRules struct {
+	// example:
+	//
+	// 买满1年，立享官网价格8.5折优惠。
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	RuleId      *int64  `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	// example:
+	//
+	// 587
+	RuleId *int64 `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
 }
 
 func (s QueryRenewInstancePriceResponseBodyPriceInfoRules) String() string {
@@ -4200,10 +5308,30 @@ func (s *QueryRenewInstancePriceResponse) SetBody(v *QueryRenewInstancePriceResp
 }
 
 type RenewInstanceRequest struct {
-	Duration     *int32  `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	Duration *int32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// sc_flinkserverless_public_cn-7e22ae5sess
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Month
 	PricingCycle *string `json:"PricingCycle,omitempty" xml:"PricingCycle,omitempty"`
-	Region       *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-beijing
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
 }
 
 func (s RenewInstanceRequest) String() string {
@@ -4236,9 +5364,19 @@ func (s *RenewInstanceRequest) SetRegion(v string) *RenewInstanceRequest {
 
 type RenewInstanceResponseBody struct {
 	// orderId
-	OrderId   *int64  `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	//
+	// example:
+	//
+	// 210406354690749
+	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// example:
+	//
+	// 67F33190-946B-1105-B6A1-E2DF0426DD51
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s RenewInstanceResponseBody) String() string {
@@ -4294,10 +5432,22 @@ func (s *RenewInstanceResponse) SetBody(v *RenewInstanceResponseBody) *RenewInst
 }
 
 type TagResourcesRequest struct {
-	RegionId     *string                   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceId   []*string                 `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
-	ResourceType *string                   `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	Tag          []*TagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-beijing
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// This parameter is required.
+	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// vvpinstance
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// This parameter is required.
+	Tag []*TagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s TagResourcesRequest) String() string {
@@ -4329,7 +5479,13 @@ func (s *TagResourcesRequest) SetTag(v []*TagResourcesRequestTag) *TagResourcesR
 }
 
 type TagResourcesRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// test
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// tag
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -4352,10 +5508,25 @@ func (s *TagResourcesRequestTag) SetValue(v string) *TagResourcesRequestTag {
 }
 
 type TagResourcesResponseBody struct {
-	Code          *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message       *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success       *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// ""
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 67F33190-946B-1105-B6A1-E2DF0426DD51
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 154FT
 	TagResponseId *string `json:"TagResponseId,omitempty" xml:"TagResponseId,omitempty"`
 }
 
@@ -4422,9 +5593,23 @@ func (s *TagResourcesResponse) SetBody(v *TagResourcesResponseBody) *TagResource
 }
 
 type UntagResourcesRequest struct {
-	All          *bool     `json:"All,omitempty" xml:"All,omitempty"`
-	RegionId     *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceId   []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
+	// example:
+	//
+	// false
+	All *bool `json:"All,omitempty" xml:"All,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-beijing
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// This parameter is required.
+	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// vvpinstance
 	ResourceType *string   `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	TagKey       []*string `json:"TagKey,omitempty" xml:"TagKey,omitempty" type:"Repeated"`
 }
@@ -4463,10 +5648,25 @@ func (s *UntagResourcesRequest) SetTagKey(v []*string) *UntagResourcesRequest {
 }
 
 type UntagResourcesResponseBody struct {
-	Code          *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message       *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success       *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// ""
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// F59597FC-CD05-536D-B75B-6F45B8CC8539
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 154FT
 	TagResponseId *string `json:"TagResponseId,omitempty" xml:"TagResponseId,omitempty"`
 }
 
@@ -4579,6 +5779,15 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
+// Summary:
+//
+// 按量付费转包年包月
+//
+// @param tmpReq - ConvertInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ConvertInstanceResponse
 func (client *Client) ConvertInstanceWithOptions(tmpReq *ConvertInstanceRequest, runtime *util.RuntimeOptions) (_result *ConvertInstanceResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -4638,6 +5847,13 @@ func (client *Client) ConvertInstanceWithOptions(tmpReq *ConvertInstanceRequest,
 	return _result, _err
 }
 
+// Summary:
+//
+// 按量付费转包年包月
+//
+// @param request - ConvertInstanceRequest
+//
+// @return ConvertInstanceResponse
 func (client *Client) ConvertInstance(request *ConvertInstanceRequest) (_result *ConvertInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ConvertInstanceResponse{}
@@ -4649,6 +5865,15 @@ func (client *Client) ConvertInstance(request *ConvertInstanceRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建实例
+//
+// @param tmpReq - CreateInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateInstanceResponse
 func (client *Client) CreateInstanceWithOptions(tmpReq *CreateInstanceRequest, runtime *util.RuntimeOptions) (_result *CreateInstanceResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -4792,6 +6017,13 @@ func (client *Client) CreateInstanceWithOptions(tmpReq *CreateInstanceRequest, r
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建实例
+//
+// @param request - CreateInstanceRequest
+//
+// @return CreateInstanceResponse
 func (client *Client) CreateInstance(request *CreateInstanceRequest) (_result *CreateInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateInstanceResponse{}
@@ -4803,6 +6035,15 @@ func (client *Client) CreateInstance(request *CreateInstanceRequest) (_result *C
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建命名空间
+//
+// @param tmpReq - CreateNamespaceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateNamespaceResponse
 func (client *Client) CreateNamespaceWithOptions(tmpReq *CreateNamespaceRequest, runtime *util.RuntimeOptions) (_result *CreateNamespaceResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -4858,6 +6099,13 @@ func (client *Client) CreateNamespaceWithOptions(tmpReq *CreateNamespaceRequest,
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建命名空间
+//
+// @param request - CreateNamespaceRequest
+//
+// @return CreateNamespaceResponse
 func (client *Client) CreateNamespace(request *CreateNamespaceRequest) (_result *CreateNamespaceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateNamespaceResponse{}
@@ -4869,6 +6117,15 @@ func (client *Client) CreateNamespace(request *CreateNamespaceRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// 释放按量付费的实例
+//
+// @param request - DeleteInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteInstanceResponse
 func (client *Client) DeleteInstanceWithOptions(request *DeleteInstanceRequest, runtime *util.RuntimeOptions) (_result *DeleteInstanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4906,6 +6163,13 @@ func (client *Client) DeleteInstanceWithOptions(request *DeleteInstanceRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// 释放按量付费的实例
+//
+// @param request - DeleteInstanceRequest
+//
+// @return DeleteInstanceResponse
 func (client *Client) DeleteInstance(request *DeleteInstanceRequest) (_result *DeleteInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteInstanceResponse{}
@@ -4917,6 +6181,15 @@ func (client *Client) DeleteInstance(request *DeleteInstanceRequest) (_result *D
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除namespace
+//
+// @param request - DeleteNamespaceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteNamespaceResponse
 func (client *Client) DeleteNamespaceWithOptions(request *DeleteNamespaceRequest, runtime *util.RuntimeOptions) (_result *DeleteNamespaceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4958,6 +6231,13 @@ func (client *Client) DeleteNamespaceWithOptions(request *DeleteNamespaceRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除namespace
+//
+// @param request - DeleteNamespaceRequest
+//
+// @return DeleteNamespaceResponse
 func (client *Client) DeleteNamespace(request *DeleteNamespaceRequest) (_result *DeleteNamespaceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteNamespaceResponse{}
@@ -4969,6 +6249,15 @@ func (client *Client) DeleteNamespace(request *DeleteNamespaceRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// instance列表
+//
+// @param tmpReq - DescribeInstancesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeInstancesResponse
 func (client *Client) DescribeInstancesWithOptions(tmpReq *DescribeInstancesRequest, runtime *util.RuntimeOptions) (_result *DescribeInstancesResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -5004,6 +6293,13 @@ func (client *Client) DescribeInstancesWithOptions(tmpReq *DescribeInstancesRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// instance列表
+//
+// @param request - DescribeInstancesRequest
+//
+// @return DescribeInstancesResponse
 func (client *Client) DescribeInstances(request *DescribeInstancesRequest) (_result *DescribeInstancesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeInstancesResponse{}
@@ -5015,6 +6311,15 @@ func (client *Client) DescribeInstances(request *DescribeInstancesRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// namespace列表
+//
+// @param tmpReq - DescribeNamespacesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeNamespacesResponse
 func (client *Client) DescribeNamespacesWithOptions(tmpReq *DescribeNamespacesRequest, runtime *util.RuntimeOptions) (_result *DescribeNamespacesResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -5050,6 +6355,13 @@ func (client *Client) DescribeNamespacesWithOptions(tmpReq *DescribeNamespacesRe
 	return _result, _err
 }
 
+// Summary:
+//
+// namespace列表
+//
+// @param request - DescribeNamespacesRequest
+//
+// @return DescribeNamespacesResponse
 func (client *Client) DescribeNamespaces(request *DescribeNamespacesRequest) (_result *DescribeNamespacesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeNamespacesResponse{}
@@ -5061,6 +6373,15 @@ func (client *Client) DescribeNamespaces(request *DescribeNamespacesRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取支持的region列表
+//
+// @param request - DescribeSupportedRegionsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeSupportedRegionsResponse
 func (client *Client) DescribeSupportedRegionsWithOptions(runtime *util.RuntimeOptions) (_result *DescribeSupportedRegionsResponse, _err error) {
 	req := &openapi.OpenApiRequest{}
 	params := &openapi.Params{
@@ -5083,6 +6404,11 @@ func (client *Client) DescribeSupportedRegionsWithOptions(runtime *util.RuntimeO
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取支持的region列表
+//
+// @return DescribeSupportedRegionsResponse
 func (client *Client) DescribeSupportedRegions() (_result *DescribeSupportedRegionsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeSupportedRegionsResponse{}
@@ -5094,6 +6420,15 @@ func (client *Client) DescribeSupportedRegions() (_result *DescribeSupportedRegi
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取支持的zoneId列表
+//
+// @param request - DescribeSupportedZonesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeSupportedZonesResponse
 func (client *Client) DescribeSupportedZonesWithOptions(request *DescribeSupportedZonesRequest, runtime *util.RuntimeOptions) (_result *DescribeSupportedZonesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5123,6 +6458,13 @@ func (client *Client) DescribeSupportedZonesWithOptions(request *DescribeSupport
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取支持的zoneId列表
+//
+// @param request - DescribeSupportedZonesRequest
+//
+// @return DescribeSupportedZonesResponse
 func (client *Client) DescribeSupportedZones(request *DescribeSupportedZonesRequest) (_result *DescribeSupportedZonesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeSupportedZonesResponse{}
@@ -5134,6 +6476,15 @@ func (client *Client) DescribeSupportedZones(request *DescribeSupportedZonesRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// 列举flinkasi标签
+//
+// @param request - ListTagResourcesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListTagResourcesResponse
 func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesRequest, runtime *util.RuntimeOptions) (_result *ListTagResourcesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5183,6 +6534,13 @@ func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesReque
 	return _result, _err
 }
 
+// Summary:
+//
+// 列举flinkasi标签
+//
+// @param request - ListTagResourcesRequest
+//
+// @return ListTagResourcesResponse
 func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_result *ListTagResourcesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListTagResourcesResponse{}
@@ -5194,13 +6552,17 @@ func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_resul
 	return _result, _err
 }
 
-/**
- * @deprecated : ModifyPrepayInstanceSpec is deprecated, please use foasconsole::2021-10-28::ModifyInstanceSpec instead.
- *
- * @param tmpReq ModifyPrepayInstanceSpecRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return ModifyPrepayInstanceSpecResponse
- */
+// Deprecated: OpenAPI ModifyPrepayInstanceSpec is deprecated, please use foasconsole::2021-10-28::ModifyInstanceSpec instead.
+//
+// Summary:
+//
+// 扩容/缩容
+//
+// @param tmpReq - ModifyPrepayInstanceSpecRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyPrepayInstanceSpecResponse
 // Deprecated
 func (client *Client) ModifyPrepayInstanceSpecWithOptions(tmpReq *ModifyPrepayInstanceSpecRequest, runtime *util.RuntimeOptions) (_result *ModifyPrepayInstanceSpecResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
@@ -5273,12 +6635,15 @@ func (client *Client) ModifyPrepayInstanceSpecWithOptions(tmpReq *ModifyPrepayIn
 	return _result, _err
 }
 
-/**
- * @deprecated : ModifyPrepayInstanceSpec is deprecated, please use foasconsole::2021-10-28::ModifyInstanceSpec instead.
- *
- * @param request ModifyPrepayInstanceSpecRequest
- * @return ModifyPrepayInstanceSpecResponse
- */
+// Deprecated: OpenAPI ModifyPrepayInstanceSpec is deprecated, please use foasconsole::2021-10-28::ModifyInstanceSpec instead.
+//
+// Summary:
+//
+// 扩容/缩容
+//
+// @param request - ModifyPrepayInstanceSpecRequest
+//
+// @return ModifyPrepayInstanceSpecResponse
 // Deprecated
 func (client *Client) ModifyPrepayInstanceSpec(request *ModifyPrepayInstanceSpecRequest) (_result *ModifyPrepayInstanceSpecResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
@@ -5291,13 +6656,17 @@ func (client *Client) ModifyPrepayInstanceSpec(request *ModifyPrepayInstanceSpec
 	return _result, _err
 }
 
-/**
- * @deprecated : ModifyPrepayNamespaceSpec is deprecated, please use foasconsole::2021-10-28::ModifyNamespaceSpec instead.
- *
- * @param tmpReq ModifyPrepayNamespaceSpecRequest
- * @param runtime runtime options for this request RuntimeOptions
- * @return ModifyPrepayNamespaceSpecResponse
- */
+// Deprecated: OpenAPI ModifyPrepayNamespaceSpec is deprecated, please use foasconsole::2021-10-28::ModifyNamespaceSpec instead.
+//
+// Summary:
+//
+// 修改namespace资源分配
+//
+// @param tmpReq - ModifyPrepayNamespaceSpecRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyPrepayNamespaceSpecResponse
 // Deprecated
 func (client *Client) ModifyPrepayNamespaceSpecWithOptions(tmpReq *ModifyPrepayNamespaceSpecRequest, runtime *util.RuntimeOptions) (_result *ModifyPrepayNamespaceSpecResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
@@ -5350,12 +6719,15 @@ func (client *Client) ModifyPrepayNamespaceSpecWithOptions(tmpReq *ModifyPrepayN
 	return _result, _err
 }
 
-/**
- * @deprecated : ModifyPrepayNamespaceSpec is deprecated, please use foasconsole::2021-10-28::ModifyNamespaceSpec instead.
- *
- * @param request ModifyPrepayNamespaceSpecRequest
- * @return ModifyPrepayNamespaceSpecResponse
- */
+// Deprecated: OpenAPI ModifyPrepayNamespaceSpec is deprecated, please use foasconsole::2021-10-28::ModifyNamespaceSpec instead.
+//
+// Summary:
+//
+// 修改namespace资源分配
+//
+// @param request - ModifyPrepayNamespaceSpecRequest
+//
+// @return ModifyPrepayNamespaceSpecResponse
 // Deprecated
 func (client *Client) ModifyPrepayNamespaceSpec(request *ModifyPrepayNamespaceSpecRequest) (_result *ModifyPrepayNamespaceSpecResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
@@ -5368,6 +6740,15 @@ func (client *Client) ModifyPrepayNamespaceSpec(request *ModifyPrepayNamespaceSp
 	return _result, _err
 }
 
+// Summary:
+//
+// 按量付费转包年包月询价
+//
+// @param tmpReq - QueryConvertInstancePriceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryConvertInstancePriceResponse
 func (client *Client) QueryConvertInstancePriceWithOptions(tmpReq *QueryConvertInstancePriceRequest, runtime *util.RuntimeOptions) (_result *QueryConvertInstancePriceResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -5427,6 +6808,13 @@ func (client *Client) QueryConvertInstancePriceWithOptions(tmpReq *QueryConvertI
 	return _result, _err
 }
 
+// Summary:
+//
+// 按量付费转包年包月询价
+//
+// @param request - QueryConvertInstancePriceRequest
+//
+// @return QueryConvertInstancePriceResponse
 func (client *Client) QueryConvertInstancePrice(request *QueryConvertInstancePriceRequest) (_result *QueryConvertInstancePriceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryConvertInstancePriceResponse{}
@@ -5438,6 +6826,15 @@ func (client *Client) QueryConvertInstancePrice(request *QueryConvertInstancePri
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取创建实例的价格
+//
+// @param tmpReq - QueryCreateInstancePriceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryCreateInstancePriceResponse
 func (client *Client) QueryCreateInstancePriceWithOptions(tmpReq *QueryCreateInstancePriceRequest, runtime *util.RuntimeOptions) (_result *QueryCreateInstancePriceResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -5553,6 +6950,13 @@ func (client *Client) QueryCreateInstancePriceWithOptions(tmpReq *QueryCreateIns
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取创建实例的价格
+//
+// @param request - QueryCreateInstancePriceRequest
+//
+// @return QueryCreateInstancePriceResponse
 func (client *Client) QueryCreateInstancePrice(request *QueryCreateInstancePriceRequest) (_result *QueryCreateInstancePriceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryCreateInstancePriceResponse{}
@@ -5564,6 +6968,15 @@ func (client *Client) QueryCreateInstancePrice(request *QueryCreateInstancePrice
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询付费类型为包年包月的实例修改资源规格的价格
+//
+// @param tmpReq - QueryModifyInstancePriceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryModifyInstancePriceResponse
 func (client *Client) QueryModifyInstancePriceWithOptions(tmpReq *QueryModifyInstancePriceRequest, runtime *util.RuntimeOptions) (_result *QueryModifyInstancePriceResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -5635,6 +7048,13 @@ func (client *Client) QueryModifyInstancePriceWithOptions(tmpReq *QueryModifyIns
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询付费类型为包年包月的实例修改资源规格的价格
+//
+// @param request - QueryModifyInstancePriceRequest
+//
+// @return QueryModifyInstancePriceResponse
 func (client *Client) QueryModifyInstancePrice(request *QueryModifyInstancePriceRequest) (_result *QueryModifyInstancePriceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryModifyInstancePriceResponse{}
@@ -5646,6 +7066,15 @@ func (client *Client) QueryModifyInstancePrice(request *QueryModifyInstancePrice
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询付费类型为包年包月的实例续费价格
+//
+// @param request - QueryRenewInstancePriceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryRenewInstancePriceResponse
 func (client *Client) QueryRenewInstancePriceWithOptions(request *QueryRenewInstancePriceRequest, runtime *util.RuntimeOptions) (_result *QueryRenewInstancePriceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5691,6 +7120,13 @@ func (client *Client) QueryRenewInstancePriceWithOptions(request *QueryRenewInst
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询付费类型为包年包月的实例续费价格
+//
+// @param request - QueryRenewInstancePriceRequest
+//
+// @return QueryRenewInstancePriceResponse
 func (client *Client) QueryRenewInstancePrice(request *QueryRenewInstancePriceRequest) (_result *QueryRenewInstancePriceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryRenewInstancePriceResponse{}
@@ -5702,6 +7138,15 @@ func (client *Client) QueryRenewInstancePrice(request *QueryRenewInstancePriceRe
 	return _result, _err
 }
 
+// Summary:
+//
+// 续费
+//
+// @param request - RenewInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RenewInstanceResponse
 func (client *Client) RenewInstanceWithOptions(request *RenewInstanceRequest, runtime *util.RuntimeOptions) (_result *RenewInstanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5747,6 +7192,13 @@ func (client *Client) RenewInstanceWithOptions(request *RenewInstanceRequest, ru
 	return _result, _err
 }
 
+// Summary:
+//
+// 续费
+//
+// @param request - RenewInstanceRequest
+//
+// @return RenewInstanceResponse
 func (client *Client) RenewInstance(request *RenewInstanceRequest) (_result *RenewInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RenewInstanceResponse{}
@@ -5758,6 +7210,15 @@ func (client *Client) RenewInstance(request *RenewInstanceRequest) (_result *Ren
 	return _result, _err
 }
 
+// Summary:
+//
+// 打标签接口
+//
+// @param request - TagResourcesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return TagResourcesResponse
 func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runtime *util.RuntimeOptions) (_result *TagResourcesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5803,6 +7264,13 @@ func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runt
 	return _result, _err
 }
 
+// Summary:
+//
+// 打标签接口
+//
+// @param request - TagResourcesRequest
+//
+// @return TagResourcesResponse
 func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagResourcesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &TagResourcesResponse{}
@@ -5814,6 +7282,15 @@ func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagRe
 	return _result, _err
 }
 
+// Summary:
+//
+// flinkasi去标签
+//
+// @param request - UntagResourcesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UntagResourcesResponse
 func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, runtime *util.RuntimeOptions) (_result *UntagResourcesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5863,6 +7340,13 @@ func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// flinkasi去标签
+//
+// @param request - UntagResourcesRequest
+//
+// @return UntagResourcesResponse
 func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *UntagResourcesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UntagResourcesResponse{}
