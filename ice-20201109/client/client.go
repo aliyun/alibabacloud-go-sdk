@@ -7140,6 +7140,163 @@ func (s *DescribePlayListResponse) SetBody(v *DescribePlayListResponseBody) *Des
 	return s
 }
 
+type DescribeRtcRobotInstanceRequest struct {
+	// example:
+	//
+	// 727dc0e296014bb58670940a3da95592
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+}
+
+func (s DescribeRtcRobotInstanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRtcRobotInstanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRtcRobotInstanceRequest) SetInstanceId(v string) *DescribeRtcRobotInstanceRequest {
+	s.InstanceId = &v
+	return s
+}
+
+type DescribeRtcRobotInstanceResponseBody struct {
+	// example:
+	//
+	// **********
+	AuthToken *string `json:"AuthToken,omitempty" xml:"AuthToken,omitempty"`
+	// example:
+	//
+	// testId
+	ChannelId *string                                     `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	Config    *DescribeRtcRobotInstanceResponseBodyConfig `json:"Config,omitempty" xml:"Config,omitempty" type:"Struct"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 20B3A1B6-4BD2-5DE6-BCBC-098C9B4F4E91
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// Executing
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// {}
+	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	// example:
+	//
+	// my-robot
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+}
+
+func (s DescribeRtcRobotInstanceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRtcRobotInstanceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRtcRobotInstanceResponseBody) SetAuthToken(v string) *DescribeRtcRobotInstanceResponseBody {
+	s.AuthToken = &v
+	return s
+}
+
+func (s *DescribeRtcRobotInstanceResponseBody) SetChannelId(v string) *DescribeRtcRobotInstanceResponseBody {
+	s.ChannelId = &v
+	return s
+}
+
+func (s *DescribeRtcRobotInstanceResponseBody) SetConfig(v *DescribeRtcRobotInstanceResponseBodyConfig) *DescribeRtcRobotInstanceResponseBody {
+	s.Config = v
+	return s
+}
+
+func (s *DescribeRtcRobotInstanceResponseBody) SetRequestId(v string) *DescribeRtcRobotInstanceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeRtcRobotInstanceResponseBody) SetStatus(v string) *DescribeRtcRobotInstanceResponseBody {
+	s.Status = &v
+	return s
+}
+
+func (s *DescribeRtcRobotInstanceResponseBody) SetUserData(v string) *DescribeRtcRobotInstanceResponseBody {
+	s.UserData = &v
+	return s
+}
+
+func (s *DescribeRtcRobotInstanceResponseBody) SetUserId(v string) *DescribeRtcRobotInstanceResponseBody {
+	s.UserId = &v
+	return s
+}
+
+type DescribeRtcRobotInstanceResponseBodyConfig struct {
+	// example:
+	//
+	// true
+	EnableVoiceInterrupt *bool   `json:"EnableVoiceInterrupt,omitempty" xml:"EnableVoiceInterrupt,omitempty"`
+	Greeting             *string `json:"Greeting,omitempty" xml:"Greeting,omitempty"`
+	// example:
+	//
+	// zhixiaoxia
+	VoiceId *string `json:"VoiceId,omitempty" xml:"VoiceId,omitempty"`
+}
+
+func (s DescribeRtcRobotInstanceResponseBodyConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRtcRobotInstanceResponseBodyConfig) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRtcRobotInstanceResponseBodyConfig) SetEnableVoiceInterrupt(v bool) *DescribeRtcRobotInstanceResponseBodyConfig {
+	s.EnableVoiceInterrupt = &v
+	return s
+}
+
+func (s *DescribeRtcRobotInstanceResponseBodyConfig) SetGreeting(v string) *DescribeRtcRobotInstanceResponseBodyConfig {
+	s.Greeting = &v
+	return s
+}
+
+func (s *DescribeRtcRobotInstanceResponseBodyConfig) SetVoiceId(v string) *DescribeRtcRobotInstanceResponseBodyConfig {
+	s.VoiceId = &v
+	return s
+}
+
+type DescribeRtcRobotInstanceResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeRtcRobotInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeRtcRobotInstanceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRtcRobotInstanceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRtcRobotInstanceResponse) SetHeaders(v map[string]*string) *DescribeRtcRobotInstanceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeRtcRobotInstanceResponse) SetStatusCode(v int32) *DescribeRtcRobotInstanceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeRtcRobotInstanceResponse) SetBody(v *DescribeRtcRobotInstanceResponseBody) *DescribeRtcRobotInstanceResponse {
+	s.Body = v
+	return s
+}
+
 type DetectAudioForCustomizedVoiceJobRequest struct {
 	// This parameter is required.
 	//
@@ -39028,6 +39185,241 @@ func (s *SetEventCallbackResponse) SetBody(v *SetEventCallbackResponseBody) *Set
 	return s
 }
 
+type StartRtcRobotInstanceRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// **********
+	AuthToken *string `json:"AuthToken,omitempty" xml:"AuthToken,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// testId
+	ChannelId *string                             `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	Config    *StartRtcRobotInstanceRequestConfig `json:"Config,omitempty" xml:"Config,omitempty" type:"Struct"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ca28b08ad3464ebcb42e5c0f7c6d2e89
+	RobotId *string `json:"RobotId,omitempty" xml:"RobotId,omitempty"`
+	// example:
+	//
+	// {}
+	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// my-robot
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+}
+
+func (s StartRtcRobotInstanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartRtcRobotInstanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *StartRtcRobotInstanceRequest) SetAuthToken(v string) *StartRtcRobotInstanceRequest {
+	s.AuthToken = &v
+	return s
+}
+
+func (s *StartRtcRobotInstanceRequest) SetChannelId(v string) *StartRtcRobotInstanceRequest {
+	s.ChannelId = &v
+	return s
+}
+
+func (s *StartRtcRobotInstanceRequest) SetConfig(v *StartRtcRobotInstanceRequestConfig) *StartRtcRobotInstanceRequest {
+	s.Config = v
+	return s
+}
+
+func (s *StartRtcRobotInstanceRequest) SetRobotId(v string) *StartRtcRobotInstanceRequest {
+	s.RobotId = &v
+	return s
+}
+
+func (s *StartRtcRobotInstanceRequest) SetUserData(v string) *StartRtcRobotInstanceRequest {
+	s.UserData = &v
+	return s
+}
+
+func (s *StartRtcRobotInstanceRequest) SetUserId(v string) *StartRtcRobotInstanceRequest {
+	s.UserId = &v
+	return s
+}
+
+type StartRtcRobotInstanceRequestConfig struct {
+	// example:
+	//
+	// true
+	EnableVoiceInterrupt *bool   `json:"EnableVoiceInterrupt,omitempty" xml:"EnableVoiceInterrupt,omitempty"`
+	Greeting             *string `json:"Greeting,omitempty" xml:"Greeting,omitempty"`
+	// example:
+	//
+	// zhixiaoxia
+	VoiceId *string `json:"VoiceId,omitempty" xml:"VoiceId,omitempty"`
+}
+
+func (s StartRtcRobotInstanceRequestConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartRtcRobotInstanceRequestConfig) GoString() string {
+	return s.String()
+}
+
+func (s *StartRtcRobotInstanceRequestConfig) SetEnableVoiceInterrupt(v bool) *StartRtcRobotInstanceRequestConfig {
+	s.EnableVoiceInterrupt = &v
+	return s
+}
+
+func (s *StartRtcRobotInstanceRequestConfig) SetGreeting(v string) *StartRtcRobotInstanceRequestConfig {
+	s.Greeting = &v
+	return s
+}
+
+func (s *StartRtcRobotInstanceRequestConfig) SetVoiceId(v string) *StartRtcRobotInstanceRequestConfig {
+	s.VoiceId = &v
+	return s
+}
+
+type StartRtcRobotInstanceShrinkRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// **********
+	AuthToken *string `json:"AuthToken,omitempty" xml:"AuthToken,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// testId
+	ChannelId    *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	ConfigShrink *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ca28b08ad3464ebcb42e5c0f7c6d2e89
+	RobotId *string `json:"RobotId,omitempty" xml:"RobotId,omitempty"`
+	// example:
+	//
+	// {}
+	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// my-robot
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+}
+
+func (s StartRtcRobotInstanceShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartRtcRobotInstanceShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *StartRtcRobotInstanceShrinkRequest) SetAuthToken(v string) *StartRtcRobotInstanceShrinkRequest {
+	s.AuthToken = &v
+	return s
+}
+
+func (s *StartRtcRobotInstanceShrinkRequest) SetChannelId(v string) *StartRtcRobotInstanceShrinkRequest {
+	s.ChannelId = &v
+	return s
+}
+
+func (s *StartRtcRobotInstanceShrinkRequest) SetConfigShrink(v string) *StartRtcRobotInstanceShrinkRequest {
+	s.ConfigShrink = &v
+	return s
+}
+
+func (s *StartRtcRobotInstanceShrinkRequest) SetRobotId(v string) *StartRtcRobotInstanceShrinkRequest {
+	s.RobotId = &v
+	return s
+}
+
+func (s *StartRtcRobotInstanceShrinkRequest) SetUserData(v string) *StartRtcRobotInstanceShrinkRequest {
+	s.UserData = &v
+	return s
+}
+
+func (s *StartRtcRobotInstanceShrinkRequest) SetUserId(v string) *StartRtcRobotInstanceShrinkRequest {
+	s.UserId = &v
+	return s
+}
+
+type StartRtcRobotInstanceResponseBody struct {
+	// example:
+	//
+	// 727dc0e296014bb58670940a3da95592
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 11DE0AB3-603B-5055-8A72-9C424854F983
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s StartRtcRobotInstanceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartRtcRobotInstanceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *StartRtcRobotInstanceResponseBody) SetInstanceId(v string) *StartRtcRobotInstanceResponseBody {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *StartRtcRobotInstanceResponseBody) SetRequestId(v string) *StartRtcRobotInstanceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type StartRtcRobotInstanceResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *StartRtcRobotInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s StartRtcRobotInstanceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartRtcRobotInstanceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *StartRtcRobotInstanceResponse) SetHeaders(v map[string]*string) *StartRtcRobotInstanceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *StartRtcRobotInstanceResponse) SetStatusCode(v int32) *StartRtcRobotInstanceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *StartRtcRobotInstanceResponse) SetBody(v *StartRtcRobotInstanceResponseBody) *StartRtcRobotInstanceResponse {
+	s.Body = v
+	return s
+}
+
 type StartWorkflowRequest struct {
 	// example:
 	//
@@ -39123,6 +39515,79 @@ func (s *StartWorkflowResponse) SetStatusCode(v int32) *StartWorkflowResponse {
 }
 
 func (s *StartWorkflowResponse) SetBody(v *StartWorkflowResponseBody) *StartWorkflowResponse {
+	s.Body = v
+	return s
+}
+
+type StopRtcRobotInstanceRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 727dc0e296014bb58670940a3da95592
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+}
+
+func (s StopRtcRobotInstanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopRtcRobotInstanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *StopRtcRobotInstanceRequest) SetInstanceId(v string) *StopRtcRobotInstanceRequest {
+	s.InstanceId = &v
+	return s
+}
+
+type StopRtcRobotInstanceResponseBody struct {
+	// Id of the request
+	//
+	// example:
+	//
+	// AC84E5DD-AB56-56C0-A992-07ECB82008CA
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s StopRtcRobotInstanceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopRtcRobotInstanceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *StopRtcRobotInstanceResponseBody) SetRequestId(v string) *StopRtcRobotInstanceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type StopRtcRobotInstanceResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *StopRtcRobotInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s StopRtcRobotInstanceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopRtcRobotInstanceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *StopRtcRobotInstanceResponse) SetHeaders(v map[string]*string) *StopRtcRobotInstanceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *StopRtcRobotInstanceResponse) SetStatusCode(v int32) *StopRtcRobotInstanceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *StopRtcRobotInstanceResponse) SetBody(v *StopRtcRobotInstanceResponseBody) *StopRtcRobotInstanceResponse {
 	s.Body = v
 	return s
 }
@@ -51989,6 +52454,148 @@ func (s *UpdatePipelineResponse) SetBody(v *UpdatePipelineResponseBody) *UpdateP
 	return s
 }
 
+type UpdateRtcRobotInstanceRequest struct {
+	Config *UpdateRtcRobotInstanceRequestConfig `json:"Config,omitempty" xml:"Config,omitempty" type:"Struct"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 727dc0e296014bb58670940a3da95592
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+}
+
+func (s UpdateRtcRobotInstanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateRtcRobotInstanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateRtcRobotInstanceRequest) SetConfig(v *UpdateRtcRobotInstanceRequestConfig) *UpdateRtcRobotInstanceRequest {
+	s.Config = v
+	return s
+}
+
+func (s *UpdateRtcRobotInstanceRequest) SetInstanceId(v string) *UpdateRtcRobotInstanceRequest {
+	s.InstanceId = &v
+	return s
+}
+
+type UpdateRtcRobotInstanceRequestConfig struct {
+	// example:
+	//
+	// false
+	EnableVoiceInterrupt *bool   `json:"EnableVoiceInterrupt,omitempty" xml:"EnableVoiceInterrupt,omitempty"`
+	Greeting             *string `json:"Greeting,omitempty" xml:"Greeting,omitempty"`
+	// example:
+	//
+	// zhixiaoxia
+	VoiceId *string `json:"VoiceId,omitempty" xml:"VoiceId,omitempty"`
+}
+
+func (s UpdateRtcRobotInstanceRequestConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateRtcRobotInstanceRequestConfig) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateRtcRobotInstanceRequestConfig) SetEnableVoiceInterrupt(v bool) *UpdateRtcRobotInstanceRequestConfig {
+	s.EnableVoiceInterrupt = &v
+	return s
+}
+
+func (s *UpdateRtcRobotInstanceRequestConfig) SetGreeting(v string) *UpdateRtcRobotInstanceRequestConfig {
+	s.Greeting = &v
+	return s
+}
+
+func (s *UpdateRtcRobotInstanceRequestConfig) SetVoiceId(v string) *UpdateRtcRobotInstanceRequestConfig {
+	s.VoiceId = &v
+	return s
+}
+
+type UpdateRtcRobotInstanceShrinkRequest struct {
+	ConfigShrink *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 727dc0e296014bb58670940a3da95592
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+}
+
+func (s UpdateRtcRobotInstanceShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateRtcRobotInstanceShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateRtcRobotInstanceShrinkRequest) SetConfigShrink(v string) *UpdateRtcRobotInstanceShrinkRequest {
+	s.ConfigShrink = &v
+	return s
+}
+
+func (s *UpdateRtcRobotInstanceShrinkRequest) SetInstanceId(v string) *UpdateRtcRobotInstanceShrinkRequest {
+	s.InstanceId = &v
+	return s
+}
+
+type UpdateRtcRobotInstanceResponseBody struct {
+	// Id of the request
+	//
+	// example:
+	//
+	// 7707F0A2-C6FD-5959-87EB-7C4D02384FD4
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateRtcRobotInstanceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateRtcRobotInstanceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateRtcRobotInstanceResponseBody) SetRequestId(v string) *UpdateRtcRobotInstanceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateRtcRobotInstanceResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateRtcRobotInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateRtcRobotInstanceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateRtcRobotInstanceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateRtcRobotInstanceResponse) SetHeaders(v map[string]*string) *UpdateRtcRobotInstanceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateRtcRobotInstanceResponse) SetStatusCode(v int32) *UpdateRtcRobotInstanceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateRtcRobotInstanceResponse) SetBody(v *UpdateRtcRobotInstanceResponseBody) *UpdateRtcRobotInstanceResponse {
+	s.Body = v
+	return s
+}
+
 type UpdateTemplateRequest struct {
 	// example:
 	//
@@ -56019,6 +56626,66 @@ func (client *Client) DescribePlayList(request *DescribePlayListRequest) (_resul
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribePlayListResponse{}
 	_body, _err := client.DescribePlayListWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询实例
+//
+// @param request - DescribeRtcRobotInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeRtcRobotInstanceResponse
+func (client *Client) DescribeRtcRobotInstanceWithOptions(request *DescribeRtcRobotInstanceRequest, runtime *util.RuntimeOptions) (_result *DescribeRtcRobotInstanceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeRtcRobotInstance"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeRtcRobotInstanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询实例
+//
+// @param request - DescribeRtcRobotInstanceRequest
+//
+// @return DescribeRtcRobotInstanceResponse
+func (client *Client) DescribeRtcRobotInstance(request *DescribeRtcRobotInstanceRequest) (_result *DescribeRtcRobotInstanceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeRtcRobotInstanceResponse{}
+	_body, _err := client.DescribeRtcRobotInstanceWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -63103,6 +63770,92 @@ func (client *Client) SetEventCallback(request *SetEventCallbackRequest) (_resul
 
 // Summary:
 //
+// 开启一个机器人实例
+//
+// @param tmpReq - StartRtcRobotInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return StartRtcRobotInstanceResponse
+func (client *Client) StartRtcRobotInstanceWithOptions(tmpReq *StartRtcRobotInstanceRequest, runtime *util.RuntimeOptions) (_result *StartRtcRobotInstanceResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &StartRtcRobotInstanceShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Config)) {
+		request.ConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Config, tea.String("Config"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AuthToken)) {
+		query["AuthToken"] = request.AuthToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ChannelId)) {
+		query["ChannelId"] = request.ChannelId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ConfigShrink)) {
+		query["Config"] = request.ConfigShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RobotId)) {
+		query["RobotId"] = request.RobotId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserData)) {
+		query["UserData"] = request.UserData
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		query["UserId"] = request.UserId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("StartRtcRobotInstance"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &StartRtcRobotInstanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 开启一个机器人实例
+//
+// @param request - StartRtcRobotInstanceRequest
+//
+// @return StartRtcRobotInstanceResponse
+func (client *Client) StartRtcRobotInstance(request *StartRtcRobotInstanceRequest) (_result *StartRtcRobotInstanceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &StartRtcRobotInstanceResponse{}
+	_body, _err := client.StartRtcRobotInstanceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 启动工作流
 //
 // @param request - StartWorkflowRequest
@@ -63162,6 +63915,66 @@ func (client *Client) StartWorkflow(request *StartWorkflowRequest) (_result *Sta
 	runtime := &util.RuntimeOptions{}
 	_result = &StartWorkflowResponse{}
 	_body, _err := client.StartWorkflowWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 停止一个机器人实例
+//
+// @param request - StopRtcRobotInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return StopRtcRobotInstanceResponse
+func (client *Client) StopRtcRobotInstanceWithOptions(request *StopRtcRobotInstanceRequest, runtime *util.RuntimeOptions) (_result *StopRtcRobotInstanceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("StopRtcRobotInstance"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &StopRtcRobotInstanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 停止一个机器人实例
+//
+// @param request - StopRtcRobotInstanceRequest
+//
+// @return StopRtcRobotInstanceResponse
+func (client *Client) StopRtcRobotInstance(request *StopRtcRobotInstanceRequest) (_result *StopRtcRobotInstanceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &StopRtcRobotInstanceResponse{}
+	_body, _err := client.StopRtcRobotInstanceWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -66388,6 +67201,76 @@ func (client *Client) UpdatePipeline(request *UpdatePipelineRequest) (_result *U
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdatePipelineResponse{}
 	_body, _err := client.UpdatePipelineWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改实例的配置
+//
+// @param tmpReq - UpdateRtcRobotInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateRtcRobotInstanceResponse
+func (client *Client) UpdateRtcRobotInstanceWithOptions(tmpReq *UpdateRtcRobotInstanceRequest, runtime *util.RuntimeOptions) (_result *UpdateRtcRobotInstanceResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &UpdateRtcRobotInstanceShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Config)) {
+		request.ConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Config, tea.String("Config"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ConfigShrink)) {
+		query["Config"] = request.ConfigShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateRtcRobotInstance"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateRtcRobotInstanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改实例的配置
+//
+// @param request - UpdateRtcRobotInstanceRequest
+//
+// @return UpdateRtcRobotInstanceResponse
+func (client *Client) UpdateRtcRobotInstance(request *UpdateRtcRobotInstanceRequest) (_result *UpdateRtcRobotInstanceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateRtcRobotInstanceResponse{}
+	_body, _err := client.UpdateRtcRobotInstanceWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
