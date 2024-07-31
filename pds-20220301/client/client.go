@@ -4455,9 +4455,112 @@ func (s *JWTPayload) SetSubType(v string) *JWTPayload {
 	return s
 }
 
+type KnowledgeFile struct {
+	CreatorId           *string `json:"creator_id,omitempty" xml:"creator_id,omitempty"`
+	DriveId             *string `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
+	FileCategory        *string `json:"file_category,omitempty" xml:"file_category,omitempty"`
+	FileCreatedAt       *int64  `json:"file_created_at,omitempty" xml:"file_created_at,omitempty"`
+	FileCreatorId       *string `json:"file_creator_id,omitempty" xml:"file_creator_id,omitempty"`
+	FileId              *string `json:"file_id,omitempty" xml:"file_id,omitempty"`
+	FileImageTime       *int64  `json:"file_image_time,omitempty" xml:"file_image_time,omitempty"`
+	FileName            *string `json:"file_name,omitempty" xml:"file_name,omitempty"`
+	FileNamePath        *string `json:"file_name_path,omitempty" xml:"file_name_path,omitempty"`
+	FileSize            *int64  `json:"file_size,omitempty" xml:"file_size,omitempty"`
+	FileUpdatedAt       *int64  `json:"file_updated_at,omitempty" xml:"file_updated_at,omitempty"`
+	JoinedAt            *int64  `json:"joined_at,omitempty" xml:"joined_at,omitempty"`
+	KnowledgeBaseId     *string `json:"knowledge_base_id,omitempty" xml:"knowledge_base_id,omitempty"`
+	KnowledgeCategoryId *string `json:"knowledge_category_id,omitempty" xml:"knowledge_category_id,omitempty"`
+	RevisionId          *string `json:"revision_id,omitempty" xml:"revision_id,omitempty"`
+}
+
+func (s KnowledgeFile) String() string {
+	return tea.Prettify(s)
+}
+
+func (s KnowledgeFile) GoString() string {
+	return s.String()
+}
+
+func (s *KnowledgeFile) SetCreatorId(v string) *KnowledgeFile {
+	s.CreatorId = &v
+	return s
+}
+
+func (s *KnowledgeFile) SetDriveId(v string) *KnowledgeFile {
+	s.DriveId = &v
+	return s
+}
+
+func (s *KnowledgeFile) SetFileCategory(v string) *KnowledgeFile {
+	s.FileCategory = &v
+	return s
+}
+
+func (s *KnowledgeFile) SetFileCreatedAt(v int64) *KnowledgeFile {
+	s.FileCreatedAt = &v
+	return s
+}
+
+func (s *KnowledgeFile) SetFileCreatorId(v string) *KnowledgeFile {
+	s.FileCreatorId = &v
+	return s
+}
+
+func (s *KnowledgeFile) SetFileId(v string) *KnowledgeFile {
+	s.FileId = &v
+	return s
+}
+
+func (s *KnowledgeFile) SetFileImageTime(v int64) *KnowledgeFile {
+	s.FileImageTime = &v
+	return s
+}
+
+func (s *KnowledgeFile) SetFileName(v string) *KnowledgeFile {
+	s.FileName = &v
+	return s
+}
+
+func (s *KnowledgeFile) SetFileNamePath(v string) *KnowledgeFile {
+	s.FileNamePath = &v
+	return s
+}
+
+func (s *KnowledgeFile) SetFileSize(v int64) *KnowledgeFile {
+	s.FileSize = &v
+	return s
+}
+
+func (s *KnowledgeFile) SetFileUpdatedAt(v int64) *KnowledgeFile {
+	s.FileUpdatedAt = &v
+	return s
+}
+
+func (s *KnowledgeFile) SetJoinedAt(v int64) *KnowledgeFile {
+	s.JoinedAt = &v
+	return s
+}
+
+func (s *KnowledgeFile) SetKnowledgeBaseId(v string) *KnowledgeFile {
+	s.KnowledgeBaseId = &v
+	return s
+}
+
+func (s *KnowledgeFile) SetKnowledgeCategoryId(v string) *KnowledgeFile {
+	s.KnowledgeCategoryId = &v
+	return s
+}
+
+func (s *KnowledgeFile) SetRevisionId(v string) *KnowledgeFile {
+	s.RevisionId = &v
+	return s
+}
+
 type KnowledgeFileItem struct {
+	// This parameter is required.
 	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
-	FileId  *string `json:"file_id,omitempty" xml:"file_id,omitempty"`
+	// This parameter is required.
+	FileId *string `json:"file_id,omitempty" xml:"file_id,omitempty"`
 }
 
 func (s KnowledgeFileItem) String() string {
@@ -4910,7 +5013,7 @@ type PersonalRightsInfoResponse struct {
 	IsExpires           *bool                       `json:"is_expires,omitempty" xml:"is_expires,omitempty"`
 	Name                *string                     `json:"name,omitempty" xml:"name,omitempty"`
 	OtherRights         *PersonalRightsInfoResponse `json:"other_rights,omitempty" xml:"other_rights,omitempty"`
-	Privileges          *DataBoxPrivileges          `json:"privileges,omitempty" xml:"privileges,omitempty"`
+	Privileges          []*DataBoxPrivileges        `json:"privileges,omitempty" xml:"privileges,omitempty" type:"Repeated"`
 	SpuId               *string                     `json:"spu_id,omitempty" xml:"spu_id,omitempty"`
 	Title               *string                     `json:"title,omitempty" xml:"title,omitempty"`
 }
@@ -4953,7 +5056,7 @@ func (s *PersonalRightsInfoResponse) SetOtherRights(v *PersonalRightsInfoRespons
 	return s
 }
 
-func (s *PersonalRightsInfoResponse) SetPrivileges(v *DataBoxPrivileges) *PersonalRightsInfoResponse {
+func (s *PersonalRightsInfoResponse) SetPrivileges(v []*DataBoxPrivileges) *PersonalRightsInfoResponse {
 	s.Privileges = v
 	return s
 }
