@@ -370,6 +370,439 @@ func (s *CopyDefenseTemplateResponse) SetBody(v *CopyDefenseTemplateResponseBody
 	return s
 }
 
+type CreateCloudResourceRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf_v3prepaid_public_cn-***
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	Listen *CreateCloudResourceRequestListen `json:"Listen,omitempty" xml:"Listen,omitempty" type:"Struct"`
+	// example:
+	//
+	// 123
+	OwnerUserId *string                             `json:"OwnerUserId,omitempty" xml:"OwnerUserId,omitempty"`
+	Redirect    *CreateCloudResourceRequestRedirect `json:"Redirect,omitempty" xml:"Redirect,omitempty" type:"Struct"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// rg-acfm***q
+	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
+}
+
+func (s CreateCloudResourceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateCloudResourceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateCloudResourceRequest) SetInstanceId(v string) *CreateCloudResourceRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *CreateCloudResourceRequest) SetListen(v *CreateCloudResourceRequestListen) *CreateCloudResourceRequest {
+	s.Listen = v
+	return s
+}
+
+func (s *CreateCloudResourceRequest) SetOwnerUserId(v string) *CreateCloudResourceRequest {
+	s.OwnerUserId = &v
+	return s
+}
+
+func (s *CreateCloudResourceRequest) SetRedirect(v *CreateCloudResourceRequestRedirect) *CreateCloudResourceRequest {
+	s.Redirect = v
+	return s
+}
+
+func (s *CreateCloudResourceRequest) SetRegionId(v string) *CreateCloudResourceRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *CreateCloudResourceRequest) SetResourceManagerResourceGroupId(v string) *CreateCloudResourceRequest {
+	s.ResourceManagerResourceGroupId = &v
+	return s
+}
+
+type CreateCloudResourceRequestListen struct {
+	Certificates []*CreateCloudResourceRequestListenCertificates `json:"Certificates,omitempty" xml:"Certificates,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	CipherSuite   *int32    `json:"CipherSuite,omitempty" xml:"CipherSuite,omitempty"`
+	CustomCiphers []*string `json:"CustomCiphers,omitempty" xml:"CustomCiphers,omitempty" type:"Repeated"`
+	// if can be null:
+	// true
+	//
+	// example:
+	//
+	// true
+	EnableTLSv3 *bool `json:"EnableTLSv3,omitempty" xml:"EnableTLSv3,omitempty"`
+	// example:
+	//
+	// true
+	Http2Enabled *bool `json:"Http2Enabled,omitempty" xml:"Http2Enabled,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 80
+	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// http
+	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// lb-bp1*****
+	ResourceInstanceId *string `json:"ResourceInstanceId,omitempty" xml:"ResourceInstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// clb4
+	ResourceProduct *string `json:"ResourceProduct,omitempty" xml:"ResourceProduct,omitempty"`
+	// example:
+	//
+	// tlsv1
+	TLSVersion *string `json:"TLSVersion,omitempty" xml:"TLSVersion,omitempty"`
+}
+
+func (s CreateCloudResourceRequestListen) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateCloudResourceRequestListen) GoString() string {
+	return s.String()
+}
+
+func (s *CreateCloudResourceRequestListen) SetCertificates(v []*CreateCloudResourceRequestListenCertificates) *CreateCloudResourceRequestListen {
+	s.Certificates = v
+	return s
+}
+
+func (s *CreateCloudResourceRequestListen) SetCipherSuite(v int32) *CreateCloudResourceRequestListen {
+	s.CipherSuite = &v
+	return s
+}
+
+func (s *CreateCloudResourceRequestListen) SetCustomCiphers(v []*string) *CreateCloudResourceRequestListen {
+	s.CustomCiphers = v
+	return s
+}
+
+func (s *CreateCloudResourceRequestListen) SetEnableTLSv3(v bool) *CreateCloudResourceRequestListen {
+	s.EnableTLSv3 = &v
+	return s
+}
+
+func (s *CreateCloudResourceRequestListen) SetHttp2Enabled(v bool) *CreateCloudResourceRequestListen {
+	s.Http2Enabled = &v
+	return s
+}
+
+func (s *CreateCloudResourceRequestListen) SetPort(v int32) *CreateCloudResourceRequestListen {
+	s.Port = &v
+	return s
+}
+
+func (s *CreateCloudResourceRequestListen) SetProtocol(v string) *CreateCloudResourceRequestListen {
+	s.Protocol = &v
+	return s
+}
+
+func (s *CreateCloudResourceRequestListen) SetResourceInstanceId(v string) *CreateCloudResourceRequestListen {
+	s.ResourceInstanceId = &v
+	return s
+}
+
+func (s *CreateCloudResourceRequestListen) SetResourceProduct(v string) *CreateCloudResourceRequestListen {
+	s.ResourceProduct = &v
+	return s
+}
+
+func (s *CreateCloudResourceRequestListen) SetTLSVersion(v string) *CreateCloudResourceRequestListen {
+	s.TLSVersion = &v
+	return s
+}
+
+type CreateCloudResourceRequestListenCertificates struct {
+	AppliedType *string `json:"AppliedType,omitempty" xml:"AppliedType,omitempty"`
+	// example:
+	//
+	// 123-cn-hangzhou
+	CertificateId *string `json:"CertificateId,omitempty" xml:"CertificateId,omitempty"`
+}
+
+func (s CreateCloudResourceRequestListenCertificates) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateCloudResourceRequestListenCertificates) GoString() string {
+	return s.String()
+}
+
+func (s *CreateCloudResourceRequestListenCertificates) SetAppliedType(v string) *CreateCloudResourceRequestListenCertificates {
+	s.AppliedType = &v
+	return s
+}
+
+func (s *CreateCloudResourceRequestListenCertificates) SetCertificateId(v string) *CreateCloudResourceRequestListenCertificates {
+	s.CertificateId = &v
+	return s
+}
+
+type CreateCloudResourceRequestRedirect struct {
+	// example:
+	//
+	// true
+	Keepalive *bool `json:"Keepalive,omitempty" xml:"Keepalive,omitempty"`
+	// example:
+	//
+	// 1000
+	KeepaliveRequests *int32 `json:"KeepaliveRequests,omitempty" xml:"KeepaliveRequests,omitempty"`
+	// example:
+	//
+	// 15
+	KeepaliveTimeout *int32 `json:"KeepaliveTimeout,omitempty" xml:"KeepaliveTimeout,omitempty"`
+	// example:
+	//
+	// 1
+	ReadTimeout    *int32                                              `json:"ReadTimeout,omitempty" xml:"ReadTimeout,omitempty"`
+	RequestHeaders []*CreateCloudResourceRequestRedirectRequestHeaders `json:"RequestHeaders,omitempty" xml:"RequestHeaders,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	WriteTimeout *int32 `json:"WriteTimeout,omitempty" xml:"WriteTimeout,omitempty"`
+	// example:
+	//
+	// 1
+	XffHeaderMode *int32    `json:"XffHeaderMode,omitempty" xml:"XffHeaderMode,omitempty"`
+	XffHeaders    []*string `json:"XffHeaders,omitempty" xml:"XffHeaders,omitempty" type:"Repeated"`
+	// example:
+	//
+	// true
+	XffProto *bool `json:"XffProto,omitempty" xml:"XffProto,omitempty"`
+}
+
+func (s CreateCloudResourceRequestRedirect) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateCloudResourceRequestRedirect) GoString() string {
+	return s.String()
+}
+
+func (s *CreateCloudResourceRequestRedirect) SetKeepalive(v bool) *CreateCloudResourceRequestRedirect {
+	s.Keepalive = &v
+	return s
+}
+
+func (s *CreateCloudResourceRequestRedirect) SetKeepaliveRequests(v int32) *CreateCloudResourceRequestRedirect {
+	s.KeepaliveRequests = &v
+	return s
+}
+
+func (s *CreateCloudResourceRequestRedirect) SetKeepaliveTimeout(v int32) *CreateCloudResourceRequestRedirect {
+	s.KeepaliveTimeout = &v
+	return s
+}
+
+func (s *CreateCloudResourceRequestRedirect) SetReadTimeout(v int32) *CreateCloudResourceRequestRedirect {
+	s.ReadTimeout = &v
+	return s
+}
+
+func (s *CreateCloudResourceRequestRedirect) SetRequestHeaders(v []*CreateCloudResourceRequestRedirectRequestHeaders) *CreateCloudResourceRequestRedirect {
+	s.RequestHeaders = v
+	return s
+}
+
+func (s *CreateCloudResourceRequestRedirect) SetWriteTimeout(v int32) *CreateCloudResourceRequestRedirect {
+	s.WriteTimeout = &v
+	return s
+}
+
+func (s *CreateCloudResourceRequestRedirect) SetXffHeaderMode(v int32) *CreateCloudResourceRequestRedirect {
+	s.XffHeaderMode = &v
+	return s
+}
+
+func (s *CreateCloudResourceRequestRedirect) SetXffHeaders(v []*string) *CreateCloudResourceRequestRedirect {
+	s.XffHeaders = v
+	return s
+}
+
+func (s *CreateCloudResourceRequestRedirect) SetXffProto(v bool) *CreateCloudResourceRequestRedirect {
+	s.XffProto = &v
+	return s
+}
+
+type CreateCloudResourceRequestRedirectRequestHeaders struct {
+	// example:
+	//
+	// key1
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// value1
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CreateCloudResourceRequestRedirectRequestHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateCloudResourceRequestRedirectRequestHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *CreateCloudResourceRequestRedirectRequestHeaders) SetKey(v string) *CreateCloudResourceRequestRedirectRequestHeaders {
+	s.Key = &v
+	return s
+}
+
+func (s *CreateCloudResourceRequestRedirectRequestHeaders) SetValue(v string) *CreateCloudResourceRequestRedirectRequestHeaders {
+	s.Value = &v
+	return s
+}
+
+type CreateCloudResourceShrinkRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf_v3prepaid_public_cn-***
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	ListenShrink *string `json:"Listen,omitempty" xml:"Listen,omitempty"`
+	// example:
+	//
+	// 123
+	OwnerUserId    *string `json:"OwnerUserId,omitempty" xml:"OwnerUserId,omitempty"`
+	RedirectShrink *string `json:"Redirect,omitempty" xml:"Redirect,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// rg-acfm***q
+	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
+}
+
+func (s CreateCloudResourceShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateCloudResourceShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateCloudResourceShrinkRequest) SetInstanceId(v string) *CreateCloudResourceShrinkRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *CreateCloudResourceShrinkRequest) SetListenShrink(v string) *CreateCloudResourceShrinkRequest {
+	s.ListenShrink = &v
+	return s
+}
+
+func (s *CreateCloudResourceShrinkRequest) SetOwnerUserId(v string) *CreateCloudResourceShrinkRequest {
+	s.OwnerUserId = &v
+	return s
+}
+
+func (s *CreateCloudResourceShrinkRequest) SetRedirectShrink(v string) *CreateCloudResourceShrinkRequest {
+	s.RedirectShrink = &v
+	return s
+}
+
+func (s *CreateCloudResourceShrinkRequest) SetRegionId(v string) *CreateCloudResourceShrinkRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *CreateCloudResourceShrinkRequest) SetResourceManagerResourceGroupId(v string) *CreateCloudResourceShrinkRequest {
+	s.ResourceManagerResourceGroupId = &v
+	return s
+}
+
+type CreateCloudResourceResponseBody struct {
+	// example:
+	//
+	// lb-***
+	CloudResourceId *string `json:"CloudResourceId,omitempty" xml:"CloudResourceId,omitempty"`
+	// example:
+	//
+	// 66A98669-ER12-WE34-23PO-301469*****E
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateCloudResourceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateCloudResourceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateCloudResourceResponseBody) SetCloudResourceId(v string) *CreateCloudResourceResponseBody {
+	s.CloudResourceId = &v
+	return s
+}
+
+func (s *CreateCloudResourceResponseBody) SetRequestId(v string) *CreateCloudResourceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateCloudResourceResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateCloudResourceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateCloudResourceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateCloudResourceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateCloudResourceResponse) SetHeaders(v map[string]*string) *CreateCloudResourceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateCloudResourceResponse) SetStatusCode(v int32) *CreateCloudResourceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateCloudResourceResponse) SetBody(v *CreateCloudResourceResponseBody) *CreateCloudResourceResponse {
+	s.Body = v
+	return s
+}
+
 type CreateDefenseResourceGroupRequest struct {
 	// The protected objects that you want to add to the protected object group. You can add multiple protected objects to a protected object group at the same time. You can specify multiple protected objects. Separate them with commas (,).
 	//
@@ -565,15 +998,15 @@ type CreateDefenseRuleRequest struct {
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
 	// The configurations of the protection rule. Specify a string that contains multiple parameters in the JSON format.
 	//
-	// >  The parameters vary based on the value of the **DefenseScene*	- parameter. For more information, see the "**Protection rule parameters**" section in this topic.
+	// >  The parameters vary based on the value of the **DefenseScene*	- parameter.***	- For more information, see the "**Protection rule parameters**" section in this topic.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// For more information, see the following section.
+	// For more information, see the following section
 	Rules *string `json:"Rules,omitempty" xml:"Rules,omitempty"`
-	// The ID of the protection rule template for which you want to create a protection rule.
+	// The ID of the rule template for which you want to create a protection rule.
 	//
 	// This parameter is required.
 	//
@@ -1678,6 +2111,205 @@ func (s *CreateDomainResponse) SetBody(v *CreateDomainResponseBody) *CreateDomai
 	return s
 }
 
+type CreateHybridCloudGroupRequest struct {
+	// The region in which the node resides. Specify the parameter in the Carrier code-Continent code-City code format.
+	//
+	// example:
+	//
+	// aliyun-asiapacific-beijing
+	BackSourceMark *string `json:"BackSourceMark,omitempty" xml:"BackSourceMark,omitempty"`
+	// The ID of the hybrid cloud cluster.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	ClusterId *int64 `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The name of the node group.
+	//
+	// This parameter is required.
+	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// The type of the node group. Valid values:
+	//
+	// 	- **protect**
+	//
+	// 	- **control**
+	//
+	// 	- **storage**
+	//
+	// 	- **controlStorage**
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// protect
+	GroupType *string `json:"GroupType,omitempty" xml:"GroupType,omitempty"`
+	// The ID of the WAF instance.
+	//
+	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf-cn-n6w***x52m
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The IP address of the server used for load balancing.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 3.3.3.3
+	LoadBalanceIp *string `json:"LoadBalanceIp,omitempty" xml:"LoadBalanceIp,omitempty"`
+	// The region in which the node resides. Specify the parameter in the Carrier code-Continent code-City code format.
+	//
+	// example:
+	//
+	// 0-410-0
+	LocationCode *string `json:"LocationCode,omitempty" xml:"LocationCode,omitempty"`
+	// The region in which the WAF instance is deployed. Valid values:
+	//
+	// 	- **cn-hangzhou**: Chinese mainland.
+	//
+	// 	- **ap-southeast-1**: outside the Chinese mainland.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The remarks.
+	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// The ID of the Alibaba Cloud resource group.
+	//
+	// example:
+	//
+	// rg-acfm***q
+	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
+}
+
+func (s CreateHybridCloudGroupRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateHybridCloudGroupRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateHybridCloudGroupRequest) SetBackSourceMark(v string) *CreateHybridCloudGroupRequest {
+	s.BackSourceMark = &v
+	return s
+}
+
+func (s *CreateHybridCloudGroupRequest) SetClusterId(v int64) *CreateHybridCloudGroupRequest {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *CreateHybridCloudGroupRequest) SetGroupName(v string) *CreateHybridCloudGroupRequest {
+	s.GroupName = &v
+	return s
+}
+
+func (s *CreateHybridCloudGroupRequest) SetGroupType(v string) *CreateHybridCloudGroupRequest {
+	s.GroupType = &v
+	return s
+}
+
+func (s *CreateHybridCloudGroupRequest) SetInstanceId(v string) *CreateHybridCloudGroupRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *CreateHybridCloudGroupRequest) SetLoadBalanceIp(v string) *CreateHybridCloudGroupRequest {
+	s.LoadBalanceIp = &v
+	return s
+}
+
+func (s *CreateHybridCloudGroupRequest) SetLocationCode(v string) *CreateHybridCloudGroupRequest {
+	s.LocationCode = &v
+	return s
+}
+
+func (s *CreateHybridCloudGroupRequest) SetRegionId(v string) *CreateHybridCloudGroupRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *CreateHybridCloudGroupRequest) SetRemark(v string) *CreateHybridCloudGroupRequest {
+	s.Remark = &v
+	return s
+}
+
+func (s *CreateHybridCloudGroupRequest) SetResourceManagerResourceGroupId(v string) *CreateHybridCloudGroupRequest {
+	s.ResourceManagerResourceGroupId = &v
+	return s
+}
+
+type CreateHybridCloudGroupResponseBody struct {
+	// The ID of the node group.
+	//
+	// example:
+	//
+	// 1
+	Data *int64 `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 48F7C7BA-0932-50EA-89AD-5B0E1***274
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateHybridCloudGroupResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateHybridCloudGroupResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateHybridCloudGroupResponseBody) SetData(v int64) *CreateHybridCloudGroupResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *CreateHybridCloudGroupResponseBody) SetRequestId(v string) *CreateHybridCloudGroupResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateHybridCloudGroupResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateHybridCloudGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateHybridCloudGroupResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateHybridCloudGroupResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateHybridCloudGroupResponse) SetHeaders(v map[string]*string) *CreateHybridCloudGroupResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateHybridCloudGroupResponse) SetStatusCode(v int32) *CreateHybridCloudGroupResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateHybridCloudGroupResponse) SetBody(v *CreateHybridCloudGroupResponseBody) *CreateHybridCloudGroupResponse {
+	s.Body = v
+	return s
+}
+
 type CreateMajorProtectionBlackIpRequest struct {
 	// The description of the IP address blacklist.
 	//
@@ -2499,6 +3131,130 @@ func (s *DeleteApisecEventResponse) SetStatusCode(v int32) *DeleteApisecEventRes
 }
 
 func (s *DeleteApisecEventResponse) SetBody(v *DeleteApisecEventResponseBody) *DeleteApisecEventResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteCloudResourceRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf_v2_public_cn-***
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 443
+	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// lb-bp1*****jqnnqk5uj2p
+	ResourceInstanceId *string `json:"ResourceInstanceId,omitempty" xml:"ResourceInstanceId,omitempty"`
+	// example:
+	//
+	// rg-acfm***q
+	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// clb7
+	ResourceProduct *string `json:"ResourceProduct,omitempty" xml:"ResourceProduct,omitempty"`
+}
+
+func (s DeleteCloudResourceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteCloudResourceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteCloudResourceRequest) SetInstanceId(v string) *DeleteCloudResourceRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DeleteCloudResourceRequest) SetPort(v int32) *DeleteCloudResourceRequest {
+	s.Port = &v
+	return s
+}
+
+func (s *DeleteCloudResourceRequest) SetRegionId(v string) *DeleteCloudResourceRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DeleteCloudResourceRequest) SetResourceInstanceId(v string) *DeleteCloudResourceRequest {
+	s.ResourceInstanceId = &v
+	return s
+}
+
+func (s *DeleteCloudResourceRequest) SetResourceManagerResourceGroupId(v string) *DeleteCloudResourceRequest {
+	s.ResourceManagerResourceGroupId = &v
+	return s
+}
+
+func (s *DeleteCloudResourceRequest) SetResourceProduct(v string) *DeleteCloudResourceRequest {
+	s.ResourceProduct = &v
+	return s
+}
+
+type DeleteCloudResourceResponseBody struct {
+	// example:
+	//
+	// D7861F61-5B61-46CE-A47C-***
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteCloudResourceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteCloudResourceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteCloudResourceResponseBody) SetRequestId(v string) *DeleteCloudResourceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteCloudResourceResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteCloudResourceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteCloudResourceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteCloudResourceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteCloudResourceResponse) SetHeaders(v map[string]*string) *DeleteCloudResourceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteCloudResourceResponse) SetStatusCode(v int32) *DeleteCloudResourceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteCloudResourceResponse) SetBody(v *DeleteCloudResourceResponseBody) *DeleteCloudResourceResponse {
 	s.Body = v
 	return s
 }
@@ -5184,6 +5940,515 @@ func (s *DescribeCertsResponse) SetBody(v *DescribeCertsResponseBody) *DescribeC
 	return s
 }
 
+type DescribeCloudResourceAccessPortDetailsRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf-cn-tl32ast****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 443
+	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
+	// example:
+	//
+	// https
+	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// lb-2zeugkfj81jvo****4tqm
+	ResourceInstanceId *string `json:"ResourceInstanceId,omitempty" xml:"ResourceInstanceId,omitempty"`
+	// example:
+	//
+	// rg-acfm***q
+	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
+	// example:
+	//
+	// clb7
+	ResourceProduct *string `json:"ResourceProduct,omitempty" xml:"ResourceProduct,omitempty"`
+}
+
+func (s DescribeCloudResourceAccessPortDetailsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCloudResourceAccessPortDetailsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCloudResourceAccessPortDetailsRequest) SetInstanceId(v string) *DescribeCloudResourceAccessPortDetailsRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeCloudResourceAccessPortDetailsRequest) SetPageNumber(v int32) *DescribeCloudResourceAccessPortDetailsRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeCloudResourceAccessPortDetailsRequest) SetPageSize(v int32) *DescribeCloudResourceAccessPortDetailsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeCloudResourceAccessPortDetailsRequest) SetPort(v string) *DescribeCloudResourceAccessPortDetailsRequest {
+	s.Port = &v
+	return s
+}
+
+func (s *DescribeCloudResourceAccessPortDetailsRequest) SetProtocol(v string) *DescribeCloudResourceAccessPortDetailsRequest {
+	s.Protocol = &v
+	return s
+}
+
+func (s *DescribeCloudResourceAccessPortDetailsRequest) SetRegionId(v string) *DescribeCloudResourceAccessPortDetailsRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeCloudResourceAccessPortDetailsRequest) SetResourceInstanceId(v string) *DescribeCloudResourceAccessPortDetailsRequest {
+	s.ResourceInstanceId = &v
+	return s
+}
+
+func (s *DescribeCloudResourceAccessPortDetailsRequest) SetResourceManagerResourceGroupId(v string) *DescribeCloudResourceAccessPortDetailsRequest {
+	s.ResourceManagerResourceGroupId = &v
+	return s
+}
+
+func (s *DescribeCloudResourceAccessPortDetailsRequest) SetResourceProduct(v string) *DescribeCloudResourceAccessPortDetailsRequest {
+	s.ResourceProduct = &v
+	return s
+}
+
+type DescribeCloudResourceAccessPortDetailsResponseBody struct {
+	AccessPortDetails []*DescribeCloudResourceAccessPortDetailsResponseBodyAccessPortDetails `json:"AccessPortDetails,omitempty" xml:"AccessPortDetails,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 2EFCFE18-78F8-5079-B312-07***48B
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 10
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s DescribeCloudResourceAccessPortDetailsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCloudResourceAccessPortDetailsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCloudResourceAccessPortDetailsResponseBody) SetAccessPortDetails(v []*DescribeCloudResourceAccessPortDetailsResponseBodyAccessPortDetails) *DescribeCloudResourceAccessPortDetailsResponseBody {
+	s.AccessPortDetails = v
+	return s
+}
+
+func (s *DescribeCloudResourceAccessPortDetailsResponseBody) SetRequestId(v string) *DescribeCloudResourceAccessPortDetailsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeCloudResourceAccessPortDetailsResponseBody) SetTotalCount(v int32) *DescribeCloudResourceAccessPortDetailsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type DescribeCloudResourceAccessPortDetailsResponseBodyAccessPortDetails struct {
+	Certificates []*DescribeCloudResourceAccessPortDetailsResponseBodyAccessPortDetailsCertificates `json:"Certificates,omitempty" xml:"Certificates,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	CipherSuite   *int32    `json:"CipherSuite,omitempty" xml:"CipherSuite,omitempty"`
+	CustomCiphers []*string `json:"CustomCiphers,omitempty" xml:"CustomCiphers,omitempty" type:"Repeated"`
+	// example:
+	//
+	// true
+	EnableTLSv3 *bool `json:"EnableTLSv3,omitempty" xml:"EnableTLSv3,omitempty"`
+	// example:
+	//
+	// True
+	Http2Enabled *bool `json:"Http2Enabled,omitempty" xml:"Http2Enabled,omitempty"`
+	// example:
+	//
+	// true
+	Keepalive *bool `json:"Keepalive,omitempty" xml:"Keepalive,omitempty"`
+	// example:
+	//
+	// 1000
+	KeepaliveRequests *int32 `json:"KeepaliveRequests,omitempty" xml:"KeepaliveRequests,omitempty"`
+	// example:
+	//
+	// 10
+	KeepaliveTimeout *int32                                                                           `json:"KeepaliveTimeout,omitempty" xml:"KeepaliveTimeout,omitempty"`
+	LogHeaders       []*DescribeCloudResourceAccessPortDetailsResponseBodyAccessPortDetailsLogHeaders `json:"LogHeaders,omitempty" xml:"LogHeaders,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 123
+	OwnerUserId *string `json:"OwnerUserId,omitempty" xml:"OwnerUserId,omitempty"`
+	// example:
+	//
+	// 443
+	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
+	// example:
+	//
+	// https
+	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	// example:
+	//
+	// 5
+	ReadTimeout *int32 `json:"ReadTimeout,omitempty" xml:"ReadTimeout,omitempty"`
+	// example:
+	//
+	// 1
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// tlsv1
+	TLSVersion *string `json:"TLSVersion,omitempty" xml:"TLSVersion,omitempty"`
+	// example:
+	//
+	// 1
+	WriteTimeout *int32 `json:"WriteTimeout,omitempty" xml:"WriteTimeout,omitempty"`
+	// example:
+	//
+	// 0
+	XffHeaderMode *int32    `json:"XffHeaderMode,omitempty" xml:"XffHeaderMode,omitempty"`
+	XffHeaders    []*string `json:"XffHeaders,omitempty" xml:"XffHeaders,omitempty" type:"Repeated"`
+	// example:
+	//
+	// true
+	XffProto *bool `json:"XffProto,omitempty" xml:"XffProto,omitempty"`
+}
+
+func (s DescribeCloudResourceAccessPortDetailsResponseBodyAccessPortDetails) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCloudResourceAccessPortDetailsResponseBodyAccessPortDetails) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCloudResourceAccessPortDetailsResponseBodyAccessPortDetails) SetCertificates(v []*DescribeCloudResourceAccessPortDetailsResponseBodyAccessPortDetailsCertificates) *DescribeCloudResourceAccessPortDetailsResponseBodyAccessPortDetails {
+	s.Certificates = v
+	return s
+}
+
+func (s *DescribeCloudResourceAccessPortDetailsResponseBodyAccessPortDetails) SetCipherSuite(v int32) *DescribeCloudResourceAccessPortDetailsResponseBodyAccessPortDetails {
+	s.CipherSuite = &v
+	return s
+}
+
+func (s *DescribeCloudResourceAccessPortDetailsResponseBodyAccessPortDetails) SetCustomCiphers(v []*string) *DescribeCloudResourceAccessPortDetailsResponseBodyAccessPortDetails {
+	s.CustomCiphers = v
+	return s
+}
+
+func (s *DescribeCloudResourceAccessPortDetailsResponseBodyAccessPortDetails) SetEnableTLSv3(v bool) *DescribeCloudResourceAccessPortDetailsResponseBodyAccessPortDetails {
+	s.EnableTLSv3 = &v
+	return s
+}
+
+func (s *DescribeCloudResourceAccessPortDetailsResponseBodyAccessPortDetails) SetHttp2Enabled(v bool) *DescribeCloudResourceAccessPortDetailsResponseBodyAccessPortDetails {
+	s.Http2Enabled = &v
+	return s
+}
+
+func (s *DescribeCloudResourceAccessPortDetailsResponseBodyAccessPortDetails) SetKeepalive(v bool) *DescribeCloudResourceAccessPortDetailsResponseBodyAccessPortDetails {
+	s.Keepalive = &v
+	return s
+}
+
+func (s *DescribeCloudResourceAccessPortDetailsResponseBodyAccessPortDetails) SetKeepaliveRequests(v int32) *DescribeCloudResourceAccessPortDetailsResponseBodyAccessPortDetails {
+	s.KeepaliveRequests = &v
+	return s
+}
+
+func (s *DescribeCloudResourceAccessPortDetailsResponseBodyAccessPortDetails) SetKeepaliveTimeout(v int32) *DescribeCloudResourceAccessPortDetailsResponseBodyAccessPortDetails {
+	s.KeepaliveTimeout = &v
+	return s
+}
+
+func (s *DescribeCloudResourceAccessPortDetailsResponseBodyAccessPortDetails) SetLogHeaders(v []*DescribeCloudResourceAccessPortDetailsResponseBodyAccessPortDetailsLogHeaders) *DescribeCloudResourceAccessPortDetailsResponseBodyAccessPortDetails {
+	s.LogHeaders = v
+	return s
+}
+
+func (s *DescribeCloudResourceAccessPortDetailsResponseBodyAccessPortDetails) SetOwnerUserId(v string) *DescribeCloudResourceAccessPortDetailsResponseBodyAccessPortDetails {
+	s.OwnerUserId = &v
+	return s
+}
+
+func (s *DescribeCloudResourceAccessPortDetailsResponseBodyAccessPortDetails) SetPort(v int32) *DescribeCloudResourceAccessPortDetailsResponseBodyAccessPortDetails {
+	s.Port = &v
+	return s
+}
+
+func (s *DescribeCloudResourceAccessPortDetailsResponseBodyAccessPortDetails) SetProtocol(v string) *DescribeCloudResourceAccessPortDetailsResponseBodyAccessPortDetails {
+	s.Protocol = &v
+	return s
+}
+
+func (s *DescribeCloudResourceAccessPortDetailsResponseBodyAccessPortDetails) SetReadTimeout(v int32) *DescribeCloudResourceAccessPortDetailsResponseBodyAccessPortDetails {
+	s.ReadTimeout = &v
+	return s
+}
+
+func (s *DescribeCloudResourceAccessPortDetailsResponseBodyAccessPortDetails) SetStatus(v int32) *DescribeCloudResourceAccessPortDetailsResponseBodyAccessPortDetails {
+	s.Status = &v
+	return s
+}
+
+func (s *DescribeCloudResourceAccessPortDetailsResponseBodyAccessPortDetails) SetTLSVersion(v string) *DescribeCloudResourceAccessPortDetailsResponseBodyAccessPortDetails {
+	s.TLSVersion = &v
+	return s
+}
+
+func (s *DescribeCloudResourceAccessPortDetailsResponseBodyAccessPortDetails) SetWriteTimeout(v int32) *DescribeCloudResourceAccessPortDetailsResponseBodyAccessPortDetails {
+	s.WriteTimeout = &v
+	return s
+}
+
+func (s *DescribeCloudResourceAccessPortDetailsResponseBodyAccessPortDetails) SetXffHeaderMode(v int32) *DescribeCloudResourceAccessPortDetailsResponseBodyAccessPortDetails {
+	s.XffHeaderMode = &v
+	return s
+}
+
+func (s *DescribeCloudResourceAccessPortDetailsResponseBodyAccessPortDetails) SetXffHeaders(v []*string) *DescribeCloudResourceAccessPortDetailsResponseBodyAccessPortDetails {
+	s.XffHeaders = v
+	return s
+}
+
+func (s *DescribeCloudResourceAccessPortDetailsResponseBodyAccessPortDetails) SetXffProto(v bool) *DescribeCloudResourceAccessPortDetailsResponseBodyAccessPortDetails {
+	s.XffProto = &v
+	return s
+}
+
+type DescribeCloudResourceAccessPortDetailsResponseBodyAccessPortDetailsCertificates struct {
+	// example:
+	//
+	// default
+	AppliedType *string `json:"AppliedType,omitempty" xml:"AppliedType,omitempty"`
+	// example:
+	//
+	// 123-cn-hangzhou
+	CertificateId *string `json:"CertificateId,omitempty" xml:"CertificateId,omitempty"`
+	// example:
+	//
+	// cert-name1
+	CertificateName *string `json:"CertificateName,omitempty" xml:"CertificateName,omitempty"`
+}
+
+func (s DescribeCloudResourceAccessPortDetailsResponseBodyAccessPortDetailsCertificates) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCloudResourceAccessPortDetailsResponseBodyAccessPortDetailsCertificates) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCloudResourceAccessPortDetailsResponseBodyAccessPortDetailsCertificates) SetAppliedType(v string) *DescribeCloudResourceAccessPortDetailsResponseBodyAccessPortDetailsCertificates {
+	s.AppliedType = &v
+	return s
+}
+
+func (s *DescribeCloudResourceAccessPortDetailsResponseBodyAccessPortDetailsCertificates) SetCertificateId(v string) *DescribeCloudResourceAccessPortDetailsResponseBodyAccessPortDetailsCertificates {
+	s.CertificateId = &v
+	return s
+}
+
+func (s *DescribeCloudResourceAccessPortDetailsResponseBodyAccessPortDetailsCertificates) SetCertificateName(v string) *DescribeCloudResourceAccessPortDetailsResponseBodyAccessPortDetailsCertificates {
+	s.CertificateName = &v
+	return s
+}
+
+type DescribeCloudResourceAccessPortDetailsResponseBodyAccessPortDetailsLogHeaders struct {
+	// example:
+	//
+	// key1
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// value1
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s DescribeCloudResourceAccessPortDetailsResponseBodyAccessPortDetailsLogHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCloudResourceAccessPortDetailsResponseBodyAccessPortDetailsLogHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCloudResourceAccessPortDetailsResponseBodyAccessPortDetailsLogHeaders) SetKey(v string) *DescribeCloudResourceAccessPortDetailsResponseBodyAccessPortDetailsLogHeaders {
+	s.Key = &v
+	return s
+}
+
+func (s *DescribeCloudResourceAccessPortDetailsResponseBodyAccessPortDetailsLogHeaders) SetValue(v string) *DescribeCloudResourceAccessPortDetailsResponseBodyAccessPortDetailsLogHeaders {
+	s.Value = &v
+	return s
+}
+
+type DescribeCloudResourceAccessPortDetailsResponse struct {
+	Headers    map[string]*string                                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeCloudResourceAccessPortDetailsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeCloudResourceAccessPortDetailsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCloudResourceAccessPortDetailsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCloudResourceAccessPortDetailsResponse) SetHeaders(v map[string]*string) *DescribeCloudResourceAccessPortDetailsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeCloudResourceAccessPortDetailsResponse) SetStatusCode(v int32) *DescribeCloudResourceAccessPortDetailsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeCloudResourceAccessPortDetailsResponse) SetBody(v *DescribeCloudResourceAccessPortDetailsResponseBody) *DescribeCloudResourceAccessPortDetailsResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeCloudResourceAccessedPortsRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf-cn-tl32ast****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// lb-bp1*****jqnnqk5uj2p
+	ResourceInstanceId *string `json:"ResourceInstanceId,omitempty" xml:"ResourceInstanceId,omitempty"`
+	// example:
+	//
+	// rg-aekzwwkpn****5i
+	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
+}
+
+func (s DescribeCloudResourceAccessedPortsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCloudResourceAccessedPortsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCloudResourceAccessedPortsRequest) SetInstanceId(v string) *DescribeCloudResourceAccessedPortsRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeCloudResourceAccessedPortsRequest) SetRegionId(v string) *DescribeCloudResourceAccessedPortsRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeCloudResourceAccessedPortsRequest) SetResourceInstanceId(v string) *DescribeCloudResourceAccessedPortsRequest {
+	s.ResourceInstanceId = &v
+	return s
+}
+
+func (s *DescribeCloudResourceAccessedPortsRequest) SetResourceManagerResourceGroupId(v string) *DescribeCloudResourceAccessedPortsRequest {
+	s.ResourceManagerResourceGroupId = &v
+	return s
+}
+
+type DescribeCloudResourceAccessedPortsResponseBody struct {
+	Http  []*int32 `json:"Http,omitempty" xml:"Http,omitempty" type:"Repeated"`
+	Https []*int32 `json:"Https,omitempty" xml:"Https,omitempty" type:"Repeated"`
+	// example:
+	//
+	// C1823E96-EF4B-5BD2-9E02-1D18****3ED8
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeCloudResourceAccessedPortsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCloudResourceAccessedPortsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCloudResourceAccessedPortsResponseBody) SetHttp(v []*int32) *DescribeCloudResourceAccessedPortsResponseBody {
+	s.Http = v
+	return s
+}
+
+func (s *DescribeCloudResourceAccessedPortsResponseBody) SetHttps(v []*int32) *DescribeCloudResourceAccessedPortsResponseBody {
+	s.Https = v
+	return s
+}
+
+func (s *DescribeCloudResourceAccessedPortsResponseBody) SetRequestId(v string) *DescribeCloudResourceAccessedPortsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeCloudResourceAccessedPortsResponse struct {
+	Headers    map[string]*string                              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeCloudResourceAccessedPortsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeCloudResourceAccessedPortsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCloudResourceAccessedPortsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCloudResourceAccessedPortsResponse) SetHeaders(v map[string]*string) *DescribeCloudResourceAccessedPortsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeCloudResourceAccessedPortsResponse) SetStatusCode(v int32) *DescribeCloudResourceAccessedPortsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeCloudResourceAccessedPortsResponse) SetBody(v *DescribeCloudResourceAccessedPortsResponseBody) *DescribeCloudResourceAccessedPortsResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeCloudResourcesRequest struct {
 	// The ID of the WAF instance.
 	//
@@ -5240,7 +6505,10 @@ type DescribeCloudResourcesRequest struct {
 	// example:
 	//
 	// alb-43glijk0fr****gths
-	ResourceInstanceId   *string `json:"ResourceInstanceId,omitempty" xml:"ResourceInstanceId,omitempty"`
+	ResourceInstanceId *string `json:"ResourceInstanceId,omitempty" xml:"ResourceInstanceId,omitempty"`
+	// example:
+	//
+	// test-name
 	ResourceInstanceName *string `json:"ResourceInstanceName,omitempty" xml:"ResourceInstanceName,omitempty"`
 	// The ID of the Alibaba Cloud resource group.
 	//
@@ -5407,7 +6675,13 @@ func (s *DescribeCloudResourcesResponseBody) SetTotalCount(v int64) *DescribeClo
 }
 
 type DescribeCloudResourcesResponseBodyCloudResources struct {
-	HttpPortCount  *int32 `json:"HttpPortCount,omitempty" xml:"HttpPortCount,omitempty"`
+	// example:
+	//
+	// 1
+	HttpPortCount *int32 `json:"HttpPortCount,omitempty" xml:"HttpPortCount,omitempty"`
+	// example:
+	//
+	// 1
 	HttpsPortCount *int32 `json:"HttpsPortCount,omitempty" xml:"HttpsPortCount,omitempty"`
 	// The ID of the Alibaba Cloud account to which the resource belongs.
 	//
@@ -5434,9 +6708,18 @@ type DescribeCloudResourcesResponseBodyCloudResources struct {
 	// example:
 	//
 	// alb-ffff****
-	ResourceInstance     *string `json:"ResourceInstance,omitempty" xml:"ResourceInstance,omitempty"`
-	ResourceInstanceId   *string `json:"ResourceInstanceId,omitempty" xml:"ResourceInstanceId,omitempty"`
-	ResourceInstanceIp   *string `json:"ResourceInstanceIp,omitempty" xml:"ResourceInstanceIp,omitempty"`
+	ResourceInstance *string `json:"ResourceInstance,omitempty" xml:"ResourceInstance,omitempty"`
+	// example:
+	//
+	// lb-uf60ub45fr9b***
+	ResourceInstanceId *string `json:"ResourceInstanceId,omitempty" xml:"ResourceInstanceId,omitempty"`
+	// example:
+	//
+	// 1.1.1.1
+	ResourceInstanceIp *string `json:"ResourceInstanceIp,omitempty" xml:"ResourceInstanceIp,omitempty"`
+	// example:
+	//
+	// test-name
 	ResourceInstanceName *string `json:"ResourceInstanceName,omitempty" xml:"ResourceInstanceName,omitempty"`
 	// Deprecated
 	//
@@ -5863,6 +7146,157 @@ func (s *DescribeDDoSStatusResponse) SetStatusCode(v int32) *DescribeDDoSStatusR
 }
 
 func (s *DescribeDDoSStatusResponse) SetBody(v *DescribeDDoSStatusResponseBody) *DescribeDDoSStatusResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeDefaultHttpsRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf-cn-7pp26f1****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// rg-acfm***q
+	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
+}
+
+func (s DescribeDefaultHttpsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDefaultHttpsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDefaultHttpsRequest) SetInstanceId(v string) *DescribeDefaultHttpsRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeDefaultHttpsRequest) SetRegionId(v string) *DescribeDefaultHttpsRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeDefaultHttpsRequest) SetResourceManagerResourceGroupId(v string) *DescribeDefaultHttpsRequest {
+	s.ResourceManagerResourceGroupId = &v
+	return s
+}
+
+type DescribeDefaultHttpsResponseBody struct {
+	DefaultHttps *DescribeDefaultHttpsResponseBodyDefaultHttps `json:"DefaultHttps,omitempty" xml:"DefaultHttps,omitempty" type:"Struct"`
+	// example:
+	//
+	// F35F45B0-5D6B-4238-BE02-A62D****E840
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeDefaultHttpsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDefaultHttpsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDefaultHttpsResponseBody) SetDefaultHttps(v *DescribeDefaultHttpsResponseBodyDefaultHttps) *DescribeDefaultHttpsResponseBody {
+	s.DefaultHttps = v
+	return s
+}
+
+func (s *DescribeDefaultHttpsResponseBody) SetRequestId(v string) *DescribeDefaultHttpsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeDefaultHttpsResponseBodyDefaultHttps struct {
+	// example:
+	//
+	// 123-cn-hangzhou
+	CertId *string `json:"CertId,omitempty" xml:"CertId,omitempty"`
+	// example:
+	//
+	// 1
+	CipherSuite *string `json:"CipherSuite,omitempty" xml:"CipherSuite,omitempty"`
+	// example:
+	//
+	// ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-RSA-AES256-GCM-SHA384
+	CustomCiphers *string `json:"CustomCiphers,omitempty" xml:"CustomCiphers,omitempty"`
+	// example:
+	//
+	// true
+	EnableTLSv3 *bool `json:"EnableTLSv3,omitempty" xml:"EnableTLSv3,omitempty"`
+	// example:
+	//
+	// tlsv1
+	TLSVersion *string `json:"TLSVersion,omitempty" xml:"TLSVersion,omitempty"`
+}
+
+func (s DescribeDefaultHttpsResponseBodyDefaultHttps) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDefaultHttpsResponseBodyDefaultHttps) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDefaultHttpsResponseBodyDefaultHttps) SetCertId(v string) *DescribeDefaultHttpsResponseBodyDefaultHttps {
+	s.CertId = &v
+	return s
+}
+
+func (s *DescribeDefaultHttpsResponseBodyDefaultHttps) SetCipherSuite(v string) *DescribeDefaultHttpsResponseBodyDefaultHttps {
+	s.CipherSuite = &v
+	return s
+}
+
+func (s *DescribeDefaultHttpsResponseBodyDefaultHttps) SetCustomCiphers(v string) *DescribeDefaultHttpsResponseBodyDefaultHttps {
+	s.CustomCiphers = &v
+	return s
+}
+
+func (s *DescribeDefaultHttpsResponseBodyDefaultHttps) SetEnableTLSv3(v bool) *DescribeDefaultHttpsResponseBodyDefaultHttps {
+	s.EnableTLSv3 = &v
+	return s
+}
+
+func (s *DescribeDefaultHttpsResponseBodyDefaultHttps) SetTLSVersion(v string) *DescribeDefaultHttpsResponseBodyDefaultHttps {
+	s.TLSVersion = &v
+	return s
+}
+
+type DescribeDefaultHttpsResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeDefaultHttpsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeDefaultHttpsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDefaultHttpsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDefaultHttpsResponse) SetHeaders(v map[string]*string) *DescribeDefaultHttpsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeDefaultHttpsResponse) SetStatusCode(v int32) *DescribeDefaultHttpsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeDefaultHttpsResponse) SetBody(v *DescribeDefaultHttpsResponseBody) *DescribeDefaultHttpsResponse {
 	s.Body = v
 	return s
 }
@@ -11081,6 +12515,420 @@ func (s *DescribeFlowTopUrlResponse) SetBody(v *DescribeFlowTopUrlResponseBody) 
 	return s
 }
 
+type DescribeHybridCloudClusterRuleRequest struct {
+	// The ID of the hybrid cloud cluster.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	ClusterId *int64 `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The ID of the WAF instance.
+	//
+	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf-cn-uqm33n***02
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The region in which the WAF instance is deployed. Valid value:
+	//
+	// 	- **cn-hangzhou**: Chinese mainland.
+	//
+	// 	- **ap-southeast-1**: outside the Chinese mainland.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the Alibaba Cloud resource group.
+	//
+	// example:
+	//
+	// rg-acfm***q
+	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
+	// The type of the rule. Valid values:
+	//
+	// 	- **pullin**: The traffic redirection rule of the hybrid cloud cluster.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pullin
+	RuleType *string `json:"RuleType,omitempty" xml:"RuleType,omitempty"`
+}
+
+func (s DescribeHybridCloudClusterRuleRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeHybridCloudClusterRuleRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeHybridCloudClusterRuleRequest) SetClusterId(v int64) *DescribeHybridCloudClusterRuleRequest {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *DescribeHybridCloudClusterRuleRequest) SetInstanceId(v string) *DescribeHybridCloudClusterRuleRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeHybridCloudClusterRuleRequest) SetRegionId(v string) *DescribeHybridCloudClusterRuleRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeHybridCloudClusterRuleRequest) SetResourceManagerResourceGroupId(v string) *DescribeHybridCloudClusterRuleRequest {
+	s.ResourceManagerResourceGroupId = &v
+	return s
+}
+
+func (s *DescribeHybridCloudClusterRuleRequest) SetRuleType(v string) *DescribeHybridCloudClusterRuleRequest {
+	s.RuleType = &v
+	return s
+}
+
+type DescribeHybridCloudClusterRuleResponseBody struct {
+	// The details of the rule.
+	ClusterRule *DescribeHybridCloudClusterRuleResponseBodyClusterRule `json:"ClusterRule,omitempty" xml:"ClusterRule,omitempty" type:"Struct"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 1F29A6D2-9EB6-526D-A997-36888**99CB
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeHybridCloudClusterRuleResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeHybridCloudClusterRuleResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeHybridCloudClusterRuleResponseBody) SetClusterRule(v *DescribeHybridCloudClusterRuleResponseBodyClusterRule) *DescribeHybridCloudClusterRuleResponseBody {
+	s.ClusterRule = v
+	return s
+}
+
+func (s *DescribeHybridCloudClusterRuleResponseBody) SetRequestId(v string) *DescribeHybridCloudClusterRuleResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeHybridCloudClusterRuleResponseBodyClusterRule struct {
+	// The configuration of the rule.
+	//
+	// example:
+	//
+	// {\\"check_mode\\":\\"all\\",\\"exclude\\":{\\"exact\\":[],\\"regex\\":[]}}
+	RuleConfig *string `json:"RuleConfig,omitempty" xml:"RuleConfig,omitempty"`
+	// The status of the rule. Valid values:
+	//
+	// 	- **on**: enabled.
+	//
+	// 	- **off**: disabled.
+	//
+	// example:
+	//
+	// on
+	RuleStatus *string `json:"RuleStatus,omitempty" xml:"RuleStatus,omitempty"`
+	// The type of the rule. Valid values:
+	//
+	// 	- **pullin**: The traffic redirection rule of the hybrid cloud cluster.
+	//
+	// example:
+	//
+	// pullin
+	RuleType *string `json:"RuleType,omitempty" xml:"RuleType,omitempty"`
+}
+
+func (s DescribeHybridCloudClusterRuleResponseBodyClusterRule) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeHybridCloudClusterRuleResponseBodyClusterRule) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeHybridCloudClusterRuleResponseBodyClusterRule) SetRuleConfig(v string) *DescribeHybridCloudClusterRuleResponseBodyClusterRule {
+	s.RuleConfig = &v
+	return s
+}
+
+func (s *DescribeHybridCloudClusterRuleResponseBodyClusterRule) SetRuleStatus(v string) *DescribeHybridCloudClusterRuleResponseBodyClusterRule {
+	s.RuleStatus = &v
+	return s
+}
+
+func (s *DescribeHybridCloudClusterRuleResponseBodyClusterRule) SetRuleType(v string) *DescribeHybridCloudClusterRuleResponseBodyClusterRule {
+	s.RuleType = &v
+	return s
+}
+
+type DescribeHybridCloudClusterRuleResponse struct {
+	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeHybridCloudClusterRuleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeHybridCloudClusterRuleResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeHybridCloudClusterRuleResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeHybridCloudClusterRuleResponse) SetHeaders(v map[string]*string) *DescribeHybridCloudClusterRuleResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeHybridCloudClusterRuleResponse) SetStatusCode(v int32) *DescribeHybridCloudClusterRuleResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeHybridCloudClusterRuleResponse) SetBody(v *DescribeHybridCloudClusterRuleResponseBody) *DescribeHybridCloudClusterRuleResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeHybridCloudClustersRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf_v2_public_cn-uqm35****02
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// rg-acfm***q
+	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
+}
+
+func (s DescribeHybridCloudClustersRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeHybridCloudClustersRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeHybridCloudClustersRequest) SetInstanceId(v string) *DescribeHybridCloudClustersRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeHybridCloudClustersRequest) SetRegionId(v string) *DescribeHybridCloudClustersRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeHybridCloudClustersRequest) SetResourceManagerResourceGroupId(v string) *DescribeHybridCloudClustersRequest {
+	s.ResourceManagerResourceGroupId = &v
+	return s
+}
+
+type DescribeHybridCloudClustersResponseBody struct {
+	ClusterInfos []*DescribeHybridCloudClustersResponseBodyClusterInfos `json:"ClusterInfos,omitempty" xml:"ClusterInfos,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 66A98669-ER12-WE34-23PO-301469*****E
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeHybridCloudClustersResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeHybridCloudClustersResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeHybridCloudClustersResponseBody) SetClusterInfos(v []*DescribeHybridCloudClustersResponseBodyClusterInfos) *DescribeHybridCloudClustersResponseBody {
+	s.ClusterInfos = v
+	return s
+}
+
+func (s *DescribeHybridCloudClustersResponseBody) SetRequestId(v string) *DescribeHybridCloudClustersResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeHybridCloudClustersResponseBodyClusterInfos struct {
+	// example:
+	//
+	// internet
+	AccessMode *string `json:"AccessMode,omitempty" xml:"AccessMode,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	AccessRegion *string `json:"AccessRegion,omitempty" xml:"AccessRegion,omitempty"`
+	ClusterName  *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
+	// example:
+	//
+	// hdbc-cluster-t1****a
+	ClusterResourceId *string `json:"ClusterResourceId,omitempty" xml:"ClusterResourceId,omitempty"`
+	// example:
+	//
+	// 80,8080
+	HttpPorts *string `json:"HttpPorts,omitempty" xml:"HttpPorts,omitempty"`
+	// example:
+	//
+	// 443,8443
+	HttpsPorts *string `json:"HttpsPorts,omitempty" xml:"HttpsPorts,omitempty"`
+	// example:
+	//
+	// 524**8
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// 1
+	ProtectionServerCount *int32 `json:"ProtectionServerCount,omitempty" xml:"ProtectionServerCount,omitempty"`
+	// example:
+	//
+	// off
+	ProxyStatus *string `json:"ProxyStatus,omitempty" xml:"ProxyStatus,omitempty"`
+	// example:
+	//
+	// cname
+	ProxyType *string `json:"ProxyType,omitempty" xml:"ProxyType,omitempty"`
+	Remark    *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// example:
+	//
+	// {"enable":true,"param":{"breaker":{"duration":1,"failed":1,"recent_failed":1},"disable_protect":false,"max_request_body_len":1,"timeout":1}}
+	RuleConfig *string `json:"RuleConfig,omitempty" xml:"RuleConfig,omitempty"`
+	// example:
+	//
+	// off
+	RuleStatus *string `json:"RuleStatus,omitempty" xml:"RuleStatus,omitempty"`
+	// example:
+	//
+	// bypass
+	RuleType *string `json:"RuleType,omitempty" xml:"RuleType,omitempty"`
+}
+
+func (s DescribeHybridCloudClustersResponseBodyClusterInfos) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeHybridCloudClustersResponseBodyClusterInfos) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeHybridCloudClustersResponseBodyClusterInfos) SetAccessMode(v string) *DescribeHybridCloudClustersResponseBodyClusterInfos {
+	s.AccessMode = &v
+	return s
+}
+
+func (s *DescribeHybridCloudClustersResponseBodyClusterInfos) SetAccessRegion(v string) *DescribeHybridCloudClustersResponseBodyClusterInfos {
+	s.AccessRegion = &v
+	return s
+}
+
+func (s *DescribeHybridCloudClustersResponseBodyClusterInfos) SetClusterName(v string) *DescribeHybridCloudClustersResponseBodyClusterInfos {
+	s.ClusterName = &v
+	return s
+}
+
+func (s *DescribeHybridCloudClustersResponseBodyClusterInfos) SetClusterResourceId(v string) *DescribeHybridCloudClustersResponseBodyClusterInfos {
+	s.ClusterResourceId = &v
+	return s
+}
+
+func (s *DescribeHybridCloudClustersResponseBodyClusterInfos) SetHttpPorts(v string) *DescribeHybridCloudClustersResponseBodyClusterInfos {
+	s.HttpPorts = &v
+	return s
+}
+
+func (s *DescribeHybridCloudClustersResponseBodyClusterInfos) SetHttpsPorts(v string) *DescribeHybridCloudClustersResponseBodyClusterInfos {
+	s.HttpsPorts = &v
+	return s
+}
+
+func (s *DescribeHybridCloudClustersResponseBodyClusterInfos) SetId(v int64) *DescribeHybridCloudClustersResponseBodyClusterInfos {
+	s.Id = &v
+	return s
+}
+
+func (s *DescribeHybridCloudClustersResponseBodyClusterInfos) SetProtectionServerCount(v int32) *DescribeHybridCloudClustersResponseBodyClusterInfos {
+	s.ProtectionServerCount = &v
+	return s
+}
+
+func (s *DescribeHybridCloudClustersResponseBodyClusterInfos) SetProxyStatus(v string) *DescribeHybridCloudClustersResponseBodyClusterInfos {
+	s.ProxyStatus = &v
+	return s
+}
+
+func (s *DescribeHybridCloudClustersResponseBodyClusterInfos) SetProxyType(v string) *DescribeHybridCloudClustersResponseBodyClusterInfos {
+	s.ProxyType = &v
+	return s
+}
+
+func (s *DescribeHybridCloudClustersResponseBodyClusterInfos) SetRemark(v string) *DescribeHybridCloudClustersResponseBodyClusterInfos {
+	s.Remark = &v
+	return s
+}
+
+func (s *DescribeHybridCloudClustersResponseBodyClusterInfos) SetRuleConfig(v string) *DescribeHybridCloudClustersResponseBodyClusterInfos {
+	s.RuleConfig = &v
+	return s
+}
+
+func (s *DescribeHybridCloudClustersResponseBodyClusterInfos) SetRuleStatus(v string) *DescribeHybridCloudClustersResponseBodyClusterInfos {
+	s.RuleStatus = &v
+	return s
+}
+
+func (s *DescribeHybridCloudClustersResponseBodyClusterInfos) SetRuleType(v string) *DescribeHybridCloudClustersResponseBodyClusterInfos {
+	s.RuleType = &v
+	return s
+}
+
+type DescribeHybridCloudClustersResponse struct {
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeHybridCloudClustersResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeHybridCloudClustersResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeHybridCloudClustersResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeHybridCloudClustersResponse) SetHeaders(v map[string]*string) *DescribeHybridCloudClustersResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeHybridCloudClustersResponse) SetStatusCode(v int32) *DescribeHybridCloudClustersResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeHybridCloudClustersResponse) SetBody(v *DescribeHybridCloudClustersResponseBody) *DescribeHybridCloudClustersResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeHybridCloudGroupsRequest struct {
 	// The ID of the hybrid cloud cluster.
 	//
@@ -12157,6 +14005,447 @@ func (s *DescribeHybridCloudResourcesResponse) SetStatusCode(v int32) *DescribeH
 }
 
 func (s *DescribeHybridCloudResourcesResponse) SetBody(v *DescribeHybridCloudResourcesResponseBody) *DescribeHybridCloudResourcesResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeHybridCloudServerRegionsRequest struct {
+	// The ID of the Web Application Firewall (WAF) instance.
+	//
+	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf_v3prepaid_public_cn-5yd****7009
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The code of the region.
+	//
+	// >  This parameter is required if you set RegionType to region. The value is the code of the city.
+	//
+	// example:
+	//
+	// 410
+	RegionCode *string `json:"RegionCode,omitempty" xml:"RegionCode,omitempty"`
+	// The region in which the WAF instance is deployed. Valid values:
+	//
+	// 	- **cn-hangzhou**: Chinese mainland.
+	//
+	// 	- **ap-southeast-1**: outside the Chinese mainland.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The type of the region. Valid values:
+	//
+	// 	- **operator**: the ISP.
+	//
+	// 	- **continents**: the continent.
+	//
+	// 	- **region**: the city.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// region
+	RegionType *string `json:"RegionType,omitempty" xml:"RegionType,omitempty"`
+	// The ID of the Alibaba Cloud resource group.
+	//
+	// example:
+	//
+	// rg-acfm***q
+	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
+}
+
+func (s DescribeHybridCloudServerRegionsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeHybridCloudServerRegionsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeHybridCloudServerRegionsRequest) SetInstanceId(v string) *DescribeHybridCloudServerRegionsRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeHybridCloudServerRegionsRequest) SetRegionCode(v string) *DescribeHybridCloudServerRegionsRequest {
+	s.RegionCode = &v
+	return s
+}
+
+func (s *DescribeHybridCloudServerRegionsRequest) SetRegionId(v string) *DescribeHybridCloudServerRegionsRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeHybridCloudServerRegionsRequest) SetRegionType(v string) *DescribeHybridCloudServerRegionsRequest {
+	s.RegionType = &v
+	return s
+}
+
+func (s *DescribeHybridCloudServerRegionsRequest) SetResourceManagerResourceGroupId(v string) *DescribeHybridCloudServerRegionsRequest {
+	s.ResourceManagerResourceGroupId = &v
+	return s
+}
+
+type DescribeHybridCloudServerRegionsResponseBody struct {
+	// The information about the regions.
+	Regions []*DescribeHybridCloudServerRegionsResponseBodyRegions `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Repeated"`
+	// The ID of the request.
+	//
+	// example:
+	//
+	// 0FBBDE11-C35F-531B-96BA-64CA****C875
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeHybridCloudServerRegionsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeHybridCloudServerRegionsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeHybridCloudServerRegionsResponseBody) SetRegions(v []*DescribeHybridCloudServerRegionsResponseBodyRegions) *DescribeHybridCloudServerRegionsResponseBody {
+	s.Regions = v
+	return s
+}
+
+func (s *DescribeHybridCloudServerRegionsResponseBody) SetRequestId(v string) *DescribeHybridCloudServerRegionsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeHybridCloudServerRegionsResponseBodyRegions struct {
+	// The code of the region.
+	//
+	// example:
+	//
+	// 1
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The name of the region.
+	//
+	// example:
+	//
+	// aliyun
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s DescribeHybridCloudServerRegionsResponseBodyRegions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeHybridCloudServerRegionsResponseBodyRegions) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeHybridCloudServerRegionsResponseBodyRegions) SetCode(v int32) *DescribeHybridCloudServerRegionsResponseBodyRegions {
+	s.Code = &v
+	return s
+}
+
+func (s *DescribeHybridCloudServerRegionsResponseBodyRegions) SetName(v string) *DescribeHybridCloudServerRegionsResponseBodyRegions {
+	s.Name = &v
+	return s
+}
+
+type DescribeHybridCloudServerRegionsResponse struct {
+	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeHybridCloudServerRegionsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeHybridCloudServerRegionsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeHybridCloudServerRegionsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeHybridCloudServerRegionsResponse) SetHeaders(v map[string]*string) *DescribeHybridCloudServerRegionsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeHybridCloudServerRegionsResponse) SetStatusCode(v int32) *DescribeHybridCloudServerRegionsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeHybridCloudServerRegionsResponse) SetBody(v *DescribeHybridCloudServerRegionsResponseBody) *DescribeHybridCloudServerRegionsResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeHybridCloudUnassignedMachinesRequest struct {
+	// The ID of the hybrid cloud cluster.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123
+	ClusterId *int32 `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The host name.
+	//
+	// example:
+	//
+	// online-xagent1
+	HostName *string `json:"HostName,omitempty" xml:"HostName,omitempty"`
+	// The ID of the Web Application Firewall (WAF) instance.
+	//
+	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf_v3prepaid_public_cn-5yd****7009
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The IP address of the server.
+	//
+	// example:
+	//
+	// 1.X.X.1
+	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	// The page number. Default value: **1**.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Default value: **10**.
+	//
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The region in which the WAF instance is deployed. Valid values:
+	//
+	// 	- **cn-hangzhou**: Chinese mainland.
+	//
+	// 	- **ap-southeast-1**: outside the Chinese mainland.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the Alibaba Cloud resource group.
+	//
+	// example:
+	//
+	// rg-acfm***q
+	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
+}
+
+func (s DescribeHybridCloudUnassignedMachinesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeHybridCloudUnassignedMachinesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeHybridCloudUnassignedMachinesRequest) SetClusterId(v int32) *DescribeHybridCloudUnassignedMachinesRequest {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *DescribeHybridCloudUnassignedMachinesRequest) SetHostName(v string) *DescribeHybridCloudUnassignedMachinesRequest {
+	s.HostName = &v
+	return s
+}
+
+func (s *DescribeHybridCloudUnassignedMachinesRequest) SetInstanceId(v string) *DescribeHybridCloudUnassignedMachinesRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeHybridCloudUnassignedMachinesRequest) SetIp(v string) *DescribeHybridCloudUnassignedMachinesRequest {
+	s.Ip = &v
+	return s
+}
+
+func (s *DescribeHybridCloudUnassignedMachinesRequest) SetPageNumber(v int32) *DescribeHybridCloudUnassignedMachinesRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeHybridCloudUnassignedMachinesRequest) SetPageSize(v int32) *DescribeHybridCloudUnassignedMachinesRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeHybridCloudUnassignedMachinesRequest) SetRegionId(v string) *DescribeHybridCloudUnassignedMachinesRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeHybridCloudUnassignedMachinesRequest) SetResourceManagerResourceGroupId(v string) *DescribeHybridCloudUnassignedMachinesRequest {
+	s.ResourceManagerResourceGroupId = &v
+	return s
+}
+
+type DescribeHybridCloudUnassignedMachinesResponseBody struct {
+	// The ID of the request.
+	//
+	// example:
+	//
+	// 3EBCFCE9-4A3C-5E01-915D-691B****510A
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 28
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The servers that are not assigned to the hybrid cloud cluster.
+	UnassignedMachines []*DescribeHybridCloudUnassignedMachinesResponseBodyUnassignedMachines `json:"UnassignedMachines,omitempty" xml:"UnassignedMachines,omitempty" type:"Repeated"`
+}
+
+func (s DescribeHybridCloudUnassignedMachinesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeHybridCloudUnassignedMachinesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeHybridCloudUnassignedMachinesResponseBody) SetRequestId(v string) *DescribeHybridCloudUnassignedMachinesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeHybridCloudUnassignedMachinesResponseBody) SetTotalCount(v int64) *DescribeHybridCloudUnassignedMachinesResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *DescribeHybridCloudUnassignedMachinesResponseBody) SetUnassignedMachines(v []*DescribeHybridCloudUnassignedMachinesResponseBodyUnassignedMachines) *DescribeHybridCloudUnassignedMachinesResponseBody {
+	s.UnassignedMachines = v
+	return s
+}
+
+type DescribeHybridCloudUnassignedMachinesResponseBodyUnassignedMachines struct {
+	// The number of CPU cores.
+	//
+	// example:
+	//
+	// 16
+	Cpu *int64 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	// The name of the node.
+	//
+	// example:
+	//
+	// exampleName
+	CustomName *string `json:"CustomName,omitempty" xml:"CustomName,omitempty"`
+	// The host name.
+	//
+	// example:
+	//
+	// online-xagent1
+	HostName *string `json:"HostName,omitempty" xml:"HostName,omitempty"`
+	// The IP address of the server.
+	//
+	// example:
+	//
+	// 1.X.X.1
+	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	// The media access control (MAC) address of the device.
+	//
+	// example:
+	//
+	// 00163e2686ac
+	Mac *string `json:"Mac,omitempty" xml:"Mac,omitempty"`
+	// The memory size. Unit: KB. A conversion factor of 1,000 is used.
+	//
+	// example:
+	//
+	// 31580872
+	Memory *int64 `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	// The ID of the node.
+	//
+	// example:
+	//
+	// 78db009ab6cf055a9085f9f4****ae3a
+	Mid *string `json:"Mid,omitempty" xml:"Mid,omitempty"`
+}
+
+func (s DescribeHybridCloudUnassignedMachinesResponseBodyUnassignedMachines) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeHybridCloudUnassignedMachinesResponseBodyUnassignedMachines) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeHybridCloudUnassignedMachinesResponseBodyUnassignedMachines) SetCpu(v int64) *DescribeHybridCloudUnassignedMachinesResponseBodyUnassignedMachines {
+	s.Cpu = &v
+	return s
+}
+
+func (s *DescribeHybridCloudUnassignedMachinesResponseBodyUnassignedMachines) SetCustomName(v string) *DescribeHybridCloudUnassignedMachinesResponseBodyUnassignedMachines {
+	s.CustomName = &v
+	return s
+}
+
+func (s *DescribeHybridCloudUnassignedMachinesResponseBodyUnassignedMachines) SetHostName(v string) *DescribeHybridCloudUnassignedMachinesResponseBodyUnassignedMachines {
+	s.HostName = &v
+	return s
+}
+
+func (s *DescribeHybridCloudUnassignedMachinesResponseBodyUnassignedMachines) SetIp(v string) *DescribeHybridCloudUnassignedMachinesResponseBodyUnassignedMachines {
+	s.Ip = &v
+	return s
+}
+
+func (s *DescribeHybridCloudUnassignedMachinesResponseBodyUnassignedMachines) SetMac(v string) *DescribeHybridCloudUnassignedMachinesResponseBodyUnassignedMachines {
+	s.Mac = &v
+	return s
+}
+
+func (s *DescribeHybridCloudUnassignedMachinesResponseBodyUnassignedMachines) SetMemory(v int64) *DescribeHybridCloudUnassignedMachinesResponseBodyUnassignedMachines {
+	s.Memory = &v
+	return s
+}
+
+func (s *DescribeHybridCloudUnassignedMachinesResponseBodyUnassignedMachines) SetMid(v string) *DescribeHybridCloudUnassignedMachinesResponseBodyUnassignedMachines {
+	s.Mid = &v
+	return s
+}
+
+type DescribeHybridCloudUnassignedMachinesResponse struct {
+	Headers    map[string]*string                                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeHybridCloudUnassignedMachinesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeHybridCloudUnassignedMachinesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeHybridCloudUnassignedMachinesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeHybridCloudUnassignedMachinesResponse) SetHeaders(v map[string]*string) *DescribeHybridCloudUnassignedMachinesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeHybridCloudUnassignedMachinesResponse) SetStatusCode(v int32) *DescribeHybridCloudUnassignedMachinesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeHybridCloudUnassignedMachinesResponse) SetBody(v *DescribeHybridCloudUnassignedMachinesResponseBody) *DescribeHybridCloudUnassignedMachinesResponse {
 	s.Body = v
 	return s
 }
@@ -13626,16 +15915,28 @@ func (s *DescribeMemberAccountsResponse) SetBody(v *DescribeMemberAccountsRespon
 }
 
 type DescribePauseProtectionStatusRequest struct {
+	// The ID of the WAF instance.
+	//
+	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// waf-cn-tl32ast****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The region in which the WAF instance is deployed. Valid values:
+	//
+	// 	- **cn-hangzhou**: the Chinese mainland.
+	//
+	// 	- **ap-southeast-1**: outside the Chinese mainland.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the Alibaba Cloud resource group.
+	//
 	// example:
 	//
 	// rg-acfm***q
@@ -13666,10 +15967,18 @@ func (s *DescribePauseProtectionStatusRequest) SetResourceManagerResourceGroupId
 }
 
 type DescribePauseProtectionStatusResponseBody struct {
+	// Indicates whether WAF protection is paused.
+	//
+	// 	- **0**: indicates that WAF protection is not paused. This is the default value.
+	//
+	// 	- **1**: indicates that WAF protection is paused.
+	//
 	// example:
 	//
 	// 0
 	PauseStatus *int32 `json:"PauseStatus,omitempty" xml:"PauseStatus,omitempty"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// D7861F61-****-46CE-A47C-6B19****5EB0
@@ -17856,7 +20165,7 @@ type DescribeUserWafLogStatusResponseBody struct {
 	//
 	// 	- **ap-northeast-2**: South Korea (Seoul).
 	//
-	// 	- **ap-south-1**: India (Mumbai).
+	// 	- **ap-south-1**: India (Mumbai) Closing Down.
 	//
 	// 	- **eu-west-1**: UK (London).
 	//
@@ -19291,6 +21600,559 @@ func (s *ModifyApisecLogDeliveryStatusResponse) SetStatusCode(v int32) *ModifyAp
 }
 
 func (s *ModifyApisecLogDeliveryStatusResponse) SetBody(v *ModifyApisecLogDeliveryStatusResponseBody) *ModifyApisecLogDeliveryStatusResponse {
+	s.Body = v
+	return s
+}
+
+type ModifyCloudResourceRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf_v3prepaid_public_cn-***
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	Listen   *ModifyCloudResourceRequestListen   `json:"Listen,omitempty" xml:"Listen,omitempty" type:"Struct"`
+	Redirect *ModifyCloudResourceRequestRedirect `json:"Redirect,omitempty" xml:"Redirect,omitempty" type:"Struct"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// rg-acfm***q
+	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
+}
+
+func (s ModifyCloudResourceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyCloudResourceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyCloudResourceRequest) SetInstanceId(v string) *ModifyCloudResourceRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ModifyCloudResourceRequest) SetListen(v *ModifyCloudResourceRequestListen) *ModifyCloudResourceRequest {
+	s.Listen = v
+	return s
+}
+
+func (s *ModifyCloudResourceRequest) SetRedirect(v *ModifyCloudResourceRequestRedirect) *ModifyCloudResourceRequest {
+	s.Redirect = v
+	return s
+}
+
+func (s *ModifyCloudResourceRequest) SetRegionId(v string) *ModifyCloudResourceRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ModifyCloudResourceRequest) SetResourceManagerResourceGroupId(v string) *ModifyCloudResourceRequest {
+	s.ResourceManagerResourceGroupId = &v
+	return s
+}
+
+type ModifyCloudResourceRequestListen struct {
+	Certificates []*ModifyCloudResourceRequestListenCertificates `json:"Certificates,omitempty" xml:"Certificates,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	CipherSuite   *int32    `json:"CipherSuite,omitempty" xml:"CipherSuite,omitempty"`
+	CustomCiphers []*string `json:"CustomCiphers,omitempty" xml:"CustomCiphers,omitempty" type:"Repeated"`
+	// if can be null:
+	// true
+	//
+	// example:
+	//
+	// true
+	EnableTLSv3 *bool `json:"EnableTLSv3,omitempty" xml:"EnableTLSv3,omitempty"`
+	// example:
+	//
+	// true
+	Http2Enabled *bool `json:"Http2Enabled,omitempty" xml:"Http2Enabled,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 80
+	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// http
+	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// lb-***
+	ResourceInstanceId *string `json:"ResourceInstanceId,omitempty" xml:"ResourceInstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// clb7
+	ResourceProduct *string `json:"ResourceProduct,omitempty" xml:"ResourceProduct,omitempty"`
+	// example:
+	//
+	// tlsv1.2
+	TLSVersion *string `json:"TLSVersion,omitempty" xml:"TLSVersion,omitempty"`
+}
+
+func (s ModifyCloudResourceRequestListen) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyCloudResourceRequestListen) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyCloudResourceRequestListen) SetCertificates(v []*ModifyCloudResourceRequestListenCertificates) *ModifyCloudResourceRequestListen {
+	s.Certificates = v
+	return s
+}
+
+func (s *ModifyCloudResourceRequestListen) SetCipherSuite(v int32) *ModifyCloudResourceRequestListen {
+	s.CipherSuite = &v
+	return s
+}
+
+func (s *ModifyCloudResourceRequestListen) SetCustomCiphers(v []*string) *ModifyCloudResourceRequestListen {
+	s.CustomCiphers = v
+	return s
+}
+
+func (s *ModifyCloudResourceRequestListen) SetEnableTLSv3(v bool) *ModifyCloudResourceRequestListen {
+	s.EnableTLSv3 = &v
+	return s
+}
+
+func (s *ModifyCloudResourceRequestListen) SetHttp2Enabled(v bool) *ModifyCloudResourceRequestListen {
+	s.Http2Enabled = &v
+	return s
+}
+
+func (s *ModifyCloudResourceRequestListen) SetPort(v int32) *ModifyCloudResourceRequestListen {
+	s.Port = &v
+	return s
+}
+
+func (s *ModifyCloudResourceRequestListen) SetProtocol(v string) *ModifyCloudResourceRequestListen {
+	s.Protocol = &v
+	return s
+}
+
+func (s *ModifyCloudResourceRequestListen) SetResourceInstanceId(v string) *ModifyCloudResourceRequestListen {
+	s.ResourceInstanceId = &v
+	return s
+}
+
+func (s *ModifyCloudResourceRequestListen) SetResourceProduct(v string) *ModifyCloudResourceRequestListen {
+	s.ResourceProduct = &v
+	return s
+}
+
+func (s *ModifyCloudResourceRequestListen) SetTLSVersion(v string) *ModifyCloudResourceRequestListen {
+	s.TLSVersion = &v
+	return s
+}
+
+type ModifyCloudResourceRequestListenCertificates struct {
+	// example:
+	//
+	// default
+	AppliedType *string `json:"AppliedType,omitempty" xml:"AppliedType,omitempty"`
+	// example:
+	//
+	// 123-cn-hangzhou
+	CertificateId *string `json:"CertificateId,omitempty" xml:"CertificateId,omitempty"`
+}
+
+func (s ModifyCloudResourceRequestListenCertificates) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyCloudResourceRequestListenCertificates) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyCloudResourceRequestListenCertificates) SetAppliedType(v string) *ModifyCloudResourceRequestListenCertificates {
+	s.AppliedType = &v
+	return s
+}
+
+func (s *ModifyCloudResourceRequestListenCertificates) SetCertificateId(v string) *ModifyCloudResourceRequestListenCertificates {
+	s.CertificateId = &v
+	return s
+}
+
+type ModifyCloudResourceRequestRedirect struct {
+	// example:
+	//
+	// true
+	Keepalive *bool `json:"Keepalive,omitempty" xml:"Keepalive,omitempty"`
+	// example:
+	//
+	// 1000
+	KeepaliveRequests *int32 `json:"KeepaliveRequests,omitempty" xml:"KeepaliveRequests,omitempty"`
+	// example:
+	//
+	// 15
+	KeepaliveTimeout *int32 `json:"KeepaliveTimeout,omitempty" xml:"KeepaliveTimeout,omitempty"`
+	// example:
+	//
+	// 1
+	ReadTimeout    *int32                                              `json:"ReadTimeout,omitempty" xml:"ReadTimeout,omitempty"`
+	RequestHeaders []*ModifyCloudResourceRequestRedirectRequestHeaders `json:"RequestHeaders,omitempty" xml:"RequestHeaders,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	WriteTimeout *int32 `json:"WriteTimeout,omitempty" xml:"WriteTimeout,omitempty"`
+	// example:
+	//
+	// 0
+	XffHeaderMode *int32    `json:"XffHeaderMode,omitempty" xml:"XffHeaderMode,omitempty"`
+	XffHeaders    []*string `json:"XffHeaders,omitempty" xml:"XffHeaders,omitempty" type:"Repeated"`
+	// example:
+	//
+	// true
+	XffProto *bool `json:"XffProto,omitempty" xml:"XffProto,omitempty"`
+}
+
+func (s ModifyCloudResourceRequestRedirect) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyCloudResourceRequestRedirect) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyCloudResourceRequestRedirect) SetKeepalive(v bool) *ModifyCloudResourceRequestRedirect {
+	s.Keepalive = &v
+	return s
+}
+
+func (s *ModifyCloudResourceRequestRedirect) SetKeepaliveRequests(v int32) *ModifyCloudResourceRequestRedirect {
+	s.KeepaliveRequests = &v
+	return s
+}
+
+func (s *ModifyCloudResourceRequestRedirect) SetKeepaliveTimeout(v int32) *ModifyCloudResourceRequestRedirect {
+	s.KeepaliveTimeout = &v
+	return s
+}
+
+func (s *ModifyCloudResourceRequestRedirect) SetReadTimeout(v int32) *ModifyCloudResourceRequestRedirect {
+	s.ReadTimeout = &v
+	return s
+}
+
+func (s *ModifyCloudResourceRequestRedirect) SetRequestHeaders(v []*ModifyCloudResourceRequestRedirectRequestHeaders) *ModifyCloudResourceRequestRedirect {
+	s.RequestHeaders = v
+	return s
+}
+
+func (s *ModifyCloudResourceRequestRedirect) SetWriteTimeout(v int32) *ModifyCloudResourceRequestRedirect {
+	s.WriteTimeout = &v
+	return s
+}
+
+func (s *ModifyCloudResourceRequestRedirect) SetXffHeaderMode(v int32) *ModifyCloudResourceRequestRedirect {
+	s.XffHeaderMode = &v
+	return s
+}
+
+func (s *ModifyCloudResourceRequestRedirect) SetXffHeaders(v []*string) *ModifyCloudResourceRequestRedirect {
+	s.XffHeaders = v
+	return s
+}
+
+func (s *ModifyCloudResourceRequestRedirect) SetXffProto(v bool) *ModifyCloudResourceRequestRedirect {
+	s.XffProto = &v
+	return s
+}
+
+type ModifyCloudResourceRequestRedirectRequestHeaders struct {
+	// example:
+	//
+	// key1
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// value1
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ModifyCloudResourceRequestRedirectRequestHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyCloudResourceRequestRedirectRequestHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyCloudResourceRequestRedirectRequestHeaders) SetKey(v string) *ModifyCloudResourceRequestRedirectRequestHeaders {
+	s.Key = &v
+	return s
+}
+
+func (s *ModifyCloudResourceRequestRedirectRequestHeaders) SetValue(v string) *ModifyCloudResourceRequestRedirectRequestHeaders {
+	s.Value = &v
+	return s
+}
+
+type ModifyCloudResourceShrinkRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf_v3prepaid_public_cn-***
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	ListenShrink   *string `json:"Listen,omitempty" xml:"Listen,omitempty"`
+	RedirectShrink *string `json:"Redirect,omitempty" xml:"Redirect,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// rg-acfm***q
+	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
+}
+
+func (s ModifyCloudResourceShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyCloudResourceShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyCloudResourceShrinkRequest) SetInstanceId(v string) *ModifyCloudResourceShrinkRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ModifyCloudResourceShrinkRequest) SetListenShrink(v string) *ModifyCloudResourceShrinkRequest {
+	s.ListenShrink = &v
+	return s
+}
+
+func (s *ModifyCloudResourceShrinkRequest) SetRedirectShrink(v string) *ModifyCloudResourceShrinkRequest {
+	s.RedirectShrink = &v
+	return s
+}
+
+func (s *ModifyCloudResourceShrinkRequest) SetRegionId(v string) *ModifyCloudResourceShrinkRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ModifyCloudResourceShrinkRequest) SetResourceManagerResourceGroupId(v string) *ModifyCloudResourceShrinkRequest {
+	s.ResourceManagerResourceGroupId = &v
+	return s
+}
+
+type ModifyCloudResourceResponseBody struct {
+	// example:
+	//
+	// lb-xxx-80-clb7
+	CloudResource *string `json:"CloudResource,omitempty" xml:"CloudResource,omitempty"`
+	// example:
+	//
+	// D7861F61-5B61-46CE-A47C-***
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ModifyCloudResourceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyCloudResourceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyCloudResourceResponseBody) SetCloudResource(v string) *ModifyCloudResourceResponseBody {
+	s.CloudResource = &v
+	return s
+}
+
+func (s *ModifyCloudResourceResponseBody) SetRequestId(v string) *ModifyCloudResourceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ModifyCloudResourceResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyCloudResourceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ModifyCloudResourceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyCloudResourceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyCloudResourceResponse) SetHeaders(v map[string]*string) *ModifyCloudResourceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyCloudResourceResponse) SetStatusCode(v int32) *ModifyCloudResourceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ModifyCloudResourceResponse) SetBody(v *ModifyCloudResourceResponseBody) *ModifyCloudResourceResponse {
+	s.Body = v
+	return s
+}
+
+type ModifyDefaultHttpsRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123-cn-hangzhou
+	CertId *string `json:"CertId,omitempty" xml:"CertId,omitempty"`
+	// example:
+	//
+	// 0
+	CipherSuite   *int32    `json:"CipherSuite,omitempty" xml:"CipherSuite,omitempty"`
+	CustomCiphers []*string `json:"CustomCiphers,omitempty" xml:"CustomCiphers,omitempty" type:"Repeated"`
+	// example:
+	//
+	// true
+	EnableTLSv3 *bool `json:"EnableTLSv3,omitempty" xml:"EnableTLSv3,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf_v2_public_cn-***
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// rg-acfm***q
+	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// tlsv1
+	TLSVersion *string `json:"TLSVersion,omitempty" xml:"TLSVersion,omitempty"`
+}
+
+func (s ModifyDefaultHttpsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyDefaultHttpsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyDefaultHttpsRequest) SetCertId(v string) *ModifyDefaultHttpsRequest {
+	s.CertId = &v
+	return s
+}
+
+func (s *ModifyDefaultHttpsRequest) SetCipherSuite(v int32) *ModifyDefaultHttpsRequest {
+	s.CipherSuite = &v
+	return s
+}
+
+func (s *ModifyDefaultHttpsRequest) SetCustomCiphers(v []*string) *ModifyDefaultHttpsRequest {
+	s.CustomCiphers = v
+	return s
+}
+
+func (s *ModifyDefaultHttpsRequest) SetEnableTLSv3(v bool) *ModifyDefaultHttpsRequest {
+	s.EnableTLSv3 = &v
+	return s
+}
+
+func (s *ModifyDefaultHttpsRequest) SetInstanceId(v string) *ModifyDefaultHttpsRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ModifyDefaultHttpsRequest) SetRegionId(v string) *ModifyDefaultHttpsRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ModifyDefaultHttpsRequest) SetResourceManagerResourceGroupId(v string) *ModifyDefaultHttpsRequest {
+	s.ResourceManagerResourceGroupId = &v
+	return s
+}
+
+func (s *ModifyDefaultHttpsRequest) SetTLSVersion(v string) *ModifyDefaultHttpsRequest {
+	s.TLSVersion = &v
+	return s
+}
+
+type ModifyDefaultHttpsResponseBody struct {
+	// example:
+	//
+	// 276D7566-31C9-4192-9DD1-***
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ModifyDefaultHttpsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyDefaultHttpsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyDefaultHttpsResponseBody) SetRequestId(v string) *ModifyDefaultHttpsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ModifyDefaultHttpsResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyDefaultHttpsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ModifyDefaultHttpsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyDefaultHttpsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyDefaultHttpsResponse) SetHeaders(v map[string]*string) *ModifyDefaultHttpsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyDefaultHttpsResponse) SetStatusCode(v int32) *ModifyDefaultHttpsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ModifyDefaultHttpsResponse) SetBody(v *ModifyDefaultHttpsResponseBody) *ModifyDefaultHttpsResponse {
 	s.Body = v
 	return s
 }
@@ -21338,6 +24200,844 @@ func (s *ModifyHybridCloudClusterBypassStatusResponse) SetBody(v *ModifyHybridCl
 	return s
 }
 
+type ModifyHybridCloudClusterRuleRequest struct {
+	// The ID of the hybrid cloud cluster.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1018
+	ClusterId *int64 `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The ID of the WAF instance.
+	//
+	// >  You can call the DescribeInstanceInfo operation to query the ID of the WAF instance.[](~~140857~~)
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf-cn-n6w***x52m
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The region in which the WAF instance is deployed. Valid values:
+	//
+	// 	- **cn-hangzhou**: Chinese mainland.
+	//
+	// 	- **ap-southeast-1**: outside the Chinese mainland.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the Alibaba Cloud resource group.
+	//
+	// example:
+	//
+	// rg-acfm***q
+	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
+	// The configuration of the rule.
+	//
+	// example:
+	//
+	// {\\"check_mode\\":\\"part\\",\\"include\\":{\\"exact\\":[],\\"regex\\":[]}}
+	RuleConfig *string `json:"RuleConfig,omitempty" xml:"RuleConfig,omitempty"`
+	// The status of the rule. Valid values:
+	//
+	// 	- **on**: enables the rule.
+	//
+	// 	- **off**: disables the rule.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// on
+	RuleStatus *string `json:"RuleStatus,omitempty" xml:"RuleStatus,omitempty"`
+	// The type of the rule. Valid values:
+	//
+	// 	- **pullin**: The traffic redirection rule.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// pullin
+	RuleType *string `json:"RuleType,omitempty" xml:"RuleType,omitempty"`
+}
+
+func (s ModifyHybridCloudClusterRuleRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyHybridCloudClusterRuleRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyHybridCloudClusterRuleRequest) SetClusterId(v int64) *ModifyHybridCloudClusterRuleRequest {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *ModifyHybridCloudClusterRuleRequest) SetInstanceId(v string) *ModifyHybridCloudClusterRuleRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ModifyHybridCloudClusterRuleRequest) SetRegionId(v string) *ModifyHybridCloudClusterRuleRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ModifyHybridCloudClusterRuleRequest) SetResourceManagerResourceGroupId(v string) *ModifyHybridCloudClusterRuleRequest {
+	s.ResourceManagerResourceGroupId = &v
+	return s
+}
+
+func (s *ModifyHybridCloudClusterRuleRequest) SetRuleConfig(v string) *ModifyHybridCloudClusterRuleRequest {
+	s.RuleConfig = &v
+	return s
+}
+
+func (s *ModifyHybridCloudClusterRuleRequest) SetRuleStatus(v string) *ModifyHybridCloudClusterRuleRequest {
+	s.RuleStatus = &v
+	return s
+}
+
+func (s *ModifyHybridCloudClusterRuleRequest) SetRuleType(v string) *ModifyHybridCloudClusterRuleRequest {
+	s.RuleType = &v
+	return s
+}
+
+type ModifyHybridCloudClusterRuleResponseBody struct {
+	// The request ID.
+	//
+	// example:
+	//
+	// 03D73D88-57D8-5BA2-96A4-6357CE***19
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ModifyHybridCloudClusterRuleResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyHybridCloudClusterRuleResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyHybridCloudClusterRuleResponseBody) SetRequestId(v string) *ModifyHybridCloudClusterRuleResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ModifyHybridCloudClusterRuleResponse struct {
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyHybridCloudClusterRuleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ModifyHybridCloudClusterRuleResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyHybridCloudClusterRuleResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyHybridCloudClusterRuleResponse) SetHeaders(v map[string]*string) *ModifyHybridCloudClusterRuleResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyHybridCloudClusterRuleResponse) SetStatusCode(v int32) *ModifyHybridCloudClusterRuleResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ModifyHybridCloudClusterRuleResponse) SetBody(v *ModifyHybridCloudClusterRuleResponseBody) *ModifyHybridCloudClusterRuleResponse {
+	s.Body = v
+	return s
+}
+
+type ModifyHybridCloudGroupRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	ClusterId *int64 `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	GroupId *int64 `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// This parameter is required.
+	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf-cn-tl32ast****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Remark   *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// example:
+	//
+	// rg-acfm***q
+	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
+}
+
+func (s ModifyHybridCloudGroupRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyHybridCloudGroupRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyHybridCloudGroupRequest) SetClusterId(v int64) *ModifyHybridCloudGroupRequest {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *ModifyHybridCloudGroupRequest) SetGroupId(v int64) *ModifyHybridCloudGroupRequest {
+	s.GroupId = &v
+	return s
+}
+
+func (s *ModifyHybridCloudGroupRequest) SetGroupName(v string) *ModifyHybridCloudGroupRequest {
+	s.GroupName = &v
+	return s
+}
+
+func (s *ModifyHybridCloudGroupRequest) SetInstanceId(v string) *ModifyHybridCloudGroupRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ModifyHybridCloudGroupRequest) SetRegionId(v string) *ModifyHybridCloudGroupRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ModifyHybridCloudGroupRequest) SetRemark(v string) *ModifyHybridCloudGroupRequest {
+	s.Remark = &v
+	return s
+}
+
+func (s *ModifyHybridCloudGroupRequest) SetResourceManagerResourceGroupId(v string) *ModifyHybridCloudGroupRequest {
+	s.ResourceManagerResourceGroupId = &v
+	return s
+}
+
+type ModifyHybridCloudGroupResponseBody struct {
+	// example:
+	//
+	// D7861F61-5B61-46CE-A47C-6B19160D***0
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ModifyHybridCloudGroupResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyHybridCloudGroupResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyHybridCloudGroupResponseBody) SetRequestId(v string) *ModifyHybridCloudGroupResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ModifyHybridCloudGroupResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyHybridCloudGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ModifyHybridCloudGroupResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyHybridCloudGroupResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyHybridCloudGroupResponse) SetHeaders(v map[string]*string) *ModifyHybridCloudGroupResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyHybridCloudGroupResponse) SetStatusCode(v int32) *ModifyHybridCloudGroupResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ModifyHybridCloudGroupResponse) SetBody(v *ModifyHybridCloudGroupResponseBody) *ModifyHybridCloudGroupResponse {
+	s.Body = v
+	return s
+}
+
+type ModifyHybridCloudGroupExpansionServerRequest struct {
+	// The ID of the hybrid cloud cluster.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	ClusterId *int64 `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The ID of the node group.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	GroupId *int64 `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The ID of the WAF instance.
+	//
+	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf-cn-tl32ast****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The ID of the node.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 612929b133e7ff**0d0
+	Mids *string `json:"Mids,omitempty" xml:"Mids,omitempty"`
+	// The region in which the WAF instance is deployed. Valid value:
+	//
+	// 	- **cn-hangzhou**: Chinese mainland.
+	//
+	// 	- **ap-southeast-1**: outside the Chinese mainland.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the Alibaba Cloud resource group.
+	//
+	// example:
+	//
+	// rg-acfm***q
+	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
+}
+
+func (s ModifyHybridCloudGroupExpansionServerRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyHybridCloudGroupExpansionServerRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyHybridCloudGroupExpansionServerRequest) SetClusterId(v int64) *ModifyHybridCloudGroupExpansionServerRequest {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *ModifyHybridCloudGroupExpansionServerRequest) SetGroupId(v int64) *ModifyHybridCloudGroupExpansionServerRequest {
+	s.GroupId = &v
+	return s
+}
+
+func (s *ModifyHybridCloudGroupExpansionServerRequest) SetInstanceId(v string) *ModifyHybridCloudGroupExpansionServerRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ModifyHybridCloudGroupExpansionServerRequest) SetMids(v string) *ModifyHybridCloudGroupExpansionServerRequest {
+	s.Mids = &v
+	return s
+}
+
+func (s *ModifyHybridCloudGroupExpansionServerRequest) SetRegionId(v string) *ModifyHybridCloudGroupExpansionServerRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ModifyHybridCloudGroupExpansionServerRequest) SetResourceManagerResourceGroupId(v string) *ModifyHybridCloudGroupExpansionServerRequest {
+	s.ResourceManagerResourceGroupId = &v
+	return s
+}
+
+type ModifyHybridCloudGroupExpansionServerResponseBody struct {
+	// The request ID.
+	//
+	// example:
+	//
+	// 7BD7F9A1-0E72-5BC1-8248-C629B4***B6
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ModifyHybridCloudGroupExpansionServerResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyHybridCloudGroupExpansionServerResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyHybridCloudGroupExpansionServerResponseBody) SetRequestId(v string) *ModifyHybridCloudGroupExpansionServerResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ModifyHybridCloudGroupExpansionServerResponse struct {
+	Headers    map[string]*string                                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyHybridCloudGroupExpansionServerResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ModifyHybridCloudGroupExpansionServerResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyHybridCloudGroupExpansionServerResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyHybridCloudGroupExpansionServerResponse) SetHeaders(v map[string]*string) *ModifyHybridCloudGroupExpansionServerResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyHybridCloudGroupExpansionServerResponse) SetStatusCode(v int32) *ModifyHybridCloudGroupExpansionServerResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ModifyHybridCloudGroupExpansionServerResponse) SetBody(v *ModifyHybridCloudGroupExpansionServerResponseBody) *ModifyHybridCloudGroupExpansionServerResponse {
+	s.Body = v
+	return s
+}
+
+type ModifyHybridCloudGroupShrinkServerRequest struct {
+	// The ID of the hybrid cloud cluster.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	ClusterId *int64 `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The ID of the node group.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	GroupId *int64 `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The ID of the WAF instance.
+	//
+	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf_elasticity-cn-0xldb****05
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The ID of the node.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// b1bf3f544f30c1de0b72d91290***bbbb
+	Mids *string `json:"Mids,omitempty" xml:"Mids,omitempty"`
+	// The region in which the WAF instance is deployed. Valid value:
+	//
+	// 	- **cn-hangzhou**: Chinese mainland.
+	//
+	// 	- **ap-southeast-1**: outside the Chinese mainland.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the Alibaba Cloud resource group.
+	//
+	// example:
+	//
+	// rg-acfm2th****v6ay
+	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
+}
+
+func (s ModifyHybridCloudGroupShrinkServerRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyHybridCloudGroupShrinkServerRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyHybridCloudGroupShrinkServerRequest) SetClusterId(v int64) *ModifyHybridCloudGroupShrinkServerRequest {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *ModifyHybridCloudGroupShrinkServerRequest) SetGroupId(v int64) *ModifyHybridCloudGroupShrinkServerRequest {
+	s.GroupId = &v
+	return s
+}
+
+func (s *ModifyHybridCloudGroupShrinkServerRequest) SetInstanceId(v string) *ModifyHybridCloudGroupShrinkServerRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ModifyHybridCloudGroupShrinkServerRequest) SetMids(v string) *ModifyHybridCloudGroupShrinkServerRequest {
+	s.Mids = &v
+	return s
+}
+
+func (s *ModifyHybridCloudGroupShrinkServerRequest) SetRegionId(v string) *ModifyHybridCloudGroupShrinkServerRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ModifyHybridCloudGroupShrinkServerRequest) SetResourceManagerResourceGroupId(v string) *ModifyHybridCloudGroupShrinkServerRequest {
+	s.ResourceManagerResourceGroupId = &v
+	return s
+}
+
+type ModifyHybridCloudGroupShrinkServerResponseBody struct {
+	// The request ID.
+	//
+	// example:
+	//
+	// D7861F61-5B61-46CE-A47C-6B19****5EB0
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ModifyHybridCloudGroupShrinkServerResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyHybridCloudGroupShrinkServerResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyHybridCloudGroupShrinkServerResponseBody) SetRequestId(v string) *ModifyHybridCloudGroupShrinkServerResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ModifyHybridCloudGroupShrinkServerResponse struct {
+	Headers    map[string]*string                              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyHybridCloudGroupShrinkServerResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ModifyHybridCloudGroupShrinkServerResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyHybridCloudGroupShrinkServerResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyHybridCloudGroupShrinkServerResponse) SetHeaders(v map[string]*string) *ModifyHybridCloudGroupShrinkServerResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyHybridCloudGroupShrinkServerResponse) SetStatusCode(v int32) *ModifyHybridCloudGroupShrinkServerResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ModifyHybridCloudGroupShrinkServerResponse) SetBody(v *ModifyHybridCloudGroupShrinkServerResponseBody) *ModifyHybridCloudGroupShrinkServerResponse {
+	s.Body = v
+	return s
+}
+
+type ModifyHybridCloudSdkPullinStatusRequest struct {
+	// The ID of the WAF instance.
+	//
+	// >  You can call the [DescribeInstanceInfo](https://help.aliyun.com/document_detail/140857.html) operation to query the ID of the WAF instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf-cn-7pp2le***01
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The ID of the SDK.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// b3dbc5153317c79d8ca9f9***ea
+	Mid *string `json:"Mid,omitempty" xml:"Mid,omitempty"`
+	// The status of traffic redirection. Valid values:
+	//
+	// 	- **on**
+	//
+	// 	- **off**
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// on
+	PullinStatus *string `json:"PullinStatus,omitempty" xml:"PullinStatus,omitempty"`
+}
+
+func (s ModifyHybridCloudSdkPullinStatusRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyHybridCloudSdkPullinStatusRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyHybridCloudSdkPullinStatusRequest) SetInstanceId(v string) *ModifyHybridCloudSdkPullinStatusRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ModifyHybridCloudSdkPullinStatusRequest) SetMid(v string) *ModifyHybridCloudSdkPullinStatusRequest {
+	s.Mid = &v
+	return s
+}
+
+func (s *ModifyHybridCloudSdkPullinStatusRequest) SetPullinStatus(v string) *ModifyHybridCloudSdkPullinStatusRequest {
+	s.PullinStatus = &v
+	return s
+}
+
+type ModifyHybridCloudSdkPullinStatusResponseBody struct {
+	// The request ID.
+	//
+	// example:
+	//
+	// D7861F61-5B61-46CE-A47C-6B191**EB0
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ModifyHybridCloudSdkPullinStatusResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyHybridCloudSdkPullinStatusResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyHybridCloudSdkPullinStatusResponseBody) SetRequestId(v string) *ModifyHybridCloudSdkPullinStatusResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ModifyHybridCloudSdkPullinStatusResponse struct {
+	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyHybridCloudSdkPullinStatusResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ModifyHybridCloudSdkPullinStatusResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyHybridCloudSdkPullinStatusResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyHybridCloudSdkPullinStatusResponse) SetHeaders(v map[string]*string) *ModifyHybridCloudSdkPullinStatusResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyHybridCloudSdkPullinStatusResponse) SetStatusCode(v int32) *ModifyHybridCloudSdkPullinStatusResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ModifyHybridCloudSdkPullinStatusResponse) SetBody(v *ModifyHybridCloudSdkPullinStatusResponseBody) *ModifyHybridCloudSdkPullinStatusResponse {
+	s.Body = v
+	return s
+}
+
+type ModifyHybridCloudServerRequest struct {
+	// The continent.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// asiapacific
+	Continents *string `json:"Continents,omitempty" xml:"Continents,omitempty"`
+	// The name of the node.
+	//
+	// This parameter is required.
+	CustomName *string `json:"CustomName,omitempty" xml:"CustomName,omitempty"`
+	// The ID of the WAF instance.
+	//
+	// >  You can call the [DescribeInstanceInfo](https://help.aliyun.com/document_detail/140857.html) operation to query the ID of the WAF instance.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// waf_cdnsdf3****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The ID of the node.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// b1bf3f544f30c1de0b72d91290**ccb
+	Mid *string `json:"Mid,omitempty" xml:"Mid,omitempty"`
+	// The cloud service provider.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// aliyun
+	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
+	// The city.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// beijing
+	RegionCode *string `json:"RegionCode,omitempty" xml:"RegionCode,omitempty"`
+	// The region in which the WAF instance is deployed. Valid value:
+	//
+	// 	- **cn-hangzhou**: Chinese mainland.
+	//
+	// 	- **ap-southeast-1**: outside the Chinese mainland.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the Alibaba Cloud resource group.
+	//
+	// example:
+	//
+	// rg-acfm***q
+	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
+}
+
+func (s ModifyHybridCloudServerRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyHybridCloudServerRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyHybridCloudServerRequest) SetContinents(v string) *ModifyHybridCloudServerRequest {
+	s.Continents = &v
+	return s
+}
+
+func (s *ModifyHybridCloudServerRequest) SetCustomName(v string) *ModifyHybridCloudServerRequest {
+	s.CustomName = &v
+	return s
+}
+
+func (s *ModifyHybridCloudServerRequest) SetInstanceId(v string) *ModifyHybridCloudServerRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ModifyHybridCloudServerRequest) SetMid(v string) *ModifyHybridCloudServerRequest {
+	s.Mid = &v
+	return s
+}
+
+func (s *ModifyHybridCloudServerRequest) SetOperator(v string) *ModifyHybridCloudServerRequest {
+	s.Operator = &v
+	return s
+}
+
+func (s *ModifyHybridCloudServerRequest) SetRegionCode(v string) *ModifyHybridCloudServerRequest {
+	s.RegionCode = &v
+	return s
+}
+
+func (s *ModifyHybridCloudServerRequest) SetRegionId(v string) *ModifyHybridCloudServerRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ModifyHybridCloudServerRequest) SetResourceManagerResourceGroupId(v string) *ModifyHybridCloudServerRequest {
+	s.ResourceManagerResourceGroupId = &v
+	return s
+}
+
+type ModifyHybridCloudServerResponseBody struct {
+	// The request ID.
+	//
+	// example:
+	//
+	// 26DCD663-5EB8-5103-B270-E24A32***5F0
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ModifyHybridCloudServerResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyHybridCloudServerResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyHybridCloudServerResponseBody) SetRequestId(v string) *ModifyHybridCloudServerResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ModifyHybridCloudServerResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyHybridCloudServerResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ModifyHybridCloudServerResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyHybridCloudServerResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyHybridCloudServerResponse) SetHeaders(v map[string]*string) *ModifyHybridCloudServerResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyHybridCloudServerResponse) SetStatusCode(v int32) *ModifyHybridCloudServerResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ModifyHybridCloudServerResponse) SetBody(v *ModifyHybridCloudServerResponseBody) *ModifyHybridCloudServerResponse {
+	s.Body = v
+	return s
+}
+
 type ModifyMajorProtectionBlackIpRequest struct {
 	// The description of the IP address blacklist.
 	//
@@ -21647,22 +25347,40 @@ func (s *ModifyMemberAccountResponse) SetBody(v *ModifyMemberAccountResponseBody
 }
 
 type ModifyPauseProtectionStatusRequest struct {
+	// The ID of the WAF instance.
+	//
+	// >  You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// waf-cn-tl32ast****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Specifies whether to pause WAF protection.
+	//
+	// 	- **0**: does not pause WAF protection. This is the default value.
+	//
+	// 	- **1**: pauses WAF protection.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 0
 	PauseStatus *int32 `json:"PauseStatus,omitempty" xml:"PauseStatus,omitempty"`
+	// The region in which the WAF instance is deployed. Valid values:
+	//
+	// 	- **cn-hangzhou**: the Chinese mainland.
+	//
+	// 	- **ap-southeast-1**: outside the Chinese mainland.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the Alibaba Cloud resource group.
+	//
 	// example:
 	//
 	// rg-acfm***q
@@ -21698,6 +25416,8 @@ func (s *ModifyPauseProtectionStatusRequest) SetResourceManagerResourceGroupId(v
 }
 
 type ModifyPauseProtectionStatusResponseBody struct {
+	// The ID of the request.
+	//
 	// example:
 	//
 	// D7861F61-*****-******-D5EB0
@@ -22811,6 +26531,96 @@ func (client *Client) CopyDefenseTemplate(request *CopyDefenseTemplateRequest) (
 
 // Summary:
 //
+// 接入云产品资源
+//
+// @param tmpReq - CreateCloudResourceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateCloudResourceResponse
+func (client *Client) CreateCloudResourceWithOptions(tmpReq *CreateCloudResourceRequest, runtime *util.RuntimeOptions) (_result *CreateCloudResourceResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &CreateCloudResourceShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Listen)) {
+		request.ListenShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Listen, tea.String("Listen"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.Redirect)) {
+		request.RedirectShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Redirect, tea.String("Redirect"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ListenShrink)) {
+		query["Listen"] = request.ListenShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerUserId)) {
+		query["OwnerUserId"] = request.OwnerUserId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RedirectShrink)) {
+		query["Redirect"] = request.RedirectShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceManagerResourceGroupId)) {
+		query["ResourceManagerResourceGroupId"] = request.ResourceManagerResourceGroupId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateCloudResource"),
+		Version:     tea.String("2021-10-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateCloudResourceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 接入云产品资源
+//
+// @param request - CreateCloudResourceRequest
+//
+// @return CreateCloudResourceResponse
+func (client *Client) CreateCloudResource(request *CreateCloudResourceRequest) (_result *CreateCloudResourceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateCloudResourceResponse{}
+	_body, _err := client.CreateCloudResourceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Creates a protected object group.
 //
 // @param request - CreateDefenseResourceGroupRequest
@@ -23148,6 +26958,102 @@ func (client *Client) CreateDomain(request *CreateDomainRequest) (_result *Creat
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateDomainResponse{}
 	_body, _err := client.CreateDomainWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates a node group for a hybrid cloud cluster.
+//
+// @param request - CreateHybridCloudGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateHybridCloudGroupResponse
+func (client *Client) CreateHybridCloudGroupWithOptions(request *CreateHybridCloudGroupRequest, runtime *util.RuntimeOptions) (_result *CreateHybridCloudGroupResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BackSourceMark)) {
+		query["BackSourceMark"] = request.BackSourceMark
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupName)) {
+		query["GroupName"] = request.GroupName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupType)) {
+		query["GroupType"] = request.GroupType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LoadBalanceIp)) {
+		query["LoadBalanceIp"] = request.LoadBalanceIp
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LocationCode)) {
+		query["LocationCode"] = request.LocationCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Remark)) {
+		query["Remark"] = request.Remark
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceManagerResourceGroupId)) {
+		query["ResourceManagerResourceGroupId"] = request.ResourceManagerResourceGroupId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateHybridCloudGroup"),
+		Version:     tea.String("2021-10-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateHybridCloudGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates a node group for a hybrid cloud cluster.
+//
+// @param request - CreateHybridCloudGroupRequest
+//
+// @return CreateHybridCloudGroupResponse
+func (client *Client) CreateHybridCloudGroup(request *CreateHybridCloudGroupRequest) (_result *CreateHybridCloudGroupResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateHybridCloudGroupResponse{}
+	_body, _err := client.CreateHybridCloudGroupWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -23632,6 +27538,86 @@ func (client *Client) DeleteApisecEvent(request *DeleteApisecEventRequest) (_res
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteApisecEventResponse{}
 	_body, _err := client.DeleteApisecEventWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除云产品资源
+//
+// @param request - DeleteCloudResourceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteCloudResourceResponse
+func (client *Client) DeleteCloudResourceWithOptions(request *DeleteCloudResourceRequest, runtime *util.RuntimeOptions) (_result *DeleteCloudResourceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Port)) {
+		query["Port"] = request.Port
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceInstanceId)) {
+		query["ResourceInstanceId"] = request.ResourceInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceManagerResourceGroupId)) {
+		query["ResourceManagerResourceGroupId"] = request.ResourceManagerResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceProduct)) {
+		query["ResourceProduct"] = request.ResourceProduct
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteCloudResource"),
+		Version:     tea.String("2021-10-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteCloudResourceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除云产品资源
+//
+// @param request - DeleteCloudResourceRequest
+//
+// @return DeleteCloudResourceResponse
+func (client *Client) DeleteCloudResource(request *DeleteCloudResourceRequest) (_result *DeleteCloudResourceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteCloudResourceResponse{}
+	_body, _err := client.DeleteCloudResourceWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -24909,6 +28895,170 @@ func (client *Client) DescribeCerts(request *DescribeCertsRequest) (_result *Des
 
 // Summary:
 //
+// 查询云产品的端口详情
+//
+// @param request - DescribeCloudResourceAccessPortDetailsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeCloudResourceAccessPortDetailsResponse
+func (client *Client) DescribeCloudResourceAccessPortDetailsWithOptions(request *DescribeCloudResourceAccessPortDetailsRequest, runtime *util.RuntimeOptions) (_result *DescribeCloudResourceAccessPortDetailsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Port)) {
+		query["Port"] = request.Port
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Protocol)) {
+		query["Protocol"] = request.Protocol
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceInstanceId)) {
+		query["ResourceInstanceId"] = request.ResourceInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceManagerResourceGroupId)) {
+		query["ResourceManagerResourceGroupId"] = request.ResourceManagerResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceProduct)) {
+		query["ResourceProduct"] = request.ResourceProduct
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeCloudResourceAccessPortDetails"),
+		Version:     tea.String("2021-10-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeCloudResourceAccessPortDetailsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询云产品的端口详情
+//
+// @param request - DescribeCloudResourceAccessPortDetailsRequest
+//
+// @return DescribeCloudResourceAccessPortDetailsResponse
+func (client *Client) DescribeCloudResourceAccessPortDetails(request *DescribeCloudResourceAccessPortDetailsRequest) (_result *DescribeCloudResourceAccessPortDetailsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeCloudResourceAccessPortDetailsResponse{}
+	_body, _err := client.DescribeCloudResourceAccessPortDetailsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询已接入云产品的端口列表
+//
+// @param request - DescribeCloudResourceAccessedPortsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeCloudResourceAccessedPortsResponse
+func (client *Client) DescribeCloudResourceAccessedPortsWithOptions(request *DescribeCloudResourceAccessedPortsRequest, runtime *util.RuntimeOptions) (_result *DescribeCloudResourceAccessedPortsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceInstanceId)) {
+		query["ResourceInstanceId"] = request.ResourceInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceManagerResourceGroupId)) {
+		query["ResourceManagerResourceGroupId"] = request.ResourceManagerResourceGroupId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeCloudResourceAccessedPorts"),
+		Version:     tea.String("2021-10-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeCloudResourceAccessedPortsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询已接入云产品的端口列表
+//
+// @param request - DescribeCloudResourceAccessedPortsRequest
+//
+// @return DescribeCloudResourceAccessedPortsResponse
+func (client *Client) DescribeCloudResourceAccessedPorts(request *DescribeCloudResourceAccessedPortsRequest) (_result *DescribeCloudResourceAccessedPortsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeCloudResourceAccessedPortsResponse{}
+	_body, _err := client.DescribeCloudResourceAccessedPortsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries cloud service resources that are added to Web Application Firewall (WAF).
 //
 // @param request - DescribeCloudResourcesRequest
@@ -25148,6 +29298,74 @@ func (client *Client) DescribeDDoSStatus(request *DescribeDDoSStatusRequest) (_r
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDDoSStatusResponse{}
 	_body, _err := client.DescribeDDoSStatusWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询默认HTTPS配置
+//
+// @param request - DescribeDefaultHttpsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDefaultHttpsResponse
+func (client *Client) DescribeDefaultHttpsWithOptions(request *DescribeDefaultHttpsRequest, runtime *util.RuntimeOptions) (_result *DescribeDefaultHttpsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceManagerResourceGroupId)) {
+		query["ResourceManagerResourceGroupId"] = request.ResourceManagerResourceGroupId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeDefaultHttps"),
+		Version:     tea.String("2021-10-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeDefaultHttpsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询默认HTTPS配置
+//
+// @param request - DescribeDefaultHttpsRequest
+//
+// @return DescribeDefaultHttpsResponse
+func (client *Client) DescribeDefaultHttps(request *DescribeDefaultHttpsRequest) (_result *DescribeDefaultHttpsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeDefaultHttpsResponse{}
+	_body, _err := client.DescribeDefaultHttpsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -26601,6 +30819,130 @@ func (client *Client) DescribeFlowTopUrl(request *DescribeFlowTopUrlRequest) (_r
 
 // Summary:
 //
+// Obtains the rule information about a hybrid cloud cluster.
+//
+// @param request - DescribeHybridCloudClusterRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeHybridCloudClusterRuleResponse
+func (client *Client) DescribeHybridCloudClusterRuleWithOptions(request *DescribeHybridCloudClusterRuleRequest, runtime *util.RuntimeOptions) (_result *DescribeHybridCloudClusterRuleResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeHybridCloudClusterRule"),
+		Version:     tea.String("2021-10-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeHybridCloudClusterRuleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Obtains the rule information about a hybrid cloud cluster.
+//
+// @param request - DescribeHybridCloudClusterRuleRequest
+//
+// @return DescribeHybridCloudClusterRuleResponse
+func (client *Client) DescribeHybridCloudClusterRule(request *DescribeHybridCloudClusterRuleRequest) (_result *DescribeHybridCloudClusterRuleResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeHybridCloudClusterRuleResponse{}
+	_body, _err := client.DescribeHybridCloudClusterRuleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询混合云集群列表
+//
+// @param request - DescribeHybridCloudClustersRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeHybridCloudClustersResponse
+func (client *Client) DescribeHybridCloudClustersWithOptions(request *DescribeHybridCloudClustersRequest, runtime *util.RuntimeOptions) (_result *DescribeHybridCloudClustersResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceManagerResourceGroupId)) {
+		query["ResourceManagerResourceGroupId"] = request.ResourceManagerResourceGroupId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeHybridCloudClusters"),
+		Version:     tea.String("2021-10-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeHybridCloudClustersResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询混合云集群列表
+//
+// @param request - DescribeHybridCloudClustersRequest
+//
+// @return DescribeHybridCloudClustersResponse
+func (client *Client) DescribeHybridCloudClusters(request *DescribeHybridCloudClustersRequest) (_result *DescribeHybridCloudClustersResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeHybridCloudClustersResponse{}
+	_body, _err := client.DescribeHybridCloudClustersWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the hybrid cloud node groups that are added to Web Application Firewall (WAF).
 //
 // @param request - DescribeHybridCloudGroupsRequest
@@ -26772,6 +31114,170 @@ func (client *Client) DescribeHybridCloudResources(request *DescribeHybridCloudR
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeHybridCloudResourcesResponse{}
 	_body, _err := client.DescribeHybridCloudResourcesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries information about the regions that the hybrid cloud mode supports, such as the Internet service providers (ISPs), continents, and cities.
+//
+// @param request - DescribeHybridCloudServerRegionsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeHybridCloudServerRegionsResponse
+func (client *Client) DescribeHybridCloudServerRegionsWithOptions(request *DescribeHybridCloudServerRegionsRequest, runtime *util.RuntimeOptions) (_result *DescribeHybridCloudServerRegionsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionCode)) {
+		query["RegionCode"] = request.RegionCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionType)) {
+		query["RegionType"] = request.RegionType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceManagerResourceGroupId)) {
+		query["ResourceManagerResourceGroupId"] = request.ResourceManagerResourceGroupId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeHybridCloudServerRegions"),
+		Version:     tea.String("2021-10-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeHybridCloudServerRegionsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries information about the regions that the hybrid cloud mode supports, such as the Internet service providers (ISPs), continents, and cities.
+//
+// @param request - DescribeHybridCloudServerRegionsRequest
+//
+// @return DescribeHybridCloudServerRegionsResponse
+func (client *Client) DescribeHybridCloudServerRegions(request *DescribeHybridCloudServerRegionsRequest) (_result *DescribeHybridCloudServerRegionsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeHybridCloudServerRegionsResponse{}
+	_body, _err := client.DescribeHybridCloudServerRegionsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries servers that are not assigned to a hybrid cloud cluster.
+//
+// @param request - DescribeHybridCloudUnassignedMachinesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeHybridCloudUnassignedMachinesResponse
+func (client *Client) DescribeHybridCloudUnassignedMachinesWithOptions(request *DescribeHybridCloudUnassignedMachinesRequest, runtime *util.RuntimeOptions) (_result *DescribeHybridCloudUnassignedMachinesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HostName)) {
+		query["HostName"] = request.HostName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Ip)) {
+		query["Ip"] = request.Ip
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceManagerResourceGroupId)) {
+		query["ResourceManagerResourceGroupId"] = request.ResourceManagerResourceGroupId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeHybridCloudUnassignedMachines"),
+		Version:     tea.String("2021-10-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeHybridCloudUnassignedMachinesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries servers that are not assigned to a hybrid cloud cluster.
+//
+// @param request - DescribeHybridCloudUnassignedMachinesRequest
+//
+// @return DescribeHybridCloudUnassignedMachinesResponse
+func (client *Client) DescribeHybridCloudUnassignedMachines(request *DescribeHybridCloudUnassignedMachinesRequest) (_result *DescribeHybridCloudUnassignedMachinesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeHybridCloudUnassignedMachinesResponse{}
+	_body, _err := client.DescribeHybridCloudUnassignedMachinesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -27081,7 +31587,7 @@ func (client *Client) DescribeMemberAccounts(request *DescribeMemberAccountsRequ
 
 // Summary:
 //
-// 获取用户暂停防护状态
+// Queries the protection status of Web Application Firewall (WAF).
 //
 // @param request - DescribePauseProtectionStatusRequest
 //
@@ -27131,7 +31637,7 @@ func (client *Client) DescribePauseProtectionStatusWithOptions(request *Describe
 
 // Summary:
 //
-// 获取用户暂停防护状态
+// Queries the protection status of Web Application Firewall (WAF).
 //
 // @param request - DescribePauseProtectionStatusRequest
 //
@@ -29529,6 +34035,180 @@ func (client *Client) ModifyApisecLogDeliveryStatus(request *ModifyApisecLogDeli
 
 // Summary:
 //
+// 修改云产品资源
+//
+// @param tmpReq - ModifyCloudResourceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyCloudResourceResponse
+func (client *Client) ModifyCloudResourceWithOptions(tmpReq *ModifyCloudResourceRequest, runtime *util.RuntimeOptions) (_result *ModifyCloudResourceResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &ModifyCloudResourceShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Listen)) {
+		request.ListenShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Listen, tea.String("Listen"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.Redirect)) {
+		request.RedirectShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Redirect, tea.String("Redirect"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ListenShrink)) {
+		query["Listen"] = request.ListenShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RedirectShrink)) {
+		query["Redirect"] = request.RedirectShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceManagerResourceGroupId)) {
+		query["ResourceManagerResourceGroupId"] = request.ResourceManagerResourceGroupId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyCloudResource"),
+		Version:     tea.String("2021-10-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ModifyCloudResourceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改云产品资源
+//
+// @param request - ModifyCloudResourceRequest
+//
+// @return ModifyCloudResourceResponse
+func (client *Client) ModifyCloudResource(request *ModifyCloudResourceRequest) (_result *ModifyCloudResourceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyCloudResourceResponse{}
+	_body, _err := client.ModifyCloudResourceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改默认HTTPS配置
+//
+// @param request - ModifyDefaultHttpsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyDefaultHttpsResponse
+func (client *Client) ModifyDefaultHttpsWithOptions(request *ModifyDefaultHttpsRequest, runtime *util.RuntimeOptions) (_result *ModifyDefaultHttpsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CertId)) {
+		query["CertId"] = request.CertId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CipherSuite)) {
+		query["CipherSuite"] = request.CipherSuite
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CustomCiphers)) {
+		query["CustomCiphers"] = request.CustomCiphers
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnableTLSv3)) {
+		query["EnableTLSv3"] = request.EnableTLSv3
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceManagerResourceGroupId)) {
+		query["ResourceManagerResourceGroupId"] = request.ResourceManagerResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TLSVersion)) {
+		query["TLSVersion"] = request.TLSVersion
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyDefaultHttps"),
+		Version:     tea.String("2021-10-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ModifyDefaultHttpsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改默认HTTPS配置
+//
+// @param request - ModifyDefaultHttpsRequest
+//
+// @return ModifyDefaultHttpsResponse
+func (client *Client) ModifyDefaultHttps(request *ModifyDefaultHttpsRequest) (_result *ModifyDefaultHttpsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyDefaultHttpsResponse{}
+	_body, _err := client.ModifyDefaultHttpsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Modifies the configurations of a protected object group.
 //
 // @param request - ModifyDefenseResourceGroupRequest
@@ -30327,6 +35007,490 @@ func (client *Client) ModifyHybridCloudClusterBypassStatus(request *ModifyHybrid
 
 // Summary:
 //
+// Modifies the rule of a hybrid cloud cluster.
+//
+// @param request - ModifyHybridCloudClusterRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyHybridCloudClusterRuleResponse
+func (client *Client) ModifyHybridCloudClusterRuleWithOptions(request *ModifyHybridCloudClusterRuleRequest, runtime *util.RuntimeOptions) (_result *ModifyHybridCloudClusterRuleResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceManagerResourceGroupId)) {
+		query["ResourceManagerResourceGroupId"] = request.ResourceManagerResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RuleConfig)) {
+		query["RuleConfig"] = request.RuleConfig
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RuleStatus)) {
+		query["RuleStatus"] = request.RuleStatus
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RuleType)) {
+		query["RuleType"] = request.RuleType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyHybridCloudClusterRule"),
+		Version:     tea.String("2021-10-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ModifyHybridCloudClusterRuleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Modifies the rule of a hybrid cloud cluster.
+//
+// @param request - ModifyHybridCloudClusterRuleRequest
+//
+// @return ModifyHybridCloudClusterRuleResponse
+func (client *Client) ModifyHybridCloudClusterRule(request *ModifyHybridCloudClusterRuleRequest) (_result *ModifyHybridCloudClusterRuleResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyHybridCloudClusterRuleResponse{}
+	_body, _err := client.ModifyHybridCloudClusterRuleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改组信息
+//
+// @param request - ModifyHybridCloudGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyHybridCloudGroupResponse
+func (client *Client) ModifyHybridCloudGroupWithOptions(request *ModifyHybridCloudGroupRequest, runtime *util.RuntimeOptions) (_result *ModifyHybridCloudGroupResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
+		query["GroupId"] = request.GroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupName)) {
+		query["GroupName"] = request.GroupName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Remark)) {
+		query["Remark"] = request.Remark
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceManagerResourceGroupId)) {
+		query["ResourceManagerResourceGroupId"] = request.ResourceManagerResourceGroupId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyHybridCloudGroup"),
+		Version:     tea.String("2021-10-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ModifyHybridCloudGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改组信息
+//
+// @param request - ModifyHybridCloudGroupRequest
+//
+// @return ModifyHybridCloudGroupResponse
+func (client *Client) ModifyHybridCloudGroup(request *ModifyHybridCloudGroupRequest) (_result *ModifyHybridCloudGroupResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyHybridCloudGroupResponse{}
+	_body, _err := client.ModifyHybridCloudGroupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Adds a node to a node group of a hybrid cloud cluster.
+//
+// @param request - ModifyHybridCloudGroupExpansionServerRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyHybridCloudGroupExpansionServerResponse
+func (client *Client) ModifyHybridCloudGroupExpansionServerWithOptions(request *ModifyHybridCloudGroupExpansionServerRequest, runtime *util.RuntimeOptions) (_result *ModifyHybridCloudGroupExpansionServerResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
+		query["GroupId"] = request.GroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Mids)) {
+		query["Mids"] = request.Mids
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceManagerResourceGroupId)) {
+		query["ResourceManagerResourceGroupId"] = request.ResourceManagerResourceGroupId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyHybridCloudGroupExpansionServer"),
+		Version:     tea.String("2021-10-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ModifyHybridCloudGroupExpansionServerResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Adds a node to a node group of a hybrid cloud cluster.
+//
+// @param request - ModifyHybridCloudGroupExpansionServerRequest
+//
+// @return ModifyHybridCloudGroupExpansionServerResponse
+func (client *Client) ModifyHybridCloudGroupExpansionServer(request *ModifyHybridCloudGroupExpansionServerRequest) (_result *ModifyHybridCloudGroupExpansionServerResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyHybridCloudGroupExpansionServerResponse{}
+	_body, _err := client.ModifyHybridCloudGroupExpansionServerWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes a node from a node group of a hybrid cloud cluster.
+//
+// @param request - ModifyHybridCloudGroupShrinkServerRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyHybridCloudGroupShrinkServerResponse
+func (client *Client) ModifyHybridCloudGroupShrinkServerWithOptions(request *ModifyHybridCloudGroupShrinkServerRequest, runtime *util.RuntimeOptions) (_result *ModifyHybridCloudGroupShrinkServerResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
+		query["GroupId"] = request.GroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Mids)) {
+		query["Mids"] = request.Mids
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceManagerResourceGroupId)) {
+		query["ResourceManagerResourceGroupId"] = request.ResourceManagerResourceGroupId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyHybridCloudGroupShrinkServer"),
+		Version:     tea.String("2021-10-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ModifyHybridCloudGroupShrinkServerResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes a node from a node group of a hybrid cloud cluster.
+//
+// @param request - ModifyHybridCloudGroupShrinkServerRequest
+//
+// @return ModifyHybridCloudGroupShrinkServerResponse
+func (client *Client) ModifyHybridCloudGroupShrinkServer(request *ModifyHybridCloudGroupShrinkServerRequest) (_result *ModifyHybridCloudGroupShrinkServerResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyHybridCloudGroupShrinkServerResponse{}
+	_body, _err := client.ModifyHybridCloudGroupShrinkServerWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Modifies the traffic redirection status of a hybrid cloud cluster by using an SDK.
+//
+// @param request - ModifyHybridCloudSdkPullinStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyHybridCloudSdkPullinStatusResponse
+func (client *Client) ModifyHybridCloudSdkPullinStatusWithOptions(request *ModifyHybridCloudSdkPullinStatusRequest, runtime *util.RuntimeOptions) (_result *ModifyHybridCloudSdkPullinStatusResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Mid)) {
+		query["Mid"] = request.Mid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PullinStatus)) {
+		query["PullinStatus"] = request.PullinStatus
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyHybridCloudSdkPullinStatus"),
+		Version:     tea.String("2021-10-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ModifyHybridCloudSdkPullinStatusResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Modifies the traffic redirection status of a hybrid cloud cluster by using an SDK.
+//
+// @param request - ModifyHybridCloudSdkPullinStatusRequest
+//
+// @return ModifyHybridCloudSdkPullinStatusResponse
+func (client *Client) ModifyHybridCloudSdkPullinStatus(request *ModifyHybridCloudSdkPullinStatusRequest) (_result *ModifyHybridCloudSdkPullinStatusResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyHybridCloudSdkPullinStatusResponse{}
+	_body, _err := client.ModifyHybridCloudSdkPullinStatusWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Modifies the information about a hybrid cloud node.
+//
+// @param request - ModifyHybridCloudServerRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyHybridCloudServerResponse
+func (client *Client) ModifyHybridCloudServerWithOptions(request *ModifyHybridCloudServerRequest, runtime *util.RuntimeOptions) (_result *ModifyHybridCloudServerResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Continents)) {
+		query["Continents"] = request.Continents
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CustomName)) {
+		query["CustomName"] = request.CustomName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Mid)) {
+		query["Mid"] = request.Mid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Operator)) {
+		query["Operator"] = request.Operator
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionCode)) {
+		query["RegionCode"] = request.RegionCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceManagerResourceGroupId)) {
+		query["ResourceManagerResourceGroupId"] = request.ResourceManagerResourceGroupId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyHybridCloudServer"),
+		Version:     tea.String("2021-10-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ModifyHybridCloudServerResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Modifies the information about a hybrid cloud node.
+//
+// @param request - ModifyHybridCloudServerRequest
+//
+// @return ModifyHybridCloudServerResponse
+func (client *Client) ModifyHybridCloudServer(request *ModifyHybridCloudServerRequest) (_result *ModifyHybridCloudServerResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyHybridCloudServerResponse{}
+	_body, _err := client.ModifyHybridCloudServerWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Modifies an IP address blacklist for major event protection.
 //
 // @param request - ModifyMajorProtectionBlackIpRequest
@@ -30495,7 +35659,7 @@ func (client *Client) ModifyMemberAccount(request *ModifyMemberAccountRequest) (
 
 // Summary:
 //
-// 修改用户暂停防护状态
+// Modifies the protection status of Web Application Firewall (WAF).
 //
 // @param request - ModifyPauseProtectionStatusRequest
 //
@@ -30549,7 +35713,7 @@ func (client *Client) ModifyPauseProtectionStatusWithOptions(request *ModifyPaus
 
 // Summary:
 //
-// 修改用户暂停防护状态
+// Modifies the protection status of Web Application Firewall (WAF).
 //
 // @param request - ModifyPauseProtectionStatusRequest
 //
