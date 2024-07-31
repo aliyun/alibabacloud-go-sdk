@@ -1769,7 +1769,8 @@ type DescAccountSummaryResponseBody struct {
 	// example:
 	//
 	// 2000
-	DailyQuota *int32 `json:"DailyQuota,omitempty" xml:"DailyQuota,omitempty"`
+	DailyQuota           *int32 `json:"DailyQuota,omitempty" xml:"DailyQuota,omitempty"`
+	DailyRemainFreeQuota *int32 `json:"DailyRemainFreeQuota,omitempty" xml:"DailyRemainFreeQuota,omitempty"`
 	// example:
 	//
 	// 0
@@ -1843,6 +1844,11 @@ func (s DescAccountSummaryResponseBody) GoString() string {
 
 func (s *DescAccountSummaryResponseBody) SetDailyQuota(v int32) *DescAccountSummaryResponseBody {
 	s.DailyQuota = &v
+	return s
+}
+
+func (s *DescAccountSummaryResponseBody) SetDailyRemainFreeQuota(v int32) *DescAccountSummaryResponseBody {
+	s.DailyRemainFreeQuota = &v
 	return s
 }
 
