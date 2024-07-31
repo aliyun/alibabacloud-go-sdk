@@ -33769,6 +33769,7 @@ func (s *UpdateXpackMonitorConfigResponse) SetBody(v *UpdateXpackMonitorConfigRe
 }
 
 type UpgradeEngineVersionRequest struct {
+	Plugins []*UpgradeEngineVersionRequestPlugins `json:"plugins,omitempty" xml:"plugins,omitempty" type:"Repeated"`
 	// example:
 	//
 	// engineVersion
@@ -33807,6 +33808,11 @@ func (s UpgradeEngineVersionRequest) GoString() string {
 	return s.String()
 }
 
+func (s *UpgradeEngineVersionRequest) SetPlugins(v []*UpgradeEngineVersionRequestPlugins) *UpgradeEngineVersionRequest {
+	s.Plugins = v
+	return s
+}
+
 func (s *UpgradeEngineVersionRequest) SetType(v string) *UpgradeEngineVersionRequest {
 	s.Type = &v
 	return s
@@ -33824,6 +33830,35 @@ func (s *UpgradeEngineVersionRequest) SetClientToken(v string) *UpgradeEngineVer
 
 func (s *UpgradeEngineVersionRequest) SetDryRun(v bool) *UpgradeEngineVersionRequest {
 	s.DryRun = &v
+	return s
+}
+
+type UpgradeEngineVersionRequestPlugins struct {
+	FileVersion *string `json:"fileVersion,omitempty" xml:"fileVersion,omitempty"`
+	Name        *string `json:"name,omitempty" xml:"name,omitempty"`
+	Version     *string `json:"version,omitempty" xml:"version,omitempty"`
+}
+
+func (s UpgradeEngineVersionRequestPlugins) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpgradeEngineVersionRequestPlugins) GoString() string {
+	return s.String()
+}
+
+func (s *UpgradeEngineVersionRequestPlugins) SetFileVersion(v string) *UpgradeEngineVersionRequestPlugins {
+	s.FileVersion = &v
+	return s
+}
+
+func (s *UpgradeEngineVersionRequestPlugins) SetName(v string) *UpgradeEngineVersionRequestPlugins {
+	s.Name = &v
+	return s
+}
+
+func (s *UpgradeEngineVersionRequestPlugins) SetVersion(v string) *UpgradeEngineVersionRequestPlugins {
+	s.Version = &v
 	return s
 }
 
@@ -47678,6 +47713,10 @@ func (client *Client) UpgradeEngineVersionWithOptions(InstanceId *string, reques
 	}
 
 	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Plugins)) {
+		body["plugins"] = request.Plugins
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Type)) {
 		body["type"] = request.Type
 	}
