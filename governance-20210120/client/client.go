@@ -9,6 +9,374 @@ import (
 	"github.com/alibabacloud-go/tea/tea"
 )
 
+type BatchEnrollAccountsRequest struct {
+	Accounts []*BatchEnrollAccountsRequestAccounts `json:"Accounts,omitempty" xml:"Accounts,omitempty" type:"Repeated"`
+	// example:
+	//
+	// afb-bp1durvn3lgqe28v****
+	BaselineId    *string                                    `json:"BaselineId,omitempty" xml:"BaselineId,omitempty"`
+	BaselineItems []*BatchEnrollAccountsRequestBaselineItems `json:"BaselineItems,omitempty" xml:"BaselineItems,omitempty" type:"Repeated"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s BatchEnrollAccountsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchEnrollAccountsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *BatchEnrollAccountsRequest) SetAccounts(v []*BatchEnrollAccountsRequestAccounts) *BatchEnrollAccountsRequest {
+	s.Accounts = v
+	return s
+}
+
+func (s *BatchEnrollAccountsRequest) SetBaselineId(v string) *BatchEnrollAccountsRequest {
+	s.BaselineId = &v
+	return s
+}
+
+func (s *BatchEnrollAccountsRequest) SetBaselineItems(v []*BatchEnrollAccountsRequestBaselineItems) *BatchEnrollAccountsRequest {
+	s.BaselineItems = v
+	return s
+}
+
+func (s *BatchEnrollAccountsRequest) SetRegionId(v string) *BatchEnrollAccountsRequest {
+	s.RegionId = &v
+	return s
+}
+
+type BatchEnrollAccountsRequestAccounts struct {
+	// example:
+	//
+	// 12868156179****
+	AccountUid *int64 `json:"AccountUid,omitempty" xml:"AccountUid,omitempty"`
+}
+
+func (s BatchEnrollAccountsRequestAccounts) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchEnrollAccountsRequestAccounts) GoString() string {
+	return s.String()
+}
+
+func (s *BatchEnrollAccountsRequestAccounts) SetAccountUid(v int64) *BatchEnrollAccountsRequestAccounts {
+	s.AccountUid = &v
+	return s
+}
+
+type BatchEnrollAccountsRequestBaselineItems struct {
+	// example:
+	//
+	// {\\"Notifications\\":[{\\"GroupKey\\":\\"account_msg\\",\\"Contacts\\":[{\\"Name\\":\\"aa\\"}],\\"PmsgStatus\\":1,\\"EmailStatus\\":1,\\"SmsStatus\\":1}]}
+	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	// example:
+	//
+	// ACS-BP_ACCOUNT_FACTORY_VPC
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// false
+	Skip *bool `json:"Skip,omitempty" xml:"Skip,omitempty"`
+	// example:
+	//
+	// 1.0
+	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
+}
+
+func (s BatchEnrollAccountsRequestBaselineItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchEnrollAccountsRequestBaselineItems) GoString() string {
+	return s.String()
+}
+
+func (s *BatchEnrollAccountsRequestBaselineItems) SetConfig(v string) *BatchEnrollAccountsRequestBaselineItems {
+	s.Config = &v
+	return s
+}
+
+func (s *BatchEnrollAccountsRequestBaselineItems) SetName(v string) *BatchEnrollAccountsRequestBaselineItems {
+	s.Name = &v
+	return s
+}
+
+func (s *BatchEnrollAccountsRequestBaselineItems) SetSkip(v bool) *BatchEnrollAccountsRequestBaselineItems {
+	s.Skip = &v
+	return s
+}
+
+func (s *BatchEnrollAccountsRequestBaselineItems) SetVersion(v string) *BatchEnrollAccountsRequestBaselineItems {
+	s.Version = &v
+	return s
+}
+
+type BatchEnrollAccountsResponseBody struct {
+	// example:
+	//
+	// 16B208DD-86BD-5E7D-AC93-FFD44B6FBDF1
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s BatchEnrollAccountsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchEnrollAccountsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *BatchEnrollAccountsResponseBody) SetRequestId(v string) *BatchEnrollAccountsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type BatchEnrollAccountsResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *BatchEnrollAccountsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s BatchEnrollAccountsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchEnrollAccountsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *BatchEnrollAccountsResponse) SetHeaders(v map[string]*string) *BatchEnrollAccountsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *BatchEnrollAccountsResponse) SetStatusCode(v int32) *BatchEnrollAccountsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *BatchEnrollAccountsResponse) SetBody(v *BatchEnrollAccountsResponseBody) *BatchEnrollAccountsResponse {
+	s.Body = v
+	return s
+}
+
+type CreateAccountFactoryBaselineRequest struct {
+	BaselineItems []*CreateAccountFactoryBaselineRequestBaselineItems `json:"BaselineItems,omitempty" xml:"BaselineItems,omitempty" type:"Repeated"`
+	BaselineName  *string                                             `json:"BaselineName,omitempty" xml:"BaselineName,omitempty"`
+	Description   *string                                             `json:"Description,omitempty" xml:"Description,omitempty"`
+	// RegionId
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s CreateAccountFactoryBaselineRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAccountFactoryBaselineRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAccountFactoryBaselineRequest) SetBaselineItems(v []*CreateAccountFactoryBaselineRequestBaselineItems) *CreateAccountFactoryBaselineRequest {
+	s.BaselineItems = v
+	return s
+}
+
+func (s *CreateAccountFactoryBaselineRequest) SetBaselineName(v string) *CreateAccountFactoryBaselineRequest {
+	s.BaselineName = &v
+	return s
+}
+
+func (s *CreateAccountFactoryBaselineRequest) SetDescription(v string) *CreateAccountFactoryBaselineRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateAccountFactoryBaselineRequest) SetRegionId(v string) *CreateAccountFactoryBaselineRequest {
+	s.RegionId = &v
+	return s
+}
+
+type CreateAccountFactoryBaselineRequestBaselineItems struct {
+	// example:
+	//
+	// {\\"EnabledServices\\":[\\"CEN_TR\\",\\"CDT\\",\\"CMS\\",\\"KMS\\"]}
+	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	// example:
+	//
+	// ACS-BP_ACCOUNT_FACTORY_VPC
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 1.0
+	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
+}
+
+func (s CreateAccountFactoryBaselineRequestBaselineItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAccountFactoryBaselineRequestBaselineItems) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAccountFactoryBaselineRequestBaselineItems) SetConfig(v string) *CreateAccountFactoryBaselineRequestBaselineItems {
+	s.Config = &v
+	return s
+}
+
+func (s *CreateAccountFactoryBaselineRequestBaselineItems) SetName(v string) *CreateAccountFactoryBaselineRequestBaselineItems {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateAccountFactoryBaselineRequestBaselineItems) SetVersion(v string) *CreateAccountFactoryBaselineRequestBaselineItems {
+	s.Version = &v
+	return s
+}
+
+type CreateAccountFactoryBaselineResponseBody struct {
+	BaselineId *string `json:"BaselineId,omitempty" xml:"BaselineId,omitempty"`
+	// example:
+	//
+	// A5592E2E-0FC4-557C-B989-DF229B5EBE13
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateAccountFactoryBaselineResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAccountFactoryBaselineResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAccountFactoryBaselineResponseBody) SetBaselineId(v string) *CreateAccountFactoryBaselineResponseBody {
+	s.BaselineId = &v
+	return s
+}
+
+func (s *CreateAccountFactoryBaselineResponseBody) SetRequestId(v string) *CreateAccountFactoryBaselineResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateAccountFactoryBaselineResponse struct {
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateAccountFactoryBaselineResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateAccountFactoryBaselineResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAccountFactoryBaselineResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAccountFactoryBaselineResponse) SetHeaders(v map[string]*string) *CreateAccountFactoryBaselineResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateAccountFactoryBaselineResponse) SetStatusCode(v int32) *CreateAccountFactoryBaselineResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateAccountFactoryBaselineResponse) SetBody(v *CreateAccountFactoryBaselineResponseBody) *CreateAccountFactoryBaselineResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteAccountFactoryBaselineRequest struct {
+	// example:
+	//
+	// afb-bp1durvn3lgqe28v****
+	BaselineId *string `json:"BaselineId,omitempty" xml:"BaselineId,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s DeleteAccountFactoryBaselineRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteAccountFactoryBaselineRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteAccountFactoryBaselineRequest) SetBaselineId(v string) *DeleteAccountFactoryBaselineRequest {
+	s.BaselineId = &v
+	return s
+}
+
+func (s *DeleteAccountFactoryBaselineRequest) SetRegionId(v string) *DeleteAccountFactoryBaselineRequest {
+	s.RegionId = &v
+	return s
+}
+
+type DeleteAccountFactoryBaselineResponseBody struct {
+	// example:
+	//
+	// 0F45D888-8C4D-55E5-ACA2-D1515159181D
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteAccountFactoryBaselineResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteAccountFactoryBaselineResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteAccountFactoryBaselineResponseBody) SetRequestId(v string) *DeleteAccountFactoryBaselineResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteAccountFactoryBaselineResponse struct {
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteAccountFactoryBaselineResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteAccountFactoryBaselineResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteAccountFactoryBaselineResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteAccountFactoryBaselineResponse) SetHeaders(v map[string]*string) *DeleteAccountFactoryBaselineResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteAccountFactoryBaselineResponse) SetStatusCode(v int32) *DeleteAccountFactoryBaselineResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteAccountFactoryBaselineResponse) SetBody(v *DeleteAccountFactoryBaselineResponseBody) *DeleteAccountFactoryBaselineResponse {
+	s.Body = v
+	return s
+}
+
 type EnrollAccountRequest struct {
 	// The prefix for the account name of the member.
 	//
@@ -1002,6 +1370,222 @@ func (s *GetEnrolledAccountResponse) SetBody(v *GetEnrolledAccountResponseBody) 
 	return s
 }
 
+type ListAccountFactoryBaselineItemsRequest struct {
+	// example:
+	//
+	// 10
+	MaxResults *int32    `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	Names      []*string `json:"Names,omitempty" xml:"Names,omitempty" type:"Repeated"`
+	// example:
+	//
+	// AAAAACDGQdAEX3m42z3sQ+f3VTK2Xr2DzYbz/SAfc/zJRqod
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// RegionId
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// AccountFactory
+	Type     *string   `json:"Type,omitempty" xml:"Type,omitempty"`
+	Versions []*string `json:"Versions,omitempty" xml:"Versions,omitempty" type:"Repeated"`
+}
+
+func (s ListAccountFactoryBaselineItemsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAccountFactoryBaselineItemsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListAccountFactoryBaselineItemsRequest) SetMaxResults(v int32) *ListAccountFactoryBaselineItemsRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListAccountFactoryBaselineItemsRequest) SetNames(v []*string) *ListAccountFactoryBaselineItemsRequest {
+	s.Names = v
+	return s
+}
+
+func (s *ListAccountFactoryBaselineItemsRequest) SetNextToken(v string) *ListAccountFactoryBaselineItemsRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListAccountFactoryBaselineItemsRequest) SetRegionId(v string) *ListAccountFactoryBaselineItemsRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ListAccountFactoryBaselineItemsRequest) SetType(v string) *ListAccountFactoryBaselineItemsRequest {
+	s.Type = &v
+	return s
+}
+
+func (s *ListAccountFactoryBaselineItemsRequest) SetVersions(v []*string) *ListAccountFactoryBaselineItemsRequest {
+	s.Versions = v
+	return s
+}
+
+type ListAccountFactoryBaselineItemsResponseBody struct {
+	BaselineItems []*ListAccountFactoryBaselineItemsResponseBodyBaselineItems `json:"BaselineItems,omitempty" xml:"BaselineItems,omitempty" type:"Repeated"`
+	// example:
+	//
+	// AAAAACDGQdAEX3m42z3sQ+f3VTK2Xr2DzYbz/SAfc/zJRqod
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// example:
+	//
+	// B40D73D8-76AC-5D3C-AC63-4FC8AFCE6671
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListAccountFactoryBaselineItemsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAccountFactoryBaselineItemsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListAccountFactoryBaselineItemsResponseBody) SetBaselineItems(v []*ListAccountFactoryBaselineItemsResponseBodyBaselineItems) *ListAccountFactoryBaselineItemsResponseBody {
+	s.BaselineItems = v
+	return s
+}
+
+func (s *ListAccountFactoryBaselineItemsResponseBody) SetNextToken(v string) *ListAccountFactoryBaselineItemsResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListAccountFactoryBaselineItemsResponseBody) SetRequestId(v string) *ListAccountFactoryBaselineItemsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListAccountFactoryBaselineItemsResponseBodyBaselineItems struct {
+	DependsOn []*ListAccountFactoryBaselineItemsResponseBodyBaselineItemsDependsOn `json:"DependsOn,omitempty" xml:"DependsOn,omitempty" type:"Repeated"`
+	// example:
+	//
+	// Notification.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// ACS-BP_ACCOUNT_FACTORY_ACCOUNT_NOTIFICATION
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// AccountFactory
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// 1.0
+	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
+}
+
+func (s ListAccountFactoryBaselineItemsResponseBodyBaselineItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAccountFactoryBaselineItemsResponseBodyBaselineItems) GoString() string {
+	return s.String()
+}
+
+func (s *ListAccountFactoryBaselineItemsResponseBodyBaselineItems) SetDependsOn(v []*ListAccountFactoryBaselineItemsResponseBodyBaselineItemsDependsOn) *ListAccountFactoryBaselineItemsResponseBodyBaselineItems {
+	s.DependsOn = v
+	return s
+}
+
+func (s *ListAccountFactoryBaselineItemsResponseBodyBaselineItems) SetDescription(v string) *ListAccountFactoryBaselineItemsResponseBodyBaselineItems {
+	s.Description = &v
+	return s
+}
+
+func (s *ListAccountFactoryBaselineItemsResponseBodyBaselineItems) SetName(v string) *ListAccountFactoryBaselineItemsResponseBodyBaselineItems {
+	s.Name = &v
+	return s
+}
+
+func (s *ListAccountFactoryBaselineItemsResponseBodyBaselineItems) SetType(v string) *ListAccountFactoryBaselineItemsResponseBodyBaselineItems {
+	s.Type = &v
+	return s
+}
+
+func (s *ListAccountFactoryBaselineItemsResponseBodyBaselineItems) SetVersion(v string) *ListAccountFactoryBaselineItemsResponseBodyBaselineItems {
+	s.Version = &v
+	return s
+}
+
+type ListAccountFactoryBaselineItemsResponseBodyBaselineItemsDependsOn struct {
+	// example:
+	//
+	// ACS-BP_ACCOUNT_FACTORY_VPC
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// AccountFactory
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// 1.0
+	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
+}
+
+func (s ListAccountFactoryBaselineItemsResponseBodyBaselineItemsDependsOn) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAccountFactoryBaselineItemsResponseBodyBaselineItemsDependsOn) GoString() string {
+	return s.String()
+}
+
+func (s *ListAccountFactoryBaselineItemsResponseBodyBaselineItemsDependsOn) SetName(v string) *ListAccountFactoryBaselineItemsResponseBodyBaselineItemsDependsOn {
+	s.Name = &v
+	return s
+}
+
+func (s *ListAccountFactoryBaselineItemsResponseBodyBaselineItemsDependsOn) SetType(v string) *ListAccountFactoryBaselineItemsResponseBodyBaselineItemsDependsOn {
+	s.Type = &v
+	return s
+}
+
+func (s *ListAccountFactoryBaselineItemsResponseBodyBaselineItemsDependsOn) SetVersion(v string) *ListAccountFactoryBaselineItemsResponseBodyBaselineItemsDependsOn {
+	s.Version = &v
+	return s
+}
+
+type ListAccountFactoryBaselineItemsResponse struct {
+	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListAccountFactoryBaselineItemsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListAccountFactoryBaselineItemsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAccountFactoryBaselineItemsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListAccountFactoryBaselineItemsResponse) SetHeaders(v map[string]*string) *ListAccountFactoryBaselineItemsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListAccountFactoryBaselineItemsResponse) SetStatusCode(v int32) *ListAccountFactoryBaselineItemsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListAccountFactoryBaselineItemsResponse) SetBody(v *ListAccountFactoryBaselineItemsResponseBody) *ListAccountFactoryBaselineItemsResponse {
+	s.Body = v
+	return s
+}
+
 type ListAccountFactoryBaselinesRequest struct {
 	// The maximum number of entries to return on each page.
 	//
@@ -1606,6 +2190,214 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
+// 账号工厂批量注册账号
+//
+// @param request - BatchEnrollAccountsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return BatchEnrollAccountsResponse
+func (client *Client) BatchEnrollAccountsWithOptions(request *BatchEnrollAccountsRequest, runtime *util.RuntimeOptions) (_result *BatchEnrollAccountsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Accounts)) {
+		query["Accounts"] = request.Accounts
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BaselineId)) {
+		query["BaselineId"] = request.BaselineId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BaselineItems)) {
+		query["BaselineItems"] = request.BaselineItems
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("BatchEnrollAccounts"),
+		Version:     tea.String("2021-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &BatchEnrollAccountsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 账号工厂批量注册账号
+//
+// @param request - BatchEnrollAccountsRequest
+//
+// @return BatchEnrollAccountsResponse
+func (client *Client) BatchEnrollAccounts(request *BatchEnrollAccountsRequest) (_result *BatchEnrollAccountsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &BatchEnrollAccountsResponse{}
+	_body, _err := client.BatchEnrollAccountsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建账号工厂基线
+//
+// @param request - CreateAccountFactoryBaselineRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateAccountFactoryBaselineResponse
+func (client *Client) CreateAccountFactoryBaselineWithOptions(request *CreateAccountFactoryBaselineRequest, runtime *util.RuntimeOptions) (_result *CreateAccountFactoryBaselineResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BaselineItems)) {
+		query["BaselineItems"] = request.BaselineItems
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BaselineName)) {
+		query["BaselineName"] = request.BaselineName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateAccountFactoryBaseline"),
+		Version:     tea.String("2021-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateAccountFactoryBaselineResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建账号工厂基线
+//
+// @param request - CreateAccountFactoryBaselineRequest
+//
+// @return CreateAccountFactoryBaselineResponse
+func (client *Client) CreateAccountFactoryBaseline(request *CreateAccountFactoryBaselineRequest) (_result *CreateAccountFactoryBaselineResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateAccountFactoryBaselineResponse{}
+	_body, _err := client.CreateAccountFactoryBaselineWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除账号工厂基线
+//
+// @param request - DeleteAccountFactoryBaselineRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteAccountFactoryBaselineResponse
+func (client *Client) DeleteAccountFactoryBaselineWithOptions(request *DeleteAccountFactoryBaselineRequest, runtime *util.RuntimeOptions) (_result *DeleteAccountFactoryBaselineResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BaselineId)) {
+		query["BaselineId"] = request.BaselineId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteAccountFactoryBaseline"),
+		Version:     tea.String("2021-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteAccountFactoryBaselineResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除账号工厂基线
+//
+// @param request - DeleteAccountFactoryBaselineRequest
+//
+// @return DeleteAccountFactoryBaselineResponse
+func (client *Client) DeleteAccountFactoryBaseline(request *DeleteAccountFactoryBaselineRequest) (_result *DeleteAccountFactoryBaselineResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteAccountFactoryBaselineResponse{}
+	_body, _err := client.DeleteAccountFactoryBaselineWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Enrolls an account. You can create a new account or manage an existing account in the account factory.
 //
 // Description:
@@ -1829,6 +2621,86 @@ func (client *Client) GetEnrolledAccount(request *GetEnrolledAccountRequest) (_r
 	runtime := &util.RuntimeOptions{}
 	_result = &GetEnrolledAccountResponse{}
 	_body, _err := client.GetEnrolledAccountWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取账号工厂基线元素列表
+//
+// @param request - ListAccountFactoryBaselineItemsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListAccountFactoryBaselineItemsResponse
+func (client *Client) ListAccountFactoryBaselineItemsWithOptions(request *ListAccountFactoryBaselineItemsRequest, runtime *util.RuntimeOptions) (_result *ListAccountFactoryBaselineItemsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Names)) {
+		query["Names"] = request.Names
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		query["Type"] = request.Type
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Versions)) {
+		query["Versions"] = request.Versions
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListAccountFactoryBaselineItems"),
+		Version:     tea.String("2021-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListAccountFactoryBaselineItemsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取账号工厂基线元素列表
+//
+// @param request - ListAccountFactoryBaselineItemsRequest
+//
+// @return ListAccountFactoryBaselineItemsResponse
+func (client *Client) ListAccountFactoryBaselineItems(request *ListAccountFactoryBaselineItemsRequest) (_result *ListAccountFactoryBaselineItemsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListAccountFactoryBaselineItemsResponse{}
+	_body, _err := client.ListAccountFactoryBaselineItemsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
