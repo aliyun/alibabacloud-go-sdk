@@ -1,6 +1,6 @@
 module github.com/alibabacloud-go/searchengine-20211025/v3
 
-go 1.15
+go 1.14
 
 require (
 	github.com/alibabacloud-go/darabonba-openapi/v2 v2.0.8

@@ -4804,13 +4804,13 @@ func (s *ExecuteSqlInstanceResponse) SetBody(v *ExecuteSqlInstanceResponseBody) 
 }
 
 type ForceSwitchResponseBody struct {
-	// id of request
+	// The request ID.
 	//
 	// example:
 	//
 	// 0B1FF998-BB8D-5182-BFC0-E471AA77095A
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The information about the index
+	// The index information.
 	//
 	// example:
 	//
@@ -7230,7 +7230,8 @@ type GetFileResponseBodyResult struct {
 	// example:
 	//
 	// ha-cn-2r42p5oi202_xijie_test
-	DataSource *string `json:"dataSource,omitempty" xml:"dataSource,omitempty"`
+	DataSource *string              `json:"dataSource,omitempty" xml:"dataSource,omitempty"`
+	Extend     map[string][]*string `json:"extend,omitempty" xml:"extend,omitempty"`
 	// The full path of the file.
 	//
 	// example:
@@ -7272,6 +7273,11 @@ func (s *GetFileResponseBodyResult) SetContent(v string) *GetFileResponseBodyRes
 
 func (s *GetFileResponseBodyResult) SetDataSource(v string) *GetFileResponseBodyResult {
 	s.DataSource = &v
+	return s
+}
+
+func (s *GetFileResponseBodyResult) SetExtend(v map[string][]*string) *GetFileResponseBodyResult {
+	s.Extend = v
 	return s
 }
 
@@ -7385,7 +7391,8 @@ type GetIndexResponseBodyResult struct {
 	// example:
 	//
 	// sz_vpc_domain_1
-	Domain *string `json:"domain,omitempty" xml:"domain,omitempty"`
+	Domain *string              `json:"domain,omitempty" xml:"domain,omitempty"`
+	Extend map[string][]*string `json:"extend,omitempty" xml:"extend,omitempty"`
 	// The time when full data in the index was last updated.
 	//
 	// example:
@@ -7491,6 +7498,11 @@ func (s *GetIndexResponseBodyResult) SetDescription(v string) *GetIndexResponseB
 
 func (s *GetIndexResponseBodyResult) SetDomain(v string) *GetIndexResponseBodyResult {
 	s.Domain = &v
+	return s
+}
+
+func (s *GetIndexResponseBodyResult) SetExtend(v map[string][]*string) *GetIndexResponseBodyResult {
+	s.Extend = v
 	return s
 }
 
@@ -12686,7 +12698,15 @@ func (s *ListIndexesResponse) SetBody(v *ListIndexesResponseBody) *ListIndexesRe
 }
 
 type ListInstanceSpecsRequest struct {
-	// The node type. Valid values: qrs, search, index, and cluster. qrs indicates a query node, search indicates a data node, index indicates an index node, and cluster indicates a cluster.
+	// The node type. Valid values:
+	//
+	// 	- qrs: Query Result Searcher (QRS) Worker
+	//
+	// 	- search: Searcher Worker
+	//
+	// 	- index: index node
+	//
+	// 	- cluster: cluster
 	//
 	// This parameter is required.
 	//
@@ -12710,13 +12730,13 @@ func (s *ListInstanceSpecsRequest) SetType(v string) *ListInstanceSpecsRequest {
 }
 
 type ListInstanceSpecsResponseBody struct {
-	// id of request
+	// The request ID.
 	//
 	// example:
 	//
 	// 10D5E615-69F7-5F49-B850-00169ADE513C
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The result.
+	// The instance types.
 	Result []*ListInstanceSpecsResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Repeated"`
 }
 
@@ -12739,25 +12759,25 @@ func (s *ListInstanceSpecsResponseBody) SetResult(v []*ListInstanceSpecsResponse
 }
 
 type ListInstanceSpecsResponseBodyResult struct {
-	// The number of CPU cores.
+	// The number of vCPUs.
 	//
 	// example:
 	//
 	// 1
 	Cpu *int32 `json:"cpu,omitempty" xml:"cpu,omitempty"`
-	// The maximum storage space of a Searcher worker.
+	// The maximum storage of a single data node. Unit: GB.
 	//
 	// example:
 	//
 	// 600
 	MaxDisk *int32 `json:"maxDisk,omitempty" xml:"maxDisk,omitempty"`
-	// The memory. Unit: GB.
+	// The memory of the instance. Unit: GB.
 	//
 	// example:
 	//
 	// 4
 	Mem *int32 `json:"mem,omitempty" xml:"mem,omitempty"`
-	// The minimum storage space of a Searcher worker.
+	// The minimum storage of a single data node. Unit: GB.
 	//
 	// example:
 	//
@@ -17512,7 +17532,7 @@ func (s *ModifyPausePolicyResponse) SetBody(v *ModifyPausePolicyResponseBody) *M
 }
 
 type ModifyPublicUrlIpListRequest struct {
-	// The request parameters.
+	// The request body.
 	Body map[string]*string `json:"body,omitempty" xml:"body,omitempty"`
 }
 
@@ -19009,7 +19029,7 @@ type StartIndexResponseBody struct {
 	//
 	// D39EE0F1-D7EF-5F46-B781-6BF4185308B0
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The result.
+	// The index map.
 	//
 	// example:
 	//
@@ -19071,7 +19091,7 @@ type StopIndexResponseBody struct {
 	//
 	// E7B7D598-B080-5C8E-AA35-D43EC0D5F886
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The result.
+	// The index map.
 	//
 	// example:
 	//
@@ -22030,7 +22050,7 @@ func (client *Client) DeleteInstance(instanceId *string) (_result *DeleteInstanc
 
 // Summary:
 //
-// Deletes a public endpoint.
+// 删除公网域名
 //
 // @param headers - map
 //
@@ -22063,7 +22083,7 @@ func (client *Client) DeletePublicUrlWithOptions(instanceId *string, headers map
 
 // Summary:
 //
-// Deletes a public endpoint.
+// 删除公网域名
 //
 // @return DeletePublicUrlResponse
 func (client *Client) DeletePublicUrl(instanceId *string) (_result *DeletePublicUrlResponse, _err error) {
@@ -22320,7 +22340,7 @@ func (client *Client) ExecuteSqlInstance(instanceId *string, database *string, s
 //
 // Description:
 //
-// \\### Method
+// ### [](#)Method
 //
 // ```java
 //
@@ -22328,7 +22348,7 @@ func (client *Client) ExecuteSqlInstance(instanceId *string, database *string, s
 //
 // ```
 //
-// ### URI
+// ### [](#uri)URI
 //
 // ```java
 //
@@ -22371,7 +22391,7 @@ func (client *Client) ForceSwitchWithOptions(instanceId *string, fsmId *string, 
 //
 // Description:
 //
-// \\### Method
+// ### [](#)Method
 //
 // ```java
 //
@@ -22379,7 +22399,7 @@ func (client *Client) ForceSwitchWithOptions(instanceId *string, fsmId *string, 
 //
 // ```
 //
-// ### URI
+// ### [](#uri)URI
 //
 // ```java
 //
@@ -26310,7 +26330,7 @@ func (client *Client) ModifyIndex(instanceId *string, indexName *string, request
 
 // Summary:
 //
-// Modifies an online policy of an index.
+// Modifies the online policy of an index.
 //
 // @param request - ModifyIndexOnlineStrategyRequest
 //
@@ -26355,7 +26375,7 @@ func (client *Client) ModifyIndexOnlineStrategyWithOptions(instanceId *string, d
 
 // Summary:
 //
-// Modifies an online policy of an index.
+// Modifies the online policy of an index.
 //
 // @param request - ModifyIndexOnlineStrategyRequest
 //
