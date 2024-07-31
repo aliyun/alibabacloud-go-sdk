@@ -4869,7 +4869,8 @@ type RecognizeEduPaperCutRequest struct {
 	// example:
 	//
 	// scan：扫描图， photo：实拍图
-	ImageType *string `json:"ImageType,omitempty" xml:"ImageType,omitempty"`
+	ImageType      *string `json:"ImageType,omitempty" xml:"ImageType,omitempty"`
+	OutputOricoord *bool   `json:"OutputOricoord,omitempty" xml:"OutputOricoord,omitempty"`
 	// example:
 	//
 	// default:默认, Math:数学, PrimarySchool_Math:小学数学, JHighSchool_Math: 初中数学, Chinese:语文, PrimarySchool_Chinese:小学语文, JHighSchool_Chinese:初中语文, English:英语, PrimarySchool_English:小学英语, JHighSchool_English:初中英语, Physics:物理, JHighSchool_Physics:初中物理, Chemistry: 化学, JHighSchool_Chemistry:初中化学, Biology:生物, JHighSchool_Biology:初中生物, History:历史, JHighSchool_History:初中历史, Geography:地理, JHighSchool_Geography:初中地理, Politics:政治, JHighSchool_Politics:初中政治
@@ -4896,6 +4897,11 @@ func (s *RecognizeEduPaperCutRequest) SetCutType(v string) *RecognizeEduPaperCut
 
 func (s *RecognizeEduPaperCutRequest) SetImageType(v string) *RecognizeEduPaperCutRequest {
 	s.ImageType = &v
+	return s
+}
+
+func (s *RecognizeEduPaperCutRequest) SetOutputOricoord(v bool) *RecognizeEduPaperCutRequest {
+	s.OutputOricoord = &v
 	return s
 }
 
@@ -12395,6 +12401,10 @@ func (client *Client) RecognizeEduPaperCutWithOptions(request *RecognizeEduPaper
 
 	if !tea.BoolValue(util.IsUnset(request.ImageType)) {
 		query["ImageType"] = request.ImageType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OutputOricoord)) {
+		query["OutputOricoord"] = request.OutputOricoord
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Subject)) {
