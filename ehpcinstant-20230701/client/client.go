@@ -296,7 +296,8 @@ type CreateJobRequest struct {
 	// example:
 	//
 	// testjob
-	JobName *string `json:"JobName,omitempty" xml:"JobName,omitempty"`
+	JobName      *string `json:"JobName,omitempty" xml:"JobName,omitempty"`
+	JobScheduler *string `json:"JobScheduler,omitempty" xml:"JobScheduler,omitempty"`
 	// This parameter is required.
 	Tasks []*CreateJobRequestTasks `json:"Tasks,omitempty" xml:"Tasks,omitempty" type:"Repeated"`
 }
@@ -321,6 +322,11 @@ func (s *CreateJobRequest) SetJobDescription(v string) *CreateJobRequest {
 
 func (s *CreateJobRequest) SetJobName(v string) *CreateJobRequest {
 	s.JobName = &v
+	return s
+}
+
+func (s *CreateJobRequest) SetJobScheduler(v string) *CreateJobRequest {
+	s.JobScheduler = &v
 	return s
 }
 
@@ -767,7 +773,8 @@ type CreateJobShrinkRequest struct {
 	// example:
 	//
 	// testjob
-	JobName *string `json:"JobName,omitempty" xml:"JobName,omitempty"`
+	JobName      *string `json:"JobName,omitempty" xml:"JobName,omitempty"`
+	JobScheduler *string `json:"JobScheduler,omitempty" xml:"JobScheduler,omitempty"`
 	// This parameter is required.
 	TasksShrink *string `json:"Tasks,omitempty" xml:"Tasks,omitempty"`
 }
@@ -792,6 +799,11 @@ func (s *CreateJobShrinkRequest) SetJobDescription(v string) *CreateJobShrinkReq
 
 func (s *CreateJobShrinkRequest) SetJobName(v string) *CreateJobShrinkRequest {
 	s.JobName = &v
+	return s
+}
+
+func (s *CreateJobShrinkRequest) SetJobScheduler(v string) *CreateJobShrinkRequest {
+	s.JobScheduler = &v
 	return s
 }
 
@@ -1743,7 +1755,8 @@ type GetJobResponseBodyJobInfo struct {
 	// example:
 	//
 	// testJob
-	JobName *string `json:"JobName,omitempty" xml:"JobName,omitempty"`
+	JobName      *string `json:"JobName,omitempty" xml:"JobName,omitempty"`
+	JobScheduler *string `json:"JobScheduler,omitempty" xml:"JobScheduler,omitempty"`
 	// example:
 	//
 	// 2024-03-05 20:00:48
@@ -1790,6 +1803,11 @@ func (s *GetJobResponseBodyJobInfo) SetJobId(v string) *GetJobResponseBodyJobInf
 
 func (s *GetJobResponseBodyJobInfo) SetJobName(v string) *GetJobResponseBodyJobInfo {
 	s.JobName = &v
+	return s
+}
+
+func (s *GetJobResponseBodyJobInfo) SetJobScheduler(v string) *GetJobResponseBodyJobInfo {
+	s.JobScheduler = &v
 	return s
 }
 
@@ -3596,6 +3614,10 @@ func (client *Client) CreateJobWithOptions(tmpReq *CreateJobRequest, runtime *ut
 
 	if !tea.BoolValue(util.IsUnset(request.JobName)) {
 		query["JobName"] = request.JobName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.JobScheduler)) {
+		query["JobScheduler"] = request.JobScheduler
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.TasksShrink)) {
