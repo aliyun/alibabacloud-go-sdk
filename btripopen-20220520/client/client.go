@@ -61920,6 +61920,1082 @@ func (s *HotelOrderDetailInfoResponse) SetBody(v *HotelOrderDetailInfoResponseBo
 	return s
 }
 
+type HotelOrderInfoQueryHeaders struct {
+	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	// example:
+	//
+	// feth00jqwls
+	XAcsBtripCorpToken *string `json:"x-acs-btrip-corp-token,omitempty" xml:"x-acs-btrip-corp-token,omitempty"`
+}
+
+func (s HotelOrderInfoQueryHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s HotelOrderInfoQueryHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *HotelOrderInfoQueryHeaders) SetCommonHeaders(v map[string]*string) *HotelOrderInfoQueryHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *HotelOrderInfoQueryHeaders) SetXAcsBtripCorpToken(v string) *HotelOrderInfoQueryHeaders {
+	s.XAcsBtripCorpToken = &v
+	return s
+}
+
+type HotelOrderInfoQueryResponseBody struct {
+	// example:
+	//
+	// success
+	Code    *string                                `json:"code,omitempty" xml:"code,omitempty"`
+	Message *string                                `json:"message,omitempty" xml:"message,omitempty"`
+	Module  *HotelOrderInfoQueryResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
+	// example:
+	//
+	// A5009956-1077-52FB-B520-EA8C7E91D722
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// example:
+	//
+	// 210f079e16603757182131635d866a
+	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
+}
+
+func (s HotelOrderInfoQueryResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s HotelOrderInfoQueryResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *HotelOrderInfoQueryResponseBody) SetCode(v string) *HotelOrderInfoQueryResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *HotelOrderInfoQueryResponseBody) SetMessage(v string) *HotelOrderInfoQueryResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *HotelOrderInfoQueryResponseBody) SetModule(v *HotelOrderInfoQueryResponseBodyModule) *HotelOrderInfoQueryResponseBody {
+	s.Module = v
+	return s
+}
+
+func (s *HotelOrderInfoQueryResponseBody) SetRequestId(v string) *HotelOrderInfoQueryResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *HotelOrderInfoQueryResponseBody) SetSuccess(v bool) *HotelOrderInfoQueryResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *HotelOrderInfoQueryResponseBody) SetTraceId(v string) *HotelOrderInfoQueryResponseBody {
+	s.TraceId = &v
+	return s
+}
+
+type HotelOrderInfoQueryResponseBodyModule struct {
+	BaseOrderInfo        *HotelOrderInfoQueryResponseBodyModuleBaseOrderInfo          `json:"base_order_info,omitempty" xml:"base_order_info,omitempty" type:"Struct"`
+	BookerInfo           *HotelOrderInfoQueryResponseBodyModuleBookerInfo             `json:"booker_info,omitempty" xml:"booker_info,omitempty" type:"Struct"`
+	HotelInfo            *HotelOrderInfoQueryResponseBodyModuleHotelInfo              `json:"hotel_info,omitempty" xml:"hotel_info,omitempty" type:"Struct"`
+	HotelOrderFeeInfo    *HotelOrderInfoQueryResponseBodyModuleHotelOrderFeeInfo      `json:"hotel_order_fee_info,omitempty" xml:"hotel_order_fee_info,omitempty" type:"Struct"`
+	HotelOrderRefundInfo []*HotelOrderInfoQueryResponseBodyModuleHotelOrderRefundInfo `json:"hotel_order_refund_info,omitempty" xml:"hotel_order_refund_info,omitempty" type:"Repeated"`
+	RoomTraverInfo       []*HotelOrderInfoQueryResponseBodyModuleRoomTraverInfo       `json:"room_traver_info,omitempty" xml:"room_traver_info,omitempty" type:"Repeated"`
+}
+
+func (s HotelOrderInfoQueryResponseBodyModule) String() string {
+	return tea.Prettify(s)
+}
+
+func (s HotelOrderInfoQueryResponseBodyModule) GoString() string {
+	return s.String()
+}
+
+func (s *HotelOrderInfoQueryResponseBodyModule) SetBaseOrderInfo(v *HotelOrderInfoQueryResponseBodyModuleBaseOrderInfo) *HotelOrderInfoQueryResponseBodyModule {
+	s.BaseOrderInfo = v
+	return s
+}
+
+func (s *HotelOrderInfoQueryResponseBodyModule) SetBookerInfo(v *HotelOrderInfoQueryResponseBodyModuleBookerInfo) *HotelOrderInfoQueryResponseBodyModule {
+	s.BookerInfo = v
+	return s
+}
+
+func (s *HotelOrderInfoQueryResponseBodyModule) SetHotelInfo(v *HotelOrderInfoQueryResponseBodyModuleHotelInfo) *HotelOrderInfoQueryResponseBodyModule {
+	s.HotelInfo = v
+	return s
+}
+
+func (s *HotelOrderInfoQueryResponseBodyModule) SetHotelOrderFeeInfo(v *HotelOrderInfoQueryResponseBodyModuleHotelOrderFeeInfo) *HotelOrderInfoQueryResponseBodyModule {
+	s.HotelOrderFeeInfo = v
+	return s
+}
+
+func (s *HotelOrderInfoQueryResponseBodyModule) SetHotelOrderRefundInfo(v []*HotelOrderInfoQueryResponseBodyModuleHotelOrderRefundInfo) *HotelOrderInfoQueryResponseBodyModule {
+	s.HotelOrderRefundInfo = v
+	return s
+}
+
+func (s *HotelOrderInfoQueryResponseBodyModule) SetRoomTraverInfo(v []*HotelOrderInfoQueryResponseBodyModuleRoomTraverInfo) *HotelOrderInfoQueryResponseBodyModule {
+	s.RoomTraverInfo = v
+	return s
+}
+
+type HotelOrderInfoQueryResponseBodyModuleBaseOrderInfo struct {
+	// example:
+	//
+	// 0
+	BookMode *string `json:"book_mode,omitempty" xml:"book_mode,omitempty"`
+	// example:
+	//
+	// 1430378
+	BookerId   *string `json:"booker_id,omitempty" xml:"booker_id,omitempty"`
+	BookerName *string `json:"booker_name,omitempty" xml:"booker_name,omitempty"`
+	// example:
+	//
+	// btripkvxtn1321g49wtul
+	BtripCorpId *string `json:"btrip_corp_id,omitempty" xml:"btrip_corp_id,omitempty"`
+	// example:
+	//
+	// 2
+	Category *int32 `json:"category,omitempty" xml:"category,omitempty"`
+	// example:
+	//
+	// 1721145600000
+	CheckInTime *int64 `json:"check_in_time,omitempty" xml:"check_in_time,omitempty"`
+	// example:
+	//
+	// 1721145600000
+	CheckOutTime *int64 `json:"check_out_time,omitempty" xml:"check_out_time,omitempty"`
+	// example:
+	//
+	// true
+	IsAgreementPrice *bool `json:"is_agreement_price,omitempty" xml:"is_agreement_price,omitempty"`
+	// example:
+	//
+	// 4
+	Nights *int32 `json:"nights,omitempty" xml:"nights,omitempty"`
+	// example:
+	//
+	// 1721145600000
+	OrderCreateTime *int64 `json:"order_create_time,omitempty" xml:"order_create_time,omitempty"`
+	// example:
+	//
+	// 1012053198307958626
+	OrderId *int64 `json:"order_id,omitempty" xml:"order_id,omitempty"`
+	// example:
+	//
+	// 2
+	OrderStatus     *int32  `json:"order_status,omitempty" xml:"order_status,omitempty"`
+	OrderStatusDesc *string `json:"order_status_desc,omitempty" xml:"order_status_desc,omitempty"`
+	// example:
+	//
+	// 1
+	PayStatus *int32 `json:"pay_status,omitempty" xml:"pay_status,omitempty"`
+	// example:
+	//
+	// 1721145600000
+	PayTime *int64 `json:"pay_time,omitempty" xml:"pay_time,omitempty"`
+	// example:
+	//
+	// 2
+	RoomNum *int32 `json:"room_num,omitempty" xml:"room_num,omitempty"`
+	// example:
+	//
+	// 4
+	SettleType *int32 `json:"settle_type,omitempty" xml:"settle_type,omitempty"`
+	// example:
+	//
+	// 1
+	TripMode *int32 `json:"trip_mode,omitempty" xml:"trip_mode,omitempty"`
+}
+
+func (s HotelOrderInfoQueryResponseBodyModuleBaseOrderInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s HotelOrderInfoQueryResponseBodyModuleBaseOrderInfo) GoString() string {
+	return s.String()
+}
+
+func (s *HotelOrderInfoQueryResponseBodyModuleBaseOrderInfo) SetBookMode(v string) *HotelOrderInfoQueryResponseBodyModuleBaseOrderInfo {
+	s.BookMode = &v
+	return s
+}
+
+func (s *HotelOrderInfoQueryResponseBodyModuleBaseOrderInfo) SetBookerId(v string) *HotelOrderInfoQueryResponseBodyModuleBaseOrderInfo {
+	s.BookerId = &v
+	return s
+}
+
+func (s *HotelOrderInfoQueryResponseBodyModuleBaseOrderInfo) SetBookerName(v string) *HotelOrderInfoQueryResponseBodyModuleBaseOrderInfo {
+	s.BookerName = &v
+	return s
+}
+
+func (s *HotelOrderInfoQueryResponseBodyModuleBaseOrderInfo) SetBtripCorpId(v string) *HotelOrderInfoQueryResponseBodyModuleBaseOrderInfo {
+	s.BtripCorpId = &v
+	return s
+}
+
+func (s *HotelOrderInfoQueryResponseBodyModuleBaseOrderInfo) SetCategory(v int32) *HotelOrderInfoQueryResponseBodyModuleBaseOrderInfo {
+	s.Category = &v
+	return s
+}
+
+func (s *HotelOrderInfoQueryResponseBodyModuleBaseOrderInfo) SetCheckInTime(v int64) *HotelOrderInfoQueryResponseBodyModuleBaseOrderInfo {
+	s.CheckInTime = &v
+	return s
+}
+
+func (s *HotelOrderInfoQueryResponseBodyModuleBaseOrderInfo) SetCheckOutTime(v int64) *HotelOrderInfoQueryResponseBodyModuleBaseOrderInfo {
+	s.CheckOutTime = &v
+	return s
+}
+
+func (s *HotelOrderInfoQueryResponseBodyModuleBaseOrderInfo) SetIsAgreementPrice(v bool) *HotelOrderInfoQueryResponseBodyModuleBaseOrderInfo {
+	s.IsAgreementPrice = &v
+	return s
+}
+
+func (s *HotelOrderInfoQueryResponseBodyModuleBaseOrderInfo) SetNights(v int32) *HotelOrderInfoQueryResponseBodyModuleBaseOrderInfo {
+	s.Nights = &v
+	return s
+}
+
+func (s *HotelOrderInfoQueryResponseBodyModuleBaseOrderInfo) SetOrderCreateTime(v int64) *HotelOrderInfoQueryResponseBodyModuleBaseOrderInfo {
+	s.OrderCreateTime = &v
+	return s
+}
+
+func (s *HotelOrderInfoQueryResponseBodyModuleBaseOrderInfo) SetOrderId(v int64) *HotelOrderInfoQueryResponseBodyModuleBaseOrderInfo {
+	s.OrderId = &v
+	return s
+}
+
+func (s *HotelOrderInfoQueryResponseBodyModuleBaseOrderInfo) SetOrderStatus(v int32) *HotelOrderInfoQueryResponseBodyModuleBaseOrderInfo {
+	s.OrderStatus = &v
+	return s
+}
+
+func (s *HotelOrderInfoQueryResponseBodyModuleBaseOrderInfo) SetOrderStatusDesc(v string) *HotelOrderInfoQueryResponseBodyModuleBaseOrderInfo {
+	s.OrderStatusDesc = &v
+	return s
+}
+
+func (s *HotelOrderInfoQueryResponseBodyModuleBaseOrderInfo) SetPayStatus(v int32) *HotelOrderInfoQueryResponseBodyModuleBaseOrderInfo {
+	s.PayStatus = &v
+	return s
+}
+
+func (s *HotelOrderInfoQueryResponseBodyModuleBaseOrderInfo) SetPayTime(v int64) *HotelOrderInfoQueryResponseBodyModuleBaseOrderInfo {
+	s.PayTime = &v
+	return s
+}
+
+func (s *HotelOrderInfoQueryResponseBodyModuleBaseOrderInfo) SetRoomNum(v int32) *HotelOrderInfoQueryResponseBodyModuleBaseOrderInfo {
+	s.RoomNum = &v
+	return s
+}
+
+func (s *HotelOrderInfoQueryResponseBodyModuleBaseOrderInfo) SetSettleType(v int32) *HotelOrderInfoQueryResponseBodyModuleBaseOrderInfo {
+	s.SettleType = &v
+	return s
+}
+
+func (s *HotelOrderInfoQueryResponseBodyModuleBaseOrderInfo) SetTripMode(v int32) *HotelOrderInfoQueryResponseBodyModuleBaseOrderInfo {
+	s.TripMode = &v
+	return s
+}
+
+type HotelOrderInfoQueryResponseBodyModuleBookerInfo struct {
+	// example:
+	//
+	// UN_APPLY
+	BookerRole *string `json:"booker_role,omitempty" xml:"booker_role,omitempty"`
+	// example:
+	//
+	// 13311112222@qq.com
+	ContactEmail *string `json:"contact_email,omitempty" xml:"contact_email,omitempty"`
+	// example:
+	//
+	// 13311112222
+	ContactPhone *string `json:"contact_phone,omitempty" xml:"contact_phone,omitempty"`
+	// example:
+	//
+	// open12gddn2kn1i47v10wRJNkMFx00
+	CorpId     *string                                                    `json:"corp_id,omitempty" xml:"corp_id,omitempty"`
+	Department *HotelOrderInfoQueryResponseBodyModuleBookerInfoDepartment `json:"department,omitempty" xml:"department,omitempty" type:"Struct"`
+	// example:
+	//
+	// Tom
+	EnName *string `json:"en_name,omitempty" xml:"en_name,omitempty"`
+	// example:
+	//
+	// 1001
+	JobNo *string `json:"job_no,omitempty" xml:"job_no,omitempty"`
+	// example:
+	//
+	// true
+	NeedApply *bool   `json:"need_apply,omitempty" xml:"need_apply,omitempty"`
+	RealName  *string `json:"real_name,omitempty" xml:"real_name,omitempty"`
+	// example:
+	//
+	// 1430378
+	UserId *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
+}
+
+func (s HotelOrderInfoQueryResponseBodyModuleBookerInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s HotelOrderInfoQueryResponseBodyModuleBookerInfo) GoString() string {
+	return s.String()
+}
+
+func (s *HotelOrderInfoQueryResponseBodyModuleBookerInfo) SetBookerRole(v string) *HotelOrderInfoQueryResponseBodyModuleBookerInfo {
+	s.BookerRole = &v
+	return s
+}
+
+func (s *HotelOrderInfoQueryResponseBodyModuleBookerInfo) SetContactEmail(v string) *HotelOrderInfoQueryResponseBodyModuleBookerInfo {
+	s.ContactEmail = &v
+	return s
+}
+
+func (s *HotelOrderInfoQueryResponseBodyModuleBookerInfo) SetContactPhone(v string) *HotelOrderInfoQueryResponseBodyModuleBookerInfo {
+	s.ContactPhone = &v
+	return s
+}
+
+func (s *HotelOrderInfoQueryResponseBodyModuleBookerInfo) SetCorpId(v string) *HotelOrderInfoQueryResponseBodyModuleBookerInfo {
+	s.CorpId = &v
+	return s
+}
+
+func (s *HotelOrderInfoQueryResponseBodyModuleBookerInfo) SetDepartment(v *HotelOrderInfoQueryResponseBodyModuleBookerInfoDepartment) *HotelOrderInfoQueryResponseBodyModuleBookerInfo {
+	s.Department = v
+	return s
+}
+
+func (s *HotelOrderInfoQueryResponseBodyModuleBookerInfo) SetEnName(v string) *HotelOrderInfoQueryResponseBodyModuleBookerInfo {
+	s.EnName = &v
+	return s
+}
+
+func (s *HotelOrderInfoQueryResponseBodyModuleBookerInfo) SetJobNo(v string) *HotelOrderInfoQueryResponseBodyModuleBookerInfo {
+	s.JobNo = &v
+	return s
+}
+
+func (s *HotelOrderInfoQueryResponseBodyModuleBookerInfo) SetNeedApply(v bool) *HotelOrderInfoQueryResponseBodyModuleBookerInfo {
+	s.NeedApply = &v
+	return s
+}
+
+func (s *HotelOrderInfoQueryResponseBodyModuleBookerInfo) SetRealName(v string) *HotelOrderInfoQueryResponseBodyModuleBookerInfo {
+	s.RealName = &v
+	return s
+}
+
+func (s *HotelOrderInfoQueryResponseBodyModuleBookerInfo) SetUserId(v string) *HotelOrderInfoQueryResponseBodyModuleBookerInfo {
+	s.UserId = &v
+	return s
+}
+
+type HotelOrderInfoQueryResponseBodyModuleBookerInfoDepartment struct {
+	// example:
+	//
+	// 0rCUI20hjOsk0sTwlu
+	CascadeDeptMask *string `json:"cascade_dept_mask,omitempty" xml:"cascade_dept_mask,omitempty"`
+	CascadeDeptName *string `json:"cascade_dept_name,omitempty" xml:"cascade_dept_name,omitempty"`
+	// example:
+	//
+	// 35
+	DepartId   *string `json:"depart_id,omitempty" xml:"depart_id,omitempty"`
+	DepartName *string `json:"depart_name,omitempty" xml:"depart_name,omitempty"`
+	// example:
+	//
+	// 330000001815
+	OutDepartId *string `json:"out_depart_id,omitempty" xml:"out_depart_id,omitempty"`
+}
+
+func (s HotelOrderInfoQueryResponseBodyModuleBookerInfoDepartment) String() string {
+	return tea.Prettify(s)
+}
+
+func (s HotelOrderInfoQueryResponseBodyModuleBookerInfoDepartment) GoString() string {
+	return s.String()
+}
+
+func (s *HotelOrderInfoQueryResponseBodyModuleBookerInfoDepartment) SetCascadeDeptMask(v string) *HotelOrderInfoQueryResponseBodyModuleBookerInfoDepartment {
+	s.CascadeDeptMask = &v
+	return s
+}
+
+func (s *HotelOrderInfoQueryResponseBodyModuleBookerInfoDepartment) SetCascadeDeptName(v string) *HotelOrderInfoQueryResponseBodyModuleBookerInfoDepartment {
+	s.CascadeDeptName = &v
+	return s
+}
+
+func (s *HotelOrderInfoQueryResponseBodyModuleBookerInfoDepartment) SetDepartId(v string) *HotelOrderInfoQueryResponseBodyModuleBookerInfoDepartment {
+	s.DepartId = &v
+	return s
+}
+
+func (s *HotelOrderInfoQueryResponseBodyModuleBookerInfoDepartment) SetDepartName(v string) *HotelOrderInfoQueryResponseBodyModuleBookerInfoDepartment {
+	s.DepartName = &v
+	return s
+}
+
+func (s *HotelOrderInfoQueryResponseBodyModuleBookerInfoDepartment) SetOutDepartId(v string) *HotelOrderInfoQueryResponseBodyModuleBookerInfoDepartment {
+	s.OutDepartId = &v
+	return s
+}
+
+type HotelOrderInfoQueryResponseBodyModuleHotelInfo struct {
+	// example:
+	//
+	// 330100
+	CityCode *string `json:"city_code,omitempty" xml:"city_code,omitempty"`
+	CityName *string `json:"city_name,omitempty" xml:"city_name,omitempty"`
+	// example:
+	//
+	// 1
+	CountryCode *string `json:"country_code,omitempty" xml:"country_code,omitempty"`
+	CountryName *string `json:"country_name,omitempty" xml:"country_name,omitempty"`
+	// example:
+	//
+	// 330183
+	DistrictCode *string `json:"district_code,omitempty" xml:"district_code,omitempty"`
+	DistrictName *string `json:"district_name,omitempty" xml:"district_name,omitempty"`
+	HotelAddress *string `json:"hotel_address,omitempty" xml:"hotel_address,omitempty"`
+	// example:
+	//
+	// 3
+	HotelBrandCode *string `json:"hotel_brand_code,omitempty" xml:"hotel_brand_code,omitempty"`
+	HotelBrandName *string `json:"hotel_brand_name,omitempty" xml:"hotel_brand_name,omitempty"`
+	// example:
+	//
+	// huazhu
+	HotelGroup *string `json:"hotel_group,omitempty" xml:"hotel_group,omitempty"`
+	// example:
+	//
+	// 55335212
+	HotelId   *string `json:"hotel_id,omitempty" xml:"hotel_id,omitempty"`
+	HotelName *string `json:"hotel_name,omitempty" xml:"hotel_name,omitempty"`
+	// example:
+	//
+	// Test Hotel Name
+	HotelNameEn *string `json:"hotel_name_en,omitempty" xml:"hotel_name_en,omitempty"`
+	// example:
+	//
+	// 5
+	Star *string `json:"star,omitempty" xml:"star,omitempty"`
+}
+
+func (s HotelOrderInfoQueryResponseBodyModuleHotelInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s HotelOrderInfoQueryResponseBodyModuleHotelInfo) GoString() string {
+	return s.String()
+}
+
+func (s *HotelOrderInfoQueryResponseBodyModuleHotelInfo) SetCityCode(v string) *HotelOrderInfoQueryResponseBodyModuleHotelInfo {
+	s.CityCode = &v
+	return s
+}
+
+func (s *HotelOrderInfoQueryResponseBodyModuleHotelInfo) SetCityName(v string) *HotelOrderInfoQueryResponseBodyModuleHotelInfo {
+	s.CityName = &v
+	return s
+}
+
+func (s *HotelOrderInfoQueryResponseBodyModuleHotelInfo) SetCountryCode(v string) *HotelOrderInfoQueryResponseBodyModuleHotelInfo {
+	s.CountryCode = &v
+	return s
+}
+
+func (s *HotelOrderInfoQueryResponseBodyModuleHotelInfo) SetCountryName(v string) *HotelOrderInfoQueryResponseBodyModuleHotelInfo {
+	s.CountryName = &v
+	return s
+}
+
+func (s *HotelOrderInfoQueryResponseBodyModuleHotelInfo) SetDistrictCode(v string) *HotelOrderInfoQueryResponseBodyModuleHotelInfo {
+	s.DistrictCode = &v
+	return s
+}
+
+func (s *HotelOrderInfoQueryResponseBodyModuleHotelInfo) SetDistrictName(v string) *HotelOrderInfoQueryResponseBodyModuleHotelInfo {
+	s.DistrictName = &v
+	return s
+}
+
+func (s *HotelOrderInfoQueryResponseBodyModuleHotelInfo) SetHotelAddress(v string) *HotelOrderInfoQueryResponseBodyModuleHotelInfo {
+	s.HotelAddress = &v
+	return s
+}
+
+func (s *HotelOrderInfoQueryResponseBodyModuleHotelInfo) SetHotelBrandCode(v string) *HotelOrderInfoQueryResponseBodyModuleHotelInfo {
+	s.HotelBrandCode = &v
+	return s
+}
+
+func (s *HotelOrderInfoQueryResponseBodyModuleHotelInfo) SetHotelBrandName(v string) *HotelOrderInfoQueryResponseBodyModuleHotelInfo {
+	s.HotelBrandName = &v
+	return s
+}
+
+func (s *HotelOrderInfoQueryResponseBodyModuleHotelInfo) SetHotelGroup(v string) *HotelOrderInfoQueryResponseBodyModuleHotelInfo {
+	s.HotelGroup = &v
+	return s
+}
+
+func (s *HotelOrderInfoQueryResponseBodyModuleHotelInfo) SetHotelId(v string) *HotelOrderInfoQueryResponseBodyModuleHotelInfo {
+	s.HotelId = &v
+	return s
+}
+
+func (s *HotelOrderInfoQueryResponseBodyModuleHotelInfo) SetHotelName(v string) *HotelOrderInfoQueryResponseBodyModuleHotelInfo {
+	s.HotelName = &v
+	return s
+}
+
+func (s *HotelOrderInfoQueryResponseBodyModuleHotelInfo) SetHotelNameEn(v string) *HotelOrderInfoQueryResponseBodyModuleHotelInfo {
+	s.HotelNameEn = &v
+	return s
+}
+
+func (s *HotelOrderInfoQueryResponseBodyModuleHotelInfo) SetStar(v string) *HotelOrderInfoQueryResponseBodyModuleHotelInfo {
+	s.Star = &v
+	return s
+}
+
+type HotelOrderInfoQueryResponseBodyModuleHotelOrderFeeInfo struct {
+	// example:
+	//
+	// 35000
+	OrderAmount *int64 `json:"order_amount,omitempty" xml:"order_amount,omitempty"`
+	// example:
+	//
+	// 0
+	OtherFee *int64 `json:"other_fee,omitempty" xml:"other_fee,omitempty"`
+	// example:
+	//
+	// 35000
+	PayAmount *int64 `json:"pay_amount,omitempty" xml:"pay_amount,omitempty"`
+	// example:
+	//
+	// 5000
+	PromotionAmount *int64 `json:"promotion_amount,omitempty" xml:"promotion_amount,omitempty"`
+	// example:
+	//
+	// 35000
+	TotalRoomAmount *int64 `json:"total_room_amount,omitempty" xml:"total_room_amount,omitempty"`
+}
+
+func (s HotelOrderInfoQueryResponseBodyModuleHotelOrderFeeInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s HotelOrderInfoQueryResponseBodyModuleHotelOrderFeeInfo) GoString() string {
+	return s.String()
+}
+
+func (s *HotelOrderInfoQueryResponseBodyModuleHotelOrderFeeInfo) SetOrderAmount(v int64) *HotelOrderInfoQueryResponseBodyModuleHotelOrderFeeInfo {
+	s.OrderAmount = &v
+	return s
+}
+
+func (s *HotelOrderInfoQueryResponseBodyModuleHotelOrderFeeInfo) SetOtherFee(v int64) *HotelOrderInfoQueryResponseBodyModuleHotelOrderFeeInfo {
+	s.OtherFee = &v
+	return s
+}
+
+func (s *HotelOrderInfoQueryResponseBodyModuleHotelOrderFeeInfo) SetPayAmount(v int64) *HotelOrderInfoQueryResponseBodyModuleHotelOrderFeeInfo {
+	s.PayAmount = &v
+	return s
+}
+
+func (s *HotelOrderInfoQueryResponseBodyModuleHotelOrderFeeInfo) SetPromotionAmount(v int64) *HotelOrderInfoQueryResponseBodyModuleHotelOrderFeeInfo {
+	s.PromotionAmount = &v
+	return s
+}
+
+func (s *HotelOrderInfoQueryResponseBodyModuleHotelOrderFeeInfo) SetTotalRoomAmount(v int64) *HotelOrderInfoQueryResponseBodyModuleHotelOrderFeeInfo {
+	s.TotalRoomAmount = &v
+	return s
+}
+
+type HotelOrderInfoQueryResponseBodyModuleHotelOrderRefundInfo struct {
+	// example:
+	//
+	// 1000
+	CancelFine *int64 `json:"cancel_fine,omitempty" xml:"cancel_fine,omitempty"`
+	// example:
+	//
+	// 1000000002578096
+	RefundApplyId *int64 `json:"refund_apply_id,omitempty" xml:"refund_apply_id,omitempty"`
+	// example:
+	//
+	// 1721702353700
+	RefundEndTime *int64 `json:"refund_end_time,omitempty" xml:"refund_end_time,omitempty"`
+	// example:
+	//
+	// 34000
+	RefundPrice  *int64  `json:"refund_price,omitempty" xml:"refund_price,omitempty"`
+	RefundReason *string `json:"refund_reason,omitempty" xml:"refund_reason,omitempty"`
+	// example:
+	//
+	// 1721702353700
+	RefundStartTime *int64 `json:"refund_start_time,omitempty" xml:"refund_start_time,omitempty"`
+	// example:
+	//
+	// 5
+	RefundType *int32 `json:"refund_type,omitempty" xml:"refund_type,omitempty"`
+}
+
+func (s HotelOrderInfoQueryResponseBodyModuleHotelOrderRefundInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s HotelOrderInfoQueryResponseBodyModuleHotelOrderRefundInfo) GoString() string {
+	return s.String()
+}
+
+func (s *HotelOrderInfoQueryResponseBodyModuleHotelOrderRefundInfo) SetCancelFine(v int64) *HotelOrderInfoQueryResponseBodyModuleHotelOrderRefundInfo {
+	s.CancelFine = &v
+	return s
+}
+
+func (s *HotelOrderInfoQueryResponseBodyModuleHotelOrderRefundInfo) SetRefundApplyId(v int64) *HotelOrderInfoQueryResponseBodyModuleHotelOrderRefundInfo {
+	s.RefundApplyId = &v
+	return s
+}
+
+func (s *HotelOrderInfoQueryResponseBodyModuleHotelOrderRefundInfo) SetRefundEndTime(v int64) *HotelOrderInfoQueryResponseBodyModuleHotelOrderRefundInfo {
+	s.RefundEndTime = &v
+	return s
+}
+
+func (s *HotelOrderInfoQueryResponseBodyModuleHotelOrderRefundInfo) SetRefundPrice(v int64) *HotelOrderInfoQueryResponseBodyModuleHotelOrderRefundInfo {
+	s.RefundPrice = &v
+	return s
+}
+
+func (s *HotelOrderInfoQueryResponseBodyModuleHotelOrderRefundInfo) SetRefundReason(v string) *HotelOrderInfoQueryResponseBodyModuleHotelOrderRefundInfo {
+	s.RefundReason = &v
+	return s
+}
+
+func (s *HotelOrderInfoQueryResponseBodyModuleHotelOrderRefundInfo) SetRefundStartTime(v int64) *HotelOrderInfoQueryResponseBodyModuleHotelOrderRefundInfo {
+	s.RefundStartTime = &v
+	return s
+}
+
+func (s *HotelOrderInfoQueryResponseBodyModuleHotelOrderRefundInfo) SetRefundType(v int32) *HotelOrderInfoQueryResponseBodyModuleHotelOrderRefundInfo {
+	s.RefundType = &v
+	return s
+}
+
+type HotelOrderInfoQueryResponseBodyModuleRoomTraverInfo struct {
+	// example:
+	//
+	// 1
+	LiveRoomNo   *string                                                           `json:"live_room_no,omitempty" xml:"live_room_no,omitempty"`
+	RoomTypeName *string                                                           `json:"room_type_name,omitempty" xml:"room_type_name,omitempty"`
+	TraverInfos  []*HotelOrderInfoQueryResponseBodyModuleRoomTraverInfoTraverInfos `json:"traver_infos,omitempty" xml:"traver_infos,omitempty" type:"Repeated"`
+}
+
+func (s HotelOrderInfoQueryResponseBodyModuleRoomTraverInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s HotelOrderInfoQueryResponseBodyModuleRoomTraverInfo) GoString() string {
+	return s.String()
+}
+
+func (s *HotelOrderInfoQueryResponseBodyModuleRoomTraverInfo) SetLiveRoomNo(v string) *HotelOrderInfoQueryResponseBodyModuleRoomTraverInfo {
+	s.LiveRoomNo = &v
+	return s
+}
+
+func (s *HotelOrderInfoQueryResponseBodyModuleRoomTraverInfo) SetRoomTypeName(v string) *HotelOrderInfoQueryResponseBodyModuleRoomTraverInfo {
+	s.RoomTypeName = &v
+	return s
+}
+
+func (s *HotelOrderInfoQueryResponseBodyModuleRoomTraverInfo) SetTraverInfos(v []*HotelOrderInfoQueryResponseBodyModuleRoomTraverInfoTraverInfos) *HotelOrderInfoQueryResponseBodyModuleRoomTraverInfo {
+	s.TraverInfos = v
+	return s
+}
+
+type HotelOrderInfoQueryResponseBodyModuleRoomTraverInfoTraverInfos struct {
+	ApplyInfo *HotelOrderInfoQueryResponseBodyModuleRoomTraverInfoTraverInfosApplyInfo `json:"apply_info,omitempty" xml:"apply_info,omitempty" type:"Struct"`
+	// example:
+	//
+	// 342229200801010023
+	CertNo *string `json:"cert_no,omitempty" xml:"cert_no,omitempty"`
+	// example:
+	//
+	// 0
+	CertType   *int32                                                                    `json:"cert_type,omitempty" xml:"cert_type,omitempty"`
+	Department *HotelOrderInfoQueryResponseBodyModuleRoomTraverInfoTraverInfosDepartment `json:"department,omitempty" xml:"department,omitempty" type:"Struct"`
+	// example:
+	//
+	// 1001
+	JobNo *string `json:"job_no,omitempty" xml:"job_no,omitempty"`
+	// example:
+	//
+	// 13311112222
+	Telephone *string `json:"telephone,omitempty" xml:"telephone,omitempty"`
+	// example:
+	//
+	// 1430378
+	TravelerId   *string `json:"traveler_id,omitempty" xml:"traveler_id,omitempty"`
+	TravelerName *string `json:"traveler_name,omitempty" xml:"traveler_name,omitempty"`
+	// example:
+	//
+	// 1
+	TravelerType   *int32                                                                        `json:"traveler_type,omitempty" xml:"traveler_type,omitempty"`
+	TripCostCenter *HotelOrderInfoQueryResponseBodyModuleRoomTraverInfoTraverInfosTripCostCenter `json:"trip_cost_center,omitempty" xml:"trip_cost_center,omitempty" type:"Struct"`
+	// example:
+	//
+	// 0
+	UserType *int32 `json:"user_type,omitempty" xml:"user_type,omitempty"`
+}
+
+func (s HotelOrderInfoQueryResponseBodyModuleRoomTraverInfoTraverInfos) String() string {
+	return tea.Prettify(s)
+}
+
+func (s HotelOrderInfoQueryResponseBodyModuleRoomTraverInfoTraverInfos) GoString() string {
+	return s.String()
+}
+
+func (s *HotelOrderInfoQueryResponseBodyModuleRoomTraverInfoTraverInfos) SetApplyInfo(v *HotelOrderInfoQueryResponseBodyModuleRoomTraverInfoTraverInfosApplyInfo) *HotelOrderInfoQueryResponseBodyModuleRoomTraverInfoTraverInfos {
+	s.ApplyInfo = v
+	return s
+}
+
+func (s *HotelOrderInfoQueryResponseBodyModuleRoomTraverInfoTraverInfos) SetCertNo(v string) *HotelOrderInfoQueryResponseBodyModuleRoomTraverInfoTraverInfos {
+	s.CertNo = &v
+	return s
+}
+
+func (s *HotelOrderInfoQueryResponseBodyModuleRoomTraverInfoTraverInfos) SetCertType(v int32) *HotelOrderInfoQueryResponseBodyModuleRoomTraverInfoTraverInfos {
+	s.CertType = &v
+	return s
+}
+
+func (s *HotelOrderInfoQueryResponseBodyModuleRoomTraverInfoTraverInfos) SetDepartment(v *HotelOrderInfoQueryResponseBodyModuleRoomTraverInfoTraverInfosDepartment) *HotelOrderInfoQueryResponseBodyModuleRoomTraverInfoTraverInfos {
+	s.Department = v
+	return s
+}
+
+func (s *HotelOrderInfoQueryResponseBodyModuleRoomTraverInfoTraverInfos) SetJobNo(v string) *HotelOrderInfoQueryResponseBodyModuleRoomTraverInfoTraverInfos {
+	s.JobNo = &v
+	return s
+}
+
+func (s *HotelOrderInfoQueryResponseBodyModuleRoomTraverInfoTraverInfos) SetTelephone(v string) *HotelOrderInfoQueryResponseBodyModuleRoomTraverInfoTraverInfos {
+	s.Telephone = &v
+	return s
+}
+
+func (s *HotelOrderInfoQueryResponseBodyModuleRoomTraverInfoTraverInfos) SetTravelerId(v string) *HotelOrderInfoQueryResponseBodyModuleRoomTraverInfoTraverInfos {
+	s.TravelerId = &v
+	return s
+}
+
+func (s *HotelOrderInfoQueryResponseBodyModuleRoomTraverInfoTraverInfos) SetTravelerName(v string) *HotelOrderInfoQueryResponseBodyModuleRoomTraverInfoTraverInfos {
+	s.TravelerName = &v
+	return s
+}
+
+func (s *HotelOrderInfoQueryResponseBodyModuleRoomTraverInfoTraverInfos) SetTravelerType(v int32) *HotelOrderInfoQueryResponseBodyModuleRoomTraverInfoTraverInfos {
+	s.TravelerType = &v
+	return s
+}
+
+func (s *HotelOrderInfoQueryResponseBodyModuleRoomTraverInfoTraverInfos) SetTripCostCenter(v *HotelOrderInfoQueryResponseBodyModuleRoomTraverInfoTraverInfosTripCostCenter) *HotelOrderInfoQueryResponseBodyModuleRoomTraverInfoTraverInfos {
+	s.TripCostCenter = v
+	return s
+}
+
+func (s *HotelOrderInfoQueryResponseBodyModuleRoomTraverInfoTraverInfos) SetUserType(v int32) *HotelOrderInfoQueryResponseBodyModuleRoomTraverInfoTraverInfos {
+	s.UserType = &v
+	return s
+}
+
+type HotelOrderInfoQueryResponseBodyModuleRoomTraverInfoTraverInfosApplyInfo struct {
+	// example:
+	//
+	// 1001
+	ApplyBusinessId   *string `json:"apply_business_id,omitempty" xml:"apply_business_id,omitempty"`
+	ApplyBusinessName *string `json:"apply_business_name,omitempty" xml:"apply_business_name,omitempty"`
+	// example:
+	//
+	// 1424031910085891196
+	ApplyId     *string                                                                               `json:"apply_id,omitempty" xml:"apply_id,omitempty"`
+	ExceedApply []*HotelOrderInfoQueryResponseBodyModuleRoomTraverInfoTraverInfosApplyInfoExceedApply `json:"exceed_apply,omitempty" xml:"exceed_apply,omitempty" type:"Repeated"`
+	// example:
+	//
+	// ef5e74dc1f1640b08858fb043f64e477-8
+	ItineraryNo *string `json:"itinerary_no,omitempty" xml:"itinerary_no,omitempty"`
+}
+
+func (s HotelOrderInfoQueryResponseBodyModuleRoomTraverInfoTraverInfosApplyInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s HotelOrderInfoQueryResponseBodyModuleRoomTraverInfoTraverInfosApplyInfo) GoString() string {
+	return s.String()
+}
+
+func (s *HotelOrderInfoQueryResponseBodyModuleRoomTraverInfoTraverInfosApplyInfo) SetApplyBusinessId(v string) *HotelOrderInfoQueryResponseBodyModuleRoomTraverInfoTraverInfosApplyInfo {
+	s.ApplyBusinessId = &v
+	return s
+}
+
+func (s *HotelOrderInfoQueryResponseBodyModuleRoomTraverInfoTraverInfosApplyInfo) SetApplyBusinessName(v string) *HotelOrderInfoQueryResponseBodyModuleRoomTraverInfoTraverInfosApplyInfo {
+	s.ApplyBusinessName = &v
+	return s
+}
+
+func (s *HotelOrderInfoQueryResponseBodyModuleRoomTraverInfoTraverInfosApplyInfo) SetApplyId(v string) *HotelOrderInfoQueryResponseBodyModuleRoomTraverInfoTraverInfosApplyInfo {
+	s.ApplyId = &v
+	return s
+}
+
+func (s *HotelOrderInfoQueryResponseBodyModuleRoomTraverInfoTraverInfosApplyInfo) SetExceedApply(v []*HotelOrderInfoQueryResponseBodyModuleRoomTraverInfoTraverInfosApplyInfoExceedApply) *HotelOrderInfoQueryResponseBodyModuleRoomTraverInfoTraverInfosApplyInfo {
+	s.ExceedApply = v
+	return s
+}
+
+func (s *HotelOrderInfoQueryResponseBodyModuleRoomTraverInfoTraverInfosApplyInfo) SetItineraryNo(v string) *HotelOrderInfoQueryResponseBodyModuleRoomTraverInfoTraverInfosApplyInfo {
+	s.ItineraryNo = &v
+	return s
+}
+
+type HotelOrderInfoQueryResponseBodyModuleRoomTraverInfoTraverInfosApplyInfoExceedApply struct {
+	ExceedReason *string `json:"exceed_reason,omitempty" xml:"exceed_reason,omitempty"`
+	// example:
+	//
+	// 16
+	ExceedType *int32 `json:"exceed_type,omitempty" xml:"exceed_type,omitempty"`
+	// example:
+	//
+	// 3321
+	FlowNo *int64 `json:"flow_no,omitempty" xml:"flow_no,omitempty"`
+	// example:
+	//
+	// 60853
+	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
+}
+
+func (s HotelOrderInfoQueryResponseBodyModuleRoomTraverInfoTraverInfosApplyInfoExceedApply) String() string {
+	return tea.Prettify(s)
+}
+
+func (s HotelOrderInfoQueryResponseBodyModuleRoomTraverInfoTraverInfosApplyInfoExceedApply) GoString() string {
+	return s.String()
+}
+
+func (s *HotelOrderInfoQueryResponseBodyModuleRoomTraverInfoTraverInfosApplyInfoExceedApply) SetExceedReason(v string) *HotelOrderInfoQueryResponseBodyModuleRoomTraverInfoTraverInfosApplyInfoExceedApply {
+	s.ExceedReason = &v
+	return s
+}
+
+func (s *HotelOrderInfoQueryResponseBodyModuleRoomTraverInfoTraverInfosApplyInfoExceedApply) SetExceedType(v int32) *HotelOrderInfoQueryResponseBodyModuleRoomTraverInfoTraverInfosApplyInfoExceedApply {
+	s.ExceedType = &v
+	return s
+}
+
+func (s *HotelOrderInfoQueryResponseBodyModuleRoomTraverInfoTraverInfosApplyInfoExceedApply) SetFlowNo(v int64) *HotelOrderInfoQueryResponseBodyModuleRoomTraverInfoTraverInfosApplyInfoExceedApply {
+	s.FlowNo = &v
+	return s
+}
+
+func (s *HotelOrderInfoQueryResponseBodyModuleRoomTraverInfoTraverInfosApplyInfoExceedApply) SetId(v int64) *HotelOrderInfoQueryResponseBodyModuleRoomTraverInfoTraverInfosApplyInfoExceedApply {
+	s.Id = &v
+	return s
+}
+
+type HotelOrderInfoQueryResponseBodyModuleRoomTraverInfoTraverInfosDepartment struct {
+	// example:
+	//
+	// 0rCUI20hjOsk0sTwlu
+	CascadeDeptMask *string `json:"cascade_dept_mask,omitempty" xml:"cascade_dept_mask,omitempty"`
+	CascadeDeptName *string `json:"cascade_dept_name,omitempty" xml:"cascade_dept_name,omitempty"`
+	// example:
+	//
+	// 35
+	DepartId   *string `json:"depart_id,omitempty" xml:"depart_id,omitempty"`
+	DepartName *string `json:"depart_name,omitempty" xml:"depart_name,omitempty"`
+	// example:
+	//
+	// 330000001815
+	OutDepartId *string `json:"out_depart_id,omitempty" xml:"out_depart_id,omitempty"`
+}
+
+func (s HotelOrderInfoQueryResponseBodyModuleRoomTraverInfoTraverInfosDepartment) String() string {
+	return tea.Prettify(s)
+}
+
+func (s HotelOrderInfoQueryResponseBodyModuleRoomTraverInfoTraverInfosDepartment) GoString() string {
+	return s.String()
+}
+
+func (s *HotelOrderInfoQueryResponseBodyModuleRoomTraverInfoTraverInfosDepartment) SetCascadeDeptMask(v string) *HotelOrderInfoQueryResponseBodyModuleRoomTraverInfoTraverInfosDepartment {
+	s.CascadeDeptMask = &v
+	return s
+}
+
+func (s *HotelOrderInfoQueryResponseBodyModuleRoomTraverInfoTraverInfosDepartment) SetCascadeDeptName(v string) *HotelOrderInfoQueryResponseBodyModuleRoomTraverInfoTraverInfosDepartment {
+	s.CascadeDeptName = &v
+	return s
+}
+
+func (s *HotelOrderInfoQueryResponseBodyModuleRoomTraverInfoTraverInfosDepartment) SetDepartId(v string) *HotelOrderInfoQueryResponseBodyModuleRoomTraverInfoTraverInfosDepartment {
+	s.DepartId = &v
+	return s
+}
+
+func (s *HotelOrderInfoQueryResponseBodyModuleRoomTraverInfoTraverInfosDepartment) SetDepartName(v string) *HotelOrderInfoQueryResponseBodyModuleRoomTraverInfoTraverInfosDepartment {
+	s.DepartName = &v
+	return s
+}
+
+func (s *HotelOrderInfoQueryResponseBodyModuleRoomTraverInfoTraverInfosDepartment) SetOutDepartId(v string) *HotelOrderInfoQueryResponseBodyModuleRoomTraverInfoTraverInfosDepartment {
+	s.OutDepartId = &v
+	return s
+}
+
+type HotelOrderInfoQueryResponseBodyModuleRoomTraverInfoTraverInfosTripCostCenter struct {
+	// example:
+	//
+	// 323431
+	CostCenterCode *string `json:"cost_center_code,omitempty" xml:"cost_center_code,omitempty"`
+	// example:
+	//
+	// 2312
+	CostCenterId   *string `json:"cost_center_id,omitempty" xml:"cost_center_id,omitempty"`
+	CostCenterName *string `json:"cost_center_name,omitempty" xml:"cost_center_name,omitempty"`
+	// example:
+	//
+	// {"extraKey":"extraVal"}
+	ExternalExtField *string `json:"external_ext_field,omitempty" xml:"external_ext_field,omitempty"`
+	// example:
+	//
+	// 1
+	FeeType *int32 `json:"fee_type,omitempty" xml:"fee_type,omitempty"`
+	// example:
+	//
+	// 123332
+	InvoiceId    *int64  `json:"invoice_id,omitempty" xml:"invoice_id,omitempty"`
+	InvoiceTitle *string `json:"invoice_title,omitempty" xml:"invoice_title,omitempty"`
+	// example:
+	//
+	// 1002
+	ProjectCode  *string `json:"project_code,omitempty" xml:"project_code,omitempty"`
+	ProjectTitle *string `json:"project_title,omitempty" xml:"project_title,omitempty"`
+}
+
+func (s HotelOrderInfoQueryResponseBodyModuleRoomTraverInfoTraverInfosTripCostCenter) String() string {
+	return tea.Prettify(s)
+}
+
+func (s HotelOrderInfoQueryResponseBodyModuleRoomTraverInfoTraverInfosTripCostCenter) GoString() string {
+	return s.String()
+}
+
+func (s *HotelOrderInfoQueryResponseBodyModuleRoomTraverInfoTraverInfosTripCostCenter) SetCostCenterCode(v string) *HotelOrderInfoQueryResponseBodyModuleRoomTraverInfoTraverInfosTripCostCenter {
+	s.CostCenterCode = &v
+	return s
+}
+
+func (s *HotelOrderInfoQueryResponseBodyModuleRoomTraverInfoTraverInfosTripCostCenter) SetCostCenterId(v string) *HotelOrderInfoQueryResponseBodyModuleRoomTraverInfoTraverInfosTripCostCenter {
+	s.CostCenterId = &v
+	return s
+}
+
+func (s *HotelOrderInfoQueryResponseBodyModuleRoomTraverInfoTraverInfosTripCostCenter) SetCostCenterName(v string) *HotelOrderInfoQueryResponseBodyModuleRoomTraverInfoTraverInfosTripCostCenter {
+	s.CostCenterName = &v
+	return s
+}
+
+func (s *HotelOrderInfoQueryResponseBodyModuleRoomTraverInfoTraverInfosTripCostCenter) SetExternalExtField(v string) *HotelOrderInfoQueryResponseBodyModuleRoomTraverInfoTraverInfosTripCostCenter {
+	s.ExternalExtField = &v
+	return s
+}
+
+func (s *HotelOrderInfoQueryResponseBodyModuleRoomTraverInfoTraverInfosTripCostCenter) SetFeeType(v int32) *HotelOrderInfoQueryResponseBodyModuleRoomTraverInfoTraverInfosTripCostCenter {
+	s.FeeType = &v
+	return s
+}
+
+func (s *HotelOrderInfoQueryResponseBodyModuleRoomTraverInfoTraverInfosTripCostCenter) SetInvoiceId(v int64) *HotelOrderInfoQueryResponseBodyModuleRoomTraverInfoTraverInfosTripCostCenter {
+	s.InvoiceId = &v
+	return s
+}
+
+func (s *HotelOrderInfoQueryResponseBodyModuleRoomTraverInfoTraverInfosTripCostCenter) SetInvoiceTitle(v string) *HotelOrderInfoQueryResponseBodyModuleRoomTraverInfoTraverInfosTripCostCenter {
+	s.InvoiceTitle = &v
+	return s
+}
+
+func (s *HotelOrderInfoQueryResponseBodyModuleRoomTraverInfoTraverInfosTripCostCenter) SetProjectCode(v string) *HotelOrderInfoQueryResponseBodyModuleRoomTraverInfoTraverInfosTripCostCenter {
+	s.ProjectCode = &v
+	return s
+}
+
+func (s *HotelOrderInfoQueryResponseBodyModuleRoomTraverInfoTraverInfosTripCostCenter) SetProjectTitle(v string) *HotelOrderInfoQueryResponseBodyModuleRoomTraverInfoTraverInfosTripCostCenter {
+	s.ProjectTitle = &v
+	return s
+}
+
+type HotelOrderInfoQueryResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *HotelOrderInfoQueryResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s HotelOrderInfoQueryResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s HotelOrderInfoQueryResponse) GoString() string {
+	return s.String()
+}
+
+func (s *HotelOrderInfoQueryResponse) SetHeaders(v map[string]*string) *HotelOrderInfoQueryResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *HotelOrderInfoQueryResponse) SetStatusCode(v int32) *HotelOrderInfoQueryResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *HotelOrderInfoQueryResponse) SetBody(v *HotelOrderInfoQueryResponseBody) *HotelOrderInfoQueryResponse {
+	s.Body = v
+	return s
+}
+
 type HotelOrderListQueryHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
 	// example:
@@ -67286,6 +68362,562 @@ func (s *HotelStaticInfoResponse) SetStatusCode(v int32) *HotelStaticInfoRespons
 }
 
 func (s *HotelStaticInfoResponse) SetBody(v *HotelStaticInfoResponseBody) *HotelStaticInfoResponse {
+	s.Body = v
+	return s
+}
+
+type HotelSuggestV2Headers struct {
+	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	// example:
+	//
+	// feth00jqwls
+	XAcsBtripCorpToken *string `json:"x-acs-btrip-corp-token,omitempty" xml:"x-acs-btrip-corp-token,omitempty"`
+}
+
+func (s HotelSuggestV2Headers) String() string {
+	return tea.Prettify(s)
+}
+
+func (s HotelSuggestV2Headers) GoString() string {
+	return s.String()
+}
+
+func (s *HotelSuggestV2Headers) SetCommonHeaders(v map[string]*string) *HotelSuggestV2Headers {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *HotelSuggestV2Headers) SetXAcsBtripCorpToken(v string) *HotelSuggestV2Headers {
+	s.XAcsBtripCorpToken = &v
+	return s
+}
+
+type HotelSuggestV2Request struct {
+	// example:
+	//
+	// 1000
+	BtripUserId *string `json:"btrip_user_id,omitempty" xml:"btrip_user_id,omitempty"`
+	// example:
+	//
+	// 2024-05-15
+	CheckIn *string `json:"check_in,omitempty" xml:"check_in,omitempty"`
+	// example:
+	//
+	// 2024-06-04
+	CheckOut *string `json:"check_out,omitempty" xml:"check_out,omitempty"`
+	// example:
+	//
+	// 330100
+	CityCode *string `json:"city_code,omitempty" xml:"city_code,omitempty"`
+	Keyword  *string `json:"keyword,omitempty" xml:"keyword,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	SearchType *int32 `json:"search_type,omitempty" xml:"search_type,omitempty"`
+}
+
+func (s HotelSuggestV2Request) String() string {
+	return tea.Prettify(s)
+}
+
+func (s HotelSuggestV2Request) GoString() string {
+	return s.String()
+}
+
+func (s *HotelSuggestV2Request) SetBtripUserId(v string) *HotelSuggestV2Request {
+	s.BtripUserId = &v
+	return s
+}
+
+func (s *HotelSuggestV2Request) SetCheckIn(v string) *HotelSuggestV2Request {
+	s.CheckIn = &v
+	return s
+}
+
+func (s *HotelSuggestV2Request) SetCheckOut(v string) *HotelSuggestV2Request {
+	s.CheckOut = &v
+	return s
+}
+
+func (s *HotelSuggestV2Request) SetCityCode(v string) *HotelSuggestV2Request {
+	s.CityCode = &v
+	return s
+}
+
+func (s *HotelSuggestV2Request) SetKeyword(v string) *HotelSuggestV2Request {
+	s.Keyword = &v
+	return s
+}
+
+func (s *HotelSuggestV2Request) SetSearchType(v int32) *HotelSuggestV2Request {
+	s.SearchType = &v
+	return s
+}
+
+type HotelSuggestV2ResponseBody struct {
+	// example:
+	//
+	// 200
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// example:
+	//
+	// None
+	Message *string                           `json:"message,omitempty" xml:"message,omitempty"`
+	Module  *HotelSuggestV2ResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
+	// example:
+	//
+	// C61ECFF6-606B-5F66-B81D-D77369043A5F
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// example:
+	//
+	// 21041ce316577904808056433edbb2
+	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
+}
+
+func (s HotelSuggestV2ResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s HotelSuggestV2ResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *HotelSuggestV2ResponseBody) SetCode(v string) *HotelSuggestV2ResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *HotelSuggestV2ResponseBody) SetMessage(v string) *HotelSuggestV2ResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *HotelSuggestV2ResponseBody) SetModule(v *HotelSuggestV2ResponseBodyModule) *HotelSuggestV2ResponseBody {
+	s.Module = v
+	return s
+}
+
+func (s *HotelSuggestV2ResponseBody) SetRequestId(v string) *HotelSuggestV2ResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *HotelSuggestV2ResponseBody) SetSuccess(v bool) *HotelSuggestV2ResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *HotelSuggestV2ResponseBody) SetTraceId(v string) *HotelSuggestV2ResponseBody {
+	s.TraceId = &v
+	return s
+}
+
+type HotelSuggestV2ResponseBodyModule struct {
+	GuessSuggestInfos   []*HotelSuggestV2ResponseBodyModuleGuessSuggestInfos   `json:"guess_suggest_infos,omitempty" xml:"guess_suggest_infos,omitempty" type:"Repeated"`
+	KeywordSuggestInfos []*HotelSuggestV2ResponseBodyModuleKeywordSuggestInfos `json:"keyword_suggest_infos,omitempty" xml:"keyword_suggest_infos,omitempty" type:"Repeated"`
+	PopularSuggestInfos []*HotelSuggestV2ResponseBodyModulePopularSuggestInfos `json:"popular_suggest_infos,omitempty" xml:"popular_suggest_infos,omitempty" type:"Repeated"`
+	Tips                *string                                                `json:"tips,omitempty" xml:"tips,omitempty"`
+}
+
+func (s HotelSuggestV2ResponseBodyModule) String() string {
+	return tea.Prettify(s)
+}
+
+func (s HotelSuggestV2ResponseBodyModule) GoString() string {
+	return s.String()
+}
+
+func (s *HotelSuggestV2ResponseBodyModule) SetGuessSuggestInfos(v []*HotelSuggestV2ResponseBodyModuleGuessSuggestInfos) *HotelSuggestV2ResponseBodyModule {
+	s.GuessSuggestInfos = v
+	return s
+}
+
+func (s *HotelSuggestV2ResponseBodyModule) SetKeywordSuggestInfos(v []*HotelSuggestV2ResponseBodyModuleKeywordSuggestInfos) *HotelSuggestV2ResponseBodyModule {
+	s.KeywordSuggestInfos = v
+	return s
+}
+
+func (s *HotelSuggestV2ResponseBodyModule) SetPopularSuggestInfos(v []*HotelSuggestV2ResponseBodyModulePopularSuggestInfos) *HotelSuggestV2ResponseBodyModule {
+	s.PopularSuggestInfos = v
+	return s
+}
+
+func (s *HotelSuggestV2ResponseBodyModule) SetTips(v string) *HotelSuggestV2ResponseBodyModule {
+	s.Tips = &v
+	return s
+}
+
+type HotelSuggestV2ResponseBodyModuleGuessSuggestInfos struct {
+	Address *string `json:"address,omitempty" xml:"address,omitempty"`
+	// example:
+	//
+	// 300100
+	CityCode    *int32  `json:"city_code,omitempty" xml:"city_code,omitempty"`
+	CityName    *string `json:"city_name,omitempty" xml:"city_name,omitempty"`
+	DisplayName *string `json:"display_name,omitempty" xml:"display_name,omitempty"`
+	// example:
+	//
+	// 53853318
+	HotelId *string `json:"hotel_id,omitempty" xml:"hotel_id,omitempty"`
+	// example:
+	//
+	// https://gw.alicdn.com/imgextra/i3/O1CN01qKg25r1rKLOKxT3vB_!!6000000005612-2-tps-32-32.png
+	Icon  *string `json:"icon,omitempty" xml:"icon,omitempty"`
+	Point *string `json:"point,omitempty" xml:"point,omitempty"`
+	// example:
+	//
+	// 524
+	Price *string `json:"price,omitempty" xml:"price,omitempty"`
+	// example:
+	//
+	// 0
+	Region *int32 `json:"region,omitempty" xml:"region,omitempty"`
+	// example:
+	//
+	// 10
+	Type     *int32  `json:"type,omitempty" xml:"type,omitempty"`
+	TypeDesc *string `json:"type_desc,omitempty" xml:"type_desc,omitempty"`
+}
+
+func (s HotelSuggestV2ResponseBodyModuleGuessSuggestInfos) String() string {
+	return tea.Prettify(s)
+}
+
+func (s HotelSuggestV2ResponseBodyModuleGuessSuggestInfos) GoString() string {
+	return s.String()
+}
+
+func (s *HotelSuggestV2ResponseBodyModuleGuessSuggestInfos) SetAddress(v string) *HotelSuggestV2ResponseBodyModuleGuessSuggestInfos {
+	s.Address = &v
+	return s
+}
+
+func (s *HotelSuggestV2ResponseBodyModuleGuessSuggestInfos) SetCityCode(v int32) *HotelSuggestV2ResponseBodyModuleGuessSuggestInfos {
+	s.CityCode = &v
+	return s
+}
+
+func (s *HotelSuggestV2ResponseBodyModuleGuessSuggestInfos) SetCityName(v string) *HotelSuggestV2ResponseBodyModuleGuessSuggestInfos {
+	s.CityName = &v
+	return s
+}
+
+func (s *HotelSuggestV2ResponseBodyModuleGuessSuggestInfos) SetDisplayName(v string) *HotelSuggestV2ResponseBodyModuleGuessSuggestInfos {
+	s.DisplayName = &v
+	return s
+}
+
+func (s *HotelSuggestV2ResponseBodyModuleGuessSuggestInfos) SetHotelId(v string) *HotelSuggestV2ResponseBodyModuleGuessSuggestInfos {
+	s.HotelId = &v
+	return s
+}
+
+func (s *HotelSuggestV2ResponseBodyModuleGuessSuggestInfos) SetIcon(v string) *HotelSuggestV2ResponseBodyModuleGuessSuggestInfos {
+	s.Icon = &v
+	return s
+}
+
+func (s *HotelSuggestV2ResponseBodyModuleGuessSuggestInfos) SetPoint(v string) *HotelSuggestV2ResponseBodyModuleGuessSuggestInfos {
+	s.Point = &v
+	return s
+}
+
+func (s *HotelSuggestV2ResponseBodyModuleGuessSuggestInfos) SetPrice(v string) *HotelSuggestV2ResponseBodyModuleGuessSuggestInfos {
+	s.Price = &v
+	return s
+}
+
+func (s *HotelSuggestV2ResponseBodyModuleGuessSuggestInfos) SetRegion(v int32) *HotelSuggestV2ResponseBodyModuleGuessSuggestInfos {
+	s.Region = &v
+	return s
+}
+
+func (s *HotelSuggestV2ResponseBodyModuleGuessSuggestInfos) SetType(v int32) *HotelSuggestV2ResponseBodyModuleGuessSuggestInfos {
+	s.Type = &v
+	return s
+}
+
+func (s *HotelSuggestV2ResponseBodyModuleGuessSuggestInfos) SetTypeDesc(v string) *HotelSuggestV2ResponseBodyModuleGuessSuggestInfos {
+	s.TypeDesc = &v
+	return s
+}
+
+type HotelSuggestV2ResponseBodyModuleKeywordSuggestInfos struct {
+	Address              *string                                                                    `json:"address,omitempty" xml:"address,omitempty"`
+	BusinessAreaWithCity []*HotelSuggestV2ResponseBodyModuleKeywordSuggestInfosBusinessAreaWithCity `json:"business_area_with_city,omitempty" xml:"business_area_with_city,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 300100
+	CityCode    *int32  `json:"city_code,omitempty" xml:"city_code,omitempty"`
+	CityName    *string `json:"city_name,omitempty" xml:"city_name,omitempty"`
+	DisplayName *string `json:"display_name,omitempty" xml:"display_name,omitempty"`
+	// example:
+	//
+	// 53853318
+	HotelId *string `json:"hotel_id,omitempty" xml:"hotel_id,omitempty"`
+	// example:
+	//
+	// https://gw.alicdn.com/imgextra/i3/O1CN01qKg25r1rKLOKxT3vB_!!6000000005612-2-tps-32-32.png
+	Icon  *string `json:"icon,omitempty" xml:"icon,omitempty"`
+	Point *string `json:"point,omitempty" xml:"point,omitempty"`
+	// example:
+	//
+	// 524
+	Price *string `json:"price,omitempty" xml:"price,omitempty"`
+	// example:
+	//
+	// 0
+	Region *int32 `json:"region,omitempty" xml:"region,omitempty"`
+	// example:
+	//
+	// 10
+	Type     *int32  `json:"type,omitempty" xml:"type,omitempty"`
+	TypeDesc *string `json:"type_desc,omitempty" xml:"type_desc,omitempty"`
+}
+
+func (s HotelSuggestV2ResponseBodyModuleKeywordSuggestInfos) String() string {
+	return tea.Prettify(s)
+}
+
+func (s HotelSuggestV2ResponseBodyModuleKeywordSuggestInfos) GoString() string {
+	return s.String()
+}
+
+func (s *HotelSuggestV2ResponseBodyModuleKeywordSuggestInfos) SetAddress(v string) *HotelSuggestV2ResponseBodyModuleKeywordSuggestInfos {
+	s.Address = &v
+	return s
+}
+
+func (s *HotelSuggestV2ResponseBodyModuleKeywordSuggestInfos) SetBusinessAreaWithCity(v []*HotelSuggestV2ResponseBodyModuleKeywordSuggestInfosBusinessAreaWithCity) *HotelSuggestV2ResponseBodyModuleKeywordSuggestInfos {
+	s.BusinessAreaWithCity = v
+	return s
+}
+
+func (s *HotelSuggestV2ResponseBodyModuleKeywordSuggestInfos) SetCityCode(v int32) *HotelSuggestV2ResponseBodyModuleKeywordSuggestInfos {
+	s.CityCode = &v
+	return s
+}
+
+func (s *HotelSuggestV2ResponseBodyModuleKeywordSuggestInfos) SetCityName(v string) *HotelSuggestV2ResponseBodyModuleKeywordSuggestInfos {
+	s.CityName = &v
+	return s
+}
+
+func (s *HotelSuggestV2ResponseBodyModuleKeywordSuggestInfos) SetDisplayName(v string) *HotelSuggestV2ResponseBodyModuleKeywordSuggestInfos {
+	s.DisplayName = &v
+	return s
+}
+
+func (s *HotelSuggestV2ResponseBodyModuleKeywordSuggestInfos) SetHotelId(v string) *HotelSuggestV2ResponseBodyModuleKeywordSuggestInfos {
+	s.HotelId = &v
+	return s
+}
+
+func (s *HotelSuggestV2ResponseBodyModuleKeywordSuggestInfos) SetIcon(v string) *HotelSuggestV2ResponseBodyModuleKeywordSuggestInfos {
+	s.Icon = &v
+	return s
+}
+
+func (s *HotelSuggestV2ResponseBodyModuleKeywordSuggestInfos) SetPoint(v string) *HotelSuggestV2ResponseBodyModuleKeywordSuggestInfos {
+	s.Point = &v
+	return s
+}
+
+func (s *HotelSuggestV2ResponseBodyModuleKeywordSuggestInfos) SetPrice(v string) *HotelSuggestV2ResponseBodyModuleKeywordSuggestInfos {
+	s.Price = &v
+	return s
+}
+
+func (s *HotelSuggestV2ResponseBodyModuleKeywordSuggestInfos) SetRegion(v int32) *HotelSuggestV2ResponseBodyModuleKeywordSuggestInfos {
+	s.Region = &v
+	return s
+}
+
+func (s *HotelSuggestV2ResponseBodyModuleKeywordSuggestInfos) SetType(v int32) *HotelSuggestV2ResponseBodyModuleKeywordSuggestInfos {
+	s.Type = &v
+	return s
+}
+
+func (s *HotelSuggestV2ResponseBodyModuleKeywordSuggestInfos) SetTypeDesc(v string) *HotelSuggestV2ResponseBodyModuleKeywordSuggestInfos {
+	s.TypeDesc = &v
+	return s
+}
+
+type HotelSuggestV2ResponseBodyModuleKeywordSuggestInfosBusinessAreaWithCity struct {
+	Address *string `json:"address,omitempty" xml:"address,omitempty"`
+	// example:
+	//
+	// 300100
+	CityCode    *int32  `json:"city_code,omitempty" xml:"city_code,omitempty"`
+	CityName    *string `json:"city_name,omitempty" xml:"city_name,omitempty"`
+	DisplayName *string `json:"display_name,omitempty" xml:"display_name,omitempty"`
+	// example:
+	//
+	// 57140953
+	HotelId *string `json:"hotel_id,omitempty" xml:"hotel_id,omitempty"`
+	// example:
+	//
+	// https://gw.alicdn.com/imgextra/i3/O1CN01qKg25r1rKLOKxT3vB_!!6000000005612-2-tps-32-32.png
+	Icon  *string `json:"icon,omitempty" xml:"icon,omitempty"`
+	Point *string `json:"point,omitempty" xml:"point,omitempty"`
+	// example:
+	//
+	// 524
+	Price *string `json:"price,omitempty" xml:"price,omitempty"`
+	// example:
+	//
+	// 0
+	Region *int32 `json:"region,omitempty" xml:"region,omitempty"`
+	// example:
+	//
+	// 5
+	Type     *int32  `json:"type,omitempty" xml:"type,omitempty"`
+	TypeDesc *string `json:"type_desc,omitempty" xml:"type_desc,omitempty"`
+}
+
+func (s HotelSuggestV2ResponseBodyModuleKeywordSuggestInfosBusinessAreaWithCity) String() string {
+	return tea.Prettify(s)
+}
+
+func (s HotelSuggestV2ResponseBodyModuleKeywordSuggestInfosBusinessAreaWithCity) GoString() string {
+	return s.String()
+}
+
+func (s *HotelSuggestV2ResponseBodyModuleKeywordSuggestInfosBusinessAreaWithCity) SetAddress(v string) *HotelSuggestV2ResponseBodyModuleKeywordSuggestInfosBusinessAreaWithCity {
+	s.Address = &v
+	return s
+}
+
+func (s *HotelSuggestV2ResponseBodyModuleKeywordSuggestInfosBusinessAreaWithCity) SetCityCode(v int32) *HotelSuggestV2ResponseBodyModuleKeywordSuggestInfosBusinessAreaWithCity {
+	s.CityCode = &v
+	return s
+}
+
+func (s *HotelSuggestV2ResponseBodyModuleKeywordSuggestInfosBusinessAreaWithCity) SetCityName(v string) *HotelSuggestV2ResponseBodyModuleKeywordSuggestInfosBusinessAreaWithCity {
+	s.CityName = &v
+	return s
+}
+
+func (s *HotelSuggestV2ResponseBodyModuleKeywordSuggestInfosBusinessAreaWithCity) SetDisplayName(v string) *HotelSuggestV2ResponseBodyModuleKeywordSuggestInfosBusinessAreaWithCity {
+	s.DisplayName = &v
+	return s
+}
+
+func (s *HotelSuggestV2ResponseBodyModuleKeywordSuggestInfosBusinessAreaWithCity) SetHotelId(v string) *HotelSuggestV2ResponseBodyModuleKeywordSuggestInfosBusinessAreaWithCity {
+	s.HotelId = &v
+	return s
+}
+
+func (s *HotelSuggestV2ResponseBodyModuleKeywordSuggestInfosBusinessAreaWithCity) SetIcon(v string) *HotelSuggestV2ResponseBodyModuleKeywordSuggestInfosBusinessAreaWithCity {
+	s.Icon = &v
+	return s
+}
+
+func (s *HotelSuggestV2ResponseBodyModuleKeywordSuggestInfosBusinessAreaWithCity) SetPoint(v string) *HotelSuggestV2ResponseBodyModuleKeywordSuggestInfosBusinessAreaWithCity {
+	s.Point = &v
+	return s
+}
+
+func (s *HotelSuggestV2ResponseBodyModuleKeywordSuggestInfosBusinessAreaWithCity) SetPrice(v string) *HotelSuggestV2ResponseBodyModuleKeywordSuggestInfosBusinessAreaWithCity {
+	s.Price = &v
+	return s
+}
+
+func (s *HotelSuggestV2ResponseBodyModuleKeywordSuggestInfosBusinessAreaWithCity) SetRegion(v int32) *HotelSuggestV2ResponseBodyModuleKeywordSuggestInfosBusinessAreaWithCity {
+	s.Region = &v
+	return s
+}
+
+func (s *HotelSuggestV2ResponseBodyModuleKeywordSuggestInfosBusinessAreaWithCity) SetType(v int32) *HotelSuggestV2ResponseBodyModuleKeywordSuggestInfosBusinessAreaWithCity {
+	s.Type = &v
+	return s
+}
+
+func (s *HotelSuggestV2ResponseBodyModuleKeywordSuggestInfosBusinessAreaWithCity) SetTypeDesc(v string) *HotelSuggestV2ResponseBodyModuleKeywordSuggestInfosBusinessAreaWithCity {
+	s.TypeDesc = &v
+	return s
+}
+
+type HotelSuggestV2ResponseBodyModulePopularSuggestInfos struct {
+	// example:
+	//
+	// https://gw.alicdn.com/imgextra/i1/O1CN01x0q19E1QZSqLHVVNh_!!6000000001990-2-tps-54-54.png
+	Icon         *string                                                            `json:"icon,omitempty" xml:"icon,omitempty"`
+	PopularInfos []*HotelSuggestV2ResponseBodyModulePopularSuggestInfosPopularInfos `json:"popular_infos,omitempty" xml:"popular_infos,omitempty" type:"Repeated"`
+	Title        *string                                                            `json:"title,omitempty" xml:"title,omitempty"`
+}
+
+func (s HotelSuggestV2ResponseBodyModulePopularSuggestInfos) String() string {
+	return tea.Prettify(s)
+}
+
+func (s HotelSuggestV2ResponseBodyModulePopularSuggestInfos) GoString() string {
+	return s.String()
+}
+
+func (s *HotelSuggestV2ResponseBodyModulePopularSuggestInfos) SetIcon(v string) *HotelSuggestV2ResponseBodyModulePopularSuggestInfos {
+	s.Icon = &v
+	return s
+}
+
+func (s *HotelSuggestV2ResponseBodyModulePopularSuggestInfos) SetPopularInfos(v []*HotelSuggestV2ResponseBodyModulePopularSuggestInfosPopularInfos) *HotelSuggestV2ResponseBodyModulePopularSuggestInfos {
+	s.PopularInfos = v
+	return s
+}
+
+func (s *HotelSuggestV2ResponseBodyModulePopularSuggestInfos) SetTitle(v string) *HotelSuggestV2ResponseBodyModulePopularSuggestInfos {
+	s.Title = &v
+	return s
+}
+
+type HotelSuggestV2ResponseBodyModulePopularSuggestInfosPopularInfos struct {
+	DisplayName *string `json:"display_name,omitempty" xml:"display_name,omitempty"`
+}
+
+func (s HotelSuggestV2ResponseBodyModulePopularSuggestInfosPopularInfos) String() string {
+	return tea.Prettify(s)
+}
+
+func (s HotelSuggestV2ResponseBodyModulePopularSuggestInfosPopularInfos) GoString() string {
+	return s.String()
+}
+
+func (s *HotelSuggestV2ResponseBodyModulePopularSuggestInfosPopularInfos) SetDisplayName(v string) *HotelSuggestV2ResponseBodyModulePopularSuggestInfosPopularInfos {
+	s.DisplayName = &v
+	return s
+}
+
+type HotelSuggestV2Response struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *HotelSuggestV2ResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s HotelSuggestV2Response) String() string {
+	return tea.Prettify(s)
+}
+
+func (s HotelSuggestV2Response) GoString() string {
+	return s.String()
+}
+
+func (s *HotelSuggestV2Response) SetHeaders(v map[string]*string) *HotelSuggestV2Response {
+	s.Headers = v
+	return s
+}
+
+func (s *HotelSuggestV2Response) SetStatusCode(v int32) *HotelSuggestV2Response {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *HotelSuggestV2Response) SetBody(v *HotelSuggestV2ResponseBody) *HotelSuggestV2Response {
 	s.Body = v
 	return s
 }
@@ -83924,7 +85556,8 @@ type MealOrderDetailQueryResponseBodyModule struct {
 	// example:
 	//
 	// 1711702782
-	SettleTime *string `json:"settle_time,omitempty" xml:"settle_time,omitempty"`
+	SettleTime       *string `json:"settle_time,omitempty" xml:"settle_time,omitempty"`
+	ThirdPartApplyId *string `json:"third_part_apply_id,omitempty" xml:"third_part_apply_id,omitempty"`
 	// example:
 	//
 	// 17509140000
@@ -84025,6 +85658,11 @@ func (s *MealOrderDetailQueryResponseBodyModule) SetSceneName(v string) *MealOrd
 
 func (s *MealOrderDetailQueryResponseBodyModule) SetSettleTime(v string) *MealOrderDetailQueryResponseBodyModule {
 	s.SettleTime = &v
+	return s
+}
+
+func (s *MealOrderDetailQueryResponseBodyModule) SetThirdPartApplyId(v string) *MealOrderDetailQueryResponseBodyModule {
+	s.ThirdPartApplyId = &v
 	return s
 }
 
@@ -114513,6 +116151,65 @@ func (client *Client) HotelOrderDetailInfo(request *HotelOrderDetailInfoRequest)
 
 // Summary:
 //
+// 自营酒店订单查询
+//
+// @param headers - HotelOrderInfoQueryHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return HotelOrderInfoQueryResponse
+func (client *Client) HotelOrderInfoQueryWithOptions(orderId *string, headers *HotelOrderInfoQueryHeaders, runtime *util.RuntimeOptions) (_result *HotelOrderInfoQueryResponse, _err error) {
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsBtripCorpToken)) {
+		realHeaders["x-acs-btrip-corp-token"] = util.ToJSONString(headers.XAcsBtripCorpToken)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("HotelOrderInfoQuery"),
+		Version:     tea.String("2022-05-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/order/v1/hotelOrders/" + tea.StringValue(openapiutil.GetEncodeParam(orderId))),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &HotelOrderInfoQueryResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 自营酒店订单查询
+//
+// @return HotelOrderInfoQueryResponse
+func (client *Client) HotelOrderInfoQuery(orderId *string) (_result *HotelOrderInfoQueryResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &HotelOrderInfoQueryHeaders{}
+	_result = &HotelOrderInfoQueryResponse{}
+	_body, _err := client.HotelOrderInfoQueryWithOptions(orderId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 查询酒店订单列表
 //
 // @param request - HotelOrderListQueryRequest
@@ -115342,6 +117039,99 @@ func (client *Client) HotelStaticInfo(request *HotelStaticInfoRequest) (_result 
 	headers := &HotelStaticInfoHeaders{}
 	_result = &HotelStaticInfoResponse{}
 	_body, _err := client.HotelStaticInfoWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 酒店关键词搜索
+//
+// @param request - HotelSuggestV2Request
+//
+// @param headers - HotelSuggestV2Headers
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return HotelSuggestV2Response
+func (client *Client) HotelSuggestV2WithOptions(request *HotelSuggestV2Request, headers *HotelSuggestV2Headers, runtime *util.RuntimeOptions) (_result *HotelSuggestV2Response, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BtripUserId)) {
+		query["btrip_user_id"] = request.BtripUserId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CheckIn)) {
+		query["check_in"] = request.CheckIn
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CheckOut)) {
+		query["check_out"] = request.CheckOut
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CityCode)) {
+		query["city_code"] = request.CityCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Keyword)) {
+		query["keyword"] = request.Keyword
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SearchType)) {
+		query["search_type"] = request.SearchType
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsBtripCorpToken)) {
+		realHeaders["x-acs-btrip-corp-token"] = util.ToJSONString(headers.XAcsBtripCorpToken)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("HotelSuggestV2"),
+		Version:     tea.String("2022-05-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/dtb-hotel/v2/suggest-infos"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &HotelSuggestV2Response{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 酒店关键词搜索
+//
+// @param request - HotelSuggestV2Request
+//
+// @return HotelSuggestV2Response
+func (client *Client) HotelSuggestV2(request *HotelSuggestV2Request) (_result *HotelSuggestV2Response, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &HotelSuggestV2Headers{}
+	_result = &HotelSuggestV2Response{}
+	_body, _err := client.HotelSuggestV2WithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
