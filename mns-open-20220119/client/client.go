@@ -10,26 +10,42 @@ import (
 )
 
 type CreateQueueRequest struct {
+	// The period after which all messages sent to the queue are consumed. Valid values: 0 to 604800. Unit: seconds. Default value: 0
+	//
 	// example:
 	//
 	// 0
 	DelaySeconds *int64 `json:"DelaySeconds,omitempty" xml:"DelaySeconds,omitempty"`
+	// Specifies whether to enable the logging feature. Valid values:
+	//
+	// 	- True
+	//
+	// 	- False (default)
+	//
 	// example:
 	//
 	// true
 	EnableLogging *bool `json:"EnableLogging,omitempty" xml:"EnableLogging,omitempty"`
+	// The maximum length of the message that is sent to the queue. Valid values: 1024 to 65536. Unit: bytes. Default value: 65536.
+	//
 	// example:
 	//
 	// 65536
 	MaximumMessageSize *int64 `json:"MaximumMessageSize,omitempty" xml:"MaximumMessageSize,omitempty"`
+	// The maximum duration for which a message is retained in the queue. After the specified retention period ends, the message is deleted regardless of whether the message is received. Valid values: 60 to 604800. Unit: seconds. Default value: 345600.
+	//
 	// example:
 	//
 	// 345600
 	MessageRetentionPeriod *int64 `json:"MessageRetentionPeriod,omitempty" xml:"MessageRetentionPeriod,omitempty"`
+	// The maximum duration for which long polling requests are held after the ReceiveMessage operation is called. Valid values: 0 to 30. Unit: seconds. Default value: 0
+	//
 	// example:
 	//
 	// 0
 	PollingWaitSeconds *int64 `json:"PollingWaitSeconds,omitempty" xml:"PollingWaitSeconds,omitempty"`
+	// The name of the queue.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -37,6 +53,8 @@ type CreateQueueRequest struct {
 	// 06273500-249F-5863-121D-74D51123****
 	QueueName *string                  `json:"QueueName,omitempty" xml:"QueueName,omitempty"`
 	Tag       []*CreateQueueRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	// The duration for which a message stays in the Inactive state after the message is received from the queue. Valid values: 1 to 43200. Unit: seconds. Default value: 30.
+	//
 	// example:
 	//
 	// 60
@@ -115,23 +133,34 @@ func (s *CreateQueueRequestTag) SetValue(v string) *CreateQueueRequestTag {
 }
 
 type CreateQueueResponseBody struct {
+	// The response code.
+	//
 	// example:
 	//
 	// 200
-	Code *int64                       `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data.
 	Data *CreateQueueResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The returned message.
+	//
 	// example:
 	//
 	// operation success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 06273500-249F-5863-121D-74D51123E62C
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The response status.
+	//
 	// example:
 	//
 	// Success
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -177,11 +206,16 @@ func (s *CreateQueueResponseBody) SetSuccess(v bool) *CreateQueueResponseBody {
 }
 
 type CreateQueueResponseBodyData struct {
+	// The response code.
+	//
 	// example:
 	//
 	// 200
-	Code    *int64  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned message.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -241,15 +275,26 @@ func (s *CreateQueueResponse) SetBody(v *CreateQueueResponseBody) *CreateQueueRe
 }
 
 type CreateTopicRequest struct {
+	// Specifies whether to enable the logging feature. Valid values:
+	//
+	// 	- True
+	//
+	// 	- False (default)
+	//
 	// example:
 	//
 	// true
 	EnableLogging *bool `json:"EnableLogging,omitempty" xml:"EnableLogging,omitempty"`
+	// The maximum length of the message that is sent to the topic. Valid values: 1024 to 65536. Unit: bytes. Default value: 65536.
+	//
 	// example:
 	//
 	// 10240
-	MaxMessageSize *int64                   `json:"MaxMessageSize,omitempty" xml:"MaxMessageSize,omitempty"`
-	Tag            []*CreateTopicRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	MaxMessageSize *int64 `json:"MaxMessageSize,omitempty" xml:"MaxMessageSize,omitempty"`
+	// The tags.
+	Tag []*CreateTopicRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	// The name of the topic that you want to create.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -287,7 +332,17 @@ func (s *CreateTopicRequest) SetTopicName(v string) *CreateTopicRequest {
 }
 
 type CreateTopicRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag key.
+	//
+	// example:
+	//
+	// tag1
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value.
+	//
+	// example:
+	//
+	// joyce.wang
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -310,23 +365,34 @@ func (s *CreateTopicRequestTag) SetValue(v string) *CreateTopicRequestTag {
 }
 
 type CreateTopicResponseBody struct {
+	// The response code.
+	//
 	// example:
 	//
 	// 200
-	Code *int64                       `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data.
 	Data *CreateTopicResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The returned message.
+	//
 	// example:
 	//
 	// operation success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 06273500-249F-5863-121D-74D51123E62C
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The response status.
+	//
 	// example:
 	//
 	// Success
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -372,11 +438,16 @@ func (s *CreateTopicResponseBody) SetSuccess(v bool) *CreateTopicResponseBody {
 }
 
 type CreateTopicResponseBodyData struct {
+	// The response code.
+	//
 	// example:
 	//
 	// 200
-	Code    *int64  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned message.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -436,6 +507,8 @@ func (s *CreateTopicResponse) SetBody(v *CreateTopicResponseBody) *CreateTopicRe
 }
 
 type DeleteQueueRequest struct {
+	// The name of the queue.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -458,23 +531,34 @@ func (s *DeleteQueueRequest) SetQueueName(v string) *DeleteQueueRequest {
 }
 
 type DeleteQueueResponseBody struct {
+	// The response code.
+	//
 	// example:
 	//
 	// 200
-	Code *int64                       `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data.
 	Data *DeleteQueueResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The returned message.
+	//
 	// example:
 	//
 	// operation success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 06273500-249F-5863-121D-74D51123****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The response status.
+	//
 	// example:
 	//
 	// Success
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -520,11 +604,16 @@ func (s *DeleteQueueResponseBody) SetSuccess(v bool) *DeleteQueueResponseBody {
 }
 
 type DeleteQueueResponseBodyData struct {
+	// The response code.
+	//
 	// example:
 	//
 	// 200
-	Code    *int64  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned message.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -584,6 +673,8 @@ func (s *DeleteQueueResponse) SetBody(v *DeleteQueueResponseBody) *DeleteQueueRe
 }
 
 type DeleteTopicRequest struct {
+	// The name of the topic that you want to delete.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -606,23 +697,34 @@ func (s *DeleteTopicRequest) SetTopicName(v string) *DeleteTopicRequest {
 }
 
 type DeleteTopicResponseBody struct {
+	// The response code.
+	//
 	// example:
 	//
 	// 200
-	Code *int64                 `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data.
 	Data map[string]interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The returned message.
+	//
 	// example:
 	//
 	// operation success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 06273500-249F-5863-121D-74D51123****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The response status.
+	//
 	// example:
 	//
 	// Success
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -697,6 +799,8 @@ func (s *DeleteTopicResponse) SetBody(v *DeleteTopicResponseBody) *DeleteTopicRe
 }
 
 type GetQueueAttributesRequest struct {
+	// The name of the queue.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -748,23 +852,34 @@ func (s *GetQueueAttributesRequestTag) SetValue(v string) *GetQueueAttributesReq
 }
 
 type GetQueueAttributesResponseBody struct {
+	// The response code.
+	//
 	// example:
 	//
 	// 200
-	Code *int64                              `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data.
 	Data *GetQueueAttributesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The returned message.
+	//
 	// example:
 	//
 	// operation success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 06273500-249F-5863-121D-74D51123****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The response status.
+	//
 	// example:
 	//
 	// Success
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -810,51 +925,79 @@ func (s *GetQueueAttributesResponseBody) SetSuccess(v bool) *GetQueueAttributesR
 }
 
 type GetQueueAttributesResponseBodyData struct {
+	// The total number of messages that are in the Active state in the queue. The value is an approximate number.
+	//
 	// example:
 	//
 	// 20
 	ActiveMessages *int64 `json:"ActiveMessages,omitempty" xml:"ActiveMessages,omitempty"`
+	// The time when the queue was created.
+	//
 	// example:
 	//
 	// 1250700999
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The total number of the messages that are in the Delayed state in the queue. The value is an approximate number.
+	//
 	// example:
 	//
 	// 0
 	DelayMessages *int64 `json:"DelayMessages,omitempty" xml:"DelayMessages,omitempty"`
+	// The period after which all messages sent to the queue are consumed. Unit: seconds.
+	//
 	// example:
 	//
 	// 30
 	DelaySeconds *int64 `json:"DelaySeconds,omitempty" xml:"DelaySeconds,omitempty"`
+	// The total number of the messages that are in the Inactive state in the queue. The value is an approximate number.
+	//
 	// example:
 	//
 	// 0
 	InactiveMessages *int64 `json:"InactiveMessages,omitempty" xml:"InactiveMessages,omitempty"`
+	// The time when the queue was last modified. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	//
 	// example:
 	//
 	// 1250700999
 	LastModifyTime *int64 `json:"LastModifyTime,omitempty" xml:"LastModifyTime,omitempty"`
+	// Indicates whether the logging feature is enabled. Valid values:
+	//
+	// 	- True
+	//
+	// 	- False
+	//
 	// example:
 	//
 	// True
 	LoggingEnabled *bool `json:"LoggingEnabled,omitempty" xml:"LoggingEnabled,omitempty"`
+	// The maximum length of the message that is sent to the queue. Unit: bytes.
+	//
 	// example:
 	//
 	// 65536
 	MaximumMessageSize *int64 `json:"MaximumMessageSize,omitempty" xml:"MaximumMessageSize,omitempty"`
+	// The maximum duration for which a message is retained in the queue. After the specified retention period ends, the message is deleted regardless of whether the message is received. Unit: seconds.
+	//
 	// example:
 	//
 	// 65536
 	MessageRetentionPeriod *int64 `json:"MessageRetentionPeriod,omitempty" xml:"MessageRetentionPeriod,omitempty"`
+	// The maximum duration for which long polling requests are held after the ReceiveMessage operation is called. Unit: seconds.
+	//
 	// example:
 	//
 	// 0
 	PollingWaitSeconds *int64 `json:"PollingWaitSeconds,omitempty" xml:"PollingWaitSeconds,omitempty"`
+	// The name of the queue.
+	//
 	// example:
 	//
 	// demo-queue
 	QueueName *string                                   `json:"QueueName,omitempty" xml:"QueueName,omitempty"`
 	Tags      []*GetQueueAttributesResponseBodyDataTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// The duration for which a message stays in the Inactive state after the message is received from the queue. Valid values: 1 to 43200. Unit: seconds. Default value: 30.
+	//
 	// example:
 	//
 	// 60
@@ -987,12 +1130,16 @@ func (s *GetQueueAttributesResponse) SetBody(v *GetQueueAttributesResponseBody) 
 }
 
 type GetSubscriptionAttributesRequest struct {
+	// The name of the subscription.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// MySubscription
 	SubscriptionName *string `json:"SubscriptionName,omitempty" xml:"SubscriptionName,omitempty"`
+	// The name of the topic.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -1020,23 +1167,34 @@ func (s *GetSubscriptionAttributesRequest) SetTopicName(v string) *GetSubscripti
 }
 
 type GetSubscriptionAttributesResponseBody struct {
+	// The response code.
+	//
 	// example:
 	//
 	// 200
-	Code *int64                                     `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data.
 	Data *GetSubscriptionAttributesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The returned message.
+	//
 	// example:
 	//
 	// operation success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 06273500-249F-5863-121D-74D51123****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The response status.
+	//
 	// example:
 	//
 	// Success
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -1082,38 +1240,66 @@ func (s *GetSubscriptionAttributesResponseBody) SetSuccess(v bool) *GetSubscript
 }
 
 type GetSubscriptionAttributesResponseBodyData struct {
+	// The time when the subscription was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	//
 	// example:
 	//
 	// 1449554806
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The endpoint to which the messages are pushed.
+	//
 	// example:
 	//
 	// http://example.com
 	Endpoint *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
+	// The tag that is used to filter messages. Only the messages that are attached with the specified tag can be pushed.
+	//
 	// example:
 	//
 	// important
 	FilterTag *string `json:"FilterTag,omitempty" xml:"FilterTag,omitempty"`
+	// The time when the subscription was last modified. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	//
 	// example:
 	//
 	// 1449554962
 	LastModifyTime *int64 `json:"LastModifyTime,omitempty" xml:"LastModifyTime,omitempty"`
+	// The content format of the messages that are pushed to the endpoint. Valid values:
+	//
+	// 	- XML
+	//
+	// 	- JSON
+	//
+	// 	- SIMPLIFIED
+	//
 	// example:
 	//
 	// XML
 	NotifyContentFormat *string `json:"NotifyContentFormat,omitempty" xml:"NotifyContentFormat,omitempty"`
+	// The retry policy that is applied if an error occurs when Message Service (MNS) pushes messages to the endpoint. Valid values:
+	//
+	// 	- BACKOFF_RETRY
+	//
+	// 	- EXPONENTIAL_DECAY_RETRY
+	//
 	// example:
 	//
 	// BACKOFF_RETRY
 	NotifyStrategy *string `json:"NotifyStrategy,omitempty" xml:"NotifyStrategy,omitempty"`
+	// The name of the subscription.
+	//
 	// example:
 	//
 	// MySubscription
 	SubscriptionName *string `json:"SubscriptionName,omitempty" xml:"SubscriptionName,omitempty"`
+	// The name of the topic.
+	//
 	// example:
 	//
 	// MyTopic
 	TopicName *string `json:"TopicName,omitempty" xml:"TopicName,omitempty"`
+	// The Alibaba Cloud account ID of the topic owner.
+	//
 	// example:
 	//
 	// 123456789098****
@@ -1204,6 +1390,8 @@ func (s *GetSubscriptionAttributesResponse) SetBody(v *GetSubscriptionAttributes
 
 type GetTopicAttributesRequest struct {
 	Tag []*GetTopicAttributesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	// The name of the topic.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -1254,23 +1442,34 @@ func (s *GetTopicAttributesRequestTag) SetValue(v string) *GetTopicAttributesReq
 }
 
 type GetTopicAttributesResponseBody struct {
+	// The response code.
+	//
 	// example:
 	//
 	// 200
-	Code *int64                              `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data.
 	Data *GetTopicAttributesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The returned message.
+	//
 	// example:
 	//
 	// operation success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 06273500-249F-5863-121D-74D51123****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The response status.
+	//
 	// example:
 	//
 	// Success
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -1316,31 +1515,49 @@ func (s *GetTopicAttributesResponseBody) SetSuccess(v bool) *GetTopicAttributesR
 }
 
 type GetTopicAttributesResponseBodyData struct {
+	// The time when the topic was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	//
 	// example:
 	//
 	// 1449554277
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The time when the topic was last modified. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	//
 	// example:
 	//
 	// 1449554460
 	LastModifyTime *int64 `json:"LastModifyTime,omitempty" xml:"LastModifyTime,omitempty"`
+	// Indicates whether the logging feature is enabled. Valid values:
+	//
+	// 	- True
+	//
+	// 	- False
+	//
 	// example:
 	//
 	// True
 	LoggingEnabled *bool `json:"LoggingEnabled,omitempty" xml:"LoggingEnabled,omitempty"`
+	// The maximum length of the message that is sent to the topic. Unit: bytes.
+	//
 	// example:
 	//
 	// 65536
 	MaxMessageSize *int64 `json:"MaxMessageSize,omitempty" xml:"MaxMessageSize,omitempty"`
+	// The number of messages in the topic.
+	//
 	// example:
 	//
 	// 0
 	MessageCount *int64 `json:"MessageCount,omitempty" xml:"MessageCount,omitempty"`
+	// The maximum duration for which a message is retained in the topic. After the specified retention period ends, the message is deleted regardless of whether the message is received. Unit: seconds.
+	//
 	// example:
 	//
 	// 86400
 	MessageRetentionPeriod *int64                                    `json:"MessageRetentionPeriod,omitempty" xml:"MessageRetentionPeriod,omitempty"`
 	Tags                   []*GetTopicAttributesResponseBodyDataTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// The name of the topic.
+	//
 	// example:
 	//
 	// demo-topic
@@ -1448,14 +1665,20 @@ func (s *GetTopicAttributesResponse) SetBody(v *GetTopicAttributesResponseBody) 
 }
 
 type ListQueueRequest struct {
+	// The page number. Valid values: 1 to 100000000. If you set this parameter to a value smaller than 1, the value of this parameter is 1 by default. If you set this parameter to a value greater than 100000000, the value of this parameter is 100000000 by default.
+	//
 	// example:
 	//
 	// 1
 	PageNum *int64 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// The number of entries per page. Value values: 10 to 50. If you set this parameter to a value smaller than 10, the value of this parameter is 10 by default. If you set this parameter to a value greater than 50, the value of this parameter is 50 by default.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The name of the queue.
+	//
 	// example:
 	//
 	// demo-queue
@@ -1515,23 +1738,34 @@ func (s *ListQueueRequestTag) SetValue(v string) *ListQueueRequestTag {
 }
 
 type ListQueueResponseBody struct {
+	// The response code.
+	//
 	// example:
 	//
 	// 200
-	Code *int64                     `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data.
 	Data *ListQueueResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The returned message.
+	//
 	// example:
 	//
 	// operation success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 06273500-249F-5863-121D-74D51123****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The response status.
+	//
 	// example:
 	//
 	// Success
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -1577,23 +1811,34 @@ func (s *ListQueueResponseBody) SetSuccess(v bool) *ListQueueResponseBody {
 }
 
 type ListQueueResponseBodyData struct {
+	// The data returned on the current page.
 	PageData []*ListQueueResponseBodyDataPageData `json:"PageData,omitempty" xml:"PageData,omitempty" type:"Repeated"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNum *int64 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 50
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The total number of pages returned.
+	//
 	// example:
 	//
 	// 3
 	Pages *int64 `json:"Pages,omitempty" xml:"Pages,omitempty"`
+	// The number of entries on the current page.
+	//
 	// example:
 	//
 	// 20
 	Size *int64 `json:"Size,omitempty" xml:"Size,omitempty"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 130
@@ -1639,51 +1884,79 @@ func (s *ListQueueResponseBodyData) SetTotal(v int64) *ListQueueResponseBodyData
 }
 
 type ListQueueResponseBodyDataPageData struct {
+	// The total number of messages that are in the Active state in the queue. The value is an approximate number.
+	//
 	// example:
 	//
 	// 20
 	ActiveMessages *int64 `json:"ActiveMessages,omitempty" xml:"ActiveMessages,omitempty"`
+	// The time when the queue was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	//
 	// example:
 	//
 	// 1250700999
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The total number of the messages that are in the Delayed state in the queue. The value is an approximate number.
+	//
 	// example:
 	//
 	// 0
 	DelayMessages *int64 `json:"DelayMessages,omitempty" xml:"DelayMessages,omitempty"`
+	// The period after which all messages sent to the queue are consumed. Unit: seconds.
+	//
 	// example:
 	//
 	// 30
 	DelaySeconds *int64 `json:"DelaySeconds,omitempty" xml:"DelaySeconds,omitempty"`
+	// The total number of the messages that are in the Inactive state in the queue. The value is an approximate number.
+	//
 	// example:
 	//
 	// 0
 	InactiveMessages *int64 `json:"InactiveMessages,omitempty" xml:"InactiveMessages,omitempty"`
+	// The time when the queue was last modified. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	//
 	// example:
 	//
 	// 1250700999
 	LastModifyTime *int64 `json:"LastModifyTime,omitempty" xml:"LastModifyTime,omitempty"`
+	// Indicates whether the logging feature is enabled. Valid values:
+	//
+	// 	- True
+	//
+	// 	- False
+	//
 	// example:
 	//
 	// True
 	LoggingEnabled *bool `json:"LoggingEnabled,omitempty" xml:"LoggingEnabled,omitempty"`
+	// The maximum length of the message that is sent to the queue. Unit: bytes.
+	//
 	// example:
 	//
 	// 65536
 	MaximumMessageSize *int64 `json:"MaximumMessageSize,omitempty" xml:"MaximumMessageSize,omitempty"`
+	// The maximum duration for which a message is retained in the queue. After the specified retention period ends, the message is deleted regardless of whether the message is received. Unit: seconds.
+	//
 	// example:
 	//
 	// 65536
 	MessageRetentionPeriod *int64 `json:"MessageRetentionPeriod,omitempty" xml:"MessageRetentionPeriod,omitempty"`
+	// The maximum duration for which long polling requests are held after the ReceiveMessage operation is called. Unit: seconds.
+	//
 	// example:
 	//
 	// 0
 	PollingWaitSeconds *int64 `json:"PollingWaitSeconds,omitempty" xml:"PollingWaitSeconds,omitempty"`
+	// The name of the queue.
+	//
 	// example:
 	//
 	// demo-queue
 	QueueName *string                                  `json:"QueueName,omitempty" xml:"QueueName,omitempty"`
 	Tags      []*ListQueueResponseBodyDataPageDataTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// The duration for which a message stays in the Inactive state after the message is received from the queue. Valid values: 1 to 43200. Unit: seconds. Default value: 30.
+	//
 	// example:
 	//
 	// 60
@@ -1816,19 +2089,25 @@ func (s *ListQueueResponse) SetBody(v *ListQueueResponseBody) *ListQueueResponse
 }
 
 type ListSubscriptionByTopicRequest struct {
+	// The page number. Valid values: 1 to 100000000. If you set this parameter to a value smaller than 1, the value of this parameter is 1 by default. If you set this parameter to a value greater than 100000000, the value of this parameter is 100000000 by default.
+	//
 	// example:
 	//
 	// 1
 	PageNum *int64 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// The number of entries per page. Value values: 10 to 50. If you set this parameter to a value smaller than 10, the value of this parameter is 10 by default. If you set this parameter to a value greater than 50, the value of this parameter is 50 by default.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The name of the subscription.
+	//
 	// example:
 	//
 	// demo-subscription
 	SubscriptionName *string `json:"SubscriptionName,omitempty" xml:"SubscriptionName,omitempty"`
-	// This parameter is required.
+	// The name of the topic.
 	//
 	// example:
 	//
@@ -1865,23 +2144,34 @@ func (s *ListSubscriptionByTopicRequest) SetTopicName(v string) *ListSubscriptio
 }
 
 type ListSubscriptionByTopicResponseBody struct {
+	// The response code.
+	//
 	// example:
 	//
 	// 200
-	Code *int64                                   `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data.
 	Data *ListSubscriptionByTopicResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The returned message.
+	//
 	// example:
 	//
 	// operation success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 06273500-249F-5863-121D-74D51123****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The response status.
+	//
 	// example:
 	//
 	// Success
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -1927,23 +2217,34 @@ func (s *ListSubscriptionByTopicResponseBody) SetSuccess(v bool) *ListSubscripti
 }
 
 type ListSubscriptionByTopicResponseBodyData struct {
+	// The data returned on the current page.
 	PageData []*ListSubscriptionByTopicResponseBodyDataPageData `json:"PageData,omitempty" xml:"PageData,omitempty" type:"Repeated"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNum *int64 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 50
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The total number of pages returned.
+	//
 	// example:
 	//
 	// 3
 	Pages *int64 `json:"Pages,omitempty" xml:"Pages,omitempty"`
+	// The number of entries on the current page.
+	//
 	// example:
 	//
 	// 20
 	Size *int64 `json:"Size,omitempty" xml:"Size,omitempty"`
+	// The total number of entries returned.
+	//
 	// example:
 	//
 	// 130
@@ -1989,38 +2290,66 @@ func (s *ListSubscriptionByTopicResponseBodyData) SetTotal(v int64) *ListSubscri
 }
 
 type ListSubscriptionByTopicResponseBodyDataPageData struct {
+	// The time when the subscription was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	//
 	// example:
 	//
 	// 1449554806
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The endpoint to which the messages are pushed.
+	//
 	// example:
 	//
 	// http://example.com
 	Endpoint *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
+	// The tag that is used to filter messages. Only the messages that are attached with the specified tag can be pushed.
+	//
 	// example:
 	//
 	// important
 	FilterTag *string `json:"FilterTag,omitempty" xml:"FilterTag,omitempty"`
+	// The time when the subscription was last modified. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	//
 	// example:
 	//
 	// 1449554806
 	LastModifyTime *int64 `json:"LastModifyTime,omitempty" xml:"LastModifyTime,omitempty"`
+	// The content format of the messages that are pushed to the endpoint. Valid values:
+	//
+	// 	- XML
+	//
+	// 	- JSON
+	//
+	// 	- SIMPLIFIED
+	//
 	// example:
 	//
 	// XML
 	NotifyContentFormat *string `json:"NotifyContentFormat,omitempty" xml:"NotifyContentFormat,omitempty"`
+	// The retry policy that is applied if an error occurs when Message Service (MNS) pushes messages to the endpoint. Valid values:
+	//
+	// 	- BACKOFF_RETRY
+	//
+	// 	- EXPONENTIAL_DECAY_RETRY
+	//
 	// example:
 	//
 	// BACKOFF_RETRY
 	NotifyStrategy *string `json:"NotifyStrategy,omitempty" xml:"NotifyStrategy,omitempty"`
+	// The name of the subscription.
+	//
 	// example:
 	//
 	// MySubscription
 	SubscriptionName *string `json:"SubscriptionName,omitempty" xml:"SubscriptionName,omitempty"`
+	// The name of the topic.
+	//
 	// example:
 	//
 	// MyTopic
 	TopicName *string `json:"TopicName,omitempty" xml:"TopicName,omitempty"`
+	// The Alibaba Cloud account ID of the topic owner.
+	//
 	// example:
 	//
 	// 123456789098****
@@ -2110,15 +2439,21 @@ func (s *ListSubscriptionByTopicResponse) SetBody(v *ListSubscriptionByTopicResp
 }
 
 type ListTopicRequest struct {
+	// The page number. Valid values: 1 to 100000000. If you set this parameter to a value smaller than 1, the value of this parameter is 1 by default. If you set this parameter to a value greater than 100000000, the value of this parameter is 100000000 by default.
+	//
 	// example:
 	//
 	// 1
 	PageNum *int64 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// The number of entries per page. Value values: 10 to 50. If you set this parameter to a value smaller than 10, the value of this parameter is 10 by default. If you set this parameter to a value greater than 50, the value of this parameter is 50 by default.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int64                 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	Tag      []*ListTopicRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	// The name of the topic.
+	//
 	// example:
 	//
 	// test
@@ -2177,23 +2512,34 @@ func (s *ListTopicRequestTag) SetValue(v string) *ListTopicRequestTag {
 }
 
 type ListTopicResponseBody struct {
+	// The response code.
+	//
 	// example:
 	//
 	// 200
-	Code *int64                     `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data.
 	Data *ListTopicResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The returned message.
+	//
 	// example:
 	//
 	// operation success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 06273500-249F-5863-121D-74D51123****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The response status.
+	//
 	// example:
 	//
 	// Success
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -2239,15 +2585,22 @@ func (s *ListTopicResponseBody) SetSuccess(v bool) *ListTopicResponseBody {
 }
 
 type ListTopicResponseBodyData struct {
+	// The data returned on the current page.
 	PageData []*ListTopicResponseBodyDataPageData `json:"PageData,omitempty" xml:"PageData,omitempty" type:"Repeated"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNum *int64 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 50
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The total number of entries returned.
+	//
 	// example:
 	//
 	// 130
@@ -2283,32 +2636,50 @@ func (s *ListTopicResponseBodyData) SetTotal(v int64) *ListTopicResponseBodyData
 }
 
 type ListTopicResponseBodyDataPageData struct {
+	// The time when the subscription was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	//
 	// example:
 	//
 	// 1449554962
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The time when the subscription was last modified. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	//
 	// example:
 	//
 	// 1449554962
 	LastModifyTime *int64 `json:"LastModifyTime,omitempty" xml:"LastModifyTime,omitempty"`
+	// Indicates whether the logging feature is enabled.
+	//
+	// 	- True
+	//
+	// 	- False
+	//
 	// example:
 	//
 	// True
 	LoggingEnabled *bool `json:"LoggingEnabled,omitempty" xml:"LoggingEnabled,omitempty"`
+	// The maximum length of the message that is sent to the topic. Unit: bytes.
+	//
 	// example:
 	//
 	// 65536
 	MaxMessageSize *int64 `json:"MaxMessageSize,omitempty" xml:"MaxMessageSize,omitempty"`
+	// The number of messages in the topic.
+	//
 	// example:
 	//
 	// 0
 	MessageCount *int64 `json:"MessageCount,omitempty" xml:"MessageCount,omitempty"`
+	// The maximum duration for which a message is retained in the topic. After the specified retention period ends, the message is deleted regardless of whether the message is received. Unit: seconds.
+	//
 	// example:
 	//
 	// 86400
 	MessageRetentionPeriod *int64                                   `json:"MessageRetentionPeriod,omitempty" xml:"MessageRetentionPeriod,omitempty"`
 	Tags                   []*ListTopicResponseBodyDataPageDataTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	TopicInnerUrl          *string                                  `json:"TopicInnerUrl,omitempty" xml:"TopicInnerUrl,omitempty"`
+	// The name of the topic.
+	//
 	// example:
 	//
 	// demo-topic
@@ -2427,32 +2798,50 @@ func (s *ListTopicResponse) SetBody(v *ListTopicResponseBody) *ListTopicResponse
 }
 
 type SetQueueAttributesRequest struct {
+	// The period after which all messages sent to the queue are consumed. Valid values: 0 to 604800. Unit: seconds. Default value: 0
+	//
 	// example:
 	//
 	// 0
 	DelaySeconds *int64 `json:"DelaySeconds,omitempty" xml:"DelaySeconds,omitempty"`
+	// Specifies whether to enable the logging feature. Valid values:
+	//
+	// 	- True
+	//
+	// 	- False (default)
+	//
 	// example:
 	//
 	// True
 	EnableLogging *bool `json:"EnableLogging,omitempty" xml:"EnableLogging,omitempty"`
+	// The maximum length of the message that is sent to the queue. Valid values: 1024 to 65536. Unit: bytes. Default value: 65536.
+	//
 	// example:
 	//
 	// 1024
 	MaximumMessageSize *int64 `json:"MaximumMessageSize,omitempty" xml:"MaximumMessageSize,omitempty"`
+	// The maximum duration for which a message is retained in the queue. After the specified retention period ends, the message is deleted regardless of whether the message is received. Valid values: 60 to 604800. Unit: seconds. Default value: 345600.
+	//
 	// example:
 	//
 	// 120
 	MessageRetentionPeriod *int64 `json:"MessageRetentionPeriod,omitempty" xml:"MessageRetentionPeriod,omitempty"`
+	// The maximum duration for which long polling requests are held after the ReceiveMessage operation is called. Valid values: 0 to 30. Unit: seconds. Default value: 0
+	//
 	// example:
 	//
 	// 0
 	PollingWaitSeconds *int64 `json:"PollingWaitSeconds,omitempty" xml:"PollingWaitSeconds,omitempty"`
+	// The name of the queue.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// testqueue
 	QueueName *string `json:"QueueName,omitempty" xml:"QueueName,omitempty"`
+	// The duration for which a message stays in the Inactive state after the message is received from the queue. Valid values: 1 to 43200. Unit: seconds. Default value: 30.
+	//
 	// example:
 	//
 	// 60
@@ -2503,23 +2892,34 @@ func (s *SetQueueAttributesRequest) SetVisibilityTimeout(v int64) *SetQueueAttri
 }
 
 type SetQueueAttributesResponseBody struct {
+	// The response code.
+	//
 	// example:
 	//
 	// 200
-	Code *int64                              `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data.
 	Data *SetQueueAttributesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The returned message.
+	//
 	// example:
 	//
 	// operation success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 06273500-249F-5863-121D-74D51123****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The response status.
+	//
 	// example:
 	//
 	// Success
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -2565,11 +2965,16 @@ func (s *SetQueueAttributesResponseBody) SetSuccess(v bool) *SetQueueAttributesR
 }
 
 type SetQueueAttributesResponseBodyData struct {
+	// The response code.
+	//
 	// example:
 	//
 	// 200
-	Code    *int64  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned message.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -2629,16 +3034,26 @@ func (s *SetQueueAttributesResponse) SetBody(v *SetQueueAttributesResponseBody) 
 }
 
 type SetSubscriptionAttributesRequest struct {
+	// The retry policy that is applied if an error occurs when Message Service (MNS) pushes messages to the endpoint. Valid values:
+	//
+	// 	- BACKOFF_RETRY
+	//
+	// 	- EXPONENTIAL_DECAY_RETRY
+	//
 	// example:
 	//
 	// BACKOFF_RETRY
 	NotifyStrategy *string `json:"NotifyStrategy,omitempty" xml:"NotifyStrategy,omitempty"`
+	// The name of the subscription.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// MySubscription
 	SubscriptionName *string `json:"SubscriptionName,omitempty" xml:"SubscriptionName,omitempty"`
+	// The name of the topic.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -2671,23 +3086,34 @@ func (s *SetSubscriptionAttributesRequest) SetTopicName(v string) *SetSubscripti
 }
 
 type SetSubscriptionAttributesResponseBody struct {
+	// The response code.
+	//
 	// example:
 	//
 	// 200
-	Code *int64                                     `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data.
 	Data *SetSubscriptionAttributesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The returned message.
+	//
 	// example:
 	//
 	// operation success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 06273500-249F-5863-121D-74D51123****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The response status.
+	//
 	// example:
 	//
 	// Success
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -2733,11 +3159,16 @@ func (s *SetSubscriptionAttributesResponseBody) SetSuccess(v bool) *SetSubscript
 }
 
 type SetSubscriptionAttributesResponseBodyData struct {
+	// The response code.
+	//
 	// example:
 	//
 	// 200
-	Code    *int64  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned message.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -2797,14 +3228,24 @@ func (s *SetSubscriptionAttributesResponse) SetBody(v *SetSubscriptionAttributes
 }
 
 type SetTopicAttributesRequest struct {
+	// Specifies whether to enable the logging feature. Valid values:
+	//
+	// 	- True
+	//
+	// 	- False (default)
+	//
 	// example:
 	//
 	// True
 	EnableLogging *bool `json:"EnableLogging,omitempty" xml:"EnableLogging,omitempty"`
+	// The maximum length of the message that is sent to the topic. Valid values: 1024 to 65536. Unit: bytes. Default value: 65536.
+	//
 	// example:
 	//
 	// 65536
 	MaxMessageSize *int64 `json:"MaxMessageSize,omitempty" xml:"MaxMessageSize,omitempty"`
+	// The name of the topic.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -2837,23 +3278,34 @@ func (s *SetTopicAttributesRequest) SetTopicName(v string) *SetTopicAttributesRe
 }
 
 type SetTopicAttributesResponseBody struct {
+	// The response code.
+	//
 	// example:
 	//
 	// 200
-	Code *int64                              `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data.
 	Data *SetTopicAttributesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The returned message.
+	//
 	// example:
 	//
 	// operation success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 06273500-249F-5863-121D-74D51123****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The response status.
+	//
 	// example:
 	//
 	// Success
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -2899,11 +3351,16 @@ func (s *SetTopicAttributesResponseBody) SetSuccess(v bool) *SetTopicAttributesR
 }
 
 type SetTopicAttributesResponseBodyData struct {
+	// The response code.
+	//
 	// example:
 	//
 	// 200
-	Code    *int64  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned message.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -2963,36 +3420,82 @@ func (s *SetTopicAttributesResponse) SetBody(v *SetTopicAttributesResponseBody) 
 }
 
 type SubscribeRequest struct {
+	// The receiver endpoint. The format of the endpoint varies based on the terminal type.
+	//
+	// 	- If you set PushType to http, set Endpoint to an `HTTP URL that starts with http:// or https://`.
+	//
+	// 	- If you set PushType to queue, set Endpoint to a `queue name`.
+	//
+	// 	- If you set PushType to mpush, set Endpoint to an `AppKey`.
+	//
+	// 	- If you set PushType to alisms, set Endpoint to a `mobile number`.
+	//
+	// 	- If you set PushType to email, set Endpoint to an `email address`.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// http://example.com
 	Endpoint *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
+	// The tag that is used to filter messages. Only messages that have the same tag can be pushed. Set the value to a string of no more than 16 characters.
+	//
+	// By default, no tag is specified to filter messages.
+	//
 	// example:
 	//
 	// important
 	MessageTag *string `json:"MessageTag,omitempty" xml:"MessageTag,omitempty"`
+	// The content format of the messages that are pushed to the endpoint. Valid values:
+	//
+	// 	- XML
+	//
+	// 	- JSON
+	//
+	// 	- SIMPLIFIED
+	//
 	// example:
 	//
 	// XML
 	NotifyContentFormat *string `json:"NotifyContentFormat,omitempty" xml:"NotifyContentFormat,omitempty"`
+	// The retry policy that is applied if an error occurs when Message Service (MNS) pushes messages to the endpoint. Valid values:
+	//
+	// 	- BACKOFF_RETRY
+	//
+	// 	- EXPONENTIAL_DECAY_RETRY
+	//
 	// example:
 	//
 	// BACKOFF_RETRY
 	NotifyStrategy *string `json:"NotifyStrategy,omitempty" xml:"NotifyStrategy,omitempty"`
+	// The terminal type. Valid values:
+	//
+	// 	- http: HTTP services
+	//
+	// 	- queue: queues
+	//
+	// 	- mpush: mobile devices
+	//
+	// 	- alisms: Alibaba Cloud Short Message Service (SMS)
+	//
+	// 	- email: emails
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// queue
 	PushType *string `json:"PushType,omitempty" xml:"PushType,omitempty"`
+	// The name of the subscription.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// testSubscription
 	SubscriptionName *string `json:"SubscriptionName,omitempty" xml:"SubscriptionName,omitempty"`
+	// The name of the topic.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -3045,26 +3548,38 @@ func (s *SubscribeRequest) SetTopicName(v string) *SubscribeRequest {
 }
 
 type SubscribeResponseBody struct {
+	// The response code.
+	//
 	// example:
 	//
 	// 200
 	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data.
+	//
 	// example:
 	//
 	// {\\"Code\\": 200, \\"Success\\": True}
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The returned message.
+	//
 	// example:
 	//
 	// operation success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 06273500-249F-5863-121D-74D51123****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The response status.
+	//
 	// example:
 	//
 	// Success
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -3139,12 +3654,16 @@ func (s *SubscribeResponse) SetBody(v *SubscribeResponseBody) *SubscribeResponse
 }
 
 type UnsubscribeRequest struct {
+	// The name of the subscription.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// MySubscription
 	SubscriptionName *string `json:"SubscriptionName,omitempty" xml:"SubscriptionName,omitempty"`
+	// The name of the topic.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -3172,23 +3691,34 @@ func (s *UnsubscribeRequest) SetTopicName(v string) *UnsubscribeRequest {
 }
 
 type UnsubscribeResponseBody struct {
+	// The response code.
+	//
 	// example:
 	//
 	// 200
-	Code *int64                       `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data.
 	Data *UnsubscribeResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The returned message.
+	//
 	// example:
 	//
 	// operation success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 06273500-249F-5863-121D-74D51123****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The response status.
+	//
 	// example:
 	//
 	// Success
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -3234,11 +3764,16 @@ func (s *UnsubscribeResponseBody) SetSuccess(v bool) *UnsubscribeResponseBody {
 }
 
 type UnsubscribeResponseBodyData struct {
+	// The response code.
+	//
 	// example:
 	//
 	// 200
-	Code    *int64  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned message.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -3346,7 +3881,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
-// CreateQueue
+// Creates a queue.
 //
 // @param request - CreateQueueRequest
 //
@@ -3416,7 +3951,7 @@ func (client *Client) CreateQueueWithOptions(request *CreateQueueRequest, runtim
 
 // Summary:
 //
-// CreateQueue
+// Creates a queue.
 //
 // @param request - CreateQueueRequest
 //
@@ -3434,7 +3969,7 @@ func (client *Client) CreateQueue(request *CreateQueueRequest) (_result *CreateQ
 
 // Summary:
 //
-// CreateTopic
+// Creates a topic.
 //
 // @param request - CreateTopicRequest
 //
@@ -3490,7 +4025,7 @@ func (client *Client) CreateTopicWithOptions(request *CreateTopicRequest, runtim
 
 // Summary:
 //
-// CreateTopic
+// Creates a topic.
 //
 // @param request - CreateTopicRequest
 //
@@ -3508,7 +4043,7 @@ func (client *Client) CreateTopic(request *CreateTopicRequest) (_result *CreateT
 
 // Summary:
 //
-// DeleteQueue
+// Deletes a queue.
 //
 // @param request - DeleteQueueRequest
 //
@@ -3550,7 +4085,7 @@ func (client *Client) DeleteQueueWithOptions(request *DeleteQueueRequest, runtim
 
 // Summary:
 //
-// DeleteQueue
+// Deletes a queue.
 //
 // @param request - DeleteQueueRequest
 //
@@ -3568,7 +4103,7 @@ func (client *Client) DeleteQueue(request *DeleteQueueRequest) (_result *DeleteQ
 
 // Summary:
 //
-// 删除订阅主题
+// Deletes a topic.
 //
 // @param request - DeleteTopicRequest
 //
@@ -3610,7 +4145,7 @@ func (client *Client) DeleteTopicWithOptions(request *DeleteTopicRequest, runtim
 
 // Summary:
 //
-// 删除订阅主题
+// Deletes a topic.
 //
 // @param request - DeleteTopicRequest
 //
@@ -3628,7 +4163,7 @@ func (client *Client) DeleteTopic(request *DeleteTopicRequest) (_result *DeleteT
 
 // Summary:
 //
-// GetQueueAttributes
+// Queries the attributes of an existing queue.
 //
 // @param request - GetQueueAttributesRequest
 //
@@ -3674,7 +4209,7 @@ func (client *Client) GetQueueAttributesWithOptions(request *GetQueueAttributesR
 
 // Summary:
 //
-// GetQueueAttributes
+// Queries the attributes of an existing queue.
 //
 // @param request - GetQueueAttributesRequest
 //
@@ -3692,7 +4227,7 @@ func (client *Client) GetQueueAttributes(request *GetQueueAttributesRequest) (_r
 
 // Summary:
 //
-// GetSubscription
+// Queries the attributes of a subscription.
 //
 // @param request - GetSubscriptionAttributesRequest
 //
@@ -3738,7 +4273,7 @@ func (client *Client) GetSubscriptionAttributesWithOptions(request *GetSubscript
 
 // Summary:
 //
-// GetSubscription
+// Queries the attributes of a subscription.
 //
 // @param request - GetSubscriptionAttributesRequest
 //
@@ -3756,7 +4291,7 @@ func (client *Client) GetSubscriptionAttributes(request *GetSubscriptionAttribut
 
 // Summary:
 //
-// 查询主题
+// Queries the attributes of a topic.
 //
 // @param request - GetTopicAttributesRequest
 //
@@ -3802,7 +4337,7 @@ func (client *Client) GetTopicAttributesWithOptions(request *GetTopicAttributesR
 
 // Summary:
 //
-// 查询主题
+// Queries the attributes of a topic.
 //
 // @param request - GetTopicAttributesRequest
 //
@@ -3820,7 +4355,7 @@ func (client *Client) GetTopicAttributes(request *GetTopicAttributesRequest) (_r
 
 // Summary:
 //
-// ListQueue
+// Queries all queues that belong to an Alibaba Cloud account. The queues are displayed by page.
 //
 // @param request - ListQueueRequest
 //
@@ -3874,7 +4409,7 @@ func (client *Client) ListQueueWithOptions(request *ListQueueRequest, runtime *u
 
 // Summary:
 //
-// ListQueue
+// Queries all queues that belong to an Alibaba Cloud account. The queues are displayed by page.
 //
 // @param request - ListQueueRequest
 //
@@ -3892,7 +4427,7 @@ func (client *Client) ListQueue(request *ListQueueRequest) (_result *ListQueueRe
 
 // Summary:
 //
-// ListSubscription
+// Queries all subscriptions to a topic. The subscriptions are displayed by page.
 //
 // @param request - ListSubscriptionByTopicRequest
 //
@@ -3946,7 +4481,7 @@ func (client *Client) ListSubscriptionByTopicWithOptions(request *ListSubscripti
 
 // Summary:
 //
-// ListSubscription
+// Queries all subscriptions to a topic. The subscriptions are displayed by page.
 //
 // @param request - ListSubscriptionByTopicRequest
 //
@@ -3964,7 +4499,7 @@ func (client *Client) ListSubscriptionByTopic(request *ListSubscriptionByTopicRe
 
 // Summary:
 //
-// ListTopic
+// Queries the topics that belong to an Alibaba Cloud account. The topics are displayed by page.
 //
 // @param request - ListTopicRequest
 //
@@ -4018,7 +4553,7 @@ func (client *Client) ListTopicWithOptions(request *ListTopicRequest, runtime *u
 
 // Summary:
 //
-// ListTopic
+// Queries the topics that belong to an Alibaba Cloud account. The topics are displayed by page.
 //
 // @param request - ListTopicRequest
 //
@@ -4036,7 +4571,7 @@ func (client *Client) ListTopic(request *ListTopicRequest) (_result *ListTopicRe
 
 // Summary:
 //
-// SetQueueAttributes
+// Modifies a queue.
 //
 // @param request - SetQueueAttributesRequest
 //
@@ -4102,7 +4637,7 @@ func (client *Client) SetQueueAttributesWithOptions(request *SetQueueAttributesR
 
 // Summary:
 //
-// SetQueueAttributes
+// Modifies a queue.
 //
 // @param request - SetQueueAttributesRequest
 //
@@ -4120,7 +4655,7 @@ func (client *Client) SetQueueAttributes(request *SetQueueAttributesRequest) (_r
 
 // Summary:
 //
-// ModifySubscription
+// Modifies the attributes of a subscription.
 //
 // @param request - SetSubscriptionAttributesRequest
 //
@@ -4170,7 +4705,7 @@ func (client *Client) SetSubscriptionAttributesWithOptions(request *SetSubscript
 
 // Summary:
 //
-// ModifySubscription
+// Modifies the attributes of a subscription.
 //
 // @param request - SetSubscriptionAttributesRequest
 //
@@ -4188,7 +4723,7 @@ func (client *Client) SetSubscriptionAttributes(request *SetSubscriptionAttribut
 
 // Summary:
 //
-// 编辑订阅主题
+// Modifies the attributes of a topic.
 //
 // @param request - SetTopicAttributesRequest
 //
@@ -4238,7 +4773,7 @@ func (client *Client) SetTopicAttributesWithOptions(request *SetTopicAttributesR
 
 // Summary:
 //
-// 编辑订阅主题
+// Modifies the attributes of a topic.
 //
 // @param request - SetTopicAttributesRequest
 //
@@ -4256,7 +4791,7 @@ func (client *Client) SetTopicAttributes(request *SetTopicAttributesRequest) (_r
 
 // Summary:
 //
-// CreateSubscription
+// Creates a subscription to a topic.
 //
 // @param request - SubscribeRequest
 //
@@ -4322,7 +4857,7 @@ func (client *Client) SubscribeWithOptions(request *SubscribeRequest, runtime *u
 
 // Summary:
 //
-// CreateSubscription
+// Creates a subscription to a topic.
 //
 // @param request - SubscribeRequest
 //
@@ -4340,7 +4875,7 @@ func (client *Client) Subscribe(request *SubscribeRequest) (_result *SubscribeRe
 
 // Summary:
 //
-// DeleteSubscription
+// Deletes a subscription.
 //
 // @param request - UnsubscribeRequest
 //
@@ -4386,7 +4921,7 @@ func (client *Client) UnsubscribeWithOptions(request *UnsubscribeRequest, runtim
 
 // Summary:
 //
-// DeleteSubscription
+// Deletes a subscription.
 //
 // @param request - UnsubscribeRequest
 //
