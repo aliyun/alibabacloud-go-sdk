@@ -536,6 +536,378 @@ func (s *ApplyFileUploadLeaseResponse) SetBody(v *ApplyFileUploadLeaseResponseBo
 	return s
 }
 
+type CreateAndPulishAgentRequest struct {
+	ApplicationConfig *CreateAndPulishAgentRequestApplicationConfig `json:"applicationConfig,omitempty" xml:"applicationConfig,omitempty" type:"Struct"`
+	Instructions      *string                                       `json:"instructions,omitempty" xml:"instructions,omitempty"`
+	ModelId           *string                                       `json:"modelId,omitempty" xml:"modelId,omitempty"`
+	Name              *string                                       `json:"name,omitempty" xml:"name,omitempty"`
+}
+
+func (s CreateAndPulishAgentRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAndPulishAgentRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAndPulishAgentRequest) SetApplicationConfig(v *CreateAndPulishAgentRequestApplicationConfig) *CreateAndPulishAgentRequest {
+	s.ApplicationConfig = v
+	return s
+}
+
+func (s *CreateAndPulishAgentRequest) SetInstructions(v string) *CreateAndPulishAgentRequest {
+	s.Instructions = &v
+	return s
+}
+
+func (s *CreateAndPulishAgentRequest) SetModelId(v string) *CreateAndPulishAgentRequest {
+	s.ModelId = &v
+	return s
+}
+
+func (s *CreateAndPulishAgentRequest) SetName(v string) *CreateAndPulishAgentRequest {
+	s.Name = &v
+	return s
+}
+
+type CreateAndPulishAgentRequestApplicationConfig struct {
+	HistoryConfig  *CreateAndPulishAgentRequestApplicationConfigHistoryConfig  `json:"historyConfig,omitempty" xml:"historyConfig,omitempty" type:"Struct"`
+	LongTermMemory *CreateAndPulishAgentRequestApplicationConfigLongTermMemory `json:"longTermMemory,omitempty" xml:"longTermMemory,omitempty" type:"Struct"`
+	Parameters     *CreateAndPulishAgentRequestApplicationConfigParameters     `json:"parameters,omitempty" xml:"parameters,omitempty" type:"Struct"`
+	RagConfig      *CreateAndPulishAgentRequestApplicationConfigRagConfig      `json:"ragConfig,omitempty" xml:"ragConfig,omitempty" type:"Struct"`
+	SecurityConfig *CreateAndPulishAgentRequestApplicationConfigSecurityConfig `json:"securityConfig,omitempty" xml:"securityConfig,omitempty" type:"Struct"`
+	Tools          []*CreateAndPulishAgentRequestApplicationConfigTools        `json:"tools,omitempty" xml:"tools,omitempty" type:"Repeated"`
+	WorkFlows      []*CreateAndPulishAgentRequestApplicationConfigWorkFlows    `json:"workFlows,omitempty" xml:"workFlows,omitempty" type:"Repeated"`
+}
+
+func (s CreateAndPulishAgentRequestApplicationConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAndPulishAgentRequestApplicationConfig) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAndPulishAgentRequestApplicationConfig) SetHistoryConfig(v *CreateAndPulishAgentRequestApplicationConfigHistoryConfig) *CreateAndPulishAgentRequestApplicationConfig {
+	s.HistoryConfig = v
+	return s
+}
+
+func (s *CreateAndPulishAgentRequestApplicationConfig) SetLongTermMemory(v *CreateAndPulishAgentRequestApplicationConfigLongTermMemory) *CreateAndPulishAgentRequestApplicationConfig {
+	s.LongTermMemory = v
+	return s
+}
+
+func (s *CreateAndPulishAgentRequestApplicationConfig) SetParameters(v *CreateAndPulishAgentRequestApplicationConfigParameters) *CreateAndPulishAgentRequestApplicationConfig {
+	s.Parameters = v
+	return s
+}
+
+func (s *CreateAndPulishAgentRequestApplicationConfig) SetRagConfig(v *CreateAndPulishAgentRequestApplicationConfigRagConfig) *CreateAndPulishAgentRequestApplicationConfig {
+	s.RagConfig = v
+	return s
+}
+
+func (s *CreateAndPulishAgentRequestApplicationConfig) SetSecurityConfig(v *CreateAndPulishAgentRequestApplicationConfigSecurityConfig) *CreateAndPulishAgentRequestApplicationConfig {
+	s.SecurityConfig = v
+	return s
+}
+
+func (s *CreateAndPulishAgentRequestApplicationConfig) SetTools(v []*CreateAndPulishAgentRequestApplicationConfigTools) *CreateAndPulishAgentRequestApplicationConfig {
+	s.Tools = v
+	return s
+}
+
+func (s *CreateAndPulishAgentRequestApplicationConfig) SetWorkFlows(v []*CreateAndPulishAgentRequestApplicationConfigWorkFlows) *CreateAndPulishAgentRequestApplicationConfig {
+	s.WorkFlows = v
+	return s
+}
+
+type CreateAndPulishAgentRequestApplicationConfigHistoryConfig struct {
+	EnableAdbRecord *bool   `json:"enableAdbRecord,omitempty" xml:"enableAdbRecord,omitempty"`
+	EnableRecord    *bool   `json:"enableRecord,omitempty" xml:"enableRecord,omitempty"`
+	InstanceId      *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	Region          *string `json:"region,omitempty" xml:"region,omitempty"`
+	StoreCode       *string `json:"storeCode,omitempty" xml:"storeCode,omitempty"`
+}
+
+func (s CreateAndPulishAgentRequestApplicationConfigHistoryConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAndPulishAgentRequestApplicationConfigHistoryConfig) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAndPulishAgentRequestApplicationConfigHistoryConfig) SetEnableAdbRecord(v bool) *CreateAndPulishAgentRequestApplicationConfigHistoryConfig {
+	s.EnableAdbRecord = &v
+	return s
+}
+
+func (s *CreateAndPulishAgentRequestApplicationConfigHistoryConfig) SetEnableRecord(v bool) *CreateAndPulishAgentRequestApplicationConfigHistoryConfig {
+	s.EnableRecord = &v
+	return s
+}
+
+func (s *CreateAndPulishAgentRequestApplicationConfigHistoryConfig) SetInstanceId(v string) *CreateAndPulishAgentRequestApplicationConfigHistoryConfig {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *CreateAndPulishAgentRequestApplicationConfigHistoryConfig) SetRegion(v string) *CreateAndPulishAgentRequestApplicationConfigHistoryConfig {
+	s.Region = &v
+	return s
+}
+
+func (s *CreateAndPulishAgentRequestApplicationConfigHistoryConfig) SetStoreCode(v string) *CreateAndPulishAgentRequestApplicationConfigHistoryConfig {
+	s.StoreCode = &v
+	return s
+}
+
+type CreateAndPulishAgentRequestApplicationConfigLongTermMemory struct {
+	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
+}
+
+func (s CreateAndPulishAgentRequestApplicationConfigLongTermMemory) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAndPulishAgentRequestApplicationConfigLongTermMemory) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAndPulishAgentRequestApplicationConfigLongTermMemory) SetEnable(v bool) *CreateAndPulishAgentRequestApplicationConfigLongTermMemory {
+	s.Enable = &v
+	return s
+}
+
+type CreateAndPulishAgentRequestApplicationConfigParameters struct {
+	DialogRound *int32   `json:"dialogRound,omitempty" xml:"dialogRound,omitempty"`
+	MaxTokens   *int32   `json:"maxTokens,omitempty" xml:"maxTokens,omitempty"`
+	Temperature *float64 `json:"temperature,omitempty" xml:"temperature,omitempty"`
+}
+
+func (s CreateAndPulishAgentRequestApplicationConfigParameters) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAndPulishAgentRequestApplicationConfigParameters) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAndPulishAgentRequestApplicationConfigParameters) SetDialogRound(v int32) *CreateAndPulishAgentRequestApplicationConfigParameters {
+	s.DialogRound = &v
+	return s
+}
+
+func (s *CreateAndPulishAgentRequestApplicationConfigParameters) SetMaxTokens(v int32) *CreateAndPulishAgentRequestApplicationConfigParameters {
+	s.MaxTokens = &v
+	return s
+}
+
+func (s *CreateAndPulishAgentRequestApplicationConfigParameters) SetTemperature(v float64) *CreateAndPulishAgentRequestApplicationConfigParameters {
+	s.Temperature = &v
+	return s
+}
+
+type CreateAndPulishAgentRequestApplicationConfigRagConfig struct {
+	EnableCitation        *bool     `json:"enableCitation,omitempty" xml:"enableCitation,omitempty"`
+	EnableSearch          *bool     `json:"enableSearch,omitempty" xml:"enableSearch,omitempty"`
+	KnowledgeBaseCodeList []*string `json:"knowledgeBaseCodeList,omitempty" xml:"knowledgeBaseCodeList,omitempty" type:"Repeated"`
+	TopK                  *int32    `json:"topK,omitempty" xml:"topK,omitempty"`
+}
+
+func (s CreateAndPulishAgentRequestApplicationConfigRagConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAndPulishAgentRequestApplicationConfigRagConfig) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAndPulishAgentRequestApplicationConfigRagConfig) SetEnableCitation(v bool) *CreateAndPulishAgentRequestApplicationConfigRagConfig {
+	s.EnableCitation = &v
+	return s
+}
+
+func (s *CreateAndPulishAgentRequestApplicationConfigRagConfig) SetEnableSearch(v bool) *CreateAndPulishAgentRequestApplicationConfigRagConfig {
+	s.EnableSearch = &v
+	return s
+}
+
+func (s *CreateAndPulishAgentRequestApplicationConfigRagConfig) SetKnowledgeBaseCodeList(v []*string) *CreateAndPulishAgentRequestApplicationConfigRagConfig {
+	s.KnowledgeBaseCodeList = v
+	return s
+}
+
+func (s *CreateAndPulishAgentRequestApplicationConfigRagConfig) SetTopK(v int32) *CreateAndPulishAgentRequestApplicationConfigRagConfig {
+	s.TopK = &v
+	return s
+}
+
+type CreateAndPulishAgentRequestApplicationConfigSecurityConfig struct {
+	ProcessingStrategy *string `json:"processingStrategy,omitempty" xml:"processingStrategy,omitempty"`
+}
+
+func (s CreateAndPulishAgentRequestApplicationConfigSecurityConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAndPulishAgentRequestApplicationConfigSecurityConfig) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAndPulishAgentRequestApplicationConfigSecurityConfig) SetProcessingStrategy(v string) *CreateAndPulishAgentRequestApplicationConfigSecurityConfig {
+	s.ProcessingStrategy = &v
+	return s
+}
+
+type CreateAndPulishAgentRequestApplicationConfigTools struct {
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+}
+
+func (s CreateAndPulishAgentRequestApplicationConfigTools) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAndPulishAgentRequestApplicationConfigTools) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAndPulishAgentRequestApplicationConfigTools) SetType(v string) *CreateAndPulishAgentRequestApplicationConfigTools {
+	s.Type = &v
+	return s
+}
+
+type CreateAndPulishAgentRequestApplicationConfigWorkFlows struct {
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+}
+
+func (s CreateAndPulishAgentRequestApplicationConfigWorkFlows) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAndPulishAgentRequestApplicationConfigWorkFlows) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAndPulishAgentRequestApplicationConfigWorkFlows) SetType(v string) *CreateAndPulishAgentRequestApplicationConfigWorkFlows {
+	s.Type = &v
+	return s
+}
+
+type CreateAndPulishAgentShrinkRequest struct {
+	ApplicationConfigShrink *string `json:"applicationConfig,omitempty" xml:"applicationConfig,omitempty"`
+	Instructions            *string `json:"instructions,omitempty" xml:"instructions,omitempty"`
+	ModelId                 *string `json:"modelId,omitempty" xml:"modelId,omitempty"`
+	Name                    *string `json:"name,omitempty" xml:"name,omitempty"`
+}
+
+func (s CreateAndPulishAgentShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAndPulishAgentShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAndPulishAgentShrinkRequest) SetApplicationConfigShrink(v string) *CreateAndPulishAgentShrinkRequest {
+	s.ApplicationConfigShrink = &v
+	return s
+}
+
+func (s *CreateAndPulishAgentShrinkRequest) SetInstructions(v string) *CreateAndPulishAgentShrinkRequest {
+	s.Instructions = &v
+	return s
+}
+
+func (s *CreateAndPulishAgentShrinkRequest) SetModelId(v string) *CreateAndPulishAgentShrinkRequest {
+	s.ModelId = &v
+	return s
+}
+
+func (s *CreateAndPulishAgentShrinkRequest) SetName(v string) *CreateAndPulishAgentShrinkRequest {
+	s.Name = &v
+	return s
+}
+
+type CreateAndPulishAgentResponseBody struct {
+	Code           *string `json:"code,omitempty" xml:"code,omitempty"`
+	Data           *string `json:"data,omitempty" xml:"data,omitempty"`
+	HttpStatusCode *int32  `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	Message        *string `json:"message,omitempty" xml:"message,omitempty"`
+	RequestId      *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success        *bool   `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s CreateAndPulishAgentResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAndPulishAgentResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAndPulishAgentResponseBody) SetCode(v string) *CreateAndPulishAgentResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CreateAndPulishAgentResponseBody) SetData(v string) *CreateAndPulishAgentResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *CreateAndPulishAgentResponseBody) SetHttpStatusCode(v int32) *CreateAndPulishAgentResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *CreateAndPulishAgentResponseBody) SetMessage(v string) *CreateAndPulishAgentResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CreateAndPulishAgentResponseBody) SetRequestId(v string) *CreateAndPulishAgentResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateAndPulishAgentResponseBody) SetSuccess(v bool) *CreateAndPulishAgentResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CreateAndPulishAgentResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateAndPulishAgentResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateAndPulishAgentResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAndPulishAgentResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAndPulishAgentResponse) SetHeaders(v map[string]*string) *CreateAndPulishAgentResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateAndPulishAgentResponse) SetStatusCode(v int32) *CreateAndPulishAgentResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateAndPulishAgentResponse) SetBody(v *CreateAndPulishAgentResponseBody) *CreateAndPulishAgentResponse {
+	s.Body = v
+	return s
+}
+
 type CreateIndexRequest struct {
 	CategoryIds []*string `json:"CategoryIds,omitempty" xml:"CategoryIds,omitempty" type:"Repeated"`
 	// example:
@@ -986,6 +1358,82 @@ func (s *CreateIndexResponse) SetStatusCode(v int32) *CreateIndexResponse {
 }
 
 func (s *CreateIndexResponse) SetBody(v *CreateIndexResponseBody) *CreateIndexResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteAgentResponseBody struct {
+	Code           *string `json:"code,omitempty" xml:"code,omitempty"`
+	Data           *string `json:"data,omitempty" xml:"data,omitempty"`
+	HttpStatusCode *int32  `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	Message        *string `json:"message,omitempty" xml:"message,omitempty"`
+	RequestId      *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success        *bool   `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s DeleteAgentResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteAgentResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteAgentResponseBody) SetCode(v string) *DeleteAgentResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DeleteAgentResponseBody) SetData(v string) *DeleteAgentResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *DeleteAgentResponseBody) SetHttpStatusCode(v int32) *DeleteAgentResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *DeleteAgentResponseBody) SetMessage(v string) *DeleteAgentResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DeleteAgentResponseBody) SetRequestId(v string) *DeleteAgentResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteAgentResponseBody) SetSuccess(v bool) *DeleteAgentResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DeleteAgentResponse struct {
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteAgentResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteAgentResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteAgentResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteAgentResponse) SetHeaders(v map[string]*string) *DeleteAgentResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteAgentResponse) SetStatusCode(v int32) *DeleteAgentResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteAgentResponse) SetBody(v *DeleteAgentResponseBody) *DeleteAgentResponse {
 	s.Body = v
 	return s
 }
@@ -1876,6 +2324,349 @@ func (s *GetIndexJobStatusResponse) SetStatusCode(v int32) *GetIndexJobStatusRes
 }
 
 func (s *GetIndexJobStatusResponse) SetBody(v *GetIndexJobStatusResponseBody) *GetIndexJobStatusResponse {
+	s.Body = v
+	return s
+}
+
+type GetPublishedAgentResponseBody struct {
+	Code           *string                            `json:"code,omitempty" xml:"code,omitempty"`
+	Data           *GetPublishedAgentResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	HttpStatusCode *int32                             `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	Message        *string                            `json:"message,omitempty" xml:"message,omitempty"`
+	RequestId      *string                            `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success        *bool                              `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s GetPublishedAgentResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPublishedAgentResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetPublishedAgentResponseBody) SetCode(v string) *GetPublishedAgentResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetPublishedAgentResponseBody) SetData(v *GetPublishedAgentResponseBodyData) *GetPublishedAgentResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetPublishedAgentResponseBody) SetHttpStatusCode(v int32) *GetPublishedAgentResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *GetPublishedAgentResponseBody) SetMessage(v string) *GetPublishedAgentResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetPublishedAgentResponseBody) SetRequestId(v string) *GetPublishedAgentResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetPublishedAgentResponseBody) SetSuccess(v bool) *GetPublishedAgentResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetPublishedAgentResponseBodyData struct {
+	ApplicationConfig *GetPublishedAgentResponseBodyDataApplicationConfig `json:"applicationConfig,omitempty" xml:"applicationConfig,omitempty" type:"Struct"`
+	Code              *string                                             `json:"code,omitempty" xml:"code,omitempty"`
+	Instructions      *string                                             `json:"instructions,omitempty" xml:"instructions,omitempty"`
+	ModelId           *string                                             `json:"modelId,omitempty" xml:"modelId,omitempty"`
+	Name              *string                                             `json:"name,omitempty" xml:"name,omitempty"`
+}
+
+func (s GetPublishedAgentResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPublishedAgentResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetPublishedAgentResponseBodyData) SetApplicationConfig(v *GetPublishedAgentResponseBodyDataApplicationConfig) *GetPublishedAgentResponseBodyData {
+	s.ApplicationConfig = v
+	return s
+}
+
+func (s *GetPublishedAgentResponseBodyData) SetCode(v string) *GetPublishedAgentResponseBodyData {
+	s.Code = &v
+	return s
+}
+
+func (s *GetPublishedAgentResponseBodyData) SetInstructions(v string) *GetPublishedAgentResponseBodyData {
+	s.Instructions = &v
+	return s
+}
+
+func (s *GetPublishedAgentResponseBodyData) SetModelId(v string) *GetPublishedAgentResponseBodyData {
+	s.ModelId = &v
+	return s
+}
+
+func (s *GetPublishedAgentResponseBodyData) SetName(v string) *GetPublishedAgentResponseBodyData {
+	s.Name = &v
+	return s
+}
+
+type GetPublishedAgentResponseBodyDataApplicationConfig struct {
+	HistoryConfig  *GetPublishedAgentResponseBodyDataApplicationConfigHistoryConfig  `json:"historyConfig,omitempty" xml:"historyConfig,omitempty" type:"Struct"`
+	LongTermMemory *GetPublishedAgentResponseBodyDataApplicationConfigLongTermMemory `json:"longTermMemory,omitempty" xml:"longTermMemory,omitempty" type:"Struct"`
+	Parameters     *GetPublishedAgentResponseBodyDataApplicationConfigParameters     `json:"parameters,omitempty" xml:"parameters,omitempty" type:"Struct"`
+	RagConfig      *GetPublishedAgentResponseBodyDataApplicationConfigRagConfig      `json:"ragConfig,omitempty" xml:"ragConfig,omitempty" type:"Struct"`
+	Security       *GetPublishedAgentResponseBodyDataApplicationConfigSecurity       `json:"security,omitempty" xml:"security,omitempty" type:"Struct"`
+	Tools          []*GetPublishedAgentResponseBodyDataApplicationConfigTools        `json:"tools,omitempty" xml:"tools,omitempty" type:"Repeated"`
+	WorkFlows      []*GetPublishedAgentResponseBodyDataApplicationConfigWorkFlows    `json:"workFlows,omitempty" xml:"workFlows,omitempty" type:"Repeated"`
+}
+
+func (s GetPublishedAgentResponseBodyDataApplicationConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPublishedAgentResponseBodyDataApplicationConfig) GoString() string {
+	return s.String()
+}
+
+func (s *GetPublishedAgentResponseBodyDataApplicationConfig) SetHistoryConfig(v *GetPublishedAgentResponseBodyDataApplicationConfigHistoryConfig) *GetPublishedAgentResponseBodyDataApplicationConfig {
+	s.HistoryConfig = v
+	return s
+}
+
+func (s *GetPublishedAgentResponseBodyDataApplicationConfig) SetLongTermMemory(v *GetPublishedAgentResponseBodyDataApplicationConfigLongTermMemory) *GetPublishedAgentResponseBodyDataApplicationConfig {
+	s.LongTermMemory = v
+	return s
+}
+
+func (s *GetPublishedAgentResponseBodyDataApplicationConfig) SetParameters(v *GetPublishedAgentResponseBodyDataApplicationConfigParameters) *GetPublishedAgentResponseBodyDataApplicationConfig {
+	s.Parameters = v
+	return s
+}
+
+func (s *GetPublishedAgentResponseBodyDataApplicationConfig) SetRagConfig(v *GetPublishedAgentResponseBodyDataApplicationConfigRagConfig) *GetPublishedAgentResponseBodyDataApplicationConfig {
+	s.RagConfig = v
+	return s
+}
+
+func (s *GetPublishedAgentResponseBodyDataApplicationConfig) SetSecurity(v *GetPublishedAgentResponseBodyDataApplicationConfigSecurity) *GetPublishedAgentResponseBodyDataApplicationConfig {
+	s.Security = v
+	return s
+}
+
+func (s *GetPublishedAgentResponseBodyDataApplicationConfig) SetTools(v []*GetPublishedAgentResponseBodyDataApplicationConfigTools) *GetPublishedAgentResponseBodyDataApplicationConfig {
+	s.Tools = v
+	return s
+}
+
+func (s *GetPublishedAgentResponseBodyDataApplicationConfig) SetWorkFlows(v []*GetPublishedAgentResponseBodyDataApplicationConfigWorkFlows) *GetPublishedAgentResponseBodyDataApplicationConfig {
+	s.WorkFlows = v
+	return s
+}
+
+type GetPublishedAgentResponseBodyDataApplicationConfigHistoryConfig struct {
+	EnableAdbRecord *bool   `json:"enableAdbRecord,omitempty" xml:"enableAdbRecord,omitempty"`
+	EnableRecord    *bool   `json:"enableRecord,omitempty" xml:"enableRecord,omitempty"`
+	InstanceId      *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	Region          *string `json:"region,omitempty" xml:"region,omitempty"`
+	StoreCode       *string `json:"storeCode,omitempty" xml:"storeCode,omitempty"`
+}
+
+func (s GetPublishedAgentResponseBodyDataApplicationConfigHistoryConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPublishedAgentResponseBodyDataApplicationConfigHistoryConfig) GoString() string {
+	return s.String()
+}
+
+func (s *GetPublishedAgentResponseBodyDataApplicationConfigHistoryConfig) SetEnableAdbRecord(v bool) *GetPublishedAgentResponseBodyDataApplicationConfigHistoryConfig {
+	s.EnableAdbRecord = &v
+	return s
+}
+
+func (s *GetPublishedAgentResponseBodyDataApplicationConfigHistoryConfig) SetEnableRecord(v bool) *GetPublishedAgentResponseBodyDataApplicationConfigHistoryConfig {
+	s.EnableRecord = &v
+	return s
+}
+
+func (s *GetPublishedAgentResponseBodyDataApplicationConfigHistoryConfig) SetInstanceId(v string) *GetPublishedAgentResponseBodyDataApplicationConfigHistoryConfig {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *GetPublishedAgentResponseBodyDataApplicationConfigHistoryConfig) SetRegion(v string) *GetPublishedAgentResponseBodyDataApplicationConfigHistoryConfig {
+	s.Region = &v
+	return s
+}
+
+func (s *GetPublishedAgentResponseBodyDataApplicationConfigHistoryConfig) SetStoreCode(v string) *GetPublishedAgentResponseBodyDataApplicationConfigHistoryConfig {
+	s.StoreCode = &v
+	return s
+}
+
+type GetPublishedAgentResponseBodyDataApplicationConfigLongTermMemory struct {
+	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
+}
+
+func (s GetPublishedAgentResponseBodyDataApplicationConfigLongTermMemory) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPublishedAgentResponseBodyDataApplicationConfigLongTermMemory) GoString() string {
+	return s.String()
+}
+
+func (s *GetPublishedAgentResponseBodyDataApplicationConfigLongTermMemory) SetEnable(v bool) *GetPublishedAgentResponseBodyDataApplicationConfigLongTermMemory {
+	s.Enable = &v
+	return s
+}
+
+type GetPublishedAgentResponseBodyDataApplicationConfigParameters struct {
+	DialogRound *int32   `json:"dialogRound,omitempty" xml:"dialogRound,omitempty"`
+	MaxTokens   *int32   `json:"maxTokens,omitempty" xml:"maxTokens,omitempty"`
+	Temperature *float64 `json:"temperature,omitempty" xml:"temperature,omitempty"`
+}
+
+func (s GetPublishedAgentResponseBodyDataApplicationConfigParameters) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPublishedAgentResponseBodyDataApplicationConfigParameters) GoString() string {
+	return s.String()
+}
+
+func (s *GetPublishedAgentResponseBodyDataApplicationConfigParameters) SetDialogRound(v int32) *GetPublishedAgentResponseBodyDataApplicationConfigParameters {
+	s.DialogRound = &v
+	return s
+}
+
+func (s *GetPublishedAgentResponseBodyDataApplicationConfigParameters) SetMaxTokens(v int32) *GetPublishedAgentResponseBodyDataApplicationConfigParameters {
+	s.MaxTokens = &v
+	return s
+}
+
+func (s *GetPublishedAgentResponseBodyDataApplicationConfigParameters) SetTemperature(v float64) *GetPublishedAgentResponseBodyDataApplicationConfigParameters {
+	s.Temperature = &v
+	return s
+}
+
+type GetPublishedAgentResponseBodyDataApplicationConfigRagConfig struct {
+	EnableCitation        *bool     `json:"enableCitation,omitempty" xml:"enableCitation,omitempty"`
+	EnableSearch          *bool     `json:"enableSearch,omitempty" xml:"enableSearch,omitempty"`
+	KnowledgeBaseCodeList []*string `json:"knowledgeBaseCodeList,omitempty" xml:"knowledgeBaseCodeList,omitempty" type:"Repeated"`
+	TopK                  *int32    `json:"topK,omitempty" xml:"topK,omitempty"`
+}
+
+func (s GetPublishedAgentResponseBodyDataApplicationConfigRagConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPublishedAgentResponseBodyDataApplicationConfigRagConfig) GoString() string {
+	return s.String()
+}
+
+func (s *GetPublishedAgentResponseBodyDataApplicationConfigRagConfig) SetEnableCitation(v bool) *GetPublishedAgentResponseBodyDataApplicationConfigRagConfig {
+	s.EnableCitation = &v
+	return s
+}
+
+func (s *GetPublishedAgentResponseBodyDataApplicationConfigRagConfig) SetEnableSearch(v bool) *GetPublishedAgentResponseBodyDataApplicationConfigRagConfig {
+	s.EnableSearch = &v
+	return s
+}
+
+func (s *GetPublishedAgentResponseBodyDataApplicationConfigRagConfig) SetKnowledgeBaseCodeList(v []*string) *GetPublishedAgentResponseBodyDataApplicationConfigRagConfig {
+	s.KnowledgeBaseCodeList = v
+	return s
+}
+
+func (s *GetPublishedAgentResponseBodyDataApplicationConfigRagConfig) SetTopK(v int32) *GetPublishedAgentResponseBodyDataApplicationConfigRagConfig {
+	s.TopK = &v
+	return s
+}
+
+type GetPublishedAgentResponseBodyDataApplicationConfigSecurity struct {
+	ProcessingStrategy *string `json:"processingStrategy,omitempty" xml:"processingStrategy,omitempty"`
+}
+
+func (s GetPublishedAgentResponseBodyDataApplicationConfigSecurity) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPublishedAgentResponseBodyDataApplicationConfigSecurity) GoString() string {
+	return s.String()
+}
+
+func (s *GetPublishedAgentResponseBodyDataApplicationConfigSecurity) SetProcessingStrategy(v string) *GetPublishedAgentResponseBodyDataApplicationConfigSecurity {
+	s.ProcessingStrategy = &v
+	return s
+}
+
+type GetPublishedAgentResponseBodyDataApplicationConfigTools struct {
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+}
+
+func (s GetPublishedAgentResponseBodyDataApplicationConfigTools) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPublishedAgentResponseBodyDataApplicationConfigTools) GoString() string {
+	return s.String()
+}
+
+func (s *GetPublishedAgentResponseBodyDataApplicationConfigTools) SetType(v string) *GetPublishedAgentResponseBodyDataApplicationConfigTools {
+	s.Type = &v
+	return s
+}
+
+type GetPublishedAgentResponseBodyDataApplicationConfigWorkFlows struct {
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+}
+
+func (s GetPublishedAgentResponseBodyDataApplicationConfigWorkFlows) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPublishedAgentResponseBodyDataApplicationConfigWorkFlows) GoString() string {
+	return s.String()
+}
+
+func (s *GetPublishedAgentResponseBodyDataApplicationConfigWorkFlows) SetType(v string) *GetPublishedAgentResponseBodyDataApplicationConfigWorkFlows {
+	s.Type = &v
+	return s
+}
+
+type GetPublishedAgentResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetPublishedAgentResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetPublishedAgentResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPublishedAgentResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetPublishedAgentResponse) SetHeaders(v map[string]*string) *GetPublishedAgentResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetPublishedAgentResponse) SetStatusCode(v int32) *GetPublishedAgentResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetPublishedAgentResponse) SetBody(v *GetPublishedAgentResponseBody) *GetPublishedAgentResponse {
 	s.Body = v
 	return s
 }
@@ -2933,6 +3724,407 @@ func (s *ListIndicesResponse) SetBody(v *ListIndicesResponseBody) *ListIndicesRe
 	return s
 }
 
+type ListPublishedAgentRequest struct {
+	PageNo   *int32 `json:"pageNo,omitempty" xml:"pageNo,omitempty"`
+	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+}
+
+func (s ListPublishedAgentRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPublishedAgentRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListPublishedAgentRequest) SetPageNo(v int32) *ListPublishedAgentRequest {
+	s.PageNo = &v
+	return s
+}
+
+func (s *ListPublishedAgentRequest) SetPageSize(v int32) *ListPublishedAgentRequest {
+	s.PageSize = &v
+	return s
+}
+
+type ListPublishedAgentResponseBody struct {
+	Code           *string                             `json:"code,omitempty" xml:"code,omitempty"`
+	Data           *ListPublishedAgentResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	HttpStatusCode *int32                              `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	Message        *string                             `json:"message,omitempty" xml:"message,omitempty"`
+	RequestId      *string                             `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success        *string                             `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s ListPublishedAgentResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPublishedAgentResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListPublishedAgentResponseBody) SetCode(v string) *ListPublishedAgentResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListPublishedAgentResponseBody) SetData(v *ListPublishedAgentResponseBodyData) *ListPublishedAgentResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListPublishedAgentResponseBody) SetHttpStatusCode(v int32) *ListPublishedAgentResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *ListPublishedAgentResponseBody) SetMessage(v string) *ListPublishedAgentResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListPublishedAgentResponseBody) SetRequestId(v string) *ListPublishedAgentResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListPublishedAgentResponseBody) SetSuccess(v string) *ListPublishedAgentResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ListPublishedAgentResponseBodyData struct {
+	List     []*ListPublishedAgentResponseBodyDataList `json:"list,omitempty" xml:"list,omitempty" type:"Repeated"`
+	PageNo   *int32                                    `json:"pageNo,omitempty" xml:"pageNo,omitempty"`
+	PageSize *int32                                    `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	Total    *int32                                    `json:"total,omitempty" xml:"total,omitempty"`
+}
+
+func (s ListPublishedAgentResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPublishedAgentResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListPublishedAgentResponseBodyData) SetList(v []*ListPublishedAgentResponseBodyDataList) *ListPublishedAgentResponseBodyData {
+	s.List = v
+	return s
+}
+
+func (s *ListPublishedAgentResponseBodyData) SetPageNo(v int32) *ListPublishedAgentResponseBodyData {
+	s.PageNo = &v
+	return s
+}
+
+func (s *ListPublishedAgentResponseBodyData) SetPageSize(v int32) *ListPublishedAgentResponseBodyData {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListPublishedAgentResponseBodyData) SetTotal(v int32) *ListPublishedAgentResponseBodyData {
+	s.Total = &v
+	return s
+}
+
+type ListPublishedAgentResponseBodyDataList struct {
+	ApplicationConfig *ListPublishedAgentResponseBodyDataListApplicationConfig `json:"applicationConfig,omitempty" xml:"applicationConfig,omitempty" type:"Struct"`
+	Code              *string                                                  `json:"code,omitempty" xml:"code,omitempty"`
+	Instructions      *string                                                  `json:"instructions,omitempty" xml:"instructions,omitempty"`
+	ModelId           *string                                                  `json:"modelId,omitempty" xml:"modelId,omitempty"`
+	Name              *string                                                  `json:"name,omitempty" xml:"name,omitempty"`
+}
+
+func (s ListPublishedAgentResponseBodyDataList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPublishedAgentResponseBodyDataList) GoString() string {
+	return s.String()
+}
+
+func (s *ListPublishedAgentResponseBodyDataList) SetApplicationConfig(v *ListPublishedAgentResponseBodyDataListApplicationConfig) *ListPublishedAgentResponseBodyDataList {
+	s.ApplicationConfig = v
+	return s
+}
+
+func (s *ListPublishedAgentResponseBodyDataList) SetCode(v string) *ListPublishedAgentResponseBodyDataList {
+	s.Code = &v
+	return s
+}
+
+func (s *ListPublishedAgentResponseBodyDataList) SetInstructions(v string) *ListPublishedAgentResponseBodyDataList {
+	s.Instructions = &v
+	return s
+}
+
+func (s *ListPublishedAgentResponseBodyDataList) SetModelId(v string) *ListPublishedAgentResponseBodyDataList {
+	s.ModelId = &v
+	return s
+}
+
+func (s *ListPublishedAgentResponseBodyDataList) SetName(v string) *ListPublishedAgentResponseBodyDataList {
+	s.Name = &v
+	return s
+}
+
+type ListPublishedAgentResponseBodyDataListApplicationConfig struct {
+	HistoryConfig  *ListPublishedAgentResponseBodyDataListApplicationConfigHistoryConfig  `json:"historyConfig,omitempty" xml:"historyConfig,omitempty" type:"Struct"`
+	LongTermMemory *ListPublishedAgentResponseBodyDataListApplicationConfigLongTermMemory `json:"longTermMemory,omitempty" xml:"longTermMemory,omitempty" type:"Struct"`
+	Parameters     *ListPublishedAgentResponseBodyDataListApplicationConfigParameters     `json:"parameters,omitempty" xml:"parameters,omitempty" type:"Struct"`
+	RagConfig      *ListPublishedAgentResponseBodyDataListApplicationConfigRagConfig      `json:"ragConfig,omitempty" xml:"ragConfig,omitempty" type:"Struct"`
+	Security       *ListPublishedAgentResponseBodyDataListApplicationConfigSecurity       `json:"security,omitempty" xml:"security,omitempty" type:"Struct"`
+	Tools          []*ListPublishedAgentResponseBodyDataListApplicationConfigTools        `json:"tools,omitempty" xml:"tools,omitempty" type:"Repeated"`
+	WorkFlows      []*ListPublishedAgentResponseBodyDataListApplicationConfigWorkFlows    `json:"workFlows,omitempty" xml:"workFlows,omitempty" type:"Repeated"`
+}
+
+func (s ListPublishedAgentResponseBodyDataListApplicationConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPublishedAgentResponseBodyDataListApplicationConfig) GoString() string {
+	return s.String()
+}
+
+func (s *ListPublishedAgentResponseBodyDataListApplicationConfig) SetHistoryConfig(v *ListPublishedAgentResponseBodyDataListApplicationConfigHistoryConfig) *ListPublishedAgentResponseBodyDataListApplicationConfig {
+	s.HistoryConfig = v
+	return s
+}
+
+func (s *ListPublishedAgentResponseBodyDataListApplicationConfig) SetLongTermMemory(v *ListPublishedAgentResponseBodyDataListApplicationConfigLongTermMemory) *ListPublishedAgentResponseBodyDataListApplicationConfig {
+	s.LongTermMemory = v
+	return s
+}
+
+func (s *ListPublishedAgentResponseBodyDataListApplicationConfig) SetParameters(v *ListPublishedAgentResponseBodyDataListApplicationConfigParameters) *ListPublishedAgentResponseBodyDataListApplicationConfig {
+	s.Parameters = v
+	return s
+}
+
+func (s *ListPublishedAgentResponseBodyDataListApplicationConfig) SetRagConfig(v *ListPublishedAgentResponseBodyDataListApplicationConfigRagConfig) *ListPublishedAgentResponseBodyDataListApplicationConfig {
+	s.RagConfig = v
+	return s
+}
+
+func (s *ListPublishedAgentResponseBodyDataListApplicationConfig) SetSecurity(v *ListPublishedAgentResponseBodyDataListApplicationConfigSecurity) *ListPublishedAgentResponseBodyDataListApplicationConfig {
+	s.Security = v
+	return s
+}
+
+func (s *ListPublishedAgentResponseBodyDataListApplicationConfig) SetTools(v []*ListPublishedAgentResponseBodyDataListApplicationConfigTools) *ListPublishedAgentResponseBodyDataListApplicationConfig {
+	s.Tools = v
+	return s
+}
+
+func (s *ListPublishedAgentResponseBodyDataListApplicationConfig) SetWorkFlows(v []*ListPublishedAgentResponseBodyDataListApplicationConfigWorkFlows) *ListPublishedAgentResponseBodyDataListApplicationConfig {
+	s.WorkFlows = v
+	return s
+}
+
+type ListPublishedAgentResponseBodyDataListApplicationConfigHistoryConfig struct {
+	EnableAdbRecord *bool   `json:"enableAdbRecord,omitempty" xml:"enableAdbRecord,omitempty"`
+	EnableRecord    *bool   `json:"enableRecord,omitempty" xml:"enableRecord,omitempty"`
+	InstanceId      *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	Region          *string `json:"region,omitempty" xml:"region,omitempty"`
+	StoreCode       *string `json:"storeCode,omitempty" xml:"storeCode,omitempty"`
+}
+
+func (s ListPublishedAgentResponseBodyDataListApplicationConfigHistoryConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPublishedAgentResponseBodyDataListApplicationConfigHistoryConfig) GoString() string {
+	return s.String()
+}
+
+func (s *ListPublishedAgentResponseBodyDataListApplicationConfigHistoryConfig) SetEnableAdbRecord(v bool) *ListPublishedAgentResponseBodyDataListApplicationConfigHistoryConfig {
+	s.EnableAdbRecord = &v
+	return s
+}
+
+func (s *ListPublishedAgentResponseBodyDataListApplicationConfigHistoryConfig) SetEnableRecord(v bool) *ListPublishedAgentResponseBodyDataListApplicationConfigHistoryConfig {
+	s.EnableRecord = &v
+	return s
+}
+
+func (s *ListPublishedAgentResponseBodyDataListApplicationConfigHistoryConfig) SetInstanceId(v string) *ListPublishedAgentResponseBodyDataListApplicationConfigHistoryConfig {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ListPublishedAgentResponseBodyDataListApplicationConfigHistoryConfig) SetRegion(v string) *ListPublishedAgentResponseBodyDataListApplicationConfigHistoryConfig {
+	s.Region = &v
+	return s
+}
+
+func (s *ListPublishedAgentResponseBodyDataListApplicationConfigHistoryConfig) SetStoreCode(v string) *ListPublishedAgentResponseBodyDataListApplicationConfigHistoryConfig {
+	s.StoreCode = &v
+	return s
+}
+
+type ListPublishedAgentResponseBodyDataListApplicationConfigLongTermMemory struct {
+	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
+}
+
+func (s ListPublishedAgentResponseBodyDataListApplicationConfigLongTermMemory) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPublishedAgentResponseBodyDataListApplicationConfigLongTermMemory) GoString() string {
+	return s.String()
+}
+
+func (s *ListPublishedAgentResponseBodyDataListApplicationConfigLongTermMemory) SetEnable(v bool) *ListPublishedAgentResponseBodyDataListApplicationConfigLongTermMemory {
+	s.Enable = &v
+	return s
+}
+
+type ListPublishedAgentResponseBodyDataListApplicationConfigParameters struct {
+	DialogRound *int32   `json:"dialogRound,omitempty" xml:"dialogRound,omitempty"`
+	MaxTokens   *int32   `json:"maxTokens,omitempty" xml:"maxTokens,omitempty"`
+	Temperature *float64 `json:"temperature,omitempty" xml:"temperature,omitempty"`
+}
+
+func (s ListPublishedAgentResponseBodyDataListApplicationConfigParameters) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPublishedAgentResponseBodyDataListApplicationConfigParameters) GoString() string {
+	return s.String()
+}
+
+func (s *ListPublishedAgentResponseBodyDataListApplicationConfigParameters) SetDialogRound(v int32) *ListPublishedAgentResponseBodyDataListApplicationConfigParameters {
+	s.DialogRound = &v
+	return s
+}
+
+func (s *ListPublishedAgentResponseBodyDataListApplicationConfigParameters) SetMaxTokens(v int32) *ListPublishedAgentResponseBodyDataListApplicationConfigParameters {
+	s.MaxTokens = &v
+	return s
+}
+
+func (s *ListPublishedAgentResponseBodyDataListApplicationConfigParameters) SetTemperature(v float64) *ListPublishedAgentResponseBodyDataListApplicationConfigParameters {
+	s.Temperature = &v
+	return s
+}
+
+type ListPublishedAgentResponseBodyDataListApplicationConfigRagConfig struct {
+	EnableCitation        *bool     `json:"enableCitation,omitempty" xml:"enableCitation,omitempty"`
+	EnableSearch          *bool     `json:"enableSearch,omitempty" xml:"enableSearch,omitempty"`
+	KnowledgeBaseCodeList []*string `json:"knowledgeBaseCodeList,omitempty" xml:"knowledgeBaseCodeList,omitempty" type:"Repeated"`
+	TopK                  *int32    `json:"topK,omitempty" xml:"topK,omitempty"`
+}
+
+func (s ListPublishedAgentResponseBodyDataListApplicationConfigRagConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPublishedAgentResponseBodyDataListApplicationConfigRagConfig) GoString() string {
+	return s.String()
+}
+
+func (s *ListPublishedAgentResponseBodyDataListApplicationConfigRagConfig) SetEnableCitation(v bool) *ListPublishedAgentResponseBodyDataListApplicationConfigRagConfig {
+	s.EnableCitation = &v
+	return s
+}
+
+func (s *ListPublishedAgentResponseBodyDataListApplicationConfigRagConfig) SetEnableSearch(v bool) *ListPublishedAgentResponseBodyDataListApplicationConfigRagConfig {
+	s.EnableSearch = &v
+	return s
+}
+
+func (s *ListPublishedAgentResponseBodyDataListApplicationConfigRagConfig) SetKnowledgeBaseCodeList(v []*string) *ListPublishedAgentResponseBodyDataListApplicationConfigRagConfig {
+	s.KnowledgeBaseCodeList = v
+	return s
+}
+
+func (s *ListPublishedAgentResponseBodyDataListApplicationConfigRagConfig) SetTopK(v int32) *ListPublishedAgentResponseBodyDataListApplicationConfigRagConfig {
+	s.TopK = &v
+	return s
+}
+
+type ListPublishedAgentResponseBodyDataListApplicationConfigSecurity struct {
+	ProcessingStrategy *string `json:"processingStrategy,omitempty" xml:"processingStrategy,omitempty"`
+}
+
+func (s ListPublishedAgentResponseBodyDataListApplicationConfigSecurity) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPublishedAgentResponseBodyDataListApplicationConfigSecurity) GoString() string {
+	return s.String()
+}
+
+func (s *ListPublishedAgentResponseBodyDataListApplicationConfigSecurity) SetProcessingStrategy(v string) *ListPublishedAgentResponseBodyDataListApplicationConfigSecurity {
+	s.ProcessingStrategy = &v
+	return s
+}
+
+type ListPublishedAgentResponseBodyDataListApplicationConfigTools struct {
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+}
+
+func (s ListPublishedAgentResponseBodyDataListApplicationConfigTools) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPublishedAgentResponseBodyDataListApplicationConfigTools) GoString() string {
+	return s.String()
+}
+
+func (s *ListPublishedAgentResponseBodyDataListApplicationConfigTools) SetType(v string) *ListPublishedAgentResponseBodyDataListApplicationConfigTools {
+	s.Type = &v
+	return s
+}
+
+type ListPublishedAgentResponseBodyDataListApplicationConfigWorkFlows struct {
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+}
+
+func (s ListPublishedAgentResponseBodyDataListApplicationConfigWorkFlows) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPublishedAgentResponseBodyDataListApplicationConfigWorkFlows) GoString() string {
+	return s.String()
+}
+
+func (s *ListPublishedAgentResponseBodyDataListApplicationConfigWorkFlows) SetType(v string) *ListPublishedAgentResponseBodyDataListApplicationConfigWorkFlows {
+	s.Type = &v
+	return s
+}
+
+type ListPublishedAgentResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListPublishedAgentResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListPublishedAgentResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPublishedAgentResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListPublishedAgentResponse) SetHeaders(v map[string]*string) *ListPublishedAgentResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListPublishedAgentResponse) SetStatusCode(v int32) *ListPublishedAgentResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListPublishedAgentResponse) SetBody(v *ListPublishedAgentResponseBody) *ListPublishedAgentResponse {
+	s.Body = v
+	return s
+}
+
 type RetrieveRequest struct {
 	// example:
 	//
@@ -3677,6 +4869,378 @@ func (s *SubmitIndexJobResponse) SetBody(v *SubmitIndexJobResponseBody) *SubmitI
 	return s
 }
 
+type UpdateAndPublishAgentRequest struct {
+	ApplicationConfig *UpdateAndPublishAgentRequestApplicationConfig `json:"applicationConfig,omitempty" xml:"applicationConfig,omitempty" type:"Struct"`
+	Instructions      *string                                        `json:"instructions,omitempty" xml:"instructions,omitempty"`
+	ModelId           *string                                        `json:"modelId,omitempty" xml:"modelId,omitempty"`
+	Name              *string                                        `json:"name,omitempty" xml:"name,omitempty"`
+}
+
+func (s UpdateAndPublishAgentRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAndPublishAgentRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAndPublishAgentRequest) SetApplicationConfig(v *UpdateAndPublishAgentRequestApplicationConfig) *UpdateAndPublishAgentRequest {
+	s.ApplicationConfig = v
+	return s
+}
+
+func (s *UpdateAndPublishAgentRequest) SetInstructions(v string) *UpdateAndPublishAgentRequest {
+	s.Instructions = &v
+	return s
+}
+
+func (s *UpdateAndPublishAgentRequest) SetModelId(v string) *UpdateAndPublishAgentRequest {
+	s.ModelId = &v
+	return s
+}
+
+func (s *UpdateAndPublishAgentRequest) SetName(v string) *UpdateAndPublishAgentRequest {
+	s.Name = &v
+	return s
+}
+
+type UpdateAndPublishAgentRequestApplicationConfig struct {
+	HistoryConfig  *UpdateAndPublishAgentRequestApplicationConfigHistoryConfig  `json:"historyConfig,omitempty" xml:"historyConfig,omitempty" type:"Struct"`
+	LongTermMemory *UpdateAndPublishAgentRequestApplicationConfigLongTermMemory `json:"longTermMemory,omitempty" xml:"longTermMemory,omitempty" type:"Struct"`
+	Parameters     *UpdateAndPublishAgentRequestApplicationConfigParameters     `json:"parameters,omitempty" xml:"parameters,omitempty" type:"Struct"`
+	RagConfig      *UpdateAndPublishAgentRequestApplicationConfigRagConfig      `json:"ragConfig,omitempty" xml:"ragConfig,omitempty" type:"Struct"`
+	Security       *UpdateAndPublishAgentRequestApplicationConfigSecurity       `json:"security,omitempty" xml:"security,omitempty" type:"Struct"`
+	Tools          []*UpdateAndPublishAgentRequestApplicationConfigTools        `json:"tools,omitempty" xml:"tools,omitempty" type:"Repeated"`
+	WorkFlows      []*UpdateAndPublishAgentRequestApplicationConfigWorkFlows    `json:"workFlows,omitempty" xml:"workFlows,omitempty" type:"Repeated"`
+}
+
+func (s UpdateAndPublishAgentRequestApplicationConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAndPublishAgentRequestApplicationConfig) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAndPublishAgentRequestApplicationConfig) SetHistoryConfig(v *UpdateAndPublishAgentRequestApplicationConfigHistoryConfig) *UpdateAndPublishAgentRequestApplicationConfig {
+	s.HistoryConfig = v
+	return s
+}
+
+func (s *UpdateAndPublishAgentRequestApplicationConfig) SetLongTermMemory(v *UpdateAndPublishAgentRequestApplicationConfigLongTermMemory) *UpdateAndPublishAgentRequestApplicationConfig {
+	s.LongTermMemory = v
+	return s
+}
+
+func (s *UpdateAndPublishAgentRequestApplicationConfig) SetParameters(v *UpdateAndPublishAgentRequestApplicationConfigParameters) *UpdateAndPublishAgentRequestApplicationConfig {
+	s.Parameters = v
+	return s
+}
+
+func (s *UpdateAndPublishAgentRequestApplicationConfig) SetRagConfig(v *UpdateAndPublishAgentRequestApplicationConfigRagConfig) *UpdateAndPublishAgentRequestApplicationConfig {
+	s.RagConfig = v
+	return s
+}
+
+func (s *UpdateAndPublishAgentRequestApplicationConfig) SetSecurity(v *UpdateAndPublishAgentRequestApplicationConfigSecurity) *UpdateAndPublishAgentRequestApplicationConfig {
+	s.Security = v
+	return s
+}
+
+func (s *UpdateAndPublishAgentRequestApplicationConfig) SetTools(v []*UpdateAndPublishAgentRequestApplicationConfigTools) *UpdateAndPublishAgentRequestApplicationConfig {
+	s.Tools = v
+	return s
+}
+
+func (s *UpdateAndPublishAgentRequestApplicationConfig) SetWorkFlows(v []*UpdateAndPublishAgentRequestApplicationConfigWorkFlows) *UpdateAndPublishAgentRequestApplicationConfig {
+	s.WorkFlows = v
+	return s
+}
+
+type UpdateAndPublishAgentRequestApplicationConfigHistoryConfig struct {
+	EnableAdbRecord *bool   `json:"enableAdbRecord,omitempty" xml:"enableAdbRecord,omitempty"`
+	EnableRecord    *bool   `json:"enableRecord,omitempty" xml:"enableRecord,omitempty"`
+	InstanceId      *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	Region          *string `json:"region,omitempty" xml:"region,omitempty"`
+	StoreCode       *string `json:"storeCode,omitempty" xml:"storeCode,omitempty"`
+}
+
+func (s UpdateAndPublishAgentRequestApplicationConfigHistoryConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAndPublishAgentRequestApplicationConfigHistoryConfig) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAndPublishAgentRequestApplicationConfigHistoryConfig) SetEnableAdbRecord(v bool) *UpdateAndPublishAgentRequestApplicationConfigHistoryConfig {
+	s.EnableAdbRecord = &v
+	return s
+}
+
+func (s *UpdateAndPublishAgentRequestApplicationConfigHistoryConfig) SetEnableRecord(v bool) *UpdateAndPublishAgentRequestApplicationConfigHistoryConfig {
+	s.EnableRecord = &v
+	return s
+}
+
+func (s *UpdateAndPublishAgentRequestApplicationConfigHistoryConfig) SetInstanceId(v string) *UpdateAndPublishAgentRequestApplicationConfigHistoryConfig {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *UpdateAndPublishAgentRequestApplicationConfigHistoryConfig) SetRegion(v string) *UpdateAndPublishAgentRequestApplicationConfigHistoryConfig {
+	s.Region = &v
+	return s
+}
+
+func (s *UpdateAndPublishAgentRequestApplicationConfigHistoryConfig) SetStoreCode(v string) *UpdateAndPublishAgentRequestApplicationConfigHistoryConfig {
+	s.StoreCode = &v
+	return s
+}
+
+type UpdateAndPublishAgentRequestApplicationConfigLongTermMemory struct {
+	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
+}
+
+func (s UpdateAndPublishAgentRequestApplicationConfigLongTermMemory) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAndPublishAgentRequestApplicationConfigLongTermMemory) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAndPublishAgentRequestApplicationConfigLongTermMemory) SetEnable(v bool) *UpdateAndPublishAgentRequestApplicationConfigLongTermMemory {
+	s.Enable = &v
+	return s
+}
+
+type UpdateAndPublishAgentRequestApplicationConfigParameters struct {
+	DialogRound *int32   `json:"dialogRound,omitempty" xml:"dialogRound,omitempty"`
+	MaxTokens   *int32   `json:"maxTokens,omitempty" xml:"maxTokens,omitempty"`
+	Temperature *float64 `json:"temperature,omitempty" xml:"temperature,omitempty"`
+}
+
+func (s UpdateAndPublishAgentRequestApplicationConfigParameters) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAndPublishAgentRequestApplicationConfigParameters) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAndPublishAgentRequestApplicationConfigParameters) SetDialogRound(v int32) *UpdateAndPublishAgentRequestApplicationConfigParameters {
+	s.DialogRound = &v
+	return s
+}
+
+func (s *UpdateAndPublishAgentRequestApplicationConfigParameters) SetMaxTokens(v int32) *UpdateAndPublishAgentRequestApplicationConfigParameters {
+	s.MaxTokens = &v
+	return s
+}
+
+func (s *UpdateAndPublishAgentRequestApplicationConfigParameters) SetTemperature(v float64) *UpdateAndPublishAgentRequestApplicationConfigParameters {
+	s.Temperature = &v
+	return s
+}
+
+type UpdateAndPublishAgentRequestApplicationConfigRagConfig struct {
+	EnableCitation        *bool     `json:"enableCitation,omitempty" xml:"enableCitation,omitempty"`
+	EnableSearch          *bool     `json:"enableSearch,omitempty" xml:"enableSearch,omitempty"`
+	KnowledgeBaseCodeList []*string `json:"knowledgeBaseCodeList,omitempty" xml:"knowledgeBaseCodeList,omitempty" type:"Repeated"`
+	TopK                  *int32    `json:"topK,omitempty" xml:"topK,omitempty"`
+}
+
+func (s UpdateAndPublishAgentRequestApplicationConfigRagConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAndPublishAgentRequestApplicationConfigRagConfig) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAndPublishAgentRequestApplicationConfigRagConfig) SetEnableCitation(v bool) *UpdateAndPublishAgentRequestApplicationConfigRagConfig {
+	s.EnableCitation = &v
+	return s
+}
+
+func (s *UpdateAndPublishAgentRequestApplicationConfigRagConfig) SetEnableSearch(v bool) *UpdateAndPublishAgentRequestApplicationConfigRagConfig {
+	s.EnableSearch = &v
+	return s
+}
+
+func (s *UpdateAndPublishAgentRequestApplicationConfigRagConfig) SetKnowledgeBaseCodeList(v []*string) *UpdateAndPublishAgentRequestApplicationConfigRagConfig {
+	s.KnowledgeBaseCodeList = v
+	return s
+}
+
+func (s *UpdateAndPublishAgentRequestApplicationConfigRagConfig) SetTopK(v int32) *UpdateAndPublishAgentRequestApplicationConfigRagConfig {
+	s.TopK = &v
+	return s
+}
+
+type UpdateAndPublishAgentRequestApplicationConfigSecurity struct {
+	ProcessingStrategy *string `json:"processingStrategy,omitempty" xml:"processingStrategy,omitempty"`
+}
+
+func (s UpdateAndPublishAgentRequestApplicationConfigSecurity) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAndPublishAgentRequestApplicationConfigSecurity) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAndPublishAgentRequestApplicationConfigSecurity) SetProcessingStrategy(v string) *UpdateAndPublishAgentRequestApplicationConfigSecurity {
+	s.ProcessingStrategy = &v
+	return s
+}
+
+type UpdateAndPublishAgentRequestApplicationConfigTools struct {
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+}
+
+func (s UpdateAndPublishAgentRequestApplicationConfigTools) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAndPublishAgentRequestApplicationConfigTools) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAndPublishAgentRequestApplicationConfigTools) SetType(v string) *UpdateAndPublishAgentRequestApplicationConfigTools {
+	s.Type = &v
+	return s
+}
+
+type UpdateAndPublishAgentRequestApplicationConfigWorkFlows struct {
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+}
+
+func (s UpdateAndPublishAgentRequestApplicationConfigWorkFlows) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAndPublishAgentRequestApplicationConfigWorkFlows) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAndPublishAgentRequestApplicationConfigWorkFlows) SetType(v string) *UpdateAndPublishAgentRequestApplicationConfigWorkFlows {
+	s.Type = &v
+	return s
+}
+
+type UpdateAndPublishAgentShrinkRequest struct {
+	ApplicationConfigShrink *string `json:"applicationConfig,omitempty" xml:"applicationConfig,omitempty"`
+	Instructions            *string `json:"instructions,omitempty" xml:"instructions,omitempty"`
+	ModelId                 *string `json:"modelId,omitempty" xml:"modelId,omitempty"`
+	Name                    *string `json:"name,omitempty" xml:"name,omitempty"`
+}
+
+func (s UpdateAndPublishAgentShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAndPublishAgentShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAndPublishAgentShrinkRequest) SetApplicationConfigShrink(v string) *UpdateAndPublishAgentShrinkRequest {
+	s.ApplicationConfigShrink = &v
+	return s
+}
+
+func (s *UpdateAndPublishAgentShrinkRequest) SetInstructions(v string) *UpdateAndPublishAgentShrinkRequest {
+	s.Instructions = &v
+	return s
+}
+
+func (s *UpdateAndPublishAgentShrinkRequest) SetModelId(v string) *UpdateAndPublishAgentShrinkRequest {
+	s.ModelId = &v
+	return s
+}
+
+func (s *UpdateAndPublishAgentShrinkRequest) SetName(v string) *UpdateAndPublishAgentShrinkRequest {
+	s.Name = &v
+	return s
+}
+
+type UpdateAndPublishAgentResponseBody struct {
+	Code           *string `json:"code,omitempty" xml:"code,omitempty"`
+	Data           *string `json:"data,omitempty" xml:"data,omitempty"`
+	HttpStatusCode *int32  `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	Message        *string `json:"message,omitempty" xml:"message,omitempty"`
+	RequestId      *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Success        *bool   `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s UpdateAndPublishAgentResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAndPublishAgentResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAndPublishAgentResponseBody) SetCode(v string) *UpdateAndPublishAgentResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *UpdateAndPublishAgentResponseBody) SetData(v string) *UpdateAndPublishAgentResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *UpdateAndPublishAgentResponseBody) SetHttpStatusCode(v int32) *UpdateAndPublishAgentResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *UpdateAndPublishAgentResponseBody) SetMessage(v string) *UpdateAndPublishAgentResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *UpdateAndPublishAgentResponseBody) SetRequestId(v string) *UpdateAndPublishAgentResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateAndPublishAgentResponseBody) SetSuccess(v bool) *UpdateAndPublishAgentResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UpdateAndPublishAgentResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateAndPublishAgentResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateAndPublishAgentResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAndPublishAgentResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAndPublishAgentResponse) SetHeaders(v map[string]*string) *UpdateAndPublishAgentResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateAndPublishAgentResponse) SetStatusCode(v int32) *UpdateAndPublishAgentResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateAndPublishAgentResponse) SetBody(v *UpdateAndPublishAgentResponseBody) *UpdateAndPublishAgentResponse {
+	s.Body = v
+	return s
+}
+
 type Client struct {
 	openapi.Client
 }
@@ -3934,6 +5498,88 @@ func (client *Client) ApplyFileUploadLease(CategoryId *string, WorkspaceId *stri
 
 // Summary:
 //
+// 创建并发布智能体应用
+//
+// @param tmpReq - CreateAndPulishAgentRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateAndPulishAgentResponse
+func (client *Client) CreateAndPulishAgentWithOptions(workspaceId *string, tmpReq *CreateAndPulishAgentRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateAndPulishAgentResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &CreateAndPulishAgentShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.ApplicationConfig)) {
+		request.ApplicationConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ApplicationConfig, tea.String("applicationConfig"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ApplicationConfigShrink)) {
+		body["applicationConfig"] = request.ApplicationConfigShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Instructions)) {
+		body["instructions"] = request.Instructions
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ModelId)) {
+		body["modelId"] = request.ModelId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["name"] = request.Name
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateAndPulishAgent"),
+		Version:     tea.String("2023-12-29"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/" + tea.StringValue(openapiutil.GetEncodeParam(workspaceId)) + "/application/agents"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateAndPulishAgentResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建并发布智能体应用
+//
+// @param request - CreateAndPulishAgentRequest
+//
+// @return CreateAndPulishAgentResponse
+func (client *Client) CreateAndPulishAgent(workspaceId *string, request *CreateAndPulishAgentRequest) (_result *CreateAndPulishAgentResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateAndPulishAgentResponse{}
+	_body, _err := client.CreateAndPulishAgentWithOptions(workspaceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 创建并运行pipeline
 //
 // @param tmpReq - CreateIndexRequest
@@ -4063,6 +5709,56 @@ func (client *Client) CreateIndex(WorkspaceId *string, request *CreateIndexReque
 	headers := make(map[string]*string)
 	_result = &CreateIndexResponse{}
 	_body, _err := client.CreateIndexWithOptions(WorkspaceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除智能体
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteAgentResponse
+func (client *Client) DeleteAgentWithOptions(workspaceId *string, appCode *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteAgentResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteAgent"),
+		Version:     tea.String("2023-12-29"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/" + tea.StringValue(openapiutil.GetEncodeParam(workspaceId)) + "/application/agents/" + tea.StringValue(openapiutil.GetEncodeParam(appCode))),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteAgentResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除智能体
+//
+// @return DeleteAgentResponse
+func (client *Client) DeleteAgent(workspaceId *string, appCode *string) (_result *DeleteAgentResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteAgentResponse{}
+	_body, _err := client.DeleteAgentWithOptions(workspaceId, appCode, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4420,6 +6116,56 @@ func (client *Client) GetIndexJobStatus(WorkspaceId *string, request *GetIndexJo
 
 // Summary:
 //
+// 获取发布态智能体应用
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetPublishedAgentResponse
+func (client *Client) GetPublishedAgentWithOptions(workspaceId *string, appCode *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetPublishedAgentResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetPublishedAgent"),
+		Version:     tea.String("2023-12-29"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/" + tea.StringValue(openapiutil.GetEncodeParam(workspaceId)) + "/application/agents/" + tea.StringValue(openapiutil.GetEncodeParam(appCode))),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetPublishedAgentResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取发布态智能体应用
+//
+// @return GetPublishedAgentResponse
+func (client *Client) GetPublishedAgent(workspaceId *string, appCode *string) (_result *GetPublishedAgentResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetPublishedAgentResponse{}
+	_body, _err := client.GetPublishedAgentWithOptions(workspaceId, appCode, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // ListCategory
 //
 // @param request - ListCategoryRequest
@@ -4728,6 +6474,74 @@ func (client *Client) ListIndices(WorkspaceId *string, request *ListIndicesReque
 
 // Summary:
 //
+// 查询已发布的智能体应用列表
+//
+// @param request - ListPublishedAgentRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListPublishedAgentResponse
+func (client *Client) ListPublishedAgentWithOptions(workspaceId *string, request *ListPublishedAgentRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListPublishedAgentResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.PageNo)) {
+		query["pageNo"] = request.PageNo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["pageSize"] = request.PageSize
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListPublishedAgent"),
+		Version:     tea.String("2023-12-29"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/" + tea.StringValue(openapiutil.GetEncodeParam(workspaceId)) + "/application/agents"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListPublishedAgentResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询已发布的智能体应用列表
+//
+// @param request - ListPublishedAgentRequest
+//
+// @return ListPublishedAgentResponse
+func (client *Client) ListPublishedAgent(workspaceId *string, request *ListPublishedAgentRequest) (_result *ListPublishedAgentResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListPublishedAgentResponse{}
+	_body, _err := client.ListPublishedAgentWithOptions(workspaceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 召回测试
 //
 // @param tmpReq - RetrieveRequest
@@ -4991,6 +6805,88 @@ func (client *Client) SubmitIndexJob(WorkspaceId *string, request *SubmitIndexJo
 	headers := make(map[string]*string)
 	_result = &SubmitIndexJobResponse{}
 	_body, _err := client.SubmitIndexJobWithOptions(WorkspaceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新并发布智能体应用
+//
+// @param tmpReq - UpdateAndPublishAgentRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateAndPublishAgentResponse
+func (client *Client) UpdateAndPublishAgentWithOptions(workspaceId *string, appCode *string, tmpReq *UpdateAndPublishAgentRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateAndPublishAgentResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &UpdateAndPublishAgentShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.ApplicationConfig)) {
+		request.ApplicationConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ApplicationConfig, tea.String("applicationConfig"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ApplicationConfigShrink)) {
+		body["applicationConfig"] = request.ApplicationConfigShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Instructions)) {
+		body["instructions"] = request.Instructions
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ModelId)) {
+		body["modelId"] = request.ModelId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["name"] = request.Name
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateAndPublishAgent"),
+		Version:     tea.String("2023-12-29"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/" + tea.StringValue(openapiutil.GetEncodeParam(workspaceId)) + "/application/agents/" + tea.StringValue(openapiutil.GetEncodeParam(appCode))),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateAndPublishAgentResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新并发布智能体应用
+//
+// @param request - UpdateAndPublishAgentRequest
+//
+// @return UpdateAndPublishAgentResponse
+func (client *Client) UpdateAndPublishAgent(workspaceId *string, appCode *string, request *UpdateAndPublishAgentRequest) (_result *UpdateAndPublishAgentResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateAndPublishAgentResponse{}
+	_body, _err := client.UpdateAndPublishAgentWithOptions(workspaceId, appCode, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
