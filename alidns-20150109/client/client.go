@@ -785,7 +785,7 @@ type AddDnsGtmAddressPoolRequest struct {
 	LbaStrategy *string `json:"LbaStrategy,omitempty" xml:"LbaStrategy,omitempty"`
 	// The extended information. The required parameters vary based on the value of ProtocolType.
 	//
-	// 	- When ProtocolType is set to HTTP or HTTPS:
+	// 	- HTTP or HTTPS
 	//
 	//     	- port: the port that you want to check
 	//
@@ -793,7 +793,7 @@ type AddDnsGtmAddressPoolRequest struct {
 	//
 	//     	- path: the URL path
 	//
-	//     	- code: the return code. The health check result is deemed abnormal if the returned value is greater than the specified value.
+	//     	- code: the response code. The health check result is deemed abnormal if the returned value is greater than the specified value. Values: 400, 500.
 	//
 	//     	- failureRate: the failure rate
 	//
@@ -809,7 +809,7 @@ type AddDnsGtmAddressPoolRequest struct {
 	//
 	//         	- IPV6
 	//
-	// 	- When ProtocolType is set to PING:
+	// 	- PING
 	//
 	//     	- failureRate: the failure rate
 	//
@@ -823,7 +823,7 @@ type AddDnsGtmAddressPoolRequest struct {
 	//
 	//         	- IPV6
 	//
-	// 	- When ProtocolType is set to TCP:
+	// 	- TCP
 	//
 	//     	- port: the port that you want to check
 	//
@@ -977,7 +977,7 @@ type AddDnsGtmAddressPoolRequestAddr struct {
 	Addr *string `json:"Addr,omitempty" xml:"Addr,omitempty"`
 	// The information about the source region of the address. The value of this parameter is a JSON string. Valid values:
 	//
-	// 	- LineCode: the line code of the source region for the address
+	// 	- lineCode: the line code of the source region for the address
 	//
 	// 	- lineCodeRectifyType: the rectification type of the line code. Default value: AUTO. Valid values:
 	//
@@ -993,7 +993,7 @@ type AddDnsGtmAddressPoolRequestAddr struct {
 	//
 	// default
 	AttributeInfo *string `json:"AttributeInfo,omitempty" xml:"AttributeInfo,omitempty"`
-	// The weight of the address pool.
+	// The weight of the address.
 	//
 	// example:
 	//
@@ -1013,7 +1013,7 @@ type AddDnsGtmAddressPoolRequestAddr struct {
 	//
 	// online
 	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
-	// The remarks.
+	// The description of the address pool.
 	//
 	// example:
 	//
@@ -1100,7 +1100,7 @@ type AddDnsGtmAddressPoolResponseBody struct {
 	//
 	// testpool1
 	AddrPoolId *string `json:"AddrPoolId,omitempty" xml:"AddrPoolId,omitempty"`
-	// The ID of the health check task.
+	// The ID of the health check configuration.
 	//
 	// example:
 	//
@@ -4459,9 +4459,10 @@ func (s *CreatePdnsAppKeyResponse) SetBody(v *CreatePdnsAppKeyResponseBody) *Cre
 }
 
 type CreatePdnsUdpIpSegmentRequest struct {
-	Ip   *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
-	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Ip      *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	IpToken *string `json:"IpToken,omitempty" xml:"IpToken,omitempty"`
+	Lang    *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	Name    *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 
 func (s CreatePdnsUdpIpSegmentRequest) String() string {
@@ -4474,6 +4475,11 @@ func (s CreatePdnsUdpIpSegmentRequest) GoString() string {
 
 func (s *CreatePdnsUdpIpSegmentRequest) SetIp(v string) *CreatePdnsUdpIpSegmentRequest {
 	s.Ip = &v
+	return s
+}
+
+func (s *CreatePdnsUdpIpSegmentRequest) SetIpToken(v string) *CreatePdnsUdpIpSegmentRequest {
+	s.IpToken = &v
 	return s
 }
 
@@ -46247,8 +46253,9 @@ func (s *ValidateDnsGtmCnameRrCanUseResponse) SetBody(v *ValidateDnsGtmCnameRrCa
 }
 
 type ValidatePdnsUdpIpSegmentRequest struct {
-	Ip   *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
-	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	Ip      *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	IpToken *string `json:"IpToken,omitempty" xml:"IpToken,omitempty"`
+	Lang    *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 }
 
 func (s ValidatePdnsUdpIpSegmentRequest) String() string {
@@ -46261,6 +46268,11 @@ func (s ValidatePdnsUdpIpSegmentRequest) GoString() string {
 
 func (s *ValidatePdnsUdpIpSegmentRequest) SetIp(v string) *ValidatePdnsUdpIpSegmentRequest {
 	s.Ip = &v
+	return s
+}
+
+func (s *ValidatePdnsUdpIpSegmentRequest) SetIpToken(v string) *ValidatePdnsUdpIpSegmentRequest {
+	s.IpToken = &v
 	return s
 }
 
@@ -48243,6 +48255,10 @@ func (client *Client) CreatePdnsUdpIpSegmentWithOptions(request *CreatePdnsUdpIp
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Ip)) {
 		query["Ip"] = request.Ip
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IpToken)) {
+		query["IpToken"] = request.IpToken
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Lang)) {
@@ -61722,6 +61738,10 @@ func (client *Client) ValidatePdnsUdpIpSegmentWithOptions(request *ValidatePdnsU
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Ip)) {
 		query["Ip"] = request.Ip
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IpToken)) {
+		query["IpToken"] = request.IpToken
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Lang)) {
