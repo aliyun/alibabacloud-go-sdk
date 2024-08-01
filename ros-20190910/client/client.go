@@ -3329,7 +3329,8 @@ type CreateTemplateRequest struct {
 	// example:
 	//
 	// oss://ros/template/demo
-	TemplateURL *string `json:"TemplateURL,omitempty" xml:"TemplateURL,omitempty"`
+	TemplateURL       *string   `json:"TemplateURL,omitempty" xml:"TemplateURL,omitempty"`
+	ValidationOptions []*string `json:"ValidationOptions,omitempty" xml:"ValidationOptions,omitempty" type:"Repeated"`
 }
 
 func (s CreateTemplateRequest) String() string {
@@ -3367,6 +3368,11 @@ func (s *CreateTemplateRequest) SetTemplateName(v string) *CreateTemplateRequest
 
 func (s *CreateTemplateRequest) SetTemplateURL(v string) *CreateTemplateRequest {
 	s.TemplateURL = &v
+	return s
+}
+
+func (s *CreateTemplateRequest) SetValidationOptions(v []*string) *CreateTemplateRequest {
+	s.ValidationOptions = v
 	return s
 }
 
@@ -25167,8 +25173,10 @@ type UpdateTemplateRequest struct {
 	// example:
 	//
 	// It is a demo.
-	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	TemplateBody *string `json:"TemplateBody,omitempty" xml:"TemplateBody,omitempty"`
+	Description    *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	IsDraft        *bool   `json:"IsDraft,omitempty" xml:"IsDraft,omitempty"`
+	RotateStrategy *string `json:"RotateStrategy,omitempty" xml:"RotateStrategy,omitempty"`
+	TemplateBody   *string `json:"TemplateBody,omitempty" xml:"TemplateBody,omitempty"`
 	// The ID of the template. This parameter applies to shared and private templates.
 	//
 	// This parameter is required.
@@ -25194,7 +25202,8 @@ type UpdateTemplateRequest struct {
 	// example:
 	//
 	// oss://ros/template/demo
-	TemplateURL *string `json:"TemplateURL,omitempty" xml:"TemplateURL,omitempty"`
+	TemplateURL       *string   `json:"TemplateURL,omitempty" xml:"TemplateURL,omitempty"`
+	ValidationOptions []*string `json:"ValidationOptions,omitempty" xml:"ValidationOptions,omitempty" type:"Repeated"`
 }
 
 func (s UpdateTemplateRequest) String() string {
@@ -25207,6 +25216,16 @@ func (s UpdateTemplateRequest) GoString() string {
 
 func (s *UpdateTemplateRequest) SetDescription(v string) *UpdateTemplateRequest {
 	s.Description = &v
+	return s
+}
+
+func (s *UpdateTemplateRequest) SetIsDraft(v bool) *UpdateTemplateRequest {
+	s.IsDraft = &v
+	return s
+}
+
+func (s *UpdateTemplateRequest) SetRotateStrategy(v string) *UpdateTemplateRequest {
+	s.RotateStrategy = &v
 	return s
 }
 
@@ -25227,6 +25246,11 @@ func (s *UpdateTemplateRequest) SetTemplateName(v string) *UpdateTemplateRequest
 
 func (s *UpdateTemplateRequest) SetTemplateURL(v string) *UpdateTemplateRequest {
 	s.TemplateURL = &v
+	return s
+}
+
+func (s *UpdateTemplateRequest) SetValidationOptions(v []*string) *UpdateTemplateRequest {
+	s.ValidationOptions = v
 	return s
 }
 
@@ -27399,6 +27423,10 @@ func (client *Client) CreateTemplateWithOptions(request *CreateTemplateRequest, 
 
 	if !tea.BoolValue(util.IsUnset(request.TemplateURL)) {
 		query["TemplateURL"] = request.TemplateURL
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ValidationOptions)) {
+		query["ValidationOptions"] = request.ValidationOptions
 	}
 
 	body := map[string]interface{}{}
@@ -33993,6 +34021,14 @@ func (client *Client) UpdateTemplateWithOptions(request *UpdateTemplateRequest, 
 		query["Description"] = request.Description
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.IsDraft)) {
+		query["IsDraft"] = request.IsDraft
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RotateStrategy)) {
+		query["RotateStrategy"] = request.RotateStrategy
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.TemplateId)) {
 		query["TemplateId"] = request.TemplateId
 	}
@@ -34003,6 +34039,10 @@ func (client *Client) UpdateTemplateWithOptions(request *UpdateTemplateRequest, 
 
 	if !tea.BoolValue(util.IsUnset(request.TemplateURL)) {
 		query["TemplateURL"] = request.TemplateURL
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ValidationOptions)) {
+		query["ValidationOptions"] = request.ValidationOptions
 	}
 
 	body := map[string]interface{}{}
