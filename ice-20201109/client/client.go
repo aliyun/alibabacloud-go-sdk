@@ -24272,6 +24272,324 @@ func (s *ListDynamicImageJobsResponse) SetBody(v *ListDynamicImageJobsResponseBo
 	return s
 }
 
+type ListEditingProjectsRequest struct {
+	// example:
+	//
+	// OpenAPI
+	CreateSource *string `json:"CreateSource,omitempty" xml:"CreateSource,omitempty"`
+	// example:
+	//
+	// 2022-02-02T23:59:59Z
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// example:
+	//
+	// ******6f36bc45d09a9d5cde49******
+	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	// example:
+	//
+	// 10
+	MaxResults *string `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// example:
+	//
+	// 8EqYpQbZ6Eh7+Zz8DxVYoQ==
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// example:
+	//
+	// EditingProject
+	ProjectType *string `json:"ProjectType,omitempty" xml:"ProjectType,omitempty"`
+	// example:
+	//
+	// CreationTime:Desc
+	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	// example:
+	//
+	// 2017-12-21T08:00:01Z
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// example:
+	//
+	// Produced
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// None
+	TemplateType *string `json:"TemplateType,omitempty" xml:"TemplateType,omitempty"`
+}
+
+func (s ListEditingProjectsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEditingProjectsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListEditingProjectsRequest) SetCreateSource(v string) *ListEditingProjectsRequest {
+	s.CreateSource = &v
+	return s
+}
+
+func (s *ListEditingProjectsRequest) SetEndTime(v string) *ListEditingProjectsRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *ListEditingProjectsRequest) SetKeyword(v string) *ListEditingProjectsRequest {
+	s.Keyword = &v
+	return s
+}
+
+func (s *ListEditingProjectsRequest) SetMaxResults(v string) *ListEditingProjectsRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListEditingProjectsRequest) SetNextToken(v string) *ListEditingProjectsRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListEditingProjectsRequest) SetProjectType(v string) *ListEditingProjectsRequest {
+	s.ProjectType = &v
+	return s
+}
+
+func (s *ListEditingProjectsRequest) SetSortBy(v string) *ListEditingProjectsRequest {
+	s.SortBy = &v
+	return s
+}
+
+func (s *ListEditingProjectsRequest) SetStartTime(v string) *ListEditingProjectsRequest {
+	s.StartTime = &v
+	return s
+}
+
+func (s *ListEditingProjectsRequest) SetStatus(v string) *ListEditingProjectsRequest {
+	s.Status = &v
+	return s
+}
+
+func (s *ListEditingProjectsRequest) SetTemplateType(v string) *ListEditingProjectsRequest {
+	s.TemplateType = &v
+	return s
+}
+
+type ListEditingProjectsResponseBody struct {
+	// example:
+	//
+	// 10
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Nzv3rcKla9wHUGua9YXHNA==
+	NextToken   *string                                       `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	ProjectList []*ListEditingProjectsResponseBodyProjectList `json:"ProjectList,omitempty" xml:"ProjectList,omitempty" type:"Repeated"`
+	// Id of the request
+	//
+	// example:
+	//
+	// *****ACB-44F2-5F2D-88D7-1283E70*****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListEditingProjectsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEditingProjectsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListEditingProjectsResponseBody) SetMaxResults(v int32) *ListEditingProjectsResponseBody {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListEditingProjectsResponseBody) SetNextToken(v string) *ListEditingProjectsResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListEditingProjectsResponseBody) SetProjectList(v []*ListEditingProjectsResponseBodyProjectList) *ListEditingProjectsResponseBody {
+	s.ProjectList = v
+	return s
+}
+
+func (s *ListEditingProjectsResponseBody) SetRequestId(v string) *ListEditingProjectsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListEditingProjectsResponseBodyProjectList struct {
+	// example:
+	//
+	// {}
+	BusinessConfig *string `json:"BusinessConfig,omitempty" xml:"BusinessConfig,omitempty"`
+	// example:
+	//
+	// {}
+	BusinessStatus *string `json:"BusinessStatus,omitempty" xml:"BusinessStatus,omitempty"`
+	// example:
+	//
+	// https://xxx.com/cover/xxx.jpg
+	CoverURL *string `json:"CoverURL,omitempty" xml:"CoverURL,omitempty"`
+	// example:
+	//
+	// OpenAPI
+	CreateSource *string `json:"CreateSource,omitempty" xml:"CreateSource,omitempty"`
+	// example:
+	//
+	// 2017-01-11T12:00:00Z
+	CreateTime  *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// InvalidParameter
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// The specified parameter \\"LiveStreamConfig\\" is not valid. specified parameter example is not valid.
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// example:
+	//
+	// OpenAPI
+	ModifiedSource *string `json:"ModifiedSource,omitempty" xml:"ModifiedSource,omitempty"`
+	// example:
+	//
+	// 2017-01-11T12:00:00Z
+	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
+	// example:
+	//
+	// ****fddd7748b58bf1d47e95****
+	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// example:
+	//
+	// EditingProject
+	ProjectType *string `json:"ProjectType,omitempty" xml:"ProjectType,omitempty"`
+	// example:
+	//
+	// Produced
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// Timeline
+	TemplateType *string `json:"TemplateType,omitempty" xml:"TemplateType,omitempty"`
+	Title        *string `json:"Title,omitempty" xml:"Title,omitempty"`
+}
+
+func (s ListEditingProjectsResponseBodyProjectList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEditingProjectsResponseBodyProjectList) GoString() string {
+	return s.String()
+}
+
+func (s *ListEditingProjectsResponseBodyProjectList) SetBusinessConfig(v string) *ListEditingProjectsResponseBodyProjectList {
+	s.BusinessConfig = &v
+	return s
+}
+
+func (s *ListEditingProjectsResponseBodyProjectList) SetBusinessStatus(v string) *ListEditingProjectsResponseBodyProjectList {
+	s.BusinessStatus = &v
+	return s
+}
+
+func (s *ListEditingProjectsResponseBodyProjectList) SetCoverURL(v string) *ListEditingProjectsResponseBodyProjectList {
+	s.CoverURL = &v
+	return s
+}
+
+func (s *ListEditingProjectsResponseBodyProjectList) SetCreateSource(v string) *ListEditingProjectsResponseBodyProjectList {
+	s.CreateSource = &v
+	return s
+}
+
+func (s *ListEditingProjectsResponseBodyProjectList) SetCreateTime(v string) *ListEditingProjectsResponseBodyProjectList {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ListEditingProjectsResponseBodyProjectList) SetDescription(v string) *ListEditingProjectsResponseBodyProjectList {
+	s.Description = &v
+	return s
+}
+
+func (s *ListEditingProjectsResponseBodyProjectList) SetErrorCode(v string) *ListEditingProjectsResponseBodyProjectList {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *ListEditingProjectsResponseBodyProjectList) SetErrorMessage(v string) *ListEditingProjectsResponseBodyProjectList {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *ListEditingProjectsResponseBodyProjectList) SetModifiedSource(v string) *ListEditingProjectsResponseBodyProjectList {
+	s.ModifiedSource = &v
+	return s
+}
+
+func (s *ListEditingProjectsResponseBodyProjectList) SetModifiedTime(v string) *ListEditingProjectsResponseBodyProjectList {
+	s.ModifiedTime = &v
+	return s
+}
+
+func (s *ListEditingProjectsResponseBodyProjectList) SetProjectId(v string) *ListEditingProjectsResponseBodyProjectList {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *ListEditingProjectsResponseBodyProjectList) SetProjectType(v string) *ListEditingProjectsResponseBodyProjectList {
+	s.ProjectType = &v
+	return s
+}
+
+func (s *ListEditingProjectsResponseBodyProjectList) SetStatus(v string) *ListEditingProjectsResponseBodyProjectList {
+	s.Status = &v
+	return s
+}
+
+func (s *ListEditingProjectsResponseBodyProjectList) SetTemplateType(v string) *ListEditingProjectsResponseBodyProjectList {
+	s.TemplateType = &v
+	return s
+}
+
+func (s *ListEditingProjectsResponseBodyProjectList) SetTitle(v string) *ListEditingProjectsResponseBodyProjectList {
+	s.Title = &v
+	return s
+}
+
+type ListEditingProjectsResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListEditingProjectsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListEditingProjectsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEditingProjectsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListEditingProjectsResponse) SetHeaders(v map[string]*string) *ListEditingProjectsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListEditingProjectsResponse) SetStatusCode(v int32) *ListEditingProjectsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListEditingProjectsResponse) SetBody(v *ListEditingProjectsResponseBody) *ListEditingProjectsResponse {
+	s.Body = v
+	return s
+}
+
 type ListLiveRecordFilesRequest struct {
 	// example:
 	//
@@ -60314,6 +60632,102 @@ func (client *Client) ListDynamicImageJobs(request *ListDynamicImageJobsRequest)
 	runtime := &util.RuntimeOptions{}
 	_result = &ListDynamicImageJobsResponse{}
 	_body, _err := client.ListDynamicImageJobsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取云剪辑工程列表
+//
+// @param request - ListEditingProjectsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListEditingProjectsResponse
+func (client *Client) ListEditingProjectsWithOptions(request *ListEditingProjectsRequest, runtime *util.RuntimeOptions) (_result *ListEditingProjectsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CreateSource)) {
+		query["CreateSource"] = request.CreateSource
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Keyword)) {
+		query["Keyword"] = request.Keyword
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectType)) {
+		query["ProjectType"] = request.ProjectType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SortBy)) {
+		query["SortBy"] = request.SortBy
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		query["Status"] = request.Status
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateType)) {
+		query["TemplateType"] = request.TemplateType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListEditingProjects"),
+		Version:     tea.String("2020-11-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListEditingProjectsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取云剪辑工程列表
+//
+// @param request - ListEditingProjectsRequest
+//
+// @return ListEditingProjectsResponse
+func (client *Client) ListEditingProjects(request *ListEditingProjectsRequest) (_result *ListEditingProjectsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListEditingProjectsResponse{}
+	_body, _err := client.ListEditingProjectsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
