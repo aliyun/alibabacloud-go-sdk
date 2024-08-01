@@ -1,0 +1,3 @@
+2024-08-01 Version: v1.0.0
+- Generated golang 20240611 for AiContent.
+
