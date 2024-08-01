@@ -7986,6 +7986,7 @@ func (s *ApplyAddRequestDefaultStandardHotelIntlCitys) SetFee(v int64) *ApplyAdd
 type ApplyAddRequestExternalTravelerList struct {
 	Attribute             *string `json:"attribute,omitempty" xml:"attribute,omitempty"`
 	CostCenterId          *int64  `json:"cost_center_id,omitempty" xml:"cost_center_id,omitempty"`
+	ExternalUserId        *string `json:"external_user_id,omitempty" xml:"external_user_id,omitempty"`
 	InvoiceId             *int64  `json:"invoice_id,omitempty" xml:"invoice_id,omitempty"`
 	PaymentDepartmentId   *string `json:"payment_department_id,omitempty" xml:"payment_department_id,omitempty"`
 	PaymentDepartmentName *string `json:"payment_department_name,omitempty" xml:"payment_department_name,omitempty"`
@@ -8013,6 +8014,11 @@ func (s *ApplyAddRequestExternalTravelerList) SetAttribute(v string) *ApplyAddRe
 
 func (s *ApplyAddRequestExternalTravelerList) SetCostCenterId(v int64) *ApplyAddRequestExternalTravelerList {
 	s.CostCenterId = &v
+	return s
+}
+
+func (s *ApplyAddRequestExternalTravelerList) SetExternalUserId(v string) *ApplyAddRequestExternalTravelerList {
+	s.ExternalUserId = &v
 	return s
 }
 
@@ -9932,7 +9938,8 @@ type ApplyInvoiceTaskRequestInvoiceTaskList struct {
 	// example:
 	//
 	// 100
-	VehicleInvoiceFee *string `json:"vehicle_invoice_fee,omitempty" xml:"vehicle_invoice_fee,omitempty"`
+	VehicleInvoiceFee       *string `json:"vehicle_invoice_fee,omitempty" xml:"vehicle_invoice_fee,omitempty"`
+	VehicleNormalInvoiceFee *string `json:"vehicle_normal_invoice_fee,omitempty" xml:"vehicle_normal_invoice_fee,omitempty"`
 }
 
 func (s ApplyInvoiceTaskRequestInvoiceTaskList) String() string {
@@ -10050,6 +10057,11 @@ func (s *ApplyInvoiceTaskRequestInvoiceTaskList) SetTrainInvoiceFee(v string) *A
 
 func (s *ApplyInvoiceTaskRequestInvoiceTaskList) SetVehicleInvoiceFee(v string) *ApplyInvoiceTaskRequestInvoiceTaskList {
 	s.VehicleInvoiceFee = &v
+	return s
+}
+
+func (s *ApplyInvoiceTaskRequestInvoiceTaskList) SetVehicleNormalInvoiceFee(v string) *ApplyInvoiceTaskRequestInvoiceTaskList {
+	s.VehicleNormalInvoiceFee = &v
 	return s
 }
 
@@ -10703,6 +10715,7 @@ type ApplyListQueryResponseBodyModuleListExternalTravelerList struct {
 	Attribute             *string `json:"attribute,omitempty" xml:"attribute,omitempty"`
 	CostCenterName        *string `json:"cost_center_name,omitempty" xml:"cost_center_name,omitempty"`
 	DepartId              *string `json:"depart_id,omitempty" xml:"depart_id,omitempty"`
+	ExternalUserId        *string `json:"external_user_id,omitempty" xml:"external_user_id,omitempty"`
 	InvoiceName           *string `json:"invoice_name,omitempty" xml:"invoice_name,omitempty"`
 	PaymentDepartmentName *string `json:"payment_department_name,omitempty" xml:"payment_department_name,omitempty"`
 	ProjectCode           *string `json:"project_code,omitempty" xml:"project_code,omitempty"`
@@ -10731,6 +10744,11 @@ func (s *ApplyListQueryResponseBodyModuleListExternalTravelerList) SetCostCenter
 
 func (s *ApplyListQueryResponseBodyModuleListExternalTravelerList) SetDepartId(v string) *ApplyListQueryResponseBodyModuleListExternalTravelerList {
 	s.DepartId = &v
+	return s
+}
+
+func (s *ApplyListQueryResponseBodyModuleListExternalTravelerList) SetExternalUserId(v string) *ApplyListQueryResponseBodyModuleListExternalTravelerList {
+	s.ExternalUserId = &v
 	return s
 }
 
@@ -11615,6 +11633,7 @@ func (s *ApplyModifyRequestDefaultStandardHotelIntlCitys) SetFee(v int64) *Apply
 type ApplyModifyRequestExternalTravelerList struct {
 	Attribute             *string `json:"attribute,omitempty" xml:"attribute,omitempty"`
 	CostCenterId          *int64  `json:"cost_center_id,omitempty" xml:"cost_center_id,omitempty"`
+	ExternalUserId        *string `json:"external_user_id,omitempty" xml:"external_user_id,omitempty"`
 	InvoiceId             *int64  `json:"invoice_id,omitempty" xml:"invoice_id,omitempty"`
 	PaymentDepartmentId   *string `json:"payment_department_id,omitempty" xml:"payment_department_id,omitempty"`
 	PaymentDepartmentName *string `json:"payment_department_name,omitempty" xml:"payment_department_name,omitempty"`
@@ -11642,6 +11661,11 @@ func (s *ApplyModifyRequestExternalTravelerList) SetAttribute(v string) *ApplyMo
 
 func (s *ApplyModifyRequestExternalTravelerList) SetCostCenterId(v int64) *ApplyModifyRequestExternalTravelerList {
 	s.CostCenterId = &v
+	return s
+}
+
+func (s *ApplyModifyRequestExternalTravelerList) SetExternalUserId(v string) *ApplyModifyRequestExternalTravelerList {
+	s.ExternalUserId = &v
 	return s
 }
 
@@ -13532,7 +13556,8 @@ type ApplyQueryResponseBodyModuleExternalTravelerList struct {
 	// example:
 	//
 	// 1
-	EconomyDiscount *int32 `json:"economy_discount,omitempty" xml:"economy_discount,omitempty"`
+	EconomyDiscount *int32  `json:"economy_discount,omitempty" xml:"economy_discount,omitempty"`
+	ExternalUserId  *string `json:"external_user_id,omitempty" xml:"external_user_id,omitempty"`
 	// example:
 	//
 	// 1
@@ -13601,6 +13626,11 @@ func (s *ApplyQueryResponseBodyModuleExternalTravelerList) SetDepartId(v string)
 
 func (s *ApplyQueryResponseBodyModuleExternalTravelerList) SetEconomyDiscount(v int32) *ApplyQueryResponseBodyModuleExternalTravelerList {
 	s.EconomyDiscount = &v
+	return s
+}
+
+func (s *ApplyQueryResponseBodyModuleExternalTravelerList) SetExternalUserId(v string) *ApplyQueryResponseBodyModuleExternalTravelerList {
+	s.ExternalUserId = &v
 	return s
 }
 
@@ -25933,6 +25963,226 @@ func (s *ExternalUserDeleteResponse) SetStatusCode(v int32) *ExternalUserDeleteR
 }
 
 func (s *ExternalUserDeleteResponse) SetBody(v *ExternalUserDeleteResponseBody) *ExternalUserDeleteResponse {
+	s.Body = v
+	return s
+}
+
+type ExternalUserQueryHeaders struct {
+	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	// example:
+	//
+	// feth00jqwls
+	XAcsBtripCorpToken *string `json:"x-acs-btrip-corp-token,omitempty" xml:"x-acs-btrip-corp-token,omitempty"`
+}
+
+func (s ExternalUserQueryHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExternalUserQueryHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *ExternalUserQueryHeaders) SetCommonHeaders(v map[string]*string) *ExternalUserQueryHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *ExternalUserQueryHeaders) SetXAcsBtripCorpToken(v string) *ExternalUserQueryHeaders {
+	s.XAcsBtripCorpToken = &v
+	return s
+}
+
+type ExternalUserQueryResponseBody struct {
+	// example:
+	//
+	// SUCCESS
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32                               `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	Message        *string                              `json:"message,omitempty" xml:"message,omitempty"`
+	Module         *ExternalUserQueryResponseBodyModule `json:"module,omitempty" xml:"module,omitempty" type:"Struct"`
+	// example:
+	//
+	// 407543AF-2BD9-5890-BD92-9D1AB7218B27
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// traceId
+	//
+	// example:
+	//
+	// 210e847f16611516748613869de4f6
+	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
+}
+
+func (s ExternalUserQueryResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExternalUserQueryResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ExternalUserQueryResponseBody) SetCode(v string) *ExternalUserQueryResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ExternalUserQueryResponseBody) SetHttpStatusCode(v int32) *ExternalUserQueryResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *ExternalUserQueryResponseBody) SetMessage(v string) *ExternalUserQueryResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ExternalUserQueryResponseBody) SetModule(v *ExternalUserQueryResponseBodyModule) *ExternalUserQueryResponseBody {
+	s.Module = v
+	return s
+}
+
+func (s *ExternalUserQueryResponseBody) SetRequestId(v string) *ExternalUserQueryResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ExternalUserQueryResponseBody) SetSuccess(v bool) *ExternalUserQueryResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *ExternalUserQueryResponseBody) SetTraceId(v string) *ExternalUserQueryResponseBody {
+	s.TraceId = &v
+	return s
+}
+
+type ExternalUserQueryResponseBodyModule struct {
+	// example:
+	//
+	// 2000-01-02
+	Birthday *string `json:"birthday,omitempty" xml:"birthday,omitempty"`
+	// example:
+	//
+	// btrip123456
+	CorpId *string `json:"corp_id,omitempty" xml:"corp_id,omitempty"`
+	// example:
+	//
+	// zhangsan@alibaba-inc.com
+	Email *string `json:"email,omitempty" xml:"email,omitempty"`
+	// example:
+	//
+	// 000001
+	ExternalUserId *string `json:"external_user_id,omitempty" xml:"external_user_id,omitempty"`
+	// example:
+	//
+	// 13438009765
+	Phone    *string `json:"phone,omitempty" xml:"phone,omitempty"`
+	RealName *string `json:"real_name,omitempty" xml:"real_name,omitempty"`
+	// example:
+	//
+	// zhang/san
+	RealNameEn *string `json:"real_name_en,omitempty" xml:"real_name_en,omitempty"`
+	// example:
+	//
+	// e1$12345678
+	UserId   *string `json:"user_id,omitempty" xml:"user_id,omitempty"`
+	UserNick *string `json:"user_nick,omitempty" xml:"user_nick,omitempty"`
+	// example:
+	//
+	// 1
+	UserType *int32 `json:"user_type,omitempty" xml:"user_type,omitempty"`
+}
+
+func (s ExternalUserQueryResponseBodyModule) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExternalUserQueryResponseBodyModule) GoString() string {
+	return s.String()
+}
+
+func (s *ExternalUserQueryResponseBodyModule) SetBirthday(v string) *ExternalUserQueryResponseBodyModule {
+	s.Birthday = &v
+	return s
+}
+
+func (s *ExternalUserQueryResponseBodyModule) SetCorpId(v string) *ExternalUserQueryResponseBodyModule {
+	s.CorpId = &v
+	return s
+}
+
+func (s *ExternalUserQueryResponseBodyModule) SetEmail(v string) *ExternalUserQueryResponseBodyModule {
+	s.Email = &v
+	return s
+}
+
+func (s *ExternalUserQueryResponseBodyModule) SetExternalUserId(v string) *ExternalUserQueryResponseBodyModule {
+	s.ExternalUserId = &v
+	return s
+}
+
+func (s *ExternalUserQueryResponseBodyModule) SetPhone(v string) *ExternalUserQueryResponseBodyModule {
+	s.Phone = &v
+	return s
+}
+
+func (s *ExternalUserQueryResponseBodyModule) SetRealName(v string) *ExternalUserQueryResponseBodyModule {
+	s.RealName = &v
+	return s
+}
+
+func (s *ExternalUserQueryResponseBodyModule) SetRealNameEn(v string) *ExternalUserQueryResponseBodyModule {
+	s.RealNameEn = &v
+	return s
+}
+
+func (s *ExternalUserQueryResponseBodyModule) SetUserId(v string) *ExternalUserQueryResponseBodyModule {
+	s.UserId = &v
+	return s
+}
+
+func (s *ExternalUserQueryResponseBodyModule) SetUserNick(v string) *ExternalUserQueryResponseBodyModule {
+	s.UserNick = &v
+	return s
+}
+
+func (s *ExternalUserQueryResponseBodyModule) SetUserType(v int32) *ExternalUserQueryResponseBodyModule {
+	s.UserType = &v
+	return s
+}
+
+type ExternalUserQueryResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ExternalUserQueryResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ExternalUserQueryResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExternalUserQueryResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ExternalUserQueryResponse) SetHeaders(v map[string]*string) *ExternalUserQueryResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ExternalUserQueryResponse) SetStatusCode(v int32) *ExternalUserQueryResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ExternalUserQueryResponse) SetBody(v *ExternalUserQueryResponseBody) *ExternalUserQueryResponse {
 	s.Body = v
 	return s
 }
@@ -106529,7 +106779,8 @@ type WaitApplyInvoiceTaskDetailQueryResponseBodyModule struct {
 	// example:
 	//
 	// 100
-	VehicleInvoiceFee *string `json:"vehicle_invoice_fee,omitempty" xml:"vehicle_invoice_fee,omitempty"`
+	VehicleInvoiceFee       *string `json:"vehicle_invoice_fee,omitempty" xml:"vehicle_invoice_fee,omitempty"`
+	VehicleNormalInvoiceFee *string `json:"vehicle_normal_invoice_fee,omitempty" xml:"vehicle_normal_invoice_fee,omitempty"`
 }
 
 func (s WaitApplyInvoiceTaskDetailQueryResponseBodyModule) String() string {
@@ -106647,6 +106898,11 @@ func (s *WaitApplyInvoiceTaskDetailQueryResponseBodyModule) SetTrainInvoiceFee(v
 
 func (s *WaitApplyInvoiceTaskDetailQueryResponseBodyModule) SetVehicleInvoiceFee(v string) *WaitApplyInvoiceTaskDetailQueryResponseBodyModule {
 	s.VehicleInvoiceFee = &v
+	return s
+}
+
+func (s *WaitApplyInvoiceTaskDetailQueryResponseBodyModule) SetVehicleNormalInvoiceFee(v string) *WaitApplyInvoiceTaskDetailQueryResponseBodyModule {
+	s.VehicleNormalInvoiceFee = &v
 	return s
 }
 
@@ -111550,6 +111806,65 @@ func (client *Client) ExternalUserDelete(externalUserId *string) (_result *Exter
 	headers := &ExternalUserDeleteHeaders{}
 	_result = &ExternalUserDeleteResponse{}
 	_body, _err := client.ExternalUserDeleteWithOptions(externalUserId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询外部出行人
+//
+// @param headers - ExternalUserQueryHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ExternalUserQueryResponse
+func (client *Client) ExternalUserQueryWithOptions(externalUserId *string, headers *ExternalUserQueryHeaders, runtime *util.RuntimeOptions) (_result *ExternalUserQueryResponse, _err error) {
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XAcsBtripCorpToken)) {
+		realHeaders["x-acs-btrip-corp-token"] = util.ToJSONString(headers.XAcsBtripCorpToken)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ExternalUserQuery"),
+		Version:     tea.String("2022-05-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/user/v1/externalUsers/" + tea.StringValue(openapiutil.GetEncodeParam(externalUserId))),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ExternalUserQueryResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询外部出行人
+//
+// @return ExternalUserQueryResponse
+func (client *Client) ExternalUserQuery(externalUserId *string) (_result *ExternalUserQueryResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &ExternalUserQueryHeaders{}
+	_result = &ExternalUserQueryResponse{}
+	_body, _err := client.ExternalUserQueryWithOptions(externalUserId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
