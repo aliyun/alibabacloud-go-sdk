@@ -226,7 +226,7 @@ func (s *ActiveAggregateConfigRulesResponse) SetBody(v *ActiveAggregateConfigRul
 }
 
 type ActiveConfigRulesRequest struct {
-	// The rule IDs. Separate multiple rule IDs with commas (,). You can specify a maximum of 20 rule IDs at a time.
+	// The rule ID. Separate multiple rule IDs with commas (,).
 	//
 	// This parameter is required.
 	//
@@ -250,7 +250,7 @@ func (s *ActiveConfigRulesRequest) SetConfigRuleIds(v string) *ActiveConfigRules
 }
 
 type ActiveConfigRulesResponseBody struct {
-	// The result information about the operation.
+	// The returned results.
 	OperateRuleResult *ActiveConfigRulesResponseBodyOperateRuleResult `json:"OperateRuleResult,omitempty" xml:"OperateRuleResult,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -279,7 +279,7 @@ func (s *ActiveConfigRulesResponseBody) SetRequestId(v string) *ActiveConfigRule
 }
 
 type ActiveConfigRulesResponseBodyOperateRuleResult struct {
-	// The result information about the operation.
+	// The returned results.
 	OperateRuleItemList []*ActiveConfigRulesResponseBodyOperateRuleResultOperateRuleItemList `json:"OperateRuleItemList,omitempty" xml:"OperateRuleItemList,omitempty" type:"Repeated"`
 }
 
@@ -303,7 +303,7 @@ type ActiveConfigRulesResponseBodyOperateRuleResultOperateRuleItemList struct {
 	//
 	// cr-2da35180a8d1008e****
 	ConfigRuleId *string `json:"ConfigRuleId,omitempty" xml:"ConfigRuleId,omitempty"`
-	// The error code returned if the request failed.
+	// The error code.
 	//
 	// 	- If the rule is enabled, no error code is returned.
 	//
@@ -1162,7 +1162,9 @@ type CreateAggregateCompliancePackRequest struct {
 	//
 	// ct-5f26ff4e06a300c4****
 	CompliancePackTemplateId *string `json:"CompliancePackTemplateId,omitempty" xml:"CompliancePackTemplateId,omitempty"`
-	// The rules in the compliance package. You must specify one of ConfigRules and TemplateContent.
+	// The rules in the compliance package.
+	//
+	// >  You must configure this parameter or the `TemplateContent` parameter.
 	ConfigRules []*CreateAggregateCompliancePackRequestConfigRules `json:"ConfigRules,omitempty" xml:"ConfigRules,omitempty" type:"Repeated"`
 	// Specifies whether to enable the rule together with the compliance package. Valid values:
 	//
@@ -1202,13 +1204,13 @@ type CreateAggregateCompliancePackRequest struct {
 	// rg-aekzc7r7rhx****
 	ResourceGroupIdsScope *string `json:"ResourceGroupIdsScope,omitempty" xml:"ResourceGroupIdsScope,omitempty"`
 	ResourceIdsScope      *string `json:"ResourceIdsScope,omitempty" xml:"ResourceIdsScope,omitempty"`
-	// The risk level of the resources that are not compliant with the rules in the compliance package. Default value: 2. Valid values:
+	// The risk level of the compliance package. Valid values:
 	//
-	// 	- 1: high.
+	// 	- 1: high
 	//
-	// 	- 2: medium.
+	// 	- 2 (default): medium
 	//
-	// 	- 3: low.
+	// 	- 3: low
 	//
 	// example:
 	//
@@ -1229,7 +1231,9 @@ type CreateAggregateCompliancePackRequest struct {
 	// test
 	TagValueScope *string                                          `json:"TagValueScope,omitempty" xml:"TagValueScope,omitempty"`
 	TagsScope     []*CreateAggregateCompliancePackRequestTagsScope `json:"TagsScope,omitempty" xml:"TagsScope,omitempty" type:"Repeated"`
-	// The information about the template that is used to create the compliance package. You can call the GetAggregateCompliancePack operation to view the details of an existing compliance package or write a compliance package template. For more information, see [Write a compliance package template in a configuration file](https://help.aliyun.com/document_detail/2659733.html). You must specify one of ConfigRules and TemplateContent.
+	// The information about the template that is used to create the compliance package. You can call the GetAggregateCompliancePack operation to view the details of an existing compliance package. You can also write a compliance package template. For more information, see [Write a compliance package template in a configuration file](https://help.aliyun.com/document_detail/2659733.html).
+	//
+	// >  You must configure this parameter or the `TemplateContent` parameter.
 	//
 	// example:
 	//
@@ -1341,15 +1345,15 @@ func (s *CreateAggregateCompliancePackRequest) SetTemplateContent(v string) *Cre
 }
 
 type CreateAggregateCompliancePackRequestConfigRules struct {
-	// The rule ID. If you specify this parameter, Cloud Config adds the rule that has the specified ID to the compliance package.
+	// The rule ID. If you configure this parameter, Cloud Config adds the rule that has the specified ID to the compliance package.
 	//
-	// You need to only specify `ManagedRuleIdentifier` or `ConfigRuleId`. If you specify both parameters, Cloud Config adds a rule based on the value of `ConfigRuleId`. You can call the [ListAggregateConfigRules](https://help.aliyun.com/document_detail/264148.html) operation to obtain the rule ID.
+	// You need to only configure the `ManagedRuleIdentifier` or `ConfigRuleId` parameter. If you configure both parameters, the value of the `ConfigRuleId` parameter takes precedence. For more information about how to obtain the ID of a rule, see [ListAggregateConfigRules](https://help.aliyun.com/document_detail/264148.html).
 	//
 	// example:
 	//
 	// cr-e918626622af000f****
 	ConfigRuleId *string `json:"ConfigRuleId,omitempty" xml:"ConfigRuleId,omitempty"`
-	// The name of the rule.
+	// The rule name.
 	//
 	// example:
 	//
@@ -1357,15 +1361,15 @@ type CreateAggregateCompliancePackRequestConfigRules struct {
 	ConfigRuleName *string `json:"ConfigRuleName,omitempty" xml:"ConfigRuleName,omitempty"`
 	// The input parameters of the rule.
 	ConfigRuleParameters []*CreateAggregateCompliancePackRequestConfigRulesConfigRuleParameters `json:"ConfigRuleParameters,omitempty" xml:"ConfigRuleParameters,omitempty" type:"Repeated"`
-	// The description of the rule.
+	// The rule description.
 	//
 	// example:
 	//
 	// Test rule description.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The identifier of the managed rule. Cloud Config automatically creates a managed rule based on the specified identifier and adds the rule to the compliance package.
+	// The identifier of the managed rule. Cloud Config automatically creates a rule based on the identifier of the managed rule and adds the rule to the current compliance package.
 	//
-	// You need to only specify `ManagedRuleIdentifier` or `ConfigRuleId`. If you specify both parameters, Cloud Config adds a rule based on the value of `ConfigRuleId`. You can call the [ListCompliancePackTemplates](https://help.aliyun.com/document_detail/261176.html) operation to obtain the identifier of the managed rule.
+	// You need to only configure the `ManagedRuleIdentifier` or `ConfigRuleId` parameter. If you configure both parameters, the value of the `ConfigRuleId` parameter takes precedence. For more information about how to obtain the identifier of a managed rule, see [ListCompliancePackTemplates](https://help.aliyun.com/document_detail/261176.html).
 	//
 	// example:
 	//
@@ -1373,11 +1377,11 @@ type CreateAggregateCompliancePackRequestConfigRules struct {
 	ManagedRuleIdentifier *string `json:"ManagedRuleIdentifier,omitempty" xml:"ManagedRuleIdentifier,omitempty"`
 	// The risk level of the resources that do not comply with the rule. Valid values:
 	//
-	// 	- 1: high.
+	// 	- 1: high
 	//
-	// 	- 2: medium.
+	// 	- 2: medium
 	//
-	// 	- 3: low.
+	// 	- 3: low
 	//
 	// example:
 	//
@@ -1426,7 +1430,7 @@ func (s *CreateAggregateCompliancePackRequestConfigRules) SetRiskLevel(v int32) 
 type CreateAggregateCompliancePackRequestConfigRulesConfigRuleParameters struct {
 	// The name of the input parameter.
 	//
-	// You must specify both `ParameterName` and `ParameterValue` or neither of them. If the managed rule has an input parameter but no default value is specified, you must specify this parameter. You can call the [ListCompliancePackTemplates](https://help.aliyun.com/document_detail/261176.html) operation to obtain the names of input parameters of the managed rule.
+	// You must configure the `ParameterName` and `ParameterValue` parameters or neither of them. If the managed rule has an input parameter but no default value exists, you must configure this parameter. For more information about how to obtain the name of an input parameter for a managed rule, see [ListCompliancePackTemplates](https://help.aliyun.com/document_detail/261176.html).
 	//
 	// example:
 	//
@@ -1434,7 +1438,7 @@ type CreateAggregateCompliancePackRequestConfigRulesConfigRuleParameters struct 
 	ParameterName *string `json:"ParameterName,omitempty" xml:"ParameterName,omitempty"`
 	// The value of the input parameter.
 	//
-	// You must specify both `ParameterName` and `ParameterValue` or neither of them. If the managed rule has an input parameter but no default value is specified, you must specify this parameter. You can call the [ListCompliancePackTemplates](https://help.aliyun.com/document_detail/261176.html) operation to obtain the values of input parameters of the managed rule.
+	// You must configure the `ParameterName` and `ParameterValue` parameters or neither of them. If the managed rule has an input parameter but no default value exists, you must configure this parameter. For more information about how to obtain the value of an input parameter for a managed rule, see [ListCompliancePackTemplates](https://help.aliyun.com/document_detail/261176.html).
 	//
 	// example:
 	//
@@ -1539,7 +1543,9 @@ type CreateAggregateCompliancePackShrinkRequest struct {
 	//
 	// ct-5f26ff4e06a300c4****
 	CompliancePackTemplateId *string `json:"CompliancePackTemplateId,omitempty" xml:"CompliancePackTemplateId,omitempty"`
-	// The rules in the compliance package. You must specify one of ConfigRules and TemplateContent.
+	// The rules in the compliance package.
+	//
+	// >  You must configure this parameter or the `TemplateContent` parameter.
 	ConfigRulesShrink *string `json:"ConfigRules,omitempty" xml:"ConfigRules,omitempty"`
 	// Specifies whether to enable the rule together with the compliance package. Valid values:
 	//
@@ -1579,13 +1585,13 @@ type CreateAggregateCompliancePackShrinkRequest struct {
 	// rg-aekzc7r7rhx****
 	ResourceGroupIdsScope *string `json:"ResourceGroupIdsScope,omitempty" xml:"ResourceGroupIdsScope,omitempty"`
 	ResourceIdsScope      *string `json:"ResourceIdsScope,omitempty" xml:"ResourceIdsScope,omitempty"`
-	// The risk level of the resources that are not compliant with the rules in the compliance package. Default value: 2. Valid values:
+	// The risk level of the compliance package. Valid values:
 	//
-	// 	- 1: high.
+	// 	- 1: high
 	//
-	// 	- 2: medium.
+	// 	- 2 (default): medium
 	//
-	// 	- 3: low.
+	// 	- 3: low
 	//
 	// example:
 	//
@@ -1606,7 +1612,9 @@ type CreateAggregateCompliancePackShrinkRequest struct {
 	// test
 	TagValueScope *string                                                `json:"TagValueScope,omitempty" xml:"TagValueScope,omitempty"`
 	TagsScope     []*CreateAggregateCompliancePackShrinkRequestTagsScope `json:"TagsScope,omitempty" xml:"TagsScope,omitempty" type:"Repeated"`
-	// The information about the template that is used to create the compliance package. You can call the GetAggregateCompliancePack operation to view the details of an existing compliance package or write a compliance package template. For more information, see [Write a compliance package template in a configuration file](https://help.aliyun.com/document_detail/2659733.html). You must specify one of ConfigRules and TemplateContent.
+	// The information about the template that is used to create the compliance package. You can call the GetAggregateCompliancePack operation to view the details of an existing compliance package. You can also write a compliance package template. For more information, see [Write a compliance package template in a configuration file](https://help.aliyun.com/document_detail/2659733.html).
+	//
+	// >  You must configure this parameter or the `TemplateContent` parameter.
 	//
 	// example:
 	//
@@ -1843,7 +1851,8 @@ type CreateAggregateConfigDeliveryChannelRequest struct {
 	// example:
 	//
 	// 1594295238-f9361358-5843-4294-8d30-b5183fac****
-	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	ClientToken       *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	CompliantSnapshot *bool   `json:"CompliantSnapshot,omitempty" xml:"CompliantSnapshot,omitempty"`
 	// Specifies whether to deliver resource change logs. If you set this parameter to true, Cloud Config delivers resource change logs to OSS, Log Service, or MNS when the configurations of the resources change. Valid values:
 	//
 	// 	- true: Cloud Config delivers resource change logs.
@@ -1981,6 +1990,11 @@ func (s *CreateAggregateConfigDeliveryChannelRequest) SetAggregatorId(v string) 
 
 func (s *CreateAggregateConfigDeliveryChannelRequest) SetClientToken(v string) *CreateAggregateConfigDeliveryChannelRequest {
 	s.ClientToken = &v
+	return s
+}
+
+func (s *CreateAggregateConfigDeliveryChannelRequest) SetCompliantSnapshot(v bool) *CreateAggregateConfigDeliveryChannelRequest {
+	s.CompliantSnapshot = &v
 	return s
 }
 
@@ -4119,7 +4133,8 @@ type CreateConfigDeliveryChannelRequest struct {
 	// example:
 	//
 	// 1594295238-f9361358-5843-4294-8d30-b5183fac****
-	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	ClientToken       *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	CompliantSnapshot *bool   `json:"CompliantSnapshot,omitempty" xml:"CompliantSnapshot,omitempty"`
 	// Specifies whether to deliver resource change logs. If you set this parameter to true, Cloud Config delivers resource change logs to OSS, Log Service, or MNS when the configurations of the resources change. Valid values:
 	//
 	// 	- true: Cloud Config delivers resource change logs.
@@ -4252,6 +4267,11 @@ func (s CreateConfigDeliveryChannelRequest) GoString() string {
 
 func (s *CreateConfigDeliveryChannelRequest) SetClientToken(v string) *CreateConfigDeliveryChannelRequest {
 	s.ClientToken = &v
+	return s
+}
+
+func (s *CreateConfigDeliveryChannelRequest) SetCompliantSnapshot(v bool) *CreateConfigDeliveryChannelRequest {
+	s.CompliantSnapshot = &v
 	return s
 }
 
@@ -5540,7 +5560,7 @@ func (s *DeactiveAggregateConfigRulesRequest) SetConfigRuleIds(v string) *Deacti
 }
 
 type DeactiveAggregateConfigRulesResponseBody struct {
-	// The returned result.
+	// The results of the operations that are performed to disable the specified rules.
 	OperateRuleResult *DeactiveAggregateConfigRulesResponseBodyOperateRuleResult `json:"OperateRuleResult,omitempty" xml:"OperateRuleResult,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -5569,7 +5589,7 @@ func (s *DeactiveAggregateConfigRulesResponseBody) SetRequestId(v string) *Deact
 }
 
 type DeactiveAggregateConfigRulesResponseBodyOperateRuleResult struct {
-	// The returned result.
+	// The operations that are performed to disable the rule.
 	OperateRuleItemList []*DeactiveAggregateConfigRulesResponseBodyOperateRuleResultOperateRuleItemList `json:"OperateRuleItemList,omitempty" xml:"OperateRuleItemList,omitempty" type:"Repeated"`
 }
 
@@ -5593,7 +5613,7 @@ type DeactiveAggregateConfigRulesResponseBodyOperateRuleResultOperateRuleItemLis
 	//
 	// cr-5772ba41209e007b****
 	ConfigRuleId *string `json:"ConfigRuleId,omitempty" xml:"ConfigRuleId,omitempty"`
-	// The error code returned.
+	// The error code.
 	//
 	// 	- If the rule is disabled, no error code is returned.
 	//
@@ -5605,9 +5625,9 @@ type DeactiveAggregateConfigRulesResponseBodyOperateRuleResultOperateRuleItemLis
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- true: The request was successful.
+	// 	- true
 	//
-	// 	- false: The request failed.
+	// 	- false
 	//
 	// example:
 	//
@@ -5694,7 +5714,7 @@ func (s *DeactiveConfigRulesRequest) SetConfigRuleIds(v string) *DeactiveConfigR
 }
 
 type DeactiveConfigRulesResponseBody struct {
-	// The results of the operations to disable the specified rules.
+	// The results of the operations that are performed to disable the specified rules.
 	OperateRuleResult *DeactiveConfigRulesResponseBodyOperateRuleResult `json:"OperateRuleResult,omitempty" xml:"OperateRuleResult,omitempty" type:"Struct"`
 	// The ID of the request.
 	//
@@ -5723,7 +5743,7 @@ func (s *DeactiveConfigRulesResponseBody) SetRequestId(v string) *DeactiveConfig
 }
 
 type DeactiveConfigRulesResponseBodyOperateRuleResult struct {
-	// The result of the operation to disable the rule.
+	// The operations that are performed to disable the rule.
 	OperateRuleItemList []*DeactiveConfigRulesResponseBodyOperateRuleResultOperateRuleItemList `json:"OperateRuleItemList,omitempty" xml:"OperateRuleItemList,omitempty" type:"Repeated"`
 }
 
@@ -5741,7 +5761,7 @@ func (s *DeactiveConfigRulesResponseBodyOperateRuleResult) SetOperateRuleItemLis
 }
 
 type DeactiveConfigRulesResponseBodyOperateRuleResultOperateRuleItemList struct {
-	// The ID of the rule.
+	// The rule ID.
 	//
 	// example:
 	//
@@ -5751,19 +5771,17 @@ type DeactiveConfigRulesResponseBodyOperateRuleResultOperateRuleItemList struct 
 	//
 	// 	- If the rule is disabled, no error code is returned.
 	//
-	// <!---->
-	//
-	// 	- If the rule fails to be disabled, an error code is returned. For more information about error codes, visit the [API Error Center](https://error-center.alibabacloud.com/status/product/Config).
+	// 	- If the rule fails to be disabled, an error code is returned. For more information about error codes, see [Error codes](https://error-center.alibabacloud.com/status/product/Config).
 	//
 	// example:
 	//
 	// ConfigRuleCanNotDelete
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// Indicates whether the operation is successful. Valid values:
+	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- true: The operation is successful.
+	// 	- true
 	//
-	// 	- false: The operation fails.
+	// 	- false
 	//
 	// example:
 	//
@@ -8350,8 +8368,17 @@ type GenerateAggregateResourceInventoryRequest struct {
 	// example:
 	//
 	// cn-shanghai
-	Regions         *string `json:"Regions,omitempty" xml:"Regions,omitempty"`
-	ResourceDeleted *int32  `json:"ResourceDeleted,omitempty" xml:"ResourceDeleted,omitempty"`
+	Regions *string `json:"Regions,omitempty" xml:"Regions,omitempty"`
+	// Indicates whether the resource is deleted. Valid values:
+	//
+	// 	- 1 (default): The resource is retained.
+	//
+	// 	- 0: The resource is deleted.
+	//
+	// example:
+	//
+	// 1
+	ResourceDeleted *int32 `json:"ResourceDeleted,omitempty" xml:"ResourceDeleted,omitempty"`
 	// The resource types. Separate multiple resource types with commas (,).
 	//
 	// example:
@@ -8646,8 +8673,17 @@ type GenerateResourceInventoryRequest struct {
 	// example:
 	//
 	// cn-shanghai
-	Regions         *string `json:"Regions,omitempty" xml:"Regions,omitempty"`
-	ResourceDeleted *int32  `json:"ResourceDeleted,omitempty" xml:"ResourceDeleted,omitempty"`
+	Regions *string `json:"Regions,omitempty" xml:"Regions,omitempty"`
+	// Indicates whether the resource is deleted. Valid values:
+	//
+	// 	- 1 (default): The resource is retained.
+	//
+	// 	- 0: The resource is deleted.
+	//
+	// example:
+	//
+	// 1
+	ResourceDeleted *int32 `json:"ResourceDeleted,omitempty" xml:"ResourceDeleted,omitempty"`
 	// The resource types. Separate multiple resource types with commas (,).
 	//
 	// example:
@@ -8761,10 +8797,6 @@ func (s *GetAdvancedSearchFileResponseBody) SetResourceSearch(v *GetAdvancedSear
 
 type GetAdvancedSearchFileResponseBodyResourceSearch struct {
 	// The download URL of the resource file.
-	//
-	// example:
-	//
-	// https://cloud-config-compliance-report.oss-cn-shanghai.aliyuncs.com/RESOURCE_INVENTORY/100931896542****/100931896542****-ca-edd3626622af00b3****-RESOURCE_INVENTORY-202307021509.csv?Expires=1688285356&OSSAccessKeyId=STS.NTZPodS8bkxTU6ngo5mhq****&Signature=NnR4zYcrxbo5C6ZeL9R5lnV****%3D&security-token=CAISiQJ1q6Ft5B2yfSjIr5fvG9XQvudD3Lq%2FVxDfg29gYeddu6PJ1Dz2IHhOf3JuAOoWt%2Fk%2Fm2tY5%2FYTlr14T5hYSXvPas1%2B75tg6g67fYvKtpQURUzBccT3d1KIAjvXgeXwAYygPv6%2FF96pb1fb7FwRpZLxaTSlWXG8LJSNkuQJR98LXw6%2BH1EkbZUsUWkEksIBMmbLPvuAKwPjhnGqbHBloQ1hk2hym8%2Fdq4%2B%2BkkOD0wemkbNK%2BdypfsL9M5ZWUc0hA4vv7otfbbHc1SNc0R9O%2BZptgbZMkTW95YnHWAIPuk%2FWareErYY%2FfV8ofNYzH69Vsf73kvt2u%2BPJmpzw0QpXOuVYQ%2B86lBIna0auGoABQ8il9J0ua1FPyYcqnYW7ssNlWrYWSGwIECqAhyYZEcKqIPb8l%2Bo%2BE%2BoR9zYVgaEyB9b7euxJzpRR0%2B1yh8r%2BUmgYx3J4mvbxkH79AG8bfgarzgqFsx1Tusee20s5bvJkgpX2tjSBZQhNnb8d09AWR%2BPUTZ5ecU0u8BhnA4S****%3D
 	DownloadUrl *string `json:"DownloadUrl,omitempty" xml:"DownloadUrl,omitempty"`
 	// The time when the resource file was generated. The value is a timestamp. Unit: milliseconds.
 	//
@@ -9095,10 +9127,6 @@ func (s *GetAggregateAdvancedSearchFileResponseBody) SetResourceSearch(v *GetAgg
 
 type GetAggregateAdvancedSearchFileResponseBodyResourceSearch struct {
 	// The download URL of the resource file.
-	//
-	// example:
-	//
-	// https://cloud-config-compliance-report.oss-cn-shanghai.aliyuncs.com/RESOURCE_SEARCH/100931896542****/100931896542****-RESOURCE_SEARCH-202308071033.csv?Expires=1691379221&OSSAccessKeyId=STS.NTo44aif2nS2QzmJkgQ9m****&Signature=L%2BbWqSdQF5fZ6OG%2BYfoBAfx****%3D&security-token=CAISiQJ1q6Ft5B2yfSjIr5faf47VhLkT2ZHZU1zcrmsyXb****%2F%2Blzz2IHhOf3JuAOoWt%2Fk%2Fm2tY5%2FYTlr14T5hYSXvPas1%2B75tg6g67fYvKtpRYDW%2BcfMT3d1KIAjvXgeXwAYygPv6%2FF96pb1fb7FwRpZLxaTSlWXG8LJSNkuQJR98LXw6%2BH1EkbZUsUWkEksIBMmbLPvuAKwPjhnGqbHBloQ1hk2hym8%2Fdq4%2B%2BkkOD0wemkbNK%2BdypfsL9M5ZWUc0hA4vv7otfbbHc1SNc0R9O%2BZptgbZMkTW95YnHWAIPuk%2FWareErYY%2FfV8ofNYzH69Vsf73kvt2u%2BPJmpzw0QpXOuVYQ%2B86lBIna0auGoABrAcsvpRscdC8UY0sotB****%2F5UOR7ZEus3YZrGGprRg2o2dvucjGeySrrU%2FJJJCi8Kz4ib5pll2****%2BMWUAL48i71PqqfKFCErFHv8pVNV33ZIcG9GRKGPnDjjLoRGzcoeTCYZl%2FPWl%2BShyaxC3CjuZh4WuIc3%2Bh2hTKWZ4l6Q%3D
 	DownloadUrl *string `json:"DownloadUrl,omitempty" xml:"DownloadUrl,omitempty"`
 	// The time when the resource file was generated. The value is a timestamp.
 	//
@@ -9382,19 +9410,19 @@ type GetAggregateCompliancePackResponseBodyCompliancePackConfigRules struct {
 	//
 	// cr-a260626622af0005****
 	ConfigRuleId *string `json:"ConfigRuleId,omitempty" xml:"ConfigRuleId,omitempty"`
-	// The rule name.
+	// The name of the rule.
 	ConfigRuleName *string `json:"ConfigRuleName,omitempty" xml:"ConfigRuleName,omitempty"`
-	// The input parameters of the rule.
+	// The details of the input parameter of the rule.
 	ConfigRuleParameters []*GetAggregateCompliancePackResponseBodyCompliancePackConfigRulesConfigRuleParameters `json:"ConfigRuleParameters,omitempty" xml:"ConfigRuleParameters,omitempty" type:"Repeated"`
 	// The description of the rule.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The identifier of the managed rule.
+	// The ID of the rule template.
 	//
 	// example:
 	//
 	// eip-bandwidth-limit
 	ManagedRuleIdentifier *string `json:"ManagedRuleIdentifier,omitempty" xml:"ManagedRuleIdentifier,omitempty"`
-	// The types of the resources evaluated based on the rule. Multiple resource types are separated with commas (,).
+	// The type of the resource evaluated based on the rule. Multiple resource types are separated with commas (,).
 	//
 	// example:
 	//
@@ -9402,11 +9430,11 @@ type GetAggregateCompliancePackResponseBodyCompliancePackConfigRules struct {
 	ResourceTypesScope *string `json:"ResourceTypesScope,omitempty" xml:"ResourceTypesScope,omitempty"`
 	// The risk level of the resources that do not comply with the rule. Valid values:
 	//
-	// 	- 1: high.
+	// 	- 1: high
 	//
-	// 	- 2: medium.
+	// 	- 2: medium
 	//
-	// 	- 3: low.
+	// 	- 3: low
 	//
 	// example:
 	//
@@ -9470,7 +9498,7 @@ type GetAggregateCompliancePackResponseBodyCompliancePackConfigRulesConfigRulePa
 	//
 	// 10
 	ParameterValue *string `json:"ParameterValue,omitempty" xml:"ParameterValue,omitempty"`
-	// Indicates whether the input parameters are required. Valid values:
+	// Indicates whether the input parameter was required. Valid values:
 	//
 	// 	- true
 	//
@@ -9778,10 +9806,6 @@ type GetAggregateCompliancePackReportResponseBodyCompliancePackReport struct {
 	// COMPLETE
 	ReportStatus *string `json:"ReportStatus,omitempty" xml:"ReportStatus,omitempty"`
 	// The URL that is used to download the compliance evaluation report.
-	//
-	// example:
-	//
-	// https://cloud-config-compliance-report.oss-cn-shanghai.aliyuncs.com/CompliancePackReports/100931896542****/cp-fdc8626622af00f9****/100931896542****-cp-fdc8626622af00f9****-report-202106221050.zip?Expires=162433****&OSSAccessKeyId=LTAIs86R8H59****&Signature=RqvJZtaxQ2HfqRcl0Ic2HG8oo****
 	ReportUrl *string `json:"ReportUrl,omitempty" xml:"ReportUrl,omitempty"`
 }
 
@@ -10149,7 +10173,8 @@ type GetAggregateConfigDeliveryChannelResponseBodyDeliveryChannel struct {
 	// example:
 	//
 	// ca-a4e5626622af0079****
-	AggregatorId *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
+	AggregatorId      *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
+	CompliantSnapshot *bool   `json:"CompliantSnapshot,omitempty" xml:"CompliantSnapshot,omitempty"`
 	// Indicates whether the specified destination receives resource change logs. If the value of this parameter is true, Cloud Config delivers the resource change logs to OSS, Log Service, or MNS when the configurations of the resources change. Valid values:
 	//
 	// 	- true: The specified destination receives resource change logs.
@@ -10293,6 +10318,11 @@ func (s *GetAggregateConfigDeliveryChannelResponseBodyDeliveryChannel) SetAccoun
 
 func (s *GetAggregateConfigDeliveryChannelResponseBodyDeliveryChannel) SetAggregatorId(v string) *GetAggregateConfigDeliveryChannelResponseBodyDeliveryChannel {
 	s.AggregatorId = &v
+	return s
+}
+
+func (s *GetAggregateConfigDeliveryChannelResponseBodyDeliveryChannel) SetCompliantSnapshot(v bool) *GetAggregateConfigDeliveryChannelResponseBodyDeliveryChannel {
+	s.CompliantSnapshot = &v
 	return s
 }
 
@@ -11805,10 +11835,6 @@ type GetAggregateConfigRulesReportResponseBodyConfigRulesReport struct {
 	// CREATING
 	ReportStatus *string `json:"ReportStatus,omitempty" xml:"ReportStatus,omitempty"`
 	// The URL that is used to download the compliance evaluation report.
-	//
-	// example:
-	//
-	// https://cloud-config-compliance-report.oss-cn-shanghai.aliyuncs.com/ConfigRuleReports/100931896542****/rules/100931896542****-rules-report-202106221125.zip?Expires=162433****&OSSAccessKeyId=LTAIs86R8H59****&Signature=yT8jn6ZQSX3dyCwVKL5EOJhGJ****
 	ReportUrl *string `json:"ReportUrl,omitempty" xml:"ReportUrl,omitempty"`
 }
 
@@ -11889,8 +11915,17 @@ type GetAggregateDiscoveredResourceRequest struct {
 	// example:
 	//
 	// ca-5885626622af0008****
-	AggregatorId     *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
-	ComplianceOption *int32  `json:"ComplianceOption,omitempty" xml:"ComplianceOption,omitempty"`
+	AggregatorId *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
+	// Specifies whether to query the compliance results of the resource. Valid values:
+	//
+	// 	- 0 (default): does not query the compliance results of the resource.
+	//
+	// 	- 1: queries the compliance results of the resource.
+	//
+	// example:
+	//
+	// 0
+	ComplianceOption *int32 `json:"ComplianceOption,omitempty" xml:"ComplianceOption,omitempty"`
 	// The ID of the region in which the resource resides.
 	//
 	// For more information about how to query the ID of a region in which the resource resides, see [ListAggregateDiscoveredResources](https://help.aliyun.com/document_detail/411691.html).
@@ -11901,9 +11936,7 @@ type GetAggregateDiscoveredResourceRequest struct {
 	//
 	// cn-hangzhou
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// The ID of the Alibaba Cloud account to which the resources in the account group belong.
-	//
-	// > You can use either the `ResourceAccountId` or `ResourceOwnerId` parameter. We recommend that you use the ResourceAccountId parameter.
+	// The ID of the Alibaba Cloud account to which the specified resource belongs in the account group.
 	//
 	// example:
 	//
@@ -11911,7 +11944,7 @@ type GetAggregateDiscoveredResourceRequest struct {
 	ResourceAccountId *int64 `json:"ResourceAccountId,omitempty" xml:"ResourceAccountId,omitempty"`
 	// The resource ID.
 	//
-	// For more information about how to query the ID of a resource, see [ListAggregateDiscoveredResources](https://help.aliyun.com/document_detail/411691.html).
+	// For more information about how to obtain the ID of a resource, see [ListAggregateDiscoveredResources](https://help.aliyun.com/document_detail/411691.html).
 	//
 	// This parameter is required.
 	//
@@ -11977,7 +12010,7 @@ func (s *GetAggregateDiscoveredResourceRequest) SetResourceType(v string) *GetAg
 }
 
 type GetAggregateDiscoveredResourceResponseBody struct {
-	// The information about the resource.
+	// The details of the resource.
 	DiscoveredResourceDetail *GetAggregateDiscoveredResourceResponseBodyDiscoveredResourceDetail `json:"DiscoveredResourceDetail,omitempty" xml:"DiscoveredResourceDetail,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -12012,7 +12045,7 @@ type GetAggregateDiscoveredResourceResponseBodyDiscoveredResourceDetail struct {
 	//
 	// 100931896542****
 	AccountId *int64 `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	// The ID of the zone where the resource resides.
+	// The ID of the zone in which the resource resides.
 	//
 	// example:
 	//
@@ -12059,11 +12092,11 @@ type GetAggregateDiscoveredResourceResponseBodyDiscoveredResourceDetail struct {
 	//
 	// new-bucket
 	ResourceName *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
-	// The status of the resource. The value of this parameter varies based on the resource type and may be empty. Examples:
+	// The status of the resource. The value of this parameter varies based on the resource type and may be empty.
 	//
-	// 	- If the value of the ResourceType parameter is ACS::ECS::Instance, the resource is an Elastic Compute Service (ECS) instance that is in a specific state. In this case, the valid values of this parameter are Running and Stopped.
+	// 	- If the ResourceType parameter is set to ACS::ECS::Instance, the resource is an ECS instance that has a specific state. In this case, the valid values of this parameter are Running and Stopped.
 	//
-	// 	- If the value of the ResourceType parameter is ACS::OSS::Bucket, the resource is an Object Storage Service (OSS) bucket that is not in a specific state. In this case, this parameter is empty.
+	// 	- If the ResourceType parameter is ACS::OSS::Bucket, the resource is an Object Storage Service (OSS) bucket that is not in a specific state. In this case, this parameter is left empty.
 	//
 	// example:
 	//
@@ -14117,10 +14150,6 @@ func (s *GetAggregateResourceInventoryResponseBody) SetResourceInventory(v *GetA
 
 type GetAggregateResourceInventoryResponseBodyResourceInventory struct {
 	// The download URL of the resource inventory.
-	//
-	// example:
-	//
-	// https://cloud-config-compliance-report.oss-cn-shanghai.aliyuncs.com/RESOURCE_INVENTORY/100931896542****/100931896542****-RESOURCE_INVENTORY-202306251432.csv?Expires=1687678374&OSSAccessKeyId=STS.NUQ2xAAne87hVWG8WGx5f***&Signature=xudDN69simKLcCOguj5%2FgrWIw%2FM%3D&security-token=CAISiQJ1q6Ft5B2yfSjIr5bkecL1r****
 	DownloadUrl *string `json:"DownloadUrl,omitempty" xml:"DownloadUrl,omitempty"`
 	// The time when the resource inventory was generated. The value is a timestamp.
 	//
@@ -14254,15 +14283,17 @@ type GetAggregatorResponseBodyAggregator struct {
 	//
 	// 100931896542****
 	AccountId *int64 `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	// The number of member accounts in the account group.
+	// The number of members in the account group.
 	//
 	// example:
 	//
 	// 2
 	AggregatorAccountCount *int64 `json:"AggregatorAccountCount,omitempty" xml:"AggregatorAccountCount,omitempty"`
-	// The information about the member accounts in the account group.
+	// The information about the members in the account group.
 	AggregatorAccounts []*GetAggregatorResponseBodyAggregatorAggregatorAccounts `json:"AggregatorAccounts,omitempty" xml:"AggregatorAccounts,omitempty" type:"Repeated"`
 	// The timestamp generated when the account group was created.
+	//
+	// Unit: milliseconds.
 	//
 	// example:
 	//
@@ -14375,25 +14406,25 @@ func (s *GetAggregatorResponseBodyAggregator) SetFolderId(v string) *GetAggregat
 }
 
 type GetAggregatorResponseBodyAggregatorAggregatorAccounts struct {
-	// The ID of the member account.
+	// The ID of the member.
 	//
 	// example:
 	//
 	// 171322098523****
 	AccountId *int64 `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	// The name of the member account.
+	// The display name of the member.
 	//
 	// example:
 	//
 	// Alice
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	// The type of the member account. Only ResourceDirectory is returned, which indicates that the account is a resource directory account.
+	// The resource directory to which the member belongs. Valid value: ResourceDirectory. ResourceDirectory indicates that the member belongs to a resource directory.
 	//
 	// example:
 	//
 	// ResourceDirectory
 	AccountType *string `json:"AccountType,omitempty" xml:"AccountType,omitempty"`
-	// The status of the configuration recorder for the member account. Valid values:
+	// The status of the configuration recorder for the member. Valid values:
 	//
 	// 	- REGISTRABLE: The configuration recorder is not registered.
 	//
@@ -14654,7 +14685,7 @@ type GetCompliancePackResponseBodyCompliancePackConfigRules struct {
 	ConfigRuleName *string `json:"ConfigRuleName,omitempty" xml:"ConfigRuleName,omitempty"`
 	// The input parameters of the rule.
 	ConfigRuleParameters []*GetCompliancePackResponseBodyCompliancePackConfigRulesConfigRuleParameters `json:"ConfigRuleParameters,omitempty" xml:"ConfigRuleParameters,omitempty" type:"Repeated"`
-	// The description of the rule.
+	// The rule description.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The identifier of the managed rule.
 	//
@@ -14662,7 +14693,7 @@ type GetCompliancePackResponseBodyCompliancePackConfigRules struct {
 	//
 	// eip-bandwidth-limit
 	ManagedRuleIdentifier *string `json:"ManagedRuleIdentifier,omitempty" xml:"ManagedRuleIdentifier,omitempty"`
-	// The types of the resources evaluated based on the rule. Multiple resource types are separated with commas (,).
+	// The type of the resource evaluated based on the rule. Separate multiple resource types with commas (,).
 	//
 	// example:
 	//
@@ -14670,11 +14701,11 @@ type GetCompliancePackResponseBodyCompliancePackConfigRules struct {
 	ResourceTypesScope *string `json:"ResourceTypesScope,omitempty" xml:"ResourceTypesScope,omitempty"`
 	// The risk level of the resources that do not comply with the rule. Valid values:
 	//
-	// 	- 1: high.
+	// 	- 1: high
 	//
-	// 	- 2: medium.
+	// 	- 2: medium
 	//
-	// 	- 3: low.
+	// 	- 3: low
 	//
 	// example:
 	//
@@ -15033,10 +15064,6 @@ type GetCompliancePackReportResponseBodyCompliancePackReport struct {
 	// COMPLETE
 	ReportStatus *string `json:"ReportStatus,omitempty" xml:"ReportStatus,omitempty"`
 	// The URL that is used to download the compliance evaluation report.
-	//
-	// example:
-	//
-	// https://cloud-config-compliance-report.oss-cn-shanghai.aliyuncs.com/CompliancePackReports/120886317861****/cp-fdc8626622af00f9****/120886317861****-cp-fdc8626622af00f9****-report-202106221046.xls?Expires=162442****&OSSAccessKeyId=LTAIs86R8H59****&Signature=sWmz4fq7eJEyDoho%2FoDOReZ3s****
 	ReportUrl *string `json:"ReportUrl,omitempty" xml:"ReportUrl,omitempty"`
 }
 
@@ -15356,7 +15383,8 @@ type GetConfigDeliveryChannelResponseBodyDeliveryChannel struct {
 	// example:
 	//
 	// 120886317861****
-	AccountId *int64 `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	AccountId         *int64 `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	CompliantSnapshot *bool  `json:"CompliantSnapshot,omitempty" xml:"CompliantSnapshot,omitempty"`
 	// Indicates whether the specified destination receives resource change logs. If the value of this parameter is true, Cloud Config delivers the resource change logs to OSS, Log Service, or MNS when the configurations of the resources change. Valid values:
 	//
 	// 	- true: The specified destination receives resource change logs.
@@ -15495,6 +15523,11 @@ func (s GetConfigDeliveryChannelResponseBodyDeliveryChannel) GoString() string {
 
 func (s *GetConfigDeliveryChannelResponseBodyDeliveryChannel) SetAccountId(v int64) *GetConfigDeliveryChannelResponseBodyDeliveryChannel {
 	s.AccountId = &v
+	return s
+}
+
+func (s *GetConfigDeliveryChannelResponseBodyDeliveryChannel) SetCompliantSnapshot(v bool) *GetConfigDeliveryChannelResponseBodyDeliveryChannel {
+	s.CompliantSnapshot = &v
 	return s
 }
 
@@ -16865,10 +16898,6 @@ type GetConfigRulesReportResponseBodyConfigRulesReport struct {
 	// CREATING
 	ReportStatus *string `json:"ReportStatus,omitempty" xml:"ReportStatus,omitempty"`
 	// The URL that is used to download the compliance evaluation report.
-	//
-	// example:
-	//
-	// https://cloud-config-compliance-report.oss-cn-shanghai.aliyuncs.com/ConfigRuleReports/100931896542****/rules/100931896542****-rules-report-202106221125.zip?Expires=162433****&OSSAccessKeyId=LTAIs86R8H59****&Signature=yT8jn6ZQSX3dyCwVKL5EOJhGJ****
 	ReportUrl *string `json:"ReportUrl,omitempty" xml:"ReportUrl,omitempty"`
 }
 
@@ -17030,6 +17059,15 @@ func (s *GetConfigurationRecorderResponse) SetBody(v *GetConfigurationRecorderRe
 }
 
 type GetDiscoveredResourceRequest struct {
+	// Specifies whether to query the compliance results of the resource. Valid values:
+	//
+	// 	- 0 (default): does not query the compliance results of the resource.
+	//
+	// 	- 1: queries the compliance results of the resource.
+	//
+	// example:
+	//
+	// 0
 	ComplianceOption *int32 `json:"ComplianceOption,omitempty" xml:"ComplianceOption,omitempty"`
 	// The ID of the region in which the resource resides.
 	//
@@ -17039,9 +17077,9 @@ type GetDiscoveredResourceRequest struct {
 	//
 	// cn-hangzhou
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// The resource IDs.
+	// The resource ID.
 	//
-	// For more information about how to query the ID of a resource, see [ListDiscoveredResources](https://help.aliyun.com/document_detail/411702.html).
+	// For more information about how to obtain the ID of a resource, see [ListDiscoveredResources](https://help.aliyun.com/document_detail/411702.html).
 	//
 	// This parameter is required.
 	//
@@ -17049,7 +17087,7 @@ type GetDiscoveredResourceRequest struct {
 	//
 	// new-bucket
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	// The resource type.
+	// The type of the resource.
 	//
 	// For more information about how to obtain the type of a resource, see [ListDiscoveredResources](https://help.aliyun.com/document_detail/411702.html).
 	//
@@ -17144,7 +17182,7 @@ type GetDiscoveredResourceResponseBodyDiscoveredResourceDetail struct {
 	//
 	// cn-hangzhou
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// The time when the resource was created.
+	// The timestamp when the resource was created.
 	//
 	// example:
 	//
@@ -17166,23 +17204,23 @@ type GetDiscoveredResourceResponseBodyDiscoveredResourceDetail struct {
 	//
 	// new-bucket
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	// The resource name.
+	// The name of the resource.
 	//
 	// example:
 	//
 	// new-bucket
 	ResourceName *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
-	// The status of the resource. The value of this parameter varies with the resource type and may be empty. Examples:
+	// The status of the resource. The value of this parameter varies based on the resource type and may be empty.
 	//
-	// 	- If the value of the ResourceType parameter is ACS::ECS::Instance, the resource is an Elastic Compute Service (ECS) instance that is in a specific state. In this case, the valid values of this parameter are Running and Stopped.
+	// 	- If the ResourceType parameter is set to ACS::ECS::Instance, the resource is an ECS instance that has a specific state. In this case, the valid values of this parameter are Running and Stopped.
 	//
-	// 	- If the value of the ResourceType parameter is ACS::OSS::Bucket, the resource is an Object Storage Service (OSS) bucket that is not in a specific state. In this case, this parameter is empty.
+	// 	- If the ResourceType parameter is ACS::OSS::Bucket, the resource is an Object Storage Service (OSS) bucket that is not in a specific state. In this case, this parameter is left empty.
 	//
 	// example:
 	//
 	// offline
 	ResourceStatus *string `json:"ResourceStatus,omitempty" xml:"ResourceStatus,omitempty"`
-	// The resource type.
+	// The type of the resource.
 	//
 	// example:
 	//
@@ -17548,9 +17586,13 @@ func (s *GetDiscoveredResourceCountsGroupByResourceTypeResponse) SetBody(v *GetD
 }
 
 type GetIntegratedServiceStatusRequest struct {
-	// The product code of the cloud product. Valid values:
+	// The identity of the cloud service that is integrated with Cloud Config. Valid values:
 	//
-	// cadt: Cloud Architecture Design Tool
+	// 	- eventbridge: EventBridge
+	//
+	// 	- cms: CloudMonitor
+	//
+	// 	- bpstudio: Cloud Architect Design Tools
 	//
 	// This parameter is required.
 	//
@@ -17657,7 +17699,7 @@ func (s *GetIntegratedServiceStatusResponse) SetBody(v *GetIntegratedServiceStat
 type GetManagedRuleRequest struct {
 	// The identifier of the managed rule.
 	//
-	// You can call the [ListManagedRules](https://help.aliyun.com/document_detail/421144.html) operation to obtain the managed rule identifier.
+	// For more information about how to obtain the identifier of a managed rule, see [ListManagedRules](https://help.aliyun.com/document_detail/421144.html).
 	//
 	// This parameter is required.
 	//
@@ -17710,7 +17752,7 @@ func (s *GetManagedRuleResponseBody) SetRequestId(v string) *GetManagedRuleRespo
 }
 
 type GetManagedRuleResponseBodyManagedRule struct {
-	// The settings of the required input parameters for the managed rule.
+	// The details of the required input parameters for the managed rule.
 	//
 	// example:
 	//
@@ -17742,19 +17784,19 @@ type GetManagedRuleResponseBodyManagedRule struct {
 	Identifier *string `json:"Identifier,omitempty" xml:"Identifier,omitempty"`
 	// The tags of the managed rule.
 	Labels []*string `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
-	// The settings of the optional input parameters for the managed rule.
+	// The details of the optional input parameters for the managed rule.
 	//
 	// example:
 	//
 	// {}
 	OptionalInputParameterDetails map[string]interface{} `json:"OptionalInputParameterDetails,omitempty" xml:"OptionalInputParameterDetails,omitempty"`
-	// The risk level of the resources that are not compliant with the managed rule. Valid values:
+	// The risk level of the managed rule. Valid values:
 	//
-	// 	- 1: high risk level
+	// 	- 1: high
 	//
-	// 	- 2: medium risk level
+	// 	- 2: medium
 	//
-	// 	- 3: low risk level
+	// 	- 3: low
 	//
 	// example:
 	//
@@ -17825,7 +17867,7 @@ func (s *GetManagedRuleResponseBodyManagedRule) SetSourceDetails(v []*GetManaged
 }
 
 type GetManagedRuleResponseBodyManagedRuleScope struct {
-	// The type of resource to which the managed rule applies.
+	// The types of resources to which the managed rule applies.
 	ComplianceResourceTypes []*string `json:"ComplianceResourceTypes,omitempty" xml:"ComplianceResourceTypes,omitempty" type:"Repeated"`
 }
 
@@ -17843,27 +17885,27 @@ func (s *GetManagedRuleResponseBodyManagedRuleScope) SetComplianceResourceTypes(
 }
 
 type GetManagedRuleResponseBodyManagedRuleSourceDetails struct {
-	// The interval at which the managed rule is triggered. Valid values:
+	// The interval at which the rule is triggered. Valid values: Valid values:
 	//
-	// 	- One_Hour: 1 hour.
+	// 	- One_Hour
 	//
-	// 	- Three_Hours: 3 hours.
+	// 	- Three_Hours
 	//
-	// 	- Six_Hours: 6 hours.
+	// 	- Six_Hours
 	//
-	// 	- Twelve_Hours: 12 hours
+	// 	- Twelve_Hours
 	//
-	// 	- TwentyFour_Hours: 24 hours
+	// 	- TwentyFour_Hours
 	//
 	// example:
 	//
 	// TwentyFour_Hours
 	MaximumExecutionFrequency *string `json:"MaximumExecutionFrequency,omitempty" xml:"MaximumExecutionFrequency,omitempty"`
-	// The trigger type of the managed rule. Valid values:
+	// The trigger type of the rule. Valid values:
 	//
-	// 	- ConfigurationItemChangeNotification: The managed rule is triggered by configuration changes.
+	// 	- ConfigurationItemChangeNotification: The rule is triggered by configuration changes.
 	//
-	// 	- ScheduledNotification: The managed rule is periodically triggered.
+	// 	- ScheduledNotification: The rule is periodically triggered.
 	//
 	// example:
 	//
@@ -18079,9 +18121,9 @@ type GetResourceComplianceByConfigRuleRequest struct {
 	//
 	// 	- NON_COMPLIANT: The resource is evaluated as non-compliant.
 	//
-	// 	- NOT_APPLICABLE: The rule does not apply to the resource.
+	// 	- NOT_APPLICABLE: The rule does not apply to the resources.
 	//
-	// 	- INSUFFICIENT_DATA: No resource data is available.
+	// 	- INSUFFICIENT_DATA: No data is available.
 	//
 	// example:
 	//
@@ -19449,10 +19491,6 @@ func (s *GetResourceInventoryResponseBody) SetResourceInventory(v *GetResourceIn
 
 type GetResourceInventoryResponseBodyResourceInventory struct {
 	// The download URL of the resource inventory.
-	//
-	// example:
-	//
-	// https://cloud-config-compliance-report.oss-cn-shanghai.aliyuncs.com/RESOURCE_INVENTORY/100931896542****/100931896542****-RESOURCE_INVENTORY-202306251435.csv?Expires=1687678394&OSSAccessKeyId=STS.MNQ2xAAne86aVWG7WGx5f***&Signature=scdEN29shaKLcCOguj5%2FgrWIw%2FM%3D&security-token=BIASiQM1q3Ft5B2yfSjIr5bkedL7r****
 	DownloadUrl *string `json:"DownloadUrl,omitempty" xml:"DownloadUrl,omitempty"`
 	// The time when the resource inventory was generated. The value is a timestamp.
 	//
@@ -20215,7 +20253,7 @@ func (s *ListAggregateCompliancePacksRequest) SetStatus(v string) *ListAggregate
 }
 
 type ListAggregateCompliancePacksResponseBody struct {
-	// The information about the compliance packages.
+	// The compliance packages returned.
 	CompliancePacksResult *ListAggregateCompliancePacksResponseBodyCompliancePacksResult `json:"CompliancePacksResult,omitempty" xml:"CompliancePacksResult,omitempty" type:"Struct"`
 	// The ID of the request.
 	//
@@ -20244,7 +20282,7 @@ func (s *ListAggregateCompliancePacksResponseBody) SetRequestId(v string) *ListA
 }
 
 type ListAggregateCompliancePacksResponseBodyCompliancePacksResult struct {
-	// The details of the compliance package.
+	// The compliance packages.
 	CompliancePacks []*ListAggregateCompliancePacksResponseBodyCompliancePacksResultCompliancePacks `json:"CompliancePacks,omitempty" xml:"CompliancePacks,omitempty" type:"Repeated"`
 	// The page number of the returned page.
 	//
@@ -20301,13 +20339,13 @@ type ListAggregateCompliancePacksResponseBodyCompliancePacksResultCompliancePack
 	//
 	// 100931896542****
 	AccountId *int64 `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	// The ID of the account group.
+	// The account group ID.
 	//
 	// example:
 	//
 	// ca-f632626622af0079****
 	AggregatorId *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
-	// The ID of the compliance package.
+	// The compliance package ID.
 	//
 	// example:
 	//
@@ -20329,13 +20367,13 @@ type ListAggregateCompliancePacksResponseBodyCompliancePacksResultCompliancePack
 	CreateTimestamp *int64 `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
 	// The description of the compliance package.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The risk level of the resources that are not compliant with the managed rules in the compliance package. Valid values:
+	// The risk level of the resources that are not compliant with the rules in the compliance package. Valid values:
 	//
-	// 	- 1: high risk level.
+	// 	- 1: high
 	//
-	// 	- 2: medium risk level.
+	// 	- 2: medium
 	//
-	// 	- 3: low risk level.
+	// 	- 3: low
 	//
 	// example:
 	//
@@ -20343,7 +20381,7 @@ type ListAggregateCompliancePacksResponseBodyCompliancePacksResultCompliancePack
 	RiskLevel *int32 `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
 	// The status of the compliance package. Valid values:
 	//
-	// 	- ACTIVE: The compliance package is available for use.
+	// 	- ACTIVE: The compliance package is normal.
 	//
 	// 	- CREATING: The compliance package is being created.
 	//
@@ -20513,7 +20551,8 @@ type ListAggregateConfigDeliveryChannelsResponseBodyDeliveryChannels struct {
 	// example:
 	//
 	// ca-a4e5626622af0079****
-	AggregatorId *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
+	AggregatorId      *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
+	CompliantSnapshot *bool   `json:"CompliantSnapshot,omitempty" xml:"CompliantSnapshot,omitempty"`
 	// Indicates whether the specified destination receives resource change logs. If the value of this parameter is true, Cloud Config delivers the resource change logs to OSS, Log Service, or MNS when the configurations of the resources change. Valid values:
 	//
 	// 	- true: The specified destination receives resource change logs.
@@ -20657,6 +20696,11 @@ func (s *ListAggregateConfigDeliveryChannelsResponseBodyDeliveryChannels) SetAcc
 
 func (s *ListAggregateConfigDeliveryChannelsResponseBodyDeliveryChannels) SetAggregatorId(v string) *ListAggregateConfigDeliveryChannelsResponseBodyDeliveryChannels {
 	s.AggregatorId = &v
+	return s
+}
+
+func (s *ListAggregateConfigDeliveryChannelsResponseBodyDeliveryChannels) SetCompliantSnapshot(v bool) *ListAggregateConfigDeliveryChannelsResponseBodyDeliveryChannels {
+	s.CompliantSnapshot = &v
 	return s
 }
 
@@ -21455,13 +21499,13 @@ type ListAggregateConfigRulesRequest struct {
 	AggregatorId *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
 	// The compliance evaluation result. Valid values:
 	//
-	// 	- COMPLIANT: The resource is evaluated as compliant.
+	// 	- COMPLIANT: The resources are evaluated as compliant.
 	//
-	// 	- NON_COMPLIANT: The resource is evaluated as non-compliant.
+	// 	- NON_COMPLIANT: The resources are evaluated as non-compliant.
 	//
-	// 	- NOT_APPLICABLE: The rule does not apply to the resource.
+	// 	- NOT_APPLICABLE: The rule does not apply to the resources.
 	//
-	// 	- INSUFFICIENT_DATA: No resource data is available.
+	// 	- INSUFFICIENT_DATA: No data is available.
 	//
 	// example:
 	//
@@ -21475,11 +21519,11 @@ type ListAggregateConfigRulesRequest struct {
 	ConfigRuleName *string `json:"ConfigRuleName,omitempty" xml:"ConfigRuleName,omitempty"`
 	// The status of the rule. Valid values:
 	//
-	// 	- ACTIVE: The rule is enabled.
+	// 	- ACTIVE: The rule is being used to monitor resource configurations.
 	//
 	// 	- DELETING: The rule is being deleted.
 	//
-	// 	- EVALUATING: The rule is being used to evaluate resource configurations.
+	// 	- EVALUATING: The rule is triggered and is being used to monitor resource configurations.
 	//
 	// 	- INACTIVE: The rule is disabled.
 	//
@@ -21487,7 +21531,7 @@ type ListAggregateConfigRulesRequest struct {
 	//
 	// ACTIVE
 	ConfigRuleState *string `json:"ConfigRuleState,omitempty" xml:"ConfigRuleState,omitempty"`
-	// The keyword that you want to use to query the rules.
+	// The keyword that is used for queries.
 	//
 	// You can perform a fuzzy search by rule ID, rule name, rule description, or managed rule ID.
 	//
@@ -21497,7 +21541,7 @@ type ListAggregateConfigRulesRequest struct {
 	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
 	// The page number.
 	//
-	// Pages start from page 1. Default value: 1.
+	// Pages start from page 1. Default value: 1
 	//
 	// example:
 	//
@@ -21505,7 +21549,7 @@ type ListAggregateConfigRulesRequest struct {
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries per page.
 	//
-	// Valid values: 1 to 100. Minimum value: 1. Default value: 10.
+	// Valid values: 1 to 100. Minimum value: 1. Default value: 10
 	//
 	// example:
 	//
@@ -21665,13 +21709,13 @@ func (s *ListAggregateConfigRulesResponseBodyConfigRules) SetTotalCount(v int64)
 }
 
 type ListAggregateConfigRulesResponseBodyConfigRulesConfigRuleList struct {
-	// The ID of the management account to which the rule belongs.
+	// The ID of the management account to which the rules belong.
 	//
 	// example:
 	//
 	// 100931896542****
 	AccountId *int64 `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	// The type of the remediation template. Valid value: OOS, which indicates Operation Orchestration Service.
+	// The type of the remediation template. Only OOS is returned, which indicates CloudOps Orchestration Service.
 	//
 	// example:
 	//
@@ -21691,7 +21735,7 @@ type ListAggregateConfigRulesResponseBodyConfigRulesConfigRuleList struct {
 	//
 	// cr-fdc8626622af00f9****
 	ConfigRuleId *string `json:"ConfigRuleId,omitempty" xml:"ConfigRuleId,omitempty"`
-	// The rule name.
+	// The name of the rule.
 	//
 	// example:
 	//
@@ -21699,7 +21743,7 @@ type ListAggregateConfigRulesResponseBodyConfigRulesConfigRuleList struct {
 	ConfigRuleName *string `json:"ConfigRuleName,omitempty" xml:"ConfigRuleName,omitempty"`
 	// The status of the rule. Valid values:
 	//
-	// 	- ACTIVE: The rule is enabled.
+	// 	- ACTIVE: The rule is being used to monitor resource configurations.
 	//
 	// 	- DELETING: The rule is being deleted.
 	//
@@ -21725,7 +21769,7 @@ type ListAggregateConfigRulesResponseBodyConfigRulesConfigRuleList struct {
 	//
 	// ACS::EIP::EipAddress
 	ResourceTypesScope *string `json:"ResourceTypesScope,omitempty" xml:"ResourceTypesScope,omitempty"`
-	// The risk level of the resources that are not compliant with the rule. Valid values:
+	// The risk level of the resources that do not comply with the rule. Valid values:
 	//
 	// 	- 1: high
 	//
@@ -21737,11 +21781,11 @@ type ListAggregateConfigRulesResponseBodyConfigRulesConfigRuleList struct {
 	//
 	// 1
 	RiskLevel *int32 `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
-	// The ID of the rule.
+	// The identifier of the rule.
 	//
 	// 	- If the rule is a managed rule, the value of this parameter is the name of the managed rule.
 	//
-	// 	- If the rule is a custom rule, the value of this parameter is the Alibaba Cloud Resource Name (ARN) of the relevant function in Function Compute.
+	// 	- If the rule is a custom rule, the value of this parameter is the Alibaba Cloud Resource Name (ARN) of a function.
 	//
 	// example:
 	//
@@ -21749,9 +21793,9 @@ type ListAggregateConfigRulesResponseBodyConfigRulesConfigRuleList struct {
 	SourceIdentifier *string `json:"SourceIdentifier,omitempty" xml:"SourceIdentifier,omitempty"`
 	// The type of the rule. Valid values:
 	//
-	// 	- CUSTOM_FC: custom rule
+	// 	- CUSTOM_FC: a custom rule.
 	//
-	// 	- ALIYUN: managed rule
+	// 	- ALIYUN: a managed rule.
 	//
 	// example:
 	//
@@ -21842,19 +21886,19 @@ func (s *ListAggregateConfigRulesResponseBodyConfigRulesConfigRuleList) SetTags(
 type ListAggregateConfigRulesResponseBodyConfigRulesConfigRuleListCompliance struct {
 	// The compliance evaluation result. Valid values:
 	//
-	// 	- COMPLIANT: The resource is evaluated as compliant.
+	// 	- COMPLIANT: The resources are evaluated as compliant.
 	//
-	// 	- NON_COMPLIANT: The resource is evaluated as non-compliant.
+	// 	- NON_COMPLIANT: The resources are evaluated as non-compliant.
 	//
-	// 	- NOT_APPLICABLE: The rule does not apply to the resource.
+	// 	- NOT_APPLICABLE: The rule does not apply to the resources.
 	//
-	// 	- INSUFFICIENT_DATA: No resource data is available.
+	// 	- INSUFFICIENT_DATA: No data is available.
 	//
 	// example:
 	//
 	// COMPLIANT
 	ComplianceType *string `json:"ComplianceType,omitempty" xml:"ComplianceType,omitempty"`
-	// The number of evaluated resources.
+	// The number of evaluation resources that correspond to the summary result of the rule compliance evaluation.
 	//
 	// example:
 	//
@@ -21881,7 +21925,7 @@ func (s *ListAggregateConfigRulesResponseBodyConfigRulesConfigRuleListCompliance
 }
 
 type ListAggregateConfigRulesResponseBodyConfigRulesConfigRuleListCreateBy struct {
-	// The ID of the account group.
+	// The account group ID.
 	//
 	// example:
 	//
@@ -21893,7 +21937,7 @@ type ListAggregateConfigRulesResponseBodyConfigRulesConfigRuleListCreateBy struc
 	//
 	// Test_Group
 	AggregatorName *string `json:"AggregatorName,omitempty" xml:"AggregatorName,omitempty"`
-	// The ID of the compliance package.
+	// The compliance package ID.
 	//
 	// example:
 	//
@@ -21905,19 +21949,19 @@ type ListAggregateConfigRulesResponseBodyConfigRulesConfigRuleListCreateBy struc
 	//
 	// test-pack-name
 	CompliancePackName *string `json:"CompliancePackName,omitempty" xml:"CompliancePackName,omitempty"`
-	// The ID of the management account that was used to create the rule.
+	// The ID of the management account that created the rule.
 	//
 	// example:
 	//
 	// 100931896542****
 	CreatorId *string `json:"CreatorId,omitempty" xml:"CreatorId,omitempty"`
-	// The name of the management account that was used to create the rule.
+	// The name of the management account that create the rule.
 	//
 	// example:
 	//
 	// Alice
 	CreatorName *string `json:"CreatorName,omitempty" xml:"CreatorName,omitempty"`
-	// The type of the creator of the rule. Valid value: AGGREGATOR, which indicates an account group.
+	// The type of the creator of the rule. The value is fixed to AGGREGATOR, which indicates an account group.
 	//
 	// example:
 	//
@@ -24116,8 +24160,6 @@ func (s *ListAggregatorsResponse) SetBody(v *ListAggregatorsResponseBody) *ListA
 type ListCompliancePackTemplatesRequest struct {
 	// The ID of the compliance package template.
 	//
-	// For more information about how to obtain the ID of a compliance package template, see [ListCompliancePackTemplates](https://help.aliyun.com/document_detail/261176.html).
-	//
 	// example:
 	//
 	// ct-d254ff4e06a300cf****
@@ -24138,7 +24180,7 @@ type ListCompliancePackTemplatesRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The type of the resource evaluated by the rule.
+	// The types of the resources evaluated based on the rule. If you configure this parameter, only the rules that include the resource types in the compliance package template are returned.
 	//
 	// example:
 	//
@@ -24175,7 +24217,7 @@ func (s *ListCompliancePackTemplatesRequest) SetResourceTypes(v string) *ListCom
 }
 
 type ListCompliancePackTemplatesResponseBody struct {
-	// The information about the compliance package templates.
+	// The information about the compliance package templates returned.
 	CompliancePackTemplatesResult *ListCompliancePackTemplatesResponseBodyCompliancePackTemplatesResult `json:"CompliancePackTemplatesResult,omitempty" xml:"CompliancePackTemplatesResult,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -24263,7 +24305,7 @@ type ListCompliancePackTemplatesResponseBodyCompliancePackTemplatesResultComplia
 	CompliancePackTemplateId *string `json:"CompliancePackTemplateId,omitempty" xml:"CompliancePackTemplateId,omitempty"`
 	// The name of the compliance package template.
 	CompliancePackTemplateName *string `json:"CompliancePackTemplateName,omitempty" xml:"CompliancePackTemplateName,omitempty"`
-	// The information about managed rules in the compliance package.
+	// The default rules in the compliance package.
 	ConfigRules []*ListCompliancePackTemplatesResponseBodyCompliancePackTemplatesResultCompliancePackTemplatesConfigRules `json:"ConfigRules,omitempty" xml:"ConfigRules,omitempty" type:"Repeated"`
 	// The description of the compliance package.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
@@ -24275,7 +24317,7 @@ type ListCompliancePackTemplatesResponseBodyCompliancePackTemplatesResultComplia
 	//
 	// 1663408308
 	LastUpdate *int32 `json:"LastUpdate,omitempty" xml:"LastUpdate,omitempty"`
-	// The risk level of the resources that are not compliant with the managed rules in the compliance package. Valid values:
+	// The risk level of the managed rule in the compliance package. Valid values:
 	//
 	// 	- 1: high
 	//
@@ -24333,7 +24375,7 @@ func (s *ListCompliancePackTemplatesResponseBodyCompliancePackTemplatesResultCom
 }
 
 type ListCompliancePackTemplatesResponseBodyCompliancePackTemplatesResultCompliancePackTemplatesConfigRules struct {
-	// The input parameters of the managed rule.
+	// The input parameter of the managed rule.
 	ConfigRuleParameters []*ListCompliancePackTemplatesResponseBodyCompliancePackTemplatesResultCompliancePackTemplatesConfigRulesConfigRuleParameters `json:"ConfigRuleParameters,omitempty" xml:"ConfigRuleParameters,omitempty" type:"Repeated"`
 	// The description of the regulation. This parameter is available only for regulation compliance packages.
 	//
@@ -24341,15 +24383,15 @@ type ListCompliancePackTemplatesResponseBodyCompliancePackTemplatesResultComplia
 	//
 	// No classic networks exist.
 	ControlDescription *string `json:"ControlDescription,omitempty" xml:"ControlDescription,omitempty"`
-	// The ID of the regulation.
+	// The regulation ID.
 	//
-	// > This parameter is available only for regulation compliance packages.
+	// >  This parameter is available only for regulation compliance packages.
 	//
 	// example:
 	//
 	// 3.1
 	ControlId *string `json:"ControlId,omitempty" xml:"ControlId,omitempty"`
-	// Indicates whether the rule was enabled together with the compliance package. Default value: false. The value true indicates that the rule was enabled together with the compliance package. Valid values:
+	// Indicates whether the rules are enabled together with the compliance package. Valid values:
 	//
 	// 	- true
 	//
@@ -24359,7 +24401,7 @@ type ListCompliancePackTemplatesResponseBodyCompliancePackTemplatesResultComplia
 	//
 	// false
 	DefaultEnable *bool `json:"DefaultEnable,omitempty" xml:"DefaultEnable,omitempty"`
-	// The description of the managed rule.
+	// The description of the rule.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The identifier of the managed rule.
 	//
@@ -24369,13 +24411,13 @@ type ListCompliancePackTemplatesResponseBodyCompliancePackTemplatesResultComplia
 	ManagedRuleIdentifier *string `json:"ManagedRuleIdentifier,omitempty" xml:"ManagedRuleIdentifier,omitempty"`
 	// The name of the managed rule.
 	ManagedRuleName *string `json:"ManagedRuleName,omitempty" xml:"ManagedRuleName,omitempty"`
-	// The type of the resource evaluated based on the rule.
+	// The types of the resources evaluated based on the rule.
 	//
 	// example:
 	//
 	// ACS::SLB::ServerCertificate
 	ResourceTypesScope *string `json:"ResourceTypesScope,omitempty" xml:"ResourceTypesScope,omitempty"`
-	// The risk level of the resources that are not compliant with the managed rule. Valid values:
+	// The risk level of the managed rule. Valid values:
 	//
 	// 	- 1: high
 	//
@@ -24443,23 +24485,23 @@ func (s *ListCompliancePackTemplatesResponseBodyCompliancePackTemplatesResultCom
 }
 
 type ListCompliancePackTemplatesResponseBodyCompliancePackTemplatesResultCompliancePackTemplatesConfigRulesConfigRuleParameters struct {
-	// The name of the input parameter.
+	// The name of the input parameter of the managed rule.
 	//
 	// example:
 	//
 	// days
 	ParameterName *string `json:"ParameterName,omitempty" xml:"ParameterName,omitempty"`
-	// The value of the input parameter.
+	// The value of the input parameter of the managed rule.
 	//
 	// example:
 	//
 	// 90
 	ParameterValue *string `json:"ParameterValue,omitempty" xml:"ParameterValue,omitempty"`
-	// Indicates whether the input parameter is required. Valid values:
+	// Indicates whether the parameter is required in the managed rule. Valid values:
 	//
-	// 	- true: The parameter is required.
+	// 	- true: required
 	//
-	// 	- false: The input parameter is optional.
+	// 	- false: optional
 	//
 	// example:
 	//
@@ -24601,7 +24643,7 @@ func (s *ListCompliancePacksResponseBody) SetRequestId(v string) *ListCompliance
 }
 
 type ListCompliancePacksResponseBodyCompliancePacksResult struct {
-	// The details of the compliance package.
+	// The compliance packages.
 	CompliancePacks []*ListCompliancePacksResponseBodyCompliancePacksResultCompliancePacks `json:"CompliancePacks,omitempty" xml:"CompliancePacks,omitempty" type:"Repeated"`
 	// The page number of the returned page.
 	//
@@ -24658,7 +24700,7 @@ type ListCompliancePacksResponseBodyCompliancePacksResultCompliancePacks struct 
 	//
 	// 120886317861****
 	AccountId *int64 `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	// The ID of the compliance package.
+	// The compliance package ID.
 	//
 	// example:
 	//
@@ -24666,7 +24708,7 @@ type ListCompliancePacksResponseBodyCompliancePacksResultCompliancePacks struct 
 	CompliancePackId *string `json:"CompliancePackId,omitempty" xml:"CompliancePackId,omitempty"`
 	// The name of the compliance package.
 	CompliancePackName *string `json:"CompliancePackName,omitempty" xml:"CompliancePackName,omitempty"`
-	// The ID of the compliance package template based on which the compliance package was created.
+	// The ID of the compliance package template.
 	//
 	// example:
 	//
@@ -24680,13 +24722,13 @@ type ListCompliancePacksResponseBodyCompliancePacksResultCompliancePacks struct 
 	CreateTimestamp *int64 `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
 	// The description of the compliance package.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The risk level of the resources that are not compliant with the managed rules in the compliance package. Valid values:
+	// The risk level of the resources that are not compliant with the rules in the compliance package. Valid values:
 	//
-	// 	- 1: high risk level.
+	// 	- 1: high
 	//
-	// 	- 2: medium risk level.
+	// 	- 2: medium
 	//
-	// 	- 3: low risk level.
+	// 	- 3: low
 	//
 	// example:
 	//
@@ -24694,7 +24736,7 @@ type ListCompliancePacksResponseBodyCompliancePacksResultCompliancePacks struct 
 	RiskLevel *int32 `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
 	// The status of the compliance package. Valid values:
 	//
-	// 	- ACTIVE: The compliance package is active.
+	// 	- ACTIVE: The compliance package is normal.
 	//
 	// 	- CREATING: The compliance package is being created.
 	//
@@ -24838,7 +24880,8 @@ type ListConfigDeliveryChannelsResponseBodyDeliveryChannels struct {
 	// example:
 	//
 	// 120886317861****
-	AccountId *int64 `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	AccountId         *int64 `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	CompliantSnapshot *bool  `json:"CompliantSnapshot,omitempty" xml:"CompliantSnapshot,omitempty"`
 	// Indicates whether the specified destination receives resource change logs. If the value of this parameter is true, Cloud Config delivers the resource change logs to OSS, Log Service, or MNS when the configurations of the resources change. Valid values:
 	//
 	// 	- true: The specified destination receives resource change logs.
@@ -24980,6 +25023,11 @@ func (s *ListConfigDeliveryChannelsResponseBodyDeliveryChannels) SetAccountId(v 
 	return s
 }
 
+func (s *ListConfigDeliveryChannelsResponseBodyDeliveryChannels) SetCompliantSnapshot(v bool) *ListConfigDeliveryChannelsResponseBodyDeliveryChannels {
+	s.CompliantSnapshot = &v
+	return s
+}
+
 func (s *ListConfigDeliveryChannelsResponseBodyDeliveryChannels) SetConfigurationItemChangeNotification(v bool) *ListConfigDeliveryChannelsResponseBodyDeliveryChannels {
 	s.ConfigurationItemChangeNotification = &v
 	return s
@@ -25085,9 +25133,9 @@ type ListConfigRuleEvaluationResultsRequest struct {
 	CompliancePackId *string `json:"CompliancePackId,omitempty" xml:"CompliancePackId,omitempty"`
 	// The compliance evaluation result of the resource. Valid values:
 	//
-	// 	- COMPLIANT: The resources are evaluated as compliant.
+	// 	- COMPLIANT: The resource is evaluated as compliant.
 	//
-	// 	- NON_COMPLIANT: The resources are evaluated as non-compliant.
+	// 	- NON_COMPLIANT: The resource is evaluated as non-compliant.
 	//
 	// 	- NOT_APPLICABLE: The rule does not apply to the resources.
 	//
@@ -26585,11 +26633,11 @@ type ListIntegratedServiceResponseBodyData struct {
 	IntegratedTypes *string `json:"IntegratedTypes,omitempty" xml:"IntegratedTypes,omitempty"`
 	// The identifier of the cloud service. Valid values:
 	//
-	// 	- eventbridge: event bus
+	// 	- eventbridge: EventBridge
 	//
 	// 	- cms: CloudMonitor
 	//
-	// 	- bpstudio: Cloud Architect Design Tools (CADT)
+	// 	- bpstudio: Cloud Architect Design Tools
 	//
 	// example:
 	//
@@ -26603,9 +26651,9 @@ type ListIntegratedServiceResponseBodyData struct {
 	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
 	// The integration status of the cloud service. Valid values:
 	//
-	// 	- 1: The cloud service is integrated.
+	// 	- true
 	//
-	// 	- 0: The cloud service is not integrated.
+	// 	- false
 	//
 	// example:
 	//
@@ -26671,7 +26719,7 @@ func (s *ListIntegratedServiceResponse) SetBody(v *ListIntegratedServiceResponse
 }
 
 type ListManagedRulesRequest struct {
-	// The keyword that you want to use to filter managed rules.
+	// The keyword of the managed rule.
 	//
 	// example:
 	//
@@ -26679,7 +26727,7 @@ type ListManagedRulesRequest struct {
 	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
 	// The page number.
 	//
-	// Pages start from page 1. Default value: 1.
+	// Page start from page 1. Default value: 1.
 	//
 	// example:
 	//
@@ -26699,13 +26747,13 @@ type ListManagedRulesRequest struct {
 	//
 	// ACS::ECS::Instance
 	ResourceTypes *string `json:"ResourceTypes,omitempty" xml:"ResourceTypes,omitempty"`
-	// The risk level that you want to use to filter managed rules. Valid values:
+	// The risk level of the managed rule. Valid values:
 	//
-	// 	- 1: high risk level
+	// 	- 1: high
 	//
-	// 	- 2: medium risk level
+	// 	- 2: medium
 	//
-	// 	- 3: low risk level
+	// 	- 3: low
 	//
 	// example:
 	//
@@ -26776,9 +26824,11 @@ func (s *ListManagedRulesResponseBody) SetRequestId(v string) *ListManagedRulesR
 }
 
 type ListManagedRulesResponseBodyManagedRules struct {
-	// The name of the remediation template.
+	// The details of the managed rule.
 	ManagedRuleList []*ListManagedRulesResponseBodyManagedRulesManagedRuleList `json:"ManagedRuleList,omitempty" xml:"ManagedRuleList,omitempty" type:"Repeated"`
-	// The page number of the returned page. Minimum value: 1.
+	// The page number.
+	//
+	// Page start from page 1.
 	//
 	// example:
 	//
@@ -26790,7 +26840,7 @@ type ListManagedRulesResponseBodyManagedRules struct {
 	//
 	// 1
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The total number of managed rules returned.
+	// The total number of entries returned.
 	//
 	// example:
 	//
@@ -26851,27 +26901,27 @@ type ListManagedRulesResponseBodyManagedRulesManagedRuleList struct {
 	//
 	// cdn-domain-https-enabled
 	Identifier *string `json:"Identifier,omitempty" xml:"Identifier,omitempty"`
-	// Classification description of the managed rule.
+	// The classification description of the managed rule.
 	Labels []*string `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
-	// Supported remediation template id.
+	// The ID of the remediation template.
 	//
 	// example:
 	//
 	// ACS-CDN-SetDomainServerCertificate
 	RemediationTemplateIdentifier *string `json:"RemediationTemplateIdentifier,omitempty" xml:"RemediationTemplateIdentifier,omitempty"`
-	// Supported remediation template name.
+	// The name of the remediation template.
 	//
 	// example:
 	//
 	// Configure encryption rules for OSS buckets
 	RemediationTemplateName *string `json:"RemediationTemplateName,omitempty" xml:"RemediationTemplateName,omitempty"`
-	// The risk level of the resources that do not comply with the managed rule. Valid values:
+	// The risk level of the resources that do not comply with the rule. Valid values:
 	//
-	// 	- 1: high risk level
+	// 	- 1: high
 	//
-	// 	- 2: medium risk level
+	// 	- 2: medium
 	//
-	// 	- 3: low risk level
+	// 	- 3: low
 	//
 	// example:
 	//
@@ -26879,11 +26929,11 @@ type ListManagedRulesResponseBodyManagedRulesManagedRuleList struct {
 	RiskLevel *int32 `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
 	// The effective scope of the managed rule.
 	Scope *ListManagedRulesResponseBodyManagedRulesManagedRuleListScope `json:"Scope,omitempty" xml:"Scope,omitempty" type:"Struct"`
-	// Whether pre-check is supported. Value:
+	// Indicates whether precheck is supported. Valid values:
 	//
-	// - true: Supported
+	// 	- true
 	//
-	// - false: not supported
+	// 	- false
 	//
 	// example:
 	//
@@ -26950,7 +27000,7 @@ func (s *ListManagedRulesResponseBodyManagedRulesManagedRuleList) SetSupportPrev
 }
 
 type ListManagedRulesResponseBodyManagedRulesManagedRuleListScope struct {
-	// The type of resource to which the managed rule applies.
+	// The types of resources to which the managed rule applies.
 	ComplianceResourceTypes []*string `json:"ComplianceResourceTypes,omitempty" xml:"ComplianceResourceTypes,omitempty" type:"Repeated"`
 }
 
@@ -27136,35 +27186,35 @@ func (s *ListPreManagedRulesResponseBody) SetRequestId(v string) *ListPreManaged
 }
 
 type ListPreManagedRulesResponseBodyManagedRules struct {
-	// The required input parameters of the evaluation rule.
+	// The details of the required input parameters of the rule.
 	//
 	// example:
 	//
 	// {}
 	CompulsoryInputParameterDetails map[string]interface{} `json:"CompulsoryInputParameterDetails,omitempty" xml:"CompulsoryInputParameterDetails,omitempty"`
-	// The name of the evaluation rule.
+	// The name of the rule.
 	ConfigRuleName *string `json:"ConfigRuleName,omitempty" xml:"ConfigRuleName,omitempty"`
-	// The description of the evaluation rule.
+	// The description of the rule.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The URL of the topic that describes how the managed rule remediates the incompliant configurations.
+	// The URL of the topic that describes how the evaluation rule remediates the incompliant configurations.
 	//
 	// example:
 	//
 	// https://example.aliyundoc.com
 	HelpUrls *string `json:"HelpUrls,omitempty" xml:"HelpUrls,omitempty"`
-	// The identifier of the evaluation rule.
+	// The identifier of the rule.
 	//
 	// example:
 	//
 	// ecs-instance-deletion-protection-enabled
 	Identifier *string `json:"Identifier,omitempty" xml:"Identifier,omitempty"`
-	// The details of the optional input parameters of the evaluation rule.
+	// The details of the optional input parameters of the rule.
 	//
 	// example:
 	//
 	// {}
 	OptionalInputParameterDetails map[string]interface{} `json:"OptionalInputParameterDetails,omitempty" xml:"OptionalInputParameterDetails,omitempty"`
-	// The type of the resource.
+	// The type of resource.
 	//
 	// example:
 	//
@@ -28067,7 +28117,7 @@ type ListResourceEvaluationResultsRequest struct {
 	//
 	// 	- NON_COMPLIANT: The resource is evaluated as non-compliant.
 	//
-	// 	- NOT_APPLICABLE: The rule does not apply to the resource.
+	// 	- NOT_APPLICABLE: The rule does not apply to the resources.
 	//
 	// 	- INSUFFICIENT_DATA: No data is available.
 	//
@@ -28077,7 +28127,7 @@ type ListResourceEvaluationResultsRequest struct {
 	//
 	// NON_COMPLIANT
 	ComplianceType *string `json:"ComplianceType,omitempty" xml:"ComplianceType,omitempty"`
-	// The maximum number of entries to return for a single request. Valid values: 1 to 100.
+	// The maximum number of entries to return in a request. Valid values: 1 to 100.
 	//
 	// example:
 	//
@@ -29647,9 +29697,9 @@ func (s *RevertAggregateEvaluationResultsRequest) SetResources(v []*RevertAggreg
 }
 
 type RevertAggregateEvaluationResultsRequestResources struct {
-	// The ID of the region where the resource resides.
+	// The ID of the region in which your resources reside.
 	//
-	// For more information about how to obtain the ID of a region, see [ListAggregateDiscoveredResources](https://help.aliyun.com/document_detail/265983.html).
+	// For more information about how to obtain the ID of the region in which your resources reside, see [ListAggregateDiscoveredResources](https://help.aliyun.com/document_detail/265983.html).
 	//
 	// This parameter is required.
 	//
@@ -29659,7 +29709,7 @@ type RevertAggregateEvaluationResultsRequestResources struct {
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
 	// The ID of the Alibaba Cloud account to which the resource belongs.
 	//
-	// > You must specify the ID of the current management account or a member account in the account group of the management account.
+	// >  You must specify the ID of the current management account or a member in the account group of the management account.
 	//
 	// This parameter is required.
 	//
@@ -29669,7 +29719,7 @@ type RevertAggregateEvaluationResultsRequestResources struct {
 	ResourceAccountId *int64 `json:"ResourceAccountId,omitempty" xml:"ResourceAccountId,omitempty"`
 	// The resource ID.
 	//
-	// For more information about how to query the ID of a resource, see [ListAggregateDiscoveredResources](https://help.aliyun.com/document_detail/265983.html).
+	// For more information about how to obtain the ID of a resource, see [ListAggregateDiscoveredResources](https://help.aliyun.com/document_detail/265983.html).
 	//
 	// This parameter is required.
 	//
@@ -29677,7 +29727,7 @@ type RevertAggregateEvaluationResultsRequestResources struct {
 	//
 	// lb-hp3a3b4ztyfm2plgm****
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	// The type of resource.
+	// The type of the resource.
 	//
 	// For more information about how to obtain the type of a resource, see [ListAggregateDiscoveredResources](https://help.aliyun.com/document_detail/265983.html).
 	//
@@ -30029,17 +30079,19 @@ type StartAggregateConfigRuleEvaluationRequest struct {
 	CompliancePackId *string `json:"CompliancePackId,omitempty" xml:"CompliancePackId,omitempty"`
 	// The rule ID.
 	//
-	// For more information about how to obtain the ID of a rule, see [ListAggregateConfigRules](https://help.aliyun.com/document_detail/264148.html).
+	// For more information about how to query the ID of a rule, see [ListAggregateConfigRules](https://help.aliyun.com/document_detail/264148.html).
+	//
+	// >  You must configure either the `CompliancePackId` or `ConfigRuleId` parameter.
 	//
 	// example:
 	//
 	// cr-c169626622af009f****
 	ConfigRuleId *string `json:"ConfigRuleId,omitempty" xml:"ConfigRuleId,omitempty"`
-	// Specifies whether to re-evaluate the ignored incompliant resource. Valid values:
+	// Specifies whether to re-evaluate the ignored non-compliant resource. Valid values:
 	//
-	// 	- true: The ignored incompliant resource based on the rule are re-evaluated.
+	// 	- true: re-evaluates the ignored non-compliant resource based on the rule.
 	//
-	// 	- false: The ignored incompliant resource based on the rule are not re-evaluated.
+	// 	- false (default): does not re-evaluate the ignored non-compliant resource based on the rule.
 	//
 	// example:
 	//
@@ -30262,11 +30314,11 @@ func (s *StartAggregateRemediationResponse) SetBody(v *StartAggregateRemediation
 }
 
 type StartConfigRuleEvaluationRequest struct {
-	// The ID of the compliance package.
+	// The compliance package ID.
 	//
 	// For more information about how to obtain the ID of a compliance package, see [ListCompliancePacks](https://help.aliyun.com/document_detail/606968.html).
 	//
-	// >  You must set either the CompliancePackId or ConfigRuleId parameter.
+	// >  You must configure either the `CompliancePackId` or `ConfigRuleId` parameter.
 	//
 	// example:
 	//
@@ -30274,17 +30326,19 @@ type StartConfigRuleEvaluationRequest struct {
 	CompliancePackId *string `json:"CompliancePackId,omitempty" xml:"CompliancePackId,omitempty"`
 	// The rule ID.
 	//
-	// For more information about how to obtain the ID of a rule, see [ListConfigRules](https://help.aliyun.com/document_detail/609222.html).
+	// You can call the [ListConfigRules](https://help.aliyun.com/document_detail/609222.html) operation to obtain the rule ID.
+	//
+	// >  You must configure either the `CompliancePackId` or `ConfigRuleId` parameter.
 	//
 	// example:
 	//
 	// cr-9920626622af0035****
 	ConfigRuleId *string `json:"ConfigRuleId,omitempty" xml:"ConfigRuleId,omitempty"`
-	// Specifies whether to re-evaluate ignored non-compliant resources. Valid values:
+	// Specifies whether to re-evaluate the ignored non-compliant resource. Valid values:
 	//
-	// 	- true: re-evaluates ignored non-compliant resources based on the rule.
+	// 	- true: re-evaluates the ignored non-compliant resource based on the rule.
 	//
-	// 	- false: continues to ignore non-compliant resources.
+	// 	- false (default): does not re-evaluate the ignored non-compliant resource based on the rule.
 	//
 	// example:
 	//
@@ -31024,11 +31078,9 @@ type UpdateAggregateCompliancePackRequest struct {
 	CompliancePackName *string `json:"CompliancePackName,omitempty" xml:"CompliancePackName,omitempty"`
 	// The rules in the compliance package.
 	//
-	// If you leave this parameter empty, the rules in the compliance package remain unchanged. If you configure this parameter, Cloud Config replaces the existing rules in the compliance package with the specified rules.
+	// If you leave this parameter empty, the rules in the compliance package remain unchanged. If you set this parameter, Cloud Config replaces the existing rules in the compliance package with the specified rules.
 	ConfigRules []*UpdateAggregateCompliancePackRequestConfigRules `json:"ConfigRules,omitempty" xml:"ConfigRules,omitempty" type:"Repeated"`
 	// The description of the compliance package.
-	//
-	// For more information about how to obtain the description of a compliance package, see [ListCompliancePacks](https://help.aliyun.com/document_detail/262059.html).
 	//
 	// example:
 	//
@@ -31179,21 +31231,21 @@ func (s *UpdateAggregateCompliancePackRequest) SetTagsScope(v []*UpdateAggregate
 }
 
 type UpdateAggregateCompliancePackRequestConfigRules struct {
-	// The ID of the rule. If you configure this parameter, Cloud Config adds the rule of the specified ID to the compliance package.
+	// The rule ID. If you configure this parameter, Cloud Config adds the rule that has the specified ID to the compliance package.
 	//
-	// You only need to configure the `ManagedRuleIdentifier` or `ConfigRuleId` parameter. If you configure both parameters, the value of the `ConfigRuleId` parameter takes precedence. For more information about how to obtain the ID of a rule, see [ListAggregateConfigRules](https://help.aliyun.com/document_detail/264148.html).
+	// You need to only configure the `ManagedRuleIdentifier` or `ConfigRuleId` parameter. If you configure both parameters, the value of the `ConfigRuleId` parameter takes precedence. For more information about how to obtain the ID of a rule, see [ListAggregateConfigRules](https://help.aliyun.com/document_detail/264148.html).
 	//
 	// example:
 	//
 	// cr-e918626622af000f****
 	ConfigRuleId *string `json:"ConfigRuleId,omitempty" xml:"ConfigRuleId,omitempty"`
-	// The name of the rule.
+	// The rule name.
 	//
 	// example:
 	//
 	// test-rule-name
 	ConfigRuleName *string `json:"ConfigRuleName,omitempty" xml:"ConfigRuleName,omitempty"`
-	// The input parameter settings of the rule.
+	// The input parameters of the rule.
 	ConfigRuleParameters []*UpdateAggregateCompliancePackRequestConfigRulesConfigRuleParameters `json:"ConfigRuleParameters,omitempty" xml:"ConfigRuleParameters,omitempty" type:"Repeated"`
 	// The description of the rule.
 	//
@@ -31201,21 +31253,21 @@ type UpdateAggregateCompliancePackRequestConfigRules struct {
 	//
 	// The description of the test rule.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of the managed rule. Cloud Config automatically creates a managed rule based on the specified ID and adds the rule to the compliance package.
+	// The identifier of the managed rule. Cloud Config automatically creates a rule based on the identifier of the managed rule and adds the rule to the current compliance package.
 	//
-	// You only need to configure the `ManagedRuleIdentifier` or `ConfigRuleId` parameter. If you configure both parameters, the value of the `ConfigRuleId` parameter takes precedence. For more information about how to obtain the ID of a managed rule, see [ListCompliancePackTemplates](https://help.aliyun.com/document_detail/261176.html).
+	// You need to only configure the `ManagedRuleIdentifier` or `ConfigRuleId` parameter. If you configure both parameters, the value of the `ConfigRuleId` parameter takes precedence. You can call the [ListCompliancePackTemplates](https://help.aliyun.com/document_detail/261176.html) operation to obtain the identifier of the managed rule.
 	//
 	// example:
 	//
 	// eip-bandwidth-limit
 	ManagedRuleIdentifier *string `json:"ManagedRuleIdentifier,omitempty" xml:"ManagedRuleIdentifier,omitempty"`
-	// The risk level of the resources that are not compliant with the rule. Valid values:
+	// The risk level of the resources that do not comply with the rule. Valid values:
 	//
-	// 	- 1: high risk level
+	// 	- 1: high
 	//
-	// 	- 2: medium risk level
+	// 	- 2: medium
 	//
-	// 	- 3: low risk level
+	// 	- 3: low
 	//
 	// example:
 	//
@@ -31272,7 +31324,7 @@ type UpdateAggregateCompliancePackRequestConfigRulesConfigRuleParameters struct 
 	ParameterName *string `json:"ParameterName,omitempty" xml:"ParameterName,omitempty"`
 	// The value of the input parameter.
 	//
-	// You must configure the `ParameterName` and `ParameterValue` parameters or neither of them. If the managed rule has an input parameter but no default value exists you must configure this parameter. For more information about how to obtain the value of an input parameter for a managed rule, see [ListCompliancePackTemplates](https://help.aliyun.com/document_detail/261176.html).
+	// You must configure the `ParameterName` and `ParameterValue` parameters or neither of them. If the managed rule has an input parameter but no default value exists, you must configure this parameter. For more information about how to obtain the value of an input parameter for a managed rule, see [ListCompliancePackTemplates](https://help.aliyun.com/document_detail/261176.html).
 	//
 	// example:
 	//
@@ -31381,11 +31433,9 @@ type UpdateAggregateCompliancePackShrinkRequest struct {
 	CompliancePackName *string `json:"CompliancePackName,omitempty" xml:"CompliancePackName,omitempty"`
 	// The rules in the compliance package.
 	//
-	// If you leave this parameter empty, the rules in the compliance package remain unchanged. If you configure this parameter, Cloud Config replaces the existing rules in the compliance package with the specified rules.
+	// If you leave this parameter empty, the rules in the compliance package remain unchanged. If you set this parameter, Cloud Config replaces the existing rules in the compliance package with the specified rules.
 	ConfigRulesShrink *string `json:"ConfigRules,omitempty" xml:"ConfigRules,omitempty"`
 	// The description of the compliance package.
-	//
-	// For more information about how to obtain the description of a compliance package, see [ListCompliancePacks](https://help.aliyun.com/document_detail/262059.html).
 	//
 	// example:
 	//
@@ -31662,6 +31712,9 @@ type UpdateAggregateConfigDeliveryChannelRequest struct {
 	//
 	// 1594295238-f9361358-5843-4294-8d30-b5183fac****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// if can be null:
+	// true
+	CompliantSnapshot *bool `json:"CompliantSnapshot,omitempty" xml:"CompliantSnapshot,omitempty"`
 	// Specifies whether to deliver resource change logs. If you set this parameter to true, Cloud Config delivers resource change logs to OSS, Log Service, or MNS when the configurations of the resources change. Valid values:
 	//
 	// 	- true: Cloud Config delivers resource change logs.
@@ -31810,6 +31863,11 @@ func (s *UpdateAggregateConfigDeliveryChannelRequest) SetAggregatorId(v string) 
 
 func (s *UpdateAggregateConfigDeliveryChannelRequest) SetClientToken(v string) *UpdateAggregateConfigDeliveryChannelRequest {
 	s.ClientToken = &v
+	return s
+}
+
+func (s *UpdateAggregateConfigDeliveryChannelRequest) SetCompliantSnapshot(v bool) *UpdateAggregateConfigDeliveryChannelRequest {
+	s.CompliantSnapshot = &v
 	return s
 }
 
@@ -31976,7 +32034,7 @@ type UpdateAggregateConfigRuleRequest struct {
 	ConfigRuleTriggerTypes *string `json:"ConfigRuleTriggerTypes,omitempty" xml:"ConfigRuleTriggerTypes,omitempty"`
 	// The description of the rule.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of the member account to which the rule does not apply, which means that the resources within the member account are not evaluated based on the rule. Separate multiple member account IDs with commas (,).
+	// The IDs of the member accounts to which the rule does not apply, which means that the resources within the member accounts are not evaluated based on the rule. Separate multiple member account IDs with commas (,).
 	//
 	// >  This parameter applies only to a managed rule.
 	//
@@ -31984,7 +32042,7 @@ type UpdateAggregateConfigRuleRequest struct {
 	//
 	// 120886317861****
 	ExcludeAccountIdsScope *string `json:"ExcludeAccountIdsScope,omitempty" xml:"ExcludeAccountIdsScope,omitempty"`
-	// The ID of the resource directory to which the rule does not apply, which means that the resources within member accounts in the resource directory are not evaluated based on the rule. Separate multiple resource directory IDs with commas (,).
+	// The IDs of the resource directories to which the rule does not apply, which means that the resources within member accounts in the resource directories are not evaluated based on the rule. Separate multiple resource directory IDs with commas (,).
 	//
 	// >
 	//
@@ -31998,7 +32056,7 @@ type UpdateAggregateConfigRuleRequest struct {
 	ExcludeFolderIdsScope        *string `json:"ExcludeFolderIdsScope,omitempty" xml:"ExcludeFolderIdsScope,omitempty"`
 	ExcludeRegionIdsScope        *string `json:"ExcludeRegionIdsScope,omitempty" xml:"ExcludeRegionIdsScope,omitempty"`
 	ExcludeResourceGroupIdsScope *string `json:"ExcludeResourceGroupIdsScope,omitempty" xml:"ExcludeResourceGroupIdsScope,omitempty"`
-	// The ID of the resource to be excluded from the compliance evaluations performed by the rule. Separate multiple resource IDs with commas (,).
+	// The IDs of the resources excluded from the compliance evaluations performed by the rule. Separate multiple resource IDs with commas (,).
 	//
 	// >  This parameter applies only to a managed rule.
 	//
@@ -32007,7 +32065,7 @@ type UpdateAggregateConfigRuleRequest struct {
 	// lb-t4nbowvtbkss7t326****
 	ExcludeResourceIdsScope *string                                             `json:"ExcludeResourceIdsScope,omitempty" xml:"ExcludeResourceIdsScope,omitempty"`
 	ExcludeTagsScope        []*UpdateAggregateConfigRuleRequestExcludeTagsScope `json:"ExcludeTagsScope,omitempty" xml:"ExcludeTagsScope,omitempty" type:"Repeated"`
-	// The ID of the resource directory to which the rule applies, which means that the resources within member accounts in the resource directory are evaluated based on the rule.
+	// The IDs of the resource directories to which the rule applies, which means that the resources within member accounts in the resource directories are evaluated based on the rule.
 	//
 	// >
 	//
@@ -32043,7 +32101,7 @@ type UpdateAggregateConfigRuleRequest struct {
 	//
 	// One_Hour
 	MaximumExecutionFrequency *string `json:"MaximumExecutionFrequency,omitempty" xml:"MaximumExecutionFrequency,omitempty"`
-	// The ID of the region to which the rule applies. Separate multiple region IDs with commas (,).
+	// The IDs of the regions to which the rule applies. Separate multiple region IDs with commas (,).
 	//
 	// >  This parameter applies only to a managed rule.
 	//
@@ -32051,7 +32109,7 @@ type UpdateAggregateConfigRuleRequest struct {
 	//
 	// cn-hangzhou
 	RegionIdsScope *string `json:"RegionIdsScope,omitempty" xml:"RegionIdsScope,omitempty"`
-	// The ID of the resource group to which the rule applies. Separate multiple resource group IDs with commas (,).
+	// The IDs of the resource groups to which the rule applies. Separate multiple resource group IDs with commas (,).
 	//
 	// >  This parameter applies only to a managed rule.
 	//
@@ -32090,15 +32148,15 @@ type UpdateAggregateConfigRuleRequest struct {
 	TagKeyLogicScope *string `json:"TagKeyLogicScope,omitempty" xml:"TagKeyLogicScope,omitempty"`
 	// The tag key used to filter resources. The rule applies only to the resources with the specified tag key.
 	//
-	// >  This parameter applies only to a managed rule. You must set the `TagKeyScope` and `TagValueScope` parameters at the same time.
+	// >  This parameter applies only to a managed rule. You must configure the `TagKeyScope` and `TagValueScope` parameters at the same time.
 	//
 	// example:
 	//
 	// ECS
 	TagKeyScope *string `json:"TagKeyScope,omitempty" xml:"TagKeyScope,omitempty"`
-	// The tag value used to filter resources. The rule applies only to the resources with the specified tag value.
+	// The tag value used to filter resources. The rule applies only to the resources that use the specified tag value.
 	//
-	// >  This parameter applies only to a managed rule. You must set the `TagKeyScope` and `TagValueScope` parameters at the same time.
+	// >  This parameter applies only to a managed rule. You must configure the `TagKeyScope` and `TagValueScope` parameters at the same time.
 	//
 	// example:
 	//
@@ -32332,7 +32390,7 @@ type UpdateAggregateConfigRuleShrinkRequest struct {
 	ConfigRuleTriggerTypes *string `json:"ConfigRuleTriggerTypes,omitempty" xml:"ConfigRuleTriggerTypes,omitempty"`
 	// The description of the rule.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of the member account to which the rule does not apply, which means that the resources within the member account are not evaluated based on the rule. Separate multiple member account IDs with commas (,).
+	// The IDs of the member accounts to which the rule does not apply, which means that the resources within the member accounts are not evaluated based on the rule. Separate multiple member account IDs with commas (,).
 	//
 	// >  This parameter applies only to a managed rule.
 	//
@@ -32340,7 +32398,7 @@ type UpdateAggregateConfigRuleShrinkRequest struct {
 	//
 	// 120886317861****
 	ExcludeAccountIdsScope *string `json:"ExcludeAccountIdsScope,omitempty" xml:"ExcludeAccountIdsScope,omitempty"`
-	// The ID of the resource directory to which the rule does not apply, which means that the resources within member accounts in the resource directory are not evaluated based on the rule. Separate multiple resource directory IDs with commas (,).
+	// The IDs of the resource directories to which the rule does not apply, which means that the resources within member accounts in the resource directories are not evaluated based on the rule. Separate multiple resource directory IDs with commas (,).
 	//
 	// >
 	//
@@ -32354,7 +32412,7 @@ type UpdateAggregateConfigRuleShrinkRequest struct {
 	ExcludeFolderIdsScope        *string `json:"ExcludeFolderIdsScope,omitempty" xml:"ExcludeFolderIdsScope,omitempty"`
 	ExcludeRegionIdsScope        *string `json:"ExcludeRegionIdsScope,omitempty" xml:"ExcludeRegionIdsScope,omitempty"`
 	ExcludeResourceGroupIdsScope *string `json:"ExcludeResourceGroupIdsScope,omitempty" xml:"ExcludeResourceGroupIdsScope,omitempty"`
-	// The ID of the resource to be excluded from the compliance evaluations performed by the rule. Separate multiple resource IDs with commas (,).
+	// The IDs of the resources excluded from the compliance evaluations performed by the rule. Separate multiple resource IDs with commas (,).
 	//
 	// >  This parameter applies only to a managed rule.
 	//
@@ -32363,7 +32421,7 @@ type UpdateAggregateConfigRuleShrinkRequest struct {
 	// lb-t4nbowvtbkss7t326****
 	ExcludeResourceIdsScope *string                                                   `json:"ExcludeResourceIdsScope,omitempty" xml:"ExcludeResourceIdsScope,omitempty"`
 	ExcludeTagsScope        []*UpdateAggregateConfigRuleShrinkRequestExcludeTagsScope `json:"ExcludeTagsScope,omitempty" xml:"ExcludeTagsScope,omitempty" type:"Repeated"`
-	// The ID of the resource directory to which the rule applies, which means that the resources within member accounts in the resource directory are evaluated based on the rule.
+	// The IDs of the resource directories to which the rule applies, which means that the resources within member accounts in the resource directories are evaluated based on the rule.
 	//
 	// >
 	//
@@ -32399,7 +32457,7 @@ type UpdateAggregateConfigRuleShrinkRequest struct {
 	//
 	// One_Hour
 	MaximumExecutionFrequency *string `json:"MaximumExecutionFrequency,omitempty" xml:"MaximumExecutionFrequency,omitempty"`
-	// The ID of the region to which the rule applies. Separate multiple region IDs with commas (,).
+	// The IDs of the regions to which the rule applies. Separate multiple region IDs with commas (,).
 	//
 	// >  This parameter applies only to a managed rule.
 	//
@@ -32407,7 +32465,7 @@ type UpdateAggregateConfigRuleShrinkRequest struct {
 	//
 	// cn-hangzhou
 	RegionIdsScope *string `json:"RegionIdsScope,omitempty" xml:"RegionIdsScope,omitempty"`
-	// The ID of the resource group to which the rule applies. Separate multiple resource group IDs with commas (,).
+	// The IDs of the resource groups to which the rule applies. Separate multiple resource group IDs with commas (,).
 	//
 	// >  This parameter applies only to a managed rule.
 	//
@@ -32446,15 +32504,15 @@ type UpdateAggregateConfigRuleShrinkRequest struct {
 	TagKeyLogicScope *string `json:"TagKeyLogicScope,omitempty" xml:"TagKeyLogicScope,omitempty"`
 	// The tag key used to filter resources. The rule applies only to the resources with the specified tag key.
 	//
-	// >  This parameter applies only to a managed rule. You must set the `TagKeyScope` and `TagValueScope` parameters at the same time.
+	// >  This parameter applies only to a managed rule. You must configure the `TagKeyScope` and `TagValueScope` parameters at the same time.
 	//
 	// example:
 	//
 	// ECS
 	TagKeyScope *string `json:"TagKeyScope,omitempty" xml:"TagKeyScope,omitempty"`
-	// The tag value used to filter resources. The rule applies only to the resources with the specified tag value.
+	// The tag value used to filter resources. The rule applies only to the resources that use the specified tag value.
 	//
-	// >  This parameter applies only to a managed rule. You must set the `TagKeyScope` and `TagValueScope` parameters at the same time.
+	// >  This parameter applies only to a managed rule. You must configure the `TagKeyScope` and `TagValueScope` parameters at the same time.
 	//
 	// example:
 	//
@@ -32883,9 +32941,9 @@ func (s *UpdateAggregateRemediationResponse) SetBody(v *UpdateAggregateRemediati
 }
 
 type UpdateAggregatorRequest struct {
-	// The information about the member accounts in the account group.
+	// The members in the account group.
 	//
-	// >  When you modify the configurations of an account group, this parameter can be left empty. In this case, the member account list is not updated. If you want to update the member account list, you must set the `AccountId`, `AccountName` and `AccountType` parameters.
+	// >  When you modify the configurations of an account group, this parameter can be left empty. In this case, the member list is not updated. If you want to update the member list, you must configure both the `AccountId` and `AccountType` parameters.
 	//
 	// if can be null:
 	// false
@@ -32954,29 +33012,29 @@ func (s *UpdateAggregatorRequest) SetDescription(v string) *UpdateAggregatorRequ
 }
 
 type UpdateAggregatorRequestAggregatorAccounts struct {
-	// The member account ID, which indicates the Alibaba Cloud account ID of the member account.
+	// The ID of the member.
 	//
-	// For more information about how to obtain the ID of a member account, see [ListAccounts](https://help.aliyun.com/document_detail/160016.html).
+	// For more information about how to obtain the ID of a member, see [ListAccounts](https://help.aliyun.com/document_detail/160016.html).
 	//
-	// >  If you want to update the member account list, you must set the `AccountId`, `AccountName` and `AccountType` parameters.
+	// >  If you want to update the member list, you must configure both the `AccountId` and `AccountType` parameters.
 	//
 	// example:
 	//
 	// 173808452267****
 	AccountId *int64 `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	// The member account name, which indicates the name of the Alibaba Cloud account that corresponds to the member account.
+	// The display name of the member.
 	//
-	// For more information about how to obtain the name of a member account, see [ListAccounts](https://help.aliyun.com/document_detail/160016.html).
+	// For more information about how to obtain the name of a member, see [ListAccounts](https://help.aliyun.com/document_detail/160016.html).
 	//
-	// >  If you want to update the member account list, you must set the `AccountId`, `AccountName` and `AccountType` parameters.
+	// >  If you want to update the member list, you must configure both the `AccountId` and `AccountType` parameters.
 	//
 	// example:
 	//
 	// Tony
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	// The affiliation of the member account. You can set this parameter to only ResourceDirectory.
+	// The resource directory to which the member belongs. Valid value: ResourceDirectory. ResourceDirectory indicates that the member belongs to a resource directory.
 	//
-	// >  If you want to update the member account list, you must set the `AccountId`, `AccountName` and `AccountType` parameters.
+	// >  If you want to update the member list, you must configure both the `AccountId` and `AccountType` parameters.
 	//
 	// example:
 	//
@@ -33008,9 +33066,9 @@ func (s *UpdateAggregatorRequestAggregatorAccounts) SetAccountType(v string) *Up
 }
 
 type UpdateAggregatorShrinkRequest struct {
-	// The information about the member accounts in the account group.
+	// The members in the account group.
 	//
-	// >  When you modify the configurations of an account group, this parameter can be left empty. In this case, the member account list is not updated. If you want to update the member account list, you must set the `AccountId`, `AccountName` and `AccountType` parameters.
+	// >  When you modify the configurations of an account group, this parameter can be left empty. In this case, the member list is not updated. If you want to update the member list, you must configure both the `AccountId` and `AccountType` parameters.
 	//
 	// if can be null:
 	// false
@@ -33166,8 +33224,6 @@ type UpdateCompliancePackRequest struct {
 	// If you leave this parameter empty, the rules in the compliance package remain unchanged. If you configure this parameter, Cloud Config replaces the existing rules in the compliance package with the specified rules.
 	ConfigRules []*UpdateCompliancePackRequestConfigRules `json:"ConfigRules,omitempty" xml:"ConfigRules,omitempty" type:"Repeated"`
 	// The description of the compliance package.
-	//
-	// For more information about how to obtain the description of a compliance package, see [ListCompliancePacks](https://help.aliyun.com/document_detail/263332.html).
 	Description                  *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	ExcludeRegionIdsScope        *string `json:"ExcludeRegionIdsScope,omitempty" xml:"ExcludeRegionIdsScope,omitempty"`
 	ExcludeResourceGroupIdsScope *string `json:"ExcludeResourceGroupIdsScope,omitempty" xml:"ExcludeResourceGroupIdsScope,omitempty"`
@@ -33309,35 +33365,35 @@ func (s *UpdateCompliancePackRequest) SetTagsScope(v []*UpdateCompliancePackRequ
 }
 
 type UpdateCompliancePackRequestConfigRules struct {
-	// The ID of the rule. If you configure this parameter, Cloud Config adds the rule of the specified ID to the compliance package.
+	// The rule ID. If you configure this parameter, Cloud Config adds the rule that has the specified ID to the compliance package.
 	//
-	// You only need to configure the `ManagedRuleIdentifier` or `ConfigRuleId` parameter. If you configure both parameters, the value of the `ConfigRuleId` parameter takes precedence. For more information about how to obtain the ID of a rule, see [ListConfigRules](https://help.aliyun.com/document_detail/169607.html).
+	// You need to only configure the `ManagedRuleIdentifier` or `ConfigRuleId` parameter. If you configure both parameters, the value of the `ConfigRuleId` parameter takes precedence. You can call the [ListConfigRules](https://help.aliyun.com/document_detail/169607.html) operation to obtain the rule ID.
 	//
 	// example:
 	//
 	// cr-e918626622af000f****
 	ConfigRuleId *string `json:"ConfigRuleId,omitempty" xml:"ConfigRuleId,omitempty"`
-	// The name of the rule.
+	// The rule name.
 	ConfigRuleName *string `json:"ConfigRuleName,omitempty" xml:"ConfigRuleName,omitempty"`
-	// The details of the input parameters of the rule.
+	// The input parameters of the rule.
 	ConfigRuleParameters []*UpdateCompliancePackRequestConfigRulesConfigRuleParameters `json:"ConfigRuleParameters,omitempty" xml:"ConfigRuleParameters,omitempty" type:"Repeated"`
-	// The description of the rule.
+	// The description of the event rule.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of the managed rule. Cloud Config automatically create a managed rule of the specified ID and adds the rule to the compliance package.
+	// The identifier of the managed rule. Cloud Config automatically creates a rule based on the identifier of the managed rule and adds the rule to the current compliance package.
 	//
-	// You only need to configure the `ManagedRuleIdentifier` or `ConfigRuleId` parameter. If you configure both parameters, the value of the `ConfigRuleId` parameter take precedence. For more information about how to obtain the ID of a managed rule, see [ListCompliancePackTemplates](https://help.aliyun.com/document_detail/261176.html).
+	// You need to only configure the `ManagedRuleIdentifier` or `ConfigRuleId` parameter. If you configure both parameters, the value of the `ConfigRuleId` parameter takes precedence. For more information about how to obtain the identifier of a managed rule, see [ListCompliancePackTemplates](https://help.aliyun.com/document_detail/261176.html).
 	//
 	// example:
 	//
 	// eip-bandwidth-limit
 	ManagedRuleIdentifier *string `json:"ManagedRuleIdentifier,omitempty" xml:"ManagedRuleIdentifier,omitempty"`
-	// The risk level of the resources that are not compliant with the rule. Valid values:
+	// The risk level of the resources that do not comply with the rule. Valid values:
 	//
-	// 	- 1: high risk level
+	// 	- 1: high
 	//
-	// 	- 2: medium risk level
+	// 	- 2: medium
 	//
-	// 	- 3: low risk level
+	// 	- 3: low
 	//
 	// example:
 	//
@@ -33492,8 +33548,6 @@ type UpdateCompliancePackShrinkRequest struct {
 	// If you leave this parameter empty, the rules in the compliance package remain unchanged. If you configure this parameter, Cloud Config replaces the existing rules in the compliance package with the specified rules.
 	ConfigRulesShrink *string `json:"ConfigRules,omitempty" xml:"ConfigRules,omitempty"`
 	// The description of the compliance package.
-	//
-	// For more information about how to obtain the description of a compliance package, see [ListCompliancePacks](https://help.aliyun.com/document_detail/263332.html).
 	Description                  *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	ExcludeRegionIdsScope        *string `json:"ExcludeRegionIdsScope,omitempty" xml:"ExcludeRegionIdsScope,omitempty"`
 	ExcludeResourceGroupIdsScope *string `json:"ExcludeResourceGroupIdsScope,omitempty" xml:"ExcludeResourceGroupIdsScope,omitempty"`
@@ -33751,6 +33805,9 @@ type UpdateConfigDeliveryChannelRequest struct {
 	//
 	// 1594295238-f9361358-5843-4294-8d30-b5183fac****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// if can be null:
+	// true
+	CompliantSnapshot *bool `json:"CompliantSnapshot,omitempty" xml:"CompliantSnapshot,omitempty"`
 	// Specifies whether to deliver resource change logs. If you set this parameter to true, Cloud Config delivers resource change logs to OSS, Log Service, or MNS when the configurations of the resources change. Valid values:
 	//
 	// 	- true: Cloud Config delivers resource change logs.
@@ -33894,6 +33951,11 @@ func (s UpdateConfigDeliveryChannelRequest) GoString() string {
 
 func (s *UpdateConfigDeliveryChannelRequest) SetClientToken(v string) *UpdateConfigDeliveryChannelRequest {
 	s.ClientToken = &v
+	return s
+}
+
+func (s *UpdateConfigDeliveryChannelRequest) SetCompliantSnapshot(v bool) *UpdateConfigDeliveryChannelRequest {
+	s.CompliantSnapshot = &v
 	return s
 }
 
@@ -34051,9 +34113,9 @@ type UpdateConfigRuleRequest struct {
 	Description                  *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	ExcludeRegionIdsScope        *string `json:"ExcludeRegionIdsScope,omitempty" xml:"ExcludeRegionIdsScope,omitempty"`
 	ExcludeResourceGroupIdsScope *string `json:"ExcludeResourceGroupIdsScope,omitempty" xml:"ExcludeResourceGroupIdsScope,omitempty"`
-	// The ID of the resource to be excluded from the compliance evaluations performed by the rule. Separate multiple resource IDs with commas (,).
+	// The IDs of the resources excluded from the compliance evaluations performed by the rule. Separate multiple resource IDs with commas (,).
 	//
-	// >  This parameter applies only to managed rules.
+	// >  This parameter applies only to a managed rule.
 	//
 	// example:
 	//
@@ -34084,17 +34146,17 @@ type UpdateConfigRuleRequest struct {
 	//
 	// One_Hour
 	MaximumExecutionFrequency *string `json:"MaximumExecutionFrequency,omitempty" xml:"MaximumExecutionFrequency,omitempty"`
-	// The ID of the region to which the rule applies. Separate multiple region IDs with commas (,).
+	// The IDs of the regions to which the rule applies. Separate multiple region IDs with commas (,).
 	//
-	// >  This parameter applies only to managed rules.
+	// >  This parameter applies only to a managed rule.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionIdsScope *string `json:"RegionIdsScope,omitempty" xml:"RegionIdsScope,omitempty"`
-	// The ID of the resource group to which the rule applies. Separate multiple resource group IDs with commas (,).
+	// The IDs of the resource groups to which the rule applies. Separate multiple resource group IDs with commas (,).
 	//
-	// >  This parameter applies only to managed rules.
+	// >  This parameter applies only to a managed rule.
 	//
 	// example:
 	//
@@ -34119,11 +34181,11 @@ type UpdateConfigRuleRequest struct {
 	//
 	// 3
 	RiskLevel *int32 `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
-	// The logical relationship among the tag keys if you specify multiple tag keys by using the `TagKeyScope` parameter. For example, if the `TagKeyScope` parameter is set to `ECS,OSS` and the TagKeyLogicScope parameter is set to `AND`, the rule applies to resources with both the `ECS` and `OSS` tag keys. Valid values:
+	// The logical relationship among the tag keys if you specify multiple tag keys for the `TagKeyScope` parameter. For example, if you set the `TagKeyScope` parameter to `ECS,OSS` and the TagKeyLogicScope parameter to `AND`, the rule applies to resources with both the `ECS` and `OSS` tag keys. Valid values:
 	//
-	// 	- AND: logical AND
+	// 	- AND
 	//
-	// 	- OR: logical OR
+	// 	- OR
 	//
 	// example:
 	//
@@ -34131,15 +34193,15 @@ type UpdateConfigRuleRequest struct {
 	TagKeyLogicScope *string `json:"TagKeyLogicScope,omitempty" xml:"TagKeyLogicScope,omitempty"`
 	// The tag key used to filter resources. The rule applies only to the resources with the specified tag key.
 	//
-	// >  This parameter applies only to managed rules. You must configure the `TagKeyScope` and `TagValueScope` parameters at the same time.
+	// >  This parameter applies only to a managed rule. You must configure the `TagKeyScope` and `TagValueScope` parameters at the same time.
 	//
 	// example:
 	//
 	// ECS
 	TagKeyScope *string `json:"TagKeyScope,omitempty" xml:"TagKeyScope,omitempty"`
-	// The tag key used to filter resources. The rule applies only to the resources with the specified tag key.
+	// The tag value used to filter resources. The rule applies only to the resources that use the specified tag value.
 	//
-	// >  This parameter applies only to managed rules. You must configure the `TagKeyScope` and `TagValueScope` parameters at the same time.
+	// >  This parameter applies only to a managed rule. You must configure the `TagKeyScope` and `TagValueScope` parameters at the same time.
 	//
 	// example:
 	//
@@ -34339,9 +34401,9 @@ type UpdateConfigRuleShrinkRequest struct {
 	Description                  *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	ExcludeRegionIdsScope        *string `json:"ExcludeRegionIdsScope,omitempty" xml:"ExcludeRegionIdsScope,omitempty"`
 	ExcludeResourceGroupIdsScope *string `json:"ExcludeResourceGroupIdsScope,omitempty" xml:"ExcludeResourceGroupIdsScope,omitempty"`
-	// The ID of the resource to be excluded from the compliance evaluations performed by the rule. Separate multiple resource IDs with commas (,).
+	// The IDs of the resources excluded from the compliance evaluations performed by the rule. Separate multiple resource IDs with commas (,).
 	//
-	// >  This parameter applies only to managed rules.
+	// >  This parameter applies only to a managed rule.
 	//
 	// example:
 	//
@@ -34372,17 +34434,17 @@ type UpdateConfigRuleShrinkRequest struct {
 	//
 	// One_Hour
 	MaximumExecutionFrequency *string `json:"MaximumExecutionFrequency,omitempty" xml:"MaximumExecutionFrequency,omitempty"`
-	// The ID of the region to which the rule applies. Separate multiple region IDs with commas (,).
+	// The IDs of the regions to which the rule applies. Separate multiple region IDs with commas (,).
 	//
-	// >  This parameter applies only to managed rules.
+	// >  This parameter applies only to a managed rule.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionIdsScope *string `json:"RegionIdsScope,omitempty" xml:"RegionIdsScope,omitempty"`
-	// The ID of the resource group to which the rule applies. Separate multiple resource group IDs with commas (,).
+	// The IDs of the resource groups to which the rule applies. Separate multiple resource group IDs with commas (,).
 	//
-	// >  This parameter applies only to managed rules.
+	// >  This parameter applies only to a managed rule.
 	//
 	// example:
 	//
@@ -34407,11 +34469,11 @@ type UpdateConfigRuleShrinkRequest struct {
 	//
 	// 3
 	RiskLevel *int32 `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
-	// The logical relationship among the tag keys if you specify multiple tag keys by using the `TagKeyScope` parameter. For example, if the `TagKeyScope` parameter is set to `ECS,OSS` and the TagKeyLogicScope parameter is set to `AND`, the rule applies to resources with both the `ECS` and `OSS` tag keys. Valid values:
+	// The logical relationship among the tag keys if you specify multiple tag keys for the `TagKeyScope` parameter. For example, if you set the `TagKeyScope` parameter to `ECS,OSS` and the TagKeyLogicScope parameter to `AND`, the rule applies to resources with both the `ECS` and `OSS` tag keys. Valid values:
 	//
-	// 	- AND: logical AND
+	// 	- AND
 	//
-	// 	- OR: logical OR
+	// 	- OR
 	//
 	// example:
 	//
@@ -34419,15 +34481,15 @@ type UpdateConfigRuleShrinkRequest struct {
 	TagKeyLogicScope *string `json:"TagKeyLogicScope,omitempty" xml:"TagKeyLogicScope,omitempty"`
 	// The tag key used to filter resources. The rule applies only to the resources with the specified tag key.
 	//
-	// >  This parameter applies only to managed rules. You must configure the `TagKeyScope` and `TagValueScope` parameters at the same time.
+	// >  This parameter applies only to a managed rule. You must configure the `TagKeyScope` and `TagValueScope` parameters at the same time.
 	//
 	// example:
 	//
 	// ECS
 	TagKeyScope *string `json:"TagKeyScope,omitempty" xml:"TagKeyScope,omitempty"`
-	// The tag key used to filter resources. The rule applies only to the resources with the specified tag key.
+	// The tag value used to filter resources. The rule applies only to the resources that use the specified tag value.
 	//
-	// >  This parameter applies only to managed rules. You must configure the `TagKeyScope` and `TagValueScope` parameters at the same time.
+	// >  This parameter applies only to a managed rule. You must configure the `TagKeyScope` and `TagValueScope` parameters at the same time.
 	//
 	// example:
 	//
@@ -35039,9 +35101,13 @@ type UpdateIntegratedServiceStatusRequest struct {
 	//
 	// NonCompliantNotification
 	IntegratedTypes *string `json:"IntegratedTypes,omitempty" xml:"IntegratedTypes,omitempty"`
-	// The product code of the cloud product. Valid values:
+	// The identity of the cloud service that is integrated with Cloud Config. Valid values:
 	//
-	// 	- cadt: Cloud Architecture Design Tool
+	// 	- eventbridge: EventBridge
+	//
+	// 	- cms: CloudMonitor
+	//
+	// 	- bpstudio: Cloud Architect Design Tools
 	//
 	// This parameter is required.
 	//
@@ -35364,9 +35430,15 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
-// Enables one or more rules in an account group.
+// Enables one or more rules in an account group. After a rule is enabled, the rule continues to automatically evaluate resources based on the trigger mechanism.
 //
 // Description:
+//
+// ### [](#)Prerequisites
+//
+// The rule is in the `INACTIVE` state.
+//
+// ### [](#)Description
 //
 // This topic provides an example on how to enable the `cr-5772ba41209e007b****` rule in the `ca-a4e5626622af0079****` account group.
 //
@@ -35414,9 +35486,15 @@ func (client *Client) ActiveAggregateConfigRulesWithOptions(request *ActiveAggre
 
 // Summary:
 //
-// Enables one or more rules in an account group.
+// Enables one or more rules in an account group. After a rule is enabled, the rule continues to automatically evaluate resources based on the trigger mechanism.
 //
 // Description:
+//
+// ### [](#)Prerequisites
+//
+// The rule is in the `INACTIVE` state.
+//
+// ### [](#)Description
 //
 // This topic provides an example on how to enable the `cr-5772ba41209e007b****` rule in the `ca-a4e5626622af0079****` account group.
 //
@@ -35436,7 +35514,13 @@ func (client *Client) ActiveAggregateConfigRules(request *ActiveAggregateConfigR
 
 // Summary:
 //
-// Enables multiple rules at a time so that these rules enter the Active state.
+// Enables a rule in Cloud Config. After a rule is enabled, Cloud Config automatically evaluates the compliance of a resource based on the trigger mechanism of the rule.
+//
+// Description:
+//
+// ### [](#)Prerequisites
+//
+// The rule is in the `INACTIVE` state.
 //
 // @param request - ActiveConfigRulesRequest
 //
@@ -35478,7 +35562,13 @@ func (client *Client) ActiveConfigRulesWithOptions(request *ActiveConfigRulesReq
 
 // Summary:
 //
-// Enables multiple rules at a time so that these rules enter the Active state.
+// Enables a rule in Cloud Config. After a rule is enabled, Cloud Config automatically evaluates the compliance of a resource based on the trigger mechanism of the rule.
+//
+// Description:
+//
+// ### [](#)Prerequisites
+//
+// The rule is in the `INACTIVE` state.
 //
 // @param request - ActiveConfigRulesRequest
 //
@@ -35916,9 +36006,7 @@ func (client *Client) CreateAggregateAdvancedSearchFile(request *CreateAggregate
 //
 // Description:
 //
-// You can use your management account to create up to five compliance packages for each account group.
-//
-// This topic provides an example on how to create a compliance package named ClassifiedProtectionPreCheck for the `ca-f632626622af0079****` account group. The compliance package contains the `eip-bandwidth-limit` managed rule.
+// This topic provides an example on how to create a compliance package for the account group `ca-f632626622af0079****` by using the compliance package template `ClassifiedProtectionPreCheck`.
 //
 // @param tmpReq - CreateAggregateCompliancePackRequest
 //
@@ -36045,9 +36133,7 @@ func (client *Client) CreateAggregateCompliancePackWithOptions(tmpReq *CreateAgg
 //
 // Description:
 //
-// You can use your management account to create up to five compliance packages for each account group.
-//
-// This topic provides an example on how to create a compliance package named ClassifiedProtectionPreCheck for the `ca-f632626622af0079****` account group. The compliance package contains the `eip-bandwidth-limit` managed rule.
+// This topic provides an example on how to create a compliance package for the account group `ca-f632626622af0079****` by using the compliance package template `ClassifiedProtectionPreCheck`.
 //
 // @param request - CreateAggregateCompliancePackRequest
 //
@@ -36088,6 +36174,10 @@ func (client *Client) CreateAggregateConfigDeliveryChannelWithOptions(request *C
 
 	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
 		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CompliantSnapshot)) {
+		query["CompliantSnapshot"] = request.CompliantSnapshot
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ConfigurationItemChangeNotification)) {
@@ -36754,6 +36844,10 @@ func (client *Client) CreateConfigDeliveryChannelWithOptions(request *CreateConf
 		query["ClientToken"] = request.ClientToken
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.CompliantSnapshot)) {
+		query["CompliantSnapshot"] = request.CompliantSnapshot
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ConfigurationItemChangeNotification)) {
 		query["ConfigurationItemChangeNotification"] = request.ConfigurationItemChangeNotification
 	}
@@ -37212,9 +37306,15 @@ func (client *Client) CreateRemediation(request *CreateRemediationRequest) (_res
 
 // Summary:
 //
-// Disables one or more rules in an account group.
+// Disables one or more rules in an account group. After a rule is disabled, the resource in the rule is no longer evaluated. The compliance evaluation results before the rule is disabled are still displayed.
 //
 // Description:
+//
+// ### [](#)Prerequisites
+//
+// The status of the rule is `ACTIVE`.
+//
+// ### [](#)Description
 //
 // This topic provides an example on how to disable the `cr-5772ba41209e007b****` rule in the `ca-04b3fd170e340007****` account group.
 //
@@ -37262,9 +37362,15 @@ func (client *Client) DeactiveAggregateConfigRulesWithOptions(request *DeactiveA
 
 // Summary:
 //
-// Disables one or more rules in an account group.
+// Disables one or more rules in an account group. After a rule is disabled, the resource in the rule is no longer evaluated. The compliance evaluation results before the rule is disabled are still displayed.
 //
 // Description:
+//
+// ### [](#)Prerequisites
+//
+// The status of the rule is `ACTIVE`.
+//
+// ### [](#)Description
 //
 // This topic provides an example on how to disable the `cr-5772ba41209e007b****` rule in the `ca-04b3fd170e340007****` account group.
 //
@@ -37284,11 +37390,17 @@ func (client *Client) DeactiveAggregateConfigRules(request *DeactiveAggregateCon
 
 // Summary:
 //
-// Disables one or more rules.
+// Disables a rule. After a rule is disabled, the resource in the rule is no longer evaluated. The compliance evaluation results before the rule is disabled are still displayed.
 //
 // Description:
 //
-// In this example, the `cr-19a56457e0d90058****` rule is used.
+// ### [](#)Prerequisites
+//
+// The status of the rule is `ACTIVE`.
+//
+// ### [](#)Description
+//
+// This topic provides an example on how to disable the `cr-19a56457e0d90058****` rule.
 //
 // @param request - DeactiveConfigRulesRequest
 //
@@ -37330,11 +37442,17 @@ func (client *Client) DeactiveConfigRulesWithOptions(request *DeactiveConfigRule
 
 // Summary:
 //
-// Disables one or more rules.
+// Disables a rule. After a rule is disabled, the resource in the rule is no longer evaluated. The compliance evaluation results before the rule is disabled are still displayed.
 //
 // Description:
 //
-// In this example, the `cr-19a56457e0d90058****` rule is used.
+// ### [](#)Prerequisites
+//
+// The status of the rule is `ACTIVE`.
+//
+// ### [](#)Description
+//
+// This topic provides an example on how to disable the `cr-19a56457e0d90058****` rule.
 //
 // @param request - DeactiveConfigRulesRequest
 //
@@ -37504,15 +37622,9 @@ func (client *Client) DeleteAggregateConfigDeliveryChannel(request *DeleteAggreg
 
 // Summary:
 //
-// Deletes one or more rules from an account group.
+// Deletes one or more rules from an account group. You can delete a rule in the Cloud Config console. After you delete the rule, the configurations of the rule are deleted.
 //
 // Description:
-//
-// ### Background information
-//
-// You can delete a rule in the Cloud Config console. After you delete the rule, the configurations of the rule are deleted.
-//
-// ### Usage notes
 //
 // This topic provides an example on how to delete the `cr-4e3d626622af0080****` rule from the `ca-a4e5626622af0079****` account group.
 //
@@ -37560,15 +37672,9 @@ func (client *Client) DeleteAggregateConfigRulesWithOptions(request *DeleteAggre
 
 // Summary:
 //
-// Deletes one or more rules from an account group.
+// Deletes one or more rules from an account group. You can delete a rule in the Cloud Config console. After you delete the rule, the configurations of the rule are deleted.
 //
 // Description:
-//
-// ### Background information
-//
-// You can delete a rule in the Cloud Config console. After you delete the rule, the configurations of the rule are deleted.
-//
-// ### Usage notes
 //
 // This topic provides an example on how to delete the `cr-4e3d626622af0080****` rule from the `ca-a4e5626622af0079****` account group.
 //
@@ -37660,9 +37766,23 @@ func (client *Client) DeleteAggregateRemediations(request *DeleteAggregateRemedi
 
 // Summary:
 //
-// Deletes an account group.
+// The management account or delegated administrator account of a resource directory can delete an account group.
 //
 // Description:
+//
+// ### [](#)Background information
+//
+// After you delete an account group, the following changes occur to Cloud Config:
+//
+// 	- The rules and compliance packages of the account group are deleted and cannot be recovered.
+//
+// 	- All compliance results generated in the account group are automatically deleted and cannot be recovered.
+//
+// 	- Service-linked roles for Cloud Config of member accounts in the account group are retained.
+//
+// 	- If the account groups to which a member belongs are all deleted, the member account uses Cloud Config as an independent Alibaba Cloud account.
+//
+// ### [](#)Description
 //
 // This topic provides an example on how to delete the account group whose ID is `ca-9190626622af00a9****`.
 //
@@ -37710,9 +37830,23 @@ func (client *Client) DeleteAggregatorsWithOptions(request *DeleteAggregatorsReq
 
 // Summary:
 //
-// Deletes an account group.
+// The management account or delegated administrator account of a resource directory can delete an account group.
 //
 // Description:
+//
+// ### [](#)Background information
+//
+// After you delete an account group, the following changes occur to Cloud Config:
+//
+// 	- The rules and compliance packages of the account group are deleted and cannot be recovered.
+//
+// 	- All compliance results generated in the account group are automatically deleted and cannot be recovered.
+//
+// 	- Service-linked roles for Cloud Config of member accounts in the account group are retained.
+//
+// 	- If the account groups to which a member belongs are all deleted, the member account uses Cloud Config as an independent Alibaba Cloud account.
+//
+// ### [](#)Description
 //
 // This topic provides an example on how to delete the account group whose ID is `ca-9190626622af00a9****`.
 //
@@ -38390,7 +38524,7 @@ func (client *Client) GenerateAggregateCompliancePackReport(request *GenerateAgg
 
 // Summary:
 //
-// Generates a compliance evaluation report based on all rules in an account group.
+// Generates a compliance evaluation report for the rules in a specified account group.
 //
 // Description:
 //
@@ -38446,7 +38580,7 @@ func (client *Client) GenerateAggregateConfigRulesReportWithOptions(request *Gen
 
 // Summary:
 //
-// Generates a compliance evaluation report based on all rules in an account group.
+// Generates a compliance evaluation report for the rules in a specified account group.
 //
 // Description:
 //
@@ -38630,7 +38764,7 @@ func (client *Client) GenerateCompliancePackReport(request *GenerateCompliancePa
 
 // Summary:
 //
-// Generates a compliance evaluation report based on all existing rules.
+// Generates a compliance evaluation report for a rule.
 //
 // Description:
 //
@@ -38682,7 +38816,7 @@ func (client *Client) GenerateConfigRulesReportWithOptions(request *GenerateConf
 
 // Summary:
 //
-// Generates a compliance evaluation report based on all existing rules.
+// Generates a compliance evaluation report for a rule.
 //
 // Description:
 //
@@ -39429,7 +39563,7 @@ func (client *Client) GetAggregateConfigRuleSummaryByRiskLevel(request *GetAggre
 
 // Summary:
 //
-// Queries the compliance evaluation report that is generated based on all rules in an account group.
+// Downloads the compliance evaluation report in the Excel format to your on-premises machine. This allows you to assign tasks and modify incompliant resource configurations.
 //
 // Description:
 //
@@ -39481,7 +39615,7 @@ func (client *Client) GetAggregateConfigRulesReportWithOptions(request *GetAggre
 
 // Summary:
 //
-// Queries the compliance evaluation report that is generated based on all rules in an account group.
+// Downloads the compliance evaluation report in the Excel format to your on-premises machine. This allows you to assign tasks and modify incompliant resource configurations.
 //
 // Description:
 //
@@ -39505,11 +39639,11 @@ func (client *Client) GetAggregateConfigRulesReport(request *GetAggregateConfigR
 
 // Summary:
 //
-// Queries the details of a resource in an account group.
+// Queries the details of a specific resource in an account group.
 //
 // Description:
 //
-// This topic provides an example on how to query the `new-bucket` resource in the `ca-5885626622af0008****` account group.
+// This topic provides an example on how to query the details of an Elastic Compute Service (ECS) instance `i-bp12g4xbl4i0brkn****` that resides in the China (Hangzhou) region in the account group `ca-5885626622af0008****`.
 //
 // @param request - GetAggregateDiscoveredResourceRequest
 //
@@ -39575,11 +39709,11 @@ func (client *Client) GetAggregateDiscoveredResourceWithOptions(request *GetAggr
 
 // Summary:
 //
-// Queries the details of a resource in an account group.
+// Queries the details of a specific resource in an account group.
 //
 // Description:
 //
-// This topic provides an example on how to query the `new-bucket` resource in the `ca-5885626622af0008****` account group.
+// This topic provides an example on how to query the details of an Elastic Compute Service (ECS) instance `i-bp12g4xbl4i0brkn****` that resides in the China (Hangzhou) region in the account group `ca-5885626622af0008****`.
 //
 // @param request - GetAggregateDiscoveredResourceRequest
 //
@@ -40249,7 +40383,7 @@ func (client *Client) GetAggregateResourceInventory(request *GetAggregateResourc
 
 // Summary:
 //
-// Queries the details of an account group.
+// Queries the details of an account group. You can query the name, creation time, member, and type of an account group.
 //
 // Description:
 //
@@ -40295,7 +40429,7 @@ func (client *Client) GetAggregatorWithOptions(request *GetAggregatorRequest, ru
 
 // Summary:
 //
-// Queries the details of an account group.
+// Queries the details of an account group. You can query the name, creation time, member, and type of an account group.
 //
 // Description:
 //
@@ -40696,7 +40830,7 @@ func (client *Client) GetConfigRuleComplianceByPack(request *GetConfigRuleCompli
 
 // Summary:
 //
-// Queries the summary of compliance evaluation results by rule risk level.
+// Queries the compliance summary based on the risk level of a rule.
 //
 // Description:
 //
@@ -40731,7 +40865,7 @@ func (client *Client) GetConfigRuleSummaryByRiskLevelWithOptions(runtime *util.R
 
 // Summary:
 //
-// Queries the summary of compliance evaluation results by rule risk level.
+// Queries the compliance summary based on the risk level of a rule.
 //
 // Description:
 //
@@ -40751,7 +40885,7 @@ func (client *Client) GetConfigRuleSummaryByRiskLevel() (_result *GetConfigRuleS
 
 // Summary:
 //
-// Queries the compliance evaluation report that is generated based on all existing rules.
+// Downloads the compliance evaluation report in the Excel format to your on-premises machine. This allows you to assign tasks and modify incompliant resource configurations.
 //
 // Description:
 //
@@ -40799,7 +40933,7 @@ func (client *Client) GetConfigRulesReportWithOptions(request *GetConfigRulesRep
 
 // Summary:
 //
-// Queries the compliance evaluation report that is generated based on all existing rules.
+// Downloads the compliance evaluation report in the Excel format to your on-premises machine. This allows you to assign tasks and modify incompliant resource configurations.
 //
 // Description:
 //
@@ -40878,11 +41012,11 @@ func (client *Client) GetConfigurationRecorder() (_result *GetConfigurationRecor
 
 // Summary:
 //
-// Queries the details of a resource.
+// Queries the details of a specific resource.
 //
 // Description:
 //
-// The sample request in this topic shows you how to query the details of the `new-bucket` resource.
+// This topic provides an example on how to query the details of the Elastic Compute Service (ECS) instance `i-bp12g4xbl4i0brkn****` that resides in the China (Hangzhou) region.
 //
 // @param request - GetDiscoveredResourceRequest
 //
@@ -40936,11 +41070,11 @@ func (client *Client) GetDiscoveredResourceWithOptions(request *GetDiscoveredRes
 
 // Summary:
 //
-// Queries the details of a resource.
+// Queries the details of a specific resource.
 //
 // Description:
 //
-// The sample request in this topic shows you how to query the details of the `new-bucket` resource.
+// This topic provides an example on how to query the details of the Elastic Compute Service (ECS) instance `i-bp12g4xbl4i0brkn****` that resides in the China (Hangzhou) region.
 //
 // @param request - GetDiscoveredResourceRequest
 //
@@ -41094,7 +41228,7 @@ func (client *Client) GetDiscoveredResourceCountsGroupByResourceType(request *Ge
 
 // Summary:
 //
-// Queries the status of a cloud service that is integrated with Cloud Config.
+// Queries the integration status of a specific cloud service.
 //
 // @param request - GetIntegratedServiceStatusRequest
 //
@@ -41136,7 +41270,7 @@ func (client *Client) GetIntegratedServiceStatusWithOptions(request *GetIntegrat
 
 // Summary:
 //
-// Queries the status of a cloud service that is integrated with Cloud Config.
+// Queries the integration status of a specific cloud service.
 //
 // @param request - GetIntegratedServiceStatusRequest
 //
@@ -41154,11 +41288,11 @@ func (client *Client) GetIntegratedServiceStatus(request *GetIntegratedServiceSt
 
 // Summary:
 //
-// Queries the details of a managed rule.
+// Queries the details of a specific managed rule.
 //
 // Description:
 //
-// In this topic, the `cdn-domain-https-enabled` managed rule is used as an example.
+// This topic provides an example on how to query the details of the managed rule `cdn-domain-https-enabled`.
 //
 // @param request - GetManagedRuleRequest
 //
@@ -41200,11 +41334,11 @@ func (client *Client) GetManagedRuleWithOptions(request *GetManagedRuleRequest, 
 
 // Summary:
 //
-// Queries the details of a managed rule.
+// Queries the details of a specific managed rule.
 //
 // Description:
 //
-// In this topic, the `cdn-domain-https-enabled` managed rule is used as an example.
+// This topic provides an example on how to query the details of the managed rule `cdn-domain-https-enabled`.
 //
 // @param request - GetManagedRuleRequest
 //
@@ -41290,7 +41424,7 @@ func (client *Client) GetRemediationTemplate(request *GetRemediationTemplateRequ
 
 // Summary:
 //
-// Queries the compliance evaluation result of a resource by using a rule.
+// Queries the compliance summary based on the compliance evaluation result of a rule.
 //
 // Description:
 //
@@ -41332,7 +41466,7 @@ func (client *Client) GetResourceComplianceByConfigRuleWithOptions(request *GetR
 
 // Summary:
 //
-// Queries the compliance evaluation result of a resource by using a rule.
+// Queries the compliance summary based on the compliance evaluation result of a rule.
 //
 // Description:
 //
@@ -43025,7 +43159,7 @@ func (client *Client) ListAggregators(request *ListAggregatorsRequest) (_result 
 
 // Summary:
 //
-// Queries a list of compliance package templates.
+// Queries all compliance package templates provided by Cloud Config and the details of the compliance package templates.
 //
 // Description:
 //
@@ -43083,7 +43217,7 @@ func (client *Client) ListCompliancePackTemplatesWithOptions(request *ListCompli
 
 // Summary:
 //
-// Queries a list of compliance package templates.
+// Queries all compliance package templates provided by Cloud Config and the details of the compliance package templates.
 //
 // Description:
 //
@@ -43241,7 +43375,7 @@ func (client *Client) ListConfigDeliveryChannels(request *ListConfigDeliveryChan
 
 // Summary:
 //
-// Queries a list of compliance evaluation results of resources based on a rule.
+// Queries the compliance evaluation results of resources based on a rule.
 //
 // Description:
 //
@@ -43283,7 +43417,7 @@ func (client *Client) ListConfigRuleEvaluationResultsWithOptions(request *ListCo
 
 // Summary:
 //
-// Queries a list of compliance evaluation results of resources based on a rule.
+// Queries the compliance evaluation results of resources based on a rule.
 //
 // Description:
 //
@@ -43536,7 +43670,7 @@ func (client *Client) ListDiscoveredResources(request *ListDiscoveredResourcesRe
 
 // Summary:
 //
-// Queries the cloud services that can be integrated by the current Alibaba Cloud account.
+// Queries a list of cloud services that are integrated with Cloud Config and the status of each cloud service.
 //
 // Description:
 //
@@ -43571,7 +43705,7 @@ func (client *Client) ListIntegratedServiceWithOptions(runtime *util.RuntimeOpti
 
 // Summary:
 //
-// Queries the cloud services that can be integrated by the current Alibaba Cloud account.
+// Queries a list of cloud services that are integrated with Cloud Config and the status of each cloud service.
 //
 // Description:
 //
@@ -43591,11 +43725,17 @@ func (client *Client) ListIntegratedService() (_result *ListIntegratedServiceRes
 
 // Summary:
 //
-// Queries managed rules.
+// Queries a list of managed rules supported by Cloud Config.
 //
 // Description:
 //
-// This topic describes how to query the managed rules of Alibaba Cloud CDN by using the `CDN` keyword. The returned result shows that only one managed rule exists. You can view the rule details in the result.
+// ### [](#)Background information
+//
+// For more information about how to define, execute, and integrate an evaluation rule, see [Definition and execution of evaluation rules](https://help.aliyun.com/document_detail/470802.html).
+//
+// ### [](#)Usage notes
+//
+// This topic provides an example on how to query all managed rules whose keyword is `CDN`. The response shows that 21 managed rules exist.
 //
 // @param request - ListManagedRulesRequest
 //
@@ -43653,11 +43793,17 @@ func (client *Client) ListManagedRulesWithOptions(request *ListManagedRulesReque
 
 // Summary:
 //
-// Queries managed rules.
+// Queries a list of managed rules supported by Cloud Config.
 //
 // Description:
 //
-// This topic describes how to query the managed rules of Alibaba Cloud CDN by using the `CDN` keyword. The returned result shows that only one managed rule exists. You can view the rule details in the result.
+// ### [](#)Background information
+//
+// For more information about how to define, execute, and integrate an evaluation rule, see [Definition and execution of evaluation rules](https://help.aliyun.com/document_detail/470802.html).
+//
+// ### [](#)Usage notes
+//
+// This topic provides an example on how to query all managed rules whose keyword is `CDN`. The response shows that 21 managed rules exist.
 //
 // @param request - ListManagedRulesRequest
 //
@@ -43675,7 +43821,13 @@ func (client *Client) ListManagedRules(request *ListManagedRulesRequest) (_resul
 
 // Summary:
 //
-// Queries a list of evaluation rules.
+// Queries a list of evaluation rules supported by Cloud Config.
+//
+// Description:
+//
+// For more information about how to define, execute, and integrate an evaluation rule, see [Definition and execution of evaluation rules](https://help.aliyun.com/document_detail/470802.html).
+//
+// After you create an evaluation rule, a managed rule that has the same settings as the evaluation rule is created. After you create a resource, the managed rule can be used to continuously check the compliance of the resource.
 //
 // @param tmpReq - ListPreManagedRulesRequest
 //
@@ -43731,7 +43883,13 @@ func (client *Client) ListPreManagedRulesWithOptions(tmpReq *ListPreManagedRules
 
 // Summary:
 //
-// Queries a list of evaluation rules.
+// Queries a list of evaluation rules supported by Cloud Config.
+//
+// Description:
+//
+// For more information about how to define, execute, and integrate an evaluation rule, see [Definition and execution of evaluation rules](https://help.aliyun.com/document_detail/470802.html).
+//
+// After you create an evaluation rule, a managed rule that has the same settings as the evaluation rule is created. After you create a resource, the managed rule can be used to continuously check the compliance of the resource.
 //
 // @param request - ListPreManagedRulesRequest
 //
@@ -43985,7 +44143,7 @@ func (client *Client) ListRemediations(request *ListRemediationsRequest) (_resul
 
 // Summary:
 //
-// Queries the compliance evaluation result of a resource.
+// Queries the compliance evaluation results of resources.
 //
 // Description:
 //
@@ -44051,7 +44209,7 @@ func (client *Client) ListResourceEvaluationResultsWithOptions(request *ListReso
 
 // Summary:
 //
-// Queries the compliance evaluation result of a resource.
+// Queries the compliance evaluation results of resources.
 //
 // Description:
 //
@@ -44407,7 +44565,11 @@ func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_resul
 
 // Summary:
 //
-// Submits the evaluation results of a custom rule to Function Compute.
+// Submits the evaluation results of a rule from Function Compute.
+//
+// Description:
+//
+// For more information about the definition, use scenarios, and execution of custom function rules, see [Definition and execution of custom function rules](https://help.aliyun.com/document_detail/127405.html).
 //
 // @param request - PutEvaluationsRequest
 //
@@ -44457,7 +44619,11 @@ func (client *Client) PutEvaluationsWithOptions(request *PutEvaluationsRequest, 
 
 // Summary:
 //
-// Submits the evaluation results of a custom rule to Function Compute.
+// Submits the evaluation results of a rule from Function Compute.
+//
+// Description:
+//
+// For more information about the definition, use scenarios, and execution of custom function rules, see [Definition and execution of custom function rules](https://help.aliyun.com/document_detail/127405.html).
 //
 // @param request - PutEvaluationsRequest
 //
@@ -44475,17 +44641,17 @@ func (client *Client) PutEvaluations(request *PutEvaluationsRequest) (_result *P
 
 // Summary:
 //
-// Re-evaluates one or more incompliant resources that are evaluated based on a rule in an account group.
+// Re-evaluates resources that are evaluated based on a rule after the evaluation results on some resources of an ignored rule in an account group are resumed.
 //
 // Description:
 //
-// ### Prerequisites
+// ### [](#)Prerequisites
 //
-// One or more non-compliant resources that are evaluated based on a rule are ignored.
+// One or more non-compliant resources that are evaluated by a rule are ignored. For more information, see [IgnoreAggregateEvaluationResults](https://help.aliyun.com/document_detail/607054.html).
 //
-// ### Usage notes
+// ### [](#)Description
 //
-// The sample request in this topic shows you how to re-evaluate the `lb-hp3a3b4ztyfm2plgm****` non-compliant resource that is evaluated by the `cr-7e72626622af0051***` rule in the `120886317861****` member account of the `ca-5b6c626622af008f****` account group. The ID of the region in which the resource resides is `cn-beijing`, and the type of the resource is `ACS::SLB::LoadBalancer`.
+// This topic provides an example on how to re-evaluate the non-compliant resource that is evaluated by the `cr-7e72626622af0051****` rule of the `120886317861****` member in the `ca-5b6c626622af008f****` group account. The ID of the region in which the resource resides is `cn-beijing`, the type of the resource is `ACS::SLB::LoadBalancer`, and the ID of the resource is `lb-hp3a3b4ztyfm2plgm****`.
 //
 // @param tmpReq - RevertAggregateEvaluationResultsRequest
 //
@@ -44541,17 +44707,17 @@ func (client *Client) RevertAggregateEvaluationResultsWithOptions(tmpReq *Revert
 
 // Summary:
 //
-// Re-evaluates one or more incompliant resources that are evaluated based on a rule in an account group.
+// Re-evaluates resources that are evaluated based on a rule after the evaluation results on some resources of an ignored rule in an account group are resumed.
 //
 // Description:
 //
-// ### Prerequisites
+// ### [](#)Prerequisites
 //
-// One or more non-compliant resources that are evaluated based on a rule are ignored.
+// One or more non-compliant resources that are evaluated by a rule are ignored. For more information, see [IgnoreAggregateEvaluationResults](https://help.aliyun.com/document_detail/607054.html).
 //
-// ### Usage notes
+// ### [](#)Description
 //
-// The sample request in this topic shows you how to re-evaluate the `lb-hp3a3b4ztyfm2plgm****` non-compliant resource that is evaluated by the `cr-7e72626622af0051***` rule in the `120886317861****` member account of the `ca-5b6c626622af008f****` account group. The ID of the region in which the resource resides is `cn-beijing`, and the type of the resource is `ACS::SLB::LoadBalancer`.
+// This topic provides an example on how to re-evaluate the non-compliant resource that is evaluated by the `cr-7e72626622af0051****` rule of the `120886317861****` member in the `ca-5b6c626622af008f****` group account. The ID of the region in which the resource resides is `cn-beijing`, the type of the resource is `ACS::SLB::LoadBalancer`, and the ID of the resource is `lb-hp3a3b4ztyfm2plgm****`.
 //
 // @param request - RevertAggregateEvaluationResultsRequest
 //
@@ -44569,17 +44735,17 @@ func (client *Client) RevertAggregateEvaluationResults(request *RevertAggregateE
 
 // Summary:
 //
-// Re-evaluates non-compliant resources that are evaluated based on a rule.
+// Re-evaluates resources that are evaluated based on a rule after the evaluation results on some resources of an ignored rule are resumed.
 //
 // Description:
 //
-// ### Prerequisites
+// ### [](#)Prerequisites
 //
-// One or more non-compliant resources that are evaluated by a rule are ignored.
+// One or more non-compliant resources that are evaluated by a rule are ignored. For more information, see [IgnoreEvaluationResults](https://help.aliyun.com/document_detail/606990.html).
 //
-// ### Usage notes
+// ### [](#)Description
 //
-// The sample request in this topic shows you how to re-evaluate the `lb-hp3a3b4ztyfm2plgm****` non-compliant resource that is evaluated by the `cr-7e72626622af0051****` rule. The ID of the region in which the resource resides is `cn-beijing`, and the type of the resource is `ACS::SLB::LoadBalancer`.``
+// This topic provides an example on how to re-evaluate the `lb-hp3a3b4ztyfm2plgm****` non-compliant resource that is evaluated by the `cr-7e72626622af0051****` rule. The ID of the region in which the resource resides is`cn-beijing`, the type of the resource is `ACS::SLB::LoadBalancer`, and the ID of the resource is `lb-hp3a3b4ztyfm2plgm****`.
 //
 // @param tmpReq - RevertEvaluationResultsRequest
 //
@@ -44631,17 +44797,17 @@ func (client *Client) RevertEvaluationResultsWithOptions(tmpReq *RevertEvaluatio
 
 // Summary:
 //
-// Re-evaluates non-compliant resources that are evaluated based on a rule.
+// Re-evaluates resources that are evaluated based on a rule after the evaluation results on some resources of an ignored rule are resumed.
 //
 // Description:
 //
-// ### Prerequisites
+// ### [](#)Prerequisites
 //
-// One or more non-compliant resources that are evaluated by a rule are ignored.
+// One or more non-compliant resources that are evaluated by a rule are ignored. For more information, see [IgnoreEvaluationResults](https://help.aliyun.com/document_detail/606990.html).
 //
-// ### Usage notes
+// ### [](#)Description
 //
-// The sample request in this topic shows you how to re-evaluate the `lb-hp3a3b4ztyfm2plgm****` non-compliant resource that is evaluated by the `cr-7e72626622af0051****` rule. The ID of the region in which the resource resides is `cn-beijing`, and the type of the resource is `ACS::SLB::LoadBalancer`.``
+// This topic provides an example on how to re-evaluate the `lb-hp3a3b4ztyfm2plgm****` non-compliant resource that is evaluated by the `cr-7e72626622af0051****` rule. The ID of the region in which the resource resides is`cn-beijing`, the type of the resource is `ACS::SLB::LoadBalancer`, and the ID of the resource is `lb-hp3a3b4ztyfm2plgm****`.
 //
 // @param request - RevertEvaluationResultsRequest
 //
@@ -44659,7 +44825,7 @@ func (client *Client) RevertEvaluationResults(request *RevertEvaluationResultsRe
 
 // Summary:
 //
-// Starts to evaluate the involved resources by using a rule in an account group.
+// Re-evaluates the compliance of resources based on a rule or based on all rules in a compliance package in a specific account group.
 //
 // Description:
 //
@@ -44719,7 +44885,7 @@ func (client *Client) StartAggregateConfigRuleEvaluationWithOptions(request *Sta
 
 // Summary:
 //
-// Starts to evaluate the involved resources by using a rule in an account group.
+// Re-evaluates the compliance of resources based on a rule or based on all rules in a compliance package in a specific account group.
 //
 // Description:
 //
@@ -44819,7 +44985,7 @@ func (client *Client) StartAggregateRemediation(request *StartAggregateRemediati
 
 // Summary:
 //
-// Re-evaluates the compliance of resources based on a rule or compliance package.
+// Re-evaluates the compliance of resources based on a rule or based on all rules in a compliance package.
 //
 // Description:
 //
@@ -44873,7 +45039,7 @@ func (client *Client) StartConfigRuleEvaluationWithOptions(request *StartConfigR
 
 // Summary:
 //
-// Re-evaluates the compliance of resources based on a rule or compliance package.
+// Re-evaluates the compliance of resources based on a rule or based on all rules in a compliance package.
 //
 // Description:
 //
@@ -45020,6 +45186,10 @@ func (client *Client) StartRemediation(request *StartRemediationRequest) (_resul
 //
 // Deactivates Cloud Config.
 //
+// Description:
+//
+// >  After you deactivate Cloud Config, the resource configurations, created rules, and compliance evaluation results that are stored in Cloud Config are automatically cleared and cannot be restored. Proceed with caution.
+//
 // @param request - StopConfigurationRecorderRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -45050,6 +45220,10 @@ func (client *Client) StopConfigurationRecorderWithOptions(runtime *util.Runtime
 // Summary:
 //
 // Deactivates Cloud Config.
+//
+// Description:
+//
+// >  After you deactivate Cloud Config, the resource configurations, created rules, and compliance evaluation results that are stored in Cloud Config are automatically cleared and cannot be restored. Proceed with caution.
 //
 // @return StopConfigurationRecorderResponse
 func (client *Client) StopConfigurationRecorder() (_result *StopConfigurationRecorderResponse, _err error) {
@@ -45223,7 +45397,7 @@ func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *U
 //
 // Description:
 //
-// This topic provides an example on how to change the value of a parameter for a managed rule whose ID is `eip-bandwidth-limit` to `20`. The managed rule is included in the `cp-fdc8626622af00f9****` compliance package in the `ca-f632626622af0079****` account group.
+// This topic provides an example on how to change the value of the `eip-bandwidth-limit` parameter in the rule template of the compliance package `cp-fdc8626622af00f9****` in the account group `ca-f632626622af0079****` to `20`.
 //
 // @param tmpReq - UpdateAggregateCompliancePackRequest
 //
@@ -45342,7 +45516,7 @@ func (client *Client) UpdateAggregateCompliancePackWithOptions(tmpReq *UpdateAgg
 //
 // Description:
 //
-// This topic provides an example on how to change the value of a parameter for a managed rule whose ID is `eip-bandwidth-limit` to `20`. The managed rule is included in the `cp-fdc8626622af00f9****` compliance package in the `ca-f632626622af0079****` account group.
+// This topic provides an example on how to change the value of the `eip-bandwidth-limit` parameter in the rule template of the compliance package `cp-fdc8626622af00f9****` in the account group `ca-f632626622af0079****` to `20`.
 //
 // @param request - UpdateAggregateCompliancePackRequest
 //
@@ -45383,6 +45557,10 @@ func (client *Client) UpdateAggregateConfigDeliveryChannelWithOptions(request *U
 
 	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
 		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CompliantSnapshot)) {
+		query["CompliantSnapshot"] = request.CompliantSnapshot
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ConfigurationItemChangeNotification)) {
@@ -45476,11 +45654,11 @@ func (client *Client) UpdateAggregateConfigDeliveryChannel(request *UpdateAggreg
 
 // Summary:
 //
-// Modifies a rule in an account group.
+// Modifies the description, input parameters, and risk level of a rule in a specific account group.
 //
 // Description:
 //
-// The sample request in this topic shows you how to change the risk level specified for the `cr-4e3d626622af0080****` managed rule to `3`, which indicates low risk level, in the `ca-a4e5626622af0079****` account group.
+// This topic provides an example on how to change the risk level of the rule `cr-4e3d626622af0080****` in an account group `ca-a4e5626622af0079****` to `3`, which indicates low risk level.
 //
 // @param tmpReq - UpdateAggregateConfigRuleRequest
 //
@@ -45631,11 +45809,11 @@ func (client *Client) UpdateAggregateConfigRuleWithOptions(tmpReq *UpdateAggrega
 
 // Summary:
 //
-// Modifies a rule in an account group.
+// Modifies the description, input parameters, and risk level of a rule in a specific account group.
 //
 // Description:
 //
-// The sample request in this topic shows you how to change the risk level specified for the `cr-4e3d626622af0080****` managed rule to `3`, which indicates low risk level, in the `ca-a4e5626622af0079****` account group.
+// This topic provides an example on how to change the risk level of the rule `cr-4e3d626622af0080****` in an account group `ca-a4e5626622af0079****` to `3`, which indicates low risk level.
 //
 // @param request - UpdateAggregateConfigRuleRequest
 //
@@ -45745,11 +45923,11 @@ func (client *Client) UpdateAggregateRemediation(request *UpdateAggregateRemedia
 
 // Summary:
 //
-// Modify an account group
+// The management account or delegated administrator account of a resource directory can be used to modify the name and description of an account group. The management account or delegated administrator account can also be used to add or remove members from the account group.
 //
 // Description:
 //
-// The sample request in this topic shows you how to add a member account to the account group whose ID is `ca-dacf86d8314e00eb****`. The member account ID is `173808452267****` and the member account name is `Tony`. The member account belongs to `ResourceDirectory`.
+// This topic provides an example on how to add a member to the account group `ca-dacf86d8314e00eb****`. The member ID is `173808452267****`, the member name is `Tony`, and the member belongs to the resource directory `ResourceDirectory`.
 //
 // @param tmpReq - UpdateAggregatorRequest
 //
@@ -45813,11 +45991,11 @@ func (client *Client) UpdateAggregatorWithOptions(tmpReq *UpdateAggregatorReques
 
 // Summary:
 //
-// Modify an account group
+// The management account or delegated administrator account of a resource directory can be used to modify the name and description of an account group. The management account or delegated administrator account can also be used to add or remove members from the account group.
 //
 // Description:
 //
-// The sample request in this topic shows you how to add a member account to the account group whose ID is `ca-dacf86d8314e00eb****`. The member account ID is `173808452267****` and the member account name is `Tony`. The member account belongs to `ResourceDirectory`.
+// This topic provides an example on how to add a member to the account group `ca-dacf86d8314e00eb****`. The member ID is `173808452267****`, the member name is `Tony`, and the member belongs to the resource directory `ResourceDirectory`.
 //
 // @param request - UpdateAggregatorRequest
 //
@@ -45835,11 +46013,11 @@ func (client *Client) UpdateAggregator(request *UpdateAggregatorRequest) (_resul
 
 // Summary:
 //
-// Modifies the configurations of a compliance package within your account.
+// Modifies the configurations of a specific compliance package in the current account.
 //
 // Description:
 //
-// This topic provides an example on how to change the value of a parameter for a managed rule whose ID is `eip-bandwidth-limit` to `20`. The managed rule is included in the `cp-a8a8626622af0082****` compliance package.
+// This topic provides an example on how to change the value of the `eip-bandwidth-limit` parameter of a rule in the compliance package `cp-a8a8626622af0082****` to `20`.
 //
 // @param tmpReq - UpdateCompliancePackRequest
 //
@@ -45950,11 +46128,11 @@ func (client *Client) UpdateCompliancePackWithOptions(tmpReq *UpdateCompliancePa
 
 // Summary:
 //
-// Modifies the configurations of a compliance package within your account.
+// Modifies the configurations of a specific compliance package in the current account.
 //
 // Description:
 //
-// This topic provides an example on how to change the value of a parameter for a managed rule whose ID is `eip-bandwidth-limit` to `20`. The managed rule is included in the `cp-a8a8626622af0082****` compliance package.
+// This topic provides an example on how to change the value of the `eip-bandwidth-limit` parameter of a rule in the compliance package `cp-a8a8626622af0082****` to `20`.
 //
 // @param request - UpdateCompliancePackRequest
 //
@@ -45991,6 +46169,10 @@ func (client *Client) UpdateConfigDeliveryChannelWithOptions(request *UpdateConf
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
 		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CompliantSnapshot)) {
+		query["CompliantSnapshot"] = request.CompliantSnapshot
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ConfigurationItemChangeNotification)) {
@@ -46084,11 +46266,11 @@ func (client *Client) UpdateConfigDeliveryChannel(request *UpdateConfigDeliveryC
 
 // Summary:
 //
-// Modifies the rules of an account.
+// Modifies the description, input parameters, and risk level of a rule.
 //
 // Description:
 //
-// This topic provides an example on how to change the risk level of a managed rule whose ID is `cr-a260626622af0005****` to `3` (low risk level).
+// This topic provides an example on how to change the risk level of the rule `cr-a260626622af0005****` to `3`, which indicates low risk level.
 //
 // @param tmpReq - UpdateConfigRuleRequest
 //
@@ -46219,11 +46401,11 @@ func (client *Client) UpdateConfigRuleWithOptions(tmpReq *UpdateConfigRuleReques
 
 // Summary:
 //
-// Modifies the rules of an account.
+// Modifies the description, input parameters, and risk level of a rule.
 //
 // Description:
 //
-// This topic provides an example on how to change the risk level of a managed rule whose ID is `cr-a260626622af0005****` to `3` (low risk level).
+// This topic provides an example on how to change the risk level of the rule `cr-a260626622af0005****` to `3`, which indicates low risk level.
 //
 // @param request - UpdateConfigRuleRequest
 //
