@@ -9,6 +9,122 @@ import (
 	"github.com/alibabacloud-go/tea/tea"
 )
 
+type AddCustomLineRequest struct {
+	// example:
+	//
+	// INTRANET
+	DnsCategory *string `json:"DnsCategory,omitempty" xml:"DnsCategory,omitempty"`
+	// This parameter is required.
+	Ipv4s []*string `json:"Ipv4s,omitempty" xml:"Ipv4s,omitempty" type:"Repeated"`
+	// example:
+	//
+	// en
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// This parameter is required.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// GLOBAL
+	ShareScope *string `json:"ShareScope,omitempty" xml:"ShareScope,omitempty"`
+}
+
+func (s AddCustomLineRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddCustomLineRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AddCustomLineRequest) SetDnsCategory(v string) *AddCustomLineRequest {
+	s.DnsCategory = &v
+	return s
+}
+
+func (s *AddCustomLineRequest) SetIpv4s(v []*string) *AddCustomLineRequest {
+	s.Ipv4s = v
+	return s
+}
+
+func (s *AddCustomLineRequest) SetLang(v string) *AddCustomLineRequest {
+	s.Lang = &v
+	return s
+}
+
+func (s *AddCustomLineRequest) SetName(v string) *AddCustomLineRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *AddCustomLineRequest) SetShareScope(v string) *AddCustomLineRequest {
+	s.ShareScope = &v
+	return s
+}
+
+type AddCustomLineResponseBody struct {
+	// example:
+	//
+	// 1065001
+	LineId *string `json:"LineId,omitempty" xml:"LineId,omitempty"`
+	Name   *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// AF7D4DCE-0776-47F2-A9B2-6FB85A87AA60
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s AddCustomLineResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddCustomLineResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *AddCustomLineResponseBody) SetLineId(v string) *AddCustomLineResponseBody {
+	s.LineId = &v
+	return s
+}
+
+func (s *AddCustomLineResponseBody) SetName(v string) *AddCustomLineResponseBody {
+	s.Name = &v
+	return s
+}
+
+func (s *AddCustomLineResponseBody) SetRequestId(v string) *AddCustomLineResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type AddCustomLineResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AddCustomLineResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s AddCustomLineResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddCustomLineResponse) GoString() string {
+	return s.String()
+}
+
+func (s *AddCustomLineResponse) SetHeaders(v map[string]*string) *AddCustomLineResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *AddCustomLineResponse) SetStatusCode(v int32) *AddCustomLineResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *AddCustomLineResponse) SetBody(v *AddCustomLineResponseBody) *AddCustomLineResponse {
+	s.Body = v
+	return s
+}
+
 type AddResolverEndpointRequest struct {
 	// The source IP addresses of outbound traffic. You must add two to six source IP addresses to ensure high availability.
 	//
@@ -1236,6 +1352,106 @@ func (s *BindZoneVpcResponse) SetBody(v *BindZoneVpcResponseBody) *BindZoneVpcRe
 	return s
 }
 
+type ChangeZoneDnsGroupRequest struct {
+	// example:
+	//
+	// 85456erer657cfgfg3437
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// NORMAL_ZONE
+	DnsGroup *string `json:"DnsGroup,omitempty" xml:"DnsGroup,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// e0cff188756b1d4579b25e54b66cb830
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+}
+
+func (s ChangeZoneDnsGroupRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ChangeZoneDnsGroupRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ChangeZoneDnsGroupRequest) SetClientToken(v string) *ChangeZoneDnsGroupRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *ChangeZoneDnsGroupRequest) SetDnsGroup(v string) *ChangeZoneDnsGroupRequest {
+	s.DnsGroup = &v
+	return s
+}
+
+func (s *ChangeZoneDnsGroupRequest) SetZoneId(v string) *ChangeZoneDnsGroupRequest {
+	s.ZoneId = &v
+	return s
+}
+
+type ChangeZoneDnsGroupResponseBody struct {
+	// example:
+	//
+	// C6F1D541-E7A6-447A-A2B5-9F7A20B2A8FB
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// e0cff188756b1d4579b25e54b66cb830
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+}
+
+func (s ChangeZoneDnsGroupResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ChangeZoneDnsGroupResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ChangeZoneDnsGroupResponseBody) SetRequestId(v string) *ChangeZoneDnsGroupResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ChangeZoneDnsGroupResponseBody) SetZoneId(v string) *ChangeZoneDnsGroupResponseBody {
+	s.ZoneId = &v
+	return s
+}
+
+type ChangeZoneDnsGroupResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ChangeZoneDnsGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ChangeZoneDnsGroupResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ChangeZoneDnsGroupResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ChangeZoneDnsGroupResponse) SetHeaders(v map[string]*string) *ChangeZoneDnsGroupResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ChangeZoneDnsGroupResponse) SetStatusCode(v int32) *ChangeZoneDnsGroupResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ChangeZoneDnsGroupResponse) SetBody(v *ChangeZoneDnsGroupResponseBody) *ChangeZoneDnsGroupResponse {
+	s.Body = v
+	return s
+}
+
 type CheckZoneNameRequest struct {
 	// The language.
 	//
@@ -1353,6 +1569,95 @@ func (s *CheckZoneNameResponse) SetStatusCode(v int32) *CheckZoneNameResponse {
 }
 
 func (s *CheckZoneNameResponse) SetBody(v *CheckZoneNameResponseBody) *CheckZoneNameResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteCustomLineRequest struct {
+	// example:
+	//
+	// en
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1045001
+	LineId *string `json:"LineId,omitempty" xml:"LineId,omitempty"`
+}
+
+func (s DeleteCustomLineRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteCustomLineRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteCustomLineRequest) SetLang(v string) *DeleteCustomLineRequest {
+	s.Lang = &v
+	return s
+}
+
+func (s *DeleteCustomLineRequest) SetLineId(v string) *DeleteCustomLineRequest {
+	s.LineId = &v
+	return s
+}
+
+type DeleteCustomLineResponseBody struct {
+	// example:
+	//
+	// 520002
+	LineId *string `json:"LineId,omitempty" xml:"LineId,omitempty"`
+	// example:
+	//
+	// A73F3BD0-B1A8-42A9-A9B6-689BBABC4891
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteCustomLineResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteCustomLineResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteCustomLineResponseBody) SetLineId(v string) *DeleteCustomLineResponseBody {
+	s.LineId = &v
+	return s
+}
+
+func (s *DeleteCustomLineResponseBody) SetRequestId(v string) *DeleteCustomLineResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteCustomLineResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteCustomLineResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteCustomLineResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteCustomLineResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteCustomLineResponse) SetHeaders(v map[string]*string) *DeleteCustomLineResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteCustomLineResponse) SetStatusCode(v int32) *DeleteCustomLineResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteCustomLineResponse) SetBody(v *DeleteCustomLineResponseBody) *DeleteCustomLineResponse {
 	s.Body = v
 	return s
 }
@@ -2245,6 +2550,428 @@ func (s *DescribeChangeLogsResponse) SetStatusCode(v int32) *DescribeChangeLogsR
 }
 
 func (s *DescribeChangeLogsResponse) SetBody(v *DescribeChangeLogsResponseBody) *DescribeChangeLogsResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeCustomLineInfoRequest struct {
+	// example:
+	//
+	// en
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 11271
+	LineId *string `json:"LineId,omitempty" xml:"LineId,omitempty"`
+}
+
+func (s DescribeCustomLineInfoRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCustomLineInfoRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCustomLineInfoRequest) SetLang(v string) *DescribeCustomLineInfoRequest {
+	s.Lang = &v
+	return s
+}
+
+func (s *DescribeCustomLineInfoRequest) SetLineId(v string) *DescribeCustomLineInfoRequest {
+	s.LineId = &v
+	return s
+}
+
+type DescribeCustomLineInfoResponseBody struct {
+	// example:
+	//
+	// 2018-01-23T03:15Z
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// 1516775741000
+	CreateTimestamp *int64 `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
+	// example:
+	//
+	// 260282302749096109
+	Creator *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
+	// example:
+	//
+	// CUSTOM
+	CreatorSubType *string `json:"CreatorSubType,omitempty" xml:"CreatorSubType,omitempty"`
+	// example:
+	//
+	// USER
+	CreatorType *string   `json:"CreatorType,omitempty" xml:"CreatorType,omitempty"`
+	Ipv4s       []*string `json:"Ipv4s,omitempty" xml:"Ipv4s,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 100003
+	LineId *string `json:"LineId,omitempty" xml:"LineId,omitempty"`
+	Name   *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 0B7AD377-7E86-44A8-B9A8-53E8666E72FE
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 2018-01-24T06:35Z
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// example:
+	//
+	// 1516775741000
+	UpdateTimestamp *int64 `json:"UpdateTimestamp,omitempty" xml:"UpdateTimestamp,omitempty"`
+}
+
+func (s DescribeCustomLineInfoResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCustomLineInfoResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCustomLineInfoResponseBody) SetCreateTime(v string) *DescribeCustomLineInfoResponseBody {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *DescribeCustomLineInfoResponseBody) SetCreateTimestamp(v int64) *DescribeCustomLineInfoResponseBody {
+	s.CreateTimestamp = &v
+	return s
+}
+
+func (s *DescribeCustomLineInfoResponseBody) SetCreator(v string) *DescribeCustomLineInfoResponseBody {
+	s.Creator = &v
+	return s
+}
+
+func (s *DescribeCustomLineInfoResponseBody) SetCreatorSubType(v string) *DescribeCustomLineInfoResponseBody {
+	s.CreatorSubType = &v
+	return s
+}
+
+func (s *DescribeCustomLineInfoResponseBody) SetCreatorType(v string) *DescribeCustomLineInfoResponseBody {
+	s.CreatorType = &v
+	return s
+}
+
+func (s *DescribeCustomLineInfoResponseBody) SetIpv4s(v []*string) *DescribeCustomLineInfoResponseBody {
+	s.Ipv4s = v
+	return s
+}
+
+func (s *DescribeCustomLineInfoResponseBody) SetLineId(v string) *DescribeCustomLineInfoResponseBody {
+	s.LineId = &v
+	return s
+}
+
+func (s *DescribeCustomLineInfoResponseBody) SetName(v string) *DescribeCustomLineInfoResponseBody {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeCustomLineInfoResponseBody) SetRequestId(v string) *DescribeCustomLineInfoResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeCustomLineInfoResponseBody) SetUpdateTime(v string) *DescribeCustomLineInfoResponseBody {
+	s.UpdateTime = &v
+	return s
+}
+
+func (s *DescribeCustomLineInfoResponseBody) SetUpdateTimestamp(v int64) *DescribeCustomLineInfoResponseBody {
+	s.UpdateTimestamp = &v
+	return s
+}
+
+type DescribeCustomLineInfoResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeCustomLineInfoResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeCustomLineInfoResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCustomLineInfoResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCustomLineInfoResponse) SetHeaders(v map[string]*string) *DescribeCustomLineInfoResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeCustomLineInfoResponse) SetStatusCode(v int32) *DescribeCustomLineInfoResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeCustomLineInfoResponse) SetBody(v *DescribeCustomLineInfoResponseBody) *DescribeCustomLineInfoResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeCustomLinesRequest struct {
+	// example:
+	//
+	// en
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+}
+
+func (s DescribeCustomLinesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCustomLinesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCustomLinesRequest) SetLang(v string) *DescribeCustomLinesRequest {
+	s.Lang = &v
+	return s
+}
+
+func (s *DescribeCustomLinesRequest) SetPageNumber(v int32) *DescribeCustomLinesRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeCustomLinesRequest) SetPageSize(v int32) *DescribeCustomLinesRequest {
+	s.PageSize = &v
+	return s
+}
+
+type DescribeCustomLinesResponseBody struct {
+	CustomLines *DescribeCustomLinesResponseBodyCustomLines `json:"CustomLines,omitempty" xml:"CustomLines,omitempty" type:"Struct"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// AF7D4DCE-0776-47F2-A9B2-6FB85A87AA60
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 100
+	TotalItems *int32 `json:"TotalItems,omitempty" xml:"TotalItems,omitempty"`
+	// example:
+	//
+	// 5
+	TotalPages *int32 `json:"TotalPages,omitempty" xml:"TotalPages,omitempty"`
+}
+
+func (s DescribeCustomLinesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCustomLinesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCustomLinesResponseBody) SetCustomLines(v *DescribeCustomLinesResponseBodyCustomLines) *DescribeCustomLinesResponseBody {
+	s.CustomLines = v
+	return s
+}
+
+func (s *DescribeCustomLinesResponseBody) SetPageNumber(v int32) *DescribeCustomLinesResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeCustomLinesResponseBody) SetPageSize(v int32) *DescribeCustomLinesResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeCustomLinesResponseBody) SetRequestId(v string) *DescribeCustomLinesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeCustomLinesResponseBody) SetTotalItems(v int32) *DescribeCustomLinesResponseBody {
+	s.TotalItems = &v
+	return s
+}
+
+func (s *DescribeCustomLinesResponseBody) SetTotalPages(v int32) *DescribeCustomLinesResponseBody {
+	s.TotalPages = &v
+	return s
+}
+
+type DescribeCustomLinesResponseBodyCustomLines struct {
+	CustomLine []*DescribeCustomLinesResponseBodyCustomLinesCustomLine `json:"CustomLine,omitempty" xml:"CustomLine,omitempty" type:"Repeated"`
+}
+
+func (s DescribeCustomLinesResponseBodyCustomLines) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCustomLinesResponseBodyCustomLines) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCustomLinesResponseBodyCustomLines) SetCustomLine(v []*DescribeCustomLinesResponseBodyCustomLinesCustomLine) *DescribeCustomLinesResponseBodyCustomLines {
+	s.CustomLine = v
+	return s
+}
+
+type DescribeCustomLinesResponseBodyCustomLinesCustomLine struct {
+	// example:
+	//
+	// 2022-03-25T08:07Z
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// 1671174074000
+	CreateTimestamp *int64 `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
+	// example:
+	//
+	// 21312421
+	Creator *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
+	// example:
+	//
+	// SUB
+	CreatorSubType *string `json:"CreatorSubType,omitempty" xml:"CreatorSubType,omitempty"`
+	// example:
+	//
+	// USER
+	CreatorType *string                                                    `json:"CreatorType,omitempty" xml:"CreatorType,omitempty"`
+	Ipv4s       *DescribeCustomLinesResponseBodyCustomLinesCustomLineIpv4s `json:"Ipv4s,omitempty" xml:"Ipv4s,omitempty" type:"Struct"`
+	// example:
+	//
+	// 160002
+	LineId *string `json:"LineId,omitempty" xml:"LineId,omitempty"`
+	Name   *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 2020-08-24T16:08Z
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// example:
+	//
+	// 1681879029000
+	UpdateTimestamp *int64 `json:"UpdateTimestamp,omitempty" xml:"UpdateTimestamp,omitempty"`
+}
+
+func (s DescribeCustomLinesResponseBodyCustomLinesCustomLine) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCustomLinesResponseBodyCustomLinesCustomLine) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCustomLinesResponseBodyCustomLinesCustomLine) SetCreateTime(v string) *DescribeCustomLinesResponseBodyCustomLinesCustomLine {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *DescribeCustomLinesResponseBodyCustomLinesCustomLine) SetCreateTimestamp(v int64) *DescribeCustomLinesResponseBodyCustomLinesCustomLine {
+	s.CreateTimestamp = &v
+	return s
+}
+
+func (s *DescribeCustomLinesResponseBodyCustomLinesCustomLine) SetCreator(v string) *DescribeCustomLinesResponseBodyCustomLinesCustomLine {
+	s.Creator = &v
+	return s
+}
+
+func (s *DescribeCustomLinesResponseBodyCustomLinesCustomLine) SetCreatorSubType(v string) *DescribeCustomLinesResponseBodyCustomLinesCustomLine {
+	s.CreatorSubType = &v
+	return s
+}
+
+func (s *DescribeCustomLinesResponseBodyCustomLinesCustomLine) SetCreatorType(v string) *DescribeCustomLinesResponseBodyCustomLinesCustomLine {
+	s.CreatorType = &v
+	return s
+}
+
+func (s *DescribeCustomLinesResponseBodyCustomLinesCustomLine) SetIpv4s(v *DescribeCustomLinesResponseBodyCustomLinesCustomLineIpv4s) *DescribeCustomLinesResponseBodyCustomLinesCustomLine {
+	s.Ipv4s = v
+	return s
+}
+
+func (s *DescribeCustomLinesResponseBodyCustomLinesCustomLine) SetLineId(v string) *DescribeCustomLinesResponseBodyCustomLinesCustomLine {
+	s.LineId = &v
+	return s
+}
+
+func (s *DescribeCustomLinesResponseBodyCustomLinesCustomLine) SetName(v string) *DescribeCustomLinesResponseBodyCustomLinesCustomLine {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeCustomLinesResponseBodyCustomLinesCustomLine) SetUpdateTime(v string) *DescribeCustomLinesResponseBodyCustomLinesCustomLine {
+	s.UpdateTime = &v
+	return s
+}
+
+func (s *DescribeCustomLinesResponseBodyCustomLinesCustomLine) SetUpdateTimestamp(v int64) *DescribeCustomLinesResponseBodyCustomLinesCustomLine {
+	s.UpdateTimestamp = &v
+	return s
+}
+
+type DescribeCustomLinesResponseBodyCustomLinesCustomLineIpv4s struct {
+	Ipv4 []*string `json:"Ipv4,omitempty" xml:"Ipv4,omitempty" type:"Repeated"`
+}
+
+func (s DescribeCustomLinesResponseBodyCustomLinesCustomLineIpv4s) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCustomLinesResponseBodyCustomLinesCustomLineIpv4s) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCustomLinesResponseBodyCustomLinesCustomLineIpv4s) SetIpv4(v []*string) *DescribeCustomLinesResponseBodyCustomLinesCustomLineIpv4s {
+	s.Ipv4 = v
+	return s
+}
+
+type DescribeCustomLinesResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeCustomLinesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeCustomLinesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCustomLinesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCustomLinesResponse) SetHeaders(v map[string]*string) *DescribeCustomLinesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeCustomLinesResponse) SetStatusCode(v int32) *DescribeCustomLinesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeCustomLinesResponse) SetBody(v *DescribeCustomLinesResponseBody) *DescribeCustomLinesResponse {
 	s.Body = v
 	return s
 }
@@ -5600,6 +6327,214 @@ func (s *DescribeZoneInfoResponse) SetBody(v *DescribeZoneInfoResponseBody) *Des
 	return s
 }
 
+type DescribeZoneRecordRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 5808
+	RecordId *int64 `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
+}
+
+func (s DescribeZoneRecordRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeZoneRecordRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeZoneRecordRequest) SetRecordId(v int64) *DescribeZoneRecordRequest {
+	s.RecordId = &v
+	return s
+}
+
+type DescribeZoneRecordResponseBody struct {
+	// example:
+	//
+	// 2018-01-23T03:15Z
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// 1516775741000
+	CreateTimestamp *int64 `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
+	// example:
+	//
+	// default
+	Line *string `json:"Line,omitempty" xml:"Line,omitempty"`
+	// example:
+	//
+	// 5
+	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// example:
+	//
+	// 5808
+	RecordId *int64 `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
+	// example:
+	//
+	// test record
+	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// example:
+	//
+	// 0B7AD377-7E86-44A8-B9A8-53E8666E72FE
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// www
+	Rr *string `json:"Rr,omitempty" xml:"Rr,omitempty"`
+	// example:
+	//
+	// ENABLE
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// 60
+	Ttl *int32 `json:"Ttl,omitempty" xml:"Ttl,omitempty"`
+	// example:
+	//
+	// A
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// 2018-01-24T06:35Z
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// example:
+	//
+	// 1516775741000
+	UpdateTimestamp *int64 `json:"UpdateTimestamp,omitempty" xml:"UpdateTimestamp,omitempty"`
+	// example:
+	//
+	// 127.0.0.1
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	// example:
+	//
+	// 1
+	Weight *int32 `json:"Weight,omitempty" xml:"Weight,omitempty"`
+	// Zone ID。
+	//
+	// example:
+	//
+	// CAgICA1OA_58
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+}
+
+func (s DescribeZoneRecordResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeZoneRecordResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeZoneRecordResponseBody) SetCreateTime(v string) *DescribeZoneRecordResponseBody {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *DescribeZoneRecordResponseBody) SetCreateTimestamp(v int64) *DescribeZoneRecordResponseBody {
+	s.CreateTimestamp = &v
+	return s
+}
+
+func (s *DescribeZoneRecordResponseBody) SetLine(v string) *DescribeZoneRecordResponseBody {
+	s.Line = &v
+	return s
+}
+
+func (s *DescribeZoneRecordResponseBody) SetPriority(v int32) *DescribeZoneRecordResponseBody {
+	s.Priority = &v
+	return s
+}
+
+func (s *DescribeZoneRecordResponseBody) SetRecordId(v int64) *DescribeZoneRecordResponseBody {
+	s.RecordId = &v
+	return s
+}
+
+func (s *DescribeZoneRecordResponseBody) SetRemark(v string) *DescribeZoneRecordResponseBody {
+	s.Remark = &v
+	return s
+}
+
+func (s *DescribeZoneRecordResponseBody) SetRequestId(v string) *DescribeZoneRecordResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeZoneRecordResponseBody) SetRr(v string) *DescribeZoneRecordResponseBody {
+	s.Rr = &v
+	return s
+}
+
+func (s *DescribeZoneRecordResponseBody) SetStatus(v string) *DescribeZoneRecordResponseBody {
+	s.Status = &v
+	return s
+}
+
+func (s *DescribeZoneRecordResponseBody) SetTtl(v int32) *DescribeZoneRecordResponseBody {
+	s.Ttl = &v
+	return s
+}
+
+func (s *DescribeZoneRecordResponseBody) SetType(v string) *DescribeZoneRecordResponseBody {
+	s.Type = &v
+	return s
+}
+
+func (s *DescribeZoneRecordResponseBody) SetUpdateTime(v string) *DescribeZoneRecordResponseBody {
+	s.UpdateTime = &v
+	return s
+}
+
+func (s *DescribeZoneRecordResponseBody) SetUpdateTimestamp(v int64) *DescribeZoneRecordResponseBody {
+	s.UpdateTimestamp = &v
+	return s
+}
+
+func (s *DescribeZoneRecordResponseBody) SetValue(v string) *DescribeZoneRecordResponseBody {
+	s.Value = &v
+	return s
+}
+
+func (s *DescribeZoneRecordResponseBody) SetWeight(v int32) *DescribeZoneRecordResponseBody {
+	s.Weight = &v
+	return s
+}
+
+func (s *DescribeZoneRecordResponseBody) SetZoneId(v string) *DescribeZoneRecordResponseBody {
+	s.ZoneId = &v
+	return s
+}
+
+type DescribeZoneRecordResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeZoneRecordResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeZoneRecordResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeZoneRecordResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeZoneRecordResponse) SetHeaders(v map[string]*string) *DescribeZoneRecordResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeZoneRecordResponse) SetStatusCode(v int32) *DescribeZoneRecordResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeZoneRecordResponse) SetBody(v *DescribeZoneRecordResponseBody) *DescribeZoneRecordResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeZoneRecordsRequest struct {
 	// The hostname keyword based on which the system queries the DNS records.
 	//
@@ -7325,6 +8260,321 @@ func (s *MoveResourceGroupResponse) SetBody(v *MoveResourceGroupResponseBody) *M
 	return s
 }
 
+type SearchCustomLinesRequest struct {
+	// example:
+	//
+	// 1672136518234
+	CreateTimestampEnd *int64 `json:"CreateTimestampEnd,omitempty" xml:"CreateTimestampEnd,omitempty"`
+	// example:
+	//
+	// 1672136518123
+	CreateTimestampStart *int64    `json:"CreateTimestampStart,omitempty" xml:"CreateTimestampStart,omitempty"`
+	Creator              []*string `json:"Creator,omitempty" xml:"Creator,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1.1.1.1
+	Ipv4 *string `json:"Ipv4,omitempty" xml:"Ipv4,omitempty"`
+	// example:
+	//
+	// zh
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 1672136518000
+	UpdateTimestampEnd *int64 `json:"UpdateTimestampEnd,omitempty" xml:"UpdateTimestampEnd,omitempty"`
+	// example:
+	//
+	// 1672136515000
+	UpdateTimestampStart *int64 `json:"UpdateTimestampStart,omitempty" xml:"UpdateTimestampStart,omitempty"`
+}
+
+func (s SearchCustomLinesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchCustomLinesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SearchCustomLinesRequest) SetCreateTimestampEnd(v int64) *SearchCustomLinesRequest {
+	s.CreateTimestampEnd = &v
+	return s
+}
+
+func (s *SearchCustomLinesRequest) SetCreateTimestampStart(v int64) *SearchCustomLinesRequest {
+	s.CreateTimestampStart = &v
+	return s
+}
+
+func (s *SearchCustomLinesRequest) SetCreator(v []*string) *SearchCustomLinesRequest {
+	s.Creator = v
+	return s
+}
+
+func (s *SearchCustomLinesRequest) SetIpv4(v string) *SearchCustomLinesRequest {
+	s.Ipv4 = &v
+	return s
+}
+
+func (s *SearchCustomLinesRequest) SetLang(v string) *SearchCustomLinesRequest {
+	s.Lang = &v
+	return s
+}
+
+func (s *SearchCustomLinesRequest) SetName(v string) *SearchCustomLinesRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *SearchCustomLinesRequest) SetPageNumber(v int32) *SearchCustomLinesRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *SearchCustomLinesRequest) SetPageSize(v int32) *SearchCustomLinesRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *SearchCustomLinesRequest) SetUpdateTimestampEnd(v int64) *SearchCustomLinesRequest {
+	s.UpdateTimestampEnd = &v
+	return s
+}
+
+func (s *SearchCustomLinesRequest) SetUpdateTimestampStart(v int64) *SearchCustomLinesRequest {
+	s.UpdateTimestampStart = &v
+	return s
+}
+
+type SearchCustomLinesResponseBody struct {
+	CustomLines *SearchCustomLinesResponseBodyCustomLines `json:"CustomLines,omitempty" xml:"CustomLines,omitempty" type:"Struct"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 46973D4C-E3E4-4ABA-9190-9A9DE406C7E
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 100
+	TotalItems *int32 `json:"TotalItems,omitempty" xml:"TotalItems,omitempty"`
+	// example:
+	//
+	// 5
+	TotalPages *int32 `json:"TotalPages,omitempty" xml:"TotalPages,omitempty"`
+}
+
+func (s SearchCustomLinesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchCustomLinesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SearchCustomLinesResponseBody) SetCustomLines(v *SearchCustomLinesResponseBodyCustomLines) *SearchCustomLinesResponseBody {
+	s.CustomLines = v
+	return s
+}
+
+func (s *SearchCustomLinesResponseBody) SetPageNumber(v int32) *SearchCustomLinesResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *SearchCustomLinesResponseBody) SetPageSize(v int32) *SearchCustomLinesResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *SearchCustomLinesResponseBody) SetRequestId(v string) *SearchCustomLinesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *SearchCustomLinesResponseBody) SetTotalItems(v int32) *SearchCustomLinesResponseBody {
+	s.TotalItems = &v
+	return s
+}
+
+func (s *SearchCustomLinesResponseBody) SetTotalPages(v int32) *SearchCustomLinesResponseBody {
+	s.TotalPages = &v
+	return s
+}
+
+type SearchCustomLinesResponseBodyCustomLines struct {
+	CustomLine []*SearchCustomLinesResponseBodyCustomLinesCustomLine `json:"CustomLine,omitempty" xml:"CustomLine,omitempty" type:"Repeated"`
+}
+
+func (s SearchCustomLinesResponseBodyCustomLines) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchCustomLinesResponseBodyCustomLines) GoString() string {
+	return s.String()
+}
+
+func (s *SearchCustomLinesResponseBodyCustomLines) SetCustomLine(v []*SearchCustomLinesResponseBodyCustomLinesCustomLine) *SearchCustomLinesResponseBodyCustomLines {
+	s.CustomLine = v
+	return s
+}
+
+type SearchCustomLinesResponseBodyCustomLinesCustomLine struct {
+	// example:
+	//
+	// 2022-12-27 18:16:38
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// 1671174074000
+	CreateTimestamp *int64 `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
+	// example:
+	//
+	// 1851321989648462
+	Creator *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
+	// example:
+	//
+	// SUB
+	CreatorSubType *string `json:"CreatorSubType,omitempty" xml:"CreatorSubType,omitempty"`
+	// example:
+	//
+	// USER
+	CreatorType *string                                                  `json:"CreatorType,omitempty" xml:"CreatorType,omitempty"`
+	Ipv4s       *SearchCustomLinesResponseBodyCustomLinesCustomLineIpv4s `json:"Ipv4s,omitempty" xml:"Ipv4s,omitempty" type:"Struct"`
+	// example:
+	//
+	// 11730
+	LineId *string `json:"LineId,omitempty" xml:"LineId,omitempty"`
+	Name   *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 2023-06-14 14:04:08
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// example:
+	//
+	// 1672136518000
+	UpdateTimestamp *int64 `json:"UpdateTimestamp,omitempty" xml:"UpdateTimestamp,omitempty"`
+}
+
+func (s SearchCustomLinesResponseBodyCustomLinesCustomLine) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchCustomLinesResponseBodyCustomLinesCustomLine) GoString() string {
+	return s.String()
+}
+
+func (s *SearchCustomLinesResponseBodyCustomLinesCustomLine) SetCreateTime(v string) *SearchCustomLinesResponseBodyCustomLinesCustomLine {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *SearchCustomLinesResponseBodyCustomLinesCustomLine) SetCreateTimestamp(v int64) *SearchCustomLinesResponseBodyCustomLinesCustomLine {
+	s.CreateTimestamp = &v
+	return s
+}
+
+func (s *SearchCustomLinesResponseBodyCustomLinesCustomLine) SetCreator(v string) *SearchCustomLinesResponseBodyCustomLinesCustomLine {
+	s.Creator = &v
+	return s
+}
+
+func (s *SearchCustomLinesResponseBodyCustomLinesCustomLine) SetCreatorSubType(v string) *SearchCustomLinesResponseBodyCustomLinesCustomLine {
+	s.CreatorSubType = &v
+	return s
+}
+
+func (s *SearchCustomLinesResponseBodyCustomLinesCustomLine) SetCreatorType(v string) *SearchCustomLinesResponseBodyCustomLinesCustomLine {
+	s.CreatorType = &v
+	return s
+}
+
+func (s *SearchCustomLinesResponseBodyCustomLinesCustomLine) SetIpv4s(v *SearchCustomLinesResponseBodyCustomLinesCustomLineIpv4s) *SearchCustomLinesResponseBodyCustomLinesCustomLine {
+	s.Ipv4s = v
+	return s
+}
+
+func (s *SearchCustomLinesResponseBodyCustomLinesCustomLine) SetLineId(v string) *SearchCustomLinesResponseBodyCustomLinesCustomLine {
+	s.LineId = &v
+	return s
+}
+
+func (s *SearchCustomLinesResponseBodyCustomLinesCustomLine) SetName(v string) *SearchCustomLinesResponseBodyCustomLinesCustomLine {
+	s.Name = &v
+	return s
+}
+
+func (s *SearchCustomLinesResponseBodyCustomLinesCustomLine) SetUpdateTime(v string) *SearchCustomLinesResponseBodyCustomLinesCustomLine {
+	s.UpdateTime = &v
+	return s
+}
+
+func (s *SearchCustomLinesResponseBodyCustomLinesCustomLine) SetUpdateTimestamp(v int64) *SearchCustomLinesResponseBodyCustomLinesCustomLine {
+	s.UpdateTimestamp = &v
+	return s
+}
+
+type SearchCustomLinesResponseBodyCustomLinesCustomLineIpv4s struct {
+	Ipv4 []*string `json:"Ipv4,omitempty" xml:"Ipv4,omitempty" type:"Repeated"`
+}
+
+func (s SearchCustomLinesResponseBodyCustomLinesCustomLineIpv4s) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchCustomLinesResponseBodyCustomLinesCustomLineIpv4s) GoString() string {
+	return s.String()
+}
+
+func (s *SearchCustomLinesResponseBodyCustomLinesCustomLineIpv4s) SetIpv4(v []*string) *SearchCustomLinesResponseBodyCustomLinesCustomLineIpv4s {
+	s.Ipv4 = v
+	return s
+}
+
+type SearchCustomLinesResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SearchCustomLinesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s SearchCustomLinesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchCustomLinesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SearchCustomLinesResponse) SetHeaders(v map[string]*string) *SearchCustomLinesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SearchCustomLinesResponse) SetStatusCode(v int32) *SearchCustomLinesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SearchCustomLinesResponse) SetBody(v *SearchCustomLinesResponseBody) *SearchCustomLinesResponse {
+	s.Body = v
+	return s
+}
+
 type SetProxyPatternRequest struct {
 	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
 	//
@@ -7885,6 +9135,108 @@ func (s *UntagResourcesResponse) SetStatusCode(v int32) *UntagResourcesResponse 
 }
 
 func (s *UntagResourcesResponse) SetBody(v *UntagResourcesResponseBody) *UntagResourcesResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateCustomLineRequest struct {
+	// This parameter is required.
+	Ipv4s []*string `json:"Ipv4s,omitempty" xml:"Ipv4s,omitempty" type:"Repeated"`
+	// example:
+	//
+	// en
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 100003
+	LineId *string `json:"LineId,omitempty" xml:"LineId,omitempty"`
+	Name   *string `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s UpdateCustomLineRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateCustomLineRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateCustomLineRequest) SetIpv4s(v []*string) *UpdateCustomLineRequest {
+	s.Ipv4s = v
+	return s
+}
+
+func (s *UpdateCustomLineRequest) SetLang(v string) *UpdateCustomLineRequest {
+	s.Lang = &v
+	return s
+}
+
+func (s *UpdateCustomLineRequest) SetLineId(v string) *UpdateCustomLineRequest {
+	s.LineId = &v
+	return s
+}
+
+func (s *UpdateCustomLineRequest) SetName(v string) *UpdateCustomLineRequest {
+	s.Name = &v
+	return s
+}
+
+type UpdateCustomLineResponseBody struct {
+	// example:
+	//
+	// 765001
+	LineId *string `json:"LineId,omitempty" xml:"LineId,omitempty"`
+	// example:
+	//
+	// 0B7AD377-7E86-44A8-B9A8-53E8666E72FE
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateCustomLineResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateCustomLineResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateCustomLineResponseBody) SetLineId(v string) *UpdateCustomLineResponseBody {
+	s.LineId = &v
+	return s
+}
+
+func (s *UpdateCustomLineResponseBody) SetRequestId(v string) *UpdateCustomLineResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateCustomLineResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateCustomLineResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateCustomLineResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateCustomLineResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateCustomLineResponse) SetHeaders(v map[string]*string) *UpdateCustomLineResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateCustomLineResponse) SetStatusCode(v int32) *UpdateCustomLineResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateCustomLineResponse) SetBody(v *UpdateCustomLineResponseBody) *UpdateCustomLineResponse {
 	s.Body = v
 	return s
 }
@@ -8853,6 +10205,74 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
+// @param request - AddCustomLineRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AddCustomLineResponse
+func (client *Client) AddCustomLineWithOptions(request *AddCustomLineRequest, runtime *util.RuntimeOptions) (_result *AddCustomLineResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DnsCategory)) {
+		query["DnsCategory"] = request.DnsCategory
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Ipv4s)) {
+		query["Ipv4s"] = request.Ipv4s
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Lang)) {
+		query["Lang"] = request.Lang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ShareScope)) {
+		query["ShareScope"] = request.ShareScope
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AddCustomLine"),
+		Version:     tea.String("2018-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &AddCustomLineResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - AddCustomLineRequest
+//
+// @return AddCustomLineResponse
+func (client *Client) AddCustomLine(request *AddCustomLineRequest) (_result *AddCustomLineResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &AddCustomLineResponse{}
+	_body, _err := client.AddCustomLineWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 // Summary:
 //
 // Creates an endpoint.
@@ -9421,6 +10841,66 @@ func (client *Client) BindZoneVpc(request *BindZoneVpcRequest) (_result *BindZon
 	return _result, _err
 }
 
+// @param request - ChangeZoneDnsGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ChangeZoneDnsGroupResponse
+func (client *Client) ChangeZoneDnsGroupWithOptions(request *ChangeZoneDnsGroupRequest, runtime *util.RuntimeOptions) (_result *ChangeZoneDnsGroupResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DnsGroup)) {
+		query["DnsGroup"] = request.DnsGroup
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ZoneId)) {
+		query["ZoneId"] = request.ZoneId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ChangeZoneDnsGroup"),
+		Version:     tea.String("2018-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ChangeZoneDnsGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - ChangeZoneDnsGroupRequest
+//
+// @return ChangeZoneDnsGroupResponse
+func (client *Client) ChangeZoneDnsGroup(request *ChangeZoneDnsGroupRequest) (_result *ChangeZoneDnsGroupResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ChangeZoneDnsGroupResponse{}
+	_body, _err := client.ChangeZoneDnsGroupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 // Summary:
 //
 // Checks whether the name of a zone is valid based on specific rules.
@@ -9482,6 +10962,62 @@ func (client *Client) CheckZoneName(request *CheckZoneNameRequest) (_result *Che
 	runtime := &util.RuntimeOptions{}
 	_result = &CheckZoneNameResponse{}
 	_body, _err := client.CheckZoneNameWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param request - DeleteCustomLineRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteCustomLineResponse
+func (client *Client) DeleteCustomLineWithOptions(request *DeleteCustomLineRequest, runtime *util.RuntimeOptions) (_result *DeleteCustomLineResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Lang)) {
+		query["Lang"] = request.Lang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LineId)) {
+		query["LineId"] = request.LineId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteCustomLine"),
+		Version:     tea.String("2018-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteCustomLineResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - DeleteCustomLineRequest
+//
+// @return DeleteCustomLineResponse
+func (client *Client) DeleteCustomLine(request *DeleteCustomLineRequest) (_result *DeleteCustomLineResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteCustomLineResponse{}
+	_body, _err := client.DeleteCustomLineWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9910,6 +11446,122 @@ func (client *Client) DescribeChangeLogs(request *DescribeChangeLogsRequest) (_r
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeChangeLogsResponse{}
 	_body, _err := client.DescribeChangeLogsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param request - DescribeCustomLineInfoRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeCustomLineInfoResponse
+func (client *Client) DescribeCustomLineInfoWithOptions(request *DescribeCustomLineInfoRequest, runtime *util.RuntimeOptions) (_result *DescribeCustomLineInfoResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Lang)) {
+		query["Lang"] = request.Lang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LineId)) {
+		query["LineId"] = request.LineId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeCustomLineInfo"),
+		Version:     tea.String("2018-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeCustomLineInfoResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - DescribeCustomLineInfoRequest
+//
+// @return DescribeCustomLineInfoResponse
+func (client *Client) DescribeCustomLineInfo(request *DescribeCustomLineInfoRequest) (_result *DescribeCustomLineInfoResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeCustomLineInfoResponse{}
+	_body, _err := client.DescribeCustomLineInfoWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param request - DescribeCustomLinesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeCustomLinesResponse
+func (client *Client) DescribeCustomLinesWithOptions(request *DescribeCustomLinesRequest, runtime *util.RuntimeOptions) (_result *DescribeCustomLinesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Lang)) {
+		query["Lang"] = request.Lang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeCustomLines"),
+		Version:     tea.String("2018-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeCustomLinesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - DescribeCustomLinesRequest
+//
+// @return DescribeCustomLinesResponse
+func (client *Client) DescribeCustomLines(request *DescribeCustomLinesRequest) (_result *DescribeCustomLinesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeCustomLinesResponse{}
+	_body, _err := client.DescribeCustomLinesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10777,6 +12429,58 @@ func (client *Client) DescribeZoneInfo(request *DescribeZoneInfoRequest) (_resul
 	return _result, _err
 }
 
+// @param request - DescribeZoneRecordRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeZoneRecordResponse
+func (client *Client) DescribeZoneRecordWithOptions(request *DescribeZoneRecordRequest, runtime *util.RuntimeOptions) (_result *DescribeZoneRecordResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.RecordId)) {
+		query["RecordId"] = request.RecordId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeZoneRecord"),
+		Version:     tea.String("2018-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeZoneRecordResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - DescribeZoneRecordRequest
+//
+// @return DescribeZoneRecordResponse
+func (client *Client) DescribeZoneRecord(request *DescribeZoneRecordRequest) (_result *DescribeZoneRecordResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeZoneRecordResponse{}
+	_body, _err := client.DescribeZoneRecordWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 // Summary:
 //
 // Queries a list of Domain Name System (DNS) records for a zone.
@@ -11189,6 +12893,94 @@ func (client *Client) MoveResourceGroup(request *MoveResourceGroupRequest) (_res
 	return _result, _err
 }
 
+// @param request - SearchCustomLinesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SearchCustomLinesResponse
+func (client *Client) SearchCustomLinesWithOptions(request *SearchCustomLinesRequest, runtime *util.RuntimeOptions) (_result *SearchCustomLinesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CreateTimestampEnd)) {
+		query["CreateTimestampEnd"] = request.CreateTimestampEnd
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CreateTimestampStart)) {
+		query["CreateTimestampStart"] = request.CreateTimestampStart
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Creator)) {
+		query["Creator"] = request.Creator
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Ipv4)) {
+		query["Ipv4"] = request.Ipv4
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Lang)) {
+		query["Lang"] = request.Lang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UpdateTimestampEnd)) {
+		query["UpdateTimestampEnd"] = request.UpdateTimestampEnd
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UpdateTimestampStart)) {
+		query["UpdateTimestampStart"] = request.UpdateTimestampStart
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SearchCustomLines"),
+		Version:     tea.String("2018-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SearchCustomLinesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - SearchCustomLinesRequest
+//
+// @return SearchCustomLinesResponse
+func (client *Client) SearchCustomLines(request *SearchCustomLinesRequest) (_result *SearchCustomLinesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SearchCustomLinesResponse{}
+	_body, _err := client.SearchCustomLinesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 // Summary:
 //
 // Configures the recursive resolution proxy feature.
@@ -11486,6 +13278,70 @@ func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *U
 	runtime := &util.RuntimeOptions{}
 	_result = &UntagResourcesResponse{}
 	_body, _err := client.UntagResourcesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param request - UpdateCustomLineRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateCustomLineResponse
+func (client *Client) UpdateCustomLineWithOptions(request *UpdateCustomLineRequest, runtime *util.RuntimeOptions) (_result *UpdateCustomLineResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Ipv4s)) {
+		query["Ipv4s"] = request.Ipv4s
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Lang)) {
+		query["Lang"] = request.Lang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LineId)) {
+		query["LineId"] = request.LineId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateCustomLine"),
+		Version:     tea.String("2018-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateCustomLineResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - UpdateCustomLineRequest
+//
+// @return UpdateCustomLineResponse
+func (client *Client) UpdateCustomLine(request *UpdateCustomLineRequest) (_result *UpdateCustomLineResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateCustomLineResponse{}
+	_body, _err := client.UpdateCustomLineWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
