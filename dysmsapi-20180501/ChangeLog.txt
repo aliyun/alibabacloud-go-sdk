@@ -1,3 +1,6 @@
+2024-08-01 Version: v2.0.4
+- Generated golang 2018-05-01 for Dysmsapi.
+
 2024-03-28 Version: v2.0.3
 - Update API SendMessageToGlobe: add param ChannelId.
 - Update API SendMessageWithTemplate: add param ChannelId.
