@@ -9,6 +9,184 @@ import (
 	"github.com/alibabacloud-go/tea/tea"
 )
 
+type CredentialConfig struct {
+	// example:
+	//
+	// 0
+	AliyunEnvRoleKey *string                    `json:"AliyunEnvRoleKey,omitempty" xml:"AliyunEnvRoleKey,omitempty"`
+	Configs          []*CredentialConfigConfigs `json:"Configs,omitempty" xml:"Configs,omitempty" type:"Repeated"`
+	// example:
+	//
+	// true
+	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
+}
+
+func (s CredentialConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CredentialConfig) GoString() string {
+	return s.String()
+}
+
+func (s *CredentialConfig) SetAliyunEnvRoleKey(v string) *CredentialConfig {
+	s.AliyunEnvRoleKey = &v
+	return s
+}
+
+func (s *CredentialConfig) SetConfigs(v []*CredentialConfigConfigs) *CredentialConfig {
+	s.Configs = v
+	return s
+}
+
+func (s *CredentialConfig) SetEnable(v bool) *CredentialConfig {
+	s.Enable = &v
+	return s
+}
+
+type CredentialConfigConfigs struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0
+	Key   *string                         `json:"Key,omitempty" xml:"Key,omitempty"`
+	Roles []*CredentialConfigConfigsRoles `json:"Roles,omitempty" xml:"Roles,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Role
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s CredentialConfigConfigs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CredentialConfigConfigs) GoString() string {
+	return s.String()
+}
+
+func (s *CredentialConfigConfigs) SetKey(v string) *CredentialConfigConfigs {
+	s.Key = &v
+	return s
+}
+
+func (s *CredentialConfigConfigs) SetRoles(v []*CredentialConfigConfigsRoles) *CredentialConfigConfigs {
+	s.Roles = v
+	return s
+}
+
+func (s *CredentialConfigConfigs) SetType(v string) *CredentialConfigConfigs {
+	s.Type = &v
+	return s
+}
+
+type CredentialConfigConfigsRoles struct {
+	// example:
+	//
+	// 123******
+	AssumeRoleFor *string `json:"AssumeRoleFor,omitempty" xml:"AssumeRoleFor,omitempty"`
+	// example:
+	//
+	// {}
+	Policy *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// acs:ram::123******:role/****
+	RoleArn *string `json:"RoleArn,omitempty" xml:"RoleArn,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// service
+	RoleType *string                               `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
+	UserInfo *CredentialConfigConfigsRolesUserInfo `json:"UserInfo,omitempty" xml:"UserInfo,omitempty" type:"Struct"`
+}
+
+func (s CredentialConfigConfigsRoles) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CredentialConfigConfigsRoles) GoString() string {
+	return s.String()
+}
+
+func (s *CredentialConfigConfigsRoles) SetAssumeRoleFor(v string) *CredentialConfigConfigsRoles {
+	s.AssumeRoleFor = &v
+	return s
+}
+
+func (s *CredentialConfigConfigsRoles) SetPolicy(v string) *CredentialConfigConfigsRoles {
+	s.Policy = &v
+	return s
+}
+
+func (s *CredentialConfigConfigsRoles) SetRoleArn(v string) *CredentialConfigConfigsRoles {
+	s.RoleArn = &v
+	return s
+}
+
+func (s *CredentialConfigConfigsRoles) SetRoleType(v string) *CredentialConfigConfigsRoles {
+	s.RoleType = &v
+	return s
+}
+
+func (s *CredentialConfigConfigsRoles) SetUserInfo(v *CredentialConfigConfigsRolesUserInfo) *CredentialConfigConfigsRoles {
+	s.UserInfo = v
+	return s
+}
+
+type CredentialConfigConfigsRolesUserInfo struct {
+	// example:
+	//
+	// LT********
+	AccessKeyId *string `json:"AccessKeyId,omitempty" xml:"AccessKeyId,omitempty"`
+	// example:
+	//
+	// 456******
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// ********
+	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	// example:
+	//
+	// S
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s CredentialConfigConfigsRolesUserInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CredentialConfigConfigsRolesUserInfo) GoString() string {
+	return s.String()
+}
+
+func (s *CredentialConfigConfigsRolesUserInfo) SetAccessKeyId(v string) *CredentialConfigConfigsRolesUserInfo {
+	s.AccessKeyId = &v
+	return s
+}
+
+func (s *CredentialConfigConfigsRolesUserInfo) SetId(v string) *CredentialConfigConfigsRolesUserInfo {
+	s.Id = &v
+	return s
+}
+
+func (s *CredentialConfigConfigsRolesUserInfo) SetSecurityToken(v string) *CredentialConfigConfigsRolesUserInfo {
+	s.SecurityToken = &v
+	return s
+}
+
+func (s *CredentialConfigConfigsRolesUserInfo) SetType(v string) *CredentialConfigConfigsRolesUserInfo {
+	s.Type = &v
+	return s
+}
+
 type DemoCategory struct {
 	// example:
 	//
@@ -414,8 +592,9 @@ type CreateInstanceRequest struct {
 	// example:
 	//
 	// []
-	CloudDisks []*CreateInstanceRequestCloudDisks `json:"CloudDisks,omitempty" xml:"CloudDisks,omitempty" type:"Repeated"`
-	Datasets   []*CreateInstanceRequestDatasets   `json:"Datasets,omitempty" xml:"Datasets,omitempty" type:"Repeated"`
+	CloudDisks       []*CreateInstanceRequestCloudDisks `json:"CloudDisks,omitempty" xml:"CloudDisks,omitempty" type:"Repeated"`
+	CredentialConfig *CredentialConfig                  `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
+	Datasets         []*CreateInstanceRequestDatasets   `json:"Datasets,omitempty" xml:"Datasets,omitempty" type:"Repeated"`
 	// example:
 	//
 	// 535.54.03
@@ -492,6 +671,11 @@ func (s *CreateInstanceRequest) SetAffinity(v *CreateInstanceRequestAffinity) *C
 
 func (s *CreateInstanceRequest) SetCloudDisks(v []*CreateInstanceRequestCloudDisks) *CreateInstanceRequest {
 	s.CloudDisks = v
+	return s
+}
+
+func (s *CreateInstanceRequest) SetCredentialConfig(v *CredentialConfig) *CreateInstanceRequest {
+	s.CredentialConfig = v
 	return s
 }
 
@@ -6721,8 +6905,10 @@ type UpdateInstanceRequest struct {
 	// example:
 	//
 	// []
-	CloudDisks []*UpdateInstanceRequestCloudDisks `json:"CloudDisks,omitempty" xml:"CloudDisks,omitempty" type:"Repeated"`
-	Datasets   []*UpdateInstanceRequestDatasets   `json:"Datasets,omitempty" xml:"Datasets,omitempty" type:"Repeated"`
+	CloudDisks             []*UpdateInstanceRequestCloudDisks `json:"CloudDisks,omitempty" xml:"CloudDisks,omitempty" type:"Repeated"`
+	CredentialConfig       *CredentialConfig                  `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
+	Datasets               []*UpdateInstanceRequestDatasets   `json:"Datasets,omitempty" xml:"Datasets,omitempty" type:"Repeated"`
+	DisassociateCredential *bool                              `json:"DisassociateCredential,omitempty" xml:"DisassociateCredential,omitempty"`
 	// example:
 	//
 	// false
@@ -6802,8 +6988,18 @@ func (s *UpdateInstanceRequest) SetCloudDisks(v []*UpdateInstanceRequestCloudDis
 	return s
 }
 
+func (s *UpdateInstanceRequest) SetCredentialConfig(v *CredentialConfig) *UpdateInstanceRequest {
+	s.CredentialConfig = v
+	return s
+}
+
 func (s *UpdateInstanceRequest) SetDatasets(v []*UpdateInstanceRequestDatasets) *UpdateInstanceRequest {
 	s.Datasets = v
+	return s
+}
+
+func (s *UpdateInstanceRequest) SetDisassociateCredential(v bool) *UpdateInstanceRequest {
+	s.DisassociateCredential = &v
 	return s
 }
 
@@ -7445,6 +7641,10 @@ func (client *Client) CreateInstanceWithOptions(request *CreateInstanceRequest, 
 
 	if !tea.BoolValue(util.IsUnset(request.CloudDisks)) {
 		body["CloudDisks"] = request.CloudDisks
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CredentialConfig)) {
+		body["CredentialConfig"] = request.CredentialConfig
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Datasets)) {
@@ -9105,8 +9305,16 @@ func (client *Client) UpdateInstanceWithOptions(InstanceId *string, request *Upd
 		body["CloudDisks"] = request.CloudDisks
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.CredentialConfig)) {
+		body["CredentialConfig"] = request.CredentialConfig
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Datasets)) {
 		body["Datasets"] = request.Datasets
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DisassociateCredential)) {
+		body["DisassociateCredential"] = request.DisassociateCredential
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.DisassociateDatasets)) {
