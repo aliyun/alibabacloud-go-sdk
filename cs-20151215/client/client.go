@@ -6732,6 +6732,7 @@ func (s *CreateTriggerResponse) SetBody(v *CreateTriggerResponseBody) *CreateTri
 }
 
 type DeleteAlertContactRequest struct {
+	// This parameter is required.
 	ContactIds []*int64 `json:"contact_ids,omitempty" xml:"contact_ids,omitempty" type:"Repeated"`
 }
 
@@ -6749,6 +6750,7 @@ func (s *DeleteAlertContactRequest) SetContactIds(v []*int64) *DeleteAlertContac
 }
 
 type DeleteAlertContactShrinkRequest struct {
+	// This parameter is required.
 	ContactIdsShrink *string `json:"contact_ids,omitempty" xml:"contact_ids,omitempty"`
 }
 
@@ -6766,9 +6768,9 @@ func (s *DeleteAlertContactShrinkRequest) SetContactIdsShrink(v string) *DeleteA
 }
 
 type DeleteAlertContactResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-	Body       *DeleteAlertContactResponseBody `json:"body,omitempty" xml:"body,omitempty" type:"Struct"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       []*DeleteAlertContactResponseBody `json:"body,omitempty" xml:"body,omitempty" type:"Repeated"`
 }
 
 func (s DeleteAlertContactResponse) String() string {
@@ -6789,13 +6791,15 @@ func (s *DeleteAlertContactResponse) SetStatusCode(v int32) *DeleteAlertContactR
 	return s
 }
 
-func (s *DeleteAlertContactResponse) SetBody(v *DeleteAlertContactResponseBody) *DeleteAlertContactResponse {
+func (s *DeleteAlertContactResponse) SetBody(v []*DeleteAlertContactResponseBody) *DeleteAlertContactResponse {
 	s.Body = v
 	return s
 }
 
 type DeleteAlertContactResponseBody struct {
-	Body []*DeleteAlertContactResponseBodyBody `json:"body,omitempty" xml:"body,omitempty" type:"Repeated"`
+	Status    *bool   `json:"status,omitempty" xml:"status,omitempty"`
+	Msg       *string `json:"msg,omitempty" xml:"msg,omitempty"`
+	ContactId *string `json:"contact_id,omitempty" xml:"contact_id,omitempty"`
 }
 
 func (s DeleteAlertContactResponseBody) String() string {
@@ -6806,41 +6810,23 @@ func (s DeleteAlertContactResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DeleteAlertContactResponseBody) SetBody(v []*DeleteAlertContactResponseBodyBody) *DeleteAlertContactResponseBody {
-	s.Body = v
-	return s
-}
-
-type DeleteAlertContactResponseBodyBody struct {
-	Status    *bool   `json:"status,omitempty" xml:"status,omitempty"`
-	Msg       *string `json:"msg,omitempty" xml:"msg,omitempty"`
-	ContactId *string `json:"contact_id,omitempty" xml:"contact_id,omitempty"`
-}
-
-func (s DeleteAlertContactResponseBodyBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteAlertContactResponseBodyBody) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteAlertContactResponseBodyBody) SetStatus(v bool) *DeleteAlertContactResponseBodyBody {
+func (s *DeleteAlertContactResponseBody) SetStatus(v bool) *DeleteAlertContactResponseBody {
 	s.Status = &v
 	return s
 }
 
-func (s *DeleteAlertContactResponseBodyBody) SetMsg(v string) *DeleteAlertContactResponseBodyBody {
+func (s *DeleteAlertContactResponseBody) SetMsg(v string) *DeleteAlertContactResponseBody {
 	s.Msg = &v
 	return s
 }
 
-func (s *DeleteAlertContactResponseBodyBody) SetContactId(v string) *DeleteAlertContactResponseBodyBody {
+func (s *DeleteAlertContactResponseBody) SetContactId(v string) *DeleteAlertContactResponseBody {
 	s.ContactId = &v
 	return s
 }
 
 type DeleteAlertContactGroupRequest struct {
+	// This parameter is required.
 	ContactGroupIds []*int64 `json:"contact_group_ids,omitempty" xml:"contact_group_ids,omitempty" type:"Repeated"`
 }
 
@@ -6858,6 +6844,7 @@ func (s *DeleteAlertContactGroupRequest) SetContactGroupIds(v []*int64) *DeleteA
 }
 
 type DeleteAlertContactGroupShrinkRequest struct {
+	// This parameter is required.
 	ContactGroupIdsShrink *string `json:"contact_group_ids,omitempty" xml:"contact_group_ids,omitempty"`
 }
 
@@ -26833,9 +26820,68 @@ func (s *UpdateClusterAuditLogConfigResponse) SetBody(v *UpdateClusterAuditLogCo
 	return s
 }
 
+type UpdateContactGroupForAlertRequest struct {
+	AlertRuleGroupName *string  `json:"alert_rule_group_name,omitempty" xml:"alert_rule_group_name,omitempty"`
+	ContactGroupIds    []*int64 `json:"contact_group_ids,omitempty" xml:"contact_group_ids,omitempty" type:"Repeated"`
+	CrName             *string  `json:"cr_name,omitempty" xml:"cr_name,omitempty"`
+	Namespace          *string  `json:"namespace,omitempty" xml:"namespace,omitempty"`
+}
+
+func (s UpdateContactGroupForAlertRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateContactGroupForAlertRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateContactGroupForAlertRequest) SetAlertRuleGroupName(v string) *UpdateContactGroupForAlertRequest {
+	s.AlertRuleGroupName = &v
+	return s
+}
+
+func (s *UpdateContactGroupForAlertRequest) SetContactGroupIds(v []*int64) *UpdateContactGroupForAlertRequest {
+	s.ContactGroupIds = v
+	return s
+}
+
+func (s *UpdateContactGroupForAlertRequest) SetCrName(v string) *UpdateContactGroupForAlertRequest {
+	s.CrName = &v
+	return s
+}
+
+func (s *UpdateContactGroupForAlertRequest) SetNamespace(v string) *UpdateContactGroupForAlertRequest {
+	s.Namespace = &v
+	return s
+}
+
+type UpdateContactGroupForAlertResponseBody struct {
+	Msg    *string `json:"msg,omitempty" xml:"msg,omitempty"`
+	Status *bool   `json:"status,omitempty" xml:"status,omitempty"`
+}
+
+func (s UpdateContactGroupForAlertResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateContactGroupForAlertResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateContactGroupForAlertResponseBody) SetMsg(v string) *UpdateContactGroupForAlertResponseBody {
+	s.Msg = &v
+	return s
+}
+
+func (s *UpdateContactGroupForAlertResponseBody) SetStatus(v bool) *UpdateContactGroupForAlertResponseBody {
+	s.Status = &v
+	return s
+}
+
 type UpdateContactGroupForAlertResponse struct {
-	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateContactGroupForAlertResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UpdateContactGroupForAlertResponse) String() string {
@@ -26853,6 +26899,11 @@ func (s *UpdateContactGroupForAlertResponse) SetHeaders(v map[string]*string) *U
 
 func (s *UpdateContactGroupForAlertResponse) SetStatusCode(v int32) *UpdateContactGroupForAlertResponse {
 	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateContactGroupForAlertResponse) SetBody(v *UpdateContactGroupForAlertResponseBody) *UpdateContactGroupForAlertResponse {
+	s.Body = v
 	return s
 }
 
@@ -29776,6 +29827,10 @@ func (client *Client) CreateTrigger(clusterId *string, request *CreateTriggerReq
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除ACK报警联系人
+//
 // @param tmpReq - DeleteAlertContactRequest
 //
 // @param headers - map
@@ -29823,6 +29878,10 @@ func (client *Client) DeleteAlertContactWithOptions(tmpReq *DeleteAlertContactRe
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除ACK报警联系人
+//
 // @param request - DeleteAlertContactRequest
 //
 // @return DeleteAlertContactResponse
@@ -29838,6 +29897,10 @@ func (client *Client) DeleteAlertContact(request *DeleteAlertContactRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除ACK报警联系人分组
+//
 // @param tmpReq - DeleteAlertContactGroupRequest
 //
 // @param headers - map
@@ -29885,6 +29948,10 @@ func (client *Client) DeleteAlertContactGroupWithOptions(tmpReq *DeleteAlertCont
 	return _result, _err
 }
 
+// Summary:
+//
+// 删除ACK报警联系人分组
+//
 // @param request - DeleteAlertContactGroupRequest
 //
 // @return DeleteAlertContactGroupResponse
@@ -37132,14 +37199,42 @@ func (client *Client) UpdateClusterAuditLogConfig(clusterid *string, request *Up
 	return _result, _err
 }
 
+// Summary:
+//
+// 为集群中报警规则集设置订阅的通知对象联系人组
+//
+// @param request - UpdateContactGroupForAlertRequest
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UpdateContactGroupForAlertResponse
-func (client *Client) UpdateContactGroupForAlertWithOptions(ClusterId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateContactGroupForAlertResponse, _err error) {
+func (client *Client) UpdateContactGroupForAlertWithOptions(ClusterId *string, request *UpdateContactGroupForAlertRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateContactGroupForAlertResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AlertRuleGroupName)) {
+		body["alert_rule_group_name"] = request.AlertRuleGroupName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ContactGroupIds)) {
+		body["contact_group_ids"] = request.ContactGroupIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CrName)) {
+		body["cr_name"] = request.CrName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Namespace)) {
+		body["namespace"] = request.Namespace
+	}
+
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UpdateContactGroupForAlert"),
@@ -37150,7 +37245,7 @@ func (client *Client) UpdateContactGroupForAlertWithOptions(ClusterId *string, h
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
 		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("none"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateContactGroupForAlertResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
@@ -37161,12 +37256,18 @@ func (client *Client) UpdateContactGroupForAlertWithOptions(ClusterId *string, h
 	return _result, _err
 }
 
+// Summary:
+//
+// 为集群中报警规则集设置订阅的通知对象联系人组
+//
+// @param request - UpdateContactGroupForAlertRequest
+//
 // @return UpdateContactGroupForAlertResponse
-func (client *Client) UpdateContactGroupForAlert(ClusterId *string) (_result *UpdateContactGroupForAlertResponse, _err error) {
+func (client *Client) UpdateContactGroupForAlert(ClusterId *string, request *UpdateContactGroupForAlertRequest) (_result *UpdateContactGroupForAlertResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
 	_result = &UpdateContactGroupForAlertResponse{}
-	_body, _err := client.UpdateContactGroupForAlertWithOptions(ClusterId, headers, runtime)
+	_body, _err := client.UpdateContactGroupForAlertWithOptions(ClusterId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
