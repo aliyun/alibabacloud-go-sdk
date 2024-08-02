@@ -17603,7 +17603,8 @@ type ExportInsightWorkitemStatusResponseBodyResult struct {
 	// example:
 	//
 	// 505ac6433dfbda8df0b08bxxxx
-	ProjectId *string `json:"projectId,omitempty" xml:"projectId,omitempty"`
+	ProjectId    *string `json:"projectId,omitempty" xml:"projectId,omitempty"`
+	SerialNumber *int32  `json:"serialNumber,omitempty" xml:"serialNumber,omitempty"`
 	// example:
 	//
 	// projex
@@ -17754,6 +17755,11 @@ func (s *ExportInsightWorkitemStatusResponseBodyResult) SetProductId(v string) *
 
 func (s *ExportInsightWorkitemStatusResponseBodyResult) SetProjectId(v string) *ExportInsightWorkitemStatusResponseBodyResult {
 	s.ProjectId = &v
+	return s
+}
+
+func (s *ExportInsightWorkitemStatusResponseBodyResult) SetSerialNumber(v int32) *ExportInsightWorkitemStatusResponseBodyResult {
+	s.SerialNumber = &v
 	return s
 }
 
@@ -18039,6 +18045,7 @@ type ExportInsightWorkitemStatusJoinWorkitemDefectExtraResponseBodyResult struct
 	// 6732a29d846bf998dc09e7xxxx
 	ProjectId    *string `json:"projectId,omitempty" xml:"projectId,omitempty"`
 	ReopenNum    *int32  `json:"reopenNum,omitempty" xml:"reopenNum,omitempty"`
+	SerialNumber *int32  `json:"serialNumber,omitempty" xml:"serialNumber,omitempty"`
 	SeriousLevel *int32  `json:"seriousLevel,omitempty" xml:"seriousLevel,omitempty"`
 	Solution     *string `json:"solution,omitempty" xml:"solution,omitempty"`
 	// example:
@@ -18225,6 +18232,11 @@ func (s *ExportInsightWorkitemStatusJoinWorkitemDefectExtraResponseBodyResult) S
 
 func (s *ExportInsightWorkitemStatusJoinWorkitemDefectExtraResponseBodyResult) SetReopenNum(v int32) *ExportInsightWorkitemStatusJoinWorkitemDefectExtraResponseBodyResult {
 	s.ReopenNum = &v
+	return s
+}
+
+func (s *ExportInsightWorkitemStatusJoinWorkitemDefectExtraResponseBodyResult) SetSerialNumber(v int32) *ExportInsightWorkitemStatusJoinWorkitemDefectExtraResponseBodyResult {
+	s.SerialNumber = &v
 	return s
 }
 
