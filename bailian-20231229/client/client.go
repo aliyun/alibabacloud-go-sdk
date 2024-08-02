@@ -3125,6 +3125,275 @@ func (s *ListChunksResponse) SetBody(v *ListChunksResponseBody) *ListChunksRespo
 	return s
 }
 
+type ListFileRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cate_cdd11b1b79a74e8bbd675c356a91ee3510024405
+	CategoryId *string `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
+	// example:
+	//
+	// 20
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// example:
+	//
+	// AAAAAdH70eOCSCKtacdomNzak4U=
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+}
+
+func (s ListFileRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListFileRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListFileRequest) SetCategoryId(v string) *ListFileRequest {
+	s.CategoryId = &v
+	return s
+}
+
+func (s *ListFileRequest) SetMaxResults(v int32) *ListFileRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListFileRequest) SetNextToken(v string) *ListFileRequest {
+	s.NextToken = &v
+	return s
+}
+
+type ListFileResponseBody struct {
+	// example:
+	//
+	// success
+	Code *string                   `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *ListFileResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// Requests throttling triggered.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 8F97A63B-55F1-527F-9D6E-467B6A7E8CF1
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 200
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ListFileResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListFileResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListFileResponseBody) SetCode(v string) *ListFileResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListFileResponseBody) SetData(v *ListFileResponseBodyData) *ListFileResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListFileResponseBody) SetMessage(v string) *ListFileResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListFileResponseBody) SetRequestId(v string) *ListFileResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListFileResponseBody) SetStatus(v string) *ListFileResponseBody {
+	s.Status = &v
+	return s
+}
+
+func (s *ListFileResponseBody) SetSuccess(v bool) *ListFileResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ListFileResponseBodyData struct {
+	FileList []*ListFileResponseBodyDataFileList `json:"FileList,omitempty" xml:"FileList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// true
+	HasNext *bool `json:"HasNext,omitempty" xml:"HasNext,omitempty"`
+	// example:
+	//
+	// 20
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// example:
+	//
+	// 4jzbJk9J6lNeuXD9hP0viA==
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// example:
+	//
+	// 48
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListFileResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListFileResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListFileResponseBodyData) SetFileList(v []*ListFileResponseBodyDataFileList) *ListFileResponseBodyData {
+	s.FileList = v
+	return s
+}
+
+func (s *ListFileResponseBodyData) SetHasNext(v bool) *ListFileResponseBodyData {
+	s.HasNext = &v
+	return s
+}
+
+func (s *ListFileResponseBodyData) SetMaxResults(v int32) *ListFileResponseBodyData {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListFileResponseBodyData) SetNextToken(v string) *ListFileResponseBodyData {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListFileResponseBodyData) SetTotalCount(v int32) *ListFileResponseBodyData {
+	s.TotalCount = &v
+	return s
+}
+
+type ListFileResponseBodyDataFileList struct {
+	// example:
+	//
+	// cate_cdd11b1b79a74e8bbd675c356a91ee3510024405
+	CategoryId *string `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
+	// example:
+	//
+	// 2023-08-18 11:03:35
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// file_5ff599b3455a45db8c41b0054b361518_10098576
+	FileId *string `json:"FileId,omitempty" xml:"FileId,omitempty"`
+	// example:
+	//
+	// auto-test-1721096109278.pdf
+	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	// example:
+	//
+	// docx
+	FileType *string `json:"FileType,omitempty" xml:"FileType,omitempty"`
+	// example:
+	//
+	// DASHSCOPE_DOCMIND
+	Parser *string `json:"Parser,omitempty" xml:"Parser,omitempty"`
+	// example:
+	//
+	// 512
+	SizeInBytes *int64 `json:"SizeInBytes,omitempty" xml:"SizeInBytes,omitempty"`
+	// example:
+	//
+	// 200
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s ListFileResponseBodyDataFileList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListFileResponseBodyDataFileList) GoString() string {
+	return s.String()
+}
+
+func (s *ListFileResponseBodyDataFileList) SetCategoryId(v string) *ListFileResponseBodyDataFileList {
+	s.CategoryId = &v
+	return s
+}
+
+func (s *ListFileResponseBodyDataFileList) SetCreateTime(v string) *ListFileResponseBodyDataFileList {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ListFileResponseBodyDataFileList) SetFileId(v string) *ListFileResponseBodyDataFileList {
+	s.FileId = &v
+	return s
+}
+
+func (s *ListFileResponseBodyDataFileList) SetFileName(v string) *ListFileResponseBodyDataFileList {
+	s.FileName = &v
+	return s
+}
+
+func (s *ListFileResponseBodyDataFileList) SetFileType(v string) *ListFileResponseBodyDataFileList {
+	s.FileType = &v
+	return s
+}
+
+func (s *ListFileResponseBodyDataFileList) SetParser(v string) *ListFileResponseBodyDataFileList {
+	s.Parser = &v
+	return s
+}
+
+func (s *ListFileResponseBodyDataFileList) SetSizeInBytes(v int64) *ListFileResponseBodyDataFileList {
+	s.SizeInBytes = &v
+	return s
+}
+
+func (s *ListFileResponseBodyDataFileList) SetStatus(v string) *ListFileResponseBodyDataFileList {
+	s.Status = &v
+	return s
+}
+
+type ListFileResponse struct {
+	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListFileResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListFileResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListFileResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListFileResponse) SetHeaders(v map[string]*string) *ListFileResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListFileResponse) SetStatusCode(v int32) *ListFileResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListFileResponse) SetBody(v *ListFileResponseBody) *ListFileResponse {
+	s.Body = v
+	return s
+}
+
 type ListIndexDocumentsRequest struct {
 	DocumentName *string `json:"DocumentName,omitempty" xml:"DocumentName,omitempty"`
 	// example:
@@ -6313,6 +6582,78 @@ func (client *Client) ListChunks(WorkspaceId *string, request *ListChunksRequest
 	headers := make(map[string]*string)
 	_result = &ListChunksResponse{}
 	_body, _err := client.ListChunksWithOptions(WorkspaceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取文档列表
+//
+// @param request - ListFileRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListFileResponse
+func (client *Client) ListFileWithOptions(WorkspaceId *string, request *ListFileRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListFileResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CategoryId)) {
+		query["CategoryId"] = request.CategoryId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListFile"),
+		Version:     tea.String("2023-12-29"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/" + tea.StringValue(openapiutil.GetEncodeParam(WorkspaceId)) + "/datacenter/files"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListFileResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取文档列表
+//
+// @param request - ListFileRequest
+//
+// @return ListFileResponse
+func (client *Client) ListFile(WorkspaceId *string, request *ListFileRequest) (_result *ListFileResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListFileResponse{}
+	_body, _err := client.ListFileWithOptions(WorkspaceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
