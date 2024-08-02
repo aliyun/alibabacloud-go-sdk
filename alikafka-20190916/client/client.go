@@ -13229,6 +13229,7 @@ type UpgradePrePayOrderResponseBody struct {
 	//
 	// operation success.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
 	// The ID of the request.
 	//
 	// example:
@@ -13258,6 +13259,11 @@ func (s *UpgradePrePayOrderResponseBody) SetCode(v int32) *UpgradePrePayOrderRes
 
 func (s *UpgradePrePayOrderResponseBody) SetMessage(v string) *UpgradePrePayOrderResponseBody {
 	s.Message = &v
+	return s
+}
+
+func (s *UpgradePrePayOrderResponseBody) SetOrderId(v string) *UpgradePrePayOrderResponseBody {
+	s.OrderId = &v
 	return s
 }
 
