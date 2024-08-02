@@ -7333,6 +7333,7 @@ func (s *ListProjectsResponse) SetBody(v *ListProjectsResponseBody) *ListProject
 }
 
 type ListRegionsRequest struct {
+	BizSource   *string `json:"BizSource,omitempty" xml:"BizSource,omitempty"`
 	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
 }
 
@@ -7342,6 +7343,11 @@ func (s ListRegionsRequest) String() string {
 
 func (s ListRegionsRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ListRegionsRequest) SetBizSource(v string) *ListRegionsRequest {
+	s.BizSource = &v
+	return s
 }
 
 func (s *ListRegionsRequest) SetProductType(v string) *ListRegionsRequest {
@@ -10525,8 +10531,9 @@ func (client *Client) AuthorizeInstanceGroupWithOptions(request *AuthorizeInstan
 		body["AppInstanceGroupId"] = request.AppInstanceGroupId
 	}
 
+	bodyFlat := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AuthorizeUserIds)) {
-		body["AuthorizeUserIds"] = request.AuthorizeUserIds
+		bodyFlat["AuthorizeUserIds"] = request.AuthorizeUserIds
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ProductType)) {
@@ -10534,9 +10541,11 @@ func (client *Client) AuthorizeInstanceGroupWithOptions(request *AuthorizeInstan
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.UnAuthorizeUserIds)) {
-		body["UnAuthorizeUserIds"] = request.UnAuthorizeUserIds
+		bodyFlat["UnAuthorizeUserIds"] = request.UnAuthorizeUserIds
 	}
 
+	body = tea.ToMap(body,
+		openapiutil.Query(bodyFlat))
 	req := &openapi.OpenApiRequest{
 		Body: openapiutil.ParseToMap(body),
 	}
@@ -12517,6 +12526,10 @@ func (client *Client) ListRegionsWithOptions(request *ListRegionsRequest, runtim
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BizSource)) {
+		query["BizSource"] = request.BizSource
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ProductType)) {
 		query["ProductType"] = request.ProductType
 	}
