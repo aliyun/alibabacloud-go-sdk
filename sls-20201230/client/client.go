@@ -466,6 +466,95 @@ func (s *ConditionConfiguration) SetCountCondition(v string) *ConditionConfigura
 	return s
 }
 
+type ConsumeProcessor struct {
+	// This parameter is required.
+	Configuration *ConsumeProcessorConfiguration `json:"configuration,omitempty" xml:"configuration,omitempty"`
+	// example:
+	//
+	// 1717171200
+	CreateTime *int64 `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// example:
+	//
+	// 过滤content字段
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// consume-processor-1
+	ProcessorId *string `json:"processorId,omitempty" xml:"processorId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 字段过滤处理
+	ProcessorName *string `json:"processorName,omitempty" xml:"processorName,omitempty"`
+	// example:
+	//
+	// 1717171200
+	UpdateTime *int64 `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
+}
+
+func (s ConsumeProcessor) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ConsumeProcessor) GoString() string {
+	return s.String()
+}
+
+func (s *ConsumeProcessor) SetConfiguration(v *ConsumeProcessorConfiguration) *ConsumeProcessor {
+	s.Configuration = v
+	return s
+}
+
+func (s *ConsumeProcessor) SetCreateTime(v int64) *ConsumeProcessor {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ConsumeProcessor) SetDescription(v string) *ConsumeProcessor {
+	s.Description = &v
+	return s
+}
+
+func (s *ConsumeProcessor) SetProcessorId(v string) *ConsumeProcessor {
+	s.ProcessorId = &v
+	return s
+}
+
+func (s *ConsumeProcessor) SetProcessorName(v string) *ConsumeProcessor {
+	s.ProcessorName = &v
+	return s
+}
+
+func (s *ConsumeProcessor) SetUpdateTime(v int64) *ConsumeProcessor {
+	s.UpdateTime = &v
+	return s
+}
+
+type ConsumeProcessorConfiguration struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 	- | project content
+	Spl *string `json:"spl,omitempty" xml:"spl,omitempty"`
+}
+
+func (s ConsumeProcessorConfiguration) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ConsumeProcessorConfiguration) GoString() string {
+	return s.String()
+}
+
+func (s *ConsumeProcessorConfiguration) SetSpl(v string) *ConsumeProcessorConfiguration {
+	s.Spl = &v
+	return s
+}
+
 type ConsumerGroup struct {
 	// example:
 	//
@@ -900,6 +989,104 @@ func (s *Histogram) SetProgress(v string) *Histogram {
 
 func (s *Histogram) SetTo(v int32) *Histogram {
 	s.To = &v
+	return s
+}
+
+type IngestProcessor struct {
+	// This parameter is required.
+	Configuration *IngestProcessorConfiguration `json:"configuration,omitempty" xml:"configuration,omitempty"`
+	// example:
+	//
+	// 1717171200
+	CreateTime *int64 `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// example:
+	//
+	// 过滤content字段
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ingest-processor-1
+	ProcessorId *string `json:"processorId,omitempty" xml:"processorId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 字段过滤处理
+	ProcessorName *string `json:"processorName,omitempty" xml:"processorName,omitempty"`
+	// example:
+	//
+	// 1717171200
+	UpdateTime *int64 `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
+}
+
+func (s IngestProcessor) String() string {
+	return tea.Prettify(s)
+}
+
+func (s IngestProcessor) GoString() string {
+	return s.String()
+}
+
+func (s *IngestProcessor) SetConfiguration(v *IngestProcessorConfiguration) *IngestProcessor {
+	s.Configuration = v
+	return s
+}
+
+func (s *IngestProcessor) SetCreateTime(v int64) *IngestProcessor {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *IngestProcessor) SetDescription(v string) *IngestProcessor {
+	s.Description = &v
+	return s
+}
+
+func (s *IngestProcessor) SetProcessorId(v string) *IngestProcessor {
+	s.ProcessorId = &v
+	return s
+}
+
+func (s *IngestProcessor) SetProcessorName(v string) *IngestProcessor {
+	s.ProcessorName = &v
+	return s
+}
+
+func (s *IngestProcessor) SetUpdateTime(v int64) *IngestProcessor {
+	s.UpdateTime = &v
+	return s
+}
+
+type IngestProcessorConfiguration struct {
+	// example:
+	//
+	// keep
+	ParseFail *string `json:"parseFail,omitempty" xml:"parseFail,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 	- | project content
+	Spl *string `json:"spl,omitempty" xml:"spl,omitempty"`
+}
+
+func (s IngestProcessorConfiguration) String() string {
+	return tea.Prettify(s)
+}
+
+func (s IngestProcessorConfiguration) GoString() string {
+	return s.String()
+}
+
+func (s *IngestProcessorConfiguration) SetParseFail(v string) *IngestProcessorConfiguration {
+	s.ParseFail = &v
+	return s
+}
+
+func (s *IngestProcessorConfiguration) SetSpl(v string) *IngestProcessorConfiguration {
+	s.Spl = &v
 	return s
 }
 
@@ -2597,6 +2784,81 @@ func (s *PolicyConfiguration) SetAlertPolicyId(v string) *PolicyConfiguration {
 
 func (s *PolicyConfiguration) SetRepeatInterval(v string) *PolicyConfiguration {
 	s.RepeatInterval = &v
+	return s
+}
+
+type ProcessorAssociate struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ingest-processor-1
+	ProcessorId *string `json:"processorId,omitempty" xml:"processorId,omitempty"`
+}
+
+func (s ProcessorAssociate) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ProcessorAssociate) GoString() string {
+	return s.String()
+}
+
+func (s *ProcessorAssociate) SetProcessorId(v string) *ProcessorAssociate {
+	s.ProcessorId = &v
+	return s
+}
+
+type ProjectSummary struct {
+	// This parameter is required.
+	CreateTime *int64 `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// This parameter is required.
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// This parameter is required.
+	ProjectName *string `json:"projectName,omitempty" xml:"projectName,omitempty"`
+	// This parameter is required.
+	Region *string `json:"region,omitempty" xml:"region,omitempty"`
+	// This parameter is required.
+	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
+	// This parameter is required.
+	UpdateTime *int64 `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
+}
+
+func (s ProjectSummary) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ProjectSummary) GoString() string {
+	return s.String()
+}
+
+func (s *ProjectSummary) SetCreateTime(v int64) *ProjectSummary {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ProjectSummary) SetDescription(v string) *ProjectSummary {
+	s.Description = &v
+	return s
+}
+
+func (s *ProjectSummary) SetProjectName(v string) *ProjectSummary {
+	s.ProjectName = &v
+	return s
+}
+
+func (s *ProjectSummary) SetRegion(v string) *ProjectSummary {
+	s.Region = &v
+	return s
+}
+
+func (s *ProjectSummary) SetResourceGroupId(v string) *ProjectSummary {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *ProjectSummary) SetUpdateTime(v int64) *ProjectSummary {
+	s.UpdateTime = &v
 	return s
 }
 
@@ -4936,6 +5198,255 @@ func (s *CreateDomainResponse) SetStatusCode(v int32) *CreateDomainResponse {
 	return s
 }
 
+type CreateDownloadJobRequest struct {
+	// 下载配置
+	//
+	// This parameter is required.
+	Configuration *CreateDownloadJobRequestConfiguration `json:"configuration,omitempty" xml:"configuration,omitempty" type:"Struct"`
+	// 任务描述
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// 任务显示名称
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// download-123456789
+	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
+	// 代表资源名称的资源属性字段
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// download-123
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+}
+
+func (s CreateDownloadJobRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDownloadJobRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDownloadJobRequest) SetConfiguration(v *CreateDownloadJobRequestConfiguration) *CreateDownloadJobRequest {
+	s.Configuration = v
+	return s
+}
+
+func (s *CreateDownloadJobRequest) SetDescription(v string) *CreateDownloadJobRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateDownloadJobRequest) SetDisplayName(v string) *CreateDownloadJobRequest {
+	s.DisplayName = &v
+	return s
+}
+
+func (s *CreateDownloadJobRequest) SetName(v string) *CreateDownloadJobRequest {
+	s.Name = &v
+	return s
+}
+
+type CreateDownloadJobRequestConfiguration struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// false
+	AllowInComplete *bool `json:"allowInComplete,omitempty" xml:"allowInComplete,omitempty"`
+	// 起点时间戳（精确到秒）
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1722406260
+	FromTime *int64 `json:"fromTime,omitempty" xml:"fromTime,omitempty"`
+	// 源logstore
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test-logstore
+	Logstore *string `json:"logstore,omitempty" xml:"logstore,omitempty"`
+	// 是否启用powerSql
+	//
+	// example:
+	//
+	// true
+	PowerSql *bool `json:"powerSql,omitempty" xml:"powerSql,omitempty"`
+	// 查询语句
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 	- | select *
+	Query *string `json:"query,omitempty" xml:"query,omitempty"`
+	// 导出配置
+	//
+	// This parameter is required.
+	Sink *CreateDownloadJobRequestConfigurationSink `json:"sink,omitempty" xml:"sink,omitempty" type:"Struct"`
+	// 结束时间戳（精确到秒）
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1722409860
+	ToTime *int64 `json:"toTime,omitempty" xml:"toTime,omitempty"`
+}
+
+func (s CreateDownloadJobRequestConfiguration) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDownloadJobRequestConfiguration) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDownloadJobRequestConfiguration) SetAllowInComplete(v bool) *CreateDownloadJobRequestConfiguration {
+	s.AllowInComplete = &v
+	return s
+}
+
+func (s *CreateDownloadJobRequestConfiguration) SetFromTime(v int64) *CreateDownloadJobRequestConfiguration {
+	s.FromTime = &v
+	return s
+}
+
+func (s *CreateDownloadJobRequestConfiguration) SetLogstore(v string) *CreateDownloadJobRequestConfiguration {
+	s.Logstore = &v
+	return s
+}
+
+func (s *CreateDownloadJobRequestConfiguration) SetPowerSql(v bool) *CreateDownloadJobRequestConfiguration {
+	s.PowerSql = &v
+	return s
+}
+
+func (s *CreateDownloadJobRequestConfiguration) SetQuery(v string) *CreateDownloadJobRequestConfiguration {
+	s.Query = &v
+	return s
+}
+
+func (s *CreateDownloadJobRequestConfiguration) SetSink(v *CreateDownloadJobRequestConfigurationSink) *CreateDownloadJobRequestConfiguration {
+	s.Sink = v
+	return s
+}
+
+func (s *CreateDownloadJobRequestConfiguration) SetToTime(v int64) *CreateDownloadJobRequestConfiguration {
+	s.ToTime = &v
+	return s
+}
+
+type CreateDownloadJobRequestConfigurationSink struct {
+	// 对象存储桶
+	//
+	// example:
+	//
+	// oss-test-bucket
+	Bucket *string `json:"bucket,omitempty" xml:"bucket,omitempty"`
+	// 压缩格式
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// none
+	CompressionType *string `json:"compressionType,omitempty" xml:"compressionType,omitempty"`
+	// 下载文件格式
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// csv
+	ContentType *string `json:"contentType,omitempty" xml:"contentType,omitempty"`
+	// example:
+	//
+	// download/
+	Prefix *string `json:"prefix,omitempty" xml:"prefix,omitempty"`
+	// 下载使用roleArn
+	//
+	// example:
+	//
+	// acs:ram::0123456789:role/aliyunlogdefaultrole
+	RoleArn *string `json:"roleArn,omitempty" xml:"roleArn,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// AliyunOSS
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+}
+
+func (s CreateDownloadJobRequestConfigurationSink) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDownloadJobRequestConfigurationSink) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDownloadJobRequestConfigurationSink) SetBucket(v string) *CreateDownloadJobRequestConfigurationSink {
+	s.Bucket = &v
+	return s
+}
+
+func (s *CreateDownloadJobRequestConfigurationSink) SetCompressionType(v string) *CreateDownloadJobRequestConfigurationSink {
+	s.CompressionType = &v
+	return s
+}
+
+func (s *CreateDownloadJobRequestConfigurationSink) SetContentType(v string) *CreateDownloadJobRequestConfigurationSink {
+	s.ContentType = &v
+	return s
+}
+
+func (s *CreateDownloadJobRequestConfigurationSink) SetPrefix(v string) *CreateDownloadJobRequestConfigurationSink {
+	s.Prefix = &v
+	return s
+}
+
+func (s *CreateDownloadJobRequestConfigurationSink) SetRoleArn(v string) *CreateDownloadJobRequestConfigurationSink {
+	s.RoleArn = &v
+	return s
+}
+
+func (s *CreateDownloadJobRequestConfigurationSink) SetType(v string) *CreateDownloadJobRequestConfigurationSink {
+	s.Type = &v
+	return s
+}
+
+type CreateDownloadJobResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+}
+
+func (s CreateDownloadJobResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDownloadJobResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDownloadJobResponse) SetHeaders(v map[string]*string) *CreateDownloadJobResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateDownloadJobResponse) SetStatusCode(v int32) *CreateDownloadJobResponse {
+	s.StatusCode = &v
+	return s
+}
+
 type CreateETLRequest struct {
 	// This parameter is required.
 	Configuration *ETLConfiguration `json:"configuration,omitempty" xml:"configuration,omitempty"`
@@ -6979,6 +7490,29 @@ func (s *DeleteDomainResponse) SetStatusCode(v int32) *DeleteDomainResponse {
 	return s
 }
 
+type DeleteDownloadJobResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+}
+
+func (s DeleteDownloadJobResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDownloadJobResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDownloadJobResponse) SetHeaders(v map[string]*string) *DeleteDownloadJobResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteDownloadJobResponse) SetStatusCode(v int32) *DeleteDownloadJobResponse {
+	s.StatusCode = &v
+	return s
+}
+
 type DeleteETLResponse struct {
 	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
 	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
@@ -8435,6 +8969,356 @@ func (s *GetDashboardResponse) SetStatusCode(v int32) *GetDashboardResponse {
 }
 
 func (s *GetDashboardResponse) SetBody(v *Dashboard) *GetDashboardResponse {
+	s.Body = v
+	return s
+}
+
+type GetDownloadJobResponseBody struct {
+	// 下载配置
+	Configuration *GetDownloadJobResponseBodyConfiguration `json:"configuration,omitempty" xml:"configuration,omitempty" type:"Struct"`
+	// 代表创建时间的资源属性字段
+	//
+	// example:
+	//
+	// 1722411060
+	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// 任务描述
+	//
+	// example:
+	//
+	// a download job
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// 任务显示名称
+	//
+	// example:
+	//
+	// download-123456
+	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
+	// 任务执行细节
+	ExecutionDetails *GetDownloadJobResponseBodyExecutionDetails `json:"executionDetails,omitempty" xml:"executionDetails,omitempty" type:"Struct"`
+	// 代表资源名称的资源属性字段
+	//
+	// example:
+	//
+	// download-123
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// 代表资源状态的资源属性字段
+	//
+	// example:
+	//
+	// running
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+}
+
+func (s GetDownloadJobResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDownloadJobResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetDownloadJobResponseBody) SetConfiguration(v *GetDownloadJobResponseBodyConfiguration) *GetDownloadJobResponseBody {
+	s.Configuration = v
+	return s
+}
+
+func (s *GetDownloadJobResponseBody) SetCreateTime(v string) *GetDownloadJobResponseBody {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *GetDownloadJobResponseBody) SetDescription(v string) *GetDownloadJobResponseBody {
+	s.Description = &v
+	return s
+}
+
+func (s *GetDownloadJobResponseBody) SetDisplayName(v string) *GetDownloadJobResponseBody {
+	s.DisplayName = &v
+	return s
+}
+
+func (s *GetDownloadJobResponseBody) SetExecutionDetails(v *GetDownloadJobResponseBodyExecutionDetails) *GetDownloadJobResponseBody {
+	s.ExecutionDetails = v
+	return s
+}
+
+func (s *GetDownloadJobResponseBody) SetName(v string) *GetDownloadJobResponseBody {
+	s.Name = &v
+	return s
+}
+
+func (s *GetDownloadJobResponseBody) SetStatus(v string) *GetDownloadJobResponseBody {
+	s.Status = &v
+	return s
+}
+
+type GetDownloadJobResponseBodyConfiguration struct {
+	// example:
+	//
+	// true
+	AllowInComplete *bool `json:"allowInComplete,omitempty" xml:"allowInComplete,omitempty"`
+	// 起点时间戳（精确到秒）
+	//
+	// example:
+	//
+	// 1722409860
+	FromTime *int64 `json:"fromTime,omitempty" xml:"fromTime,omitempty"`
+	// 源logstore
+	//
+	// example:
+	//
+	// ali-test-logstore
+	Logstore *string `json:"logstore,omitempty" xml:"logstore,omitempty"`
+	// 是否启用powerSql
+	//
+	// example:
+	//
+	// false
+	PowerSql *bool `json:"powerSql,omitempty" xml:"powerSql,omitempty"`
+	// 查询语句
+	//
+	// example:
+	//
+	// 	- | select *
+	Query *string `json:"query,omitempty" xml:"query,omitempty"`
+	// 导出配置
+	Sink *GetDownloadJobResponseBodyConfigurationSink `json:"sink,omitempty" xml:"sink,omitempty" type:"Struct"`
+	// 结束时间戳（精确到秒）
+	//
+	// example:
+	//
+	// 1722411060
+	ToTime *int64 `json:"toTime,omitempty" xml:"toTime,omitempty"`
+}
+
+func (s GetDownloadJobResponseBodyConfiguration) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDownloadJobResponseBodyConfiguration) GoString() string {
+	return s.String()
+}
+
+func (s *GetDownloadJobResponseBodyConfiguration) SetAllowInComplete(v bool) *GetDownloadJobResponseBodyConfiguration {
+	s.AllowInComplete = &v
+	return s
+}
+
+func (s *GetDownloadJobResponseBodyConfiguration) SetFromTime(v int64) *GetDownloadJobResponseBodyConfiguration {
+	s.FromTime = &v
+	return s
+}
+
+func (s *GetDownloadJobResponseBodyConfiguration) SetLogstore(v string) *GetDownloadJobResponseBodyConfiguration {
+	s.Logstore = &v
+	return s
+}
+
+func (s *GetDownloadJobResponseBodyConfiguration) SetPowerSql(v bool) *GetDownloadJobResponseBodyConfiguration {
+	s.PowerSql = &v
+	return s
+}
+
+func (s *GetDownloadJobResponseBodyConfiguration) SetQuery(v string) *GetDownloadJobResponseBodyConfiguration {
+	s.Query = &v
+	return s
+}
+
+func (s *GetDownloadJobResponseBodyConfiguration) SetSink(v *GetDownloadJobResponseBodyConfigurationSink) *GetDownloadJobResponseBodyConfiguration {
+	s.Sink = v
+	return s
+}
+
+func (s *GetDownloadJobResponseBodyConfiguration) SetToTime(v int64) *GetDownloadJobResponseBodyConfiguration {
+	s.ToTime = &v
+	return s
+}
+
+type GetDownloadJobResponseBodyConfigurationSink struct {
+	// 对象存储桶
+	//
+	// example:
+	//
+	// ali-test-oss-bucket
+	Bucket *string `json:"bucket,omitempty" xml:"bucket,omitempty"`
+	// 压缩格式
+	//
+	// example:
+	//
+	// none
+	CompressionType *string `json:"compressionType,omitempty" xml:"compressionType,omitempty"`
+	// 下载文件格式
+	//
+	// example:
+	//
+	// csv
+	ContentType *string `json:"contentType,omitempty" xml:"contentType,omitempty"`
+	// example:
+	//
+	// download/
+	Prefix *string `json:"prefix,omitempty" xml:"prefix,omitempty"`
+	// 下载使用roleArn
+	//
+	// example:
+	//
+	// acs:ram::0123456789:role/aliyunlogdefaultrole
+	RoleArn *string `json:"roleArn,omitempty" xml:"roleArn,omitempty"`
+	// example:
+	//
+	// AliyunOSS
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+}
+
+func (s GetDownloadJobResponseBodyConfigurationSink) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDownloadJobResponseBodyConfigurationSink) GoString() string {
+	return s.String()
+}
+
+func (s *GetDownloadJobResponseBodyConfigurationSink) SetBucket(v string) *GetDownloadJobResponseBodyConfigurationSink {
+	s.Bucket = &v
+	return s
+}
+
+func (s *GetDownloadJobResponseBodyConfigurationSink) SetCompressionType(v string) *GetDownloadJobResponseBodyConfigurationSink {
+	s.CompressionType = &v
+	return s
+}
+
+func (s *GetDownloadJobResponseBodyConfigurationSink) SetContentType(v string) *GetDownloadJobResponseBodyConfigurationSink {
+	s.ContentType = &v
+	return s
+}
+
+func (s *GetDownloadJobResponseBodyConfigurationSink) SetPrefix(v string) *GetDownloadJobResponseBodyConfigurationSink {
+	s.Prefix = &v
+	return s
+}
+
+func (s *GetDownloadJobResponseBodyConfigurationSink) SetRoleArn(v string) *GetDownloadJobResponseBodyConfigurationSink {
+	s.RoleArn = &v
+	return s
+}
+
+func (s *GetDownloadJobResponseBodyConfigurationSink) SetType(v string) *GetDownloadJobResponseBodyConfigurationSink {
+	s.Type = &v
+	return s
+}
+
+type GetDownloadJobResponseBodyExecutionDetails struct {
+	// example:
+	//
+	// EXSFGSDASDASDG123ASD
+	CheckSum *string `json:"checkSum,omitempty" xml:"checkSum,omitempty"`
+	// 下载错误信息
+	//
+	// example:
+	//
+	// timeout
+	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	// 下载执行时间
+	//
+	// example:
+	//
+	// 123
+	ExecuteTime *int64 `json:"executeTime,omitempty" xml:"executeTime,omitempty"`
+	// 下载结果链接
+	//
+	// example:
+	//
+	// https://xxx.csv.zst?xxx
+	FilePath *string `json:"filePath,omitempty" xml:"filePath,omitempty"`
+	// 下载文件大小
+	//
+	// example:
+	//
+	// 123456
+	FileSize *int64 `json:"fileSize,omitempty" xml:"fileSize,omitempty"`
+	// 下载日志条数
+	//
+	// example:
+	//
+	// 123
+	LogCount *int64 `json:"logCount,omitempty" xml:"logCount,omitempty"`
+	// 下载进度
+	//
+	// example:
+	//
+	// 100
+	Progress *int64 `json:"progress,omitempty" xml:"progress,omitempty"`
+}
+
+func (s GetDownloadJobResponseBodyExecutionDetails) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDownloadJobResponseBodyExecutionDetails) GoString() string {
+	return s.String()
+}
+
+func (s *GetDownloadJobResponseBodyExecutionDetails) SetCheckSum(v string) *GetDownloadJobResponseBodyExecutionDetails {
+	s.CheckSum = &v
+	return s
+}
+
+func (s *GetDownloadJobResponseBodyExecutionDetails) SetErrorMessage(v string) *GetDownloadJobResponseBodyExecutionDetails {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *GetDownloadJobResponseBodyExecutionDetails) SetExecuteTime(v int64) *GetDownloadJobResponseBodyExecutionDetails {
+	s.ExecuteTime = &v
+	return s
+}
+
+func (s *GetDownloadJobResponseBodyExecutionDetails) SetFilePath(v string) *GetDownloadJobResponseBodyExecutionDetails {
+	s.FilePath = &v
+	return s
+}
+
+func (s *GetDownloadJobResponseBodyExecutionDetails) SetFileSize(v int64) *GetDownloadJobResponseBodyExecutionDetails {
+	s.FileSize = &v
+	return s
+}
+
+func (s *GetDownloadJobResponseBodyExecutionDetails) SetLogCount(v int64) *GetDownloadJobResponseBodyExecutionDetails {
+	s.LogCount = &v
+	return s
+}
+
+func (s *GetDownloadJobResponseBodyExecutionDetails) SetProgress(v int64) *GetDownloadJobResponseBodyExecutionDetails {
+	s.Progress = &v
+	return s
+}
+
+type GetDownloadJobResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetDownloadJobResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetDownloadJobResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDownloadJobResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetDownloadJobResponse) SetHeaders(v map[string]*string) *GetDownloadJobResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetDownloadJobResponse) SetStatusCode(v int32) *GetDownloadJobResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetDownloadJobResponse) SetBody(v *GetDownloadJobResponseBody) *GetDownloadJobResponse {
 	s.Body = v
 	return s
 }
@@ -11447,6 +12331,425 @@ func (s *ListDomainsResponse) SetStatusCode(v int32) *ListDomainsResponse {
 }
 
 func (s *ListDomainsResponse) SetBody(v *ListDomainsResponseBody) *ListDomainsResponse {
+	s.Body = v
+	return s
+}
+
+type ListDownloadJobsRequest struct {
+	// example:
+	//
+	// ali-test-logstore
+	Logstore *string `json:"logstore,omitempty" xml:"logstore,omitempty"`
+	// example:
+	//
+	// 0
+	Offset *int64 `json:"offset,omitempty" xml:"offset,omitempty"`
+	// example:
+	//
+	// 10
+	Size *int64 `json:"size,omitempty" xml:"size,omitempty"`
+}
+
+func (s ListDownloadJobsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDownloadJobsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListDownloadJobsRequest) SetLogstore(v string) *ListDownloadJobsRequest {
+	s.Logstore = &v
+	return s
+}
+
+func (s *ListDownloadJobsRequest) SetOffset(v int64) *ListDownloadJobsRequest {
+	s.Offset = &v
+	return s
+}
+
+func (s *ListDownloadJobsRequest) SetSize(v int64) *ListDownloadJobsRequest {
+	s.Size = &v
+	return s
+}
+
+type ListDownloadJobsResponseBody struct {
+	// example:
+	//
+	// 10
+	Count   *int32                                 `json:"count,omitempty" xml:"count,omitempty"`
+	Results []*ListDownloadJobsResponseBodyResults `json:"results,omitempty" xml:"results,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 10
+	Total *int32 `json:"total,omitempty" xml:"total,omitempty"`
+}
+
+func (s ListDownloadJobsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDownloadJobsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListDownloadJobsResponseBody) SetCount(v int32) *ListDownloadJobsResponseBody {
+	s.Count = &v
+	return s
+}
+
+func (s *ListDownloadJobsResponseBody) SetResults(v []*ListDownloadJobsResponseBodyResults) *ListDownloadJobsResponseBody {
+	s.Results = v
+	return s
+}
+
+func (s *ListDownloadJobsResponseBody) SetTotal(v int32) *ListDownloadJobsResponseBody {
+	s.Total = &v
+	return s
+}
+
+type ListDownloadJobsResponseBodyResults struct {
+	// 下载配置
+	Configuration *ListDownloadJobsResponseBodyResultsConfiguration `json:"configuration,omitempty" xml:"configuration,omitempty" type:"Struct"`
+	// example:
+	//
+	// 1722411060
+	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// 任务描述
+	//
+	// example:
+	//
+	// a download job
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// 任务显示名称
+	//
+	// example:
+	//
+	// download-123
+	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
+	// 任务执行细节
+	ExecutionDetails *ListDownloadJobsResponseBodyResultsExecutionDetails `json:"executionDetails,omitempty" xml:"executionDetails,omitempty" type:"Struct"`
+	// 代表资源名称的资源属性字段
+	//
+	// example:
+	//
+	// download-123
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// example:
+	//
+	// running
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+}
+
+func (s ListDownloadJobsResponseBodyResults) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDownloadJobsResponseBodyResults) GoString() string {
+	return s.String()
+}
+
+func (s *ListDownloadJobsResponseBodyResults) SetConfiguration(v *ListDownloadJobsResponseBodyResultsConfiguration) *ListDownloadJobsResponseBodyResults {
+	s.Configuration = v
+	return s
+}
+
+func (s *ListDownloadJobsResponseBodyResults) SetCreateTime(v string) *ListDownloadJobsResponseBodyResults {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ListDownloadJobsResponseBodyResults) SetDescription(v string) *ListDownloadJobsResponseBodyResults {
+	s.Description = &v
+	return s
+}
+
+func (s *ListDownloadJobsResponseBodyResults) SetDisplayName(v string) *ListDownloadJobsResponseBodyResults {
+	s.DisplayName = &v
+	return s
+}
+
+func (s *ListDownloadJobsResponseBodyResults) SetExecutionDetails(v *ListDownloadJobsResponseBodyResultsExecutionDetails) *ListDownloadJobsResponseBodyResults {
+	s.ExecutionDetails = v
+	return s
+}
+
+func (s *ListDownloadJobsResponseBodyResults) SetName(v string) *ListDownloadJobsResponseBodyResults {
+	s.Name = &v
+	return s
+}
+
+func (s *ListDownloadJobsResponseBodyResults) SetStatus(v string) *ListDownloadJobsResponseBodyResults {
+	s.Status = &v
+	return s
+}
+
+type ListDownloadJobsResponseBodyResultsConfiguration struct {
+	// example:
+	//
+	// false
+	AllowInComplete *string `json:"allowInComplete,omitempty" xml:"allowInComplete,omitempty"`
+	// 起点时间戳（精确到秒）
+	//
+	// example:
+	//
+	// 1722409260
+	FromTime *int64 `json:"fromTime,omitempty" xml:"fromTime,omitempty"`
+	// 源logstore
+	//
+	// example:
+	//
+	// ali-test-logstore
+	Logstore *string `json:"logstore,omitempty" xml:"logstore,omitempty"`
+	// 是否启用powerSql
+	//
+	// example:
+	//
+	// true
+	PowerSql *bool `json:"powerSql,omitempty" xml:"powerSql,omitempty"`
+	// 查询语句
+	//
+	// example:
+	//
+	// 	- | select *
+	Query *string `json:"query,omitempty" xml:"query,omitempty"`
+	// 导出配置
+	Sink *ListDownloadJobsResponseBodyResultsConfigurationSink `json:"sink,omitempty" xml:"sink,omitempty" type:"Struct"`
+	// 结束时间戳（精确到秒）
+	//
+	// example:
+	//
+	// 1722411060
+	ToTime *int64 `json:"toTime,omitempty" xml:"toTime,omitempty"`
+}
+
+func (s ListDownloadJobsResponseBodyResultsConfiguration) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDownloadJobsResponseBodyResultsConfiguration) GoString() string {
+	return s.String()
+}
+
+func (s *ListDownloadJobsResponseBodyResultsConfiguration) SetAllowInComplete(v string) *ListDownloadJobsResponseBodyResultsConfiguration {
+	s.AllowInComplete = &v
+	return s
+}
+
+func (s *ListDownloadJobsResponseBodyResultsConfiguration) SetFromTime(v int64) *ListDownloadJobsResponseBodyResultsConfiguration {
+	s.FromTime = &v
+	return s
+}
+
+func (s *ListDownloadJobsResponseBodyResultsConfiguration) SetLogstore(v string) *ListDownloadJobsResponseBodyResultsConfiguration {
+	s.Logstore = &v
+	return s
+}
+
+func (s *ListDownloadJobsResponseBodyResultsConfiguration) SetPowerSql(v bool) *ListDownloadJobsResponseBodyResultsConfiguration {
+	s.PowerSql = &v
+	return s
+}
+
+func (s *ListDownloadJobsResponseBodyResultsConfiguration) SetQuery(v string) *ListDownloadJobsResponseBodyResultsConfiguration {
+	s.Query = &v
+	return s
+}
+
+func (s *ListDownloadJobsResponseBodyResultsConfiguration) SetSink(v *ListDownloadJobsResponseBodyResultsConfigurationSink) *ListDownloadJobsResponseBodyResultsConfiguration {
+	s.Sink = v
+	return s
+}
+
+func (s *ListDownloadJobsResponseBodyResultsConfiguration) SetToTime(v int64) *ListDownloadJobsResponseBodyResultsConfiguration {
+	s.ToTime = &v
+	return s
+}
+
+type ListDownloadJobsResponseBodyResultsConfigurationSink struct {
+	// 对象存储桶
+	//
+	// example:
+	//
+	// ali-test-oss-bucket
+	Bucket *string `json:"bucket,omitempty" xml:"bucket,omitempty"`
+	// 压缩格式
+	//
+	// example:
+	//
+	// none
+	CompressionType *string `json:"compressionType,omitempty" xml:"compressionType,omitempty"`
+	// 下载文件格式
+	//
+	// example:
+	//
+	// csv
+	ContentType *string `json:"contentType,omitempty" xml:"contentType,omitempty"`
+	// example:
+	//
+	// download/
+	Prefix *string `json:"prefix,omitempty" xml:"prefix,omitempty"`
+	// 下载使用roleArn
+	//
+	// example:
+	//
+	// acs:ram::123456:role/aliyunlogimportossrole
+	RoleArn *string `json:"roleArn,omitempty" xml:"roleArn,omitempty"`
+	// example:
+	//
+	// AliyunOSS
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+}
+
+func (s ListDownloadJobsResponseBodyResultsConfigurationSink) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDownloadJobsResponseBodyResultsConfigurationSink) GoString() string {
+	return s.String()
+}
+
+func (s *ListDownloadJobsResponseBodyResultsConfigurationSink) SetBucket(v string) *ListDownloadJobsResponseBodyResultsConfigurationSink {
+	s.Bucket = &v
+	return s
+}
+
+func (s *ListDownloadJobsResponseBodyResultsConfigurationSink) SetCompressionType(v string) *ListDownloadJobsResponseBodyResultsConfigurationSink {
+	s.CompressionType = &v
+	return s
+}
+
+func (s *ListDownloadJobsResponseBodyResultsConfigurationSink) SetContentType(v string) *ListDownloadJobsResponseBodyResultsConfigurationSink {
+	s.ContentType = &v
+	return s
+}
+
+func (s *ListDownloadJobsResponseBodyResultsConfigurationSink) SetPrefix(v string) *ListDownloadJobsResponseBodyResultsConfigurationSink {
+	s.Prefix = &v
+	return s
+}
+
+func (s *ListDownloadJobsResponseBodyResultsConfigurationSink) SetRoleArn(v string) *ListDownloadJobsResponseBodyResultsConfigurationSink {
+	s.RoleArn = &v
+	return s
+}
+
+func (s *ListDownloadJobsResponseBodyResultsConfigurationSink) SetType(v string) *ListDownloadJobsResponseBodyResultsConfigurationSink {
+	s.Type = &v
+	return s
+}
+
+type ListDownloadJobsResponseBodyResultsExecutionDetails struct {
+	// example:
+	//
+	// ETASFGASDASQWDasd
+	CheckSum *string `json:"checkSum,omitempty" xml:"checkSum,omitempty"`
+	// 下载错误信息
+	//
+	// example:
+	//
+	// timeout
+	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	// 下载执行时间
+	//
+	// example:
+	//
+	// 123
+	ExecuteTime *int64 `json:"executeTime,omitempty" xml:"executeTime,omitempty"`
+	// 下载结果链接
+	//
+	// example:
+	//
+	// https://sls-downloaded-xxxx.csv.gzip?Expiresxxx
+	FilePath *string `json:"filePath,omitempty" xml:"filePath,omitempty"`
+	// 下载文件大小
+	//
+	// example:
+	//
+	// 123456
+	FileSize *int64 `json:"fileSize,omitempty" xml:"fileSize,omitempty"`
+	// 下载日志条数
+	//
+	// example:
+	//
+	// 123
+	LogCount *int64 `json:"logCount,omitempty" xml:"logCount,omitempty"`
+	// 下载进度
+	//
+	// example:
+	//
+	// 100
+	Progress *int64 `json:"progress,omitempty" xml:"progress,omitempty"`
+}
+
+func (s ListDownloadJobsResponseBodyResultsExecutionDetails) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDownloadJobsResponseBodyResultsExecutionDetails) GoString() string {
+	return s.String()
+}
+
+func (s *ListDownloadJobsResponseBodyResultsExecutionDetails) SetCheckSum(v string) *ListDownloadJobsResponseBodyResultsExecutionDetails {
+	s.CheckSum = &v
+	return s
+}
+
+func (s *ListDownloadJobsResponseBodyResultsExecutionDetails) SetErrorMessage(v string) *ListDownloadJobsResponseBodyResultsExecutionDetails {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *ListDownloadJobsResponseBodyResultsExecutionDetails) SetExecuteTime(v int64) *ListDownloadJobsResponseBodyResultsExecutionDetails {
+	s.ExecuteTime = &v
+	return s
+}
+
+func (s *ListDownloadJobsResponseBodyResultsExecutionDetails) SetFilePath(v string) *ListDownloadJobsResponseBodyResultsExecutionDetails {
+	s.FilePath = &v
+	return s
+}
+
+func (s *ListDownloadJobsResponseBodyResultsExecutionDetails) SetFileSize(v int64) *ListDownloadJobsResponseBodyResultsExecutionDetails {
+	s.FileSize = &v
+	return s
+}
+
+func (s *ListDownloadJobsResponseBodyResultsExecutionDetails) SetLogCount(v int64) *ListDownloadJobsResponseBodyResultsExecutionDetails {
+	s.LogCount = &v
+	return s
+}
+
+func (s *ListDownloadJobsResponseBodyResultsExecutionDetails) SetProgress(v int64) *ListDownloadJobsResponseBodyResultsExecutionDetails {
+	s.Progress = &v
+	return s
+}
+
+type ListDownloadJobsResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListDownloadJobsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListDownloadJobsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDownloadJobsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListDownloadJobsResponse) SetHeaders(v map[string]*string) *ListDownloadJobsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListDownloadJobsResponse) SetStatusCode(v int32) *ListDownloadJobsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListDownloadJobsResponse) SetBody(v *ListDownloadJobsResponseBody) *ListDownloadJobsResponse {
 	s.Body = v
 	return s
 }
@@ -17204,6 +18507,85 @@ func (client *Client) CreateDomain(project *string, request *CreateDomainRequest
 
 // Summary:
 //
+// 创建下载任务
+//
+// @param request - CreateDownloadJobRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateDownloadJobResponse
+func (client *Client) CreateDownloadJobWithOptions(project *string, request *CreateDownloadJobRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateDownloadJobResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Configuration)) {
+		body["configuration"] = request.Configuration
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		body["description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DisplayName)) {
+		body["displayName"] = request.DisplayName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["name"] = request.Name
+	}
+
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateDownloadJob"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/downloadjobs"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
+	_result = &CreateDownloadJobResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建下载任务
+//
+// @param request - CreateDownloadJobRequest
+//
+// @return CreateDownloadJobResponse
+func (client *Client) CreateDownloadJob(project *string, request *CreateDownloadJobRequest) (_result *CreateDownloadJobResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateDownloadJobResponse{}
+	_body, _err := client.CreateDownloadJobWithOptions(project, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 创建数据加工任务
 //
 // @param request - CreateETLRequest
@@ -19236,6 +20618,59 @@ func (client *Client) DeleteDomain(project *string, domainName *string) (_result
 
 // Summary:
 //
+// 删除下载任务
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteDownloadJobResponse
+func (client *Client) DeleteDownloadJobWithOptions(project *string, downloadJobName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteDownloadJobResponse, _err error) {
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteDownloadJob"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/downloadjobs/" + tea.StringValue(downloadJobName)),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
+	_result = &DeleteDownloadJobResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除下载任务
+//
+// @return DeleteDownloadJobResponse
+func (client *Client) DeleteDownloadJob(project *string, downloadJobName *string) (_result *DeleteDownloadJobResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteDownloadJobResponse{}
+	_body, _err := client.DeleteDownloadJobWithOptions(project, downloadJobName, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 删除数据加工任务
 //
 // @param headers - map
@@ -21193,6 +22628,59 @@ func (client *Client) GetDashboard(project *string, dashboardName *string) (_res
 	headers := make(map[string]*string)
 	_result = &GetDashboardResponse{}
 	_body, _err := client.GetDashboardWithOptions(project, dashboardName, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取下载任务信息
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetDownloadJobResponse
+func (client *Client) GetDownloadJobWithOptions(project *string, downloadJobName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetDownloadJobResponse, _err error) {
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetDownloadJob"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/downloadjobs/" + tea.StringValue(downloadJobName)),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetDownloadJobResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取下载任务信息
+//
+// @return GetDownloadJobResponse
+func (client *Client) GetDownloadJob(project *string, downloadJobName *string) (_result *GetDownloadJobResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetDownloadJobResponse{}
+	_body, _err := client.GetDownloadJobWithOptions(project, downloadJobName, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -23645,6 +25133,81 @@ func (client *Client) ListDomains(project *string, request *ListDomainsRequest) 
 	headers := make(map[string]*string)
 	_result = &ListDomainsResponse{}
 	_body, _err := client.ListDomainsWithOptions(project, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 列举下载任务
+//
+// @param request - ListDownloadJobsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListDownloadJobsResponse
+func (client *Client) ListDownloadJobsWithOptions(project *string, request *ListDownloadJobsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListDownloadJobsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Logstore)) {
+		query["logstore"] = request.Logstore
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Offset)) {
+		query["offset"] = request.Offset
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Size)) {
+		query["size"] = request.Size
+	}
+
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListDownloadJobs"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/downloadjobs"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListDownloadJobsResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 列举下载任务
+//
+// @param request - ListDownloadJobsRequest
+//
+// @return ListDownloadJobsResponse
+func (client *Client) ListDownloadJobs(project *string, request *ListDownloadJobsRequest) (_result *ListDownloadJobsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListDownloadJobsResponse{}
+	_body, _err := client.ListDownloadJobsWithOptions(project, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
