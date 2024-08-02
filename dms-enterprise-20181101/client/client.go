@@ -3830,13 +3830,13 @@ func (s *CreateDataArchiveOrderRequest) SetTid(v int64) *CreateDataArchiveOrderR
 }
 
 type CreateDataArchiveOrderRequestParam struct {
-	// The type of the destination database for archiving data. Valid values:
+	// The archiving destination to which you want to archive data. Valid values:
 	//
-	// >  If you set ArchiveMethod to a value other than inner_oss, you must connect the destination database for archiving data to Data Management (DMS) before you create the data archiving ticket. After the database is connected to DMS, the database is displayed in the Instances Connected section of the DMS console.
+	// >  If you set ArchiveMethod to a value other than inner_oss, you must register the corresponding destination database with Data Management (DMS) before you create the data archiving ticket. After the database is registered with DMS, the database is displayed in the Instances Connected section of the DMS console.
 	//
-	// 	- **inner_oss**: dedicated storage space, which is a built-in space.
+	// 	- **inner_oss**: dedicated storage, which is a built-in Object Storage Service (OSS) bucket.
 	//
-	// 	- **oss_userself**: Object Storage Service (OSS) bucket of the user.
+	// 	- **oss_userself**: OSS bucket of the user.
 	//
 	// 	- **mysql**: ApsaraDB RDS for MySQL instance.
 	//
@@ -3852,12 +3852,14 @@ type CreateDataArchiveOrderRequestParam struct {
 	//
 	// mysql
 	ArchiveMethod *string `json:"ArchiveMethod,omitempty" xml:"ArchiveMethod,omitempty"`
-	// A crontab expression that specifies the scheduling cycle to run the task. For more information, see the [Crontab expressions](https://help.aliyun.com/document_detail/206581.html) section of the "Create shadow tables for synchronization" topic. This parameter is required if RunMethod is set to schedule.
+	// A crontab expression that specifies the scheduling cycle of the data archiving task. For more information, see the [Crontab expressions](https://help.aliyun.com/document_detail/206581.html) section of the "Create shadow tables for synchronization" topic. You must specify this parameter if you set RunMethod to schedule.
 	//
 	// example:
 	//
 	// 00 05 11 	- 	- ?
 	CronStr *string `json:"CronStr,omitempty" xml:"CronStr,omitempty"`
+	// The database ID. If the database is a self-managed database or a third-party cloud database, you can call the [GetDatabase](https://help.aliyun.com/document_detail/465856.html) operation to query the database ID. If the database is an Alibaba Cloud database, ignore this parameter.
+	//
 	// example:
 	//
 	// 1***
@@ -3896,7 +3898,7 @@ type CreateDataArchiveOrderRequestParam struct {
 	//
 	// def
 	SourceCatalogName *string `json:"SourceCatalogName,omitempty" xml:"SourceCatalogName,omitempty"`
-	// The name of the source instance.
+	// The name of the source instance. If the database instance is a self-managed database or a third-party cloud database, you can call the [GetInstance](https://help.aliyun.com/document_detail/465826.html) operation to query the instance ID.
 	//
 	// This parameter is required.
 	//
@@ -4008,7 +4010,7 @@ func (s *CreateDataArchiveOrderRequestParam) SetVariables(v []*CreateDataArchive
 }
 
 type CreateDataArchiveOrderRequestParamTableIncludes struct {
-	// The name of the table.
+	// The table name.
 	//
 	// This parameter is required.
 	//
@@ -4016,7 +4018,7 @@ type CreateDataArchiveOrderRequestParamTableIncludes struct {
 	//
 	// table1
 	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
-	// The filter condition specified by the WHERE clause of the archiving configuration. If a time variable is used in the filter condition, the filter condition is specified in the following format: field name <=\\"${variable name}\\". The variable name in the filter condition must be the same as the Name value of Variables.
+	// The filter condition that is specified by the WHERE clause of the archiving configuration. If a time variable is used in the filter condition, the filter condition is specified in the following format: field name <=\\"${variable name}\\". The variable name in the filter condition must be the same as the time variable name that is specified in the Variables parameter.
 	//
 	// example:
 	//
@@ -15835,25 +15837,25 @@ func (s *GetDataArchiveCountResponseBody) SetSuccess(v bool) *GetDataArchiveCoun
 }
 
 type GetDataArchiveCountResponseBodyData struct {
-	// The number of failed archiving tickets.
+	// The number of tickets that data archiving failed.
 	//
 	// example:
 	//
 	// 1**
 	FailCount *int64 `json:"FailCount,omitempty" xml:"FailCount,omitempty"`
-	// The number of in-progress archiving tickets.
+	// The number of tickets that data archiving is in progress.
 	//
 	// example:
 	//
 	// 2**
 	ProcessingCount *int64 `json:"ProcessingCount,omitempty" xml:"ProcessingCount,omitempty"`
-	// The number of successful archiving tickets.
+	// The number of tickets that data archiving is successful.
 	//
 	// example:
 	//
 	// 3**
 	SuccessCount *int64 `json:"SuccessCount,omitempty" xml:"SuccessCount,omitempty"`
-	// The total number of archiving tickets.
+	// The total number of data archiving tickets.
 	//
 	// example:
 	//
@@ -15976,11 +15978,11 @@ type GetDataArchiveOrderDetailResponseBody struct {
 	//
 	// 4161CE36-28DF-5191-8A6F-A17076A0B124
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request is successful. Valid values:
+	// Indicates whether the request was successful. Valid values:
 	//
-	// 	- true
+	// 	- **true**
 	//
-	// 	- false
+	// 	- **false**
 	//
 	// example:
 	//
@@ -17039,19 +17041,19 @@ func (s *GetDataArchiveOrderDetailResponseBodyDataArchiveOrderDetailPluginExtraD
 }
 
 type GetDataArchiveOrderDetailResponseBodyDataArchiveOrderDetailPluginExtraDataInstances struct {
-	// The business time of the task flow. The time is in the yyyy-MM-DD HH:mm:ss format.
+	// The business time of the task flow. The time is displayed in the yyyy-MM-DD HH:mm:ss format.
 	//
 	// example:
 	//
 	// 2023-05-14 16:00:57
 	BusinessTime *string `json:"BusinessTime,omitempty" xml:"BusinessTime,omitempty"`
-	// The ID of the task. You can call the [ListTaskFlow](https://help.aliyun.com/document_detail/424565.html) or [ListLhTaskFlowAndScenario](https://help.aliyun.com/document_detail/426672.html) operation to query the task flow ID.
+	// The task flow ID. You can call the [ListTaskFlow](https://help.aliyun.com/document_detail/424565.html) or [ListLhTaskFlowAndScenario](https://help.aliyun.com/document_detail/426672.html) operation to obtain the value of this parameter.
 	//
 	// example:
 	//
 	// 37***
 	DagId *int64 `json:"DagId,omitempty" xml:"DagId,omitempty"`
-	// The end time of the task flow. The time is in the yyyy-MM-DD HH:mm:ss format.
+	// The time when the task flow ended. The time is displayed in the yyyy-MM-DD HH:mm:ss format.
 	//
 	// example:
 	//
@@ -17075,13 +17077,13 @@ type GetDataArchiveOrderDetailResponseBodyDataArchiveOrderDetailPluginExtraDataI
 	//
 	// 32***
 	HistoryDagId *int64 `json:"HistoryDagId,omitempty" xml:"HistoryDagId,omitempty"`
-	// The instance ID of the running task flow.
+	// The ID of the instance in the task flow that is executed.
 	//
 	// example:
 	//
 	// 24***
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The running scenario of the last task flow.
+	// The context of the previous execution of the task flow.
 	//
 	// example:
 	//
@@ -17097,7 +17099,7 @@ type GetDataArchiveOrderDetailResponseBodyDataArchiveOrderDetailPluginExtraDataI
 	//
 	// }
 	LastRunningContext *string `json:"LastRunningContext,omitempty" xml:"LastRunningContext,omitempty"`
-	// The running details of the task.
+	// The context of the current execution of the task flow.
 	//
 	// example:
 	//
@@ -17105,17 +17107,17 @@ type GetDataArchiveOrderDetailResponseBodyDataArchiveOrderDetailPluginExtraDataI
 	Msg *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
 	// The status of the task. Valid values:
 	//
-	// 	- **0**: waiting for execution.
+	// 	- **0**: The task is waiting for execution.
 	//
-	// 	- **1**: running.
+	// 	- **1**: The task is in progress.
 	//
-	// 	- **2**: suspended.
+	// 	- **2**: The task is suspended.
 	//
-	// 	- **3**: failed.
+	// 	- **3**: The task failed.
 	//
-	// 	- **4**: successful.
+	// 	- **4**: The task is successful.
 	//
-	// 	- **5**: complete.
+	// 	- **5**: The task is complete.
 	//
 	// example:
 	//
@@ -17350,13 +17352,13 @@ func (s *GetDataArchiveOrderDetailResponseBodyDataArchiveOrderDetailPluginParam)
 }
 
 type GetDataArchiveOrderDetailResponseBodyDataArchiveOrderDetailPluginParamTableIncludes struct {
-	// The name of the table.
+	// The table name.
 	//
 	// example:
 	//
 	// tm_insured_cb
 	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
-	// The filter conditions.
+	// The filter condition.
 	//
 	// example:
 	//
@@ -65393,7 +65395,7 @@ func (client *Client) GetDBTopology(request *GetDBTopologyRequest) (_result *Get
 
 // Summary:
 //
-// Queries the statistics of data archiving orders, including the number of successful archiving tickets, the number of failed archiving tickets, the number of in-progress archiving tickets, and the total number of archiving tickets.
+// Queries the statistics on the number of data archiving tickets, including the number of tickets of successful data archiving, failed data archiving,and in-progress data archiving, and the total number of data archiving tickets.
 //
 // @param request - GetDataArchiveCountRequest
 //
@@ -65447,7 +65449,7 @@ func (client *Client) GetDataArchiveCountWithOptions(request *GetDataArchiveCoun
 
 // Summary:
 //
-// Queries the statistics of data archiving orders, including the number of successful archiving tickets, the number of failed archiving tickets, the number of in-progress archiving tickets, and the total number of archiving tickets.
+// Queries the statistics on the number of data archiving tickets, including the number of tickets of successful data archiving, failed data archiving,and in-progress data archiving, and the total number of data archiving tickets.
 //
 // @param request - GetDataArchiveCountRequest
 //
@@ -65465,7 +65467,7 @@ func (client *Client) GetDataArchiveCount(request *GetDataArchiveCountRequest) (
 
 // Summary:
 //
-// Queries the details of a data archiving ticket.
+// Queries the details of a data archiving ticket, including the time when the ticket was created, the scheduling information of the data archiving task, the logs of the data archiving task, and the database to which data is archived.
 //
 // @param request - GetDataArchiveOrderDetailRequest
 //
@@ -65511,7 +65513,7 @@ func (client *Client) GetDataArchiveOrderDetailWithOptions(request *GetDataArchi
 
 // Summary:
 //
-// Queries the details of a data archiving ticket.
+// Queries the details of a data archiving ticket, including the time when the ticket was created, the scheduling information of the data archiving task, the logs of the data archiving task, and the database to which data is archived.
 //
 // @param request - GetDataArchiveOrderDetailRequest
 //
