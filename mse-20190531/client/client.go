@@ -8161,9 +8161,10 @@ type CloneNacosConfigRequest struct {
 	//
 	// zh
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	// The data structure.
+	DataIds        *string `json:"DataIds,omitempty" xml:"DataIds,omitempty"`
+	// Deprecated
 	//
-	// This parameter is required.
+	// The data structure.
 	//
 	// example:
 	//
@@ -8219,6 +8220,11 @@ func (s CloneNacosConfigRequest) GoString() string {
 
 func (s *CloneNacosConfigRequest) SetAcceptLanguage(v string) *CloneNacosConfigRequest {
 	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *CloneNacosConfigRequest) SetDataIds(v string) *CloneNacosConfigRequest {
+	s.DataIds = &v
 	return s
 }
 
@@ -8407,7 +8413,8 @@ type CloneNacosConfigResponseBodyDataFailData struct {
 	// example:
 	//
 	// test
-	Group *string `json:"Group,omitempty" xml:"Group,omitempty"`
+	Group  *string `json:"Group,omitempty" xml:"Group,omitempty"`
+	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
 }
 
 func (s CloneNacosConfigResponseBodyDataFailData) String() string {
@@ -8425,6 +8432,11 @@ func (s *CloneNacosConfigResponseBodyDataFailData) SetDataId(v string) *CloneNac
 
 func (s *CloneNacosConfigResponseBodyDataFailData) SetGroup(v string) *CloneNacosConfigResponseBodyDataFailData {
 	s.Group = &v
+	return s
+}
+
+func (s *CloneNacosConfigResponseBodyDataFailData) SetReason(v string) *CloneNacosConfigResponseBodyDataFailData {
+	s.Reason = &v
 	return s
 }
 
@@ -21821,6 +21833,511 @@ func (s *FetchLosslessRuleListResponse) SetStatusCode(v int32) *FetchLosslessRul
 }
 
 func (s *FetchLosslessRuleListResponse) SetBody(v *FetchLosslessRuleListResponseBody) *FetchLosslessRuleListResponse {
+	s.Body = v
+	return s
+}
+
+type GatewayBlackWhiteListRequest struct {
+	// example:
+	//
+	// zh
+	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// example:
+	//
+	// ""
+	DescSort *bool `json:"DescSort,omitempty" xml:"DescSort,omitempty"`
+	// parse from filterParams
+	FilterParams *GatewayBlackWhiteListRequestFilterParams `json:"FilterParams,omitempty" xml:"FilterParams,omitempty" type:"Struct"`
+	// example:
+	//
+	// ""
+	OrderItem *string `json:"OrderItem,omitempty" xml:"OrderItem,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 1
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+}
+
+func (s GatewayBlackWhiteListRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GatewayBlackWhiteListRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GatewayBlackWhiteListRequest) SetAcceptLanguage(v string) *GatewayBlackWhiteListRequest {
+	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *GatewayBlackWhiteListRequest) SetDescSort(v bool) *GatewayBlackWhiteListRequest {
+	s.DescSort = &v
+	return s
+}
+
+func (s *GatewayBlackWhiteListRequest) SetFilterParams(v *GatewayBlackWhiteListRequestFilterParams) *GatewayBlackWhiteListRequest {
+	s.FilterParams = v
+	return s
+}
+
+func (s *GatewayBlackWhiteListRequest) SetOrderItem(v string) *GatewayBlackWhiteListRequest {
+	s.OrderItem = &v
+	return s
+}
+
+func (s *GatewayBlackWhiteListRequest) SetPageNumber(v int32) *GatewayBlackWhiteListRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *GatewayBlackWhiteListRequest) SetPageSize(v int32) *GatewayBlackWhiteListRequest {
+	s.PageSize = &v
+	return s
+}
+
+type GatewayBlackWhiteListRequestFilterParams struct {
+	// example:
+	//
+	// 81
+	GatewayId *int64 `json:"GatewayId,omitempty" xml:"GatewayId,omitempty"`
+	// example:
+	//
+	// gw-5017305290e14centbrveca****
+	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
+	// example:
+	//
+	// ""
+	IsWhite *bool `json:"IsWhite,omitempty" xml:"IsWhite,omitempty"`
+	// example:
+	//
+	// ""
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// example:
+	//
+	// 1.1.1.1
+	SearchContent *string `json:"SearchContent,omitempty" xml:"SearchContent,omitempty"`
+	// example:
+	//
+	// IP
+	SearchType *string `json:"SearchType,omitempty" xml:"SearchType,omitempty"`
+	// example:
+	//
+	// ""
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s GatewayBlackWhiteListRequestFilterParams) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GatewayBlackWhiteListRequestFilterParams) GoString() string {
+	return s.String()
+}
+
+func (s *GatewayBlackWhiteListRequestFilterParams) SetGatewayId(v int64) *GatewayBlackWhiteListRequestFilterParams {
+	s.GatewayId = &v
+	return s
+}
+
+func (s *GatewayBlackWhiteListRequestFilterParams) SetGatewayUniqueId(v string) *GatewayBlackWhiteListRequestFilterParams {
+	s.GatewayUniqueId = &v
+	return s
+}
+
+func (s *GatewayBlackWhiteListRequestFilterParams) SetIsWhite(v bool) *GatewayBlackWhiteListRequestFilterParams {
+	s.IsWhite = &v
+	return s
+}
+
+func (s *GatewayBlackWhiteListRequestFilterParams) SetResourceType(v string) *GatewayBlackWhiteListRequestFilterParams {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *GatewayBlackWhiteListRequestFilterParams) SetSearchContent(v string) *GatewayBlackWhiteListRequestFilterParams {
+	s.SearchContent = &v
+	return s
+}
+
+func (s *GatewayBlackWhiteListRequestFilterParams) SetSearchType(v string) *GatewayBlackWhiteListRequestFilterParams {
+	s.SearchType = &v
+	return s
+}
+
+func (s *GatewayBlackWhiteListRequestFilterParams) SetType(v string) *GatewayBlackWhiteListRequestFilterParams {
+	s.Type = &v
+	return s
+}
+
+type GatewayBlackWhiteListShrinkRequest struct {
+	// example:
+	//
+	// zh
+	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// example:
+	//
+	// ""
+	DescSort *bool `json:"DescSort,omitempty" xml:"DescSort,omitempty"`
+	// parse from filterParams
+	FilterParamsShrink *string `json:"FilterParams,omitempty" xml:"FilterParams,omitempty"`
+	// example:
+	//
+	// ""
+	OrderItem *string `json:"OrderItem,omitempty" xml:"OrderItem,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 1
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+}
+
+func (s GatewayBlackWhiteListShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GatewayBlackWhiteListShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GatewayBlackWhiteListShrinkRequest) SetAcceptLanguage(v string) *GatewayBlackWhiteListShrinkRequest {
+	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *GatewayBlackWhiteListShrinkRequest) SetDescSort(v bool) *GatewayBlackWhiteListShrinkRequest {
+	s.DescSort = &v
+	return s
+}
+
+func (s *GatewayBlackWhiteListShrinkRequest) SetFilterParamsShrink(v string) *GatewayBlackWhiteListShrinkRequest {
+	s.FilterParamsShrink = &v
+	return s
+}
+
+func (s *GatewayBlackWhiteListShrinkRequest) SetOrderItem(v string) *GatewayBlackWhiteListShrinkRequest {
+	s.OrderItem = &v
+	return s
+}
+
+func (s *GatewayBlackWhiteListShrinkRequest) SetPageNumber(v int32) *GatewayBlackWhiteListShrinkRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *GatewayBlackWhiteListShrinkRequest) SetPageSize(v int32) *GatewayBlackWhiteListShrinkRequest {
+	s.PageSize = &v
+	return s
+}
+
+type GatewayBlackWhiteListResponseBody struct {
+	// example:
+	//
+	// 200
+	Code *int32                                 `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *GatewayBlackWhiteListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// code
+	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
+	// example:
+	//
+	// The specified parameter is invalid.
+	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
+	// example:
+	//
+	// Success
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 58E06A0A-BD2C-47A0-99C2-B100F353****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GatewayBlackWhiteListResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GatewayBlackWhiteListResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GatewayBlackWhiteListResponseBody) SetCode(v int32) *GatewayBlackWhiteListResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GatewayBlackWhiteListResponseBody) SetData(v *GatewayBlackWhiteListResponseBodyData) *GatewayBlackWhiteListResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GatewayBlackWhiteListResponseBody) SetDynamicCode(v string) *GatewayBlackWhiteListResponseBody {
+	s.DynamicCode = &v
+	return s
+}
+
+func (s *GatewayBlackWhiteListResponseBody) SetDynamicMessage(v string) *GatewayBlackWhiteListResponseBody {
+	s.DynamicMessage = &v
+	return s
+}
+
+func (s *GatewayBlackWhiteListResponseBody) SetErrorCode(v string) *GatewayBlackWhiteListResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *GatewayBlackWhiteListResponseBody) SetHttpStatusCode(v int32) *GatewayBlackWhiteListResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *GatewayBlackWhiteListResponseBody) SetMessage(v string) *GatewayBlackWhiteListResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GatewayBlackWhiteListResponseBody) SetRequestId(v string) *GatewayBlackWhiteListResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GatewayBlackWhiteListResponseBody) SetSuccess(v bool) *GatewayBlackWhiteListResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GatewayBlackWhiteListResponseBodyData struct {
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 1
+	PageSize *int32                                         `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Result   []*GatewayBlackWhiteListResponseBodyDataResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	TotalSize *int32 `json:"TotalSize,omitempty" xml:"TotalSize,omitempty"`
+}
+
+func (s GatewayBlackWhiteListResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GatewayBlackWhiteListResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GatewayBlackWhiteListResponseBodyData) SetPageNumber(v int32) *GatewayBlackWhiteListResponseBodyData {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *GatewayBlackWhiteListResponseBodyData) SetPageSize(v int32) *GatewayBlackWhiteListResponseBodyData {
+	s.PageSize = &v
+	return s
+}
+
+func (s *GatewayBlackWhiteListResponseBodyData) SetResult(v []*GatewayBlackWhiteListResponseBodyDataResult) *GatewayBlackWhiteListResponseBodyData {
+	s.Result = v
+	return s
+}
+
+func (s *GatewayBlackWhiteListResponseBodyData) SetTotalSize(v int32) *GatewayBlackWhiteListResponseBodyData {
+	s.TotalSize = &v
+	return s
+}
+
+type GatewayBlackWhiteListResponseBodyDataResult struct {
+	// example:
+	//
+	// 1.1.1.1
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// example:
+	//
+	// 81
+	GatewayId *int64 `json:"GatewayId,omitempty" xml:"GatewayId,omitempty"`
+	// example:
+	//
+	// gw-5017305290e14centbrveca****
+	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
+	// example:
+	//
+	// 2024-08-02T02:43:40.000+0000
+	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// example:
+	//
+	// 2024-08-02T02:43:40.000+0000
+	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// example:
+	//
+	// 549
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// true
+	IsWhite *bool `json:"IsWhite,omitempty" xml:"IsWhite,omitempty"`
+	// example:
+	//
+	// test
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Note *string `json:"Note,omitempty" xml:"Note,omitempty"`
+	// example:
+	//
+	// 549
+	ResourceId *int64 `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// example:
+	//
+	// [234]
+	ResourceIdJsonList *string `json:"ResourceIdJsonList,omitempty" xml:"ResourceIdJsonList,omitempty"`
+	// example:
+	//
+	// {}
+	ResourceIdNameJson *string `json:"ResourceIdNameJson,omitempty" xml:"ResourceIdNameJson,omitempty"`
+	// example:
+	//
+	// GATEWAY
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// example:
+	//
+	// on
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// IP
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s GatewayBlackWhiteListResponseBodyDataResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GatewayBlackWhiteListResponseBodyDataResult) GoString() string {
+	return s.String()
+}
+
+func (s *GatewayBlackWhiteListResponseBodyDataResult) SetContent(v string) *GatewayBlackWhiteListResponseBodyDataResult {
+	s.Content = &v
+	return s
+}
+
+func (s *GatewayBlackWhiteListResponseBodyDataResult) SetGatewayId(v int64) *GatewayBlackWhiteListResponseBodyDataResult {
+	s.GatewayId = &v
+	return s
+}
+
+func (s *GatewayBlackWhiteListResponseBodyDataResult) SetGatewayUniqueId(v string) *GatewayBlackWhiteListResponseBodyDataResult {
+	s.GatewayUniqueId = &v
+	return s
+}
+
+func (s *GatewayBlackWhiteListResponseBodyDataResult) SetGmtCreate(v string) *GatewayBlackWhiteListResponseBodyDataResult {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *GatewayBlackWhiteListResponseBodyDataResult) SetGmtModified(v string) *GatewayBlackWhiteListResponseBodyDataResult {
+	s.GmtModified = &v
+	return s
+}
+
+func (s *GatewayBlackWhiteListResponseBodyDataResult) SetId(v int64) *GatewayBlackWhiteListResponseBodyDataResult {
+	s.Id = &v
+	return s
+}
+
+func (s *GatewayBlackWhiteListResponseBodyDataResult) SetIsWhite(v bool) *GatewayBlackWhiteListResponseBodyDataResult {
+	s.IsWhite = &v
+	return s
+}
+
+func (s *GatewayBlackWhiteListResponseBodyDataResult) SetName(v string) *GatewayBlackWhiteListResponseBodyDataResult {
+	s.Name = &v
+	return s
+}
+
+func (s *GatewayBlackWhiteListResponseBodyDataResult) SetNote(v string) *GatewayBlackWhiteListResponseBodyDataResult {
+	s.Note = &v
+	return s
+}
+
+func (s *GatewayBlackWhiteListResponseBodyDataResult) SetResourceId(v int64) *GatewayBlackWhiteListResponseBodyDataResult {
+	s.ResourceId = &v
+	return s
+}
+
+func (s *GatewayBlackWhiteListResponseBodyDataResult) SetResourceIdJsonList(v string) *GatewayBlackWhiteListResponseBodyDataResult {
+	s.ResourceIdJsonList = &v
+	return s
+}
+
+func (s *GatewayBlackWhiteListResponseBodyDataResult) SetResourceIdNameJson(v string) *GatewayBlackWhiteListResponseBodyDataResult {
+	s.ResourceIdNameJson = &v
+	return s
+}
+
+func (s *GatewayBlackWhiteListResponseBodyDataResult) SetResourceType(v string) *GatewayBlackWhiteListResponseBodyDataResult {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *GatewayBlackWhiteListResponseBodyDataResult) SetStatus(v string) *GatewayBlackWhiteListResponseBodyDataResult {
+	s.Status = &v
+	return s
+}
+
+func (s *GatewayBlackWhiteListResponseBodyDataResult) SetType(v string) *GatewayBlackWhiteListResponseBodyDataResult {
+	s.Type = &v
+	return s
+}
+
+type GatewayBlackWhiteListResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GatewayBlackWhiteListResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GatewayBlackWhiteListResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GatewayBlackWhiteListResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GatewayBlackWhiteListResponse) SetHeaders(v map[string]*string) *GatewayBlackWhiteListResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GatewayBlackWhiteListResponse) SetStatusCode(v int32) *GatewayBlackWhiteListResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GatewayBlackWhiteListResponse) SetBody(v *GatewayBlackWhiteListResponseBody) *GatewayBlackWhiteListResponse {
 	s.Body = v
 	return s
 }
@@ -77734,6 +78251,10 @@ func (client *Client) CloneNacosConfigWithOptions(request *CloneNacosConfigReque
 		query["AcceptLanguage"] = request.AcceptLanguage
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.DataIds)) {
+		query["DataIds"] = request.DataIds
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Ids)) {
 		query["Ids"] = request.Ids
 	}
@@ -82187,6 +82708,92 @@ func (client *Client) FetchLosslessRuleList(request *FetchLosslessRuleListReques
 
 // Summary:
 //
+// 黑白名单列表
+//
+// @param tmpReq - GatewayBlackWhiteListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GatewayBlackWhiteListResponse
+func (client *Client) GatewayBlackWhiteListWithOptions(tmpReq *GatewayBlackWhiteListRequest, runtime *util.RuntimeOptions) (_result *GatewayBlackWhiteListResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &GatewayBlackWhiteListShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.FilterParams)) {
+		request.FilterParamsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.FilterParams, tea.String("FilterParams"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
+		query["AcceptLanguage"] = request.AcceptLanguage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DescSort)) {
+		query["DescSort"] = request.DescSort
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FilterParamsShrink)) {
+		query["FilterParams"] = request.FilterParamsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrderItem)) {
+		query["OrderItem"] = request.OrderItem
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GatewayBlackWhiteList"),
+		Version:     tea.String("2019-05-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GatewayBlackWhiteListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 黑白名单列表
+//
+// @param request - GatewayBlackWhiteListRequest
+//
+// @return GatewayBlackWhiteListResponse
+func (client *Client) GatewayBlackWhiteList(request *GatewayBlackWhiteListRequest) (_result *GatewayBlackWhiteListResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GatewayBlackWhiteListResponse{}
+	_body, _err := client.GatewayBlackWhiteListWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries information about canary release for messaging of an application.
 //
 // @param request - GetAppMessageQueueRouteRequest
@@ -82449,6 +83056,8 @@ func (client *Client) GetApplicationList(request *GetApplicationListRequest) (_r
 	return _result, _err
 }
 
+// Deprecated: OpenAPI GetBlackWhiteList is deprecated, please use mse::2019-05-31::GatewayBlackWhiteList instead.
+//
 // Summary:
 //
 // Queries the blacklist or whitelist of a gateway.
@@ -82458,6 +83067,7 @@ func (client *Client) GetApplicationList(request *GetApplicationListRequest) (_r
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetBlackWhiteListResponse
+// Deprecated
 func (client *Client) GetBlackWhiteListWithOptions(request *GetBlackWhiteListRequest, runtime *util.RuntimeOptions) (_result *GetBlackWhiteListResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -82507,6 +83117,8 @@ func (client *Client) GetBlackWhiteListWithOptions(request *GetBlackWhiteListReq
 	return _result, _err
 }
 
+// Deprecated: OpenAPI GetBlackWhiteList is deprecated, please use mse::2019-05-31::GatewayBlackWhiteList instead.
+//
 // Summary:
 //
 // Queries the blacklist or whitelist of a gateway.
@@ -82514,6 +83126,7 @@ func (client *Client) GetBlackWhiteListWithOptions(request *GetBlackWhiteListReq
 // @param request - GetBlackWhiteListRequest
 //
 // @return GetBlackWhiteListResponse
+// Deprecated
 func (client *Client) GetBlackWhiteList(request *GetBlackWhiteListRequest) (_result *GetBlackWhiteListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetBlackWhiteListResponse{}
