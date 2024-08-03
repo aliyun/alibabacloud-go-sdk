@@ -1618,7 +1618,6 @@ func (s *UpdateInstanceNameResponse) SetBody(v *UpdateInstanceNameResponseBody) 
 }
 
 type UpdatePublicNetworkStatusRequest struct {
-	// This parameter is required.
 	Cidr *string `json:"Cidr,omitempty" xml:"Cidr,omitempty"`
 	// This parameter is required.
 	//
