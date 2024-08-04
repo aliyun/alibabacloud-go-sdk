@@ -719,8 +719,6 @@ type CancelUpsertCollectionDataJobRequest struct {
 	//
 	// >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
 	//
-	// This parameter is required.
-	//
 	// example:
 	//
 	// gp-xxxxxxxxx
@@ -759,7 +757,8 @@ type CancelUpsertCollectionDataJobRequest struct {
 	// example:
 	//
 	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s CancelUpsertCollectionDataJobRequest) String() string {
@@ -802,6 +801,11 @@ func (s *CancelUpsertCollectionDataJobRequest) SetOwnerId(v int64) *CancelUpsert
 
 func (s *CancelUpsertCollectionDataJobRequest) SetRegionId(v string) *CancelUpsertCollectionDataJobRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *CancelUpsertCollectionDataJobRequest) SetWorkspaceId(v string) *CancelUpsertCollectionDataJobRequest {
+	s.WorkspaceId = &v
 	return s
 }
 
@@ -1526,8 +1530,6 @@ type CreateCollectionRequest struct {
 	//
 	// document
 	Collection *string `json:"Collection,omitempty" xml:"Collection,omitempty"`
-	// This parameter is required.
-	//
 	// example:
 	//
 	// gp-xxxxxxxxx
@@ -1638,7 +1640,8 @@ type CreateCollectionRequest struct {
 	// example:
 	//
 	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s CreateCollectionRequest) String() string {
@@ -1721,6 +1724,11 @@ func (s *CreateCollectionRequest) SetPqEnable(v int32) *CreateCollectionRequest 
 
 func (s *CreateCollectionRequest) SetRegionId(v string) *CreateCollectionRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *CreateCollectionRequest) SetWorkspaceId(v string) *CreateCollectionRequest {
+	s.WorkspaceId = &v
 	return s
 }
 
@@ -2575,9 +2583,11 @@ type CreateDBInstancePlanRequest struct {
 	PlanDesc *string `json:"PlanDesc,omitempty" xml:"PlanDesc,omitempty"`
 	// The end time of the plan. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC. The end time must be later than the start time.
 	//
-	// > - This parameter must be specified only when **PlanScheduleType*	- is set to **Regular.
+	// >
 	//
-	//  > - If you do not specify this parameter, the plan stops until the plan is deleted.
+	// 	- This parameter must be specified only when **PlanScheduleType*	- is set to **Regular**.
+	//
+	// 	- If you do not specify this parameter, the plan stops until the plan is deleted.
 	//
 	// example:
 	//
@@ -2605,9 +2615,11 @@ type CreateDBInstancePlanRequest struct {
 	PlanScheduleType *string `json:"PlanScheduleType,omitempty" xml:"PlanScheduleType,omitempty"`
 	// The start time of the plan. Specify the time in the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time must be in UTC.
 	//
-	// > -  This parameter must be specified only when **PlanScheduleType*	- is set to **Regular**.
+	// >
 	//
-	// > -  If you do not specify this parameter, the current time is used.
+	// 	- This parameter must be specified only when **PlanScheduleType*	- is set to **Regular**.
+	//
+	// 	- If you do not specify this parameter, the current time is used.
 	//
 	// example:
 	//
@@ -3813,8 +3825,6 @@ type CreateNamespaceRequest struct {
 	//
 	// > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/196830.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
 	//
-	// This parameter is required.
-	//
 	// example:
 	//
 	// gp-xxxxxxxxx
@@ -3861,7 +3871,8 @@ type CreateNamespaceRequest struct {
 	// example:
 	//
 	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s CreateNamespaceRequest) String() string {
@@ -3904,6 +3915,11 @@ func (s *CreateNamespaceRequest) SetOwnerId(v int64) *CreateNamespaceRequest {
 
 func (s *CreateNamespaceRequest) SetRegionId(v string) *CreateNamespaceRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *CreateNamespaceRequest) SetWorkspaceId(v string) *CreateNamespaceRequest {
+	s.WorkspaceId = &v
 	return s
 }
 
@@ -4105,37 +4121,53 @@ func (s *CreateSampleDataResponse) SetBody(v *CreateSampleDataResponseBody) *Cre
 }
 
 type CreateSecretRequest struct {
+	// The instance ID.
+	//
+	// >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// gp-xxxxxxxxx
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// The description of the access credential.
+	//
 	// example:
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	OwnerId     *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The password of the database account that is used to access the instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pwd123
 	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	// The region ID of the instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The name of the access credential. The name must be 1 to 16 characters in length and can contain letters, digits, and underscores (_). If you leave this parameter empty, the value of the Username parameter is used.
+	//
 	// example:
 	//
 	// testsecret
 	SecretName *string `json:"SecretName,omitempty" xml:"SecretName,omitempty"`
+	// Specifies whether to check the connectivity to the instance by using the name and password of the database account.
+	//
 	// example:
 	//
 	// true
 	TestConnection *bool `json:"TestConnection,omitempty" xml:"TestConnection,omitempty"`
+	// The name of the database account that is used to access the instance.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -4193,22 +4225,36 @@ func (s *CreateSecretRequest) SetUsername(v string) *CreateSecretRequest {
 }
 
 type CreateSecretResponseBody struct {
+	// The returned message.
+	//
 	// example:
 	//
 	// Successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// ABB39CC3-4488-4857-905D-2E4A051D0521
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The Alibaba Cloud Resource Name (ARN) of the access credential for the created Data API account. Format: `acs:gpdb:{{region}}:{{accountId}}:secret/{{secretName}}-{{32 digits random string}`.
+	//
 	// example:
 	//
 	// acs:gpdb:cn-beijing:1033**:secret/testsecret-eG2AQGRIwQ0zFp4VA7mYL3uiCXTfDQbQ
 	SecretArn *string `json:"SecretArn,omitempty" xml:"SecretArn,omitempty"`
+	// The name of the access credential.
+	//
 	// example:
 	//
 	// testsecret
 	SecretName *string `json:"SecretName,omitempty" xml:"SecretName,omitempty"`
+	// The status of the operation. Valid values:
+	//
+	// 	- **success**
+	//
+	// 	- **fail**
+	//
 	// example:
 	//
 	// success
@@ -5924,8 +5970,6 @@ type DeleteCollectionRequest struct {
 	//
 	// > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
 	//
-	// This parameter is required.
-	//
 	// example:
 	//
 	// gp-xxxxxxxxx
@@ -5954,7 +5998,8 @@ type DeleteCollectionRequest struct {
 	// example:
 	//
 	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s DeleteCollectionRequest) String() string {
@@ -5992,6 +6037,11 @@ func (s *DeleteCollectionRequest) SetOwnerId(v int64) *DeleteCollectionRequest {
 
 func (s *DeleteCollectionRequest) SetRegionId(v string) *DeleteCollectionRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *DeleteCollectionRequest) SetWorkspaceId(v string) *DeleteCollectionRequest {
+	s.WorkspaceId = &v
 	return s
 }
 
@@ -6097,8 +6147,6 @@ type DeleteCollectionDataRequest struct {
 	//
 	// > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the IDs of all AnalyticDB for PostgreSQL instances within a region.
 	//
-	// This parameter is required.
-	//
 	// example:
 	//
 	// gp-xxxxxxxxx
@@ -6127,7 +6175,8 @@ type DeleteCollectionDataRequest struct {
 	// example:
 	//
 	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s DeleteCollectionDataRequest) String() string {
@@ -6175,6 +6224,11 @@ func (s *DeleteCollectionDataRequest) SetOwnerId(v int64) *DeleteCollectionDataR
 
 func (s *DeleteCollectionDataRequest) SetRegionId(v string) *DeleteCollectionDataRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *DeleteCollectionDataRequest) SetWorkspaceId(v string) *DeleteCollectionDataRequest {
+	s.WorkspaceId = &v
 	return s
 }
 
@@ -7340,8 +7394,6 @@ type DeleteNamespaceRequest struct {
 	//
 	// > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
 	//
-	// This parameter is required.
-	//
 	// example:
 	//
 	// gp-xxxxxxxxx
@@ -7382,7 +7434,8 @@ type DeleteNamespaceRequest struct {
 	// example:
 	//
 	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s DeleteNamespaceRequest) String() string {
@@ -7420,6 +7473,11 @@ func (s *DeleteNamespaceRequest) SetOwnerId(v int64) *DeleteNamespaceRequest {
 
 func (s *DeleteNamespaceRequest) SetRegionId(v string) *DeleteNamespaceRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *DeleteNamespaceRequest) SetWorkspaceId(v string) *DeleteNamespaceRequest {
+	s.WorkspaceId = &v
 	return s
 }
 
@@ -7501,6 +7559,10 @@ func (s *DeleteNamespaceResponse) SetBody(v *DeleteNamespaceResponseBody) *Delet
 }
 
 type DeleteSecretRequest struct {
+	// The instance ID. You can call the DescribeDBInstances operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+	//
+	// >
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -7508,16 +7570,26 @@ type DeleteSecretRequest struct {
 	// gp-xxxxxxxxx
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID of the instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The Alibaba Cloud Resource Name (ARN) of the access credential for the created Data API account. Format: `acs:gpdb:{{region}}:{{accountId}}:secret/{{secretName}}-{{32 digits random string}`.
+	//
+	// >  You must specify one of the SecretArn and SecretName parameters.
+	//
 	// example:
 	//
 	// acs:gpdb:cn-beijing:1033**:secret/testsecret-eG2AQGRIwQ0zFp4VA7mYL3uiCXTfDQbQ
 	SecretArn *string `json:"SecretArn,omitempty" xml:"SecretArn,omitempty"`
+	// The name of the access credential.
+	//
+	// >  You must specify one of the SecretArn and SecretName parameters.
+	//
 	// example:
 	//
 	// testsecret
@@ -7558,18 +7630,30 @@ func (s *DeleteSecretRequest) SetSecretName(v string) *DeleteSecretRequest {
 }
 
 type DeleteSecretResponseBody struct {
+	// The returned message.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// ABB39CC3-4488-4857-905D-2E4A051D0521
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ARN of the access credential for the created Data API account. Format: `acs:gpdb:{{region}}:{{accountId}}:secret/{{secretName}}-{{32 digits random string}`.
+	//
 	// example:
 	//
 	// acs:gpdb:cn-beijing:1033**:secret/testsecret-eG2AQGRIwQ0zFp4VA7mYL3uiCXTfDQbQ
 	SecretArn *string `json:"SecretArn,omitempty" xml:"SecretArn,omitempty"`
+	// The status of the operation. Valid values:
+	//
+	// 	- **fail**
+	//
+	// 	- **success**
+	//
 	// example:
 	//
 	// success
@@ -9157,8 +9241,6 @@ type DescribeCollectionRequest struct {
 	//
 	// > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
 	//
-	// This parameter is required.
-	//
 	// example:
 	//
 	// gp-xxxxxxxxx
@@ -9187,7 +9269,8 @@ type DescribeCollectionRequest struct {
 	// example:
 	//
 	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s DescribeCollectionRequest) String() string {
@@ -9225,6 +9308,11 @@ func (s *DescribeCollectionRequest) SetOwnerId(v int64) *DescribeCollectionReque
 
 func (s *DescribeCollectionRequest) SetRegionId(v string) *DescribeCollectionRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeCollectionRequest) SetWorkspaceId(v string) *DescribeCollectionRequest {
+	s.WorkspaceId = &v
 	return s
 }
 
@@ -20096,8 +20184,6 @@ type DescribeNamespaceRequest struct {
 	//
 	// > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
 	//
-	// This parameter is required.
-	//
 	// example:
 	//
 	// gp-xxxxxxxxx
@@ -20138,7 +20224,8 @@ type DescribeNamespaceRequest struct {
 	// example:
 	//
 	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s DescribeNamespaceRequest) String() string {
@@ -20176,6 +20263,11 @@ func (s *DescribeNamespaceRequest) SetOwnerId(v int64) *DescribeNamespaceRequest
 
 func (s *DescribeNamespaceRequest) SetRegionId(v string) *DescribeNamespaceRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeNamespaceRequest) SetWorkspaceId(v string) *DescribeNamespaceRequest {
+	s.WorkspaceId = &v
 	return s
 }
 
@@ -23965,12 +24057,18 @@ func (s *DescribeSupportFeaturesResponse) SetBody(v *DescribeSupportFeaturesResp
 }
 
 type DescribeTableRequest struct {
+	// The instance ID.
+	//
+	// >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// gp-xxxxxxxxx
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// The name of the database.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -23978,24 +24076,34 @@ type DescribeTableRequest struct {
 	// adbtest
 	Database *string `json:"Database,omitempty" xml:"Database,omitempty"`
 	OwnerId  *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID of the instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The name of the schema to which the table belongs.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// public
 	Schema *string `json:"Schema,omitempty" xml:"Schema,omitempty"`
+	// The Alibaba Cloud Resource Name (ARN) of the access credential for the created Data API account. You can call the CreateSecret operation to create an access credential.
+	//
+	// >  To call the DescribeTable operation as a Resource Access Management (RAM) user, the RAM user must have the permissions to call the UseSecret or GetSecretValue operation on the ARN of the access credential.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// acs:gpdb:cn-beijing:1033**:secret/testsecret-eG2AQGRIwQ0zFp4VA7mYL3uiCXTfDQbQ
 	SecretArn *string `json:"SecretArn,omitempty" xml:"SecretArn,omitempty"`
+	// The name of the table.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -24048,15 +24156,26 @@ func (s *DescribeTableRequest) SetTable(v string) *DescribeTableRequest {
 }
 
 type DescribeTableResponseBody struct {
+	// The columns of the table.
 	ColumnList *DescribeTableResponseBodyColumnList `json:"ColumnList,omitempty" xml:"ColumnList,omitempty" type:"Struct"`
+	// The returned message.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// ABB39CC3-4488-4857-905D-2E4A051D0521
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The status of the operation. Valid values:
+	//
+	// 	- **success**
+	//
+	// 	- **fail**
+	//
 	// example:
 	//
 	// success
@@ -25648,41 +25767,65 @@ func (s *EnableDBResourceGroupResponse) SetBody(v *EnableDBResourceGroupResponse
 }
 
 type ExecuteStatementRequest struct {
+	// The instance ID.
+	//
+	// >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// gp-xxxxxxxxx
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// The name of the database.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// adbtest
-	Database   *string       `json:"Database,omitempty" xml:"Database,omitempty"`
-	OwnerId    *int64        `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	Database *string `json:"Database,omitempty" xml:"Database,omitempty"`
+	OwnerId  *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The configuration parameters.
 	Parameters []interface{} `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Repeated"`
+	// The region ID of the instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The execution type. Valid values:
+	//
+	// 	- synchronous
+	//
+	// 	- asynchronous (not supported)
+	//
 	// example:
 	//
 	// synchronous
 	RunType *string `json:"RunType,omitempty" xml:"RunType,omitempty"`
+	// The Alibaba Cloud Resource Name (ARN) of the access credential for the created Data API account. You can call the CreateSecret operation to create an access credential.
+	//
+	// >  To call the ExecuteStatement operation as a Resource Access Management (RAM) user, the RAM user must have the permissions to call the UseSecret or GetSecretValue operation on the ARN of the access credential.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// acs:gpdb:cn-beijing:1033**:secret/testsecret-eG2AQGRIwQ0zFp4VA7mYL3uiCXTfDQbQ
 	SecretArn *string `json:"SecretArn,omitempty" xml:"SecretArn,omitempty"`
+	// The SQL statements that you want to execute.
+	//
 	// example:
 	//
 	// select 	- from table1
-	Sql  *string   `json:"Sql,omitempty" xml:"Sql,omitempty"`
+	Sql *string `json:"Sql,omitempty" xml:"Sql,omitempty"`
+	// The SQL statements.
 	Sqls []*string `json:"Sqls,omitempty" xml:"Sqls,omitempty" type:"Repeated"`
+	// The name of the set of SQL statements that you want to execute.
+	//
 	// example:
 	//
 	// test
@@ -25748,41 +25891,65 @@ func (s *ExecuteStatementRequest) SetStatementName(v string) *ExecuteStatementRe
 }
 
 type ExecuteStatementShrinkRequest struct {
+	// The instance ID.
+	//
+	// >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// gp-xxxxxxxxx
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// The name of the database.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// adbtest
-	Database         *string `json:"Database,omitempty" xml:"Database,omitempty"`
-	OwnerId          *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	Database *string `json:"Database,omitempty" xml:"Database,omitempty"`
+	OwnerId  *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The configuration parameters.
 	ParametersShrink *string `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
+	// The region ID of the instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The execution type. Valid values:
+	//
+	// 	- synchronous
+	//
+	// 	- asynchronous (not supported)
+	//
 	// example:
 	//
 	// synchronous
 	RunType *string `json:"RunType,omitempty" xml:"RunType,omitempty"`
+	// The Alibaba Cloud Resource Name (ARN) of the access credential for the created Data API account. You can call the CreateSecret operation to create an access credential.
+	//
+	// >  To call the ExecuteStatement operation as a Resource Access Management (RAM) user, the RAM user must have the permissions to call the UseSecret or GetSecretValue operation on the ARN of the access credential.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// acs:gpdb:cn-beijing:1033**:secret/testsecret-eG2AQGRIwQ0zFp4VA7mYL3uiCXTfDQbQ
 	SecretArn *string `json:"SecretArn,omitempty" xml:"SecretArn,omitempty"`
+	// The SQL statements that you want to execute.
+	//
 	// example:
 	//
 	// select 	- from table1
-	Sql        *string `json:"Sql,omitempty" xml:"Sql,omitempty"`
+	Sql *string `json:"Sql,omitempty" xml:"Sql,omitempty"`
+	// The SQL statements.
 	SqlsShrink *string `json:"Sqls,omitempty" xml:"Sqls,omitempty"`
+	// The name of the set of SQL statements that you want to execute.
+	//
 	// example:
 	//
 	// test
@@ -25848,35 +26015,56 @@ func (s *ExecuteStatementShrinkRequest) SetStatementName(v string) *ExecuteState
 }
 
 type ExecuteStatementResponseBody struct {
+	// The time when the SQL statements were created.
+	//
 	// example:
 	//
 	// 2023-12-04T10:08:47+0800
 	CreatedAt *string `json:"CreatedAt,omitempty" xml:"CreatedAt,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// gp-xxxxxxxxx
-	DBInstanceId *string                           `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	Data         *ExecuteStatementResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// The returned results of the synchronous call.
+	Data *ExecuteStatementResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The name of the database.
+	//
 	// example:
 	//
 	// adbtest
 	Database *string `json:"Database,omitempty" xml:"Database,omitempty"`
+	// The ID of the job for asynchronously executing the SQL statements.
+	//
 	// example:
 	//
 	// ABB39CC3
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The returned message.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// ABB39CC3-4488-4857-905D-2E4A051D0521
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ARN of the access credential for the created Data API account.
+	//
 	// example:
 	//
 	// acs:gpdb:cn-beijing:1033**:secret/testsecret-eG2AQGRIwQ0zFp4VA7mYL3uiCXTfDQbQ
 	SecretArn *string `json:"SecretArn,omitempty" xml:"SecretArn,omitempty"`
+	// The status of the operation. Valid values:
+	//
+	// 	- **success**
+	//
+	// 	- **fail**
+	//
 	// example:
 	//
 	// success
@@ -25937,8 +26125,12 @@ func (s *ExecuteStatementResponseBody) SetStatus(v string) *ExecuteStatementResp
 }
 
 type ExecuteStatementResponseBodyData struct {
+	// The metadata of the columns.
 	ColumnMetadata *ExecuteStatementResponseBodyDataColumnMetadata `json:"ColumnMetadata,omitempty" xml:"ColumnMetadata,omitempty" type:"Struct"`
-	Records        *ExecuteStatementResponseBodyDataRecords        `json:"Records,omitempty" xml:"Records,omitempty" type:"Struct"`
+	// The rows of data.
+	Records *ExecuteStatementResponseBodyDataRecords `json:"Records,omitempty" xml:"Records,omitempty" type:"Struct"`
+	// The total number of entries returned.
+	//
 	// example:
 	//
 	// 10
@@ -26049,6 +26241,10 @@ func (s *ExecuteStatementResponse) SetBody(v *ExecuteStatementResponseBody) *Exe
 }
 
 type GetSecretValueRequest struct {
+	// The instance ID.
+	//
+	// >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -26056,16 +26252,26 @@ type GetSecretValueRequest struct {
 	// gp-xxxxxxxxx
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID of the instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The Alibaba Cloud Resource Name (ARN) of the access credential for the created Data API account. Format: `acs:gpdb:{{region}}:{{accountId}}:secret/{{secretName}}-{{32 digits random string}`.
+	//
+	// >  You must specify one of the SecretArn and SecretName parameters.
+	//
 	// example:
 	//
 	// acs:gpdb:cn-beijing:1033**:secret/testsecret-eG2AQGRIwQ0zFp4VA7mYL3uiCXTfDQbQ
 	SecretArn *string `json:"SecretArn,omitempty" xml:"SecretArn,omitempty"`
+	// The name of the access credential.
+	//
+	// >  You must specify one of the SecretArn and SecretName parameters.
+	//
 	// example:
 	//
 	// testsecret
@@ -26106,42 +26312,66 @@ func (s *GetSecretValueRequest) SetSecretName(v string) *GetSecretValueRequest {
 }
 
 type GetSecretValueResponseBody struct {
+	// The error code.
+	//
 	// example:
 	//
 	// Secret.NotFound
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// gp-xxxxxxxxx
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// The description of the access credential.
+	//
 	// example:
 	//
 	// test secret
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The returned message.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The password of the database account.
+	//
 	// example:
 	//
 	// pwd123
 	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// ABB39CC3-4488-4857-905D-2E4A051D0521
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ARN of the access credential for the created Data API account. Format: `acs:gpdb:{{region}}:{{accountId}}:secret/{{secretName}}-{{32 digits random string}`.
+	//
 	// example:
 	//
 	// acs:gpdb:cn-beijing:1033**:secret/testsecret-eG2AQGRIwQ0zFp4VA7mYL3uiCXTfDQbQ
 	SecretArn *string `json:"SecretArn,omitempty" xml:"SecretArn,omitempty"`
+	// The name of the access credential.
+	//
 	// example:
 	//
 	// testsecret
 	SecretName *string `json:"SecretName,omitempty" xml:"SecretName,omitempty"`
+	// The status of the operation. Valid values:
+	//
+	// 	- **success**
+	//
+	// 	- **fail**
+	//
 	// example:
 	//
 	// success
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The name of the database account.
+	//
 	// example:
 	//
 	// testacc
@@ -26614,8 +26844,6 @@ type GetUpsertCollectionDataJobRequest struct {
 	//
 	// >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
 	//
-	// This parameter is required.
-	//
 	// example:
 	//
 	// gp-xxxxxxxxx
@@ -26654,7 +26882,8 @@ type GetUpsertCollectionDataJobRequest struct {
 	// example:
 	//
 	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s GetUpsertCollectionDataJobRequest) String() string {
@@ -26697,6 +26926,11 @@ func (s *GetUpsertCollectionDataJobRequest) SetOwnerId(v int64) *GetUpsertCollec
 
 func (s *GetUpsertCollectionDataJobRequest) SetRegionId(v string) *GetUpsertCollectionDataJobRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *GetUpsertCollectionDataJobRequest) SetWorkspaceId(v string) *GetUpsertCollectionDataJobRequest {
+	s.WorkspaceId = &v
 	return s
 }
 
@@ -27276,8 +27510,6 @@ type InitVectorDatabaseRequest struct {
 	//
 	// > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
 	//
-	// This parameter is required.
-	//
 	// example:
 	//
 	// gp-xxxxxxxxx
@@ -27310,7 +27542,8 @@ type InitVectorDatabaseRequest struct {
 	// example:
 	//
 	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s InitVectorDatabaseRequest) String() string {
@@ -27343,6 +27576,11 @@ func (s *InitVectorDatabaseRequest) SetOwnerId(v int64) *InitVectorDatabaseReque
 
 func (s *InitVectorDatabaseRequest) SetRegionId(v string) *InitVectorDatabaseRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *InitVectorDatabaseRequest) SetWorkspaceId(v string) *InitVectorDatabaseRequest {
+	s.WorkspaceId = &v
 	return s
 }
 
@@ -27428,8 +27666,6 @@ type ListCollectionsRequest struct {
 	//
 	// > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
 	//
-	// This parameter is required.
-	//
 	// example:
 	//
 	// gp-xxxxxxxxx
@@ -27458,7 +27694,8 @@ type ListCollectionsRequest struct {
 	// example:
 	//
 	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s ListCollectionsRequest) String() string {
@@ -27491,6 +27728,11 @@ func (s *ListCollectionsRequest) SetOwnerId(v int64) *ListCollectionsRequest {
 
 func (s *ListCollectionsRequest) SetRegionId(v string) *ListCollectionsRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *ListCollectionsRequest) SetWorkspaceId(v string) *ListCollectionsRequest {
+	s.WorkspaceId = &v
 	return s
 }
 
@@ -27640,33 +27882,49 @@ func (s *ListCollectionsResponse) SetBody(v *ListCollectionsResponseBody) *ListC
 }
 
 type ListDatabasesRequest struct {
+	// The instance ID.
+	//
+	// >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// gp-xxxxxxxxx
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// The name of the database.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// testdb
 	Database *string `json:"Database,omitempty" xml:"Database,omitempty"`
+	// The maximum number of entries per page. Valid values: 1 to 100.
+	//
 	// example:
 	//
 	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of NextToken.
+	//
 	// example:
 	//
 	// caeba0bbb2be03f84eb48b699f0a4883
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	OwnerId   *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID of the instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The Alibaba Cloud Resource Name (ARN) of the access credential for the created Data API account. You can call the CreateSecret operation to create an access credential.
+	//
+	// >  To call the DescribeTable operation as a Resource Access Management (RAM) user, the RAM user must have the permissions to call the UseSecret or GetSecretValue operation on the ARN of the access credential.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -27719,19 +27977,32 @@ func (s *ListDatabasesRequest) SetSecretArn(v string) *ListDatabasesRequest {
 }
 
 type ListDatabasesResponseBody struct {
+	// The queried databases.
 	Databases *ListDatabasesResponseBodyDatabases `json:"Databases,omitempty" xml:"Databases,omitempty" type:"Struct"`
+	// The returned message.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// A pagination token. It can be used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists.
+	//
 	// example:
 	//
 	// caeba0bbb2be03f84eb48b699f0a4883
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// ABB39CC3-4488-4857-905D-2E4A051D0521
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The status of the operation. Valid values:
+	//
+	// 	- **success**
+	//
+	// 	- **fail**
+	//
 	// example:
 	//
 	// success
@@ -28107,7 +28378,12 @@ type ListDocumentsRequest struct {
 	//
 	// gp-xxxxxxxxx
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	MaxResults   *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The maximum number of entries per page. Valid values: 1 to 100.
+	//
+	// example:
+	//
+	// 100
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The name of the namespace. Default value: public.
 	//
 	// >  You can call the [CreateNamespace](https://help.aliyun.com/document_detail/2401495.html) operation to create a namespace and call the [ListNamespaces](https://help.aliyun.com/document_detail/2401502.html) operation to query a list of namespaces.
@@ -28126,8 +28402,13 @@ type ListDocumentsRequest struct {
 	//
 	// testpassword
 	NamespacePassword *string `json:"NamespacePassword,omitempty" xml:"NamespacePassword,omitempty"`
-	NextToken         *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	OwnerId           *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of NextToken.
+	//
+	// example:
+	//
+	// caeba0bbb2be03f84eb48b699f0a4883
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	OwnerId   *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The region ID of the instance.
 	//
 	// This parameter is required.
@@ -28187,12 +28468,23 @@ func (s *ListDocumentsRequest) SetRegionId(v string) *ListDocumentsRequest {
 }
 
 type ListDocumentsResponseBody struct {
-	Count *int32                          `json:"Count,omitempty" xml:"Count,omitempty"`
+	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 3
+	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
+	// The queried documents.
 	Items *ListDocumentsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
 	// example:
 	//
 	// Successful
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// A pagination token. It can be used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists.
+	//
+	// example:
+	//
+	// caeba0bbb2be03f84eb48b699f0a4883
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// example:
 	//
@@ -29118,8 +29410,6 @@ type ListNamespacesRequest struct {
 	//
 	// > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
 	//
-	// This parameter is required.
-	//
 	// example:
 	//
 	// gp-xxxxxxxxx
@@ -29150,7 +29440,8 @@ type ListNamespacesRequest struct {
 	// example:
 	//
 	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s ListNamespacesRequest) String() string {
@@ -29183,6 +29474,11 @@ func (s *ListNamespacesRequest) SetOwnerId(v int64) *ListNamespacesRequest {
 
 func (s *ListNamespacesRequest) SetRegionId(v string) *ListNamespacesRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *ListNamespacesRequest) SetWorkspaceId(v string) *ListNamespacesRequest {
+	s.WorkspaceId = &v
 	return s
 }
 
@@ -29321,37 +29617,55 @@ func (s *ListNamespacesResponse) SetBody(v *ListNamespacesResponseBody) *ListNam
 }
 
 type ListSchemasRequest struct {
+	// The instance ID.
+	//
+	// >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// gp-xxxxxxxxx
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// The name of the database.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// adbtest
 	Database *string `json:"Database,omitempty" xml:"Database,omitempty"`
+	// The maximum number of entries per page. Valid values: 1 to 100.
+	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of NextToken.
+	//
 	// example:
 	//
 	// caeba0bbb2be03f84eb48b699f0a4883
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	OwnerId   *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID of the instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The schema name pattern for matching. For example, `ab%` specifies to match schema names that start with ab.
+	//
 	// example:
 	//
 	// aaa%
 	SchemaPattern *string `json:"SchemaPattern,omitempty" xml:"SchemaPattern,omitempty"`
+	// The Alibaba Cloud Resource Name (ARN) of the access credential for the created Data API account. You can call the CreateSecret operation to create an access credential.
+	//
+	// >  To call the ListSchemas operation as a Resource Access Management (RAM) user, the RAM user must have the permissions to call the UseSecret or GetSecretValue operation on the ARN of the access credential.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -29409,19 +29723,32 @@ func (s *ListSchemasRequest) SetSecretArn(v string) *ListSchemasRequest {
 }
 
 type ListSchemasResponseBody struct {
+	// The returned message.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// A pagination token. It can be used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists.
+	//
 	// example:
 	//
 	// caeba0bbb2be03f84eb48b699f0a4883
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// ABB39CC3-4488-4857-905D-2E4A051D0521
-	RequestId *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Schemas   *ListSchemasResponseBodySchemas `json:"Schemas,omitempty" xml:"Schemas,omitempty" type:"Struct"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The queried schemas.
+	Schemas *ListSchemasResponseBodySchemas `json:"Schemas,omitempty" xml:"Schemas,omitempty" type:"Struct"`
+	// The status of the operation. Valid values:
+	//
+	// 	- **success**
+	//
+	// 	- **fail**
+	//
 	// example:
 	//
 	// success
@@ -29508,6 +29835,10 @@ func (s *ListSchemasResponse) SetBody(v *ListSchemasResponseBody) *ListSchemasRe
 }
 
 type ListSecretsRequest struct {
+	// The instance ID.
+	//
+	// >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -29515,6 +29846,8 @@ type ListSecretsRequest struct {
 	// gp-xxxxxxxxx
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID of the instance.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -29547,19 +29880,32 @@ func (s *ListSecretsRequest) SetRegionId(v string) *ListSecretsRequest {
 }
 
 type ListSecretsResponseBody struct {
+	// The number of access credentials.
+	//
 	// example:
 	//
 	// 4
 	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
+	// The returned message.
+	//
 	// example:
 	//
 	// Successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// ABB39CC3-4488-4857-905D-2E4A051D0521
-	RequestId *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Secrets   *ListSecretsResponseBodySecrets `json:"Secrets,omitempty" xml:"Secrets,omitempty" type:"Struct"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The queried access credentials.
+	Secrets *ListSecretsResponseBodySecrets `json:"Secrets,omitempty" xml:"Secrets,omitempty" type:"Struct"`
+	// The status of the operation. Valid values:
+	//
+	// 	- **success**
+	//
+	// 	- **fail**
+	//
 	// example:
 	//
 	// success
@@ -29617,30 +29963,44 @@ func (s *ListSecretsResponseBodySecrets) SetSecrets(v []*ListSecretsResponseBody
 }
 
 type ListSecretsResponseBodySecretsSecrets struct {
+	// The ID of the Alibaba Cloud account.
+	//
 	// example:
 	//
 	// 1033***
 	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// gp-bp14****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// The description of the access credential.
+	//
 	// example:
 	//
 	// test description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The region ID of the instance.
+	//
 	// example:
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The Alibaba Cloud Resource Name (ARN) of the access credential for the created Data API account. Format: `acs:gpdb:{{region}}:{{accountId}}:secret/{{secretName}}-{{32 digits random string}`.
+	//
 	// example:
 	//
 	// acs:gpdb:cn-beijing:1033**:secret/testsecret-eG2AQGRIwQ0zFp4VA7mYL3uiCXTfDQbQ
 	SecretArn *string `json:"SecretArn,omitempty" xml:"SecretArn,omitempty"`
+	// The name of the access credential.
+	//
 	// example:
 	//
 	// testsecret
 	SecretName *string `json:"SecretName,omitempty" xml:"SecretName,omitempty"`
+	// The name of the database account.
+	//
 	// example:
 	//
 	// testacc
@@ -30613,45 +30973,65 @@ func (s *ListStreamingJobsResponse) SetBody(v *ListStreamingJobsResponseBody) *L
 }
 
 type ListTablesRequest struct {
+	// The instance ID.
+	//
+	// >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/196830.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// gp-xxxxxxxxx
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// The name of the database.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// adbtest
 	Database *string `json:"Database,omitempty" xml:"Database,omitempty"`
+	// The maximum number of entries per page. Valid values: 1 to 100.
+	//
 	// example:
 	//
 	// 100
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of NextToken.
+	//
 	// example:
 	//
 	// caeba0bbb2be03f84eb48b699f0a4883
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	OwnerId   *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID of the instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The name of the schema to which the table belongs.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// public
 	Schema *string `json:"Schema,omitempty" xml:"Schema,omitempty"`
+	// The Alibaba Cloud Resource Name (ARN) of the access credential for the created Data API account. You can call the CreateSecret operation to create an access credential.
+	//
+	// >  To call the ListTables operation as a Resource Access Management (RAM) user, the RAM user must have the permissions to call the UseSecret or GetSecretValue operation on the ARN of the access credential.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// acs:gpdb:cn-beijing:1033**:secret/testsecret-eG2AQGRIwQ0zFp4VA7mYL3uiCXTfDQbQ
 	SecretArn *string `json:"SecretArn,omitempty" xml:"SecretArn,omitempty"`
+	// The table name pattern for matching. For example, `ab%` specifies to match table names that start with ab.
+	//
 	// example:
 	//
 	// ab%
@@ -30712,22 +31092,35 @@ func (s *ListTablesRequest) SetTablePattern(v string) *ListTablesRequest {
 }
 
 type ListTablesResponseBody struct {
+	// The returned message.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// A pagination token. It can be used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists.
+	//
 	// example:
 	//
 	// caeba0bbb2be03f84eb48b699f0a4883
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// ABB39CC3-4488-4857-905D-2E4A051D0521
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The status of the operation. Valid values:
+	//
+	// 	- **success**
+	//
+	// 	- **fail**
+	//
 	// example:
 	//
 	// success
-	Status *string                       `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The queried tables.
 	Tables *ListTablesResponseBodyTables `json:"Tables,omitempty" xml:"Tables,omitempty" type:"Struct"`
 }
 
@@ -34876,8 +35269,6 @@ type QueryCollectionDataRequest struct {
 	//
 	// hello_world
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// This parameter is required.
-	//
 	// example:
 	//
 	// gp-xxxxxxxxx
@@ -35020,7 +35411,8 @@ type QueryCollectionDataRequest struct {
 	// The vector data. The length of the value must be the same as that of the Dimension parameter in the [CreateCollection](https://help.aliyun.com/document_detail/2401497.html) operation.
 	//
 	// >  If you leave this parameter empty, only full-text search results are returned.
-	Vector []*float64 `json:"Vector,omitempty" xml:"Vector,omitempty" type:"Repeated"`
+	Vector      []*float64 `json:"Vector,omitempty" xml:"Vector,omitempty" type:"Repeated"`
+	WorkspaceId *string    `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s QueryCollectionDataRequest) String() string {
@@ -35116,6 +35508,11 @@ func (s *QueryCollectionDataRequest) SetVector(v []*float64) *QueryCollectionDat
 	return s
 }
 
+func (s *QueryCollectionDataRequest) SetWorkspaceId(v string) *QueryCollectionDataRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
 type QueryCollectionDataShrinkRequest struct {
 	// The name of the collection.
 	//
@@ -35135,8 +35532,6 @@ type QueryCollectionDataShrinkRequest struct {
 	//
 	// hello_world
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// This parameter is required.
-	//
 	// example:
 	//
 	// gp-xxxxxxxxx
@@ -35280,6 +35675,7 @@ type QueryCollectionDataShrinkRequest struct {
 	//
 	// >  If you leave this parameter empty, only full-text search results are returned.
 	VectorShrink *string `json:"Vector,omitempty" xml:"Vector,omitempty"`
+	WorkspaceId  *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s QueryCollectionDataShrinkRequest) String() string {
@@ -35372,6 +35768,11 @@ func (s *QueryCollectionDataShrinkRequest) SetTopK(v int64) *QueryCollectionData
 
 func (s *QueryCollectionDataShrinkRequest) SetVectorShrink(v string) *QueryCollectionDataShrinkRequest {
 	s.VectorShrink = &v
+	return s
+}
+
+func (s *QueryCollectionDataShrinkRequest) SetWorkspaceId(v string) *QueryCollectionDataShrinkRequest {
+	s.WorkspaceId = &v
 	return s
 }
 
@@ -35611,7 +36012,10 @@ type QueryContentRequest struct {
 	//
 	//     }
 	HybridSearchArgs map[string]map[string]interface{} `json:"HybridSearchArgs,omitempty" xml:"HybridSearchArgs,omitempty"`
-	IncludeFileUrl   *bool                             `json:"IncludeFileUrl,omitempty" xml:"IncludeFileUrl,omitempty"`
+	// example:
+	//
+	// false
+	IncludeFileUrl *bool `json:"IncludeFileUrl,omitempty" xml:"IncludeFileUrl,omitempty"`
 	// The metadata fields to be returned. Separate multiple fields with commas (,). This parameter is empty by default.
 	//
 	// example:
@@ -35849,7 +36253,10 @@ type QueryContentAdvanceRequest struct {
 	//
 	//     }
 	HybridSearchArgs map[string]map[string]interface{} `json:"HybridSearchArgs,omitempty" xml:"HybridSearchArgs,omitempty"`
-	IncludeFileUrl   *bool                             `json:"IncludeFileUrl,omitempty" xml:"IncludeFileUrl,omitempty"`
+	// example:
+	//
+	// false
+	IncludeFileUrl *bool `json:"IncludeFileUrl,omitempty" xml:"IncludeFileUrl,omitempty"`
 	// The metadata fields to be returned. Separate multiple fields with commas (,). This parameter is empty by default.
 	//
 	// example:
@@ -36087,7 +36494,10 @@ type QueryContentShrinkRequest struct {
 	//
 	//     }
 	HybridSearchArgsShrink *string `json:"HybridSearchArgs,omitempty" xml:"HybridSearchArgs,omitempty"`
-	IncludeFileUrl         *bool   `json:"IncludeFileUrl,omitempty" xml:"IncludeFileUrl,omitempty"`
+	// example:
+	//
+	// false
+	IncludeFileUrl *bool `json:"IncludeFileUrl,omitempty" xml:"IncludeFileUrl,omitempty"`
 	// The metadata fields to be returned. Separate multiple fields with commas (,). This parameter is empty by default.
 	//
 	// example:
@@ -38374,8 +38784,6 @@ type UpdateCollectionDataMetadataRequest struct {
 	//
 	// >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
 	//
-	// This parameter is required.
-	//
 	// example:
 	//
 	// gp-xxxxxxxxx
@@ -38426,7 +38834,8 @@ type UpdateCollectionDataMetadataRequest struct {
 	// example:
 	//
 	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s UpdateCollectionDataMetadataRequest) String() string {
@@ -38482,6 +38891,11 @@ func (s *UpdateCollectionDataMetadataRequest) SetRegionId(v string) *UpdateColle
 	return s
 }
 
+func (s *UpdateCollectionDataMetadataRequest) SetWorkspaceId(v string) *UpdateCollectionDataMetadataRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
 type UpdateCollectionDataMetadataShrinkRequest struct {
 	// The name of the collection.
 	//
@@ -38494,8 +38908,6 @@ type UpdateCollectionDataMetadataShrinkRequest struct {
 	// The instance ID.
 	//
 	// >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
-	//
-	// This parameter is required.
 	//
 	// example:
 	//
@@ -38547,7 +38959,8 @@ type UpdateCollectionDataMetadataShrinkRequest struct {
 	// example:
 	//
 	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s UpdateCollectionDataMetadataShrinkRequest) String() string {
@@ -38600,6 +39013,11 @@ func (s *UpdateCollectionDataMetadataShrinkRequest) SetOwnerId(v int64) *UpdateC
 
 func (s *UpdateCollectionDataMetadataShrinkRequest) SetRegionId(v string) *UpdateCollectionDataMetadataShrinkRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *UpdateCollectionDataMetadataShrinkRequest) SetWorkspaceId(v string) *UpdateCollectionDataMetadataShrinkRequest {
+	s.WorkspaceId = &v
 	return s
 }
 
@@ -40499,8 +40917,6 @@ type UpsertCollectionDataRequest struct {
 	//
 	// > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
 	//
-	// This parameter is required.
-	//
 	// example:
 	//
 	// gp-xxxxxxxxx
@@ -40529,8 +40945,9 @@ type UpsertCollectionDataRequest struct {
 	// example:
 	//
 	// cn-hangzhou
-	RegionId *string                            `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Rows     []*UpsertCollectionDataRequestRows `json:"Rows,omitempty" xml:"Rows,omitempty" type:"Repeated"`
+	RegionId    *string                            `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Rows        []*UpsertCollectionDataRequestRows `json:"Rows,omitempty" xml:"Rows,omitempty" type:"Repeated"`
+	WorkspaceId *string                            `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s UpsertCollectionDataRequest) String() string {
@@ -40573,6 +40990,11 @@ func (s *UpsertCollectionDataRequest) SetRegionId(v string) *UpsertCollectionDat
 
 func (s *UpsertCollectionDataRequest) SetRows(v []*UpsertCollectionDataRequestRows) *UpsertCollectionDataRequest {
 	s.Rows = v
+	return s
+}
+
+func (s *UpsertCollectionDataRequest) SetWorkspaceId(v string) *UpsertCollectionDataRequest {
+	s.WorkspaceId = &v
 	return s
 }
 
@@ -40619,8 +41041,6 @@ type UpsertCollectionDataShrinkRequest struct {
 	//
 	// > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
 	//
-	// This parameter is required.
-	//
 	// example:
 	//
 	// gp-xxxxxxxxx
@@ -40649,8 +41069,9 @@ type UpsertCollectionDataShrinkRequest struct {
 	// example:
 	//
 	// cn-hangzhou
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RowsShrink *string `json:"Rows,omitempty" xml:"Rows,omitempty"`
+	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RowsShrink  *string `json:"Rows,omitempty" xml:"Rows,omitempty"`
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s UpsertCollectionDataShrinkRequest) String() string {
@@ -40693,6 +41114,11 @@ func (s *UpsertCollectionDataShrinkRequest) SetRegionId(v string) *UpsertCollect
 
 func (s *UpsertCollectionDataShrinkRequest) SetRowsShrink(v string) *UpsertCollectionDataShrinkRequest {
 	s.RowsShrink = &v
+	return s
+}
+
+func (s *UpsertCollectionDataShrinkRequest) SetWorkspaceId(v string) *UpsertCollectionDataShrinkRequest {
+	s.WorkspaceId = &v
 	return s
 }
 
@@ -40788,8 +41214,6 @@ type UpsertCollectionDataAsyncRequest struct {
 	//
 	// >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
 	//
-	// This parameter is required.
-	//
 	// example:
 	//
 	// gp-xxxxxxxxx
@@ -40836,7 +41260,8 @@ type UpsertCollectionDataAsyncRequest struct {
 	// example:
 	//
 	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s UpsertCollectionDataAsyncRequest) String() string {
@@ -40882,6 +41307,11 @@ func (s *UpsertCollectionDataAsyncRequest) SetRegionId(v string) *UpsertCollecti
 	return s
 }
 
+func (s *UpsertCollectionDataAsyncRequest) SetWorkspaceId(v string) *UpsertCollectionDataAsyncRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
 type UpsertCollectionDataAsyncAdvanceRequest struct {
 	// The name of the collection.
 	//
@@ -40896,8 +41326,6 @@ type UpsertCollectionDataAsyncAdvanceRequest struct {
 	// The instance ID.
 	//
 	// >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
-	//
-	// This parameter is required.
 	//
 	// example:
 	//
@@ -40945,7 +41373,8 @@ type UpsertCollectionDataAsyncAdvanceRequest struct {
 	// example:
 	//
 	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s UpsertCollectionDataAsyncAdvanceRequest) String() string {
@@ -40988,6 +41417,11 @@ func (s *UpsertCollectionDataAsyncAdvanceRequest) SetOwnerId(v int64) *UpsertCol
 
 func (s *UpsertCollectionDataAsyncAdvanceRequest) SetRegionId(v string) *UpsertCollectionDataAsyncAdvanceRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *UpsertCollectionDataAsyncAdvanceRequest) SetWorkspaceId(v string) *UpsertCollectionDataAsyncAdvanceRequest {
+	s.WorkspaceId = &v
 	return s
 }
 
@@ -41448,6 +41882,10 @@ func (client *Client) CancelUpsertCollectionDataJobWithOptions(request *CancelUp
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		query["WorkspaceId"] = request.WorkspaceId
 	}
 
 	body := map[string]interface{}{}
@@ -41960,6 +42398,10 @@ func (client *Client) CreateCollectionWithOptions(request *CreateCollectionReque
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		query["WorkspaceId"] = request.WorkspaceId
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -42922,6 +43364,10 @@ func (client *Client) CreateNamespaceWithOptions(request *CreateNamespaceRequest
 		query["RegionId"] = request.RegionId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -43041,7 +43487,7 @@ func (client *Client) CreateSampleData(request *CreateSampleDataRequest) (_resul
 
 // Summary:
 //
-// 创建实例的用户凭证
+// Creates an access credential for an AnalyticDB for PostgreSQL instance by using the name and password of a database account.
 //
 // @param request - CreateSecretRequest
 //
@@ -43111,7 +43557,7 @@ func (client *Client) CreateSecretWithOptions(request *CreateSecretRequest, runt
 
 // Summary:
 //
-// 创建实例的用户凭证
+// Creates an access credential for an AnalyticDB for PostgreSQL instance by using the name and password of a database account.
 //
 // @param request - CreateSecretRequest
 //
@@ -43656,6 +44102,10 @@ func (client *Client) DeleteCollectionWithOptions(request *DeleteCollectionReque
 		query["RegionId"] = request.RegionId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -43742,6 +44192,10 @@ func (client *Client) DeleteCollectionDataWithOptions(request *DeleteCollectionD
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		query["WorkspaceId"] = request.WorkspaceId
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -44508,6 +44962,10 @@ func (client *Client) DeleteNamespaceWithOptions(request *DeleteNamespaceRequest
 		query["RegionId"] = request.RegionId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -44551,7 +45009,7 @@ func (client *Client) DeleteNamespace(request *DeleteNamespaceRequest) (_result 
 
 // Summary:
 //
-// 删除实例的用户凭证
+// Deletes the access credentials of an AnalyticDB for PostgreSQL instance.
 //
 // @param request - DeleteSecretRequest
 //
@@ -44609,7 +45067,7 @@ func (client *Client) DeleteSecretWithOptions(request *DeleteSecretRequest, runt
 
 // Summary:
 //
-// 删除实例的用户凭证
+// Deletes the access credentials of an AnalyticDB for PostgreSQL instance.
 //
 // @param request - DeleteSecretRequest
 //
@@ -45274,6 +45732,10 @@ func (client *Client) DescribeCollectionWithOptions(request *DescribeCollectionR
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		query["WorkspaceId"] = request.WorkspaceId
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -48426,6 +48888,10 @@ func (client *Client) DescribeNamespaceWithOptions(request *DescribeNamespaceReq
 		query["RegionId"] = request.RegionId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -49617,7 +50083,7 @@ func (client *Client) DescribeSupportFeatures(request *DescribeSupportFeaturesRe
 
 // Summary:
 //
-// 查看所有的schema
+// Queries the information about a table.
 //
 // @param request - DescribeTableRequest
 //
@@ -49683,7 +50149,7 @@ func (client *Client) DescribeTableWithOptions(request *DescribeTableRequest, ru
 
 // Summary:
 //
-// 查看所有的schema
+// Queries the information about a table.
 //
 // @param request - DescribeTableRequest
 //
@@ -50437,7 +50903,7 @@ func (client *Client) EnableDBResourceGroup(request *EnableDBResourceGroupReques
 
 // Summary:
 //
-// 运行SQL语句
+// Executes SQL statements.
 //
 // @param tmpReq - ExecuteStatementRequest
 //
@@ -50527,7 +50993,7 @@ func (client *Client) ExecuteStatementWithOptions(tmpReq *ExecuteStatementReques
 
 // Summary:
 //
-// 运行SQL语句
+// Executes SQL statements.
 //
 // @param request - ExecuteStatementRequest
 //
@@ -50545,7 +51011,7 @@ func (client *Client) ExecuteStatement(request *ExecuteStatementRequest) (_resul
 
 // Summary:
 //
-// 查看实例的用户凭证里数据
+// Queries the information about an access credential.
 //
 // @param request - GetSecretValueRequest
 //
@@ -50603,7 +51069,7 @@ func (client *Client) GetSecretValueWithOptions(request *GetSecretValueRequest, 
 
 // Summary:
 //
-// 查看实例的用户凭证里数据
+// Queries the information about an access credential.
 //
 // @param request - GetSecretValueRequest
 //
@@ -50752,6 +51218,10 @@ func (client *Client) GetUpsertCollectionDataJobWithOptions(request *GetUpsertCo
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		query["WorkspaceId"] = request.WorkspaceId
 	}
 
 	body := map[string]interface{}{}
@@ -51014,6 +51484,10 @@ func (client *Client) InitVectorDatabaseWithOptions(request *InitVectorDatabaseR
 		query["RegionId"] = request.RegionId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -51090,6 +51564,10 @@ func (client *Client) ListCollectionsWithOptions(request *ListCollectionsRequest
 		query["RegionId"] = request.RegionId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -51133,7 +51611,7 @@ func (client *Client) ListCollections(request *ListCollectionsRequest) (_result 
 
 // Summary:
 //
-// 查看所有库
+// Queries a list of databases.
 //
 // @param request - ListDatabasesRequest
 //
@@ -51199,7 +51677,7 @@ func (client *Client) ListDatabasesWithOptions(request *ListDatabasesRequest, ru
 
 // Summary:
 //
-// 查看所有库
+// Queries a list of databases.
 //
 // @param request - ListDatabasesRequest
 //
@@ -51638,6 +52116,10 @@ func (client *Client) ListNamespacesWithOptions(request *ListNamespacesRequest, 
 		query["RegionId"] = request.RegionId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -51681,7 +52163,7 @@ func (client *Client) ListNamespaces(request *ListNamespacesRequest) (_result *L
 
 // Summary:
 //
-// 查看所有的schema
+// Queries a list of schemas.
 //
 // @param request - ListSchemasRequest
 //
@@ -51751,7 +52233,7 @@ func (client *Client) ListSchemasWithOptions(request *ListSchemasRequest, runtim
 
 // Summary:
 //
-// 查看所有的schema
+// Queries a list of schemas.
 //
 // @param request - ListSchemasRequest
 //
@@ -51769,7 +52251,7 @@ func (client *Client) ListSchemas(request *ListSchemasRequest) (_result *ListSch
 
 // Summary:
 //
-// 查询实例的用户凭证列表
+// Queries a list of access credentials.
 //
 // @param request - ListSecretsRequest
 //
@@ -51819,7 +52301,7 @@ func (client *Client) ListSecretsWithOptions(request *ListSecretsRequest, runtim
 
 // Summary:
 //
-// 查询实例的用户凭证列表
+// Queries a list of access credentials.
 //
 // @param request - ListSecretsRequest
 //
@@ -52053,7 +52535,7 @@ func (client *Client) ListStreamingJobs(request *ListStreamingJobsRequest) (_res
 
 // Summary:
 //
-// 查看所有表
+// Queries a list of tables in a database.
 //
 // @param request - ListTablesRequest
 //
@@ -52127,7 +52609,7 @@ func (client *Client) ListTablesWithOptions(request *ListTablesRequest, runtime 
 
 // Summary:
 //
-// 查看所有表
+// Queries a list of tables in a database.
 //
 // @param request - ListTablesRequest
 //
@@ -54156,6 +54638,10 @@ func (client *Client) QueryCollectionDataWithOptions(tmpReq *QueryCollectionData
 		query["Vector"] = request.VectorShrink
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -55607,6 +56093,10 @@ func (client *Client) UpdateCollectionDataMetadataWithOptions(tmpReq *UpdateColl
 		query["RegionId"] = request.RegionId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -56448,6 +56938,10 @@ func (client *Client) UpsertCollectionDataWithOptions(tmpReq *UpsertCollectionDa
 		query["RegionId"] = request.RegionId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.RowsShrink)) {
 		body["Rows"] = request.RowsShrink
@@ -56532,6 +57026,10 @@ func (client *Client) UpsertCollectionDataAsyncWithOptions(request *UpsertCollec
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		query["WorkspaceId"] = request.WorkspaceId
 	}
 
 	body := map[string]interface{}{}
