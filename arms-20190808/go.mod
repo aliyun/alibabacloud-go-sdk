@@ -1,4 +1,4 @@
-module github.com/alibabacloud-go/arms-20190808/v6
+module github.com/alibabacloud-go/arms-20190808/v7
 
 go 1.14
 

@@ -3191,199 +3191,6 @@ func (s *AddPrometheusIntegrationResponse) SetBody(v *AddPrometheusIntegrationRe
 	return s
 }
 
-type AddPrometheusRemoteWriteRequest struct {
-	// The ID of the Prometheus instance.
-	//
-	// This parameter is required.
-	//
-	// example:
-	//
-	// cc7a37ee31aea4ed1a059eff8034b\\*\\*\\*\\	- or vpc-xxxxx
-	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The region ID.
-	//
-	// This parameter is required.
-	//
-	// example:
-	//
-	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The details of the remote write configuration item. Specify the value in the YAML format.
-	//
-	// This parameter is required.
-	//
-	// example:
-	//
-	// remote_write:
-	//
-	//   - name: rw1
-	//
-	//     url: "http://cn-hangzhou-intranet.arms.aliyuncs.com/prometheus/uid/xx/cn-hangzhou/api/v3/write"
-	//
-	//     basic_auth:
-	//
-	//       username: xxx
-	//
-	//       password: xxx
-	//
-	//     write_relabel_configs:
-	//
-	//       - source_labels: [ instance_id ]
-	//
-	//         separator: ;
-	//
-	//         regex: si
-	//
-	//         replacement: $1
-	//
-	//         action: keep
-	//
-	//   - name: rw2
-	//
-	//     url: "http://cn-hangzhou-intranet.arms.aliyuncs.com/prometheus/uid/xx/cn-hangzhou/api/v3/write"
-	//
-	//     basic_auth:
-	//
-	//       username: xxx
-	//
-	//       password: xxx
-	//
-	//     write_relabel_configs:
-	//
-	//       - source_labels: [ xx ]
-	//
-	//         separator: ;
-	//
-	//         regex: yyy
-	//
-	//         replacement: $1
-	//
-	//         action: keep
-	RemoteWriteYaml *string `json:"RemoteWriteYaml,omitempty" xml:"RemoteWriteYaml,omitempty"`
-}
-
-func (s AddPrometheusRemoteWriteRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s AddPrometheusRemoteWriteRequest) GoString() string {
-	return s.String()
-}
-
-func (s *AddPrometheusRemoteWriteRequest) SetClusterId(v string) *AddPrometheusRemoteWriteRequest {
-	s.ClusterId = &v
-	return s
-}
-
-func (s *AddPrometheusRemoteWriteRequest) SetRegionId(v string) *AddPrometheusRemoteWriteRequest {
-	s.RegionId = &v
-	return s
-}
-
-func (s *AddPrometheusRemoteWriteRequest) SetRemoteWriteYaml(v string) *AddPrometheusRemoteWriteRequest {
-	s.RemoteWriteYaml = &v
-	return s
-}
-
-type AddPrometheusRemoteWriteResponseBody struct {
-	// The status code. The status code 200 indicates that the request was successful. If another status code is returned, the request failed.
-	//
-	// example:
-	//
-	// 200
-	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The name of the remote write configuration item that was added, or the exception information.
-	//
-	// example:
-	//
-	// 1
-	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The returned message.
-	//
-	// example:
-	//
-	// message
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The request ID.
-	//
-	// example:
-	//
-	// 4C518054-852F-4023-ABC1-4AF95FF7****
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
-	//
-	// 	- `true`
-	//
-	// 	- `false`
-	//
-	// example:
-	//
-	// true
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s AddPrometheusRemoteWriteResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s AddPrometheusRemoteWriteResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *AddPrometheusRemoteWriteResponseBody) SetCode(v int32) *AddPrometheusRemoteWriteResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *AddPrometheusRemoteWriteResponseBody) SetData(v string) *AddPrometheusRemoteWriteResponseBody {
-	s.Data = &v
-	return s
-}
-
-func (s *AddPrometheusRemoteWriteResponseBody) SetMessage(v string) *AddPrometheusRemoteWriteResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *AddPrometheusRemoteWriteResponseBody) SetRequestId(v string) *AddPrometheusRemoteWriteResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *AddPrometheusRemoteWriteResponseBody) SetSuccess(v bool) *AddPrometheusRemoteWriteResponseBody {
-	s.Success = &v
-	return s
-}
-
-type AddPrometheusRemoteWriteResponse struct {
-	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-	Body       *AddPrometheusRemoteWriteResponseBody `json:"body,omitempty" xml:"body,omitempty"`
-}
-
-func (s AddPrometheusRemoteWriteResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s AddPrometheusRemoteWriteResponse) GoString() string {
-	return s.String()
-}
-
-func (s *AddPrometheusRemoteWriteResponse) SetHeaders(v map[string]*string) *AddPrometheusRemoteWriteResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *AddPrometheusRemoteWriteResponse) SetStatusCode(v int32) *AddPrometheusRemoteWriteResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *AddPrometheusRemoteWriteResponse) SetBody(v *AddPrometheusRemoteWriteResponseBody) *AddPrometheusRemoteWriteResponse {
-	s.Body = v
-	return s
-}
-
 type AddRecordingRuleRequest struct {
 	// The cluster ID.
 	//
@@ -9193,6 +9000,8 @@ type CreateOrUpdateEventBridgeIntegrationRequest struct {
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The name of the EventBridge integration.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// EventBridge_Test
@@ -9498,6 +9307,8 @@ type CreateOrUpdateIMRobotRequest struct {
 	// 	- `wechat`: WeCom chatbot
 	//
 	// 	- `feishu`: Lark chatbot.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -18264,6 +18075,8 @@ func (s *DeleteEnvironmentFeatureResponse) SetBody(v *DeleteEnvironmentFeatureRe
 type DeleteEventBridgeIntegrationRequest struct {
 	// The ID of the EventBridge integration. You can call the **ListEventBridgeIntegrations*	- operation to query the ID.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 123
@@ -19519,151 +19332,6 @@ func (s *DeletePrometheusMonitoringResponse) SetStatusCode(v int32) *DeleteProme
 }
 
 func (s *DeletePrometheusMonitoringResponse) SetBody(v *DeletePrometheusMonitoringResponseBody) *DeletePrometheusMonitoringResponse {
-	s.Body = v
-	return s
-}
-
-type DeletePrometheusRemoteWriteRequest struct {
-	// The ID of the Prometheus instance.
-	//
-	// This parameter is required.
-	//
-	// example:
-	//
-	// cc7a37ee31aea4ed1a059eff8034b\\*\\*\\*\\	- or vpc-xxxx
-	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The region ID.
-	//
-	// This parameter is required.
-	//
-	// example:
-	//
-	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The names of the remote write configuration items that you want to delete. Separate configuration items with commas (,).
-	//
-	// This parameter is required.
-	//
-	// example:
-	//
-	// name1,name2
-	RemoteWriteNames *string `json:"RemoteWriteNames,omitempty" xml:"RemoteWriteNames,omitempty"`
-}
-
-func (s DeletePrometheusRemoteWriteRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeletePrometheusRemoteWriteRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DeletePrometheusRemoteWriteRequest) SetClusterId(v string) *DeletePrometheusRemoteWriteRequest {
-	s.ClusterId = &v
-	return s
-}
-
-func (s *DeletePrometheusRemoteWriteRequest) SetRegionId(v string) *DeletePrometheusRemoteWriteRequest {
-	s.RegionId = &v
-	return s
-}
-
-func (s *DeletePrometheusRemoteWriteRequest) SetRemoteWriteNames(v string) *DeletePrometheusRemoteWriteRequest {
-	s.RemoteWriteNames = &v
-	return s
-}
-
-type DeletePrometheusRemoteWriteResponseBody struct {
-	// The status code or error code.
-	//
-	// example:
-	//
-	// 200
-	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The number of remote write configuration items that are deleted, or an error message.
-	//
-	// example:
-	//
-	// 1
-	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The message returned.
-	//
-	// example:
-	//
-	// message
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The request ID.
-	//
-	// example:
-	//
-	// 9319A57D-2D9E-472A-B69B-CF3CD16D****
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values: true and false.
-	//
-	// example:
-	//
-	// true
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s DeletePrometheusRemoteWriteResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeletePrometheusRemoteWriteResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DeletePrometheusRemoteWriteResponseBody) SetCode(v int32) *DeletePrometheusRemoteWriteResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *DeletePrometheusRemoteWriteResponseBody) SetData(v string) *DeletePrometheusRemoteWriteResponseBody {
-	s.Data = &v
-	return s
-}
-
-func (s *DeletePrometheusRemoteWriteResponseBody) SetMessage(v string) *DeletePrometheusRemoteWriteResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *DeletePrometheusRemoteWriteResponseBody) SetRequestId(v string) *DeletePrometheusRemoteWriteResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DeletePrometheusRemoteWriteResponseBody) SetSuccess(v bool) *DeletePrometheusRemoteWriteResponseBody {
-	s.Success = &v
-	return s
-}
-
-type DeletePrometheusRemoteWriteResponse struct {
-	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-	Body       *DeletePrometheusRemoteWriteResponseBody `json:"body,omitempty" xml:"body,omitempty"`
-}
-
-func (s DeletePrometheusRemoteWriteResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeletePrometheusRemoteWriteResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DeletePrometheusRemoteWriteResponse) SetHeaders(v map[string]*string) *DeletePrometheusRemoteWriteResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DeletePrometheusRemoteWriteResponse) SetStatusCode(v int32) *DeletePrometheusRemoteWriteResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *DeletePrometheusRemoteWriteResponse) SetBody(v *DeletePrometheusRemoteWriteResponseBody) *DeletePrometheusRemoteWriteResponse {
 	s.Body = v
 	return s
 }
@@ -29739,7 +29407,9 @@ type GetPrometheusInstanceResponseBodyData struct {
 	// example:
 	//
 	// remote-write
-	ClusterType *string `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
+	ClusterType      *string `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
+	DbInstanceStatus *string `json:"DbInstanceStatus,omitempty" xml:"DbInstanceStatus,omitempty"`
+	EnableAuthToken  *string `json:"EnableAuthToken,omitempty" xml:"EnableAuthToken,omitempty"`
 	// The ID of the Grafana workspace.
 	//
 	// example:
@@ -29768,6 +29438,7 @@ type GetPrometheusInstanceResponseBodyData struct {
 	//
 	// PREPAY
 	PaymentType *string `json:"PaymentType,omitempty" xml:"PaymentType,omitempty"`
+	Product     *string `json:"Product,omitempty" xml:"Product,omitempty"`
 	// The public URL for Pushgateway.
 	//
 	// example:
@@ -29839,7 +29510,8 @@ type GetPrometheusInstanceResponseBodyData struct {
 	// example:
 	//
 	// [{"headers":{},"regionId":"cn-hangzhou","sourceType":"AlibabaPrometheus","extras":{},"clusterId":"c39a1048921e04fceb039db2fbb73\\*\\*\\*","sourceName":"arms-luyao-test","dataSource":"","userId":"167275301789\\*\\*\\*"},{"headers":{},"regionId":"cn-beijing","sourceType":"AlibabaPrometheus","extras":{},"clusterId":"c6b6485496d5b400abde22cb47b5\\*\\*\\*\\*","sourceName":"agent-321-test","dataSource":"","userId":"1672753017899\\*\\*\\*"},{"headers":{},"regionId":"cn-zhangjiakou","sourceType":"AlibabaPrometheus","extras":{},"clusterId":"c261a4f3200c446659133f1ade789b15e","sourceName":"zaifeng-cardinality-01","dataSource":"","userId":"167275301789\\*\\*\\*"}]
-	SubClustersJson *string `json:"SubClustersJson,omitempty" xml:"SubClustersJson,omitempty"`
+	SubClustersJson   *string   `json:"SubClustersJson,omitempty" xml:"SubClustersJson,omitempty"`
+	SurpportAuthTypes []*string `json:"SurpportAuthTypes,omitempty" xml:"SurpportAuthTypes,omitempty" type:"Repeated"`
 	// The tags of the instance.
 	Tags []*GetPrometheusInstanceResponseBodyDataTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// The user ID.
@@ -29900,6 +29572,16 @@ func (s *GetPrometheusInstanceResponseBodyData) SetClusterType(v string) *GetPro
 	return s
 }
 
+func (s *GetPrometheusInstanceResponseBodyData) SetDbInstanceStatus(v string) *GetPrometheusInstanceResponseBodyData {
+	s.DbInstanceStatus = &v
+	return s
+}
+
+func (s *GetPrometheusInstanceResponseBodyData) SetEnableAuthToken(v string) *GetPrometheusInstanceResponseBodyData {
+	s.EnableAuthToken = &v
+	return s
+}
+
 func (s *GetPrometheusInstanceResponseBodyData) SetGrafanaInstanceId(v string) *GetPrometheusInstanceResponseBodyData {
 	s.GrafanaInstanceId = &v
 	return s
@@ -29917,6 +29599,11 @@ func (s *GetPrometheusInstanceResponseBodyData) SetHttpApiIntraUrl(v string) *Ge
 
 func (s *GetPrometheusInstanceResponseBodyData) SetPaymentType(v string) *GetPrometheusInstanceResponseBodyData {
 	s.PaymentType = &v
+	return s
+}
+
+func (s *GetPrometheusInstanceResponseBodyData) SetProduct(v string) *GetPrometheusInstanceResponseBodyData {
+	s.Product = &v
 	return s
 }
 
@@ -29977,6 +29664,11 @@ func (s *GetPrometheusInstanceResponseBodyData) SetStorageDuration(v int32) *Get
 
 func (s *GetPrometheusInstanceResponseBodyData) SetSubClustersJson(v string) *GetPrometheusInstanceResponseBodyData {
 	s.SubClustersJson = &v
+	return s
+}
+
+func (s *GetPrometheusInstanceResponseBodyData) SetSurpportAuthTypes(v []*string) *GetPrometheusInstanceResponseBodyData {
+	s.SurpportAuthTypes = v
 	return s
 }
 
@@ -30624,237 +30316,6 @@ func (s *GetPrometheusMonitoringResponse) SetStatusCode(v int32) *GetPrometheusM
 }
 
 func (s *GetPrometheusMonitoringResponse) SetBody(v *GetPrometheusMonitoringResponseBody) *GetPrometheusMonitoringResponse {
-	s.Body = v
-	return s
-}
-
-type GetPrometheusRemoteWriteRequest struct {
-	// The ID of the Prometheus instance. Only a Prometheus instance for Container Service or a Prometheus instance for ECS is supported.
-	//
-	// This parameter is required.
-	//
-	// example:
-	//
-	// cc7a37ee31aea4ed1a059eff8034b\\*\\*\\*\\	- or vpc-\\*\\*\\*
-	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The region ID.
-	//
-	// This parameter is required.
-	//
-	// example:
-	//
-	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The name of the remote write configuration item.
-	//
-	// This parameter is required.
-	//
-	// example:
-	//
-	// rw1
-	RemoteWriteName *string `json:"RemoteWriteName,omitempty" xml:"RemoteWriteName,omitempty"`
-}
-
-func (s GetPrometheusRemoteWriteRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetPrometheusRemoteWriteRequest) GoString() string {
-	return s.String()
-}
-
-func (s *GetPrometheusRemoteWriteRequest) SetClusterId(v string) *GetPrometheusRemoteWriteRequest {
-	s.ClusterId = &v
-	return s
-}
-
-func (s *GetPrometheusRemoteWriteRequest) SetRegionId(v string) *GetPrometheusRemoteWriteRequest {
-	s.RegionId = &v
-	return s
-}
-
-func (s *GetPrometheusRemoteWriteRequest) SetRemoteWriteName(v string) *GetPrometheusRemoteWriteRequest {
-	s.RemoteWriteName = &v
-	return s
-}
-
-type GetPrometheusRemoteWriteResponseBody struct {
-	// The status code. The status code 200 indicates that the request was successful.
-	//
-	// example:
-	//
-	// 200
-	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The details of the remote write configuration item.
-	//
-	// example:
-	//
-	// name: rw1
-	//
-	// url: "http://cn-hangzhou-intranet.arms.aliyuncs.com/prometheus/uid/xx/cn-hangzhou/api/v3/write"
-	//
-	// basic_auth: username: xxx
-	//
-	// password: xxx
-	//
-	// write_relabel_configs: - source_labels: [instance_id]
-	//
-	// separator: ;
-	//
-	// regex: si
-	//
-	// replacement: $1
-	//
-	// action: keep
-	Data *GetPrometheusRemoteWriteResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The message returned.
-	//
-	// example:
-	//
-	// message
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The request ID.
-	//
-	// example:
-	//
-	// 40B10E04-81E8-4643-970D-F1B38F2E****
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
-	//
-	// 	- `true`
-	//
-	// 	- `false`
-	//
-	// example:
-	//
-	// true
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s GetPrometheusRemoteWriteResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetPrometheusRemoteWriteResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *GetPrometheusRemoteWriteResponseBody) SetCode(v int32) *GetPrometheusRemoteWriteResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *GetPrometheusRemoteWriteResponseBody) SetData(v *GetPrometheusRemoteWriteResponseBodyData) *GetPrometheusRemoteWriteResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *GetPrometheusRemoteWriteResponseBody) SetMessage(v string) *GetPrometheusRemoteWriteResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *GetPrometheusRemoteWriteResponseBody) SetRequestId(v string) *GetPrometheusRemoteWriteResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *GetPrometheusRemoteWriteResponseBody) SetSuccess(v bool) *GetPrometheusRemoteWriteResponseBody {
-	s.Success = &v
-	return s
-}
-
-type GetPrometheusRemoteWriteResponseBodyData struct {
-	// The ID of the Prometheus instance.
-	//
-	// example:
-	//
-	// c589a1b8db05c4561aefbb898ca8fb1cf
-	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The name of the remote write configuration item.
-	//
-	// example:
-	//
-	// abc123
-	RemoteWriteName *string `json:"RemoteWriteName,omitempty" xml:"RemoteWriteName,omitempty"`
-	// The details of the remote write configuration item. The value is in the YAML format.
-	//
-	// example:
-	//
-	// remote_write:
-	//
-	//   - name: rw1
-	//
-	//     url: "http://cn-hangzhou-intranet.arms.aliyuncs.com/prometheus/uid/xx/cn-hangzhou/api/v3/write"
-	//
-	//     basic_auth:
-	//
-	//       username: xxx
-	//
-	//       password: xxx
-	//
-	//     write_relabel_configs:
-	//
-	//       - source_labels: [ instance_id ]
-	//
-	//         separator: ;
-	//
-	//         regex: si
-	//
-	//         replacement: $1
-	//
-	//         action: keep
-	RemoteWriteYaml *string `json:"RemoteWriteYaml,omitempty" xml:"RemoteWriteYaml,omitempty"`
-}
-
-func (s GetPrometheusRemoteWriteResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetPrometheusRemoteWriteResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *GetPrometheusRemoteWriteResponseBodyData) SetClusterId(v string) *GetPrometheusRemoteWriteResponseBodyData {
-	s.ClusterId = &v
-	return s
-}
-
-func (s *GetPrometheusRemoteWriteResponseBodyData) SetRemoteWriteName(v string) *GetPrometheusRemoteWriteResponseBodyData {
-	s.RemoteWriteName = &v
-	return s
-}
-
-func (s *GetPrometheusRemoteWriteResponseBodyData) SetRemoteWriteYaml(v string) *GetPrometheusRemoteWriteResponseBodyData {
-	s.RemoteWriteYaml = &v
-	return s
-}
-
-type GetPrometheusRemoteWriteResponse struct {
-	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-	Body       *GetPrometheusRemoteWriteResponseBody `json:"body,omitempty" xml:"body,omitempty"`
-}
-
-func (s GetPrometheusRemoteWriteResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetPrometheusRemoteWriteResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GetPrometheusRemoteWriteResponse) SetHeaders(v map[string]*string) *GetPrometheusRemoteWriteResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *GetPrometheusRemoteWriteResponse) SetStatusCode(v int32) *GetPrometheusRemoteWriteResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *GetPrometheusRemoteWriteResponse) SetBody(v *GetPrometheusRemoteWriteResponseBody) *GetPrometheusRemoteWriteResponse {
 	s.Body = v
 	return s
 }
@@ -33471,6 +32932,12 @@ type GetRumUploadFilesRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The version ID. When this field is not provided, the default response includes all versions.
+	//
+	// example:
+	//
+	// 1.0.0
+	VersionId *string `json:"VersionId,omitempty" xml:"VersionId,omitempty"`
 }
 
 func (s GetRumUploadFilesRequest) String() string {
@@ -33496,6 +32963,11 @@ func (s *GetRumUploadFilesRequest) SetRegionId(v string) *GetRumUploadFilesReque
 	return s
 }
 
+func (s *GetRumUploadFilesRequest) SetVersionId(v string) *GetRumUploadFilesRequest {
+	s.VersionId = &v
+	return s
+}
+
 type GetRumUploadFilesResponseBody struct {
 	// The HTTP status code. The status code 200 indicates that the request was successful. Other status codes indicate that the request failed.
 	//
@@ -33512,6 +32984,10 @@ type GetRumUploadFilesResponseBody struct {
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
 	// The error message returned if the request failed.
+	//
+	// example:
+	//
+	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
 	//
@@ -42321,6 +41797,7 @@ type ListAlertsRequest struct {
 	//
 	// ARMS_APP_MON
 	IntegrationType *string `json:"IntegrationType,omitempty" xml:"IntegrationType,omitempty"`
+	Owner           *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
 	// The number of the page to return.
 	//
 	// This parameter is required.
@@ -42414,6 +41891,11 @@ func (s *ListAlertsRequest) SetEndTime(v string) *ListAlertsRequest {
 
 func (s *ListAlertsRequest) SetIntegrationType(v string) *ListAlertsRequest {
 	s.IntegrationType = &v
+	return s
+}
+
+func (s *ListAlertsRequest) SetOwner(v string) *ListAlertsRequest {
+	s.Owner = &v
 	return s
 }
 
@@ -46042,7 +45524,8 @@ type ListEnvironmentsRequest struct {
 	// example:
 	//
 	// CS_Pro
-	FeePackage *string `json:"FeePackage,omitempty" xml:"FeePackage,omitempty"`
+	FeePackage      *string `json:"FeePackage,omitempty" xml:"FeePackage,omitempty"`
+	FilterRegionIds *string `json:"FilterRegionIds,omitempty" xml:"FilterRegionIds,omitempty"`
 	// The region ID.
 	//
 	// example:
@@ -46084,6 +45567,11 @@ func (s *ListEnvironmentsRequest) SetEnvironmentType(v string) *ListEnvironments
 
 func (s *ListEnvironmentsRequest) SetFeePackage(v string) *ListEnvironmentsRequest {
 	s.FeePackage = &v
+	return s
+}
+
+func (s *ListEnvironmentsRequest) SetFilterRegionIds(v string) *ListEnvironmentsRequest {
+	s.FilterRegionIds = &v
 	return s
 }
 
@@ -46207,7 +45695,8 @@ type ListEnvironmentsShrinkRequest struct {
 	// example:
 	//
 	// CS_Pro
-	FeePackage *string `json:"FeePackage,omitempty" xml:"FeePackage,omitempty"`
+	FeePackage      *string `json:"FeePackage,omitempty" xml:"FeePackage,omitempty"`
+	FilterRegionIds *string `json:"FilterRegionIds,omitempty" xml:"FilterRegionIds,omitempty"`
 	// The region ID.
 	//
 	// example:
@@ -46249,6 +45738,11 @@ func (s *ListEnvironmentsShrinkRequest) SetEnvironmentType(v string) *ListEnviro
 
 func (s *ListEnvironmentsShrinkRequest) SetFeePackage(v string) *ListEnvironmentsShrinkRequest {
 	s.FeePackage = &v
+	return s
+}
+
+func (s *ListEnvironmentsShrinkRequest) SetFilterRegionIds(v string) *ListEnvironmentsShrinkRequest {
+	s.FilterRegionIds = &v
 	return s
 }
 
@@ -50780,222 +50274,6 @@ func (s *ListPrometheusMonitoringResponse) SetBody(v *ListPrometheusMonitoringRe
 	return s
 }
 
-type ListPrometheusRemoteWritesRequest struct {
-	// The ID of the Prometheus instance.
-	//
-	// This parameter is required.
-	//
-	// example:
-	//
-	// cc7a37ee31aea4ed1a059eff8034b\\*\\*\\*\\	- or vpc-\\*\\*\\*\\*
-	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The ID of the region.
-	//
-	// This parameter is required.
-	//
-	// example:
-	//
-	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-}
-
-func (s ListPrometheusRemoteWritesRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListPrometheusRemoteWritesRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ListPrometheusRemoteWritesRequest) SetClusterId(v string) *ListPrometheusRemoteWritesRequest {
-	s.ClusterId = &v
-	return s
-}
-
-func (s *ListPrometheusRemoteWritesRequest) SetRegionId(v string) *ListPrometheusRemoteWritesRequest {
-	s.RegionId = &v
-	return s
-}
-
-type ListPrometheusRemoteWritesResponseBody struct {
-	// The HTTP status code that is returned. The HTTP status code 200 indicates that the call was successful. Otherwise, the call fails.
-	//
-	// example:
-	//
-	// 200
-	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The remote write configuration items returned.
-	//
-	// example:
-	//
-	// [
-	//
-	//   {
-	//
-	//     "name": "TiDBxxx",
-	//
-	//     "yaml": "remote_write:\\\\n- basic_auth: {password: \\"******\\", username: xxx}\\\\n  name: TiDBxxx\\\\n  write_relabel_configs:\\\\n  - regex: si-6e2ca86444db4e55a7c1\\\\n    source_labels: [instance_id]\\\\n    action: keep\\\\n    separator: ;\\\\n    replacement: $1\\\\n  url: http://xxx:8080/prometheus/xxx/ddd/cn-hangzhou/api/v3/write\\\\n"
-	//
-	//   },
-	//
-	//   {
-	//
-	//     "name": "TiDBxxx1",
-	//
-	//     "yaml": "remote_write:\\\\n- basic_auth: {password: \\"******\\", username: xxx}\\\\n  name: TiDBxxx1\\\\n  write_relabel_configs:\\\\n  - regex: si-6e2ca86444db4e55a7c1\\\\n    source_labels: [instance_id]\\\\n    action: keep\\\\n    separator: ;\\\\n    replacement: $1\\\\n  url: http://xxx:8080/prometheus/xxx/ddd/cn-hangzhou/api/v3/write\\\\n"
-	//
-	//   }
-	//
-	// ]
-	Data []*ListPrometheusRemoteWritesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// The message returned.
-	//
-	// example:
-	//
-	// message
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
-	//
-	// example:
-	//
-	// 9319A57D-2D9E-472A-B69B-CF3CD16D****
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the call was successful. Valid values: true and false.
-	//
-	// example:
-	//
-	// true
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s ListPrometheusRemoteWritesResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListPrometheusRemoteWritesResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ListPrometheusRemoteWritesResponseBody) SetCode(v int32) *ListPrometheusRemoteWritesResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *ListPrometheusRemoteWritesResponseBody) SetData(v []*ListPrometheusRemoteWritesResponseBodyData) *ListPrometheusRemoteWritesResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *ListPrometheusRemoteWritesResponseBody) SetMessage(v string) *ListPrometheusRemoteWritesResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *ListPrometheusRemoteWritesResponseBody) SetRequestId(v string) *ListPrometheusRemoteWritesResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *ListPrometheusRemoteWritesResponseBody) SetSuccess(v bool) *ListPrometheusRemoteWritesResponseBody {
-	s.Success = &v
-	return s
-}
-
-type ListPrometheusRemoteWritesResponseBodyData struct {
-	// The ID of the Prometheus instance.
-	//
-	// example:
-	//
-	// c589a1b8db05c4561aefbb898ca8fb1cf
-	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The name of the remote write configuration item.
-	//
-	// example:
-	//
-	// abc123
-	RemoteWriteName *string `json:"RemoteWriteName,omitempty" xml:"RemoteWriteName,omitempty"`
-	// The information about the queried remote write configuration item of the Prometheus instance. The information is displayed in the YAML format.
-	//
-	// example:
-	//
-	// remote_write:
-	//
-	//   - name: rw1
-	//
-	//     url: "http://cn-hangzhou-intranet.arms.aliyuncs.com/prometheus/uid/xx/cn-hangzhou/api/v3/write"
-	//
-	//     basic_auth:
-	//
-	//       username: xxx
-	//
-	//       password: xxx
-	//
-	//     write_relabel_configs:
-	//
-	//       - source_labels: [ instance_id ]
-	//
-	//         separator: ;
-	//
-	//         regex: si
-	//
-	//         replacement: $1
-	//
-	//         action: keep
-	RemoteWriteYaml *string `json:"RemoteWriteYaml,omitempty" xml:"RemoteWriteYaml,omitempty"`
-}
-
-func (s ListPrometheusRemoteWritesResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListPrometheusRemoteWritesResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *ListPrometheusRemoteWritesResponseBodyData) SetClusterId(v string) *ListPrometheusRemoteWritesResponseBodyData {
-	s.ClusterId = &v
-	return s
-}
-
-func (s *ListPrometheusRemoteWritesResponseBodyData) SetRemoteWriteName(v string) *ListPrometheusRemoteWritesResponseBodyData {
-	s.RemoteWriteName = &v
-	return s
-}
-
-func (s *ListPrometheusRemoteWritesResponseBodyData) SetRemoteWriteYaml(v string) *ListPrometheusRemoteWritesResponseBodyData {
-	s.RemoteWriteYaml = &v
-	return s
-}
-
-type ListPrometheusRemoteWritesResponse struct {
-	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-	Body       *ListPrometheusRemoteWritesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
-}
-
-func (s ListPrometheusRemoteWritesResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListPrometheusRemoteWritesResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ListPrometheusRemoteWritesResponse) SetHeaders(v map[string]*string) *ListPrometheusRemoteWritesResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ListPrometheusRemoteWritesResponse) SetStatusCode(v int32) *ListPrometheusRemoteWritesResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *ListPrometheusRemoteWritesResponse) SetBody(v *ListPrometheusRemoteWritesResponseBody) *ListPrometheusRemoteWritesResponse {
-	s.Body = v
-	return s
-}
-
 type ListRetcodeAppsRequest struct {
 	// The region ID.
 	//
@@ -54982,9 +54260,10 @@ type QueryCommercialUsageResponseBody struct {
 	// example:
 	//
 	// 200
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The returned struct.
-	Data *QueryCommercialUsageResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Data           *QueryCommercialUsageResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	HttpStatusCode *int32                                `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
 	// The error message returned if the request failed.
 	//
 	// example:
@@ -55017,13 +54296,18 @@ func (s QueryCommercialUsageResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *QueryCommercialUsageResponseBody) SetCode(v string) *QueryCommercialUsageResponseBody {
+func (s *QueryCommercialUsageResponseBody) SetCode(v int32) *QueryCommercialUsageResponseBody {
 	s.Code = &v
 	return s
 }
 
 func (s *QueryCommercialUsageResponseBody) SetData(v *QueryCommercialUsageResponseBodyData) *QueryCommercialUsageResponseBody {
 	s.Data = v
+	return s
+}
+
+func (s *QueryCommercialUsageResponseBody) SetHttpStatusCode(v int32) *QueryCommercialUsageResponseBody {
+	s.HttpStatusCode = &v
 	return s
 }
 
@@ -66023,190 +65307,6 @@ func (s *UpdatePrometheusMonitoringStatusResponse) SetBody(v *UpdatePrometheusMo
 	return s
 }
 
-type UpdatePrometheusRemoteWriteRequest struct {
-	// The ID of the Prometheus instance.
-	//
-	// This parameter is required.
-	//
-	// example:
-	//
-	// cc7a37ee31aea4ed1a059eff8034b****
-	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The region ID.
-	//
-	// This parameter is required.
-	//
-	// example:
-	//
-	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The name of the remote write configuration item.
-	//
-	// This parameter is required.
-	//
-	// example:
-	//
-	// rw1
-	RemoteWriteName *string `json:"RemoteWriteName,omitempty" xml:"RemoteWriteName,omitempty"`
-	// The remote write configuration. Specify the value in the YAML format.
-	//
-	// This parameter is required.
-	//
-	// example:
-	//
-	// remote_write:
-	//
-	//   - name: rw1
-	//
-	//     url: "http://cn-hangzhou-intranet.arms.aliyuncs.com/prometheus/uid/xx/cn-hangzhou/api/v3/write"
-	//
-	//     basic_auth:
-	//
-	//       username: xxx
-	//
-	//       password: xxx
-	//
-	//     write_relabel_configs:
-	//
-	//       - source_labels: [ instance_id ]
-	//
-	//         separator: ;
-	//
-	//         regex: si
-	//
-	//         replacement: $1
-	//
-	//         action: keep
-	RemoteWriteYaml *string `json:"RemoteWriteYaml,omitempty" xml:"RemoteWriteYaml,omitempty"`
-}
-
-func (s UpdatePrometheusRemoteWriteRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdatePrometheusRemoteWriteRequest) GoString() string {
-	return s.String()
-}
-
-func (s *UpdatePrometheusRemoteWriteRequest) SetClusterId(v string) *UpdatePrometheusRemoteWriteRequest {
-	s.ClusterId = &v
-	return s
-}
-
-func (s *UpdatePrometheusRemoteWriteRequest) SetRegionId(v string) *UpdatePrometheusRemoteWriteRequest {
-	s.RegionId = &v
-	return s
-}
-
-func (s *UpdatePrometheusRemoteWriteRequest) SetRemoteWriteName(v string) *UpdatePrometheusRemoteWriteRequest {
-	s.RemoteWriteName = &v
-	return s
-}
-
-func (s *UpdatePrometheusRemoteWriteRequest) SetRemoteWriteYaml(v string) *UpdatePrometheusRemoteWriteRequest {
-	s.RemoteWriteYaml = &v
-	return s
-}
-
-type UpdatePrometheusRemoteWriteResponseBody struct {
-	// The status code. A value of 200 indicates that the request is successful.
-	//
-	// example:
-	//
-	// 200
-	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The name of the remote write configuration that was modified, or the exception information.
-	//
-	// example:
-	//
-	// rw1
-	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The message returned.
-	//
-	// example:
-	//
-	// message
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
-	//
-	// example:
-	//
-	// 2A0CEDF1-06FE-44AC-8E21-21A5BE65****
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request is successful. Valid values:
-	//
-	// 	- `true`
-	//
-	// 	- `false`
-	//
-	// example:
-	//
-	// true
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s UpdatePrometheusRemoteWriteResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdatePrometheusRemoteWriteResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *UpdatePrometheusRemoteWriteResponseBody) SetCode(v int32) *UpdatePrometheusRemoteWriteResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *UpdatePrometheusRemoteWriteResponseBody) SetData(v string) *UpdatePrometheusRemoteWriteResponseBody {
-	s.Data = &v
-	return s
-}
-
-func (s *UpdatePrometheusRemoteWriteResponseBody) SetMessage(v string) *UpdatePrometheusRemoteWriteResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *UpdatePrometheusRemoteWriteResponseBody) SetRequestId(v string) *UpdatePrometheusRemoteWriteResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *UpdatePrometheusRemoteWriteResponseBody) SetSuccess(v bool) *UpdatePrometheusRemoteWriteResponseBody {
-	s.Success = &v
-	return s
-}
-
-type UpdatePrometheusRemoteWriteResponse struct {
-	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-	Body       *UpdatePrometheusRemoteWriteResponseBody `json:"body,omitempty" xml:"body,omitempty"`
-}
-
-func (s UpdatePrometheusRemoteWriteResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdatePrometheusRemoteWriteResponse) GoString() string {
-	return s.String()
-}
-
-func (s *UpdatePrometheusRemoteWriteResponse) SetHeaders(v map[string]*string) *UpdatePrometheusRemoteWriteResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *UpdatePrometheusRemoteWriteResponse) SetStatusCode(v int32) *UpdatePrometheusRemoteWriteResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *UpdatePrometheusRemoteWriteResponse) SetBody(v *UpdatePrometheusRemoteWriteResponseBody) *UpdatePrometheusRemoteWriteResponse {
-	s.Body = v
-	return s
-}
-
 type UpdateRumAppRequest struct {
 	// Specifies whether to restart the application the next day. Valid values: true and false.
 	//
@@ -69674,76 +68774,6 @@ func (client *Client) AddPrometheusIntegration(request *AddPrometheusIntegration
 	runtime := &util.RuntimeOptions{}
 	_result = &AddPrometheusIntegrationResponse{}
 	_body, _err := client.AddPrometheusIntegrationWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-// Summary:
-//
-// Adds a remote write configuration item to a Prometheus instance.
-//
-// @param request - AddPrometheusRemoteWriteRequest
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return AddPrometheusRemoteWriteResponse
-func (client *Client) AddPrometheusRemoteWriteWithOptions(request *AddPrometheusRemoteWriteRequest, runtime *util.RuntimeOptions) (_result *AddPrometheusRemoteWriteResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
-		query["ClusterId"] = request.ClusterId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
-		query["RegionId"] = request.RegionId
-	}
-
-	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.RemoteWriteYaml)) {
-		body["RemoteWriteYaml"] = request.RemoteWriteYaml
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  openapiutil.ParseToMap(body),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("AddPrometheusRemoteWrite"),
-		Version:     tea.String("2019-08-08"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &AddPrometheusRemoteWriteResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Adds a remote write configuration item to a Prometheus instance.
-//
-// @param request - AddPrometheusRemoteWriteRequest
-//
-// @return AddPrometheusRemoteWriteResponse
-func (client *Client) AddPrometheusRemoteWrite(request *AddPrometheusRemoteWriteRequest) (_result *AddPrometheusRemoteWriteResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &AddPrometheusRemoteWriteResponse{}
-	_body, _err := client.AddPrometheusRemoteWriteWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -74973,74 +74003,6 @@ func (client *Client) DeletePrometheusMonitoring(request *DeletePrometheusMonito
 
 // Summary:
 //
-// Deletes remote write configuration items from a Prometheus instance.
-//
-// @param request - DeletePrometheusRemoteWriteRequest
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return DeletePrometheusRemoteWriteResponse
-func (client *Client) DeletePrometheusRemoteWriteWithOptions(request *DeletePrometheusRemoteWriteRequest, runtime *util.RuntimeOptions) (_result *DeletePrometheusRemoteWriteResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
-		query["ClusterId"] = request.ClusterId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
-		query["RegionId"] = request.RegionId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.RemoteWriteNames)) {
-		query["RemoteWriteNames"] = request.RemoteWriteNames
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DeletePrometheusRemoteWrite"),
-		Version:     tea.String("2019-08-08"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &DeletePrometheusRemoteWriteResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes remote write configuration items from a Prometheus instance.
-//
-// @param request - DeletePrometheusRemoteWriteRequest
-//
-// @return DeletePrometheusRemoteWriteResponse
-func (client *Client) DeletePrometheusRemoteWrite(request *DeletePrometheusRemoteWriteRequest) (_result *DeletePrometheusRemoteWriteResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DeletePrometheusRemoteWriteResponse{}
-	_body, _err := client.DeletePrometheusRemoteWriteWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-// Summary:
-//
 // Deletes a Browser Monitoring task.
 //
 // @param request - DeleteRetcodeAppRequest
@@ -77539,6 +76501,8 @@ func (client *Client) GetIntegrationState(request *GetIntegrationStateRequest) (
 	return _result, _err
 }
 
+// Deprecated: OpenAPI GetManagedPrometheusStatus is deprecated
+//
 // Summary:
 //
 // Queries the installation status of a Prometheus agent in a serverless Kubernetes (ASK) cluster or an Elastic Compute Service (ECS) cluster.
@@ -77548,6 +76512,7 @@ func (client *Client) GetIntegrationState(request *GetIntegrationStateRequest) (
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetManagedPrometheusStatusResponse
+// Deprecated
 func (client *Client) GetManagedPrometheusStatusWithOptions(request *GetManagedPrometheusStatusRequest, runtime *util.RuntimeOptions) (_result *GetManagedPrometheusStatusResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -77597,6 +76562,8 @@ func (client *Client) GetManagedPrometheusStatusWithOptions(request *GetManagedP
 	return _result, _err
 }
 
+// Deprecated: OpenAPI GetManagedPrometheusStatus is deprecated
+//
 // Summary:
 //
 // Queries the installation status of a Prometheus agent in a serverless Kubernetes (ASK) cluster or an Elastic Compute Service (ECS) cluster.
@@ -77604,6 +76571,7 @@ func (client *Client) GetManagedPrometheusStatusWithOptions(request *GetManagedP
 // @param request - GetManagedPrometheusStatusRequest
 //
 // @return GetManagedPrometheusStatusResponse
+// Deprecated
 func (client *Client) GetManagedPrometheusStatus(request *GetManagedPrometheusStatusRequest) (_result *GetManagedPrometheusStatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetManagedPrometheusStatusResponse{}
@@ -78076,74 +77044,6 @@ func (client *Client) GetPrometheusMonitoring(request *GetPrometheusMonitoringRe
 	runtime := &util.RuntimeOptions{}
 	_result = &GetPrometheusMonitoringResponse{}
 	_body, _err := client.GetPrometheusMonitoringWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries a remote write configuration item of a Prometheus instance for Container Service or a Prometheus instance for ECS.
-//
-// @param request - GetPrometheusRemoteWriteRequest
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return GetPrometheusRemoteWriteResponse
-func (client *Client) GetPrometheusRemoteWriteWithOptions(request *GetPrometheusRemoteWriteRequest, runtime *util.RuntimeOptions) (_result *GetPrometheusRemoteWriteResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
-		query["ClusterId"] = request.ClusterId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
-		query["RegionId"] = request.RegionId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.RemoteWriteName)) {
-		query["RemoteWriteName"] = request.RemoteWriteName
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("GetPrometheusRemoteWrite"),
-		Version:     tea.String("2019-08-08"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &GetPrometheusRemoteWriteResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries a remote write configuration item of a Prometheus instance for Container Service or a Prometheus instance for ECS.
-//
-// @param request - GetPrometheusRemoteWriteRequest
-//
-// @return GetPrometheusRemoteWriteResponse
-func (client *Client) GetPrometheusRemoteWrite(request *GetPrometheusRemoteWriteRequest) (_result *GetPrometheusRemoteWriteResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &GetPrometheusRemoteWriteResponse{}
-	_body, _err := client.GetPrometheusRemoteWriteWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -78904,6 +77804,10 @@ func (client *Client) GetRumUploadFilesWithOptions(request *GetRumUploadFilesReq
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VersionId)) {
+		query["VersionId"] = request.VersionId
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -80075,6 +78979,8 @@ func (client *Client) InstallEnvironmentFeature(request *InstallEnvironmentFeatu
 	return _result, _err
 }
 
+// Deprecated: OpenAPI InstallManagedPrometheus is deprecated
+//
 // Summary:
 //
 // Installs a Prometheus agent for serverless Kubernetes (ASK) clusters or Elastic Compute Service (ECS) clusters.
@@ -80088,6 +78994,7 @@ func (client *Client) InstallEnvironmentFeature(request *InstallEnvironmentFeatu
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return InstallManagedPrometheusResponse
+// Deprecated
 func (client *Client) InstallManagedPrometheusWithOptions(request *InstallManagedPrometheusRequest, runtime *util.RuntimeOptions) (_result *InstallManagedPrometheusResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -80157,6 +79064,8 @@ func (client *Client) InstallManagedPrometheusWithOptions(request *InstallManage
 	return _result, _err
 }
 
+// Deprecated: OpenAPI InstallManagedPrometheus is deprecated
+//
 // Summary:
 //
 // Installs a Prometheus agent for serverless Kubernetes (ASK) clusters or Elastic Compute Service (ECS) clusters.
@@ -80168,6 +79077,7 @@ func (client *Client) InstallManagedPrometheusWithOptions(request *InstallManage
 // @param request - InstallManagedPrometheusRequest
 //
 // @return InstallManagedPrometheusResponse
+// Deprecated
 func (client *Client) InstallManagedPrometheus(request *InstallManagedPrometheusRequest) (_result *InstallManagedPrometheusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &InstallManagedPrometheusResponse{}
@@ -80512,6 +79422,10 @@ func (client *Client) ListAlertsWithOptions(request *ListAlertsRequest, runtime 
 
 	if !tea.BoolValue(util.IsUnset(request.IntegrationType)) {
 		query["IntegrationType"] = request.IntegrationType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Owner)) {
+		query["Owner"] = request.Owner
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Page)) {
@@ -81340,6 +80254,10 @@ func (client *Client) ListEnvironmentsWithOptions(tmpReq *ListEnvironmentsReques
 
 	if !tea.BoolValue(util.IsUnset(request.FeePackage)) {
 		query["FeePackage"] = request.FeePackage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FilterRegionIds)) {
+		query["FilterRegionIds"] = request.FilterRegionIds
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
@@ -82330,70 +81248,6 @@ func (client *Client) ListPrometheusMonitoring(request *ListPrometheusMonitoring
 	runtime := &util.RuntimeOptions{}
 	_result = &ListPrometheusMonitoringResponse{}
 	_body, _err := client.ListPrometheusMonitoringWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the remote write configuration items of a Prometheus instance.
-//
-// @param request - ListPrometheusRemoteWritesRequest
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return ListPrometheusRemoteWritesResponse
-func (client *Client) ListPrometheusRemoteWritesWithOptions(request *ListPrometheusRemoteWritesRequest, runtime *util.RuntimeOptions) (_result *ListPrometheusRemoteWritesResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
-		query["ClusterId"] = request.ClusterId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
-		query["RegionId"] = request.RegionId
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("ListPrometheusRemoteWrites"),
-		Version:     tea.String("2019-08-08"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &ListPrometheusRemoteWritesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the remote write configuration items of a Prometheus instance.
-//
-// @param request - ListPrometheusRemoteWritesRequest
-//
-// @return ListPrometheusRemoteWritesResponse
-func (client *Client) ListPrometheusRemoteWrites(request *ListPrometheusRemoteWritesRequest) (_result *ListPrometheusRemoteWritesResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &ListPrometheusRemoteWritesResponse{}
-	_body, _err := client.ListPrometheusRemoteWritesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -85579,6 +84433,8 @@ func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagRe
 	return _result, _err
 }
 
+// Deprecated: OpenAPI UninstallManagedPrometheus is deprecated
+//
 // Summary:
 //
 // Removes a Prometheus instance from a serverless Kubernetes (ASK) cluster or an Elastic Compute Service (ECS) instance.
@@ -85592,6 +84448,7 @@ func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagRe
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return UninstallManagedPrometheusResponse
+// Deprecated
 func (client *Client) UninstallManagedPrometheusWithOptions(request *UninstallManagedPrometheusRequest, runtime *util.RuntimeOptions) (_result *UninstallManagedPrometheusResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -85641,6 +84498,8 @@ func (client *Client) UninstallManagedPrometheusWithOptions(request *UninstallMa
 	return _result, _err
 }
 
+// Deprecated: OpenAPI UninstallManagedPrometheus is deprecated
+//
 // Summary:
 //
 // Removes a Prometheus instance from a serverless Kubernetes (ASK) cluster or an Elastic Compute Service (ECS) instance.
@@ -85652,6 +84511,7 @@ func (client *Client) UninstallManagedPrometheusWithOptions(request *UninstallMa
 // @param request - UninstallManagedPrometheusRequest
 //
 // @return UninstallManagedPrometheusResponse
+// Deprecated
 func (client *Client) UninstallManagedPrometheus(request *UninstallManagedPrometheusRequest) (_result *UninstallManagedPrometheusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UninstallManagedPrometheusResponse{}
@@ -87260,80 +86120,6 @@ func (client *Client) UpdatePrometheusMonitoringStatus(request *UpdatePrometheus
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdatePrometheusMonitoringStatusResponse{}
 	_body, _err := client.UpdatePrometheusMonitoringStatusWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-// Summary:
-//
-// Modifies a remote write configuration item of a Prometheus instance for Container Service or a Prometheus instance for ECS.
-//
-// @param request - UpdatePrometheusRemoteWriteRequest
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return UpdatePrometheusRemoteWriteResponse
-func (client *Client) UpdatePrometheusRemoteWriteWithOptions(request *UpdatePrometheusRemoteWriteRequest, runtime *util.RuntimeOptions) (_result *UpdatePrometheusRemoteWriteResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
-		query["ClusterId"] = request.ClusterId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
-		query["RegionId"] = request.RegionId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.RemoteWriteName)) {
-		query["RemoteWriteName"] = request.RemoteWriteName
-	}
-
-	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.RemoteWriteYaml)) {
-		body["RemoteWriteYaml"] = request.RemoteWriteYaml
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  openapiutil.ParseToMap(body),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("UpdatePrometheusRemoteWrite"),
-		Version:     tea.String("2019-08-08"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &UpdatePrometheusRemoteWriteResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Modifies a remote write configuration item of a Prometheus instance for Container Service or a Prometheus instance for ECS.
-//
-// @param request - UpdatePrometheusRemoteWriteRequest
-//
-// @return UpdatePrometheusRemoteWriteResponse
-func (client *Client) UpdatePrometheusRemoteWrite(request *UpdatePrometheusRemoteWriteRequest) (_result *UpdatePrometheusRemoteWriteResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &UpdatePrometheusRemoteWriteResponse{}
-	_body, _err := client.UpdatePrometheusRemoteWriteWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
