@@ -2450,7 +2450,7 @@ type CreateEciScalingConfigurationRequest struct {
 	//
 	// nginx-test
 	ContainerGroupName *string `json:"ContainerGroupName,omitempty" xml:"ContainerGroupName,omitempty"`
-	// The containers in the elastic container instance.
+	// The containers per elastic container instance.
 	Containers []*CreateEciScalingConfigurationRequestContainers `json:"Containers,omitempty" xml:"Containers,omitempty" type:"Repeated"`
 	// Specifies whether to enable the cost optimization feature. Valid values:
 	//
@@ -2580,7 +2580,7 @@ type CreateEciScalingConfigurationRequest struct {
 	//
 	// test
 	HostName *string `json:"HostName,omitempty" xml:"HostName,omitempty"`
-	// Information about the image repository.
+	// The image repositories.
 	ImageRegistryCredentials []*CreateEciScalingConfigurationRequestImageRegistryCredentials `json:"ImageRegistryCredentials,omitempty" xml:"ImageRegistryCredentials,omitempty" type:"Repeated"`
 	// The ID of the image cache.
 	//
@@ -2693,13 +2693,13 @@ type CreateEciScalingConfigurationRequest struct {
 	//
 	// 0.025
 	SpotPriceLimit *float32 `json:"SpotPriceLimit,omitempty" xml:"SpotPriceLimit,omitempty"`
-	// The bidding policy for the elastic container instance. Valid values:
+	// The instance bidding policy. Valid values:
 	//
-	// 	- NoSpot: The instance is a pay-as-you-go instance.
+	// 	- NoSpot: The instances are created as pay-as-you-go instances.
 	//
-	// 	- SpotWithPriceLimit: The instance is a preemptible instance with a user-defined maximum hourly price.
+	// 	- SpotWithPriceLimit: The instances are preemptible instances for which you can specify the maximum hourly price.
 	//
-	// 	- SpotAsPriceGo: The instance is a preemptible instance for which the market price at the time of purchase is used as the bid price.
+	// 	- SpotAsPriceGo: The instances are created as preemptible instances for which the market price at the time of purchase is used as the bid price.
 	//
 	// Default value: NoSpot.
 	//
@@ -3033,9 +3033,9 @@ type CreateEciScalingConfigurationRequestContainers struct {
 	SecurityContext *CreateEciScalingConfigurationRequestContainersSecurityContext `json:"SecurityContext,omitempty" xml:"SecurityContext,omitempty" type:"Struct"`
 	// The container startup arguments. You can specify up to 10 arguments.
 	Args []*string `json:"Args,omitempty" xml:"Args,omitempty" type:"Repeated"`
-	// The commands that you can run in the container when you use the CLI to perform liveness probes.
+	// The commands that you want to run by using the CLI for liveness probing within the container.
 	Commands []*string `json:"Commands,omitempty" xml:"Commands,omitempty" type:"Repeated"`
-	// The number of vCPUs that you want to allocate to the container.
+	// The number of vCPUs per container.
 	//
 	// example:
 	//
@@ -3043,13 +3043,13 @@ type CreateEciScalingConfigurationRequestContainers struct {
 	Cpu *float32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
 	// The environment variables.
 	EnvironmentVars []*CreateEciScalingConfigurationRequestContainersEnvironmentVars `json:"EnvironmentVars,omitempty" xml:"EnvironmentVars,omitempty" type:"Repeated"`
-	// The number of GPUs that you want to allocate to the container.
+	// The number of GPUs per container.
 	//
 	// example:
 	//
 	// 1
 	Gpu *int32 `json:"Gpu,omitempty" xml:"Gpu,omitempty"`
-	// The image of the container.
+	// The container image.
 	//
 	// example:
 	//
@@ -3066,58 +3066,92 @@ type CreateEciScalingConfigurationRequestContainers struct {
 	// example:
 	//
 	// Always
-	ImagePullPolicy                *string   `json:"ImagePullPolicy,omitempty" xml:"ImagePullPolicy,omitempty"`
+	ImagePullPolicy *string `json:"ImagePullPolicy,omitempty" xml:"ImagePullPolicy,omitempty"`
+	// The commands that you want to run by using the CLI to configure the postStart callback function within the container.
 	LifecyclePostStartHandlerExecs []*string `json:"LifecyclePostStartHandlerExecs,omitempty" xml:"LifecyclePostStartHandlerExecs,omitempty" type:"Repeated"`
+	// The IP address of the host to which you want to send HTTP GET requests to configure the postStart callback function.
+	//
 	// example:
 	//
 	// 10.0.XX.XX
 	LifecyclePostStartHandlerHttpGetHost *string `json:"LifecyclePostStartHandlerHttpGetHost,omitempty" xml:"LifecyclePostStartHandlerHttpGetHost,omitempty"`
+	// The path to which you want to send HTTP GET requests to configure the postStart callback function.
+	//
 	// example:
 	//
 	// /healthyz
 	LifecyclePostStartHandlerHttpGetPath *string `json:"LifecyclePostStartHandlerHttpGetPath,omitempty" xml:"LifecyclePostStartHandlerHttpGetPath,omitempty"`
+	// The port over which you want to send HTTP GET requests to configure the postStart callback function.
+	//
 	// example:
 	//
 	// 5050
 	LifecyclePostStartHandlerHttpGetPort *int32 `json:"LifecyclePostStartHandlerHttpGetPort,omitempty" xml:"LifecyclePostStartHandlerHttpGetPort,omitempty"`
+	// The protocol type of HTTP GET requests that you want to send to configure the postStart callback function. Valid values:
+	//
+	// 	- HTTP
+	//
+	// 	- HTTPS
+	//
 	// example:
 	//
 	// HTTPS
 	LifecyclePostStartHandlerHttpGetScheme *string `json:"LifecyclePostStartHandlerHttpGetScheme,omitempty" xml:"LifecyclePostStartHandlerHttpGetScheme,omitempty"`
+	// The IP address of the host detected by the TCP sockets that you want to use to configure the postStart callback function.
+	//
 	// example:
 	//
 	// 10.0.XX.XX
 	LifecyclePostStartHandlerTcpSocketHost *string `json:"LifecyclePostStartHandlerTcpSocketHost,omitempty" xml:"LifecyclePostStartHandlerTcpSocketHost,omitempty"`
+	// The port detected by the TCP sockets that you want to use to configure the postStart callback function.
+	//
 	// example:
 	//
 	// 80
-	LifecyclePostStartHandlerTcpSocketPort *int32    `json:"LifecyclePostStartHandlerTcpSocketPort,omitempty" xml:"LifecyclePostStartHandlerTcpSocketPort,omitempty"`
-	LifecyclePreStopHandlerExecs           []*string `json:"LifecyclePreStopHandlerExecs,omitempty" xml:"LifecyclePreStopHandlerExecs,omitempty" type:"Repeated"`
+	LifecyclePostStartHandlerTcpSocketPort *int32 `json:"LifecyclePostStartHandlerTcpSocketPort,omitempty" xml:"LifecyclePostStartHandlerTcpSocketPort,omitempty"`
+	// The commands that you want to run by using the CLI to configure the preStop callback function within the container.
+	LifecyclePreStopHandlerExecs []*string `json:"LifecyclePreStopHandlerExecs,omitempty" xml:"LifecyclePreStopHandlerExecs,omitempty" type:"Repeated"`
+	// The IP address of the host to which you want to send HTTP GET requests to configure the preStop callback function.
+	//
 	// example:
 	//
 	// 10.0.XX.XX
 	LifecyclePreStopHandlerHttpGetHost *string `json:"LifecyclePreStopHandlerHttpGetHost,omitempty" xml:"LifecyclePreStopHandlerHttpGetHost,omitempty"`
+	// The path to which you want to send HTTP GET requests to configure the preStop callback function.
+	//
 	// example:
 	//
 	// /healthyz
 	LifecyclePreStopHandlerHttpGetPath *string `json:"LifecyclePreStopHandlerHttpGetPath,omitempty" xml:"LifecyclePreStopHandlerHttpGetPath,omitempty"`
+	// The port over which you want to send HTTP GET requests to configure the preStop callback function.
+	//
 	// example:
 	//
 	// 88
 	LifecyclePreStopHandlerHttpGetPort *int32 `json:"LifecyclePreStopHandlerHttpGetPort,omitempty" xml:"LifecyclePreStopHandlerHttpGetPort,omitempty"`
+	// The protocol type of the HTTP GET requests that you want to send to configure the preStop callback function. Valid values:
+	//
+	// 	- HTTP
+	//
+	// 	- HTTPS
+	//
 	// example:
 	//
 	// HTTP
 	LifecyclePreStopHandlerHttpGetScheme *string `json:"LifecyclePreStopHandlerHttpGetScheme,omitempty" xml:"LifecyclePreStopHandlerHttpGetScheme,omitempty"`
+	// The IP address of the host detected by the TCP sockets that you want to use to configure the preStop callback function.
+	//
 	// example:
 	//
 	// 10.0.XX.XX
 	LifecyclePreStopHandlerTcpSocketHost *string `json:"LifecyclePreStopHandlerTcpSocketHost,omitempty" xml:"LifecyclePreStopHandlerTcpSocketHost,omitempty"`
+	// The port detected by the TCP sockets that you want to use to configure the preStop callback function.
+	//
 	// example:
 	//
 	// 90
 	LifecyclePreStopHandlerTcpSocketPort *int32 `json:"LifecyclePreStopHandlerTcpSocketPort,omitempty" xml:"LifecyclePreStopHandlerTcpSocketPort,omitempty"`
-	// The memory size that you want to allocate to the container. Unit: GiB.
+	// The memory size per container. Unit: GiB.
 	//
 	// example:
 	//
@@ -3131,7 +3165,7 @@ type CreateEciScalingConfigurationRequestContainers struct {
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The ports.
 	Ports []*CreateEciScalingConfigurationRequestContainersPorts `json:"Ports,omitempty" xml:"Ports,omitempty" type:"Repeated"`
-	// Specifies whether the container allocates buffer resources to standard input streams when the container is running. If you do not specify this parameter, an end-of-file (EOF) error may occur when standard input streams in the container are read.
+	// Specifies whether the container allocates buffer resources to standard input streams during its active runtime. If you do not specify this parameter, an end-of-file (EOF) error occurs when standard input streams in the container are read.
 	//
 	// Default value: false.
 	//
@@ -3139,15 +3173,15 @@ type CreateEciScalingConfigurationRequestContainers struct {
 	//
 	// false
 	Stdin *bool `json:"Stdin,omitempty" xml:"Stdin,omitempty"`
-	// Specifies whether to remain standard input streams connected during multiple sessions if StdinOnce is set to true.
+	// Specifies whether standard input streams remain connected during multiple sessions when StdinOnce is set to true.
 	//
-	// If StdinOnce is set to true, standard input streams are connected after the container is started, and remain idle until a client is connected to receive data. After the client is disconnected, streams are also disconnected, and remain disconnected until the container is restarted.
+	// If StdinOnce is set to true, standard input streams are connected after the container is started, and remain idle until a client is connected to receive data. After the client is disconnected, streams are also disconnected and remain disconnected until the container is restarted.
 	//
 	// example:
 	//
 	// false
 	StdinOnce *bool `json:"StdinOnce,omitempty" xml:"StdinOnce,omitempty"`
-	// Specifies whether to enable interaction. Valid values:
+	// Specifies whether to enable the Interaction feature. Valid values:
 	//
 	// 	- true
 	//
@@ -3636,7 +3670,7 @@ type CreateEciScalingConfigurationRequestContainersEnvironmentVars struct {
 	//
 	// fieldPath
 	FieldRefFieldPath *string `json:"FieldRefFieldPath,omitempty" xml:"FieldRefFieldPath,omitempty"`
-	// The name of the environment variable. The name can be 1 to 128 characters in length and can contain underscores (_) and digits. The name cannot start with a digit. Specify the value in the [0-9a-zA-Z] format.
+	// The name of the environment variable. The name can be 1 to 128 characters in length and can contain letters, underscores (_), and digits. The name cannot start with a digit. Specify the value in the [0-9a-zA-Z] format.
 	//
 	// example:
 	//
@@ -3711,7 +3745,7 @@ func (s *CreateEciScalingConfigurationRequestContainersPorts) SetProtocol(v stri
 }
 
 type CreateEciScalingConfigurationRequestContainersVolumeMounts struct {
-	// The directory to which the container mounts the volume.
+	// The directory in which the container mounts the volume.
 	//
 	// >  Data under this directory is overwritten by data on the volume. Specify this parameter with caution.
 	//
@@ -3719,13 +3753,13 @@ type CreateEciScalingConfigurationRequestContainersVolumeMounts struct {
 	//
 	// /pod/data
 	MountPath *string `json:"MountPath,omitempty" xml:"MountPath,omitempty"`
-	// The mount propagation setting of the volume. Mount propagation allows volumes that are mounted on one container to be shared with other containers in the same pod, or even with other pods on the same node. Valid values:
+	// The mount propagation settings of the volume. Mount propagation enables volumes mounted on one container to be shared among other containers within the same pod or across distinct pods residing on the same node. Valid values:
 	//
-	// 	- None: The volume mount does not receive subsequent mounts that are performed on the volume or the subdirectories of the volume.
+	// 	- None: Subsequent mounts executed either on the volume itself or its subdirectories do not propagate to the volume.
 	//
-	// 	- HostToContainer: The volume mount receives all subsequent mounts that are performed on the volume or the subdirectories of the volume.
+	// 	- HostToCotainer: Subsequent mounts executed either on the volume itself or its subdirectories propagate to the volume.
 	//
-	// 	- Bidirectional: The volume mount behaves the same as the HostToContainer mount. The volume mount receives subsequent mounts that are performed on the volume or the subdirectories of the volume. In addition, all volume mounts that are performed on the container are propagated back to the host and all containers of all pods that use the same volume.
+	// 	- Bidirectional: This value is similar to HostToCotainer. Subsequent mounts executed either on the volume itself or its subdirectories propagate to the volume. In addition, any volume mounts executed on the container not only propagate back to the underlying host but also to all containers across every pod that uses the same volume.
 	//
 	// Default value: None.
 	//
@@ -3751,7 +3785,7 @@ type CreateEciScalingConfigurationRequestContainersVolumeMounts struct {
 	//
 	// false
 	ReadOnly *bool `json:"ReadOnly,omitempty" xml:"ReadOnly,omitempty"`
-	// The subdirectory of the volume.
+	// The volume subdirectory.
 	//
 	// example:
 	//
@@ -3855,7 +3889,7 @@ func (s *CreateEciScalingConfigurationRequestHostAliases) SetIp(v string) *Creat
 }
 
 type CreateEciScalingConfigurationRequestImageRegistryCredentials struct {
-	// The password that is used to access the image repository.
+	// The password of the image repository.
 	//
 	// example:
 	//
@@ -3867,7 +3901,7 @@ type CreateEciScalingConfigurationRequestImageRegistryCredentials struct {
 	//
 	// registry-vpc.cn-shanghai.aliyuncs.com
 	Server *string `json:"Server,omitempty" xml:"Server,omitempty"`
-	// The username that is used to access the image repository.
+	// The username of the image repository.
 	//
 	// example:
 	//
@@ -4887,6 +4921,7 @@ type CreateNotificationConfigurationRequest struct {
 	//
 	// asg-bp1igpak5ft1flyp****
 	ScalingGroupId *string `json:"ScalingGroupId,omitempty" xml:"ScalingGroupId,omitempty"`
+	TimeZone       *string `json:"TimeZone,omitempty" xml:"TimeZone,omitempty"`
 }
 
 func (s CreateNotificationConfigurationRequest) String() string {
@@ -4924,6 +4959,11 @@ func (s *CreateNotificationConfigurationRequest) SetResourceOwnerAccount(v strin
 
 func (s *CreateNotificationConfigurationRequest) SetScalingGroupId(v string) *CreateNotificationConfigurationRequest {
 	s.ScalingGroupId = &v
+	return s
+}
+
+func (s *CreateNotificationConfigurationRequest) SetTimeZone(v string) *CreateNotificationConfigurationRequest {
+	s.TimeZone = &v
 	return s
 }
 
@@ -5106,7 +5146,7 @@ type CreateScalingConfigurationRequest struct {
 	//
 	// instance****
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// Details of the intelligent configuration settings that determine the range of instance types that meet the specified criteria.
+	// The information about the intelligent configuration settings, which determine the available instance types.
 	InstancePatternInfos []*CreateScalingConfigurationRequestInstancePatternInfos `json:"InstancePatternInfos,omitempty" xml:"InstancePatternInfos,omitempty" type:"Repeated"`
 	// The instance type of the ECS instance. For more information, see the [Instance families](https://help.aliyun.com/document_detail/25378.html) topic.
 	//
@@ -6189,17 +6229,17 @@ func (s *CreateScalingConfigurationRequestDataDisks) SetSnapshotId(v string) *Cr
 }
 
 type CreateScalingConfigurationRequestInstancePatternInfos struct {
-	// The architectures of the instance types. Valid values:
+	// The architecture types of the instance types. Valid values:
 	//
-	// 	- X86: x86 architecture.
+	// 	- X86: x86
 	//
-	// 	- Heterogeneous: heterogeneous architecture, such as GPUs and FPGAs.
+	// 	- Heterogeneous: heterogeneous computing, such as GPU-accelerated or FPGA-accelerated
 	//
-	// 	- BareMetal: ECS Bare Metal Instance architecture.
+	// 	- BareMetal: ECS Bare Metal Instance
 	//
-	// 	- Arm: ARM architecture.
+	// 	- Arm: Arm
 	//
-	// 	- SuperComputeCluster: Super Computing Cluster architecture.
+	// 	- SuperComputeCluster: Super Computing Cluster
 	//
 	// By default, all values are included.
 	Architectures []*string `json:"Architectures,omitempty" xml:"Architectures,omitempty" type:"Repeated"`
@@ -6211,28 +6251,28 @@ type CreateScalingConfigurationRequestInstancePatternInfos struct {
 	//
 	// 	- Required: includes only burstable instance types.
 	//
-	// Default value: Include
+	// Default value: Include.
 	//
 	// example:
 	//
 	// Include
 	BurstablePerformance *string `json:"BurstablePerformance,omitempty" xml:"BurstablePerformance,omitempty"`
-	// The number of vCPUs that you want to allocate to an instance type in intelligent configuration mode. This parameter is used to filter the available instance types that meet the specified criteria. For more information, see the "[Instance families](https://help.aliyun.com/document_detail/25378.html)" topic.
+	// The number of vCPUs per instance type in intelligent configuration mode. You can use this parameter to filter the available instance types that meet the specified criteria. For more information, see [Overview of instance families](https://help.aliyun.com/document_detail/25378.html).
 	//
-	// Take note of the following items when you specify Cores:
+	// Before you specify this parameter, take note of the following items:
 	//
-	// 	- InstancePatternInfos is available only for scaling groups that reside in VPCs.
+	// 	- InstancePatternInfos is applicable only to the scaling groups that reside in virtual private clouds (VPCs).
 	//
-	// 	- If you specify InstancePatternInfos, you must specify Cores and Memory.
+	// 	- If you specify InstancePatternInfos, you must also specify InstancePatternInfos.Cores and InstancePatternInfos.Memory.
 	//
-	// 	- If you specify an instance type by using InstanceType or InstanceTypes, Auto Scaling preferentially uses the instance type that is specified by InstanceType or InstanceTypes for scale-outs. If the specified instance type does not have sufficient inventory, Auto Scaling creates instances by using the lowest-priced instance type that is specified by InstancePatternInfos.
+	// 	- If you specify InstanceType or InstanceTypes, Auto Scaling preferentially uses the instance type specified by InstanceType or InstanceTypes to create instances during scale-out events. If the specified instance type does not have sufficient inventory, Auto Scaling uses the lowest-priced instance type specified by InstancePatternInfos to create instances during scale-out events.
 	//
 	// example:
 	//
 	// 2
 	Cores            *int32    `json:"Cores,omitempty" xml:"Cores,omitempty"`
 	CpuArchitectures []*string `json:"CpuArchitectures,omitempty" xml:"CpuArchitectures,omitempty" type:"Repeated"`
-	// The instance types that you want to exclude. You can use wildcard characters, such as asterisks (\\*), to exclude an instance type or an instance family. Examples:
+	// The instance types that you want to exclude. You can use wildcard characters, such as an asterisk (\\*), to exclude an instance type or an instance family. Examples:
 	//
 	// 	- ecs.c6.large: excludes the ecs.c6.large instance type.
 	//
@@ -6240,45 +6280,78 @@ type CreateScalingConfigurationRequestInstancePatternInfos struct {
 	ExcludedInstanceTypes []*string `json:"ExcludedInstanceTypes,omitempty" xml:"ExcludedInstanceTypes,omitempty" type:"Repeated"`
 	GpuSpecs              []*string `json:"GpuSpecs,omitempty" xml:"GpuSpecs,omitempty" type:"Repeated"`
 	InstanceCategories    []*string `json:"InstanceCategories,omitempty" xml:"InstanceCategories,omitempty" type:"Repeated"`
-	// The level of the instance type, which is used to filter instance types that meet the specified criteria. This parameter takes effect only if you set `CostOptimization` to true. Valid values:
+	// The level of the instance family. You can specify this parameter to specify the available instance types. This parameter takes effect only if you set `CostOptimization` to true. Valid values:
 	//
-	// 	- EntryLevel: entry level (shared instance type). Instance types of this level are the most cost-effective but may not provide stable computing performance in a consistent manner. Instance types of this level are suitable for business scenarios in which the CPU utilization is low. For more information, see the "[Shared instance families](https://help.aliyun.com/document_detail/108489.html)" topic.
+	// 	- EntryLevel: entry level (shared instance type). Instance types of this level are the most cost-effective but may not provide stable computing performance. Instance types of this level are suitable for scenarios in which the CPU utilization is low. For more information, see [Shared instance families](https://help.aliyun.com/document_detail/108489.html).
 	//
-	// 	- EnterpriseLevel: enterprise level. Instance types of this level provide stable performance and dedicated resources and are suitable for business scenarios that require high stability. For more information, see the "[Instance families](https://help.aliyun.com/document_detail/25378.html)" topic.
+	// 	- EnterpriseLevel: enterprise level. Instance types of this level provide stable performance and dedicated resources, and are suitable for business scenarios that require high stability. For more information, see [Overview of instance families](https://help.aliyun.com/document_detail/25378.html).
 	//
-	// 	- CreditEntryLevel: credit entry level. This value is valid only for burstable instances. CPU credits are used to ensure computing performance. Instance types of this level are suitable for business scenarios in which the CPU utilization is low but may fluctuate in specific cases. For more information, see the "[Overview](https://help.aliyun.com/document_detail/59977.html)" topic of burstable instances.
+	// 	- CreditEntryLevel: credit-based entry level (burstable instance types). CPU credits are used to ensure computing performance. Instance types of this level are suitable for scenarios in which the CPU utilization is low but may fluctuate in specific cases. For more information, see [Overview of burstable instances](https://help.aliyun.com/document_detail/59977.html).
 	//
 	// example:
 	//
 	// EnterpriseLevel
 	InstanceFamilyLevel  *string   `json:"InstanceFamilyLevel,omitempty" xml:"InstanceFamilyLevel,omitempty"`
 	InstanceTypeFamilies []*string `json:"InstanceTypeFamilies,omitempty" xml:"InstanceTypeFamilies,omitempty" type:"Repeated"`
-	// The maximum hourly price of a pay-as-you-go or preemptible instance in intelligent configuration mode. This parameter is used to filter the available instance types that meet the specified criteria.
+	// The maximum hourly price of pay-as-you-go or preemptible instances in intelligent configuration mode. You can specify this parameter to filter the available instance types.
 	//
-	// > If you set SpotStrategy to SpotWithPriceLimit, you must specify MaxPrice. In other cases, MaxPrice is optional.
+	// >  If you set SpotStrategy to SpotWithPriceLimit, you must specify this parameter. In other cases, this parameter is optional.
 	//
 	// example:
 	//
 	// 2
-	MaxPrice            *float32 `json:"MaxPrice,omitempty" xml:"MaxPrice,omitempty"`
-	MaximumCpuCoreCount *int32   `json:"MaximumCpuCoreCount,omitempty" xml:"MaximumCpuCoreCount,omitempty"`
-	MaximumGpuAmount    *int32   `json:"MaximumGpuAmount,omitempty" xml:"MaximumGpuAmount,omitempty"`
-	MaximumMemorySize   *float32 `json:"MaximumMemorySize,omitempty" xml:"MaximumMemorySize,omitempty"`
-	// The memory size that you want to allocate to an instance type in intelligent configuration mode. Unit: GiB. This parameter is used to filter the available instance types that meet the specified criteria.
+	MaxPrice *float32 `json:"MaxPrice,omitempty" xml:"MaxPrice,omitempty"`
+	// example:
+	//
+	// 4
+	MaximumCpuCoreCount *int32 `json:"MaximumCpuCoreCount,omitempty" xml:"MaximumCpuCoreCount,omitempty"`
+	// example:
+	//
+	// 2
+	MaximumGpuAmount *int32 `json:"MaximumGpuAmount,omitempty" xml:"MaximumGpuAmount,omitempty"`
+	// example:
+	//
+	// 4
+	MaximumMemorySize *float32 `json:"MaximumMemorySize,omitempty" xml:"MaximumMemorySize,omitempty"`
+	// The memory size per instance type in intelligent configuration mode. Unit: GiB. You can specify this parameter to filter the available instance types.
 	//
 	// example:
 	//
 	// 4
-	Memory                             *float32  `json:"Memory,omitempty" xml:"Memory,omitempty"`
-	MinimumBaselineCredit              *int32    `json:"MinimumBaselineCredit,omitempty" xml:"MinimumBaselineCredit,omitempty"`
-	MinimumCpuCoreCount                *int32    `json:"MinimumCpuCoreCount,omitempty" xml:"MinimumCpuCoreCount,omitempty"`
-	MinimumEniIpv6AddressQuantity      *int32    `json:"MinimumEniIpv6AddressQuantity,omitempty" xml:"MinimumEniIpv6AddressQuantity,omitempty"`
-	MinimumEniPrivateIpAddressQuantity *int32    `json:"MinimumEniPrivateIpAddressQuantity,omitempty" xml:"MinimumEniPrivateIpAddressQuantity,omitempty"`
-	MinimumEniQuantity                 *int32    `json:"MinimumEniQuantity,omitempty" xml:"MinimumEniQuantity,omitempty"`
-	MinimumGpuAmount                   *int32    `json:"MinimumGpuAmount,omitempty" xml:"MinimumGpuAmount,omitempty"`
-	MinimumInitialCredit               *int32    `json:"MinimumInitialCredit,omitempty" xml:"MinimumInitialCredit,omitempty"`
-	MinimumMemorySize                  *float32  `json:"MinimumMemorySize,omitempty" xml:"MinimumMemorySize,omitempty"`
-	PhysicalProcessorModels            []*string `json:"PhysicalProcessorModels,omitempty" xml:"PhysicalProcessorModels,omitempty" type:"Repeated"`
+	Memory *float32 `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	// example:
+	//
+	// 12
+	MinimumBaselineCredit *int32 `json:"MinimumBaselineCredit,omitempty" xml:"MinimumBaselineCredit,omitempty"`
+	// example:
+	//
+	// 2
+	MinimumCpuCoreCount *int32 `json:"MinimumCpuCoreCount,omitempty" xml:"MinimumCpuCoreCount,omitempty"`
+	// example:
+	//
+	// 1
+	MinimumEniIpv6AddressQuantity *int32 `json:"MinimumEniIpv6AddressQuantity,omitempty" xml:"MinimumEniIpv6AddressQuantity,omitempty"`
+	// example:
+	//
+	// 2
+	MinimumEniPrivateIpAddressQuantity *int32 `json:"MinimumEniPrivateIpAddressQuantity,omitempty" xml:"MinimumEniPrivateIpAddressQuantity,omitempty"`
+	// example:
+	//
+	// 2
+	MinimumEniQuantity *int32 `json:"MinimumEniQuantity,omitempty" xml:"MinimumEniQuantity,omitempty"`
+	// example:
+	//
+	// 2
+	MinimumGpuAmount *int32 `json:"MinimumGpuAmount,omitempty" xml:"MinimumGpuAmount,omitempty"`
+	// example:
+	//
+	// 12
+	MinimumInitialCredit *int32 `json:"MinimumInitialCredit,omitempty" xml:"MinimumInitialCredit,omitempty"`
+	// example:
+	//
+	// 4
+	MinimumMemorySize       *float32  `json:"MinimumMemorySize,omitempty" xml:"MinimumMemorySize,omitempty"`
+	PhysicalProcessorModels []*string `json:"PhysicalProcessorModels,omitempty" xml:"PhysicalProcessorModels,omitempty" type:"Repeated"`
 }
 
 func (s CreateScalingConfigurationRequestInstancePatternInfos) String() string {
@@ -6666,7 +6739,7 @@ type CreateScalingConfigurationShrinkRequest struct {
 	//
 	// instance****
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// Details of the intelligent configuration settings that determine the range of instance types that meet the specified criteria.
+	// The information about the intelligent configuration settings, which determine the available instance types.
 	InstancePatternInfos []*CreateScalingConfigurationShrinkRequestInstancePatternInfos `json:"InstancePatternInfos,omitempty" xml:"InstancePatternInfos,omitempty" type:"Repeated"`
 	// The instance type of the ECS instance. For more information, see the [Instance families](https://help.aliyun.com/document_detail/25378.html) topic.
 	//
@@ -7749,17 +7822,17 @@ func (s *CreateScalingConfigurationShrinkRequestDataDisks) SetSnapshotId(v strin
 }
 
 type CreateScalingConfigurationShrinkRequestInstancePatternInfos struct {
-	// The architectures of the instance types. Valid values:
+	// The architecture types of the instance types. Valid values:
 	//
-	// 	- X86: x86 architecture.
+	// 	- X86: x86
 	//
-	// 	- Heterogeneous: heterogeneous architecture, such as GPUs and FPGAs.
+	// 	- Heterogeneous: heterogeneous computing, such as GPU-accelerated or FPGA-accelerated
 	//
-	// 	- BareMetal: ECS Bare Metal Instance architecture.
+	// 	- BareMetal: ECS Bare Metal Instance
 	//
-	// 	- Arm: ARM architecture.
+	// 	- Arm: Arm
 	//
-	// 	- SuperComputeCluster: Super Computing Cluster architecture.
+	// 	- SuperComputeCluster: Super Computing Cluster
 	//
 	// By default, all values are included.
 	Architectures []*string `json:"Architectures,omitempty" xml:"Architectures,omitempty" type:"Repeated"`
@@ -7771,28 +7844,28 @@ type CreateScalingConfigurationShrinkRequestInstancePatternInfos struct {
 	//
 	// 	- Required: includes only burstable instance types.
 	//
-	// Default value: Include
+	// Default value: Include.
 	//
 	// example:
 	//
 	// Include
 	BurstablePerformance *string `json:"BurstablePerformance,omitempty" xml:"BurstablePerformance,omitempty"`
-	// The number of vCPUs that you want to allocate to an instance type in intelligent configuration mode. This parameter is used to filter the available instance types that meet the specified criteria. For more information, see the "[Instance families](https://help.aliyun.com/document_detail/25378.html)" topic.
+	// The number of vCPUs per instance type in intelligent configuration mode. You can use this parameter to filter the available instance types that meet the specified criteria. For more information, see [Overview of instance families](https://help.aliyun.com/document_detail/25378.html).
 	//
-	// Take note of the following items when you specify Cores:
+	// Before you specify this parameter, take note of the following items:
 	//
-	// 	- InstancePatternInfos is available only for scaling groups that reside in VPCs.
+	// 	- InstancePatternInfos is applicable only to the scaling groups that reside in virtual private clouds (VPCs).
 	//
-	// 	- If you specify InstancePatternInfos, you must specify Cores and Memory.
+	// 	- If you specify InstancePatternInfos, you must also specify InstancePatternInfos.Cores and InstancePatternInfos.Memory.
 	//
-	// 	- If you specify an instance type by using InstanceType or InstanceTypes, Auto Scaling preferentially uses the instance type that is specified by InstanceType or InstanceTypes for scale-outs. If the specified instance type does not have sufficient inventory, Auto Scaling creates instances by using the lowest-priced instance type that is specified by InstancePatternInfos.
+	// 	- If you specify InstanceType or InstanceTypes, Auto Scaling preferentially uses the instance type specified by InstanceType or InstanceTypes to create instances during scale-out events. If the specified instance type does not have sufficient inventory, Auto Scaling uses the lowest-priced instance type specified by InstancePatternInfos to create instances during scale-out events.
 	//
 	// example:
 	//
 	// 2
 	Cores            *int32    `json:"Cores,omitempty" xml:"Cores,omitempty"`
 	CpuArchitectures []*string `json:"CpuArchitectures,omitempty" xml:"CpuArchitectures,omitempty" type:"Repeated"`
-	// The instance types that you want to exclude. You can use wildcard characters, such as asterisks (\\*), to exclude an instance type or an instance family. Examples:
+	// The instance types that you want to exclude. You can use wildcard characters, such as an asterisk (\\*), to exclude an instance type or an instance family. Examples:
 	//
 	// 	- ecs.c6.large: excludes the ecs.c6.large instance type.
 	//
@@ -7800,45 +7873,78 @@ type CreateScalingConfigurationShrinkRequestInstancePatternInfos struct {
 	ExcludedInstanceTypes []*string `json:"ExcludedInstanceTypes,omitempty" xml:"ExcludedInstanceTypes,omitempty" type:"Repeated"`
 	GpuSpecs              []*string `json:"GpuSpecs,omitempty" xml:"GpuSpecs,omitempty" type:"Repeated"`
 	InstanceCategories    []*string `json:"InstanceCategories,omitempty" xml:"InstanceCategories,omitempty" type:"Repeated"`
-	// The level of the instance type, which is used to filter instance types that meet the specified criteria. This parameter takes effect only if you set `CostOptimization` to true. Valid values:
+	// The level of the instance family. You can specify this parameter to specify the available instance types. This parameter takes effect only if you set `CostOptimization` to true. Valid values:
 	//
-	// 	- EntryLevel: entry level (shared instance type). Instance types of this level are the most cost-effective but may not provide stable computing performance in a consistent manner. Instance types of this level are suitable for business scenarios in which the CPU utilization is low. For more information, see the "[Shared instance families](https://help.aliyun.com/document_detail/108489.html)" topic.
+	// 	- EntryLevel: entry level (shared instance type). Instance types of this level are the most cost-effective but may not provide stable computing performance. Instance types of this level are suitable for scenarios in which the CPU utilization is low. For more information, see [Shared instance families](https://help.aliyun.com/document_detail/108489.html).
 	//
-	// 	- EnterpriseLevel: enterprise level. Instance types of this level provide stable performance and dedicated resources and are suitable for business scenarios that require high stability. For more information, see the "[Instance families](https://help.aliyun.com/document_detail/25378.html)" topic.
+	// 	- EnterpriseLevel: enterprise level. Instance types of this level provide stable performance and dedicated resources, and are suitable for business scenarios that require high stability. For more information, see [Overview of instance families](https://help.aliyun.com/document_detail/25378.html).
 	//
-	// 	- CreditEntryLevel: credit entry level. This value is valid only for burstable instances. CPU credits are used to ensure computing performance. Instance types of this level are suitable for business scenarios in which the CPU utilization is low but may fluctuate in specific cases. For more information, see the "[Overview](https://help.aliyun.com/document_detail/59977.html)" topic of burstable instances.
+	// 	- CreditEntryLevel: credit-based entry level (burstable instance types). CPU credits are used to ensure computing performance. Instance types of this level are suitable for scenarios in which the CPU utilization is low but may fluctuate in specific cases. For more information, see [Overview of burstable instances](https://help.aliyun.com/document_detail/59977.html).
 	//
 	// example:
 	//
 	// EnterpriseLevel
 	InstanceFamilyLevel  *string   `json:"InstanceFamilyLevel,omitempty" xml:"InstanceFamilyLevel,omitempty"`
 	InstanceTypeFamilies []*string `json:"InstanceTypeFamilies,omitempty" xml:"InstanceTypeFamilies,omitempty" type:"Repeated"`
-	// The maximum hourly price of a pay-as-you-go or preemptible instance in intelligent configuration mode. This parameter is used to filter the available instance types that meet the specified criteria.
+	// The maximum hourly price of pay-as-you-go or preemptible instances in intelligent configuration mode. You can specify this parameter to filter the available instance types.
 	//
-	// > If you set SpotStrategy to SpotWithPriceLimit, you must specify MaxPrice. In other cases, MaxPrice is optional.
+	// >  If you set SpotStrategy to SpotWithPriceLimit, you must specify this parameter. In other cases, this parameter is optional.
 	//
 	// example:
 	//
 	// 2
-	MaxPrice            *float32 `json:"MaxPrice,omitempty" xml:"MaxPrice,omitempty"`
-	MaximumCpuCoreCount *int32   `json:"MaximumCpuCoreCount,omitempty" xml:"MaximumCpuCoreCount,omitempty"`
-	MaximumGpuAmount    *int32   `json:"MaximumGpuAmount,omitempty" xml:"MaximumGpuAmount,omitempty"`
-	MaximumMemorySize   *float32 `json:"MaximumMemorySize,omitempty" xml:"MaximumMemorySize,omitempty"`
-	// The memory size that you want to allocate to an instance type in intelligent configuration mode. Unit: GiB. This parameter is used to filter the available instance types that meet the specified criteria.
+	MaxPrice *float32 `json:"MaxPrice,omitempty" xml:"MaxPrice,omitempty"`
+	// example:
+	//
+	// 4
+	MaximumCpuCoreCount *int32 `json:"MaximumCpuCoreCount,omitempty" xml:"MaximumCpuCoreCount,omitempty"`
+	// example:
+	//
+	// 2
+	MaximumGpuAmount *int32 `json:"MaximumGpuAmount,omitempty" xml:"MaximumGpuAmount,omitempty"`
+	// example:
+	//
+	// 4
+	MaximumMemorySize *float32 `json:"MaximumMemorySize,omitempty" xml:"MaximumMemorySize,omitempty"`
+	// The memory size per instance type in intelligent configuration mode. Unit: GiB. You can specify this parameter to filter the available instance types.
 	//
 	// example:
 	//
 	// 4
-	Memory                             *float32  `json:"Memory,omitempty" xml:"Memory,omitempty"`
-	MinimumBaselineCredit              *int32    `json:"MinimumBaselineCredit,omitempty" xml:"MinimumBaselineCredit,omitempty"`
-	MinimumCpuCoreCount                *int32    `json:"MinimumCpuCoreCount,omitempty" xml:"MinimumCpuCoreCount,omitempty"`
-	MinimumEniIpv6AddressQuantity      *int32    `json:"MinimumEniIpv6AddressQuantity,omitempty" xml:"MinimumEniIpv6AddressQuantity,omitempty"`
-	MinimumEniPrivateIpAddressQuantity *int32    `json:"MinimumEniPrivateIpAddressQuantity,omitempty" xml:"MinimumEniPrivateIpAddressQuantity,omitempty"`
-	MinimumEniQuantity                 *int32    `json:"MinimumEniQuantity,omitempty" xml:"MinimumEniQuantity,omitempty"`
-	MinimumGpuAmount                   *int32    `json:"MinimumGpuAmount,omitempty" xml:"MinimumGpuAmount,omitempty"`
-	MinimumInitialCredit               *int32    `json:"MinimumInitialCredit,omitempty" xml:"MinimumInitialCredit,omitempty"`
-	MinimumMemorySize                  *float32  `json:"MinimumMemorySize,omitempty" xml:"MinimumMemorySize,omitempty"`
-	PhysicalProcessorModels            []*string `json:"PhysicalProcessorModels,omitempty" xml:"PhysicalProcessorModels,omitempty" type:"Repeated"`
+	Memory *float32 `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	// example:
+	//
+	// 12
+	MinimumBaselineCredit *int32 `json:"MinimumBaselineCredit,omitempty" xml:"MinimumBaselineCredit,omitempty"`
+	// example:
+	//
+	// 2
+	MinimumCpuCoreCount *int32 `json:"MinimumCpuCoreCount,omitempty" xml:"MinimumCpuCoreCount,omitempty"`
+	// example:
+	//
+	// 1
+	MinimumEniIpv6AddressQuantity *int32 `json:"MinimumEniIpv6AddressQuantity,omitempty" xml:"MinimumEniIpv6AddressQuantity,omitempty"`
+	// example:
+	//
+	// 2
+	MinimumEniPrivateIpAddressQuantity *int32 `json:"MinimumEniPrivateIpAddressQuantity,omitempty" xml:"MinimumEniPrivateIpAddressQuantity,omitempty"`
+	// example:
+	//
+	// 2
+	MinimumEniQuantity *int32 `json:"MinimumEniQuantity,omitempty" xml:"MinimumEniQuantity,omitempty"`
+	// example:
+	//
+	// 2
+	MinimumGpuAmount *int32 `json:"MinimumGpuAmount,omitempty" xml:"MinimumGpuAmount,omitempty"`
+	// example:
+	//
+	// 12
+	MinimumInitialCredit *int32 `json:"MinimumInitialCredit,omitempty" xml:"MinimumInitialCredit,omitempty"`
+	// example:
+	//
+	// 4
+	MinimumMemorySize       *float32  `json:"MinimumMemorySize,omitempty" xml:"MinimumMemorySize,omitempty"`
+	PhysicalProcessorModels []*string `json:"PhysicalProcessorModels,omitempty" xml:"PhysicalProcessorModels,omitempty" type:"Repeated"`
 }
 
 func (s CreateScalingConfigurationShrinkRequestInstancePatternInfos) String() string {
@@ -11818,7 +11924,7 @@ func (s *DescribeAlarmsResponse) SetBody(v *DescribeAlarmsResponseBody) *Describ
 
 type DescribeAlertConfigurationRequest struct {
 	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID of the event-triggered task.
+	// The region ID of the scaling group.
 	//
 	// This parameter is required.
 	//
@@ -11872,7 +11978,7 @@ type DescribeAlertConfigurationResponseBody struct {
 	//
 	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The status of the scaling activities that prompt text message or email notifications.
+	// The status of the scaling activities that trigger text message, internal message, or email-based notifications.
 	ScaleStatuses []*string `json:"ScaleStatuses,omitempty" xml:"ScaleStatuses,omitempty" type:"Repeated"`
 }
 
@@ -14246,11 +14352,11 @@ type DescribeEciScalingConfigurationsRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The IDs of the scaling configurations that you want to query.
+	// The IDs of the scaling configurations that you want to query. You can specify 1 to 10 scaling configuration IDs.
 	//
-	// The IDs of active and inactive scaling configurations are displayed in the query results. You can differentiate between active and inactive scaling configurations based on the value of the `LifecycleState` parameter.
+	// The IDs of active and inactive scaling configurations are displayed in the query results. You can distinguish between active and inactive scaling configurations based on the value of `LifecycleState`.
 	ScalingConfigurationIds []*string `json:"ScalingConfigurationIds,omitempty" xml:"ScalingConfigurationIds,omitempty" type:"Repeated"`
-	// The names of the scaling configurations that you want to query.
+	// The names of the scaling configurations that you want to query. You can specify 1 to 10 scaling configuration names.
 	//
 	// The names of inactive scaling configurations are not displayed in the query results, and no error is reported.
 	ScalingConfigurationNames []*string `json:"ScalingConfigurationNames,omitempty" xml:"ScalingConfigurationNames,omitempty" type:"Repeated"`
@@ -14391,7 +14497,7 @@ type DescribeEciScalingConfigurationsResponseBodyScalingConfigurations struct {
 	//
 	// 1000
 	ActiveDeadlineSeconds *int32 `json:"ActiveDeadlineSeconds,omitempty" xml:"ActiveDeadlineSeconds,omitempty"`
-	// Indicates whether an elastic IP address (EIP) is automatically created and bound to the elastic container instance.
+	// Indicates whether elastic IP addresses (EIPs) are automatically created and bound to elastic container instances.
 	//
 	// example:
 	//
@@ -14403,13 +14509,13 @@ type DescribeEciScalingConfigurationsResponseBodyScalingConfigurations struct {
 	//
 	// false
 	AutoMatchImageCache *bool `json:"AutoMatchImageCache,omitempty" xml:"AutoMatchImageCache,omitempty"`
-	// The name of the elastic container instance or the name of the container group.
+	// The name series of elastic container instances.
 	//
 	// example:
 	//
 	// test
 	ContainerGroupName *string `json:"ContainerGroupName,omitempty" xml:"ContainerGroupName,omitempty"`
-	// The containers in the elastic container instance.
+	// The containers in an elastic container instance.
 	Containers []*DescribeEciScalingConfigurationsResponseBodyScalingConfigurationsContainers `json:"Containers,omitempty" xml:"Containers,omitempty" type:"Repeated"`
 	// Indicates whether the Cost Optimization feature is enabled. Valid values:
 	//
@@ -14421,19 +14527,19 @@ type DescribeEciScalingConfigurationsResponseBodyScalingConfigurations struct {
 	//
 	// false
 	CostOptimization *bool `json:"CostOptimization,omitempty" xml:"CostOptimization,omitempty"`
-	// The number of vCPUs that are allocated to the elastic container instance.
+	// The number of vCPUs per elastic container instance.
 	//
 	// example:
 	//
 	// 2.0
 	Cpu *float32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
-	// The number of physical CPU cores. You can specify this parameter for only specific instance types. For more information, see [Specify CPU options](https://help.aliyun.com/document_detail/197781.html).
+	// The number of physical CPU cores. This parameter can be specified for only specific instance types. For more information, see [Specify CPU options](https://help.aliyun.com/document_detail/197781.html).
 	//
 	// example:
 	//
 	// 2
 	CpuOptionsCore *int32 `json:"CpuOptionsCore,omitempty" xml:"CpuOptionsCore,omitempty"`
-	// The number of threads per core. You can specify this parameter for only specific instance types. A value of 1 indicates that Hyper-Threading is disabled. For more information, see [Specify CPU options](https://help.aliyun.com/document_detail/197781.html).
+	// The number of threads per core. This parameter can be specified for only specific instance types. A value of 1 indicates that Hyper-Threading is disabled. For more information, see [Specify CPU options](https://help.aliyun.com/document_detail/197781.html).
 	//
 	// example:
 	//
@@ -14445,13 +14551,13 @@ type DescribeEciScalingConfigurationsResponseBodyScalingConfigurations struct {
 	//
 	// 2014-08-14T10:58Z
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// The bucket that caches data.
+	// The bucket that stores the data cache.
 	//
 	// example:
 	//
 	// default
 	DataCacheBucket *string `json:"DataCacheBucket,omitempty" xml:"DataCacheBucket,omitempty"`
-	// Indicates whether the Performance Burst feature is enabled for the ESSD AutoPL disk that caches data. Valid values:
+	// Indicates whether the Performance Burst feature is enabled for the ESSD AutoPL disk that stores the data cache. Valid values:
 	//
 	// 	- true
 	//
@@ -14463,15 +14569,15 @@ type DescribeEciScalingConfigurationsResponseBodyScalingConfigurations struct {
 	//
 	// false
 	DataCacheBurstingEnabled *bool `json:"DataCacheBurstingEnabled,omitempty" xml:"DataCacheBurstingEnabled,omitempty"`
-	// The performance level (PL) of the cloud disk that caches data. We recommend that you use enhanced SSDs (ESSDs). Valid values:
+	// The performance level (PL) of the cloud disk that stores the data cache. We recommend that you use enterprise SSDs (ESSDs). Valid values:
 	//
-	// 	- PL0: An ESSD can deliver up to 10,000 random read/write IOPS.
+	// 	- PL0: An ESSD can provide up to 10,000 random read/write IOPS.
 	//
-	// 	- PL1: An ESSD can deliver up to 50,000 random read/write IOPS.
+	// 	- PL1: An ESSD can provide up to 50,000 random read/write IOPS.
 	//
-	// 	- PL2: An ESSD can deliver up to 100,000 random read/write IOPS.
+	// 	- PL2: An ESSD can provide up to 100,000 random read/write IOPS.
 	//
-	// 	- PL3: An ESSD can deliver up to 1,000,000 random read/write IOPS.
+	// 	- PL3: An ESSD can provide up to 1,000,000 random read/write IOPS.
 	//
 	// >  For more information about ESSDs, see [ESSDs](https://help.aliyun.com/document_detail/122389.html).
 	//
@@ -14479,7 +14585,7 @@ type DescribeEciScalingConfigurationsResponseBodyScalingConfigurations struct {
 	//
 	// PL1
 	DataCachePL *string `json:"DataCachePL,omitempty" xml:"DataCachePL,omitempty"`
-	// The provisioned read/write IOPS of the ESSD AutoPL disk that caches data. Valid values: 0 to min{50,000, 1000 x *Capacity - Baseline IOPS}. Baseline IOPS = min{1,800 + 50	- x Capacity, 50,000}.
+	// The provisioned read/write IOPS of the ESSD AutoPL disk that stores the data cache. Valid values: 0 to min{50,000, 1000 x *Capacity - Baseline IOPS}. Baseline IOPS = min{1,800 + 50	- x Capacity, 50,000}.
 	//
 	// >  For more information about ESSD AutoPL disks, see [ESSD AutoPL disks](https://help.aliyun.com/document_detail/368372.html).
 	//
@@ -14495,9 +14601,9 @@ type DescribeEciScalingConfigurationsResponseBodyScalingConfigurations struct {
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The IP addresses of the Domain Name Service (DNS) server.
 	DnsConfigNameServers []*string `json:"DnsConfigNameServers,omitempty" xml:"DnsConfigNameServers,omitempty" type:"Repeated"`
-	// The objects. Each object is a name-value pair. The value is optional.
+	// The options. Each option is a name-value pair. The value in the name-value pair is optional.
 	DnsConfigOptions []*DescribeEciScalingConfigurationsResponseBodyScalingConfigurationsDnsConfigOptions `json:"DnsConfigOptions,omitempty" xml:"DnsConfigOptions,omitempty" type:"Repeated"`
-	// The search domains of the DNS server.
+	// The search domains of the DNS servers.
 	DnsConfigSearches []*string `json:"DnsConfigSearches,omitempty" xml:"DnsConfigSearches,omitempty" type:"Repeated"`
 	// The Domain Name System (DNS) policy.
 	//
@@ -14505,33 +14611,33 @@ type DescribeEciScalingConfigurationsResponseBodyScalingConfigurations struct {
 	//
 	// Default
 	DnsPolicy *string `json:"DnsPolicy,omitempty" xml:"DnsPolicy,omitempty"`
-	// The maximum outbound bandwidth. Unit: bit/s.
+	// The maximum outbound public bandwidth. Unit: bit/s.
 	//
 	// example:
 	//
 	// 1024000
 	EgressBandwidth *int64 `json:"EgressBandwidth,omitempty" xml:"EgressBandwidth,omitempty"`
-	// The bandwidth of the EIP. Default value: 5. Unit: Mbit/s.
+	// The EIP bandwidth. Default value: 5. Unit: Mbit/s.
 	//
 	// example:
 	//
 	// 5
 	EipBandwidth *int32 `json:"EipBandwidth,omitempty" xml:"EipBandwidth,omitempty"`
-	// The size of the temporary storage space. Unit: GiB.
+	// The capacity of the ephemeral storage. Unit: GiB.
 	//
 	// example:
 	//
 	// 20
 	EphemeralStorage *int32 `json:"EphemeralStorage,omitempty" xml:"EphemeralStorage,omitempty"`
-	// The hostname aliases in a container.
+	// The hostnames and IP addresses for a container that are added to the hosts file of the elastic container instance.
 	HostAliases []*DescribeEciScalingConfigurationsResponseBodyScalingConfigurationsHostAliases `json:"HostAliases,omitempty" xml:"HostAliases,omitempty" type:"Repeated"`
-	// The hostname.
+	// The hostname series.
 	//
 	// example:
 	//
 	// [\\"hehe.com\\", \\"haha.com\\"]
 	HostName *string `json:"HostName,omitempty" xml:"HostName,omitempty"`
-	// The image repositories.
+	// The information about the image repository.
 	ImageRegistryCredentials []*DescribeEciScalingConfigurationsResponseBodyScalingConfigurationsImageRegistryCredentials `json:"ImageRegistryCredentials,omitempty" xml:"ImageRegistryCredentials,omitempty" type:"Repeated"`
 	// The ID of the image cache.
 	//
@@ -14539,7 +14645,7 @@ type DescribeEciScalingConfigurationsResponseBodyScalingConfigurations struct {
 	//
 	// imc-2zebxkiifuyzzlhl****
 	ImageSnapshotId *string `json:"ImageSnapshotId,omitempty" xml:"ImageSnapshotId,omitempty"`
-	// The maximum inbound bandwidth. Unit: bit/s.
+	// The maximum inbound public bandwidth. Unit: bit/s.
 	//
 	// example:
 	//
@@ -14547,13 +14653,13 @@ type DescribeEciScalingConfigurationsResponseBodyScalingConfigurations struct {
 	IngressBandwidth *int64 `json:"IngressBandwidth,omitempty" xml:"IngressBandwidth,omitempty"`
 	// The init containers.
 	InitContainers []*DescribeEciScalingConfigurationsResponseBodyScalingConfigurationsInitContainers `json:"InitContainers,omitempty" xml:"InitContainers,omitempty" type:"Repeated"`
-	// The level of the instance family, which is used to filter instance types that meet the specified criteria. This parameter takes effect only if `CostOptimization` is set to true. Valid values:
+	// The level of the instance family, which is used to filter the available instance types that meet the specified requirements. This parameter takes effect only if `CostOptimization` is set to true. Valid values:
 	//
-	// 	- EntryLevel: entry level (shared instance types) Instance types of this level are the most cost-effective but may not provide stable computing performance in a consistent manner. This level is suitable for business scenarios in which the CPU utilization is low. For more information, see [Shared instance families](https://help.aliyun.com/document_detail/108489.html).
+	// 	- EntryLevel: entry level (shared instance types). Instance types of this level are the most cost-effective but may not provide stable computing performance. Instance types of this level are suitable for scenarios in which the CPU utilization is low. For more information, see [Shared instance families](https://help.aliyun.com/document_detail/108489.html).
 	//
-	// 	- EnterpriseLevel: enterprise level. Instance types of this level provide stable performance and dedicated resources and are suitable for business scenarios that require high stability. For more information, see [Overview of instance families](https://help.aliyun.com/document_detail/25378.html).
+	// 	- EnterpriseLevel: enterprise level. Instance types of this level provide stable performance and dedicated resources, and are suitable for business scenarios that require high stability. For more information, see [Overview of instance families](https://help.aliyun.com/document_detail/25378.html).
 	//
-	// 	- CreditEntryLevel: credit entry level (burstable instance types). CPU credits are used to ensure computing performance. Instance types of this level are suitable for scenarios in which the CPU utilization is low but may fluctuate in specific cases. For more information, see [Overview of burstable instances](https://help.aliyun.com/document_detail/59977.html).
+	// 	- CreditEntryLevel: credit-based entry level (burstable instance types). CPU credits are used to ensure computing performance. Instance types of this level are suitable for scenarios in which the CPU utilization is low but may fluctuate in specific cases. For more information, see [Overview of burstable instances](https://help.aliyun.com/document_detail/59977.html).
 	//
 	// example:
 	//
@@ -14569,15 +14675,15 @@ type DescribeEciScalingConfigurationsResponseBodyScalingConfigurations struct {
 	Ipv6AddressCount *int32 `json:"Ipv6AddressCount,omitempty" xml:"Ipv6AddressCount,omitempty"`
 	// The status of the scaling configuration in the scaling group. Valid values:
 	//
-	// 	- Active: The scaling configuration is active in the scaling group. Auto Scaling uses the active scaling configuration to automatically create elastic container instances.
+	// 	- Active: The scaling configuration is active in the scaling group. Auto Scaling uses the scaling configuration that is in the Active state to create instances during scale-out events.
 	//
-	// 	- Inactive: The scaling configuration is inactive in the scaling group. Inactive scaling configurations are retained in scaling groups. However, Auto Scaling does not use inactive scaling groups to create elastic container instances.
+	// 	- Inactive: The scaling configuration is inactive in the scaling group. Scaling configurations that are in the Inactive state are still contained in the scaling group, but Auto Scaling does not use the inactive scaling configurations to create instances during scale-out events.
 	//
 	// example:
 	//
 	// Active
 	LifecycleState *string `json:"LifecycleState,omitempty" xml:"LifecycleState,omitempty"`
-	// The weight of the elastic container instance as a backend server. Valid values: 1 to 100.
+	// The load balancing weight of each elastic container instance as a backend server. Valid values: 1 to 100.
 	//
 	// example:
 	//
@@ -14585,9 +14691,9 @@ type DescribeEciScalingConfigurationsResponseBodyScalingConfigurations struct {
 	LoadBalancerWeight *int32 `json:"LoadBalancerWeight,omitempty" xml:"LoadBalancerWeight,omitempty"`
 	// The memory size.
 	//
-	// You can specify CPU and Memory at the same time to filter instance types. For example, if you set CPU to 2 and Memory to 16, all instance types that have 2 vCPUs and 16 GiB memory are returned. Then, Auto Scaling determines the available instance types based on factors such as the I/O optimization requirements and zones and preferentially uses the lowest-priced instance type to create instances.
+	// You can specify CPU and Memory to define the range of instance types. For example, if you set CPU to 2 and Memory to 16, the instance types that have 2 vCPUs and 16 GiB are returned. After you specify CPU and Memory, Auto Scaling determines the available instance types based on factors such as I/O optimization requirements and zones and preferentially creates instances by using the lowest-priced instance type.
 	//
-	// >  You can specify CPU and Memory to filter instance types only if Scaling Policy is set to Cost Optimization Policy and no instance type is specified in the scaling configuration.
+	// >  You can specify CPU and Memory to define instance types only if you set Scaling Policy to Cost Optimization and no instance type is specified in the scaling configuration.
 	//
 	// example:
 	//
@@ -14595,13 +14701,13 @@ type DescribeEciScalingConfigurationsResponseBodyScalingConfigurations struct {
 	Memory *float32 `json:"Memory,omitempty" xml:"Memory,omitempty"`
 	// The endpoints of the Network Time Protocol (NTP) server.
 	NtpServers []*string `json:"NtpServers,omitempty" xml:"NtpServers,omitempty" type:"Repeated"`
-	// The Resource Access Management (RAM) role of the elastic container instance. Elastic container instances and Elastic Compute Service (ECS) instances can share the same RAM role. For more information, see [Use the instance RAM role by calling APIs](https://help.aliyun.com/document_detail/61178.html).
+	// The Resource Access Management (RAM) role of elastic container instances. Elastic container instances and Elastic Compute Service (ECS) instances can share the same RAM role. For more information, see [Use an instance RAM role by calling API operations](https://help.aliyun.com/document_detail/61178.html).
 	//
 	// example:
 	//
 	// ram:PassRole
 	RamRoleName *string `json:"RamRoleName,omitempty" xml:"RamRoleName,omitempty"`
-	// The region ID of the elastic container instance.
+	// The region ID of elastic container instances.
 	//
 	// example:
 	//
@@ -14613,13 +14719,13 @@ type DescribeEciScalingConfigurationsResponseBodyScalingConfigurations struct {
 	//
 	// rg-8db03793gfrz****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The restart policy of the elastic container instance. Valid values:
+	// The restart policy of elastic container instances. Valid values:
 	//
-	// 	- Never: The elastic container instance is never restarted.
+	// 	- Never: Elastic container instances are never restarted.
 	//
-	// 	- Always: The elastic container instance is always restarted.
+	// 	- Always: Elastic container instances are always restarted.
 	//
-	// 	- OnFailure: The elastic container instance is restarted upon failures.
+	// 	- OnFailure: Elastic container instances are restarted upon failures.
 	//
 	// example:
 	//
@@ -14637,7 +14743,7 @@ type DescribeEciScalingConfigurationsResponseBodyScalingConfigurations struct {
 	//
 	// scalingconfi****
 	ScalingConfigurationName *string `json:"ScalingConfigurationName,omitempty" xml:"ScalingConfigurationName,omitempty"`
-	// The region ID of the scaling group to which the scaling configuration belongs.
+	// The ID of the scaling group to which the scaling configuration belongs.
 	//
 	// example:
 	//
@@ -14645,7 +14751,7 @@ type DescribeEciScalingConfigurationsResponseBodyScalingConfigurations struct {
 	ScalingGroupId *string `json:"ScalingGroupId,omitempty" xml:"ScalingGroupId,omitempty"`
 	// The system information of the security context in which the elastic container instance runs.
 	SecurityContextSysCtls []*DescribeEciScalingConfigurationsResponseBodyScalingConfigurationsSecurityContextSysCtls `json:"SecurityContextSysCtls,omitempty" xml:"SecurityContextSysCtls,omitempty" type:"Repeated"`
-	// The ID of the security group with which the elastic container instance is associated. Elastic container instances that are associated with the same security group can access each other.
+	// The ID of the security group with which elastic container instances are associated. Elastic container instances that are associated with the same security group can communicate with each other.
 	//
 	// example:
 	//
@@ -14657,27 +14763,27 @@ type DescribeEciScalingConfigurationsResponseBodyScalingConfigurations struct {
 	//
 	// False
 	SlsEnable *bool `json:"SlsEnable,omitempty" xml:"SlsEnable,omitempty"`
-	// The maximum hourly price for the preemptible elastic container instance.
+	// The maximum hourly price for preemptible elastic container instances.
 	//
-	// This parameter is returned only when SpotStrategy is set to SpotWithPriceLimit.
+	// This parameter is returned only if you set SpotStrategy to SpotWithPriceLimit.
 	//
 	// example:
 	//
 	// 0.025
 	SpotPriceLimit *float32 `json:"SpotPriceLimit,omitempty" xml:"SpotPriceLimit,omitempty"`
-	// The bidding policy for the instance. Valid values:
+	// The bidding policy for elastic container instances. Valid values:
 	//
-	// 	- NoSpot: The instance is created as a regular pay-as-you-go instance.
+	// 	- NoSpot: The instances are created as regular pay-as-you-go instances.
 	//
-	// 	- SpotWithPriceLimit: The instance is a preemptible instance with a user-defined maximum hourly price.
+	// 	- SpotWithPriceLimit: The instances are created as preemptible instances with a user-defined maximum hourly price.
 	//
-	// 	- SpotAsPriceGo: The instance is a preemptible instance for which the market price at the time of purchase is automatically used as the bid price.
+	// 	- SpotAsPriceGo: The instances are created as preemptible instances for which the market price at the time of purchase is automatically used as the bid price.
 	//
 	// example:
 	//
 	// NoSpot
 	SpotStrategy *string `json:"SpotStrategy,omitempty" xml:"SpotStrategy,omitempty"`
-	// The tags of the elastic container instance. The tags are specified in the key-value format.
+	// The tags of elastic container instances. Tags are specified in the key-value format.
 	Tags []*DescribeEciScalingConfigurationsResponseBodyScalingConfigurationsTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// The buffer time during which a program handles operations before the program stops.
 	//
@@ -14953,7 +15059,7 @@ func (s *DescribeEciScalingConfigurationsResponseBodyScalingConfigurations) SetV
 }
 
 type DescribeEciScalingConfigurationsResponseBodyScalingConfigurationsAcrRegistryInfos struct {
-	// The domain names of the Container Registry Enterprise Edition instance. By default, all domain names of the Container Registry Enterprise Edition instance are displayed. Multiple domain names are separated by commas (,).
+	// The domain names of the Container Registry Enterprise Edition instance. By default, all domain names of the instance are displayed. Multiple domain names are separated by commas (,).
 	Domains []*string `json:"Domains,omitempty" xml:"Domains,omitempty" type:"Repeated"`
 	// The ID of the Container Registry Enterprise Edition instance.
 	//
@@ -15006,9 +15112,9 @@ func (s *DescribeEciScalingConfigurationsResponseBodyScalingConfigurationsAcrReg
 type DescribeEciScalingConfigurationsResponseBodyScalingConfigurationsContainers struct {
 	// The container startup arguments. You can specify up to 10 arguments.
 	Args []*string `json:"Args,omitempty" xml:"Args,omitempty" type:"Repeated"`
-	// The container startup commands. You can specify up to 20 commands. Each command contains up to 256 characters.
+	// The container startup commands. You can specify up to 20 commands. Each command can contain up to 256 characters.
 	Commands []*string `json:"Commands,omitempty" xml:"Commands,omitempty" type:"Repeated"`
-	// The number of vCPUs that are allocated to the container.
+	// The number of vCPUs per container.
 	//
 	// example:
 	//
@@ -15022,7 +15128,7 @@ type DescribeEciScalingConfigurationsResponseBodyScalingConfigurationsContainers
 	//
 	// 1
 	Gpu *int32 `json:"Gpu,omitempty" xml:"Gpu,omitempty"`
-	// The image of the container.
+	// The container image.
 	//
 	// example:
 	//
@@ -15030,7 +15136,7 @@ type DescribeEciScalingConfigurationsResponseBodyScalingConfigurationsContainers
 	Image *string `json:"Image,omitempty" xml:"Image,omitempty"`
 	// The image pulling policy. Valid values:
 	//
-	// 	- Always: Each time instances are created, image pulling is performed.
+	// 	- Always: Each time image pulling is performed.
 	//
 	// 	- IfNotPresent: Image pulling is performed as needed. On-premises images are preferentially used. If no on-premises images are available, image pulling is performed.
 	//
@@ -15039,53 +15145,79 @@ type DescribeEciScalingConfigurationsResponseBodyScalingConfigurationsContainers
 	// example:
 	//
 	// Always
-	ImagePullPolicy                *string   `json:"ImagePullPolicy,omitempty" xml:"ImagePullPolicy,omitempty"`
+	ImagePullPolicy *string `json:"ImagePullPolicy,omitempty" xml:"ImagePullPolicy,omitempty"`
+	// The commands that are run for configuring the postStart callback function by using the CLI within the container.
 	LifecyclePostStartHandlerExecs []*string `json:"LifecyclePostStartHandlerExecs,omitempty" xml:"LifecyclePostStartHandlerExecs,omitempty" type:"Repeated"`
+	// The IP address of the host to which HTTP GET requests for configuring the postStart callback function are sent.
+	//
 	// example:
 	//
 	// 10.0.XX.XX
 	LifecyclePostStartHandlerHttpGetHost *string `json:"LifecyclePostStartHandlerHttpGetHost,omitempty" xml:"LifecyclePostStartHandlerHttpGetHost,omitempty"`
+	// The path to which HTTP GET requests for configuring the postStart callback function are sent.
+	//
 	// example:
 	//
 	// /healthyz
 	LifecyclePostStartHandlerHttpGetPath *string `json:"LifecyclePostStartHandlerHttpGetPath,omitempty" xml:"LifecyclePostStartHandlerHttpGetPath,omitempty"`
+	// The port over which HTTP GET requests for configuring the postStart callback function are sent.
+	//
 	// example:
 	//
 	// 80
 	LifecyclePostStartHandlerHttpGetPort *int32 `json:"LifecyclePostStartHandlerHttpGetPort,omitempty" xml:"LifecyclePostStartHandlerHttpGetPort,omitempty"`
+	// The protocol type of the HTTP GET requests that are sent for configuring the postStart callback function.
+	//
 	// example:
 	//
 	// HTTP
 	LifecyclePostStartHandlerHttpGetScheme *string `json:"LifecyclePostStartHandlerHttpGetScheme,omitempty" xml:"LifecyclePostStartHandlerHttpGetScheme,omitempty"`
+	// The IP address of the host detected by the TCP sockets used for configuring the postStart callback function.
+	//
 	// example:
 	//
 	// 10.0.XX.XX
 	LifecyclePostStartHandlerTcpSocketHost *string `json:"LifecyclePostStartHandlerTcpSocketHost,omitempty" xml:"LifecyclePostStartHandlerTcpSocketHost,omitempty"`
+	// The port detected by the TCP sockets used for configuring the postStart callback function.
+	//
 	// example:
 	//
 	// 80
-	LifecyclePostStartHandlerTcpSocketPort *int32    `json:"LifecyclePostStartHandlerTcpSocketPort,omitempty" xml:"LifecyclePostStartHandlerTcpSocketPort,omitempty"`
-	LifecyclePreStopHandlerExecs           []*string `json:"LifecyclePreStopHandlerExecs,omitempty" xml:"LifecyclePreStopHandlerExecs,omitempty" type:"Repeated"`
+	LifecyclePostStartHandlerTcpSocketPort *int32 `json:"LifecyclePostStartHandlerTcpSocketPort,omitempty" xml:"LifecyclePostStartHandlerTcpSocketPort,omitempty"`
+	// The commands that are run for configuring the preStop callback function by using the CLI within the container.
+	LifecyclePreStopHandlerExecs []*string `json:"LifecyclePreStopHandlerExecs,omitempty" xml:"LifecyclePreStopHandlerExecs,omitempty" type:"Repeated"`
+	// The IP address of the host to which HTTP GET requests for configuring the preStop callback function are sent.
+	//
 	// example:
 	//
 	// 10.0.XX.XX
 	LifecyclePreStopHandlerHttpGetHost *string `json:"LifecyclePreStopHandlerHttpGetHost,omitempty" xml:"LifecyclePreStopHandlerHttpGetHost,omitempty"`
+	// The path to which HTTP GET requests for configuring the preStop callback function are sent.
+	//
 	// example:
 	//
 	// /healthyz
 	LifecyclePreStopHandlerHttpGetPath *string `json:"LifecyclePreStopHandlerHttpGetPath,omitempty" xml:"LifecyclePreStopHandlerHttpGetPath,omitempty"`
+	// The port over which HTTP GET requests for configuring the preStop callback function are sent.
+	//
 	// example:
 	//
 	// 80
 	LifecyclePreStopHandlerHttpGetPort *int32 `json:"LifecyclePreStopHandlerHttpGetPort,omitempty" xml:"LifecyclePreStopHandlerHttpGetPort,omitempty"`
+	// The protocol type of the HTTP Get requests that are sent for configuring the preStop callback function.
+	//
 	// example:
 	//
 	// HTTP
 	LifecyclePreStopHandlerHttpGetScheme *string `json:"LifecyclePreStopHandlerHttpGetScheme,omitempty" xml:"LifecyclePreStopHandlerHttpGetScheme,omitempty"`
+	// The IP address of the host detected by the TCP sockets used for configuring the preStop callback function.
+	//
 	// example:
 	//
 	// 10.0.XX.XX
 	LifecyclePreStopHandlerTcpSocketHost *string `json:"LifecyclePreStopHandlerTcpSocketHost,omitempty" xml:"LifecyclePreStopHandlerTcpSocketHost,omitempty"`
+	// The port detected by the TCP sockets used for configuring the preStop callback function.
+	//
 	// example:
 	//
 	// 80
@@ -15100,19 +15232,19 @@ type DescribeEciScalingConfigurationsResponseBodyScalingConfigurationsContainers
 	//
 	// 3
 	LivenessProbeFailureThreshold *int32 `json:"LivenessProbeFailureThreshold,omitempty" xml:"LivenessProbeFailureThreshold,omitempty"`
-	// The path to which HTTP Get requests are sent when you use the HTTP Get requests to perform liveness probes.
+	// The path to which HTTP GET requests are sent when you use the HTTP GET requests to perform liveness probes.
 	//
 	// example:
 	//
 	// /usr/nginx/
 	LivenessProbeHttpGetPath *string `json:"LivenessProbeHttpGetPath,omitempty" xml:"LivenessProbeHttpGetPath,omitempty"`
-	// The port detected by HTTP Get requests when you use the HTTP requests to perform liveness probes.
+	// The port to which HTTP GET requests are sent to perform liveness probes.
 	//
 	// example:
 	//
 	// 80
 	LivenessProbeHttpGetPort *int32 `json:"LivenessProbeHttpGetPort,omitempty" xml:"LivenessProbeHttpGetPort,omitempty"`
-	// The protocol type of HTTP GET requests when you use the HTTP requests to perform liveness probes. Valid values:
+	// The protocol type of HTTP GET requests when you use the HTTP GET requests to perform liveness probes. Valid values:
 	//
 	// 	- HTTP
 	//
@@ -15122,7 +15254,7 @@ type DescribeEciScalingConfigurationsResponseBodyScalingConfigurationsContainers
 	//
 	// HTTP
 	LivenessProbeHttpGetScheme *string `json:"LivenessProbeHttpGetScheme,omitempty" xml:"LivenessProbeHttpGetScheme,omitempty"`
-	// The number of seconds that elapse from the startup of the container to the start time of a liveness probe.
+	// The number of seconds that elapses from the startup of the container to the start time of a liveness probe.
 	//
 	// example:
 	//
@@ -15146,25 +15278,25 @@ type DescribeEciScalingConfigurationsResponseBodyScalingConfigurationsContainers
 	//
 	// 80
 	LivenessProbeTcpSocketPort *int32 `json:"LivenessProbeTcpSocketPort,omitempty" xml:"LivenessProbeTcpSocketPort,omitempty"`
-	// The timeout period of the liveness probe. Default value: 1. Minimum value: 1. Unit: seconds.
+	// The timeout period of a liveness probe. Default value: 1. Minimum value: 1. Unit: seconds.
 	//
 	// example:
 	//
 	// 10
 	LivenessProbeTimeoutSeconds *int32 `json:"LivenessProbeTimeoutSeconds,omitempty" xml:"LivenessProbeTimeoutSeconds,omitempty"`
-	// The memory size of the container.
+	// The memory size per container.
 	//
 	// example:
 	//
 	// 2.0
 	Memory *float32 `json:"Memory,omitempty" xml:"Memory,omitempty"`
-	// The container name.
+	// The custom name of the container.
 	//
 	// example:
 	//
 	// nginx
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The exposed ports and protocols of the container.
+	// The exposed ports and protocols.
 	Ports []*DescribeEciScalingConfigurationsResponseBodyScalingConfigurationsContainersPorts `json:"Ports,omitempty" xml:"Ports,omitempty" type:"Repeated"`
 	// The commands that are run in the container when you use the CLI to perform readiness probes.
 	ReadinessProbeExecCommands []*string `json:"ReadinessProbeExecCommands,omitempty" xml:"ReadinessProbeExecCommands,omitempty" type:"Repeated"`
@@ -15176,13 +15308,13 @@ type DescribeEciScalingConfigurationsResponseBodyScalingConfigurationsContainers
 	//
 	// 3
 	ReadinessProbeFailureThreshold *int32 `json:"ReadinessProbeFailureThreshold,omitempty" xml:"ReadinessProbeFailureThreshold,omitempty"`
-	// The path to which HTTP Get requests are sent when you use the HTTP requests to perform readiness probes.
+	// The path to which HTTP GET requests are sent when you use the HTTP GET requests to perform readiness probes.
 	//
 	// example:
 	//
 	// /usr/local
 	ReadinessProbeHttpGetPath *string `json:"ReadinessProbeHttpGetPath,omitempty" xml:"ReadinessProbeHttpGetPath,omitempty"`
-	// The path to which HTTP Get requests are sent when you use the HTTP Get requests to perform readiness probes.
+	// The path to which HTTP GET requests are sent when you use the HTTP GET requests to perform readiness probes.
 	//
 	// example:
 	//
@@ -15198,7 +15330,7 @@ type DescribeEciScalingConfigurationsResponseBodyScalingConfigurationsContainers
 	//
 	// HTTP
 	ReadinessProbeHttpGetScheme *string `json:"ReadinessProbeHttpGetScheme,omitempty" xml:"ReadinessProbeHttpGetScheme,omitempty"`
-	// The number of seconds that elapse from the startup of the container to the start time of a readiness probe.
+	// The number of seconds that elapses from the startup of the container to the start time of a readiness probe.
 	//
 	// example:
 	//
@@ -15222,7 +15354,7 @@ type DescribeEciScalingConfigurationsResponseBodyScalingConfigurationsContainers
 	//
 	// 8888
 	ReadinessProbeTcpSocketPort *int32 `json:"ReadinessProbeTcpSocketPort,omitempty" xml:"ReadinessProbeTcpSocketPort,omitempty"`
-	// The timeout period of the readiness probe. Default value: 1. Minimum value: 1. Unit: seconds.
+	// The timeout period of a readiness probe. Default value: 1. Minimum value: 1. Unit: seconds.
 	//
 	// example:
 	//
@@ -15244,7 +15376,7 @@ type DescribeEciScalingConfigurationsResponseBodyScalingConfigurationsContainers
 	//
 	// 1000
 	SecurityContextRunAsUser *int64 `json:"SecurityContextRunAsUser,omitempty" xml:"SecurityContextRunAsUser,omitempty"`
-	// Indicates whether the container allocates buffer resources to standard input streams when the container is run. If you do not specify this parameter, an end-of-file (EOF) error may occur when standard input streams in the container are read. Default value: false.
+	// Indicates whether the container allocates buffer resources to standard input streams when the container is running. If this parameter is not specified, an end-of-file (EOF) error may occur when standard input streams in the container are read. Default value: false.
 	//
 	// example:
 	//
@@ -15252,13 +15384,13 @@ type DescribeEciScalingConfigurationsResponseBodyScalingConfigurationsContainers
 	Stdin *bool `json:"Stdin,omitempty" xml:"Stdin,omitempty"`
 	// Indicates whether standard input streams are disconnected after a client is disconnected. If Stdin is set to true, standard input streams remain connected among multiple sessions.
 	//
-	// If StdinOnce is set to true, standard input streams are connected after the container is started, and remain idle until a client is connected to receive data. After the client is disconnected, streams are also disconnected, and remain disconnected until the container is restarted.
+	// If StdinOnce is set to true, standard input streams are connected after the container is started, and remain idle until a client is connected to receive data. After the client is disconnected, streams are also disconnected, and remain disconnected until the container restarts.
 	//
 	// example:
 	//
 	// true
 	StdinOnce *bool `json:"StdinOnce,omitempty" xml:"StdinOnce,omitempty"`
-	// Indicates whether interaction is enabled. Valid values:
+	// Indicates whether the Interaction feature is enabled. Valid values:
 	//
 	// 	- true
 	//
@@ -15272,9 +15404,9 @@ type DescribeEciScalingConfigurationsResponseBodyScalingConfigurationsContainers
 	//
 	// false
 	Tty *bool `json:"Tty,omitempty" xml:"Tty,omitempty"`
-	// The volumes that are mounted to the container.
+	// The mounted volumes.
 	VolumeMounts []*DescribeEciScalingConfigurationsResponseBodyScalingConfigurationsContainersVolumeMounts `json:"VolumeMounts,omitempty" xml:"VolumeMounts,omitempty" type:"Repeated"`
-	// The working directory of the container.
+	// The working directory.
 	//
 	// example:
 	//
@@ -15632,21 +15764,21 @@ func (s *DescribeEciScalingConfigurationsResponseBodyScalingConfigurationsContai
 }
 
 type DescribeEciScalingConfigurationsResponseBodyScalingConfigurationsContainersVolumeMounts struct {
-	// The directory to which the container mounts the volume.
+	// The directory to which the volume is mounted.
 	//
-	// >  Data under this directory is overwritten by data on the volume. Specify this parameter with caution.
+	// >  Data in this directory is overwritten by the data on the volume. Proceed with caution if you specify this parameter.
 	//
 	// example:
 	//
 	// /pod/data
 	MountPath *string `json:"MountPath,omitempty" xml:"MountPath,omitempty"`
-	// The mount propagation settings of the volume. Mount propagation allows volumes that are mounted on one container to be shared with other containers in the same pod, or even with other pods on the same node. Valid values:
+	// The mount propagation settings. Mount propagation enables volumes mounted on one container to be shared among other containers within the same pod or across distinct pods residing on the same node. Valid values:
 	//
-	// 	- None: The volume mount does not receive subsequent mounts that are performed on the volume or on the subdirectories of the volume.
+	// 	- None: Subsequent mounts executed either on the volume itself or its subdirectories do not propagate to the already established volume mount.
 	//
-	// 	- HostToCotainer: The volume mount receives subsequent mounts that are performed on the volume or on the subdirectories of the volume.
+	// 	- HostToCotainer: Subsequent mounts executed either on the volume itself or its subdirectories propagate to the already established volume mount.
 	//
-	// 	- Bidirectional: The volume mount behaves the same as the HostToContainer mount. The volume mount receives subsequent mounts that are performed on the volume or on the subdirectories of the volume. In addition, all volume mounts that are performed on the container are propagated back to the host and all containers of all pods that use the same volume.
+	// 	- Bidirectional: This value is similar to HostToCotainer. Subsequent mounts executed either on the volume itself or its subdirectories propagate to the already established volume mount. In addition, any volume mounts executed on a container not only propagate back to the underlying host but also to all containers across every pod that uses the same volume.
 	//
 	// Default value: None.
 	//
@@ -15654,7 +15786,7 @@ type DescribeEciScalingConfigurationsResponseBodyScalingConfigurationsContainers
 	//
 	// None
 	MountPropagation *string `json:"MountPropagation,omitempty" xml:"MountPropagation,omitempty"`
-	// The volume name. The value of this parameter is the same as the value of Volume.N.Name.
+	// The volume name. The value of this parameter is the same as the name of the volume that is mounted to containers.
 	//
 	// example:
 	//
@@ -15668,7 +15800,7 @@ type DescribeEciScalingConfigurationsResponseBodyScalingConfigurationsContainers
 	//
 	// false
 	ReadOnly *bool `json:"ReadOnly,omitempty" xml:"ReadOnly,omitempty"`
-	// The subdirectory of the volume.
+	// The volume subdirectory.
 	//
 	// example:
 	//
@@ -15743,9 +15875,9 @@ func (s *DescribeEciScalingConfigurationsResponseBodyScalingConfigurationsDnsCon
 }
 
 type DescribeEciScalingConfigurationsResponseBodyScalingConfigurationsHostAliases struct {
-	// The hostnames that were added.
+	// The added hostnames.
 	Hostnames []*string `json:"Hostnames,omitempty" xml:"Hostnames,omitempty" type:"Repeated"`
-	// The IP address that was added.
+	// The added IP address.
 	//
 	// example:
 	//
@@ -15816,13 +15948,13 @@ func (s *DescribeEciScalingConfigurationsResponseBodyScalingConfigurationsImageR
 }
 
 type DescribeEciScalingConfigurationsResponseBodyScalingConfigurationsInitContainers struct {
-	// The number of vCPUs that are allocated to the init container.
+	// The number of vCPUs per init container.
 	//
 	// example:
 	//
 	// 0.5
 	Cpu *float32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
-	// The number of GPUs that are allocated to the init container.
+	// The number of GPUs per init container.
 	//
 	// example:
 	//
@@ -15840,17 +15972,17 @@ type DescribeEciScalingConfigurationsResponseBodyScalingConfigurationsInitContai
 	//
 	// Always
 	ImagePullPolicy *string `json:"ImagePullPolicy,omitempty" xml:"ImagePullPolicy,omitempty"`
-	// The startup arguments of the init container.
+	// The container startup arguments.
 	InitContainerArgs []*string `json:"InitContainerArgs,omitempty" xml:"InitContainerArgs,omitempty" type:"Repeated"`
-	// The startup commands of the init container.
+	// The container startup commands.
 	InitContainerCommands []*string `json:"InitContainerCommands,omitempty" xml:"InitContainerCommands,omitempty" type:"Repeated"`
 	// The environment variables.
 	InitContainerEnvironmentVars []*DescribeEciScalingConfigurationsResponseBodyScalingConfigurationsInitContainersInitContainerEnvironmentVars `json:"InitContainerEnvironmentVars,omitempty" xml:"InitContainerEnvironmentVars,omitempty" type:"Repeated"`
 	// The ports of the init container.
 	InitContainerPorts []*DescribeEciScalingConfigurationsResponseBodyScalingConfigurationsInitContainersInitContainerPorts `json:"InitContainerPorts,omitempty" xml:"InitContainerPorts,omitempty" type:"Repeated"`
-	// The volumes that are mounted on the init container.
+	// The volumes that are mounted to the init container.
 	InitContainerVolumeMounts []*DescribeEciScalingConfigurationsResponseBodyScalingConfigurationsInitContainersInitContainerVolumeMounts `json:"InitContainerVolumeMounts,omitempty" xml:"InitContainerVolumeMounts,omitempty" type:"Repeated"`
-	// The memory size of the init container.
+	// The memory size per init container.
 	//
 	// example:
 	//
@@ -15878,7 +16010,7 @@ type DescribeEciScalingConfigurationsResponseBodyScalingConfigurationsInitContai
 	//
 	// 587
 	SecurityContextRunAsUser *string `json:"SecurityContextRunAsUser,omitempty" xml:"SecurityContextRunAsUser,omitempty"`
-	// The working directory of the init container.
+	// The working directory.
 	//
 	// example:
 	//
@@ -16057,13 +16189,13 @@ type DescribeEciScalingConfigurationsResponseBodyScalingConfigurationsInitContai
 	//
 	// /usr/share/
 	MountPath *string `json:"MountPath,omitempty" xml:"MountPath,omitempty"`
-	// The mount propagation settings of the volume. Mount propagation allows volumes that are mounted on one container to be shared with other containers in the same pod, or even with other pods on the same node. Valid values:
+	// The mount propagation setting. Mount propagation enables volumes mounted on one container to be shared among other containers within the same pod or across distinct pods residing on the same node. Valid values:
 	//
-	// 	- None: The volume mount does not receive subsequent mounts that are performed on the volume or on the subdirectories of the volume.
+	// 	- None: Subsequent mounts executed either on the volume itself or its subdirectories do not propagate to the already established volume mount.
 	//
-	// 	- HostToCotainer: The volume mount receives subsequent mounts that are performed on the volume or on the subdirectories of the volume.
+	// 	- HostToCotainer: Subsequent mounts executed either on the volume itself or its subdirectories propagate to the already established volume mount.
 	//
-	// 	- Bidirectional: The volume mount behaves the same as the HostToContainer mount. The volume mount receives subsequent mounts that are performed on the volume or on the subdirectories of the volume. In addition, all volume mounts that are performed on the container are propagated back to the host and all containers of all pods that use the same volume.
+	// 	- Bidirectional: This value is similar to HostToCotainer. Subsequent mounts executed either on the volume itself or its subdirectories propagate to the already established volume mount. In addition, any volume mounts executed on a container not only propagate back to the underlying host but also to all containers across every pod that uses the same volume.
 	//
 	// Default value: None.
 	//
@@ -16085,7 +16217,7 @@ type DescribeEciScalingConfigurationsResponseBodyScalingConfigurationsInitContai
 	//
 	// false
 	ReadOnly *bool `json:"ReadOnly,omitempty" xml:"ReadOnly,omitempty"`
-	// The subdirectory of the volume. A pod can mount different directories of the same volume to different subdirectories of the init container.
+	// The volume subdirectory. A pod can mount different directories of the same volume to different directories of the init container.
 	//
 	// example:
 	//
@@ -16160,13 +16292,13 @@ func (s *DescribeEciScalingConfigurationsResponseBodyScalingConfigurationsSecuri
 }
 
 type DescribeEciScalingConfigurationsResponseBodyScalingConfigurationsTags struct {
-	// The tag key of the elastic container instance.
+	// The tag key.
 	//
 	// example:
 	//
 	// version
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value of the elastic container instance.
+	// The tag value.
 	//
 	// example:
 	//
@@ -16243,7 +16375,7 @@ type DescribeEciScalingConfigurationsResponseBodyScalingConfigurationsVolumes st
 	//
 	// ext4
 	FlexVolumeFsType *string `json:"FlexVolumeFsType,omitempty" xml:"FlexVolumeFsType,omitempty"`
-	// The options of the FlexVolume object. Each option is a key-value pair in a JSON string.
+	// The FlexVolume options. Each option is a key-value pair in a JSON string.
 	//
 	// For example, if you use FlexVolume to mount a disk, the format of Options is `{"volumeId":"d-2zehdahrwoa7srg****","performanceLevel": "PL2"}`.
 	//
@@ -17367,6 +17499,7 @@ type DescribeNotificationConfigurationsResponseBodyNotificationConfigurationMode
 	//
 	// asg-bp1igpak5ft1flyp****
 	ScalingGroupId *string `json:"ScalingGroupId,omitempty" xml:"ScalingGroupId,omitempty"`
+	TimeZone       *string `json:"TimeZone,omitempty" xml:"TimeZone,omitempty"`
 }
 
 func (s DescribeNotificationConfigurationsResponseBodyNotificationConfigurationModels) String() string {
@@ -17389,6 +17522,11 @@ func (s *DescribeNotificationConfigurationsResponseBodyNotificationConfiguration
 
 func (s *DescribeNotificationConfigurationsResponseBodyNotificationConfigurationModels) SetScalingGroupId(v string) *DescribeNotificationConfigurationsResponseBodyNotificationConfigurationModels {
 	s.ScalingGroupId = &v
+	return s
+}
+
+func (s *DescribeNotificationConfigurationsResponseBodyNotificationConfigurationModels) SetTimeZone(v string) *DescribeNotificationConfigurationsResponseBodyNotificationConfigurationModels {
+	s.TimeZone = &v
 	return s
 }
 
@@ -17560,11 +17698,52 @@ type DescribePatternTypesRequest struct {
 	// 2
 	Cores *int32 `json:"Cores,omitempty" xml:"Cores,omitempty"`
 	// The number of vCPUs that you want to assign to the instance type. You can specify multiple vCPUs.
-	CoresList            []*int32  `json:"CoresList,omitempty" xml:"CoresList,omitempty" type:"Repeated"`
+	CoresList []*int32 `json:"CoresList,omitempty" xml:"CoresList,omitempty" type:"Repeated"`
+	// The CPU architectures of the instance types. Valid values:
+	//
+	// >  You can specify 1 to 2 CPU architectures.
+	//
+	// 	- x86
+	//
+	// 	- Arm
 	CpuArchitectures     []*string `json:"CpuArchitectures,omitempty" xml:"CpuArchitectures,omitempty" type:"Repeated"`
 	ExcludedInstanceType []*string `json:"ExcludedInstanceType,omitempty" xml:"ExcludedInstanceType,omitempty" type:"Repeated"`
-	GpuSpecs             []*string `json:"GpuSpecs,omitempty" xml:"GpuSpecs,omitempty" type:"Repeated"`
-	InstanceCategories   []*string `json:"InstanceCategories,omitempty" xml:"InstanceCategories,omitempty" type:"Repeated"`
+	// The GPU models.
+	GpuSpecs []*string `json:"GpuSpecs,omitempty" xml:"GpuSpecs,omitempty" type:"Repeated"`
+	// The categories of the instance types. Valid values:
+	//
+	// 	- General-purpose
+	//
+	// 	- Compute-optimized
+	//
+	// 	- Memory-optimized
+	//
+	// 	- Big data
+	//
+	// 	- Local SSDs
+	//
+	// 	- High Clock Speed
+	//
+	// 	- Enhanced
+	//
+	// 	- Shared
+	//
+	// 	- Compute-optimized with GPU
+	//
+	// 	- Visual Compute-optimized
+	//
+	// 	- Heterogeneous Service
+	//
+	// 	- Compute-optimized with FPGA
+	//
+	// 	- Compute-optimized with NPU
+	//
+	// 	- ECS Bare Metal
+	//
+	// 	- Super Computing Cluster
+	//
+	// 	- High Performance Compute
+	InstanceCategories []*string `json:"InstanceCategories,omitempty" xml:"InstanceCategories,omitempty" type:"Repeated"`
 	// The level of the instance family. Valid values:
 	//
 	// 	- EntryLevel: entry level
@@ -17576,7 +17755,8 @@ type DescribePatternTypesRequest struct {
 	// example:
 	//
 	// EnterpriseLevel
-	InstanceFamilyLevel  *string   `json:"InstanceFamilyLevel,omitempty" xml:"InstanceFamilyLevel,omitempty"`
+	InstanceFamilyLevel *string `json:"InstanceFamilyLevel,omitempty" xml:"InstanceFamilyLevel,omitempty"`
+	// The instance families that you want to query. You can query 1 to 10 instance families in each call.
 	InstanceTypeFamilies []*string `json:"InstanceTypeFamilies,omitempty" xml:"InstanceTypeFamilies,omitempty" type:"Repeated"`
 	// The maximum hourly price for pay-as-you-go or preemptible instances.
 	//
@@ -17584,14 +17764,20 @@ type DescribePatternTypesRequest struct {
 	//
 	// 2
 	MaxPrice *float32 `json:"MaxPrice,omitempty" xml:"MaxPrice,omitempty"`
+	// The maximum number of vCPUs per instance type.
+	//
 	// example:
 	//
 	// 4
 	MaximumCpuCoreCount *int32 `json:"MaximumCpuCoreCount,omitempty" xml:"MaximumCpuCoreCount,omitempty"`
+	// The maximum number of GPUs per instance. The value must be a positive integer.
+	//
 	// example:
 	//
 	// 2
 	MaximumGpuAmount *int32 `json:"MaximumGpuAmount,omitempty" xml:"MaximumGpuAmount,omitempty"`
+	// The maximum memory size per instance. Unit: GiB.
+	//
 	// example:
 	//
 	// 4
@@ -17604,38 +17790,55 @@ type DescribePatternTypesRequest struct {
 	Memory *float32 `json:"Memory,omitempty" xml:"Memory,omitempty"`
 	// The memory size that you want to assign to the instance type. Unit: GiB. You can specify multiple memory sizes.
 	MemoryList []*float32 `json:"MemoryList,omitempty" xml:"MemoryList,omitempty" type:"Repeated"`
+	// The baseline vCPU computing performance (overall baseline performance of all vCPUs) per t5 or t6 burstable instance.
+	//
 	// example:
 	//
 	// 12
 	MinimumBaselineCredit *int32 `json:"MinimumBaselineCredit,omitempty" xml:"MinimumBaselineCredit,omitempty"`
+	// The minimum number of vCPUs per instance type.
+	//
 	// example:
 	//
 	// 2
 	MinimumCpuCoreCount *int32 `json:"MinimumCpuCoreCount,omitempty" xml:"MinimumCpuCoreCount,omitempty"`
+	// The minimum number of IPv6 addresses per ENI.
+	//
 	// example:
 	//
 	// 1
 	MinimumEniIpv6AddressQuantity *int32 `json:"MinimumEniIpv6AddressQuantity,omitempty" xml:"MinimumEniIpv6AddressQuantity,omitempty"`
+	// The minimum number of IPv4 addresses per ENI.
+	//
 	// example:
 	//
 	// 2
 	MinimumEniPrivateIpAddressQuantity *int32 `json:"MinimumEniPrivateIpAddressQuantity,omitempty" xml:"MinimumEniPrivateIpAddressQuantity,omitempty"`
+	// The minimum number of elastic network interfaces (ENIs) per instance.
+	//
 	// example:
 	//
 	// 2
 	MinimumEniQuantity *int32 `json:"MinimumEniQuantity,omitempty" xml:"MinimumEniQuantity,omitempty"`
+	// The minimum number of GPUs per instance. The value must be a positive integer.
+	//
 	// example:
 	//
 	// 2
 	MinimumGpuAmount *int32 `json:"MinimumGpuAmount,omitempty" xml:"MinimumGpuAmount,omitempty"`
+	// The initial vCPU credits per t5 or t6 burstable instance.
+	//
 	// example:
 	//
 	// 12
 	MinimumInitialCredit *int32 `json:"MinimumInitialCredit,omitempty" xml:"MinimumInitialCredit,omitempty"`
+	// The minimum memory size per instance. Unit: GiB.
+	//
 	// example:
 	//
 	// 4
-	MinimumMemorySize       *float32  `json:"MinimumMemorySize,omitempty" xml:"MinimumMemorySize,omitempty"`
+	MinimumMemorySize *float32 `json:"MinimumMemorySize,omitempty" xml:"MinimumMemorySize,omitempty"`
+	// The processor models of the instance types. You can specify 1 to 10 processor models.
 	PhysicalProcessorModels []*string `json:"PhysicalProcessorModels,omitempty" xml:"PhysicalProcessorModels,omitempty" type:"Repeated"`
 	// The region ID.
 	//
@@ -17659,7 +17862,7 @@ type DescribePatternTypesRequest struct {
 	//
 	// NoSpot
 	SpotStrategy *string `json:"SpotStrategy,omitempty" xml:"SpotStrategy,omitempty"`
-	// The vSwitch IDs.
+	// The IDs of the vSwitches.
 	VSwitchId []*string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty" type:"Repeated"`
 }
 
@@ -18808,17 +19011,17 @@ func (s *DescribeScalingActivityDetailResponse) SetBody(v *DescribeScalingActivi
 type DescribeScalingConfigurationsRequest struct {
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The number of the page to return. Pages start from page 1.
+	// The page number. Pages start from page 1.
 	//
-	// Default value: 1
+	// Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page. Maximum value: 50.
+	// The number of entries per page. Maximum value: 50.
 	//
-	// Default value: 10
+	// Default value: 10.
 	//
 	// example:
 	//
@@ -19123,7 +19326,7 @@ type DescribeScalingConfigurationsResponseBodyScalingConfigurations struct {
 	//
 	// instance****
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// The information about the intelligent configuration settings, which determines the available instance types.
+	// The intelligent configuration settings, which determine the available instance types.
 	InstancePatternInfos []*DescribeScalingConfigurationsResponseBodyScalingConfigurationsInstancePatternInfos `json:"InstancePatternInfos,omitempty" xml:"InstancePatternInfos,omitempty" type:"Repeated"`
 	// The instance types of the ECS instances.
 	//
@@ -21588,6 +21791,12 @@ func (s *DescribeScalingGroupDetailResponse) SetBody(v *DescribeScalingGroupDeta
 }
 
 type DescribeScalingGroupsRequest struct {
+	// The type of instances that are managed by the scaling group. Valid values:
+	//
+	// 	- ECS: ECS instances
+	//
+	// 	- ECI: elastic container instances
+	//
 	// example:
 	//
 	// ECS
@@ -23532,7 +23741,7 @@ type DescribeScalingRulesResponseBody struct {
 	//
 	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Details of the scaling rules.
+	// The scaling rules.
 	ScalingRules []*DescribeScalingRulesResponseBodyScalingRules `json:"ScalingRules,omitempty" xml:"ScalingRules,omitempty" type:"Repeated"`
 	// The total number of scaling rules.
 	//
@@ -23576,11 +23785,11 @@ func (s *DescribeScalingRulesResponseBody) SetTotalCount(v int32) *DescribeScali
 }
 
 type DescribeScalingRulesResponseBodyScalingRules struct {
-	// The scaling mode of the scaling rule. Valid values:
+	// The adjustment method of the scaling rule. Valid values:
 	//
-	// 	- QuantityChangeInCapacity: adds the specified number of ECS instances to or removes the specified number of ECS instances from the scaling group.
+	// 	- QuantityChangeInCapacity: adds or removes the specified number of Elastic Compute Service (ECS) instances to or from the scaling group.
 	//
-	// 	- PercentChangeInCapacity: adds the specified percentage of ECS instances to or removes the specified percentage of ECS instances from the scaling group.
+	// 	- PercentChangeInCapacity: adds or removes the specified percentage of ECS instances to or from the scaling group.
 	//
 	// 	- TotalCapacity: adjusts the number of ECS instances in the scaling group to the specified number.
 	//
@@ -23588,23 +23797,23 @@ type DescribeScalingRulesResponseBodyScalingRules struct {
 	//
 	// QuantityChangeInCapacity
 	AdjustmentType *string `json:"AdjustmentType,omitempty" xml:"AdjustmentType,omitempty"`
-	// The adjustment value that is specified in the scaling rule.
+	// The number of instances that must be scaled based on the scaling rule.
 	//
 	// example:
 	//
 	// 1
 	AdjustmentValue *int32 `json:"AdjustmentValue,omitempty" xml:"AdjustmentValue,omitempty"`
-	// 监控项维度信息值，适用于目标追踪规则，当监控项需额外维度信息时设置，例如LoadBalancerRealServerAverageQps监控项需指定rulePool维度信息。
+	// The dimensions. This parameter is applicable to target tracking scaling rules. You can specify this parameter if your predefined metric requires extra dimensions. For example, if you predefine the LoadBalancerRealServerAverageQps metric, you must use this parameter to specify the rulePool dimension.
 	AlarmDimensions []*DescribeScalingRulesResponseBodyScalingRulesAlarmDimensions `json:"AlarmDimensions,omitempty" xml:"AlarmDimensions,omitempty" type:"Repeated"`
-	// The event-triggered tasks that are associated with the scaling rule. Event-triggered tasks that are associated with the scaling rule are returned only if you set the ShowAlarmRules parameter to true. Otherwise, an empty list is returned.
+	// The event-triggered tasks that are associated with the scaling rule. The value of this parameter is returned only if you set ShowAlarmRules to true. Otherwise, null is returned.
 	Alarms []*DescribeScalingRulesResponseBodyScalingRulesAlarms `json:"Alarms,omitempty" xml:"Alarms,omitempty" type:"Repeated"`
-	// The cooldown time of the scaling rule. This parameter is available only if you set the ScalingRuleType parameter to SimpleScalingRule. Valid values: 0 to 86400. Unit: seconds.
+	// The cooldown period of the scaling rule. This parameter is available only if you set ScalingRuleType to SimpleScalingRule. Valid values: 0 to 86400. Unit: seconds.
 	//
 	// example:
 	//
 	// 20
 	Cooldown *int32 `json:"Cooldown,omitempty" xml:"Cooldown,omitempty"`
-	// Specifies whether to disable scale-in. This parameter is available only if you set the ScalingRuleType parameter to TargetTrackingScalingRule. Valid values:
+	// Indicates whether scale-in is disabled. This parameter takes effect only if you set ScalingRuleType to TargetTrackingScalingRule. Valid values:
 	//
 	// 	- true
 	//
@@ -23614,19 +23823,19 @@ type DescribeScalingRulesResponseBodyScalingRules struct {
 	//
 	// true
 	DisableScaleIn *bool `json:"DisableScaleIn,omitempty" xml:"DisableScaleIn,omitempty"`
-	// The warmup period of the ECS instance.
+	// The warm-up period of instances. During the warm-up period, a series of preparation measures are taken for the new instances. Performance metrics of instances being warmed up are not counted towards the monitoring range.
 	//
 	// example:
 	//
 	// 300
 	EstimatedInstanceWarmup *int32 `json:"EstimatedInstanceWarmup,omitempty" xml:"EstimatedInstanceWarmup,omitempty"`
-	// The maximum number of ECS instances in the scaling group. You must specify the InitialMaxSize and PredictiveValueBehavior parameters.
+	// The maximum number of ECS instances that can be contained in the scaling group. If you specify this parameter, you must also specify PredictiveValueBehavior.
 	//
 	// example:
 	//
 	// 100
 	InitialMaxSize *int32 `json:"InitialMaxSize,omitempty" xml:"InitialMaxSize,omitempty"`
-	// The maximum number of ECS instances in the scaling group.
+	// The maximum number of ECS instances that can be contained in the scaling group.
 	//
 	// example:
 	//
@@ -23638,13 +23847,13 @@ type DescribeScalingRulesResponseBodyScalingRules struct {
 	//
 	// CpuUtilization
 	MetricName *string `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
-	// The minimum number of instances that must be scaled when the AdjustmentType parameter is set to PercentChangeInCapacity. This parameter takes effect only if you set the ScalingRuleType parameter to SimpleScalingRule or StepScalingRule.
+	// The minimum number of instances that must be scaled. This parameter takes effect only if you set ScalingRuleType to SimpleScalingRule or StepScalingRule and set AdjustmentType to PercentChangeInCapacity.
 	//
 	// example:
 	//
 	// 1
 	MinAdjustmentMagnitude *int32 `json:"MinAdjustmentMagnitude,omitempty" xml:"MinAdjustmentMagnitude,omitempty"`
-	// The minimum number of ECS instances in the scaling group.
+	// The minimum number of ECS instances that must be contained in the scaling group.
 	//
 	// example:
 	//
@@ -23652,45 +23861,45 @@ type DescribeScalingRulesResponseBodyScalingRules struct {
 	MinSize *int32 `json:"MinSize,omitempty" xml:"MinSize,omitempty"`
 	// The mode of the predictive scaling rule. Valid values:
 	//
-	// 	- PredictAndScale: produces predictions and creates prediction tasks.
+	// 	- PredictAndScale: provides predictions and creates prediction tasks.
 	//
-	// 	- PredictOnly: produces predictions but does not create prediction tasks.
+	// 	- PredictOnly: provides predictions but does not create prediction tasks.
 	//
 	// example:
 	//
 	// PredictAndScale
 	PredictiveScalingMode *string `json:"PredictiveScalingMode,omitempty" xml:"PredictiveScalingMode,omitempty"`
-	// The amount of buffer time before the prediction task is executed. By default, all scheduled tasks that are automatically created for a predictive scaling rule are executed on the hour. You can specify a buffer time for resource preparation before prediction tasks are executed. Valid values: 0 to 60. Unit: minutes.
+	// The amount of buffer time before prediction tasks are executed. By default, all prediction tasks that are automatically created based on a predictive scaling rule are executed on the hour. You can specify a buffer time for resource preparation before prediction tasks are executed. Valid values: 0 to 60. Unit: minutes.
 	//
 	// example:
 	//
 	// 30
 	PredictiveTaskBufferTime *int32 `json:"PredictiveTaskBufferTime,omitempty" xml:"PredictiveTaskBufferTime,omitempty"`
-	// Specifies which one of the initial maximum capacity and the predicted value can be used as the maximum value for prediction tasks. Valid values:
+	// The action on the predicted maximum value. Valid values:
 	//
 	// 	- MaxOverridePredictiveValue: uses the initial maximum capacity as the maximum value for prediction tasks if the predicted value is greater than the initial maximum capacity.
 	//
 	// 	- PredictiveValueOverrideMax: uses the predicted value as the maximum value for prediction tasks when the predicted value is greater than the initial maximum capacity.
 	//
-	// 	- PredictiveValueOverrideMaxWithBuffer: increases the predicted value by a percentage that is specified by the PredictiveValueBuffer parameter. If the predicted value that is increased by the percentage is greater than the initial maximum capacity, the increased value is used as the maximum value for prediction tasks.
+	// 	- PredictiveValueOverrideMaxWithBuffer: increases the predicted value by a ratio that is specified by PredictiveValueBuffer, and uses the increased value as the maximum value for prediction tasks if the predicted value increased by this ratio is greater than the initial maximum capacity.
 	//
 	// example:
 	//
 	// MaxOverridePredictiveValue
 	PredictiveValueBehavior *string `json:"PredictiveValueBehavior,omitempty" xml:"PredictiveValueBehavior,omitempty"`
-	// The percentage of the increment to the predicted value when the PredictiveValueBehavior parameter is set to PredictiveValueOverrideMaxWithBuffer. If the predicted value increased by this percentage is greater than the initial maximum capacity, the increased value is used as the maximum value for prediction tasks. Valid values: 0 to 100.
+	// The ratio based on which the predicted value is increased when PredictiveValueBehavior is set to PredictiveValueOverrideMaxWithBuffer. If the predicted value increased by this ratio is greater than the initial maximum capacity, the increased value is used as the maximum value for prediction tasks. Valid values: 0 to 100.
 	//
 	// example:
 	//
 	// 50
 	PredictiveValueBuffer *int32 `json:"PredictiveValueBuffer,omitempty" xml:"PredictiveValueBuffer,omitempty"`
-	// The number of consecutive times that the event-triggered task created for scale-out activities must meet the threshold conditions before an alert is triggered. After a target tracking scaling rule is created, an event-triggered task is automatically created and then associated with the target tracking scaling rule.
+	// The number of consecutive times that the event-triggered task for scale-in purposes must meet the threshold conditions before an alert is triggered. After a target tracking scaling rule is created, an event-triggered task is automatically created and associated with the target tracking scaling rule.
 	//
 	// example:
 	//
 	// 15
 	ScaleInEvaluationCount *int32 `json:"ScaleInEvaluationCount,omitempty" xml:"ScaleInEvaluationCount,omitempty"`
-	// The number of consecutive times that the event-triggered task created for scale-in activities must meet the threshold conditions before an alert is triggered. After a target tracking scaling rule is created, an event-triggered task is automatically created and then associated with the target tracking scaling rule.
+	// The number of consecutive times that the event-triggered task created for scale-out purposes must meet the threshold conditions before an alert is triggered. After a target tracking scaling rule is created, an event-triggered task is automatically created and associated with the target tracking scaling rule.
 	//
 	// example:
 	//
@@ -23722,13 +23931,13 @@ type DescribeScalingRulesResponseBodyScalingRules struct {
 	ScalingRuleName *string `json:"ScalingRuleName,omitempty" xml:"ScalingRuleName,omitempty"`
 	// The type of the scaling rule. Valid values:
 	//
-	// 	- SimpleScalingRule: adjusts the number of ECS instances based on the values of the AdjustmentType and AdjustmentValue parameters.
+	// 	- SimpleScalingRule: a simple scaling rule. Once a simple scaling rule is executed, Auto Scaling adjusts the number of ECS instances in the scaling group based on the values of AdjustmentType and AdjustmentValue.
 	//
-	// 	- TargetTrackingScalingRule: calculates the number of ECS instances that need to be scaled in a dynamic manner and maintains the value of a predefined metric close to the value of the TargetValue parameter.
+	// 	- TargetTrackingScalingRule: a target tracking scaling rule. Once a target tracking scaling rule is executed, Auto Scaling dynamically calculates the number of ECS instances or elastic container instances to scale based on the predefined metric (MetricName) and attempts to maintain the metric value close to the specified target value (TargetValue).
 	//
-	// 	- StepScalingRule: scales ECS instances in steps based on specified thresholds and metric values.
+	// 	- StepScalingRule: a step scaling rule. Once a step scaling rule is executed, Auto Scaling scales instances step by step based on the predefined thresholds and metric values.
 	//
-	// 	- PredictiveScalingRule: uses machine learning to analyze historical monitoring data of the scaling group and predicts the future values of metrics. In addition, Auto Scaling automatically creates scheduled tasks to adjust the boundary values for the scaling group.
+	// 	- PredictiveScalingRule: a predictive scaling rule. Once a predictive scaling rule is executed, Auto Scaling analyzes the historical monitoring data based on the machine learning technology and predicts the trends of metric data. Auto Scaling also creates scheduled tasks to enable dynamic adjustment of the boundary values for the scaling group.
 	//
 	// example:
 	//
@@ -23736,7 +23945,7 @@ type DescribeScalingRulesResponseBodyScalingRules struct {
 	ScalingRuleType *string `json:"ScalingRuleType,omitempty" xml:"ScalingRuleType,omitempty"`
 	// The step adjustments of the step scaling rule.
 	StepAdjustments []*DescribeScalingRulesResponseBodyScalingRulesStepAdjustments `json:"StepAdjustments,omitempty" xml:"StepAdjustments,omitempty" type:"Repeated"`
-	// The target value of the metric.
+	// The target value of the metric. If you set ScalingRuleType to TargetTrackingScalingRule or PredictiveScalingRule, Auto Scaling keeps the metric value close to the target value by adding instances to or removing instances from the scaling group.
 	//
 	// example:
 	//
@@ -23878,13 +24087,13 @@ func (s *DescribeScalingRulesResponseBodyScalingRules) SetTargetValue(v float32)
 }
 
 type DescribeScalingRulesResponseBodyScalingRulesAlarmDimensions struct {
-	// 监控项关联的维度信息键。
+	// The dimension key of the metric.
 	//
 	// example:
 	//
 	// rulePool
 	DimensionKey *string `json:"DimensionKey,omitempty" xml:"DimensionKey,omitempty"`
-	// 监控项关联的维度信息值。
+	// The dimension value of the metric.
 	//
 	// example:
 	//
@@ -23923,15 +24132,15 @@ type DescribeScalingRulesResponseBodyScalingRulesAlarms struct {
 	//
 	// alarmtask****
 	AlarmTaskName *string `json:"AlarmTaskName,omitempty" xml:"AlarmTaskName,omitempty"`
-	// The comparison operator between the metric value and the threshold for the event-triggered task that is associated with the scaling rule. The comparison operator indicates the relationship between the metric value and the threshold that is required to meet the condition.
+	// The comparison operator between the statistical value and the threshold of the metric of the event-triggered task that is associated with the scaling rule. The comparison operator indicates the relationship in which the metric value and the metric threshold can meet the alert condition.
 	//
-	// 	- Valid value if the metric value is greater than or equal to the threshold: >=.
+	// 	- Valid value if the metric value is greater than or equal to the threshold: >=
 	//
-	// 	- Valid value if the metric value is less than or equal to the threshold: <=.
+	// 	- Valid value if the metric value is less than or equal to the threshold: <=
 	//
-	// 	- Valid value if the metric value is greater than the threshold: >.
+	// 	- Valid value if the metric value is greater than the threshold: >
 	//
-	// 	- Valid value if the metric value is less than the threshold: <.
+	// 	- Valid value if the metric value is less than the threshold: <
 	//
 	// example:
 	//
@@ -23939,7 +24148,7 @@ type DescribeScalingRulesResponseBodyScalingRulesAlarms struct {
 	ComparisonOperator *string `json:"ComparisonOperator,omitempty" xml:"ComparisonOperator,omitempty"`
 	// The dimensions of the event-triggered task that is associated with the scaling rule.
 	Dimensions []*DescribeScalingRulesResponseBodyScalingRulesAlarmsDimensions `json:"Dimensions,omitempty" xml:"Dimensions,omitempty" type:"Repeated"`
-	// The number of consecutive times for which the event-triggered task that is associated with the scaling rule meets the threshold expressions before an alert is triggered.
+	// The number of consecutive times when the event-triggered task that is associated with the scaling rule must meet the alert condition before an alert is triggered.
 	//
 	// example:
 	//
@@ -23951,11 +24160,11 @@ type DescribeScalingRulesResponseBodyScalingRulesAlarms struct {
 	//
 	// CpuUtilization
 	MetricName *string `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
-	// The type of the event-triggered task that is associated with the scaling rule. Valid values:
+	// The type of the metric of the event-triggered task that is associated with the scaling rule. Valid values:
 	//
-	// 	- system: system monitoring event-triggered tasks
+	// 	- system: system metrics
 	//
-	// 	- custom: custom monitoring event-triggered tasks
+	// 	- custom: custom metrics
 	//
 	// example:
 	//
@@ -24037,9 +24246,9 @@ func (s *DescribeScalingRulesResponseBodyScalingRulesAlarms) SetThreshold(v floa
 type DescribeScalingRulesResponseBodyScalingRulesAlarmsDimensions struct {
 	// The key of the dimension that is associated with the metric. Valid values:
 	//
-	// 	- scaling_group: the ID of the scaling group
+	// 	- ScalingGroupId: the ID of the scaling group.
 	//
-	// 	- userId: the ID of the Alibaba Cloud account
+	// 	- userId: the ID of the user account.
 	//
 	// example:
 	//
@@ -24072,13 +24281,13 @@ func (s *DescribeScalingRulesResponseBodyScalingRulesAlarmsDimensions) SetDimens
 }
 
 type DescribeScalingRulesResponseBodyScalingRulesStepAdjustments struct {
-	// The lower limit that is specified in a step adjustment. Valid values: -9.999999E18 to 9.999999E18.
+	// The lower limit of a step adjustment. Valid values: -9.999999E18 to 9.999999E18.
 	//
 	// example:
 	//
 	// 1.0
 	MetricIntervalLowerBound *float32 `json:"MetricIntervalLowerBound,omitempty" xml:"MetricIntervalLowerBound,omitempty"`
-	// The upper limit that is specified in a step adjustment. Valid values: -9.999999E18 to 9.999999E18.
+	// The upper limit of a step adjustment. Valid values: -9.999999E18 to 9.999999E18.
 	//
 	// example:
 	//
@@ -24162,8 +24371,14 @@ type DescribeScheduledTasksRequest struct {
 	// example:
 	//
 	// 50
-	PageSize        *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RecurrenceType  *string `json:"RecurrenceType,omitempty" xml:"RecurrenceType,omitempty"`
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// Weekly
+	RecurrenceType *string `json:"RecurrenceType,omitempty" xml:"RecurrenceType,omitempty"`
+	// example:
+	//
+	// 1,2,3
 	RecurrenceValue *string `json:"RecurrenceValue,omitempty" xml:"RecurrenceValue,omitempty"`
 	// The region ID of the scaling group to which the scheduled task belongs.
 	//
@@ -24187,8 +24402,14 @@ type DescribeScheduledTasksRequest struct {
 	ScheduledTaskIds []*string `json:"ScheduledTaskIds,omitempty" xml:"ScheduledTaskIds,omitempty" type:"Repeated"`
 	// The names of the scheduled tasks that you want to query.
 	ScheduledTaskNames []*string `json:"ScheduledTaskNames,omitempty" xml:"ScheduledTaskNames,omitempty" type:"Repeated"`
-	TaskEnabled        *bool     `json:"TaskEnabled,omitempty" xml:"TaskEnabled,omitempty"`
-	TaskName           *string   `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+	// example:
+	//
+	// true
+	TaskEnabled *bool `json:"TaskEnabled,omitempty" xml:"TaskEnabled,omitempty"`
+	// example:
+	//
+	// scheduled****
+	TaskName *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
 }
 
 func (s DescribeScheduledTasksRequest) String() string {
@@ -24549,11 +24770,11 @@ type DetachAlbServerGroupsRequest struct {
 	//
 	// 123e4567-e89b-12d3-a456-42665544****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// Specifies whether to remove existing Elastic Compute Service (ECS) instances from the ALB server group that you want to disassociate from the scaling group. Valid values:
+	// Specifies whether to remove the existing ECS instances from the ALB server group. Valid values:
 	//
-	// 	- true: removes existing ECS instances and returns the value of the `ScalingActivityId` parameter. You can use the scaling activity ID to check whether the ECS instances are removed.
+	// 	- true: removes the existing ECS instances from the ALB server group and returns the value of `ScalingActivityId`. You can query the value of ScalingActivityId to check whether the existing ECS instances are removed from the ALB server group.
 	//
-	// 	- false: does not remove existing ECS instances.
+	// 	- false: does not remove the existing ECS instances from the ALB server group.
 	//
 	// Default value: false.
 	//
@@ -24668,7 +24889,7 @@ type DetachAlbServerGroupsResponseBody struct {
 	//
 	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the scaling activity in which the ALB server group is disassociated from the scaling group and the ECS instances in the ALB server group are removed from the ALB server group. This parameter is returned only after you set the `ForceDetach` parameter to `true`.
+	// The ID of the scaling activity during which the ALB server group is detached from the scaling group and the existing ECS instances are removed from the ALB server group. This parameter has a return value only if you set `ForceDetach` to `true`.
 	//
 	// example:
 	//
@@ -24904,13 +25125,13 @@ type DetachInstancesRequest struct {
 	//
 	// both
 	DetachOption *string `json:"DetachOption,omitempty" xml:"DetachOption,omitempty"`
-	// 从伸缩组移出一批实例时，是否忽略其中无效的实例。取值范围：
+	// Specifies whether to ignore invalid instances when you remove a batch of instances from the scaling group. Valid values:
 	//
-	// - true：从伸缩组中移出一批实例时，会忽略其中无效的实例。如果存在无效的实例，并且有效的实例被成功移除时，伸缩活动执行状态也会显示为警告状态，可以从伸缩活动详情查看无效的实例。
+	// 	- true: ignores invalid instances. If invalid instances exist and valid instances are removed from the scaling group, the corresponding scaling activity enters the Warning state. You can check the scaling activity details to view the invalid instances that are ignored.
 	//
-	// - false：从伸缩组中移出一批实例时，不会忽略无效的实例。如果一批实例中存在无效的实例，请求会报错。
+	// 	- false: does not ignore invalid instances. If invalid instances exist in the batch of instances that you want to remove from the scaling group, an error is reported.
 	//
-	// 默认值：false。
+	// Default value: false.
 	//
 	// example:
 	//
@@ -28155,7 +28376,7 @@ type ModifyEciScalingConfigurationRequest struct {
 	//
 	// 60
 	TerminationGracePeriodSeconds *int64 `json:"TerminationGracePeriodSeconds,omitempty" xml:"TerminationGracePeriodSeconds,omitempty"`
-	// Information about the volumes.
+	// The volumes.
 	Volumes []*ModifyEciScalingConfigurationRequestVolumes `json:"Volumes,omitempty" xml:"Volumes,omitempty" type:"Repeated"`
 }
 
@@ -29797,21 +30018,21 @@ type ModifyEciScalingConfigurationRequestVolumes struct {
 	FlexVolume     *ModifyEciScalingConfigurationRequestVolumesFlexVolume     `json:"FlexVolume,omitempty" xml:"FlexVolume,omitempty" type:"Struct"`
 	HostPathVolume *ModifyEciScalingConfigurationRequestVolumesHostPathVolume `json:"HostPathVolume,omitempty" xml:"HostPathVolume,omitempty" type:"Struct"`
 	NFSVolume      *ModifyEciScalingConfigurationRequestVolumesNFSVolume      `json:"NFSVolume,omitempty" xml:"NFSVolume,omitempty" type:"Struct"`
-	// The paths to the configuration files.
+	// The paths to configuration files.
 	ConfigFileVolumeConfigFileToPath []*ModifyEciScalingConfigurationRequestVolumesConfigFileVolumeConfigFileToPath `json:"ConfigFileVolumeConfigFileToPath,omitempty" xml:"ConfigFileVolumeConfigFileToPath,omitempty" type:"Repeated"`
-	// The default permissions on ConfigFileVolume.
+	// The default permissions on the ConfigFile volume.
 	//
 	// example:
 	//
 	// 0644
 	ConfigFileVolumeDefaultMode *int32 `json:"ConfigFileVolumeDefaultMode,omitempty" xml:"ConfigFileVolumeDefaultMode,omitempty"`
-	// The name of the volume.
+	// The volume name.
 	//
 	// example:
 	//
 	// default-volume1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The type of HostPathVolume. Examples: File, Directory, and Socket.
+	// The type of the Host directory. Examples: File, Directory, and Socket.
 	//
 	// example:
 	//
@@ -30006,13 +30227,13 @@ func (s *ModifyEciScalingConfigurationRequestVolumesNFSVolume) SetServer(v strin
 }
 
 type ModifyEciScalingConfigurationRequestVolumesConfigFileVolumeConfigFileToPath struct {
-	// The content of the configuration file, which can be up to 32 KB in size.
+	// The content of the configuration file (32 KB).
 	//
 	// example:
 	//
 	// bGl1bWk=
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// The permissions on ConfigFileVolume.
+	// The permissions on the ConfigFile volume.
 	//
 	// example:
 	//
@@ -30101,13 +30322,13 @@ func (s *ModifyEciScalingConfigurationResponse) SetBody(v *ModifyEciScalingConfi
 }
 
 type ModifyInstanceAttributeRequest struct {
-	// Specifies whether to use the scaling group to manage the lifecycles of the manually added ECS instances. Valid values:
+	// Specifies whether to allow the scaling group to manage the lifecycles of the manually added ECS instances. Valid values:
 	//
-	// 	- true: The scaling group manages the lifecycles of instances that are manually added and instances that are automatically created in the same manner. In this case, Auto Scaling releases the instances when they are removed from the scaling group. This rule does not apply to instances that are removed by calling the DetachInstances operation.
+	// 	- true: allows the scaling group to manage the lifecycles of the manually added ECS instances. The scaling group manages the lifecycles of manually added instances and automatically created instances in the same manner. In this case, Auto Scaling releases the instances when they are removed from the scaling group. This rule does not apply to instances that are removed by calling the DetachInstances operation.
 	//
-	// 	- false: The scaling group does not manage the lifecycles of instances that are manually added. In this case, Auto Scaling does not release the instances when they are removed from the scaling group.
+	// 	- false: does not allow the scaling group to manage the lifecycles of the manually added ECS instances. In this case, Auto Scaling does not release the instances when they are removed from the scaling group.
 	//
-	// >  You can specify this parameter for only ECS instances that are manually added to scaling groups.
+	// >  You can specify this parameter only for ECS instances that are manually added to the scaling group.
 	//
 	// example:
 	//
@@ -30505,6 +30726,7 @@ type ModifyNotificationConfigurationRequest struct {
 	//
 	// asg-bp1igpak5ft1flyp****
 	ScalingGroupId *string `json:"ScalingGroupId,omitempty" xml:"ScalingGroupId,omitempty"`
+	TimeZone       *string `json:"TimeZone,omitempty" xml:"TimeZone,omitempty"`
 }
 
 func (s ModifyNotificationConfigurationRequest) String() string {
@@ -30542,6 +30764,11 @@ func (s *ModifyNotificationConfigurationRequest) SetResourceOwnerAccount(v strin
 
 func (s *ModifyNotificationConfigurationRequest) SetScalingGroupId(v string) *ModifyNotificationConfigurationRequest {
 	s.ScalingGroupId = &v
+	return s
+}
+
+func (s *ModifyNotificationConfigurationRequest) SetTimeZone(v string) *ModifyNotificationConfigurationRequest {
+	s.TimeZone = &v
 	return s
 }
 
@@ -30707,7 +30934,7 @@ type ModifyScalingConfigurationRequest struct {
 	//
 	// inst****
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// The intelligent configuration settings, which determines the range of instance types that meet the specified criteria.
+	// The intelligent configuration settings, which determine the available instance types.
 	InstancePatternInfos []*ModifyScalingConfigurationRequestInstancePatternInfos `json:"InstancePatternInfos,omitempty" xml:"InstancePatternInfos,omitempty" type:"Repeated"`
 	// The instance types.
 	InstanceTypeOverrides []*ModifyScalingConfigurationRequestInstanceTypeOverrides `json:"InstanceTypeOverrides,omitempty" xml:"InstanceTypeOverrides,omitempty" type:"Repeated"`
@@ -30790,7 +31017,10 @@ type ModifyScalingConfigurationRequest struct {
 	Override     *bool   `json:"Override,omitempty" xml:"Override,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	Password     *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	// example:
+	//
+	// 123abc****
+	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
 	// Specifies whether to use the password that is preconfigured in the image. Before you use this parameter, make sure that a password is configured in the image.
 	//
 	// example:
@@ -31708,17 +31938,17 @@ func (s *ModifyScalingConfigurationRequestDataDisks) SetSnapshotId(v string) *Mo
 }
 
 type ModifyScalingConfigurationRequestInstancePatternInfos struct {
-	// The architectures of the instance types.
+	// The architectures of the instance types. Valid values:
 	//
-	// 	- X86: x86 architecture.
+	// 	- X86: x86
 	//
-	// 	- Heterogeneous: heterogeneous architecture, such as GPUs and FPGAs.
+	// 	- Heterogeneous: heterogeneous computing, such as GPU-accelerated or FPGA-accelerated
 	//
-	// 	- BareMetal: ECS Bare Metal Instance architecture.
+	// 	- BareMetal: ECS Bare Metal Instance
 	//
-	// 	- Arm: ARM architecture.
+	// 	- Arm: Arm
 	//
-	// 	- SuperComputeCluster: Super Computing Cluster architecture.
+	// 	- SuperComputeCluster: Super Computing Cluster
 	//
 	// By default, all values are included.
 	Architectures []*string `json:"Architectures,omitempty" xml:"Architectures,omitempty" type:"Repeated"`
@@ -31730,28 +31960,28 @@ type ModifyScalingConfigurationRequestInstancePatternInfos struct {
 	//
 	// 	- Required: includes only burstable instance types.
 	//
-	// Default value: Include
+	// Default value: Include.
 	//
 	// example:
 	//
 	// Include
 	BurstablePerformance *string `json:"BurstablePerformance,omitempty" xml:"BurstablePerformance,omitempty"`
-	// The number of vCPUs that you want to allocate to an instance type in intelligent configuration mode. You can use this parameter to filter the available instance types that meet the specified criteria. For more information, see [Overview of instance families](https://help.aliyun.com/document_detail/25378.html).
+	// The number of vCPUs per instance type in intelligent configuration mode. You can specify this parameter to filter the available instance types. For more information, see [Overview of instance families](https://help.aliyun.com/document_detail/25378.html).
 	//
-	// When you specify this parameter, take note of the following items:
+	// Before you specify this parameter, take note of the following items:
 	//
-	// 	- InstancePatternInfo is available only for scaling groups that reside in VPCs.
+	// 	- You can specify InstancePatternInfo only if your scaling group resides in a virtual private cloud (VPC).
 	//
-	// 	- If you specify InstancePatternInfo, you must also specify Cores and Memory.
+	// 	- If you specify InstancePatternInfo, you must also specify InstancePatternInfo.Cores and InstancePatternInfo.Memory.
 	//
-	// 	- If you specify an instance type by using InstanceType or InstanceTypes, Auto Scaling preferentially creates instances by using the instance type that is specified by InstanceType or InstanceTypes for scale-outs. If the specified instance type does not have sufficient inventory, Auto Scaling creates instances by using the lowest-priced instance type that is specified by InstancePatternInfo.
+	// 	- Auto Scaling preferentially uses the instance type specified by InstanceType or InstanceTypes to create instances. If the specified instance type does not have sufficient inventory, Auto Scaling selects the lowest-priced instance type specified by InstancePatternInfo to create instances.
 	//
 	// example:
 	//
 	// 2
 	Cores            *int32    `json:"Cores,omitempty" xml:"Cores,omitempty"`
 	CpuArchitectures []*string `json:"CpuArchitectures,omitempty" xml:"CpuArchitectures,omitempty" type:"Repeated"`
-	// The instance types that you want to exclude. You can use wildcard characters such as an asterisk (\\*) to exclude an instance type or an instance family. Examples:
+	// The instance types that you want to exclude. You can use wildcard characters, such as an asterisk (\\*), to exclude an instance type or an instance family. Examples:
 	//
 	// 	- ecs.c6.large: excludes the ecs.c6.large instance type.
 	//
@@ -31759,45 +31989,78 @@ type ModifyScalingConfigurationRequestInstancePatternInfos struct {
 	ExcludedInstanceTypes []*string `json:"ExcludedInstanceTypes,omitempty" xml:"ExcludedInstanceTypes,omitempty" type:"Repeated"`
 	GpuSpecs              []*string `json:"GpuSpecs,omitempty" xml:"GpuSpecs,omitempty" type:"Repeated"`
 	InstanceCategories    []*string `json:"InstanceCategories,omitempty" xml:"InstanceCategories,omitempty" type:"Repeated"`
-	// The level of the instance family. You can use this parameter to filter instance types that meet the specified criteria. This parameter takes effect only if you set `CostOptimization` to true. Valid values:
+	// The level of the instance family. You can specify this parameter to filter the available instance types. This parameter takes effect only if you set `CostOptimization` to true. Valid values:
 	//
-	// 	- EntryLevel: entry level (shared instance type). Instance types of this level are the most cost-effective but may not provide stable computing performance in a consistent manner. Instance types of this level are suitable for business scenarios in which CPU utilization is low. For more information, see [Shared instance families](https://help.aliyun.com/document_detail/108489.html).
+	// 	- EntryLevel: entry level (shared instance type). Instance types of this level are the most cost-effective but may not provide stable computing performance. Instance types of this level are suitable for scenarios in which the CPU utilization is low. For more information, see [Shared instance families](https://help.aliyun.com/document_detail/108489.html).
 	//
-	// 	- EnterpriseLevel: enterprise level. Instance types of this level provide stable performance and dedicated resources and are suitable for business scenarios that require high stability. For more information, see the [Overview of instance families](https://help.aliyun.com/document_detail/25378.html) topic.
+	// 	- EnterpriseLevel: enterprise level. Instance types of this level provide stable performance and dedicated resources and are suitable for business scenarios that require high stability. For more information, see [Overview of instance families](https://help.aliyun.com/document_detail/25378.html).
 	//
-	// 	- CreditEntryLevel: credit entry level. This value is valid only for burstable instances. CPU credits are used to ensure computing performance. Instance types of this level are suitable for business scenarios in which CPU utilization is low but may fluctuate in specific scenarios. For more information, see [Overview](https://help.aliyun.com/document_detail/59977.html) of burstable instances.
+	// 	- CreditEntryLevel: credit-based entry level (burstable instance types). CPU credits are used to ensure computing performance. Instance types of this level are suitable for scenarios in which the CPU utilization is low but may fluctuate in specific cases. For more information, see [Overview](https://help.aliyun.com/document_detail/59977.html) of burstable instances.
 	//
 	// example:
 	//
 	// EnterpriseLevel
 	InstanceFamilyLevel  *string   `json:"InstanceFamilyLevel,omitempty" xml:"InstanceFamilyLevel,omitempty"`
 	InstanceTypeFamilies []*string `json:"InstanceTypeFamilies,omitempty" xml:"InstanceTypeFamilies,omitempty" type:"Repeated"`
-	// The maximum hourly price for a pay-as-you-go instance or a preemptible instance in intelligent configuration mode. You can use this parameter to filter the available instance types that meet the specified criteria.
+	// The maximum hourly price of pay-as-you-go or preemptible instances in intelligent configuration mode. You can specify this parameter to filter the available instance types.
 	//
-	// > If you set SpotStrategy to SpotWithPriceLimit, specify MaxPrice. In other scenarios, MaxPrice is optional.
+	// >  If you set SpotStrategy to SpotWithPriceLimit, you must specify this parameter. In other cases, this parameter is optional.
 	//
 	// example:
 	//
 	// 2
-	MaxPrice            *float32 `json:"MaxPrice,omitempty" xml:"MaxPrice,omitempty"`
-	MaximumCpuCoreCount *int32   `json:"MaximumCpuCoreCount,omitempty" xml:"MaximumCpuCoreCount,omitempty"`
-	MaximumGpuAmount    *int32   `json:"MaximumGpuAmount,omitempty" xml:"MaximumGpuAmount,omitempty"`
-	MaximumMemorySize   *float32 `json:"MaximumMemorySize,omitempty" xml:"MaximumMemorySize,omitempty"`
-	// The memory size that you want to allocate to an instance type in intelligent configuration mode. Unit: GiB. You can use this parameter to filter the available instance types that meet the specified criteria.
+	MaxPrice *float32 `json:"MaxPrice,omitempty" xml:"MaxPrice,omitempty"`
+	// example:
+	//
+	// 4
+	MaximumCpuCoreCount *int32 `json:"MaximumCpuCoreCount,omitempty" xml:"MaximumCpuCoreCount,omitempty"`
+	// example:
+	//
+	// 2
+	MaximumGpuAmount *int32 `json:"MaximumGpuAmount,omitempty" xml:"MaximumGpuAmount,omitempty"`
+	// example:
+	//
+	// 4
+	MaximumMemorySize *float32 `json:"MaximumMemorySize,omitempty" xml:"MaximumMemorySize,omitempty"`
+	// The memory size per instance type in intelligent configuration mode. Unit: GiB. You can specify this parameter to filter the available instance types.
 	//
 	// example:
 	//
 	// 4
-	Memory                             *float32  `json:"Memory,omitempty" xml:"Memory,omitempty"`
-	MinimumBaselineCredit              *int32    `json:"MinimumBaselineCredit,omitempty" xml:"MinimumBaselineCredit,omitempty"`
-	MinimumCpuCoreCount                *int32    `json:"MinimumCpuCoreCount,omitempty" xml:"MinimumCpuCoreCount,omitempty"`
-	MinimumEniIpv6AddressQuantity      *int32    `json:"MinimumEniIpv6AddressQuantity,omitempty" xml:"MinimumEniIpv6AddressQuantity,omitempty"`
-	MinimumEniPrivateIpAddressQuantity *int32    `json:"MinimumEniPrivateIpAddressQuantity,omitempty" xml:"MinimumEniPrivateIpAddressQuantity,omitempty"`
-	MinimumEniQuantity                 *int32    `json:"MinimumEniQuantity,omitempty" xml:"MinimumEniQuantity,omitempty"`
-	MinimumGpuAmount                   *int32    `json:"MinimumGpuAmount,omitempty" xml:"MinimumGpuAmount,omitempty"`
-	MinimumInitialCredit               *int32    `json:"MinimumInitialCredit,omitempty" xml:"MinimumInitialCredit,omitempty"`
-	MinimumMemorySize                  *float32  `json:"MinimumMemorySize,omitempty" xml:"MinimumMemorySize,omitempty"`
-	PhysicalProcessorModels            []*string `json:"PhysicalProcessorModels,omitempty" xml:"PhysicalProcessorModels,omitempty" type:"Repeated"`
+	Memory *float32 `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	// example:
+	//
+	// 12
+	MinimumBaselineCredit *int32 `json:"MinimumBaselineCredit,omitempty" xml:"MinimumBaselineCredit,omitempty"`
+	// example:
+	//
+	// 2
+	MinimumCpuCoreCount *int32 `json:"MinimumCpuCoreCount,omitempty" xml:"MinimumCpuCoreCount,omitempty"`
+	// example:
+	//
+	// 1
+	MinimumEniIpv6AddressQuantity *int32 `json:"MinimumEniIpv6AddressQuantity,omitempty" xml:"MinimumEniIpv6AddressQuantity,omitempty"`
+	// example:
+	//
+	// 2
+	MinimumEniPrivateIpAddressQuantity *int32 `json:"MinimumEniPrivateIpAddressQuantity,omitempty" xml:"MinimumEniPrivateIpAddressQuantity,omitempty"`
+	// example:
+	//
+	// 2
+	MinimumEniQuantity *int32 `json:"MinimumEniQuantity,omitempty" xml:"MinimumEniQuantity,omitempty"`
+	// example:
+	//
+	// 2
+	MinimumGpuAmount *int32 `json:"MinimumGpuAmount,omitempty" xml:"MinimumGpuAmount,omitempty"`
+	// example:
+	//
+	// 12
+	MinimumInitialCredit *int32 `json:"MinimumInitialCredit,omitempty" xml:"MinimumInitialCredit,omitempty"`
+	// example:
+	//
+	// 4
+	MinimumMemorySize       *float32  `json:"MinimumMemorySize,omitempty" xml:"MinimumMemorySize,omitempty"`
+	PhysicalProcessorModels []*string `json:"PhysicalProcessorModels,omitempty" xml:"PhysicalProcessorModels,omitempty" type:"Repeated"`
 }
 
 func (s ModifyScalingConfigurationRequestInstancePatternInfos) String() string {
@@ -32168,7 +32431,7 @@ type ModifyScalingConfigurationShrinkRequest struct {
 	//
 	// inst****
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// The intelligent configuration settings, which determines the range of instance types that meet the specified criteria.
+	// The intelligent configuration settings, which determine the available instance types.
 	InstancePatternInfos []*ModifyScalingConfigurationShrinkRequestInstancePatternInfos `json:"InstancePatternInfos,omitempty" xml:"InstancePatternInfos,omitempty" type:"Repeated"`
 	// The instance types.
 	InstanceTypeOverrides []*ModifyScalingConfigurationShrinkRequestInstanceTypeOverrides `json:"InstanceTypeOverrides,omitempty" xml:"InstanceTypeOverrides,omitempty" type:"Repeated"`
@@ -32251,7 +32514,10 @@ type ModifyScalingConfigurationShrinkRequest struct {
 	Override     *bool   `json:"Override,omitempty" xml:"Override,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	Password     *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	// example:
+	//
+	// 123abc****
+	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
 	// Specifies whether to use the password that is preconfigured in the image. Before you use this parameter, make sure that a password is configured in the image.
 	//
 	// example:
@@ -33169,17 +33435,17 @@ func (s *ModifyScalingConfigurationShrinkRequestDataDisks) SetSnapshotId(v strin
 }
 
 type ModifyScalingConfigurationShrinkRequestInstancePatternInfos struct {
-	// The architectures of the instance types.
+	// The architectures of the instance types. Valid values:
 	//
-	// 	- X86: x86 architecture.
+	// 	- X86: x86
 	//
-	// 	- Heterogeneous: heterogeneous architecture, such as GPUs and FPGAs.
+	// 	- Heterogeneous: heterogeneous computing, such as GPU-accelerated or FPGA-accelerated
 	//
-	// 	- BareMetal: ECS Bare Metal Instance architecture.
+	// 	- BareMetal: ECS Bare Metal Instance
 	//
-	// 	- Arm: ARM architecture.
+	// 	- Arm: Arm
 	//
-	// 	- SuperComputeCluster: Super Computing Cluster architecture.
+	// 	- SuperComputeCluster: Super Computing Cluster
 	//
 	// By default, all values are included.
 	Architectures []*string `json:"Architectures,omitempty" xml:"Architectures,omitempty" type:"Repeated"`
@@ -33191,28 +33457,28 @@ type ModifyScalingConfigurationShrinkRequestInstancePatternInfos struct {
 	//
 	// 	- Required: includes only burstable instance types.
 	//
-	// Default value: Include
+	// Default value: Include.
 	//
 	// example:
 	//
 	// Include
 	BurstablePerformance *string `json:"BurstablePerformance,omitempty" xml:"BurstablePerformance,omitempty"`
-	// The number of vCPUs that you want to allocate to an instance type in intelligent configuration mode. You can use this parameter to filter the available instance types that meet the specified criteria. For more information, see [Overview of instance families](https://help.aliyun.com/document_detail/25378.html).
+	// The number of vCPUs per instance type in intelligent configuration mode. You can specify this parameter to filter the available instance types. For more information, see [Overview of instance families](https://help.aliyun.com/document_detail/25378.html).
 	//
-	// When you specify this parameter, take note of the following items:
+	// Before you specify this parameter, take note of the following items:
 	//
-	// 	- InstancePatternInfo is available only for scaling groups that reside in VPCs.
+	// 	- You can specify InstancePatternInfo only if your scaling group resides in a virtual private cloud (VPC).
 	//
-	// 	- If you specify InstancePatternInfo, you must also specify Cores and Memory.
+	// 	- If you specify InstancePatternInfo, you must also specify InstancePatternInfo.Cores and InstancePatternInfo.Memory.
 	//
-	// 	- If you specify an instance type by using InstanceType or InstanceTypes, Auto Scaling preferentially creates instances by using the instance type that is specified by InstanceType or InstanceTypes for scale-outs. If the specified instance type does not have sufficient inventory, Auto Scaling creates instances by using the lowest-priced instance type that is specified by InstancePatternInfo.
+	// 	- Auto Scaling preferentially uses the instance type specified by InstanceType or InstanceTypes to create instances. If the specified instance type does not have sufficient inventory, Auto Scaling selects the lowest-priced instance type specified by InstancePatternInfo to create instances.
 	//
 	// example:
 	//
 	// 2
 	Cores            *int32    `json:"Cores,omitempty" xml:"Cores,omitempty"`
 	CpuArchitectures []*string `json:"CpuArchitectures,omitempty" xml:"CpuArchitectures,omitempty" type:"Repeated"`
-	// The instance types that you want to exclude. You can use wildcard characters such as an asterisk (\\*) to exclude an instance type or an instance family. Examples:
+	// The instance types that you want to exclude. You can use wildcard characters, such as an asterisk (\\*), to exclude an instance type or an instance family. Examples:
 	//
 	// 	- ecs.c6.large: excludes the ecs.c6.large instance type.
 	//
@@ -33220,45 +33486,78 @@ type ModifyScalingConfigurationShrinkRequestInstancePatternInfos struct {
 	ExcludedInstanceTypes []*string `json:"ExcludedInstanceTypes,omitempty" xml:"ExcludedInstanceTypes,omitempty" type:"Repeated"`
 	GpuSpecs              []*string `json:"GpuSpecs,omitempty" xml:"GpuSpecs,omitempty" type:"Repeated"`
 	InstanceCategories    []*string `json:"InstanceCategories,omitempty" xml:"InstanceCategories,omitempty" type:"Repeated"`
-	// The level of the instance family. You can use this parameter to filter instance types that meet the specified criteria. This parameter takes effect only if you set `CostOptimization` to true. Valid values:
+	// The level of the instance family. You can specify this parameter to filter the available instance types. This parameter takes effect only if you set `CostOptimization` to true. Valid values:
 	//
-	// 	- EntryLevel: entry level (shared instance type). Instance types of this level are the most cost-effective but may not provide stable computing performance in a consistent manner. Instance types of this level are suitable for business scenarios in which CPU utilization is low. For more information, see [Shared instance families](https://help.aliyun.com/document_detail/108489.html).
+	// 	- EntryLevel: entry level (shared instance type). Instance types of this level are the most cost-effective but may not provide stable computing performance. Instance types of this level are suitable for scenarios in which the CPU utilization is low. For more information, see [Shared instance families](https://help.aliyun.com/document_detail/108489.html).
 	//
-	// 	- EnterpriseLevel: enterprise level. Instance types of this level provide stable performance and dedicated resources and are suitable for business scenarios that require high stability. For more information, see the [Overview of instance families](https://help.aliyun.com/document_detail/25378.html) topic.
+	// 	- EnterpriseLevel: enterprise level. Instance types of this level provide stable performance and dedicated resources and are suitable for business scenarios that require high stability. For more information, see [Overview of instance families](https://help.aliyun.com/document_detail/25378.html).
 	//
-	// 	- CreditEntryLevel: credit entry level. This value is valid only for burstable instances. CPU credits are used to ensure computing performance. Instance types of this level are suitable for business scenarios in which CPU utilization is low but may fluctuate in specific scenarios. For more information, see [Overview](https://help.aliyun.com/document_detail/59977.html) of burstable instances.
+	// 	- CreditEntryLevel: credit-based entry level (burstable instance types). CPU credits are used to ensure computing performance. Instance types of this level are suitable for scenarios in which the CPU utilization is low but may fluctuate in specific cases. For more information, see [Overview](https://help.aliyun.com/document_detail/59977.html) of burstable instances.
 	//
 	// example:
 	//
 	// EnterpriseLevel
 	InstanceFamilyLevel  *string   `json:"InstanceFamilyLevel,omitempty" xml:"InstanceFamilyLevel,omitempty"`
 	InstanceTypeFamilies []*string `json:"InstanceTypeFamilies,omitempty" xml:"InstanceTypeFamilies,omitempty" type:"Repeated"`
-	// The maximum hourly price for a pay-as-you-go instance or a preemptible instance in intelligent configuration mode. You can use this parameter to filter the available instance types that meet the specified criteria.
+	// The maximum hourly price of pay-as-you-go or preemptible instances in intelligent configuration mode. You can specify this parameter to filter the available instance types.
 	//
-	// > If you set SpotStrategy to SpotWithPriceLimit, specify MaxPrice. In other scenarios, MaxPrice is optional.
+	// >  If you set SpotStrategy to SpotWithPriceLimit, you must specify this parameter. In other cases, this parameter is optional.
 	//
 	// example:
 	//
 	// 2
-	MaxPrice            *float32 `json:"MaxPrice,omitempty" xml:"MaxPrice,omitempty"`
-	MaximumCpuCoreCount *int32   `json:"MaximumCpuCoreCount,omitempty" xml:"MaximumCpuCoreCount,omitempty"`
-	MaximumGpuAmount    *int32   `json:"MaximumGpuAmount,omitempty" xml:"MaximumGpuAmount,omitempty"`
-	MaximumMemorySize   *float32 `json:"MaximumMemorySize,omitempty" xml:"MaximumMemorySize,omitempty"`
-	// The memory size that you want to allocate to an instance type in intelligent configuration mode. Unit: GiB. You can use this parameter to filter the available instance types that meet the specified criteria.
+	MaxPrice *float32 `json:"MaxPrice,omitempty" xml:"MaxPrice,omitempty"`
+	// example:
+	//
+	// 4
+	MaximumCpuCoreCount *int32 `json:"MaximumCpuCoreCount,omitempty" xml:"MaximumCpuCoreCount,omitempty"`
+	// example:
+	//
+	// 2
+	MaximumGpuAmount *int32 `json:"MaximumGpuAmount,omitempty" xml:"MaximumGpuAmount,omitempty"`
+	// example:
+	//
+	// 4
+	MaximumMemorySize *float32 `json:"MaximumMemorySize,omitempty" xml:"MaximumMemorySize,omitempty"`
+	// The memory size per instance type in intelligent configuration mode. Unit: GiB. You can specify this parameter to filter the available instance types.
 	//
 	// example:
 	//
 	// 4
-	Memory                             *float32  `json:"Memory,omitempty" xml:"Memory,omitempty"`
-	MinimumBaselineCredit              *int32    `json:"MinimumBaselineCredit,omitempty" xml:"MinimumBaselineCredit,omitempty"`
-	MinimumCpuCoreCount                *int32    `json:"MinimumCpuCoreCount,omitempty" xml:"MinimumCpuCoreCount,omitempty"`
-	MinimumEniIpv6AddressQuantity      *int32    `json:"MinimumEniIpv6AddressQuantity,omitempty" xml:"MinimumEniIpv6AddressQuantity,omitempty"`
-	MinimumEniPrivateIpAddressQuantity *int32    `json:"MinimumEniPrivateIpAddressQuantity,omitempty" xml:"MinimumEniPrivateIpAddressQuantity,omitempty"`
-	MinimumEniQuantity                 *int32    `json:"MinimumEniQuantity,omitempty" xml:"MinimumEniQuantity,omitempty"`
-	MinimumGpuAmount                   *int32    `json:"MinimumGpuAmount,omitempty" xml:"MinimumGpuAmount,omitempty"`
-	MinimumInitialCredit               *int32    `json:"MinimumInitialCredit,omitempty" xml:"MinimumInitialCredit,omitempty"`
-	MinimumMemorySize                  *float32  `json:"MinimumMemorySize,omitempty" xml:"MinimumMemorySize,omitempty"`
-	PhysicalProcessorModels            []*string `json:"PhysicalProcessorModels,omitempty" xml:"PhysicalProcessorModels,omitempty" type:"Repeated"`
+	Memory *float32 `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	// example:
+	//
+	// 12
+	MinimumBaselineCredit *int32 `json:"MinimumBaselineCredit,omitempty" xml:"MinimumBaselineCredit,omitempty"`
+	// example:
+	//
+	// 2
+	MinimumCpuCoreCount *int32 `json:"MinimumCpuCoreCount,omitempty" xml:"MinimumCpuCoreCount,omitempty"`
+	// example:
+	//
+	// 1
+	MinimumEniIpv6AddressQuantity *int32 `json:"MinimumEniIpv6AddressQuantity,omitempty" xml:"MinimumEniIpv6AddressQuantity,omitempty"`
+	// example:
+	//
+	// 2
+	MinimumEniPrivateIpAddressQuantity *int32 `json:"MinimumEniPrivateIpAddressQuantity,omitempty" xml:"MinimumEniPrivateIpAddressQuantity,omitempty"`
+	// example:
+	//
+	// 2
+	MinimumEniQuantity *int32 `json:"MinimumEniQuantity,omitempty" xml:"MinimumEniQuantity,omitempty"`
+	// example:
+	//
+	// 2
+	MinimumGpuAmount *int32 `json:"MinimumGpuAmount,omitempty" xml:"MinimumGpuAmount,omitempty"`
+	// example:
+	//
+	// 12
+	MinimumInitialCredit *int32 `json:"MinimumInitialCredit,omitempty" xml:"MinimumInitialCredit,omitempty"`
+	// example:
+	//
+	// 4
+	MinimumMemorySize       *float32  `json:"MinimumMemorySize,omitempty" xml:"MinimumMemorySize,omitempty"`
+	PhysicalProcessorModels []*string `json:"PhysicalProcessorModels,omitempty" xml:"PhysicalProcessorModels,omitempty" type:"Repeated"`
 }
 
 func (s ModifyScalingConfigurationShrinkRequestInstancePatternInfos) String() string {
@@ -35099,6 +35398,14 @@ type RemoveInstancesRequest struct {
 	//
 	// true
 	DecreaseDesiredCapacity *bool `json:"DecreaseDesiredCapacity,omitempty" xml:"DecreaseDesiredCapacity,omitempty"`
+	// Specifies whether to ignore invalid instances when you remove a batch of instances from the scaling group. Valid values:
+	//
+	// 	- true: ignores invalid instances. If invalid instances exist and valid instances are deleted, the corresponding scaling activity enters the Warning state. You can check the scaling activity details to view the invalid instances that are ignored.
+	//
+	// 	- false: does not ignore invalid instances. If invalid instances exist in the batch of instances that you want to remove from the scaling group, an error is reported.
+	//
+	// Default value: false.
+	//
 	// example:
 	//
 	// false
@@ -37081,7 +37388,7 @@ func (client *Client) ApplyEciScalingConfiguration(request *ApplyEciScalingConfi
 
 // Summary:
 //
-// 基于yaml配置进行弹性伸缩管理
+// Creates and manages scaling groups by using configuration files. You can call the ApplyScalingGroup operation to create and manage scaling groups by using configuration files with efficiency.
 //
 // Description:
 //
@@ -37199,7 +37506,7 @@ func (client *Client) ApplyScalingGroupWithOptions(request *ApplyScalingGroupReq
 
 // Summary:
 //
-// 基于yaml配置进行弹性伸缩管理
+// Creates and manages scaling groups by using configuration files. You can call the ApplyScalingGroup operation to create and manage scaling groups by using configuration files with efficiency.
 //
 // Description:
 //
@@ -38780,6 +39087,10 @@ func (client *Client) CreateNotificationConfigurationWithOptions(request *Create
 		query["ScalingGroupId"] = request.ScalingGroupId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.TimeZone)) {
+		query["TimeZone"] = request.TimeZone
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -39163,13 +39474,13 @@ func (client *Client) CreateScalingConfiguration(request *CreateScalingConfigura
 //
 // If you want to attach a Classic Load Balancer (CLB, formerly known as SLB) instance and an ApsaraDB RDS instance to the scaling group that you want to create, the scaling group, the CLB instance, and the ApsaraDB RDS instance must reside in the same region. For more information, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
 //
-// If you attach a CLB instance to the scaling group that you want to create, Auto Scaling will automatically add the ECS instances in the scaling group to the backend server groups of the CLB instance. You can specify the following types of server groups to add ECS instances:
+// If you attach a CLB instance to the scaling group that you want to create, Auto Scaling automatically adds the ECS instances in the scaling group to the backend server groups of the CLB instance. You can specify the following types of server groups to add ECS instances:
 //
 // 	- Default server group: ECS instances in this group process frontend requests. If no listeners are configured for vServer groups or primary/secondary server groups, the frontend requests are forwarded to the ECS instances in the default server group.
 //
-// 	- vServer group: If you want to forward different requests to different backend servers, or you want to forward requests based on domain names and URLs, you can specify vServer groups.
+// 	- vServer group: If you want to forward different requests to different backend servers, or you want to forward requests based on domain names or URLs, you can specify vServer groups.
 //
-// >  If you specify both the default server group and multiple server groups simultaneously, Auto Scaling will add the ECS instances in your scaling group to these server groups concurrently.
+// >  If you specify both the default server group and multiple server groups simultaneously, Auto Scaling adds the ECS instances in your scaling group to these server groups concurrently.
 //
 // The default weight of each ECS instance as a backend server is 50. If you want to attach a CLB instance to the scaling group that you want to create, make sure that the CLB instance meets the following requirements:
 //
@@ -39177,9 +39488,9 @@ func (client *Client) CreateScalingConfiguration(request *CreateScalingConfigura
 //
 // 	- Health check must be enabled on all listener ports configured for the CLB instance. Otherwise, the scaling group will fail to be created.
 //
-// If you attach Application Load Balancer (ALB) or Network Load Balancer (NLB) server groups to the scaling group that you want to create, Auto Scaling will add the ECS instances in your scaling group to the ALB or NLB server groups to process the access requests forwarded by the corresponding ALB or NLB instances. You can attach multiple ALB or NLB server groups to a scaling group. Make sure that the ALB or NLB server groups belong to the same virtual private cloud (VPC). For more information, see [AttachAlbServerGroups](https://help.aliyun.com/document_detail/266800.html) or [AttachServerGroups](https://help.aliyun.com/document_detail/600559.html).
+// If you attach Application Load Balancer (ALB) or Network Load Balancer (NLB) server groups to the scaling group that you want to create, Auto Scaling adds the ECS instances in your scaling group to the ALB or NLB server groups to process the access requests forwarded by the corresponding ALB or NLB instances. You can attach multiple ALB or NLB server groups to a scaling group. Make sure that the ALB or NLB server groups belong to the same virtual private cloud (VPC). For more information, see [AttachAlbServerGroups](https://help.aliyun.com/document_detail/266800.html) or [AttachServerGroups](https://help.aliyun.com/document_detail/600535.html).
 //
-// If you attach an ApsaraDB RDS instance to the scaling group that you want to create, Auto Scaling will automatically add the private IP addresses of the ECS instances in your scaling group to the IP address whitelist of the ApsaraDB RDS instance. Before you attach an ApsaraDB RDS instance to your scaling group, make sure that the ApsaraDB RDS instance meets the following requirements:
+// If you attach an ApsaraDB RDS instance to the scaling group that you want to create, Auto Scaling automatically adds the private IP addresses of the ECS instances in your scaling group to the IP address whitelist of the ApsaraDB RDS instance. Before you attach an ApsaraDB RDS instance to your scaling group, make sure that the ApsaraDB RDS instance meets the following requirements:
 //
 // 	- The ApsaraDB RDS instance is in the Running state. You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/610396.html) state to query the status of ApsaraDB RDS instances.
 //
@@ -39187,9 +39498,9 @@ func (client *Client) CreateScalingConfiguration(request *CreateScalingConfigura
 //
 // If you set MultiAZPolicy for the scaling group that you want to create to COST_OPTIMIZED, the following rules apply:
 //
-// 	- If you use OnDemandBaseCapacity, OnDemandPercentageAboveBaseCapacity, and SpotInstancePools to specify the instance allocation mode under the cost optimization policy, Auto Scaling will prioritize the implementation of the specified instance allocation mode during scale-out events.
+// 	- If you use OnDemandBaseCapacity, OnDemandPercentageAboveBaseCapacity, and SpotInstancePools to specify the instance allocation mode under the cost optimization policy, Auto Scaling prioritizes the implementation of the specified instance allocation mode during scale-out events.
 //
-// 	- If you do not specify OnDemandBaseCapacity, OnDemandPercentageAboveBaseCapacity, or SpotInstancePools, Auto Scaling will preferentially create instances of the lowest-priced instance type based on the cost optimization policy.
+// 	- If you do not specify OnDemandBaseCapacity, OnDemandPercentageAboveBaseCapacity, or SpotInstancePools, Auto Scaling preferentially creates instances of the lowest-priced instance type based on the cost optimization policy.
 //
 // If you set `Tags.Propagate` to true, the following rules will apply:
 //
@@ -39427,13 +39738,13 @@ func (client *Client) CreateScalingGroupWithOptions(request *CreateScalingGroupR
 //
 // If you want to attach a Classic Load Balancer (CLB, formerly known as SLB) instance and an ApsaraDB RDS instance to the scaling group that you want to create, the scaling group, the CLB instance, and the ApsaraDB RDS instance must reside in the same region. For more information, see [Regions and zones](https://help.aliyun.com/document_detail/40654.html).
 //
-// If you attach a CLB instance to the scaling group that you want to create, Auto Scaling will automatically add the ECS instances in the scaling group to the backend server groups of the CLB instance. You can specify the following types of server groups to add ECS instances:
+// If you attach a CLB instance to the scaling group that you want to create, Auto Scaling automatically adds the ECS instances in the scaling group to the backend server groups of the CLB instance. You can specify the following types of server groups to add ECS instances:
 //
 // 	- Default server group: ECS instances in this group process frontend requests. If no listeners are configured for vServer groups or primary/secondary server groups, the frontend requests are forwarded to the ECS instances in the default server group.
 //
-// 	- vServer group: If you want to forward different requests to different backend servers, or you want to forward requests based on domain names and URLs, you can specify vServer groups.
+// 	- vServer group: If you want to forward different requests to different backend servers, or you want to forward requests based on domain names or URLs, you can specify vServer groups.
 //
-// >  If you specify both the default server group and multiple server groups simultaneously, Auto Scaling will add the ECS instances in your scaling group to these server groups concurrently.
+// >  If you specify both the default server group and multiple server groups simultaneously, Auto Scaling adds the ECS instances in your scaling group to these server groups concurrently.
 //
 // The default weight of each ECS instance as a backend server is 50. If you want to attach a CLB instance to the scaling group that you want to create, make sure that the CLB instance meets the following requirements:
 //
@@ -39441,9 +39752,9 @@ func (client *Client) CreateScalingGroupWithOptions(request *CreateScalingGroupR
 //
 // 	- Health check must be enabled on all listener ports configured for the CLB instance. Otherwise, the scaling group will fail to be created.
 //
-// If you attach Application Load Balancer (ALB) or Network Load Balancer (NLB) server groups to the scaling group that you want to create, Auto Scaling will add the ECS instances in your scaling group to the ALB or NLB server groups to process the access requests forwarded by the corresponding ALB or NLB instances. You can attach multiple ALB or NLB server groups to a scaling group. Make sure that the ALB or NLB server groups belong to the same virtual private cloud (VPC). For more information, see [AttachAlbServerGroups](https://help.aliyun.com/document_detail/266800.html) or [AttachServerGroups](https://help.aliyun.com/document_detail/600559.html).
+// If you attach Application Load Balancer (ALB) or Network Load Balancer (NLB) server groups to the scaling group that you want to create, Auto Scaling adds the ECS instances in your scaling group to the ALB or NLB server groups to process the access requests forwarded by the corresponding ALB or NLB instances. You can attach multiple ALB or NLB server groups to a scaling group. Make sure that the ALB or NLB server groups belong to the same virtual private cloud (VPC). For more information, see [AttachAlbServerGroups](https://help.aliyun.com/document_detail/266800.html) or [AttachServerGroups](https://help.aliyun.com/document_detail/600535.html).
 //
-// If you attach an ApsaraDB RDS instance to the scaling group that you want to create, Auto Scaling will automatically add the private IP addresses of the ECS instances in your scaling group to the IP address whitelist of the ApsaraDB RDS instance. Before you attach an ApsaraDB RDS instance to your scaling group, make sure that the ApsaraDB RDS instance meets the following requirements:
+// If you attach an ApsaraDB RDS instance to the scaling group that you want to create, Auto Scaling automatically adds the private IP addresses of the ECS instances in your scaling group to the IP address whitelist of the ApsaraDB RDS instance. Before you attach an ApsaraDB RDS instance to your scaling group, make sure that the ApsaraDB RDS instance meets the following requirements:
 //
 // 	- The ApsaraDB RDS instance is in the Running state. You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/610396.html) state to query the status of ApsaraDB RDS instances.
 //
@@ -39451,9 +39762,9 @@ func (client *Client) CreateScalingGroupWithOptions(request *CreateScalingGroupR
 //
 // If you set MultiAZPolicy for the scaling group that you want to create to COST_OPTIMIZED, the following rules apply:
 //
-// 	- If you use OnDemandBaseCapacity, OnDemandPercentageAboveBaseCapacity, and SpotInstancePools to specify the instance allocation mode under the cost optimization policy, Auto Scaling will prioritize the implementation of the specified instance allocation mode during scale-out events.
+// 	- If you use OnDemandBaseCapacity, OnDemandPercentageAboveBaseCapacity, and SpotInstancePools to specify the instance allocation mode under the cost optimization policy, Auto Scaling prioritizes the implementation of the specified instance allocation mode during scale-out events.
 //
-// 	- If you do not specify OnDemandBaseCapacity, OnDemandPercentageAboveBaseCapacity, or SpotInstancePools, Auto Scaling will preferentially create instances of the lowest-priced instance type based on the cost optimization policy.
+// 	- If you do not specify OnDemandBaseCapacity, OnDemandPercentageAboveBaseCapacity, or SpotInstancePools, Auto Scaling preferentially creates instances of the lowest-priced instance type based on the cost optimization policy.
 //
 // If you set `Tags.Propagate` to true, the following rules will apply:
 //
@@ -40731,7 +41042,7 @@ func (client *Client) DescribeAlarms(request *DescribeAlarmsRequest) (_result *D
 
 // Summary:
 //
-// Queries the status of scaling activities that prompt text message or email notifications.
+// Queries the status of scaling activities that trigger text message, internal message, or email-based notifications. When you call the DescribeAlertConfiguration operation, you must specify the scaling group ID and region ID to query the status of the desired scaling activities. A scaling activity can be in one of the following states: Successful, Failed, and Rejected.
 //
 // @param request - DescribeAlertConfigurationRequest
 //
@@ -40785,7 +41096,7 @@ func (client *Client) DescribeAlertConfigurationWithOptions(request *DescribeAle
 
 // Summary:
 //
-// Queries the status of scaling activities that prompt text message or email notifications.
+// Queries the status of scaling activities that trigger text message, internal message, or email-based notifications. When you call the DescribeAlertConfiguration operation, you must specify the scaling group ID and region ID to query the status of the desired scaling activities. A scaling activity can be in one of the following states: Successful, Failed, and Rejected.
 //
 // @param request - DescribeAlertConfigurationRequest
 //
@@ -40875,7 +41186,7 @@ func (client *Client) DescribeEciScalingConfigurationDetail(request *DescribeEci
 
 // Summary:
 //
-// Queries scaling configurations of the Elastic Container Instance type to learn the scaling configuration details. This allows you to select an appropriate template when you create elastic container instances.
+// Queries scaling configurations of the Elastic Container Instance type. When you call the DescribeEciScalingConfigurations operation, you can specify ScalingGroupId, ScalingConfigurationIds, or ScalingConfigurationNames to query details about the desired scaling configurations, such as the instance bidding policy, instance type, image pulling policy, and load balancing weight of each elastic container instance. This can help you select a suitable template for creating elastic container instances or reference existing scaling configurations before you modify the automatic scaling policy for elastic container instances.
 //
 // @param request - DescribeEciScalingConfigurationsRequest
 //
@@ -40953,7 +41264,7 @@ func (client *Client) DescribeEciScalingConfigurationsWithOptions(request *Descr
 
 // Summary:
 //
-// Queries scaling configurations of the Elastic Container Instance type to learn the scaling configuration details. This allows you to select an appropriate template when you create elastic container instances.
+// Queries scaling configurations of the Elastic Container Instance type. When you call the DescribeEciScalingConfigurations operation, you can specify ScalingGroupId, ScalingConfigurationIds, or ScalingConfigurationNames to query details about the desired scaling configurations, such as the instance bidding policy, instance type, image pulling policy, and load balancing weight of each elastic container instance. This can help you select a suitable template for creating elastic container instances or reference existing scaling configurations before you modify the automatic scaling policy for elastic container instances.
 //
 // @param request - DescribeEciScalingConfigurationsRequest
 //
@@ -41191,7 +41502,7 @@ func (client *Client) DescribeLifecycleHooks(request *DescribeLifecycleHooksRequ
 
 // Summary:
 //
-// Queries resource quotas. You can call the DescribeLimitation operation to query the upper limits on resources such as scheduled tasks that can be created in a scaling group, load balancers that can be attached to a scaling group, instances that can be contained in a scaling group, and scaling configurations that can be created in a scaling group.
+// Queries resource quotas. For example, you can call the DescribeLimitation operation to query the maximum numbers of scheduled tasks that you can create in a scaling group, load balancers that you can attach to a scaling group, instances that you can add to a scaling group, and scaling configurations that you can create in a scaling group.
 //
 // @param request - DescribeLimitationRequest
 //
@@ -41237,7 +41548,7 @@ func (client *Client) DescribeLimitationWithOptions(request *DescribeLimitationR
 
 // Summary:
 //
-// Queries resource quotas. You can call the DescribeLimitation operation to query the upper limits on resources such as scheduled tasks that can be created in a scaling group, load balancers that can be attached to a scaling group, instances that can be contained in a scaling group, and scaling configurations that can be created in a scaling group.
+// Queries resource quotas. For example, you can call the DescribeLimitation operation to query the maximum numbers of scheduled tasks that you can create in a scaling group, load balancers that you can attach to a scaling group, instances that you can add to a scaling group, and scaling configurations that you can create in a scaling group.
 //
 // @param request - DescribeLimitationRequest
 //
@@ -41391,7 +41702,7 @@ func (client *Client) DescribeNotificationTypes(request *DescribeNotificationTyp
 
 // Summary:
 //
-// Filters instance types that meet your business requirements. If you create a scaling configuration by opting for the Specify Instance Type approach, you can call the DescribePatternTypes operation. This operation is designed to sift through and identify instance types that fulfill your specific business needs. It does so by examining the number of vCPUs, memory size, instance family level, and maximum budgeted expense that you specify within the scaling configuration settings.
+// Queries instance types. When you call the DescribePatternTypes operation, you can specify attributes such as the vSwitch ID, number of vCPUs, memory size, instance family, and maximum acceptable price to filer instance types that meet your business requirements.
 //
 // @param request - DescribePatternTypesRequest
 //
@@ -41429,7 +41740,7 @@ func (client *Client) DescribePatternTypesWithOptions(request *DescribePatternTy
 
 // Summary:
 //
-// Filters instance types that meet your business requirements. If you create a scaling configuration by opting for the Specify Instance Type approach, you can call the DescribePatternTypes operation. This operation is designed to sift through and identify instance types that fulfill your specific business needs. It does so by examining the number of vCPUs, memory size, instance family level, and maximum budgeted expense that you specify within the scaling configuration settings.
+// Queries instance types. When you call the DescribePatternTypes operation, you can specify attributes such as the vSwitch ID, number of vCPUs, memory size, instance family, and maximum acceptable price to filer instance types that meet your business requirements.
 //
 // @param request - DescribePatternTypesRequest
 //
@@ -41979,7 +42290,7 @@ func (client *Client) DescribeScalingGroups(request *DescribeScalingGroupsReques
 
 // Summary:
 //
-// Queries the Elastic Compute Service (ECS) instances in a scaling group. If you want to flexibly filter ECS instances that meet the specified criteria and query the instance details, you can call the DescribeScalingInstances operation. This operation enables you to input custom parameters for precise query of ECS instances, helping you gain a clear understanding of the instance details and optimize scaling configurations.
+// Queries instances in a scaling group. You can call the DescribeScalingInstances operation to query instance details such as the number of preemptible instances in the Running state, the number of Elastic Compute Service (ECS) instances, the warm-up status of ECS instances, and the lifecycle status of ECS instances in a scaling group. You can specify the desired scaling group whose instances you want to query by scaling group ID. In addition, if you want to filter instances based on conditions such as the instance health status, lifecycle status, or creation method, you can also call this operation.
 //
 // @param request - DescribeScalingInstancesRequest
 //
@@ -42081,7 +42392,7 @@ func (client *Client) DescribeScalingInstancesWithOptions(request *DescribeScali
 
 // Summary:
 //
-// Queries the Elastic Compute Service (ECS) instances in a scaling group. If you want to flexibly filter ECS instances that meet the specified criteria and query the instance details, you can call the DescribeScalingInstances operation. This operation enables you to input custom parameters for precise query of ECS instances, helping you gain a clear understanding of the instance details and optimize scaling configurations.
+// Queries instances in a scaling group. You can call the DescribeScalingInstances operation to query instance details such as the number of preemptible instances in the Running state, the number of Elastic Compute Service (ECS) instances, the warm-up status of ECS instances, and the lifecycle status of ECS instances in a scaling group. You can specify the desired scaling group whose instances you want to query by scaling group ID. In addition, if you want to filter instances based on conditions such as the instance health status, lifecycle status, or creation method, you can also call this operation.
 //
 // @param request - DescribeScalingInstancesRequest
 //
@@ -42099,7 +42410,7 @@ func (client *Client) DescribeScalingInstances(request *DescribeScalingInstances
 
 // Summary:
 //
-// Queries all scaling rules in a scaling group.
+// Queries scaling rules. When you call this operation, you can specify the ID, name, or Alibaba Cloud Resource Name (ARN) of a scaling rule to query the details of the scaling rule. For example, you can query the adjustment method, instance warm-up period, and associated event-triggered tasks of the desired scaling rule.
 //
 // Description:
 //
@@ -42193,7 +42504,7 @@ func (client *Client) DescribeScalingRulesWithOptions(request *DescribeScalingRu
 
 // Summary:
 //
-// Queries all scaling rules in a scaling group.
+// Queries scaling rules. When you call this operation, you can specify the ID, name, or Alibaba Cloud Resource Name (ARN) of a scaling rule to query the details of the scaling rule. For example, you can query the adjustment method, instance warm-up period, and associated event-triggered tasks of the desired scaling rule.
 //
 // Description:
 //
@@ -42339,7 +42650,7 @@ func (client *Client) DescribeScheduledTasks(request *DescribeScheduledTasksRequ
 
 // Summary:
 //
-// Disassociates one or more Application Load Balancer (ALB) server groups from a scaling group.
+// Detaches Application Load Balancer (ALB) server groups from a scaling group. When you call the DetachAlbServerGroups operation, you can specify the scaling group ID, ALB server group ID, and port used by Elastic Compute Service (ECS) instances in the desired ALB server group to detach one or more ALB server groups from your scaling group.
 //
 // @param request - DetachAlbServerGroupsRequest
 //
@@ -42405,7 +42716,7 @@ func (client *Client) DetachAlbServerGroupsWithOptions(request *DetachAlbServerG
 
 // Summary:
 //
-// Disassociates one or more Application Load Balancer (ALB) server groups from a scaling group.
+// Detaches Application Load Balancer (ALB) server groups from a scaling group. When you call the DetachAlbServerGroups operation, you can specify the scaling group ID, ALB server group ID, and port used by Elastic Compute Service (ECS) instances in the desired ALB server group to detach one or more ALB server groups from your scaling group.
 //
 // @param request - DetachAlbServerGroupsRequest
 //
@@ -44147,11 +44458,13 @@ func (client *Client) ModifyAlertConfiguration(request *ModifyAlertConfiguration
 
 // Summary:
 //
-// Modifies a scaling configuration for a scaling group that contains elastic container instances.
+// Modifies scaling configurations of the Elastic Container Instance type. When you call the ModifyEciScalingConfiguration operation, you can specify the ID, name, and instance properties of the desired scaling configuration to modify information such as the instance restart policy, instance bidding policy, and elastic IP address (EIP) bandwidth.
 //
 // Description:
 //
-// If you want to change the name of a scaling configuration in a scaling group, make sure that the new name is unique within the scaling group.
+//   If you want to change the name of a scaling configuration in a scaling group, make sure that the new name is unique within the scaling group.
+//
+// 	- You can call the [ModifyEciScalingConfiguration](https://help.aliyun.com/document_detail/459378.html) operation to verify the modification result.
 //
 // @param request - ModifyEciScalingConfigurationRequest
 //
@@ -44389,11 +44702,13 @@ func (client *Client) ModifyEciScalingConfigurationWithOptions(request *ModifyEc
 
 // Summary:
 //
-// Modifies a scaling configuration for a scaling group that contains elastic container instances.
+// Modifies scaling configurations of the Elastic Container Instance type. When you call the ModifyEciScalingConfiguration operation, you can specify the ID, name, and instance properties of the desired scaling configuration to modify information such as the instance restart policy, instance bidding policy, and elastic IP address (EIP) bandwidth.
 //
 // Description:
 //
-// If you want to change the name of a scaling configuration in a scaling group, make sure that the new name is unique within the scaling group.
+//   If you want to change the name of a scaling configuration in a scaling group, make sure that the new name is unique within the scaling group.
+//
+// 	- You can call the [ModifyEciScalingConfiguration](https://help.aliyun.com/document_detail/459378.html) operation to verify the modification result.
 //
 // @param request - ModifyEciScalingConfigurationRequest
 //
@@ -44411,7 +44726,7 @@ func (client *Client) ModifyEciScalingConfiguration(request *ModifyEciScalingCon
 
 // Summary:
 //
-// Modifies the attributes of an Elastic Compute Service (ECS) instance in a scaling group. You can call the ModifyInstanceAttribute operation to modify the lifecycle management attribute of a manually added ECS instance in a scaling group.
+// Modifies the information of an Elastic Compute Service (ECS) instance. When you call the ModifyInstanceAttribute operation, you can specify attributes such as the instance ID, scaling group ID, and region ID to modify the attributes of an ECS instance in a scaling group. You can modify only the hosting attributes of instances that are manually added to scaling groups.
 //
 // @param request - ModifyInstanceAttributeRequest
 //
@@ -44473,7 +44788,7 @@ func (client *Client) ModifyInstanceAttributeWithOptions(request *ModifyInstance
 
 // Summary:
 //
-// Modifies the attributes of an Elastic Compute Service (ECS) instance in a scaling group. You can call the ModifyInstanceAttribute operation to modify the lifecycle management attribute of a manually added ECS instance in a scaling group.
+// Modifies the information of an Elastic Compute Service (ECS) instance. When you call the ModifyInstanceAttribute operation, you can specify attributes such as the instance ID, scaling group ID, and region ID to modify the attributes of an ECS instance in a scaling group. You can modify only the hosting attributes of instances that are manually added to scaling groups.
 //
 // @param request - ModifyInstanceAttributeRequest
 //
@@ -44650,6 +44965,10 @@ func (client *Client) ModifyNotificationConfigurationWithOptions(request *Modify
 
 	if !tea.BoolValue(util.IsUnset(request.ScalingGroupId)) {
 		query["ScalingGroupId"] = request.ScalingGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TimeZone)) {
+		query["TimeZone"] = request.TimeZone
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -45725,7 +46044,7 @@ func (client *Client) RecordLifecycleActionHeartbeat(request *RecordLifecycleAct
 
 // Summary:
 //
-// Removes one or more Elastic Compute Service (ECS) instances or elastic container instances from a scaling group.
+// Removes one or more instances from a scaling group. If your scaling group is enabled and contains no ongoing scaling activities, you can call the RemoveInstances operation to remove instances that you no longer require from the scaling group.
 //
 // Description:
 //
@@ -45825,7 +46144,7 @@ func (client *Client) RemoveInstancesWithOptions(request *RemoveInstancesRequest
 
 // Summary:
 //
-// Removes one or more Elastic Compute Service (ECS) instances or elastic container instances from a scaling group.
+// Removes one or more instances from a scaling group. If your scaling group is enabled and contains no ongoing scaling activities, you can call the RemoveInstances operation to remove instances that you no longer require from the scaling group.
 //
 // Description:
 //
