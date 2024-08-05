@@ -3843,29 +3843,95 @@ func (s *CreateTrafficControlTargetResponse) SetBody(v *CreateTrafficControlTarg
 }
 
 type CreateTrafficControlTaskRequest struct {
-	BehaviorTableMetaId            *string                                                 `json:"BehaviorTableMetaId,omitempty" xml:"BehaviorTableMetaId,omitempty"`
-	ControlGranularity             *string                                                 `json:"ControlGranularity,omitempty" xml:"ControlGranularity,omitempty"`
-	ControlLogic                   *string                                                 `json:"ControlLogic,omitempty" xml:"ControlLogic,omitempty"`
-	ControlType                    *string                                                 `json:"ControlType,omitempty" xml:"ControlType,omitempty"`
-	Description                    *string                                                 `json:"Description,omitempty" xml:"Description,omitempty"`
-	EndTime                        *string                                                 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	ExecutionTime                  *string                                                 `json:"ExecutionTime,omitempty" xml:"ExecutionTime,omitempty"`
-	InstanceId                     *string                                                 `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	ItemConditionArray             *string                                                 `json:"ItemConditionArray,omitempty" xml:"ItemConditionArray,omitempty"`
-	ItemConditionExpress           *string                                                 `json:"ItemConditionExpress,omitempty" xml:"ItemConditionExpress,omitempty"`
-	ItemConditionType              *string                                                 `json:"ItemConditionType,omitempty" xml:"ItemConditionType,omitempty"`
-	ItemTableMetaId                *string                                                 `json:"ItemTableMetaId,omitempty" xml:"ItemTableMetaId,omitempty"`
-	Name                           *string                                                 `json:"Name,omitempty" xml:"Name,omitempty"`
-	SceneId                        *string                                                 `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
-	StartTime                      *string                                                 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	StatisBehaviorConditionArray   *string                                                 `json:"StatisBehaviorConditionArray,omitempty" xml:"StatisBehaviorConditionArray,omitempty"`
-	StatisBehaviorConditionExpress *string                                                 `json:"StatisBehaviorConditionExpress,omitempty" xml:"StatisBehaviorConditionExpress,omitempty"`
-	StatisBehaviorConditionType    *string                                                 `json:"StatisBehaviorConditionType,omitempty" xml:"StatisBehaviorConditionType,omitempty"`
-	TrafficControlTargets          []*CreateTrafficControlTaskRequestTrafficControlTargets `json:"TrafficControlTargets,omitempty" xml:"TrafficControlTargets,omitempty" type:"Repeated"`
-	UserConditionArray             *string                                                 `json:"UserConditionArray,omitempty" xml:"UserConditionArray,omitempty"`
-	UserConditionExpress           *string                                                 `json:"UserConditionExpress,omitempty" xml:"UserConditionExpress,omitempty"`
-	UserConditionType              *string                                                 `json:"UserConditionType,omitempty" xml:"UserConditionType,omitempty"`
-	UserTableMetaId                *string                                                 `json:"UserTableMetaId,omitempty" xml:"UserTableMetaId,omitempty"`
+	// example:
+	//
+	// 1
+	BehaviorTableMetaId *string `json:"BehaviorTableMetaId,omitempty" xml:"BehaviorTableMetaId,omitempty"`
+	// example:
+	//
+	// Global
+	ControlGranularity *string `json:"ControlGranularity,omitempty" xml:"ControlGranularity,omitempty"`
+	// example:
+	//
+	// Guaranteed
+	ControlLogic *string `json:"ControlLogic,omitempty" xml:"ControlLogic,omitempty"`
+	// example:
+	//
+	// Percent
+	ControlType *string `json:"ControlType,omitempty" xml:"ControlType,omitempty"`
+	// example:
+	//
+	// this is a test task
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// 2024-03-26
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// example:
+	//
+	// TimeRange
+	ExecutionTime *string `json:"ExecutionTime,omitempty" xml:"ExecutionTime,omitempty"`
+	// example:
+	//
+	// pairec-cn-***test
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// [{\\"field\\":\\"status\\",\\"option\\":\\"=\\",\\"value\\":\\"1\\"}]
+	ItemConditionArray *string `json:"ItemConditionArray,omitempty" xml:"ItemConditionArray,omitempty"`
+	// example:
+	//
+	// status=1
+	ItemConditionExpress *string `json:"ItemConditionExpress,omitempty" xml:"ItemConditionExpress,omitempty"`
+	// example:
+	//
+	// Array
+	ItemConditionType *string `json:"ItemConditionType,omitempty" xml:"ItemConditionType,omitempty"`
+	// example:
+	//
+	// 3
+	ItemTableMetaId *string `json:"ItemTableMetaId,omitempty" xml:"ItemTableMetaId,omitempty"`
+	// example:
+	//
+	// task-1
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 1
+	SceneId *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
+	// example:
+	//
+	// 2024-03-25
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// example:
+	//
+	// [{\\"field\\":\\"click\\",\\"option\\":\\"<=\\",\\"value\\":\\"30\\"}]
+	StatisBehaviorConditionArray *string `json:"StatisBehaviorConditionArray,omitempty" xml:"StatisBehaviorConditionArray,omitempty"`
+	// example:
+	//
+	// click=30
+	StatisBehaviorConditionExpress *string `json:"StatisBehaviorConditionExpress,omitempty" xml:"StatisBehaviorConditionExpress,omitempty"`
+	// example:
+	//
+	// Array
+	StatisBehaviorConditionType *string                                                 `json:"StatisBehaviorConditionType,omitempty" xml:"StatisBehaviorConditionType,omitempty"`
+	TrafficControlTargets       []*CreateTrafficControlTaskRequestTrafficControlTargets `json:"TrafficControlTargets,omitempty" xml:"TrafficControlTargets,omitempty" type:"Repeated"`
+	// example:
+	//
+	// [{\\"field\\":\\"gender\\",\\"option\\":\\"=\\",\\"value\\":\\"male\\"}]
+	UserConditionArray *string `json:"UserConditionArray,omitempty" xml:"UserConditionArray,omitempty"`
+	// example:
+	//
+	// age<=30&&(3<=level<=6)&&gender=male
+	UserConditionExpress *string `json:"UserConditionExpress,omitempty" xml:"UserConditionExpress,omitempty"`
+	// example:
+	//
+	// Array
+	UserConditionType *string `json:"UserConditionType,omitempty" xml:"UserConditionType,omitempty"`
+	// example:
+	//
+	// 2
+	UserTableMetaId *string `json:"UserTableMetaId,omitempty" xml:"UserTableMetaId,omitempty"`
 }
 
 func (s CreateTrafficControlTaskRequest) String() string {
@@ -3992,19 +4058,58 @@ func (s *CreateTrafficControlTaskRequest) SetUserTableMetaId(v string) *CreateTr
 }
 
 type CreateTrafficControlTaskRequestTrafficControlTargets struct {
-	EndTime              *string  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	Event                *string  `json:"Event,omitempty" xml:"Event,omitempty"`
-	ItemConditionArray   *string  `json:"ItemConditionArray,omitempty" xml:"ItemConditionArray,omitempty"`
-	ItemConditionExpress *string  `json:"ItemConditionExpress,omitempty" xml:"ItemConditionExpress,omitempty"`
-	ItemConditionType    *string  `json:"ItemConditionType,omitempty" xml:"ItemConditionType,omitempty"`
-	Name                 *string  `json:"Name,omitempty" xml:"Name,omitempty"`
-	NewProductRegulation *bool    `json:"NewProductRegulation,omitempty" xml:"NewProductRegulation,omitempty"`
-	RecallName           *string  `json:"RecallName,omitempty" xml:"RecallName,omitempty"`
-	StartTime            *string  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	StatisPeriod         *string  `json:"StatisPeriod,omitempty" xml:"StatisPeriod,omitempty"`
-	Status               *string  `json:"Status,omitempty" xml:"Status,omitempty"`
-	ToleranceValue       *int64   `json:"ToleranceValue,omitempty" xml:"ToleranceValue,omitempty"`
-	Value                *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
+	// example:
+	//
+	// 2024-04-25
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// example:
+	//
+	// click
+	Event *string `json:"Event,omitempty" xml:"Event,omitempty"`
+	// example:
+	//
+	// [{\\"field\\":\\"status\\",\\"option\\":\\"=\\",\\"value\\":\\"1\\"}]
+	ItemConditionArray *string `json:"ItemConditionArray,omitempty" xml:"ItemConditionArray,omitempty"`
+	// example:
+	//
+	// status=1
+	ItemConditionExpress *string `json:"ItemConditionExpress,omitempty" xml:"ItemConditionExpress,omitempty"`
+	// example:
+	//
+	// Array
+	ItemConditionType *string `json:"ItemConditionType,omitempty" xml:"ItemConditionType,omitempty"`
+	// example:
+	//
+	// target_1
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// false
+	NewProductRegulation *bool `json:"NewProductRegulation,omitempty" xml:"NewProductRegulation,omitempty"`
+	// example:
+	//
+	// recall_1
+	RecallName *string `json:"RecallName,omitempty" xml:"RecallName,omitempty"`
+	// example:
+	//
+	// 2024-03-25
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// example:
+	//
+	// Daily
+	StatisPeriod *string `json:"StatisPeriod,omitempty" xml:"StatisPeriod,omitempty"`
+	// example:
+	//
+	// Opened
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// 20
+	ToleranceValue *int64 `json:"ToleranceValue,omitempty" xml:"ToleranceValue,omitempty"`
+	// example:
+	//
+	// 100
+	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s CreateTrafficControlTaskRequestTrafficControlTargets) String() string {
@@ -4081,7 +4186,13 @@ func (s *CreateTrafficControlTaskRequestTrafficControlTargets) SetValue(v float3
 }
 
 type CreateTrafficControlTaskResponseBody struct {
-	RequestId            *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 42391E6D-822C-58F8-9F7E-D991BB86D6AD
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 1
 	TrafficControlTaskId *string `json:"TrafficControlTaskId,omitempty" xml:"TrafficControlTaskId,omitempty"`
 }
 
@@ -7171,7 +7282,8 @@ type GetInstanceResponseBody struct {
 	// example:
 	//
 	// pairec-test1
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceId    *string                               `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	OperatingTool *GetInstanceResponseBodyOperatingTool `json:"OperatingTool,omitempty" xml:"OperatingTool,omitempty" type:"Struct"`
 	// example:
 	//
 	// cn-shenzhen
@@ -7230,6 +7342,11 @@ func (s *GetInstanceResponseBody) SetGmtModifiedTime(v string) *GetInstanceRespo
 
 func (s *GetInstanceResponseBody) SetInstanceId(v string) *GetInstanceResponseBody {
 	s.InstanceId = &v
+	return s
+}
+
+func (s *GetInstanceResponseBody) SetOperatingTool(v *GetInstanceResponseBodyOperatingTool) *GetInstanceResponseBody {
+	s.OperatingTool = v
 	return s
 }
 
@@ -7384,6 +7501,23 @@ func (s *GetInstanceResponseBodyConfigMonitors) SetMeta(v map[string]interface{}
 
 func (s *GetInstanceResponseBodyConfigMonitors) SetType(v string) *GetInstanceResponseBodyConfigMonitors {
 	s.Type = &v
+	return s
+}
+
+type GetInstanceResponseBodyOperatingTool struct {
+	IsEnable *bool `json:"IsEnable,omitempty" xml:"IsEnable,omitempty"`
+}
+
+func (s GetInstanceResponseBodyOperatingTool) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetInstanceResponseBodyOperatingTool) GoString() string {
+	return s.String()
+}
+
+func (s *GetInstanceResponseBodyOperatingTool) SetIsEnable(v bool) *GetInstanceResponseBodyOperatingTool {
+	s.IsEnable = &v
 	return s
 }
 
@@ -12463,7 +12597,8 @@ type ListInstancesResponseBodyInstances struct {
 	// example:
 	//
 	// pairec-test1
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceId    *string                                          `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	OperatingTool *ListInstancesResponseBodyInstancesOperatingTool `json:"OperatingTool,omitempty" xml:"OperatingTool,omitempty" type:"Struct"`
 	// example:
 	//
 	// cn-shenzhen
@@ -12518,6 +12653,11 @@ func (s *ListInstancesResponseBodyInstances) SetGmtModifiedTime(v string) *ListI
 
 func (s *ListInstancesResponseBodyInstances) SetInstanceId(v string) *ListInstancesResponseBodyInstances {
 	s.InstanceId = &v
+	return s
+}
+
+func (s *ListInstancesResponseBodyInstances) SetOperatingTool(v *ListInstancesResponseBodyInstancesOperatingTool) *ListInstancesResponseBodyInstances {
+	s.OperatingTool = v
 	return s
 }
 
@@ -12667,6 +12807,23 @@ func (s *ListInstancesResponseBodyInstancesConfigMonitors) SetMeta(v map[string]
 
 func (s *ListInstancesResponseBodyInstancesConfigMonitors) SetType(v string) *ListInstancesResponseBodyInstancesConfigMonitors {
 	s.Type = &v
+	return s
+}
+
+type ListInstancesResponseBodyInstancesOperatingTool struct {
+	IsEnable *bool `json:"IsEnable,omitempty" xml:"IsEnable,omitempty"`
+}
+
+func (s ListInstancesResponseBodyInstancesOperatingTool) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListInstancesResponseBodyInstancesOperatingTool) GoString() string {
+	return s.String()
+}
+
+func (s *ListInstancesResponseBodyInstancesOperatingTool) SetIsEnable(v bool) *ListInstancesResponseBodyInstancesOperatingTool {
+	s.IsEnable = &v
 	return s
 }
 
