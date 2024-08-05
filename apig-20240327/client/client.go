@@ -7944,6 +7944,7 @@ type ListHttpApiOperationsRequest struct {
 	//
 	// GET
 	Method *string `json:"method,omitempty" xml:"method,omitempty"`
+	Name   *string `json:"name,omitempty" xml:"name,omitempty"`
 	// example:
 	//
 	// GetUser
@@ -7972,6 +7973,11 @@ func (s ListHttpApiOperationsRequest) GoString() string {
 
 func (s *ListHttpApiOperationsRequest) SetMethod(v string) *ListHttpApiOperationsRequest {
 	s.Method = &v
+	return s
+}
+
+func (s *ListHttpApiOperationsRequest) SetName(v string) *ListHttpApiOperationsRequest {
+	s.Name = &v
 	return s
 }
 
@@ -8117,6 +8123,7 @@ type ListHttpApisRequest struct {
 	//
 	// test-
 	Keyword *string `json:"keyword,omitempty" xml:"keyword,omitempty"`
+	Name    *string `json:"name,omitempty" xml:"name,omitempty"`
 	// example:
 	//
 	// 1
@@ -8138,6 +8145,11 @@ func (s ListHttpApisRequest) GoString() string {
 
 func (s *ListHttpApisRequest) SetKeyword(v string) *ListHttpApisRequest {
 	s.Keyword = &v
+	return s
+}
+
+func (s *ListHttpApisRequest) SetName(v string) *ListHttpApisRequest {
+	s.Name = &v
 	return s
 }
 
@@ -11816,6 +11828,10 @@ func (client *Client) ListHttpApiOperationsWithOptions(httpApiId *string, reques
 		query["method"] = request.Method
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["name"] = request.Name
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.NameLike)) {
 		query["nameLike"] = request.NameLike
 	}
@@ -11894,6 +11910,10 @@ func (client *Client) ListHttpApisWithOptions(request *ListHttpApisRequest, head
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Keyword)) {
 		query["keyword"] = request.Keyword
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["name"] = request.Name
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
