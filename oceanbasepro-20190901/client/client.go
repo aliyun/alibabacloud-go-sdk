@@ -33800,7 +33800,7 @@ type DescribeTenantResponseBodyTenant struct {
 	//
 	// KAFKA_PUBLIC
 	InstanceType        *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	LowerCaseTableNames []byte  `json:"LowerCaseTableNames,omitempty" xml:"LowerCaseTableNames,omitempty"`
+	LowerCaseTableNames *int32  `json:"LowerCaseTableNames,omitempty" xml:"LowerCaseTableNames,omitempty"`
 	// ```
 	//
 	// http(s)://[Endpoint]/?Action=DescribeTenant
@@ -34100,8 +34100,8 @@ func (s *DescribeTenantResponseBodyTenant) SetInstanceType(v string) *DescribeTe
 	return s
 }
 
-func (s *DescribeTenantResponseBodyTenant) SetLowerCaseTableNames(v []byte) *DescribeTenantResponseBodyTenant {
-	s.LowerCaseTableNames = v
+func (s *DescribeTenantResponseBodyTenant) SetLowerCaseTableNames(v int32) *DescribeTenantResponseBodyTenant {
+	s.LowerCaseTableNames = &v
 	return s
 }
 
