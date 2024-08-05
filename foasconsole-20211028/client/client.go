@@ -1541,16 +1541,19 @@ type DescribeInstancesResponseBodyInstances struct {
 	// example:
 	//
 	// PRE
-	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	ChargeType   *string                                             `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	ClusterState *DescribeInstancesResponseBodyInstancesClusterState `json:"ClusterState,omitempty" xml:"ClusterState,omitempty" type:"Struct"`
 	// example:
 	//
 	// RUNNING
-	ClusterStatus      *string                                                   `json:"ClusterStatus,omitempty" xml:"ClusterStatus,omitempty"`
-	ClusterUsedStorage *DescribeInstancesResponseBodyInstancesClusterUsedStorage `json:"ClusterUsedStorage,omitempty" xml:"ClusterUsedStorage,omitempty" type:"Struct"`
-	Ha                 *bool                                                     `json:"Ha,omitempty" xml:"Ha,omitempty"`
-	HaResourceSpec     *DescribeInstancesResponseBodyInstancesHaResourceSpec     `json:"HaResourceSpec,omitempty" xml:"HaResourceSpec,omitempty" type:"Struct"`
-	HaVSwitchIds       []*string                                                 `json:"HaVSwitchIds,omitempty" xml:"HaVSwitchIds,omitempty" type:"Repeated"`
-	HaZoneId           *string                                                   `json:"HaZoneId,omitempty" xml:"HaZoneId,omitempty"`
+	ClusterStatus        *string                                                       `json:"ClusterStatus,omitempty" xml:"ClusterStatus,omitempty"`
+	ClusterUsedResources []*DescribeInstancesResponseBodyInstancesClusterUsedResources `json:"ClusterUsedResources,omitempty" xml:"ClusterUsedResources,omitempty" type:"Repeated"`
+	ClusterUsedStorage   *DescribeInstancesResponseBodyInstancesClusterUsedStorage     `json:"ClusterUsedStorage,omitempty" xml:"ClusterUsedStorage,omitempty" type:"Struct"`
+	Ha                   *bool                                                         `json:"Ha,omitempty" xml:"Ha,omitempty"`
+	HaResourceSpec       *DescribeInstancesResponseBodyInstancesHaResourceSpec         `json:"HaResourceSpec,omitempty" xml:"HaResourceSpec,omitempty" type:"Struct"`
+	HaVSwitchIds         []*string                                                     `json:"HaVSwitchIds,omitempty" xml:"HaVSwitchIds,omitempty" type:"Repeated"`
+	HaVSwitchInfo        []*DescribeInstancesResponseBodyInstancesHaVSwitchInfo        `json:"HaVSwitchInfo,omitempty" xml:"HaVSwitchInfo,omitempty" type:"Repeated"`
+	HaZoneId             *string                                                       `json:"HaZoneId,omitempty" xml:"HaZoneId,omitempty"`
 	// This parameter is required.
 	HostAliases []*DescribeInstancesResponseBodyInstancesHostAliases `json:"HostAliases,omitempty" xml:"HostAliases,omitempty" type:"Repeated"`
 	// example:
@@ -1565,7 +1568,8 @@ type DescribeInstancesResponseBodyInstances struct {
 	// example:
 	//
 	// NORMAL
-	OrderState *string `json:"OrderState,omitempty" xml:"OrderState,omitempty"`
+	OrderState *string                                        `json:"OrderState,omitempty" xml:"OrderState,omitempty"`
+	OssInfo    *DescribeInstancesResponseBodyInstancesOssInfo `json:"OssInfo,omitempty" xml:"OssInfo,omitempty" type:"Struct"`
 	// example:
 	//
 	// cn-beijing
@@ -1589,12 +1593,14 @@ type DescribeInstancesResponseBodyInstances struct {
 	// example:
 	//
 	// 1838996687368452
-	Uid        *string   `json:"Uid,omitempty" xml:"Uid,omitempty"`
-	VSwitchIds []*string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty" type:"Repeated"`
+	Uid         *string                                              `json:"Uid,omitempty" xml:"Uid,omitempty"`
+	VSwitchIds  []*string                                            `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty" type:"Repeated"`
+	VSwitchInfo []*DescribeInstancesResponseBodyInstancesVSwitchInfo `json:"VSwitchInfo,omitempty" xml:"VSwitchInfo,omitempty" type:"Repeated"`
 	// example:
 	//
 	// vpc-2ze9*******nxfmfcdi
-	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	VpcId   *string                                        `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	VpcInfo *DescribeInstancesResponseBodyInstancesVpcInfo `json:"VpcInfo,omitempty" xml:"VpcInfo,omitempty" type:"Struct"`
 	// example:
 	//
 	// cn-beijing-g
@@ -1624,8 +1630,18 @@ func (s *DescribeInstancesResponseBodyInstances) SetChargeType(v string) *Descri
 	return s
 }
 
+func (s *DescribeInstancesResponseBodyInstances) SetClusterState(v *DescribeInstancesResponseBodyInstancesClusterState) *DescribeInstancesResponseBodyInstances {
+	s.ClusterState = v
+	return s
+}
+
 func (s *DescribeInstancesResponseBodyInstances) SetClusterStatus(v string) *DescribeInstancesResponseBodyInstances {
 	s.ClusterStatus = &v
+	return s
+}
+
+func (s *DescribeInstancesResponseBodyInstances) SetClusterUsedResources(v []*DescribeInstancesResponseBodyInstancesClusterUsedResources) *DescribeInstancesResponseBodyInstances {
+	s.ClusterUsedResources = v
 	return s
 }
 
@@ -1646,6 +1662,11 @@ func (s *DescribeInstancesResponseBodyInstances) SetHaResourceSpec(v *DescribeIn
 
 func (s *DescribeInstancesResponseBodyInstances) SetHaVSwitchIds(v []*string) *DescribeInstancesResponseBodyInstances {
 	s.HaVSwitchIds = v
+	return s
+}
+
+func (s *DescribeInstancesResponseBodyInstances) SetHaVSwitchInfo(v []*DescribeInstancesResponseBodyInstancesHaVSwitchInfo) *DescribeInstancesResponseBodyInstances {
+	s.HaVSwitchInfo = v
 	return s
 }
 
@@ -1676,6 +1697,11 @@ func (s *DescribeInstancesResponseBodyInstances) SetMonitorType(v string) *Descr
 
 func (s *DescribeInstancesResponseBodyInstances) SetOrderState(v string) *DescribeInstancesResponseBodyInstances {
 	s.OrderState = &v
+	return s
+}
+
+func (s *DescribeInstancesResponseBodyInstances) SetOssInfo(v *DescribeInstancesResponseBodyInstancesOssInfo) *DescribeInstancesResponseBodyInstances {
+	s.OssInfo = v
 	return s
 }
 
@@ -1729,13 +1755,275 @@ func (s *DescribeInstancesResponseBodyInstances) SetVSwitchIds(v []*string) *Des
 	return s
 }
 
+func (s *DescribeInstancesResponseBodyInstances) SetVSwitchInfo(v []*DescribeInstancesResponseBodyInstancesVSwitchInfo) *DescribeInstancesResponseBodyInstances {
+	s.VSwitchInfo = v
+	return s
+}
+
 func (s *DescribeInstancesResponseBodyInstances) SetVpcId(v string) *DescribeInstancesResponseBodyInstances {
 	s.VpcId = &v
 	return s
 }
 
+func (s *DescribeInstancesResponseBodyInstances) SetVpcInfo(v *DescribeInstancesResponseBodyInstancesVpcInfo) *DescribeInstancesResponseBodyInstances {
+	s.VpcInfo = v
+	return s
+}
+
 func (s *DescribeInstancesResponseBodyInstances) SetZoneId(v string) *DescribeInstancesResponseBodyInstances {
 	s.ZoneId = &v
+	return s
+}
+
+type DescribeInstancesResponseBodyInstancesClusterState struct {
+	ClusterId     *string                                                         `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	ClusterStage  *DescribeInstancesResponseBodyInstancesClusterStateClusterStage `json:"ClusterStage,omitempty" xml:"ClusterStage,omitempty" type:"Struct"`
+	CreateTimeout *bool                                                           `json:"CreateTimeout,omitempty" xml:"CreateTimeout,omitempty"`
+	Status        *string                                                         `json:"Status,omitempty" xml:"Status,omitempty"`
+	SubStatus     *string                                                         `json:"SubStatus,omitempty" xml:"SubStatus,omitempty"`
+	Url           *string                                                         `json:"Url,omitempty" xml:"Url,omitempty"`
+	UserSlbDto    *DescribeInstancesResponseBodyInstancesClusterStateUserSlbDto   `json:"UserSlbDto,omitempty" xml:"UserSlbDto,omitempty" type:"Struct"`
+	VpcCidr       *string                                                         `json:"VpcCidr,omitempty" xml:"VpcCidr,omitempty"`
+}
+
+func (s DescribeInstancesResponseBodyInstancesClusterState) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInstancesResponseBodyInstancesClusterState) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstancesResponseBodyInstancesClusterState) SetClusterId(v string) *DescribeInstancesResponseBodyInstancesClusterState {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *DescribeInstancesResponseBodyInstancesClusterState) SetClusterStage(v *DescribeInstancesResponseBodyInstancesClusterStateClusterStage) *DescribeInstancesResponseBodyInstancesClusterState {
+	s.ClusterStage = v
+	return s
+}
+
+func (s *DescribeInstancesResponseBodyInstancesClusterState) SetCreateTimeout(v bool) *DescribeInstancesResponseBodyInstancesClusterState {
+	s.CreateTimeout = &v
+	return s
+}
+
+func (s *DescribeInstancesResponseBodyInstancesClusterState) SetStatus(v string) *DescribeInstancesResponseBodyInstancesClusterState {
+	s.Status = &v
+	return s
+}
+
+func (s *DescribeInstancesResponseBodyInstancesClusterState) SetSubStatus(v string) *DescribeInstancesResponseBodyInstancesClusterState {
+	s.SubStatus = &v
+	return s
+}
+
+func (s *DescribeInstancesResponseBodyInstancesClusterState) SetUrl(v string) *DescribeInstancesResponseBodyInstancesClusterState {
+	s.Url = &v
+	return s
+}
+
+func (s *DescribeInstancesResponseBodyInstancesClusterState) SetUserSlbDto(v *DescribeInstancesResponseBodyInstancesClusterStateUserSlbDto) *DescribeInstancesResponseBodyInstancesClusterState {
+	s.UserSlbDto = v
+	return s
+}
+
+func (s *DescribeInstancesResponseBodyInstancesClusterState) SetVpcCidr(v string) *DescribeInstancesResponseBodyInstancesClusterState {
+	s.VpcCidr = &v
+	return s
+}
+
+type DescribeInstancesResponseBodyInstancesClusterStateClusterStage struct {
+	ClusterId            *string                                                                               `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	CurrentStage         *int32                                                                                `json:"CurrentStage,omitempty" xml:"CurrentStage,omitempty"`
+	Message              *string                                                                               `json:"Message,omitempty" xml:"Message,omitempty"`
+	Status               *string                                                                               `json:"Status,omitempty" xml:"Status,omitempty"`
+	TotalStageWithWeight []*DescribeInstancesResponseBodyInstancesClusterStateClusterStageTotalStageWithWeight `json:"TotalStageWithWeight,omitempty" xml:"TotalStageWithWeight,omitempty" type:"Repeated"`
+}
+
+func (s DescribeInstancesResponseBodyInstancesClusterStateClusterStage) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInstancesResponseBodyInstancesClusterStateClusterStage) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstancesResponseBodyInstancesClusterStateClusterStage) SetClusterId(v string) *DescribeInstancesResponseBodyInstancesClusterStateClusterStage {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *DescribeInstancesResponseBodyInstancesClusterStateClusterStage) SetCurrentStage(v int32) *DescribeInstancesResponseBodyInstancesClusterStateClusterStage {
+	s.CurrentStage = &v
+	return s
+}
+
+func (s *DescribeInstancesResponseBodyInstancesClusterStateClusterStage) SetMessage(v string) *DescribeInstancesResponseBodyInstancesClusterStateClusterStage {
+	s.Message = &v
+	return s
+}
+
+func (s *DescribeInstancesResponseBodyInstancesClusterStateClusterStage) SetStatus(v string) *DescribeInstancesResponseBodyInstancesClusterStateClusterStage {
+	s.Status = &v
+	return s
+}
+
+func (s *DescribeInstancesResponseBodyInstancesClusterStateClusterStage) SetTotalStageWithWeight(v []*DescribeInstancesResponseBodyInstancesClusterStateClusterStageTotalStageWithWeight) *DescribeInstancesResponseBodyInstancesClusterStateClusterStage {
+	s.TotalStageWithWeight = v
+	return s
+}
+
+type DescribeInstancesResponseBodyInstancesClusterStateClusterStageTotalStageWithWeight struct {
+	StepIndex *int32  `json:"StepIndex,omitempty" xml:"StepIndex,omitempty"`
+	StepName  *string `json:"StepName,omitempty" xml:"StepName,omitempty"`
+	Weight    *int32  `json:"Weight,omitempty" xml:"Weight,omitempty"`
+}
+
+func (s DescribeInstancesResponseBodyInstancesClusterStateClusterStageTotalStageWithWeight) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInstancesResponseBodyInstancesClusterStateClusterStageTotalStageWithWeight) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstancesResponseBodyInstancesClusterStateClusterStageTotalStageWithWeight) SetStepIndex(v int32) *DescribeInstancesResponseBodyInstancesClusterStateClusterStageTotalStageWithWeight {
+	s.StepIndex = &v
+	return s
+}
+
+func (s *DescribeInstancesResponseBodyInstancesClusterStateClusterStageTotalStageWithWeight) SetStepName(v string) *DescribeInstancesResponseBodyInstancesClusterStateClusterStageTotalStageWithWeight {
+	s.StepName = &v
+	return s
+}
+
+func (s *DescribeInstancesResponseBodyInstancesClusterStateClusterStageTotalStageWithWeight) SetWeight(v int32) *DescribeInstancesResponseBodyInstancesClusterStateClusterStageTotalStageWithWeight {
+	s.Weight = &v
+	return s
+}
+
+type DescribeInstancesResponseBodyInstancesClusterStateUserSlbDto struct {
+	ExistSlb         *bool                                                                           `json:"ExistSlb,omitempty" xml:"ExistSlb,omitempty"`
+	SlbId            *string                                                                         `json:"SlbId,omitempty" xml:"SlbId,omitempty"`
+	SlbIp            *string                                                                         `json:"SlbIp,omitempty" xml:"SlbIp,omitempty"`
+	SlbStatus        *string                                                                         `json:"SlbStatus,omitempty" xml:"SlbStatus,omitempty"`
+	UserSlbListeners []*DescribeInstancesResponseBodyInstancesClusterStateUserSlbDtoUserSlbListeners `json:"UserSlbListeners,omitempty" xml:"UserSlbListeners,omitempty" type:"Repeated"`
+}
+
+func (s DescribeInstancesResponseBodyInstancesClusterStateUserSlbDto) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInstancesResponseBodyInstancesClusterStateUserSlbDto) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstancesResponseBodyInstancesClusterStateUserSlbDto) SetExistSlb(v bool) *DescribeInstancesResponseBodyInstancesClusterStateUserSlbDto {
+	s.ExistSlb = &v
+	return s
+}
+
+func (s *DescribeInstancesResponseBodyInstancesClusterStateUserSlbDto) SetSlbId(v string) *DescribeInstancesResponseBodyInstancesClusterStateUserSlbDto {
+	s.SlbId = &v
+	return s
+}
+
+func (s *DescribeInstancesResponseBodyInstancesClusterStateUserSlbDto) SetSlbIp(v string) *DescribeInstancesResponseBodyInstancesClusterStateUserSlbDto {
+	s.SlbIp = &v
+	return s
+}
+
+func (s *DescribeInstancesResponseBodyInstancesClusterStateUserSlbDto) SetSlbStatus(v string) *DescribeInstancesResponseBodyInstancesClusterStateUserSlbDto {
+	s.SlbStatus = &v
+	return s
+}
+
+func (s *DescribeInstancesResponseBodyInstancesClusterStateUserSlbDto) SetUserSlbListeners(v []*DescribeInstancesResponseBodyInstancesClusterStateUserSlbDtoUserSlbListeners) *DescribeInstancesResponseBodyInstancesClusterStateUserSlbDto {
+	s.UserSlbListeners = v
+	return s
+}
+
+type DescribeInstancesResponseBodyInstancesClusterStateUserSlbDtoUserSlbListeners struct {
+	ListenersStatus *string `json:"ListenersStatus,omitempty" xml:"ListenersStatus,omitempty"`
+	Port            *string `json:"Port,omitempty" xml:"Port,omitempty"`
+}
+
+func (s DescribeInstancesResponseBodyInstancesClusterStateUserSlbDtoUserSlbListeners) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInstancesResponseBodyInstancesClusterStateUserSlbDtoUserSlbListeners) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstancesResponseBodyInstancesClusterStateUserSlbDtoUserSlbListeners) SetListenersStatus(v string) *DescribeInstancesResponseBodyInstancesClusterStateUserSlbDtoUserSlbListeners {
+	s.ListenersStatus = &v
+	return s
+}
+
+func (s *DescribeInstancesResponseBodyInstancesClusterStateUserSlbDtoUserSlbListeners) SetPort(v string) *DescribeInstancesResponseBodyInstancesClusterStateUserSlbDtoUserSlbListeners {
+	s.Port = &v
+	return s
+}
+
+type DescribeInstancesResponseBodyInstancesClusterUsedResources struct {
+	ClusterId      *string  `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	Ha             *bool    `json:"Ha,omitempty" xml:"Ha,omitempty"`
+	HaUsedCpu      *float32 `json:"HaUsedCpu,omitempty" xml:"HaUsedCpu,omitempty"`
+	HaUsedMemory   *float32 `json:"HaUsedMemory,omitempty" xml:"HaUsedMemory,omitempty"`
+	HaUsedResource *float32 `json:"HaUsedResource,omitempty" xml:"HaUsedResource,omitempty"`
+	UsedCpu        *float32 `json:"UsedCpu,omitempty" xml:"UsedCpu,omitempty"`
+	UsedMemory     *float32 `json:"UsedMemory,omitempty" xml:"UsedMemory,omitempty"`
+	UsedResource   *float32 `json:"UsedResource,omitempty" xml:"UsedResource,omitempty"`
+}
+
+func (s DescribeInstancesResponseBodyInstancesClusterUsedResources) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInstancesResponseBodyInstancesClusterUsedResources) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstancesResponseBodyInstancesClusterUsedResources) SetClusterId(v string) *DescribeInstancesResponseBodyInstancesClusterUsedResources {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *DescribeInstancesResponseBodyInstancesClusterUsedResources) SetHa(v bool) *DescribeInstancesResponseBodyInstancesClusterUsedResources {
+	s.Ha = &v
+	return s
+}
+
+func (s *DescribeInstancesResponseBodyInstancesClusterUsedResources) SetHaUsedCpu(v float32) *DescribeInstancesResponseBodyInstancesClusterUsedResources {
+	s.HaUsedCpu = &v
+	return s
+}
+
+func (s *DescribeInstancesResponseBodyInstancesClusterUsedResources) SetHaUsedMemory(v float32) *DescribeInstancesResponseBodyInstancesClusterUsedResources {
+	s.HaUsedMemory = &v
+	return s
+}
+
+func (s *DescribeInstancesResponseBodyInstancesClusterUsedResources) SetHaUsedResource(v float32) *DescribeInstancesResponseBodyInstancesClusterUsedResources {
+	s.HaUsedResource = &v
+	return s
+}
+
+func (s *DescribeInstancesResponseBodyInstancesClusterUsedResources) SetUsedCpu(v float32) *DescribeInstancesResponseBodyInstancesClusterUsedResources {
+	s.UsedCpu = &v
+	return s
+}
+
+func (s *DescribeInstancesResponseBodyInstancesClusterUsedResources) SetUsedMemory(v float32) *DescribeInstancesResponseBodyInstancesClusterUsedResources {
+	s.UsedMemory = &v
+	return s
+}
+
+func (s *DescribeInstancesResponseBodyInstancesClusterUsedResources) SetUsedResource(v float32) *DescribeInstancesResponseBodyInstancesClusterUsedResources {
+	s.UsedResource = &v
 	return s
 }
 
@@ -1785,6 +2073,65 @@ func (s *DescribeInstancesResponseBodyInstancesHaResourceSpec) SetMemoryGB(v int
 	return s
 }
 
+type DescribeInstancesResponseBodyInstancesHaVSwitchInfo struct {
+	AvailableIpAddressCount *int64  `json:"AvailableIpAddressCount,omitempty" xml:"AvailableIpAddressCount,omitempty"`
+	Description             *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	RegionId                *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	VSwitchCidr             *string `json:"VSwitchCidr,omitempty" xml:"VSwitchCidr,omitempty"`
+	VSwitchId               *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	VSwitchName             *string `json:"VSwitchName,omitempty" xml:"VSwitchName,omitempty"`
+	VpcId                   *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	ZoneId                  *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+}
+
+func (s DescribeInstancesResponseBodyInstancesHaVSwitchInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInstancesResponseBodyInstancesHaVSwitchInfo) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstancesResponseBodyInstancesHaVSwitchInfo) SetAvailableIpAddressCount(v int64) *DescribeInstancesResponseBodyInstancesHaVSwitchInfo {
+	s.AvailableIpAddressCount = &v
+	return s
+}
+
+func (s *DescribeInstancesResponseBodyInstancesHaVSwitchInfo) SetDescription(v string) *DescribeInstancesResponseBodyInstancesHaVSwitchInfo {
+	s.Description = &v
+	return s
+}
+
+func (s *DescribeInstancesResponseBodyInstancesHaVSwitchInfo) SetRegionId(v string) *DescribeInstancesResponseBodyInstancesHaVSwitchInfo {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeInstancesResponseBodyInstancesHaVSwitchInfo) SetVSwitchCidr(v string) *DescribeInstancesResponseBodyInstancesHaVSwitchInfo {
+	s.VSwitchCidr = &v
+	return s
+}
+
+func (s *DescribeInstancesResponseBodyInstancesHaVSwitchInfo) SetVSwitchId(v string) *DescribeInstancesResponseBodyInstancesHaVSwitchInfo {
+	s.VSwitchId = &v
+	return s
+}
+
+func (s *DescribeInstancesResponseBodyInstancesHaVSwitchInfo) SetVSwitchName(v string) *DescribeInstancesResponseBodyInstancesHaVSwitchInfo {
+	s.VSwitchName = &v
+	return s
+}
+
+func (s *DescribeInstancesResponseBodyInstancesHaVSwitchInfo) SetVpcId(v string) *DescribeInstancesResponseBodyInstancesHaVSwitchInfo {
+	s.VpcId = &v
+	return s
+}
+
+func (s *DescribeInstancesResponseBodyInstancesHaVSwitchInfo) SetZoneId(v string) *DescribeInstancesResponseBodyInstancesHaVSwitchInfo {
+	s.ZoneId = &v
+	return s
+}
+
 type DescribeInstancesResponseBodyInstancesHostAliases struct {
 	// This parameter is required.
 	HostNames []*string `json:"HostNames,omitempty" xml:"HostNames,omitempty" type:"Repeated"`
@@ -1807,6 +2154,47 @@ func (s *DescribeInstancesResponseBodyInstancesHostAliases) SetHostNames(v []*st
 
 func (s *DescribeInstancesResponseBodyInstancesHostAliases) SetIp(v string) *DescribeInstancesResponseBodyInstancesHostAliases {
 	s.Ip = &v
+	return s
+}
+
+type DescribeInstancesResponseBodyInstancesOssInfo struct {
+	AccessId               *string `json:"AccessId,omitempty" xml:"AccessId,omitempty"`
+	AccessKey              *string `json:"AccessKey,omitempty" xml:"AccessKey,omitempty"`
+	Bucket                 *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
+	BucketVersioningStatus *string `json:"BucketVersioningStatus,omitempty" xml:"BucketVersioningStatus,omitempty"`
+	Endpoint               *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
+}
+
+func (s DescribeInstancesResponseBodyInstancesOssInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInstancesResponseBodyInstancesOssInfo) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstancesResponseBodyInstancesOssInfo) SetAccessId(v string) *DescribeInstancesResponseBodyInstancesOssInfo {
+	s.AccessId = &v
+	return s
+}
+
+func (s *DescribeInstancesResponseBodyInstancesOssInfo) SetAccessKey(v string) *DescribeInstancesResponseBodyInstancesOssInfo {
+	s.AccessKey = &v
+	return s
+}
+
+func (s *DescribeInstancesResponseBodyInstancesOssInfo) SetBucket(v string) *DescribeInstancesResponseBodyInstancesOssInfo {
+	s.Bucket = &v
+	return s
+}
+
+func (s *DescribeInstancesResponseBodyInstancesOssInfo) SetBucketVersioningStatus(v string) *DescribeInstancesResponseBodyInstancesOssInfo {
+	s.BucketVersioningStatus = &v
+	return s
+}
+
+func (s *DescribeInstancesResponseBodyInstancesOssInfo) SetEndpoint(v string) *DescribeInstancesResponseBodyInstancesOssInfo {
+	s.Endpoint = &v
 	return s
 }
 
@@ -1914,6 +2302,112 @@ func (s *DescribeInstancesResponseBodyInstancesTags) SetKey(v string) *DescribeI
 
 func (s *DescribeInstancesResponseBodyInstancesTags) SetValue(v string) *DescribeInstancesResponseBodyInstancesTags {
 	s.Value = &v
+	return s
+}
+
+type DescribeInstancesResponseBodyInstancesVSwitchInfo struct {
+	AvailableIpAddressCount *string `json:"AvailableIpAddressCount,omitempty" xml:"AvailableIpAddressCount,omitempty"`
+	Description             *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	RegionId                *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	VSwitchCidr             *string `json:"VSwitchCidr,omitempty" xml:"VSwitchCidr,omitempty"`
+	VSwitchId               *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	VSwitchName             *string `json:"VSwitchName,omitempty" xml:"VSwitchName,omitempty"`
+	VpcId                   *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	ZoneId                  *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+}
+
+func (s DescribeInstancesResponseBodyInstancesVSwitchInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInstancesResponseBodyInstancesVSwitchInfo) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstancesResponseBodyInstancesVSwitchInfo) SetAvailableIpAddressCount(v string) *DescribeInstancesResponseBodyInstancesVSwitchInfo {
+	s.AvailableIpAddressCount = &v
+	return s
+}
+
+func (s *DescribeInstancesResponseBodyInstancesVSwitchInfo) SetDescription(v string) *DescribeInstancesResponseBodyInstancesVSwitchInfo {
+	s.Description = &v
+	return s
+}
+
+func (s *DescribeInstancesResponseBodyInstancesVSwitchInfo) SetRegionId(v string) *DescribeInstancesResponseBodyInstancesVSwitchInfo {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeInstancesResponseBodyInstancesVSwitchInfo) SetVSwitchCidr(v string) *DescribeInstancesResponseBodyInstancesVSwitchInfo {
+	s.VSwitchCidr = &v
+	return s
+}
+
+func (s *DescribeInstancesResponseBodyInstancesVSwitchInfo) SetVSwitchId(v string) *DescribeInstancesResponseBodyInstancesVSwitchInfo {
+	s.VSwitchId = &v
+	return s
+}
+
+func (s *DescribeInstancesResponseBodyInstancesVSwitchInfo) SetVSwitchName(v string) *DescribeInstancesResponseBodyInstancesVSwitchInfo {
+	s.VSwitchName = &v
+	return s
+}
+
+func (s *DescribeInstancesResponseBodyInstancesVSwitchInfo) SetVpcId(v string) *DescribeInstancesResponseBodyInstancesVSwitchInfo {
+	s.VpcId = &v
+	return s
+}
+
+func (s *DescribeInstancesResponseBodyInstancesVSwitchInfo) SetZoneId(v string) *DescribeInstancesResponseBodyInstancesVSwitchInfo {
+	s.ZoneId = &v
+	return s
+}
+
+type DescribeInstancesResponseBodyInstancesVpcInfo struct {
+	CidrBlock   *string `json:"CidrBlock,omitempty" xml:"CidrBlock,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Status      *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	VpcId       *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	VpcName     *string `json:"VpcName,omitempty" xml:"VpcName,omitempty"`
+}
+
+func (s DescribeInstancesResponseBodyInstancesVpcInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInstancesResponseBodyInstancesVpcInfo) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstancesResponseBodyInstancesVpcInfo) SetCidrBlock(v string) *DescribeInstancesResponseBodyInstancesVpcInfo {
+	s.CidrBlock = &v
+	return s
+}
+
+func (s *DescribeInstancesResponseBodyInstancesVpcInfo) SetDescription(v string) *DescribeInstancesResponseBodyInstancesVpcInfo {
+	s.Description = &v
+	return s
+}
+
+func (s *DescribeInstancesResponseBodyInstancesVpcInfo) SetRegionId(v string) *DescribeInstancesResponseBodyInstancesVpcInfo {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeInstancesResponseBodyInstancesVpcInfo) SetStatus(v string) *DescribeInstancesResponseBodyInstancesVpcInfo {
+	s.Status = &v
+	return s
+}
+
+func (s *DescribeInstancesResponseBodyInstancesVpcInfo) SetVpcId(v string) *DescribeInstancesResponseBodyInstancesVpcInfo {
+	s.VpcId = &v
+	return s
+}
+
+func (s *DescribeInstancesResponseBodyInstancesVpcInfo) SetVpcName(v string) *DescribeInstancesResponseBodyInstancesVpcInfo {
+	s.VpcName = &v
 	return s
 }
 
@@ -2459,6 +2953,8 @@ func (s *DescribeSupportedRegionsResponseBody) SetTotalPage(v int32) *DescribeSu
 }
 
 type DescribeSupportedRegionsResponseBodyRegions struct {
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Extra       *string `json:"Extra,omitempty" xml:"Extra,omitempty"`
 	// example:
 	//
 	// cn-beijing
@@ -2475,6 +2971,16 @@ func (s DescribeSupportedRegionsResponseBodyRegions) String() string {
 
 func (s DescribeSupportedRegionsResponseBodyRegions) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeSupportedRegionsResponseBodyRegions) SetDescription(v string) *DescribeSupportedRegionsResponseBodyRegions {
+	s.Description = &v
+	return s
+}
+
+func (s *DescribeSupportedRegionsResponseBodyRegions) SetExtra(v string) *DescribeSupportedRegionsResponseBodyRegions {
+	s.Extra = &v
+	return s
 }
 
 func (s *DescribeSupportedRegionsResponseBodyRegions) SetRegion(v string) *DescribeSupportedRegionsResponseBodyRegions {
