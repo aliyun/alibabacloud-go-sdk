@@ -9,6 +9,178 @@ import (
 	"github.com/alibabacloud-go/tea/tea"
 )
 
+type CertNoThreeElementVerificationRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 示例值
+	AuthCode *string `json:"AuthCode,omitempty" xml:"AuthCode,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 示例值
+	CertName *string `json:"CertName,omitempty" xml:"CertName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 示例值
+	CertNo *string `json:"CertNo,omitempty" xml:"CertNo,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 示例值
+	CertPicture *string `json:"CertPicture,omitempty" xml:"CertPicture,omitempty"`
+	// example:
+	//
+	// 示例值示例值
+	Mask                 *string `json:"Mask,omitempty" xml:"Mask,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+}
+
+func (s CertNoThreeElementVerificationRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CertNoThreeElementVerificationRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CertNoThreeElementVerificationRequest) SetAuthCode(v string) *CertNoThreeElementVerificationRequest {
+	s.AuthCode = &v
+	return s
+}
+
+func (s *CertNoThreeElementVerificationRequest) SetCertName(v string) *CertNoThreeElementVerificationRequest {
+	s.CertName = &v
+	return s
+}
+
+func (s *CertNoThreeElementVerificationRequest) SetCertNo(v string) *CertNoThreeElementVerificationRequest {
+	s.CertNo = &v
+	return s
+}
+
+func (s *CertNoThreeElementVerificationRequest) SetCertPicture(v string) *CertNoThreeElementVerificationRequest {
+	s.CertPicture = &v
+	return s
+}
+
+func (s *CertNoThreeElementVerificationRequest) SetMask(v string) *CertNoThreeElementVerificationRequest {
+	s.Mask = &v
+	return s
+}
+
+func (s *CertNoThreeElementVerificationRequest) SetOwnerId(v int64) *CertNoThreeElementVerificationRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *CertNoThreeElementVerificationRequest) SetResourceOwnerAccount(v string) *CertNoThreeElementVerificationRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *CertNoThreeElementVerificationRequest) SetResourceOwnerId(v int64) *CertNoThreeElementVerificationRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+type CertNoThreeElementVerificationResponseBody struct {
+	AccessDeniedDetail *string                                         `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	Code               *string                                         `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data               *CertNoThreeElementVerificationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message            *string                                         `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId          *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CertNoThreeElementVerificationResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CertNoThreeElementVerificationResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CertNoThreeElementVerificationResponseBody) SetAccessDeniedDetail(v string) *CertNoThreeElementVerificationResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
+}
+
+func (s *CertNoThreeElementVerificationResponseBody) SetCode(v string) *CertNoThreeElementVerificationResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CertNoThreeElementVerificationResponseBody) SetData(v *CertNoThreeElementVerificationResponseBodyData) *CertNoThreeElementVerificationResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *CertNoThreeElementVerificationResponseBody) SetMessage(v string) *CertNoThreeElementVerificationResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CertNoThreeElementVerificationResponseBody) SetRequestId(v string) *CertNoThreeElementVerificationResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CertNoThreeElementVerificationResponseBodyData struct {
+	// example:
+	//
+	// 示例值示例值
+	IsConsistent *string `json:"IsConsistent,omitempty" xml:"IsConsistent,omitempty"`
+}
+
+func (s CertNoThreeElementVerificationResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CertNoThreeElementVerificationResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *CertNoThreeElementVerificationResponseBodyData) SetIsConsistent(v string) *CertNoThreeElementVerificationResponseBodyData {
+	s.IsConsistent = &v
+	return s
+}
+
+type CertNoThreeElementVerificationResponse struct {
+	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CertNoThreeElementVerificationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CertNoThreeElementVerificationResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CertNoThreeElementVerificationResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CertNoThreeElementVerificationResponse) SetHeaders(v map[string]*string) *CertNoThreeElementVerificationResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CertNoThreeElementVerificationResponse) SetStatusCode(v int32) *CertNoThreeElementVerificationResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CertNoThreeElementVerificationResponse) SetBody(v *CertNoThreeElementVerificationResponseBody) *CertNoThreeElementVerificationResponse {
+	s.Body = v
+	return s
+}
+
 type CertNoTwoElementVerificationRequest struct {
 	// This parameter is required.
 	//
@@ -8161,6 +8333,94 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	}
 
 	_body, _err := endpointutil.GetEndpointRules(productId, regionId, endpointRule, network, suffix)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 身份证三要素
+//
+// @param request - CertNoThreeElementVerificationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CertNoThreeElementVerificationResponse
+func (client *Client) CertNoThreeElementVerificationWithOptions(request *CertNoThreeElementVerificationRequest, runtime *util.RuntimeOptions) (_result *CertNoThreeElementVerificationResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AuthCode)) {
+		query["AuthCode"] = request.AuthCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CertName)) {
+		query["CertName"] = request.CertName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CertNo)) {
+		query["CertNo"] = request.CertNo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CertPicture)) {
+		query["CertPicture"] = request.CertPicture
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Mask)) {
+		query["Mask"] = request.Mask
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CertNoThreeElementVerification"),
+		Version:     tea.String("2020-02-17"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CertNoThreeElementVerificationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 身份证三要素
+//
+// @param request - CertNoThreeElementVerificationRequest
+//
+// @return CertNoThreeElementVerificationResponse
+func (client *Client) CertNoThreeElementVerification(request *CertNoThreeElementVerificationRequest) (_result *CertNoThreeElementVerificationResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CertNoThreeElementVerificationResponse{}
+	_body, _err := client.CertNoThreeElementVerificationWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
