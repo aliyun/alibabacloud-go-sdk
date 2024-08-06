@@ -7696,7 +7696,8 @@ type ListGatewaysResponseBodyDataItems struct {
 	// example:
 	//
 	// 2
-	Replicas *string `json:"replicas,omitempty" xml:"replicas,omitempty"`
+	Replicas      *string                                         `json:"replicas,omitempty" xml:"replicas,omitempty"`
+	SecurityGroup *ListGatewaysResponseBodyDataItemsSecurityGroup `json:"securityGroup,omitempty" xml:"securityGroup,omitempty" type:"Struct"`
 	// example:
 	//
 	// apigw.small.x1
@@ -7712,11 +7713,14 @@ type ListGatewaysResponseBodyDataItems struct {
 	// example:
 	//
 	// 1719386834548
-	UpdateTimestamp *int64 `json:"updateTimestamp,omitempty" xml:"updateTimestamp,omitempty"`
+	UpdateTimestamp *int64                                    `json:"updateTimestamp,omitempty" xml:"updateTimestamp,omitempty"`
+	VSwitch         *ListGatewaysResponseBodyDataItemsVSwitch `json:"vSwitch,omitempty" xml:"vSwitch,omitempty" type:"Struct"`
 	// example:
 	//
 	// 2.0.2
-	Version *string `json:"version,omitempty" xml:"version,omitempty"`
+	Version *string                                   `json:"version,omitempty" xml:"version,omitempty"`
+	Vpc     *ListGatewaysResponseBodyDataItemsVpc     `json:"vpc,omitempty" xml:"vpc,omitempty" type:"Struct"`
+	Zones   []*ListGatewaysResponseBodyDataItemsZones `json:"zones,omitempty" xml:"zones,omitempty" type:"Repeated"`
 }
 
 func (s ListGatewaysResponseBodyDataItems) String() string {
@@ -7767,6 +7771,11 @@ func (s *ListGatewaysResponseBodyDataItems) SetReplicas(v string) *ListGatewaysR
 	return s
 }
 
+func (s *ListGatewaysResponseBodyDataItems) SetSecurityGroup(v *ListGatewaysResponseBodyDataItemsSecurityGroup) *ListGatewaysResponseBodyDataItems {
+	s.SecurityGroup = v
+	return s
+}
+
 func (s *ListGatewaysResponseBodyDataItems) SetSpec(v string) *ListGatewaysResponseBodyDataItems {
 	s.Spec = &v
 	return s
@@ -7787,8 +7796,23 @@ func (s *ListGatewaysResponseBodyDataItems) SetUpdateTimestamp(v int64) *ListGat
 	return s
 }
 
+func (s *ListGatewaysResponseBodyDataItems) SetVSwitch(v *ListGatewaysResponseBodyDataItemsVSwitch) *ListGatewaysResponseBodyDataItems {
+	s.VSwitch = v
+	return s
+}
+
 func (s *ListGatewaysResponseBodyDataItems) SetVersion(v string) *ListGatewaysResponseBodyDataItems {
 	s.Version = &v
+	return s
+}
+
+func (s *ListGatewaysResponseBodyDataItems) SetVpc(v *ListGatewaysResponseBodyDataItemsVpc) *ListGatewaysResponseBodyDataItems {
+	s.Vpc = v
+	return s
+}
+
+func (s *ListGatewaysResponseBodyDataItems) SetZones(v []*ListGatewaysResponseBodyDataItemsZones) *ListGatewaysResponseBodyDataItems {
+	s.Zones = v
 	return s
 }
 
@@ -7907,6 +7931,97 @@ func (s *ListGatewaysResponseBodyDataItemsLoadBalancersPorts) SetPort(v int32) *
 
 func (s *ListGatewaysResponseBodyDataItemsLoadBalancersPorts) SetProtocol(v string) *ListGatewaysResponseBodyDataItemsLoadBalancersPorts {
 	s.Protocol = &v
+	return s
+}
+
+type ListGatewaysResponseBodyDataItemsSecurityGroup struct {
+	SecurityGroupId *string `json:"securityGroupId,omitempty" xml:"securityGroupId,omitempty"`
+}
+
+func (s ListGatewaysResponseBodyDataItemsSecurityGroup) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListGatewaysResponseBodyDataItemsSecurityGroup) GoString() string {
+	return s.String()
+}
+
+func (s *ListGatewaysResponseBodyDataItemsSecurityGroup) SetSecurityGroupId(v string) *ListGatewaysResponseBodyDataItemsSecurityGroup {
+	s.SecurityGroupId = &v
+	return s
+}
+
+type ListGatewaysResponseBodyDataItemsVSwitch struct {
+	VSwitchId *string `json:"vSwitchId,omitempty" xml:"vSwitchId,omitempty"`
+}
+
+func (s ListGatewaysResponseBodyDataItemsVSwitch) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListGatewaysResponseBodyDataItemsVSwitch) GoString() string {
+	return s.String()
+}
+
+func (s *ListGatewaysResponseBodyDataItemsVSwitch) SetVSwitchId(v string) *ListGatewaysResponseBodyDataItemsVSwitch {
+	s.VSwitchId = &v
+	return s
+}
+
+type ListGatewaysResponseBodyDataItemsVpc struct {
+	VpcId *string `json:"vpcId,omitempty" xml:"vpcId,omitempty"`
+}
+
+func (s ListGatewaysResponseBodyDataItemsVpc) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListGatewaysResponseBodyDataItemsVpc) GoString() string {
+	return s.String()
+}
+
+func (s *ListGatewaysResponseBodyDataItemsVpc) SetVpcId(v string) *ListGatewaysResponseBodyDataItemsVpc {
+	s.VpcId = &v
+	return s
+}
+
+type ListGatewaysResponseBodyDataItemsZones struct {
+	VSwitch *ListGatewaysResponseBodyDataItemsZonesVSwitch `json:"vSwitch,omitempty" xml:"vSwitch,omitempty" type:"Struct"`
+	ZoneId  *string                                        `json:"zoneId,omitempty" xml:"zoneId,omitempty"`
+}
+
+func (s ListGatewaysResponseBodyDataItemsZones) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListGatewaysResponseBodyDataItemsZones) GoString() string {
+	return s.String()
+}
+
+func (s *ListGatewaysResponseBodyDataItemsZones) SetVSwitch(v *ListGatewaysResponseBodyDataItemsZonesVSwitch) *ListGatewaysResponseBodyDataItemsZones {
+	s.VSwitch = v
+	return s
+}
+
+func (s *ListGatewaysResponseBodyDataItemsZones) SetZoneId(v string) *ListGatewaysResponseBodyDataItemsZones {
+	s.ZoneId = &v
+	return s
+}
+
+type ListGatewaysResponseBodyDataItemsZonesVSwitch struct {
+	VSwitchId *string `json:"vSwitchId,omitempty" xml:"vSwitchId,omitempty"`
+}
+
+func (s ListGatewaysResponseBodyDataItemsZonesVSwitch) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListGatewaysResponseBodyDataItemsZonesVSwitch) GoString() string {
+	return s.String()
+}
+
+func (s *ListGatewaysResponseBodyDataItemsZonesVSwitch) SetVSwitchId(v string) *ListGatewaysResponseBodyDataItemsZonesVSwitch {
+	s.VSwitchId = &v
 	return s
 }
 
