@@ -256,6 +256,131 @@ func (s *AISearchResponse) SetBody(v *AISearchResponseBody) *AISearchResponse {
 	return s
 }
 
+type AISearchV2Request struct {
+	Query *string `json:"query,omitempty" xml:"query,omitempty"`
+	// example:
+	//
+	// 14199B5E-5906-52BD-800D-900268AEC9F6
+	SessionId *string `json:"sessionId,omitempty" xml:"sessionId,omitempty"`
+}
+
+func (s AISearchV2Request) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AISearchV2Request) GoString() string {
+	return s.String()
+}
+
+func (s *AISearchV2Request) SetQuery(v string) *AISearchV2Request {
+	s.Query = &v
+	return s
+}
+
+func (s *AISearchV2Request) SetSessionId(v string) *AISearchV2Request {
+	s.SessionId = &v
+	return s
+}
+
+type AISearchV2ResponseBody struct {
+	Header  *AISearchV2ResponseBodyHeader `json:"header,omitempty" xml:"header,omitempty" type:"Struct"`
+	Payload *string                       `json:"payload,omitempty" xml:"payload,omitempty"`
+	// example:
+	//
+	// D016A23D-738A-5209-A91A-6145845C5A23
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s AISearchV2ResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AISearchV2ResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *AISearchV2ResponseBody) SetHeader(v *AISearchV2ResponseBodyHeader) *AISearchV2ResponseBody {
+	s.Header = v
+	return s
+}
+
+func (s *AISearchV2ResponseBody) SetPayload(v string) *AISearchV2ResponseBody {
+	s.Payload = &v
+	return s
+}
+
+func (s *AISearchV2ResponseBody) SetRequestId(v string) *AISearchV2ResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type AISearchV2ResponseBodyHeader struct {
+	// example:
+	//
+	// on_common_search_stream
+	Event *string `json:"event,omitempty" xml:"event,omitempty"`
+	// example:
+	//
+	// ff3de49-cedc-47ea-ba3c-8456acd345d8
+	EventId *string `json:"eventId,omitempty" xml:"eventId,omitempty"`
+	// example:
+	//
+	// 1403
+	ResponseTime *string `json:"responseTime,omitempty" xml:"responseTime,omitempty"`
+}
+
+func (s AISearchV2ResponseBodyHeader) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AISearchV2ResponseBodyHeader) GoString() string {
+	return s.String()
+}
+
+func (s *AISearchV2ResponseBodyHeader) SetEvent(v string) *AISearchV2ResponseBodyHeader {
+	s.Event = &v
+	return s
+}
+
+func (s *AISearchV2ResponseBodyHeader) SetEventId(v string) *AISearchV2ResponseBodyHeader {
+	s.EventId = &v
+	return s
+}
+
+func (s *AISearchV2ResponseBodyHeader) SetResponseTime(v string) *AISearchV2ResponseBodyHeader {
+	s.ResponseTime = &v
+	return s
+}
+
+type AISearchV2Response struct {
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AISearchV2ResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s AISearchV2Response) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AISearchV2Response) GoString() string {
+	return s.String()
+}
+
+func (s *AISearchV2Response) SetHeaders(v map[string]*string) *AISearchV2Response {
+	s.Headers = v
+	return s
+}
+
+func (s *AISearchV2Response) SetStatusCode(v int32) *AISearchV2Response {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *AISearchV2Response) SetBody(v *AISearchV2ResponseBody) *AISearchV2Response {
+	s.Body = v
+	return s
+}
+
 type Client struct {
 	openapi.Client
 }
@@ -364,6 +489,74 @@ func (client *Client) AISearch(request *AISearchRequest) (_result *AISearchRespo
 	headers := make(map[string]*string)
 	_result = &AISearchResponse{}
 	_body, _err := client.AISearchWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 提供通用检索与检索后处理的多阶段优化结果，为开放域QA提供信源
+//
+// @param request - AISearchV2Request
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AISearchV2Response
+func (client *Client) AISearchV2WithOptions(request *AISearchV2Request, headers map[string]*string, runtime *util.RuntimeOptions) (_result *AISearchV2Response, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Query)) {
+		query["query"] = request.Query
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SessionId)) {
+		query["sessionId"] = request.SessionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AISearchV2"),
+		Version:     tea.String("2024-05-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/linked-retrieval/linked-retrieval-entry/v2/linkedRetrieval/commands/aiSearch"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &AISearchV2Response{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 提供通用检索与检索后处理的多阶段优化结果，为开放域QA提供信源
+//
+// @param request - AISearchV2Request
+//
+// @return AISearchV2Response
+func (client *Client) AISearchV2(request *AISearchV2Request) (_result *AISearchV2Response, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &AISearchV2Response{}
+	_body, _err := client.AISearchV2WithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
