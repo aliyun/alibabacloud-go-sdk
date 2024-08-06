@@ -19599,6 +19599,7 @@ func (s *GetClusterAddonInstanceResponse) SetBody(v *GetClusterAddonInstanceResp
 }
 
 type GetClusterAuditProjectResponseBody struct {
+	AuditEnabled *bool `json:"audit_enabled,omitempty" xml:"audit_enabled,omitempty"`
 	// example:
 	//
 	// k8s-log-cad1230511cbb4db4a488e58518******
@@ -19611,6 +19612,11 @@ func (s GetClusterAuditProjectResponseBody) String() string {
 
 func (s GetClusterAuditProjectResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *GetClusterAuditProjectResponseBody) SetAuditEnabled(v bool) *GetClusterAuditProjectResponseBody {
+	s.AuditEnabled = &v
+	return s
 }
 
 func (s *GetClusterAuditProjectResponseBody) SetSlsProjectName(v string) *GetClusterAuditProjectResponseBody {
