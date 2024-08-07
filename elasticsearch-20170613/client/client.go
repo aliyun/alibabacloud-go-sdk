@@ -32449,7 +32449,8 @@ func (s *UpdateLogstashSettingsResponse) SetBody(v *UpdateLogstashSettingsRespon
 }
 
 type UpdatePipelineManagementConfigRequest struct {
-	Endpoints []*string `json:"endpoints,omitempty" xml:"endpoints,omitempty" type:"Repeated"`
+	Endpoints    []*string `json:"endpoints,omitempty" xml:"endpoints,omitempty" type:"Repeated"`
+	EsInstanceId *string   `json:"esInstanceId,omitempty" xml:"esInstanceId,omitempty"`
 	// example:
 	//
 	// ******
@@ -32479,6 +32480,11 @@ func (s UpdatePipelineManagementConfigRequest) GoString() string {
 
 func (s *UpdatePipelineManagementConfigRequest) SetEndpoints(v []*string) *UpdatePipelineManagementConfigRequest {
 	s.Endpoints = v
+	return s
+}
+
+func (s *UpdatePipelineManagementConfigRequest) SetEsInstanceId(v string) *UpdatePipelineManagementConfigRequest {
+	s.EsInstanceId = &v
 	return s
 }
 
@@ -46791,6 +46797,10 @@ func (client *Client) UpdatePipelineManagementConfigWithOptions(InstanceId *stri
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Endpoints)) {
 		body["endpoints"] = request.Endpoints
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EsInstanceId)) {
+		body["esInstanceId"] = request.EsInstanceId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Password)) {
