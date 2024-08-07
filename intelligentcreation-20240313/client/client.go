@@ -1209,6 +1209,139 @@ func (s *CheckSessionResponse) SetBody(v *CheckSessionResponseBody) *CheckSessio
 	return s
 }
 
+type CountTextRequest struct {
+	// API
+	//
+	// example:
+	//
+	// PLATFORM
+	GenerationSource *string `json:"generationSource,omitempty" xml:"generationSource,omitempty"`
+	// example:
+	//
+	// Garment
+	Industry *string `json:"industry,omitempty" xml:"industry,omitempty"`
+	// example:
+	//
+	// 1
+	PublishStatus *string `json:"publishStatus,omitempty" xml:"publishStatus,omitempty"`
+	// example:
+	//
+	// RED_BOOK
+	Style *string `json:"style,omitempty" xml:"style,omitempty"`
+}
+
+func (s CountTextRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CountTextRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CountTextRequest) SetGenerationSource(v string) *CountTextRequest {
+	s.GenerationSource = &v
+	return s
+}
+
+func (s *CountTextRequest) SetIndustry(v string) *CountTextRequest {
+	s.Industry = &v
+	return s
+}
+
+func (s *CountTextRequest) SetPublishStatus(v string) *CountTextRequest {
+	s.PublishStatus = &v
+	return s
+}
+
+func (s *CountTextRequest) SetStyle(v string) *CountTextRequest {
+	s.Style = &v
+	return s
+}
+
+type CountTextResponseBody struct {
+	// example:
+	//
+	// 6C9CB64D-E2D3-5BF2-A9E6-2445F952F178
+	RequestId        *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	CountTextCmdList []*CountTextResponseBodyCountTextCmdList `json:"countTextCmdList,omitempty" xml:"countTextCmdList,omitempty" type:"Repeated"`
+}
+
+func (s CountTextResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CountTextResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CountTextResponseBody) SetRequestId(v string) *CountTextResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CountTextResponseBody) SetCountTextCmdList(v []*CountTextResponseBodyCountTextCmdList) *CountTextResponseBody {
+	s.CountTextCmdList = v
+	return s
+}
+
+type CountTextResponseBodyCountTextCmdList struct {
+	// example:
+	//
+	// 4
+	Count *int64 `json:"count,omitempty" xml:"count,omitempty"`
+	// example:
+	//
+	// RED_BOOK
+	Theme *string `json:"theme,omitempty" xml:"theme,omitempty"`
+}
+
+func (s CountTextResponseBodyCountTextCmdList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CountTextResponseBodyCountTextCmdList) GoString() string {
+	return s.String()
+}
+
+func (s *CountTextResponseBodyCountTextCmdList) SetCount(v int64) *CountTextResponseBodyCountTextCmdList {
+	s.Count = &v
+	return s
+}
+
+func (s *CountTextResponseBodyCountTextCmdList) SetTheme(v string) *CountTextResponseBodyCountTextCmdList {
+	s.Theme = &v
+	return s
+}
+
+type CountTextResponse struct {
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CountTextResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CountTextResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CountTextResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CountTextResponse) SetHeaders(v map[string]*string) *CountTextResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CountTextResponse) SetStatusCode(v int32) *CountTextResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CountTextResponse) SetBody(v *CountTextResponseBody) *CountTextResponse {
+	s.Body = v
+	return s
+}
+
 type CreateIllustrationTaskRequest struct {
 	Body *IllustrationTaskCreateCmd `json:"body,omitempty" xml:"body,omitempty"`
 }
@@ -1997,6 +2130,7 @@ type ListTextsRequest struct {
 	//
 	// Common
 	Industry *string `json:"industry,omitempty" xml:"industry,omitempty"`
+	Keyword  *string `json:"keyword,omitempty" xml:"keyword,omitempty"`
 	// example:
 	//
 	// 1
@@ -2034,6 +2168,11 @@ func (s *ListTextsRequest) SetGenerationSource(v string) *ListTextsRequest {
 
 func (s *ListTextsRequest) SetIndustry(v string) *ListTextsRequest {
 	s.Industry = &v
+	return s
+}
+
+func (s *ListTextsRequest) SetKeyword(v string) *ListTextsRequest {
+	s.Keyword = &v
 	return s
 }
 
@@ -2968,7 +3107,8 @@ type SubmitProjectTaskRequest struct {
 	// example:
 	//
 	// 1
-	SubtitleTag *int32 `json:"subtitleTag,omitempty" xml:"subtitleTag,omitempty"`
+	SubtitleTag           *int32 `json:"subtitleTag,omitempty" xml:"subtitleTag,omitempty"`
+	TransparentBackground *int32 `json:"transparentBackground,omitempty" xml:"transparentBackground,omitempty"`
 }
 
 func (s SubmitProjectTaskRequest) String() string {
@@ -2991,6 +3131,11 @@ func (s *SubmitProjectTaskRequest) SetScaleType(v string) *SubmitProjectTaskRequ
 
 func (s *SubmitProjectTaskRequest) SetSubtitleTag(v int32) *SubmitProjectTaskRequest {
 	s.SubtitleTag = &v
+	return s
+}
+
+func (s *SubmitProjectTaskRequest) SetTransparentBackground(v int32) *SubmitProjectTaskRequest {
+	s.TransparentBackground = &v
 	return s
 }
 
@@ -3542,6 +3687,82 @@ func (client *Client) CheckSession(request *CheckSessionRequest) (_result *Check
 	headers := make(map[string]*string)
 	_result = &CheckSessionResponse{}
 	_body, _err := client.CheckSessionWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 文本数量统计
+//
+// @param request - CountTextRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CountTextResponse
+func (client *Client) CountTextWithOptions(request *CountTextRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CountTextResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.GenerationSource)) {
+		query["generationSource"] = request.GenerationSource
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Industry)) {
+		query["industry"] = request.Industry
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PublishStatus)) {
+		query["publishStatus"] = request.PublishStatus
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Style)) {
+		query["style"] = request.Style
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CountText"),
+		Version:     tea.String("2024-03-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/yic/yic-console/openService/v1/countText"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CountTextResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 文本数量统计
+//
+// @param request - CountTextRequest
+//
+// @return CountTextResponse
+func (client *Client) CountText(request *CountTextRequest) (_result *CountTextResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CountTextResponse{}
+	_body, _err := client.CountTextWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4240,6 +4461,10 @@ func (client *Client) ListTextsWithOptions(request *ListTextsRequest, headers ma
 		query["industry"] = request.Industry
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Keyword)) {
+		query["keyword"] = request.Keyword
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
 		query["pageNumber"] = request.PageNumber
 	}
@@ -4878,6 +5103,10 @@ func (client *Client) SubmitProjectTaskWithOptions(request *SubmitProjectTaskReq
 
 	if !tea.BoolValue(util.IsUnset(request.SubtitleTag)) {
 		body["subtitleTag"] = request.SubtitleTag
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TransparentBackground)) {
+		body["transparentBackground"] = request.TransparentBackground
 	}
 
 	req := &openapi.OpenApiRequest{
