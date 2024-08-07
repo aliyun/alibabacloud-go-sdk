@@ -7220,6 +7220,126 @@ func (s *ModifyApiDatasourceParametersResponse) SetBody(v *ModifyApiDatasourcePa
 	return s
 }
 
+type ModifyCopilotEmbedConfigRequest struct {
+	AgentName *string `json:"AgentName,omitempty" xml:"AgentName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ccd3428c-dd2xxxxxxxxxxxxdffee
+	CopilotId *string `json:"CopilotId,omitempty" xml:"CopilotId,omitempty"`
+	// example:
+	//
+	// Map<String,Object> data=new HashMap<>();
+	//
+	//         data.put("allTheme",true);
+	//
+	//         //data.put("allCube",true);
+	//
+	//         //data.put("themes",Lists.newArrayList("1111","22222"));
+	//
+	//         //data.put("llmCubes",Lists.newArrayList("33333","44444"));
+	//
+	//         request.setDataRange(JSON.toJSONString(data));
+	DataRange  *string `json:"DataRange,omitempty" xml:"DataRange,omitempty"`
+	ModuleName *string `json:"ModuleName,omitempty" xml:"ModuleName,omitempty"`
+}
+
+func (s ModifyCopilotEmbedConfigRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyCopilotEmbedConfigRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyCopilotEmbedConfigRequest) SetAgentName(v string) *ModifyCopilotEmbedConfigRequest {
+	s.AgentName = &v
+	return s
+}
+
+func (s *ModifyCopilotEmbedConfigRequest) SetCopilotId(v string) *ModifyCopilotEmbedConfigRequest {
+	s.CopilotId = &v
+	return s
+}
+
+func (s *ModifyCopilotEmbedConfigRequest) SetDataRange(v string) *ModifyCopilotEmbedConfigRequest {
+	s.DataRange = &v
+	return s
+}
+
+func (s *ModifyCopilotEmbedConfigRequest) SetModuleName(v string) *ModifyCopilotEmbedConfigRequest {
+	s.ModuleName = &v
+	return s
+}
+
+type ModifyCopilotEmbedConfigResponseBody struct {
+	// example:
+	//
+	// 4BAA4694-CC27-555F-B15A-688AA9289FEE
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Result *bool `json:"Result,omitempty" xml:"Result,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ModifyCopilotEmbedConfigResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyCopilotEmbedConfigResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyCopilotEmbedConfigResponseBody) SetRequestId(v string) *ModifyCopilotEmbedConfigResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ModifyCopilotEmbedConfigResponseBody) SetResult(v bool) *ModifyCopilotEmbedConfigResponseBody {
+	s.Result = &v
+	return s
+}
+
+func (s *ModifyCopilotEmbedConfigResponseBody) SetSuccess(v bool) *ModifyCopilotEmbedConfigResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ModifyCopilotEmbedConfigResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyCopilotEmbedConfigResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ModifyCopilotEmbedConfigResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyCopilotEmbedConfigResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyCopilotEmbedConfigResponse) SetHeaders(v map[string]*string) *ModifyCopilotEmbedConfigResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyCopilotEmbedConfigResponse) SetStatusCode(v int32) *ModifyCopilotEmbedConfigResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ModifyCopilotEmbedConfigResponse) SetBody(v *ModifyCopilotEmbedConfigResponseBody) *ModifyCopilotEmbedConfigResponse {
+	s.Body = v
+	return s
+}
+
 type QueryApprovalInfoRequest struct {
 	// example:
 	//
@@ -8115,6 +8235,202 @@ func (s *QueryComponentPerformanceResponse) SetBody(v *QueryComponentPerformance
 	return s
 }
 
+type QueryCopilotEmbedConfigRequest struct {
+	// example:
+	//
+	// 06-ELive
+	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+}
+
+func (s QueryCopilotEmbedConfigRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryCopilotEmbedConfigRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryCopilotEmbedConfigRequest) SetKeyword(v string) *QueryCopilotEmbedConfigRequest {
+	s.Keyword = &v
+	return s
+}
+
+type QueryCopilotEmbedConfigResponseBody struct {
+	// example:
+	//
+	// 1FC71085-D5FD-08E0-813A-4D4BD1031BC5
+	RequestId *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    []*QueryCopilotEmbedConfigResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s QueryCopilotEmbedConfigResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryCopilotEmbedConfigResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QueryCopilotEmbedConfigResponseBody) SetRequestId(v string) *QueryCopilotEmbedConfigResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *QueryCopilotEmbedConfigResponseBody) SetResult(v []*QueryCopilotEmbedConfigResponseBodyResult) *QueryCopilotEmbedConfigResponseBody {
+	s.Result = v
+	return s
+}
+
+func (s *QueryCopilotEmbedConfigResponseBody) SetSuccess(v bool) *QueryCopilotEmbedConfigResponseBody {
+	s.Success = &v
+	return s
+}
+
+type QueryCopilotEmbedConfigResponseBodyResult struct {
+	AgentName *string `json:"AgentName,omitempty" xml:"AgentName,omitempty"`
+	// example:
+	//
+	// 9c079710-ddbe-48b3-b495-7c83c8d57cc4
+	CopilotId *string `json:"CopilotId,omitempty" xml:"CopilotId,omitempty"`
+	// example:
+	//
+	// qweqw12312423521
+	CreateUser     *string                                             `json:"CreateUser,omitempty" xml:"CreateUser,omitempty"`
+	CreateUserName *string                                             `json:"CreateUserName,omitempty" xml:"CreateUserName,omitempty"`
+	DataRange      *QueryCopilotEmbedConfigResponseBodyResultDataRange `json:"DataRange,omitempty" xml:"DataRange,omitempty" type:"Struct"`
+	// example:
+	//
+	// asda1231231dfs
+	ModifyUser *string `json:"ModifyUser,omitempty" xml:"ModifyUser,omitempty"`
+	ModuleName *string `json:"ModuleName,omitempty" xml:"ModuleName,omitempty"`
+	// example:
+	//
+	// 0327
+	ShowName *string `json:"ShowName,omitempty" xml:"ShowName,omitempty"`
+}
+
+func (s QueryCopilotEmbedConfigResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryCopilotEmbedConfigResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *QueryCopilotEmbedConfigResponseBodyResult) SetAgentName(v string) *QueryCopilotEmbedConfigResponseBodyResult {
+	s.AgentName = &v
+	return s
+}
+
+func (s *QueryCopilotEmbedConfigResponseBodyResult) SetCopilotId(v string) *QueryCopilotEmbedConfigResponseBodyResult {
+	s.CopilotId = &v
+	return s
+}
+
+func (s *QueryCopilotEmbedConfigResponseBodyResult) SetCreateUser(v string) *QueryCopilotEmbedConfigResponseBodyResult {
+	s.CreateUser = &v
+	return s
+}
+
+func (s *QueryCopilotEmbedConfigResponseBodyResult) SetCreateUserName(v string) *QueryCopilotEmbedConfigResponseBodyResult {
+	s.CreateUserName = &v
+	return s
+}
+
+func (s *QueryCopilotEmbedConfigResponseBodyResult) SetDataRange(v *QueryCopilotEmbedConfigResponseBodyResultDataRange) *QueryCopilotEmbedConfigResponseBodyResult {
+	s.DataRange = v
+	return s
+}
+
+func (s *QueryCopilotEmbedConfigResponseBodyResult) SetModifyUser(v string) *QueryCopilotEmbedConfigResponseBodyResult {
+	s.ModifyUser = &v
+	return s
+}
+
+func (s *QueryCopilotEmbedConfigResponseBodyResult) SetModuleName(v string) *QueryCopilotEmbedConfigResponseBodyResult {
+	s.ModuleName = &v
+	return s
+}
+
+func (s *QueryCopilotEmbedConfigResponseBodyResult) SetShowName(v string) *QueryCopilotEmbedConfigResponseBodyResult {
+	s.ShowName = &v
+	return s
+}
+
+type QueryCopilotEmbedConfigResponseBodyResultDataRange struct {
+	// example:
+	//
+	// true/false
+	AllCube *bool `json:"AllCube,omitempty" xml:"AllCube,omitempty"`
+	// example:
+	//
+	// true/false
+	AllTheme *bool     `json:"AllTheme,omitempty" xml:"AllTheme,omitempty"`
+	LlmCubes []*string `json:"LlmCubes,omitempty" xml:"LlmCubes,omitempty" type:"Repeated"`
+	Themes   []*string `json:"Themes,omitempty" xml:"Themes,omitempty" type:"Repeated"`
+}
+
+func (s QueryCopilotEmbedConfigResponseBodyResultDataRange) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryCopilotEmbedConfigResponseBodyResultDataRange) GoString() string {
+	return s.String()
+}
+
+func (s *QueryCopilotEmbedConfigResponseBodyResultDataRange) SetAllCube(v bool) *QueryCopilotEmbedConfigResponseBodyResultDataRange {
+	s.AllCube = &v
+	return s
+}
+
+func (s *QueryCopilotEmbedConfigResponseBodyResultDataRange) SetAllTheme(v bool) *QueryCopilotEmbedConfigResponseBodyResultDataRange {
+	s.AllTheme = &v
+	return s
+}
+
+func (s *QueryCopilotEmbedConfigResponseBodyResultDataRange) SetLlmCubes(v []*string) *QueryCopilotEmbedConfigResponseBodyResultDataRange {
+	s.LlmCubes = v
+	return s
+}
+
+func (s *QueryCopilotEmbedConfigResponseBodyResultDataRange) SetThemes(v []*string) *QueryCopilotEmbedConfigResponseBodyResultDataRange {
+	s.Themes = v
+	return s
+}
+
+type QueryCopilotEmbedConfigResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryCopilotEmbedConfigResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s QueryCopilotEmbedConfigResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryCopilotEmbedConfigResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryCopilotEmbedConfigResponse) SetHeaders(v map[string]*string) *QueryCopilotEmbedConfigResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QueryCopilotEmbedConfigResponse) SetStatusCode(v int32) *QueryCopilotEmbedConfigResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *QueryCopilotEmbedConfigResponse) SetBody(v *QueryCopilotEmbedConfigResponseBody) *QueryCopilotEmbedConfigResponse {
+	s.Body = v
+	return s
+}
+
 type QueryCubeOptimizationRequest struct {
 	// This parameter is required.
 	//
@@ -8753,6 +9069,424 @@ func (s *QueryCubePerformanceResponse) SetStatusCode(v int32) *QueryCubePerforma
 }
 
 func (s *QueryCubePerformanceResponse) SetBody(v *QueryCubePerformanceResponseBody) *QueryCubePerformanceResponse {
+	s.Body = v
+	return s
+}
+
+type QueryDataRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// f4cc43bc3***
+	ApiId      *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
+	Conditions *string `json:"Conditions,omitempty" xml:"Conditions,omitempty"`
+	// example:
+	//
+	// ["area", "city", "price", "date"]
+	ReturnFields *string `json:"ReturnFields,omitempty" xml:"ReturnFields,omitempty"`
+	// example:
+	//
+	// b5d8fd9348cc4327****afb604
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+}
+
+func (s QueryDataRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryDataRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryDataRequest) SetApiId(v string) *QueryDataRequest {
+	s.ApiId = &v
+	return s
+}
+
+func (s *QueryDataRequest) SetConditions(v string) *QueryDataRequest {
+	s.Conditions = &v
+	return s
+}
+
+func (s *QueryDataRequest) SetReturnFields(v string) *QueryDataRequest {
+	s.ReturnFields = &v
+	return s
+}
+
+func (s *QueryDataRequest) SetUserId(v string) *QueryDataRequest {
+	s.UserId = &v
+	return s
+}
+
+type QueryDataResponseBody struct {
+	// example:
+	//
+	// a4d1a221d-41za1-****
+	RequestId *string                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    *QueryDataResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s QueryDataResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryDataResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QueryDataResponseBody) SetRequestId(v string) *QueryDataResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *QueryDataResponseBody) SetResult(v *QueryDataResponseBodyResult) *QueryDataResponseBody {
+	s.Result = v
+	return s
+}
+
+func (s *QueryDataResponseBody) SetSuccess(v bool) *QueryDataResponseBody {
+	s.Success = &v
+	return s
+}
+
+type QueryDataResponseBodyResult struct {
+	Headers []*QueryDataResponseBodyResultHeaders `json:"Headers,omitempty" xml:"Headers,omitempty" type:"Repeated"`
+	Sql     *string                               `json:"Sql,omitempty" xml:"Sql,omitempty"`
+	Values  []map[string]interface{}              `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
+}
+
+func (s QueryDataResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryDataResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *QueryDataResponseBodyResult) SetHeaders(v []*QueryDataResponseBodyResultHeaders) *QueryDataResponseBodyResult {
+	s.Headers = v
+	return s
+}
+
+func (s *QueryDataResponseBodyResult) SetSql(v string) *QueryDataResponseBodyResult {
+	s.Sql = &v
+	return s
+}
+
+func (s *QueryDataResponseBodyResult) SetValues(v []map[string]interface{}) *QueryDataResponseBodyResult {
+	s.Values = v
+	return s
+}
+
+type QueryDataResponseBodyResultHeaders struct {
+	// example:
+	//
+	// SUM
+	Aggregator *string `json:"Aggregator,omitempty" xml:"Aggregator,omitempty"`
+	Column     *string `json:"Column,omitempty" xml:"Column,omitempty"`
+	// example:
+	//
+	// string
+	DataType *string `json:"DataType,omitempty" xml:"DataType,omitempty"`
+	// example:
+	//
+	// REGION
+	Granularity *string `json:"Granularity,omitempty" xml:"Granularity,omitempty"`
+	// example:
+	//
+	// area
+	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
+	// example:
+	//
+	// Dimension
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s QueryDataResponseBodyResultHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryDataResponseBodyResultHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *QueryDataResponseBodyResultHeaders) SetAggregator(v string) *QueryDataResponseBodyResultHeaders {
+	s.Aggregator = &v
+	return s
+}
+
+func (s *QueryDataResponseBodyResultHeaders) SetColumn(v string) *QueryDataResponseBodyResultHeaders {
+	s.Column = &v
+	return s
+}
+
+func (s *QueryDataResponseBodyResultHeaders) SetDataType(v string) *QueryDataResponseBodyResultHeaders {
+	s.DataType = &v
+	return s
+}
+
+func (s *QueryDataResponseBodyResultHeaders) SetGranularity(v string) *QueryDataResponseBodyResultHeaders {
+	s.Granularity = &v
+	return s
+}
+
+func (s *QueryDataResponseBodyResultHeaders) SetLabel(v string) *QueryDataResponseBodyResultHeaders {
+	s.Label = &v
+	return s
+}
+
+func (s *QueryDataResponseBodyResultHeaders) SetType(v string) *QueryDataResponseBodyResultHeaders {
+	s.Type = &v
+	return s
+}
+
+type QueryDataResponse struct {
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryDataResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s QueryDataResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryDataResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryDataResponse) SetHeaders(v map[string]*string) *QueryDataResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QueryDataResponse) SetStatusCode(v int32) *QueryDataResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *QueryDataResponse) SetBody(v *QueryDataResponseBody) *QueryDataResponse {
+	s.Body = v
+	return s
+}
+
+type QueryDataRangeRequest struct {
+	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// llmCube
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s QueryDataRangeRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryDataRangeRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryDataRangeRequest) SetKeyword(v string) *QueryDataRangeRequest {
+	s.Keyword = &v
+	return s
+}
+
+func (s *QueryDataRangeRequest) SetType(v string) *QueryDataRangeRequest {
+	s.Type = &v
+	return s
+}
+
+type QueryDataRangeResponseBody struct {
+	// example:
+	//
+	// D787E1A3-A93C-424A-B626-C2B05DF8D885
+	RequestId *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    *QueryDataRangeResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s QueryDataRangeResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryDataRangeResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QueryDataRangeResponseBody) SetRequestId(v string) *QueryDataRangeResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *QueryDataRangeResponseBody) SetResult(v *QueryDataRangeResponseBodyResult) *QueryDataRangeResponseBody {
+	s.Result = v
+	return s
+}
+
+func (s *QueryDataRangeResponseBody) SetSuccess(v bool) *QueryDataRangeResponseBody {
+	s.Success = &v
+	return s
+}
+
+type QueryDataRangeResponseBodyResult struct {
+	ApiCopilotLlmCubeModels []*QueryDataRangeResponseBodyResultApiCopilotLlmCubeModels `json:"ApiCopilotLlmCubeModels,omitempty" xml:"ApiCopilotLlmCubeModels,omitempty" type:"Repeated"`
+	ApiCopilotThemeModels   []*QueryDataRangeResponseBodyResultApiCopilotThemeModels   `json:"ApiCopilotThemeModels,omitempty" xml:"ApiCopilotThemeModels,omitempty" type:"Repeated"`
+}
+
+func (s QueryDataRangeResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryDataRangeResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *QueryDataRangeResponseBodyResult) SetApiCopilotLlmCubeModels(v []*QueryDataRangeResponseBodyResultApiCopilotLlmCubeModels) *QueryDataRangeResponseBodyResult {
+	s.ApiCopilotLlmCubeModels = v
+	return s
+}
+
+func (s *QueryDataRangeResponseBodyResult) SetApiCopilotThemeModels(v []*QueryDataRangeResponseBodyResultApiCopilotThemeModels) *QueryDataRangeResponseBodyResult {
+	s.ApiCopilotThemeModels = v
+	return s
+}
+
+type QueryDataRangeResponseBodyResultApiCopilotLlmCubeModels struct {
+	Alias      *string `json:"Alias,omitempty" xml:"Alias,omitempty"`
+	CreateUser *string `json:"CreateUser,omitempty" xml:"CreateUser,omitempty"`
+	// example:
+	//
+	// sdasdafas23342342342
+	LlmCubeId *string `json:"LlmCubeId,omitempty" xml:"LlmCubeId,omitempty"`
+}
+
+func (s QueryDataRangeResponseBodyResultApiCopilotLlmCubeModels) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryDataRangeResponseBodyResultApiCopilotLlmCubeModels) GoString() string {
+	return s.String()
+}
+
+func (s *QueryDataRangeResponseBodyResultApiCopilotLlmCubeModels) SetAlias(v string) *QueryDataRangeResponseBodyResultApiCopilotLlmCubeModels {
+	s.Alias = &v
+	return s
+}
+
+func (s *QueryDataRangeResponseBodyResultApiCopilotLlmCubeModels) SetCreateUser(v string) *QueryDataRangeResponseBodyResultApiCopilotLlmCubeModels {
+	s.CreateUser = &v
+	return s
+}
+
+func (s *QueryDataRangeResponseBodyResultApiCopilotLlmCubeModels) SetLlmCubeId(v string) *QueryDataRangeResponseBodyResultApiCopilotLlmCubeModels {
+	s.LlmCubeId = &v
+	return s
+}
+
+type QueryDataRangeResponseBodyResultApiCopilotThemeModels struct {
+	ApiCopilotLlmCubeModels []*QueryDataRangeResponseBodyResultApiCopilotThemeModelsApiCopilotLlmCubeModels `json:"ApiCopilotLlmCubeModels,omitempty" xml:"ApiCopilotLlmCubeModels,omitempty" type:"Repeated"`
+	CreateUser              *string                                                                         `json:"CreateUser,omitempty" xml:"CreateUser,omitempty"`
+	// example:
+	//
+	// 36631232342312312
+	ThemeId   *string `json:"ThemeId,omitempty" xml:"ThemeId,omitempty"`
+	ThemeName *string `json:"ThemeName,omitempty" xml:"ThemeName,omitempty"`
+}
+
+func (s QueryDataRangeResponseBodyResultApiCopilotThemeModels) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryDataRangeResponseBodyResultApiCopilotThemeModels) GoString() string {
+	return s.String()
+}
+
+func (s *QueryDataRangeResponseBodyResultApiCopilotThemeModels) SetApiCopilotLlmCubeModels(v []*QueryDataRangeResponseBodyResultApiCopilotThemeModelsApiCopilotLlmCubeModels) *QueryDataRangeResponseBodyResultApiCopilotThemeModels {
+	s.ApiCopilotLlmCubeModels = v
+	return s
+}
+
+func (s *QueryDataRangeResponseBodyResultApiCopilotThemeModels) SetCreateUser(v string) *QueryDataRangeResponseBodyResultApiCopilotThemeModels {
+	s.CreateUser = &v
+	return s
+}
+
+func (s *QueryDataRangeResponseBodyResultApiCopilotThemeModels) SetThemeId(v string) *QueryDataRangeResponseBodyResultApiCopilotThemeModels {
+	s.ThemeId = &v
+	return s
+}
+
+func (s *QueryDataRangeResponseBodyResultApiCopilotThemeModels) SetThemeName(v string) *QueryDataRangeResponseBodyResultApiCopilotThemeModels {
+	s.ThemeName = &v
+	return s
+}
+
+type QueryDataRangeResponseBodyResultApiCopilotThemeModelsApiCopilotLlmCubeModels struct {
+	Alias      *string `json:"Alias,omitempty" xml:"Alias,omitempty"`
+	CreateUser *string `json:"CreateUser,omitempty" xml:"CreateUser,omitempty"`
+	// example:
+	//
+	// 1231242231asdasda
+	LlmCubeId *string `json:"LlmCubeId,omitempty" xml:"LlmCubeId,omitempty"`
+}
+
+func (s QueryDataRangeResponseBodyResultApiCopilotThemeModelsApiCopilotLlmCubeModels) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryDataRangeResponseBodyResultApiCopilotThemeModelsApiCopilotLlmCubeModels) GoString() string {
+	return s.String()
+}
+
+func (s *QueryDataRangeResponseBodyResultApiCopilotThemeModelsApiCopilotLlmCubeModels) SetAlias(v string) *QueryDataRangeResponseBodyResultApiCopilotThemeModelsApiCopilotLlmCubeModels {
+	s.Alias = &v
+	return s
+}
+
+func (s *QueryDataRangeResponseBodyResultApiCopilotThemeModelsApiCopilotLlmCubeModels) SetCreateUser(v string) *QueryDataRangeResponseBodyResultApiCopilotThemeModelsApiCopilotLlmCubeModels {
+	s.CreateUser = &v
+	return s
+}
+
+func (s *QueryDataRangeResponseBodyResultApiCopilotThemeModelsApiCopilotLlmCubeModels) SetLlmCubeId(v string) *QueryDataRangeResponseBodyResultApiCopilotThemeModelsApiCopilotLlmCubeModels {
+	s.LlmCubeId = &v
+	return s
+}
+
+type QueryDataRangeResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryDataRangeResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s QueryDataRangeResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryDataRangeResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryDataRangeResponse) SetHeaders(v map[string]*string) *QueryDataRangeResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QueryDataRangeResponse) SetStatusCode(v int32) *QueryDataRangeResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *QueryDataRangeResponse) SetBody(v *QueryDataRangeResponseBody) *QueryDataRangeResponse {
 	s.Body = v
 	return s
 }
@@ -21403,6 +22137,78 @@ func (client *Client) ModifyApiDatasourceParameters(request *ModifyApiDatasource
 
 // Summary:
 //
+// 修改智能问数嵌入配置
+//
+// @param request - ModifyCopilotEmbedConfigRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyCopilotEmbedConfigResponse
+func (client *Client) ModifyCopilotEmbedConfigWithOptions(request *ModifyCopilotEmbedConfigRequest, runtime *util.RuntimeOptions) (_result *ModifyCopilotEmbedConfigResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AgentName)) {
+		query["AgentName"] = request.AgentName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CopilotId)) {
+		query["CopilotId"] = request.CopilotId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DataRange)) {
+		query["DataRange"] = request.DataRange
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ModuleName)) {
+		query["ModuleName"] = request.ModuleName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyCopilotEmbedConfig"),
+		Version:     tea.String("2022-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ModifyCopilotEmbedConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改智能问数嵌入配置
+//
+// @param request - ModifyCopilotEmbedConfigRequest
+//
+// @return ModifyCopilotEmbedConfigResponse
+func (client *Client) ModifyCopilotEmbedConfig(request *ModifyCopilotEmbedConfigRequest) (_result *ModifyCopilotEmbedConfigResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyCopilotEmbedConfigResponse{}
+	_body, _err := client.ModifyCopilotEmbedConfigWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 根据审批人获取相应的审批流信息
 //
 // @param request - QueryApprovalInfoRequest
@@ -21643,6 +22449,66 @@ func (client *Client) QueryComponentPerformance(request *QueryComponentPerforman
 
 // Summary:
 //
+// 获取开通小Q嵌入的配置列表
+//
+// @param request - QueryCopilotEmbedConfigRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryCopilotEmbedConfigResponse
+func (client *Client) QueryCopilotEmbedConfigWithOptions(request *QueryCopilotEmbedConfigRequest, runtime *util.RuntimeOptions) (_result *QueryCopilotEmbedConfigResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Keyword)) {
+		query["Keyword"] = request.Keyword
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryCopilotEmbedConfig"),
+		Version:     tea.String("2022-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &QueryCopilotEmbedConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取开通小Q嵌入的配置列表
+//
+// @param request - QueryCopilotEmbedConfigRequest
+//
+// @return QueryCopilotEmbedConfigResponse
+func (client *Client) QueryCopilotEmbedConfig(request *QueryCopilotEmbedConfigRequest) (_result *QueryCopilotEmbedConfigResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &QueryCopilotEmbedConfigResponse{}
+	_body, _err := client.QueryCopilotEmbedConfigWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 查询数据集优化建议
 //
 // @param request - QueryCubeOptimizationRequest
@@ -21774,6 +22640,142 @@ func (client *Client) QueryCubePerformance(request *QueryCubePerformanceRequest)
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryCubePerformanceResponse{}
 	_body, _err := client.QueryCubePerformanceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 调用开放数据服务API
+//
+// @param request - QueryDataRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryDataResponse
+func (client *Client) QueryDataWithOptions(request *QueryDataRequest, runtime *util.RuntimeOptions) (_result *QueryDataResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ApiId)) {
+		query["ApiId"] = request.ApiId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Conditions)) {
+		query["Conditions"] = request.Conditions
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ReturnFields)) {
+		query["ReturnFields"] = request.ReturnFields
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		query["UserId"] = request.UserId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryData"),
+		Version:     tea.String("2022-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &QueryDataResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 调用开放数据服务API
+//
+// @param request - QueryDataRequest
+//
+// @return QueryDataResponse
+func (client *Client) QueryData(request *QueryDataRequest) (_result *QueryDataResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &QueryDataResponse{}
+	_body, _err := client.QueryDataWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取数据范围目录列表
+//
+// @param request - QueryDataRangeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryDataRangeResponse
+func (client *Client) QueryDataRangeWithOptions(request *QueryDataRangeRequest, runtime *util.RuntimeOptions) (_result *QueryDataRangeResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Keyword)) {
+		query["Keyword"] = request.Keyword
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		query["Type"] = request.Type
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryDataRange"),
+		Version:     tea.String("2022-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &QueryDataRangeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取数据范围目录列表
+//
+// @param request - QueryDataRangeRequest
+//
+// @return QueryDataRangeResponse
+func (client *Client) QueryDataRange(request *QueryDataRangeRequest) (_result *QueryDataRangeResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &QueryDataRangeResponse{}
+	_body, _err := client.QueryDataRangeWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
